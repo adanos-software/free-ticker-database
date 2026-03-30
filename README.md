@@ -15,17 +15,103 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 61
 | Sector coverage | 32,809 (53.6%) |
 | Total aliases | 106,391 |
 
+## Formats
+
+Choose the format that fits your use case:
+
+| File | Size | Best for |
+|---|---|---|
+| [`data/tickers.csv`](data/tickers.csv) | 5.3 MB | Excel, spreadsheets, quick lookups |
+| [`data/tickers.json`](data/tickers.json) | 10.4 MB | Web apps, APIs |
+| [`data/tickers.parquet`](data/tickers.parquet) | 2.4 MB | Pandas, data science |
+| [`data/tickers.db`](data/tickers.db) | 19.0 MB | SQL queries, local apps |
+| [`data/aliases.csv`](data/aliases.csv) | 2.6 MB | Alias/name resolution |
+| [`data/identifiers.csv`](data/identifiers.csv) | 911 KB | ISIN/WKN lookups |
+
+### tickers.csv (flat, Excel-friendly)
+
+```
+ticker,name,exchange,asset_type,sector,country,isin,aliases
+AAPL,Apple Inc,NASDAQ,Stock,Information Technology,United States,US0378331005,apple|iphone|tim cook
+TSLA,Tesla Inc,NASDAQ,Stock,Consumer Discretionary,United States,US88160R1014,tesla|elon|musk|cybertruck
+```
+
+ISIN is a dedicated column. Aliases are pipe-separated (`|`) for easy splitting.
+
+### aliases.csv (1 row per alias)
+
+```
+ticker,alias,alias_type
+AAPL,US0378331005,isin
+AAPL,apple,name
+AAPL,iphone,name
+NVDA,918422,wkn
+```
+
+Types: `isin`, `wkn`, `name`, `exchange_ticker`
+
+### identifiers.csv (ISIN + WKN lookup)
+
+```
+ticker,isin,wkn
+AAPL,US0378331005,
+NVDA,US67066G1040,918422
+VOW,DE0007664039,766403
+```
+
+### tickers.json
+
+```json
+[
+  {
+    "ticker": "AAPL",
+    "name": "Apple Inc",
+    "exchange": "NASDAQ",
+    "asset_type": "Stock",
+    "sector": "Information Technology",
+    "country": "United States",
+    "isin": "US0378331005",
+    "aliases": ["apple", "iphone", "tim cook"]
+  }
+]
+```
+
+### tickers.db (SQLite)
+
+```sql
+-- Find all tech stocks on NASDAQ
+SELECT ticker, name FROM tickers WHERE exchange = 'NASDAQ' AND sector = 'Information Technology';
+
+-- Look up a company by alias
+SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 'nvidia';
+
+-- Find ticker by ISIN
+SELECT * FROM tickers WHERE isin = 'US0378331005';
+```
+
+Tables: `tickers` (61,217 rows) + `aliases` (106,391 rows) with indexes on `alias`, `exchange`, `country`, `sector`, `isin`.
+
 ## Schema
+
+### tickers
 
 | Column | Type | Description |
 |---|---|---|
-| `ticker` | string (max 10) | Primary ticker symbol |
-| `name` | string (max 200) | Company / fund name |
-| `exchange` | string (max 20) | Exchange name (NYSE, NASDAQ, LSE, HKEX, etc.) |
+| `ticker` | string | Primary ticker symbol (max 10 chars) |
+| `name` | string | Company / fund name (max 200 chars) |
+| `exchange` | string | Exchange (NYSE, NASDAQ, LSE, HKEX, etc.) |
 | `asset_type` | string | `Stock` or `ETF` |
-| `aliases` | JSON array | ISINs, WKNs, company name aliases, alternate tickers |
-| `sector` | string (max 50) | GICS sector (e.g. Information Technology, Financials) |
-| `country` | string (max 50) | Country of incorporation |
+| `sector` | string | GICS sector (e.g. Information Technology) |
+| `country` | string | Country of incorporation |
+| `isin` | string | International Securities Identification Number |
+
+### aliases
+
+| Column | Type | Description |
+|---|---|---|
+| `ticker` | string | Foreign key to tickers |
+| `alias` | string | Alternative name, identifier, or keyword |
+| `alias_type` | string | `isin`, `wkn`, `name`, or `exchange_ticker` |
 
 ## Exchange Coverage
 
@@ -46,21 +132,7 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 61
 | ASX | 1,240 | Australian Securities Exchange |
 | KOSDAQ | 1,145 | Korean OTC |
 | BATS | 1,103 | Cboe BATS (ETFs) |
-| + 52 more | ... | See CSV for full list |
-
-## Data Sources
-
-- **[FinanceDatabase](https://github.com/JerBouma/FinanceDatabase)** - Sector classification, WKNs, additional ISINs
-- **Production data** from [api.adanos.org](https://api.adanos.org) - Curated aliases, company name variants
-
-## Alias Examples
-
-```
-AAPL -> ["US0378331005", "apple", "iphone", "tim cook"]
-TSLA -> ["US88160R1014", "tesla", "elon", "musk", "cybertruck", "model 3", "model y"]
-NVDA -> ["US67066G1040", "nvidia", "jensen", "gpu"]
-VOW  -> ["DE0007664039", "volkswagen", "vw"]
-```
+| + 52 more | ... | |
 
 ## Data Quality
 
@@ -71,19 +143,10 @@ VOW  -> ["DE0007664039", "volkswagen", "vw"]
 - Warrants, notes, bonds, and preferred stock debt instruments excluded
 - 10-pass automated quality validation
 
-## Usage
+## Data Sources
 
-```python
-import csv
-import json
-
-with open('tickers.csv') as f:
-    for row in csv.DictReader(f):
-        ticker = row['ticker']
-        name = row['name']
-        aliases = json.loads(row['aliases'])
-        print(f"{ticker}: {name} ({row['exchange']}) - aliases: {aliases}")
-```
+- **[FinanceDatabase](https://github.com/JerBouma/FinanceDatabase)** - Sector classification, WKNs, additional ISINs
+- **Production data** from [api.adanos.org](https://api.adanos.org) - Curated aliases, company name variants
 
 ## License
 
