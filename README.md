@@ -50,7 +50,6 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 61
 
 ## Data Sources
 
-- **[EODHD](https://eodhd.com)** - Ticker listings, ISINs, exchange data
 - **[FinanceDatabase](https://github.com/JerBouma/FinanceDatabase)** - Sector classification, WKNs, additional ISINs
 - **Production data** from [api.adanos.org](https://api.adanos.org) - Curated aliases, company name variants
 
