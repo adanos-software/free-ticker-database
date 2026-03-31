@@ -170,7 +170,7 @@ def test_readme_stats_and_claims_are_current():
     assert "| Stocks | 44,015 |" in readme
     assert "| ETFs | 16,094 |" in readme
     assert "| Countries | 67 |" in readme
-    assert "| Total aliases | 107,687 |" in readme
+    assert "| Total aliases | 107,074 |" in readme
     assert "| ISIN coverage | 45,773 (76.2%) |" in readme
     assert "| Sector coverage | 39,677 (66.0%) |" in readme
     assert "Zero common-word aliases" not in readme
@@ -195,3 +195,26 @@ def test_sectors_are_normalized():
     assert not overlap, f"Deprecated sector names still present: {overlap}"
     long = [r for r in rows if r["sector"] and len(r["sector"]) > 50]
     assert not long, f"Garbage sector values found: {[r['ticker'] for r in long]}"
+
+
+def test_no_short_or_ambiguous_name_aliases():
+    rows = load_csv("aliases.csv")
+    short_names = [r for r in rows if len(r["alias"]) <= 2 and r["alias_type"] == "name"]
+    assert not short_names, f"Short name aliases found: {[(r['ticker'], r['alias']) for r in short_names[:5]]}"
+
+
+def test_numeric_namespace_aliases_bypass_strict_company_matching():
+    from scripts.rebuild_dataset import clean_aliases
+
+    row = {
+        "ticker": "0050",
+        "name": "Yuanta Taiwan Top 50 ETF",
+        "exchange": "TWSE",
+        "asset_type": "ETF",
+        "country": "Taiwan",
+        "isin": "TW0000050004",
+    }
+
+    _, aliases = clean_aliases(row, ["0050"], set())
+
+    assert aliases == ["0050"]
