@@ -23,6 +23,7 @@ TICKERS_JSON = DATA_DIR / "tickers.json"
 TICKERS_PRETTY_JSON = DATA_DIR / "tickers.pretty.json"
 TICKERS_DB = DATA_DIR / "tickers.db"
 TICKERS_PARQUET = DATA_DIR / "tickers.parquet"
+CROSS_LISTINGS_CSV = DATA_DIR / "cross_listings.csv"
 MANUAL_ISIN_CORRECTIONS = {
     "AAPL": "US0378331005",
     "MSFT": "US5949181045",
@@ -636,7 +637,11 @@ def write_json(rows: list[dict[str, str]]):
     TICKERS_PRETTY_JSON.write_text(json.dumps(envelope, indent=2), encoding="utf-8")
 
 
-def write_db(rows: list[dict[str, str]], alias_rows: list[dict[str, str]]):
+def write_db(
+    rows: list[dict[str, str]],
+    alias_rows: list[dict[str, str]],
+    cross_listing_rows: list[dict[str, str]] | None = None,
+):
     if TICKERS_DB.exists():
         TICKERS_DB.unlink()
     conn = sqlite3.connect(TICKERS_DB)
@@ -663,10 +668,20 @@ def write_db(rows: list[dict[str, str]], alias_rows: list[dict[str, str]]):
                 FOREIGN KEY (ticker) REFERENCES tickers(ticker) ON DELETE CASCADE
             );
 
+            CREATE TABLE cross_listings (
+                isin TEXT NOT NULL,
+                ticker TEXT NOT NULL,
+                exchange TEXT NOT NULL,
+                is_primary INTEGER NOT NULL DEFAULT 0,
+                PRIMARY KEY (isin, ticker),
+                FOREIGN KEY (ticker) REFERENCES tickers(ticker) ON DELETE CASCADE
+            );
+
             CREATE INDEX idx_aliases_alias ON aliases(alias);
             CREATE INDEX idx_tickers_exchange ON tickers(exchange);
             CREATE INDEX idx_tickers_isin ON tickers(isin);
             CREATE INDEX idx_tickers_sector ON tickers(sector);
+            CREATE INDEX idx_cross_listings_isin ON cross_listings(isin);
             """
         )
         conn.executemany(
@@ -683,6 +698,14 @@ def write_db(rows: list[dict[str, str]], alias_rows: list[dict[str, str]]):
             """,
             alias_rows,
         )
+        if cross_listing_rows:
+            conn.executemany(
+                """
+                INSERT INTO cross_listings (isin, ticker, exchange, is_primary)
+                VALUES (:isin, :ticker, :exchange, :is_primary)
+                """,
+                cross_listing_rows,
+            )
         conn.commit()
     finally:
         conn.close()
@@ -708,10 +731,71 @@ def write_parquet(rows: list[dict[str, str]]):
     frame.to_parquet(TICKERS_PARQUET, index=False)
 
 
+# ---------------------------------------------------------------------------
+# Cross-listings
+# ---------------------------------------------------------------------------
+# Exchange-to-ISIN-prefix mapping for detecting "home" exchange.
+EXCHANGE_ISIN_PREFIX: dict[str, str] = {
+    "AMS": "NL", "ASX": "AU", "ATHEX": "GR", "B3": "BR", "BCBA": "AR",
+    "BME": "ES", "BMV": "MX", "BSE_BW": "BW", "BSE_HU": "HU", "BVB": "RO",
+    "BVL": "PT", "Bursa": "MY", "CPH": "DK", "CSE_LK": "LK", "CSE_MA": "MA",
+    "DSE_TZ": "TZ", "EGX": "EG", "Euronext": "FR", "GSE": "GH", "HEL": "FI",
+    "HOSE": "VN", "ICE_IS": "IS", "IDX": "ID", "ISE": "IE", "JSE": "ZA",
+    "KOSDAQ": "KR", "KRX": "KR", "LSE": "GB", "LUSE": "ZM", "MSE_MW": "MW",
+    "NASDAQ": "US", "NEO": "CA", "NGX": "NG", "NSE_KE": "KE",
+    "NYSE": "US", "NYSE ARCA": "US", "NYSE MKT": "US", "NYSEARCH": "US",
+    "OSL": "NO", "PSE": "PH", "PSE_CZ": "CZ", "PSX": "PK", "RSE": "RW",
+    "SEM": "MU", "SET": "TH", "SIX": "CH", "SSE": "CN", "SSE_CL": "CL",
+    "STO": "SE", "SZSE": "CN", "TASE": "IL", "TPEX": "TW", "TSX": "CA",
+    "TSXV": "CA", "TWSE": "TW", "USE_UG": "UG", "VSE": "AT", "WSE": "PL",
+    "XETRA": "DE", "ZSE": "HR", "ZSE_ZW": "ZW",
+}
+
+# Preference order: home exchange first, then major exchanges, then rest.
+EXCHANGE_RANK: dict[str, int] = {
+    "NYSE": 1, "NASDAQ": 2, "NYSE ARCA": 3, "LSE": 4, "XETRA": 5,
+    "Euronext Paris": 6, "Euronext Amsterdam": 7, "TSX": 8, "ASX": 9,
+    "HKEX": 10, "TSE": 11, "KRX": 12, "SSE": 13, "SZSE": 14, "B3": 15,
+}
+
+
+def build_cross_listings(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    """Build cross-listing groups for ISINs shared by multiple tickers."""
+    isin_groups: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for row in rows:
+        if row["isin"]:
+            isin_groups[row["isin"]].append(row)
+
+    result: list[dict[str, str]] = []
+    for isin, group in sorted(isin_groups.items()):
+        if len(group) < 2:
+            continue
+
+        def sort_key(r: dict[str, str]) -> tuple[int, int, str]:
+            exchange = r["exchange"]
+            # Home exchange gets rank 0
+            is_home = 1 if EXCHANGE_ISIN_PREFIX.get(exchange) == isin[:2] else 0
+            rank = EXCHANGE_RANK.get(exchange, 99)
+            return (-is_home, rank, r["ticker"])
+
+        group_sorted = sorted(group, key=sort_key)
+        primary = group_sorted[0]["ticker"]
+        for row in group_sorted:
+            result.append({
+                "isin": isin,
+                "ticker": row["ticker"],
+                "exchange": row["exchange"],
+                "is_primary": "1" if row["ticker"] == primary else "0",
+            })
+
+    return result
+
+
 def rebuild():
     rows, alias_type_lookup = cleaned_rows()
     alias_rows = build_alias_rows(rows, alias_type_lookup)
     identifier_rows = build_identifier_rows(rows)
+    cross_listing_rows = build_cross_listings(rows)
 
     write_csv(
         TICKERS_CSV,
@@ -733,8 +817,13 @@ def rebuild():
     )
     write_csv(ALIASES_CSV, ["ticker", "alias", "alias_type"], alias_rows)
     write_csv(IDENTIFIERS_CSV, ["ticker", "isin", "wkn"], identifier_rows)
+    write_csv(
+        CROSS_LISTINGS_CSV,
+        ["isin", "ticker", "exchange", "is_primary"],
+        cross_listing_rows,
+    )
     write_json(rows)
-    write_db(rows, alias_rows)
+    write_db(rows, alias_rows, cross_listing_rows)
     write_parquet(rows)
 
     stats = {
