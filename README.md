@@ -151,8 +151,8 @@ Tables: `tickers` (60,109 rows) + `aliases` (107,709 rows) with indexes on `alia
 
 ## License
 
-This database is provided free of charge for any purpose. The underlying data is sourced from public financial APIs. No warranty is provided regarding accuracy or completeness.
+MIT License. See [LICENSE](LICENSE) for details.
 
 ## Contributing
 
-Issues and pull requests are welcome. Please ensure any additions pass the 10-pass quality validation.
+Issues and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
