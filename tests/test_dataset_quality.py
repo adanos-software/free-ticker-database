@@ -167,8 +167,12 @@ def test_artifact_counts_match():
 def test_readme_stats_and_claims_are_current():
     readme = (ROOT / "README.md").read_text()
     assert "| **Total tickers** | 60,109 |" in readme
+    assert "| Stocks | 44,015 |" in readme
+    assert "| ETFs | 16,094 |" in readme
+    assert "| Countries | 67 |" in readme
     assert "| Total aliases | 107,687 |" in readme
     assert "| ISIN coverage | 45,773 (76.2%) |" in readme
+    assert "| Sector coverage | 39,677 (66.0%) |" in readme
     assert "Zero common-word aliases" not in readme
     assert "Warrants, notes, bonds, and preferred stock debt instruments excluded" not in readme
 
@@ -179,3 +183,15 @@ def test_all_isins_have_valid_checksum():
     rows = load_csv("tickers.csv")
     invalid = [(r["ticker"], r["isin"]) for r in rows if r["isin"] and not is_valid_isin(r["isin"])]
     assert not invalid, f"Invalid ISIN checksums: {invalid[:10]}"
+
+
+def test_sectors_are_normalized():
+    from scripts.rebuild_dataset import SECTOR_STOCK_MAP
+
+    rows = load_csv("tickers.csv")
+    deprecated = set(SECTOR_STOCK_MAP)
+    found = {r["sector"] for r in rows if r["sector"]}
+    overlap = found & deprecated
+    assert not overlap, f"Deprecated sector names still present: {overlap}"
+    long = [r for r in rows if r["sector"] and len(r["sector"]) > 50]
+    assert not long, f"Garbage sector values found: {[r['ticker'] for r in long]}"

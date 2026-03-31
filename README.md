@@ -7,12 +7,12 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 60
 | Metric | Value |
 |---|---|
 | **Total tickers** | 60,109 |
-| Stocks | 44,585 |
-| ETFs | 16,103 |
+| Stocks | 44,015 |
+| ETFs | 16,094 |
 | Exchanges | 67 |
-| Countries | 66 |
+| Countries | 67 |
 | ISIN coverage | 45,773 (76.2%) |
-| Sector coverage | 39,702 (66.1%) |
+| Sector coverage | 39,677 (66.0%) |
 | Total aliases | 107,687 |
 
 ## Formats
@@ -142,6 +142,7 @@ Tables: `tickers` (60,109 rows) + `aliases` (107,709 rows) with indexes on `alia
 - All field lengths within database constraints
 - Rights, units, warrants, notes, and preferred/depositary issues filtered from the stock universe
 - ISIN-based country corrections applied for foreign OTC rows
+- Sector names normalized to canonical GICS sectors (stocks) and standardized ETF categories
 - ISIN check digits validated via Luhn algorithm; invalid ISINs removed
 
 ## Data Sources

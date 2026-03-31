@@ -3,7 +3,7 @@
 ## Unreleased
 
 - Initial public release
-- 60,109 tickers (44,015 stocks, 16,094 ETFs) across 67 exchanges and 66 countries
+- 60,109 tickers (44,015 stocks, 16,094 ETFs) across 67 exchanges and 67 countries
 - Output formats: CSV, JSON, Parquet, SQLite
 - 107,709 aliases with type classification (ISIN, WKN, name, exchange_ticker)
 - ISIN coverage: 76.2%
