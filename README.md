@@ -11,9 +11,9 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 60
 | ETFs | 16,103 |
 | Exchanges | 67 |
 | Countries | 66 |
-| ISIN coverage | 45,795 (76.2%) |
-| Sector coverage | 40,102 (66.1%) |
-| Total aliases | 107,709 |
+| ISIN coverage | 45,773 (76.2%) |
+| Sector coverage | 39,702 (66.1%) |
+| Total aliases | 107,687 |
 
 ## Formats
 
@@ -142,6 +142,7 @@ Tables: `tickers` (60,109 rows) + `aliases` (107,709 rows) with indexes on `alia
 - All field lengths within database constraints
 - Rights, units, warrants, notes, and preferred/depositary issues filtered from the stock universe
 - ISIN-based country corrections applied for foreign OTC rows
+- ISIN check digits validated via Luhn algorithm; invalid ISINs removed
 
 ## Data Sources
 
