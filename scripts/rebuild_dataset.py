@@ -167,6 +167,30 @@ ISIN_PREFIX_COUNTRIES = {
 }
 
 
+ISIN_FORMAT_RE = re.compile(r"^[A-Z]{2}[A-Z0-9]{9}[0-9]$")
+
+
+def is_valid_isin(isin: str) -> bool:
+    """Validate ISIN format and Luhn check digit."""
+    if not isin or not ISIN_FORMAT_RE.fullmatch(isin):
+        return False
+    digits = ""
+    for char in isin[:-1]:
+        if char.isdigit():
+            digits += char
+        else:
+            digits += str(ord(char) - 55)
+    total = 0
+    for i, digit in enumerate(reversed(digits)):
+        n = int(digit)
+        if i % 2 == 0:
+            n *= 2
+            if n > 9:
+                n -= 9
+        total += n
+    return (10 - (total % 10)) % 10 == int(isin[-1])
+
+
 def split_aliases(value: str) -> list[str]:
     if not value:
         return []
@@ -336,6 +360,9 @@ def clean_aliases(
 
     if suspicious_us_primary:
         cleaned_isin = MANUAL_ISIN_CORRECTIONS.get(row["ticker"], "")
+
+    if cleaned_isin and not is_valid_isin(cleaned_isin):
+        cleaned_isin = ""
 
     return cleaned_isin, dedupe_keep_order(cleaned_aliases)
 

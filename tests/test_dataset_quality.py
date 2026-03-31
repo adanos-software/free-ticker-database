@@ -167,7 +167,15 @@ def test_artifact_counts_match():
 def test_readme_stats_and_claims_are_current():
     readme = (ROOT / "README.md").read_text()
     assert "| **Total tickers** | 60,109 |" in readme
-    assert "| Total aliases | 107,709 |" in readme
-    assert "| ISIN coverage | 45,795 (76.2%) |" in readme
+    assert "| Total aliases | 107,687 |" in readme
+    assert "| ISIN coverage | 45,773 (76.2%) |" in readme
     assert "Zero common-word aliases" not in readme
     assert "Warrants, notes, bonds, and preferred stock debt instruments excluded" not in readme
+
+
+def test_all_isins_have_valid_checksum():
+    from scripts.rebuild_dataset import is_valid_isin
+
+    rows = load_csv("tickers.csv")
+    invalid = [(r["ticker"], r["isin"]) for r in rows if r["isin"] and not is_valid_isin(r["isin"])]
+    assert not invalid, f"Invalid ISIN checksums: {invalid[:10]}"
