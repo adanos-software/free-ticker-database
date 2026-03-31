@@ -5,6 +5,7 @@ import json
 import re
 import sqlite3
 from collections import defaultdict
+from functools import lru_cache
 from pathlib import Path
 from typing import Iterable
 
@@ -183,6 +184,7 @@ def dedupe_keep_order(values: Iterable[str]) -> list[str]:
     return result
 
 
+@lru_cache(maxsize=None)
 def normalize_tokens(value: str) -> set[str]:
     tokens = set(re.findall(r"[a-z0-9]+", value.lower()))
     return {token for token in tokens if len(token) > 1 and token not in COMPANY_STOPWORDS}
@@ -205,6 +207,7 @@ def has_wrapper_term(value: str) -> bool:
     return any(token in lowered for token in BAD_WRAPPER_TOKENS)
 
 
+@lru_cache(maxsize=None)
 def normalized_compact(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", "", value.lower())
 
@@ -239,7 +242,7 @@ def is_namespace_collision_row(
     if not is_strict_numeric_namespace_row(row):
         return False
 
-    isin = row["isin"]
+    isin = MANUAL_ISIN_CORRECTIONS.get(row["ticker"], row["isin"])
     if not isin:
         return False
 
