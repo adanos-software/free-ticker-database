@@ -61,19 +61,28 @@ VOW,DE0007664039,766403
 ### tickers.json
 
 ```json
-[
-  {
-    "ticker": "KO",
-    "name": "The Coca-Cola Company",
-    "exchange": "NYSE",
-    "asset_type": "Stock",
-    "sector": "Consumer Staples",
-    "country": "United States",
-    "isin": "US1912161007",
-    "aliases": ["191216", "coca-cola", "850663"]
-  }
-]
+{
+  "_meta": {
+    "version": "2.0.0",
+    "built_at": "2026-03-31T00:00:00Z",
+    "total_tickers": 60109
+  },
+  "tickers": [
+    {
+      "ticker": "KO",
+      "name": "The Coca-Cola Company",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "sector": "Consumer Staples",
+      "country": "United States",
+      "isin": "US1912161007",
+      "aliases": ["191216", "coca-cola", "850663"]
+    }
+  ]
+}
 ```
+
+JSON outputs use an envelope with a `_meta` block and a `tickers` array as of version `2.0.0`.
 
 ### tickers.db (SQLite)
 

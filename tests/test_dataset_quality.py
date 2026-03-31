@@ -153,6 +153,10 @@ def test_artifact_counts_match():
     compact_json = json.loads((DATA_DIR / "tickers.json").read_text())
     pretty_json = json.loads((DATA_DIR / "tickers.pretty.json").read_text())
 
+    # Support both envelope {"_meta": ..., "tickers": [...]} and flat [...] format
+    compact_tickers = compact_json["tickers"] if isinstance(compact_json, dict) else compact_json
+    pretty_tickers = pretty_json["tickers"] if isinstance(pretty_json, dict) else pretty_json
+
     conn = sqlite3.connect(DATA_DIR / "tickers.db")
     try:
         db_tickers = conn.execute("SELECT COUNT(*) FROM tickers").fetchone()[0]
@@ -160,7 +164,7 @@ def test_artifact_counts_match():
     finally:
         conn.close()
 
-    assert len(tickers_csv) == len(compact_json) == len(pretty_json) == db_tickers
+    assert len(tickers_csv) == len(compact_tickers) == len(pretty_tickers) == db_tickers
     assert len(aliases_csv) == db_aliases
 
 
@@ -218,3 +222,14 @@ def test_numeric_namespace_aliases_bypass_strict_company_matching():
     _, aliases = clean_aliases(row, ["0050"], set())
 
     assert aliases == ["0050"]
+
+
+def test_json_contains_version_metadata():
+    data = json.loads((DATA_DIR / "tickers.json").read_text())
+    assert isinstance(data, dict), "JSON should be an envelope object"
+    assert "_meta" in data, "JSON should contain _meta key"
+    meta = data["_meta"]
+    assert "version" in meta
+    assert "built_at" in meta
+    assert "total_tickers" in meta
+    assert meta["total_tickers"] == len(data["tickers"])
