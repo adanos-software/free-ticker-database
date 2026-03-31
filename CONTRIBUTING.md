@@ -7,7 +7,7 @@ Thanks for your interest in improving the Free Global Ticker Database!
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feat/my-change`)
 3. Make your changes
-4. Run the quality tests: `python -m pytest tests/ -v`
+4. Run the quality tests: `python -m pytest tests/ -q`
 5. If you changed data or the build script, rebuild: `python scripts/rebuild_dataset.py`
 6. Verify the rebuild is clean: `git diff data/`
 7. Commit and open a Pull Request
@@ -28,5 +28,5 @@ If you find incorrect data (wrong ISIN, misclassified sector, bad alias), please
 ## Code style
 
 - Python 3.10+
-- No external dependencies beyond `pandas`, `pyarrow`, and `pytest`
+- Keep runtime dependencies limited to `pandas`, `pyarrow`, `pytest`, and `requests`
 - Keep the build script self-contained in a single file
