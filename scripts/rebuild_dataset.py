@@ -270,6 +270,33 @@ def is_valid_isin(isin: str) -> bool:
         total += n
     return (10 - (total % 10)) % 10 == int(isin[-1])
 
+# Countries present in the dataset that are not covered by the ISIN prefix
+# table and therefore need an explicit ISO 3166-1 alpha-2 mapping.
+COUNTRY_TO_ISO_EXTRA: dict[str, str] = {
+    "Argentina": "AR",
+    "Botswana": "BW",
+    "Croatia": "HR",
+    "Ghana": "GH",
+    "Iceland": "IS",
+    "Kenya": "KE",
+    "Malawi": "MW",
+    "Mauritius": "MU",
+    "Morocco": "MA",
+    "Nigeria": "NG",
+    "Pakistan": "PK",
+    "Rwanda": "RW",
+    "Sri Lanka": "LK",
+    "Tanzania": "TZ",
+    "Uganda": "UG",
+    "United States": "US",
+    "Vietnam": "VN",
+    "Zambia": "ZM",
+    "Zimbabwe": "ZW",
+}
+
+COUNTRY_TO_ISO: dict[str, str] = {
+    country: code for code, country in ISIN_PREFIX_COUNTRIES.items()
+} | COUNTRY_TO_ISO_EXTRA
 
 def split_aliases(value: str) -> list[str]:
     if not value:
@@ -524,6 +551,7 @@ def cleaned_rows():
                 "asset_type": row["asset_type"],
                 "sector": normalize_sector(row["sector"], row["asset_type"]),
                 "country": country,
+                "country_code": COUNTRY_TO_ISO.get(country, ""),
                 "isin": isin,
                 "aliases": aliases,
                 "wkn": identifier.get("wkn", ""),
@@ -594,6 +622,7 @@ def write_json(rows: list[dict[str, str]]):
             "asset_type": row["asset_type"],
             "sector": row["sector"],
             "country": row["country"],
+            "country_code": row["country_code"],
             "isin": row["isin"],
             "aliases": row["aliases"],
         }
@@ -622,6 +651,7 @@ def write_db(rows: list[dict[str, str]], alias_rows: list[dict[str, str]]):
                 asset_type TEXT NOT NULL,
                 sector TEXT DEFAULT '',
                 country TEXT DEFAULT '',
+                country_code TEXT DEFAULT '',
                 isin TEXT DEFAULT ''
             );
 
@@ -641,8 +671,8 @@ def write_db(rows: list[dict[str, str]], alias_rows: list[dict[str, str]]):
         )
         conn.executemany(
             """
-            INSERT INTO tickers (ticker, name, exchange, asset_type, sector, country, isin)
-            VALUES (:ticker, :name, :exchange, :asset_type, :sector, :country, :isin)
+            INSERT INTO tickers (ticker, name, exchange, asset_type, sector, country, country_code, isin)
+            VALUES (:ticker, :name, :exchange, :asset_type, :sector, :country, :country_code, :isin)
             """,
             rows,
         )
@@ -668,6 +698,7 @@ def write_parquet(rows: list[dict[str, str]]):
                 "asset_type": row["asset_type"],
                 "sector": row["sector"],
                 "country": row["country"],
+                "country_code": row["country_code"],
                 "isin": row["isin"],
                 "aliases": row["aliases"],
             }
@@ -684,7 +715,7 @@ def rebuild():
 
     write_csv(
         TICKERS_CSV,
-        ["ticker", "name", "exchange", "asset_type", "sector", "country", "isin", "aliases"],
+        ["ticker", "name", "exchange", "asset_type", "sector", "country", "country_code", "isin", "aliases"],
         (
             {
                 "ticker": row["ticker"],
@@ -693,6 +724,7 @@ def rebuild():
                 "asset_type": row["asset_type"],
                 "sector": row["sector"],
                 "country": row["country"],
+                "country_code": row["country_code"],
                 "isin": row["isin"],
                 "aliases": "|".join(row["aliases"]),
             }

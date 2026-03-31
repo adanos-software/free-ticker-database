@@ -233,3 +233,9 @@ def test_json_contains_version_metadata():
     assert "built_at" in meta
     assert "total_tickers" in meta
     assert meta["total_tickers"] == len(data["tickers"])
+
+
+def test_country_codes_are_populated_for_all_named_countries():
+    rows = load_csv("tickers.csv")
+    missing = [r["ticker"] for r in rows if r["country"] and not r["country_code"]]
+    assert not missing, f"Tickers missing country_code: {missing[:10]}"

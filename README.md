@@ -31,9 +31,9 @@ Choose the format that fits your use case:
 ### tickers.csv (flat, Excel-friendly)
 
 ```
-ticker,name,exchange,asset_type,sector,country,isin,aliases
-KO,The Coca-Cola Company,NYSE,Stock,Consumer Staples,United States,US1912161007,191216|coca-cola|850663
-LPP,LPP S.A.,WSE,Stock,Consumer Cyclical,Poland,PLLPP0000011,lpp|cropp|121065
+ticker,name,exchange,asset_type,sector,country,country_code,isin,aliases
+KO,The Coca-Cola Company,NYSE,Stock,Consumer Staples,United States,US,US1912161007,191216|coca-cola|850663
+LPP,LPP S.A.,WSE,Stock,Consumer Cyclical,Poland,PL,PLLPP0000011,lpp|cropp|121065
 ```
 
 ISIN is a dedicated column. Aliases are pipe-separated (`|`) for easy splitting.
@@ -75,6 +75,7 @@ VOW,DE0007664039,766403
       "asset_type": "Stock",
       "sector": "Consumer Staples",
       "country": "United States",
+      "country_code": "US",
       "isin": "US1912161007",
       "aliases": ["191216", "coca-cola", "850663"]
     }
@@ -111,6 +112,7 @@ Tables: `tickers` (60,109 rows) + `aliases` (107,074 rows) with indexes on `alia
 | `asset_type` | string | `Stock` or `ETF` |
 | `sector` | string | GICS sector (e.g. Information Technology) |
 | `country` | string | Country of incorporation |
+| `country_code` | string | ISO 3166-1 alpha-2 code (e.g. US, DE, GB) |
 | `isin` | string | International Securities Identification Number |
 
 ### aliases
