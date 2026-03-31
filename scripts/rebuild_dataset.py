@@ -5,6 +5,7 @@ import json
 import re
 import sqlite3
 from collections import defaultdict
+from datetime import datetime, timezone
 from functools import lru_cache
 from pathlib import Path
 from typing import Iterable
@@ -571,7 +572,20 @@ def write_csv(path: Path, fieldnames: list[str], rows: Iterable[dict[str, str]])
         writer.writerows(rows)
 
 
+VERSION_FILE = ROOT / "VERSION"
+
+
+@lru_cache(maxsize=None)
+def get_version() -> str:
+    return VERSION_FILE.read_text(encoding="utf-8").strip()
+
+
 def write_json(rows: list[dict[str, str]]):
+    meta = {
+        "version": get_version(),
+        "built_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "total_tickers": len(rows),
+    }
     payload = [
         {
             "ticker": row["ticker"],
@@ -585,8 +599,12 @@ def write_json(rows: list[dict[str, str]]):
         }
         for row in rows
     ]
-    TICKERS_JSON.write_text(json.dumps(payload, separators=(",", ":")))
-    TICKERS_PRETTY_JSON.write_text(json.dumps(payload, indent=2))
+    envelope = {"_meta": meta, "tickers": payload}
+    TICKERS_JSON.write_text(
+        json.dumps(envelope, separators=(",", ":")),
+        encoding="utf-8",
+    )
+    TICKERS_PRETTY_JSON.write_text(json.dumps(envelope, indent=2), encoding="utf-8")
 
 
 def write_db(rows: list[dict[str, str]], alias_rows: list[dict[str, str]]):
