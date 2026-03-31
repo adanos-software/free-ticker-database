@@ -1,19 +1,19 @@
 # Free Global Ticker Database
 
-A comprehensive, free-to-use stock and ETF ticker reference database covering 61,000+ securities across 67 exchanges and 56 countries.
+A comprehensive, free-to-use stock and ETF ticker reference database covering 60,000+ securities across 67 exchanges and 66 countries.
 
 ## Stats
 
 | Metric | Value |
 |---|---|
-| **Total tickers** | 61,217 |
-| Stocks | 45,114 |
+| **Total tickers** | 60,688 |
+| Stocks | 44,585 |
 | ETFs | 16,103 |
 | Exchanges | 67 |
-| Countries | 56 |
-| ISIN coverage | 44,265 (72.3%) |
-| Sector coverage | 32,809 (53.6%) |
-| Total aliases | 106,391 |
+| Countries | 66 |
+| ISIN coverage | 46,307 (76.3%) |
+| Sector coverage | 40,102 (66.1%) |
+| Total aliases | 109,176 |
 
 ## Formats
 
@@ -21,19 +21,19 @@ Choose the format that fits your use case:
 
 | File | Size | Best for |
 |---|---|---|
-| [`data/tickers.csv`](data/tickers.csv) | 5.3 MB | Excel, spreadsheets, quick lookups |
-| [`data/tickers.json`](data/tickers.json) | 10.4 MB | Web apps, APIs |
-| [`data/tickers.parquet`](data/tickers.parquet) | 2.4 MB | Pandas, data science |
-| [`data/tickers.db`](data/tickers.db) | 19.0 MB | SQL queries, local apps |
-| [`data/aliases.csv`](data/aliases.csv) | 2.6 MB | Alias/name resolution |
-| [`data/identifiers.csv`](data/identifiers.csv) | 911 KB | ISIN/WKN lookups |
+| [`data/tickers.csv`](data/tickers.csv) | 5.5 MB | Excel, spreadsheets, quick lookups |
+| [`data/tickers.json`](data/tickers.json) | 11.0 MB | Web apps, APIs |
+| [`data/tickers.parquet`](data/tickers.parquet) | 2.7 MB | Pandas, data science |
+| [`data/tickers.db`](data/tickers.db) | 18.3 MB | SQL queries, local apps |
+| [`data/aliases.csv`](data/aliases.csv) | 2.8 MB | Alias/name resolution |
+| [`data/identifiers.csv`](data/identifiers.csv) | 1.1 MB | ISIN/WKN lookups |
 
 ### tickers.csv (flat, Excel-friendly)
 
 ```
 ticker,name,exchange,asset_type,sector,country,isin,aliases
-AAPL,Apple Inc,NASDAQ,Stock,Information Technology,United States,US0378331005,apple|iphone|tim cook
-TSLA,Tesla Inc,NASDAQ,Stock,Consumer Discretionary,United States,US88160R1014,tesla|elon|musk|cybertruck
+KO,The Coca-Cola Company,NYSE,Stock,Consumer Staples,United States,US1912161007,191216|coca-cola|850663
+LPP,LPP S.A.,WSE,Stock,Consumer Cyclical,Poland,PLLPP0000011,lpp|cropp|121065
 ```
 
 ISIN is a dedicated column. Aliases are pipe-separated (`|`) for easy splitting.
@@ -42,9 +42,8 @@ ISIN is a dedicated column. Aliases are pipe-separated (`|`) for easy splitting.
 
 ```
 ticker,alias,alias_type
-AAPL,US0378331005,isin
-AAPL,apple,name
-AAPL,iphone,name
+KO,US1912161007,isin
+KO,coca-cola,name
 NVDA,918422,wkn
 ```
 
@@ -54,7 +53,7 @@ Types: `isin`, `wkn`, `name`, `exchange_ticker`
 
 ```
 ticker,isin,wkn
-AAPL,US0378331005,
+KO,US1912161007,191216
 NVDA,US67066G1040,918422
 VOW,DE0007664039,766403
 ```
@@ -64,14 +63,14 @@ VOW,DE0007664039,766403
 ```json
 [
   {
-    "ticker": "AAPL",
-    "name": "Apple Inc",
-    "exchange": "NASDAQ",
+    "ticker": "KO",
+    "name": "The Coca-Cola Company",
+    "exchange": "NYSE",
     "asset_type": "Stock",
-    "sector": "Information Technology",
+    "sector": "Consumer Staples",
     "country": "United States",
-    "isin": "US0378331005",
-    "aliases": ["apple", "iphone", "tim cook"]
+    "isin": "US1912161007",
+    "aliases": ["191216", "coca-cola", "850663"]
   }
 ]
 ```
@@ -86,10 +85,10 @@ SELECT ticker, name FROM tickers WHERE exchange = 'NASDAQ' AND sector = 'Informa
 SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 'nvidia';
 
 -- Find ticker by ISIN
-SELECT * FROM tickers WHERE isin = 'US0378331005';
+SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (61,217 rows) + `aliases` (106,391 rows) with indexes on `alias`, `exchange`, `country`, `sector`, `isin`.
+Tables: `tickers` (60,688 rows) + `aliases` (109,176 rows) with indexes on `alias`, `exchange`, `country`, `sector`, `isin`.
 
 ## Schema
 
@@ -117,31 +116,32 @@ Tables: `tickers` (61,217 rows) + `aliases` (106,391 rows) with indexes on `alia
 
 | Exchange | Tickers | Description |
 |---|---|---|
-| OTC | 11,444 | US OTC / Pink Sheets |
-| LSE | 6,432 | London Stock Exchange |
-| NASDAQ | 5,084 | NASDAQ |
+| OTC | 11,407 | US OTC / Pink Sheets |
+| LSE | 6,430 | London Stock Exchange |
+| NASDAQ | 4,914 | NASDAQ |
 | SZSE | 3,096 | Shenzhen Stock Exchange |
-| NYSE | 3,007 | New York Stock Exchange |
 | XETRA | 2,951 | Deutsche Boerse |
 | SSE | 2,811 | Shanghai Stock Exchange |
+| NYSE | 2,736 | New York Stock Exchange |
 | NYSE ARCA | 2,619 | NYSE ARCA (ETFs) |
-| KRX | 2,401 | Korea Exchange |
-| TSX | 1,925 | Toronto Stock Exchange |
+| KRX | 2,395 | Korea Exchange |
+| TSX | 1,915 | Toronto Stock Exchange |
 | B3 | 1,773 | Sao Paulo Exchange |
-| TWSE | 1,313 | Taiwan Stock Exchange |
-| ASX | 1,240 | Australian Securities Exchange |
+| TWSE | 1,312 | Taiwan Stock Exchange |
+| ASX | 1,237 | Australian Securities Exchange |
+| TPEX | 1,205 | Taipei Exchange |
 | KOSDAQ | 1,145 | Korean OTC |
-| BATS | 1,103 | Cboe BATS (ETFs) |
 | + 52 more | ... | |
 
 ## Data Quality
 
 - Zero duplicate tickers
-- Zero common-word aliases (no "gold", "iron", "shell", etc. as standalone aliases)
+- Exact duplicate alias rows removed
+- Conservative filtering for obvious common-word, wrapper, celebrity, and product aliases
 - Zero junk aliases ("Not Available", "N/A", etc.)
 - All field lengths within database constraints
-- Warrants, notes, bonds, and preferred stock debt instruments excluded
-- 10-pass automated quality validation
+- Rights, units, warrants, notes, and preferred/depositary issues filtered from the stock universe
+- ISIN-based country corrections applied for foreign OTC rows
 
 ## Data Sources
 
