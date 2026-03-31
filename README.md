@@ -27,6 +27,7 @@ Choose the format that fits your use case:
 | [`data/tickers.db`](data/tickers.db) | 18.9 MB | SQL queries, local apps |
 | [`data/aliases.csv`](data/aliases.csv) | 2.8 MB | Alias/name resolution |
 | [`data/identifiers.csv`](data/identifiers.csv) | 1.1 MB | ISIN/WKN lookups |
+| [`data/cross_listings.csv`](data/cross_listings.csv) | 0.3 MB | Cross-listed securities |
 
 ### tickers.csv (flat, Excel-friendly)
 
@@ -57,6 +58,17 @@ KO,US1912161007,191216
 NVDA,US67066G1040,918422
 VOW,DE0007664039,766403
 ```
+
+### cross_listings.csv (multi-exchange securities)
+
+```
+isin,ticker,exchange,is_primary
+AN8068571086,SLB,NYSE,1
+AN8068571086,SLBG34,B3,0
+AN8068571086,SLBN,BMV,0
+```
+
+Securities traded on multiple exchanges share the same ISIN. The `is_primary` flag marks the home-exchange listing (based on ISIN country prefix and exchange ranking).
 
 ### tickers.json
 
@@ -98,7 +110,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (60,109 rows) + `aliases` (107,074 rows) with indexes on `alias`, `exchange`, `country`, `sector`, `isin`.
+Tables: `tickers` (60,109 rows) + `aliases` (107,074 rows) + `cross_listings` (10,443 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
 
 ## Schema
 

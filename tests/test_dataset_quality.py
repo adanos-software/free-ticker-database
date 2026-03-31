@@ -239,3 +239,29 @@ def test_country_codes_are_populated_for_all_named_countries():
     rows = load_csv("tickers.csv")
     missing = [r["ticker"] for r in rows if r["country"] and not r["country_code"]]
     assert not missing, f"Tickers missing country_code: {missing[:10]}"
+
+
+def test_cross_listings_each_isin_has_exactly_one_primary():
+    rows = load_csv("cross_listings.csv")
+    from collections import Counter
+
+    primary_counts = Counter(
+        r["isin"] for r in rows if r["is_primary"] == "1"
+    )
+    isins = {r["isin"] for r in rows}
+    missing = isins - set(primary_counts)
+    assert not missing, f"ISINs without primary: {list(missing)[:5]}"
+    multi = {k: v for k, v in primary_counts.items() if v > 1}
+    assert not multi, f"ISINs with multiple primaries: {list(multi)[:5]}"
+
+
+def test_cross_listings_sqlite_table_matches_csv_rows():
+    csv_rows = load_csv("cross_listings.csv")
+
+    conn = sqlite3.connect(DATA_DIR / "tickers.db")
+    try:
+        db_rows = conn.execute("SELECT COUNT(*) FROM cross_listings").fetchone()[0]
+    finally:
+        conn.close()
+
+    assert db_rows == len(csv_rows)
