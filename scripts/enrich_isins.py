@@ -12,11 +12,11 @@ Set OPENFIGI_API_KEY env var for higher rate limits.
 """
 from __future__ import annotations
 
+import argparse
 import csv
-import json
 import os
 import re
-import sys
+import tempfile
 import time
 from pathlib import Path
 
@@ -115,22 +115,54 @@ def extract_isin(result: dict) -> str | None:
     return None
 
 
-def main():
-    apply = "--apply" in sys.argv
-    exchange_filter = None
-    if "--exchange" in sys.argv:
-        idx = sys.argv.index("--exchange")
-        exchange_filter = sys.argv[idx + 1] if idx + 1 < len(sys.argv) else None
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Enrich missing ISINs in data/tickers.csv using the OpenFIGI API.",
+    )
+    parser.add_argument(
+        "--apply",
+        action="store_true",
+        help="Write enriched ISINs back to data/tickers.csv",
+    )
+    parser.add_argument(
+        "--exchange",
+        help="Only enrich rows for a specific exchange code",
+    )
+    return parser.parse_args(argv)
 
-    with TICKERS_CSV.open(newline="") as f:
-        rows = list(csv.DictReader(f))
+
+def write_rows_atomic(path: Path, fieldnames: list[str], rows: list[dict[str, str]]) -> None:
+    with tempfile.NamedTemporaryFile(
+        "w",
+        newline="",
+        delete=False,
+        dir=path.parent,
+    ) as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+        temp_path = Path(handle.name)
+    temp_path.replace(path)
+
+
+def main(argv: list[str] | None = None):
+    args = parse_args(argv)
+
+    with TICKERS_CSV.open(newline="", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        fieldnames = list(reader.fieldnames or [])
+        rows = list(reader)
+
+    if not rows or not fieldnames:
+        print(f"No rows found in {TICKERS_CSV}")
+        return
 
     # Find rows missing ISIN that we can look up
     candidates = []
     for i, row in enumerate(rows):
         if row["isin"]:
             continue
-        if exchange_filter and row["exchange"] != exchange_filter:
+        if args.exchange and row["exchange"] != args.exchange:
             continue
         figi_exchange = EXCHANGE_TO_FIGI.get(row["exchange"])
         if not figi_exchange:
@@ -164,22 +196,18 @@ def main():
             if isin:
                 rows[row_idx]["isin"] = isin
                 enriched += 1
-                if not apply:
+                if not args.apply:
                     print(f"    {row['ticker']} ({row['exchange']}): -> {isin}")
 
         time.sleep(delay)
 
     print(f"\nEnriched {enriched} ISINs out of {len(candidates)} candidates")
 
-    if apply and enriched > 0:
-        fieldnames = list(rows[0].keys())
-        with TICKERS_CSV.open("w", newline="") as f:
-            writer = csv.DictWriter(f, fieldnames=fieldnames)
-            writer.writeheader()
-            writer.writerows(rows)
+    if args.apply and enriched > 0:
+        write_rows_atomic(TICKERS_CSV, fieldnames, rows)
         print(f"Written to {TICKERS_CSV}")
         print("Run 'python scripts/rebuild_dataset.py' to regenerate all formats.")
-    elif not apply and enriched > 0:
+    elif not args.apply and enriched > 0:
         print("\nDry run. Use --apply to write changes.")
 
 
