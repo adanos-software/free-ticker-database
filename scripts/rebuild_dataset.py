@@ -166,6 +166,85 @@ ISIN_PREFIX_COUNTRIES = {
     "ZA": "South Africa",
 }
 
+# ---------------------------------------------------------------------------
+# Sector normalisation
+# ---------------------------------------------------------------------------
+# Maps variant names to canonical GICS sector names (for stocks) or
+# canonical ETF category names.  Anything not listed here and longer than
+# 50 characters is treated as garbage and cleared.
+
+SECTOR_STOCK_MAP: dict[str, str] = {
+    # GICS synonyms
+    "Healthcare": "Health Care",
+    "Technology": "Information Technology",
+    "Basic Materials": "Materials",
+    "Consumer Cyclical": "Consumer Discretionary",
+    "Consumer Defensive": "Consumer Staples",
+    "Financial Services": "Financials",
+    "Communications": "Communication Services",
+    "Commercial Real Estate": "Real Estate",
+    "Residential Real Estate": "Real Estate",
+    "REITs": "Real Estate",
+}
+
+# Canonical GICS sectors (for stocks)
+VALID_STOCK_SECTORS: set[str] = {
+    "Communication Services",
+    "Consumer Discretionary",
+    "Consumer Staples",
+    "Energy",
+    "Financials",
+    "Health Care",
+    "Industrials",
+    "Information Technology",
+    "Materials",
+    "Real Estate",
+    "Utilities",
+}
+
+# ETF-specific categories that are valid as-is
+VALID_ETF_SECTORS: set[str] = VALID_STOCK_SECTORS | {
+    "Blend",
+    "Bonds",
+    "Cash",
+    "Commodities Broad Basket",
+    "Corporate Bonds",
+    "Currencies",
+    "Derivatives",
+    "Developed Markets",
+    "Emerging Markets",
+    "Equities",
+    "Factors",
+    "Fixed Income",
+    "Frontier Markets",
+    "Government Bonds",
+    "Growth",
+    "High Yield Bonds",
+    "Inflation-Protected Securities",
+    "Investment Grade Bonds",
+    "Large Cap",
+    "Mid Cap",
+    "Micro Cap",
+    "Money Market Instruments",
+    "Municipal Bonds",
+    "Small Cap",
+    "Trading",
+    "Treasury Bonds",
+    "Value",
+}
+
+
+def normalize_sector(sector: str, asset_type: str) -> str:
+    """Return a canonical sector string, or '' if the value is garbage."""
+    if not sector or len(sector) > 50:
+        return ""
+    mapped = SECTOR_STOCK_MAP.get(sector, sector)
+    if asset_type == "ETF":
+        return mapped if mapped in VALID_ETF_SECTORS else ""
+    if asset_type == "Stock":
+        return mapped if mapped in VALID_STOCK_SECTORS else ""
+    return ""
+
 
 ISIN_FORMAT_RE = re.compile(r"^[A-Z]{2}[A-Z0-9]{9}[0-9]$")
 
@@ -433,7 +512,7 @@ def cleaned_rows():
                 "name": row["name"],
                 "exchange": row["exchange"],
                 "asset_type": row["asset_type"],
-                "sector": row["sector"],
+                "sector": normalize_sector(row["sector"], row["asset_type"]),
                 "country": country,
                 "isin": isin,
                 "aliases": aliases,
