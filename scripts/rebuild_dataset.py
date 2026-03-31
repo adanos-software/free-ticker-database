@@ -5,6 +5,7 @@ import json
 import re
 import sqlite3
 from collections import defaultdict
+from functools import lru_cache
 from pathlib import Path
 from typing import Iterable
 
@@ -63,13 +64,17 @@ BAD_US_PRIMARY_ALIASES = {
 }
 US_EXCHANGES = {"NASDAQ", "NYSE", "NYSE ARCA", "NYSE MKT", "BATS"}
 OTC_EXCHANGES = {"OTC", "OTCCE", "OTCMKTS"}
+STRICT_NUMERIC_NAMESPACE_EXCHANGES = {"Bursa", "KOSDAQ", "KRX", "TPEX", "TWSE"}
 EXCHANGE_TICKER_RE = re.compile(r"^[A-Z0-9-]+\.[A-Z]{1,6}$")
 IDENTIFIER_RE = re.compile(r"^[A-Z0-9]{5,12}$")
+NUMERIC_TICKER_RE = re.compile(r"^[0-9]{3,6}[A-Z]?$")
 NON_COMMON_PATTERNS = (
     re.compile(r"\brights?\b", re.IGNORECASE),
     re.compile(r"\bunits?\b", re.IGNORECASE),
     re.compile(r"\bwarrants?\b", re.IGNORECASE),
     re.compile(r"\bnotes?\b", re.IGNORECASE),
+    re.compile(r"\bpref(?:erence)?(?:\s+sh(?:ares?)?)?\b", re.IGNORECASE),
+    re.compile(r"\bpfd\b", re.IGNORECASE),
 )
 PREFERRED_PATTERN = re.compile(r"\bpreferred\b", re.IGNORECASE)
 DEPOSITARY_PATTERN = re.compile(r"\bdepositary shares?\b", re.IGNORECASE)
@@ -179,6 +184,7 @@ def dedupe_keep_order(values: Iterable[str]) -> list[str]:
     return result
 
 
+@lru_cache(maxsize=None)
 def normalize_tokens(value: str) -> set[str]:
     tokens = set(re.findall(r"[a-z0-9]+", value.lower()))
     return {token for token in tokens if len(token) > 1 and token not in COMPANY_STOPWORDS}
@@ -201,9 +207,70 @@ def has_wrapper_term(value: str) -> bool:
     return any(token in lowered for token in BAD_WRAPPER_TOKENS)
 
 
+@lru_cache(maxsize=None)
+def normalized_compact(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "", value.lower())
+
+
+def alias_matches_company(alias: str, company_name: str) -> bool:
+    alias_compact = normalized_compact(alias)
+    company_compact = normalized_compact(company_name)
+    if alias_compact and company_compact and (
+        alias_compact in company_compact or company_compact in alias_compact
+    ):
+        return True
+    return bool(normalize_tokens(alias) & normalize_tokens(company_name))
+
+
 def is_depositary_row(row: dict[str, str]) -> bool:
     lowered = row["name"].lower()
     return "american depositary" in lowered or " adr" in lowered
+
+
+def is_strict_numeric_namespace_row(row: dict[str, str]) -> bool:
+    return bool(
+        row["exchange"] in STRICT_NUMERIC_NAMESPACE_EXCHANGES
+        and NUMERIC_TICKER_RE.fullmatch(row["ticker"])
+    )
+
+
+def is_namespace_collision_row(
+    row: dict[str, str],
+    aliases: list[str],
+    wkns: set[str],
+) -> bool:
+    if not is_strict_numeric_namespace_row(row):
+        return False
+
+    isin = MANUAL_ISIN_CORRECTIONS.get(row["ticker"], row["isin"])
+    if not isin:
+        return False
+
+    prefix = isin[:2]
+    exchange = row["exchange"]
+    ticker = row["ticker"]
+
+    if exchange in {"KRX", "KOSDAQ"}:
+        if ticker.startswith("9"):
+            return False
+        return prefix != "KR"
+
+    if exchange in {"TWSE", "TPEX"} and row["asset_type"] == "ETF":
+        return prefix != "TW"
+
+    if exchange not in {"TWSE", "TPEX", "Bursa"}:
+        return False
+
+    expected_prefix = "MY" if exchange == "Bursa" else "TW"
+    if prefix == expected_prefix:
+        return False
+
+    for alias in aliases:
+        if looks_like_identifier(alias, wkns, isin):
+            continue
+        if not alias_matches_company(alias, row["name"]):
+            return True
+    return False
 
 
 def should_exclude_stock_row(row: dict[str, str]) -> bool:
@@ -241,9 +308,12 @@ def clean_aliases(
     aliases: list[str],
     wkns: set[str],
 ) -> tuple[str, list[str]]:
-    company_tokens = normalize_tokens(row["name"])
     suspicious_us_primary = is_suspicious_us_primary(row, aliases)
-    strict_alias_filter = suspicious_us_primary or is_depositary_row(row)
+    strict_alias_filter = (
+        suspicious_us_primary
+        or is_depositary_row(row)
+        or is_strict_numeric_namespace_row(row)
+    )
     cleaned_isin = MANUAL_ISIN_CORRECTIONS.get(row["ticker"], row["isin"])
     cleaned_aliases: list[str] = []
 
@@ -260,7 +330,7 @@ def clean_aliases(
         if suspicious_us_primary and lowered in BAD_US_PRIMARY_ALIASES:
             continue
         if strict_alias_filter and not looks_like_identifier(alias, wkns, cleaned_isin):
-            if not (normalize_tokens(alias) & company_tokens):
+            if not alias_matches_company(alias, row["name"]):
                 continue
         cleaned_aliases.append(alias)
 
@@ -323,14 +393,11 @@ def cleaned_rows():
         aliases = dedupe_keep_order(row["aliases"])
         identifier = identifier_lookup.get(row["ticker"], {"wkn": ""})
         wkns = {identifier["wkn"]} if identifier.get("wkn") else set()
+        if is_namespace_collision_row(row, aliases, wkns):
+            continue
         isin, aliases = clean_aliases(row, aliases, wkns)
         country = row["country"]
-        if (
-            country == "United States"
-            and isin
-            and not isin.startswith("US")
-            and row["exchange"] in OTC_EXCHANGES
-        ):
+        if isin:
             country = country_from_isin(isin) or country
 
         output_rows.append(
