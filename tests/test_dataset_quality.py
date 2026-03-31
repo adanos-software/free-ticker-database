@@ -44,12 +44,17 @@ def test_non_common_instruments_removed():
     assert "AACBR" not in tickers
     assert "BAC-P-B" not in tickers
     assert "BTSGU" not in tickers
+    assert "001515" not in tickers
+    assert "005385" not in tickers
 
 
 def test_country_examples_corrected():
     assert ticker_row("AAIGF")["country"] == "Hong Kong"
     assert ticker_row("AANNF")["country"] == "Luxembourg"
     assert ticker_row("AAVMY")["country"] == "Netherlands"
+    assert ticker_row("0A00")["country"] == "Netherlands"
+    assert ticker_row("04Q")["country"] == "Finland"
+    assert ticker_row("A1CR34")["country"] == "Jersey"
 
 
 def test_contaminated_us_primaries_cleaned():
@@ -81,6 +86,16 @@ def test_depositary_and_cross_issuer_aliases_removed():
     assert "ubm development" not in ubs["aliases"]
     assert "united bus service" not in ubs["aliases"]
     assert "urbas grupo financiero" not in ubs["aliases"]
+
+
+def test_numeric_namespace_aliases_and_collisions_cleaned():
+    supercomnet = ticker_row("0001")
+    assert supercomnet is not None
+    assert "ck hutchison" not in supercomnet["aliases"]
+    assert "hutchison" not in supercomnet["aliases"]
+
+    assert ticker_row("002620") is None
+    assert ticker_row("0050") is None
 
 
 def test_aliases_csv_has_no_exact_duplicates():
@@ -128,8 +143,8 @@ def test_artifact_counts_match():
 
 def test_readme_stats_and_claims_are_current():
     readme = (ROOT / "README.md").read_text()
-    assert "| **Total tickers** | 60,688 |" in readme
-    assert "| Total aliases | 109,039 |" in readme
-    assert "| ISIN coverage | 46,310 (76.3%) |" in readme
+    assert "| **Total tickers** | 60,109 |" in readme
+    assert "| Total aliases | 107,709 |" in readme
+    assert "| ISIN coverage | 45,795 (76.2%) |" in readme
     assert "Zero common-word aliases" not in readme
     assert "Warrants, notes, bonds, and preferred stock debt instruments excluded" not in readme
