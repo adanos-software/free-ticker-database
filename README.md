@@ -1,6 +1,6 @@
 # Free Global Ticker Database
 
-A comprehensive, free-to-use stock and ETF ticker reference database covering 60,000+ securities across 67 exchanges and 66 countries.
+A comprehensive, free-to-use stock and ETF ticker reference database covering 60,000+ securities across 67 exchanges and 67 countries.
 
 ## Stats
 
@@ -13,7 +13,7 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 60
 | Countries | 67 |
 | ISIN coverage | 45,773 (76.2%) |
 | Sector coverage | 39,677 (66.0%) |
-| Total aliases | 107,687 |
+| Total aliases | 107,074 |
 
 ## Formats
 
@@ -88,7 +88,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (60,109 rows) + `aliases` (107,709 rows) with indexes on `alias`, `exchange`, `country`, `sector`, `isin`.
+Tables: `tickers` (60,109 rows) + `aliases` (107,074 rows) with indexes on `alias`, `exchange`, `country`, `sector`, `isin`.
 
 ## Schema
 
@@ -138,6 +138,7 @@ Tables: `tickers` (60,109 rows) + `aliases` (107,709 rows) with indexes on `alia
 - Zero duplicate tickers
 - Exact duplicate alias rows removed
 - Conservative filtering for obvious common-word, wrapper, celebrity, and product aliases
+- Very short (1-2 char) and pure-numeric name aliases removed to reduce ambiguity
 - Zero junk aliases ("Not Available", "N/A", etc.)
 - All field lengths within database constraints
 - Rights, units, warrants, notes, and preferred/depositary issues filtered from the stock universe

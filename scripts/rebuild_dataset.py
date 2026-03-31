@@ -432,6 +432,15 @@ def clean_aliases(
             continue
         if suspicious_us_primary and lowered in BAD_US_PRIMARY_ALIASES:
             continue
+        # Skip very short name aliases (<=2 chars) -- too ambiguous
+        if len(alias) <= 2 and not looks_like_identifier(alias, wkns, cleaned_isin):
+            continue
+        # Skip pure-numeric aliases that aren't identifiers (WKN/ISIN)
+        if alias.isdigit() and alias not in wkns and alias != cleaned_isin:
+            if not is_strict_numeric_namespace_row(row):
+                continue
+            cleaned_aliases.append(alias)
+            continue
         if strict_alias_filter and not looks_like_identifier(alias, wkns, cleaned_isin):
             if not alias_matches_company(alias, row["name"]):
                 continue
