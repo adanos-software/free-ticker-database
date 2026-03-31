@@ -51,7 +51,7 @@ BAD_CONTAMINATED_ALIASES = {
     "urbas grupo financiero",
 }
 BAD_WRAPPER_TOKENS = ("cdr", "drc", "cedear")
-BAD_US_PRIMARY_ALIASES = {
+BAD_OBVIOUS_AMBIGUOUS_ALIASES = {
     "aws",
     "bezos",
     "cybertruck",
@@ -79,7 +79,10 @@ NON_COMMON_PATTERNS = (
     re.compile(r"\bpfd\b", re.IGNORECASE),
 )
 PREFERRED_PATTERN = re.compile(r"\bpreferred\b", re.IGNORECASE)
-DEPOSITARY_PATTERN = re.compile(r"\bdepositary shares?\b", re.IGNORECASE)
+DEPOSITARY_PATTERN = re.compile(
+    r"\bdepositary (?:shares?|receipts?)\b",
+    re.IGNORECASE,
+)
 US_CORP_NAME_RE = re.compile(
     r"\b(inc|incorporated|corporation|corp|company|co)\b",
     re.IGNORECASE,
@@ -356,12 +359,25 @@ def alias_matches_company(alias: str, company_name: str) -> bool:
 
 def is_depositary_row(row: dict[str, str]) -> bool:
     lowered = row["name"].lower()
-    return "american depositary" in lowered or " adr" in lowered
+    return bool(
+        "american depositary" in lowered
+        or " adr" in lowered
+        or DEPOSITARY_PATTERN.search(lowered)
+    )
+
+
+def is_numeric_exchange_alias(row: dict[str, str], alias: str, wkns: set[str], isin: str) -> bool:
+    return bool(
+        is_strict_numeric_namespace_row(row)
+        and alias.isdigit()
+        and alias not in wkns
+        and alias != isin
+    )
 
 
 def is_strict_numeric_namespace_row(row: dict[str, str]) -> bool:
     return bool(
-        row["exchange"] in STRICT_NUMERIC_NAMESPACE_EXCHANGES
+        row.get("exchange", "") in STRICT_NUMERIC_NAMESPACE_EXCHANGES
         and NUMERIC_TICKER_RE.fullmatch(row["ticker"])
     )
 
@@ -409,13 +425,11 @@ def should_exclude_stock_row(row: dict[str, str]) -> bool:
     if row["asset_type"] != "Stock":
         return False
     name = row["name"].lower()
-    if "american depositary" in name:
-        return False
     if row["ticker"].count("-P-"):
         return True
-    if PREFERRED_PATTERN.search(name):
+    if is_depositary_row(row):
         return True
-    if DEPOSITARY_PATTERN.search(name) and "american depositary" not in name:
+    if PREFERRED_PATTERN.search(name):
         return True
     return any(pattern.search(name) for pattern in NON_COMMON_PATTERNS)
 
@@ -432,7 +446,7 @@ def is_suspicious_us_primary(row: dict[str, str], aliases: list[str]) -> bool:
         return False
     if any(has_wrapper_term(alias) for alias in aliases):
         return True
-    return any(alias.lower() in BAD_US_PRIMARY_ALIASES for alias in aliases)
+    return any(alias.lower() in BAD_OBVIOUS_AMBIGUOUS_ALIASES for alias in aliases)
 
 
 def clean_aliases(
@@ -455,20 +469,22 @@ def clean_aliases(
             continue
         if lowered in BAD_CONTAMINATED_ALIASES:
             continue
+        if lowered in BAD_OBVIOUS_AMBIGUOUS_ALIASES:
+            continue
         if has_wrapper_term(alias):
             continue
         if lowered.startswith("1x "):
             continue
-        if suspicious_us_primary and lowered in BAD_US_PRIMARY_ALIASES:
-            continue
         # Skip very short name aliases (<=2 chars) -- too ambiguous
         if len(alias) <= 2 and not looks_like_identifier(alias, wkns, cleaned_isin):
             continue
+        # Keep strict numeric-namespace codes, but they will be typed as
+        # exchange_ticker later instead of ambiguous name aliases.
+        if is_numeric_exchange_alias(row, alias, wkns, cleaned_isin):
+            cleaned_aliases.append(alias)
+            continue
         # Skip pure-numeric aliases that aren't identifiers (WKN/ISIN)
         if alias.isdigit() and alias not in wkns and alias != cleaned_isin:
-            if not is_strict_numeric_namespace_row(row):
-                continue
-            cleaned_aliases.append(alias)
             continue
         if strict_alias_filter and not looks_like_identifier(alias, wkns, cleaned_isin):
             if not alias_matches_company(alias, row["name"]):
@@ -571,7 +587,9 @@ def build_alias_rows(rows: list[dict[str, str]], alias_type_lookup: dict[tuple[s
         if row["isin"]:
             all_aliases.append((row["isin"], "isin"))
         for alias in row["aliases"]:
-            if (row["ticker"], alias) in alias_type_lookup:
+            if is_numeric_exchange_alias(row, alias, wkns, row["isin"]):
+                alias_type = "exchange_ticker"
+            elif (row["ticker"], alias) in alias_type_lookup:
                 alias_type = alias_type_lookup[(row["ticker"], alias)]
             elif alias in wkns:
                 alias_type = "wkn"

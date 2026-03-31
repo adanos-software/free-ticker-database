@@ -6,14 +6,14 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 60
 
 | Metric | Value |
 |---|---|
-| **Total tickers** | 60,109 |
-| Stocks | 44,015 |
+| **Total tickers** | 59,184 |
+| Stocks | 43,090 |
 | ETFs | 16,094 |
 | Exchanges | 67 |
 | Countries | 67 |
-| ISIN coverage | 45,773 (76.2%) |
-| Sector coverage | 39,677 (66.0%) |
-| Total aliases | 107,074 |
+| ISIN coverage | 44,871 (75.8%) |
+| Sector coverage | 38,906 (65.7%) |
+| Total aliases | 104,968 |
 
 ## Formats
 
@@ -21,12 +21,12 @@ Choose the format that fits your use case:
 
 | File | Size | Best for |
 |---|---|---|
-| [`data/tickers.csv`](data/tickers.csv) | 5.5 MB | Excel, spreadsheets, quick lookups |
-| [`data/tickers.json`](data/tickers.json) | 11.0 MB | Web apps, APIs |
-| [`data/tickers.parquet`](data/tickers.parquet) | 2.7 MB | Pandas, data science |
-| [`data/tickers.db`](data/tickers.db) | 18.9 MB | SQL queries, local apps |
-| [`data/aliases.csv`](data/aliases.csv) | 2.8 MB | Alias/name resolution |
-| [`data/identifiers.csv`](data/identifiers.csv) | 1.1 MB | ISIN/WKN lookups |
+| [`data/tickers.csv`](data/tickers.csv) | 5.4 MB | Excel, spreadsheets, quick lookups |
+| [`data/tickers.json`](data/tickers.json) | 11.8 MB | Web apps, APIs |
+| [`data/tickers.parquet`](data/tickers.parquet) | 2.6 MB | Pandas, data science |
+| [`data/tickers.db`](data/tickers.db) | 18.7 MB | SQL queries, local apps |
+| [`data/aliases.csv`](data/aliases.csv) | 2.7 MB | Alias/name resolution |
+| [`data/identifiers.csv`](data/identifiers.csv) | 1.0 MB | ISIN/WKN lookups |
 | [`data/cross_listings.csv`](data/cross_listings.csv) | 0.3 MB | Cross-listed securities |
 
 ### tickers.csv (flat, Excel-friendly)
@@ -110,7 +110,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (60,109 rows) + `aliases` (107,074 rows) + `cross_listings` (10,443 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
+Tables: `tickers` (59,184 rows) + `aliases` (104,968 rows) + `cross_listings` (10,193 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
 
 ## Schema
 
@@ -139,21 +139,21 @@ Tables: `tickers` (60,109 rows) + `aliases` (107,074 rows) + `cross_listings` (1
 
 | Exchange | Tickers | Description |
 |---|---|---|
-| OTC | 11,407 | US OTC / Pink Sheets |
-| LSE | 6,430 | London Stock Exchange |
-| NASDAQ | 4,914 | NASDAQ |
+| OTC | 10,596 | US OTC / Pink Sheets |
+| LSE | 6,409 | London Stock Exchange |
+| NASDAQ | 4,821 | NASDAQ |
 | SZSE | 3,096 | Shenzhen Stock Exchange |
-| XETRA | 2,951 | Deutsche Boerse |
+| XETRA | 2,948 | Deutsche Boerse |
 | SSE | 2,811 | Shanghai Stock Exchange |
-| NYSE | 2,736 | New York Stock Exchange |
+| NYSE | 2,620 | New York Stock Exchange |
 | NYSE ARCA | 2,619 | NYSE ARCA (ETFs) |
-| KRX | 2,395 | Korea Exchange |
-| TSX | 1,915 | Toronto Stock Exchange |
+| KRX | 2,282 | Korea Exchange |
+| TSX | 1,766 | Toronto Stock Exchange |
 | B3 | 1,773 | Sao Paulo Exchange |
-| TWSE | 1,312 | Taiwan Stock Exchange |
-| ASX | 1,237 | Australian Securities Exchange |
-| TPEX | 1,205 | Taipei Exchange |
-| KOSDAQ | 1,145 | Korean OTC |
+| TWSE | 1,245 | Taiwan Stock Exchange |
+| ASX | 1,235 | Australian Securities Exchange |
+| KOSDAQ | 1,140 | Korean OTC |
+| TPEX | 1,126 | Taipei Exchange |
 | + 52 more | ... | |
 
 ## Data Quality

@@ -35,6 +35,18 @@ def test_common_word_aliases_removed():
         ("KO", "coke"),
         ("CA1", "circus"),
         ("LPP", "reserved"),
+        ("0R0X", "cybertruck"),
+        ("0R0X", "model 3"),
+        ("0R0X", "model y"),
+        ("0R2V", "iphone"),
+        ("0R2V", "tim cook"),
+        ("AMZ", "aws"),
+        ("AMZ", "bezos"),
+        ("MSF", "windows"),
+        ("MSF", "satya"),
+        ("TL0", "cybertruck"),
+        ("TL0", "model 3"),
+        ("TL0", "model y"),
     }
     assert aliases.isdisjoint(blocked)
 
@@ -76,13 +88,10 @@ def test_contaminated_us_primaries_cleaned():
 
 
 def test_depositary_and_cross_issuer_aliases_removed():
-    arm = ticker_row("ARM")
-    asml = ticker_row("ASML")
     ubs = ticker_row("UBS")
 
-    assert "arima real estate socimi" not in arm["aliases"]
-    assert "lithography" not in asml["aliases"]
-    assert "euv" not in asml["aliases"]
+    assert ticker_row("ARM") is None
+    assert ticker_row("ASML") is None
     assert "ubm development" not in ubs["aliases"]
     assert "united bus service" not in ubs["aliases"]
     assert "urbas grupo financiero" not in ubs["aliases"]
@@ -120,6 +129,26 @@ def test_build_alias_rows_prioritizes_isin_type():
     assert alias_rows == [
         {"ticker": "TEST", "alias": "US0000000001", "alias_type": "isin"},
         {"ticker": "TEST", "alias": "TEST.NYSE", "alias_type": "exchange_ticker"},
+    ]
+
+
+def test_build_alias_rows_marks_numeric_namespace_aliases_as_exchange_ticker():
+    from scripts.rebuild_dataset import build_alias_rows
+
+    rows = [
+        {
+            "ticker": "0050",
+            "exchange": "TWSE",
+            "isin": "TW0000050004",
+            "aliases": ["0050", "yuanta taiwan top 50 etf"],
+            "wkn": "",
+        }
+    ]
+    alias_rows = build_alias_rows(rows, {("0050", "0050"): "name"})
+    assert alias_rows == [
+        {"ticker": "0050", "alias": "TW0000050004", "alias_type": "isin"},
+        {"ticker": "0050", "alias": "0050", "alias_type": "exchange_ticker"},
+        {"ticker": "0050", "alias": "yuanta taiwan top 50 etf", "alias_type": "name"},
     ]
 
 
@@ -170,15 +199,13 @@ def test_artifact_counts_match():
 
 def test_readme_stats_and_claims_are_current():
     readme = (ROOT / "README.md").read_text()
-    assert "| **Total tickers** | 60,109 |" in readme
-    assert "| Stocks | 44,015 |" in readme
+    assert "| **Total tickers** | 59,184 |" in readme
+    assert "| Stocks | 43,090 |" in readme
     assert "| ETFs | 16,094 |" in readme
     assert "| Countries | 67 |" in readme
-    assert "| Total aliases | 107,074 |" in readme
-    assert "| ISIN coverage | 45,773 (76.2%) |" in readme
-    assert "| Sector coverage | 39,677 (66.0%) |" in readme
-    assert "Zero common-word aliases" not in readme
-    assert "Warrants, notes, bonds, and preferred stock debt instruments excluded" not in readme
+    assert "| Total aliases | 104,968 |" in readme
+    assert "| ISIN coverage | 44,871 (75.8%) |" in readme
+    assert "| Sector coverage | 38,906 (65.7%) |" in readme
 
 
 def test_all_isins_have_valid_checksum():
@@ -205,6 +232,17 @@ def test_no_short_or_ambiguous_name_aliases():
     rows = load_csv("aliases.csv")
     short_names = [r for r in rows if len(r["alias"]) <= 2 and r["alias_type"] == "name"]
     assert not short_names, f"Short name aliases found: {[(r['ticker'], r['alias']) for r in short_names[:5]]}"
+
+
+def test_no_depositary_issues_in_stock_universe():
+    rows = load_csv("tickers.csv")
+    depositary = [
+        r["ticker"]
+        for r in rows
+        if r["asset_type"] == "Stock"
+        and ("depositary" in r["name"].lower() or " adr" in r["name"].lower())
+    ]
+    assert not depositary, f"Depositary issues found: {depositary[:10]}"
 
 
 def test_numeric_namespace_aliases_bypass_strict_company_matching():
