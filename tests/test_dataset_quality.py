@@ -4,6 +4,7 @@ import csv
 import json
 import sqlite3
 from collections import Counter
+from functools import lru_cache
 from pathlib import Path
 
 
@@ -11,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
 
 
+@lru_cache(maxsize=None)
 def load_csv(name: str):
     with (DATA_DIR / name).open(newline="") as handle:
         return list(csv.DictReader(handle))
@@ -55,17 +57,30 @@ def test_contaminated_us_primaries_cleaned():
     msft = ticker_row("MSFT")
     tsla = ticker_row("TSLA")
 
-    assert aapl["isin"] == ""
+    assert aapl["isin"] == "US0378331005"
     assert "apple cdr" not in aapl["aliases"]
 
-    assert msft["isin"] == ""
+    assert msft["isin"] == "US5949181045"
     assert "azure" not in msft["aliases"]
     assert "microsoft cdr" not in msft["aliases"]
 
-    assert tsla["isin"] == ""
+    assert tsla["isin"] == "US88160R1014"
     assert "elon" not in tsla["aliases"]
     assert "musk" not in tsla["aliases"]
     assert "tesla cdr" not in tsla["aliases"]
+
+
+def test_depositary_and_cross_issuer_aliases_removed():
+    arm = ticker_row("ARM")
+    asml = ticker_row("ASML")
+    ubs = ticker_row("UBS")
+
+    assert "arima real estate socimi" not in arm["aliases"]
+    assert "lithography" not in asml["aliases"]
+    assert "euv" not in asml["aliases"]
+    assert "ubm development" not in ubs["aliases"]
+    assert "united bus service" not in ubs["aliases"]
+    assert "urbas grupo financiero" not in ubs["aliases"]
 
 
 def test_aliases_csv_has_no_exact_duplicates():
@@ -73,6 +88,24 @@ def test_aliases_csv_has_no_exact_duplicates():
     keys = [(row["ticker"], row["alias"], row["alias_type"]) for row in rows]
     counts = Counter(keys)
     assert not [key for key, count in counts.items() if count > 1]
+
+
+def test_build_alias_rows_prioritizes_isin_type():
+    from scripts.rebuild_dataset import build_alias_rows
+
+    rows = [
+        {
+            "ticker": "TEST",
+            "isin": "US0000000001",
+            "aliases": ["US0000000001", "TEST.NYSE"],
+            "wkn": "",
+        }
+    ]
+    alias_rows = build_alias_rows(rows, {})
+    assert alias_rows == [
+        {"ticker": "TEST", "alias": "US0000000001", "alias_type": "isin"},
+        {"ticker": "TEST", "alias": "TEST.NYSE", "alias_type": "exchange_ticker"},
+    ]
 
 
 def test_artifact_counts_match():
@@ -96,6 +129,7 @@ def test_artifact_counts_match():
 def test_readme_stats_and_claims_are_current():
     readme = (ROOT / "README.md").read_text()
     assert "| **Total tickers** | 60,688 |" in readme
-    assert "| Total aliases | 109,176 |" in readme
+    assert "| Total aliases | 109,039 |" in readme
+    assert "| ISIN coverage | 46,310 (76.3%) |" in readme
     assert "Zero common-word aliases" not in readme
     assert "Warrants, notes, bonds, and preferred stock debt instruments excluded" not in readme

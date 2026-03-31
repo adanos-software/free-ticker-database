@@ -4,7 +4,7 @@ import csv
 import json
 import re
 import sqlite3
-from collections import Counter, defaultdict
+from collections import defaultdict
 from pathlib import Path
 from typing import Iterable
 
@@ -21,6 +21,11 @@ TICKERS_JSON = DATA_DIR / "tickers.json"
 TICKERS_PRETTY_JSON = DATA_DIR / "tickers.pretty.json"
 TICKERS_DB = DATA_DIR / "tickers.db"
 TICKERS_PARQUET = DATA_DIR / "tickers.parquet"
+MANUAL_ISIN_CORRECTIONS = {
+    "AAPL": "US0378331005",
+    "MSFT": "US5949181045",
+    "TSLA": "US88160R1014",
+}
 
 BAD_COMMON_ALIASES = {
     "angle",
@@ -31,6 +36,16 @@ BAD_COMMON_ALIASES = {
     "musk",
     "pandora",
     "reserved",
+}
+BAD_CONTAMINATED_ALIASES = {
+    "arima real estate socimi",
+    "euv",
+    "gpu",
+    "jensen",
+    "lithography",
+    "ubm development",
+    "united bus service",
+    "urbas grupo financiero",
 }
 BAD_WRAPPER_TOKENS = ("cdr", "drc", "cedear")
 BAD_US_PRIMARY_ALIASES = {
@@ -125,7 +140,6 @@ ISIN_PREFIX_COUNTRIES = {
     "JE": "Jersey",
     "JP": "Japan",
     "KR": "South Korea",
-    "KYG": "Cayman Islands",
     "KY": "Cayman Islands",
     "LU": "Luxembourg",
     "MX": "Mexico",
@@ -187,6 +201,11 @@ def has_wrapper_term(value: str) -> bool:
     return any(token in lowered for token in BAD_WRAPPER_TOKENS)
 
 
+def is_depositary_row(row: dict[str, str]) -> bool:
+    lowered = row["name"].lower()
+    return "american depositary" in lowered or " adr" in lowered
+
+
 def should_exclude_stock_row(row: dict[str, str]) -> bool:
     if row["asset_type"] != "Stock":
         return False
@@ -224,12 +243,15 @@ def clean_aliases(
 ) -> tuple[str, list[str]]:
     company_tokens = normalize_tokens(row["name"])
     suspicious_us_primary = is_suspicious_us_primary(row, aliases)
-    cleaned_isin = row["isin"]
+    strict_alias_filter = suspicious_us_primary or is_depositary_row(row)
+    cleaned_isin = MANUAL_ISIN_CORRECTIONS.get(row["ticker"], row["isin"])
     cleaned_aliases: list[str] = []
 
     for alias in aliases:
         lowered = alias.lower()
         if lowered in BAD_COMMON_ALIASES:
+            continue
+        if lowered in BAD_CONTAMINATED_ALIASES:
             continue
         if has_wrapper_term(alias):
             continue
@@ -237,13 +259,13 @@ def clean_aliases(
             continue
         if suspicious_us_primary and lowered in BAD_US_PRIMARY_ALIASES:
             continue
-        if suspicious_us_primary and not looks_like_identifier(alias, wkns, cleaned_isin):
+        if strict_alias_filter and not looks_like_identifier(alias, wkns, cleaned_isin):
             if not (normalize_tokens(alias) & company_tokens):
                 continue
         cleaned_aliases.append(alias)
 
     if suspicious_us_primary:
-        cleaned_isin = ""
+        cleaned_isin = MANUAL_ISIN_CORRECTIONS.get(row["ticker"], "")
 
     return cleaned_isin, dedupe_keep_order(cleaned_aliases)
 
@@ -330,7 +352,7 @@ def cleaned_rows():
 
 def build_alias_rows(rows: list[dict[str, str]], alias_type_lookup: dict[tuple[str, str], str]):
     alias_rows: list[dict[str, str]] = []
-    seen: set[tuple[str, str, str]] = set()
+    seen: set[tuple[str, str]] = set()
     for row in rows:
         wkns = {row["wkn"]} if row["wkn"] else set()
         all_aliases = []
@@ -348,7 +370,7 @@ def build_alias_rows(rows: list[dict[str, str]], alias_type_lookup: dict[tuple[s
             all_aliases.append((alias, alias_type))
 
         for alias, alias_type in all_aliases:
-            key = (row["ticker"], alias, alias_type)
+            key = (row["ticker"], alias)
             if key in seen:
                 continue
             seen.add(key)
@@ -390,6 +412,7 @@ def write_db(rows: list[dict[str, str]], alias_rows: list[dict[str, str]]):
         TICKERS_DB.unlink()
     conn = sqlite3.connect(TICKERS_DB)
     try:
+        conn.execute("PRAGMA foreign_keys = ON;")
         conn.executescript(
             """
             CREATE TABLE tickers (

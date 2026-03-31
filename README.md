@@ -11,9 +11,9 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 60
 | ETFs | 16,103 |
 | Exchanges | 67 |
 | Countries | 66 |
-| ISIN coverage | 46,307 (76.3%) |
+| ISIN coverage | 46,310 (76.3%) |
 | Sector coverage | 40,102 (66.1%) |
-| Total aliases | 109,176 |
+| Total aliases | 109,039 |
 
 ## Formats
 
@@ -24,7 +24,7 @@ Choose the format that fits your use case:
 | [`data/tickers.csv`](data/tickers.csv) | 5.5 MB | Excel, spreadsheets, quick lookups |
 | [`data/tickers.json`](data/tickers.json) | 11.0 MB | Web apps, APIs |
 | [`data/tickers.parquet`](data/tickers.parquet) | 2.7 MB | Pandas, data science |
-| [`data/tickers.db`](data/tickers.db) | 18.3 MB | SQL queries, local apps |
+| [`data/tickers.db`](data/tickers.db) | 18.4 MB | SQL queries, local apps |
 | [`data/aliases.csv`](data/aliases.csv) | 2.8 MB | Alias/name resolution |
 | [`data/identifiers.csv`](data/identifiers.csv) | 1.1 MB | ISIN/WKN lookups |
 
@@ -88,7 +88,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (60,688 rows) + `aliases` (109,176 rows) with indexes on `alias`, `exchange`, `country`, `sector`, `isin`.
+Tables: `tickers` (60,688 rows) + `aliases` (109,039 rows) with indexes on `alias`, `exchange`, `country`, `sector`, `isin`.
 
 ## Schema
 
