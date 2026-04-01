@@ -180,11 +180,9 @@ def test_artifact_counts_match():
     aliases_csv = load_csv("aliases.csv")
 
     compact_json = json.loads((DATA_DIR / "tickers.json").read_text())
-    pretty_json = json.loads((DATA_DIR / "tickers.pretty.json").read_text())
 
     # Support both envelope {"_meta": ..., "tickers": [...]} and flat [...] format
     compact_tickers = compact_json["tickers"] if isinstance(compact_json, dict) else compact_json
-    pretty_tickers = pretty_json["tickers"] if isinstance(pretty_json, dict) else pretty_json
 
     conn = sqlite3.connect(DATA_DIR / "tickers.db")
     try:
@@ -193,7 +191,7 @@ def test_artifact_counts_match():
     finally:
         conn.close()
 
-    assert len(tickers_csv) == len(compact_tickers) == len(pretty_tickers) == db_tickers
+    assert len(tickers_csv) == len(compact_tickers) == db_tickers
     assert len(aliases_csv) == db_aliases
 
 

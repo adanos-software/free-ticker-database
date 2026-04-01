@@ -20,7 +20,6 @@ TICKERS_CSV = DATA_DIR / "tickers.csv"
 ALIASES_CSV = DATA_DIR / "aliases.csv"
 IDENTIFIERS_CSV = DATA_DIR / "identifiers.csv"
 TICKERS_JSON = DATA_DIR / "tickers.json"
-TICKERS_PRETTY_JSON = DATA_DIR / "tickers.pretty.json"
 TICKERS_DB = DATA_DIR / "tickers.db"
 TICKERS_PARQUET = DATA_DIR / "tickers.parquet"
 CROSS_LISTINGS_CSV = DATA_DIR / "cross_listings.csv"
@@ -732,7 +731,6 @@ def write_json(rows: list[dict[str, str]]):
         json.dumps(envelope, separators=(",", ":")),
         encoding="utf-8",
     )
-    TICKERS_PRETTY_JSON.write_text(json.dumps(envelope, indent=2), encoding="utf-8")
 
 
 def write_db(
