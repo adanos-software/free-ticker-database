@@ -2,14 +2,17 @@
 
 ## Unreleased
 
-- Initial public release
-- 60,109 tickers (44,015 stocks, 16,094 ETFs) across 67 exchanges and 67 countries
+- No unreleased changes yet.
+
+## 2.0.0
+
+- Current dataset release with 59,178 tickers (43,086 stocks, 16,092 ETFs) across 67 exchanges and 68 countries
 - Output formats: CSV, JSON, Parquet, SQLite
-- Version `2.0.0` introduces a `_meta` envelope for JSON outputs with version/build metadata
+- JSON outputs use a `_meta` envelope with version/build metadata
 - Added `country_code` (ISO 3166-1 alpha-2) to dataset exports
 - Added `cross_listings.csv` and SQLite `cross_listings` for multi-exchange securities
-- 107,074 aliases with type classification (ISIN, WKN, name, exchange_ticker)
-- ISIN coverage: 76.2%
-- Sector coverage: 66.1%
-- Quality filters: rights/warrants/preferred exclusion, common-word alias removal,
-  ISIN-based country correction, namespace collision detection
+- 104,387 aliases with type classification (`isin`, `wkn`, `name`, `exchange_ticker`)
+- ISIN coverage: 75.8%
+- Sector coverage: 65.7%
+- Quality filters include duplicate removal, alias cleanup, stock-universe instrument filtering,
+  ISIN-based country correction, sector normalization, and ISIN check-digit validation

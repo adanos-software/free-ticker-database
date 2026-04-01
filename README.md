@@ -1,5 +1,8 @@
 # Free Global Ticker Database
 
+[![CI](https://github.com/adanos-software/free-ticker-database/actions/workflows/ci.yml/badge.svg)](https://github.com/adanos-software/free-ticker-database/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A comprehensive, free-to-use stock and ETF ticker reference database covering 59,000+ securities across 67 exchanges and 68 countries.
 
 ## Stats
@@ -76,8 +79,8 @@ Securities traded on multiple exchanges share the same ISIN. The `is_primary` fl
 {
   "_meta": {
     "version": "2.0.0",
-    "built_at": "2026-03-31T00:00:00Z",
-    "total_tickers": 60109
+    "built_at": "2026-04-01T18:37:40Z",
+    "total_tickers": 59178
   },
   "tickers": [
     {
@@ -110,7 +113,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (59,184 rows) + `aliases` (104,968 rows) + `cross_listings` (10,193 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
+Tables: `tickers` (59,178 rows) + `aliases` (104,387 rows) + `cross_listings` (10,186 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
 
 ## Schema
 
@@ -141,17 +144,17 @@ Tables: `tickers` (59,184 rows) + `aliases` (104,968 rows) + `cross_listings` (1
 |---|---|---|
 | OTC | 10,596 | US OTC / Pink Sheets |
 | LSE | 6,409 | London Stock Exchange |
-| NASDAQ | 4,821 | NASDAQ |
+| NASDAQ | 4,819 | NASDAQ |
 | SZSE | 3,096 | Shenzhen Stock Exchange |
-| XETRA | 2,948 | Deutsche Boerse |
+| XETRA | 2,947 | Deutsche Boerse |
 | SSE | 2,811 | Shanghai Stock Exchange |
-| NYSE | 2,620 | New York Stock Exchange |
+| NYSE | 2,618 | New York Stock Exchange |
 | NYSE ARCA | 2,619 | NYSE ARCA (ETFs) |
 | KRX | 2,282 | Korea Exchange |
 | TSX | 1,766 | Toronto Stock Exchange |
 | B3 | 1,773 | Sao Paulo Exchange |
 | TWSE | 1,245 | Taiwan Stock Exchange |
-| ASX | 1,235 | Australian Securities Exchange |
+| ASX | 1,236 | Australian Securities Exchange |
 | KOSDAQ | 1,140 | Korean OTC |
 | TPEX | 1,126 | Taipei Exchange |
 | + 52 more | ... | |
@@ -169,9 +172,9 @@ Tables: `tickers` (59,184 rows) + `aliases` (104,968 rows) + `cross_listings` (1
 - Sector names normalized to canonical GICS sectors (stocks) and standardized ETF categories
 - ISIN check digits validated via Luhn algorithm; invalid ISINs removed
 
-## LLM Review Queue
+## Review Queue
 
-Generate a scored queue of suspicious entries for manual or LLM-assisted review:
+Generate a scored queue of suspicious entries for manual or model-assisted review:
 
 ```bash
 python3 scripts/audit_dataset.py --write-defaults
@@ -251,3 +254,9 @@ MIT License. See [LICENSE](LICENSE) for details.
 ## Contributing
 
 Issues and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+## Project Health
+
+- Code of Conduct: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+- Security policy: [SECURITY.md](SECURITY.md)
+- CI: [GitHub Actions](https://github.com/adanos-software/free-ticker-database/actions/workflows/ci.yml)

@@ -206,6 +206,40 @@ def test_readme_stats_and_claims_are_current():
     assert "| Total aliases | 104,387 |" in readme
     assert "| ISIN coverage | 44,839 (75.8%) |" in readme
     assert "| Sector coverage | 38,900 (65.7%) |" in readme
+    assert "| NASDAQ | 4,819 | NASDAQ |" in readme
+    assert "| XETRA | 2,947 | Deutsche Boerse |" in readme
+    assert "| NYSE | 2,618 | New York Stock Exchange |" in readme
+    assert "| ASX | 1,236 | Australian Securities Exchange |" in readme
+
+
+def test_changelog_and_supporting_docs_are_current():
+    changelog = (ROOT / "CHANGELOG.md").read_text()
+    contributing = (ROOT / "CONTRIBUTING.md").read_text()
+    claude_prompt = (ROOT / "docs" / "claude_review_prompt.md").read_text()
+
+    assert "## Unreleased" in changelog
+    assert "- No unreleased changes yet." in changelog
+    assert "## 2.0.0" in changelog
+    assert "59,178 tickers (43,086 stocks, 16,092 ETFs) across 67 exchanges and 68 countries" in changelog
+    assert "104,387 aliases" in changelog
+    assert "Keep the dataset build and review scripts dependency-light and easy to trace" in contributing
+    assert "one or more `review_queue.json` items" in claude_prompt
+
+
+def test_open_source_project_files_exist_and_are_linked():
+    readme = (ROOT / "README.md").read_text()
+
+    assert (ROOT / ".github" / "workflows" / "ci.yml").exists()
+    assert (ROOT / ".github" / "ISSUE_TEMPLATE" / "bug_report.md").exists()
+    assert (ROOT / ".github" / "ISSUE_TEMPLATE" / "feature_request.md").exists()
+    assert (ROOT / ".github" / "pull_request_template.md").exists()
+    assert (ROOT / "CODE_OF_CONDUCT.md").exists()
+    assert (ROOT / "SECURITY.md").exists()
+
+    assert "[![CI]" in readme
+    assert "## Project Health" in readme
+    assert "Code of Conduct: [CODE_OF_CONDUCT.md]" in readme
+    assert "Security policy: [SECURITY.md]" in readme
 
 
 def test_all_isins_have_valid_checksum():

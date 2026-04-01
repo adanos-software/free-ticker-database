@@ -29,4 +29,4 @@ If you find incorrect data (wrong ISIN, misclassified sector, bad alias), please
 
 - Python 3.10+
 - Keep runtime dependencies limited to `pandas`, `pyarrow`, `pytest`, and `requests`
-- Keep the build script self-contained in a single file
+- Keep the dataset build and review scripts dependency-light and easy to trace

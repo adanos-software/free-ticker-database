@@ -4,11 +4,11 @@ Use local Claude CLI only on entries emitted by `scripts/audit_dataset.py`. Do n
 
 ## Input
 
-You will receive one `review_queue.json` item plus optional external evidence snippets.
+You will receive one or more `review_queue.json` items plus optional external evidence snippets.
 
 Your job:
 
-1. Decide whether the listing itself looks valid.
+1. Decide whether each listing itself looks valid.
 2. Decide whether the aliases look plausible.
 3. Identify which fields require human or external-source verification.
 4. Return structured JSON that matches `docs/review_response.schema.json`.
