@@ -203,7 +203,7 @@ def test_readme_stats_and_claims_are_current():
     assert "| Stocks | 43,086 |" in readme
     assert "| ETFs | 16,092 |" in readme
     assert "| Countries | 68 |" in readme
-    assert "| Total aliases | 104,715 |" in readme
+    assert "| Total aliases | 104,532 |" in readme
     assert "| ISIN coverage | 44,839 (75.8%) |" in readme
     assert "| Sector coverage | 38,900 (65.7%) |" in readme
 
@@ -214,6 +214,12 @@ def test_all_isins_have_valid_checksum():
     rows = load_csv("tickers.csv")
     invalid = [(r["ticker"], r["isin"]) for r in rows if r["isin"] and not is_valid_isin(r["isin"])]
     assert not invalid, f"Invalid ISIN checksums: {invalid[:10]}"
+
+
+def test_panama_country_code_mapping_exists():
+    from scripts.rebuild_dataset import COUNTRY_TO_ISO
+
+    assert COUNTRY_TO_ISO["Panama"] == "PA"
 
 
 def test_sectors_are_normalized():

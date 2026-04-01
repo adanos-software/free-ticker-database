@@ -292,6 +292,7 @@ COUNTRY_TO_ISO_EXTRA: dict[str, str] = {
     "Morocco": "MA",
     "Nigeria": "NG",
     "Pakistan": "PK",
+    "Panama": "PA",
     "Rwanda": "RW",
     "Sri Lanka": "LK",
     "Tanzania": "TZ",
