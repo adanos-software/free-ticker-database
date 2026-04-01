@@ -13,9 +13,10 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.audit_dataset import DEFAULT_JSON_OUT as DEFAULT_REVIEW_QUEUE_JSON
-from scripts.build_gemini_review_batches import DEFAULT_SCHEMA_PATH, build_prompt_text
-from scripts.ingest_gemini_reviews import (
+from scripts.review_utils import (
+    DEFAULT_REVIEW_SCHEMA_PATH,
     build_normalized_payload,
+    build_prompt_text,
     build_queue_lookup,
     parse_structured_json,
     validate_review_response,
@@ -54,32 +55,6 @@ def load_existing_jsonl(path: Path) -> list[dict[str, object]]:
                 continue
             rows.append(json.loads(line))
     return rows
-
-
-def build_claude_prompt(item: dict[str, object], prompt_template: str) -> str:
-    template = prompt_template.strip()
-    required_fields = (
-        "ticker, exchange, entry_decision, ticker_exists, name_matches_listing, "
-        "alias_actions, metadata_actions, confidence, summary"
-    )
-    schema_rules = (
-        "Required top-level fields exactly: "
-        f"{required_fields}.\n"
-        "Do not rename fields.\n"
-        "Use alias_actions objects with keys alias, decision, reason.\n"
-        "Use metadata_actions objects with keys field, decision, reason, and optional proposed_value.\n"
-        "Use only these enums:\n"
-        "- entry_decision: keep, drop_entry, fix_metadata, needs_human\n"
-        '- ticker_exists: yes, no, unknown\n'
-        '- name_matches_listing: yes, no, unknown\n'
-        "- alias decision: keep, remove, needs_human\n"
-        "- metadata decision: keep, update, clear, needs_human\n"
-        "confidence must be a number between 0 and 1.\n"
-        "Do not use alternate keys such as recommended_action, explanation, action, listing_valid, or fields_requiring_verification."
-    )
-    if template:
-        return f"{template}\n\n{schema_rules}\n\n{build_prompt_text(item)}"
-    return f"{schema_rules}\n\n{build_prompt_text(item)}"
 
 
 def build_claude_batch_prompt(items: list[dict[str, object]], prompt_template: str) -> str:
@@ -267,45 +242,6 @@ def build_batches(
     return batches, deferred_items
 
 
-def run_claude(
-    *,
-    prompt: str,
-    schema: dict[str, object],
-    model: str,
-    cwd: Path,
-    timeout_seconds: int,
-) -> tuple[dict[str, object], str]:
-    command = build_claude_command(prompt=prompt, schema=schema, model=model, cwd=cwd)
-    completed = subprocess.run(
-        command,
-        cwd=cwd,
-        capture_output=True,
-        text=True,
-        timeout=timeout_seconds,
-        check=False,
-    )
-    if completed.returncode != 0:
-        stderr = completed.stderr.strip() or completed.stdout.strip() or f"exit_code={completed.returncode}"
-        raise RuntimeError(stderr)
-
-    stdout = completed.stdout.strip()
-    if not stdout:
-        raise RuntimeError("Claude returned empty output.")
-
-    required_fields = {
-        "ticker",
-        "exchange",
-        "entry_decision",
-        "ticker_exists",
-        "name_matches_listing",
-        "alias_actions",
-        "metadata_actions",
-        "confidence",
-        "summary",
-    }
-    return extract_structured_output(stdout, required_fields), stdout
-
-
 def run_claude_batch(
     *,
     items: list[dict[str, object]],
@@ -429,7 +365,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run the flagged review queue through local Claude CLI.")
     parser.add_argument("--review-queue-json", type=Path, default=DEFAULT_REVIEW_QUEUE_JSON)
     parser.add_argument("--prompt-path", type=Path, default=DEFAULT_PROMPT_PATH)
-    parser.add_argument("--schema-path", type=Path, default=DEFAULT_SCHEMA_PATH)
+    parser.add_argument("--schema-path", type=Path, default=DEFAULT_REVIEW_SCHEMA_PATH)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     parser.add_argument("--raw-out", type=Path, default=DEFAULT_RAW_RESPONSES_JSONL)
     parser.add_argument("--json-out", type=Path, default=DEFAULT_NORMALIZED_JSON)

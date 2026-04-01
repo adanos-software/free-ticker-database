@@ -221,8 +221,7 @@ python3 scripts/rebuild_dataset.py
 5. Build small, actionable PR batches from the Claude decisions:
 
 ```bash
-python3 scripts/build_pr_review_batches.py \
-  --normalized-reviews-json data/claude_review_jobs/normalized_reviews.json
+python3 scripts/build_pr_review_batches.py
 ```
 
 6. Apply confirmed review batches back to the source CSVs:
@@ -233,48 +232,12 @@ python3 scripts/apply_review_batches.py --execute
 
 By default the script reads `data/pr_review_batches/manifest.json`, updates the source CSVs, and rebuilds derived artifacts unless `--skip-rebuild` is passed.
 
-Alternative remote flow:
-
-7. Split the queue into Gemini Batch API jobs:
-
-```bash
-python3 scripts/build_gemini_review_batches.py
-```
-
-This creates `data/gemini_review_jobs/manifest.json` plus `batch-*.jsonl` files with one structured Gemini request per flagged entry.
-
-8. Submit, poll, and download Gemini batch jobs:
-
-```bash
-export GEMINI_API_KEY=your_api_key
-python3 scripts/run_gemini_review_batches.py run
-```
-
-This uploads the JSONL batches, polls for terminal states, and downloads response files into `data/gemini_review_jobs/responses/`. You can also run `submit`, `poll`, and `download` separately.
-
-9. After Gemini finishes, ingest the response JSONL files:
-
-```bash
-python3 scripts/ingest_gemini_reviews.py --responses-path data/gemini_review_jobs/responses
-```
-
-This creates normalized review decisions plus ingest errors under `data/gemini_review_jobs/`.
-
-10. Build small, actionable PR batches from the normalized decisions:
-
-```bash
-python3 scripts/build_pr_review_batches.py
-```
-
-This creates `data/pr_review_batches/manifest.json`, operation batch files, and a manual backlog.
-
-11. Keep PRs batched by finding type or source update, not one PR per ticker.
+7. Keep PRs batched by finding type or source update, not one PR per ticker.
 
 Prompt and response schema:
 
 - [`docs/claude_review_prompt.md`](docs/claude_review_prompt.md)
-- [`docs/gemini_review_prompt.md`](docs/gemini_review_prompt.md)
-- [`docs/gemini_review_response.schema.json`](docs/gemini_review_response.schema.json)
+- [`docs/review_response.schema.json`](docs/review_response.schema.json)
 
 ## Data Sources
 

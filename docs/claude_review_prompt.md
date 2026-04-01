@@ -11,7 +11,7 @@ Your job:
 1. Decide whether the listing itself looks valid.
 2. Decide whether the aliases look plausible.
 3. Identify which fields require human or external-source verification.
-4. Return structured JSON that matches `docs/gemini_review_response.schema.json`.
+4. Return structured JSON that matches `docs/review_response.schema.json`.
 
 ## Review rules
 

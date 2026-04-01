@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from scripts.ingest_gemini_reviews import DEFAULT_NORMALIZED_JSON, display_path
+from scripts.review_utils import DEFAULT_NORMALIZED_REVIEWS_JSON, display_path
 
 
 DEFAULT_PR_BATCH_DIR = ROOT / "data" / "pr_review_batches"
@@ -173,8 +173,8 @@ def write_batches(output_dir: Path, batches: list[list[dict[str, object]]]) -> l
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Build actionable PR review batches from normalized Gemini review decisions.")
-    parser.add_argument("--normalized-reviews-json", type=Path, default=DEFAULT_NORMALIZED_JSON)
+    parser = argparse.ArgumentParser(description="Build actionable PR review batches from normalized review decisions.")
+    parser.add_argument("--normalized-reviews-json", type=Path, default=DEFAULT_NORMALIZED_REVIEWS_JSON)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_PR_BATCH_DIR)
     parser.add_argument("--manual-out", type=Path, default=DEFAULT_PR_BATCH_DIR / "manual_backlog.json")
     parser.add_argument("--manifest-out", type=Path, default=DEFAULT_PR_BATCH_DIR / "manifest.json")

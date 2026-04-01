@@ -8,7 +8,6 @@ from scripts.run_claude_review_queue import (
     build_batch_schema,
     build_claude_command,
     build_claude_batch_prompt,
-    build_claude_prompt,
     chunk_items,
     coerce_review_payload,
     coerce_batch_payload,
@@ -118,16 +117,6 @@ def test_normalize_claude_result_matches_existing_normalized_shape(tmp_path):
     assert normalized["ticker"] == "AAA"
     assert normalized["queue_total_score"] == 75
     assert normalized["alias_actions"][0]["decision"] == "remove"
-
-
-def test_build_claude_prompt_embeds_entry():
-    prompt = build_claude_prompt(
-        {"ticker": "AAA", "exchange": "NASDAQ", "asset_type": "Stock", "country": "United States", "total_score": 50, "findings": [], "aliases": []},
-        "Use Claude conservatively.",
-    )
-    assert "Use Claude conservatively." in prompt
-    assert "Required top-level fields exactly:" in prompt
-    assert '"ticker": "AAA"' in prompt
 
 
 def test_build_claude_batch_prompt_embeds_exact_batch_constraints():
