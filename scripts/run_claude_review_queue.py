@@ -29,6 +29,7 @@ DEFAULT_RAW_RESPONSES_JSONL = DEFAULT_OUTPUT_DIR / "raw_responses.jsonl"
 DEFAULT_NORMALIZED_JSON = DEFAULT_OUTPUT_DIR / "normalized_reviews.json"
 DEFAULT_NORMALIZED_CSV = DEFAULT_OUTPUT_DIR / "normalized_reviews.csv"
 DEFAULT_ERRORS_JSON = DEFAULT_OUTPUT_DIR / "errors.json"
+DEFAULT_BATCH_SIZE = 10
 
 
 def load_json(path: Path) -> dict[str, object]:
@@ -81,6 +82,42 @@ def build_claude_prompt(item: dict[str, object], prompt_template: str) -> str:
     return f"{schema_rules}\n\n{build_prompt_text(item)}"
 
 
+def build_claude_batch_prompt(items: list[dict[str, object]], prompt_template: str) -> str:
+    template = prompt_template.strip()
+    schema_rules = (
+        "Return one top-level JSON object with exactly one key: reviews.\n"
+        "reviews must be an array containing exactly one review object per entry.\n"
+        "Every review object must use these exact fields: "
+        "ticker, exchange, entry_decision, ticker_exists, name_matches_listing, "
+        "alias_actions, metadata_actions, confidence, summary.\n"
+        "Do not rename fields.\n"
+        "Use alias_actions objects with keys alias, decision, reason.\n"
+        "Use metadata_actions objects with keys field, decision, reason, and optional proposed_value.\n"
+        "Use only these enums:\n"
+        "- entry_decision: keep, drop_entry, fix_metadata, needs_human\n"
+        '- ticker_exists: yes, no, unknown\n'
+        '- name_matches_listing: yes, no, unknown\n'
+        "- alias decision: keep, remove, needs_human\n"
+        "- metadata decision: keep, update, clear, needs_human\n"
+        "confidence must be a number between 0 and 1.\n"
+        "Do not use alternate keys such as recommended_action, explanation, action, listing_valid, or fields_requiring_verification.\n"
+        f"Batch size: {len(items)} entries. Return exactly {len(items)} review objects."
+    )
+    entries = "\n\n".join(
+        f"Entry {index}:\n{json.dumps(item, indent=2, ensure_ascii=True)}"
+        for index, item in enumerate(items, start=1)
+    )
+    prompt_body = (
+        "Review this batch of flagged ticker-database entries.\n\n"
+        "External evidence:\n[]\n\n"
+        "No external evidence is attached in this batch request. If uncertain, prefer needs_human or unknown.\n\n"
+        f"{entries}\n"
+    )
+    if template:
+        return f"{template}\n\n{schema_rules}\n\n{prompt_body}"
+    return f"{schema_rules}\n\n{prompt_body}"
+
+
 def build_claude_command(
     *,
     prompt: str,
@@ -104,14 +141,36 @@ def build_claude_command(
     ]
 
 
+def build_batch_schema(review_schema: dict[str, object], review_count: int) -> dict[str, object]:
+    return {
+        "type": "object",
+        "additionalProperties": False,
+        "required": ["reviews"],
+        "properties": {
+            "reviews": {
+                "type": "array",
+                "minItems": review_count,
+                "maxItems": review_count,
+                "items": review_schema,
+            }
+        },
+    }
+
+
 def extract_structured_output(output: str, required_fields: set[str]) -> dict[str, object]:
     parsed = json.loads(output)
     if isinstance(parsed, dict):
+        candidate = coerce_batch_payload(parsed)
+        if required_fields.issubset(candidate.keys()):
+            return candidate
         candidate = coerce_review_payload(parsed)
         if required_fields.issubset(candidate.keys()):
             return candidate
         structured_output = parsed.get("structured_output")
         if isinstance(structured_output, dict):
+            candidate = coerce_batch_payload(structured_output)
+            if required_fields.issubset(candidate.keys()):
+                return candidate
             candidate = coerce_review_payload(structured_output)
             if required_fields.issubset(candidate.keys()):
                 return candidate
@@ -119,7 +178,11 @@ def extract_structured_output(output: str, required_fields: set[str]) -> dict[st
     for key in ("result", "content", "text", "completion"):
         value = parsed.get(key) if isinstance(parsed, dict) else None
         if isinstance(value, str):
-            candidate = coerce_review_payload(parse_structured_json(value))
+            structured_value = parse_structured_json(value)
+            candidate = coerce_batch_payload(structured_value)
+            if required_fields.issubset(candidate.keys()):
+                return candidate
+            candidate = coerce_review_payload(structured_value)
             if required_fields.issubset(candidate.keys()):
                 return candidate
 
@@ -170,6 +233,40 @@ def coerce_review_payload(payload: dict[str, object]) -> dict[str, object]:
     return candidate
 
 
+def coerce_batch_payload(payload: dict[str, object] | list[object]) -> dict[str, object]:
+    if isinstance(payload, list):
+        return {"reviews": [coerce_review_payload(item) for item in payload if isinstance(item, dict)]}
+
+    if not isinstance(payload, dict):
+        return {}
+
+    reviews = payload.get("reviews")
+    if isinstance(reviews, list):
+        return {"reviews": [coerce_review_payload(item) for item in reviews if isinstance(item, dict)]}
+
+    return {}
+
+
+def chunk_items(items: list[dict[str, object]], batch_size: int) -> list[list[dict[str, object]]]:
+    return [items[index : index + batch_size] for index in range(0, len(items), batch_size)]
+
+
+def build_batches(
+    items: list[dict[str, object]],
+    batch_size: int,
+    *,
+    allow_partial_batch: bool,
+) -> tuple[list[list[dict[str, object]]], list[dict[str, object]]]:
+    full_batch_count = len(items) // batch_size
+    full_batch_limit = full_batch_count * batch_size
+    batches = chunk_items(items[:full_batch_limit], batch_size)
+    deferred_items = items[full_batch_limit:]
+    if allow_partial_batch and deferred_items:
+        batches.append(deferred_items)
+        deferred_items = []
+    return batches, deferred_items
+
+
 def run_claude(
     *,
     prompt: str,
@@ -207,6 +304,41 @@ def run_claude(
         "summary",
     }
     return extract_structured_output(stdout, required_fields), stdout
+
+
+def run_claude_batch(
+    *,
+    items: list[dict[str, object]],
+    review_schema: dict[str, object],
+    prompt_template: str,
+    model: str,
+    cwd: Path,
+    timeout_seconds: int,
+) -> tuple[list[dict[str, object]], str]:
+    prompt = build_claude_batch_prompt(items, prompt_template)
+    schema = build_batch_schema(review_schema, len(items))
+    command = build_claude_command(prompt=prompt, schema=schema, model=model, cwd=cwd)
+    completed = subprocess.run(
+        command,
+        cwd=cwd,
+        capture_output=True,
+        text=True,
+        timeout=timeout_seconds,
+        check=False,
+    )
+    if completed.returncode != 0:
+        stderr = completed.stderr.strip() or completed.stdout.strip() or f"exit_code={completed.returncode}"
+        raise RuntimeError(stderr)
+
+    stdout = completed.stdout.strip()
+    if not stdout:
+        raise RuntimeError("Claude returned empty output.")
+
+    payload = extract_structured_output(stdout, {"reviews"})
+    reviews = payload.get("reviews")
+    if not isinstance(reviews, list):
+        raise RuntimeError("Claude batch output did not include a reviews array.")
+    return reviews, stdout
 
 
 def normalize_claude_result(
@@ -256,6 +388,15 @@ def normalize_claude_result(
     )
 
 
+def batch_cost_from_output(raw_output: str) -> float | None:
+    try:
+        payload = json.loads(raw_output)
+    except json.JSONDecodeError:
+        return None
+    total_cost = payload.get("total_cost_usd")
+    return float(total_cost) if isinstance(total_cost, (int, float)) else None
+
+
 def append_jsonl(path: Path, row: dict[str, object]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a", encoding="utf-8") as handle:
@@ -295,6 +436,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_NORMALIZED_CSV)
     parser.add_argument("--errors-out", type=Path, default=DEFAULT_ERRORS_JSON)
     parser.add_argument("--model", default="sonnet")
+    parser.add_argument("--batch-size", type=int, default=DEFAULT_BATCH_SIZE)
+    parser.add_argument("--allow-partial-batch", action="store_true")
     parser.add_argument("--limit", type=int)
     parser.add_argument("--offset", type=int, default=0)
     parser.add_argument("--min-score", type=int, default=0)
@@ -307,6 +450,8 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
+    if args.batch_size < DEFAULT_BATCH_SIZE:
+        raise SystemExit(f"--batch-size must be at least {DEFAULT_BATCH_SIZE}.")
     queue_payload = load_json(args.review_queue_json)
     schema = load_json(args.schema_path)
     prompt_template = args.prompt_path.read_text(encoding="utf-8")
@@ -331,61 +476,95 @@ def main() -> None:
     normalized_items: list[dict[str, object]] = []
     ingest_errors: list[dict[str, object]] = []
 
-    for index, item in enumerate(items, start=1):
-        prompt = build_claude_prompt(item, prompt_template)
+    batches, deferred_items = build_batches(
+        items,
+        args.batch_size,
+        allow_partial_batch=args.allow_partial_batch,
+    )
+
+    for batch_index, batch_items in enumerate(batches, start=1):
         try:
-            parsed_payload, raw_output = run_claude(
-                prompt=prompt,
-                schema=schema,
+            parsed_payloads, raw_output = run_claude_batch(
+                items=batch_items,
+                review_schema=schema,
+                prompt_template=prompt_template,
                 model=args.model,
                 cwd=ROOT,
                 timeout_seconds=args.timeout_seconds,
             )
-            normalized, error = normalize_claude_result(
-                item=item,
-                parsed_payload=parsed_payload,
-                raw_output_path=args.raw_out,
-                queue_lookup=queue_lookup,
-                schema=schema,
-            )
-            append_jsonl(
-                args.raw_out,
-                {
-                    "ticker": item["ticker"],
-                    "exchange": item["exchange"],
-                    "status": "ok",
-                    "model": args.model,
-                    "response": parsed_payload,
-                    "raw_output": raw_output,
-                },
-            )
-            if normalized:
-                normalized["request_metadata"]["model"] = args.model
-                normalized_items.append(normalized)
-            if error:
-                ingest_errors.append(error)
-        except Exception as exc:  # noqa: BLE001
-            ingest_errors.append(
-                {
-                    "ticker": item["ticker"],
-                    "exchange": item["exchange"],
-                    "source_file": display_path(args.raw_out),
-                    "error_type": "claude_execution_failed",
-                    "error": str(exc),
-                }
-            )
-            append_jsonl(
-                args.raw_out,
-                {
-                    "ticker": item["ticker"],
-                    "exchange": item["exchange"],
-                    "status": "error",
-                    "model": args.model,
-                    "error": str(exc),
-                },
-            )
+            reviews_by_pair = {
+                (str(payload["ticker"]), str(payload["exchange"])): payload
+                for payload in parsed_payloads
+                if isinstance(payload, dict) and "ticker" in payload and "exchange" in payload
+            }
+            if len(reviews_by_pair) != len(batch_items):
+                raise RuntimeError(
+                    f"Claude batch returned {len(reviews_by_pair)} unique reviews for {len(batch_items)} requested items."
+                )
 
-        if args.delay_seconds > 0 and index < len(items):
+            batch_total_cost = batch_cost_from_output(raw_output)
+            estimated_cost = batch_total_cost / len(batch_items) if batch_total_cost is not None else None
+
+            for item in batch_items:
+                item_key = (str(item["ticker"]), str(item["exchange"]))
+                if item_key not in reviews_by_pair:
+                    raise RuntimeError(
+                        f"Claude batch response missing review for {item['ticker']} on {item['exchange']}."
+                    )
+                parsed_payload = reviews_by_pair[item_key]
+                normalized, error = normalize_claude_result(
+                    item=item,
+                    parsed_payload=parsed_payload,
+                    raw_output_path=args.raw_out,
+                    queue_lookup=queue_lookup,
+                    schema=schema,
+                )
+                append_jsonl(
+                    args.raw_out,
+                    {
+                        "ticker": item["ticker"],
+                        "exchange": item["exchange"],
+                        "status": "ok",
+                        "model": args.model,
+                        "batch_id": f"batch-{batch_index:05d}",
+                        "batch_size": len(batch_items),
+                        "batch_total_cost_usd": batch_total_cost,
+                        "estimated_cost_usd": estimated_cost,
+                        "response": parsed_payload,
+                    },
+                )
+                if normalized:
+                    normalized["request_metadata"]["model"] = args.model
+                    normalized["request_metadata"]["batch_id"] = f"batch-{batch_index:05d}"
+                    normalized["request_metadata"]["batch_size"] = len(batch_items)
+                    normalized_items.append(normalized)
+                if error:
+                    ingest_errors.append(error)
+        except Exception as exc:  # noqa: BLE001
+            for item in batch_items:
+                ingest_errors.append(
+                    {
+                        "ticker": item["ticker"],
+                        "exchange": item["exchange"],
+                        "source_file": display_path(args.raw_out),
+                        "error_type": "claude_execution_failed",
+                        "error": str(exc),
+                    }
+                )
+                append_jsonl(
+                    args.raw_out,
+                    {
+                        "ticker": item["ticker"],
+                        "exchange": item["exchange"],
+                        "status": "error",
+                        "model": args.model,
+                        "batch_id": f"batch-{batch_index:05d}",
+                        "batch_size": len(batch_items),
+                        "error": str(exc),
+                    },
+                )
+
+        if args.delay_seconds > 0 and batch_index < len(batches):
             time.sleep(args.delay_seconds)
 
     normalized_items.sort(key=lambda row: (str(row["ticker"]), str(row["exchange"])))
@@ -407,6 +586,8 @@ def main() -> None:
             {
                 "review_queue": display_path(args.review_queue_json),
                 "processed_items": len(items),
+                "processed_batches": len(batches),
+                "deferred_items": len(deferred_items),
                 "normalized_reviews": len(normalized_items),
                 "errors": len(ingest_errors),
                 "raw_out": display_path(args.raw_out),

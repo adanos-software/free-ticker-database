@@ -191,7 +191,7 @@ Recommended workflow:
 python3 scripts/run_claude_review_queue.py --model sonnet --skip-existing
 ```
 
-This uses `claude --dangerously-skip-permissions -p` locally and writes:
+This uses `claude --dangerously-skip-permissions -p` locally, batches reviews in groups of `10` by default, and defers any tail batch smaller than `10` unless `--allow-partial-batch` is passed. It writes:
 
 - `data/claude_review_jobs/raw_responses.jsonl`
 - `data/claude_review_jobs/normalized_reviews.json`
