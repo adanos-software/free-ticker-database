@@ -67,6 +67,37 @@ BAD_OBVIOUS_AMBIGUOUS_ALIASES = {
     "tim cook",
     "windows",
 }
+BAD_GENERIC_FUND_ALIASES = {
+    "ab active etfs",
+    "advisor managed portfolios",
+    "aim etf products trust",
+    "american century etf trust",
+    "bitwise funds trust",
+    "bondbloxx etf trust",
+    "calamos etf trust",
+    "columbia etf trust i",
+    "dimensional etf trust",
+    "direxion shares etf trust",
+    "exchange listed funds trust",
+    "exchange traded concepts trust",
+    "first trust exchange-traded fund",
+    "global x funds",
+    "goldman sachs etf trust",
+    "harbor etf trust",
+    "innovator etfs trust",
+    "ishares trust",
+    "j.p. morgan exchange-traded fund trust",
+    "morgan stanley etf trust",
+    "neuberger berman etf trust",
+    "precidian etfs trust",
+    "proshares trust",
+    "putnam etf trust",
+    "simplify exchange traded funds",
+    "spinnaker etf series",
+    "t. rowe price exchange-traded funds",
+    "tidal etf trust",
+    "tidal trust ii",
+}
 US_EXCHANGES = {"NASDAQ", "NYSE", "NYSE ARCA", "NYSE MKT", "BATS"}
 OTC_EXCHANGES = {"OTC", "OTCCE", "OTCMKTS"}
 STRICT_NUMERIC_NAMESPACE_EXCHANGES = {"Bursa", "KOSDAQ", "KRX", "TPEX", "TWSE"}
@@ -474,6 +505,8 @@ def clean_aliases(
         if lowered in BAD_CONTAMINATED_ALIASES:
             continue
         if lowered in BAD_OBVIOUS_AMBIGUOUS_ALIASES:
+            continue
+        if lowered in BAD_GENERIC_FUND_ALIASES:
             continue
         if has_wrapper_term(alias):
             continue

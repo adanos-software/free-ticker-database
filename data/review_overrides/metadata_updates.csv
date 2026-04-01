@@ -154,3 +154,12 @@ VIS,NYSE ARCA,country,update,United States,0.85,Vanguard Industrials ETF is a US
 VIS,NYSE ARCA,country_code,update,US,0.85,Matches US fund domicile.
 VMC,NYSE,country,update,United States,0.87,Vulcan Materials Company is a US company (Alabama); country is incorrectly set to Australia.
 VMC,NYSE,country_code,update,US,0.87,Must match corrected country.
+DMNIF,OTC,name,update,Damon Inc.,0.95,Yahoo Finance verifies DMNIF as Damon Inc. on OTC Markets with recent trading history.
+DMNIF,OTC,country,update,Canada,0.95,Yahoo Finance reports Damon Inc. domicile as Canada for the OTC listing.
+DMNIF,OTC,country_code,update,CA,0.95,Must match corrected country.
+DMNIF,OTC,isin,update,CA2357502053,0.95,Yahoo Finance exposes ISIN CA2357502053 for DMNIF.
+DTREF,OTC,name,update,DATELINE RESOURCES LTD.,0.95,Yahoo Finance verifies DTREF as DATELINE RESOURCES LTD. on OTC Markets with recent trading history.
+DTREF,OTC,country,update,Australia,0.95,Yahoo Finance reports DTREF domicile as Australia for the OTC listing.
+DTREF,OTC,country_code,update,AU,0.95,Must match corrected country.
+DTREF,OTC,isin,update,AU000000DTR1,0.95,Yahoo Finance exposes ISIN AU000000DTR1 for DTREF.
+DTREF,OTC,sector,update,Materials,0.9,Yahoo Finance classifies DTREF under Basic Materials; normalized to canonical GICS sector Materials.

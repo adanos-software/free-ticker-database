@@ -58,6 +58,16 @@ def test_common_word_aliases_removed():
     assert aliases.isdisjoint(blocked)
 
 
+def test_generic_fund_wrapper_aliases_removed():
+    aliases = {(row["ticker"], row["alias"]) for row in load_csv("aliases.csv")}
+    blocked = {
+        ("IBCA", "ishares trust"),
+        ("BOTZ39", "global x funds"),
+        ("BITU", "proshares trust"),
+    }
+    assert aliases.isdisjoint(blocked)
+
+
 def test_non_common_instruments_removed():
     tickers = {row["ticker"] for row in load_csv("tickers.csv")}
     assert "AACBR" not in tickers
@@ -74,6 +84,22 @@ def test_country_examples_corrected():
     assert ticker_row("0A00")["country"] == "Netherlands"
     assert ticker_row("04Q")["country"] == "Finland"
     assert ticker_row("A1CR34")["country"] == "Jersey"
+
+
+def test_thin_otc_metadata_is_backfilled_for_verified_listings():
+    dmnif = ticker_exchange_row("DMNIF", "OTC")
+    dtref = ticker_exchange_row("DTREF", "OTC")
+
+    assert dmnif["name"] == "Damon Inc."
+    assert dmnif["country"] == "Canada"
+    assert dmnif["country_code"] == "CA"
+    assert dmnif["isin"] == "CA2357502053"
+
+    assert dtref["name"] == "DATELINE RESOURCES LTD."
+    assert dtref["country"] == "Australia"
+    assert dtref["country_code"] == "AU"
+    assert dtref["isin"] == "AU000000DTR1"
+    assert dtref["sector"] == "Materials"
 
 
 def test_non_otc_country_isin_mismatches_are_cleared():
@@ -242,7 +268,7 @@ def test_changelog_and_supporting_docs_are_current():
     assert "- No unreleased changes yet." in changelog
     assert "## 2.0.0" in changelog
     assert "59,178 tickers (43,086 stocks, 16,092 ETFs) across 67 exchanges and 68 countries" in changelog
-    assert "104,314 aliases" in changelog
+    assert "103,882 aliases" in changelog
     assert "Keep the dataset build and review scripts dependency-light and easy to trace" in contributing
     assert "one or more `review_queue.json` items" in claude_prompt
 

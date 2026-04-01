@@ -16,6 +16,7 @@ from scripts.rebuild_dataset import (
     ALIASES_CSV,
     BAD_COMMON_ALIASES,
     BAD_CONTAMINATED_ALIASES,
+    BAD_GENERIC_FUND_ALIASES,
     BAD_OBVIOUS_AMBIGUOUS_ALIASES,
     COUNTRY_TO_ISO,
     EXCHANGE_TICKER_RE,
@@ -294,7 +295,7 @@ def analyze_dataset(
         wkns = wkn_lookup.get(ticker, set())
         isin = ticker_row["isin"]
 
-        if alias_type == "name" and lowered in BAD_COMMON_ALIASES | BAD_CONTAMINATED_ALIASES | BAD_OBVIOUS_AMBIGUOUS_ALIASES:
+        if alias_type == "name" and lowered in BAD_COMMON_ALIASES | BAD_CONTAMINATED_ALIASES | BAD_OBVIOUS_AMBIGUOUS_ALIASES | BAD_GENERIC_FUND_ALIASES:
             add_finding(
                 findings_by_ticker,
                 ticker,
@@ -303,7 +304,7 @@ def analyze_dataset(
                 90,
                 "alias",
                 alias,
-                "Alias matches a blocked common-word, contaminated, or obviously ambiguous term.",
+                "Alias matches a blocked common-word, contaminated, generic fund-wrapper, or obviously ambiguous term.",
             )
 
         if alias_type == "name" and has_wrapper_term(alias):
