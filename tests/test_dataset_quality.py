@@ -25,6 +25,13 @@ def ticker_row(ticker: str):
     return None
 
 
+def ticker_exchange_row(ticker: str, exchange: str):
+    for row in load_csv("tickers.csv"):
+        if row["ticker"] == ticker and row["exchange"] == exchange:
+            return row
+    return None
+
+
 def test_common_word_aliases_removed():
     aliases = {(row["ticker"], row["alias"]) for row in load_csv("aliases.csv")}
     blocked = {
@@ -67,6 +74,12 @@ def test_country_examples_corrected():
     assert ticker_row("0A00")["country"] == "Netherlands"
     assert ticker_row("04Q")["country"] == "Finland"
     assert ticker_row("A1CR34")["country"] == "Jersey"
+
+
+def test_non_otc_country_isin_mismatches_are_cleared():
+    assert ticker_exchange_row("T", "NYSE")["isin"] == ""
+    assert ticker_exchange_row("PKO", "WSE")["isin"] == ""
+    assert ticker_exchange_row("PRX", "AMS")["isin"] == ""
 
 
 def test_contaminated_us_primaries_cleaned():
@@ -197,13 +210,23 @@ def test_artifact_counts_match():
 
 def test_readme_stats_and_claims_are_current():
     readme = (ROOT / "README.md").read_text()
-    assert "| **Total tickers** | 59,178 |" in readme
-    assert "| Stocks | 43,086 |" in readme
-    assert "| ETFs | 16,092 |" in readme
-    assert "| Countries | 68 |" in readme
-    assert "| Total aliases | 104,387 |" in readme
-    assert "| ISIN coverage | 44,839 (75.8%) |" in readme
-    assert "| Sector coverage | 38,900 (65.7%) |" in readme
+    tickers_csv = load_csv("tickers.csv")
+    aliases_csv = load_csv("aliases.csv")
+
+    total = len(tickers_csv)
+    stocks = sum(row["asset_type"] == "Stock" for row in tickers_csv)
+    etfs = sum(row["asset_type"] == "ETF" for row in tickers_csv)
+    countries = len({row["country"] for row in tickers_csv if row["country"]})
+    isin_count = sum(bool(row["isin"]) for row in tickers_csv)
+    sector_count = sum(bool(row["sector"]) for row in tickers_csv)
+
+    assert f"| **Total tickers** | {total:,} |" in readme
+    assert f"| Stocks | {stocks:,} |" in readme
+    assert f"| ETFs | {etfs:,} |" in readme
+    assert f"| Countries | {countries:,} |" in readme
+    assert f"| Total aliases | {len(aliases_csv):,} |" in readme
+    assert f"| ISIN coverage | {isin_count:,} ({isin_count / total * 100:.1f}%) |" in readme
+    assert f"| Sector coverage | {sector_count:,} ({sector_count / total * 100:.1f}%) |" in readme
     assert "| NASDAQ | 4,819 | NASDAQ |" in readme
     assert "| XETRA | 2,947 | Deutsche Boerse |" in readme
     assert "| NYSE | 2,618 | New York Stock Exchange |" in readme
@@ -219,7 +242,7 @@ def test_changelog_and_supporting_docs_are_current():
     assert "- No unreleased changes yet." in changelog
     assert "## 2.0.0" in changelog
     assert "59,178 tickers (43,086 stocks, 16,092 ETFs) across 67 exchanges and 68 countries" in changelog
-    assert "104,387 aliases" in changelog
+    assert "104,314 aliases" in changelog
     assert "Keep the dataset build and review scripts dependency-light and easy to trace" in contributing
     assert "one or more `review_queue.json` items" in claude_prompt
 

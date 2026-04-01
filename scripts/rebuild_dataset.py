@@ -635,8 +635,15 @@ def cleaned_rows():
             continue
         isin, aliases = clean_aliases(row, aliases, wkns)
         country = row["country"]
-        if isin:
-            country = country_from_isin(isin) or country
+        inferred_country = country_from_isin(isin) if isin else None
+        if inferred_country and inferred_country != country:
+            if row["exchange"] in OTC_EXCHANGES and country == "United States":
+                country = inferred_country
+            else:
+                isin = ""
+                inferred_country = None
+        if inferred_country:
+            country = inferred_country
 
         output_row = {
             "ticker": row["ticker"],

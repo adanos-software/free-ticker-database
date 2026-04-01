@@ -11,8 +11,8 @@
 - JSON outputs use a `_meta` envelope with version/build metadata
 - Added `country_code` (ISO 3166-1 alpha-2) to dataset exports
 - Added `cross_listings.csv` and SQLite `cross_listings` for multi-exchange securities
-- 104,387 aliases with type classification (`isin`, `wkn`, `name`, `exchange_ticker`)
-- ISIN coverage: 75.8%
+- 104,314 aliases with type classification (`isin`, `wkn`, `name`, `exchange_ticker`)
+- ISIN coverage: 75.6%
 - Sector coverage: 65.7%
 - Quality filters include duplicate removal, alias cleanup, stock-universe instrument filtering,
   ISIN-based country correction, sector normalization, and ISIN check-digit validation
