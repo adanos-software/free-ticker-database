@@ -13,7 +13,7 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 59
 | Countries | 68 |
 | ISIN coverage | 44,839 (75.8%) |
 | Sector coverage | 38,900 (65.7%) |
-| Total aliases | 104,390 |
+| Total aliases | 104,387 |
 
 ## Formats
 
