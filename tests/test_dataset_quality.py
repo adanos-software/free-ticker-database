@@ -203,7 +203,7 @@ def test_readme_stats_and_claims_are_current():
     assert "| Stocks | 43,086 |" in readme
     assert "| ETFs | 16,092 |" in readme
     assert "| Countries | 68 |" in readme
-    assert "| Total aliases | 104,532 |" in readme
+    assert "| Total aliases | 104,390 |" in readme
     assert "| ISIN coverage | 44,839 (75.8%) |" in readme
     assert "| Sector coverage | 38,900 (65.7%) |" in readme
 

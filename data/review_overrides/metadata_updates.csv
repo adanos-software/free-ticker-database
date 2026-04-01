@@ -1,10 +1,18 @@
 ticker,exchange,field,decision,proposed_value,confidence,reason
+0HEC,LSE,country,update,United States,0.8,"AEP is a US-domiciled company. Other LSE international listings in this dataset (e.g. 0HV2, 0QXR) correctly show the issuer's home country. 'United Kingdom' is wrong here."
+0HEC,LSE,country_code,update,US,0.8,"Should reflect issuer domicile (US), consistent with ISIN US0255371017."
 AGI,NYSE,country,update,Canada,0.8,Alamos Gold Inc is a Canadian company incorporated in Ontario.
 AGI,NYSE,country_code,update,CA,0.8,Matches Canadian company identity.
 ASL,LSE,country,update,United Kingdom,0.82,Aberforth Smaller Companies Trust PLC is a UK investment trust listed on LSE; Canada is incorrect.
 ASL,LSE,country_code,update,GB,0.82,"Country code should match United Kingdom, not Canada (CA)."
 BSX,NYSE,country,update,United States,0.8,Boston Scientific Corp is a major US medical device company listed on NYSE; country AU is incorrect.
 BSX,NYSE,country_code,update,US,0.8,Consistent with country correction.
+CAG,NYSE,country,update,United States,0.8,"ConAgra Brands is a US company headquartered in Chicago, IL; current value 'Canada' is incorrect."
+CAG,NYSE,country_code,update,US,0.8,Matches corrected country.
+CAP,Euronext,country,update,France,0.8,Capgemini SE is a French company; current value 'Chile' is incorrect.
+CAP,Euronext,country_code,update,FR,0.8,Matches corrected country.
+CAT,NYSE,country,update,United States,0.88,Caterpillar Inc is a US company; current value 'Australia' is incorrect.
+CAT,NYSE,country_code,update,US,0.88,Matches corrected country.
 CBK,NASDAQ,exchange,update,XETRA,0.8,"Commerzbank AG (CBK) trades on XETRA/Frankfurt, not NASDAQ."
 CBK,NASDAQ,name,update,Commerzbank AG,0.8,"ISIN DE000CBK1001 and country DE both point to Commerzbank AG, not the defunct US bank Commercial Bancgroup."
 CMG,NYSE,country,update,United States,0.82,Chipotle Mexican Grill is a US-incorporated company
@@ -24,14 +32,28 @@ DE,NYSE,country_code,update,US,0.88,Matches US domicile.
 DE,NYSE,isin,update,US2441991054,0.88,CA24345T1003 is a Canadian ISIN; the correct ISIN for Deere & Company (NYSE: DE) is US2441991054.
 EA,NASDAQ,country,update,United States,0.82,Electronic Arts Inc is a US company. 'Thailand' came from the Energy Absolute (SET:EA) collision.
 EA,NASDAQ,country_code,update,US,0.82,Follows country correction to United States.
+ECL,NYSE,country,update,United States,0.88,Ecolab Inc is a US company headquartered in Minnesota.
+ECL,NYSE,country_code,update,US,0.88,Consistent with NYSE listing of a US company.
+ELV,NYSE,country,update,United States,0.88,Elevance Health Inc is a US health insurance company listed on NYSE.
+ELV,NYSE,country_code,update,US,0.88,Consistent with NYSE listing of a US company.
 FEX,NASDAQ,country,update,United States,0.8,First Trust Large Cap Core AlphaDEX® Fund is a US-domiciled ETF listed on NASDAQ.
 FEX,NASDAQ,country_code,update,US,0.8,Consistent with NASDAQ listing.
 GLAD,NASDAQ,country,update,United States,0.8,Gladstone Capital Corporation is a US BDC listed on NASDAQ; Canada is incorrect.
 GLAD,NASDAQ,country_code,update,US,0.8,Must match United States.
+H,NYSE,country,update,United States,0.82,Hyatt Hotels Corporation is a US-incorporated company listed on NYSE; Canada is incorrect.
+H,NYSE,country_code,update,US,0.82,Matches US domicile for NYSE-listed Hyatt Hotels.
+HBAN,NASDAQ,country,update,United States,0.83,Huntington Bancshares is a US bank holding company; Switzerland is incorrect.
+HBAN,NASDAQ,country_code,update,US,0.83,Matches US domicile for NASDAQ-listed Huntington Bancshares.
 LC,NYSE,country,update,United States,0.82,LendingClub Corp is a US company; PH country is from the Lepanto collision.
 LC,NYSE,country_code,update,US,0.82,Follows from country correction.
 LFST,NASDAQ,country,update,United States,0.83,Lifestance Health Group Inc. is a US company listed on NASDAQ.
 LFST,NASDAQ,country_code,update,US,0.83,Follows from country correction.
+MAC,NYSE,country,update,United States,0.82,Macerich Company is a US REIT; 'United Kingdom' is incorrect.
+MAC,NYSE,country_code,update,US,0.82,"Should be US, not GB."
+MAN,NYSE,country,update,United States,0.85,ManpowerGroup Inc. is a US company headquartered in Milwaukee; 'Austria' is incorrect.
+MAN,NYSE,country_code,update,US,0.85,"Should be US, not AT."
+MAT,NASDAQ,country,update,United States,0.88,Mattel Inc. is a US company; 'Australia' is incorrect.
+MAT,NASDAQ,country_code,update,US,0.88,"Should be US, not AU."
 MCB,NYSE,country,update,United States,0.85,Metropolitan Bank Holding Corp is a US bank (New York); Canada is incorrect.
 MCB,NYSE,country_code,update,US,0.85,"Country code should reflect the United States, not Canada (CA)."
 MCI,NYSE,country,update,United States,0.82,"Barings Corporate Investors is a US-registered closed-end fund, not Canadian."
@@ -40,8 +62,14 @@ MCS,NYSE,country,update,United States,0.82,"Marcus Corporation is a US company h
 MCS,NYSE,country_code,update,US,0.82,Consistent with corrected country.
 MD,NYSE,country,update,United States,0.82,"Mednax Inc is a US company headquartered in Sunrise, FL."
 MD,NYSE,country_code,update,US,0.82,Consistent with corrected country.
+MED,NYSE,country,update,United States,0.85,Medifast Inc. is a US company; 'Switzerland' is incorrect.
+MED,NYSE,country_code,update,US,0.85,"Should be US, not CH."
+MEG,NYSE,country,update,United States,0.83,Montrose Environmental Group is a US company; 'Australia' is incorrect.
+MEG,NYSE,country_code,update,US,0.83,"Should be US, not AU."
 MEI,NYSE,country,update,United States,0.8,"Methode Electronics Inc. is a US company headquartered in Chicago, Illinois; NYSE listing is consistent with US domicile."
 MEI,NYSE,country_code,update,US,0.8,Follows correction of country to United States.
+MER,LSE,country,update,United Kingdom,0.85,Mears Group plc is a UK company listed on LSE; 'Canada' is incorrect.
+MER,LSE,country_code,update,GB,0.85,"Should be GB, not CA."
 MERC,NASDAQ,country,update,Canada,0.8,"Mercer International Inc is incorporated in British Columbia, Canada."
 MERC,NASDAQ,country_code,update,CA,0.8,Consistent with corrected country.
 MG,NYSE,country,update,United States,0.8,"Mistras Group Inc is a US company headquartered in Princeton Junction, NJ."
@@ -64,16 +92,28 @@ NXT,NASDAQ,country,update,United States,0.82,Nextracker Inc. is a US company lis
 NXT,NASDAQ,country_code,update,US,0.82,Country code must match United States.
 OGN,NYSE,country,update,United States,0.83,Organon & Co is a US company listed on NYSE.
 OGN,NYSE,country_code,update,US,0.83,Country code must match United States.
+ORG,WSE,exchange,update,ASX,0.8,"Origin Energy Limited is listed on the Australian Securities Exchange, not the Warsaw Stock Exchange"
+ORG,WSE,name,update,Origin Energy Limited,0.8,"ISIN AU000000ORG5 and alias 'origin energy' identify this as Origin Energy Limited, not a bare ticker placeholder"
 PAY,NYSE,country,update,United States,0.83,"Paymentus Holdings, Inc. is a US company listed on NYSE."
 PAY,NYSE,country_code,update,US,0.83,Country code must match United States.
+PIM,NYSE,country,update,United States,0.8,"Putnam is a US fund manager; this is NYSE-listed, not Australian."
+PIM,NYSE,country_code,update,US,0.8,Consistent with NYSE listing and US fund manager.
+PIN,NYSE ARCA,country,update,United States,0.85,Invesco India ETF is US-domiciled and NYSE ARCA-listed.
+PIN,NYSE ARCA,country_code,update,US,0.85,Consistent with NYSE ARCA listing.
 PKO,WSE,country,update,Poland,0.8,PKO Bank Polski is a Polish institution listed on WSE; Australia is incorrect.
 PKO,WSE,country_code,update,PL,0.8,Follows country correction to Poland.
+PLUS,NASDAQ,country,update,United States,0.8,ePlus inc is a US company listed on NASDAQ.
+PLUS,NASDAQ,country_code,update,US,0.8,Consistent with NASDAQ listing.
 PMT,NYSE,country,update,United States,0.82,PMT is a US-domiciled REIT listed on NYSE; country is incorrectly set to Australia.
 PMT,NYSE,country_code,update,US,0.82,Matches country correction above.
+PPH,NASDAQ,country,update,United States,0.8,VanEck Pharmaceutical ETF is a US-domiciled fund.
+PPH,NASDAQ,country_code,update,US,0.8,Consistent with NASDAQ listing.
 PRG,NYSE,country,update,United States,0.83,PROG Holdings Inc is a US company (Utah); Australia is incorrect.
 PRG,NYSE,country_code,update,US,0.83,"Country code should reflect the United States, not Australia (AU)."
 PRIM,NYSE,country,update,United States,0.85,Primoris Services is a US company headquartered in Texas; country is incorrectly set to United Kingdom.
 PRIM,NYSE,country_code,update,US,0.85,Matches country correction above.
+PRU,NYSE,country,update,United States,0.85,Prudential Financial is a US company listed on NYSE.
+PRU,NYSE,country_code,update,US,0.85,Consistent with NYSE listing.
 PRX,AMS,country,update,Netherlands,0.88,Prosus N.V. is incorporated in the Netherlands; country is incorrectly set to Australia.
 PRX,AMS,country_code,update,NL,0.88,Matches country correction above.
 PSI,NYSE ARCA,country,update,United States,0.82,PSI is a US-listed ETF managed by Invesco; Canada is incorrect.
@@ -86,11 +126,31 @@ RARE,NASDAQ,country,update,United States,0.82,"Ultragenyx Pharmaceutical is a US
 RARE,NASDAQ,country_code,update,US,0.82,Should be US to match NASDAQ listing and company incorporation.
 RCH,LSE,country,update,United Kingdom,0.82,"Reach PLC is a UK media company listed on the LSE, not a Canadian entity."
 RCH,LSE,country_code,update,GB,0.82,Should be GB to match LSE listing and UK incorporation.
+SAM,NYSE,country,update,United States,0.82,"Boston Beer Company is headquartered in Boston, MA, USA. Country 'Canada' is incorrect."
+SAM,NYSE,country_code,update,US,0.82,Consistent correction with country field; CA is wrong for a US-listed NYSE company.
+SCHP,NYSE ARCA,country,update,United States,0.85,Schwab U.S. TIPS ETF is a US-domiciled fund; country 'Switzerland' is incorrect.
+SCHP,NYSE ARCA,country_code,update,US,0.85,Consistent with country correction; CH is wrong for a US Schwab ETF.
+SHG,NYSE,country,update,South Korea,0.8,Shinhan Financial Group is a Korean company; AU is incorrect.
+SHG,NYSE,country_code,update,KR,0.8,Consistent with South Korean domicile.
 SLM,NASDAQ,country,update,United States,0.8,"SLM Corp is a US-incorporated company headquartered in Newark, Delaware."
 SLM,NASDAQ,country_code,update,US,0.8,Matches US company identity.
+SNX,NYSE,country,update,United States,0.82,SNX/TD SYNNEX is a US-headquartered company listed on NYSE; AU is incorrect.
+SNX,NYSE,country_code,update,US,0.82,Consistent with NYSE listing and US domicile.
+SPG,NYSE,country,update,United States,0.82,Simon Property Group is a US REIT; AU is incorrect.
+SPG,NYSE,country_code,update,US,0.82,Consistent with US domicile.
+SRE,NYSE,country,update,United States,0.85,Sempra is a US utility headquartered in San Diego; Guernsey domicile is incorrect.
+SRE,NYSE,country_code,update,US,0.85,Consistent with NYSE listing and US domicile.
 T,NYSE,country,update,United States,0.85,AT&T Inc is a US-incorporated company.
 T,NYSE,country_code,update,US,0.85,Matches US company identity.
+TECH,NASDAQ,country,update,United States,0.85,"Bio-Techne Corp is a US company headquartered in Minneapolis, MN; country is incorrectly set to Australia."
+TECH,NASDAQ,country_code,update,US,0.85,Must match corrected country.
 TER,NASDAQ,country,update,United States,0.85,"Teradyne Inc is a US company headquartered in North Reading, MA; country=Australia is incorrect."
 TER,NASDAQ,country_code,update,US,0.85,Should be US for a NASDAQ-listed American company.
+TRC,NYSE,country,update,United States,0.85,Tejon Ranch Co is a US company (California); country is incorrectly set to United Kingdom.
+TRC,NYSE,country_code,update,US,0.85,Must match corrected country.
+UNIT,NASDAQ,country,update,United States,0.85,Uniti Group Inc is a US company (Arkansas); country is incorrectly set to Egypt.
+UNIT,NASDAQ,country_code,update,US,0.85,Must match corrected country.
 VIS,NYSE ARCA,country,update,United States,0.85,Vanguard Industrials ETF is a US-domiciled fund managed by Vanguard.
 VIS,NYSE ARCA,country_code,update,US,0.85,Matches US fund domicile.
+VMC,NYSE,country,update,United States,0.87,Vulcan Materials Company is a US company (Alabama); country is incorrectly set to Australia.
+VMC,NYSE,country_code,update,US,0.87,Must match corrected country.

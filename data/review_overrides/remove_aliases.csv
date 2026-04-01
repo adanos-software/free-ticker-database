@@ -1,9 +1,14 @@
 ticker,exchange,alias,confidence,reason
+0BFA,LSE,BASFY,0.82,BASFY is the US OTC ADR ticker for BASF — a separate listed instrument. Including it as an alias for the LSE listing creates cross-listing collision and conflates two distinct securities.
 0E1Y,LSE,getnet adquirencia,0.88,Getnet Adquirência is a Brazilian payment company unrelated to Chargeurs (French industrial group). Alias is a clear cross-company contamination.
+0HEC,LSE,AEPPZ,0.8,"AEPPZ is a preferred/subordinated debt ticker for American Electric Power, not the common equity. It represents a different security and should not alias the common stock LSE listing."
 0IFK,LSE,gene editing,0.82,Generic sector descriptor shared across 6+ companies. Provides no disambiguation value and pollutes search results.
 0J1Z,LSE,premier investments,0.88,Premier Investments is an Australian retail company entirely unrelated to NOS SGPS (Portuguese telecom). Clear cross-company contamination.
 0JBU,LSE,gene editing,0.82,"Generic sector descriptor shared across 6+ companies including CRSP, EDIT, NTLA, 0IFK, 0VRQ. No disambiguation value."
 0JU0,LSE,LEN-B,0.83,LEN-B is the ticker for Lennar Corp Class B shares — a distinct security from this entry which is specifically Lennar Cl A. Using a different share class as an alias causes cross-security collision.
+0QXR,LSE,chrysler,0.87,"Chrysler is a legacy brand within Stellantis, not the issuer name. Product/brand alias."
+0QXR,LSE,jeep,0.87,"Jeep is a consumer vehicle brand owned by Stellantis, not the company or fund name. Product brand aliases should not be included."
+0QXR,LSE,ram trucks,0.87,"RAM Trucks is a vehicle brand owned by Stellantis, not the issuer name. Product/brand alias."
 0QYJ,LSE,marc benioff,0.8,"Person/celebrity name; should never serve as a ticker alias for the corporate entity Salesforce, Inc."
 21XJ,XETRA,airbnb,0.8,'airbnb' refers to Airbnb Inc. (ABNB); it has no relation to the 21Shares Binance BNB ETP. The phonetic similarity between 'BNB' and 'ABNB' is not a legitimate alias basis.
 AEV,ASX,aboitiz equity ventures,0.8,"Aboitiz Equity Ventures is a Philippine conglomerate listed on PSE as AEV, unrelated to ASX-listed Avenira Ltd."
@@ -38,12 +43,22 @@ BTBT,NASDAQ,bitcoin mining,0.85,Generic industry descriptor shared across six bi
 BTCX,STO,ci galaxy bitcoin etf,0.85,CI Galaxy Bitcoin ETF is a Canadian ETF (TSX:BTCX) — a completely different instrument. Likely a ticker-symbol collision with the Swedish BTCX.
 BTX,NYSE,lineage cell therapeutics,0.82,Lineage Cell Therapeutics is an unrelated biotech company. No connection to BlackRock Technology and Private Equity Term Trust; likely a historical ticker reuse collision.
 CAA,ASX,ca sales,0.85,No lexical or structural connection to Capral Ltd; likely a cross-company contaminant from a different entity.
+CAG,NYSE,angiang port jsc,0.8,Vietnamese port company; no lexical or business connection to ConAgra.
+CAG,NYSE,cag group ab,0.8,Swedish company sharing ticker CAG on a different exchange; unrelated to ConAgra.
+CAG,NYSE,composite alliance,0.8,No connection to ConAgra; likely a ticker-collision artifact.
 CAMB,Euronext,cambria gold mines,0.85,Cambria Gold Mines is an unrelated mining company; no connection to Campine (Belgian specialty metals). Ticker similarity CAMB vs CAMB caused the collision.
+CAP,Euronext,capitea,0.8,Swedish financial company; unrelated to Capgemini SE.
+CAP,Euronext,cash plus,0.8,Generic term with no connection to Capgemini; likely a collision artifact.
+CAP,Euronext,yen bai forest jsc,0.8,Vietnamese forestry company; no connection to Capgemini SE.
+CAT,NYSE,catapult group international,0.88,Australian ASX-listed sports analytics company trading as CAT; unrelated to Caterpillar Inc.
+CAT,NYSE,caxton,0.88,No connection to Caterpillar Inc; likely a collision artifact.
+CAT,NYSE,central azucarera de tarlac,0.88,Philippine sugar company listed as CAT on PSE; unrelated to Caterpillar Inc.
 CBGB,LSE,carlsberg,0.85,Carlsberg is a Danish brewer with no connection to a Goldman Sachs China bond ETF; ticker/name similarity caused the contamination.
 CGNT,NASDAQ,copper giant resources,0.82,Unrelated mining company; no lexical or structural connection to Cognyte Software Ltd.
 CIH,CSE_MA,china index holdings,0.82,China Index Holdings is an unrelated Chinese company; no connection to a Moroccan real-estate credit institution.
 CLS,NYSE,clicks,0.88,Clicks Group is a South African retail/pharmacy company (JSE: CLS); unrelated to Celestica Inc.
 CLSK,NASDAQ,bitcoin mining,0.88,Generic industry descriptor shared across six+ companies; not a valid company or fund name alias.
+CMCSA,NASDAQ,xfinity,0.88,"Xfinity is a consumer brand/product subsidiary of Comcast, not the issuer name. Per review rules, product/brand names should be removed."
 CMG,NYSE,cmc,0.82,Different company; no connection to Chipotle
 CMG,NYSE,computer modelling,0.82,Computer Modelling Group is TSX:CMG; confirmed cross-company collision
 CMG,NYSE,critical minerals,0.82,Different company; no connection to Chipotle
@@ -59,11 +74,16 @@ CPI,LSE,capitec bank,0.88,Capitec Bank is a separate South African bank (JSE:CPI
 CPI,LSE,carlton precious,0.88,Unrelated company with no corporate connection to Capita PLC.
 CPI,LSE,cpi computer peripherals international,0.88,Unrelated technology company; CPI abbreviation collision only.
 CPI,LSE,cpi europe,0.88,Unrelated entity; CPI abbreviation collision with no corporate connection to Capita PLC.
+CPRI,NYSE,jimmy choo,0.8,"Jimmy Choo is a product brand owned by Capri Holdings, not a company identifier."
+CPRI,NYSE,michael kors,0.8,"Michael Kors is a product brand and celebrity name, not the company/fund name."
+CPRI,NYSE,versace,0.8,"Versace is a brand owned by Capri Holdings, not an issuer name or listing identifier."
 CRON,NASDAQ,cannabis,0.88,Generic industry/sector term shared across many companies; not a valid company or fund identifier.
 CRSP,NASDAQ,gene editing,0.9,"Generic technology descriptor shared across at least 6 companies (CRSP, EDIT, NTLA, 0IFK, 0JBU, 0VRQ); not a valid issuer-specific alias."
 DE,NYSE,decisive dividend,0.88,"Decisive Dividend is a Canadian company (TSX: DE), completely unrelated to Deere & Company."
 DELT,LSE,delta galil industries,0.8,"Delta Galil Industries is an Israeli textile company, unrelated to Deltic Energy PLC."
 DGX,NYSE,digi power x,0.88,Cross-company collision; 'Digi Power X' is an unrelated company with no connection to Quest Diagnostics.
+DHC,NASDAQ,DHCNI,0.82,"DHCNI is an exchange ticker for a separate Diversified Healthcare Trust notes series, not an alias for the common stock."
+DHC,NASDAQ,DHCNL,0.82,"DHCNL is a separate Diversified Healthcare Trust notes series ticker, not a company alias."
 DSN,HOSE,danske bank,0.82,Cross-company collision; Danske Bank is a Danish financial institution with no relation to Dam Sen Water Park Corp (Vietnam).
 DSV,CPH,discovery silver,0.88,Cross-company collision; 'Discovery Silver' is a Canadian mining company with no relation to DSV Panalpina A/S.
 EA,NASDAQ,285512,0.82,"Numeric code consistent with a Thai SET stock identifier for Energy Absolute, not Electronic Arts."
@@ -71,22 +91,40 @@ EA,NASDAQ,ea sports,0.82,"EA Sports is a product brand/division, not the issuer 
 EA,NASDAQ,energy absolute public,0.82,Energy Absolute Public Company Limited is a Thai company (SET:EA). This alias was imported via the Thai ISIN/country collision and belongs to a different issuer.
 EA,NASDAQ,fifa,0.82,FIFA is a video game product title published by Electronic Arts. Obvious product alias; does not identify the issuer.
 EA,NASDAQ,madden,0.82,Madden NFL is a video game product title published by Electronic Arts. Obvious product alias; does not identify the issuer.
+ECL,NYSE,easycall,0.88,Unrelated company sharing no meaningful overlap with Ecolab.
+ECL,NYSE,ecol,0.88,"ECOL was the ticker for US Ecology Holdings, a different company."
+ECL,NYSE,engie energia chile,0.88,Unrelated Chilean energy company.
+ECL,NYSE,excelsior capital,0.88,Unrelated company with no connection to Ecolab.
 EDIT,NASDAQ,gene editing,0.92,Generic industry/technology descriptor shared across six distinct companies. Not a valid identifier for Editas Medicine specifically.
 ELE,NASDAQ,endesa,0.82,Endesa is a major Spanish electricity utility (BME:ELE); completely unrelated to Elemental Royalty Corporation and the collision is between two distinct ELE tickers on different exchanges.
 ELO,OSL,eloro resources,0.9,Eloro Resources is a Canadian mining company (TSXV:ELO); unrelated to Elopak AS and clearly a cross-company collision.
+ELV,NYSE,elevra lithium,0.88,Unrelated lithium mining company; shares only a prefix with Elevance.
+ELV,NYSE,elvila,0.88,Unrelated Spanish furniture retailer.
+ERD,TSX,eroad,0.85,EROAD is a New Zealand/ASX telematics company entirely unrelated to Erdene Resource Development on TSX.
+ESLA,NASDAQ,estée lauder companies,0.85,Estée Lauder Companies (NYSE: EL) is an unrelated cosmetics conglomerate; no lexical or business connection to Estrella Immunopharma.
+ESNT,NYSE,essentra,0.85,"Essentra plc is a distinct UK company (LSE: ESNT); only superficially similar name, not an alias for Essent Group Ltd."
+ESP,NYSE MKT,brompton energy split,0.85,Brompton Energy Split Corp is a Canadian closed-end split fund with no relation to Espey Mfg & Electronics Corp.
 EWL,NYSE ARCA,edwards lifesciences,0.8,"Edwards Lifesciences trades as EW on NYSE, not EWL. This is a cross-company collision with no basis in the fund name."
 FCL,ASX,fast cables,0.85,No lexical or semantic connection to Fineos Corporation Holdings; likely a collision from a different company.
 FEX,NASDAQ,fenix resources,0.8,"Fenix Resources is an ASX-listed Australian mining company with FEX ticker; corresponds to the AU ISIN, not this NASDAQ ETF."
 FEX,NASDAQ,fjordland exploration,0.8,Fjordland Exploration is an unrelated Canadian mining company; cross-company collision.
 FINGF,OTC,china index holdings,0.8,Belongs to a different company (CIH/FTT); no connection to Finning International.
+FML,ASX,fan milk,0.8,Fan Milk is a distinct West African FMCG company; no connection to Focus Minerals.
+FML,ASX,feroze1888 mills,0.8,Feroze1888 Mills is a distinct Pakistani textile company; no connection to Focus Minerals.
+FML,ASX,first mutual,0.8,Generic financial institution name with no connection to an Australian mining company.
 FTT,TSX,885970,0.85,Numeric code unrelated to Finning International; likely a stock code for a different instrument.
 FTT,TSX,china index holdings,0.85,China Index Holdings (CIH) is an entirely different company; unrelated to Finning International.
 GLAD,NASDAQ,gladiator metals,0.8,Gladiator Metals is a different company; cross-company collision confirmed.
 GLN,ASX,glencore,0.82,Glencore is a major global mining company unrelated to Galan Lithium; clear cross-company collision.
+GM,NYSE,cadillac,0.9,"Sub-brand/product line of GM, not an issuer name or listing identifier."
+GM,NYSE,chevrolet,0.9,"Sub-brand/product line of GM, not an issuer name or listing identifier."
+GM,NYSE,chevy,0.9,"Brand/product nickname for the Chevrolet division, not the issuer name General Motors Company."
 GMD,ASX,gemadept,0.82,Gemadept is a Vietnamese logistics/shipping company; no connection to Genesis Minerals.
 GMD,ASX,grupo mexicano de desarrollo,0.82,Grupo Mexicano de Desarrollo is a Mexican construction conglomerate; confirmed cross-company collision.
 GML,ASX,gemfields,0.82,Gemfields Group is a separate gemstone mining company; cross-company collision confirmed.
 GT,NASDAQ,gt resources,0.85,GT Resources is a separate mining company. No relation to Goodyear Tire & Rubber Co.
+H,NYSE,hydro one,0.82,Hydro One is a Canadian utility company unrelated to Hyatt Hotels; cross-company collision.
+HBAN,NASDAQ,helvetia holding,0.83,Helvetia Holding is a Swiss insurance group; entirely unrelated to Huntington Bancshares.
 IREN,NASDAQ,investis holding,0.82,Investis is an unrelated Swiss/UK digital communications company; flagged cross-collision with no connection to IREN Ltd.
 IVT,NYSE,investnet,0.83,Likely confused with Envestnet (ENV); unrelated financial services firm with no connection to InvenTrust Properties.
 IVT,NYSE,invicta,0.83,Invicta is a watch brand / unrelated company; cross-collision flag confirms no connection to InvenTrust.
@@ -96,10 +134,24 @@ KGH,LSE,kghm,0.8,"KGHM is the abbreviation for the unrelated Polish mining compa
 KGH,LSE,kghm polska miedz,0.8,KGHM Polska Miedź is a Polish copper miner on WSE (ticker KGH); entirely different company.
 LC,NYSE,lepanto consolidated mining,0.82,Lepanto Consolidated Mining is a Philippine company. The Philippine ISIN in the entry likely originates from that collision; it does not belong to LendingClub.
 LFST,NASDAQ,lifeist wellness,0.83,Lifeist Wellness is a separate Canadian cannabis/wellness company sharing the LFST ticker on CSE. The CA ISIN in this entry originates from that collision.
+LIT,NYSE ARCA,argentina lithium & energy,0.82,Argentina Lithium & Energy Corp is a separate Canadian junior miner; not related to this US ETF.
+LIT,NYSE ARCA,argentina lithium and energy,0.82,Duplicate of 'argentina lithium & energy'; same rationale.
+LIT,NYSE ARCA,lease it public,0.82,No meaningful lexical or structural connection to Global X Lithium & Battery Tech ETF.
+LIT,NYSE ARCA,litigation capital management,0.82,Litigation Capital Management trades as LIT on ASX; different security on a different exchange.
+LIT,NYSE ARCA,livium,0.82,"Livium (formerly Lithium Australia) is an ASX-listed company; ticker collision, not the same issuer."
 LOVE,NASDAQ,cannara biotech,0.93,Cannara Biotech is a Canadian cannabis company (ticker LOVE on CSE) with no connection to The Lovesac Company.
+MAC,NYSE,macroasia,0.82,MacroAsia Corporation is a Philippine airline services company; unrelated to Macerich.
+MAC,NYSE,marechale capital,0.82,Marechale Capital is a separate UK financial firm; unrelated.
+MAC,NYSE,mega african capital,0.82,No connection to Macerich; appears to be a different issuer with a MAC ticker on another exchange.
+MAN,NYSE,josef manner & comp,0.85,"Josef Manner & Comp AG is an Austrian confectionery company; the AT ISIN in this entry (AT0000728209) belongs to them, not ManpowerGroup."
+MAN,NYSE,mandrake resources,0.85,Mandrake Resources is a separate mining company; unrelated to ManpowerGroup.
+MAN,NYSE,manydev studio,0.85,No connection to ManpowerGroup; appears to be a small tech company sharing a similar ticker.
 MARA,NASDAQ,bitcoin mining,0.9,"Generic industry descriptor shared by many companies (BTBT, CAN, CLSK, RIOT, WULF); not a lexical identifier for Marathon Digital specifically"
 MARI,VSE,mari energies,0.85,Unrelated energy company; weak overlap is coincidental prefix similarity only.
 MARI,VSE,marimaca copper,0.85,Marimaca Copper is an unrelated mining company; cross-collision confirmed. No connection to Marinomed Biotech.
+MAT,NASDAQ,barbie,0.88,"Barbie is a Mattel product brand, not a company or listing identifier. Per review rules, obvious product names should be removed."
+MAT,NASDAQ,hot wheels,0.88,"Hot Wheels is a Mattel product brand, not a company or listing identifier. Per review rules, obvious product names should be removed."
+MAT,NASDAQ,matsa resources,0.88,Matsa Resources is an Australian mining company; unrelated to Mattel Inc.
 MCB,NYSE,mcb bank,0.85,Cross-company collision; MCB Bank is a distinct Pakistani bank unrelated to Metropolitan Bank Holding.
 MCB,NYSE,mcbride,0.85,Cross-company collision; McBride is a UK consumer goods company unrelated to this US bank.
 MCB,NYSE,mccoy global,0.85,Unrelated Canadian oilfield services company; no overlap with Metropolitan Bank Holding.
@@ -109,7 +161,16 @@ MCI,NYSE,minnova,0.82,Cross-company collision flagged; no connection to Barings 
 MCS,NYSE,m.c.s. steel public,0.82,Refers to a Thai steel company; no connection to Marcus Corporation.
 MCS,NYSE,mcchip resources,0.82,Cross-company collision flagged; unrelated to Marcus Corporation.
 MD,NYSE,midland exploration,0.82,Cross-company collision; refers to a Canadian mining company unrelated to Mednax.
+MED,NYSE,medartis holding,0.85,Medartis Holding is a Swiss medical technology company; the CH ISIN in this entry may belong to them rather than Medifast.
+MED,NYSE,medco,0.85,"Medco could refer to multiple unrelated companies (Indonesian energy, US pharmacy); no connection to Medifast."
+MED,NYSE,mediclin aktiengesellschaft,0.85,MediClin AG is a German hospital operator; unrelated to Medifast.
+MEG,NYSE,megado minerals,0.83,Megado Minerals is an unrelated mining company; shares only prefix similarity with MEG.
+MEG,NYSE,megaron,0.83,Megaron is a Greek cultural center; entirely unrelated to Montrose Environmental.
+MEG,NYSE,megaworld,0.83,Megaworld Corporation is a Philippine real estate developer; unrelated.
 MEI,NYSE,meteoric resources nl,0.8,Meteoric Resources NL is a distinct Australian company (ASX: MEI); unrelated to Methode Electronics Inc. The AU ISIN on this entry likely belongs to Meteoric Resources.
+MER,LSE,manila electric,0.85,Manila Electric Company (Meralco) is a Philippine utility; unrelated to Mears Group plc.
+MER,LSE,meralco,0.85,Meralco is the brand name for Manila Electric Company; entirely unrelated to Mears Group plc.
+MER,LSE,meren energy,0.85,Meren Energy is an unrelated company; no connection to Mears Group.
 MERC,NASDAQ,mercedes-benz group,0.8,Cross-company collision with a major German automaker; completely unrelated to Mercer International.
 MERC,NASDAQ,mercia technologies,0.8,UK tech company; no connection to Mercer International Inc.
 MG,NYSE,magna international,0.8,"Cross-company collision; Magna International trades as MGA on NYSE, not MG."
@@ -134,6 +195,7 @@ NEU,NYSE,neuca,0.82,"Refers to NEUCA S.A., a distinct Polish pharmaceutical dist
 NEU,NYSE,neuren pharmaceuticals,0.82,"Refers to Neuren Pharmaceuticals, a distinct Australian company; cross-company collision confirmed by findings."
 NOBL,BATS,noble plains uranium,0.88,Noble Plains Uranium is a distinct mining company unrelated to ProShares S&P 500 Dividend Aristocrats ETF.
 NOS,Euronext,premier investments,0.82,"Premier Investments is an unrelated Australian retail company. No connection to NOS S.G.P.S., a Portuguese telecom."
+NTLA,NASDAQ,gene editing,0.88,Generic industry/technology category term shared across multiple companies; not a name or identifier for Intellia Therapeutics specifically
 NXT,NASDAQ,nextdc,0.82,"Refers to NEXTDC Limited (ASX:NXT), a distinct Australian data centre company; cross-company collision confirmed by findings."
 NXT,NASDAQ,nueva expresión textil,0.82,Refers to a distinct Spanish textile company; no relation to Nextracker Inc.
 OGN,NYSE,organon &,0.83,Truncated and malformed variant of the name; superseded by the complete alias 'organon & co'.
@@ -142,9 +204,22 @@ OGN,NYSE,orogen royalties,0.83,"Refers to Orogen Royalties Inc., a distinct Cana
 PAY,NYSE,paypoint,0.83,"Refers to PayPoint plc (LSE), a distinct UK company; weak overlap flagged by findings."
 PAY,NYSE,payton planar magnetics,0.83,"Refers to Payton Planar Magnetics Ltd., a distinct Israeli company; cross-company collision confirmed by findings."
 PDD,NASDAQ,temu,0.85,"Temu is a consumer product/brand owned by PDD Holdings, not an identifier for the issuer itself."
+PIM,NYSE,pinnacle minerals,0.8,Unrelated company; no lexical connection to Putnam Master Intermediate Income Trust.
+PIM,NYSE,plastic industry,0.8,Generic unrelated term with no connection to this fund.
+PIM,NYSE,popular islamic modaraba,0.8,Unrelated Pakistani financial entity; shares only initials with fund name.
+PIN,NYSE ARCA,pantheon international,0.85,UK-listed investment company; unrelated to Invesco India ETF.
+PIN,NYSE ARCA,pinthong industrial park public,0.85,Thai SET-listed company; unrelated to this ETF.
+PIN,NYSE ARCA,purpose monthly income fund,0.85,Canadian fund unrelated to Invesco India ETF.
 PKO,WSE,peako,0.8,Peako is an Australian mining company; unrelated to PKO Bank Polski.
+PLUS,NASDAQ,294268,0.8,Numeric identifier with no clear link to ePlus; likely belongs to a different instrument.
+PLUS,NASDAQ,digiplus interactive,0.8,Filipino gaming company; unrelated to ePlus inc.
+PLUS,NASDAQ,plus500,0.8,Separate UK-listed CFD broker; shares only a word fragment with ePlus.
+PLUS,NASDAQ,royal plus,0.8,Unrelated company; no connection to ePlus inc.
 PMT,NYSE,patriot battery metals,0.82,Patriot Battery Metals is a separate Canadian mining company (PMET on TSX); unrelated to PennyMac Mortgage Investment Trust.
 PNL,LSE,postnl,0.85,PostNL is a Dutch postal/logistics company listed on Euronext Amsterdam; entirely unrelated to this UK investment trust.
+PPH,NASDAQ,pepkor,0.8,South African retailer; unrelated to VanEck Pharmaceutical ETF.
+PPH,NASDAQ,perma-pipe,0.8,Unrelated industrial piping company sharing a ticker variant.
+PPH,NASDAQ,pphe hotel,0.8,UK-listed hotel group sharing PPH initials; unrelated to this ETF.
 PRG,NYSE,precipitate gold,0.83,Cross-company collision; unrelated junior gold mining company.
 PRG,NYSE,prg corporation public,0.83,Unrelated entity; no evidence of connection to PROG Holdings.
 PRG,NYSE,prl global,0.83,Unrelated company; no lexical or structural overlap with PROG Holdings.
@@ -155,6 +230,7 @@ PRIM,NYSE,primorus investments,0.85,Primorus Investments is a separate UK-listed
 PRIM,NYSE,royal prima pt,0.85,No connection to Primoris Services Corporation; appears to be an Indonesian entity.
 PRTC,NASDAQ,priortech,0.82,Unrelated tech company; no connection to PureTech Health.
 PRTC,NASDAQ,ptc therapeutics,0.82,PTC Therapeutics is a separate NASDAQ-listed biotech (ticker PTCT); different company.
+PRU,NYSE,perseus mining,0.85,Completely unrelated Australian gold miner (ASX:PRU); belongs to a different PRU-ticker instrument.
 PRX,AMS,prodigy gold nl,0.88,Prodigy Gold NL is an Australian mining company; unrelated to Prosus N.V.
 PSI,NYSE ARCA,pason systems,0.82,Pason Systems is a Canadian oilfield services company; unrelated to this Invesco semiconductor ETF.
 PSI,NYSE ARCA,petrovienam securities,0.82,Misspelled 'Petrovietnam Securities'; a Vietnamese entity entirely unrelated to this US ETF.
@@ -171,17 +247,84 @@ ROS,VSE,roscan gold,0.8,Roscan Gold is a Canadian/West African gold exploration 
 RPL,ASX,roshan packages,0.82,Roshan Packages is a Pakistani packaging company; no connection to Regal Partners.
 RPL,ASX,upm kymmene,0.82,UPM-Kymmene is a Finnish forestry company; cross-collision with no relation to Regal Partners.
 SAE,TSXV,shufersal,0.8,"Shufersal Ltd is an Israeli supermarket chain listed on TASE. It has no relationship to Sable Resources Ltd (Canadian mining company, TSXV)."
+SAM,NYSE,sam adams,0.82,"Brand/product name, not a company or listing identifier. Should not be used as a ticker alias."
+SAM,NYSE,samchai steel industries public,0.82,"Thai steel company; shares SAM ticker on SET, not NYSE. Unrelated issuer."
+SAM,NYSE,starcore international mines,0.82,Canadian mining company; likely shares SAM ticker on TSX. Unrelated issuer.
+SCHP,NYSE ARCA,SHLRF,0.85,"OTC ticker for Schindler Holding; different company entirely, not related to Schwab TIPS ETF."
+SCHP,NYSE ARCA,schindler,0.85,Same Swiss company as 'schindler ps'; unrelated to SCHP.
+SCHP,NYSE ARCA,schindler ps,0.85,Schindler Holding PS is a Swiss elevator company listed on SIX; unrelated to SCHP.
+SCHP,NYSE ARCA,seche environnem,0.85,Séché Environnement is a French waste management company; unrelated to SCHP.
+SHG,NYSE,sea harvest,0.8,South African seafood company; unrelated to Shinhan Financial Group.
+SHG,NYSE,singular health,0.8,Unrelated company; no connection to Shinhan.
+SHG,NYSE,starhedge,0.8,Unrelated entity; no lexical overlap with Shinhan.
 SLM,NASDAQ,sanlam,0.8,Sanlam is a South African financial services company unrelated to SLM Corp.
 SLM,NASDAQ,solis minerals,0.8,"Solis Minerals is an Australian mining company that trades as SLM on ASX, not related to SLM Corp."
+SNX,NYSE,premium snacks nordic,0.82,Unrelated product/brand name with no connection to Synnex/TD SYNNEX.
+SNX,NYSE,sierra nevada gold,0.82,Unrelated company name; no lexical or structural link to Synnex.
+SNX,NYSE,sunex,0.82,Distinct company name; weak overlap with 'Synnex' is coincidental phonetic similarity only.
+SNX,NYSE,synectics,0.82,Synectics PLC is a separate UK-listed surveillance company; collision risk.
+SO,NYSE,SOJC,0.88,"Separate preferred share instrument (Southern Company Series 2020C), not an alias for the common stock SO."
+SO,NYSE,SOJD,0.88,"Separate preferred share instrument (Southern Company Series 2020D), not an alias for the common stock SO."
+SO,NYSE,siamrajathanee public,0.88,Thai company; unrelated to Southern Company.
+SPG,NYSE,siam pan group,0.82,Thai conglomerate; unrelated to Simon Property Group.
+SPG,NYSE,sp group,0.82,Too generic; refers to Singapore's power grid operator and other entities.
+SPG,NYSE,spc global,0.82,Unrelated company; no connection to Simon Property Group.
+SPMC,NYSE,south pacific metals,0.8,Distinct company name with no connection to Sound Point Meridian Capital; collision risk.
+SPSC,NASDAQ,spectra systems,0.85,"Spectra Systems is a UK-listed security-features company (SPSY on AIM); distinct issuer, collision risk."
+SRB,LSE,starbucks,0.9,"Starbucks Corporation (SBUX) is an entirely different US consumer company; obvious collision, no relation to Serabi Gold."
+SRE,NYSE,sirius real estate,0.85,"Sirius Real Estate Ltd (SRE on LSE/JSE) is a Guernsey-domiciled property company; the ISIN GG00B1W3VF54 appears to belong to Sirius Real Estate, not Sempra. Keeping this alias on a Sempra entry causes serious cross-entity confusion."
+STB,LSE,storebrand a,0.9,Storebrand is a Norwegian financial company unrelated to Secure Trust Bank PLC; clear cross-company collision
+STLA,NYSE,chrysler,0.87,"Defunct/absorbed brand; product name, not the issuer."
+STLA,NYSE,jeep,0.87,"Product brand owned by Stellantis, not the issuer name; too generic as a standalone alias."
+STLA,NYSE,ram trucks,0.87,Product brand; not an identifier for the Stellantis issuer entity.
 STX,NASDAQ,shield therapeutics,0.85,Cross-company collision; Shield Therapeutics is a UK pharma company unrelated to Seagate Technology.
 STX,NASDAQ,stalexport autostrady,0.85,Unrelated Polish toll road company; no lexical overlap with Seagate Technology.
 STX,NASDAQ,stone one public,0.85,Unrelated company; no overlap with Seagate Technology.
 STX,NASDAQ,strike energy,0.85,Cross-company collision; Strike Energy is an Australian energy company unrelated to Seagate.
+SU,NYSE,schneider electric s.e,0.8,Schneider Electric is a French company (Euronext: SU/SE); unrelated to Suncor Energy and flagged as cross-company collision
+SUS,LSE,surgical science sweden,0.9,Surgical Science Sweden is a Swedish medtech company listed on Nasdaq Stockholm; unrelated to S&U plc and flagged as cross-company collision
+SVT,LSE,saigon viendong technology jsc,0.88,"Vietnamese technology company, no relation to Severn Trent PLC."
+SVT,LSE,servotronics,0.88,Servotronics is a separate US-listed company; not an alias for Severn Trent.
+SVT,LSE,sun vending technology,0.88,Unrelated technology company; no lexical or business connection to Severn Trent.
 T,NYSE,telus,0.85,Telus Corporation is a Canadian telecom company entirely unrelated to AT&T Inc; the CA ISIN likely belongs to Telus.
+TBLL,NYSE ARCA,tombill mines,0.9,Tombill Mines is an unrelated Canadian mining company. It has no lexical or structural connection to the Invesco Short Term Treasury ETF.
+TECH,NASDAQ,cirtek holdings philippines,0.85,Philippine electronics company; unrelated to Bio-Techne Corp.
+TECH,NASDAQ,indosterling technomedia,0.85,Indonesian media company; unrelated to Bio-Techne Corp.
+TECH,NASDAQ,techstep a,0.85,Norwegian IT services company; unrelated to Bio-Techne Corp.
 TER,NASDAQ,terracom,0.85,TerraComm/Terracom is a distinct Australian telecom company; no connection to Teradyne.
 TER,NASDAQ,terrascend,0.85,Cross-company collision; TerrAscend is a distinct cannabis company listed separately.
+TRC,NYSE,revel collective,0.85,Unrelated entity; no connection to Tejon Ranch Co.
+TRC,NYSE,tay ninh rubber jsc,0.85,Vietnamese rubber company; unrelated to Tejon Ranch Co.
+TRC,NYSE,trc construction public,0.85,Appears to reference a Thai construction company; unrelated to Tejon Ranch Co.
+TTWO,NASDAQ,2k games,0.92,"2K Games is a subsidiary/product brand of Take-Two, not the listed issuer name."
+TTWO,NASDAQ,gta,0.92,"GTA (Grand Theft Auto) is a product franchise, not the company or listing identifier."
+TTWO,NASDAQ,rockstar games,0.92,"Rockstar Games is a subsidiary/product brand of Take-Two, not the listed issuer name."
+TUB,Euronext,tubacex,0.82,Tubacex is an unrelated Spanish tubular products manufacturer listed on BME under TUBX; cross-company collision.
+UCM,ASX,buzzi,0.8,Buzzi (Buzzi Unicem) is an unrelated Italian cement company; no lexical or structural link to Uscom Ltd
+UFO,NASDAQ,alien metals,0.82,Alien Metals is an unrelated Australian mining company; no connection to Procure Space ETF
+UNC,TSX,ucb sa,0.82,UCB SA is an unrelated Belgian biopharmaceutical company; no lexical or structural link to United Corporations Limited
+UNIT,NASDAQ,nusantara inti corpora,0.85,Indonesian company; unrelated to Uniti Group Inc.
+UNIT,NASDAQ,united housing & development,0.85,Egyptian real estate company; unrelated to Uniti Group Inc.
+UNIT,NASDAQ,unitronics,0.85,Unitronics is a separate Israeli-listed company; not an alias for Uniti Group.
+VCV,NYSE,vatic ventures,0.82,Vatic Ventures is an unrelated company with no lexical or structural connection to the Invesco California Value Muni trust
 VIP,LSE,vietnam petroleum transport jsc,0.85,Vietnam Petroleum Transport JSC is a Vietnamese company with no connection to Value & Income Trust.
 VIP,LSE,vip entertainment technologies,0.85,VIP Entertainment Technologies is a separate company that collides with this ticker; no relation to the UK investment trust.
 VIS,NYSE ARCA,viscofan,0.85,Viscofan is a Spanish food-casing manufacturer (BME: VIS); unrelated to the Vanguard ETF.
 VIS,NYSE ARCA,visionstate,0.85,Visionstate is a Canadian tech company (TSXV: VIS); unrelated to the Vanguard ETF.
 VIS,NYSE ARCA,visual international,0.85,Weak overlap with fund name and no evidence of connection to Vanguard Industrials ETF.
+VMC,NYSE,venus metals corporation,0.87,Venus Metals Corporation is a separate ASX-listed company (VMC on ASX); unrelated to Vulcan Materials.
+VMC,NYSE,victorias milling,0.87,Philippine milling company; unrelated to Vulcan Materials Company.
+VMC,NYSE,vimeco jsc,0.87,Vietnamese construction company; unrelated to Vulcan Materials Company.
+VRDN,NASDAQ,viridien,0.85,"Viridien is the rebranded CGG SA, a French seismic data company — entirely unrelated to Viridian Therapeutics."
+VZLA,NYSE MKT,wisdomtree physical platinum,0.8,WisdomTree Physical Platinum is an unrelated ETP product with no connection to Vizsla Resources/Silver.
+WFC,NYSE,wall financial,0.85,Wall Financial is an unrelated Canadian real estate company with no connection to Wells Fargo.
+WG,LSE,westward gold,0.9,"Westward Gold is an unrelated Canadian gold exploration company, no connection to John Wood Group PLC."
+WULF,NASDAQ,bitcoin mining,0.82,"Generic industry descriptor shared across many companies (CAN, RIOT, WULF); not a valid identifier alias."
+XMWJ,XETRA,facebook,0.85,Former name of Meta Platforms Inc; completely unrelated to this WisdomTree product.
+XMWJ,XETRA,instagram,0.85,Meta Platforms product; no connection to WisdomTree Industrial Metals Enhanced EUR.
+XMWJ,XETRA,meta,0.85,Refers to Meta Platforms Inc; entirely unrelated to a WisdomTree industrial metals ETP.
+XMWJ,XETRA,zuck,0.85,Informal celebrity alias for Mark Zuckerberg/Meta; no relevance to this ETF.
+XMWJ,XETRA,zuckerberg,0.85,Celebrity/executive name for Meta Platforms; entirely wrong for this ETF.
+YUM,NYSE,kfc,0.92,"KFC is a subsidiary brand/franchise of Yum! Brands, not the listed issuer name; qualifies as a product/brand alias."
+YUM,NYSE,pizza hut,0.92,Pizza Hut is a subsidiary brand/franchise of Yum! Brands; qualifies as a product/brand alias.
+YUM,NYSE,taco bell,0.92,Taco Bell is a subsidiary brand/franchise of Yum! Brands; qualifies as a product/brand alias.
