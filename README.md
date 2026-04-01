@@ -1,19 +1,19 @@
 # Free Global Ticker Database
 
-A comprehensive, free-to-use stock and ETF ticker reference database covering 60,000+ securities across 67 exchanges and 67 countries.
+A comprehensive, free-to-use stock and ETF ticker reference database covering 59,000+ securities across 67 exchanges and 68 countries.
 
 ## Stats
 
 | Metric | Value |
 |---|---|
-| **Total tickers** | 59,184 |
-| Stocks | 43,090 |
-| ETFs | 16,094 |
+| **Total tickers** | 59,178 |
+| Stocks | 43,086 |
+| ETFs | 16,092 |
 | Exchanges | 67 |
-| Countries | 67 |
-| ISIN coverage | 44,871 (75.8%) |
-| Sector coverage | 38,906 (65.7%) |
-| Total aliases | 104,968 |
+| Countries | 68 |
+| ISIN coverage | 44,839 (75.8%) |
+| Sector coverage | 38,900 (65.7%) |
+| Total aliases | 104,715 |
 
 ## Formats
 
@@ -168,6 +168,113 @@ Tables: `tickers` (59,184 rows) + `aliases` (104,968 rows) + `cross_listings` (1
 - ISIN-based country corrections applied for foreign OTC rows
 - Sector names normalized to canonical GICS sectors (stocks) and standardized ETF categories
 - ISIN check digits validated via Luhn algorithm; invalid ISINs removed
+
+## LLM Review Queue
+
+Generate a scored queue of suspicious entries for manual or LLM-assisted review:
+
+```bash
+python3 scripts/audit_dataset.py --write-defaults
+```
+
+This creates:
+
+- `data/review_queue.json` - grouped review items with findings and scores
+- `data/review_queue.csv` - flat finding rows for spreadsheet triage
+
+Recommended workflow:
+
+1. Run the audit after rebuilding the dataset.
+2. Preferred local flow: run the queue through Claude CLI on this machine:
+
+```bash
+python3 scripts/run_claude_review_queue.py --model sonnet --skip-existing
+```
+
+This uses `claude --dangerously-skip-permissions -p` locally and writes:
+
+- `data/claude_review_jobs/raw_responses.jsonl`
+- `data/claude_review_jobs/normalized_reviews.json`
+- `data/claude_review_jobs/normalized_reviews.csv`
+- `data/claude_review_jobs/errors.json`
+
+3. Derive conservative override files from high-confidence Claude decisions:
+
+```bash
+python3 scripts/build_claude_review_overrides.py --min-confidence 0.8
+```
+
+This writes:
+
+- `data/review_overrides/remove_aliases.csv`
+- `data/review_overrides/metadata_updates.csv`
+- `data/review_overrides/drop_entries.csv`
+
+These overrides are applied automatically by `scripts/rebuild_dataset.py`.
+
+4. Rebuild the dataset with the review-derived overrides:
+
+```bash
+python3 scripts/rebuild_dataset.py
+```
+
+5. Build small, actionable PR batches from the Claude decisions:
+
+```bash
+python3 scripts/build_pr_review_batches.py \
+  --normalized-reviews-json data/claude_review_jobs/normalized_reviews.json
+```
+
+6. Apply confirmed review batches back to the source CSVs:
+
+```bash
+python3 scripts/apply_review_batches.py --execute
+```
+
+By default the script reads `data/pr_review_batches/manifest.json`, updates the source CSVs, and rebuilds derived artifacts unless `--skip-rebuild` is passed.
+
+Alternative remote flow:
+
+7. Split the queue into Gemini Batch API jobs:
+
+```bash
+python3 scripts/build_gemini_review_batches.py
+```
+
+This creates `data/gemini_review_jobs/manifest.json` plus `batch-*.jsonl` files with one structured Gemini request per flagged entry.
+
+8. Submit, poll, and download Gemini batch jobs:
+
+```bash
+export GEMINI_API_KEY=your_api_key
+python3 scripts/run_gemini_review_batches.py run
+```
+
+This uploads the JSONL batches, polls for terminal states, and downloads response files into `data/gemini_review_jobs/responses/`. You can also run `submit`, `poll`, and `download` separately.
+
+9. After Gemini finishes, ingest the response JSONL files:
+
+```bash
+python3 scripts/ingest_gemini_reviews.py --responses-path data/gemini_review_jobs/responses
+```
+
+This creates normalized review decisions plus ingest errors under `data/gemini_review_jobs/`.
+
+10. Build small, actionable PR batches from the normalized decisions:
+
+```bash
+python3 scripts/build_pr_review_batches.py
+```
+
+This creates `data/pr_review_batches/manifest.json`, operation batch files, and a manual backlog.
+
+11. Keep PRs batched by finding type or source update, not one PR per ticker.
+
+Prompt and response schema:
+
+- [`docs/claude_review_prompt.md`](docs/claude_review_prompt.md)
+- [`docs/gemini_review_prompt.md`](docs/gemini_review_prompt.md)
+- [`docs/gemini_review_response.schema.json`](docs/gemini_review_response.schema.json)
 
 ## Data Sources
 

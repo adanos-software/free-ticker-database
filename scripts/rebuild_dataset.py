@@ -24,6 +24,10 @@ TICKERS_PRETTY_JSON = DATA_DIR / "tickers.pretty.json"
 TICKERS_DB = DATA_DIR / "tickers.db"
 TICKERS_PARQUET = DATA_DIR / "tickers.parquet"
 CROSS_LISTINGS_CSV = DATA_DIR / "cross_listings.csv"
+REVIEW_OVERRIDES_DIR = DATA_DIR / "review_overrides"
+REVIEW_REMOVE_ALIASES_CSV = REVIEW_OVERRIDES_DIR / "remove_aliases.csv"
+REVIEW_METADATA_UPDATES_CSV = REVIEW_OVERRIDES_DIR / "metadata_updates.csv"
+REVIEW_DROP_ENTRIES_CSV = REVIEW_OVERRIDES_DIR / "drop_entries.csv"
 MANUAL_ISIN_CORRECTIONS = {
     "AAPL": "US0378331005",
     "MSFT": "US5949181045",
@@ -533,15 +537,89 @@ def load_data():
     return ticker_rows, alias_type_lookup, extra_aliases, identifier_lookup
 
 
+def load_review_overrides():
+    remove_aliases: dict[tuple[str, str], set[str]] = defaultdict(set)
+    metadata_updates: dict[tuple[str, str], dict[str, dict[str, str]]] = defaultdict(dict)
+    drop_entries: set[tuple[str, str]] = set()
+
+    if REVIEW_REMOVE_ALIASES_CSV.exists():
+        with REVIEW_REMOVE_ALIASES_CSV.open(newline="") as handle:
+            for row in csv.DictReader(handle):
+                remove_aliases[(row["ticker"], row["exchange"])].add(row["alias"])
+
+    if REVIEW_METADATA_UPDATES_CSV.exists():
+        with REVIEW_METADATA_UPDATES_CSV.open(newline="") as handle:
+            for row in csv.DictReader(handle):
+                metadata_updates[(row["ticker"], row["exchange"])][row["field"]] = {
+                    "decision": row["decision"],
+                    "proposed_value": row.get("proposed_value", ""),
+                }
+
+    if REVIEW_DROP_ENTRIES_CSV.exists():
+        with REVIEW_DROP_ENTRIES_CSV.open(newline="") as handle:
+            for row in csv.DictReader(handle):
+                drop_entries.add((row["ticker"], row["exchange"]))
+
+    return remove_aliases, metadata_updates, drop_entries
+
+
+def apply_input_metadata_overrides(
+    row: dict[str, str],
+    field_overrides: dict[str, dict[str, str]],
+) -> dict[str, str]:
+    updated = dict(row)
+    for field, override in field_overrides.items():
+        if field == "country_code":
+            continue
+        if field not in updated:
+            continue
+        if override["decision"] == "clear":
+            updated[field] = ""
+        elif override["decision"] == "update":
+            updated[field] = override.get("proposed_value", "")
+    return updated
+
+
+def apply_output_metadata_overrides(
+    row: dict[str, str],
+    field_overrides: dict[str, dict[str, str]],
+) -> dict[str, str]:
+    updated = dict(row)
+    for field, override in field_overrides.items():
+        if field == "country_code":
+            if override["decision"] == "clear":
+                updated["country_code"] = ""
+            elif override["decision"] == "update":
+                updated["country_code"] = override.get("proposed_value", "")
+            continue
+        if field not in updated:
+            continue
+        if override["decision"] == "clear":
+            updated[field] = ""
+        elif override["decision"] == "update":
+            updated[field] = override.get("proposed_value", "")
+
+    if "country" in field_overrides and "country_code" not in field_overrides:
+        updated["country_code"] = COUNTRY_TO_ISO.get(updated["country"], "")
+    return updated
+
+
 def cleaned_rows():
     ticker_rows, alias_type_lookup, extra_aliases, identifier_lookup = load_data()
+    review_alias_removals, review_metadata_updates, review_drop_entries = load_review_overrides()
 
     base_rows: list[dict[str, str]] = []
     for row in ticker_rows:
+        row_key = (row["ticker"], row["exchange"])
+        if row_key in review_drop_entries:
+            continue
         if should_exclude_stock_row(row):
             continue
-        merged = dict(row)
+        merged = apply_input_metadata_overrides(dict(row), review_metadata_updates.get(row_key, {}))
         merged_aliases = split_aliases(row["aliases"]) + extra_aliases.get(row["ticker"], [])
+        alias_removals = review_alias_removals.get(row_key, set())
+        if alias_removals:
+            merged_aliases = [alias for alias in merged_aliases if alias not in alias_removals]
         identifier = identifier_lookup.get(row["ticker"])
         if identifier and identifier["wkn"]:
             merged_aliases.append(identifier["wkn"])
@@ -560,19 +638,20 @@ def cleaned_rows():
         if isin:
             country = country_from_isin(isin) or country
 
+        output_row = {
+            "ticker": row["ticker"],
+            "name": row["name"],
+            "exchange": row["exchange"],
+            "asset_type": row["asset_type"],
+            "sector": normalize_sector(row["sector"], row["asset_type"]),
+            "country": country,
+            "country_code": COUNTRY_TO_ISO.get(country, ""),
+            "isin": isin,
+            "aliases": aliases,
+            "wkn": identifier.get("wkn", ""),
+        }
         output_rows.append(
-            {
-                "ticker": row["ticker"],
-                "name": row["name"],
-                "exchange": row["exchange"],
-                "asset_type": row["asset_type"],
-                "sector": normalize_sector(row["sector"], row["asset_type"]),
-                "country": country,
-                "country_code": COUNTRY_TO_ISO.get(country, ""),
-                "isin": isin,
-                "aliases": aliases,
-                "wkn": identifier.get("wkn", ""),
-            }
+            apply_output_metadata_overrides(output_row, review_metadata_updates.get((row["ticker"], row["exchange"]), {}))
         )
 
     return sorted(output_rows, key=lambda row: row["ticker"]), alias_type_lookup

@@ -1,0 +1,151 @@
+ticker,exchange,field,decision,proposed_value,confidence,reason
+ADS,XETRA,country,update,Germany,0.85,"adidas AG is a German company; country should be Germany, not Australia."
+ADS,XETRA,country_code,update,DE,0.85,"Correct ISO 3166-1 alpha-2 code for Germany is DE, not AU."
+ADS,XETRA,isin,update,DE000A1EWWW0,0.85,AU0000087819 is an Australian ISIN and inconsistent with a German XETRA listing. adidas AG ISIN is DE000A1EWWW0.
+AGL,NYSE,country,update,United States,0.82,"agilon health Inc is a US company listed on NYSE, not Australian"
+AGL,NYSE,country_code,update,US,0.82,"agilon health Inc is US-based, not AU"
+AGL,NYSE,isin,clear,,0.82,"ISIN AU000000AGL7 is an Australian ISIN belonging to AGL Energy, not agilon health (NYSE); needs correct US ISIN"
+AI,NYSE,country,update,United States,0.82,"C3.ai Inc is a US-incorporated company listed on NYSE; country should be United States, not Canada."
+AI,NYSE,country_code,update,US,0.82,Consistent with country correction; C3.ai is a US company.
+AIZ,NYSE,country,update,United States,0.82,Assurant Inc is a US company listed on NYSE. Country 'New Zealand' is incorrect and likely a data contamination from the 'air new zealand' alias collision.
+AIZ,NYSE,country_code,update,US,0.82,Must align with corrected country: Assurant Inc is domiciled in the United States.
+ALEX,NYSE,country,update,United States,0.82,Alexander & Baldwin Holdings Inc is a Hawaii-based US company listed on NYSE; 'Egypt' is incorrect.
+ALEX,NYSE,country_code,update,US,0.82,Should reflect the US domicile of Alexander & Baldwin Holdings Inc.
+ALEX,NYSE,isin,clear,,0.82,ISIN 'EGS3H051C012' is an Egyptian-issued ISIN and does not correspond to a NYSE-listed US company; likely a data collision with an Egyptian ticker also coded ALEX.
+ALL,NYSE,country,update,United States,0.87,The Allstate Corporation is a US company headquartered in Illinois; country is incorrectly set to Australia
+ALL,NYSE,country_code,update,US,0.87,Must match corrected country
+ALL,NYSE,isin,update,US0200021014,0.87,"AU000000ALL7 is the ISIN for Aristocrat Leisure (ASX:ALL), not Allstate Corporation (NYSE:ALL); the US ISIN is US0200021014"
+AMN,NYSE,country,update,United States,0.82,AMN Healthcare Services Inc is a US company listed on NYSE; country 'Australia' and country_code 'AU' are incorrect.
+AMN,NYSE,country_code,update,US,0.82,Matches the corrected country field for a NYSE-listed US company.
+ARP,NYSE ARCA,country,update,United States,0.82,PMV Adaptive Risk Parity ETF is a US-domiciled ETF listed on NYSE ARCA; Poland and PL country code are incorrect.
+ARP,NYSE ARCA,country_code,update,US,0.82,"Same reason as country field — fund is US-domiciled, not Polish."
+ARP,NYSE ARCA,isin,clear,,0.82,"ISIN PLARTPR00012 has a PL country prefix consistent with Arctic Paper (Warsaw-listed Polish company), not a US ETF. This ISIN belongs to a different security."
+ASG,XETRA,country,update,Italy,0.82,"Assicurazioni Generali S.p.A. is an Italian company, not Australian. country should be Italy."
+ASG,XETRA,country_code,update,IT,0.82,"Should be IT for Italy, not AU."
+ATI,NYSE,country,update,United States,0.82,"ATI (Allegheny Technologies Incorporated) is a US company listed on NYSE, not Canadian."
+ATI,NYSE,country_code,update,US,0.82,"Should be US, not CA."
+ATI,NYSE,isin,clear,,0.82,"ISIN CA02136K1084 has a CA (Canada) prefix, inconsistent with a US NYSE-listed company. Likely belongs to a different entity (possibly Altai Resources). Requires human verification with correct US ISIN."
+ATO,NYSE,country,update,United States,0.82,"Atmos Energy Corporation is a US-based company headquartered in Dallas, TX; country 'France' is incorrect."
+ATO,NYSE,country_code,update,US,0.82,"Should be US to match Atmos Energy's domicile, not FR."
+AVT,NASDAQ,country,update,United States,0.82,Avnet Inc is a US-headquartered company listed on NASDAQ. France/FR is incorrect.
+AVT,NASDAQ,country_code,update,US,0.82,Matches corrected country.
+AVT,NASDAQ,isin,clear,,0.82,"FR0000066052 is the ISIN for Avenir Telecom (a French company), not Avnet Inc. The correct Avnet ISIN (US0538001388) should be verified before updating."
+AXL,NYSE,country,update,United States,0.82,"American Axle & Manufacturing is a US-incorporated company listed on NYSE; country should be US, not Canada."
+AXL,NYSE,country_code,update,US,0.82,Should be US to match NYSE-listed US company.
+BAER,NASDAQ,country,update,United States,0.82,"Bridger Aerospace Group Holdings is a US company; country should be US, not Switzerland."
+BAER,NASDAQ,country_code,update,US,0.82,Consistent with country correction.
+BAER,NASDAQ,isin,clear,,0.82,"CH0102484968 is a Swiss ISIN (prefix CH) belonging to Julius Baer Gruppe AG, not Bridger Aerospace. Assigning it to a US NASDAQ listing is incorrect."
+BCI,NYSE ARCA,country,update,United States,0.82,"abrdn Bloomberg All Commodity Strategy K-1 Free ETF is a US-domiciled ETF listed on NYSE ARCA, not an Australian instrument."
+BCI,NYSE ARCA,country_code,update,US,0.82,Follows from country correction; AU is incorrect for a NYSE ARCA-listed US ETF.
+BCI,NYSE ARCA,isin,clear,,0.82,"AU000000BCI0 is an ASX ISIN belonging to BCI Minerals, not this ETF. The correct US ISIN is unknown without external verification."
+BDT,XETRA,country,update,Germany,0.82,"Bertrandt Aktiengesellschaft is a German company headquartered in Ehningen, Germany. Country 'Canada' is incorrect."
+BDT,XETRA,country_code,update,DE,0.82,"Should be DE for Germany, not CA for Canada."
+BDX,NYSE,country,update,United States,0.82,"Becton Dickinson and Company is a US-incorporated company headquartered in Franklin Lakes, NJ. Country 'Australia' is incorrect for NYSE:BDX."
+BDX,NYSE,country_code,update,US,0.82,"Should reflect US incorporation, not AU."
+BIO,NYSE,country,update,United States,0.82,"Bio-Rad Laboratories Inc is a US company headquartered in Hercules, California, not Austria."
+BIO,NYSE,country_code,update,US,0.82,"Should reflect US domicile, not AT (Austria)."
+BK,NYSE,country,update,United States,0.85,"Bank of New York Mellon Corporation is a US company, not Canadian. Country should be United States."
+BK,NYSE,country_code,update,US,0.85,"Should be US, not CA."
+BLX,NYSE,country,update,Panama,0.82,"Foreign Trade Bank of Latin America (Bladex) is incorporated in Panama, not Australia. The Australian ISIN (AU000000BLX0) belongs to Beacon Lighting Group."
+BLX,NYSE,country_code,update,PA,0.82,Must match corrected country.
+BLX,NYSE,isin,clear,,0.82,"AU000000BLX0 is an Australian ISIN belonging to Beacon Lighting, not to NYSE-listed Bladex. Correct ISIN for Bladex requires external verification."
+BMY,NYSE,country,update,United States,0.82,Bristol-Myers Squibb is a US-incorporated company listed on NYSE; country 'United Kingdom' is incorrect.
+BMY,NYSE,country_code,update,US,0.82,Should be US to match NYSE-listed US company.
+BR,NYSE,country,update,United States,0.82,"Broadridge Financial Solutions is a US company listed on NYSE; country should be US, not Canada."
+BR,NYSE,country_code,update,US,0.82,Consistent with country correction; Broadridge is incorporated in the US.
+CAR,NASDAQ,country,update,United States,0.82,"Avis Budget Group Inc is a US-incorporated company listed on NASDAQ; country should be United States, not Australia."
+CAR,NASDAQ,country_code,update,US,0.82,Follows from country correction.
+CAR,NASDAQ,isin,clear,,0.82,"AU000000CAR3 is an Australian ISIN prefix; Avis Budget Group is a US entity and would have a US ISIN (US prefix). This ISIN likely belongs to CAR Group Ltd (carsales.com), an Australian company. Needs authoritative US ISIN sourced externally."
+CDR,WSE,country,update,Poland,0.82,CD Projekt SA is a Polish company listed on WSE; country should be Poland not Australia
+CDR,WSE,country_code,update,PL,0.82,Matches incorrect country; should be PL for Poland
+CMC,NYSE,country,update,United States,0.82,"Commercial Metals Company is a US-incorporated company headquartered in Texas, not Canada."
+CMC,NYSE,country_code,update,US,0.82,"Should reflect US domicile, not Canada."
+CNI,NYSE,country,update,Canada,0.82,"Canadian National Railway is a Canadian company, not Australian."
+CNI,NYSE,country_code,update,CA,0.82,"Should reflect Canada, not Australia."
+CNI,NYSE,isin,update,CA1363751027,0.82,AU000000CNI5 is an Australian ISIN; CNI (NYSE) is a Canadian company with ISIN CA1363751027.
+CRI,NYSE,country,update,United States,0.82,"Carter's Inc (CRI) is a US company headquartered in Atlanta, GA, listed on NYSE; country should be US not Canada"
+CRI,NYSE,country_code,update,US,0.82,Follows from country correction
+DG,NYSE,country,update,United States,0.82,"Dollar General Corporation is a US company headquartered in Goodlettsville, Tennessee, not Canada."
+DG,NYSE,country_code,update,US,0.82,"Should be US, not CA, for a NYSE-listed US corporation."
+DG,NYSE,isin,update,,0.82,CA25552L2012 is a Canadian ISIN prefix; Dollar General Corp's ISIN should begin with US. This ISIN likely belongs to a different entity (possibly Dixie Gold or a Canadian issuer).
+DIA,NYSE ARCA,country,update,United States,0.82,SPDR DIA is a US-domiciled ETF issued by State Street; Spain is incorrect
+DIA,NYSE ARCA,country_code,update,US,0.82,Follows country correction
+DIA,NYSE ARCA,isin,clear,,0.82,"ES0126775008 is an ES-prefix ISIN belonging to the Spanish DIA supermarket chain, not this ETF. Correct US ISIN requires verification."
+EDV,NYSE ARCA,country,update,United States,0.82,"EDV is a Vanguard US-listed ETF on NYSE ARCA; country should be US, not Australia."
+EDV,NYSE ARCA,country_code,update,US,0.82,Consistent with country correction.
+EMN,NYSE,country,update,United States,0.82,"EMN (Eastman Chemical Company) is a US-listed NYSE stock; country should be US, not Australia"
+EMN,NYSE,country_code,update,US,0.82,Should match US domicile of Eastman Chemical Company
+EMN,NYSE,isin,clear,,0.82,AU0000022451 is an Australian ISIN and cannot belong to NYSE-listed Eastman Chemical Company; likely a data cross-contamination
+EW,NYSE,country,update,United States,0.82,"Edwards Lifesciences Corp (EW) is incorporated and headquartered in the US, not the Philippines."
+EW,NYSE,country_code,update,US,0.82,"Should reflect US domicile, not PH."
+EXR,NYSE,country,update,United States,0.82,"Extra Space Storage Inc is a US REIT listed on NYSE; country should be United States, not Australia."
+EXR,NYSE,country_code,update,US,0.82,Follows from country correction.
+EXR,NYSE,isin,clear,,0.82,"AU000000EXR1 is an Australian ISIN belonging to ASX-listed Elixir Energy (EXR:ASX), not Extra Space Storage Inc on NYSE. The correct US ISIN should be sourced from an authoritative registry."
+FAS,NYSE ARCA,country,update,United States,0.82,"Direxion Daily Financial Bull 3X Shares is a US-domiciled ETF listed on NYSE Arca, not a UK instrument."
+FAS,NYSE ARCA,country_code,update,US,0.82,Should reflect US domicile.
+GEN,NASDAQ,country,update,United States,0.82,"Gen Digital Inc. (NASDAQ: GEN) is a US-incorporated company headquartered in Tempe, Arizona, not Australia."
+GEN,NASDAQ,country_code,update,US,0.82,"Should reflect US incorporation, not Australia."
+GME,NYSE,country,update,United States,0.91,"GameStop Corp. is a US company, not German."
+GME,NYSE,country_code,update,US,0.91,GameStop Corp. is incorporated in the US.
+GME,NYSE,isin,update,US36467W1099,0.91,"DE0005495626 is the ISIN for Geratherm Medical AG, a German company — not GameStop. GameStop's US ISIN should be used instead."
+ICE,NYSE,country,update,United States,0.82,"Intercontinental Exchange Inc is a US-incorporated company headquartered in Atlanta, GA. Country 'Australia' is incorrect."
+ICE,NYSE,country_code,update,US,0.82,Should be US to match the corrected country.
+KEY,NYSE,country,update,United States,0.82,KeyCorp (NYSE: KEY) is a US-headquartered bank. Country 'Australia' is incorrect.
+KEY,NYSE,country_code,update,US,0.82,Follows from country correction.
+KEY,NYSE,isin,clear,,0.82,AU000000KEY4 is an Australian ISIN and cannot belong to a NYSE-listed US company. KeyCorp's ISIN should start with US.
+LEG,NYSE,country,update,United States,0.82,"Leggett & Platt Incorporated is a US company listed on NYSE, not Australian."
+LEG,NYSE,country_code,update,US,0.82,"Should reflect US domicile, not Australia."
+LEG,NYSE,isin,clear,,0.82,AU000000LEG9 is an Australian ISIN format; Leggett & Platt is a US-domiciled company and would have a US ISIN (prefix US). This ISIN is almost certainly wrong.
+LEN,NYSE,country,update,United States,0.82,"Lennar Corporation is a US homebuilder headquartered in Miami, FL. Country 'Poland' is incorrect."
+LEN,NYSE,country_code,update,US,0.82,Follows from country correction; should be US not PL.
+LTH,NYSE,country,update,United States,0.82,"Life Time Group Holdings Inc (NYSE:LTH) is a US company, not Austrian. The ISIN AT0000723606 belongs to Linz Textil Holding AG (Austria), indicating a metadata mix-up."
+LTH,NYSE,country_code,update,US,0.82,Should reflect US domicile for NYSE-listed Life Time Group Holdings Inc.
+LTH,NYSE,isin,clear,,0.82,"AT0000723606 is the ISIN for Linz Textil Holding AG, not Life Time Group Holdings Inc. Correct ISIN for LTH (NYSE) should be sourced externally."
+MET,NYSE,country,update,United States,0.82,MET/MetLife Inc is a US company listed on NYSE; country should not be Canada.
+MET,NYSE,country_code,update,US,0.82,Corresponds to corrected country; MetLife is a US-domiciled issuer.
+MET,NYSE,isin,clear,,0.82,"CA5913071034 is a Canadian ISIN and does not match MetLife Inc (NYSE:MET), which is a US issuer. Likely belongs to a different security."
+NOV,NYSE,country,update,United States,0.82,NOV Inc. is a US-headquartered oilfield services company listed on NYSE. Country 'Australia' is incorrect.
+NOV,NYSE,country_code,update,US,0.82,Follows from country correction.
+NOV,NYSE,isin,clear,,0.82,"ISIN 'AU000000NOV3' has an AU prefix, inconsistent with a US NYSE-listed company. Likely wrong or belongs to a different AU-listed entity."
+NVD,NASDAQ,country,update,United States,0.82,GraniteShares 1.5x Short NVDA Daily ETF is a US-listed NASDAQ ETF issued by GraniteShares (US). Country 'Thailand' is incorrect.
+NVD,NASDAQ,country_code,update,US,0.82,Must align with corrected country.
+NVD,NASDAQ,isin,clear,,0.82,ISIN 'TH6502010Y00' is a Thai ISIN prefix (TH) and is inconsistent with a US NASDAQ ETF. Likely belongs to a different security.
+NVO,NYSE,country,update,Denmark,0.82,"Novo Nordisk A/S is a Danish company, not Canadian. Country should be Denmark."
+NVO,NYSE,country_code,update,DK,0.82,"Should be DK for Denmark, not CA for Canada."
+ORI,NYSE,country,update,United States,0.82,"Old Republic International Corp is a US company listed on NYSE. Country should be US, not Australia."
+ORI,NYSE,country_code,update,US,0.82,"Should be US for a NYSE-listed US company, not AU."
+ORI,NYSE,isin,clear,,0.82,"AU000000ORI1 is the ISIN for Orica Ltd (ASX: ORI), an Australian company. This ISIN does not belong to Old Republic International Corp (NYSE: ORI)."
+ORN,NYSE,country,update,United States,0.82,"Orion Group Holdings Inc is a US-incorporated company headquartered in Texas, not Australia."
+ORN,NYSE,country_code,update,US,0.82,Must match corrected country.
+ORN,NYSE,isin,clear,,0.82,"AU000000ORN1 is an ASX ISIN for the Australian entity Orion Gold NL, not for NYSE-listed Orion Group Holdings Inc. US ISIN should be sourced and verified."
+PPL,NYSE,country,update,United States,0.82,"PPL Corporation is a US-listed NYSE utility company headquartered in Pennsylvania, not Australia."
+PPL,NYSE,country_code,update,US,0.82,Follows from country correction.
+PPL,NYSE,isin,update,US69351T1060,0.82,"AU000000PPL6 is an Australian ISIN, inconsistent with a US NYSE-listed company. PPL Corporation's ISIN is US69351T1060."
+RCL,NYSE,country,update,United States,0.82,"Royal Caribbean Cruises Ltd is incorporated in Liberia and headquartered in the US, not Australia. AU/AU000000RCL0 ISIN suggests this entry may be conflated with an Australian-listed entity (likely ReadCloud, ASX:RCL)."
+RCL,NYSE,country_code,update,US,0.82,Should reflect the correct domicile; AU is incorrect for Royal Caribbean Cruises Ltd.
+ROCK,NASDAQ,country,update,United States,0.82,"Gibraltar Industries Inc (ROCK) is a US-listed NASDAQ company headquartered in the United States, not Belgium."
+ROCK,NASDAQ,country_code,update,US,0.82,"Should reflect US domicile, not Belgium."
+SE,NYSE,country,update,Singapore,0.82,"Sea Limited is headquartered in Singapore and incorporated in the Cayman Islands, not Thailand."
+SE,NYSE,country_code,update,SG,0.82,TH is incorrect for Sea Limited; SG is the appropriate code for its Singapore headquarters.
+SE,NYSE,isin,clear,,0.82,TH7753010001 carries a Thai prefix and belongs to a different Thai-listed company. Sea Limited's NYSE ADS ISIN should have a US prefix; correct value cannot be proposed without a verified source.
+SFR,LSE,country,update,United Kingdom,0.82,"Severfield PLC is a UK company listed on LSE. Country should be United Kingdom, not Australia."
+SFR,LSE,country_code,update,GB,0.82,"Country code should be GB for United Kingdom, not AU for Australia."
+SFR,LSE,isin,clear,,0.82,"ISIN AU000000SFR8 is an Australian-prefix ISIN and belongs to Sandfire Resources (ASX: SFR), not Severfield PLC. The correct ISIN for Severfield PLC should have a GB prefix."
+SIG,NYSE,country,update,Bermuda,0.82,Signet Jewelers Ltd is incorporated in Bermuda and listed on NYSE; country 'Australia' is incorrect.
+SIG,NYSE,country_code,update,BM,0.82,Matches incorrect country; Bermuda ISO code is BM.
+SON,NYSE,country,update,United States,0.82,Sonoco Products Company is a US-incorporated company headquartered in South Carolina. Country is incorrectly set to Poland.
+SON,NYSE,country_code,update,US,0.82,"Should reflect US domicile for Sonoco Products Company, not Poland."
+SON,NYSE,isin,clear,,0.82,"PLSONEL00011 is the ISIN for SONEL S.A., a Polish company — not Sonoco Products Company. Retaining it would be misleading. Correct US ISIN should be sourced and verified by a human."
+SPY,NYSE ARCA,country,update,United States,0.92,"SPY is a US-domiciled ETF listed on NYSE Arca; country should be United States, not Australia."
+SPY,NYSE ARCA,country_code,update,US,0.92,Consistent with country correction.
+SPY,NYSE ARCA,isin,update,US78462F1030,0.92,"AU000000SPY3 is an Australian ISIN prefix, inconsistent with a US-listed ETF. Correct ISIN is US78462F1030."
+SUN,NYSE,country,update,United States,0.85,"Sunoco LP is a US-listed MLP on NYSE; country should be US, not Australia."
+SUN,NYSE,country_code,update,US,0.85,"Sunoco LP is a US entity; country_code should be US, not AU."
+SUN,NYSE,isin,clear,,0.85,"AU000000SUN6 is the ISIN for Suncorp Group (ASX:SUN), an Australian company. This ISIN does not belong to Sunoco LP (NYSE:SUN)."
+TKO,NYSE,country,update,United States,0.82,"TKO Group Holdings, Inc. is a US company (WWE/UFC parent), incorporated in Delaware and listed on NYSE. Country should be US, not Canada."
+TKO,NYSE,country_code,update,US,0.82,Follows from country correction.
+TRP,NYSE,country,update,Canada,0.82,TC Energy Corp is a Canadian company listed on NYSE; Australia is incorrect
+TRP,NYSE,country_code,update,CA,0.82,"Should match Canada, not Australia"
+TTT,NYSE ARCA,country,update,United States,0.82,"ProShares UltraPro Short 20+ Year Treasury is a US-listed ETF on NYSE Arca, not an Australian instrument."
+TTT,NYSE ARCA,country_code,update,US,0.82,"Should reflect US domicile, not AU."
+TTT,NYSE ARCA,isin,clear,,0.82,AU000000TTT3 is an Australian ISIN and belongs to a different entity (likely Titomic Ltd). The ProShares ETF would have a US ISIN.

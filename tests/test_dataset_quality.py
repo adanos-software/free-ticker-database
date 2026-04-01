@@ -199,13 +199,13 @@ def test_artifact_counts_match():
 
 def test_readme_stats_and_claims_are_current():
     readme = (ROOT / "README.md").read_text()
-    assert "| **Total tickers** | 59,184 |" in readme
-    assert "| Stocks | 43,090 |" in readme
-    assert "| ETFs | 16,094 |" in readme
-    assert "| Countries | 67 |" in readme
-    assert "| Total aliases | 104,968 |" in readme
-    assert "| ISIN coverage | 44,871 (75.8%) |" in readme
-    assert "| Sector coverage | 38,906 (65.7%) |" in readme
+    assert "| **Total tickers** | 59,178 |" in readme
+    assert "| Stocks | 43,086 |" in readme
+    assert "| ETFs | 16,092 |" in readme
+    assert "| Countries | 68 |" in readme
+    assert "| Total aliases | 104,715 |" in readme
+    assert "| ISIN coverage | 44,839 (75.8%) |" in readme
+    assert "| Sector coverage | 38,900 (65.7%) |" in readme
 
 
 def test_all_isins_have_valid_checksum():

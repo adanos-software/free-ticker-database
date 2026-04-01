@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Gemini Ticker Review Response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "ticker",
+    "exchange",
+    "entry_decision",
+    "ticker_exists",
+    "name_matches_listing",
+    "alias_actions",
+    "metadata_actions",
+    "confidence",
+    "summary"
+  ],
+  "properties": {
+    "ticker": {
+      "type": "string"
+    },
+    "exchange": {
+      "type": "string"
+    },
+    "entry_decision": {
+      "type": "string",
+      "enum": [
+        "keep",
+        "drop_entry",
+        "fix_metadata",
+        "needs_human"
+      ]
+    },
+    "ticker_exists": {
+      "type": "string",
+      "enum": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    "name_matches_listing": {
+      "type": "string",
+      "enum": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    "alias_actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "alias",
+          "decision",
+          "reason"
+        ],
+        "properties": {
+          "alias": {
+            "type": "string"
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "keep",
+              "remove",
+              "needs_human"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "metadata_actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "field",
+          "decision",
+          "reason"
+        ],
+        "properties": {
+          "field": {
+            "type": "string",
+            "enum": [
+              "name",
+              "exchange",
+              "country",
+              "country_code",
+              "isin",
+              "sector",
+              "asset_type"
+            ]
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "keep",
+              "update",
+              "clear",
+              "needs_human"
+            ]
+          },
+          "proposed_value": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "summary": {
+      "type": "string"
+    }
+  }
+}
