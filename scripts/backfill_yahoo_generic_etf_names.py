@@ -40,6 +40,15 @@ ETFISH_NAME_MARKERS = (
     " trust",
     " ucits",
 )
+US_ETF_EXCHANGES = {"NASDAQ", "NYSE", "NYSE ARCA", "NYSE MKT", "BATS", "US", "NYSEARCA"}
+YAHOO_TO_INTERNAL_EXCHANGE = {
+    "NasdaqGS": "NASDAQ",
+    "NasdaqGM": "NASDAQ",
+    "NasdaqCM": "NASDAQ",
+    "NYSE": "NYSE",
+    "NYSEArca": "NYSE ARCA",
+    "NYSEAmerican": "NYSE MKT",
+}
 
 
 def is_generic_etf_wrapper_name(name: str) -> bool:
@@ -51,6 +60,27 @@ def looks_like_specific_fund_name(name: str) -> bool:
     if not lowered or is_generic_etf_wrapper_name(lowered):
         return False
     return any(marker in f" {lowered} " for marker in ETFISH_NAME_MARKERS)
+
+
+def has_foreign_metadata_contamination(row: dict[str, str]) -> bool:
+    return bool(
+        (row.get("country_code") and row["country_code"] != "US")
+        or (row.get("isin") and not row["isin"].startswith("US"))
+    )
+
+
+def normalized_exchange_from_yahoo(yahoo_full_exchange: str, yahoo_exchange: str) -> str:
+    if yahoo_full_exchange in YAHOO_TO_INTERNAL_EXCHANGE:
+        return YAHOO_TO_INTERNAL_EXCHANGE[yahoo_full_exchange]
+    if yahoo_exchange == "PCX":
+        return "NYSE ARCA"
+    if yahoo_exchange == "NYQ":
+        return "NYSE"
+    if yahoo_exchange in {"NMS", "NGM", "NCM"}:
+        return "NASDAQ"
+    if yahoo_exchange == "ASE":
+        return "NYSE MKT"
+    return ""
 
 
 def load_generic_etf_rows() -> list[dict[str, str]]:
@@ -83,16 +113,23 @@ def evaluate_generic_etf_row(row: dict[str, str], yahoo_result: dict[str, Any]) 
     specific_name = looks_like_specific_fund_name(yahoo_name)
     quote_type_match = yahoo_quote_type == "ETF" or (yahoo_quote_type == "EQUITY" and specific_name)
     isin_conflict = bool(row["isin"] and yahoo_isin and row["isin"] != yahoo_isin)
+    foreign_contamination = has_foreign_metadata_contamination(row)
+    normalized_yahoo_exchange = normalized_exchange_from_yahoo(yahoo_full_exchange, yahoo_exchange)
+    compatible_us_venue = (
+        row["exchange"] in US_ETF_EXCHANGES
+        and normalized_yahoo_exchange in US_ETF_EXCHANGES
+    )
+    exchange_ok = exchange_match is True or compatible_us_venue
 
     if not yahoo_result.get("exists"):
         decision = "not_found"
-    elif exchange_match is False:
-        decision = "exchange_mismatch"
     elif not specific_name:
         decision = "non_specific_name"
     elif not quote_type_match:
         decision = "quote_type_mismatch"
-    elif isin_conflict:
+    elif not exchange_ok:
+        decision = "exchange_mismatch"
+    elif isin_conflict and not foreign_contamination:
         decision = "isin_conflict"
     else:
         decision = "accept"
@@ -113,6 +150,8 @@ def evaluate_generic_etf_row(row: dict[str, str], yahoo_result: dict[str, Any]) 
         "specific_name": specific_name,
         "quote_type_match": quote_type_match,
         "isin_conflict": isin_conflict,
+        "foreign_contamination": foreign_contamination,
+        "normalized_yahoo_exchange": normalized_yahoo_exchange,
         "decision": decision,
     }
 
@@ -190,8 +229,70 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
             }
         )
 
+        normalized_yahoo_exchange = result.get("normalized_yahoo_exchange", "")
+        if normalized_yahoo_exchange and normalized_yahoo_exchange != result["exchange"]:
+            updates.append(
+                {
+                    "ticker": result["ticker"],
+                    "exchange": result["exchange"],
+                    "field": "exchange",
+                    "decision": "update",
+                    "proposed_value": normalized_yahoo_exchange,
+                    "confidence": "0.9",
+                    "reason": "Yahoo Finance verified the ETF on a different but compatible US exchange venue than the contaminated row currently records.",
+                }
+            )
+
+        if result.get("foreign_contamination"):
+            updates.extend(
+                [
+                    {
+                        "ticker": result["ticker"],
+                        "exchange": result["exchange"],
+                        "field": "country",
+                        "decision": "update",
+                        "proposed_value": "United States",
+                        "confidence": "0.9",
+                        "reason": "Generic ETF wrapper row carried foreign issuer metadata, but Yahoo verified a US-listed ETF for this symbol.",
+                    },
+                    {
+                        "ticker": result["ticker"],
+                        "exchange": result["exchange"],
+                        "field": "country_code",
+                        "decision": "update",
+                        "proposed_value": "US",
+                        "confidence": "0.9",
+                        "reason": "Must match corrected US ETF domicile.",
+                    },
+                ]
+            )
+            if result.get("current_isin") and not str(result["current_isin"]).startswith("US") and not result.get("yahoo_isin"):
+                updates.append(
+                    {
+                        "ticker": result["ticker"],
+                        "exchange": result["exchange"],
+                        "field": "isin",
+                        "decision": "clear",
+                        "proposed_value": "",
+                        "confidence": "0.85",
+                        "reason": "Current ISIN points to a foreign issuer, and Yahoo did not confirm a replacement ISIN for the verified US ETF.",
+                    }
+                )
+            if result.get("sector"):
+                updates.append(
+                    {
+                        "ticker": result["ticker"],
+                        "exchange": result["exchange"],
+                        "field": "sector",
+                        "decision": "clear",
+                        "proposed_value": "",
+                        "confidence": "0.8",
+                        "reason": "Existing sector likely came from foreign issuer contamination and is cleared until a verified ETF category is available.",
+                    }
+                )
+
         yahoo_isin = result.get("yahoo_isin", "")
-        if yahoo_isin and not result.get("current_isin") and is_valid_isin(yahoo_isin):
+        if yahoo_isin and (not result.get("current_isin") or result.get("foreign_contamination")) and is_valid_isin(yahoo_isin):
             updates.append(
                 {
                     "ticker": result["ticker"],
