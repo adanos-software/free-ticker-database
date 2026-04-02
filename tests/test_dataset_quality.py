@@ -64,6 +64,7 @@ def test_generic_fund_wrapper_aliases_removed():
         ("IBCA", "ishares trust"),
         ("BOTZ39", "global x funds"),
         ("BITU", "proshares trust"),
+        ("AFIX", "allspring exchange-traded funds trust"),
     }
     assert aliases.isdisjoint(blocked)
 
@@ -100,6 +101,28 @@ def test_thin_otc_metadata_is_backfilled_for_verified_listings():
     assert dtref["country_code"] == "AU"
     assert dtref["isin"] == "AU000000DTR1"
     assert dtref["sector"] == "Materials"
+
+
+def test_yahoo_corrected_etf_outliers_are_cleaned():
+    cam = ticker_exchange_row("CAM", "NYSE ARCA")
+    netz = ticker_exchange_row("NETZ", "NYSE")
+    tek = ticker_exchange_row("TEK", "NYSE ARCA")
+
+    assert cam["name"] == "AB California Intermediate Municipal ETF"
+    assert cam["country"] == "United States"
+    assert cam["country_code"] == "US"
+    assert cam["isin"] == "US00039J7726"
+    assert cam["sector"] == ""
+
+    assert netz["name"] == "TCW Transform Systems ETF"
+    assert netz["country"] == "United States"
+    assert netz["country_code"] == "US"
+    assert netz["isin"] == ""
+
+    assert tek["name"] == "iShares Technology Opportunities Active ETF"
+    assert tek["country"] == "United States"
+    assert tek["country_code"] == "US"
+    assert tek["isin"] == "US09290C7728"
 
 
 def test_non_otc_country_isin_mismatches_are_cleared():
@@ -268,7 +291,7 @@ def test_changelog_and_supporting_docs_are_current():
     assert "- No unreleased changes yet." in changelog
     assert "## 2.0.0" in changelog
     assert "59,178 tickers (43,086 stocks, 16,092 ETFs) across 67 exchanges and 68 countries" in changelog
-    assert "103,882 aliases" in changelog
+    assert "104,004 aliases" in changelog
     assert "Keep the dataset build and review scripts dependency-light and easy to trace" in contributing
     assert "one or more `review_queue.json` items" in claude_prompt
 

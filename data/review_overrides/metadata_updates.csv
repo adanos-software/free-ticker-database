@@ -1,20 +1,115 @@
 ticker,exchange,field,decision,proposed_value,confidence,reason
 0HEC,LSE,country,update,United States,0.8,"AEP is a US-domiciled company. Other LSE international listings in this dataset (e.g. 0HV2, 0QXR) correctly show the issuer's home country. 'United Kingdom' is wrong here."
 0HEC,LSE,country_code,update,US,0.8,"Should reflect issuer domicile (US), consistent with ISIN US0255371017."
+AAAC,NYSE ARCA,isin,update,US19761L7635,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+AAAC,NYSE ARCA,name,update,Columbia AAA CLO ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ACLO,NYSE,isin,update,US29287L8587,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+ACLO,NYSE,name,update,TCW AAA CLO ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ADBU,NYSE ARCA,isin,update,US25461H6229,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+ADBU,NYSE ARCA,name,update,Direxion Daily Adbe Bull 2X ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+AETH,NYSE ARCA,name,update,Bitwise Trendwise Ethereum & Treasuries Rotation Strategy ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+AFIX,NYSE ARCA,isin,update,US01989A3086,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+AFIX,NYSE ARCA,name,update,Allspring Broad Market Core Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 AGI,NYSE,country,update,Canada,0.8,Alamos Gold Inc is a Canadian company incorporated in Ontario.
 AGI,NYSE,country_code,update,CA,0.8,Matches Canadian company identity.
+AGQI,NYSE ARCA,isin,update,US33740F3837,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+AGQI,NYSE ARCA,name,update,First Trust Active Global Quality Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+AGRW,NYSE ARCA,isin,update,US01989A5065,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+AGRW,NYSE ARCA,name,update,Allspring LT Large Growth ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+AINP,NYSE ARCA,isin,update,US01989A1007,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+AINP,NYSE ARCA,name,update,Allspring Income Plus ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ALRG,NYSE ARCA,isin,update,US01989A4076,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+ALRG,NYSE ARCA,name,update,Allspring LT Large Core ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+APCB,NYSE ARCA,name,update,ActivePassive Core Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+APIE,NYSE ARCA,name,update,ActivePassive International Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+APLU,NYSE ARCA,isin,update,US01989A2096,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+APLU,NYSE ARCA,name,update,Allspring Core Plus ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+APMU,NYSE ARCA,name,update,ActivePassive Intermediate Municipal Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+APUE,NYSE ARCA,name,update,ActivePassive U.S. Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ASGM,NYSE ARCA,isin,update,US92790A8430,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+ASGM,NYSE ARCA,name,update,Virtus AlphaSimplex Global Macro ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 ASL,LSE,country,update,United Kingdom,0.82,Aberforth Smaller Companies Trust PLC is a UK investment trust listed on LSE; Canada is incorrect.
 ASL,LSE,country_code,update,GB,0.82,"Country code should match United Kingdom, not Canada (CA)."
+ASLV,NYSE ARCA,isin,update,US01989A6055,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+ASLV,NYSE ARCA,name,update,Allspring Special Large Value ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+AUSM,NYSE ARCA,isin,update,US01989A8036,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+AUSM,NYSE ARCA,name,update,Allspring Ultra Short Municipal ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+AVEE,NYSE ARCA,name,update,Avantis Emerging Markets Small Cap Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+AVGV,NYSE ARCA,name,update,Avantis ALL Equity Markets Value ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+AVMA,NYSE ARCA,name,update,Avantis Moderate Allocation ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+AVMC,NYSE ARCA,name,update,Avantis U.S. Mid Cap Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+AVMV,NYSE ARCA,name,update,Avantis U.S. Mid Cap Value ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+AVNM,NYSE ARCA,name,update,Avantis All International Markets Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+AVNV,NYSE ARCA,name,update,Avantis All International Markets Value ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+AVSC,NYSE ARCA,name,update,Avantis US Small Cap Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+BAI,NYSE ARCA,isin,update,US09290C7801,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+BAI,NYSE ARCA,name,update,iShares A.I. Innovation and Tech Active ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+BBBI,NYSE ARCA,name,update,Bondbloxx BBB Rated 5-10 Year Corporate Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+BBBL,NYSE ARCA,name,update,Bondbloxx BBB Rated 10+ Year Corporate Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+BBBS,NYSE ARCA,name,update,Bondbloxx BBB Rated 1-5 Year Corporate Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+BCHI,NYSE ARCA,isin,update,US90139K2096,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+BCHI,NYSE ARCA,name,update,GMO Beyond China ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+BCIL,NYSE ARCA,isin,update,US30151E5419,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+BCIL,NYSE ARCA,name,update,Bancreek International Large Cap ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+BCUS,NYSE ARCA,name,update,Bancreek U.S. Large Cap ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+BETE,NYSE ARCA,name,update,Proshares Bitcoin & Ether Equal Weight ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+BETH,NYSE ARCA,name,update,ProShares Bitcoin & Ether Market Cap Weight ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+BFAP,NYSE ARCA,isin,update,US33733E7739,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+BFAP,NYSE ARCA,name,update,FT Vest Bitcoin Strategy Floor15 ETF - April,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+BFJL,NYSE ARCA,isin,update,US33733E6822,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+BFJL,NYSE ARCA,name,update,FT Vest Bitcoin Strategy Floor15 ETF - July,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+BFOC,NYSE ARCA,name,update,FT Vest Bitcoin Strat Floor15 ETF - Oct,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+BFRZ,NYSE ARCA,isin,update,US45784N6195,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+BFRZ,NYSE ARCA,name,update,Innovator Equity Managed 100 Buffer ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+BGIG,NYSE ARCA,name,update,Bahl & Gaynor Income Growth ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+BIDD,NYSE ARCA,isin,update,US09290C8486,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+BIDD,NYSE ARCA,name,update,iShares International Dividend Active ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+BINT,NYSE ARCA,isin,update,US3015053768,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+BINT,NYSE ARCA,name,update,Bluemonte Global Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+BITU,NYSE ARCA,isin,update,US74349Y7040,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+BITU,NYSE ARCA,name,update,Proshares Ultra Bitcoin ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+BMNZ,NYSE ARCA,isin,update,US88636W5519,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+BMNZ,NYSE ARCA,name,update,Defiance Daily Target 2X Short BMNR ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+BNKD,NYSE ARCA,name,update,MicroSectors™ U.S. Big Banks -3x Inverse Leveraged ETNs,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+BRAZ,NYSE ARCA,name,update,Global X Brazil Active ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 BSX,NYSE,country,update,United States,0.8,Boston Scientific Corp is a major US medical device company listed on NYSE; country AU is incorrect.
 BSX,NYSE,country_code,update,US,0.8,Consistent with country correction.
+BTOT,NYSE ARCA,isin,update,US46438G2407,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+BTOT,NYSE ARCA,name,update,iShares Total USD Fixed Income Market ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+BTRN,NYSE ARCA,isin,update,US37960A4875,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+BTRN,NYSE ARCA,name,update,Global X Bitcoin Trend Strategy ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+BUXX,NYSE,name,update,Strive Enhanced Income Short Maturity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+BVAL,NYSE ARCA,isin,update,US3015053925,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+BVAL,NYSE ARCA,name,update,Bluemonte Large Cap Value ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CAAA,NYSE ARCA,isin,update,US33738D7628,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+CAAA,NYSE ARCA,name,update,First Trust AAA CMBS ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 CAG,NYSE,country,update,United States,0.8,"ConAgra Brands is a US company headquartered in Chicago, IL; current value 'Canada' is incorrect."
 CAG,NYSE,country_code,update,US,0.8,Matches corrected country.
 CAP,Euronext,country,update,France,0.8,Capgemini SE is a French company; current value 'Chile' is incorrect.
 CAP,Euronext,country_code,update,FR,0.8,Matches corrected country.
+CARK,NYSE ARCA,name,update,Castleark Large Growth ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 CAT,NYSE,country,update,United States,0.88,Caterpillar Inc is a US company; current value 'Australia' is incorrect.
 CAT,NYSE,country_code,update,US,0.88,Matches corrected country.
+CATF,NYSE ARCA,name,update,American Century California Municipal Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 CBK,NASDAQ,exchange,update,XETRA,0.8,"Commerzbank AG (CBK) trades on XETRA/Frankfurt, not NASDAQ."
 CBK,NASDAQ,name,update,Commerzbank AG,0.8,"ISIN DE000CBK1001 and country DE both point to Commerzbank AG, not the defunct US bank Commercial Bancgroup."
+CCEF,NYSE ARCA,name,update,Calamos CEF Income & Arbitrage ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CCMG,NYSE ARCA,name,update,Sequoia Global Value ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CCRP,NYSE ARCA,isin,update,US19761L7890,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+CCRP,NYSE ARCA,name,update,Columbia Corporate Bond ETF Shares,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CDX,NYSE ARCA,name,update,Simplify High Yield ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CGCB,NYSE ARCA,name,update,Capital Group Core Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CGHM,NYSE ARCA,isin,update,US14020Y8057,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+CGHM,NYSE ARCA,name,update,Capital Group Municipal High-Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CGHY,NYSE ARCA,isin,update,US14020Y8701,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+CGHY,NYSE ARCA,name,update,Capital Group High Yield Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CGIB,NYSE ARCA,isin,update,US14020Y7067,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+CGIB,NYSE ARCA,name,update,Capital Group International Bond ETF (USD-Hedged),0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CGSM,NYSE ARCA,name,update,Capital Group Short Duration Municipal Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CGUI,NYSE ARCA,isin,update,US14020Y8883,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+CGUI,NYSE ARCA,name,update,Capital Group Ultra Short Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CLIP,NYSE ARCA,isin,update,US37960A4388,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+CLIP,NYSE ARCA,name,update,Global X 1-3 Month T-Bill ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 CMG,NYSE,country,update,United States,0.82,Chipotle Mexican Grill is a US-incorporated company
 CMG,NYSE,country_code,update,US,0.82,Consistent with US country
 CNA,NYSE,country,update,United States,0.82,CNA Financial Corporation is a US insurance holding company listed on NYSE.
@@ -23,37 +118,402 @@ CNO,NYSE,country,update,United States,0.82,CNO Financial Group is a US-domiciled
 CNO,NYSE,country_code,update,US,0.82,"CNO Financial Group is incorporated in the US, not Canada."
 CNQ,NYSE,country,update,Canada,0.85,Canadian Natural Resources Ltd is a Canadian energy company; NYSE listing is a cross-listing.
 CNQ,NYSE,country_code,update,CA,0.85,"Company is incorporated in Canada, not Australia."
+COAL,NYSE ARCA,name,update,Range Global Coal ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 COMB,NYSE ARCA,country,update,United States,0.83,GraniteShares Bloomberg Commodity Broad Strategy ETF is a US-domiciled fund listed on NYSE ARCA.
 COMB,NYSE ARCA,country_code,update,US,0.83,US ETF domicile; current BE code is incorrect.
+CORB,NYSE ARCA,isin,update,US00039J7569,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+CORB,NYSE ARCA,name,update,AB Core Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 COV,Euronext,country,update,France,0.8,Covivio SA is a French REIT listed on Euronext Paris; AU is incorrect.
 COV,Euronext,country_code,update,FR,0.8,Must match French domicile.
+CPNJ,NYSE ARCA,isin,update,US12811T8788,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+CPNJ,NYSE ARCA,name,update,Calamos Nasdaq-100 Structured Alt Protection ETF - June,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CPNQ,NYSE ARCA,isin,update,US12811T8523,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+CPNQ,NYSE ARCA,name,update,Calamos Nasdaq-100 Structured Alt Protection ETF - December,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CPNS,NYSE ARCA,isin,update,US12811T8606,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+CPNS,NYSE ARCA,name,update,Calamos Nasdaq-100 Structured Alt Protection ETF - September,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CPRA,NYSE ARCA,isin,update,US12811T1346,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+CPRA,NYSE ARCA,name,update,Calamos Russell 2000 Structured Alt Protection ETF - April,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CPRJ,NYSE ARCA,isin,update,US12811T8374,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+CPRJ,NYSE ARCA,name,update,Calamos Russell 2000 Structured Alt Protection ETF - July,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CPSD,NYSE ARCA,name,update,Calamos S&P 500 Structured Alt Protection ETF - December,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CPSJ,NYSE ARCA,isin,update,US12811T8036,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+CPSJ,NYSE ARCA,name,update,Calamos S&P 500 Structured Alt Protection ETF - July,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CPSM,NYSE ARCA,isin,update,US12811T6055,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+CPSM,NYSE ARCA,name,update,Calamos S&P 500 Structured Alt Protection ETF - May,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CPSO,NYSE ARCA,isin,update,US12811T8291,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+CPSO,NYSE ARCA,name,update,Calamos S&P 500 Structured Alt Protection ETF - October,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CPSP,NYSE ARCA,name,update,Calamos S&P 500 Structured Alt Protection ETF - April,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CPST,NYSE ARCA,isin,update,US12811T8861,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+CPST,NYSE ARCA,name,update,Calamos S&P 500 Structured Alt Protection ETF - September,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CPSY,NYSE ARCA,name,update,Calamos S&P 500 Structured Alt Protection ETF - January,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CRCO,NYSE ARCA,isin,update,US88636W8661,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+CRCO,NYSE ARCA,name,update,YieldMax CRCL Option Income Strategy ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CRUX,NYSE ARCA,isin,update,US19761L7486,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+CRUX,NYSE ARCA,name,update,Columbia Core Bond ETF Shares,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CRXP,NYSE ARCA,isin,update,US19761L7718,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+CRXP,NYSE ARCA,name,update,Columbia Core Plus Bond ETF Shares,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CSHP,NYSE ARCA,name,update,iShares Enhanced Short-Term Bond Active ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CTAP,NYSE ARCA,isin,update,US82889N2282,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+CTAP,NYSE ARCA,name,update,Simplify US Equity PLUS Managed Futures Strategy ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CVRT,NYSE ARCA,name,update,Calamos Convertible Equity Alternative ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CXRN,NYSE ARCA,isin,update,US53656G3166,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+CXRN,NYSE ARCA,name,update,Teucrium 2x Daily Corn ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+DAMD,NYSE ARCA,isin,update,US88636W6194,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+DAMD,NYSE ARCA,name,update,Defiance Daily Target 2X Short AMD ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+DCOR,NYSE ARCA,name,update,Dimensional US Core Equity 1 ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 DE,NYSE,country,update,United States,0.88,Deere & Company is a US corporation listed on NYSE.
 DE,NYSE,country_code,update,US,0.88,Matches US domicile.
 DE,NYSE,isin,update,US2441991054,0.88,CA24345T1003 is a Canadian ISIN; the correct ISIN for Deere & Company (NYSE: DE) is US2441991054.
+DEXC,NYSE ARCA,isin,update,US25434V5342,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+DEXC,NYSE ARCA,name,update,Dimensional Emerging Markets ex China Core Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+DFAR,NYSE ARCA,name,update,Dimensional US Real Estate ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+DFAW,NYSE ARCA,name,update,Dimensional World Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+DFCA,NYSE ARCA,name,update,Dimensional California Municipal Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+DFCF,NYSE ARCA,name,update,Dimensional Core Fixed Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+DFII,NYSE ARCA,isin,update,US33733E7242,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+DFII,NYSE ARCA,name,update,FT Vest Bitcoin Strategy & Target Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+DFIP,NYSE ARCA,name,update,Dimensional Inflation-Protected Securities ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+DFNM,NYSE ARCA,name,update,Dimensional National Municipal Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+DFSD,NYSE ARCA,name,update,Dimensional Short-Duration Fixed Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+DFVX,NYSE ARCA,name,update,Dimensional US Large Cap Vector ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+DIVP,NYSE ARCA,isin,update,US00791R7070,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+DIVP,NYSE ARCA,name,update,Cullen Enhanced Equity Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+DMNIF,OTC,country,update,Canada,0.95,Yahoo Finance reports Damon Inc. domicile as Canada for the OTC listing.
+DMNIF,OTC,country_code,update,CA,0.95,Must match corrected country.
+DMNIF,OTC,isin,update,CA2357502053,0.95,Yahoo Finance exposes ISIN CA2357502053 for DMNIF.
+DMNIF,OTC,name,update,Damon Inc.,0.95,Yahoo Finance verifies DMNIF as Damon Inc. on OTC Markets with recent trading history.
+DRKY,NYSE ARCA,isin,update,US45259A2666,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+DRKY,NYSE ARCA,name,update,VistaShares Target 15 DRUKMacro Distribution ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+DRLL,NYSE,name,update,Strive U.S. Energy ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+DSMC,NYSE,name,update,Distillate Small/Mid Cash Flow ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+DSTX,NYSE,name,update,Distillate International Fundamental Stability & Value ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+DTREF,OTC,country,update,Australia,0.95,Yahoo Finance reports DTREF domicile as Australia for the OTC listing.
+DTREF,OTC,country_code,update,AU,0.95,Must match corrected country.
+DTREF,OTC,isin,update,AU000000DTR1,0.95,Yahoo Finance exposes ISIN AU000000DTR1 for DTREF.
+DTREF,OTC,name,update,DATELINE RESOURCES LTD.,0.95,Yahoo Finance verifies DTREF as DATELINE RESOURCES LTD. on OTC Markets with recent trading history.
+DTREF,OTC,sector,update,Materials,0.9,Yahoo Finance classifies DTREF under Basic Materials; normalized to canonical GICS sector Materials.
+DUHP,NYSE ARCA,name,update,Dimensional US High Profitability ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+DUSB,NYSE ARCA,name,update,Dimensional Ultrashort Fixed Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+DXIV,NYSE ARCA,isin,update,US25434V5425,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+DXIV,NYSE ARCA,name,update,Dimensional International Vector Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+DXUV,NYSE ARCA,isin,update,US25434V5599,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+DXUV,NYSE ARCA,name,update,Dimensional US Vector Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+DYLG,NYSE ARCA,name,update,Global X Dow 30 Covered Call & Growth ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 EA,NASDAQ,country,update,United States,0.82,Electronic Arts Inc is a US company. 'Thailand' came from the Energy Absolute (SET:EA) collision.
 EA,NASDAQ,country_code,update,US,0.82,Follows country correction to United States.
+EAGL,NYSE ARCA,isin,update,US88339Y1029,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+EAGL,NYSE ARCA,name,update,Eagle Capital Select Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+EBUF,NYSE ARCA,isin,update,US45783Y2101,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+EBUF,NYSE ARCA,name,update,Innovator Emerging Markets 10 Buffer ETF - Quarterly,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 ECL,NYSE,country,update,United States,0.88,Ecolab Inc is a US company headquartered in Minnesota.
 ECL,NYSE,country_code,update,US,0.88,Consistent with NYSE listing of a US company.
+ECML,NYSE ARCA,name,update,EA Series Trust - Euclidean Fundamental Value ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+EDGH,NYSE ARCA,isin,update,US00791R8227,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+EDGH,NYSE ARCA,name,update,3EDGE Dynamic Hard Assets ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+EDGI,NYSE ARCA,isin,update,US00791R8144,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+EDGI,NYSE ARCA,name,update,3EDGE Dynamic International Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+EDGU,NYSE ARCA,isin,update,US00791R7989,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+EDGU,NYSE ARCA,name,update,3EDGE Dynamic US Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+EETH,NYSE ARCA,name,update,ProShares Ether ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+EFFI,NYSE ARCA,isin,update,US41151J7292,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+EFFI,NYSE ARCA,name,update,Harbor Osmosis International Resource Efficient ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+EIPI,NYSE ARCA,isin,update,US33740F2763,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+EIPI,NYSE ARCA,name,update,FT Energy Income Partners Enhanced Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 ELV,NYSE,country,update,United States,0.88,Elevance Health Inc is a US health insurance company listed on NYSE.
 ELV,NYSE,country_code,update,US,0.88,Consistent with NYSE listing of a US company.
+EPAI,NYSE ARCA,isin,update,US41151J6120,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+EPAI,NYSE ARCA,name,update,Harbor AI Inflection Strategy ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ETHT,NYSE ARCA,isin,update,US74349Y5713,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+ETHT,NYSE ARCA,name,update,Proshares Ultra Ether ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+EVHY,NYSE ARCA,name,update,Eaton Vance High Yield ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+EVIM,NYSE ARCA,name,update,Eaton Vance Intermediate Municipal Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+EVLN,NYSE ARCA,isin,update,US61774R8337,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+EVLN,NYSE ARCA,name,update,Eaton Vance Floating-Rate ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+EVSB,NYSE ARCA,name,update,Eaton Vance Ultra-Short Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+EVSM,NYSE ARCA,isin,update,US61774R8584,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+EVSM,NYSE ARCA,name,update,Eaton Vance Short Duration Municipal Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FARX,NYSE ARCA,isin,update,US00764Q6373,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FARX,NYSE ARCA,name,update,Frontier Asset Absolute Return ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FBDC,NYSE ARCA,isin,update,US33744U3032,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FBDC,NYSE ARCA,name,update,FT Confluence BDC & Specialty Finance Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FCBD,NYSE ARCA,isin,update,US00764Q6290,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FCBD,NYSE ARCA,name,update,Frontier Asset Core Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FCFY,NYSE ARCA,name,update,First Trust S&P 500 Diversified Free Cash Flow ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FCSH,NYSE ARCA,name,update,Federated Hermes Short Duration Corporate ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FDG,NYSE ARCA,name,update,American Century Focused Dynamic Growth ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FEAC,NYSE ARCA,isin,update,US31609A7019,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FEAC,NYSE ARCA,name,update,Fidelity Enhanced U.S. All-Cap Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FELC,NYSE ARCA,name,update,Fidelity Enhanced Large Cap Core ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FELG,NYSE ARCA,name,update,Fidelity Enhanced Large Cap Growth ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FELV,NYSE ARCA,name,update,Fidelity Enhanced Large Cap Value ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FENI,NYSE ARCA,name,update,Fidelity Enhanced International ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 FEX,NASDAQ,country,update,United States,0.8,First Trust Large Cap Core AlphaDEX® Fund is a US-domiciled ETF listed on NASDAQ.
 FEX,NASDAQ,country_code,update,US,0.8,Consistent with NASDAQ listing.
+FGSM,NYSE ARCA,isin,update,US00764Q5953,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FGSM,NYSE ARCA,name,update,Frontier Asset Global Small Cap Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FHYS,NYSE ARCA,name,update,Federated Hermes Short Duration High Yield ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FIIG,NYSE ARCA,name,update,First Trust Intermediate Duration Investment Grade Corporate ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FIXP,NYSE ARCA,isin,update,US8863641655,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FIXP,NYSE ARCA,name,update,FolioBeyond Enhanced Fixed Income Premium ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FIXT,NYSE,isin,update,US87191E1055,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FIXT,NYSE,name,update,TCW Core Plus Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FLAG,NYSE ARCA,isin,update,US37960A3547,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FLAG,NYSE ARCA,name,update,Global X S&P 500 U.S. Market Leaders TOP 50 ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FLCC,NYSE ARCA,isin,update,US31423L5030,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FLCC,NYSE ARCA,name,update,Federated Hermes MDT Large Cap Core ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FLCE,NYSE ARCA,isin,update,US00764Q5797,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FLCE,NYSE ARCA,name,update,Frontier Asset U.S. Large Cap Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FLCG,NYSE ARCA,isin,update,US31423L8000,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FLCG,NYSE ARCA,name,update,Federated Hermes MDT Large Cap Growth ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FLCV,NYSE ARCA,isin,update,US31423L7010,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FLCV,NYSE ARCA,name,update,Federated Hermes MDT Large Cap Value ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FLV,NYSE ARCA,name,update,American Century Focused Large Cap Value ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FLXR,NYSE,isin,update,US29287L7001,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FLXR,NYSE,name,update,TCW Flexible Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FMDE,NYSE ARCA,name,update,Fidelity Enhanced Mid Cap ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FMKT,NYSE ARCA,isin,update,US8863641408,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FMKT,NYSE ARCA,name,update,The Free Markets ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FOPC,NYSE ARCA,isin,update,US00764Q6118,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FOPC,NYSE ARCA,name,update,Frontier Asset Opportunistic Credit ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FOXY,NYSE ARCA,isin,update,US82889N3686,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FOXY,NYSE ARCA,name,update,Simplify Currency Strategy ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FSCC,NYSE ARCA,isin,update,US31423L6020,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FSCC,NYSE ARCA,name,update,Federated Hermes MDT Small Cap Core ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FSIG,NYSE ARCA,name,update,First Trust Limited Duration Investment Grade Corporate ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FSML,NYSE ARCA,isin,update,US35473P3221,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FSML,NYSE ARCA,name,update,Franklin Small Cap Enhanced ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FTCA,NYSE ARCA,isin,update,US7467298391,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FTCA,NYSE ARCA,name,update,Putnam ETF Trust - Franklin California Municipal Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FTCB,NYSE ARCA,name,update,First Trust Core Investment Grade ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FTMA,NYSE ARCA,isin,update,US7467298219,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FTMA,NYSE ARCA,name,update,Franklin Massachusetts Municipal Inc ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FTMH,NYSE ARCA,isin,update,US7467297898,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FTMH,NYSE ARCA,name,update,Putnam ETF Trust - Putnam Franklin Municipal High Yield ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FTMN,NYSE ARCA,isin,update,US7467298136,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FTMN,NYSE ARCA,name,update,Franklin Minnesota Municipal Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FTMS,NYSE ARCA,isin,update,US7467297302,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FTMS,NYSE ARCA,name,update,Putnam ETF Trust - Putnam Franklin Short Term Municipal Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FTMU,NYSE ARCA,isin,update,US7467297971,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FTMU,NYSE ARCA,name,update,Putnam ETF Trust - Franklin Municipal Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FTNJ,NYSE ARCA,isin,update,US7467297716,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FTNJ,NYSE ARCA,name,update,Franklin New Jersey Municipal Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FTNY,NYSE ARCA,isin,update,US7467297633,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FTNY,NYSE ARCA,name,update,Putnam ETF Trust - Putnam Franklin New York Municipal Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FTOH,NYSE ARCA,isin,update,US7467297559,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FTOH,NYSE ARCA,name,update,Franklin Ohio Municipal Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FTPA,NYSE ARCA,isin,update,US7467297484,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+FTPA,NYSE ARCA,name,update,Franklin Pennsylvania Municipal Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FTRB,NYSE ARCA,name,update,Federated Hermes Total Return Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FTWO,NYSE,name,update,Strive Natural Resources and Security ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+FXED,NYSE,name,update,Sound Enhanced Fixed Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+GAEM,NYSE ARCA,isin,update,US82889N4593,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+GAEM,NYSE ARCA,name,update,Simplify Gamma Emerging Market Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+GCAL,NYSE ARCA,isin,update,US38149W5647,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+GCAL,NYSE ARCA,name,update,Goldman Sachs Dynamic California Municipal Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+GDOC,NYSE ARCA,name,update,Goldman Sachs Future Health Care Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+GENW,NYSE ARCA,isin,update,US84858T6736,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+GENW,NYSE ARCA,name,update,Genter Capital International Dividend ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+GIGL,NYSE ARCA,isin,update,US38149W4657,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+GIGL,NYSE ARCA,name,update,Goldman Sachs Corporate Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 GLAD,NASDAQ,country,update,United States,0.8,Gladstone Capital Corporation is a US BDC listed on NASDAQ; Canada is incorrect.
 GLAD,NASDAQ,country_code,update,US,0.8,Must match United States.
+GMEY,NYSE ARCA,isin,update,US88636V4620,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+GMEY,NYSE ARCA,name,update,Yieldmax Gme Option Income Strategy ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+GMNY,NYSE ARCA,isin,update,US38149W5563,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+GMNY,NYSE ARCA,name,update,Goldman Sachs Dynamic New York Municipal Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+GMOD,NYSE ARCA,isin,update,US90139K8788,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+GMOD,NYSE ARCA,name,update,GMO Dynamic Allocation ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+GMOI,NYSE ARCA,isin,update,US90139K4076,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+GMOI,NYSE ARCA,name,update,GMO International Value ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+GMOV,NYSE ARCA,name,update,GMO U.S. Value ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+GMUB,NYSE ARCA,isin,update,US38149W5498,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+GMUB,NYSE ARCA,name,update,Goldman Sachs Municipal Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+GRNI,NYSE ARCA,isin,update,US45259A2419,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+GRNI,NYSE ARCA,name,update,Fundstrat Granny Shots US Large Cap & Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+GRNJ,NYSE ARCA,isin,update,US45259A2583,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+GRNJ,NYSE ARCA,name,update,Fundstrat Granny Shots US Small- & Mid-Cap ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+GSKH,NYSE ARCA,isin,update,US74016W8745,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+GSKH,NYSE ARCA,name,update,Precidian ETFs Trust - GSK plc ADRhedged,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+GUMI,NYSE ARCA,isin,update,US38149W5720,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+GUMI,NYSE ARCA,name,update,Goldman Sachs Ultra Short Municipal Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+GVLU,NYSE ARCA,name,update,Gotham 1000 Value ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+GVUS,NYSE ARCA,name,update,Goldman Sachs MarketBeta Russell 1000 Value Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+GXPC,NYSE ARCA,isin,update,US37960A2978,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+GXPC,NYSE ARCA,name,update,Global X Purecap MSCI Communication Services ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+GXPD,NYSE ARCA,isin,update,US37960A3133,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+GXPD,NYSE ARCA,name,update,Global X Purecap MSCI Consumer Discretionary ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+GXPE,NYSE ARCA,isin,update,US37960A2630,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+GXPE,NYSE ARCA,name,update,Global X Purecap MSCI Energy ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+GXPS,NYSE ARCA,isin,update,US37960A2713,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+GXPS,NYSE ARCA,name,update,Global X Purecap MSCI Consumer Staples ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+GXPT,NYSE ARCA,isin,update,US37960A2895,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+GXPT,NYSE ARCA,name,update,Global X PureCap MSCI Information Technology ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 H,NYSE,country,update,United States,0.82,Hyatt Hotels Corporation is a US-incorporated company listed on NYSE; Canada is incorrect.
 H,NYSE,country_code,update,US,0.82,Matches US domicile for NYSE-listed Hyatt Hotels.
+HAPS,NYSE ARCA,name,update,Harbor Human Capital Factor US Small Cap ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 HBAN,NASDAQ,country,update,United States,0.83,Huntington Bancshares is a US bank holding company; Switzerland is incorrect.
 HBAN,NASDAQ,country_code,update,US,0.83,Matches US domicile for NASDAQ-listed Huntington Bancshares.
+HELO,NYSE ARCA,name,update,Jpmorgan Hedged Equity Laddered Overlay ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+HIYY,NYSE ARCA,isin,update,US88636V4547,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+HIYY,NYSE ARCA,name,update,YieldMax HIMS Option Income Strategy ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+HOLA,NYSE ARCA,isin,update,US46654Q5918,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+HOLA,NYSE ARCA,name,update,JPMorgan International Hedged Equity Laddered Overlay ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+HOOZ,NYSE ARCA,isin,update,US88636W5287,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+HOOZ,NYSE ARCA,name,update,Defiance Daily Target 2X Short HOOD ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+HYBX,NYSE,isin,update,US29287L8744,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+HYBX,NYSE,name,update,TCW High Yield Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+HYFI,NYSE ARCA,name,update,AB High Yield ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+HYSA,NYSE ARCA,isin,update,US09789C7700,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+HYSA,NYSE ARCA,name,update,Bondbloxx USD High Yield Bond Sector Rotation ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+HYTI,NYSE ARCA,isin,update,US33738D7396,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+HYTI,NYSE ARCA,name,update,FT Vest High Yield & Target Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IAUG,NYSE ARCA,isin,update,US45783Y1459,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+IAUG,NYSE ARCA,name,update,Innovator International Developed Power Buffer ETF - August,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IBDY,NYSE ARCA,name,update,iShares iBonds Dec 2033 Term Corporate ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IBDZ,NYSE ARCA,isin,update,US46438G6531,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+IBDZ,NYSE ARCA,name,update,iShares iBonds Dec 2034 Term Corporate ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IBFR,NYSE ARCA,isin,update,US45784N2889,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+IBFR,NYSE ARCA,name,update,Innovator International Developed Managed 10 Buffer ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IBIC,NYSE ARCA,name,update,iShares iBonds Oct 2026 Term TIPS ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IBID,NYSE ARCA,name,update,iShares iBonds Oct 2027 Term TIPS ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IBIE,NYSE ARCA,name,update,iShares iBonds Oct 2028 Term TIPS ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IBIF,NYSE ARCA,name,update,iShares iBonds Oct 2029 Term TIPS ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IBIG,NYSE ARCA,name,update,iShares iBonds Oct 2030 Term TIPS ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IBIH,NYSE ARCA,name,update,iShares iBonds Oct 2031 Term TIPS ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IBII,NYSE ARCA,name,update,iShares iBonds Oct 2032 Term TIPS ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IBIJ,NYSE ARCA,name,update,iShares iBonds Oct 2033 Term TIPS ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IBIK,NYSE ARCA,isin,update,US46438G6796,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+IBIK,NYSE ARCA,name,update,iShares iBonds Oct 2034 Term TIPS ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IBIL,NYSE ARCA,isin,update,US46438G3801,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+IBIL,NYSE ARCA,name,update,iShares iBonds Oct 2035 Term TIPS ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IBUF,NYSE ARCA,isin,update,US45783Y1780,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+IBUF,NYSE ARCA,name,update,Innovator International Developed 10 Buffer ETF - Quarterly,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ICOI,NYSE ARCA,isin,update,US0917486088,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+ICOI,NYSE ARCA,name,update,Bitwise COIN Option Income Strategy ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ICPI,NYSE ARCA,isin,update,US46438G2571,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+ICPI,NYSE ARCA,name,update,iShares 0-1 Year TIPS Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ICRC,NYSE ARCA,isin,update,US0917488894,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+ICRC,NYSE ARCA,name,update,Bitwise CRCL Option Income Strategy ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IDEC,NYSE ARCA,name,update,Innovator International Developed Power Buffer ETF - December,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IFEB,NYSE ARCA,isin,update,US45783Y3505,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+IFEB,NYSE ARCA,name,update,Innovator International Developed Power Buffer ETF - February,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IFLR,NYSE ARCA,isin,update,US45784N3879,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+IFLR,NYSE ARCA,name,update,Innovator International Developed Managed Floor ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IGME,NYSE ARCA,name,update,Bitwise GME Option Income Strategy ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IJUN,NYSE ARCA,isin,update,US45783Y2853,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+IJUN,NYSE ARCA,name,update,Innovator International Developed Power Buffer ETF - June,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ILOW,NYSE ARCA,isin,update,US00039J8229,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+ILOW,NYSE ARCA,name,update,AB International Low Volatility Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IMAR,NYSE ARCA,isin,update,US45783Y3430,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+IMAR,NYSE ARCA,name,update,Innovator International Developed Power Buffer ETF - March,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IMAY,NYSE ARCA,isin,update,US45783Y2937,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+IMAY,NYSE ARCA,name,update,Innovator International Developed Power Buffer ETF - May,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IMRA,NYSE ARCA,isin,update,US0917487078,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+IMRA,NYSE ARCA,name,update,Bitwise MARA Option Income Strategy ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IMST,NYSE ARCA,isin,update,US0917488068,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+IMST,NYSE ARCA,name,update,Bitwise MSTR Option Income Strategy ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+INDE,NYSE ARCA,name,update,Matthews India Active ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+INVG,NYSE ARCA,isin,update,US90139K5065,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+INVG,NYSE ARCA,name,update,GMO Systematic Investment Grade Credit ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IOPP,NYSE ARCA,isin,update,US82889N4916,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+IOPP,NYSE ARCA,name,update,Simplify Tara India Opportunities ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+IRTR,NYSE ARCA,name,update,Ishares Lifepath Retirement ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ISEP,NYSE ARCA,name,update,Innovator International Developed Power Buffer ETF - September,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ITDB,NYSE ARCA,name,update,Ishares Lifepath Target Date 2030 ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ITDC,NYSE ARCA,name,update,Ishares Lifepath Target Date 2035 ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ITDD,NYSE ARCA,name,update,Ishares Lifepath Target Date 2040 ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ITDE,NYSE ARCA,name,update,Ishares Lifepath Target Date 2045 ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ITDF,NYSE ARCA,name,update,Ishares Lifepath Target Date 2050 ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ITDG,NYSE ARCA,name,update,Ishares Lifepath Target Date 2055 ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ITDH,NYSE ARCA,name,update,Ishares Lifepath Target Date 2060 ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ITDI,NYSE ARCA,name,update,Ishares Lifepath Target Date 2065 ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ITDJ,NYSE ARCA,isin,update,US46438G4890,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+ITDJ,NYSE ARCA,name,update,iShares LifePath Target Date 2070 ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+JBND,NYSE,name,update,Jpmorgan Active Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+JDIV,NYSE ARCA,isin,update,US46654Q6585,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+JDIV,NYSE ARCA,name,update,JPMorgan Dividend Leaders ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+JDVI,NYSE ARCA,name,update,John Hancock Disciplined Value International Select ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+JDVL,NYSE ARCA,isin,update,US47804J6771,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+JDVL,NYSE ARCA,name,update,John Hancock Disciplined Value Select ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+JETD,NYSE ARCA,name,update,MAX Airlines -3X Inverse Leveraged ETN,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+JFLI,NYSE ARCA,isin,update,US46654Q6411,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+JFLI,NYSE ARCA,name,update,JPMorgan Flexible Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+JFLX,NYSE ARCA,isin,update,US46654Q5595,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+JFLX,NYSE ARCA,name,update,JPMorgan Flexible Debt ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+JGRW,NYSE ARCA,isin,update,US89834G5624,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+JGRW,NYSE ARCA,name,update,Jensen Quality Growth ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+JHAC,NYSE ARCA,name,update,John Hancock Fundamental All Cap Core ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+JHCP,NYSE ARCA,name,update,JHancock Core Plus Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+JHCR,NYSE ARCA,name,update,JHancock Core Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+JHHY,NYSE ARCA,isin,update,US47804J7191,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+JHHY,NYSE ARCA,name,update,John Hancock High Yield ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+JHLN,NYSE ARCA,name,update,JHancock Global Senior Loan ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+JIRE,NYSE ARCA,name,update,JPMorgan International Research Enhanced Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+JMHI,NYSE ARCA,name,update,J P Morgan Exchange-Traded Fund Trust - High Yield Municipal Etf Fund,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+JMMF,NYSE ARCA,isin,update,US46654Q5421,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+JMMF,NYSE ARCA,name,update,Jpmorgan 100% U.S. Treasury Securities Money Market ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+JMSI,NYSE ARCA,name,update,J P Morgan Exchange-Traded Fund Trust - Sustainable Municipal Income Etf Fund,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+JMTG,NYSE ARCA,isin,update,US46654Q5751,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+JMTG,NYSE ARCA,name,update,JPMorgan Mortgage-Backed Securities ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+JOET,NYSE ARCA,name,update,Virtus Terranova U.S. Quality Momentum ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+JPAN,NYSE ARCA,name,update,Matthews Japan Active ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+JPIE,NYSE ARCA,name,update,JPMorgan Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+JUSA,NYSE ARCA,isin,update,US46654Q6171,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+JUSA,NYSE ARCA,name,update,JPMorgan U.S. Research Enhanced Large Cap ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+KBFR,NYSE ARCA,isin,update,US45784N2624,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+KBFR,NYSE ARCA,name,update,Innovator U.S. Small Cap Managed 10 Buffer ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+KBUF,NYSE ARCA,isin,update,US5007674139,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+KBUF,NYSE ARCA,name,update,KraneShares 90% KWEB Defined Outcome January 2027 ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+KCAI,NYSE ARCA,name,update,KraneShares Trust - KraneShares China Alpha Index ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+KCSH,NYSE ARCA,isin,update,US5007673552,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+KCSH,NYSE ARCA,name,update,Kraneshares Sustainable Ultra Short Duration Index ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+KDEF,NYSE ARCA,isin,update,US30151E4917,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+KDEF,NYSE ARCA,name,update,PLUS Korea Defense Industry Index ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+KLXY,NYSE ARCA,name,update,Kraneshares Global Luxury Index ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+KMID,NYSE ARCA,isin,update,US92790A8687,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+KMID,NYSE ARCA,name,update,Virtus KAR Mid-Cap ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+KNRG,NYSE ARCA,isin,update,US82889N2779,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+KNRG,NYSE ARCA,name,update,Simplify Kayne Anderson Energy and Infrastructure Credit ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+KPHO,NYSE ARCA,isin,update,US5007672158,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+KPHO,NYSE ARCA,name,update,KraneShares Dragon Capital Vietnam Growth Index ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+KPRO,NYSE ARCA,isin,update,US5007674212,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+KPRO,NYSE ARCA,name,update,KraneShares 100% KWEB Defined Outcome January 2027 ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 LC,NYSE,country,update,United States,0.82,LendingClub Corp is a US company; PH country is from the Lepanto collision.
 LC,NYSE,country_code,update,US,0.82,Follows from country correction.
+LDRH,NYSE ARCA,isin,update,US46438G5475,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+LDRH,NYSE ARCA,name,update,iShares iBonds 1-5 Year High Yield and Income Ladder ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+LDRT,NYSE ARCA,isin,update,US46438G5210,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+LDRT,NYSE ARCA,name,update,iShares iBonds 1-5 Year Treasury Ladder ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 LFST,NASDAQ,country,update,United States,0.83,Lifestance Health Group Inc. is a US company listed on NASDAQ.
 LFST,NASDAQ,country_code,update,US,0.83,Follows from country correction.
+LGHT,NYSE ARCA,name,update,Langar Global Healthtech ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+LMBO,NYSE ARCA,isin,update,US25461A5939,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+LMBO,NYSE ARCA,name,update,Direxion Daily Crypto Industry Bull 2X Shares ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+LMUB,NYSE ARCA,isin,update,US46438G4486,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+LMUB,NYSE ARCA,name,update,iShares Long-Term National Muni Bd ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+LNGX,NYSE ARCA,isin,update,US37960A1723,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+LNGX,NYSE ARCA,name,update,Global X U.S. Natural Gas ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+LPRE,NYSE ARCA,isin,update,US30151E5179,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+LPRE,NYSE ARCA,name,update,Long Pond Real Estate Select ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+LQAI,NYSE ARCA,name,update,LG QRAFT AI-Powered U.S. Large Cap Core ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+LQTI,NYSE ARCA,isin,update,US33738D7479,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+LQTI,NYSE ARCA,name,update,FT Vest Investment Grade & Target Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+LRGC,NYSE ARCA,name,update,AB US Large Cap Strategic Equities ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+LSEQ,NYSE ARCA,name,update,Harbor Long-Short Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+LTTI,NYSE ARCA,isin,update,US33738D7214,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+LTTI,NYSE ARCA,name,update,FT Vest 20+ Year Treasury & Target Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 MAC,NYSE,country,update,United States,0.82,Macerich Company is a US REIT; 'United Kingdom' is incorrect.
 MAC,NYSE,country_code,update,US,0.82,"Should be US, not GB."
+MADE,NYSE ARCA,isin,update,US46438G5962,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+MADE,NYSE ARCA,name,update,iShares U.S. Manufacturing ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 MAN,NYSE,country,update,United States,0.85,ManpowerGroup Inc. is a US company headquartered in Milwaukee; 'Austria' is incorrect.
 MAN,NYSE,country_code,update,US,0.85,"Should be US, not AT."
+MAPP,NYSE ARCA,name,update,Harbor Multi-Asset Explorer ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 MAT,NASDAQ,country,update,United States,0.88,Mattel Inc. is a US company; 'Australia' is incorrect.
 MAT,NASDAQ,country_code,update,US,0.88,"Should be US, not AU."
+MAVF,NYSE ARCA,isin,update,US02072Q8125,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+MAVF,NYSE ARCA,name,update,Matrix Advisors Value ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+MBSX,NYSE ARCA,name,update,Regan Fixed Rate MBS ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 MCB,NYSE,country,update,United States,0.85,Metropolitan Bank Holding Corp is a US bank (New York); Canada is incorrect.
 MCB,NYSE,country_code,update,US,0.85,"Country code should reflect the United States, not Canada (CA)."
 MCI,NYSE,country,update,United States,0.82,"Barings Corporate Investors is a US-registered closed-end fund, not Canadian."
@@ -76,26 +536,92 @@ MG,NYSE,country,update,United States,0.8,"Mistras Group Inc is a US company head
 MG,NYSE,country_code,update,US,0.8,Consistent with corrected country.
 MGA,NYSE,country,update,Canada,0.85,"Magna International Inc is incorporated and headquartered in Ontario, Canada."
 MGA,NYSE,country_code,update,CA,0.85,Consistent with corrected country.
+MGOV,NYSE ARCA,name,update,First Trust Intermediate Government Opportunities ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+MKOR,NYSE ARCA,name,update,Matthews Korea Active ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+MKTN,NYSE ARCA,isin,update,US31423L8752,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+MKTN,NYSE ARCA,name,update,Federated Hermes MDT Market Neutral ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 MNC,WSE,country,update,Poland,0.83,Mennica Polska S.A. is a Polish company listed on the Warsaw Stock Exchange.
 MNC,WSE,country_code,update,PL,0.83,Consistent with corrected country.
 MTB,NYSE,country,update,United States,0.85,"M&T Bank Corporation is a US company headquartered in Buffalo, NY."
 MTB,NYSE,country_code,update,US,0.85,Consistent with corrected country.
+MTBA,NYSE ARCA,name,update,Simplify MBS ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 MTS,BME,country,update,Luxembourg,0.8,ArcelorMittal SA is incorporated in Luxembourg.
 MTS,BME,country_code,update,LU,0.8,Consistent with corrected country.
+MUNA,NYSE ARCA,isin,update,US6651621863,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+MUNA,NYSE ARCA,name,update,Northern Trust 2030 Tax-Exempt Distributing Ladder ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+MUNB,NYSE ARCA,isin,update,US6651621780,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+MUNB,NYSE ARCA,name,update,Northern Trust 2035 Tax-Exempt Distributing Ladder ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+MUNC,NYSE ARCA,isin,update,US6651621608,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+MUNC,NYSE ARCA,name,update,Northern Trust 2045 Tax-Exempt Distributing Ladder ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+MUND,NYSE ARCA,isin,update,US6651621525,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+MUND,NYSE ARCA,name,update,Northern Trust 2055 Tax-Exempt Distributing Ladder ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 MUR,NYSE,country,update,United States,0.83,"Murphy Oil Corporation is a US company headquartered in El Dorado, AR."
 MUR,NYSE,country_code,update,US,0.83,Consistent with corrected country.
+MUSE,NYSE,isin,update,US29287L8660,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+MUSE,NYSE,name,update,TCW Multisector Credit Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+MUSQ,NYSE ARCA,name,update,MUSQ Global Music Industry Index ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+MVPL,NYSE ARCA,name,update,Miller Value Ptnrs Leverage ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+NBCE,NYSE ARCA,name,update,Neuberger China Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+NBCR,NYSE ARCA,isin,update,US64135A8615,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+NBCR,NYSE ARCA,name,update,Neuberger Core Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+NBFC,NYSE ARCA,isin,update,US64135A8797,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+NBFC,NYSE ARCA,name,update,Neuberger Flexible Credit Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+NBFR,NYSE ARCA,isin,update,US45784N2707,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+NBFR,NYSE ARCA,name,update,Innovator Nasdaq-100 Managed 10 Buffer ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+NBGX,NYSE ARCA,isin,update,US64135A8383,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+NBGX,NYSE ARCA,name,update,Neuberger Growth ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+NBIE,NYSE ARCA,isin,update,US64135A7708,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+NBIE,NYSE ARCA,name,update,Neuberger International Core Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+NBJP,NYSE ARCA,isin,update,US64135A8532,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+NBJP,NYSE ARCA,name,update,Neuberger Japan Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+NBOS,NYSE ARCA,name,update,Neuberger Option Strategy ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+NBSD,NYSE ARCA,isin,update,US64135A8870,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+NBSD,NYSE ARCA,name,update,Neuberger Short Duration Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+NBSM,NYSE ARCA,isin,update,US64135A8045,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+NBSM,NYSE ARCA,name,update,Neuberger Small-Mid Cap ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+NBTR,NYSE ARCA,isin,update,US64135A8466,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+NBTR,NYSE ARCA,name,update,Neuberger Total Return Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 NET,NYSE,country,update,United States,0.85,Cloudflare Inc. is a US company listed on NYSE.
 NET,NYSE,country_code,update,US,0.85,Country code must match United States.
 NEU,NYSE,country,update,United States,0.82,NewMarket Corporation is a US company listed on NYSE.
 NEU,NYSE,country_code,update,US,0.82,Country code must match United States.
+NJNK,NYSE ARCA,isin,update,US19761L8393,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+NJNK,NYSE ARCA,name,update,Columbia U.S. High Yield ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+NMBL,NYSE ARCA,isin,update,US45259A7798,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+NMBL,NYSE ARCA,name,update,NovaTide Flexible Allocation ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+NRGD,NYSE ARCA,isin,update,US0636793939,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+NRGD,NYSE ARCA,name,update,MicroSectors U.S. Big Oil -3x Inverse Leveraged ETNs,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+NRSH,NYSE ARCA,name,update,Aztlan North America Nearshoring Stock Selection ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+NUKZ,NYSE ARCA,name,update,Range Nuclear Renaissance ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+NVOH,NYSE ARCA,isin,update,US74016W8414,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+NVOH,NYSE ARCA,name,update,Precidian ETFs Trust - Novo Nordisk A/S (B Shares) ADRhedged,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 NXT,NASDAQ,country,update,United States,0.82,Nextracker Inc. is a US company listed on NASDAQ.
 NXT,NASDAQ,country_code,update,US,0.82,Country code must match United States.
+ODHY,NYSE ARCA,isin,update,US84858T7239,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+ODHY,NYSE ARCA,name,update,Obra Defensive High Yield ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 OGN,NYSE,country,update,United States,0.83,Organon & Co is a US company listed on NYSE.
 OGN,NYSE,country_code,update,US,0.83,Country code must match United States.
+OGSP,NYSE ARCA,isin,update,US84858T8302,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+OGSP,NYSE ARCA,name,update,Obra High Grade Structured Products ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+OKLS,NYSE ARCA,isin,update,US88636W1559,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+OKLS,NYSE ARCA,name,update,Defiance Daily Target 2X Short OKLO ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+OOSP,NYSE ARCA,isin,update,US84858T8484,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+OOSP,NYSE ARCA,name,update,Obra Opportunistic Structured Products ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 ORG,WSE,exchange,update,ASX,0.8,"Origin Energy Limited is listed on the Australian Securities Exchange, not the Warsaw Stock Exchange"
 ORG,WSE,name,update,Origin Energy Limited,0.8,"ISIN AU000000ORG5 and alias 'origin energy' identify this as Origin Energy Limited, not a bare ticker placeholder"
+OWNB,NYSE ARCA,isin,update,US0917485098,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+OWNB,NYSE ARCA,name,update,Bitwise Bitcoin Standard Corporations ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+PAPI,NYSE ARCA,name,update,Parametric Equity Premium Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 PAY,NYSE,country,update,United States,0.83,"Paymentus Holdings, Inc. is a US company listed on NYSE."
 PAY,NYSE,country_code,update,US,0.83,Country code must match United States.
+PBOT,NYSE ARCA,isin,update,US9009347041,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+PBOT,NYSE ARCA,name,update,Pictet AI & Automation ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+PCLN,NYSE ARCA,isin,update,US9009348031,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+PCLN,NYSE ARCA,name,update,Pictet Cleaner Planet ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+PEMX,NYSE ARCA,name,update,Putnam Emerging Markets Ex-China ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+PGRI,NYSE ARCA,isin,update,US35473P3304,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+PGRI,NYSE ARCA,name,update,Putnam International Stock ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+PHEQ,NYSE ARCA,name,update,Parametric Hedged Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 PIM,NYSE,country,update,United States,0.8,"Putnam is a US fund manager; this is NYSE-listed, not Australian."
 PIM,NYSE,country_code,update,US,0.8,Consistent with NYSE listing and US fund manager.
 PIN,NYSE ARCA,country,update,United States,0.85,Invesco India ETF is US-domiciled and NYSE ARCA-listed.
@@ -108,6 +634,8 @@ PMT,NYSE,country,update,United States,0.82,PMT is a US-domiciled REIT listed on 
 PMT,NYSE,country_code,update,US,0.82,Matches country correction above.
 PPH,NASDAQ,country,update,United States,0.8,VanEck Pharmaceutical ETF is a US-domiciled fund.
 PPH,NASDAQ,country_code,update,US,0.8,Consistent with NASDAQ listing.
+PQNT,NYSE ARCA,isin,update,US9009348866,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+PQNT,NYSE ARCA,name,update,Pictet AI Enhanced International Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 PRG,NYSE,country,update,United States,0.83,PROG Holdings Inc is a US company (Utah); Australia is incorrect.
 PRG,NYSE,country_code,update,US,0.83,"Country code should reflect the United States, not Australia (AU)."
 PRIM,NYSE,country,update,United States,0.85,Primoris Services is a US company headquartered in Texas; country is incorrectly set to United Kingdom.
@@ -122,44 +650,285 @@ PSK,NYSE ARCA,country,update,United States,0.87,SPDR ICE Preferred Securities ET
 PSK,NYSE ARCA,country_code,update,US,0.87,Matches country correction above.
 PZA,NYSE ARCA,country,update,United States,0.8,"Invesco National AMT-Free Municipal Bond ETF is a US-domiciled ETF listed on NYSE ARCA, not a Canadian entity."
 PZA,NYSE ARCA,country_code,update,US,0.8,Should be US to match NYSE ARCA listing and fund domicile.
+QFLR,NYSE ARCA,name,update,Innovator Nasdaq-100 Managed Floor ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+QIDX,NYSE ARCA,isin,update,US84858T7569,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+QIDX,NYSE ARCA,name,update,Indexperts Quality Earnings Focused ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+QIS,NYSE ARCA,name,update,Simplify Multi-Qis Alternative ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+QLTI,NYSE ARCA,isin,update,US90139K3086,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+QLTI,NYSE ARCA,name,update,GMO International Quality ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+QSU,NYSE ARCA,isin,update,US88636Y8628,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+QSU,NYSE ARCA,name,update,Defiance Daily Target 2X Long QS ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+RAAA,NYSE ARCA,isin,update,US00777X4960,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+RAAA,NYSE ARCA,name,update,Reckoner Yield Enhanced AAA CLO ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 RARE,NASDAQ,country,update,United States,0.82,"Ultragenyx Pharmaceutical is a US company listed on NASDAQ, not an Irish entity."
 RARE,NASDAQ,country_code,update,US,0.82,Should be US to match NASDAQ listing and company incorporation.
 RCH,LSE,country,update,United Kingdom,0.82,"Reach PLC is a UK media company listed on the LSE, not a Canadian entity."
 RCH,LSE,country_code,update,GB,0.82,Should be GB to match LSE listing and UK incorporation.
+RCLO,NYSE ARCA,isin,update,US00777X4887,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+RCLO,NYSE ARCA,name,update,Reckoner BBB-B CLO ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+REGS,NYSE ARCA,isin,update,US19761L7551,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+REGS,NYSE ARCA,name,update,Columbia ETF Trust I - Columbia Large Cap Growth ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+REKT,NYSE ARCA,isin,update,US25461A5855,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+REKT,NYSE ARCA,name,update,Direxion Daily Crypto Industry Bear 1X Shares ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+RESM,NYSE ARCA,isin,update,US19761L8138,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+RESM,NYSE ARCA,name,update,Columbia Research Enhanced Small Cap ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+RFLR,NYSE ARCA,isin,update,US45784N5023,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+RFLR,NYSE ARCA,name,update,Innovator U.S. Small Cap Managed Floor ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+RILA,NYSE ARCA,isin,update,US84858T7643,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+RILA,NYSE ARCA,name,update,Indexperts Gorilla Aggressive Growth ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ROPE,NYSE ARCA,isin,update,US02072L1695,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+ROPE,NYSE ARCA,name,update,Coastal Compass 100 ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+RSDE,NYSE ARCA,isin,update,US33740U4893,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+RSDE,NYSE ARCA,name,update,FT Vest U.S. Equity Equal Weight Buffer ETF - December,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+RSJN,NYSE ARCA,isin,update,US33740F2276,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+RSJN,NYSE ARCA,name,update,FT Vest U.S. Equity Equal Weight Buffer ETF - June,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+RSMR,NYSE ARCA,isin,update,US33740U3986,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+RSMR,NYSE ARCA,name,update,FT Vest U.S. Equity Equal Weight Buffer ETF - March,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+RSMV,NYSE ARCA,isin,update,US53656G3323,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+RSMV,NYSE ARCA,name,update,Relative Strength Managed Volatility Strategy ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+RVER,NYSE ARCA,isin,update,US00777X5462,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+RVER,NYSE ARCA,name,update,Trenchless Fund ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 SAM,NYSE,country,update,United States,0.82,"Boston Beer Company is headquartered in Boston, MA, USA. Country 'Canada' is incorrect."
 SAM,NYSE,country_code,update,US,0.82,Consistent correction with country field; CA is wrong for a US-listed NYSE company.
+SAPH,NYSE ARCA,isin,update,US74016W8174,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+SAPH,NYSE ARCA,name,update,Precidian ETFs Trust  - SAP SE ADRhedged,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+SBIL,NYSE ARCA,isin,update,US82889N2696,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+SBIL,NYSE ARCA,name,update,Simplify Government Money Market ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+SCDV,NYSE ARCA,isin,update,US2689616041,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+SCDV,NYSE ARCA,name,update,Bahl & Gaynor Small Cap Dividend ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 SCHP,NYSE ARCA,country,update,United States,0.85,Schwab U.S. TIPS ETF is a US-domiciled fund; country 'Switzerland' is incorrect.
 SCHP,NYSE ARCA,country_code,update,US,0.85,Consistent with country correction; CH is wrong for a US Schwab ETF.
+SDCP,NYSE ARCA,name,update,Virtus Newfleet Short Duration Core Plus Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+SDFI,NYSE ARCA,isin,update,US00039J8484,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+SDFI,NYSE ARCA,name,update,AB Short Duration Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+SGRW,NYSE ARCA,isin,update,US41151J5965,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+SGRW,NYSE ARCA,name,update,Harbor Active Small Cap Growth ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 SHG,NYSE,country,update,South Korea,0.8,Shinhan Financial Group is a Korean company; AU is incorrect.
 SHG,NYSE,country_code,update,KR,0.8,Consistent with South Korean domicile.
+SHOC,NYSE,name,update,Strive U.S. Semiconductor ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+SHRT,NYSE ARCA,name,update,Gotham Short Strategies ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+SIOO,NYSE ARCA,isin,update,US45259A2336,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+SIOO,NYSE ARCA,name,update,VistaShares Target 15TM S&P 100 Distribution ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 SLM,NASDAQ,country,update,United States,0.8,"SLM Corp is a US-incorporated company headquartered in Newark, Delaware."
 SLM,NASDAQ,country_code,update,US,0.8,Matches US company identity.
+SLNZ,NYSE,isin,update,US29287L8090,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+SLNZ,NYSE,name,update,TCW Senior Loan ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+SLON,NYSE ARCA,isin,update,US74349Y6471,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+SLON,NYSE ARCA,name,update,ProShares Ultra Solana ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 SNX,NYSE,country,update,United States,0.82,SNX/TD SYNNEX is a US-headquartered company listed on NYSE; AU is incorrect.
 SNX,NYSE,country_code,update,US,0.82,Consistent with NYSE listing and US domicile.
+SOVF,NYSE ARCA,name,update,Sovereign's Capital Flourish Fund,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 SPG,NYSE,country,update,United States,0.82,Simon Property Group is a US REIT; AU is incorrect.
 SPG,NYSE,country_code,update,US,0.82,Consistent with US domicile.
 SRE,NYSE,country,update,United States,0.85,Sempra is a US utility headquartered in San Diego; Guernsey domicile is incorrect.
 SRE,NYSE,country_code,update,US,0.85,Consistent with NYSE listing and US domicile.
+SRHR,NYSE ARCA,name,update,SRH REIT Covered Call ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+STRV,NYSE,name,update,Strive 500 ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+STXD,NYSE,name,update,Strive 1000 Dividend Growth ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+STXE,NYSE,name,update,Strive Emerging Markets Ex-China ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+STXG,NYSE,name,update,Strive 1000 Growth ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+STXI,NYSE,isin,update,US02072L5241,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+STXI,NYSE,name,update,Strive International Developed Markets ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+STXK,NYSE,name,update,Strive Small-Cap ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+STXM,NYSE,isin,update,US02072L2503,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+STXM,NYSE,name,update,Strive Mid-Cap ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+STXT,NYSE,name,update,Strive Total Return Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+STXV,NYSE,name,update,Strive 1000 Value ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+SYFI,NYSE ARCA,isin,update,US00039J8302,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+SYFI,NYSE ARCA,name,update,AB Short Duration High Yield ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 T,NYSE,country,update,United States,0.85,AT&T Inc is a US-incorporated company.
 T,NYSE,country_code,update,US,0.85,Matches US company identity.
+TABD,NYSE ARCA,isin,update,US9009348528,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+TABD,NYSE ARCA,name,update,Transamerica Bond Active ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TACN,NYSE ARCA,isin,update,US87283Q7198,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+TACN,NYSE ARCA,name,update,T. Rowe Price Active Core International Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TACU,NYSE ARCA,isin,update,US87283Q6935,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+TACU,NYSE ARCA,name,update,T. Rowe Price Active Core U.S. Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TAFL,NYSE ARCA,name,update,AB Tax-Aware Long Municipal ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TAFM,NYSE ARCA,name,update,AB Tax-Aware Intermediate Municipal ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TALV,NYSE ARCA,isin,update,US9009348452,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+TALV,NYSE ARCA,name,update,Transamerica Large Value Active ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TAXM,NYSE ARCA,isin,update,US09789C6975,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+TAXM,NYSE ARCA,name,update,BondBloxx IR+M Tax-Aware ETF for Massachusetts Residents,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TAXX,NYSE ARCA,isin,update,US09789C7213,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+TAXX,NYSE ARCA,name,update,Bondbloxx IR+M Tax-Aware Short Duration ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TBFG,NYSE ARCA,name,update,The Brinsmere Fund - Growth ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TBG,NYSE ARCA,name,update,TBG Dividend Focus ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TBXU,NYSE ARCA,isin,update,US25461H1014,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+TBXU,NYSE ARCA,name,update,Direxion Daily Biotech Top 5 Bull 2X ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TCAF,NYSE ARCA,name,update,T. Rowe Price Capital Appreciation Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TCAL,NYSE ARCA,isin,update,US87283Q7842,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+TCAL,NYSE ARCA,name,update,T. Rowe Price Capital Appreciation Premium Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TCV,NYSE ARCA,isin,update,US26824D5068,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+TCV,NYSE ARCA,name,update,Towle Value ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 TECH,NASDAQ,country,update,United States,0.85,"Bio-Techne Corp is a US company headquartered in Minneapolis, MN; country is incorrectly set to Australia."
 TECH,NASDAQ,country_code,update,US,0.85,Must match corrected country.
+TEMD,NYSE ARCA,isin,update,US35473P3148,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+TEMD,NYSE ARCA,name,update,Templeton Emerging Markets Debt ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 TER,NASDAQ,country,update,United States,0.85,"Teradyne Inc is a US company headquartered in North Reading, MA; country=Australia is incorrect."
 TER,NASDAQ,country_code,update,US,0.85,Should be US for a NASDAQ-listed American company.
+TEXU,NYSE ARCA,isin,update,US25461H2004,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+TEXU,NYSE ARCA,name,update,Direxion Daily Energy Top 5 Bull 2X ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TGRT,NYSE ARCA,name,update,T. Rowe Price Growth ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+THEQ,NYSE ARCA,isin,update,US87283Q7768,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+THEQ,NYSE ARCA,name,update,T. Rowe Price Hedged Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+THTA,NYSE ARCA,name,update,SoFi Enhanced Yield ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TIER,NYSE ARCA,isin,update,US87283Q7354,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+TIER,NYSE ARCA,name,update,T. Rowe Price International Equity Research ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TIPB,NYSE ARCA,isin,update,US6651621376,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+TIPB,NYSE ARCA,name,update,Northern Trust 2035 Inflation-Linked Distributing Ladder ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TIPC,NYSE ARCA,isin,update,US6651621293,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+TIPC,NYSE ARCA,name,update,Northern Trust 2045 Inflation-Linked Distributing Ladder ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TMSL,NYSE ARCA,name,update,T. Rowe Price Small-Mid Cap ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TOUS,NYSE ARCA,name,update,T. Rowe Price International Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TOV,NYSE ARCA,isin,update,US02072Q8463,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+TOV,NYSE ARCA,name,update,JLens 500 Jewish Advocacy U.S. ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 TRC,NYSE,country,update,United States,0.85,Tejon Ranch Co is a US company (California); country is incorrectly set to United Kingdom.
 TRC,NYSE,country_code,update,US,0.85,Must match corrected country.
+TSXD,NYSE ARCA,isin,update,US25461H7052,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+TSXD,NYSE ARCA,name,update,Direxion Daily Semiconductors Top 5 Bear 2X ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TSXU,NYSE ARCA,isin,update,US25461H3093,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+TSXU,NYSE ARCA,name,update,Direxion Daily Semiconductors Top 5 Bull 2X ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TTOP,NYSE ARCA,isin,update,US53656H7851,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+TTOP,NYSE ARCA,name,update,21Shares FTSE Crypto 10 Index ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TTXD,NYSE ARCA,isin,update,US25461H8043,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+TTXD,NYSE ARCA,name,update,Direxion Daily Technology Top 5 Bear 2X ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TTXU,NYSE ARCA,isin,update,US25461H4083,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+TTXU,NYSE ARCA,name,update,Direxion Daily Technology Top 5 Bull 2X ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TVAL,NYSE ARCA,name,update,T. Rowe Price Value ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TXBC,NYSE ARCA,isin,update,US53656H7778,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+TXBC,NYSE ARCA,name,update,21Shares FTSE Crypto 10 ex-BTC Index ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TXNU,NYSE ARCA,isin,update,US25461H5981,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+TXNU,NYSE ARCA,name,update,Direxion Daily Txn Bull 2X ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+TXXI,NYSE ARCA,isin,update,US09789C6637,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+TXXI,NYSE ARCA,name,update,BondBloxx IR+M Tax-Aware Intermediate Duration ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+UNHU,NYSE ARCA,isin,update,US25461H5809,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+UNHU,NYSE ARCA,name,update,Direxion Daily Unh Bull 2X ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 UNIT,NASDAQ,country,update,United States,0.85,Uniti Group Inc is a US company (Arkansas); country is incorrectly set to Egypt.
 UNIT,NASDAQ,country_code,update,US,0.85,Must match corrected country.
+UPAR,NYSE ARCA,name,update,UPAR Ultra Risk Parity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+URAA,NYSE ARCA,name,update,Direxion Daily Uranium Bull 2X ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+UXRP,NYSE ARCA,isin,update,US74349Y4989,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+UXRP,NYSE ARCA,name,update,ProShares Ultra XRP ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+VDI,NYSE ARCA,isin,update,US92790A8190,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+VDI,NYSE ARCA,name,update,Virtus International Dividend ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+VEM,NYSE ARCA,isin,update,US92790A7937,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+VEM,NYSE ARCA,name,update,Virtus Emerging Markets Dividend ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+VETZ,NYSE ARCA,name,update,Academy Veteran Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 VIS,NYSE ARCA,country,update,United States,0.85,Vanguard Industrials ETF is a US-domiciled fund managed by Vanguard.
 VIS,NYSE ARCA,country_code,update,US,0.85,Matches US fund domicile.
+VLLU,NYSE ARCA,isin,update,US41151J7789,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+VLLU,NYSE ARCA,name,update,Harbor AlphaEdge Large Cap Value ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 VMC,NYSE,country,update,United States,0.87,Vulcan Materials Company is a US company (Alabama); country is incorrectly set to Australia.
 VMC,NYSE,country_code,update,US,0.87,Must match corrected country.
-DMNIF,OTC,name,update,Damon Inc.,0.95,Yahoo Finance verifies DMNIF as Damon Inc. on OTC Markets with recent trading history.
-DMNIF,OTC,country,update,Canada,0.95,Yahoo Finance reports Damon Inc. domicile as Canada for the OTC listing.
-DMNIF,OTC,country_code,update,CA,0.95,Must match corrected country.
-DMNIF,OTC,isin,update,CA2357502053,0.95,Yahoo Finance exposes ISIN CA2357502053 for DMNIF.
-DTREF,OTC,name,update,DATELINE RESOURCES LTD.,0.95,Yahoo Finance verifies DTREF as DATELINE RESOURCES LTD. on OTC Markets with recent trading history.
-DTREF,OTC,country,update,Australia,0.95,Yahoo Finance reports DTREF domicile as Australia for the OTC listing.
-DTREF,OTC,country_code,update,AU,0.95,Must match corrected country.
-DTREF,OTC,isin,update,AU000000DTR1,0.95,Yahoo Finance exposes ISIN AU000000DTR1 for DTREF.
-DTREF,OTC,sector,update,Materials,0.9,Yahoo Finance classifies DTREF under Basic Materials; normalized to canonical GICS sector Materials.
+VUS,NYSE ARCA,name,update,Virtus U.S. Dividend ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+WCME,NYSE ARCA,isin,update,US33733E7408,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+WCME,NYSE ARCA,name,update,First Trust WCM Developing World Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+WXET,NYSE ARCA,isin,update,US53656G2820,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+WXET,NYSE ARCA,name,update,Teucrium 2x Daily Wheat ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XB,NYSE ARCA,name,update,BondBloxx B Rated USD High Yield Corporate Bond ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XBFR,NYSE ARCA,isin,update,US45784N2962,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+XBFR,NYSE ARCA,name,update,Innovator Equity Managed 10 Buffer ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XCHG,NYSE ARCA,isin,update,US00039J7312,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+XCHG,NYSE ARCA,name,update,Ab US Equity ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XHYC,NYSE ARCA,name,update,BondBloxx US High Yield Consumer Cyclicals Sector ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XHYD,NYSE ARCA,name,update,BondBloxx US High Yield Consumer Non-Cyclicals Sector ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XHYE,NYSE ARCA,name,update,BondBloxx US High Yield Energy Sector ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XHYF,NYSE ARCA,name,update,BondBloxx US High Yield Financial & REIT Sector ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XHYH,NYSE ARCA,name,update,BondBloxx US High Yield Healthcare Sector ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XHYI,NYSE ARCA,name,update,BondBloxx US High Yield Industrial Sector ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XHYT,NYSE ARCA,name,update,BondBloxx US High Yield Telecom Media Technology Sector ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XIDV,NYSE ARCA,isin,update,US35473P3718,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+XIDV,NYSE ARCA,name,update,Franklin International Dividend Booster Index ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XLBI,NYSE ARCA,isin,update,US81369Y8451,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+XLBI,NYSE ARCA,name,update,State Street Materials Select Sector SPDR Premium Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XLCI,NYSE ARCA,isin,update,US81369Y8378,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+XLCI,NYSE ARCA,name,update,State Street Communication Services Select Sector SPDR Premium Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XLEI,NYSE ARCA,isin,update,US81369Y8295,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+XLEI,NYSE ARCA,name,update,State Street Energy Select Sector SPDR Premium Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XLFI,NYSE ARCA,isin,update,US81369Y8113,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+XLFI,NYSE ARCA,name,update,State Street Financial Select Sector SPDR Premium Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XLII,NYSE ARCA,isin,update,US81369Y7958,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+XLII,NYSE ARCA,name,update,State Street Industrial Select Sector SPDR Premium Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XLKI,NYSE ARCA,isin,update,US81369Y7875,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+XLKI,NYSE ARCA,name,update,State Street Technology Select Sector SPDR Premium Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XLRI,NYSE ARCA,isin,update,US81369Y7610,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+XLRI,NYSE ARCA,name,update,State Street Real Estate Select Sector SPDR Premium Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XLSI,NYSE ARCA,isin,update,US81369Y7792,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+XLSI,NYSE ARCA,name,update,State Street Consumer Staples Select Sector SPDR Premium Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XLUI,NYSE ARCA,isin,update,US81369Y7537,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+XLUI,NYSE ARCA,name,update,State Street Utilities Select Sector SPDR Premium Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XLVI,NYSE ARCA,isin,update,US81369Y7461,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+XLVI,NYSE ARCA,name,update,State Street Health Care Select Sector SPDR Premium Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XLYI,NYSE ARCA,isin,update,US81369Y7388,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+XLYI,NYSE ARCA,name,update,State Street Consumer Discretionary Select Sector SPDR Premium Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XOEF,NYSE ARCA,isin,update,US46438G3231,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+XOEF,NYSE ARCA,name,update,iShares S&P 500 ex S&P 100 ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XUDV,NYSE ARCA,isin,update,US35473P3890,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+XUDV,NYSE ARCA,name,update,Franklin U.S. Dividend Booster Index ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XXV,NYSE ARCA,isin,update,US82889N3439,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+XXV,NYSE ARCA,name,update,Simplify Ancorato Target 25 Distribution ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+XXXX,NYSE ARCA,name,update,MAX S&P 500 4X Leveraged ETN,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+YFFI,NYSE ARCA,isin,update,US84858T7494,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+YFFI,NYSE ARCA,name,update,Indexperts Yield Focused Fixed Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+YFYA,NYSE ARCA,name,update,Yields for You Strategy A ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+YGLD,NYSE ARCA,isin,update,US82889N4262,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+YGLD,NYSE ARCA,name,update,Simplify Gold Strategy PLUS Income ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ZCBA,NYSE ARCA,isin,update,US37966B1098,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+ZCBA,NYSE ARCA,name,update,Global X Zero Coupon Bond 2030 ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ZCBB,NYSE ARCA,isin,update,US37966B2088,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+ZCBB,NYSE ARCA,name,update,Global X Zero Coupon Bond 2031 ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ZCBC,NYSE ARCA,isin,update,US37966B3078,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+ZCBC,NYSE ARCA,name,update,Global X Zero Coupon Bond 2032 ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ZCBE,NYSE ARCA,isin,update,US37966B4068,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+ZCBE,NYSE ARCA,name,update,Global X Zero Coupon Bond 2033 ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ZCBF,NYSE ARCA,isin,update,US37966B5057,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+ZCBF,NYSE ARCA,name,update,Global X Zero Coupon Bond 2034 ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ZCBG,NYSE ARCA,isin,update,US37966B6048,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
+ZCBG,NYSE ARCA,name,update,Global X Zero Coupon Bond 2035 ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+CAM,NYSE,country,update,United States,0.97,Yahoo Finance verifies CAM as a US ETF on NYSE Arca; the current Australian issuer metadata is unrelated contamination.
+CAM,NYSE,country_code,update,US,0.97,Must match corrected domicile.
+CAM,NYSE,exchange,update,NYSE ARCA,0.97,Yahoo Finance lists CAM on NYSE Arca rather than NYSE.
+CAM,NYSE,isin,update,US00039J7726,0.97,Yahoo Finance exposes the US ETF ISIN for CAM.
+CAM,NYSE,name,update,AB California Intermediate Municipal ETF,0.97,Yahoo Finance verifies the specific ETF product name for CAM.
+CAM,NYSE,sector,clear,,0.9,Current sector comes from an unrelated issuer and should be cleared until a verified ETF category is available.
+POW,NYSE ARCA,country,update,United States,0.96,Yahoo Finance verifies POW as a US ETF on NYSE Arca; the current Canadian company metadata is unrelated contamination.
+POW,NYSE ARCA,country_code,update,US,0.96,Must match corrected domicile.
+POW,NYSE ARCA,isin,update,US45259A8374,0.96,Yahoo Finance exposes the US ETF ISIN for POW.
+POW,NYSE ARCA,name,update,VistaShares Electrification Supercycle ETF,0.96,Yahoo Finance verifies the ETF product name for POW.
+POW,NYSE ARCA,sector,clear,,0.9,Current sector comes from an unrelated issuer and should be cleared.
+TOT,NYSE,country,update,United States,0.96,Yahoo Finance verifies TOT as a US ETF on NYSE Arca; the current Australian company metadata is unrelated contamination.
+TOT,NYSE,country_code,update,US,0.96,Must match corrected domicile.
+TOT,NYSE,exchange,update,NYSE ARCA,0.96,Yahoo Finance lists TOT on NYSE Arca rather than NYSE.
+TOT,NYSE,isin,update,US00777X4705,0.96,Yahoo Finance exposes the US ETF ISIN for TOT.
+TOT,NYSE,name,update,Lionshares U.S. Equity Total Return ETF,0.96,Yahoo Finance verifies the ETF product name for TOT.
+TOT,NYSE,sector,clear,,0.9,Current sector comes from an unrelated issuer and should be cleared.
+AUAU,NYSE ARCA,country,update,United States,0.95,Yahoo Finance verifies AUAU as a US ETF on NYSE Arca; the current Canadian issuer metadata is unrelated contamination.
+AUAU,NYSE ARCA,country_code,update,US,0.95,Must match corrected domicile.
+AUAU,NYSE ARCA,isin,update,US37960A1640,0.95,Yahoo Finance exposes the US ETF ISIN for AUAU.
+AUAU,NYSE ARCA,name,update,Global X Gold Miners ETF,0.95,Yahoo Finance verifies the ETF product name for AUAU.
+EMM,NYSE ARCA,country,update,United States,0.95,Yahoo Finance verifies EMM as a US ETF on NYSE Arca; the current Canadian issuer metadata is unrelated contamination.
+EMM,NYSE ARCA,country_code,update,US,0.95,Must match corrected domicile.
+EMM,NYSE ARCA,isin,update,US37960A6367,0.95,Yahoo Finance exposes the US ETF ISIN for EMM.
+EMM,NYSE ARCA,name,update,Global X Emerging Markets ex-China ETF,0.95,Yahoo Finance verifies the ETF product name for EMM.
+EMM,NYSE ARCA,sector,clear,,0.9,Current sector comes from an unrelated issuer and should be cleared.
+GSC,NYSE ARCA,country,update,United States,0.95,Yahoo Finance verifies GSC as a US ETF on NYSE Arca; the current UK issuer metadata is unrelated contamination.
+GSC,NYSE ARCA,country_code,update,US,0.95,Must match corrected domicile.
+GSC,NYSE ARCA,isin,update,US38149W6140,0.95,Yahoo Finance exposes the US ETF ISIN for GSC.
+GSC,NYSE ARCA,name,update,Goldman Sachs Small Cap Equity ETF,0.95,Yahoo Finance verifies the ETF product name for GSC.
+NETZ,NASDAQ,country,update,United States,0.95,Yahoo Finance verifies NETZ as a US ETF listed on NYSE.
+NETZ,NASDAQ,country_code,update,US,0.95,Must match corrected domicile.
+NETZ,NASDAQ,exchange,update,NYSE,0.95,Yahoo Finance lists NETZ on NYSE rather than NASDAQ.
+NETZ,NASDAQ,isin,clear,,0.9,Current ISIN points to an unrelated Canadian issuer and should be cleared because Yahoo does not confirm an ETF ISIN.
+NETZ,NASDAQ,name,update,TCW Transform Systems ETF,0.95,Yahoo Finance verifies the ETF product name for NETZ.
+RW,NYSE,country,update,United States,0.95,Yahoo Finance verifies RW as a US ETF on NYSE Arca; the current Canadian issuer metadata is unrelated contamination.
+RW,NYSE,country_code,update,US,0.95,Must match corrected domicile.
+RW,NYSE,exchange,update,NYSE ARCA,0.95,Yahoo Finance lists RW on NYSE Arca rather than NYSE.
+RW,NYSE,isin,update,US02072Q6301,0.95,Yahoo Finance exposes the US ETF ISIN for RW.
+RW,NYSE,name,update,Rainwater Equity ETF,0.95,Yahoo Finance verifies the ETF product name for RW.
+RW,NYSE,sector,clear,,0.9,Current sector comes from an unrelated issuer and should be cleared.
+TEK,NYSE,country,update,United States,0.95,Yahoo Finance verifies TEK as a US ETF on NYSE Arca; the current UK issuer metadata is unrelated contamination.
+TEK,NYSE,country_code,update,US,0.95,Must match corrected domicile.
+TEK,NYSE,exchange,update,NYSE ARCA,0.95,Yahoo Finance lists TEK on NYSE Arca rather than NYSE.
+TEK,NYSE,isin,update,US09290C7728,0.95,Yahoo Finance exposes the US ETF ISIN for TEK.
+TEK,NYSE,name,update,iShares Technology Opportunities Active ETF,0.95,Yahoo Finance verifies the ETF product name for TEK.

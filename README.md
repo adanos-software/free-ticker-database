@@ -14,9 +14,9 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 59
 | ETFs | 16,092 |
 | Exchanges | 67 |
 | Countries | 68 |
-| ISIN coverage | 44,768 (75.6%) |
-| Sector coverage | 38,901 (65.7%) |
-| Total aliases | 103,882 |
+| ISIN coverage | 45,042 (76.1%) |
+| Sector coverage | 38,896 (65.7%) |
+| Total aliases | 104,004 |
 
 ## Formats
 
@@ -79,7 +79,7 @@ Securities traded on multiple exchanges share the same ISIN. The `is_primary` fl
 {
   "_meta": {
     "version": "2.0.0",
-    "built_at": "2026-04-01T19:43:46Z",
+    "built_at": "2026-04-01T20:25:12Z",
     "total_tickers": 59178
   },
   "tickers": [
@@ -113,7 +113,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (59,178 rows) + `aliases` (103,882 rows) + `cross_listings` (10,159 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
+Tables: `tickers` (59,178 rows) + `aliases` (104,004 rows) + `cross_listings` (10,159 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
 
 ## Schema
 
