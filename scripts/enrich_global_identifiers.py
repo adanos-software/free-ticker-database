@@ -5,7 +5,7 @@ import csv
 import json
 import time
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable, TypeVar
 
 import requests
 
@@ -25,6 +25,9 @@ OPENFIGI_MAPPING_URL = "https://api.openfigi.com/v3/mapping"
 GLEIF_LEI_RECORDS_URL = "https://api.gleif.org/api/v1/lei-records"
 USER_AGENT = "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)"
 REQUEST_TIMEOUT = 30.0
+RETRY_ATTEMPTS = 3
+RETRY_DELAY_SECONDS = 2.0
+T = TypeVar("T")
 
 SEC_EXCHANGE_MAP = {
     "Nasdaq": "NASDAQ",
@@ -73,6 +76,24 @@ def fetch_json(url: str, session: requests.Session | None = None, headers: dict[
     response = session.get(url, headers=merged_headers, timeout=REQUEST_TIMEOUT)
     response.raise_for_status()
     return response.json()
+
+
+def with_retries(
+    fn: Callable[[], T],
+    attempts: int = RETRY_ATTEMPTS,
+    delay_seconds: float = RETRY_DELAY_SECONDS,
+) -> T:
+    last_error: Exception | None = None
+    for attempt in range(1, attempts + 1):
+        try:
+            return fn()
+        except requests.RequestException as exc:
+            last_error = exc
+            if attempt == attempts:
+                break
+            time.sleep(delay_seconds * attempt)
+    assert last_error is not None
+    raise last_error
 
 
 def load_sec_payload(session: requests.Session | None = None) -> tuple[dict[str, Any] | None, str]:
@@ -167,22 +188,33 @@ def fetch_openfigi_by_isin(
     session: requests.Session | None = None,
     api_key: str | None = None,
     delay_seconds: float = 0.0,
-) -> dict[str, list[dict[str, Any]]]:
+    retry_attempts: int = RETRY_ATTEMPTS,
+    retry_delay_seconds: float = RETRY_DELAY_SECONDS,
+) -> tuple[dict[str, list[dict[str, Any]]], list[str]]:
     session = session or requests.Session()
     headers = {}
     if api_key:
         headers["X-OPENFIGI-APIKEY"] = api_key
 
     result: dict[str, list[dict[str, Any]]] = {}
+    errors: list[str] = []
     for start in range(0, len(isins), 10):
         batch = isins[start : start + 10]
         jobs = [{"idType": "ID_ISIN", "idValue": isin} for isin in batch]
-        response = post_json(OPENFIGI_MAPPING_URL, jobs, session=session, headers=headers)
+        try:
+            response = with_retries(
+                lambda: post_json(OPENFIGI_MAPPING_URL, jobs, session=session, headers=headers),
+                attempts=retry_attempts,
+                delay_seconds=retry_delay_seconds,
+            )
+        except requests.RequestException as exc:
+            errors.append(f"OpenFIGI batch {batch[0]}..{batch[-1]} failed: {exc}")
+            continue
         for isin, payload in zip(batch, response):
             result[isin] = payload.get("data", [])
         if delay_seconds:
             time.sleep(delay_seconds)
-    return result
+    return result, errors
 
 
 def select_figi_rows(
@@ -248,11 +280,20 @@ def apply_figi(rows: list[dict[str, str]], figi_by_listing: dict[tuple[str, str]
     return updated
 
 
-def fetch_gleif_lei(name: str, session: requests.Session | None = None) -> str:
+def fetch_gleif_lei(
+    name: str,
+    session: requests.Session | None = None,
+    retry_attempts: int = RETRY_ATTEMPTS,
+    retry_delay_seconds: float = RETRY_DELAY_SECONDS,
+) -> str:
     session = session or requests.Session()
-    payload = fetch_json(
-        f"{GLEIF_LEI_RECORDS_URL}?filter[entity.legalName]={requests.utils.quote(name)}&page[size]=1",
-        session=session,
+    payload = with_retries(
+        lambda: fetch_json(
+            f"{GLEIF_LEI_RECORDS_URL}?filter[entity.legalName]={requests.utils.quote(name)}&page[size]=1",
+            session=session,
+        ),
+        attempts=retry_attempts,
+        delay_seconds=retry_delay_seconds,
     )
     data = payload.get("data", [])
     if not data:
@@ -300,19 +341,24 @@ def apply_lei(
     delay_seconds: float = 0.0,
     limit: int | None = None,
     exchanges: set[str] | None = None,
-) -> int:
+) -> tuple[int, list[str]]:
     updated = 0
+    errors: list[str] = []
     session = session or requests.Session()
     candidates = filter_lei_candidates(rows, exchanges=exchanges)
     for row in candidates[:limit] if limit else candidates:
-        lei = fetch_gleif_lei(row["name"], session=session)
+        try:
+            lei = fetch_gleif_lei(row["name"], session=session)
+        except requests.RequestException as exc:
+            errors.append(f"GLEIF lookup failed for {row['ticker']}:{row['exchange']}: {exc}")
+            continue
         if lei and row["lei"] != lei:
             row["lei"] = lei
             row["lei_source"] = "GLEIF"
             updated += 1
         if delay_seconds:
             time.sleep(delay_seconds)
-    return updated
+    return updated, errors
 
 
 def build_summary(rows: list[dict[str, str]]) -> dict[str, Any]:
@@ -370,29 +416,25 @@ def main(
             cik_index = build_sec_cik_index(payload)
             apply_sec_cik(rows, cik_index)
     if enable_figi:
-        try:
-            figi_rows = select_figi_rows(rows, exchanges=figi_exchanges, limit=figi_limit)
-            figi_candidates = fetch_openfigi_by_isin(
-                sorted({row["isin"] for row in figi_rows}),
-                session=session,
-                api_key=openfigi_api_key,
-                delay_seconds=figi_delay_seconds,
-            )
-            figi_matches = build_figi_matches(figi_rows, figi_candidates)
-            apply_figi(rows, figi_matches)
-        except requests.RequestException as exc:
-            errors.append(f"OpenFIGI unavailable: {exc}")
+        figi_rows = select_figi_rows(rows, exchanges=figi_exchanges, limit=figi_limit)
+        figi_candidates, figi_errors = fetch_openfigi_by_isin(
+            sorted({row["isin"] for row in figi_rows}),
+            session=session,
+            api_key=openfigi_api_key,
+            delay_seconds=figi_delay_seconds,
+        )
+        figi_matches = build_figi_matches(figi_rows, figi_candidates)
+        apply_figi(rows, figi_matches)
+        errors.extend(figi_errors)
     if enable_lei:
-        try:
-            apply_lei(
-                rows,
-                session=session,
-                delay_seconds=lei_delay_seconds,
-                limit=lei_limit,
-                exchanges=lei_exchanges,
-            )
-        except requests.RequestException as exc:
-            errors.append(f"GLEIF unavailable: {exc}")
+        _updated, lei_errors = apply_lei(
+            rows,
+            session=session,
+            delay_seconds=lei_delay_seconds,
+            limit=lei_limit,
+            exchanges=lei_exchanges,
+        )
+        errors.extend(lei_errors)
     summary = persist_rows(rows)
     if enable_cik:
         summary["cik_source_mode"] = payload_source

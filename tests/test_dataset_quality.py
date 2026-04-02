@@ -372,8 +372,8 @@ def test_changelog_and_supporting_docs_are_current():
     claude_prompt = (ROOT / "docs" / "claude_review_prompt.md").read_text()
 
     assert "## Unreleased" in changelog
-    assert "Added official masterfile ingestion scaffolding" in changelog
-    assert "Added extended identifier exports with support for FIGI, CIK, and LEI enrichment" in changelog
+    assert "Added official Euronext live equities directory ingestion" in changelog
+    assert "Improved extended identifier exports with listing-level FIGI matching" in changelog
     assert "## 2.0.0" in changelog
     assert "59,177 tickers (43,085 stocks, 16,092 ETFs) across 67 exchanges and 68 countries" in changelog
     assert "102,943 aliases" in changelog

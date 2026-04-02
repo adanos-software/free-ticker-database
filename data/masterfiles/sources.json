@@ -36,6 +36,15 @@
     "official": true
   },
   {
+    "key": "euronext_equities",
+    "provider": "Euronext",
+    "description": "Official Euronext live equities directory export",
+    "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
+    "format": "euronext_equities_semicolon_csv",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
     "key": "sec_company_tickers_exchange",
     "provider": "SEC",
     "description": "Official SEC company ticker to exchange mapping",

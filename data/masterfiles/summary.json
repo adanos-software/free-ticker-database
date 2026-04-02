@@ -1,18 +1,22 @@
 {
-  "rows": 14727,
+  "rows": 18612,
   "exchanges": [
+    "AMS",
     "ASX",
     "BATS",
+    "Euronext",
     "IEX",
     "NASDAQ",
     "NYSE",
     "NYSE ARCA",
     "NYSE CHICAGO",
     "NYSE MKT",
+    "OSL",
     "TSX",
     "TSXV"
   ],
   "source_counts": {
+    "euronext_equities": 3885,
     "asx_listed_companies": 1979,
     "nasdaq_other_listed": 7075,
     "nasdaq_listed": 5407,
@@ -23,6 +27,7 @@
     "nasdaq_other_listed": "network",
     "asx_listed_companies": "network",
     "tmx_interlisted_companies": "network",
+    "euronext_equities": "network",
     "sec_company_tickers_exchange": "unavailable"
   },
   "errors": [

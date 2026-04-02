@@ -8,6 +8,7 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_source_rows_with_mode,
     load_sec_company_tickers_exchange_payload,
     parse_asx_listed_companies,
+    parse_euronext_equities_download,
     parse_nasdaq_listed,
     parse_other_listed,
     parse_sec_company_tickers_exchange,
@@ -189,6 +190,61 @@ def test_parse_tmx_interlisted_marks_subset_scope():
             "asset_type": "Stock",
             "listing_status": "active",
             "reference_scope": "interlisted_subset",
+            "official": "true",
+        },
+    ]
+
+
+def test_parse_euronext_equities_download_maps_markets():
+    text = "\n".join(
+        [
+            '\ufeffName;ISIN;Symbol;Market;Currency;"Open Price";"High Price";"low Price";"last Price";"last Trade MIC Time";"Time Zone";Volume;Turnover;"Closing Price";"Closing Price DateTime"',
+            '"European Equities"',
+            '"02 Apr 2026"',
+            '"All datapoints provided as of end of last active trading day."',
+            'A2A;IT0001233417;A2A;"Euronext Milan";EUR;2.458;2.481;2.454;2.457;" 17:37";CET;8256154;20352541.80;2.457;',
+            '"2020 BULKERS";BMG9156K1018;2020;"Oslo Børs";NOK;137.80;140.70;135.50;140.40;" 13:07";CET;166844;23212042.70;-;-',
+            '"AEX ETF";NL0000000001;AEX;"Euronext Amsterdam";EUR;1;1;1;1;" 17:35";CET;1;1;1;',
+        ]
+    )
+
+    rows = parse_euronext_equities_download(text, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "A2A",
+            "name": "A2A",
+            "exchange": "Euronext",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "2020",
+            "name": "2020 BULKERS",
+            "exchange": "OSL",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "AEX",
+            "name": "AEX ETF",
+            "exchange": "AMS",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
             "official": "true",
         },
     ]

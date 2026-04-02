@@ -1,19 +1,23 @@
 from __future__ import annotations
 
 import json
+import requests
 
 from scripts.enrich_global_identifiers import (
     apply_figi,
+    apply_lei,
     apply_sec_cik,
     build_figi_matches,
     build_base_identifier_rows,
     build_sec_cik_index,
     filter_lei_candidates,
+    fetch_openfigi_by_isin,
     load_sec_payload,
     normalize_company_name,
     select_figi_rows,
     select_openfigi_candidate,
     select_lei_candidates,
+    with_retries,
 )
 
 
@@ -187,3 +191,58 @@ def test_build_base_identifier_rows_preserves_existing_extended_values(tmp_path,
             "asset_type": "Stock",
         }
     ]
+
+
+def test_with_retries_retries_request_exceptions():
+    attempts = {"count": 0}
+
+    def flaky():
+        attempts["count"] += 1
+        if attempts["count"] < 3:
+            raise requests.RequestException("temporary")
+        return "ok"
+
+    assert with_retries(flaky, attempts=3, delay_seconds=0.0) == "ok"
+
+
+def test_fetch_openfigi_by_isin_keeps_partial_progress(monkeypatch):
+    calls = {"count": 0}
+
+    def fake_post_json(url, payload, session=None, headers=None):
+        calls["count"] += 1
+        if calls["count"] == 2:
+            raise requests.RequestException("timeout")
+        return [{"data": [{"figi": f"FIGI-{job['idValue']}"}]} for job in payload]
+
+    monkeypatch.setattr("scripts.enrich_global_identifiers.post_json", fake_post_json)
+
+    result, errors = fetch_openfigi_by_isin(
+        ["AA", "BB", "CC", "DD", "EE", "FF", "GG", "HH", "II", "JJ", "KK"],
+        delay_seconds=0.0,
+        retry_attempts=1,
+        retry_delay_seconds=0.0,
+    )
+
+    assert result["AA"][0]["figi"] == "FIGI-AA"
+    assert "KK" not in result
+    assert len(errors) == 1
+
+
+def test_apply_lei_continues_after_lookup_error(monkeypatch):
+    rows = [
+        {"ticker": "BAD", "exchange": "AMS", "isin": "NL0000000001", "asset_type": "Stock", "lei": "", "name": "Bad Co", "lei_source": ""},
+        {"ticker": "GOOD", "exchange": "AMS", "isin": "NL0000000002", "asset_type": "Stock", "lei": "", "name": "Good Co", "lei_source": ""},
+    ]
+
+    def fake_fetch_gleif_lei(name, session=None, retry_attempts=3, retry_delay_seconds=2.0):
+        if name == "Bad Co":
+            raise requests.RequestException("dns")
+        return "LEI-123"
+
+    monkeypatch.setattr("scripts.enrich_global_identifiers.fetch_gleif_lei", fake_fetch_gleif_lei)
+
+    updated, errors = apply_lei(rows, delay_seconds=0.0, exchanges={"AMS"})
+
+    assert updated == 1
+    assert rows[1]["lei"] == "LEI-123"
+    assert len(errors) == 1

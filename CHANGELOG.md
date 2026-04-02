@@ -3,9 +3,10 @@
 ## Unreleased
 
 - Added official ASX company-directory ingestion and TMX interlisted-company reference ingestion alongside Nasdaq Trader feeds
+- Added official Euronext live equities directory ingestion
 - Added SEC official-snapshot cache fallback for environments blocked from live SEC downloads
 - Added listing snapshot/history artifacts for listings, renames, and delistings
-- Improved extended identifier exports with listing-level FIGI matching and conservative LEI backfills
+- Improved extended identifier exports with listing-level FIGI matching, retry-safe partial progress, and conservative LEI backfills
 - Added exchange/country coverage reports beyond the alias-quality audit
 
 ## 2.0.0

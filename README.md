@@ -37,9 +37,9 @@ Additional reference artifacts:
 | File | Size | Best for |
 |---|---|---|
 | [`data/identifiers_extended.csv`](data/identifiers_extended.csv) | 1.7 MB | FIGI/CIK/LEI enrichment snapshot |
-| [`data/masterfiles/reference.csv`](data/masterfiles/reference.csv) | 2.5 MB | Official exchange-masterfile reference rows |
+| [`data/masterfiles/reference.csv`](data/masterfiles/reference.csv) | 3.1 MB | Official exchange-masterfile reference rows |
 | [`data/history/latest_snapshot.csv`](data/history/latest_snapshot.csv) | 6.1 MB | Current listing-status baseline |
-| [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | 32 KB | Machine-readable coverage metrics |
+| [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | 33 KB | Machine-readable coverage metrics |
 
 ### tickers.csv (flat, Excel-friendly)
 
@@ -211,6 +211,7 @@ Current live sources:
 - Nasdaq Trader `otherlisted.txt`
 - ASX `ASXListedCompanies.csv`
 - TMX `interlisted-companies.txt` (official interlisted subset, not a full TSX/TSXV directory)
+- Euronext Live equities CSV export
 - SEC `company_tickers_exchange.json` when the environment is allowed to fetch it, or a cached official snapshot when present locally
 
 Generate listing history artifacts:
@@ -236,6 +237,7 @@ python3 scripts/enrich_global_identifiers.py \
 Notes:
 
 - `FIGI` enrichment is live via OpenFIGI and matched at listing level, not blindly by ISIN across venues.
+- `FIGI` enrichment is best run venue by venue; without an API key OpenFIGI can return `429`, and the script now preserves partial progress plus batch-level errors.
 - `LEI` enrichment is live via GLEIF and uses exact normalized legal-name matching to stay conservative.
 - `CIK` enrichment uses the official SEC company-ticker file. Some environments are blocked by SEC with `403`; in that case the script falls back to a cached official snapshot when available, otherwise it keeps `CIK` empty and records the error in `data/identifier_summary.json`.
 

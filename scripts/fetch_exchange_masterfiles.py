@@ -25,6 +25,7 @@ NASDAQ_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.tx
 NASDAQ_OTHER_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt"
 ASX_LISTED_URL = "https://www.asx.com.au/asx/research/ASXListedCompanies.csv"
 TMX_INTERLISTED_URL = "https://www.tsx.com/files/trading/interlisted-companies.txt"
+EURONEXT_EQUITIES_DOWNLOAD_URL = "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock"
 
 USER_AGENT = "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)"
 REQUEST_TIMEOUT = 30.0
@@ -56,6 +57,14 @@ ETF_NAME_MARKERS = (
     " ucits",
     "shares ",
 )
+
+EURONEXT_MARKET_MAP = {
+    "Euronext Amsterdam": "AMS",
+    "Oslo Børs": "OSL",
+    "Euronext Oslo Børs": "OSL",
+    "Euronext Expand Oslo": "OSL",
+    "Euronext Growth Oslo": "OSL",
+}
 
 
 @dataclass(frozen=True)
@@ -98,6 +107,13 @@ OFFICIAL_SOURCES = [
         source_url=TMX_INTERLISTED_URL,
         format="tmx_interlisted_tab",
         reference_scope="interlisted_subset",
+    ),
+    MasterfileSource(
+        key="euronext_equities",
+        provider="Euronext",
+        description="Official Euronext live equities directory export",
+        source_url=EURONEXT_EQUITIES_DOWNLOAD_URL,
+        format="euronext_equities_semicolon_csv",
     ),
     MasterfileSource(
         key="sec_company_tickers_exchange",
@@ -293,6 +309,45 @@ def parse_tmx_interlisted(text: str, source: MasterfileSource) -> list[dict[str,
     return rows
 
 
+def map_euronext_market(market: str) -> str:
+    normalized = market.strip()
+    if normalized in EURONEXT_MARKET_MAP:
+        return EURONEXT_MARKET_MAP[normalized]
+    return "Euronext"
+
+
+def parse_euronext_equities_download(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    lines = [line for line in text.splitlines() if line.strip()]
+    if len(lines) < 4:
+        return []
+
+    data_lines = [line.lstrip("\ufeff") for line in lines]
+    reader = csv.DictReader(io.StringIO("\n".join([data_lines[0], *data_lines[4:]])), delimiter=";")
+    rows: list[dict[str, str]] = []
+    for row in reader:
+        ticker = (row.get("Symbol") or "").strip()
+        name = (row.get("Name") or "").strip()
+        market = (row.get("Market") or "").strip()
+        isin = (row.get("ISIN") or "").strip()
+        if not ticker or not name or not market or not isin:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": map_euronext_market(market),
+                "asset_type": infer_asset_type(name),
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
 def parse_sec_company_tickers_exchange(payload: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
     fields = payload.get("fields", [])
     rows: list[dict[str, str]] = []
@@ -333,6 +388,9 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "tmx_interlisted_tab":
         text = fetch_text(source.source_url, session=session)
         return parse_tmx_interlisted(text, source)
+    if source.format == "euronext_equities_semicolon_csv":
+        text = fetch_text(source.source_url, session=session)
+        return parse_euronext_equities_download(text, source)
     if source.format == "sec_company_tickers_exchange_json":
         payload = fetch_json(source.source_url, session=session)
         return parse_sec_company_tickers_exchange(payload, source)
