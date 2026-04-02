@@ -224,6 +224,12 @@ CORPORATE_ALIAS_MARKERS = {
     "trust",
     "ventures",
 }
+TRUSTED_NON_LEXICAL_ALIASES: dict[str, set[str]] = {
+    "athleta": {"gap", "the gap"},
+    "keybank": {"keycorp"},
+    "nortonlifelock": {"gen digital"},
+    "old navy": {"gap", "the gap"},
+}
 ISIN_PREFIX_COUNTRIES = {
     "AT": "Austria",
     "AU": "Australia",
@@ -473,6 +479,14 @@ def is_blocked_alias(alias: str) -> bool:
     ) or normalized_compact(alias) in BLOCKED_ALIAS_KEYS
 
 
+def is_trusted_non_lexical_alias(alias: str, company_name: str) -> bool:
+    trusted_companies = TRUSTED_NON_LEXICAL_ALIASES.get(alias.lower().strip())
+    if not trusted_companies:
+        return False
+    company_compact = normalized_compact(company_name)
+    return any(normalized_compact(candidate) in company_compact for candidate in trusted_companies)
+
+
 def is_company_style_alias(alias: str) -> bool:
     tokens = normalize_tokens(alias)
     lowered = alias.lower()
@@ -488,6 +502,8 @@ def is_company_style_alias(alias: str) -> bool:
 
 
 def alias_matches_company(alias: str, company_name: str) -> bool:
+    if is_trusted_non_lexical_alias(alias, company_name):
+        return True
     alias_compact = normalized_compact(alias)
     company_compact = normalized_compact(company_name)
     if alias_compact and company_compact and (

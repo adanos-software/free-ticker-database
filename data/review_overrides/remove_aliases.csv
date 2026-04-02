@@ -494,3 +494,30 @@ YUM,NYSE,pizza hut,Pizza Hut is a subsidiary brand/franchise of Yum! Brands; qua
 YUM,NYSE,taco bell,Taco Bell is a subsidiary brand/franchise of Yum! Brands; qualifies as a product/brand alias.,0.92
 ZEN,LSE,immo-zenobe gramme,Yahoo alias verification marked `immo-zenobe gramme` as likely_other_entity.,
 ZEN,LSE,zentek,Yahoo alias verification marked `zentek` as likely_other_entity.,
+0VGV,LSE,srm entertainment,Residual audit cleanup: alias belongs to a different issuer and creates a direct cross-company collision with SEA.,0.9
+AMG,NYSE,MGR,Residual audit cleanup: external symbol-style alias collides with other AMG-related listings and is not needed as a name alias.,0.9
+CNTB,NASDAQ,pt century textile industry,Residual audit cleanup: alias belongs to an unrelated Indonesian textile issuer and contaminates the biotech listing.,0.95
+CNTX,NASDAQ,pt century textile industry,Residual audit cleanup: alias belongs to an unrelated Indonesian textile issuer and contaminates the therapeutics listing.,0.95
+CYBP,LSE,cyberark,Residual audit cleanup: product/constituent alias does not identify the ETF share class itself and creates a collision with CYBR.,0.9
+CYBR,LSE,cyberark,Residual audit cleanup: product/constituent alias does not identify the ETF share class itself and creates a collision with CYBP.,0.9
+DTE,NYSE,DTB,Residual audit cleanup: unrelated ticker-style alias with weak issuer overlap.,0.9
+DTE,NYSE,DTG,Residual audit cleanup: unrelated ticker-style alias with weak issuer overlap.,0.9
+DTE,NYSE,DTW,Residual audit cleanup: unrelated ticker-style alias with weak issuer overlap.,0.9
+FG,NYSE,FGSN,Residual audit cleanup: alias points to a different F&G instrument, not the common NYSE line.,0.9
+FGN,NYSE,FGN,Residual audit cleanup: redundant ticker-self alias should not be stored as a name alias.,0.85
+FGN,NYSE,FGSN,Residual audit cleanup: alias points to a different F&G instrument and creates a collision with FG.,0.9
+GAP,NYSE,gale pacific,Residual audit cleanup: alias belongs to an unrelated Australian issuer and contaminates Gap Inc.,0.95
+INTL,BATS,intelicanna,Residual audit cleanup: alias belongs to an unrelated cannabis issuer and contaminates the ETF row.,0.95
+LHC,HOSE,leo holdings iii,Residual audit cleanup: alias belongs to an unrelated SPAC/holding entity and contaminates the Vietnam issuer.,0.95
+LTGHF,OTC,leo holdings iii,Residual audit cleanup: alias belongs to an unrelated SPAC/holding entity and contaminates the healthcare issuer.,0.95
+MGRD,NYSE,MGR,Residual audit cleanup: external symbol-style alias collides with other AMG-related listings and is not needed as a name alias.,0.9
+MGRE,NYSE,MGR,Residual audit cleanup: external symbol-style alias collides with other AMG-related listings and is not needed as a name alias.,0.9
+SEA,NYSE ARCA,srm entertainment,Residual audit cleanup: alias belongs to a different issuer and creates a direct cross-company collision with 0VGV.,0.9
+SOBA,XETRA,TBB,Residual audit cleanup: unrelated ticker-style alias carried over from another AT&T line.,0.9
+T,NYSE,TBB,Residual audit cleanup: unrelated ticker-style alias carried over from another AT&T line.,0.9
+TEFN,BMV,intelicanna,Residual audit cleanup: alias belongs to an unrelated cannabis issuer and contaminates the Telefonica line.,0.95
+AMG,NYSE,amg advanced metallurgical group,Residual metadata cleanup: alias belongs to the unrelated Amsterdam-listed metallurgical issuer rather than Affiliated Managers Group.,0.95
+AMG,NYSE,atlas metals,Residual metadata cleanup: alias belongs to an unrelated issuer and contaminates the Affiliated Managers Group listing.,0.9
+FG,NYSE,fasadgruppen group,Residual metadata cleanup: alias belongs to the unrelated Swedish construction group rather than F&G Annuities & Life.,0.95
+SEA,NYSE ARCA,sea forest,Residual metadata cleanup: alias belongs to an unrelated issuer and contaminates the cargo ETF listing.,0.9
+SEA,NYSE ARCA,seascape energy asia,Residual metadata cleanup: alias belongs to an unrelated issuer and contaminates the cargo ETF listing.,0.95

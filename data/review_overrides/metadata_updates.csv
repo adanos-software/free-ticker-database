@@ -738,6 +738,41 @@ SYFI,NYSE ARCA,isin,update,US00039J8302,0.9,Yahoo Finance provided an ISIN for a
 SYFI,NYSE ARCA,name,update,AB Short Duration High Yield ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 T,NYSE,country,update,United States,0.85,AT&T Inc is a US-incorporated company.
 T,NYSE,country_code,update,US,0.85,Matches US company identity.
+0AD5,LSE,country,update,United States,0.95,Yahoo Finance verifies 0AD5.L as Gen Digital Inc. with United States issuer domicile.
+0AD5,LSE,country_code,update,US,0.95,Must match corrected issuer domicile.
+GEN,NASDAQ,country,update,United States,0.95,Yahoo Finance verifies GEN as Gen Digital Inc. with United States issuer domicile.
+GEN,NASDAQ,country_code,update,US,0.95,Must match corrected issuer domicile.
+GEN,NASDAQ,isin,update,US6687711084,0.95,Current Australian ISIN is unrelated contamination; use the verified US issuer ISIN shared with the London line.
+FG,NYSE,country,update,United States,0.95,Yahoo Finance verifies FG as F&G Annuities & Life, Inc. with United States issuer domicile.
+FG,NYSE,country_code,update,US,0.95,Must match corrected issuer domicile.
+FG,NYSE,isin,update,US30190A1043,0.95,Current Canadian ISIN is unrelated contamination; use the verified US issuer ISIN.
+AMG,NYSE,country,update,United States,0.95,Yahoo Finance verifies AMG as Affiliated Managers Group, Inc. with United States issuer domicile.
+AMG,NYSE,country_code,update,US,0.95,Must match corrected issuer domicile.
+AMG,NYSE,isin,update,US0082521081,0.95,Current Dutch ISIN belongs to the unrelated Amsterdam issuer and should be replaced with the US issuer ISIN.
+CNTX,NASDAQ,country,update,United States,0.95,Yahoo Finance verifies CNTX as Context Therapeutics Inc. with United States issuer domicile.
+CNTX,NASDAQ,country_code,update,US,0.95,Must match corrected issuer domicile.
+CNTX,NASDAQ,isin,clear,,0.9,Current Indonesian ISIN is unrelated contamination and Yahoo does not confirm a replacement ISIN.
+CYBR,LSE,country,update,Ireland,0.95,The issuer name is an Irish UCITS ICAV fund structure and the current Canadian domicile is unrelated contamination.
+CYBR,LSE,country_code,update,IE,0.95,Must match corrected Irish fund domicile.
+CYBR,LSE,isin,clear,,0.9,Current Canadian ISIN belongs to an unrelated issuer and should be cleared because Yahoo does not confirm a replacement for this line.
+SEA,NYSE ARCA,country,update,United States,0.95,Yahoo Finance verifies SEA as a US ETF on NYSE Arca rather than the current Australian contamination.
+SEA,NYSE ARCA,country_code,update,US,0.95,Must match corrected ETF domicile.
+SEA,NYSE ARCA,isin,update,US26922B8651,0.95,Yahoo Finance verifies the ETF ISIN for SEA.
+SEA,NYSE ARCA,sector,clear,,0.9,Current sector is inherited from an unrelated issuer and should be cleared.
+SOBA,XETRA,country,update,United States,0.95,Yahoo Finance verifies SOBA.DE as AT&T Inc. with United States issuer domicile.
+SOBA,XETRA,country_code,update,US,0.95,Must match corrected issuer domicile.
+T,NYSE,isin,update,US00206R1023,0.95,Yahoo Finance and the Xetra cross-listing confirm the AT&T US issuer ISIN.
+DTE,NYSE,country,update,United States,0.95,Yahoo Finance verifies DTE as DTE Energy Company with United States issuer domicile.
+DTE,NYSE,country_code,update,US,0.95,Must match corrected issuer domicile.
+DTE,NYSE,isin,update,US2333311072,0.95,Current German ISIN is unrelated contamination; use the verified US issuer ISIN.
+GAP,NYSE,country,update,United States,0.95,Yahoo Finance verifies GAP as The Gap, Inc. with United States issuer domicile.
+GAP,NYSE,country_code,update,US,0.95,Must match corrected issuer domicile.
+GAP,NYSE,isin,clear,,0.9,Current Australian ISIN belongs to an unrelated issuer and Yahoo does not confirm a replacement ISIN.
+KEY,NYSE,isin,update,US4932671088,0.95,Yahoo Finance verifies the US issuer ISIN for KeyCorp.
+TEFN,BMV,country,update,Spain,0.95,Yahoo Finance verifies TEFN.MX as Telefónica, S.A. with Spanish issuer domicile.
+TEFN,BMV,country_code,update,ES,0.95,Must match corrected issuer domicile.
+TEFN,BMV,isin,clear,,0.9,Current Israeli ISIN belongs to an unrelated issuer and Yahoo does not confirm a replacement ISIN for the Mexican line.
+TEFN,BMV,sector,update,Communication Services,0.9,Telefónica belongs in Communication Services; current Health Care sector is unrelated contamination.
 TABD,NYSE ARCA,isin,update,US9009348528,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
 TABD,NYSE ARCA,name,update,Transamerica Bond Active ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 TACN,NYSE ARCA,isin,update,US87283Q7198,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.

@@ -71,6 +71,77 @@ def test_yahoo_high_risk_aliases_removed():
     assert "pt itsec asia" not in ticker_row("CYBR")["aliases"]
 
 
+def test_residual_alias_collisions_and_metadata_contamination_are_removed():
+    gen = ticker_exchange_row("GEN", "NASDAQ")
+    gen_lse = ticker_exchange_row("0AD5", "LSE")
+    fg = ticker_exchange_row("FG", "NYSE")
+    amg = ticker_exchange_row("AMG", "NYSE")
+    cntx = ticker_exchange_row("CNTX", "NASDAQ")
+    cybr = ticker_exchange_row("CYBR", "LSE")
+    sea = ticker_exchange_row("SEA", "NYSE ARCA")
+    soba = ticker_exchange_row("SOBA", "XETRA")
+    att = ticker_exchange_row("T", "NYSE")
+    dte = ticker_exchange_row("DTE", "NYSE")
+    gap = ticker_exchange_row("GAP", "NYSE")
+    key = ticker_exchange_row("KEY", "NYSE")
+    tefn = ticker_exchange_row("TEFN", "BMV")
+
+    assert gen["country"] == "United States"
+    assert gen["isin"] == "US6687711084"
+    assert gen_lse["country"] == "United States"
+    assert gen_lse["isin"] == "US6687711084"
+
+    assert fg["country"] == "United States"
+    assert fg["isin"] == "US30190A1043"
+    assert "fasadgruppen group" not in fg["aliases"]
+
+    assert amg["country"] == "United States"
+    assert amg["isin"] == "US0082521081"
+    assert "amg advanced metallurgical group" not in amg["aliases"]
+    assert "atlas metals" not in amg["aliases"]
+    assert "MGR" not in amg["aliases"]
+
+    assert cntx["country"] == "United States"
+    assert cntx["isin"] == ""
+    assert "pt century textile industry" not in cntx["aliases"]
+
+    assert cybr["country"] == "Ireland"
+    assert cybr["isin"] == ""
+    assert "cyberark" not in cybr["aliases"]
+
+    assert sea["country"] == "United States"
+    assert sea["isin"] == "US26922B8651"
+    assert sea["sector"] == ""
+    assert "sea forest" not in sea["aliases"]
+    assert "seascape energy asia" not in sea["aliases"]
+    assert "srm entertainment" not in sea["aliases"]
+
+    assert soba["country"] == "United States"
+    assert "TBB" not in soba["aliases"]
+
+    assert att["isin"] == "US00206R1023"
+    assert "TBB" not in att["aliases"]
+
+    assert dte["country"] == "United States"
+    assert dte["isin"] == "US2333311072"
+    assert "DTB" not in dte["aliases"]
+    assert "DTG" not in dte["aliases"]
+    assert "DTW" not in dte["aliases"]
+
+    assert gap["country"] == "United States"
+    assert gap["isin"] == ""
+    assert "gale pacific" not in gap["aliases"]
+
+    assert key["isin"] == "US4932671088"
+    assert ticker_exchange_row("KEY-PL", "NYSE") is None
+
+    assert tefn["country"] == "Spain"
+    assert tefn["country_code"] == "ES"
+    assert tefn["isin"] == ""
+    assert tefn["sector"] == "Communication Services"
+    assert "intelicanna" not in tefn["aliases"]
+
+
 def test_generic_fund_wrapper_aliases_removed():
     aliases = {(row["ticker"], row["alias"]) for row in load_csv("aliases.csv")}
     blocked = {
@@ -138,8 +209,8 @@ def test_yahoo_corrected_etf_outliers_are_cleaned():
     assert tek["isin"] == "US09290C7728"
 
 
-def test_non_otc_country_isin_mismatches_are_cleared():
-    assert ticker_exchange_row("T", "NYSE")["isin"] == ""
+def test_non_otc_country_isin_mismatches_are_cleared_or_verified():
+    assert ticker_exchange_row("T", "NYSE")["isin"] == "US00206R1023"
     assert ticker_exchange_row("PKO", "WSE")["isin"] == ""
     assert ticker_exchange_row("PRX", "AMS")["isin"] == ""
 
@@ -303,8 +374,8 @@ def test_changelog_and_supporting_docs_are_current():
     assert "## Unreleased" in changelog
     assert "- No unreleased changes yet." in changelog
     assert "## 2.0.0" in changelog
-    assert "59,178 tickers (43,086 stocks, 16,092 ETFs) across 67 exchanges and 68 countries" in changelog
-    assert "102,976 aliases" in changelog
+    assert "59,177 tickers (43,085 stocks, 16,092 ETFs) across 67 exchanges and 68 countries" in changelog
+    assert "102,943 aliases" in changelog
     assert "Keep the dataset build and review scripts dependency-light and easy to trace" in contributing
     assert "one or more `review_queue.json` items" in claude_prompt
 
