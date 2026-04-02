@@ -16,7 +16,9 @@ TICKERS_CSV = DATA_DIR / "tickers.csv"
 IDENTIFIERS_CSV = DATA_DIR / "identifiers.csv"
 IDENTIFIERS_EXTENDED_CSV = DATA_DIR / "identifiers_extended.csv"
 IDENTIFIER_SUMMARY_JSON = DATA_DIR / "identifier_summary.json"
-SEC_COMPANY_TICKERS_CACHE = DATA_DIR / "masterfiles" / "sec_company_tickers_exchange.json"
+MASTERFILES_DIR = DATA_DIR / "masterfiles"
+SEC_COMPANY_TICKERS_CACHE = MASTERFILES_DIR / "cache" / "sec_company_tickers_exchange.json"
+LEGACY_SEC_COMPANY_TICKERS_CACHE = MASTERFILES_DIR / "sec_company_tickers_exchange.json"
 
 SEC_COMPANY_TICKERS_URL = "https://www.sec.gov/files/company_tickers_exchange.json"
 OPENFIGI_MAPPING_URL = "https://api.openfigi.com/v3/mapping"
@@ -33,6 +35,19 @@ SEC_EXCHANGE_MAP = {
     "CboeBZX": "BATS",
 }
 
+OPENFIGI_EXCHANGE_HINTS = {
+    "ASX": {"AU"},
+    "BATS": {"US"},
+    "IEX": {"US"},
+    "NASDAQ": {"US"},
+    "NYSE": {"US"},
+    "NYSE ARCA": {"US"},
+    "NYSE CHICAGO": {"US"},
+    "NYSE MKT": {"US"},
+    "TSX": {"CN"},
+    "TSXV": {"CN"},
+}
+
 
 def load_csv(path: Path) -> list[dict[str, str]]:
     with path.open(newline="", encoding="utf-8") as handle:
@@ -46,6 +61,10 @@ def write_csv(path: Path, fieldnames: list[str], rows: list[dict[str, str]]) -> 
         writer.writerows(rows)
 
 
+def normalize_company_name(value: str) -> str:
+    return "".join(ch for ch in value.lower() if ch.isalnum())
+
+
 def fetch_json(url: str, session: requests.Session | None = None, headers: dict[str, str] | None = None) -> Any:
     session = session or requests.Session()
     merged_headers = {"User-Agent": USER_AGENT}
@@ -57,8 +76,9 @@ def fetch_json(url: str, session: requests.Session | None = None, headers: dict[
 
 
 def load_sec_payload(session: requests.Session | None = None) -> tuple[dict[str, Any] | None, str]:
-    if SEC_COMPANY_TICKERS_CACHE.exists():
-        return json.loads(SEC_COMPANY_TICKERS_CACHE.read_text(encoding="utf-8")), "cache"
+    for path in (SEC_COMPANY_TICKERS_CACHE, LEGACY_SEC_COMPANY_TICKERS_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
     try:
         payload = fetch_json(SEC_COMPANY_TICKERS_URL, session=session)
     except requests.RequestException:
@@ -86,21 +106,28 @@ def post_json(
 def build_base_identifier_rows() -> list[dict[str, str]]:
     tickers = {(row["ticker"], row["exchange"]): row for row in load_csv(TICKERS_CSV)}
     identifiers_by_ticker = {row["ticker"]: row for row in load_csv(IDENTIFIERS_CSV)}
+    existing_extended: dict[tuple[str, str], dict[str, str]] = {}
+    if IDENTIFIERS_EXTENDED_CSV.exists():
+        existing_extended = {
+            (row["ticker"], row["exchange"]): row
+            for row in load_csv(IDENTIFIERS_EXTENDED_CSV)
+        }
     rows: list[dict[str, str]] = []
     for (ticker, exchange), ticker_row in sorted(tickers.items()):
         identifier_row = identifiers_by_ticker.get(ticker, {"isin": "", "wkn": ""})
+        existing_row = existing_extended.get((ticker, exchange), {})
         rows.append(
             {
                 "ticker": ticker,
                 "exchange": exchange,
                 "isin": identifier_row.get("isin", ""),
                 "wkn": identifier_row.get("wkn", ""),
-                "figi": "",
-                "cik": "",
-                "lei": "",
-                "figi_source": "",
-                "cik_source": "",
-                "lei_source": "",
+                "figi": existing_row.get("figi", ""),
+                "cik": existing_row.get("cik", ""),
+                "lei": existing_row.get("lei", ""),
+                "figi_source": existing_row.get("figi_source", ""),
+                "cik_source": existing_row.get("cik_source", ""),
+                "lei_source": existing_row.get("lei_source", ""),
                 "name": ticker_row["name"],
                 "country": ticker_row["country"],
                 "asset_type": ticker_row["asset_type"],
@@ -140,33 +167,81 @@ def fetch_openfigi_by_isin(
     session: requests.Session | None = None,
     api_key: str | None = None,
     delay_seconds: float = 0.0,
-) -> dict[str, str]:
+) -> dict[str, list[dict[str, Any]]]:
     session = session or requests.Session()
     headers = {}
     if api_key:
         headers["X-OPENFIGI-APIKEY"] = api_key
 
-    result: dict[str, str] = {}
+    result: dict[str, list[dict[str, Any]]] = {}
     for start in range(0, len(isins), 10):
         batch = isins[start : start + 10]
         jobs = [{"idType": "ID_ISIN", "idValue": isin} for isin in batch]
         response = post_json(OPENFIGI_MAPPING_URL, jobs, session=session, headers=headers)
         for isin, payload in zip(batch, response):
-            candidates = payload.get("data", [])
-            if candidates:
-                figi = candidates[0].get("figi", "")
-                if figi:
-                    result[isin] = figi
+            result[isin] = payload.get("data", [])
         if delay_seconds:
             time.sleep(delay_seconds)
     return result
 
 
-def apply_figi(rows: list[dict[str, str]], figi_by_isin: dict[str, str]) -> int:
+def select_figi_rows(
+    rows: list[dict[str, str]],
+    exchanges: set[str] | None = None,
+    limit: int | None = None,
+) -> list[dict[str, str]]:
+    candidates = [
+        row
+        for row in rows
+        if row["isin"]
+        and not row["figi"]
+        and (not exchanges or row["exchange"] in exchanges)
+    ]
+    ordered = sorted(candidates, key=lambda row: (row["exchange"], row["ticker"]))
+    return ordered[:limit] if limit is not None else ordered
+
+
+def select_openfigi_candidate(
+    row: dict[str, str],
+    candidates: list[dict[str, Any]],
+) -> str:
+    if not candidates:
+        return ""
+
+    target_ticker = row["ticker"].upper()
+    hinted_codes = OPENFIGI_EXCHANGE_HINTS.get(row["exchange"], set())
+
+    hinted = [candidate for candidate in candidates if candidate.get("exchCode") in hinted_codes]
+    ticker_and_hint = [candidate for candidate in hinted if str(candidate.get("ticker", "")).upper() == target_ticker]
+    if ticker_and_hint:
+        return str(ticker_and_hint[0].get("figi", ""))
+    if hinted:
+        return str(hinted[0].get("figi", ""))
+
+    exact_ticker = [candidate for candidate in candidates if str(candidate.get("ticker", "")).upper() == target_ticker]
+    if exact_ticker:
+        return str(exact_ticker[0].get("figi", ""))
+
+    return str(candidates[0].get("figi", ""))
+
+
+def build_figi_matches(
+    rows: list[dict[str, str]],
+    candidates_by_isin: dict[str, list[dict[str, Any]]],
+) -> dict[tuple[str, str], str]:
+    matches: dict[tuple[str, str], str] = {}
+    for row in rows:
+        figi = select_openfigi_candidate(row, candidates_by_isin.get(row["isin"], []))
+        if figi:
+            matches[(row["ticker"], row["exchange"])] = figi
+    return matches
+
+
+def apply_figi(rows: list[dict[str, str]], figi_by_listing: dict[tuple[str, str], str]) -> int:
     updated = 0
     for row in rows:
-        figi = figi_by_isin.get(row["isin"], "")
-        if figi:
+        figi = figi_by_listing.get((row["ticker"], row["exchange"]), "")
+        if figi and row["figi"] != figi:
             row["figi"] = figi
             row["figi_source"] = "OpenFIGI"
             updated += 1
@@ -181,6 +256,9 @@ def fetch_gleif_lei(name: str, session: requests.Session | None = None) -> str:
     )
     data = payload.get("data", [])
     if not data:
+        return ""
+    legal_name = (((data[0].get("attributes") or {}).get("entity") or {}).get("legalName") or {}).get("name", "")
+    if normalize_company_name(legal_name) != normalize_company_name(name):
         return ""
     return data[0].get("id", "")
 
@@ -201,18 +279,34 @@ def select_lei_candidates(rows: list[dict[str, str]]) -> list[dict[str, str]]:
     return sorted(rows, key=sort_key, reverse=True)
 
 
+def filter_lei_candidates(
+    rows: list[dict[str, str]],
+    exchanges: set[str] | None = None,
+) -> list[dict[str, str]]:
+    candidates = [
+        row
+        for row in rows
+        if row["asset_type"] == "Stock"
+        and row["isin"]
+        and not row["lei"]
+        and (not exchanges or row["exchange"] in exchanges)
+    ]
+    return select_lei_candidates(candidates)
+
+
 def apply_lei(
     rows: list[dict[str, str]],
     session: requests.Session | None = None,
     delay_seconds: float = 0.0,
     limit: int | None = None,
+    exchanges: set[str] | None = None,
 ) -> int:
     updated = 0
     session = session or requests.Session()
-    candidates = select_lei_candidates(rows)
+    candidates = filter_lei_candidates(rows, exchanges=exchanges)
     for row in candidates[:limit] if limit else candidates:
         lei = fetch_gleif_lei(row["name"], session=session)
-        if lei:
+        if lei and row["lei"] != lei:
             row["lei"] = lei
             row["lei_source"] = "GLEIF"
             updated += 1
@@ -260,8 +354,10 @@ def main(
     openfigi_api_key: str | None = None,
     figi_delay_seconds: float = 0.0,
     figi_limit: int | None = None,
+    figi_exchanges: set[str] | None = None,
     lei_delay_seconds: float = 0.0,
     lei_limit: int | None = None,
+    lei_exchanges: set[str] | None = None,
 ) -> dict[str, Any]:
     rows = build_base_identifier_rows()
     session = requests.Session()
@@ -275,21 +371,26 @@ def main(
             apply_sec_cik(rows, cik_index)
     if enable_figi:
         try:
-            isins = sorted({row["isin"] for row in rows if row["isin"]})
-            if figi_limit is not None:
-                isins = isins[:figi_limit]
-            figi_by_isin = fetch_openfigi_by_isin(
-                isins,
+            figi_rows = select_figi_rows(rows, exchanges=figi_exchanges, limit=figi_limit)
+            figi_candidates = fetch_openfigi_by_isin(
+                sorted({row["isin"] for row in figi_rows}),
                 session=session,
                 api_key=openfigi_api_key,
                 delay_seconds=figi_delay_seconds,
             )
-            apply_figi(rows, figi_by_isin)
+            figi_matches = build_figi_matches(figi_rows, figi_candidates)
+            apply_figi(rows, figi_matches)
         except requests.RequestException as exc:
             errors.append(f"OpenFIGI unavailable: {exc}")
     if enable_lei:
         try:
-            apply_lei(rows, session=session, delay_seconds=lei_delay_seconds, limit=lei_limit)
+            apply_lei(
+                rows,
+                session=session,
+                delay_seconds=lei_delay_seconds,
+                limit=lei_limit,
+                exchanges=lei_exchanges,
+            )
         except requests.RequestException as exc:
             errors.append(f"GLEIF unavailable: {exc}")
     summary = persist_rows(rows)
@@ -309,8 +410,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--openfigi-api-key", default="")
     parser.add_argument("--figi-delay-seconds", type=float, default=0.0)
     parser.add_argument("--figi-limit", type=int)
+    parser.add_argument("--figi-exchanges", default="")
     parser.add_argument("--lei-delay-seconds", type=float, default=0.0)
     parser.add_argument("--lei-limit", type=int)
+    parser.add_argument("--lei-exchanges", default="")
     return parser.parse_args()
 
 
@@ -323,6 +426,8 @@ if __name__ == "__main__":
         openfigi_api_key=args.openfigi_api_key or None,
         figi_delay_seconds=args.figi_delay_seconds,
         figi_limit=args.figi_limit,
+        figi_exchanges={value.strip() for value in args.figi_exchanges.split(",") if value.strip()} or None,
         lei_delay_seconds=args.lei_delay_seconds,
         lei_limit=args.lei_limit,
+        lei_exchanges={value.strip() for value in args.lei_exchanges.split(",") if value.strip()} or None,
     )

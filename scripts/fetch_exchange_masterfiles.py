@@ -17,10 +17,14 @@ MASTERFILE_REFERENCE_CSV = MASTERFILES_DIR / "reference.csv"
 MASTERFILE_SOURCES_JSON = MASTERFILES_DIR / "sources.json"
 MASTERFILE_SUMMARY_JSON = MASTERFILES_DIR / "summary.json"
 MASTERFILE_CACHE_DIR = MASTERFILES_DIR / "cache"
+SEC_COMPANY_TICKERS_CACHE = MASTERFILE_CACHE_DIR / "sec_company_tickers_exchange.json"
+LEGACY_SEC_COMPANY_TICKERS_CACHE = MASTERFILES_DIR / "sec_company_tickers_exchange.json"
 
 SEC_COMPANY_TICKERS_URL = "https://www.sec.gov/files/company_tickers_exchange.json"
 NASDAQ_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt"
 NASDAQ_OTHER_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt"
+ASX_LISTED_URL = "https://www.asx.com.au/asx/research/ASXListedCompanies.csv"
+TMX_INTERLISTED_URL = "https://www.tsx.com/files/trading/interlisted-companies.txt"
 
 USER_AGENT = "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)"
 REQUEST_TIMEOUT = 30.0
@@ -61,6 +65,7 @@ class MasterfileSource:
     description: str
     source_url: str
     format: str
+    reference_scope: str = "exchange_directory"
     official: bool = True
 
 
@@ -78,6 +83,21 @@ OFFICIAL_SOURCES = [
         description="Official other-listed/CQS symbol directory",
         source_url=NASDAQ_OTHER_LISTED_URL,
         format="nasdaq_other_listed_pipe",
+    ),
+    MasterfileSource(
+        key="asx_listed_companies",
+        provider="ASX",
+        description="Official ASX listed companies directory",
+        source_url=ASX_LISTED_URL,
+        format="asx_listed_companies_csv",
+    ),
+    MasterfileSource(
+        key="tmx_interlisted_companies",
+        provider="TMX",
+        description="Official TSX/TSXV interlisted companies reference",
+        source_url=TMX_INTERLISTED_URL,
+        format="tmx_interlisted_tab",
+        reference_scope="interlisted_subset",
     ),
     MasterfileSource(
         key="sec_company_tickers_exchange",
@@ -119,6 +139,7 @@ def load_manual_masterfiles(manual_dir: Path) -> list[dict[str, str]]:
                         "exchange": row.get("exchange", "").strip(),
                         "asset_type": row.get("asset_type", "").strip() or infer_asset_type(row.get("name", "")),
                         "listing_status": row.get("listing_status", "").strip() or "active",
+                        "reference_scope": row.get("reference_scope", "").strip() or "manual",
                         "official": "false",
                     }
                 )
@@ -142,6 +163,23 @@ def fetch_json(url: str, session: requests.Session | None = None) -> Any:
     response = session.get(url, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT)
     response.raise_for_status()
     return response.json()
+
+
+def load_sec_company_tickers_exchange_payload(
+    session: requests.Session | None = None,
+) -> tuple[dict[str, Any] | None, str]:
+    for path in (SEC_COMPANY_TICKERS_CACHE, LEGACY_SEC_COMPANY_TICKERS_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+
+    try:
+        payload = fetch_json(SEC_COMPANY_TICKERS_URL, session=session)
+    except requests.RequestException:
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    SEC_COMPANY_TICKERS_CACHE.write_text(json.dumps(payload), encoding="utf-8")
+    return payload, "network"
 
 
 def parse_pipe_table(text: str) -> list[dict[str, str]]:
@@ -168,6 +206,7 @@ def parse_nasdaq_listed(text: str, source: MasterfileSource) -> list[dict[str, s
                 "exchange": "NASDAQ",
                 "asset_type": "ETF" if row.get("ETF") == "Y" else "Stock",
                 "listing_status": "test" if row.get("Test Issue") == "Y" else "active",
+                "reference_scope": source.reference_scope,
                 "official": "true",
             }
         )
@@ -191,6 +230,63 @@ def parse_other_listed(text: str, source: MasterfileSource) -> list[dict[str, st
                 "exchange": exchange,
                 "asset_type": "ETF" if row.get("ETF") == "Y" else "Stock",
                 "listing_status": "test" if row.get("Test Issue") == "Y" else "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
+def parse_asx_listed_companies(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    lines = text.splitlines()
+    if lines and lines[0].startswith("ASX listed companies as at"):
+        lines = lines[2:]
+    reader = csv.DictReader(io.StringIO("\n".join(lines)))
+    rows: list[dict[str, str]] = []
+    for row in reader:
+        ticker = (row.get("ASX code") or "").strip()
+        if not ticker:
+            continue
+        name = (row.get("Company name") or "").strip()
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "ASX",
+                "asset_type": infer_asset_type(name),
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
+def parse_tmx_interlisted(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    lines = text.splitlines()
+    if lines and lines[0].startswith("As of "):
+        lines = lines[2:]
+    reader = csv.DictReader(io.StringIO("\n".join(lines)), delimiter="\t")
+    rows: list[dict[str, str]] = []
+    for row in reader:
+        symbol = (row.get("Symbol") or "").strip()
+        if not symbol or ":" not in symbol:
+            continue
+        ticker, exchange = symbol.split(":", 1)
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker.strip(),
+                "name": (row.get("Name") or "").strip(),
+                "exchange": exchange.strip(),
+                "asset_type": infer_asset_type((row.get("Name") or "").strip()),
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
                 "official": "true",
             }
         )
@@ -217,6 +313,7 @@ def parse_sec_company_tickers_exchange(payload: dict[str, Any], source: Masterfi
                 "exchange": exchange,
                 "asset_type": infer_asset_type(name),
                 "listing_status": "active",
+                "reference_scope": source.reference_scope,
                 "official": "true",
             }
         )
@@ -230,30 +327,57 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "nasdaq_other_listed_pipe":
         text = fetch_text(source.source_url, session=session)
         return parse_other_listed(text, source)
+    if source.format == "asx_listed_companies_csv":
+        text = fetch_text(source.source_url, session=session)
+        return parse_asx_listed_companies(text, source)
+    if source.format == "tmx_interlisted_tab":
+        text = fetch_text(source.source_url, session=session)
+        return parse_tmx_interlisted(text, source)
     if source.format == "sec_company_tickers_exchange_json":
         payload = fetch_json(source.source_url, session=session)
         return parse_sec_company_tickers_exchange(payload, source)
     raise ValueError(f"Unsupported source format: {source.format}")
 
 
+def fetch_source_rows_with_mode(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]], str]:
+    if source.format == "sec_company_tickers_exchange_json":
+        payload, mode = load_sec_company_tickers_exchange_payload(session=session)
+        if payload is None:
+            raise requests.RequestException("SEC company_tickers_exchange.json unavailable")
+        return parse_sec_company_tickers_exchange(payload, source), mode
+    return fetch_source_rows(source, session=session), "network"
+
+
 def dedupe_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
     deduped: dict[tuple[str, str, str, str], dict[str, str]] = {}
     for row in rows:
-        key = (row["source_key"], row["ticker"], row["exchange"], row["listing_status"])
+        key = (
+            row["source_key"],
+            row["ticker"],
+            row["exchange"],
+            row["listing_status"],
+            row.get("reference_scope", "exchange_directory"),
+        )
         deduped[key] = row
     return sorted(deduped.values(), key=lambda row: (row["exchange"], row["ticker"], row["source_key"]))
 
 
-def build_summary(rows: list[dict[str, str]]) -> dict[str, Any]:
+def build_summary(rows: list[dict[str, str]], source_modes: dict[str, str] | None = None) -> dict[str, Any]:
     exchanges = sorted({row["exchange"] for row in rows if row["exchange"]})
     source_counts: dict[str, int] = {}
     for row in rows:
         source_counts[row["source_key"]] = source_counts.get(row["source_key"], 0) + 1
-    return {
+    summary = {
         "rows": len(rows),
         "exchanges": exchanges,
         "source_counts": source_counts,
     }
+    if source_modes:
+        summary["source_modes"] = source_modes
+    return summary
 
 
 def fetch_all_sources(
@@ -265,15 +389,19 @@ def fetch_all_sources(
     session = session or requests.Session()
     rows: list[dict[str, str]] = []
     errors: list[dict[str, str]] = []
+    source_modes: dict[str, str] = {}
     for source in OFFICIAL_SOURCES:
         try:
-            rows.extend(fetch_source_rows(source, session=session))
+            source_rows, mode = fetch_source_rows_with_mode(source, session=session)
+            rows.extend(source_rows)
+            source_modes[source.key] = mode
         except requests.RequestException as exc:
+            source_modes[source.key] = "unavailable"
             errors.append({"source_key": source.key, "error": str(exc)})
     if include_manual:
         rows.extend(load_manual_masterfiles(manual_dir or MASTERFILES_DIR / "manual"))
     deduped = dedupe_rows(rows)
-    summary = build_summary(deduped)
+    summary = build_summary(deduped, source_modes=source_modes)
     if errors:
         summary["errors"] = errors
     return deduped, summary
@@ -290,7 +418,7 @@ def main() -> None:
     persist_source_metadata()
     write_csv(
         MASTERFILE_REFERENCE_CSV,
-        ["source_key", "provider", "source_url", "ticker", "name", "exchange", "asset_type", "listing_status", "official"],
+        ["source_key", "provider", "source_url", "ticker", "name", "exchange", "asset_type", "listing_status", "reference_scope", "official"],
         rows,
     )
     MASTERFILE_SUMMARY_JSON.write_text(json.dumps(summary, indent=2), encoding="utf-8")

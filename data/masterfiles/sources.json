@@ -5,6 +5,7 @@
     "description": "Official Nasdaq-listed symbol directory",
     "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
     "format": "nasdaq_listed_pipe",
+    "reference_scope": "exchange_directory",
     "official": true
   },
   {
@@ -13,6 +14,25 @@
     "description": "Official other-listed/CQS symbol directory",
     "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
     "format": "nasdaq_other_listed_pipe",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "asx_listed_companies",
+    "provider": "ASX",
+    "description": "Official ASX listed companies directory",
+    "source_url": "https://www.asx.com.au/asx/research/ASXListedCompanies.csv",
+    "format": "asx_listed_companies_csv",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "tmx_interlisted_companies",
+    "provider": "TMX",
+    "description": "Official TSX/TSXV interlisted companies reference",
+    "source_url": "https://www.tsx.com/files/trading/interlisted-companies.txt",
+    "format": "tmx_interlisted_tab",
+    "reference_scope": "interlisted_subset",
     "official": true
   },
   {
@@ -21,6 +41,7 @@
     "description": "Official SEC company ticker to exchange mapping",
     "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
     "format": "sec_company_tickers_exchange_json",
+    "reference_scope": "exchange_directory",
     "official": true
   }
 ]

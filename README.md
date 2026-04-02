@@ -36,10 +36,10 @@ Additional reference artifacts:
 
 | File | Size | Best for |
 |---|---|---|
-| [`data/identifiers_extended.csv`](data/identifiers_extended.csv) | 2.0 MB | FIGI/CIK/LEI enrichment snapshot |
-| [`data/masterfiles/reference.csv`](data/masterfiles/reference.csv) | 2.0 MB | Official exchange-masterfile reference rows |
+| [`data/identifiers_extended.csv`](data/identifiers_extended.csv) | 1.7 MB | FIGI/CIK/LEI enrichment snapshot |
+| [`data/masterfiles/reference.csv`](data/masterfiles/reference.csv) | 2.5 MB | Official exchange-masterfile reference rows |
 | [`data/history/latest_snapshot.csv`](data/history/latest_snapshot.csv) | 6.1 MB | Current listing-status baseline |
-| [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | 36 KB | Machine-readable coverage metrics |
+| [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | 32 KB | Machine-readable coverage metrics |
 
 ### tickers.csv (flat, Excel-friendly)
 
@@ -209,7 +209,9 @@ Current live sources:
 
 - Nasdaq Trader `nasdaqlisted.txt`
 - Nasdaq Trader `otherlisted.txt`
-- SEC `company_tickers_exchange.json` when the environment is allowed to fetch it
+- ASX `ASXListedCompanies.csv`
+- TMX `interlisted-companies.txt` (official interlisted subset, not a full TSX/TSXV directory)
+- SEC `company_tickers_exchange.json` when the environment is allowed to fetch it, or a cached official snapshot when present locally
 
 Generate listing history artifacts:
 
@@ -226,14 +228,16 @@ This writes:
 Generate extended identifiers:
 
 ```bash
-python3 scripts/enrich_global_identifiers.py --enable-figi --figi-limit 200 --enable-lei --lei-limit 50
+python3 scripts/enrich_global_identifiers.py \
+  --enable-figi --figi-exchanges ASX,TSX,TSXV --figi-limit 3000 \
+  --enable-lei --lei-exchanges ASX,TSX,NASDAQ,NYSE --lei-limit 200
 ```
 
 Notes:
 
-- `FIGI` enrichment is live via OpenFIGI and rate-limited without an API key.
-- `LEI` enrichment is live via GLEIF and best treated as a gradual backfill.
-- `CIK` enrichment uses the official SEC company-ticker file. Some environments are blocked by SEC with `403`; in that case the script keeps `CIK` empty and records the error in `data/identifier_summary.json`.
+- `FIGI` enrichment is live via OpenFIGI and matched at listing level, not blindly by ISIN across venues.
+- `LEI` enrichment is live via GLEIF and uses exact normalized legal-name matching to stay conservative.
+- `CIK` enrichment uses the official SEC company-ticker file. Some environments are blocked by SEC with `403`; in that case the script falls back to a cached official snapshot when available, otherwise it keeps `CIK` empty and records the error in `data/identifier_summary.json`.
 
 Build exchange/country coverage reports:
 

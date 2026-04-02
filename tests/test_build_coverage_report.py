@@ -18,9 +18,10 @@ def test_build_exchange_report_includes_masterfile_match_rates():
         {"ticker": "IBM", "exchange": "NYSE", "cik": "0000051143", "figi": "BBG000BLNNH6", "lei": ""},
     ]
     masterfiles = [
-        {"ticker": "AAPL", "exchange": "NASDAQ", "listing_status": "active"},
-        {"ticker": "QQQ", "exchange": "NASDAQ", "listing_status": "active"},
-        {"ticker": "IBM", "exchange": "NYSE", "listing_status": "active"},
+        {"ticker": "AAPL", "exchange": "NASDAQ", "listing_status": "active", "reference_scope": "exchange_directory"},
+        {"ticker": "QQQ", "exchange": "NASDAQ", "listing_status": "active", "reference_scope": "exchange_directory"},
+        {"ticker": "IBM", "exchange": "NYSE", "listing_status": "active", "reference_scope": "exchange_directory"},
+        {"ticker": "SHOP", "exchange": "TSX", "listing_status": "active", "reference_scope": "interlisted_subset"},
     ]
 
     rows = build_exchange_report(tickers, identifiers, masterfiles)

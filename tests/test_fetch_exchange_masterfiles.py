@@ -5,9 +5,13 @@ import requests
 from scripts.fetch_exchange_masterfiles import (
     MasterfileSource,
     fetch_all_sources,
+    fetch_source_rows_with_mode,
+    load_sec_company_tickers_exchange_payload,
+    parse_asx_listed_companies,
     parse_nasdaq_listed,
     parse_other_listed,
     parse_sec_company_tickers_exchange,
+    parse_tmx_interlisted,
 )
 
 
@@ -17,6 +21,15 @@ SOURCE = MasterfileSource(
     description="test",
     source_url="https://example.com",
     format="test",
+)
+
+SUBSET_SOURCE = MasterfileSource(
+    key="subset",
+    provider="test",
+    description="subset",
+    source_url="https://example.com/subset",
+    format="test",
+    reference_scope="interlisted_subset",
 )
 
 
@@ -62,6 +75,7 @@ def test_parse_other_listed_maps_exchange_codes():
             "exchange": "NYSE",
             "asset_type": "Stock",
             "listing_status": "active",
+            "reference_scope": "exchange_directory",
             "official": "true",
         },
         {
@@ -73,6 +87,7 @@ def test_parse_other_listed_maps_exchange_codes():
             "exchange": "NYSE ARCA",
             "asset_type": "ETF",
             "listing_status": "active",
+            "reference_scope": "exchange_directory",
             "official": "true",
         },
     ]
@@ -97,10 +112,92 @@ def test_parse_sec_company_tickers_exchange_normalizes_exchange_names():
     assert [row["ticker"] for row in rows] == ["AAPL", "T", "SPY"]
 
 
+def test_parse_asx_listed_companies_skips_banner_lines():
+    text = "\n".join(
+        [
+            "ASX listed companies as at Thu Apr 02 19:05:21 AEDT 2026",
+            "",
+            "Company name,ASX code,GICS industry group",
+            "\"1414 DEGREES LIMITED\",\"14D\",\"Capital Goods\"",
+            "\"SPDR S&P/ASX 200 FUND\",\"STW\",\"Not Applic\"",
+        ]
+    )
+
+    rows = parse_asx_listed_companies(text, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "14D",
+            "name": "1414 DEGREES LIMITED",
+            "exchange": "ASX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "STW",
+            "name": "SPDR S&P/ASX 200 FUND",
+            "exchange": "ASX",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_parse_tmx_interlisted_marks_subset_scope():
+    text = "\n".join(
+        [
+            "As of March 2, 2026",
+            "",
+            "Symbol\tName\tUS Symbol\tSector\tInternational Market",
+            "AEM:TSX\tAgnico Eagle Mines Limited\tAEM\tMining\tNYSE",
+            "AFE:TSXV\tAfrica Energy Corp.\t\tOil & Gas\tNasdaq Nordic",
+        ]
+    )
+
+    rows = parse_tmx_interlisted(text, SUBSET_SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "subset",
+            "provider": "test",
+            "source_url": "https://example.com/subset",
+            "ticker": "AEM",
+            "name": "Agnico Eagle Mines Limited",
+            "exchange": "TSX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "interlisted_subset",
+            "official": "true",
+        },
+        {
+            "source_key": "subset",
+            "provider": "test",
+            "source_url": "https://example.com/subset",
+            "ticker": "AFE",
+            "name": "Africa Energy Corp.",
+            "exchange": "TSXV",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "interlisted_subset",
+            "official": "true",
+        },
+    ]
+
+
 def test_fetch_all_sources_collects_source_errors(monkeypatch):
     def fake_fetch_source_rows(source, session=None):
         if source.key == "nasdaq_listed":
-            return [{"source_key": source.key, "provider": source.provider, "source_url": source.source_url, "ticker": "AAPL", "name": "Apple Inc.", "exchange": "NASDAQ", "asset_type": "Stock", "listing_status": "active", "official": "true"}]
+            return [{"source_key": source.key, "provider": source.provider, "source_url": source.source_url, "ticker": "AAPL", "name": "Apple Inc.", "exchange": "NASDAQ", "asset_type": "Stock", "listing_status": "active", "reference_scope": source.reference_scope, "official": "true"}]
         raise requests.RequestException("boom")
 
     monkeypatch.setattr("scripts.fetch_exchange_masterfiles.fetch_source_rows", fake_fetch_source_rows)
@@ -117,7 +214,56 @@ def test_fetch_all_sources_collects_source_errors(monkeypatch):
             "exchange": "NASDAQ",
             "asset_type": "Stock",
             "listing_status": "active",
+            "reference_scope": "exchange_directory",
             "official": "true",
         }
     ]
     assert summary["errors"]
+
+
+def test_load_sec_company_tickers_exchange_payload_prefers_cache(tmp_path, monkeypatch):
+    cache = tmp_path / "sec_company_tickers_exchange.json"
+    cache.write_text('{"fields":["ticker"],"data":[["AAPL"]]}', encoding="utf-8")
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.SEC_COMPANY_TICKERS_CACHE", cache)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_SEC_COMPANY_TICKERS_CACHE", tmp_path / "missing.json")
+
+    payload, mode = load_sec_company_tickers_exchange_payload()
+
+    assert mode == "cache"
+    assert payload == {"fields": ["ticker"], "data": [["AAPL"]]}
+
+
+def test_fetch_source_rows_with_mode_uses_sec_cache(tmp_path, monkeypatch):
+    cache = tmp_path / "sec_company_tickers_exchange.json"
+    cache.write_text(
+        '{"fields":["cik","name","ticker","exchange"],"data":[[320193,"Apple Inc.","AAPL","Nasdaq"]]}',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.SEC_COMPANY_TICKERS_CACHE", cache)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_SEC_COMPANY_TICKERS_CACHE", tmp_path / "missing.json")
+
+    rows, mode = fetch_source_rows_with_mode(
+        MasterfileSource(
+            key="sec_company_tickers_exchange",
+            provider="SEC",
+            description="Official SEC company ticker to exchange mapping",
+            source_url="https://www.sec.gov/files/company_tickers_exchange.json",
+            format="sec_company_tickers_exchange_json",
+        )
+    )
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "source_key": "sec_company_tickers_exchange",
+            "provider": "SEC",
+            "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
+            "ticker": "AAPL",
+            "name": "Apple Inc.",
+            "exchange": "NASDAQ",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        }
+    ]

@@ -37,7 +37,7 @@ def build_exchange_report(
     }
     master_by_exchange: dict[str, set[str]] = defaultdict(set)
     for row in masterfiles:
-        if row.get("listing_status") == "active":
+        if row.get("listing_status") == "active" and row.get("reference_scope") == "exchange_directory":
             master_by_exchange[row["exchange"]].add(row["ticker"])
 
     rows: list[dict[str, Any]] = []

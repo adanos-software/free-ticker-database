@@ -2,9 +2,10 @@
 
 ## Unreleased
 
-- Added official masterfile ingestion scaffolding for Nasdaq Trader and SEC reference feeds
+- Added official ASX company-directory ingestion and TMX interlisted-company reference ingestion alongside Nasdaq Trader feeds
+- Added SEC official-snapshot cache fallback for environments blocked from live SEC downloads
 - Added listing snapshot/history artifacts for listings, renames, and delistings
-- Added extended identifier exports with support for FIGI, CIK, and LEI enrichment
+- Improved extended identifier exports with listing-level FIGI matching and conservative LEI backfills
 - Added exchange/country coverage reports beyond the alias-quality audit
 
 ## 2.0.0
