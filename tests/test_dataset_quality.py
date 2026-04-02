@@ -58,6 +58,19 @@ def test_common_word_aliases_removed():
     assert aliases.isdisjoint(blocked)
 
 
+def test_yahoo_high_risk_aliases_removed():
+    assert "square inc" not in ticker_row("SQ")["aliases"]
+    assert "alta" not in ticker_row("ALT")["aliases"]
+    assert "altitude" not in ticker_row("ALT")["aliases"]
+    assert "argo investments" not in ticker_row("ARG")["aliases"]
+    assert "argo investments" not in ticker_row("ARREF")["aliases"]
+    assert "Berkshire" not in ticker_row("BRK")["aliases"]
+    assert "BRK-A" not in ticker_row("BRK")["aliases"]
+    assert "TBC" not in ticker_row("T")["aliases"]
+    assert "TBC" not in ticker_row("SOBA")["aliases"]
+    assert "pt itsec asia" not in ticker_row("CYBR")["aliases"]
+
+
 def test_generic_fund_wrapper_aliases_removed():
     aliases = {(row["ticker"], row["alias"]) for row in load_csv("aliases.csv")}
     blocked = {
@@ -291,7 +304,7 @@ def test_changelog_and_supporting_docs_are_current():
     assert "- No unreleased changes yet." in changelog
     assert "## 2.0.0" in changelog
     assert "59,178 tickers (43,086 stocks, 16,092 ETFs) across 67 exchanges and 68 countries" in changelog
-    assert "104,004 aliases" in changelog
+    assert "102,976 aliases" in changelog
     assert "Keep the dataset build and review scripts dependency-light and easy to trace" in contributing
     assert "one or more `review_queue.json` items" in claude_prompt
 

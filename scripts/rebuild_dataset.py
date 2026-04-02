@@ -55,17 +55,28 @@ BAD_CONTAMINATED_ALIASES = {
 }
 BAD_WRAPPER_TOKENS = ("cdr", "drc", "cedear")
 BAD_OBVIOUS_AMBIGUOUS_ALIASES = {
+    "apes",
     "aws",
     "bezos",
+    "bitcoin mining",
+    "cash app",
+    "chrysler",
     "cybertruck",
     "euv",
     "iphone",
+    "jack dorsey",
+    "jack ma",
+    "jeep",
     "lithography",
     "model 3",
     "model y",
+    "norton",
+    "ram trucks",
     "satya",
     "tim cook",
+    "xfinity",
     "windows",
+    "avast",
 }
 GENERIC_FUND_WRAPPER_NAMES = {
     "ab active etfs",
@@ -118,6 +129,10 @@ GENERIC_FUND_WRAPPER_NAMES = {
     "tcw etf trust",
     "the 2023 etf series trust",
     "the 2023 etf series trust ii",
+    "the advisors inner circle fund ii",
+    "the advisors inner circle fund iii",
+    "advisors inner circle fund ii",
+    "advisors inner circle fund iii",
     "the advisorsâ inner circle fund ii",
     "tidal etf trust",
     "tidal trust ii",
@@ -180,6 +195,34 @@ COMPANY_STOPWORDS = {
     "se",
     "shares",
     "stock",
+}
+CORPORATE_ALIAS_MARKERS = {
+    "bank",
+    "biotech",
+    "biosciences",
+    "capital",
+    "corp",
+    "corporation",
+    "energy",
+    "etf",
+    "financial",
+    "fund",
+    "group",
+    "holding",
+    "holdings",
+    "inc",
+    "limited",
+    "ltd",
+    "media",
+    "metals",
+    "pharmaceuticals",
+    "plc",
+    "resources",
+    "sa",
+    "technology",
+    "technologies",
+    "trust",
+    "ventures",
 }
 ISIN_PREFIX_COUNTRIES = {
     "AT": "Austria",
@@ -411,6 +454,39 @@ def normalized_compact(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", "", value.lower())
 
 
+BLOCKED_ALIAS_KEYS = {
+    normalized_compact(alias)
+    for alias in BAD_COMMON_ALIASES
+    | BAD_CONTAMINATED_ALIASES
+    | BAD_OBVIOUS_AMBIGUOUS_ALIASES
+    | BAD_GENERIC_FUND_ALIASES
+}
+
+
+def is_blocked_alias(alias: str) -> bool:
+    lowered = alias.lower().strip()
+    return lowered in (
+        BAD_COMMON_ALIASES
+        | BAD_CONTAMINATED_ALIASES
+        | BAD_OBVIOUS_AMBIGUOUS_ALIASES
+        | BAD_GENERIC_FUND_ALIASES
+    ) or normalized_compact(alias) in BLOCKED_ALIAS_KEYS
+
+
+def is_company_style_alias(alias: str) -> bool:
+    tokens = normalize_tokens(alias)
+    lowered = alias.lower()
+    return len(tokens) >= 1 and (
+        bool(tokens & CORPORATE_ALIAS_MARKERS)
+        or bool(
+            re.search(
+                r"\b(inc|corp|corporation|holdings?|group|plc|ltd|limited|sa|ag|nv|bank|trust|fund|etf)\b",
+                lowered,
+            )
+        )
+    )
+
+
 def alias_matches_company(alias: str, company_name: str) -> bool:
     alias_compact = normalized_compact(alias)
     company_compact = normalized_compact(company_name)
@@ -485,6 +561,15 @@ def is_namespace_collision_row(
     return False
 
 
+def entity_key_for_row(row: dict[str, str]) -> str:
+    if row.get("isin"):
+        return f"isin:{row['isin']}"
+    normalized_tokens = sorted(normalize_tokens(row["name"]))
+    if normalized_tokens:
+        return f"name:{'|'.join(normalized_tokens)}"
+    return f"ticker:{row['ticker']}"
+
+
 def should_exclude_stock_row(row: dict[str, str]) -> bool:
     if row["asset_type"] != "Stock":
         return False
@@ -513,10 +598,80 @@ def is_suspicious_us_primary(row: dict[str, str], aliases: list[str]) -> bool:
     return any(alias.lower() in BAD_OBVIOUS_AMBIGUOUS_ALIASES for alias in aliases)
 
 
+def looks_like_external_symbol_alias(alias: str) -> bool:
+    compact = re.sub(r"[^A-Z0-9]+", "", alias.upper())
+    if EXCHANGE_TICKER_RE.fullmatch(alias.upper()):
+        return True
+    return bool(
+        compact
+        and re.fullmatch(r"[A-Z]{4,5}", compact)
+        and compact.endswith(("F", "R", "U", "W", "Y"))
+    )
+
+
+def build_alias_context(
+    rows: list[dict[str, str]],
+    identifier_lookup: dict[str, dict[str, str]],
+) -> dict[str, dict[str, set[str]]]:
+    entity_tickers: dict[str, set[str]] = defaultdict(set)
+    for row in rows:
+        entity_tickers[entity_key_for_row(row)].add(row["ticker"].upper())
+
+    alias_context: dict[str, dict[str, set[str]]] = defaultdict(
+        lambda: {
+            "entities": set(),
+            "matching_entities": set(),
+            "ticker_owner_entities": set(),
+        }
+    )
+
+    for row in rows:
+        entity_key = entity_key_for_row(row)
+        identifier = identifier_lookup.get(row["ticker"], {"wkn": ""})
+        wkns = {identifier["wkn"]} if identifier.get("wkn") else set()
+        current_isin = MANUAL_ISIN_CORRECTIONS.get(row["ticker"], row.get("isin", ""))
+
+        for alias in dedupe_keep_order(row["aliases"]):
+            if looks_like_identifier(alias, wkns, current_isin):
+                continue
+
+            alias_key = alias.lower()
+            alias_context[alias_key]["entities"].add(entity_key)
+            if alias_matches_company(alias, row["name"]):
+                alias_context[alias_key]["matching_entities"].add(entity_key)
+            if alias.upper() in entity_tickers[entity_key]:
+                alias_context[alias_key]["ticker_owner_entities"].add(entity_key)
+
+    return dict(alias_context)
+
+
+def should_drop_contextual_alias(
+    row: dict[str, str],
+    alias: str,
+    alias_context: dict[str, dict[str, set[str]]] | None,
+) -> bool:
+    if not alias_context:
+        return False
+
+    context = alias_context.get(alias.lower())
+    if not context or len(context["entities"]) < 2:
+        return False
+
+    entity_key = entity_key_for_row(row)
+    if context["matching_entities"]:
+        return entity_key not in context["matching_entities"]
+    if context["ticker_owner_entities"]:
+        return entity_key not in context["ticker_owner_entities"]
+    if is_blocked_alias(alias) or looks_like_external_symbol_alias(alias):
+        return True
+    return False
+
+
 def clean_aliases(
     row: dict[str, str],
     aliases: list[str],
     wkns: set[str],
+    alias_context: dict[str, dict[str, set[str]]] | None = None,
 ) -> tuple[str, list[str]]:
     suspicious_us_primary = is_suspicious_us_primary(row, aliases)
     strict_alias_filter = (
@@ -529,15 +684,11 @@ def clean_aliases(
 
     for alias in aliases:
         lowered = alias.lower()
-        if lowered in BAD_COMMON_ALIASES:
-            continue
-        if lowered in BAD_CONTAMINATED_ALIASES:
-            continue
-        if lowered in BAD_OBVIOUS_AMBIGUOUS_ALIASES:
-            continue
-        if lowered in BAD_GENERIC_FUND_ALIASES:
+        if is_blocked_alias(alias):
             continue
         if has_wrapper_term(alias):
+            continue
+        if should_drop_contextual_alias(row, alias, alias_context):
             continue
         if lowered.startswith("1x "):
             continue
@@ -551,6 +702,12 @@ def clean_aliases(
             continue
         # Skip pure-numeric aliases that aren't identifiers (WKN/ISIN)
         if alias.isdigit() and alias not in wkns and alias != cleaned_isin:
+            continue
+        if (
+            looks_like_external_symbol_alias(alias)
+            and not looks_like_identifier(alias, wkns, cleaned_isin)
+            and not alias_matches_company(alias, row["name"])
+        ):
             continue
         if strict_alias_filter and not looks_like_identifier(alias, wkns, cleaned_isin):
             if not alias_matches_company(alias, row["name"]):
@@ -688,6 +845,8 @@ def cleaned_rows():
         merged["aliases"] = merged_aliases
         base_rows.append(merged)
 
+    alias_context = build_alias_context(base_rows, identifier_lookup)
+
     output_rows: list[dict[str, str]] = []
     for row in base_rows:
         aliases = dedupe_keep_order(row["aliases"])
@@ -695,7 +854,7 @@ def cleaned_rows():
         wkns = {identifier["wkn"]} if identifier.get("wkn") else set()
         if is_namespace_collision_row(row, aliases, wkns):
             continue
-        isin, aliases = clean_aliases(row, aliases, wkns)
+        isin, aliases = clean_aliases(row, aliases, wkns, alias_context)
         country = row["country"]
         inferred_country = country_from_isin(isin) if isin else None
         if inferred_country and inferred_country != country:

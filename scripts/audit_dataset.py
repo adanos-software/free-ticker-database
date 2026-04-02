@@ -14,10 +14,6 @@ if str(ROOT) not in sys.path:
 
 from scripts.rebuild_dataset import (
     ALIASES_CSV,
-    BAD_COMMON_ALIASES,
-    BAD_CONTAMINATED_ALIASES,
-    BAD_GENERIC_FUND_ALIASES,
-    BAD_OBVIOUS_AMBIGUOUS_ALIASES,
     COUNTRY_TO_ISO,
     EXCHANGE_TICKER_RE,
     IDENTIFIERS_CSV,
@@ -28,7 +24,10 @@ from scripts.rebuild_dataset import (
     VALID_STOCK_SECTORS,
     alias_matches_company,
     country_from_isin,
+    entity_key_for_row,
     has_wrapper_term,
+    is_blocked_alias,
+    is_company_style_alias,
     is_valid_isin,
     looks_like_identifier,
     normalized_compact,
@@ -99,15 +98,6 @@ def load_identifier_map(identifier_rows: list[dict[str, str]]) -> dict[str, set[
         if wkn:
             identifier_map[row["ticker"]].add(wkn)
     return dict(identifier_map)
-
-
-def entity_key_for_row(row: dict[str, str]) -> str:
-    if row.get("isin"):
-        return f"isin:{row['isin']}"
-    normalized_tokens = sorted(normalize_tokens(row["name"]))
-    if normalized_tokens:
-        return f"name:{'|'.join(normalized_tokens)}"
-    return f"ticker:{row['ticker']}"
 
 
 def looks_like_symbol_alias(alias: str) -> bool:
@@ -295,7 +285,7 @@ def analyze_dataset(
         wkns = wkn_lookup.get(ticker, set())
         isin = ticker_row["isin"]
 
-        if alias_type == "name" and lowered in BAD_COMMON_ALIASES | BAD_CONTAMINATED_ALIASES | BAD_OBVIOUS_AMBIGUOUS_ALIASES | BAD_GENERIC_FUND_ALIASES:
+        if alias_type == "name" and is_blocked_alias(alias):
             add_finding(
                 findings_by_ticker,
                 ticker,
@@ -348,6 +338,7 @@ def analyze_dataset(
             and not looks_like_identifier(alias, wkns, isin)
             and not looks_like_symbol_alias(alias)
             and alias
+            and not is_company_style_alias(alias)
             and not alias_matches_company(alias, ticker_row["name"])
         ):
             add_finding(

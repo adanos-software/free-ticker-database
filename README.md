@@ -16,7 +16,7 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 59
 | Countries | 68 |
 | ISIN coverage | 45,042 (76.1%) |
 | Sector coverage | 38,896 (65.7%) |
-| Total aliases | 104,004 |
+| Total aliases | 102,976 |
 
 ## Formats
 
@@ -79,7 +79,7 @@ Securities traded on multiple exchanges share the same ISIN. The `is_primary` fl
 {
   "_meta": {
     "version": "2.0.0",
-    "built_at": "2026-04-01T20:25:12Z",
+    "built_at": "2026-04-02T06:10:08Z",
     "total_tickers": 59178
   },
   "tickers": [
@@ -113,7 +113,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (59,178 rows) + `aliases` (104,004 rows) + `cross_listings` (10,159 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
+Tables: `tickers` (59,178 rows) + `aliases` (102,976 rows) + `cross_listings` (10,159 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
 
 ## Schema
 
@@ -201,7 +201,20 @@ This uses `claude --dangerously-skip-permissions -p` locally, batches reviews in
 - `data/claude_review_jobs/normalized_reviews.csv`
 - `data/claude_review_jobs/errors.json`
 
-3. Derive conservative override files from high-confidence Claude decisions:
+3. Optional: use Yahoo Finance search to validate the hardest residual alias collisions before you touch overrides:
+
+```bash
+python3 scripts/verify_yahoo_high_risk_aliases.py --merge-remove-overrides
+```
+
+This writes:
+
+- `data/yahoo_verification/high_risk_aliases.json`
+- `data/yahoo_verification/high_risk_aliases.csv`
+
+And, when `--merge-remove-overrides` is passed, it appends conservative alias removals into `data/review_overrides/remove_aliases.csv`.
+
+4. Derive conservative override files from high-confidence Claude decisions:
 
 ```bash
 python3 scripts/build_claude_review_overrides.py --min-confidence 0.8
@@ -215,7 +228,7 @@ This writes:
 
 These overrides are applied automatically by `scripts/rebuild_dataset.py`.
 
-4. Rebuild the dataset with the review-derived overrides:
+5. Rebuild the dataset with the review-derived overrides:
 
 ```bash
 python3 scripts/rebuild_dataset.py
