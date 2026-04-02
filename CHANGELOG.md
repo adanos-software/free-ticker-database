@@ -2,7 +2,10 @@
 
 ## Unreleased
 
-- No unreleased changes yet.
+- Added official masterfile ingestion scaffolding for Nasdaq Trader and SEC reference feeds
+- Added listing snapshot/history artifacts for listings, renames, and delistings
+- Added extended identifier exports with support for FIGI, CIK, and LEI enrichment
+- Added exchange/country coverage reports beyond the alias-quality audit
 
 ## 2.0.0
 

@@ -1,0 +1,22 @@
+{
+  "rows": 12482,
+  "exchanges": [
+    "BATS",
+    "IEX",
+    "NASDAQ",
+    "NYSE",
+    "NYSE ARCA",
+    "NYSE CHICAGO",
+    "NYSE MKT"
+  ],
+  "source_counts": {
+    "nasdaq_other_listed": 7075,
+    "nasdaq_listed": 5407
+  },
+  "errors": [
+    {
+      "source_key": "sec_company_tickers_exchange",
+      "error": "403 Client Error: Forbidden for url: https://www.sec.gov/files/company_tickers_exchange.json"
+    }
+  ]
+}

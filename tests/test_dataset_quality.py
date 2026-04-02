@@ -372,7 +372,8 @@ def test_changelog_and_supporting_docs_are_current():
     claude_prompt = (ROOT / "docs" / "claude_review_prompt.md").read_text()
 
     assert "## Unreleased" in changelog
-    assert "- No unreleased changes yet." in changelog
+    assert "Added official masterfile ingestion scaffolding" in changelog
+    assert "Added extended identifier exports with support for FIGI, CIK, and LEI enrichment" in changelog
     assert "## 2.0.0" in changelog
     assert "59,177 tickers (43,085 stocks, 16,092 ETFs) across 67 exchanges and 68 countries" in changelog
     assert "102,943 aliases" in changelog
@@ -389,6 +390,12 @@ def test_open_source_project_files_exist_and_are_linked():
     assert (ROOT / ".github" / "pull_request_template.md").exists()
     assert (ROOT / "CODE_OF_CONDUCT.md").exists()
     assert (ROOT / "SECURITY.md").exists()
+    assert (DATA_DIR / "masterfiles" / "reference.csv").exists()
+    assert (DATA_DIR / "history" / "latest_snapshot.csv").exists()
+    assert (DATA_DIR / "identifiers_extended.csv").exists()
+    assert (DATA_DIR / "reports" / "coverage_report.json").exists()
+    assert "identifiers_extended.csv" in readme
+    assert "coverage_report.json" in readme
 
     assert "[![CI]" in readme
     assert "## Project Health" in readme

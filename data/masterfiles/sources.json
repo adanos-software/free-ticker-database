@@ -1,0 +1,26 @@
+[
+  {
+    "key": "nasdaq_listed",
+    "provider": "Nasdaq Trader",
+    "description": "Official Nasdaq-listed symbol directory",
+    "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+    "format": "nasdaq_listed_pipe",
+    "official": true
+  },
+  {
+    "key": "nasdaq_other_listed",
+    "provider": "Nasdaq Trader",
+    "description": "Official other-listed/CQS symbol directory",
+    "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+    "format": "nasdaq_other_listed_pipe",
+    "official": true
+  },
+  {
+    "key": "sec_company_tickers_exchange",
+    "provider": "SEC",
+    "description": "Official SEC company ticker to exchange mapping",
+    "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
+    "format": "sec_company_tickers_exchange_json",
+    "official": true
+  }
+]

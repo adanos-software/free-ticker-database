@@ -32,6 +32,15 @@ Choose the format that fits your use case:
 | [`data/identifiers.csv`](data/identifiers.csv) | 1.0 MB | ISIN/WKN lookups |
 | [`data/cross_listings.csv`](data/cross_listings.csv) | 0.3 MB | Cross-listed securities |
 
+Additional reference artifacts:
+
+| File | Size | Best for |
+|---|---|---|
+| [`data/identifiers_extended.csv`](data/identifiers_extended.csv) | 2.0 MB | FIGI/CIK/LEI enrichment snapshot |
+| [`data/masterfiles/reference.csv`](data/masterfiles/reference.csv) | 2.0 MB | Official exchange-masterfile reference rows |
+| [`data/history/latest_snapshot.csv`](data/history/latest_snapshot.csv) | 6.1 MB | Current listing-status baseline |
+| [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | 36 KB | Machine-readable coverage metrics |
+
 ### tickers.csv (flat, Excel-friendly)
 
 ```
@@ -72,6 +81,15 @@ AN8068571086,SLBN,BMV,0
 ```
 
 Securities traded on multiple exchanges share the same ISIN. The `is_primary` flag marks the home-exchange listing (based on ISIN country prefix and exchange ranking).
+
+### identifiers_extended.csv (FIGI / CIK / LEI)
+
+```
+ticker,exchange,isin,wkn,figi,cik,lei,figi_source,cik_source,lei_source
+AAPL,NASDAQ,US0378331005,865985,BBG000B9XRY4,,HWUPKR0MPOU8FGXBT394,OpenFIGI,,GLEIF
+```
+
+This is an auxiliary enrichment file layered on top of the core dataset. `CIK` comes from the SEC company-ticker reference when available, `FIGI` from OpenFIGI, and `LEI` from GLEIF.
 
 ### tickers.json
 
@@ -171,6 +189,62 @@ Tables: `tickers` (59,177 rows) + `aliases` (102,943 rows) + `cross_listings` (1
 - ISIN-based country corrections applied for foreign OTC rows
 - Sector names normalized to canonical GICS sectors (stocks) and standardized ETF categories
 - ISIN check digits validated via Luhn algorithm; invalid ISINs removed
+
+## Reference Coverage
+
+The repo now includes a second layer of reference tooling beyond the core dataset exports:
+
+- official venue masterfile snapshots
+- listing-status / rename / delisting history baselines
+- extended identifiers (`FIGI`, `CIK`, `LEI`)
+- exchange/country coverage reports
+
+Generate the official masterfile reference rows:
+
+```bash
+python3 scripts/fetch_exchange_masterfiles.py
+```
+
+Current live sources:
+
+- Nasdaq Trader `nasdaqlisted.txt`
+- Nasdaq Trader `otherlisted.txt`
+- SEC `company_tickers_exchange.json` when the environment is allowed to fetch it
+
+Generate listing history artifacts:
+
+```bash
+python3 scripts/build_listing_history.py
+```
+
+This writes:
+
+- `data/history/latest_snapshot.csv`
+- `data/history/listing_events.csv`
+- `data/history/listing_status_history.csv`
+
+Generate extended identifiers:
+
+```bash
+python3 scripts/enrich_global_identifiers.py --enable-figi --figi-limit 200 --enable-lei --lei-limit 50
+```
+
+Notes:
+
+- `FIGI` enrichment is live via OpenFIGI and rate-limited without an API key.
+- `LEI` enrichment is live via GLEIF and best treated as a gradual backfill.
+- `CIK` enrichment uses the official SEC company-ticker file. Some environments are blocked by SEC with `403`; in that case the script keeps `CIK` empty and records the error in `data/identifier_summary.json`.
+
+Build exchange/country coverage reports:
+
+```bash
+python3 scripts/build_coverage_report.py
+```
+
+This writes:
+
+- `data/reports/coverage_report.json`
+- `data/reports/coverage_report.md`
 
 ## Review Queue
 
