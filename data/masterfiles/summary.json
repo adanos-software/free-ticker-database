@@ -1,5 +1,5 @@
 {
-  "rows": 18618,
+  "rows": 28735,
   "exchanges": [
     "AMS",
     "ASX",
@@ -12,6 +12,7 @@
     "NYSE CHICAGO",
     "NYSE MKT",
     "OSL",
+    "OTC",
     "TSX",
     "TSXV"
   ],
@@ -20,6 +21,7 @@
     "asx_listed_companies": 1979,
     "nasdaq_other_listed": 7075,
     "nasdaq_listed": 5413,
+    "sec_company_tickers_exchange": 10117,
     "tmx_interlisted_companies": 266
   },
   "source_modes": {
@@ -28,12 +30,6 @@
     "asx_listed_companies": "network",
     "tmx_interlisted_companies": "network",
     "euronext_equities": "network",
-    "sec_company_tickers_exchange": "unavailable"
-  },
-  "errors": [
-    {
-      "source_key": "sec_company_tickers_exchange",
-      "error": "SEC company_tickers_exchange.json unavailable"
-    }
-  ]
+    "sec_company_tickers_exchange": "cache"
+  }
 }

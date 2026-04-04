@@ -86,7 +86,7 @@ Securities traded on multiple exchanges share the same ISIN. The `is_primary` fl
 
 ```
 ticker,exchange,isin,wkn,figi,cik,lei,figi_source,cik_source,lei_source
-AAPL,NASDAQ,US0378331005,865985,BBG000B9XRY4,,HWUPKR0MPOU8FGXBT394,OpenFIGI,,GLEIF
+AAPL,NASDAQ,US0378331005,865985,,0000320193,,,SEC company_tickers_exchange.json,
 ```
 
 This is an auxiliary enrichment file layered on top of the core dataset. `CIK` comes from the SEC company-ticker reference when available, `FIGI` from OpenFIGI, and `LEI` from GLEIF.
@@ -238,8 +238,8 @@ Notes:
 
 - `FIGI` enrichment is live via OpenFIGI and matched at listing level, not blindly by ISIN across venues.
 - `FIGI` enrichment is best run venue by venue; without an API key OpenFIGI can return `429`, and the script now preserves partial progress plus batch-level errors.
-- `LEI` enrichment is live via GLEIF and uses exact normalized legal-name matching to stay conservative.
-- `CIK` enrichment uses the official SEC company-ticker file. Some environments are blocked by SEC with `403`; in that case the script falls back to a cached official snapshot when available, otherwise it keeps `CIK` empty and records the error in `data/identifier_summary.json`.
+- `LEI` enrichment is live via GLEIF and now uses `ISIN` first, with exact normalized legal-name fallback only when the identifier lookup misses.
+- `CIK` enrichment uses the official SEC company-ticker file. The current snapshot is cached under `data/masterfiles/cache/sec_company_tickers_exchange.json`; if live SEC access is blocked later, the scripts reuse that official cache instead of dropping `CIK` coverage back to zero.
 
 Build exchange/country coverage reports:
 

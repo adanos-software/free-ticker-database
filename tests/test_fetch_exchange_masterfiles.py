@@ -13,6 +13,7 @@ from scripts.fetch_exchange_masterfiles import (
     parse_other_listed,
     parse_sec_company_tickers_exchange,
     parse_tmx_interlisted,
+    sec_request_headers,
 )
 
 
@@ -264,12 +265,12 @@ def test_parse_euronext_equities_download_maps_markets():
 
 
 def test_fetch_all_sources_collects_source_errors(monkeypatch):
-    def fake_fetch_source_rows(source, session=None):
+    def fake_fetch_source_rows_with_mode(source, session=None):
         if source.key == "nasdaq_listed":
-            return [{"source_key": source.key, "provider": source.provider, "source_url": source.source_url, "ticker": "AAPL", "name": "Apple Inc.", "exchange": "NASDAQ", "asset_type": "Stock", "listing_status": "active", "reference_scope": source.reference_scope, "official": "true"}]
+            return [{"source_key": source.key, "provider": source.provider, "source_url": source.source_url, "ticker": "AAPL", "name": "Apple Inc.", "exchange": "NASDAQ", "asset_type": "Stock", "listing_status": "active", "reference_scope": source.reference_scope, "official": "true"}], "network"
         raise requests.RequestException("boom")
 
-    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.fetch_source_rows", fake_fetch_source_rows)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.fetch_source_rows_with_mode", fake_fetch_source_rows_with_mode)
 
     rows, summary = fetch_all_sources(include_manual=False)
 
@@ -300,6 +301,15 @@ def test_load_sec_company_tickers_exchange_payload_prefers_cache(tmp_path, monke
 
     assert mode == "cache"
     assert payload == {"fields": ["ticker"], "data": [["AAPL"]]}
+
+
+def test_sec_request_headers_include_contactable_user_agent(monkeypatch):
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.SEC_CONTACT_EMAIL", "sec@example.com")
+
+    headers = sec_request_headers()
+
+    assert headers["User-Agent"] == "free-ticker-database/2.0 (sec@example.com)"
+    assert headers["Referer"] == "https://www.sec.gov/"
 
 
 def test_fetch_source_rows_with_mode_uses_sec_cache(tmp_path, monkeypatch):

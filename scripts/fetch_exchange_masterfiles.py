@@ -3,6 +3,7 @@ from __future__ import annotations
 import csv
 import io
 import json
+import os
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Iterable
@@ -28,6 +29,7 @@ TMX_INTERLISTED_URL = "https://www.tsx.com/files/trading/interlisted-companies.t
 EURONEXT_EQUITIES_DOWNLOAD_URL = "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock"
 
 USER_AGENT = "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)"
+SEC_CONTACT_EMAIL = os.environ.get("SEC_CONTACT_EMAIL", "opensource@adanos.software")
 REQUEST_TIMEOUT = 30.0
 
 OTHER_LISTED_EXCHANGE_MAP = {
@@ -180,11 +182,27 @@ def fetch_text(url: str, session: requests.Session | None = None) -> str:
     return response.text
 
 
-def fetch_json(url: str, session: requests.Session | None = None) -> Any:
+def fetch_json(
+    url: str,
+    session: requests.Session | None = None,
+    headers: dict[str, str] | None = None,
+) -> Any:
     session = session or requests.Session()
-    response = session.get(url, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT)
+    merged_headers = {"User-Agent": USER_AGENT}
+    if headers:
+        merged_headers.update(headers)
+    response = session.get(url, headers=merged_headers, timeout=REQUEST_TIMEOUT)
     response.raise_for_status()
     return response.json()
+
+
+def sec_request_headers() -> dict[str, str]:
+    return {
+        "User-Agent": f"free-ticker-database/2.0 ({SEC_CONTACT_EMAIL})",
+        "Accept": "application/json,text/plain,*/*",
+        "Accept-Encoding": "gzip, deflate",
+        "Referer": "https://www.sec.gov/",
+    }
 
 
 def load_sec_company_tickers_exchange_payload(
@@ -195,7 +213,7 @@ def load_sec_company_tickers_exchange_payload(
             return json.loads(path.read_text(encoding="utf-8")), "cache"
 
     try:
-        payload = fetch_json(SEC_COMPANY_TICKERS_URL, session=session)
+        payload = fetch_json(SEC_COMPANY_TICKERS_URL, session=session, headers=sec_request_headers())
     except requests.RequestException:
         return None, "unavailable"
 

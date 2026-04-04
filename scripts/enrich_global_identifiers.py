@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 import time
 from pathlib import Path
 from typing import Any, Callable, TypeVar
@@ -24,6 +25,7 @@ SEC_COMPANY_TICKERS_URL = "https://www.sec.gov/files/company_tickers_exchange.js
 OPENFIGI_MAPPING_URL = "https://api.openfigi.com/v3/mapping"
 GLEIF_LEI_RECORDS_URL = "https://api.gleif.org/api/v1/lei-records"
 USER_AGENT = "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)"
+SEC_CONTACT_EMAIL = os.environ.get("SEC_CONTACT_EMAIL", "opensource@adanos.software")
 REQUEST_TIMEOUT = 30.0
 RETRY_ATTEMPTS = 3
 RETRY_DELAY_SECONDS = 2.0
@@ -79,6 +81,15 @@ def fetch_json(url: str, session: requests.Session | None = None, headers: dict[
     return response.json()
 
 
+def sec_request_headers() -> dict[str, str]:
+    return {
+        "User-Agent": f"free-ticker-database/2.0 ({SEC_CONTACT_EMAIL})",
+        "Accept": "application/json,text/plain,*/*",
+        "Accept-Encoding": "gzip, deflate",
+        "Referer": "https://www.sec.gov/",
+    }
+
+
 def with_retries(
     fn: Callable[[], T],
     attempts: int = RETRY_ATTEMPTS,
@@ -121,7 +132,7 @@ def load_sec_payload(session: requests.Session | None = None) -> tuple[dict[str,
         if path.exists():
             return json.loads(path.read_text(encoding="utf-8")), "cache"
     try:
-        payload = fetch_json(SEC_COMPANY_TICKERS_URL, session=session)
+        payload = fetch_json(SEC_COMPANY_TICKERS_URL, session=session, headers=sec_request_headers())
     except requests.RequestException:
         return None, "unavailable"
     SEC_COMPANY_TICKERS_CACHE.parent.mkdir(parents=True, exist_ok=True)
@@ -325,20 +336,43 @@ def fetch_gleif_lei(
     return data[0].get("id", "")
 
 
+def fetch_gleif_lei_by_isin(
+    isin: str,
+    session: requests.Session | None = None,
+    retry_attempts: int = RETRY_ATTEMPTS,
+    retry_delay_seconds: float = RETRY_DELAY_SECONDS,
+) -> str:
+    session = session or requests.Session()
+    payload = with_retries(
+        lambda: fetch_json(
+            f"{GLEIF_LEI_RECORDS_URL}?filter[isin]={requests.utils.quote(isin)}&page[size]=1",
+            session=session,
+        ),
+        attempts=retry_attempts,
+        delay_seconds=retry_delay_seconds,
+    )
+    data = payload.get("data", [])
+    if not data:
+        return ""
+    return data[0].get("id", "")
+
+
 def select_lei_candidates(rows: list[dict[str, str]]) -> list[dict[str, str]]:
     preferred_exchanges = {"NASDAQ", "NYSE", "NYSE ARCA", "NYSE MKT", "LSE", "XETRA", "TSX", "ASX", "Euronext"}
 
-    def sort_key(row: dict[str, str]) -> tuple[int, int, int, int, str]:
-        starts_with_letter = int(bool(row["ticker"]) and row["ticker"][0].isalpha())
+    def sort_key(row: dict[str, str]) -> tuple[int, int, int, int, int, int, str]:
+        starts_with_letter = 0 if bool(row["ticker"]) and row["ticker"][0].isalpha() else 1
         return (
-            int(bool(row["isin"])),
-            int(row.get("asset_type") == "Stock"),
-            int(row.get("exchange") in preferred_exchanges),
+            -int(bool(row["isin"])),
+            -int(row.get("asset_type") == "Stock"),
+            0 if row.get("exchange") in preferred_exchanges else 1,
+            -int(bool(row.get("cik"))),
+            -int(bool(row.get("figi"))),
             starts_with_letter,
             row["ticker"],
         )
 
-    return sorted(rows, key=sort_key, reverse=True)
+    return sorted(rows, key=sort_key)
 
 
 def filter_lei_candidates(
@@ -369,7 +403,9 @@ def apply_lei(
     candidates = filter_lei_candidates(rows, exchanges=exchanges)
     for row in candidates[:limit] if limit else candidates:
         try:
-            lei = fetch_gleif_lei(row["name"], session=session)
+            lei = fetch_gleif_lei_by_isin(row["isin"], session=session)
+            if not lei:
+                lei = fetch_gleif_lei(row["name"], session=session)
         except requests.RequestException as exc:
             errors.append(f"GLEIF lookup failed for {row['ticker']}:{row['exchange']}: {exc}")
             continue

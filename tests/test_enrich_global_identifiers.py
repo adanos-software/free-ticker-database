@@ -12,9 +12,11 @@ from scripts.enrich_global_identifiers import (
     build_sec_cik_index,
     filter_lei_candidates,
     fetch_openfigi_by_isin,
+    fetch_gleif_lei_by_isin,
     load_sec_payload,
     normalize_company_name,
     retry_delay_for,
+    sec_request_headers,
     select_figi_rows,
     select_openfigi_candidate,
     select_lei_candidates,
@@ -83,6 +85,15 @@ def test_load_sec_payload_prefers_local_cache(tmp_path, monkeypatch):
     assert payload == {"fields": ["ticker"], "data": [["AAPL"]]}
 
 
+def test_sec_request_headers_include_contactable_user_agent(monkeypatch):
+    monkeypatch.setattr("scripts.enrich_global_identifiers.SEC_CONTACT_EMAIL", "sec@example.com")
+
+    headers = sec_request_headers()
+
+    assert headers["User-Agent"] == "free-ticker-database/2.0 (sec@example.com)"
+    assert headers["Referer"] == "https://www.sec.gov/"
+
+
 def test_select_lei_candidates_prioritizes_better_matches():
     rows = [
         {"ticker": "0ABC", "exchange": "LSE", "isin": "GB0000000001", "asset_type": "Stock"},
@@ -94,6 +105,18 @@ def test_select_lei_candidates_prioritizes_better_matches():
     ordered = select_lei_candidates(rows)
 
     assert [row["ticker"] for row in ordered] == ["AAPL", "0ABC", "QQQ", "SHOP"]
+
+
+def test_select_lei_candidates_prioritizes_identifier_backed_rows():
+    rows = [
+        {"ticker": "ZZZ", "exchange": "NASDAQ", "isin": "US0000000001", "asset_type": "Stock", "cik": "", "figi": ""},
+        {"ticker": "AAA", "exchange": "NASDAQ", "isin": "US0000000002", "asset_type": "Stock", "cik": "0000320193", "figi": ""},
+        {"ticker": "BBB", "exchange": "NASDAQ", "isin": "US0000000003", "asset_type": "Stock", "cik": "", "figi": "BBG000B9XRY4"},
+    ]
+
+    ordered = select_lei_candidates(rows)
+
+    assert [row["ticker"] for row in ordered] == ["AAA", "BBB", "ZZZ"]
 
 
 def test_select_figi_rows_filters_existing_and_exchange():
@@ -149,6 +172,18 @@ def test_filter_lei_candidates_requires_stock_isin_and_missing_lei():
     candidates = filter_lei_candidates(rows, exchanges={"NASDAQ", "ASX"})
 
     assert [row["ticker"] for row in candidates] == ["AAPL"]
+
+
+def test_fetch_gleif_lei_by_isin_uses_exact_isin_filter(monkeypatch):
+    def fake_fetch_json(url, session=None, headers=None):
+        assert "filter[isin]=US0378331005" in url
+        return {"data": [{"id": "HWUPKR0MPOU8FGXBT394"}]}
+
+    monkeypatch.setattr("scripts.enrich_global_identifiers.fetch_json", fake_fetch_json)
+
+    lei = fetch_gleif_lei_by_isin("US0378331005")
+
+    assert lei == "HWUPKR0MPOU8FGXBT394"
 
 
 def test_normalize_company_name_strips_punctuation():
@@ -285,3 +320,28 @@ def test_apply_lei_continues_after_lookup_error(monkeypatch):
     assert updated == 1
     assert rows[1]["lei"] == "LEI-123"
     assert len(errors) == 1
+
+
+def test_apply_lei_prefers_isin_lookup_before_name(monkeypatch):
+    rows = [
+        {"ticker": "AAPL", "exchange": "NASDAQ", "isin": "US0378331005", "asset_type": "Stock", "lei": "", "name": "Apple Inc.", "lei_source": ""},
+    ]
+    calls = {"isin": 0, "name": 0}
+
+    def fake_fetch_gleif_lei_by_isin(isin, session=None, retry_attempts=3, retry_delay_seconds=2.0):
+        calls["isin"] += 1
+        return "HWUPKR0MPOU8FGXBT394"
+
+    def fake_fetch_gleif_lei(name, session=None, retry_attempts=3, retry_delay_seconds=2.0):
+        calls["name"] += 1
+        return ""
+
+    monkeypatch.setattr("scripts.enrich_global_identifiers.fetch_gleif_lei_by_isin", fake_fetch_gleif_lei_by_isin)
+    monkeypatch.setattr("scripts.enrich_global_identifiers.fetch_gleif_lei", fake_fetch_gleif_lei)
+
+    updated, errors = apply_lei(rows, delay_seconds=0.0, exchanges={"NASDAQ"})
+
+    assert updated == 1
+    assert errors == []
+    assert rows[0]["lei"] == "HWUPKR0MPOU8FGXBT394"
+    assert calls == {"isin": 1, "name": 0}
