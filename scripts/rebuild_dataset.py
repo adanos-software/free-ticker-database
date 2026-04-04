@@ -23,6 +23,7 @@ TICKERS_JSON = DATA_DIR / "tickers.json"
 TICKERS_DB = DATA_DIR / "tickers.db"
 TICKERS_PARQUET = DATA_DIR / "tickers.parquet"
 CROSS_LISTINGS_CSV = DATA_DIR / "cross_listings.csv"
+MASTERFILE_SUPPLEMENT_CSV = DATA_DIR / "masterfiles" / "supplemental_listings.csv"
 REVIEW_OVERRIDES_DIR = DATA_DIR / "review_overrides"
 REVIEW_REMOVE_ALIASES_CSV = REVIEW_OVERRIDES_DIR / "remove_aliases.csv"
 REVIEW_METADATA_UPDATES_CSV = REVIEW_OVERRIDES_DIR / "metadata_updates.csv"
@@ -152,7 +153,7 @@ NON_COMMON_PATTERNS = (
     re.compile(r"\brights?\b", re.IGNORECASE),
     re.compile(r"\bunits?\b", re.IGNORECASE),
     re.compile(r"\bwarrants?\b", re.IGNORECASE),
-    re.compile(r"\bnotes?\b", re.IGNORECASE),
+    re.compile(r"\bnotes\b", re.IGNORECASE),
     re.compile(r"\bpref(?:erence)?(?:\s+sh(?:ares?)?)?\b", re.IGNORECASE),
     re.compile(r"\bpfd\b", re.IGNORECASE),
 )
@@ -769,7 +770,51 @@ def load_data():
         for row in identifier_rows
     }
 
+    ticker_rows = merge_supplemental_ticker_rows(ticker_rows)
+
     return ticker_rows, alias_type_lookup, extra_aliases, identifier_lookup
+
+
+def load_supplemental_ticker_rows() -> list[dict[str, str]]:
+    if not MASTERFILE_SUPPLEMENT_CSV.exists():
+        return []
+    with MASTERFILE_SUPPLEMENT_CSV.open(newline="", encoding="utf-8") as handle:
+        return list(csv.DictReader(handle))
+
+
+def merge_ticker_row(base_row: dict[str, str], supplement_row: dict[str, str]) -> dict[str, str]:
+    merged = dict(base_row)
+    for field in ("name", "asset_type", "country", "country_code"):
+        if supplement_row.get(field):
+            merged[field] = supplement_row[field]
+    for field in ("sector", "isin", "aliases"):
+        if not merged.get(field) and supplement_row.get(field):
+            merged[field] = supplement_row[field]
+    return merged
+
+
+def merge_supplemental_ticker_rows(base_rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    merged_rows: dict[tuple[str, str], dict[str, str]] = {
+        (row["ticker"], row["exchange"]): dict(row)
+        for row in base_rows
+    }
+    for row in load_supplemental_ticker_rows():
+        key = (row["ticker"], row["exchange"])
+        if key in merged_rows:
+            merged_rows[key] = merge_ticker_row(merged_rows[key], row)
+        else:
+            merged_rows[key] = {
+                "ticker": row["ticker"],
+                "name": row["name"],
+                "exchange": row["exchange"],
+                "asset_type": row["asset_type"],
+                "sector": row.get("sector", ""),
+                "country": row.get("country", ""),
+                "country_code": row.get("country_code", ""),
+                "isin": row.get("isin", ""),
+                "aliases": row.get("aliases", ""),
+            }
+    return list(merged_rows.values())
 
 
 def load_review_overrides():

@@ -1,16 +1,16 @@
 {
   "global": {
-    "tickers": 59177,
+    "tickers": 62391,
     "aliases": 102943,
-    "stocks": 43085,
-    "etfs": 16092,
+    "stocks": 45932,
+    "etfs": 16459,
     "isin_coverage": 45039,
     "sector_coverage": 38894,
     "cik_coverage": 8234,
     "figi_coverage": 4275,
-    "lei_coverage": 384,
-    "listing_status_rows": 59177,
-    "listing_events": 0
+    "lei_coverage": 1022,
+    "listing_status_rows": 183958,
+    "listing_events": 3214
   },
   "exchange_coverage": [
     {
@@ -32,7 +32,7 @@
       "sector_coverage": 748,
       "cik_coverage": 30,
       "figi_coverage": 1099,
-      "lei_coverage": 18,
+      "lei_coverage": 25,
       "masterfile_symbols": 1979,
       "masterfile_matches": 913,
       "masterfile_match_rate": 46.13
@@ -236,7 +236,7 @@
       "sector_coverage": 694,
       "cik_coverage": 10,
       "figi_coverage": 856,
-      "lei_coverage": 76,
+      "lei_coverage": 77,
       "masterfile_symbols": 1404,
       "masterfile_matches": 634,
       "masterfile_match_rate": 45.16
@@ -392,7 +392,7 @@
       "sector_coverage": 3759,
       "cik_coverage": 3537,
       "figi_coverage": 11,
-      "lei_coverage": 130,
+      "lei_coverage": 425,
       "masterfile_symbols": 5430,
       "masterfile_matches": 4543,
       "masterfile_match_rate": 83.66
@@ -452,7 +452,7 @@
       "sector_coverage": 2262,
       "cik_coverage": 2322,
       "figi_coverage": 25,
-      "lei_coverage": 121,
+      "lei_coverage": 433,
       "masterfile_symbols": 3829,
       "masterfile_matches": 2359,
       "masterfile_match_rate": 61.61
@@ -476,7 +476,7 @@
       "sector_coverage": 254,
       "cik_coverage": 260,
       "figi_coverage": 2,
-      "lei_coverage": 10,
+      "lei_coverage": 29,
       "masterfile_symbols": 314,
       "masterfile_matches": 235,
       "masterfile_match_rate": 74.84
@@ -698,13 +698,25 @@
       "masterfile_match_rate": null
     },
     {
+      "exchange": "TSE",
+      "tickers": 3214,
+      "isin_coverage": 0,
+      "sector_coverage": 0,
+      "cik_coverage": 0,
+      "figi_coverage": 0,
+      "lei_coverage": 0,
+      "masterfile_symbols": 4444,
+      "masterfile_matches": 3214,
+      "masterfile_match_rate": 72.32
+    },
+    {
       "exchange": "TSX",
       "tickers": 1766,
       "isin_coverage": 1295,
       "sector_coverage": 852,
       "cik_coverage": 14,
       "figi_coverage": 1186,
-      "lei_coverage": 19,
+      "lei_coverage": 23,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
       "masterfile_match_rate": null
@@ -835,7 +847,7 @@
       "sector_coverage": 1724,
       "cik_coverage": 355,
       "figi_coverage": 1276,
-      "lei_coverage": 34
+      "lei_coverage": 81
     },
     {
       "country": "Austria",
@@ -844,7 +856,7 @@
       "sector_coverage": 101,
       "cik_coverage": 14,
       "figi_coverage": 104,
-      "lei_coverage": 0
+      "lei_coverage": 13
     },
     {
       "country": "Belgium",
@@ -862,7 +874,7 @@
       "sector_coverage": 203,
       "cik_coverage": 72,
       "figi_coverage": 14,
-      "lei_coverage": 2
+      "lei_coverage": 19
     },
     {
       "country": "Botswana",
@@ -889,7 +901,7 @@
       "sector_coverage": 3204,
       "cik_coverage": 848,
       "figi_coverage": 1598,
-      "lei_coverage": 44
+      "lei_coverage": 87
     },
     {
       "country": "Cayman Islands",
@@ -898,7 +910,7 @@
       "sector_coverage": 595,
       "cik_coverage": 472,
       "figi_coverage": 3,
-      "lei_coverage": 4
+      "lei_coverage": 17
     },
     {
       "country": "Chile",
@@ -961,7 +973,7 @@
       "sector_coverage": 162,
       "cik_coverage": 18,
       "figi_coverage": 1,
-      "lei_coverage": 0
+      "lei_coverage": 2
     },
     {
       "country": "Finland",
@@ -979,7 +991,7 @@
       "sector_coverage": 841,
       "cik_coverage": 52,
       "figi_coverage": 454,
-      "lei_coverage": 47
+      "lei_coverage": 61
     },
     {
       "country": "Germany",
@@ -988,7 +1000,7 @@
       "sector_coverage": 757,
       "cik_coverage": 27,
       "figi_coverage": 7,
-      "lei_coverage": 5
+      "lei_coverage": 8
     },
     {
       "country": "Ghana",
@@ -1060,7 +1072,7 @@
       "sector_coverage": 636,
       "cik_coverage": 53,
       "figi_coverage": 8,
-      "lei_coverage": 2
+      "lei_coverage": 4
     },
     {
       "country": "Ireland",
@@ -1069,7 +1081,7 @@
       "sector_coverage": 2043,
       "cik_coverage": 72,
       "figi_coverage": 130,
-      "lei_coverage": 4
+      "lei_coverage": 7
     },
     {
       "country": "Isle of Man",
@@ -1087,7 +1099,7 @@
       "sector_coverage": 454,
       "cik_coverage": 109,
       "figi_coverage": 4,
-      "lei_coverage": 2
+      "lei_coverage": 3
     },
     {
       "country": "Italy",
@@ -1100,7 +1112,7 @@
     },
     {
       "country": "Japan",
-      "tickers": 117,
+      "tickers": 3331,
       "isin_coverage": 117,
       "sector_coverage": 113,
       "cik_coverage": 40,
@@ -1114,7 +1126,7 @@
       "sector_coverage": 70,
       "cik_coverage": 19,
       "figi_coverage": 3,
-      "lei_coverage": 0
+      "lei_coverage": 4
     },
     {
       "country": "Kenya",
@@ -1132,7 +1144,7 @@
       "sector_coverage": 936,
       "cik_coverage": 40,
       "figi_coverage": 155,
-      "lei_coverage": 0
+      "lei_coverage": 8
     },
     {
       "country": "Malawi",
@@ -1186,7 +1198,7 @@
       "sector_coverage": 240,
       "cik_coverage": 41,
       "figi_coverage": 81,
-      "lei_coverage": 1
+      "lei_coverage": 5
     },
     {
       "country": "New Zealand",
@@ -1195,7 +1207,7 @@
       "sector_coverage": 34,
       "cik_coverage": 8,
       "figi_coverage": 23,
-      "lei_coverage": 0
+      "lei_coverage": 1
     },
     {
       "country": "Nigeria",
@@ -1249,7 +1261,7 @@
       "sector_coverage": 32,
       "cik_coverage": 15,
       "figi_coverage": 4,
-      "lei_coverage": 0
+      "lei_coverage": 2
     },
     {
       "country": "Poland",
@@ -1258,7 +1270,7 @@
       "sector_coverage": 201,
       "cik_coverage": 32,
       "figi_coverage": 2,
-      "lei_coverage": 1
+      "lei_coverage": 6
     },
     {
       "country": "Portugal",
@@ -1294,7 +1306,7 @@
       "sector_coverage": 43,
       "cik_coverage": 18,
       "figi_coverage": 4,
-      "lei_coverage": 1
+      "lei_coverage": 2
     },
     {
       "country": "South Africa",
@@ -1321,7 +1333,7 @@
       "sector_coverage": 244,
       "cik_coverage": 19,
       "figi_coverage": 13,
-      "lei_coverage": 4
+      "lei_coverage": 6
     },
     {
       "country": "Sri Lanka",
@@ -1339,7 +1351,7 @@
       "sector_coverage": 673,
       "cik_coverage": 19,
       "figi_coverage": 3,
-      "lei_coverage": 0
+      "lei_coverage": 2
     },
     {
       "country": "Switzerland",
@@ -1348,7 +1360,7 @@
       "sector_coverage": 394,
       "cik_coverage": 48,
       "figi_coverage": 19,
-      "lei_coverage": 1
+      "lei_coverage": 11
     },
     {
       "country": "Taiwan",
@@ -1375,7 +1387,7 @@
       "sector_coverage": 586,
       "cik_coverage": 42,
       "figi_coverage": 5,
-      "lei_coverage": 1
+      "lei_coverage": 6
     },
     {
       "country": "Uganda",
@@ -1393,7 +1405,7 @@
       "sector_coverage": 1821,
       "cik_coverage": 164,
       "figi_coverage": 23,
-      "lei_coverage": 8
+      "lei_coverage": 27
     },
     {
       "country": "United States",
@@ -1402,7 +1414,7 @@
       "sector_coverage": 11292,
       "cik_coverage": 5531,
       "figi_coverage": 15,
-      "lei_coverage": 204
+      "lei_coverage": 621
     },
     {
       "country": "Vietnam",

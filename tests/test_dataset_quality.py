@@ -215,6 +215,31 @@ def test_non_otc_country_isin_mismatches_are_cleared_or_verified():
     assert ticker_exchange_row("PRX", "AMS")["isin"] == ""
 
 
+def test_safe_tse_supplements_are_present_without_cross_exchange_collisions():
+    veritas = ticker_exchange_row("130A", "TSE")
+    topix = ticker_exchange_row("1306", "TSE")
+    note = ticker_exchange_row("5243", "TSE")
+
+    assert veritas is not None
+    assert veritas["name"] == "Veritas In Silico Inc."
+    assert veritas["country"] == "Japan"
+    assert veritas["country_code"] == "JP"
+
+    assert topix is not None
+    assert topix["asset_type"] == "ETF"
+    assert topix["country"] == "Japan"
+    assert topix["country_code"] == "JP"
+
+    assert note is not None
+    assert note["name"] == "note inc."
+    assert note["country"] == "Japan"
+    assert note["country_code"] == "JP"
+
+    assert ticker_exchange_row("1301", "TSE") is None
+    assert ticker_exchange_row("25935", "TSE") is None
+    assert ticker_exchange_row("1301", "TWSE") is not None
+
+
 def test_contaminated_us_primaries_cleaned():
     aapl = ticker_row("AAPL")
     msft = ticker_row("MSFT")
@@ -373,9 +398,10 @@ def test_changelog_and_supporting_docs_are_current():
 
     assert "## Unreleased" in changelog
     assert "Added official Euronext live equities directory ingestion" in changelog
+    assert "Added official JPX listed-issues ingestion plus a conservative masterfile supplement layer for collision-free TSE listings" in changelog
     assert "Improved extended identifier exports with listing-level FIGI matching" in changelog
     assert "## 2.0.0" in changelog
-    assert "59,177 tickers (43,085 stocks, 16,092 ETFs) across 67 exchanges and 68 countries" in changelog
+    assert "62,391 tickers (45,932 stocks, 16,459 ETFs) across 68 exchanges and 68 countries" in changelog
     assert "102,943 aliases" in changelog
     assert "Keep the dataset build and review scripts dependency-light and easy to trace" in contributing
     assert "one or more `review_queue.json` items" in claude_prompt

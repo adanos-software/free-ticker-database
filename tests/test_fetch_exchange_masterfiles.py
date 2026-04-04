@@ -6,9 +6,11 @@ from scripts.fetch_exchange_masterfiles import (
     MasterfileSource,
     fetch_all_sources,
     fetch_source_rows_with_mode,
+    infer_jpx_asset_type,
     load_sec_company_tickers_exchange_payload,
     parse_asx_listed_companies,
     parse_euronext_equities_download,
+    parse_jpx_listed_issues_excel,
     parse_nasdaq_listed,
     parse_other_listed,
     parse_sec_company_tickers_exchange,
@@ -153,6 +155,53 @@ def test_parse_asx_listed_companies_skips_banner_lines():
             "official": "true",
         },
     ]
+
+
+def test_parse_jpx_listed_issues_excel_maps_tse_rows(tmp_path):
+    dataframe_path = tmp_path / "jpx.xlsx"
+
+    import pandas as pd
+
+    pd.DataFrame(
+        [
+            {"Local Code": 1301, "Name (English)": "KYOKUYO CO.,LTD.", "Section/Products": "Prime Market (Domestic)"},
+            {"Local Code": 1305, "Name (English)": "iFreeETF TOPIX (Yearly Dividend Type)", "Section/Products": "ETFs/ ETNs"},
+        ]
+    ).to_excel(dataframe_path, index=False)
+
+    rows = parse_jpx_listed_issues_excel(dataframe_path.read_bytes(), SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "1301",
+            "name": "KYOKUYO CO.,LTD.",
+            "exchange": "TSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "1305",
+            "name": "iFreeETF TOPIX (Yearly Dividend Type)",
+            "exchange": "TSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_infer_jpx_asset_type_prefers_section_label():
+    assert infer_jpx_asset_type("ETFs/ ETNs", "Ordinary Corp.") == "ETF"
+    assert infer_jpx_asset_type("Prime Market (Domestic)", "Ordinary Corp.") == "Stock"
 
 
 def test_parse_tmx_interlisted_marks_subset_scope():

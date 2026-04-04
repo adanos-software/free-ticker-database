@@ -1,0 +1,175 @@
+from __future__ import annotations
+
+from scripts.build_masterfile_supplements import build_supplement_rows
+from scripts.rebuild_dataset import merge_supplemental_ticker_rows
+
+
+def test_build_supplement_rows_keeps_only_safe_tse_rows():
+    core_rows = [
+        {"ticker": "1301", "exchange": "TWSE"},
+        {"ticker": "130A", "exchange": "TSE"},
+    ]
+    masterfile_rows = [
+        {
+            "ticker": "1301",
+            "name": "KYOKUYO CO.,LTD.",
+            "exchange": "TSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "jpx",
+            "source_url": "https://example.com/jpx",
+        },
+        {
+            "ticker": "130A",
+            "name": "Veritas In Silico Inc.",
+            "exchange": "TSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "jpx",
+            "source_url": "https://example.com/jpx",
+        },
+        {
+            "ticker": "1306",
+            "name": "NEXT FUNDS TOPIX Exchange Traded Fund",
+            "exchange": "TSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "jpx",
+            "source_url": "https://example.com/jpx",
+        },
+        {
+            "ticker": "25935",
+            "name": "Class-A Preferred Stock of ITO EN,LTD.",
+            "exchange": "TSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "jpx",
+            "source_url": "https://example.com/jpx",
+        },
+        {
+            "ticker": "5243",
+            "name": "note inc.",
+            "exchange": "TSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "jpx",
+            "source_url": "https://example.com/jpx",
+        },
+    ]
+
+    rows, summary = build_supplement_rows(core_rows, masterfile_rows)
+
+    assert rows == [
+        {
+            "ticker": "1306",
+            "name": "NEXT FUNDS TOPIX Exchange Traded Fund",
+            "exchange": "TSE",
+            "asset_type": "ETF",
+            "sector": "",
+            "country": "Japan",
+            "country_code": "JP",
+            "isin": "",
+            "aliases": "",
+            "source_key": "jpx",
+            "source_url": "https://example.com/jpx",
+            "reference_scope": "exchange_directory",
+        },
+        {
+            "ticker": "130A",
+            "name": "Veritas In Silico Inc.",
+            "exchange": "TSE",
+            "asset_type": "Stock",
+            "sector": "",
+            "country": "Japan",
+            "country_code": "JP",
+            "isin": "",
+            "aliases": "",
+            "source_key": "jpx",
+            "source_url": "https://example.com/jpx",
+            "reference_scope": "exchange_directory",
+        },
+        {
+            "ticker": "5243",
+            "name": "note inc.",
+            "exchange": "TSE",
+            "asset_type": "Stock",
+            "sector": "",
+            "country": "Japan",
+            "country_code": "JP",
+            "isin": "",
+            "aliases": "",
+            "source_key": "jpx",
+            "source_url": "https://example.com/jpx",
+            "reference_scope": "exchange_directory",
+        },
+    ]
+    assert summary["supplement_rows"] == 3
+    assert summary["safe_missing_rows"] == 2
+    assert summary["refreshable_existing_rows"] == 1
+    assert summary["colliding_rows_skipped"] == 2
+
+
+def test_merge_supplemental_ticker_rows_refreshes_safe_fields(monkeypatch, tmp_path):
+    supplemental = tmp_path / "supplemental.csv"
+    supplemental.write_text(
+        "\n".join(
+            [
+                "ticker,name,exchange,asset_type,sector,country,country_code,isin,aliases,source_key,source_url,reference_scope",
+                "130A,Veritas In Silico Inc.,TSE,Stock,,Japan,JP,,,jpx,https://example.com,exchange_directory",
+                "1306,NEXT FUNDS TOPIX Exchange Traded Fund,TSE,ETF,,Japan,JP,,,jpx,https://example.com,exchange_directory",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    from scripts import rebuild_dataset
+
+    monkeypatch.setattr(rebuild_dataset, "MASTERFILE_SUPPLEMENT_CSV", supplemental)
+    base_rows = [
+        {
+            "ticker": "130A",
+            "name": "Old Name",
+            "exchange": "TSE",
+            "asset_type": "Stock",
+            "sector": "",
+            "country": "",
+            "country_code": "",
+            "isin": "JP0000000001",
+            "aliases": "legacy",
+        }
+    ]
+
+    merged = sorted(
+        merge_supplemental_ticker_rows(base_rows),
+        key=lambda row: (row["exchange"], row["ticker"]),
+    )
+
+    assert merged == [
+        {
+            "ticker": "1306",
+            "name": "NEXT FUNDS TOPIX Exchange Traded Fund",
+            "exchange": "TSE",
+            "asset_type": "ETF",
+            "sector": "",
+            "country": "Japan",
+            "country_code": "JP",
+            "isin": "",
+            "aliases": "",
+        },
+        {
+            "ticker": "130A",
+            "name": "Veritas In Silico Inc.",
+            "exchange": "TSE",
+            "asset_type": "Stock",
+            "sector": "",
+            "country": "Japan",
+            "country_code": "JP",
+            "isin": "JP0000000001",
+            "aliases": "legacy",
+        },
+    ]

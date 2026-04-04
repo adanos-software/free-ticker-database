@@ -40,8 +40,13 @@ def build_exchange_report(
         if row.get("listing_status") == "active" and row.get("reference_scope") == "exchange_directory":
             master_by_exchange[row["exchange"]].add(row["ticker"])
 
+    exchanges = sorted(
+        ({row["exchange"] for row in tickers if row["exchange"]})
+        | {exchange for exchange in master_by_exchange if exchange}
+    )
+
     rows: list[dict[str, Any]] = []
-    for exchange in sorted({row["exchange"] for row in tickers if row["exchange"]}):
+    for exchange in exchanges:
         exchange_rows = [row for row in tickers if row["exchange"] == exchange]
         identifiers = [identifier_lookup.get((row["ticker"], row["exchange"]), {}) for row in exchange_rows]
         dataset_symbols = {row["ticker"] for row in exchange_rows}

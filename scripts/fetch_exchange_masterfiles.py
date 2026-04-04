@@ -8,6 +8,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Iterable
 
+import pandas as pd
 import requests
 
 
@@ -27,6 +28,7 @@ NASDAQ_OTHER_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/otherlist
 ASX_LISTED_URL = "https://www.asx.com.au/asx/research/ASXListedCompanies.csv"
 TMX_INTERLISTED_URL = "https://www.tsx.com/files/trading/interlisted-companies.txt"
 EURONEXT_EQUITIES_DOWNLOAD_URL = "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock"
+JPX_LISTED_ISSUES_URL = "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls"
 
 USER_AGENT = "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)"
 SEC_CONTACT_EMAIL = os.environ.get("SEC_CONTACT_EMAIL", "opensource@adanos.software")
@@ -124,6 +126,13 @@ OFFICIAL_SOURCES = [
         format="euronext_equities_semicolon_csv",
     ),
     MasterfileSource(
+        key="jpx_listed_issues",
+        provider="JPX",
+        description="Official JPX list of TSE-listed issues",
+        source_url=JPX_LISTED_ISSUES_URL,
+        format="jpx_listed_issues_excel",
+    ),
+    MasterfileSource(
         key="sec_company_tickers_exchange",
         provider="SEC",
         description="Official SEC company ticker to exchange mapping",
@@ -180,6 +189,13 @@ def fetch_text(url: str, session: requests.Session | None = None) -> str:
     response = session.get(url, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT)
     response.raise_for_status()
     return response.text
+
+
+def fetch_bytes(url: str, session: requests.Session | None = None) -> bytes:
+    session = session or requests.Session()
+    response = session.get(url, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT)
+    response.raise_for_status()
+    return response.content
 
 
 def fetch_json(
@@ -305,6 +321,41 @@ def parse_asx_listed_companies(text: str, source: MasterfileSource) -> list[dict
     return rows
 
 
+def infer_jpx_asset_type(section: str, name: str) -> str:
+    normalized = section.strip().lower()
+    if "etf" in normalized or "etn" in normalized:
+        return "ETF"
+    return infer_asset_type(name)
+
+
+def parse_jpx_listed_issues_excel(content: bytes, source: MasterfileSource) -> list[dict[str, str]]:
+    dataframe = pd.read_excel(io.BytesIO(content))
+    rows: list[dict[str, str]] = []
+    for record in dataframe.to_dict(orient="records"):
+        ticker = str(record.get("Local Code", "")).strip()
+        if not ticker or ticker.lower() == "nan":
+            continue
+        name = str(record.get("Name (English)", "")).strip()
+        section = str(record.get("Section/Products", "")).strip()
+        if not name or not section or name.lower() == "nan" or section.lower() == "nan":
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "TSE",
+                "asset_type": infer_jpx_asset_type(section, name),
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
 def parse_tmx_interlisted(text: str, source: MasterfileSource) -> list[dict[str, str]]:
     lines = text.splitlines()
     if lines and lines[0].startswith("As of "):
@@ -422,6 +473,9 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "euronext_equities_semicolon_csv":
         text = fetch_text(source.source_url, session=session)
         return parse_euronext_equities_download(text, source)
+    if source.format == "jpx_listed_issues_excel":
+        content = fetch_bytes(source.source_url, session=session)
+        return parse_jpx_listed_issues_excel(content, source)
     if source.format == "sec_company_tickers_exchange_json":
         payload = fetch_json(source.source_url, session=session)
         return parse_sec_company_tickers_exchange(payload, source)

@@ -3,19 +3,19 @@
 [![CI](https://github.com/adanos-software/free-ticker-database/actions/workflows/ci.yml/badge.svg)](https://github.com/adanos-software/free-ticker-database/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-A comprehensive, free-to-use stock and ETF ticker reference database covering 59,000+ securities across 67 exchanges and 68 countries.
+A comprehensive, free-to-use stock and ETF ticker reference database covering 62,000+ securities across 68 exchanges and 68 countries.
 
 ## Stats
 
 | Metric | Value |
 |---|---|
-| **Total tickers** | 59,177 |
-| Stocks | 43,085 |
-| ETFs | 16,092 |
-| Exchanges | 67 |
+| **Total tickers** | 62,391 |
+| Stocks | 45,932 |
+| ETFs | 16,459 |
+| Exchanges | 68 |
 | Countries | 68 |
-| ISIN coverage | 45,039 (76.1%) |
-| Sector coverage | 38,894 (65.7%) |
+| ISIN coverage | 45,039 (72.2%) |
+| Sector coverage | 38,894 (62.3%) |
 | Total aliases | 102,943 |
 
 ## Formats
@@ -38,6 +38,7 @@ Additional reference artifacts:
 |---|---|---|
 | [`data/identifiers_extended.csv`](data/identifiers_extended.csv) | 1.7 MB | FIGI/CIK/LEI enrichment snapshot |
 | [`data/masterfiles/reference.csv`](data/masterfiles/reference.csv) | 3.1 MB | Official exchange-masterfile reference rows |
+| [`data/masterfiles/supplemental_listings.csv`](data/masterfiles/supplemental_listings.csv) | 0.3 MB | Safe official listings added to the core export |
 | [`data/history/latest_snapshot.csv`](data/history/latest_snapshot.csv) | 6.1 MB | Current listing-status baseline |
 | [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | 33 KB | Machine-readable coverage metrics |
 
@@ -97,8 +98,8 @@ This is an auxiliary enrichment file layered on top of the core dataset. `CIK` c
 {
   "_meta": {
     "version": "2.0.0",
-    "built_at": "2026-04-02T07:11:51Z",
-    "total_tickers": 59177
+    "built_at": "2026-04-04T15:53:08Z",
+    "total_tickers": 62391
   },
   "tickers": [
     {
@@ -131,7 +132,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (59,177 rows) + `aliases` (102,943 rows) + `cross_listings` (10,165 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
+Tables: `tickers` (62,391 rows) + `aliases` (102,943 rows) + `cross_listings` (10,165 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
 
 ## Schema
 
@@ -212,7 +213,16 @@ Current live sources:
 - ASX `ASXListedCompanies.csv`
 - TMX `interlisted-companies.txt` (official interlisted subset, not a full TSX/TSXV directory)
 - Euronext Live equities CSV export
+- JPX listed issues XLS
 - SEC `company_tickers_exchange.json` when the environment is allowed to fetch it, or a cached official snapshot when present locally
+
+Generate safe official listing supplements:
+
+```bash
+python3 scripts/build_masterfile_supplements.py
+```
+
+This currently adds only collision-free official listings that fit the core dataset's global-unique `ticker` model. Today that means `TSE` rows that do not collide with existing numeric symbols on other venues.
 
 Generate listing history artifacts:
 

@@ -1,5 +1,5 @@
 {
-  "rows": 28735,
+  "rows": 33179,
   "exchanges": [
     "AMS",
     "ASX",
@@ -13,6 +13,7 @@
     "NYSE MKT",
     "OSL",
     "OTC",
+    "TSE",
     "TSX",
     "TSXV"
   ],
@@ -22,6 +23,7 @@
     "nasdaq_other_listed": 7075,
     "nasdaq_listed": 5413,
     "sec_company_tickers_exchange": 10117,
+    "jpx_listed_issues": 4444,
     "tmx_interlisted_companies": 266
   },
   "source_modes": {
@@ -30,6 +32,7 @@
     "asx_listed_companies": "network",
     "tmx_interlisted_companies": "network",
     "euronext_equities": "network",
+    "jpx_listed_issues": "network",
     "sec_company_tickers_exchange": "cache"
   }
 }

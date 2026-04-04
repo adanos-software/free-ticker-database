@@ -45,6 +45,15 @@
     "official": true
   },
   {
+    "key": "jpx_listed_issues",
+    "provider": "JPX",
+    "description": "Official JPX list of TSE-listed issues",
+    "source_url": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls",
+    "format": "jpx_listed_issues_excel",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
     "key": "sec_company_tickers_exchange",
     "provider": "SEC",
     "description": "Official SEC company ticker to exchange mapping",

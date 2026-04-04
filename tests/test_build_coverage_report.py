@@ -21,6 +21,7 @@ def test_build_exchange_report_includes_masterfile_match_rates():
         {"ticker": "AAPL", "exchange": "NASDAQ", "listing_status": "active", "reference_scope": "exchange_directory"},
         {"ticker": "QQQ", "exchange": "NASDAQ", "listing_status": "active", "reference_scope": "exchange_directory"},
         {"ticker": "IBM", "exchange": "NYSE", "listing_status": "active", "reference_scope": "exchange_directory"},
+        {"ticker": "1301", "exchange": "TSE", "listing_status": "active", "reference_scope": "exchange_directory"},
         {"ticker": "SHOP", "exchange": "TSX", "listing_status": "active", "reference_scope": "interlisted_subset"},
     ]
 
@@ -50,6 +51,18 @@ def test_build_exchange_report_includes_masterfile_match_rates():
             "masterfile_symbols": 1,
             "masterfile_matches": 1,
             "masterfile_match_rate": 100.0,
+        },
+        {
+            "exchange": "TSE",
+            "tickers": 0,
+            "isin_coverage": 0,
+            "sector_coverage": 0,
+            "cik_coverage": 0,
+            "figi_coverage": 0,
+            "lei_coverage": 0,
+            "masterfile_symbols": 1,
+            "masterfile_matches": 0,
+            "masterfile_match_rate": 0.0,
         },
     ]
 
