@@ -27,6 +27,7 @@ USER_AGENT = "free-ticker-database/2.0 (+https://github.com/adanos-software/free
 REQUEST_TIMEOUT = 30.0
 RETRY_ATTEMPTS = 3
 RETRY_DELAY_SECONDS = 2.0
+RATE_LIMIT_RETRY_SECONDS = 15.0
 T = TypeVar("T")
 
 SEC_EXCHANGE_MAP = {
@@ -91,9 +92,28 @@ def with_retries(
             last_error = exc
             if attempt == attempts:
                 break
-            time.sleep(delay_seconds * attempt)
+            time.sleep(retry_delay_for(exc, attempt, delay_seconds))
     assert last_error is not None
     raise last_error
+
+
+def retry_delay_for(
+    error: requests.RequestException,
+    attempt: int,
+    base_delay_seconds: float = RETRY_DELAY_SECONDS,
+) -> float:
+    response = getattr(error, "response", None)
+    retry_after = None
+    if response is not None:
+        retry_after = response.headers.get("Retry-After")
+    if retry_after:
+        try:
+            return float(retry_after)
+        except ValueError:
+            pass
+    if response is not None and response.status_code == 429:
+        return max(base_delay_seconds * attempt, RATE_LIMIT_RETRY_SECONDS)
+    return base_delay_seconds * attempt
 
 
 def load_sec_payload(session: requests.Session | None = None) -> tuple[dict[str, Any] | None, str]:
@@ -188,6 +208,7 @@ def fetch_openfigi_by_isin(
     session: requests.Session | None = None,
     api_key: str | None = None,
     delay_seconds: float = 0.0,
+    batch_size: int = 10,
     retry_attempts: int = RETRY_ATTEMPTS,
     retry_delay_seconds: float = RETRY_DELAY_SECONDS,
 ) -> tuple[dict[str, list[dict[str, Any]]], list[str]]:
@@ -198,8 +219,8 @@ def fetch_openfigi_by_isin(
 
     result: dict[str, list[dict[str, Any]]] = {}
     errors: list[str] = []
-    for start in range(0, len(isins), 10):
-        batch = isins[start : start + 10]
+    for start in range(0, len(isins), batch_size):
+        batch = isins[start : start + batch_size]
         jobs = [{"idType": "ID_ISIN", "idValue": isin} for isin in batch]
         try:
             response = with_retries(
@@ -399,6 +420,7 @@ def main(
     enable_lei: bool = False,
     openfigi_api_key: str | None = None,
     figi_delay_seconds: float = 0.0,
+    figi_batch_size: int = 10,
     figi_limit: int | None = None,
     figi_exchanges: set[str] | None = None,
     lei_delay_seconds: float = 0.0,
@@ -422,6 +444,7 @@ def main(
             session=session,
             api_key=openfigi_api_key,
             delay_seconds=figi_delay_seconds,
+            batch_size=figi_batch_size,
         )
         figi_matches = build_figi_matches(figi_rows, figi_candidates)
         apply_figi(rows, figi_matches)
@@ -451,6 +474,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--enable-lei", action="store_true")
     parser.add_argument("--openfigi-api-key", default="")
     parser.add_argument("--figi-delay-seconds", type=float, default=0.0)
+    parser.add_argument("--figi-batch-size", type=int, default=10)
     parser.add_argument("--figi-limit", type=int)
     parser.add_argument("--figi-exchanges", default="")
     parser.add_argument("--lei-delay-seconds", type=float, default=0.0)
@@ -467,6 +491,7 @@ if __name__ == "__main__":
         enable_lei=args.enable_lei,
         openfigi_api_key=args.openfigi_api_key or None,
         figi_delay_seconds=args.figi_delay_seconds,
+        figi_batch_size=args.figi_batch_size,
         figi_limit=args.figi_limit,
         figi_exchanges={value.strip() for value in args.figi_exchanges.split(",") if value.strip()} or None,
         lei_delay_seconds=args.lei_delay_seconds,

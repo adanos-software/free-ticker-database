@@ -205,6 +205,7 @@ def test_parse_euronext_equities_download_maps_markets():
             'A2A;IT0001233417;A2A;"Euronext Milan";EUR;2.458;2.481;2.454;2.457;" 17:37";CET;8256154;20352541.80;2.457;',
             '"2020 BULKERS";BMG9156K1018;2020;"Oslo Børs";NOK;137.80;140.70;135.50;140.40;" 13:07";CET;166844;23212042.70;-;-',
             '"AEX ETF";NL0000000001;AEX;"Euronext Amsterdam";EUR;1;1;1;1;" 17:35";CET;1;1;1;',
+            '"3M";US88579Y1010;4MMM;EuroTLX;EUR;1;1;1;1;" 12:56";CET;1;1;1;',
         ]
     )
 
@@ -245,6 +246,18 @@ def test_parse_euronext_equities_download_maps_markets():
             "asset_type": "ETF",
             "listing_status": "active",
             "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "4MMM",
+            "name": "3M",
+            "exchange": "Euronext",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "secondary_listing_subset",
             "official": "true",
         },
     ]

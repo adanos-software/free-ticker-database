@@ -66,6 +66,12 @@ EURONEXT_MARKET_MAP = {
     "Euronext Growth Oslo": "OSL",
 }
 
+EURONEXT_SECONDARY_MARKETS = {
+    "EuroTLX",
+    "Euronext Global Equity Market",
+    "Trading After Hours",
+}
+
 
 @dataclass(frozen=True)
 class MasterfileSource:
@@ -316,6 +322,13 @@ def map_euronext_market(market: str) -> str:
     return "Euronext"
 
 
+def euronext_reference_scope(market: str) -> str:
+    normalized = market.strip()
+    if normalized in EURONEXT_SECONDARY_MARKETS or "," in normalized:
+        return "secondary_listing_subset"
+    return "exchange_directory"
+
+
 def parse_euronext_equities_download(text: str, source: MasterfileSource) -> list[dict[str, str]]:
     lines = [line for line in text.splitlines() if line.strip()]
     if len(lines) < 4:
@@ -341,7 +354,7 @@ def parse_euronext_equities_download(text: str, source: MasterfileSource) -> lis
                 "exchange": map_euronext_market(market),
                 "asset_type": infer_asset_type(name),
                 "listing_status": "active",
-                "reference_scope": source.reference_scope,
+                "reference_scope": euronext_reference_scope(market),
                 "official": "true",
             }
         )

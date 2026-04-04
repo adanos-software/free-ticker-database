@@ -14,6 +14,7 @@ from scripts.enrich_global_identifiers import (
     fetch_openfigi_by_isin,
     load_sec_payload,
     normalize_company_name,
+    retry_delay_for,
     select_figi_rows,
     select_openfigi_candidate,
     select_lei_candidates,
@@ -205,6 +206,23 @@ def test_with_retries_retries_request_exceptions():
     assert with_retries(flaky, attempts=3, delay_seconds=0.0) == "ok"
 
 
+def test_retry_delay_for_uses_retry_after_header():
+    response = requests.Response()
+    response.status_code = 429
+    response.headers["Retry-After"] = "7"
+    error = requests.HTTPError(response=response)
+
+    assert retry_delay_for(error, attempt=2, base_delay_seconds=1.0) == 7.0
+
+
+def test_retry_delay_for_uses_rate_limit_floor_without_header():
+    response = requests.Response()
+    response.status_code = 429
+    error = requests.HTTPError(response=response)
+
+    assert retry_delay_for(error, attempt=2, base_delay_seconds=1.0) == 15.0
+
+
 def test_fetch_openfigi_by_isin_keeps_partial_progress(monkeypatch):
     calls = {"count": 0}
 
@@ -219,6 +237,7 @@ def test_fetch_openfigi_by_isin_keeps_partial_progress(monkeypatch):
     result, errors = fetch_openfigi_by_isin(
         ["AA", "BB", "CC", "DD", "EE", "FF", "GG", "HH", "II", "JJ", "KK"],
         delay_seconds=0.0,
+        batch_size=10,
         retry_attempts=1,
         retry_delay_seconds=0.0,
     )
@@ -226,6 +245,26 @@ def test_fetch_openfigi_by_isin_keeps_partial_progress(monkeypatch):
     assert result["AA"][0]["figi"] == "FIGI-AA"
     assert "KK" not in result
     assert len(errors) == 1
+
+
+def test_fetch_openfigi_by_isin_respects_batch_size(monkeypatch):
+    sizes = []
+
+    def fake_post_json(url, payload, session=None, headers=None):
+        sizes.append(len(payload))
+        return [{"data": []} for _ in payload]
+
+    monkeypatch.setattr("scripts.enrich_global_identifiers.post_json", fake_post_json)
+
+    fetch_openfigi_by_isin(
+        ["AA", "BB", "CC", "DD", "EE"],
+        delay_seconds=0.0,
+        batch_size=2,
+        retry_attempts=1,
+        retry_delay_seconds=0.0,
+    )
+
+    assert sizes == [2, 2, 1]
 
 
 def test_apply_lei_continues_after_lookup_error(monkeypatch):
