@@ -129,6 +129,7 @@ def build_company_alias_groups(
             {
                 "ticker": ticker,
                 "entity_key": entity_key_for_row(ticker_row),
+                "issuer_key": issuer_family_key(ticker_row),
                 "company_name": ticker_row["name"],
             }
         )
@@ -145,7 +146,7 @@ def flag_cross_company_alias_collisions(
     for alias, entries in alias_groups.items():
         entity_groups: dict[str, list[dict[str, str]]] = defaultdict(list)
         for entry in entries:
-            entity_groups[entry["entity_key"]].append(entry)
+            entity_groups[entry["issuer_key"]].append(entry)
 
         if len(entity_groups) < 2:
             continue
@@ -184,6 +185,13 @@ def flag_cross_company_alias_collisions(
                 value=alias,
                 reason=f"Alias is shared across different companies: {peer_preview}",
             )
+
+
+def issuer_family_key(row: dict[str, str]) -> str:
+    normalized_tokens = sorted(normalize_tokens(row["name"]))
+    if normalized_tokens:
+        return f"name:{'|'.join(normalized_tokens)}"
+    return entity_key_for_row(row)
 
 
 def analyze_dataset(

@@ -4,11 +4,14 @@ import requests
 
 from scripts.fetch_exchange_masterfiles import (
     MasterfileSource,
+    fetch_b3_instruments_equities,
     fetch_all_sources,
     fetch_source_rows_with_mode,
     infer_jpx_asset_type,
     load_sec_company_tickers_exchange_payload,
     parse_asx_listed_companies,
+    parse_b3_instruments_equities_table,
+    parse_deutsche_boerse_listed_companies_excel,
     parse_euronext_equities_download,
     parse_jpx_listed_issues_excel,
     parse_nasdaq_listed,
@@ -204,6 +207,59 @@ def test_infer_jpx_asset_type_prefers_section_label():
     assert infer_jpx_asset_type("Prime Market (Domestic)", "Ordinary Corp.") == "Stock"
 
 
+def test_parse_deutsche_boerse_listed_companies_excel_maps_xetra_rows(tmp_path):
+    workbook_path = tmp_path / "listed-companies.xlsx"
+
+    import pandas as pd
+
+    with pd.ExcelWriter(workbook_path, engine="openpyxl") as writer:
+        pd.DataFrame({"placeholder": [1]}).to_excel(writer, sheet_name="Cover", index=False)
+        sheet = pd.DataFrame(
+            [
+                ["Companies in Prime Standard", None, None, None, None],
+                [None, None, None, None, None],
+                ["2026-04-01", None, None, None, None],
+                [None, None, None, None, None],
+                [None, None, None, None, None],
+                ["Number of instruments:", 2, None, None, None],
+                ["Number of companies:", 2, None, None, None],
+                ["ISIN", "Trading Symbol", "Company", "Country", "Instrument Exchange"],
+                ["DE0005557508", "DTE", "Deutsche Telekom AG", "Germany", "XETRA + FRANKFURT"],
+                ["DE000A0WMPJ6", "AIXA", "AIXTRON SE", "Germany", "FRANKFURT"],
+            ]
+        )
+        sheet.to_excel(writer, sheet_name="Prime Standard", header=False, index=False)
+
+    rows = parse_deutsche_boerse_listed_companies_excel(workbook_path.read_bytes(), SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "DTE",
+            "name": "Deutsche Telekom AG",
+            "exchange": "XETRA",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "AIXA",
+            "name": "AIXTRON SE",
+            "exchange": "XETRA",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
 def test_parse_tmx_interlisted_marks_subset_scope():
     text = "\n".join(
         [
@@ -308,6 +364,137 @@ def test_parse_euronext_equities_download_maps_markets():
             "asset_type": "Stock",
             "listing_status": "active",
             "reference_scope": "secondary_listing_subset",
+            "official": "true",
+        },
+    ]
+
+
+def test_parse_b3_instruments_equities_table_keeps_cash_stocks_and_etfs_only():
+    table = {
+        "columns": [
+            {"name": "TckrSymb"},
+            {"name": "AsstDesc"},
+            {"name": "SgmtNm"},
+            {"name": "MktNm"},
+            {"name": "SctyCtgyNm"},
+            {"name": "ISIN"},
+            {"name": "CrpnNm"},
+        ],
+        "values": [
+            ["PETR4", "PETROBRAS PN", "CASH", "EQUITY-CASH", "SHARES", "BRPETRACNPR6", "PETROLEO BRASILEIRO S.A. PETROBRAS"],
+            ["BOVA11", "ISHARES IBOV CI", "CASH", "EQUITY-CASH", "ETF EQUITIES", "BRBOVACTF004", "ISHARES IBOVESPA FUNDO DE INDICE"],
+            ["AAPL34", "APPLE DRN", "CASH", "EQUITY-CASH", "BDR", "BRAAPLBDR002", "APPLE INC."],
+            ["TAXA150", "FINANC/TERMO", "CASH", "EQUITY-CASH", "SHARES", "BRTAXAINDM77", "TAXA DE FINANCIAMENTO"],
+            ["PETR4T", "PETROBRAS PN", "EQUITY FORWARD", "EQUITY-DERIVATE", "COMMON EQUITIES FORWARD", "BRPETRTNO001", "PETROLEO BRASILEIRO S.A. PETROBRAS"],
+        ],
+    }
+
+    rows = parse_b3_instruments_equities_table(table, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "PETR4",
+            "name": "PETROLEO BRASILEIRO S.A. PETROBRAS",
+            "exchange": "B3",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "BOVA11",
+            "name": "ISHARES IBOVESPA FUNDO DE INDICE",
+            "exchange": "B3",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_fetch_b3_instruments_equities_uses_workday_and_paginates(monkeypatch):
+    class FakeResponse:
+        def __init__(self, payload, status_code=200):
+            self._payload = payload
+            self.status_code = status_code
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, headers=None, timeout=None):
+            self.calls.append(("GET", url))
+            return FakeResponse("2026-04-02T00:00:00")
+
+        def post(self, url, headers=None, json=None, timeout=None):
+            self.calls.append(("POST", url))
+            page = int(url.rstrip("/").split("/")[-2])
+            payload = {
+                "table": {
+                    "pageCount": 2,
+                    "columns": [
+                        {"name": "TckrSymb"},
+                        {"name": "AsstDesc"},
+                        {"name": "SgmtNm"},
+                        {"name": "MktNm"},
+                        {"name": "SctyCtgyNm"},
+                        {"name": "ISIN"},
+                        {"name": "CrpnNm"},
+                    ],
+                    "values": [
+                        [f"ROW{page}", f"ROW {page}", "CASH", "EQUITY-CASH", "SHARES", f"BRROW{page}", f"Issuer {page}"],
+                    ],
+                }
+            }
+            return FakeResponse(payload)
+
+    rows = fetch_b3_instruments_equities(
+        MasterfileSource(
+            key="b3",
+            provider="B3",
+            description="Official B3 instruments consolidated cash-equities table",
+            source_url="https://arquivos.b3.com.br/bdi/table/InstrumentsEquities",
+            format="b3_instruments_equities_api",
+        ),
+        session=FakeSession(),
+    )
+
+    assert rows == [
+        {
+            "source_key": "b3",
+            "provider": "B3",
+            "source_url": "https://arquivos.b3.com.br/bdi/table/InstrumentsEquities",
+            "ticker": "ROW1",
+            "name": "Issuer 1",
+            "exchange": "B3",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "b3",
+            "provider": "B3",
+            "source_url": "https://arquivos.b3.com.br/bdi/table/InstrumentsEquities",
+            "ticker": "ROW2",
+            "name": "Issuer 2",
+            "exchange": "B3",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
             "official": "true",
         },
     ]

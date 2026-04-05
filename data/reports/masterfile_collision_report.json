@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 24263,
-    "matched": 17641,
-    "collisions": 3765,
-    "missing": 2857
+    "official_symbols": 25610,
+    "matched": 18895,
+    "collisions": 3864,
+    "missing": 2851
   },
   "exchanges": [
     {
@@ -212,6 +212,15 @@
           "exchange": "ASX"
         }
       ]
+    },
+    {
+      "exchange": "B3",
+      "official_symbols": 876,
+      "matched": 876,
+      "collisions": 0,
+      "missing": 0,
+      "collision_examples": [],
+      "missing_examples": []
     },
     {
       "exchange": "BATS",
@@ -499,8 +508,8 @@
       "exchange": "NASDAQ",
       "official_symbols": 5430,
       "matched": 4524,
-      "collisions": 124,
-      "missing": 782,
+      "collisions": 125,
+      "missing": 781,
       "collision_examples": [
         {
           "ticker": "ACFN",
@@ -640,8 +649,8 @@
       "exchange": "NYSE",
       "official_symbols": 3829,
       "matched": 2345,
-      "collisions": 568,
-      "missing": 916,
+      "collisions": 572,
+      "missing": 912,
       "collision_examples": [
         {
           "ticker": "ABX",
@@ -922,8 +931,8 @@
       "exchange": "NYSE MKT",
       "official_symbols": 314,
       "matched": 235,
-      "collisions": 24,
-      "missing": 55,
+      "collisions": 25,
+      "missing": 54,
       "collision_examples": [
         {
           "ticker": "AEF",
@@ -1385,6 +1394,96 @@
           "exchange": "TSE"
         }
       ]
+    },
+    {
+      "exchange": "XETRA",
+      "official_symbols": 471,
+      "matched": 378,
+      "collisions": 93,
+      "missing": 0,
+      "collision_examples": [
+        {
+          "ticker": "4DS",
+          "name": "DALDRUP+SOEHNE AG",
+          "target_exchange": "XETRA",
+          "existing_exchanges": [
+            "ASX"
+          ]
+        },
+        {
+          "ticker": "ABX",
+          "name": "ADVANCED BLOCKCHAIN AG",
+          "target_exchange": "XETRA",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "ACT",
+          "name": "ALZCHEM GROUP AG INH O.N.",
+          "target_exchange": "XETRA",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "ADC",
+          "name": "ADCAPITAL AG",
+          "target_exchange": "XETRA",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
+          "ticker": "ADV",
+          "name": "ADTRAN NETWORKS SE O.N.",
+          "target_exchange": "XETRA",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "AHH",
+          "name": "AHLERS AG NA O.N.",
+          "target_exchange": "XETRA",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
+          "ticker": "AIR",
+          "name": "AIRBUS SE",
+          "target_exchange": "XETRA",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
+          "ticker": "ALG",
+          "name": "ALBIS LEASING AG O.N.",
+          "target_exchange": "XETRA",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
+          "ticker": "ALV",
+          "name": "ALLIANZ SE NA O.N.",
+          "target_exchange": "XETRA",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
+          "ticker": "AMA",
+          "name": "ALTECH ADVANCED MATERIALS NA O.N.",
+          "target_exchange": "XETRA",
+          "existing_exchanges": [
+            "ASX"
+          ]
+        }
+      ],
+      "missing_examples": []
     }
   ]
 }

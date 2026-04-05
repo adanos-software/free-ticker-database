@@ -163,6 +163,43 @@ def test_cross_company_alias_collision_ignores_same_entity_cross_listings():
     assert analyze_dataset(ticker_rows, alias_rows, identifier_rows, min_score=40) == []
 
 
+def test_cross_company_alias_collision_ignores_same_company_share_classes():
+    ticker_rows = [
+        {
+            "ticker": "ITSA3",
+            "name": "ITAUSA S.A.",
+            "exchange": "B3",
+            "asset_type": "Stock",
+            "sector": "Financials",
+            "country": "Brazil",
+            "country_code": "BR",
+            "isin": "BRITSAACNOR0",
+            "aliases": "itaúsa - investimentos itaú",
+        },
+        {
+            "ticker": "ITSA4",
+            "name": "ITAUSA S.A.",
+            "exchange": "B3",
+            "asset_type": "Stock",
+            "sector": "Financials",
+            "country": "Brazil",
+            "country_code": "BR",
+            "isin": "BRITSAACNPR7",
+            "aliases": "itaúsa - investimentos itaú",
+        },
+    ]
+    alias_rows = [
+        {"ticker": "ITSA3", "alias": "itaúsa - investimentos itaú", "alias_type": "name"},
+        {"ticker": "ITSA4", "alias": "itaúsa - investimentos itaú", "alias_type": "name"},
+    ]
+    identifier_rows = [
+        {"ticker": "ITSA3", "isin": "BRITSAACNOR0", "wkn": ""},
+        {"ticker": "ITSA4", "isin": "BRITSAACNPR7", "wkn": ""},
+    ]
+
+    assert analyze_dataset(ticker_rows, alias_rows, identifier_rows, min_score=40) == []
+
+
 def test_low_overlap_ignores_symbol_like_aliases():
     ticker_rows = [
         {
@@ -179,5 +216,28 @@ def test_low_overlap_ignores_symbol_like_aliases():
     ]
     alias_rows = [{"ticker": "BHF", "alias": "BHFAN", "alias_type": "name"}]
     identifier_rows = [{"ticker": "BHF", "isin": "US10922N1037", "wkn": ""}]
+
+    assert analyze_dataset(ticker_rows, alias_rows, identifier_rows, min_score=1) == []
+
+
+def test_low_overlap_ignores_trusted_legacy_company_aliases():
+    ticker_rows = [
+        {
+            "ticker": "SVE",
+            "name": "SHAREHOLD.VAL.BET.NA O.N.",
+            "exchange": "XETRA",
+            "asset_type": "Stock",
+            "sector": "Financials",
+            "country": "Germany",
+            "country_code": "DE",
+            "isin": "",
+            "aliases": "shareholder value beteiligungen|synthaverse",
+        }
+    ]
+    alias_rows = [
+        {"ticker": "SVE", "alias": "shareholder value beteiligungen", "alias_type": "name"},
+        {"ticker": "SVE", "alias": "synthaverse", "alias_type": "name"},
+    ]
+    identifier_rows = [{"ticker": "SVE", "isin": "", "wkn": ""}]
 
     assert analyze_dataset(ticker_rows, alias_rows, identifier_rows, min_score=1) == []

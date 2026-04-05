@@ -1,8 +1,9 @@
 {
-  "rows": 33179,
+  "rows": 34526,
   "exchanges": [
     "AMS",
     "ASX",
+    "B3",
     "BATS",
     "Euronext",
     "IEX",
@@ -15,16 +16,19 @@
     "OTC",
     "TSE",
     "TSX",
-    "TSXV"
+    "TSXV",
+    "XETRA"
   ],
   "source_counts": {
     "euronext_equities": 3885,
     "asx_listed_companies": 1979,
+    "b3_instruments_equities": 876,
     "nasdaq_other_listed": 7075,
     "nasdaq_listed": 5413,
     "sec_company_tickers_exchange": 10117,
     "jpx_listed_issues": 4444,
-    "tmx_interlisted_companies": 266
+    "tmx_interlisted_companies": 266,
+    "deutsche_boerse_listed_companies": 471
   },
   "source_modes": {
     "nasdaq_listed": "network",
@@ -33,6 +37,8 @@
     "tmx_interlisted_companies": "network",
     "euronext_equities": "network",
     "jpx_listed_issues": "network",
+    "deutsche_boerse_listed_companies": "network",
+    "b3_instruments_equities": "network",
     "sec_company_tickers_exchange": "cache"
   }
 }

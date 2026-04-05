@@ -19,6 +19,7 @@ DATA_DIR = ROOT / "data"
 TICKERS_CSV = DATA_DIR / "tickers.csv"
 ALIASES_CSV = DATA_DIR / "aliases.csv"
 IDENTIFIERS_CSV = DATA_DIR / "identifiers.csv"
+IDENTIFIERS_EXTENDED_CSV = DATA_DIR / "identifiers_extended.csv"
 TICKERS_JSON = DATA_DIR / "tickers.json"
 TICKERS_DB = DATA_DIR / "tickers.db"
 TICKERS_PARQUET = DATA_DIR / "tickers.parquet"
@@ -227,9 +228,23 @@ CORPORATE_ALIAS_MARKERS = {
 }
 TRUSTED_NON_LEXICAL_ALIASES: dict[str, set[str]] = {
     "athleta": {"gap", "the gap"},
+    "bmw": {"bayerische motoren werke", "bay.motoren werke ag st"},
+    "citibank": {"citigroup", "citigroup inc."},
+    "femsa": {"fomento economico mexicano", "fomento económico mexicano, s.a.b. de c.v."},
+    "itaúsa - investimentos itaú": {"itausa", "itausa s.a."},
+    "jereissati participações": {"iguatemi", "iguatemi s.a."},
     "keybank": {"keycorp"},
+    "maseca": {"gruma", "gruma s.a.b. de c.v.", "gruma sab de cv"},
+    "munich re": {"muench.rueckversicherungs gesellschaft.vna o.n.", "muench. rueckvers. vna o.n."},
+    "münchener rück": {"muench.rueckversicherungs gesellschaft.vna o.n.", "muench. rueckvers. vna o.n."},
     "nortonlifelock": {"gen digital"},
     "old navy": {"gap", "the gap"},
+    "randon s.a. implementos e participações": {"randoncorp", "randoncorp s.a."},
+    "shareholder value": {"sharehold.val.bet.na o.n.", "synthaverse"},
+    "shareholder value beteiligungen": {"sharehold.val.bet.na o.n.", "synthaverse"},
+    "synthaverse": {"sharehold.val.bet.na o.n.", "synthaverse"},
+    "tdg gold": {"tdggf", "tdg gold corp"},
+    "tiger brokers": {"up fintech", "up fintech holding ltd", "up fintech holding"},
 }
 ISIN_PREFIX_COUNTRIES = {
     "AT": "Austria",
@@ -628,7 +643,7 @@ def looks_like_external_symbol_alias(alias: str) -> bool:
 
 def build_alias_context(
     rows: list[dict[str, str]],
-    identifier_lookup: dict[str, dict[str, str]],
+    identifier_lookup: dict[tuple[str, str], dict[str, str]],
 ) -> dict[str, dict[str, set[str]]]:
     entity_tickers: dict[str, set[str]] = defaultdict(set)
     for row in rows:
@@ -644,7 +659,7 @@ def build_alias_context(
 
     for row in rows:
         entity_key = entity_key_for_row(row)
-        identifier = identifier_lookup.get(row["ticker"], {"wkn": ""})
+        identifier = identifier_lookup.get((row["ticker"], row["exchange"]), {"wkn": ""})
         wkns = {identifier["wkn"]} if identifier.get("wkn") else set()
         current_isin = MANUAL_ISIN_CORRECTIONS.get(row["ticker"], row.get("isin", ""))
 
@@ -680,6 +695,8 @@ def should_drop_contextual_alias(
     if context["ticker_owner_entities"]:
         return entity_key not in context["ticker_owner_entities"]
     if is_blocked_alias(alias) or looks_like_external_symbol_alias(alias):
+        return True
+    if not is_trusted_non_lexical_alias(alias, row["name"]):
         return True
     return False
 
@@ -755,7 +772,8 @@ def load_data():
     with ALIASES_CSV.open(newline="") as handle:
         alias_rows = list(csv.DictReader(handle))
 
-    with IDENTIFIERS_CSV.open(newline="") as handle:
+    identifier_path = IDENTIFIERS_EXTENDED_CSV if IDENTIFIERS_EXTENDED_CSV.exists() else IDENTIFIERS_CSV
+    with identifier_path.open(newline="") as handle:
         identifier_rows = list(csv.DictReader(handle))
 
     alias_type_lookup: dict[tuple[str, str], str] = {}
@@ -763,13 +781,13 @@ def load_data():
     for row in alias_rows:
         key = (row["ticker"], row["alias"])
         alias_type_lookup.setdefault(key, row["alias_type"])
-        if row["alias_type"] != "isin":
+        if row["alias_type"] == "exchange_ticker":
             extra_aliases[row["ticker"]].append(row["alias"])
 
-    identifier_lookup = {
-        row["ticker"]: {"isin": row["isin"], "wkn": row["wkn"]}
-        for row in identifier_rows
-    }
+    identifier_lookup: dict[tuple[str, str], dict[str, str]] = {}
+    for row in identifier_rows:
+        key = (row["ticker"], row.get("exchange", ""))
+        identifier_lookup[key] = {"isin": row.get("isin", ""), "wkn": row.get("wkn", "")}
 
     ticker_rows = merge_supplemental_ticker_rows(ticker_rows)
 
@@ -901,7 +919,7 @@ def cleaned_rows():
         identifier = None
         if row_key in core_row_keys:
             merged_aliases.extend(extra_aliases.get(row["ticker"], []))
-            identifier = identifier_lookup.get(row["ticker"])
+            identifier = identifier_lookup.get(row_key) or identifier_lookup.get((row["ticker"], ""))
         alias_removals = review_alias_removals.get(row_key, set())
         if alias_removals:
             merged_aliases = [alias for alias in merged_aliases if alias not in alias_removals]
@@ -910,12 +928,15 @@ def cleaned_rows():
         merged["aliases"] = merged_aliases
         base_rows.append(merged)
 
+    base_rows = cleanse_conflicting_isin_rows(base_rows)
+
     alias_context = build_alias_context(base_rows, identifier_lookup)
 
     output_rows: list[dict[str, str]] = []
     for row in base_rows:
+        row_key = (row["ticker"], row["exchange"])
         aliases = dedupe_keep_order(row["aliases"])
-        identifier = identifier_lookup.get(row["ticker"], {"wkn": ""})
+        identifier = identifier_lookup.get(row_key) or identifier_lookup.get((row["ticker"], ""), {"wkn": ""})
         wkns = {identifier["wkn"]} if identifier.get("wkn") else set()
         if is_namespace_collision_row(row, aliases, wkns):
             continue
@@ -948,6 +969,58 @@ def cleaned_rows():
         )
 
     return sorted(output_rows, key=lambda row: row["ticker"]), alias_type_lookup
+
+
+def cleanse_conflicting_isin_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    rows_by_isin: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for row in rows:
+        if row.get("isin"):
+            rows_by_isin[row["isin"]].append(row)
+
+    for isin, peers in rows_by_isin.items():
+        issuer_families = {
+            tuple(sorted(normalize_tokens(peer["name"]))) or (normalized_compact(peer["name"]),)
+            for peer in peers
+        }
+        if len(peers) < 2 or len(issuer_families) < 2:
+            continue
+
+        inferred_country = country_from_isin(isin)
+        for row in peers:
+            cleaned_aliases: list[str] = []
+            contaminated = False
+            aliases_changed = False
+            for alias in row["aliases"]:
+                matches_own = alias_matches_company(alias, row["name"])
+                matches_peer = any(
+                    alias_matches_company(alias, peer["name"]) for peer in peers if peer is not row
+                )
+                if (
+                    not matches_own
+                    and not matches_peer
+                    and not is_trusted_non_lexical_alias(alias, row["name"])
+                    and not looks_like_identifier(alias, set(), isin)
+                ):
+                    aliases_changed = True
+                    continue
+                if matches_peer and not matches_own:
+                    contaminated = True
+                    aliases_changed = True
+                    continue
+                cleaned_aliases.append(alias)
+
+            if aliases_changed:
+                row["aliases"] = cleaned_aliases
+
+            if not contaminated:
+                continue
+
+            row["isin"] = ""
+            if inferred_country and row.get("country") == inferred_country:
+                row["country"] = ""
+                row["country_code"] = ""
+
+    return rows
 
 
 def build_alias_rows(rows: list[dict[str, str]], alias_type_lookup: dict[tuple[str, str], str]):

@@ -29,6 +29,8 @@ ASX_LISTED_URL = "https://www.asx.com.au/asx/research/ASXListedCompanies.csv"
 TMX_INTERLISTED_URL = "https://www.tsx.com/files/trading/interlisted-companies.txt"
 EURONEXT_EQUITIES_DOWNLOAD_URL = "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock"
 JPX_LISTED_ISSUES_URL = "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls"
+DEUTSCHE_BOERSE_LISTED_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/67858/dd766fc6588100c79294324175f95501/data/Listed-companies.xlsx"
+B3_INSTRUMENTS_EQUITIES_URL = "https://arquivos.b3.com.br/bdi/table/InstrumentsEquities"
 
 USER_AGENT = "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)"
 SEC_CONTACT_EMAIL = os.environ.get("SEC_CONTACT_EMAIL", "opensource@adanos.software")
@@ -75,6 +77,18 @@ EURONEXT_SECONDARY_MARKETS = {
     "Euronext Global Equity Market",
     "Trading After Hours",
 }
+
+DEUTSCHE_BOERSE_SHEETS = ("Prime Standard", "General Standard", "Scale", "Basic Board")
+B3_ALLOWED_CASH_CATEGORIES = {
+    "ETF EQUITIES": "ETF",
+    "ETF FOREIGN INDEX": "ETF",
+    "SHARES": "Stock",
+    "UNIT": "Stock",
+}
+B3_EXCLUDED_ISSUER_MARKERS = (
+    "taxa de financiamento",
+    "financ/termo",
+)
 
 
 @dataclass(frozen=True)
@@ -131,6 +145,20 @@ OFFICIAL_SOURCES = [
         description="Official JPX list of TSE-listed issues",
         source_url=JPX_LISTED_ISSUES_URL,
         format="jpx_listed_issues_excel",
+    ),
+    MasterfileSource(
+        key="deutsche_boerse_listed_companies",
+        provider="Deutsche Boerse",
+        description="Official Deutsche Boerse listed companies workbook",
+        source_url=DEUTSCHE_BOERSE_LISTED_URL,
+        format="deutsche_boerse_listed_companies_excel",
+    ),
+    MasterfileSource(
+        key="b3_instruments_equities",
+        provider="B3",
+        description="Official B3 instruments consolidated cash-equities table",
+        source_url=B3_INSTRUMENTS_EQUITIES_URL,
+        format="b3_instruments_equities_api",
     ),
     MasterfileSource(
         key="sec_company_tickers_exchange",
@@ -356,6 +384,44 @@ def parse_jpx_listed_issues_excel(content: bytes, source: MasterfileSource) -> l
     return rows
 
 
+def map_deutsche_boerse_exchange(exchange_field: str) -> str:
+    normalized = exchange_field.strip().upper()
+    if "XETRA" in normalized or "FRANKFURT" in normalized:
+        return "XETRA"
+    return "XETRA"
+
+
+def parse_deutsche_boerse_listed_companies_excel(content: bytes, source: MasterfileSource) -> list[dict[str, str]]:
+    workbook = pd.ExcelFile(io.BytesIO(content))
+    rows: list[dict[str, str]] = []
+    for sheet_name in DEUTSCHE_BOERSE_SHEETS:
+        if sheet_name not in workbook.sheet_names:
+            continue
+        dataframe = pd.read_excel(io.BytesIO(content), sheet_name=sheet_name, header=7)
+        for record in dataframe.to_dict(orient="records"):
+            ticker = str(record.get("Trading Symbol", "")).strip()
+            name = str(record.get("Company", "")).strip()
+            isin = str(record.get("ISIN", "")).strip()
+            exchange_field = str(record.get("Instrument Exchange", "")).strip()
+            if not ticker or not name or not isin or ticker.lower() == "nan" or name.lower() == "nan":
+                continue
+            rows.append(
+                {
+                    "source_key": source.key,
+                    "provider": source.provider,
+                    "source_url": source.source_url,
+                    "ticker": ticker,
+                    "name": name,
+                    "exchange": map_deutsche_boerse_exchange(exchange_field),
+                    "asset_type": "Stock",
+                    "listing_status": "active",
+                    "reference_scope": source.reference_scope,
+                    "official": "true",
+                }
+            )
+    return rows
+
+
 def parse_tmx_interlisted(text: str, source: MasterfileSource) -> list[dict[str, str]]:
     lines = text.splitlines()
     if lines and lines[0].startswith("As of "):
@@ -457,6 +523,75 @@ def parse_sec_company_tickers_exchange(payload: dict[str, Any], source: Masterfi
     return rows
 
 
+def parse_b3_instruments_equities_table(table: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
+    columns = [column.get("name", "") for column in table.get("columns") or []]
+    rows: list[dict[str, str]] = []
+    for values in table.get("values") or []:
+        record = dict(zip(columns, values))
+        market = str(record.get("MktNm", "")).strip()
+        segment = str(record.get("SgmtNm", "")).strip()
+        category = str(record.get("SctyCtgyNm", "")).strip()
+        ticker = str(record.get("TckrSymb", "")).strip()
+        name = str(record.get("CrpnNm") or record.get("AsstDesc") or "").strip()
+        if market != "EQUITY-CASH" or segment != "CASH":
+            continue
+        asset_type = B3_ALLOWED_CASH_CATEGORIES.get(category)
+        if not asset_type or not ticker or not name:
+            continue
+        normalized_name = name.lower()
+        normalized_desc = str(record.get("AsstDesc") or "").lower()
+        if ticker.startswith("TAXA") or any(marker in normalized_name for marker in B3_EXCLUDED_ISSUER_MARKERS):
+            continue
+        if any(marker in normalized_desc for marker in B3_EXCLUDED_ISSUER_MARKERS):
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "B3",
+                "asset_type": asset_type,
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
+def fetch_b3_instruments_equities(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+    }
+    workday_response = session.get("https://arquivos.b3.com.br/bdi/table/workday", headers=headers, timeout=REQUEST_TIMEOUT)
+    workday_response.raise_for_status()
+    workday = str(workday_response.json())[:10]
+
+    rows: list[dict[str, str]] = []
+    page = 1
+    take = 1000
+    page_count = 1
+    while page <= page_count:
+        response = session.post(
+            f"{source.source_url}/{workday}/{workday}/{page}/{take}",
+            headers=headers,
+            json={},
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        payload = response.json()
+        table = payload.get("table") or {}
+        rows.extend(parse_b3_instruments_equities_table(table, source))
+        page_count = int(table.get("pageCount") or 0) or page_count
+        page += 1
+    return rows
+
+
 def fetch_source_rows(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
     if source.format == "nasdaq_listed_pipe":
         text = fetch_text(source.source_url, session=session)
@@ -476,6 +611,11 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "jpx_listed_issues_excel":
         content = fetch_bytes(source.source_url, session=session)
         return parse_jpx_listed_issues_excel(content, source)
+    if source.format == "deutsche_boerse_listed_companies_excel":
+        content = fetch_bytes(source.source_url, session=session)
+        return parse_deutsche_boerse_listed_companies_excel(content, source)
+    if source.format == "b3_instruments_equities_api":
+        return fetch_b3_instruments_equities(source, session=session)
     if source.format == "sec_company_tickers_exchange_json":
         payload = fetch_json(source.source_url, session=session)
         return parse_sec_company_tickers_exchange(payload, source)

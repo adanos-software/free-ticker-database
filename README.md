@@ -9,14 +9,14 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 62
 
 | Metric | Value |
 |---|---|
-| **Total tickers** | 62,521 |
-| Stocks | 45,907 |
-| ETFs | 16,614 |
+| **Total tickers** | 62,998 |
+| Stocks | 46,305 |
+| ETFs | 16,693 |
 | Exchanges | 68 |
 | Countries | 68 |
-| ISIN coverage | 44,919 (71.8%) |
-| Sector coverage | 38,866 (62.2%) |
-| Total aliases | 102,746 |
+| ISIN coverage | 44,458 (70.6%) |
+| Sector coverage | 38,866 (61.7%) |
+| Total aliases | 101,693 |
 
 ## Formats
 
@@ -109,8 +109,8 @@ This auxiliary export makes the current listing identity explicit as `exchange::
 {
   "_meta": {
     "version": "2.0.0",
-    "built_at": "2026-04-05T13:16:09Z",
-    "total_tickers": 62521
+    "built_at": "2026-04-05T14:34:39Z",
+    "total_tickers": 62998
   },
   "tickers": [
     {
@@ -143,7 +143,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (62,521 rows) + `aliases` (102,746 rows) + `cross_listings` (10,107 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
+Tables: `tickers` (62,998 rows) + `aliases` (101,693 rows) + `cross_listings` (9,368 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
 
 ## Schema
 
@@ -176,7 +176,7 @@ Tables: `tickers` (62,521 rows) + `aliases` (102,746 rows) + `cross_listings` (1
 | LSE | 6,409 | London Stock Exchange |
 | NASDAQ | 4,795 | NASDAQ |
 | SZSE | 3,096 | Shenzhen Stock Exchange |
-| XETRA | 2,947 | Deutsche Boerse |
+| XETRA | 3,017 | Deutsche Boerse |
 | SSE | 2,811 | Shanghai Stock Exchange |
 | NYSE | 2,599 | New York Stock Exchange |
 | NYSE ARCA | 2,619 | NYSE ARCA (ETFs) |

@@ -7,9 +7,9 @@ from pathlib import Path
 from typing import Any
 
 try:
-    from scripts.rebuild_dataset import should_exclude_stock_row
+    from scripts.rebuild_dataset import normalize_tokens, normalized_compact, should_exclude_stock_row
 except ModuleNotFoundError:  # pragma: no cover - script execution path
-    from rebuild_dataset import should_exclude_stock_row
+    from rebuild_dataset import normalize_tokens, normalized_compact, should_exclude_stock_row
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
@@ -27,6 +27,10 @@ SUPPLEMENT_EXCHANGES: dict[str, dict[str, str]] = {
         "country": "Australia",
         "country_code": "AU",
     },
+    "B3": {
+        "country": "Brazil",
+        "country_code": "BR",
+    },
     "OSL": {
         "country": "Norway",
         "country_code": "NO",
@@ -34,7 +38,11 @@ SUPPLEMENT_EXCHANGES: dict[str, dict[str, str]] = {
     "TSE": {
         "country": "Japan",
         "country_code": "JP",
-    }
+    },
+    "XETRA": {
+        "country": "Germany",
+        "country_code": "DE",
+    },
 }
 
 SUPPLEMENT_EXCLUDED_STOCK_PATTERNS = [
@@ -59,8 +67,10 @@ def build_supplement_rows(
     masterfile_rows: list[dict[str, str]],
 ) -> tuple[list[dict[str, str]], dict[str, Any]]:
     core_exchanges_by_ticker: dict[str, set[str]] = {}
+    core_rows_by_key: dict[tuple[str, str], dict[str, str]] = {}
     for row in core_rows:
         core_exchanges_by_ticker.setdefault(row["ticker"], set()).add(row["exchange"])
+        core_rows_by_key[(row["ticker"], row["exchange"])] = row
 
     supplements: list[dict[str, str]] = []
     summary: dict[str, Any] = {
@@ -92,6 +102,12 @@ def build_supplement_rows(
             },
         )
         if exchanges and exchanges != {exchange}:
+            summary["colliding_rows_skipped"] += 1
+            stats["colliding_rows_skipped"] += 1
+            continue
+
+        existing_row = core_rows_by_key.get((ticker, exchange))
+        if existing_row and not rows_refer_to_same_entity(existing_row, row):
             summary["colliding_rows_skipped"] += 1
             stats["colliding_rows_skipped"] += 1
             continue
@@ -139,6 +155,33 @@ def build_supplement_rows(
     supplements.sort(key=lambda row: (row["exchange"], row["ticker"]))
     summary["supplement_rows"] = len(supplements)
     return supplements, summary
+
+
+def rows_refer_to_same_entity(core_row: dict[str, str], masterfile_row: dict[str, str]) -> bool:
+    core_isin = (core_row.get("isin") or "").strip()
+    masterfile_isin = (masterfile_row.get("isin") or "").strip()
+    if core_isin and masterfile_isin and core_isin == masterfile_isin:
+        return True
+
+    core_name = (core_row.get("name") or "").strip()
+    masterfile_name = (masterfile_row.get("name") or "").strip()
+    if not core_name or not masterfile_name:
+        return True
+
+    core_compact = normalized_compact(core_name)
+    masterfile_compact = normalized_compact(masterfile_name)
+    if core_compact and masterfile_compact and (
+        core_compact in masterfile_compact or masterfile_compact in core_compact
+    ):
+        return True
+
+    core_tokens = normalize_tokens(core_name)
+    masterfile_tokens = normalize_tokens(masterfile_name)
+    if not core_tokens or not masterfile_tokens:
+        return False
+
+    overlap = len(core_tokens & masterfile_tokens)
+    return overlap >= 2 and overlap / min(len(core_tokens), len(masterfile_tokens)) >= 0.5
 
 
 def main() -> dict[str, Any]:

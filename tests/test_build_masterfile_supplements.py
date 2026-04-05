@@ -6,8 +6,8 @@ from scripts.rebuild_dataset import merge_supplemental_ticker_rows
 
 def test_build_supplement_rows_keeps_only_safe_tse_rows():
     core_rows = [
-        {"ticker": "1301", "exchange": "TWSE"},
-        {"ticker": "130A", "exchange": "TSE"},
+        {"ticker": "1301", "exchange": "TWSE", "name": "Formosa Plastics Corporation"},
+        {"ticker": "130A", "exchange": "TSE", "name": "Veritas In Silico Inc."},
     ]
     masterfile_rows = [
         {
@@ -116,8 +116,8 @@ def test_build_supplement_rows_keeps_only_safe_tse_rows():
 
 def test_build_supplement_rows_supports_safe_asx_ams_and_osl_rows():
     core_rows = [
-        {"ticker": "ADYEN", "exchange": "AMS"},
-        {"ticker": "EQNR", "exchange": "NYSE"},
+        {"ticker": "ADYEN", "exchange": "AMS", "name": "Adyen N.V."},
+        {"ticker": "EQNR", "exchange": "NYSE", "name": "Equinor ASA"},
     ]
     masterfile_rows = [
         {
@@ -224,6 +224,109 @@ def test_build_supplement_rows_supports_safe_asx_ams_and_osl_rows():
             "refreshable_existing_rows": 0,
             "colliding_rows_skipped": 1,
         },
+    }
+
+
+def test_build_supplement_rows_supports_safe_b3_and_xetra_rows():
+    core_rows = [
+        {"ticker": "P911", "exchange": "LSE", "name": "Dr. Ing. h.c. F. Porsche AG"},
+        {"ticker": "DTE", "exchange": "NYSE", "name": "Deutsche Telekom AG"},
+    ]
+    masterfile_rows = [
+        {
+            "ticker": "PETR4",
+            "name": "PETROLEO BRASILEIRO S.A. PETROBRAS",
+            "exchange": "B3",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "b3",
+            "source_url": "https://example.com/b3",
+        },
+        {
+            "ticker": "P911",
+            "name": "DR ING HC F PORSCHE AG",
+            "exchange": "XETRA",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "fwb",
+            "source_url": "https://example.com/fwb",
+        },
+        {
+            "ticker": "DTE",
+            "name": "Deutsche Telekom AG",
+            "exchange": "XETRA",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "fwb",
+            "source_url": "https://example.com/fwb",
+        },
+    ]
+
+    rows, summary = build_supplement_rows(core_rows, masterfile_rows)
+
+    assert rows == [
+        {
+            "ticker": "PETR4",
+            "name": "PETROLEO BRASILEIRO S.A. PETROBRAS",
+            "exchange": "B3",
+            "asset_type": "Stock",
+            "sector": "",
+            "country": "Brazil",
+            "country_code": "BR",
+            "isin": "",
+            "aliases": "",
+            "source_key": "b3",
+            "source_url": "https://example.com/b3",
+            "reference_scope": "exchange_directory",
+        }
+    ]
+    assert summary["by_exchange"] == {
+        "B3": {
+            "safe_missing_rows": 1,
+            "refreshable_existing_rows": 0,
+            "colliding_rows_skipped": 0,
+        },
+        "XETRA": {
+            "safe_missing_rows": 0,
+            "refreshable_existing_rows": 0,
+            "colliding_rows_skipped": 2,
+        },
+    }
+
+
+def test_build_supplement_rows_skips_incompatible_same_exchange_refresh():
+    core_rows = [
+        {"ticker": "SVE", "exchange": "XETRA", "name": "SHAREHOLD.VAL.BET.NA O.N."},
+    ]
+    masterfile_rows = [
+        {
+            "ticker": "SVE",
+            "name": "Silver One Resources Inc.",
+            "exchange": "XETRA",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "fwb",
+            "source_url": "https://example.com/fwb",
+        },
+    ]
+
+    rows, summary = build_supplement_rows(core_rows, masterfile_rows)
+
+    assert rows == []
+    assert summary["supplement_rows"] == 0
+    assert summary["safe_missing_rows"] == 0
+    assert summary["refreshable_existing_rows"] == 0
+    assert summary["colliding_rows_skipped"] == 1
+    assert summary["by_exchange"] == {
+        "XETRA": {
+            "safe_missing_rows": 0,
+            "refreshable_existing_rows": 0,
+            "colliding_rows_skipped": 1,
+        }
     }
 
 

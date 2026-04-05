@@ -368,6 +368,63 @@ def test_namespace_collision_respects_manual_isin_corrections(monkeypatch):
     ) is False
 
 
+def test_cleanse_conflicting_isin_rows_clears_peer_company_contamination():
+    from scripts.rebuild_dataset import cleanse_conflicting_isin_rows
+
+    rows = [
+        {
+            "ticker": "RR",
+            "name": "Richtech Robotics Inc. Class B Common Stock",
+            "exchange": "NASDAQ",
+            "asset_type": "Stock",
+            "country": "United Kingdom",
+            "country_code": "GB",
+            "isin": "GB00B63H8491",
+            "aliases": ["rolls royce holdings", "rolls royce adr"],
+        },
+        {
+            "ticker": "RRU",
+            "name": "Rolls-Royce Holdings PLC",
+            "exchange": "XETRA",
+            "asset_type": "Stock",
+            "country": "United Kingdom",
+            "country_code": "GB",
+            "isin": "GB00B63H8491",
+            "aliases": ["rolls royce holdings", "rolls royce adr"],
+        },
+    ]
+
+    cleaned = cleanse_conflicting_isin_rows(rows)
+    richtech = next(row for row in cleaned if row["ticker"] == "RR")
+    rolls = next(row for row in cleaned if row["ticker"] == "RRU")
+
+    assert richtech["isin"] == ""
+    assert richtech["country"] == ""
+    assert richtech["country_code"] == ""
+    assert richtech["aliases"] == []
+    assert rolls["isin"] == "GB00B63H8491"
+    assert rolls["country"] == "United Kingdom"
+
+
+def test_should_drop_contextual_alias_drops_untrusted_shared_alias():
+    from scripts.rebuild_dataset import should_drop_contextual_alias
+
+    row = {
+        "ticker": "WSML",
+        "name": "iShares MSCI World Small-Cap ETF",
+        "exchange": "NASDAQ",
+    }
+    alias_context = {
+        "wealthsimple": {
+            "entities": {"name:ishares|world", "name:wearable|devices"},
+            "matching_entities": set(),
+            "ticker_owner_entities": set(),
+        }
+    }
+
+    assert should_drop_contextual_alias(row, "wealthsimple", alias_context) is True
+
+
 def test_artifact_counts_match():
     tickers_csv = load_csv("tickers.csv")
     aliases_csv = load_csv("aliases.csv")
@@ -408,7 +465,7 @@ def test_readme_stats_and_claims_are_current():
     assert f"| ISIN coverage | {isin_count:,} ({isin_count / total * 100:.1f}%) |" in readme
     assert f"| Sector coverage | {sector_count:,} ({sector_count / total * 100:.1f}%) |" in readme
     assert "| NASDAQ | 4,795 | NASDAQ |" in readme
-    assert "| XETRA | 2,947 | Deutsche Boerse |" in readme
+    assert "| XETRA | 3,017 | Deutsche Boerse |" in readme
     assert "| NYSE | 2,599 | New York Stock Exchange |" in readme
     assert "| ASX | 1,382 | Australian Securities Exchange |" in readme
 
@@ -424,8 +481,8 @@ def test_changelog_and_supporting_docs_are_current():
     assert "Expanded the conservative official supplement layer to safe ASX, AMS, and OSL listings" in changelog
     assert "Improved extended identifier exports with listing-level FIGI matching" in changelog
     assert "## 2.0.0" in changelog
-    assert "62,521 tickers (45,907 stocks, 16,614 ETFs) across 68 exchanges and 68 countries" in changelog
-    assert "102,746 aliases" in changelog
+    assert "62,998 tickers (46,305 stocks, 16,693 ETFs) across 68 exchanges and 68 countries" in changelog
+    assert "101,693 aliases" in changelog
     assert "Keep the dataset build and review scripts dependency-light and easy to trace" in contributing
     assert "one or more `review_queue.json` items" in claude_prompt
 
