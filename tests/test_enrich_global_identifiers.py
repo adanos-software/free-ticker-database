@@ -42,7 +42,7 @@ def test_build_sec_cik_index_normalizes_rows():
     }
 
 
-def test_apply_sec_cik_uses_exact_or_ticker_fallback():
+def test_apply_sec_cik_requires_exact_listing_match():
     rows = [
         {"ticker": "AAPL", "exchange": "NASDAQ", "cik": "", "cik_source": ""},
         {"ticker": "T", "exchange": "XETRA", "cik": "", "cik_source": ""},
@@ -55,10 +55,10 @@ def test_apply_sec_cik_uses_exact_or_ticker_fallback():
         },
     )
 
-    assert updated == 2
+    assert updated == 1
     assert rows[0]["cik"] == "0000320193"
-    assert rows[1]["cik"] == "0000732717"
-    assert rows[1]["cik_source"] == "SEC company_tickers_exchange.json"
+    assert rows[1]["cik"] == ""
+    assert rows[1]["cik_source"] == ""
 
 
 def test_apply_figi_maps_by_listing():
@@ -193,7 +193,7 @@ def test_normalize_company_name_strips_punctuation():
 def test_build_base_identifier_rows_preserves_existing_extended_values(tmp_path, monkeypatch):
     tickers = tmp_path / "tickers.csv"
     tickers.write_text(
-        "ticker,name,exchange,country,asset_type\nAAPL,Apple Inc.,NASDAQ,United States,Stock\n",
+        "ticker,name,exchange,country,country_code,asset_type\nAAPL,Apple Inc.,NASDAQ,United States,US,Stock\n",
         encoding="utf-8",
     )
     identifiers = tmp_path / "identifiers.csv"
@@ -224,6 +224,7 @@ def test_build_base_identifier_rows_preserves_existing_extended_values(tmp_path,
             "lei_source": "GLEIF",
             "name": "Apple Inc.",
             "country": "United States",
+            "country_code": "US",
             "asset_type": "Stock",
         }
     ]

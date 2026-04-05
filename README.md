@@ -37,10 +37,12 @@ Additional reference artifacts:
 | File | Size | Best for |
 |---|---|---|
 | [`data/identifiers_extended.csv`](data/identifiers_extended.csv) | 1.7 MB | FIGI/CIK/LEI enrichment snapshot |
+| [`data/listing_index.csv`](data/listing_index.csv) | 5.2 MB | Listing-keyed identity/export bridge |
 | [`data/masterfiles/reference.csv`](data/masterfiles/reference.csv) | 3.1 MB | Official exchange-masterfile reference rows |
 | [`data/masterfiles/supplemental_listings.csv`](data/masterfiles/supplemental_listings.csv) | 0.3 MB | Safe official listings added to the core export |
 | [`data/history/latest_snapshot.csv`](data/history/latest_snapshot.csv) | 6.1 MB | Current listing-status baseline |
 | [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | 33 KB | Machine-readable coverage metrics |
+| [`data/reports/masterfile_collision_report.json`](data/reports/masterfile_collision_report.json) | 184 KB | Official-symbol gaps blocked by cross-exchange collisions |
 
 ### tickers.csv (flat, Excel-friendly)
 
@@ -91,6 +93,15 @@ AAPL,NASDAQ,US0378331005,865985,,0000320193,,,SEC company_tickers_exchange.json,
 ```
 
 This is an auxiliary enrichment file layered on top of the core dataset. `CIK` comes from the SEC company-ticker reference when available, `FIGI` from OpenFIGI, and `LEI` from GLEIF.
+
+### listing_index.csv (listing-keyed bridge)
+
+```
+listing_key,ticker,exchange,name,asset_type,country,country_code,isin,wkn,figi,cik,lei
+NASDAQ::AAPL,AAPL,NASDAQ,Apple Inc.,Stock,United States,US,US0378331005,865985,,0000320193,
+```
+
+This auxiliary export makes the current listing identity explicit as `exchange::ticker`. It does not replace the core global-unique `ticker` model yet, but it gives downstream users a stable per-listing key and makes future `(ticker, exchange)`-first migrations easier.
 
 ### tickers.json
 
@@ -261,6 +272,13 @@ This writes:
 
 - `data/reports/coverage_report.json`
 - `data/reports/coverage_report.md`
+- `data/reports/masterfile_collision_report.json`
+
+The coverage report now separates official masterfile rows into:
+
+- `match`: listing already present in the core export
+- `collision`: official symbol blocked by the current global-unique `ticker` model because the symbol already exists on another exchange
+- `missing`: official symbol not present and not blocked by a known collision
 
 ## Review Queue
 

@@ -10,7 +10,12 @@
     "figi_coverage": 4275,
     "lei_coverage": 1022,
     "listing_status_rows": 183958,
-    "listing_events": 3214
+    "listing_events": 3214,
+    "listing_keys": 62391,
+    "official_masterfile_symbols": 24263,
+    "official_masterfile_matches": 17505,
+    "official_masterfile_collisions": 3738,
+    "official_masterfile_missing": 3020
   },
   "exchange_coverage": [
     {
@@ -23,7 +28,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 119,
       "masterfile_matches": 75,
-      "masterfile_match_rate": 63.03
+      "masterfile_collisions": 26,
+      "masterfile_missing": 18,
+      "masterfile_match_rate": 63.03,
+      "masterfile_collision_rate": 21.85
     },
     {
       "exchange": "ASX",
@@ -35,7 +43,10 @@
       "lei_coverage": 25,
       "masterfile_symbols": 1979,
       "masterfile_matches": 913,
-      "masterfile_match_rate": 46.13
+      "masterfile_collisions": 919,
+      "masterfile_missing": 147,
+      "masterfile_match_rate": 46.13,
+      "masterfile_collision_rate": 46.44
     },
     {
       "exchange": "ATHEX",
@@ -47,7 +58,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "B3",
@@ -59,7 +73,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "BATS",
@@ -71,7 +88,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 1239,
       "masterfile_matches": 1040,
-      "masterfile_match_rate": 83.94
+      "masterfile_collisions": 167,
+      "masterfile_missing": 32,
+      "masterfile_match_rate": 83.94,
+      "masterfile_collision_rate": 13.48
     },
     {
       "exchange": "BCBA",
@@ -83,7 +103,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "BME",
@@ -95,7 +118,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "BMV",
@@ -107,7 +133,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "BSE_BW",
@@ -119,7 +148,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "BSE_HU",
@@ -131,7 +163,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "BVB",
@@ -143,7 +178,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "BVL",
@@ -155,7 +193,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "Bursa",
@@ -167,7 +208,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "CPH",
@@ -179,7 +223,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "CSE_LK",
@@ -191,7 +238,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "CSE_MA",
@@ -203,7 +253,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "DSE_TZ",
@@ -215,7 +268,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "EGX",
@@ -227,7 +283,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "Euronext",
@@ -239,7 +298,10 @@
       "lei_coverage": 77,
       "masterfile_symbols": 1404,
       "masterfile_matches": 634,
-      "masterfile_match_rate": 45.16
+      "masterfile_collisions": 413,
+      "masterfile_missing": 357,
+      "masterfile_match_rate": 45.16,
+      "masterfile_collision_rate": 29.42
     },
     {
       "exchange": "GSE",
@@ -251,7 +313,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "HEL",
@@ -263,7 +328,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "HOSE",
@@ -275,7 +343,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "ICE_IS",
@@ -287,7 +358,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "IDX",
@@ -299,7 +373,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "ISE",
@@ -311,7 +388,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "JSE",
@@ -323,7 +403,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "KOSDAQ",
@@ -335,7 +418,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "KRX",
@@ -347,7 +433,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "LSE",
@@ -359,7 +448,10 @@
       "lei_coverage": 5,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "LUSE",
@@ -371,7 +463,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "MSE_MW",
@@ -383,7 +478,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "NASDAQ",
@@ -395,7 +493,10 @@
       "lei_coverage": 425,
       "masterfile_symbols": 5430,
       "masterfile_matches": 4543,
-      "masterfile_match_rate": 83.66
+      "masterfile_collisions": 118,
+      "masterfile_missing": 769,
+      "masterfile_match_rate": 83.66,
+      "masterfile_collision_rate": 2.17
     },
     {
       "exchange": "NEO",
@@ -407,7 +508,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "NGX",
@@ -419,7 +523,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "NMFQS",
@@ -431,7 +538,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "NSE_KE",
@@ -443,7 +553,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "NYSE",
@@ -455,7 +568,10 @@
       "lei_coverage": 433,
       "masterfile_symbols": 3829,
       "masterfile_matches": 2359,
-      "masterfile_match_rate": 61.61
+      "masterfile_collisions": 549,
+      "masterfile_missing": 921,
+      "masterfile_match_rate": 61.61,
+      "masterfile_collision_rate": 14.34
     },
     {
       "exchange": "NYSE ARCA",
@@ -467,7 +583,10 @@
       "lei_coverage": 3,
       "masterfile_symbols": 2612,
       "masterfile_matches": 2492,
-      "masterfile_match_rate": 95.41
+      "masterfile_collisions": 106,
+      "masterfile_missing": 14,
+      "masterfile_match_rate": 95.41,
+      "masterfile_collision_rate": 4.06
     },
     {
       "exchange": "NYSE MKT",
@@ -479,7 +598,10 @@
       "lei_coverage": 29,
       "masterfile_symbols": 314,
       "masterfile_matches": 235,
-      "masterfile_match_rate": 74.84
+      "masterfile_collisions": 24,
+      "masterfile_missing": 55,
+      "masterfile_match_rate": 74.84,
+      "masterfile_collision_rate": 7.64
     },
     {
       "exchange": "NYSEARCA",
@@ -491,7 +613,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "OSL",
@@ -503,7 +628,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 297,
       "masterfile_matches": 224,
-      "masterfile_match_rate": 75.42
+      "masterfile_collisions": 64,
+      "masterfile_missing": 9,
+      "masterfile_match_rate": 75.42,
+      "masterfile_collision_rate": 21.55
     },
     {
       "exchange": "OTC",
@@ -515,7 +643,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 2596,
       "masterfile_matches": 1776,
-      "masterfile_match_rate": 68.41
+      "masterfile_collisions": 123,
+      "masterfile_missing": 697,
+      "masterfile_match_rate": 68.41,
+      "masterfile_collision_rate": 4.74
     },
     {
       "exchange": "OTCCE",
@@ -527,7 +658,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "OTCMKTS",
@@ -539,7 +673,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "PSE",
@@ -551,7 +688,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "PSE_CZ",
@@ -563,7 +703,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "PSX",
@@ -575,7 +718,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "RSE",
@@ -587,7 +733,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "SEM",
@@ -599,7 +748,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "SET",
@@ -611,7 +763,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "SIX",
@@ -623,7 +778,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "SSE",
@@ -635,7 +793,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "SSE_CL",
@@ -647,7 +808,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "STO",
@@ -659,7 +823,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "SZSE",
@@ -671,7 +838,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "TASE",
@@ -683,7 +853,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "TPEX",
@@ -695,7 +868,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "TSE",
@@ -707,7 +883,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 4444,
       "masterfile_matches": 3214,
-      "masterfile_match_rate": 72.32
+      "masterfile_collisions": 1229,
+      "masterfile_missing": 1,
+      "masterfile_match_rate": 72.32,
+      "masterfile_collision_rate": 27.66
     },
     {
       "exchange": "TSX",
@@ -719,7 +898,10 @@
       "lei_coverage": 23,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "TSXV",
@@ -731,7 +913,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "TWSE",
@@ -743,7 +928,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "US",
@@ -755,7 +943,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "USE_UG",
@@ -767,7 +958,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "VSE",
@@ -779,7 +973,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "WSE",
@@ -791,7 +988,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "XETRA",
@@ -803,7 +1003,10 @@
       "lei_coverage": 2,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "ZSE",
@@ -815,7 +1018,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     },
     {
       "exchange": "ZSE_ZW",
@@ -827,7 +1033,10 @@
       "lei_coverage": 0,
       "masterfile_symbols": 0,
       "masterfile_matches": 0,
-      "masterfile_match_rate": null
+      "masterfile_collisions": 0,
+      "masterfile_missing": 0,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null
     }
   ],
   "country_coverage": [

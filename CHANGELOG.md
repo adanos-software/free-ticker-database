@@ -7,8 +7,10 @@
 - Added official JPX listed-issues ingestion plus a conservative masterfile supplement layer for collision-free TSE listings
 - Added SEC official-snapshot cache fallback for environments blocked from live SEC downloads
 - Activated live CIK enrichment from the official SEC snapshot and persisted the cache for repeatable runs
+- Added `listing_index.csv` as a listing-keyed bridge artifact using `exchange::ticker`
+- Added masterfile collision reporting to separate official-symbol matches, collisions, and true missing rows
 - Added listing snapshot/history artifacts for listings, renames, and delistings
-- Improved extended identifier exports with listing-level FIGI matching, retry-safe partial progress, and ISIN-first LEI backfills
+- Improved extended identifier exports with listing-level FIGI matching, exact listing-level CIK matching, retry-safe partial progress, and ISIN-first LEI backfills
 - Added exchange/country coverage reports beyond the alias-quality audit
 
 ## 2.0.0

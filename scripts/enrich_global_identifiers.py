@@ -10,12 +10,18 @@ from typing import Any, Callable, TypeVar
 
 import requests
 
+try:
+    from scripts.listing_keys import row_listing_key
+except ModuleNotFoundError:  # pragma: no cover - script execution path
+    from listing_keys import row_listing_key
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
 TICKERS_CSV = DATA_DIR / "tickers.csv"
 IDENTIFIERS_CSV = DATA_DIR / "identifiers.csv"
 IDENTIFIERS_EXTENDED_CSV = DATA_DIR / "identifiers_extended.csv"
+LISTING_INDEX_CSV = DATA_DIR / "listing_index.csv"
 IDENTIFIER_SUMMARY_JSON = DATA_DIR / "identifier_summary.json"
 MASTERFILES_DIR = DATA_DIR / "masterfiles"
 SEC_COMPANY_TICKERS_CACHE = MASTERFILES_DIR / "cache" / "sec_company_tickers_exchange.json"
@@ -182,6 +188,7 @@ def build_base_identifier_rows() -> list[dict[str, str]]:
                 "lei_source": existing_row.get("lei_source", ""),
                 "name": ticker_row["name"],
                 "country": ticker_row["country"],
+                "country_code": ticker_row.get("country_code", ""),
                 "asset_type": ticker_row["asset_type"],
             }
         )
@@ -204,9 +211,8 @@ def build_sec_cik_index(payload: dict[str, Any]) -> dict[tuple[str, str], str]:
 
 def apply_sec_cik(rows: list[dict[str, str]], cik_index: dict[tuple[str, str], str]) -> int:
     updated = 0
-    by_ticker = {ticker: cik for (ticker, _exchange), cik in cik_index.items()}
     for row in rows:
-        cik = cik_index.get((row["ticker"], row["exchange"])) or by_ticker.get(row["ticker"], "")
+        cik = cik_index.get((row["ticker"], row["exchange"]), "")
         if cik:
             row["cik"] = cik
             row["cik_source"] = "SEC company_tickers_exchange.json"
@@ -444,6 +450,41 @@ def persist_rows(rows: list[dict[str, str]]) -> dict[str, Any]:
         IDENTIFIERS_EXTENDED_CSV,
         fieldnames,
         [{field: row.get(field, "") for field in fieldnames} for row in rows],
+    )
+    listing_index_fieldnames = [
+        "listing_key",
+        "ticker",
+        "exchange",
+        "name",
+        "asset_type",
+        "country",
+        "country_code",
+        "isin",
+        "wkn",
+        "figi",
+        "cik",
+        "lei",
+    ]
+    write_csv(
+        LISTING_INDEX_CSV,
+        listing_index_fieldnames,
+        [
+            {
+                "listing_key": row_listing_key(row),
+                "ticker": row["ticker"],
+                "exchange": row["exchange"],
+                "name": row.get("name", ""),
+                "asset_type": row.get("asset_type", ""),
+                "country": row.get("country", ""),
+                "country_code": row.get("country_code", ""),
+                "isin": row.get("isin", ""),
+                "wkn": row.get("wkn", ""),
+                "figi": row.get("figi", ""),
+                "cik": row.get("cik", ""),
+                "lei": row.get("lei", ""),
+            }
+            for row in rows
+        ],
     )
     summary = build_summary(rows)
     IDENTIFIER_SUMMARY_JSON.write_text(json.dumps(summary, indent=2), encoding="utf-8")

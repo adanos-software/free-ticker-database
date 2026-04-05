@@ -419,9 +419,13 @@ def test_open_source_project_files_exist_and_are_linked():
     assert (DATA_DIR / "masterfiles" / "reference.csv").exists()
     assert (DATA_DIR / "history" / "latest_snapshot.csv").exists()
     assert (DATA_DIR / "identifiers_extended.csv").exists()
+    assert (DATA_DIR / "listing_index.csv").exists()
     assert (DATA_DIR / "reports" / "coverage_report.json").exists()
+    assert (DATA_DIR / "reports" / "masterfile_collision_report.json").exists()
     assert "identifiers_extended.csv" in readme
+    assert "listing_index.csv" in readme
     assert "coverage_report.json" in readme
+    assert "masterfile_collision_report.json" in readme
 
     assert "[![CI]" in readme
     assert "## Project Health" in readme
