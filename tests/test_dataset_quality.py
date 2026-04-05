@@ -240,6 +240,25 @@ def test_safe_tse_supplements_are_present_without_cross_exchange_collisions():
     assert ticker_exchange_row("1301", "TWSE") is not None
 
 
+def test_supplement_only_rows_do_not_inherit_cross_exchange_aliases():
+    aeu = ticker_exchange_row("AEU", "ASX")
+    azt = ticker_exchange_row("AZT", "OSL")
+    prs = ticker_exchange_row("PRS", "OSL")
+    eam = ticker_exchange_row("EAM", "OSL")
+
+    assert aeu is not None
+    assert aeu["aliases"] == "atomic eagle"
+
+    assert azt is not None
+    assert azt["aliases"] == "arcticzymes technologies a"
+
+    assert prs is not None
+    assert prs["aliases"] == "prosafe"
+
+    assert eam is not None
+    assert eam["aliases"] == "eam solar a"
+
+
 def test_contaminated_us_primaries_cleaned():
     aapl = ticker_row("AAPL")
     msft = ticker_row("MSFT")
@@ -260,9 +279,12 @@ def test_contaminated_us_primaries_cleaned():
 
 def test_depositary_and_cross_issuer_aliases_removed():
     ubs = ticker_row("UBS")
+    asml_ams = ticker_exchange_row("ASML", "AMS")
 
     assert ticker_row("ARM") is None
-    assert ticker_row("ASML") is None
+    assert asml_ams is not None
+    assert asml_ams["country"] == "Netherlands"
+    assert asml_ams["aliases"] == ""
     assert "ubm development" not in ubs["aliases"]
     assert "united bus service" not in ubs["aliases"]
     assert "urbas grupo financiero" not in ubs["aliases"]
@@ -385,10 +407,10 @@ def test_readme_stats_and_claims_are_current():
     assert f"| Total aliases | {len(aliases_csv):,} |" in readme
     assert f"| ISIN coverage | {isin_count:,} ({isin_count / total * 100:.1f}%) |" in readme
     assert f"| Sector coverage | {sector_count:,} ({sector_count / total * 100:.1f}%) |" in readme
-    assert "| NASDAQ | 4,819 | NASDAQ |" in readme
+    assert "| NASDAQ | 4,795 | NASDAQ |" in readme
     assert "| XETRA | 2,947 | Deutsche Boerse |" in readme
-    assert "| NYSE | 2,618 | New York Stock Exchange |" in readme
-    assert "| ASX | 1,236 | Australian Securities Exchange |" in readme
+    assert "| NYSE | 2,599 | New York Stock Exchange |" in readme
+    assert "| ASX | 1,382 | Australian Securities Exchange |" in readme
 
 
 def test_changelog_and_supporting_docs_are_current():
@@ -399,10 +421,11 @@ def test_changelog_and_supporting_docs_are_current():
     assert "## Unreleased" in changelog
     assert "Added official Euronext live equities directory ingestion" in changelog
     assert "Added official JPX listed-issues ingestion plus a conservative masterfile supplement layer for collision-free TSE listings" in changelog
+    assert "Expanded the conservative official supplement layer to safe ASX, AMS, and OSL listings" in changelog
     assert "Improved extended identifier exports with listing-level FIGI matching" in changelog
     assert "## 2.0.0" in changelog
-    assert "62,391 tickers (45,932 stocks, 16,459 ETFs) across 68 exchanges and 68 countries" in changelog
-    assert "102,943 aliases" in changelog
+    assert "62,521 tickers (45,907 stocks, 16,614 ETFs) across 68 exchanges and 68 countries" in changelog
+    assert "102,746 aliases" in changelog
     assert "Keep the dataset build and review scripts dependency-light and easy to trace" in contributing
     assert "one or more `review_queue.json` items" in claude_prompt
 

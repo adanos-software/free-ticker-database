@@ -750,6 +750,7 @@ def country_from_isin(isin: str) -> str | None:
 def load_data():
     with TICKERS_CSV.open(newline="") as handle:
         ticker_rows = list(csv.DictReader(handle))
+    core_row_keys = {(row["ticker"], row["exchange"]) for row in ticker_rows}
 
     with ALIASES_CSV.open(newline="") as handle:
         alias_rows = list(csv.DictReader(handle))
@@ -772,7 +773,7 @@ def load_data():
 
     ticker_rows = merge_supplemental_ticker_rows(ticker_rows)
 
-    return ticker_rows, alias_type_lookup, extra_aliases, identifier_lookup
+    return ticker_rows, alias_type_lookup, extra_aliases, identifier_lookup, core_row_keys
 
 
 def load_supplemental_ticker_rows() -> list[dict[str, str]]:
@@ -885,7 +886,7 @@ def apply_output_metadata_overrides(
 
 
 def cleaned_rows():
-    ticker_rows, alias_type_lookup, extra_aliases, identifier_lookup = load_data()
+    ticker_rows, alias_type_lookup, extra_aliases, identifier_lookup, core_row_keys = load_data()
     review_alias_removals, review_metadata_updates, review_drop_entries = load_review_overrides()
 
     base_rows: list[dict[str, str]] = []
@@ -896,11 +897,14 @@ def cleaned_rows():
         if should_exclude_stock_row(row):
             continue
         merged = apply_input_metadata_overrides(dict(row), review_metadata_updates.get(row_key, {}))
-        merged_aliases = split_aliases(row["aliases"]) + extra_aliases.get(row["ticker"], [])
+        merged_aliases = split_aliases(row["aliases"])
+        identifier = None
+        if row_key in core_row_keys:
+            merged_aliases.extend(extra_aliases.get(row["ticker"], []))
+            identifier = identifier_lookup.get(row["ticker"])
         alias_removals = review_alias_removals.get(row_key, set())
         if alias_removals:
             merged_aliases = [alias for alias in merged_aliases if alias not in alias_removals]
-        identifier = identifier_lookup.get(row["ticker"])
         if identifier and identifier["wkn"]:
             merged_aliases.append(identifier["wkn"])
         merged["aliases"] = merged_aliases

@@ -9,14 +9,14 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 62
 
 | Metric | Value |
 |---|---|
-| **Total tickers** | 62,391 |
-| Stocks | 45,932 |
-| ETFs | 16,459 |
+| **Total tickers** | 62,521 |
+| Stocks | 45,907 |
+| ETFs | 16,614 |
 | Exchanges | 68 |
 | Countries | 68 |
-| ISIN coverage | 45,039 (72.2%) |
-| Sector coverage | 38,894 (62.3%) |
-| Total aliases | 102,943 |
+| ISIN coverage | 44,919 (71.8%) |
+| Sector coverage | 38,866 (62.2%) |
+| Total aliases | 102,746 |
 
 ## Formats
 
@@ -109,8 +109,8 @@ This auxiliary export makes the current listing identity explicit as `exchange::
 {
   "_meta": {
     "version": "2.0.0",
-    "built_at": "2026-04-04T15:53:08Z",
-    "total_tickers": 62391
+    "built_at": "2026-04-05T13:16:09Z",
+    "total_tickers": 62521
   },
   "tickers": [
     {
@@ -143,7 +143,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (62,391 rows) + `aliases` (102,943 rows) + `cross_listings` (10,165 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
+Tables: `tickers` (62,521 rows) + `aliases` (102,746 rows) + `cross_listings` (10,107 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
 
 ## Schema
 
@@ -174,17 +174,17 @@ Tables: `tickers` (62,391 rows) + `aliases` (102,943 rows) + `cross_listings` (1
 |---|---|---|
 | OTC | 10,596 | US OTC / Pink Sheets |
 | LSE | 6,409 | London Stock Exchange |
-| NASDAQ | 4,819 | NASDAQ |
+| NASDAQ | 4,795 | NASDAQ |
 | SZSE | 3,096 | Shenzhen Stock Exchange |
 | XETRA | 2,947 | Deutsche Boerse |
 | SSE | 2,811 | Shanghai Stock Exchange |
-| NYSE | 2,618 | New York Stock Exchange |
+| NYSE | 2,599 | New York Stock Exchange |
 | NYSE ARCA | 2,619 | NYSE ARCA (ETFs) |
 | KRX | 2,282 | Korea Exchange |
 | TSX | 1,766 | Toronto Stock Exchange |
 | B3 | 1,773 | Sao Paulo Exchange |
 | TWSE | 1,245 | Taiwan Stock Exchange |
-| ASX | 1,236 | Australian Securities Exchange |
+| ASX | 1,382 | Australian Securities Exchange |
 | KOSDAQ | 1,140 | Korean OTC |
 | TPEX | 1,126 | Taipei Exchange |
 | + 52 more | ... | |
@@ -210,12 +210,26 @@ The repo now includes a second layer of reference tooling beyond the core datase
 - listing-status / rename / delisting history baselines
 - extended identifiers (`FIGI`, `CIK`, `LEI`)
 - exchange/country coverage reports
+- chunked stock-universe verification against official exchange directories
 
 Generate the official masterfile reference rows:
 
 ```bash
 python3 scripts/fetch_exchange_masterfiles.py
 ```
+
+Verify the stock universe against the official reference layer in 10 local chunks:
+
+```bash
+for i in $(seq 1 10); do
+  python3 scripts/verify_stock_masterfiles.py --chunk-index "$i" --chunk-count 10 &
+done
+wait
+python3 scripts/summarize_stock_masterfile_verification.py
+python3 scripts/build_stock_verification_overrides.py
+```
+
+This flow is used to identify stale company names, non-active test symbols, and stock rows that official exchange directories classify as ETFs, notes, warrants, preferreds, or depositary lines.
 
 Current live sources:
 
@@ -233,7 +247,7 @@ Generate safe official listing supplements:
 python3 scripts/build_masterfile_supplements.py
 ```
 
-This currently adds only collision-free official listings that fit the core dataset's global-unique `ticker` model. Today that means `TSE` rows that do not collide with existing numeric symbols on other venues.
+This currently adds only collision-free official listings that fit the core dataset's global-unique `ticker` model. Today that includes safe `TSE`, `ASX`, `AMS`, and `OSL` rows that do not collide with existing symbols on other venues.
 
 Generate listing history artifacts:
 

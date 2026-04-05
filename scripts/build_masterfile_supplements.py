@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -18,11 +19,27 @@ MASTERFILE_SUPPLEMENT_CSV = DATA_DIR / "masterfiles" / "supplemental_listings.cs
 MASTERFILE_SUPPLEMENT_SUMMARY_JSON = DATA_DIR / "masterfiles" / "supplemental_summary.json"
 
 SUPPLEMENT_EXCHANGES: dict[str, dict[str, str]] = {
+    "AMS": {
+        "country": "Netherlands",
+        "country_code": "NL",
+    },
+    "ASX": {
+        "country": "Australia",
+        "country_code": "AU",
+    },
+    "OSL": {
+        "country": "Norway",
+        "country_code": "NO",
+    },
     "TSE": {
         "country": "Japan",
         "country_code": "JP",
     }
 }
+
+SUPPLEMENT_EXCLUDED_STOCK_PATTERNS = [
+    re.compile(r"\babs trust\b", re.IGNORECASE),
+]
 
 
 def load_csv(path: Path) -> list[dict[str, str]]:
@@ -99,6 +116,12 @@ def build_supplement_rows(
             "source_url": row.get("source_url", ""),
             "reference_scope": row.get("reference_scope", ""),
         }
+        if candidate["asset_type"] == "Stock" and any(
+            pattern.search(candidate["name"]) for pattern in SUPPLEMENT_EXCLUDED_STOCK_PATTERNS
+        ):
+            summary["colliding_rows_skipped"] += 1
+            stats["colliding_rows_skipped"] += 1
+            continue
         if should_exclude_stock_row(candidate):
             summary["colliding_rows_skipped"] += 1
             stats["colliding_rows_skipped"] += 1

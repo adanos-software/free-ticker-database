@@ -1,0 +1,214 @@
+from __future__ import annotations
+
+import csv
+import json
+from pathlib import Path
+
+import pytest
+
+from scripts.verify_stock_masterfiles import (
+    chunk_stem,
+    classify_row,
+    is_code_like_reference_name,
+    load_stock_rows,
+    select_chunk,
+    summarize_results,
+)
+
+
+def write_csv(path: Path, fieldnames: list[str], rows: list[dict[str, str]]) -> None:
+    with path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def test_load_stock_rows_filters_and_sorts(tmp_path: Path) -> None:
+    path = tmp_path / "tickers.csv"
+    write_csv(
+        path,
+        ["ticker", "exchange", "asset_type", "name", "country", "country_code", "isin", "sector"],
+        [
+            {"ticker": "B", "exchange": "NYSE", "asset_type": "Stock", "name": "B", "country": "United States", "country_code": "US", "isin": "", "sector": ""},
+            {"ticker": "A", "exchange": "NASDAQ", "asset_type": "ETF", "name": "A", "country": "United States", "country_code": "US", "isin": "", "sector": ""},
+            {"ticker": "A", "exchange": "NYSE", "asset_type": "Stock", "name": "A", "country": "United States", "country_code": "US", "isin": "", "sector": ""},
+        ],
+    )
+    rows = load_stock_rows(path)
+    assert [(row["exchange"], row["ticker"]) for row in rows] == [("NYSE", "A"), ("NYSE", "B")]
+
+
+def test_select_chunk_is_complete_and_disjoint() -> None:
+    rows = [{"ticker": str(index), "exchange": "X"} for index in range(10)]
+    first = select_chunk(rows, chunk_index=1, chunk_count=3)
+    second = select_chunk(rows, chunk_index=2, chunk_count=3)
+    third = select_chunk(rows, chunk_index=3, chunk_count=3)
+    assert {row["ticker"] for row in first}.isdisjoint({row["ticker"] for row in second})
+    assert {row["ticker"] for row in first}.isdisjoint({row["ticker"] for row in third})
+    assert sorted(int(row["ticker"]) for row in [*first, *second, *third]) == list(range(10))
+
+
+def test_select_chunk_validates_bounds() -> None:
+    with pytest.raises(ValueError):
+        select_chunk([], chunk_index=0, chunk_count=1)
+    with pytest.raises(ValueError):
+        select_chunk([], chunk_index=2, chunk_count=1)
+
+
+def test_chunk_stem_is_stable() -> None:
+    assert chunk_stem(3, 10) == "chunk-03-of-10"
+
+
+def test_classify_row_verified() -> None:
+    row = {
+        "ticker": "AALB",
+        "exchange": "AMS",
+        "asset_type": "Stock",
+        "name": "Aalberts NV",
+        "country": "Netherlands",
+        "country_code": "NL",
+        "isin": "",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={("AMS", "AALB"): [{"ticker": "AALB", "exchange": "AMS", "name": "AALBERTS NV", "asset_type": "Stock", "source_key": "euronext_equities"}]},
+        any_by_key={},
+        active_by_ticker={"AALB": [{"ticker": "AALB", "exchange": "AMS", "name": "AALBERTS NV", "asset_type": "Stock"}]},
+        covered_exchanges={"AMS"},
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+
+
+def test_classify_row_name_mismatch() -> None:
+    row = {
+        "ticker": "AALB",
+        "exchange": "AMS",
+        "asset_type": "Stock",
+        "name": "Wrong Co",
+        "country": "Netherlands",
+        "country_code": "NL",
+        "isin": "",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={("AMS", "AALB"): [{"ticker": "AALB", "exchange": "AMS", "name": "AALBERTS NV", "asset_type": "Stock", "source_key": "euronext_equities"}]},
+        any_by_key={},
+        active_by_ticker={"AALB": [{"ticker": "AALB", "exchange": "AMS", "name": "AALBERTS NV", "asset_type": "Stock"}]},
+        covered_exchanges={"AMS"},
+        identifier_map={},
+    )
+    assert result["status"] == "name_mismatch"
+
+
+def test_classify_row_non_active_official() -> None:
+    row = {
+        "ticker": "ATEST",
+        "exchange": "NYSE MKT",
+        "asset_type": "Stock",
+        "name": "Tick Pilot Test Control Common Stock",
+        "country": "United States",
+        "country_code": "US",
+        "isin": "",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={},
+        any_by_key={("NYSE MKT", "ATEST"): [{"ticker": "ATEST", "exchange": "NYSE MKT", "name": "Tick Pilot Test Control Common Stock", "asset_type": "Stock", "listing_status": "test", "source_key": "nasdaq_other_listed"}]},
+        active_by_ticker={},
+        covered_exchanges={"NYSE MKT"},
+        identifier_map={},
+    )
+    assert result["status"] == "non_active_official"
+
+
+def test_classify_row_collision() -> None:
+    row = {
+        "ticker": "1301",
+        "exchange": "TWSE",
+        "asset_type": "Stock",
+        "name": "Formosa Plastics Corp",
+        "country": "Taiwan",
+        "country_code": "TW",
+        "isin": "",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={},
+        any_by_key={},
+        active_by_ticker={"1301": [{"ticker": "1301", "exchange": "TSE", "name": "KYOKUYO CO.,LTD.", "asset_type": "Stock"}]},
+        covered_exchanges={"TWSE"},
+        identifier_map={},
+    )
+    assert result["status"] == "cross_exchange_collision"
+
+
+def test_classify_row_prefers_non_sec_stock_evidence() -> None:
+    row = {
+        "ticker": "FCBC",
+        "exchange": "NASDAQ",
+        "asset_type": "Stock",
+        "name": "First Community Bancshares Inc",
+        "country": "United States",
+        "country_code": "US",
+        "isin": "",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("NASDAQ", "FCBC"): [
+                {"ticker": "FCBC", "exchange": "NASDAQ", "name": "FIRST COMMUNITY BANKSHARES INC /VA/", "asset_type": "ETF", "source_key": "sec_company_tickers_exchange"},
+                {"ticker": "FCBC", "exchange": "NASDAQ", "name": "First Community Bankshares, Inc. - Common Stock", "asset_type": "Stock", "source_key": "nasdaq_listed"},
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={"FCBC": [{"ticker": "FCBC", "exchange": "NASDAQ", "name": "First Community Bankshares, Inc. - Common Stock", "asset_type": "Stock"}]},
+        covered_exchanges={"NASDAQ"},
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+
+
+def test_classify_row_treats_otc_missing_as_reference_gap() -> None:
+    row = {
+        "ticker": "AABB",
+        "exchange": "OTC",
+        "asset_type": "Stock",
+        "name": "Asia Broadband Inc",
+        "country": "United States",
+        "country_code": "US",
+        "isin": "",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={},
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges={"OTC"},
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+
+
+def test_is_code_like_reference_name_handles_compact_trading_labels() -> None:
+    assert is_code_like_reference_name("MBWS", "MBWS")
+    assert not is_code_like_reference_name("First Community Bankshares, Inc. - Common Stock", "FCBC")
+
+
+def test_summarize_results_counts_bad_statuses() -> None:
+    summary = summarize_results(
+        [
+            {"status": "verified"},
+            {"status": "name_mismatch", "ticker": "A", "exchange": "X"},
+            {"status": "missing_from_official", "ticker": "B", "exchange": "Y"},
+        ]
+    )
+    assert summary["items"] == 3
+    assert summary["status_counts"]["verified"] == 1
+    assert len(summary["finding_examples"]) == 2

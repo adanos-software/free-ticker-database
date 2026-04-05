@@ -114,6 +114,119 @@ def test_build_supplement_rows_keeps_only_safe_tse_rows():
     assert summary["colliding_rows_skipped"] == 2
 
 
+def test_build_supplement_rows_supports_safe_asx_ams_and_osl_rows():
+    core_rows = [
+        {"ticker": "ADYEN", "exchange": "AMS"},
+        {"ticker": "EQNR", "exchange": "NYSE"},
+    ]
+    masterfile_rows = [
+        {
+            "ticker": "49M",
+            "name": "49 METALS LIMITED",
+            "exchange": "ASX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "asx",
+            "source_url": "https://example.com/asx",
+        },
+        {
+            "ticker": "AC2",
+            "name": "ALLIED CREDIT ABS TRUST 2025-1P",
+            "exchange": "ASX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "asx",
+            "source_url": "https://example.com/asx",
+        },
+        {
+            "ticker": "ASML",
+            "name": "ASML HOLDING",
+            "exchange": "AMS",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "euronext",
+            "source_url": "https://example.com/ams",
+        },
+        {
+            "ticker": "AZRNW",
+            "name": "AZERION WARRANTS",
+            "exchange": "AMS",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "euronext",
+            "source_url": "https://example.com/ams",
+        },
+        {
+            "ticker": "EQNR",
+            "name": "EQUINOR",
+            "exchange": "OSL",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "euronext",
+            "source_url": "https://example.com/osl",
+        },
+    ]
+
+    rows, summary = build_supplement_rows(core_rows, masterfile_rows)
+
+    assert rows == [
+        {
+            "ticker": "ASML",
+            "name": "ASML HOLDING",
+            "exchange": "AMS",
+            "asset_type": "Stock",
+            "sector": "",
+            "country": "Netherlands",
+            "country_code": "NL",
+            "isin": "",
+            "aliases": "",
+            "source_key": "euronext",
+            "source_url": "https://example.com/ams",
+            "reference_scope": "exchange_directory",
+        },
+        {
+            "ticker": "49M",
+            "name": "49 METALS LIMITED",
+            "exchange": "ASX",
+            "asset_type": "Stock",
+            "sector": "",
+            "country": "Australia",
+            "country_code": "AU",
+            "isin": "",
+            "aliases": "",
+            "source_key": "asx",
+            "source_url": "https://example.com/asx",
+            "reference_scope": "exchange_directory",
+        },
+    ]
+    assert summary["supplement_rows"] == 2
+    assert summary["safe_missing_rows"] == 2
+    assert summary["refreshable_existing_rows"] == 0
+    assert summary["colliding_rows_skipped"] == 3
+    assert summary["by_exchange"] == {
+        "AMS": {
+            "safe_missing_rows": 1,
+            "refreshable_existing_rows": 0,
+            "colliding_rows_skipped": 1,
+        },
+        "ASX": {
+            "safe_missing_rows": 1,
+            "refreshable_existing_rows": 0,
+            "colliding_rows_skipped": 1,
+        },
+        "OSL": {
+            "safe_missing_rows": 0,
+            "refreshable_existing_rows": 0,
+            "colliding_rows_skipped": 1,
+        },
+    }
+
+
 def test_merge_supplemental_ticker_rows_refreshes_safe_fields(monkeypatch, tmp_path):
     supplemental = tmp_path / "supplemental.csv"
     supplemental.write_text(

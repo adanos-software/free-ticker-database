@@ -1,17 +1,17 @@
 {
   "global": {
     "official_symbols": 24263,
-    "matched": 17505,
-    "collisions": 3738,
-    "missing": 3020
+    "matched": 17641,
+    "collisions": 3765,
+    "missing": 2857
   },
   "exchanges": [
     {
       "exchange": "AMS",
       "official_symbols": 119,
-      "matched": 75,
+      "matched": 89,
       "collisions": 26,
-      "missing": 18,
+      "missing": 4,
       "collision_examples": [
         {
           "ticker": "AGIL",
@@ -96,53 +96,23 @@
       ],
       "missing_examples": [
         {
-          "ticker": "ASML",
-          "name": "ASML HOLDING",
-          "exchange": "AMS"
-        },
-        {
           "ticker": "AZRNW",
           "name": "AZERION WARRANTS",
           "exchange": "AMS"
         },
         {
-          "ticker": "BACE",
-          "name": "BM3EAC",
+          "ticker": "NAIW",
+          "name": "NAI WARRANTS",
           "exchange": "AMS"
         },
         {
-          "ticker": "BNJW",
-          "name": "BANIJAY GROUP WARR",
+          "ticker": "PPLA",
+          "name": "PPLA European Unit",
           "exchange": "AMS"
         },
         {
-          "ticker": "CABLE",
-          "name": "GIG",
-          "exchange": "AMS"
-        },
-        {
-          "ticker": "DSC2S",
-          "name": "CABKA DSC2 TS",
-          "exchange": "AMS"
-        },
-        {
-          "ticker": "DSCW2",
-          "name": "CABKA EUR 12W",
-          "exchange": "AMS"
-        },
-        {
-          "ticker": "DSCW3",
-          "name": "CABKA EUR 13W",
-          "exchange": "AMS"
-        },
-        {
-          "ticker": "INPHI",
-          "name": "PHILIPS BUY BACK",
-          "exchange": "AMS"
-        },
-        {
-          "ticker": "NAI",
-          "name": "NAI ORD SHARES",
+          "ticker": "QEVW",
+          "name": "QEV WARRANTS",
           "exchange": "AMS"
         }
       ]
@@ -150,9 +120,9 @@
     {
       "exchange": "ASX",
       "official_symbols": 1979,
-      "matched": 913,
+      "matched": 1059,
       "collisions": 919,
-      "missing": 147,
+      "missing": 1,
       "collision_examples": [
         {
           "ticker": "14D",
@@ -237,53 +207,8 @@
       ],
       "missing_examples": [
         {
-          "ticker": "49M",
-          "name": "49 METALS LIMITED",
-          "exchange": "ASX"
-        },
-        {
-          "ticker": "4DS",
-          "name": "4DS MEMORY LIMITED",
-          "exchange": "ASX"
-        },
-        {
-          "ticker": "AC2",
-          "name": "ALLIED CREDIT ABS TRUST 2025-1P",
-          "exchange": "ASX"
-        },
-        {
-          "ticker": "AC3",
-          "name": "ALLIED CREDIT ABS TRUST 2025-2",
-          "exchange": "ASX"
-        },
-        {
-          "ticker": "AEG",
-          "name": "ALAND EQUITY GROUP LIMITED",
-          "exchange": "ASX"
-        },
-        {
-          "ticker": "AF2",
-          "name": "ANGLE ASSET FINANCE - RADIAN TRUST 2025-1",
-          "exchange": "ASX"
-        },
-        {
-          "ticker": "AF4",
-          "name": "AFG 2024-1 TRUST IN RESPECT OF SERIES 2024-1",
-          "exchange": "ASX"
-        },
-        {
-          "ticker": "AF5",
-          "name": "AFG 2025-1NC TRUST IN RESPECT OF SERIES 2025-1NC",
-          "exchange": "ASX"
-        },
-        {
-          "ticker": "AF6",
-          "name": "AFG 2025-1 TRUST IN RESPECT OF SERIES 2025-1",
-          "exchange": "ASX"
-        },
-        {
-          "ticker": "AF7",
-          "name": "ANGLE ASSET FINANCE - RADIAN TRUST 2025-2",
+          "ticker": "RRE",
+          "name": "RIGHT RESOURCES LIMITED",
           "exchange": "ASX"
         }
       ]
@@ -292,8 +217,8 @@
       "exchange": "BATS",
       "official_symbols": 1239,
       "matched": 1040,
-      "collisions": 167,
-      "missing": 32,
+      "collisions": 168,
+      "missing": 31,
       "collision_examples": [
         {
           "ticker": "AAAA",
@@ -398,11 +323,6 @@
           "exchange": "BATS"
         },
         {
-          "ticker": "BEZ",
-          "name": "Tradr 2X Short BE Daily ETF",
-          "exchange": "BATS"
-        },
-        {
           "ticker": "BTFL",
           "name": "Defiance Daily Target 2X Long BITF ETF",
           "exchange": "BATS"
@@ -426,6 +346,11 @@
           "ticker": "CRDD",
           "name": "Cardano ETF",
           "exchange": "BATS"
+        },
+        {
+          "ticker": "CRDX",
+          "name": "2x Cardano ETF",
+          "exchange": "BATS"
         }
       ]
     },
@@ -433,8 +358,8 @@
       "exchange": "Euronext",
       "official_symbols": 1404,
       "matched": 634,
-      "collisions": 413,
-      "missing": 357,
+      "collisions": 414,
+      "missing": 356,
       "collision_examples": [
         {
           "ticker": "8GW",
@@ -573,9 +498,9 @@
     {
       "exchange": "NASDAQ",
       "official_symbols": 5430,
-      "matched": 4543,
-      "collisions": 118,
-      "missing": 769,
+      "matched": 4524,
+      "collisions": 124,
+      "missing": 782,
       "collision_examples": [
         {
           "ticker": "ACFN",
@@ -634,6 +559,14 @@
           ]
         },
         {
+          "ticker": "ASML",
+          "name": "ASML Holding N.V. - New York Registry Shares",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "AMS"
+          ]
+        },
+        {
           "ticker": "AVBH",
           "name": "Avidbank Holdings, Inc. - Common Stock",
           "target_exchange": "NASDAQ",
@@ -647,14 +580,6 @@
           "target_exchange": "NASDAQ",
           "existing_exchanges": [
             "OTC"
-          ]
-        },
-        {
-          "ticker": "AVOS",
-          "name": "Avos Global Equities ETF",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "US"
           ]
         }
       ],
@@ -714,9 +639,9 @@
     {
       "exchange": "NYSE",
       "official_symbols": 3829,
-      "matched": 2359,
-      "collisions": 549,
-      "missing": 921,
+      "matched": 2345,
+      "collisions": 568,
+      "missing": 916,
       "collision_examples": [
         {
           "ticker": "ABX",
@@ -775,6 +700,14 @@
           ]
         },
         {
+          "ticker": "AEG",
+          "name": "Aegon Ltd. New York Registry Shares",
+          "target_exchange": "NYSE",
+          "existing_exchanges": [
+            "ASX"
+          ]
+        },
+        {
           "ticker": "AEON",
           "name": "AEON Biopharma, Inc.",
           "target_exchange": "NYSE",
@@ -788,14 +721,6 @@
           "target_exchange": "NYSE",
           "existing_exchanges": [
             "ASX"
-          ]
-        },
-        {
-          "ticker": "AGIG",
-          "name": "ABUNDIA GLOBAL IMPACT GROUP, INC.",
-          "target_exchange": "NYSE",
-          "existing_exchanges": [
-            "NYSE MKT"
           ]
         }
       ],
@@ -821,6 +746,11 @@
           "exchange": "NYSE"
         },
         {
+          "ticker": "ABXL",
+          "name": "Abacus Global Management, Inc. 9.875% Fixed Rate Senior Notes due 2028",
+          "exchange": "NYSE"
+        },
+        {
           "ticker": "ACHR-WT",
           "name": "Archer Aviation Inc.",
           "exchange": "NYSE"
@@ -843,11 +773,6 @@
         {
           "ticker": "ACR$D",
           "name": "ACRES Commercial Realty Corp. 7.875% Series D Cumulative Redeemable Preferred Stock",
-          "exchange": "NYSE"
-        },
-        {
-          "ticker": "ACV",
-          "name": "Virtus Diversified Income & Convertible Fund Common Shares of Beneficial Interest",
           "exchange": "NYSE"
         }
       ]
@@ -1137,9 +1062,9 @@
     {
       "exchange": "OSL",
       "official_symbols": 297,
-      "matched": 224,
+      "matched": 233,
       "collisions": 64,
-      "missing": 9,
+      "missing": 0,
       "collision_examples": [
         {
           "ticker": "ABG",
@@ -1222,53 +1147,7 @@
           ]
         }
       ],
-      "missing_examples": [
-        {
-          "ticker": "ASAS",
-          "name": "ATLANTIC SAPPHI TR",
-          "exchange": "OSL"
-        },
-        {
-          "ticker": "BCS",
-          "name": "BERGEN CARBON SOL",
-          "exchange": "OSL"
-        },
-        {
-          "ticker": "BMA",
-          "name": "BYGGMA",
-          "exchange": "OSL"
-        },
-        {
-          "ticker": "CRNAS",
-          "name": "CIRCIO HOLDING TR",
-          "exchange": "OSL"
-        },
-        {
-          "ticker": "EQNR",
-          "name": "EQUINOR",
-          "exchange": "OSL"
-        },
-        {
-          "ticker": "LIFES",
-          "name": "LIFECARE TR2",
-          "exchange": "OSL"
-        },
-        {
-          "ticker": "NOSN",
-          "name": "NOS NOVA",
-          "exchange": "OSL"
-        },
-        {
-          "ticker": "PLGC",
-          "name": "PELAGIC CREDIT",
-          "exchange": "OSL"
-        },
-        {
-          "ticker": "TGS",
-          "name": "TGS",
-          "exchange": "OSL"
-        }
-      ]
+      "missing_examples": []
     },
     {
       "exchange": "OTC",
