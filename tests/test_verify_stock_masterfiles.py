@@ -225,6 +225,146 @@ def test_classify_row_treats_partial_official_exchange_missing_as_reference_gap(
     assert result["status"] == "reference_gap"
 
 
+def test_classify_row_downgrades_otc_sec_name_mismatch_to_reference_gap() -> None:
+    row = {
+        "ticker": "CNTMF",
+        "exchange": "OTC",
+        "asset_type": "Stock",
+        "name": "Cansortium Inc",
+        "country": "Canada",
+        "country_code": "CA",
+        "isin": "CA13809L1094",
+        "sector": "Health Care",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("OTC", "CNTMF"): [
+                {
+                    "ticker": "CNTMF",
+                    "exchange": "OTC",
+                    "name": "Fluent Corp.",
+                    "asset_type": "Stock",
+                    "source_key": "sec_company_tickers_exchange",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges={"OTC"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Only low-confidence issuer reference evidence exists for this listing."
+
+
+def test_classify_row_downgrades_euronext_trading_label_name_mismatch_to_reference_gap() -> None:
+    row = {
+        "ticker": "ALENT",
+        "exchange": "Euronext",
+        "asset_type": "Stock",
+        "name": "Entreparticuli",
+        "country": "France",
+        "country_code": "FR",
+        "isin": "FR0010424697",
+        "sector": "Real Estate",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("Euronext", "ALENT"): [
+                {
+                    "ticker": "ALENT",
+                    "exchange": "Euronext",
+                    "name": "ETHERO",
+                    "asset_type": "Stock",
+                    "source_key": "euronext_equities",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges={"Euronext"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Official Euronext feed only exposes a trading label rather than a reliable full issuer name."
+
+
+def test_classify_row_downgrades_nyse_sec_name_mismatch_to_reference_gap() -> None:
+    row = {
+        "ticker": "SCE-PM",
+        "exchange": "NYSE",
+        "asset_type": "Stock",
+        "name": "SCE Trust VII",
+        "country": "United States",
+        "country_code": "US",
+        "isin": "US7838922018",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("NYSE", "SCE-PM"): [
+                {
+                    "ticker": "SCE-PM",
+                    "exchange": "NYSE",
+                    "name": "SOUTHERN CALIFORNIA EDISON Co",
+                    "asset_type": "Stock",
+                    "source_key": "sec_company_tickers_exchange",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges={"NYSE"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Only low-confidence issuer reference evidence exists for this listing."
+
+
+def test_classify_row_downgrades_tsx_interlisted_name_mismatch_to_reference_gap() -> None:
+    row = {
+        "ticker": "PMET",
+        "exchange": "TSX",
+        "asset_type": "Stock",
+        "name": "Patriot Battery Metals Inc.",
+        "country": "Canada",
+        "country_code": "CA",
+        "isin": "CA70337R1073",
+        "sector": "Materials",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("TSX", "PMET"): [
+                {
+                    "ticker": "PMET",
+                    "exchange": "TSX",
+                    "name": "PMET Resources Inc.",
+                    "asset_type": "Stock",
+                    "source_key": "tmx_interlisted_companies",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges={"TSX"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Only low-confidence issuer reference evidence exists for this listing."
+
+
 def test_is_code_like_reference_name_handles_compact_trading_labels() -> None:
     assert is_code_like_reference_name("MBWS", "MBWS")
     assert not is_code_like_reference_name("First Community Bankshares, Inc. - Common Stock", "FCBC")

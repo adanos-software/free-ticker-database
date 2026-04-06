@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import re
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -28,6 +29,15 @@ BAD_STATUSES = {
     "non_active_official",
 }
 LOW_CONFIDENCE_MISSING_EXCHANGES = {"OTC"}
+LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE = {
+    "NASDAQ": {"sec_company_tickers_exchange"},
+    "NYSE": {"sec_company_tickers_exchange", "nasdaq_other_listed"},
+    "NYSE MKT": {"sec_company_tickers_exchange", "nasdaq_other_listed"},
+    "OTC": {"sec_company_tickers_exchange"},
+    "TSX": {"tmx_interlisted_companies"},
+    "TSXV": {"tmx_interlisted_companies"},
+}
+EURONEXT_LABEL_SPLIT_RE = re.compile(r"[\s./-]+")
 
 
 def load_csv(path: Path) -> list[dict[str, str]]:
@@ -111,6 +121,15 @@ def is_code_like_reference_name(name: str, ticker: str) -> bool:
     return compact_name == compact_ticker
 
 
+def is_low_confidence_euronext_label(name: str) -> bool:
+    letters = [character for character in name if character.isalpha()]
+    if not letters:
+        return False
+    upper_ratio = sum(character.isupper() for character in letters) / len(letters)
+    tokens = [token for token in EURONEXT_LABEL_SPLIT_RE.split(name) if token]
+    return upper_ratio >= 0.85 and (len(name) <= 24 or len(tokens) <= 3)
+
+
 def choose_preferred_reference(rows: list[dict[str, str]], ticker: str) -> dict[str, str]:
     def rank(row: dict[str, str]) -> tuple[int, int, int, str]:
         return (
@@ -150,12 +169,23 @@ def classify_row(
         reference_source = preferred_reference.get("source_key", "")
         same_type_rows = [candidate for candidate in active_reference_rows if candidate.get("asset_type") == row.get("asset_type")]
         if same_type_rows:
+            source_keys = {candidate.get("source_key", "") for candidate in same_type_rows}
             if any(alias_matches_company(candidate.get("name", ""), row["name"]) for candidate in same_type_rows):
                 status = "verified"
                 reason = "Matched active official exchange directory listing."
             elif all(is_code_like_reference_name(candidate.get("name", ""), ticker) for candidate in same_type_rows):
                 status = "verified"
                 reason = "Official directory name is a compact trading label for this listing."
+            elif (
+                exchange == "Euronext"
+                and source_keys == {"euronext_equities"}
+                and all(is_low_confidence_euronext_label(candidate.get("name", "")) for candidate in same_type_rows)
+            ):
+                status = "reference_gap"
+                reason = "Official Euronext feed only exposes a trading label rather than a reliable full issuer name."
+            elif source_keys and source_keys <= LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE.get(exchange, set()):
+                status = "reference_gap"
+                reason = "Only low-confidence issuer reference evidence exists for this listing."
             else:
                 preferred_reference = choose_preferred_reference(same_type_rows, ticker)
                 reference_name = preferred_reference.get("name", "")

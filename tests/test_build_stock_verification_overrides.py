@@ -9,6 +9,7 @@ from scripts.build_stock_verification_overrides import (
     is_excluded_security_reference,
     is_strong_rename_candidate,
     is_us_otc_or_fund_migration,
+    is_us_stale_missing_listing,
     is_us_stale_missing_line,
     write_csv,
 )
@@ -26,6 +27,18 @@ def test_is_strong_rename_candidate_accepts_plain_common_stock() -> None:
         "official_reference_source": "nasdaq_listed",
         "official_reference_name": "WaFd, Inc. - Common Stock",
         "name": "Washington Federal Inc",
+    }
+    assert is_strong_rename_candidate(row)
+
+
+def test_is_strong_rename_candidate_accepts_manual_nasdaq_rename_set() -> None:
+    row = {
+        "ticker": "AIFU",
+        "status": "name_mismatch",
+        "exchange": "NASDAQ",
+        "official_reference_source": "nasdaq_listed",
+        "official_reference_name": "AIFU Inc. - Class A Ordinary Share",
+        "name": "Fanhua Inc.",
     }
     assert is_strong_rename_candidate(row)
 
@@ -111,6 +124,14 @@ def test_build_generated_updates_creates_conservative_rows() -> None:
             "official_reference_name": "AYVENS",
             "name": "ALD SA",
         },
+        {
+            "ticker": "AIFU",
+            "exchange": "NASDAQ",
+            "status": "name_mismatch",
+            "official_reference_source": "nasdaq_listed",
+            "official_reference_name": "AIFU Inc. - Class A Ordinary Share",
+            "name": "Fanhua Inc.",
+        },
     ]
     metadata, drops = build_generated_updates(findings)
     assert ("ZWZZT", "NASDAQ") == (drops[0]["ticker"], drops[0]["exchange"])
@@ -119,6 +140,7 @@ def test_build_generated_updates_creates_conservative_rows() -> None:
     assert any(row["ticker"] == "PALU" and row["field"] == "name" and row["proposed_value"] == "Direxion Daily PANW Bull 2X ETF" for row in metadata)
     assert any(row["ticker"] == "WAFD" and row["field"] == "name" and row["proposed_value"] == "WaFd, Inc." for row in metadata)
     assert any(row["ticker"] == "AYV" and row["field"] == "name" and row["proposed_value"] == "AYVENS" for row in metadata)
+    assert any(row["ticker"] == "AIFU" and row["field"] == "name" and row["proposed_value"] == "AIFU Inc." for row in metadata)
 
 
 def test_b3_phantom_missing_lines_are_dropped() -> None:
@@ -239,6 +261,29 @@ def test_is_us_otc_or_fund_migration_accepts_yahoo_otc_signal() -> None:
     assert is_us_otc_or_fund_migration(row)
 
 
+def test_is_us_stale_missing_listing_accepts_yahoo_not_found_or_none() -> None:
+    not_found_row = {
+        "ticker": "VERB",
+        "exchange": "NASDAQ",
+        "status": "not_found",
+    }
+    none_row = {
+        "ticker": "CWENA",
+        "exchange": "NYSE",
+        "status": "mismatch",
+        "yahoo_quote_type": "NONE",
+    }
+    regular_row = {
+        "ticker": "PINC",
+        "exchange": "NASDAQ",
+        "status": "verified",
+        "yahoo_quote_type": "EQUITY",
+    }
+    assert is_us_stale_missing_listing(not_found_row)
+    assert is_us_stale_missing_listing(none_row)
+    assert not is_us_stale_missing_listing(regular_row)
+
+
 def test_build_generated_updates_adds_yahoo_otc_migration_drops() -> None:
     yahoo_rows = [
         {
@@ -261,6 +306,30 @@ def test_build_generated_updates_adds_yahoo_otc_migration_drops() -> None:
     metadata, drops = build_generated_updates([], yahoo_rows)
     assert metadata == []
     assert {(row["ticker"], row["exchange"]) for row in drops} == {("SRAX", "NASDAQ"), ("ODZA", "NYSE")}
+
+
+def test_build_generated_updates_adds_yahoo_not_found_stale_drops() -> None:
+    yahoo_rows = [
+        {
+            "ticker": "VERB",
+            "exchange": "NASDAQ",
+            "status": "not_found",
+            "yahoo_exchange": "",
+            "yahoo_full_exchange": "",
+            "yahoo_quote_type": "",
+        },
+        {
+            "ticker": "CWENA",
+            "exchange": "NYSE",
+            "status": "mismatch",
+            "yahoo_exchange": "",
+            "yahoo_full_exchange": "",
+            "yahoo_quote_type": "NONE",
+        },
+    ]
+    metadata, drops = build_generated_updates([], yahoo_rows)
+    assert metadata == []
+    assert {(row["ticker"], row["exchange"]) for row in drops} == {("VERB", "NASDAQ"), ("CWENA", "NYSE")}
 
 
 def test_write_csv_ignores_unexpected_keys(tmp_path) -> None:

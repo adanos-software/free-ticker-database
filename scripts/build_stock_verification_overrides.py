@@ -40,7 +40,9 @@ NAME_SUFFIX_PATTERNS = [
     re.compile(r"\s+Common Stock$", re.IGNORECASE),
     re.compile(r"\s+-\s+Common Shares$", re.IGNORECASE),
     re.compile(r"\s+-\s+Class A Ordinary Shares$", re.IGNORECASE),
+    re.compile(r"\s+-\s+Class A Ordinary Share$", re.IGNORECASE),
     re.compile(r"\s+-\s+Ordinary Shares$", re.IGNORECASE),
+    re.compile(r"\s+-\s+Ordinary Share$", re.IGNORECASE),
     re.compile(r"\s+-\s+ordinary shares$", re.IGNORECASE),
     re.compile(r"\s+-\s+American Depositary Shares$", re.IGNORECASE),
     re.compile(r"\s{2,}", re.IGNORECASE),
@@ -66,6 +68,7 @@ US_TEMPORARY_D_TICKER_RE = re.compile(r"[A-Z]{4}D$")
 US_PREFERRED_HYPHEN_TICKER_RE = re.compile(r".*-PRI$")
 US_TEST_LINE_TICKER_RE = re.compile(r"NTEST-[A-Z]$")
 YAHOO_OTC_EXCHANGES = {"PNK", "OQB", "OEM", "OID"}
+US_PRIMARY_STOCK_EXCHANGES = {"NASDAQ", "NYSE", "NYSE ARCA", "NYSE MKT"}
 EURONEXT_STRONG_RENAME_TICKERS = {
     "74SW",
     "ALCAF",
@@ -89,6 +92,7 @@ EURONEXT_STRONG_RENAME_TICKERS = {
     "MLAIG",
     "MLODT",
 }
+NASDAQ_STRONG_RENAME_TICKERS = {"AIFU", "INCR", "MCGA", "ZTEK"}
 
 
 def load_csv(path: Path | str) -> list[dict[str, str]]:
@@ -135,6 +139,9 @@ def is_strong_rename_candidate(row: dict[str, str]) -> bool:
     if row.get("official_reference_source") not in US_OFFICIAL_SOURCES:
         return False
     reference_name = row.get("official_reference_name", "")
+    if row.get("exchange") == "NASDAQ" and row.get("ticker", "") in NASDAQ_STRONG_RENAME_TICKERS:
+        cleaned = clean_official_name(reference_name)
+        return bool(cleaned and cleaned != row.get("name", "").strip())
     if not any(marker in reference_name for marker in RENAME_INCLUDE_MARKERS):
         return False
     if any(marker in reference_name for marker in RENAME_EXCLUDE_MARKERS):
@@ -204,7 +211,7 @@ def is_euronext_strong_rename_candidate(row: dict[str, str]) -> bool:
 
 
 def is_us_otc_or_fund_migration(row: dict[str, str]) -> bool:
-    if row.get("exchange") not in {"NASDAQ", "NYSE"}:
+    if row.get("exchange") not in US_PRIMARY_STOCK_EXCHANGES:
         return False
     if row.get("status") != "mismatch":
         return False
@@ -216,6 +223,18 @@ def is_us_otc_or_fund_migration(row: dict[str, str]) -> bool:
         or yahoo_full_exchange.startswith("OTC Markets")
         or yahoo_quote_type == "MUTUALFUND"
     )
+
+
+def is_us_stale_missing_listing(row: dict[str, str]) -> bool:
+    if row.get("exchange") not in US_PRIMARY_STOCK_EXCHANGES:
+        return False
+    status = row.get("status")
+    if status == "not_found":
+        return True
+    if status != "mismatch":
+        return False
+    yahoo_quote_type = row.get("yahoo_quote_type", "")
+    return yahoo_quote_type == "NONE"
 
 
 def merge_metadata_updates(
@@ -357,6 +376,16 @@ def build_generated_updates(
 
     for row in yahoo_verification_rows or []:
         if not is_us_otc_or_fund_migration(row):
+            if not is_us_stale_missing_listing(row):
+                continue
+            drop_rows.append(
+                {
+                    "ticker": row["ticker"],
+                    "exchange": row["exchange"],
+                    "confidence": "0.95",
+                    "reason": "Official exchange directory no longer lists this symbol and Yahoo Finance no longer resolves it as an active common stock listing on the current exchange.",
+                }
+            )
             continue
         yahoo_exchange = row.get("yahoo_exchange", "")
         yahoo_full_exchange = row.get("yahoo_full_exchange", "")
