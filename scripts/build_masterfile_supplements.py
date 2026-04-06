@@ -49,6 +49,10 @@ SUPPLEMENT_EXCLUDED_STOCK_PATTERNS = [
     re.compile(r"\babs trust\b", re.IGNORECASE),
 ]
 
+SUPPLEMENT_ALLOWED_REFERENCE_SCOPES_BY_EXCHANGE: dict[str, set[str]] = {
+    "XETRA": {"exchange_directory", "listed_companies_subset"},
+}
+
 
 def load_csv(path: Path) -> list[dict[str, str]]:
     with path.open(newline="", encoding="utf-8") as handle:
@@ -88,7 +92,11 @@ def build_supplement_rows(
             continue
         if row.get("listing_status") != "active":
             continue
-        if row.get("reference_scope") != "exchange_directory":
+        allowed_reference_scopes = SUPPLEMENT_ALLOWED_REFERENCE_SCOPES_BY_EXCHANGE.get(
+            exchange,
+            {"exchange_directory"},
+        )
+        if row.get("reference_scope") not in allowed_reference_scopes:
             continue
 
         ticker = row["ticker"]

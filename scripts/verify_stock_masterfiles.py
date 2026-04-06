@@ -64,26 +64,45 @@ def chunk_stem(chunk_index: int, chunk_count: int) -> str:
 
 def load_reference_maps(
     path: Path = MASTERFILE_REFERENCE_CSV,
-) -> tuple[dict[tuple[str, str], list[dict[str, str]]], dict[tuple[str, str], list[dict[str, str]]], dict[str, list[dict[str, str]]], set[str]]:
+) -> tuple[
+    dict[tuple[str, str], list[dict[str, str]]],
+    dict[tuple[str, str], list[dict[str, str]]],
+    dict[str, list[dict[str, str]]],
+    set[str],
+    set[str],
+]:
     active_by_key: dict[tuple[str, str], list[dict[str, str]]] = defaultdict(list)
     any_by_key: dict[tuple[str, str], list[dict[str, str]]] = defaultdict(list)
     active_by_ticker: dict[str, list[dict[str, str]]] = defaultdict(list)
     covered_exchanges: set[str] = set()
+    partial_covered_exchanges: set[str] = set()
 
     for row in load_csv(path):
-        if row.get("reference_scope") != "exchange_directory":
+        if row.get("official") != "true":
+            continue
+        reference_scope = row.get("reference_scope", "")
+        if not reference_scope or reference_scope == "manual":
             continue
         exchange = row["exchange"]
         ticker = row["ticker"]
         key = (exchange, ticker)
         any_by_key[key].append(row)
-        covered_exchanges.add(exchange)
+        if reference_scope == "exchange_directory":
+            covered_exchanges.add(exchange)
+        else:
+            partial_covered_exchanges.add(exchange)
         if row.get("listing_status") != "active":
             continue
         active_by_key[key].append(row)
         active_by_ticker[ticker].append(row)
 
-    return dict(active_by_key), dict(any_by_key), dict(active_by_ticker), covered_exchanges
+    return (
+        dict(active_by_key),
+        dict(any_by_key),
+        dict(active_by_ticker),
+        covered_exchanges,
+        partial_covered_exchanges - covered_exchanges,
+    )
 
 
 def is_code_like_reference_name(name: str, ticker: str) -> bool:
@@ -111,6 +130,7 @@ def classify_row(
     any_by_key: dict[tuple[str, str], list[dict[str, str]]],
     active_by_ticker: dict[str, list[dict[str, str]]],
     covered_exchanges: set[str],
+    partial_covered_exchanges: set[str],
     identifier_map: dict[str, dict[str, str]],
 ) -> dict[str, Any]:
     ticker = row["ticker"]
@@ -168,6 +188,9 @@ def classify_row(
             else:
                 status = "missing_from_official"
                 reason = "Symbol is absent from the active official exchange directory for this exchange."
+    elif exchange in partial_covered_exchanges:
+        status = "reference_gap"
+        reason = "This exchange is only partially covered by the current official reference layer."
 
     return {
         "listing_key": listing_key,
@@ -238,7 +261,9 @@ def main(argv: list[str] | None = None) -> None:
     if args.limit is not None:
         rows = rows[: args.limit]
 
-    active_by_key, any_by_key, active_by_ticker, covered_exchanges = load_reference_maps(args.reference_csv)
+    active_by_key, any_by_key, active_by_ticker, covered_exchanges, partial_covered_exchanges = load_reference_maps(
+        args.reference_csv
+    )
     identifier_map = load_identifier_map(args.identifiers_csv)
     results = [
         classify_row(
@@ -247,6 +272,7 @@ def main(argv: list[str] | None = None) -> None:
             any_by_key=any_by_key,
             active_by_ticker=active_by_ticker,
             covered_exchanges=covered_exchanges,
+            partial_covered_exchanges=partial_covered_exchanges,
             identifier_map=identifier_map,
         )
         for row in rows

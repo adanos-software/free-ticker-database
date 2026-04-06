@@ -1,8 +1,8 @@
 {
   "global": {
-    "official_symbols": 25622,
-    "matched": 18829,
-    "collisions": 3863,
+    "official_symbols": 25151,
+    "matched": 18451,
+    "collisions": 3770,
     "missing": 2930
   },
   "exchanges": [
@@ -1490,96 +1490,6 @@
           "exchange": "TSE"
         }
       ]
-    },
-    {
-      "exchange": "XETRA",
-      "official_symbols": 471,
-      "matched": 378,
-      "collisions": 93,
-      "missing": 0,
-      "collision_examples": [
-        {
-          "ticker": "4DS",
-          "name": "DALDRUP+SOEHNE AG",
-          "target_exchange": "XETRA",
-          "existing_exchanges": [
-            "ASX"
-          ]
-        },
-        {
-          "ticker": "ABX",
-          "name": "ADVANCED BLOCKCHAIN AG",
-          "target_exchange": "XETRA",
-          "existing_exchanges": [
-            "NASDAQ"
-          ]
-        },
-        {
-          "ticker": "ACT",
-          "name": "ALZCHEM GROUP AG INH O.N.",
-          "target_exchange": "XETRA",
-          "existing_exchanges": [
-            "NASDAQ"
-          ]
-        },
-        {
-          "ticker": "ADC",
-          "name": "ADCAPITAL AG",
-          "target_exchange": "XETRA",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
-        {
-          "ticker": "ADV",
-          "name": "ADTRAN NETWORKS SE O.N.",
-          "target_exchange": "XETRA",
-          "existing_exchanges": [
-            "NASDAQ"
-          ]
-        },
-        {
-          "ticker": "AHH",
-          "name": "AHLERS AG NA O.N.",
-          "target_exchange": "XETRA",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
-        {
-          "ticker": "AIR",
-          "name": "AIRBUS SE",
-          "target_exchange": "XETRA",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
-        {
-          "ticker": "ALG",
-          "name": "ALBIS LEASING AG O.N.",
-          "target_exchange": "XETRA",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
-        {
-          "ticker": "ALV",
-          "name": "ALLIANZ SE NA O.N.",
-          "target_exchange": "XETRA",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
-        {
-          "ticker": "AMA",
-          "name": "ALTECH ADVANCED MATERIALS NA O.N.",
-          "target_exchange": "XETRA",
-          "existing_exchanges": [
-            "ASX"
-          ]
-        }
-      ],
-      "missing_examples": []
     }
   ]
 }

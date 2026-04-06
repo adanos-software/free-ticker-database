@@ -153,6 +153,7 @@ OFFICIAL_SOURCES = [
         description="Official Deutsche Boerse listed companies workbook",
         source_url=DEUTSCHE_BOERSE_LISTED_URL,
         format="deutsche_boerse_listed_companies_excel",
+        reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
         key="b3_instruments_equities",

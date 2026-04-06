@@ -76,6 +76,7 @@ def test_classify_row_verified() -> None:
         any_by_key={},
         active_by_ticker={"AALB": [{"ticker": "AALB", "exchange": "AMS", "name": "AALBERTS NV", "asset_type": "Stock"}]},
         covered_exchanges={"AMS"},
+        partial_covered_exchanges=set(),
         identifier_map={},
     )
     assert result["status"] == "verified"
@@ -98,6 +99,7 @@ def test_classify_row_name_mismatch() -> None:
         any_by_key={},
         active_by_ticker={"AALB": [{"ticker": "AALB", "exchange": "AMS", "name": "AALBERTS NV", "asset_type": "Stock"}]},
         covered_exchanges={"AMS"},
+        partial_covered_exchanges=set(),
         identifier_map={},
     )
     assert result["status"] == "name_mismatch"
@@ -120,6 +122,7 @@ def test_classify_row_non_active_official() -> None:
         any_by_key={("NYSE MKT", "ATEST"): [{"ticker": "ATEST", "exchange": "NYSE MKT", "name": "Tick Pilot Test Control Common Stock", "asset_type": "Stock", "listing_status": "test", "source_key": "nasdaq_other_listed"}]},
         active_by_ticker={},
         covered_exchanges={"NYSE MKT"},
+        partial_covered_exchanges=set(),
         identifier_map={},
     )
     assert result["status"] == "non_active_official"
@@ -142,6 +145,7 @@ def test_classify_row_collision() -> None:
         any_by_key={},
         active_by_ticker={"1301": [{"ticker": "1301", "exchange": "TSE", "name": "KYOKUYO CO.,LTD.", "asset_type": "Stock"}]},
         covered_exchanges={"TWSE"},
+        partial_covered_exchanges=set(),
         identifier_map={},
     )
     assert result["status"] == "cross_exchange_collision"
@@ -169,6 +173,7 @@ def test_classify_row_prefers_non_sec_stock_evidence() -> None:
         any_by_key={},
         active_by_ticker={"FCBC": [{"ticker": "FCBC", "exchange": "NASDAQ", "name": "First Community Bankshares, Inc. - Common Stock", "asset_type": "Stock"}]},
         covered_exchanges={"NASDAQ"},
+        partial_covered_exchanges=set(),
         identifier_map={},
     )
     assert result["status"] == "verified"
@@ -191,6 +196,30 @@ def test_classify_row_treats_otc_missing_as_reference_gap() -> None:
         any_by_key={},
         active_by_ticker={},
         covered_exchanges={"OTC"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+
+
+def test_classify_row_treats_partial_official_exchange_missing_as_reference_gap() -> None:
+    row = {
+        "ticker": "ABEA",
+        "exchange": "XETRA",
+        "asset_type": "Stock",
+        "name": "Alphabet Inc Class A",
+        "country": "Germany",
+        "country_code": "DE",
+        "isin": "US02079K3059",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={},
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges=set(),
+        partial_covered_exchanges={"XETRA"},
         identifier_map={},
     )
     assert result["status"] == "reference_gap"

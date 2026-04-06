@@ -9,35 +9,35 @@
     "cik_coverage": 8201,
     "figi_coverage": 4209,
     "lei_coverage": 1018,
-    "listing_status_rows": 1186333,
+    "listing_status_rows": 1247925,
     "listing_events": 7408,
     "listing_keys": 61592,
-    "official_masterfile_symbols": 25622,
-    "official_masterfile_matches": 18829,
-    "official_masterfile_collisions": 3863,
+    "official_masterfile_symbols": 25151,
+    "official_masterfile_matches": 18451,
+    "official_masterfile_collisions": 3770,
     "official_masterfile_missing": 2930,
-    "official_full_exchanges": 13,
-    "official_partial_exchanges": 2,
+    "official_full_exchanges": 12,
+    "official_partial_exchanges": 3,
     "manual_only_exchanges": 0,
     "missing_exchanges": 53,
     "stock_verification_items": 44897,
-    "stock_verification_verified": 13070,
-    "stock_verification_reference_gap": 30943,
-    "stock_verification_missing_from_official": 393,
-    "stock_verification_name_mismatch": 306,
-    "stock_verification_cross_exchange_collision": 185
+    "stock_verification_verified": 13131,
+    "stock_verification_reference_gap": 31145,
+    "stock_verification_missing_from_official": 147,
+    "stock_verification_name_mismatch": 309,
+    "stock_verification_cross_exchange_collision": 165
   },
   "freshness": {
-    "tickers_built_at": "2026-04-06T14:52:55Z",
+    "tickers_built_at": "2026-04-06T15:14:42Z",
     "tickers_age_hours": 0.0,
-    "masterfiles_generated_at": "2026-04-06T14:31:06Z",
-    "masterfiles_age_hours": 0.37,
-    "identifiers_generated_at": "2026-04-06T14:52:58Z",
+    "masterfiles_generated_at": "2026-04-06T15:13:54Z",
+    "masterfiles_age_hours": 0.02,
+    "identifiers_generated_at": "2026-04-06T15:14:47Z",
     "identifiers_age_hours": 0.0,
-    "listing_history_observed_at": "2026-04-06T14:52:55Z",
+    "listing_history_observed_at": "2026-04-06T15:14:42Z",
     "listing_history_age_hours": 0.0,
-    "latest_verification_run": "data/stock_verification/run-20260406-us-b3-clean-2",
-    "latest_verification_generated_at": "2026-04-06T14:53:04Z",
+    "latest_verification_run": "data/stock_verification/run-20260406-xetra-scope",
+    "latest_verification_generated_at": "2026-04-06T15:14:56Z",
     "latest_verification_age_hours": 0.0
   },
   "source_coverage": [
@@ -48,7 +48,7 @@
       "official": true,
       "mode": "network",
       "rows": 5422,
-      "generated_at": "2026-04-06T14:31:06Z"
+      "generated_at": "2026-04-06T15:13:54Z"
     },
     {
       "key": "nasdaq_other_listed",
@@ -57,7 +57,7 @@
       "official": true,
       "mode": "network",
       "rows": 7073,
-      "generated_at": "2026-04-06T14:31:06Z"
+      "generated_at": "2026-04-06T15:13:54Z"
     },
     {
       "key": "asx_listed_companies",
@@ -66,7 +66,7 @@
       "official": true,
       "mode": "network",
       "rows": 1979,
-      "generated_at": "2026-04-06T14:31:06Z"
+      "generated_at": "2026-04-06T15:13:54Z"
     },
     {
       "key": "tmx_interlisted_companies",
@@ -75,7 +75,7 @@
       "official": true,
       "mode": "network",
       "rows": 266,
-      "generated_at": "2026-04-06T14:31:06Z"
+      "generated_at": "2026-04-06T15:13:54Z"
     },
     {
       "key": "euronext_equities",
@@ -84,7 +84,7 @@
       "official": true,
       "mode": "network",
       "rows": 3885,
-      "generated_at": "2026-04-06T14:31:06Z"
+      "generated_at": "2026-04-06T15:13:54Z"
     },
     {
       "key": "jpx_listed_issues",
@@ -93,16 +93,16 @@
       "official": true,
       "mode": "network",
       "rows": 4444,
-      "generated_at": "2026-04-06T14:31:06Z"
+      "generated_at": "2026-04-06T15:13:54Z"
     },
     {
       "key": "deutsche_boerse_listed_companies",
       "provider": "Deutsche Boerse",
-      "reference_scope": "exchange_directory",
+      "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
       "rows": 471,
-      "generated_at": "2026-04-06T14:31:06Z"
+      "generated_at": "2026-04-06T15:13:54Z"
     },
     {
       "key": "b3_instruments_equities",
@@ -111,7 +111,7 @@
       "official": true,
       "mode": "network",
       "rows": 876,
-      "generated_at": "2026-04-06T14:31:06Z"
+      "generated_at": "2026-04-06T15:13:54Z"
     },
     {
       "key": "sec_company_tickers_exchange",
@@ -120,7 +120,7 @@
       "official": true,
       "mode": "cache",
       "rows": 10117,
-      "generated_at": "2026-04-06T14:31:06Z"
+      "generated_at": "2026-04-06T15:13:54Z"
     }
   ],
   "exchange_coverage": [
@@ -147,9 +147,9 @@
       "verification_items": 90,
       "verification_verified": 86,
       "verification_reference_gap": 0,
-      "verification_missing_from_official": 4,
+      "verification_missing_from_official": 2,
       "verification_name_mismatch": 0,
-      "verification_cross_exchange_collision": 0,
+      "verification_cross_exchange_collision": 2,
       "verification_verified_rate_on_covered": 95.56
     },
     {
@@ -622,12 +622,12 @@
       "masterfile_match_rate": 45.16,
       "masterfile_collision_rate": 29.49,
       "verification_items": 659,
-      "verification_verified": 589,
+      "verification_verified": 603,
       "verification_reference_gap": 0,
-      "verification_missing_from_official": 26,
-      "verification_name_mismatch": 43,
-      "verification_cross_exchange_collision": 1,
-      "verification_verified_rate_on_covered": 89.38
+      "verification_missing_from_official": 12,
+      "verification_name_mismatch": 44,
+      "verification_cross_exchange_collision": 0,
+      "verification_verified_rate_on_covered": 91.5
     },
     {
       "exchange": "GSE",
@@ -964,9 +964,9 @@
       "verification_items": 3584,
       "verification_verified": 3401,
       "verification_reference_gap": 1,
-      "verification_missing_from_official": 79,
+      "verification_missing_from_official": 76,
       "verification_name_mismatch": 5,
-      "verification_cross_exchange_collision": 98,
+      "verification_cross_exchange_collision": 101,
       "verification_verified_rate_on_covered": 94.92
     },
     {
@@ -1096,9 +1096,9 @@
       "verification_items": 2331,
       "verification_verified": 2208,
       "verification_reference_gap": 58,
-      "verification_missing_from_official": 25,
+      "verification_missing_from_official": 24,
       "verification_name_mismatch": 9,
-      "verification_cross_exchange_collision": 31,
+      "verification_cross_exchange_collision": 32,
       "verification_verified_rate_on_covered": 97.14
     },
     {
@@ -1678,12 +1678,12 @@
       "masterfile_match_rate": null,
       "masterfile_collision_rate": null,
       "verification_items": 532,
-      "verification_verified": 0,
-      "verification_reference_gap": 532,
+      "verification_verified": 27,
+      "verification_reference_gap": 504,
       "verification_missing_from_official": 0,
-      "verification_name_mismatch": 0,
+      "verification_name_mismatch": 1,
       "verification_cross_exchange_collision": 0,
-      "verification_verified_rate_on_covered": null
+      "verification_verified_rate_on_covered": 96.43
     },
     {
       "exchange": "TSXV",
@@ -1706,12 +1706,12 @@
       "masterfile_match_rate": null,
       "masterfile_collision_rate": null,
       "verification_items": 1034,
-      "verification_verified": 0,
-      "verification_reference_gap": 1034,
+      "verification_verified": 20,
+      "verification_reference_gap": 1013,
       "verification_missing_from_official": 0,
-      "verification_name_mismatch": 0,
+      "verification_name_mismatch": 1,
       "verification_cross_exchange_collision": 0,
-      "verification_verified_rate_on_covered": null
+      "verification_verified_rate_on_covered": 95.24
     },
     {
       "exchange": "TWSE",
@@ -1845,11 +1845,11 @@
     },
     {
       "exchange": "XETRA",
-      "venue_status": "official_full",
+      "venue_status": "official_partial",
       "official_source_count": 1,
       "manual_source_count": 0,
       "reference_scopes": [
-        "exchange_directory"
+        "listed_companies_subset"
       ],
       "tickers": 3017,
       "isin_coverage": 2354,
@@ -1857,19 +1857,19 @@
       "cik_coverage": 8,
       "figi_coverage": 19,
       "lei_coverage": 2,
-      "masterfile_symbols": 471,
-      "masterfile_matches": 378,
-      "masterfile_collisions": 93,
+      "masterfile_symbols": 0,
+      "masterfile_matches": 0,
+      "masterfile_collisions": 0,
       "masterfile_missing": 0,
-      "masterfile_match_rate": 80.25,
-      "masterfile_collision_rate": 19.75,
+      "masterfile_match_rate": null,
+      "masterfile_collision_rate": null,
       "verification_items": 629,
       "verification_verified": 378,
-      "verification_reference_gap": 0,
-      "verification_missing_from_official": 226,
+      "verification_reference_gap": 251,
+      "verification_missing_from_official": 0,
       "verification_name_mismatch": 0,
-      "verification_cross_exchange_collision": 25,
-      "verification_verified_rate_on_covered": 60.1
+      "verification_cross_exchange_collision": 0,
+      "verification_verified_rate_on_covered": 100.0
     },
     {
       "exchange": "ZSE",
@@ -2539,19 +2539,19 @@
     }
   ],
   "verification": {
-    "run_dir": "data/stock_verification/run-20260406-us-b3-clean-2",
-    "generated_at": "2026-04-06T14:53:04Z",
+    "run_dir": "data/stock_verification/run-20260406-xetra-scope",
+    "generated_at": "2026-04-06T15:14:56Z",
     "summary": {
       "chunk_count": 10,
       "completed_chunks": 10,
       "missing_chunks": [],
       "items": 44897,
       "status_counts": {
-        "cross_exchange_collision": 185,
-        "missing_from_official": 393,
-        "name_mismatch": 306,
-        "reference_gap": 30943,
-        "verified": 13070
+        "cross_exchange_collision": 165,
+        "missing_from_official": 147,
+        "name_mismatch": 309,
+        "reference_gap": 31145,
+        "verified": 13131
       },
       "chunks": [
         {
@@ -2559,11 +2559,11 @@
           "chunk_count": 10,
           "items": 4490,
           "status_counts": {
-            "cross_exchange_collision": 18,
-            "missing_from_official": 37,
-            "name_mismatch": 30,
-            "reference_gap": 3095,
-            "verified": 1310
+            "cross_exchange_collision": 14,
+            "missing_from_official": 18,
+            "name_mismatch": 32,
+            "reference_gap": 3110,
+            "verified": 1316
           },
           "finding_examples": [
             {
@@ -2633,32 +2633,13 @@
               "country_code": "BE",
               "isin": "BE0974334667",
               "sector": "Information Technology",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
+              "status": "name_mismatch",
+              "reason": "Dataset name does not match official exchange directory name.",
+              "official_reference_name": "WINAMP GROUP",
+              "official_reference_source": "euronext_equities",
               "covered_by_official_directory": true,
               "cik": "",
               "figi": "BBG00LFJW8Y5",
-              "lei": ""
-            },
-            {
-              "listing_key": "Euronext::BIOS",
-              "ticker": "BIOS",
-              "exchange": "Euronext",
-              "asset_type": "Stock",
-              "name": "BioSenic S.A.",
-              "country": "Belgium",
-              "country_code": "BE",
-              "isin": "BE0974280126",
-              "sector": "Financials",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "BBG007Z6R7W2",
               "lei": ""
             },
             {
@@ -3040,21 +3021,40 @@
               "cik": "0001407582",
               "figi": "",
               "lei": ""
+            },
+            {
+              "listing_key": "OTC::ATVK",
+              "ticker": "ATVK",
+              "exchange": "OTC",
+              "asset_type": "Stock",
+              "name": "ATVRockN",
+              "country": "United States",
+              "country_code": "US",
+              "isin": "US03078H1032",
+              "sector": "Industrials",
+              "status": "name_mismatch",
+              "reason": "Dataset name does not match official exchange directory name.",
+              "official_reference_name": "Ameritek Ventures, Inc.",
+              "official_reference_source": "sec_company_tickers_exchange",
+              "covered_by_official_directory": true,
+              "cik": "0001530185",
+              "figi": "",
+              "lei": ""
             }
           ],
-          "json_out": "data/stock_verification/run-20260406-us-b3-clean-2/chunk-01-of-10.json",
-          "csv_out": "data/stock_verification/run-20260406-us-b3-clean-2/chunk-01-of-10.csv"
+          "json_out": "data/stock_verification/run-20260406-xetra-scope/chunk-01-of-10.json",
+          "csv_out": "data/stock_verification/run-20260406-xetra-scope/chunk-01-of-10.csv"
         },
         {
           "chunk_index": 2,
           "chunk_count": 10,
           "items": 4490,
           "status_counts": {
-            "cross_exchange_collision": 27,
-            "missing_from_official": 36,
+            "cross_exchange_collision": 24,
+            "missing_from_official": 10,
             "name_mismatch": 30,
-            "reference_gap": 3090,
-            "verified": 1307
+            "reference_gap": 3112,
+            "verified": 1314
           },
           "finding_examples": [
             {
@@ -3084,25 +3084,6 @@
               "name": "WISDOMTREE AGRICULTURE",
               "country": "France",
               "country_code": "FR",
-              "isin": "",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "Euronext::ALEMS",
-              "ticker": "ALEMS",
-              "exchange": "Euronext",
-              "asset_type": "Stock",
-              "name": "EUROPEAN MEDICAL SOLUTIONS",
-              "country": "Belgium",
-              "country_code": "BE",
               "isin": "",
               "sector": "",
               "status": "missing_from_official",
@@ -3207,44 +3188,6 @@
               "covered_by_official_directory": true,
               "cik": "",
               "figi": "BBG000FTHN55",
-              "lei": ""
-            },
-            {
-              "listing_key": "Euronext::RET",
-              "ticker": "RET",
-              "exchange": "Euronext",
-              "asset_type": "Stock",
-              "name": "Retail Estates - Sicafi",
-              "country": "Belgium",
-              "country_code": "BE",
-              "isin": "BE0003720340",
-              "sector": "Consumer Discretionary",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "BBG000C1X1D0",
-              "lei": ""
-            },
-            {
-              "listing_key": "Euronext::SGO",
-              "ticker": "SGO",
-              "exchange": "Euronext",
-              "asset_type": "Stock",
-              "name": "Compagnie de Saint-Gobain S.A.",
-              "country": "",
-              "country_code": "",
-              "isin": "",
-              "sector": "Industrials",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "BBG000MP6M77",
               "lei": ""
             },
             {
@@ -3531,21 +3474,78 @@
               "cik": "0000800365",
               "figi": "",
               "lei": ""
+            },
+            {
+              "listing_key": "OTC::FURCF",
+              "ticker": "FURCF",
+              "exchange": "OTC",
+              "asset_type": "Stock",
+              "name": "Faurecia S.E",
+              "country": "France",
+              "country_code": "FR",
+              "isin": "FR0000121147",
+              "sector": "Consumer Discretionary",
+              "status": "name_mismatch",
+              "reason": "Dataset name does not match official exchange directory name.",
+              "official_reference_name": "FORVIA SE/ADR",
+              "official_reference_source": "sec_company_tickers_exchange",
+              "covered_by_official_directory": true,
+              "cik": "0001559444",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "OTC::GDERF",
+              "ticker": "GDERF",
+              "exchange": "OTC",
+              "asset_type": "Stock",
+              "name": "GDERF",
+              "country": "United States",
+              "country_code": "US",
+              "isin": "",
+              "sector": "",
+              "status": "name_mismatch",
+              "reason": "Dataset name does not match official exchange directory name.",
+              "official_reference_name": "Galderma Group AG/ADR",
+              "official_reference_source": "sec_company_tickers_exchange",
+              "covered_by_official_directory": true,
+              "cik": "0002021390",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "OTC::GPAEF",
+              "ticker": "GPAEF",
+              "exchange": "OTC",
+              "asset_type": "Stock",
+              "name": "Grupo Aeroportuario del Pac\u00edfico S.A.B. de C.V",
+              "country": "Singapore",
+              "country_code": "SG",
+              "isin": "SG1J17886040",
+              "sector": "Industrials",
+              "status": "name_mismatch",
+              "reason": "Dataset name does not match official exchange directory name.",
+              "official_reference_name": "Pacific Airport Group",
+              "official_reference_source": "sec_company_tickers_exchange",
+              "covered_by_official_directory": true,
+              "cik": "0001347557",
+              "figi": "",
+              "lei": ""
             }
           ],
-          "json_out": "data/stock_verification/run-20260406-us-b3-clean-2/chunk-02-of-10.json",
-          "csv_out": "data/stock_verification/run-20260406-us-b3-clean-2/chunk-02-of-10.csv"
+          "json_out": "data/stock_verification/run-20260406-xetra-scope/chunk-02-of-10.json",
+          "csv_out": "data/stock_verification/run-20260406-xetra-scope/chunk-02-of-10.csv"
         },
         {
           "chunk_index": 3,
           "chunk_count": 10,
           "items": 4490,
           "status_counts": {
-            "cross_exchange_collision": 19,
-            "missing_from_official": 33,
+            "cross_exchange_collision": 18,
+            "missing_from_official": 10,
             "name_mismatch": 28,
-            "reference_gap": 3070,
-            "verified": 1340
+            "reference_gap": 3086,
+            "verified": 1348
           },
           "finding_examples": [
             {
@@ -3603,25 +3603,6 @@
               "covered_by_official_directory": true,
               "cik": "",
               "figi": "BBG01GZFYWG6",
-              "lei": ""
-            },
-            {
-              "listing_key": "Euronext::ENGI",
-              "ticker": "ENGI",
-              "exchange": "Euronext",
-              "asset_type": "Stock",
-              "name": "Engie S.A.",
-              "country": "France",
-              "country_code": "FR",
-              "isin": "FR0010208488",
-              "sector": "Utilities",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "BBG000BJNPL1",
               "lei": ""
             },
             {
@@ -3758,25 +3739,6 @@
               "lei": ""
             },
             {
-              "listing_key": "NASDAQ::IMG",
-              "ticker": "IMG",
-              "exchange": "NASDAQ",
-              "asset_type": "Stock",
-              "name": "CIMG Inc.",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "CA4509131088",
-              "sector": "Consumer Staples",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
               "listing_key": "NASDAQ::KLGDD",
               "ticker": "KLGDD",
               "exchange": "NASDAQ",
@@ -3824,25 +3786,6 @@
               "country_code": "TH",
               "isin": "TH0229010Z05",
               "sector": "Financials",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "NASDAQ::QIPT",
-              "ticker": "QIPT",
-              "exchange": "NASDAQ",
-              "asset_type": "Stock",
-              "name": "Quipt Home Medical Corp",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "CA74880P1045",
-              "sector": "Health Care",
               "status": "missing_from_official",
               "reason": "Symbol is absent from the active official exchange directory for this exchange.",
               "official_reference_name": "",
@@ -4022,21 +3965,78 @@
               "cik": "0001834032",
               "figi": "",
               "lei": ""
+            },
+            {
+              "listing_key": "OTC::DGTEF",
+              "ticker": "DGTEF",
+              "exchange": "OTC",
+              "asset_type": "Stock",
+              "name": "DGTEF",
+              "country": "Canada",
+              "country_code": "CA",
+              "isin": "CA25401P1062",
+              "sector": "",
+              "status": "name_mismatch",
+              "reason": "Dataset name does not match official exchange directory name.",
+              "official_reference_name": "Eat & Beyond Global Holdings Inc.",
+              "official_reference_source": "sec_company_tickers_exchange",
+              "covered_by_official_directory": true,
+              "cik": "0001978151",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "OTC::FUJIY",
+              "ticker": "FUJIY",
+              "exchange": "OTC",
+              "asset_type": "Stock",
+              "name": "FUJIFILM Holdings Corp",
+              "country": "United States",
+              "country_code": "US",
+              "isin": "US35958N1072",
+              "sector": "Industrials",
+              "status": "name_mismatch",
+              "reason": "Dataset name does not match official exchange directory name.",
+              "official_reference_name": "FUJI PHOTO FILM CO LTD /FI",
+              "official_reference_source": "sec_company_tickers_exchange",
+              "covered_by_official_directory": true,
+              "cik": "0000800365",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "OTC::GARLF",
+              "ticker": "GARLF",
+              "exchange": "OTC",
+              "asset_type": "Stock",
+              "name": "Netcoins Holdings Inc",
+              "country": "Canada",
+              "country_code": "CA",
+              "isin": "CA64113C1032",
+              "sector": "Information Technology",
+              "status": "name_mismatch",
+              "reason": "Dataset name does not match official exchange directory name.",
+              "official_reference_name": "Roxmore Resources Inc.",
+              "official_reference_source": "sec_company_tickers_exchange",
+              "covered_by_official_directory": true,
+              "cik": "0001725569",
+              "figi": "",
+              "lei": ""
             }
           ],
-          "json_out": "data/stock_verification/run-20260406-us-b3-clean-2/chunk-03-of-10.json",
-          "csv_out": "data/stock_verification/run-20260406-us-b3-clean-2/chunk-03-of-10.csv"
+          "json_out": "data/stock_verification/run-20260406-xetra-scope/chunk-03-of-10.json",
+          "csv_out": "data/stock_verification/run-20260406-xetra-scope/chunk-03-of-10.csv"
         },
         {
           "chunk_index": 4,
           "chunk_count": 10,
           "items": 4490,
           "status_counts": {
-            "cross_exchange_collision": 9,
-            "missing_from_official": 43,
-            "name_mismatch": 39,
-            "reference_gap": 3094,
-            "verified": 1305
+            "cross_exchange_collision": 8,
+            "missing_from_official": 18,
+            "name_mismatch": 40,
+            "reference_gap": 3114,
+            "verified": 1310
           },
           "finding_examples": [
             {
@@ -4515,40 +4515,21 @@
               "lei": ""
             }
           ],
-          "json_out": "data/stock_verification/run-20260406-us-b3-clean-2/chunk-04-of-10.json",
-          "csv_out": "data/stock_verification/run-20260406-us-b3-clean-2/chunk-04-of-10.csv"
+          "json_out": "data/stock_verification/run-20260406-xetra-scope/chunk-04-of-10.json",
+          "csv_out": "data/stock_verification/run-20260406-xetra-scope/chunk-04-of-10.csv"
         },
         {
           "chunk_index": 5,
           "chunk_count": 10,
           "items": 4490,
           "status_counts": {
-            "cross_exchange_collision": 17,
-            "missing_from_official": 36,
+            "cross_exchange_collision": 12,
+            "missing_from_official": 13,
             "name_mismatch": 32,
-            "reference_gap": 3077,
-            "verified": 1328
+            "reference_gap": 3101,
+            "verified": 1332
           },
           "finding_examples": [
-            {
-              "listing_key": "AMS::ECMPA",
-              "ticker": "ECMPA",
-              "exchange": "AMS",
-              "asset_type": "Stock",
-              "name": "Eurocommercial Properties N.V.",
-              "country": "Netherlands",
-              "country_code": "NL",
-              "isin": "NL0015000K93",
-              "sector": "Real Estate",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "BBG012F0KLV4",
-              "lei": ""
-            },
             {
               "listing_key": "ASX::EEL",
               "ticker": "EEL",
@@ -5004,21 +4985,40 @@
               "cik": "0002055938",
               "figi": "",
               "lei": ""
+            },
+            {
+              "listing_key": "OTC::GSTK",
+              "ticker": "GSTK",
+              "exchange": "OTC",
+              "asset_type": "Stock",
+              "name": "GSTK",
+              "country": "United States",
+              "country_code": "US",
+              "isin": "US4000741003",
+              "sector": "",
+              "status": "name_mismatch",
+              "reason": "Dataset name does not match official exchange directory name.",
+              "official_reference_name": "Growth Stalk Holdings Corp",
+              "official_reference_source": "sec_company_tickers_exchange",
+              "covered_by_official_directory": true,
+              "cik": "0001917993",
+              "figi": "",
+              "lei": ""
             }
           ],
-          "json_out": "data/stock_verification/run-20260406-us-b3-clean-2/chunk-05-of-10.json",
-          "csv_out": "data/stock_verification/run-20260406-us-b3-clean-2/chunk-05-of-10.csv"
+          "json_out": "data/stock_verification/run-20260406-xetra-scope/chunk-05-of-10.json",
+          "csv_out": "data/stock_verification/run-20260406-xetra-scope/chunk-05-of-10.csv"
         },
         {
           "chunk_index": 6,
           "chunk_count": 10,
           "items": 4490,
           "status_counts": {
-            "cross_exchange_collision": 20,
-            "missing_from_official": 37,
+            "cross_exchange_collision": 18,
+            "missing_from_official": 13,
             "name_mismatch": 21,
-            "reference_gap": 3104,
-            "verified": 1308
+            "reference_gap": 3123,
+            "verified": 1315
           },
           "finding_examples": [
             {
@@ -5172,63 +5172,6 @@
               "cik": "",
               "figi": "BBG0132LKVH4",
               "lei": "969500S7F4LVSHHUZB87"
-            },
-            {
-              "listing_key": "Euronext::MONT",
-              "ticker": "MONT",
-              "exchange": "Euronext",
-              "asset_type": "Stock",
-              "name": "Montea C.V.A.",
-              "country": "Belgium",
-              "country_code": "BE",
-              "isin": "BE0003853703",
-              "sector": "Real Estate",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "BBG000BF7J95",
-              "lei": ""
-            },
-            {
-              "listing_key": "Euronext::TITC",
-              "ticker": "TITC",
-              "exchange": "Euronext",
-              "asset_type": "Stock",
-              "name": "Titan Cement International SA",
-              "country": "Belgium",
-              "country_code": "BE",
-              "isin": "BE0974338700",
-              "sector": "Materials",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "BBG00MRFXMD9",
-              "lei": ""
-            },
-            {
-              "listing_key": "Euronext::VASTB",
-              "ticker": "VASTB",
-              "exchange": "Euronext",
-              "asset_type": "Stock",
-              "name": "Vastned Retail Belgium",
-              "country": "Belgium",
-              "country_code": "BE",
-              "isin": "BE0003754687",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "BBG000C459Z4",
-              "lei": "54930068RSC6OT68NE51"
             },
             {
               "listing_key": "NASDAQ::KLTO",
@@ -5495,21 +5438,78 @@
               "cik": "0001823126",
               "figi": "",
               "lei": ""
+            },
+            {
+              "listing_key": "OTC::ICRL",
+              "ticker": "ICRL",
+              "exchange": "OTC",
+              "asset_type": "Stock",
+              "name": "ICRL",
+              "country": "United States",
+              "country_code": "US",
+              "isin": "",
+              "sector": "",
+              "status": "name_mismatch",
+              "reason": "Dataset name does not match official exchange directory name.",
+              "official_reference_name": "InPoint Commercial Real Estate Income, Inc.",
+              "official_reference_source": "sec_company_tickers_exchange",
+              "covered_by_official_directory": true,
+              "cik": "0001690012",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "OTC::LDTDF",
+              "ticker": "LDTDF",
+              "exchange": "OTC",
+              "asset_type": "Stock",
+              "name": "LDTDF",
+              "country": "United States",
+              "country_code": "US",
+              "isin": "",
+              "sector": "",
+              "status": "name_mismatch",
+              "reason": "Dataset name does not match official exchange directory name.",
+              "official_reference_name": "LeddarTech Holdings Inc.",
+              "official_reference_source": "sec_company_tickers_exchange",
+              "covered_by_official_directory": true,
+              "cik": "0001981462",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "OTC::LNTO",
+              "ticker": "LNTO",
+              "exchange": "OTC",
+              "asset_type": "Stock",
+              "name": "ProConcept Marketing Group Inc.",
+              "country": "United States",
+              "country_code": "US",
+              "isin": "US7427173098",
+              "sector": "",
+              "status": "name_mismatch",
+              "reason": "Dataset name does not match official exchange directory name.",
+              "official_reference_name": "LELANTOS HOLDINGS INC.",
+              "official_reference_source": "sec_company_tickers_exchange",
+              "covered_by_official_directory": true,
+              "cik": "0002006925",
+              "figi": "",
+              "lei": ""
             }
           ],
-          "json_out": "data/stock_verification/run-20260406-us-b3-clean-2/chunk-06-of-10.json",
-          "csv_out": "data/stock_verification/run-20260406-us-b3-clean-2/chunk-06-of-10.csv"
+          "json_out": "data/stock_verification/run-20260406-xetra-scope/chunk-06-of-10.json",
+          "csv_out": "data/stock_verification/run-20260406-xetra-scope/chunk-06-of-10.csv"
         },
         {
           "chunk_index": 7,
           "chunk_count": 10,
           "items": 4490,
           "status_counts": {
-            "cross_exchange_collision": 15,
-            "missing_from_official": 42,
+            "cross_exchange_collision": 14,
+            "missing_from_official": 17,
             "name_mismatch": 36,
-            "reference_gap": 3126,
-            "verified": 1271
+            "reference_gap": 3150,
+            "verified": 1273
           },
           "finding_examples": [
             {
@@ -5567,25 +5567,6 @@
               "covered_by_official_directory": true,
               "cik": "",
               "figi": "BBG00QG079P0",
-              "lei": ""
-            },
-            {
-              "listing_key": "Euronext::AED",
-              "ticker": "AED",
-              "exchange": "Euronext",
-              "asset_type": "Stock",
-              "name": "Aedifica",
-              "country": "Belgium",
-              "country_code": "BE",
-              "isin": "BE0003851681",
-              "sector": "Real Estate",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "BBG000M79BB3",
               "lei": ""
             },
             {
@@ -5986,21 +5967,40 @@
               "cik": "",
               "figi": "",
               "lei": ""
+            },
+            {
+              "listing_key": "OTC::ANKM",
+              "ticker": "ANKM",
+              "exchange": "OTC",
+              "asset_type": "Stock",
+              "name": "ANKM",
+              "country": "United States",
+              "country_code": "US",
+              "isin": "US03529A1034",
+              "sector": "",
+              "status": "name_mismatch",
+              "reason": "Dataset name does not match official exchange directory name.",
+              "official_reference_name": "Ankam, Inc.",
+              "official_reference_source": "sec_company_tickers_exchange",
+              "covered_by_official_directory": true,
+              "cik": "0001781629",
+              "figi": "",
+              "lei": ""
             }
           ],
-          "json_out": "data/stock_verification/run-20260406-us-b3-clean-2/chunk-07-of-10.json",
-          "csv_out": "data/stock_verification/run-20260406-us-b3-clean-2/chunk-07-of-10.csv"
+          "json_out": "data/stock_verification/run-20260406-xetra-scope/chunk-07-of-10.json",
+          "csv_out": "data/stock_verification/run-20260406-xetra-scope/chunk-07-of-10.csv"
         },
         {
           "chunk_index": 8,
           "chunk_count": 10,
           "items": 4489,
           "status_counts": {
-            "cross_exchange_collision": 25,
-            "missing_from_official": 46,
+            "cross_exchange_collision": 23,
+            "missing_from_official": 16,
             "name_mismatch": 24,
-            "reference_gap": 3108,
-            "verified": 1286
+            "reference_gap": 3134,
+            "verified": 1292
           },
           "finding_examples": [
             {
@@ -6080,25 +6080,6 @@
               "lei": ""
             },
             {
-              "listing_key": "Euronext::CYAD",
-              "ticker": "CYAD",
-              "exchange": "Euronext",
-              "asset_type": "Stock",
-              "name": "Celyad SA",
-              "country": "Belgium",
-              "country_code": "BE",
-              "isin": "BE0974260896",
-              "sector": "Health Care",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "BBG004NBYQW1",
-              "lei": ""
-            },
-            {
               "listing_key": "Euronext::MLGAI",
               "ticker": "MLGAI",
               "exchange": "Euronext",
@@ -6135,25 +6116,6 @@
               "cik": "",
               "figi": "BBG01LYH3LC4",
               "lei": ""
-            },
-            {
-              "listing_key": "Euronext::POMRY",
-              "ticker": "POMRY",
-              "exchange": "Euronext",
-              "asset_type": "Stock",
-              "name": "MAISON POMMERY & ASSOCIES",
-              "country": "France",
-              "country_code": "FR",
-              "isin": "FR0000062796",
-              "sector": "Consumer Staples",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "BBG000FVT6G2",
-              "lei": "969500M5EQJVDASURW53"
             },
             {
               "listing_key": "NASDAQ::CFLT",
@@ -6384,25 +6346,6 @@
               "lei": ""
             },
             {
-              "listing_key": "NYSE::OMI",
-              "ticker": "OMI",
-              "exchange": "NYSE",
-              "asset_type": "Stock",
-              "name": "Owens & Minor Inc",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "CA6871961059",
-              "sector": "Health Care",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
               "listing_key": "NYSE::SCE-PM",
               "ticker": "SCE-PM",
               "exchange": "NYSE",
@@ -6477,21 +6420,78 @@
               "cik": "0001009759",
               "figi": "",
               "lei": ""
+            },
+            {
+              "listing_key": "OTC::CRTMF",
+              "ticker": "CRTMF",
+              "exchange": "OTC",
+              "asset_type": "Stock",
+              "name": "CRTMF",
+              "country": "United States",
+              "country_code": "US",
+              "isin": "",
+              "sector": "",
+              "status": "name_mismatch",
+              "reason": "Dataset name does not match official exchange directory name.",
+              "official_reference_name": "Critical Metals Corp.",
+              "official_reference_source": "sec_company_tickers_exchange",
+              "covered_by_official_directory": true,
+              "cik": "0001951089",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "OTC::CTSUF",
+              "ticker": "CTSUF",
+              "exchange": "OTC",
+              "asset_type": "Stock",
+              "name": "CTSUF",
+              "country": "United States",
+              "country_code": "US",
+              "isin": "",
+              "sector": "",
+              "status": "name_mismatch",
+              "reason": "Dataset name does not match official exchange directory name.",
+              "official_reference_name": "Cactus Acquisition Corp. 1 Ltd",
+              "official_reference_source": "sec_company_tickers_exchange",
+              "covered_by_official_directory": true,
+              "cik": "0001865861",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "OTC::ENBOF",
+              "ticker": "ENBOF",
+              "exchange": "OTC",
+              "asset_type": "Stock",
+              "name": "ENBOF",
+              "country": "United States",
+              "country_code": "US",
+              "isin": "",
+              "sector": "",
+              "status": "name_mismatch",
+              "reason": "Dataset name does not match official exchange directory name.",
+              "official_reference_name": "ENBRIDGE INC",
+              "official_reference_source": "sec_company_tickers_exchange",
+              "covered_by_official_directory": true,
+              "cik": "0000895728",
+              "figi": "",
+              "lei": ""
             }
           ],
-          "json_out": "data/stock_verification/run-20260406-us-b3-clean-2/chunk-08-of-10.json",
-          "csv_out": "data/stock_verification/run-20260406-us-b3-clean-2/chunk-08-of-10.csv"
+          "json_out": "data/stock_verification/run-20260406-xetra-scope/chunk-08-of-10.json",
+          "csv_out": "data/stock_verification/run-20260406-xetra-scope/chunk-08-of-10.csv"
         },
         {
           "chunk_index": 9,
           "chunk_count": 10,
           "items": 4489,
           "status_counts": {
-            "cross_exchange_collision": 18,
-            "missing_from_official": 43,
+            "cross_exchange_collision": 17,
+            "missing_from_official": 17,
             "name_mismatch": 31,
-            "reference_gap": 3093,
-            "verified": 1304
+            "reference_gap": 3116,
+            "verified": 1308
           },
           "finding_examples": [
             {
@@ -6549,25 +6549,6 @@
               "covered_by_official_directory": true,
               "cik": "",
               "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "Euronext::AF",
-              "ticker": "AF",
-              "exchange": "Euronext",
-              "asset_type": "Stock",
-              "name": "Air France-KLM SA",
-              "country": "France",
-              "country_code": "FR",
-              "isin": "FR001400J770",
-              "sector": "Industrials",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "BBG000K79P88",
               "lei": ""
             },
             {
@@ -6751,25 +6732,6 @@
               "country_code": "US",
               "isin": "US09229E2046",
               "sector": "Information Technology",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "NASDAQ::CSCI",
-              "ticker": "CSCI",
-              "exchange": "NASDAQ",
-              "asset_type": "Stock",
-              "name": "COSCIENS Biopharma Inc.",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "CA22112H1010",
-              "sector": "Health Care",
               "status": "missing_from_official",
               "reason": "Symbol is absent from the active official exchange directory for this exchange.",
               "official_reference_name": "",
@@ -6968,10 +6930,48 @@
               "cik": "",
               "figi": "",
               "lei": ""
+            },
+            {
+              "listing_key": "NYSE::MER-PK",
+              "ticker": "MER-PK",
+              "exchange": "NYSE",
+              "asset_type": "Stock",
+              "name": "Merrill Lynch Capital Trust I GTD CAP 6.45%",
+              "country": "United States",
+              "country_code": "US",
+              "isin": "US0605052291",
+              "sector": "Financials",
+              "status": "name_mismatch",
+              "reason": "Dataset name does not match official exchange directory name.",
+              "official_reference_name": "BANK OF AMERICA CORP /DE/",
+              "official_reference_source": "sec_company_tickers_exchange",
+              "covered_by_official_directory": true,
+              "cik": "0000070858",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "OTC::AASP",
+              "ticker": "AASP",
+              "exchange": "OTC",
+              "asset_type": "Stock",
+              "name": "Global Acquisitions Corporation",
+              "country": "United States",
+              "country_code": "US",
+              "isin": "US01643P1057",
+              "sector": "Financials",
+              "status": "name_mismatch",
+              "reason": "Dataset name does not match official exchange directory name.",
+              "official_reference_name": "Agassi Sports Entertainment Corp.",
+              "official_reference_source": "sec_company_tickers_exchange",
+              "covered_by_official_directory": true,
+              "cik": "0000930245",
+              "figi": "",
+              "lei": ""
             }
           ],
-          "json_out": "data/stock_verification/run-20260406-us-b3-clean-2/chunk-09-of-10.json",
-          "csv_out": "data/stock_verification/run-20260406-us-b3-clean-2/chunk-09-of-10.csv"
+          "json_out": "data/stock_verification/run-20260406-xetra-scope/chunk-09-of-10.json",
+          "csv_out": "data/stock_verification/run-20260406-xetra-scope/chunk-09-of-10.csv"
         },
         {
           "chunk_index": 10,
@@ -6979,31 +6979,12 @@
           "items": 4489,
           "status_counts": {
             "cross_exchange_collision": 17,
-            "missing_from_official": 40,
+            "missing_from_official": 15,
             "name_mismatch": 35,
-            "reference_gap": 3086,
-            "verified": 1311
+            "reference_gap": 3099,
+            "verified": 1323
           },
           "finding_examples": [
-            {
-              "listing_key": "AMS::INGA",
-              "ticker": "INGA",
-              "exchange": "AMS",
-              "asset_type": "Stock",
-              "name": "ING Groep NV",
-              "country": "Netherlands",
-              "country_code": "NL",
-              "isin": "NL0011821202",
-              "sector": "Financials",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "BBG000BFKWP3",
-              "lei": ""
-            },
             {
               "listing_key": "ASX::PVW",
               "ticker": "PVW",
@@ -7097,25 +7078,6 @@
               "covered_by_official_directory": true,
               "cik": "",
               "figi": "BBG0058MCMB7",
-              "lei": ""
-            },
-            {
-              "listing_key": "Euronext::SOLB",
-              "ticker": "SOLB",
-              "exchange": "Euronext",
-              "asset_type": "Stock",
-              "name": "Solvay SA",
-              "country": "Belgium",
-              "country_code": "BE",
-              "isin": "BE0003470755",
-              "sector": "Materials",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "BBG000BQ5Z15",
               "lei": ""
             },
             {
@@ -7459,13 +7421,51 @@
               "cik": "",
               "figi": "",
               "lei": ""
+            },
+            {
+              "listing_key": "OTC::AERA",
+              "ticker": "AERA",
+              "exchange": "OTC",
+              "asset_type": "Stock",
+              "name": "AERA",
+              "country": "United States",
+              "country_code": "US",
+              "isin": "",
+              "sector": "",
+              "status": "name_mismatch",
+              "reason": "Dataset name does not match official exchange directory name.",
+              "official_reference_name": "AI Era Corp.",
+              "official_reference_source": "sec_company_tickers_exchange",
+              "covered_by_official_directory": true,
+              "cik": "0001605331",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "OTC::ALMP",
+              "ticker": "ALMP",
+              "exchange": "OTC",
+              "asset_type": "Stock",
+              "name": "ALMP",
+              "country": "United States",
+              "country_code": "US",
+              "isin": "US02030A1079",
+              "sector": "",
+              "status": "name_mismatch",
+              "reason": "Dataset name does not match official exchange directory name.",
+              "official_reference_name": "Almco Plumbing Inc",
+              "official_reference_source": "sec_company_tickers_exchange",
+              "covered_by_official_directory": true,
+              "cik": "0001956237",
+              "figi": "",
+              "lei": ""
             }
           ],
-          "json_out": "data/stock_verification/run-20260406-us-b3-clean-2/chunk-10-of-10.json",
-          "csv_out": "data/stock_verification/run-20260406-us-b3-clean-2/chunk-10-of-10.csv"
+          "json_out": "data/stock_verification/run-20260406-xetra-scope/chunk-10-of-10.json",
+          "csv_out": "data/stock_verification/run-20260406-xetra-scope/chunk-10-of-10.csv"
         }
       ],
-      "finding_rows": 699,
+      "finding_rows": 456,
       "finding_examples": [
         {
           "listing_key": "ASX::HNG",
@@ -7534,32 +7534,13 @@
           "country_code": "BE",
           "isin": "BE0974334667",
           "sector": "Information Technology",
-          "status": "missing_from_official",
-          "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-          "official_reference_name": "",
-          "official_reference_source": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "WINAMP GROUP",
+          "official_reference_source": "euronext_equities",
           "covered_by_official_directory": true,
           "cik": "",
           "figi": "BBG00LFJW8Y5",
-          "lei": ""
-        },
-        {
-          "listing_key": "Euronext::BIOS",
-          "ticker": "BIOS",
-          "exchange": "Euronext",
-          "asset_type": "Stock",
-          "name": "BioSenic S.A.",
-          "country": "Belgium",
-          "country_code": "BE",
-          "isin": "BE0974280126",
-          "sector": "Financials",
-          "status": "missing_from_official",
-          "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-          "official_reference_name": "",
-          "official_reference_source": "",
-          "covered_by_official_directory": true,
-          "cik": "",
-          "figi": "BBG007Z6R7W2",
           "lei": ""
         },
         {
@@ -7941,10 +7922,29 @@
           "cik": "0001407582",
           "figi": "",
           "lei": ""
+        },
+        {
+          "listing_key": "OTC::ATVK",
+          "ticker": "ATVK",
+          "exchange": "OTC",
+          "asset_type": "Stock",
+          "name": "ATVRockN",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US03078H1032",
+          "sector": "Industrials",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Ameritek Ventures, Inc.",
+          "official_reference_source": "sec_company_tickers_exchange",
+          "covered_by_official_directory": true,
+          "cik": "0001530185",
+          "figi": "",
+          "lei": ""
         }
       ],
-      "summary_json": "data/stock_verification/run-20260406-us-b3-clean-2/summary.json",
-      "findings_csv": "data/stock_verification/run-20260406-us-b3-clean-2/findings.csv"
+      "summary_json": "data/stock_verification/run-20260406-xetra-scope/summary.json",
+      "findings_csv": "data/stock_verification/run-20260406-xetra-scope/findings.csv"
     },
     "exchange_coverage": [
       {
@@ -7952,9 +7952,9 @@
         "items": 90,
         "verified": 86,
         "reference_gap": 0,
-        "missing_from_official": 4,
+        "missing_from_official": 2,
         "name_mismatch": 0,
-        "cross_exchange_collision": 0,
+        "cross_exchange_collision": 2,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
         "officially_covered_items": 90,
@@ -8184,15 +8184,15 @@
       {
         "exchange": "Euronext",
         "items": 659,
-        "verified": 589,
+        "verified": 603,
         "reference_gap": 0,
-        "missing_from_official": 26,
-        "name_mismatch": 43,
-        "cross_exchange_collision": 1,
+        "missing_from_official": 12,
+        "name_mismatch": 44,
+        "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
         "officially_covered_items": 659,
-        "verified_rate_on_covered": 89.38
+        "verified_rate_on_covered": 91.5
       },
       {
         "exchange": "GSE",
@@ -8355,9 +8355,9 @@
         "items": 3584,
         "verified": 3401,
         "reference_gap": 1,
-        "missing_from_official": 79,
+        "missing_from_official": 76,
         "name_mismatch": 5,
-        "cross_exchange_collision": 98,
+        "cross_exchange_collision": 101,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
         "officially_covered_items": 3583,
@@ -8407,9 +8407,9 @@
         "items": 2331,
         "verified": 2208,
         "reference_gap": 58,
-        "missing_from_official": 25,
+        "missing_from_official": 24,
         "name_mismatch": 9,
-        "cross_exchange_collision": 31,
+        "cross_exchange_collision": 32,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
         "officially_covered_items": 2273,
@@ -8678,28 +8678,28 @@
       {
         "exchange": "TSX",
         "items": 532,
-        "verified": 0,
-        "reference_gap": 532,
+        "verified": 27,
+        "reference_gap": 504,
         "missing_from_official": 0,
-        "name_mismatch": 0,
+        "name_mismatch": 1,
         "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 0,
-        "verified_rate_on_covered": null
+        "officially_covered_items": 28,
+        "verified_rate_on_covered": 96.43
       },
       {
         "exchange": "TSXV",
         "items": 1034,
-        "verified": 0,
-        "reference_gap": 1034,
+        "verified": 20,
+        "reference_gap": 1013,
         "missing_from_official": 0,
-        "name_mismatch": 0,
+        "name_mismatch": 1,
         "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 0,
-        "verified_rate_on_covered": null
+        "officially_covered_items": 21,
+        "verified_rate_on_covered": 95.24
       },
       {
         "exchange": "TWSE",
@@ -8770,14 +8770,14 @@
         "exchange": "XETRA",
         "items": 629,
         "verified": 378,
-        "reference_gap": 0,
-        "missing_from_official": 226,
+        "reference_gap": 251,
+        "missing_from_official": 0,
         "name_mismatch": 0,
-        "cross_exchange_collision": 25,
+        "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 629,
-        "verified_rate_on_covered": 60.1
+        "officially_covered_items": 378,
+        "verified_rate_on_covered": 100.0
       },
       {
         "exchange": "ZSE",
@@ -8886,10 +8886,10 @@
       "masterfile_collisions": 0
     },
     {
-      "exchange": "TSXV",
-      "venue_status": "official_partial",
-      "unresolved_findings": 1034,
-      "reference_gap": 1034,
+      "exchange": "TPEX",
+      "venue_status": "missing",
+      "unresolved_findings": 1017,
+      "reference_gap": 1017,
       "missing_from_official": 0,
       "name_mismatch": 0,
       "cross_exchange_collision": 0,
@@ -8897,12 +8897,12 @@
       "masterfile_collisions": 0
     },
     {
-      "exchange": "TPEX",
-      "venue_status": "missing",
-      "unresolved_findings": 1017,
-      "reference_gap": 1017,
+      "exchange": "TSXV",
+      "venue_status": "official_partial",
+      "unresolved_findings": 1014,
+      "reference_gap": 1013,
       "missing_from_official": 0,
-      "name_mismatch": 0,
+      "name_mismatch": 1,
       "cross_exchange_collision": 0,
       "masterfile_missing": 0,
       "masterfile_collisions": 0
@@ -8963,10 +8963,10 @@
       "masterfile_collisions": 0
     },
     {
-      "exchange": "TSX",
-      "venue_status": "official_partial",
-      "unresolved_findings": 532,
-      "reference_gap": 532,
+      "exchange": "OTCCE",
+      "venue_status": "missing",
+      "unresolved_findings": 505,
+      "reference_gap": 505,
       "missing_from_official": 0,
       "name_mismatch": 0,
       "cross_exchange_collision": 0,
@@ -8974,12 +8974,12 @@
       "masterfile_collisions": 0
     },
     {
-      "exchange": "OTCCE",
-      "venue_status": "missing",
+      "exchange": "TSX",
+      "venue_status": "official_partial",
       "unresolved_findings": 505,
-      "reference_gap": 505,
+      "reference_gap": 504,
       "missing_from_official": 0,
-      "name_mismatch": 0,
+      "name_mismatch": 1,
       "cross_exchange_collision": 0,
       "masterfile_missing": 0,
       "masterfile_collisions": 0
@@ -9008,14 +9008,14 @@
     },
     {
       "exchange": "XETRA",
-      "venue_status": "official_full",
+      "venue_status": "official_partial",
       "unresolved_findings": 251,
-      "reference_gap": 0,
-      "missing_from_official": 226,
+      "reference_gap": 251,
+      "missing_from_official": 0,
       "name_mismatch": 0,
-      "cross_exchange_collision": 25,
+      "cross_exchange_collision": 0,
       "masterfile_missing": 0,
-      "masterfile_collisions": 93
+      "masterfile_collisions": 0
     },
     {
       "exchange": "HOSE",
@@ -9066,9 +9066,9 @@
       "venue_status": "official_full",
       "unresolved_findings": 183,
       "reference_gap": 1,
-      "missing_from_official": 79,
+      "missing_from_official": 76,
       "name_mismatch": 5,
-      "cross_exchange_collision": 98,
+      "cross_exchange_collision": 101,
       "masterfile_missing": 794,
       "masterfile_collisions": 124
     },
@@ -9121,9 +9121,9 @@
       "venue_status": "official_full",
       "unresolved_findings": 123,
       "reference_gap": 58,
-      "missing_from_official": 25,
+      "missing_from_official": 24,
       "name_mismatch": 9,
-      "cross_exchange_collision": 31,
+      "cross_exchange_collision": 32,
       "masterfile_missing": 912,
       "masterfile_collisions": 572
     },
@@ -9183,17 +9183,6 @@
       "masterfile_collisions": 0
     },
     {
-      "exchange": "Euronext",
-      "venue_status": "official_full",
-      "unresolved_findings": 70,
-      "reference_gap": 0,
-      "missing_from_official": 26,
-      "name_mismatch": 43,
-      "cross_exchange_collision": 1,
-      "masterfile_missing": 356,
-      "masterfile_collisions": 414
-    },
-    {
       "exchange": "CSE_MA",
       "venue_status": "missing",
       "unresolved_findings": 66,
@@ -9214,6 +9203,17 @@
       "cross_exchange_collision": 0,
       "masterfile_missing": 0,
       "masterfile_collisions": 0
+    },
+    {
+      "exchange": "Euronext",
+      "venue_status": "official_full",
+      "unresolved_findings": 56,
+      "reference_gap": 0,
+      "missing_from_official": 12,
+      "name_mismatch": 44,
+      "cross_exchange_collision": 0,
+      "masterfile_missing": 356,
+      "masterfile_collisions": 414
     },
     {
       "exchange": "SEM",
@@ -9462,9 +9462,9 @@
       "venue_status": "official_full",
       "unresolved_findings": 4,
       "reference_gap": 0,
-      "missing_from_official": 4,
+      "missing_from_official": 2,
       "name_mismatch": 0,
-      "cross_exchange_collision": 0,
+      "cross_exchange_collision": 2,
       "masterfile_missing": 4,
       "masterfile_collisions": 26
     },
