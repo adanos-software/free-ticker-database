@@ -4,6 +4,7 @@ import csv
 import json
 import sqlite3
 from collections import Counter
+from datetime import datetime
 from functools import lru_cache
 from pathlib import Path
 
@@ -660,3 +661,22 @@ def test_coverage_report_includes_freshness_sources_and_verification():
     assert "b3_gap_breakdown" in report
     assert report["freshness"]["tickers_built_at"]
     assert isinstance(report["source_coverage"], list)
+
+
+def test_freshness_timestamps_are_coherent():
+    report = json.loads((DATA_DIR / "reports" / "coverage_report.json").read_text())
+    freshness = report["freshness"]
+
+    def parse(ts: str) -> datetime:
+        return datetime.fromisoformat(ts.replace("Z", "+00:00"))
+
+    masterfiles = parse(freshness["masterfiles_generated_at"])
+    tickers = parse(freshness["tickers_built_at"])
+    identifiers = parse(freshness["identifiers_generated_at"])
+    history = parse(freshness["listing_history_observed_at"])
+    verification = parse(freshness["latest_verification_generated_at"])
+
+    assert masterfiles <= tickers
+    assert tickers == history
+    assert tickers <= identifiers <= verification
+    assert freshness["latest_verification_run"].startswith("data/stock_verification/run-")

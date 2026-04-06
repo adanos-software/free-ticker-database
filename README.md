@@ -109,8 +109,8 @@ This auxiliary export makes the current listing identity explicit as `exchange::
 {
   "_meta": {
     "version": "2.0.0",
-    "built_at": "2026-04-05T14:34:39Z",
-    "total_tickers": 62998
+    "built_at": "2026-04-06T14:52:55Z",
+    "total_tickers": 61592
   },
   "tickers": [
     {
