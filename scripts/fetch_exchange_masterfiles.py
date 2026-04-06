@@ -128,6 +128,7 @@ OFFICIAL_SOURCES = [
         description="Official ASX listed companies directory",
         source_url=ASX_LISTED_URL,
         format="asx_listed_companies_csv",
+        reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
         key="tmx_interlisted_companies",

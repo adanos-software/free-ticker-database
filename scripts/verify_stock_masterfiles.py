@@ -30,6 +30,7 @@ BAD_STATUSES = {
 }
 LOW_CONFIDENCE_MISSING_EXCHANGES = {
     "AMS",
+    "B3",
     "BATS",
     "Euronext",
     "NASDAQ",

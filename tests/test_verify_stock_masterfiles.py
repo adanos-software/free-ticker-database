@@ -285,6 +285,30 @@ def test_classify_row_treats_euronext_missing_as_reference_gap_when_negative_fee
     assert result["reason"] == "This exchange is only weakly covered by the current official reference layer."
 
 
+def test_classify_row_treats_b3_missing_as_reference_gap_when_negative_feed_is_weak() -> None:
+    row = {
+        "ticker": "GUAR3",
+        "exchange": "B3",
+        "asset_type": "Stock",
+        "name": "Guararapes Confecções S.A",
+        "country": "Brazil",
+        "country_code": "BR",
+        "isin": "BRGUARACNOR4",
+        "sector": "Consumer Discretionary",
+    }
+    result = classify_row(
+        row,
+        active_by_key={},
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges={"B3"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "This exchange is only weakly covered by the current official reference layer."
+
+
 def test_classify_row_treats_partial_official_exchange_missing_as_reference_gap() -> None:
     row = {
         "ticker": "ABEA",

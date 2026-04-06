@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 26231,
-    "matched": 19439,
-    "collisions": 3780,
-    "missing": 3012
+    "official_symbols": 24252,
+    "matched": 18451,
+    "collisions": 2861,
+    "missing": 2940
   },
   "exchanges": [
     {
@@ -114,147 +114,6 @@
           "ticker": "QEVW",
           "name": "QEV WARRANTS",
           "exchange": "AMS"
-        }
-      ]
-    },
-    {
-      "exchange": "ASX",
-      "official_symbols": 1979,
-      "matched": 1022,
-      "collisions": 919,
-      "missing": 38,
-      "collision_examples": [
-        {
-          "ticker": "14D",
-          "name": "1414 DEGREES LIMITED",
-          "target_exchange": "ASX",
-          "existing_exchanges": [
-            "XETRA"
-          ]
-        },
-        {
-          "ticker": "88E",
-          "name": "88 ENERGY LIMITED",
-          "target_exchange": "ASX",
-          "existing_exchanges": [
-            "LSE"
-          ]
-        },
-        {
-          "ticker": "AAC",
-          "name": "AUSTRALIAN AGRICULTURAL COMPANY LIMITED.",
-          "target_exchange": "ASX",
-          "existing_exchanges": [
-            "STO"
-          ]
-        },
-        {
-          "ticker": "AAL",
-          "name": "ALFABS AUSTRALIA LIMITED",
-          "target_exchange": "ASX",
-          "existing_exchanges": [
-            "NASDAQ"
-          ]
-        },
-        {
-          "ticker": "AAM",
-          "name": "AUMEGA METALS LTD",
-          "target_exchange": "ASX",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
-        {
-          "ticker": "AAP",
-          "name": "AUSTRALIAN AGRICULTURAL PROJECTS LIMITED",
-          "target_exchange": "ASX",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
-        {
-          "ticker": "AAU",
-          "name": "ANTILLES GOLD LIMITED",
-          "target_exchange": "ASX",
-          "existing_exchanges": [
-            "LSE"
-          ]
-        },
-        {
-          "ticker": "ABB",
-          "name": "AUSSIE BROADBAND LIMITED",
-          "target_exchange": "ASX",
-          "existing_exchanges": [
-            "STO"
-          ]
-        },
-        {
-          "ticker": "ABE",
-          "name": "AUSTRALIAN BOND EXCHANGE HOLDINGS LIMITED",
-          "target_exchange": "ASX",
-          "existing_exchanges": [
-            "WSE"
-          ]
-        },
-        {
-          "ticker": "ABG",
-          "name": "ABACUS GROUP",
-          "target_exchange": "ASX",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        }
-      ],
-      "missing_examples": [
-        {
-          "ticker": "3PL",
-          "name": "3P LEARNING LIMITED..",
-          "exchange": "ASX"
-        },
-        {
-          "ticker": "APZ",
-          "name": "ASPEN GROUP",
-          "exchange": "ASX"
-        },
-        {
-          "ticker": "BPG",
-          "name": "BLACK PEARL GROUP LIMITED",
-          "exchange": "ASX"
-        },
-        {
-          "ticker": "BPP",
-          "name": "BABYLON PUMP & POWER LIMITED",
-          "exchange": "ASX"
-        },
-        {
-          "ticker": "CPM",
-          "name": "COOPER METALS LIMITED",
-          "exchange": "ASX"
-        },
-        {
-          "ticker": "CPN",
-          "name": "CASPIN RESOURCES LIMITED",
-          "exchange": "ASX"
-        },
-        {
-          "ticker": "CPO",
-          "name": "CULPEO MINERALS LIMITED",
-          "exchange": "ASX"
-        },
-        {
-          "ticker": "CPU",
-          "name": "COMPUTERSHARE LIMITED.",
-          "exchange": "ASX"
-        },
-        {
-          "ticker": "CPV",
-          "name": "CLEARVUE TECHNOLOGIES LIMITED",
-          "exchange": "ASX"
-        },
-        {
-          "ticker": "EPN",
-          "name": "EPSILON HEALTHCARE LIMITED",
-          "exchange": "ASX"
         }
       ]
     },
@@ -1539,9 +1398,9 @@
     {
       "exchange": "TWSE",
       "official_symbols": 1080,
-      "matched": 988,
+      "matched": 1022,
       "collisions": 34,
-      "missing": 58,
+      "missing": 24,
       "collision_examples": [
         {
           "ticker": "1623",
@@ -1626,43 +1485,8 @@
       ],
       "missing_examples": [
         {
-          "ticker": "1256",
-          "name": "\u9bae\u6d3b\u63a7\u80a1\u80a1\u4efd\u6709\u9650\u516c\u53f8",
-          "exchange": "TWSE"
-        },
-        {
-          "ticker": "1337",
-          "name": "\u4e9e\u6d32\u5851\u81a0\u518d\u751f\u8cc7\u6e90\u63a7\u80a1\u6709\u9650\u516c\u53f8",
-          "exchange": "TWSE"
-        },
-        {
-          "ticker": "1338",
-          "name": "\u5ee3\u83ef\u63a7\u80a1\u6709\u9650\u516c\u53f8",
-          "exchange": "TWSE"
-        },
-        {
-          "ticker": "1340",
-          "name": "\u52dd\u6085\u65b0\u6750\u6599\u6709\u9650\u516c\u53f8",
-          "exchange": "TWSE"
-        },
-        {
-          "ticker": "1341",
-          "name": "\u5bcc\u6797\u5851\u81a0\u5de5\u696d(\u958b\u66fc)\u63a7\u80a1(\u80a1)\u516c\u53f8",
-          "exchange": "TWSE"
-        },
-        {
-          "ticker": "1590",
-          "name": "\u4e9e\u5fb7\u5ba2\u570b\u969b\u96c6\u5718",
-          "exchange": "TWSE"
-        },
-        {
           "ticker": "1626",
           "name": "\u827e\u7f8e\u7279(\u958b\u66fc)\u570b\u969b\u6709\u9650\u516c\u53f8",
-          "exchange": "TWSE"
-        },
-        {
-          "ticker": "2115",
-          "name": "\u516d\u6689\u63a7\u80a1\u80a1\u4efd\u6709\u9650\u516c\u53f8",
           "exchange": "TWSE"
         },
         {
@@ -1673,6 +1497,41 @@
         {
           "ticker": "2239",
           "name": "\u958b\u66fc\u82f1\u5229\u5de5\u696d\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "exchange": "TWSE"
+        },
+        {
+          "ticker": "2243",
+          "name": "\u5b8f\u65ed\u63a7\u80a1\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "exchange": "TWSE"
+        },
+        {
+          "ticker": "2637",
+          "name": "\u6167\u6d0b\u6d77\u904b\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "exchange": "TWSE"
+        },
+        {
+          "ticker": "2923",
+          "name": "\u9f0e\u56fa\u63a7\u80a1\u6709\u9650\u516c\u53f8",
+          "exchange": "TWSE"
+        },
+        {
+          "ticker": "2929",
+          "name": "\u6dd8\u5e1d\u570b\u969b\u63a7\u80a1\u6709\u9650\u516c\u53f8",
+          "exchange": "TWSE"
+        },
+        {
+          "ticker": "3661",
+          "name": "\u4e16\u82af\u96fb\u5b50\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "exchange": "TWSE"
+        },
+        {
+          "ticker": "4552",
+          "name": "\u529b\u9054\u63a7\u80a1\u6709\u9650\u516c\u53f8",
+          "exchange": "TWSE"
+        },
+        {
+          "ticker": "4571",
+          "name": "\u921e\u8208\u6a5f\u96fb\u570b\u969b\u80a1\u4efd\u6709\u9650\u516c\u53f8",
           "exchange": "TWSE"
         }
       ]

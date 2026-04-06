@@ -4,31 +4,31 @@
 
 | Metric | Value |
 |---|---|
-| tickers | 61479 |
-| aliases | 98566 |
-| stocks | 44761 |
+| tickers | 61512 |
+| aliases | 98565 |
+| stocks | 44794 |
 | etfs | 16718 |
 | isin_coverage | 43763 |
 | sector_coverage | 37961 |
 | cik_coverage | 8201 |
 | figi_coverage | 4208 |
 | lei_coverage | 1016 |
-| listing_status_rows | 64637 |
-| listing_status_intervals | 64637 |
-| listing_events | 8553 |
-| listing_keys | 61479 |
-| official_masterfile_symbols | 26231 |
-| official_masterfile_matches | 19439 |
-| official_masterfile_collisions | 3780 |
-| official_masterfile_missing | 3012 |
-| official_full_exchanges | 13 |
-| official_partial_exchanges | 3 |
+| listing_status_rows | 64672 |
+| listing_status_intervals | 64672 |
+| listing_events | 8588 |
+| listing_keys | 61512 |
+| official_masterfile_symbols | 24252 |
+| official_masterfile_matches | 18451 |
+| official_masterfile_collisions | 2861 |
+| official_masterfile_missing | 2940 |
+| official_full_exchanges | 12 |
+| official_partial_exchanges | 4 |
 | manual_only_exchanges | 0 |
 | missing_exchanges | 52 |
-| stock_verification_items | 44761 |
-| stock_verification_verified | 14143 |
-| stock_verification_reference_gap | 30377 |
-| stock_verification_missing_from_official | 21 |
+| stock_verification_items | 44794 |
+| stock_verification_verified | 14177 |
+| stock_verification_reference_gap | 30397 |
+| stock_verification_missing_from_official | 0 |
 | stock_verification_name_mismatch | 0 |
 | stock_verification_cross_exchange_collision | 220 |
 
@@ -36,16 +36,16 @@
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-04-06T18:07:28Z |
-| tickers_age_hours | 0.29 |
+| tickers_built_at | 2026-04-06T18:39:10Z |
+| tickers_age_hours | 0.0 |
 | masterfiles_generated_at | 2026-04-06T17:49:27Z |
-| masterfiles_age_hours | 0.6 |
-| identifiers_generated_at | 2026-04-06T18:07:32Z |
-| identifiers_age_hours | 0.29 |
-| listing_history_observed_at | 2026-04-06T18:07:28Z |
-| listing_history_age_hours | 0.29 |
-| latest_verification_run | data/stock_verification/run-20260406-coverage-max |
-| latest_verification_generated_at | 2026-04-06T18:25:08Z |
+| masterfiles_age_hours | 0.83 |
+| identifiers_generated_at | 2026-04-06T18:39:14Z |
+| identifiers_age_hours | 0.0 |
+| listing_history_observed_at | 2026-04-06T18:39:10Z |
+| listing_history_age_hours | 0.0 |
+| latest_verification_run | data/stock_verification/run-20260406-restblocks-final |
+| latest_verification_generated_at | 2026-04-06T18:39:16Z |
 | latest_verification_age_hours | 0.0 |
 
 ## Source Coverage
@@ -54,7 +54,7 @@
 |---|---|---|---|---|---|
 | nasdaq_listed | Nasdaq Trader | exchange_directory | network | 5422 | 2026-04-06T17:49:27Z |
 | nasdaq_other_listed | Nasdaq Trader | exchange_directory | network | 7073 | 2026-04-06T17:49:27Z |
-| asx_listed_companies | ASX | exchange_directory | network | 1979 | 2026-04-06T17:49:27Z |
+| asx_listed_companies | ASX | listed_companies_subset | network | 1979 | 2026-04-06T17:49:27Z |
 | tmx_interlisted_companies | TMX | interlisted_subset | network | 266 | 2026-04-06T17:49:27Z |
 | euronext_equities | Euronext | exchange_directory | network | 3885 | 2026-04-06T17:49:27Z |
 | jpx_listed_issues | JPX | exchange_directory | network | 4444 | 2026-04-06T17:49:27Z |
@@ -69,9 +69,9 @@
 | Exchange | Venue Status | Tickers | ISIN | Sector | CIK | FIGI | LEI | Masterfile Symbols | Matches | Collisions | Missing | Match Rate | Verified on Covered |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | AMS | official_full | 223 | 183 | 132 | 0 | 194 | 0 | 119 | 89 | 26 | 4 | 74.79 | 97.73 |
-| ASX | official_full | 1298 | 1036 | 702 | 30 | 1035 | 24 | 1979 | 1022 | 919 | 38 | 51.64 | 98.07 |
+| ASX | official_partial | 1298 | 1036 | 702 | 30 | 1035 | 24 | 0 | 0 | 0 | 0 |  | 100.0 |
 | ATHEX | missing | 117 | 90 | 117 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
-| B3 | official_full | 959 | 316 | 443 | 0 | 0 | 0 | 876 | 848 | 0 | 28 | 96.8 | 99.71 |
+| B3 | official_full | 959 | 316 | 443 | 0 | 0 | 0 | 876 | 848 | 0 | 28 | 96.8 | 100.0 |
 | BATS | official_full | 1102 | 645 | 335 | 2 | 0 | 0 | 1239 | 1040 | 168 | 31 | 83.94 | 33.33 |
 | BCBA | missing | 64 | 51 | 50 | 0 | 48 | 0 | 0 | 0 | 0 | 0 |  |  |
 | BME | missing | 169 | 154 | 157 | 3 | 2 | 0 | 0 | 0 | 0 | 0 |  |  |
@@ -128,7 +128,7 @@
 | TSE | official_full | 3214 | 0 | 0 | 0 | 0 | 0 | 4444 | 3214 | 1205 | 25 | 72.32 | 100.0 |
 | TSX | official_partial | 1766 | 1292 | 852 | 14 | 1186 | 23 | 0 | 0 | 0 | 0 |  | 100.0 |
 | TSXV | official_partial | 1034 | 590 | 632 | 17 | 536 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
-| TWSE | official_full | 1207 | 955 | 987 | 0 | 0 | 0 | 1080 | 988 | 34 | 58 | 91.48 | 99.8 |
+| TWSE | official_full | 1240 | 955 | 987 | 0 | 0 | 0 | 1080 | 1022 | 34 | 24 | 94.63 | 99.9 |
 | US | missing | 55 | 1 | 2 | 3 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | USE_UG | missing | 7 | 7 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | VSE | missing | 36 | 34 | 32 | 0 | 22 | 0 | 0 | 0 | 0 | 0 |  |  |
@@ -200,7 +200,7 @@
 | Sri Lanka | 3 | 0 | 0 | 0 | 0 | 0 |
 | Sweden | 996 | 872 | 664 | 16 | 1 | 1 |
 | Switzerland | 550 | 515 | 372 | 39 | 18 | 8 |
-| Taiwan | 2310 | 1784 | 1970 | 0 | 0 | 0 |
+| Taiwan | 2343 | 1784 | 1970 | 0 | 0 | 0 |
 | Tanzania | 17 | 15 | 2 | 0 | 0 | 0 |
 | Thailand | 601 | 405 | 585 | 42 | 5 | 6 |
 | Uganda | 7 | 7 | 0 | 0 | 0 | 0 |
