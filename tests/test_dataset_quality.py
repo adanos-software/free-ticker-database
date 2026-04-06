@@ -241,6 +241,16 @@ def test_safe_tse_supplements_are_present_without_cross_exchange_collisions():
     assert ticker_exchange_row("1301", "TWSE") is not None
 
 
+def test_twse_non_common_lines_are_reclassified_or_removed():
+    assert ticker_exchange_row("0052", "TWSE")["asset_type"] == "ETF"
+    assert ticker_exchange_row("00939", "TWSE")["asset_type"] == "ETF"
+    assert ticker_exchange_row("00941", "TWSE")["asset_type"] == "ETF"
+    assert ticker_exchange_row("01002T", "TWSE")["asset_type"] == "ETF"
+    assert ticker_exchange_row("01009T", "TWSE")["asset_type"] == "ETF"
+    assert ticker_exchange_row("2883B", "TWSE") is None
+    assert ticker_exchange_row("6781", "TWSE")["name"] == "AES Holding Co., Ltd."
+
+
 def test_supplement_only_rows_do_not_inherit_cross_exchange_aliases():
     aeu = ticker_exchange_row("AEU", "ASX")
     azt = ticker_exchange_row("AZT", "OSL")
@@ -445,9 +455,27 @@ def test_normalize_input_row_reclassifies_exchange_traded_products():
             "asset_type": "Stock",
         }
     )
+    twse_etf = normalize_input_row(
+        {
+            "ticker": "0052",
+            "name": "Fubon Taiwan Technology",
+            "exchange": "TWSE",
+            "asset_type": "Stock",
+        }
+    )
+    twse_reit = normalize_input_row(
+        {
+            "ticker": "01002T",
+            "name": "Cathay No.1 REIT",
+            "exchange": "TWSE",
+            "asset_type": "Stock",
+        }
+    )
 
     assert wisdomtree["asset_type"] == "ETF"
     assert etn["asset_type"] == "ETF"
+    assert twse_etf["asset_type"] == "ETF"
+    assert twse_reit["asset_type"] == "ETF"
 
 
 def test_should_exclude_stock_row_drops_ams_certificates():
@@ -457,6 +485,19 @@ def test_should_exclude_stock_row_drops_ams_certificates():
         "ticker": "RABO",
         "name": "Cooperatieve Rabobank U.A. PARTICIPATED CERT(RABOBANK ORD)EUR25",
         "exchange": "AMS",
+        "asset_type": "Stock",
+    }
+
+    assert should_exclude_stock_row(row) is True
+
+
+def test_should_exclude_stock_row_drops_twse_non_common_b_lines():
+    from scripts.rebuild_dataset import should_exclude_stock_row
+
+    row = {
+        "ticker": "2883B",
+        "name": "CHINA DEVELOPMENT FINANCIAL HOLDIN",
+        "exchange": "TWSE",
         "asset_type": "Stock",
     }
 

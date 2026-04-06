@@ -17,6 +17,8 @@ from scripts.fetch_exchange_masterfiles import (
     parse_nasdaq_listed,
     parse_other_listed,
     parse_sec_company_tickers_exchange,
+    parse_tpex_mainboard_quotes,
+    parse_twse_listed_companies,
     parse_tmx_interlisted,
     sec_request_headers,
 )
@@ -117,6 +119,81 @@ def test_parse_sec_company_tickers_exchange_normalizes_exchange_names():
     assert rows[0]["asset_type"] == "Stock"
     assert rows[2]["asset_type"] == "ETF"
     assert [row["ticker"] for row in rows] == ["AAPL", "T", "SPY"]
+
+
+def test_parse_twse_listed_companies_maps_twse_rows():
+    payload = [
+        {"公司代號": "1101", "公司名稱": "臺灣水泥股份有限公司"},
+        {"公司代號": "0050", "公司名稱": "元大台灣50"},
+        {"公司代號": "", "公司名稱": "Ignored"},
+    ]
+
+    rows = parse_twse_listed_companies(payload, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "1101",
+            "name": "臺灣水泥股份有限公司",
+            "exchange": "TWSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "0050",
+            "name": "元大台灣50",
+            "exchange": "TWSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_parse_tpex_mainboard_quotes_maps_tpex_rows():
+    payload = [
+        {"SecuritiesCompanyCode": "006201", "CompanyName": "元大富櫃50"},
+        {"SecuritiesCompanyCode": "6488", "CompanyName": "環球晶圓股份有限公司"},
+        {"SecuritiesCompanyCode": "ABC123", "CompanyName": "Skip Me"},
+        {"SecuritiesCompanyCode": "", "CompanyName": "Ignored"},
+    ]
+
+    rows = parse_tpex_mainboard_quotes(payload, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "006201",
+            "name": "元大富櫃50",
+            "exchange": "TPEX",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "6488",
+            "name": "環球晶圓股份有限公司",
+            "exchange": "TPEX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
 
 
 def test_parse_asx_listed_companies_skips_banner_lines():

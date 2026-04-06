@@ -72,6 +72,24 @@
     "official": true
   },
   {
+    "key": "twse_listed_companies",
+    "provider": "TWSE",
+    "description": "Official TWSE listed companies open data feed",
+    "source_url": "https://openapi.twse.com.tw/v1/opendata/t187ap03_L",
+    "format": "twse_listed_companies_json",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "tpex_mainboard_daily_quotes",
+    "provider": "TPEX",
+    "description": "Official TPEX mainboard daily quotes open data feed",
+    "source_url": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes",
+    "format": "tpex_mainboard_quotes_json",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
     "key": "sec_company_tickers_exchange",
     "provider": "SEC",
     "description": "Official SEC company ticker to exchange mapping",

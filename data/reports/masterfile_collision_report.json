@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 25151,
-    "matched": 18451,
-    "collisions": 3770,
-    "missing": 2930
+    "official_symbols": 26231,
+    "matched": 19439,
+    "collisions": 3780,
+    "missing": 3012
   },
   "exchanges": [
     {
@@ -1399,8 +1399,8 @@
       "exchange": "TSE",
       "official_symbols": 4444,
       "matched": 3214,
-      "collisions": 1229,
-      "missing": 1,
+      "collisions": 1205,
+      "missing": 25,
       "collision_examples": [
         {
           "ticker": "1301",
@@ -1485,9 +1485,195 @@
       ],
       "missing_examples": [
         {
+          "ticker": "1626",
+          "name": "NEXT FUNDS TOPIX-17 IT & SERVICES,OTHERS ETF",
+          "exchange": "TSE"
+        },
+        {
+          "ticker": "2236",
+          "name": "Global X S&P 500 Dividend Aristocrats ETF",
+          "exchange": "TSE"
+        },
+        {
+          "ticker": "2239",
+          "name": "Listed Index Fund S&P500 Futures Leveraged Two Times",
+          "exchange": "TSE"
+        },
+        {
+          "ticker": "2243",
+          "name": "Global X Semiconductor ETF",
+          "exchange": "TSE"
+        },
+        {
           "ticker": "25935",
           "name": "Class-A Preferred Stock of ITO EN,LTD.",
           "exchange": "TSE"
+        },
+        {
+          "ticker": "2637",
+          "name": "Global X CleanTech Japan ETF",
+          "exchange": "TSE"
+        },
+        {
+          "ticker": "2923",
+          "name": "SATO FOODS CO.,LTD.",
+          "exchange": "TSE"
+        },
+        {
+          "ticker": "2929",
+          "name": "Pharma Foods International Co.,Ltd.",
+          "exchange": "TSE"
+        },
+        {
+          "ticker": "3661",
+          "name": "m-up holdings,Inc.",
+          "exchange": "TSE"
+        },
+        {
+          "ticker": "4552",
+          "name": "JCR Pharmaceuticals Co.,Ltd.",
+          "exchange": "TSE"
+        }
+      ]
+    },
+    {
+      "exchange": "TWSE",
+      "official_symbols": 1080,
+      "matched": 988,
+      "collisions": 34,
+      "missing": 58,
+      "collision_examples": [
+        {
+          "ticker": "1623",
+          "name": "\u5927\u6771\u96fb\u696d\u5ee0\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "target_exchange": "TWSE",
+          "existing_exchanges": [
+            "TPEX"
+          ]
+        },
+        {
+          "ticker": "2020",
+          "name": "\u7f8e\u4e9e\u92fc\u7ba1\u5ee0\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "target_exchange": "TWSE",
+          "existing_exchanges": [
+            "OSL"
+          ]
+        },
+        {
+          "ticker": "2038",
+          "name": "\u6d77\u5149\u4f01\u696d\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "target_exchange": "TWSE",
+          "existing_exchanges": [
+            "TSE"
+          ]
+        },
+        {
+          "ticker": "2072",
+          "name": "\u4e16\u7d00\u96e2\u5cb8\u98a8\u96fb\u8a2d\u5099\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "target_exchange": "TWSE",
+          "existing_exchanges": [
+            "TPEX"
+          ]
+        },
+        {
+          "ticker": "2305",
+          "name": "\u5168\u53cb\u96fb\u8166\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "target_exchange": "TWSE",
+          "existing_exchanges": [
+            "TSE"
+          ]
+        },
+        {
+          "ticker": "2429",
+          "name": "\u9298\u65fa\u79d1\u6280\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "target_exchange": "TWSE",
+          "existing_exchanges": [
+            "TSE"
+          ]
+        },
+        {
+          "ticker": "2488",
+          "name": "\u6f22\u5e73\u96fb\u5b50\u5de5\u696d\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "target_exchange": "TWSE",
+          "existing_exchanges": [
+            "TSE"
+          ]
+        },
+        {
+          "ticker": "2607",
+          "name": "\u9577\u69ae\u570b\u969b\u5132\u904b\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "target_exchange": "TWSE",
+          "existing_exchanges": [
+            "TSE"
+          ]
+        },
+        {
+          "ticker": "2836",
+          "name": "\u9ad8\u96c4\u9280\u884c\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "target_exchange": "TWSE",
+          "existing_exchanges": [
+            "TSE"
+          ]
+        },
+        {
+          "ticker": "2852",
+          "name": "\u7b2c\u4e00\u7522\u7269\u4fdd\u96aa\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "target_exchange": "TWSE",
+          "existing_exchanges": [
+            "TSE"
+          ]
+        }
+      ],
+      "missing_examples": [
+        {
+          "ticker": "1256",
+          "name": "\u9bae\u6d3b\u63a7\u80a1\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "exchange": "TWSE"
+        },
+        {
+          "ticker": "1337",
+          "name": "\u4e9e\u6d32\u5851\u81a0\u518d\u751f\u8cc7\u6e90\u63a7\u80a1\u6709\u9650\u516c\u53f8",
+          "exchange": "TWSE"
+        },
+        {
+          "ticker": "1338",
+          "name": "\u5ee3\u83ef\u63a7\u80a1\u6709\u9650\u516c\u53f8",
+          "exchange": "TWSE"
+        },
+        {
+          "ticker": "1340",
+          "name": "\u52dd\u6085\u65b0\u6750\u6599\u6709\u9650\u516c\u53f8",
+          "exchange": "TWSE"
+        },
+        {
+          "ticker": "1341",
+          "name": "\u5bcc\u6797\u5851\u81a0\u5de5\u696d(\u958b\u66fc)\u63a7\u80a1(\u80a1)\u516c\u53f8",
+          "exchange": "TWSE"
+        },
+        {
+          "ticker": "1590",
+          "name": "\u4e9e\u5fb7\u5ba2\u570b\u969b\u96c6\u5718",
+          "exchange": "TWSE"
+        },
+        {
+          "ticker": "1626",
+          "name": "\u827e\u7f8e\u7279(\u958b\u66fc)\u570b\u969b\u6709\u9650\u516c\u53f8",
+          "exchange": "TWSE"
+        },
+        {
+          "ticker": "2115",
+          "name": "\u516d\u6689\u63a7\u80a1\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "exchange": "TWSE"
+        },
+        {
+          "ticker": "2236",
+          "name": "\u767e\u9054\u7cbe\u5bc6\u5de5\u696d\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "exchange": "TWSE"
+        },
+        {
+          "ticker": "2239",
+          "name": "\u958b\u66fc\u82f1\u5229\u5de5\u696d\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "exchange": "TWSE"
         }
       ]
     }

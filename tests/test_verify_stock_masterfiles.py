@@ -105,6 +105,41 @@ def test_classify_row_name_mismatch() -> None:
     assert result["status"] == "name_mismatch"
 
 
+def test_classify_row_treats_twse_local_language_names_as_verified() -> None:
+    row = {
+        "ticker": "2330",
+        "exchange": "TWSE",
+        "asset_type": "Stock",
+        "name": "Taiwan Semiconductor Manufacturing Company Limited",
+        "country": "Taiwan",
+        "country_code": "TW",
+        "isin": "TW0002330008",
+        "sector": "Information Technology",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("TWSE", "2330"): [
+                {
+                    "ticker": "2330",
+                    "exchange": "TWSE",
+                    "name": "台灣積體電路製造股份有限公司",
+                    "asset_type": "Stock",
+                    "source_key": "twse_listed_companies",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={"2330": [{"ticker": "2330", "exchange": "TWSE", "name": "台灣積體電路製造股份有限公司", "asset_type": "Stock"}]},
+        covered_exchanges={"TWSE"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+    assert result["reason"] == "Matched active official listing with a local-language issuer name."
+
+
 def test_classify_row_non_active_official() -> None:
     row = {
         "ticker": "ATEST",

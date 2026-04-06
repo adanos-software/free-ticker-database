@@ -39,6 +39,10 @@ SUPPLEMENT_EXCHANGES: dict[str, dict[str, str]] = {
         "country": "Japan",
         "country_code": "JP",
     },
+    "TWSE": {
+        "country": "Taiwan",
+        "country_code": "TW",
+    },
     "XETRA": {
         "country": "Germany",
         "country_code": "DE",
@@ -52,6 +56,7 @@ SUPPLEMENT_EXCLUDED_STOCK_PATTERNS = [
 SUPPLEMENT_ALLOWED_REFERENCE_SCOPES_BY_EXCHANGE: dict[str, set[str]] = {
     "XETRA": {"exchange_directory", "listed_companies_subset"},
 }
+LOCAL_LANGUAGE_REFRESH_EXCHANGES = {"TWSE", "TPEX"}
 
 
 def load_csv(path: Path) -> list[dict[str, str]]:
@@ -77,6 +82,24 @@ def build_supplement_rows(
         core_rows_by_key[(row["ticker"], row["exchange"])] = row
 
     supplements: list[dict[str, str]] = []
+    eligible_missing_exchanges_by_ticker: dict[str, set[str]] = {}
+    for row in masterfile_rows:
+        exchange = row["exchange"]
+        if exchange not in SUPPLEMENT_EXCHANGES:
+            continue
+        if row.get("listing_status") != "active":
+            continue
+        allowed_reference_scopes = SUPPLEMENT_ALLOWED_REFERENCE_SCOPES_BY_EXCHANGE.get(
+            exchange,
+            {"exchange_directory"},
+        )
+        if row.get("reference_scope") not in allowed_reference_scopes:
+            continue
+        ticker = row["ticker"]
+        if core_exchanges_by_ticker.get(ticker):
+            continue
+        eligible_missing_exchanges_by_ticker.setdefault(ticker, set()).add(exchange)
+
     summary: dict[str, Any] = {
         "supplement_rows": 0,
         "safe_missing_rows": 0,
@@ -110,6 +133,10 @@ def build_supplement_rows(
             },
         )
         if exchanges and exchanges != {exchange}:
+            summary["colliding_rows_skipped"] += 1
+            stats["colliding_rows_skipped"] += 1
+            continue
+        if not exchanges and len(eligible_missing_exchanges_by_ticker.get(ticker, set())) > 1:
             summary["colliding_rows_skipped"] += 1
             stats["colliding_rows_skipped"] += 1
             continue
@@ -168,12 +195,19 @@ def build_supplement_rows(
 def rows_refer_to_same_entity(core_row: dict[str, str], masterfile_row: dict[str, str]) -> bool:
     core_isin = (core_row.get("isin") or "").strip()
     masterfile_isin = (masterfile_row.get("isin") or "").strip()
-    if core_isin and masterfile_isin and core_isin == masterfile_isin:
-        return True
+    if core_isin and masterfile_isin:
+        return core_isin == masterfile_isin
 
     core_name = (core_row.get("name") or "").strip()
     masterfile_name = (masterfile_row.get("name") or "").strip()
     if not core_name or not masterfile_name:
+        return True
+
+    if (
+        core_row.get("exchange") == masterfile_row.get("exchange")
+        and core_row.get("exchange") in LOCAL_LANGUAGE_REFRESH_EXCHANGES
+        and any(ord(character) > 127 and character.isalpha() for character in masterfile_name)
+    ):
         return True
 
     core_compact = normalized_compact(core_name)

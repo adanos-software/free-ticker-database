@@ -4,6 +4,7 @@ import csv
 import io
 import json
 import os
+import re
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -32,6 +33,8 @@ EURONEXT_EQUITIES_DOWNLOAD_URL = "https://live.euronext.com/pd_es/data/stocks/do
 JPX_LISTED_ISSUES_URL = "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls"
 DEUTSCHE_BOERSE_LISTED_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/67858/dd766fc6588100c79294324175f95501/data/Listed-companies.xlsx"
 B3_INSTRUMENTS_EQUITIES_URL = "https://arquivos.b3.com.br/bdi/table/InstrumentsEquities"
+TWSE_LISTED_COMPANIES_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
+TPEX_MAINBOARD_QUOTES_URL = "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes"
 
 USER_AGENT = "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)"
 SEC_CONTACT_EMAIL = os.environ.get("SEC_CONTACT_EMAIL", "opensource@adanos.software")
@@ -90,6 +93,7 @@ B3_EXCLUDED_ISSUER_MARKERS = (
     "taxa de financiamento",
     "financ/termo",
 )
+TPEX_CANONICAL_TICKER_RE = re.compile(r"(?:\d{4}|00\d{4}[A-Z]?)$")
 
 
 @dataclass(frozen=True)
@@ -163,6 +167,20 @@ OFFICIAL_SOURCES = [
         format="b3_instruments_equities_api",
     ),
     MasterfileSource(
+        key="twse_listed_companies",
+        provider="TWSE",
+        description="Official TWSE listed companies open data feed",
+        source_url=TWSE_LISTED_COMPANIES_URL,
+        format="twse_listed_companies_json",
+    ),
+    MasterfileSource(
+        key="tpex_mainboard_daily_quotes",
+        provider="TPEX",
+        description="Official TPEX mainboard daily quotes open data feed",
+        source_url=TPEX_MAINBOARD_QUOTES_URL,
+        format="tpex_mainboard_quotes_json",
+    ),
+    MasterfileSource(
         key="sec_company_tickers_exchange",
         provider="SEC",
         description="Official SEC company ticker to exchange mapping",
@@ -212,6 +230,13 @@ def load_manual_masterfiles(manual_dir: Path) -> list[dict[str, str]]:
 def infer_asset_type(name: str) -> str:
     lowered = f" {name.lower()} "
     return "ETF" if any(marker in lowered for marker in ETF_NAME_MARKERS) else "Stock"
+
+
+def infer_taiwan_asset_type(ticker: str, name: str) -> str:
+    normalized_ticker = ticker.strip()
+    if normalized_ticker.startswith("00"):
+        return "ETF"
+    return infer_asset_type(name)
 
 
 def fetch_text(url: str, session: requests.Session | None = None) -> str:
@@ -525,6 +550,54 @@ def parse_sec_company_tickers_exchange(payload: dict[str, Any], source: Masterfi
     return rows
 
 
+def parse_twse_listed_companies(payload: list[dict[str, Any]], source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for record in payload:
+        ticker = str(record.get("公司代號", "")).strip()
+        name = str(record.get("公司名稱", "")).strip()
+        if not ticker or not name:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "TWSE",
+                "asset_type": infer_taiwan_asset_type(ticker, name),
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
+def parse_tpex_mainboard_quotes(payload: list[dict[str, Any]], source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for record in payload:
+        ticker = str(record.get("SecuritiesCompanyCode", "")).strip()
+        name = str(record.get("CompanyName", "")).strip()
+        if not ticker or not name or not TPEX_CANONICAL_TICKER_RE.fullmatch(ticker):
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "TPEX",
+                "asset_type": infer_taiwan_asset_type(ticker, name),
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
 def parse_b3_instruments_equities_table(table: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
     columns = [column.get("name", "") for column in table.get("columns") or []]
     rows: list[dict[str, str]] = []
@@ -618,6 +691,12 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return parse_deutsche_boerse_listed_companies_excel(content, source)
     if source.format == "b3_instruments_equities_api":
         return fetch_b3_instruments_equities(source, session=session)
+    if source.format == "twse_listed_companies_json":
+        payload = fetch_json(source.source_url, session=session)
+        return parse_twse_listed_companies(payload, source)
+    if source.format == "tpex_mainboard_quotes_json":
+        payload = fetch_json(source.source_url, session=session)
+        return parse_tpex_mainboard_quotes(payload, source)
     if source.format == "sec_company_tickers_exchange_json":
         payload = fetch_json(source.source_url, session=session)
         return parse_sec_company_tickers_exchange(payload, source)

@@ -155,6 +155,8 @@ B3_FRACTIONAL_TICKER_RE = re.compile(r".*F$")
 B3_UNIT_TICKER_RE = re.compile(r".*11$")
 ASX_CAPITAL_NOTE_TICKER_RE = re.compile(r".*P[A-Z]$")
 ASX_LOYALTY_TICKER_RE = re.compile(r".*LV$")
+TAIWAN_ETF_TICKER_RE = re.compile(r"^00\d{2,4}[A-Z]?$")
+TAIWAN_NON_COMMON_STOCK_TICKER_RE = re.compile(r"^\d{4}B$")
 EUROPEAN_CERTIFICATE_PATTERN = re.compile(r"\bparticipated cert\b|\bcert\(", re.IGNORECASE)
 ETP_NAME_PATTERNS = (
     re.compile(r"\betf\b", re.IGNORECASE),
@@ -636,6 +638,8 @@ def should_exclude_stock_row(row: dict[str, str]) -> bool:
             return True
         if "deferred settlement" in name or name.endswith("deferred"):
             return True
+    if row.get("exchange") in {"TWSE", "TPEX"} and TAIWAN_NON_COMMON_STOCK_TICKER_RE.fullmatch(ticker):
+        return True
     if row.get("exchange") in {"AMS", "Euronext"} and EUROPEAN_CERTIFICATE_PATTERN.search(name):
         return True
     if row["ticker"].count("-P-"):
@@ -649,12 +653,22 @@ def should_exclude_stock_row(row: dict[str, str]) -> bool:
 
 def normalize_input_row(row: dict[str, str]) -> dict[str, str]:
     normalized = dict(row)
+    exchange = normalized.get("exchange", "")
+    ticker = normalized.get("ticker", "").strip().upper()
+    name = normalized.get("name", "")
     if (
         normalized.get("asset_type") == "Stock"
-        and normalized.get("asset_type") == "Stock"
-        and any(pattern.search(normalized.get("name", "")) for pattern in ETP_NAME_PATTERNS)
+        and any(pattern.search(name) for pattern in ETP_NAME_PATTERNS)
     ):
         normalized["asset_type"] = "ETF"
+    if normalized.get("asset_type") == "Stock" and exchange in {"TWSE", "TPEX"}:
+        lowered_name = name.lower()
+        if (
+            TAIWAN_ETF_TICKER_RE.fullmatch(ticker)
+            or "reit" in lowered_name
+            or "real estate investment trust" in lowered_name
+        ):
+            normalized["asset_type"] = "ETF"
     return normalized
 
 

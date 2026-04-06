@@ -330,6 +330,135 @@ def test_build_supplement_rows_skips_incompatible_same_exchange_refresh():
     }
 
 
+def test_build_supplement_rows_supports_safe_twse_rows():
+    core_rows = [
+        {"ticker": "1101", "exchange": "SSE", "name": "Collision Co"},
+        {"ticker": "2330", "exchange": "TWSE", "name": "Taiwan Semiconductor Manufacturing Company Limited"},
+    ]
+    masterfile_rows = [
+        {
+            "ticker": "1101",
+            "name": "台泥",
+            "exchange": "TWSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "twse",
+            "source_url": "https://example.com/twse",
+        },
+        {
+            "ticker": "00631L",
+            "name": "元大台灣50正2",
+            "exchange": "TWSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "twse",
+            "source_url": "https://example.com/twse",
+        },
+        {
+            "ticker": "2330",
+            "name": "台積電",
+            "exchange": "TWSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "twse",
+            "source_url": "https://example.com/twse",
+        },
+    ]
+
+    rows, summary = build_supplement_rows(core_rows, masterfile_rows)
+
+    assert rows == [
+        {
+            "ticker": "00631L",
+            "name": "元大台灣50正2",
+            "exchange": "TWSE",
+            "asset_type": "ETF",
+            "sector": "",
+            "country": "Taiwan",
+            "country_code": "TW",
+            "isin": "",
+            "aliases": "",
+            "source_key": "twse",
+            "source_url": "https://example.com/twse",
+            "reference_scope": "exchange_directory",
+        },
+        {
+            "ticker": "2330",
+            "name": "台積電",
+            "exchange": "TWSE",
+            "asset_type": "Stock",
+            "sector": "",
+            "country": "Taiwan",
+            "country_code": "TW",
+            "isin": "",
+            "aliases": "",
+            "source_key": "twse",
+            "source_url": "https://example.com/twse",
+            "reference_scope": "exchange_directory",
+        },
+    ]
+    assert summary["supplement_rows"] == 2
+    assert summary["safe_missing_rows"] == 1
+    assert summary["refreshable_existing_rows"] == 1
+    assert summary["colliding_rows_skipped"] == 1
+    assert summary["by_exchange"] == {
+        "TWSE": {
+            "safe_missing_rows": 1,
+            "refreshable_existing_rows": 1,
+            "colliding_rows_skipped": 1,
+        }
+    }
+
+
+def test_build_supplement_rows_skips_ambiguous_missing_numeric_tickers():
+    core_rows: list[dict[str, str]] = []
+    masterfile_rows = [
+        {
+            "ticker": "1626",
+            "name": "NISSIN SUGAR CO., LTD.",
+            "exchange": "TSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "jpx",
+            "source_url": "https://example.com/jpx",
+        },
+        {
+            "ticker": "1626",
+            "name": "艾美特-KY",
+            "exchange": "TWSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "source_key": "twse",
+            "source_url": "https://example.com/twse",
+        },
+    ]
+
+    rows, summary = build_supplement_rows(core_rows, masterfile_rows)
+
+    assert rows == []
+    assert summary["supplement_rows"] == 0
+    assert summary["safe_missing_rows"] == 0
+    assert summary["refreshable_existing_rows"] == 0
+    assert summary["colliding_rows_skipped"] == 2
+    assert summary["by_exchange"] == {
+        "TSE": {
+            "safe_missing_rows": 0,
+            "refreshable_existing_rows": 0,
+            "colliding_rows_skipped": 1,
+        },
+        "TWSE": {
+            "safe_missing_rows": 0,
+            "refreshable_existing_rows": 0,
+            "colliding_rows_skipped": 1,
+        },
+    }
+
+
 def test_merge_supplemental_ticker_rows_refreshes_safe_fields(monkeypatch, tmp_path):
     supplemental = tmp_path / "supplemental.csv"
     supplemental.write_text(

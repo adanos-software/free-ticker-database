@@ -29,6 +29,7 @@ BAD_STATUSES = {
     "non_active_official",
 }
 LOW_CONFIDENCE_MISSING_EXCHANGES = {"OTC"}
+LOCAL_LANGUAGE_NAME_MATCH_EXCHANGES = {"TWSE", "TPEX"}
 LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE = {
     "NASDAQ": {"sec_company_tickers_exchange"},
     "NYSE": {"sec_company_tickers_exchange", "nasdaq_other_listed"},
@@ -38,6 +39,10 @@ LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE = {
     "TSXV": {"tmx_interlisted_companies"},
 }
 EURONEXT_LABEL_SPLIT_RE = re.compile(r"[\s./-]+")
+
+
+def has_non_latin_name(name: str) -> bool:
+    return any(ord(character) > 127 and character.isalpha() for character in name)
 
 
 def load_csv(path: Path) -> list[dict[str, str]]:
@@ -173,6 +178,12 @@ def classify_row(
             if any(alias_matches_company(candidate.get("name", ""), row["name"]) for candidate in same_type_rows):
                 status = "verified"
                 reason = "Matched active official exchange directory listing."
+            elif (
+                exchange in LOCAL_LANGUAGE_NAME_MATCH_EXCHANGES
+                and all(has_non_latin_name(candidate.get("name", "")) for candidate in same_type_rows)
+            ):
+                status = "verified"
+                reason = "Matched active official listing with a local-language issuer name."
             elif all(is_code_like_reference_name(candidate.get("name", ""), ticker) for candidate in same_type_rows):
                 status = "verified"
                 reason = "Official directory name is a compact trading label for this listing."
