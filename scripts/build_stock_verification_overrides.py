@@ -68,6 +68,10 @@ US_TEMPORARY_D_TICKER_RE = re.compile(r"[A-Z]{4}D$")
 US_PREFERRED_HYPHEN_TICKER_RE = re.compile(r".*-PRI$")
 US_TEST_LINE_TICKER_RE = re.compile(r"NTEST-[A-Z]$")
 YAHOO_OTC_EXCHANGES = {"PNK", "OQB", "OEM", "OID"}
+YAHOO_NASDAQ_EXCHANGES = {"NMS", "NGM", "NCM"}
+YAHOO_NYSE_EXCHANGES = {"NYQ"}
+YAHOO_NYSE_ARCA_EXCHANGES = {"PCX"}
+YAHOO_NYSE_MKT_EXCHANGES = {"ASE"}
 US_PRIMARY_STOCK_EXCHANGES = {"NASDAQ", "NYSE", "NYSE ARCA", "NYSE MKT"}
 EURONEXT_STRONG_RENAME_TICKERS = {
     "74SW",
@@ -237,6 +241,38 @@ def is_us_stale_missing_listing(row: dict[str, str]) -> bool:
     return yahoo_quote_type == "NONE"
 
 
+def yahoo_exchange_family(row: dict[str, str]) -> str | None:
+    exchange_code = row.get("yahoo_exchange") or row.get("exchange_code") or ""
+    if exchange_code in YAHOO_OTC_EXCHANGES:
+        return "OTC"
+    if exchange_code in YAHOO_NASDAQ_EXCHANGES:
+        return "NASDAQ"
+    if exchange_code in YAHOO_NYSE_EXCHANGES:
+        return "NYSE"
+    if exchange_code in YAHOO_NYSE_ARCA_EXCHANGES:
+        return "NYSE ARCA"
+    if exchange_code in YAHOO_NYSE_MKT_EXCHANGES:
+        return "NYSE MKT"
+    return None
+
+
+def is_yahoo_collision_stale_listing(row: dict[str, str]) -> bool:
+    if not str(row.get("reason", "")).startswith("Official directory uses this ticker on other exchange(s):"):
+        return False
+    exchange = row.get("exchange", "")
+    if exchange not in US_VERIFICATION_EXCHANGES | {"OTC"}:
+        return False
+    exists = row.get("exists")
+    if exists is False or str(row.get("status", "")) == "not_found":
+        return True
+    yahoo_family = yahoo_exchange_family(row)
+    if yahoo_family is None:
+        return False
+    if exchange == "OTC":
+        return yahoo_family != "OTC"
+    return yahoo_family != exchange
+
+
 def merge_metadata_updates(
     existing_rows: list[dict[str, str]],
     generated_rows: list[dict[str, str]],
@@ -375,6 +411,17 @@ def build_generated_updates(
             )
 
     for row in yahoo_verification_rows or []:
+        if is_yahoo_collision_stale_listing(row):
+            destination = row.get("fullExchangeName") or row.get("yahoo_full_exchange") or row.get("exchange_code") or row.get("yahoo_exchange") or "another exchange"
+            drop_rows.append(
+                {
+                    "ticker": row["ticker"],
+                    "exchange": row["exchange"],
+                    "confidence": "0.96",
+                    "reason": f"Yahoo Finance resolves this symbol to {destination} rather than the current exchange, indicating the current listing is stale.",
+                }
+            )
+            continue
         if not is_us_otc_or_fund_migration(row):
             if not is_us_stale_missing_listing(row):
                 continue

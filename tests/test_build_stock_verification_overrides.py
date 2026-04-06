@@ -8,6 +8,7 @@ from scripts.build_stock_verification_overrides import (
     is_euronext_strong_rename_candidate,
     is_excluded_security_reference,
     is_strong_rename_candidate,
+    is_yahoo_collision_stale_listing,
     is_us_otc_or_fund_migration,
     is_us_stale_missing_listing,
     is_us_stale_missing_line,
@@ -330,6 +331,62 @@ def test_build_generated_updates_adds_yahoo_not_found_stale_drops() -> None:
     metadata, drops = build_generated_updates([], yahoo_rows)
     assert metadata == []
     assert {(row["ticker"], row["exchange"]) for row in drops} == {("VERB", "NASDAQ"), ("CWENA", "NYSE")}
+
+
+def test_is_yahoo_collision_stale_listing_accepts_wrong_venue_resolution() -> None:
+    row = {
+        "ticker": "AEAE",
+        "exchange": "NASDAQ",
+        "reason": "Official directory uses this ticker on other exchange(s): OTC.",
+        "exists": True,
+        "exchange_code": "PNK",
+        "fullExchangeName": "OTC Markets OTCPK",
+    }
+    assert is_yahoo_collision_stale_listing(row)
+
+
+def test_build_generated_updates_adds_yahoo_collision_stale_drops() -> None:
+    yahoo_rows = [
+        {
+            "ticker": "AEAE",
+            "exchange": "NASDAQ",
+            "reason": "Official directory uses this ticker on other exchange(s): OTC.",
+            "exists": True,
+            "exchange_code": "PNK",
+            "fullExchangeName": "OTC Markets OTCPK",
+        },
+        {
+            "ticker": "TLN",
+            "exchange": "OTC",
+            "reason": "Official directory uses this ticker on other exchange(s): NASDAQ.",
+            "exists": True,
+            "exchange_code": "NMS",
+            "fullExchangeName": "NasdaqGS",
+        },
+        {
+            "ticker": "SENS",
+            "exchange": "NYSE MKT",
+            "reason": "Official directory uses this ticker on other exchange(s): NASDAQ.",
+            "exists": True,
+            "exchange_code": "NMS",
+            "fullExchangeName": "NasdaqGS",
+        },
+        {
+            "ticker": "REAL",
+            "exchange": "NASDAQ",
+            "reason": "Official directory uses this ticker on other exchange(s): OTC.",
+            "exists": True,
+            "exchange_code": "NMS",
+            "fullExchangeName": "NasdaqGS",
+        },
+    ]
+    metadata, drops = build_generated_updates([], yahoo_rows)
+    assert metadata == []
+    assert {(row["ticker"], row["exchange"]) for row in drops} == {
+        ("AEAE", "NASDAQ"),
+        ("TLN", "OTC"),
+        ("SENS", "NYSE MKT"),
+    }
 
 
 def test_write_csv_ignores_unexpected_keys(tmp_path) -> None:

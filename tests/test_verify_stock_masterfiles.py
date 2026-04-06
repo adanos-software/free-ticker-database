@@ -165,12 +165,12 @@ def test_classify_row_non_active_official() -> None:
 
 def test_classify_row_collision() -> None:
     row = {
-        "ticker": "1301",
-        "exchange": "TWSE",
+        "ticker": "SENS",
+        "exchange": "NYSE MKT",
         "asset_type": "Stock",
-        "name": "Formosa Plastics Corp",
-        "country": "Taiwan",
-        "country_code": "TW",
+        "name": "Senseonics Holdings, Inc.",
+        "country": "United States",
+        "country_code": "US",
         "isin": "",
         "sector": "",
     }
@@ -178,12 +178,36 @@ def test_classify_row_collision() -> None:
         row,
         active_by_key={},
         any_by_key={},
-        active_by_ticker={"1301": [{"ticker": "1301", "exchange": "TSE", "name": "KYOKUYO CO.,LTD.", "asset_type": "Stock"}]},
-        covered_exchanges={"TWSE"},
+        active_by_ticker={"SENS": [{"ticker": "SENS", "exchange": "NASDAQ", "name": "Senseonics Holdings, Inc.", "asset_type": "Stock"}]},
+        covered_exchanges={"NYSE MKT"},
         partial_covered_exchanges=set(),
         identifier_map={},
     )
     assert result["status"] == "cross_exchange_collision"
+
+
+def test_classify_row_downgrades_weak_collision_peers_to_reference_gap() -> None:
+    row = {
+        "ticker": "AEAE",
+        "exchange": "NASDAQ",
+        "asset_type": "Stock",
+        "name": "Altenergy Acquisition Corp",
+        "country": "United States",
+        "country_code": "US",
+        "isin": "",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={},
+        any_by_key={},
+        active_by_ticker={"AEAE": [{"ticker": "AEAE", "exchange": "OTC", "name": "AltEnergy Acquisition Corp", "asset_type": "Stock"}]},
+        covered_exchanges={"NASDAQ"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Only weak cross-exchange collision evidence exists for this listing."
 
 
 def test_classify_row_prefers_non_sec_stock_evidence() -> None:

@@ -40,6 +40,14 @@ LOW_CONFIDENCE_MISSING_EXCHANGES = {
     "OSL",
     "OTC",
 }
+LOW_CONFIDENCE_COLLISION_PEER_EXCHANGES = {
+    "ASX",
+    "Euronext",
+    "OSL",
+    "OTC",
+    "TSE",
+    "XETRA",
+}
 LOCAL_LANGUAGE_NAME_MATCH_EXCHANGES = {"TWSE", "TPEX"}
 LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE = {
     "NASDAQ": {"sec_company_tickers_exchange"},
@@ -230,9 +238,14 @@ def classify_row(
             reference_name = non_active_row.get("name", "")
             reference_source = non_active_row.get("source_key", "")
         elif peers:
-            status = "cross_exchange_collision"
-            peer_preview = ", ".join(sorted({peer['exchange'] for peer in peers})[:4])
-            reason = f"Official directory uses this ticker on other exchange(s): {peer_preview}."
+            peer_exchanges = {peer["exchange"] for peer in peers}
+            peer_preview = ", ".join(sorted(peer_exchanges)[:4])
+            if peer_exchanges <= LOW_CONFIDENCE_COLLISION_PEER_EXCHANGES:
+                status = "reference_gap"
+                reason = "Only weak cross-exchange collision evidence exists for this listing."
+            else:
+                status = "cross_exchange_collision"
+                reason = f"Official directory uses this ticker on other exchange(s): {peer_preview}."
         elif exchange in LOW_CONFIDENCE_MISSING_EXCHANGES:
             status = "reference_gap"
             reason = "This exchange is only weakly covered by the current official reference layer."

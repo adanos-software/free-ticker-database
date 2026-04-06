@@ -1,44 +1,44 @@
 {
   "global": {
-    "tickers": 61512,
-    "aliases": 98565,
-    "stocks": 44794,
+    "tickers": 61353,
+    "aliases": 98205,
+    "stocks": 44635,
     "etfs": 16718,
-    "isin_coverage": 43763,
-    "sector_coverage": 37961,
-    "cik_coverage": 8201,
-    "figi_coverage": 4208,
-    "lei_coverage": 1016,
-    "listing_status_rows": 64672,
-    "listing_status_intervals": 64672,
-    "listing_events": 8588,
-    "listing_keys": 61512,
+    "isin_coverage": 43626,
+    "sector_coverage": 37839,
+    "cik_coverage": 8048,
+    "figi_coverage": 4207,
+    "lei_coverage": 1001,
+    "listing_status_rows": 64831,
+    "listing_status_intervals": 64831,
+    "listing_events": 8747,
+    "listing_keys": 61353,
     "official_masterfile_symbols": 24252,
     "official_masterfile_matches": 18451,
-    "official_masterfile_collisions": 2861,
-    "official_masterfile_missing": 2940,
+    "official_masterfile_collisions": 2700,
+    "official_masterfile_missing": 3101,
     "official_full_exchanges": 12,
     "official_partial_exchanges": 4,
     "manual_only_exchanges": 0,
     "missing_exchanges": 52,
-    "stock_verification_items": 44794,
+    "stock_verification_items": 44635,
     "stock_verification_verified": 14177,
-    "stock_verification_reference_gap": 30397,
+    "stock_verification_reference_gap": 30437,
     "stock_verification_missing_from_official": 0,
     "stock_verification_name_mismatch": 0,
-    "stock_verification_cross_exchange_collision": 220
+    "stock_verification_cross_exchange_collision": 21
   },
   "freshness": {
-    "tickers_built_at": "2026-04-06T18:39:10Z",
+    "tickers_built_at": "2026-04-06T19:04:47Z",
     "tickers_age_hours": 0.0,
     "masterfiles_generated_at": "2026-04-06T17:49:27Z",
-    "masterfiles_age_hours": 0.83,
-    "identifiers_generated_at": "2026-04-06T18:39:14Z",
+    "masterfiles_age_hours": 1.26,
+    "identifiers_generated_at": "2026-04-06T19:04:51Z",
     "identifiers_age_hours": 0.0,
-    "listing_history_observed_at": "2026-04-06T18:39:10Z",
+    "listing_history_observed_at": "2026-04-06T19:04:47Z",
     "listing_history_age_hours": 0.0,
-    "latest_verification_run": "data/stock_verification/run-20260406-restblocks-final",
-    "latest_verification_generated_at": "2026-04-06T18:39:16Z",
+    "latest_verification_run": "data/stock_verification/run-20260406-collision-clean",
+    "latest_verification_generated_at": "2026-04-06T19:04:53Z",
     "latest_verification_age_hours": 0.0
   },
   "source_coverage": [
@@ -165,11 +165,11 @@
       "masterfile_collision_rate": 21.85,
       "verification_items": 88,
       "verification_verified": 86,
-      "verification_reference_gap": 0,
+      "verification_reference_gap": 2,
       "verification_missing_from_official": 0,
       "verification_name_mismatch": 0,
-      "verification_cross_exchange_collision": 2,
-      "verification_verified_rate_on_covered": 97.73
+      "verification_cross_exchange_collision": 0,
+      "verification_verified_rate_on_covered": 100.0
     },
     {
       "exchange": "ASX",
@@ -261,10 +261,10 @@
       "reference_scopes": [
         "exchange_directory"
       ],
-      "tickers": 1102,
-      "isin_coverage": 645,
-      "sector_coverage": 335,
-      "cik_coverage": 2,
+      "tickers": 1100,
+      "isin_coverage": 644,
+      "sector_coverage": 334,
+      "cik_coverage": 0,
       "figi_coverage": 0,
       "lei_coverage": 0,
       "masterfile_symbols": 1239,
@@ -273,13 +273,13 @@
       "masterfile_missing": 31,
       "masterfile_match_rate": 83.94,
       "masterfile_collision_rate": 13.56,
-      "verification_items": 4,
+      "verification_items": 2,
       "verification_verified": 1,
       "verification_reference_gap": 1,
       "verification_missing_from_official": 0,
       "verification_name_mismatch": 0,
-      "verification_cross_exchange_collision": 2,
-      "verification_verified_rate_on_covered": 33.33
+      "verification_cross_exchange_collision": 0,
+      "verification_verified_rate_on_covered": 100.0
     },
     {
       "exchange": "BCBA",
@@ -636,10 +636,10 @@
       "lei_coverage": 77,
       "masterfile_symbols": 1404,
       "masterfile_matches": 634,
-      "masterfile_collisions": 414,
-      "masterfile_missing": 356,
+      "masterfile_collisions": 412,
+      "masterfile_missing": 358,
       "masterfile_match_rate": 45.16,
-      "masterfile_collision_rate": 29.49,
+      "masterfile_collision_rate": 29.34,
       "verification_items": 657,
       "verification_verified": 624,
       "verification_reference_gap": 33,
@@ -968,25 +968,25 @@
       "reference_scopes": [
         "exchange_directory"
       ],
-      "tickers": 4692,
-      "isin_coverage": 3972,
-      "sector_coverage": 3674,
-      "cik_coverage": 3518,
-      "figi_coverage": 11,
-      "lei_coverage": 422,
+      "tickers": 4615,
+      "isin_coverage": 3898,
+      "sector_coverage": 3618,
+      "cik_coverage": 3441,
+      "figi_coverage": 10,
+      "lei_coverage": 409,
       "masterfile_symbols": 5442,
       "masterfile_matches": 4524,
-      "masterfile_collisions": 124,
-      "masterfile_missing": 794,
+      "masterfile_collisions": 87,
+      "masterfile_missing": 831,
       "masterfile_match_rate": 83.13,
-      "masterfile_collision_rate": 2.28,
-      "verification_items": 3530,
+      "masterfile_collision_rate": 1.6,
+      "verification_items": 3453,
       "verification_verified": 3405,
-      "verification_reference_gap": 24,
+      "verification_reference_gap": 45,
       "verification_missing_from_official": 0,
       "verification_name_mismatch": 0,
-      "verification_cross_exchange_collision": 101,
-      "verification_verified_rate_on_covered": 97.12
+      "verification_cross_exchange_collision": 3,
+      "verification_verified_rate_on_covered": 99.91
     },
     {
       "exchange": "NEO",
@@ -1100,25 +1100,25 @@
       "reference_scopes": [
         "exchange_directory"
       ],
-      "tickers": 2535,
-      "isin_coverage": 2131,
-      "sector_coverage": 2238,
-      "cik_coverage": 2308,
+      "tickers": 2509,
+      "isin_coverage": 2106,
+      "sector_coverage": 2223,
+      "cik_coverage": 2288,
       "figi_coverage": 25,
-      "lei_coverage": 431,
+      "lei_coverage": 429,
       "masterfile_symbols": 3829,
       "masterfile_matches": 2345,
-      "masterfile_collisions": 572,
-      "masterfile_missing": 912,
+      "masterfile_collisions": 529,
+      "masterfile_missing": 955,
       "masterfile_match_rate": 61.24,
-      "masterfile_collision_rate": 14.94,
-      "verification_items": 2313,
+      "masterfile_collision_rate": 13.82,
+      "verification_items": 2287,
       "verification_verified": 2207,
-      "verification_reference_gap": 74,
+      "verification_reference_gap": 79,
       "verification_missing_from_official": 0,
       "verification_name_mismatch": 0,
-      "verification_cross_exchange_collision": 32,
-      "verification_verified_rate_on_covered": 98.57
+      "verification_cross_exchange_collision": 1,
+      "verification_verified_rate_on_covered": 99.95
     },
     {
       "exchange": "NYSE ARCA",
@@ -1128,10 +1128,10 @@
       "reference_scopes": [
         "exchange_directory"
       ],
-      "tickers": 2623,
-      "isin_coverage": 2257,
-      "sector_coverage": 1314,
-      "cik_coverage": 134,
+      "tickers": 2621,
+      "isin_coverage": 2255,
+      "sector_coverage": 1312,
+      "cik_coverage": 132,
       "figi_coverage": 6,
       "lei_coverage": 3,
       "masterfile_symbols": 2612,
@@ -1140,13 +1140,13 @@
       "masterfile_missing": 14,
       "masterfile_match_rate": 95.41,
       "masterfile_collision_rate": 4.06,
-      "verification_items": 6,
+      "verification_items": 4,
       "verification_verified": 3,
       "verification_reference_gap": 1,
       "verification_missing_from_official": 0,
       "verification_name_mismatch": 0,
-      "verification_cross_exchange_collision": 2,
-      "verification_verified_rate_on_covered": 60.0
+      "verification_cross_exchange_collision": 0,
+      "verification_verified_rate_on_covered": 100.0
     },
     {
       "exchange": "NYSE MKT",
@@ -1156,25 +1156,25 @@
       "reference_scopes": [
         "exchange_directory"
       ],
-      "tickers": 284,
-      "isin_coverage": 248,
-      "sector_coverage": 251,
-      "cik_coverage": 260,
+      "tickers": 274,
+      "isin_coverage": 240,
+      "sector_coverage": 241,
+      "cik_coverage": 250,
       "figi_coverage": 2,
       "lei_coverage": 29,
       "masterfile_symbols": 314,
       "masterfile_matches": 234,
-      "masterfile_collisions": 25,
-      "masterfile_missing": 55,
+      "masterfile_collisions": 19,
+      "masterfile_missing": 61,
       "masterfile_match_rate": 74.52,
-      "masterfile_collision_rate": 7.96,
-      "verification_items": 262,
+      "masterfile_collision_rate": 6.05,
+      "verification_items": 252,
       "verification_verified": 233,
       "verification_reference_gap": 3,
       "verification_missing_from_official": 0,
       "verification_name_mismatch": 0,
-      "verification_cross_exchange_collision": 26,
-      "verification_verified_rate_on_covered": 89.96
+      "verification_cross_exchange_collision": 16,
+      "verification_verified_rate_on_covered": 93.57
     },
     {
       "exchange": "NYSEARCA",
@@ -1238,25 +1238,25 @@
       "reference_scopes": [
         "exchange_directory"
       ],
-      "tickers": 10596,
-      "isin_coverage": 6543,
-      "sector_coverage": 7867,
-      "cik_coverage": 1823,
+      "tickers": 10554,
+      "isin_coverage": 6516,
+      "sector_coverage": 7829,
+      "cik_coverage": 1781,
       "figi_coverage": 21,
       "lei_coverage": 0,
       "masterfile_symbols": 2596,
       "masterfile_matches": 1776,
-      "masterfile_collisions": 123,
-      "masterfile_missing": 697,
+      "masterfile_collisions": 50,
+      "masterfile_missing": 770,
       "masterfile_match_rate": 68.41,
-      "masterfile_collision_rate": 4.74,
-      "verification_items": 10391,
+      "masterfile_collision_rate": 1.93,
+      "verification_items": 10349,
       "verification_verified": 1487,
-      "verification_reference_gap": 8850,
+      "verification_reference_gap": 8861,
       "verification_missing_from_official": 0,
       "verification_name_mismatch": 0,
-      "verification_cross_exchange_collision": 54,
-      "verification_verified_rate_on_covered": 96.5
+      "verification_cross_exchange_collision": 1,
+      "verification_verified_rate_on_covered": 99.93
     },
     {
       "exchange": "OTCCE",
@@ -1754,11 +1754,11 @@
       "masterfile_collision_rate": 3.15,
       "verification_items": 1023,
       "verification_verified": 1022,
-      "verification_reference_gap": 0,
+      "verification_reference_gap": 1,
       "verification_missing_from_official": 0,
       "verification_name_mismatch": 0,
-      "verification_cross_exchange_collision": 1,
-      "verification_verified_rate_on_covered": 99.9
+      "verification_cross_exchange_collision": 0,
+      "verification_verified_rate_on_covered": 100.0
     },
     {
       "exchange": "US",
@@ -1957,11 +1957,11 @@
     },
     {
       "country": "Australia",
-      "tickers": 2267,
-      "isin_coverage": 2005,
-      "sector_coverage": 1603,
-      "cik_coverage": 330,
-      "figi_coverage": 1213,
+      "tickers": 2262,
+      "isin_coverage": 2000,
+      "sector_coverage": 1598,
+      "cik_coverage": 327,
+      "figi_coverage": 1212,
       "lei_coverage": 74
     },
     {
@@ -2011,19 +2011,19 @@
     },
     {
       "country": "Canada",
-      "tickers": 4902,
-      "isin_coverage": 3865,
-      "sector_coverage": 3035,
-      "cik_coverage": 781,
+      "tickers": 4893,
+      "isin_coverage": 3856,
+      "sector_coverage": 3027,
+      "cik_coverage": 773,
       "figi_coverage": 1585,
-      "lei_coverage": 76
+      "lei_coverage": 74
     },
     {
       "country": "Cayman Islands",
-      "tickers": 665,
-      "isin_coverage": 660,
-      "sector_coverage": 515,
-      "cik_coverage": 469,
+      "tickers": 656,
+      "isin_coverage": 651,
+      "sector_coverage": 513,
+      "cik_coverage": 460,
       "figi_coverage": 3,
       "lei_coverage": 16
     },
@@ -2101,12 +2101,12 @@
     },
     {
       "country": "France",
-      "tickers": 1023,
-      "isin_coverage": 937,
-      "sector_coverage": 808,
-      "cik_coverage": 38,
+      "tickers": 1022,
+      "isin_coverage": 936,
+      "sector_coverage": 807,
+      "cik_coverage": 37,
       "figi_coverage": 451,
-      "lei_coverage": 54
+      "lei_coverage": 53
     },
     {
       "country": "Germany",
@@ -2182,19 +2182,19 @@
     },
     {
       "country": "Indonesia",
-      "tickers": 830,
-      "isin_coverage": 713,
-      "sector_coverage": 634,
-      "cik_coverage": 53,
+      "tickers": 827,
+      "isin_coverage": 710,
+      "sector_coverage": 631,
+      "cik_coverage": 50,
       "figi_coverage": 8,
       "lei_coverage": 4
     },
     {
       "country": "Ireland",
-      "tickers": 3521,
-      "isin_coverage": 3519,
+      "tickers": 3520,
+      "isin_coverage": 3518,
       "sector_coverage": 2017,
-      "cik_coverage": 72,
+      "cik_coverage": 71,
       "figi_coverage": 128,
       "lei_coverage": 7
     },
@@ -2227,10 +2227,10 @@
     },
     {
       "country": "Japan",
-      "tickers": 3328,
-      "isin_coverage": 114,
-      "sector_coverage": 110,
-      "cik_coverage": 40,
+      "tickers": 3327,
+      "isin_coverage": 113,
+      "sector_coverage": 109,
+      "cik_coverage": 39,
       "figi_coverage": 0,
       "lei_coverage": 0
     },
@@ -2254,10 +2254,10 @@
     },
     {
       "country": "Luxembourg",
-      "tickers": 1324,
-      "isin_coverage": 1323,
-      "sector_coverage": 921,
-      "cik_coverage": 38,
+      "tickers": 1323,
+      "isin_coverage": 1322,
+      "sector_coverage": 920,
+      "cik_coverage": 37,
       "figi_coverage": 151,
       "lei_coverage": 7
     },
@@ -2515,21 +2515,21 @@
     },
     {
       "country": "United Kingdom",
-      "tickers": 2729,
-      "isin_coverage": 1866,
-      "sector_coverage": 1780,
-      "cik_coverage": 146,
+      "tickers": 2726,
+      "isin_coverage": 1863,
+      "sector_coverage": 1777,
+      "cik_coverage": 143,
       "figi_coverage": 18,
-      "lei_coverage": 25
+      "lei_coverage": 24
     },
     {
       "country": "United States",
-      "tickers": 16785,
-      "isin_coverage": 10730,
-      "sector_coverage": 11209,
-      "cik_coverage": 5503,
+      "tickers": 16662,
+      "isin_coverage": 10626,
+      "sector_coverage": 11114,
+      "cik_coverage": 5382,
       "figi_coverage": 15,
-      "lei_coverage": 617
+      "lei_coverage": 607
     },
     {
       "country": "Vietnam",
@@ -2560,168 +2560,168 @@
     }
   ],
   "verification": {
-    "run_dir": "data/stock_verification/run-20260406-restblocks-final",
-    "generated_at": "2026-04-06T18:39:16Z",
+    "run_dir": "data/stock_verification/run-20260406-collision-clean",
+    "generated_at": "2026-04-06T19:04:53Z",
     "summary": {
       "chunk_count": 10,
       "completed_chunks": 10,
       "missing_chunks": [],
-      "items": 44794,
+      "items": 44635,
       "status_counts": {
-        "cross_exchange_collision": 220,
-        "reference_gap": 30397,
+        "cross_exchange_collision": 21,
+        "reference_gap": 30437,
         "verified": 14177
       },
       "chunks": [
         {
           "chunk_index": 1,
           "chunk_count": 10,
-          "items": 4480,
+          "items": 4464,
           "status_counts": {
-            "cross_exchange_collision": 24,
-            "reference_gap": 3010,
-            "verified": 1446
+            "cross_exchange_collision": 2,
+            "reference_gap": 3040,
+            "verified": 1422
           },
           "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260406-restblocks-final/chunk-01-of-10.json",
-          "csv_out": "data/stock_verification/run-20260406-restblocks-final/chunk-01-of-10.csv"
+          "json_out": "data/stock_verification/run-20260406-collision-clean/chunk-01-of-10.json",
+          "csv_out": "data/stock_verification/run-20260406-collision-clean/chunk-01-of-10.csv"
         },
         {
           "chunk_index": 2,
           "chunk_count": 10,
-          "items": 4480,
+          "items": 4464,
           "status_counts": {
-            "cross_exchange_collision": 29,
-            "reference_gap": 3021,
-            "verified": 1430
+            "cross_exchange_collision": 2,
+            "reference_gap": 3046,
+            "verified": 1416
           },
           "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260406-restblocks-final/chunk-02-of-10.json",
-          "csv_out": "data/stock_verification/run-20260406-restblocks-final/chunk-02-of-10.csv"
+          "json_out": "data/stock_verification/run-20260406-collision-clean/chunk-02-of-10.json",
+          "csv_out": "data/stock_verification/run-20260406-collision-clean/chunk-02-of-10.csv"
         },
         {
           "chunk_index": 3,
           "chunk_count": 10,
-          "items": 4480,
+          "items": 4464,
           "status_counts": {
-            "cross_exchange_collision": 21,
-            "reference_gap": 3071,
-            "verified": 1388
+            "cross_exchange_collision": 1,
+            "reference_gap": 3052,
+            "verified": 1411
           },
           "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260406-restblocks-final/chunk-03-of-10.json",
-          "csv_out": "data/stock_verification/run-20260406-restblocks-final/chunk-03-of-10.csv"
+          "json_out": "data/stock_verification/run-20260406-collision-clean/chunk-03-of-10.json",
+          "csv_out": "data/stock_verification/run-20260406-collision-clean/chunk-03-of-10.csv"
         },
         {
           "chunk_index": 4,
           "chunk_count": 10,
-          "items": 4480,
+          "items": 4464,
           "status_counts": {
-            "cross_exchange_collision": 25,
-            "reference_gap": 3032,
-            "verified": 1423
+            "cross_exchange_collision": 1,
+            "reference_gap": 3054,
+            "verified": 1409
           },
           "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260406-restblocks-final/chunk-04-of-10.json",
-          "csv_out": "data/stock_verification/run-20260406-restblocks-final/chunk-04-of-10.csv"
+          "json_out": "data/stock_verification/run-20260406-collision-clean/chunk-04-of-10.json",
+          "csv_out": "data/stock_verification/run-20260406-collision-clean/chunk-04-of-10.csv"
         },
         {
           "chunk_index": 5,
           "chunk_count": 10,
-          "items": 4479,
+          "items": 4464,
           "status_counts": {
-            "cross_exchange_collision": 26,
-            "reference_gap": 3049,
-            "verified": 1404
+            "cross_exchange_collision": 5,
+            "reference_gap": 3036,
+            "verified": 1423
           },
           "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260406-restblocks-final/chunk-05-of-10.json",
-          "csv_out": "data/stock_verification/run-20260406-restblocks-final/chunk-05-of-10.csv"
+          "json_out": "data/stock_verification/run-20260406-collision-clean/chunk-05-of-10.json",
+          "csv_out": "data/stock_verification/run-20260406-collision-clean/chunk-05-of-10.csv"
         },
         {
           "chunk_index": 6,
           "chunk_count": 10,
-          "items": 4479,
+          "items": 4463,
           "status_counts": {
-            "cross_exchange_collision": 20,
-            "reference_gap": 3027,
-            "verified": 1432
+            "cross_exchange_collision": 1,
+            "reference_gap": 3023,
+            "verified": 1439
           },
           "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260406-restblocks-final/chunk-06-of-10.json",
-          "csv_out": "data/stock_verification/run-20260406-restblocks-final/chunk-06-of-10.csv"
+          "json_out": "data/stock_verification/run-20260406-collision-clean/chunk-06-of-10.json",
+          "csv_out": "data/stock_verification/run-20260406-collision-clean/chunk-06-of-10.csv"
         },
         {
           "chunk_index": 7,
           "chunk_count": 10,
-          "items": 4479,
+          "items": 4463,
           "status_counts": {
-            "cross_exchange_collision": 22,
-            "reference_gap": 3057,
-            "verified": 1400
+            "cross_exchange_collision": 2,
+            "reference_gap": 3046,
+            "verified": 1415
           },
           "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260406-restblocks-final/chunk-07-of-10.json",
-          "csv_out": "data/stock_verification/run-20260406-restblocks-final/chunk-07-of-10.csv"
+          "json_out": "data/stock_verification/run-20260406-collision-clean/chunk-07-of-10.json",
+          "csv_out": "data/stock_verification/run-20260406-collision-clean/chunk-07-of-10.csv"
         },
         {
           "chunk_index": 8,
           "chunk_count": 10,
-          "items": 4479,
+          "items": 4463,
           "status_counts": {
-            "cross_exchange_collision": 18,
-            "reference_gap": 3028,
-            "verified": 1433
+            "cross_exchange_collision": 3,
+            "reference_gap": 3069,
+            "verified": 1391
           },
           "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260406-restblocks-final/chunk-08-of-10.json",
-          "csv_out": "data/stock_verification/run-20260406-restblocks-final/chunk-08-of-10.csv"
+          "json_out": "data/stock_verification/run-20260406-collision-clean/chunk-08-of-10.json",
+          "csv_out": "data/stock_verification/run-20260406-collision-clean/chunk-08-of-10.csv"
         },
         {
           "chunk_index": 9,
           "chunk_count": 10,
-          "items": 4479,
+          "items": 4463,
           "status_counts": {
-            "cross_exchange_collision": 18,
-            "reference_gap": 3055,
-            "verified": 1406
+            "cross_exchange_collision": 3,
+            "reference_gap": 3035,
+            "verified": 1425
           },
           "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260406-restblocks-final/chunk-09-of-10.json",
-          "csv_out": "data/stock_verification/run-20260406-restblocks-final/chunk-09-of-10.csv"
+          "json_out": "data/stock_verification/run-20260406-collision-clean/chunk-09-of-10.json",
+          "csv_out": "data/stock_verification/run-20260406-collision-clean/chunk-09-of-10.csv"
         },
         {
           "chunk_index": 10,
           "chunk_count": 10,
-          "items": 4479,
+          "items": 4463,
           "status_counts": {
-            "cross_exchange_collision": 17,
-            "reference_gap": 3047,
-            "verified": 1415
+            "cross_exchange_collision": 1,
+            "reference_gap": 3036,
+            "verified": 1426
           },
           "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260406-restblocks-final/chunk-10-of-10.json",
-          "csv_out": "data/stock_verification/run-20260406-restblocks-final/chunk-10-of-10.csv"
+          "json_out": "data/stock_verification/run-20260406-collision-clean/chunk-10-of-10.json",
+          "csv_out": "data/stock_verification/run-20260406-collision-clean/chunk-10-of-10.csv"
         }
       ],
       "finding_rows": 0,
       "finding_examples": [],
-      "summary_json": "data/stock_verification/run-20260406-restblocks-final/summary.json",
-      "findings_csv": "data/stock_verification/run-20260406-restblocks-final/findings.csv"
+      "summary_json": "data/stock_verification/run-20260406-collision-clean/summary.json",
+      "findings_csv": "data/stock_verification/run-20260406-collision-clean/findings.csv"
     },
     "exchange_coverage": [
       {
         "exchange": "AMS",
         "items": 88,
         "verified": 86,
-        "reference_gap": 0,
+        "reference_gap": 2,
         "missing_from_official": 0,
         "name_mismatch": 0,
-        "cross_exchange_collision": 2,
+        "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 88,
-        "verified_rate_on_covered": 97.73
+        "officially_covered_items": 86,
+        "verified_rate_on_covered": 100.0
       },
       {
         "exchange": "ASX",
@@ -2764,16 +2764,16 @@
       },
       {
         "exchange": "BATS",
-        "items": 4,
+        "items": 2,
         "verified": 1,
         "reference_gap": 1,
         "missing_from_official": 0,
         "name_mismatch": 0,
-        "cross_exchange_collision": 2,
+        "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 3,
-        "verified_rate_on_covered": 33.33
+        "officially_covered_items": 1,
+        "verified_rate_on_covered": 100.0
       },
       {
         "exchange": "BCBA",
@@ -3115,16 +3115,16 @@
       },
       {
         "exchange": "NASDAQ",
-        "items": 3530,
+        "items": 3453,
         "verified": 3405,
-        "reference_gap": 24,
+        "reference_gap": 45,
         "missing_from_official": 0,
         "name_mismatch": 0,
-        "cross_exchange_collision": 101,
+        "cross_exchange_collision": 3,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 3506,
-        "verified_rate_on_covered": 97.12
+        "officially_covered_items": 3408,
+        "verified_rate_on_covered": 99.91
       },
       {
         "exchange": "NEO",
@@ -3167,42 +3167,42 @@
       },
       {
         "exchange": "NYSE",
-        "items": 2313,
+        "items": 2287,
         "verified": 2207,
-        "reference_gap": 74,
+        "reference_gap": 79,
         "missing_from_official": 0,
         "name_mismatch": 0,
-        "cross_exchange_collision": 32,
+        "cross_exchange_collision": 1,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 2239,
-        "verified_rate_on_covered": 98.57
+        "officially_covered_items": 2208,
+        "verified_rate_on_covered": 99.95
       },
       {
         "exchange": "NYSE ARCA",
-        "items": 6,
+        "items": 4,
         "verified": 3,
         "reference_gap": 1,
         "missing_from_official": 0,
         "name_mismatch": 0,
-        "cross_exchange_collision": 2,
+        "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 5,
-        "verified_rate_on_covered": 60.0
+        "officially_covered_items": 3,
+        "verified_rate_on_covered": 100.0
       },
       {
         "exchange": "NYSE MKT",
-        "items": 262,
+        "items": 252,
         "verified": 233,
         "reference_gap": 3,
         "missing_from_official": 0,
         "name_mismatch": 0,
-        "cross_exchange_collision": 26,
+        "cross_exchange_collision": 16,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 259,
-        "verified_rate_on_covered": 89.96
+        "officially_covered_items": 249,
+        "verified_rate_on_covered": 93.57
       },
       {
         "exchange": "OSL",
@@ -3219,16 +3219,16 @@
       },
       {
         "exchange": "OTC",
-        "items": 10391,
+        "items": 10349,
         "verified": 1487,
-        "reference_gap": 8850,
+        "reference_gap": 8861,
         "missing_from_official": 0,
         "name_mismatch": 0,
-        "cross_exchange_collision": 54,
+        "cross_exchange_collision": 1,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 1541,
-        "verified_rate_on_covered": 96.5
+        "officially_covered_items": 1488,
+        "verified_rate_on_covered": 99.93
       },
       {
         "exchange": "OTCCE",
@@ -3468,14 +3468,14 @@
         "exchange": "TWSE",
         "items": 1023,
         "verified": 1022,
-        "reference_gap": 0,
+        "reference_gap": 1,
         "missing_from_official": 0,
         "name_mismatch": 0,
-        "cross_exchange_collision": 1,
+        "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 1023,
-        "verified_rate_on_covered": 99.9
+        "officially_covered_items": 1022,
+        "verified_rate_on_covered": 100.0
       },
       {
         "exchange": "US",
@@ -3574,13 +3574,13 @@
     {
       "exchange": "OTC",
       "venue_status": "official_full",
-      "unresolved_findings": 8904,
-      "reference_gap": 8850,
+      "unresolved_findings": 8862,
+      "reference_gap": 8861,
       "missing_from_official": 0,
       "name_mismatch": 0,
-      "cross_exchange_collision": 54,
-      "masterfile_missing": 697,
-      "masterfile_collisions": 123
+      "cross_exchange_collision": 1,
+      "masterfile_missing": 770,
+      "masterfile_collisions": 50
     },
     {
       "exchange": "LSE",
@@ -3858,17 +3858,6 @@
       "masterfile_collisions": 0
     },
     {
-      "exchange": "NASDAQ",
-      "venue_status": "official_full",
-      "unresolved_findings": 125,
-      "reference_gap": 24,
-      "missing_from_official": 0,
-      "name_mismatch": 0,
-      "cross_exchange_collision": 101,
-      "masterfile_missing": 794,
-      "masterfile_collisions": 124
-    },
-    {
       "exchange": "ATHEX",
       "venue_status": "missing",
       "unresolved_findings": 116,
@@ -3878,17 +3867,6 @@
       "cross_exchange_collision": 0,
       "masterfile_missing": 0,
       "masterfile_collisions": 0
-    },
-    {
-      "exchange": "NYSE",
-      "venue_status": "official_full",
-      "unresolved_findings": 106,
-      "reference_gap": 74,
-      "missing_from_official": 0,
-      "name_mismatch": 0,
-      "cross_exchange_collision": 32,
-      "masterfile_missing": 912,
-      "masterfile_collisions": 572
     },
     {
       "exchange": "PSE",
@@ -3935,6 +3913,17 @@
       "masterfile_collisions": 0
     },
     {
+      "exchange": "NYSE",
+      "venue_status": "official_full",
+      "unresolved_findings": 80,
+      "reference_gap": 79,
+      "missing_from_official": 0,
+      "name_mismatch": 0,
+      "cross_exchange_collision": 1,
+      "masterfile_missing": 955,
+      "masterfile_collisions": 529
+    },
+    {
       "exchange": "CSE_MA",
       "venue_status": "missing",
       "unresolved_findings": 66,
@@ -3966,6 +3955,17 @@
       "cross_exchange_collision": 0,
       "masterfile_missing": 0,
       "masterfile_collisions": 0
+    },
+    {
+      "exchange": "NASDAQ",
+      "venue_status": "official_full",
+      "unresolved_findings": 48,
+      "reference_gap": 45,
+      "missing_from_official": 0,
+      "name_mismatch": 0,
+      "cross_exchange_collision": 3,
+      "masterfile_missing": 831,
+      "masterfile_collisions": 87
     },
     {
       "exchange": "OTCMKTS",
@@ -4008,8 +4008,8 @@
       "missing_from_official": 0,
       "name_mismatch": 0,
       "cross_exchange_collision": 0,
-      "masterfile_missing": 356,
-      "masterfile_collisions": 414
+      "masterfile_missing": 358,
+      "masterfile_collisions": 412
     },
     {
       "exchange": "NEO",
@@ -4054,17 +4054,6 @@
       "cross_exchange_collision": 0,
       "masterfile_missing": 0,
       "masterfile_collisions": 0
-    },
-    {
-      "exchange": "NYSE MKT",
-      "venue_status": "official_full",
-      "unresolved_findings": 29,
-      "reference_gap": 3,
-      "missing_from_official": 0,
-      "name_mismatch": 0,
-      "cross_exchange_collision": 26,
-      "masterfile_missing": 55,
-      "masterfile_collisions": 25
     },
     {
       "exchange": "ZSE_ZW",
@@ -4120,6 +4109,17 @@
       "cross_exchange_collision": 0,
       "masterfile_missing": 0,
       "masterfile_collisions": 0
+    },
+    {
+      "exchange": "NYSE MKT",
+      "venue_status": "official_full",
+      "unresolved_findings": 19,
+      "reference_gap": 3,
+      "missing_from_official": 0,
+      "name_mismatch": 0,
+      "cross_exchange_collision": 16,
+      "masterfile_missing": 61,
+      "masterfile_collisions": 19
     },
     {
       "exchange": "ASX",
@@ -4210,17 +4210,6 @@
       "masterfile_collisions": 64
     },
     {
-      "exchange": "BATS",
-      "venue_status": "official_full",
-      "unresolved_findings": 3,
-      "reference_gap": 1,
-      "missing_from_official": 0,
-      "name_mismatch": 0,
-      "cross_exchange_collision": 2,
-      "masterfile_missing": 31,
-      "masterfile_collisions": 168
-    },
-    {
       "exchange": "CSE_LK",
       "venue_status": "missing",
       "unresolved_findings": 3,
@@ -4232,24 +4221,13 @@
       "masterfile_collisions": 0
     },
     {
-      "exchange": "NYSE ARCA",
-      "venue_status": "official_full",
-      "unresolved_findings": 3,
-      "reference_gap": 1,
-      "missing_from_official": 0,
-      "name_mismatch": 0,
-      "cross_exchange_collision": 2,
-      "masterfile_missing": 14,
-      "masterfile_collisions": 106
-    },
-    {
       "exchange": "AMS",
       "venue_status": "official_full",
       "unresolved_findings": 2,
-      "reference_gap": 0,
+      "reference_gap": 2,
       "missing_from_official": 0,
       "name_mismatch": 0,
-      "cross_exchange_collision": 2,
+      "cross_exchange_collision": 0,
       "masterfile_missing": 4,
       "masterfile_collisions": 26
     },
@@ -4276,13 +4254,35 @@
       "masterfile_collisions": 0
     },
     {
+      "exchange": "BATS",
+      "venue_status": "official_full",
+      "unresolved_findings": 1,
+      "reference_gap": 1,
+      "missing_from_official": 0,
+      "name_mismatch": 0,
+      "cross_exchange_collision": 0,
+      "masterfile_missing": 31,
+      "masterfile_collisions": 168
+    },
+    {
+      "exchange": "NYSE ARCA",
+      "venue_status": "official_full",
+      "unresolved_findings": 1,
+      "reference_gap": 1,
+      "missing_from_official": 0,
+      "name_mismatch": 0,
+      "cross_exchange_collision": 0,
+      "masterfile_missing": 14,
+      "masterfile_collisions": 106
+    },
+    {
       "exchange": "TWSE",
       "venue_status": "official_full",
       "unresolved_findings": 1,
-      "reference_gap": 0,
+      "reference_gap": 1,
       "missing_from_official": 0,
       "name_mismatch": 0,
-      "cross_exchange_collision": 1,
+      "cross_exchange_collision": 0,
       "masterfile_missing": 24,
       "masterfile_collisions": 34
     }

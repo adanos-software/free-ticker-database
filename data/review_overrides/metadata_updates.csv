@@ -3,6 +3,7 @@ ticker,exchange,field,decision,proposed_value,confidence,reason
 0AD5,LSE,country_code,update,US,0.95,Must match corrected issuer domicile.
 0HEC,LSE,country,update,United States,0.8,"AEP is a US-domiciled company. Other LSE international listings in this dataset (e.g. 0HV2, 0QXR) correctly show the issuer's home country. 'United Kingdom' is wrong here."
 0HEC,LSE,country_code,update,US,0.8,"Should reflect issuer domicile (US), consistent with ISIN US0255371017."
+6781,TWSE,name,update,"AES Holding Co., Ltd.",0.95,Official TWSE listed companies feed uses AES Holding Co. Ltd. as the current issuer name for 6781.
 74SW,Euronext,name,update,74SOFTWARE,0.94,Official Euronext listing name indicates the current company display name: 74SOFTWARE
 AAAC,NYSE ARCA,isin,update,US19761L7635,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
 AAAC,NYSE ARCA,name,update,Columbia AAA CLO ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
@@ -236,4 +237,3 @@ ZDAI,NASDAQ,name,update,"DirectBooking Technology Co., Ltd.",0.95,"Official list
 ZETX,NYSE ARCA,asset_type,update,ETF,0.99,Official reference classifies this listing as ETF/ETP: Defiance Daily Target 2x Long ZETA ETF
 ZETX,NYSE ARCA,name,update,Defiance Daily Target 2x Long ZETA ETF,0.97,Official reference provides a more specific ETF/ETP name: Defiance Daily Target 2x Long ZETA ETF
 ZTEK,NASDAQ,name,update,Zentek Ltd.,0.95,Official listing name indicates a newer company name: Zentek Ltd. - common stock
-6781,TWSE,name,update,"AES Holding Co., Ltd.",0.95,Official TWSE listed companies feed uses AES Holding Co. Ltd. as the current issuer name for 6781.

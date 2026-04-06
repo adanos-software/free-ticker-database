@@ -2,8 +2,8 @@
   "global": {
     "official_symbols": 24252,
     "matched": 18451,
-    "collisions": 2861,
-    "missing": 2940
+    "collisions": 2700,
+    "missing": 3101
   },
   "exchanges": [
     {
@@ -322,8 +322,8 @@
       "exchange": "Euronext",
       "official_symbols": 1404,
       "matched": 634,
-      "collisions": 414,
-      "missing": 356,
+      "collisions": 412,
+      "missing": 358,
       "collision_examples": [
         {
           "ticker": "8GW",
@@ -398,8 +398,8 @@
           ]
         },
         {
-          "ticker": "ABP",
-          "name": "A.B.P. NOCIVELLI",
+          "ticker": "ABT",
+          "name": "ABITARE IN",
           "target_exchange": "Euronext",
           "existing_exchanges": [
             "NYSE"
@@ -428,6 +428,11 @@
           "exchange": "Euronext"
         },
         {
+          "ticker": "ABP",
+          "name": "A.B.P. NOCIVELLI",
+          "exchange": "Euronext"
+        },
+        {
           "ticker": "ABSBS",
           "name": "AB SCIENCE BSA 25",
           "exchange": "Euronext"
@@ -451,11 +456,6 @@
           "ticker": "ADOBS",
           "name": "ADOCIA BSA",
           "exchange": "Euronext"
-        },
-        {
-          "ticker": "AEDES",
-          "name": "AEDES",
-          "exchange": "Euronext"
         }
       ]
     },
@@ -463,25 +463,9 @@
       "exchange": "NASDAQ",
       "official_symbols": 5442,
       "matched": 4524,
-      "collisions": 124,
-      "missing": 794,
+      "collisions": 87,
+      "missing": 831,
       "collision_examples": [
-        {
-          "ticker": "ACFN",
-          "name": "Acorn Energy, Inc. - Common Stock",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "OTC"
-          ]
-        },
-        {
-          "ticker": "ADUR",
-          "name": "Aduro Clean Technologies Inc. - Common Stock",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "OTC"
-          ]
-        },
         {
           "ticker": "AIMS",
           "name": "Acuitas Small Cap Active ETF",
@@ -531,19 +515,35 @@
           ]
         },
         {
-          "ticker": "AVBH",
-          "name": "Avidbank Holdings, Inc. - Common Stock",
+          "ticker": "AVGG",
+          "name": "Leverage Shares 2X Long AVGO Daily ETF",
           "target_exchange": "NASDAQ",
           "existing_exchanges": [
             "OTC"
           ]
         },
         {
-          "ticker": "AVGG",
-          "name": "Leverage Shares 2X Long AVGO Daily ETF",
+          "ticker": "AVL",
+          "name": "Direxion Daily AVGO Bull 2X ETF",
           "target_exchange": "NASDAQ",
           "existing_exchanges": [
-            "OTC"
+            "ASX"
+          ]
+        },
+        {
+          "ticker": "AVOS",
+          "name": "Avos Global Equities ETF",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "US"
+          ]
+        },
+        {
+          "ticker": "BMM",
+          "name": "Blue Moon Metals Inc. - Common Shares",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "TSXV"
           ]
         }
       ],
@@ -604,17 +604,9 @@
       "exchange": "NYSE",
       "official_symbols": 3829,
       "matched": 2345,
-      "collisions": 572,
-      "missing": 912,
+      "collisions": 529,
+      "missing": 955,
       "collision_examples": [
-        {
-          "ticker": "ABX",
-          "name": "Abacus Global Management, Inc. Class A Common Stock",
-          "target_exchange": "NYSE",
-          "existing_exchanges": [
-            "NASDAQ"
-          ]
-        },
         {
           "ticker": "ACCS",
           "name": "ACCESS Newswire Inc.",
@@ -637,14 +629,6 @@
           "target_exchange": "NYSE",
           "existing_exchanges": [
             "NYSE MKT"
-          ]
-        },
-        {
-          "ticker": "ADC-PA",
-          "name": "AGREE REALTY CORP",
-          "target_exchange": "NYSE",
-          "existing_exchanges": [
-            "NASDAQ"
           ]
         },
         {
@@ -686,6 +670,22 @@
           "existing_exchanges": [
             "ASX"
           ]
+        },
+        {
+          "ticker": "AGIG",
+          "name": "ABUNDIA GLOBAL IMPACT GROUP, INC.",
+          "target_exchange": "NYSE",
+          "existing_exchanges": [
+            "NYSE MKT"
+          ]
+        },
+        {
+          "ticker": "AGQ",
+          "name": "ProShares Trust II",
+          "target_exchange": "NYSE",
+          "existing_exchanges": [
+            "NYSE ARCA"
+          ]
         }
       ],
       "missing_examples": [
@@ -707,6 +707,11 @@
         {
           "ticker": "ABR$F",
           "name": "Arbor Realty Trust 6.25% Series F Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock, Liquidation Preference $25.00 per share",
+          "exchange": "NYSE"
+        },
+        {
+          "ticker": "ABX",
+          "name": "Abacus Global Management, Inc. Class A Common Stock",
           "exchange": "NYSE"
         },
         {
@@ -732,11 +737,6 @@
         {
           "ticker": "ACR$C",
           "name": "ACRES Commercial Realty Corp. 8.625% Fixed-to-Floating Series C Cumulative Redeemable Preferred Stock",
-          "exchange": "NYSE"
-        },
-        {
-          "ticker": "ACR$D",
-          "name": "ACRES Commercial Realty Corp. 7.875% Series D Cumulative Redeemable Preferred Stock",
           "exchange": "NYSE"
         }
       ]
@@ -886,8 +886,8 @@
       "exchange": "NYSE MKT",
       "official_symbols": 314,
       "matched": 234,
-      "collisions": 25,
-      "missing": 55,
+      "collisions": 19,
+      "missing": 61,
       "collision_examples": [
         {
           "ticker": "AEF",
@@ -895,22 +895,6 @@
           "target_exchange": "NYSE MKT",
           "existing_exchanges": [
             "TSXV"
-          ]
-        },
-        {
-          "ticker": "AXIL",
-          "name": "AXIL Brands, Inc. Common Stock",
-          "target_exchange": "NYSE MKT",
-          "existing_exchanges": [
-            "OTC"
-          ]
-        },
-        {
-          "ticker": "BCHT",
-          "name": "Birchtech Corp. Common Stock",
-          "target_exchange": "NYSE MKT",
-          "existing_exchanges": [
-            "OTC"
           ]
         },
         {
@@ -954,19 +938,35 @@
           ]
         },
         {
-          "ticker": "EXOD",
-          "name": "Exodus Movement, Inc. Class A Common Stock",
-          "target_exchange": "NYSE MKT",
-          "existing_exchanges": [
-            "NYSE ARCA"
-          ]
-        },
-        {
           "ticker": "FTF",
           "name": "Franklin Limited Duration Income Trust Common Shares of Beneficial Interest",
           "target_exchange": "NYSE MKT",
           "existing_exchanges": [
             "LSE"
+          ]
+        },
+        {
+          "ticker": "GLO",
+          "name": "Clough Global Opportunities Fund Common Stock",
+          "target_exchange": "NYSE MKT",
+          "existing_exchanges": [
+            "Euronext"
+          ]
+        },
+        {
+          "ticker": "GLV",
+          "name": "Clough Global Dividend and Income Fund Common Shares of beneficial interest",
+          "target_exchange": "NYSE MKT",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
+        {
+          "ticker": "GRO",
+          "name": "Brazil Potash Corp. Common Shares",
+          "target_exchange": "NYSE MKT",
+          "existing_exchanges": [
+            "NYSE"
           ]
         }
       ],
@@ -974,6 +974,16 @@
         {
           "ticker": "AIB",
           "name": "BlockchAIn Digital Infrastructure, Inc Common Shares",
+          "exchange": "NYSE MKT"
+        },
+        {
+          "ticker": "AXIL",
+          "name": "AXIL Brands, Inc. Common Stock",
+          "exchange": "NYSE MKT"
+        },
+        {
+          "ticker": "BCHT",
+          "name": "Birchtech Corp. Common Stock",
           "exchange": "NYSE MKT"
         },
         {
@@ -1009,16 +1019,6 @@
         {
           "ticker": "EAD",
           "name": "Allspring Income Opportunities Fund Common Shares",
-          "exchange": "NYSE MKT"
-        },
-        {
-          "ticker": "ECF$A",
-          "name": "Ellsworth Growth and Income Fund Ltd. 5.25% Series A Cumulative Preferred Shares (Liquidation Preference $25.00 per share)",
-          "exchange": "NYSE MKT"
-        },
-        {
-          "ticker": "EONR.W",
-          "name": "EON Resources Inc. Warrants, each whole warrant exercisable for three quarters of one share of Class A Common Stock at an exercise price of $11.50 per whole share",
           "exchange": "NYSE MKT"
         }
       ]
@@ -1117,8 +1117,8 @@
       "exchange": "OTC",
       "official_symbols": 2596,
       "matched": 1776,
-      "collisions": 123,
-      "missing": 697,
+      "collisions": 50,
+      "missing": 770,
       "collision_examples": [
         {
           "ticker": "AAUAF",
@@ -1137,14 +1137,6 @@
           ]
         },
         {
-          "ticker": "AEAE",
-          "name": "AltEnergy Acquisition Corp",
-          "target_exchange": "OTC",
-          "existing_exchanges": [
-            "NASDAQ"
-          ]
-        },
-        {
           "ticker": "AHII",
           "name": "American Heritage International Inc.",
           "target_exchange": "OTC",
@@ -1153,48 +1145,56 @@
           ]
         },
         {
-          "ticker": "ALUR",
-          "name": "ALLURION TECHNOLOGIES, INC.",
-          "target_exchange": "OTC",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
-        {
-          "ticker": "ALYAF",
-          "name": "Alithya Group inc",
+          "ticker": "BCOW",
+          "name": "1895 Bancorp of Wisconsin, Inc. /MD/",
           "target_exchange": "OTC",
           "existing_exchanges": [
             "NASDAQ"
           ]
         },
         {
-          "ticker": "AMBIQ",
-          "name": "Ambipar Emergency Response",
+          "ticker": "BMPA",
+          "name": "BMP AI Technologies, Inc.",
           "target_exchange": "OTC",
           "existing_exchanges": [
-            "NYSE"
+            "OTCCE"
           ]
         },
         {
-          "ticker": "ANEB",
-          "name": "Anebulo Pharmaceuticals, Inc.",
-          "target_exchange": "OTC",
-          "existing_exchanges": [
-            "NASDAQ"
-          ]
-        },
-        {
-          "ticker": "APTOF",
-          "name": "Aptose Biosciences Inc.",
+          "ticker": "BSLKW",
+          "name": "Bolt Projects Holdings, Inc.",
           "target_exchange": "OTC",
           "existing_exchanges": [
             "NASDAQ"
           ]
         },
         {
-          "ticker": "ASUUF",
-          "name": "ASPAC II Acquisition Corp.",
+          "ticker": "CEROW",
+          "name": "CERO THERAPEUTICS HOLDINGS, INC.",
+          "target_exchange": "OTC",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "CIZN",
+          "name": "CITIZENS HOLDING CO /MS/",
+          "target_exchange": "OTC",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "COPR",
+          "name": "Idaho Copper Corp",
+          "target_exchange": "OTC",
+          "existing_exchanges": [
+            "TSX"
+          ]
+        },
+        {
+          "ticker": "CULL",
+          "name": "Cullman Bancorp, Inc. /MD/",
           "target_exchange": "OTC",
           "existing_exchanges": [
             "NASDAQ"
@@ -1233,6 +1233,11 @@
           "exchange": "OTC"
         },
         {
+          "ticker": "AEAE",
+          "name": "AltEnergy Acquisition Corp",
+          "exchange": "OTC"
+        },
+        {
           "ticker": "AEAEU",
           "name": "AltEnergy Acquisition Corp",
           "exchange": "OTC"
@@ -1244,11 +1249,6 @@
         },
         {
           "ticker": "AEBMF",
-          "name": "ANADOLU EFES BIRACILIK VE MALT SANAYI A S/ADR",
-          "exchange": "OTC"
-        },
-        {
-          "ticker": "AEBMY",
           "name": "ANADOLU EFES BIRACILIK VE MALT SANAYI A S/ADR",
           "exchange": "OTC"
         }
