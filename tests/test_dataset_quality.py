@@ -426,6 +426,43 @@ def test_should_drop_contextual_alias_drops_untrusted_shared_alias():
     assert should_drop_contextual_alias(row, "wealthsimple", alias_context) is True
 
 
+def test_normalize_input_row_reclassifies_exchange_traded_products():
+    from scripts.rebuild_dataset import normalize_input_row
+
+    wisdomtree = normalize_input_row(
+        {
+            "ticker": "AIGAP",
+            "name": "WISDOMTREE AGRICULTURE",
+            "exchange": "Euronext",
+            "asset_type": "Stock",
+        }
+    )
+    etn = normalize_input_row(
+        {
+            "ticker": "VSUI",
+            "name": "VanEck Sui ETN A",
+            "exchange": "Euronext",
+            "asset_type": "Stock",
+        }
+    )
+
+    assert wisdomtree["asset_type"] == "ETF"
+    assert etn["asset_type"] == "ETF"
+
+
+def test_should_exclude_stock_row_drops_ams_certificates():
+    from scripts.rebuild_dataset import should_exclude_stock_row
+
+    row = {
+        "ticker": "RABO",
+        "name": "Cooperatieve Rabobank U.A. PARTICIPATED CERT(RABOBANK ORD)EUR25",
+        "exchange": "AMS",
+        "asset_type": "Stock",
+    }
+
+    assert should_exclude_stock_row(row) is True
+
+
 def test_artifact_counts_match():
     tickers_csv = load_csv("tickers.csv")
     aliases_csv = load_csv("aliases.csv")
@@ -475,6 +512,12 @@ def test_changelog_and_supporting_docs_are_current():
     changelog = (ROOT / "CHANGELOG.md").read_text()
     contributing = (ROOT / "CONTRIBUTING.md").read_text()
     claude_prompt = (ROOT / "docs" / "claude_review_prompt.md").read_text()
+    tickers_csv = load_csv("tickers.csv")
+    aliases_csv = load_csv("aliases.csv")
+
+    total = len(tickers_csv)
+    stocks = sum(row["asset_type"] == "Stock" for row in tickers_csv)
+    etfs = sum(row["asset_type"] == "ETF" for row in tickers_csv)
 
     assert "## Unreleased" in changelog
     assert "Added official Euronext live equities directory ingestion" in changelog
@@ -482,8 +525,8 @@ def test_changelog_and_supporting_docs_are_current():
     assert "Expanded the conservative official supplement layer to safe ASX, AMS, and OSL listings" in changelog
     assert "Improved extended identifier exports with listing-level FIGI matching" in changelog
     assert "## 2.0.0" in changelog
-    assert "61,592 tickers (44,897 stocks, 16,695 ETFs) across 68 exchanges and 68 countries" in changelog
-    assert "99,808 aliases" in changelog
+    assert f"{total:,} tickers ({stocks:,} stocks, {etfs:,} ETFs) across 68 exchanges and 68 countries" in changelog
+    assert f"{len(aliases_csv):,} aliases" in changelog
     assert "Keep the dataset build and review scripts dependency-light and easy to trace" in contributing
     assert "one or more `review_queue.json` items" in claude_prompt
 

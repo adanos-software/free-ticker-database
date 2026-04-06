@@ -134,6 +134,36 @@ def test_us_stale_missing_lines_are_dropped() -> None:
         "name": "Centogene N.V.",
         "country": "Netherlands",
     }
+    warrant = {
+        "ticker": "NUKKW",
+        "exchange": "NASDAQ",
+        "status": "missing_from_official",
+        "name": "Nukkleus Inc",
+    }
+    preferred = {
+        "ticker": "TFINP",
+        "exchange": "NASDAQ",
+        "status": "missing_from_official",
+        "name": "Triumph Financial Inc",
+    }
+    temporary = {
+        "ticker": "WTERD",
+        "exchange": "NASDAQ",
+        "status": "missing_from_official",
+        "name": "Alkaline Water Co. Inc.",
+    }
+    hyphenated = {
+        "ticker": "ALL-PRI",
+        "exchange": "NYSE",
+        "status": "missing_from_official",
+        "name": "Allstate Corp",
+    }
+    test_line = {
+        "ticker": "NTEST-H",
+        "exchange": "NYSE",
+        "status": "missing_from_official",
+        "name": "NTEST-H",
+    }
     regular = {
         "ticker": "RAPT",
         "exchange": "NASDAQ",
@@ -144,6 +174,11 @@ def test_us_stale_missing_lines_are_dropped() -> None:
     assert is_us_stale_missing_line(bankruptcy)
     assert is_us_stale_missing_line(spac)
     assert is_us_stale_missing_line(foreign_line)
+    assert is_us_stale_missing_line(warrant)
+    assert is_us_stale_missing_line(preferred)
+    assert is_us_stale_missing_line(temporary)
+    assert is_us_stale_missing_line(hyphenated)
+    assert is_us_stale_missing_line(test_line)
     assert not is_us_stale_missing_line(regular)
 
 

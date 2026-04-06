@@ -58,6 +58,11 @@ SPAC_SHARE_MARKERS = (
     " class a common stock",
 )
 FOREIGN_US_LINE_TICKER_RE = re.compile(r"[A-Z]{4,5}[FY]$")
+US_WARRANT_TICKER_RE = re.compile(r"[A-Z]{4}W$")
+US_PREFERRED_TICKER_RE = re.compile(r"[A-Z]{4}P$")
+US_TEMPORARY_D_TICKER_RE = re.compile(r"[A-Z]{4}D$")
+US_PREFERRED_HYPHEN_TICKER_RE = re.compile(r".*-PRI$")
+US_TEST_LINE_TICKER_RE = re.compile(r"NTEST-[A-Z]$")
 
 
 def load_csv(path: Path | str) -> list[dict[str, str]]:
@@ -132,6 +137,16 @@ def is_us_stale_missing_line(row: dict[str, str]) -> bool:
     if any(marker in name for marker in SPAC_COMMON_MARKERS):
         return True
     if any(marker in name for marker in SPAC_SHARE_MARKERS):
+        return True
+    if US_WARRANT_TICKER_RE.fullmatch(ticker):
+        return True
+    if US_PREFERRED_TICKER_RE.fullmatch(ticker):
+        return True
+    if US_TEMPORARY_D_TICKER_RE.fullmatch(ticker):
+        return True
+    if US_PREFERRED_HYPHEN_TICKER_RE.fullmatch(ticker):
+        return True
+    if US_TEST_LINE_TICKER_RE.fullmatch(ticker):
         return True
     if country and country != "United States" and FOREIGN_US_LINE_TICKER_RE.fullmatch(ticker):
         return True

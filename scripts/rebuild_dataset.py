@@ -155,6 +155,16 @@ B3_FRACTIONAL_TICKER_RE = re.compile(r".*F$")
 B3_UNIT_TICKER_RE = re.compile(r".*11$")
 ASX_CAPITAL_NOTE_TICKER_RE = re.compile(r".*P[A-Z]$")
 ASX_LOYALTY_TICKER_RE = re.compile(r".*LV$")
+EUROPEAN_CERTIFICATE_PATTERN = re.compile(r"\bparticipated cert\b|\bcert\(", re.IGNORECASE)
+ETP_NAME_PATTERNS = (
+    re.compile(r"\betf\b", re.IGNORECASE),
+    re.compile(r"\betn\b", re.IGNORECASE),
+    re.compile(r"\betp\b", re.IGNORECASE),
+    re.compile(r"\bwisdomtree\b", re.IGNORECASE),
+    re.compile(r"\bvaneck\b", re.IGNORECASE),
+    re.compile(r"^ish\b", re.IGNORECASE),
+    re.compile(r"\bishares?\b", re.IGNORECASE),
+)
 NON_COMMON_PATTERNS = (
     re.compile(r"\brights?\b", re.IGNORECASE),
     re.compile(r"\bunits?\b", re.IGNORECASE),
@@ -626,6 +636,8 @@ def should_exclude_stock_row(row: dict[str, str]) -> bool:
             return True
         if "deferred settlement" in name or name.endswith("deferred"):
             return True
+    if row.get("exchange") in {"AMS", "Euronext"} and EUROPEAN_CERTIFICATE_PATTERN.search(name):
+        return True
     if row["ticker"].count("-P-"):
         return True
     if is_depositary_row(row):
@@ -638,9 +650,9 @@ def should_exclude_stock_row(row: dict[str, str]) -> bool:
 def normalize_input_row(row: dict[str, str]) -> dict[str, str]:
     normalized = dict(row)
     if (
-        normalized.get("exchange") == "ASX"
+        normalized.get("asset_type") == "Stock"
         and normalized.get("asset_type") == "Stock"
-        and re.search(r"\betf\b", normalized.get("name", ""), re.IGNORECASE)
+        and any(pattern.search(normalized.get("name", "")) for pattern in ETP_NAME_PATTERNS)
     ):
         normalized["asset_type"] = "ETF"
     return normalized
