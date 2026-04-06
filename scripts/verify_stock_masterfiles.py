@@ -28,7 +28,17 @@ BAD_STATUSES = {
     "missing_from_official",
     "non_active_official",
 }
-LOW_CONFIDENCE_MISSING_EXCHANGES = {"OTC"}
+LOW_CONFIDENCE_MISSING_EXCHANGES = {
+    "AMS",
+    "BATS",
+    "Euronext",
+    "NASDAQ",
+    "NYSE",
+    "NYSE ARCA",
+    "NYSE MKT",
+    "OSL",
+    "OTC",
+}
 LOCAL_LANGUAGE_NAME_MATCH_EXCHANGES = {"TWSE", "TPEX"}
 LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE = {
     "NASDAQ": {"sec_company_tickers_exchange"},
@@ -210,23 +220,22 @@ def classify_row(
             status = "reference_gap"
             reason = "Only low-confidence asset_type evidence exists for this listing."
     elif exchange in covered_exchanges:
-        if exchange in LOW_CONFIDENCE_MISSING_EXCHANGES:
+        non_active_rows = any_by_key.get(key, [])
+        non_active_row = next((candidate for candidate in non_active_rows if candidate.get("listing_status") != "active"), None)
+        peers = [peer for peer in active_by_ticker.get(ticker, []) if peer["exchange"] != exchange]
+        if non_active_row and non_active_row.get("listing_status") != "active":
+            status = "non_active_official"
+            reason = f"Official exchange directory marks this symbol as {non_active_row.get('listing_status')}."
+            reference_name = non_active_row.get("name", "")
+            reference_source = non_active_row.get("source_key", "")
+        elif peers:
+            status = "cross_exchange_collision"
+            peer_preview = ", ".join(sorted({peer['exchange'] for peer in peers})[:4])
+            reason = f"Official directory uses this ticker on other exchange(s): {peer_preview}."
+        elif exchange in LOW_CONFIDENCE_MISSING_EXCHANGES:
             status = "reference_gap"
             reason = "This exchange is only weakly covered by the current official reference layer."
         else:
-            non_active_rows = any_by_key.get(key, [])
-            non_active_row = next((candidate for candidate in non_active_rows if candidate.get("listing_status") != "active"), None)
-            peers = [peer for peer in active_by_ticker.get(ticker, []) if peer["exchange"] != exchange]
-            if non_active_row and non_active_row.get("listing_status") != "active":
-                status = "non_active_official"
-                reason = f"Official exchange directory marks this symbol as {non_active_row.get('listing_status')}."
-                reference_name = non_active_row.get("name", "")
-                reference_source = non_active_row.get("source_key", "")
-            elif peers:
-                status = "cross_exchange_collision"
-                peer_preview = ", ".join(sorted({peer['exchange'] for peer in peers})[:4])
-                reason = f"Official directory uses this ticker on other exchange(s): {peer_preview}."
-            else:
                 status = "missing_from_official"
                 reason = "Symbol is absent from the active official exchange directory for this exchange."
     elif exchange in partial_covered_exchanges:

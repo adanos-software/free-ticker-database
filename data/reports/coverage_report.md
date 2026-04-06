@@ -27,25 +27,25 @@
 | missing_exchanges | 52 |
 | stock_verification_items | 44761 |
 | stock_verification_verified | 14143 |
-| stock_verification_reference_gap | 30382 |
-| stock_verification_missing_from_official | 70 |
+| stock_verification_reference_gap | 30377 |
+| stock_verification_missing_from_official | 21 |
 | stock_verification_name_mismatch | 0 |
-| stock_verification_cross_exchange_collision | 166 |
+| stock_verification_cross_exchange_collision | 220 |
 
 ## Freshness
 
 | Metric | Value |
 |---|---|
 | tickers_built_at | 2026-04-06T18:07:28Z |
-| tickers_age_hours | 0.0 |
+| tickers_age_hours | 0.29 |
 | masterfiles_generated_at | 2026-04-06T17:49:27Z |
-| masterfiles_age_hours | 0.31 |
+| masterfiles_age_hours | 0.6 |
 | identifiers_generated_at | 2026-04-06T18:07:32Z |
-| identifiers_age_hours | 0.0 |
+| identifiers_age_hours | 0.29 |
 | listing_history_observed_at | 2026-04-06T18:07:28Z |
-| listing_history_age_hours | 0.0 |
-| latest_verification_run | data/stock_verification/run-20260406-twse-clean-final |
-| latest_verification_generated_at | 2026-04-06T18:07:44Z |
+| listing_history_age_hours | 0.29 |
+| latest_verification_run | data/stock_verification/run-20260406-coverage-max |
+| latest_verification_generated_at | 2026-04-06T18:25:08Z |
 | latest_verification_age_hours | 0.0 |
 
 ## Source Coverage
@@ -72,7 +72,7 @@
 | ASX | official_full | 1298 | 1036 | 702 | 30 | 1035 | 24 | 1979 | 1022 | 919 | 38 | 51.64 | 98.07 |
 | ATHEX | missing | 117 | 90 | 117 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | B3 | official_full | 959 | 316 | 443 | 0 | 0 | 0 | 876 | 848 | 0 | 28 | 96.8 | 99.71 |
-| BATS | official_full | 1102 | 645 | 335 | 2 | 0 | 0 | 1239 | 1040 | 168 | 31 | 83.94 | 25.0 |
+| BATS | official_full | 1102 | 645 | 335 | 2 | 0 | 0 | 1239 | 1040 | 168 | 31 | 83.94 | 33.33 |
 | BCBA | missing | 64 | 51 | 50 | 0 | 48 | 0 | 0 | 0 | 0 | 0 |  |  |
 | BME | missing | 169 | 154 | 157 | 3 | 2 | 0 | 0 | 0 | 0 | 0 |  |  |
 | BMV | missing | 194 | 147 | 163 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |  |  |
@@ -86,7 +86,7 @@
 | CSE_MA | missing | 66 | 66 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | DSE_TZ | missing | 17 | 15 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | EGX | missing | 225 | 219 | 125 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
-| Euronext | official_full | 971 | 859 | 694 | 10 | 856 | 77 | 1404 | 634 | 414 | 356 | 45.16 | 98.42 |
+| Euronext | official_full | 971 | 859 | 694 | 10 | 856 | 77 | 1404 | 634 | 414 | 356 | 45.16 | 100.0 |
 | GSE | missing | 19 | 18 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | HEL | missing | 188 | 149 | 137 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | HOSE | missing | 260 | 237 | 152 | 3 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
@@ -99,17 +99,17 @@
 | LSE | missing | 6409 | 5488 | 4355 | 19 | 40 | 5 | 0 | 0 | 0 | 0 |  |  |
 | LUSE | missing | 22 | 22 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | MSE_MW | missing | 8 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
-| NASDAQ | official_full | 4692 | 3972 | 3674 | 3518 | 11 | 422 | 5442 | 4524 | 124 | 794 | 83.13 | 96.51 |
+| NASDAQ | official_full | 4692 | 3972 | 3674 | 3518 | 11 | 422 | 5442 | 4524 | 124 | 794 | 83.13 | 97.12 |
 | NEO | missing | 201 | 78 | 21 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | NGX | missing | 147 | 145 | 4 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | NMFQS | missing | 7 | 7 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | NSE_KE | missing | 46 | 46 | 6 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
-| NYSE | official_full | 2535 | 2131 | 2238 | 2308 | 25 | 431 | 3829 | 2345 | 572 | 912 | 61.24 | 98.26 |
-| NYSE ARCA | official_full | 2623 | 2257 | 1314 | 134 | 6 | 3 | 2612 | 2492 | 106 | 14 | 95.41 | 50.0 |
-| NYSE MKT | official_full | 284 | 248 | 251 | 260 | 2 | 29 | 314 | 234 | 25 | 55 | 74.52 | 89.27 |
+| NYSE | official_full | 2535 | 2131 | 2238 | 2308 | 25 | 431 | 3829 | 2345 | 572 | 912 | 61.24 | 98.57 |
+| NYSE ARCA | official_full | 2623 | 2257 | 1314 | 134 | 6 | 3 | 2612 | 2492 | 106 | 14 | 95.41 | 60.0 |
+| NYSE MKT | official_full | 284 | 248 | 251 | 260 | 2 | 29 | 314 | 234 | 25 | 55 | 74.52 | 89.96 |
 | NYSEARCA | missing | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
-| OSL | official_full | 240 | 154 | 170 | 2 | 196 | 0 | 297 | 233 | 64 | 0 | 78.45 | 97.49 |
-| OTC | official_full | 10596 | 6543 | 7867 | 1823 | 21 | 0 | 2596 | 1776 | 123 | 697 | 68.41 | 100.0 |
+| OSL | official_full | 240 | 154 | 170 | 2 | 196 | 0 | 297 | 233 | 64 | 0 | 78.45 | 100.0 |
+| OTC | official_full | 10596 | 6543 | 7867 | 1823 | 21 | 0 | 2596 | 1776 | 123 | 697 | 68.41 | 96.5 |
 | OTCCE | missing | 505 | 314 | 460 | 6 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | OTCMKTS | missing | 50 | 28 | 23 | 14 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | PSE | missing | 105 | 76 | 4 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
@@ -214,7 +214,7 @@
 
 | Exchange | Venue Status | Findings | Reference Gap | Missing | Name Mismatch | Collision |
 |---|---|---|---|---|---|---|
-| OTC | official_full | 8904 | 8904 | 0 | 0 | 0 |
+| OTC | official_full | 8904 | 8850 | 0 | 0 | 54 |
 | LSE | missing | 3662 | 3662 | 0 | 0 | 0 |
 | SZSE | missing | 2735 | 2735 | 0 | 0 | 0 |
 | SSE | missing | 2277 | 2277 | 0 | 0 | 0 |

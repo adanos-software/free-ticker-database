@@ -237,6 +237,54 @@ def test_classify_row_treats_otc_missing_as_reference_gap() -> None:
     assert result["status"] == "reference_gap"
 
 
+def test_classify_row_treats_us_missing_as_reference_gap_when_negative_feed_is_weak() -> None:
+    row = {
+        "ticker": "CFLT",
+        "exchange": "NASDAQ",
+        "asset_type": "Stock",
+        "name": "Confluent Inc",
+        "country": "United States",
+        "country_code": "US",
+        "isin": "US20717M1036",
+        "sector": "Information Technology",
+    }
+    result = classify_row(
+        row,
+        active_by_key={},
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges={"NASDAQ"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "This exchange is only weakly covered by the current official reference layer."
+
+
+def test_classify_row_treats_euronext_missing_as_reference_gap_when_negative_feed_is_weak() -> None:
+    row = {
+        "ticker": "ALCAR",
+        "exchange": "Euronext",
+        "asset_type": "Stock",
+        "name": "Carmat",
+        "country": "France",
+        "country_code": "FR",
+        "isin": "FR0010907956",
+        "sector": "Health Care",
+    }
+    result = classify_row(
+        row,
+        active_by_key={},
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges={"Euronext"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "This exchange is only weakly covered by the current official reference layer."
+
+
 def test_classify_row_treats_partial_official_exchange_missing_as_reference_gap() -> None:
     row = {
         "ticker": "ABEA",
