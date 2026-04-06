@@ -508,25 +508,9 @@ def test_readme_stats_and_claims_are_current():
     assert "| ASX | 1,298 | Australian Securities Exchange |" in readme
 
 
-def test_changelog_and_supporting_docs_are_current():
-    changelog = (ROOT / "CHANGELOG.md").read_text()
+def test_release_docs_and_supporting_docs_are_current():
     contributing = (ROOT / "CONTRIBUTING.md").read_text()
     claude_prompt = (ROOT / "docs" / "claude_review_prompt.md").read_text()
-    tickers_csv = load_csv("tickers.csv")
-    aliases_csv = load_csv("aliases.csv")
-
-    total = len(tickers_csv)
-    stocks = sum(row["asset_type"] == "Stock" for row in tickers_csv)
-    etfs = sum(row["asset_type"] == "ETF" for row in tickers_csv)
-
-    assert "## Unreleased" in changelog
-    assert "Added official Euronext live equities directory ingestion" in changelog
-    assert "Added official JPX listed-issues ingestion plus a conservative masterfile supplement layer for collision-free TSE listings" in changelog
-    assert "Expanded the conservative official supplement layer to safe ASX, AMS, and OSL listings" in changelog
-    assert "Improved extended identifier exports with listing-level FIGI matching" in changelog
-    assert "## 2.0.0" in changelog
-    assert f"{total:,} tickers ({stocks:,} stocks, {etfs:,} ETFs) across 68 exchanges and 68 countries" in changelog
-    assert f"{len(aliases_csv):,} aliases" in changelog
     assert "Keep the dataset build and review scripts dependency-light and easy to trace" in contributing
     assert "one or more `review_queue.json` items" in claude_prompt
 
@@ -555,6 +539,7 @@ def test_open_source_project_files_exist_and_are_linked():
     assert "## Project Health" in readme
     assert "Code of Conduct: [CODE_OF_CONDUCT.md]" in readme
     assert "Security policy: [SECURITY.md]" in readme
+    assert "Release notes: [GitHub Releases]" in readme
 
 
 def test_all_isins_have_valid_checksum():

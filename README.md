@@ -108,8 +108,8 @@ This auxiliary export makes the current listing identity explicit as `exchange::
 ```json
 {
   "_meta": {
-    "version": "2.0.0",
-    "built_at": "2026-04-06T16:05:24Z",
+    "version": "2.1.0",
+    "built_at": "2026-04-06T16:40:53Z",
     "total_tickers": 61517
   },
   "tickers": [
@@ -128,7 +128,7 @@ This auxiliary export makes the current listing identity explicit as `exchange::
 }
 ```
 
-JSON outputs use an envelope with a `_meta` block and a `tickers` array as of version `2.0.0`.
+JSON outputs use an envelope with a `_meta` block and a `tickers` array as of version `2.1.0`.
 
 ### tickers.db (SQLite)
 
@@ -418,3 +418,4 @@ Issues and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for
 - Code of Conduct: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
 - Security policy: [SECURITY.md](SECURITY.md)
 - CI: [GitHub Actions](https://github.com/adanos-software/free-ticker-database/actions/workflows/ci.yml)
+- Release notes: [GitHub Releases](https://github.com/adanos-software/free-ticker-database/releases)

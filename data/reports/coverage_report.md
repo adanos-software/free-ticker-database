@@ -13,7 +13,7 @@
 | cik_coverage | 8201 |
 | figi_coverage | 4208 |
 | lei_coverage | 1016 |
-| listing_status_rows | 1494144 |
+| listing_status_rows | 1555661 |
 | listing_events | 7508 |
 | listing_keys | 61517 |
 | official_masterfile_symbols | 25151 |
@@ -35,16 +35,16 @@
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-04-06T16:05:24Z |
-| tickers_age_hours | 0.0 |
+| tickers_built_at | 2026-04-06T16:40:53Z |
+| tickers_age_hours | 0.01 |
 | masterfiles_generated_at | 2026-04-06T15:13:54Z |
-| masterfiles_age_hours | 0.86 |
-| identifiers_generated_at | 2026-04-06T16:05:30Z |
+| masterfiles_age_hours | 1.46 |
+| identifiers_generated_at | 2026-04-06T16:41:00Z |
 | identifiers_age_hours | 0.0 |
-| listing_history_observed_at | 2026-04-06T16:05:24Z |
-| listing_history_age_hours | 0.0 |
-| latest_verification_run | data/stock_verification/run-20260406-reviewer-final |
-| latest_verification_generated_at | 2026-04-06T16:05:38Z |
+| listing_history_observed_at | 2026-04-06T16:40:53Z |
+| listing_history_age_hours | 0.01 |
+| latest_verification_run | data/stock_verification/run-20260406-release-2-1-0 |
+| latest_verification_generated_at | 2026-04-06T16:41:10Z |
 | latest_verification_age_hours | 0.0 |
 
 ## Source Coverage
