@@ -1,0 +1,72 @@
+{
+  "chunk_index": 50,
+  "chunk_count": 100,
+  "items": 167,
+  "status_counts": {
+    "cross_exchange_collision": 2,
+    "missing_from_official": 3,
+    "reference_gap": 108,
+    "verified": 54
+  },
+  "finding_examples": [
+    {
+      "listing_key": "TWSE::006204",
+      "ticker": "006204",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "name": "Sinopac TAIEX ETF",
+      "country": "Taiwan",
+      "country_code": "TW",
+      "isin": "TW0000062041",
+      "sector": "",
+      "status": "missing_from_official",
+      "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+      "official_reference_name": "",
+      "official_reference_source": "",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "TWSE::00865B",
+      "ticker": "00865B",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "name": "Cathay US Short Term Treasury ETF",
+      "country": "Taiwan",
+      "country_code": "TW",
+      "isin": "TW00000865B5",
+      "sector": "",
+      "status": "missing_from_official",
+      "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+      "official_reference_name": "",
+      "official_reference_source": "",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "TWSE::00990A",
+      "ticker": "00990A",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "name": "Yuanta Global AI New Economy Active ETF",
+      "country": "Taiwan",
+      "country_code": "TW",
+      "isin": "",
+      "sector": "",
+      "status": "missing_from_official",
+      "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+      "official_reference_name": "",
+      "official_reference_source": "",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    }
+  ],
+  "json_out": "data/etf_verification/run-20260406-etf-100/chunk-50-of-100.json",
+  "csv_out": "data/etf_verification/run-20260406-etf-100/chunk-50-of-100.csv"
+}

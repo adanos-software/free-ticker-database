@@ -53,6 +53,15 @@ def test_load_review_overrides_and_apply_metadata(tmp_path, monkeypatch):
                 "confidence": "0.9",
                 "reason": "wrong",
             },
+            {
+                "ticker": "AAA",
+                "exchange": "NASDAQ",
+                "field": "aliases",
+                "decision": "clear",
+                "proposed_value": "",
+                "confidence": "0.9",
+                "reason": "contaminated",
+            },
         ],
     )
     write_csv(
@@ -78,11 +87,13 @@ def test_load_review_overrides_and_apply_metadata(tmp_path, monkeypatch):
             "country": "Australia",
             "country_code": "AU",
             "isin": "AU0000000001",
+            "aliases": ["legacy", "wrong"],
         },
         metadata_overrides[("AAA", "NASDAQ")],
     )
     assert updated_input["country"] == "United States"
     assert updated_input["isin"] == ""
+    assert updated_input["aliases"] == []
 
     updated_output = rebuild_dataset.apply_output_metadata_overrides(
         {
@@ -91,7 +102,9 @@ def test_load_review_overrides_and_apply_metadata(tmp_path, monkeypatch):
             "country": "United States",
             "country_code": "",
             "isin": "",
+            "aliases": ["legacy"],
         },
         metadata_overrides[("AAA", "NASDAQ")],
     )
     assert updated_output["country_code"] == "US"
+    assert updated_output["aliases"] == []

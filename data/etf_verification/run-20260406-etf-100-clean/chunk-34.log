@@ -1,0 +1,72 @@
+{
+  "chunk_index": 34,
+  "chunk_count": 100,
+  "items": 167,
+  "status_counts": {
+    "cross_exchange_collision": 2,
+    "name_mismatch": 3,
+    "reference_gap": 109,
+    "verified": 53
+  },
+  "finding_examples": [
+    {
+      "listing_key": "NYSE ARCA::AHLT",
+      "ticker": "AHLT",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "American Beacon Select Funds",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "US02368W3097",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "AHL Trend ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::BSR",
+      "ticker": "BSR",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "Northern Lights Fund Trust II",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "US66538F1993",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "Beacon Selective Risk ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::DEFI",
+      "ticker": "DEFI",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "Tidal Commodities Trust I",
+      "country": "Canada",
+      "country_code": "CA",
+      "isin": "CA92027E1051",
+      "sector": "Financials",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "Hashdex Bitcoin ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "0001985840",
+      "figi": "",
+      "lei": ""
+    }
+  ],
+  "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-34-of-100.json",
+  "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-34-of-100.csv"
+}

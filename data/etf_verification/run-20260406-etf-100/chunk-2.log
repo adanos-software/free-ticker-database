@@ -1,0 +1,53 @@
+{
+  "chunk_index": 2,
+  "chunk_count": 100,
+  "items": 168,
+  "status_counts": {
+    "cross_exchange_collision": 4,
+    "missing_from_official": 2,
+    "reference_gap": 112,
+    "verified": 50
+  },
+  "finding_examples": [
+    {
+      "listing_key": "TWSE::00682U",
+      "ticker": "00682U",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "name": "Yuanta S&P US Dollar ER Futures",
+      "country": "Taiwan",
+      "country_code": "TW",
+      "isin": "TW00000682U4",
+      "sector": "",
+      "status": "missing_from_official",
+      "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+      "official_reference_name": "",
+      "official_reference_source": "",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "TWSE::00944",
+      "ticker": "00944",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "name": "NEXT FUNDS - Nomura Taiwan Momentum High Dividend ETF",
+      "country": "Taiwan",
+      "country_code": "TW",
+      "isin": "",
+      "sector": "",
+      "status": "missing_from_official",
+      "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+      "official_reference_name": "",
+      "official_reference_source": "",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    }
+  ],
+  "json_out": "data/etf_verification/run-20260406-etf-100/chunk-02-of-100.json",
+  "csv_out": "data/etf_verification/run-20260406-etf-100/chunk-02-of-100.csv"
+}

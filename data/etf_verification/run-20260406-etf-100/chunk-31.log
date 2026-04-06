@@ -1,0 +1,52 @@
+{
+  "chunk_index": 31,
+  "chunk_count": 100,
+  "items": 167,
+  "status_counts": {
+    "missing_from_official": 2,
+    "reference_gap": 112,
+    "verified": 53
+  },
+  "finding_examples": [
+    {
+      "listing_key": "TWSE::00735",
+      "ticker": "00735",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "name": "Cathay Korea/taiwan IT Premier",
+      "country": "Taiwan",
+      "country_code": "TW",
+      "isin": "TW0000073501",
+      "sector": "",
+      "status": "missing_from_official",
+      "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+      "official_reference_name": "",
+      "official_reference_source": "",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "TWSE::009813",
+      "ticker": "009813",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "name": "BlackRock iShares S&P 500 Top 50 ETF",
+      "country": "Taiwan",
+      "country_code": "TW",
+      "isin": "",
+      "sector": "",
+      "status": "missing_from_official",
+      "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+      "official_reference_name": "",
+      "official_reference_source": "",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    }
+  ],
+  "json_out": "data/etf_verification/run-20260406-etf-100/chunk-31-of-100.json",
+  "csv_out": "data/etf_verification/run-20260406-etf-100/chunk-31-of-100.csv"
+}

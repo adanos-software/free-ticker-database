@@ -1,0 +1,53 @@
+{
+  "chunk_index": 73,
+  "chunk_count": 100,
+  "items": 167,
+  "status_counts": {
+    "cross_exchange_collision": 2,
+    "missing_from_official": 2,
+    "reference_gap": 110,
+    "verified": 53
+  },
+  "finding_examples": [
+    {
+      "listing_key": "TWSE::00648R",
+      "ticker": "00648R",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "name": "Yuanta Daily S&P 500 Bear 1X ETF",
+      "country": "Taiwan",
+      "country_code": "TW",
+      "isin": "",
+      "sector": "",
+      "status": "missing_from_official",
+      "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+      "official_reference_name": "",
+      "official_reference_source": "",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "TWSE::00908",
+      "ticker": "00908",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "name": "Fubon Global Dividend REITs and Infrastructure ETF",
+      "country": "Taiwan",
+      "country_code": "TW",
+      "isin": "",
+      "sector": "",
+      "status": "missing_from_official",
+      "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+      "official_reference_name": "",
+      "official_reference_source": "",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    }
+  ],
+  "json_out": "data/etf_verification/run-20260406-etf-100/chunk-73-of-100.json",
+  "csv_out": "data/etf_verification/run-20260406-etf-100/chunk-73-of-100.csv"
+}

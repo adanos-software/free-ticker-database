@@ -1,0 +1,33 @@
+{
+  "chunk_index": 33,
+  "chunk_count": 100,
+  "items": 167,
+  "status_counts": {
+    "name_mismatch": 1,
+    "reference_gap": 112,
+    "verified": 54
+  },
+  "finding_examples": [
+    {
+      "listing_key": "NYSE ARCA::DUNK",
+      "ticker": "DUNK",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "Tidal Trust I",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "Dana Unconstrained Equity ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    }
+  ],
+  "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-33-of-100.json",
+  "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-33-of-100.csv"
+}

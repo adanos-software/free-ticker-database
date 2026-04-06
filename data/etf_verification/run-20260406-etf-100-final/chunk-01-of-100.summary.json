@@ -1,0 +1,34 @@
+{
+  "chunk_index": 1,
+  "chunk_count": 100,
+  "items": 168,
+  "status_counts": {
+    "cross_exchange_collision": 2,
+    "name_mismatch": 1,
+    "reference_gap": 112,
+    "verified": 53
+  },
+  "finding_examples": [
+    {
+      "listing_key": "NYSE ARCA::SURE",
+      "ticker": "SURE",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "Sonora Resources Corp",
+      "country": "United Kingdom",
+      "country_code": "GB",
+      "isin": "GB00BYWYZ460",
+      "sector": "Financials",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "AdvisorShares Insider Advantage ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    }
+  ],
+  "json_out": "data/etf_verification/run-20260406-etf-100-final/chunk-01-of-100.json",
+  "csv_out": "data/etf_verification/run-20260406-etf-100-final/chunk-01-of-100.csv"
+}

@@ -1,0 +1,34 @@
+{
+  "chunk_index": 70,
+  "chunk_count": 100,
+  "items": 167,
+  "status_counts": {
+    "asset_type_mismatch": 1,
+    "cross_exchange_collision": 2,
+    "reference_gap": 108,
+    "verified": 56
+  },
+  "finding_examples": [
+    {
+      "listing_key": "Euronext::CEM",
+      "ticker": "CEM",
+      "exchange": "Euronext",
+      "asset_type": "ETF",
+      "name": "Amundi MSCI Europe Small Cap ESG Climate Net Zero Ambition CTB ETF Acc",
+      "country": "Luxembourg",
+      "country_code": "LU",
+      "isin": "LU1681041544",
+      "sector": "Financials",
+      "status": "asset_type_mismatch",
+      "reason": "Dataset asset_type=ETF but official reference says Stock.",
+      "official_reference_name": "CEMENTIR HOLDING",
+      "official_reference_source": "euronext_equities",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "BBG00KXH1W63",
+      "lei": ""
+    }
+  ],
+  "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-70-of-100.json",
+  "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-70-of-100.csv"
+}

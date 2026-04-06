@@ -1,0 +1,73 @@
+{
+  "chunk_index": 91,
+  "chunk_count": 100,
+  "items": 167,
+  "status_counts": {
+    "asset_type_mismatch": 1,
+    "cross_exchange_collision": 1,
+    "missing_from_official": 2,
+    "reference_gap": 111,
+    "verified": 52
+  },
+  "finding_examples": [
+    {
+      "listing_key": "BATS::VXX",
+      "ticker": "VXX",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "iPath\u00ae Series B S&P 500\u00ae VIX Short-Term Futures ETN",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "US06748F3249",
+      "sector": "Trading",
+      "status": "asset_type_mismatch",
+      "reason": "Dataset asset_type=ETF but official reference says Stock.",
+      "official_reference_name": "iPath Series B S&P 500 VIX Short-Term Futures ETN",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "TWSE::00668K",
+      "ticker": "00668K",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "name": "Cathay Dow Jones Industrial Average",
+      "country": "Taiwan",
+      "country_code": "TW",
+      "isin": "TW00000668K4",
+      "sector": "",
+      "status": "missing_from_official",
+      "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+      "official_reference_name": "",
+      "official_reference_source": "",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "TWSE::00929",
+      "ticker": "00929",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "name": "Fuh Hwa Taiwan Technology Dividend Highlight ETF",
+      "country": "Taiwan",
+      "country_code": "TW",
+      "isin": "",
+      "sector": "",
+      "status": "missing_from_official",
+      "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+      "official_reference_name": "",
+      "official_reference_source": "",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    }
+  ],
+  "json_out": "data/etf_verification/run-20260406-etf-100/chunk-91-of-100.json",
+  "csv_out": "data/etf_verification/run-20260406-etf-100/chunk-91-of-100.csv"
+}

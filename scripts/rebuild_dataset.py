@@ -927,6 +927,12 @@ def apply_input_metadata_overrides(
     for field, override in field_overrides.items():
         if field == "country_code":
             continue
+        if field == "aliases":
+            if override["decision"] == "clear":
+                updated["aliases"] = []
+            elif override["decision"] == "update":
+                updated["aliases"] = split_aliases(override.get("proposed_value", ""))
+            continue
         if field not in updated:
             continue
         if override["decision"] == "clear":
@@ -947,6 +953,12 @@ def apply_output_metadata_overrides(
                 updated["country_code"] = ""
             elif override["decision"] == "update":
                 updated["country_code"] = override.get("proposed_value", "")
+            continue
+        if field == "aliases":
+            if override["decision"] == "clear":
+                updated["aliases"] = []
+            elif override["decision"] == "update":
+                updated["aliases"] = split_aliases(override.get("proposed_value", ""))
             continue
         if field not in updated:
             continue

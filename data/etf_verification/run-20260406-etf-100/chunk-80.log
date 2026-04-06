@@ -1,0 +1,53 @@
+{
+  "chunk_index": 80,
+  "chunk_count": 100,
+  "items": 167,
+  "status_counts": {
+    "cross_exchange_collision": 2,
+    "missing_from_official": 2,
+    "reference_gap": 110,
+    "verified": 53
+  },
+  "finding_examples": [
+    {
+      "listing_key": "TWSE::00656R",
+      "ticker": "00656R",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "name": "Cathay FTSE China A50 ETF",
+      "country": "Taiwan",
+      "country_code": "TW",
+      "isin": "",
+      "sector": "Emerging Markets",
+      "status": "missing_from_official",
+      "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+      "official_reference_name": "",
+      "official_reference_source": "",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "TWSE::00916",
+      "ticker": "00916",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "name": "Cathay Global Top 50 Brands ETF",
+      "country": "Taiwan",
+      "country_code": "TW",
+      "isin": "",
+      "sector": "",
+      "status": "missing_from_official",
+      "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+      "official_reference_name": "",
+      "official_reference_source": "",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    }
+  ],
+  "json_out": "data/etf_verification/run-20260406-etf-100/chunk-80-of-100.json",
+  "csv_out": "data/etf_verification/run-20260406-etf-100/chunk-80-of-100.csv"
+}

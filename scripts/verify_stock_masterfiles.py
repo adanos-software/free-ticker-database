@@ -21,7 +21,10 @@ DATA_DIR = ROOT / "data"
 TICKERS_CSV = DATA_DIR / "tickers.csv"
 MASTERFILE_REFERENCE_CSV = DATA_DIR / "masterfiles" / "reference.csv"
 IDENTIFIERS_EXTENDED_CSV = DATA_DIR / "identifiers_extended.csv"
-DEFAULT_OUTPUT_DIR = DATA_DIR / "stock_verification"
+DEFAULT_OUTPUT_DIR_BY_ASSET_TYPE = {
+    "Stock": DATA_DIR / "stock_verification",
+    "ETF": DATA_DIR / "etf_verification",
+}
 BAD_STATUSES = {
     "asset_type_mismatch",
     "name_mismatch",
@@ -39,6 +42,10 @@ LOW_CONFIDENCE_MISSING_EXCHANGES = {
     "NYSE MKT",
     "OSL",
     "OTC",
+}
+LOW_CONFIDENCE_MISSING_ASSET_TYPE_KEYS = {
+    ("TWSE", "ETF"),
+    ("TPEX", "ETF"),
 }
 LOW_CONFIDENCE_COLLISION_PEER_EXCHANGES = {
     "ASX",
@@ -58,6 +65,20 @@ LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE = {
     "TSXV": {"tmx_interlisted_companies"},
 }
 EURONEXT_LABEL_SPLIT_RE = re.compile(r"[\s./-]+")
+ETFISH_REFERENCE_MARKERS = (
+    " etf",
+    " etn",
+    "exchange-traded note",
+    "exchange traded note",
+    "exchange-traded notes",
+    "exchange traded notes",
+    "trust shares",
+    "shares of beneficial interest",
+)
+GENERIC_ETF_PLACEHOLDER_NAMES = {
+    "common units",
+    "shares of beneficial interest",
+}
 
 
 def has_non_latin_name(name: str) -> bool:
@@ -69,10 +90,14 @@ def load_csv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
-def load_stock_rows(path: Path = TICKERS_CSV) -> list[dict[str, str]]:
+def load_asset_rows(path: Path = TICKERS_CSV, *, asset_type: str = "Stock") -> list[dict[str, str]]:
     rows = load_csv(path)
-    stocks = [row for row in rows if row.get("asset_type") == "Stock"]
-    return sorted(stocks, key=lambda row: (row["exchange"], row["ticker"]))
+    filtered = [row for row in rows if row.get("asset_type") == asset_type]
+    return sorted(filtered, key=lambda row: (row["exchange"], row["ticker"]))
+
+
+def load_stock_rows(path: Path = TICKERS_CSV) -> list[dict[str, str]]:
+    return load_asset_rows(path, asset_type="Stock")
 
 
 def load_identifier_map(path: Path = IDENTIFIERS_EXTENDED_CSV) -> dict[str, dict[str, str]]:
@@ -154,6 +179,15 @@ def is_low_confidence_euronext_label(name: str) -> bool:
     return upper_ratio >= 0.85 and (len(name) <= 24 or len(tokens) <= 3)
 
 
+def looks_like_etfish_reference_name(name: str) -> bool:
+    lowered = f" {name.lower().strip()} "
+    return any(marker in lowered for marker in ETFISH_REFERENCE_MARKERS)
+
+
+def is_generic_etf_placeholder_name(name: str) -> bool:
+    return name.lower().strip() in GENERIC_ETF_PLACEHOLDER_NAMES
+
+
 def choose_preferred_reference(rows: list[dict[str, str]], ticker: str) -> dict[str, str]:
     def rank(row: dict[str, str]) -> tuple[int, int, int, str]:
         return (
@@ -213,6 +247,12 @@ def classify_row(
             ):
                 status = "reference_gap"
                 reason = "Official Euronext feed only exposes a trading label rather than a reliable full issuer name."
+            elif (
+                row.get("asset_type") == "ETF"
+                and all(is_generic_etf_placeholder_name(candidate.get("name", "")) for candidate in same_type_rows)
+            ):
+                status = "reference_gap"
+                reason = "Official reference only exposes a generic ETP placeholder name."
             elif source_keys and source_keys <= LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE.get(exchange, set()):
                 status = "reference_gap"
                 reason = "Only low-confidence issuer reference evidence exists for this listing."
@@ -222,6 +262,19 @@ def classify_row(
                 reference_source = preferred_reference.get("source_key", "")
                 status = "name_mismatch"
                 reason = "Dataset name does not match official exchange directory name."
+        elif row.get("asset_type") == "ETF" and any(
+            looks_like_etfish_reference_name(candidate.get("name", "")) for candidate in active_reference_rows
+        ):
+            status = "verified"
+            reason = "Official directory labels this ETP-like listing as stock, but the issuer name clearly identifies an ETF/ETN trust line."
+        elif (
+            exchange == "Euronext"
+            and row.get("asset_type") == "ETF"
+            and looks_like_etfish_reference_name(row.get("name", ""))
+            and all(not looks_like_etfish_reference_name(candidate.get("name", "")) for candidate in active_reference_rows)
+        ):
+            status = "reference_gap"
+            reason = "Grouped Euronext feed resolves this ticker to a stock line on another venue."
         elif any(candidate.get("source_key") != "sec_company_tickers_exchange" for candidate in active_reference_rows):
             status = "asset_type_mismatch"
             reason = f"Dataset asset_type={row.get('asset_type')} but official reference says {preferred_reference.get('asset_type')}."
@@ -246,6 +299,9 @@ def classify_row(
             else:
                 status = "cross_exchange_collision"
                 reason = f"Official directory uses this ticker on other exchange(s): {peer_preview}."
+        elif (exchange, row.get("asset_type", "")) in LOW_CONFIDENCE_MISSING_ASSET_TYPE_KEYS:
+            status = "reference_gap"
+            reason = "This asset type is not fully covered by the current official reference layer for this exchange."
         elif exchange in LOW_CONFIDENCE_MISSING_EXCHANGES:
             status = "reference_gap"
             reason = "This exchange is only weakly covered by the current official reference layer."
@@ -311,19 +367,21 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--tickers-csv", type=Path, default=TICKERS_CSV)
     parser.add_argument("--reference-csv", type=Path, default=MASTERFILE_REFERENCE_CSV)
     parser.add_argument("--identifiers-csv", type=Path, default=IDENTIFIERS_EXTENDED_CSV)
+    parser.add_argument("--asset-type", choices=sorted(DEFAULT_OUTPUT_DIR_BY_ASSET_TYPE), default="Stock")
     parser.add_argument("--chunk-index", type=int, required=True)
     parser.add_argument("--chunk-count", type=int, required=True)
     parser.add_argument("--limit", type=int)
-    parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
+    parser.add_argument("--output-dir", type=Path)
     return parser.parse_args(argv)
 
 
 def main(argv: list[str] | None = None) -> None:
     args = parse_args(argv)
-    rows = load_stock_rows(args.tickers_csv)
+    rows = load_asset_rows(args.tickers_csv, asset_type=args.asset_type)
     rows = select_chunk(rows, chunk_index=args.chunk_index, chunk_count=args.chunk_count)
     if args.limit is not None:
         rows = rows[: args.limit]
+    output_dir = args.output_dir or DEFAULT_OUTPUT_DIR_BY_ASSET_TYPE[args.asset_type]
 
     active_by_key, any_by_key, active_by_ticker, covered_exchanges, partial_covered_exchanges = load_reference_maps(
         args.reference_csv
@@ -342,11 +400,11 @@ def main(argv: list[str] | None = None) -> None:
         for row in rows
     ]
 
-    args.output_dir.mkdir(parents=True, exist_ok=True)
+    output_dir.mkdir(parents=True, exist_ok=True)
     stem = chunk_stem(args.chunk_index, args.chunk_count)
-    json_out = args.output_dir / f"{stem}.json"
-    csv_out = args.output_dir / f"{stem}.csv"
-    summary_out = args.output_dir / f"{stem}.summary.json"
+    json_out = output_dir / f"{stem}.json"
+    csv_out = output_dir / f"{stem}.csv"
+    summary_out = output_dir / f"{stem}.summary.json"
     json_out.write_text(json.dumps(results, indent=2), encoding="utf-8")
     write_csv(csv_out, results)
     summary = {

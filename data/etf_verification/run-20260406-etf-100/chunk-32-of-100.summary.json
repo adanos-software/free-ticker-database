@@ -1,0 +1,52 @@
+{
+  "chunk_index": 32,
+  "chunk_count": 100,
+  "items": 167,
+  "status_counts": {
+    "missing_from_official": 2,
+    "reference_gap": 111,
+    "verified": 54
+  },
+  "finding_examples": [
+    {
+      "listing_key": "TWSE::00736",
+      "ticker": "00736",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "name": "Cathay FTSE Emerging Market",
+      "country": "Taiwan",
+      "country_code": "TW",
+      "isin": "TW0000073600",
+      "sector": "",
+      "status": "missing_from_official",
+      "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+      "official_reference_name": "",
+      "official_reference_source": "",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "TWSE::009816",
+      "ticker": "009816",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "name": "KGI Securities Investment Trust Co., Ltd - Taiwan Top 50 ETF",
+      "country": "Taiwan",
+      "country_code": "TW",
+      "isin": "",
+      "sector": "",
+      "status": "missing_from_official",
+      "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+      "official_reference_name": "",
+      "official_reference_source": "",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    }
+  ],
+  "json_out": "data/etf_verification/run-20260406-etf-100/chunk-32-of-100.json",
+  "csv_out": "data/etf_verification/run-20260406-etf-100/chunk-32-of-100.csv"
+}

@@ -10,6 +10,7 @@ from scripts.verify_stock_masterfiles import (
     chunk_stem,
     classify_row,
     is_code_like_reference_name,
+    load_asset_rows,
     load_stock_rows,
     select_chunk,
     summarize_results,
@@ -36,6 +37,21 @@ def test_load_stock_rows_filters_and_sorts(tmp_path: Path) -> None:
     )
     rows = load_stock_rows(path)
     assert [(row["exchange"], row["ticker"]) for row in rows] == [("NYSE", "A"), ("NYSE", "B")]
+
+
+def test_load_asset_rows_filters_requested_asset_type(tmp_path: Path) -> None:
+    path = tmp_path / "tickers.csv"
+    write_csv(
+        path,
+        ["ticker", "exchange", "asset_type", "name", "country", "country_code", "isin", "sector"],
+        [
+            {"ticker": "SPY", "exchange": "NYSE ARCA", "asset_type": "ETF", "name": "SPY", "country": "United States", "country_code": "US", "isin": "", "sector": ""},
+            {"ticker": "QQQ", "exchange": "NASDAQ", "asset_type": "ETF", "name": "QQQ", "country": "United States", "country_code": "US", "isin": "", "sector": ""},
+            {"ticker": "AAPL", "exchange": "NASDAQ", "asset_type": "Stock", "name": "Apple", "country": "United States", "country_code": "US", "isin": "", "sector": ""},
+        ],
+    )
+    rows = load_asset_rows(path, asset_type="ETF")
+    assert [(row["exchange"], row["ticker"]) for row in rows] == [("NASDAQ", "QQQ"), ("NYSE ARCA", "SPY")]
 
 
 def test_select_chunk_is_complete_and_disjoint() -> None:
@@ -354,6 +370,135 @@ def test_classify_row_treats_partial_official_exchange_missing_as_reference_gap(
         identifier_map={},
     )
     assert result["status"] == "reference_gap"
+
+
+def test_classify_row_treats_twse_etf_missing_as_reference_gap() -> None:
+    row = {
+        "ticker": "00943",
+        "exchange": "TWSE",
+        "asset_type": "ETF",
+        "name": "Mega Taiwan IT Growth and High Dividend Equal Weight ETF",
+        "country": "Taiwan",
+        "country_code": "TW",
+        "isin": "",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={},
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges={"TWSE"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "This asset type is not fully covered by the current official reference layer for this exchange."
+
+
+def test_classify_row_treats_etf_like_stock_reference_as_verified() -> None:
+    row = {
+        "ticker": "BAR",
+        "exchange": "NYSE ARCA",
+        "asset_type": "ETF",
+        "name": "GraniteShares Gold Trust",
+        "country": "United States",
+        "country_code": "US",
+        "isin": "",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("NYSE ARCA", "BAR"): [
+                {
+                    "ticker": "BAR",
+                    "exchange": "NYSE ARCA",
+                    "name": "GraniteShares Gold Trust Shares of Beneficial Interest",
+                    "asset_type": "Stock",
+                    "source_key": "nasdaq_other_listed",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges={"NYSE ARCA"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+    assert result["reason"] == "Official directory labels this ETP-like listing as stock, but the issuer name clearly identifies an ETF/ETN trust line."
+
+
+def test_classify_row_treats_generic_etf_placeholder_name_as_reference_gap() -> None:
+    row = {
+        "ticker": "CTWO",
+        "exchange": "NYSE ARCA",
+        "asset_type": "ETF",
+        "name": "COtwo Advisors Physical European Carbon Allowance Trust",
+        "country": "United States",
+        "country_code": "US",
+        "isin": "",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("NYSE ARCA", "CTWO"): [
+                {
+                    "ticker": "CTWO",
+                    "exchange": "NYSE ARCA",
+                    "name": "Common units",
+                    "asset_type": "ETF",
+                    "source_key": "nasdaq_other_listed",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges={"NYSE ARCA"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Official reference only exposes a generic ETP placeholder name."
+
+
+def test_classify_row_treats_grouped_euronext_etf_collision_as_reference_gap() -> None:
+    row = {
+        "ticker": "CEM",
+        "exchange": "Euronext",
+        "asset_type": "ETF",
+        "name": "Amundi MSCI Europe Small Cap ESG Climate Net Zero Ambition CTB ETF Acc",
+        "country": "Luxembourg",
+        "country_code": "LU",
+        "isin": "LU1681041544",
+        "sector": "Financials",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("Euronext", "CEM"): [
+                {
+                    "ticker": "CEM",
+                    "exchange": "Euronext",
+                    "name": "CEMENTIR HOLDING",
+                    "asset_type": "Stock",
+                    "source_key": "euronext_equities",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges={"Euronext"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Grouped Euronext feed resolves this ticker to a stock line on another venue."
 
 
 def test_classify_row_downgrades_otc_sec_name_mismatch_to_reference_gap() -> None:

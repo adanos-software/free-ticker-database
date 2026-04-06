@@ -1,0 +1,72 @@
+{
+  "chunk_index": 56,
+  "chunk_count": 100,
+  "items": 167,
+  "status_counts": {
+    "cross_exchange_collision": 6,
+    "missing_from_official": 3,
+    "reference_gap": 106,
+    "verified": 52
+  },
+  "finding_examples": [
+    {
+      "listing_key": "TWSE::00631L",
+      "ticker": "00631L",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "name": "Yuanta Daily Taiwan 50 Bull 2X",
+      "country": "Taiwan",
+      "country_code": "TW",
+      "isin": "TW00000631L0",
+      "sector": "",
+      "status": "missing_from_official",
+      "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+      "official_reference_name": "",
+      "official_reference_source": "",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "TWSE::00885",
+      "ticker": "00885",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "name": "Fubon FTSE Vietnam ETF",
+      "country": "Taiwan",
+      "country_code": "TW",
+      "isin": "TW0000088509",
+      "sector": "",
+      "status": "missing_from_official",
+      "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+      "official_reference_name": "",
+      "official_reference_source": "",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "TWSE::00996A",
+      "ticker": "00996A",
+      "exchange": "TWSE",
+      "asset_type": "ETF",
+      "name": "Mega Taiwan Harvest Active ETF",
+      "country": "Taiwan",
+      "country_code": "TW",
+      "isin": "",
+      "sector": "",
+      "status": "missing_from_official",
+      "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+      "official_reference_name": "",
+      "official_reference_source": "",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    }
+  ],
+  "json_out": "data/etf_verification/run-20260406-etf-100/chunk-56-of-100.json",
+  "csv_out": "data/etf_verification/run-20260406-etf-100/chunk-56-of-100.csv"
+}

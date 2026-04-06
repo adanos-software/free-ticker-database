@@ -1,0 +1,34 @@
+{
+  "chunk_index": 48,
+  "chunk_count": 100,
+  "items": 167,
+  "status_counts": {
+    "cross_exchange_collision": 2,
+    "name_mismatch": 1,
+    "reference_gap": 113,
+    "verified": 51
+  },
+  "finding_examples": [
+    {
+      "listing_key": "NYSE ARCA::AMJB",
+      "ticker": "AMJB",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "JPMorgan Chase Financial Company LLC",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "US48133Q3092",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "Alerian MLP Index ETN",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "0000019617",
+      "figi": "",
+      "lei": ""
+    }
+  ],
+  "json_out": "data/etf_verification/run-20260406-etf-100-final/chunk-48-of-100.json",
+  "csv_out": "data/etf_verification/run-20260406-etf-100-final/chunk-48-of-100.csv"
+}

@@ -1,0 +1,34 @@
+{
+  "chunk_index": 54,
+  "chunk_count": 100,
+  "items": 167,
+  "status_counts": {
+    "asset_type_mismatch": 1,
+    "cross_exchange_collision": 3,
+    "reference_gap": 111,
+    "verified": 52
+  },
+  "finding_examples": [
+    {
+      "listing_key": "NASDAQ::SKK",
+      "ticker": "SKK",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "name": "PROSHARES ULTRASHORT RUSSELL 2000 GROWTH",
+      "country": "Canada",
+      "country_code": "CA",
+      "isin": "CA86332H1001",
+      "sector": "Industrials",
+      "status": "asset_type_mismatch",
+      "reason": "Dataset asset_type=ETF but official reference says Stock.",
+      "official_reference_name": "SKK Holdings Limited - Class A Ordinary Shares",
+      "official_reference_source": "nasdaq_listed",
+      "covered_by_official_directory": true,
+      "cik": "0001991261",
+      "figi": "",
+      "lei": ""
+    }
+  ],
+  "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-54-of-100.json",
+  "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-54-of-100.csv"
+}

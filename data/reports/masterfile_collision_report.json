@@ -1,8 +1,8 @@
 {
   "global": {
     "official_symbols": 24252,
-    "matched": 18451,
-    "collisions": 2700,
+    "matched": 18487,
+    "collisions": 2664,
     "missing": 3101
   },
   "exchanges": [
@@ -603,8 +603,8 @@
     {
       "exchange": "NYSE",
       "official_symbols": 3829,
-      "matched": 2345,
-      "collisions": 529,
+      "matched": 2350,
+      "collisions": 524,
       "missing": 955,
       "collision_examples": [
         {
@@ -744,8 +744,8 @@
     {
       "exchange": "NYSE ARCA",
       "official_symbols": 2612,
-      "matched": 2492,
-      "collisions": 106,
+      "matched": 2523,
+      "collisions": 75,
       "missing": 14,
       "collision_examples": [
         {
@@ -773,14 +773,6 @@
           ]
         },
         {
-          "ticker": "AOTS",
-          "name": "AOT Software Platform ETF",
-          "target_exchange": "NYSE ARCA",
-          "existing_exchanges": [
-            "NYSE MKT"
-          ]
-        },
-        {
           "ticker": "ARMH",
           "name": "Arm Holdings PLC ADRhedged",
           "target_exchange": "NYSE ARCA",
@@ -797,14 +789,6 @@
           ]
         },
         {
-          "ticker": "AVTM",
-          "name": "Avantis Total Equity Markets ETF",
-          "target_exchange": "NYSE ARCA",
-          "existing_exchanges": [
-            "NASDAQ"
-          ]
-        },
-        {
           "ticker": "BCGS",
           "name": "Bancreek Global Select ETF",
           "target_exchange": "NYSE ARCA",
@@ -813,19 +797,35 @@
           ]
         },
         {
-          "ticker": "BDBT",
-          "name": "Bluemonte Core Bond ETF",
+          "ticker": "BLOX",
+          "name": "Nicholas Crypto Income ETF",
           "target_exchange": "NYSE ARCA",
           "existing_exchanges": [
             "NYSE"
           ]
         },
         {
-          "ticker": "BLGR",
-          "name": "Bluemonte Large Cap Growth ETF",
+          "ticker": "BPI",
+          "name": "Grayscale Bitcoin Premium Income ETF",
           "target_exchange": "NYSE ARCA",
           "existing_exchanges": [
-            "NYSE"
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "BTYB",
+          "name": "VistaShares BitBonds 5 Yr Enhanced Weekly Distribution ETF",
+          "target_exchange": "NYSE ARCA",
+          "existing_exchanges": [
+            "NYSEARCA"
+          ]
+        },
+        {
+          "ticker": "CCOM",
+          "name": "Simplify Chinese Commodities Strategy No K-1 ETF",
+          "target_exchange": "NYSE ARCA",
+          "existing_exchanges": [
+            "BVB"
           ]
         }
       ],

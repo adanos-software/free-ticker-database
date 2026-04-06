@@ -10,13 +10,13 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 61
 | Metric | Value |
 |---|---|
 | **Total tickers** | 61,353 |
-| Stocks | 44,635 |
-| ETFs | 16,718 |
+| Stocks | 44,638 |
+| ETFs | 16,715 |
 | Exchanges | 68 |
 | Countries | 68 |
-| ISIN coverage | 43,626 (71.1%) |
+| ISIN coverage | 43,656 (71.2%) |
 | Sector coverage | 37,839 (61.7%) |
-| Total aliases | 98,205 |
+| Total aliases | 98,167 |
 
 ## Formats
 
@@ -109,8 +109,8 @@ This auxiliary export makes the current listing identity explicit as `exchange::
 {
   "_meta": {
     "version": "2.1.0",
-    "built_at": "2026-04-06T18:07:28Z",
-    "total_tickers": 61479
+    "built_at": "2026-04-06T20:23:15Z",
+    "total_tickers": 61353
   },
   "tickers": [
     {

@@ -1,0 +1,33 @@
+{
+  "chunk_index": 17,
+  "chunk_count": 100,
+  "items": 167,
+  "status_counts": {
+    "name_mismatch": 1,
+    "reference_gap": 111,
+    "verified": 55
+  },
+  "finding_examples": [
+    {
+      "listing_key": "NYSE ARCA::TAGG",
+      "ticker": "TAGG",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "TagLikeMe Corp",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "US87378P1057",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "T. Rowe Price QM U.S. Bond ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    }
+  ],
+  "json_out": "data/etf_verification/run-20260406-etf-100-final/chunk-17-of-100.json",
+  "csv_out": "data/etf_verification/run-20260406-etf-100-final/chunk-17-of-100.csv"
+}

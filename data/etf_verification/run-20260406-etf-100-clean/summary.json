@@ -1,0 +1,3999 @@
+{
+  "chunk_count": 100,
+  "completed_chunks": 100,
+  "missing_chunks": [],
+  "items": 16718,
+  "status_counts": {
+    "asset_type_mismatch": 4,
+    "cross_exchange_collision": 244,
+    "name_mismatch": 105,
+    "reference_gap": 11087,
+    "verified": 5278
+  },
+  "chunks": [
+    {
+      "chunk_index": 1,
+      "chunk_count": 100,
+      "items": 168,
+      "status_counts": {
+        "cross_exchange_collision": 4,
+        "reference_gap": 112,
+        "verified": 52
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-01-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-01-of-100.csv"
+    },
+    {
+      "chunk_index": 2,
+      "chunk_count": 100,
+      "items": 168,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "reference_gap": 114,
+        "verified": 52
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-02-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-02-of-100.csv"
+    },
+    {
+      "chunk_index": 3,
+      "chunk_count": 100,
+      "items": 168,
+      "status_counts": {
+        "cross_exchange_collision": 1,
+        "name_mismatch": 1,
+        "reference_gap": 108,
+        "verified": 58
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::HTUS",
+          "ticker": "HTUS",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "Capitol Series Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US3015058064",
+          "sector": "Large Cap",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Hull Tactical US ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-03-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-03-of-100.csv"
+    },
+    {
+      "chunk_index": 4,
+      "chunk_count": 100,
+      "items": 168,
+      "status_counts": {
+        "cross_exchange_collision": 3,
+        "name_mismatch": 2,
+        "reference_gap": 109,
+        "verified": 54
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::BUFS",
+          "ticker": "BUFS",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "BUFS",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "FT Vest Laddered Small Cap Moderate Buffer ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::SURE",
+          "ticker": "SURE",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Sonora Resources Corp",
+          "country": "United Kingdom",
+          "country_code": "GB",
+          "isin": "GB00BYWYZ460",
+          "sector": "Financials",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "AdvisorShares Insider Advantage ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-04-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-04-of-100.csv"
+    },
+    {
+      "chunk_index": 5,
+      "chunk_count": 100,
+      "items": 168,
+      "status_counts": {
+        "cross_exchange_collision": 3,
+        "reference_gap": 108,
+        "verified": 57
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-05-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-05-of-100.csv"
+    },
+    {
+      "chunk_index": 6,
+      "chunk_count": 100,
+      "items": 168,
+      "status_counts": {
+        "asset_type_mismatch": 1,
+        "cross_exchange_collision": 3,
+        "name_mismatch": 2,
+        "reference_gap": 107,
+        "verified": 55
+      },
+      "finding_examples": [
+        {
+          "listing_key": "Euronext::DISL",
+          "ticker": "DISL",
+          "exchange": "Euronext",
+          "asset_type": "ETF",
+          "name": "Immobiliere Distri-Land NV",
+          "country": "Belgium",
+          "country_code": "BE",
+          "isin": "BE0003605160",
+          "sector": "Real Estate",
+          "status": "asset_type_mismatch",
+          "reason": "Dataset asset_type=ETF but official reference says Stock.",
+          "official_reference_name": "DISTRI-LAND CERT",
+          "official_reference_source": "euronext_equities",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "BBG000BRPN72",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::ACGR",
+          "ticker": "ACGR",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "ACGR",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "American Century Large Cap Growth ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::DANA",
+          "ticker": "DANA",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Tidal Trust I",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Dana Limited Volatility ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-06-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-06-of-100.csv"
+    },
+    {
+      "chunk_index": 7,
+      "chunk_count": 100,
+      "items": 168,
+      "status_counts": {
+        "cross_exchange_collision": 1,
+        "name_mismatch": 2,
+        "reference_gap": 109,
+        "verified": 56
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::MBSF",
+          "ticker": "MBSF",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Valued Advisers Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Regan Floating Rate MBS ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::PCCE",
+          "ticker": "PCCE",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Litman Gregory Funds Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Polen Capital China Growth ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-07-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-07-of-100.csv"
+    },
+    {
+      "chunk_index": 8,
+      "chunk_count": 100,
+      "items": 168,
+      "status_counts": {
+        "cross_exchange_collision": 1,
+        "name_mismatch": 2,
+        "reference_gap": 109,
+        "verified": 56
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::MSTK",
+          "ticker": "MSTK",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "MSTK",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Tuttle Capital MSTR 0DTE Covered Call ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::RJDI",
+          "ticker": "RJDI",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Carillon Series Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "RJ Eagle GCM Dividend Select Income ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-08-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-08-of-100.csv"
+    },
+    {
+      "chunk_index": 9,
+      "chunk_count": 100,
+      "items": 168,
+      "status_counts": {
+        "cross_exchange_collision": 3,
+        "name_mismatch": 2,
+        "reference_gap": 111,
+        "verified": 52
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::ACLC",
+          "ticker": "ACLC",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "ACLC",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "American Century Large Cap Equity ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::RJMI",
+          "ticker": "RJMI",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Carillon Series Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "RJ Eagle Municipal Income ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-09-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-09-of-100.csv"
+    },
+    {
+      "chunk_index": 10,
+      "chunk_count": 100,
+      "items": 168,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "name_mismatch": 2,
+        "reference_gap": 111,
+        "verified": 53
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::DLAG",
+          "ticker": "DLAG",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "DLAG",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "FT Vest U.S. Equity Dual Directional Buffer ETF - August",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::RJVI",
+          "ticker": "RJVI",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Carillon Series Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "RJ Eagle Vertical Income ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-10-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-10-of-100.csv"
+    },
+    {
+      "chunk_index": 100,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 5,
+        "reference_gap": 111,
+        "verified": 51
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-100-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-100-of-100.csv"
+    },
+    {
+      "chunk_index": 11,
+      "chunk_count": 100,
+      "items": 168,
+      "status_counts": {
+        "cross_exchange_collision": 3,
+        "name_mismatch": 3,
+        "reference_gap": 113,
+        "verified": 49
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::FLDZ",
+          "ticker": "FLDZ",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "Listed Funds Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US53656F2276",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "RiverNorth Patriot ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::ACVT",
+          "ticker": "ACVT",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "The RBB Fund Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Advent Convertible Bond ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::PCGG",
+          "ticker": "PCGG",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Litman Gregory Funds Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US53700T7440",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Polen Capital Global Growth ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-11-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-11-of-100.csv"
+    },
+    {
+      "chunk_index": 12,
+      "chunk_count": 100,
+      "items": 168,
+      "status_counts": {
+        "cross_exchange_collision": 1,
+        "name_mismatch": 1,
+        "reference_gap": 114,
+        "verified": 52
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::PCHI",
+          "ticker": "PCHI",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "FundVantage Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Polen High Income ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-12-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-12-of-100.csv"
+    },
+    {
+      "chunk_index": 13,
+      "chunk_count": 100,
+      "items": 168,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "name_mismatch": 2,
+        "reference_gap": 114,
+        "verified": 50
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::PCIG",
+          "ticker": "PCIG",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Litman Gregory Funds Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Polen Capital International Growth ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::VCOB",
+          "ticker": "VCOB",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Tidal Trust IV",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Voya Core Bond ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-13-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-13-of-100.csv"
+    },
+    {
+      "chunk_index": 14,
+      "chunk_count": 100,
+      "items": 168,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "name_mismatch": 1,
+        "reference_gap": 113,
+        "verified": 52
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::PCLG",
+          "ticker": "PCLG",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "FundVantage Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Polen Focus Growth ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-14-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-14-of-100.csv"
+    },
+    {
+      "chunk_index": 15,
+      "chunk_count": 100,
+      "items": 168,
+      "status_counts": {
+        "cross_exchange_collision": 1,
+        "name_mismatch": 1,
+        "reference_gap": 113,
+        "verified": 53
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::BNDS",
+          "ticker": "BNDS",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Series Portfolios Trust",
+          "country": "Australia",
+          "country_code": "AU",
+          "isin": "AU0000026189",
+          "sector": "Investment Grade Bonds",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Infrastructure Capital Bond Income ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-15-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-15-of-100.csv"
+    },
+    {
+      "chunk_index": 16,
+      "chunk_count": 100,
+      "items": 168,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "reference_gap": 111,
+        "verified": 55
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-16-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-16-of-100.csv"
+    },
+    {
+      "chunk_index": 17,
+      "chunk_count": 100,
+      "items": 168,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "name_mismatch": 1,
+        "reference_gap": 110,
+        "verified": 55
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::RNWZ",
+          "ticker": "RNWZ",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Elevation Series Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US53656G5716",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "TrueShares Eagle Global Renewable Energy Income ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-17-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-17-of-100.csv"
+    },
+    {
+      "chunk_index": 18,
+      "chunk_count": 100,
+      "items": 168,
+      "status_counts": {
+        "cross_exchange_collision": 1,
+        "reference_gap": 112,
+        "verified": 55
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-18-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-18-of-100.csv"
+    },
+    {
+      "chunk_index": 19,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 1,
+        "name_mismatch": 1,
+        "reference_gap": 115,
+        "verified": 50
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::DOJE",
+          "ticker": "DOJE",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "DOJE",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "REX-Osprey DOGE ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-19-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-19-of-100.csv"
+    },
+    {
+      "chunk_index": 20,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 1,
+        "name_mismatch": 3,
+        "reference_gap": 111,
+        "verified": 52
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::IBHK",
+          "ticker": "IBHK",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "IBHK",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "iShares iBonds 2031 Term High Yield and Income ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::TAGG",
+          "ticker": "TAGG",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "TagLikeMe Corp",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US87378P1057",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "T. Rowe Price QM U.S. Bond ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::YLDW",
+          "ticker": "YLDW",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Ultimus Managers Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Westwood Enhanced Income Opportunity ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-20-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-20-of-100.csv"
+    },
+    {
+      "chunk_index": 21,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 1,
+        "name_mismatch": 1,
+        "reference_gap": 112,
+        "verified": 53
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::CLOX",
+          "ticker": "CLOX",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Series Portfolios Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US81752T4866",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Eldridge AAA CLO ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-21-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-21-of-100.csv"
+    },
+    {
+      "chunk_index": 22,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 5,
+        "name_mismatch": 2,
+        "reference_gap": 109,
+        "verified": 51
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::SBTU",
+          "ticker": "SBTU",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "SBTU",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "T-REX 2X Long SBET Daily Target ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "BATS::TOXR",
+          "ticker": "TOXR",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "21Shares Core Xrp Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Shares of Beneficial Interest",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-22-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-22-of-100.csv"
+    },
+    {
+      "chunk_index": 23,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 3,
+        "name_mismatch": 1,
+        "reference_gap": 111,
+        "verified": 52
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::FMCE",
+          "ticker": "FMCE",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Northern Lights Fund Trust IV",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "FM Compounders Equity ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-23-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-23-of-100.csv"
+    },
+    {
+      "chunk_index": 24,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "name_mismatch": 2,
+        "reference_gap": 109,
+        "verified": 54
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::CBXA",
+          "ticker": "CBXA",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "CBXA",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Calamos Bitcoin 90 Series Structured Alt Protection ETF - April",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "BATS::KNOW",
+          "ticker": "KNOW",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "Direxion All Cap Insider Sentiment Shares",
+          "country": "Sweden",
+          "country_code": "SE",
+          "isin": "SE0000421273",
+          "sector": "Information Technology",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Fundamentals First ETF Fundamentals First ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-24-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-24-of-100.csv"
+    },
+    {
+      "chunk_index": 25,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "reference_gap": 107,
+        "verified": 58
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-25-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-25-of-100.csv"
+    },
+    {
+      "chunk_index": 26,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 1,
+        "name_mismatch": 2,
+        "reference_gap": 112,
+        "verified": 52
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::IBMS",
+          "ticker": "IBMS",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "IBMS",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "iShares iBonds Dec 2030 Term Muni Bond ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "BATS::TSEP",
+          "ticker": "TSEP",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "TSEP",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "FT Vest Emerging Market Buffer ETF - September",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-26-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-26-of-100.csv"
+    },
+    {
+      "chunk_index": 27,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 4,
+        "name_mismatch": 1,
+        "reference_gap": 109,
+        "verified": 53
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::AGIQ",
+          "ticker": "AGIQ",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Tidal Trust I",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "SoFi Agentic AI ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-27-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-27-of-100.csv"
+    },
+    {
+      "chunk_index": 28,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "reference_gap": 111,
+        "verified": 54
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-28-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-28-of-100.csv"
+    },
+    {
+      "chunk_index": 29,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "reference_gap": 110,
+        "verified": 55
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-29-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-29-of-100.csv"
+    },
+    {
+      "chunk_index": 30,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 3,
+        "name_mismatch": 1,
+        "reference_gap": 110,
+        "verified": 53
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::DUKQ",
+          "ticker": "DUKQ",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Northern Lights Fund Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US66538J3326",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Ocean Park Domestic ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-30-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-30-of-100.csv"
+    },
+    {
+      "chunk_index": 31,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "name_mismatch": 1,
+        "reference_gap": 115,
+        "verified": 49
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::DUKZ",
+          "ticker": "DUKZ",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Northern Lights Fund Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Ocean Park Diversified Income ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-31-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-31-of-100.csv"
+    },
+    {
+      "chunk_index": 32,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "reference_gap": 111,
+        "verified": 54
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-32-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-32-of-100.csv"
+    },
+    {
+      "chunk_index": 33,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "name_mismatch": 1,
+        "reference_gap": 112,
+        "verified": 54
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::DUNK",
+          "ticker": "DUNK",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Tidal Trust I",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Dana Unconstrained Equity ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-33-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-33-of-100.csv"
+    },
+    {
+      "chunk_index": 34,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "name_mismatch": 3,
+        "reference_gap": 109,
+        "verified": 53
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::AHLT",
+          "ticker": "AHLT",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "American Beacon Select Funds",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US02368W3097",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "AHL Trend ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::BSR",
+          "ticker": "BSR",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Northern Lights Fund Trust II",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US66538F1993",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Beacon Selective Risk ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::DEFI",
+          "ticker": "DEFI",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Tidal Commodities Trust I",
+          "country": "Canada",
+          "country_code": "CA",
+          "isin": "CA92027E1051",
+          "sector": "Financials",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Hashdex Bitcoin ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "0001985840",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-34-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-34-of-100.csv"
+    },
+    {
+      "chunk_index": 35,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "name_mismatch": 1,
+        "reference_gap": 110,
+        "verified": 54
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::SEPM",
+          "ticker": "SEPM",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "SEPM",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "FT Vest U.S. Equity Max Buffer ETF - September",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-35-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-35-of-100.csv"
+    },
+    {
+      "chunk_index": 36,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 3,
+        "reference_gap": 111,
+        "verified": 53
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-36-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-36-of-100.csv"
+    },
+    {
+      "chunk_index": 37,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 1,
+        "reference_gap": 112,
+        "verified": 54
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-37-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-37-of-100.csv"
+    },
+    {
+      "chunk_index": 38,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "name_mismatch": 1,
+        "reference_gap": 113,
+        "verified": 51
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::XRPR",
+          "ticker": "XRPR",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "XRPR",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "REX-Osprey XRP ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-38-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-38-of-100.csv"
+    },
+    {
+      "chunk_index": 39,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "reference_gap": 112,
+        "verified": 53
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-39-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-39-of-100.csv"
+    },
+    {
+      "chunk_index": 40,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 3,
+        "name_mismatch": 1,
+        "reference_gap": 115,
+        "verified": 48
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NASDAQ::CHGX",
+          "ticker": "CHGX",
+          "exchange": "NASDAQ",
+          "asset_type": "ETF",
+          "name": "Change Finance Diversified Imp US Large Cap Fossil Fuel Free",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US46144X1072",
+          "sector": "Large Cap",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Stance Sustainable Beta ETF",
+          "official_reference_source": "nasdaq_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-40-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-40-of-100.csv"
+    },
+    {
+      "chunk_index": 41,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 4,
+        "name_mismatch": 1,
+        "reference_gap": 113,
+        "verified": 49
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::LCO",
+          "ticker": "LCO",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Tidal Trust IV",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "LOGIQ Contrarian Opportunities ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-41-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-41-of-100.csv"
+    },
+    {
+      "chunk_index": 42,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 5,
+        "name_mismatch": 5,
+        "reference_gap": 113,
+        "verified": 44
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::COII",
+          "ticker": "COII",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "COII",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "XS2901886445",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "REX COIN Growth & Income ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "BATS::LFBE",
+          "ticker": "LFBE",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "Stone Ridge Trust Stone Ridge 2",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "LifeX 2065 Longevity Income ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::BTR",
+          "ticker": "BTR",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Northern Lights Fund Trust II",
+          "country": "Australia",
+          "country_code": "AU",
+          "isin": "AU0000126633",
+          "sector": "Materials",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Beacon Tactical Risk ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::LCR",
+          "ticker": "LCR",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Managed Portfolio Series",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US5272897894",
+          "sector": "Factors",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Leuthold Core ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::VMSB",
+          "ticker": "VMSB",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Tidal Trust IV",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Voya Multi-Sector Income ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-42-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-42-of-100.csv"
+    },
+    {
+      "chunk_index": 43,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 6,
+        "reference_gap": 111,
+        "verified": 50
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-43-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-43-of-100.csv"
+    },
+    {
+      "chunk_index": 44,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "reference_gap": 112,
+        "verified": 53
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-44-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-44-of-100.csv"
+    },
+    {
+      "chunk_index": 45,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "reference_gap": 110,
+        "verified": 55
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-45-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-45-of-100.csv"
+    },
+    {
+      "chunk_index": 46,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "name_mismatch": 1,
+        "reference_gap": 110,
+        "verified": 54
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::SHYM",
+          "ticker": "SHYM",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "SHYM",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "iShares Short Duration High Yield Muni Active ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-46-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-46-of-100.csv"
+    },
+    {
+      "chunk_index": 47,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 4,
+        "reference_gap": 112,
+        "verified": 51
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-47-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-47-of-100.csv"
+    },
+    {
+      "chunk_index": 48,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 3,
+        "reference_gap": 112,
+        "verified": 52
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-48-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-48-of-100.csv"
+    },
+    {
+      "chunk_index": 49,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "name_mismatch": 1,
+        "reference_gap": 114,
+        "verified": 50
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::AMAX",
+          "ticker": "AMAX",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Starboard Investment Trust",
+          "country": "Canada",
+          "country_code": "CA",
+          "isin": "CA4069181028",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Adaptive Hedged Multi-Asset Income ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-49-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-49-of-100.csv"
+    },
+    {
+      "chunk_index": 50,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "name_mismatch": 1,
+        "reference_gap": 111,
+        "verified": 53
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::QTPI",
+          "ticker": "QTPI",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Exchange Place Advisors Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "North Square RCIM Tax-Advantaged Preferred and Income Securities ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-50-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-50-of-100.csv"
+    },
+    {
+      "chunk_index": 51,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 4,
+        "name_mismatch": 2,
+        "reference_gap": 109,
+        "verified": 52
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::AMJB",
+          "ticker": "AMJB",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "JPMorgan Chase Financial Company LLC",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US48133Q3092",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Alerian MLP Index ETN",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "0000019617",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::BDVG",
+          "ticker": "BDVG",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Litman Gregory Funds Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US53700T7515",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "IMGP Berkshire Dividend Growth ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-51-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-51-of-100.csv"
+    },
+    {
+      "chunk_index": 52,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 4,
+        "reference_gap": 109,
+        "verified": 54
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-52-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-52-of-100.csv"
+    },
+    {
+      "chunk_index": 53,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 5,
+        "reference_gap": 109,
+        "verified": 53
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-53-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-53-of-100.csv"
+    },
+    {
+      "chunk_index": 54,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "asset_type_mismatch": 1,
+        "cross_exchange_collision": 3,
+        "reference_gap": 111,
+        "verified": 52
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NASDAQ::SKK",
+          "ticker": "SKK",
+          "exchange": "NASDAQ",
+          "asset_type": "ETF",
+          "name": "PROSHARES ULTRASHORT RUSSELL 2000 GROWTH",
+          "country": "Canada",
+          "country_code": "CA",
+          "isin": "CA86332H1001",
+          "sector": "Industrials",
+          "status": "asset_type_mismatch",
+          "reason": "Dataset asset_type=ETF but official reference says Stock.",
+          "official_reference_name": "SKK Holdings Limited - Class A Ordinary Shares",
+          "official_reference_source": "nasdaq_listed",
+          "covered_by_official_directory": true,
+          "cik": "0001991261",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-54-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-54-of-100.csv"
+    },
+    {
+      "chunk_index": 55,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 5,
+        "reference_gap": 112,
+        "verified": 50
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-55-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-55-of-100.csv"
+    },
+    {
+      "chunk_index": 56,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "reference_gap": 110,
+        "verified": 55
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-56-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-56-of-100.csv"
+    },
+    {
+      "chunk_index": 57,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "reference_gap": 110,
+        "verified": 55
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-57-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-57-of-100.csv"
+    },
+    {
+      "chunk_index": 58,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 1,
+        "name_mismatch": 3,
+        "reference_gap": 109,
+        "verified": 54
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::GLXU",
+          "ticker": "GLXU",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "GLXU",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "T-REX 2X Long GLXY Daily Target ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::ESIM",
+          "ticker": "ESIM",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Strategy Shares",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Eventide International ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::SHUS",
+          "ticker": "SHUS",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Exchange Listed Funds Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US87166N5023",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Stratified LargeCap Hedged ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-58-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-58-of-100.csv"
+    },
+    {
+      "chunk_index": 59,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 1,
+        "name_mismatch": 1,
+        "reference_gap": 109,
+        "verified": 56
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::CAFX",
+          "ticker": "CAFX",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Professionally Managed Portfolios",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US74316P5879",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Congress Intermediate Bond ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-59-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-59-of-100.csv"
+    },
+    {
+      "chunk_index": 60,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "name_mismatch": 3,
+        "reference_gap": 109,
+        "verified": 53
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::IROC",
+          "ticker": "IROC",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "IROC",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Invesco Rochester High Yield Municipal ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::ESSC",
+          "ticker": "ESSC",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Strategy Shares",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "Financials",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Eventide Small Cap ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::OALC",
+          "ticker": "OALC",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Unified Series Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US90470L5277",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "OneAscent Large Cap Core ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-60-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-60-of-100.csv"
+    },
+    {
+      "chunk_index": 61,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "reference_gap": 111,
+        "verified": 54
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-61-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-61-of-100.csv"
+    },
+    {
+      "chunk_index": 62,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 4,
+        "name_mismatch": 1,
+        "reference_gap": 114,
+        "verified": 48
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::QBER",
+          "ticker": "QBER",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "QBER",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "TrueShares Quarterly Bear Hedge ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-62-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-62-of-100.csv"
+    },
+    {
+      "chunk_index": 63,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "name_mismatch": 2,
+        "reference_gap": 110,
+        "verified": 53
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::ETFT",
+          "ticker": "ETFT",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "ALPS Series Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Fundsmith Equity ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::MRSK",
+          "ticker": "MRSK",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Northern Lights Fund Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US66538J7202",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Toews Agility Shares Managed Risk ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-63-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-63-of-100.csv"
+    },
+    {
+      "chunk_index": 64,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 3,
+        "name_mismatch": 1,
+        "reference_gap": 109,
+        "verified": 54
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::QBUL",
+          "ticker": "QBUL",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "QBUL",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "TrueShares Quarterly Bull Hedge ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-64-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-64-of-100.csv"
+    },
+    {
+      "chunk_index": 65,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 4,
+        "reference_gap": 111,
+        "verified": 52
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-65-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-65-of-100.csv"
+    },
+    {
+      "chunk_index": 66,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "name_mismatch": 1,
+        "reference_gap": 112,
+        "verified": 52
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::MAGC",
+          "ticker": "MAGC",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "MAGC",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Roundhill China Magnificent Seven ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-66-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-66-of-100.csv"
+    },
+    {
+      "chunk_index": 67,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 1,
+        "name_mismatch": 2,
+        "reference_gap": 113,
+        "verified": 51
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::ZVOL",
+          "ticker": "ZVOL",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "ZVOL",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US92864M2026",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Volatility Premium Plus ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::THY",
+          "ticker": "THY",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Northern Lights Fund Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US66538J7384",
+          "sector": "High Yield Bonds",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Toews Agility Shares Dynamic Tactical Income ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-67-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-67-of-100.csv"
+    },
+    {
+      "chunk_index": 68,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 1,
+        "reference_gap": 112,
+        "verified": 54
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-68-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-68-of-100.csv"
+    },
+    {
+      "chunk_index": 69,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 4,
+        "reference_gap": 111,
+        "verified": 52
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-69-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-69-of-100.csv"
+    },
+    {
+      "chunk_index": 70,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "asset_type_mismatch": 1,
+        "cross_exchange_collision": 2,
+        "reference_gap": 108,
+        "verified": 56
+      },
+      "finding_examples": [
+        {
+          "listing_key": "Euronext::CEM",
+          "ticker": "CEM",
+          "exchange": "Euronext",
+          "asset_type": "ETF",
+          "name": "Amundi MSCI Europe Small Cap ESG Climate Net Zero Ambition CTB ETF Acc",
+          "country": "Luxembourg",
+          "country_code": "LU",
+          "isin": "LU1681041544",
+          "sector": "Financials",
+          "status": "asset_type_mismatch",
+          "reason": "Dataset asset_type=ETF but official reference says Stock.",
+          "official_reference_name": "CEMENTIR HOLDING",
+          "official_reference_source": "euronext_equities",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "BBG00KXH1W63",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-70-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-70-of-100.csv"
+    },
+    {
+      "chunk_index": 71,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 1,
+        "name_mismatch": 2,
+        "reference_gap": 111,
+        "verified": 53
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::CBLS",
+          "ticker": "CBLS",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Elevation Series Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US53656F6491",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Clough Hedged Equity ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::DFTT",
+          "ticker": "DFTT",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Northern Lights Fund Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "DF Tactical 30 ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-71-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-71-of-100.csv"
+    },
+    {
+      "chunk_index": 72,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "reference_gap": 113,
+        "verified": 52
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-72-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-72-of-100.csv"
+    },
+    {
+      "chunk_index": 73,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 1,
+        "name_mismatch": 2,
+        "reference_gap": 111,
+        "verified": 53
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::PRAB",
+          "ticker": "PRAB",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "SSGA Active Trust",
+          "country": "Luxembourg",
+          "country_code": "LU",
+          "isin": "LU2233156582",
+          "sector": "Consumer Discretionary",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "State Street IG Public & Private ABS ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::VUSI",
+          "ticker": "VUSI",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Tidal Trust IV",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Voya Ultra Short Income ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-73-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-73-of-100.csv"
+    },
+    {
+      "chunk_index": 74,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 1,
+        "name_mismatch": 2,
+        "reference_gap": 112,
+        "verified": 52
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::PRAE",
+          "ticker": "PRAE",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Northern Lights Fund Trust III",
+          "country": "Luxembourg",
+          "country_code": "LU",
+          "isin": "LU2089238039",
+          "sector": "Large Cap",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "PlanRock Alternative Growth ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::SAGP",
+          "ticker": "SAGP",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "The Advisorsa Inner Circle Fund III",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US00775Y6529",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Strategas Global Policy Opportunities ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-74-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-74-of-100.csv"
+    },
+    {
+      "chunk_index": 75,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "reference_gap": 111,
+        "verified": 54
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-75-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-75-of-100.csv"
+    },
+    {
+      "chunk_index": 76,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 1,
+        "name_mismatch": 2,
+        "reference_gap": 112,
+        "verified": 52
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::AAUM",
+          "ticker": "AAUM",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "AAUM",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Tema Alternative Asset Managers ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::SAMT",
+          "ticker": "SAMT",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "The Advisorsa\u0080\u0099 Inner Circle Fund III",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US00775Y6453",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Strategas Macro Thematic Opportunities ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-76-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-76-of-100.csv"
+    },
+    {
+      "chunk_index": 77,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 4,
+        "name_mismatch": 1,
+        "reference_gap": 114,
+        "verified": 48
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::CSMD",
+          "ticker": "CSMD",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Professionally Managed Portfolios",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US74316P6455",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Congress SMid Growth ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-77-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-77-of-100.csv"
+    },
+    {
+      "chunk_index": 78,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "name_mismatch": 1,
+        "reference_gap": 111,
+        "verified": 53
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::ABLD",
+          "ticker": "ABLD",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "ABLD",
+          "country": "France",
+          "country_code": "FR",
+          "isin": "FR001400AHX6",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Abacus FCF Real Assets Leaders ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-78-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-78-of-100.csv"
+    },
+    {
+      "chunk_index": 79,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 3,
+        "name_mismatch": 3,
+        "reference_gap": 110,
+        "verified": 51
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::ABLG",
+          "ticker": "ABLG",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "ABLG",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US89628W4015",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Abacus FCF International Leaders ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "BATS::GTOC",
+          "ticker": "GTOC",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "GTOC",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Invesco Core Fixed Income ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::PRIV",
+          "ticker": "PRIV",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "SSGA Active Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "State Street IG Public & Private Credit ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-79-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-79-of-100.csv"
+    },
+    {
+      "chunk_index": 80,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "name_mismatch": 1,
+        "reference_gap": 111,
+        "verified": 53
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::PRSD",
+          "ticker": "PRSD",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "SSGA Active Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "State Street Short Duration IG Public & Private Credit ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-80-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-80-of-100.csv"
+    },
+    {
+      "chunk_index": 81,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "name_mismatch": 2,
+        "reference_gap": 111,
+        "verified": 52
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::GTOS",
+          "ticker": "GTOS",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "Gantos Inc",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US65343D1000",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Invesco Short Duration Total Return Bond ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::LRNZ",
+          "ticker": "LRNZ",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Elevation Series Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US53656F8216",
+          "sector": "Information Technology",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "TrueShares Technology, AI & Deep Learning ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-81-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-81-of-100.csv"
+    },
+    {
+      "chunk_index": 82,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "reference_gap": 110,
+        "verified": 55
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-82-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-82-of-100.csv"
+    },
+    {
+      "chunk_index": 83,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 3,
+        "name_mismatch": 1,
+        "reference_gap": 108,
+        "verified": 55
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::ONEH",
+          "ticker": "ONEH",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "ONEH",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "TrueShares Equity Hedge ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-83-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-83-of-100.csv"
+    },
+    {
+      "chunk_index": 84,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 3,
+        "name_mismatch": 2,
+        "reference_gap": 108,
+        "verified": 54
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::DHSB",
+          "ticker": "DHSB",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Strategy Shares",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US86280R7952",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Day Hagan Smart Buffer ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::MVPA",
+          "ticker": "MVPA",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Advisor Managed Portfolios",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US00777X5611",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Miller Value Partners Appreciation ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-84-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-84-of-100.csv"
+    },
+    {
+      "chunk_index": 85,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 4,
+        "reference_gap": 107,
+        "verified": 56
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-85-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-85-of-100.csv"
+    },
+    {
+      "chunk_index": 86,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 4,
+        "name_mismatch": 1,
+        "reference_gap": 110,
+        "verified": 52
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::LST",
+          "ticker": "LST",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Managed Portfolio Series",
+          "country": "United Kingdom",
+          "country_code": "GB",
+          "isin": "GB00BNDQJN14",
+          "sector": "Consumer Staples",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Leuthold Select Industries ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-86-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-86-of-100.csv"
+    },
+    {
+      "chunk_index": 87,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 3,
+        "name_mismatch": 2,
+        "reference_gap": 110,
+        "verified": 52
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::CTWO",
+          "ticker": "CTWO",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "COtwo Advisors Physical European Carbon Allowance Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Common units",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "0001958928",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::LSVD",
+          "ticker": "LSVD",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "The Advisors\u00e2\u0080\u0099 Inner Circle Fund",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "LSV Disciplined Value ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-87-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-87-of-100.csv"
+    },
+    {
+      "chunk_index": 88,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 3,
+        "name_mismatch": 1,
+        "reference_gap": 110,
+        "verified": 53
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::WCPB",
+          "ticker": "WCPB",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Northern Lights Fund Trust II",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Weitz Core Plus Bond ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-88-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-88-of-100.csv"
+    },
+    {
+      "chunk_index": 89,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "name_mismatch": 1,
+        "reference_gap": 110,
+        "verified": 54
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::MFUT",
+          "ticker": "MFUT",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "MFUT",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Cambria Chesapeake Pure Trend ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-89-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-89-of-100.csv"
+    },
+    {
+      "chunk_index": 90,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 4,
+        "reference_gap": 111,
+        "verified": 52
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-90-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-90-of-100.csv"
+    },
+    {
+      "chunk_index": 91,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 3,
+        "name_mismatch": 1,
+        "reference_gap": 111,
+        "verified": 52
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::SSPY",
+          "ticker": "SSPY",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Exchange Listed Funds Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US87166N1063",
+          "sector": "Large Cap",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Stratified LargeCap Index ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-91-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-91-of-100.csv"
+    },
+    {
+      "chunk_index": 92,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "reference_gap": 111,
+        "verified": 54
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-92-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-92-of-100.csv"
+    },
+    {
+      "chunk_index": 93,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 3,
+        "name_mismatch": 1,
+        "reference_gap": 110,
+        "verified": 53
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::OVS",
+          "ticker": "OVS",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "OVS SpA",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US53656F8885",
+          "sector": "Small Cap",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Overlay Shares Small Cap Equity ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-93-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-93-of-100.csv"
+    },
+    {
+      "chunk_index": 94,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "name_mismatch": 1,
+        "reference_gap": 109,
+        "verified": 55
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::FLEU",
+          "ticker": "FLEU",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Barclays ETN+ FI Enhanced Europe 50 ETN Series B",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US06744M8367",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Franklin FTSE Eurozone ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-94-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-94-of-100.csv"
+    },
+    {
+      "chunk_index": 95,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 3,
+        "name_mismatch": 1,
+        "reference_gap": 110,
+        "verified": 53
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::PTL",
+          "ticker": "PTL",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Northern Lights Fund Trust IV",
+          "country": "Australia",
+          "country_code": "AU",
+          "isin": "AU000000PTL8",
+          "sector": "Consumer Staples",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Inspire 500 ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-95-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-95-of-100.csv"
+    },
+    {
+      "chunk_index": 96,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 3,
+        "reference_gap": 111,
+        "verified": 53
+      },
+      "finding_examples": [],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-96-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-96-of-100.csv"
+    },
+    {
+      "chunk_index": 97,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 1,
+        "name_mismatch": 2,
+        "reference_gap": 113,
+        "verified": 51
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE ARCA::RHRX",
+          "ticker": "RHRX",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Starboard Investment Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US85521B7753",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "RH Tactical Rotation ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::WISD",
+          "ticker": "WISD",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Spend Life Wisely Funds Investment Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Wisdom Short Duration Income ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-97-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-97-of-100.csv"
+    },
+    {
+      "chunk_index": 98,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "asset_type_mismatch": 1,
+        "cross_exchange_collision": 2,
+        "name_mismatch": 1,
+        "reference_gap": 109,
+        "verified": 54
+      },
+      "finding_examples": [
+        {
+          "listing_key": "NYSE::WT",
+          "ticker": "WT",
+          "exchange": "NYSE",
+          "asset_type": "ETF",
+          "name": "WisdomTree Inc.",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US97717P1049",
+          "sector": "Financials",
+          "status": "asset_type_mismatch",
+          "reason": "Dataset asset_type=ETF but official reference says Stock.",
+          "official_reference_name": "WisdomTree, Inc. Common Stock",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "0000880631",
+          "figi": "",
+          "lei": "549300WIU8IS7UFO7871"
+        },
+        {
+          "listing_key": "NYSE ARCA::WMSB",
+          "ticker": "WMSB",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Northern Lights Fund Trust II",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Weitz Multisector Bond ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-98-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-98-of-100.csv"
+    },
+    {
+      "chunk_index": 99,
+      "chunk_count": 100,
+      "items": 167,
+      "status_counts": {
+        "cross_exchange_collision": 2,
+        "name_mismatch": 5,
+        "reference_gap": 111,
+        "verified": 49
+      },
+      "finding_examples": [
+        {
+          "listing_key": "BATS::FFLV",
+          "ticker": "FFLV",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "FFLV",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Fidelity Fundamental Large Cap Value ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "BATS::TETH",
+          "ticker": "TETH",
+          "exchange": "BATS",
+          "asset_type": "ETF",
+          "name": "TETH",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "21Shares Ethereum ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::DIVZ",
+          "ticker": "DIVZ",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Elevation Series Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US53656F4744",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Polen Dividend Income ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::KDVD",
+          "ticker": "KDVD",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Gabelli ETFs Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "Keeley Dividend ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
+        {
+          "listing_key": "NYSE ARCA::RHTX",
+          "ticker": "RHTX",
+          "exchange": "NYSE ARCA",
+          "asset_type": "ETF",
+          "name": "Starboard Investment Trust",
+          "country": "United States",
+          "country_code": "US",
+          "isin": "US85521B7597",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "RH Tactical Outlook ETF",
+          "official_reference_source": "nasdaq_other_listed",
+          "covered_by_official_directory": true,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        }
+      ],
+      "json_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-99-of-100.json",
+      "csv_out": "data/etf_verification/run-20260406-etf-100-clean/chunk-99-of-100.csv"
+    }
+  ],
+  "finding_rows": 109,
+  "finding_examples": [
+    {
+      "listing_key": "BATS::HTUS",
+      "ticker": "HTUS",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "Capitol Series Trust",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "US3015058064",
+      "sector": "Large Cap",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "Hull Tactical US ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "BATS::BUFS",
+      "ticker": "BUFS",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "BUFS",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "FT Vest Laddered Small Cap Moderate Buffer ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::SURE",
+      "ticker": "SURE",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "Sonora Resources Corp",
+      "country": "United Kingdom",
+      "country_code": "GB",
+      "isin": "GB00BYWYZ460",
+      "sector": "Financials",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "AdvisorShares Insider Advantage ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "Euronext::DISL",
+      "ticker": "DISL",
+      "exchange": "Euronext",
+      "asset_type": "ETF",
+      "name": "Immobiliere Distri-Land NV",
+      "country": "Belgium",
+      "country_code": "BE",
+      "isin": "BE0003605160",
+      "sector": "Real Estate",
+      "status": "asset_type_mismatch",
+      "reason": "Dataset asset_type=ETF but official reference says Stock.",
+      "official_reference_name": "DISTRI-LAND CERT",
+      "official_reference_source": "euronext_equities",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "BBG000BRPN72",
+      "lei": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::ACGR",
+      "ticker": "ACGR",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "ACGR",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "American Century Large Cap Growth ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::DANA",
+      "ticker": "DANA",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "Tidal Trust I",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "Dana Limited Volatility ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::MBSF",
+      "ticker": "MBSF",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "Valued Advisers Trust",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "Regan Floating Rate MBS ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::PCCE",
+      "ticker": "PCCE",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "Litman Gregory Funds Trust",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "Polen Capital China Growth ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "BATS::MSTK",
+      "ticker": "MSTK",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "MSTK",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "Tuttle Capital MSTR 0DTE Covered Call ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::RJDI",
+      "ticker": "RJDI",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "Carillon Series Trust",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "RJ Eagle GCM Dividend Select Income ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::ACLC",
+      "ticker": "ACLC",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "ACLC",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "American Century Large Cap Equity ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::RJMI",
+      "ticker": "RJMI",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "Carillon Series Trust",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "RJ Eagle Municipal Income ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "BATS::DLAG",
+      "ticker": "DLAG",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "DLAG",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "FT Vest U.S. Equity Dual Directional Buffer ETF - August",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::RJVI",
+      "ticker": "RJVI",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "Carillon Series Trust",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "RJ Eagle Vertical Income ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "BATS::FLDZ",
+      "ticker": "FLDZ",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "Listed Funds Trust",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "US53656F2276",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "RiverNorth Patriot ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::ACVT",
+      "ticker": "ACVT",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "The RBB Fund Trust",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "Advent Convertible Bond ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::PCGG",
+      "ticker": "PCGG",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "Litman Gregory Funds Trust",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "US53700T7440",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "Polen Capital Global Growth ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::PCHI",
+      "ticker": "PCHI",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "FundVantage Trust",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "Polen High Income ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::PCIG",
+      "ticker": "PCIG",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "Litman Gregory Funds Trust",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "Polen Capital International Growth ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::VCOB",
+      "ticker": "VCOB",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "Tidal Trust IV",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "Voya Core Bond ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::PCLG",
+      "ticker": "PCLG",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "FundVantage Trust",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "Polen Focus Growth ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::BNDS",
+      "ticker": "BNDS",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "Series Portfolios Trust",
+      "country": "Australia",
+      "country_code": "AU",
+      "isin": "AU0000026189",
+      "sector": "Investment Grade Bonds",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "Infrastructure Capital Bond Income ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "NYSE ARCA::RNWZ",
+      "ticker": "RNWZ",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "name": "Elevation Series Trust",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "US53656G5716",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "TrueShares Eagle Global Renewable Energy Income ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "BATS::DOJE",
+      "ticker": "DOJE",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "DOJE",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "REX-Osprey DOGE ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "BATS::IBHK",
+      "ticker": "IBHK",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "name": "IBHK",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "sector": "",
+      "status": "name_mismatch",
+      "reason": "Dataset name does not match official exchange directory name.",
+      "official_reference_name": "iShares iBonds 2031 Term High Yield and Income ETF",
+      "official_reference_source": "nasdaq_other_listed",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    }
+  ],
+  "summary_json": "data/etf_verification/run-20260406-etf-100-clean/summary.json",
+  "findings_csv": "data/etf_verification/run-20260406-etf-100-clean/findings.csv"
+}
