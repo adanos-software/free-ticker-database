@@ -5,8 +5,10 @@ from scripts.build_stock_verification_overrides import (
     build_generated_updates,
     clean_official_name,
     is_b3_phantom_missing,
+    is_euronext_strong_rename_candidate,
     is_excluded_security_reference,
     is_strong_rename_candidate,
+    is_us_otc_or_fund_migration,
     is_us_stale_missing_line,
     write_csv,
 )
@@ -56,6 +58,18 @@ def test_is_excluded_security_reference_accepts_non_common_lines() -> None:
     assert is_excluded_security_reference(row)
 
 
+def test_is_euronext_strong_rename_candidate_accepts_safe_manual_set() -> None:
+    row = {
+        "ticker": "AYV",
+        "exchange": "Euronext",
+        "status": "name_mismatch",
+        "official_reference_source": "euronext_equities",
+        "official_reference_name": "AYVENS",
+        "name": "ALD SA",
+    }
+    assert is_euronext_strong_rename_candidate(row)
+
+
 def test_build_generated_updates_creates_conservative_rows() -> None:
     findings = [
         {
@@ -89,6 +103,14 @@ def test_build_generated_updates_creates_conservative_rows() -> None:
             "official_reference_name": "MultiSensor AI Holdings, Inc. - Warrants",
             "name": "Infrared Cameras Holdings Inc",
         },
+        {
+            "ticker": "AYV",
+            "exchange": "Euronext",
+            "status": "name_mismatch",
+            "official_reference_source": "euronext_equities",
+            "official_reference_name": "AYVENS",
+            "name": "ALD SA",
+        },
     ]
     metadata, drops = build_generated_updates(findings)
     assert ("ZWZZT", "NASDAQ") == (drops[0]["ticker"], drops[0]["exchange"])
@@ -96,6 +118,7 @@ def test_build_generated_updates_creates_conservative_rows() -> None:
     assert any(row["ticker"] == "PALU" and row["field"] == "asset_type" and row["proposed_value"] == "ETF" for row in metadata)
     assert any(row["ticker"] == "PALU" and row["field"] == "name" and row["proposed_value"] == "Direxion Daily PANW Bull 2X ETF" for row in metadata)
     assert any(row["ticker"] == "WAFD" and row["field"] == "name" and row["proposed_value"] == "WaFd, Inc." for row in metadata)
+    assert any(row["ticker"] == "AYV" and row["field"] == "name" and row["proposed_value"] == "AYVENS" for row in metadata)
 
 
 def test_b3_phantom_missing_lines_are_dropped() -> None:
@@ -202,6 +225,42 @@ def test_build_generated_updates_adds_missing_line_drops() -> None:
     metadata, drops = build_generated_updates(findings)
     assert metadata == []
     assert {(row["ticker"], row["exchange"]) for row in drops} == {("TF523", "B3"), ("BIOCQ", "NASDAQ")}
+
+
+def test_is_us_otc_or_fund_migration_accepts_yahoo_otc_signal() -> None:
+    row = {
+        "ticker": "SRAX",
+        "exchange": "NASDAQ",
+        "status": "mismatch",
+        "yahoo_exchange": "PNK",
+        "yahoo_full_exchange": "OTC Markets OTCPK",
+        "yahoo_quote_type": "EQUITY",
+    }
+    assert is_us_otc_or_fund_migration(row)
+
+
+def test_build_generated_updates_adds_yahoo_otc_migration_drops() -> None:
+    yahoo_rows = [
+        {
+            "ticker": "SRAX",
+            "exchange": "NASDAQ",
+            "status": "mismatch",
+            "yahoo_exchange": "PNK",
+            "yahoo_full_exchange": "OTC Markets OTCPK",
+            "yahoo_quote_type": "EQUITY",
+        },
+        {
+            "ticker": "ODZA",
+            "exchange": "NYSE",
+            "status": "mismatch",
+            "yahoo_exchange": "YHD",
+            "yahoo_full_exchange": "YHD",
+            "yahoo_quote_type": "MUTUALFUND",
+        },
+    ]
+    metadata, drops = build_generated_updates([], yahoo_rows)
+    assert metadata == []
+    assert {(row["ticker"], row["exchange"]) for row in drops} == {("SRAX", "NASDAQ"), ("ODZA", "NYSE")}
 
 
 def test_write_csv_ignores_unexpected_keys(tmp_path) -> None:

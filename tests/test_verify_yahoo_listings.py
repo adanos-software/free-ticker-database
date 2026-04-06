@@ -1,10 +1,13 @@
 from __future__ import annotations
 
+import csv
+
 from scripts.verify_yahoo_listings import (
     evaluate_row,
     expected_exchange_match,
     expected_quote_type_match,
     normalize_isin,
+    write_csv,
     yahoo_symbol_candidates,
 )
 
@@ -83,3 +86,18 @@ def test_evaluate_row_detects_verified_and_mismatch_states():
     assert mismatch["status"] == "mismatch"
     assert mismatch["quote_type_match"] is False
     assert mismatch["exchange_match"] is False
+
+
+def test_write_csv_handles_heterogeneous_rows(tmp_path) -> None:
+    output = tmp_path / "verification.csv"
+    write_csv(
+        output,
+        [
+            {"ticker": "A", "exchange": "NASDAQ", "status": "verified", "yahoo_name": "Alpha"},
+            {"ticker": "B", "exchange": "NYSE", "status": "error", "error": "not found"},
+        ],
+    )
+    with output.open(newline="", encoding="utf-8") as handle:
+        rows = list(csv.DictReader(handle))
+    assert rows[0]["yahoo_name"] == "Alpha"
+    assert rows[1]["error"] == "not found"

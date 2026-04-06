@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import json
 import re
 from pathlib import Path
 
@@ -10,6 +11,7 @@ DATA_DIR = ROOT / "data"
 DEFAULT_FINDINGS_CSV = DATA_DIR / "stock_verification" / "run-20260405-verify10-final" / "findings.csv"
 DEFAULT_METADATA_UPDATES = DATA_DIR / "review_overrides" / "metadata_updates.csv"
 DEFAULT_DROP_ENTRIES = DATA_DIR / "review_overrides" / "drop_entries.csv"
+DEFAULT_YAHOO_VERIFICATION_JSON = DATA_DIR / "yahoo_verification" / "targeted_us_euronext" / "verification.json"
 
 US_OFFICIAL_SOURCES = {"nasdaq_listed", "nasdaq_other_listed"}
 US_VERIFICATION_EXCHANGES = {"NASDAQ", "NYSE", "NYSE ARCA", "NYSE MKT", "BATS"}
@@ -63,6 +65,30 @@ US_PREFERRED_TICKER_RE = re.compile(r"[A-Z]{4}P$")
 US_TEMPORARY_D_TICKER_RE = re.compile(r"[A-Z]{4}D$")
 US_PREFERRED_HYPHEN_TICKER_RE = re.compile(r".*-PRI$")
 US_TEST_LINE_TICKER_RE = re.compile(r"NTEST-[A-Z]$")
+YAHOO_OTC_EXCHANGES = {"PNK", "OQB", "OEM", "OID"}
+EURONEXT_STRONG_RENAME_TICKERS = {
+    "74SW",
+    "ALCAF",
+    "ALCAT",
+    "ALCBI",
+    "ALCGM",
+    "ALCPB",
+    "ALDUX",
+    "ALERO",
+    "ALGAE",
+    "ALMEX",
+    "ALPET",
+    "ALPWG",
+    "ALTHX",
+    "ALTAO",
+    "ALVIR",
+    "ALWIN",
+    "ALWTR",
+    "AYV",
+    "LAT",
+    "MLAIG",
+    "MLODT",
+}
 
 
 def load_csv(path: Path | str) -> list[dict[str, str]]:
@@ -71,6 +97,18 @@ def load_csv(path: Path | str) -> list[dict[str, str]]:
         return []
     with path.open(newline="", encoding="utf-8") as handle:
         return list(csv.DictReader(handle))
+
+
+def load_json_rows(path: Path | str | None) -> list[dict[str, str]]:
+    if not path:
+        return []
+    resolved = Path(path)
+    if not resolved.exists():
+        return []
+    payload = json.loads(resolved.read_text(encoding="utf-8"))
+    if isinstance(payload, list):
+        return [dict(row) for row in payload]
+    return []
 
 
 def write_csv(path: Path, fieldnames: list[str], rows: list[dict[str, str]]) -> None:
@@ -153,6 +191,33 @@ def is_us_stale_missing_line(row: dict[str, str]) -> bool:
     return False
 
 
+def is_euronext_strong_rename_candidate(row: dict[str, str]) -> bool:
+    if row.get("status") != "name_mismatch":
+        return False
+    if row.get("exchange") != "Euronext":
+        return False
+    if row.get("official_reference_source") != "euronext_equities":
+        return False
+    ticker = row.get("ticker", "")
+    reference_name = row.get("official_reference_name", "").strip()
+    return bool(ticker in EURONEXT_STRONG_RENAME_TICKERS and reference_name)
+
+
+def is_us_otc_or_fund_migration(row: dict[str, str]) -> bool:
+    if row.get("exchange") not in {"NASDAQ", "NYSE"}:
+        return False
+    if row.get("status") != "mismatch":
+        return False
+    yahoo_exchange = row.get("yahoo_exchange", "")
+    yahoo_full_exchange = row.get("yahoo_full_exchange", "")
+    yahoo_quote_type = row.get("yahoo_quote_type", "")
+    return (
+        yahoo_exchange in YAHOO_OTC_EXCHANGES
+        or yahoo_full_exchange.startswith("OTC Markets")
+        or yahoo_quote_type == "MUTUALFUND"
+    )
+
+
 def merge_metadata_updates(
     existing_rows: list[dict[str, str]],
     generated_rows: list[dict[str, str]],
@@ -179,7 +244,10 @@ def merge_drop_entries(
     return sorted(merged.values(), key=lambda row: (row["ticker"], row["exchange"]))
 
 
-def build_generated_updates(findings: list[dict[str, str]]) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
+def build_generated_updates(
+    findings: list[dict[str, str]],
+    yahoo_verification_rows: list[dict[str, str]] | None = None,
+) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
     metadata_rows: list[dict[str, str]] = []
     drop_rows: list[dict[str, str]] = []
 
@@ -272,6 +340,40 @@ def build_generated_updates(findings: list[dict[str, str]]) -> tuple[list[dict[s
                     "reason": f"Official listing name indicates a newer company name: {reference_name}",
                 }
             )
+            continue
+
+        if is_euronext_strong_rename_candidate(row):
+            metadata_rows.append(
+                {
+                    "ticker": ticker,
+                    "exchange": exchange,
+                    "field": "name",
+                    "decision": "update",
+                    "proposed_value": clean_official_name(reference_name),
+                    "confidence": "0.94",
+                    "reason": f"Official Euronext listing name indicates the current company display name: {reference_name}",
+                }
+            )
+
+    for row in yahoo_verification_rows or []:
+        if not is_us_otc_or_fund_migration(row):
+            continue
+        yahoo_exchange = row.get("yahoo_exchange", "")
+        yahoo_full_exchange = row.get("yahoo_full_exchange", "")
+        yahoo_quote_type = row.get("yahoo_quote_type", "")
+        if yahoo_quote_type == "MUTUALFUND":
+            reason = "Yahoo Finance resolves this symbol as a fund, not an active common stock line on the current exchange."
+        else:
+            destination = yahoo_full_exchange or yahoo_exchange or "OTC"
+            reason = f"Yahoo Finance resolves this symbol to {destination} rather than the current exchange, indicating the current listing is stale."
+        drop_rows.append(
+            {
+                "ticker": row["ticker"],
+                "exchange": row["exchange"],
+                "confidence": "0.96",
+                "reason": reason,
+            }
+        )
 
     return metadata_rows, drop_rows
 
@@ -281,16 +383,18 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--findings-csv", type=Path, default=DEFAULT_FINDINGS_CSV)
     parser.add_argument("--metadata-updates", type=Path, default=DEFAULT_METADATA_UPDATES)
     parser.add_argument("--drop-entries", type=Path, default=DEFAULT_DROP_ENTRIES)
+    parser.add_argument("--yahoo-verification-json", type=Path, default=DEFAULT_YAHOO_VERIFICATION_JSON)
     return parser.parse_args(argv)
 
 
 def main(argv: list[str] | None = None) -> None:
     args = parse_args(argv)
     findings = load_csv(args.findings_csv)
+    yahoo_verification_rows = load_json_rows(args.yahoo_verification_json)
     existing_metadata = load_csv(args.metadata_updates)
     existing_drops = load_csv(args.drop_entries)
 
-    generated_metadata, generated_drops = build_generated_updates(findings)
+    generated_metadata, generated_drops = build_generated_updates(findings, yahoo_verification_rows)
     merged_metadata = merge_metadata_updates(existing_metadata, generated_metadata)
     merged_drops = merge_drop_entries(existing_drops, generated_drops)
 

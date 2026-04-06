@@ -3,6 +3,7 @@ ticker,exchange,field,decision,proposed_value,confidence,reason
 0AD5,LSE,country_code,update,US,0.95,Must match corrected issuer domicile.
 0HEC,LSE,country,update,United States,0.8,"AEP is a US-domiciled company. Other LSE international listings in this dataset (e.g. 0HV2, 0QXR) correctly show the issuer's home country. 'United Kingdom' is wrong here."
 0HEC,LSE,country_code,update,US,0.8,"Should reflect issuer domicile (US), consistent with ISIN US0255371017."
+74SW,Euronext,name,update,74SOFTWARE,0.94,Official Euronext listing name indicates the current company display name: 74SOFTWARE
 AAAC,NYSE ARCA,isin,update,US19761L7635,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
 AAAC,NYSE ARCA,name,update,Columbia AAA CLO ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
 AAOX,BATS,asset_type,update,ETF,0.99,Official reference classifies this listing as ETF/ETP: Tradr 2X Long AAOI Daily ETF
@@ -29,13 +30,30 @@ AGRW,NYSE ARCA,name,update,Allspring LT Large Growth ETF,0.95,Yahoo Finance veri
 AHRT,NYSE,name,update,"AH Realty Trust, Inc.",0.95,"Official listing name indicates a newer company name: AH Realty Trust, Inc. Common Stock"
 AINP,NYSE ARCA,isin,update,US01989A1007,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
 AINP,NYSE ARCA,name,update,Allspring Income Plus ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ALCAF,Euronext,name,update,CAFOM,0.94,Official Euronext listing name indicates the current company display name: CAFOM
+ALCAT,Euronext,name,update,CATANA GROUP,0.94,Official Euronext listing name indicates the current company display name: CATANA GROUP
+ALCBI,Euronext,name,update,CBI,0.94,Official Euronext listing name indicates the current company display name: CBI
+ALCGM,Euronext,name,update,CEGEDIM,0.94,Official Euronext listing name indicates the current company display name: CEGEDIM
+ALCPB,Euronext,name,update,CAPITAL B,0.94,Official Euronext listing name indicates the current company display name: CAPITAL B
+ALDUX,Euronext,name,update,ADUX,0.94,Official Euronext listing name indicates the current company display name: ADUX
+ALERO,Euronext,name,update,EUROLAND CORPORATE,0.94,Official Euronext listing name indicates the current company display name: EUROLAND CORPORATE
+ALGAE,Euronext,name,update,FERMENTALG,0.94,Official Euronext listing name indicates the current company display name: FERMENTALG
+ALMEX,Euronext,name,update,MEXEDIA,0.94,Official Euronext listing name indicates the current company display name: MEXEDIA
+ALPET,Euronext,name,update,PET SERVICE,0.94,Official Euronext listing name indicates the current company display name: PET SERVICE
+ALPWG,Euronext,name,update,PRODWAYS GROUP,0.94,Official Euronext listing name indicates the current company display name: PRODWAYS GROUP
 ALRG,NYSE ARCA,isin,update,US01989A4076,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
 ALRG,NYSE ARCA,name,update,Allspring LT Large Core ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
+ALTAO,Euronext,name,update,ATON,0.94,Official Euronext listing name indicates the current company display name: ATON
+ALTHX,Euronext,name,update,THX PHARMA,0.94,Official Euronext listing name indicates the current company display name: THX PHARMA
 ALTI,NASDAQ,name,update,"AlTi Global, Inc.",0.95,"Official listing name indicates a newer company name: AlTi Global, Inc. - Class A Common Stock"
+ALVIR,Euronext,name,update,VIRTUALWARE,0.94,Official Euronext listing name indicates the current company display name: VIRTUALWARE
+ALWIN,Euronext,name,update,WINAMP GROUP,0.94,Official Euronext listing name indicates the current company display name: WINAMP GROUP
+ALWTR,Euronext,name,update,WATERA,0.94,Official Euronext listing name indicates the current company display name: WATERA
 AMZO,BATS,asset_type,update,ETF,0.99,Official reference classifies this listing as ETF/ETP: Tradr 2X Short AMZN Daily ETF
 AMZO,BATS,name,update,Tradr 2X Short AMZN Daily ETF,0.97,Official reference provides a more specific ETF/ETP name: Tradr 2X Short AMZN Daily ETF
 ATI,NYSE,name,update,ATI Inc.,0.95,Official listing name indicates a newer company name: ATI Inc. Common Stock
 AURE,NASDAQ,name,update,Aurelion Inc.,0.95,Official listing name indicates a newer company name: Aurelion Inc.  - Class A Ordinary Shares
+AYV,Euronext,name,update,AYVENS,0.94,Official Euronext listing name indicates the current company display name: AYVENS
 BFJA,NYSE ARCA,asset_type,update,ETF,0.99,Official reference classifies this listing as ETF/ETP: FT Vest Bitcoin Strategy Floor15 ETF - January
 BFJA,NYSE ARCA,name,update,FT Vest Bitcoin Strategy Floor15 ETF - January,0.97,Official reference provides a more specific ETF/ETP name: FT Vest Bitcoin Strategy Floor15 ETF - January
 BGM,NASDAQ,name,update,BGM Group Ltd.,0.95,Official listing name indicates a newer company name: BGM Group Ltd. - Class A Ordinary Shares
@@ -109,6 +127,7 @@ KNO,NYSE ARCA,name,update,AXS Knowledge Leaders ETF,0.97,Official reference prov
 KRRO,NASDAQ,name,update,"Korro Bio, Inc.",0.95,"Official listing name indicates a newer company name: Korro Bio, Inc. - Common Stock"
 KRYP,NYSE ARCA,asset_type,update,ETF,0.99,Official reference classifies this listing as ETF/ETP: ProShares CoinDesk 20 Crypto ETF
 KRYP,NYSE ARCA,name,update,ProShares CoinDesk 20 Crypto ETF,0.97,Official reference provides a more specific ETF/ETP name: ProShares CoinDesk 20 Crypto ETF
+LAT,Euronext,name,update,LATECOERE,0.94,Official Euronext listing name indicates the current company display name: LATECOERE
 LDRC,NYSE ARCA,asset_type,update,ETF,0.99,Official reference classifies this listing as ETF/ETP: iShares iBonds 1-5 Year Corporate Ladder ETF
 LDRC,NYSE ARCA,name,update,iShares iBonds 1-5 Year Corporate Ladder ETF,0.97,Official reference provides a more specific ETF/ETP name: iShares iBonds 1-5 Year Corporate Ladder ETF
 LFWD,NASDAQ,name,update,Lifeward Ltd.,0.95,Official listing name indicates a newer company name: Lifeward Ltd. - Ordinary Shares
@@ -121,8 +140,10 @@ MAAS,NASDAQ,name,update,Maase Inc.,0.95,Official listing name indicates a newer 
 MARA,NASDAQ,name,update,"MARA Holdings, Inc.",0.95,"Official listing name indicates a newer company name: MARA Holdings, Inc. - Common Stock"
 MCFT,NASDAQ,name,update,"MasterCraft Boat Holdings, Inc.",0.95,"Official listing name indicates a newer company name: MasterCraft Boat Holdings, Inc. - Common Stock"
 MD,NYSE,name,update,"Pediatrix Medical Group, Inc.",0.95,"Official listing name indicates a newer company name: Pediatrix Medical Group, Inc. Common Stock"
+MLAIG,Euronext,name,update,ANDINO GLOBAL,0.94,Official Euronext listing name indicates the current company display name: ANDINO GLOBAL
 MLDR,NYSE ARCA,asset_type,update,ETF,0.99,Official reference classifies this listing as ETF/ETP: Global X Intermediate-Term Treasury Ladder ETF
 MLDR,NYSE ARCA,name,update,Global X Intermediate-Term Treasury Ladder ETF,0.97,Official reference provides a more specific ETF/ETP name: Global X Intermediate-Term Treasury Ladder ETF
+MLODT,Euronext,name,update,ODIOT S.A.,0.94,Official Euronext listing name indicates the current company display name: ODIOT S.A.
 MOVE,NASDAQ,name,update,"Corvex, Inc.",0.95,"Official listing name indicates a newer company name: Corvex, Inc. - Common Stock"
 MRNX,NYSE ARCA,asset_type,update,ETF,0.99,Official reference classifies this listing as ETF/ETP: Defiance Daily Target 2X Long MRNA ETF
 MRNX,NYSE ARCA,name,update,Defiance Daily Target 2X Long MRNA ETF,0.97,Official reference provides a more specific ETF/ETP name: Defiance Daily Target 2X Long MRNA ETF
