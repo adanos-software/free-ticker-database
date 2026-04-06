@@ -12,6 +12,7 @@ DEFAULT_METADATA_UPDATES = DATA_DIR / "review_overrides" / "metadata_updates.csv
 DEFAULT_DROP_ENTRIES = DATA_DIR / "review_overrides" / "drop_entries.csv"
 
 US_OFFICIAL_SOURCES = {"nasdaq_listed", "nasdaq_other_listed"}
+US_VERIFICATION_EXCHANGES = {"NASDAQ", "NYSE", "NYSE ARCA", "NYSE MKT", "BATS"}
 STRONG_RENAME_EXCHANGES = {"NASDAQ", "NYSE", "NYSE ARCA", "NYSE MKT"}
 RENAME_INCLUDE_MARKERS = (
     "Common Stock",
@@ -42,6 +43,21 @@ NAME_SUFFIX_PATTERNS = [
     re.compile(r"\s+-\s+American Depositary Shares$", re.IGNORECASE),
     re.compile(r"\s{2,}", re.IGNORECASE),
 ]
+B3_PHANTOM_TICKER_RE = re.compile(r"TF\d{3}$")
+US_STRUCTURED_LINE_TICKER_RE = re.compile(r".*-(?:U|UN|WS|W|R|RW|PR-[A-Z]|PA|PB|PC|PI)$")
+US_BANKRUPTCY_TICKER_RE = re.compile(r"[A-Z]{3,5}Q$")
+SPAC_COMMON_MARKERS = (
+    " acquisition corp",
+    " acquisition corporation",
+    " acquisition holdings",
+)
+SPAC_SHARE_MARKERS = (
+    " ordinary shares",
+    " class a ordinary shares",
+    " common stock",
+    " class a common stock",
+)
+FOREIGN_US_LINE_TICKER_RE = re.compile(r"[A-Z]{4,5}[FY]$")
 
 
 def load_csv(path: Path | str) -> list[dict[str, str]]:
@@ -91,6 +107,37 @@ def is_excluded_security_reference(row: dict[str, str]) -> bool:
     return any(marker in reference_name for marker in RENAME_EXCLUDE_MARKERS)
 
 
+def is_b3_phantom_missing(row: dict[str, str]) -> bool:
+    if row.get("status") != "missing_from_official":
+        return False
+    if row.get("exchange") != "B3":
+        return False
+    ticker = row.get("ticker", "")
+    return bool(B3_PHANTOM_TICKER_RE.fullmatch(ticker) or ticker in {"IFNC", "ITAG"})
+
+
+def is_us_stale_missing_line(row: dict[str, str]) -> bool:
+    if row.get("status") != "missing_from_official":
+        return False
+    if row.get("exchange") not in US_VERIFICATION_EXCHANGES:
+        return False
+    ticker = row.get("ticker", "")
+    name = row.get("name", "").lower()
+    country = row.get("country", "")
+
+    if US_STRUCTURED_LINE_TICKER_RE.fullmatch(ticker):
+        return True
+    if US_BANKRUPTCY_TICKER_RE.fullmatch(ticker):
+        return True
+    if any(marker in name for marker in SPAC_COMMON_MARKERS):
+        return True
+    if any(marker in name for marker in SPAC_SHARE_MARKERS):
+        return True
+    if country and country != "United States" and FOREIGN_US_LINE_TICKER_RE.fullmatch(ticker):
+        return True
+    return False
+
+
 def merge_metadata_updates(
     existing_rows: list[dict[str, str]],
     generated_rows: list[dict[str, str]],
@@ -134,6 +181,28 @@ def build_generated_updates(findings: list[dict[str, str]]) -> tuple[list[dict[s
                     "exchange": exchange,
                     "confidence": "0.99",
                     "reason": row["reason"],
+                }
+            )
+            continue
+
+        if is_b3_phantom_missing(row):
+            drop_rows.append(
+                {
+                    "ticker": ticker,
+                    "exchange": exchange,
+                    "confidence": "0.99",
+                    "reason": "Official B3 equity directory does not list this phantom/index-style symbol as an active common equity.",
+                }
+            )
+            continue
+
+        if is_us_stale_missing_line(row):
+            drop_rows.append(
+                {
+                    "ticker": ticker,
+                    "exchange": exchange,
+                    "confidence": "0.98",
+                    "reason": "Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.",
                 }
             )
             continue

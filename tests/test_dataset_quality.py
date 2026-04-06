@@ -481,8 +481,8 @@ def test_changelog_and_supporting_docs_are_current():
     assert "Expanded the conservative official supplement layer to safe ASX, AMS, and OSL listings" in changelog
     assert "Improved extended identifier exports with listing-level FIGI matching" in changelog
     assert "## 2.0.0" in changelog
-    assert "61,727 tickers (45,032 stocks, 16,695 ETFs) across 68 exchanges and 68 countries" in changelog
-    assert "99,985 aliases" in changelog
+    assert "61,592 tickers (44,897 stocks, 16,695 ETFs) across 68 exchanges and 68 countries" in changelog
+    assert "99,808 aliases" in changelog
     assert "Keep the dataset build and review scripts dependency-light and easy to trace" in contributing
     assert "one or more `review_queue.json` items" in claude_prompt
 
