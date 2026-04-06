@@ -9,14 +9,14 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 61
 
 | Metric | Value |
 |---|---|
-| **Total tickers** | 61,811 |
-| Stocks | 45,118 |
-| ETFs | 16,693 |
+| **Total tickers** | 61,727 |
+| Stocks | 45,032 |
+| ETFs | 16,695 |
 | Exchanges | 68 |
 | Countries | 68 |
-| ISIN coverage | 44,018 (71.2%) |
-| Sector coverage | 38,151 (61.7%) |
-| Total aliases | 100,135 |
+| ISIN coverage | 43,954 (71.2%) |
+| Sector coverage | 38,105 (61.7%) |
+| Total aliases | 99,985 |
 
 ## Formats
 
@@ -143,7 +143,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (61,811 rows) + `aliases` (100,135 rows) + `cross_listings` (8,852 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
+Tables: `tickers` (61,727 rows) + `aliases` (99,985 rows) + `cross_listings` (8,847 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
 
 ## Schema
 
@@ -184,7 +184,7 @@ Tables: `tickers` (61,811 rows) + `aliases` (100,135 rows) + `cross_listings` (8
 | TSX | 1,766 | Toronto Stock Exchange |
 | B3 | 1,773 | Sao Paulo Exchange |
 | TWSE | 1,245 | Taiwan Stock Exchange |
-| ASX | 1,382 | Australian Securities Exchange |
+| ASX | 1,298 | Australian Securities Exchange |
 | KOSDAQ | 1,140 | Korean OTC |
 | TPEX | 1,126 | Taipei Exchange |
 | + 52 more | ... | |

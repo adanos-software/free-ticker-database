@@ -1,9 +1,9 @@
 {
   "global": {
     "official_symbols": 25622,
-    "matched": 18866,
-    "collisions": 3864,
-    "missing": 2892
+    "matched": 18829,
+    "collisions": 3863,
+    "missing": 2930
   },
   "exchanges": [
     {
@@ -120,9 +120,9 @@
     {
       "exchange": "ASX",
       "official_symbols": 1979,
-      "matched": 1059,
+      "matched": 1022,
       "collisions": 919,
-      "missing": 1,
+      "missing": 38,
       "collision_examples": [
         {
           "ticker": "14D",
@@ -207,8 +207,53 @@
       ],
       "missing_examples": [
         {
-          "ticker": "RRE",
-          "name": "RIGHT RESOURCES LIMITED",
+          "ticker": "3PL",
+          "name": "3P LEARNING LIMITED..",
+          "exchange": "ASX"
+        },
+        {
+          "ticker": "APZ",
+          "name": "ASPEN GROUP",
+          "exchange": "ASX"
+        },
+        {
+          "ticker": "BPG",
+          "name": "BLACK PEARL GROUP LIMITED",
+          "exchange": "ASX"
+        },
+        {
+          "ticker": "BPP",
+          "name": "BABYLON PUMP & POWER LIMITED",
+          "exchange": "ASX"
+        },
+        {
+          "ticker": "CPM",
+          "name": "COOPER METALS LIMITED",
+          "exchange": "ASX"
+        },
+        {
+          "ticker": "CPN",
+          "name": "CASPIN RESOURCES LIMITED",
+          "exchange": "ASX"
+        },
+        {
+          "ticker": "CPO",
+          "name": "CULPEO MINERALS LIMITED",
+          "exchange": "ASX"
+        },
+        {
+          "ticker": "CPU",
+          "name": "COMPUTERSHARE LIMITED.",
+          "exchange": "ASX"
+        },
+        {
+          "ticker": "CPV",
+          "name": "CLEARVUE TECHNOLOGIES LIMITED",
+          "exchange": "ASX"
+        },
+        {
+          "ticker": "EPN",
+          "name": "EPSILON HEALTHCARE LIMITED",
           "exchange": "ASX"
         }
       ]
@@ -559,8 +604,8 @@
       "exchange": "NASDAQ",
       "official_symbols": 5442,
       "matched": 4524,
-      "collisions": 125,
-      "missing": 793,
+      "collisions": 124,
+      "missing": 794,
       "collision_examples": [
         {
           "ticker": "ACFN",

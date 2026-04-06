@@ -467,7 +467,7 @@ def test_readme_stats_and_claims_are_current():
     assert "| NASDAQ | 4,795 | NASDAQ |" in readme
     assert "| XETRA | 3,017 | Deutsche Boerse |" in readme
     assert "| NYSE | 2,599 | New York Stock Exchange |" in readme
-    assert "| ASX | 1,382 | Australian Securities Exchange |" in readme
+    assert "| ASX | 1,298 | Australian Securities Exchange |" in readme
 
 
 def test_changelog_and_supporting_docs_are_current():
@@ -481,8 +481,8 @@ def test_changelog_and_supporting_docs_are_current():
     assert "Expanded the conservative official supplement layer to safe ASX, AMS, and OSL listings" in changelog
     assert "Improved extended identifier exports with listing-level FIGI matching" in changelog
     assert "## 2.0.0" in changelog
-    assert "61,811 tickers (45,118 stocks, 16,693 ETFs) across 68 exchanges and 68 countries" in changelog
-    assert "100,135 aliases" in changelog
+    assert "61,727 tickers (45,032 stocks, 16,695 ETFs) across 68 exchanges and 68 countries" in changelog
+    assert "99,985 aliases" in changelog
     assert "Keep the dataset build and review scripts dependency-light and easy to trace" in contributing
     assert "one or more `review_queue.json` items" in claude_prompt
 
@@ -580,6 +580,14 @@ def test_b3_non_canonical_stock_lines_are_removed():
     assert "XPBR31" not in tickers
     assert "ASAI3F" not in tickers
     assert "ALUP11" not in tickers
+
+
+def test_asx_non_canonical_lines_are_removed_or_retyped():
+    assert ticker_exchange_row("AN3PK", "ASX") is None
+    assert ticker_exchange_row("AMCDD", "ASX") is None
+    assert ticker_exchange_row("SGLLV", "ASX") is None
+    assert ticker_exchange_row("HMND", "ASX")["asset_type"] == "ETF"
+    assert ticker_exchange_row("B1SM", "ASX")["asset_type"] == "ETF"
 
 
 def test_json_contains_version_metadata():

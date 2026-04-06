@@ -153,6 +153,8 @@ NUMERIC_TICKER_RE = re.compile(r"^[0-9]{3,6}[A-Z]?$")
 B3_DEPOSITARY_TICKER_RE = re.compile(r".*(31|32|33|34|35|39)$")
 B3_FRACTIONAL_TICKER_RE = re.compile(r".*F$")
 B3_UNIT_TICKER_RE = re.compile(r".*11$")
+ASX_CAPITAL_NOTE_TICKER_RE = re.compile(r".*P[A-Z]$")
+ASX_LOYALTY_TICKER_RE = re.compile(r".*LV$")
 NON_COMMON_PATTERNS = (
     re.compile(r"\brights?\b", re.IGNORECASE),
     re.compile(r"\bunits?\b", re.IGNORECASE),
@@ -617,6 +619,13 @@ def should_exclude_stock_row(row: dict[str, str]) -> bool:
             return True
         if B3_UNIT_TICKER_RE.fullmatch(ticker):
             return True
+    if row.get("exchange") == "ASX":
+        if ASX_CAPITAL_NOTE_TICKER_RE.fullmatch(ticker):
+            return True
+        if ASX_LOYALTY_TICKER_RE.fullmatch(ticker):
+            return True
+        if "deferred settlement" in name or name.endswith("deferred"):
+            return True
     if row["ticker"].count("-P-"):
         return True
     if is_depositary_row(row):
@@ -624,6 +633,17 @@ def should_exclude_stock_row(row: dict[str, str]) -> bool:
     if PREFERRED_PATTERN.search(name):
         return True
     return any(pattern.search(name) for pattern in NON_COMMON_PATTERNS)
+
+
+def normalize_input_row(row: dict[str, str]) -> dict[str, str]:
+    normalized = dict(row)
+    if (
+        normalized.get("exchange") == "ASX"
+        and normalized.get("asset_type") == "Stock"
+        and re.search(r"\betf\b", normalized.get("name", ""), re.IGNORECASE)
+    ):
+        normalized["asset_type"] = "ETF"
+    return normalized
 
 
 def is_suspicious_us_primary(row: dict[str, str], aliases: list[str]) -> bool:
@@ -923,9 +943,10 @@ def cleaned_rows():
         row_key = (row["ticker"], row["exchange"])
         if row_key in review_drop_entries:
             continue
-        if should_exclude_stock_row(row):
+        merged = normalize_input_row(row)
+        merged = apply_input_metadata_overrides(merged, review_metadata_updates.get(row_key, {}))
+        if should_exclude_stock_row(merged):
             continue
-        merged = apply_input_metadata_overrides(dict(row), review_metadata_updates.get(row_key, {}))
         merged_aliases = split_aliases(row["aliases"])
         identifier = None
         if row_key in core_row_keys:

@@ -4,30 +4,30 @@
 
 | Metric | Value |
 |---|---|
-| tickers | 61811 |
-| aliases | 100135 |
-| stocks | 45118 |
-| etfs | 16693 |
-| isin_coverage | 44018 |
-| sector_coverage | 38151 |
+| tickers | 61727 |
+| aliases | 99985 |
+| stocks | 45032 |
+| etfs | 16695 |
+| isin_coverage | 43954 |
+| sector_coverage | 38105 |
 | cik_coverage | 8201 |
-| figi_coverage | 4273 |
-| lei_coverage | 1019 |
-| listing_status_rows | 1001174 |
-| listing_events | 7189 |
-| listing_keys | 61811 |
+| figi_coverage | 4209 |
+| lei_coverage | 1018 |
+| listing_status_rows | 1062985 |
+| listing_events | 7273 |
+| listing_keys | 61727 |
 | official_masterfile_symbols | 25622 |
-| official_masterfile_matches | 18866 |
-| official_masterfile_collisions | 3864 |
-| official_masterfile_missing | 2892 |
+| official_masterfile_matches | 18829 |
+| official_masterfile_collisions | 3863 |
+| official_masterfile_missing | 2930 |
 | official_full_exchanges | 13 |
 | official_partial_exchanges | 2 |
 | manual_only_exchanges | 0 |
 | missing_exchanges | 53 |
-| stock_verification_items | 45118 |
-| stock_verification_verified | 13107 |
+| stock_verification_items | 45032 |
+| stock_verification_verified | 13070 |
 | stock_verification_reference_gap | 30943 |
-| stock_verification_missing_from_official | 577 |
+| stock_verification_missing_from_official | 528 |
 | stock_verification_name_mismatch | 306 |
 | stock_verification_cross_exchange_collision | 185 |
 
@@ -35,16 +35,16 @@
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-04-06T14:36:06Z |
+| tickers_built_at | 2026-04-06T14:45:05Z |
 | tickers_age_hours | 0.0 |
 | masterfiles_generated_at | 2026-04-06T14:31:06Z |
-| masterfiles_age_hours | 0.09 |
-| identifiers_generated_at | 2026-04-06T14:36:09Z |
+| masterfiles_age_hours | 0.24 |
+| identifiers_generated_at | 2026-04-06T14:45:08Z |
 | identifiers_age_hours | 0.0 |
-| listing_history_observed_at | 2026-04-06T14:36:06Z |
+| listing_history_observed_at | 2026-04-06T14:45:05Z |
 | listing_history_age_hours | 0.0 |
-| latest_verification_run | data/stock_verification/run-20260406-b3-clean |
-| latest_verification_generated_at | 2026-04-06T14:36:14Z |
+| latest_verification_run | data/stock_verification/run-20260406-asx-clean |
+| latest_verification_generated_at | 2026-04-06T14:45:14Z |
 | latest_verification_age_hours | 0.0 |
 
 ## Source Coverage
@@ -66,7 +66,7 @@
 | Exchange | Venue Status | Tickers | ISIN | Sector | CIK | FIGI | LEI | Masterfile Symbols | Matches | Collisions | Missing | Match Rate | Verified on Covered |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | AMS | official_full | 224 | 184 | 133 | 0 | 195 | 0 | 119 | 89 | 26 | 4 | 74.79 | 95.56 |
-| ASX | official_full | 1382 | 1100 | 748 | 30 | 1099 | 25 | 1979 | 1059 | 919 | 1 | 53.51 | 93.44 |
+| ASX | official_full | 1298 | 1036 | 702 | 30 | 1035 | 24 | 1979 | 1022 | 919 | 38 | 51.64 | 98.07 |
 | ATHEX | missing | 117 | 90 | 117 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | B3 | official_full | 993 | 316 | 443 | 0 | 0 | 0 | 876 | 848 | 0 | 28 | 96.8 | 95.02 |
 | BATS | official_full | 1102 | 645 | 335 | 2 | 0 | 0 | 1239 | 1040 | 168 | 31 | 83.94 | 25.0 |
@@ -96,7 +96,7 @@
 | LSE | missing | 6409 | 5488 | 4355 | 19 | 40 | 5 | 0 | 0 | 0 | 0 |  |  |
 | LUSE | missing | 22 | 22 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | MSE_MW | missing | 8 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
-| NASDAQ | official_full | 4795 | 4070 | 3741 | 3518 | 11 | 424 | 5442 | 4524 | 125 | 793 | 83.13 | 93.64 |
+| NASDAQ | official_full | 4795 | 4070 | 3741 | 3518 | 11 | 424 | 5442 | 4524 | 124 | 794 | 83.13 | 93.64 |
 | NEO | missing | 201 | 78 | 21 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | NGX | missing | 147 | 145 | 4 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | NMFQS | missing | 7 | 7 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
@@ -139,7 +139,7 @@
 | Country | Tickers | ISIN | Sector | CIK | FIGI | LEI |
 |---|---|---|---|---|---|---|
 | Argentina | 64 | 51 | 50 | 0 | 48 | 0 |
-| Australia | 2351 | 2069 | 1649 | 330 | 1277 | 75 |
+| Australia | 2267 | 2005 | 1603 | 330 | 1213 | 74 |
 | Austria | 95 | 93 | 90 | 12 | 92 | 11 |
 | Belgium | 179 | 174 | 134 | 11 | 87 | 13 |
 | Bermuda | 194 | 194 | 187 | 71 | 5 | 19 |
