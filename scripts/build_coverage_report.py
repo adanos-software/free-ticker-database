@@ -256,6 +256,7 @@ def build_global_summary(
         "figi_coverage": sum(bool(row.get("figi")) for row in identifiers_extended),
         "lei_coverage": sum(bool(row.get("lei")) for row in identifiers_extended),
         "listing_status_rows": len(listing_status_history),
+        "listing_status_intervals": len(listing_status_history),
         "listing_events": len(listing_events),
         "listing_keys": len({row_listing_key(row) for row in tickers}),
         "official_masterfile_symbols": sum(row["masterfile_symbols"] for row in exchange_coverage),

@@ -265,7 +265,7 @@ This writes:
 - `data/history/daily_listing_summary.json`
 - `data/history/daily_listing_summary.csv`
 
-History artifacts are now listing-keyed (`exchange::ticker`) so per-venue state changes stay explicit even when raw symbols collide globally.
+History artifacts are listing-keyed (`exchange::ticker`) so per-venue state changes stay explicit even when raw symbols collide globally. `listing_status_history.csv` is stored as compact status intervals with `first_observed_at` / `last_observed_at`, not one row per listing per rebuild.
 
 Generate extended identifiers:
 

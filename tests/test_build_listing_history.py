@@ -4,6 +4,7 @@ from scripts.build_listing_history import (
     build_daily_summary,
     build_event_rows,
     build_snapshot,
+    compact_legacy_status_history,
     merge_status_history,
 )
 
@@ -59,7 +60,37 @@ def test_build_event_rows_ignores_initial_baseline_snapshot():
     assert events == []
 
 
-def test_merge_status_history_adds_active_and_delisted_rows():
+def test_compact_legacy_status_history_merges_repeated_snapshots_into_intervals():
+    legacy_rows = [
+        {"listing_key": "", "ticker": "AAA", "exchange": "NYSE", "status": "active", "observed_at": "2026-04-01T00:00:00Z"},
+        {"listing_key": "", "ticker": "AAA", "exchange": "NYSE", "status": "active", "observed_at": "2026-04-02T00:00:00Z"},
+        {"listing_key": "", "ticker": "AAA", "exchange": "NYSE", "status": "delisted", "observed_at": "2026-04-03T00:00:00Z"},
+        {"listing_key": "", "ticker": "AAA", "exchange": "NYSE", "status": "delisted", "observed_at": "2026-04-04T00:00:00Z"},
+    ]
+
+    history = compact_legacy_status_history(legacy_rows)
+
+    assert history == [
+        {
+            "listing_key": "NYSE::AAA",
+            "ticker": "AAA",
+            "exchange": "NYSE",
+            "status": "active",
+            "first_observed_at": "2026-04-01T00:00:00Z",
+            "last_observed_at": "2026-04-02T00:00:00Z",
+        },
+        {
+            "listing_key": "NYSE::AAA",
+            "ticker": "AAA",
+            "exchange": "NYSE",
+            "status": "delisted",
+            "first_observed_at": "2026-04-03T00:00:00Z",
+            "last_observed_at": "2026-04-04T00:00:00Z",
+        },
+    ]
+
+
+def test_merge_status_history_adds_active_and_delisted_intervals():
     previous_snapshot = [
         {"ticker": "AAA", "exchange": "NYSE", "name": "Alpha"},
         {"ticker": "DEL", "exchange": "NASDAQ", "name": "Delisted Co"},
@@ -72,9 +103,58 @@ def test_merge_status_history_adds_active_and_delisted_rows():
     history = merge_status_history([], previous_snapshot, current_snapshot, "2026-04-02T00:00:00Z")
 
     assert history == [
-        {"listing_key": "NYSE::AAA", "ticker": "AAA", "exchange": "NYSE", "status": "active", "observed_at": "2026-04-02T00:00:00Z"},
-        {"listing_key": "NASDAQ::DEL", "ticker": "DEL", "exchange": "NASDAQ", "status": "delisted", "observed_at": "2026-04-02T00:00:00Z"},
-        {"listing_key": "NASDAQ::NEW", "ticker": "NEW", "exchange": "NASDAQ", "status": "active", "observed_at": "2026-04-02T00:00:00Z"},
+        {
+            "listing_key": "NYSE::AAA",
+            "ticker": "AAA",
+            "exchange": "NYSE",
+            "status": "active",
+            "first_observed_at": "2026-04-02T00:00:00Z",
+            "last_observed_at": "2026-04-02T00:00:00Z",
+        },
+        {
+            "listing_key": "NASDAQ::DEL",
+            "ticker": "DEL",
+            "exchange": "NASDAQ",
+            "status": "delisted",
+            "first_observed_at": "2026-04-02T00:00:00Z",
+            "last_observed_at": "2026-04-02T00:00:00Z",
+        },
+        {
+            "listing_key": "NASDAQ::NEW",
+            "ticker": "NEW",
+            "exchange": "NASDAQ",
+            "status": "active",
+            "first_observed_at": "2026-04-02T00:00:00Z",
+            "last_observed_at": "2026-04-02T00:00:00Z",
+        },
+    ]
+
+
+def test_merge_status_history_extends_existing_active_interval_without_duplicate_rows():
+    existing_rows = [
+        {
+            "listing_key": "NYSE::AAA",
+            "ticker": "AAA",
+            "exchange": "NYSE",
+            "status": "active",
+            "first_observed_at": "2026-04-01T00:00:00Z",
+            "last_observed_at": "2026-04-02T00:00:00Z",
+        }
+    ]
+    previous_snapshot = [{"ticker": "AAA", "exchange": "NYSE", "name": "Alpha"}]
+    current_snapshot = [{"ticker": "AAA", "exchange": "NYSE", "name": "Alpha"}]
+
+    history = merge_status_history(existing_rows, previous_snapshot, current_snapshot, "2026-04-03T00:00:00Z")
+
+    assert history == [
+        {
+            "listing_key": "NYSE::AAA",
+            "ticker": "AAA",
+            "exchange": "NYSE",
+            "status": "active",
+            "first_observed_at": "2026-04-01T00:00:00Z",
+            "last_observed_at": "2026-04-03T00:00:00Z",
+        }
     ]
 
 

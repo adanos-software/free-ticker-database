@@ -675,8 +675,11 @@ def test_history_artifacts_include_listing_keys_and_daily_summary():
     if event_rows:
         assert "listing_key" in event_rows[0]
     assert "listing_key" in status_rows[0]
+    assert "first_observed_at" in status_rows[0]
+    assert "last_observed_at" in status_rows[0]
     assert "observed_at" in daily_summary
     assert "active_snapshot_rows" in daily_summary
+    assert len(status_rows) <= len(snapshot_rows) + (len(event_rows) * 2)
 
 
 def test_coverage_report_includes_freshness_sources_and_verification():

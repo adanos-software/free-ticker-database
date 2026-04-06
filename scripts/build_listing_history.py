@@ -21,6 +21,14 @@ DAILY_LISTING_SUMMARY_JSON = HISTORY_DIR / "daily_listing_summary.json"
 DAILY_LISTING_SUMMARY_CSV = HISTORY_DIR / "daily_listing_summary.csv"
 TICKERS_CSV = DATA_DIR / "tickers.csv"
 TICKERS_JSON = DATA_DIR / "tickers.json"
+STATUS_HISTORY_FIELDS = [
+    "listing_key",
+    "ticker",
+    "exchange",
+    "status",
+    "first_observed_at",
+    "last_observed_at",
+]
 
 
 def write_csv(path: Path, fieldnames: list[str], rows: Iterable[dict[str, Any]]) -> None:
@@ -42,6 +50,70 @@ def load_current_rows() -> tuple[list[dict[str, str]], str]:
     with TICKERS_JSON.open(encoding="utf-8") as handle:
         built_at = json.load(handle)["_meta"]["built_at"]
     return load_csv(TICKERS_CSV), built_at
+
+
+def compact_legacy_status_history(existing_rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    by_listing: dict[tuple[str, str], list[dict[str, str]]] = {}
+    for row in existing_rows:
+        key = (row["ticker"], row["exchange"])
+        by_listing.setdefault(key, []).append(row)
+
+    compacted: list[dict[str, str]] = []
+    for (ticker, exchange), rows in by_listing.items():
+        current_interval: dict[str, str] | None = None
+        for row in sorted(rows, key=lambda value: (value["observed_at"], value["status"])):
+            listing_key = row.get("listing_key") or row_listing_key(row)
+            observed_at = row["observed_at"]
+            status = row["status"]
+            if current_interval and current_interval["status"] == status:
+                current_interval["last_observed_at"] = observed_at
+                continue
+            if current_interval:
+                compacted.append(current_interval)
+            current_interval = {
+                "listing_key": listing_key,
+                "ticker": ticker,
+                "exchange": exchange,
+                "status": status,
+                "first_observed_at": observed_at,
+                "last_observed_at": observed_at,
+            }
+        if current_interval:
+            compacted.append(current_interval)
+
+    return compacted
+
+
+def normalize_status_history(existing_rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    if not existing_rows:
+        return []
+    if "first_observed_at" not in existing_rows[0]:
+        existing_rows = compact_legacy_status_history(existing_rows)
+
+    normalized: list[dict[str, str]] = []
+    for row in existing_rows:
+        listing_key = row.get("listing_key") or row_listing_key(row)
+        first_observed_at = row.get("first_observed_at") or row.get("observed_at", "")
+        last_observed_at = row.get("last_observed_at") or row.get("observed_at", "")
+        if not first_observed_at:
+            continue
+        if last_observed_at and last_observed_at < first_observed_at:
+            last_observed_at = first_observed_at
+        normalized.append(
+            {
+                "listing_key": listing_key,
+                "ticker": row["ticker"],
+                "exchange": row["exchange"],
+                "status": row["status"],
+                "first_observed_at": first_observed_at,
+                "last_observed_at": last_observed_at or first_observed_at,
+            }
+        )
+
+    return sorted(
+        normalized,
+        key=lambda row: (row["first_observed_at"], row["ticker"], row["exchange"], row["status"]),
+    )
 
 
 def build_snapshot(rows: list[dict[str, str]], observed_at: str) -> list[dict[str, str]]:
@@ -126,42 +198,47 @@ def merge_status_history(
     current_snapshot: list[dict[str, str]],
     observed_at: str,
 ) -> list[dict[str, str]]:
-    merged = list(existing_rows)
-    existing_keys = {
-        (row["ticker"], row["exchange"], row["status"], row["observed_at"])
-        for row in existing_rows
-    }
+    normalized_rows = normalize_status_history(existing_rows)
+    by_listing: dict[tuple[str, str], list[dict[str, str]]] = {}
+    for row in normalized_rows:
+        key = (row["ticker"], row["exchange"])
+        by_listing.setdefault(key, []).append(row)
+
+    def upsert_status_interval(row: dict[str, str], status: str) -> None:
+        key = (row["ticker"], row["exchange"])
+        listing_key = row.get("listing_key") or row_listing_key(row)
+        intervals = by_listing.setdefault(key, [])
+        if intervals and intervals[-1]["status"] == status:
+            if observed_at > intervals[-1]["last_observed_at"]:
+                intervals[-1]["last_observed_at"] = observed_at
+            intervals[-1]["listing_key"] = listing_key
+            return
+        intervals.append(
+            {
+                "listing_key": listing_key,
+                "ticker": row["ticker"],
+                "exchange": row["exchange"],
+                "status": status,
+                "first_observed_at": observed_at,
+                "last_observed_at": observed_at,
+            }
+        )
+
     current_keys = {(row["ticker"], row["exchange"]): row for row in current_snapshot}
 
     for row in current_snapshot:
-        history_row = {
-            "listing_key": row_listing_key(row),
-            "ticker": row["ticker"],
-            "exchange": row["exchange"],
-            "status": "active",
-            "observed_at": observed_at,
-        }
-        key = (history_row["ticker"], history_row["exchange"], history_row["status"], history_row["observed_at"])
-        if key not in existing_keys:
-            merged.append(history_row)
-            existing_keys.add(key)
+        upsert_status_interval(row, "active")
 
     for row in previous_snapshot:
         if (row["ticker"], row["exchange"]) in current_keys:
             continue
-        history_row = {
-            "listing_key": row_listing_key(row),
-            "ticker": row["ticker"],
-            "exchange": row["exchange"],
-            "status": "delisted",
-            "observed_at": observed_at,
-        }
-        key = (history_row["ticker"], history_row["exchange"], history_row["status"], history_row["observed_at"])
-        if key not in existing_keys:
-            merged.append(history_row)
-            existing_keys.add(key)
+        upsert_status_interval(row, "delisted")
 
-    return sorted(merged, key=lambda row: (row["observed_at"], row["ticker"], row["exchange"], row["status"]))
+    merged = [row for rows in by_listing.values() for row in rows]
+    return sorted(
+        merged,
+        key=lambda row: (row["first_observed_at"], row["ticker"], row["exchange"], row["status"]),
+    )
 
 
 def build_daily_summary(
@@ -253,7 +330,7 @@ def build_history() -> dict[str, Any]:
     )
     write_csv(
         LISTING_STATUS_HISTORY_CSV,
-        ["listing_key", "ticker", "exchange", "status", "observed_at"],
+        STATUS_HISTORY_FIELDS,
         merged_status_history,
     )
     daily_summary, daily_rows = build_daily_summary(current_snapshot, new_events, observed_at)
