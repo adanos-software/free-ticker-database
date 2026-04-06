@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 25610,
-    "matched": 18895,
+    "official_symbols": 25622,
+    "matched": 18866,
     "collisions": 3864,
-    "missing": 2851
+    "missing": 2892
   },
   "exchanges": [
     {
@@ -216,11 +216,62 @@
     {
       "exchange": "B3",
       "official_symbols": 876,
-      "matched": 876,
+      "matched": 848,
       "collisions": 0,
-      "missing": 0,
+      "missing": 28,
       "collision_examples": [],
-      "missing_examples": []
+      "missing_examples": [
+        {
+          "ticker": "AGBK11",
+          "name": "BANCO AGIBANK S.A.",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "ALUP11",
+          "name": "ALUPAR INVESTIMENTO S/A",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "AMZG11",
+          "name": "AMAZONAS DISTRIBUIDORA DE ENERGIA S.A.",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "BBAS11",
+          "name": "BCO BRASIL S.A.",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "BPAC11",
+          "name": "BCO BTG PACTUAL S.A.",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "BRBI11",
+          "name": "BRBI BR PARTNERS S.A.",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "BVEN11",
+          "name": "BOA VISTA ENERGIA S.A.",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "CEAC11",
+          "name": "ENERGISA ACRE - DISTRIBUIDORA DE ENERGIA S.A",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "CEAL11",
+          "name": "EQUATORIAL ALAGOAS - DISTRIBUIDORA DE ENERGIA S.A.",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "CPIS11",
+          "name": "EQUATORIAL PIAUI DISTRIBUIDORA DE ENERGIA S.A",
+          "exchange": "B3"
+        }
+      ]
     },
     {
       "exchange": "BATS",
@@ -506,10 +557,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5430,
+      "official_symbols": 5442,
       "matched": 4524,
       "collisions": 125,
-      "missing": 781,
+      "missing": 793,
       "collision_examples": [
         {
           "ticker": "ACFN",
@@ -930,9 +981,9 @@
     {
       "exchange": "NYSE MKT",
       "official_symbols": 314,
-      "matched": 235,
+      "matched": 234,
       "collisions": 25,
-      "missing": 54,
+      "missing": 55,
       "collision_examples": [
         {
           "ticker": "AEF",

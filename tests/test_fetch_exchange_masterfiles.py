@@ -524,6 +524,10 @@ def test_fetch_all_sources_collects_source_errors(monkeypatch):
             "official": "true",
         }
     ]
+    assert summary["generated_at"].endswith("Z")
+    assert summary["source_modes"]["nasdaq_listed"] == "network"
+    assert summary["source_details"]["nasdaq_listed"]["rows"] == 1
+    assert summary["source_details"]["nasdaq_listed"]["generated_at"] == summary["generated_at"]
     assert summary["errors"]
 
 

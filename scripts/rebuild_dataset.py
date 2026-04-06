@@ -150,6 +150,9 @@ STRICT_NUMERIC_NAMESPACE_EXCHANGES = {"Bursa", "KOSDAQ", "KRX", "TPEX", "TWSE"}
 EXCHANGE_TICKER_RE = re.compile(r"^[A-Z0-9-]+\.[A-Z]{1,6}$")
 IDENTIFIER_RE = re.compile(r"^[A-Z0-9]{5,12}$")
 NUMERIC_TICKER_RE = re.compile(r"^[0-9]{3,6}[A-Z]?$")
+B3_DEPOSITARY_TICKER_RE = re.compile(r".*(31|32|33|34|35|39)$")
+B3_FRACTIONAL_TICKER_RE = re.compile(r".*F$")
+B3_UNIT_TICKER_RE = re.compile(r".*11$")
 NON_COMMON_PATTERNS = (
     re.compile(r"\brights?\b", re.IGNORECASE),
     re.compile(r"\bunits?\b", re.IGNORECASE),
@@ -605,7 +608,15 @@ def entity_key_for_row(row: dict[str, str]) -> str:
 def should_exclude_stock_row(row: dict[str, str]) -> bool:
     if row["asset_type"] != "Stock":
         return False
+    ticker = row["ticker"].upper()
     name = row["name"].lower()
+    if row.get("exchange") == "B3":
+        if B3_FRACTIONAL_TICKER_RE.fullmatch(ticker):
+            return True
+        if B3_DEPOSITARY_TICKER_RE.fullmatch(ticker):
+            return True
+        if B3_UNIT_TICKER_RE.fullmatch(ticker):
+            return True
     if row["ticker"].count("-P-"):
         return True
     if is_depositary_row(row):

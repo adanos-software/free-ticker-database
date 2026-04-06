@@ -168,7 +168,7 @@ def test_country_examples_corrected():
     assert ticker_row("AAVMY")["country"] == "Netherlands"
     assert ticker_row("0A00")["country"] == "Netherlands"
     assert ticker_row("04Q")["country"] == "Finland"
-    assert ticker_row("A1CR34")["country"] == "Jersey"
+    assert ticker_row("A1CR34") is None
 
 
 def test_thin_otc_metadata_is_backfilled_for_verified_listings():
@@ -481,8 +481,8 @@ def test_changelog_and_supporting_docs_are_current():
     assert "Expanded the conservative official supplement layer to safe ASX, AMS, and OSL listings" in changelog
     assert "Improved extended identifier exports with listing-level FIGI matching" in changelog
     assert "## 2.0.0" in changelog
-    assert "62,998 tickers (46,305 stocks, 16,693 ETFs) across 68 exchanges and 68 countries" in changelog
-    assert "101,693 aliases" in changelog
+    assert "61,811 tickers (45,118 stocks, 16,693 ETFs) across 68 exchanges and 68 countries" in changelog
+    assert "100,135 aliases" in changelog
     assert "Keep the dataset build and review scripts dependency-light and easy to trace" in contributing
     assert "one or more `review_queue.json` items" in claude_prompt
 
@@ -573,6 +573,15 @@ def test_numeric_namespace_aliases_bypass_strict_company_matching():
     assert aliases == ["0050"]
 
 
+def test_b3_non_canonical_stock_lines_are_removed():
+    tickers = {row["ticker"] for row in load_csv("tickers.csv") if row["exchange"] == "B3"}
+
+    assert "AAPL34" not in tickers
+    assert "XPBR31" not in tickers
+    assert "ASAI3F" not in tickers
+    assert "ALUP11" not in tickers
+
+
 def test_json_contains_version_metadata():
     data = json.loads((DATA_DIR / "tickers.json").read_text())
     assert isinstance(data, dict), "JSON should be an envelope object"
@@ -614,3 +623,32 @@ def test_cross_listings_sqlite_table_matches_csv_rows():
         conn.close()
 
     assert db_rows == len(csv_rows)
+
+
+def test_history_artifacts_include_listing_keys_and_daily_summary():
+    snapshot_rows = load_csv("history/latest_snapshot.csv")
+    event_rows = load_csv("history/listing_events.csv")
+    status_rows = load_csv("history/listing_status_history.csv")
+    daily_summary = json.loads((DATA_DIR / "history" / "daily_listing_summary.json").read_text())
+
+    assert snapshot_rows
+    assert event_rows is not None
+    assert status_rows
+    assert "listing_key" in snapshot_rows[0]
+    if event_rows:
+        assert "listing_key" in event_rows[0]
+    assert "listing_key" in status_rows[0]
+    assert "observed_at" in daily_summary
+    assert "active_snapshot_rows" in daily_summary
+
+
+def test_coverage_report_includes_freshness_sources_and_verification():
+    report = json.loads((DATA_DIR / "reports" / "coverage_report.json").read_text())
+
+    assert "freshness" in report
+    assert "source_coverage" in report
+    assert "verification" in report
+    assert "gap_report" in report
+    assert "b3_gap_breakdown" in report
+    assert report["freshness"]["tickers_built_at"]
+    assert isinstance(report["source_coverage"], list)

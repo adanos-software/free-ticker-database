@@ -7,6 +7,7 @@ from scripts.enrich_global_identifiers import (
     apply_figi,
     apply_lei,
     apply_sec_cik,
+    build_summary,
     build_figi_matches,
     build_base_identifier_rows,
     build_sec_cik_index,
@@ -346,3 +347,36 @@ def test_apply_lei_prefers_isin_lookup_before_name(monkeypatch):
     assert errors == []
     assert rows[0]["lei"] == "HWUPKR0MPOU8FGXBT394"
     assert calls == {"isin": 1, "name": 0}
+
+
+def test_build_summary_includes_generated_at_and_source_counts():
+    rows = [
+        {
+            "cik": "0000320193",
+            "figi": "BBG000B9XRY4",
+            "lei": "",
+            "cik_source": "SEC",
+            "figi_source": "OpenFIGI",
+            "lei_source": "",
+        },
+        {
+            "cik": "",
+            "figi": "",
+            "lei": "HWUPKR0MPOU8FGXBT394",
+            "cik_source": "",
+            "figi_source": "",
+            "lei_source": "GLEIF",
+        },
+    ]
+
+    summary = build_summary(rows)
+
+    assert summary["generated_at"].endswith("Z")
+    assert summary["rows"] == 2
+    assert summary["cik_coverage"] == 1
+    assert summary["figi_coverage"] == 1
+    assert summary["lei_coverage"] == 1
+    assert summary["listings_with_any_identifier"] == 2
+    assert summary["cik_source_counts"] == {"SEC": 1}
+    assert summary["figi_source_counts"] == {"OpenFIGI": 1}
+    assert summary["lei_source_counts"] == {"GLEIF": 1}

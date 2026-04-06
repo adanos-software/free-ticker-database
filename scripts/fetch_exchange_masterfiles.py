@@ -5,6 +5,7 @@ import io
 import json
 import os
 from dataclasses import asdict, dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -648,15 +649,36 @@ def dedupe_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
     return sorted(deduped.values(), key=lambda row: (row["exchange"], row["ticker"], row["source_key"]))
 
 
-def build_summary(rows: list[dict[str, str]], source_modes: dict[str, str] | None = None) -> dict[str, Any]:
+def utc_now_iso() -> str:
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
+def build_summary(
+    rows: list[dict[str, str]],
+    source_modes: dict[str, str] | None = None,
+    generated_at: str | None = None,
+) -> dict[str, Any]:
     exchanges = sorted({row["exchange"] for row in rows if row["exchange"]})
     source_counts: dict[str, int] = {}
     for row in rows:
         source_counts[row["source_key"]] = source_counts.get(row["source_key"], 0) + 1
+    source_details = {
+        source.key: {
+            "provider": source.provider,
+            "reference_scope": source.reference_scope,
+            "official": source.official,
+            "mode": source_modes.get(source.key, "unknown") if source_modes else "unknown",
+            "rows": source_counts.get(source.key, 0),
+            "generated_at": generated_at or "",
+        }
+        for source in OFFICIAL_SOURCES
+    }
     summary = {
+        "generated_at": generated_at or "",
         "rows": len(rows),
         "exchanges": exchanges,
         "source_counts": source_counts,
+        "source_details": source_details,
     }
     if source_modes:
         summary["source_modes"] = source_modes
@@ -673,6 +695,7 @@ def fetch_all_sources(
     rows: list[dict[str, str]] = []
     errors: list[dict[str, str]] = []
     source_modes: dict[str, str] = {}
+    generated_at = utc_now_iso()
     for source in OFFICIAL_SOURCES:
         try:
             source_rows, mode = fetch_source_rows_with_mode(source, session=session)
@@ -684,7 +707,7 @@ def fetch_all_sources(
     if include_manual:
         rows.extend(load_manual_masterfiles(manual_dir or MASTERFILES_DIR / "manual"))
     deduped = dedupe_rows(rows)
-    summary = build_summary(deduped, source_modes=source_modes)
+    summary = build_summary(deduped, source_modes=source_modes, generated_at=generated_at)
     if errors:
         summary["errors"] = errors
     return deduped, summary

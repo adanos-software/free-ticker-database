@@ -5,6 +5,7 @@ import csv
 import json
 import os
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable, TypeVar
 
@@ -75,6 +76,10 @@ def write_csv(path: Path, fieldnames: list[str], rows: list[dict[str, str]]) -> 
 
 def normalize_company_name(value: str) -> str:
     return "".join(ch for ch in value.lower() if ch.isalnum())
+
+
+def utc_now_iso() -> str:
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
 def fetch_json(url: str, session: requests.Session | None = None, headers: dict[str, str] | None = None) -> Any:
@@ -425,11 +430,31 @@ def apply_lei(
 
 
 def build_summary(rows: list[dict[str, str]]) -> dict[str, Any]:
+    figi_source_counts: dict[str, int] = {}
+    cik_source_counts: dict[str, int] = {}
+    lei_source_counts: dict[str, int] = {}
+    for row in rows:
+        if row.get("figi"):
+            source = row.get("figi_source", "unknown") or "unknown"
+            figi_source_counts[source] = figi_source_counts.get(source, 0) + 1
+        if row.get("cik"):
+            source = row.get("cik_source", "unknown") or "unknown"
+            cik_source_counts[source] = cik_source_counts.get(source, 0) + 1
+        if row.get("lei"):
+            source = row.get("lei_source", "unknown") or "unknown"
+            lei_source_counts[source] = lei_source_counts.get(source, 0) + 1
     return {
+        "generated_at": utc_now_iso(),
         "rows": len(rows),
         "cik_coverage": sum(bool(row["cik"]) for row in rows),
         "figi_coverage": sum(bool(row["figi"]) for row in rows),
         "lei_coverage": sum(bool(row["lei"]) for row in rows),
+        "listings_with_any_identifier": sum(
+            bool(row["cik"] or row["figi"] or row["lei"]) for row in rows
+        ),
+        "figi_source_counts": figi_source_counts,
+        "cik_source_counts": cik_source_counts,
+        "lei_source_counts": lei_source_counts,
     }
 
 

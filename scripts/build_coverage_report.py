@@ -2,7 +2,8 @@ from __future__ import annotations
 
 import csv
 import json
-from collections import defaultdict
+from collections import Counter, defaultdict
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -16,14 +17,24 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
 REPORTS_DIR = DATA_DIR / "reports"
 TICKERS_CSV = DATA_DIR / "tickers.csv"
+TICKERS_JSON = DATA_DIR / "tickers.json"
 ALIASES_CSV = DATA_DIR / "aliases.csv"
 IDENTIFIERS_EXTENDED_CSV = DATA_DIR / "identifiers_extended.csv"
+IDENTIFIER_SUMMARY_JSON = DATA_DIR / "identifier_summary.json"
 MASTERFILE_REFERENCE_CSV = DATA_DIR / "masterfiles" / "reference.csv"
+MASTERFILE_SOURCES_JSON = DATA_DIR / "masterfiles" / "sources.json"
+MASTERFILE_SUMMARY_JSON = DATA_DIR / "masterfiles" / "summary.json"
 LISTING_STATUS_HISTORY_CSV = DATA_DIR / "history" / "listing_status_history.csv"
 LISTING_EVENTS_CSV = DATA_DIR / "history" / "listing_events.csv"
+DAILY_LISTING_SUMMARY_JSON = DATA_DIR / "history" / "daily_listing_summary.json"
+STOCK_VERIFICATION_DIR = DATA_DIR / "stock_verification"
 COVERAGE_REPORT_JSON = REPORTS_DIR / "coverage_report.json"
 COVERAGE_REPORT_MD = REPORTS_DIR / "coverage_report.md"
 MASTERFILE_COLLISION_REPORT_JSON = REPORTS_DIR / "masterfile_collision_report.json"
+
+
+def utc_now() -> datetime:
+    return datetime.now(timezone.utc)
 
 
 def load_csv(path: Path) -> list[dict[str, str]]:
@@ -33,14 +44,102 @@ def load_csv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
+def load_json(path: Path) -> Any:
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def parse_timestamp(value: str) -> datetime | None:
+    if not value:
+        return None
+    normalized = value.replace("Z", "+00:00")
+    try:
+        return datetime.fromisoformat(normalized)
+    except ValueError:
+        return None
+
+
+def path_mtime_iso(path: Path) -> str:
+    if not path.exists():
+        return ""
+    timestamp = datetime.fromtimestamp(path.stat().st_mtime, tz=timezone.utc)
+    return timestamp.replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
+def display_path(path: Path) -> str:
+    resolved = path.resolve()
+    try:
+        return str(resolved.relative_to(ROOT))
+    except ValueError:
+        return str(resolved)
+
+
+def age_hours(timestamp: str, *, now: datetime | None = None) -> float | None:
+    parsed = parse_timestamp(timestamp)
+    if parsed is None:
+        return None
+    now = now or utc_now()
+    return round((now - parsed).total_seconds() / 3600, 2)
+
+
+def build_exchange_reference_catalog(masterfiles: list[dict[str, str]]) -> dict[str, dict[str, Any]]:
+    catalog: dict[str, dict[str, Any]] = {}
+    for row in masterfiles:
+        exchange = row.get("exchange", "")
+        if not exchange:
+            continue
+        entry = catalog.setdefault(
+            exchange,
+            {
+                "exchange": exchange,
+                "venue_status": "missing",
+                "official_source_keys": set(),
+                "reference_scopes": set(),
+                "manual_source_keys": set(),
+            },
+        )
+        source_key = row.get("source_key", "")
+        reference_scope = row.get("reference_scope", "")
+        if row.get("official") == "true":
+            if source_key:
+                entry["official_source_keys"].add(source_key)
+            if reference_scope:
+                entry["reference_scopes"].add(reference_scope)
+            if reference_scope == "exchange_directory":
+                entry["venue_status"] = "official_full"
+            elif entry["venue_status"] != "official_full":
+                entry["venue_status"] = "official_partial"
+        elif source_key:
+            entry["manual_source_keys"].add(source_key)
+            if entry["venue_status"] == "missing":
+                entry["venue_status"] = "manual_only"
+
+    normalized: dict[str, dict[str, Any]] = {}
+    for exchange, entry in catalog.items():
+        normalized[exchange] = {
+            "exchange": exchange,
+            "venue_status": entry["venue_status"],
+            "official_source_count": len(entry["official_source_keys"]),
+            "manual_source_count": len(entry["manual_source_keys"]),
+            "reference_scopes": sorted(entry["reference_scopes"]),
+        }
+    return normalized
+
+
 def build_exchange_report(
     tickers: list[dict[str, str]],
     identifiers_extended: list[dict[str, str]],
     masterfiles: list[dict[str, str]],
+    verification_exchange_rows: list[dict[str, Any]] | None = None,
 ) -> list[dict[str, Any]]:
     identifier_lookup = {
         (row["ticker"], row["exchange"]): row for row in identifiers_extended
     }
+    verification_lookup = {
+        row["exchange"]: row for row in (verification_exchange_rows or [])
+    }
+    reference_catalog = build_exchange_reference_catalog(masterfiles)
     master_by_exchange: dict[str, set[str]] = defaultdict(set)
     dataset_exchanges_by_ticker: dict[str, set[str]] = defaultdict(set)
     for row in tickers:
@@ -68,9 +167,25 @@ def build_exchange_report(
             if dataset_exchanges_by_ticker.get(ticker, set()) - {exchange}
         }
         missing = master_symbols - matched - collisions
+        verification = verification_lookup.get(exchange, {})
+        catalog_entry = reference_catalog.get(
+            exchange,
+            {
+                "venue_status": "missing",
+                "official_source_count": 0,
+                "manual_source_count": 0,
+                "reference_scopes": [],
+            },
+        )
+        covered_items = int(verification.get("officially_covered_items", 0))
+        verified_items = int(verification.get("verified", 0))
         rows.append(
             {
                 "exchange": exchange,
+                "venue_status": catalog_entry["venue_status"],
+                "official_source_count": catalog_entry["official_source_count"],
+                "manual_source_count": catalog_entry["manual_source_count"],
+                "reference_scopes": catalog_entry["reference_scopes"],
                 "tickers": len(exchange_rows),
                 "isin_coverage": sum(bool(row["isin"]) for row in exchange_rows),
                 "sector_coverage": sum(bool(row["sector"]) for row in exchange_rows),
@@ -83,6 +198,13 @@ def build_exchange_report(
                 "masterfile_missing": len(missing),
                 "masterfile_match_rate": round(len(matched) / len(master_symbols) * 100, 2) if master_symbols else None,
                 "masterfile_collision_rate": round(len(collisions) / len(master_symbols) * 100, 2) if master_symbols else None,
+                "verification_items": int(verification.get("items", 0)),
+                "verification_verified": verified_items,
+                "verification_reference_gap": int(verification.get("reference_gap", 0)),
+                "verification_missing_from_official": int(verification.get("missing_from_official", 0)),
+                "verification_name_mismatch": int(verification.get("name_mismatch", 0)),
+                "verification_cross_exchange_collision": int(verification.get("cross_exchange_collision", 0)),
+                "verification_verified_rate_on_covered": round(verified_items / covered_items * 100, 2) if covered_items else None,
             }
         )
     return rows
@@ -120,8 +242,10 @@ def build_global_summary(
     listing_status_history: list[dict[str, str]],
     listing_events: list[dict[str, str]],
     exchange_coverage: list[dict[str, Any]],
+    verification_summary: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    return {
+    venue_status_counts = Counter(row["venue_status"] for row in exchange_coverage)
+    summary = {
         "tickers": len(tickers),
         "aliases": len(aliases),
         "stocks": sum(row["asset_type"] == "Stock" for row in tickers),
@@ -138,6 +262,200 @@ def build_global_summary(
         "official_masterfile_matches": sum(row["masterfile_matches"] for row in exchange_coverage),
         "official_masterfile_collisions": sum(row["masterfile_collisions"] for row in exchange_coverage),
         "official_masterfile_missing": sum(row["masterfile_missing"] for row in exchange_coverage),
+        "official_full_exchanges": venue_status_counts.get("official_full", 0),
+        "official_partial_exchanges": venue_status_counts.get("official_partial", 0),
+        "manual_only_exchanges": venue_status_counts.get("manual_only", 0),
+        "missing_exchanges": venue_status_counts.get("missing", 0),
+    }
+    if verification_summary:
+        summary.update(
+            {
+                "stock_verification_items": int(verification_summary.get("items", 0)),
+                "stock_verification_verified": int(verification_summary.get("status_counts", {}).get("verified", 0)),
+                "stock_verification_reference_gap": int(verification_summary.get("status_counts", {}).get("reference_gap", 0)),
+                "stock_verification_missing_from_official": int(verification_summary.get("status_counts", {}).get("missing_from_official", 0)),
+                "stock_verification_name_mismatch": int(verification_summary.get("status_counts", {}).get("name_mismatch", 0)),
+                "stock_verification_cross_exchange_collision": int(verification_summary.get("status_counts", {}).get("cross_exchange_collision", 0)),
+            }
+        )
+    return summary
+
+
+def find_latest_verification_run(base_dir: Path = STOCK_VERIFICATION_DIR) -> Path | None:
+    if not base_dir.exists():
+        return None
+    candidates = [path for path in base_dir.iterdir() if path.is_dir() and (path / "summary.json").exists()]
+    if not candidates:
+        return None
+    return max(candidates, key=lambda path: (path / "summary.json").stat().st_mtime)
+
+
+def load_verification_report(run_dir: Path | None) -> dict[str, Any]:
+    if run_dir is None:
+        return {"summary": {}, "exchange_rows": [], "rows": [], "run_dir": ""}
+
+    summary = load_json(run_dir / "summary.json")
+    rows: list[dict[str, Any]] = []
+    exchange_stats: dict[str, Counter[str]] = defaultdict(Counter)
+    exchange_items: Counter[str] = Counter()
+    for path in sorted(run_dir.glob("chunk-*-of-*.json")):
+        if path.name.endswith(".summary.json"):
+            continue
+        payload = load_json(path)
+        for row in payload:
+            rows.append(row)
+            exchange = row.get("exchange", "")
+            if not exchange:
+                continue
+            exchange_items[exchange] += 1
+            exchange_stats[exchange][row.get("status", "")] += 1
+
+    exchange_rows: list[dict[str, Any]] = []
+    for exchange in sorted(exchange_items):
+        stats = exchange_stats[exchange]
+        covered_items = exchange_items[exchange] - stats.get("reference_gap", 0)
+        verified_items = stats.get("verified", 0)
+        exchange_rows.append(
+            {
+                "exchange": exchange,
+                "items": exchange_items[exchange],
+                "verified": verified_items,
+                "reference_gap": stats.get("reference_gap", 0),
+                "missing_from_official": stats.get("missing_from_official", 0),
+                "name_mismatch": stats.get("name_mismatch", 0),
+                "cross_exchange_collision": stats.get("cross_exchange_collision", 0),
+                "asset_type_mismatch": stats.get("asset_type_mismatch", 0),
+                "non_active_official": stats.get("non_active_official", 0),
+                "officially_covered_items": covered_items,
+                "verified_rate_on_covered": round(verified_items / covered_items * 100, 2) if covered_items else None,
+            }
+        )
+
+    return {
+        "summary": summary,
+        "exchange_rows": exchange_rows,
+        "rows": rows,
+        "run_dir": display_path(run_dir),
+        "generated_at": path_mtime_iso(run_dir / "summary.json"),
+    }
+
+
+def classify_b3_gap(row: dict[str, Any]) -> str:
+    ticker = row.get("ticker", "")
+    if ticker.endswith(("31", "32", "33", "34", "35", "39")):
+        return "bdr_or_foreign_receipt"
+    if ticker.endswith("F"):
+        return "fractional_line"
+    if ticker.endswith("11"):
+        return "unit_or_fund_line"
+    if ticker and ticker[-1:].isdigit():
+        return "local_share_line"
+    return "other"
+
+
+def build_b3_gap_breakdown(verification_rows: list[dict[str, Any]]) -> dict[str, Any]:
+    relevant = [
+        row
+        for row in verification_rows
+        if row.get("exchange") == "B3" and row.get("status") == "missing_from_official"
+    ]
+    counts = Counter(classify_b3_gap(row) for row in relevant)
+    examples: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for row in relevant:
+        category = classify_b3_gap(row)
+        if len(examples[category]) < 10:
+            examples[category].append(
+                {
+                    "ticker": row.get("ticker", ""),
+                    "name": row.get("name", ""),
+                    "status": row.get("status", ""),
+                }
+            )
+    return {
+        "rows": len(relevant),
+        "categories": dict(sorted(counts.items())),
+        "examples": dict(examples),
+    }
+
+
+def build_gap_report(
+    exchange_coverage: list[dict[str, Any]],
+    verification_exchange_rows: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    verification_lookup = {row["exchange"]: row for row in verification_exchange_rows}
+    gaps: list[dict[str, Any]] = []
+    for row in exchange_coverage:
+        verification = verification_lookup.get(row["exchange"], {})
+        unresolved = (
+            int(verification.get("reference_gap", 0))
+            + int(verification.get("missing_from_official", 0))
+            + int(verification.get("name_mismatch", 0))
+            + int(verification.get("cross_exchange_collision", 0))
+        )
+        if not unresolved:
+            continue
+        gaps.append(
+            {
+                "exchange": row["exchange"],
+                "venue_status": row["venue_status"],
+                "unresolved_findings": unresolved,
+                "reference_gap": int(verification.get("reference_gap", 0)),
+                "missing_from_official": int(verification.get("missing_from_official", 0)),
+                "name_mismatch": int(verification.get("name_mismatch", 0)),
+                "cross_exchange_collision": int(verification.get("cross_exchange_collision", 0)),
+                "masterfile_missing": row["masterfile_missing"],
+                "masterfile_collisions": row["masterfile_collisions"],
+            }
+        )
+    return sorted(gaps, key=lambda row: (-row["unresolved_findings"], row["exchange"]))
+
+
+def build_source_report(
+    sources: list[dict[str, Any]],
+    masterfile_summary: dict[str, Any],
+) -> list[dict[str, Any]]:
+    source_details = masterfile_summary.get("source_details", {})
+    source_counts = masterfile_summary.get("source_counts", {})
+    source_modes = masterfile_summary.get("source_modes", {})
+    generated_at = masterfile_summary.get("generated_at", path_mtime_iso(MASTERFILE_SUMMARY_JSON))
+    rows: list[dict[str, Any]] = []
+    for source in sources:
+        details = source_details.get(source["key"], {})
+        rows.append(
+            {
+                "key": source["key"],
+                "provider": source["provider"],
+                "reference_scope": source["reference_scope"],
+                "official": source["official"],
+                "mode": details.get("mode", source_modes.get(source["key"], "unknown")),
+                "rows": details.get("rows", source_counts.get(source["key"], 0)),
+                "generated_at": details.get("generated_at", generated_at),
+            }
+        )
+    return rows
+
+
+def build_freshness_report(
+    masterfile_summary: dict[str, Any],
+    identifier_summary: dict[str, Any],
+    listing_daily_summary: dict[str, Any],
+    verification: dict[str, Any],
+) -> dict[str, Any]:
+    now = utc_now()
+    tickers_meta = load_json(TICKERS_JSON).get("_meta", {})
+    verification_generated_at = verification.get("generated_at", "")
+    return {
+        "tickers_built_at": tickers_meta.get("built_at", ""),
+        "tickers_age_hours": age_hours(tickers_meta.get("built_at", ""), now=now),
+        "masterfiles_generated_at": masterfile_summary.get("generated_at", path_mtime_iso(MASTERFILE_SUMMARY_JSON)),
+        "masterfiles_age_hours": age_hours(masterfile_summary.get("generated_at", path_mtime_iso(MASTERFILE_SUMMARY_JSON)), now=now),
+        "identifiers_generated_at": identifier_summary.get("generated_at", path_mtime_iso(IDENTIFIER_SUMMARY_JSON)),
+        "identifiers_age_hours": age_hours(identifier_summary.get("generated_at", path_mtime_iso(IDENTIFIER_SUMMARY_JSON)), now=now),
+        "listing_history_observed_at": listing_daily_summary.get("observed_at", ""),
+        "listing_history_age_hours": age_hours(listing_daily_summary.get("observed_at", ""), now=now),
+        "latest_verification_run": verification.get("run_dir", ""),
+        "latest_verification_generated_at": verification_generated_at,
+        "latest_verification_age_hours": age_hours(verification_generated_at, now=now),
     }
 
 
@@ -153,10 +471,36 @@ def render_markdown(report: dict[str, Any]) -> str:
     for key, value in report["global"].items():
         lines.append(f"| {key} | {value} |")
 
-    lines.extend(["", "## Exchange Coverage", "", "| Exchange | Tickers | ISIN | Sector | CIK | FIGI | LEI | Masterfile Symbols | Matches | Collisions | Missing | Match Rate |", "|---|---|---|---|---|---|---|---|---|---|---|---|"])
+    lines.extend(["", "## Freshness", "", "| Metric | Value |", "|---|---|"])
+    for key, value in report["freshness"].items():
+        lines.append(f"| {key} | {value} |")
+
+    lines.extend(
+        [
+            "",
+            "## Source Coverage",
+            "",
+            "| Source | Provider | Scope | Mode | Rows | Generated At |",
+            "|---|---|---|---|---|---|",
+        ]
+    )
+    for row in report["source_coverage"]:
+        lines.append(
+            f"| {row['key']} | {row['provider']} | {row['reference_scope']} | {row['mode']} | {row['rows']} | {row['generated_at']} |"
+        )
+
+    lines.extend(
+        [
+            "",
+            "## Exchange Coverage",
+            "",
+            "| Exchange | Venue Status | Tickers | ISIN | Sector | CIK | FIGI | LEI | Masterfile Symbols | Matches | Collisions | Missing | Match Rate | Verified on Covered |",
+            "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|",
+        ]
+    )
     for row in report["exchange_coverage"]:
         lines.append(
-            f"| {row['exchange']} | {row['tickers']} | {row['isin_coverage']} | {row['sector_coverage']} | {row['cik_coverage']} | {row['figi_coverage']} | {row['lei_coverage']} | {row['masterfile_symbols']} | {row['masterfile_matches']} | {row['masterfile_collisions']} | {row['masterfile_missing']} | {row['masterfile_match_rate'] if row['masterfile_match_rate'] is not None else ''} |"
+            f"| {row['exchange']} | {row['venue_status']} | {row['tickers']} | {row['isin_coverage']} | {row['sector_coverage']} | {row['cik_coverage']} | {row['figi_coverage']} | {row['lei_coverage']} | {row['masterfile_symbols']} | {row['masterfile_matches']} | {row['masterfile_collisions']} | {row['masterfile_missing']} | {row['masterfile_match_rate'] if row['masterfile_match_rate'] is not None else ''} | {row['verification_verified_rate_on_covered'] if row['verification_verified_rate_on_covered'] is not None else ''} |"
         )
 
     lines.extend(["", "## Country Coverage", "", "| Country | Tickers | ISIN | Sector | CIK | FIGI | LEI |", "|---|---|---|---|---|---|---|"])
@@ -164,6 +508,13 @@ def render_markdown(report: dict[str, Any]) -> str:
         lines.append(
             f"| {row['country']} | {row['tickers']} | {row['isin_coverage']} | {row['sector_coverage']} | {row['cik_coverage']} | {row['figi_coverage']} | {row['lei_coverage']} |"
         )
+
+    if report["gap_report"]:
+        lines.extend(["", "## Unresolved Gaps", "", "| Exchange | Venue Status | Findings | Reference Gap | Missing | Name Mismatch | Collision |", "|---|---|---|---|---|---|---|"])
+        for row in report["gap_report"][:20]:
+            lines.append(
+                f"| {row['exchange']} | {row['venue_status']} | {row['unresolved_findings']} | {row['reference_gap']} | {row['missing_from_official']} | {row['name_mismatch']} | {row['cross_exchange_collision']} |"
+            )
     return "\n".join(lines) + "\n"
 
 
@@ -249,9 +600,19 @@ def build_report() -> dict[str, Any]:
     masterfiles = load_csv(MASTERFILE_REFERENCE_CSV)
     listing_status_history = load_csv(LISTING_STATUS_HISTORY_CSV)
     listing_events = load_csv(LISTING_EVENTS_CSV)
-    exchange_coverage = build_exchange_report(tickers, identifiers_extended, masterfiles)
-    masterfile_collision_report = build_masterfile_collision_report(tickers, masterfiles)
+    masterfile_summary = load_json(MASTERFILE_SUMMARY_JSON)
+    masterfile_sources = load_json(MASTERFILE_SOURCES_JSON)
+    identifier_summary = load_json(IDENTIFIER_SUMMARY_JSON)
+    listing_daily_summary = load_json(DAILY_LISTING_SUMMARY_JSON)
+    verification = load_verification_report(find_latest_verification_run())
 
+    exchange_coverage = build_exchange_report(
+        tickers,
+        identifiers_extended,
+        masterfiles,
+        verification_exchange_rows=verification["exchange_rows"],
+    )
+    masterfile_collision_report = build_masterfile_collision_report(tickers, masterfiles)
     report = {
         "global": build_global_summary(
             tickers,
@@ -260,9 +621,25 @@ def build_report() -> dict[str, Any]:
             listing_status_history,
             listing_events,
             exchange_coverage,
+            verification_summary=verification["summary"],
         ),
+        "freshness": build_freshness_report(
+            masterfile_summary,
+            identifier_summary,
+            listing_daily_summary,
+            verification,
+        ),
+        "source_coverage": build_source_report(masterfile_sources, masterfile_summary),
         "exchange_coverage": exchange_coverage,
         "country_coverage": build_country_report(tickers, identifiers_extended),
+        "verification": {
+            "run_dir": verification["run_dir"],
+            "generated_at": verification["generated_at"],
+            "summary": verification["summary"],
+            "exchange_coverage": verification["exchange_rows"],
+        },
+        "gap_report": build_gap_report(exchange_coverage, verification["exchange_rows"]),
+        "b3_gap_breakdown": build_b3_gap_breakdown(verification["rows"]),
     }
 
     COVERAGE_REPORT_JSON.write_text(json.dumps(report, indent=2), encoding="utf-8")

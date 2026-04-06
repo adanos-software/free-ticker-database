@@ -3,20 +3,20 @@
 [![CI](https://github.com/adanos-software/free-ticker-database/actions/workflows/ci.yml/badge.svg)](https://github.com/adanos-software/free-ticker-database/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-A comprehensive, free-to-use stock and ETF ticker reference database covering 62,000+ securities across 68 exchanges and 68 countries.
+A comprehensive, free-to-use stock and ETF ticker reference database covering 61,000+ securities across 68 exchanges and 68 countries.
 
 ## Stats
 
 | Metric | Value |
 |---|---|
-| **Total tickers** | 62,998 |
-| Stocks | 46,305 |
+| **Total tickers** | 61,811 |
+| Stocks | 45,118 |
 | ETFs | 16,693 |
 | Exchanges | 68 |
 | Countries | 68 |
-| ISIN coverage | 44,458 (70.6%) |
-| Sector coverage | 38,866 (61.7%) |
-| Total aliases | 101,693 |
+| ISIN coverage | 44,018 (71.2%) |
+| Sector coverage | 38,151 (61.7%) |
+| Total aliases | 100,135 |
 
 ## Formats
 
@@ -143,7 +143,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (62,998 rows) + `aliases` (101,693 rows) + `cross_listings` (9,368 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
+Tables: `tickers` (61,811 rows) + `aliases` (100,135 rows) + `cross_listings` (8,852 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
 
 ## Schema
 
@@ -236,6 +236,8 @@ Current live sources:
 - Nasdaq Trader `nasdaqlisted.txt`
 - Nasdaq Trader `otherlisted.txt`
 - ASX `ASXListedCompanies.csv`
+- Deutsche Börse `Listed-companies.xlsx`
+- B3 `InstrumentsEquities` public API
 - TMX `interlisted-companies.txt` (official interlisted subset, not a full TSX/TSXV directory)
 - Euronext Live equities CSV export
 - JPX listed issues XLS
@@ -260,6 +262,10 @@ This writes:
 - `data/history/latest_snapshot.csv`
 - `data/history/listing_events.csv`
 - `data/history/listing_status_history.csv`
+- `data/history/daily_listing_summary.json`
+- `data/history/daily_listing_summary.csv`
+
+History artifacts are now listing-keyed (`exchange::ticker`) so per-venue state changes stay explicit even when raw symbols collide globally.
 
 Generate extended identifiers:
 
@@ -288,7 +294,16 @@ This writes:
 - `data/reports/coverage_report.md`
 - `data/reports/masterfile_collision_report.json`
 
-The coverage report now separates official masterfile rows into:
+The coverage report now includes:
+
+- exchange venue-status classification (`official_full`, `official_partial`, `manual_only`, `missing`)
+- artifact freshness timestamps for the dataset, masterfiles, identifiers, listing history, and latest stock-verification run
+- source coverage rows with fetch mode and row counts
+- per-exchange stock-verification rates for officially covered venues
+- unresolved gap summaries per exchange
+- B3-specific missing-symbol breakdowns
+
+It also separates official masterfile rows into:
 
 - `match`: listing already present in the core export
 - `collision`: official symbol blocked by the current global-unique `ticker` model because the symbol already exists on another exchange

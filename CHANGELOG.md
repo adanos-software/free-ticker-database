@@ -11,19 +11,21 @@
 - Added `listing_index.csv` as a listing-keyed bridge artifact using `exchange::ticker`
 - Added masterfile collision reporting to separate official-symbol matches, collisions, and true missing rows
 - Added listing snapshot/history artifacts for listings, renames, and delistings
+- Added listing-keyed daily diff summaries for listing history artifacts
 - Improved extended identifier exports with listing-level FIGI matching, exact listing-level CIK matching, retry-safe partial progress, and ISIN-first LEI backfills
 - Added exchange/country coverage reports beyond the alias-quality audit
+- Added venue-status, freshness, source-coverage, verification, unresolved-gap, and B3-specific missing breakdowns to coverage reporting
 - Added chunked stock-universe verification against official masterfiles plus conservative override generation for stale, misclassified, and non-common listings
 
 ## 2.0.0
 
-- Current dataset release with 62,998 tickers (46,305 stocks, 16,693 ETFs) across 68 exchanges and 68 countries
+- Current dataset release with 61,811 tickers (45,118 stocks, 16,693 ETFs) across 68 exchanges and 68 countries
 - Output formats: CSV, JSON, Parquet, SQLite
 - JSON outputs use a `_meta` envelope with version/build metadata
 - Added `country_code` (ISO 3166-1 alpha-2) to dataset exports
 - Added `cross_listings.csv` and SQLite `cross_listings` for multi-exchange securities
-- 101,693 aliases with type classification (`isin`, `wkn`, `name`, `exchange_ticker`)
-- ISIN coverage: 70.6%
+- 100,135 aliases with type classification (`isin`, `wkn`, `name`, `exchange_ticker`)
+- ISIN coverage: 71.2%
 - Sector coverage: 62.2%
 - Quality filters include duplicate removal, alias cleanup, stock-universe instrument filtering,
   ISIN-based country correction, sector normalization, and ISIN check-digit validation

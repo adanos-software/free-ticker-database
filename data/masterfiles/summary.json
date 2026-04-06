@@ -1,5 +1,6 @@
 {
-  "rows": 34526,
+  "generated_at": "2026-04-06T14:31:06Z",
+  "rows": 34533,
   "exchanges": [
     "AMS",
     "ASX",
@@ -23,12 +24,86 @@
     "euronext_equities": 3885,
     "asx_listed_companies": 1979,
     "b3_instruments_equities": 876,
-    "nasdaq_other_listed": 7075,
-    "nasdaq_listed": 5413,
+    "nasdaq_other_listed": 7073,
+    "nasdaq_listed": 5422,
     "sec_company_tickers_exchange": 10117,
     "jpx_listed_issues": 4444,
     "tmx_interlisted_companies": 266,
     "deutsche_boerse_listed_companies": 471
+  },
+  "source_details": {
+    "nasdaq_listed": {
+      "provider": "Nasdaq Trader",
+      "reference_scope": "exchange_directory",
+      "official": true,
+      "mode": "network",
+      "rows": 5422,
+      "generated_at": "2026-04-06T14:31:06Z"
+    },
+    "nasdaq_other_listed": {
+      "provider": "Nasdaq Trader",
+      "reference_scope": "exchange_directory",
+      "official": true,
+      "mode": "network",
+      "rows": 7073,
+      "generated_at": "2026-04-06T14:31:06Z"
+    },
+    "asx_listed_companies": {
+      "provider": "ASX",
+      "reference_scope": "exchange_directory",
+      "official": true,
+      "mode": "network",
+      "rows": 1979,
+      "generated_at": "2026-04-06T14:31:06Z"
+    },
+    "tmx_interlisted_companies": {
+      "provider": "TMX",
+      "reference_scope": "interlisted_subset",
+      "official": true,
+      "mode": "network",
+      "rows": 266,
+      "generated_at": "2026-04-06T14:31:06Z"
+    },
+    "euronext_equities": {
+      "provider": "Euronext",
+      "reference_scope": "exchange_directory",
+      "official": true,
+      "mode": "network",
+      "rows": 3885,
+      "generated_at": "2026-04-06T14:31:06Z"
+    },
+    "jpx_listed_issues": {
+      "provider": "JPX",
+      "reference_scope": "exchange_directory",
+      "official": true,
+      "mode": "network",
+      "rows": 4444,
+      "generated_at": "2026-04-06T14:31:06Z"
+    },
+    "deutsche_boerse_listed_companies": {
+      "provider": "Deutsche Boerse",
+      "reference_scope": "exchange_directory",
+      "official": true,
+      "mode": "network",
+      "rows": 471,
+      "generated_at": "2026-04-06T14:31:06Z"
+    },
+    "b3_instruments_equities": {
+      "provider": "B3",
+      "reference_scope": "exchange_directory",
+      "official": true,
+      "mode": "network",
+      "rows": 876,
+      "generated_at": "2026-04-06T14:31:06Z"
+    },
+    "sec_company_tickers_exchange": {
+      "provider": "SEC",
+      "reference_scope": "exchange_directory",
+      "official": true,
+      "mode": "cache",
+      "rows": 10117,
+      "generated_at": "2026-04-06T14:31:06Z"
+    }
   },
   "source_modes": {
     "nasdaq_listed": "network",
