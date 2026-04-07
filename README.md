@@ -120,7 +120,7 @@ This is the full listing-level export for downstream systems that want every ven
 ```json
 {
   "_meta": {
-    "version": "2.1.0",
+    "version": "3.0.0",
     "built_at": "2026-04-07T08:17:20Z",
     "total_tickers": 55690
   },
@@ -140,7 +140,7 @@ This is the full listing-level export for downstream systems that want every ven
 }
 ```
 
-JSON outputs use an envelope with a `_meta` block and a `tickers` array as of version `2.1.0`.
+JSON outputs use an envelope with a `_meta` block and a `tickers` array as of version `3.0.0`.
 
 ### tickers.db (SQLite)
 
@@ -155,7 +155,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (55,690 rows) + `aliases` (87,971 rows) + `cross_listings` (8,671 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
+Tables: `tickers` (55,935 rows) + `aliases` (87,757 rows) + `cross_listings` (8,655 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
 
 ## Schema
 
@@ -184,20 +184,20 @@ Tables: `tickers` (55,690 rows) + `aliases` (87,971 rows) + `cross_listings` (8,
 
 | Exchange | Tickers | Description |
 |---|---|---|
-| OTC | 9,308 | US OTC / Pink Sheets |
-| LSE | 4,539 | London Stock Exchange |
-| NASDAQ | 4,531 | NASDAQ |
+| OTC | 9,302 | US OTC / Pink Sheets |
+| LSE | 4,540 | London Stock Exchange |
+| NASDAQ | 4,548 | NASDAQ |
 | SZSE | 3,096 | Shenzhen Stock Exchange |
 | XETRA | 2,086 | Deutsche Boerse |
 | SSE | 2,811 | Shanghai Stock Exchange |
-| NYSE | 2,165 | New York Stock Exchange |
-| NYSE ARCA | 2,613 | NYSE ARCA (ETFs) |
-| KRX | 2,281 | Korea Exchange |
-| TSX | 1,736 | Toronto Stock Exchange |
+| NYSE | 2,054 | New York Stock Exchange |
+| NYSE ARCA | 2,595 | NYSE ARCA (ETFs) |
+| KRX | 1,789 | Korea Exchange |
+| TSX | 1,728 | Toronto Stock Exchange |
 | B3 | 923 | Sao Paulo Exchange |
 | TWSE | 1,240 | Taiwan Stock Exchange |
 | ASX | 1,295 | Australian Securities Exchange |
-| KOSDAQ | 1,140 | Korean OTC |
+| KOSDAQ | 1,583 | Korean OTC |
 | TPEX | 1,126 | Taipei Exchange |
 | + 52 more | ... | |
 
@@ -433,3 +433,4 @@ Issues and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for
 
 - CI: [GitHub Actions](https://github.com/adanos-software/free-ticker-database/actions/workflows/ci.yml)
 - Release notes: [GitHub Releases](https://github.com/adanos-software/free-ticker-database/releases)
+- Changelog: [CHANGELOG.md](CHANGELOG.md)

@@ -650,6 +650,7 @@ def test_readme_stats_and_claims_are_current():
     readme = (ROOT / "README.md").read_text()
     tickers_csv = load_csv("tickers.csv")
     aliases_csv = load_csv("aliases.csv")
+    exchange_counts = Counter(row["exchange"] for row in tickers_csv)
 
     total = len(tickers_csv)
     stocks = sum(row["asset_type"] == "Stock" for row in tickers_csv)
@@ -665,10 +666,10 @@ def test_readme_stats_and_claims_are_current():
     assert f"| Total aliases | {len(aliases_csv):,} |" in readme
     assert f"| ISIN coverage | {isin_count:,} ({isin_count / total * 100:.1f}%) |" in readme
     assert f"| Sector coverage | {sector_count:,} ({sector_count / total * 100:.1f}%) |" in readme
-    assert "| NASDAQ | 4,531 | NASDAQ |" in readme
-    assert "| XETRA | 2,086 | Deutsche Boerse |" in readme
-    assert "| NYSE | 2,165 | New York Stock Exchange |" in readme
-    assert "| ASX | 1,295 | Australian Securities Exchange |" in readme
+    assert f"| NASDAQ | {exchange_counts['NASDAQ']:,} | NASDAQ |" in readme
+    assert f"| XETRA | {exchange_counts['XETRA']:,} | Deutsche Boerse |" in readme
+    assert f"| NYSE | {exchange_counts['NYSE']:,} | New York Stock Exchange |" in readme
+    assert f"| ASX | {exchange_counts['ASX']:,} | Australian Securities Exchange |" in readme
 
 
 def test_release_docs_and_supporting_docs_are_current():
@@ -685,6 +686,7 @@ def test_open_source_project_files_exist_and_are_linked():
     assert (ROOT / ".github" / "ISSUE_TEMPLATE" / "bug_report.md").exists()
     assert (ROOT / ".github" / "ISSUE_TEMPLATE" / "feature_request.md").exists()
     assert (ROOT / ".github" / "pull_request_template.md").exists()
+    assert (ROOT / "CHANGELOG.md").exists()
     assert (DATA_DIR / "masterfiles" / "reference.csv").exists()
     assert (DATA_DIR / "history" / "latest_snapshot.csv").exists()
     assert (DATA_DIR / "identifiers_extended.csv").exists()
@@ -701,6 +703,7 @@ def test_open_source_project_files_exist_and_are_linked():
     assert "[![CI]" in readme
     assert "## Project Health" in readme
     assert "Release notes: [GitHub Releases]" in readme
+    assert "Changelog: [CHANGELOG.md]" in readme
 
 
 def test_all_isins_have_valid_checksum():

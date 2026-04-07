@@ -7,6 +7,8 @@ import os
 import re
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
+from html import unescape
+from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -572,20 +574,67 @@ def parse_asx_listed_companies(text: str, source: MasterfileSource) -> list[dict
 
 
 def parse_lse_company_reports_html(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    class _TableParser(HTMLParser):
+        def __init__(self) -> None:
+            super().__init__()
+            self.tables: list[list[list[str]]] = []
+            self._current_table: list[list[str]] | None = None
+            self._current_row: list[str] | None = None
+            self._current_cell: list[str] | None = None
+            self._in_cell = False
+
+        def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+            if tag == "table":
+                self._current_table = []
+            elif tag == "tr" and self._current_table is not None:
+                self._current_row = []
+            elif tag in {"td", "th"} and self._current_row is not None:
+                self._current_cell = []
+                self._in_cell = True
+
+        def handle_endtag(self, tag: str) -> None:
+            if tag in {"td", "th"} and self._current_row is not None and self._current_cell is not None:
+                text = " ".join("".join(self._current_cell).split())
+                self._current_row.append(unescape(text))
+                self._current_cell = None
+                self._in_cell = False
+            elif tag == "tr" and self._current_table is not None and self._current_row is not None:
+                if self._current_row:
+                    self._current_table.append(self._current_row)
+                self._current_row = None
+            elif tag == "table" and self._current_table is not None:
+                if self._current_table:
+                    self.tables.append(self._current_table)
+                self._current_table = None
+
+        def handle_data(self, data: str) -> None:
+            if self._in_cell and self._current_cell is not None:
+                self._current_cell.append(data)
+
+    parser = _TableParser()
+    parser.feed(text)
+    target_table: list[list[str]] | None = None
+    for table in parser.tables:
+        if not table:
+            continue
+        header = [cell.strip() for cell in table[0]]
+        if "Code" in header and "Name" in header:
+            target_table = table
+            break
+    if not target_table:
+        return []
+    header = target_table[0]
     try:
-        dataframes = pd.read_html(io.StringIO(text))
+        code_index = header.index("Code")
+        name_index = header.index("Name")
     except ValueError:
         return []
-    if not dataframes:
-        return []
-    dataframe = dataframes[0]
-    if "Code" not in dataframe.columns or "Name" not in dataframe.columns:
-        return []
-
     rows: list[dict[str, str]] = []
-    for record in dataframe.to_dict(orient="records"):
-        ticker = str(record.get("Code", "")).strip()
-        name = str(record.get("Name", "")).strip()
+    for record in target_table[1:]:
+        if len(record) <= max(code_index, name_index):
+            continue
+        ticker = str(record[code_index]).strip()
+        name = str(record[name_index]).strip()
         if not ticker or not name or ticker.lower() == "nan" or name.lower() == "nan":
             continue
         rows.append(
