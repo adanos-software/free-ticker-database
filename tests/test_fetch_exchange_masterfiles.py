@@ -3,12 +3,15 @@ from __future__ import annotations
 import requests
 
 from scripts.fetch_exchange_masterfiles import (
+    LEGACY_TPEX_MAINBOARD_QUOTES_CACHE,
     MasterfileSource,
+    TPEX_MAINBOARD_QUOTES_CACHE,
     fetch_b3_instruments_equities,
     fetch_all_sources,
     fetch_source_rows_with_mode,
     infer_jpx_asset_type,
     load_sec_company_tickers_exchange_payload,
+    load_tpex_mainboard_quotes_payload,
     parse_asx_listed_companies,
     parse_b3_instruments_equities_table,
     parse_deutsche_boerse_listed_companies_excel,
@@ -194,6 +197,18 @@ def test_parse_tpex_mainboard_quotes_maps_tpex_rows():
             "official": "true",
         },
     ]
+
+
+def test_load_tpex_mainboard_quotes_payload_prefers_cache(tmp_path, monkeypatch):
+    cache_path = tmp_path / "tpex_mainboard_daily_close_quotes.json"
+    cache_path.write_text('[{"SecuritiesCompanyCode":"6488","CompanyName":"環球晶圓股份有限公司"}]', encoding="utf-8")
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.TPEX_MAINBOARD_QUOTES_CACHE", cache_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_TPEX_MAINBOARD_QUOTES_CACHE", tmp_path / "legacy.json")
+
+    payload, mode = load_tpex_mainboard_quotes_payload()
+
+    assert mode == "cache"
+    assert payload == [{"SecuritiesCompanyCode": "6488", "CompanyName": "環球晶圓股份有限公司"}]
 
 
 def test_parse_asx_listed_companies_skips_banner_lines():

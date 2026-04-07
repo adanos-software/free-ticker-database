@@ -241,7 +241,11 @@ Current live sources:
 - TMX `interlisted-companies.txt` (official interlisted subset, not a full TSX/TSXV directory)
 - Euronext Live equities CSV export
 - JPX listed issues XLS
+- TWSE listed companies open-data JSON
+- TPEX mainboard daily quotes open-data JSON (cache-first fallback when the official endpoint blocks the current environment)
 - SEC `company_tickers_exchange.json` when the environment is allowed to fetch it, or a cached official snapshot when present locally
+
+`data/reports/coverage_report.json` exposes both `exchange_coverage` and a machine-friendly `by_exchange` alias, plus separate stock and ETF verification summaries. That makes backlog prioritization easier without scraping the markdown report.
 
 Generate safe official listing supplements:
 

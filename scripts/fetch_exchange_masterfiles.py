@@ -23,6 +23,8 @@ MASTERFILE_SUMMARY_JSON = MASTERFILES_DIR / "summary.json"
 MASTERFILE_CACHE_DIR = MASTERFILES_DIR / "cache"
 SEC_COMPANY_TICKERS_CACHE = MASTERFILE_CACHE_DIR / "sec_company_tickers_exchange.json"
 LEGACY_SEC_COMPANY_TICKERS_CACHE = MASTERFILES_DIR / "sec_company_tickers_exchange.json"
+TPEX_MAINBOARD_QUOTES_CACHE = MASTERFILE_CACHE_DIR / "tpex_mainboard_daily_close_quotes.json"
+LEGACY_TPEX_MAINBOARD_QUOTES_CACHE = MASTERFILES_DIR / "tpex_mainboard_daily_close_quotes.json"
 
 SEC_COMPANY_TICKERS_URL = "https://www.sec.gov/files/company_tickers_exchange.json"
 NASDAQ_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt"
@@ -277,6 +279,16 @@ def sec_request_headers() -> dict[str, str]:
     }
 
 
+def tpex_request_headers() -> dict[str, str]:
+    return {
+        "User-Agent": USER_AGENT,
+        "Accept": "application/json,text/plain,*/*",
+        "Accept-Encoding": "gzip, deflate",
+        "Referer": "https://www.tpex.org.tw/",
+        "Origin": "https://www.tpex.org.tw",
+    }
+
+
 def load_sec_company_tickers_exchange_payload(
     session: requests.Session | None = None,
 ) -> tuple[dict[str, Any] | None, str]:
@@ -291,6 +303,23 @@ def load_sec_company_tickers_exchange_payload(
 
     ensure_output_dirs()
     SEC_COMPANY_TICKERS_CACHE.write_text(json.dumps(payload), encoding="utf-8")
+    return payload, "network"
+
+
+def load_tpex_mainboard_quotes_payload(
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, Any]] | None, str]:
+    for path in (TPEX_MAINBOARD_QUOTES_CACHE, LEGACY_TPEX_MAINBOARD_QUOTES_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+
+    try:
+        payload = fetch_json(TPEX_MAINBOARD_QUOTES_URL, session=session, headers=tpex_request_headers())
+    except requests.RequestException:
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    TPEX_MAINBOARD_QUOTES_CACHE.write_text(json.dumps(payload), encoding="utf-8")
     return payload, "network"
 
 
@@ -713,6 +742,11 @@ def fetch_source_rows_with_mode(
         if payload is None:
             raise requests.RequestException("SEC company_tickers_exchange.json unavailable")
         return parse_sec_company_tickers_exchange(payload, source), mode
+    if source.format == "tpex_mainboard_quotes_json":
+        payload, mode = load_tpex_mainboard_quotes_payload(session=session)
+        if payload is None:
+            raise requests.RequestException("TPEX mainboard quotes unavailable")
+        return parse_tpex_mainboard_quotes(payload, source), mode
     return fetch_source_rows(source, session=session), "network"
 
 

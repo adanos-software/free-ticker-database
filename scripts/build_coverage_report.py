@@ -28,6 +28,7 @@ LISTING_STATUS_HISTORY_CSV = DATA_DIR / "history" / "listing_status_history.csv"
 LISTING_EVENTS_CSV = DATA_DIR / "history" / "listing_events.csv"
 DAILY_LISTING_SUMMARY_JSON = DATA_DIR / "history" / "daily_listing_summary.json"
 STOCK_VERIFICATION_DIR = DATA_DIR / "stock_verification"
+ETF_VERIFICATION_DIR = DATA_DIR / "etf_verification"
 COVERAGE_REPORT_JSON = REPORTS_DIR / "coverage_report.json"
 COVERAGE_REPORT_MD = REPORTS_DIR / "coverage_report.md"
 MASTERFILE_COLLISION_REPORT_JSON = REPORTS_DIR / "masterfile_collision_report.json"
@@ -131,13 +132,17 @@ def build_exchange_report(
     tickers: list[dict[str, str]],
     identifiers_extended: list[dict[str, str]],
     masterfiles: list[dict[str, str]],
-    verification_exchange_rows: list[dict[str, Any]] | None = None,
+    stock_verification_exchange_rows: list[dict[str, Any]] | None = None,
+    etf_verification_exchange_rows: list[dict[str, Any]] | None = None,
 ) -> list[dict[str, Any]]:
     identifier_lookup = {
         (row["ticker"], row["exchange"]): row for row in identifiers_extended
     }
-    verification_lookup = {
-        row["exchange"]: row for row in (verification_exchange_rows or [])
+    stock_verification_lookup = {
+        row["exchange"]: row for row in (stock_verification_exchange_rows or [])
+    }
+    etf_verification_lookup = {
+        row["exchange"]: row for row in (etf_verification_exchange_rows or [])
     }
     reference_catalog = build_exchange_reference_catalog(masterfiles)
     master_by_exchange: dict[str, set[str]] = defaultdict(set)
@@ -167,7 +172,8 @@ def build_exchange_report(
             if dataset_exchanges_by_ticker.get(ticker, set()) - {exchange}
         }
         missing = master_symbols - matched - collisions
-        verification = verification_lookup.get(exchange, {})
+        stock_verification = stock_verification_lookup.get(exchange, {})
+        etf_verification = etf_verification_lookup.get(exchange, {})
         catalog_entry = reference_catalog.get(
             exchange,
             {
@@ -177,8 +183,20 @@ def build_exchange_report(
                 "reference_scopes": [],
             },
         )
-        covered_items = int(verification.get("officially_covered_items", 0))
-        verified_items = int(verification.get("verified", 0))
+        stock_covered_items = int(stock_verification.get("officially_covered_items", 0))
+        stock_verified_items = int(stock_verification.get("verified", 0))
+        etf_covered_items = int(etf_verification.get("officially_covered_items", 0))
+        etf_verified_items = int(etf_verification.get("verified", 0))
+        unresolved_count = (
+            int(stock_verification.get("reference_gap", 0))
+            + int(stock_verification.get("missing_from_official", 0))
+            + int(stock_verification.get("name_mismatch", 0))
+            + int(stock_verification.get("cross_exchange_collision", 0))
+            + int(etf_verification.get("reference_gap", 0))
+            + int(etf_verification.get("missing_from_official", 0))
+            + int(etf_verification.get("name_mismatch", 0))
+            + int(etf_verification.get("cross_exchange_collision", 0))
+        )
         rows.append(
             {
                 "exchange": exchange,
@@ -198,13 +216,28 @@ def build_exchange_report(
                 "masterfile_missing": len(missing),
                 "masterfile_match_rate": round(len(matched) / len(master_symbols) * 100, 2) if master_symbols else None,
                 "masterfile_collision_rate": round(len(collisions) / len(master_symbols) * 100, 2) if master_symbols else None,
-                "verification_items": int(verification.get("items", 0)),
-                "verification_verified": verified_items,
-                "verification_reference_gap": int(verification.get("reference_gap", 0)),
-                "verification_missing_from_official": int(verification.get("missing_from_official", 0)),
-                "verification_name_mismatch": int(verification.get("name_mismatch", 0)),
-                "verification_cross_exchange_collision": int(verification.get("cross_exchange_collision", 0)),
-                "verification_verified_rate_on_covered": round(verified_items / covered_items * 100, 2) if covered_items else None,
+                "verification_items": int(stock_verification.get("items", 0)),
+                "verification_verified": stock_verified_items,
+                "verification_reference_gap": int(stock_verification.get("reference_gap", 0)),
+                "verification_missing_from_official": int(stock_verification.get("missing_from_official", 0)),
+                "verification_name_mismatch": int(stock_verification.get("name_mismatch", 0)),
+                "verification_cross_exchange_collision": int(stock_verification.get("cross_exchange_collision", 0)),
+                "verification_verified_rate_on_covered": round(stock_verified_items / stock_covered_items * 100, 2) if stock_covered_items else None,
+                "stock_verification_items": int(stock_verification.get("items", 0)),
+                "stock_verification_verified": stock_verified_items,
+                "stock_verification_reference_gap": int(stock_verification.get("reference_gap", 0)),
+                "stock_verification_missing_from_official": int(stock_verification.get("missing_from_official", 0)),
+                "stock_verification_name_mismatch": int(stock_verification.get("name_mismatch", 0)),
+                "stock_verification_cross_exchange_collision": int(stock_verification.get("cross_exchange_collision", 0)),
+                "stock_verification_verified_rate_on_covered": round(stock_verified_items / stock_covered_items * 100, 2) if stock_covered_items else None,
+                "etf_verification_items": int(etf_verification.get("items", 0)),
+                "etf_verification_verified": etf_verified_items,
+                "etf_verification_reference_gap": int(etf_verification.get("reference_gap", 0)),
+                "etf_verification_missing_from_official": int(etf_verification.get("missing_from_official", 0)),
+                "etf_verification_name_mismatch": int(etf_verification.get("name_mismatch", 0)),
+                "etf_verification_cross_exchange_collision": int(etf_verification.get("cross_exchange_collision", 0)),
+                "etf_verification_verified_rate_on_covered": round(etf_verified_items / etf_covered_items * 100, 2) if etf_covered_items else None,
+                "unresolved_count": unresolved_count,
             }
         )
     return rows
@@ -242,7 +275,8 @@ def build_global_summary(
     listing_status_history: list[dict[str, str]],
     listing_events: list[dict[str, str]],
     exchange_coverage: list[dict[str, Any]],
-    verification_summary: dict[str, Any] | None = None,
+    stock_verification_summary: dict[str, Any] | None = None,
+    etf_verification_summary: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     venue_status_counts = Counter(row["venue_status"] for row in exchange_coverage)
     summary = {
@@ -268,15 +302,26 @@ def build_global_summary(
         "manual_only_exchanges": venue_status_counts.get("manual_only", 0),
         "missing_exchanges": venue_status_counts.get("missing", 0),
     }
-    if verification_summary:
+    if stock_verification_summary:
         summary.update(
             {
-                "stock_verification_items": int(verification_summary.get("items", 0)),
-                "stock_verification_verified": int(verification_summary.get("status_counts", {}).get("verified", 0)),
-                "stock_verification_reference_gap": int(verification_summary.get("status_counts", {}).get("reference_gap", 0)),
-                "stock_verification_missing_from_official": int(verification_summary.get("status_counts", {}).get("missing_from_official", 0)),
-                "stock_verification_name_mismatch": int(verification_summary.get("status_counts", {}).get("name_mismatch", 0)),
-                "stock_verification_cross_exchange_collision": int(verification_summary.get("status_counts", {}).get("cross_exchange_collision", 0)),
+                "stock_verification_items": int(stock_verification_summary.get("items", 0)),
+                "stock_verification_verified": int(stock_verification_summary.get("status_counts", {}).get("verified", 0)),
+                "stock_verification_reference_gap": int(stock_verification_summary.get("status_counts", {}).get("reference_gap", 0)),
+                "stock_verification_missing_from_official": int(stock_verification_summary.get("status_counts", {}).get("missing_from_official", 0)),
+                "stock_verification_name_mismatch": int(stock_verification_summary.get("status_counts", {}).get("name_mismatch", 0)),
+                "stock_verification_cross_exchange_collision": int(stock_verification_summary.get("status_counts", {}).get("cross_exchange_collision", 0)),
+            }
+        )
+    if etf_verification_summary:
+        summary.update(
+            {
+                "etf_verification_items": int(etf_verification_summary.get("items", 0)),
+                "etf_verification_verified": int(etf_verification_summary.get("status_counts", {}).get("verified", 0)),
+                "etf_verification_reference_gap": int(etf_verification_summary.get("status_counts", {}).get("reference_gap", 0)),
+                "etf_verification_missing_from_official": int(etf_verification_summary.get("status_counts", {}).get("missing_from_official", 0)),
+                "etf_verification_name_mismatch": int(etf_verification_summary.get("status_counts", {}).get("name_mismatch", 0)),
+                "etf_verification_cross_exchange_collision": int(etf_verification_summary.get("status_counts", {}).get("cross_exchange_collision", 0)),
             }
         )
     return summary
@@ -381,17 +426,24 @@ def build_b3_gap_breakdown(verification_rows: list[dict[str, Any]]) -> dict[str,
 
 def build_gap_report(
     exchange_coverage: list[dict[str, Any]],
-    verification_exchange_rows: list[dict[str, Any]],
+    stock_verification_exchange_rows: list[dict[str, Any]],
+    etf_verification_exchange_rows: list[dict[str, Any]],
 ) -> list[dict[str, Any]]:
-    verification_lookup = {row["exchange"]: row for row in verification_exchange_rows}
+    stock_verification_lookup = {row["exchange"]: row for row in stock_verification_exchange_rows}
+    etf_verification_lookup = {row["exchange"]: row for row in etf_verification_exchange_rows}
     gaps: list[dict[str, Any]] = []
     for row in exchange_coverage:
-        verification = verification_lookup.get(row["exchange"], {})
+        stock_verification = stock_verification_lookup.get(row["exchange"], {})
+        etf_verification = etf_verification_lookup.get(row["exchange"], {})
         unresolved = (
-            int(verification.get("reference_gap", 0))
-            + int(verification.get("missing_from_official", 0))
-            + int(verification.get("name_mismatch", 0))
-            + int(verification.get("cross_exchange_collision", 0))
+            int(stock_verification.get("reference_gap", 0))
+            + int(stock_verification.get("missing_from_official", 0))
+            + int(stock_verification.get("name_mismatch", 0))
+            + int(stock_verification.get("cross_exchange_collision", 0))
+            + int(etf_verification.get("reference_gap", 0))
+            + int(etf_verification.get("missing_from_official", 0))
+            + int(etf_verification.get("name_mismatch", 0))
+            + int(etf_verification.get("cross_exchange_collision", 0))
         )
         if not unresolved:
             continue
@@ -400,10 +452,18 @@ def build_gap_report(
                 "exchange": row["exchange"],
                 "venue_status": row["venue_status"],
                 "unresolved_findings": unresolved,
-                "reference_gap": int(verification.get("reference_gap", 0)),
-                "missing_from_official": int(verification.get("missing_from_official", 0)),
-                "name_mismatch": int(verification.get("name_mismatch", 0)),
-                "cross_exchange_collision": int(verification.get("cross_exchange_collision", 0)),
+                "reference_gap": int(stock_verification.get("reference_gap", 0)) + int(etf_verification.get("reference_gap", 0)),
+                "missing_from_official": int(stock_verification.get("missing_from_official", 0)) + int(etf_verification.get("missing_from_official", 0)),
+                "name_mismatch": int(stock_verification.get("name_mismatch", 0)) + int(etf_verification.get("name_mismatch", 0)),
+                "cross_exchange_collision": int(stock_verification.get("cross_exchange_collision", 0)) + int(etf_verification.get("cross_exchange_collision", 0)),
+                "stock_reference_gap": int(stock_verification.get("reference_gap", 0)),
+                "stock_missing_from_official": int(stock_verification.get("missing_from_official", 0)),
+                "stock_name_mismatch": int(stock_verification.get("name_mismatch", 0)),
+                "stock_cross_exchange_collision": int(stock_verification.get("cross_exchange_collision", 0)),
+                "etf_reference_gap": int(etf_verification.get("reference_gap", 0)),
+                "etf_missing_from_official": int(etf_verification.get("missing_from_official", 0)),
+                "etf_name_mismatch": int(etf_verification.get("name_mismatch", 0)),
+                "etf_cross_exchange_collision": int(etf_verification.get("cross_exchange_collision", 0)),
                 "masterfile_missing": row["masterfile_missing"],
                 "masterfile_collisions": row["masterfile_collisions"],
             }
@@ -440,11 +500,13 @@ def build_freshness_report(
     masterfile_summary: dict[str, Any],
     identifier_summary: dict[str, Any],
     listing_daily_summary: dict[str, Any],
-    verification: dict[str, Any],
+    stock_verification: dict[str, Any],
+    etf_verification: dict[str, Any],
 ) -> dict[str, Any]:
     now = utc_now()
     tickers_meta = load_json(TICKERS_JSON).get("_meta", {})
-    verification_generated_at = verification.get("generated_at", "")
+    stock_verification_generated_at = stock_verification.get("generated_at", "")
+    etf_verification_generated_at = etf_verification.get("generated_at", "")
     return {
         "tickers_built_at": tickers_meta.get("built_at", ""),
         "tickers_age_hours": age_hours(tickers_meta.get("built_at", ""), now=now),
@@ -454,9 +516,15 @@ def build_freshness_report(
         "identifiers_age_hours": age_hours(identifier_summary.get("generated_at", path_mtime_iso(IDENTIFIER_SUMMARY_JSON)), now=now),
         "listing_history_observed_at": listing_daily_summary.get("observed_at", ""),
         "listing_history_age_hours": age_hours(listing_daily_summary.get("observed_at", ""), now=now),
-        "latest_verification_run": verification.get("run_dir", ""),
-        "latest_verification_generated_at": verification_generated_at,
-        "latest_verification_age_hours": age_hours(verification_generated_at, now=now),
+        "latest_verification_run": stock_verification.get("run_dir", ""),
+        "latest_verification_generated_at": stock_verification_generated_at,
+        "latest_verification_age_hours": age_hours(stock_verification_generated_at, now=now),
+        "latest_stock_verification_run": stock_verification.get("run_dir", ""),
+        "latest_stock_verification_generated_at": stock_verification_generated_at,
+        "latest_stock_verification_age_hours": age_hours(stock_verification_generated_at, now=now),
+        "latest_etf_verification_run": etf_verification.get("run_dir", ""),
+        "latest_etf_verification_generated_at": etf_verification_generated_at,
+        "latest_etf_verification_age_hours": age_hours(etf_verification_generated_at, now=now),
     }
 
 
@@ -605,13 +673,15 @@ def build_report() -> dict[str, Any]:
     masterfile_sources = load_json(MASTERFILE_SOURCES_JSON)
     identifier_summary = load_json(IDENTIFIER_SUMMARY_JSON)
     listing_daily_summary = load_json(DAILY_LISTING_SUMMARY_JSON)
-    verification = load_verification_report(find_latest_verification_run())
+    stock_verification = load_verification_report(find_latest_verification_run(STOCK_VERIFICATION_DIR))
+    etf_verification = load_verification_report(find_latest_verification_run(ETF_VERIFICATION_DIR))
 
     exchange_coverage = build_exchange_report(
         tickers,
         identifiers_extended,
         masterfiles,
-        verification_exchange_rows=verification["exchange_rows"],
+        stock_verification_exchange_rows=stock_verification["exchange_rows"],
+        etf_verification_exchange_rows=etf_verification["exchange_rows"],
     )
     masterfile_collision_report = build_masterfile_collision_report(tickers, masterfiles)
     report = {
@@ -622,25 +692,40 @@ def build_report() -> dict[str, Any]:
             listing_status_history,
             listing_events,
             exchange_coverage,
-            verification_summary=verification["summary"],
+            stock_verification_summary=stock_verification["summary"],
+            etf_verification_summary=etf_verification["summary"],
         ),
         "freshness": build_freshness_report(
             masterfile_summary,
             identifier_summary,
             listing_daily_summary,
-            verification,
+            stock_verification,
+            etf_verification,
         ),
         "source_coverage": build_source_report(masterfile_sources, masterfile_summary),
         "exchange_coverage": exchange_coverage,
+        "by_exchange": exchange_coverage,
         "country_coverage": build_country_report(tickers, identifiers_extended),
         "verification": {
-            "run_dir": verification["run_dir"],
-            "generated_at": verification["generated_at"],
-            "summary": verification["summary"],
-            "exchange_coverage": verification["exchange_rows"],
+            "run_dir": stock_verification["run_dir"],
+            "generated_at": stock_verification["generated_at"],
+            "summary": stock_verification["summary"],
+            "exchange_coverage": stock_verification["exchange_rows"],
         },
-        "gap_report": build_gap_report(exchange_coverage, verification["exchange_rows"]),
-        "b3_gap_breakdown": build_b3_gap_breakdown(verification["rows"]),
+        "stock_verification": {
+            "run_dir": stock_verification["run_dir"],
+            "generated_at": stock_verification["generated_at"],
+            "summary": stock_verification["summary"],
+            "exchange_coverage": stock_verification["exchange_rows"],
+        },
+        "etf_verification": {
+            "run_dir": etf_verification["run_dir"],
+            "generated_at": etf_verification["generated_at"],
+            "summary": etf_verification["summary"],
+            "exchange_coverage": etf_verification["exchange_rows"],
+        },
+        "gap_report": build_gap_report(exchange_coverage, stock_verification["exchange_rows"], etf_verification["exchange_rows"]),
+        "b3_gap_breakdown": build_b3_gap_breakdown(stock_verification["rows"]),
     }
 
     COVERAGE_REPORT_JSON.write_text(json.dumps(report, indent=2), encoding="utf-8")

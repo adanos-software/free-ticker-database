@@ -31,22 +31,34 @@
 | stock_verification_missing_from_official | 0 |
 | stock_verification_name_mismatch | 0 |
 | stock_verification_cross_exchange_collision | 21 |
+| etf_verification_items | 16715 |
+| etf_verification_verified | 5381 |
+| etf_verification_reference_gap | 11090 |
+| etf_verification_missing_from_official | 0 |
+| etf_verification_name_mismatch | 0 |
+| etf_verification_cross_exchange_collision | 244 |
 
 ## Freshness
 
 | Metric | Value |
 |---|---|
 | tickers_built_at | 2026-04-06T20:26:32Z |
-| tickers_age_hours | 0.03 |
+| tickers_age_hours | 9.55 |
 | masterfiles_generated_at | 2026-04-06T17:49:27Z |
-| masterfiles_age_hours | 2.65 |
+| masterfiles_age_hours | 12.17 |
 | identifiers_generated_at | 2026-04-06T20:26:34Z |
-| identifiers_age_hours | 0.03 |
+| identifiers_age_hours | 9.55 |
 | listing_history_observed_at | 2026-04-06T20:26:32Z |
-| listing_history_age_hours | 0.03 |
+| listing_history_age_hours | 9.55 |
 | latest_verification_run | data/stock_verification/run-20260406-stock-100-final3 |
 | latest_verification_generated_at | 2026-04-06T20:28:31Z |
-| latest_verification_age_hours | 0.0 |
+| latest_verification_age_hours | 9.52 |
+| latest_stock_verification_run | data/stock_verification/run-20260406-stock-100-final3 |
+| latest_stock_verification_generated_at | 2026-04-06T20:28:31Z |
+| latest_stock_verification_age_hours | 9.52 |
+| latest_etf_verification_run | data/etf_verification/run-20260406-etf-100-final3 |
+| latest_etf_verification_generated_at | 2026-04-06T20:28:31Z |
+| latest_etf_verification_age_hours | 9.52 |
 
 ## Source Coverage
 
@@ -214,23 +226,23 @@
 
 | Exchange | Venue Status | Findings | Reference Gap | Missing | Name Mismatch | Collision |
 |---|---|---|---|---|---|---|
-| OTC | official_full | 8862 | 8861 | 0 | 0 | 1 |
-| LSE | missing | 3662 | 3662 | 0 | 0 | 0 |
-| SZSE | missing | 2735 | 2735 | 0 | 0 | 0 |
-| SSE | missing | 2277 | 2277 | 0 | 0 | 0 |
-| KRX | missing | 1336 | 1336 | 0 | 0 | 0 |
+| OTC | official_full | 9065 | 9054 | 0 | 0 | 11 |
+| LSE | missing | 6409 | 6409 | 0 | 0 | 0 |
+| SZSE | missing | 3096 | 3096 | 0 | 0 | 0 |
+| SSE | missing | 2811 | 2811 | 0 | 0 | 0 |
+| XETRA | official_partial | 2639 | 2639 | 0 | 0 | 0 |
+| KRX | missing | 2282 | 2282 | 0 | 0 | 0 |
+| TSX | official_partial | 1739 | 1739 | 0 | 0 | 0 |
 | KOSDAQ | missing | 1140 | 1140 | 0 | 0 | 0 |
-| TPEX | missing | 1017 | 1017 | 0 | 0 | 0 |
+| TPEX | missing | 1126 | 1126 | 0 | 0 | 0 |
 | TSXV | official_partial | 1014 | 1014 | 0 | 0 | 0 |
-| Bursa | missing | 925 | 925 | 0 | 0 | 0 |
-| STO | missing | 772 | 772 | 0 | 0 | 0 |
+| Bursa | missing | 929 | 929 | 0 | 0 | 0 |
+| STO | missing | 787 | 787 | 0 | 0 | 0 |
+| SIX | missing | 756 | 756 | 0 | 0 | 0 |
 | IDX | missing | 697 | 697 | 0 | 0 | 0 |
-| PSX | missing | 683 | 683 | 0 | 0 | 0 |
-| SET | missing | 546 | 546 | 0 | 0 | 0 |
+| PSX | missing | 692 | 692 | 0 | 0 | 0 |
+| TASE | missing | 684 | 684 | 0 | 0 | 0 |
+| SET | missing | 554 | 554 | 0 | 0 | 0 |
 | OTCCE | missing | 505 | 505 | 0 | 0 | 0 |
-| TSX | official_partial | 505 | 505 | 0 | 0 | 0 |
-| TASE | missing | 348 | 348 | 0 | 0 | 0 |
-| WSE | missing | 331 | 331 | 0 | 0 | 0 |
-| HOSE | missing | 247 | 247 | 0 | 0 | 0 |
-| XETRA | official_partial | 247 | 247 | 0 | 0 | 0 |
-| EGX | missing | 225 | 225 | 0 | 0 | 0 |
+| WSE | missing | 349 | 349 | 0 | 0 | 0 |
+| Euronext | official_full | 346 | 341 | 0 | 0 | 5 |

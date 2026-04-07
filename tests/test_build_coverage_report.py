@@ -75,8 +75,26 @@ def test_build_exchange_report_includes_masterfile_and_verification_rates():
             "officially_covered_items": 8,
         }
     ]
+    etf_verification_rows = [
+        {
+            "exchange": "NASDAQ",
+            "items": 3,
+            "verified": 2,
+            "reference_gap": 1,
+            "missing_from_official": 0,
+            "name_mismatch": 0,
+            "cross_exchange_collision": 0,
+            "officially_covered_items": 2,
+        }
+    ]
 
-    rows = build_exchange_report(tickers, identifiers, masterfiles, verification_exchange_rows=verification_rows)
+    rows = build_exchange_report(
+        tickers,
+        identifiers,
+        masterfiles,
+        stock_verification_exchange_rows=verification_rows,
+        etf_verification_exchange_rows=etf_verification_rows,
+    )
 
     assert rows == [
         {
@@ -104,6 +122,21 @@ def test_build_exchange_report_includes_masterfile_and_verification_rates():
             "verification_name_mismatch": 0,
             "verification_cross_exchange_collision": 0,
             "verification_verified_rate_on_covered": 100.0,
+            "stock_verification_items": 10,
+            "stock_verification_verified": 8,
+            "stock_verification_reference_gap": 2,
+            "stock_verification_missing_from_official": 0,
+            "stock_verification_name_mismatch": 0,
+            "stock_verification_cross_exchange_collision": 0,
+            "stock_verification_verified_rate_on_covered": 100.0,
+            "etf_verification_items": 3,
+            "etf_verification_verified": 2,
+            "etf_verification_reference_gap": 1,
+            "etf_verification_missing_from_official": 0,
+            "etf_verification_name_mismatch": 0,
+            "etf_verification_cross_exchange_collision": 0,
+            "etf_verification_verified_rate_on_covered": 100.0,
+            "unresolved_count": 3,
         },
         {
             "exchange": "NYSE",
@@ -130,6 +163,21 @@ def test_build_exchange_report_includes_masterfile_and_verification_rates():
             "verification_name_mismatch": 0,
             "verification_cross_exchange_collision": 0,
             "verification_verified_rate_on_covered": None,
+            "stock_verification_items": 0,
+            "stock_verification_verified": 0,
+            "stock_verification_reference_gap": 0,
+            "stock_verification_missing_from_official": 0,
+            "stock_verification_name_mismatch": 0,
+            "stock_verification_cross_exchange_collision": 0,
+            "stock_verification_verified_rate_on_covered": None,
+            "etf_verification_items": 0,
+            "etf_verification_verified": 0,
+            "etf_verification_reference_gap": 0,
+            "etf_verification_missing_from_official": 0,
+            "etf_verification_name_mismatch": 0,
+            "etf_verification_cross_exchange_collision": 0,
+            "etf_verification_verified_rate_on_covered": None,
+            "unresolved_count": 0,
         },
         {
             "exchange": "TSE",
@@ -156,6 +204,21 @@ def test_build_exchange_report_includes_masterfile_and_verification_rates():
             "verification_name_mismatch": 0,
             "verification_cross_exchange_collision": 0,
             "verification_verified_rate_on_covered": None,
+            "stock_verification_items": 0,
+            "stock_verification_verified": 0,
+            "stock_verification_reference_gap": 0,
+            "stock_verification_missing_from_official": 0,
+            "stock_verification_name_mismatch": 0,
+            "stock_verification_cross_exchange_collision": 0,
+            "stock_verification_verified_rate_on_covered": None,
+            "etf_verification_items": 0,
+            "etf_verification_verified": 0,
+            "etf_verification_reference_gap": 0,
+            "etf_verification_missing_from_official": 0,
+            "etf_verification_name_mismatch": 0,
+            "etf_verification_cross_exchange_collision": 0,
+            "etf_verification_verified_rate_on_covered": None,
+            "unresolved_count": 0,
         },
     ]
 
@@ -213,7 +276,8 @@ def test_global_summary_markdown_and_gaps_include_new_sections():
             listing_status_history=[{"ticker": "AAA"}],
             listing_events=[{"ticker": "AAA"}],
             exchange_coverage=exchange_coverage,
-            verification_summary={"items": 1, "status_counts": {"verified": 1}},
+            stock_verification_summary={"items": 1, "status_counts": {"verified": 1}},
+            etf_verification_summary={"items": 2, "status_counts": {"verified": 1, "reference_gap": 1}},
         ),
         "freshness": {"tickers_built_at": "2026-04-06T00:00:00Z"},
         "source_coverage": [
@@ -264,6 +328,7 @@ def test_global_summary_markdown_and_gaps_include_new_sections():
     assert report["global"]["tickers"] == 1
     assert report["global"]["listing_keys"] == 1
     assert report["global"]["official_full_exchanges"] == 1
+    assert report["global"]["etf_verification_items"] == 2
     assert "# Coverage Report" in markdown
     assert "## Freshness" in markdown
     assert "## Source Coverage" in markdown
@@ -299,12 +364,14 @@ def test_build_freshness_report_calculates_ages():
         {"generated_at": "2026-04-06T11:00:00Z"},
         {"observed_at": "2026-04-06T12:00:00Z"},
         {"run_dir": "data/stock_verification/run-a", "generated_at": "2026-04-06T13:00:00Z"},
+        {"run_dir": "data/etf_verification/run-b", "generated_at": "2026-04-06T14:00:00Z"},
     )
 
     assert freshness["masterfiles_generated_at"] == "2026-04-06T10:00:00Z"
     assert freshness["identifiers_generated_at"] == "2026-04-06T11:00:00Z"
     assert freshness["listing_history_observed_at"] == "2026-04-06T12:00:00Z"
     assert freshness["latest_verification_run"] == "data/stock_verification/run-a"
+    assert freshness["latest_etf_verification_run"] == "data/etf_verification/run-b"
 
 
 def test_build_gap_report_and_b3_breakdown():
@@ -316,7 +383,7 @@ def test_build_gap_report_and_b3_breakdown():
             "masterfile_collisions": 0,
         }
     ]
-    verification_exchange_rows = [
+    stock_verification_exchange_rows = [
         {
             "exchange": "B3",
             "reference_gap": 0,
@@ -325,24 +392,41 @@ def test_build_gap_report_and_b3_breakdown():
             "cross_exchange_collision": 0,
         }
     ]
+    etf_verification_exchange_rows = [
+        {
+            "exchange": "B3",
+            "reference_gap": 2,
+            "missing_from_official": 0,
+            "name_mismatch": 0,
+            "cross_exchange_collision": 1,
+        }
+    ]
     verification_rows = [
         {"exchange": "B3", "ticker": "ABBV34", "name": "AbbVie", "status": "missing_from_official"},
         {"exchange": "B3", "ticker": "ASAI3F", "name": "Sendas", "status": "missing_from_official"},
         {"exchange": "B3", "ticker": "PETR4", "name": "Petrobras", "status": "missing_from_official"},
     ]
 
-    gap_report = build_gap_report(exchange_coverage, verification_exchange_rows)
+    gap_report = build_gap_report(exchange_coverage, stock_verification_exchange_rows, etf_verification_exchange_rows)
     b3_breakdown = build_b3_gap_breakdown(verification_rows)
 
     assert gap_report == [
         {
             "exchange": "B3",
             "venue_status": "official_full",
-            "unresolved_findings": 4,
-            "reference_gap": 0,
+            "unresolved_findings": 7,
+            "reference_gap": 2,
             "missing_from_official": 3,
             "name_mismatch": 1,
-            "cross_exchange_collision": 0,
+            "cross_exchange_collision": 1,
+            "stock_reference_gap": 0,
+            "stock_missing_from_official": 3,
+            "stock_name_mismatch": 1,
+            "stock_cross_exchange_collision": 0,
+            "etf_reference_gap": 2,
+            "etf_missing_from_official": 0,
+            "etf_name_mismatch": 0,
+            "etf_cross_exchange_collision": 1,
             "masterfile_missing": 10,
             "masterfile_collisions": 0,
         }
