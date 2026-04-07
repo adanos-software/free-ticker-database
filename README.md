@@ -3,20 +3,20 @@
 [![CI](https://github.com/adanos-software/free-ticker-database/actions/workflows/ci.yml/badge.svg)](https://github.com/adanos-software/free-ticker-database/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-A comprehensive, free-to-use stock and ETF ticker reference database covering 61,000+ securities across 68 exchanges and 68 countries.
+A comprehensive, free-to-use stock and ETF ticker reference database covering 56,000+ primary securities and 61,000+ exchange listings across 68 exchanges and 68 countries.
 
 ## Stats
 
 | Metric | Value |
 |---|---|
-| **Total tickers** | 61,353 |
-| Stocks | 44,638 |
-| ETFs | 16,715 |
+| **Total tickers** | 56,359 |
+| Stocks | 41,848 |
+| ETFs | 14,511 |
 | Exchanges | 68 |
 | Countries | 68 |
-| ISIN coverage | 43,656 (71.2%) |
-| Sector coverage | 37,839 (61.7%) |
-| Total aliases | 98,167 |
+| ISIN coverage | 38,662 (68.6%) |
+| Sector coverage | 33,890 (60.1%) |
+| Total aliases | 88,877 |
 
 ## Formats
 
@@ -24,34 +24,36 @@ Choose the format that fits your use case:
 
 | File | Size | Best for |
 |---|---|---|
-| [`data/tickers.csv`](data/tickers.csv) | 5.4 MB | Excel, spreadsheets, quick lookups |
-| [`data/listings.csv`](data/listings.csv) | 5.8 MB | Listing-keyed export without global ticker ambiguity |
-| [`data/tickers.json`](data/tickers.json) | 11.8 MB | Web apps, APIs |
-| [`data/tickers.parquet`](data/tickers.parquet) | 2.6 MB | Pandas, data science |
-| [`data/tickers.db`](data/tickers.db) | 18.7 MB | SQL queries, local apps |
-| [`data/aliases.csv`](data/aliases.csv) | 2.7 MB | Alias/name resolution |
-| [`data/identifiers.csv`](data/identifiers.csv) | 1.0 MB | ISIN/WKN lookups |
-| [`data/cross_listings.csv`](data/cross_listings.csv) | 0.3 MB | Cross-listed securities |
+| [`data/tickers.csv`](data/tickers.csv) | 5.0 MB | Excel, spreadsheets, quick lookups |
+| [`data/listings.csv`](data/listings.csv) | 6.1 MB | Listing-keyed export without global ticker ambiguity |
+| [`data/tickers.json`](data/tickers.json) | 11.0 MB | Web apps, APIs |
+| [`data/tickers.parquet`](data/tickers.parquet) | 2.5 MB | Pandas, data science |
+| [`data/tickers.db`](data/tickers.db) | 27.4 MB | SQL queries, local apps |
+| [`data/aliases.csv`](data/aliases.csv) | 2.3 MB | Alias/name resolution |
+| [`data/identifiers.csv`](data/identifiers.csv) | 952 KB | ISIN/WKN lookups |
+| [`data/cross_listings.csv`](data/cross_listings.csv) | 317 KB | Cross-listed securities |
 
 Additional reference artifacts:
 
 | File | Size | Best for |
 |---|---|---|
-| [`data/identifiers_extended.csv`](data/identifiers_extended.csv) | 1.7 MB | FIGI/CIK/LEI enrichment snapshot |
-| [`data/listing_index.csv`](data/listing_index.csv) | 5.2 MB | Listing-keyed identity/export bridge |
-| [`data/masterfiles/reference.csv`](data/masterfiles/reference.csv) | 3.1 MB | Official exchange-masterfile reference rows |
-| [`data/masterfiles/supplemental_listings.csv`](data/masterfiles/supplemental_listings.csv) | 0.3 MB | Safe official listings added to the core export |
-| [`data/history/latest_snapshot.csv`](data/history/latest_snapshot.csv) | 6.1 MB | Current listing-status baseline |
-| [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | 33 KB | Machine-readable coverage metrics |
-| [`data/reports/masterfile_collision_report.json`](data/reports/masterfile_collision_report.json) | 184 KB | Official-symbol gaps blocked by cross-exchange collisions |
+| [`data/identifiers_extended.csv`](data/identifiers_extended.csv) | 2.1 MB | FIGI/CIK/LEI enrichment snapshot |
+| [`data/listing_index.csv`](data/listing_index.csv) | 5.1 MB | Listing-keyed identity/export bridge |
+| [`data/masterfiles/reference.csv`](data/masterfiles/reference.csv) | 5.9 MB | Official exchange-masterfile reference rows |
+| [`data/masterfiles/supplemental_listings.csv`](data/masterfiles/supplemental_listings.csv) | 1002 KB | Safe official listings added to the core export |
+| [`data/history/latest_snapshot.csv`](data/history/latest_snapshot.csv) | 6.9 MB | Current listing-status baseline |
+| [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | 354 KB | Machine-readable coverage metrics |
+| [`data/reports/masterfile_collision_report.json`](data/reports/masterfile_collision_report.json) | 39 KB | Official-symbol gaps blocked by cross-exchange collisions |
 
-### tickers.csv (flat, Excel-friendly)
+### tickers.csv (flat, Excel-friendly, one row per security)
 
 ```
 ticker,name,exchange,asset_type,sector,country,country_code,isin,aliases
 KO,The Coca-Cola Company,NYSE,Stock,Consumer Staples,United States,US,US1912161007,191216|coca-cola|850663
 LPP,LPP S.A.,WSE,Stock,Consumer Cyclical,Poland,PL,PLLPP0000011,lpp|cropp|121065
 ```
+
+This is the canonical core export. When a security trades on multiple exchanges, `tickers.csv` keeps the primary listing only. Secondary listings stay in `cross_listings.csv` and `listings.csv`.
 
 ISIN is a dedicated column. Aliases are pipe-separated (`|`) for easy splitting.
 
@@ -78,13 +80,13 @@ VOW,DE0007664039,766403
 ### cross_listings.csv (multi-exchange securities)
 
 ```
-isin,ticker,exchange,is_primary
-AN8068571086,SLB,NYSE,1
-AN8068571086,SLBG34,B3,0
-AN8068571086,SLBN,BMV,0
+isin,listing_key,ticker,exchange,is_primary
+AN8068571086,NYSE::SLB,SLB,NYSE,1
+AN8068571086,B3::SLBG34,SLBG34,B3,0
+AN8068571086,BMV::SLBN,SLBN,BMV,0
 ```
 
-Securities traded on multiple exchanges share the same ISIN. The `is_primary` flag marks the home-exchange listing (based on ISIN country prefix and exchange ranking).
+Securities traded on multiple exchanges share the same ISIN. The `is_primary` flag marks the home-exchange listing (based on ISIN country prefix and exchange ranking). `listing_key` links each row back to `listings.csv`.
 
 ### identifiers_extended.csv (FIGI / CIK / LEI)
 
@@ -104,14 +106,14 @@ NASDAQ::AAPL,AAPL,NASDAQ,Apple Inc.,Stock,United States,US,US0378331005,865985,,
 
 This auxiliary export makes the current listing identity explicit as `exchange::ticker`. It does not replace the core global-unique `ticker` model yet, but it gives downstream users a stable per-listing key and makes future `(ticker, exchange)`-first migrations easier.
 
-### listings.csv (canonical listing rows)
+### listings.csv (full listing rows)
 
 ```
 listing_key,ticker,exchange,name,asset_type,sector,country,country_code,isin,aliases
 NASDAQ::AAPL,AAPL,NASDAQ,Apple Inc.,Stock,Information Technology,United States,US,US0378331005,apple|865985
 ```
 
-This is the canonical flat export for downstream systems that want a stable per-listing key today without relying on the auxiliary identifier bridge.
+This is the full listing-level export for downstream systems that want every venue line with a stable `listing_key` today.
 
 ### tickers.json
 
@@ -182,19 +184,19 @@ Tables: `tickers` (61,479 rows) + `aliases` (98,566 rows) + `cross_listings` (8,
 
 | Exchange | Tickers | Description |
 |---|---|---|
-| OTC | 10,596 | US OTC / Pink Sheets |
-| LSE | 6,409 | London Stock Exchange |
-| NASDAQ | 4,795 | NASDAQ |
+| OTC | 9,308 | US OTC / Pink Sheets |
+| LSE | 4,539 | London Stock Exchange |
+| NASDAQ | 4,531 | NASDAQ |
 | SZSE | 3,096 | Shenzhen Stock Exchange |
-| XETRA | 3,017 | Deutsche Boerse |
+| XETRA | 2,085 | Deutsche Boerse |
 | SSE | 2,811 | Shanghai Stock Exchange |
-| NYSE | 2,599 | New York Stock Exchange |
-| NYSE ARCA | 2,619 | NYSE ARCA (ETFs) |
-| KRX | 2,282 | Korea Exchange |
-| TSX | 1,766 | Toronto Stock Exchange |
-| B3 | 1,773 | Sao Paulo Exchange |
-| TWSE | 1,245 | Taiwan Stock Exchange |
-| ASX | 1,298 | Australian Securities Exchange |
+| NYSE | 2,414 | New York Stock Exchange |
+| NYSE ARCA | 2,613 | NYSE ARCA (ETFs) |
+| KRX | 2,281 | Korea Exchange |
+| TSX | 1,736 | Toronto Stock Exchange |
+| B3 | 923 | Sao Paulo Exchange |
+| TWSE | 1,240 | Taiwan Stock Exchange |
+| ASX | 1,295 | Australian Securities Exchange |
 | KOSDAQ | 1,140 | Korean OTC |
 | TPEX | 1,126 | Taipei Exchange |
 | + 52 more | ... | |

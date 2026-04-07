@@ -1,11 +1,11 @@
 {
   "global": {
-    "tickers": 61353,
-    "aliases": 98167,
-    "stocks": 44638,
-    "etfs": 16715,
-    "isin_coverage": 43656,
-    "sector_coverage": 37839,
+    "tickers": 56359,
+    "aliases": 88877,
+    "stocks": 41848,
+    "etfs": 14511,
+    "isin_coverage": 38662,
+    "sector_coverage": 33890,
     "cik_coverage": 8048,
     "figi_coverage": 4207,
     "lei_coverage": 1001,
@@ -35,23 +35,23 @@
     "etf_verification_cross_exchange_collision": 244
   },
   "freshness": {
-    "tickers_built_at": "2026-04-07T06:27:32Z",
-    "tickers_age_hours": 0.02,
+    "tickers_built_at": "2026-04-07T07:01:32Z",
+    "tickers_age_hours": 0.11,
     "masterfiles_generated_at": "2026-04-06T17:49:27Z",
-    "masterfiles_age_hours": 12.65,
-    "identifiers_generated_at": "2026-04-07T06:28:24Z",
-    "identifiers_age_hours": 0.0,
-    "listing_history_observed_at": "2026-04-07T06:27:32Z",
-    "listing_history_age_hours": 0.02,
-    "latest_verification_run": "data/stock_verification/run-20260406-stock-100-final3",
-    "latest_verification_generated_at": "2026-04-06T20:28:31Z",
-    "latest_verification_age_hours": 10.0,
-    "latest_stock_verification_run": "data/stock_verification/run-20260406-stock-100-final3",
-    "latest_stock_verification_generated_at": "2026-04-06T20:28:31Z",
-    "latest_stock_verification_age_hours": 10.0,
-    "latest_etf_verification_run": "data/etf_verification/run-20260406-etf-100-final3",
-    "latest_etf_verification_generated_at": "2026-04-06T20:28:31Z",
-    "latest_etf_verification_age_hours": 10.0
+    "masterfiles_age_hours": 13.31,
+    "identifiers_generated_at": "2026-04-07T07:03:16Z",
+    "identifiers_age_hours": 0.08,
+    "listing_history_observed_at": "2026-04-07T07:01:32Z",
+    "listing_history_age_hours": 0.11,
+    "latest_verification_run": "data/stock_verification/run-20260407-primary-core",
+    "latest_verification_generated_at": "2026-04-07T07:04:01Z",
+    "latest_verification_age_hours": 0.07,
+    "latest_stock_verification_run": "data/stock_verification/run-20260407-primary-core",
+    "latest_stock_verification_generated_at": "2026-04-07T07:04:01Z",
+    "latest_stock_verification_age_hours": 0.07,
+    "latest_etf_verification_run": "data/etf_verification/run-20260407-primary-core",
+    "latest_etf_verification_generated_at": "2026-04-07T07:04:00Z",
+    "latest_etf_verification_age_hours": 0.07
   },
   "source_coverage": [
     {
@@ -5803,53 +5803,53 @@
   "country_coverage": [
     {
       "country": "Argentina",
-      "tickers": 64,
-      "isin_coverage": 51,
-      "sector_coverage": 50,
+      "tickers": 62,
+      "isin_coverage": 49,
+      "sector_coverage": 48,
       "cik_coverage": 0,
       "figi_coverage": 48,
       "lei_coverage": 0
     },
     {
       "country": "Australia",
-      "tickers": 2247,
-      "isin_coverage": 1985,
-      "sector_coverage": 1587,
-      "cik_coverage": 327,
-      "figi_coverage": 1211,
+      "tickers": 2161,
+      "isin_coverage": 1899,
+      "sector_coverage": 1507,
+      "cik_coverage": 318,
+      "figi_coverage": 1203,
       "lei_coverage": 74
     },
     {
       "country": "Austria",
-      "tickers": 95,
-      "isin_coverage": 93,
-      "sector_coverage": 90,
-      "cik_coverage": 12,
-      "figi_coverage": 92,
+      "tickers": 54,
+      "isin_coverage": 52,
+      "sector_coverage": 49,
+      "cik_coverage": 11,
+      "figi_coverage": 52,
       "lei_coverage": 11
     },
     {
       "country": "Belgium",
-      "tickers": 179,
-      "isin_coverage": 174,
-      "sector_coverage": 134,
-      "cik_coverage": 11,
-      "figi_coverage": 87,
-      "lei_coverage": 13
+      "tickers": 121,
+      "isin_coverage": 116,
+      "sector_coverage": 85,
+      "cik_coverage": 8,
+      "figi_coverage": 51,
+      "lei_coverage": 5
     },
     {
       "country": "Bermuda",
-      "tickers": 191,
-      "isin_coverage": 191,
-      "sector_coverage": 184,
-      "cik_coverage": 71,
-      "figi_coverage": 5,
-      "lei_coverage": 19
+      "tickers": 169,
+      "isin_coverage": 169,
+      "sector_coverage": 162,
+      "cik_coverage": 69,
+      "figi_coverage": 2,
+      "lei_coverage": 18
     },
     {
       "country": "Botswana",
-      "tickers": 26,
-      "isin_coverage": 26,
+      "tickers": 25,
+      "isin_coverage": 25,
       "sector_coverage": 1,
       "cik_coverage": 0,
       "figi_coverage": 0,
@@ -5857,28 +5857,28 @@
     },
     {
       "country": "Brazil",
-      "tickers": 929,
-      "isin_coverage": 285,
-      "sector_coverage": 412,
+      "tickers": 925,
+      "isin_coverage": 281,
+      "sector_coverage": 408,
       "cik_coverage": 0,
       "figi_coverage": 0,
       "lei_coverage": 0
     },
     {
       "country": "Canada",
-      "tickers": 4881,
-      "isin_coverage": 3844,
-      "sector_coverage": 3020,
-      "cik_coverage": 771,
-      "figi_coverage": 1585,
-      "lei_coverage": 74
+      "tickers": 4487,
+      "isin_coverage": 3450,
+      "sector_coverage": 2674,
+      "cik_coverage": 656,
+      "figi_coverage": 1562,
+      "lei_coverage": 70
     },
     {
       "country": "Cayman Islands",
-      "tickers": 656,
-      "isin_coverage": 651,
-      "sector_coverage": 513,
-      "cik_coverage": 460,
+      "tickers": 621,
+      "isin_coverage": 616,
+      "sector_coverage": 479,
+      "cik_coverage": 444,
       "figi_coverage": 3,
       "lei_coverage": 16
     },
@@ -5893,9 +5893,9 @@
     },
     {
       "country": "China",
-      "tickers": 5991,
-      "isin_coverage": 4859,
-      "sector_coverage": 3509,
+      "tickers": 5984,
+      "isin_coverage": 4852,
+      "sector_coverage": 3502,
       "cik_coverage": 11,
       "figi_coverage": 0,
       "lei_coverage": 0
@@ -5911,65 +5911,65 @@
     },
     {
       "country": "Cyprus",
-      "tickers": 11,
-      "isin_coverage": 11,
-      "sector_coverage": 10,
+      "tickers": 10,
+      "isin_coverage": 10,
+      "sector_coverage": 9,
       "cik_coverage": 2,
       "figi_coverage": 0,
       "lei_coverage": 0
     },
     {
       "country": "Czech Republic",
-      "tickers": 26,
-      "isin_coverage": 20,
-      "sector_coverage": 9,
+      "tickers": 22,
+      "isin_coverage": 16,
+      "sector_coverage": 7,
       "cik_coverage": 0,
       "figi_coverage": 0,
       "lei_coverage": 0
     },
     {
       "country": "Denmark",
-      "tickers": 283,
-      "isin_coverage": 213,
-      "sector_coverage": 212,
-      "cik_coverage": 6,
+      "tickers": 227,
+      "isin_coverage": 157,
+      "sector_coverage": 165,
+      "cik_coverage": 4,
       "figi_coverage": 0,
       "lei_coverage": 0
     },
     {
       "country": "Egypt",
-      "tickers": 264,
-      "isin_coverage": 258,
-      "sector_coverage": 162,
-      "cik_coverage": 18,
+      "tickers": 261,
+      "isin_coverage": 255,
+      "sector_coverage": 159,
+      "cik_coverage": 16,
       "figi_coverage": 1,
       "lei_coverage": 2
     },
     {
       "country": "Finland",
-      "tickers": 283,
-      "isin_coverage": 245,
-      "sector_coverage": 222,
-      "cik_coverage": 3,
+      "tickers": 196,
+      "isin_coverage": 158,
+      "sector_coverage": 143,
+      "cik_coverage": 0,
       "figi_coverage": 0,
       "lei_coverage": 0
     },
     {
       "country": "France",
-      "tickers": 1022,
-      "isin_coverage": 936,
-      "sector_coverage": 807,
-      "cik_coverage": 37,
-      "figi_coverage": 451,
-      "lei_coverage": 53
+      "tickers": 749,
+      "isin_coverage": 663,
+      "sector_coverage": 561,
+      "cik_coverage": 29,
+      "figi_coverage": 449,
+      "lei_coverage": 52
     },
     {
       "country": "Germany",
-      "tickers": 1641,
-      "isin_coverage": 995,
-      "sector_coverage": 796,
-      "cik_coverage": 25,
-      "figi_coverage": 11,
+      "tickers": 1300,
+      "isin_coverage": 654,
+      "sector_coverage": 515,
+      "cik_coverage": 18,
+      "figi_coverage": 10,
       "lei_coverage": 7
     },
     {
@@ -5983,36 +5983,36 @@
     },
     {
       "country": "Greece",
-      "tickers": 140,
-      "isin_coverage": 113,
-      "sector_coverage": 139,
-      "cik_coverage": 5,
+      "tickers": 130,
+      "isin_coverage": 103,
+      "sector_coverage": 130,
+      "cik_coverage": 4,
       "figi_coverage": 0,
       "lei_coverage": 0
     },
     {
       "country": "Guernsey",
-      "tickers": 68,
-      "isin_coverage": 68,
-      "sector_coverage": 61,
+      "tickers": 60,
+      "isin_coverage": 60,
+      "sector_coverage": 55,
       "cik_coverage": 7,
       "figi_coverage": 1,
       "lei_coverage": 0
     },
     {
       "country": "Hong Kong",
-      "tickers": 40,
-      "isin_coverage": 40,
-      "sector_coverage": 38,
+      "tickers": 38,
+      "isin_coverage": 38,
+      "sector_coverage": 36,
       "cik_coverage": 1,
       "figi_coverage": 1,
       "lei_coverage": 0
     },
     {
       "country": "Hungary",
-      "tickers": 34,
-      "isin_coverage": 19,
-      "sector_coverage": 11,
+      "tickers": 30,
+      "isin_coverage": 15,
+      "sector_coverage": 9,
       "cik_coverage": 0,
       "figi_coverage": 0,
       "lei_coverage": 0
@@ -6037,65 +6037,65 @@
     },
     {
       "country": "Indonesia",
-      "tickers": 823,
-      "isin_coverage": 706,
-      "sector_coverage": 628,
-      "cik_coverage": 50,
+      "tickers": 810,
+      "isin_coverage": 693,
+      "sector_coverage": 616,
+      "cik_coverage": 49,
       "figi_coverage": 8,
       "lei_coverage": 4
     },
     {
       "country": "Ireland",
-      "tickers": 3510,
-      "isin_coverage": 3508,
-      "sector_coverage": 2012,
-      "cik_coverage": 71,
-      "figi_coverage": 128,
+      "tickers": 2028,
+      "isin_coverage": 2026,
+      "sector_coverage": 1064,
+      "cik_coverage": 61,
+      "figi_coverage": 63,
       "lei_coverage": 7
     },
     {
       "country": "Isle of Man",
-      "tickers": 9,
-      "isin_coverage": 9,
-      "sector_coverage": 9,
+      "tickers": 8,
+      "isin_coverage": 8,
+      "sector_coverage": 8,
       "cik_coverage": 3,
       "figi_coverage": 0,
       "lei_coverage": 0
     },
     {
       "country": "Israel",
-      "tickers": 822,
-      "isin_coverage": 462,
-      "sector_coverage": 441,
-      "cik_coverage": 106,
-      "figi_coverage": 1,
+      "tickers": 799,
+      "isin_coverage": 439,
+      "sector_coverage": 423,
+      "cik_coverage": 100,
+      "figi_coverage": 0,
       "lei_coverage": 2
     },
     {
       "country": "Italy",
-      "tickers": 134,
-      "isin_coverage": 134,
-      "sector_coverage": 122,
-      "cik_coverage": 5,
-      "figi_coverage": 6,
+      "tickers": 105,
+      "isin_coverage": 105,
+      "sector_coverage": 95,
+      "cik_coverage": 2,
+      "figi_coverage": 5,
       "lei_coverage": 0
     },
     {
       "country": "Japan",
-      "tickers": 3327,
-      "isin_coverage": 113,
-      "sector_coverage": 109,
-      "cik_coverage": 39,
+      "tickers": 3318,
+      "isin_coverage": 104,
+      "sector_coverage": 100,
+      "cik_coverage": 36,
       "figi_coverage": 0,
       "lei_coverage": 0
     },
     {
       "country": "Jersey",
-      "tickers": 153,
-      "isin_coverage": 153,
-      "sector_coverage": 67,
-      "cik_coverage": 19,
-      "figi_coverage": 3,
+      "tickers": 130,
+      "isin_coverage": 130,
+      "sector_coverage": 53,
+      "cik_coverage": 18,
+      "figi_coverage": 1,
       "lei_coverage": 4
     },
     {
@@ -6109,12 +6109,12 @@
     },
     {
       "country": "Luxembourg",
-      "tickers": 1319,
-      "isin_coverage": 1318,
-      "sector_coverage": 917,
-      "cik_coverage": 37,
-      "figi_coverage": 151,
-      "lei_coverage": 7
+      "tickers": 865,
+      "isin_coverage": 864,
+      "sector_coverage": 560,
+      "cik_coverage": 28,
+      "figi_coverage": 58,
+      "lei_coverage": 5
     },
     {
       "country": "Malawi",
@@ -6145,10 +6145,10 @@
     },
     {
       "country": "Mexico",
-      "tickers": 205,
-      "isin_coverage": 159,
-      "sector_coverage": 168,
-      "cik_coverage": 6,
+      "tickers": 169,
+      "isin_coverage": 123,
+      "sector_coverage": 136,
+      "cik_coverage": 4,
       "figi_coverage": 1,
       "lei_coverage": 0
     },
@@ -6163,19 +6163,19 @@
     },
     {
       "country": "Netherlands",
-      "tickers": 288,
-      "isin_coverage": 248,
-      "sector_coverage": 229,
-      "cik_coverage": 36,
-      "figi_coverage": 87,
-      "lei_coverage": 2
+      "tickers": 176,
+      "isin_coverage": 136,
+      "sector_coverage": 136,
+      "cik_coverage": 28,
+      "figi_coverage": 80,
+      "lei_coverage": 1
     },
     {
       "country": "New Zealand",
-      "tickers": 15,
-      "isin_coverage": 15,
-      "sector_coverage": 15,
-      "cik_coverage": 8,
+      "tickers": 14,
+      "isin_coverage": 14,
+      "sector_coverage": 14,
+      "cik_coverage": 7,
       "figi_coverage": 1,
       "lei_coverage": 1
     },
@@ -6190,17 +6190,17 @@
     },
     {
       "country": "Norway",
-      "tickers": 396,
-      "isin_coverage": 310,
-      "sector_coverage": 319,
-      "cik_coverage": 14,
-      "figi_coverage": 196,
+      "tickers": 299,
+      "isin_coverage": 213,
+      "sector_coverage": 225,
+      "cik_coverage": 9,
+      "figi_coverage": 194,
       "lei_coverage": 1
     },
     {
       "country": "Pakistan",
-      "tickers": 690,
-      "isin_coverage": 267,
+      "tickers": 686,
+      "isin_coverage": 263,
       "sector_coverage": 14,
       "cik_coverage": 3,
       "figi_coverage": 0,
@@ -6235,21 +6235,21 @@
     },
     {
       "country": "Poland",
-      "tickers": 293,
-      "isin_coverage": 256,
-      "sector_coverage": 199,
-      "cik_coverage": 32,
+      "tickers": 280,
+      "isin_coverage": 243,
+      "sector_coverage": 186,
+      "cik_coverage": 30,
       "figi_coverage": 2,
       "lei_coverage": 6
     },
     {
       "country": "Portugal",
-      "tickers": 45,
-      "isin_coverage": 42,
-      "sector_coverage": 37,
-      "cik_coverage": 1,
-      "figi_coverage": 19,
-      "lei_coverage": 4
+      "tickers": 32,
+      "isin_coverage": 29,
+      "sector_coverage": 24,
+      "cik_coverage": 0,
+      "figi_coverage": 10,
+      "lei_coverage": 2
     },
     {
       "country": "Romania",
@@ -6271,26 +6271,26 @@
     },
     {
       "country": "Singapore",
-      "tickers": 47,
-      "isin_coverage": 45,
-      "sector_coverage": 42,
+      "tickers": 46,
+      "isin_coverage": 44,
+      "sector_coverage": 41,
       "cik_coverage": 18,
       "figi_coverage": 1,
       "lei_coverage": 2
     },
     {
       "country": "South Africa",
-      "tickers": 227,
-      "isin_coverage": 195,
-      "sector_coverage": 102,
-      "cik_coverage": 6,
+      "tickers": 218,
+      "isin_coverage": 186,
+      "sector_coverage": 98,
+      "cik_coverage": 5,
       "figi_coverage": 0,
       "lei_coverage": 0
     },
     {
       "country": "South Korea",
-      "tickers": 3413,
-      "isin_coverage": 2463,
+      "tickers": 3412,
+      "isin_coverage": 2462,
       "sector_coverage": 2050,
       "cik_coverage": 1,
       "figi_coverage": 0,
@@ -6298,11 +6298,11 @@
     },
     {
       "country": "Spain",
-      "tickers": 264,
-      "isin_coverage": 252,
-      "sector_coverage": 229,
-      "cik_coverage": 12,
-      "figi_coverage": 10,
+      "tickers": 207,
+      "isin_coverage": 195,
+      "sector_coverage": 179,
+      "cik_coverage": 8,
+      "figi_coverage": 6,
       "lei_coverage": 4
     },
     {
@@ -6316,21 +6316,21 @@
     },
     {
       "country": "Sweden",
-      "tickers": 994,
-      "isin_coverage": 870,
-      "sector_coverage": 662,
-      "cik_coverage": 16,
+      "tickers": 802,
+      "isin_coverage": 678,
+      "sector_coverage": 508,
+      "cik_coverage": 13,
       "figi_coverage": 1,
       "lei_coverage": 1
     },
     {
       "country": "Switzerland",
-      "tickers": 550,
-      "isin_coverage": 515,
-      "sector_coverage": 372,
-      "cik_coverage": 39,
-      "figi_coverage": 18,
-      "lei_coverage": 8
+      "tickers": 383,
+      "isin_coverage": 348,
+      "sector_coverage": 242,
+      "cik_coverage": 26,
+      "figi_coverage": 6,
+      "lei_coverage": 6
     },
     {
       "country": "Taiwan",
@@ -6343,8 +6343,8 @@
     },
     {
       "country": "Tanzania",
-      "tickers": 17,
-      "isin_coverage": 15,
+      "tickers": 15,
+      "isin_coverage": 13,
       "sector_coverage": 2,
       "cik_coverage": 0,
       "figi_coverage": 0,
@@ -6352,9 +6352,9 @@
     },
     {
       "country": "Thailand",
-      "tickers": 600,
-      "isin_coverage": 404,
-      "sector_coverage": 584,
+      "tickers": 597,
+      "isin_coverage": 401,
+      "sector_coverage": 581,
       "cik_coverage": 42,
       "figi_coverage": 5,
       "lei_coverage": 6
@@ -6370,21 +6370,21 @@
     },
     {
       "country": "United Kingdom",
-      "tickers": 2725,
-      "isin_coverage": 1862,
-      "sector_coverage": 1776,
-      "cik_coverage": 143,
-      "figi_coverage": 18,
+      "tickers": 2184,
+      "isin_coverage": 1321,
+      "sector_coverage": 1309,
+      "cik_coverage": 117,
+      "figi_coverage": 9,
       "lei_coverage": 24
     },
     {
       "country": "United States",
-      "tickers": 16715,
-      "isin_coverage": 10705,
-      "sector_coverage": 11150,
-      "cik_coverage": 5383,
-      "figi_coverage": 16,
-      "lei_coverage": 607
+      "tickers": 16443,
+      "isin_coverage": 10433,
+      "sector_coverage": 10905,
+      "cik_coverage": 5254,
+      "figi_coverage": 15,
+      "lei_coverage": 591
     },
     {
       "country": "Vietnam",
@@ -6415,15 +6415,277 @@
     }
   ],
   "verification": {
-    "run_dir": "data/stock_verification/run-20260406-stock-100-final3",
-    "generated_at": "2026-04-06T20:28:31Z",
+    "run_dir": "data/stock_verification/run-20260407-primary-core",
+    "generated_at": "2026-04-07T07:04:01Z",
     "summary": {
+      "chunk_count": 20,
+      "completed_chunks": 20,
+      "missing_chunks": [],
       "items": 44638,
       "status_counts": {
         "cross_exchange_collision": 21,
         "reference_gap": 30437,
         "verified": 14180
-      }
+      },
+      "chunks": [
+        {
+          "chunk_index": 1,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "cross_exchange_collision": 1,
+            "reference_gap": 1528,
+            "verified": 703
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-01-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-01-of-20.csv"
+        },
+        {
+          "chunk_index": 2,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "cross_exchange_collision": 1,
+            "reference_gap": 1516,
+            "verified": 715
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-02-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-02-of-20.csv"
+        },
+        {
+          "chunk_index": 3,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "cross_exchange_collision": 2,
+            "reference_gap": 1505,
+            "verified": 725
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-03-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-03-of-20.csv"
+        },
+        {
+          "chunk_index": 4,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "reference_gap": 1522,
+            "verified": 710
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-04-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-04-of-20.csv"
+        },
+        {
+          "chunk_index": 5,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "reference_gap": 1530,
+            "verified": 702
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-05-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-05-of-20.csv"
+        },
+        {
+          "chunk_index": 6,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "cross_exchange_collision": 1,
+            "reference_gap": 1516,
+            "verified": 715
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-06-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-06-of-20.csv"
+        },
+        {
+          "chunk_index": 7,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "cross_exchange_collision": 1,
+            "reference_gap": 1520,
+            "verified": 711
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-07-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-07-of-20.csv"
+        },
+        {
+          "chunk_index": 8,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "cross_exchange_collision": 2,
+            "reference_gap": 1520,
+            "verified": 710
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-08-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-08-of-20.csv"
+        },
+        {
+          "chunk_index": 9,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "cross_exchange_collision": 2,
+            "reference_gap": 1514,
+            "verified": 716
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-09-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-09-of-20.csv"
+        },
+        {
+          "chunk_index": 10,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "cross_exchange_collision": 1,
+            "reference_gap": 1515,
+            "verified": 716
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-10-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-10-of-20.csv"
+        },
+        {
+          "chunk_index": 11,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "cross_exchange_collision": 1,
+            "reference_gap": 1540,
+            "verified": 691
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-11-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-11-of-20.csv"
+        },
+        {
+          "chunk_index": 12,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "cross_exchange_collision": 2,
+            "reference_gap": 1514,
+            "verified": 716
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-12-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-12-of-20.csv"
+        },
+        {
+          "chunk_index": 13,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "reference_gap": 1530,
+            "verified": 702
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-13-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-13-of-20.csv"
+        },
+        {
+          "chunk_index": 14,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "reference_gap": 1528,
+            "verified": 704
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-14-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-14-of-20.csv"
+        },
+        {
+          "chunk_index": 15,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "cross_exchange_collision": 2,
+            "reference_gap": 1521,
+            "verified": 709
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-15-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-15-of-20.csv"
+        },
+        {
+          "chunk_index": 16,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "reference_gap": 1529,
+            "verified": 703
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-16-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-16-of-20.csv"
+        },
+        {
+          "chunk_index": 17,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "reference_gap": 1530,
+            "verified": 702
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-17-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-17-of-20.csv"
+        },
+        {
+          "chunk_index": 18,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "cross_exchange_collision": 3,
+            "reference_gap": 1515,
+            "verified": 714
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-18-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-18-of-20.csv"
+        },
+        {
+          "chunk_index": 19,
+          "chunk_count": 20,
+          "items": 2231,
+          "status_counts": {
+            "reference_gap": 1514,
+            "verified": 717
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-19-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-19-of-20.csv"
+        },
+        {
+          "chunk_index": 20,
+          "chunk_count": 20,
+          "items": 2231,
+          "status_counts": {
+            "cross_exchange_collision": 2,
+            "reference_gap": 1530,
+            "verified": 699
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-20-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-20-of-20.csv"
+        }
+      ],
+      "finding_rows": 0,
+      "finding_examples": [],
+      "summary_json": "data/stock_verification/run-20260407-primary-core/summary.json",
+      "findings_csv": "data/stock_verification/run-20260407-primary-core/findings.csv"
     },
     "exchange_coverage": [
       {
@@ -7287,15 +7549,277 @@
     ]
   },
   "stock_verification": {
-    "run_dir": "data/stock_verification/run-20260406-stock-100-final3",
-    "generated_at": "2026-04-06T20:28:31Z",
+    "run_dir": "data/stock_verification/run-20260407-primary-core",
+    "generated_at": "2026-04-07T07:04:01Z",
     "summary": {
+      "chunk_count": 20,
+      "completed_chunks": 20,
+      "missing_chunks": [],
       "items": 44638,
       "status_counts": {
         "cross_exchange_collision": 21,
         "reference_gap": 30437,
         "verified": 14180
-      }
+      },
+      "chunks": [
+        {
+          "chunk_index": 1,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "cross_exchange_collision": 1,
+            "reference_gap": 1528,
+            "verified": 703
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-01-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-01-of-20.csv"
+        },
+        {
+          "chunk_index": 2,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "cross_exchange_collision": 1,
+            "reference_gap": 1516,
+            "verified": 715
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-02-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-02-of-20.csv"
+        },
+        {
+          "chunk_index": 3,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "cross_exchange_collision": 2,
+            "reference_gap": 1505,
+            "verified": 725
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-03-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-03-of-20.csv"
+        },
+        {
+          "chunk_index": 4,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "reference_gap": 1522,
+            "verified": 710
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-04-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-04-of-20.csv"
+        },
+        {
+          "chunk_index": 5,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "reference_gap": 1530,
+            "verified": 702
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-05-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-05-of-20.csv"
+        },
+        {
+          "chunk_index": 6,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "cross_exchange_collision": 1,
+            "reference_gap": 1516,
+            "verified": 715
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-06-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-06-of-20.csv"
+        },
+        {
+          "chunk_index": 7,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "cross_exchange_collision": 1,
+            "reference_gap": 1520,
+            "verified": 711
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-07-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-07-of-20.csv"
+        },
+        {
+          "chunk_index": 8,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "cross_exchange_collision": 2,
+            "reference_gap": 1520,
+            "verified": 710
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-08-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-08-of-20.csv"
+        },
+        {
+          "chunk_index": 9,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "cross_exchange_collision": 2,
+            "reference_gap": 1514,
+            "verified": 716
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-09-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-09-of-20.csv"
+        },
+        {
+          "chunk_index": 10,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "cross_exchange_collision": 1,
+            "reference_gap": 1515,
+            "verified": 716
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-10-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-10-of-20.csv"
+        },
+        {
+          "chunk_index": 11,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "cross_exchange_collision": 1,
+            "reference_gap": 1540,
+            "verified": 691
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-11-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-11-of-20.csv"
+        },
+        {
+          "chunk_index": 12,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "cross_exchange_collision": 2,
+            "reference_gap": 1514,
+            "verified": 716
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-12-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-12-of-20.csv"
+        },
+        {
+          "chunk_index": 13,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "reference_gap": 1530,
+            "verified": 702
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-13-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-13-of-20.csv"
+        },
+        {
+          "chunk_index": 14,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "reference_gap": 1528,
+            "verified": 704
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-14-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-14-of-20.csv"
+        },
+        {
+          "chunk_index": 15,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "cross_exchange_collision": 2,
+            "reference_gap": 1521,
+            "verified": 709
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-15-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-15-of-20.csv"
+        },
+        {
+          "chunk_index": 16,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "reference_gap": 1529,
+            "verified": 703
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-16-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-16-of-20.csv"
+        },
+        {
+          "chunk_index": 17,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "reference_gap": 1530,
+            "verified": 702
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-17-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-17-of-20.csv"
+        },
+        {
+          "chunk_index": 18,
+          "chunk_count": 20,
+          "items": 2232,
+          "status_counts": {
+            "cross_exchange_collision": 3,
+            "reference_gap": 1515,
+            "verified": 714
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-18-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-18-of-20.csv"
+        },
+        {
+          "chunk_index": 19,
+          "chunk_count": 20,
+          "items": 2231,
+          "status_counts": {
+            "reference_gap": 1514,
+            "verified": 717
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-19-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-19-of-20.csv"
+        },
+        {
+          "chunk_index": 20,
+          "chunk_count": 20,
+          "items": 2231,
+          "status_counts": {
+            "cross_exchange_collision": 2,
+            "reference_gap": 1530,
+            "verified": 699
+          },
+          "finding_examples": [],
+          "json_out": "data/stock_verification/run-20260407-primary-core/chunk-20-of-20.json",
+          "csv_out": "data/stock_verification/run-20260407-primary-core/chunk-20-of-20.csv"
+        }
+      ],
+      "finding_rows": 0,
+      "finding_examples": [],
+      "summary_json": "data/stock_verification/run-20260407-primary-core/summary.json",
+      "findings_csv": "data/stock_verification/run-20260407-primary-core/findings.csv"
     },
     "exchange_coverage": [
       {
@@ -8159,15 +8683,284 @@
     ]
   },
   "etf_verification": {
-    "run_dir": "data/etf_verification/run-20260406-etf-100-final3",
-    "generated_at": "2026-04-06T20:28:31Z",
+    "run_dir": "data/etf_verification/run-20260407-primary-core",
+    "generated_at": "2026-04-07T07:04:00Z",
     "summary": {
+      "chunk_count": 20,
+      "completed_chunks": 20,
+      "missing_chunks": [],
       "items": 16715,
       "status_counts": {
         "cross_exchange_collision": 244,
         "reference_gap": 11090,
         "verified": 5381
-      }
+      },
+      "chunks": [
+        {
+          "chunk_index": 1,
+          "chunk_count": 20,
+          "items": 836,
+          "status_counts": {
+            "cross_exchange_collision": 11,
+            "reference_gap": 559,
+            "verified": 266
+          },
+          "finding_examples": [],
+          "json_out": "data/etf_verification/run-20260407-primary-core/chunk-01-of-20.json",
+          "csv_out": "data/etf_verification/run-20260407-primary-core/chunk-01-of-20.csv"
+        },
+        {
+          "chunk_index": 2,
+          "chunk_count": 20,
+          "items": 836,
+          "status_counts": {
+            "cross_exchange_collision": 11,
+            "reference_gap": 558,
+            "verified": 267
+          },
+          "finding_examples": [],
+          "json_out": "data/etf_verification/run-20260407-primary-core/chunk-02-of-20.json",
+          "csv_out": "data/etf_verification/run-20260407-primary-core/chunk-02-of-20.csv"
+        },
+        {
+          "chunk_index": 3,
+          "chunk_count": 20,
+          "items": 836,
+          "status_counts": {
+            "cross_exchange_collision": 14,
+            "reference_gap": 550,
+            "verified": 272
+          },
+          "finding_examples": [],
+          "json_out": "data/etf_verification/run-20260407-primary-core/chunk-03-of-20.json",
+          "csv_out": "data/etf_verification/run-20260407-primary-core/chunk-03-of-20.csv"
+        },
+        {
+          "chunk_index": 4,
+          "chunk_count": 20,
+          "items": 836,
+          "status_counts": {
+            "cross_exchange_collision": 11,
+            "reference_gap": 549,
+            "verified": 276
+          },
+          "finding_examples": [],
+          "json_out": "data/etf_verification/run-20260407-primary-core/chunk-04-of-20.json",
+          "csv_out": "data/etf_verification/run-20260407-primary-core/chunk-04-of-20.csv"
+        },
+        {
+          "chunk_index": 5,
+          "chunk_count": 20,
+          "items": 836,
+          "status_counts": {
+            "cross_exchange_collision": 12,
+            "reference_gap": 543,
+            "verified": 281
+          },
+          "finding_examples": [],
+          "json_out": "data/etf_verification/run-20260407-primary-core/chunk-05-of-20.json",
+          "csv_out": "data/etf_verification/run-20260407-primary-core/chunk-05-of-20.csv"
+        },
+        {
+          "chunk_index": 6,
+          "chunk_count": 20,
+          "items": 836,
+          "status_counts": {
+            "cross_exchange_collision": 13,
+            "reference_gap": 549,
+            "verified": 274
+          },
+          "finding_examples": [],
+          "json_out": "data/etf_verification/run-20260407-primary-core/chunk-06-of-20.json",
+          "csv_out": "data/etf_verification/run-20260407-primary-core/chunk-06-of-20.csv"
+        },
+        {
+          "chunk_index": 7,
+          "chunk_count": 20,
+          "items": 836,
+          "status_counts": {
+            "cross_exchange_collision": 11,
+            "reference_gap": 553,
+            "verified": 272
+          },
+          "finding_examples": [],
+          "json_out": "data/etf_verification/run-20260407-primary-core/chunk-07-of-20.json",
+          "csv_out": "data/etf_verification/run-20260407-primary-core/chunk-07-of-20.csv"
+        },
+        {
+          "chunk_index": 8,
+          "chunk_count": 20,
+          "items": 836,
+          "status_counts": {
+            "cross_exchange_collision": 12,
+            "reference_gap": 560,
+            "verified": 264
+          },
+          "finding_examples": [],
+          "json_out": "data/etf_verification/run-20260407-primary-core/chunk-08-of-20.json",
+          "csv_out": "data/etf_verification/run-20260407-primary-core/chunk-08-of-20.csv"
+        },
+        {
+          "chunk_index": 9,
+          "chunk_count": 20,
+          "items": 836,
+          "status_counts": {
+            "cross_exchange_collision": 14,
+            "reference_gap": 555,
+            "verified": 267
+          },
+          "finding_examples": [],
+          "json_out": "data/etf_verification/run-20260407-primary-core/chunk-09-of-20.json",
+          "csv_out": "data/etf_verification/run-20260407-primary-core/chunk-09-of-20.csv"
+        },
+        {
+          "chunk_index": 10,
+          "chunk_count": 20,
+          "items": 836,
+          "status_counts": {
+            "cross_exchange_collision": 12,
+            "reference_gap": 555,
+            "verified": 269
+          },
+          "finding_examples": [],
+          "json_out": "data/etf_verification/run-20260407-primary-core/chunk-10-of-20.json",
+          "csv_out": "data/etf_verification/run-20260407-primary-core/chunk-10-of-20.csv"
+        },
+        {
+          "chunk_index": 11,
+          "chunk_count": 20,
+          "items": 836,
+          "status_counts": {
+            "cross_exchange_collision": 8,
+            "reference_gap": 558,
+            "verified": 270
+          },
+          "finding_examples": [],
+          "json_out": "data/etf_verification/run-20260407-primary-core/chunk-11-of-20.json",
+          "csv_out": "data/etf_verification/run-20260407-primary-core/chunk-11-of-20.csv"
+        },
+        {
+          "chunk_index": 12,
+          "chunk_count": 20,
+          "items": 836,
+          "status_counts": {
+            "cross_exchange_collision": 11,
+            "reference_gap": 559,
+            "verified": 266
+          },
+          "finding_examples": [],
+          "json_out": "data/etf_verification/run-20260407-primary-core/chunk-12-of-20.json",
+          "csv_out": "data/etf_verification/run-20260407-primary-core/chunk-12-of-20.csv"
+        },
+        {
+          "chunk_index": 13,
+          "chunk_count": 20,
+          "items": 836,
+          "status_counts": {
+            "cross_exchange_collision": 13,
+            "reference_gap": 558,
+            "verified": 265
+          },
+          "finding_examples": [],
+          "json_out": "data/etf_verification/run-20260407-primary-core/chunk-13-of-20.json",
+          "csv_out": "data/etf_verification/run-20260407-primary-core/chunk-13-of-20.csv"
+        },
+        {
+          "chunk_index": 14,
+          "chunk_count": 20,
+          "items": 836,
+          "status_counts": {
+            "cross_exchange_collision": 11,
+            "reference_gap": 555,
+            "verified": 270
+          },
+          "finding_examples": [],
+          "json_out": "data/etf_verification/run-20260407-primary-core/chunk-14-of-20.json",
+          "csv_out": "data/etf_verification/run-20260407-primary-core/chunk-14-of-20.csv"
+        },
+        {
+          "chunk_index": 15,
+          "chunk_count": 20,
+          "items": 836,
+          "status_counts": {
+            "cross_exchange_collision": 8,
+            "reference_gap": 552,
+            "verified": 276
+          },
+          "finding_examples": [],
+          "json_out": "data/etf_verification/run-20260407-primary-core/chunk-15-of-20.json",
+          "csv_out": "data/etf_verification/run-20260407-primary-core/chunk-15-of-20.csv"
+        },
+        {
+          "chunk_index": 16,
+          "chunk_count": 20,
+          "items": 835,
+          "status_counts": {
+            "cross_exchange_collision": 10,
+            "reference_gap": 555,
+            "verified": 270
+          },
+          "finding_examples": [],
+          "json_out": "data/etf_verification/run-20260407-primary-core/chunk-16-of-20.json",
+          "csv_out": "data/etf_verification/run-20260407-primary-core/chunk-16-of-20.csv"
+        },
+        {
+          "chunk_index": 17,
+          "chunk_count": 20,
+          "items": 835,
+          "status_counts": {
+            "cross_exchange_collision": 10,
+            "reference_gap": 559,
+            "verified": 266
+          },
+          "finding_examples": [],
+          "json_out": "data/etf_verification/run-20260407-primary-core/chunk-17-of-20.json",
+          "csv_out": "data/etf_verification/run-20260407-primary-core/chunk-17-of-20.csv"
+        },
+        {
+          "chunk_index": 18,
+          "chunk_count": 20,
+          "items": 835,
+          "status_counts": {
+            "cross_exchange_collision": 17,
+            "reference_gap": 554,
+            "verified": 264
+          },
+          "finding_examples": [],
+          "json_out": "data/etf_verification/run-20260407-primary-core/chunk-18-of-20.json",
+          "csv_out": "data/etf_verification/run-20260407-primary-core/chunk-18-of-20.csv"
+        },
+        {
+          "chunk_index": 19,
+          "chunk_count": 20,
+          "items": 835,
+          "status_counts": {
+            "cross_exchange_collision": 19,
+            "reference_gap": 555,
+            "verified": 261
+          },
+          "finding_examples": [],
+          "json_out": "data/etf_verification/run-20260407-primary-core/chunk-19-of-20.json",
+          "csv_out": "data/etf_verification/run-20260407-primary-core/chunk-19-of-20.csv"
+        },
+        {
+          "chunk_index": 20,
+          "chunk_count": 20,
+          "items": 835,
+          "status_counts": {
+            "cross_exchange_collision": 16,
+            "reference_gap": 554,
+            "verified": 265
+          },
+          "finding_examples": [],
+          "json_out": "data/etf_verification/run-20260407-primary-core/chunk-20-of-20.json",
+          "csv_out": "data/etf_verification/run-20260407-primary-core/chunk-20-of-20.csv"
+        }
+      ],
+      "finding_rows": 0,
+      "finding_examples": [],
+      "summary_json": "data/etf_verification/run-20260407-primary-core/summary.json",
+      "findings_csv": "data/etf_verification/run-20260407-primary-core/findings.csv"
     },
     "exchange_coverage": [
       {

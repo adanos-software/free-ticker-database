@@ -1240,11 +1240,12 @@ def write_db(
 
             CREATE TABLE cross_listings (
                 isin TEXT NOT NULL,
+                listing_key TEXT NOT NULL,
                 ticker TEXT NOT NULL,
                 exchange TEXT NOT NULL,
                 is_primary INTEGER NOT NULL DEFAULT 0,
-                PRIMARY KEY (isin, ticker),
-                FOREIGN KEY (ticker) REFERENCES tickers(ticker) ON DELETE CASCADE
+                PRIMARY KEY (isin, listing_key),
+                FOREIGN KEY (listing_key) REFERENCES listings(listing_key) ON DELETE CASCADE
             );
 
             CREATE INDEX idx_aliases_alias ON aliases(alias);
@@ -1281,8 +1282,8 @@ def write_db(
         if cross_listing_rows:
             conn.executemany(
                 """
-                INSERT INTO cross_listings (isin, ticker, exchange, is_primary)
-                VALUES (:isin, :ticker, :exchange, :is_primary)
+                INSERT INTO cross_listings (isin, listing_key, ticker, exchange, is_primary)
+                VALUES (:isin, :listing_key, :ticker, :exchange, :is_primary)
                 """,
                 cross_listing_rows,
             )
@@ -1339,6 +1340,36 @@ EXCHANGE_RANK: dict[str, int] = {
 }
 
 
+def cross_listing_sort_key(isin: str, row: dict[str, str]) -> tuple[int, int, str, str]:
+    exchange = row["exchange"]
+    is_home = 1 if EXCHANGE_ISIN_PREFIX.get(exchange) == isin[:2] else 0
+    rank = EXCHANGE_RANK.get(exchange, 99)
+    return (-is_home, rank, row["ticker"], exchange)
+
+
+def build_primary_ticker_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    """Collapse cross-listed securities to a single primary row in the core export."""
+    primary_listing_key_by_isin: dict[str, str] = {}
+    isin_groups: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for row in rows:
+        if row["isin"]:
+            isin_groups[row["isin"]].append(row)
+
+    for isin, group in isin_groups.items():
+        preferred = sorted(group, key=lambda candidate: cross_listing_sort_key(isin, candidate))[0]
+        primary_listing_key_by_isin[isin] = row_listing_key(preferred)
+
+    primary_rows: list[dict[str, str]] = []
+    for row in rows:
+        isin = row["isin"]
+        if not isin:
+            primary_rows.append(row)
+            continue
+        if row_listing_key(row) == primary_listing_key_by_isin[isin]:
+            primary_rows.append(row)
+    return primary_rows
+
+
 def build_cross_listings(rows: list[dict[str, str]]) -> list[dict[str, str]]:
     """Build cross-listing groups for ISINs shared by multiple tickers."""
     isin_groups: dict[str, list[dict[str, str]]] = defaultdict(list)
@@ -1351,21 +1382,15 @@ def build_cross_listings(rows: list[dict[str, str]]) -> list[dict[str, str]]:
         if len(group) < 2:
             continue
 
-        def sort_key(r: dict[str, str]) -> tuple[int, int, str]:
-            exchange = r["exchange"]
-            # Home exchange gets rank 0
-            is_home = 1 if EXCHANGE_ISIN_PREFIX.get(exchange) == isin[:2] else 0
-            rank = EXCHANGE_RANK.get(exchange, 99)
-            return (-is_home, rank, r["ticker"])
-
-        group_sorted = sorted(group, key=sort_key)
-        primary = group_sorted[0]["ticker"]
+        group_sorted = sorted(group, key=lambda candidate: cross_listing_sort_key(isin, candidate))
+        primary_listing_key = row_listing_key(group_sorted[0])
         for row in group_sorted:
             result.append({
                 "isin": isin,
+                "listing_key": row_listing_key(row),
                 "ticker": row["ticker"],
                 "exchange": row["exchange"],
-                "is_primary": "1" if row["ticker"] == primary else "0",
+                "is_primary": "1" if row_listing_key(row) == primary_listing_key else "0",
             })
 
     return result
@@ -1374,8 +1399,9 @@ def build_cross_listings(rows: list[dict[str, str]]) -> list[dict[str, str]]:
 def rebuild():
     rows, alias_type_lookup = cleaned_rows()
     listing_rows = build_listing_rows(rows)
-    alias_rows = build_alias_rows(rows, alias_type_lookup)
-    identifier_rows = build_identifier_rows(rows)
+    primary_rows = build_primary_ticker_rows(rows)
+    alias_rows = build_alias_rows(primary_rows, alias_type_lookup)
+    identifier_rows = build_identifier_rows(primary_rows)
     cross_listing_rows = build_cross_listings(rows)
 
     write_csv(
@@ -1393,7 +1419,7 @@ def rebuild():
                 "isin": row["isin"],
                 "aliases": "|".join(row["aliases"]),
             }
-            for row in rows
+            for row in primary_rows
         ),
     )
     write_csv(
@@ -1405,21 +1431,21 @@ def rebuild():
     write_csv(IDENTIFIERS_CSV, ["ticker", "isin", "wkn"], identifier_rows)
     write_csv(
         CROSS_LISTINGS_CSV,
-        ["isin", "ticker", "exchange", "is_primary"],
+        ["isin", "listing_key", "ticker", "exchange", "is_primary"],
         cross_listing_rows,
     )
-    write_json(rows)
-    write_db(rows, listing_rows, alias_rows, cross_listing_rows)
-    write_parquet(rows)
+    write_json(primary_rows)
+    write_db(primary_rows, listing_rows, alias_rows, cross_listing_rows)
+    write_parquet(primary_rows)
 
     stats = {
-        "tickers": len(rows),
-        "stocks": sum(1 for row in rows if row["asset_type"] == "Stock"),
-        "etfs": sum(1 for row in rows if row["asset_type"] == "ETF"),
-        "exchanges": len({row["exchange"] for row in rows if row["exchange"]}),
-        "countries": len({row["country"] for row in rows if row["country"]}),
-        "isin_coverage": sum(1 for row in rows if row["isin"]),
-        "sector_coverage": sum(1 for row in rows if row["sector"]),
+        "tickers": len(primary_rows),
+        "stocks": sum(1 for row in primary_rows if row["asset_type"] == "Stock"),
+        "etfs": sum(1 for row in primary_rows if row["asset_type"] == "ETF"),
+        "exchanges": len({row["exchange"] for row in primary_rows if row["exchange"]}),
+        "countries": len({row["country"] for row in primary_rows if row["country"]}),
+        "isin_coverage": sum(1 for row in primary_rows if row["isin"]),
+        "sector_coverage": sum(1 for row in primary_rows if row["sector"]),
         "aliases": len(alias_rows),
     }
     print(json.dumps(stats, indent=2))

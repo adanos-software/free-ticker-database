@@ -4,12 +4,12 @@
 
 | Metric | Value |
 |---|---|
-| tickers | 61353 |
-| aliases | 98167 |
-| stocks | 44638 |
-| etfs | 16715 |
-| isin_coverage | 43656 |
-| sector_coverage | 37839 |
+| tickers | 56359 |
+| aliases | 88877 |
+| stocks | 41848 |
+| etfs | 14511 |
+| isin_coverage | 38662 |
+| sector_coverage | 33890 |
 | cik_coverage | 8048 |
 | figi_coverage | 4207 |
 | lei_coverage | 1001 |
@@ -42,23 +42,23 @@
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-04-07T06:27:32Z |
-| tickers_age_hours | 0.02 |
+| tickers_built_at | 2026-04-07T07:01:32Z |
+| tickers_age_hours | 0.11 |
 | masterfiles_generated_at | 2026-04-06T17:49:27Z |
-| masterfiles_age_hours | 12.65 |
-| identifiers_generated_at | 2026-04-07T06:28:24Z |
-| identifiers_age_hours | 0.0 |
-| listing_history_observed_at | 2026-04-07T06:27:32Z |
-| listing_history_age_hours | 0.02 |
-| latest_verification_run | data/stock_verification/run-20260406-stock-100-final3 |
-| latest_verification_generated_at | 2026-04-06T20:28:31Z |
-| latest_verification_age_hours | 10.0 |
-| latest_stock_verification_run | data/stock_verification/run-20260406-stock-100-final3 |
-| latest_stock_verification_generated_at | 2026-04-06T20:28:31Z |
-| latest_stock_verification_age_hours | 10.0 |
-| latest_etf_verification_run | data/etf_verification/run-20260406-etf-100-final3 |
-| latest_etf_verification_generated_at | 2026-04-06T20:28:31Z |
-| latest_etf_verification_age_hours | 10.0 |
+| masterfiles_age_hours | 13.31 |
+| identifiers_generated_at | 2026-04-07T07:03:16Z |
+| identifiers_age_hours | 0.08 |
+| listing_history_observed_at | 2026-04-07T07:01:32Z |
+| listing_history_age_hours | 0.11 |
+| latest_verification_run | data/stock_verification/run-20260407-primary-core |
+| latest_verification_generated_at | 2026-04-07T07:04:01Z |
+| latest_verification_age_hours | 0.07 |
+| latest_stock_verification_run | data/stock_verification/run-20260407-primary-core |
+| latest_stock_verification_generated_at | 2026-04-07T07:04:01Z |
+| latest_stock_verification_age_hours | 0.07 |
+| latest_etf_verification_run | data/etf_verification/run-20260407-primary-core |
+| latest_etf_verification_generated_at | 2026-04-07T07:04:00Z |
+| latest_etf_verification_age_hours | 0.07 |
 
 ## Source Coverage
 
@@ -153,71 +153,71 @@
 
 | Country | Tickers | ISIN | Sector | CIK | FIGI | LEI |
 |---|---|---|---|---|---|---|
-| Argentina | 64 | 51 | 50 | 0 | 48 | 0 |
-| Australia | 2247 | 1985 | 1587 | 327 | 1211 | 74 |
-| Austria | 95 | 93 | 90 | 12 | 92 | 11 |
-| Belgium | 179 | 174 | 134 | 11 | 87 | 13 |
-| Bermuda | 191 | 191 | 184 | 71 | 5 | 19 |
-| Botswana | 26 | 26 | 1 | 0 | 0 | 0 |
-| Brazil | 929 | 285 | 412 | 0 | 0 | 0 |
-| Canada | 4881 | 3844 | 3020 | 771 | 1585 | 74 |
-| Cayman Islands | 656 | 651 | 513 | 460 | 3 | 16 |
+| Argentina | 62 | 49 | 48 | 0 | 48 | 0 |
+| Australia | 2161 | 1899 | 1507 | 318 | 1203 | 74 |
+| Austria | 54 | 52 | 49 | 11 | 52 | 11 |
+| Belgium | 121 | 116 | 85 | 8 | 51 | 5 |
+| Bermuda | 169 | 169 | 162 | 69 | 2 | 18 |
+| Botswana | 25 | 25 | 1 | 0 | 0 | 0 |
+| Brazil | 925 | 281 | 408 | 0 | 0 | 0 |
+| Canada | 4487 | 3450 | 2674 | 656 | 1562 | 70 |
+| Cayman Islands | 621 | 616 | 479 | 444 | 3 | 16 |
 | Chile | 118 | 86 | 95 | 0 | 1 | 1 |
-| China | 5991 | 4859 | 3509 | 11 | 0 | 0 |
+| China | 5984 | 4852 | 3502 | 11 | 0 | 0 |
 | Croatia | 23 | 0 | 1 | 0 | 0 | 0 |
-| Cyprus | 11 | 11 | 10 | 2 | 0 | 0 |
-| Czech Republic | 26 | 20 | 9 | 0 | 0 | 0 |
-| Denmark | 283 | 213 | 212 | 6 | 0 | 0 |
-| Egypt | 264 | 258 | 162 | 18 | 1 | 2 |
-| Finland | 283 | 245 | 222 | 3 | 0 | 0 |
-| France | 1022 | 936 | 807 | 37 | 451 | 53 |
-| Germany | 1641 | 995 | 796 | 25 | 11 | 7 |
+| Cyprus | 10 | 10 | 9 | 2 | 0 | 0 |
+| Czech Republic | 22 | 16 | 7 | 0 | 0 | 0 |
+| Denmark | 227 | 157 | 165 | 4 | 0 | 0 |
+| Egypt | 261 | 255 | 159 | 16 | 1 | 2 |
+| Finland | 196 | 158 | 143 | 0 | 0 | 0 |
+| France | 749 | 663 | 561 | 29 | 449 | 52 |
+| Germany | 1300 | 654 | 515 | 18 | 10 | 7 |
 | Ghana | 18 | 17 | 2 | 0 | 0 | 0 |
-| Greece | 140 | 113 | 139 | 5 | 0 | 0 |
-| Guernsey | 68 | 68 | 61 | 7 | 1 | 0 |
-| Hong Kong | 40 | 40 | 38 | 1 | 1 | 0 |
-| Hungary | 34 | 19 | 11 | 0 | 0 | 0 |
+| Greece | 130 | 103 | 130 | 4 | 0 | 0 |
+| Guernsey | 60 | 60 | 55 | 7 | 1 | 0 |
+| Hong Kong | 38 | 38 | 36 | 1 | 1 | 0 |
+| Hungary | 30 | 15 | 9 | 0 | 0 | 0 |
 | Iceland | 18 | 17 | 3 | 1 | 0 | 0 |
 | India | 1 | 1 | 1 | 0 | 0 | 0 |
-| Indonesia | 823 | 706 | 628 | 50 | 8 | 4 |
-| Ireland | 3510 | 3508 | 2012 | 71 | 128 | 7 |
-| Isle of Man | 9 | 9 | 9 | 3 | 0 | 0 |
-| Israel | 822 | 462 | 441 | 106 | 1 | 2 |
-| Italy | 134 | 134 | 122 | 5 | 6 | 0 |
-| Japan | 3327 | 113 | 109 | 39 | 0 | 0 |
-| Jersey | 153 | 153 | 67 | 19 | 3 | 4 |
+| Indonesia | 810 | 693 | 616 | 49 | 8 | 4 |
+| Ireland | 2028 | 2026 | 1064 | 61 | 63 | 7 |
+| Isle of Man | 8 | 8 | 8 | 3 | 0 | 0 |
+| Israel | 799 | 439 | 423 | 100 | 0 | 2 |
+| Italy | 105 | 105 | 95 | 2 | 5 | 0 |
+| Japan | 3318 | 104 | 100 | 36 | 0 | 0 |
+| Jersey | 130 | 130 | 53 | 18 | 1 | 4 |
 | Kenya | 45 | 45 | 6 | 0 | 0 | 0 |
-| Luxembourg | 1319 | 1318 | 917 | 37 | 151 | 7 |
+| Luxembourg | 865 | 864 | 560 | 28 | 58 | 5 |
 | Malawi | 8 | 5 | 0 | 0 | 0 | 0 |
 | Malaysia | 928 | 853 | 923 | 0 | 0 | 0 |
 | Mauritius | 51 | 51 | 3 | 1 | 0 | 0 |
-| Mexico | 205 | 159 | 168 | 6 | 1 | 0 |
+| Mexico | 169 | 123 | 136 | 4 | 1 | 0 |
 | Morocco | 66 | 66 | 2 | 0 | 0 | 0 |
-| Netherlands | 288 | 248 | 229 | 36 | 87 | 2 |
-| New Zealand | 15 | 15 | 15 | 8 | 1 | 1 |
+| Netherlands | 176 | 136 | 136 | 28 | 80 | 1 |
+| New Zealand | 14 | 14 | 14 | 7 | 1 | 1 |
 | Nigeria | 145 | 143 | 3 | 0 | 0 | 0 |
-| Norway | 396 | 310 | 319 | 14 | 196 | 1 |
-| Pakistan | 690 | 267 | 14 | 3 | 0 | 0 |
+| Norway | 299 | 213 | 225 | 9 | 194 | 1 |
+| Pakistan | 686 | 263 | 14 | 3 | 0 | 0 |
 | Panama | 1 | 0 | 1 | 1 | 0 | 0 |
 | Peru | 33 | 0 | 3 | 0 | 0 | 0 |
 | Philippines | 139 | 110 | 30 | 15 | 2 | 2 |
-| Poland | 293 | 256 | 199 | 32 | 2 | 6 |
-| Portugal | 45 | 42 | 37 | 1 | 19 | 4 |
+| Poland | 280 | 243 | 186 | 30 | 2 | 6 |
+| Portugal | 32 | 29 | 24 | 0 | 10 | 2 |
 | Romania | 87 | 83 | 77 | 7 | 0 | 0 |
 | Rwanda | 2 | 2 | 0 | 0 | 0 | 0 |
-| Singapore | 47 | 45 | 42 | 18 | 1 | 2 |
-| South Africa | 227 | 195 | 102 | 6 | 0 | 0 |
-| South Korea | 3413 | 2463 | 2050 | 1 | 0 | 0 |
-| Spain | 264 | 252 | 229 | 12 | 10 | 4 |
+| Singapore | 46 | 44 | 41 | 18 | 1 | 2 |
+| South Africa | 218 | 186 | 98 | 5 | 0 | 0 |
+| South Korea | 3412 | 2462 | 2050 | 1 | 0 | 0 |
+| Spain | 207 | 195 | 179 | 8 | 6 | 4 |
 | Sri Lanka | 3 | 0 | 0 | 0 | 0 | 0 |
-| Sweden | 994 | 870 | 662 | 16 | 1 | 1 |
-| Switzerland | 550 | 515 | 372 | 39 | 18 | 8 |
+| Sweden | 802 | 678 | 508 | 13 | 1 | 1 |
+| Switzerland | 383 | 348 | 242 | 26 | 6 | 6 |
 | Taiwan | 2343 | 1784 | 1970 | 0 | 0 | 0 |
-| Tanzania | 17 | 15 | 2 | 0 | 0 | 0 |
-| Thailand | 600 | 404 | 584 | 42 | 5 | 6 |
+| Tanzania | 15 | 13 | 2 | 0 | 0 | 0 |
+| Thailand | 597 | 401 | 581 | 42 | 5 | 6 |
 | Uganda | 7 | 7 | 0 | 0 | 0 | 0 |
-| United Kingdom | 2725 | 1862 | 1776 | 143 | 18 | 24 |
-| United States | 16715 | 10705 | 11150 | 5383 | 16 | 607 |
+| United Kingdom | 2184 | 1321 | 1309 | 117 | 9 | 24 |
+| United States | 16443 | 10433 | 10905 | 5254 | 15 | 591 |
 | Vietnam | 252 | 229 | 145 | 3 | 0 | 0 |
 | Zambia | 22 | 22 | 1 | 0 | 0 | 0 |
 | Zimbabwe | 27 | 27 | 3 | 0 | 0 | 0 |

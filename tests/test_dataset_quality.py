@@ -33,6 +33,13 @@ def ticker_exchange_row(ticker: str, exchange: str):
     return None
 
 
+def listing_ticker_exchange_row(ticker: str, exchange: str):
+    for row in load_csv("listings.csv"):
+        if row["ticker"] == ticker and row["exchange"] == exchange:
+            return row
+    return None
+
+
 def test_common_word_aliases_removed():
     aliases = {(row["ticker"], row["alias"]) for row in load_csv("aliases.csv")}
     blocked = {
@@ -68,19 +75,19 @@ def test_yahoo_high_risk_aliases_removed():
     assert "Berkshire" not in ticker_row("BRK")["aliases"]
     assert "BRK-A" not in ticker_row("BRK")["aliases"]
     assert "TBC" not in ticker_row("T")["aliases"]
-    assert "TBC" not in ticker_row("SOBA")["aliases"]
+    assert "TBC" not in listing_ticker_exchange_row("SOBA", "XETRA")["aliases"]
     assert "pt itsec asia" not in ticker_row("CYBR")["aliases"]
 
 
 def test_residual_alias_collisions_and_metadata_contamination_are_removed():
     gen = ticker_exchange_row("GEN", "NASDAQ")
-    gen_lse = ticker_exchange_row("0AD5", "LSE")
+    gen_lse = listing_ticker_exchange_row("0AD5", "LSE")
     fg = ticker_exchange_row("FG", "NYSE")
     amg = ticker_exchange_row("AMG", "NYSE")
     cntx = ticker_exchange_row("CNTX", "NASDAQ")
     cybr = ticker_exchange_row("CYBR", "LSE")
     sea = ticker_exchange_row("SEA", "NYSE ARCA")
-    soba = ticker_exchange_row("SOBA", "XETRA")
+    soba = listing_ticker_exchange_row("SOBA", "XETRA")
     att = ticker_exchange_row("T", "NYSE")
     dte = ticker_exchange_row("DTE", "NYSE")
     gap = ticker_exchange_row("GAP", "NYSE")
@@ -166,9 +173,9 @@ def test_non_common_instruments_removed():
 def test_country_examples_corrected():
     assert ticker_row("AAIGF")["country"] == "Hong Kong"
     assert ticker_row("AANNF")["country"] == "Luxembourg"
-    assert ticker_row("AAVMY")["country"] == "Netherlands"
-    assert ticker_row("0A00")["country"] == "Netherlands"
-    assert ticker_row("04Q")["country"] == "Finland"
+    assert listing_ticker_exchange_row("AAVMY", "OTC")["country"] == "Netherlands"
+    assert listing_ticker_exchange_row("0A00", "LSE")["country"] == "Netherlands"
+    assert listing_ticker_exchange_row("04Q", "XETRA")["country"] == "Finland"
     assert ticker_row("A1CR34") is None
 
 
@@ -543,10 +550,10 @@ def test_readme_stats_and_claims_are_current():
     assert f"| Total aliases | {len(aliases_csv):,} |" in readme
     assert f"| ISIN coverage | {isin_count:,} ({isin_count / total * 100:.1f}%) |" in readme
     assert f"| Sector coverage | {sector_count:,} ({sector_count / total * 100:.1f}%) |" in readme
-    assert "| NASDAQ | 4,795 | NASDAQ |" in readme
-    assert "| XETRA | 3,017 | Deutsche Boerse |" in readme
-    assert "| NYSE | 2,599 | New York Stock Exchange |" in readme
-    assert "| ASX | 1,298 | Australian Securities Exchange |" in readme
+    assert "| NASDAQ | 4,531 | NASDAQ |" in readme
+    assert "| XETRA | 2,085 | Deutsche Boerse |" in readme
+    assert "| NYSE | 2,414 | New York Stock Exchange |" in readme
+    assert "| ASX | 1,295 | Australian Securities Exchange |" in readme
 
 
 def test_release_docs_and_supporting_docs_are_current():
@@ -687,6 +694,32 @@ def test_cross_listings_each_isin_has_exactly_one_primary():
     assert not missing, f"ISINs without primary: {list(missing)[:5]}"
     multi = {k: v for k, v in primary_counts.items() if v > 1}
     assert not multi, f"ISINs with multiple primaries: {list(multi)[:5]}"
+
+
+def test_tickers_csv_keeps_only_primary_cross_listing_rows():
+    rows = load_csv("tickers.csv")
+    by_isin = {}
+    duplicates = []
+    for row in rows:
+        isin = row["isin"]
+        if not isin:
+            continue
+        if isin in by_isin:
+            duplicates.append((isin, by_isin[isin], (row["ticker"], row["exchange"])))
+            continue
+        by_isin[isin] = (row["ticker"], row["exchange"])
+
+    assert not duplicates, f"Duplicate ISIN rows remain in tickers.csv: {duplicates[:5]}"
+
+    msft = ticker_exchange_row("MSFT", "NASDAQ")
+    msf = ticker_exchange_row("MSF", "XETRA")
+    assert msft is not None
+    assert msf is None
+
+    cross_rows = load_csv("cross_listings.csv")
+    microsoft_rows = [row for row in cross_rows if row["isin"] == "US5949181045"]
+    assert {row["listing_key"] for row in microsoft_rows} == {"NASDAQ::MSFT", "XETRA::MSF"}
+    assert sum(row["is_primary"] == "1" for row in microsoft_rows) == 1
 
 
 def test_cross_listings_sqlite_table_matches_csv_rows():

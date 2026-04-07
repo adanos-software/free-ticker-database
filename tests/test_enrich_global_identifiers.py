@@ -192,9 +192,10 @@ def test_normalize_company_name_strips_punctuation():
 
 
 def test_build_base_identifier_rows_preserves_existing_extended_values(tmp_path, monkeypatch):
-    tickers = tmp_path / "tickers.csv"
-    tickers.write_text(
-        "ticker,name,exchange,country,country_code,asset_type\nAAPL,Apple Inc.,NASDAQ,United States,US,Stock\n",
+    listings = tmp_path / "listings.csv"
+    listings.write_text(
+        "listing_key,ticker,exchange,name,asset_type,sector,country,country_code,isin,aliases\n"
+        "NASDAQ::AAPL,AAPL,NASDAQ,Apple Inc.,Stock,,United States,US,US0378331005,\n",
         encoding="utf-8",
     )
     identifiers = tmp_path / "identifiers.csv"
@@ -205,7 +206,7 @@ def test_build_base_identifier_rows_preserves_existing_extended_values(tmp_path,
         "AAPL,NASDAQ,US0378331005,,BBG000B9XRY4,0000320193,HWUPKR0MPOU8FGXBT394,OpenFIGI,SEC,GLEIF\n",
         encoding="utf-8",
     )
-    monkeypatch.setattr("scripts.enrich_global_identifiers.TICKERS_CSV", tickers)
+    monkeypatch.setattr("scripts.enrich_global_identifiers.LISTINGS_CSV", listings)
     monkeypatch.setattr("scripts.enrich_global_identifiers.IDENTIFIERS_CSV", identifiers)
     monkeypatch.setattr("scripts.enrich_global_identifiers.IDENTIFIERS_EXTENDED_CSV", identifiers_extended)
 

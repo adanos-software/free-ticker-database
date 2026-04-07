@@ -13,7 +13,7 @@ except ModuleNotFoundError:  # pragma: no cover - script execution path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
-TICKERS_CSV = DATA_DIR / "tickers.csv"
+LISTINGS_CSV = DATA_DIR / "listings.csv"
 MASTERFILE_REFERENCE_CSV = DATA_DIR / "masterfiles" / "reference.csv"
 MASTERFILE_SUPPLEMENT_CSV = DATA_DIR / "masterfiles" / "supplemental_listings.csv"
 MASTERFILE_SUPPLEMENT_SUMMARY_JSON = DATA_DIR / "masterfiles" / "supplemental_summary.json"
@@ -227,7 +227,7 @@ def rows_refer_to_same_entity(core_row: dict[str, str], masterfile_row: dict[str
 
 
 def main() -> dict[str, Any]:
-    core_rows = load_csv(TICKERS_CSV)
+    core_rows = load_csv(LISTINGS_CSV)
     masterfile_rows = load_csv(MASTERFILE_REFERENCE_CSV)
     supplement_rows, summary = build_supplement_rows(core_rows, masterfile_rows)
     fieldnames = [

@@ -19,7 +19,7 @@ except ModuleNotFoundError:  # pragma: no cover - script execution path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
-TICKERS_CSV = DATA_DIR / "tickers.csv"
+LISTINGS_CSV = DATA_DIR / "listings.csv"
 IDENTIFIERS_CSV = DATA_DIR / "identifiers.csv"
 IDENTIFIERS_EXTENDED_CSV = DATA_DIR / "identifiers_extended.csv"
 LISTING_INDEX_CSV = DATA_DIR / "listing_index.csv"
@@ -167,7 +167,7 @@ def post_json(
 
 
 def build_base_identifier_rows() -> list[dict[str, str]]:
-    tickers = {(row["ticker"], row["exchange"]): row for row in load_csv(TICKERS_CSV)}
+    listings = {(row["ticker"], row["exchange"]): row for row in load_csv(LISTINGS_CSV)}
     identifiers_by_ticker = {row["ticker"]: row for row in load_csv(IDENTIFIERS_CSV)}
     existing_extended: dict[tuple[str, str], dict[str, str]] = {}
     if IDENTIFIERS_EXTENDED_CSV.exists():
@@ -176,14 +176,14 @@ def build_base_identifier_rows() -> list[dict[str, str]]:
             for row in load_csv(IDENTIFIERS_EXTENDED_CSV)
         }
     rows: list[dict[str, str]] = []
-    for (ticker, exchange), ticker_row in sorted(tickers.items()):
+    for (ticker, exchange), listing_row in sorted(listings.items()):
         identifier_row = identifiers_by_ticker.get(ticker, {"isin": "", "wkn": ""})
         existing_row = existing_extended.get((ticker, exchange), {})
         rows.append(
             {
                 "ticker": ticker,
                 "exchange": exchange,
-                "isin": identifier_row.get("isin", ""),
+                "isin": listing_row.get("isin", "") or identifier_row.get("isin", ""),
                 "wkn": identifier_row.get("wkn", ""),
                 "figi": existing_row.get("figi", ""),
                 "cik": existing_row.get("cik", ""),
@@ -191,10 +191,10 @@ def build_base_identifier_rows() -> list[dict[str, str]]:
                 "figi_source": existing_row.get("figi_source", ""),
                 "cik_source": existing_row.get("cik_source", ""),
                 "lei_source": existing_row.get("lei_source", ""),
-                "name": ticker_row["name"],
-                "country": ticker_row["country"],
-                "country_code": ticker_row.get("country_code", ""),
-                "asset_type": ticker_row["asset_type"],
+                "name": listing_row["name"],
+                "country": listing_row["country"],
+                "country_code": listing_row.get("country_code", ""),
+                "asset_type": listing_row["asset_type"],
             }
         )
     return rows

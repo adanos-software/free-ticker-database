@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
 REPORTS_DIR = DATA_DIR / "reports"
 TICKERS_CSV = DATA_DIR / "tickers.csv"
+LISTINGS_CSV = DATA_DIR / "listings.csv"
 TICKERS_JSON = DATA_DIR / "tickers.json"
 ALIASES_CSV = DATA_DIR / "aliases.csv"
 IDENTIFIERS_EXTENDED_CSV = DATA_DIR / "identifiers_extended.csv"
@@ -270,6 +271,7 @@ def build_country_report(
 
 def build_global_summary(
     tickers: list[dict[str, str]],
+    listings: list[dict[str, str]],
     aliases: list[dict[str, str]],
     identifiers_extended: list[dict[str, str]],
     listing_status_history: list[dict[str, str]],
@@ -292,7 +294,7 @@ def build_global_summary(
         "listing_status_rows": len(listing_status_history),
         "listing_status_intervals": len(listing_status_history),
         "listing_events": len(listing_events),
-        "listing_keys": len({row_listing_key(row) for row in tickers}),
+        "listing_keys": len({row_listing_key(row) for row in listings}),
         "official_masterfile_symbols": sum(row["masterfile_symbols"] for row in exchange_coverage),
         "official_masterfile_matches": sum(row["masterfile_matches"] for row in exchange_coverage),
         "official_masterfile_collisions": sum(row["masterfile_collisions"] for row in exchange_coverage),
@@ -664,6 +666,7 @@ def build_masterfile_collision_report(
 def build_report() -> dict[str, Any]:
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     tickers = load_csv(TICKERS_CSV)
+    listings = load_csv(LISTINGS_CSV)
     aliases = load_csv(ALIASES_CSV)
     identifiers_extended = load_csv(IDENTIFIERS_EXTENDED_CSV)
     masterfiles = load_csv(MASTERFILE_REFERENCE_CSV)
@@ -677,16 +680,17 @@ def build_report() -> dict[str, Any]:
     etf_verification = load_verification_report(find_latest_verification_run(ETF_VERIFICATION_DIR))
 
     exchange_coverage = build_exchange_report(
-        tickers,
+        listings,
         identifiers_extended,
         masterfiles,
         stock_verification_exchange_rows=stock_verification["exchange_rows"],
         etf_verification_exchange_rows=etf_verification["exchange_rows"],
     )
-    masterfile_collision_report = build_masterfile_collision_report(tickers, masterfiles)
+    masterfile_collision_report = build_masterfile_collision_report(listings, masterfiles)
     report = {
         "global": build_global_summary(
             tickers,
+            listings,
             aliases,
             identifiers_extended,
             listing_status_history,

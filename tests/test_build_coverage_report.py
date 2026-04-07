@@ -271,6 +271,7 @@ def test_global_summary_markdown_and_gaps_include_new_sections():
     report = {
         "global": build_global_summary(
             tickers=[{"ticker": "AAA", "exchange": "NYSE", "asset_type": "Stock", "isin": "X", "sector": "Y"}],
+            listings=[{"ticker": "AAA", "exchange": "NYSE", "asset_type": "Stock", "isin": "X", "sector": "Y"}],
             aliases=[{"ticker": "AAA", "alias": "alpha"}],
             identifiers_extended=[{"ticker": "AAA", "exchange": "NYSE", "cik": "1", "figi": "", "lei": ""}],
             listing_status_history=[{"ticker": "AAA"}],

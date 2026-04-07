@@ -18,7 +18,7 @@ from scripts.rebuild_dataset import alias_matches_company
 
 
 DATA_DIR = ROOT / "data"
-TICKERS_CSV = DATA_DIR / "tickers.csv"
+LISTINGS_CSV = DATA_DIR / "listings.csv"
 MASTERFILE_REFERENCE_CSV = DATA_DIR / "masterfiles" / "reference.csv"
 IDENTIFIERS_EXTENDED_CSV = DATA_DIR / "identifiers_extended.csv"
 DEFAULT_OUTPUT_DIR_BY_ASSET_TYPE = {
@@ -90,13 +90,13 @@ def load_csv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
-def load_asset_rows(path: Path = TICKERS_CSV, *, asset_type: str = "Stock") -> list[dict[str, str]]:
+def load_asset_rows(path: Path = LISTINGS_CSV, *, asset_type: str = "Stock") -> list[dict[str, str]]:
     rows = load_csv(path)
     filtered = [row for row in rows if row.get("asset_type") == asset_type]
     return sorted(filtered, key=lambda row: (row["exchange"], row["ticker"]))
 
 
-def load_stock_rows(path: Path = TICKERS_CSV) -> list[dict[str, str]]:
+def load_stock_rows(path: Path = LISTINGS_CSV) -> list[dict[str, str]]:
     return load_asset_rows(path, asset_type="Stock")
 
 
@@ -364,7 +364,7 @@ def display_path(path: Path) -> str:
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Verify all stock listings against official exchange masterfiles.")
-    parser.add_argument("--tickers-csv", type=Path, default=TICKERS_CSV)
+    parser.add_argument("--tickers-csv", type=Path, default=LISTINGS_CSV)
     parser.add_argument("--reference-csv", type=Path, default=MASTERFILE_REFERENCE_CSV)
     parser.add_argument("--identifiers-csv", type=Path, default=IDENTIFIERS_EXTENDED_CSV)
     parser.add_argument("--asset-type", choices=sorted(DEFAULT_OUTPUT_DIR_BY_ASSET_TYPE), default="Stock")

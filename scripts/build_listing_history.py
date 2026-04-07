@@ -19,7 +19,7 @@ LISTING_EVENTS_CSV = HISTORY_DIR / "listing_events.csv"
 LISTING_STATUS_HISTORY_CSV = HISTORY_DIR / "listing_status_history.csv"
 DAILY_LISTING_SUMMARY_JSON = HISTORY_DIR / "daily_listing_summary.json"
 DAILY_LISTING_SUMMARY_CSV = HISTORY_DIR / "daily_listing_summary.csv"
-TICKERS_CSV = DATA_DIR / "tickers.csv"
+LISTINGS_CSV = DATA_DIR / "listings.csv"
 TICKERS_JSON = DATA_DIR / "tickers.json"
 STATUS_HISTORY_FIELDS = [
     "listing_key",
@@ -49,7 +49,7 @@ def load_csv(path: Path) -> list[dict[str, str]]:
 def load_current_rows() -> tuple[list[dict[str, str]], str]:
     with TICKERS_JSON.open(encoding="utf-8") as handle:
         built_at = json.load(handle)["_meta"]["built_at"]
-    return load_csv(TICKERS_CSV), built_at
+    return load_csv(LISTINGS_CSV), built_at
 
 
 def compact_legacy_status_history(existing_rows: list[dict[str, str]]) -> list[dict[str, str]]:
