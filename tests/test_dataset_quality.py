@@ -165,6 +165,19 @@ def test_non_common_instruments_removed():
     tickers = {row["ticker"] for row in load_csv("tickers.csv")}
     assert "AACBR" not in tickers
     assert "BAC-P-B" not in tickers
+    assert "BN-PFA" not in tickers
+    assert "BOHO-PREF" not in tickers
+    assert "BRN-PR-A" not in tickers
+    assert "CORE-PREF" not in tickers
+    assert "MTB-PH" not in tickers
+    assert "MTB-PJ" not in tickers
+    assert "MTB-PK" not in tickers
+    assert "PVF-PR-U" not in tickers
+    assert "PWF-PFA" not in tickers
+    assert "SDIP-PREF" not in tickers
+    assert "SNI-PR-A" not in tickers
+    assert "TFIN-P" not in tickers
+    assert "VOLO-PREF" not in tickers
     assert "BTSGU" not in tickers
     assert "001515" not in tickers
     assert "005385" not in tickers
@@ -551,8 +564,8 @@ def test_readme_stats_and_claims_are_current():
     assert f"| ISIN coverage | {isin_count:,} ({isin_count / total * 100:.1f}%) |" in readme
     assert f"| Sector coverage | {sector_count:,} ({sector_count / total * 100:.1f}%) |" in readme
     assert "| NASDAQ | 4,531 | NASDAQ |" in readme
-    assert "| XETRA | 2,085 | Deutsche Boerse |" in readme
-    assert "| NYSE | 2,414 | New York Stock Exchange |" in readme
+    assert "| XETRA | 2,086 | Deutsche Boerse |" in readme
+    assert "| NYSE | 2,165 | New York Stock Exchange |" in readme
     assert "| ASX | 1,295 | Australian Securities Exchange |" in readme
 
 

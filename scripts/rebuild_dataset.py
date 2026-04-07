@@ -163,6 +163,11 @@ ASX_CAPITAL_NOTE_TICKER_RE = re.compile(r".*P[A-Z]$")
 ASX_LOYALTY_TICKER_RE = re.compile(r".*LV$")
 TAIWAN_ETF_TICKER_RE = re.compile(r"^00\d{2,4}[A-Z]?$")
 TAIWAN_NON_COMMON_STOCK_TICKER_RE = re.compile(r"^\d{4}B$")
+PREFERRED_TICKER_SUFFIX_RE = re.compile(r"^[A-Z]{1,8}-P[A-Z]$")
+PREFERRED_PF_TICKER_RE = re.compile(r"^[A-Z]{1,8}-PF[A-Z]$")
+PREFERRED_PR_TICKER_RE = re.compile(r"^[A-Z]{1,8}-PR-[A-Z]$")
+PREFERRED_PREF_TICKER_RE = re.compile(r"^[A-Z]{1,8}-PREF$")
+US_SERIES_PREFERRED_TICKER_RE = re.compile(r"^[A-Z]{1,8}-P$")
 EUROPEAN_CERTIFICATE_PATTERN = re.compile(r"\bparticipated cert\b|\bcert\(", re.IGNORECASE)
 ETP_NAME_PATTERNS = (
     re.compile(r"\betf\b", re.IGNORECASE),
@@ -625,7 +630,42 @@ def entity_key_for_row(row: dict[str, str]) -> str:
     return f"ticker:{row['ticker']}"
 
 
-def should_exclude_stock_row(row: dict[str, str]) -> bool:
+def row_name_fingerprint(row: dict[str, str]) -> str:
+    return "|".join(sorted(normalize_tokens(row["name"])))
+
+
+def build_stock_base_name_index(rows: Iterable[dict[str, str]]) -> dict[str, set[str]]:
+    index: dict[str, set[str]] = defaultdict(set)
+    for row in rows:
+        if row.get("asset_type") != "Stock":
+            continue
+        fingerprint = row_name_fingerprint(row)
+        if not fingerprint:
+            continue
+        index[row["ticker"].upper()].add(fingerprint)
+    return index
+
+
+def has_matching_base_listing(
+    row: dict[str, str],
+    stock_base_name_index: dict[str, set[str]] | None,
+) -> bool:
+    if not stock_base_name_index:
+        return False
+    ticker = row["ticker"].upper()
+    if "-" not in ticker:
+        return False
+    base_ticker = ticker.split("-", 1)[0]
+    fingerprint = row_name_fingerprint(row)
+    if not fingerprint:
+        return False
+    return fingerprint in stock_base_name_index.get(base_ticker, set())
+
+
+def should_exclude_stock_row(
+    row: dict[str, str],
+    stock_base_name_index: dict[str, set[str]] | None = None,
+) -> bool:
     if row["asset_type"] != "Stock":
         return False
     ticker = row["ticker"].upper()
@@ -650,6 +690,17 @@ def should_exclude_stock_row(row: dict[str, str]) -> bool:
         return True
     if row["ticker"].count("-P-"):
         return True
+    if PREFERRED_PF_TICKER_RE.fullmatch(ticker):
+        return True
+    if PREFERRED_PR_TICKER_RE.fullmatch(ticker):
+        return True
+    if PREFERRED_PREF_TICKER_RE.fullmatch(ticker):
+        return True
+    if PREFERRED_TICKER_SUFFIX_RE.fullmatch(ticker):
+        return True
+    if row.get("exchange") in US_EXCHANGES and US_SERIES_PREFERRED_TICKER_RE.fullmatch(ticker):
+        if has_matching_base_listing(row, stock_base_name_index):
+            return True
     if is_depositary_row(row):
         return True
     if PREFERRED_PATTERN.search(name):
@@ -828,7 +879,8 @@ def country_from_isin(isin: str) -> str | None:
 
 
 def load_data():
-    with TICKERS_CSV.open(newline="") as handle:
+    source_path = LISTINGS_CSV if LISTINGS_CSV.exists() else TICKERS_CSV
+    with source_path.open(newline="") as handle:
         ticker_rows = list(csv.DictReader(handle))
     core_row_keys = {(row["ticker"], row["exchange"]) for row in ticker_rows}
 
@@ -982,14 +1034,21 @@ def cleaned_rows():
     ticker_rows, alias_type_lookup, extra_aliases, identifier_lookup, core_row_keys = load_data()
     review_alias_removals, review_metadata_updates, review_drop_entries = load_review_overrides()
 
-    base_rows: list[dict[str, str]] = []
+    prepared_rows: list[dict[str, str]] = []
     for row in ticker_rows:
         row_key = (row["ticker"], row["exchange"])
         if row_key in review_drop_entries:
             continue
         merged = normalize_input_row(row)
         merged = apply_input_metadata_overrides(merged, review_metadata_updates.get(row_key, {}))
-        if should_exclude_stock_row(merged):
+        prepared_rows.append(merged)
+
+    stock_base_name_index = build_stock_base_name_index(prepared_rows)
+
+    base_rows: list[dict[str, str]] = []
+    for row in prepared_rows:
+        row_key = (row["ticker"], row["exchange"])
+        if should_exclude_stock_row(row, stock_base_name_index):
             continue
         merged_aliases = split_aliases(row["aliases"])
         identifier = None
@@ -1001,6 +1060,7 @@ def cleaned_rows():
             merged_aliases = [alias for alias in merged_aliases if alias not in alias_removals]
         if identifier and identifier["wkn"]:
             merged_aliases.append(identifier["wkn"])
+        merged = dict(row)
         merged["aliases"] = merged_aliases
         base_rows.append(merged)
 

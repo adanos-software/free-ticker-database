@@ -1,9 +1,9 @@
 {
   "global": {
     "official_symbols": 24252,
-    "matched": 18487,
-    "collisions": 2664,
-    "missing": 3101
+    "matched": 18187,
+    "collisions": 2652,
+    "missing": 3413
   },
   "exchanges": [
     {
@@ -603,10 +603,18 @@
     {
       "exchange": "NYSE",
       "official_symbols": 3829,
-      "matched": 2350,
-      "collisions": 524,
-      "missing": 955,
+      "matched": 2050,
+      "collisions": 512,
+      "missing": 1267,
       "collision_examples": [
+        {
+          "ticker": "ABX",
+          "name": "Abacus Global Management, Inc. Class A Common Stock",
+          "target_exchange": "NYSE",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
         {
           "ticker": "ACCS",
           "name": "ACCESS Newswire Inc.",
@@ -678,14 +686,6 @@
           "existing_exchanges": [
             "NYSE MKT"
           ]
-        },
-        {
-          "ticker": "AGQ",
-          "name": "ProShares Trust II",
-          "target_exchange": "NYSE",
-          "existing_exchanges": [
-            "NYSE ARCA"
-          ]
         }
       ],
       "missing_examples": [
@@ -710,8 +710,18 @@
           "exchange": "NYSE"
         },
         {
-          "ticker": "ABX",
-          "name": "Abacus Global Management, Inc. Class A Common Stock",
+          "ticker": "ABR-PD",
+          "name": "ARBOR REALTY TRUST INC",
+          "exchange": "NYSE"
+        },
+        {
+          "ticker": "ABR-PE",
+          "name": "ARBOR REALTY TRUST INC",
+          "exchange": "NYSE"
+        },
+        {
+          "ticker": "ABR-PF",
+          "name": "ARBOR REALTY TRUST INC",
           "exchange": "NYSE"
         },
         {
@@ -727,16 +737,6 @@
         {
           "ticker": "ACHR.W",
           "name": "Archer Aviation Inc. Redeemable Warrants, each whole warrant exercisable for one Class A common stock at an exercise price of $11.50",
-          "exchange": "NYSE"
-        },
-        {
-          "ticker": "ACP$A",
-          "name": "abrdn Income Credit Strategies Fund 5.250% Series A Perpetual Preferred Stock",
-          "exchange": "NYSE"
-        },
-        {
-          "ticker": "ACR$C",
-          "name": "ACRES Commercial Realty Corp. 8.625% Fixed-to-Floating Series C Cumulative Redeemable Preferred Stock",
           "exchange": "NYSE"
         }
       ]
