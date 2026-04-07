@@ -25,6 +25,7 @@ Choose the format that fits your use case:
 | File | Size | Best for |
 |---|---|---|
 | [`data/tickers.csv`](data/tickers.csv) | 5.4 MB | Excel, spreadsheets, quick lookups |
+| [`data/listings.csv`](data/listings.csv) | 5.8 MB | Listing-keyed export without global ticker ambiguity |
 | [`data/tickers.json`](data/tickers.json) | 11.8 MB | Web apps, APIs |
 | [`data/tickers.parquet`](data/tickers.parquet) | 2.6 MB | Pandas, data science |
 | [`data/tickers.db`](data/tickers.db) | 18.7 MB | SQL queries, local apps |
@@ -102,6 +103,15 @@ NASDAQ::AAPL,AAPL,NASDAQ,Apple Inc.,Stock,United States,US,US0378331005,865985,,
 ```
 
 This auxiliary export makes the current listing identity explicit as `exchange::ticker`. It does not replace the core global-unique `ticker` model yet, but it gives downstream users a stable per-listing key and makes future `(ticker, exchange)`-first migrations easier.
+
+### listings.csv (canonical listing rows)
+
+```
+listing_key,ticker,exchange,name,asset_type,sector,country,country_code,isin,aliases
+NASDAQ::AAPL,AAPL,NASDAQ,Apple Inc.,Stock,Information Technology,United States,US,US0378331005,apple|865985
+```
+
+This is the canonical flat export for downstream systems that want a stable per-listing key today without relying on the auxiliary identifier bridge.
 
 ### tickers.json
 

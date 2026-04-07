@@ -42,23 +42,23 @@
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-04-06T20:26:32Z |
-| tickers_age_hours | 9.55 |
+| tickers_built_at | 2026-04-07T06:27:32Z |
+| tickers_age_hours | 0.02 |
 | masterfiles_generated_at | 2026-04-06T17:49:27Z |
-| masterfiles_age_hours | 12.17 |
-| identifiers_generated_at | 2026-04-06T20:26:34Z |
-| identifiers_age_hours | 9.55 |
-| listing_history_observed_at | 2026-04-06T20:26:32Z |
-| listing_history_age_hours | 9.55 |
+| masterfiles_age_hours | 12.65 |
+| identifiers_generated_at | 2026-04-07T06:28:24Z |
+| identifiers_age_hours | 0.0 |
+| listing_history_observed_at | 2026-04-07T06:27:32Z |
+| listing_history_age_hours | 0.02 |
 | latest_verification_run | data/stock_verification/run-20260406-stock-100-final3 |
 | latest_verification_generated_at | 2026-04-06T20:28:31Z |
-| latest_verification_age_hours | 9.52 |
+| latest_verification_age_hours | 10.0 |
 | latest_stock_verification_run | data/stock_verification/run-20260406-stock-100-final3 |
 | latest_stock_verification_generated_at | 2026-04-06T20:28:31Z |
-| latest_stock_verification_age_hours | 9.52 |
+| latest_stock_verification_age_hours | 10.0 |
 | latest_etf_verification_run | data/etf_verification/run-20260406-etf-100-final3 |
 | latest_etf_verification_generated_at | 2026-04-06T20:28:31Z |
-| latest_etf_verification_age_hours | 9.52 |
+| latest_etf_verification_age_hours | 10.0 |
 
 ## Source Coverage
 

@@ -568,10 +568,12 @@ def test_open_source_project_files_exist_and_are_linked():
     assert (DATA_DIR / "masterfiles" / "reference.csv").exists()
     assert (DATA_DIR / "history" / "latest_snapshot.csv").exists()
     assert (DATA_DIR / "identifiers_extended.csv").exists()
+    assert (DATA_DIR / "listings.csv").exists()
     assert (DATA_DIR / "listing_index.csv").exists()
     assert (DATA_DIR / "reports" / "coverage_report.json").exists()
     assert (DATA_DIR / "reports" / "masterfile_collision_report.json").exists()
     assert "identifiers_extended.csv" in readme
+    assert "listings.csv" in readme
     assert "listing_index.csv" in readme
     assert "coverage_report.json" in readme
     assert "masterfile_collision_report.json" in readme
@@ -703,6 +705,18 @@ def test_cross_listings_sqlite_table_matches_csv_rows():
     assert db_rows == len(csv_rows)
 
 
+def test_listings_sqlite_table_matches_csv_rows():
+    csv_rows = load_csv("listings.csv")
+
+    conn = sqlite3.connect(DATA_DIR / "tickers.db")
+    try:
+        db_rows = conn.execute("SELECT COUNT(*) FROM listings").fetchone()[0]
+    finally:
+        conn.close()
+
+    assert db_rows == len(csv_rows)
+
+
 def test_history_artifacts_include_listing_keys_and_daily_summary():
     snapshot_rows = load_csv("history/latest_snapshot.csv")
     event_rows = load_csv("history/listing_events.csv")
@@ -747,8 +761,13 @@ def test_freshness_timestamps_are_coherent():
     identifiers = parse(freshness["identifiers_generated_at"])
     history = parse(freshness["listing_history_observed_at"])
     verification = parse(freshness["latest_verification_generated_at"])
+    stock_verification = parse(freshness["latest_stock_verification_generated_at"])
+    etf_verification = parse(freshness["latest_etf_verification_generated_at"])
 
     assert masterfiles <= tickers
     assert tickers == history
-    assert tickers <= identifiers <= verification
+    assert tickers <= identifiers
+    assert verification == stock_verification
+    assert masterfiles <= stock_verification
+    assert masterfiles <= etf_verification
     assert freshness["latest_verification_run"].startswith("data/stock_verification/run-")

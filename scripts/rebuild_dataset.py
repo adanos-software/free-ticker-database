@@ -12,11 +12,17 @@ from typing import Iterable
 
 import pandas as pd
 
+try:
+    from scripts.listing_keys import row_listing_key
+except ModuleNotFoundError:  # pragma: no cover - script execution path
+    from listing_keys import row_listing_key
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
 
 TICKERS_CSV = DATA_DIR / "tickers.csv"
+LISTINGS_CSV = DATA_DIR / "listings.csv"
 ALIASES_CSV = DATA_DIR / "aliases.csv"
 IDENTIFIERS_CSV = DATA_DIR / "identifiers.csv"
 IDENTIFIERS_EXTENDED_CSV = DATA_DIR / "identifiers_extended.csv"
@@ -1169,8 +1175,27 @@ def write_json(rows: list[dict[str, str]]):
     )
 
 
+def build_listing_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    return [
+        {
+            "listing_key": row_listing_key(row),
+            "ticker": row["ticker"],
+            "exchange": row["exchange"],
+            "name": row["name"],
+            "asset_type": row["asset_type"],
+            "sector": row["sector"],
+            "country": row["country"],
+            "country_code": row["country_code"],
+            "isin": row["isin"],
+            "aliases": "|".join(row["aliases"]),
+        }
+        for row in rows
+    ]
+
+
 def write_db(
     rows: list[dict[str, str]],
+    listing_rows: list[dict[str, str]],
     alias_rows: list[dict[str, str]],
     cross_listing_rows: list[dict[str, str]] | None = None,
 ):
@@ -1192,6 +1217,19 @@ def write_db(
                 isin TEXT DEFAULT ''
             );
 
+            CREATE TABLE listings (
+                listing_key TEXT PRIMARY KEY,
+                ticker TEXT NOT NULL,
+                exchange TEXT NOT NULL,
+                name TEXT NOT NULL,
+                asset_type TEXT NOT NULL,
+                sector TEXT DEFAULT '',
+                country TEXT DEFAULT '',
+                country_code TEXT DEFAULT '',
+                isin TEXT DEFAULT '',
+                aliases TEXT DEFAULT ''
+            );
+
             CREATE TABLE aliases (
                 ticker TEXT NOT NULL,
                 alias TEXT NOT NULL,
@@ -1210,6 +1248,9 @@ def write_db(
             );
 
             CREATE INDEX idx_aliases_alias ON aliases(alias);
+            CREATE INDEX idx_listings_ticker ON listings(ticker);
+            CREATE INDEX idx_listings_exchange ON listings(exchange);
+            CREATE INDEX idx_listings_isin ON listings(isin);
             CREATE INDEX idx_tickers_exchange ON tickers(exchange);
             CREATE INDEX idx_tickers_isin ON tickers(isin);
             CREATE INDEX idx_tickers_sector ON tickers(sector);
@@ -1222,6 +1263,13 @@ def write_db(
             VALUES (:ticker, :name, :exchange, :asset_type, :sector, :country, :country_code, :isin)
             """,
             rows,
+        )
+        conn.executemany(
+            """
+            INSERT INTO listings (listing_key, ticker, exchange, name, asset_type, sector, country, country_code, isin, aliases)
+            VALUES (:listing_key, :ticker, :exchange, :name, :asset_type, :sector, :country, :country_code, :isin, :aliases)
+            """,
+            listing_rows,
         )
         conn.executemany(
             """
@@ -1325,6 +1373,7 @@ def build_cross_listings(rows: list[dict[str, str]]) -> list[dict[str, str]]:
 
 def rebuild():
     rows, alias_type_lookup = cleaned_rows()
+    listing_rows = build_listing_rows(rows)
     alias_rows = build_alias_rows(rows, alias_type_lookup)
     identifier_rows = build_identifier_rows(rows)
     cross_listing_rows = build_cross_listings(rows)
@@ -1347,6 +1396,11 @@ def rebuild():
             for row in rows
         ),
     )
+    write_csv(
+        LISTINGS_CSV,
+        ["listing_key", "ticker", "exchange", "name", "asset_type", "sector", "country", "country_code", "isin", "aliases"],
+        listing_rows,
+    )
     write_csv(ALIASES_CSV, ["ticker", "alias", "alias_type"], alias_rows)
     write_csv(IDENTIFIERS_CSV, ["ticker", "isin", "wkn"], identifier_rows)
     write_csv(
@@ -1355,7 +1409,7 @@ def rebuild():
         cross_listing_rows,
     )
     write_json(rows)
-    write_db(rows, alias_rows, cross_listing_rows)
+    write_db(rows, listing_rows, alias_rows, cross_listing_rows)
     write_parquet(rows)
 
     stats = {
