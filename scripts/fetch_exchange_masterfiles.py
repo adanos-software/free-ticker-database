@@ -43,6 +43,7 @@ TMX_LISTED_ISSUERS_ARCHIVE_URL = "https://www.tsx.com/en/listings/current-market
 EURONEXT_EQUITIES_DOWNLOAD_URL = "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock"
 JPX_LISTED_ISSUES_URL = "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls"
 DEUTSCHE_BOERSE_LISTED_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/67858/dd766fc6588100c79294324175f95501/data/Listed-companies.xlsx"
+DEUTSCHE_BOERSE_ETPS_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls"
 B3_INSTRUMENTS_EQUITIES_URL = "https://arquivos.b3.com.br/bdi/table/InstrumentsEquities"
 TWSE_LISTED_COMPANIES_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
 SZSE_STOCK_LIST_URL = "https://www.szse.cn/market/product/stock/list/index.html"
@@ -208,6 +209,14 @@ OFFICIAL_SOURCES = [
         description="Official Deutsche Boerse listed companies workbook",
         source_url=DEUTSCHE_BOERSE_LISTED_URL,
         format="deutsche_boerse_listed_companies_excel",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="deutsche_boerse_etfs_etps",
+        provider="Deutsche Boerse",
+        description="Official Deutsche Boerse Xetra ETFs and ETPs master workbook",
+        source_url=DEUTSCHE_BOERSE_ETPS_URL,
+        format="deutsche_boerse_etfs_etps_excel",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -713,6 +722,31 @@ def parse_deutsche_boerse_listed_companies_excel(content: bytes, source: Masterf
                     "official": "true",
                 }
             )
+    return rows
+
+
+def parse_deutsche_boerse_etfs_etps_excel(content: bytes, source: MasterfileSource) -> list[dict[str, str]]:
+    dataframe = pd.read_excel(io.BytesIO(content), sheet_name="ETFs & ETPs", header=8)
+    rows: list[dict[str, str]] = []
+    for record in dataframe.to_dict(orient="records"):
+        ticker = str(record.get("XETRA SYMBOL", "")).strip()
+        name = str(record.get("PRODUCT NAME", "")).strip()
+        if not ticker or not name or ticker.lower() == "nan" or name.lower() == "nan":
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "XETRA",
+                "asset_type": "ETF",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
     return rows
 
 
@@ -1331,6 +1365,9 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "deutsche_boerse_listed_companies_excel":
         content = fetch_bytes(source.source_url, session=session)
         return parse_deutsche_boerse_listed_companies_excel(content, source)
+    if source.format == "deutsche_boerse_etfs_etps_excel":
+        content = fetch_bytes(source.source_url, session=session)
+        return parse_deutsche_boerse_etfs_etps_excel(content, source)
     if source.format == "b3_instruments_equities_api":
         return fetch_b3_instruments_equities(source, session=session)
     if source.format == "twse_listed_companies_json":

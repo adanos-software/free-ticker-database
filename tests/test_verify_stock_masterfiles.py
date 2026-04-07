@@ -998,7 +998,7 @@ def test_classify_row_downgrades_lse_asset_type_mismatch_to_reference_gap() -> N
     assert result["reason"] == "Only low-confidence asset_type evidence exists for this listing."
 
 
-def test_classify_row_downgrades_krx_name_mismatch_to_reference_gap() -> None:
+def test_classify_row_verifies_krx_compact_official_label() -> None:
     row = {
         "ticker": "016600",
         "exchange": "KOSDAQ",
@@ -1029,8 +1029,8 @@ def test_classify_row_downgrades_krx_name_mismatch_to_reference_gap() -> None:
         partial_covered_exchanges={"KOSDAQ"},
         identifier_map={},
     )
-    assert result["status"] == "reference_gap"
-    assert result["reason"] == "Only low-confidence issuer reference evidence exists for this listing."
+    assert result["status"] == "verified"
+    assert result["reason"] == "Matched active official listing; official directory uses a compact issuer label."
 
 
 def test_classify_row_treats_krx_etfs_as_partial_coverage() -> None:

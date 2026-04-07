@@ -164,6 +164,7 @@ BAD_GENERIC_FUND_ALIASES = GENERIC_FUND_WRAPPER_NAMES
 US_EXCHANGES = {"NASDAQ", "NYSE", "NYSE ARCA", "NYSE MKT", "BATS"}
 OTC_EXCHANGES = {"OTC", "OTCCE", "OTCMKTS"}
 PRIMARY_VENUE_CORRECTION_EXCHANGES = US_EXCHANGES | OTC_EXCHANGES
+KOREAN_STOCK_EXCHANGES = {"KRX", "KOSDAQ"}
 STRICT_NUMERIC_NAMESPACE_EXCHANGES = {"Bursa", "KOSDAQ", "KRX", "TPEX", "TWSE"}
 EXCHANGE_TICKER_RE = re.compile(r"^[A-Z0-9-]+\.[A-Z]{1,6}$")
 IDENTIFIER_RE = re.compile(r"^[A-Z0-9]{5,12}$")
@@ -832,6 +833,12 @@ def should_correct_to_official_exchange(
             current_exchange in PRIMARY_VENUE_CORRECTION_EXCHANGES
             and target_exchange in US_EXCHANGES
             and (safe_name_match or code_like_name or wrapper_match)
+        )
+
+    if {current_exchange, target_exchange} <= KOREAN_STOCK_EXCHANGES:
+        return bool(
+            row["asset_type"] == "Stock"
+            and official_row.get("source_key") == "krx_listed_companies"
         )
 
     if target_exchange in US_EXCHANGES:

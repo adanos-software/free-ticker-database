@@ -29,6 +29,7 @@ from scripts.fetch_exchange_masterfiles import (
     load_tpex_mainboard_quotes_payload,
     parse_asx_listed_companies,
     parse_b3_instruments_equities_table,
+    parse_deutsche_boerse_etfs_etps_excel,
     parse_deutsche_boerse_listed_companies_excel,
     parse_euronext_equities_download,
     parse_jpx_listed_issues_excel,
@@ -872,6 +873,11 @@ def test_krx_etf_finder_source_is_modeled_as_partial_official_coverage() -> None
     assert source.reference_scope == "listed_companies_subset"
 
 
+def test_deutsche_boerse_etfs_etps_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "deutsche_boerse_etfs_etps")
+    assert source.reference_scope == "listed_companies_subset"
+
+
 def test_parse_jpx_listed_issues_excel_maps_tse_rows(tmp_path):
     dataframe_path = tmp_path / "jpx.xlsx"
 
@@ -965,6 +971,64 @@ def test_parse_deutsche_boerse_listed_companies_excel_maps_xetra_rows(tmp_path):
             "name": "AIXTRON SE",
             "exchange": "XETRA",
             "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_parse_deutsche_boerse_etfs_etps_excel_maps_xetra_rows() -> None:
+    buffer = io.BytesIO()
+    with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
+        pd.DataFrame([[None] * 18 for _ in range(8)]).to_excel(
+            writer,
+            sheet_name="ETFs & ETPs",
+            header=False,
+            index=False,
+        )
+        pd.DataFrame(
+            [
+                {
+                    "PRODUCT TYPE": "Active ETF",
+                    "PRODUCT NAME": "abrdn Future Raw Materials UCITS ETF USD Accumulating",
+                    "ISIN": "IE000J7QYHD8",
+                    "PRODUCT FAMILY": "abrdn",
+                    "XETRA SYMBOL": "ARAW",
+                },
+                {
+                    "PRODUCT TYPE": "ETP",
+                    "PRODUCT NAME": "ETC Group Physical Bitcoin",
+                    "ISIN": "DE000A27Z304",
+                    "PRODUCT FAMILY": "ETC Group",
+                    "XETRA SYMBOL": "BTCE",
+                },
+            ]
+        ).to_excel(writer, sheet_name="ETFs & ETPs", startrow=8, index=False)
+
+    rows = parse_deutsche_boerse_etfs_etps_excel(buffer.getvalue(), SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "ARAW",
+            "name": "abrdn Future Raw Materials UCITS ETF USD Accumulating",
+            "exchange": "XETRA",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "BTCE",
+            "name": "ETC Group Physical Bitcoin",
+            "exchange": "XETRA",
+            "asset_type": "ETF",
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",

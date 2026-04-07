@@ -80,6 +80,7 @@ LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE = {
     "TSX": {"tmx_interlisted_companies", "tmx_listed_issuers"},
     "TSXV": {"tmx_interlisted_companies", "tmx_listed_issuers"},
 }
+ABBREVIATED_OFFICIAL_LABEL_EXCHANGES = {"KRX", "KOSDAQ"}
 EURONEXT_LABEL_SPLIT_RE = re.compile(r"[\s./-]+")
 ETFISH_REFERENCE_MARKERS = (
     " etf",
@@ -281,6 +282,13 @@ def classify_row(
             ):
                 status = "reference_gap"
                 reason = "Official reference only exposes a generic ETP placeholder name."
+            elif (
+                row.get("asset_type") == "Stock"
+                and exchange in ABBREVIATED_OFFICIAL_LABEL_EXCHANGES
+                and source_keys == {"krx_listed_companies"}
+            ):
+                status = "verified"
+                reason = "Matched active official listing; official directory uses a compact issuer label."
             elif source_keys and source_keys <= LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE.get(exchange, set()):
                 status = "reference_gap"
                 reason = "Only low-confidence issuer reference evidence exists for this listing."

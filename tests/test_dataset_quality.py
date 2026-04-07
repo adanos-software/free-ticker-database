@@ -532,6 +532,64 @@ def test_should_exclude_stock_row_drops_twse_non_common_b_lines():
     assert should_exclude_stock_row(row) is True
 
 
+def test_apply_official_exchange_corrections_moves_krx_stock_to_kosdaq(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "042000",
+        "name": "Cafe24 Corp.",
+        "exchange": "KRX",
+        "asset_type": "Stock",
+        "country": "South Korea",
+        "country_code": "KR",
+        "sector": "",
+        "isin": "KR7042000000",
+        "aliases": [],
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_reference_rows",
+        lambda: {
+            ("042000", "Stock"): (
+                {
+                    "ticker": "042000",
+                    "exchange": "KOSDAQ",
+                    "asset_type": "Stock",
+                    "name": "Cafe24 Corp.",
+                    "source_key": "krx_listed_companies",
+                    "reference_scope": "listed_companies_subset",
+                },
+            )
+        },
+    )
+
+    corrected = rebuild_dataset.apply_official_exchange_corrections([row])
+
+    assert corrected[0]["exchange"] == "KOSDAQ"
+    assert corrected[0]["name"] == "Cafe24 Corp."
+
+
+def test_should_not_correct_krx_stock_without_krx_official_source():
+    from scripts.rebuild_dataset import should_correct_to_official_exchange
+
+    row = {
+        "ticker": "042000",
+        "name": "Cafe24 Corp.",
+        "exchange": "KRX",
+        "asset_type": "Stock",
+    }
+    official_row = {
+        "ticker": "042000",
+        "exchange": "KOSDAQ",
+        "asset_type": "Stock",
+        "name": "Cafe24 Corp.",
+        "source_key": "manual_seed",
+    }
+
+    assert should_correct_to_official_exchange(row, official_row) is False
+
+
 def test_artifact_counts_match():
     tickers_csv = load_csv("tickers.csv")
     aliases_csv = load_csv("aliases.csv")
