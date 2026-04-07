@@ -43,6 +43,7 @@ from scripts.fetch_exchange_masterfiles import (
     parse_sse_a_share_list,
     parse_sse_etf_list,
     parse_szse_a_share_list,
+    parse_szse_a_share_workbook,
     parse_tpex_mainboard_quotes,
     parse_twse_listed_companies,
     parse_tmx_interlisted,
@@ -412,6 +413,48 @@ def test_parse_szse_a_share_list_maps_szse_rows() -> None:
     ]
 
 
+def test_parse_szse_a_share_workbook_maps_szse_rows() -> None:
+    dataframe = pd.DataFrame(
+        [
+            {"A股代码": 1, "公司全称": "平安银行股份有限公司"},
+            {"A股代码": "300750", "公司全称": "宁德时代新能源科技股份有限公司"},
+            {"A股代码": None, "公司全称": "Ignored"},
+        ]
+    )
+    content = io.BytesIO()
+    with pd.ExcelWriter(content, engine="openpyxl") as writer:
+        dataframe.to_excel(writer, sheet_name="A股列表", index=False)
+
+    rows = parse_szse_a_share_workbook(content.getvalue(), SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "000001",
+            "name": "平安银行股份有限公司",
+            "exchange": "SZSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "300750",
+            "name": "宁德时代新能源科技股份有限公司",
+            "exchange": "SZSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
 def test_fetch_szse_a_share_list_fetches_all_pages() -> None:
     source = MasterfileSource(
         key="szse",
@@ -423,8 +466,9 @@ def test_fetch_szse_a_share_list_fetches_all_pages() -> None:
     )
 
     class FakeResponse:
-        def __init__(self, payload):
+        def __init__(self, payload=None, content=b""):
             self._payload = payload
+            self.content = content
 
         def raise_for_status(self):
             return None
@@ -440,6 +484,8 @@ def test_fetch_szse_a_share_list_fetches_all_pages() -> None:
             self.calls.append((url, params, headers, kwargs))
             if params is None:
                 return FakeResponse({})
+            if params.get("SHOWTYPE") == "xlsx":
+                return FakeResponse({}, b"not-an-excel-file")
             page = params["PAGENO"]
             if page == 1:
                 return FakeResponse(
@@ -467,7 +513,7 @@ def test_fetch_szse_a_share_list_fetches_all_pages() -> None:
     rows = fetch_szse_a_share_list(source, session=session)
 
     assert [row["ticker"] for row in rows] == ["000001", "300750"]
-    api_calls = [call for call in session.calls if call[1] is not None]
+    api_calls = [call for call in session.calls if call[1] is not None and "SHOWTYPE" not in call[1]]
     assert [call[1]["PAGENO"] for call in api_calls] == [1, 2]
     assert all(call[1]["CATALOGID"] == "1110" for call in api_calls)
     assert all(call[1]["TABKEY"] == "tab1" for call in api_calls)

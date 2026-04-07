@@ -1104,6 +1104,38 @@ def parse_szse_a_share_list(payload: dict[str, Any] | list[dict[str, Any]], sour
     return rows
 
 
+def parse_szse_a_share_workbook(content: bytes, source: MasterfileSource) -> list[dict[str, str]]:
+    dataframe = pd.read_excel(io.BytesIO(content), sheet_name=0)
+    rows: list[dict[str, str]] = []
+    for record in dataframe.to_dict(orient="records"):
+        ticker_value = record.get("A股代码")
+        name_value = record.get("公司全称") or record.get("A股简称")
+        if pd.isna(ticker_value) or pd.isna(name_value):
+            continue
+        ticker = str(ticker_value).strip()
+        if ticker.endswith(".0"):
+            ticker = ticker[:-2]
+        ticker = ticker.zfill(6)
+        name = str(name_value).strip()
+        if not ticker or not name:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "SZSE",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
 def fetch_szse_a_share_list(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
     session = session or requests.Session()
     headers = {
@@ -1112,6 +1144,28 @@ def fetch_szse_a_share_list(source: MasterfileSource, session: requests.Session 
         "Connection": "close",
     }
     session.get(source.source_url, headers={"User-Agent": USER_AGENT, "Connection": "close"}, timeout=REQUEST_TIMEOUT)
+
+    workbook_params = {
+        "SHOWTYPE": "xlsx",
+        "CATALOGID": SZSE_A_SHARE_CATALOG_ID,
+        "TABKEY": SZSE_A_SHARE_TAB_KEY,
+        "PAGENO": 1,
+        "random": "0.001",
+    }
+    try:
+        response = session.get(
+            "https://www.szse.cn/api/report/ShowReport",
+            params=workbook_params,
+            headers=headers,
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        workbook_rows = parse_szse_a_share_workbook(response.content, source)
+        if workbook_rows:
+            return workbook_rows
+    except (requests.RequestException, ValueError):
+        pass
+
     rows: list[dict[str, str]] = []
     page = 1
     total_pages = 1
