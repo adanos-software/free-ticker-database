@@ -54,12 +54,19 @@ LOW_CONFIDENCE_ASSET_TYPE_SOURCE_KEYS = {
 LOW_CONFIDENCE_COLLISION_PEER_EXCHANGES = {
     "ASX",
     "Euronext",
+    "LSE",
     "OSL",
     "OTC",
     "TSE",
     "XETRA",
 }
-LOCAL_LANGUAGE_NAME_MATCH_EXCHANGES = {"TWSE", "TPEX"}
+LOW_CONFIDENCE_COLLISION_SOURCE_KEYS = {
+    "krx_listed_companies",
+    "lse_company_reports",
+    "sec_company_tickers_exchange",
+    "tmx_interlisted_companies",
+}
+LOCAL_LANGUAGE_NAME_MATCH_EXCHANGES = {"SSE", "SZSE", "TWSE", "TPEX"}
 LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE = {
     "KRX": {"krx_listed_companies"},
     "KOSDAQ": {"krx_listed_companies"},
@@ -68,6 +75,7 @@ LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE = {
     "NYSE": {"sec_company_tickers_exchange", "nasdaq_other_listed"},
     "NYSE MKT": {"sec_company_tickers_exchange", "nasdaq_other_listed"},
     "OTC": {"sec_company_tickers_exchange"},
+    "TPEX": {"tpex_mainboard_daily_quotes"},
     "TSX": {"tmx_interlisted_companies"},
     "TSXV": {"tmx_interlisted_companies"},
 }
@@ -348,8 +356,13 @@ def classify_row(
                 }
 
             peer_exchanges = {peer["exchange"] for peer in matching_peers}
+            peer_source_keys = {
+                peer.get("source_key", "") for peer in matching_peers if peer.get("source_key", "")
+            }
             peer_preview = ", ".join(sorted(peer_exchanges)[:4])
-            if peer_exchanges <= LOW_CONFIDENCE_COLLISION_PEER_EXCHANGES:
+            if peer_exchanges <= LOW_CONFIDENCE_COLLISION_PEER_EXCHANGES or (
+                peer_source_keys and peer_source_keys <= LOW_CONFIDENCE_COLLISION_SOURCE_KEYS
+            ):
                 status = "reference_gap"
                 reason = "Only weak cross-exchange collision evidence exists for this listing."
             else:

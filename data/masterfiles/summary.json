@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-07T10:21:42Z",
-  "rows": 50667,
+  "generated_at": "2026-04-07T11:27:45Z",
+  "rows": 52051,
   "exchanges": [
     "AMS",
     "ASX",
@@ -18,6 +18,8 @@
     "NYSE MKT",
     "OSL",
     "OTC",
+    "SSE",
+    "TPEX",
     "TSE",
     "TSX",
     "TSXV",
@@ -33,6 +35,8 @@
     "lse_company_reports": 12397,
     "nasdaq_listed": 5415,
     "sec_company_tickers_exchange": 10117,
+    "sse_a_share_list": 500,
+    "tpex_mainboard_daily_quotes": 884,
     "jpx_listed_issues": 4444,
     "tmx_interlisted_companies": 266,
     "twse_listed_companies": 1080,
@@ -45,7 +49,7 @@
       "official": true,
       "mode": "network",
       "rows": 5415,
-      "generated_at": "2026-04-07T10:21:42Z"
+      "generated_at": "2026-04-07T11:27:45Z"
     },
     "nasdaq_other_listed": {
       "provider": "Nasdaq Trader",
@@ -53,7 +57,7 @@
       "official": true,
       "mode": "network",
       "rows": 7077,
-      "generated_at": "2026-04-07T10:21:42Z"
+      "generated_at": "2026-04-07T11:27:45Z"
     },
     "lse_company_reports": {
       "provider": "LSE",
@@ -61,7 +65,7 @@
       "official": true,
       "mode": "cache",
       "rows": 12397,
-      "generated_at": "2026-04-07T10:21:42Z"
+      "generated_at": "2026-04-07T11:27:45Z"
     },
     "asx_listed_companies": {
       "provider": "ASX",
@@ -69,7 +73,7 @@
       "official": true,
       "mode": "network",
       "rows": 1979,
-      "generated_at": "2026-04-07T10:21:42Z"
+      "generated_at": "2026-04-07T11:27:45Z"
     },
     "tmx_interlisted_companies": {
       "provider": "TMX",
@@ -77,7 +81,7 @@
       "official": true,
       "mode": "network",
       "rows": 266,
-      "generated_at": "2026-04-07T10:21:42Z"
+      "generated_at": "2026-04-07T11:27:45Z"
     },
     "euronext_equities": {
       "provider": "Euronext",
@@ -85,7 +89,7 @@
       "official": true,
       "mode": "network",
       "rows": 3885,
-      "generated_at": "2026-04-07T10:21:42Z"
+      "generated_at": "2026-04-07T11:27:45Z"
     },
     "jpx_listed_issues": {
       "provider": "JPX",
@@ -93,7 +97,7 @@
       "official": true,
       "mode": "network",
       "rows": 4444,
-      "generated_at": "2026-04-07T10:21:42Z"
+      "generated_at": "2026-04-07T11:27:45Z"
     },
     "deutsche_boerse_listed_companies": {
       "provider": "Deutsche Boerse",
@@ -101,7 +105,7 @@
       "official": true,
       "mode": "network",
       "rows": 471,
-      "generated_at": "2026-04-07T10:21:42Z"
+      "generated_at": "2026-04-07T11:27:45Z"
     },
     "b3_instruments_equities": {
       "provider": "B3",
@@ -109,7 +113,7 @@
       "official": true,
       "mode": "network",
       "rows": 876,
-      "generated_at": "2026-04-07T10:21:42Z"
+      "generated_at": "2026-04-07T11:27:45Z"
     },
     "twse_listed_companies": {
       "provider": "TWSE",
@@ -117,15 +121,31 @@
       "official": true,
       "mode": "network",
       "rows": 1080,
-      "generated_at": "2026-04-07T10:21:42Z"
+      "generated_at": "2026-04-07T11:27:45Z"
     },
-    "tpex_mainboard_daily_quotes": {
-      "provider": "TPEX",
-      "reference_scope": "exchange_directory",
+    "sse_a_share_list": {
+      "provider": "SSE",
+      "reference_scope": "listed_companies_subset",
+      "official": true,
+      "mode": "network",
+      "rows": 500,
+      "generated_at": "2026-04-07T11:27:45Z"
+    },
+    "szse_a_share_list": {
+      "provider": "SZSE",
+      "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "unavailable",
       "rows": 0,
-      "generated_at": "2026-04-07T10:21:42Z"
+      "generated_at": "2026-04-07T11:27:45Z"
+    },
+    "tpex_mainboard_daily_quotes": {
+      "provider": "TPEX",
+      "reference_scope": "listed_companies_subset",
+      "official": true,
+      "mode": "cache",
+      "rows": 884,
+      "generated_at": "2026-04-07T11:27:45Z"
     },
     "krx_listed_companies": {
       "provider": "KRX",
@@ -133,7 +153,7 @@
       "official": true,
       "mode": "network",
       "rows": 2660,
-      "generated_at": "2026-04-07T10:21:42Z"
+      "generated_at": "2026-04-07T11:27:45Z"
     },
     "sec_company_tickers_exchange": {
       "provider": "SEC",
@@ -141,7 +161,7 @@
       "official": true,
       "mode": "cache",
       "rows": 10117,
-      "generated_at": "2026-04-07T10:21:42Z"
+      "generated_at": "2026-04-07T11:27:45Z"
     }
   },
   "source_modes": {
@@ -155,14 +175,16 @@
     "deutsche_boerse_listed_companies": "network",
     "b3_instruments_equities": "network",
     "twse_listed_companies": "network",
-    "tpex_mainboard_daily_quotes": "unavailable",
+    "szse_a_share_list": "unavailable",
+    "tpex_mainboard_daily_quotes": "cache",
     "krx_listed_companies": "network",
-    "sec_company_tickers_exchange": "cache"
+    "sec_company_tickers_exchange": "cache",
+    "sse_a_share_list": "network"
   },
   "errors": [
     {
-      "source_key": "tpex_mainboard_daily_quotes",
-      "error": "TPEX mainboard quotes unavailable"
+      "source_key": "szse_a_share_list",
+      "error": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
     }
   ]
 }

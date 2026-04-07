@@ -90,12 +90,30 @@
     "official": true
   },
   {
+    "key": "sse_a_share_list",
+    "provider": "SSE",
+    "description": "Official SSE A-share list",
+    "source_url": "https://www.sse.com.cn/assortment/stock/list/share/",
+    "format": "sse_a_share_list_jsonp",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "szse_a_share_list",
+    "provider": "SZSE",
+    "description": "Official SZSE A-share list",
+    "source_url": "https://www.szse.cn/market/product/stock/list/index.html",
+    "format": "szse_a_share_list_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "tpex_mainboard_daily_quotes",
     "provider": "TPEX",
     "description": "Official TPEX mainboard daily quotes open data feed",
     "source_url": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes",
     "format": "tpex_mainboard_quotes_json",
-    "reference_scope": "exchange_directory",
+    "reference_scope": "listed_companies_subset",
     "official": true
   },
   {

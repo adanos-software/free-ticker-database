@@ -69,6 +69,27 @@ def path_mtime_iso(path: Path) -> str:
     return timestamp.replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
+def latest_verification_marker_mtime(path: Path) -> float:
+    summary_path = path / "summary.json"
+    if summary_path.exists():
+        return summary_path.stat().st_mtime
+    chunk_summaries = list(path.glob("chunk-*-of-*.summary.json"))
+    if chunk_summaries:
+        return max(candidate.stat().st_mtime for candidate in chunk_summaries)
+    return 0.0
+
+
+def latest_verification_marker_iso(path: Path) -> str:
+    summary_path = path / "summary.json"
+    if summary_path.exists():
+        return path_mtime_iso(summary_path)
+    chunk_summaries = list(path.glob("chunk-*-of-*.summary.json"))
+    if not chunk_summaries:
+        return ""
+    latest_path = max(chunk_summaries, key=lambda candidate: candidate.stat().st_mtime)
+    return path_mtime_iso(latest_path)
+
+
 def display_path(path: Path) -> str:
     resolved = path.resolve()
     try:
@@ -332,10 +353,14 @@ def build_global_summary(
 def find_latest_verification_run(base_dir: Path = STOCK_VERIFICATION_DIR) -> Path | None:
     if not base_dir.exists():
         return None
-    candidates = [path for path in base_dir.iterdir() if path.is_dir() and (path / "summary.json").exists()]
+    candidates = [
+        path
+        for path in base_dir.iterdir()
+        if path.is_dir() and ((path / "summary.json").exists() or list(path.glob("chunk-*-of-*.summary.json")))
+    ]
     if not candidates:
         return None
-    return max(candidates, key=lambda path: (path / "summary.json").stat().st_mtime)
+    return max(candidates, key=latest_verification_marker_mtime)
 
 
 def load_verification_report(run_dir: Path | None) -> dict[str, Any]:
@@ -379,12 +404,20 @@ def load_verification_report(run_dir: Path | None) -> dict[str, Any]:
             }
         )
 
+    if not summary:
+        status_counts = Counter(row.get("status", "") for row in rows)
+        summary = {
+            "items": len(rows),
+            "status_counts": dict(sorted(status_counts.items())),
+            "finding_examples": [row for row in rows if row.get("status") in {"asset_type_mismatch", "name_mismatch", "missing_from_official", "non_active_official"}][:25],
+        }
+
     return {
         "summary": summary,
         "exchange_rows": exchange_rows,
         "rows": rows,
         "run_dir": display_path(run_dir),
-        "generated_at": path_mtime_iso(run_dir / "summary.json"),
+        "generated_at": latest_verification_marker_iso(run_dir),
     }
 
 

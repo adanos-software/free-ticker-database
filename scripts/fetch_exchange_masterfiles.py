@@ -42,6 +42,13 @@ JPX_LISTED_ISSUES_URL = "https://www.jpx.co.jp/english/markets/statistics-equiti
 DEUTSCHE_BOERSE_LISTED_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/67858/dd766fc6588100c79294324175f95501/data/Listed-companies.xlsx"
 B3_INSTRUMENTS_EQUITIES_URL = "https://arquivos.b3.com.br/bdi/table/InstrumentsEquities"
 TWSE_LISTED_COMPANIES_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
+SZSE_STOCK_LIST_URL = "https://www.szse.cn/market/product/stock/list/index.html"
+SZSE_REPORT_DATA_URL = "https://www.szse.cn/api/report/ShowReport/data"
+SZSE_A_SHARE_CATALOG_ID = "1110"
+SZSE_A_SHARE_TAB_KEY = "tab1"
+SSE_STOCK_LIST_URL = "https://www.sse.com.cn/assortment/stock/list/share/"
+SSE_COMMON_QUERY_URL = "https://query.sse.com.cn/sseQuery/commonQuery.do"
+SSE_JSONP_CALLBACK = "jsonpCallback"
 TPEX_MAINBOARD_QUOTES_URL = "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes"
 KRX_LISTED_COMPANIES_URL = "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp"
 KRX_DATA_URL = "https://global.krx.co.kr/contents/GLB/99/GLB99000001.jspx"
@@ -110,6 +117,7 @@ KRX_MARKET_GUBUN_TO_EXCHANGE = {
     "1": "KRX",
     "2": "KOSDAQ",
 }
+SSE_JSONP_RE = re.compile(r"^[^(]+\((.*)\)\s*$", re.S)
 
 
 @dataclass(frozen=True)
@@ -199,11 +207,28 @@ OFFICIAL_SOURCES = [
         format="twse_listed_companies_json",
     ),
     MasterfileSource(
+        key="sse_a_share_list",
+        provider="SSE",
+        description="Official SSE A-share list",
+        source_url=SSE_STOCK_LIST_URL,
+        format="sse_a_share_list_jsonp",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="szse_a_share_list",
+        provider="SZSE",
+        description="Official SZSE A-share list",
+        source_url=SZSE_STOCK_LIST_URL,
+        format="szse_a_share_list_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
         key="tpex_mainboard_daily_quotes",
         provider="TPEX",
         description="Official TPEX mainboard daily quotes open data feed",
         source_url=TPEX_MAINBOARD_QUOTES_URL,
         format="tpex_mainboard_quotes_json",
+        reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
         key="krx_listed_companies",
@@ -721,6 +746,137 @@ def parse_twse_listed_companies(payload: list[dict[str, Any]], source: Masterfil
     return rows
 
 
+def parse_sse_jsonp(text: str) -> dict[str, Any]:
+    match = SSE_JSONP_RE.match(text.strip())
+    if not match:
+        raise ValueError("Invalid SSE JSONP payload")
+    return json.loads(match.group(1))
+
+
+def parse_sse_a_share_list(payload: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for record in payload.get("result", []) or []:
+        ticker = str(record.get("A_STOCK_CODE", "")).strip()
+        name = str(record.get("FULL_NAME", "")).strip() or str(record.get("SEC_NAME_CN", "")).strip()
+        if not ticker or not name:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "SSE",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
+def strip_html_tags(value: str) -> str:
+    return re.sub(r"<[^>]+>", "", value).strip()
+
+
+def parse_szse_a_share_list(payload: dict[str, Any] | list[dict[str, Any]], source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    sections: list[dict[str, Any]] = []
+    if isinstance(payload, list):
+        sections = [section for section in payload if isinstance(section, dict)]
+    elif isinstance(payload, dict):
+        sections = [
+            report
+            for nested in payload.values()
+            if isinstance(nested, list)
+            for report in nested
+            if isinstance(report, dict)
+        ]
+
+    for report in sections:
+        for record in report.get("data", []) or []:
+            ticker = str(record.get("agdm", "")).strip()
+            name = strip_html_tags(str(record.get("agjc", "")).strip())
+            if not ticker or not name:
+                continue
+            rows.append(
+                {
+                    "source_key": source.key,
+                    "provider": source.provider,
+                    "source_url": source.source_url,
+                    "ticker": ticker,
+                    "name": name,
+                    "exchange": "SZSE",
+                    "asset_type": "Stock",
+                    "listing_status": "active",
+                    "reference_scope": source.reference_scope,
+                    "official": "true",
+                }
+            )
+    return rows
+
+
+def fetch_szse_a_share_list(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Referer": source.source_url,
+        "Connection": "close",
+    }
+    session.get(source.source_url, headers={"User-Agent": USER_AGENT, "Connection": "close"}, timeout=REQUEST_TIMEOUT)
+    rows: list[dict[str, str]] = []
+    page = 1
+    total_pages = 1
+    while page <= total_pages:
+        params = {
+            "CATALOGID": SZSE_A_SHARE_CATALOG_ID,
+            "TABKEY": SZSE_A_SHARE_TAB_KEY,
+            "PAGENO": page,
+            "random": f"{page / 1000:.3f}",
+        }
+        payload: dict[str, Any] | list[dict[str, Any]] | None = None
+        last_error: Exception | None = None
+        for _attempt in range(3):
+            try:
+                response = session.get(
+                    SZSE_REPORT_DATA_URL,
+                    params=params,
+                    headers=headers,
+                    timeout=REQUEST_TIMEOUT,
+                )
+                response.raise_for_status()
+                payload = response.json()
+                break
+            except (requests.RequestException, ValueError) as exc:
+                last_error = exc
+        if payload is None:
+            if isinstance(last_error, requests.RequestException):
+                raise last_error
+            raise requests.RequestException("SZSE A-share list unavailable")
+        page_rows = parse_szse_a_share_list(payload, source)
+        if not page_rows:
+            break
+        rows.extend(page_rows)
+        if isinstance(payload, list):
+            sections = [section for section in payload if isinstance(section, dict)]
+        elif isinstance(payload, dict):
+            sections = [
+                report
+                for nested in payload.values()
+                if isinstance(nested, list)
+                for report in nested
+                if isinstance(report, dict)
+            ]
+        else:
+            sections = []
+        metadata = sections[0].get("metadata", {}) if sections else {}
+        total_pages = int(metadata.get("pagecount") or total_pages)
+        page += 1
+    return rows
+
+
 def parse_tpex_mainboard_quotes(payload: list[dict[str, Any]], source: MasterfileSource) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     for record in payload:
@@ -780,6 +936,45 @@ def parse_b3_instruments_equities_table(table: dict[str, Any], source: Masterfil
                 "official": "true",
             }
         )
+    return rows
+
+
+def fetch_sse_a_share_list(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Referer": source.source_url,
+        "Connection": "close",
+    }
+    rows: list[dict[str, str]] = []
+    page = 1
+    total_pages = 1
+    while page <= total_pages:
+        response = session.get(
+            SSE_COMMON_QUERY_URL,
+            params={
+                "jsonCallBack": SSE_JSONP_CALLBACK,
+                "sqlId": "COMMON_SSE_CP_GPJCTPZ_GPLB_GP_L",
+                "STOCK_TYPE": "1",
+                "COMPANY_STATUS": "2,4,5,7,8",
+                "type": "inParams",
+                "isPagination": "true",
+                "pageHelp.cacheSize": "1",
+                "pageHelp.beginPage": "1",
+                "pageHelp.pageSize": "500",
+                "pageHelp.pageNo": str(page),
+            },
+            headers=headers,
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        payload = parse_sse_jsonp(response.text)
+        page_rows = parse_sse_a_share_list(payload, source)
+        if not page_rows:
+            break
+        rows.extend(page_rows)
+        total_pages = int((payload.get("pageHelp") or {}).get("pageCount") or total_pages)
+        page += 1
     return rows
 
 
@@ -920,6 +1115,10 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "twse_listed_companies_json":
         payload = fetch_json(source.source_url, session=session)
         return parse_twse_listed_companies(payload, source)
+    if source.format == "sse_a_share_list_jsonp":
+        return fetch_sse_a_share_list(source, session=session)
+    if source.format == "szse_a_share_list_json":
+        return fetch_szse_a_share_list(source, session=session)
     if source.format == "tpex_mainboard_quotes_json":
         payload = fetch_json(source.source_url, session=session)
         return parse_tpex_mainboard_quotes(payload, source)

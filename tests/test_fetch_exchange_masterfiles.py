@@ -14,6 +14,8 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_all_sources,
     fetch_krx_listed_companies,
     fetch_lse_company_reports,
+    fetch_sse_a_share_list,
+    fetch_szse_a_share_list,
     fetch_source_rows_with_mode,
     infer_jpx_asset_type,
     load_lse_company_reports_rows,
@@ -29,6 +31,8 @@ from scripts.fetch_exchange_masterfiles import (
     parse_nasdaq_listed,
     parse_other_listed,
     parse_sec_company_tickers_exchange,
+    parse_sse_a_share_list,
+    parse_szse_a_share_list,
     parse_tpex_mainboard_quotes,
     parse_twse_listed_companies,
     parse_tmx_interlisted,
@@ -168,6 +172,205 @@ def test_parse_twse_listed_companies_maps_twse_rows():
             "official": "true",
         },
     ]
+
+
+def test_parse_sse_a_share_list_maps_sse_rows() -> None:
+    payload = {
+        "result": [
+            {"A_STOCK_CODE": "600000", "FULL_NAME": "上海浦东发展银行股份有限公司", "SEC_NAME_CN": "浦发银行"},
+            {"A_STOCK_CODE": "600519", "FULL_NAME": "贵州茅台酒股份有限公司", "SEC_NAME_CN": "贵州茅台"},
+            {"A_STOCK_CODE": "", "FULL_NAME": "Ignored"},
+        ]
+    }
+
+    rows = parse_sse_a_share_list(payload, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "600000",
+            "name": "上海浦东发展银行股份有限公司",
+            "exchange": "SSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "600519",
+            "name": "贵州茅台酒股份有限公司",
+            "exchange": "SSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_fetch_sse_a_share_list_fetches_all_pages() -> None:
+    source = MasterfileSource(
+        key="sse",
+        provider="SSE",
+        description="SSE A-share list",
+        source_url="https://www.sse.com.cn/assortment/stock/list/share/",
+        format="sse_a_share_list_jsonp",
+        reference_scope="listed_companies_subset",
+    )
+
+    class FakeResponse:
+        def __init__(self, text):
+            self.text = text
+
+        def raise_for_status(self):
+            return None
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, params=None, headers=None, **kwargs):
+            self.calls.append((url, params, headers, kwargs))
+            page = params["pageHelp.pageNo"]
+            if page == "1":
+                return FakeResponse(
+                    'jsonpCallback({"pageHelp":{"pageCount":2},"result":[{"A_STOCK_CODE":"600000","FULL_NAME":"上海浦东发展银行股份有限公司"}]})'
+                )
+            return FakeResponse(
+                'jsonpCallback({"pageHelp":{"pageCount":2},"result":[{"A_STOCK_CODE":"600519","FULL_NAME":"贵州茅台酒股份有限公司"}]})'
+            )
+
+    session = FakeSession()
+    rows = fetch_sse_a_share_list(source, session=session)
+
+    assert [row["ticker"] for row in rows] == ["600000", "600519"]
+    assert [call[1]["pageHelp.pageNo"] for call in session.calls] == ["1", "2"]
+    assert all(call[1]["sqlId"] == "COMMON_SSE_CP_GPJCTPZ_GPLB_GP_L" for call in session.calls)
+
+
+def test_sse_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "sse_a_share_list")
+    assert source.reference_scope == "listed_companies_subset"
+
+
+def test_parse_szse_a_share_list_maps_szse_rows() -> None:
+    payload = {
+        "result": [
+            {
+                "metadata": {"pagecount": 1, "recordcount": 2},
+                "data": [
+                    {"agdm": "000001", "agjc": '<a href="/x">平安银行</a>'},
+                    {"agdm": "300750", "agjc": '<a href="/y">宁德时代</a>'},
+                    {"agdm": "", "agjc": "Ignored"},
+                ],
+            }
+        ]
+    }
+
+    rows = parse_szse_a_share_list(payload, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "000001",
+            "name": "平安银行",
+            "exchange": "SZSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "300750",
+            "name": "宁德时代",
+            "exchange": "SZSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_fetch_szse_a_share_list_fetches_all_pages() -> None:
+    source = MasterfileSource(
+        key="szse",
+        provider="SZSE",
+        description="SZSE A-share list",
+        source_url="https://www.szse.cn/market/product/stock/list/index.html",
+        format="szse_a_share_list_json",
+        reference_scope="listed_companies_subset",
+    )
+
+    class FakeResponse:
+        def __init__(self, payload):
+            self._payload = payload
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, params=None, headers=None, **kwargs):
+            self.calls.append((url, params, headers, kwargs))
+            if params is None:
+                return FakeResponse({})
+            page = params["PAGENO"]
+            if page == 1:
+                return FakeResponse(
+                    {
+                        "result": [
+                            {
+                                "metadata": {"pagecount": 2, "recordcount": 2},
+                                "data": [{"agdm": "000001", "agjc": '<a href="/x">平安银行</a>'}],
+                            }
+                        ]
+                    }
+                )
+            return FakeResponse(
+                {
+                    "result": [
+                        {
+                            "metadata": {"pagecount": 2, "recordcount": 2},
+                            "data": [{"agdm": "300750", "agjc": '<a href="/y">宁德时代</a>'}],
+                        }
+                    ]
+                }
+            )
+
+    session = FakeSession()
+    rows = fetch_szse_a_share_list(source, session=session)
+
+    assert [row["ticker"] for row in rows] == ["000001", "300750"]
+    api_calls = [call for call in session.calls if call[1] is not None]
+    assert [call[1]["PAGENO"] for call in api_calls] == [1, 2]
+    assert all(call[1]["CATALOGID"] == "1110" for call in api_calls)
+    assert all(call[1]["TABKEY"] == "tab1" for call in api_calls)
+
+
+def test_szse_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "szse_a_share_list")
+    assert source.reference_scope == "listed_companies_subset"
+
+
+def test_tpex_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "tpex_mainboard_daily_quotes")
+    assert source.reference_scope == "listed_companies_subset"
 
 
 def test_parse_tpex_mainboard_quotes_maps_tpex_rows():

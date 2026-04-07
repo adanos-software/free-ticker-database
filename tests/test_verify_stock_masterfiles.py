@@ -156,6 +156,111 @@ def test_classify_row_treats_twse_local_language_names_as_verified() -> None:
     assert result["reason"] == "Matched active official listing with a local-language issuer name."
 
 
+def test_classify_row_treats_szse_local_language_names_as_verified() -> None:
+    row = {
+        "ticker": "000001",
+        "exchange": "SZSE",
+        "asset_type": "Stock",
+        "name": "Ping An Bank Co Ltd",
+        "country": "China",
+        "country_code": "CN",
+        "isin": "",
+        "sector": "Financials",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("SZSE", "000001"): [
+                {
+                    "ticker": "000001",
+                    "exchange": "SZSE",
+                    "name": "平安银行",
+                    "asset_type": "Stock",
+                    "source_key": "szse_a_share_list",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={"000001": [{"ticker": "000001", "exchange": "SZSE", "name": "平安银行", "asset_type": "Stock"}]},
+        covered_exchanges=set(),
+        partial_covered_exchanges={"SZSE"},
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+    assert result["reason"] == "Matched active official listing with a local-language issuer name."
+
+
+def test_classify_row_treats_sse_local_language_names_as_verified() -> None:
+    row = {
+        "ticker": "600000",
+        "exchange": "SSE",
+        "asset_type": "Stock",
+        "name": "Shanghai Pudong Development Bank Co Ltd",
+        "country": "China",
+        "country_code": "CN",
+        "isin": "",
+        "sector": "Financials",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("SSE", "600000"): [
+                {
+                    "ticker": "600000",
+                    "exchange": "SSE",
+                    "name": "上海浦东发展银行股份有限公司",
+                    "asset_type": "Stock",
+                    "source_key": "sse_a_share_list",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={"600000": [{"ticker": "600000", "exchange": "SSE", "name": "上海浦东发展银行股份有限公司", "asset_type": "Stock"}]},
+        covered_exchanges=set(),
+        partial_covered_exchanges={"SSE"},
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+    assert result["reason"] == "Matched active official listing with a local-language issuer name."
+
+
+def test_classify_row_downgrades_tpex_trading_label_to_reference_gap() -> None:
+    row = {
+        "ticker": "4971",
+        "exchange": "TPEX",
+        "asset_type": "Stock",
+        "name": "IntelliEPI Cayman",
+        "country": "Cayman Islands",
+        "country_code": "KY",
+        "isin": "KYG480071011",
+        "sector": "Information Technology",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("TPEX", "4971"): [
+                {
+                    "ticker": "4971",
+                    "exchange": "TPEX",
+                    "name": "IET-KY",
+                    "asset_type": "Stock",
+                    "source_key": "tpex_mainboard_daily_quotes",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={"4971": [{"ticker": "4971", "exchange": "TPEX", "name": "IET-KY", "asset_type": "Stock"}]},
+        covered_exchanges=set(),
+        partial_covered_exchanges={"TPEX"},
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Only low-confidence issuer reference evidence exists for this listing."
+
+
 def test_classify_row_non_active_official() -> None:
     row = {
         "ticker": "ATEST",
@@ -226,6 +331,47 @@ def test_classify_row_downgrades_weak_collision_peers_to_reference_gap() -> None
     assert result["reason"] == "Only weak cross-exchange collision evidence exists for this listing."
 
 
+def test_classify_row_downgrades_low_confidence_collision_sources_to_reference_gap() -> None:
+    row = {
+        "ticker": "NGD",
+        "exchange": "NYSE MKT",
+        "asset_type": "Stock",
+        "name": "New Gold Inc",
+        "country": "Canada",
+        "country_code": "CA",
+        "isin": "CA6445351068",
+        "sector": "Materials",
+    }
+    result = classify_row(
+        row,
+        active_by_key={},
+        any_by_key={},
+        active_by_ticker={
+            "NGD": [
+                {
+                    "ticker": "NGD",
+                    "exchange": "NYSE",
+                    "name": "New Gold Inc.",
+                    "asset_type": "Stock",
+                    "source_key": "sec_company_tickers_exchange",
+                },
+                {
+                    "ticker": "NGD",
+                    "exchange": "TSX",
+                    "name": "New Gold Inc.",
+                    "asset_type": "Stock",
+                    "source_key": "tmx_interlisted_companies",
+                },
+            ]
+        },
+        covered_exchanges={"NYSE MKT"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Only weak cross-exchange collision evidence exists for this listing."
+
+
 def test_classify_row_downgrades_mismatched_collision_peers_to_reference_gap() -> None:
     row = {
         "ticker": "IMG",
@@ -243,6 +389,40 @@ def test_classify_row_downgrades_mismatched_collision_peers_to_reference_gap() -
         any_by_key={},
         active_by_ticker={"IMG": [{"ticker": "IMG", "exchange": "TSX", "name": "IAMGold Corporation", "asset_type": "Stock"}]},
         covered_exchanges={"NASDAQ"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Only weak cross-exchange collision evidence exists for this listing."
+
+
+def test_classify_row_downgrades_lse_peer_collision_to_reference_gap_for_etf() -> None:
+    row = {
+        "ticker": "JAGG",
+        "exchange": "NYSE ARCA",
+        "asset_type": "ETF",
+        "name": "JPMorgan BetaBuilders U.S. Aggregate Bond ETF",
+        "country": "United States",
+        "country_code": "US",
+        "isin": "US46641Q2416",
+        "sector": "Corporate Bonds",
+    }
+    result = classify_row(
+        row,
+        active_by_key={},
+        any_by_key={},
+        active_by_ticker={
+            "JAGG": [
+                {
+                    "ticker": "JAGG",
+                    "exchange": "LSE",
+                    "name": "JPMORGAN ETFS (IRELAND) ICAV JPM GLOBAL AGG BOND ACTIVE UCITS ETF DIS",
+                    "asset_type": "ETF",
+                    "source_key": "lse_company_reports",
+                }
+            ]
+        },
+        covered_exchanges={"NYSE ARCA"},
         partial_covered_exchanges=set(),
         identifier_map={},
     )

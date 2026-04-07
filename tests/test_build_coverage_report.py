@@ -482,3 +482,33 @@ def test_load_verification_report_reads_latest_chunk_rows(tmp_path):
             "verified_rate_on_covered": None,
         },
     ]
+
+
+def test_load_verification_report_synthesizes_summary_without_top_level_file(tmp_path):
+    run_dir = tmp_path / "run-2"
+    run_dir.mkdir()
+    (run_dir / "chunk-01-of-02.summary.json").write_text(
+        '{"items": 1, "status_counts": {"verified": 1}}',
+        encoding="utf-8",
+    )
+    (run_dir / "chunk-02-of-02.summary.json").write_text(
+        '{"items": 1, "status_counts": {"reference_gap": 1}}',
+        encoding="utf-8",
+    )
+    (run_dir / "chunk-01-of-02.json").write_text(
+        '[{"exchange":"NASDAQ","status":"verified"}]',
+        encoding="utf-8",
+    )
+    (run_dir / "chunk-02-of-02.json").write_text(
+        '[{"exchange":"OTC","status":"reference_gap"}]',
+        encoding="utf-8",
+    )
+
+    report = load_verification_report(run_dir)
+
+    assert report["summary"] == {
+        "items": 2,
+        "status_counts": {"reference_gap": 1, "verified": 1},
+        "finding_examples": [],
+    }
+    assert report["generated_at"]
