@@ -429,7 +429,5 @@ Issues and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for
 
 ## Project Health
 
-- Code of Conduct: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
-- Security policy: [SECURITY.md](SECURITY.md)
 - CI: [GitHub Actions](https://github.com/adanos-software/free-ticker-database/actions/workflows/ci.yml)
 - Release notes: [GitHub Releases](https://github.com/adanos-software/free-ticker-database/releases)

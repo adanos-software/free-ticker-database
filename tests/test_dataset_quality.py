@@ -563,8 +563,6 @@ def test_open_source_project_files_exist_and_are_linked():
     assert (ROOT / ".github" / "ISSUE_TEMPLATE" / "bug_report.md").exists()
     assert (ROOT / ".github" / "ISSUE_TEMPLATE" / "feature_request.md").exists()
     assert (ROOT / ".github" / "pull_request_template.md").exists()
-    assert (ROOT / "CODE_OF_CONDUCT.md").exists()
-    assert (ROOT / "SECURITY.md").exists()
     assert (DATA_DIR / "masterfiles" / "reference.csv").exists()
     assert (DATA_DIR / "history" / "latest_snapshot.csv").exists()
     assert (DATA_DIR / "identifiers_extended.csv").exists()
@@ -580,8 +578,6 @@ def test_open_source_project_files_exist_and_are_linked():
 
     assert "[![CI]" in readme
     assert "## Project Health" in readme
-    assert "Code of Conduct: [CODE_OF_CONDUCT.md]" in readme
-    assert "Security policy: [SECURITY.md]" in readme
     assert "Release notes: [GitHub Releases]" in readme
 
 
