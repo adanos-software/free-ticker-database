@@ -44,6 +44,7 @@ EURONEXT_EQUITIES_DOWNLOAD_URL = "https://live.euronext.com/pd_es/data/stocks/do
 JPX_LISTED_ISSUES_URL = "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls"
 DEUTSCHE_BOERSE_LISTED_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/67858/dd766fc6588100c79294324175f95501/data/Listed-companies.xlsx"
 DEUTSCHE_BOERSE_ETPS_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls"
+DEUTSCHE_BOERSE_XETRA_ALL_TRADABLE_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv"
 B3_INSTRUMENTS_EQUITIES_URL = "https://arquivos.b3.com.br/bdi/table/InstrumentsEquities"
 TWSE_LISTED_COMPANIES_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
 SZSE_STOCK_LIST_URL = "https://www.szse.cn/market/product/stock/list/index.html"
@@ -217,6 +218,14 @@ OFFICIAL_SOURCES = [
         description="Official Deutsche Boerse Xetra ETFs and ETPs master workbook",
         source_url=DEUTSCHE_BOERSE_ETPS_URL,
         format="deutsche_boerse_etfs_etps_excel",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="deutsche_boerse_xetra_all_tradable_equities",
+        provider="Deutsche Boerse",
+        description="Official Deutsche Boerse Xetra all tradable instruments directory (equities subset)",
+        source_url=DEUTSCHE_BOERSE_XETRA_ALL_TRADABLE_URL,
+        format="deutsche_boerse_xetra_all_tradable_csv",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -742,6 +751,44 @@ def parse_deutsche_boerse_etfs_etps_excel(content: bytes, source: MasterfileSour
                 "name": name,
                 "exchange": "XETRA",
                 "asset_type": "ETF",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
+def parse_deutsche_boerse_xetra_all_tradable_csv(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    lines = text.splitlines()
+    if len(lines) < 3:
+        return []
+
+    reader = csv.DictReader(io.StringIO("\n".join(lines[2:])), delimiter=";")
+    rows: list[dict[str, str]] = []
+    for record in reader:
+        if record.get("Product Status") != "Active":
+            continue
+        if record.get("Instrument Status") != "Active":
+            continue
+        if record.get("MIC Code") != "XETR":
+            continue
+        if record.get("Instrument Type") != "CS":
+            continue
+        ticker = str(record.get("Mnemonic", "")).strip()
+        name = str(record.get("Instrument", "")).strip()
+        if not ticker or not name or ticker.lower() == "nan" or name.lower() == "nan":
+            continue
+
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "XETRA",
+                "asset_type": "Stock",
                 "listing_status": "active",
                 "reference_scope": source.reference_scope,
                 "official": "true",
@@ -1368,6 +1415,9 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "deutsche_boerse_etfs_etps_excel":
         content = fetch_bytes(source.source_url, session=session)
         return parse_deutsche_boerse_etfs_etps_excel(content, source)
+    if source.format == "deutsche_boerse_xetra_all_tradable_csv":
+        text = fetch_text(source.source_url, session=session)
+        return parse_deutsche_boerse_xetra_all_tradable_csv(text, source)
     if source.format == "b3_instruments_equities_api":
         return fetch_b3_instruments_equities(source, session=session)
     if source.format == "twse_listed_companies_json":

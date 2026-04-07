@@ -31,6 +31,7 @@ from scripts.fetch_exchange_masterfiles import (
     parse_b3_instruments_equities_table,
     parse_deutsche_boerse_etfs_etps_excel,
     parse_deutsche_boerse_listed_companies_excel,
+    parse_deutsche_boerse_xetra_all_tradable_csv,
     parse_euronext_equities_download,
     parse_jpx_listed_issues_excel,
     parse_krx_etf_finder,
@@ -878,6 +879,11 @@ def test_deutsche_boerse_etfs_etps_source_is_modeled_as_partial_official_coverag
     assert source.reference_scope == "listed_companies_subset"
 
 
+def test_deutsche_boerse_xetra_all_tradable_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "deutsche_boerse_xetra_all_tradable_equities")
+    assert source.reference_scope == "listed_companies_subset"
+
+
 def test_parse_jpx_listed_issues_excel_maps_tse_rows(tmp_path):
     dataframe_path = tmp_path / "jpx.xlsx"
 
@@ -1033,6 +1039,36 @@ def test_parse_deutsche_boerse_etfs_etps_excel_maps_xetra_rows() -> None:
             "reference_scope": "exchange_directory",
             "official": "true",
         },
+    ]
+
+
+def test_parse_deutsche_boerse_xetra_all_tradable_csv_maps_stock_rows() -> None:
+    text = "\n".join(
+        [
+            "Market:;XETR",
+            "Date Last Update:;07.04.2026",
+            "Product Status;Instrument Status;Instrument;ISIN;Product ID;Instrument ID;WKN;Mnemonic;MIC Code;Product Assignment Group;Instrument Type",
+            "Active;Active;PAYPAL HDGS INC.DL-,0001;US70450Y1038;1;2;A14R7U;2PP;XETR;AUS0;CS",
+            "Active;Active;XTRACKERS MSCI WORLD UCITS ETF;IE00BJ0KDQ92;1;2;A1XB5U;XDWD;XETR;PAG_ETF;ETF",
+            "Inactive;Active;OLD EQUITY;US0000000001;1;2;000000;OLD;XETR;PAG_EQU;CS",
+        ]
+    )
+
+    rows = parse_deutsche_boerse_xetra_all_tradable_csv(text, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "2PP",
+            "name": "PAYPAL HDGS INC.DL-,0001",
+            "exchange": "XETRA",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        }
     ]
 
 

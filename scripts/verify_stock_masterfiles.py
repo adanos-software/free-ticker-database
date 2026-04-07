@@ -79,6 +79,7 @@ LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE = {
     "TPEX": {"tpex_mainboard_daily_quotes"},
     "TSX": {"tmx_interlisted_companies", "tmx_listed_issuers"},
     "TSXV": {"tmx_interlisted_companies", "tmx_listed_issuers"},
+    "XETRA": {"deutsche_boerse_xetra_all_tradable_equities"},
 }
 ABBREVIATED_OFFICIAL_LABEL_EXCHANGES = {"KRX", "KOSDAQ"}
 EURONEXT_LABEL_SPLIT_RE = re.compile(r"[\s./-]+")

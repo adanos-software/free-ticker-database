@@ -90,6 +90,15 @@
     "official": true
   },
   {
+    "key": "deutsche_boerse_xetra_all_tradable_equities",
+    "provider": "Deutsche Boerse",
+    "description": "Official Deutsche Boerse Xetra all tradable instruments directory (equities subset)",
+    "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
+    "format": "deutsche_boerse_xetra_all_tradable_csv",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "b3_instruments_equities",
     "provider": "B3",
     "description": "Official B3 instruments consolidated cash-equities table",

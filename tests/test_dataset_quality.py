@@ -189,6 +189,10 @@ def test_non_common_instruments_removed():
     assert "BTSGU" not in tickers
     assert "001515" not in tickers
     assert "005385" not in tickers
+    assert "00499K" not in tickers
+    assert "005945" not in tickers
+    assert "003925" not in tickers
+    assert "00781K" not in tickers
 
 
 def test_country_examples_corrected():
@@ -530,6 +534,38 @@ def test_should_exclude_stock_row_drops_twse_non_common_b_lines():
     }
 
     assert should_exclude_stock_row(row) is True
+
+
+def test_should_exclude_stock_row_drops_krx_secondary_lines_with_matching_base():
+    from scripts.rebuild_dataset import should_exclude_stock_row
+
+    row = {
+        "ticker": "005945",
+        "name": "Nh Investment And Securities 1p",
+        "exchange": "KRX",
+        "asset_type": "Stock",
+    }
+    stock_name_lookup = {
+        "005940": {"NH Investment & Securities Co Ltd"},
+    }
+
+    assert should_exclude_stock_row(row, stock_name_lookup=stock_name_lookup) is True
+
+
+def test_should_exclude_stock_row_keeps_krx_secondary_lines_without_matching_base():
+    from scripts.rebuild_dataset import should_exclude_stock_row
+
+    row = {
+        "ticker": "005945",
+        "name": "Nh Investment And Securities 1p",
+        "exchange": "KRX",
+        "asset_type": "Stock",
+    }
+    stock_name_lookup = {
+        "005940": {"Completely Different Issuer"},
+    }
+
+    assert should_exclude_stock_row(row, stock_name_lookup=stock_name_lookup) is False
 
 
 def test_apply_official_exchange_corrections_moves_krx_stock_to_kosdaq(monkeypatch):

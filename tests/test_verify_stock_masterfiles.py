@@ -1057,6 +1057,41 @@ def test_classify_row_treats_krx_etfs_as_partial_coverage() -> None:
     assert result["reason"] == "This exchange is only partially covered by the current official reference layer."
 
 
+def test_classify_row_downgrades_xetra_all_tradable_name_mismatch_to_reference_gap() -> None:
+    row = {
+        "ticker": "2PP",
+        "exchange": "XETRA",
+        "asset_type": "Stock",
+        "name": "PayBuddy Corp",
+        "country": "United States",
+        "country_code": "US",
+        "isin": "US70450Y1038",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("XETRA", "2PP"): [
+                {
+                    "ticker": "2PP",
+                    "exchange": "XETRA",
+                    "name": "PAYPAL HDGS INC.DL-,0001",
+                    "asset_type": "Stock",
+                    "source_key": "deutsche_boerse_xetra_all_tradable_equities",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges=set(),
+        partial_covered_exchanges={"XETRA"},
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Only low-confidence issuer reference evidence exists for this listing."
+
+
 def test_classify_row_treats_krx_local_language_etf_names_as_verified() -> None:
     row = {
         "ticker": "451060",

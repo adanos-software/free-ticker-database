@@ -184,6 +184,7 @@ PREFERRED_PF_TICKER_RE = re.compile(r"^[A-Z]{1,8}-PF[A-Z]$")
 PREFERRED_PR_TICKER_RE = re.compile(r"^[A-Z]{1,8}-PR-[A-Z]$")
 PREFERRED_PREF_TICKER_RE = re.compile(r"^[A-Z]{1,8}-PREF$")
 US_SERIES_PREFERRED_TICKER_RE = re.compile(r"^[A-Z]{1,8}-P$")
+KRX_SECONDARY_LINE_TICKER_RE = re.compile(r"^\d{5}[579KL]$")
 EUROPEAN_CERTIFICATE_PATTERN = re.compile(r"\bparticipated cert\b|\bcert\(", re.IGNORECASE)
 ETP_NAME_PATTERNS = (
     re.compile(r"\betf\b", re.IGNORECASE),
@@ -662,6 +663,17 @@ def build_stock_base_name_index(rows: Iterable[dict[str, str]]) -> dict[str, set
     return index
 
 
+def build_stock_name_lookup(rows: Iterable[dict[str, str]]) -> dict[str, set[str]]:
+    lookup: dict[str, set[str]] = defaultdict(set)
+    for row in rows:
+        if row.get("asset_type") != "Stock":
+            continue
+        name = row.get("name", "").strip()
+        if name:
+            lookup[row["ticker"].upper()].add(name)
+    return lookup
+
+
 def has_matching_base_listing(
     row: dict[str, str],
     stock_base_name_index: dict[str, set[str]] | None,
@@ -678,9 +690,30 @@ def has_matching_base_listing(
     return fingerprint in stock_base_name_index.get(base_ticker, set())
 
 
+def has_matching_krx_base_listing(
+    row: dict[str, str],
+    stock_name_lookup: dict[str, set[str]] | None,
+) -> bool:
+    if not stock_name_lookup:
+        return False
+    if row.get("exchange") != "KRX":
+        return False
+    ticker = row["ticker"].upper()
+    if not KRX_SECONDARY_LINE_TICKER_RE.fullmatch(ticker):
+        return False
+    base_ticker = f"{ticker[:5]}0"
+    if base_ticker == ticker:
+        return False
+    base_names = stock_name_lookup.get(base_ticker, set())
+    if not base_names:
+        return False
+    return any(alias_matches_company(row["name"], base_name) for base_name in base_names)
+
+
 def should_exclude_stock_row(
     row: dict[str, str],
     stock_base_name_index: dict[str, set[str]] | None = None,
+    stock_name_lookup: dict[str, set[str]] | None = None,
 ) -> bool:
     if row["asset_type"] != "Stock":
         return False
@@ -694,6 +727,8 @@ def should_exclude_stock_row(
         if B3_UNIT_TICKER_RE.fullmatch(ticker):
             return True
     if row.get("exchange") == "PSX" and PSX_CORPORATE_ACTION_TICKER_RE.fullmatch(ticker):
+        return True
+    if has_matching_krx_base_listing(row, stock_name_lookup):
         return True
     if row.get("exchange") == "ASX":
         if ASX_CAPITAL_NOTE_TICKER_RE.fullmatch(ticker):
@@ -1237,11 +1272,12 @@ def cleaned_rows():
 
     prepared_rows = apply_official_exchange_corrections(prepared_rows)
     stock_base_name_index = build_stock_base_name_index(prepared_rows)
+    stock_name_lookup = build_stock_name_lookup(prepared_rows)
 
     base_rows: list[dict[str, str]] = []
     for row in prepared_rows:
         row_key = (row["ticker"], row["exchange"])
-        if should_exclude_stock_row(row, stock_base_name_index):
+        if should_exclude_stock_row(row, stock_base_name_index, stock_name_lookup):
             continue
         merged_aliases = split_aliases(row["aliases"])
         identifier = None
