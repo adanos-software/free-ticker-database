@@ -14,7 +14,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.listing_keys import row_listing_key
-from scripts.rebuild_dataset import alias_matches_company
+from scripts.rebuild_dataset import alias_matches_company, normalize_tokens
 
 
 DATA_DIR = ROOT / "data"
@@ -83,6 +83,18 @@ GENERIC_ETF_PLACEHOLDER_NAMES = {
 
 def has_non_latin_name(name: str) -> bool:
     return any(ord(character) > 127 and character.isalpha() for character in name)
+
+
+def has_strong_company_name_match(left: str, right: str) -> bool:
+    if not alias_matches_company(left, right):
+        return False
+    left_compact = re.sub(r"[^a-z0-9]+", "", left.lower())
+    right_compact = re.sub(r"[^a-z0-9]+", "", right.lower())
+    if left_compact and right_compact and (
+        left_compact in right_compact or right_compact in left_compact
+    ):
+        return True
+    return len(normalize_tokens(left) & normalize_tokens(right)) >= 2
 
 
 def load_csv(path: Path) -> list[dict[str, str]]:
@@ -291,7 +303,39 @@ def classify_row(
             reference_name = non_active_row.get("name", "")
             reference_source = non_active_row.get("source_key", "")
         elif peers:
-            peer_exchanges = {peer["exchange"] for peer in peers}
+            matching_peers = [
+                peer
+                for peer in peers
+                if peer.get("asset_type") == row.get("asset_type")
+                and (
+                    has_strong_company_name_match(peer.get("name", ""), row["name"])
+                    or has_strong_company_name_match(row["name"], peer.get("name", ""))
+                )
+            ]
+            if not matching_peers:
+                status = "reference_gap"
+                reason = "Only weak cross-exchange collision evidence exists for this listing."
+                return {
+                    "listing_key": listing_key,
+                    "ticker": ticker,
+                    "exchange": exchange,
+                    "asset_type": row["asset_type"],
+                    "name": row["name"],
+                    "country": row["country"],
+                    "country_code": row["country_code"],
+                    "isin": row["isin"],
+                    "sector": row["sector"],
+                    "status": status,
+                    "reason": reason,
+                    "official_reference_name": reference_name,
+                    "official_reference_source": reference_source,
+                    "covered_by_official_directory": exchange in covered_exchanges,
+                    "cik": identifiers.get("cik", ""),
+                    "figi": identifiers.get("figi", ""),
+                    "lei": identifiers.get("lei", ""),
+                }
+
+            peer_exchanges = {peer["exchange"] for peer in matching_peers}
             peer_preview = ", ".join(sorted(peer_exchanges)[:4])
             if peer_exchanges <= LOW_CONFIDENCE_COLLISION_PEER_EXCHANGES:
                 status = "reference_gap"

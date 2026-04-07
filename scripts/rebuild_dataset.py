@@ -31,6 +31,7 @@ TICKERS_DB = DATA_DIR / "tickers.db"
 TICKERS_PARQUET = DATA_DIR / "tickers.parquet"
 CROSS_LISTINGS_CSV = DATA_DIR / "cross_listings.csv"
 MASTERFILE_SUPPLEMENT_CSV = DATA_DIR / "masterfiles" / "supplemental_listings.csv"
+MASTERFILE_REFERENCE_CSV = DATA_DIR / "masterfiles" / "reference.csv"
 REVIEW_OVERRIDES_DIR = DATA_DIR / "review_overrides"
 REVIEW_REMOVE_ALIASES_CSV = REVIEW_OVERRIDES_DIR / "remove_aliases.csv"
 REVIEW_METADATA_UPDATES_CSV = REVIEW_OVERRIDES_DIR / "metadata_updates.csv"
@@ -149,9 +150,20 @@ GENERIC_FUND_WRAPPER_NAMES = {
     "us exchange listed funds trust",
     "virtus etf trust ii",
 }
+GENERIC_ETF_PLACEHOLDER_NAMES_EXACT = {
+    "absolute shares trust",
+    "grayscale funds trust",
+    "investment managers series trust ii",
+    "professionally managed portfolios",
+    "series portfolios trust",
+    "strategy shares",
+    "the rbb fund trust",
+    "tidal trust i",
+}
 BAD_GENERIC_FUND_ALIASES = GENERIC_FUND_WRAPPER_NAMES
 US_EXCHANGES = {"NASDAQ", "NYSE", "NYSE ARCA", "NYSE MKT", "BATS"}
 OTC_EXCHANGES = {"OTC", "OTCCE", "OTCMKTS"}
+PRIMARY_VENUE_CORRECTION_EXCHANGES = US_EXCHANGES | OTC_EXCHANGES
 STRICT_NUMERIC_NAMESPACE_EXCHANGES = {"Bursa", "KOSDAQ", "KRX", "TPEX", "TWSE"}
 EXCHANGE_TICKER_RE = re.compile(r"^[A-Z0-9-]+\.[A-Z]{1,6}$")
 IDENTIFIER_RE = re.compile(r"^[A-Z0-9]{5,12}$")
@@ -734,6 +746,174 @@ def normalize_input_row(row: dict[str, str]) -> dict[str, str]:
     return normalized
 
 
+def is_code_like_name(name: str, ticker: str) -> bool:
+    return normalized_compact(name) == normalized_compact(ticker)
+
+
+def generic_fund_wrapper_match(name: str) -> str | None:
+    lowered = " ".join(name.lower().split())
+    if lowered in GENERIC_ETF_PLACEHOLDER_NAMES_EXACT:
+        return "exact"
+    for wrapper in GENERIC_FUND_WRAPPER_NAMES:
+        if lowered == wrapper:
+            return "exact"
+        if (
+            lowered.startswith(f"{wrapper} ")
+            or lowered.startswith(f"{wrapper} -")
+            or lowered.startswith(f"{wrapper}:")
+        ):
+            return "prefixed"
+    return None
+
+
+@lru_cache(maxsize=None)
+def load_active_official_reference_rows() -> dict[tuple[str, str], tuple[dict[str, str], ...]]:
+    grouped: dict[tuple[str, str], list[dict[str, str]]] = defaultdict(list)
+    if not MASTERFILE_REFERENCE_CSV.exists():
+        return {}
+
+    with MASTERFILE_REFERENCE_CSV.open(newline="", encoding="utf-8") as handle:
+        for row in csv.DictReader(handle):
+            if row.get("official") != "true":
+                continue
+            if row.get("listing_status") != "active":
+                continue
+            if row.get("reference_scope") in {"", "manual"}:
+                continue
+            grouped[(row["ticker"], row["asset_type"])].append(row)
+
+    return {
+        key: tuple(
+            sorted(
+                rows,
+                key=lambda candidate: (
+                    int(candidate.get("reference_scope") == "exchange_directory"),
+                    len(candidate.get("name", "")),
+                    candidate.get("source_key", ""),
+                ),
+                reverse=True,
+            )
+        )
+        for key, rows in grouped.items()
+    }
+
+
+def choose_preferred_official_reference_row(
+    rows: tuple[dict[str, str], ...],
+    current_name: str,
+) -> dict[str, str]:
+    matching = [
+        row
+        for row in rows
+        if alias_matches_company(row.get("name", ""), current_name)
+        or alias_matches_company(current_name, row.get("name", ""))
+    ]
+    return matching[0] if matching else rows[0]
+
+
+def should_correct_to_official_exchange(
+    row: dict[str, str],
+    official_row: dict[str, str],
+) -> bool:
+    current_exchange = row["exchange"]
+    target_exchange = official_row["exchange"]
+    if current_exchange == target_exchange:
+        return False
+
+    safe_name_match = (
+        alias_matches_company(row["name"], official_row["name"])
+        or alias_matches_company(official_row["name"], row["name"])
+    )
+    code_like_name = is_code_like_name(row["name"], row["ticker"])
+    wrapper_match = generic_fund_wrapper_match(row["name"])
+
+    if row["asset_type"] == "ETF":
+        return bool(
+            current_exchange in PRIMARY_VENUE_CORRECTION_EXCHANGES
+            and target_exchange in US_EXCHANGES
+            and (safe_name_match or code_like_name or wrapper_match)
+        )
+
+    if target_exchange in US_EXCHANGES:
+        return bool(
+            current_exchange in PRIMARY_VENUE_CORRECTION_EXCHANGES
+            and (safe_name_match or code_like_name)
+        )
+
+    if target_exchange in {"TSX", "TSXV"}:
+        return bool(
+            current_exchange in US_EXCHANGES
+            and row.get("isin", "").startswith("CA")
+            and safe_name_match
+        )
+
+    return False
+
+
+def apply_official_exchange_corrections(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    reference_rows = load_active_official_reference_rows()
+    if not reference_rows:
+        return rows
+
+    occupied_listing_keys = {row_listing_key(row) for row in rows}
+    corrected_rows: list[dict[str, str]] = []
+
+    for row in rows:
+        key = (row["ticker"], row["asset_type"])
+        candidates = reference_rows.get(key, ())
+        if not candidates:
+            corrected_rows.append(row)
+            continue
+
+        official_row: dict[str, str] | None = None
+        target_exchanges = {candidate["exchange"] for candidate in candidates}
+        if len(target_exchanges) == 1:
+            official_row = choose_preferred_official_reference_row(candidates, row["name"])
+        elif row["asset_type"] == "ETF":
+            us_candidates = [candidate for candidate in candidates if candidate["exchange"] in US_EXCHANGES]
+            if row["exchange"] in OTC_EXCHANGES:
+                preferred_us_candidates = [
+                    candidate
+                    for candidate in us_candidates
+                    if candidate.get("source_key") in {"nasdaq_listed", "nasdaq_other_listed"}
+                ]
+                if preferred_us_candidates:
+                    us_candidates = preferred_us_candidates
+            us_target_exchanges = {candidate["exchange"] for candidate in us_candidates}
+            if len(us_target_exchanges) == 1:
+                official_row = choose_preferred_official_reference_row(tuple(us_candidates), row["name"])
+
+        if not official_row:
+            corrected_rows.append(row)
+            continue
+
+        if not should_correct_to_official_exchange(row, official_row):
+            corrected_rows.append(row)
+            continue
+
+        corrected = dict(row)
+        corrected["exchange"] = official_row["exchange"]
+
+        wrapper_match = generic_fund_wrapper_match(row["name"])
+        if (
+            is_code_like_name(row["name"], row["ticker"])
+            or wrapper_match
+        ):
+            corrected["name"] = official_row["name"]
+
+        old_listing_key = row_listing_key(row)
+        new_listing_key = row_listing_key(corrected)
+        if new_listing_key in occupied_listing_keys and new_listing_key != old_listing_key:
+            corrected_rows.append(row)
+            continue
+
+        occupied_listing_keys.discard(old_listing_key)
+        occupied_listing_keys.add(new_listing_key)
+        corrected_rows.append(corrected)
+
+    return corrected_rows
+
+
 def is_suspicious_us_primary(row: dict[str, str], aliases: list[str]) -> bool:
     if row["exchange"] not in US_EXCHANGES:
         return False
@@ -1048,6 +1228,7 @@ def cleaned_rows():
         merged = apply_input_metadata_overrides(merged, review_metadata_updates.get(row_key, {}))
         prepared_rows.append(merged)
 
+    prepared_rows = apply_official_exchange_corrections(prepared_rows)
     stock_base_name_index = build_stock_base_name_index(prepared_rows)
 
     base_rows: list[dict[str, str]] = []

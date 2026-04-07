@@ -226,6 +226,78 @@ def test_classify_row_downgrades_weak_collision_peers_to_reference_gap() -> None
     assert result["reason"] == "Only weak cross-exchange collision evidence exists for this listing."
 
 
+def test_classify_row_downgrades_mismatched_collision_peers_to_reference_gap() -> None:
+    row = {
+        "ticker": "IMG",
+        "exchange": "NASDAQ",
+        "asset_type": "Stock",
+        "name": "CIMG Inc.",
+        "country": "Canada",
+        "country_code": "CA",
+        "isin": "CA4509131088",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={},
+        any_by_key={},
+        active_by_ticker={"IMG": [{"ticker": "IMG", "exchange": "TSX", "name": "IAMGold Corporation", "asset_type": "Stock"}]},
+        covered_exchanges={"NASDAQ"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Only weak cross-exchange collision evidence exists for this listing."
+
+
+def test_classify_row_ignores_asset_type_mismatched_collision_peers() -> None:
+    row = {
+        "ticker": "TWN",
+        "exchange": "Euronext",
+        "asset_type": "ETF",
+        "name": "Multi Units Luxembourg - Lyxor Msci Taiwan Ucits Etf",
+        "country": "France",
+        "country_code": "FR",
+        "isin": "",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={},
+        any_by_key={},
+        active_by_ticker={"TWN": [{"ticker": "TWN", "exchange": "NYSE", "name": "Taiwan Fund, Inc. (The) Common Stock", "asset_type": "Stock"}]},
+        covered_exchanges={"Euronext"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Only weak cross-exchange collision evidence exists for this listing."
+
+
+def test_classify_row_downgrades_single_token_etf_collision_overlap_to_reference_gap() -> None:
+    row = {
+        "ticker": "STK",
+        "exchange": "Euronext",
+        "asset_type": "ETF",
+        "name": "SPDR MSCI Europe Technology UCITS ETF",
+        "country": "Australia",
+        "country_code": "AU",
+        "isin": "AU0000100901",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={},
+        any_by_key={},
+        active_by_ticker={"STK": [{"ticker": "STK", "exchange": "NYSE", "name": "Columbia Seligman Premium Technology Growth Fund, Inc.", "asset_type": "ETF"}]},
+        covered_exchanges={"Euronext"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Only weak cross-exchange collision evidence exists for this listing."
+
+
 def test_classify_row_prefers_non_sec_stock_evidence() -> None:
     row = {
         "ticker": "FCBC",

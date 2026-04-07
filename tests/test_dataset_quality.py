@@ -743,6 +743,52 @@ def test_tickers_csv_keeps_only_primary_cross_listing_rows():
     assert sum(row["is_primary"] == "1" for row in microsoft_rows) == 1
 
 
+def test_core_export_corrects_safe_official_exchange_collisions():
+    nby = ticker_row("NBY")
+    csci = ticker_row("CSCI")
+    qipt = ticker_row("QIPT")
+    phxep = ticker_row("PHXE-P")
+    aprb = ticker_row("APRB")
+    fesm = ticker_row("FESM")
+    qval = ticker_row("QVAL")
+    augt = ticker_row("AUGT")
+
+    assert nby is not None and nby["exchange"] == "NYSE"
+    assert csci is not None and csci["exchange"] == "TSX"
+    assert qipt is not None and qipt["exchange"] == "TSX"
+    assert phxep is not None and phxep["exchange"] == "NYSE"
+    assert phxep["name"] == "Phoenix Energy One, LLC"
+
+    assert aprb is not None and aprb["exchange"] == "BATS"
+    assert fesm is not None and fesm["exchange"] == "NYSE ARCA"
+    assert qval is not None and qval["exchange"] == "NASDAQ"
+    assert augt is not None and augt["exchange"] == "BATS"
+    assert augt["name"] == "AllianzIM U.S. Large Cap Buffer10 Aug ETF"
+
+
+def test_core_export_refreshes_generic_etf_wrapper_rows_to_official_us_venues():
+    wbiy = ticker_row("WBIY")
+    mdaa = ticker_row("MDAA")
+    akre = ticker_row("AKRE")
+    ppi = ticker_row("PPI")
+    dive = ticker_row("DIVE")
+
+    assert wbiy is not None and wbiy["exchange"] == "NYSE"
+    assert wbiy["name"] == "WBI Power Factor High Dividend ETF"
+
+    assert mdaa is not None and mdaa["exchange"] == "NYSE ARCA"
+    assert mdaa["name"] == "Myriad Dynamic Asset Allocation ETF"
+
+    assert akre is not None and akre["exchange"] == "NYSE ARCA"
+    assert akre["name"] == "Akre Focus ETF"
+
+    assert ppi is not None and ppi["exchange"] == "NASDAQ"
+    assert ppi["name"] == "Astoria Real Assets ETF"
+
+    assert dive is not None and dive["exchange"] == "NYSE ARCA"
+    assert dive["name"] == "Dana Concentrated Dividend ETF"
+
+
 def test_cross_listings_sqlite_table_matches_csv_rows():
     csv_rows = load_csv("cross_listings.csv")
 

@@ -1,8 +1,8 @@
 {
   "global": {
     "official_symbols": 24252,
-    "matched": 18187,
-    "collisions": 2652,
+    "matched": 18428,
+    "collisions": 2411,
     "missing": 3413
   },
   "exchanges": [
@@ -180,74 +180,10 @@
     {
       "exchange": "BATS",
       "official_symbols": 1239,
-      "matched": 1040,
-      "collisions": 168,
+      "matched": 1192,
+      "collisions": 16,
       "missing": 31,
       "collision_examples": [
-        {
-          "ticker": "AAAA",
-          "name": "Amplius Aggressive Asset Allocation ETF",
-          "target_exchange": "BATS",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
-        {
-          "ticker": "ABLS",
-          "name": "Abacus FCF Small Cap Leaders ETF",
-          "target_exchange": "BATS",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
-        {
-          "ticker": "AIOO",
-          "name": "AllianzIM U.S. Equity Buffer100 Protection ETF",
-          "target_exchange": "BATS",
-          "existing_exchanges": [
-            "NYSE ARCA"
-          ]
-        },
-        {
-          "ticker": "APRB",
-          "name": "Aptus April Buffer ETF",
-          "target_exchange": "BATS",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
-        {
-          "ticker": "APRT",
-          "name": "AllianzIM U.S. Large Cap Buffer10 Apr ETF",
-          "target_exchange": "BATS",
-          "existing_exchanges": [
-            "NYSE ARCA"
-          ]
-        },
-        {
-          "ticker": "APRW",
-          "name": "AllianzIM U.S. Large Cap Buffer20 Apr ETF",
-          "target_exchange": "BATS",
-          "existing_exchanges": [
-            "NYSE ARCA"
-          ]
-        },
-        {
-          "ticker": "APXM",
-          "name": "FT Vest U.S. Equity Max Buffer ETF - April",
-          "target_exchange": "BATS",
-          "existing_exchanges": [
-            "NASDAQ"
-          ]
-        },
-        {
-          "ticker": "AQLT",
-          "name": "iShares MSCI Global Quality Factor ETF",
-          "target_exchange": "BATS",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
         {
           "ticker": "ARKI",
           "name": "ARK DIET Q2 Buffer ETF",
@@ -257,11 +193,75 @@
           ]
         },
         {
-          "ticker": "AUGT",
-          "name": "AllianzIM U.S. Large Cap Buffer10 Aug ETF",
+          "ticker": "AVRY",
+          "name": "Avory Foundational ETF",
           "target_exchange": "BATS",
           "existing_exchanges": [
-            "NYSE ARCA"
+            "US"
+          ]
+        },
+        {
+          "ticker": "BEZ",
+          "name": "Tradr 2X Short BE Daily ETF",
+          "target_exchange": "BATS",
+          "existing_exchanges": [
+            "ASX"
+          ]
+        },
+        {
+          "ticker": "EOSU",
+          "name": "T-REX 2X Long EOSE Daily Target ETF",
+          "target_exchange": "BATS",
+          "existing_exchanges": [
+            "US"
+          ]
+        },
+        {
+          "ticker": "FFF",
+          "name": "Founders 100 ETF",
+          "target_exchange": "BATS",
+          "existing_exchanges": [
+            "US"
+          ]
+        },
+        {
+          "ticker": "FLXI",
+          "name": "Invesco Flexible Income ETF",
+          "target_exchange": "BATS",
+          "existing_exchanges": [
+            "OTC"
+          ]
+        },
+        {
+          "ticker": "IBX",
+          "name": "Tradr 2X Long IBM Daily ETF",
+          "target_exchange": "BATS",
+          "existing_exchanges": [
+            "ASX"
+          ]
+        },
+        {
+          "ticker": "KAMO",
+          "name": "Kensington Credit Opportunities ETF",
+          "target_exchange": "BATS",
+          "existing_exchanges": [
+            "US"
+          ]
+        },
+        {
+          "ticker": "PAYM",
+          "name": "TrueShares S&P Autocallable Defensive Income ETF",
+          "target_exchange": "BATS",
+          "existing_exchanges": [
+            "TSX"
+          ]
+        },
+        {
+          "ticker": "PIEL",
+          "name": "Pacer International Export Leaders ETF",
+          "target_exchange": "BATS",
+          "existing_exchanges": [
+            "US"
           ]
         }
       ],
@@ -462,8 +462,8 @@
     {
       "exchange": "NASDAQ",
       "official_symbols": 5442,
-      "matched": 4524,
-      "collisions": 87,
+      "matched": 4564,
+      "collisions": 47,
       "missing": 831,
       "collision_examples": [
         {
@@ -515,14 +515,6 @@
           ]
         },
         {
-          "ticker": "AVGG",
-          "name": "Leverage Shares 2X Long AVGO Daily ETF",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "OTC"
-          ]
-        },
-        {
           "ticker": "AVL",
           "name": "Direxion Daily AVGO Bull 2X ETF",
           "target_exchange": "NASDAQ",
@@ -544,6 +536,14 @@
           "target_exchange": "NASDAQ",
           "existing_exchanges": [
             "TSXV"
+          ]
+        },
+        {
+          "ticker": "BRES",
+          "name": "Burney U.S. Equity Select ETF",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "LSE"
           ]
         }
       ],
@@ -603,8 +603,8 @@
     {
       "exchange": "NYSE",
       "official_symbols": 3829,
-      "matched": 2050,
-      "collisions": 512,
+      "matched": 2058,
+      "collisions": 504,
       "missing": 1267,
       "collision_examples": [
         {
@@ -744,8 +744,8 @@
     {
       "exchange": "NYSE ARCA",
       "official_symbols": 2612,
-      "matched": 2523,
-      "collisions": 75,
+      "matched": 2564,
+      "collisions": 34,
       "missing": 14,
       "collision_examples": [
         {
@@ -765,27 +765,11 @@
           ]
         },
         {
-          "ticker": "AKRE",
-          "name": "Akre Focus ETF",
+          "ticker": "BAR",
+          "name": "GraniteShares Gold Trust Shares of Beneficial Interest",
           "target_exchange": "NYSE ARCA",
           "existing_exchanges": [
             "NYSE"
-          ]
-        },
-        {
-          "ticker": "ARMH",
-          "name": "Arm Holdings PLC ADRhedged",
-          "target_exchange": "NYSE ARCA",
-          "existing_exchanges": [
-            "NASDAQ"
-          ]
-        },
-        {
-          "ticker": "ASMH",
-          "name": "ASML Holding NV ADRhedged",
-          "target_exchange": "NYSE ARCA",
-          "existing_exchanges": [
-            "BATS"
           ]
         },
         {
@@ -794,22 +778,6 @@
           "target_exchange": "NYSE ARCA",
           "existing_exchanges": [
             "US"
-          ]
-        },
-        {
-          "ticker": "BLOX",
-          "name": "Nicholas Crypto Income ETF",
-          "target_exchange": "NYSE ARCA",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
-        {
-          "ticker": "BPI",
-          "name": "Grayscale Bitcoin Premium Income ETF",
-          "target_exchange": "NYSE ARCA",
-          "existing_exchanges": [
-            "NASDAQ"
           ]
         },
         {
@@ -826,6 +794,38 @@
           "target_exchange": "NYSE ARCA",
           "existing_exchanges": [
             "BVB"
+          ]
+        },
+        {
+          "ticker": "CLIM",
+          "name": "Climate Global - Climate Resilient REIT Index ETF",
+          "target_exchange": "NYSE ARCA",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
+        {
+          "ticker": "COPZ",
+          "name": "Defiance Daily Target 2X Long Copper Miners ETF",
+          "target_exchange": "NYSE ARCA",
+          "existing_exchanges": [
+            "US"
+          ]
+        },
+        {
+          "ticker": "DDDD",
+          "name": "YieldMax U.S. Stocks Target Double Distribution ETF",
+          "target_exchange": "NYSE ARCA",
+          "existing_exchanges": [
+            "US"
+          ]
+        },
+        {
+          "ticker": "EDGQ",
+          "name": "Global X Nasdaq-100 Income Edge ETF",
+          "target_exchange": "NYSE ARCA",
+          "existing_exchanges": [
+            "US"
           ]
         }
       ],
