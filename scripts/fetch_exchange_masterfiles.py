@@ -23,12 +23,18 @@ MASTERFILE_SUMMARY_JSON = MASTERFILES_DIR / "summary.json"
 MASTERFILE_CACHE_DIR = MASTERFILES_DIR / "cache"
 SEC_COMPANY_TICKERS_CACHE = MASTERFILE_CACHE_DIR / "sec_company_tickers_exchange.json"
 LEGACY_SEC_COMPANY_TICKERS_CACHE = MASTERFILES_DIR / "sec_company_tickers_exchange.json"
+LSE_COMPANY_REPORTS_CACHE = MASTERFILE_CACHE_DIR / "lse_company_reports.json"
+LEGACY_LSE_COMPANY_REPORTS_CACHE = MASTERFILES_DIR / "lse_company_reports.json"
 TPEX_MAINBOARD_QUOTES_CACHE = MASTERFILE_CACHE_DIR / "tpex_mainboard_daily_close_quotes.json"
 LEGACY_TPEX_MAINBOARD_QUOTES_CACHE = MASTERFILES_DIR / "tpex_mainboard_daily_close_quotes.json"
 
 SEC_COMPANY_TICKERS_URL = "https://www.sec.gov/files/company_tickers_exchange.json"
 NASDAQ_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt"
 NASDAQ_OTHER_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt"
+LSE_COMPANY_REPORTS_URL = (
+    "https://www.londonstockexchange.com/exchange/instrument-result.html"
+    "?filterBy=CompanyReports&filterClause=1&initial={initial}&page={page}"
+)
 ASX_LISTED_URL = "https://www.asx.com.au/asx/research/ASXListedCompanies.csv"
 TMX_INTERLISTED_URL = "https://www.tsx.com/files/trading/interlisted-companies.txt"
 EURONEXT_EQUITIES_DOWNLOAD_URL = "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock"
@@ -96,6 +102,7 @@ B3_EXCLUDED_ISSUER_MARKERS = (
     "financ/termo",
 )
 TPEX_CANONICAL_TICKER_RE = re.compile(r"(?:\d{4}|00\d{4}[A-Z]?)$")
+LSE_PAGE_INITIALS = tuple("ABCDEFGHIJKLMNOPQRSTUVWXYZ") + ("0-9",)
 
 
 @dataclass(frozen=True)
@@ -123,6 +130,14 @@ OFFICIAL_SOURCES = [
         description="Official other-listed/CQS symbol directory",
         source_url=NASDAQ_OTHER_LISTED_URL,
         format="nasdaq_other_listed_pipe",
+    ),
+    MasterfileSource(
+        key="lse_company_reports",
+        provider="LSE",
+        description="Official London Stock Exchange company reports directory",
+        source_url=LSE_COMPANY_REPORTS_URL,
+        format="lse_company_reports_html",
+        reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
         key="asx_listed_companies",
@@ -323,6 +338,20 @@ def load_tpex_mainboard_quotes_payload(
     return payload, "network"
 
 
+def load_lse_company_reports_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (LSE_COMPANY_REPORTS_CACHE, LEGACY_LSE_COMPANY_REPORTS_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+
+    rows = fetch_lse_company_reports(source, session=session)
+    ensure_output_dirs()
+    LSE_COMPANY_REPORTS_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
 def parse_pipe_table(text: str) -> list[dict[str, str]]:
     lines = [line for line in text.splitlines() if line.strip()]
     if lines and lines[-1].lower().startswith("file creation time"):
@@ -397,6 +426,40 @@ def parse_asx_listed_companies(text: str, source: MasterfileSource) -> list[dict
                 "ticker": ticker,
                 "name": name,
                 "exchange": "ASX",
+                "asset_type": infer_asset_type(name),
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
+def parse_lse_company_reports_html(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    try:
+        dataframes = pd.read_html(io.StringIO(text))
+    except ValueError:
+        return []
+    if not dataframes:
+        return []
+    dataframe = dataframes[0]
+    if "Code" not in dataframe.columns or "Name" not in dataframe.columns:
+        return []
+
+    rows: list[dict[str, str]] = []
+    for record in dataframe.to_dict(orient="records"):
+        ticker = str(record.get("Code", "")).strip()
+        name = str(record.get("Name", "")).strip()
+        if not ticker or not name or ticker.lower() == "nan" or name.lower() == "nan":
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "LSE",
                 "asset_type": infer_asset_type(name),
                 "listing_status": "active",
                 "reference_scope": source.reference_scope,
@@ -697,6 +760,26 @@ def fetch_b3_instruments_equities(source: MasterfileSource, session: requests.Se
     return rows
 
 
+def fetch_lse_company_reports(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    rows: list[dict[str, str]] = []
+    for initial in LSE_PAGE_INITIALS:
+        page = 1
+        seen_signatures: set[tuple[tuple[str, str], ...]] = set()
+        while True:
+            text = fetch_text(source.source_url.format(initial=initial, page=page), session=session)
+            page_rows = parse_lse_company_reports_html(text, source)
+            if not page_rows:
+                break
+            signature = tuple((row["ticker"], row["name"]) for row in page_rows[:5])
+            if signature in seen_signatures:
+                break
+            seen_signatures.add(signature)
+            rows.extend(page_rows)
+            page += 1
+    return rows
+
+
 def fetch_source_rows(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
     if source.format == "nasdaq_listed_pipe":
         text = fetch_text(source.source_url, session=session)
@@ -704,6 +787,8 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "nasdaq_other_listed_pipe":
         text = fetch_text(source.source_url, session=session)
         return parse_other_listed(text, source)
+    if source.format == "lse_company_reports_html":
+        return fetch_lse_company_reports(source, session=session)
     if source.format == "asx_listed_companies_csv":
         text = fetch_text(source.source_url, session=session)
         return parse_asx_listed_companies(text, source)
@@ -737,6 +822,11 @@ def fetch_source_rows_with_mode(
     source: MasterfileSource,
     session: requests.Session | None = None,
 ) -> tuple[list[dict[str, str]], str]:
+    if source.format == "lse_company_reports_html":
+        rows, mode = load_lse_company_reports_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("LSE company reports unavailable")
+        return rows, mode
     if source.format == "sec_company_tickers_exchange_json":
         payload, mode = load_sec_company_tickers_exchange_payload(session=session)
         if payload is None:

@@ -3,13 +3,18 @@ from __future__ import annotations
 import requests
 
 from scripts.fetch_exchange_masterfiles import (
+    LEGACY_LSE_COMPANY_REPORTS_CACHE,
     LEGACY_TPEX_MAINBOARD_QUOTES_CACHE,
+    LSE_PAGE_INITIALS,
+    LSE_COMPANY_REPORTS_CACHE,
     MasterfileSource,
     TPEX_MAINBOARD_QUOTES_CACHE,
     fetch_b3_instruments_equities,
     fetch_all_sources,
+    fetch_lse_company_reports,
     fetch_source_rows_with_mode,
     infer_jpx_asset_type,
+    load_lse_company_reports_rows,
     load_sec_company_tickers_exchange_payload,
     load_tpex_mainboard_quotes_payload,
     parse_asx_listed_companies,
@@ -17,6 +22,7 @@ from scripts.fetch_exchange_masterfiles import (
     parse_deutsche_boerse_listed_companies_excel,
     parse_euronext_equities_download,
     parse_jpx_listed_issues_excel,
+    parse_lse_company_reports_html,
     parse_nasdaq_listed,
     parse_other_listed,
     parse_sec_company_tickers_exchange,
@@ -250,6 +256,116 @@ def test_parse_asx_listed_companies_skips_banner_lines():
             "official": "true",
         },
     ]
+
+
+def test_parse_lse_company_reports_html_maps_lse_rows():
+    html = """
+    <html>
+      <body>
+        <table>
+          <tr><th>Code</th><th>Name</th></tr>
+          <tr><td>ABF</td><td>ASSOCIATED BRITISH FOODS PLC ORD 5 15/22P</td></tr>
+          <tr><td>VUSA</td><td>VANGUARD S&P 500 UCITS ETF USD</td></tr>
+        </table>
+      </body>
+    </html>
+    """
+
+    rows = parse_lse_company_reports_html(html, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "ABF",
+            "name": "ASSOCIATED BRITISH FOODS PLC ORD 5 15/22P",
+            "exchange": "LSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "VUSA",
+            "name": "VANGUARD S&P 500 UCITS ETF USD",
+            "exchange": "LSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_fetch_lse_company_reports_paginates_until_empty(monkeypatch):
+    source = MasterfileSource(
+        key="lse",
+        provider="LSE",
+        description="LSE company reports",
+        source_url="https://example.com?initial={initial}&page={page}",
+        format="lse_company_reports_html",
+        reference_scope="listed_companies_subset",
+    )
+    requested_urls: list[str] = []
+    first_page = """
+    <table>
+      <tr><th>Code</th><th>Name</th></tr>
+      <tr><td>ABF</td><td>ASSOCIATED BRITISH FOODS PLC ORD 5 15/22P</td></tr>
+    </table>
+    """
+    second_page = """
+    <table>
+      <tr><th>Code</th><th>Name</th></tr>
+      <tr><td>ABDN</td><td>ABERDEEN GROUP PLC ORD 13 61/63P</td></tr>
+    </table>
+    """
+    empty_page = "<html><body>No table</body></html>"
+
+    def fake_fetch_text(url: str, session=None) -> str:
+        requested_urls.append(url)
+        if url.endswith("initial=A&page=1"):
+            return first_page
+        if url.endswith("initial=A&page=2"):
+            return second_page
+        return empty_page
+
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.fetch_text", fake_fetch_text)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LSE_PAGE_INITIALS", ("A",))
+
+    rows = fetch_lse_company_reports(source)
+
+    assert requested_urls == [
+        "https://example.com?initial=A&page=1",
+        "https://example.com?initial=A&page=2",
+        "https://example.com?initial=A&page=3",
+    ]
+    assert [row["ticker"] for row in rows] == ["ABF", "ABDN"]
+    assert all(row["exchange"] == "LSE" for row in rows)
+
+
+def test_load_lse_company_reports_rows_prefers_cache(tmp_path, monkeypatch):
+    cache_path = tmp_path / "lse_company_reports.json"
+    cache_path.write_text('[{"ticker":"ABF","name":"ASSOCIATED BRITISH FOODS PLC ORD 5 15/22P"}]', encoding="utf-8")
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LSE_COMPANY_REPORTS_CACHE", cache_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_LSE_COMPANY_REPORTS_CACHE", tmp_path / "legacy.json")
+
+    source = MasterfileSource(
+        key="lse",
+        provider="LSE",
+        description="LSE company reports",
+        source_url="https://example.com?initial={initial}&page={page}",
+        format="lse_company_reports_html",
+        reference_scope="listed_companies_subset",
+    )
+
+    rows, mode = load_lse_company_reports_rows(source)
+
+    assert mode == "cache"
+    assert rows == [{"ticker": "ABF", "name": "ASSOCIATED BRITISH FOODS PLC ORD 5 15/22P"}]
 
 
 def test_parse_jpx_listed_issues_excel_maps_tse_rows(tmp_path):
