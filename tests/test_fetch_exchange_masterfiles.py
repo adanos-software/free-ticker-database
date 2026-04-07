@@ -8,9 +8,11 @@ from scripts.fetch_exchange_masterfiles import (
     LSE_PAGE_INITIALS,
     LSE_COMPANY_REPORTS_CACHE,
     MasterfileSource,
+    OFFICIAL_SOURCES,
     TPEX_MAINBOARD_QUOTES_CACHE,
     fetch_b3_instruments_equities,
     fetch_all_sources,
+    fetch_krx_listed_companies,
     fetch_lse_company_reports,
     fetch_source_rows_with_mode,
     infer_jpx_asset_type,
@@ -22,6 +24,7 @@ from scripts.fetch_exchange_masterfiles import (
     parse_deutsche_boerse_listed_companies_excel,
     parse_euronext_equities_download,
     parse_jpx_listed_issues_excel,
+    parse_krx_listed_companies,
     parse_lse_company_reports_html,
     parse_nasdaq_listed,
     parse_other_listed,
@@ -372,6 +375,107 @@ def test_load_lse_company_reports_rows_prefers_cache(tmp_path, monkeypatch):
 
     assert mode == "cache"
     assert rows == [{"ticker": "ABF", "name": "ASSOCIATED BRITISH FOODS PLC ORD 5 15/22P"}]
+
+
+def test_parse_krx_listed_companies_maps_market_rows():
+    payload = [
+        {
+            "isu_cd": "005930",
+            "eng_cor_nm": "SAMSUNG ELECTRONICS",
+        },
+        {
+            "isu_cd": "091990",
+            "eng_cor_nm": "CELLTRIONHEALTHCARE",
+        },
+        {
+            "isu_cd": "",
+            "eng_cor_nm": "Ignored",
+        },
+    ]
+
+    rows = parse_krx_listed_companies(payload, SOURCE, exchange="KRX")
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "005930",
+            "name": "SAMSUNG ELECTRONICS",
+            "exchange": "KRX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "091990",
+            "name": "CELLTRIONHEALTHCARE",
+            "exchange": "KRX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_fetch_krx_listed_companies_fetches_kospi_and_kosdaq(monkeypatch):
+    source = MasterfileSource(
+        key="krx",
+        provider="KRX",
+        description="KRX listed companies",
+        source_url="https://example.com/krx",
+        format="krx_listed_companies_json",
+    )
+
+    class FakeResponse:
+        def __init__(self, text="", payload=None):
+            self.text = text
+            self._payload = payload
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.headers = {}
+            self.get_calls = []
+            self.post_calls = []
+
+        def get(self, url, **kwargs):
+            self.get_calls.append((url, kwargs))
+            if "GenerateOTP.jspx" in url:
+                market = "1" if len([c for c in self.get_calls if "GenerateOTP.jspx" in c[0]]) == 1 else "2"
+                return FakeResponse(text=f"otp-{market}")
+            return FakeResponse(text="<table><tr><td>ok</td></tr></table>")
+
+        def post(self, url, data=None, **kwargs):
+            self.post_calls.append((url, data, kwargs))
+            market = data["market_gubun"]
+            if market == "1":
+                payload = {"block1": [{"isu_cd": "005930", "eng_cor_nm": "SAMSUNG ELECTRONICS"}]}
+            else:
+                payload = {"block1": [{"isu_cd": "091990", "eng_cor_nm": "CELLTRIONHEALTHCARE"}]}
+            return FakeResponse(payload=payload)
+
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.pd.read_html", lambda *_args, **_kwargs: [object()])
+    session = FakeSession()
+    rows = fetch_krx_listed_companies(source, session=session)
+
+    assert [row["ticker"] for row in rows] == ["005930", "091990"]
+    assert [row["exchange"] for row in rows] == ["KRX", "KOSDAQ"]
+
+
+def test_krx_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "krx_listed_companies")
+    assert source.reference_scope == "listed_companies_subset"
 
 
 def test_parse_jpx_listed_issues_excel_maps_tse_rows(tmp_path):

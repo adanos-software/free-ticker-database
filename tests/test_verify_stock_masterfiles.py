@@ -783,6 +783,65 @@ def test_classify_row_downgrades_lse_asset_type_mismatch_to_reference_gap() -> N
     assert result["reason"] == "Only low-confidence asset_type evidence exists for this listing."
 
 
+def test_classify_row_downgrades_krx_name_mismatch_to_reference_gap() -> None:
+    row = {
+        "ticker": "016600",
+        "exchange": "KOSDAQ",
+        "asset_type": "Stock",
+        "name": "Q Capital Partners Co. Ltd",
+        "country": "South Korea",
+        "country_code": "KR",
+        "isin": "KR7016600009",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("KOSDAQ", "016600"): [
+                {
+                    "ticker": "016600",
+                    "exchange": "KOSDAQ",
+                    "name": "QCP",
+                    "asset_type": "Stock",
+                    "source_key": "krx_listed_companies",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges=set(),
+        partial_covered_exchanges={"KOSDAQ"},
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Only low-confidence issuer reference evidence exists for this listing."
+
+
+def test_classify_row_treats_krx_etfs_as_partial_coverage() -> None:
+    row = {
+        "ticker": "091220",
+        "exchange": "KRX",
+        "asset_type": "ETF",
+        "name": "MiraeAsset TIGER BANKS ETF",
+        "country": "South Korea",
+        "country_code": "KR",
+        "isin": "KR7091220004",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={},
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges=set(),
+        partial_covered_exchanges={"KRX"},
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "This exchange is only partially covered by the current official reference layer."
+
+
 def test_is_code_like_reference_name_handles_compact_trading_labels() -> None:
     assert is_code_like_reference_name("MBWS", "MBWS")
     assert not is_code_like_reference_name("First Community Bankshares, Inc. - Common Stock", "FCBC")

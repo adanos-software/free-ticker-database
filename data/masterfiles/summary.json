@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-07T09:19:10Z",
-  "rows": 48007,
+  "generated_at": "2026-04-07T10:21:42Z",
+  "rows": 50667,
   "exchanges": [
     "AMS",
     "ASX",
@@ -8,6 +8,8 @@
     "BATS",
     "Euronext",
     "IEX",
+    "KOSDAQ",
+    "KRX",
     "LSE",
     "NASDAQ",
     "NYSE",
@@ -27,6 +29,7 @@
     "asx_listed_companies": 1979,
     "b3_instruments_equities": 876,
     "nasdaq_other_listed": 7077,
+    "krx_listed_companies": 2660,
     "lse_company_reports": 12397,
     "nasdaq_listed": 5415,
     "sec_company_tickers_exchange": 10117,
@@ -42,7 +45,7 @@
       "official": true,
       "mode": "network",
       "rows": 5415,
-      "generated_at": "2026-04-07T09:19:10Z"
+      "generated_at": "2026-04-07T10:21:42Z"
     },
     "nasdaq_other_listed": {
       "provider": "Nasdaq Trader",
@@ -50,15 +53,15 @@
       "official": true,
       "mode": "network",
       "rows": 7077,
-      "generated_at": "2026-04-07T09:19:10Z"
+      "generated_at": "2026-04-07T10:21:42Z"
     },
     "lse_company_reports": {
       "provider": "LSE",
       "reference_scope": "listed_companies_subset",
       "official": true,
-      "mode": "network",
+      "mode": "cache",
       "rows": 12397,
-      "generated_at": "2026-04-07T09:19:10Z"
+      "generated_at": "2026-04-07T10:21:42Z"
     },
     "asx_listed_companies": {
       "provider": "ASX",
@@ -66,7 +69,7 @@
       "official": true,
       "mode": "network",
       "rows": 1979,
-      "generated_at": "2026-04-07T09:19:10Z"
+      "generated_at": "2026-04-07T10:21:42Z"
     },
     "tmx_interlisted_companies": {
       "provider": "TMX",
@@ -74,7 +77,7 @@
       "official": true,
       "mode": "network",
       "rows": 266,
-      "generated_at": "2026-04-07T09:19:10Z"
+      "generated_at": "2026-04-07T10:21:42Z"
     },
     "euronext_equities": {
       "provider": "Euronext",
@@ -82,7 +85,7 @@
       "official": true,
       "mode": "network",
       "rows": 3885,
-      "generated_at": "2026-04-07T09:19:10Z"
+      "generated_at": "2026-04-07T10:21:42Z"
     },
     "jpx_listed_issues": {
       "provider": "JPX",
@@ -90,7 +93,7 @@
       "official": true,
       "mode": "network",
       "rows": 4444,
-      "generated_at": "2026-04-07T09:19:10Z"
+      "generated_at": "2026-04-07T10:21:42Z"
     },
     "deutsche_boerse_listed_companies": {
       "provider": "Deutsche Boerse",
@@ -98,7 +101,7 @@
       "official": true,
       "mode": "network",
       "rows": 471,
-      "generated_at": "2026-04-07T09:19:10Z"
+      "generated_at": "2026-04-07T10:21:42Z"
     },
     "b3_instruments_equities": {
       "provider": "B3",
@@ -106,7 +109,7 @@
       "official": true,
       "mode": "network",
       "rows": 876,
-      "generated_at": "2026-04-07T09:19:10Z"
+      "generated_at": "2026-04-07T10:21:42Z"
     },
     "twse_listed_companies": {
       "provider": "TWSE",
@@ -114,7 +117,7 @@
       "official": true,
       "mode": "network",
       "rows": 1080,
-      "generated_at": "2026-04-07T09:19:10Z"
+      "generated_at": "2026-04-07T10:21:42Z"
     },
     "tpex_mainboard_daily_quotes": {
       "provider": "TPEX",
@@ -122,7 +125,15 @@
       "official": true,
       "mode": "unavailable",
       "rows": 0,
-      "generated_at": "2026-04-07T09:19:10Z"
+      "generated_at": "2026-04-07T10:21:42Z"
+    },
+    "krx_listed_companies": {
+      "provider": "KRX",
+      "reference_scope": "listed_companies_subset",
+      "official": true,
+      "mode": "network",
+      "rows": 2660,
+      "generated_at": "2026-04-07T10:21:42Z"
     },
     "sec_company_tickers_exchange": {
       "provider": "SEC",
@@ -130,13 +141,13 @@
       "official": true,
       "mode": "cache",
       "rows": 10117,
-      "generated_at": "2026-04-07T09:19:10Z"
+      "generated_at": "2026-04-07T10:21:42Z"
     }
   },
   "source_modes": {
     "nasdaq_listed": "network",
     "nasdaq_other_listed": "network",
-    "lse_company_reports": "network",
+    "lse_company_reports": "cache",
     "asx_listed_companies": "network",
     "tmx_interlisted_companies": "network",
     "euronext_equities": "network",
@@ -145,6 +156,7 @@
     "b3_instruments_equities": "network",
     "twse_listed_companies": "network",
     "tpex_mainboard_daily_quotes": "unavailable",
+    "krx_listed_companies": "network",
     "sec_company_tickers_exchange": "cache"
   },
   "errors": [

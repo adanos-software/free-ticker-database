@@ -43,6 +43,9 @@ DEUTSCHE_BOERSE_LISTED_URL = "https://www.cashmarket.deutsche-boerse.com/resourc
 B3_INSTRUMENTS_EQUITIES_URL = "https://arquivos.b3.com.br/bdi/table/InstrumentsEquities"
 TWSE_LISTED_COMPANIES_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
 TPEX_MAINBOARD_QUOTES_URL = "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes"
+KRX_LISTED_COMPANIES_URL = "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp"
+KRX_DATA_URL = "https://global.krx.co.kr/contents/GLB/99/GLB99000001.jspx"
+KRX_GENERATE_OTP_URL = "https://global.krx.co.kr/contents/COM/GenerateOTP.jspx"
 
 USER_AGENT = "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)"
 SEC_CONTACT_EMAIL = os.environ.get("SEC_CONTACT_EMAIL", "opensource@adanos.software")
@@ -103,6 +106,10 @@ B3_EXCLUDED_ISSUER_MARKERS = (
 )
 TPEX_CANONICAL_TICKER_RE = re.compile(r"(?:\d{4}|00\d{4}[A-Z]?)$")
 LSE_PAGE_INITIALS = tuple("ABCDEFGHIJKLMNOPQRSTUVWXYZ") + ("0",)
+KRX_MARKET_GUBUN_TO_EXCHANGE = {
+    "1": "KRX",
+    "2": "KOSDAQ",
+}
 
 
 @dataclass(frozen=True)
@@ -197,6 +204,14 @@ OFFICIAL_SOURCES = [
         description="Official TPEX mainboard daily quotes open data feed",
         source_url=TPEX_MAINBOARD_QUOTES_URL,
         format="tpex_mainboard_quotes_json",
+    ),
+    MasterfileSource(
+        key="krx_listed_companies",
+        provider="KRX",
+        description="Official KRX listed company directory",
+        source_url=KRX_LISTED_COMPANIES_URL,
+        format="krx_listed_companies_json",
+        reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
         key="sec_company_tickers_exchange",
@@ -301,6 +316,16 @@ def tpex_request_headers() -> dict[str, str]:
         "Accept-Encoding": "gzip, deflate",
         "Referer": "https://www.tpex.org.tw/",
         "Origin": "https://www.tpex.org.tw",
+    }
+
+
+def krx_request_headers() -> dict[str, str]:
+    return {
+        "User-Agent": USER_AGENT,
+        "Accept": "application/json,text/plain,*/*",
+        "Accept-Encoding": "gzip, deflate",
+        "Referer": KRX_LISTED_COMPANIES_URL,
+        "Origin": "https://global.krx.co.kr",
     }
 
 
@@ -461,6 +486,35 @@ def parse_lse_company_reports_html(text: str, source: MasterfileSource) -> list[
                 "name": name,
                 "exchange": "LSE",
                 "asset_type": infer_asset_type(name),
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
+def parse_krx_listed_companies(
+    payload: list[dict[str, Any]],
+    source: MasterfileSource,
+    *,
+    exchange: str,
+) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for record in payload:
+        ticker = str(record.get("isu_cd", "")).strip()
+        name = str(record.get("eng_cor_nm", "")).strip()
+        if not ticker or not name or ticker.lower() == "nan" or name.lower() == "nan":
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": exchange,
+                "asset_type": "Stock",
                 "listing_status": "active",
                 "reference_scope": source.reference_scope,
                 "official": "true",
@@ -782,6 +836,61 @@ def fetch_lse_company_reports(source: MasterfileSource, session: requests.Sessio
     return rows
 
 
+def fetch_krx_listed_companies(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    session.headers.update(krx_request_headers())
+    page_html = session.get(source.source_url, timeout=REQUEST_TIMEOUT).text
+    page_soup = pd.read_html(io.StringIO(page_html))
+    if not page_soup:
+        raise requests.RequestException("KRX listed companies page unavailable")
+
+    rows: list[dict[str, str]] = []
+    for market_gubun, exchange in KRX_MARKET_GUBUN_TO_EXCHANGE.items():
+        otp_response = session.get(
+            KRX_GENERATE_OTP_URL,
+            params={"name": "tablesubmit", "bld": "GLB/03/0308/0308010000/glb0308010000"},
+            timeout=REQUEST_TIMEOUT,
+        )
+        otp_response.raise_for_status()
+        form_data = {
+            "market_gubun": market_gubun,
+            "isu_cdnm": "All",
+            "isu_cd": "",
+            "isu_nm": "",
+            "isu_srt_cd": "",
+            "sort": "",
+            "detailSch": "",
+            "ck_std_ind_cd": "Y",
+            "std_ind_cd": "",
+            "ck_par_pr": "Y",
+            "par_pr": "",
+            "ck_cpta_scl": "Y",
+            "cpta_scl": "",
+            "ck_sttl_trm": "Y",
+            "sttl_trm": "",
+            "ck_lst_stk_vl": "Y",
+            "lst_stk_vl": "",
+            "in_lst_stk_vl": "",
+            "in_lst_stk_vl2": "",
+            "ck_cpt": "Y",
+            "cpt": "",
+            "in_cpt": "",
+            "in_cpt2": "",
+            "ck_nat_tot_amt": "Y",
+            "nat_tot_amt": "",
+            "in_nat_tot_amt": "",
+            "in_nat_tot_amt2": "",
+            "pagePath": "/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
+            "code": otp_response.text.strip(),
+            "bldcode": "GLB/03/0308/0308010000/glb0308010000",
+        }
+        response = session.post(KRX_DATA_URL, data=form_data, timeout=REQUEST_TIMEOUT)
+        response.raise_for_status()
+        payload = response.json().get("block1", [])
+        rows.extend(parse_krx_listed_companies(payload, source, exchange=exchange))
+    return rows
+
+
 def fetch_source_rows(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
     if source.format == "nasdaq_listed_pipe":
         text = fetch_text(source.source_url, session=session)
@@ -814,6 +923,8 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "tpex_mainboard_quotes_json":
         payload = fetch_json(source.source_url, session=session)
         return parse_tpex_mainboard_quotes(payload, source)
+    if source.format == "krx_listed_companies_json":
+        return fetch_krx_listed_companies(source, session=session)
     if source.format == "sec_company_tickers_exchange_json":
         payload = fetch_json(source.source_url, session=session)
         return parse_sec_company_tickers_exchange(payload, source)

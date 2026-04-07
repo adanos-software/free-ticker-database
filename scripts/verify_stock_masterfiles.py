@@ -48,6 +48,7 @@ LOW_CONFIDENCE_MISSING_ASSET_TYPE_KEYS = {
     ("TPEX", "ETF"),
 }
 LOW_CONFIDENCE_ASSET_TYPE_SOURCE_KEYS = {
+    "krx_listed_companies",
     "lse_company_reports",
 }
 LOW_CONFIDENCE_COLLISION_PEER_EXCHANGES = {
@@ -60,6 +61,8 @@ LOW_CONFIDENCE_COLLISION_PEER_EXCHANGES = {
 }
 LOCAL_LANGUAGE_NAME_MATCH_EXCHANGES = {"TWSE", "TPEX"}
 LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE = {
+    "KRX": {"krx_listed_companies"},
+    "KOSDAQ": {"krx_listed_companies"},
     "LSE": {"lse_company_reports"},
     "NASDAQ": {"sec_company_tickers_exchange"},
     "NYSE": {"sec_company_tickers_exchange", "nasdaq_other_listed"},

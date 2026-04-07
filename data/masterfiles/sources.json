@@ -99,6 +99,15 @@
     "official": true
   },
   {
+    "key": "krx_listed_companies",
+    "provider": "KRX",
+    "description": "Official KRX listed company directory",
+    "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
+    "format": "krx_listed_companies_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "sec_company_tickers_exchange",
     "provider": "SEC",
     "description": "Official SEC company ticker to exchange mapping",
