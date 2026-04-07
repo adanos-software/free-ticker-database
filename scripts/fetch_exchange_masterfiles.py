@@ -102,7 +102,7 @@ B3_EXCLUDED_ISSUER_MARKERS = (
     "financ/termo",
 )
 TPEX_CANONICAL_TICKER_RE = re.compile(r"(?:\d{4}|00\d{4}[A-Z]?)$")
-LSE_PAGE_INITIALS = tuple("ABCDEFGHIJKLMNOPQRSTUVWXYZ") + ("0-9",)
+LSE_PAGE_INITIALS = tuple("ABCDEFGHIJKLMNOPQRSTUVWXYZ") + ("0",)
 
 
 @dataclass(frozen=True)
@@ -776,6 +776,8 @@ def fetch_lse_company_reports(source: MasterfileSource, session: requests.Sessio
                 break
             seen_signatures.add(signature)
             rows.extend(page_rows)
+            if f"initial={initial}&page={page + 1}" not in text:
+                break
             page += 1
     return rows
 

@@ -713,6 +713,76 @@ def test_classify_row_downgrades_tsx_interlisted_name_mismatch_to_reference_gap(
     assert result["reason"] == "Only low-confidence issuer reference evidence exists for this listing."
 
 
+def test_classify_row_downgrades_lse_name_mismatch_to_reference_gap() -> None:
+    row = {
+        "ticker": "0NQ5",
+        "exchange": "LSE",
+        "asset_type": "Stock",
+        "name": "Quadient SA",
+        "country": "France",
+        "country_code": "FR",
+        "isin": "FR0000120560",
+        "sector": "Industrials",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("LSE", "0NQ5"): [
+                {
+                    "ticker": "0NQ5",
+                    "exchange": "LSE",
+                    "name": "NEOPOST SA NEOPOST ORD SHS",
+                    "asset_type": "Stock",
+                    "source_key": "lse_company_reports",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges={"LSE"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Only low-confidence issuer reference evidence exists for this listing."
+
+
+def test_classify_row_downgrades_lse_asset_type_mismatch_to_reference_gap() -> None:
+    row = {
+        "ticker": "PHAG",
+        "exchange": "LSE",
+        "asset_type": "ETF",
+        "name": "WisdomTree Physical Silver",
+        "country": "Jersey",
+        "country_code": "JE",
+        "isin": "JE00B1VS3333",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("LSE", "PHAG"): [
+                {
+                    "ticker": "PHAG",
+                    "exchange": "LSE",
+                    "name": "WISDOMTREE METAL SECURITIES WISDOMTREE PHYSICAL SILVER",
+                    "asset_type": "Stock",
+                    "source_key": "lse_company_reports",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges={"LSE"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Only low-confidence asset_type evidence exists for this listing."
+
+
 def test_is_code_like_reference_name_handles_compact_trading_labels() -> None:
     assert is_code_like_reference_name("MBWS", "MBWS")
     assert not is_code_like_reference_name("First Community Bankshares, Inc. - Common Stock", "FCBC")

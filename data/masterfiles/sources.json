@@ -18,6 +18,15 @@
     "official": true
   },
   {
+    "key": "lse_company_reports",
+    "provider": "LSE",
+    "description": "Official London Stock Exchange company reports directory",
+    "source_url": "https://www.londonstockexchange.com/exchange/instrument-result.html?filterBy=CompanyReports&filterClause=1&initial={initial}&page={page}",
+    "format": "lse_company_reports_html",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "asx_listed_companies",
     "provider": "ASX",
     "description": "Official ASX listed companies directory",

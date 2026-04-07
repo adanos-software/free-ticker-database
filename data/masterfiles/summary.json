@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-06T17:49:27Z",
-  "rows": 35613,
+  "generated_at": "2026-04-07T09:19:10Z",
+  "rows": 48007,
   "exchanges": [
     "AMS",
     "ASX",
@@ -8,6 +8,7 @@
     "BATS",
     "Euronext",
     "IEX",
+    "LSE",
     "NASDAQ",
     "NYSE",
     "NYSE ARCA",
@@ -25,8 +26,9 @@
     "euronext_equities": 3885,
     "asx_listed_companies": 1979,
     "b3_instruments_equities": 876,
-    "nasdaq_other_listed": 7073,
-    "nasdaq_listed": 5422,
+    "nasdaq_other_listed": 7077,
+    "lse_company_reports": 12397,
+    "nasdaq_listed": 5415,
     "sec_company_tickers_exchange": 10117,
     "jpx_listed_issues": 4444,
     "tmx_interlisted_companies": 266,
@@ -39,16 +41,24 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 5422,
-      "generated_at": "2026-04-06T17:49:27Z"
+      "rows": 5415,
+      "generated_at": "2026-04-07T09:19:10Z"
     },
     "nasdaq_other_listed": {
       "provider": "Nasdaq Trader",
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 7073,
-      "generated_at": "2026-04-06T17:49:27Z"
+      "rows": 7077,
+      "generated_at": "2026-04-07T09:19:10Z"
+    },
+    "lse_company_reports": {
+      "provider": "LSE",
+      "reference_scope": "listed_companies_subset",
+      "official": true,
+      "mode": "network",
+      "rows": 12397,
+      "generated_at": "2026-04-07T09:19:10Z"
     },
     "asx_listed_companies": {
       "provider": "ASX",
@@ -56,7 +66,7 @@
       "official": true,
       "mode": "network",
       "rows": 1979,
-      "generated_at": "2026-04-06T17:49:27Z"
+      "generated_at": "2026-04-07T09:19:10Z"
     },
     "tmx_interlisted_companies": {
       "provider": "TMX",
@@ -64,7 +74,7 @@
       "official": true,
       "mode": "network",
       "rows": 266,
-      "generated_at": "2026-04-06T17:49:27Z"
+      "generated_at": "2026-04-07T09:19:10Z"
     },
     "euronext_equities": {
       "provider": "Euronext",
@@ -72,7 +82,7 @@
       "official": true,
       "mode": "network",
       "rows": 3885,
-      "generated_at": "2026-04-06T17:49:27Z"
+      "generated_at": "2026-04-07T09:19:10Z"
     },
     "jpx_listed_issues": {
       "provider": "JPX",
@@ -80,7 +90,7 @@
       "official": true,
       "mode": "network",
       "rows": 4444,
-      "generated_at": "2026-04-06T17:49:27Z"
+      "generated_at": "2026-04-07T09:19:10Z"
     },
     "deutsche_boerse_listed_companies": {
       "provider": "Deutsche Boerse",
@@ -88,7 +98,7 @@
       "official": true,
       "mode": "network",
       "rows": 471,
-      "generated_at": "2026-04-06T17:49:27Z"
+      "generated_at": "2026-04-07T09:19:10Z"
     },
     "b3_instruments_equities": {
       "provider": "B3",
@@ -96,7 +106,7 @@
       "official": true,
       "mode": "network",
       "rows": 876,
-      "generated_at": "2026-04-06T17:49:27Z"
+      "generated_at": "2026-04-07T09:19:10Z"
     },
     "twse_listed_companies": {
       "provider": "TWSE",
@@ -104,7 +114,7 @@
       "official": true,
       "mode": "network",
       "rows": 1080,
-      "generated_at": "2026-04-06T17:49:27Z"
+      "generated_at": "2026-04-07T09:19:10Z"
     },
     "tpex_mainboard_daily_quotes": {
       "provider": "TPEX",
@@ -112,7 +122,7 @@
       "official": true,
       "mode": "unavailable",
       "rows": 0,
-      "generated_at": "2026-04-06T17:49:27Z"
+      "generated_at": "2026-04-07T09:19:10Z"
     },
     "sec_company_tickers_exchange": {
       "provider": "SEC",
@@ -120,12 +130,13 @@
       "official": true,
       "mode": "cache",
       "rows": 10117,
-      "generated_at": "2026-04-06T17:49:27Z"
+      "generated_at": "2026-04-07T09:19:10Z"
     }
   },
   "source_modes": {
     "nasdaq_listed": "network",
     "nasdaq_other_listed": "network",
+    "lse_company_reports": "network",
     "asx_listed_companies": "network",
     "tmx_interlisted_companies": "network",
     "euronext_equities": "network",
@@ -139,7 +150,7 @@
   "errors": [
     {
       "source_key": "tpex_mainboard_daily_quotes",
-      "error": "403 Client Error: Forbidden for url: https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes"
+      "error": "TPEX mainboard quotes unavailable"
     }
   ]
 }

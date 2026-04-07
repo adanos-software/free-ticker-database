@@ -316,12 +316,14 @@ def test_fetch_lse_company_reports_paginates_until_empty(monkeypatch):
       <tr><th>Code</th><th>Name</th></tr>
       <tr><td>ABF</td><td>ASSOCIATED BRITISH FOODS PLC ORD 5 15/22P</td></tr>
     </table>
+    <a href="?initial=A&page=2">Next</a>
     """
     second_page = """
     <table>
       <tr><th>Code</th><th>Name</th></tr>
       <tr><td>ABDN</td><td>ABERDEEN GROUP PLC ORD 13 61/63P</td></tr>
     </table>
+    <a href="?initial=A&page=3">Next</a>
     """
     empty_page = "<html><body>No table</body></html>"
 
@@ -345,6 +347,10 @@ def test_fetch_lse_company_reports_paginates_until_empty(monkeypatch):
     ]
     assert [row["ticker"] for row in rows] == ["ABF", "ABDN"]
     assert all(row["exchange"] == "LSE" for row in rows)
+
+
+def test_fetch_lse_company_reports_uses_zero_initial_for_numeric_bucket():
+    assert LSE_PAGE_INITIALS[-1] == "0"
 
 
 def test_load_lse_company_reports_rows_prefers_cache(tmp_path, monkeypatch):

@@ -47,6 +47,9 @@ LOW_CONFIDENCE_MISSING_ASSET_TYPE_KEYS = {
     ("TWSE", "ETF"),
     ("TPEX", "ETF"),
 }
+LOW_CONFIDENCE_ASSET_TYPE_SOURCE_KEYS = {
+    "lse_company_reports",
+}
 LOW_CONFIDENCE_COLLISION_PEER_EXCHANGES = {
     "ASX",
     "Euronext",
@@ -57,6 +60,7 @@ LOW_CONFIDENCE_COLLISION_PEER_EXCHANGES = {
 }
 LOCAL_LANGUAGE_NAME_MATCH_EXCHANGES = {"TWSE", "TPEX"}
 LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE = {
+    "LSE": {"lse_company_reports"},
     "NASDAQ": {"sec_company_tickers_exchange"},
     "NYSE": {"sec_company_tickers_exchange", "nasdaq_other_listed"},
     "NYSE MKT": {"sec_company_tickers_exchange", "nasdaq_other_listed"},
@@ -287,6 +291,11 @@ def classify_row(
         ):
             status = "reference_gap"
             reason = "Grouped Euronext feed resolves this ticker to a stock line on another venue."
+        elif {
+            candidate.get("source_key", "") for candidate in active_reference_rows
+        } <= LOW_CONFIDENCE_ASSET_TYPE_SOURCE_KEYS:
+            status = "reference_gap"
+            reason = "Only low-confidence asset_type evidence exists for this listing."
         elif any(candidate.get("source_key") != "sec_company_tickers_exchange" for candidate in active_reference_rows):
             status = "asset_type_mismatch"
             reason = f"Dataset asset_type={row.get('asset_type')} but official reference says {preferred_reference.get('asset_type')}."
