@@ -108,6 +108,15 @@
     "official": true
   },
   {
+    "key": "sse_etf_list",
+    "provider": "SSE",
+    "description": "Official SSE ETF list",
+    "source_url": "https://www.sse.com.cn/assortment/fund/etf/list/",
+    "format": "sse_etf_list_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "szse_a_share_list",
     "provider": "SZSE",
     "description": "Official SZSE A-share list",

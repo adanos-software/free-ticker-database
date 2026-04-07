@@ -12,12 +12,14 @@ from scripts.fetch_exchange_masterfiles import (
     LSE_COMPANY_REPORTS_CACHE,
     MasterfileSource,
     OFFICIAL_SOURCES,
+    SSE_ETF_SUBCLASSES,
     TPEX_MAINBOARD_QUOTES_CACHE,
     fetch_b3_instruments_equities,
     fetch_all_sources,
     fetch_krx_listed_companies,
     fetch_lse_company_reports,
     fetch_sse_a_share_list,
+    fetch_sse_etf_list,
     fetch_szse_a_share_list,
     fetch_source_rows_with_mode,
     infer_jpx_asset_type,
@@ -35,6 +37,7 @@ from scripts.fetch_exchange_masterfiles import (
     parse_other_listed,
     parse_sec_company_tickers_exchange,
     parse_sse_a_share_list,
+    parse_sse_etf_list,
     parse_szse_a_share_list,
     parse_tpex_mainboard_quotes,
     parse_twse_listed_companies,
@@ -260,6 +263,104 @@ def test_fetch_sse_a_share_list_fetches_all_pages() -> None:
 
 def test_sse_source_is_modeled_as_partial_official_coverage() -> None:
     source = next(item for item in OFFICIAL_SOURCES if item.key == "sse_a_share_list")
+    assert source.reference_scope == "listed_companies_subset"
+
+
+def test_parse_sse_etf_list_maps_sse_rows() -> None:
+    payload = {
+        "result": [
+            {"fundCode": "510300", "secNameFull": "沪深300ETF华泰柏瑞", "fundAbbr": "300ETF"},
+            {"fundCode": "513100", "secNameFull": "", "fundAbbr": "纳指ETF"},
+            {"fundCode": "", "secNameFull": "Ignored"},
+        ]
+    }
+
+    rows = parse_sse_etf_list(payload, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "510300",
+            "name": "沪深300ETF华泰柏瑞",
+            "exchange": "SSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "513100",
+            "name": "纳指ETF",
+            "exchange": "SSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_fetch_sse_etf_list_fetches_all_pages() -> None:
+    source = MasterfileSource(
+        key="sse_etf_list",
+        provider="SSE",
+        description="SSE ETF list",
+        source_url="https://www.sse.com.cn/assortment/fund/etf/list/",
+        format="sse_etf_list_json",
+        reference_scope="listed_companies_subset",
+    )
+
+    class FakeResponse:
+        def __init__(self, payload):
+            self._payload = payload
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, params=None, headers=None, **kwargs):
+            self.calls.append((url, params, headers, kwargs))
+            subclass = params["subClass"]
+            page = params["pageHelp.pageNo"]
+            if subclass == "03" and page == "1":
+                return FakeResponse(
+                    {
+                        "pageHelp": {"pageCount": 2},
+                        "result": [{"fundCode": "510300", "secNameFull": "沪深300ETF华泰柏瑞"}],
+                    }
+                )
+            if subclass == "03" and page == "2":
+                return FakeResponse(
+                    {
+                        "pageHelp": {"pageCount": 2},
+                        "result": [{"fundCode": "513100", "secNameFull": "纳指ETF"}],
+                    }
+                )
+            return FakeResponse({"pageHelp": {"pageCount": 1}, "result": []})
+
+    session = FakeSession()
+    rows = fetch_sse_etf_list(source, session=session)
+
+    assert [row["ticker"] for row in rows] == ["510300", "513100"]
+    assert all(call[1]["sqlId"] == "FUND_LIST" for call in session.calls)
+    assert all(call[1]["fundType"] == "00" for call in session.calls)
+    assert sorted({call[1]["subClass"] for call in session.calls}) == list(SSE_ETF_SUBCLASSES)
+    assert [call[1]["pageHelp.pageNo"] for call in session.calls if call[1]["subClass"] == "03"] == ["1", "2"]
+
+
+def test_sse_etf_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "sse_etf_list")
     assert source.reference_scope == "listed_companies_subset"
 
 

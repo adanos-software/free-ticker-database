@@ -50,6 +50,7 @@ SZSE_REPORT_DATA_URL = "https://www.szse.cn/api/report/ShowReport/data"
 SZSE_A_SHARE_CATALOG_ID = "1110"
 SZSE_A_SHARE_TAB_KEY = "tab1"
 SSE_STOCK_LIST_URL = "https://www.sse.com.cn/assortment/stock/list/share/"
+SSE_ETF_LIST_URL = "https://www.sse.com.cn/assortment/fund/etf/list/"
 SSE_COMMON_QUERY_URL = "https://query.sse.com.cn/sseQuery/commonQuery.do"
 SSE_JSONP_CALLBACK = "jsonpCallback"
 TPEX_MAINBOARD_QUOTES_URL = "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes"
@@ -125,6 +126,7 @@ KRX_MARKET_GUBUN_TO_EXCHANGE = {
     "2": "KOSDAQ",
 }
 SSE_JSONP_RE = re.compile(r"^[^(]+\((.*)\)\s*$", re.S)
+SSE_ETF_SUBCLASSES = ("01", "02", "03", "06", "08", "09", "31", "32", "33", "37")
 
 
 @dataclass(frozen=True)
@@ -227,6 +229,14 @@ OFFICIAL_SOURCES = [
         description="Official SSE A-share list",
         source_url=SSE_STOCK_LIST_URL,
         format="sse_a_share_list_jsonp",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="sse_etf_list",
+        provider="SSE",
+        description="Official SSE ETF list",
+        source_url=SSE_ETF_LIST_URL,
+        format="sse_etf_list_json",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -862,6 +872,31 @@ def parse_sse_a_share_list(payload: dict[str, Any], source: MasterfileSource) ->
     return rows
 
 
+def parse_sse_etf_list(payload: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    records = payload.get("result") or (payload.get("pageHelp") or {}).get("data") or []
+    for record in records:
+        ticker = str(record.get("fundCode", "")).strip()
+        name = str(record.get("secNameFull", "")).strip() or str(record.get("fundAbbr", "")).strip()
+        if not ticker or not name:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "SSE",
+                "asset_type": "ETF",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
 def strip_html_tags(value: str) -> str:
     return re.sub(r"<[^>]+>", "", value).strip()
 
@@ -1063,6 +1098,47 @@ def fetch_sse_a_share_list(source: MasterfileSource, session: requests.Session |
     return rows
 
 
+def fetch_sse_etf_list(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Referer": source.source_url,
+        "Accept": "application/json,text/plain,*/*",
+        "Connection": "close",
+    }
+    rows: list[dict[str, str]] = []
+    for subclass in SSE_ETF_SUBCLASSES:
+        page = 1
+        total_pages = 1
+        while page <= total_pages:
+            response = session.get(
+                "https://query.sse.com.cn/commonSoaQuery.do",
+                params={
+                    "isPagination": "true",
+                    "pageHelp.pageSize": "500",
+                    "pageHelp.pageNo": str(page),
+                    "pageHelp.beginPage": "1",
+                    "pageHelp.cacheSize": "1",
+                    "pageHelp.endPage": "1",
+                    "pagecache": "false",
+                    "sqlId": "FUND_LIST",
+                    "fundType": "00",
+                    "subClass": subclass,
+                },
+                headers=headers,
+                timeout=REQUEST_TIMEOUT,
+            )
+            response.raise_for_status()
+            payload = response.json()
+            page_rows = parse_sse_etf_list(payload, source)
+            if not page_rows:
+                break
+            rows.extend(page_rows)
+            total_pages = int((payload.get("pageHelp") or {}).get("pageCount") or total_pages)
+            page += 1
+    return rows
+
+
 def fetch_b3_instruments_equities(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
     session = session or requests.Session()
     headers = {
@@ -1207,6 +1283,8 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return parse_twse_listed_companies(payload, source)
     if source.format == "sse_a_share_list_jsonp":
         return fetch_sse_a_share_list(source, session=session)
+    if source.format == "sse_etf_list_json":
+        return fetch_sse_etf_list(source, session=session)
     if source.format == "szse_a_share_list_json":
         return fetch_szse_a_share_list(source, session=session)
     if source.format == "tpex_mainboard_quotes_json":
