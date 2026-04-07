@@ -4,19 +4,19 @@
 
 | Metric | Value |
 |---|---|
-| tickers | 55994 |
-| aliases | 88279 |
-| stocks | 41483 |
+| tickers | 55690 |
+| aliases | 87978 |
+| stocks | 41179 |
 | etfs | 14511 |
 | isin_coverage | 38374 |
-| sector_coverage | 33646 |
+| sector_coverage | 33645 |
 | cik_coverage | 7711 |
 | figi_coverage | 3821 |
 | lei_coverage | 921 |
-| listing_status_rows | 80538 |
-| listing_status_intervals | 80538 |
-| listing_events | 20087 |
-| listing_keys | 60929 |
+| listing_status_rows | 80842 |
+| listing_status_intervals | 80842 |
+| listing_events | 20391 |
+| listing_keys | 60625 |
 | official_masterfile_symbols | 24252 |
 | official_masterfile_matches | 18187 |
 | official_masterfile_collisions | 2652 |
@@ -25,9 +25,9 @@
 | official_partial_exchanges | 4 |
 | manual_only_exchanges | 0 |
 | missing_exchanges | 52 |
-| stock_verification_items | 44214 |
+| stock_verification_items | 43910 |
 | stock_verification_verified | 13944 |
-| stock_verification_reference_gap | 30261 |
+| stock_verification_reference_gap | 29957 |
 | stock_verification_missing_from_official | 0 |
 | stock_verification_name_mismatch | 0 |
 | stock_verification_cross_exchange_collision | 9 |
@@ -42,22 +42,22 @@
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-04-07T07:32:21Z |
-| tickers_age_hours | 0.04 |
+| tickers_built_at | 2026-04-07T07:40:13Z |
+| tickers_age_hours | 0.01 |
 | masterfiles_generated_at | 2026-04-06T17:49:27Z |
-| masterfiles_age_hours | 13.75 |
-| identifiers_generated_at | 2026-04-07T07:32:24Z |
-| identifiers_age_hours | 0.04 |
-| listing_history_observed_at | 2026-04-07T07:32:21Z |
-| listing_history_age_hours | 0.04 |
-| latest_verification_run | data/stock_verification/run-20260407-preferred-series-stock |
-| latest_verification_generated_at | 2026-04-07T07:33:56Z |
-| latest_verification_age_hours | 0.01 |
-| latest_stock_verification_run | data/stock_verification/run-20260407-preferred-series-stock |
-| latest_stock_verification_generated_at | 2026-04-07T07:33:56Z |
-| latest_stock_verification_age_hours | 0.01 |
-| latest_etf_verification_run | data/etf_verification/run-20260407-preferred-series-etf |
-| latest_etf_verification_generated_at | 2026-04-07T07:34:29Z |
+| masterfiles_age_hours | 13.85 |
+| identifiers_generated_at | 2026-04-07T07:40:16Z |
+| identifiers_age_hours | 0.01 |
+| listing_history_observed_at | 2026-04-07T07:40:13Z |
+| listing_history_age_hours | 0.01 |
+| latest_verification_run | data/stock_verification/run-20260407-psx-corporate-actions-stock |
+| latest_verification_generated_at | 2026-04-07T07:40:27Z |
+| latest_verification_age_hours | 0.0 |
+| latest_stock_verification_run | data/stock_verification/run-20260407-psx-corporate-actions-stock |
+| latest_stock_verification_generated_at | 2026-04-07T07:40:27Z |
+| latest_stock_verification_age_hours | 0.0 |
+| latest_etf_verification_run | data/etf_verification/run-20260407-psx-corporate-actions-etf |
+| latest_etf_verification_generated_at | 2026-04-07T07:40:37Z |
 | latest_etf_verification_age_hours | 0.0 |
 
 ## Source Coverage
@@ -126,7 +126,7 @@
 | OTCMKTS | missing | 50 | 28 | 23 | 14 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | PSE | missing | 105 | 76 | 4 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | PSE_CZ | missing | 24 | 18 | 10 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
-| PSX | missing | 692 | 269 | 16 | 3 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
+| PSX | missing | 388 | 269 | 15 | 3 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | RSE | missing | 2 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | SEM | missing | 53 | 53 | 3 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | SET | missing | 553 | 358 | 539 | 4 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
@@ -197,7 +197,7 @@
 | New Zealand | 14 | 14 | 14 | 7 | 1 | 1 |
 | Nigeria | 145 | 143 | 3 | 0 | 0 | 0 |
 | Norway | 299 | 213 | 225 | 9 | 194 | 1 |
-| Pakistan | 686 | 263 | 14 | 3 | 0 | 0 |
+| Pakistan | 382 | 263 | 13 | 3 | 0 | 0 |
 | Panama | 1 | 0 | 1 | 1 | 0 | 0 |
 | Peru | 33 | 0 | 3 | 0 | 0 | 0 |
 | Philippines | 139 | 110 | 30 | 15 | 2 | 2 |
@@ -240,9 +240,9 @@
 | STO | missing | 783 | 783 | 0 | 0 | 0 |
 | SIX | missing | 756 | 756 | 0 | 0 | 0 |
 | IDX | missing | 697 | 697 | 0 | 0 | 0 |
-| PSX | missing | 692 | 692 | 0 | 0 | 0 |
 | TASE | missing | 684 | 684 | 0 | 0 | 0 |
 | SET | missing | 553 | 553 | 0 | 0 | 0 |
 | OTCCE | missing | 505 | 505 | 0 | 0 | 0 |
+| PSX | missing | 388 | 388 | 0 | 0 | 0 |
 | WSE | missing | 349 | 349 | 0 | 0 | 0 |
 | Euronext | official_full | 346 | 341 | 0 | 0 | 5 |

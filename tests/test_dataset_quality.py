@@ -164,6 +164,8 @@ def test_generic_fund_wrapper_aliases_removed():
 def test_non_common_instruments_removed():
     tickers = {row["ticker"] for row in load_csv("tickers.csv")}
     assert "AACBR" not in tickers
+    assert "AIRLINK-CA" not in tickers
+    assert "ATRL-CAPRN" not in tickers
     assert "BAC-P-B" not in tickers
     assert "BN-PFA" not in tickers
     assert "BOHO-PREF" not in tickers
@@ -177,6 +179,12 @@ def test_non_common_instruments_removed():
     assert "SDIP-PREF" not in tickers
     assert "SNI-PR-A" not in tickers
     assert "TFIN-P" not in tickers
+    assert "MTL-CAPR" not in tickers
+    assert "MTL-CAPRN1" not in tickers
+    assert "MTL-CMAR" not in tickers
+    assert "MTL-CMARN1" not in tickers
+    assert "MTL-CMAY" not in tickers
+    assert "MTL-CMAYN1" not in tickers
     assert "VOLO-PREF" not in tickers
     assert "BTSGU" not in tickers
     assert "001515" not in tickers

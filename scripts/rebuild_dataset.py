@@ -159,6 +159,9 @@ NUMERIC_TICKER_RE = re.compile(r"^[0-9]{3,6}[A-Z]?$")
 B3_DEPOSITARY_TICKER_RE = re.compile(r".*(31|32|33|34|35|39)$")
 B3_FRACTIONAL_TICKER_RE = re.compile(r".*F$")
 B3_UNIT_TICKER_RE = re.compile(r".*11$")
+PSX_CORPORATE_ACTION_TICKER_RE = re.compile(
+    r"^[A-Z0-9]+-(?:CA|CM|CMA|CAP|CAPR|CMAR|CMAY)(?:N1?|)?$"
+)
 ASX_CAPITAL_NOTE_TICKER_RE = re.compile(r".*P[A-Z]$")
 ASX_LOYALTY_TICKER_RE = re.compile(r".*LV$")
 TAIWAN_ETF_TICKER_RE = re.compile(r"^00\d{2,4}[A-Z]?$")
@@ -677,6 +680,8 @@ def should_exclude_stock_row(
             return True
         if B3_UNIT_TICKER_RE.fullmatch(ticker):
             return True
+    if row.get("exchange") == "PSX" and PSX_CORPORATE_ACTION_TICKER_RE.fullmatch(ticker):
+        return True
     if row.get("exchange") == "ASX":
         if ASX_CAPITAL_NOTE_TICKER_RE.fullmatch(ticker):
             return True
