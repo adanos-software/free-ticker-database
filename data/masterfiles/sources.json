@@ -144,6 +144,15 @@
     "official": true
   },
   {
+    "key": "krx_etf_finder",
+    "provider": "KRX",
+    "description": "Official KRX ETF issue finder",
+    "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+    "format": "krx_etf_finder_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "sec_company_tickers_exchange",
     "provider": "SEC",
     "description": "Official SEC company ticker to exchange mapping",

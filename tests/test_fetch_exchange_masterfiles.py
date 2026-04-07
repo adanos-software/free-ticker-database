@@ -16,6 +16,7 @@ from scripts.fetch_exchange_masterfiles import (
     TPEX_MAINBOARD_QUOTES_CACHE,
     fetch_b3_instruments_equities,
     fetch_all_sources,
+    fetch_krx_etf_finder,
     fetch_krx_listed_companies,
     fetch_lse_company_reports,
     fetch_sse_a_share_list,
@@ -31,6 +32,7 @@ from scripts.fetch_exchange_masterfiles import (
     parse_deutsche_boerse_listed_companies_excel,
     parse_euronext_equities_download,
     parse_jpx_listed_issues_excel,
+    parse_krx_etf_finder,
     parse_krx_listed_companies,
     parse_lse_company_reports_html,
     parse_nasdaq_listed,
@@ -732,6 +734,38 @@ def test_parse_krx_listed_companies_maps_market_rows():
     ]
 
 
+def test_parse_krx_etf_finder_maps_rows():
+    payload = {
+        "block1": [
+            {
+                "short_code": "451060",
+                "codeName": "1Q 200액티브",
+            },
+            {
+                "short_code": "",
+                "codeName": "Ignored",
+            },
+        ]
+    }
+
+    rows = parse_krx_etf_finder(payload, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "451060",
+            "name": "1Q 200액티브",
+            "exchange": "KRX",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        }
+    ]
+
+
 def test_fetch_krx_listed_companies_fetches_kospi_and_kosdaq(monkeypatch):
     source = MasterfileSource(
         key="krx",
@@ -782,8 +816,59 @@ def test_fetch_krx_listed_companies_fetches_kospi_and_kosdaq(monkeypatch):
     assert [row["exchange"] for row in rows] == ["KRX", "KOSDAQ"]
 
 
+def test_fetch_krx_etf_finder_posts_finder_request():
+    source = MasterfileSource(
+        key="krx_etf_finder",
+        provider="KRX",
+        description="KRX ETF finder",
+        source_url="https://example.com/krx-etf",
+        format="krx_etf_finder_json",
+    )
+
+    class FakeResponse:
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return {"block1": [{"short_code": "451060", "codeName": "1Q 200액티브"}]}
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def post(self, url, data=None, headers=None, timeout=None):
+            self.calls.append((url, data, headers, timeout))
+            return FakeResponse()
+
+    session = FakeSession()
+    rows = fetch_krx_etf_finder(source, session=session)
+
+    assert rows[0]["ticker"] == "451060"
+    assert rows[0]["asset_type"] == "ETF"
+    assert session.calls == [
+        (
+            "https://data.krx.co.kr/comm/bldAttendant/getJsonData.cmd",
+            {
+                "bld": "dbms/comm/finder/finder_secuprodisu",
+                "mktsel": "ETF",
+                "searchText": "",
+            },
+            {
+                "User-Agent": "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)",
+                "Referer": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+            },
+            30.0,
+        )
+    ]
+
+
 def test_krx_source_is_modeled_as_partial_official_coverage() -> None:
     source = next(item for item in OFFICIAL_SOURCES if item.key == "krx_listed_companies")
+    assert source.reference_scope == "listed_companies_subset"
+
+
+def test_krx_etf_finder_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "krx_etf_finder")
     assert source.reference_scope == "listed_companies_subset"
 
 

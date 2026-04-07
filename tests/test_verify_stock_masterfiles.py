@@ -1057,6 +1057,76 @@ def test_classify_row_treats_krx_etfs_as_partial_coverage() -> None:
     assert result["reason"] == "This exchange is only partially covered by the current official reference layer."
 
 
+def test_classify_row_treats_krx_local_language_etf_names_as_verified() -> None:
+    row = {
+        "ticker": "451060",
+        "exchange": "KRX",
+        "asset_type": "ETF",
+        "name": "451060",
+        "country": "South Korea",
+        "country_code": "KR",
+        "isin": "KR7451060008",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("KRX", "451060"): [
+                {
+                    "ticker": "451060",
+                    "exchange": "KRX",
+                    "name": "1Q 200액티브",
+                    "asset_type": "ETF",
+                    "source_key": "krx_etf_finder",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges=set(),
+        partial_covered_exchanges={"KRX"},
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+    assert result["reason"] == "Matched active official listing with a local-language issuer name."
+
+
+def test_classify_row_downgrades_krx_etf_finder_name_mismatch_to_reference_gap() -> None:
+    row = {
+        "ticker": "491220",
+        "exchange": "KRX",
+        "asset_type": "ETF",
+        "name": "491220",
+        "country": "South Korea",
+        "country_code": "KR",
+        "isin": "",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("KRX", "491220"): [
+                {
+                    "ticker": "491220",
+                    "exchange": "KRX",
+                    "name": "PLUS 200TR",
+                    "asset_type": "ETF",
+                    "source_key": "krx_etf_finder",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges=set(),
+        partial_covered_exchanges={"KRX"},
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Only low-confidence issuer reference evidence exists for this listing."
+
+
 def test_is_code_like_reference_name_handles_compact_trading_labels() -> None:
     assert is_code_like_reference_name("MBWS", "MBWS")
     assert not is_code_like_reference_name("First Community Bankshares, Inc. - Common Stock", "FCBC")

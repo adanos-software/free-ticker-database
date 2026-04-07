@@ -57,6 +57,7 @@ TPEX_MAINBOARD_QUOTES_URL = "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_d
 KRX_LISTED_COMPANIES_URL = "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp"
 KRX_DATA_URL = "https://global.krx.co.kr/contents/GLB/99/GLB99000001.jspx"
 KRX_GENERATE_OTP_URL = "https://global.krx.co.kr/contents/COM/GenerateOTP.jspx"
+KRX_JSON_DATA_URL = "https://data.krx.co.kr/comm/bldAttendant/getJsonData.cmd"
 
 USER_AGENT = "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)"
 SEC_CONTACT_EMAIL = os.environ.get("SEC_CONTACT_EMAIL", "opensource@adanos.software")
@@ -261,6 +262,14 @@ OFFICIAL_SOURCES = [
         description="Official KRX listed company directory",
         source_url=KRX_LISTED_COMPANIES_URL,
         format="krx_listed_companies_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="krx_etf_finder",
+        provider="KRX",
+        description="Official KRX ETF issue finder",
+        source_url="https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+        format="krx_etf_finder_json",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -599,6 +608,33 @@ def parse_krx_listed_companies(
                 "name": name,
                 "exchange": exchange,
                 "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
+def parse_krx_etf_finder(
+    payload: dict[str, Any],
+    source: MasterfileSource,
+) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for record in payload.get("block1", []):
+        ticker = str(record.get("short_code", "")).strip()
+        name = str(record.get("codeName", "")).strip()
+        if not ticker or not name or ticker.lower() == "nan" or name.lower() == "nan":
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "KRX",
+                "asset_type": "ETF",
                 "listing_status": "active",
                 "reference_scope": source.reference_scope,
                 "official": "true",
@@ -1247,6 +1283,25 @@ def fetch_krx_listed_companies(source: MasterfileSource, session: requests.Sessi
     return rows
 
 
+def fetch_krx_etf_finder(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    response = session.post(
+        KRX_JSON_DATA_URL,
+        data={
+            "bld": "dbms/comm/finder/finder_secuprodisu",
+            "mktsel": "ETF",
+            "searchText": "",
+        },
+        headers={
+            "User-Agent": USER_AGENT,
+            "Referer": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+        },
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    return parse_krx_etf_finder(response.json(), source)
+
+
 def fetch_source_rows(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
     if source.format == "nasdaq_listed_pipe":
         text = fetch_text(source.source_url, session=session)
@@ -1292,6 +1347,8 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return parse_tpex_mainboard_quotes(payload, source)
     if source.format == "krx_listed_companies_json":
         return fetch_krx_listed_companies(source, session=session)
+    if source.format == "krx_etf_finder_json":
+        return fetch_krx_etf_finder(source, session=session)
     if source.format == "sec_company_tickers_exchange_json":
         payload = fetch_json(source.source_url, session=session)
         return parse_sec_company_tickers_exchange(payload, source)
