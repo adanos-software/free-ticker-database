@@ -7,9 +7,14 @@ from pathlib import Path
 from typing import Any
 
 try:
-    from scripts.rebuild_dataset import normalize_tokens, normalized_compact, should_exclude_stock_row
+    from scripts.rebuild_dataset import (
+        load_review_overrides,
+        normalize_tokens,
+        normalized_compact,
+        should_exclude_stock_row,
+    )
 except ModuleNotFoundError:  # pragma: no cover - script execution path
-    from rebuild_dataset import normalize_tokens, normalized_compact, should_exclude_stock_row
+    from rebuild_dataset import load_review_overrides, normalize_tokens, normalized_compact, should_exclude_stock_row
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
@@ -35,6 +40,14 @@ SUPPLEMENT_EXCHANGES: dict[str, dict[str, str]] = {
         "country": "Norway",
         "country_code": "NO",
     },
+    "TSX": {
+        "country": "Canada",
+        "country_code": "CA",
+    },
+    "TSXV": {
+        "country": "Canada",
+        "country_code": "CA",
+    },
     "TSE": {
         "country": "Japan",
         "country_code": "JP",
@@ -54,6 +67,8 @@ SUPPLEMENT_EXCLUDED_STOCK_PATTERNS = [
 ]
 
 SUPPLEMENT_ALLOWED_REFERENCE_SCOPES_BY_EXCHANGE: dict[str, set[str]] = {
+    "TSX": {"listed_companies_subset"},
+    "TSXV": {"listed_companies_subset"},
     "XETRA": {"exchange_directory", "listed_companies_subset"},
 }
 LOCAL_LANGUAGE_REFRESH_EXCHANGES = {"TWSE", "TPEX"}
@@ -74,12 +89,17 @@ def write_csv(path: Path, fieldnames: list[str], rows: list[dict[str, str]]) -> 
 def build_supplement_rows(
     core_rows: list[dict[str, str]],
     masterfile_rows: list[dict[str, str]],
+    dropped_keys: set[tuple[str, str]] | None = None,
 ) -> tuple[list[dict[str, str]], dict[str, Any]]:
+    dropped_keys = dropped_keys or set()
     core_exchanges_by_ticker: dict[str, set[str]] = {}
     core_rows_by_key: dict[tuple[str, str], dict[str, str]] = {}
     for row in core_rows:
+        row_key = (row["ticker"], row["exchange"])
+        if row_key in dropped_keys:
+            continue
         core_exchanges_by_ticker.setdefault(row["ticker"], set()).add(row["exchange"])
-        core_rows_by_key[(row["ticker"], row["exchange"])] = row
+        core_rows_by_key[row_key] = row
 
     supplements: list[dict[str, str]] = []
     eligible_missing_exchanges_by_ticker: dict[str, set[str]] = {}
@@ -229,7 +249,8 @@ def rows_refer_to_same_entity(core_row: dict[str, str], masterfile_row: dict[str
 def main() -> dict[str, Any]:
     core_rows = load_csv(LISTINGS_CSV)
     masterfile_rows = load_csv(MASTERFILE_REFERENCE_CSV)
-    supplement_rows, summary = build_supplement_rows(core_rows, masterfile_rows)
+    _, _, drop_entries = load_review_overrides()
+    supplement_rows, summary = build_supplement_rows(core_rows, masterfile_rows, drop_entries)
     fieldnames = [
         "ticker",
         "name",

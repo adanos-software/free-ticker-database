@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 24255,
-    "matched": 18424,
-    "collisions": 2414,
-    "missing": 3417
+    "official_symbols": 23379,
+    "matched": 17576,
+    "collisions": 2436,
+    "missing": 3367
   },
   "exchanges": [
     {
@@ -114,66 +114,6 @@
           "ticker": "QEVW",
           "name": "QEV WARRANTS",
           "exchange": "AMS"
-        }
-      ]
-    },
-    {
-      "exchange": "B3",
-      "official_symbols": 876,
-      "matched": 848,
-      "collisions": 0,
-      "missing": 28,
-      "collision_examples": [],
-      "missing_examples": [
-        {
-          "ticker": "AGBK11",
-          "name": "BANCO AGIBANK S.A.",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "ALUP11",
-          "name": "ALUPAR INVESTIMENTO S/A",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "AMZG11",
-          "name": "AMAZONAS DISTRIBUIDORA DE ENERGIA S.A.",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "BBAS11",
-          "name": "BCO BRASIL S.A.",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "BPAC11",
-          "name": "BCO BTG PACTUAL S.A.",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "BRBI11",
-          "name": "BRBI BR PARTNERS S.A.",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "BVEN11",
-          "name": "BOA VISTA ENERGIA S.A.",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "CEAC11",
-          "name": "ENERGISA ACRE - DISTRIBUIDORA DE ENERGIA S.A",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "CEAL11",
-          "name": "EQUATORIAL ALAGOAS - DISTRIBUIDORA DE ENERGIA S.A.",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "CPIS11",
-          "name": "EQUATORIAL PIAUI DISTRIBUIDORA DE ENERGIA S.A",
-          "exchange": "B3"
         }
       ]
     },
@@ -322,8 +262,8 @@
       "exchange": "Euronext",
       "official_symbols": 1404,
       "matched": 634,
-      "collisions": 412,
-      "missing": 358,
+      "collisions": 414,
+      "missing": 356,
       "collision_examples": [
         {
           "ticker": "8GW",
@@ -463,8 +403,8 @@
       "exchange": "NASDAQ",
       "official_symbols": 5441,
       "matched": 4562,
-      "collisions": 47,
-      "missing": 832,
+      "collisions": 54,
+      "missing": 825,
       "collision_examples": [
         {
           "ticker": "AIMS",
@@ -604,8 +544,8 @@
       "exchange": "NYSE",
       "official_symbols": 3834,
       "matched": 2058,
-      "collisions": 507,
-      "missing": 1269,
+      "collisions": 517,
+      "missing": 1259,
       "collision_examples": [
         {
           "ticker": "ABX",
@@ -886,8 +826,8 @@
       "exchange": "NYSE MKT",
       "official_symbols": 314,
       "matched": 234,
-      "collisions": 19,
-      "missing": 61,
+      "collisions": 20,
+      "missing": 60,
       "collision_examples": [
         {
           "ticker": "AEF",
@@ -895,6 +835,14 @@
           "target_exchange": "NYSE MKT",
           "existing_exchanges": [
             "TSXV"
+          ]
+        },
+        {
+          "ticker": "BCHT",
+          "name": "Birchtech Corp. Common Stock",
+          "target_exchange": "NYSE MKT",
+          "existing_exchanges": [
+            "TSX"
           ]
         },
         {
@@ -960,14 +908,6 @@
           "existing_exchanges": [
             "LSE"
           ]
-        },
-        {
-          "ticker": "GRO",
-          "name": "Brazil Potash Corp. Common Shares",
-          "target_exchange": "NYSE MKT",
-          "existing_exchanges": [
-            "NYSE"
-          ]
         }
       ],
       "missing_examples": [
@@ -979,11 +919,6 @@
         {
           "ticker": "AXIL",
           "name": "AXIL Brands, Inc. Common Stock",
-          "exchange": "NYSE MKT"
-        },
-        {
-          "ticker": "BCHT",
-          "name": "Birchtech Corp. Common Stock",
           "exchange": "NYSE MKT"
         },
         {
@@ -1019,6 +954,11 @@
         {
           "ticker": "EAD",
           "name": "Allspring Income Opportunities Fund Common Shares",
+          "exchange": "NYSE MKT"
+        },
+        {
+          "ticker": "ECF$A",
+          "name": "Ellsworth Growth and Income Fund Ltd. 5.25% Series A Cumulative Preferred Shares (Liquidation Preference $25.00 per share)",
           "exchange": "NYSE MKT"
         }
       ]
@@ -1117,8 +1057,8 @@
       "exchange": "OTC",
       "official_symbols": 2596,
       "matched": 1776,
-      "collisions": 50,
-      "missing": 770,
+      "collisions": 52,
+      "missing": 768,
       "collision_examples": [
         {
           "ticker": "AAUAF",
@@ -1169,6 +1109,14 @@
           ]
         },
         {
+          "ticker": "BTCY",
+          "name": "BIOTRICITY INC.",
+          "target_exchange": "OTC",
+          "existing_exchanges": [
+            "TSX"
+          ]
+        },
+        {
           "ticker": "CEROW",
           "name": "CERO THERAPEUTICS HOLDINGS, INC.",
           "target_exchange": "OTC",
@@ -1190,14 +1138,6 @@
           "target_exchange": "OTC",
           "existing_exchanges": [
             "TSX"
-          ]
-        },
-        {
-          "ticker": "CULL",
-          "name": "Cullman Bancorp, Inc. /MD/",
-          "target_exchange": "OTC",
-          "existing_exchanges": [
-            "NASDAQ"
           ]
         }
       ],

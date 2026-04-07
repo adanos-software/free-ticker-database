@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+import io
+
+import pandas as pd
 import requests
 
 from scripts.fetch_exchange_masterfiles import (
@@ -36,6 +39,8 @@ from scripts.fetch_exchange_masterfiles import (
     parse_tpex_mainboard_quotes,
     parse_twse_listed_companies,
     parse_tmx_interlisted,
+    parse_tmx_listed_issuers_excel,
+    resolve_tmx_listed_issuers_download_url,
     sec_request_headers,
 )
 
@@ -820,6 +825,93 @@ def test_parse_tmx_interlisted_marks_subset_scope():
             "official": "true",
         },
     ]
+
+
+def test_parse_tmx_listed_issuers_excel_maps_tsx_and_tsxv_rows() -> None:
+    buffer = io.BytesIO()
+    tsx_rows = pd.DataFrame(
+        [
+            {"Exchange": "TSX", "Name": "3iQ Bitcoin ETF", "Root\nTicker": "BTCQ", "Sector": "ETP"},
+            {"Exchange": "TSX", "Name": "5N Plus Inc.", "Root\nTicker": "VNP", "Sector": "Clean Technology & Renewable Energy"},
+        ]
+    )
+    tsxv_rows = pd.DataFrame(
+        [
+            {"Exchange": "TSXV", "Name": "01 Quantum Inc.", "Root\nTicker": "ONE", "Sector": "Technology"},
+        ]
+    )
+    with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
+        tsx_rows.to_excel(writer, sheet_name="TSX Issuers December 2025", startrow=9, index=False)
+        tsxv_rows.to_excel(writer, sheet_name="TSXV Issuers December 2025", startrow=9, index=False)
+
+    rows = parse_tmx_listed_issuers_excel(buffer.getvalue(), SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "BTCQ",
+            "name": "3iQ Bitcoin ETF",
+            "exchange": "TSX",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "VNP",
+            "name": "5N Plus Inc.",
+            "exchange": "TSX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "ONE",
+            "name": "01 Quantum Inc.",
+            "exchange": "TSXV",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_resolve_tmx_listed_issuers_download_url_uses_latest_workbook() -> None:
+    class FakeResponse:
+        def __init__(self, text: str):
+            self.text = text
+
+        def raise_for_status(self):
+            return None
+
+    class FakeSession:
+        def get(self, url, headers=None, timeout=None):
+            return FakeResponse(
+                """
+                <a href="/en/resource/3315/tsx-tsxv-listed-issuers-2024-12-en.xlsx">old</a>
+                <a href="/en/resource/3477/tsx-tsxv-listed-issuers-2025-12-en.xlsx">new</a>
+                """
+            )
+
+    assert (
+        resolve_tmx_listed_issuers_download_url(session=FakeSession())
+        == "https://www.tsx.com/en/resource/3477/tsx-tsxv-listed-issuers-2025-12-en.xlsx"
+    )
+
+
+def test_tmx_listed_issuers_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "tmx_listed_issuers")
+    assert source.reference_scope == "listed_companies_subset"
 
 
 def test_parse_euronext_equities_download_maps_markets():

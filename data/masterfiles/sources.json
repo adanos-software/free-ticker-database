@@ -36,6 +36,15 @@
     "official": true
   },
   {
+    "key": "tmx_listed_issuers",
+    "provider": "TMX",
+    "description": "Official TMX TSX/TSXV listed issuers workbook",
+    "source_url": "https://www.tsx.com/en/listings/current-market-statistics/mig-archives",
+    "format": "tmx_listed_issuers_excel",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "tmx_interlisted_companies",
     "provider": "TMX",
     "description": "Official TSX/TSXV interlisted companies reference",

@@ -25,6 +25,8 @@ SEC_COMPANY_TICKERS_CACHE = MASTERFILE_CACHE_DIR / "sec_company_tickers_exchange
 LEGACY_SEC_COMPANY_TICKERS_CACHE = MASTERFILES_DIR / "sec_company_tickers_exchange.json"
 LSE_COMPANY_REPORTS_CACHE = MASTERFILE_CACHE_DIR / "lse_company_reports.json"
 LEGACY_LSE_COMPANY_REPORTS_CACHE = MASTERFILES_DIR / "lse_company_reports.json"
+TMX_LISTED_ISSUERS_CACHE = MASTERFILE_CACHE_DIR / "tmx_listed_issuers.xlsx"
+LEGACY_TMX_LISTED_ISSUERS_CACHE = MASTERFILES_DIR / "tmx_listed_issuers.xlsx"
 TPEX_MAINBOARD_QUOTES_CACHE = MASTERFILE_CACHE_DIR / "tpex_mainboard_daily_close_quotes.json"
 LEGACY_TPEX_MAINBOARD_QUOTES_CACHE = MASTERFILES_DIR / "tpex_mainboard_daily_close_quotes.json"
 
@@ -37,6 +39,7 @@ LSE_COMPANY_REPORTS_URL = (
 )
 ASX_LISTED_URL = "https://www.asx.com.au/asx/research/ASXListedCompanies.csv"
 TMX_INTERLISTED_URL = "https://www.tsx.com/files/trading/interlisted-companies.txt"
+TMX_LISTED_ISSUERS_ARCHIVE_URL = "https://www.tsx.com/en/listings/current-market-statistics/mig-archives"
 EURONEXT_EQUITIES_DOWNLOAD_URL = "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock"
 JPX_LISTED_ISSUES_URL = "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls"
 DEUTSCHE_BOERSE_LISTED_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/67858/dd766fc6588100c79294324175f95501/data/Listed-companies.xlsx"
@@ -113,6 +116,10 @@ B3_EXCLUDED_ISSUER_MARKERS = (
 )
 TPEX_CANONICAL_TICKER_RE = re.compile(r"(?:\d{4}|00\d{4}[A-Z]?)$")
 LSE_PAGE_INITIALS = tuple("ABCDEFGHIJKLMNOPQRSTUVWXYZ") + ("0",)
+TMX_LISTED_ISSUERS_HREF_RE = re.compile(
+    r'href="([^"]+tsx-tsxv-listed-issuers-(\d{4})-(\d{2})-en\.xlsx)"',
+    re.I,
+)
 KRX_MARKET_GUBUN_TO_EXCHANGE = {
     "1": "KRX",
     "2": "KOSDAQ",
@@ -160,6 +167,14 @@ OFFICIAL_SOURCES = [
         description="Official ASX listed companies directory",
         source_url=ASX_LISTED_URL,
         format="asx_listed_companies_csv",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="tmx_listed_issuers",
+        provider="TMX",
+        description="Official TMX TSX/TSXV listed issuers workbook",
+        source_url=TMX_LISTED_ISSUERS_ARCHIVE_URL,
+        format="tmx_listed_issuers_excel",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -290,6 +305,12 @@ def infer_asset_type(name: str) -> str:
     return "ETF" if any(marker in lowered for marker in ETF_NAME_MARKERS) else "Stock"
 
 
+def infer_tmx_listed_asset_type(name: str, sector: str) -> str:
+    if sector.strip().lower() == "etp":
+        return "ETF"
+    return infer_asset_type(name)
+
+
 def infer_taiwan_asset_type(ticker: str, name: str) -> str:
     normalized_ticker = ticker.strip()
     if normalized_ticker.startswith("00"):
@@ -400,6 +421,34 @@ def load_lse_company_reports_rows(
     ensure_output_dirs()
     LSE_COMPANY_REPORTS_CACHE.write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"
+
+
+def resolve_tmx_listed_issuers_download_url(session: requests.Session | None = None) -> str:
+    session = session or requests.Session()
+    html = fetch_text(TMX_LISTED_ISSUERS_ARCHIVE_URL, session=session)
+    matches = TMX_LISTED_ISSUERS_HREF_RE.findall(html)
+    if not matches:
+        raise ValueError("Unable to locate TMX listed issuers workbook link")
+    href, _, _ = max(matches, key=lambda item: (int(item[1]), int(item[2])))
+    return requests.compat.urljoin(TMX_LISTED_ISSUERS_ARCHIVE_URL, href)
+
+
+def load_tmx_listed_issuers_content(
+    session: requests.Session | None = None,
+) -> tuple[bytes | None, str]:
+    for path in (TMX_LISTED_ISSUERS_CACHE, LEGACY_TMX_LISTED_ISSUERS_CACHE):
+        if path.exists():
+            return path.read_bytes(), "cache"
+
+    try:
+        download_url = resolve_tmx_listed_issuers_download_url(session=session)
+        content = fetch_bytes(download_url, session=session)
+    except (requests.RequestException, ValueError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    TMX_LISTED_ISSUERS_CACHE.write_bytes(content)
+    return content, "network"
 
 
 def parse_pipe_table(text: str) -> list[dict[str, str]]:
@@ -646,6 +695,42 @@ def parse_tmx_interlisted(text: str, source: MasterfileSource) -> list[dict[str,
                 "official": "true",
             }
         )
+    return rows
+
+
+def parse_tmx_listed_issuers_excel(content: bytes, source: MasterfileSource) -> list[dict[str, str]]:
+    workbook = pd.ExcelFile(io.BytesIO(content))
+    rows: list[dict[str, str]] = []
+    for sheet_name in workbook.sheet_names:
+        if sheet_name.startswith("TSX Issuers"):
+            default_exchange = "TSX"
+        elif sheet_name.startswith("TSXV Issuers"):
+            default_exchange = "TSXV"
+        else:
+            continue
+
+        dataframe = workbook.parse(sheet_name=sheet_name, header=9)
+        for record in dataframe.to_dict(orient="records"):
+            ticker = str(record.get("Root\nTicker", "")).strip()
+            name = str(record.get("Name", "")).strip()
+            exchange = str(record.get("Exchange", "")).strip() or default_exchange
+            sector = str(record.get("Sector", "")).strip()
+            if not ticker or not name or ticker.lower() == "nan" or name.lower() == "nan":
+                continue
+            rows.append(
+                {
+                    "source_key": source.key,
+                    "provider": source.provider,
+                    "source_url": source.source_url,
+                    "ticker": ticker,
+                    "name": name,
+                    "exchange": exchange,
+                    "asset_type": infer_tmx_listed_asset_type(name, sector),
+                    "listing_status": "active",
+                    "reference_scope": source.reference_scope,
+                    "official": "true",
+                }
+            )
     return rows
 
 
@@ -1098,6 +1183,11 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "asx_listed_companies_csv":
         text = fetch_text(source.source_url, session=session)
         return parse_asx_listed_companies(text, source)
+    if source.format == "tmx_listed_issuers_excel":
+        content, mode = load_tmx_listed_issuers_content(session=session)
+        if content is None:
+            return []
+        return parse_tmx_listed_issuers_excel(content, source)
     if source.format == "tmx_interlisted_tab":
         text = fetch_text(source.source_url, session=session)
         return parse_tmx_interlisted(text, source)
@@ -1149,6 +1239,11 @@ def fetch_source_rows_with_mode(
         if payload is None:
             raise requests.RequestException("TPEX mainboard quotes unavailable")
         return parse_tpex_mainboard_quotes(payload, source), mode
+    if source.format == "tmx_listed_issuers_excel":
+        content, mode = load_tmx_listed_issuers_content(session=session)
+        if content is None:
+            raise requests.RequestException("TMX listed issuers workbook unavailable")
+        return parse_tmx_listed_issuers_excel(content, source), mode
     return fetch_source_rows(source, session=session), "network"
 
 

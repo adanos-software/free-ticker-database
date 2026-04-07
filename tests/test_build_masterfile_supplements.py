@@ -518,3 +518,48 @@ def test_merge_supplemental_ticker_rows_refreshes_safe_fields(monkeypatch, tmp_p
             "aliases": "legacy",
         },
     ]
+
+
+def test_build_supplement_rows_allows_tsx_replacement_for_dropped_wrong_venue_row():
+    core_rows = [
+        {"ticker": "ESGA", "exchange": "NYSE ARCA", "name": "American Century Sustainable Equity ETF"},
+    ]
+    masterfile_rows = [
+        {
+            "ticker": "ESGA",
+            "name": "BMO MSCI Canada Selection Equity Index ETF",
+            "exchange": "TSX",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "source_key": "tmx_listed_issuers",
+            "source_url": "https://example.com/tmx",
+        }
+    ]
+
+    rows, summary = build_supplement_rows(
+        core_rows,
+        masterfile_rows,
+        dropped_keys={("ESGA", "NYSE ARCA")},
+    )
+
+    assert rows == [
+        {
+            "ticker": "ESGA",
+            "name": "BMO MSCI Canada Selection Equity Index ETF",
+            "exchange": "TSX",
+            "asset_type": "ETF",
+            "sector": "",
+            "country": "Canada",
+            "country_code": "CA",
+            "isin": "",
+            "aliases": "",
+            "source_key": "tmx_listed_issuers",
+            "source_url": "https://example.com/tmx",
+            "reference_scope": "listed_companies_subset",
+        }
+    ]
+    assert summary["supplement_rows"] == 1
+    assert summary["safe_missing_rows"] == 1
+    assert summary["refreshable_existing_rows"] == 0
+    assert summary["colliding_rows_skipped"] == 0

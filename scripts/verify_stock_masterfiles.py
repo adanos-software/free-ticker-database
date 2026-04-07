@@ -50,6 +50,7 @@ LOW_CONFIDENCE_MISSING_ASSET_TYPE_KEYS = {
 LOW_CONFIDENCE_ASSET_TYPE_SOURCE_KEYS = {
     "krx_listed_companies",
     "lse_company_reports",
+    "tmx_listed_issuers",
 }
 LOW_CONFIDENCE_COLLISION_PEER_EXCHANGES = {
     "ASX",
@@ -76,8 +77,8 @@ LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE = {
     "NYSE MKT": {"sec_company_tickers_exchange", "nasdaq_other_listed"},
     "OTC": {"sec_company_tickers_exchange"},
     "TPEX": {"tpex_mainboard_daily_quotes"},
-    "TSX": {"tmx_interlisted_companies"},
-    "TSXV": {"tmx_interlisted_companies"},
+    "TSX": {"tmx_interlisted_companies", "tmx_listed_issuers"},
+    "TSXV": {"tmx_interlisted_companies", "tmx_listed_issuers"},
 }
 EURONEXT_LABEL_SPLIT_RE = re.compile(r"[\s./-]+")
 ETFISH_REFERENCE_MARKERS = (

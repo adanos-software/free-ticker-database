@@ -893,6 +893,41 @@ def test_classify_row_downgrades_tsx_interlisted_name_mismatch_to_reference_gap(
     assert result["reason"] == "Only low-confidence issuer reference evidence exists for this listing."
 
 
+def test_classify_row_downgrades_tmx_listed_issuers_asset_type_mismatch_to_reference_gap() -> None:
+    row = {
+        "ticker": "FAP",
+        "exchange": "TSX",
+        "asset_type": "Stock",
+        "name": "abrdn Asia Pacific Income Fund VCC",
+        "country": "Singapore",
+        "country_code": "SG",
+        "isin": "SGXZ44536704",
+        "sector": "Financials",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("TSX", "FAP"): [
+                {
+                    "ticker": "FAP",
+                    "exchange": "TSX",
+                    "name": "abrdn Asia-Pacific Income Fund VCC",
+                    "asset_type": "ETF",
+                    "source_key": "tmx_listed_issuers",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges=set(),
+        partial_covered_exchanges={"TSX"},
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Only low-confidence asset_type evidence exists for this listing."
+
+
 def test_classify_row_downgrades_lse_name_mismatch_to_reference_gap() -> None:
     row = {
         "ticker": "0NQ5",

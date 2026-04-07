@@ -3,20 +3,20 @@
 [![CI](https://github.com/adanos-software/free-ticker-database/actions/workflows/ci.yml/badge.svg)](https://github.com/adanos-software/free-ticker-database/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-A comprehensive, free-to-use stock and ETF ticker reference database covering 56,000+ primary securities and 61,000+ exchange listings across 68 exchanges and 68 countries.
+A comprehensive, free-to-use stock and ETF ticker reference database covering 55,000+ primary securities and 60,000+ exchange listings across 68 exchanges and 68 countries.
 
 ## Stats
 
 | Metric | Value |
 |---|---|
-| **Total tickers** | 55,690 |
-| Stocks | 41,179 |
-| ETFs | 14,511 |
+| **Total tickers** | 55,984 |
+| Stocks | 41,406 |
+| ETFs | 14,578 |
 | Exchanges | 68 |
 | Countries | 68 |
-| ISIN coverage | 38,374 (68.9%) |
-| Sector coverage | 33,645 (60.4%) |
-| Total aliases | 87,971 |
+| ISIN coverage | 38,255 (68.3%) |
+| Sector coverage | 33,649 (60.1%) |
+| Total aliases | 87,860 |
 
 ## Formats
 
@@ -26,12 +26,12 @@ Choose the format that fits your use case:
 |---|---|---|
 | [`data/tickers.csv`](data/tickers.csv) | 4.9 MB | Excel, spreadsheets, quick lookups |
 | [`data/listings.csv`](data/listings.csv) | 6.1 MB | Listing-keyed export without global ticker ambiguity |
-| [`data/tickers.json`](data/tickers.json) | 10.9 MB | Web apps, APIs |
+| [`data/tickers.json`](data/tickers.json) | 11.0 MB | Web apps, APIs |
 | [`data/tickers.parquet`](data/tickers.parquet) | 2.5 MB | Pandas, data science |
-| [`data/tickers.db`](data/tickers.db) | 27.1 MB | SQL queries, local apps |
+| [`data/tickers.db`](data/tickers.db) | 27.2 MB | SQL queries, local apps |
 | [`data/aliases.csv`](data/aliases.csv) | 2.2 MB | Alias/name resolution |
-| [`data/identifiers.csv`](data/identifiers.csv) | 941 KB | ISIN/WKN lookups |
-| [`data/cross_listings.csv`](data/cross_listings.csv) | 313 KB | Cross-listed securities |
+| [`data/identifiers.csv`](data/identifiers.csv) | 942 KB | ISIN/WKN lookups |
+| [`data/cross_listings.csv`](data/cross_listings.csv) | 312 KB | Cross-listed securities |
 
 Additional reference artifacts:
 
