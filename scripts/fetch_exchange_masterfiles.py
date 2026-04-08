@@ -30,6 +30,8 @@ SEC_COMPANY_TICKERS_CACHE = MASTERFILE_CACHE_DIR / "sec_company_tickers_exchange
 LEGACY_SEC_COMPANY_TICKERS_CACHE = MASTERFILES_DIR / "sec_company_tickers_exchange.json"
 LSE_COMPANY_REPORTS_CACHE = MASTERFILE_CACHE_DIR / "lse_company_reports.json"
 LEGACY_LSE_COMPANY_REPORTS_CACHE = MASTERFILES_DIR / "lse_company_reports.json"
+LSE_INSTRUMENT_DIRECTORY_CACHE = MASTERFILE_CACHE_DIR / "lse_instrument_directory.json"
+LEGACY_LSE_INSTRUMENT_DIRECTORY_CACHE = MASTERFILES_DIR / "lse_instrument_directory.json"
 LSE_INSTRUMENT_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "lse_instrument_search.json"
 LEGACY_LSE_INSTRUMENT_SEARCH_CACHE = MASTERFILES_DIR / "lse_instrument_search.json"
 TMX_LISTED_ISSUERS_CACHE = MASTERFILE_CACHE_DIR / "tmx_listed_issuers.xlsx"
@@ -47,6 +49,10 @@ LSE_COMPANY_REPORTS_URL = (
 LSE_INSTRUMENT_SEARCH_URL = (
     "https://www.londonstockexchange.com/exchange/instrument-result.html"
     "?codeName={ticker}&filterBy=&filterClause="
+)
+LSE_INSTRUMENT_DIRECTORY_URL = (
+    "https://www.londonstockexchange.com/exchange/instrument-result.html"
+    "?codeName=&search=search&page={page}"
 )
 ASX_LISTED_URL = "https://www.asx.com.au/asx/research/ASXListedCompanies.csv"
 TMX_INTERLISTED_URL = "https://www.tsx.com/files/trading/interlisted-companies.txt"
@@ -136,6 +142,7 @@ TMX_LISTED_ISSUERS_HREF_RE = re.compile(
     r'href="([^"]+tsx-tsxv-listed-issuers-(\d{4})-(\d{2})-en\.xlsx)"',
     re.I,
 )
+LSE_PAGE_NUMBER_RE = re.compile(r'title="Page (\d+)" class="page-number(?: active)?"')
 KRX_MARKET_GUBUN_TO_EXCHANGE = {
     "1": "KRX",
     "2": "KOSDAQ",
@@ -185,6 +192,14 @@ OFFICIAL_SOURCES = [
         description="Official London Stock Exchange exact instrument search lookup for ETF/ETP products",
         source_url=LSE_INSTRUMENT_SEARCH_URL,
         format="lse_instrument_search_html",
+        reference_scope="security_lookup_subset",
+    ),
+    MasterfileSource(
+        key="lse_instrument_directory",
+        provider="LSE",
+        description="Official London Stock Exchange paginated instrument directory",
+        source_url=LSE_INSTRUMENT_DIRECTORY_URL,
+        format="lse_instrument_directory_html",
         reference_scope="security_lookup_subset",
     ),
     MasterfileSource(
@@ -530,6 +545,83 @@ def load_lse_company_reports_rows(
     return rows, "network"
 
 
+def extract_lse_last_page(text: str) -> int:
+    pages = [int(page) for page in LSE_PAGE_NUMBER_RE.findall(text)]
+    return max(pages) if pages else 1
+
+
+def fetch_lse_instrument_directory(
+    source: MasterfileSource,
+    *,
+    target_tickers: set[str] | None = None,
+    asset_type_by_ticker: dict[str, str] | None = None,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    target_tickers = target_tickers or set()
+    asset_type_by_ticker = asset_type_by_ticker or {}
+    rows: list[dict[str, str]] = []
+    seen_signatures: set[tuple[str, str]] = set()
+
+    first_text = fetch_text(source.source_url.format(page=1), session=session)
+    last_page = extract_lse_last_page(first_text)
+    page_texts = [(1, first_text)] + [
+        (page, fetch_text(source.source_url.format(page=page), session=session))
+        for page in range(2, last_page + 1)
+    ]
+
+    for page, text in page_texts:
+        for row in parse_lse_company_reports_html(text, source):
+            ticker = row.get("ticker", "").strip()
+            if not ticker or (target_tickers and ticker not in target_tickers):
+                continue
+            signature = (ticker, row.get("name", ""))
+            if signature in seen_signatures:
+                continue
+            seen_signatures.add(signature)
+            row["source_url"] = source.source_url.format(page=page)
+            row["asset_type"] = asset_type_by_ticker.get(ticker, row.get("asset_type", ""))
+            rows.append(row)
+    return rows
+
+
+def load_lse_instrument_directory_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (LSE_INSTRUMENT_DIRECTORY_CACHE, LEGACY_LSE_INSTRUMENT_DIRECTORY_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+
+    listings_rows = load_csv(LISTINGS_CSV)
+    target_tickers = {
+        row.get("ticker", "").strip()
+        for row in listings_rows
+        if row.get("exchange") == "LSE"
+        and row.get("asset_type") in {"Stock", "ETF"}
+        and row.get("ticker", "").strip()
+    }
+    asset_type_by_ticker = {
+        row.get("ticker", "").strip(): row.get("asset_type", "")
+        for row in listings_rows
+        if row.get("exchange") == "LSE" and row.get("ticker", "").strip()
+    }
+
+    try:
+        rows = fetch_lse_instrument_directory(
+            source,
+            target_tickers=target_tickers,
+            asset_type_by_ticker=asset_type_by_ticker,
+            session=session,
+        )
+    except requests.RequestException:
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    LSE_INSTRUMENT_DIRECTORY_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
 def group_rows_by_ticker(rows: list[dict[str, str]]) -> dict[str, list[dict[str, str]]]:
     grouped: dict[str, list[dict[str, str]]] = {}
     for row in rows:
@@ -606,14 +698,17 @@ def load_lse_instrument_search_rows(
     session: requests.Session | None = None,
 ) -> tuple[list[dict[str, str]] | None, str]:
     company_reports_source = next(item for item in OFFICIAL_SOURCES if item.key == "lse_company_reports")
+    directory_source = next(item for item in OFFICIAL_SOURCES if item.key == "lse_instrument_directory")
     company_report_rows, _ = load_lse_company_reports_rows(company_reports_source, session=session)
+    directory_rows, _ = load_lse_instrument_directory_rows(directory_source, session=session)
     listings_rows = load_csv(LISTINGS_CSV)
     asset_type_by_ticker = {
         row.get("ticker", "").strip(): row.get("asset_type", "")
         for row in listings_rows
         if row.get("exchange") == "LSE" and row.get("ticker", "").strip()
     }
-    target_tickers = lse_instrument_search_target_tickers(company_report_rows or [], listings_path=LISTINGS_CSV)
+    covered_rows = (company_report_rows or []) + (directory_rows or [])
+    target_tickers = lse_instrument_search_target_tickers(covered_rows, listings_path=LISTINGS_CSV)
 
     cached_lookup: dict[str, list[dict[str, str]]] = {}
     for path in (LSE_INSTRUMENT_SEARCH_CACHE, LEGACY_LSE_INSTRUMENT_SEARCH_CACHE):
@@ -1738,6 +1833,8 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return parse_other_listed(text, source)
     if source.format == "lse_company_reports_html":
         return fetch_lse_company_reports(source, session=session)
+    if source.format == "lse_instrument_directory_html":
+        return fetch_lse_instrument_directory(source, session=session)
     if source.format == "lse_instrument_search_html":
         return fetch_lse_instrument_search_exact(
             source,
@@ -1805,6 +1902,11 @@ def fetch_source_rows_with_mode(
         rows, mode = load_lse_company_reports_rows(source, session=session)
         if rows is None:
             raise requests.RequestException("LSE company reports unavailable")
+        return rows, mode
+    if source.format == "lse_instrument_directory_html":
+        rows, mode = load_lse_instrument_directory_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("LSE instrument directory unavailable")
         return rows, mode
     if source.format == "lse_instrument_search_html":
         rows, mode = load_lse_instrument_search_rows(source, session=session)

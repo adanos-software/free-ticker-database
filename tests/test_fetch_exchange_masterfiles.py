@@ -7,13 +7,16 @@ import requests
 
 from scripts.fetch_exchange_masterfiles import (
     LEGACY_LSE_COMPANY_REPORTS_CACHE,
+    LEGACY_LSE_INSTRUMENT_DIRECTORY_CACHE,
     LEGACY_LSE_INSTRUMENT_SEARCH_CACHE,
     LEGACY_TPEX_MAINBOARD_QUOTES_CACHE,
     LSE_PAGE_INITIALS,
     LSE_COMPANY_REPORTS_CACHE,
+    LSE_INSTRUMENT_DIRECTORY_CACHE,
     LSE_INSTRUMENT_SEARCH_CACHE,
     MasterfileSource,
     OFFICIAL_SOURCES,
+    extract_lse_last_page,
     SSE_ETF_SUBCLASSES,
     TPEX_MAINBOARD_QUOTES_CACHE,
     fetch_b3_instruments_equities,
@@ -21,6 +24,7 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_krx_etf_finder,
     fetch_krx_listed_companies,
     fetch_lse_company_reports,
+    fetch_lse_instrument_directory,
     fetch_lse_instrument_search_exact,
     fetch_sse_a_share_list,
     fetch_sse_etf_list,
@@ -28,6 +32,7 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_source_rows_with_mode,
     infer_jpx_asset_type,
     load_lse_company_reports_rows,
+    load_lse_instrument_directory_rows,
     load_lse_instrument_search_rows,
     load_sec_company_tickers_exchange_payload,
     load_tpex_mainboard_quotes_payload,
@@ -835,6 +840,89 @@ def test_load_lse_company_reports_rows_prefers_cache(tmp_path, monkeypatch):
     assert mode == "cache"
 
 
+def test_extract_lse_last_page_uses_paginator_links():
+    text = """
+    <div class="paginator">
+      <a title="Page 1241" class="page-number">1241</a>
+      <a title="Page 1242" class="page-number">1242</a>
+      <a title="Page 1250" class="page-number active">1250</a>
+    </div>
+    """
+
+    assert extract_lse_last_page(text) == 1250
+
+
+def test_fetch_lse_instrument_directory_paginates_and_filters_to_target_tickers(monkeypatch):
+    source = MasterfileSource(
+        key="lse_directory",
+        provider="LSE",
+        description="LSE instrument directory",
+        source_url="https://example.com?page={page}",
+        format="lse_instrument_directory_html",
+        reference_scope="security_lookup_subset",
+    )
+    requested_urls: list[str] = []
+    first_page = """
+    <table>
+      <tr><th>Code</th><th>Name</th></tr>
+      <tr><td>ABF</td><td>ASSOCIATED BRITISH FOODS PLC ORD 5 15/22P</td></tr>
+      <tr><td>VUSA</td><td>VANGUARD S&P 500 UCITS ETF USD</td></tr>
+    </table>
+    <div class="paginator">
+      <a title="Page 1" class="page-number active">1</a>
+      <a title="Page 2" class="page-number">2</a>
+    </div>
+    """
+    second_page = """
+    <table>
+      <tr><th>Code</th><th>Name</th></tr>
+      <tr><td>PHGP</td><td>WISDOMTREE METAL SECURITIES WISDOMTREE PHYSICAL GOLD £</td></tr>
+      <tr><td>IGN</td><td>IGNORE ME PLC</td></tr>
+    </table>
+    """
+
+    def fake_fetch_text(url: str, session=None) -> str:
+        requested_urls.append(url)
+        if url.endswith("page=1"):
+            return first_page
+        return second_page
+
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.fetch_text", fake_fetch_text)
+
+    rows = fetch_lse_instrument_directory(
+        source,
+        target_tickers={"ABF", "PHGP"},
+        asset_type_by_ticker={"ABF": "Stock", "PHGP": "ETF"},
+    )
+
+    assert requested_urls == ["https://example.com?page=1", "https://example.com?page=2"]
+    assert [(row["ticker"], row["asset_type"]) for row in rows] == [("ABF", "Stock"), ("PHGP", "ETF")]
+
+
+def test_load_lse_instrument_directory_rows_prefers_cache(tmp_path, monkeypatch):
+    cache_path = tmp_path / "lse_instrument_directory.json"
+    cache_path.write_text('[{"ticker":"ABF","name":"ASSOCIATED BRITISH FOODS PLC ORD 5 15/22P"}]', encoding="utf-8")
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LSE_INSTRUMENT_DIRECTORY_CACHE", cache_path)
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.LEGACY_LSE_INSTRUMENT_DIRECTORY_CACHE",
+        tmp_path / "legacy.json",
+    )
+
+    source = MasterfileSource(
+        key="lse_directory",
+        provider="LSE",
+        description="LSE instrument directory",
+        source_url="https://example.com?page={page}",
+        format="lse_instrument_directory_html",
+        reference_scope="security_lookup_subset",
+    )
+
+    rows, mode = load_lse_instrument_directory_rows(source)
+
+    assert rows == [{"ticker": "ABF", "name": "ASSOCIATED BRITISH FOODS PLC ORD 5 15/22P"}]
+    assert mode == "cache"
+
+
 def test_fetch_lse_instrument_search_exact_filters_to_exact_ticker(monkeypatch):
     source = MasterfileSource(
         key="lse_lookup",
@@ -926,6 +1014,10 @@ def test_load_lse_instrument_search_rows_prefers_cache_and_only_fetches_missing(
         "scripts.fetch_exchange_masterfiles.load_lse_company_reports_rows",
         lambda source, session=None: ([{"ticker": "VUSA", "exchange": "LSE"}], "cache"),
     )
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.load_lse_instrument_directory_rows",
+        lambda source, session=None: ([{"ticker": "PHGP", "exchange": "LSE"}], "cache"),
+    )
     fetched: list[tuple[list[str], dict[str, str] | None]] = []
 
     def fake_fetch(source, tickers, session=None, asset_type_by_ticker=None):
@@ -963,9 +1055,9 @@ def test_load_lse_instrument_search_rows_prefers_cache_and_only_fetches_missing(
     rows, mode = load_lse_instrument_search_rows(source)
 
     assert mode == "network"
-    assert [item[0] for item in fetched] == [["ABF"], ["PHGP"]]
+    assert [item[0] for item in fetched] == [["ABF"]]
     assert fetched[0][1] == {"PHGP": "ETF", "VUSA": "ETF", "ABF": "Stock"}
-    assert [(row["ticker"], row["asset_type"]) for row in rows] == [("ABF", "Stock"), ("PHGP", "ETF")]
+    assert [(row["ticker"], row["asset_type"]) for row in rows] == [("ABF", "Stock")]
 
     monkeypatch.setattr(
         "scripts.fetch_exchange_masterfiles.fetch_lse_instrument_search_exact",
@@ -974,7 +1066,7 @@ def test_load_lse_instrument_search_rows_prefers_cache_and_only_fetches_missing(
     rows, mode = load_lse_instrument_search_rows(source)
 
     assert mode == "cache"
-    assert [(row["ticker"], row["asset_type"]) for row in rows] == [("ABF", "Stock"), ("PHGP", "ETF")]
+    assert [(row["ticker"], row["asset_type"]) for row in rows] == [("ABF", "Stock")]
 
 
 def test_load_lse_instrument_search_rows_retains_cached_rows_outside_current_target_set(tmp_path, monkeypatch):
@@ -1005,6 +1097,10 @@ def test_load_lse_instrument_search_rows_retains_cached_rows_outside_current_tar
         lambda source, session=None: ([], "cache"),
     )
     monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.load_lse_instrument_directory_rows",
+        lambda source, session=None: ([{"ticker": "PHGP", "exchange": "LSE"}], "cache"),
+    )
+    monkeypatch.setattr(
         "scripts.fetch_exchange_masterfiles.fetch_lse_instrument_search_exact",
         lambda source, tickers, session=None, asset_type_by_ticker=None: [
             {
@@ -1033,8 +1129,8 @@ def test_load_lse_instrument_search_rows_retains_cached_rows_outside_current_tar
 
     rows, mode = load_lse_instrument_search_rows(source)
 
-    assert mode == "network"
-    assert [(row["ticker"], row["asset_type"]) for row in rows] == [("OLD1", "ETF"), ("PHGP", "ETF")]
+    assert mode == "cache"
+    assert [(row["ticker"], row["asset_type"]) for row in rows] == [("OLD1", "ETF")]
 
 
 def test_parse_krx_listed_companies_maps_market_rows():

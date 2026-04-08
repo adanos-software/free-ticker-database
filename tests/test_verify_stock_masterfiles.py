@@ -1072,6 +1072,41 @@ def test_classify_row_downgrades_lse_exact_lookup_name_mismatch_to_reference_gap
     assert result["reason"] == "Only low-confidence issuer reference evidence exists for this listing."
 
 
+def test_classify_row_downgrades_lse_directory_name_mismatch_to_reference_gap() -> None:
+    row = {
+        "ticker": "ABDN",
+        "exchange": "LSE",
+        "asset_type": "Stock",
+        "name": "Abrdn PLC",
+        "country": "United Kingdom",
+        "country_code": "GB",
+        "isin": "GB00BF8Q6K64",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("LSE", "ABDN"): [
+                {
+                    "ticker": "ABDN",
+                    "exchange": "LSE",
+                    "name": "ABERDEEN GROUP PLC ORD 13 61/63P",
+                    "asset_type": "Stock",
+                    "source_key": "lse_instrument_directory",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges={"LSE"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Only low-confidence issuer reference evidence exists for this listing."
+
+
 def test_classify_row_downgrades_lse_asset_type_mismatch_to_reference_gap() -> None:
     row = {
         "ticker": "PHAG",

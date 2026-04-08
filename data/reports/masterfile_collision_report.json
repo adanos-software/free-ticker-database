@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 24257,
+    "official_symbols": 24267,
     "matched": 18424,
     "collisions": 2436,
-    "missing": 3397
+    "missing": 3407
   },
   "exchanges": [
     {
@@ -179,10 +179,10 @@
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1239,
+      "official_symbols": 1244,
       "matched": 1192,
       "collisions": 16,
-      "missing": 31,
+      "missing": 36,
       "collision_examples": [
         {
           "ticker": "ARKI",
@@ -287,8 +287,23 @@
           "exchange": "BATS"
         },
         {
+          "ticker": "BFEW",
+          "name": "FT Vest Laddered U.S. Equity Equal Weight Buffer ETF",
+          "exchange": "BATS"
+        },
+        {
+          "ticker": "BFXU",
+          "name": "FT Vest Laddered U.S. Equity Uncapped Accelerator ETF",
+          "exchange": "BATS"
+        },
+        {
           "ticker": "BTFL",
           "name": "Defiance Daily Target 2X Long BITF ETF",
+          "exchange": "BATS"
+        },
+        {
+          "ticker": "BUFE",
+          "name": "FT Vest Laddered Emerging Markets Buffer ETF",
           "exchange": "BATS"
         },
         {
@@ -299,21 +314,6 @@
         {
           "ticker": "CHNU",
           "name": "2x Chainlink ETF",
-          "exchange": "BATS"
-        },
-        {
-          "ticker": "COMD",
-          "name": "Global X Commodity Strategy ETF",
-          "exchange": "BATS"
-        },
-        {
-          "ticker": "CRDD",
-          "name": "Cardano ETF",
-          "exchange": "BATS"
-        },
-        {
-          "ticker": "CRDX",
-          "name": "2x Cardano ETF",
           "exchange": "BATS"
         }
       ]
@@ -461,10 +461,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5442,
+      "official_symbols": 5443,
       "matched": 4562,
       "collisions": 54,
-      "missing": 826,
+      "missing": 827,
       "collision_examples": [
         {
           "ticker": "AIMS",
@@ -743,10 +743,10 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2611,
+      "official_symbols": 2615,
       "matched": 2562,
       "collisions": 34,
-      "missing": 15,
+      "missing": 19,
       "collision_examples": [
         {
           "ticker": "AINT",
@@ -856,6 +856,11 @@
           "exchange": "NYSE ARCA"
         },
         {
+          "ticker": "DUTY",
+          "name": "U.S. Defense ETF",
+          "exchange": "NYSE ARCA"
+        },
+        {
           "ticker": "IBCB",
           "name": "iShares iBonds Dec 2036 Term Corporate ETF",
           "exchange": "NYSE ARCA"
@@ -866,18 +871,13 @@
           "exchange": "NYSE ARCA"
         },
         {
-          "ticker": "MCVT",
-          "name": "Miller Convertible Total Return ETF",
+          "ticker": "IVEP",
+          "name": "Dan IVES Wedbush AI Power & Infrastructure ETF",
           "exchange": "NYSE ARCA"
         },
         {
-          "ticker": "PRTO",
-          "name": "RCN Pareto Strategic Allocation ETF",
-          "exchange": "NYSE ARCA"
-        },
-        {
-          "ticker": "PZIV",
-          "name": "Pzena International Value ETF",
+          "ticker": "JHDG",
+          "name": "John Hancock Hedged Equity ETF",
           "exchange": "NYSE ARCA"
         }
       ]

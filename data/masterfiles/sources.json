@@ -36,6 +36,15 @@
     "official": true
   },
   {
+    "key": "lse_instrument_directory",
+    "provider": "LSE",
+    "description": "Official London Stock Exchange paginated instrument directory",
+    "source_url": "https://www.londonstockexchange.com/exchange/instrument-result.html?codeName=&search=search&page={page}",
+    "format": "lse_instrument_directory_html",
+    "reference_scope": "security_lookup_subset",
+    "official": true
+  },
+  {
     "key": "asx_listed_companies",
     "provider": "ASX",
     "description": "Official ASX listed companies directory",
