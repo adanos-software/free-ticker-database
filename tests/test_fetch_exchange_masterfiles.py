@@ -27,14 +27,19 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_lse_instrument_directory,
     fetch_lse_instrument_search_exact,
     fetch_nasdaq_nordic_stockholm_shares,
+    fetch_six_equity_issuers,
+    fetch_six_fund_products,
     fetch_sse_a_share_list,
     fetch_sse_etf_list,
     fetch_szse_a_share_list,
+    fetch_szse_etf_list,
     fetch_source_rows_with_mode,
     infer_jpx_asset_type,
+    infer_lse_lookup_asset_type,
     load_lse_company_reports_rows,
     load_lse_instrument_directory_rows,
     load_lse_instrument_search_rows,
+    load_nasdaq_nordic_stockholm_shares_rows,
     load_sec_company_tickers_exchange_payload,
     load_tpex_mainboard_quotes_payload,
     lse_instrument_search_target_tickers,
@@ -53,10 +58,14 @@ from scripts.fetch_exchange_masterfiles import (
     parse_other_listed,
     parse_set_listed_companies_html,
     parse_sec_company_tickers_exchange,
+    parse_six_equity_issuers,
+    parse_six_fund_products_csv,
     parse_sse_a_share_list,
     parse_sse_etf_list,
     parse_szse_a_share_list,
     parse_szse_a_share_workbook,
+    parse_szse_etf_list,
+    parse_szse_etf_workbook,
     parse_tpex_mainboard_quotes,
     parse_twse_listed_companies,
     parse_tmx_interlisted,
@@ -493,6 +502,98 @@ def test_parse_szse_a_share_workbook_maps_szse_rows() -> None:
     ]
 
 
+def test_parse_szse_etf_list_maps_szse_rows() -> None:
+    payload = {
+        "result": [
+            {
+                "metadata": {"pagecount": 1, "recordcount": 2},
+                "data": [
+                    {
+                        "sys_key": '<a href="/x"><u>159176</u></a>',
+                        "kzjcurl": '<a href="/y"><u>家电ETF华宝</u></a>',
+                    },
+                    {
+                        "sys_key": '<a href="/z"><u>159869</u></a>',
+                        "kzjcurl": '<a href="/q"><u>游戏ETF</u></a>',
+                    },
+                    {"sys_key": "", "kzjcurl": "Ignored"},
+                ],
+            }
+        ]
+    }
+
+    rows = parse_szse_etf_list(payload, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "159176",
+            "name": "家电ETF华宝",
+            "exchange": "SZSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "159869",
+            "name": "游戏ETF",
+            "exchange": "SZSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_parse_szse_etf_workbook_maps_szse_rows() -> None:
+    dataframe = pd.DataFrame(
+        [
+            {"证券代码": 159176, "证券简称": "家电ETF华宝"},
+            {"证券代码": "159869", "证券简称": "游戏ETF"},
+            {"证券代码": None, "证券简称": "Ignored"},
+        ]
+    )
+    content = io.BytesIO()
+    with pd.ExcelWriter(content, engine="openpyxl") as writer:
+        dataframe.to_excel(writer, sheet_name="ETF列表", index=False)
+
+    rows = parse_szse_etf_workbook(content.getvalue(), SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "159176",
+            "name": "家电ETF华宝",
+            "exchange": "SZSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "159869",
+            "name": "游戏ETF",
+            "exchange": "SZSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
 def test_fetch_szse_a_share_list_fetches_all_pages() -> None:
     source = MasterfileSource(
         key="szse",
@@ -557,8 +658,88 @@ def test_fetch_szse_a_share_list_fetches_all_pages() -> None:
     assert all(call[1]["TABKEY"] == "tab1" for call in api_calls)
 
 
+def test_fetch_szse_etf_list_fetches_all_pages() -> None:
+    source = MasterfileSource(
+        key="szse_etf",
+        provider="SZSE",
+        description="SZSE ETF list",
+        source_url="https://www.szse.cn/market/product/list/etfList/index.html",
+        format="szse_etf_list_json",
+        reference_scope="listed_companies_subset",
+    )
+
+    class FakeResponse:
+        def __init__(self, payload=None, content=b""):
+            self._payload = payload
+            self.content = content
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, params=None, headers=None, **kwargs):
+            self.calls.append((url, params, headers, kwargs))
+            if params is None:
+                return FakeResponse({})
+            if params.get("SHOWTYPE") == "xlsx":
+                return FakeResponse({}, b"not-an-excel-file")
+            page = params["PAGENO"]
+            if page == 1:
+                return FakeResponse(
+                    {
+                        "result": [
+                            {
+                                "metadata": {"pagecount": 2, "recordcount": 2},
+                                "data": [
+                                    {
+                                        "sys_key": '<a href="/x"><u>159176</u></a>',
+                                        "kzjcurl": '<a href="/y"><u>家电ETF华宝</u></a>',
+                                    }
+                                ],
+                            }
+                        ]
+                    }
+                )
+            return FakeResponse(
+                {
+                    "result": [
+                        {
+                            "metadata": {"pagecount": 2, "recordcount": 2},
+                            "data": [
+                                {
+                                    "sys_key": '<a href="/z"><u>159869</u></a>',
+                                    "kzjcurl": '<a href="/q"><u>游戏ETF</u></a>',
+                                }
+                            ],
+                        }
+                    ]
+                }
+            )
+
+    session = FakeSession()
+    rows = fetch_szse_etf_list(source, session=session)
+
+    assert [row["ticker"] for row in rows] == ["159176", "159869"]
+    api_calls = [call for call in session.calls if call[1] is not None and call[1].get("SHOWTYPE") != "xlsx"]
+    assert [call[1]["PAGENO"] for call in api_calls] == [1, 2]
+    assert all(call[1]["SHOWTYPE"] == "JSON" for call in api_calls)
+    assert all(call[1]["CATALOGID"] == "1945" for call in api_calls)
+    assert all(call[1]["TABKEY"] == "tab1" for call in api_calls)
+
+
 def test_szse_source_is_modeled_as_partial_official_coverage() -> None:
     source = next(item for item in OFFICIAL_SOURCES if item.key == "szse_a_share_list")
+    assert source.reference_scope == "listed_companies_subset"
+
+
+def test_szse_etf_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "szse_etf_list")
     assert source.reference_scope == "listed_companies_subset"
 
 
@@ -940,14 +1121,14 @@ def test_fetch_lse_instrument_search_exact_filters_to_exact_ticker(monkeypatch):
             return """
             <table>
               <tr><th>Code</th><th>Name</th></tr>
-              <tr><td>PHGP</td><td>WISDOMTREE METAL SECURITIES WISDOMTREE PHYSICAL GOLD £</td></tr>
-              <tr><td>UC86</td><td>UBS ETF USD</td></tr>
+              <tr><td>PHGP</td><td><a href="javascript: UpdateOpener('WISDOMTREE METAL SECURITIES WISDOMTREE PHYSICAL GOLD £', 'JE00B1VS3770|ZZ|GBX|ETC2|B285Z72|PHGP');">WISDOMTREE METAL SECURITIES WISDOMTREE PHYSICAL GOLD £</a></td></tr>
+              <tr><td>UC86</td><td><a href="javascript: UpdateOpener('UBS ETF USD', 'LU1048314949|ZZ|USD|ETF2|BMPHGP6|UC86');">UBS ETF USD</a></td></tr>
             </table>
             """
         return """
         <table>
           <tr><th>Code</th><th>Name</th></tr>
-          <tr><td>1MSF</td><td>LEVERAGE SHARES PUBLIC LIMITED CO. 1X MSFT</td></tr>
+          <tr><td>1MSF</td><td><a href="javascript: UpdateOpener('LEVERAGE SHARES PUBLIC LIMITED CO. 1X MSFT', 'XS1234567890|IE|USD|SSX4|ABC1234|1MSF');">LEVERAGE SHARES PUBLIC LIMITED CO. 1X MSFT</a></td></tr>
         </table>
         """
 
@@ -964,6 +1145,18 @@ def test_fetch_lse_instrument_search_exact_filters_to_exact_ticker(monkeypatch):
     assert all(row["source_url"].startswith("https://example.com?codeName=") for row in rows)
     assert rows[0]["asset_type"] == "ETF"
     assert rows[1]["asset_type"] == "Stock"
+
+
+def test_infer_lse_lookup_asset_type_uses_stock_fallback_for_stmm_trusts():
+    assert (
+        infer_lse_lookup_asset_type(
+            "STMM",
+            "THE GLOBAL SMALLER CO'S TRUST PLC ORD 2.5P",
+            "Stock",
+        )
+        == "Stock"
+    )
+    assert infer_lse_lookup_asset_type("EUE2", "IMGP IMGP DBI MNGD FUTURES FD R USD UCITS ETF", "Stock") == "ETF"
 
 
 def test_lse_instrument_search_target_tickers_selects_only_uncovered_lse_reference_gaps(tmp_path):
@@ -1006,6 +1199,7 @@ def test_load_lse_instrument_search_rows_prefers_cache_and_only_fetches_missing(
     cache_path = tmp_path / "lse_instrument_search.json"
     legacy_cache_path = tmp_path / "legacy.json"
     monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LISTINGS_CSV", listings_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LSE_INSTRUMENT_SEARCH_MAX_WORKERS", 1)
     monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LSE_INSTRUMENT_SEARCH_CACHE", cache_path)
     monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_LSE_INSTRUMENT_SEARCH_CACHE", legacy_cache_path)
     monkeypatch.setattr(
@@ -1057,9 +1251,9 @@ def test_load_lse_instrument_search_rows_prefers_cache_and_only_fetches_missing(
     rows, mode = load_lse_instrument_search_rows(source)
 
     assert mode == "network"
-    assert [item[0] for item in fetched] == [["ABF"]]
+    assert [item[0] for item in fetched] == [["ABF"], ["PHGP"]]
     assert fetched[0][1] == {"PHGP": "ETF", "VUSA": "ETF", "ABF": "Stock"}
-    assert [(row["ticker"], row["asset_type"]) for row in rows] == [("ABF", "Stock")]
+    assert [(row["ticker"], row["asset_type"]) for row in rows] == [("ABF", "Stock"), ("PHGP", "ETF")]
 
     monkeypatch.setattr(
         "scripts.fetch_exchange_masterfiles.fetch_lse_instrument_search_exact",
@@ -1068,7 +1262,7 @@ def test_load_lse_instrument_search_rows_prefers_cache_and_only_fetches_missing(
     rows, mode = load_lse_instrument_search_rows(source)
 
     assert mode == "cache"
-    assert [(row["ticker"], row["asset_type"]) for row in rows] == [("ABF", "Stock")]
+    assert [(row["ticker"], row["asset_type"]) for row in rows] == [("ABF", "Stock"), ("PHGP", "ETF")]
 
 
 def test_load_lse_instrument_search_rows_retains_cached_rows_outside_current_target_set(tmp_path, monkeypatch):
@@ -1088,6 +1282,7 @@ def test_load_lse_instrument_search_rows_retains_cached_rows_outside_current_tar
         encoding="utf-8",
     )
     monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LISTINGS_CSV", listings_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LSE_INSTRUMENT_SEARCH_MAX_WORKERS", 1)
     monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LSE_INSTRUMENT_SEARCH_CACHE", cache_path)
     monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_LSE_INSTRUMENT_SEARCH_CACHE", tmp_path / "legacy.json")
     monkeypatch.setattr(
@@ -1131,8 +1326,8 @@ def test_load_lse_instrument_search_rows_retains_cached_rows_outside_current_tar
 
     rows, mode = load_lse_instrument_search_rows(source)
 
-    assert mode == "cache"
-    assert [(row["ticker"], row["asset_type"]) for row in rows] == [("OLD1", "ETF")]
+    assert mode == "network"
+    assert [(row["ticker"], row["asset_type"]) for row in rows] == [("OLD1", "ETF"), ("PHGP", "ETF")]
 
 
 def test_parse_krx_listed_companies_maps_market_rows():
@@ -1844,6 +2039,69 @@ def test_fetch_b3_instruments_equities_uses_workday_and_paginates(monkeypatch):
     ]
 
 
+def test_fetch_b3_instruments_equities_reads_tail_pages_for_large_tables():
+    class FakeResponse:
+        def __init__(self, payload, status_code=200):
+            self._payload = payload
+            self.status_code = status_code
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, headers=None, timeout=None):
+            self.calls.append(("GET", url))
+            return FakeResponse("2026-04-02T00:00:00")
+
+        def post(self, url, headers=None, json=None, timeout=None):
+            self.calls.append(("POST", url))
+            page = int(url.rstrip("/").split("/")[-2])
+            values_by_page = {
+                108: [["ROW108", "ROW 108", "CASH", "EQUITY-CASH", "SHARES", "BRROW108", "Issuer 108"]],
+                109: [["ROW109", "ROW 109", "CASH", "EQUITY-CASH", "SHARES", "BRROW109", "Issuer 109"]],
+                110: [["ROW110", "ROW 110", "CASH", "EQUITY-CASH", "SHARES", "BRROW110", "Issuer 110"]],
+                111: [["ROW111", "ROW 111", "CASH", "EQUITY-CASH", "SHARES", "BRROW111", "Issuer 111"]],
+            }
+            payload = {
+                "table": {
+                    "pageCount": 111,
+                    "columns": [
+                        {"name": "TckrSymb"},
+                        {"name": "AsstDesc"},
+                        {"name": "SgmtNm"},
+                        {"name": "MktNm"},
+                        {"name": "SctyCtgyNm"},
+                        {"name": "ISIN"},
+                        {"name": "CrpnNm"},
+                    ],
+                    "values": values_by_page.get(page, [["ROWX", "ROW X", "EQUITY FORWARD", "EQUITY-DERIVATE", "COMMON EQUITIES FORWARD", "BRROWX", "Issuer X"]]),
+                }
+            }
+            return FakeResponse(payload)
+
+    session = FakeSession()
+    rows = fetch_b3_instruments_equities(
+        MasterfileSource(
+            key="b3",
+            provider="B3",
+            description="Official B3 instruments consolidated cash-equities table",
+            source_url="https://arquivos.b3.com.br/bdi/table/InstrumentsEquities",
+            format="b3_instruments_equities_api",
+        ),
+        session=session,
+    )
+
+    assert [row["ticker"] for row in rows] == ["ROW111", "ROW110", "ROW109", "ROW108"]
+    post_pages = [int(url.rstrip("/").split("/")[-2]) for method, url in session.calls if method == "POST"]
+    assert post_pages == [1, 111, 110, 109, 108, 107]
+
+
 def test_parse_nasdaq_nordic_stockholm_shares_maps_rows() -> None:
     payload = {
         "data": {
@@ -1944,6 +2202,225 @@ def test_fetch_nasdaq_nordic_stockholm_shares_filters_to_sto() -> None:
 def test_sto_source_is_modeled_as_partial_official_coverage() -> None:
     source = next(item for item in OFFICIAL_SOURCES if item.key == "nasdaq_nordic_stockholm_shares")
     assert source.reference_scope == "listed_companies_subset"
+
+
+def test_load_nasdaq_nordic_stockholm_shares_rows_prefers_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "nasdaq_nordic_stockholm_shares.json"
+    cache_path.write_text(
+        '[{"ticker":"ABB","name":"ABB Ltd","exchange":"STO","asset_type":"Stock","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE", cache_path)
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "nasdaq_nordic_stockholm_shares")
+    rows, mode = load_nasdaq_nordic_stockholm_shares_rows(source)
+
+    assert mode == "cache"
+    assert rows == [{"ticker": "ABB", "name": "ABB Ltd", "exchange": "STO", "asset_type": "Stock", "listing_status": "active"}]
+
+
+def test_fetch_source_rows_with_mode_uses_sto_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "nasdaq_nordic_stockholm_shares.json"
+    cache_path.write_text(
+        '[{"ticker":"ABB","name":"ABB Ltd","exchange":"STO","asset_type":"Stock","listing_status":"active","source_key":"nasdaq_nordic_stockholm_shares","reference_scope":"listed_companies_subset","official":"true","provider":"Nasdaq Nordic","source_url":"https://example.com"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE", cache_path)
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "nasdaq_nordic_stockholm_shares")
+    rows, mode = fetch_source_rows_with_mode(source)
+
+    assert mode == "cache"
+    assert rows[0]["ticker"] == "ABB"
+    assert rows[0]["exchange"] == "STO"
+
+
+def test_parse_six_equity_issuers_maps_rows() -> None:
+    payload = {
+        "itemList": [
+            {"valorSymbol": "ABBN", "company": "ABB Ltd"},
+            {"valorSymbol": "ROG", "company": "Roche Holding AG"},
+            {"valorSymbol": "", "company": "Ignored"},
+        ]
+    }
+
+    rows = parse_six_equity_issuers(payload, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "ABBN",
+            "name": "ABB Ltd",
+            "exchange": "SIX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "ROG",
+            "name": "Roche Holding AG",
+            "exchange": "SIX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_fetch_six_equity_issuers_uses_official_endpoint() -> None:
+    source = MasterfileSource(
+        key="six_equity_issuers",
+        provider="SIX",
+        description="Official SIX Swiss Exchange equity issuers directory",
+        source_url="https://www.six-group.com/sheldon/equity_issuers/v1/equity_issuers.json",
+        format="six_equity_issuers_json",
+        reference_scope="listed_companies_subset",
+    )
+
+    class FakeResponse:
+        def __init__(self, payload, status_code=200):
+            self._payload = payload
+            self.status_code = status_code
+
+        def raise_for_status(self):
+            if self.status_code >= 400:
+                raise requests.HTTPError(f"status={self.status_code}")
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, headers=None, timeout=None):
+            self.calls.append((url, headers))
+            return FakeResponse(
+                {
+                    "itemList": [
+                        {"valorSymbol": "ABBN", "company": "ABB Ltd"},
+                        {"valorSymbol": "ROG", "company": "Roche Holding AG"},
+                    ]
+                }
+            )
+
+    session = FakeSession()
+    rows = fetch_six_equity_issuers(source, session=session)
+
+    assert [row["ticker"] for row in rows] == ["ABBN", "ROG"]
+    assert session.calls == [
+        (
+            "https://www.six-group.com/sheldon/equity_issuers/v1/equity_issuers.json",
+            {
+                "User-Agent": "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)",
+                "Accept": "application/json,text/plain,*/*",
+                "Referer": "https://www.six-group.com/en/market-data/shares/companies.html",
+            },
+        )
+    ]
+
+
+def test_six_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "six_equity_issuers")
+    assert source.reference_scope == "listed_companies_subset"
+
+
+def test_parse_six_fund_products_csv_maps_rows() -> None:
+    text = "\n".join(
+        [
+            "FundLongName;ValorSymbol;ProductLineDesc",
+            "abrdn Future Raw Materials UCITS ETF USD Acc ETF Share Class;ARAW;Exchange Traded Funds",
+            "21Shares Bitcoin ETP;ABTC;Exchange Traded Product",
+            ";IGNORED;Exchange Traded Funds",
+        ]
+    )
+
+    rows = parse_six_fund_products_csv(text, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "ARAW",
+            "name": "abrdn Future Raw Materials UCITS ETF USD Acc ETF Share Class",
+            "exchange": "SIX",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "ABTC",
+            "name": "21Shares Bitcoin ETP",
+            "exchange": "SIX",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_fetch_six_fund_products_uses_official_endpoint() -> None:
+    source = MasterfileSource(
+        key="six_etf_products",
+        provider="SIX",
+        description="Official SIX Swiss Exchange ETF explorer export",
+        source_url="https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+        format="six_fund_products_csv",
+        reference_scope="listed_companies_subset",
+    )
+
+    class FakeResponse:
+        def __init__(self, text, status_code=200):
+            self.text = text
+            self.status_code = status_code
+
+        def raise_for_status(self):
+            if self.status_code >= 400:
+                raise requests.HTTPError(f"status={self.status_code}")
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, headers=None, timeout=None):
+            self.calls.append((url, headers))
+            return FakeResponse("FundLongName;ValorSymbol\n21Shares Bitcoin ETP;ABTC\n")
+
+    session = FakeSession()
+    rows = fetch_six_fund_products(source, session=session)
+
+    assert [row["ticker"] for row in rows] == ["ABTC"]
+    assert session.calls == [
+        (
+            "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+            {
+                "User-Agent": "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)",
+                "Accept": "text/csv,application/octet-stream,*/*",
+                "Referer": "https://www.six-group.com/en/market-data/etf/etf-explorer.html",
+            },
+        )
+    ]
+
+
+def test_six_fund_sources_are_modeled_as_partial_official_coverage() -> None:
+    etf_source = next(item for item in OFFICIAL_SOURCES if item.key == "six_etf_products")
+    etp_source = next(item for item in OFFICIAL_SOURCES if item.key == "six_etp_products")
+
+    assert etf_source.reference_scope == "listed_companies_subset"
+    assert etp_source.reference_scope == "listed_companies_subset"
 
 
 def test_fetch_all_sources_collects_source_errors(monkeypatch):

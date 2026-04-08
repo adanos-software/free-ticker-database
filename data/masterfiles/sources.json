@@ -126,6 +126,33 @@
     "official": true
   },
   {
+    "key": "six_equity_issuers",
+    "provider": "SIX",
+    "description": "Official SIX Swiss Exchange equity issuers directory",
+    "source_url": "https://www.six-group.com/sheldon/equity_issuers/v1/equity_issuers.json",
+    "format": "six_equity_issuers_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "six_etf_products",
+    "provider": "SIX",
+    "description": "Official SIX Swiss Exchange ETF explorer export",
+    "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=ET*PortalSegment=FU&orderby=FundLongName&page=1&pagesize=99999",
+    "format": "six_fund_products_csv",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "six_etp_products",
+    "provider": "SIX",
+    "description": "Official SIX Swiss Exchange ETP explorer export",
+    "source_url": "https://www.six-group.com/fqs/ref.csv?select=FundLongName,ValorSymbol,FundReutersTicker,FundBloombergTicker,ValorNumber,ISIN,IssuerLongNameDesc,IssuerNameFull,TradingBaseCurrency,FundCurrency,ManagementFee,ReplicationMethodDesc,ManagementStyleDesc,MarketMakers,ClosingPrice,ClosingPerformance,ClosingDelta,FundUnderlyingDescription,BidVolume,BidPrice,AskVolume,AskPrice,MidSpread,PreviousClosingPrice,MarketDate,MarketTime,OpeningPrice,DailyLowPrice,OnMarketVolume,OffBookVolume,TotalTurnover,TotalTurnoverCHF,ProductLineDesc,AssetClassDesc,UnderlyingGeographicalDesc,LegalStructureCountryDesc,UnderlyingProviderDesc&where=ProductLine=EP*PortalSegment=EP&orderby=FundLongName&page=1&pagesize=99999",
+    "format": "six_fund_products_csv",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "b3_instruments_equities",
     "provider": "B3",
     "description": "Official B3 instruments consolidated cash-equities table",
@@ -176,6 +203,15 @@
     "description": "Official SZSE A-share list",
     "source_url": "https://www.szse.cn/market/product/stock/list/index.html",
     "format": "szse_a_share_list_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "szse_etf_list",
+    "provider": "SZSE",
+    "description": "Official SZSE ETF list",
+    "source_url": "https://www.szse.cn/market/product/list/etfList/index.html",
+    "format": "szse_etf_list_json",
     "reference_scope": "listed_companies_subset",
     "official": true
   },

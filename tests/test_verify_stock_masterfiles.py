@@ -1176,6 +1176,110 @@ def test_classify_row_downgrades_sto_peer_collision_to_reference_gap() -> None:
     assert result["reason"] == "Only weak cross-exchange collision evidence exists for this listing."
 
 
+def test_classify_row_downgrades_six_name_mismatch_to_reference_gap() -> None:
+    row = {
+        "ticker": "EVE",
+        "exchange": "SIX",
+        "asset_type": "Stock",
+        "name": "Evolva Holding SA",
+        "country": "Switzerland",
+        "country_code": "CH",
+        "isin": "CH0021218067",
+        "sector": "Financial Services",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("SIX", "EVE"): [
+                {
+                    "ticker": "EVE",
+                    "exchange": "SIX",
+                    "name": "EvoNext Holdings SA",
+                    "asset_type": "Stock",
+                    "source_key": "six_equity_issuers",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges=set(),
+        partial_covered_exchanges={"SIX"},
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Only low-confidence issuer reference evidence exists for this listing."
+
+
+def test_classify_row_downgrades_six_etf_name_mismatch_to_reference_gap() -> None:
+    row = {
+        "ticker": "27IT",
+        "exchange": "SIX",
+        "asset_type": "ETF",
+        "name": "iSh iBds Dec27 Trm $ Trs Dst",
+        "country": "Switzerland",
+        "country_code": "CH",
+        "isin": "",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("SIX", "27IT"): [
+                {
+                    "ticker": "27IT",
+                    "exchange": "SIX",
+                    "name": "iShares iBonds Dec 2027 Term $ Treasury UCITS ETF USD (Dist)",
+                    "asset_type": "ETF",
+                    "source_key": "six_etf_products",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges=set(),
+        partial_covered_exchanges={"SIX"},
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Only low-confidence issuer reference evidence exists for this listing."
+
+
+def test_classify_row_downgrades_six_peer_collision_to_reference_gap() -> None:
+    row = {
+        "ticker": "ABT",
+        "exchange": "NYSE",
+        "asset_type": "Stock",
+        "name": "Abbott Laboratories",
+        "country": "United States",
+        "country_code": "US",
+        "isin": "US0028241000",
+        "sector": "Health Care",
+    }
+    result = classify_row(
+        row,
+        active_by_key={},
+        any_by_key={},
+        active_by_ticker={
+            "ABT": [
+                {
+                    "ticker": "ABT",
+                    "exchange": "SIX",
+                    "name": "Abbott Laboratories",
+                    "asset_type": "Stock",
+                    "source_key": "six_equity_issuers",
+                }
+            ]
+        },
+        covered_exchanges={"NYSE"},
+        partial_covered_exchanges={"SIX"},
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Only weak cross-exchange collision evidence exists for this listing."
+
+
 def test_classify_row_downgrades_lse_asset_type_mismatch_to_reference_gap() -> None:
     row = {
         "ticker": "PHAG",

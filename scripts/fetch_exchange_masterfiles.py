@@ -5,6 +5,7 @@ import io
 import json
 import os
 import re
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from html import unescape
@@ -38,6 +39,8 @@ TMX_LISTED_ISSUERS_CACHE = MASTERFILE_CACHE_DIR / "tmx_listed_issuers.xlsx"
 LEGACY_TMX_LISTED_ISSUERS_CACHE = MASTERFILES_DIR / "tmx_listed_issuers.xlsx"
 TPEX_MAINBOARD_QUOTES_CACHE = MASTERFILE_CACHE_DIR / "tpex_mainboard_daily_close_quotes.json"
 LEGACY_TPEX_MAINBOARD_QUOTES_CACHE = MASTERFILES_DIR / "tpex_mainboard_daily_close_quotes.json"
+NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_stockholm_shares.json"
+LEGACY_NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE = MASTERFILES_DIR / "nasdaq_nordic_stockholm_shares.json"
 
 SEC_COMPANY_TICKERS_URL = "https://www.sec.gov/files/company_tickers_exchange.json"
 NASDAQ_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt"
@@ -62,15 +65,21 @@ JPX_LISTED_ISSUES_URL = "https://www.jpx.co.jp/english/markets/statistics-equiti
 DEUTSCHE_BOERSE_LISTED_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/67858/dd766fc6588100c79294324175f95501/data/Listed-companies.xlsx"
 DEUTSCHE_BOERSE_ETPS_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls"
 DEUTSCHE_BOERSE_XETRA_ALL_TRADABLE_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv"
+SIX_EQUITY_ISSUERS_URL = "https://www.six-group.com/sheldon/equity_issuers/v1/equity_issuers.json"
+SIX_ETF_EXPLORER_URL = "https://www.six-group.com/en/market-data/etf/etf-explorer.html"
+SIX_ETP_EXPLORER_URL = "https://www.six-group.com/en/market-data/etp/etp-explorer.html"
 B3_INSTRUMENTS_EQUITIES_URL = "https://arquivos.b3.com.br/bdi/table/InstrumentsEquities"
 NASDAQ_NORDIC_API_ROOT_URL = "https://api.nasdaq.com/api/nordic/"
 NASDAQ_NORDIC_SHARES_SCREENER_URL = "https://api.nasdaq.com/api/nordic/screener/shares"
 TWSE_LISTED_COMPANIES_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
 SET_LISTED_COMPANIES_URL = "https://www.set.or.th/dat/eod/listedcompany/static/listedCompanies_en_US.xls"
 SZSE_STOCK_LIST_URL = "https://www.szse.cn/market/product/stock/list/index.html"
+SZSE_ETF_LIST_URL = "https://www.szse.cn/market/product/list/etfList/index.html"
 SZSE_REPORT_DATA_URL = "https://www.szse.cn/api/report/ShowReport/data"
 SZSE_A_SHARE_CATALOG_ID = "1110"
 SZSE_A_SHARE_TAB_KEY = "tab1"
+SZSE_ETF_CATALOG_ID = "1945"
+SZSE_ETF_TAB_KEY = "tab1"
 SSE_STOCK_LIST_URL = "https://www.sse.com.cn/assortment/stock/list/share/"
 SSE_ETF_LIST_URL = "https://www.sse.com.cn/assortment/fund/etf/list/"
 SSE_COMMON_QUERY_URL = "https://query.sse.com.cn/sseQuery/commonQuery.do"
@@ -84,6 +93,8 @@ KRX_JSON_DATA_URL = "https://data.krx.co.kr/comm/bldAttendant/getJsonData.cmd"
 USER_AGENT = "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)"
 SEC_CONTACT_EMAIL = os.environ.get("SEC_CONTACT_EMAIL", "opensource@adanos.software")
 REQUEST_TIMEOUT = 30.0
+LSE_UPDATE_OPENER_RE = re.compile(r"UpdateOpener\('(?P<name>(?:\\'|[^'])*)',\s*'(?P<meta>[^']*)'\)")
+LSE_INSTRUMENT_SEARCH_MAX_WORKERS = 8
 
 OTHER_LISTED_EXCHANGE_MAP = {
     "A": "NYSE MKT",
@@ -111,6 +122,64 @@ ETF_NAME_MARKERS = (
     " trust",
     " ucits",
     "shares ",
+)
+
+SIX_FUND_DOWNLOAD_FIELDS = (
+    "FundLongName",
+    "ValorSymbol",
+    "FundReutersTicker",
+    "FundBloombergTicker",
+    "ValorNumber",
+    "ISIN",
+    "IssuerLongNameDesc",
+    "IssuerNameFull",
+    "TradingBaseCurrency",
+    "FundCurrency",
+    "ManagementFee",
+    "ReplicationMethodDesc",
+    "ManagementStyleDesc",
+    "MarketMakers",
+    "ClosingPrice",
+    "ClosingPerformance",
+    "ClosingDelta",
+    "FundUnderlyingDescription",
+    "BidVolume",
+    "BidPrice",
+    "AskVolume",
+    "AskPrice",
+    "MidSpread",
+    "PreviousClosingPrice",
+    "MarketDate",
+    "MarketTime",
+    "OpeningPrice",
+    "DailyLowPrice",
+    "OnMarketVolume",
+    "OffBookVolume",
+    "TotalTurnover",
+    "TotalTurnoverCHF",
+    "ProductLineDesc",
+    "AssetClassDesc",
+    "UnderlyingGeographicalDesc",
+    "LegalStructureCountryDesc",
+    "UnderlyingProviderDesc",
+)
+
+_SIX_FUND_DOWNLOAD_SELECT = ",".join(SIX_FUND_DOWNLOAD_FIELDS)
+SIX_ETF_PRODUCTS_URL = (
+    "https://www.six-group.com/fqs/ref.csv"
+    f"?select={_SIX_FUND_DOWNLOAD_SELECT}"
+    "&where=ProductLine=ET*PortalSegment=FU"
+    "&orderby=FundLongName"
+    "&page=1"
+    "&pagesize=99999"
+)
+SIX_ETP_PRODUCTS_URL = (
+    "https://www.six-group.com/fqs/ref.csv"
+    f"?select={_SIX_FUND_DOWNLOAD_SELECT}"
+    "&where=ProductLine=EP*PortalSegment=EP"
+    "&orderby=FundLongName"
+    "&page=1"
+    "&pagesize=99999"
 )
 
 EURONEXT_MARKET_MAP = {
@@ -275,6 +344,30 @@ OFFICIAL_SOURCES = [
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
+        key="six_equity_issuers",
+        provider="SIX",
+        description="Official SIX Swiss Exchange equity issuers directory",
+        source_url=SIX_EQUITY_ISSUERS_URL,
+        format="six_equity_issuers_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="six_etf_products",
+        provider="SIX",
+        description="Official SIX Swiss Exchange ETF explorer export",
+        source_url=SIX_ETF_PRODUCTS_URL,
+        format="six_fund_products_csv",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="six_etp_products",
+        provider="SIX",
+        description="Official SIX Swiss Exchange ETP explorer export",
+        source_url=SIX_ETP_PRODUCTS_URL,
+        format="six_fund_products_csv",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
         key="b3_instruments_equities",
         provider="B3",
         description="Official B3 instruments consolidated cash-equities table",
@@ -318,6 +411,14 @@ OFFICIAL_SOURCES = [
         description="Official SZSE A-share list",
         source_url=SZSE_STOCK_LIST_URL,
         format="szse_a_share_list_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="szse_etf_list",
+        provider="SZSE",
+        description="Official SZSE ETF list",
+        source_url=SZSE_ETF_LIST_URL,
+        format="szse_etf_list_json",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -551,6 +652,27 @@ def load_tpex_mainboard_quotes_payload(
     return payload, "network"
 
 
+def load_nasdaq_nordic_stockholm_shares_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (
+        NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE,
+        LEGACY_NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE,
+    ):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+
+    try:
+        rows = fetch_nasdaq_nordic_stockholm_shares(source, session=session)
+    except requests.RequestException:
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
 def load_lse_company_reports_rows(
     source: MasterfileSource,
     session: requests.Session | None = None,
@@ -652,6 +774,37 @@ def group_rows_by_ticker(rows: list[dict[str, str]]) -> dict[str, list[dict[str,
     return grouped
 
 
+def infer_lse_lookup_asset_type(instrument_code: str, name: str, fallback_asset_type: str = "") -> str:
+    normalized = instrument_code.strip().upper()
+    if normalized.startswith(("ETF", "ETC", "ETN", "ETP", "ETS", "ECE", "EUE")):
+        return "ETF"
+    if normalized.startswith(("EQS", "SS", "ST")):
+        return "Stock"
+    if fallback_asset_type:
+        return fallback_asset_type
+    return infer_asset_type(name)
+
+
+def extract_lse_instrument_search_metadata(text: str) -> dict[str, dict[str, str]]:
+    metadata_by_ticker: dict[str, dict[str, str]] = {}
+    for match in LSE_UPDATE_OPENER_RE.finditer(text):
+        meta = " ".join(match.group("meta").split())
+        parts = [part.strip() for part in meta.split("|")]
+        if len(parts) < 6:
+            continue
+        isin, country_code, currency, instrument_code, figi, ticker = parts[:6]
+        if not ticker:
+            continue
+        metadata_by_ticker[ticker] = {
+            "isin": isin,
+            "country_code": country_code,
+            "currency": currency,
+            "instrument_code": instrument_code,
+            "figi": figi,
+        }
+    return metadata_by_ticker
+
+
 def lse_instrument_search_target_tickers(
     company_report_rows: list[dict[str, str]],
     *,
@@ -659,18 +812,12 @@ def lse_instrument_search_target_tickers(
     reference_gap_tickers: set[str] | None = None,
 ) -> list[str]:
     listings_path = listings_path or LISTINGS_CSV
-    company_report_tickers = {
-        row.get("ticker", "").strip()
-        for row in company_report_rows
-        if row.get("exchange") == "LSE"
-    }
     target_tickers = {
         row.get("ticker", "").strip()
         for row in load_csv(listings_path)
         if row.get("exchange") == "LSE"
         and row.get("asset_type") in {"Stock", "ETF"}
         and row.get("ticker", "").strip()
-        and row.get("ticker", "").strip() not in company_report_tickers
     }
     reference_gap_tickers = reference_gap_tickers if reference_gap_tickers is not None else lse_reference_gap_tickers()
     if reference_gap_tickers:
@@ -699,6 +846,7 @@ def fetch_lse_instrument_search_exact(
             continue
         lookup_url = source.source_url.format(ticker=requests.utils.quote(query_ticker, safe=""))
         text = fetch_text(lookup_url, session=session)
+        metadata_by_ticker = extract_lse_instrument_search_metadata(text)
         seen_signatures: set[tuple[str, str]] = set()
         for row in parse_lse_company_reports_html(text, source):
             if row.get("ticker") != query_ticker:
@@ -708,7 +856,15 @@ def fetch_lse_instrument_search_exact(
                 continue
             seen_signatures.add(signature)
             row["source_url"] = lookup_url
-            row["asset_type"] = asset_type_by_ticker.get(query_ticker, row.get("asset_type", ""))
+            metadata = metadata_by_ticker.get(query_ticker)
+            if metadata:
+                row["asset_type"] = infer_lse_lookup_asset_type(
+                    metadata.get("instrument_code", ""),
+                    row.get("name", ""),
+                    asset_type_by_ticker.get(query_ticker, ""),
+                )
+            elif not row.get("asset_type"):
+                row["asset_type"] = asset_type_by_ticker.get(query_ticker, "")
             rows.append(row)
     return rows
 
@@ -746,17 +902,38 @@ def load_lse_instrument_search_rows(
     if missing_tickers:
         fetched_lookup = {ticker: [] for ticker in missing_tickers}
         successful_fetch = False
-        for ticker in missing_tickers:
-            try:
-                fetched_lookup[ticker] = fetch_lse_instrument_search_exact(
-                    source,
-                    [ticker],
-                    session=session,
-                    asset_type_by_ticker=asset_type_by_ticker,
-                )
-            except requests.RequestException:
-                continue
-            successful_fetch = True
+        max_workers = min(LSE_INSTRUMENT_SEARCH_MAX_WORKERS, len(missing_tickers))
+        if max_workers <= 1:
+            for ticker in missing_tickers:
+                try:
+                    fetched_lookup[ticker] = fetch_lse_instrument_search_exact(
+                        source,
+                        [ticker],
+                        session=session,
+                        asset_type_by_ticker=asset_type_by_ticker,
+                    )
+                except requests.RequestException:
+                    continue
+                successful_fetch = True
+        else:
+            with ThreadPoolExecutor(max_workers=max_workers) as executor:
+                futures = {
+                    executor.submit(
+                        fetch_lse_instrument_search_exact,
+                        source,
+                        [ticker],
+                        None,
+                        asset_type_by_ticker,
+                    ): ticker
+                    for ticker in missing_tickers
+                }
+                for future in as_completed(futures):
+                    ticker = futures[future]
+                    try:
+                        fetched_lookup[ticker] = future.result()
+                    except requests.RequestException:
+                        continue
+                    successful_fetch = True
         if not cached_lookup and not successful_fetch:
             return None, "unavailable"
         cached_lookup.update(fetched_lookup)
@@ -1426,21 +1603,23 @@ def strip_html_tags(value: str) -> str:
     return re.sub(r"<[^>]+>", "", value).strip()
 
 
-def parse_szse_a_share_list(payload: dict[str, Any] | list[dict[str, Any]], source: MasterfileSource) -> list[dict[str, str]]:
-    rows: list[dict[str, str]] = []
-    sections: list[dict[str, Any]] = []
+def extract_szse_report_sections(payload: dict[str, Any] | list[dict[str, Any]]) -> list[dict[str, Any]]:
     if isinstance(payload, list):
-        sections = [section for section in payload if isinstance(section, dict)]
-    elif isinstance(payload, dict):
-        sections = [
+        return [section for section in payload if isinstance(section, dict)]
+    if isinstance(payload, dict):
+        return [
             report
             for nested in payload.values()
             if isinstance(nested, list)
             for report in nested
             if isinstance(report, dict)
         ]
+    return []
 
-    for report in sections:
+
+def parse_szse_a_share_list(payload: dict[str, Any] | list[dict[str, Any]], source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for report in extract_szse_report_sections(payload):
         for record in report.get("data", []) or []:
             ticker = str(record.get("agdm", "")).strip()
             name = strip_html_tags(str(record.get("agjc", "")).strip())
@@ -1460,6 +1639,63 @@ def parse_szse_a_share_list(payload: dict[str, Any] | list[dict[str, Any]], sour
                     "official": "true",
                 }
             )
+    return rows
+
+
+def parse_szse_etf_list(payload: dict[str, Any] | list[dict[str, Any]], source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for report in extract_szse_report_sections(payload):
+        for record in report.get("data", []) or []:
+            ticker = strip_html_tags(str(record.get("sys_key", "")).strip())
+            name = strip_html_tags(str(record.get("kzjcurl", "")).strip())
+            if not ticker or not name:
+                continue
+            rows.append(
+                {
+                    "source_key": source.key,
+                    "provider": source.provider,
+                    "source_url": source.source_url,
+                    "ticker": ticker,
+                    "name": name,
+                    "exchange": "SZSE",
+                    "asset_type": "ETF",
+                    "listing_status": "active",
+                    "reference_scope": source.reference_scope,
+                    "official": "true",
+                }
+            )
+    return rows
+
+
+def parse_szse_etf_workbook(content: bytes, source: MasterfileSource) -> list[dict[str, str]]:
+    dataframe = pd.read_excel(io.BytesIO(content), sheet_name=0)
+    rows: list[dict[str, str]] = []
+    for record in dataframe.to_dict(orient="records"):
+        ticker_value = record.get("证券代码")
+        name_value = record.get("证券简称")
+        if pd.isna(ticker_value) or pd.isna(name_value):
+            continue
+        ticker = str(ticker_value).strip()
+        if ticker.endswith(".0"):
+            ticker = ticker[:-2]
+        ticker = ticker.zfill(6)
+        name = str(name_value).strip()
+        if not ticker or not name:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "SZSE",
+                "asset_type": "ETF",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
     return rows
 
 
@@ -1558,18 +1794,66 @@ def fetch_szse_a_share_list(source: MasterfileSource, session: requests.Session 
         if not page_rows:
             break
         rows.extend(page_rows)
-        if isinstance(payload, list):
-            sections = [section for section in payload if isinstance(section, dict)]
-        elif isinstance(payload, dict):
-            sections = [
-                report
-                for nested in payload.values()
-                if isinstance(nested, list)
-                for report in nested
-                if isinstance(report, dict)
-            ]
-        else:
-            sections = []
+        sections = extract_szse_report_sections(payload)
+        metadata = sections[0].get("metadata", {}) if sections else {}
+        total_pages = int(metadata.get("pagecount") or total_pages)
+        page += 1
+    return rows
+
+
+def fetch_szse_etf_list(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Referer": source.source_url,
+        "Connection": "close",
+    }
+    session.get(source.source_url, headers={"User-Agent": USER_AGENT, "Connection": "close"}, timeout=REQUEST_TIMEOUT)
+
+    workbook_params = {
+        "SHOWTYPE": "xlsx",
+        "CATALOGID": SZSE_ETF_CATALOG_ID,
+        "TABKEY": SZSE_ETF_TAB_KEY,
+        "PAGENO": 1,
+        "random": "0.001",
+    }
+    try:
+        response = session.get(
+            "https://www.szse.cn/api/report/ShowReport",
+            params=workbook_params,
+            headers=headers,
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        workbook_rows = parse_szse_etf_workbook(response.content, source)
+        if workbook_rows:
+            return workbook_rows
+    except (requests.RequestException, ValueError):
+        pass
+
+    rows: list[dict[str, str]] = []
+    page = 1
+    total_pages = 1
+    while page <= total_pages:
+        params = {
+            "SHOWTYPE": "JSON",
+            "CATALOGID": SZSE_ETF_CATALOG_ID,
+            "TABKEY": SZSE_ETF_TAB_KEY,
+            "PAGENO": page,
+        }
+        response = session.get(
+            SZSE_REPORT_DATA_URL,
+            params=params,
+            headers=headers,
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        payload = response.json()
+        page_rows = parse_szse_etf_list(payload, source)
+        if not page_rows:
+            break
+        rows.extend(page_rows)
+        sections = extract_szse_report_sections(payload)
         metadata = sections[0].get("metadata", {}) if sections else {}
         total_pages = int(metadata.get("pagecount") or total_pages)
         page += 1
@@ -1654,6 +1938,59 @@ def parse_nasdaq_nordic_stockholm_shares(payload: dict[str, Any], source: Master
                 "name": name,
                 "exchange": "STO",
                 "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
+def parse_six_equity_issuers(payload: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for record in payload.get("itemList") or []:
+        ticker = str(record.get("valorSymbol", "")).strip()
+        name = str(record.get("company", "")).strip()
+        if not ticker or not name:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "SIX",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
+def parse_six_fund_products_csv(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    lines = [line for line in text.splitlines() if line.strip()]
+    if not lines:
+        return []
+
+    reader = csv.DictReader(io.StringIO("\n".join(lines)), delimiter=";")
+    rows: list[dict[str, str]] = []
+    for record in reader:
+        ticker = str(record.get("ValorSymbol", "")).strip()
+        name = str(record.get("FundLongName", "")).strip()
+        if not ticker or not name:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "SIX",
+                "asset_type": "ETF",
                 "listing_status": "active",
                 "reference_scope": source.reference_scope,
                 "official": "true",
@@ -1752,11 +2089,9 @@ def fetch_b3_instruments_equities(source: MasterfileSource, session: requests.Se
     workday_response.raise_for_status()
     workday = str(workday_response.json())[:10]
 
-    rows: list[dict[str, str]] = []
-    page = 1
     take = 1000
-    page_count = 1
-    while page <= page_count:
+
+    def fetch_page(page: int) -> dict[str, Any]:
         response = session.post(
             f"{source.source_url}/{workday}/{workday}/{page}/{take}",
             headers=headers,
@@ -1765,10 +2100,29 @@ def fetch_b3_instruments_equities(source: MasterfileSource, session: requests.Se
         )
         response.raise_for_status()
         payload = response.json()
-        table = payload.get("table") or {}
-        rows.extend(parse_b3_instruments_equities_table(table, source))
-        page_count = int(table.get("pageCount") or 0) or page_count
-        page += 1
+        return payload.get("table") or {}
+
+    first_table = fetch_page(1)
+    page_count = int(first_table.get("pageCount") or 0) or 1
+
+    rows: list[dict[str, str]] = []
+    if page_count <= 5:
+        rows.extend(parse_b3_instruments_equities_table(first_table, source))
+        for page in range(2, page_count + 1):
+            rows.extend(parse_b3_instruments_equities_table(fetch_page(page), source))
+        return rows
+
+    cash_rows_seen = False
+    # The B3 consolidated table places cash equities in the last pages.
+    for page in range(page_count, 0, -1):
+        table = first_table if page == 1 else fetch_page(page)
+        page_rows = parse_b3_instruments_equities_table(table, source)
+        if page_rows:
+            cash_rows_seen = True
+            rows.extend(page_rows)
+            continue
+        if cash_rows_seen:
+            break
     return rows
 
 
@@ -1790,6 +2144,43 @@ def fetch_nasdaq_nordic_stockholm_shares(
     )
     response.raise_for_status()
     return parse_nasdaq_nordic_stockholm_shares(response.json(), source)
+
+
+def fetch_six_equity_issuers(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    response = session.get(
+        source.source_url,
+        headers={
+            "User-Agent": USER_AGENT,
+            "Accept": "application/json,text/plain,*/*",
+            "Referer": "https://www.six-group.com/en/market-data/shares/companies.html",
+        },
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    return parse_six_equity_issuers(response.json(), source)
+
+
+def fetch_six_fund_products(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    referer = SIX_ETP_EXPLORER_URL if "etp" in source.key else SIX_ETF_EXPLORER_URL
+    response = session.get(
+        source.source_url,
+        headers={
+            "User-Agent": USER_AGENT,
+            "Accept": "text/csv,application/octet-stream,*/*",
+            "Referer": referer,
+        },
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    return parse_six_fund_products_csv(response.text, source)
 
 
 def fetch_lse_company_reports(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
@@ -1934,6 +2325,10 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "deutsche_boerse_xetra_all_tradable_csv":
         text = fetch_text(source.source_url, session=session)
         return parse_deutsche_boerse_xetra_all_tradable_csv(text, source)
+    if source.format == "six_equity_issuers_json":
+        return fetch_six_equity_issuers(source, session=session)
+    if source.format == "six_fund_products_csv":
+        return fetch_six_fund_products(source, session=session)
     if source.format == "b3_instruments_equities_api":
         return fetch_b3_instruments_equities(source, session=session)
     if source.format == "nasdaq_nordic_stockholm_shares_json":
@@ -1947,6 +2342,8 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return fetch_sse_etf_list(source, session=session)
     if source.format == "szse_a_share_list_json":
         return fetch_szse_a_share_list(source, session=session)
+    if source.format == "szse_etf_list_json":
+        return fetch_szse_etf_list(source, session=session)
     if source.format == "tpex_mainboard_quotes_json":
         payload = fetch_json(source.source_url, session=session)
         return parse_tpex_mainboard_quotes(payload, source)
@@ -1989,6 +2386,11 @@ def fetch_source_rows_with_mode(
         if payload is None:
             raise requests.RequestException("TPEX mainboard quotes unavailable")
         return parse_tpex_mainboard_quotes(payload, source), mode
+    if source.format == "nasdaq_nordic_stockholm_shares_json":
+        rows, mode = load_nasdaq_nordic_stockholm_shares_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("Nasdaq Nordic Stockholm shares unavailable")
+        return rows, mode
     if source.format == "tmx_listed_issuers_excel":
         content, mode = load_tmx_listed_issuers_content(session=session)
         if content is None:

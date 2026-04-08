@@ -1,7 +1,21 @@
 ticker,exchange,field,decision,proposed_value,confidence,reason
+ADAS,SIX,asset_type,update,ETF,0.99,Official SIX ETP products reference classifies this listing as an ETP rather than common stock.
+ADAS,SIX,name,update,CoinShares Cardano Staking ETP,0.97,Official SIX ETP products reference provides the specific product name.
 BOLU,LSE,name,update,21SHARES AG 21SHARES BITCOIN GOLD ETP,0.99,Official LSE exact instrument search resolves BOLU to the full 21Shares Bitcoin Gold ETP product name while the dataset currently contains only a ticker placeholder.
+CSEI,SIX,asset_type,update,ETF,0.99,Official SIX ETP products reference classifies this listing as an ETP rather than common stock.
+CSEI,SIX,name,update,CoinShares Sei Staking ETP,0.97,Official SIX ETP products reference provides the specific product name.
+DBMG,LSE,asset_type,update,ETF,0.99,Official LSE exact instrument search resolves this listing to a UCITS ETF rather than common stock.
+DBMG,LSE,name,update,IMGP IMGP DBI MNGD FUTURES FD R USD UCITS ETF,0.97,Official LSE exact instrument search provides the specific ETF product name.
+JCLU,LSE,asset_type,update,ETF,0.99,Official LSE exact instrument search resolves this listing to an ETF rather than common stock.
+JCLU,LSE,name,update,JANUS HENDERSON TABULA FUND JH EUR AAA CLO ACTIVE ETF USDHA,0.97,Official LSE exact instrument search provides the specific ETF product name.
 0AD5,LSE,country,update,United States,0.95,Yahoo Finance verifies 0AD5.L as Gen Digital Inc. with United States issuer domicile.
 0AD5,LSE,country_code,update,US,0.95,Must match corrected issuer domicile.
+0LY1,LSE,asset_type,update,Stock,0.99,Official LSE exact instrument search resolves this listing to WisdomTree Investments Inc. common stock rather than an ETF.
+0LY1,LSE,name,update,WISDOMTREE INVESTMENTS INC WISDOMTREE INVESTMENTS ORD SHS,0.96,Official LSE exact instrument search provides the stock listing name.
+MIG5,LSE,asset_type,update,Stock,0.99,Official LSE exact instrument search resolves this listing to Maven Income & Growth VCT 5 PLC ordinary shares rather than an ETF.
+MIG5,LSE,name,update,MAVEN INCOME & GROWTH VCT 5 PLC ORD 10P,0.96,Official LSE exact instrument search provides the stock listing name.
+NFM,LSE,asset_type,update,Stock,0.99,Official LSE exact instrument search resolves this listing to New Frontier Minerals Limited ordinary shares rather than an ETF.
+NFM,LSE,name,update,NEW FRONTIER MINERALS LIMITED ORD NPV (DI),0.96,Official LSE exact instrument search provides the stock listing name.
 0HEC,LSE,country,update,United States,0.8,"AEP is a US-domiciled company. Other LSE international listings in this dataset (e.g. 0HV2, 0QXR) correctly show the issuer's home country. 'United Kingdom' is wrong here."
 0HEC,LSE,country_code,update,US,0.8,"Should reflect issuer domicile (US), consistent with ISIN US0255371017."
 6781,TWSE,name,update,"AES Holding Co., Ltd.",0.95,Official TWSE listed companies feed uses AES Holding Co. Ltd. as the current issuer name for 6781.
