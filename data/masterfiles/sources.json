@@ -135,6 +135,15 @@
     "official": true
   },
   {
+    "key": "nasdaq_nordic_stockholm_shares",
+    "provider": "Nasdaq Nordic",
+    "description": "Official Nasdaq Nordic Stockholm Main Market shares screener",
+    "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+    "format": "nasdaq_nordic_stockholm_shares_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "twse_listed_companies",
     "provider": "TWSE",
     "description": "Official TWSE listed companies open data feed",

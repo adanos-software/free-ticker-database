@@ -26,6 +26,7 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_lse_company_reports,
     fetch_lse_instrument_directory,
     fetch_lse_instrument_search_exact,
+    fetch_nasdaq_nordic_stockholm_shares,
     fetch_sse_a_share_list,
     fetch_sse_etf_list,
     fetch_szse_a_share_list,
@@ -47,6 +48,7 @@ from scripts.fetch_exchange_masterfiles import (
     parse_krx_etf_finder,
     parse_krx_listed_companies,
     parse_lse_company_reports_html,
+    parse_nasdaq_nordic_stockholm_shares,
     parse_nasdaq_listed,
     parse_other_listed,
     parse_set_listed_companies_html,
@@ -1840,6 +1842,108 @@ def test_fetch_b3_instruments_equities_uses_workday_and_paginates(monkeypatch):
             "official": "true",
         },
     ]
+
+
+def test_parse_nasdaq_nordic_stockholm_shares_maps_rows() -> None:
+    payload = {
+        "data": {
+            "instrumentListing": {
+                "rows": [
+                    {"symbol": "AAK", "fullName": "AAK", "assetClass": "SHARES"},
+                    {"symbol": "ABB", "fullName": "ABB Ltd", "assetClass": "SHARES"},
+                    {"symbol": "", "fullName": "Ignored"},
+                ]
+            }
+        }
+    }
+
+    rows = parse_nasdaq_nordic_stockholm_shares(payload, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "AAK",
+            "name": "AAK",
+            "exchange": "STO",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "ABB",
+            "name": "ABB Ltd",
+            "exchange": "STO",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_fetch_nasdaq_nordic_stockholm_shares_filters_to_sto() -> None:
+    source = MasterfileSource(
+        key="nasdaq_nordic_stockholm_shares",
+        provider="Nasdaq Nordic",
+        description="Official Stockholm shares screener",
+        source_url="https://api.nasdaq.com/api/nordic/screener/shares",
+        format="nasdaq_nordic_stockholm_shares_json",
+        reference_scope="listed_companies_subset",
+    )
+
+    class FakeResponse:
+        def __init__(self, payload, status_code=200):
+            self._payload = payload
+            self.status_code = status_code
+
+        def raise_for_status(self):
+            if self.status_code >= 400:
+                raise requests.HTTPError(f"status={self.status_code}")
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            self.calls.append((url, params))
+            assert params == {"category": "MAIN_MARKET", "tableonly": "false", "market": "STO"}
+            return FakeResponse(
+                {
+                    "data": {
+                        "instrumentListing": {
+                            "rows": [
+                                {"symbol": "AAK", "fullName": "AAK"},
+                                {"symbol": "ABB", "fullName": "ABB Ltd"},
+                            ]
+                        }
+                    }
+                }
+            )
+
+    session = FakeSession()
+    rows = fetch_nasdaq_nordic_stockholm_shares(source, session=session)
+
+    assert [row["ticker"] for row in rows] == ["AAK", "ABB"]
+    assert session.calls == [
+        (
+            "https://api.nasdaq.com/api/nordic/screener/shares",
+            {"category": "MAIN_MARKET", "tableonly": "false", "market": "STO"},
+        ),
+    ]
+
+
+def test_sto_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "nasdaq_nordic_stockholm_shares")
+    assert source.reference_scope == "listed_companies_subset"
 
 
 def test_fetch_all_sources_collects_source_errors(monkeypatch):

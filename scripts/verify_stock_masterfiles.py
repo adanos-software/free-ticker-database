@@ -58,12 +58,14 @@ LOW_CONFIDENCE_COLLISION_PEER_EXCHANGES = {
     "LSE",
     "OSL",
     "OTC",
+    "STO",
     "TSE",
     "XETRA",
 }
 LOW_CONFIDENCE_COLLISION_SOURCE_KEYS = {
     "krx_listed_companies",
     "lse_company_reports",
+    "nasdaq_nordic_stockholm_shares",
     "sec_company_tickers_exchange",
     "tmx_interlisted_companies",
 }
@@ -76,6 +78,7 @@ LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE = {
     "NYSE": {"sec_company_tickers_exchange", "nasdaq_other_listed"},
     "NYSE MKT": {"sec_company_tickers_exchange", "nasdaq_other_listed"},
     "OTC": {"sec_company_tickers_exchange"},
+    "STO": {"nasdaq_nordic_stockholm_shares"},
     "TPEX": {"tpex_mainboard_daily_quotes"},
     "TSX": {"tmx_interlisted_companies", "tmx_listed_issuers"},
     "TSXV": {"tmx_interlisted_companies", "tmx_listed_issuers"},

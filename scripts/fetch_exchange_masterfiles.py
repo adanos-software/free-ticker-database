@@ -63,6 +63,8 @@ DEUTSCHE_BOERSE_LISTED_URL = "https://www.cashmarket.deutsche-boerse.com/resourc
 DEUTSCHE_BOERSE_ETPS_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls"
 DEUTSCHE_BOERSE_XETRA_ALL_TRADABLE_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv"
 B3_INSTRUMENTS_EQUITIES_URL = "https://arquivos.b3.com.br/bdi/table/InstrumentsEquities"
+NASDAQ_NORDIC_API_ROOT_URL = "https://api.nasdaq.com/api/nordic/"
+NASDAQ_NORDIC_SHARES_SCREENER_URL = "https://api.nasdaq.com/api/nordic/screener/shares"
 TWSE_LISTED_COMPANIES_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
 SET_LISTED_COMPANIES_URL = "https://www.set.or.th/dat/eod/listedcompany/static/listedCompanies_en_US.xls"
 SZSE_STOCK_LIST_URL = "https://www.szse.cn/market/product/stock/list/index.html"
@@ -280,6 +282,14 @@ OFFICIAL_SOURCES = [
         format="b3_instruments_equities_api",
     ),
     MasterfileSource(
+        key="nasdaq_nordic_stockholm_shares",
+        provider="Nasdaq Nordic",
+        description="Official Nasdaq Nordic Stockholm Main Market shares screener",
+        source_url=NASDAQ_NORDIC_SHARES_SCREENER_URL,
+        format="nasdaq_nordic_stockholm_shares_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
         key="twse_listed_companies",
         provider="TWSE",
         description="Official TWSE listed companies open data feed",
@@ -494,6 +504,16 @@ def krx_request_headers() -> dict[str, str]:
         "Accept-Encoding": "gzip, deflate",
         "Referer": KRX_LISTED_COMPANIES_URL,
         "Origin": "https://global.krx.co.kr",
+    }
+
+
+def nasdaq_nordic_request_headers() -> dict[str, str]:
+    return {
+        "User-Agent": "Mozilla/5.0",
+        "Accept": "application/json,text/plain,*/*",
+        "Accept-Encoding": "gzip, deflate",
+        "Referer": "https://www.nasdaqomxnordic.com/shares/listed-companies/stockholm",
+        "Origin": "https://www.nasdaqomxnordic.com",
     }
 
 
@@ -1618,6 +1638,30 @@ def parse_b3_instruments_equities_table(table: dict[str, Any], source: Masterfil
     return rows
 
 
+def parse_nasdaq_nordic_stockholm_shares(payload: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for record in ((payload.get("data") or {}).get("instrumentListing") or {}).get("rows") or []:
+        ticker = str(record.get("symbol", "")).strip()
+        name = str(record.get("fullName", "")).strip()
+        if not ticker or not name:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "STO",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
 def fetch_sse_a_share_list(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
     session = session or requests.Session()
     headers = {
@@ -1726,6 +1770,26 @@ def fetch_b3_instruments_equities(source: MasterfileSource, session: requests.Se
         page_count = int(table.get("pageCount") or 0) or page_count
         page += 1
     return rows
+
+
+def fetch_nasdaq_nordic_stockholm_shares(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    headers = nasdaq_nordic_request_headers()
+    response = session.get(
+        source.source_url,
+        params={
+            "category": "MAIN_MARKET",
+            "tableonly": "false",
+            "market": "STO",
+        },
+        headers=headers,
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    return parse_nasdaq_nordic_stockholm_shares(response.json(), source)
 
 
 def fetch_lse_company_reports(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
@@ -1872,6 +1936,8 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return parse_deutsche_boerse_xetra_all_tradable_csv(text, source)
     if source.format == "b3_instruments_equities_api":
         return fetch_b3_instruments_equities(source, session=session)
+    if source.format == "nasdaq_nordic_stockholm_shares_json":
+        return fetch_nasdaq_nordic_stockholm_shares(source, session=session)
     if source.format == "twse_listed_companies_json":
         payload = fetch_json(source.source_url, session=session)
         return parse_twse_listed_companies(payload, source)

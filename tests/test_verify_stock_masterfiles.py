@@ -1107,6 +1107,75 @@ def test_classify_row_downgrades_lse_directory_name_mismatch_to_reference_gap() 
     assert result["reason"] == "Only low-confidence issuer reference evidence exists for this listing."
 
 
+def test_classify_row_downgrades_sto_name_mismatch_to_reference_gap() -> None:
+    row = {
+        "ticker": "TIETOS",
+        "exchange": "STO",
+        "asset_type": "Stock",
+        "name": "TietoEVRY Corp",
+        "country": "Finland",
+        "country_code": "FI",
+        "isin": "FI0009000277",
+        "sector": "Information Technology",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("STO", "TIETOS"): [
+                {
+                    "ticker": "TIETOS",
+                    "exchange": "STO",
+                    "name": "Tieto Oyj",
+                    "asset_type": "Stock",
+                    "source_key": "nasdaq_nordic_stockholm_shares",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges=set(),
+        partial_covered_exchanges={"STO"},
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Only low-confidence issuer reference evidence exists for this listing."
+
+
+def test_classify_row_downgrades_sto_peer_collision_to_reference_gap() -> None:
+    row = {
+        "ticker": "NOTE",
+        "exchange": "NYSE",
+        "asset_type": "Stock",
+        "name": "FiscalNote Holdings Inc.",
+        "country": "United States",
+        "country_code": "US",
+        "isin": "",
+        "sector": "Information Technology",
+    }
+    result = classify_row(
+        row,
+        active_by_key={},
+        any_by_key={},
+        active_by_ticker={
+            "NOTE": [
+                {
+                    "ticker": "NOTE",
+                    "exchange": "STO",
+                    "name": "NOTE AB",
+                    "asset_type": "Stock",
+                    "source_key": "nasdaq_nordic_stockholm_shares",
+                }
+            ]
+        },
+        covered_exchanges={"NYSE"},
+        partial_covered_exchanges={"STO"},
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Only weak cross-exchange collision evidence exists for this listing."
+
+
 def test_classify_row_downgrades_lse_asset_type_mismatch_to_reference_gap() -> None:
     row = {
         "ticker": "PHAG",
