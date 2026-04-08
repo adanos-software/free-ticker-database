@@ -39,6 +39,8 @@ LSE_INSTRUMENT_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "lse_instrument_search.json
 LEGACY_LSE_INSTRUMENT_SEARCH_CACHE = MASTERFILES_DIR / "lse_instrument_search.json"
 TMX_LISTED_ISSUERS_CACHE = MASTERFILE_CACHE_DIR / "tmx_listed_issuers.xlsx"
 LEGACY_TMX_LISTED_ISSUERS_CACHE = MASTERFILES_DIR / "tmx_listed_issuers.xlsx"
+TMX_ETF_SCREENER_CACHE = MASTERFILE_CACHE_DIR / "tmx_etf_screener.json"
+LEGACY_TMX_ETF_SCREENER_CACHE = MASTERFILES_DIR / "tmx_etf_screener.json"
 TPEX_MAINBOARD_QUOTES_CACHE = MASTERFILE_CACHE_DIR / "tpex_mainboard_daily_close_quotes.json"
 LEGACY_TPEX_MAINBOARD_QUOTES_CACHE = MASTERFILES_DIR / "tpex_mainboard_daily_close_quotes.json"
 NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_stockholm_shares.json"
@@ -65,6 +67,7 @@ ASX_LISTED_URL = "https://www.asx.com.au/asx/research/ASXListedCompanies.csv"
 ASX_FUNDS_STATISTICS_URL = "https://www.asx.com.au/issuers/investment-products/asx-funds-statistics"
 TMX_INTERLISTED_URL = "https://www.tsx.com/files/trading/interlisted-companies.txt"
 TMX_LISTED_ISSUERS_ARCHIVE_URL = "https://www.tsx.com/en/listings/current-market-statistics/mig-archives"
+TMX_ETF_SCREENER_URL = "https://dgr53wu9i7rmp.cloudfront.net/etfs/etfs.json"
 EURONEXT_EQUITIES_DOWNLOAD_URL = "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock"
 EURONEXT_ETFS_DOWNLOAD_URL = (
     "https://live.euronext.com/en/product_directory/data/etf-all-markets/download"
@@ -372,6 +375,14 @@ OFFICIAL_SOURCES = [
         description="Official TMX TSX/TSXV listed issuers workbook",
         source_url=TMX_LISTED_ISSUERS_ARCHIVE_URL,
         format="tmx_listed_issuers_excel",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="tmx_etf_screener",
+        provider="TMX",
+        description="Official TMX Money ETF screener dataset",
+        source_url=TMX_ETF_SCREENER_URL,
+        format="tmx_etf_screener_json",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -790,6 +801,23 @@ def load_tpex_mainboard_quotes_payload(
     return payload, "network"
 
 
+def load_tmx_etf_screener_payload(
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, Any]] | None, str]:
+    for path in (TMX_ETF_SCREENER_CACHE, LEGACY_TMX_ETF_SCREENER_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+
+    try:
+        payload = fetch_json(TMX_ETF_SCREENER_URL, session=session)
+    except requests.RequestException:
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    TMX_ETF_SCREENER_CACHE.write_text(json.dumps(payload), encoding="utf-8")
+    return payload, "network"
+
+
 def load_nasdaq_nordic_stockholm_shares_rows(
     source: MasterfileSource,
     session: requests.Session | None = None,
@@ -1013,6 +1041,7 @@ def fetch_lse_instrument_search_exact(
             row["source_url"] = lookup_url
             metadata = metadata_by_ticker.get(query_ticker)
             if metadata:
+                row["isin"] = metadata.get("isin", "")
                 row["asset_type"] = infer_lse_lookup_asset_type(
                     metadata.get("instrument_code", ""),
                     row.get("name", ""),
@@ -1052,7 +1081,12 @@ def load_lse_instrument_search_rows(
             cached_lookup = group_rows_by_ticker(payload)
         break
 
-    missing_tickers = [ticker for ticker in target_tickers if ticker not in cached_lookup]
+    missing_tickers = [
+        ticker
+        for ticker in target_tickers
+        if ticker not in cached_lookup
+        or not any(row.get("isin", "").strip() for row in cached_lookup.get(ticker, []))
+    ]
     used_network = False
     if missing_tickers:
         fetched_lookup = {ticker: [] for ticker in missing_tickers}
@@ -1671,6 +1705,30 @@ def parse_tmx_listed_issuers_excel(content: bytes, source: MasterfileSource) -> 
                     "official": "true",
                 }
             )
+    return rows
+
+
+def parse_tmx_etf_screener(payload: list[dict[str, Any]], source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for record in payload:
+        ticker = str(record.get("symbol", "")).strip()
+        name = str(record.get("longname") or record.get("shortname") or "").strip()
+        if not ticker or not name:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "TSX",
+                "asset_type": "ETF",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
     return rows
 
 
@@ -2924,6 +2982,9 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "tmx_interlisted_tab":
         text = fetch_text(source.source_url, session=session)
         return parse_tmx_interlisted(text, source)
+    if source.format == "tmx_etf_screener_json":
+        payload = fetch_json(source.source_url, session=session)
+        return parse_tmx_etf_screener(payload, source)
     if source.format == "euronext_equities_semicolon_csv":
         text = fetch_text(source.source_url, session=session)
         return parse_euronext_equities_download(text, source)
@@ -3029,6 +3090,11 @@ def fetch_source_rows_with_mode(
         if content is None:
             raise requests.RequestException("TMX listed issuers workbook unavailable")
         return parse_tmx_listed_issuers_excel(content, source), mode
+    if source.format == "tmx_etf_screener_json":
+        payload, mode = load_tmx_etf_screener_payload(session=session)
+        if payload is None:
+            raise requests.RequestException("TMX ETF screener dataset unavailable")
+        return parse_tmx_etf_screener(payload, source), mode
     return fetch_source_rows(source, session=session), "network"
 
 
@@ -3121,7 +3187,7 @@ def main() -> None:
     persist_source_metadata()
     write_csv(
         MASTERFILE_REFERENCE_CSV,
-        ["source_key", "provider", "source_url", "ticker", "name", "exchange", "asset_type", "listing_status", "reference_scope", "official"],
+        ["source_key", "provider", "source_url", "ticker", "name", "exchange", "asset_type", "listing_status", "reference_scope", "official", "isin"],
         rows,
     )
     MASTERFILE_SUMMARY_JSON.write_text(json.dumps(summary, indent=2), encoding="utf-8")

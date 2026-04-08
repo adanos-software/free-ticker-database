@@ -81,6 +81,15 @@
     "official": true
   },
   {
+    "key": "tmx_etf_screener",
+    "provider": "TMX",
+    "description": "Official TMX Money ETF screener dataset",
+    "source_url": "https://dgr53wu9i7rmp.cloudfront.net/etfs/etfs.json",
+    "format": "tmx_etf_screener_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "tmx_interlisted_companies",
     "provider": "TMX",
     "description": "Official TSX/TSXV interlisted companies reference",

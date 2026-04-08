@@ -16,6 +16,7 @@ from scripts.fetch_exchange_masterfiles import (
     LEGACY_LSE_COMPANY_REPORTS_CACHE,
     LEGACY_LSE_INSTRUMENT_DIRECTORY_CACHE,
     LEGACY_LSE_INSTRUMENT_SEARCH_CACHE,
+    LEGACY_TMX_ETF_SCREENER_CACHE,
     LEGACY_TPEX_MAINBOARD_QUOTES_CACHE,
     LSE_PAGE_INITIALS,
     LSE_COMPANY_REPORTS_CACHE,
@@ -26,6 +27,7 @@ from scripts.fetch_exchange_masterfiles import (
     extract_lse_last_page,
     extract_latest_asx_investment_products_url,
     SSE_ETF_SUBCLASSES,
+    TMX_ETF_SCREENER_CACHE,
     TPEX_MAINBOARD_QUOTES_CACHE,
     fetch_b3_instruments_equities,
     fetch_b3_bdr_companies,
@@ -54,6 +56,7 @@ from scripts.fetch_exchange_masterfiles import (
     load_lse_instrument_search_rows,
     load_nasdaq_nordic_stockholm_shares_rows,
     load_sec_company_tickers_exchange_payload,
+    load_tmx_etf_screener_payload,
     load_tpex_mainboard_quotes_payload,
     lse_instrument_search_target_tickers,
     parse_asx_listed_companies,
@@ -88,6 +91,7 @@ from scripts.fetch_exchange_masterfiles import (
     parse_tpex_mainboard_quotes,
     parse_twse_etf_list,
     parse_twse_listed_companies,
+    parse_tmx_etf_screener,
     parse_tmx_interlisted,
     parse_tmx_listed_issuers_excel,
     resolve_tmx_listed_issuers_download_url,
@@ -1293,7 +1297,9 @@ def test_fetch_lse_instrument_search_exact_filters_to_exact_ticker(monkeypatch):
     assert all(row["exchange"] == "LSE" for row in rows)
     assert all(row["source_url"].startswith("https://example.com?codeName=") for row in rows)
     assert rows[0]["asset_type"] == "ETF"
+    assert rows[0]["isin"] == "JE00B1VS3770"
     assert rows[1]["asset_type"] == "Stock"
+    assert rows[1]["isin"] == "XS1234567890"
 
 
 def test_infer_lse_lookup_asset_type_uses_stock_fallback_for_stmm_trusts():
@@ -1346,6 +1352,10 @@ def test_load_lse_instrument_search_rows_prefers_cache_and_only_fetches_missing(
         encoding="utf-8",
     )
     cache_path = tmp_path / "lse_instrument_search.json"
+    cache_path.write_text(
+        '{"PHGP":[{"source_key":"lse_lookup","provider":"LSE","source_url":"https://example.com?codeName=PHGP","ticker":"PHGP","name":"WISDOMTREE METAL SECURITIES WISDOMTREE PHYSICAL GOLD £","exchange":"LSE","asset_type":"ETF","listing_status":"active","reference_scope":"security_lookup_subset","official":"true"}]}',
+        encoding="utf-8",
+    )
     legacy_cache_path = tmp_path / "legacy.json"
     monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LISTINGS_CSV", listings_path)
     monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LSE_INSTRUMENT_SEARCH_MAX_WORKERS", 1)
@@ -1384,6 +1394,7 @@ def test_load_lse_instrument_search_rows_prefers_cache_and_only_fetches_missing(
                 "listing_status": "active",
                 "reference_scope": source.reference_scope,
                 "official": "true",
+                "isin": f"ISIN-{ticker}",
             }
         ]
 
@@ -1402,7 +1413,7 @@ def test_load_lse_instrument_search_rows_prefers_cache_and_only_fetches_missing(
     assert mode == "network"
     assert [item[0] for item in fetched] == [["ABF"], ["PHGP"]]
     assert fetched[0][1] == {"PHGP": "ETF", "VUSA": "ETF", "ABF": "Stock"}
-    assert [(row["ticker"], row["asset_type"]) for row in rows] == [("ABF", "Stock"), ("PHGP", "ETF")]
+    assert [(row["ticker"], row["asset_type"], row.get("isin", "")) for row in rows] == [("ABF", "Stock", "ISIN-ABF"), ("PHGP", "ETF", "ISIN-PHGP")]
 
     monkeypatch.setattr(
         "scripts.fetch_exchange_masterfiles.fetch_lse_instrument_search_exact",
@@ -1411,7 +1422,7 @@ def test_load_lse_instrument_search_rows_prefers_cache_and_only_fetches_missing(
     rows, mode = load_lse_instrument_search_rows(source)
 
     assert mode == "cache"
-    assert [(row["ticker"], row["asset_type"]) for row in rows] == [("ABF", "Stock"), ("PHGP", "ETF")]
+    assert [(row["ticker"], row["asset_type"], row.get("isin", "")) for row in rows] == [("ABF", "Stock", "ISIN-ABF"), ("PHGP", "ETF", "ISIN-PHGP")]
 
 
 def test_load_lse_instrument_search_rows_retains_cached_rows_outside_current_target_set(tmp_path, monkeypatch):
@@ -2259,6 +2270,60 @@ def test_resolve_tmx_listed_issuers_download_url_uses_latest_workbook() -> None:
 def test_tmx_listed_issuers_source_is_modeled_as_partial_official_coverage() -> None:
     source = next(item for item in OFFICIAL_SOURCES if item.key == "tmx_listed_issuers")
     assert source.reference_scope == "listed_companies_subset"
+
+
+def test_tmx_etf_screener_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "tmx_etf_screener")
+    assert source.reference_scope == "listed_companies_subset"
+
+
+def test_parse_tmx_etf_screener_maps_tsx_etf_rows() -> None:
+    payload = [
+        {"symbol": "TOKN", "longname": "Global X Tokenization Ecosystem Index ETF"},
+        {"symbol": "MNT", "shortname": "Royal Canadian Mint ETR"},
+        {"symbol": "", "longname": "Ignored"},
+    ]
+
+    rows = parse_tmx_etf_screener(payload, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "TOKN",
+            "name": "Global X Tokenization Ecosystem Index ETF",
+            "exchange": "TSX",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "MNT",
+            "name": "Royal Canadian Mint ETR",
+            "exchange": "TSX",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_load_tmx_etf_screener_payload_prefers_cache(tmp_path, monkeypatch):
+    cache_path = tmp_path / "tmx_etf_screener.json"
+    cache_path.write_text('[{"symbol":"TOKN","longname":"Global X Tokenization Ecosystem Index ETF"}]', encoding="utf-8")
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.TMX_ETF_SCREENER_CACHE", cache_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_TMX_ETF_SCREENER_CACHE", tmp_path / "legacy.json")
+
+    payload, mode = load_tmx_etf_screener_payload()
+
+    assert mode == "cache"
+    assert payload == [{"symbol": "TOKN", "longname": "Global X Tokenization Ecosystem Index ETF"}]
 
 
 def test_euronext_etf_source_is_modeled_as_partial_official_coverage() -> None:

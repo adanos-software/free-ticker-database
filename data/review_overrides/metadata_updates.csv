@@ -8,6 +8,7 @@ DBMG,LSE,asset_type,update,ETF,0.99,Official LSE exact instrument search resolve
 DBMG,LSE,name,update,IMGP IMGP DBI MNGD FUTURES FD R USD UCITS ETF,0.97,Official LSE exact instrument search provides the specific ETF product name.
 JCLU,LSE,asset_type,update,ETF,0.99,Official LSE exact instrument search resolves this listing to an ETF rather than common stock.
 JCLU,LSE,name,update,JANUS HENDERSON TABULA FUND JH EUR AAA CLO ACTIVE ETF USDHA,0.97,Official LSE exact instrument search provides the specific ETF product name.
+LFIN11,B3,name,update,BTG PACTUAL TEVA LETRAS FINANCEIRAS DI QUALIDADE FUNDO DE ÍNDICE,0.97,Official B3 ETF directory provides the formal listed product name for LFIN11; the short Yahoo-style label triggers a false name mismatch in official verification.
 0AD5,LSE,country,update,United States,0.95,Yahoo Finance verifies 0AD5.L as Gen Digital Inc. with United States issuer domicile.
 0AD5,LSE,country_code,update,US,0.95,Must match corrected issuer domicile.
 0LY1,LSE,asset_type,update,Stock,0.99,Official LSE exact instrument search resolves this listing to WisdomTree Investments Inc. common stock rather than an ETF.
@@ -773,3 +774,10 @@ MASTEC,SET,name,update,Masstec Link Public Company Limited,0.99,"Official SET li
 MRDIYT,SET,name,update,MR. D.I.Y. HOLDING (THAILAND) PUBLIC COMPANY LIMITED,0.99,"Official SET listed companies directory resolves MRDIYT to the full issuer name; the dataset currently only contains a ticker placeholder."
 ELCM,PSX,name,update,Elahi Cotton Mills Limited,0.99,"Two official PSX references resolve ELCM to Elahi Cotton Mills Limited; the dataset currently carries the unrelated First Elite Capital Modaraba name."
 FECM,PSX,name,update,First Elite Capital Modaraba,0.98,"Official PSX daily symbol-name download resolves FECM to the full issuer name First Elite Capital Modaraba."
+MAEC,TSX,asset_type,update,ETF,0.99,"Official TMX ETF screener classifies MAEC as an ETF listing rather than a common stock."
+MIPC,TSX,asset_type,update,ETF,0.99,"Official TMX ETF screener classifies MIPC as an ETF listing rather than a common stock."
+CROC,TSX,asset_type,update,ETF,0.99,"Official TMX ETF screener classifies CROC as an ETF listing rather than a common stock."
+RQCA,TSX,asset_type,update,ETF,0.99,"Official TMX ETF screener classifies RQCA as an ETF listing rather than a common stock."
+RQIN,TSX,asset_type,update,ETF,0.99,"Official TMX ETF screener classifies RQIN as an ETF listing rather than a common stock."
+RQUS,TSX,asset_type,update,ETF,0.99,"Official TMX ETF screener classifies RQUS as an ETF listing rather than a common stock."
+PBAL,TSX,asset_type,update,ETF,0.99,"Official TMX ETF screener classifies PBAL as an ETF listing rather than a common stock."

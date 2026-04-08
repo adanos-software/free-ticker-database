@@ -1107,7 +1107,7 @@ def test_classify_row_downgrades_lse_name_mismatch_to_reference_gap() -> None:
     assert result["reason"] == "Only low-confidence issuer reference evidence exists for this listing."
 
 
-def test_classify_row_downgrades_lse_exact_lookup_name_mismatch_to_reference_gap() -> None:
+def test_classify_row_verifies_lse_exact_lookup_when_official_isin_matches() -> None:
     row = {
         "ticker": "0DRV",
         "exchange": "LSE",
@@ -1127,6 +1127,43 @@ def test_classify_row_downgrades_lse_exact_lookup_name_mismatch_to_reference_gap
                     "exchange": "LSE",
                     "name": "BIOTEC PHARMACON ASA BIOTEC PHARMACON ORD SHS",
                     "asset_type": "Stock",
+                    "isin": "NO0010014632",
+                    "source_key": "lse_instrument_search",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges={"LSE"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+    assert result["reason"] == "Matched active official exact LSE instrument lookup via ISIN."
+
+
+def test_classify_row_keeps_lse_exact_lookup_without_isin_as_reference_gap() -> None:
+    row = {
+        "ticker": "0DRV",
+        "exchange": "LSE",
+        "asset_type": "Stock",
+        "name": "Arcticzymes Technologies ASA",
+        "country": "Norway",
+        "country_code": "NO",
+        "isin": "",
+        "sector": "Health Care",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("LSE", "0DRV"): [
+                {
+                    "ticker": "0DRV",
+                    "exchange": "LSE",
+                    "name": "BIOTEC PHARMACON ASA BIOTEC PHARMACON ORD SHS",
+                    "asset_type": "Stock",
+                    "isin": "NO0010014632",
                     "source_key": "lse_instrument_search",
                     "listing_status": "active",
                 }
