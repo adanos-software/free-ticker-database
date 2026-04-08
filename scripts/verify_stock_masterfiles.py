@@ -80,6 +80,7 @@ LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE = {
     "NYSE": {"sec_company_tickers_exchange", "nasdaq_other_listed"},
     "NYSE MKT": {"sec_company_tickers_exchange", "nasdaq_other_listed"},
     "OTC": {"sec_company_tickers_exchange"},
+    "PSX": {"psx_listed_companies"},
     "SIX": {"six_equity_issuers", "six_etf_products", "six_etp_products"},
     "STO": {"nasdaq_nordic_stockholm_shares"},
     "TPEX": {"tpex_mainboard_daily_quotes"},
@@ -120,6 +121,15 @@ def has_strong_company_name_match(left: str, right: str) -> bool:
     ):
         return True
     return len(normalize_tokens(left) & normalize_tokens(right)) >= 2
+
+
+def listing_name_candidates(row: dict[str, str]) -> list[str]:
+    aliases = [alias.strip() for alias in row.get("aliases", "").split("|") if alias.strip()]
+    return [row.get("name", ""), *aliases]
+
+
+def matches_reference_name(row: dict[str, str], reference_name: str) -> bool:
+    return any(alias_matches_company(reference_name, candidate) for candidate in listing_name_candidates(row))
 
 
 def load_csv(path: Path) -> list[dict[str, str]]:
@@ -283,7 +293,7 @@ def classify_row(
         same_type_rows = [candidate for candidate in active_reference_rows if candidate.get("asset_type") == row.get("asset_type")]
         if same_type_rows:
             source_keys = {candidate.get("source_key", "") for candidate in same_type_rows}
-            if any(alias_matches_company(candidate.get("name", ""), row["name"]) for candidate in same_type_rows):
+            if any(matches_reference_name(row, candidate.get("name", "")) for candidate in same_type_rows):
                 status = "verified"
                 reason = "Matched active official exchange directory listing."
             elif (

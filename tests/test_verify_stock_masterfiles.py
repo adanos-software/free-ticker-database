@@ -98,6 +98,41 @@ def test_classify_row_verified() -> None:
     assert result["status"] == "verified"
 
 
+def test_classify_row_verifies_using_existing_aliases() -> None:
+    row = {
+        "ticker": "0MGO",
+        "exchange": "LSE",
+        "asset_type": "Stock",
+        "name": "JC Decaux SA",
+        "aliases": "jc decaux|FR0000077919",
+        "country": "France",
+        "country_code": "FR",
+        "isin": "FR0000077919",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("LSE", "0MGO"): [
+                {
+                    "ticker": "0MGO",
+                    "exchange": "LSE",
+                    "name": "JCDECAUX SE JCDECAUX ORD SHS",
+                    "asset_type": "Stock",
+                    "source_key": "lse_instrument_search",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges=set(),
+        partial_covered_exchanges={"LSE"},
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+
+
 def test_classify_row_name_mismatch() -> None:
     row = {
         "ticker": "AALB",
@@ -1002,6 +1037,41 @@ def test_classify_row_keeps_tsx_etf_series_suffix_without_name_match_as_referenc
     assert result["reason"] == "Only an official TMX root listing exists for this ETF series suffix."
 
 
+def test_classify_row_verifies_tsx_etf_using_existing_aliases() -> None:
+    row = {
+        "ticker": "TKN-U",
+        "exchange": "TSX",
+        "asset_type": "ETF",
+        "name": "Ninepoint Web3 Innovators Fund",
+        "aliases": "ninepoint crypto and ai leaders etf",
+        "country": "Canada",
+        "country_code": "CA",
+        "isin": "",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("TSX", "TKN-U"): [
+                {
+                    "ticker": "TKN-U",
+                    "exchange": "TSX",
+                    "name": "Ninepoint Crypto and AI Leaders ETF",
+                    "asset_type": "ETF",
+                    "source_key": "tmx_listed_issuers",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges=set(),
+        partial_covered_exchanges={"TSX"},
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+
+
 def test_classify_row_downgrades_lse_name_mismatch_to_reference_gap() -> None:
     row = {
         "ticker": "0NQ5",
@@ -1136,6 +1206,41 @@ def test_classify_row_downgrades_sto_name_mismatch_to_reference_gap() -> None:
         active_by_ticker={},
         covered_exchanges=set(),
         partial_covered_exchanges={"STO"},
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Only low-confidence issuer reference evidence exists for this listing."
+
+
+def test_classify_row_downgrades_psx_weak_name_mismatch_to_reference_gap() -> None:
+    row = {
+        "ticker": "GHNI",
+        "exchange": "PSX",
+        "asset_type": "Stock",
+        "name": "Honda Atlas Cars Pakistan Limited",
+        "country": "Pakistan",
+        "country_code": "PK",
+        "isin": "",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("PSX", "GHNI"): [
+                {
+                    "ticker": "GHNI",
+                    "exchange": "PSX",
+                    "name": "Ghandhara Ind.",
+                    "asset_type": "Stock",
+                    "source_key": "psx_listed_companies",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges=set(),
+        partial_covered_exchanges={"PSX"},
         identifier_map={},
     )
     assert result["status"] == "reference_gap"

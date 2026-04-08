@@ -5,9 +5,10 @@ import io
 import json
 import os
 import re
+import zipfile
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import asdict, dataclass
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from html import unescape
 from html.parser import HTMLParser
 from pathlib import Path
@@ -41,6 +42,8 @@ TPEX_MAINBOARD_QUOTES_CACHE = MASTERFILE_CACHE_DIR / "tpex_mainboard_daily_close
 LEGACY_TPEX_MAINBOARD_QUOTES_CACHE = MASTERFILES_DIR / "tpex_mainboard_daily_close_quotes.json"
 NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_stockholm_shares.json"
 LEGACY_NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE = MASTERFILES_DIR / "nasdaq_nordic_stockholm_shares.json"
+B3_INSTRUMENTS_EQUITIES_CACHE = MASTERFILE_CACHE_DIR / "b3_instruments_equities.json"
+LEGACY_B3_INSTRUMENTS_EQUITIES_CACHE = MASTERFILES_DIR / "b3_instruments_equities.json"
 
 SEC_COMPANY_TICKERS_URL = "https://www.sec.gov/files/company_tickers_exchange.json"
 NASDAQ_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt"
@@ -58,9 +61,16 @@ LSE_INSTRUMENT_DIRECTORY_URL = (
     "?codeName=&search=search&page={page}"
 )
 ASX_LISTED_URL = "https://www.asx.com.au/asx/research/ASXListedCompanies.csv"
+ASX_FUNDS_STATISTICS_URL = "https://www.asx.com.au/issuers/investment-products/asx-funds-statistics"
 TMX_INTERLISTED_URL = "https://www.tsx.com/files/trading/interlisted-companies.txt"
 TMX_LISTED_ISSUERS_ARCHIVE_URL = "https://www.tsx.com/en/listings/current-market-statistics/mig-archives"
 EURONEXT_EQUITIES_DOWNLOAD_URL = "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock"
+EURONEXT_ETFS_DOWNLOAD_URL = (
+    "https://live.euronext.com/en/product_directory/data/etf-all-markets/download"
+    "?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,"
+    "MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,"
+    "XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC"
+)
 JPX_LISTED_ISSUES_URL = "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls"
 DEUTSCHE_BOERSE_LISTED_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/67858/dd766fc6588100c79294324175f95501/data/Listed-companies.xlsx"
 DEUTSCHE_BOERSE_ETPS_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls"
@@ -72,6 +82,7 @@ B3_INSTRUMENTS_EQUITIES_URL = "https://arquivos.b3.com.br/bdi/table/InstrumentsE
 NASDAQ_NORDIC_API_ROOT_URL = "https://api.nasdaq.com/api/nordic/"
 NASDAQ_NORDIC_SHARES_SCREENER_URL = "https://api.nasdaq.com/api/nordic/screener/shares"
 TWSE_LISTED_COMPANIES_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
+TWSE_ETF_LIST_URL = "https://www.twse.com.tw/rwd/en/ETF/list"
 SET_LISTED_COMPANIES_URL = "https://www.set.or.th/dat/eod/listedcompany/static/listedCompanies_en_US.xls"
 SZSE_STOCK_LIST_URL = "https://www.szse.cn/market/product/stock/list/index.html"
 SZSE_ETF_LIST_URL = "https://www.szse.cn/market/product/list/etfList/index.html"
@@ -89,6 +100,9 @@ KRX_LISTED_COMPANIES_URL = "https://global.krx.co.kr/contents/GLB/03/0308/030801
 KRX_DATA_URL = "https://global.krx.co.kr/contents/GLB/99/GLB99000001.jspx"
 KRX_GENERATE_OTP_URL = "https://global.krx.co.kr/contents/COM/GenerateOTP.jspx"
 KRX_JSON_DATA_URL = "https://data.krx.co.kr/comm/bldAttendant/getJsonData.cmd"
+PSX_LISTED_COMPANIES_URL = "https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies"
+PSX_COMPANIES_BY_SECTOR_URL = "https://www.psx.com.pk/psx/custom-templates/companiesSearch-sector"
+PSX_DAILY_DOWNLOADS_URL = "https://dps.psx.com.pk/daily-downloads"
 
 USER_AGENT = "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)"
 SEC_CONTACT_EMAIL = os.environ.get("SEC_CONTACT_EMAIL", "opensource@adanos.software")
@@ -214,6 +228,20 @@ TMX_LISTED_ISSUERS_HREF_RE = re.compile(
     re.I,
 )
 LSE_PAGE_NUMBER_RE = re.compile(r'title="Page (\d+)" class="page-number(?: active)?"')
+PSX_XID_RE = re.compile(r'<input[^>]*\bid=["\']XID["\'][^>]*\bvalue=["\']([^"\']+)["\']', re.I)
+PSX_SECTOR_SELECT_RE = re.compile(
+    r'<select[^>]*\bname=["\']sector["\'][^>]*>(?P<body>.*?)</select>',
+    re.I | re.S,
+)
+PSX_OPTION_RE = re.compile(
+    r'<option[^>]*\bvalue=["\']([^"\']*)["\'][^>]*>(.*?)</option>',
+    re.I | re.S,
+)
+PSX_SYMBOL_NAME_DOWNLOAD_RE = re.compile(r'href=["\']([^"\']*/download/symbol_name/[^"\']+\.zip)["\']', re.I)
+ASX_INVESTMENT_PRODUCTS_LINK_RE = re.compile(
+    r'(?P<path>/content/dam/asx/issuers/asx-investment-products-reports/(?P<year>\d{4})/excel/asx-investment-products-[^"\']+\.xlsx)',
+    re.I,
+)
 KRX_MARKET_GUBUN_TO_EXCHANGE = {
     "1": "KRX",
     "2": "KOSDAQ",
@@ -221,6 +249,42 @@ KRX_MARKET_GUBUN_TO_EXCHANGE = {
 SSE_JSONP_RE = re.compile(r"^[^(]+\((.*)\)\s*$", re.S)
 SSE_STOCK_TYPES = ("1", "2", "8")
 SSE_ETF_SUBCLASSES = ("01", "02", "03", "06", "08", "09", "31", "32", "33", "37")
+PSX_SECTOR_LABEL_SKIP_MARKERS = (
+    "select sector",
+    "bond",
+    "close-end mutual fund",
+    "future contract",
+)
+PSX_ETF_SECTOR_LABEL_MARKERS = (
+    "exchange traded fund",
+    "exchange-traded fund",
+)
+ASX_MONTH_MAP = {
+    "jan": 1,
+    "january": 1,
+    "feb": 2,
+    "february": 2,
+    "mar": 3,
+    "march": 3,
+    "apr": 4,
+    "april": 4,
+    "may": 5,
+    "jun": 6,
+    "june": 6,
+    "jul": 7,
+    "july": 7,
+    "aug": 8,
+    "august": 8,
+    "sep": 9,
+    "sept": 9,
+    "september": 9,
+    "oct": 10,
+    "october": 10,
+    "nov": 11,
+    "november": 11,
+    "dec": 12,
+    "december": 12,
+}
 
 
 @dataclass(frozen=True)
@@ -282,6 +346,14 @@ OFFICIAL_SOURCES = [
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
+        key="asx_investment_products",
+        provider="ASX",
+        description="Official ASX investment products monthly workbook",
+        source_url=ASX_FUNDS_STATISTICS_URL,
+        format="asx_investment_products_excel",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
         key="set_listed_companies",
         provider="SET",
         description="Official Stock Exchange of Thailand listed companies table",
@@ -311,6 +383,14 @@ OFFICIAL_SOURCES = [
         description="Official Euronext live equities directory export",
         source_url=EURONEXT_EQUITIES_DOWNLOAD_URL,
         format="euronext_equities_semicolon_csv",
+    ),
+    MasterfileSource(
+        key="euronext_etfs",
+        provider="Euronext",
+        description="Official Euronext ETF and ETP product directory export",
+        source_url=EURONEXT_ETFS_DOWNLOAD_URL,
+        format="euronext_etfs_semicolon_csv",
+        reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
         key="jpx_listed_issues",
@@ -390,6 +470,14 @@ OFFICIAL_SOURCES = [
         format="twse_listed_companies_json",
     ),
     MasterfileSource(
+        key="twse_etf_list",
+        provider="TWSE",
+        description="Official TWSE ETF product directory",
+        source_url=TWSE_ETF_LIST_URL,
+        format="twse_etf_list_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
         key="sse_a_share_list",
         provider="SSE",
         description="Official SSE stock list (A/B/STAR boards)",
@@ -443,6 +531,22 @@ OFFICIAL_SOURCES = [
         description="Official KRX ETF issue finder",
         source_url="https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
         format="krx_etf_finder_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="psx_listed_companies",
+        provider="PSX",
+        description="Official Pakistan Stock Exchange listed companies sector directory",
+        source_url=PSX_LISTED_COMPANIES_URL,
+        format="psx_listed_companies_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="psx_symbol_name_daily",
+        provider="PSX",
+        description="Official PSX daily symbol-name download",
+        source_url=PSX_DAILY_DOWNLOADS_URL,
+        format="psx_symbol_name_daily_zip",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -608,6 +712,19 @@ def krx_request_headers() -> dict[str, str]:
     }
 
 
+def psx_request_headers(*, ajax: bool = False) -> dict[str, str]:
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Referer": PSX_LISTED_COMPANIES_URL,
+        "Origin": "https://www.psx.com.pk",
+        "Connection": "close",
+    }
+    if ajax:
+        headers["Accept"] = "application/json,text/plain,*/*"
+        headers["X-Requested-With"] = "XMLHttpRequest"
+    return headers
+
+
 def nasdaq_nordic_request_headers() -> dict[str, str]:
     return {
         "User-Agent": "Mozilla/5.0",
@@ -670,6 +787,23 @@ def load_nasdaq_nordic_stockholm_shares_rows(
 
     ensure_output_dirs()
     NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def load_b3_instruments_equities_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_b3_instruments_equities(source, session=session)
+    except requests.RequestException:
+        for path in (B3_INSTRUMENTS_EQUITIES_CACHE, LEGACY_B3_INSTRUMENTS_EQUITIES_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    B3_INSTRUMENTS_EQUITIES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"
 
 
@@ -1050,6 +1184,77 @@ def parse_asx_listed_companies(text: str, source: MasterfileSource) -> list[dict
                 "name": name,
                 "exchange": "ASX",
                 "asset_type": infer_asset_type(name),
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
+def normalize_excel_header(value: Any) -> str:
+    if pd.isna(value):
+        return ""
+    return " ".join(str(value).replace("\n", " ").split()).strip().lower()
+
+
+def asx_investment_products_sort_key(path: str, fallback_year: int) -> tuple[int, int]:
+    suffix = Path(path).stem.lower().removeprefix("asx-investment-products-")
+    compact_match = re.search(r"(\d{6})", suffix)
+    if compact_match:
+        compact_value = compact_match.group(1)
+        return int(compact_value[:4]), int(compact_value[4:6])
+    for token in re.split(r"[^a-z0-9]+", suffix):
+        month = ASX_MONTH_MAP.get(token)
+        if month is not None:
+            return fallback_year, month
+    return fallback_year, 0
+
+
+def extract_latest_asx_investment_products_url(text: str) -> str:
+    matches: list[tuple[tuple[int, int], str]] = []
+    for match in ASX_INVESTMENT_PRODUCTS_LINK_RE.finditer(text):
+        path = match.group("path")
+        year = int(match.group("year"))
+        matches.append((asx_investment_products_sort_key(path, year), path))
+    if not matches:
+        raise ValueError("No ASX investment products workbook links found")
+    _, latest_path = max(matches, key=lambda item: item[0])
+    return requests.compat.urljoin(ASX_FUNDS_STATISTICS_URL, latest_path)
+
+
+def parse_asx_investment_products_excel(content: bytes, source: MasterfileSource) -> list[dict[str, str]]:
+    dataframe = pd.read_excel(io.BytesIO(content), sheet_name="Spotlight ETP List", header=9)
+    column_map = {normalize_excel_header(column): column for column in dataframe.columns}
+    ticker_column = column_map.get("asx code")
+    type_column = column_map.get("type")
+    name_column = column_map.get("fund name")
+    if not ticker_column or not type_column or not name_column:
+        raise ValueError("ASX investment products workbook missing expected columns")
+
+    rows: list[dict[str, str]] = []
+    for record in dataframe.to_dict(orient="records"):
+        ticker_value = record.get(ticker_column)
+        type_value = record.get(type_column)
+        name_value = record.get(name_column)
+        if pd.isna(ticker_value) or pd.isna(type_value) or pd.isna(name_value):
+            continue
+        type_name = str(type_value).strip().upper()
+        if type_name not in {"ETF", "SP", "ETMF", "ETN", "ETP"}:
+            continue
+        ticker = str(ticker_value).strip().upper()
+        name = str(name_value).strip()
+        if not ticker or not name:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "ASX",
+                "asset_type": "ETF",
                 "listing_status": "active",
                 "reference_scope": source.reference_scope,
                 "official": "true",
@@ -1488,6 +1693,38 @@ def parse_euronext_equities_download(text: str, source: MasterfileSource) -> lis
     return rows
 
 
+def parse_euronext_etfs_download(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    lines = [line for line in text.splitlines() if line.strip()]
+    if len(lines) < 4:
+        return []
+
+    data_lines = [line.lstrip("\ufeff") for line in lines]
+    reader = csv.DictReader(io.StringIO("\n".join([data_lines[0], *data_lines[4:]])), delimiter=";")
+    rows: list[dict[str, str]] = []
+    for row in reader:
+        ticker = (row.get("Symbol") or "").strip()
+        name = (row.get("Instrument Fullname") or row.get("Name") or "").strip()
+        market = (row.get("Market") or "").strip()
+        isin = (row.get("ISIN") or "").strip()
+        if not ticker or not name or not market or not isin:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": map_euronext_market(market),
+                "asset_type": "ETF",
+                "listing_status": "active",
+                "reference_scope": euronext_reference_scope(market),
+                "official": "true",
+            }
+        )
+    return rows
+
+
 def parse_sec_company_tickers_exchange(payload: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
     fields = payload.get("fields", [])
     rows: list[dict[str, str]] = []
@@ -1520,6 +1757,32 @@ def parse_twse_listed_companies(payload: list[dict[str, Any]], source: Masterfil
     for record in payload:
         ticker = str(record.get("公司代號", "")).strip()
         name = str(record.get("公司名稱", "")).strip()
+        if not ticker or not name:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "TWSE",
+                "asset_type": infer_taiwan_asset_type(ticker, name),
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
+def parse_twse_etf_list(payload: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
+    fields = payload.get("fields", [])
+    rows: list[dict[str, str]] = []
+    for values in payload.get("data", []):
+        record = dict(zip(fields, values))
+        ticker = str(record.get("Security Code", "")).strip()
+        name = str(record.get("Name of ETF", "")).strip()
         if not ticker or not name:
             continue
         rows.append(
@@ -1999,6 +2262,172 @@ def parse_six_fund_products_csv(text: str, source: MasterfileSource) -> list[dic
     return rows
 
 
+def extract_psx_xid(text: str) -> str:
+    match = PSX_XID_RE.search(text)
+    if not match:
+        raise ValueError("Unable to locate PSX XID token")
+    return unescape(match.group(1)).strip()
+
+
+def extract_psx_sector_options(text: str) -> list[tuple[str, str]]:
+    match = PSX_SECTOR_SELECT_RE.search(text)
+    if not match:
+        raise ValueError("Unable to locate PSX sector selector")
+    options: list[tuple[str, str]] = []
+    for value, label_html in PSX_OPTION_RE.findall(match.group("body")):
+        normalized_value = unescape(value).strip()
+        label = re.sub(r"<[^>]+>", "", unescape(label_html)).strip()
+        if not normalized_value or not label:
+            continue
+        options.append((normalized_value, label))
+    return options
+
+
+def should_skip_psx_sector(label: str) -> bool:
+    lowered = " ".join(label.lower().split())
+    return any(marker in lowered for marker in PSX_SECTOR_LABEL_SKIP_MARKERS)
+
+
+def infer_psx_asset_type_from_sector(label: str) -> str:
+    lowered = " ".join(label.lower().split())
+    if any(marker in lowered for marker in PSX_ETF_SECTOR_LABEL_MARKERS):
+        return "ETF"
+    return "Stock"
+
+
+def parse_psx_listed_companies(
+    payload: list[dict[str, Any]],
+    source: MasterfileSource,
+    *,
+    sector_label: str,
+) -> list[dict[str, str]]:
+    asset_type = infer_psx_asset_type_from_sector(sector_label)
+    rows: list[dict[str, str]] = []
+    for record in payload:
+        ticker = str(record.get("symbol_code", "")).strip()
+        name = str(record.get("company_name", "")).strip()
+        if not ticker or not name:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "PSX",
+                "asset_type": asset_type,
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
+def extract_psx_symbol_name_download_url(text: str) -> str:
+    match = PSX_SYMBOL_NAME_DOWNLOAD_RE.search(text)
+    if not match:
+        raise ValueError("Unable to locate PSX symbol-name download link")
+    return requests.compat.urljoin(PSX_DAILY_DOWNLOADS_URL, match.group(1))
+
+
+def parse_psx_symbol_name_daily(
+    content: bytes,
+    source: MasterfileSource,
+    *,
+    asset_type_by_ticker: dict[str, str] | None = None,
+) -> list[dict[str, str]]:
+    asset_type_by_ticker = asset_type_by_ticker or {}
+    with zipfile.ZipFile(io.BytesIO(content)) as archive:
+        names = archive.namelist()
+        if not names:
+            return []
+        payload = archive.read(names[0]).decode("utf-16")
+
+    rows: list[dict[str, str]] = []
+    for raw_line in payload.splitlines():
+        line = raw_line.replace("\ufeff", "").strip()
+        if not line:
+            continue
+        parts = [part.replace("\ufeff", "").strip() for part in line.split("|")]
+        if len(parts) < 3:
+            continue
+        ticker, short_name, full_name = parts[:3]
+        if not ticker:
+            continue
+        asset_type = asset_type_by_ticker.get(ticker)
+        if not asset_type:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": full_name or short_name,
+                "exchange": "PSX",
+                "asset_type": asset_type,
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
+def fetch_psx_symbol_name_daily(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    asset_type_by_ticker = {
+        row.get("ticker", "").strip(): row.get("asset_type", "").strip()
+        for row in load_csv(LISTINGS_CSV)
+        if row.get("exchange", "").strip() == "PSX"
+        and row.get("asset_type", "").strip() in {"Stock", "ETF"}
+        and row.get("ticker", "").strip()
+    }
+    if not asset_type_by_ticker:
+        return []
+
+    page_headers = {
+        "User-Agent": USER_AGENT,
+        "Referer": source.source_url,
+        "Origin": "https://dps.psx.com.pk",
+        "Connection": "close",
+    }
+    download_headers = {
+        "User-Agent": USER_AGENT,
+        "Referer": source.source_url,
+        "Origin": "https://dps.psx.com.pk",
+        "Connection": "close",
+    }
+
+    for days_back in range(8):
+        target_date = (datetime.now(timezone.utc) - timedelta(days=days_back)).date().isoformat()
+        response = session.post(
+            source.source_url,
+            data={"date": target_date},
+            headers=page_headers,
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        try:
+            download_url = extract_psx_symbol_name_download_url(response.text)
+        except ValueError:
+            continue
+
+        download_response = session.get(download_url, headers=download_headers, timeout=REQUEST_TIMEOUT)
+        download_response.raise_for_status()
+        rows = parse_psx_symbol_name_daily(
+            download_response.content,
+            source,
+            asset_type_by_ticker=asset_type_by_ticker,
+        )
+        for row in rows:
+            row["source_url"] = download_url
+        return rows
+    return []
+
+
 def fetch_sse_a_share_list(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
     session = session or requests.Session()
     headers = {
@@ -2279,6 +2708,63 @@ def fetch_krx_etf_finder(source: MasterfileSource, session: requests.Session | N
     return parse_krx_etf_finder(response.json(), source)
 
 
+def fetch_psx_listed_companies(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    page_response = session.get(source.source_url, headers=psx_request_headers(), timeout=REQUEST_TIMEOUT)
+    page_response.raise_for_status()
+    page_html = page_response.text
+    xid = extract_psx_xid(page_html)
+    sector_options = extract_psx_sector_options(page_html)
+
+    rows: list[dict[str, str]] = []
+    seen_tickers: set[str] = set()
+    for sector_value, sector_label in sector_options:
+        if should_skip_psx_sector(sector_label):
+            continue
+        try:
+            response = session.get(
+                PSX_COMPANIES_BY_SECTOR_URL,
+                params={"sector": sector_value, "XID": xid},
+                headers=psx_request_headers(ajax=True),
+                timeout=REQUEST_TIMEOUT,
+            )
+            response.raise_for_status()
+        except requests.RequestException:
+            if not isinstance(session, requests.Session):
+                raise
+            response = requests.get(
+                PSX_COMPANIES_BY_SECTOR_URL,
+                params={"sector": sector_value, "XID": xid},
+                headers=psx_request_headers(ajax=True),
+                timeout=REQUEST_TIMEOUT,
+            )
+            response.raise_for_status()
+        try:
+            payload = json.loads(response.text)
+        except json.JSONDecodeError as exc:
+            raise ValueError(f"Unexpected PSX sector payload for {sector_value}") from exc
+        for row in parse_psx_listed_companies(payload, source, sector_label=sector_label):
+            ticker = row["ticker"]
+            if ticker in seen_tickers:
+                continue
+            seen_tickers.add(ticker)
+            rows.append(row)
+    return rows
+
+
+def fetch_asx_investment_products(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    page_response = session.get(source.source_url, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT)
+    page_response.raise_for_status()
+    workbook_url = extract_latest_asx_investment_products_url(page_response.text)
+    workbook_response = session.get(workbook_url, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT)
+    workbook_response.raise_for_status()
+    rows = parse_asx_investment_products_excel(workbook_response.content, source)
+    for row in rows:
+        row["source_url"] = workbook_url
+    return rows
+
+
 def fetch_source_rows(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
     if source.format == "nasdaq_listed_pipe":
         text = fetch_text(source.source_url, session=session)
@@ -2299,6 +2785,8 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "asx_listed_companies_csv":
         text = fetch_text(source.source_url, session=session)
         return parse_asx_listed_companies(text, source)
+    if source.format == "asx_investment_products_excel":
+        return fetch_asx_investment_products(source, session=session)
     if source.format == "set_listed_companies_html":
         text = fetch_bytes(source.source_url, session=session).decode("windows-1250", errors="replace")
         return parse_set_listed_companies_html(text, source)
@@ -2313,6 +2801,9 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "euronext_equities_semicolon_csv":
         text = fetch_text(source.source_url, session=session)
         return parse_euronext_equities_download(text, source)
+    if source.format == "euronext_etfs_semicolon_csv":
+        text = fetch_text(source.source_url, session=session)
+        return parse_euronext_etfs_download(text, source)
     if source.format == "jpx_listed_issues_excel":
         content = fetch_bytes(source.source_url, session=session)
         return parse_jpx_listed_issues_excel(content, source)
@@ -2336,6 +2827,9 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "twse_listed_companies_json":
         payload = fetch_json(source.source_url, session=session)
         return parse_twse_listed_companies(payload, source)
+    if source.format == "twse_etf_list_json":
+        payload = fetch_json(source.source_url, session=session)
+        return parse_twse_etf_list(payload, source)
     if source.format == "sse_a_share_list_jsonp":
         return fetch_sse_a_share_list(source, session=session)
     if source.format == "sse_etf_list_json":
@@ -2351,6 +2845,10 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return fetch_krx_listed_companies(source, session=session)
     if source.format == "krx_etf_finder_json":
         return fetch_krx_etf_finder(source, session=session)
+    if source.format == "psx_listed_companies_json":
+        return fetch_psx_listed_companies(source, session=session)
+    if source.format == "psx_symbol_name_daily_zip":
+        return fetch_psx_symbol_name_daily(source, session=session)
     if source.format == "sec_company_tickers_exchange_json":
         payload = fetch_json(source.source_url, session=session)
         return parse_sec_company_tickers_exchange(payload, source)
@@ -2375,6 +2873,11 @@ def fetch_source_rows_with_mode(
         rows, mode = load_lse_instrument_search_rows(source, session=session)
         if rows is None:
             raise requests.RequestException("LSE instrument search unavailable")
+        return rows, mode
+    if source.format == "b3_instruments_equities_api":
+        rows, mode = load_b3_instruments_equities_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("B3 instruments equities unavailable")
         return rows, mode
     if source.format == "sec_company_tickers_exchange_json":
         payload, mode = load_sec_company_tickers_exchange_payload(session=session)

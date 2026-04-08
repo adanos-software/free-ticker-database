@@ -175,6 +175,8 @@ B3_UNIT_TICKER_RE = re.compile(r".*11$")
 PSX_CORPORATE_ACTION_TICKER_RE = re.compile(
     r"^[A-Z0-9]+-(?:CA|CM|CMA|CAP|CAPR|CMAR|CMAY)(?:N1?|)?$"
 )
+PSX_GOVERNMENT_SECURITY_TICKER_RE = re.compile(r"^P\d{2}(?:GIS|FRR)\d{4}$")
+PSX_RIGHTS_TICKER_RE = re.compile(r"^[A-Z0-9]{3,10}R\d+$")
 ASX_CAPITAL_NOTE_TICKER_RE = re.compile(r".*P[A-Z]$")
 ASX_LOYALTY_TICKER_RE = re.compile(r".*LV$")
 TAIWAN_ETF_TICKER_RE = re.compile(r"^00\d{2,4}[A-Z]?$")
@@ -726,8 +728,13 @@ def should_exclude_stock_row(
             return True
         if B3_UNIT_TICKER_RE.fullmatch(ticker):
             return True
-    if row.get("exchange") == "PSX" and PSX_CORPORATE_ACTION_TICKER_RE.fullmatch(ticker):
-        return True
+    if row.get("exchange") == "PSX":
+        if PSX_CORPORATE_ACTION_TICKER_RE.fullmatch(ticker):
+            return True
+        if PSX_GOVERNMENT_SECURITY_TICKER_RE.fullmatch(ticker):
+            return True
+        if PSX_RIGHTS_TICKER_RE.fullmatch(ticker) and ("(r)" in name or " rights" in name):
+            return True
     if has_matching_krx_base_listing(row, stock_name_lookup):
         return True
     if row.get("exchange") == "ASX":

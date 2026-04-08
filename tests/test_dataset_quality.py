@@ -193,6 +193,11 @@ def test_non_common_instruments_removed():
     assert "005945" not in tickers
     assert "003925" not in tickers
     assert "00781K" not in tickers
+    assert "P01GIS0802" not in tickers
+    assert "P03FRR2110" not in tickers
+    assert "P05FRR2201" not in tickers
+    assert "MFFLR1" not in tickers
+    assert "SHDTR1" not in tickers
 
 
 def test_country_examples_corrected():
@@ -218,6 +223,18 @@ def test_thin_otc_metadata_is_backfilled_for_verified_listings():
     assert dtref["country_code"] == "AU"
     assert dtref["isin"] == "AU000000DTR1"
     assert dtref["sector"] == "Materials"
+
+
+def test_psx_name_corrections_and_alias_cleanup_applied():
+    elcm = ticker_exchange_row("ELCM", "PSX")
+    fecm = listing_ticker_exchange_row("FECM", "PSX")
+
+    assert elcm is not None
+    assert elcm["name"] == "Elahi Cotton Mills Limited"
+    assert "elite capital modaraba 1st" not in elcm["aliases"]
+
+    assert fecm is not None
+    assert fecm["name"] == "First Elite Capital Modaraba"
 
 
 def test_yahoo_corrected_etf_outliers_are_cleaned():
@@ -566,6 +583,26 @@ def test_should_exclude_stock_row_keeps_krx_secondary_lines_without_matching_bas
     }
 
     assert should_exclude_stock_row(row, stock_name_lookup=stock_name_lookup) is False
+
+
+def test_should_exclude_stock_row_drops_psx_government_securities_and_rights():
+    from scripts.rebuild_dataset import should_exclude_stock_row
+
+    gis_row = {
+        "ticker": "P01GIS0802",
+        "exchange": "PSX",
+        "asset_type": "Stock",
+        "name": "1 Year GIS",
+    }
+    rights_row = {
+        "ticker": "SHDTR1",
+        "exchange": "PSX",
+        "asset_type": "Stock",
+        "name": "Shadab Textile(R)",
+    }
+
+    assert should_exclude_stock_row(gis_row) is True
+    assert should_exclude_stock_row(rights_row) is True
 
 
 def test_apply_official_exchange_corrections_moves_krx_stock_to_kosdaq(monkeypatch):

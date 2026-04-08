@@ -1,118 +1,148 @@
 {
   "global": {
-    "official_symbols": 23964,
-    "matched": 18139,
-    "collisions": 2436,
-    "missing": 3389
+    "official_symbols": 27333,
+    "matched": 18498,
+    "collisions": 4425,
+    "missing": 4410
   },
   "exchanges": [
     {
       "exchange": "AMS",
-      "official_symbols": 119,
-      "matched": 89,
-      "collisions": 26,
-      "missing": 4,
+      "official_symbols": 509,
+      "matched": 148,
+      "collisions": 288,
+      "missing": 73,
       "collision_examples": [
         {
-          "ticker": "AGIL",
-          "name": "Agility Capital H",
-          "target_exchange": "AMS",
-          "existing_exchanges": [
-            "BME"
-          ]
-        },
-        {
-          "ticker": "ALX",
-          "name": "ALUMEXX N.V.",
-          "target_exchange": "AMS",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
-        {
-          "ticker": "AMG",
-          "name": "AMG",
-          "target_exchange": "AMS",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
-        {
-          "ticker": "ASM",
-          "name": "ASM INTERNATIONAL",
-          "target_exchange": "AMS",
-          "existing_exchanges": [
-            "NYSE MKT"
-          ]
-        },
-        {
-          "ticker": "AXS",
-          "name": "ACCSYS",
-          "target_exchange": "AMS",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
-        {
-          "ticker": "BFIT",
-          "name": "BASIC-FIT",
-          "target_exchange": "AMS",
-          "existing_exchanges": [
-            "NASDAQ"
-          ]
-        },
-        {
-          "ticker": "BNJ",
-          "name": "BANIJAY GROUP",
-          "target_exchange": "AMS",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
-        {
-          "ticker": "BRNL",
-          "name": "BRUNEL INTERNAT",
+          "ticker": "2AAP",
+          "name": "Leverage Shares 2x Apple ETP Securities",
           "target_exchange": "AMS",
           "existing_exchanges": [
             "LSE"
           ]
         },
         {
-          "ticker": "CCEP",
-          "name": "Coca-ColaEuropacif",
+          "ticker": "2AMD",
+          "name": "Leverage Shares 2x Advanced Micro Devices ETP Securities",
           "target_exchange": "AMS",
           "existing_exchanges": [
-            "NASDAQ"
+            "LSE"
           ]
         },
         {
-          "ticker": "CRBN",
-          "name": "CORBION",
+          "ticker": "2AMZ",
+          "name": "Leverage Shares 2x Amazon ETP Securities",
           "target_exchange": "AMS",
           "existing_exchanges": [
-            "NYSE ARCA"
+            "LSE"
+          ]
+        },
+        {
+          "ticker": "2BAB",
+          "name": "Leverage Shares 2x Alibaba ETP Securities",
+          "target_exchange": "AMS",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
+        {
+          "ticker": "2BRK",
+          "name": "Leverage Shares 2x Long Berkshire Hathaway (BRK-B) ETP Securities",
+          "target_exchange": "AMS",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
+        {
+          "ticker": "2FB",
+          "name": "Leverage Shares 2x Facebook ETP Securities",
+          "target_exchange": "AMS",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
+        {
+          "ticker": "2GOO",
+          "name": "Leverage Shares 2x Alphabet ETP Securities",
+          "target_exchange": "AMS",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
+        {
+          "ticker": "2MSF",
+          "name": "Leverage Shares 2x Microsoft ETP Securities",
+          "target_exchange": "AMS",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
+        {
+          "ticker": "2NFL",
+          "name": "Leverage Shares 2x Netflix ETP Securities",
+          "target_exchange": "AMS",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
+        {
+          "ticker": "2TSL",
+          "name": "Leverage Shares 2x Tesla ETP Securities",
+          "target_exchange": "AMS",
+          "existing_exchanges": [
+            "LSE"
           ]
         }
       ],
       "missing_examples": [
         {
-          "ticker": "AZRNW",
-          "name": "AZERION WARRANTS",
+          "ticker": "2GS",
+          "name": "Leverage Shares 2x Goldman Sachs ETP Securities",
           "exchange": "AMS"
         },
         {
-          "ticker": "NAIW",
-          "name": "NAI WARRANTS",
+          "ticker": "2NVD",
+          "name": "Leverage Shares 2x NVIDIA ETP Securities",
           "exchange": "AMS"
         },
         {
-          "ticker": "PPLA",
-          "name": "PPLA European Unit",
+          "ticker": "2STS",
+          "name": "Leverage Shares -2x Short Tesla ETP Securities",
           "exchange": "AMS"
         },
         {
-          "ticker": "QEVW",
-          "name": "QEV WARRANTS",
+          "ticker": "3CRM",
+          "name": "Leverage Shares 3x Salesforce.Com ETP Securities",
+          "exchange": "AMS"
+        },
+        {
+          "ticker": "3DIS",
+          "name": "Leverage Shares 3x Disney ETP Securities",
+          "exchange": "AMS"
+        },
+        {
+          "ticker": "3JD",
+          "name": "Leverage Shares 3x JD.Com ETP Securities",
+          "exchange": "AMS"
+        },
+        {
+          "ticker": "3PYP",
+          "name": "Leverage Shares 3x PayPal ETP Securities",
+          "exchange": "AMS"
+        },
+        {
+          "ticker": "3SQ",
+          "name": "Leverage Shares 3x Square ETP Securities",
+          "exchange": "AMS"
+        },
+        {
+          "ticker": "600X",
+          "name": "State Street SPDR STOXX Europe 600 SRI UCITS ETF (Acc)",
+          "exchange": "AMS"
+        },
+        {
+          "ticker": "ADAVE",
+          "name": "VALOUR CARDANO",
           "exchange": "AMS"
         }
       ]
@@ -320,89 +350,89 @@
     },
     {
       "exchange": "Euronext",
-      "official_symbols": 1403,
-      "matched": 634,
-      "collisions": 414,
-      "missing": 355,
+      "official_symbols": 4377,
+      "matched": 933,
+      "collisions": 2141,
+      "missing": 1303,
       "collision_examples": [
         {
-          "ticker": "8GW",
-          "name": "GREAT WESTERN MIN.",
+          "ticker": "0EMU",
+          "name": "Ossiam MSCI EMU - UCITS ETF 1C (EUR)",
           "target_exchange": "Euronext",
           "existing_exchanges": [
-            "ISE"
+            "XETRA"
           ]
         },
         {
-          "ticker": "A5G",
-          "name": "AIB GROUP PLC",
+          "ticker": "0USE",
+          "name": "Ossiam S&P500 - UCITS ETF 1C (EUR)",
           "target_exchange": "Euronext",
           "existing_exchanges": [
-            "ISE"
+            "XETRA"
           ]
         },
         {
-          "ticker": "AAA",
-          "name": "ALAN ALLMAN",
+          "ticker": "100H",
+          "name": "Amundi Core FTSE 100 Swap UCITS ETF EUR Hedged Acc",
           "target_exchange": "Euronext",
           "existing_exchanges": [
-            "NYSE ARCA"
+            "LSE"
           ]
         },
         {
-          "ticker": "AAT",
-          "name": "AATECH",
+          "ticker": "1PAS",
+          "name": "WISDOMTREE PALLADIUM 1X DAILY SHORT",
           "target_exchange": "Euronext",
           "existing_exchanges": [
-            "NYSE"
+            "LSE"
           ]
         },
         {
-          "ticker": "AB",
-          "name": "AB SCIENCE",
+          "ticker": "26TP",
+          "name": "iShares iBonds Dec 2026 Term EUR Italy Govt Bond UCITS ETF EUR (Dist)",
           "target_exchange": "Euronext",
           "existing_exchanges": [
-            "NYSE"
+            "XETRA"
           ]
         },
         {
-          "ticker": "ABC",
-          "name": "ABC COMPANY",
+          "ticker": "27IT",
+          "name": "iShares iBonds Dec 2027 Term $ Treasury UCITS ETF USD (Dist)",
           "target_exchange": "Euronext",
           "existing_exchanges": [
-            "SSE_CL"
+            "SIX"
           ]
         },
         {
-          "ticker": "ABEO",
-          "name": "ABEO",
+          "ticker": "28IY",
+          "name": "iShares iBonds Dec 2028 Term EUR Italy Govt Bond UCITS ETF EUR (Dist)",
           "target_exchange": "Euronext",
           "existing_exchanges": [
-            "NASDAQ"
+            "XETRA"
           ]
         },
         {
-          "ticker": "ABI",
-          "name": "AB INBEV",
+          "ticker": "29GA",
+          "name": "iShares iBonds Dec 29 \u20ac Corp UCITS ETF A",
           "target_exchange": "Euronext",
           "existing_exchanges": [
-            "NASDAQ"
+            "SIX"
           ]
         },
         {
-          "ticker": "ABLD",
-          "name": "ABL Diagnostics",
+          "ticker": "29GI",
+          "name": "iShares iBonds Dec 2029 Term EUR Corp UCITS ETF EUR (Dist)",
           "target_exchange": "Euronext",
           "existing_exchanges": [
-            "BATS"
+            "XETRA"
           ]
         },
         {
-          "ticker": "ABT",
-          "name": "ABITARE IN",
+          "ticker": "29ID",
+          "name": "iShares iBonds Dec 2029 Term $ Corp UCITS ETF USD (Dist)",
           "target_exchange": "Euronext",
           "existing_exchanges": [
-            "NYSE"
+            "SIX"
           ]
         }
       ],
@@ -413,58 +443,58 @@
           "exchange": "Euronext"
         },
         {
-          "ticker": "A2A",
-          "name": "A2A",
+          "ticker": "0CAC",
+          "name": "OSSIAM CAC 40 NR - UCITS ETF 1C (EUR)",
           "exchange": "Euronext"
         },
         {
-          "ticker": "ABBS",
-          "name": "AB SCIENCE BSA",
+          "ticker": "0SWE",
+          "name": "OSSIAM MSCI WORLD - UCITS ETF 1C (EUR)",
           "exchange": "Euronext"
         },
         {
-          "ticker": "ABBSA",
-          "name": "AB SCIENCE BSAAU25",
+          "ticker": "100EUA",
+          "name": "UBS FTSE 100 UCITS ETF GBP dis",
           "exchange": "Euronext"
         },
         {
-          "ticker": "ABP",
-          "name": "A.B.P. NOCIVELLI",
+          "ticker": "26TA",
+          "name": "iShares iBnds 26 \u20ac Italy Gvt UCITS ETF A",
           "exchange": "Euronext"
         },
         {
-          "ticker": "ABSBS",
-          "name": "AB SCIENCE BSA 25",
+          "ticker": "28IA",
+          "name": "iShares iBonds 28 Italy Govt UCITS ETF A",
           "exchange": "Euronext"
         },
         {
-          "ticker": "ABTG",
-          "name": "ALFIO BARDOLLA",
+          "ticker": "28IU",
+          "name": "iShares iBonds Dec 2028 Term $ High Yield Corp UCITS ETF USD (Dist)",
           "exchange": "Euronext"
         },
         {
-          "ticker": "ABVX",
-          "name": "ABIVAX",
+          "ticker": "29IU",
+          "name": "iShares iBonds Dec 2029 Term $ High Yield Corp UCITS ETF USD (Dist)",
           "exchange": "Euronext"
         },
         {
-          "ticker": "AC5",
-          "name": "ACINQUE",
+          "ticker": "35ID",
+          "name": "iShares iBonds Dec 2035 Term $ Corp UCITS ETF USD (Dist)",
           "exchange": "Euronext"
         },
         {
-          "ticker": "ADOBS",
-          "name": "ADOCIA BSA",
+          "ticker": "3BTL",
+          "name": "WISDOMTREE BTP 10Y 3X DAILY LEVERAGED",
           "exchange": "Euronext"
         }
       ]
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5443,
+      "official_symbols": 5446,
       "matched": 4562,
       "collisions": 54,
-      "missing": 827,
+      "missing": 830,
       "collision_examples": [
         {
           "ticker": "AIMS",
@@ -1025,10 +1055,10 @@
     },
     {
       "exchange": "OSL",
-      "official_symbols": 297,
-      "matched": 233,
+      "official_symbols": 299,
+      "matched": 234,
       "collisions": 64,
-      "missing": 0,
+      "missing": 1,
       "collision_examples": [
         {
           "ticker": "ABG",
@@ -1111,7 +1141,13 @@
           ]
         }
       ],
-      "missing_examples": []
+      "missing_examples": [
+        {
+          "ticker": "COGLD",
+          "name": "EDR Certified Origin Physical Gold PLC",
+          "exchange": "OSL"
+        }
+      ]
     },
     {
       "exchange": "OTC",

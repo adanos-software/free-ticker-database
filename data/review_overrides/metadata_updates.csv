@@ -19,6 +19,12 @@ NFM,LSE,name,update,NEW FRONTIER MINERALS LIMITED ORD NPV (DI),0.96,Official LSE
 0HEC,LSE,country,update,United States,0.8,"AEP is a US-domiciled company. Other LSE international listings in this dataset (e.g. 0HV2, 0QXR) correctly show the issuer's home country. 'United Kingdom' is wrong here."
 0HEC,LSE,country_code,update,US,0.8,"Should reflect issuer domicile (US), consistent with ISIN US0255371017."
 6781,TWSE,name,update,"AES Holding Co., Ltd.",0.95,Official TWSE listed companies feed uses AES Holding Co. Ltd. as the current issuer name for 6781.
+00895,TWSE,name,update,Fubon MSCI ACWI IMI Select Future Mobility Top 30 Capped ETF,0.97,Official TWSE ETF directory resolves 00895 to the listed ETF product name instead of an unrelated Hong Kong equity issuer.
+00939,TWSE,name,update,UPAMC Taiwan High Dividend Momentum ETF,0.97,Official TWSE ETF directory resolves 00939 to the listed ETF product name instead of an unrelated Hong Kong equity issuer.
+00941,TWSE,name,update,CTBC Upstream Semiconductor ETF,0.97,Official TWSE ETF directory resolves 00941 to the listed ETF product name instead of an unrelated Hong Kong equity issuer.
+00951,TWSE,name,update,Taishin NYSE FactSet Japan Semiconductor ETF,0.97,Official TWSE ETF directory resolves 00951 to the listed ETF product name instead of a numeric placeholder.
+00963,TWSE,name,update,CTBC Global High Dividend ETF,0.97,Official TWSE ETF directory resolves 00963 to the listed ETF product name instead of a numeric placeholder.
+00964,TWSE,name,update,CTBC Asia Pacific High Dividend ETF,0.97,Official TWSE ETF directory resolves 00964 to the listed ETF product name instead of a numeric placeholder.
 74SW,Euronext,name,update,74SOFTWARE,0.94,Official Euronext listing name indicates the current company display name: 74SOFTWARE
 AAAC,NYSE ARCA,isin,update,US19761L7635,0.9,Yahoo Finance provided an ISIN for an ETF row that previously had no ISIN.
 AAAC,NYSE ARCA,name,update,Columbia AAA CLO ETF,0.95,Yahoo Finance verified a specific ETF product name for a row that previously only carried a generic trust/fund wrapper name.
@@ -765,3 +771,5 @@ WO6,XETRA,asset_type,update,Stock,0.99,"Official Xetra stock directory classifie
 S&J,SET,name,update,S & J INTERNATIONAL ENTERPRISES PUBLIC COMPANY LIMITED,0.99,"Official SET listed companies directory resolves S&J to the full issuer name; the dataset currently contains an unrelated SentinelOne placeholder."
 MASTEC,SET,name,update,Masstec Link Public Company Limited,0.99,"Official SET listed companies directory resolves MASTEC to Masstec Link Public Company Limited; the dataset currently only contains a ticker placeholder."
 MRDIYT,SET,name,update,MR. D.I.Y. HOLDING (THAILAND) PUBLIC COMPANY LIMITED,0.99,"Official SET listed companies directory resolves MRDIYT to the full issuer name; the dataset currently only contains a ticker placeholder."
+ELCM,PSX,name,update,Elahi Cotton Mills Limited,0.99,"Two official PSX references resolve ELCM to Elahi Cotton Mills Limited; the dataset currently carries the unrelated First Elite Capital Modaraba name."
+FECM,PSX,name,update,First Elite Capital Modaraba,0.98,"Official PSX daily symbol-name download resolves FECM to the full issuer name First Elite Capital Modaraba."

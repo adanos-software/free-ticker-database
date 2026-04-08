@@ -54,6 +54,15 @@
     "official": true
   },
   {
+    "key": "asx_investment_products",
+    "provider": "ASX",
+    "description": "Official ASX investment products monthly workbook",
+    "source_url": "https://www.asx.com.au/issuers/investment-products/asx-funds-statistics",
+    "format": "asx_investment_products_excel",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "set_listed_companies",
     "provider": "SET",
     "description": "Official Stock Exchange of Thailand listed companies table",
@@ -87,6 +96,15 @@
     "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
     "format": "euronext_equities_semicolon_csv",
     "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "euronext_etfs",
+    "provider": "Euronext",
+    "description": "Official Euronext ETF and ETP product directory export",
+    "source_url": "https://live.euronext.com/en/product_directory/data/etf-all-markets/download?mics=ALXA,ALXB,ALXL,ALXP,ATFX,BGEM,ENXB,ENXL,ETFP,ETLX,EXGM,MERK,MIVX,MLXB,MOTX,MTAA,MTAH,MTCH,SEDX,TNLA,TNLB,VPXB,WOMF,XACD,XAMC,XAMS,XATL,XBRU,XDUB,XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC",
+    "format": "euronext_etfs_semicolon_csv",
+    "reference_scope": "listed_companies_subset",
     "official": true
   },
   {
@@ -180,6 +198,15 @@
     "official": true
   },
   {
+    "key": "twse_etf_list",
+    "provider": "TWSE",
+    "description": "Official TWSE ETF product directory",
+    "source_url": "https://www.twse.com.tw/rwd/en/ETF/list",
+    "format": "twse_etf_list_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "sse_a_share_list",
     "provider": "SSE",
     "description": "Official SSE stock list (A/B/STAR boards)",
@@ -239,6 +266,24 @@
     "description": "Official KRX ETF issue finder",
     "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
     "format": "krx_etf_finder_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "psx_listed_companies",
+    "provider": "PSX",
+    "description": "Official Pakistan Stock Exchange listed companies sector directory",
+    "source_url": "https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies",
+    "format": "psx_listed_companies_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "psx_symbol_name_daily",
+    "provider": "PSX",
+    "description": "Official PSX daily symbol-name download",
+    "source_url": "https://dps.psx.com.pk/daily-downloads",
+    "format": "psx_symbol_name_daily_zip",
     "reference_scope": "listed_companies_subset",
     "official": true
   },

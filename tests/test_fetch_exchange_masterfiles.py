@@ -1,11 +1,17 @@
 from __future__ import annotations
 
 import io
+import json
+import zipfile
+from datetime import datetime, timezone
 
 import pandas as pd
 import requests
+import scripts.fetch_exchange_masterfiles as fetch_exchange_masterfiles
 
 from scripts.fetch_exchange_masterfiles import (
+    B3_INSTRUMENTS_EQUITIES_CACHE,
+    LEGACY_B3_INSTRUMENTS_EQUITIES_CACHE,
     LEGACY_LSE_COMPANY_REPORTS_CACHE,
     LEGACY_LSE_INSTRUMENT_DIRECTORY_CACHE,
     LEGACY_LSE_INSTRUMENT_SEARCH_CACHE,
@@ -17,6 +23,7 @@ from scripts.fetch_exchange_masterfiles import (
     MasterfileSource,
     OFFICIAL_SOURCES,
     extract_lse_last_page,
+    extract_latest_asx_investment_products_url,
     SSE_ETF_SUBCLASSES,
     TPEX_MAINBOARD_QUOTES_CACHE,
     fetch_b3_instruments_equities,
@@ -27,6 +34,8 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_lse_instrument_directory,
     fetch_lse_instrument_search_exact,
     fetch_nasdaq_nordic_stockholm_shares,
+    fetch_psx_listed_companies,
+    fetch_psx_symbol_name_daily,
     fetch_six_equity_issuers,
     fetch_six_fund_products,
     fetch_sse_a_share_list,
@@ -36,6 +45,7 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_source_rows_with_mode,
     infer_jpx_asset_type,
     infer_lse_lookup_asset_type,
+    load_b3_instruments_equities_rows,
     load_lse_company_reports_rows,
     load_lse_instrument_directory_rows,
     load_lse_instrument_search_rows,
@@ -44,11 +54,13 @@ from scripts.fetch_exchange_masterfiles import (
     load_tpex_mainboard_quotes_payload,
     lse_instrument_search_target_tickers,
     parse_asx_listed_companies,
+    parse_asx_investment_products_excel,
     parse_b3_instruments_equities_table,
     parse_deutsche_boerse_etfs_etps_excel,
     parse_deutsche_boerse_listed_companies_excel,
     parse_deutsche_boerse_xetra_all_tradable_csv,
     parse_euronext_equities_download,
+    parse_euronext_etfs_download,
     parse_jpx_listed_issues_excel,
     parse_krx_etf_finder,
     parse_krx_listed_companies,
@@ -56,6 +68,8 @@ from scripts.fetch_exchange_masterfiles import (
     parse_nasdaq_nordic_stockholm_shares,
     parse_nasdaq_listed,
     parse_other_listed,
+    parse_psx_listed_companies,
+    parse_psx_symbol_name_daily,
     parse_set_listed_companies_html,
     parse_sec_company_tickers_exchange,
     parse_six_equity_issuers,
@@ -67,11 +81,15 @@ from scripts.fetch_exchange_masterfiles import (
     parse_szse_etf_list,
     parse_szse_etf_workbook,
     parse_tpex_mainboard_quotes,
+    parse_twse_etf_list,
     parse_twse_listed_companies,
     parse_tmx_interlisted,
     parse_tmx_listed_issuers_excel,
     resolve_tmx_listed_issuers_download_url,
     sec_request_headers,
+    extract_psx_sector_options,
+    extract_psx_symbol_name_download_url,
+    extract_psx_xid,
 )
 
 
@@ -207,6 +225,54 @@ def test_parse_twse_listed_companies_maps_twse_rows():
             "official": "true",
         },
     ]
+
+
+def test_parse_twse_etf_list_maps_twse_rows():
+    payload = {
+        "stat": "OK",
+        "fields": ["Listing Date", "Security Code", "Name of ETF", "Issuer"],
+        "data": [
+            ["2026.04.10", "00401A", "JPMorgan (Taiwan) Taiwan Equity High Income Active ETF", "JPMorgan"],
+            ["2026.03.23", "009818", "Hua Nan NASDAQ 100 Technology ETF", "Hua Nan"],
+            ["2026.01.01", "", "Ignored", "Issuer"],
+        ],
+    }
+
+    rows = parse_twse_etf_list(payload, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "00401A",
+            "name": "JPMorgan (Taiwan) Taiwan Equity High Income Active ETF",
+            "exchange": "TWSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "009818",
+            "name": "Hua Nan NASDAQ 100 Technology ETF",
+            "exchange": "TWSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_twse_etf_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "twse_etf_list")
+
+    assert source.provider == "TWSE"
+    assert source.reference_scope == "listed_companies_subset"
 
 
 def test_parse_sse_a_share_list_maps_sse_rows() -> None:
@@ -830,6 +896,84 @@ def test_parse_asx_listed_companies_skips_banner_lines():
             "source_url": "https://example.com",
             "ticker": "STW",
             "name": "SPDR S&P/ASX 200 FUND",
+            "exchange": "ASX",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_extract_latest_asx_investment_products_url_prefers_newest_month() -> None:
+    html = """
+    <a href="/content/dam/asx/issuers/asx-investment-products-reports/2025/excel/asx-investment-products-dec-2025-abs.xlsx">Dec</a>
+    <a href="/content/dam/asx/issuers/asx-investment-products-reports/2026/excel/asx-investment-products-jan-2026-abs.xlsx">Jan</a>
+    <a href="/content/dam/asx/issuers/asx-investment-products-reports/2026/excel/asx-investment-products-feb-2026-abs.xlsx">Feb</a>
+    """
+
+    url = extract_latest_asx_investment_products_url(html)
+
+    assert url == (
+        "https://www.asx.com.au/content/dam/asx/issuers/asx-investment-products-reports/"
+        "2026/excel/asx-investment-products-feb-2026-abs.xlsx"
+    )
+
+
+def test_parse_asx_investment_products_excel_maps_etf_and_sp_rows() -> None:
+    buffer = io.BytesIO()
+    with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
+        pd.DataFrame([[None] * 6 for _ in range(9)]).to_excel(
+            writer,
+            sheet_name="Spotlight ETP List",
+            header=False,
+            index=False,
+        )
+        pd.DataFrame(
+            [
+                {"ASX \nCode": "Equity - Australia", "Type": None, "Issuer": None, "Fund Name": None},
+                {
+                    "ASX \nCode": "A200",
+                    "Type": "ETF",
+                    "Issuer": "Betashares",
+                    "Fund Name": "Betashares Australia 200 ETF",
+                },
+                {
+                    "ASX \nCode": "GOLD",
+                    "Type": "SP",
+                    "Issuer": "Global X",
+                    "Fund Name": "Global X Physical Gold",
+                },
+                {
+                    "ASX \nCode": "XJOAI",
+                    "Type": "Index",
+                    "Issuer": None,
+                    "Fund Name": "S&P/ASX 200 Accumulation",
+                },
+            ]
+        ).to_excel(writer, sheet_name="Spotlight ETP List", startrow=9, index=False)
+
+    rows = parse_asx_investment_products_excel(buffer.getvalue(), SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "A200",
+            "name": "Betashares Australia 200 ETF",
+            "exchange": "ASX",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "GOLD",
+            "name": "Global X Physical Gold",
             "exchange": "ASX",
             "asset_type": "ETF",
             "listing_status": "active",
@@ -1514,6 +1658,278 @@ def test_krx_etf_finder_source_is_modeled_as_partial_official_coverage() -> None
     assert source.reference_scope == "listed_companies_subset"
 
 
+def test_extract_psx_xid_and_sector_options() -> None:
+    html = """
+    <html>
+      <body>
+        <input type="hidden" id="XID" value="abc123" />
+        <select name="sector">
+          <option value="">Select</option>
+          <option value="0801">Automobile Assembler</option>
+          <option value="0837">Exchange Traded Funds</option>
+        </select>
+      </body>
+    </html>
+    """
+
+    assert extract_psx_xid(html) == "abc123"
+    assert extract_psx_sector_options(html) == [
+        ("0801", "Automobile Assembler"),
+        ("0837", "Exchange Traded Funds"),
+    ]
+
+
+def test_parse_psx_listed_companies_maps_stock_and_etf_rows() -> None:
+    stock_rows = parse_psx_listed_companies(
+        [{"symbol_code": "AGTL", "company_name": "AL-Ghazi Tractors"}],
+        SOURCE,
+        sector_label="Automobile Assembler",
+    )
+    etf_rows = parse_psx_listed_companies(
+        [{"symbol_code": "MIIETF", "company_name": "MII ETF"}],
+        SOURCE,
+        sector_label="Exchange Traded Funds",
+    )
+
+    assert stock_rows[0]["exchange"] == "PSX"
+    assert stock_rows[0]["asset_type"] == "Stock"
+    assert etf_rows[0]["asset_type"] == "ETF"
+
+
+def test_fetch_psx_listed_companies_uses_ajax_sector_lookup() -> None:
+    source = MasterfileSource(
+        key="psx_listed_companies",
+        provider="PSX",
+        description="PSX listed companies",
+        source_url="https://example.com/psx",
+        format="psx_listed_companies_json",
+        reference_scope="listed_companies_subset",
+    )
+
+    class FakeResponse:
+        def __init__(self, text: str):
+            self.text = text
+
+        def raise_for_status(self):
+            return None
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            self.calls.append((url, params, headers, timeout))
+            if url == "https://example.com/psx":
+                return FakeResponse(
+                    """
+                    <input type="hidden" id="XID" value="token-1" />
+                    <select name="sector">
+                      <option value="0801">Automobile Assembler</option>
+                      <option value="0837">Exchange Traded Funds</option>
+                      <option value="36">Bonds</option>
+                      <option value="0806">Close-End Mutual Fund</option>
+                    </select>
+                    """
+                )
+            if params["sector"] == "0801":
+                return FakeResponse('[{"symbol_code":"AGTL","company_name":"AL-Ghazi Tractors"}]')
+            if params["sector"] == "0837":
+                return FakeResponse('[{"symbol_code":"MIIETF","company_name":"MII ETF"}]')
+            raise AssertionError(f"Unexpected request: {url} {params}")
+
+    session = FakeSession()
+    rows = fetch_psx_listed_companies(source, session=session)
+
+    assert [(row["ticker"], row["asset_type"]) for row in rows] == [
+        ("AGTL", "Stock"),
+        ("MIIETF", "ETF"),
+    ]
+    assert session.calls == [
+        (
+            "https://example.com/psx",
+            None,
+            {
+                "User-Agent": "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)",
+                "Referer": "https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies",
+                "Origin": "https://www.psx.com.pk",
+                "Connection": "close",
+            },
+            30.0,
+        ),
+        (
+            "https://www.psx.com.pk/psx/custom-templates/companiesSearch-sector",
+            {"sector": "0801", "XID": "token-1"},
+            {
+                "User-Agent": "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)",
+                "Referer": "https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies",
+                "Origin": "https://www.psx.com.pk",
+                "Connection": "close",
+                "Accept": "application/json,text/plain,*/*",
+                "X-Requested-With": "XMLHttpRequest",
+            },
+            30.0,
+        ),
+        (
+            "https://www.psx.com.pk/psx/custom-templates/companiesSearch-sector",
+            {"sector": "0837", "XID": "token-1"},
+            {
+                "User-Agent": "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)",
+                "Referer": "https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies",
+                "Origin": "https://www.psx.com.pk",
+                "Connection": "close",
+                "Accept": "application/json,text/plain,*/*",
+                "X-Requested-With": "XMLHttpRequest",
+            },
+            30.0,
+        ),
+    ]
+
+
+def test_extract_psx_symbol_name_download_url_finds_zip_link() -> None:
+    html = """
+    <div class="panel-body">
+      <a href="/download/symbol_name/2026-04-08.zip">Download</a>
+    </div>
+    """
+
+    assert (
+        extract_psx_symbol_name_download_url(html)
+        == "https://dps.psx.com.pk/download/symbol_name/2026-04-08.zip"
+    )
+
+
+def test_parse_psx_symbol_name_daily_prefers_full_name_and_filters_to_known_tickers() -> None:
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, "w") as archive:
+        archive.writestr(
+            "symbolname.lis",
+            (
+                "AGTL|Al-Ghazi Tr.|Al-Ghazi Tractors Limited|\n"
+                "MIIETF|MII ETF|MII ETF|\n"
+                "SKIP|Skip Corp|Skip Corp|\n"
+            ).encode("utf-16"),
+        )
+
+    rows = parse_psx_symbol_name_daily(
+        buffer.getvalue(),
+        SOURCE,
+        asset_type_by_ticker={"AGTL": "Stock", "MIIETF": "ETF"},
+    )
+
+    assert [(row["ticker"], row["name"], row["asset_type"]) for row in rows] == [
+        ("AGTL", "Al-Ghazi Tractors Limited", "Stock"),
+        ("MIIETF", "MII ETF", "ETF"),
+    ]
+
+
+def test_fetch_psx_symbol_name_daily_downloads_latest_available_symbol_file(monkeypatch) -> None:
+    source = MasterfileSource(
+        key="psx_symbol_name_daily",
+        provider="PSX",
+        description="PSX symbol names",
+        source_url="https://dps.psx.com.pk/daily-downloads",
+        format="psx_symbol_name_daily_zip",
+        reference_scope="listed_companies_subset",
+    )
+
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "load_csv",
+        lambda path: [
+            {"exchange": "PSX", "ticker": "AGTL", "asset_type": "Stock"},
+            {"exchange": "PSX", "ticker": "MIIETF", "asset_type": "ETF"},
+        ],
+    )
+
+    class FixedDateTime:
+        @classmethod
+        def now(cls, tz=None):
+            return datetime(2026, 4, 8, tzinfo=tz or timezone.utc)
+
+    monkeypatch.setattr(fetch_exchange_masterfiles, "datetime", FixedDateTime)
+
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, "w") as archive:
+        archive.writestr(
+            "symbolname.lis",
+            (
+                "AGTL|Al-Ghazi Tr.|Al-Ghazi Tractors Limited|\n"
+                "MIIETF|MII ETF|MII ETF|\n"
+            ).encode("utf-16"),
+        )
+    zip_bytes = buffer.getvalue()
+
+    class FakeResponse:
+        def __init__(self, text: str = "", content: bytes = b""):
+            self.text = text
+            self.content = content
+
+        def raise_for_status(self):
+            return None
+
+    class FakeSession:
+        def __init__(self):
+            self.post_calls = []
+            self.get_calls = []
+
+        def post(self, url, data=None, headers=None, timeout=None):
+            self.post_calls.append((url, data, headers, timeout))
+            if data["date"].endswith("08"):
+                return FakeResponse("<div>No file yet</div>")
+            return FakeResponse('<a href="/download/symbol_name/2026-04-07.zip">Download</a>')
+
+        def get(self, url, headers=None, timeout=None):
+            self.get_calls.append((url, headers, timeout))
+            return FakeResponse(content=zip_bytes)
+
+    session = FakeSession()
+    rows = fetch_psx_symbol_name_daily(source, session=session)
+
+    assert [(row["ticker"], row["name"], row["asset_type"], row["source_url"]) for row in rows] == [
+        (
+            "AGTL",
+            "Al-Ghazi Tractors Limited",
+            "Stock",
+            "https://dps.psx.com.pk/download/symbol_name/2026-04-07.zip",
+        ),
+        (
+            "MIIETF",
+            "MII ETF",
+            "ETF",
+            "https://dps.psx.com.pk/download/symbol_name/2026-04-07.zip",
+        ),
+    ]
+    assert session.post_calls[0][0] == "https://dps.psx.com.pk/daily-downloads"
+    assert session.post_calls[0][2] == {
+        "User-Agent": "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)",
+        "Referer": "https://dps.psx.com.pk/daily-downloads",
+        "Origin": "https://dps.psx.com.pk",
+        "Connection": "close",
+    }
+    assert session.get_calls == [
+        (
+            "https://dps.psx.com.pk/download/symbol_name/2026-04-07.zip",
+            {
+                "User-Agent": "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)",
+                "Referer": "https://dps.psx.com.pk/daily-downloads",
+                "Origin": "https://dps.psx.com.pk",
+                "Connection": "close",
+            },
+            30.0,
+        )
+    ]
+
+
+def test_psx_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "psx_listed_companies")
+    assert source.reference_scope == "listed_companies_subset"
+
+
+def test_psx_symbol_name_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "psx_symbol_name_daily")
+    assert source.reference_scope == "listed_companies_subset"
+
+
 def test_deutsche_boerse_etfs_etps_source_is_modeled_as_partial_official_coverage() -> None:
     source = next(item for item in OFFICIAL_SOURCES if item.key == "deutsche_boerse_etfs_etps")
     assert source.reference_scope == "listed_companies_subset"
@@ -1840,6 +2256,11 @@ def test_tmx_listed_issuers_source_is_modeled_as_partial_official_coverage() -> 
     assert source.reference_scope == "listed_companies_subset"
 
 
+def test_euronext_etf_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "euronext_etfs")
+    assert source.reference_scope == "listed_companies_subset"
+
+
 def test_parse_euronext_equities_download_maps_markets():
     text = "\n".join(
         [
@@ -1903,6 +2324,48 @@ def test_parse_euronext_equities_download_maps_markets():
             "asset_type": "Stock",
             "listing_status": "active",
             "reference_scope": "secondary_listing_subset",
+            "official": "true",
+        },
+    ]
+
+
+def test_parse_euronext_etfs_download_keeps_etf_asset_type():
+    text = "\n".join(
+        [
+            '\ufeff"Instrument Fullname";"ESG Classification";Name;ISIN;Symbol;Market;Currency;"Open Price";"High Price";"low Price";"last Price";"last Trade MIC Time";"Time Zone";Volume;Turnover;"Closing Price";"Closing Price DateTime"',
+            '"European Trackers"',
+            '"08 Apr 2026"',
+            '"All datapoints provided as of end of last active trading day."',
+            '"Leverage Shares -1x Short Disney ETP Securities";-;"-1X SHORT DIS";XS2337085422;SDIS;"Euronext Amsterdam";EUR;1;1;1;1;" 09:04";CET;-;-;1;',
+            '"Amundi ETF BX4";-;"AMUNDI ETF BX4";FR0010411884;BX4;"Euronext Paris";EUR;1;1;1;1;" 17:35";CET;1;1;1;',
+        ]
+    )
+
+    rows = parse_euronext_etfs_download(text, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "SDIS",
+            "name": "Leverage Shares -1x Short Disney ETP Securities",
+            "exchange": "AMS",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "BX4",
+            "name": "Amundi ETF BX4",
+            "exchange": "Euronext",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
             "official": "true",
         },
     ]
@@ -2100,6 +2563,66 @@ def test_fetch_b3_instruments_equities_reads_tail_pages_for_large_tables():
     assert [row["ticker"] for row in rows] == ["ROW111", "ROW110", "ROW109", "ROW108"]
     post_pages = [int(url.rstrip("/").split("/")[-2]) for method, url in session.calls if method == "POST"]
     assert post_pages == [1, 111, 110, 109, 108, 107]
+
+
+def test_load_b3_instruments_equities_rows_uses_network_and_refreshes_cache(tmp_path, monkeypatch):
+    cache_path = tmp_path / "b3_instruments_equities.json"
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.B3_INSTRUMENTS_EQUITIES_CACHE", cache_path)
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.LEGACY_B3_INSTRUMENTS_EQUITIES_CACHE",
+        tmp_path / "missing.json",
+    )
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.fetch_b3_instruments_equities",
+        lambda source, session=None: [
+            {
+                "ticker": "ABEV3",
+                "name": "AMBEV S.A.",
+                "exchange": "B3",
+                "asset_type": "Stock",
+                "listing_status": "active",
+            }
+        ],
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "b3_instruments_equities")
+    rows, mode = load_b3_instruments_equities_rows(source)
+
+    assert mode == "network"
+    assert rows == [
+        {
+            "ticker": "ABEV3",
+            "name": "AMBEV S.A.",
+            "exchange": "B3",
+            "asset_type": "Stock",
+            "listing_status": "active",
+        }
+    ]
+    assert json.loads(cache_path.read_text(encoding="utf-8")) == rows
+
+
+def test_fetch_source_rows_with_mode_uses_b3_cache_when_network_unavailable(tmp_path, monkeypatch):
+    cache_path = tmp_path / "b3_instruments_equities.json"
+    cache_path.write_text(
+        '[{"ticker":"ABEV3","name":"AMBEV S.A.","exchange":"B3","asset_type":"Stock","listing_status":"active","source_key":"b3_instruments_equities","reference_scope":"exchange_directory","official":"true","provider":"B3","source_url":"https://example.com"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.B3_INSTRUMENTS_EQUITIES_CACHE", cache_path)
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.LEGACY_B3_INSTRUMENTS_EQUITIES_CACHE",
+        tmp_path / "missing.json",
+    )
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.fetch_b3_instruments_equities",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("network down")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "b3_instruments_equities")
+    rows, mode = fetch_source_rows_with_mode(source)
+
+    assert mode == "cache"
+    assert rows[0]["ticker"] == "ABEV3"
+    assert rows[0]["exchange"] == "B3"
 
 
 def test_parse_nasdaq_nordic_stockholm_shares_maps_rows() -> None:
