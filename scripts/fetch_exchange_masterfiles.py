@@ -6,6 +6,7 @@ import json
 import os
 import re
 import zipfile
+from base64 import b64encode
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import asdict, dataclass
 from datetime import datetime, timedelta, timezone
@@ -79,6 +80,8 @@ SIX_EQUITY_ISSUERS_URL = "https://www.six-group.com/sheldon/equity_issuers/v1/eq
 SIX_ETF_EXPLORER_URL = "https://www.six-group.com/en/market-data/etf/etf-explorer.html"
 SIX_ETP_EXPLORER_URL = "https://www.six-group.com/en/market-data/etp/etp-explorer.html"
 B3_INSTRUMENTS_EQUITIES_URL = "https://arquivos.b3.com.br/bdi/table/InstrumentsEquities"
+B3_FUNDS_LISTED_PROXY_URL = "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/"
+B3_BDR_COMPANIES_PROXY_URL = "https://sistemaswebb3-listados.b3.com.br/listedCompaniesProxy/CompanyCall/"
 NASDAQ_NORDIC_API_ROOT_URL = "https://api.nasdaq.com/api/nordic/"
 NASDAQ_NORDIC_SHARES_SCREENER_URL = "https://api.nasdaq.com/api/nordic/screener/shares"
 TWSE_LISTED_COMPANIES_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
@@ -221,6 +224,8 @@ B3_EXCLUDED_ISSUER_MARKERS = (
     "taxa de financiamento",
     "financ/termo",
 )
+B3_ETF_FUND_TYPES = ("ETF", "ETF-RF", "ETF-FII", "ETF-CRIPTO")
+B3_FUNDS_PAGE_SIZE = 120
 TPEX_CANONICAL_TICKER_RE = re.compile(r"(?:\d{4}|00\d{4}[A-Z]?)$")
 LSE_PAGE_INITIALS = tuple("ABCDEFGHIJKLMNOPQRSTUVWXYZ") + ("0",)
 TMX_LISTED_ISSUERS_HREF_RE = re.compile(
@@ -453,6 +458,22 @@ OFFICIAL_SOURCES = [
         description="Official B3 instruments consolidated cash-equities table",
         source_url=B3_INSTRUMENTS_EQUITIES_URL,
         format="b3_instruments_equities_api",
+    ),
+    MasterfileSource(
+        key="b3_listed_etfs",
+        provider="B3",
+        description="Official B3 listed ETF directories (equity, fixed-income, FII, crypto)",
+        source_url=B3_FUNDS_LISTED_PROXY_URL,
+        format="b3_listed_funds_api",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="b3_bdr_etfs",
+        provider="B3",
+        description="Official B3 BDR ETF and ETP directory",
+        source_url=B3_BDR_COMPANIES_PROXY_URL,
+        format="b3_bdr_companies_api",
+        reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
         key="nasdaq_nordic_stockholm_shares",
@@ -1196,6 +1217,12 @@ def normalize_excel_header(value: Any) -> str:
     if pd.isna(value):
         return ""
     return " ".join(str(value).replace("\n", " ").split()).strip().lower()
+
+
+def b64encode_json(value: Any, latin1_safe: bool = False) -> str:
+    text = json.dumps(value, ensure_ascii=False)
+    payload = text.encode("utf-8" if latin1_safe else "utf-8")
+    return b64encode(payload).decode()
 
 
 def asx_investment_products_sort_key(path: str, fallback_year: int) -> tuple[int, int]:
@@ -2185,6 +2212,56 @@ def parse_b3_instruments_equities_table(table: dict[str, Any], source: Masterfil
     return rows
 
 
+def parse_b3_listed_funds_payload(payload: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for record in payload.get("results") or []:
+        acronym = str(record.get("acronym") or "").strip().upper()
+        name = str(record.get("fundName") or "").strip()
+        if not acronym or not name:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": f"{acronym}11",
+                "name": name,
+                "exchange": "B3",
+                "asset_type": "ETF",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
+def parse_b3_bdr_companies_payload(payload: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for record in payload.get("results") or []:
+        if str(record.get("typeBDR") or "").strip().upper() != "DRE":
+            continue
+        issuing_company = str(record.get("issuingCompany") or "").strip().upper()
+        name = str(record.get("companyName") or "").strip()
+        if not issuing_company or not name:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": f"{issuing_company}39",
+                "name": name,
+                "exchange": "B3",
+                "asset_type": "ETF",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
 def parse_nasdaq_nordic_stockholm_shares(payload: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     for record in ((payload.get("data") or {}).get("instrumentListing") or {}).get("rows") or []:
@@ -2555,6 +2632,55 @@ def fetch_b3_instruments_equities(source: MasterfileSource, session: requests.Se
     return rows
 
 
+def fetch_b3_listed_funds(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Accept": "application/json",
+    }
+    rows: list[dict[str, str]] = []
+    for fund_type in B3_ETF_FUND_TYPES:
+        filters = {
+            "language": "en-us",
+            "pageNumber": 1,
+            "pageSize": B3_FUNDS_PAGE_SIZE,
+            "typeFund": fund_type,
+        }
+        response = session.get(
+            source.source_url + "GetListFunds/" + b64encode_json(filters, latin1_safe=True),
+            headers=headers,
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        payload = response.json()
+        rows.extend(parse_b3_listed_funds_payload(payload, source))
+        total_pages = int((payload.get("page") or {}).get("totalPages") or 1)
+        for page in range(2, total_pages + 1):
+            filters["pageNumber"] = page
+            response = session.get(
+                source.source_url + "GetListFunds/" + b64encode_json(filters, latin1_safe=True),
+                headers=headers,
+                timeout=REQUEST_TIMEOUT,
+            )
+            response.raise_for_status()
+            rows.extend(parse_b3_listed_funds_payload(response.json(), source))
+    return rows
+
+
+def fetch_b3_bdr_companies(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    response = session.get(
+        source.source_url + "GetCompaniesBDR/" + b64encode_json({"language": "en-us"}),
+        headers={
+            "User-Agent": USER_AGENT,
+            "Accept": "application/json",
+        },
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    return parse_b3_bdr_companies_payload(response.json(), source)
+
+
 def fetch_nasdaq_nordic_stockholm_shares(
     source: MasterfileSource,
     session: requests.Session | None = None,
@@ -2822,6 +2948,10 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return fetch_six_fund_products(source, session=session)
     if source.format == "b3_instruments_equities_api":
         return fetch_b3_instruments_equities(source, session=session)
+    if source.format == "b3_listed_funds_api":
+        return fetch_b3_listed_funds(source, session=session)
+    if source.format == "b3_bdr_companies_api":
+        return fetch_b3_bdr_companies(source, session=session)
     if source.format == "nasdaq_nordic_stockholm_shares_json":
         return fetch_nasdaq_nordic_stockholm_shares(source, session=session)
     if source.format == "twse_listed_companies_json":

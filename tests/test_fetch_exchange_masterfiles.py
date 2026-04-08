@@ -3,6 +3,7 @@ from __future__ import annotations
 import io
 import json
 import zipfile
+from base64 import b64decode
 from datetime import datetime, timezone
 
 import pandas as pd
@@ -27,6 +28,8 @@ from scripts.fetch_exchange_masterfiles import (
     SSE_ETF_SUBCLASSES,
     TPEX_MAINBOARD_QUOTES_CACHE,
     fetch_b3_instruments_equities,
+    fetch_b3_bdr_companies,
+    fetch_b3_listed_funds,
     fetch_all_sources,
     fetch_krx_etf_finder,
     fetch_krx_listed_companies,
@@ -55,7 +58,9 @@ from scripts.fetch_exchange_masterfiles import (
     lse_instrument_search_target_tickers,
     parse_asx_listed_companies,
     parse_asx_investment_products_excel,
+    parse_b3_bdr_companies_payload,
     parse_b3_instruments_equities_table,
+    parse_b3_listed_funds_payload,
     parse_deutsche_boerse_etfs_etps_excel,
     parse_deutsche_boerse_listed_companies_excel,
     parse_deutsche_boerse_xetra_all_tradable_csv,
@@ -2421,6 +2426,78 @@ def test_parse_b3_instruments_equities_table_keeps_cash_stocks_and_etfs_only():
     ]
 
 
+def test_parse_b3_listed_funds_payload_maps_acronym_to_11_ticker():
+    payload = {
+        "page": {"pageNumber": 1, "pageSize": 20, "totalRecords": 2, "totalPages": 1},
+        "results": [
+            {
+                "id": 1,
+                "acronym": "BOVA",
+                "fundName": "ISHARES IBOVESPA FUNDO DE ÍNDICE",
+                "tradingName": "BOVA11",
+            },
+            {
+                "id": 2,
+                "acronym": None,
+                "fundName": "Ignored Fund",
+                "tradingName": "IGNO11",
+            },
+        ],
+    }
+
+    rows = parse_b3_listed_funds_payload(payload, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "BOVA11",
+            "name": "ISHARES IBOVESPA FUNDO DE ÍNDICE",
+            "exchange": "B3",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        }
+    ]
+
+
+def test_parse_b3_bdr_companies_payload_maps_dre_to_39_ticker():
+    payload = {
+        "page": {"pageNumber": -1, "pageSize": -1, "totalRecords": 2, "totalPages": -2},
+        "results": [
+            {
+                "issuingCompany": "CBTC",
+                "companyName": "21SHARES BITCOIN CORE ETP",
+                "typeBDR": "DRE",
+            },
+            {
+                "issuingCompany": "AAPL",
+                "companyName": "APPLE INC.",
+                "typeBDR": "DRN",
+            },
+        ],
+    }
+
+    rows = parse_b3_bdr_companies_payload(payload, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "CBTC39",
+            "name": "21SHARES BITCOIN CORE ETP",
+            "exchange": "B3",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        }
+    ]
+
+
 def test_fetch_b3_instruments_equities_uses_workday_and_paginates(monkeypatch):
     class FakeResponse:
         def __init__(self, payload, status_code=200):
@@ -2563,6 +2640,119 @@ def test_fetch_b3_instruments_equities_reads_tail_pages_for_large_tables():
     assert [row["ticker"] for row in rows] == ["ROW111", "ROW110", "ROW109", "ROW108"]
     post_pages = [int(url.rstrip("/").split("/")[-2]) for method, url in session.calls if method == "POST"]
     assert post_pages == [1, 111, 110, 109, 108, 107]
+
+
+def test_fetch_b3_listed_funds_reads_all_etf_types_and_pages():
+    class FakeResponse:
+        def __init__(self, payload, status_code=200):
+            self._payload = payload
+            self.status_code = status_code
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, headers=None, timeout=None):
+            self.calls.append(url)
+            encoded = url.rstrip("/").split("/")[-1]
+            payload = json.loads(b64decode(encoded).decode("utf-8"))
+            fund_type = payload["typeFund"]
+            page_number = payload["pageNumber"]
+            total_pages = 2 if fund_type == "ETF" else 1
+            results = []
+            if fund_type == "ETF" and page_number == 1:
+                results = [{"acronym": "BOVA", "fundName": "ISHARES IBOVESPA FUNDO DE ÍNDICE"}]
+            elif fund_type == "ETF" and page_number == 2:
+                results = [{"acronym": "SMAL", "fundName": "ISHARES SMALL CAP FUNDO DE ÍNDICE"}]
+            elif fund_type == "ETF-RF":
+                results = [{"acronym": "FIXA", "fundName": "BB ETF RENDA FIXA"}]
+            elif fund_type == "ETF-FII":
+                results = [{"acronym": "XFIX", "fundName": "TREND ETF IFIX-L"}]
+            elif fund_type == "ETF-CRIPTO":
+                results = [{"acronym": "BITC", "fundName": "BTG PACTUAL TEVA BITCOIN FUNDO DE ÍNDICE"}]
+            return FakeResponse(
+                {
+                    "page": {
+                        "pageNumber": page_number,
+                        "pageSize": payload["pageSize"],
+                        "totalRecords": len(results),
+                        "totalPages": total_pages,
+                    },
+                    "results": results,
+                }
+            )
+
+    rows = fetch_b3_listed_funds(
+        MasterfileSource(
+            key="b3_listed_etfs",
+            provider="B3",
+            description="Official B3 listed ETF directories",
+            source_url="https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/",
+            format="b3_listed_funds_api",
+            reference_scope="listed_companies_subset",
+        ),
+        session=FakeSession(),
+    )
+
+    assert [row["ticker"] for row in rows] == ["BOVA11", "SMAL11", "FIXA11", "XFIX11", "BITC11"]
+
+
+def test_fetch_b3_bdr_companies_keeps_dre_rows_only():
+    class FakeResponse:
+        def __init__(self, payload, status_code=200):
+            self._payload = payload
+            self.status_code = status_code
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def get(self, url, headers=None, timeout=None):
+            return FakeResponse(
+                {
+                    "page": {"pageNumber": -1, "pageSize": -1, "totalRecords": 2, "totalPages": -2},
+                    "results": [
+                        {"issuingCompany": "CBTC", "companyName": "21SHARES BITCOIN CORE ETP", "typeBDR": "DRE"},
+                        {"issuingCompany": "AAPL", "companyName": "APPLE INC.", "typeBDR": "DRN"},
+                    ],
+                }
+            )
+
+    rows = fetch_b3_bdr_companies(
+        MasterfileSource(
+            key="b3_bdr_etfs",
+            provider="B3",
+            description="Official B3 BDR ETF directory",
+            source_url="https://sistemaswebb3-listados.b3.com.br/listedCompaniesProxy/CompanyCall/",
+            format="b3_bdr_companies_api",
+            reference_scope="listed_companies_subset",
+        ),
+        session=FakeSession(),
+    )
+
+    assert rows == [
+        {
+            "source_key": "b3_bdr_etfs",
+            "provider": "B3",
+            "source_url": "https://sistemaswebb3-listados.b3.com.br/listedCompaniesProxy/CompanyCall/",
+            "ticker": "CBTC39",
+            "name": "21SHARES BITCOIN CORE ETP",
+            "exchange": "B3",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+        }
+    ]
 
 
 def test_load_b3_instruments_equities_rows_uses_network_and_refreshes_cache(tmp_path, monkeypatch):

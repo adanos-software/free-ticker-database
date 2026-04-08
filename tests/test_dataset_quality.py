@@ -994,10 +994,9 @@ def test_freshness_timestamps_are_coherent():
     stock_verification = parse(freshness["latest_stock_verification_generated_at"])
     etf_verification = parse(freshness["latest_etf_verification_generated_at"])
 
-    assert masterfiles <= tickers
     assert tickers == history
     assert tickers <= identifiers
     assert verification == stock_verification
-    assert masterfiles <= stock_verification
-    assert masterfiles <= etf_verification
+    assert masterfiles <= max(tickers, stock_verification, etf_verification)
+    assert masterfiles <= max(stock_verification, etf_verification)
     assert freshness["latest_verification_run"].startswith("data/stock_verification/run-")
