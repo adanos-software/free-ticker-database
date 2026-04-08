@@ -64,6 +64,7 @@ from scripts.fetch_exchange_masterfiles import (
     parse_b3_bdr_companies_payload,
     parse_b3_instruments_equities_table,
     parse_b3_listed_funds_payload,
+    parse_cboe_canada_listing_directory_html,
     parse_deutsche_boerse_etfs_etps_excel,
     parse_deutsche_boerse_listed_companies_excel,
     parse_deutsche_boerse_xetra_all_tradable_csv,
@@ -1096,6 +1097,74 @@ def test_parse_lse_company_reports_html_maps_lse_rows():
             "ticker": "VUSA",
             "name": "VANGUARD S&P 500 UCITS ETF USD",
             "exchange": "LSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_parse_cboe_canada_listing_directory_html_maps_supported_security_types() -> None:
+    html = """
+    <script>
+    CTX['listingDirectory'] = [
+      {"symbol": "ABXX", "name": "ABXX CORP.", "security": "equity"},
+      {"symbol": "BYLD.B", "name": "BMO YLD ETF", "security": "etf"},
+      {"symbol": "ABCD", "name": "ABC DR", "security": "dr"},
+      {"symbol": "FUND", "name": "Closed End Fund", "security": "cef"},
+      {"symbol": "WARR", "name": "Ignored Warrant", "security": "warrant"},
+      {"symbol": "DEBT", "name": "Ignored Debt", "security": "debt"}
+    ];
+    </script>
+    """
+
+    rows = parse_cboe_canada_listing_directory_html(html, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "ABXX",
+            "name": "ABXX CORP.",
+            "exchange": "NEO",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "BYLD.B",
+            "name": "BMO YLD ETF",
+            "exchange": "NEO",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "ABCD",
+            "name": "ABC DR",
+            "exchange": "NEO",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "FUND",
+            "name": "Closed End Fund",
+            "exchange": "NEO",
             "asset_type": "ETF",
             "listing_status": "active",
             "reference_scope": "exchange_directory",

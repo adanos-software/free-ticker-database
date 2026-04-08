@@ -296,6 +296,7 @@ def test_twse_non_common_lines_are_reclassified_or_removed():
     assert ticker_exchange_row("00941", "TWSE")["asset_type"] == "ETF"
     assert ticker_exchange_row("01002T", "TWSE")["asset_type"] == "ETF"
     assert ticker_exchange_row("01009T", "TWSE")["asset_type"] == "ETF"
+    assert ticker_exchange_row("FGX", "NEO")["asset_type"] == "ETF"
     assert ticker_exchange_row("2883B", "TWSE") is None
     assert ticker_exchange_row("6781", "TWSE")["name"] == "AES Holding Co., Ltd."
 
@@ -525,6 +526,39 @@ def test_normalize_input_row_reclassifies_exchange_traded_products():
     assert etn["asset_type"] == "ETF"
     assert twse_etf["asset_type"] == "ETF"
     assert twse_reit["asset_type"] == "ETF"
+
+
+def test_normalize_input_row_reclassifies_neo_cdrs_and_xdrs_to_stock():
+    from scripts.rebuild_dataset import normalize_input_row
+
+    neo_cdr = normalize_input_row(
+        {
+            "ticker": "NTDO",
+            "name": "NINTENDO CO LTD CDR (CAD Hedged)",
+            "exchange": "NEO",
+            "asset_type": "ETF",
+        }
+    )
+    neo_xdr = normalize_input_row(
+        {
+            "ticker": "ZSMC",
+            "name": "SUPER MICRO COMPUTER (SMCI) BMO XDR (CAD HEDGED)",
+            "exchange": "NEO",
+            "asset_type": "ETF",
+        }
+    )
+    regular_neo_etf = normalize_input_row(
+        {
+            "ticker": "BCCC-U",
+            "name": "Global X Bitcoin Covered Call ETF",
+            "exchange": "NEO",
+            "asset_type": "ETF",
+        }
+    )
+
+    assert neo_cdr["asset_type"] == "Stock"
+    assert neo_xdr["asset_type"] == "Stock"
+    assert regular_neo_etf["asset_type"] == "ETF"
 
 
 def test_should_exclude_stock_row_drops_ams_certificates():

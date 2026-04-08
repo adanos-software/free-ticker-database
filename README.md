@@ -10,8 +10,8 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 55
 | Metric | Value |
 |---|---|
 | **Total tickers** | 55,911 |
-| Stocks | 41,344 |
-| ETFs | 14,567 |
+| Stocks | 41,357 |
+| ETFs | 14,554 |
 | Exchanges | 68 |
 | Countries | 68 |
 | ISIN coverage | 38,226 (68.4%) |

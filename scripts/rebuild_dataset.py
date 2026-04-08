@@ -181,6 +181,7 @@ ASX_CAPITAL_NOTE_TICKER_RE = re.compile(r".*P[A-Z]$")
 ASX_LOYALTY_TICKER_RE = re.compile(r".*LV$")
 TAIWAN_ETF_TICKER_RE = re.compile(r"^00\d{2,4}[A-Z]?$")
 TAIWAN_NON_COMMON_STOCK_TICKER_RE = re.compile(r"^\d{4}B$")
+NEO_CDR_XDR_RE = re.compile(r"\b(?:cdr|xdr)\b", re.IGNORECASE)
 PREFERRED_TICKER_SUFFIX_RE = re.compile(r"^[A-Z]{1,8}-P[A-Z]$")
 PREFERRED_PF_TICKER_RE = re.compile(r"^[A-Z]{1,8}-PF[A-Z]$")
 PREFERRED_PR_TICKER_RE = re.compile(r"^[A-Z]{1,8}-PR-[A-Z]$")
@@ -773,6 +774,9 @@ def normalize_input_row(row: dict[str, str]) -> dict[str, str]:
     exchange = normalized.get("exchange", "")
     ticker = normalized.get("ticker", "").strip().upper()
     name = normalized.get("name", "")
+    if normalized.get("asset_type") == "ETF" and exchange == "NEO" and NEO_CDR_XDR_RE.search(name):
+        normalized["asset_type"] = "Stock"
+        return normalized
     if (
         normalized.get("asset_type") == "Stock"
         and any(pattern.search(name) for pattern in ETP_NAME_PATTERNS)

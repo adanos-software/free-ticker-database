@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 27333,
-    "matched": 18497,
-    "collisions": 4425,
-    "missing": 4411
+    "official_symbols": 27725,
+    "matched": 18675,
+    "collisions": 4508,
+    "missing": 4542
   },
   "exchanges": [
     {
@@ -627,6 +627,147 @@
           "ticker": "ABVX",
           "name": "Abivax SA - American Depositary Shares",
           "exchange": "NASDAQ"
+        }
+      ]
+    },
+    {
+      "exchange": "NEO",
+      "official_symbols": 392,
+      "matched": 178,
+      "collisions": 83,
+      "missing": 131,
+      "collision_examples": [
+        {
+          "ticker": "ABB",
+          "name": "ABB CDR (CAD HEDGED)",
+          "target_exchange": "NEO",
+          "existing_exchanges": [
+            "STO"
+          ]
+        },
+        {
+          "ticker": "ADI",
+          "name": "ADIDAS CDR (CAD HEDGED)",
+          "target_exchange": "NEO",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "ALGO",
+          "name": "LIGHT AI INC.",
+          "target_exchange": "NEO",
+          "existing_exchanges": [
+            "Euronext"
+          ]
+        },
+        {
+          "ticker": "APLY",
+          "name": "APPLE (AAPL) YIELD SHARES PURPOSE ETF",
+          "target_exchange": "NEO",
+          "existing_exchanges": [
+            "NYSE ARCA"
+          ]
+        },
+        {
+          "ticker": "ASMH",
+          "name": "ASML CDR (CAD HEDGED)",
+          "target_exchange": "NEO",
+          "existing_exchanges": [
+            "NYSE ARCA"
+          ]
+        },
+        {
+          "ticker": "AXA",
+          "name": "AXA CDR (CAD HEDGED)",
+          "target_exchange": "NEO",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
+        {
+          "ticker": "BCCC",
+          "name": "GLOBAL X BITCOIN COVERED CALL ETF",
+          "target_exchange": "NEO",
+          "existing_exchanges": [
+            "BATS"
+          ]
+        },
+        {
+          "ticker": "BGDV",
+          "name": "BMO GLOBAL DIVIDEND OPPORTUNITIES FUND",
+          "target_exchange": "NEO",
+          "existing_exchanges": [
+            "NYSE ARCA"
+          ]
+        },
+        {
+          "ticker": "BGIN",
+          "name": "BMO GLOBAL INNOVATORS FUND",
+          "target_exchange": "NEO",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "BNP",
+          "name": "BNP PARIBAS CDR (CAD HEDGED)",
+          "target_exchange": "NEO",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        }
+      ],
+      "missing_examples": [
+        {
+          "ticker": "ALIZ",
+          "name": "ALLIANZ CDR (CAD HEDGED)",
+          "exchange": "NEO"
+        },
+        {
+          "ticker": "ASMD",
+          "name": "AGF U.S. SMALL-MID CAP FUND",
+          "exchange": "NEO"
+        },
+        {
+          "ticker": "ATRB",
+          "name": "AGF TOTAL RETURN BOND FUND",
+          "exchange": "NEO"
+        },
+        {
+          "ticker": "BBVA",
+          "name": "BBVA CDR (CAD HEDGED)",
+          "exchange": "NEO"
+        },
+        {
+          "ticker": "BCCC.U",
+          "name": "GLOBAL X BITCOIN COVERED CALL ETF",
+          "exchange": "NEO"
+        },
+        {
+          "ticker": "BCCL.U",
+          "name": "GLOBAL X ENHANCED BITCOIN COVERED CALL ETF",
+          "exchange": "NEO"
+        },
+        {
+          "ticker": "BMWY",
+          "name": "BMW CDR (CAD HEDGED)",
+          "exchange": "NEO"
+        },
+        {
+          "ticker": "BSAN",
+          "name": "SANTANDER CDR (CAD HEDGED)",
+          "exchange": "NEO"
+        },
+        {
+          "ticker": "BYLD.B",
+          "name": "MANULIFE SMART ENHANCED YIELD BOND ETF - UNHEDGED UNITS",
+          "exchange": "NEO"
+        },
+        {
+          "ticker": "CANO",
+          "name": "CANON CDR (CAD HEDGED)",
+          "exchange": "NEO"
         }
       ]
     },

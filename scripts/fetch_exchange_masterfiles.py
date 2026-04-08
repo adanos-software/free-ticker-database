@@ -63,6 +63,7 @@ LSE_INSTRUMENT_DIRECTORY_URL = (
     "https://www.londonstockexchange.com/exchange/instrument-result.html"
     "?codeName=&search=search&page={page}"
 )
+CBOE_CANADA_LISTING_DIRECTORY_URL = "https://www.cboe.com/ca/equities/market-activity/listing-directory/"
 ASX_LISTED_URL = "https://www.asx.com.au/asx/research/ASXListedCompanies.csv"
 ASX_FUNDS_STATISTICS_URL = "https://www.asx.com.au/issuers/investment-products/asx-funds-statistics"
 TMX_INTERLISTED_URL = "https://www.tsx.com/files/trading/interlisted-companies.txt"
@@ -114,6 +115,7 @@ USER_AGENT = "free-ticker-database/2.0 (+https://github.com/adanos-software/free
 SEC_CONTACT_EMAIL = os.environ.get("SEC_CONTACT_EMAIL", "opensource@adanos.software")
 REQUEST_TIMEOUT = 30.0
 LSE_UPDATE_OPENER_RE = re.compile(r"UpdateOpener\('(?P<name>(?:\\'|[^'])*)',\s*'(?P<meta>[^']*)'\)")
+CBOE_CANADA_LISTING_DIRECTORY_RE = re.compile(r"CTX\['listingDirectory'\]\s*=\s*(\[[\s\S]*?\]);")
 LSE_INSTRUMENT_SEARCH_MAX_WORKERS = 8
 
 OTHER_LISTED_EXCHANGE_MAP = {
@@ -352,6 +354,13 @@ OFFICIAL_SOURCES = [
         source_url=ASX_LISTED_URL,
         format="asx_listed_companies_csv",
         reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="cboe_canada_listing_directory",
+        provider="Cboe Canada",
+        description="Official Cboe Canada listing directory",
+        source_url=CBOE_CANADA_LISTING_DIRECTORY_URL,
+        format="cboe_canada_listing_directory_html",
     ),
     MasterfileSource(
         key="asx_investment_products",
@@ -1360,6 +1369,44 @@ def parse_lse_company_reports_html(text: str, source: MasterfileSource) -> list[
                 "name": name,
                 "exchange": "LSE",
                 "asset_type": infer_asset_type(name),
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
+def parse_cboe_canada_listing_directory_html(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    match = CBOE_CANADA_LISTING_DIRECTORY_RE.search(text)
+    if not match:
+        return []
+    try:
+        payload = json.loads(match.group(1))
+    except json.JSONDecodeError:
+        return []
+    rows: list[dict[str, str]] = []
+    for record in payload:
+        ticker = str(record.get("symbol") or "").strip().upper()
+        name = str(record.get("name") or "").strip()
+        security = str(record.get("security") or "").strip().lower()
+        if not ticker or not name:
+            continue
+        if security in {"equity", "dr"}:
+            asset_type = "Stock"
+        elif security in {"etf", "cef"}:
+            asset_type = "ETF"
+        else:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "NEO",
+                "asset_type": asset_type,
                 "listing_status": "active",
                 "reference_scope": source.reference_scope,
                 "official": "true",
@@ -2971,6 +3018,9 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return parse_asx_listed_companies(text, source)
     if source.format == "asx_investment_products_excel":
         return fetch_asx_investment_products(source, session=session)
+    if source.format == "cboe_canada_listing_directory_html":
+        text = fetch_text(source.source_url, session=session)
+        return parse_cboe_canada_listing_directory_html(text, source)
     if source.format == "set_listed_companies_html":
         text = fetch_bytes(source.source_url, session=session).decode("windows-1250", errors="replace")
         return parse_set_listed_companies_html(text, source)
