@@ -1371,6 +1371,51 @@ def test_fetch_lse_instrument_search_exact_filters_to_exact_ticker(monkeypatch):
     assert rows[1]["isin"] == "XS1234567890"
 
 
+def test_fetch_lse_instrument_search_exact_accepts_trailing_dot_variant(monkeypatch):
+    source = MasterfileSource(
+        key="lse_lookup",
+        provider="LSE",
+        description="LSE instrument search",
+        source_url="https://example.com?codeName={ticker}",
+        format="lse_instrument_search_html",
+        reference_scope="security_lookup_subset",
+    )
+
+    def fake_fetch_text(url: str, session=None) -> str:
+        assert "QQ" in url
+        return """
+        <table>
+          <tr><th>Code</th><th>Name</th></tr>
+          <tr><td>QQ.</td><td><a href="javascript: UpdateOpener('QINETIQ GROUP PLC ORD 1P', 'GB00B0WMWD03|GB|GBX|EQS2|B0WMWD0|QQ.');">QINETIQ GROUP PLC ORD 1P</a></td></tr>
+          <tr><td>QQQ</td><td><a href="javascript: UpdateOpener('UNRELATED ETF', 'US0000000001|US|USD|ETF2|ABC1234|QQQ');">UNRELATED ETF</a></td></tr>
+        </table>
+        """
+
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.fetch_text", fake_fetch_text)
+
+    rows = fetch_lse_instrument_search_exact(
+        source,
+        ["QQ"],
+        asset_type_by_ticker={"QQ": "Stock"},
+    )
+
+    assert rows == [
+        {
+            "source_key": "lse_lookup",
+            "provider": "LSE",
+            "source_url": "https://example.com?codeName=QQ",
+            "ticker": "QQ",
+            "name": "QINETIQ GROUP PLC ORD 1P",
+            "exchange": "LSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "security_lookup_subset",
+            "official": "true",
+            "isin": "GB00B0WMWD03",
+        }
+    ]
+
+
 def test_infer_lse_lookup_asset_type_uses_stock_fallback_for_stmm_trusts():
     assert (
         infer_lse_lookup_asset_type(

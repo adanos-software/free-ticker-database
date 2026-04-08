@@ -1254,6 +1254,96 @@ def test_classify_row_verifies_lse_exact_lookup_when_official_isin_matches() -> 
     assert result["reason"] == "Matched active official exact LSE instrument lookup via ISIN."
 
 
+def test_classify_row_verifies_lse_exact_lookup_when_company_report_also_exists() -> None:
+    row = {
+        "ticker": "0DRV",
+        "exchange": "LSE",
+        "asset_type": "Stock",
+        "name": "Arcticzymes Technologies ASA",
+        "country": "Norway",
+        "country_code": "NO",
+        "isin": "NO0010014632",
+        "sector": "Health Care",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("LSE", "0DRV"): [
+                {
+                    "ticker": "0DRV",
+                    "exchange": "LSE",
+                    "name": "BIOTEC PHARMACON ASA BIOTEC PHARMACON ORD SHS",
+                    "asset_type": "Stock",
+                    "isin": "",
+                    "source_key": "lse_company_reports",
+                    "listing_status": "active",
+                },
+                {
+                    "ticker": "0DRV",
+                    "exchange": "LSE",
+                    "name": "BIOTEC PHARMACON ASA BIOTEC PHARMACON ORD SHS",
+                    "asset_type": "Stock",
+                    "isin": "NO0010014632",
+                    "source_key": "lse_instrument_search",
+                    "listing_status": "active",
+                },
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges={"LSE"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+    assert result["reason"] == "Matched active official exact LSE instrument lookup via ISIN."
+
+
+def test_classify_row_verifies_lse_exact_lookup_without_listing_isin_when_company_report_agrees() -> None:
+    row = {
+        "ticker": "0DRV",
+        "exchange": "LSE",
+        "asset_type": "Stock",
+        "name": "Arcticzymes Technologies ASA",
+        "country": "Norway",
+        "country_code": "NO",
+        "isin": "",
+        "sector": "Health Care",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("LSE", "0DRV"): [
+                {
+                    "ticker": "0DRV",
+                    "exchange": "LSE",
+                    "name": "BIOTEC PHARMACON ASA BIOTEC PHARMACON ORD SHS",
+                    "asset_type": "Stock",
+                    "isin": "",
+                    "source_key": "lse_company_reports",
+                    "listing_status": "active",
+                },
+                {
+                    "ticker": "0DRV",
+                    "exchange": "LSE",
+                    "name": "BIOTEC PHARMACON ASA BIOTEC PHARMACON ORD SHS",
+                    "asset_type": "Stock",
+                    "isin": "NO0010014632",
+                    "source_key": "lse_instrument_search",
+                    "listing_status": "active",
+                },
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges={"LSE"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+    assert result["reason"] == "Matched active official LSE listing and exact instrument lookup."
+
+
 def test_classify_row_keeps_lse_exact_lookup_without_isin_as_reference_gap() -> None:
     row = {
         "ticker": "0DRV",

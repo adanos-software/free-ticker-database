@@ -977,6 +977,10 @@ def infer_lse_lookup_asset_type(instrument_code: str, name: str, fallback_asset_
     return infer_asset_type(name)
 
 
+def normalize_lse_lookup_ticker(ticker: str) -> str:
+    return ticker.strip().upper().rstrip(".")
+
+
 def extract_lse_instrument_search_metadata(text: str) -> dict[str, dict[str, str]]:
     metadata_by_ticker: dict[str, dict[str, str]] = {}
     for match in LSE_UPDATE_OPENER_RE.finditer(text):
@@ -1036,19 +1040,31 @@ def fetch_lse_instrument_search_exact(
         query_ticker = ticker.strip()
         if not query_ticker:
             continue
+        normalized_query_ticker = normalize_lse_lookup_ticker(query_ticker)
         lookup_url = source.source_url.format(ticker=requests.utils.quote(query_ticker, safe=""))
         text = fetch_text(lookup_url, session=session)
         metadata_by_ticker = extract_lse_instrument_search_metadata(text)
+        normalized_metadata_by_ticker = {
+            normalize_lse_lookup_ticker(candidate_ticker): metadata
+            for candidate_ticker, metadata in metadata_by_ticker.items()
+            if normalize_lse_lookup_ticker(candidate_ticker)
+        }
         seen_signatures: set[tuple[str, str]] = set()
         for row in parse_lse_company_reports_html(text, source):
-            if row.get("ticker") != query_ticker:
+            row_ticker = row.get("ticker", "").strip()
+            if normalize_lse_lookup_ticker(row_ticker) != normalized_query_ticker:
                 continue
-            signature = (row["ticker"], row["name"])
+            signature = (query_ticker, row["name"])
             if signature in seen_signatures:
                 continue
             seen_signatures.add(signature)
+            row["ticker"] = query_ticker
             row["source_url"] = lookup_url
-            metadata = metadata_by_ticker.get(query_ticker)
+            metadata = (
+                metadata_by_ticker.get(query_ticker)
+                or metadata_by_ticker.get(row_ticker)
+                or normalized_metadata_by_ticker.get(normalized_query_ticker)
+            )
             if metadata:
                 row["isin"] = metadata.get("isin", "")
                 row["asset_type"] = infer_lse_lookup_asset_type(

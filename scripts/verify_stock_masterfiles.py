@@ -321,15 +321,28 @@ def classify_row(
                 reason = "Matched active official listing; official directory uses a compact issuer label."
             elif (
                 exchange == "LSE"
-                and source_keys == {"lse_instrument_search"}
+                and "lse_instrument_search" in source_keys
                 and row.get("isin", "").strip()
                 and any(
-                    candidate.get("isin", "").strip().upper() == row.get("isin", "").strip().upper()
+                    candidate.get("source_key") == "lse_instrument_search"
+                    and candidate.get("isin", "").strip().upper() == row.get("isin", "").strip().upper()
                     for candidate in same_type_rows
                 )
             ):
                 status = "verified"
                 reason = "Matched active official exact LSE instrument lookup via ISIN."
+            elif (
+                exchange == "LSE"
+                and {"lse_company_reports", "lse_instrument_search"} <= source_keys
+                and not row.get("isin", "").strip()
+                and any(
+                    candidate.get("source_key") == "lse_instrument_search"
+                    and candidate.get("isin", "").strip()
+                    for candidate in same_type_rows
+                )
+            ):
+                status = "verified"
+                reason = "Matched active official LSE listing and exact instrument lookup."
             elif source_keys and source_keys <= LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE.get(exchange, set()):
                 status = "reference_gap"
                 reason = "Only low-confidence issuer reference evidence exists for this listing."
