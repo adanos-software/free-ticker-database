@@ -71,7 +71,7 @@ LOCAL_LANGUAGE_NAME_MATCH_EXCHANGES = {"KRX", "SSE", "SZSE", "TWSE", "TPEX"}
 LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE = {
     "KRX": {"krx_etf_finder", "krx_listed_companies"},
     "KOSDAQ": {"krx_listed_companies"},
-    "LSE": {"lse_company_reports"},
+    "LSE": {"lse_company_reports", "lse_instrument_search"},
     "NASDAQ": {"sec_company_tickers_exchange"},
     "NYSE": {"sec_company_tickers_exchange", "nasdaq_other_listed"},
     "NYSE MKT": {"sec_company_tickers_exchange", "nasdaq_other_listed"},

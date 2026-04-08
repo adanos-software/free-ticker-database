@@ -27,6 +27,15 @@
     "official": true
   },
   {
+    "key": "lse_instrument_search",
+    "provider": "LSE",
+    "description": "Official London Stock Exchange exact instrument search lookup for ETF/ETP products",
+    "source_url": "https://www.londonstockexchange.com/exchange/instrument-result.html?codeName={ticker}&filterBy=&filterClause=",
+    "format": "lse_instrument_search_html",
+    "reference_scope": "security_lookup_subset",
+    "official": true
+  },
+  {
     "key": "asx_listed_companies",
     "provider": "ASX",
     "description": "Official ASX listed companies directory",

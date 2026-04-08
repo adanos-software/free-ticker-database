@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-08T04:51:53Z",
-  "rows": 66734,
+  "generated_at": "2026-04-08T06:59:18Z",
+  "rows": 66867,
   "exchanges": [
     "AMS",
     "ASX",
@@ -28,13 +28,14 @@
     "XETRA"
   ],
   "source_counts": {
-    "euronext_equities": 3885,
+    "euronext_equities": 3883,
     "asx_listed_companies": 1979,
     "b3_instruments_equities": 878,
     "nasdaq_other_listed": 7077,
     "krx_listed_companies": 2660,
     "krx_etf_finder": 1088,
     "lse_company_reports": 12397,
+    "lse_instrument_search": 135,
     "nasdaq_listed": 5416,
     "sec_company_tickers_exchange": 10117,
     "sse_etf_list": 820,
@@ -56,7 +57,7 @@
       "official": true,
       "mode": "network",
       "rows": 5416,
-      "generated_at": "2026-04-08T04:51:53Z"
+      "generated_at": "2026-04-08T06:59:18Z"
     },
     "nasdaq_other_listed": {
       "provider": "Nasdaq Trader",
@@ -64,7 +65,7 @@
       "official": true,
       "mode": "network",
       "rows": 7077,
-      "generated_at": "2026-04-08T04:51:53Z"
+      "generated_at": "2026-04-08T06:59:18Z"
     },
     "lse_company_reports": {
       "provider": "LSE",
@@ -72,7 +73,15 @@
       "official": true,
       "mode": "cache",
       "rows": 12397,
-      "generated_at": "2026-04-08T04:51:53Z"
+      "generated_at": "2026-04-08T06:59:18Z"
+    },
+    "lse_instrument_search": {
+      "provider": "LSE",
+      "reference_scope": "security_lookup_subset",
+      "official": true,
+      "mode": "cache",
+      "rows": 135,
+      "generated_at": "2026-04-08T06:59:18Z"
     },
     "asx_listed_companies": {
       "provider": "ASX",
@@ -80,7 +89,7 @@
       "official": true,
       "mode": "network",
       "rows": 1979,
-      "generated_at": "2026-04-08T04:51:53Z"
+      "generated_at": "2026-04-08T06:59:18Z"
     },
     "tmx_listed_issuers": {
       "provider": "TMX",
@@ -88,7 +97,7 @@
       "official": true,
       "mode": "cache",
       "rows": 3619,
-      "generated_at": "2026-04-08T04:51:53Z"
+      "generated_at": "2026-04-08T06:59:18Z"
     },
     "tmx_interlisted_companies": {
       "provider": "TMX",
@@ -96,15 +105,15 @@
       "official": true,
       "mode": "network",
       "rows": 266,
-      "generated_at": "2026-04-08T04:51:53Z"
+      "generated_at": "2026-04-08T06:59:18Z"
     },
     "euronext_equities": {
       "provider": "Euronext",
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 3885,
-      "generated_at": "2026-04-08T04:51:53Z"
+      "rows": 3883,
+      "generated_at": "2026-04-08T06:59:18Z"
     },
     "jpx_listed_issues": {
       "provider": "JPX",
@@ -112,7 +121,7 @@
       "official": true,
       "mode": "network",
       "rows": 4444,
-      "generated_at": "2026-04-08T04:51:53Z"
+      "generated_at": "2026-04-08T06:59:18Z"
     },
     "deutsche_boerse_listed_companies": {
       "provider": "Deutsche Boerse",
@@ -120,7 +129,7 @@
       "official": true,
       "mode": "network",
       "rows": 471,
-      "generated_at": "2026-04-08T04:51:53Z"
+      "generated_at": "2026-04-08T06:59:18Z"
     },
     "deutsche_boerse_etfs_etps": {
       "provider": "Deutsche Boerse",
@@ -128,7 +137,7 @@
       "official": true,
       "mode": "network",
       "rows": 3431,
-      "generated_at": "2026-04-08T04:51:53Z"
+      "generated_at": "2026-04-08T06:59:18Z"
     },
     "deutsche_boerse_xetra_all_tradable_equities": {
       "provider": "Deutsche Boerse",
@@ -136,7 +145,7 @@
       "official": true,
       "mode": "network",
       "rows": 986,
-      "generated_at": "2026-04-08T04:51:53Z"
+      "generated_at": "2026-04-08T06:59:18Z"
     },
     "b3_instruments_equities": {
       "provider": "B3",
@@ -144,7 +153,7 @@
       "official": true,
       "mode": "network",
       "rows": 878,
-      "generated_at": "2026-04-08T04:51:53Z"
+      "generated_at": "2026-04-08T06:59:18Z"
     },
     "twse_listed_companies": {
       "provider": "TWSE",
@@ -152,7 +161,7 @@
       "official": true,
       "mode": "network",
       "rows": 1080,
-      "generated_at": "2026-04-08T04:51:53Z"
+      "generated_at": "2026-04-08T06:59:18Z"
     },
     "sse_a_share_list": {
       "provider": "SSE",
@@ -160,7 +169,7 @@
       "official": true,
       "mode": "network",
       "rows": 2350,
-      "generated_at": "2026-04-08T04:51:53Z"
+      "generated_at": "2026-04-08T06:59:18Z"
     },
     "sse_etf_list": {
       "provider": "SSE",
@@ -168,7 +177,7 @@
       "official": true,
       "mode": "network",
       "rows": 820,
-      "generated_at": "2026-04-08T04:51:53Z"
+      "generated_at": "2026-04-08T06:59:18Z"
     },
     "szse_a_share_list": {
       "provider": "SZSE",
@@ -176,7 +185,7 @@
       "official": true,
       "mode": "network",
       "rows": 2886,
-      "generated_at": "2026-04-08T04:51:53Z"
+      "generated_at": "2026-04-08T06:59:18Z"
     },
     "tpex_mainboard_daily_quotes": {
       "provider": "TPEX",
@@ -184,7 +193,7 @@
       "official": true,
       "mode": "cache",
       "rows": 884,
-      "generated_at": "2026-04-08T04:51:53Z"
+      "generated_at": "2026-04-08T06:59:18Z"
     },
     "krx_listed_companies": {
       "provider": "KRX",
@@ -192,7 +201,7 @@
       "official": true,
       "mode": "network",
       "rows": 2660,
-      "generated_at": "2026-04-08T04:51:53Z"
+      "generated_at": "2026-04-08T06:59:18Z"
     },
     "krx_etf_finder": {
       "provider": "KRX",
@@ -200,7 +209,7 @@
       "official": true,
       "mode": "network",
       "rows": 1088,
-      "generated_at": "2026-04-08T04:51:53Z"
+      "generated_at": "2026-04-08T06:59:18Z"
     },
     "sec_company_tickers_exchange": {
       "provider": "SEC",
@@ -208,13 +217,14 @@
       "official": true,
       "mode": "cache",
       "rows": 10117,
-      "generated_at": "2026-04-08T04:51:53Z"
+      "generated_at": "2026-04-08T06:59:18Z"
     }
   },
   "source_modes": {
     "nasdaq_listed": "network",
     "nasdaq_other_listed": "network",
     "lse_company_reports": "cache",
+    "lse_instrument_search": "cache",
     "asx_listed_companies": "network",
     "tmx_listed_issuers": "cache",
     "tmx_interlisted_companies": "network",

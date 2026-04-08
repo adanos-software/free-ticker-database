@@ -23,10 +23,15 @@ MASTERFILE_REFERENCE_CSV = MASTERFILES_DIR / "reference.csv"
 MASTERFILE_SOURCES_JSON = MASTERFILES_DIR / "sources.json"
 MASTERFILE_SUMMARY_JSON = MASTERFILES_DIR / "summary.json"
 MASTERFILE_CACHE_DIR = MASTERFILES_DIR / "cache"
+LISTINGS_CSV = DATA_DIR / "listings.csv"
+STOCK_VERIFICATION_DIR = DATA_DIR / "stock_verification"
+ETF_VERIFICATION_DIR = DATA_DIR / "etf_verification"
 SEC_COMPANY_TICKERS_CACHE = MASTERFILE_CACHE_DIR / "sec_company_tickers_exchange.json"
 LEGACY_SEC_COMPANY_TICKERS_CACHE = MASTERFILES_DIR / "sec_company_tickers_exchange.json"
 LSE_COMPANY_REPORTS_CACHE = MASTERFILE_CACHE_DIR / "lse_company_reports.json"
 LEGACY_LSE_COMPANY_REPORTS_CACHE = MASTERFILES_DIR / "lse_company_reports.json"
+LSE_INSTRUMENT_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "lse_instrument_search.json"
+LEGACY_LSE_INSTRUMENT_SEARCH_CACHE = MASTERFILES_DIR / "lse_instrument_search.json"
 TMX_LISTED_ISSUERS_CACHE = MASTERFILE_CACHE_DIR / "tmx_listed_issuers.xlsx"
 LEGACY_TMX_LISTED_ISSUERS_CACHE = MASTERFILES_DIR / "tmx_listed_issuers.xlsx"
 TPEX_MAINBOARD_QUOTES_CACHE = MASTERFILE_CACHE_DIR / "tpex_mainboard_daily_close_quotes.json"
@@ -38,6 +43,10 @@ NASDAQ_OTHER_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/otherlist
 LSE_COMPANY_REPORTS_URL = (
     "https://www.londonstockexchange.com/exchange/instrument-result.html"
     "?filterBy=CompanyReports&filterClause=1&initial={initial}&page={page}"
+)
+LSE_INSTRUMENT_SEARCH_URL = (
+    "https://www.londonstockexchange.com/exchange/instrument-result.html"
+    "?codeName={ticker}&filterBy=&filterClause="
 )
 ASX_LISTED_URL = "https://www.asx.com.au/asx/research/ASXListedCompanies.csv"
 TMX_INTERLISTED_URL = "https://www.tsx.com/files/trading/interlisted-companies.txt"
@@ -168,6 +177,14 @@ OFFICIAL_SOURCES = [
         source_url=LSE_COMPANY_REPORTS_URL,
         format="lse_company_reports_html",
         reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="lse_instrument_search",
+        provider="LSE",
+        description="Official London Stock Exchange exact instrument search lookup for ETF/ETP products",
+        source_url=LSE_INSTRUMENT_SEARCH_URL,
+        format="lse_instrument_search_html",
+        reference_scope="security_lookup_subset",
     ),
     MasterfileSource(
         key="asx_listed_companies",
@@ -315,6 +332,13 @@ def write_csv(path: Path, fieldnames: list[str], rows: Iterable[dict[str, Any]])
         writer.writerows(rows)
 
 
+def load_csv(path: Path) -> list[dict[str, str]]:
+    if not path.exists():
+        return []
+    with path.open(newline="", encoding="utf-8") as handle:
+        return list(csv.DictReader(handle))
+
+
 def load_manual_masterfiles(manual_dir: Path) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     if not manual_dir.exists():
@@ -356,6 +380,29 @@ def infer_taiwan_asset_type(ticker: str, name: str) -> str:
     if normalized_ticker.startswith("00"):
         return "ETF"
     return infer_asset_type(name)
+
+
+def latest_verification_run(base_dir: Path) -> Path | None:
+    candidates = [path for path in base_dir.iterdir() if path.is_dir()] if base_dir.exists() else []
+    if not candidates:
+        return None
+    return max(candidates, key=lambda path: path.stat().st_mtime)
+
+
+def lse_reference_gap_tickers(base_dirs: Iterable[Path] | None = None) -> set[str]:
+    base_dirs = tuple(base_dirs or (STOCK_VERIFICATION_DIR, ETF_VERIFICATION_DIR))
+    tickers: set[str] = set()
+    for base_dir in base_dirs:
+        latest_run = latest_verification_run(base_dir)
+        if latest_run is None:
+            continue
+        for path in sorted(latest_run.glob("chunk-*-of-*.csv")):
+            with path.open(newline="", encoding="utf-8") as handle:
+                for row in csv.DictReader(handle):
+                    ticker = row.get("ticker", "").strip()
+                    if row.get("exchange") == "LSE" and row.get("status") == "reference_gap" and ticker:
+                        tickers.add(ticker)
+    return tickers
 
 
 def fetch_text(url: str, session: requests.Session | None = None) -> str:
@@ -461,6 +508,131 @@ def load_lse_company_reports_rows(
     ensure_output_dirs()
     LSE_COMPANY_REPORTS_CACHE.write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"
+
+
+def group_rows_by_ticker(rows: list[dict[str, str]]) -> dict[str, list[dict[str, str]]]:
+    grouped: dict[str, list[dict[str, str]]] = {}
+    for row in rows:
+        ticker = row.get("ticker", "").strip()
+        if not ticker:
+            continue
+        grouped.setdefault(ticker, []).append(row)
+    return grouped
+
+
+def lse_instrument_search_target_tickers(
+    company_report_rows: list[dict[str, str]],
+    *,
+    listings_path: Path | None = None,
+    reference_gap_tickers: set[str] | None = None,
+) -> list[str]:
+    listings_path = listings_path or LISTINGS_CSV
+    company_report_tickers = {
+        row.get("ticker", "").strip()
+        for row in company_report_rows
+        if row.get("exchange") == "LSE"
+    }
+    target_tickers = {
+        row.get("ticker", "").strip()
+        for row in load_csv(listings_path)
+        if row.get("exchange") == "LSE"
+        and row.get("asset_type") in {"Stock", "ETF"}
+        and row.get("ticker", "").strip()
+        and row.get("ticker", "").strip() not in company_report_tickers
+    }
+    reference_gap_tickers = reference_gap_tickers if reference_gap_tickers is not None else lse_reference_gap_tickers()
+    if reference_gap_tickers:
+        target_tickers &= reference_gap_tickers
+    return sorted(
+        {
+            ticker
+            for ticker in target_tickers
+            if ticker
+        }
+    )
+
+
+def fetch_lse_instrument_search_exact(
+    source: MasterfileSource,
+    tickers: Iterable[str],
+    session: requests.Session | None = None,
+    asset_type_by_ticker: dict[str, str] | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    asset_type_by_ticker = asset_type_by_ticker or {}
+    rows: list[dict[str, str]] = []
+    for ticker in tickers:
+        query_ticker = ticker.strip()
+        if not query_ticker:
+            continue
+        lookup_url = source.source_url.format(ticker=requests.utils.quote(query_ticker, safe=""))
+        text = fetch_text(lookup_url, session=session)
+        seen_signatures: set[tuple[str, str]] = set()
+        for row in parse_lse_company_reports_html(text, source):
+            if row.get("ticker") != query_ticker:
+                continue
+            signature = (row["ticker"], row["name"])
+            if signature in seen_signatures:
+                continue
+            seen_signatures.add(signature)
+            row["source_url"] = lookup_url
+            row["asset_type"] = asset_type_by_ticker.get(query_ticker, row.get("asset_type", ""))
+            rows.append(row)
+    return rows
+
+
+def load_lse_instrument_search_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    company_reports_source = next(item for item in OFFICIAL_SOURCES if item.key == "lse_company_reports")
+    company_report_rows, _ = load_lse_company_reports_rows(company_reports_source, session=session)
+    listings_rows = load_csv(LISTINGS_CSV)
+    asset_type_by_ticker = {
+        row.get("ticker", "").strip(): row.get("asset_type", "")
+        for row in listings_rows
+        if row.get("exchange") == "LSE" and row.get("ticker", "").strip()
+    }
+    target_tickers = lse_instrument_search_target_tickers(company_report_rows or [], listings_path=LISTINGS_CSV)
+
+    cached_lookup: dict[str, list[dict[str, str]]] = {}
+    for path in (LSE_INSTRUMENT_SEARCH_CACHE, LEGACY_LSE_INSTRUMENT_SEARCH_CACHE):
+        if not path.exists():
+            continue
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        if isinstance(payload, dict):
+            cached_lookup = {str(key): value for key, value in payload.items()}
+        elif isinstance(payload, list):
+            cached_lookup = group_rows_by_ticker(payload)
+        break
+
+    missing_tickers = [ticker for ticker in target_tickers if ticker not in cached_lookup]
+    used_network = False
+    if missing_tickers:
+        fetched_lookup = {ticker: [] for ticker in missing_tickers}
+        successful_fetch = False
+        for ticker in missing_tickers:
+            try:
+                fetched_lookup[ticker] = fetch_lse_instrument_search_exact(
+                    source,
+                    [ticker],
+                    session=session,
+                    asset_type_by_ticker=asset_type_by_ticker,
+                )
+            except requests.RequestException:
+                continue
+            successful_fetch = True
+        if not cached_lookup and not successful_fetch:
+            return None, "unavailable"
+        cached_lookup.update(fetched_lookup)
+        ensure_output_dirs()
+        LSE_INSTRUMENT_SEARCH_CACHE.write_text(json.dumps(cached_lookup), encoding="utf-8")
+        used_network = successful_fetch
+
+    rows: list[dict[str, str]] = []
+    for ticker in sorted(cached_lookup):
+        rows.extend(cached_lookup.get(ticker, []))
+    return rows, "network" if used_network else "cache"
 
 
 def resolve_tmx_listed_issuers_download_url(session: requests.Session | None = None) -> str:
@@ -1499,6 +1671,12 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return parse_other_listed(text, source)
     if source.format == "lse_company_reports_html":
         return fetch_lse_company_reports(source, session=session)
+    if source.format == "lse_instrument_search_html":
+        return fetch_lse_instrument_search_exact(
+            source,
+            lse_instrument_search_target_tickers([]),
+            session=session,
+        )
     if source.format == "asx_listed_companies_csv":
         text = fetch_text(source.source_url, session=session)
         return parse_asx_listed_companies(text, source)
@@ -1557,6 +1735,11 @@ def fetch_source_rows_with_mode(
         rows, mode = load_lse_company_reports_rows(source, session=session)
         if rows is None:
             raise requests.RequestException("LSE company reports unavailable")
+        return rows, mode
+    if source.format == "lse_instrument_search_html":
+        rows, mode = load_lse_instrument_search_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("LSE instrument search unavailable")
         return rows, mode
     if source.format == "sec_company_tickers_exchange_json":
         payload, mode = load_sec_company_tickers_exchange_payload(session=session)

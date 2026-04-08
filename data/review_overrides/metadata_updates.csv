@@ -1,4 +1,5 @@
 ticker,exchange,field,decision,proposed_value,confidence,reason
+BOLU,LSE,name,update,21SHARES AG 21SHARES BITCOIN GOLD ETP,0.99,Official LSE exact instrument search resolves BOLU to the full 21Shares Bitcoin Gold ETP product name while the dataset currently contains only a ticker placeholder.
 0AD5,LSE,country,update,United States,0.95,Yahoo Finance verifies 0AD5.L as Gen Digital Inc. with United States issuer domicile.
 0AD5,LSE,country_code,update,US,0.95,Must match corrected issuer domicile.
 0HEC,LSE,country,update,United States,0.8,"AEP is a US-domiciled company. Other LSE international listings in this dataset (e.g. 0HV2, 0QXR) correctly show the issuer's home country. 'United Kingdom' is wrong here."

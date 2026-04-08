@@ -7,9 +7,11 @@ import requests
 
 from scripts.fetch_exchange_masterfiles import (
     LEGACY_LSE_COMPANY_REPORTS_CACHE,
+    LEGACY_LSE_INSTRUMENT_SEARCH_CACHE,
     LEGACY_TPEX_MAINBOARD_QUOTES_CACHE,
     LSE_PAGE_INITIALS,
     LSE_COMPANY_REPORTS_CACHE,
+    LSE_INSTRUMENT_SEARCH_CACHE,
     MasterfileSource,
     OFFICIAL_SOURCES,
     SSE_ETF_SUBCLASSES,
@@ -19,14 +21,17 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_krx_etf_finder,
     fetch_krx_listed_companies,
     fetch_lse_company_reports,
+    fetch_lse_instrument_search_exact,
     fetch_sse_a_share_list,
     fetch_sse_etf_list,
     fetch_szse_a_share_list,
     fetch_source_rows_with_mode,
     infer_jpx_asset_type,
     load_lse_company_reports_rows,
+    load_lse_instrument_search_rows,
     load_sec_company_tickers_exchange_payload,
     load_tpex_mainboard_quotes_payload,
+    lse_instrument_search_target_tickers,
     parse_asx_listed_companies,
     parse_b3_instruments_equities_table,
     parse_deutsche_boerse_etfs_etps_excel,
@@ -758,6 +763,208 @@ def test_load_lse_company_reports_rows_prefers_cache(tmp_path, monkeypatch):
     rows, mode = load_lse_company_reports_rows(source)
 
     assert mode == "cache"
+
+
+def test_fetch_lse_instrument_search_exact_filters_to_exact_ticker(monkeypatch):
+    source = MasterfileSource(
+        key="lse_lookup",
+        provider="LSE",
+        description="LSE instrument search",
+        source_url="https://example.com?codeName={ticker}",
+        format="lse_instrument_search_html",
+        reference_scope="security_lookup_subset",
+    )
+
+    def fake_fetch_text(url: str, session=None) -> str:
+        if "PHGP" in url:
+            return """
+            <table>
+              <tr><th>Code</th><th>Name</th></tr>
+              <tr><td>PHGP</td><td>WISDOMTREE METAL SECURITIES WISDOMTREE PHYSICAL GOLD £</td></tr>
+              <tr><td>UC86</td><td>UBS ETF USD</td></tr>
+            </table>
+            """
+        return """
+        <table>
+          <tr><th>Code</th><th>Name</th></tr>
+          <tr><td>1MSF</td><td>LEVERAGE SHARES PUBLIC LIMITED CO. 1X MSFT</td></tr>
+        </table>
+        """
+
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.fetch_text", fake_fetch_text)
+
+    rows = fetch_lse_instrument_search_exact(
+        source,
+        ["PHGP", "1MSF"],
+        asset_type_by_ticker={"PHGP": "ETF", "1MSF": "Stock"},
+    )
+
+    assert [row["ticker"] for row in rows] == ["PHGP", "1MSF"]
+    assert all(row["exchange"] == "LSE" for row in rows)
+    assert all(row["source_url"].startswith("https://example.com?codeName=") for row in rows)
+    assert rows[0]["asset_type"] == "ETF"
+    assert rows[1]["asset_type"] == "Stock"
+
+
+def test_lse_instrument_search_target_tickers_selects_only_uncovered_lse_reference_gaps(tmp_path):
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,exchange,asset_type,name,country,country_code,isin,sector",
+                "PHGP,LSE,ETF,WisdomTree Physical Gold,United Kingdom,GB,,",
+                "VUSA,LSE,ETF,Vanguard S&P 500 UCITS ETF USD,United Kingdom,GB,,",
+                "ABF,LSE,Stock,Associated British Foods,United Kingdom,GB,,",
+                "SPY,NYSE,ETF,SPDR S&P 500 ETF Trust,United States,US,,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    target_tickers = lse_instrument_search_target_tickers(
+        [{"ticker": "VUSA", "exchange": "LSE"}],
+        listings_path=listings_path,
+        reference_gap_tickers={"PHGP", "ABF"},
+    )
+
+    assert target_tickers == ["ABF", "PHGP"]
+
+
+def test_load_lse_instrument_search_rows_prefers_cache_and_only_fetches_missing(tmp_path, monkeypatch):
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,exchange,asset_type,name,country,country_code,isin,sector",
+                "PHGP,LSE,ETF,WisdomTree Physical Gold,United Kingdom,GB,,",
+                "VUSA,LSE,ETF,Vanguard S&P 500 UCITS ETF USD,United Kingdom,GB,,",
+                "ABF,LSE,Stock,Associated British Foods,United Kingdom,GB,,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    cache_path = tmp_path / "lse_instrument_search.json"
+    legacy_cache_path = tmp_path / "legacy.json"
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LISTINGS_CSV", listings_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LSE_INSTRUMENT_SEARCH_CACHE", cache_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_LSE_INSTRUMENT_SEARCH_CACHE", legacy_cache_path)
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.lse_reference_gap_tickers",
+        lambda base_dirs=None: {"PHGP", "ABF"},
+    )
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.load_lse_company_reports_rows",
+        lambda source, session=None: ([{"ticker": "VUSA", "exchange": "LSE"}], "cache"),
+    )
+    fetched: list[tuple[list[str], dict[str, str] | None]] = []
+
+    def fake_fetch(source, tickers, session=None, asset_type_by_ticker=None):
+        fetched.append((list(tickers), asset_type_by_ticker))
+        ticker = list(tickers)[0]
+        names = {
+            "ABF": "ASSOCIATED BRITISH FOODS PLC ORD 5 15/22P",
+            "PHGP": "WISDOMTREE METAL SECURITIES WISDOMTREE PHYSICAL GOLD £",
+        }
+        return [
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": f"https://example.com?codeName={ticker}",
+                "ticker": ticker,
+                "name": names[ticker],
+                "exchange": "LSE",
+                "asset_type": asset_type_by_ticker[ticker],
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        ]
+
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.fetch_lse_instrument_search_exact", fake_fetch)
+    source = MasterfileSource(
+        key="lse_lookup",
+        provider="LSE",
+        description="LSE instrument search",
+        source_url="https://example.com?codeName={ticker}",
+        format="lse_instrument_search_html",
+        reference_scope="security_lookup_subset",
+    )
+
+    rows, mode = load_lse_instrument_search_rows(source)
+
+    assert mode == "network"
+    assert [item[0] for item in fetched] == [["ABF"], ["PHGP"]]
+    assert fetched[0][1] == {"PHGP": "ETF", "VUSA": "ETF", "ABF": "Stock"}
+    assert [(row["ticker"], row["asset_type"]) for row in rows] == [("ABF", "Stock"), ("PHGP", "ETF")]
+
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.fetch_lse_instrument_search_exact",
+        lambda *args, **kwargs: (_ for _ in ()).throw(AssertionError("cache should be used")),
+    )
+    rows, mode = load_lse_instrument_search_rows(source)
+
+    assert mode == "cache"
+    assert [(row["ticker"], row["asset_type"]) for row in rows] == [("ABF", "Stock"), ("PHGP", "ETF")]
+
+
+def test_load_lse_instrument_search_rows_retains_cached_rows_outside_current_target_set(tmp_path, monkeypatch):
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,exchange,asset_type,name,country,country_code,isin,sector",
+                "PHGP,LSE,ETF,WisdomTree Physical Gold,United Kingdom,GB,,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    cache_path = tmp_path / "lse_instrument_search.json"
+    cache_path.write_text(
+        '{"OLD1":[{"source_key":"lse_lookup","provider":"LSE","source_url":"https://example.com?codeName=OLD1","ticker":"OLD1","name":"Legacy cached row","exchange":"LSE","asset_type":"ETF","listing_status":"active","reference_scope":"security_lookup_subset","official":"true"}]}',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LISTINGS_CSV", listings_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LSE_INSTRUMENT_SEARCH_CACHE", cache_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_LSE_INSTRUMENT_SEARCH_CACHE", tmp_path / "legacy.json")
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.lse_reference_gap_tickers",
+        lambda base_dirs=None: {"PHGP"},
+    )
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.load_lse_company_reports_rows",
+        lambda source, session=None: ([], "cache"),
+    )
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.fetch_lse_instrument_search_exact",
+        lambda source, tickers, session=None, asset_type_by_ticker=None: [
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": "https://example.com?codeName=PHGP",
+                "ticker": "PHGP",
+                "name": "WISDOMTREE METAL SECURITIES WISDOMTREE PHYSICAL GOLD £",
+                "exchange": "LSE",
+                "asset_type": "ETF",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        ],
+    )
+
+    source = MasterfileSource(
+        key="lse_lookup",
+        provider="LSE",
+        description="LSE instrument search",
+        source_url="https://example.com?codeName={ticker}",
+        format="lse_instrument_search_html",
+        reference_scope="security_lookup_subset",
+    )
+
+    rows, mode = load_lse_instrument_search_rows(source)
+
+    assert mode == "network"
+    assert [(row["ticker"], row["asset_type"]) for row in rows] == [("OLD1", "ETF"), ("PHGP", "ETF")]
 
 
 def test_parse_krx_listed_companies_maps_market_rows():
