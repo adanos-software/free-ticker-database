@@ -58,6 +58,7 @@ DEUTSCHE_BOERSE_ETPS_URL = "https://www.cashmarket.deutsche-boerse.com/resource/
 DEUTSCHE_BOERSE_XETRA_ALL_TRADABLE_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv"
 B3_INSTRUMENTS_EQUITIES_URL = "https://arquivos.b3.com.br/bdi/table/InstrumentsEquities"
 TWSE_LISTED_COMPANIES_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
+SET_LISTED_COMPANIES_URL = "https://www.set.or.th/dat/eod/listedcompany/static/listedCompanies_en_US.xls"
 SZSE_STOCK_LIST_URL = "https://www.szse.cn/market/product/stock/list/index.html"
 SZSE_REPORT_DATA_URL = "https://www.szse.cn/api/report/ShowReport/data"
 SZSE_A_SHARE_CATALOG_ID = "1110"
@@ -192,6 +193,14 @@ OFFICIAL_SOURCES = [
         description="Official ASX listed companies directory",
         source_url=ASX_LISTED_URL,
         format="asx_listed_companies_csv",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="set_listed_companies",
+        provider="SET",
+        description="Official Stock Exchange of Thailand listed companies table",
+        source_url=SET_LISTED_COMPANIES_URL,
+        format="set_listed_companies_html",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -379,6 +388,17 @@ def infer_taiwan_asset_type(ticker: str, name: str) -> str:
     normalized_ticker = ticker.strip()
     if normalized_ticker.startswith("00"):
         return "ETF"
+    return infer_asset_type(name)
+
+
+def infer_set_asset_type(name: str) -> str:
+    lowered = f" {name.lower()} "
+    if (
+        " real estate investment trust" in lowered
+        or " infrastructure fund" in lowered
+        or " property fund" in lowered
+    ):
+        return "Stock"
     return infer_asset_type(name)
 
 
@@ -747,43 +767,6 @@ def parse_asx_listed_companies(text: str, source: MasterfileSource) -> list[dict
 
 
 def parse_lse_company_reports_html(text: str, source: MasterfileSource) -> list[dict[str, str]]:
-    class _TableParser(HTMLParser):
-        def __init__(self) -> None:
-            super().__init__()
-            self.tables: list[list[list[str]]] = []
-            self._current_table: list[list[str]] | None = None
-            self._current_row: list[str] | None = None
-            self._current_cell: list[str] | None = None
-            self._in_cell = False
-
-        def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
-            if tag == "table":
-                self._current_table = []
-            elif tag == "tr" and self._current_table is not None:
-                self._current_row = []
-            elif tag in {"td", "th"} and self._current_row is not None:
-                self._current_cell = []
-                self._in_cell = True
-
-        def handle_endtag(self, tag: str) -> None:
-            if tag in {"td", "th"} and self._current_row is not None and self._current_cell is not None:
-                text = " ".join("".join(self._current_cell).split())
-                self._current_row.append(unescape(text))
-                self._current_cell = None
-                self._in_cell = False
-            elif tag == "tr" and self._current_table is not None and self._current_row is not None:
-                if self._current_row:
-                    self._current_table.append(self._current_row)
-                self._current_row = None
-            elif tag == "table" and self._current_table is not None:
-                if self._current_table:
-                    self.tables.append(self._current_table)
-                self._current_table = None
-
-        def handle_data(self, data: str) -> None:
-            if self._in_cell and self._current_cell is not None:
-                self._current_cell.append(data)
-
     parser = _TableParser()
     parser.feed(text)
     target_table: list[list[str]] | None = None
@@ -824,6 +807,90 @@ def parse_lse_company_reports_html(text: str, source: MasterfileSource) -> list[
                 "official": "true",
             }
         )
+    return rows
+
+
+class _TableParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.tables: list[list[list[str]]] = []
+        self._current_table: list[list[str]] | None = None
+        self._current_row: list[str] | None = None
+        self._current_cell: list[str] | None = None
+        self._in_cell = False
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag == "table":
+            self._current_table = []
+        elif tag == "tr" and self._current_table is not None:
+            self._current_row = []
+        elif tag in {"td", "th"} and self._current_row is not None:
+            self._current_cell = []
+            self._in_cell = True
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag in {"td", "th"} and self._current_row is not None and self._current_cell is not None:
+            text = " ".join("".join(self._current_cell).split())
+            self._current_row.append(unescape(text))
+            self._current_cell = None
+            self._in_cell = False
+        elif tag == "tr" and self._current_table is not None and self._current_row is not None:
+            if self._current_row:
+                self._current_table.append(self._current_row)
+            self._current_row = None
+        elif tag == "table" and self._current_table is not None:
+            if self._current_table:
+                self.tables.append(self._current_table)
+            self._current_table = None
+
+    def handle_data(self, data: str) -> None:
+        if self._in_cell and self._current_cell is not None:
+            self._current_cell.append(data)
+
+
+def parse_set_listed_companies_html(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    parser = _TableParser()
+    parser.feed(text)
+    rows: list[dict[str, str]] = []
+    for table in parser.tables:
+        header_row_index = None
+        for index, record in enumerate(table):
+            header = [cell.strip() for cell in record]
+            if {"Symbol", "Company", "Market"} <= set(header):
+                header_row_index = index
+                break
+        if header_row_index is None:
+            continue
+        header = table[header_row_index]
+        try:
+            symbol_index = header.index("Symbol")
+            company_index = header.index("Company")
+            market_index = header.index("Market")
+        except ValueError:
+            continue
+        for record in table[header_row_index + 1 :]:
+            if len(record) <= max(symbol_index, company_index, market_index):
+                continue
+            ticker = str(record[symbol_index]).strip()
+            name = str(record[company_index]).strip()
+            market = str(record[market_index]).strip()
+            if market != "SET" or not ticker or not name or ticker.lower() == "nan" or name.lower() == "nan":
+                continue
+            rows.append(
+                {
+                    "source_key": source.key,
+                    "provider": source.provider,
+                    "source_url": source.source_url,
+                    "ticker": ticker,
+                    "name": name,
+                    "exchange": "SET",
+                    "asset_type": infer_set_asset_type(name),
+                    "listing_status": "active",
+                    "reference_scope": source.reference_scope,
+                    "official": "true",
+                }
+            )
+        break
     return rows
 
 
@@ -1680,6 +1747,9 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "asx_listed_companies_csv":
         text = fetch_text(source.source_url, session=session)
         return parse_asx_listed_companies(text, source)
+    if source.format == "set_listed_companies_html":
+        text = fetch_bytes(source.source_url, session=session).decode("windows-1250", errors="replace")
+        return parse_set_listed_companies_html(text, source)
     if source.format == "tmx_listed_issuers_excel":
         content, mode = load_tmx_listed_issuers_content(session=session)
         if content is None:

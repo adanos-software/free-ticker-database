@@ -44,6 +44,7 @@ from scripts.fetch_exchange_masterfiles import (
     parse_lse_company_reports_html,
     parse_nasdaq_listed,
     parse_other_listed,
+    parse_set_listed_companies_html,
     parse_sec_company_tickers_exchange,
     parse_sse_a_share_list,
     parse_sse_etf_list,
@@ -647,6 +648,75 @@ def test_parse_asx_listed_companies_skips_banner_lines():
             "reference_scope": "exchange_directory",
             "official": "true",
         },
+    ]
+
+
+def test_parse_set_listed_companies_html_filters_to_set_market() -> None:
+    text = """
+    <table>
+      <tr><td colspan="6">List of Listed Companies & Contact Information</td></tr>
+      <tr>
+        <td><strong>Symbol</strong></td>
+        <td><strong>Company</strong></td>
+        <td><strong>Market</strong></td>
+        <td><strong>Industry</strong></td>
+        <td><strong>Sector</strong></td>
+        <td><strong>Website</strong></td>
+      </tr>
+      <tr>
+        <td>ADVANC</td>
+        <td>ADVANCED INFO SERVICE PUBLIC COMPANY LIMITED</td>
+        <td>SET</td>
+        <td>Technology</td>
+        <td>Information & Communication Technology</td>
+        <td>www.ais.th</td>
+      </tr>
+      <tr>
+        <td>AIMIRT</td>
+        <td>AIM INDUSTRIAL GROWTH FREEHOLD AND LEASEHOLD REAL ESTATE INVESTMENT TRUST</td>
+        <td>SET</td>
+        <td>Property & Construction</td>
+        <td>Property Fund & REITs</td>
+        <td>www.example.com</td>
+      </tr>
+      <tr>
+        <td>ABFTH</td>
+        <td>The ABF Thailand Bond Index Fund</td>
+        <td>mai</td>
+        <td>Funds</td>
+        <td>ETF</td>
+        <td>www.example.com</td>
+      </tr>
+    </table>
+    """
+
+    rows = parse_set_listed_companies_html(text, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "ADVANC",
+            "name": "ADVANCED INFO SERVICE PUBLIC COMPANY LIMITED",
+            "exchange": "SET",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "AIMIRT",
+            "name": "AIM INDUSTRIAL GROWTH FREEHOLD AND LEASEHOLD REAL ESTATE INVESTMENT TRUST",
+            "exchange": "SET",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        }
     ]
 
 

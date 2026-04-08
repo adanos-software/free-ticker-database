@@ -45,6 +45,15 @@
     "official": true
   },
   {
+    "key": "set_listed_companies",
+    "provider": "SET",
+    "description": "Official Stock Exchange of Thailand listed companies table",
+    "source_url": "https://www.set.or.th/dat/eod/listedcompany/static/listedCompanies_en_US.xls",
+    "format": "set_listed_companies_html",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "tmx_listed_issuers",
     "provider": "TMX",
     "description": "Official TMX TSX/TSXV listed issuers workbook",
