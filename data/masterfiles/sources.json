@@ -216,6 +216,24 @@
     "official": true
   },
   {
+    "key": "jse_etf_list",
+    "provider": "JSE",
+    "description": "Official JSE ETF product list",
+    "source_url": "https://www.jse.co.za/trade/equities-market/exchange-traded-products",
+    "format": "jse_etf_list_xlsx",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "jse_etn_list",
+    "provider": "JSE",
+    "description": "Official JSE ETN product list",
+    "source_url": "https://www.jse.co.za/trade/equities-market/exchange-traded-products",
+    "format": "jse_etn_list_xlsx",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "nasdaq_nordic_stockholm_shares",
     "provider": "Nasdaq Nordic",
     "description": "Official Nasdaq Nordic Stockholm Main Market shares screener",

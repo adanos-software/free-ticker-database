@@ -52,6 +52,10 @@ NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_sto
 LEGACY_NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE = MASTERFILES_DIR / "nasdaq_nordic_stockholm_shares.json"
 B3_INSTRUMENTS_EQUITIES_CACHE = MASTERFILE_CACHE_DIR / "b3_instruments_equities.json"
 LEGACY_B3_INSTRUMENTS_EQUITIES_CACHE = MASTERFILES_DIR / "b3_instruments_equities.json"
+JSE_ETF_LIST_CACHE = MASTERFILE_CACHE_DIR / "jse_etf_list.json"
+LEGACY_JSE_ETF_LIST_CACHE = MASTERFILES_DIR / "jse_etf_list.json"
+JSE_ETN_LIST_CACHE = MASTERFILE_CACHE_DIR / "jse_etn_list.json"
+LEGACY_JSE_ETN_LIST_CACHE = MASTERFILES_DIR / "jse_etn_list.json"
 
 SEC_COMPANY_TICKERS_URL = "https://www.sec.gov/files/company_tickers_exchange.json"
 NASDAQ_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt"
@@ -92,6 +96,7 @@ SIX_ETP_EXPLORER_URL = "https://www.six-group.com/en/market-data/etp/etp-explore
 B3_INSTRUMENTS_EQUITIES_URL = "https://arquivos.b3.com.br/bdi/table/InstrumentsEquities"
 B3_FUNDS_LISTED_PROXY_URL = "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/"
 B3_BDR_COMPANIES_PROXY_URL = "https://sistemaswebb3-listados.b3.com.br/listedCompaniesProxy/CompanyCall/"
+JSE_EXCHANGE_TRADED_PRODUCTS_URL = "https://www.jse.co.za/trade/equities-market/exchange-traded-products"
 NASDAQ_NORDIC_API_ROOT_URL = "https://api.nasdaq.com/api/nordic/"
 NASDAQ_NORDIC_SHARES_SCREENER_URL = "https://api.nasdaq.com/api/nordic/screener/shares"
 TWSE_LISTED_COMPANIES_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
@@ -241,6 +246,14 @@ TPEX_CANONICAL_TICKER_RE = re.compile(r"(?:\d{4}|00\d{4}[A-Z]?)$")
 LSE_PAGE_INITIALS = tuple("ABCDEFGHIJKLMNOPQRSTUVWXYZ") + ("0",)
 TMX_LISTED_ISSUERS_HREF_RE = re.compile(
     r'href="([^"]+tsx-tsxv-listed-issuers-(\d{4})-(\d{2})-en\.xlsx)"',
+    re.I,
+)
+JSE_ETF_LIST_HREF_RE = re.compile(
+    r'https://www\.jse\.co\.za/sites/default/files/media/documents/[^"\']*/ETF%20List[^"\']+\.xlsx',
+    re.I,
+)
+JSE_ETN_LIST_HREF_RE = re.compile(
+    r'https://www\.jse\.co\.za/sites/default/files/media/documents/[^"\']*/ETN%20List[^"\']+\.xlsx',
     re.I,
 )
 LSE_PAGE_NUMBER_RE = re.compile(r'title="Page (\d+)" class="page-number(?: active)?"')
@@ -501,6 +514,22 @@ OFFICIAL_SOURCES = [
         description="Official B3 BDR ETF and ETP directory",
         source_url=B3_BDR_COMPANIES_PROXY_URL,
         format="b3_bdr_companies_api",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="jse_etf_list",
+        provider="JSE",
+        description="Official JSE ETF product list",
+        source_url=JSE_EXCHANGE_TRADED_PRODUCTS_URL,
+        format="jse_etf_list_xlsx",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="jse_etn_list",
+        provider="JSE",
+        description="Official JSE ETN product list",
+        source_url=JSE_EXCHANGE_TRADED_PRODUCTS_URL,
+        format="jse_etn_list_xlsx",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -834,6 +863,17 @@ def nasdaq_nordic_request_headers() -> dict[str, str]:
     }
 
 
+def extract_jse_exchange_traded_product_download_url(page_html: str, product_type: str) -> str | None:
+    product_type = product_type.strip().upper()
+    if product_type == "ETF":
+        matches = JSE_ETF_LIST_HREF_RE.findall(page_html)
+    elif product_type == "ETN":
+        matches = JSE_ETN_LIST_HREF_RE.findall(page_html)
+    else:
+        raise ValueError(f"Unsupported JSE product type: {product_type}")
+    return matches[-1] if matches else None
+
+
 def load_sec_company_tickers_exchange_payload(
     session: requests.Session | None = None,
 ) -> tuple[dict[str, Any] | None, str]:
@@ -999,6 +1039,31 @@ def fetch_tmx_etf_screener_quote_rows(
             covered_tickers.add(listing_ticker)
             break
     return rows
+
+
+def load_jse_exchange_traded_product_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    cache_paths = {
+        "jse_etf_list": (JSE_ETF_LIST_CACHE, LEGACY_JSE_ETF_LIST_CACHE),
+        "jse_etn_list": (JSE_ETN_LIST_CACHE, LEGACY_JSE_ETN_LIST_CACHE),
+    }.get(source.key)
+    if cache_paths is None:
+        raise ValueError(f"Unsupported JSE source key: {source.key}")
+
+    for path in cache_paths:
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+
+    try:
+        rows = fetch_jse_exchange_traded_product_rows(source, session=session)
+    except (requests.RequestException, ValueError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    cache_paths[0].write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
 
 
 def load_nasdaq_nordic_stockholm_shares_rows(
@@ -1772,6 +1837,36 @@ def parse_jpx_listed_issues_excel(content: bytes, source: MasterfileSource) -> l
                 "name": name,
                 "exchange": "TSE",
                 "asset_type": infer_jpx_asset_type(section, name),
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
+def parse_jse_exchange_traded_product_excel(
+    content: bytes,
+    source: MasterfileSource,
+    *,
+    source_url: str,
+) -> list[dict[str, str]]:
+    dataframe = pd.read_excel(io.BytesIO(content), sheet_name=0)
+    rows: list[dict[str, str]] = []
+    for record in dataframe.to_dict(orient="records"):
+        ticker = str(record.get("Alpha", "")).strip()
+        name = re.sub(r"\s+", " ", str(record.get("Long Name", "")).strip())
+        if not ticker or not name or ticker.lower() == "nan" or name.lower() == "nan":
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "JSE",
+                "asset_type": "ETF",
                 "listing_status": "active",
                 "reference_scope": source.reference_scope,
                 "official": "true",
@@ -2976,6 +3071,37 @@ def fetch_b3_bdr_companies(source: MasterfileSource, session: requests.Session |
     return parse_b3_bdr_companies_payload(response.json(), source)
 
 
+def fetch_jse_exchange_traded_product_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    page_response = session.get(
+        source.source_url,
+        headers={"User-Agent": USER_AGENT},
+        timeout=REQUEST_TIMEOUT,
+    )
+    page_response.raise_for_status()
+    product_type = "ETF" if source.key == "jse_etf_list" else "ETN"
+    download_url = extract_jse_exchange_traded_product_download_url(page_response.text, product_type)
+    if not download_url:
+        raise ValueError(f"Could not locate JSE {product_type} workbook URL")
+    workbook_response = session.get(
+        download_url,
+        headers={
+            "User-Agent": USER_AGENT,
+            "Referer": source.source_url,
+        },
+        timeout=REQUEST_TIMEOUT,
+    )
+    workbook_response.raise_for_status()
+    return parse_jse_exchange_traded_product_excel(
+        workbook_response.content,
+        source,
+        source_url=download_url,
+    )
+
+
 def fetch_nasdaq_nordic_stockholm_shares(
     source: MasterfileSource,
     session: requests.Session | None = None,
@@ -3225,6 +3351,8 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "tmx_etf_screener_json":
         payload = fetch_json(source.source_url, session=session)
         return parse_tmx_etf_screener(payload, source)
+    if source.format in {"jse_etf_list_xlsx", "jse_etn_list_xlsx"}:
+        return fetch_jse_exchange_traded_product_rows(source, session=session)
     if source.format == "euronext_equities_semicolon_csv":
         text = fetch_text(source.source_url, session=session)
         return parse_euronext_equities_download(text, source)
@@ -3320,6 +3448,11 @@ def fetch_source_rows_with_mode(
         if payload is None:
             raise requests.RequestException("TPEX mainboard quotes unavailable")
         return parse_tpex_mainboard_quotes(payload, source), mode
+    if source.format in {"jse_etf_list_xlsx", "jse_etn_list_xlsx"}:
+        rows, mode = load_jse_exchange_traded_product_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException(f"{source.provider} {source.key} workbook unavailable")
+        return rows, mode
     if source.format == "nasdaq_nordic_stockholm_shares_json":
         rows, mode = load_nasdaq_nordic_stockholm_shares_rows(source, session=session)
         if rows is None:

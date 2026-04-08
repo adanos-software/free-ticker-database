@@ -22,9 +22,11 @@ from scripts.fetch_exchange_masterfiles import (
     LSE_COMPANY_REPORTS_CACHE,
     LSE_INSTRUMENT_DIRECTORY_CACHE,
     LSE_INSTRUMENT_SEARCH_CACHE,
+    JSE_EXCHANGE_TRADED_PRODUCTS_URL,
     MasterfileSource,
     OFFICIAL_SOURCES,
     extract_lse_last_page,
+    extract_jse_exchange_traded_product_download_url,
     extract_latest_asx_investment_products_url,
     SSE_ETF_SUBCLASSES,
     TMX_ETF_SCREENER_CACHE,
@@ -38,6 +40,7 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_lse_company_reports,
     fetch_lse_instrument_directory,
     fetch_lse_instrument_search_exact,
+    fetch_jse_exchange_traded_product_rows,
     fetch_nasdaq_nordic_stockholm_shares,
     fetch_psx_listed_companies,
     fetch_psx_symbol_name_daily,
@@ -72,6 +75,7 @@ from scripts.fetch_exchange_masterfiles import (
     parse_euronext_equities_download,
     parse_euronext_etfs_download,
     parse_jpx_listed_issues_excel,
+    parse_jse_exchange_traded_product_excel,
     parse_krx_etf_finder,
     parse_krx_listed_companies,
     parse_lse_company_reports_html,
@@ -2147,6 +2151,122 @@ def test_parse_jpx_listed_issues_excel_maps_tse_rows(tmp_path):
             "reference_scope": "exchange_directory",
             "official": "true",
         },
+    ]
+
+
+def test_extract_jse_exchange_traded_product_download_url_picks_latest_match() -> None:
+    html = """
+    <a href="https://www.jse.co.za/sites/default/files/media/documents/etf-list-v86/ETF%20List%20v.86.xlsx">old etf</a>
+    <a href="https://www.jse.co.za/sites/default/files/media/documents/etf-list-v87/ETF%20List%20v.87.xlsx">new etf</a>
+    <a href="https://www.jse.co.za/sites/default/files/media/documents/etn-list/ETN%20List%20v.21_0.xlsx">etn</a>
+    """
+
+    assert (
+        extract_jse_exchange_traded_product_download_url(html, "ETF")
+        == "https://www.jse.co.za/sites/default/files/media/documents/etf-list-v87/ETF%20List%20v.87.xlsx"
+    )
+    assert (
+        extract_jse_exchange_traded_product_download_url(html, "ETN")
+        == "https://www.jse.co.za/sites/default/files/media/documents/etn-list/ETN%20List%20v.21_0.xlsx"
+    )
+
+
+def test_parse_jse_exchange_traded_product_excel_skips_section_headers() -> None:
+    buffer = io.BytesIO()
+    with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
+        pd.DataFrame(
+            [
+                {"Alpha": "Top 40 Equity", "Long Name": None},
+                {"Alpha": "ETFT40", "Long Name": "1nvest Top 40 ETF"},
+                {"Alpha": "ADETNC", "Long Name": "FNB ETN on ADOBEC NOV25"},
+                {"Alpha": None, "Long Name": None},
+            ]
+        ).to_excel(writer, index=False)
+
+    rows = parse_jse_exchange_traded_product_excel(
+        buffer.getvalue(),
+        SOURCE,
+        source_url="https://www.jse.co.za/sites/default/files/media/documents/etf-list-v87/ETF%20List%20v.87.xlsx",
+    )
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://www.jse.co.za/sites/default/files/media/documents/etf-list-v87/ETF%20List%20v.87.xlsx",
+            "ticker": "ETFT40",
+            "name": "1nvest Top 40 ETF",
+            "exchange": "JSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://www.jse.co.za/sites/default/files/media/documents/etf-list-v87/ETF%20List%20v.87.xlsx",
+            "ticker": "ADETNC",
+            "name": "FNB ETN on ADOBEC NOV25",
+            "exchange": "JSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_fetch_jse_exchange_traded_product_rows_uses_discovered_workbook_url() -> None:
+    workbook = io.BytesIO()
+    with pd.ExcelWriter(workbook, engine="openpyxl") as writer:
+        pd.DataFrame([{"Alpha": "EASYAI", "Long Name": "EasyETFs AI World Actively Managed ETF"}]).to_excel(writer, index=False)
+
+    html = """
+    <a href="https://www.jse.co.za/sites/default/files/media/documents/etf-list-v87/ETF%20List%20v.87.xlsx">ETF</a>
+    <a href="https://www.jse.co.za/sites/default/files/media/documents/etn-list/ETN%20List%20v.21_0.xlsx">ETN</a>
+    """
+
+    class FakeResponse:
+        def __init__(self, *, text: str = "", content: bytes = b""):
+            self.text = text
+            self.content = content
+
+        def raise_for_status(self) -> None:
+            return None
+
+    class FakeSession:
+        def get(self, url, headers=None, timeout=None):
+            if url == JSE_EXCHANGE_TRADED_PRODUCTS_URL:
+                return FakeResponse(text=html)
+            if url == "https://www.jse.co.za/sites/default/files/media/documents/etf-list-v87/ETF%20List%20v.87.xlsx":
+                return FakeResponse(content=workbook.getvalue())
+            raise AssertionError(url)
+
+    source = MasterfileSource(
+        key="jse_etf_list",
+        provider="JSE",
+        description="JSE ETF list",
+        source_url=JSE_EXCHANGE_TRADED_PRODUCTS_URL,
+        format="jse_etf_list_xlsx",
+        reference_scope="listed_companies_subset",
+    )
+
+    rows = fetch_jse_exchange_traded_product_rows(source, session=FakeSession())
+
+    assert rows == [
+        {
+            "source_key": "jse_etf_list",
+            "provider": "JSE",
+            "source_url": "https://www.jse.co.za/sites/default/files/media/documents/etf-list-v87/ETF%20List%20v.87.xlsx",
+            "ticker": "EASYAI",
+            "name": "EasyETFs AI World Actively Managed ETF",
+            "exchange": "JSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+        }
     ]
 
 
