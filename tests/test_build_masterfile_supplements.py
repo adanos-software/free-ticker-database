@@ -520,6 +520,61 @@ def test_merge_supplemental_ticker_rows_refreshes_safe_fields(monkeypatch, tmp_p
     ]
 
 
+def test_merge_supplemental_ticker_rows_prefers_official_tmx_series_ticker(monkeypatch, tmp_path):
+    supplemental = tmp_path / "supplemental.csv"
+    supplemental.write_text(
+        "\n".join(
+            [
+                "ticker,name,exchange,asset_type,sector,country,country_code,isin,aliases,source_key,source_url,reference_scope",
+                "ACAP.P,Atlas One Capital Corporation,TSXV,Stock,,Canada,CA,,,tmx,https://example.com,listed_companies_subset",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    from scripts import rebuild_dataset
+
+    monkeypatch.setattr(rebuild_dataset, "MASTERFILE_SUPPLEMENT_CSV", supplemental)
+    base_rows = [
+        {
+            "ticker": "ACAP-P",
+            "name": "Atlas One Capital Corporation",
+            "exchange": "TSXV",
+            "asset_type": "Stock",
+            "sector": "",
+            "country": "",
+            "country_code": "",
+            "isin": "CA0000000001",
+            "aliases": "atlas one capital",
+        },
+        {
+            "ticker": "ACAP.P",
+            "name": "Atlas One Capital Corporation",
+            "exchange": "TSXV",
+            "asset_type": "Stock",
+            "sector": "",
+            "country": "Canada",
+            "country_code": "CA",
+            "isin": "",
+            "aliases": "",
+        },
+    ]
+
+    assert merge_supplemental_ticker_rows(base_rows) == [
+        {
+            "ticker": "ACAP.P",
+            "name": "Atlas One Capital Corporation",
+            "exchange": "TSXV",
+            "asset_type": "Stock",
+            "sector": "",
+            "country": "Canada",
+            "country_code": "CA",
+            "isin": "CA0000000001",
+            "aliases": "atlas one capital",
+        }
+    ]
+
+
 def test_build_supplement_rows_allows_tsx_replacement_for_dropped_wrong_venue_row():
     core_rows = [
         {"ticker": "ESGA", "exchange": "NYSE ARCA", "name": "American Century Sustainable Equity ETF"},

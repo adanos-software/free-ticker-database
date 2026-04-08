@@ -182,6 +182,7 @@ ASX_LOYALTY_TICKER_RE = re.compile(r".*LV$")
 TAIWAN_ETF_TICKER_RE = re.compile(r"^00\d{2,4}[A-Z]?$")
 TAIWAN_NON_COMMON_STOCK_TICKER_RE = re.compile(r"^\d{4}B$")
 NEO_CDR_XDR_RE = re.compile(r"\b(?:cdr|xdr)\b", re.IGNORECASE)
+TMX_OFFICIAL_SERIES_TICKER_RE = re.compile(r"^(?P<root>[A-Z0-9]+)\.(?P<suffix>[A-Z0-9]+)$")
 PREFERRED_TICKER_SUFFIX_RE = re.compile(r"^[A-Z]{1,8}-P[A-Z]$")
 PREFERRED_PF_TICKER_RE = re.compile(r"^[A-Z]{1,8}-PF[A-Z]$")
 PREFERRED_PR_TICKER_RE = re.compile(r"^[A-Z]{1,8}-PR-[A-Z]$")
@@ -1192,18 +1193,48 @@ def merge_ticker_row(base_row: dict[str, str], supplement_row: dict[str, str]) -
     for field in ("name", "asset_type", "country", "country_code"):
         if supplement_row.get(field):
             merged[field] = supplement_row[field]
-    for field in ("sector", "isin", "aliases"):
+    for field in ("sector", "isin"):
         if not merged.get(field) and supplement_row.get(field):
             merged[field] = supplement_row[field]
+    merged_aliases = dedupe_keep_order(
+        split_aliases(base_row.get("aliases", "")) + split_aliases(supplement_row.get("aliases", ""))
+    )
+    merged["aliases"] = "|".join(merged_aliases)
     return merged
 
 
 def merge_supplemental_ticker_rows(base_rows: list[dict[str, str]]) -> list[dict[str, str]]:
-    merged_rows: dict[tuple[str, str], dict[str, str]] = {
-        (row["ticker"], row["exchange"]): dict(row)
-        for row in base_rows
-    }
-    for row in load_supplemental_ticker_rows():
+    supplemental_rows = load_supplemental_ticker_rows()
+    tmx_official_aliases: dict[tuple[str, str, str], dict[str, str]] = {}
+    for row in supplemental_rows:
+        if row["exchange"] not in {"TSX", "TSXV"}:
+            continue
+        match = TMX_OFFICIAL_SERIES_TICKER_RE.fullmatch(row["ticker"])
+        if not match:
+            continue
+        hyphenated_ticker = f"{match.group('root')}-{match.group('suffix')}"
+        tmx_official_aliases[(hyphenated_ticker, row["exchange"], row["asset_type"])] = row
+
+    merged_rows: dict[tuple[str, str], dict[str, str]] = {}
+    for row in base_rows:
+        candidate = dict(row)
+        official_alias = tmx_official_aliases.get((candidate["ticker"], candidate["exchange"], candidate["asset_type"]))
+        if official_alias and (
+            not candidate.get("name")
+            or not official_alias.get("name")
+            or alias_matches_company(candidate["name"], official_alias["name"])
+            or alias_matches_company(official_alias["name"], candidate["name"])
+        ):
+            candidate["ticker"] = official_alias["ticker"]
+            if "listing_key" in candidate:
+                candidate["listing_key"] = row_listing_key(candidate)
+        key = (candidate["ticker"], candidate["exchange"])
+        if key in merged_rows:
+            merged_rows[key] = merge_ticker_row(merged_rows[key], candidate)
+        else:
+            merged_rows[key] = candidate
+
+    for row in supplemental_rows:
         key = (row["ticker"], row["exchange"])
         if key in merged_rows:
             merged_rows[key] = merge_ticker_row(merged_rows[key], row)

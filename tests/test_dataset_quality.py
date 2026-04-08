@@ -561,6 +561,19 @@ def test_normalize_input_row_reclassifies_neo_cdrs_and_xdrs_to_stock():
     assert regular_neo_etf["asset_type"] == "ETF"
 
 
+def test_tsxv_official_point_suffixes_replace_hyphen_variants():
+    acap = ticker_exchange_row("ACAP.P", "TSXV")
+    azc = ticker_exchange_row("AZC.P", "TSXV")
+
+    assert ticker_exchange_row("ACAP-P", "TSXV") is None
+    assert ticker_exchange_row("AZC-P", "TSXV") is None
+    assert acap is not None
+    assert azc is not None
+    assert acap["name"] == "Atlas One Capital Corporation"
+    assert azc["name"] == "A2ZCryptocap Inc."
+    assert "atlas one capital" in acap["aliases"]
+
+
 def test_should_exclude_stock_row_drops_ams_certificates():
     from scripts.rebuild_dataset import should_exclude_stock_row
 

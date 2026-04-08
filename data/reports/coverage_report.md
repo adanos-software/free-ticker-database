@@ -4,19 +4,19 @@
 
 | Metric | Value |
 |---|---|
-| tickers | 55911 |
-| aliases | 87660 |
-| stocks | 41357 |
+| tickers | 55760 |
+| aliases | 87661 |
+| stocks | 41206 |
 | etfs | 14554 |
 | isin_coverage | 38226 |
 | sector_coverage | 33596 |
 | cik_coverage | 7707 |
 | figi_coverage | 3818 |
 | lei_coverage | 921 |
-| listing_status_rows | 82577 |
-| listing_status_intervals | 82577 |
-| listing_events | 24789 |
-| listing_keys | 60844 |
+| listing_status_rows | 82729 |
+| listing_status_intervals | 82729 |
+| listing_events | 24941 |
+| listing_keys | 60692 |
 | official_masterfile_symbols | 27725 |
 | official_masterfile_matches | 18675 |
 | official_masterfile_collisions | 4508 |
@@ -25,9 +25,9 @@
 | official_partial_exchanges | 14 |
 | manual_only_exchanges | 0 |
 | missing_exchanges | 41 |
-| stock_verification_items | 44106 |
+| stock_verification_items | 43954 |
 | stock_verification_verified | 28262 |
-| stock_verification_reference_gap | 15840 |
+| stock_verification_reference_gap | 15688 |
 | stock_verification_missing_from_official | 4 |
 | stock_verification_name_mismatch | 0 |
 | stock_verification_cross_exchange_collision | 0 |
@@ -42,23 +42,23 @@
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-04-08T17:39:16Z |
-| tickers_age_hours | 0.07 |
+| tickers_built_at | 2026-04-08T17:56:31Z |
+| tickers_age_hours | 0.02 |
 | masterfiles_generated_at | 2026-04-08T17:25:40Z |
-| masterfiles_age_hours | 0.29 |
-| identifiers_generated_at | 2026-04-08T17:43:11Z |
-| identifiers_age_hours | 0.0 |
-| listing_history_observed_at | 2026-04-08T17:39:16Z |
-| listing_history_age_hours | 0.07 |
-| latest_verification_run | data/stock_verification/run-20260408-neo-cboe-03 |
-| latest_verification_generated_at | 2026-04-08T17:41:15Z |
-| latest_verification_age_hours | 0.03 |
-| latest_stock_verification_run | data/stock_verification/run-20260408-neo-cboe-03 |
-| latest_stock_verification_generated_at | 2026-04-08T17:41:15Z |
-| latest_stock_verification_age_hours | 0.03 |
+| masterfiles_age_hours | 0.54 |
+| identifiers_generated_at | 2026-04-08T17:56:57Z |
+| identifiers_age_hours | 0.02 |
+| listing_history_observed_at | 2026-04-08T17:56:31Z |
+| listing_history_age_hours | 0.02 |
+| latest_verification_run | data/stock_verification/run-20260408-tsxv-suffix-01 |
+| latest_verification_generated_at | 2026-04-08T17:57:49Z |
+| latest_verification_age_hours | 0.0 |
+| latest_stock_verification_run | data/stock_verification/run-20260408-tsxv-suffix-01 |
+| latest_stock_verification_generated_at | 2026-04-08T17:57:49Z |
+| latest_stock_verification_age_hours | 0.0 |
 | latest_etf_verification_run | data/etf_verification/run-20260408-neo-cboe-03 |
 | latest_etf_verification_generated_at | 2026-04-08T17:41:15Z |
-| latest_etf_verification_age_hours | 0.03 |
+| latest_etf_verification_age_hours | 0.28 |
 
 ## Source Coverage
 
@@ -165,7 +165,7 @@
 | TPEX | official_partial | 1126 | 852 | 1006 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | TSE | official_full | 3214 | 0 | 0 | 0 | 0 | 0 | 4444 | 3214 | 1205 | 25 | 72.32 | 100.0 |
 | TSX | official_partial | 1756 | 1176 | 821 | 14 | 1092 | 23 | 0 | 0 | 0 | 0 |  | 100.0 |
-| TSXV | official_partial | 1229 | 513 | 631 | 17 | 531 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
+| TSXV | official_partial | 1077 | 512 | 631 | 17 | 531 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | TWSE | official_full | 1240 | 955 | 987 | 0 | 0 | 0 | 1080 | 1022 | 34 | 24 | 94.63 | 100.0 |
 | US | missing | 54 | 0 | 1 | 2 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | USE_UG | missing | 7 | 7 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
@@ -186,7 +186,7 @@
 | Bermuda | 159 | 159 | 152 | 59 | 2 | 13 |
 | Botswana | 25 | 25 | 1 | 0 | 0 | 0 |
 | Brazil | 925 | 281 | 408 | 0 | 0 | 0 |
-| Canada | 4798 | 3376 | 2756 | 662 | 1613 | 73 |
+| Canada | 4647 | 3376 | 2756 | 662 | 1613 | 73 |
 | Cayman Islands | 619 | 614 | 477 | 442 | 1 | 16 |
 | Chile | 118 | 86 | 95 | 0 | 1 | 1 |
 | China | 5984 | 4852 | 3502 | 11 | 0 | 0 |
@@ -262,7 +262,6 @@
 | TPEX | official_partial | 323 | 323 | 0 | 0 | 0 |
 | B3 | official_full | 317 | 317 | 0 | 0 | 0 |
 | HOSE | missing | 260 | 260 | 0 | 0 | 0 |
-| TSXV | official_partial | 248 | 248 | 0 | 0 | 0 |
 | EGX | missing | 225 | 225 | 0 | 0 | 0 |
 | CPH | missing | 216 | 216 | 0 | 0 | 0 |
 | JSE | missing | 213 | 213 | 0 | 0 | 0 |
@@ -272,3 +271,4 @@
 | LSE | official_partial | 149 | 149 | 0 | 0 | 0 |
 | SET | official_partial | 149 | 149 | 0 | 0 | 0 |
 | ASX | official_partial | 148 | 148 | 0 | 0 | 0 |
+| NGX | missing | 147 | 147 | 0 | 0 | 0 |
