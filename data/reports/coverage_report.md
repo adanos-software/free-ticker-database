@@ -4,18 +4,18 @@
 
 | Metric | Value |
 |---|---|
-| tickers | 55912 |
-| aliases | 87738 |
-| stocks | 41345 |
+| tickers | 55913 |
+| aliases | 87729 |
+| stocks | 41346 |
 | etfs | 14567 |
 | isin_coverage | 38228 |
-| sector_coverage | 33595 |
+| sector_coverage | 33596 |
 | cik_coverage | 7708 |
 | figi_coverage | 3818 |
 | lei_coverage | 921 |
 | listing_status_rows | 82575 |
 | listing_status_intervals | 82575 |
-| listing_events | 23069 |
+| listing_events | 23097 |
 | listing_keys | 60846 |
 | official_masterfile_symbols | 27333 |
 | official_masterfile_matches | 18498 |
@@ -26,8 +26,8 @@
 | manual_only_exchanges | 0 |
 | missing_exchanges | 42 |
 | stock_verification_items | 44095 |
-| stock_verification_verified | 27927 |
-| stock_verification_reference_gap | 16168 |
+| stock_verification_verified | 27955 |
+| stock_verification_reference_gap | 16140 |
 | stock_verification_missing_from_official | 0 |
 | stock_verification_name_mismatch | 0 |
 | stock_verification_cross_exchange_collision | 0 |
@@ -42,23 +42,23 @@
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-04-08T16:45:36Z |
+| tickers_built_at | 2026-04-08T16:52:00Z |
 | tickers_age_hours | 0.01 |
 | masterfiles_generated_at | 2026-04-08T16:27:52Z |
-| masterfiles_age_hours | 0.3 |
-| identifiers_generated_at | 2026-04-08T16:45:40Z |
+| masterfiles_age_hours | 0.41 |
+| identifiers_generated_at | 2026-04-08T16:52:04Z |
 | identifiers_age_hours | 0.0 |
-| listing_history_observed_at | 2026-04-08T16:45:36Z |
+| listing_history_observed_at | 2026-04-08T16:52:00Z |
 | listing_history_age_hours | 0.01 |
 | latest_verification_run | data/stock_verification/run-20260408-lse-isin-01 |
-| latest_verification_generated_at | 2026-04-08T16:45:53Z |
+| latest_verification_generated_at | 2026-04-08T16:52:17Z |
 | latest_verification_age_hours | 0.0 |
 | latest_stock_verification_run | data/stock_verification/run-20260408-lse-isin-01 |
-| latest_stock_verification_generated_at | 2026-04-08T16:45:53Z |
+| latest_stock_verification_generated_at | 2026-04-08T16:52:17Z |
 | latest_stock_verification_age_hours | 0.0 |
 | latest_etf_verification_run | data/etf_verification/run-20260408-lse-isin-01 |
 | latest_etf_verification_generated_at | 2026-04-08T16:29:30Z |
-| latest_etf_verification_age_hours | 0.27 |
+| latest_etf_verification_age_hours | 0.38 |
 
 ## Source Coverage
 
@@ -164,7 +164,7 @@
 | TPEX | official_partial | 1126 | 852 | 1006 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | TSE | official_full | 3214 | 0 | 0 | 0 | 0 | 0 | 4444 | 3214 | 1205 | 25 | 72.32 | 100.0 |
 | TSX | official_partial | 1756 | 1176 | 821 | 14 | 1092 | 23 | 0 | 0 | 0 | 0 |  | 100.0 |
-| TSXV | official_partial | 1229 | 514 | 631 | 17 | 531 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
+| TSXV | official_partial | 1229 | 513 | 631 | 17 | 531 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | TWSE | official_full | 1240 | 955 | 987 | 0 | 0 | 0 | 1080 | 1022 | 34 | 24 | 94.63 | 100.0 |
 | US | missing | 54 | 0 | 1 | 2 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | USE_UG | missing | 7 | 7 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
@@ -185,7 +185,7 @@
 | Bermuda | 159 | 159 | 152 | 59 | 2 | 13 |
 | Botswana | 25 | 25 | 1 | 0 | 0 | 0 |
 | Brazil | 925 | 281 | 408 | 0 | 0 | 0 |
-| Canada | 4798 | 3376 | 2756 | 663 | 1614 | 73 |
+| Canada | 4798 | 3376 | 2756 | 662 | 1613 | 73 |
 | Cayman Islands | 619 | 614 | 477 | 442 | 1 | 16 |
 | Chile | 118 | 86 | 95 | 0 | 1 | 1 |
 | China | 5984 | 4852 | 3502 | 11 | 0 | 0 |
@@ -260,7 +260,7 @@
 | WSE | missing | 349 | 349 | 0 | 0 | 0 |
 | TPEX | official_partial | 323 | 323 | 0 | 0 | 0 |
 | B3 | official_full | 317 | 317 | 0 | 0 | 0 |
-| TSXV | official_partial | 291 | 291 | 0 | 0 | 0 |
+| TSXV | official_partial | 266 | 266 | 0 | 0 | 0 |
 | HOSE | missing | 260 | 260 | 0 | 0 | 0 |
 | EGX | missing | 225 | 225 | 0 | 0 | 0 |
 | CPH | missing | 216 | 216 | 0 | 0 | 0 |
@@ -269,5 +269,5 @@
 | LSE | official_partial | 200 | 200 | 0 | 0 | 0 |
 | BMV | missing | 194 | 194 | 0 | 0 | 0 |
 | HEL | missing | 188 | 188 | 0 | 0 | 0 |
-| TSX | official_partial | 171 | 171 | 0 | 0 | 0 |
 | BME | missing | 169 | 169 | 0 | 0 | 0 |
+| TSX | official_partial | 168 | 168 | 0 | 0 | 0 |
