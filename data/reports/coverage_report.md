@@ -26,14 +26,14 @@
 | manual_only_exchanges | 0 |
 | missing_exchanges | 42 |
 | stock_verification_items | 44093 |
-| stock_verification_verified | 28090 |
-| stock_verification_reference_gap | 16003 |
+| stock_verification_verified | 28222 |
+| stock_verification_reference_gap | 15871 |
 | stock_verification_missing_from_official | 0 |
 | stock_verification_name_mismatch | 0 |
 | stock_verification_cross_exchange_collision | 0 |
-| etf_verification_items | 16744 |
-| etf_verification_verified | 14981 |
-| etf_verification_reference_gap | 1763 |
+| etf_verification_items | 16751 |
+| etf_verification_verified | 15006 |
+| etf_verification_reference_gap | 1745 |
 | etf_verification_missing_from_official | 0 |
 | etf_verification_name_mismatch | 0 |
 | etf_verification_cross_exchange_collision | 0 |
@@ -43,22 +43,22 @@
 | Metric | Value |
 |---|---|
 | tickers_built_at | 2026-04-08T16:56:00Z |
-| tickers_age_hours | 0.01 |
+| tickers_age_hours | 0.32 |
 | masterfiles_generated_at | 2026-04-08T16:27:52Z |
-| masterfiles_age_hours | 0.47 |
+| masterfiles_age_hours | 0.79 |
 | identifiers_generated_at | 2026-04-08T16:56:03Z |
-| identifiers_age_hours | 0.0 |
+| identifiers_age_hours | 0.32 |
 | listing_history_observed_at | 2026-04-08T16:56:00Z |
-| listing_history_age_hours | 0.01 |
-| latest_verification_run | data/stock_verification/run-20260408-lse-isin-01 |
-| latest_verification_generated_at | 2026-04-08T16:56:17Z |
-| latest_verification_age_hours | 0.0 |
-| latest_stock_verification_run | data/stock_verification/run-20260408-lse-isin-01 |
-| latest_stock_verification_generated_at | 2026-04-08T16:56:17Z |
-| latest_stock_verification_age_hours | 0.0 |
-| latest_etf_verification_run | data/etf_verification/run-20260408-lse-isin-01 |
-| latest_etf_verification_generated_at | 2026-04-08T16:29:30Z |
-| latest_etf_verification_age_hours | 0.45 |
+| listing_history_age_hours | 0.32 |
+| latest_verification_run | data/stock_verification/run-20260408-tmx-root-stock-01 |
+| latest_verification_generated_at | 2026-04-08T17:10:02Z |
+| latest_verification_age_hours | 0.09 |
+| latest_stock_verification_run | data/stock_verification/run-20260408-tmx-root-stock-01 |
+| latest_stock_verification_generated_at | 2026-04-08T17:10:02Z |
+| latest_stock_verification_age_hours | 0.09 |
+| latest_etf_verification_run | data/etf_verification/run-20260408-b3-refresh-01 |
+| latest_etf_verification_generated_at | 2026-04-08T17:15:27Z |
+| latest_etf_verification_age_hours | 0.0 |
 
 ## Source Coverage
 
@@ -260,8 +260,8 @@
 | WSE | missing | 349 | 349 | 0 | 0 | 0 |
 | TPEX | official_partial | 323 | 323 | 0 | 0 | 0 |
 | B3 | official_full | 317 | 317 | 0 | 0 | 0 |
-| TSXV | official_partial | 266 | 266 | 0 | 0 | 0 |
 | HOSE | missing | 260 | 260 | 0 | 0 | 0 |
+| TSXV | official_partial | 248 | 248 | 0 | 0 | 0 |
 | EGX | missing | 225 | 225 | 0 | 0 | 0 |
 | CPH | missing | 216 | 216 | 0 | 0 | 0 |
 | JSE | missing | 213 | 213 | 0 | 0 | 0 |
@@ -269,5 +269,5 @@
 | BMV | missing | 194 | 194 | 0 | 0 | 0 |
 | HEL | missing | 188 | 188 | 0 | 0 | 0 |
 | BME | missing | 169 | 169 | 0 | 0 | 0 |
-| TSX | official_partial | 168 | 168 | 0 | 0 | 0 |
-| LSE | official_partial | 161 | 161 | 0 | 0 | 0 |
+| LSE | official_partial | 149 | 149 | 0 | 0 | 0 |
+| SET | official_partial | 149 | 149 | 0 | 0 | 0 |

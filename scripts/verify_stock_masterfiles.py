@@ -251,18 +251,12 @@ def load_tmx_root_reference_rows(
     row: dict[str, str],
     active_by_key: dict[tuple[str, str], list[dict[str, str]]],
 ) -> list[dict[str, str]]:
-    if row.get("asset_type") != "ETF":
-        return []
     exchange = row.get("exchange", "")
     ticker = row.get("ticker", "")
     if exchange not in TMX_ROOT_SUFFIX_ETF_EXCHANGES or "-" not in ticker:
         return []
     root_ticker = ticker.split("-", 1)[0]
-    return [
-        candidate
-        for candidate in active_by_key.get((exchange, root_ticker), [])
-        if candidate.get("asset_type") == row.get("asset_type")
-    ]
+    return list(active_by_key.get((exchange, root_ticker), []))
 
 
 def classify_row(
@@ -371,20 +365,42 @@ def classify_row(
             reason = "Only low-confidence asset_type evidence exists for this listing."
     else:
         tmx_root_reference_rows = load_tmx_root_reference_rows(row, active_by_key)
-        if tmx_root_reference_rows:
-            preferred_reference = choose_preferred_reference(tmx_root_reference_rows, ticker)
+        if row.get("asset_type") == "ETF" and tmx_root_reference_rows:
+            same_type_root_rows = [
+                candidate
+                for candidate in tmx_root_reference_rows
+                if candidate.get("asset_type") == row.get("asset_type")
+            ]
+            if not same_type_root_rows:
+                same_type_root_rows = tmx_root_reference_rows
+            preferred_reference = choose_preferred_reference(same_type_root_rows, ticker)
             reference_name = preferred_reference.get("name", "")
             reference_source = preferred_reference.get("source_key", "")
             if any(
                 has_strong_company_name_match(candidate.get("name", ""), row["name"])
                 or has_strong_company_name_match(row["name"], candidate.get("name", ""))
-                for candidate in tmx_root_reference_rows
+                for candidate in same_type_root_rows
             ):
                 status = "verified"
                 reason = "Matched active official TMX root listing; official workbook omits this ETF series suffix."
             else:
                 status = "reference_gap"
                 reason = "Only an official TMX root listing exists for this ETF series suffix."
+        elif row.get("asset_type") == "Stock" and tmx_root_reference_rows:
+            preferred_reference = choose_preferred_reference(tmx_root_reference_rows, ticker)
+            reference_name = preferred_reference.get("name", "")
+            reference_source = preferred_reference.get("source_key", "")
+            if any(
+                matches_reference_name(row, candidate.get("name", ""))
+                or has_strong_company_name_match(candidate.get("name", ""), row["name"])
+                or has_strong_company_name_match(row["name"], candidate.get("name", ""))
+                for candidate in tmx_root_reference_rows
+            ):
+                status = "verified"
+                reason = "Matched active official TMX root listing; official workbook omits this stock class/unit suffix."
+            else:
+                status = "reference_gap"
+                reason = "Only an official TMX root listing exists for this stock class/unit suffix."
         elif exchange in covered_exchanges:
             non_active_rows = any_by_key.get(key, [])
             non_active_row = next((candidate for candidate in non_active_rows if candidate.get("listing_status") != "active"), None)

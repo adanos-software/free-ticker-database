@@ -1037,6 +1037,117 @@ def test_classify_row_keeps_tsx_etf_series_suffix_without_name_match_as_referenc
     assert result["reason"] == "Only an official TMX root listing exists for this ETF series suffix."
 
 
+def test_classify_row_verifies_tsx_stock_class_suffix_from_tmx_root_listing() -> None:
+    row = {
+        "ticker": "CCL-B",
+        "exchange": "TSX",
+        "asset_type": "Stock",
+        "name": "CCL Industries Inc",
+        "country": "Canada",
+        "country_code": "CA",
+        "isin": "",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("TSX", "CCL"): [
+                {
+                    "ticker": "CCL",
+                    "exchange": "TSX",
+                    "name": "CCL Industries Inc.",
+                    "asset_type": "Stock",
+                    "source_key": "tmx_listed_issuers",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges={"TSX"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+    assert result["official_reference_name"] == "CCL Industries Inc."
+    assert result["official_reference_source"] == "tmx_listed_issuers"
+    assert result["reason"] == "Matched active official TMX root listing; official workbook omits this stock class/unit suffix."
+
+
+def test_classify_row_verifies_tsx_stock_unit_suffix_from_low_confidence_tmx_root_asset_type() -> None:
+    row = {
+        "ticker": "AX-UN",
+        "exchange": "TSX",
+        "asset_type": "Stock",
+        "name": "Artis Real Estate Investment Trust",
+        "country": "Canada",
+        "country_code": "CA",
+        "isin": "",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("TSX", "AX"): [
+                {
+                    "ticker": "AX",
+                    "exchange": "TSX",
+                    "name": "Artis Real Estate Investment Trust",
+                    "asset_type": "ETF",
+                    "source_key": "tmx_listed_issuers",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges=set(),
+        partial_covered_exchanges={"TSX"},
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+    assert result["official_reference_name"] == "Artis Real Estate Investment Trust"
+    assert result["official_reference_source"] == "tmx_listed_issuers"
+    assert result["reason"] == "Matched active official TMX root listing; official workbook omits this stock class/unit suffix."
+
+
+def test_classify_row_keeps_tsx_stock_suffix_without_name_match_as_reference_gap() -> None:
+    row = {
+        "ticker": "CCL-B",
+        "exchange": "TSX",
+        "asset_type": "Stock",
+        "name": "Different Company",
+        "country": "Canada",
+        "country_code": "CA",
+        "isin": "",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("TSX", "CCL"): [
+                {
+                    "ticker": "CCL",
+                    "exchange": "TSX",
+                    "name": "CCL Industries Inc.",
+                    "asset_type": "Stock",
+                    "source_key": "tmx_listed_issuers",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges={"TSX"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["official_reference_name"] == "CCL Industries Inc."
+    assert result["official_reference_source"] == "tmx_listed_issuers"
+    assert result["reason"] == "Only an official TMX root listing exists for this stock class/unit suffix."
+
+
 def test_classify_row_verifies_tsx_etf_using_existing_aliases() -> None:
     row = {
         "ticker": "TKN-U",
