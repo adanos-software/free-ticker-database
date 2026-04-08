@@ -296,6 +296,8 @@ ASX_MONTH_MAP = {
     "december": 12,
 }
 
+ASX_ETP_TYPES = {"ETF", "SP", "ETMF", "ETN", "ETP", "ACTIVE", "COMPLEX"}
+
 
 @dataclass(frozen=True)
 class MasterfileSource:
@@ -1326,7 +1328,7 @@ def parse_asx_investment_products_excel(content: bytes, source: MasterfileSource
         if pd.isna(ticker_value) or pd.isna(type_value) or pd.isna(name_value):
             continue
         type_name = str(type_value).strip().upper()
-        if type_name not in {"ETF", "SP", "ETMF", "ETN", "ETP"}:
+        if type_name not in ASX_ETP_TYPES:
             continue
         ticker = str(ticker_value).strip().upper()
         name = str(name_value).strip()

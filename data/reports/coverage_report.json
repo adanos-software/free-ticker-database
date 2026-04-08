@@ -28,30 +28,30 @@
     "stock_verification_name_mismatch": 0,
     "stock_verification_cross_exchange_collision": 0,
     "etf_verification_items": 16738,
-    "etf_verification_verified": 15146,
-    "etf_verification_reference_gap": 1573,
+    "etf_verification_verified": 15265,
+    "etf_verification_reference_gap": 1454,
     "etf_verification_missing_from_official": 18,
     "etf_verification_name_mismatch": 0,
     "etf_verification_cross_exchange_collision": 1
   },
   "freshness": {
     "tickers_built_at": "2026-04-08T18:18:09Z",
-    "tickers_age_hours": 0.13,
-    "masterfiles_generated_at": "2026-04-08T18:17:34Z",
-    "masterfiles_age_hours": 0.14,
+    "tickers_age_hours": 0.25,
+    "masterfiles_generated_at": "2026-04-08T18:31:46Z",
+    "masterfiles_age_hours": 0.02,
     "identifiers_generated_at": "2026-04-08T18:18:25Z",
-    "identifiers_age_hours": 0.12,
+    "identifiers_age_hours": 0.24,
     "listing_history_observed_at": "2026-04-08T18:18:09Z",
-    "listing_history_age_hours": 0.13,
+    "listing_history_age_hours": 0.25,
     "latest_verification_run": "data/stock_verification/run-20260408-lse-refresh-04",
     "latest_verification_generated_at": "2026-04-08T18:25:44Z",
-    "latest_verification_age_hours": 0.0,
+    "latest_verification_age_hours": 0.12,
     "latest_stock_verification_run": "data/stock_verification/run-20260408-lse-refresh-04",
     "latest_stock_verification_generated_at": "2026-04-08T18:25:44Z",
-    "latest_stock_verification_age_hours": 0.0,
-    "latest_etf_verification_run": "data/etf_verification/run-20260408-lse-refresh-03",
-    "latest_etf_verification_generated_at": "2026-04-08T18:23:01Z",
-    "latest_etf_verification_age_hours": 0.05
+    "latest_stock_verification_age_hours": 0.12,
+    "latest_etf_verification_run": "data/etf_verification/run-20260408-asx-refresh-01",
+    "latest_etf_verification_generated_at": "2026-04-08T18:32:44Z",
+    "latest_etf_verification_age_hours": 0.0
   },
   "source_coverage": [
     {
@@ -61,7 +61,7 @@
       "official": true,
       "mode": "network",
       "rows": 5419,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "nasdaq_other_listed",
@@ -70,7 +70,7 @@
       "official": true,
       "mode": "network",
       "rows": 7086,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "lse_company_reports",
@@ -79,7 +79,7 @@
       "official": true,
       "mode": "cache",
       "rows": 12397,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "lse_instrument_search",
@@ -88,7 +88,7 @@
       "official": true,
       "mode": "network",
       "rows": 926,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "lse_instrument_directory",
@@ -97,7 +97,7 @@
       "official": true,
       "mode": "cache",
       "rows": 64,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "asx_listed_companies",
@@ -106,7 +106,7 @@
       "official": true,
       "mode": "network",
       "rows": 1979,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "cboe_canada_listing_directory",
@@ -115,7 +115,7 @@
       "official": true,
       "mode": "network",
       "rows": 392,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "asx_investment_products",
@@ -123,8 +123,8 @@
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 264,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "rows": 426,
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "set_listed_companies",
@@ -133,7 +133,7 @@
       "official": true,
       "mode": "network",
       "rows": 704,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "tmx_listed_issuers",
@@ -142,7 +142,7 @@
       "official": true,
       "mode": "cache",
       "rows": 3619,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "tmx_etf_screener",
@@ -151,7 +151,7 @@
       "official": true,
       "mode": "cache",
       "rows": 1695,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "tmx_interlisted_companies",
@@ -160,7 +160,7 @@
       "official": true,
       "mode": "network",
       "rows": 266,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "euronext_equities",
@@ -169,7 +169,7 @@
       "official": true,
       "mode": "network",
       "rows": 3883,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "euronext_etfs",
@@ -178,7 +178,7 @@
       "official": true,
       "mode": "network",
       "rows": 3418,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "jpx_listed_issues",
@@ -187,7 +187,7 @@
       "official": true,
       "mode": "network",
       "rows": 4444,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "deutsche_boerse_listed_companies",
@@ -196,7 +196,7 @@
       "official": true,
       "mode": "network",
       "rows": 471,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "deutsche_boerse_etfs_etps",
@@ -205,7 +205,7 @@
       "official": true,
       "mode": "network",
       "rows": 3433,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "deutsche_boerse_xetra_all_tradable_equities",
@@ -214,7 +214,7 @@
       "official": true,
       "mode": "network",
       "rows": 986,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "six_equity_issuers",
@@ -223,7 +223,7 @@
       "official": true,
       "mode": "network",
       "rows": 241,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "six_etf_products",
@@ -232,7 +232,7 @@
       "official": true,
       "mode": "network",
       "rows": 2062,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "six_etp_products",
@@ -241,7 +241,7 @@
       "official": true,
       "mode": "network",
       "rows": 167,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "b3_instruments_equities",
@@ -250,7 +250,7 @@
       "official": true,
       "mode": "network",
       "rows": 575,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "b3_listed_etfs",
@@ -259,7 +259,7 @@
       "official": true,
       "mode": "network",
       "rows": 187,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "b3_bdr_etfs",
@@ -268,7 +268,7 @@
       "official": true,
       "mode": "network",
       "rows": 302,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "nasdaq_nordic_stockholm_shares",
@@ -277,7 +277,7 @@
       "official": true,
       "mode": "cache",
       "rows": 406,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "twse_listed_companies",
@@ -286,7 +286,7 @@
       "official": true,
       "mode": "network",
       "rows": 1080,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "twse_etf_list",
@@ -295,7 +295,7 @@
       "official": true,
       "mode": "network",
       "rows": 215,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "sse_a_share_list",
@@ -304,7 +304,7 @@
       "official": true,
       "mode": "network",
       "rows": 2350,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "sse_etf_list",
@@ -313,7 +313,7 @@
       "official": true,
       "mode": "network",
       "rows": 820,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "szse_a_share_list",
@@ -322,7 +322,7 @@
       "official": true,
       "mode": "network",
       "rows": 2886,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "szse_etf_list",
@@ -331,7 +331,7 @@
       "official": true,
       "mode": "network",
       "rows": 631,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "tpex_mainboard_daily_quotes",
@@ -340,7 +340,7 @@
       "official": true,
       "mode": "cache",
       "rows": 884,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "krx_listed_companies",
@@ -349,7 +349,7 @@
       "official": true,
       "mode": "network",
       "rows": 2660,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "krx_etf_finder",
@@ -358,7 +358,7 @@
       "official": true,
       "mode": "network",
       "rows": 1088,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "psx_listed_companies",
@@ -367,7 +367,7 @@
       "official": true,
       "mode": "network",
       "rows": 565,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "psx_symbol_name_daily",
@@ -376,7 +376,7 @@
       "official": true,
       "mode": "network",
       "rows": 370,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     },
     {
       "key": "sec_company_tickers_exchange",
@@ -385,7 +385,7 @@
       "official": true,
       "mode": "cache",
       "rows": 10117,
-      "generated_at": "2026-04-08T18:17:34Z"
+      "generated_at": "2026-04-08T18:31:46Z"
     }
   ],
   "exchange_coverage": [
@@ -467,13 +467,13 @@
       "stock_verification_cross_exchange_collision": 0,
       "stock_verification_verified_rate_on_covered": 100.0,
       "etf_verification_items": 363,
-      "etf_verification_verified": 233,
-      "etf_verification_reference_gap": 130,
+      "etf_verification_verified": 352,
+      "etf_verification_reference_gap": 11,
       "etf_verification_missing_from_official": 0,
       "etf_verification_name_mismatch": 0,
       "etf_verification_cross_exchange_collision": 0,
       "etf_verification_verified_rate_on_covered": 100.0,
-      "unresolved_count": 148
+      "unresolved_count": 29
     },
     {
       "exchange": "ATHEX",
@@ -3317,13 +3317,13 @@
       "stock_verification_cross_exchange_collision": 0,
       "stock_verification_verified_rate_on_covered": 100.0,
       "etf_verification_items": 363,
-      "etf_verification_verified": 233,
-      "etf_verification_reference_gap": 130,
+      "etf_verification_verified": 352,
+      "etf_verification_reference_gap": 11,
       "etf_verification_missing_from_official": 0,
       "etf_verification_name_mismatch": 0,
       "etf_verification_cross_exchange_collision": 0,
       "etf_verification_verified_rate_on_covered": 100.0,
-      "unresolved_count": 148
+      "unresolved_count": 29
     },
     {
       "exchange": "ATHEX",
@@ -8603,15 +8603,15 @@
     ]
   },
   "etf_verification": {
-    "run_dir": "data/etf_verification/run-20260408-lse-refresh-03",
-    "generated_at": "2026-04-08T18:23:01Z",
+    "run_dir": "data/etf_verification/run-20260408-asx-refresh-01",
+    "generated_at": "2026-04-08T18:32:44Z",
     "summary": {
       "items": 16738,
       "status_counts": {
         "cross_exchange_collision": 1,
         "missing_from_official": 18,
-        "reference_gap": 1573,
-        "verified": 15146
+        "reference_gap": 1454,
+        "verified": 15265
       },
       "finding_examples": [
         {
@@ -8975,14 +8975,14 @@
       {
         "exchange": "ASX",
         "items": 363,
-        "verified": 233,
-        "reference_gap": 130,
+        "verified": 352,
+        "reference_gap": 11,
         "missing_from_official": 0,
         "name_mismatch": 0,
         "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 233,
+        "officially_covered_items": 352,
         "verified_rate_on_covered": 100.0
       },
       {
@@ -9936,25 +9936,6 @@
       "masterfile_collisions": 0
     },
     {
-      "exchange": "ASX",
-      "venue_status": "official_partial",
-      "unresolved_findings": 148,
-      "reference_gap": 148,
-      "missing_from_official": 0,
-      "name_mismatch": 0,
-      "cross_exchange_collision": 0,
-      "stock_reference_gap": 18,
-      "stock_missing_from_official": 0,
-      "stock_name_mismatch": 0,
-      "stock_cross_exchange_collision": 0,
-      "etf_reference_gap": 130,
-      "etf_missing_from_official": 0,
-      "etf_name_mismatch": 0,
-      "etf_cross_exchange_collision": 0,
-      "masterfile_missing": 0,
-      "masterfile_collisions": 0
-    },
-    {
       "exchange": "NGX",
       "venue_status": "missing",
       "unresolved_findings": 147,
@@ -10480,6 +10461,25 @@
       "stock_name_mismatch": 0,
       "stock_cross_exchange_collision": 0,
       "etf_reference_gap": 1,
+      "etf_missing_from_official": 0,
+      "etf_name_mismatch": 0,
+      "etf_cross_exchange_collision": 0,
+      "masterfile_missing": 0,
+      "masterfile_collisions": 0
+    },
+    {
+      "exchange": "ASX",
+      "venue_status": "official_partial",
+      "unresolved_findings": 29,
+      "reference_gap": 29,
+      "missing_from_official": 0,
+      "name_mismatch": 0,
+      "cross_exchange_collision": 0,
+      "stock_reference_gap": 18,
+      "stock_missing_from_official": 0,
+      "stock_name_mismatch": 0,
+      "stock_cross_exchange_collision": 0,
+      "etf_reference_gap": 11,
       "etf_missing_from_official": 0,
       "etf_name_mismatch": 0,
       "etf_cross_exchange_collision": 0,
