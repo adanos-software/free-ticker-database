@@ -22,8 +22,8 @@
     "manual_only_exchanges": 0,
     "missing_exchanges": 46,
     "stock_verification_items": 44118,
-    "stock_verification_verified": 25108,
-    "stock_verification_reference_gap": 19010,
+    "stock_verification_verified": 26864,
+    "stock_verification_reference_gap": 17254,
     "stock_verification_missing_from_official": 0,
     "stock_verification_name_mismatch": 0,
     "stock_verification_cross_exchange_collision": 0,
@@ -36,22 +36,22 @@
   },
   "freshness": {
     "tickers_built_at": "2026-04-07T20:40:27Z",
-    "tickers_age_hours": 0.05,
-    "masterfiles_generated_at": "2026-04-07T20:32:37Z",
-    "masterfiles_age_hours": 0.18,
+    "tickers_age_hours": 8.26,
+    "masterfiles_generated_at": "2026-04-08T04:55:16Z",
+    "masterfiles_age_hours": 0.01,
     "identifiers_generated_at": "2026-04-07T20:41:04Z",
-    "identifiers_age_hours": 0.04,
+    "identifiers_age_hours": 8.25,
     "listing_history_observed_at": "2026-04-07T20:40:27Z",
-    "listing_history_age_hours": 0.05,
-    "latest_verification_run": "data/stock_verification/run-20260407-szse-stock-10-final",
-    "latest_verification_generated_at": "2026-04-07T20:37:19Z",
-    "latest_verification_age_hours": 0.1,
-    "latest_stock_verification_run": "data/stock_verification/run-20260407-szse-stock-10-final",
-    "latest_stock_verification_generated_at": "2026-04-07T20:37:19Z",
-    "latest_stock_verification_age_hours": 0.1,
+    "listing_history_age_hours": 8.26,
+    "latest_verification_run": "data/stock_verification/run-20260408-sse-stock-10",
+    "latest_verification_generated_at": "2026-04-08T04:55:47Z",
+    "latest_verification_age_hours": 0.0,
+    "latest_stock_verification_run": "data/stock_verification/run-20260408-sse-stock-10",
+    "latest_stock_verification_generated_at": "2026-04-08T04:55:47Z",
+    "latest_stock_verification_age_hours": 0.0,
     "latest_etf_verification_run": "data/etf_verification/run-20260407-etf-10-refresh",
     "latest_etf_verification_generated_at": "2026-04-07T20:43:06Z",
-    "latest_etf_verification_age_hours": 0.0
+    "latest_etf_verification_age_hours": 8.21
   },
   "source_coverage": [
     {
@@ -61,7 +61,7 @@
       "official": true,
       "mode": "network",
       "rows": 5416,
-      "generated_at": "2026-04-07T20:32:37Z"
+      "generated_at": "2026-04-08T04:55:16Z"
     },
     {
       "key": "nasdaq_other_listed",
@@ -70,7 +70,7 @@
       "official": true,
       "mode": "network",
       "rows": 7077,
-      "generated_at": "2026-04-07T20:32:37Z"
+      "generated_at": "2026-04-08T04:55:16Z"
     },
     {
       "key": "lse_company_reports",
@@ -79,7 +79,7 @@
       "official": true,
       "mode": "cache",
       "rows": 12397,
-      "generated_at": "2026-04-07T20:32:37Z"
+      "generated_at": "2026-04-08T04:55:16Z"
     },
     {
       "key": "asx_listed_companies",
@@ -88,7 +88,7 @@
       "official": true,
       "mode": "network",
       "rows": 1979,
-      "generated_at": "2026-04-07T20:32:37Z"
+      "generated_at": "2026-04-08T04:55:16Z"
     },
     {
       "key": "tmx_listed_issuers",
@@ -97,7 +97,7 @@
       "official": true,
       "mode": "cache",
       "rows": 3619,
-      "generated_at": "2026-04-07T20:32:37Z"
+      "generated_at": "2026-04-08T04:55:16Z"
     },
     {
       "key": "tmx_interlisted_companies",
@@ -106,7 +106,7 @@
       "official": true,
       "mode": "network",
       "rows": 266,
-      "generated_at": "2026-04-07T20:32:37Z"
+      "generated_at": "2026-04-08T04:55:16Z"
     },
     {
       "key": "euronext_equities",
@@ -115,7 +115,7 @@
       "official": true,
       "mode": "network",
       "rows": 3885,
-      "generated_at": "2026-04-07T20:32:37Z"
+      "generated_at": "2026-04-08T04:55:16Z"
     },
     {
       "key": "jpx_listed_issues",
@@ -124,7 +124,7 @@
       "official": true,
       "mode": "network",
       "rows": 4444,
-      "generated_at": "2026-04-07T20:32:37Z"
+      "generated_at": "2026-04-08T04:55:16Z"
     },
     {
       "key": "deutsche_boerse_listed_companies",
@@ -133,7 +133,7 @@
       "official": true,
       "mode": "network",
       "rows": 471,
-      "generated_at": "2026-04-07T20:32:37Z"
+      "generated_at": "2026-04-08T04:55:16Z"
     },
     {
       "key": "deutsche_boerse_etfs_etps",
@@ -142,7 +142,7 @@
       "official": true,
       "mode": "network",
       "rows": 3431,
-      "generated_at": "2026-04-07T20:32:37Z"
+      "generated_at": "2026-04-08T04:55:16Z"
     },
     {
       "key": "deutsche_boerse_xetra_all_tradable_equities",
@@ -151,7 +151,7 @@
       "official": true,
       "mode": "network",
       "rows": 986,
-      "generated_at": "2026-04-07T20:32:37Z"
+      "generated_at": "2026-04-08T04:55:16Z"
     },
     {
       "key": "b3_instruments_equities",
@@ -160,7 +160,7 @@
       "official": true,
       "mode": "network",
       "rows": 876,
-      "generated_at": "2026-04-07T20:32:37Z"
+      "generated_at": "2026-04-08T04:55:16Z"
     },
     {
       "key": "twse_listed_companies",
@@ -169,7 +169,7 @@
       "official": true,
       "mode": "network",
       "rows": 1080,
-      "generated_at": "2026-04-07T20:32:37Z"
+      "generated_at": "2026-04-08T04:55:16Z"
     },
     {
       "key": "sse_a_share_list",
@@ -177,8 +177,8 @@
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 500,
-      "generated_at": "2026-04-07T20:32:37Z"
+      "rows": 2350,
+      "generated_at": "2026-04-08T04:55:16Z"
     },
     {
       "key": "sse_etf_list",
@@ -187,7 +187,7 @@
       "official": true,
       "mode": "network",
       "rows": 820,
-      "generated_at": "2026-04-07T20:32:37Z"
+      "generated_at": "2026-04-08T04:55:16Z"
     },
     {
       "key": "szse_a_share_list",
@@ -196,7 +196,7 @@
       "official": true,
       "mode": "network",
       "rows": 2886,
-      "generated_at": "2026-04-07T20:32:37Z"
+      "generated_at": "2026-04-08T04:55:16Z"
     },
     {
       "key": "tpex_mainboard_daily_quotes",
@@ -205,7 +205,7 @@
       "official": true,
       "mode": "cache",
       "rows": 884,
-      "generated_at": "2026-04-07T20:32:37Z"
+      "generated_at": "2026-04-08T04:55:16Z"
     },
     {
       "key": "krx_listed_companies",
@@ -214,7 +214,7 @@
       "official": true,
       "mode": "network",
       "rows": 2660,
-      "generated_at": "2026-04-07T20:32:37Z"
+      "generated_at": "2026-04-08T04:55:16Z"
     },
     {
       "key": "krx_etf_finder",
@@ -223,7 +223,7 @@
       "official": true,
       "mode": "network",
       "rows": 1088,
-      "generated_at": "2026-04-07T20:32:37Z"
+      "generated_at": "2026-04-08T04:55:16Z"
     },
     {
       "key": "sec_company_tickers_exchange",
@@ -232,7 +232,7 @@
       "official": true,
       "mode": "cache",
       "rows": 10117,
-      "generated_at": "2026-04-07T20:32:37Z"
+      "generated_at": "2026-04-08T04:55:16Z"
     }
   ],
   "exchange_coverage": [
@@ -2377,15 +2377,15 @@
       "masterfile_match_rate": null,
       "masterfile_collision_rate": null,
       "verification_items": 2277,
-      "verification_verified": 500,
-      "verification_reference_gap": 1777,
+      "verification_verified": 2256,
+      "verification_reference_gap": 21,
       "verification_missing_from_official": 0,
       "verification_name_mismatch": 0,
       "verification_cross_exchange_collision": 0,
       "verification_verified_rate_on_covered": 100.0,
       "stock_verification_items": 2277,
-      "stock_verification_verified": 500,
-      "stock_verification_reference_gap": 1777,
+      "stock_verification_verified": 2256,
+      "stock_verification_reference_gap": 21,
       "stock_verification_missing_from_official": 0,
       "stock_verification_name_mismatch": 0,
       "stock_verification_cross_exchange_collision": 0,
@@ -2397,7 +2397,7 @@
       "etf_verification_name_mismatch": 0,
       "etf_verification_cross_exchange_collision": 0,
       "etf_verification_verified_rate_on_covered": 100.0,
-      "unresolved_count": 1803
+      "unresolved_count": 47
     },
     {
       "exchange": "SSE_CL",
@@ -5214,15 +5214,15 @@
       "masterfile_match_rate": null,
       "masterfile_collision_rate": null,
       "verification_items": 2277,
-      "verification_verified": 500,
-      "verification_reference_gap": 1777,
+      "verification_verified": 2256,
+      "verification_reference_gap": 21,
       "verification_missing_from_official": 0,
       "verification_name_mismatch": 0,
       "verification_cross_exchange_collision": 0,
       "verification_verified_rate_on_covered": 100.0,
       "stock_verification_items": 2277,
-      "stock_verification_verified": 500,
-      "stock_verification_reference_gap": 1777,
+      "stock_verification_verified": 2256,
+      "stock_verification_reference_gap": 21,
       "stock_verification_missing_from_official": 0,
       "stock_verification_name_mismatch": 0,
       "stock_verification_cross_exchange_collision": 0,
@@ -5234,7 +5234,7 @@
       "etf_verification_name_mismatch": 0,
       "etf_verification_cross_exchange_collision": 0,
       "etf_verification_verified_rate_on_covered": 100.0,
-      "unresolved_count": 1803
+      "unresolved_count": 47
     },
     {
       "exchange": "SSE_CL",
@@ -6524,13 +6524,13 @@
     }
   ],
   "verification": {
-    "run_dir": "data/stock_verification/run-20260407-szse-stock-10-final",
-    "generated_at": "2026-04-07T20:37:19Z",
+    "run_dir": "data/stock_verification/run-20260408-sse-stock-10",
+    "generated_at": "2026-04-08T04:55:47Z",
     "summary": {
       "items": 44118,
       "status_counts": {
-        "reference_gap": 19010,
-        "verified": 25108
+        "reference_gap": 17254,
+        "verified": 26864
       },
       "finding_examples": []
     },
@@ -7175,14 +7175,14 @@
       {
         "exchange": "SSE",
         "items": 2277,
-        "verified": 500,
-        "reference_gap": 1777,
+        "verified": 2256,
+        "reference_gap": 21,
         "missing_from_official": 0,
         "name_mismatch": 0,
         "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 500,
+        "officially_covered_items": 2256,
         "verified_rate_on_covered": 100.0
       },
       {
@@ -7396,13 +7396,13 @@
     ]
   },
   "stock_verification": {
-    "run_dir": "data/stock_verification/run-20260407-szse-stock-10-final",
-    "generated_at": "2026-04-07T20:37:19Z",
+    "run_dir": "data/stock_verification/run-20260408-sse-stock-10",
+    "generated_at": "2026-04-08T04:55:47Z",
     "summary": {
       "items": 44118,
       "status_counts": {
-        "reference_gap": 19010,
-        "verified": 25108
+        "reference_gap": 17254,
+        "verified": 26864
       },
       "finding_examples": []
     },
@@ -8047,14 +8047,14 @@
       {
         "exchange": "SSE",
         "items": 2277,
-        "verified": 500,
-        "reference_gap": 1777,
+        "verified": 2256,
+        "reference_gap": 21,
         "missing_from_official": 0,
         "name_mismatch": 0,
         "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 500,
+        "officially_covered_items": 2256,
         "verified_rate_on_covered": 100.0
       },
       {
@@ -8952,25 +8952,6 @@
       "masterfile_collisions": 52
     },
     {
-      "exchange": "SSE",
-      "venue_status": "official_partial",
-      "unresolved_findings": 1803,
-      "reference_gap": 1803,
-      "missing_from_official": 0,
-      "name_mismatch": 0,
-      "cross_exchange_collision": 0,
-      "stock_reference_gap": 1777,
-      "stock_missing_from_official": 0,
-      "stock_name_mismatch": 0,
-      "stock_cross_exchange_collision": 0,
-      "etf_reference_gap": 26,
-      "etf_missing_from_official": 0,
-      "etf_name_mismatch": 0,
-      "etf_cross_exchange_collision": 0,
-      "masterfile_missing": 0,
-      "masterfile_collisions": 0
-    },
-    {
       "exchange": "LSE",
       "venue_status": "official_partial",
       "unresolved_findings": 988,
@@ -9767,6 +9748,25 @@
       "etf_cross_exchange_collision": 0,
       "masterfile_missing": 31,
       "masterfile_collisions": 16
+    },
+    {
+      "exchange": "SSE",
+      "venue_status": "official_partial",
+      "unresolved_findings": 47,
+      "reference_gap": 47,
+      "missing_from_official": 0,
+      "name_mismatch": 0,
+      "cross_exchange_collision": 0,
+      "stock_reference_gap": 21,
+      "stock_missing_from_official": 0,
+      "stock_name_mismatch": 0,
+      "stock_cross_exchange_collision": 0,
+      "etf_reference_gap": 26,
+      "etf_missing_from_official": 0,
+      "etf_name_mismatch": 0,
+      "etf_cross_exchange_collision": 0,
+      "masterfile_missing": 0,
+      "masterfile_collisions": 0
     },
     {
       "exchange": "NSE_KE",

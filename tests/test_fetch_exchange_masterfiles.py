@@ -190,8 +190,15 @@ def test_parse_twse_listed_companies_maps_twse_rows():
 def test_parse_sse_a_share_list_maps_sse_rows() -> None:
     payload = {
         "result": [
-            {"A_STOCK_CODE": "600000", "FULL_NAME": "上海浦东发展银行股份有限公司", "SEC_NAME_CN": "浦发银行"},
-            {"A_STOCK_CODE": "600519", "FULL_NAME": "贵州茅台酒股份有限公司", "SEC_NAME_CN": "贵州茅台"},
+            {"A_STOCK_CODE": "600000", "FULL_NAME": "上海浦东发展银行股份有限公司", "SEC_NAME_CN": "浦发银行", "STOCK_TYPE": "1"},
+            {
+                "A_STOCK_CODE": "600054",
+                "B_STOCK_CODE": "900942",
+                "FULL_NAME": "黄山旅游发展股份有限公司",
+                "SEC_NAME_CN": "黄山Ｂ股",
+                "STOCK_TYPE": "2",
+            },
+            {"A_STOCK_CODE": "688001", "FULL_NAME": "苏州华兴源创科技股份有限公司", "SEC_NAME_CN": "华兴源创", "STOCK_TYPE": "8"},
             {"A_STOCK_CODE": "", "FULL_NAME": "Ignored"},
         ]
     }
@@ -215,8 +222,20 @@ def test_parse_sse_a_share_list_maps_sse_rows() -> None:
             "source_key": "test",
             "provider": "test",
             "source_url": "https://example.com",
-            "ticker": "600519",
-            "name": "贵州茅台酒股份有限公司",
+            "ticker": "900942",
+            "name": "黄山旅游发展股份有限公司",
+            "exchange": "SSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "688001",
+            "name": "苏州华兴源创科技股份有限公司",
             "exchange": "SSE",
             "asset_type": "Stock",
             "listing_status": "active",
@@ -249,20 +268,26 @@ def test_fetch_sse_a_share_list_fetches_all_pages() -> None:
 
         def get(self, url, params=None, headers=None, **kwargs):
             self.calls.append((url, params, headers, kwargs))
-            page = params["pageHelp.pageNo"]
-            if page == "1":
+            stock_type = params["STOCK_TYPE"]
+            if stock_type == "1":
                 return FakeResponse(
-                    'jsonpCallback({"pageHelp":{"pageCount":2},"result":[{"A_STOCK_CODE":"600000","FULL_NAME":"上海浦东发展银行股份有限公司"}]})'
+                    'jsonpCallback({"pageHelp":{"pageCount":1},"result":[{"A_STOCK_CODE":"600000","FULL_NAME":"上海浦东发展银行股份有限公司","STOCK_TYPE":"1"}]})'
+                )
+            if stock_type == "2":
+                return FakeResponse(
+                    'jsonpCallback({"pageHelp":{"pageCount":1},"result":[{"A_STOCK_CODE":"600054","B_STOCK_CODE":"900942","FULL_NAME":"黄山旅游发展股份有限公司","STOCK_TYPE":"2"}]})'
                 )
             return FakeResponse(
-                'jsonpCallback({"pageHelp":{"pageCount":2},"result":[{"A_STOCK_CODE":"600519","FULL_NAME":"贵州茅台酒股份有限公司"}]})'
+                'jsonpCallback({"pageHelp":{"pageCount":1},"result":[{"A_STOCK_CODE":"688001","FULL_NAME":"苏州华兴源创科技股份有限公司","STOCK_TYPE":"8"}]})'
             )
 
     session = FakeSession()
     rows = fetch_sse_a_share_list(source, session=session)
 
-    assert [row["ticker"] for row in rows] == ["600000", "600519"]
-    assert [call[1]["pageHelp.pageNo"] for call in session.calls] == ["1", "2"]
+    assert [row["ticker"] for row in rows] == ["600000", "900942", "688001"]
+    assert [call[1]["STOCK_TYPE"] for call in session.calls] == ["1", "2", "8"]
+    assert all(call[1]["pageHelp.pageNo"] == "1" for call in session.calls)
+    assert all(call[1]["pageHelp.pageSize"] == "5000" for call in session.calls)
     assert all(call[1]["sqlId"] == "COMMON_SSE_CP_GPJCTPZ_GPLB_GP_L" for call in session.calls)
 
 

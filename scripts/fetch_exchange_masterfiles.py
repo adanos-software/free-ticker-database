@@ -131,6 +131,7 @@ KRX_MARKET_GUBUN_TO_EXCHANGE = {
     "2": "KOSDAQ",
 }
 SSE_JSONP_RE = re.compile(r"^[^(]+\((.*)\)\s*$", re.S)
+SSE_STOCK_TYPES = ("1", "2", "8")
 SSE_ETF_SUBCLASSES = ("01", "02", "03", "06", "08", "09", "31", "32", "33", "37")
 
 
@@ -247,7 +248,7 @@ OFFICIAL_SOURCES = [
     MasterfileSource(
         key="sse_a_share_list",
         provider="SSE",
-        description="Official SSE A-share list",
+        description="Official SSE stock list (A/B/STAR boards)",
         source_url=SSE_STOCK_LIST_URL,
         format="sse_a_share_list_jsonp",
         reference_scope="listed_companies_subset",
@@ -1017,7 +1018,11 @@ def parse_sse_jsonp(text: str) -> dict[str, Any]:
 def parse_sse_a_share_list(payload: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     for record in payload.get("result", []) or []:
+        stock_type = str(record.get("STOCK_TYPE", "")).strip()
         ticker = str(record.get("A_STOCK_CODE", "")).strip()
+        b_ticker = str(record.get("B_STOCK_CODE", "")).strip()
+        if stock_type == "2" and b_ticker and b_ticker != "-":
+            ticker = b_ticker
         name = str(record.get("FULL_NAME", "")).strip() or str(record.get("SEC_NAME_CN", "")).strip()
         if not ticker or not name:
             continue
@@ -1287,34 +1292,33 @@ def fetch_sse_a_share_list(source: MasterfileSource, session: requests.Session |
         "Connection": "close",
     }
     rows: list[dict[str, str]] = []
-    page = 1
-    total_pages = 1
-    while page <= total_pages:
+    seen_tickers: set[str] = set()
+    for stock_type in SSE_STOCK_TYPES:
         response = session.get(
             SSE_COMMON_QUERY_URL,
             params={
                 "jsonCallBack": SSE_JSONP_CALLBACK,
                 "sqlId": "COMMON_SSE_CP_GPJCTPZ_GPLB_GP_L",
-                "STOCK_TYPE": "1",
+                "STOCK_TYPE": stock_type,
                 "COMPANY_STATUS": "2,4,5,7,8",
                 "type": "inParams",
                 "isPagination": "true",
                 "pageHelp.cacheSize": "1",
                 "pageHelp.beginPage": "1",
-                "pageHelp.pageSize": "500",
-                "pageHelp.pageNo": str(page),
+                "pageHelp.pageSize": "5000",
+                "pageHelp.pageNo": "1",
             },
             headers=headers,
             timeout=REQUEST_TIMEOUT,
         )
         response.raise_for_status()
         payload = parse_sse_jsonp(response.text)
-        page_rows = parse_sse_a_share_list(payload, source)
-        if not page_rows:
-            break
-        rows.extend(page_rows)
-        total_pages = int((payload.get("pageHelp") or {}).get("pageCount") or total_pages)
-        page += 1
+        for page_row in parse_sse_a_share_list(payload, source):
+            ticker = page_row["ticker"]
+            if ticker in seen_tickers:
+                continue
+            seen_tickers.add(ticker)
+            rows.append(page_row)
     return rows
 
 
