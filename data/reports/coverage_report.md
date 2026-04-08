@@ -4,12 +4,12 @@
 
 | Metric | Value |
 |---|---|
-| tickers | 55920 |
-| aliases | 87735 |
-| stocks | 41353 |
+| tickers | 55912 |
+| aliases | 87738 |
+| stocks | 41345 |
 | etfs | 14567 |
-| isin_coverage | 38212 |
-| sector_coverage | 33600 |
+| isin_coverage | 38228 |
+| sector_coverage | 33595 |
 | cik_coverage | 7708 |
 | figi_coverage | 3818 |
 | lei_coverage | 921 |
@@ -25,9 +25,9 @@
 | official_partial_exchanges | 14 |
 | manual_only_exchanges | 0 |
 | missing_exchanges | 42 |
-| stock_verification_items | 44097 |
-| stock_verification_verified | 27913 |
-| stock_verification_reference_gap | 16184 |
+| stock_verification_items | 44095 |
+| stock_verification_verified | 27927 |
+| stock_verification_reference_gap | 16168 |
 | stock_verification_missing_from_official | 0 |
 | stock_verification_name_mismatch | 0 |
 | stock_verification_cross_exchange_collision | 0 |
@@ -42,23 +42,23 @@
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-04-08T16:32:23Z |
-| tickers_age_hours | 0.03 |
+| tickers_built_at | 2026-04-08T16:45:36Z |
+| tickers_age_hours | 0.01 |
 | masterfiles_generated_at | 2026-04-08T16:27:52Z |
-| masterfiles_age_hours | 0.11 |
-| identifiers_generated_at | 2026-04-08T16:34:21Z |
+| masterfiles_age_hours | 0.3 |
+| identifiers_generated_at | 2026-04-08T16:45:40Z |
 | identifiers_age_hours | 0.0 |
-| listing_history_observed_at | 2026-04-08T16:32:23Z |
-| listing_history_age_hours | 0.03 |
+| listing_history_observed_at | 2026-04-08T16:45:36Z |
+| listing_history_age_hours | 0.01 |
 | latest_verification_run | data/stock_verification/run-20260408-lse-isin-01 |
-| latest_verification_generated_at | 2026-04-08T16:34:21Z |
+| latest_verification_generated_at | 2026-04-08T16:45:53Z |
 | latest_verification_age_hours | 0.0 |
 | latest_stock_verification_run | data/stock_verification/run-20260408-lse-isin-01 |
-| latest_stock_verification_generated_at | 2026-04-08T16:34:21Z |
+| latest_stock_verification_generated_at | 2026-04-08T16:45:53Z |
 | latest_stock_verification_age_hours | 0.0 |
 | latest_etf_verification_run | data/etf_verification/run-20260408-lse-isin-01 |
 | latest_etf_verification_generated_at | 2026-04-08T16:29:30Z |
-| latest_etf_verification_age_hours | 0.08 |
+| latest_etf_verification_age_hours | 0.27 |
 
 ## Source Coverage
 
@@ -133,7 +133,7 @@
 | JSE | missing | 213 | 181 | 98 | 2 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | KOSDAQ | official_partial | 1583 | 1154 | 1202 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | KRX | official_partial | 1790 | 1276 | 807 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
-| LSE | official_partial | 6409 | 5488 | 4355 | 16 | 22 | 5 | 0 | 0 | 0 | 0 |  | 100.0 |
+| LSE | official_partial | 6409 | 5512 | 4355 | 16 | 22 | 5 | 0 | 0 | 0 | 0 |  | 100.0 |
 | LUSE | missing | 22 | 22 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | MSE_MW | missing | 8 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | NASDAQ | official_full | 4627 | 3901 | 3618 | 3442 | 10 | 400 | 5446 | 4562 | 54 | 830 | 83.77 | 100.0 |
@@ -216,7 +216,7 @@
 | Malawi | 8 | 5 | 0 | 0 | 0 | 0 |
 | Malaysia | 928 | 853 | 923 | 0 | 0 | 0 |
 | Mauritius | 51 | 51 | 3 | 1 | 0 | 0 |
-| Mexico | 169 | 123 | 136 | 4 | 1 | 0 |
+| Mexico | 168 | 122 | 135 | 4 | 0 | 0 |
 | Morocco | 66 | 66 | 2 | 0 | 0 | 0 |
 | Netherlands | 175 | 135 | 135 | 28 | 79 | 1 |
 | New Zealand | 14 | 14 | 14 | 7 | 1 | 1 |
@@ -241,8 +241,8 @@
 | Tanzania | 15 | 13 | 2 | 0 | 0 | 0 |
 | Thailand | 592 | 397 | 577 | 42 | 1 | 6 |
 | Uganda | 7 | 7 | 0 | 0 | 0 | 0 |
-| United Kingdom | 2185 | 1322 | 1310 | 117 | 9 | 24 |
-| United States | 16197 | 10227 | 10706 | 5005 | 15 | 554 |
+| United Kingdom | 2180 | 1340 | 1308 | 117 | 9 | 24 |
+| United States | 16195 | 10225 | 10704 | 5003 | 15 | 554 |
 | Vietnam | 252 | 229 | 145 | 3 | 0 | 0 |
 | Zambia | 22 | 22 | 1 | 0 | 0 | 0 |
 | Zimbabwe | 27 | 27 | 3 | 0 | 0 | 0 |
@@ -257,17 +257,17 @@
 | TASE | missing | 684 | 684 | 0 | 0 | 0 |
 | STO | official_partial | 617 | 617 | 0 | 0 | 0 |
 | OTCCE | missing | 505 | 505 | 0 | 0 | 0 |
-| WSE | missing | 348 | 348 | 0 | 0 | 0 |
+| WSE | missing | 349 | 349 | 0 | 0 | 0 |
 | TPEX | official_partial | 323 | 323 | 0 | 0 | 0 |
 | B3 | official_full | 317 | 317 | 0 | 0 | 0 |
-| TSXV | official_partial | 299 | 299 | 0 | 0 | 0 |
+| TSXV | official_partial | 291 | 291 | 0 | 0 | 0 |
 | HOSE | missing | 260 | 260 | 0 | 0 | 0 |
 | EGX | missing | 225 | 225 | 0 | 0 | 0 |
 | CPH | missing | 216 | 216 | 0 | 0 | 0 |
 | JSE | missing | 213 | 213 | 0 | 0 | 0 |
-| LSE | official_partial | 203 | 203 | 0 | 0 | 0 |
 | NEO | missing | 201 | 201 | 0 | 0 | 0 |
+| LSE | official_partial | 200 | 200 | 0 | 0 | 0 |
 | BMV | missing | 194 | 194 | 0 | 0 | 0 |
 | HEL | missing | 188 | 188 | 0 | 0 | 0 |
-| TSX | official_partial | 179 | 179 | 0 | 0 | 0 |
+| TSX | official_partial | 171 | 171 | 0 | 0 | 0 |
 | BME | missing | 169 | 169 | 0 | 0 | 0 |

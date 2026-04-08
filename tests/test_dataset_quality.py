@@ -3,7 +3,7 @@ from __future__ import annotations
 import csv
 import json
 import sqlite3
-from collections import Counter
+from collections import Counter, defaultdict
 from datetime import datetime
 from functools import lru_cache
 from pathlib import Path
@@ -661,6 +661,161 @@ def test_should_not_correct_krx_stock_without_krx_official_source():
     }
 
     assert should_correct_to_official_exchange(row, official_row) is False
+
+
+def test_load_active_official_isin_fallbacks_only_keeps_unique_active_official_values(tmp_path, monkeypatch):
+    from scripts import rebuild_dataset
+
+    reference_csv = tmp_path / "reference.csv"
+    with reference_csv.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=[
+                "ticker",
+                "exchange",
+                "asset_type",
+                "official",
+                "listing_status",
+                "reference_scope",
+                "isin",
+            ],
+        )
+        writer.writeheader()
+        writer.writerows(
+            [
+                {
+                    "ticker": "AAA",
+                    "exchange": "LSE",
+                    "asset_type": "Stock",
+                    "official": "true",
+                    "listing_status": "active",
+                    "reference_scope": "listed_companies_subset",
+                    "isin": "GB0002634946",
+                },
+                {
+                    "ticker": "AAA",
+                    "exchange": "LSE",
+                    "asset_type": "Stock",
+                    "official": "true",
+                    "listing_status": "active",
+                    "reference_scope": "security_lookup_subset",
+                    "isin": "GB0002634946",
+                },
+                {
+                    "ticker": "BBB",
+                    "exchange": "LSE",
+                    "asset_type": "Stock",
+                    "official": "true",
+                    "listing_status": "active",
+                    "reference_scope": "listed_companies_subset",
+                    "isin": "GB0002875804",
+                },
+                {
+                    "ticker": "BBB",
+                    "exchange": "LSE",
+                    "asset_type": "Stock",
+                    "official": "true",
+                    "listing_status": "active",
+                    "reference_scope": "security_lookup_subset",
+                    "isin": "GB0005405286",
+                },
+                {
+                    "ticker": "CCC",
+                    "exchange": "LSE",
+                    "asset_type": "Stock",
+                    "official": "false",
+                    "listing_status": "active",
+                    "reference_scope": "listed_companies_subset",
+                    "isin": "GB00BH4HKS39",
+                },
+                {
+                    "ticker": "DDD",
+                    "exchange": "LSE",
+                    "asset_type": "Stock",
+                    "official": "true",
+                    "listing_status": "inactive",
+                    "reference_scope": "listed_companies_subset",
+                    "isin": "GB00B10RZP78",
+                },
+            ]
+        )
+
+    monkeypatch.setattr(rebuild_dataset, "MASTERFILE_REFERENCE_CSV", reference_csv)
+    rebuild_dataset.load_active_official_isin_fallbacks.cache_clear()
+    try:
+        fallbacks = rebuild_dataset.load_active_official_isin_fallbacks()
+    finally:
+        rebuild_dataset.load_active_official_isin_fallbacks.cache_clear()
+
+    assert fallbacks == {("AAA", "LSE", "Stock"): "GB0002634946"}
+
+
+def test_cleaned_rows_backfills_unique_official_isin(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "46IE",
+        "name": "46IE",
+        "exchange": "LSE",
+        "asset_type": "Stock",
+        "sector": "",
+        "country": "United Kingdom",
+        "country_code": "GB",
+        "isin": "",
+        "aliases": "",
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_data",
+        lambda: ([row], {}, defaultdict(list), {}, set()),
+    )
+    monkeypatch.setattr(rebuild_dataset, "load_review_overrides", lambda: (defaultdict(set), defaultdict(dict), set()))
+    monkeypatch.setattr(rebuild_dataset, "apply_official_exchange_corrections", lambda rows: rows)
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_isin_fallbacks",
+        lambda: {("46IE", "LSE", "Stock"): "GB0007655250"},
+    )
+
+    cleaned, _ = rebuild_dataset.cleaned_rows()
+
+    assert cleaned[0]["isin"] == "GB0007655250"
+
+
+def test_cleaned_rows_respects_manual_isin_clear_over_official_fallback(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "46IE",
+        "name": "46IE",
+        "exchange": "LSE",
+        "asset_type": "Stock",
+        "sector": "",
+        "country": "United Kingdom",
+        "country_code": "GB",
+        "isin": "",
+        "aliases": "",
+    }
+    review_updates = defaultdict(dict)
+    review_updates[("46IE", "LSE")] = {"isin": {"decision": "clear", "proposed_value": ""}}
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_data",
+        lambda: ([row], {}, defaultdict(list), {}, set()),
+    )
+    monkeypatch.setattr(rebuild_dataset, "load_review_overrides", lambda: (defaultdict(set), review_updates, set()))
+    monkeypatch.setattr(rebuild_dataset, "apply_official_exchange_corrections", lambda rows: rows)
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_isin_fallbacks",
+        lambda: {("46IE", "LSE", "Stock"): "GB0007655250"},
+    )
+
+    cleaned, _ = rebuild_dataset.cleaned_rows()
+
+    assert cleaned[0]["isin"] == ""
 
 
 def test_artifact_counts_match():

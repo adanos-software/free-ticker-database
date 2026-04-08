@@ -841,6 +841,32 @@ def load_active_official_reference_rows() -> dict[tuple[str, str], tuple[dict[st
     }
 
 
+@lru_cache(maxsize=None)
+def load_active_official_isin_fallbacks() -> dict[tuple[str, str, str], str]:
+    grouped: dict[tuple[str, str, str], set[str]] = defaultdict(set)
+    if not MASTERFILE_REFERENCE_CSV.exists():
+        return {}
+
+    with MASTERFILE_REFERENCE_CSV.open(newline="", encoding="utf-8") as handle:
+        for row in csv.DictReader(handle):
+            if row.get("official") != "true":
+                continue
+            if row.get("listing_status") != "active":
+                continue
+            if row.get("reference_scope") in {"", "manual"}:
+                continue
+            isin = row.get("isin", "").strip().upper()
+            if not is_valid_isin(isin):
+                continue
+            grouped[(row["ticker"], row["exchange"], row["asset_type"])].add(isin)
+
+    return {
+        key: next(iter(isins))
+        for key, isins in grouped.items()
+        if len(isins) == 1
+    }
+
+
 def choose_preferred_official_reference_row(
     rows: tuple[dict[str, str], ...],
     current_name: str,
@@ -1267,6 +1293,7 @@ def apply_output_metadata_overrides(
 def cleaned_rows():
     ticker_rows, alias_type_lookup, extra_aliases, identifier_lookup, core_row_keys = load_data()
     review_alias_removals, review_metadata_updates, review_drop_entries = load_review_overrides()
+    official_isin_fallbacks = load_active_official_isin_fallbacks()
 
     prepared_rows: list[dict[str, str]] = []
     for row in ticker_rows:
@@ -1297,6 +1324,8 @@ def cleaned_rows():
         if identifier and identifier["wkn"]:
             merged_aliases.append(identifier["wkn"])
         merged = dict(row)
+        if not merged.get("isin") and "isin" not in review_metadata_updates.get(row_key, {}):
+            merged["isin"] = official_isin_fallbacks.get((row["ticker"], row["exchange"], row["asset_type"]), "")
         merged["aliases"] = merged_aliases
         base_rows.append(merged)
 
