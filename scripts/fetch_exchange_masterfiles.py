@@ -18,6 +18,11 @@ from typing import Any, Iterable
 import pandas as pd
 import requests
 
+try:
+    from scripts.rebuild_dataset import normalize_tokens
+except ModuleNotFoundError:  # pragma: no cover - script execution path
+    from rebuild_dataset import normalize_tokens
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
@@ -69,6 +74,7 @@ ASX_FUNDS_STATISTICS_URL = "https://www.asx.com.au/issuers/investment-products/a
 TMX_INTERLISTED_URL = "https://www.tsx.com/files/trading/interlisted-companies.txt"
 TMX_LISTED_ISSUERS_ARCHIVE_URL = "https://www.tsx.com/en/listings/current-market-statistics/mig-archives"
 TMX_ETF_SCREENER_URL = "https://dgr53wu9i7rmp.cloudfront.net/etfs/etfs.json"
+TMX_MONEY_GRAPHQL_URL = "https://app-money.tmx.com/graphql"
 EURONEXT_EQUITIES_DOWNLOAD_URL = "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock"
 EURONEXT_ETFS_DOWNLOAD_URL = (
     "https://live.euronext.com/en/product_directory/data/etf-all-markets/download"
@@ -682,6 +688,29 @@ def latest_verification_run(base_dir: Path) -> Path | None:
     return max(candidates, key=lambda path: path.stat().st_mtime)
 
 
+def latest_reference_gap_tickers(
+    base_dir: Path,
+    *,
+    exchanges: set[str] | None = None,
+) -> set[str]:
+    latest_run = latest_verification_run(base_dir)
+    if latest_run is None:
+        return set()
+    tickers: set[str] = set()
+    for path in sorted(latest_run.glob("chunk-*-of-*.csv")):
+        with path.open(newline="", encoding="utf-8") as handle:
+            for row in csv.DictReader(handle):
+                if row.get("status") != "reference_gap":
+                    continue
+                exchange = row.get("exchange", "")
+                ticker = row.get("ticker", "").strip()
+                if exchanges and exchange not in exchanges:
+                    continue
+                if ticker:
+                    tickers.add(ticker)
+    return tickers
+
+
 def lse_reference_gap_tickers(base_dirs: Iterable[Path] | None = None) -> set[str]:
     base_dirs = tuple(base_dirs or (STOCK_VERIFICATION_DIR, ETF_VERIFICATION_DIR))
     tickers: set[str] = set()
@@ -696,6 +725,33 @@ def lse_reference_gap_tickers(base_dirs: Iterable[Path] | None = None) -> set[st
                     if row.get("exchange") == "LSE" and row.get("status") == "reference_gap" and ticker:
                         tickers.add(ticker)
     return tickers
+
+
+def compact_company_name(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "", value.lower())
+
+
+def tmx_lookup_name_matches(listing_name: str, candidate_name: str) -> bool:
+    listing_compact = compact_company_name(listing_name)
+    candidate_compact = compact_company_name(candidate_name)
+    if listing_compact and candidate_compact and (
+        listing_compact == candidate_compact
+        or listing_compact in candidate_compact
+        or candidate_compact in listing_compact
+    ):
+        return True
+    return normalize_tokens(listing_name) == normalize_tokens(candidate_name)
+
+
+def tmx_lookup_symbol_variants(ticker: str) -> list[str]:
+    normalized = ticker.strip().upper()
+    if not normalized:
+        return []
+    variants = [normalized]
+    dotted = normalized.replace("-", ".")
+    if dotted not in variants:
+        variants.append(dotted)
+    return variants
 
 
 def fetch_text(url: str, session: requests.Session | None = None) -> str:
@@ -815,18 +871,134 @@ def load_tpex_mainboard_quotes_payload(
 def load_tmx_etf_screener_payload(
     session: requests.Session | None = None,
 ) -> tuple[list[dict[str, Any]] | None, str]:
+    cached_payload: list[dict[str, Any]] | None = None
     for path in (TMX_ETF_SCREENER_CACHE, LEGACY_TMX_ETF_SCREENER_CACHE):
         if path.exists():
-            return json.loads(path.read_text(encoding="utf-8")), "cache"
+            cached_payload = json.loads(path.read_text(encoding="utf-8"))
+            break
 
-    try:
-        payload = fetch_json(TMX_ETF_SCREENER_URL, session=session)
-    except requests.RequestException:
-        return None, "unavailable"
+    mode = "cache"
+    payload = cached_payload
+    if payload is None:
+        try:
+            payload = fetch_json(TMX_ETF_SCREENER_URL, session=session)
+        except requests.RequestException:
+            return None, "unavailable"
+        mode = "network"
+
+    payload = list(payload)
+    covered_tickers = {str(record.get("symbol", "")).strip().upper() for record in payload}
+    supplemental_rows = fetch_tmx_etf_screener_quote_rows(
+        payload,
+        listings_path=LISTINGS_CSV,
+        session=session,
+    )
+    if supplemental_rows:
+        for row in supplemental_rows:
+            if row["symbol"].upper() in covered_tickers:
+                continue
+            payload.append(row)
+            covered_tickers.add(row["symbol"].upper())
+        mode = "network"
 
     ensure_output_dirs()
     TMX_ETF_SCREENER_CACHE.write_text(json.dumps(payload), encoding="utf-8")
-    return payload, "network"
+    return payload, mode
+
+
+def fetch_tmx_money_quote(
+    symbol: str,
+    session: requests.Session | None = None,
+) -> dict[str, Any] | None:
+    session = session or requests.Session()
+    response = session.post(
+        TMX_MONEY_GRAPHQL_URL,
+        headers={"User-Agent": USER_AGENT, "Content-Type": "application/json"},
+        json={
+            "query": (
+                "query ($symbol: String, $locale: String) { "
+                "getQuoteBySymbol(symbol: $symbol, locale: $locale) { "
+                "symbol name exchangeCode datatype issueType "
+                "} }"
+            ),
+            "variables": {"symbol": symbol, "locale": "en"},
+        },
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    payload = response.json()
+    return payload.get("data", {}).get("getQuoteBySymbol")
+
+
+def tmx_etf_quote_lookup_target_rows(
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    verification_dir: Path = ETF_VERIFICATION_DIR,
+) -> list[dict[str, str]]:
+    target_tickers = latest_reference_gap_tickers(
+        verification_dir,
+        exchanges={"TSX", "TSXV"},
+    )
+    if not target_tickers:
+        return []
+    return [
+        row
+        for row in load_csv(listings_path)
+        if row.get("exchange") in {"TSX", "TSXV"}
+        and row.get("asset_type") == "ETF"
+        and row.get("ticker", "").strip() in target_tickers
+    ]
+
+
+def fetch_tmx_etf_screener_quote_rows(
+    payload: list[dict[str, Any]],
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    verification_dir: Path = ETF_VERIFICATION_DIR,
+    session: requests.Session | None = None,
+) -> list[dict[str, Any]]:
+    covered_tickers = {str(record.get("symbol", "")).strip().upper() for record in payload}
+    target_rows = [
+        row
+        for row in tmx_etf_quote_lookup_target_rows(
+            listings_path=listings_path,
+            verification_dir=verification_dir,
+        )
+        if row.get("ticker", "").strip().upper() not in covered_tickers
+    ]
+    session = session or requests.Session()
+    rows: list[dict[str, Any]] = []
+    for listing_row in target_rows:
+        listing_ticker = listing_row.get("ticker", "").strip().upper()
+        listing_name = listing_row.get("name", "").strip()
+        exchange = listing_row.get("exchange", "").strip()
+        if not listing_ticker or not listing_name or not exchange:
+            continue
+        for symbol in tmx_lookup_symbol_variants(listing_ticker):
+            try:
+                candidate = fetch_tmx_money_quote(symbol, session=session)
+            except (requests.RequestException, ValueError, json.JSONDecodeError):
+                candidate = None
+            if candidate is None:
+                continue
+            if candidate.get("exchangeCode") != exchange:
+                continue
+            if str(candidate.get("symbol", "")).strip().upper() != symbol:
+                continue
+            candidate_name = str(candidate.get("name", "")).strip()
+            if not candidate_name or not tmx_lookup_name_matches(listing_name, candidate_name):
+                continue
+            rows.append(
+                {
+                    "symbol": listing_ticker,
+                    "longname": candidate_name,
+                    "exchange": exchange,
+                    "source_url": TMX_MONEY_GRAPHQL_URL,
+                }
+            )
+            covered_tickers.add(listing_ticker)
+            break
+    return rows
 
 
 def load_nasdaq_nordic_stockholm_shares_rows(
@@ -1784,10 +1956,10 @@ def parse_tmx_etf_screener(payload: list[dict[str, Any]], source: MasterfileSour
             {
                 "source_key": source.key,
                 "provider": source.provider,
-                "source_url": source.source_url,
+                "source_url": str(record.get("source_url") or source.source_url).strip(),
                 "ticker": ticker,
                 "name": name,
-                "exchange": "TSX",
+                "exchange": str(record.get("exchange") or "TSX").strip() or "TSX",
                 "asset_type": "ETF",
                 "listing_status": "active",
                 "reference_scope": source.reference_scope,

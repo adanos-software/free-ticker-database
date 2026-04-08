@@ -48,6 +48,7 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_szse_a_share_list,
     fetch_szse_etf_list,
     fetch_source_rows_with_mode,
+    fetch_tmx_etf_screener_quote_rows,
     infer_jpx_asset_type,
     infer_lse_lookup_asset_type,
     load_b3_instruments_equities_rows,
@@ -100,6 +101,7 @@ from scripts.fetch_exchange_masterfiles import (
     extract_psx_sector_options,
     extract_psx_symbol_name_download_url,
     extract_psx_xid,
+    TMX_MONEY_GRAPHQL_URL,
 )
 
 
@@ -2464,16 +2466,141 @@ def test_parse_tmx_etf_screener_maps_tsx_etf_rows() -> None:
     ]
 
 
+def test_parse_tmx_etf_screener_respects_record_source_url_and_exchange() -> None:
+    payload = [
+        {
+            "symbol": "LYUV-U",
+            "longname": "Lysander-Canso U.S. Corporate Value Bond Fund",
+            "exchange": "TSXV",
+            "source_url": "https://app-money.tmx.com/graphql",
+        }
+    ]
+
+    rows = parse_tmx_etf_screener(payload, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://app-money.tmx.com/graphql",
+            "ticker": "LYUV-U",
+            "name": "Lysander-Canso U.S. Corporate Value Bond Fund",
+            "exchange": "TSXV",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        }
+    ]
+
+
+def test_fetch_tmx_etf_screener_quote_rows_normalizes_series_and_skips_name_mismatch(tmp_path, monkeypatch):
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,name,exchange,asset_type",
+                "LYUV-U,Lysander-Canso U.S. Corporate Value Bond Fund,TSX,ETF",
+                "TKN-U,Ninepoint Web3 Innovators Fund,TSX,ETF",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    verification_dir = tmp_path / "etf_verification"
+    run_dir = verification_dir / "run-01"
+    run_dir.mkdir(parents=True)
+    (run_dir / "chunk-01-of-01.csv").write_text(
+        "\n".join(
+            [
+                "ticker,name,exchange,status",
+                "LYUV-U,Lysander-Canso U.S. Corporate Value Bond Fund,TSX,reference_gap",
+                "TKN-U,Ninepoint Web3 Innovators Fund,TSX,reference_gap",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    def fake_fetch_tmx_money_quote(symbol: str, session=None):
+        if symbol == "LYUV.U":
+            return {
+                "symbol": "LYUV.U",
+                "name": "Lysander-Canso U.S. Corporate Value Bond Fund",
+                "exchangeCode": "TSX",
+            }
+        if symbol == "TKN.U":
+            return {
+                "symbol": "TKN.U",
+                "name": "Ninepoint Crypto and AI Leaders ETF",
+                "exchangeCode": "TSX",
+            }
+        return None
+
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_tmx_money_quote",
+        fake_fetch_tmx_money_quote,
+    )
+
+    rows = fetch_tmx_etf_screener_quote_rows(
+        [],
+        listings_path=listings_path,
+        verification_dir=verification_dir,
+    )
+
+    assert rows == [
+        {
+            "symbol": "LYUV-U",
+            "longname": "Lysander-Canso U.S. Corporate Value Bond Fund",
+            "exchange": "TSX",
+            "source_url": TMX_MONEY_GRAPHQL_URL,
+        }
+    ]
+
+
 def test_load_tmx_etf_screener_payload_prefers_cache(tmp_path, monkeypatch):
     cache_path = tmp_path / "tmx_etf_screener.json"
     cache_path.write_text('[{"symbol":"TOKN","longname":"Global X Tokenization Ecosystem Index ETF"}]', encoding="utf-8")
     monkeypatch.setattr("scripts.fetch_exchange_masterfiles.TMX_ETF_SCREENER_CACHE", cache_path)
     monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_TMX_ETF_SCREENER_CACHE", tmp_path / "legacy.json")
+    monkeypatch.setattr(fetch_exchange_masterfiles, "fetch_tmx_etf_screener_quote_rows", lambda payload, **kwargs: [])
 
     payload, mode = load_tmx_etf_screener_payload()
 
     assert mode == "cache"
     assert payload == [{"symbol": "TOKN", "longname": "Global X Tokenization Ecosystem Index ETF"}]
+
+
+def test_load_tmx_etf_screener_payload_merges_safe_quote_backfill(tmp_path, monkeypatch):
+    cache_path = tmp_path / "tmx_etf_screener.json"
+    cache_path.write_text('[{"symbol":"TOKN","longname":"Global X Tokenization Ecosystem Index ETF"}]', encoding="utf-8")
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.TMX_ETF_SCREENER_CACHE", cache_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_TMX_ETF_SCREENER_CACHE", tmp_path / "legacy.json")
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_tmx_etf_screener_quote_rows",
+        lambda payload, **kwargs: [
+            {
+                "symbol": "LYUV-U",
+                "longname": "Lysander-Canso U.S. Corporate Value Bond Fund",
+                "exchange": "TSX",
+                "source_url": TMX_MONEY_GRAPHQL_URL,
+            }
+        ],
+    )
+
+    payload, mode = load_tmx_etf_screener_payload()
+
+    assert mode == "network"
+    assert payload == [
+        {"symbol": "TOKN", "longname": "Global X Tokenization Ecosystem Index ETF"},
+        {
+            "symbol": "LYUV-U",
+            "longname": "Lysander-Canso U.S. Corporate Value Bond Fund",
+            "exchange": "TSX",
+            "source_url": TMX_MONEY_GRAPHQL_URL,
+        },
+    ]
+    assert json.loads(cache_path.read_text(encoding="utf-8")) == payload
 
 
 def test_euronext_etf_source_is_modeled_as_partial_official_coverage() -> None:
