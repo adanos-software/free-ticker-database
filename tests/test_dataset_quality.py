@@ -643,6 +643,81 @@ def test_apply_official_exchange_corrections_moves_krx_stock_to_kosdaq(monkeypat
     assert corrected[0]["name"] == "Cafe24 Corp."
 
 
+def test_apply_official_exchange_corrections_backfills_code_like_name_from_same_exchange(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "AGIG",
+        "name": "AGIG",
+        "exchange": "NYSE MKT",
+        "asset_type": "Stock",
+        "country": "United States",
+        "country_code": "US",
+        "sector": "",
+        "isin": "",
+        "aliases": [],
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_reference_rows",
+        lambda: {
+            ("AGIG", "Stock"): (
+                {
+                    "ticker": "AGIG",
+                    "exchange": "NYSE MKT",
+                    "asset_type": "Stock",
+                    "name": "Abundia Global Impact Group Inc. Common stock",
+                    "source_key": "nasdaq_other_listed",
+                    "reference_scope": "listed_companies_subset",
+                },
+            )
+        },
+    )
+
+    corrected = rebuild_dataset.apply_official_exchange_corrections([row])
+
+    assert corrected[0]["exchange"] == "NYSE MKT"
+    assert corrected[0]["name"] == "Abundia Global Impact Group Inc. Common stock"
+
+
+def test_apply_official_exchange_corrections_keeps_non_placeholder_same_exchange_name(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "ARGH",
+        "name": "Steer Technologies Inc.",
+        "exchange": "TSXV",
+        "asset_type": "Stock",
+        "country": "Canada",
+        "country_code": "CA",
+        "sector": "",
+        "isin": "",
+        "aliases": [],
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_reference_rows",
+        lambda: {
+            ("ARGH", "Stock"): (
+                {
+                    "ticker": "ARGH",
+                    "exchange": "TSXV",
+                    "asset_type": "Stock",
+                    "name": "Argo Corporation",
+                    "source_key": "tmx_listed_issuers",
+                    "reference_scope": "listed_companies_subset",
+                },
+            )
+        },
+    )
+
+    corrected = rebuild_dataset.apply_official_exchange_corrections([row])
+
+    assert corrected[0]["name"] == "Steer Technologies Inc."
+
+
 def test_should_not_correct_krx_stock_without_krx_official_source():
     from scripts.rebuild_dataset import should_correct_to_official_exchange
 

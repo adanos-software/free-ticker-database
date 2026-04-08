@@ -940,6 +940,15 @@ def apply_official_exchange_corrections(rows: list[dict[str, str]]) -> list[dict
             corrected_rows.append(row)
             continue
 
+        same_exchange_candidates = tuple(candidate for candidate in candidates if candidate["exchange"] == row["exchange"])
+        wrapper_match = generic_fund_wrapper_match(row["name"])
+        if same_exchange_candidates and (is_code_like_name(row["name"], row["ticker"]) or wrapper_match):
+            preferred_same_exchange = choose_preferred_official_reference_row(same_exchange_candidates, row["name"])
+            corrected = dict(row)
+            corrected["name"] = preferred_same_exchange["name"]
+            corrected_rows.append(corrected)
+            continue
+
         official_row: dict[str, str] | None = None
         target_exchanges = {candidate["exchange"] for candidate in candidates}
         if len(target_exchanges) == 1:
@@ -968,8 +977,6 @@ def apply_official_exchange_corrections(rows: list[dict[str, str]]) -> list[dict
 
         corrected = dict(row)
         corrected["exchange"] = official_row["exchange"]
-
-        wrapper_match = generic_fund_wrapper_match(row["name"])
         if (
             is_code_like_name(row["name"], row["ticker"])
             or wrapper_match
