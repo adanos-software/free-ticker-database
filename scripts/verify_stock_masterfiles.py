@@ -82,6 +82,7 @@ LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE = {
     "XETRA": {"deutsche_boerse_xetra_all_tradable_equities"},
 }
 ABBREVIATED_OFFICIAL_LABEL_EXCHANGES = {"KRX", "KOSDAQ"}
+TMX_ROOT_SUFFIX_ETF_EXCHANGES = {"TSX", "TSXV"}
 EURONEXT_LABEL_SPLIT_RE = re.compile(r"[\s./-]+")
 ETFISH_REFERENCE_MARKERS = (
     " etf",
@@ -230,6 +231,24 @@ def choose_preferred_reference(rows: list[dict[str, str]], ticker: str) -> dict[
     return max(rows, key=rank)
 
 
+def load_tmx_root_reference_rows(
+    row: dict[str, str],
+    active_by_key: dict[tuple[str, str], list[dict[str, str]]],
+) -> list[dict[str, str]]:
+    if row.get("asset_type") != "ETF":
+        return []
+    exchange = row.get("exchange", "")
+    ticker = row.get("ticker", "")
+    if exchange not in TMX_ROOT_SUFFIX_ETF_EXCHANGES or "-" not in ticker:
+        return []
+    root_ticker = ticker.split("-", 1)[0]
+    return [
+        candidate
+        for candidate in active_by_key.get((exchange, root_ticker), [])
+        if candidate.get("asset_type") == row.get("asset_type")
+    ]
+
+
 def classify_row(
     row: dict[str, str],
     *,
@@ -323,73 +342,89 @@ def classify_row(
         else:
             status = "reference_gap"
             reason = "Only low-confidence asset_type evidence exists for this listing."
-    elif exchange in covered_exchanges:
-        non_active_rows = any_by_key.get(key, [])
-        non_active_row = next((candidate for candidate in non_active_rows if candidate.get("listing_status") != "active"), None)
-        peers = [peer for peer in active_by_ticker.get(ticker, []) if peer["exchange"] != exchange]
-        if non_active_row and non_active_row.get("listing_status") != "active":
-            status = "non_active_official"
-            reason = f"Official exchange directory marks this symbol as {non_active_row.get('listing_status')}."
-            reference_name = non_active_row.get("name", "")
-            reference_source = non_active_row.get("source_key", "")
-        elif peers:
-            matching_peers = [
-                peer
-                for peer in peers
-                if peer.get("asset_type") == row.get("asset_type")
-                and (
-                    has_strong_company_name_match(peer.get("name", ""), row["name"])
-                    or has_strong_company_name_match(row["name"], peer.get("name", ""))
-                )
-            ]
-            if not matching_peers:
-                status = "reference_gap"
-                reason = "Only weak cross-exchange collision evidence exists for this listing."
-                return {
-                    "listing_key": listing_key,
-                    "ticker": ticker,
-                    "exchange": exchange,
-                    "asset_type": row["asset_type"],
-                    "name": row["name"],
-                    "country": row["country"],
-                    "country_code": row["country_code"],
-                    "isin": row["isin"],
-                    "sector": row["sector"],
-                    "status": status,
-                    "reason": reason,
-                    "official_reference_name": reference_name,
-                    "official_reference_source": reference_source,
-                    "covered_by_official_directory": exchange in covered_exchanges,
-                    "cik": identifiers.get("cik", ""),
-                    "figi": identifiers.get("figi", ""),
-                    "lei": identifiers.get("lei", ""),
-                }
-
-            peer_exchanges = {peer["exchange"] for peer in matching_peers}
-            peer_source_keys = {
-                peer.get("source_key", "") for peer in matching_peers if peer.get("source_key", "")
-            }
-            peer_preview = ", ".join(sorted(peer_exchanges)[:4])
-            if peer_exchanges <= LOW_CONFIDENCE_COLLISION_PEER_EXCHANGES or (
-                peer_source_keys and peer_source_keys <= LOW_CONFIDENCE_COLLISION_SOURCE_KEYS
+    else:
+        tmx_root_reference_rows = load_tmx_root_reference_rows(row, active_by_key)
+        if tmx_root_reference_rows:
+            preferred_reference = choose_preferred_reference(tmx_root_reference_rows, ticker)
+            reference_name = preferred_reference.get("name", "")
+            reference_source = preferred_reference.get("source_key", "")
+            if any(
+                has_strong_company_name_match(candidate.get("name", ""), row["name"])
+                or has_strong_company_name_match(row["name"], candidate.get("name", ""))
+                for candidate in tmx_root_reference_rows
             ):
-                status = "reference_gap"
-                reason = "Only weak cross-exchange collision evidence exists for this listing."
+                status = "verified"
+                reason = "Matched active official TMX root listing; official workbook omits this ETF series suffix."
             else:
-                status = "cross_exchange_collision"
-                reason = f"Official directory uses this ticker on other exchange(s): {peer_preview}."
-        elif (exchange, row.get("asset_type", "")) in LOW_CONFIDENCE_MISSING_ASSET_TYPE_KEYS:
-            status = "reference_gap"
-            reason = "This asset type is not fully covered by the current official reference layer for this exchange."
-        elif exchange in LOW_CONFIDENCE_MISSING_EXCHANGES:
-            status = "reference_gap"
-            reason = "This exchange is only weakly covered by the current official reference layer."
-        else:
+                status = "reference_gap"
+                reason = "Only an official TMX root listing exists for this ETF series suffix."
+        elif exchange in covered_exchanges:
+            non_active_rows = any_by_key.get(key, [])
+            non_active_row = next((candidate for candidate in non_active_rows if candidate.get("listing_status") != "active"), None)
+            peers = [peer for peer in active_by_ticker.get(ticker, []) if peer["exchange"] != exchange]
+            if non_active_row and non_active_row.get("listing_status") != "active":
+                status = "non_active_official"
+                reason = f"Official exchange directory marks this symbol as {non_active_row.get('listing_status')}."
+                reference_name = non_active_row.get("name", "")
+                reference_source = non_active_row.get("source_key", "")
+            elif peers:
+                matching_peers = [
+                    peer
+                    for peer in peers
+                    if peer.get("asset_type") == row.get("asset_type")
+                    and (
+                        has_strong_company_name_match(peer.get("name", ""), row["name"])
+                        or has_strong_company_name_match(row["name"], peer.get("name", ""))
+                    )
+                ]
+                if not matching_peers:
+                    status = "reference_gap"
+                    reason = "Only weak cross-exchange collision evidence exists for this listing."
+                    return {
+                        "listing_key": listing_key,
+                        "ticker": ticker,
+                        "exchange": exchange,
+                        "asset_type": row["asset_type"],
+                        "name": row["name"],
+                        "country": row["country"],
+                        "country_code": row["country_code"],
+                        "isin": row["isin"],
+                        "sector": row["sector"],
+                        "status": status,
+                        "reason": reason,
+                        "official_reference_name": reference_name,
+                        "official_reference_source": reference_source,
+                        "covered_by_official_directory": exchange in covered_exchanges,
+                        "cik": identifiers.get("cik", ""),
+                        "figi": identifiers.get("figi", ""),
+                        "lei": identifiers.get("lei", ""),
+                    }
+
+                peer_exchanges = {peer["exchange"] for peer in matching_peers}
+                peer_source_keys = {
+                    peer.get("source_key", "") for peer in matching_peers if peer.get("source_key", "")
+                }
+                peer_preview = ", ".join(sorted(peer_exchanges)[:4])
+                if peer_exchanges <= LOW_CONFIDENCE_COLLISION_PEER_EXCHANGES or (
+                    peer_source_keys and peer_source_keys <= LOW_CONFIDENCE_COLLISION_SOURCE_KEYS
+                ):
+                    status = "reference_gap"
+                    reason = "Only weak cross-exchange collision evidence exists for this listing."
+                else:
+                    status = "cross_exchange_collision"
+                    reason = f"Official directory uses this ticker on other exchange(s): {peer_preview}."
+            elif (exchange, row.get("asset_type", "")) in LOW_CONFIDENCE_MISSING_ASSET_TYPE_KEYS:
+                status = "reference_gap"
+                reason = "This asset type is not fully covered by the current official reference layer for this exchange."
+            elif exchange in LOW_CONFIDENCE_MISSING_EXCHANGES:
+                status = "reference_gap"
+                reason = "This exchange is only weakly covered by the current official reference layer."
+            else:
                 status = "missing_from_official"
                 reason = "Symbol is absent from the active official exchange directory for this exchange."
-    elif exchange in partial_covered_exchanges:
-        status = "reference_gap"
-        reason = "This exchange is only partially covered by the current official reference layer."
+        elif exchange in partial_covered_exchanges:
+            status = "reference_gap"
+            reason = "This exchange is only partially covered by the current official reference layer."
 
     return {
         "listing_key": listing_key,

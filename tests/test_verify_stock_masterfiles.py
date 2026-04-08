@@ -928,6 +928,80 @@ def test_classify_row_downgrades_tmx_listed_issuers_asset_type_mismatch_to_refer
     assert result["reason"] == "Only low-confidence asset_type evidence exists for this listing."
 
 
+def test_classify_row_verifies_tsx_etf_series_suffix_from_tmx_root_listing() -> None:
+    row = {
+        "ticker": "BTCO-B",
+        "exchange": "TSX",
+        "asset_type": "ETF",
+        "name": "Purpose Core Bitcoin ETF",
+        "country": "Canada",
+        "country_code": "CA",
+        "isin": "",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("TSX", "BTCO"): [
+                {
+                    "ticker": "BTCO",
+                    "exchange": "TSX",
+                    "name": "Purpose Core Bitcoin ETF",
+                    "asset_type": "ETF",
+                    "source_key": "tmx_listed_issuers",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges={"TSX"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+    assert result["official_reference_name"] == "Purpose Core Bitcoin ETF"
+    assert result["official_reference_source"] == "tmx_listed_issuers"
+    assert result["reason"] == "Matched active official TMX root listing; official workbook omits this ETF series suffix."
+
+
+def test_classify_row_keeps_tsx_etf_series_suffix_without_name_match_as_reference_gap() -> None:
+    row = {
+        "ticker": "TKN-U",
+        "exchange": "TSX",
+        "asset_type": "ETF",
+        "name": "Ninepoint Web3 Innovators Fund",
+        "country": "Canada",
+        "country_code": "CA",
+        "isin": "",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("TSX", "TKN"): [
+                {
+                    "ticker": "TKN",
+                    "exchange": "TSX",
+                    "name": "Ninepoint Crypto and AI Leaders ETF",
+                    "asset_type": "ETF",
+                    "source_key": "tmx_listed_issuers",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges={"TSX"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["official_reference_name"] == "Ninepoint Crypto and AI Leaders ETF"
+    assert result["official_reference_source"] == "tmx_listed_issuers"
+    assert result["reason"] == "Only an official TMX root listing exists for this ETF series suffix."
+
+
 def test_classify_row_downgrades_lse_name_mismatch_to_reference_gap() -> None:
     row = {
         "ticker": "0NQ5",

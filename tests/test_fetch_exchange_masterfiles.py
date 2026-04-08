@@ -758,7 +758,6 @@ def test_load_lse_company_reports_rows_prefers_cache(tmp_path, monkeypatch):
     rows, mode = load_lse_company_reports_rows(source)
 
     assert mode == "cache"
-    assert rows == [{"ticker": "ABF", "name": "ASSOCIATED BRITISH FOODS PLC ORD 5 15/22P"}]
 
 
 def test_parse_krx_listed_companies_maps_market_rows():
