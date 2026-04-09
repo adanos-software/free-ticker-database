@@ -17,8 +17,11 @@ from scripts.fetch_exchange_masterfiles import (
     LEGACY_LSE_COMPANY_REPORTS_CACHE,
     LEGACY_LSE_INSTRUMENT_DIRECTORY_CACHE,
     LEGACY_LSE_INSTRUMENT_SEARCH_CACHE,
+    LEGACY_NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE,
+    LEGACY_NASDAQ_NORDIC_HELSINKI_ETFS_CACHE,
     LEGACY_NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
     LEGACY_NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE,
+    LEGACY_SZSE_ETF_LIST_CACHE,
     LEGACY_TMX_ETF_SCREENER_CACHE,
     LEGACY_TPEX_ETF_FILTER_CACHE,
     LEGACY_TPEX_MAINBOARD_QUOTES_CACHE,
@@ -67,12 +70,15 @@ from scripts.fetch_exchange_masterfiles import (
     infer_lse_lookup_asset_type,
     load_b3_instruments_equities_rows,
     load_jse_instrument_search_rows,
+    NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE,
+    NASDAQ_NORDIC_HELSINKI_ETFS_CACHE,
     load_lse_company_reports_rows,
     load_lse_instrument_directory_rows,
     load_lse_instrument_search_rows,
     load_nasdaq_nordic_stockholm_etf_rows,
     load_nasdaq_nordic_stockholm_tracker_rows,
     load_nasdaq_nordic_stockholm_shares_rows,
+    load_szse_etf_list_rows,
     NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
     NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE,
     load_sec_company_tickers_exchange_payload,
@@ -96,6 +102,7 @@ from scripts.fetch_exchange_masterfiles import (
     parse_jse_exchange_traded_product_excel,
     parse_krx_etf_finder,
     parse_krx_listed_companies,
+    parse_nasdaq_nordic_shares,
     parse_nasdaq_nordic_stockholm_etfs,
     parse_nasdaq_nordic_stockholm_trackers,
     parse_lse_company_reports_html,
@@ -125,6 +132,7 @@ from scripts.fetch_exchange_masterfiles import (
     extract_psx_sector_options,
     extract_psx_symbol_name_download_url,
     extract_psx_xid,
+    SZSE_ETF_LIST_CACHE,
     TMX_MONEY_GRAPHQL_URL,
 )
 
@@ -1140,7 +1148,7 @@ def test_parse_asx_investment_products_excel_maps_etf_and_sp_rows() -> None:
     ]
 
 
-def test_parse_set_listed_companies_html_filters_to_set_market() -> None:
+def test_parse_set_listed_companies_html_keeps_set_and_mai_markets() -> None:
     text = """
     <table>
       <tr><td colspan="6">List of Listed Companies & Contact Information</td></tr>
@@ -1205,7 +1213,19 @@ def test_parse_set_listed_companies_html_filters_to_set_market() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
-        }
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "ABFTH",
+            "name": "The ABF Thailand Bond Index Fund",
+            "exchange": "SET",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
     ]
 
 
@@ -3702,7 +3722,43 @@ def test_parse_nasdaq_nordic_stockholm_shares_maps_rows() -> None:
     ]
 
 
-def test_fetch_nasdaq_nordic_stockholm_shares_filters_to_sto() -> None:
+def test_parse_nasdaq_nordic_copenhagen_shares_normalizes_symbols_and_keeps_isin() -> None:
+    payload = {
+        "data": {
+            "instrumentListing": {
+                "rows": [
+                    {
+                        "symbol": "MAERSK A",
+                        "fullName": "A.P. Møller - Mærsk A",
+                        "isin": "DK0010244425",
+                        "sector": "Industrials",
+                    }
+                ]
+            }
+        }
+    }
+
+    rows = parse_nasdaq_nordic_shares(payload, SOURCE, exchange="CPH")
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "MAERSK-A",
+            "name": "A.P. Møller - Mærsk A",
+            "exchange": "CPH",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "DK0010244425",
+            "sector": "Industrials",
+        }
+    ]
+
+
+def test_fetch_nasdaq_nordic_stockholm_shares_includes_first_north() -> None:
     source = MasterfileSource(
         key="nasdaq_nordic_stockholm_shares",
         provider="Nasdaq Nordic",
@@ -3730,7 +3786,10 @@ def test_fetch_nasdaq_nordic_stockholm_shares_filters_to_sto() -> None:
 
         def get(self, url, params=None, headers=None, timeout=None):
             self.calls.append((url, params))
-            assert params == {"category": "MAIN_MARKET", "tableonly": "false", "market": "STO"}
+            assert params in (
+                {"category": "MAIN_MARKET", "tableonly": "false", "market": "STO"},
+                {"category": "FIRST_NORTH", "tableonly": "false", "market": "STO"},
+            )
             return FakeResponse(
                 {
                     "data": {
@@ -3752,6 +3811,10 @@ def test_fetch_nasdaq_nordic_stockholm_shares_filters_to_sto() -> None:
         (
             "https://api.nasdaq.com/api/nordic/screener/shares",
             {"category": "MAIN_MARKET", "tableonly": "false", "market": "STO"},
+        ),
+        (
+            "https://api.nasdaq.com/api/nordic/screener/shares",
+            {"category": "FIRST_NORTH", "tableonly": "false", "market": "STO"},
         ),
     ]
 
@@ -3855,6 +3918,27 @@ def test_parse_nasdaq_nordic_stockholm_etfs_maps_symbol_aliases() -> None:
             "isin": "IE000DMPF2D5",
         },
     ]
+
+
+def test_parse_nasdaq_nordic_helsinki_etfs_adds_compact_symbol_alias() -> None:
+    payload = {
+        "data": {
+            "instrumentListing": {
+                "rows": [
+                    {
+                        "symbol": "SLG OMXH25",
+                        "fullName": "Seligson & Co OMX Helsinki 25 UCITS ETF",
+                        "isin": "FI0008805627",
+                    }
+                ]
+            }
+        }
+    }
+
+    rows = fetch_exchange_masterfiles.parse_nasdaq_nordic_etfs(payload, SOURCE, exchange="HEL")
+
+    assert [row["ticker"] for row in rows] == ["SLG-OMXH25", "SLGOMXH25"]
+    assert all(row["exchange"] == "HEL" for row in rows)
 
 
 def test_fetch_nasdaq_nordic_stockholm_etfs_filters_to_sto() -> None:
@@ -4099,6 +4183,26 @@ def test_fetch_source_rows_with_mode_uses_sto_cache(tmp_path, monkeypatch) -> No
     assert rows[0]["exchange"] == "STO"
 
 
+def test_fetch_source_rows_with_mode_uses_copenhagen_shares_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "nasdaq_nordic_copenhagen_shares.json"
+    cache_path.write_text(
+        '[{"ticker":"MAERSK-A","name":"A.P. Møller - Mærsk A","exchange":"CPH","asset_type":"Stock","listing_status":"active","source_key":"nasdaq_nordic_copenhagen_shares","reference_scope":"listed_companies_subset","official":"true","provider":"Nasdaq Nordic","source_url":"https://example.com","isin":"DK0010244425"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE", cache_path)
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.LEGACY_NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE",
+        tmp_path / "missing.json",
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "nasdaq_nordic_copenhagen_shares")
+    rows, mode = fetch_source_rows_with_mode(source)
+
+    assert mode == "cache"
+    assert rows[0]["ticker"] == "MAERSK-A"
+    assert rows[0]["exchange"] == "CPH"
+
+
 def test_load_nasdaq_nordic_stockholm_etf_rows_prefers_cache(tmp_path, monkeypatch) -> None:
     cache_path = tmp_path / "nasdaq_nordic_stockholm_etfs.json"
     cache_path.write_text(
@@ -4113,6 +4217,67 @@ def test_load_nasdaq_nordic_stockholm_etf_rows_prefers_cache(tmp_path, monkeypat
 
     assert mode == "cache"
     assert rows == [{"ticker": "XACT-SVERI", "name": "XACT Sverige (UCITS ETF)", "exchange": "STO", "asset_type": "ETF", "listing_status": "active"}]
+
+
+def test_fetch_source_rows_with_mode_uses_helsinki_etf_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "nasdaq_nordic_helsinki_etfs.json"
+    cache_path.write_text(
+        '[{"ticker":"SLGOMXH25","name":"Seligson & Co OMX Helsinki 25 UCITS ETF","exchange":"HEL","asset_type":"ETF","listing_status":"active","source_key":"nasdaq_nordic_helsinki_etfs","reference_scope":"listed_companies_subset","official":"true","provider":"Nasdaq Nordic","source_url":"https://example.com","isin":"FI0008805627"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.NASDAQ_NORDIC_HELSINKI_ETFS_CACHE", cache_path)
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.LEGACY_NASDAQ_NORDIC_HELSINKI_ETFS_CACHE",
+        tmp_path / "missing.json",
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "nasdaq_nordic_helsinki_etfs")
+    rows, mode = fetch_source_rows_with_mode(source)
+
+    assert mode == "cache"
+    assert rows[0]["ticker"] == "SLGOMXH25"
+    assert rows[0]["exchange"] == "HEL"
+
+
+def test_load_szse_etf_list_rows_falls_back_to_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "szse_etf_list.json"
+    cache_path.write_text(
+        '[{"ticker":"159199","name":"石油ETF平安","exchange":"SZSE","asset_type":"ETF","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.SZSE_ETF_LIST_CACHE", cache_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_SZSE_ETF_LIST_CACHE", tmp_path / "missing.json")
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.fetch_szse_etf_list",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "szse_etf_list")
+    rows, mode = load_szse_etf_list_rows(source)
+
+    assert mode == "cache"
+    assert rows == [{"ticker": "159199", "name": "石油ETF平安", "exchange": "SZSE", "asset_type": "ETF", "listing_status": "active"}]
+
+
+def test_fetch_source_rows_with_mode_uses_szse_etf_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "szse_etf_list.json"
+    cache_path.write_text(
+        '[{"ticker":"159199","name":"石油ETF平安","exchange":"SZSE","asset_type":"ETF","listing_status":"active","source_key":"szse_etf_list","reference_scope":"listed_companies_subset","official":"true","provider":"SZSE","source_url":"https://example.com"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.SZSE_ETF_LIST_CACHE", cache_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_SZSE_ETF_LIST_CACHE", tmp_path / "missing.json")
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.fetch_szse_etf_list",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "szse_etf_list")
+    rows, mode = fetch_source_rows_with_mode(source)
+
+    assert mode == "cache"
+    assert rows[0]["ticker"] == "159199"
+    assert rows[0]["exchange"] == "SZSE"
 
 
 def test_fetch_source_rows_with_mode_uses_sto_etf_cache(tmp_path, monkeypatch) -> None:

@@ -20,6 +20,7 @@ TICKERS_CSV = DATA_DIR / "tickers.csv"
 LISTINGS_CSV = DATA_DIR / "listings.csv"
 TICKERS_JSON = DATA_DIR / "tickers.json"
 ALIASES_CSV = DATA_DIR / "aliases.csv"
+IDENTIFIERS_CSV = DATA_DIR / "identifiers.csv"
 IDENTIFIERS_EXTENDED_CSV = DATA_DIR / "identifiers_extended.csv"
 IDENTIFIER_SUMMARY_JSON = DATA_DIR / "identifier_summary.json"
 MASTERFILE_REFERENCE_CSV = DATA_DIR / "masterfiles" / "reference.csv"
@@ -67,6 +68,28 @@ def path_mtime_iso(path: Path) -> str:
         return ""
     timestamp = datetime.fromtimestamp(path.stat().st_mtime, tz=timezone.utc)
     return timestamp.replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
+def latest_timestamp_iso(*values: str) -> str:
+    latest: datetime | None = None
+    latest_value = ""
+    for value in values:
+        parsed = parse_timestamp(value)
+        if parsed is None:
+            continue
+        if latest is None or parsed > latest:
+            latest = parsed
+            latest_value = value
+    return latest_value
+
+
+def resolve_identifiers_generated_at(identifier_summary: dict[str, Any]) -> str:
+    return latest_timestamp_iso(
+        identifier_summary.get("generated_at", ""),
+        path_mtime_iso(IDENTIFIERS_CSV),
+        path_mtime_iso(IDENTIFIERS_EXTENDED_CSV),
+        path_mtime_iso(IDENTIFIER_SUMMARY_JSON),
+    )
 
 
 def latest_verification_marker_mtime(path: Path) -> float:
@@ -542,13 +565,14 @@ def build_freshness_report(
     tickers_meta = load_json(TICKERS_JSON).get("_meta", {})
     stock_verification_generated_at = stock_verification.get("generated_at", "")
     etf_verification_generated_at = etf_verification.get("generated_at", "")
+    identifiers_generated_at = resolve_identifiers_generated_at(identifier_summary)
     return {
         "tickers_built_at": tickers_meta.get("built_at", ""),
         "tickers_age_hours": age_hours(tickers_meta.get("built_at", ""), now=now),
         "masterfiles_generated_at": masterfile_summary.get("generated_at", path_mtime_iso(MASTERFILE_SUMMARY_JSON)),
         "masterfiles_age_hours": age_hours(masterfile_summary.get("generated_at", path_mtime_iso(MASTERFILE_SUMMARY_JSON)), now=now),
-        "identifiers_generated_at": identifier_summary.get("generated_at", path_mtime_iso(IDENTIFIER_SUMMARY_JSON)),
-        "identifiers_age_hours": age_hours(identifier_summary.get("generated_at", path_mtime_iso(IDENTIFIER_SUMMARY_JSON)), now=now),
+        "identifiers_generated_at": identifiers_generated_at,
+        "identifiers_age_hours": age_hours(identifiers_generated_at, now=now),
         "listing_history_observed_at": listing_daily_summary.get("observed_at", ""),
         "listing_history_age_hours": age_hours(listing_daily_summary.get("observed_at", ""), now=now),
         "latest_verification_run": stock_verification.get("run_dir", ""),

@@ -9,14 +9,14 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 55
 
 | Metric | Value |
 |---|---|
-| **Total tickers** | 55,636 |
-| Stocks | 41,207 |
+| **Total tickers** | 55,631 |
+| Stocks | 41,202 |
 | ETFs | 14,429 |
 | Exchanges | 68 |
 | Countries | 68 |
-| ISIN coverage | 38,139 (68.6%) |
-| Sector coverage | 33,550 (60.3%) |
-| Total aliases | 87,536 |
+| ISIN coverage | 38,217 (68.7%) |
+| Sector coverage | 33,546 (60.3%) |
+| Total aliases | 87,609 |
 
 ## Formats
 
@@ -30,7 +30,7 @@ Choose the format that fits your use case:
 | [`data/tickers.parquet`](data/tickers.parquet) | 2.5 MB | Pandas, data science |
 | [`data/tickers.db`](data/tickers.db) | 27.1 MB | SQL queries, local apps |
 | [`data/aliases.csv`](data/aliases.csv) | 2.2 MB | Alias/name resolution |
-| [`data/identifiers.csv`](data/identifiers.csv) | 938 KB | ISIN/WKN lookups |
+| [`data/identifiers.csv`](data/identifiers.csv) | 939 KB | ISIN/WKN lookups |
 | [`data/cross_listings.csv`](data/cross_listings.csv) | 313 KB | Cross-listed securities |
 
 Additional reference artifacts:
@@ -39,10 +39,10 @@ Additional reference artifacts:
 |---|---|---|
 | [`data/identifiers_extended.csv`](data/identifiers_extended.csv) | 2.1 MB | FIGI/CIK/LEI enrichment snapshot |
 | [`data/listing_index.csv`](data/listing_index.csv) | 5.0 MB | Listing-keyed identity/export bridge |
-| [`data/masterfiles/reference.csv`](data/masterfiles/reference.csv) | 21.5 MB | Official exchange-masterfile reference rows |
+| [`data/masterfiles/reference.csv`](data/masterfiles/reference.csv) | 21.6 MB | Official exchange-masterfile reference rows |
 | [`data/masterfiles/supplemental_listings.csv`](data/masterfiles/supplemental_listings.csv) | 1.2 MB | Safe official listings added to the core export |
 | [`data/history/latest_snapshot.csv`](data/history/latest_snapshot.csv) | 6.8 MB | Current listing-status baseline |
-| [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | 351 KB | Machine-readable coverage metrics |
+| [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | 364 KB | Machine-readable coverage metrics |
 | [`data/reports/masterfile_collision_report.json`](data/reports/masterfile_collision_report.json) | 41 KB | Official-symbol gaps blocked by cross-exchange collisions |
 
 ### tickers.csv (flat, Excel-friendly, one row per security)
@@ -121,8 +121,8 @@ This is the full listing-level export for downstream systems that want every ven
 {
   "_meta": {
     "version": "3.1.0",
-    "built_at": "2026-04-09T09:29:12Z",
-    "total_tickers": 55636
+    "built_at": "2026-04-09T10:03:57Z",
+    "total_tickers": 55631
   },
   "tickers": [
     {
@@ -155,7 +155,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (55,636 rows) + `aliases` (87,536 rows) + `cross_listings` (8,658 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
+Tables: `tickers` (55,631 rows) + `aliases` (87,609 rows) + `cross_listings` (8,667 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
 
 ## Schema
 
@@ -185,7 +185,7 @@ Tables: `tickers` (55,636 rows) + `aliases` (87,536 rows) + `cross_listings` (8,
 | Exchange | Tickers | Description |
 |---|---|---|
 | OTC | 9,302 | US OTC / Pink Sheets |
-| LSE | 4,540 | London Stock Exchange |
+| LSE | 4,530 | London Stock Exchange |
 | NASDAQ | 4,548 | NASDAQ |
 | SZSE | 3,096 | Shenzhen Stock Exchange |
 | XETRA | 2,086 | Deutsche Boerse |
@@ -193,7 +193,7 @@ Tables: `tickers` (55,636 rows) + `aliases` (87,536 rows) + `cross_listings` (8,
 | NYSE | 2,055 | New York Stock Exchange |
 | NYSE ARCA | 2,595 | NYSE ARCA (ETFs) |
 | KRX | 1,789 | Korea Exchange |
-| TSX | 1,728 | Toronto Stock Exchange |
+| TSX | 1,606 | Toronto Stock Exchange |
 | B3 | 923 | Sao Paulo Exchange |
 | TWSE | 1,240 | Taiwan Stock Exchange |
 | ASX | 1,295 | Australian Securities Exchange |
@@ -247,14 +247,16 @@ Current live sources:
 
 - Nasdaq Trader `nasdaqlisted.txt`
 - Nasdaq Trader `otherlisted.txt`
+- Nasdaq Nordic listed shares / ETF JSON endpoints for Stockholm, Helsinki, and Copenhagen
 - ASX `ASXListedCompanies.csv`
 - Deutsche Börse `Listed-companies.xlsx`
 - B3 `InstrumentsEquities` public API
-- TMX `interlisted-companies.txt` (official interlisted subset, not a full TSX/TSXV directory)
+- TMX issuer workbook + ETF screener + `interlisted-companies.txt`
 - Euronext Live equities CSV export
 - JPX listed issues XLS
 - TWSE listed companies open-data JSON
-- TPEX mainboard daily quotes open-data JSON (cache-first fallback when the official endpoint blocks the current environment)
+- TPEX mainboard daily quotes open-data JSON
+- TPEX ETF InfoHub export endpoint
 - SEC `company_tickers_exchange.json` when the environment is allowed to fetch it, or a cached official snapshot when present locally
 
 `data/reports/coverage_report.json` exposes both `exchange_coverage` and a machine-friendly `by_exchange` alias, plus separate stock and ETF verification summaries. That makes backlog prioritization easier without scraping the markdown report.

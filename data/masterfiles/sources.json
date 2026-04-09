@@ -245,9 +245,27 @@
   {
     "key": "nasdaq_nordic_stockholm_shares",
     "provider": "Nasdaq Nordic",
-    "description": "Official Nasdaq Nordic Stockholm Main Market shares screener",
+    "description": "Official Nasdaq Nordic Stockholm shares screener (Main Market + First North)",
     "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
     "format": "nasdaq_nordic_stockholm_shares_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "nasdaq_nordic_helsinki_shares",
+    "provider": "Nasdaq Nordic",
+    "description": "Official Nasdaq Nordic Helsinki shares screener (Main Market + First North)",
+    "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+    "format": "nasdaq_nordic_helsinki_shares_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "nasdaq_nordic_copenhagen_shares",
+    "provider": "Nasdaq Nordic",
+    "description": "Official Nasdaq Nordic Copenhagen shares screener (Main Market + First North)",
+    "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+    "format": "nasdaq_nordic_copenhagen_shares_json",
     "reference_scope": "listed_companies_subset",
     "official": true
   },
@@ -257,6 +275,24 @@
     "description": "Official Nasdaq Nordic Stockholm ETF screener",
     "source_url": "https://api.nasdaq.com/api/nordic/screener/etp",
     "format": "nasdaq_nordic_stockholm_etfs_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "nasdaq_nordic_helsinki_etfs",
+    "provider": "Nasdaq Nordic",
+    "description": "Official Nasdaq Nordic Helsinki ETF screener",
+    "source_url": "https://api.nasdaq.com/api/nordic/screener/etp",
+    "format": "nasdaq_nordic_helsinki_etfs_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "nasdaq_nordic_copenhagen_etfs",
+    "provider": "Nasdaq Nordic",
+    "description": "Official Nasdaq Nordic Copenhagen ETF screener",
+    "source_url": "https://api.nasdaq.com/api/nordic/screener/etp",
+    "format": "nasdaq_nordic_copenhagen_etfs_json",
     "reference_scope": "listed_companies_subset",
     "official": true
   },

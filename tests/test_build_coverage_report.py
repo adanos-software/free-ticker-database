@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+import os
+from datetime import datetime, timezone
+
 from scripts.build_coverage_report import (
     build_b3_gap_breakdown,
     build_country_report,
@@ -359,7 +362,21 @@ def test_build_masterfile_collision_report_exposes_cross_exchange_conflicts():
     assert report["exchanges"][1]["missing_examples"][0]["ticker"] == "1306"
 
 
-def test_build_freshness_report_calculates_ages():
+def test_build_freshness_report_calculates_ages(tmp_path, monkeypatch):
+    identifiers_csv = tmp_path / "identifiers.csv"
+    identifiers_extended_csv = tmp_path / "identifiers_extended.csv"
+    identifier_summary_json = tmp_path / "identifier_summary.json"
+    for path in (identifiers_csv, identifiers_extended_csv, identifier_summary_json):
+        path.write_text("", encoding="utf-8")
+
+    older = datetime(2026, 4, 6, 10, 30, tzinfo=timezone.utc).timestamp()
+    for path in (identifiers_csv, identifiers_extended_csv, identifier_summary_json):
+        os.utime(path, (older, older))
+
+    monkeypatch.setattr("scripts.build_coverage_report.IDENTIFIERS_CSV", identifiers_csv)
+    monkeypatch.setattr("scripts.build_coverage_report.IDENTIFIERS_EXTENDED_CSV", identifiers_extended_csv)
+    monkeypatch.setattr("scripts.build_coverage_report.IDENTIFIER_SUMMARY_JSON", identifier_summary_json)
+
     freshness = build_freshness_report(
         {"generated_at": "2026-04-06T10:00:00Z"},
         {"generated_at": "2026-04-06T11:00:00Z"},
@@ -373,6 +390,35 @@ def test_build_freshness_report_calculates_ages():
     assert freshness["listing_history_observed_at"] == "2026-04-06T12:00:00Z"
     assert freshness["latest_verification_run"] == "data/stock_verification/run-a"
     assert freshness["latest_etf_verification_run"] == "data/etf_verification/run-b"
+
+
+def test_build_freshness_report_uses_newer_identifier_artifact_timestamp(tmp_path, monkeypatch):
+    identifiers_csv = tmp_path / "identifiers.csv"
+    identifiers_extended_csv = tmp_path / "identifiers_extended.csv"
+    identifier_summary_json = tmp_path / "identifier_summary.json"
+    for path in (identifiers_csv, identifiers_extended_csv, identifier_summary_json):
+        path.write_text("", encoding="utf-8")
+
+    newer = datetime(2026, 4, 6, 12, 30, tzinfo=timezone.utc).timestamp()
+    os.utime(identifiers_csv, (newer, newer))
+
+    older = datetime(2026, 4, 6, 10, 15, tzinfo=timezone.utc).timestamp()
+    for path in (identifiers_extended_csv, identifier_summary_json):
+        os.utime(path, (older, older))
+
+    monkeypatch.setattr("scripts.build_coverage_report.IDENTIFIERS_CSV", identifiers_csv)
+    monkeypatch.setattr("scripts.build_coverage_report.IDENTIFIERS_EXTENDED_CSV", identifiers_extended_csv)
+    monkeypatch.setattr("scripts.build_coverage_report.IDENTIFIER_SUMMARY_JSON", identifier_summary_json)
+
+    freshness = build_freshness_report(
+        {"generated_at": "2026-04-06T10:00:00Z"},
+        {"generated_at": "2026-04-06T11:00:00Z"},
+        {"observed_at": "2026-04-06T12:00:00Z"},
+        {"run_dir": "data/stock_verification/run-a", "generated_at": "2026-04-06T13:00:00Z"},
+        {"run_dir": "data/etf_verification/run-b", "generated_at": "2026-04-06T14:00:00Z"},
+    )
+
+    assert freshness["identifiers_generated_at"] == "2026-04-06T12:30:00Z"
 
 
 def test_build_gap_report_and_b3_breakdown():

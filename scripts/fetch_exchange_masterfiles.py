@@ -50,12 +50,22 @@ TPEX_MAINBOARD_QUOTES_CACHE = MASTERFILE_CACHE_DIR / "tpex_mainboard_daily_close
 LEGACY_TPEX_MAINBOARD_QUOTES_CACHE = MASTERFILES_DIR / "tpex_mainboard_daily_close_quotes.json"
 TPEX_ETF_FILTER_CACHE = MASTERFILE_CACHE_DIR / "tpex_etf_filter.json"
 LEGACY_TPEX_ETF_FILTER_CACHE = MASTERFILES_DIR / "tpex_etf_filter.json"
+SZSE_ETF_LIST_CACHE = MASTERFILE_CACHE_DIR / "szse_etf_list.json"
+LEGACY_SZSE_ETF_LIST_CACHE = MASTERFILES_DIR / "szse_etf_list.json"
 NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_stockholm_shares.json"
 LEGACY_NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE = MASTERFILES_DIR / "nasdaq_nordic_stockholm_shares.json"
 NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_stockholm_etfs.json"
 LEGACY_NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE = MASTERFILES_DIR / "nasdaq_nordic_stockholm_etfs.json"
 NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_stockholm_trackers.json"
 LEGACY_NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE = MASTERFILES_DIR / "nasdaq_nordic_stockholm_trackers.json"
+NASDAQ_NORDIC_HELSINKI_SHARES_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_helsinki_shares.json"
+LEGACY_NASDAQ_NORDIC_HELSINKI_SHARES_CACHE = MASTERFILES_DIR / "nasdaq_nordic_helsinki_shares.json"
+NASDAQ_NORDIC_HELSINKI_ETFS_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_helsinki_etfs.json"
+LEGACY_NASDAQ_NORDIC_HELSINKI_ETFS_CACHE = MASTERFILES_DIR / "nasdaq_nordic_helsinki_etfs.json"
+NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_copenhagen_shares.json"
+LEGACY_NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE = MASTERFILES_DIR / "nasdaq_nordic_copenhagen_shares.json"
+NASDAQ_NORDIC_COPENHAGEN_ETFS_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_copenhagen_etfs.json"
+LEGACY_NASDAQ_NORDIC_COPENHAGEN_ETFS_CACHE = MASTERFILES_DIR / "nasdaq_nordic_copenhagen_etfs.json"
 B3_INSTRUMENTS_EQUITIES_CACHE = MASTERFILE_CACHE_DIR / "b3_instruments_equities.json"
 LEGACY_B3_INSTRUMENTS_EQUITIES_CACHE = MASTERFILES_DIR / "b3_instruments_equities.json"
 JSE_ETF_LIST_CACHE = MASTERFILE_CACHE_DIR / "jse_etf_list.json"
@@ -116,7 +126,30 @@ NASDAQ_NORDIC_SHARES_SCREENER_URL = "https://api.nasdaq.com/api/nordic/screener/
 NASDAQ_NORDIC_ETP_SCREENER_URL = "https://api.nasdaq.com/api/nordic/screener/etp"
 NASDAQ_NORDIC_SEARCH_URL = "https://api.nasdaq.com/api/nordic/search"
 NASDAQ_NORDIC_ETF_PAGE_URL = "https://www.nasdaq.com/european-market-activity/etf"
+NASDAQ_NORDIC_STOCK_PAGE_URL = "https://www.nasdaq.com/european-market-activity/stocks"
 NASDAQ_NORDIC_STOCKHOLM_TRACKER_SEARCH_TERMS = ("XBT Provider",)
+NASDAQ_NORDIC_SHARES_SOURCE_CONFIG = {
+    "nasdaq_nordic_stockholm_shares": {
+        "exchange": "STO",
+        "market": "STO",
+        "categories": ("MAIN_MARKET", "FIRST_NORTH"),
+    },
+    "nasdaq_nordic_helsinki_shares": {
+        "exchange": "HEL",
+        "market": "HEL",
+        "categories": ("MAIN_MARKET", "FIRST_NORTH"),
+    },
+    "nasdaq_nordic_copenhagen_shares": {
+        "exchange": "CPH",
+        "market": "CPH",
+        "categories": ("MAIN_MARKET", "FIRST_NORTH"),
+    },
+}
+NASDAQ_NORDIC_ETF_SOURCE_CONFIG = {
+    "nasdaq_nordic_stockholm_etfs": {"exchange": "STO", "market": "STO"},
+    "nasdaq_nordic_helsinki_etfs": {"exchange": "HEL", "market": "HEL"},
+    "nasdaq_nordic_copenhagen_etfs": {"exchange": "CPH", "market": "CPH"},
+}
 TWSE_LISTED_COMPANIES_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
 TWSE_ETF_LIST_URL = "https://www.twse.com.tw/rwd/en/ETF/list"
 SET_LISTED_COMPANIES_URL = "https://www.set.or.th/dat/eod/listedcompany/static/listedCompanies_en_US.xls"
@@ -571,9 +604,25 @@ OFFICIAL_SOURCES = [
     MasterfileSource(
         key="nasdaq_nordic_stockholm_shares",
         provider="Nasdaq Nordic",
-        description="Official Nasdaq Nordic Stockholm Main Market shares screener",
+        description="Official Nasdaq Nordic Stockholm shares screener (Main Market + First North)",
         source_url=NASDAQ_NORDIC_SHARES_SCREENER_URL,
         format="nasdaq_nordic_stockholm_shares_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="nasdaq_nordic_helsinki_shares",
+        provider="Nasdaq Nordic",
+        description="Official Nasdaq Nordic Helsinki shares screener (Main Market + First North)",
+        source_url=NASDAQ_NORDIC_SHARES_SCREENER_URL,
+        format="nasdaq_nordic_helsinki_shares_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="nasdaq_nordic_copenhagen_shares",
+        provider="Nasdaq Nordic",
+        description="Official Nasdaq Nordic Copenhagen shares screener (Main Market + First North)",
+        source_url=NASDAQ_NORDIC_SHARES_SCREENER_URL,
+        format="nasdaq_nordic_copenhagen_shares_json",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -582,6 +631,22 @@ OFFICIAL_SOURCES = [
         description="Official Nasdaq Nordic Stockholm ETF screener",
         source_url=NASDAQ_NORDIC_ETP_SCREENER_URL,
         format="nasdaq_nordic_stockholm_etfs_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="nasdaq_nordic_helsinki_etfs",
+        provider="Nasdaq Nordic",
+        description="Official Nasdaq Nordic Helsinki ETF screener",
+        source_url=NASDAQ_NORDIC_ETP_SCREENER_URL,
+        format="nasdaq_nordic_helsinki_etfs_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="nasdaq_nordic_copenhagen_etfs",
+        provider="Nasdaq Nordic",
+        description="Official Nasdaq Nordic Copenhagen ETF screener",
+        source_url=NASDAQ_NORDIC_ETP_SCREENER_URL,
+        format="nasdaq_nordic_copenhagen_etfs_json",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -943,13 +1008,13 @@ def psx_request_headers(*, ajax: bool = False) -> dict[str, str]:
     return headers
 
 
-def nasdaq_nordic_request_headers() -> dict[str, str]:
+def nasdaq_nordic_request_headers(referer: str = NASDAQ_NORDIC_STOCK_PAGE_URL) -> dict[str, str]:
     return {
         "User-Agent": "Mozilla/5.0",
         "Accept": "application/json,text/plain,*/*",
         "Accept-Encoding": "gzip, deflate",
-        "Referer": "https://www.nasdaqomxnordic.com/shares/listed-companies/stockholm",
-        "Origin": "https://www.nasdaqomxnordic.com",
+        "Referer": referer,
+        "Origin": "https://www.nasdaq.com",
     }
 
 
@@ -1040,6 +1105,23 @@ def load_tpex_etf_filter_payload(
     ensure_output_dirs()
     TPEX_ETF_FILTER_CACHE.write_text(json.dumps(payload), encoding="utf-8")
     return payload, "network"
+
+
+def load_szse_etf_list_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_szse_etf_list(source, session=session)
+    except (requests.RequestException, ValueError):
+        for path in (SZSE_ETF_LIST_CACHE, LEGACY_SZSE_ETF_LIST_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    SZSE_ETF_LIST_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
 
 
 def load_tmx_etf_screener_payload(
@@ -1241,14 +1323,47 @@ def load_jse_exchange_traded_product_rows(
     return rows, "network"
 
 
+def nasdaq_nordic_shares_cache_paths(source_key: str) -> tuple[Path, Path]:
+    mapping = {
+        "nasdaq_nordic_stockholm_shares": (
+            NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE,
+            LEGACY_NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE,
+        ),
+        "nasdaq_nordic_helsinki_shares": (
+            NASDAQ_NORDIC_HELSINKI_SHARES_CACHE,
+            LEGACY_NASDAQ_NORDIC_HELSINKI_SHARES_CACHE,
+        ),
+        "nasdaq_nordic_copenhagen_shares": (
+            NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE,
+            LEGACY_NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE,
+        ),
+    }
+    return mapping[source_key]
+
+
+def nasdaq_nordic_etf_cache_paths(source_key: str) -> tuple[Path, Path]:
+    mapping = {
+        "nasdaq_nordic_stockholm_etfs": (
+            NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
+            LEGACY_NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
+        ),
+        "nasdaq_nordic_helsinki_etfs": (
+            NASDAQ_NORDIC_HELSINKI_ETFS_CACHE,
+            LEGACY_NASDAQ_NORDIC_HELSINKI_ETFS_CACHE,
+        ),
+        "nasdaq_nordic_copenhagen_etfs": (
+            NASDAQ_NORDIC_COPENHAGEN_ETFS_CACHE,
+            LEGACY_NASDAQ_NORDIC_COPENHAGEN_ETFS_CACHE,
+        ),
+    }
+    return mapping[source_key]
+
+
 def load_nasdaq_nordic_stockholm_shares_rows(
     source: MasterfileSource,
     session: requests.Session | None = None,
 ) -> tuple[list[dict[str, str]] | None, str]:
-    for path in (
-        NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE,
-        LEGACY_NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE,
-    ):
+    for path in nasdaq_nordic_shares_cache_paths(source.key):
         if path.exists():
             return json.loads(path.read_text(encoding="utf-8")), "cache"
 
@@ -1258,7 +1373,7 @@ def load_nasdaq_nordic_stockholm_shares_rows(
         return None, "unavailable"
 
     ensure_output_dirs()
-    NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    nasdaq_nordic_shares_cache_paths(source.key)[0].write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"
 
 
@@ -1266,10 +1381,7 @@ def load_nasdaq_nordic_stockholm_etf_rows(
     source: MasterfileSource,
     session: requests.Session | None = None,
 ) -> tuple[list[dict[str, str]] | None, str]:
-    for path in (
-        NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
-        LEGACY_NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
-    ):
+    for path in nasdaq_nordic_etf_cache_paths(source.key):
         if path.exists():
             return json.loads(path.read_text(encoding="utf-8")), "cache"
 
@@ -1279,7 +1391,7 @@ def load_nasdaq_nordic_stockholm_etf_rows(
         return None, "unavailable"
 
     ensure_output_dirs()
-    NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    nasdaq_nordic_etf_cache_paths(source.key)[0].write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"
 
 
@@ -2066,6 +2178,7 @@ def parse_set_listed_companies_html(text: str, source: MasterfileSource) -> list
     parser = _TableParser()
     parser.feed(text)
     rows: list[dict[str, str]] = []
+    allowed_markets = {"set", "mai"}
     for table in parser.tables:
         header_row_index = None
         for index, record in enumerate(table):
@@ -2088,7 +2201,13 @@ def parse_set_listed_companies_html(text: str, source: MasterfileSource) -> list
             ticker = str(record[symbol_index]).strip()
             name = str(record[company_index]).strip()
             market = str(record[market_index]).strip()
-            if market != "SET" or not ticker or not name or ticker.lower() == "nan" or name.lower() == "nan":
+            if (
+                market.lower() not in allowed_markets
+                or not ticker
+                or not name
+                or ticker.lower() == "nan"
+                or name.lower() == "nan"
+            ):
                 continue
             rows.append(
                 {
@@ -3041,28 +3160,46 @@ def parse_b3_bdr_companies_payload(payload: dict[str, Any], source: MasterfileSo
     return rows
 
 
-def parse_nasdaq_nordic_stockholm_shares(payload: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
+def normalize_nasdaq_nordic_ticker(value: str) -> str:
+    return re.sub(r"\s+", "-", value.strip().upper())
+
+
+def parse_nasdaq_nordic_shares(
+    payload: dict[str, Any],
+    source: MasterfileSource,
+    *,
+    exchange: str,
+) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     for record in ((payload.get("data") or {}).get("instrumentListing") or {}).get("rows") or []:
-        ticker = str(record.get("symbol", "")).strip()
+        ticker = normalize_nasdaq_nordic_ticker(str(record.get("symbol", "")))
         name = str(record.get("fullName", "")).strip()
+        isin = str(record.get("isin", "")).strip().upper()
+        sector = str(record.get("sector", "")).strip()
         if not ticker or not name:
             continue
-        rows.append(
-            {
-                "source_key": source.key,
-                "provider": source.provider,
-                "source_url": source.source_url,
-                "ticker": ticker,
-                "name": name,
-                "exchange": "STO",
-                "asset_type": "Stock",
-                "listing_status": "active",
-                "reference_scope": source.reference_scope,
-                "official": "true",
-            }
-        )
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": exchange,
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        if isin:
+            row["isin"] = isin
+        if sector:
+            row["sector"] = sector
+        rows.append(row)
     return rows
+
+
+def parse_nasdaq_nordic_stockholm_shares(payload: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
+    return parse_nasdaq_nordic_shares(payload, source, exchange="STO")
 
 
 def iter_nasdaq_nordic_etf_tickers(record: dict[str, Any]) -> list[str]:
@@ -3091,9 +3228,18 @@ def iter_nasdaq_nordic_etf_tickers(record: dict[str, Any]) -> list[str]:
     return tickers
 
 
-def parse_nasdaq_nordic_stockholm_etfs(payload: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
+def parse_nasdaq_nordic_etfs(
+    payload: dict[str, Any],
+    source: MasterfileSource,
+    *,
+    exchange: str,
+) -> list[dict[str, str]]:
     records = ((payload.get("data") or {}).get("instrumentListing") or {}).get("rows") or []
-    return parse_nasdaq_nordic_stockholm_etf_records(records, source)
+    return parse_nasdaq_nordic_etf_records(records, source, exchange=exchange)
+
+
+def parse_nasdaq_nordic_stockholm_etfs(payload: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
+    return parse_nasdaq_nordic_etfs(payload, source, exchange="STO")
 
 
 def parse_nasdaq_nordic_stockholm_trackers(payload: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
@@ -3103,18 +3249,21 @@ def parse_nasdaq_nordic_stockholm_trackers(payload: dict[str, Any], source: Mast
             if str(record.get("assetClass", "")).strip().upper() != "TRACKER_CERTIFICATES":
                 continue
             records.append(record)
-    return parse_nasdaq_nordic_stockholm_etf_records(records, source)
+    return parse_nasdaq_nordic_etf_records(records, source)
 
 
-def parse_nasdaq_nordic_stockholm_etf_records(
+def parse_nasdaq_nordic_etf_records(
     records: list[dict[str, Any]],
     source: MasterfileSource,
+    *,
+    exchange: str = "STO",
 ) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     seen: set[tuple[str, str]] = set()
     for record in records:
         name = str(record.get("fullName", "")).strip()
         isin = str(record.get("isin", "")).strip().upper()
+        compact_ticker = re.sub(r"[^A-Z0-9]+", "", str(record.get("symbol", "")).strip().upper())
         if not name:
             continue
         for ticker in iter_nasdaq_nordic_etf_tickers(record):
@@ -3129,7 +3278,7 @@ def parse_nasdaq_nordic_stockholm_etf_records(
                     "source_url": source.source_url,
                     "ticker": ticker,
                     "name": name,
-                    "exchange": "STO",
+                    "exchange": exchange,
                     "asset_type": "ETF",
                     "listing_status": "active",
                     "reference_scope": source.reference_scope,
@@ -3137,6 +3286,25 @@ def parse_nasdaq_nordic_stockholm_etf_records(
                     "isin": isin,
                 }
             )
+        if exchange in {"HEL", "CPH"} and compact_ticker and len(compact_ticker) <= 10:
+            signature = (compact_ticker, name)
+            if signature not in seen:
+                seen.add(signature)
+                rows.append(
+                    {
+                        "source_key": source.key,
+                        "provider": source.provider,
+                        "source_url": source.source_url,
+                        "ticker": compact_ticker,
+                        "name": name,
+                        "exchange": exchange,
+                        "asset_type": "ETF",
+                        "listing_status": "active",
+                        "reference_scope": source.reference_scope,
+                        "official": "true",
+                        "isin": isin,
+                    }
+                )
     return rows
 
 
@@ -3636,46 +3804,97 @@ def fetch_jse_instrument_search_rows(
     )
 
 
-def fetch_nasdaq_nordic_stockholm_shares(
+def fetch_nasdaq_nordic_shares(
     source: MasterfileSource,
     session: requests.Session | None = None,
 ) -> list[dict[str, str]]:
     session = session or requests.Session()
-    headers = nasdaq_nordic_request_headers()
+    config = NASDAQ_NORDIC_SHARES_SOURCE_CONFIG[source.key]
+    headers = nasdaq_nordic_request_headers(NASDAQ_NORDIC_STOCK_PAGE_URL)
+    rows: list[dict[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+    for category in config["categories"]:
+        response = session.get(
+            source.source_url,
+            params={
+                "category": category,
+                "tableonly": "false",
+                "market": config["market"],
+            },
+            headers=headers,
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        for row in parse_nasdaq_nordic_shares(response.json(), source, exchange=config["exchange"]):
+            signature = (row["ticker"], row["name"])
+            if signature in seen:
+                continue
+            seen.add(signature)
+            rows.append(row)
+    return rows
+
+
+def fetch_nasdaq_nordic_stockholm_shares(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    return fetch_nasdaq_nordic_shares(source, session=session)
+
+
+def fetch_nasdaq_nordic_helsinki_shares(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    return fetch_nasdaq_nordic_shares(source, session=session)
+
+
+def fetch_nasdaq_nordic_copenhagen_shares(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    return fetch_nasdaq_nordic_shares(source, session=session)
+
+
+def fetch_nasdaq_nordic_etfs(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    config = NASDAQ_NORDIC_ETF_SOURCE_CONFIG[source.key]
+    headers = nasdaq_nordic_request_headers(NASDAQ_NORDIC_ETF_PAGE_URL)
     response = session.get(
         source.source_url,
         params={
-            "category": "MAIN_MARKET",
+            "category": "ETF",
+            "market": config["market"],
             "tableonly": "false",
-            "market": "STO",
         },
         headers=headers,
         timeout=REQUEST_TIMEOUT,
     )
     response.raise_for_status()
-    return parse_nasdaq_nordic_stockholm_shares(response.json(), source)
+    return parse_nasdaq_nordic_etfs(response.json(), source, exchange=config["exchange"])
 
 
 def fetch_nasdaq_nordic_stockholm_etfs(
     source: MasterfileSource,
     session: requests.Session | None = None,
 ) -> list[dict[str, str]]:
-    session = session or requests.Session()
-    headers = nasdaq_nordic_request_headers()
-    headers["Referer"] = NASDAQ_NORDIC_ETF_PAGE_URL
-    headers["Origin"] = "https://www.nasdaq.com"
-    response = session.get(
-        source.source_url,
-        params={
-            "category": "ETF",
-            "market": "STO",
-            "tableonly": "false",
-        },
-        headers=headers,
-        timeout=REQUEST_TIMEOUT,
-    )
-    response.raise_for_status()
-    return parse_nasdaq_nordic_stockholm_etfs(response.json(), source)
+    return fetch_nasdaq_nordic_etfs(source, session=session)
+
+
+def fetch_nasdaq_nordic_helsinki_etfs(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    return fetch_nasdaq_nordic_etfs(source, session=session)
+
+
+def fetch_nasdaq_nordic_copenhagen_etfs(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    return fetch_nasdaq_nordic_etfs(source, session=session)
 
 
 def fetch_nasdaq_nordic_stockholm_trackers(
@@ -3982,7 +4201,10 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "szse_a_share_list_json":
         return fetch_szse_a_share_list(source, session=session)
     if source.format == "szse_etf_list_json":
-        return fetch_szse_etf_list(source, session=session)
+        rows, mode = load_szse_etf_list_rows(source, session=session)
+        if rows is None:
+            return [], mode
+        return rows, mode
     if source.format == "tpex_mainboard_quotes_json":
         payload = fetch_json(source.source_url, session=session)
         return parse_tpex_mainboard_quotes(payload, source)
@@ -4048,6 +4270,11 @@ def fetch_source_rows_with_mode(
         if payload is None:
             raise requests.RequestException("TPEX ETF filter unavailable")
         return parse_tpex_etf_filter(payload, source), mode
+    if source.format == "szse_etf_list_json":
+        rows, mode = load_szse_etf_list_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("SZSE ETF list unavailable")
+        return rows, mode
     if source.format in {"jse_etf_list_xlsx", "jse_etn_list_xlsx"}:
         rows, mode = load_jse_exchange_traded_product_rows(source, session=session)
         if rows is None:
@@ -4058,15 +4285,23 @@ def fetch_source_rows_with_mode(
         if rows is None:
             raise requests.RequestException("JSE instrument search unavailable")
         return rows, mode
-    if source.format == "nasdaq_nordic_stockholm_shares_json":
+    if source.format in {
+        "nasdaq_nordic_stockholm_shares_json",
+        "nasdaq_nordic_helsinki_shares_json",
+        "nasdaq_nordic_copenhagen_shares_json",
+    }:
         rows, mode = load_nasdaq_nordic_stockholm_shares_rows(source, session=session)
         if rows is None:
-            raise requests.RequestException("Nasdaq Nordic Stockholm shares unavailable")
+            raise requests.RequestException(f"Nasdaq Nordic shares unavailable for {source.key}")
         return rows, mode
-    if source.format == "nasdaq_nordic_stockholm_etfs_json":
+    if source.format in {
+        "nasdaq_nordic_stockholm_etfs_json",
+        "nasdaq_nordic_helsinki_etfs_json",
+        "nasdaq_nordic_copenhagen_etfs_json",
+    }:
         rows, mode = load_nasdaq_nordic_stockholm_etf_rows(source, session=session)
         if rows is None:
-            raise requests.RequestException("Nasdaq Nordic Stockholm ETFs unavailable")
+            raise requests.RequestException(f"Nasdaq Nordic ETFs unavailable for {source.key}")
         return rows, mode
     if source.format == "nasdaq_nordic_stockholm_trackers_json":
         rows, mode = load_nasdaq_nordic_stockholm_tracker_rows(source, session=session)
