@@ -2890,26 +2890,75 @@ def parse_six_fund_products_csv(text: str, source: MasterfileSource) -> list[dic
 
     reader = csv.DictReader(io.StringIO("\n".join(lines)), delimiter=";")
     rows: list[dict[str, str]] = []
+    seen: set[tuple[str, str]] = set()
     for record in reader:
-        ticker = str(record.get("ValorSymbol", "")).strip()
         name = str(record.get("FundLongName", "")).strip()
-        if not ticker or not name:
+        if not name:
             continue
-        rows.append(
-            {
-                "source_key": source.key,
-                "provider": source.provider,
-                "source_url": source.source_url,
-                "ticker": ticker,
-                "name": name,
-                "exchange": "SIX",
-                "asset_type": "ETF",
-                "listing_status": "active",
-                "reference_scope": source.reference_scope,
-                "official": "true",
-            }
-        )
+        for ticker in iter_six_fund_product_tickers(record):
+            key = (ticker, name)
+            if key in seen:
+                continue
+            seen.add(key)
+            rows.append(
+                {
+                    "source_key": source.key,
+                    "provider": source.provider,
+                    "source_url": source.source_url,
+                    "ticker": ticker,
+                    "name": name,
+                    "exchange": "SIX",
+                    "asset_type": "ETF",
+                    "listing_status": "active",
+                    "reference_scope": source.reference_scope,
+                    "official": "true",
+                }
+            )
     return rows
+
+
+def normalize_six_reuters_ticker(value: str) -> str:
+    normalized = value.strip().upper()
+    for suffix in (".S", " S"):
+        if normalized.endswith(suffix):
+            normalized = normalized[: -len(suffix)]
+            break
+    return normalized.replace(" ", "")
+
+
+def normalize_six_bloomberg_ticker(value: str) -> str:
+    normalized = value.strip().upper()
+    for suffix in (" SE", ".SE"):
+        if normalized.endswith(suffix):
+            normalized = normalized[: -len(suffix)]
+            break
+    return normalized.replace(" ", "")
+
+
+def iter_six_fund_product_tickers(record: dict[str, str]) -> list[str]:
+    tickers: list[str] = []
+
+    def add(value: str) -> None:
+        normalized = value.strip().upper()
+        if normalized and normalized not in tickers:
+            tickers.append(normalized)
+
+    valor_symbol = str(record.get("ValorSymbol", "")).strip()
+    trading_currency = str(record.get("TradingBaseCurrency", "")).strip().upper()
+    fund_currency = str(record.get("FundCurrency", "")).strip().upper()
+    if valor_symbol:
+        add(valor_symbol)
+        if trading_currency:
+            add(f"{valor_symbol}-{trading_currency}")
+            add(f"{valor_symbol}{trading_currency}")
+
+    reuters_ticker = normalize_six_reuters_ticker(str(record.get("FundReutersTicker", "")))
+    bloomberg_ticker = normalize_six_bloomberg_ticker(str(record.get("FundBloombergTicker", "")))
+    add(reuters_ticker)
+    add(bloomberg_ticker)
+    if valor_symbol and fund_currency:
+        add(f"{valor_symbol}{fund_currency}")
+    return tickers
 
 
 def extract_psx_xid(text: str) -> str:
