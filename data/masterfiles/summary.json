@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-09T13:28:06Z",
-  "rows": 86623,
+  "generated_at": "2026-04-09T16:17:28Z",
+  "rows": 87456,
   "exchanges": [
     "AMS",
     "ASX",
@@ -16,12 +16,14 @@
     "KRX",
     "LSE",
     "NASDAQ",
+    "NEO",
     "NYSE",
     "NYSE ARCA",
     "NYSE CHICAGO",
     "NYSE MKT",
     "OSL",
     "OTC",
+    "PSE",
     "PSX",
     "SET",
     "SIX",
@@ -45,6 +47,7 @@
     "b3_bdr_etfs": 302,
     "nasdaq_other_listed": 7084,
     "bmv_stock_search": 141,
+    "bmv_capital_trust_search": 16,
     "nasdaq_nordic_copenhagen_shares": 144,
     "nasdaq_nordic_copenhagen_etfs": 1,
     "nasdaq_nordic_helsinki_shares": 194,
@@ -60,6 +63,8 @@
     "lse_instrument_directory": 64,
     "nasdaq_listed": 5417,
     "sec_company_tickers_exchange": 10117,
+    "cboe_canada_listing_directory": 436,
+    "pse_listed_company_directory": 381,
     "psx_listed_companies": 565,
     "psx_symbol_name_daily": 370,
     "set_etf_search": 13,
@@ -139,8 +144,8 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 0,
-      "generated_at": "2026-04-09T11:28:35Z"
+      "rows": 436,
+      "generated_at": "2026-04-09T15:38:57Z"
     },
     "asx_investment_products": {
       "provider": "ASX",
@@ -310,6 +315,22 @@
       "rows": 51,
       "generated_at": "2026-04-09T11:28:35Z"
     },
+    "bme_listed_companies": {
+      "provider": "BME",
+      "reference_scope": "listed_companies_subset",
+      "official": true,
+      "mode": "unknown",
+      "rows": 0,
+      "generated_at": ""
+    },
+    "bme_etf_list": {
+      "provider": "BME",
+      "reference_scope": "listed_companies_subset",
+      "official": true,
+      "mode": "unavailable",
+      "rows": 0,
+      "generated_at": "2026-04-09T16:00:22Z"
+    },
     "bmv_stock_search": {
       "provider": "BMV",
       "reference_scope": "listed_companies_subset",
@@ -317,6 +338,14 @@
       "mode": "network",
       "rows": 141,
       "generated_at": "2026-04-09T13:28:06Z"
+    },
+    "bmv_capital_trust_search": {
+      "provider": "BMV",
+      "reference_scope": "listed_companies_subset",
+      "official": true,
+      "mode": "network",
+      "rows": 16,
+      "generated_at": "2026-04-09T15:31:07Z"
     },
     "nasdaq_nordic_stockholm_shares": {
       "provider": "Nasdaq Nordic",
@@ -478,6 +507,14 @@
       "rows": 370,
       "generated_at": "2026-04-09T11:28:35Z"
     },
+    "pse_listed_company_directory": {
+      "provider": "PSE",
+      "reference_scope": "exchange_directory",
+      "official": true,
+      "mode": "network",
+      "rows": 381,
+      "generated_at": "2026-04-09T16:17:28Z"
+    },
     "sec_company_tickers_exchange": {
       "provider": "SEC",
       "reference_scope": "exchange_directory",
@@ -537,6 +574,9 @@
     "nasdaq_nordic_helsinki_shares": "cache",
     "set_etf_search": "network",
     "nasdaq_nordic_helsinki_shares_search": "network",
-    "bmv_stock_search": "network"
+    "bmv_stock_search": "network",
+    "bmv_capital_trust_search": "network",
+    "bme_etf_list": "unavailable",
+    "pse_listed_company_directory": "network"
   }
 }

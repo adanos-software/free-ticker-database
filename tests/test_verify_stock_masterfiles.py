@@ -1767,6 +1767,41 @@ def test_classify_row_verifies_krx_compact_official_label() -> None:
     assert result["reason"] == "Matched active official listing; official directory uses a compact issuer label."
 
 
+def test_classify_row_verifies_bmv_compact_instrument_label() -> None:
+    row = {
+        "ticker": "EDUCA18",
+        "exchange": "BMV",
+        "asset_type": "Stock",
+        "name": "Fideicomiso Irrevocable No. F/3277 en Banco Invex, S. A. Institución de Banca Múltiple, INVEX Grupo",
+        "country": "Mexico",
+        "country_code": "MX",
+        "isin": "",
+        "sector": "Real Estate",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("BMV", "EDUCA18"): [
+                {
+                    "ticker": "EDUCA18",
+                    "exchange": "BMV",
+                    "name": "EDUCA 18",
+                    "asset_type": "Stock",
+                    "source_key": "bmv_capital_trust_search",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges=set(),
+        partial_covered_exchanges={"BMV"},
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+    assert result["reason"] == "Official directory name is a compact trading label for this listing."
+
+
 def test_classify_row_treats_krx_etfs_as_partial_coverage() -> None:
     row = {
         "ticker": "091220",

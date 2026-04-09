@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.2.0] - 2026-04-09
+
+### Added
+
+- Added official Philippine Stock Exchange coverage via the PSE listed company directory frame feed, including active common, preferred, and ETF listings.
+
+### Changed
+
+- Refreshed all core exports, listing history artifacts, identifier snapshots, and coverage reports to the 2026-04-09 PSE coverage build.
+- Promoted PSE from a missing venue to official full coverage and pulled official names and ISINs into the rebuilt dataset for code-like preferred share rows.
+- Hardened masterfile row deduplication so partial source refreshes no longer fail on `None` values in incoming reference rows.
+
 ## [3.1.0] - 2026-04-09
 
 ### Added

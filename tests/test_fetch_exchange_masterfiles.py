@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import html
 import io
 import json
 import zipfile
@@ -11,9 +12,15 @@ import requests
 import scripts.fetch_exchange_masterfiles as fetch_exchange_masterfiles
 
 from scripts.fetch_exchange_masterfiles import (
+    BME_ETF_LIST_CACHE,
+    BME_LISTED_COMPANIES_CACHE,
+    BMV_CAPITAL_TRUST_SEARCH_CACHE,
     BMV_STOCK_SEARCH_CACHE,
     B3_INSTRUMENTS_EQUITIES_CACHE,
     JSE_INSTRUMENT_SEARCH_CACHE,
+    LEGACY_BME_ETF_LIST_CACHE,
+    LEGACY_BME_LISTED_COMPANIES_CACHE,
+    LEGACY_BMV_CAPITAL_TRUST_SEARCH_CACHE,
     LEGACY_BMV_STOCK_SEARCH_CACHE,
     LEGACY_B3_INSTRUMENTS_EQUITIES_CACHE,
     LEGACY_LSE_COMPANY_REPORTS_CACHE,
@@ -48,6 +55,8 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_b3_instruments_equities,
     fetch_b3_bdr_companies,
     fetch_b3_listed_funds,
+    fetch_bme_reference_rows,
+    fetch_bmv_capital_trust_search,
     fetch_bmv_stock_search,
     fetch_all_sources,
     fetch_krx_etf_finder,
@@ -75,6 +84,8 @@ from scripts.fetch_exchange_masterfiles import (
     infer_jpx_asset_type,
     infer_lse_lookup_asset_type,
     load_b3_instruments_equities_rows,
+    load_bme_reference_rows,
+    load_bmv_capital_trust_search_rows,
     load_bmv_stock_search_rows,
     load_jse_instrument_search_rows,
     NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE,
@@ -89,12 +100,16 @@ from scripts.fetch_exchange_masterfiles import (
     load_set_etf_search_rows,
     load_szse_etf_list_rows,
     merge_reference_rows,
+    dedupe_rows,
     NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
     NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE,
+    PSE_LISTED_COMPANY_DIRECTORY_CACHE,
     load_sec_company_tickers_exchange_payload,
     normalize_source_keys,
     load_tpex_etf_filter_payload,
     load_tmx_etf_screener_payload,
+    load_pse_listed_company_directory_rows,
+    parse_pse_listed_company_directory_html,
     load_tpex_mainboard_quotes_payload,
     parse_tpex_etf_filter,
     lse_instrument_search_target_tickers,
@@ -103,6 +118,7 @@ from scripts.fetch_exchange_masterfiles import (
     parse_b3_bdr_companies_payload,
     parse_b3_instruments_equities_table,
     parse_b3_listed_funds_payload,
+    parse_cboe_canada_listing_directory_payload,
     parse_cboe_canada_listing_directory_html,
     parse_deutsche_boerse_etfs_etps_excel,
     parse_deutsche_boerse_listed_companies_excel,
@@ -124,6 +140,7 @@ from scripts.fetch_exchange_masterfiles import (
     parse_other_listed,
     parse_psx_listed_companies,
     parse_psx_symbol_name_daily,
+    LEGACY_PSE_LISTED_COMPANY_DIRECTORY_CACHE,
     parse_set_listed_companies_html,
     parse_set_quote_search_payload,
     parse_sec_company_tickers_exchange,
@@ -1401,6 +1418,125 @@ def test_parse_cboe_canada_listing_directory_html_maps_supported_security_types(
             "official": "true",
         },
     ]
+
+
+def test_parse_cboe_canada_listing_directory_payload_maps_supported_security_types() -> None:
+    payload = {
+        "data": [
+            {"symbol": "ABXX", "name": "ABXX CORP.", "security": "equity"},
+            {"symbol": "BYLD.B", "name": "BMO YLD ETF", "security": "etf"},
+            {"symbol": "ABCD", "name": "ABC DR", "security": "dr"},
+            {"symbol": "FUND", "name": "Closed End Fund", "security": "cef"},
+            {"symbol": "WARR", "name": "Ignored Warrant", "security": "warrant"},
+        ]
+    }
+
+    rows = parse_cboe_canada_listing_directory_payload(payload, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "ABXX",
+            "name": "ABXX CORP.",
+            "exchange": "NEO",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "BYLD.B",
+            "name": "BMO YLD ETF",
+            "exchange": "NEO",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "BYLD-B",
+            "name": "BMO YLD ETF",
+            "exchange": "NEO",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "ABCD",
+            "name": "ABC DR",
+            "exchange": "NEO",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "FUND",
+            "name": "Closed End Fund",
+            "exchange": "NEO",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_fetch_source_rows_with_mode_uses_cboe_canada_api() -> None:
+    source = MasterfileSource(
+        key="cboe_canada_listing_directory",
+        provider="Cboe Canada",
+        description="Official Cboe Canada listing directory API",
+        source_url="https://www-api.cboe.com/ca/equities/listing-directory-data/",
+        format="cboe_canada_listing_directory_json",
+    )
+
+    class FakeResponse:
+        def __init__(self, payload):
+            self._payload = payload
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, headers=None, timeout=None):
+            self.calls.append(url)
+            return FakeResponse(
+                {
+                    "data": [
+                        {"symbol": "ABXX", "name": "ABXX CORP.", "security": "equity"},
+                        {"symbol": "BYLD.B", "name": "BMO YLD ETF", "security": "etf"},
+                    ]
+                }
+            )
+
+    session = FakeSession()
+    rows, mode = fetch_source_rows_with_mode(source, session=session)
+
+    assert mode == "network"
+    assert [row["ticker"] for row in rows] == ["ABXX", "BYLD.B", "BYLD-B"]
+    assert session.calls == ["https://www-api.cboe.com/ca/equities/listing-directory-data/"]
 
 
 def test_fetch_lse_company_reports_paginates_until_empty(monkeypatch):
@@ -4489,6 +4625,626 @@ def test_fetch_bmv_stock_search_backfills_exact_ticker_gaps(tmp_path, monkeypatc
     ]
 
 
+def test_fetch_bmv_capital_trust_search_backfills_exact_ticker_gaps(tmp_path, monkeypatch) -> None:
+    source = MasterfileSource(
+        key="bmv_capital_trust_search",
+        provider="BMV",
+        description="Official BMV capital-market trust supplement",
+        source_url="https://www.bmv.com.mx/api/searchservice/v1",
+        format="bmv_capital_trust_search_json",
+        reference_scope="listed_companies_subset",
+    )
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,exchange,asset_type,name,isin",
+                "DANHOS13,BMV,Stock,Fibra Danhos,MXCFDA020005",
+                "FCFE18,BMV,Stock,CFECapital,MXFEFC0C0003",
+                "FPLUS16,BMV,Stock,Fibra Plus,",
+                "COXA,BMV,Stock,Cox Energy America SAB de CV,MX01CX0A0002",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "latest_reference_gap_tickers",
+        lambda base_dir, exchanges=None: {"DANHOS13", "FCFE18", "FPLUS16", "COXA"},
+    )
+
+    class FakeResponse:
+        def __init__(self, *, text: str | None = None, payload: object | None = None):
+            self.text = text or ""
+            self._payload = payload
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.get_calls = []
+            self.post_calls = []
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            self.get_calls.append((url, params))
+            if url == fetch_exchange_masterfiles.BMV_MOBILE_QUOTE_KEYS_URL:
+                assert params == {"idBusquedaCotizacion": 2}
+                return FakeResponse(
+                    text=(
+                        'for(;;);({"response":{"clavesCotizacion":['
+                        '{"clave":"DANHOS","serie":"13"},'
+                        '{"clave":"FCFE","serie":"18"},'
+                        '{"clave":"FPLUS","serie":"16"},'
+                        '{"clave":"COXA","serie":"*"}'
+                        ']}})'
+                    )
+                )
+            if url == fetch_exchange_masterfiles.BMV_SEARCH_TOKEN_URL:
+                return FakeResponse(payload={"response": {"access_token": "token-123"}})
+            raise AssertionError(url)
+
+        def post(self, url, headers=None, json=None, timeout=None):
+            self.post_calls.append((url, json))
+            assert url == "https://www.bmv.com.mx/api/searchservice/v1"
+            term = json["payload"]["term"]
+            payloads = {
+                "DANHOS": {
+                    "response": {
+                        "busquedaPanel": {
+                            "busquedaGeneral": {
+                                "instrumentosEmisoras": {
+                                    "instrumentos": {
+                                        "coincidenciaParcialInstrumentos": {
+                                            "emisoras": {
+                                                "hits": [
+                                                    {
+                                                        "_source": {
+                                                            "cve_emisora": "DANHOS",
+                                                            "serie": "13",
+                                                            "descripcion": "FIBRAS CERTIFICADOS INMOBILIARIOS",
+                                                            "mercado": "Capitales",
+                                                            "estatus": "Activa",
+                                                            "instrumento": "DANHOS 13",
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "FCFE": {
+                    "response": {
+                        "busquedaPanel": {
+                            "busquedaGeneral": {
+                                "instrumentosEmisoras": {
+                                    "instrumentos": {
+                                        "coincidenciaParcialInstrumentos": {
+                                            "emisoras": {
+                                                "hits": [
+                                                    {
+                                                        "_source": {
+                                                            "cve_emisora": "FCFE",
+                                                            "serie": "18",
+                                                            "descripcion": "FIDEICOMISOS DE INVERSION EN ENERGIA",
+                                                            "mercado": "Capitales",
+                                                            "estatus": "Activa",
+                                                            "instrumento": "FCFE 18",
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "FPLUS": {
+                    "response": {
+                        "busquedaPanel": {
+                            "busquedaGeneral": {
+                                "instrumentosEmisoras": {
+                                    "instrumentos": {
+                                        "coincidenciaParcialInstrumentos": {
+                                            "emisoras": {
+                                                "hits": [
+                                                    {
+                                                        "_source": {
+                                                            "cve_emisora": "FPLUS",
+                                                            "serie": "16",
+                                                            "descripcion": "FIBRAS CERTIFICADOS INMOBILIARIOS",
+                                                            "mercado": "Capitales",
+                                                            "estatus": "Activa",
+                                                            "instrumento": "FPLUS 16",
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "COXA": {
+                    "response": {
+                        "busquedaPanel": {
+                            "busquedaGeneral": {
+                                "instrumentosEmisoras": {
+                                    "instrumentos": {
+                                        "coincidenciaParcialInstrumentos": {
+                                            "emisoras": {
+                                                "hits": [
+                                                    {
+                                                        "_source": {
+                                                            "cve_emisora": "COXA",
+                                                            "serie": "A",
+                                                            "descripcion": "ACCIONES",
+                                                            "mercado": "Capitales",
+                                                            "estatus": "Activa",
+                                                            "instrumento": "COXA A",
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+            }
+            return FakeResponse(payload=payloads[term])
+
+    session = FakeSession()
+    rows = fetch_bmv_capital_trust_search(
+        source,
+        listings_path=listings_path,
+        verification_dir=tmp_path,
+        session=session,
+    )
+
+    assert rows == [
+        {
+            "source_key": "bmv_capital_trust_search",
+            "provider": "BMV",
+            "source_url": "https://www.bmv.com.mx/api/searchservice/v1",
+            "ticker": "DANHOS13",
+            "name": "DANHOS 13",
+            "exchange": "BMV",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "MXCFDA020005",
+        },
+        {
+            "source_key": "bmv_capital_trust_search",
+            "provider": "BMV",
+            "source_url": "https://www.bmv.com.mx/api/searchservice/v1",
+            "ticker": "FCFE18",
+            "name": "FCFE 18",
+            "exchange": "BMV",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "MXFEFC0C0003",
+        },
+        {
+            "source_key": "bmv_capital_trust_search",
+            "provider": "BMV",
+            "source_url": "https://www.bmv.com.mx/api/searchservice/v1",
+            "ticker": "FPLUS16",
+            "name": "FPLUS 16",
+            "exchange": "BMV",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+        },
+    ]
+    assert session.get_calls == [
+        (fetch_exchange_masterfiles.BMV_MOBILE_QUOTE_KEYS_URL, {"idBusquedaCotizacion": 2}),
+        (fetch_exchange_masterfiles.BMV_SEARCH_TOKEN_URL, None),
+    ]
+    assert session.post_calls == [
+        ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "DANHOS", "term2": "", "termT": "DANHOS", "searchType": "busquedaPanel"}}),
+        ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "FCFE", "term2": "", "termT": "FCFE", "searchType": "busquedaPanel"}}),
+        ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "FPLUS", "term2": "", "termT": "FPLUS", "searchType": "busquedaPanel"}}),
+        ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "COXA", "term2": "", "termT": "COXA", "searchType": "busquedaPanel"}}),
+    ]
+
+
+def test_bme_sources_are_modeled_as_partial_official_coverage() -> None:
+    stock_source = next(item for item in OFFICIAL_SOURCES if item.key == "bme_listed_companies")
+    etf_source = next(item for item in OFFICIAL_SOURCES if item.key == "bme_etf_list")
+
+    assert stock_source.reference_scope == "listed_companies_subset"
+    assert etf_source.reference_scope == "listed_companies_subset"
+
+
+def test_fetch_bme_reference_rows_maps_official_tickers_and_variants() -> None:
+    source = MasterfileSource(
+        key="bme_listed_companies",
+        provider="BME",
+        description="Official BME listed companies directory",
+        source_url="https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+        format="bme_listed_companies_json",
+        reference_scope="listed_companies_subset",
+    )
+
+    class FakeResponse:
+        def __init__(self, payload):
+            self._payload = payload
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.get_calls = []
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            self.get_calls.append((url, params))
+            if url == fetch_exchange_masterfiles.BME_LISTED_COMPANIES_API_URL:
+                assert params == {"tradingSystem": "SIBE", "page": 0, "pageSize": 0}
+                return FakeResponse(
+                    {
+                        "data": [
+                            {"isin": "ES0113900J37", "shareName": "BANCO SANTANDER", "tradingSystem": "SIBE"},
+                            {"isin": "ES0171996095", "shareName": "GRIFOLS CL.A PFD", "tradingSystem": "SIBE"},
+                        ]
+                    }
+                )
+            if url == fetch_exchange_masterfiles.BME_SHARE_DETAILS_INFO_API_URL:
+                payloads = {
+                    "ES0113900J37": {
+                        "isin": "ES0113900J37",
+                        "ticker": "SAN",
+                        "name": "BANCO SANTANDER",
+                        "shortName": "B.SANTANDER",
+                        "tradingSystem": "SIBE",
+                    },
+                    "ES0171996095": {
+                        "isin": "ES0171996095",
+                        "ticker": "GRF.P",
+                        "name": "GRIFOLS, S.A. CL.A PFD",
+                        "shortName": "GRIFOLS A PFD",
+                        "tradingSystem": "SIBE",
+                    },
+                }
+                return FakeResponse(payloads[params["isin"]])
+            raise AssertionError(url)
+
+    session = FakeSession()
+    rows = fetch_bme_reference_rows(source, session=session)
+
+    assert rows == [
+        {
+            "source_key": "bme_listed_companies",
+            "provider": "BME",
+            "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+            "ticker": "SAN",
+            "name": "BANCO SANTANDER",
+            "exchange": "BME",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "ES0113900J37",
+        },
+        {
+            "source_key": "bme_listed_companies",
+            "provider": "BME",
+            "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+            "ticker": "GRF.P",
+            "name": "GRIFOLS, S.A. CL.A PFD",
+            "exchange": "BME",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "ES0171996095",
+        },
+        {
+            "source_key": "bme_listed_companies",
+            "provider": "BME",
+            "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+            "ticker": "GRF-P",
+            "name": "GRIFOLS, S.A. CL.A PFD",
+            "exchange": "BME",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "ES0171996095",
+        },
+    ]
+    assert session.get_calls == [
+        (
+            fetch_exchange_masterfiles.BME_LISTED_COMPANIES_API_URL,
+            {"tradingSystem": "SIBE", "page": 0, "pageSize": 0},
+        ),
+        (
+            fetch_exchange_masterfiles.BME_SHARE_DETAILS_INFO_API_URL,
+            {"isin": "ES0113900J37", "language": "en"},
+        ),
+        (
+            fetch_exchange_masterfiles.BME_SHARE_DETAILS_INFO_API_URL,
+            {"isin": "ES0171996095", "language": "en"},
+        ),
+    ]
+
+
+def test_fetch_bme_reference_rows_maps_official_etfs(tmp_path) -> None:
+    source = MasterfileSource(
+        key="bme_etf_list",
+        provider="BME",
+        description="Official BME ETF directory",
+        source_url="https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+        format="bme_etf_list_json",
+        reference_scope="listed_companies_subset",
+    )
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,exchange,asset_type,name,isin",
+                "BBVAI,BME,ETF,Legacy ETF,ES0105336038",
+                "2INVE,BME,ETF,Legacy inverse ETF,FR0011036268",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    class FakeResponse:
+        def __init__(self, payload):
+            self._payload = payload
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.get_calls = []
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            self.get_calls.append((url, params))
+            if url == fetch_exchange_masterfiles.BME_LISTED_COMPANIES_API_URL:
+                assert params == {"tradingSystem": "ETF", "page": 0, "pageSize": 0}
+                return FakeResponse(
+                    {
+                        "data": [
+                            {
+                                "isin": "ES0105336038",
+                                "shareName": "ACCION IBEX 35 ETF,FI COTIZ,ARM.",
+                                "tradingSystem": "ETF",
+                            },
+                            {
+                                "isin": "FR0011036268",
+                                "shareName": "AMUNDI IBEX DOUBLE INVERSE ETF",
+                                "tradingSystem": "ETF",
+                            },
+                        ]
+                    }
+                )
+            raise AssertionError(url)
+
+    session = FakeSession()
+    rows = fetch_bme_reference_rows(source, listings_path=listings_path, session=session)
+
+    assert rows == [
+        {
+            "source_key": "bme_etf_list",
+            "provider": "BME",
+            "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+            "ticker": "BBVAI",
+            "name": "ACCION IBEX 35 ETF,FI COTIZ,ARM.",
+            "exchange": "BME",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "ES0105336038",
+        },
+        {
+            "source_key": "bme_etf_list",
+            "provider": "BME",
+            "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+            "ticker": "2INVE",
+            "name": "AMUNDI IBEX DOUBLE INVERSE ETF",
+            "exchange": "BME",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "FR0011036268",
+        }
+    ]
+    assert session.get_calls == [
+        (
+            fetch_exchange_masterfiles.BME_LISTED_COMPANIES_API_URL,
+            {"tradingSystem": "ETF", "page": 0, "pageSize": 0},
+        )
+    ]
+
+
+def test_load_bme_reference_rows_falls_back_to_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "bme_listed_companies.json"
+    cache_path.write_text(
+        '[{"ticker":"SAN","name":"BANCO SANTANDER","exchange":"BME","asset_type":"Stock","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "BME_LISTED_COMPANIES_CACHE", cache_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_BME_LISTED_COMPANIES_CACHE",
+        tmp_path / "missing.json",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_bme_reference_rows",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "bme_listed_companies")
+    rows, mode = load_bme_reference_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "SAN",
+            "name": "BANCO SANTANDER",
+            "exchange": "BME",
+            "asset_type": "Stock",
+            "listing_status": "active",
+        }
+    ]
+
+
+def test_parse_pse_listed_company_directory_html_maps_active_securities() -> None:
+    source = MasterfileSource(
+        key="pse_listed_company_directory",
+        provider="PSE",
+        description="Official PSE listed company directory frame",
+        source_url="https://frames.pse.com.ph/listedCompany",
+        format="pse_listed_company_directory_html",
+    )
+    payload = [
+        {
+            "SecuritySymbol": "BDO",
+            "SecurityName": "BDO Unibank, Inc.",
+            "SecurityAlias": "BDO Unibank, Inc.",
+            "SecurityType": "C",
+            "SecurityStatus": "T",
+            "SecurityISIN": "PHY077751022",
+        },
+        {
+            "SecuritySymbol": "PREFA",
+            "SecurityName": "Preferred A",
+            "SecurityType": "P",
+            "SecurityStatus": "V",
+            "SecurityISIN": "",
+        },
+        {
+            "SecuritySymbol": "FMETF",
+            "SecurityName": "First Metro Philippine Equity Exchange Traded Fund Inc.",
+            "SecurityType": "E",
+            "SecurityStatus": "T",
+            "SecurityISIN": "PHY272571498",
+        },
+        {
+            "SecuritySymbol": "NOTE1",
+            "SecurityName": "Debt note",
+            "SecurityType": "D",
+            "SecurityStatus": "T",
+            "SecurityISIN": "PH0000000001",
+        },
+        {
+            "SecuritySymbol": "",
+            "SecurityName": "Missing symbol",
+            "SecurityType": "C",
+            "SecurityStatus": "T",
+            "SecurityISIN": "PH0000000002",
+        },
+    ]
+    text = f'<input id="store-json" type="hidden" value="{html.escape(json.dumps(payload), quote=True)}" />'
+
+    rows = parse_pse_listed_company_directory_html(text, source)
+
+    assert rows == [
+        {
+            "source_key": "pse_listed_company_directory",
+            "provider": "PSE",
+            "source_url": "https://frames.pse.com.ph/listedCompany",
+            "ticker": "BDO",
+            "name": "BDO Unibank, Inc.",
+            "exchange": "PSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "PHY077751022",
+        },
+        {
+            "source_key": "pse_listed_company_directory",
+            "provider": "PSE",
+            "source_url": "https://frames.pse.com.ph/listedCompany",
+            "ticker": "PREFA",
+            "name": "Preferred A",
+            "exchange": "PSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "pse_listed_company_directory",
+            "provider": "PSE",
+            "source_url": "https://frames.pse.com.ph/listedCompany",
+            "ticker": "FMETF",
+            "name": "First Metro Philippine Equity Exchange Traded Fund Inc.",
+            "exchange": "PSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "PHY272571498",
+        },
+    ]
+
+
+def test_load_pse_listed_company_directory_rows_falls_back_to_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "pse_listed_company_directory.json"
+    cache_path.write_text(
+        '[{"ticker":"BDO","name":"BDO Unibank, Inc.","exchange":"PSE","asset_type":"Stock","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "PSE_LISTED_COMPANY_DIRECTORY_CACHE", cache_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_PSE_LISTED_COMPANY_DIRECTORY_CACHE",
+        tmp_path / "missing.json",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_pse_listed_company_directory",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "pse_listed_company_directory")
+    rows, mode = load_pse_listed_company_directory_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "BDO",
+            "name": "BDO Unibank, Inc.",
+            "exchange": "PSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+        }
+    ]
+
+
 def test_parse_nasdaq_nordic_stockholm_etfs_maps_symbol_aliases() -> None:
     payload = {
         "data": {
@@ -4895,6 +5651,39 @@ def test_load_bmv_stock_search_rows_falls_back_to_cache(tmp_path, monkeypatch) -
         {
             "ticker": "AMXB",
             "name": "AMERICA MOVIL, S.A.B. DE C.V.",
+            "exchange": "BMV",
+            "asset_type": "Stock",
+            "listing_status": "active",
+        }
+    ]
+
+
+def test_load_bmv_capital_trust_search_rows_falls_back_to_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "bmv_capital_trust_search.json"
+    cache_path.write_text(
+        '[{"ticker":"DANHOS13","name":"DANHOS 13","exchange":"BMV","asset_type":"Stock","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "BMV_CAPITAL_TRUST_SEARCH_CACHE", cache_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_BMV_CAPITAL_TRUST_SEARCH_CACHE",
+        tmp_path / "missing.json",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_bmv_capital_trust_search",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "bmv_capital_trust_search")
+    rows, mode = load_bmv_capital_trust_search_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "DANHOS13",
+            "name": "DANHOS 13",
             "exchange": "BMV",
             "asset_type": "Stock",
             "listing_status": "active",
@@ -5523,6 +6312,42 @@ def test_merge_reference_rows_replaces_only_selected_sources() -> None:
             "exchange": "NASDAQ",
             "listing_status": "active",
             "reference_scope": "exchange_directory",
+        },
+    ]
+
+
+def test_dedupe_rows_normalizes_none_values_before_sorting() -> None:
+    rows = dedupe_rows(
+        [
+            {
+                "source_key": "source-b",
+                "ticker": None,
+                "exchange": "NYSE",
+                "listing_status": "active",
+                "reference_scope": None,
+            },
+            {
+                "source_key": "source-a",
+                "ticker": "AAPL",
+                "exchange": None,
+                "listing_status": "active",
+            },
+        ]
+    )
+
+    assert rows == [
+        {
+            "source_key": "source-a",
+            "ticker": "AAPL",
+            "exchange": "",
+            "listing_status": "active",
+        },
+        {
+            "source_key": "source-b",
+            "ticker": "",
+            "exchange": "NYSE",
+            "listing_status": "active",
+            "reference_scope": "",
         },
     ]
 

@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 27684,
-    "matched": 18779,
-    "collisions": 4430,
-    "missing": 4475
+    "official_symbols": 28501,
+    "matched": 19065,
+    "collisions": 4700,
+    "missing": 4736
   },
   "exchanges": [
     {
@@ -627,6 +627,147 @@
           "ticker": "ABVX",
           "name": "Abivax SA - American Depositary Shares",
           "exchange": "NASDAQ"
+        }
+      ]
+    },
+    {
+      "exchange": "NEO",
+      "official_symbols": 436,
+      "matched": 196,
+      "collisions": 83,
+      "missing": 157,
+      "collision_examples": [
+        {
+          "ticker": "ABB",
+          "name": "ABB CDR (CAD HEDGED)",
+          "target_exchange": "NEO",
+          "existing_exchanges": [
+            "STO"
+          ]
+        },
+        {
+          "ticker": "ADI",
+          "name": "ADIDAS CDR (CAD HEDGED)",
+          "target_exchange": "NEO",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "ALGO",
+          "name": "LIGHT AI INC.",
+          "target_exchange": "NEO",
+          "existing_exchanges": [
+            "Euronext"
+          ]
+        },
+        {
+          "ticker": "APLY",
+          "name": "APPLE (AAPL) YIELD SHARES PURPOSE ETF",
+          "target_exchange": "NEO",
+          "existing_exchanges": [
+            "NYSE ARCA"
+          ]
+        },
+        {
+          "ticker": "ASMH",
+          "name": "ASML CDR (CAD HEDGED)",
+          "target_exchange": "NEO",
+          "existing_exchanges": [
+            "NYSE ARCA"
+          ]
+        },
+        {
+          "ticker": "AXA",
+          "name": "AXA CDR (CAD HEDGED)",
+          "target_exchange": "NEO",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
+        {
+          "ticker": "BCCC",
+          "name": "GLOBAL X BITCOIN COVERED CALL ETF",
+          "target_exchange": "NEO",
+          "existing_exchanges": [
+            "BATS"
+          ]
+        },
+        {
+          "ticker": "BGDV",
+          "name": "BMO GLOBAL DIVIDEND OPPORTUNITIES FUND",
+          "target_exchange": "NEO",
+          "existing_exchanges": [
+            "NYSE ARCA"
+          ]
+        },
+        {
+          "ticker": "BGIN",
+          "name": "BMO GLOBAL INNOVATORS FUND",
+          "target_exchange": "NEO",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "BNP",
+          "name": "BNP PARIBAS CDR (CAD HEDGED)",
+          "target_exchange": "NEO",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        }
+      ],
+      "missing_examples": [
+        {
+          "ticker": "ALIZ",
+          "name": "ALLIANZ CDR (CAD HEDGED)",
+          "exchange": "NEO"
+        },
+        {
+          "ticker": "ASMD",
+          "name": "AGF U.S. SMALL-MID CAP FUND",
+          "exchange": "NEO"
+        },
+        {
+          "ticker": "ATRB",
+          "name": "AGF TOTAL RETURN BOND FUND",
+          "exchange": "NEO"
+        },
+        {
+          "ticker": "BBVA",
+          "name": "BBVA CDR (CAD HEDGED)",
+          "exchange": "NEO"
+        },
+        {
+          "ticker": "BCCC.U",
+          "name": "GLOBAL X BITCOIN COVERED CALL ETF",
+          "exchange": "NEO"
+        },
+        {
+          "ticker": "BCCL-U",
+          "name": "GLOBAL X ENHANCED BITCOIN COVERED CALL ETF",
+          "exchange": "NEO"
+        },
+        {
+          "ticker": "BCCL.U",
+          "name": "GLOBAL X ENHANCED BITCOIN COVERED CALL ETF",
+          "exchange": "NEO"
+        },
+        {
+          "ticker": "BMWY",
+          "name": "BMW CDR (CAD HEDGED)",
+          "exchange": "NEO"
+        },
+        {
+          "ticker": "BSAN",
+          "name": "SANTANDER CDR (CAD HEDGED)",
+          "exchange": "NEO"
+        },
+        {
+          "ticker": "BYLD.B",
+          "name": "MANULIFE SMART ENHANCED YIELD BOND ETF - UNHEDGED UNITS",
+          "exchange": "NEO"
         }
       ]
     },
@@ -1287,6 +1428,147 @@
           "ticker": "AEBMF",
           "name": "ANADOLU EFES BIRACILIK VE MALT SANAYI A S/ADR",
           "exchange": "OTC"
+        }
+      ]
+    },
+    {
+      "exchange": "PSE",
+      "official_symbols": 381,
+      "matched": 90,
+      "collisions": 187,
+      "missing": 104,
+      "collision_examples": [
+        {
+          "ticker": "AAA",
+          "name": "Asia Amalgamated Holdings Corporation",
+          "target_exchange": "PSE",
+          "existing_exchanges": [
+            "NYSE ARCA"
+          ]
+        },
+        {
+          "ticker": "AB",
+          "name": "Atok-Big Wedge Co., Inc.",
+          "target_exchange": "PSE",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
+          "ticker": "ABA",
+          "name": "AbaCore Capital Holdings, Inc.",
+          "target_exchange": "PSE",
+          "existing_exchanges": [
+            "TSXV"
+          ]
+        },
+        {
+          "ticker": "ABG",
+          "name": "Asiabest Group International Inc.",
+          "target_exchange": "PSE",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
+          "ticker": "ABS",
+          "name": "ABS-CBN Corporation",
+          "target_exchange": "PSE",
+          "existing_exchanges": [
+            "OSL"
+          ]
+        },
+        {
+          "ticker": "AC",
+          "name": "Ayala Corporation",
+          "target_exchange": "PSE",
+          "existing_exchanges": [
+            "Euronext"
+          ]
+        },
+        {
+          "ticker": "ACE",
+          "name": "Acesite (Phils.) Hotel Corporation",
+          "target_exchange": "PSE",
+          "existing_exchanges": [
+            "STO"
+          ]
+        },
+        {
+          "ticker": "ACPA",
+          "name": "Ayala Corporation Preferred Class ``A`` Shares",
+          "target_exchange": "PSE",
+          "existing_exchanges": [
+            "SIX"
+          ]
+        },
+        {
+          "ticker": "ACR",
+          "name": "Alsons Consolidated Resources, Inc.",
+          "target_exchange": "PSE",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
+          "ticker": "AEV",
+          "name": "Aboitiz Equity Ventures, Inc.",
+          "target_exchange": "PSE",
+          "existing_exchanges": [
+            "ASX"
+          ]
+        }
+      ],
+      "missing_examples": [
+        {
+          "ticker": "ACENA",
+          "name": "ACEN Corporation Perpetual Series A Preferred Shares",
+          "exchange": "PSE"
+        },
+        {
+          "ticker": "ACENB",
+          "name": "ACEN Corporation Perpetual Series B Preferred Shares",
+          "exchange": "PSE"
+        },
+        {
+          "ticker": "ACPAR",
+          "name": "Ayala Corporation Non-Voting Perpetual Preferred A Shares",
+          "exchange": "PSE"
+        },
+        {
+          "ticker": "ACPB1",
+          "name": "Ayala Corporation Class ``B`` Series 1 Preferred Shares",
+          "exchange": "PSE"
+        },
+        {
+          "ticker": "ACPB3",
+          "name": "Ayala Corporation Class ``B`` Series 3 Preferred Shares",
+          "exchange": "PSE"
+        },
+        {
+          "ticker": "ACPB4",
+          "name": "Ayala Corporation Class ``B`` Series 4 Preferred Shares",
+          "exchange": "PSE"
+        },
+        {
+          "ticker": "ALCPD",
+          "name": "Arthaland Corporation Series ``D`` Preferred Shares",
+          "exchange": "PSE"
+        },
+        {
+          "ticker": "ALCPF",
+          "name": "Arthaland Corporation Series ``F`` Preferred Shares",
+          "exchange": "PSE"
+        },
+        {
+          "ticker": "ALHI",
+          "name": "Anchor Land Holdings, Inc.",
+          "exchange": "PSE"
+        },
+        {
+          "ticker": "ALTP2",
+          "name": "Alternergy Holdings Corporation Preferred Shares 2 \u2013 Series A",
+          "exchange": "PSE"
         }
       ]
     },

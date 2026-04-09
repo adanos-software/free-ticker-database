@@ -94,6 +94,14 @@ SET_ETF_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "set_etf_search.json"
 LEGACY_SET_ETF_SEARCH_CACHE = MASTERFILES_DIR / "set_etf_search.json"
 BMV_STOCK_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "bmv_stock_search.json"
 LEGACY_BMV_STOCK_SEARCH_CACHE = MASTERFILES_DIR / "bmv_stock_search.json"
+BMV_CAPITAL_TRUST_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "bmv_capital_trust_search.json"
+LEGACY_BMV_CAPITAL_TRUST_SEARCH_CACHE = MASTERFILES_DIR / "bmv_capital_trust_search.json"
+BME_LISTED_COMPANIES_CACHE = MASTERFILE_CACHE_DIR / "bme_listed_companies.json"
+LEGACY_BME_LISTED_COMPANIES_CACHE = MASTERFILES_DIR / "bme_listed_companies.json"
+BME_ETF_LIST_CACHE = MASTERFILE_CACHE_DIR / "bme_etf_list.json"
+LEGACY_BME_ETF_LIST_CACHE = MASTERFILES_DIR / "bme_etf_list.json"
+PSE_LISTED_COMPANY_DIRECTORY_CACHE = MASTERFILE_CACHE_DIR / "pse_listed_company_directory.json"
+LEGACY_PSE_LISTED_COMPANY_DIRECTORY_CACHE = MASTERFILES_DIR / "pse_listed_company_directory.json"
 
 SEC_COMPANY_TICKERS_URL = "https://www.sec.gov/files/company_tickers_exchange.json"
 NASDAQ_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt"
@@ -111,6 +119,7 @@ LSE_INSTRUMENT_DIRECTORY_URL = (
     "?codeName=&search=search&page={page}"
 )
 CBOE_CANADA_LISTING_DIRECTORY_URL = "https://www.cboe.com/ca/equities/market-activity/listing-directory/"
+CBOE_CANADA_LISTING_DIRECTORY_API_URL = "https://www-api.cboe.com/ca/equities/listing-directory-data/"
 ASX_LISTED_URL = "https://www.asx.com.au/asx/research/ASXListedCompanies.csv"
 ASX_FUNDS_STATISTICS_URL = "https://www.asx.com.au/issuers/investment-products/asx-funds-statistics"
 TMX_INTERLISTED_URL = "https://www.tsx.com/files/trading/interlisted-companies.txt"
@@ -177,8 +186,13 @@ NASDAQ_NORDIC_ETF_SOURCE_CONFIG = {
 NASDAQ_NORDIC_SHARE_SEARCH_SOURCE_CONFIG = {
     "nasdaq_nordic_helsinki_shares_search": {"exchange": "HEL", "currency": "EUR"},
 }
-BMV_STOCK_SEARCH_SOURCE_CONFIG = {
+BMV_SEARCH_SOURCE_CONFIG = {
     "bmv_stock_search": {"exchange": "BMV", "quote_search_id": 2},
+    "bmv_capital_trust_search": {"exchange": "BMV", "quote_search_id": 2},
+}
+BME_LISTED_SOURCE_CONFIG = {
+    "bme_listed_companies": {"exchange": "BME", "trading_system": "SIBE", "asset_type": "Stock"},
+    "bme_etf_list": {"exchange": "BME", "trading_system": "ETF", "asset_type": "ETF"},
 }
 TWSE_LISTED_COMPANIES_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
 TWSE_ETF_LIST_URL = "https://www.twse.com.tw/rwd/en/ETF/list"
@@ -187,6 +201,9 @@ SET_ETF_SEARCH_URL = "https://www.set.or.th/en/market/get-quote/etf"
 BMV_MOBILE_QUOTE_KEYS_URL = "https://www.bmv.com.mx/es/movil/JSONClaveCotizacion"
 BMV_SEARCH_TOKEN_URL = "https://www.bmv.com.mx/rest/tokenservice/token"
 BMV_SEARCH_URL = "https://www.bmv.com.mx/api/searchservice/v1"
+BME_MARKET_API_ROOT_URL = "https://apiweb.bolsasymercados.es/Market/"
+BME_LISTED_COMPANIES_API_URL = f"{BME_MARKET_API_ROOT_URL}v1/EQ/ListedCompanies"
+BME_SHARE_DETAILS_INFO_API_URL = f"{BME_MARKET_API_ROOT_URL}v1/EQ/ShareDetailsInfo"
 SZSE_STOCK_LIST_URL = "https://www.szse.cn/market/product/stock/list/index.html"
 SZSE_ETF_LIST_URL = "https://www.szse.cn/market/product/list/etfList/index.html"
 SZSE_REPORT_DATA_URL = "https://www.szse.cn/api/report/ShowReport/data"
@@ -208,10 +225,20 @@ KRX_JSON_DATA_URL = "https://data.krx.co.kr/comm/bldAttendant/getJsonData.cmd"
 PSX_LISTED_COMPANIES_URL = "https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies"
 PSX_COMPANIES_BY_SECTOR_URL = "https://www.psx.com.pk/psx/custom-templates/companiesSearch-sector"
 PSX_DAILY_DOWNLOADS_URL = "https://dps.psx.com.pk/daily-downloads"
+PSE_LISTED_COMPANY_DIRECTORY_PAGE_URL = "https://www.pse.com.ph/listed-company-directory/"
+PSE_LISTED_COMPANY_DIRECTORY_URL = "https://frames.pse.com.ph/listedCompany"
 
 USER_AGENT = "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)"
 SEC_CONTACT_EMAIL = os.environ.get("SEC_CONTACT_EMAIL", "opensource@adanos.software")
 REQUEST_TIMEOUT = 30.0
+PSE_SECURITY_TYPE_TO_ASSET_TYPE = {"C": "Stock", "P": "Stock", "E": "ETF"}
+PSE_ACTIVE_SECURITY_STATUSES = {"T", "V"}
+BMV_CAPITAL_TRUST_DESCRIPTIONS = {
+    "FIBRAS CERTIFICADOS INMOBILIARIOS",
+    "FIDEICOMISOS DE INVERSION EN ENERGIA",
+    "FIDEICOMISOS DE INVERSION EN INFRAESTRUCTURA",
+    "TRACS",
+}
 LSE_UPDATE_OPENER_RE = re.compile(r"UpdateOpener\('(?P<name>(?:\\'|[^'])*)',\s*'(?P<meta>[^']*)'\)")
 CBOE_CANADA_LISTING_DIRECTORY_RE = re.compile(r"CTX\['listingDirectory'\]\s*=\s*(\[[\s\S]*?\]);")
 LSE_INSTRUMENT_SEARCH_MAX_WORKERS = 8
@@ -486,9 +513,9 @@ OFFICIAL_SOURCES = [
     MasterfileSource(
         key="cboe_canada_listing_directory",
         provider="Cboe Canada",
-        description="Official Cboe Canada listing directory",
-        source_url=CBOE_CANADA_LISTING_DIRECTORY_URL,
-        format="cboe_canada_listing_directory_html",
+        description="Official Cboe Canada listing directory API",
+        source_url=CBOE_CANADA_LISTING_DIRECTORY_API_URL,
+        format="cboe_canada_listing_directory_json",
     ),
     MasterfileSource(
         key="asx_investment_products",
@@ -656,11 +683,35 @@ OFFICIAL_SOURCES = [
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
+        key="bme_listed_companies",
+        provider="BME",
+        description="Official BME listed companies directory for the continuous market",
+        source_url=BME_LISTED_COMPANIES_API_URL,
+        format="bme_listed_companies_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="bme_etf_list",
+        provider="BME",
+        description="Official BME ETF directory",
+        source_url=BME_LISTED_COMPANIES_API_URL,
+        format="bme_etf_list_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
         key="bmv_stock_search",
         provider="BMV",
         description="Official BMV stock search supplement for exact ticker gaps",
         source_url=BMV_SEARCH_URL,
         format="bmv_stock_search_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="bmv_capital_trust_search",
+        provider="BMV",
+        description="Official BMV capital-market trust supplement for exact ticker gaps",
+        source_url=BMV_SEARCH_URL,
+        format="bmv_capital_trust_search_json",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -821,6 +872,13 @@ OFFICIAL_SOURCES = [
         source_url=PSX_DAILY_DOWNLOADS_URL,
         format="psx_symbol_name_daily_zip",
         reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="pse_listed_company_directory",
+        provider="PSE",
+        description="Official PSE listed company directory frame",
+        source_url=PSE_LISTED_COMPANY_DIRECTORY_URL,
+        format="pse_listed_company_directory_html",
     ),
     MasterfileSource(
         key="sec_company_tickers_exchange",
@@ -1026,13 +1084,13 @@ def bmv_compose_reference_ticker(clave: str, serie: str) -> str:
     return f"{normalized_clave}{normalized_serie}"
 
 
-def bmv_stock_search_target_rows(
+def bmv_search_target_rows(
     source: MasterfileSource,
     *,
     listings_path: Path = LISTINGS_CSV,
     verification_dir: Path = STOCK_VERIFICATION_DIR,
 ) -> list[dict[str, str]]:
-    config = BMV_STOCK_SEARCH_SOURCE_CONFIG[source.key]
+    config = BMV_SEARCH_SOURCE_CONFIG[source.key]
     target_tickers = latest_reference_gap_tickers(
         verification_dir,
         exchanges={config["exchange"]},
@@ -1313,6 +1371,79 @@ def load_set_etf_search_rows(
 
     ensure_output_dirs()
     SET_ETF_SEARCH_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def parse_pse_listed_company_directory_html(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    match = re.search(r'id="store-json"[^>]*value="([^"]+)"', text)
+    if match is None:
+        raise ValueError("PSE listed company directory JSON payload missing")
+
+    payload = json.loads(unescape(match.group(1)))
+    rows: list[dict[str, str]] = []
+    seen_tickers: set[str] = set()
+    for item in payload:
+        ticker = str(item.get("SecuritySymbol", "")).strip().upper()
+        name = str(item.get("SecurityName", "")).strip() or str(item.get("SecurityAlias", "")).strip()
+        security_type = str(item.get("SecurityType", "")).strip().upper()
+        security_status = str(item.get("SecurityStatus", "")).strip().upper()
+        asset_type = PSE_SECURITY_TYPE_TO_ASSET_TYPE.get(security_type)
+        if not ticker or not name or asset_type is None or security_status not in PSE_ACTIVE_SECURITY_STATUSES:
+            continue
+        if ticker in seen_tickers:
+            continue
+
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "PSE",
+            "asset_type": asset_type,
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        isin = str(item.get("SecurityISIN", "")).strip().upper()
+        if isin:
+            row["isin"] = isin
+        rows.append(row)
+        seen_tickers.add(ticker)
+    return rows
+
+
+def fetch_pse_listed_company_directory(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    response = session.get(
+        source.source_url,
+        headers={
+            "User-Agent": USER_AGENT,
+            "Referer": PSE_LISTED_COMPANY_DIRECTORY_PAGE_URL,
+        },
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    return parse_pse_listed_company_directory_html(response.text, source)
+
+
+def load_pse_listed_company_directory_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_pse_listed_company_directory(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in (PSE_LISTED_COMPANY_DIRECTORY_CACHE, LEGACY_PSE_LISTED_COMPANY_DIRECTORY_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    PSE_LISTED_COMPANY_DIRECTORY_CACHE.write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"
 
 
@@ -1668,14 +1799,221 @@ def fetch_nasdaq_nordic_helsinki_shares_search(
     return rows
 
 
-def fetch_bmv_stock_search(
+def bme_cache_paths(source_key: str) -> tuple[Path, Path]:
+    mapping = {
+        "bme_listed_companies": (BME_LISTED_COMPANIES_CACHE, LEGACY_BME_LISTED_COMPANIES_CACHE),
+        "bme_etf_list": (BME_ETF_LIST_CACHE, LEGACY_BME_ETF_LIST_CACHE),
+    }
+    return mapping[source_key]
+
+
+def bme_ticker_variants(ticker: str) -> list[str]:
+    ticker = ticker.strip().upper()
+    variants = [ticker]
+    if "." in ticker:
+        variants.append(ticker.replace(".", "-"))
+    deduped: list[str] = []
+    seen: set[str] = set()
+    for variant in variants:
+        if not variant or variant in seen:
+            continue
+        seen.add(variant)
+        deduped.append(variant)
+    return deduped
+
+
+def fetch_bme_listed_companies_payload(
+    trading_system: str,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, Any]]:
+    session = session or requests.Session()
+    response = session.get(
+        BME_LISTED_COMPANIES_API_URL,
+        params={"tradingSystem": trading_system, "page": 0, "pageSize": 0},
+        headers={"User-Agent": USER_AGENT},
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    payload = response.json()
+    return payload.get("data") or []
+
+
+def fetch_bme_share_details_info(
+    isin: str,
+    *,
+    session: requests.Session | None = None,
+) -> dict[str, Any]:
+    session = session or requests.Session()
+    response = session.get(
+        BME_SHARE_DETAILS_INFO_API_URL,
+        params={"isin": isin, "language": "en"},
+        headers={"User-Agent": USER_AGENT},
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    return response.json()
+
+
+def build_bme_reference_rows(
+    source: MasterfileSource,
+    detail: dict[str, Any],
+    *,
+    exchange: str,
+    asset_type: str,
+) -> list[dict[str, str]]:
+    ticker = str(detail.get("ticker", "")).strip().upper()
+    name = str(detail.get("name", "")).strip() or str(detail.get("shortName", "")).strip()
+    if not ticker or not name:
+        return []
+
+    rows: list[dict[str, str]] = []
+    for ticker_variant in bme_ticker_variants(ticker):
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker_variant,
+            "name": name,
+            "exchange": exchange,
+            "asset_type": asset_type,
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        isin = str(detail.get("isin", "")).strip().upper()
+        if isin:
+            row["isin"] = isin
+        rows.append(row)
+    return rows
+
+
+def fetch_bme_reference_rows(
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    config = BME_LISTED_SOURCE_CONFIG[source.key]
+    listed_items = fetch_bme_listed_companies_payload(config["trading_system"], session=session)
+    rows: list[dict[str, str]] = []
+    seen_pairs: set[tuple[str, str]] = set()
+
+    def extend_rows(detail: dict[str, Any]) -> None:
+        for row in build_bme_reference_rows(
+            source,
+            detail,
+            exchange=config["exchange"],
+            asset_type=config["asset_type"],
+        ):
+            pair = (row["ticker"], row.get("isin", ""))
+            if pair in seen_pairs:
+                continue
+            seen_pairs.add(pair)
+            rows.append(row)
+
+    if config["asset_type"] == "ETF":
+        listings_by_isin: dict[str, list[dict[str, str]]] = {}
+        for listing_row in load_csv(listings_path):
+            if listing_row.get("exchange") != config["exchange"] or listing_row.get("asset_type") != "ETF":
+                continue
+            isin = listing_row.get("isin", "").strip().upper()
+            if not isin:
+                continue
+            listings_by_isin.setdefault(isin, []).append(listing_row)
+
+        for item in listed_items:
+            isin = str(item.get("isin", "")).strip().upper()
+            official_name = str(item.get("shareName", "")).strip()
+            if not isin or not official_name:
+                continue
+            for listing_row in listings_by_isin.get(isin, []):
+                extend_rows(
+                    {
+                        "ticker": listing_row.get("ticker", ""),
+                        "isin": isin,
+                        "name": official_name,
+                        "tradingSystem": config["trading_system"],
+                    }
+                )
+        return rows
+
+    if session is not None or len(listed_items) <= 1:
+        for item in listed_items:
+            isin = str(item.get("isin", "")).strip().upper()
+            if not isin:
+                continue
+            detail = fetch_bme_share_details_info(isin, session=session)
+            if str(detail.get("tradingSystem", "")).strip().upper() != config["trading_system"]:
+                continue
+            extend_rows(detail)
+        return rows
+
+    max_workers = min(8, len(listed_items))
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = {
+            executor.submit(fetch_bme_share_details_info, str(item.get("isin", "")).strip().upper()): item
+            for item in listed_items
+            if str(item.get("isin", "")).strip()
+        }
+        for future in as_completed(futures):
+            detail = future.result()
+            if str(detail.get("tradingSystem", "")).strip().upper() != config["trading_system"]:
+                continue
+            extend_rows(detail)
+    return rows
+
+
+def load_bme_reference_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_bme_reference_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in bme_cache_paths(source.key):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    bme_cache_paths(source.key)[0].write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def build_bmv_reference_row(
+    source: MasterfileSource,
+    listing_row: dict[str, str],
+    *,
+    name: str,
+    exchange: str,
+) -> dict[str, str]:
+    row = {
+        "source_key": source.key,
+        "provider": source.provider,
+        "source_url": source.source_url,
+        "ticker": listing_row.get("ticker", "").strip().upper(),
+        "name": name,
+        "exchange": exchange,
+        "asset_type": "Stock",
+        "listing_status": "active",
+        "reference_scope": source.reference_scope,
+        "official": "true",
+    }
+    isin = listing_row.get("isin", "").strip()
+    if isin:
+        row["isin"] = isin
+    return row
+
+
+def fetch_bmv_exact_search_matches(
     source: MasterfileSource,
     *,
     listings_path: Path = LISTINGS_CSV,
     verification_dir: Path = STOCK_VERIFICATION_DIR,
     session: requests.Session | None = None,
-) -> list[dict[str, str]]:
-    config = BMV_STOCK_SEARCH_SOURCE_CONFIG[source.key]
+) -> list[tuple[dict[str, str], dict[str, Any]]]:
+    config = BMV_SEARCH_SOURCE_CONFIG[source.key]
     session = session or requests.Session()
     quote_response = session.get(
         BMV_MOBILE_QUOTE_KEYS_URL,
@@ -1704,9 +2042,9 @@ def fetch_bmv_stock_search(
 
     search_headers = {"Authorization": f"Bearer {access_token}", "Content-Type": "application/json"}
     cached_hits_by_clave: dict[str, list[dict[str, Any]]] = {}
-    rows: list[dict[str, str]] = []
+    matches: list[tuple[dict[str, str], dict[str, Any]]] = []
 
-    for listing_row in bmv_stock_search_target_rows(
+    for listing_row in bmv_search_target_rows(
         source,
         listings_path=listings_path,
         verification_dir=verification_dir,
@@ -1754,40 +2092,55 @@ def fetch_bmv_stock_search(
                         stack.extend(current)
                 cached_hits_by_clave[clave] = hits
 
-        for hit in cached_hits_by_clave[clave]:
-            hit_clave = str(hit.get("cve_emisora", "")).strip().upper()
-            hit_serie = str(hit.get("serie", "")).strip().upper()
-            descripcion = str(hit.get("descripcion", "")).strip().upper()
-            mercado = str(hit.get("mercado", "")).strip().upper()
-            estatus = str(hit.get("estatus", "")).strip().upper()
-            official_name = str(hit.get("razon_social", "")).strip()
-            if hit_clave != clave or hit_serie != serie:
-                continue
-            if estatus != "ACTIVA":
-                continue
-            if mercado not in {"CAPITALES", "GLOBAL"}:
-                continue
-            if not descripcion.startswith("ACCIONES") or "SOCIEDADES DE INVERSION" in descripcion:
-                continue
-            if not official_name:
-                continue
-            row = {
-                "source_key": source.key,
-                "provider": source.provider,
-                "source_url": source.source_url,
-                "ticker": listing_ticker,
-                "name": official_name,
-                "exchange": config["exchange"],
-                "asset_type": "Stock",
-                "listing_status": "active",
-                "reference_scope": source.reference_scope,
-                "official": "true",
-            }
-            isin = listing_row.get("isin", "").strip()
-            if isin:
-                row["isin"] = isin
-            rows.append(row)
-            break
+        exact_hit = next(
+            (
+                hit
+                for hit in cached_hits_by_clave[clave]
+                if str(hit.get("cve_emisora", "")).strip().upper() == clave
+                and str(hit.get("serie", "")).strip().upper() == serie
+            ),
+            None,
+        )
+        if exact_hit is not None:
+            matches.append((listing_row, exact_hit))
+    return matches
+
+
+def fetch_bmv_stock_search(
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    verification_dir: Path = STOCK_VERIFICATION_DIR,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    config = BMV_SEARCH_SOURCE_CONFIG[source.key]
+    rows: list[dict[str, str]] = []
+    for listing_row, hit in fetch_bmv_exact_search_matches(
+        source,
+        listings_path=listings_path,
+        verification_dir=verification_dir,
+        session=session,
+    ):
+        descripcion = str(hit.get("descripcion", "")).strip().upper()
+        mercado = str(hit.get("mercado", "")).strip().upper()
+        estatus = str(hit.get("estatus", "")).strip().upper()
+        official_name = str(hit.get("razon_social", "")).strip()
+        if estatus != "ACTIVA":
+            continue
+        if mercado not in {"CAPITALES", "GLOBAL"}:
+            continue
+        if not descripcion.startswith("ACCIONES") or "SOCIEDADES DE INVERSION" in descripcion:
+            continue
+        if not official_name:
+            continue
+        rows.append(
+            build_bmv_reference_row(
+                source,
+                listing_row,
+                name=official_name,
+                exchange=config["exchange"],
+            )
+        )
     return rows
 
 
@@ -1805,6 +2158,57 @@ def load_bmv_stock_search_rows(
 
     ensure_output_dirs()
     BMV_STOCK_SEARCH_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def fetch_bmv_capital_trust_search(
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    verification_dir: Path = STOCK_VERIFICATION_DIR,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    config = BMV_SEARCH_SOURCE_CONFIG[source.key]
+    rows: list[dict[str, str]] = []
+    for listing_row, hit in fetch_bmv_exact_search_matches(
+        source,
+        listings_path=listings_path,
+        verification_dir=verification_dir,
+        session=session,
+    ):
+        descripcion = str(hit.get("descripcion", "")).strip().upper()
+        mercado = str(hit.get("mercado", "")).strip().upper()
+        estatus = str(hit.get("estatus", "")).strip().upper()
+        instrumento = str(hit.get("instrumento", "")).strip()
+        if estatus != "ACTIVA" or mercado != "CAPITALES":
+            continue
+        if descripcion not in BMV_CAPITAL_TRUST_DESCRIPTIONS or not instrumento:
+            continue
+        rows.append(
+            build_bmv_reference_row(
+                source,
+                listing_row,
+                name=instrumento,
+                exchange=config["exchange"],
+            )
+        )
+    return rows
+
+
+def load_bmv_capital_trust_search_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_bmv_capital_trust_search(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in (BMV_CAPITAL_TRUST_SEARCH_CACHE, LEGACY_BMV_CAPITAL_TRUST_SEARCH_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    BMV_CAPITAL_TRUST_SEARCH_CACHE.write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"
 
 
@@ -2625,17 +3029,19 @@ def parse_lse_company_reports_html(text: str, source: MasterfileSource) -> list[
     return rows
 
 
-def parse_cboe_canada_listing_directory_html(text: str, source: MasterfileSource) -> list[dict[str, str]]:
-    match = CBOE_CANADA_LISTING_DIRECTORY_RE.search(text)
-    if not match:
-        return []
-    try:
-        payload = json.loads(match.group(1))
-    except json.JSONDecodeError:
+def parse_cboe_canada_listing_directory_payload(
+    payload: dict[str, Any] | list[dict[str, Any]],
+    source: MasterfileSource,
+) -> list[dict[str, str]]:
+    if isinstance(payload, dict):
+        records = payload.get("data") or []
+    elif isinstance(payload, list):
+        records = payload
+    else:
         return []
     rows: list[dict[str, str]] = []
     seen: set[tuple[str, str, str]] = set()
-    for record in payload:
+    for record in records:
         ticker = str(record.get("symbol") or "").strip().upper()
         name = str(record.get("name") or "").strip()
         security = str(record.get("security") or "").strip().lower()
@@ -2672,6 +3078,17 @@ def parse_cboe_canada_listing_directory_html(text: str, source: MasterfileSource
                 }
             )
     return rows
+
+
+def parse_cboe_canada_listing_directory_html(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    match = CBOE_CANADA_LISTING_DIRECTORY_RE.search(text)
+    if not match:
+        return []
+    try:
+        payload = json.loads(match.group(1))
+    except json.JSONDecodeError:
+        return []
+    return parse_cboe_canada_listing_directory_payload(payload, source)
 
 
 class _TableParser(HTMLParser):
@@ -5000,6 +5417,9 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return parse_asx_listed_companies(text, source)
     if source.format == "asx_investment_products_excel":
         return fetch_asx_investment_products(source, session=session)
+    if source.format == "cboe_canada_listing_directory_json":
+        payload = fetch_json(source.source_url, session=session)
+        return parse_cboe_canada_listing_directory_payload(payload, source), "network"
     if source.format == "cboe_canada_listing_directory_html":
         text = fetch_text(source.source_url, session=session)
         return parse_cboe_canada_listing_directory_html(text, source)
@@ -5023,6 +5443,8 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return fetch_jse_exchange_traded_product_rows(source, session=session)
     if source.format == "jse_instrument_search_html":
         return fetch_jse_instrument_search_rows(source, session=session)
+    if source.format in {"bme_listed_companies_json", "bme_etf_list_json"}:
+        return fetch_bme_reference_rows(source, session=session)
     if source.format == "euronext_equities_semicolon_csv":
         text = fetch_text(source.source_url, session=session)
         return parse_euronext_equities_download(text, source)
@@ -5090,6 +5512,8 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return fetch_psx_listed_companies(source, session=session)
     if source.format == "psx_symbol_name_daily_zip":
         return fetch_psx_symbol_name_daily(source, session=session)
+    if source.format == "pse_listed_company_directory_html":
+        return fetch_pse_listed_company_directory(source, session=session)
     if source.format == "sec_company_tickers_exchange_json":
         payload = fetch_json(source.source_url, session=session)
         return parse_sec_company_tickers_exchange(payload, source)
@@ -5120,6 +5544,11 @@ def fetch_source_rows_with_mode(
         if rows is None:
             raise requests.RequestException("B3 instruments equities unavailable")
         return rows, mode
+    if source.format == "cboe_canada_listing_directory_json":
+        return parse_cboe_canada_listing_directory_payload(
+            fetch_json(source.source_url, session=session),
+            source,
+        ), "network"
     if source.format == "sec_company_tickers_exchange_json":
         payload, mode = load_sec_company_tickers_exchange_payload(session=session)
         if payload is None:
@@ -5140,10 +5569,20 @@ def fetch_source_rows_with_mode(
         if rows is None:
             raise requests.RequestException("SET ETF search unavailable")
         return rows, mode
+    if source.format == "pse_listed_company_directory_html":
+        rows, mode = load_pse_listed_company_directory_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("PSE listed company directory unavailable")
+        return rows, mode
     if source.format == "bmv_stock_search_json":
         rows, mode = load_bmv_stock_search_rows(source, session=session)
         if rows is None:
             raise requests.RequestException("BMV stock search unavailable")
+        return rows, mode
+    if source.format == "bmv_capital_trust_search_json":
+        rows, mode = load_bmv_capital_trust_search_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("BMV capital trust search unavailable")
         return rows, mode
     if source.format == "szse_etf_list_json":
         rows, mode = load_szse_etf_list_rows(source, session=session)
@@ -5154,6 +5593,11 @@ def fetch_source_rows_with_mode(
         rows, mode = load_jse_exchange_traded_product_rows(source, session=session)
         if rows is None:
             raise requests.RequestException(f"{source.provider} {source.key} workbook unavailable")
+        return rows, mode
+    if source.format in {"bme_listed_companies_json", "bme_etf_list_json"}:
+        rows, mode = load_bme_reference_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException(f"BME reference rows unavailable for {source.key}")
         return rows, mode
     if source.format == "jse_instrument_search_html":
         rows, mode = load_jse_instrument_search_rows(source, session=session)
@@ -5206,18 +5650,38 @@ def fetch_source_rows_with_mode(
     return fetch_source_rows(source, session=session), "network"
 
 
+def normalized_reference_row(row: dict[str, Any]) -> dict[str, str]:
+    normalized: dict[str, str] = {}
+    for key, value in row.items():
+        if value is None:
+            normalized[key] = ""
+        elif isinstance(value, str):
+            normalized[key] = value
+        else:
+            normalized[key] = str(value)
+    return normalized
+
+
 def dedupe_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
-    deduped: dict[tuple[str, str, str, str], dict[str, str]] = {}
-    for row in rows:
+    deduped: dict[tuple[str, str, str, str, str], dict[str, str]] = {}
+    for raw_row in rows:
+        row = normalized_reference_row(raw_row)
         key = (
-            row["source_key"],
-            row["ticker"],
-            row["exchange"],
-            row["listing_status"],
+            row.get("source_key", ""),
+            row.get("ticker", ""),
+            row.get("exchange", ""),
+            row.get("listing_status", ""),
             row.get("reference_scope", "exchange_directory"),
         )
         deduped[key] = row
-    return sorted(deduped.values(), key=lambda row: (row["exchange"], row["ticker"], row["source_key"]))
+    return sorted(
+        deduped.values(),
+        key=lambda row: (
+            row.get("exchange", ""),
+            row.get("ticker", ""),
+            row.get("source_key", ""),
+        ),
+    )
 
 
 def utc_now_iso() -> str:

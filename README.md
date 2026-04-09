@@ -9,14 +9,14 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 55
 
 | Metric | Value |
 |---|---|
-| **Total tickers** | 55,631 |
-| Stocks | 41,202 |
+| **Total tickers** | 55,616 |
+| Stocks | 41,187 |
 | ETFs | 14,429 |
 | Exchanges | 68 |
 | Countries | 68 |
-| ISIN coverage | 38,217 (68.7%) |
+| ISIN coverage | 38,235 (68.7%) |
 | Sector coverage | 33,546 (60.3%) |
-| Total aliases | 87,609 |
+| Total aliases | 87,612 |
 
 ## Formats
 
@@ -120,9 +120,9 @@ This is the full listing-level export for downstream systems that want every ven
 ```json
 {
   "_meta": {
-    "version": "3.1.0",
-    "built_at": "2026-04-09T10:03:57Z",
-    "total_tickers": 55631
+    "version": "3.2.0",
+    "built_at": "2026-04-09T16:42:10Z",
+    "total_tickers": 55616
   },
   "tickers": [
     {
@@ -140,7 +140,7 @@ This is the full listing-level export for downstream systems that want every ven
 }
 ```
 
-JSON outputs use an envelope with a `_meta` block and a `tickers` array as of version `3.1.0`.
+JSON outputs use an envelope with a `_meta` block and a `tickers` array as of version `3.2.0`.
 
 ### tickers.db (SQLite)
 
