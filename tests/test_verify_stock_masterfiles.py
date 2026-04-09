@@ -296,6 +296,41 @@ def test_classify_row_downgrades_tpex_trading_label_to_reference_gap() -> None:
     assert result["reason"] == "Only low-confidence issuer reference evidence exists for this listing."
 
 
+def test_classify_row_verifies_tpex_etf_filter_match() -> None:
+    row = {
+        "ticker": "00679B",
+        "exchange": "TPEX",
+        "asset_type": "ETF",
+        "name": "Yuanta U.S. Treasury 20+ Year Bond ETF",
+        "country": "Taiwan",
+        "country_code": "TW",
+        "isin": "TW00000679B0",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("TPEX", "00679B"): [
+                {
+                    "ticker": "00679B",
+                    "exchange": "TPEX",
+                    "name": "Yuanta U.S. Treasury 20+ Year Bond ETF",
+                    "asset_type": "ETF",
+                    "source_key": "tpex_etf_filter",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={"00679B": [{"ticker": "00679B", "exchange": "TPEX", "name": "Yuanta U.S. Treasury 20+ Year Bond ETF", "asset_type": "ETF"}]},
+        covered_exchanges=set(),
+        partial_covered_exchanges={"TPEX"},
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+    assert result["reason"] == "Matched active official exchange directory listing."
+
+
 def test_classify_row_non_active_official() -> None:
     row = {
         "ticker": "ATEST",
@@ -1554,7 +1589,7 @@ def test_classify_row_downgrades_six_name_mismatch_to_reference_gap() -> None:
     assert result["reason"] == "Only low-confidence issuer reference evidence exists for this listing."
 
 
-def test_classify_row_downgrades_six_etf_name_mismatch_to_reference_gap() -> None:
+def test_classify_row_verifies_exact_six_etf_product_match() -> None:
     row = {
         "ticker": "27IT",
         "exchange": "SIX",
@@ -1585,8 +1620,47 @@ def test_classify_row_downgrades_six_etf_name_mismatch_to_reference_gap() -> Non
         partial_covered_exchanges={"SIX"},
         identifier_map={},
     )
-    assert result["status"] == "reference_gap"
-    assert result["reason"] == "Only low-confidence issuer reference evidence exists for this listing."
+    assert result["status"] == "verified"
+    assert result["reason"] == "Matched active official SIX fund product listing."
+
+
+def test_classify_row_verifies_same_exchange_isin_match() -> None:
+    row = {
+        "ticker": "H50EE",
+        "exchange": "SIX",
+        "asset_type": "ETF",
+        "name": "HSBC EURO STOXX 50 UCITS ETF",
+        "country": "Ireland",
+        "country_code": "IE",
+        "isin": "IE00B4K6B022",
+        "sector": "Developed Markets",
+    }
+    result = classify_row(
+        row,
+        active_by_key={},
+        any_by_key={},
+        active_by_ticker={},
+        active_by_exchange_isin={
+            ("SIX", "IE00B4K6B022"): [
+                {
+                    "ticker": "H50EEUR",
+                    "exchange": "SIX",
+                    "name": "HSBC EURO STOXX 50 UCITS ETF",
+                    "asset_type": "ETF",
+                    "source_key": "six_etf_products",
+                    "listing_status": "active",
+                    "isin": "IE00B4K6B022",
+                }
+            ]
+        },
+        covered_exchanges=set(),
+        partial_covered_exchanges={"SIX"},
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+    assert result["reason"] == "Matched active official exchange reference via same-exchange ISIN."
+    assert result["official_reference_name"] == "HSBC EURO STOXX 50 UCITS ETF"
+    assert result["official_reference_source"] == "six_etf_products"
 
 
 def test_classify_row_downgrades_six_peer_collision_to_reference_gap() -> None:

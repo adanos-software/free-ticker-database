@@ -9,14 +9,14 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 55
 
 | Metric | Value |
 |---|---|
-| **Total tickers** | 55,760 |
-| Stocks | 41,206 |
-| ETFs | 14,554 |
+| **Total tickers** | 55,636 |
+| Stocks | 41,207 |
+| ETFs | 14,429 |
 | Exchanges | 68 |
 | Countries | 68 |
-| ISIN coverage | 38,226 (68.6%) |
-| Sector coverage | 33,596 (60.3%) |
-| Total aliases | 87,661 |
+| ISIN coverage | 38,139 (68.6%) |
+| Sector coverage | 33,550 (60.3%) |
+| Total aliases | 87,536 |
 
 ## Formats
 
@@ -26,24 +26,24 @@ Choose the format that fits your use case:
 |---|---|---|
 | [`data/tickers.csv`](data/tickers.csv) | 4.9 MB | Excel, spreadsheets, quick lookups |
 | [`data/listings.csv`](data/listings.csv) | 6.1 MB | Listing-keyed export without global ticker ambiguity |
-| [`data/tickers.json`](data/tickers.json) | 11.0 MB | Web apps, APIs |
+| [`data/tickers.json`](data/tickers.json) | 10.9 MB | Web apps, APIs |
 | [`data/tickers.parquet`](data/tickers.parquet) | 2.5 MB | Pandas, data science |
-| [`data/tickers.db`](data/tickers.db) | 27.2 MB | SQL queries, local apps |
+| [`data/tickers.db`](data/tickers.db) | 27.1 MB | SQL queries, local apps |
 | [`data/aliases.csv`](data/aliases.csv) | 2.2 MB | Alias/name resolution |
-| [`data/identifiers.csv`](data/identifiers.csv) | 942 KB | ISIN/WKN lookups |
-| [`data/cross_listings.csv`](data/cross_listings.csv) | 312 KB | Cross-listed securities |
+| [`data/identifiers.csv`](data/identifiers.csv) | 938 KB | ISIN/WKN lookups |
+| [`data/cross_listings.csv`](data/cross_listings.csv) | 313 KB | Cross-listed securities |
 
 Additional reference artifacts:
 
 | File | Size | Best for |
 |---|---|---|
 | [`data/identifiers_extended.csv`](data/identifiers_extended.csv) | 2.1 MB | FIGI/CIK/LEI enrichment snapshot |
-| [`data/listing_index.csv`](data/listing_index.csv) | 5.1 MB | Listing-keyed identity/export bridge |
-| [`data/masterfiles/reference.csv`](data/masterfiles/reference.csv) | 5.9 MB | Official exchange-masterfile reference rows |
-| [`data/masterfiles/supplemental_listings.csv`](data/masterfiles/supplemental_listings.csv) | 1002 KB | Safe official listings added to the core export |
-| [`data/history/latest_snapshot.csv`](data/history/latest_snapshot.csv) | 6.9 MB | Current listing-status baseline |
-| [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | 354 KB | Machine-readable coverage metrics |
-| [`data/reports/masterfile_collision_report.json`](data/reports/masterfile_collision_report.json) | 39 KB | Official-symbol gaps blocked by cross-exchange collisions |
+| [`data/listing_index.csv`](data/listing_index.csv) | 5.0 MB | Listing-keyed identity/export bridge |
+| [`data/masterfiles/reference.csv`](data/masterfiles/reference.csv) | 21.5 MB | Official exchange-masterfile reference rows |
+| [`data/masterfiles/supplemental_listings.csv`](data/masterfiles/supplemental_listings.csv) | 1.2 MB | Safe official listings added to the core export |
+| [`data/history/latest_snapshot.csv`](data/history/latest_snapshot.csv) | 6.8 MB | Current listing-status baseline |
+| [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | 351 KB | Machine-readable coverage metrics |
+| [`data/reports/masterfile_collision_report.json`](data/reports/masterfile_collision_report.json) | 41 KB | Official-symbol gaps blocked by cross-exchange collisions |
 
 ### tickers.csv (flat, Excel-friendly, one row per security)
 
@@ -120,9 +120,9 @@ This is the full listing-level export for downstream systems that want every ven
 ```json
 {
   "_meta": {
-    "version": "3.0.0",
-    "built_at": "2026-04-08T14:04:49Z",
-    "total_tickers": 55920
+    "version": "3.1.0",
+    "built_at": "2026-04-09T09:29:12Z",
+    "total_tickers": 55636
   },
   "tickers": [
     {
@@ -140,7 +140,7 @@ This is the full listing-level export for downstream systems that want every ven
 }
 ```
 
-JSON outputs use an envelope with a `_meta` block and a `tickers` array as of version `3.0.0`.
+JSON outputs use an envelope with a `_meta` block and a `tickers` array as of version `3.1.0`.
 
 ### tickers.db (SQLite)
 
@@ -155,7 +155,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (55,920 rows) + `aliases` (87,735 rows) + `cross_listings` (8,655 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
+Tables: `tickers` (55,636 rows) + `aliases` (87,536 rows) + `cross_listings` (8,658 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
 
 ## Schema
 
@@ -190,7 +190,7 @@ Tables: `tickers` (55,920 rows) + `aliases` (87,735 rows) + `cross_listings` (8,
 | SZSE | 3,096 | Shenzhen Stock Exchange |
 | XETRA | 2,086 | Deutsche Boerse |
 | SSE | 2,811 | Shanghai Stock Exchange |
-| NYSE | 2,054 | New York Stock Exchange |
+| NYSE | 2,055 | New York Stock Exchange |
 | NYSE ARCA | 2,595 | NYSE ARCA (ETFs) |
 | KRX | 1,789 | Korea Exchange |
 | TSX | 1,728 | Toronto Stock Exchange |

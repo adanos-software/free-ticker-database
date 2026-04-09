@@ -1,5 +1,23 @@
 # Changelog
 
+## [3.1.0] - 2026-04-09
+
+### Added
+
+- Added official TPEX ETF coverage via the TPEx ETF InfoHub export.
+- Added a TMX GraphQL ETF fallback/merge path so TSX/TSXV ETF reference coverage no longer depends on a single screener response shape.
+
+### Changed
+
+- Refreshed all core exports, listing history artifacts, identifier snapshots, and coverage reports to the 2026-04-09 build.
+- Prefer current official TMX ETF listings over stale same-venue duplicate fund rows when the product identity already matches on the exchange.
+- Extended verification to accept same-exchange ISIN matches and official SIX ETF/ETP fund products where the reference source is authoritative.
+
+### Fixed
+
+- Fixed TPEX ETF parsing for numeric bond-style symbols such as `00679B`.
+- Reduced TSX ETF reference gaps caused by stale legacy symbols that still pointed to the same underlying fund product.
+
 ## [3.0.0] - 2026-04-07
 
 ### Breaking

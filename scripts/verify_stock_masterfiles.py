@@ -174,12 +174,14 @@ def load_reference_maps(
     dict[tuple[str, str], list[dict[str, str]]],
     dict[tuple[str, str], list[dict[str, str]]],
     dict[str, list[dict[str, str]]],
+    dict[tuple[str, str], list[dict[str, str]]],
     set[str],
     set[str],
 ]:
     active_by_key: dict[tuple[str, str], list[dict[str, str]]] = defaultdict(list)
     any_by_key: dict[tuple[str, str], list[dict[str, str]]] = defaultdict(list)
     active_by_ticker: dict[str, list[dict[str, str]]] = defaultdict(list)
+    active_by_exchange_isin: dict[tuple[str, str], list[dict[str, str]]] = defaultdict(list)
     covered_exchanges: set[str] = set()
     partial_covered_exchanges: set[str] = set()
 
@@ -201,11 +203,15 @@ def load_reference_maps(
             continue
         active_by_key[key].append(row)
         active_by_ticker[ticker].append(row)
+        isin = row.get("isin", "").strip().upper()
+        if isin:
+            active_by_exchange_isin[(exchange, isin)].append(row)
 
     return (
         dict(active_by_key),
         dict(any_by_key),
         dict(active_by_ticker),
+        dict(active_by_exchange_isin),
         covered_exchanges,
         partial_covered_exchanges - covered_exchanges,
     )
@@ -259,12 +265,26 @@ def load_tmx_root_reference_rows(
     return list(active_by_key.get((exchange, root_ticker), []))
 
 
+def load_same_exchange_isin_reference_rows(
+    row: dict[str, str],
+    active_by_exchange_isin: dict[tuple[str, str], list[dict[str, str]]] | None,
+) -> list[dict[str, str]]:
+    if not active_by_exchange_isin:
+        return []
+    exchange = row.get("exchange", "")
+    isin = row.get("isin", "").strip().upper()
+    if not exchange or not isin:
+        return []
+    return list(active_by_exchange_isin.get((exchange, isin), []))
+
+
 def classify_row(
     row: dict[str, str],
     *,
     active_by_key: dict[tuple[str, str], list[dict[str, str]]],
     any_by_key: dict[tuple[str, str], list[dict[str, str]]],
     active_by_ticker: dict[str, list[dict[str, str]]],
+    active_by_exchange_isin: dict[tuple[str, str], list[dict[str, str]]] | None = None,
     covered_exchanges: set[str],
     partial_covered_exchanges: set[str],
     identifier_map: dict[str, dict[str, str]],
@@ -312,6 +332,14 @@ def classify_row(
             ):
                 status = "reference_gap"
                 reason = "Official reference only exposes a generic ETP placeholder name."
+            elif (
+                exchange == "SIX"
+                and row.get("asset_type") == "ETF"
+                and source_keys
+                and source_keys <= {"six_etf_products", "six_etp_products"}
+            ):
+                status = "verified"
+                reason = "Matched active official SIX fund product listing."
             elif (
                 row.get("asset_type") == "Stock"
                 and exchange in ABBREVIATED_OFFICIAL_LABEL_EXCHANGES
@@ -377,8 +405,23 @@ def classify_row(
             status = "reference_gap"
             reason = "Only low-confidence asset_type evidence exists for this listing."
     else:
+        same_exchange_isin_rows = load_same_exchange_isin_reference_rows(row, active_by_exchange_isin)
         tmx_root_reference_rows = load_tmx_root_reference_rows(row, active_by_key)
-        if row.get("asset_type") == "ETF" and tmx_root_reference_rows:
+        if same_exchange_isin_rows:
+            same_type_isin_rows = [
+                candidate
+                for candidate in same_exchange_isin_rows
+                if candidate.get("asset_type") == row.get("asset_type")
+            ]
+            if same_type_isin_rows:
+                preferred_reference = choose_preferred_reference(same_type_isin_rows, ticker)
+                reference_name = preferred_reference.get("name", "")
+                reference_source = preferred_reference.get("source_key", "")
+                status = "verified"
+                reason = "Matched active official exchange reference via same-exchange ISIN."
+        if status == "verified":
+            pass
+        elif row.get("asset_type") == "ETF" and tmx_root_reference_rows:
             same_type_root_rows = [
                 candidate
                 for candidate in tmx_root_reference_rows
@@ -553,7 +596,7 @@ def main(argv: list[str] | None = None) -> None:
         rows = rows[: args.limit]
     output_dir = args.output_dir or DEFAULT_OUTPUT_DIR_BY_ASSET_TYPE[args.asset_type]
 
-    active_by_key, any_by_key, active_by_ticker, covered_exchanges, partial_covered_exchanges = load_reference_maps(
+    active_by_key, any_by_key, active_by_ticker, active_by_exchange_isin, covered_exchanges, partial_covered_exchanges = load_reference_maps(
         args.reference_csv
     )
     identifier_map = load_identifier_map(args.identifiers_csv)
@@ -563,6 +606,7 @@ def main(argv: list[str] | None = None) -> None:
             active_by_key=active_by_key,
             any_by_key=any_by_key,
             active_by_ticker=active_by_ticker,
+            active_by_exchange_isin=active_by_exchange_isin,
             covered_exchanges=covered_exchanges,
             partial_covered_exchanges=partial_covered_exchanges,
             identifier_map=identifier_map,

@@ -48,6 +48,8 @@ TMX_ETF_SCREENER_CACHE = MASTERFILE_CACHE_DIR / "tmx_etf_screener.json"
 LEGACY_TMX_ETF_SCREENER_CACHE = MASTERFILES_DIR / "tmx_etf_screener.json"
 TPEX_MAINBOARD_QUOTES_CACHE = MASTERFILE_CACHE_DIR / "tpex_mainboard_daily_close_quotes.json"
 LEGACY_TPEX_MAINBOARD_QUOTES_CACHE = MASTERFILES_DIR / "tpex_mainboard_daily_close_quotes.json"
+TPEX_ETF_FILTER_CACHE = MASTERFILE_CACHE_DIR / "tpex_etf_filter.json"
+LEGACY_TPEX_ETF_FILTER_CACHE = MASTERFILES_DIR / "tpex_etf_filter.json"
 NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_stockholm_shares.json"
 LEGACY_NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE = MASTERFILES_DIR / "nasdaq_nordic_stockholm_shares.json"
 NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_stockholm_etfs.json"
@@ -85,6 +87,11 @@ TMX_INTERLISTED_URL = "https://www.tsx.com/files/trading/interlisted-companies.t
 TMX_LISTED_ISSUERS_ARCHIVE_URL = "https://www.tsx.com/en/listings/current-market-statistics/mig-archives"
 TMX_ETF_SCREENER_URL = "https://dgr53wu9i7rmp.cloudfront.net/etfs/etfs.json"
 TMX_MONEY_GRAPHQL_URL = "https://app-money.tmx.com/graphql"
+TMX_MONEY_GET_ETFS_QUERY = (
+    "query { getETFs { "
+    "symbol shortname longname fundfamily currency "
+    "} }"
+)
 EURONEXT_EQUITIES_DOWNLOAD_URL = "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock"
 EURONEXT_ETFS_DOWNLOAD_URL = (
     "https://live.euronext.com/en/product_directory/data/etf-all-markets/download"
@@ -125,6 +132,8 @@ SSE_ETF_LIST_URL = "https://www.sse.com.cn/assortment/fund/etf/list/"
 SSE_COMMON_QUERY_URL = "https://query.sse.com.cn/sseQuery/commonQuery.do"
 SSE_JSONP_CALLBACK = "jsonpCallback"
 TPEX_MAINBOARD_QUOTES_URL = "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes"
+TPEX_ETF_FILTER_PAGE_URL = "https://info.tpex.org.tw/ETF/en/filter.html"
+TPEX_ETF_FILTER_API_URL = "https://info.tpex.org.tw/api/etfFilter"
 KRX_LISTED_COMPANIES_URL = "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp"
 KRX_DATA_URL = "https://global.krx.co.kr/contents/GLB/99/GLB99000001.jspx"
 KRX_GENERATE_OTP_URL = "https://global.krx.co.kr/contents/COM/GenerateOTP.jspx"
@@ -261,6 +270,7 @@ B3_EXCLUDED_ISSUER_MARKERS = (
 B3_ETF_FUND_TYPES = ("ETF", "ETF-RF", "ETF-FII", "ETF-CRIPTO")
 B3_FUNDS_PAGE_SIZE = 120
 TPEX_CANONICAL_TICKER_RE = re.compile(r"(?:\d{4}|00\d{4}[A-Z]?)$")
+TPEX_ETF_TICKER_RE = re.compile(r"(?:\d{4}|00\d{3,4}[A-Z]?)$")
 LSE_PAGE_INITIALS = tuple("ABCDEFGHIJKLMNOPQRSTUVWXYZ") + ("0",)
 TMX_LISTED_ISSUERS_HREF_RE = re.compile(
     r'href="([^"]+tsx-tsxv-listed-issuers-(\d{4})-(\d{2})-en\.xlsx)"',
@@ -638,6 +648,14 @@ OFFICIAL_SOURCES = [
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
+        key="tpex_etf_filter",
+        provider="TPEX",
+        description="Official TPEX ETF InfoHub filter directory",
+        source_url=TPEX_ETF_FILTER_PAGE_URL,
+        format="tpex_etf_filter_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
         key="krx_listed_companies",
         provider="KRX",
         description="Official KRX listed company directory",
@@ -891,6 +909,17 @@ def tpex_request_headers() -> dict[str, str]:
     }
 
 
+def tpex_infohub_request_headers(referer: str = TPEX_ETF_FILTER_PAGE_URL) -> dict[str, str]:
+    return {
+        "User-Agent": USER_AGENT,
+        "Accept": "application/json,text/javascript,*/*; q=0.01",
+        "Accept-Encoding": "gzip, deflate",
+        "Referer": referer,
+        "Origin": "https://info.tpex.org.tw",
+        "X-Requested-With": "XMLHttpRequest",
+    }
+
+
 def krx_request_headers() -> dict[str, str]:
     return {
         "User-Agent": USER_AGENT,
@@ -989,6 +1018,30 @@ def load_tpex_mainboard_quotes_payload(
     return payload, "network"
 
 
+def load_tpex_etf_filter_payload(
+    session: requests.Session | None = None,
+) -> tuple[dict[str, Any] | list[dict[str, Any]] | None, str]:
+    for path in (TPEX_ETF_FILTER_CACHE, LEGACY_TPEX_ETF_FILTER_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+
+    session = session or requests.Session()
+    try:
+        response = session.post(
+            f"{TPEX_ETF_FILTER_API_URL}?lang=en-us",
+            headers=tpex_infohub_request_headers(),
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        payload = response.json()
+    except requests.RequestException:
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    TPEX_ETF_FILTER_CACHE.write_text(json.dumps(payload), encoding="utf-8")
+    return payload, "network"
+
+
 def load_tmx_etf_screener_payload(
     session: requests.Session | None = None,
 ) -> tuple[list[dict[str, Any]] | None, str]:
@@ -1000,15 +1053,33 @@ def load_tmx_etf_screener_payload(
 
     mode = "cache"
     payload = cached_payload
+    graphql_payload: list[dict[str, Any]] | None = None
     if payload is None:
         try:
             payload = fetch_json(TMX_ETF_SCREENER_URL, session=session)
         except requests.RequestException:
-            return None, "unavailable"
+            try:
+                graphql_payload = fetch_tmx_money_etfs(session=session)
+            except (requests.RequestException, ValueError, json.JSONDecodeError):
+                return None, "unavailable"
+            payload = graphql_payload
         mode = "network"
 
     payload = list(payload)
     covered_tickers = {str(record.get("symbol", "")).strip().upper() for record in payload}
+    if graphql_payload is None:
+        try:
+            graphql_payload = fetch_tmx_money_etfs(session=session)
+        except (requests.RequestException, ValueError, json.JSONDecodeError):
+            graphql_payload = []
+    if graphql_payload:
+        for row in graphql_payload:
+            symbol = str(row.get("symbol", "")).strip().upper()
+            if not symbol or symbol in covered_tickers:
+                continue
+            payload.append(row)
+            covered_tickers.add(symbol)
+            mode = "network"
     supplemental_rows = fetch_tmx_etf_screener_quote_rows(
         payload,
         listings_path=LISTINGS_CSV,
@@ -1025,6 +1096,29 @@ def load_tmx_etf_screener_payload(
     ensure_output_dirs()
     TMX_ETF_SCREENER_CACHE.write_text(json.dumps(payload), encoding="utf-8")
     return payload, mode
+
+
+def fetch_tmx_money_etfs(session: requests.Session | None = None) -> list[dict[str, Any]]:
+    session = session or requests.Session()
+    response = session.post(
+        TMX_MONEY_GRAPHQL_URL,
+        headers={"User-Agent": USER_AGENT, "Content-Type": "application/json"},
+        json={"query": TMX_MONEY_GET_ETFS_QUERY},
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    payload = response.json()
+    records = payload.get("data", {}).get("getETFs")
+    if not isinstance(records, list):
+        raise ValueError("TMX getETFs payload missing data list")
+    rows: list[dict[str, Any]] = []
+    for record in records:
+        if not isinstance(record, dict):
+            continue
+        row = dict(record)
+        row["source_url"] = TMX_MONEY_GRAPHQL_URL
+        rows.append(row)
+    return rows
 
 
 def fetch_tmx_money_quote(
@@ -2824,6 +2918,41 @@ def parse_tpex_mainboard_quotes(payload: list[dict[str, Any]], source: Masterfil
     return rows
 
 
+def parse_tpex_etf_filter(
+    payload: dict[str, Any] | list[dict[str, Any]],
+    source: MasterfileSource,
+) -> list[dict[str, str]]:
+    records = payload.get("data") if isinstance(payload, dict) else payload
+    if not isinstance(records, list):
+        return []
+
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for record in records:
+        ticker = str(record.get("stockNo", "")).strip().upper()
+        name = str(record.get("stockName", "")).strip()
+        if not ticker or not name or not TPEX_ETF_TICKER_RE.fullmatch(ticker):
+            continue
+        if ticker in seen:
+            continue
+        seen.add(ticker)
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "TPEX",
+                "asset_type": "ETF",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
 def parse_b3_instruments_equities_table(table: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
     columns = [column.get("name", "") for column in table.get("columns") or []]
     rows: list[dict[str, str]] = []
@@ -3045,6 +3174,7 @@ def parse_six_fund_products_csv(text: str, source: MasterfileSource) -> list[dic
     seen: set[tuple[str, str]] = set()
     for record in reader:
         name = str(record.get("FundLongName", "")).strip()
+        isin = str(record.get("ISIN", "")).strip().upper()
         if not name:
             continue
         for ticker in iter_six_fund_product_tickers(record):
@@ -3064,6 +3194,7 @@ def parse_six_fund_products_csv(text: str, source: MasterfileSource) -> list[dic
                     "listing_status": "active",
                     "reference_scope": source.reference_scope,
                     "official": "true",
+                    "isin": isin,
                 }
             )
     return rows
@@ -3855,6 +3986,15 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "tpex_mainboard_quotes_json":
         payload = fetch_json(source.source_url, session=session)
         return parse_tpex_mainboard_quotes(payload, source)
+    if source.format == "tpex_etf_filter_json":
+        session = session or requests.Session()
+        response = session.post(
+            f"{TPEX_ETF_FILTER_API_URL}?lang=en-us",
+            headers=tpex_infohub_request_headers(source.source_url),
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        return parse_tpex_etf_filter(response.json(), source)
     if source.format == "krx_listed_companies_json":
         return fetch_krx_listed_companies(source, session=session)
     if source.format == "krx_etf_finder_json":
@@ -3903,6 +4043,11 @@ def fetch_source_rows_with_mode(
         if payload is None:
             raise requests.RequestException("TPEX mainboard quotes unavailable")
         return parse_tpex_mainboard_quotes(payload, source), mode
+    if source.format == "tpex_etf_filter_json":
+        payload, mode = load_tpex_etf_filter_payload(session=session)
+        if payload is None:
+            raise requests.RequestException("TPEX ETF filter unavailable")
+        return parse_tpex_etf_filter(payload, source), mode
     if source.format in {"jse_etf_list_xlsx", "jse_etn_list_xlsx"}:
         rows, mode = load_jse_exchange_traded_product_rows(source, session=session)
         if rows is None:

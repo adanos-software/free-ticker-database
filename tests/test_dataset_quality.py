@@ -467,6 +467,76 @@ def test_cleanse_conflicting_isin_rows_clears_peer_company_contamination():
     assert rolls["country"] == "United Kingdom"
 
 
+def test_drop_stale_tmx_etf_duplicates_prefers_current_official_symbol(monkeypatch):
+    from scripts import rebuild_dataset
+
+    rows = [
+        {
+            "ticker": "HIU",
+            "name": "BetaPro S&P 500® Daily Inverse ETF",
+            "exchange": "TSX",
+            "asset_type": "ETF",
+            "country": "Canada",
+            "country_code": "CA",
+            "isin": "CA08660P1080",
+            "aliases": [],
+        },
+        {
+            "ticker": "SPXI",
+            "name": "BetaPro S&P 500 Daily Inverse ETF",
+            "exchange": "TSX",
+            "asset_type": "ETF",
+            "country": "Canada",
+            "country_code": "CA",
+            "isin": "",
+            "aliases": [],
+        },
+        {
+            "ticker": "QQD",
+            "name": "BetaPro NASDAQ-100 -2x Daily Bear ETF",
+            "exchange": "TSX",
+            "asset_type": "ETF",
+            "country": "Canada",
+            "country_code": "CA",
+            "isin": "",
+            "aliases": [],
+        },
+        {
+            "ticker": "QQD.U",
+            "name": "BetaPro NASDAQ-100 -2x Daily Bear ETF",
+            "exchange": "TSX",
+            "asset_type": "ETF",
+            "country": "Canada",
+            "country_code": "CA",
+            "isin": "",
+            "aliases": [],
+        },
+        {
+            "ticker": "MUSA",
+            "name": "Middlefield U.S. Equity Dividend ETF",
+            "exchange": "TSX",
+            "asset_type": "ETF",
+            "country": "Canada",
+            "country_code": "CA",
+            "isin": "",
+            "aliases": [],
+        },
+    ]
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_reference_rows",
+        lambda: {
+            ("SPXI", "ETF"): ({"ticker": "SPXI", "exchange": "TSX", "asset_type": "ETF", "name": "BetaPro S&P 500 Daily Inverse ETF"},),
+            ("QQD", "ETF"): ({"ticker": "QQD", "exchange": "TSX", "asset_type": "ETF", "name": "BetaPro NASDAQ-100 -2x Daily Bear ETF"},),
+            ("QQD.U", "ETF"): ({"ticker": "QQD.U", "exchange": "TSX", "asset_type": "ETF", "name": "BetaPro NASDAQ-100 -2x Daily Bear ETF"},),
+        },
+    )
+
+    cleaned = rebuild_dataset.drop_stale_tmx_etf_duplicates(rows)
+
+    assert [row["ticker"] for row in cleaned] == ["SPXI", "QQD", "QQD.U", "MUSA"]
+
+
 def test_should_drop_contextual_alias_drops_untrusted_shared_alias():
     from scripts.rebuild_dataset import should_drop_contextual_alias
 

@@ -1347,6 +1347,7 @@ def cleaned_rows():
         prepared_rows.append(merged)
 
     prepared_rows = apply_official_exchange_corrections(prepared_rows)
+    prepared_rows = drop_stale_tmx_etf_duplicates(prepared_rows)
     stock_base_name_index = build_stock_base_name_index(prepared_rows)
     stock_name_lookup = build_stock_name_lookup(prepared_rows)
 
@@ -1464,6 +1465,45 @@ def cleanse_conflicting_isin_rows(rows: list[dict[str, str]]) -> list[dict[str, 
                 row["country_code"] = ""
 
     return rows
+
+
+def has_exact_same_exchange_official_reference(
+    row: dict[str, str],
+    reference_rows: dict[tuple[str, str], tuple[dict[str, str], ...]],
+) -> bool:
+    candidates = reference_rows.get((row["ticker"], row["asset_type"]), ())
+    return any(candidate.get("exchange") == row["exchange"] for candidate in candidates)
+
+
+def drop_stale_tmx_etf_duplicates(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    reference_rows = load_active_official_reference_rows()
+    if not reference_rows:
+        return rows
+
+    grouped: dict[tuple[str, str], list[dict[str, str]]] = defaultdict(list)
+    for row in rows:
+        if row.get("asset_type") != "ETF" or row.get("exchange") not in {"TSX", "TSXV"}:
+            continue
+        fingerprint = row_name_fingerprint(row) or normalized_compact(row.get("name", ""))
+        if not fingerprint:
+            continue
+        grouped[(row["exchange"], fingerprint)].append(row)
+
+    stale_listing_keys: set[str] = set()
+    for peers in grouped.values():
+        if len(peers) < 2:
+            continue
+        exact_official_peers = [
+            row for row in peers if has_exact_same_exchange_official_reference(row, reference_rows)
+        ]
+        if not exact_official_peers:
+            continue
+        for row in peers:
+            if row in exact_official_peers:
+                continue
+            stale_listing_keys.add(row_listing_key(row))
+
+    return [row for row in rows if row_listing_key(row) not in stale_listing_keys]
 
 
 def build_alias_rows(rows: list[dict[str, str]], alias_type_lookup: dict[tuple[str, str], str]):

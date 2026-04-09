@@ -20,6 +20,7 @@ from scripts.fetch_exchange_masterfiles import (
     LEGACY_NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
     LEGACY_NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE,
     LEGACY_TMX_ETF_SCREENER_CACHE,
+    LEGACY_TPEX_ETF_FILTER_CACHE,
     LEGACY_TPEX_MAINBOARD_QUOTES_CACHE,
     LSE_PAGE_INITIALS,
     LSE_COMPANY_REPORTS_CACHE,
@@ -36,6 +37,7 @@ from scripts.fetch_exchange_masterfiles import (
     extract_latest_asx_investment_products_url,
     SSE_ETF_SUBCLASSES,
     TMX_ETF_SCREENER_CACHE,
+    TPEX_ETF_FILTER_CACHE,
     TPEX_MAINBOARD_QUOTES_CACHE,
     fetch_b3_instruments_equities,
     fetch_b3_bdr_companies,
@@ -59,6 +61,7 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_szse_a_share_list,
     fetch_szse_etf_list,
     fetch_source_rows_with_mode,
+    fetch_tmx_money_etfs,
     fetch_tmx_etf_screener_quote_rows,
     infer_jpx_asset_type,
     infer_lse_lookup_asset_type,
@@ -73,8 +76,10 @@ from scripts.fetch_exchange_masterfiles import (
     NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
     NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE,
     load_sec_company_tickers_exchange_payload,
+    load_tpex_etf_filter_payload,
     load_tmx_etf_screener_payload,
     load_tpex_mainboard_quotes_payload,
+    parse_tpex_etf_filter,
     lse_instrument_search_target_tickers,
     parse_asx_listed_companies,
     parse_asx_investment_products_excel,
@@ -845,6 +850,11 @@ def test_tpex_source_is_modeled_as_partial_official_coverage() -> None:
     assert source.reference_scope == "listed_companies_subset"
 
 
+def test_tpex_etf_filter_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "tpex_etf_filter")
+    assert source.reference_scope == "listed_companies_subset"
+
+
 def test_parse_tpex_mainboard_quotes_maps_tpex_rows():
     payload = [
         {"SecuritiesCompanyCode": "006201", "CompanyName": "元大富櫃50"},
@@ -883,6 +893,63 @@ def test_parse_tpex_mainboard_quotes_maps_tpex_rows():
     ]
 
 
+def test_parse_tpex_etf_filter_maps_tpex_etf_rows() -> None:
+    payload = {
+        "status": "success",
+        "data": [
+            {
+                "stockNo": "006201",
+                "stockName": "Yuanta/P-shares Taiwan GreTai 50 ETF",
+                "listingDate": "2011/09/20",
+                "issuer": "Yuanta Securities Investment Trust",
+            },
+            {
+                "stockNo": "00679B",
+                "stockName": "Yuanta U.S. Treasury 20+ Year Bond ETF",
+                "listingDate": "2017/03/31",
+                "issuer": "Yuanta Securities Investment Trust",
+            },
+            {
+                "stockNo": "ABC123",
+                "stockName": "Skip Me",
+            },
+            {
+                "stockNo": "",
+                "stockName": "Ignored",
+            },
+        ],
+    }
+
+    rows = parse_tpex_etf_filter(payload, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "006201",
+            "name": "Yuanta/P-shares Taiwan GreTai 50 ETF",
+            "exchange": "TPEX",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "00679B",
+            "name": "Yuanta U.S. Treasury 20+ Year Bond ETF",
+            "exchange": "TPEX",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
 def test_load_tpex_mainboard_quotes_payload_prefers_cache(tmp_path, monkeypatch):
     cache_path = tmp_path / "tpex_mainboard_daily_close_quotes.json"
     cache_path.write_text('[{"SecuritiesCompanyCode":"6488","CompanyName":"環球晶圓股份有限公司"}]', encoding="utf-8")
@@ -893,6 +960,29 @@ def test_load_tpex_mainboard_quotes_payload_prefers_cache(tmp_path, monkeypatch)
 
     assert mode == "cache"
     assert payload == [{"SecuritiesCompanyCode": "6488", "CompanyName": "環球晶圓股份有限公司"}]
+
+
+def test_load_tpex_etf_filter_payload_prefers_cache(tmp_path, monkeypatch):
+    cache_path = tmp_path / "tpex_etf_filter.json"
+    cache_path.write_text(
+        '{"status":"success","data":[{"stockNo":"00679B","stockName":"Yuanta U.S. Treasury 20+ Year Bond ETF"}]}',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.TPEX_ETF_FILTER_CACHE", cache_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_TPEX_ETF_FILTER_CACHE", tmp_path / "legacy.json")
+
+    payload, mode = load_tpex_etf_filter_payload()
+
+    assert mode == "cache"
+    assert payload == {
+        "status": "success",
+        "data": [
+            {
+                "stockNo": "00679B",
+                "stockName": "Yuanta U.S. Treasury 20+ Year Bond ETF",
+            }
+        ],
+    }
 
 
 def test_parse_asx_listed_companies_skips_banner_lines():
@@ -2852,11 +2942,58 @@ def test_fetch_tmx_etf_screener_quote_rows_normalizes_series_and_skips_name_mism
     ]
 
 
+def test_fetch_tmx_money_etfs_adds_source_url() -> None:
+    class DummyResponse:
+        def raise_for_status(self) -> None:
+            return None
+
+        def json(self) -> dict[str, object]:
+            return {
+                "data": {
+                    "getETFs": [
+                        {
+                            "symbol": "SPXU",
+                            "shortname": "BetaPro S&P 5",
+                            "longname": "BetaPro S&P 500 2x Daily Bull ETF",
+                            "currency": "CAD",
+                        }
+                    ]
+                }
+            }
+
+    class DummySession:
+        def __init__(self) -> None:
+            self.last_json = None
+
+        def post(self, url: str, *, headers=None, json=None, timeout=None):
+            self.last_json = json
+            assert url == TMX_MONEY_GRAPHQL_URL
+            assert headers == {"User-Agent": fetch_exchange_masterfiles.USER_AGENT, "Content-Type": "application/json"}
+            assert timeout == fetch_exchange_masterfiles.REQUEST_TIMEOUT
+            return DummyResponse()
+
+    session = DummySession()
+
+    rows = fetch_tmx_money_etfs(session=session)
+
+    assert rows == [
+        {
+            "symbol": "SPXU",
+            "shortname": "BetaPro S&P 5",
+            "longname": "BetaPro S&P 500 2x Daily Bull ETF",
+            "currency": "CAD",
+            "source_url": TMX_MONEY_GRAPHQL_URL,
+        }
+    ]
+    assert session.last_json == {"query": fetch_exchange_masterfiles.TMX_MONEY_GET_ETFS_QUERY}
+
+
 def test_load_tmx_etf_screener_payload_prefers_cache(tmp_path, monkeypatch):
     cache_path = tmp_path / "tmx_etf_screener.json"
     cache_path.write_text('[{"symbol":"TOKN","longname":"Global X Tokenization Ecosystem Index ETF"}]', encoding="utf-8")
     monkeypatch.setattr("scripts.fetch_exchange_masterfiles.TMX_ETF_SCREENER_CACHE", cache_path)
     monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_TMX_ETF_SCREENER_CACHE", tmp_path / "legacy.json")
+    monkeypatch.setattr(fetch_exchange_masterfiles, "fetch_tmx_money_etfs", lambda session=None: [])
     monkeypatch.setattr(fetch_exchange_masterfiles, "fetch_tmx_etf_screener_quote_rows", lambda payload, **kwargs: [])
 
     payload, mode = load_tmx_etf_screener_payload()
@@ -2865,11 +3002,81 @@ def test_load_tmx_etf_screener_payload_prefers_cache(tmp_path, monkeypatch):
     assert payload == [{"symbol": "TOKN", "longname": "Global X Tokenization Ecosystem Index ETF"}]
 
 
+def test_load_tmx_etf_screener_payload_falls_back_to_graphql(tmp_path, monkeypatch):
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.TMX_ETF_SCREENER_CACHE", tmp_path / "tmx_etf_screener.json")
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_TMX_ETF_SCREENER_CACHE", tmp_path / "legacy.json")
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_json",
+        lambda *args, **kwargs: (_ for _ in ()).throw(requests.RequestException("blocked")),
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_tmx_money_etfs",
+        lambda session=None: [
+            {
+                "symbol": "SPXU",
+                "longname": "BetaPro S&P 500 2x Daily Bull ETF",
+                "shortname": "BetaPro S&P 5",
+                "source_url": TMX_MONEY_GRAPHQL_URL,
+            }
+        ],
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "fetch_tmx_etf_screener_quote_rows", lambda payload, **kwargs: [])
+
+    payload, mode = load_tmx_etf_screener_payload()
+
+    assert mode == "network"
+    assert payload == [
+        {
+            "symbol": "SPXU",
+            "longname": "BetaPro S&P 500 2x Daily Bull ETF",
+            "shortname": "BetaPro S&P 5",
+            "source_url": TMX_MONEY_GRAPHQL_URL,
+        }
+    ]
+
+
+def test_load_tmx_etf_screener_payload_merges_graphql_rows(tmp_path, monkeypatch):
+    cache_path = tmp_path / "tmx_etf_screener.json"
+    cache_path.write_text('[{"symbol":"TOKN","longname":"Global X Tokenization Ecosystem Index ETF"}]', encoding="utf-8")
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.TMX_ETF_SCREENER_CACHE", cache_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_TMX_ETF_SCREENER_CACHE", tmp_path / "legacy.json")
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_tmx_money_etfs",
+        lambda session=None: [
+            {
+                "symbol": "SPXU",
+                "longname": "BetaPro S&P 500 2x Daily Bull ETF",
+                "shortname": "BetaPro S&P 5",
+                "source_url": TMX_MONEY_GRAPHQL_URL,
+            }
+        ],
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "fetch_tmx_etf_screener_quote_rows", lambda payload, **kwargs: [])
+
+    payload, mode = load_tmx_etf_screener_payload()
+
+    assert mode == "network"
+    assert payload == [
+        {"symbol": "TOKN", "longname": "Global X Tokenization Ecosystem Index ETF"},
+        {
+            "symbol": "SPXU",
+            "longname": "BetaPro S&P 500 2x Daily Bull ETF",
+            "shortname": "BetaPro S&P 5",
+            "source_url": TMX_MONEY_GRAPHQL_URL,
+        },
+    ]
+    assert json.loads(cache_path.read_text(encoding="utf-8")) == payload
+
+
 def test_load_tmx_etf_screener_payload_merges_safe_quote_backfill(tmp_path, monkeypatch):
     cache_path = tmp_path / "tmx_etf_screener.json"
     cache_path.write_text('[{"symbol":"TOKN","longname":"Global X Tokenization Ecosystem Index ETF"}]', encoding="utf-8")
     monkeypatch.setattr("scripts.fetch_exchange_masterfiles.TMX_ETF_SCREENER_CACHE", cache_path)
     monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_TMX_ETF_SCREENER_CACHE", tmp_path / "legacy.json")
+    monkeypatch.setattr(fetch_exchange_masterfiles, "fetch_tmx_money_etfs", lambda session=None: [])
     monkeypatch.setattr(
         fetch_exchange_masterfiles,
         "fetch_tmx_etf_screener_quote_rows",
@@ -4058,11 +4265,11 @@ def test_six_source_is_modeled_as_partial_official_coverage() -> None:
 def test_parse_six_fund_products_csv_maps_rows() -> None:
     text = "\n".join(
         [
-            "FundLongName;ValorSymbol;FundReutersTicker;FundBloombergTicker;TradingBaseCurrency;FundCurrency;ProductLineDesc",
-            "abrdn Future Raw Materials UCITS ETF USD Acc ETF Share Class;ARAW;;;USD;USD;Exchange Traded Funds",
-            "21Shares Bitcoin ETP;ABTC;ABTC.S;ABTC SE;USD;USD;Exchange Traded Product",
-            "WisdomTree Physical Crypto Mega Cap Securities;BLOC;BLOCEUR.S;BLOCEUR SE;EUR;USD;Exchange Traded Product",
-            ";IGNORED;;;USD;USD;Exchange Traded Funds",
+            "FundLongName;ValorSymbol;FundReutersTicker;FundBloombergTicker;ISIN;TradingBaseCurrency;FundCurrency;ProductLineDesc",
+            "abrdn Future Raw Materials UCITS ETF USD Acc ETF Share Class;ARAW;;;IE000QUAANR0;USD;USD;Exchange Traded Funds",
+            "21Shares Bitcoin ETP;ABTC;ABTC.S;ABTC SE;CH0454664001;USD;USD;Exchange Traded Product",
+            "WisdomTree Physical Crypto Mega Cap Securities;BLOC;BLOCEUR.S;BLOCEUR SE;GB00BMTP1736;EUR;USD;Exchange Traded Product",
+            ";IGNORED;;;IE0000000000;USD;USD;Exchange Traded Funds",
         ]
     )
 
@@ -4080,6 +4287,7 @@ def test_parse_six_fund_products_csv_maps_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "isin": "IE000QUAANR0",
         },
         {
             "source_key": "test",
@@ -4092,6 +4300,7 @@ def test_parse_six_fund_products_csv_maps_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "isin": "IE000QUAANR0",
         },
         {
             "source_key": "test",
@@ -4104,6 +4313,7 @@ def test_parse_six_fund_products_csv_maps_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "isin": "IE000QUAANR0",
         },
         {
             "source_key": "test",
@@ -4116,6 +4326,7 @@ def test_parse_six_fund_products_csv_maps_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "isin": "CH0454664001",
         },
         {
             "source_key": "test",
@@ -4128,6 +4339,7 @@ def test_parse_six_fund_products_csv_maps_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "isin": "CH0454664001",
         },
         {
             "source_key": "test",
@@ -4140,6 +4352,7 @@ def test_parse_six_fund_products_csv_maps_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "isin": "CH0454664001",
         },
         {
             "source_key": "test",
@@ -4152,6 +4365,7 @@ def test_parse_six_fund_products_csv_maps_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "isin": "GB00BMTP1736",
         },
         {
             "source_key": "test",
@@ -4164,6 +4378,7 @@ def test_parse_six_fund_products_csv_maps_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "isin": "GB00BMTP1736",
         },
         {
             "source_key": "test",
@@ -4176,6 +4391,7 @@ def test_parse_six_fund_products_csv_maps_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "isin": "GB00BMTP1736",
         },
         {
             "source_key": "test",
@@ -4188,6 +4404,7 @@ def test_parse_six_fund_products_csv_maps_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "isin": "GB00BMTP1736",
         },
     ]
 
