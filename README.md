@@ -9,14 +9,14 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 55
 
 | Metric | Value |
 |---|---|
-| **Total tickers** | 55,575 |
+| **Total tickers** | 55,574 |
 | Stocks | 41,152 |
-| ETFs | 14,423 |
+| ETFs | 14,422 |
 | Exchanges | 68 |
 | Countries | 68 |
-| ISIN coverage | 38,232 (68.8%) |
-| Sector coverage | 33,539 (60.3%) |
-| Total aliases | 87,590 |
+| ISIN coverage | 38,231 (68.8%) |
+| Sector coverage | 33,539 (60.4%) |
+| Total aliases | 87,588 |
 
 ## Formats
 
@@ -155,7 +155,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (55,575 rows) + `aliases` (87,590 rows) + `cross_listings` (8,665 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
+Tables: `tickers` (55,574 rows) + `aliases` (87,588 rows) + `cross_listings` (8,665 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
 
 ## Schema
 
@@ -190,7 +190,7 @@ Tables: `tickers` (55,575 rows) + `aliases` (87,590 rows) + `cross_listings` (8,
 | SZSE | 3,096 | Shenzhen Stock Exchange |
 | XETRA | 2,086 | Deutsche Boerse |
 | SSE | 2,811 | Shanghai Stock Exchange |
-| NYSE | 2,055 | New York Stock Exchange |
+| NYSE | 2,056 | New York Stock Exchange |
 | NYSE ARCA | 2,595 | NYSE ARCA (ETFs) |
 | KRX | 1,789 | Korea Exchange |
 | TSX | 1,606 | Toronto Stock Exchange |

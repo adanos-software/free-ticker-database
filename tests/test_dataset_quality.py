@@ -847,6 +847,19 @@ def test_should_exclude_row_drops_china_lof_etf_lines():
     assert should_exclude_row(row) is True
 
 
+def test_should_exclude_row_drops_preferred_suffix_even_when_misclassified_as_etf():
+    from scripts.rebuild_dataset import should_exclude_row
+
+    row = {
+        "ticker": "BN-PFD",
+        "exchange": "TSX",
+        "asset_type": "ETF",
+        "name": "PUTNAM SUSTAINABLE LEADERS ETF",
+    }
+
+    assert should_exclude_row(row) is True
+
+
 def test_alias_matches_company_accepts_trusted_non_lexical_renames():
     from scripts.rebuild_dataset import alias_matches_company
 
@@ -966,6 +979,125 @@ def test_apply_official_exchange_corrections_keeps_non_placeholder_same_exchange
     corrected = rebuild_dataset.apply_official_exchange_corrections([row])
 
     assert corrected[0]["name"] == "Steer Technologies Inc."
+
+
+def test_apply_official_exchange_corrections_moves_six_etf_to_euronext_on_exact_official_match(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "CSMIB",
+        "name": "iShares VII PLC - iShares FTSE MIB ETF EUR Acc",
+        "exchange": "SIX",
+        "asset_type": "ETF",
+        "country": "Ireland",
+        "country_code": "IE",
+        "sector": "",
+        "isin": "IE00B53L4X51",
+        "aliases": [],
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_reference_rows",
+        lambda: {
+            ("CSMIB", "ETF"): (
+                {
+                    "ticker": "CSMIB",
+                    "exchange": "Euronext",
+                    "asset_type": "ETF",
+                    "name": "ISHARES FTSE MIB UCITS ETF EUR ACC",
+                    "source_key": "euronext_etfs",
+                    "reference_scope": "exchange_directory",
+                },
+            )
+        },
+    )
+
+    corrected = rebuild_dataset.apply_official_exchange_corrections([row])
+
+    assert corrected[0]["exchange"] == "Euronext"
+
+
+def test_apply_official_exchange_corrections_moves_tsx_stock_to_tsxv_on_official_tmx_match(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "AGMR",
+        "name": "Silver Mountain Resources Inc.",
+        "exchange": "TSX",
+        "asset_type": "Stock",
+        "country": "Canada",
+        "country_code": "CA",
+        "sector": "",
+        "isin": "",
+        "aliases": [],
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_reference_rows",
+        lambda: {
+            ("AGMR", "Stock"): (
+                {
+                    "ticker": "AGMR",
+                    "exchange": "TSXV",
+                    "asset_type": "Stock",
+                    "name": "Silver Mountain Resources Inc.",
+                    "source_key": "tmx_listed_issuers",
+                    "reference_scope": "listed_companies_subset",
+                },
+            )
+        },
+    )
+
+    corrected = rebuild_dataset.apply_official_exchange_corrections([row])
+
+    assert corrected[0]["exchange"] == "TSXV"
+
+
+def test_apply_official_exchange_corrections_prefers_unique_name_matched_exchange(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "BNKR",
+        "name": "Bunker Hill Mining Corp.",
+        "exchange": "TSX",
+        "asset_type": "Stock",
+        "country": "Canada",
+        "country_code": "CA",
+        "sector": "",
+        "isin": "",
+        "aliases": [],
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_reference_rows",
+        lambda: {
+            ("BNKR", "Stock"): (
+                {
+                    "ticker": "BNKR",
+                    "exchange": "LSE",
+                    "asset_type": "Stock",
+                    "name": "BANKERS INV TST PLC ORD 2.5P",
+                    "source_key": "lse_company_reports",
+                    "reference_scope": "listed_companies_subset",
+                },
+                {
+                    "ticker": "BNKR",
+                    "exchange": "TSXV",
+                    "asset_type": "Stock",
+                    "name": "Bunker Hill Mining Corp.",
+                    "source_key": "tmx_listed_issuers",
+                    "reference_scope": "listed_companies_subset",
+                },
+            )
+        },
+    )
+
+    corrected = rebuild_dataset.apply_official_exchange_corrections([row])
+
+    assert corrected[0]["exchange"] == "TSXV"
 
 
 def test_should_not_correct_krx_stock_without_krx_official_source():

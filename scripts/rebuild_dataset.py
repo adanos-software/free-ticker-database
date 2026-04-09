@@ -886,6 +886,9 @@ def should_exclude_row(
     if asset_type == "ETF" and exchange in {"SSE", "SZSE"} and "lof" in name:
         return True
 
+    if ticker.endswith("-PFD"):
+        return True
+
     return should_exclude_stock_row(row, stock_base_name_index, stock_name_lookup)
 
 
@@ -1020,6 +1023,14 @@ def should_correct_to_official_exchange(
     code_like_name = is_code_like_name(row["name"], row["ticker"])
     wrapper_match = generic_fund_wrapper_match(row["name"])
 
+    if (
+        row["asset_type"] == "ETF"
+        and current_exchange == "SIX"
+        and target_exchange == "Euronext"
+        and (safe_name_match or row["ticker"] == official_row["ticker"])
+    ):
+        return True
+
     if row["asset_type"] == "ETF":
         return bool(
             current_exchange in PRIMARY_VENUE_CORRECTION_EXCHANGES
@@ -1031,6 +1042,13 @@ def should_correct_to_official_exchange(
         return bool(
             row["asset_type"] == "Stock"
             and official_row.get("source_key") == "krx_listed_companies"
+        )
+
+    if {current_exchange, target_exchange} <= {"TSX", "TSXV"}:
+        return bool(
+            row["asset_type"] == "Stock"
+            and official_row.get("source_key") == "tmx_listed_issuers"
+            and safe_name_match
         )
 
     if target_exchange in US_EXCHANGES:
@@ -1075,7 +1093,16 @@ def apply_official_exchange_corrections(rows: list[dict[str, str]]) -> list[dict
 
         official_row: dict[str, str] | None = None
         target_exchanges = {candidate["exchange"] for candidate in candidates}
-        if len(target_exchanges) == 1:
+        matching_candidates = [
+            candidate
+            for candidate in candidates
+            if alias_matches_company(row["name"], candidate["name"])
+            or alias_matches_company(candidate["name"], row["name"])
+        ]
+        matching_target_exchanges = {candidate["exchange"] for candidate in matching_candidates}
+        if len(matching_target_exchanges) == 1 and matching_candidates:
+            official_row = choose_preferred_official_reference_row(tuple(matching_candidates), row["name"])
+        elif len(target_exchanges) == 1:
             official_row = choose_preferred_official_reference_row(candidates, row["name"])
         elif row["asset_type"] == "ETF":
             us_candidates = [candidate for candidate in candidates if candidate["exchange"] in US_EXCHANGES]
