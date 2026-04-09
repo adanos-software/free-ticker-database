@@ -26,14 +26,14 @@
 | manual_only_exchanges | 0 |
 | missing_exchanges | 39 |
 | stock_verification_items | 43954 |
-| stock_verification_verified | 29598 |
-| stock_verification_reference_gap | 14348 |
+| stock_verification_verified | 29716 |
+| stock_verification_reference_gap | 14234 |
 | stock_verification_missing_from_official | 0 |
-| stock_verification_name_mismatch | 8 |
+| stock_verification_name_mismatch | 4 |
 | stock_verification_cross_exchange_collision | 0 |
 | etf_verification_items | 16610 |
-| etf_verification_verified | 15228 |
-| etf_verification_reference_gap | 1381 |
+| etf_verification_verified | 15231 |
+| etf_verification_reference_gap | 1378 |
 | etf_verification_missing_from_official | 0 |
 | etf_verification_name_mismatch | 1 |
 | etf_verification_cross_exchange_collision | 0 |
@@ -43,22 +43,22 @@
 | Metric | Value |
 |---|---|
 | tickers_built_at | 2026-04-09T10:03:57Z |
-| tickers_age_hours | 1.6 |
-| masterfiles_generated_at | 2026-04-09T11:28:35Z |
-| masterfiles_age_hours | 0.19 |
+| tickers_age_hours | 2.81 |
+| masterfiles_generated_at | 2026-04-09T12:51:50Z |
+| masterfiles_age_hours | 0.01 |
 | identifiers_generated_at | 2026-04-09T10:03:57Z |
-| identifiers_age_hours | 1.6 |
+| identifiers_age_hours | 2.81 |
 | listing_history_observed_at | 2026-04-09T10:03:57Z |
-| listing_history_age_hours | 1.6 |
-| latest_verification_run | data/stock_verification/run-20260409-krx-konex-01 |
-| latest_verification_generated_at | 2026-04-09T11:29:09Z |
-| latest_verification_age_hours | 0.18 |
-| latest_stock_verification_run | data/stock_verification/run-20260409-krx-konex-01 |
-| latest_stock_verification_generated_at | 2026-04-09T11:29:09Z |
-| latest_stock_verification_age_hours | 0.18 |
-| latest_etf_verification_run | data/etf_verification/run-20260409-set-etf-search-01 |
-| latest_etf_verification_generated_at | 2026-04-09T11:05:06Z |
-| latest_etf_verification_age_hours | 0.58 |
+| listing_history_age_hours | 2.81 |
+| latest_verification_run | data/stock_verification/run-20260409-hel-search-01 |
+| latest_verification_generated_at | 2026-04-09T12:52:30Z |
+| latest_verification_age_hours | 0.0 |
+| latest_stock_verification_run | data/stock_verification/run-20260409-hel-search-01 |
+| latest_stock_verification_generated_at | 2026-04-09T12:52:30Z |
+| latest_stock_verification_age_hours | 0.0 |
+| latest_etf_verification_run | data/etf_verification/run-20260409-krx-isin-match-01 |
+| latest_etf_verification_generated_at | 2026-04-09T12:20:51Z |
+| latest_etf_verification_age_hours | 0.53 |
 
 ## Source Coverage
 
@@ -74,7 +74,7 @@
 | asx_investment_products | ASX | listed_companies_subset | network | 426 | 2026-04-09T11:28:35Z |
 | set_listed_companies | SET | listed_companies_subset | network | 933 | 2026-04-09T11:28:35Z |
 | set_etf_search | SET | listed_companies_subset | network | 13 | 2026-04-09T11:28:35Z |
-| tmx_listed_issuers | TMX | listed_companies_subset | cache | 3619 | 2026-04-09T11:28:35Z |
+| tmx_listed_issuers | TMX | listed_companies_subset | network | 3702 | 2026-04-09T12:36:21Z |
 | tmx_etf_screener | TMX | listed_companies_subset | cache | 1696 | 2026-04-09T11:28:35Z |
 | tmx_interlisted_companies | TMX | interlisted_subset | network | 266 | 2026-04-09T11:28:35Z |
 | euronext_equities | Euronext | exchange_directory | network | 3883 | 2026-04-09T11:28:35Z |
@@ -94,6 +94,7 @@
 | jse_instrument_search | JSE | listed_companies_subset | network | 51 | 2026-04-09T11:28:35Z |
 | nasdaq_nordic_stockholm_shares | Nasdaq Nordic | listed_companies_subset | cache | 747 | 2026-04-09T11:28:35Z |
 | nasdaq_nordic_helsinki_shares | Nasdaq Nordic | listed_companies_subset | cache | 194 | 2026-04-09T11:28:35Z |
+| nasdaq_nordic_helsinki_shares_search | Nasdaq Nordic | listed_companies_subset | network | 3 | 2026-04-09T12:51:50Z |
 | nasdaq_nordic_copenhagen_shares | Nasdaq Nordic | listed_companies_subset | cache | 144 | 2026-04-09T11:28:35Z |
 | nasdaq_nordic_stockholm_etfs | Nasdaq Nordic | listed_companies_subset | cache | 33 | 2026-04-09T11:28:35Z |
 | nasdaq_nordic_helsinki_etfs | Nasdaq Nordic | listed_companies_subset | cache | 2 | 2026-04-09T11:28:35Z |
@@ -107,8 +108,8 @@
 | szse_etf_list | SZSE | listed_companies_subset | network | 632 | 2026-04-09T11:28:35Z |
 | tpex_mainboard_daily_quotes | TPEX | listed_companies_subset | cache | 884 | 2026-04-09T11:28:35Z |
 | tpex_etf_filter | TPEX | listed_companies_subset | unavailable | 0 | 2026-04-09T11:28:35Z |
-| krx_listed_companies | KRX | listed_companies_subset | network | 2769 | 2026-04-09T11:28:35Z |
-| krx_etf_finder | KRX | listed_companies_subset | network | 1088 | 2026-04-09T11:28:35Z |
+| krx_listed_companies | KRX | listed_companies_subset | network | 2771 | 2026-04-09T12:16:07Z |
+| krx_etf_finder | KRX | listed_companies_subset | network | 1089 | 2026-04-09T12:16:07Z |
 | psx_listed_companies | PSX | listed_companies_subset | network | 565 | 2026-04-09T11:28:35Z |
 | psx_symbol_name_daily | PSX | listed_companies_subset | network | 370 | 2026-04-09T11:28:35Z |
 | sec_company_tickers_exchange | SEC | exchange_directory | cache | 10117 | 2026-04-09T11:28:35Z |
@@ -130,14 +131,14 @@
 | BVB | missing | 85 | 79 | 77 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | BVL | missing | 33 | 0 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | Bursa | missing | 929 | 854 | 925 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
-| CPH | official_partial | 216 | 150 | 157 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  | 97.67 |
+| CPH | official_partial | 216 | 150 | 157 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | CSE_LK | missing | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | CSE_MA | missing | 66 | 66 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | DSE_TZ | missing | 17 | 15 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | EGX | missing | 225 | 219 | 125 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | Euronext | official_full | 970 | 858 | 693 | 7 | 665 | 65 | 4385 | 933 | 2141 | 1311 | 21.28 | 100.0 |
 | GSE | missing | 19 | 18 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
-| HEL | official_partial | 188 | 186 | 137 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |  | 99.45 |
+| HEL | official_partial | 188 | 186 | 137 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | HOSE | missing | 260 | 237 | 152 | 3 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | ICE_IS | missing | 18 | 17 | 3 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | IDX | missing | 697 | 580 | 508 | 1 | 2 | 0 | 0 | 0 | 0 | 0 |  |  |
@@ -275,11 +276,11 @@
 | NEO | missing | 201 | 201 | 0 | 0 | 0 |
 | BMV | missing | 194 | 194 | 0 | 0 | 0 |
 | BME | missing | 169 | 169 | 0 | 0 | 0 |
-| STO | official_partial | 154 | 154 | 0 | 0 | 0 |
 | NGX | missing | 147 | 147 | 0 | 0 | 0 |
+| STO | official_partial | 128 | 128 | 0 | 0 | 0 |
 | ATHEX | missing | 117 | 117 | 0 | 0 | 0 |
 | SSE_CL | missing | 116 | 116 | 0 | 0 | 0 |
 | PSE | missing | 105 | 105 | 0 | 0 | 0 |
-| TSXV | official_partial | 96 | 96 | 0 | 0 | 0 |
-| CPH | official_partial | 89 | 86 | 0 | 3 | 0 |
+| CPH | official_partial | 86 | 86 | 0 | 0 | 0 |
 | BVB | missing | 85 | 85 | 0 | 0 | 0 |
+| AMS | official_full | 74 | 74 | 0 | 0 | 0 |

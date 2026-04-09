@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-09T11:28:35Z",
-  "rows": 86393,
+  "generated_at": "2026-04-09T12:51:50Z",
+  "rows": 86482,
   "exchanges": [
     "AMS",
     "ASX",
@@ -46,12 +46,13 @@
     "nasdaq_nordic_copenhagen_shares": 144,
     "nasdaq_nordic_copenhagen_etfs": 1,
     "nasdaq_nordic_helsinki_shares": 194,
+    "nasdaq_nordic_helsinki_shares_search": 3,
     "nasdaq_nordic_helsinki_etfs": 2,
     "jse_etf_list": 133,
     "jse_instrument_search": 51,
     "jse_etn_list": 94,
-    "krx_listed_companies": 2769,
-    "krx_etf_finder": 1088,
+    "krx_listed_companies": 2771,
+    "krx_etf_finder": 1089,
     "lse_company_reports": 12397,
     "lse_instrument_search": 926,
     "lse_instrument_directory": 64,
@@ -73,7 +74,7 @@
     "szse_etf_list": 632,
     "tpex_mainboard_daily_quotes": 884,
     "jpx_listed_issues": 4444,
-    "tmx_listed_issuers": 3619,
+    "tmx_listed_issuers": 3702,
     "tmx_etf_screener": 1696,
     "tmx_interlisted_companies": 266,
     "twse_etf_list": 215,
@@ -167,9 +168,9 @@
       "provider": "TMX",
       "reference_scope": "listed_companies_subset",
       "official": true,
-      "mode": "cache",
-      "rows": 3619,
-      "generated_at": "2026-04-09T11:28:35Z"
+      "mode": "network",
+      "rows": 3702,
+      "generated_at": "2026-04-09T12:36:21Z"
     },
     "tmx_etf_screener": {
       "provider": "TMX",
@@ -323,6 +324,14 @@
       "rows": 194,
       "generated_at": "2026-04-09T11:28:35Z"
     },
+    "nasdaq_nordic_helsinki_shares_search": {
+      "provider": "Nasdaq Nordic",
+      "reference_scope": "listed_companies_subset",
+      "official": true,
+      "mode": "network",
+      "rows": 3,
+      "generated_at": "2026-04-09T12:51:50Z"
+    },
     "nasdaq_nordic_copenhagen_shares": {
       "provider": "Nasdaq Nordic",
       "reference_scope": "listed_companies_subset",
@@ -432,16 +441,16 @@
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 2769,
-      "generated_at": "2026-04-09T11:28:35Z"
+      "rows": 2771,
+      "generated_at": "2026-04-09T12:16:07Z"
     },
     "krx_etf_finder": {
       "provider": "KRX",
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 1088,
-      "generated_at": "2026-04-09T11:28:35Z"
+      "rows": 1089,
+      "generated_at": "2026-04-09T12:16:07Z"
     },
     "psx_listed_companies": {
       "provider": "PSX",
@@ -478,7 +487,7 @@
     "cboe_canada_listing_directory": "network",
     "asx_investment_products": "network",
     "set_listed_companies": "network",
-    "tmx_listed_issuers": "cache",
+    "tmx_listed_issuers": "network",
     "tmx_etf_screener": "cache",
     "tmx_interlisted_companies": "network",
     "euronext_equities": "network",
@@ -516,6 +525,7 @@
     "nasdaq_nordic_copenhagen_shares": "cache",
     "nasdaq_nordic_helsinki_etfs": "cache",
     "nasdaq_nordic_helsinki_shares": "cache",
-    "set_etf_search": "network"
+    "set_etf_search": "network",
+    "nasdaq_nordic_helsinki_shares_search": "network"
   }
 }

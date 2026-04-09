@@ -270,6 +270,15 @@
     "official": true
   },
   {
+    "key": "nasdaq_nordic_helsinki_shares_search",
+    "provider": "Nasdaq Nordic",
+    "description": "Official Nasdaq Nordic Helsinki share search supplement for exact stock ticker gaps",
+    "source_url": "https://api.nasdaq.com/api/nordic/search",
+    "format": "nasdaq_nordic_helsinki_shares_search_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "nasdaq_nordic_copenhagen_shares",
     "provider": "Nasdaq Nordic",
     "description": "Official Nasdaq Nordic Copenhagen shares screener (Main Market + First North)",

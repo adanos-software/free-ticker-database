@@ -54,6 +54,7 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_lse_instrument_search_exact,
     fetch_jse_exchange_traded_product_rows,
     fetch_jse_instrument_search_exact,
+    fetch_nasdaq_nordic_helsinki_shares_search,
     fetch_nasdaq_nordic_stockholm_shares,
     fetch_nasdaq_nordic_stockholm_trackers,
     fetch_psx_listed_companies,
@@ -66,6 +67,7 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_szse_etf_list,
     fetch_source_rows_with_mode,
     fetch_tmx_money_etfs,
+    fetch_tmx_stock_quote_rows,
     fetch_tmx_etf_screener_quote_rows,
     infer_jpx_asset_type,
     infer_lse_lookup_asset_type,
@@ -76,14 +78,17 @@ from scripts.fetch_exchange_masterfiles import (
     load_lse_company_reports_rows,
     load_lse_instrument_directory_rows,
     load_lse_instrument_search_rows,
+    load_nasdaq_nordic_share_search_rows,
     load_nasdaq_nordic_stockholm_etf_rows,
     load_nasdaq_nordic_stockholm_tracker_rows,
     load_nasdaq_nordic_stockholm_shares_rows,
     load_set_etf_search_rows,
     load_szse_etf_list_rows,
+    merge_reference_rows,
     NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
     NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE,
     load_sec_company_tickers_exchange_payload,
+    normalize_source_keys,
     load_tpex_etf_filter_payload,
     load_tmx_etf_screener_payload,
     load_tpex_mainboard_quotes_payload,
@@ -104,6 +109,8 @@ from scripts.fetch_exchange_masterfiles import (
     parse_jse_exchange_traded_product_excel,
     parse_krx_etf_finder,
     parse_krx_listed_companies,
+    parse_krx_product_finder_records,
+    parse_krx_stock_finder_records,
     parse_nasdaq_nordic_shares,
     parse_nasdaq_nordic_stockholm_etfs,
     parse_nasdaq_nordic_stockholm_trackers,
@@ -131,7 +138,9 @@ from scripts.fetch_exchange_masterfiles import (
     parse_tmx_interlisted,
     parse_tmx_listed_issuers_excel,
     resolve_tmx_listed_issuers_download_url,
+    tmx_stock_quote_symbol_variants,
     sec_request_headers,
+    select_official_sources,
     extract_psx_sector_options,
     extract_psx_symbol_name_download_url,
     extract_psx_xid,
@@ -1899,6 +1908,63 @@ def test_parse_krx_etf_finder_maps_rows():
     ]
 
 
+def test_parse_krx_stock_finder_records_maps_rows():
+    payload = [
+        {
+            "short_code": "00279K",
+            "codeName": "아모레퍼시픽그룹1우",
+            "marketEngName": "KOSPI",
+            "full_code": "KR700279K016",
+        }
+    ]
+
+    rows = parse_krx_stock_finder_records(payload, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "00279K",
+            "name": "아모레퍼시픽그룹1우",
+            "exchange": "KRX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "KR700279K016",
+        }
+    ]
+
+
+def test_parse_krx_product_finder_records_maps_rows():
+    payload = [
+        {
+            "short_code": "448100",
+            "codeName": "ACE 테슬라밸류체인액티브",
+            "full_code": "KR7448100001",
+        }
+    ]
+
+    rows = parse_krx_product_finder_records(payload, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "448100",
+            "name": "ACE 테슬라밸류체인액티브",
+            "exchange": "KRX",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "KR7448100001",
+        }
+    ]
+
+
 def test_fetch_krx_listed_companies_fetches_kospi_kosdaq_and_konex(monkeypatch):
     source = MasterfileSource(
         key="krx",
@@ -1944,6 +2010,7 @@ def test_fetch_krx_listed_companies_fetches_kospi_kosdaq_and_konex(monkeypatch):
             return FakeResponse(payload=payload)
 
     monkeypatch.setattr("scripts.fetch_exchange_masterfiles.pd.read_html", lambda *_args, **_kwargs: [object()])
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.latest_reference_gap_tickers", lambda *_args, **_kwargs: set())
     session = FakeSession()
     rows = fetch_krx_listed_companies(source, session=session)
 
@@ -1951,7 +2018,75 @@ def test_fetch_krx_listed_companies_fetches_kospi_kosdaq_and_konex(monkeypatch):
     assert [row["exchange"] for row in rows] == ["KRX", "KOSDAQ", "KRX"]
 
 
-def test_fetch_krx_etf_finder_posts_finder_request():
+def test_fetch_krx_listed_companies_supplements_target_gaps_from_finder(monkeypatch):
+    source = MasterfileSource(
+        key="krx",
+        provider="KRX",
+        description="KRX listed companies",
+        source_url="https://example.com/krx",
+        format="krx_listed_companies_json",
+    )
+
+    class FakeResponse:
+        def __init__(self, text="", payload=None):
+            self.text = text
+            self._payload = payload
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.headers = {}
+
+        def get(self, url, **kwargs):
+            if "GenerateOTP.jspx" in url:
+                return FakeResponse(text="otp")
+            return FakeResponse(text="<table><tr><td>ok</td></tr></table>")
+
+        def post(self, url, data=None, **kwargs):
+            return FakeResponse(payload={"block1": []})
+
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.pd.read_html", lambda *_args, **_kwargs: [object()])
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.latest_reference_gap_tickers",
+        lambda *_args, **_kwargs: {"00279K"},
+    )
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.fetch_krx_finder_records",
+        lambda *args, **kwargs: [
+            {
+                "short_code": "00279K",
+                "codeName": "아모레퍼시픽그룹1우",
+                "marketEngName": "KOSPI",
+                "full_code": "KR700279K016",
+            }
+        ],
+    )
+
+    rows = fetch_krx_listed_companies(source, session=FakeSession())
+
+    assert rows == [
+        {
+            "source_key": "krx",
+            "provider": "KRX",
+            "source_url": "https://example.com/krx",
+            "ticker": "00279K",
+            "name": "아모레퍼시픽그룹1우",
+            "exchange": "KRX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "KR700279K016",
+        }
+    ]
+
+
+def test_fetch_krx_etf_finder_posts_finder_request(monkeypatch):
     source = MasterfileSource(
         key="krx_etf_finder",
         provider="KRX",
@@ -1975,6 +2110,7 @@ def test_fetch_krx_etf_finder_posts_finder_request():
             self.calls.append((url, data, headers, timeout))
             return FakeResponse()
 
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.latest_reference_gap_tickers", lambda *_args, **_kwargs: set())
     session = FakeSession()
     rows = fetch_krx_etf_finder(source, session=session)
 
@@ -1994,6 +2130,50 @@ def test_fetch_krx_etf_finder_posts_finder_request():
             },
             30.0,
         )
+    ]
+
+
+def test_fetch_krx_etf_finder_replaces_target_gap_with_exact_product_finder_row(monkeypatch):
+    source = MasterfileSource(
+        key="krx_etf_finder",
+        provider="KRX",
+        description="KRX ETF finder",
+        source_url="https://example.com/krx-etf",
+        format="krx_etf_finder_json",
+    )
+
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.latest_reference_gap_tickers",
+        lambda *_args, **_kwargs: {"448100"},
+    )
+
+    def fake_fetch_krx_finder_records(bld, *, mktsel="ALL", search_text="", session=None):
+        assert bld == "dbms/comm/finder/finder_secuprodisu"
+        if mktsel == "ETF":
+            return [{"short_code": "448100", "codeName": "ACE Tesla Value Chain Active"}]
+        return [{"short_code": "448100", "codeName": "ACE 테슬라밸류체인액티브", "full_code": "KR7448100001"}]
+
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.fetch_krx_finder_records",
+        fake_fetch_krx_finder_records,
+    )
+
+    rows = fetch_krx_etf_finder(source, session=object())
+
+    assert rows == [
+        {
+            "source_key": "krx_etf_finder",
+            "provider": "KRX",
+            "source_url": "https://example.com/krx-etf",
+            "ticker": "448100",
+            "name": "ACE 테슬라밸류체인액티브",
+            "exchange": "KRX",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "KR7448100001",
+        }
     ]
 
 
@@ -3002,6 +3182,79 @@ def test_fetch_tmx_etf_screener_quote_rows_normalizes_series_and_skips_name_mism
     ]
 
 
+def test_tmx_stock_quote_symbol_variants_prefers_dot_then_root() -> None:
+    assert tmx_stock_quote_symbol_variants("ALAB-P") == ["ALAB.P", "ALAB", "ALAB-P"]
+    assert tmx_stock_quote_symbol_variants("ACL") == ["ACL"]
+
+
+def test_fetch_tmx_stock_quote_rows_backfills_tmx_suffix_stocks(tmp_path, monkeypatch):
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,name,exchange,asset_type,isin",
+                "ALAB-P,A-Labs Capital II Corp,TSXV,Stock,CA58504D1006",
+                "ODV-WTV,ODV-WTV,TSXV,Stock,",
+                "MMX,MMX,TSXV,Stock,US5732841060",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    verification_dir = tmp_path / "stock_verification"
+    run_dir = verification_dir / "run-01"
+    run_dir.mkdir(parents=True)
+    (run_dir / "chunk-01-of-01.csv").write_text(
+        "\n".join(
+            [
+                "ticker,name,exchange,status",
+                "ALAB-P,A-Labs Capital II Corp,TSXV,reference_gap",
+                "ODV-WTV,ODV-WTV,TSXV,reference_gap",
+                "MMX,MMX,TSXV,reference_gap",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    def fake_fetch_tmx_money_quote(symbol: str, session=None):
+        payloads = {
+            "ALAB.P": {"symbol": "ALAB.P", "name": "A-Labs Capital II Corp.", "exchangeCode": "CDX"},
+            "ODV": {"symbol": "ODV", "name": "Osisko Development Corp.", "exchangeCode": "CDX"},
+            "MMX": {"symbol": "MMX", "name": "Mustang Minerals Limited", "exchangeCode": "CDX"},
+        }
+        return payloads.get(symbol)
+
+    monkeypatch.setattr(fetch_exchange_masterfiles, "fetch_tmx_money_quote", fake_fetch_tmx_money_quote)
+
+    rows = fetch_tmx_stock_quote_rows(
+        [],
+        MasterfileSource(
+            key="tmx_listed_issuers",
+            provider="TMX",
+            description="Official TSX/TSXV listed issuers workbook",
+            source_url="https://www.tsx.com/en/listings/current-market-statistics/mig-archives",
+            format="tmx_listed_issuers_excel",
+        ),
+        listings_path=listings_path,
+        verification_dir=verification_dir,
+    )
+
+    assert rows == [
+        {
+            "source_key": "tmx_listed_issuers",
+            "provider": "TMX",
+            "source_url": TMX_MONEY_GRAPHQL_URL,
+            "ticker": "ALAB-P",
+            "name": "A-Labs Capital II Corp.",
+            "exchange": "TSXV",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "CA58504D1006",
+        }
+    ]
+
+
 def test_fetch_tmx_money_etfs_adds_source_url() -> None:
     class DummyResponse:
         def raise_for_status(self) -> None:
@@ -3859,6 +4112,146 @@ def test_fetch_nasdaq_nordic_stockholm_shares_includes_first_north() -> None:
     ]
 
 
+def test_fetch_nasdaq_nordic_helsinki_shares_search_backfills_exact_ticker_gaps(
+    tmp_path, monkeypatch
+) -> None:
+    source = MasterfileSource(
+        key="nasdaq_nordic_helsinki_shares_search",
+        provider="Nasdaq Nordic",
+        description="Official Helsinki share search supplement",
+        source_url="https://api.nasdaq.com/api/nordic/search",
+        format="nasdaq_nordic_helsinki_shares_search_json",
+        reference_scope="listed_companies_subset",
+    )
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,exchange,asset_type,name,isin",
+                "ERIBR,HEL,Stock,Telefonaktiebolaget LM Ericsson Class B,SE0000108656",
+                "ILKKA1,HEL,Stock,Ilkka Oyj 1,",
+                "WITH,HEL,Stock,WITHSECURE,FI4000519228",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "latest_reference_gap_tickers",
+        lambda base_dir, exchanges=None: {"ERIBR", "ILKKA1", "WITH"},
+    )
+
+    class FakeResponse:
+        def __init__(self, payload):
+            self._payload = payload
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            self.calls.append((url, params))
+            payloads = {
+                "ERIBR": {
+                    "data": [
+                        {
+                            "group": "Shares Main Market",
+                            "instruments": [
+                                {
+                                    "symbol": "ERIBR",
+                                    "fullName": "Ericsson B",
+                                    "isin": "SE0000108656",
+                                    "assetClass": "SHARES",
+                                    "currency": "EUR",
+                                }
+                            ],
+                        }
+                    ]
+                },
+                "ILKKA1": {
+                    "data": [
+                        {
+                            "group": "Shares Main Market",
+                            "instruments": [
+                                {
+                                    "symbol": "ILKKA1",
+                                    "fullName": "Ilkka Oyj 1",
+                                    "isin": "FI0009800197",
+                                    "assetClass": "SHARES",
+                                    "currency": "EUR",
+                                }
+                            ],
+                        }
+                    ]
+                },
+                "WITH": {
+                    "data": [
+                        {
+                            "group": "Shares Main Market",
+                            "instruments": [
+                                {
+                                    "symbol": "FSECURE",
+                                    "fullName": "F-Secure Oyj",
+                                    "isin": "FI4000519236",
+                                    "assetClass": "SHARES",
+                                    "currency": "EUR",
+                                }
+                            ],
+                        }
+                    ]
+                },
+            }
+            return FakeResponse(payloads[params["searchText"]])
+
+    session = FakeSession()
+    rows = fetch_nasdaq_nordic_helsinki_shares_search(
+        source,
+        listings_path=listings_path,
+        verification_dir=tmp_path,
+        session=session,
+    )
+
+    assert rows == [
+        {
+            "source_key": "nasdaq_nordic_helsinki_shares_search",
+            "provider": "Nasdaq Nordic",
+            "source_url": "https://api.nasdaq.com/api/nordic/search",
+            "ticker": "ERIBR",
+            "name": "Ericsson B",
+            "exchange": "HEL",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "SE0000108656",
+        },
+        {
+            "source_key": "nasdaq_nordic_helsinki_shares_search",
+            "provider": "Nasdaq Nordic",
+            "source_url": "https://api.nasdaq.com/api/nordic/search",
+            "ticker": "ILKKA1",
+            "name": "Ilkka Oyj 1",
+            "exchange": "HEL",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "FI0009800197",
+        },
+    ]
+    assert session.calls == [
+        ("https://api.nasdaq.com/api/nordic/search", {"searchText": "ERIBR"}),
+        ("https://api.nasdaq.com/api/nordic/search", {"searchText": "ILKKA1"}),
+        ("https://api.nasdaq.com/api/nordic/search", {"searchText": "WITH"}),
+    ]
+
+
 def test_parse_nasdaq_nordic_stockholm_etfs_maps_symbol_aliases() -> None:
     payload = {
         "data": {
@@ -4205,6 +4598,38 @@ def test_load_nasdaq_nordic_stockholm_shares_rows_prefers_cache(tmp_path, monkey
 
     assert mode == "cache"
     assert rows == [{"ticker": "ABB", "name": "ABB Ltd", "exchange": "STO", "asset_type": "Stock", "listing_status": "active"}]
+
+
+def test_load_nasdaq_nordic_share_search_rows_prefers_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "nasdaq_nordic_helsinki_shares_search.json"
+    cache_path.write_text(
+        '[{"ticker":"ERIBR","name":"Ericsson B","exchange":"HEL","asset_type":"Stock","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "NASDAQ_NORDIC_HELSINKI_SHARES_SEARCH_CACHE",
+        cache_path,
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_NASDAQ_NORDIC_HELSINKI_SHARES_SEARCH_CACHE",
+        tmp_path / "missing.json",
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "nasdaq_nordic_helsinki_shares_search")
+    rows, mode = load_nasdaq_nordic_share_search_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "ERIBR",
+            "name": "Ericsson B",
+            "exchange": "HEL",
+            "asset_type": "Stock",
+            "listing_status": "active",
+        }
+    ]
 
 
 def test_fetch_source_rows_with_mode_uses_sto_cache(tmp_path, monkeypatch) -> None:
@@ -4735,6 +5160,101 @@ def test_fetch_all_sources_collects_source_errors(monkeypatch):
     assert summary["source_details"]["nasdaq_listed"]["rows"] == 1
     assert summary["source_details"]["nasdaq_listed"]["generated_at"] == summary["generated_at"]
     assert summary["errors"]
+
+
+def test_normalize_source_keys_supports_repeated_and_comma_delimited_values() -> None:
+    assert normalize_source_keys(["nasdaq_listed, nasdaq_other_listed", "nasdaq_listed", " krx_etf_finder "]) == [
+        "nasdaq_listed",
+        "nasdaq_other_listed",
+        "krx_etf_finder",
+    ]
+
+
+def test_select_official_sources_rejects_unknown_keys() -> None:
+    try:
+        select_official_sources(["not_a_source"])
+    except ValueError as exc:
+        assert "not_a_source" in str(exc)
+    else:  # pragma: no cover - defensive
+        raise AssertionError("Expected ValueError for unknown source key")
+
+
+def test_fetch_all_sources_limits_to_selected_sources(monkeypatch) -> None:
+    seen: list[str] = []
+
+    def fake_fetch_source_rows_with_mode(source, session=None):
+        seen.append(source.key)
+        return [
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": source.key.upper(),
+                "name": source.key,
+                "exchange": "TEST",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        ], "network"
+
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.fetch_source_rows_with_mode", fake_fetch_source_rows_with_mode)
+    selected_sources = select_official_sources(["nasdaq_listed", "krx_etf_finder"])
+
+    rows, summary = fetch_all_sources(include_manual=False, sources=selected_sources)
+
+    assert seen == ["nasdaq_listed", "krx_etf_finder"]
+    assert [row["source_key"] for row in rows] == ["krx_etf_finder", "nasdaq_listed"]
+    assert summary["source_modes"] == {"nasdaq_listed": "network", "krx_etf_finder": "network"}
+
+
+def test_merge_reference_rows_replaces_only_selected_sources() -> None:
+    merged = merge_reference_rows(
+        [
+            {
+                "source_key": "nasdaq_listed",
+                "ticker": "AAPL",
+                "exchange": "NASDAQ",
+                "listing_status": "active",
+                "reference_scope": "exchange_directory",
+            },
+            {
+                "source_key": "krx_etf_finder",
+                "ticker": "091220",
+                "exchange": "KRX",
+                "listing_status": "active",
+                "reference_scope": "listed_companies_subset",
+            },
+        ],
+        [
+            {
+                "source_key": "krx_etf_finder",
+                "ticker": "104530",
+                "exchange": "KRX",
+                "listing_status": "active",
+                "reference_scope": "listed_companies_subset",
+            }
+        ],
+        source_keys={"krx_etf_finder"},
+    )
+
+    assert merged == [
+        {
+            "source_key": "krx_etf_finder",
+            "ticker": "104530",
+            "exchange": "KRX",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+        },
+        {
+            "source_key": "nasdaq_listed",
+            "ticker": "AAPL",
+            "exchange": "NASDAQ",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+        },
+    ]
 
 
 def test_load_sec_company_tickers_exchange_payload_prefers_cache(tmp_path, monkeypatch):

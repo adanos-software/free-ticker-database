@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import csv
 import io
 import json
@@ -31,6 +32,19 @@ MASTERFILE_REFERENCE_CSV = MASTERFILES_DIR / "reference.csv"
 MASTERFILE_SOURCES_JSON = MASTERFILES_DIR / "sources.json"
 MASTERFILE_SUMMARY_JSON = MASTERFILES_DIR / "summary.json"
 MASTERFILE_CACHE_DIR = MASTERFILES_DIR / "cache"
+MASTERFILE_FIELDNAMES = [
+    "source_key",
+    "provider",
+    "source_url",
+    "ticker",
+    "name",
+    "exchange",
+    "asset_type",
+    "listing_status",
+    "reference_scope",
+    "official",
+    "isin",
+]
 LISTINGS_CSV = DATA_DIR / "listings.csv"
 STOCK_VERIFICATION_DIR = DATA_DIR / "stock_verification"
 ETF_VERIFICATION_DIR = DATA_DIR / "etf_verification"
@@ -60,6 +74,8 @@ NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_s
 LEGACY_NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE = MASTERFILES_DIR / "nasdaq_nordic_stockholm_trackers.json"
 NASDAQ_NORDIC_HELSINKI_SHARES_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_helsinki_shares.json"
 LEGACY_NASDAQ_NORDIC_HELSINKI_SHARES_CACHE = MASTERFILES_DIR / "nasdaq_nordic_helsinki_shares.json"
+NASDAQ_NORDIC_HELSINKI_SHARES_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_helsinki_shares_search.json"
+LEGACY_NASDAQ_NORDIC_HELSINKI_SHARES_SEARCH_CACHE = MASTERFILES_DIR / "nasdaq_nordic_helsinki_shares_search.json"
 NASDAQ_NORDIC_HELSINKI_ETFS_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_helsinki_etfs.json"
 LEGACY_NASDAQ_NORDIC_HELSINKI_ETFS_CACHE = MASTERFILES_DIR / "nasdaq_nordic_helsinki_etfs.json"
 NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_copenhagen_shares.json"
@@ -104,6 +120,10 @@ TMX_MONEY_GET_ETFS_QUERY = (
     "symbol shortname longname fundfamily currency "
     "} }"
 )
+TMX_QUOTE_EXCHANGE_CODE_TO_EXCHANGE = {
+    "TSX": "TSX",
+    "CDX": "TSXV",
+}
 EURONEXT_EQUITIES_DOWNLOAD_URL = "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock"
 EURONEXT_ETFS_DOWNLOAD_URL = (
     "https://live.euronext.com/en/product_directory/data/etf-all-markets/download"
@@ -151,6 +171,9 @@ NASDAQ_NORDIC_ETF_SOURCE_CONFIG = {
     "nasdaq_nordic_stockholm_etfs": {"exchange": "STO", "market": "STO"},
     "nasdaq_nordic_helsinki_etfs": {"exchange": "HEL", "market": "HEL"},
     "nasdaq_nordic_copenhagen_etfs": {"exchange": "CPH", "market": "CPH"},
+}
+NASDAQ_NORDIC_SHARE_SEARCH_SOURCE_CONFIG = {
+    "nasdaq_nordic_helsinki_shares_search": {"exchange": "HEL", "currency": "EUR"},
 }
 TWSE_LISTED_COMPANIES_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
 TWSE_ETF_LIST_URL = "https://www.twse.com.tw/rwd/en/ETF/list"
@@ -345,6 +368,11 @@ KRX_MARKET_GUBUN_TO_EXCHANGE = {
     "1": "KRX",
     "2": "KOSDAQ",
     "6": "KRX",
+}
+KRX_MARKET_ENGNAME_TO_EXCHANGE = {
+    "KOSPI": "KRX",
+    "KOSDAQ": "KOSDAQ",
+    "KONEX": "KRX",
 }
 SSE_JSONP_RE = re.compile(r"^[^(]+\((.*)\)\s*$", re.S)
 SSE_STOCK_TYPES = ("1", "2", "8")
@@ -636,6 +664,14 @@ OFFICIAL_SOURCES = [
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
+        key="nasdaq_nordic_helsinki_shares_search",
+        provider="Nasdaq Nordic",
+        description="Official Nasdaq Nordic Helsinki share search supplement for exact stock ticker gaps",
+        source_url=NASDAQ_NORDIC_SEARCH_URL,
+        format="nasdaq_nordic_helsinki_shares_search_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
         key="nasdaq_nordic_copenhagen_shares",
         provider="Nasdaq Nordic",
         description="Official Nasdaq Nordic Copenhagen shares screener (Main Market + First North)",
@@ -799,6 +835,44 @@ def load_csv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
+def normalize_source_keys(values: Iterable[str] | None) -> list[str]:
+    normalized: list[str] = []
+    seen: set[str] = set()
+    for value in values or ():
+        for item in str(value).split(","):
+            key = item.strip()
+            if not key or key in seen:
+                continue
+            seen.add(key)
+            normalized.append(key)
+    return normalized
+
+
+def select_official_sources(source_keys: Iterable[str] | None = None) -> list[MasterfileSource]:
+    requested_keys = normalize_source_keys(source_keys)
+    if not requested_keys:
+        return list(OFFICIAL_SOURCES)
+
+    available = {source.key: source for source in OFFICIAL_SOURCES}
+    unknown = [key for key in requested_keys if key not in available]
+    if unknown:
+        available_keys = ", ".join(sorted(available))
+        unknown_keys = ", ".join(sorted(unknown))
+        raise ValueError(f"Unknown source key(s): {unknown_keys}. Available keys: {available_keys}")
+    return [available[key] for key in requested_keys]
+
+
+def merge_reference_rows(
+    existing_rows: Iterable[dict[str, str]],
+    refreshed_rows: Iterable[dict[str, str]],
+    *,
+    source_keys: Iterable[str],
+) -> list[dict[str, str]]:
+    selected_source_keys = set(source_keys)
+    preserved_rows = [row for row in existing_rows if row.get("source_key", "") not in selected_source_keys]
+    return dedupe_rows([*preserved_rows, *refreshed_rows])
+
+
 def load_manual_masterfiles(manual_dir: Path) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     if not manual_dir.exists():
@@ -945,6 +1019,25 @@ def tmx_lookup_symbol_variants(ticker: str) -> list[str]:
     return variants
 
 
+def tmx_stock_quote_symbol_variants(ticker: str) -> list[str]:
+    normalized = ticker.strip().upper()
+    if not normalized:
+        return []
+    variants: list[str] = []
+    if "-" in normalized:
+        variants.append(normalized.replace("-", "."))
+        variants.append(normalized.split("-", 1)[0])
+    variants.append(normalized)
+    seen: set[str] = set()
+    deduped: list[str] = []
+    for variant in variants:
+        if variant in seen:
+            continue
+        seen.add(variant)
+        deduped.append(variant)
+    return deduped
+
+
 def fetch_text(url: str, session: requests.Session | None = None) -> str:
     session = session or requests.Session()
     response = session.get(url, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT)
@@ -1011,6 +1104,31 @@ def krx_request_headers() -> dict[str, str]:
         "Referer": KRX_LISTED_COMPANIES_URL,
         "Origin": "https://global.krx.co.kr",
     }
+
+
+def fetch_krx_finder_records(
+    bld: str,
+    *,
+    mktsel: str = "ALL",
+    search_text: str = "",
+    session: requests.Session | None = None,
+) -> list[dict[str, Any]]:
+    session = session or requests.Session()
+    response = session.post(
+        KRX_JSON_DATA_URL,
+        data={
+            "bld": bld,
+            "mktsel": mktsel,
+            "searchText": search_text,
+        },
+        headers={
+            "User-Agent": USER_AGENT,
+            "Referer": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+        },
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    return response.json().get("block1", [])
 
 
 def psx_request_headers(*, ajax: bool = False) -> dict[str, str]:
@@ -1282,6 +1400,48 @@ def tmx_etf_quote_lookup_target_rows(
     ]
 
 
+def tmx_stock_quote_lookup_target_rows(
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    verification_dir: Path = STOCK_VERIFICATION_DIR,
+) -> list[dict[str, str]]:
+    target_tickers = latest_reference_gap_tickers(
+        verification_dir,
+        exchanges={"TSX", "TSXV"},
+    )
+    if not target_tickers:
+        return []
+    return [
+        row
+        for row in load_csv(listings_path)
+        if row.get("exchange") in {"TSX", "TSXV"}
+        and row.get("asset_type") == "Stock"
+        and row.get("ticker", "").strip() in target_tickers
+    ]
+
+
+def nasdaq_nordic_share_search_target_rows(
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    verification_dir: Path = STOCK_VERIFICATION_DIR,
+) -> list[dict[str, str]]:
+    config = NASDAQ_NORDIC_SHARE_SEARCH_SOURCE_CONFIG[source.key]
+    target_tickers = latest_reference_gap_tickers(
+        verification_dir,
+        exchanges={config["exchange"]},
+    )
+    if not target_tickers:
+        return []
+    return [
+        row
+        for row in load_csv(listings_path)
+        if row.get("exchange") == config["exchange"]
+        and row.get("asset_type") == "Stock"
+        and row.get("ticker", "").strip() in target_tickers
+    ]
+
+
 def fetch_tmx_etf_screener_quote_rows(
     payload: list[dict[str, Any]],
     *,
@@ -1333,6 +1493,125 @@ def fetch_tmx_etf_screener_quote_rows(
     return rows
 
 
+def fetch_tmx_stock_quote_rows(
+    existing_rows: list[dict[str, str]],
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    verification_dir: Path = STOCK_VERIFICATION_DIR,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    covered_tickers = {row.get("ticker", "").strip().upper() for row in existing_rows}
+    target_rows = [
+        row
+        for row in tmx_stock_quote_lookup_target_rows(
+            listings_path=listings_path,
+            verification_dir=verification_dir,
+        )
+        if row.get("ticker", "").strip().upper() not in covered_tickers
+    ]
+    session = session or requests.Session()
+    rows: list[dict[str, str]] = []
+    for listing_row in target_rows:
+        listing_ticker = listing_row.get("ticker", "").strip().upper()
+        listing_name = listing_row.get("name", "").strip()
+        exchange = listing_row.get("exchange", "").strip()
+        if not listing_ticker or not listing_name or not exchange:
+            continue
+        for symbol in tmx_stock_quote_symbol_variants(listing_ticker):
+            try:
+                candidate = fetch_tmx_money_quote(symbol, session=session)
+            except (requests.RequestException, ValueError, json.JSONDecodeError):
+                candidate = None
+            if candidate is None:
+                continue
+            candidate_exchange = TMX_QUOTE_EXCHANGE_CODE_TO_EXCHANGE.get(str(candidate.get("exchangeCode", "")).strip().upper(), "")
+            if candidate_exchange != exchange:
+                continue
+            candidate_name = str(candidate.get("name", "")).strip()
+            if not candidate_name or not tmx_lookup_name_matches(listing_name, candidate_name):
+                continue
+            rows.append(
+                {
+                    "source_key": source.key,
+                    "provider": source.provider,
+                    "source_url": TMX_MONEY_GRAPHQL_URL,
+                    "ticker": listing_ticker,
+                    "name": candidate_name,
+                    "exchange": exchange,
+                    "asset_type": "Stock",
+                    "listing_status": "active",
+                    "reference_scope": source.reference_scope,
+                    "official": "true",
+                    "isin": listing_row.get("isin", "").strip(),
+                }
+            )
+            covered_tickers.add(listing_ticker)
+            break
+    return rows
+
+
+def fetch_nasdaq_nordic_helsinki_shares_search(
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    verification_dir: Path = STOCK_VERIFICATION_DIR,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    config = NASDAQ_NORDIC_SHARE_SEARCH_SOURCE_CONFIG[source.key]
+    session = session or requests.Session()
+    headers = nasdaq_nordic_request_headers(NASDAQ_NORDIC_STOCK_PAGE_URL)
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for listing_row in nasdaq_nordic_share_search_target_rows(
+        source,
+        listings_path=listings_path,
+        verification_dir=verification_dir,
+    ):
+        listing_ticker = listing_row.get("ticker", "").strip().upper()
+        if not listing_ticker or listing_ticker in seen:
+            continue
+        response = session.get(
+            source.source_url,
+            params={"searchText": listing_ticker},
+            headers=headers,
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        payload = response.json().get("data") or []
+        for group in payload:
+            for instrument in group.get("instruments") or []:
+                if instrument.get("assetClass") != "SHARES":
+                    continue
+                if str(instrument.get("currency", "")).strip().upper() != config["currency"]:
+                    continue
+                symbol = str(instrument.get("symbol", "")).strip().upper()
+                name = str(instrument.get("fullName", "")).strip()
+                isin = str(instrument.get("isin", "")).strip().upper()
+                if symbol != listing_ticker or not name:
+                    continue
+                row = {
+                    "source_key": source.key,
+                    "provider": source.provider,
+                    "source_url": source.source_url,
+                    "ticker": symbol,
+                    "name": name,
+                    "exchange": config["exchange"],
+                    "asset_type": "Stock",
+                    "listing_status": "active",
+                    "reference_scope": source.reference_scope,
+                    "official": "true",
+                }
+                if isin:
+                    row["isin"] = isin
+                rows.append(row)
+                seen.add(symbol)
+                break
+            if listing_ticker in seen:
+                break
+    return rows
+
+
 def load_jse_exchange_traded_product_rows(
     source: MasterfileSource,
     session: requests.Session | None = None,
@@ -1376,6 +1655,16 @@ def nasdaq_nordic_shares_cache_paths(source_key: str) -> tuple[Path, Path]:
     return mapping[source_key]
 
 
+def nasdaq_nordic_share_search_cache_paths(source_key: str) -> tuple[Path, Path]:
+    mapping = {
+        "nasdaq_nordic_helsinki_shares_search": (
+            NASDAQ_NORDIC_HELSINKI_SHARES_SEARCH_CACHE,
+            LEGACY_NASDAQ_NORDIC_HELSINKI_SHARES_SEARCH_CACHE,
+        ),
+    }
+    return mapping[source_key]
+
+
 def nasdaq_nordic_etf_cache_paths(source_key: str) -> tuple[Path, Path]:
     mapping = {
         "nasdaq_nordic_stockholm_etfs": (
@@ -1409,6 +1698,24 @@ def load_nasdaq_nordic_stockholm_shares_rows(
 
     ensure_output_dirs()
     nasdaq_nordic_shares_cache_paths(source.key)[0].write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def load_nasdaq_nordic_share_search_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in nasdaq_nordic_share_search_cache_paths(source.key):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+
+    try:
+        rows = fetch_nasdaq_nordic_helsinki_shares_search(source, session=session)
+    except requests.RequestException:
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    nasdaq_nordic_share_search_cache_paths(source.key)[0].write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"
 
 
@@ -2500,6 +2807,42 @@ def parse_krx_listed_companies(
     return rows
 
 
+def normalize_krx_finder_isin(value: Any) -> str:
+    normalized = str(value or "").strip().upper()
+    if len(normalized) != 12 or not normalized.isalnum():
+        return ""
+    return normalized
+
+
+def parse_krx_stock_finder_records(
+    payload: list[dict[str, Any]],
+    source: MasterfileSource,
+) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for record in payload:
+        ticker = str(record.get("short_code", "")).strip()
+        name = str(record.get("codeName", "")).strip()
+        exchange = KRX_MARKET_ENGNAME_TO_EXCHANGE.get(str(record.get("marketEngName", "")).strip().upper(), "")
+        if not ticker or not name or not exchange:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": exchange,
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+                "isin": normalize_krx_finder_isin(record.get("full_code", "")),
+            }
+        )
+    return rows
+
+
 def parse_krx_etf_finder(
     payload: dict[str, Any],
     source: MasterfileSource,
@@ -2522,6 +2865,34 @@ def parse_krx_etf_finder(
                 "listing_status": "active",
                 "reference_scope": source.reference_scope,
                 "official": "true",
+            }
+        )
+    return rows
+
+
+def parse_krx_product_finder_records(
+    payload: list[dict[str, Any]],
+    source: MasterfileSource,
+) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for record in payload:
+        ticker = str(record.get("short_code", "")).strip()
+        name = str(record.get("codeName", "")).strip()
+        if not ticker or not name:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "KRX",
+                "asset_type": "ETF",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+                "isin": normalize_krx_finder_isin(record.get("full_code", "")),
             }
         )
     return rows
@@ -4288,26 +4659,70 @@ def fetch_krx_listed_companies(source: MasterfileSource, session: requests.Sessi
         response.raise_for_status()
         payload = response.json().get("block1", [])
         rows.extend(parse_krx_listed_companies(payload, source, exchange=exchange))
+
+    covered_tickers = {row["ticker"] for row in rows}
+    target_tickers = latest_reference_gap_tickers(STOCK_VERIFICATION_DIR, exchanges={"KRX"})
+    if target_tickers:
+        finder_payload = fetch_krx_finder_records(
+            "dbms/comm/finder/finder_stkisu",
+            session=session,
+        )
+        for row in parse_krx_stock_finder_records(finder_payload, source):
+            if row["ticker"] not in target_tickers or row["ticker"] in covered_tickers:
+                continue
+            rows.append(row)
+            covered_tickers.add(row["ticker"])
     return rows
 
 
 def fetch_krx_etf_finder(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
     session = session or requests.Session()
-    response = session.post(
-        KRX_JSON_DATA_URL,
-        data={
-            "bld": "dbms/comm/finder/finder_secuprodisu",
-            "mktsel": "ETF",
-            "searchText": "",
-        },
-        headers={
-            "User-Agent": USER_AGENT,
-            "Referer": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
-        },
-        timeout=REQUEST_TIMEOUT,
-    )
-    response.raise_for_status()
-    return parse_krx_etf_finder(response.json(), source)
+    payload = {
+        "block1": fetch_krx_finder_records(
+            "dbms/comm/finder/finder_secuprodisu",
+            mktsel="ETF",
+            session=session,
+        )
+    }
+    rows = parse_krx_etf_finder(payload, source)
+
+    target_tickers = latest_reference_gap_tickers(ETF_VERIFICATION_DIR, exchanges={"KRX"})
+    if not target_tickers:
+        return rows
+
+    exact_rows_by_ticker = {
+        row["ticker"]: row
+        for row in parse_krx_product_finder_records(
+            fetch_krx_finder_records(
+                "dbms/comm/finder/finder_secuprodisu",
+                session=session,
+            ),
+            source,
+        )
+        if row["ticker"] in target_tickers
+    }
+    if not exact_rows_by_ticker:
+        return rows
+
+    merged_rows: list[dict[str, str]] = []
+    seen_tickers: set[str] = set()
+    for row in rows:
+        ticker = row["ticker"]
+        if ticker in exact_rows_by_ticker:
+            if ticker in seen_tickers:
+                continue
+            merged_rows.append(exact_rows_by_ticker.pop(ticker))
+            seen_tickers.add(ticker)
+            continue
+        if ticker in seen_tickers:
+            continue
+        merged_rows.append(row)
+        seen_tickers.add(ticker)
+    for ticker, row in exact_rows_by_ticker.items():
+        if ticker in seen_tickers:
+            continue
+        merged_rows.append(row)
+    return merged_rows
 
 
 def fetch_psx_listed_companies(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
@@ -4553,6 +4968,11 @@ def fetch_source_rows_with_mode(
         if rows is None:
             raise requests.RequestException(f"Nasdaq Nordic shares unavailable for {source.key}")
         return rows, mode
+    if source.format == "nasdaq_nordic_helsinki_shares_search_json":
+        rows, mode = load_nasdaq_nordic_share_search_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("Nasdaq Nordic Helsinki share search unavailable")
+        return rows, mode
     if source.format in {
         "nasdaq_nordic_stockholm_etfs_json",
         "nasdaq_nordic_helsinki_etfs_json",
@@ -4571,7 +4991,12 @@ def fetch_source_rows_with_mode(
         content, mode = load_tmx_listed_issuers_content(session=session)
         if content is None:
             raise requests.RequestException("TMX listed issuers workbook unavailable")
-        return parse_tmx_listed_issuers_excel(content, source), mode
+        rows = parse_tmx_listed_issuers_excel(content, source)
+        supplemental_rows = fetch_tmx_stock_quote_rows(rows, source, session=session)
+        if supplemental_rows:
+            rows.extend(supplemental_rows)
+            mode = "network"
+        return rows, mode
     if source.format == "tmx_etf_screener_json":
         payload, mode = load_tmx_etf_screener_payload(session=session)
         if payload is None:
@@ -4602,19 +5027,28 @@ def build_summary(
     rows: list[dict[str, str]],
     source_modes: dict[str, str] | None = None,
     generated_at: str | None = None,
+    source_metadata_overrides: dict[str, dict[str, Any]] | None = None,
+    refreshed_source_keys: Iterable[str] | None = None,
 ) -> dict[str, Any]:
     exchanges = sorted({row["exchange"] for row in rows if row["exchange"]})
     source_counts: dict[str, int] = {}
     for row in rows:
         source_counts[row["source_key"]] = source_counts.get(row["source_key"], 0) + 1
+    source_metadata_overrides = source_metadata_overrides or {}
+    source_modes = source_modes or {}
+    refreshed = set(refreshed_source_keys or source_modes.keys() or source_counts.keys())
     source_details = {
         source.key: {
             "provider": source.provider,
             "reference_scope": source.reference_scope,
             "official": source.official,
-            "mode": source_modes.get(source.key, "unknown") if source_modes else "unknown",
+            "mode": source_modes.get(source.key, source_metadata_overrides.get(source.key, {}).get("mode", "unknown")),
             "rows": source_counts.get(source.key, 0),
-            "generated_at": generated_at or "",
+            "generated_at": (
+                generated_at or ""
+                if source.key in refreshed
+                else str(source_metadata_overrides.get(source.key, {}).get("generated_at", ""))
+            ),
         }
         for source in OFFICIAL_SOURCES
     }
@@ -4634,6 +5068,7 @@ def fetch_all_sources(
     session: requests.Session | None = None,
     include_manual: bool = True,
     manual_dir: Path | None = None,
+    sources: Iterable[MasterfileSource] | None = None,
 ) -> tuple[list[dict[str, str]], dict[str, Any]]:
     ensure_output_dirs()
     session = session or requests.Session()
@@ -4641,7 +5076,8 @@ def fetch_all_sources(
     errors: list[dict[str, str]] = []
     source_modes: dict[str, str] = {}
     generated_at = utc_now_iso()
-    for source in OFFICIAL_SOURCES:
+    selected_sources = list(sources or OFFICIAL_SOURCES)
+    for source in selected_sources:
         try:
             source_rows, mode = fetch_source_rows_with_mode(source, session=session)
             rows.extend(source_rows)
@@ -4664,12 +5100,63 @@ def persist_source_metadata() -> None:
     MASTERFILE_SOURCES_JSON.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
 
-def main() -> None:
-    rows, summary = fetch_all_sources()
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Fetch official exchange masterfiles into data/masterfiles/reference.csv.")
+    parser.add_argument(
+        "--source",
+        action="append",
+        dest="sources",
+        help="Refresh only selected source key(s). Repeat the flag or pass a comma-separated list.",
+    )
+    parser.add_argument(
+        "--manual-dir",
+        type=Path,
+        default=MASTERFILES_DIR / "manual",
+        help="Directory containing manual supplement CSVs.",
+    )
+    parser.add_argument(
+        "--no-manual",
+        action="store_true",
+        help="Skip loading manual supplement CSVs.",
+    )
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> None:
+    args = parse_args(argv)
+    try:
+        selected_sources = select_official_sources(args.sources)
+    except ValueError as exc:
+        raise SystemExit(str(exc)) from exc
+
+    rows, summary = fetch_all_sources(
+        include_manual=not args.no_manual,
+        manual_dir=args.manual_dir,
+        sources=selected_sources,
+    )
+    selected_source_keys = {source.key for source in selected_sources}
+    if args.sources and MASTERFILE_REFERENCE_CSV.exists():
+        existing_rows = load_csv(MASTERFILE_REFERENCE_CSV)
+        rows = merge_reference_rows(existing_rows, rows, source_keys=selected_source_keys)
+        existing_summary: dict[str, Any] = {}
+        if MASTERFILE_SUMMARY_JSON.exists():
+            existing_summary = json.loads(MASTERFILE_SUMMARY_JSON.read_text(encoding="utf-8"))
+        merged_source_modes = dict(existing_summary.get("source_modes", {}))
+        merged_source_modes.update(summary.get("source_modes", {}))
+        errors = summary.get("errors")
+        summary = build_summary(
+            rows,
+            source_modes=merged_source_modes,
+            generated_at=summary.get("generated_at"),
+            source_metadata_overrides=existing_summary.get("source_details", {}),
+            refreshed_source_keys=selected_source_keys,
+        )
+        if errors:
+            summary["errors"] = errors
     persist_source_metadata()
     write_csv(
         MASTERFILE_REFERENCE_CSV,
-        ["source_key", "provider", "source_url", "ticker", "name", "exchange", "asset_type", "listing_status", "reference_scope", "official", "isin"],
+        MASTERFILE_FIELDNAMES,
         rows,
     )
     MASTERFILE_SUMMARY_JSON.write_text(json.dumps(summary, indent=2), encoding="utf-8")

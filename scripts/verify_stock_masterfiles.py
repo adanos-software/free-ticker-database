@@ -371,6 +371,15 @@ def classify_row(
             ):
                 status = "verified"
                 reason = "Matched active official LSE listing and exact instrument lookup."
+            elif (
+                row.get("isin", "").strip()
+                and any(
+                    candidate.get("isin", "").strip().upper() == row.get("isin", "").strip().upper()
+                    for candidate in same_type_rows
+                )
+            ):
+                status = "verified"
+                reason = "Matched active official listing via same-ticker ISIN."
             elif source_keys and source_keys <= LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE.get(exchange, set()):
                 status = "reference_gap"
                 reason = "Only low-confidence issuer reference evidence exists for this listing."

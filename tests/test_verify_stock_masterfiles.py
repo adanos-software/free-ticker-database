@@ -1896,6 +1896,42 @@ def test_classify_row_downgrades_krx_etf_finder_name_mismatch_to_reference_gap()
     assert result["reason"] == "Only low-confidence issuer reference evidence exists for this listing."
 
 
+def test_classify_row_verifies_same_ticker_same_exchange_isin_match() -> None:
+    row = {
+        "ticker": "295040",
+        "exchange": "KRX",
+        "asset_type": "ETF",
+        "name": "Shinhan BNP Paribas Asset Management Company - BNPP SMART 200 Total Return ETF",
+        "country": "South Korea",
+        "country_code": "KR",
+        "isin": "KR7295040000",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("KRX", "295040"): [
+                {
+                    "ticker": "295040",
+                    "exchange": "KRX",
+                    "name": "SOL 200TR",
+                    "asset_type": "ETF",
+                    "source_key": "krx_etf_finder",
+                    "listing_status": "active",
+                    "isin": "KR7295040000",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges=set(),
+        partial_covered_exchanges={"KRX"},
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+    assert result["reason"] == "Matched active official listing via same-ticker ISIN."
+
+
 def test_is_code_like_reference_name_handles_compact_trading_labels() -> None:
     assert is_code_like_reference_name("MBWS", "MBWS")
     assert not is_code_like_reference_name("First Community Bankshares, Inc. - Common Stock", "FCBC")
