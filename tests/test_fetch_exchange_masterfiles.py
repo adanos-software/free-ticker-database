@@ -21,6 +21,7 @@ from scripts.fetch_exchange_masterfiles import (
     LEGACY_NASDAQ_NORDIC_HELSINKI_ETFS_CACHE,
     LEGACY_NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
     LEGACY_NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE,
+    LEGACY_SET_ETF_SEARCH_CACHE,
     LEGACY_SZSE_ETF_LIST_CACHE,
     LEGACY_TMX_ETF_SCREENER_CACHE,
     LEGACY_TPEX_ETF_FILTER_CACHE,
@@ -78,6 +79,7 @@ from scripts.fetch_exchange_masterfiles import (
     load_nasdaq_nordic_stockholm_etf_rows,
     load_nasdaq_nordic_stockholm_tracker_rows,
     load_nasdaq_nordic_stockholm_shares_rows,
+    load_set_etf_search_rows,
     load_szse_etf_list_rows,
     NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
     NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE,
@@ -112,6 +114,7 @@ from scripts.fetch_exchange_masterfiles import (
     parse_psx_listed_companies,
     parse_psx_symbol_name_daily,
     parse_set_listed_companies_html,
+    parse_set_quote_search_payload,
     parse_sec_company_tickers_exchange,
     parse_six_equity_issuers,
     parse_six_fund_products_csv,
@@ -133,6 +136,7 @@ from scripts.fetch_exchange_masterfiles import (
     extract_psx_symbol_name_download_url,
     extract_psx_xid,
     SZSE_ETF_LIST_CACHE,
+    SET_ETF_SEARCH_CACHE,
     TMX_MONEY_GRAPHQL_URL,
 )
 
@@ -853,6 +857,11 @@ def test_szse_etf_source_is_modeled_as_partial_official_coverage() -> None:
     assert source.reference_scope == "listed_companies_subset"
 
 
+def test_set_etf_search_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "set_etf_search")
+    assert source.reference_scope == "listed_companies_subset"
+
+
 def test_tpex_source_is_modeled_as_partial_official_coverage() -> None:
     source = next(item for item in OFFICIAL_SOURCES if item.key == "tpex_mainboard_daily_quotes")
     assert source.reference_scope == "listed_companies_subset"
@@ -1220,6 +1229,35 @@ def test_parse_set_listed_companies_html_keeps_set_and_mai_markets() -> None:
             "source_url": "https://example.com",
             "ticker": "ABFTH",
             "name": "The ABF Thailand Bond Index Fund",
+            "exchange": "SET",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_parse_set_quote_search_payload_keeps_only_etfs() -> None:
+    text = """
+    <script>
+    window.__NUXT__=(function(a,b,c,d,e,f,g,h,i,j,k,l,m,n){return {state:{quote:{searchOption:[
+      {symbol:a,nameTH:b,nameEN:c,market:d,securityType:e,typeSequence:f,industry:g,sector:h,querySector:h,isIFF:!1,isForeignListing:!1,remark:"",name:a,value:a,securityTypeName:i},
+      {symbol:j,nameTH:k,nameEN:l,market:d,securityType:m,typeSequence:n,industry:g,sector:h,querySector:h,isIFF:!1,isForeignListing:!1,remark:"",name:j,value:j,securityTypeName:"Stock"},
+      {symbol:"XETF",nameTH:"Skip",nameEN:"Skip ETF",market:"OTC",securityType:"L",typeSequence:7,industry:"",sector:"",querySector:"",isIFF:!1,isForeignListing:!1,remark:"",name:"XETF",value:"XETF",securityTypeName:"ETF"}
+    ],dropdownAdditional:[]}}}})("ABFTH","กองทุนเอบีเอฟ","THE ABF THAILAND BOND INDEX FUND","SET","L",7,"","","ETF","ADVANC","แอดวานซ์","ADVANCED INFO SERVICE PUBLIC COMPANY LIMITED","S",1);
+    </script>
+    """
+
+    rows = parse_set_quote_search_payload(text, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "ABFTH",
+            "name": "THE ABF THAILAND BOND INDEX FUND",
             "exchange": "SET",
             "asset_type": "ETF",
             "listing_status": "active",
@@ -1861,7 +1899,7 @@ def test_parse_krx_etf_finder_maps_rows():
     ]
 
 
-def test_fetch_krx_listed_companies_fetches_kospi_and_kosdaq(monkeypatch):
+def test_fetch_krx_listed_companies_fetches_kospi_kosdaq_and_konex(monkeypatch):
     source = MasterfileSource(
         key="krx",
         provider="KRX",
@@ -1890,8 +1928,8 @@ def test_fetch_krx_listed_companies_fetches_kospi_and_kosdaq(monkeypatch):
         def get(self, url, **kwargs):
             self.get_calls.append((url, kwargs))
             if "GenerateOTP.jspx" in url:
-                market = "1" if len([c for c in self.get_calls if "GenerateOTP.jspx" in c[0]]) == 1 else "2"
-                return FakeResponse(text=f"otp-{market}")
+                otp_calls = len([call for call in self.get_calls if "GenerateOTP.jspx" in call[0]])
+                return FakeResponse(text=f"otp-{otp_calls}")
             return FakeResponse(text="<table><tr><td>ok</td></tr></table>")
 
         def post(self, url, data=None, **kwargs):
@@ -1899,16 +1937,18 @@ def test_fetch_krx_listed_companies_fetches_kospi_and_kosdaq(monkeypatch):
             market = data["market_gubun"]
             if market == "1":
                 payload = {"block1": [{"isu_cd": "005930", "eng_cor_nm": "SAMSUNG ELECTRONICS"}]}
-            else:
+            elif market == "2":
                 payload = {"block1": [{"isu_cd": "091990", "eng_cor_nm": "CELLTRIONHEALTHCARE"}]}
+            else:
+                payload = {"block1": [{"isu_cd": "092590", "eng_cor_nm": "Luxpia"}]}
             return FakeResponse(payload=payload)
 
     monkeypatch.setattr("scripts.fetch_exchange_masterfiles.pd.read_html", lambda *_args, **_kwargs: [object()])
     session = FakeSession()
     rows = fetch_krx_listed_companies(source, session=session)
 
-    assert [row["ticker"] for row in rows] == ["005930", "091990"]
-    assert [row["exchange"] for row in rows] == ["KRX", "KOSDAQ"]
+    assert [row["ticker"] for row in rows] == ["005930", "091990", "092590"]
+    assert [row["exchange"] for row in rows] == ["KRX", "KOSDAQ", "KRX"]
 
 
 def test_fetch_krx_etf_finder_posts_finder_request():
@@ -4278,6 +4318,47 @@ def test_fetch_source_rows_with_mode_uses_szse_etf_cache(tmp_path, monkeypatch) 
     assert mode == "cache"
     assert rows[0]["ticker"] == "159199"
     assert rows[0]["exchange"] == "SZSE"
+
+
+def test_load_set_etf_search_rows_falls_back_to_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "set_etf_search.json"
+    cache_path.write_text(
+        '[{"ticker":"ABFTH","name":"THE ABF THAILAND BOND INDEX FUND","exchange":"SET","asset_type":"ETF","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.SET_ETF_SEARCH_CACHE", cache_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_SET_ETF_SEARCH_CACHE", tmp_path / "missing.json")
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.fetch_set_etf_search",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "set_etf_search")
+    rows, mode = load_set_etf_search_rows(source)
+
+    assert mode == "cache"
+    assert rows == [{"ticker": "ABFTH", "name": "THE ABF THAILAND BOND INDEX FUND", "exchange": "SET", "asset_type": "ETF", "listing_status": "active"}]
+
+
+def test_fetch_source_rows_with_mode_uses_set_etf_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "set_etf_search.json"
+    cache_path.write_text(
+        '[{"ticker":"ABFTH","name":"THE ABF THAILAND BOND INDEX FUND","exchange":"SET","asset_type":"ETF","listing_status":"active","source_key":"set_etf_search","reference_scope":"listed_companies_subset","official":"true","provider":"SET","source_url":"https://example.com"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.SET_ETF_SEARCH_CACHE", cache_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_SET_ETF_SEARCH_CACHE", tmp_path / "missing.json")
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.fetch_set_etf_search",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "set_etf_search")
+    rows, mode = fetch_source_rows_with_mode(source)
+
+    assert mode == "cache"
+    assert rows[0]["ticker"] == "ABFTH"
+    assert rows[0]["exchange"] == "SET"
 
 
 def test_fetch_source_rows_with_mode_uses_sto_etf_cache(tmp_path, monkeypatch) -> None:

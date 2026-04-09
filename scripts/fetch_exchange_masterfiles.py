@@ -74,6 +74,8 @@ JSE_ETN_LIST_CACHE = MASTERFILE_CACHE_DIR / "jse_etn_list.json"
 LEGACY_JSE_ETN_LIST_CACHE = MASTERFILES_DIR / "jse_etn_list.json"
 JSE_INSTRUMENT_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "jse_instrument_search.json"
 LEGACY_JSE_INSTRUMENT_SEARCH_CACHE = MASTERFILES_DIR / "jse_instrument_search.json"
+SET_ETF_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "set_etf_search.json"
+LEGACY_SET_ETF_SEARCH_CACHE = MASTERFILES_DIR / "set_etf_search.json"
 
 SEC_COMPANY_TICKERS_URL = "https://www.sec.gov/files/company_tickers_exchange.json"
 NASDAQ_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt"
@@ -153,6 +155,7 @@ NASDAQ_NORDIC_ETF_SOURCE_CONFIG = {
 TWSE_LISTED_COMPANIES_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
 TWSE_ETF_LIST_URL = "https://www.twse.com.tw/rwd/en/ETF/list"
 SET_LISTED_COMPANIES_URL = "https://www.set.or.th/dat/eod/listedcompany/static/listedCompanies_en_US.xls"
+SET_ETF_SEARCH_URL = "https://www.set.or.th/en/market/get-quote/etf"
 SZSE_STOCK_LIST_URL = "https://www.szse.cn/market/product/stock/list/index.html"
 SZSE_ETF_LIST_URL = "https://www.szse.cn/market/product/list/etfList/index.html"
 SZSE_REPORT_DATA_URL = "https://www.szse.cn/api/report/ShowReport/data"
@@ -188,6 +191,12 @@ JSE_INSTRUMENT_META_RE = re.compile(
     r"Instrument code:\s*(?P<code>[A-Z0-9]+)\.\s*"
     r"Instrument type:\s*(?P<instrument_type>.*?)\."
 )
+SET_NUXT_PREFIX = "window.__NUXT__=(function("
+SET_NUXT_FUNCTION_BODY_MARKER = "){"
+SET_NUXT_RETURN_MARKER = ";return "
+SET_NUXT_SEARCH_OPTION_MARKER = "searchOption:["
+SET_NUXT_SEARCH_OPTION_END_MARKER = "],dropdownAdditional:"
+JS_IDENTIFIER_RE = re.compile(r"^[A-Za-z_$][A-Za-z0-9_$]*$")
 
 OTHER_LISTED_EXCHANGE_MAP = {
     "A": "NYSE MKT",
@@ -335,6 +344,7 @@ ASX_INVESTMENT_PRODUCTS_LINK_RE = re.compile(
 KRX_MARKET_GUBUN_TO_EXCHANGE = {
     "1": "KRX",
     "2": "KOSDAQ",
+    "6": "KRX",
 }
 SSE_JSONP_RE = re.compile(r"^[^(]+\((.*)\)\s*$", re.S)
 SSE_STOCK_TYPES = ("1", "2", "8")
@@ -458,6 +468,14 @@ OFFICIAL_SOURCES = [
         description="Official Stock Exchange of Thailand listed companies table",
         source_url=SET_LISTED_COMPANIES_URL,
         format="set_listed_companies_html",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="set_etf_search",
+        provider="SET",
+        description="Official Stock Exchange of Thailand ETF quote directory",
+        source_url=SET_ETF_SEARCH_URL,
+        format="set_etf_search_html",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -1105,6 +1123,23 @@ def load_tpex_etf_filter_payload(
     ensure_output_dirs()
     TPEX_ETF_FILTER_CACHE.write_text(json.dumps(payload), encoding="utf-8")
     return payload, "network"
+
+
+def load_set_etf_search_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_set_etf_search(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in (SET_ETF_SEARCH_CACHE, LEGACY_SET_ETF_SEARCH_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    SET_ETF_SEARCH_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
 
 
 def load_szse_etf_list_rows(
@@ -2172,6 +2207,215 @@ class _TableParser(HTMLParser):
     def handle_data(self, data: str) -> None:
         if self._in_cell and self._current_cell is not None:
             self._current_cell.append(data)
+
+
+def find_javascript_block_end(text: str, start_index: int, *, open_char: str, close_char: str) -> int:
+    depth = 0
+    in_string = False
+    string_char = ""
+    escaped = False
+    for index in range(start_index, len(text)):
+        character = text[index]
+        if in_string:
+            if escaped:
+                escaped = False
+                continue
+            if character == "\\":
+                escaped = True
+                continue
+            if character == string_char:
+                in_string = False
+            continue
+        if character in {'"', "'"}:
+            in_string = True
+            string_char = character
+            continue
+        if character == open_char:
+            depth += 1
+            continue
+        if character == close_char:
+            depth -= 1
+            if depth == 0:
+                return index
+    raise ValueError(f"Unterminated JavaScript block starting at {start_index}")
+
+
+def split_top_level_javascript_items(text: str) -> list[str]:
+    items: list[str] = []
+    start = 0
+    bracket_depth = 0
+    brace_depth = 0
+    paren_depth = 0
+    in_string = False
+    string_char = ""
+    escaped = False
+    for index, character in enumerate(text):
+        if in_string:
+            if escaped:
+                escaped = False
+                continue
+            if character == "\\":
+                escaped = True
+                continue
+            if character == string_char:
+                in_string = False
+            continue
+        if character in {'"', "'"}:
+            in_string = True
+            string_char = character
+            continue
+        if character == "[":
+            bracket_depth += 1
+            continue
+        if character == "]":
+            bracket_depth -= 1
+            continue
+        if character == "{":
+            brace_depth += 1
+            continue
+        if character == "}":
+            brace_depth -= 1
+            continue
+        if character == "(":
+            paren_depth += 1
+            continue
+        if character == ")":
+            paren_depth -= 1
+            continue
+        if character == "," and bracket_depth == 0 and brace_depth == 0 and paren_depth == 0:
+            item = text[start:index].strip()
+            if item:
+                items.append(item)
+            start = index + 1
+    tail = text[start:].strip()
+    if tail:
+        items.append(tail)
+    return items
+
+
+def parse_compact_javascript_literal(
+    token: str,
+    identifier_values: dict[str, Any] | None = None,
+) -> Any:
+    token = token.strip()
+    if not token:
+        return ""
+    if identifier_values and token in identifier_values:
+        return identifier_values[token]
+    if token in {"!0", "true"}:
+        return True
+    if token in {"!1", "false"}:
+        return False
+    if token in {"null", "void 0", "undefined"}:
+        return None
+    if token.startswith('"'):
+        return json.loads(token)
+    if re.fullmatch(r"-?\d+", token):
+        return int(token)
+    if re.fullmatch(r"-?\d+\.\d+(?:[eE][+-]?\d+)?", token):
+        return float(token)
+    if JS_IDENTIFIER_RE.fullmatch(token):
+        return token
+    return token
+
+
+def extract_set_search_option_payload(text: str) -> tuple[str, dict[str, Any]]:
+    prefix_index = text.find(SET_NUXT_PREFIX)
+    if prefix_index == -1:
+        raise ValueError("SET Nuxt payload not found")
+
+    params_start = prefix_index + len(SET_NUXT_PREFIX)
+    params_end = text.find(SET_NUXT_FUNCTION_BODY_MARKER, params_start)
+    if params_end == -1:
+        raise ValueError("SET Nuxt function body marker not found")
+
+    parameter_names = [name.strip() for name in text[params_start:params_end].split(",")]
+    return_index = text.find(SET_NUXT_RETURN_MARKER, params_end)
+    if return_index == -1:
+        return_index = text.find("return ", params_end)
+    if return_index == -1:
+        raise ValueError("SET Nuxt return marker not found")
+    body_start = text.find("{", return_index)
+    if body_start == -1:
+        raise ValueError("SET Nuxt body not found")
+    body_end = find_javascript_block_end(text, body_start, open_char="{", close_char="}")
+    body = text[body_start : body_end + 1]
+
+    invocation_start = text.find("(", body_end)
+    if invocation_start == -1:
+        raise ValueError("SET Nuxt invocation args not found")
+    invocation_end = find_javascript_block_end(text, invocation_start, open_char="(", close_char=")")
+    argument_tokens = split_top_level_javascript_items(text[invocation_start + 1 : invocation_end])
+    if len(argument_tokens) < len(parameter_names):
+        raise ValueError("SET Nuxt invocation args truncated")
+
+    identifier_values = {
+        name: parse_compact_javascript_literal(token)
+        for name, token in zip(parameter_names, argument_tokens)
+    }
+    return body, identifier_values
+
+
+def parse_set_quote_search_rows(
+    text: str,
+    source: MasterfileSource,
+    *,
+    security_type_name: str,
+    asset_type: str,
+) -> list[dict[str, str]]:
+    body, identifier_values = extract_set_search_option_payload(text)
+    marker_index = body.find(SET_NUXT_SEARCH_OPTION_MARKER)
+    if marker_index == -1:
+        return []
+    array_start = marker_index + len(SET_NUXT_SEARCH_OPTION_MARKER)
+    array_end = body.find(SET_NUXT_SEARCH_OPTION_END_MARKER, array_start)
+    if array_end == -1:
+        raise ValueError("SET searchOption array terminator missing")
+
+    rows: list[dict[str, str]] = []
+    seen_tickers: set[str] = set()
+    for token in split_top_level_javascript_items(body[array_start:array_end]):
+        token = token.strip()
+        if not token.startswith("{") or not token.endswith("}"):
+            continue
+        values: dict[str, Any] = {}
+        for field in split_top_level_javascript_items(token[1:-1]):
+            if ":" not in field:
+                continue
+            key, raw_value = field.split(":", 1)
+            values[key.strip()] = parse_compact_javascript_literal(raw_value, identifier_values)
+
+        ticker = str(values.get("symbol") or "").strip().upper()
+        market = str(values.get("market") or "").strip().upper()
+        record_security_type_name = str(values.get("securityTypeName") or "").strip().upper()
+        if market not in {"SET", "MAI"} or record_security_type_name != security_type_name.upper() or not ticker:
+            continue
+
+        name_en = str(values.get("nameEN") or "").strip()
+        name_th = str(values.get("nameTH") or "").strip()
+        name = name_en or name_th
+        if not name or ticker in seen_tickers:
+            continue
+        seen_tickers.add(ticker)
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "SET",
+                "asset_type": asset_type,
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
+def parse_set_quote_search_payload(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    return parse_set_quote_search_rows(text, source, security_type_name="ETF", asset_type="ETF")
 
 
 def parse_set_listed_companies_html(text: str, source: MasterfileSource) -> list[dict[str, str]]:
@@ -3962,6 +4206,14 @@ def fetch_six_fund_products(
     return parse_six_fund_products_csv(response.text, source)
 
 
+def fetch_set_etf_search(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    text = fetch_text(source.source_url, session=session)
+    return parse_set_quote_search_payload(text, source)
+
+
 def fetch_lse_company_reports(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
     session = session or requests.Session()
     rows: list[dict[str, str]] = []
@@ -4143,6 +4395,8 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "set_listed_companies_html":
         text = fetch_bytes(source.source_url, session=session).decode("windows-1250", errors="replace")
         return parse_set_listed_companies_html(text, source)
+    if source.format == "set_etf_search_html":
+        return fetch_set_etf_search(source, session=session)
     if source.format == "tmx_listed_issuers_excel":
         content, mode = load_tmx_listed_issuers_content(session=session)
         if content is None:
@@ -4270,6 +4524,11 @@ def fetch_source_rows_with_mode(
         if payload is None:
             raise requests.RequestException("TPEX ETF filter unavailable")
         return parse_tpex_etf_filter(payload, source), mode
+    if source.format == "set_etf_search_html":
+        rows, mode = load_set_etf_search_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("SET ETF search unavailable")
+        return rows, mode
     if source.format == "szse_etf_list_json":
         rows, mode = load_szse_etf_list_rows(source, session=session)
         if rows is None:

@@ -81,6 +81,15 @@
     "official": true
   },
   {
+    "key": "set_etf_search",
+    "provider": "SET",
+    "description": "Official Stock Exchange of Thailand ETF quote directory",
+    "source_url": "https://www.set.or.th/en/market/get-quote/etf",
+    "format": "set_etf_search_html",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "tmx_listed_issuers",
     "provider": "TMX",
     "description": "Official TMX TSX/TSXV listed issuers workbook",

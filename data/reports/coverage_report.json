@@ -22,36 +22,36 @@
     "manual_only_exchanges": 0,
     "missing_exchanges": 39,
     "stock_verification_items": 43954,
-    "stock_verification_verified": 29509,
-    "stock_verification_reference_gap": 14437,
+    "stock_verification_verified": 29598,
+    "stock_verification_reference_gap": 14348,
     "stock_verification_missing_from_official": 0,
     "stock_verification_name_mismatch": 8,
     "stock_verification_cross_exchange_collision": 0,
     "etf_verification_items": 16610,
-    "etf_verification_verified": 15221,
-    "etf_verification_reference_gap": 1388,
+    "etf_verification_verified": 15228,
+    "etf_verification_reference_gap": 1381,
     "etf_verification_missing_from_official": 0,
     "etf_verification_name_mismatch": 1,
     "etf_verification_cross_exchange_collision": 0
   },
   "freshness": {
     "tickers_built_at": "2026-04-09T10:03:57Z",
-    "tickers_age_hours": 0.53,
-    "masterfiles_generated_at": "2026-04-09T10:34:14Z",
-    "masterfiles_age_hours": 0.02,
+    "tickers_age_hours": 1.6,
+    "masterfiles_generated_at": "2026-04-09T11:28:35Z",
+    "masterfiles_age_hours": 0.19,
     "identifiers_generated_at": "2026-04-09T10:03:57Z",
-    "identifiers_age_hours": 0.53,
+    "identifiers_age_hours": 1.6,
     "listing_history_observed_at": "2026-04-09T10:03:57Z",
-    "listing_history_age_hours": 0.53,
-    "latest_verification_run": "data/stock_verification/run-20260409-set-mai-refresh-01",
-    "latest_verification_generated_at": "2026-04-09T10:35:26Z",
-    "latest_verification_age_hours": 0.0,
-    "latest_stock_verification_run": "data/stock_verification/run-20260409-set-mai-refresh-01",
-    "latest_stock_verification_generated_at": "2026-04-09T10:35:26Z",
-    "latest_stock_verification_age_hours": 0.0,
-    "latest_etf_verification_run": "data/etf_verification/run-20260409-set-mai-refresh-01",
-    "latest_etf_verification_generated_at": "2026-04-09T10:35:26Z",
-    "latest_etf_verification_age_hours": 0.0
+    "listing_history_age_hours": 1.6,
+    "latest_verification_run": "data/stock_verification/run-20260409-krx-konex-01",
+    "latest_verification_generated_at": "2026-04-09T11:29:09Z",
+    "latest_verification_age_hours": 0.18,
+    "latest_stock_verification_run": "data/stock_verification/run-20260409-krx-konex-01",
+    "latest_stock_verification_generated_at": "2026-04-09T11:29:09Z",
+    "latest_stock_verification_age_hours": 0.18,
+    "latest_etf_verification_run": "data/etf_verification/run-20260409-set-etf-search-01",
+    "latest_etf_verification_generated_at": "2026-04-09T11:05:06Z",
+    "latest_etf_verification_age_hours": 0.58
   },
   "source_coverage": [
     {
@@ -61,7 +61,7 @@
       "official": true,
       "mode": "network",
       "rows": 5417,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "nasdaq_other_listed",
@@ -70,7 +70,7 @@
       "official": true,
       "mode": "network",
       "rows": 7084,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "lse_company_reports",
@@ -79,7 +79,7 @@
       "official": true,
       "mode": "cache",
       "rows": 12397,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "lse_instrument_search",
@@ -88,7 +88,7 @@
       "official": true,
       "mode": "network",
       "rows": 926,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "lse_instrument_directory",
@@ -97,7 +97,7 @@
       "official": true,
       "mode": "cache",
       "rows": 64,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "asx_listed_companies",
@@ -106,7 +106,7 @@
       "official": true,
       "mode": "network",
       "rows": 1979,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "cboe_canada_listing_directory",
@@ -115,7 +115,7 @@
       "official": true,
       "mode": "network",
       "rows": 0,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "asx_investment_products",
@@ -124,7 +124,7 @@
       "official": true,
       "mode": "network",
       "rows": 426,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "set_listed_companies",
@@ -133,7 +133,16 @@
       "official": true,
       "mode": "network",
       "rows": 933,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
+    },
+    {
+      "key": "set_etf_search",
+      "provider": "SET",
+      "reference_scope": "listed_companies_subset",
+      "official": true,
+      "mode": "network",
+      "rows": 13,
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "tmx_listed_issuers",
@@ -142,7 +151,7 @@
       "official": true,
       "mode": "cache",
       "rows": 3619,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "tmx_etf_screener",
@@ -151,7 +160,7 @@
       "official": true,
       "mode": "cache",
       "rows": 1696,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "tmx_interlisted_companies",
@@ -160,7 +169,7 @@
       "official": true,
       "mode": "network",
       "rows": 266,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "euronext_equities",
@@ -169,7 +178,7 @@
       "official": true,
       "mode": "network",
       "rows": 3883,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "euronext_etfs",
@@ -178,7 +187,7 @@
       "official": true,
       "mode": "network",
       "rows": 3465,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "jpx_listed_issues",
@@ -187,7 +196,7 @@
       "official": true,
       "mode": "network",
       "rows": 4444,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "deutsche_boerse_listed_companies",
@@ -196,7 +205,7 @@
       "official": true,
       "mode": "network",
       "rows": 471,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "deutsche_boerse_etfs_etps",
@@ -205,7 +214,7 @@
       "official": true,
       "mode": "network",
       "rows": 3433,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "deutsche_boerse_xetra_all_tradable_equities",
@@ -214,7 +223,7 @@
       "official": true,
       "mode": "network",
       "rows": 986,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "six_equity_issuers",
@@ -223,7 +232,7 @@
       "official": true,
       "mode": "network",
       "rows": 241,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "six_etf_products",
@@ -232,7 +241,7 @@
       "official": true,
       "mode": "network",
       "rows": 7349,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "six_etp_products",
@@ -241,7 +250,7 @@
       "official": true,
       "mode": "network",
       "rows": 752,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "b3_instruments_equities",
@@ -250,7 +259,7 @@
       "official": true,
       "mode": "network",
       "rows": 878,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "b3_listed_etfs",
@@ -259,7 +268,7 @@
       "official": true,
       "mode": "network",
       "rows": 187,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "b3_bdr_etfs",
@@ -268,7 +277,7 @@
       "official": true,
       "mode": "network",
       "rows": 302,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "jse_etf_list",
@@ -277,7 +286,7 @@
       "official": true,
       "mode": "cache",
       "rows": 133,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "jse_etn_list",
@@ -286,7 +295,7 @@
       "official": true,
       "mode": "cache",
       "rows": 94,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "jse_instrument_search",
@@ -295,7 +304,7 @@
       "official": true,
       "mode": "network",
       "rows": 51,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "nasdaq_nordic_stockholm_shares",
@@ -304,7 +313,7 @@
       "official": true,
       "mode": "cache",
       "rows": 747,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "nasdaq_nordic_helsinki_shares",
@@ -313,7 +322,7 @@
       "official": true,
       "mode": "cache",
       "rows": 194,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "nasdaq_nordic_copenhagen_shares",
@@ -322,7 +331,7 @@
       "official": true,
       "mode": "cache",
       "rows": 144,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "nasdaq_nordic_stockholm_etfs",
@@ -331,7 +340,7 @@
       "official": true,
       "mode": "cache",
       "rows": 33,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "nasdaq_nordic_helsinki_etfs",
@@ -340,7 +349,7 @@
       "official": true,
       "mode": "cache",
       "rows": 2,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "nasdaq_nordic_copenhagen_etfs",
@@ -349,7 +358,7 @@
       "official": true,
       "mode": "cache",
       "rows": 1,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "nasdaq_nordic_stockholm_trackers",
@@ -358,7 +367,7 @@
       "official": true,
       "mode": "cache",
       "rows": 6,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "twse_listed_companies",
@@ -367,7 +376,7 @@
       "official": true,
       "mode": "network",
       "rows": 1081,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "twse_etf_list",
@@ -376,7 +385,7 @@
       "official": true,
       "mode": "network",
       "rows": 215,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "sse_a_share_list",
@@ -385,7 +394,7 @@
       "official": true,
       "mode": "network",
       "rows": 2350,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "sse_etf_list",
@@ -394,7 +403,7 @@
       "official": true,
       "mode": "network",
       "rows": 820,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "szse_a_share_list",
@@ -403,7 +412,7 @@
       "official": true,
       "mode": "network",
       "rows": 2886,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "szse_etf_list",
@@ -412,7 +421,7 @@
       "official": true,
       "mode": "network",
       "rows": 632,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "tpex_mainboard_daily_quotes",
@@ -421,7 +430,7 @@
       "official": true,
       "mode": "cache",
       "rows": 884,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "tpex_etf_filter",
@@ -430,7 +439,7 @@
       "official": true,
       "mode": "unavailable",
       "rows": 0,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "krx_listed_companies",
@@ -438,8 +447,8 @@
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 2660,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "rows": 2769,
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "krx_etf_finder",
@@ -448,7 +457,7 @@
       "official": true,
       "mode": "network",
       "rows": 1088,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "psx_listed_companies",
@@ -457,7 +466,7 @@
       "official": true,
       "mode": "network",
       "rows": 565,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "psx_symbol_name_daily",
@@ -466,7 +475,7 @@
       "official": true,
       "mode": "network",
       "rows": 370,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     },
     {
       "key": "sec_company_tickers_exchange",
@@ -475,7 +484,7 @@
       "official": true,
       "mode": "cache",
       "rows": 10117,
-      "generated_at": "2026-04-09T10:34:14Z"
+      "generated_at": "2026-04-09T11:28:35Z"
     }
   ],
   "exchange_coverage": [
@@ -1627,15 +1636,15 @@
       "masterfile_match_rate": null,
       "masterfile_collision_rate": null,
       "verification_items": 844,
-      "verification_verified": 751,
-      "verification_reference_gap": 93,
+      "verification_verified": 840,
+      "verification_reference_gap": 4,
       "verification_missing_from_official": 0,
       "verification_name_mismatch": 0,
       "verification_cross_exchange_collision": 0,
       "verification_verified_rate_on_covered": 100.0,
       "stock_verification_items": 844,
-      "stock_verification_verified": 751,
-      "stock_verification_reference_gap": 93,
+      "stock_verification_verified": 840,
+      "stock_verification_reference_gap": 4,
       "stock_verification_missing_from_official": 0,
       "stock_verification_name_mismatch": 0,
       "stock_verification_cross_exchange_collision": 0,
@@ -1647,7 +1656,7 @@
       "etf_verification_name_mismatch": 0,
       "etf_verification_cross_exchange_collision": 0,
       "etf_verification_verified_rate_on_covered": 100.0,
-      "unresolved_count": 103
+      "unresolved_count": 14
     },
     {
       "exchange": "LSE",
@@ -2530,7 +2539,7 @@
     {
       "exchange": "SET",
       "venue_status": "official_partial",
-      "official_source_count": 1,
+      "official_source_count": 2,
       "manual_source_count": 0,
       "reference_scopes": [
         "listed_companies_subset"
@@ -2562,13 +2571,13 @@
       "stock_verification_cross_exchange_collision": 0,
       "stock_verification_verified_rate_on_covered": 99.26,
       "etf_verification_items": 8,
-      "etf_verification_verified": 0,
-      "etf_verification_reference_gap": 8,
+      "etf_verification_verified": 7,
+      "etf_verification_reference_gap": 1,
       "etf_verification_missing_from_official": 0,
       "etf_verification_name_mismatch": 0,
       "etf_verification_cross_exchange_collision": 0,
-      "etf_verification_verified_rate_on_covered": null,
-      "unresolved_count": 17
+      "etf_verification_verified_rate_on_covered": 100.0,
+      "unresolved_count": 10
     },
     {
       "exchange": "SIX",
@@ -4481,15 +4490,15 @@
       "masterfile_match_rate": null,
       "masterfile_collision_rate": null,
       "verification_items": 844,
-      "verification_verified": 751,
-      "verification_reference_gap": 93,
+      "verification_verified": 840,
+      "verification_reference_gap": 4,
       "verification_missing_from_official": 0,
       "verification_name_mismatch": 0,
       "verification_cross_exchange_collision": 0,
       "verification_verified_rate_on_covered": 100.0,
       "stock_verification_items": 844,
-      "stock_verification_verified": 751,
-      "stock_verification_reference_gap": 93,
+      "stock_verification_verified": 840,
+      "stock_verification_reference_gap": 4,
       "stock_verification_missing_from_official": 0,
       "stock_verification_name_mismatch": 0,
       "stock_verification_cross_exchange_collision": 0,
@@ -4501,7 +4510,7 @@
       "etf_verification_name_mismatch": 0,
       "etf_verification_cross_exchange_collision": 0,
       "etf_verification_verified_rate_on_covered": 100.0,
-      "unresolved_count": 103
+      "unresolved_count": 14
     },
     {
       "exchange": "LSE",
@@ -5384,7 +5393,7 @@
     {
       "exchange": "SET",
       "venue_status": "official_partial",
-      "official_source_count": 1,
+      "official_source_count": 2,
       "manual_source_count": 0,
       "reference_scopes": [
         "listed_companies_subset"
@@ -5416,13 +5425,13 @@
       "stock_verification_cross_exchange_collision": 0,
       "stock_verification_verified_rate_on_covered": 99.26,
       "etf_verification_items": 8,
-      "etf_verification_verified": 0,
-      "etf_verification_reference_gap": 8,
+      "etf_verification_verified": 7,
+      "etf_verification_reference_gap": 1,
       "etf_verification_missing_from_official": 0,
       "etf_verification_name_mismatch": 0,
       "etf_verification_cross_exchange_collision": 0,
-      "etf_verification_verified_rate_on_covered": null,
-      "unresolved_count": 17
+      "etf_verification_verified_rate_on_covered": 100.0,
+      "unresolved_count": 10
     },
     {
       "exchange": "SIX",
@@ -6801,303 +6810,15 @@
     }
   ],
   "verification": {
-    "run_dir": "data/stock_verification/run-20260409-set-mai-refresh-01",
-    "generated_at": "2026-04-09T10:35:26Z",
+    "run_dir": "data/stock_verification/run-20260409-krx-konex-01",
+    "generated_at": "2026-04-09T11:29:09Z",
     "summary": {
-      "chunk_count": 10,
-      "completed_chunks": 10,
-      "missing_chunks": [],
       "items": 43954,
       "status_counts": {
         "name_mismatch": 8,
-        "reference_gap": 14437,
-        "verified": 29509
+        "reference_gap": 14348,
+        "verified": 29598
       },
-      "chunks": [
-        {
-          "chunk_index": 1,
-          "chunk_count": 10,
-          "items": 4396,
-          "status_counts": {
-            "name_mismatch": 2,
-            "reference_gap": 1438,
-            "verified": 2956
-          },
-          "finding_examples": [
-            {
-              "listing_key": "SET::BKA",
-              "ticker": "BKA",
-              "exchange": "SET",
-              "asset_type": "Stock",
-              "name": "BKA",
-              "country": "Thailand",
-              "country_code": "TH",
-              "isin": "",
-              "sector": "",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "Bangkok Asset Intergroup Public Company Limited",
-              "official_reference_source": "set_listed_companies",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "SET::SMD100",
-              "ticker": "SMD100",
-              "exchange": "SET",
-              "asset_type": "Stock",
-              "name": "SMD100_SAINTMED",
-              "country": "Thailand",
-              "country_code": "TH",
-              "isin": "",
-              "sector": "Health Care",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "SMD RISE PUBLIC COMPANY LIMITED",
-              "official_reference_source": "set_listed_companies",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-01-of-10.json",
-          "csv_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-01-of-10.csv"
-        },
-        {
-          "chunk_index": 2,
-          "chunk_count": 10,
-          "items": 4396,
-          "status_counts": {
-            "reference_gap": 1427,
-            "verified": 2969
-          },
-          "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-02-of-10.json",
-          "csv_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-02-of-10.csv"
-        },
-        {
-          "chunk_index": 3,
-          "chunk_count": 10,
-          "items": 4396,
-          "status_counts": {
-            "reference_gap": 1449,
-            "verified": 2947
-          },
-          "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-03-of-10.json",
-          "csv_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-03-of-10.csv"
-        },
-        {
-          "chunk_index": 4,
-          "chunk_count": 10,
-          "items": 4396,
-          "status_counts": {
-            "name_mismatch": 1,
-            "reference_gap": 1459,
-            "verified": 2936
-          },
-          "finding_examples": [
-            {
-              "listing_key": "HEL::TIETO",
-              "ticker": "TIETO",
-              "exchange": "HEL",
-              "asset_type": "Stock",
-              "name": "TietoEVRY Corp",
-              "country": "Finland",
-              "country_code": "FI",
-              "isin": "FI0009000277",
-              "sector": "Information Technology",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "Tieto Oyj",
-              "official_reference_source": "nasdaq_nordic_helsinki_shares",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-04-of-10.json",
-          "csv_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-04-of-10.csv"
-        },
-        {
-          "chunk_index": 5,
-          "chunk_count": 10,
-          "items": 4395,
-          "status_counts": {
-            "name_mismatch": 3,
-            "reference_gap": 1462,
-            "verified": 2930
-          },
-          "finding_examples": [
-            {
-              "listing_key": "CPH::MNBA",
-              "ticker": "MNBA",
-              "exchange": "CPH",
-              "asset_type": "Stock",
-              "name": "Moens Bank A/S",
-              "country": "Denmark",
-              "country_code": "DK",
-              "isin": "DK0060133841",
-              "sector": "Financials",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "M\u00f8ns Bank",
-              "official_reference_source": "nasdaq_nordic_copenhagen_shares",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "SET::IDG",
-              "ticker": "IDG",
-              "exchange": "SET",
-              "asset_type": "Stock",
-              "name": "IDG",
-              "country": "Thailand",
-              "country_code": "TH",
-              "isin": "",
-              "sector": "Information Technology",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "INDIGY PUBLIC COMPANY LIMITED",
-              "official_reference_source": "set_listed_companies",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "SET::SENX",
-              "ticker": "SENX",
-              "exchange": "SET",
-              "asset_type": "Stock",
-              "name": "Sena J Property PCL",
-              "country": "Thailand",
-              "country_code": "TH",
-              "isin": "",
-              "sector": "Real Estate",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "SEN X PUBLIC COMPANY LIMITED",
-              "official_reference_source": "set_listed_companies",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-05-of-10.json",
-          "csv_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-05-of-10.csv"
-        },
-        {
-          "chunk_index": 6,
-          "chunk_count": 10,
-          "items": 4395,
-          "status_counts": {
-            "reference_gap": 1436,
-            "verified": 2959
-          },
-          "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-06-of-10.json",
-          "csv_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-06-of-10.csv"
-        },
-        {
-          "chunk_index": 7,
-          "chunk_count": 10,
-          "items": 4395,
-          "status_counts": {
-            "name_mismatch": 1,
-            "reference_gap": 1427,
-            "verified": 2967
-          },
-          "finding_examples": [
-            {
-              "listing_key": "CPH::GRLA",
-              "ticker": "GRLA",
-              "exchange": "CPH",
-              "asset_type": "Stock",
-              "name": "Groenlandsbanken AS",
-              "country": "Denmark",
-              "country_code": "DK",
-              "isin": "DK0010230630",
-              "sector": "Financials",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "Gr\u00f8nlandsbanken",
-              "official_reference_source": "nasdaq_nordic_copenhagen_shares",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-07-of-10.json",
-          "csv_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-07-of-10.csv"
-        },
-        {
-          "chunk_index": 8,
-          "chunk_count": 10,
-          "items": 4395,
-          "status_counts": {
-            "name_mismatch": 1,
-            "reference_gap": 1443,
-            "verified": 2951
-          },
-          "finding_examples": [
-            {
-              "listing_key": "CPH::KBHL",
-              "ticker": "KBHL",
-              "exchange": "CPH",
-              "asset_type": "Stock",
-              "name": "Copenhagen Airports AS",
-              "country": "Denmark",
-              "country_code": "DK",
-              "isin": "DK0010201102",
-              "sector": "Industrials",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "K\u00f8benhavns Lufthavne",
-              "official_reference_source": "nasdaq_nordic_copenhagen_shares",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-08-of-10.json",
-          "csv_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-08-of-10.csv"
-        },
-        {
-          "chunk_index": 9,
-          "chunk_count": 10,
-          "items": 4395,
-          "status_counts": {
-            "reference_gap": 1466,
-            "verified": 2929
-          },
-          "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-09-of-10.json",
-          "csv_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-09-of-10.csv"
-        },
-        {
-          "chunk_index": 10,
-          "chunk_count": 10,
-          "items": 4395,
-          "status_counts": {
-            "reference_gap": 1430,
-            "verified": 2965
-          },
-          "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-10-of-10.json",
-          "csv_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-10-of-10.csv"
-        }
-      ],
-      "finding_rows": 8,
       "finding_examples": [
         {
           "listing_key": "SET::BKA",
@@ -7251,9 +6972,7 @@
           "figi": "",
           "lei": ""
         }
-      ],
-      "summary_json": "data/stock_verification/run-20260409-set-mai-refresh-01/summary.json",
-      "findings_csv": "data/stock_verification/run-20260409-set-mai-refresh-01/findings.csv"
+      ]
     },
     "exchange_coverage": [
       {
@@ -7610,14 +7329,14 @@
       {
         "exchange": "KRX",
         "items": 844,
-        "verified": 751,
-        "reference_gap": 93,
+        "verified": 840,
+        "reference_gap": 4,
         "missing_from_official": 0,
         "name_mismatch": 0,
         "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 751,
+        "officially_covered_items": 840,
         "verified_rate_on_covered": 100.0
       },
       {
@@ -8117,303 +7836,15 @@
     ]
   },
   "stock_verification": {
-    "run_dir": "data/stock_verification/run-20260409-set-mai-refresh-01",
-    "generated_at": "2026-04-09T10:35:26Z",
+    "run_dir": "data/stock_verification/run-20260409-krx-konex-01",
+    "generated_at": "2026-04-09T11:29:09Z",
     "summary": {
-      "chunk_count": 10,
-      "completed_chunks": 10,
-      "missing_chunks": [],
       "items": 43954,
       "status_counts": {
         "name_mismatch": 8,
-        "reference_gap": 14437,
-        "verified": 29509
+        "reference_gap": 14348,
+        "verified": 29598
       },
-      "chunks": [
-        {
-          "chunk_index": 1,
-          "chunk_count": 10,
-          "items": 4396,
-          "status_counts": {
-            "name_mismatch": 2,
-            "reference_gap": 1438,
-            "verified": 2956
-          },
-          "finding_examples": [
-            {
-              "listing_key": "SET::BKA",
-              "ticker": "BKA",
-              "exchange": "SET",
-              "asset_type": "Stock",
-              "name": "BKA",
-              "country": "Thailand",
-              "country_code": "TH",
-              "isin": "",
-              "sector": "",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "Bangkok Asset Intergroup Public Company Limited",
-              "official_reference_source": "set_listed_companies",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "SET::SMD100",
-              "ticker": "SMD100",
-              "exchange": "SET",
-              "asset_type": "Stock",
-              "name": "SMD100_SAINTMED",
-              "country": "Thailand",
-              "country_code": "TH",
-              "isin": "",
-              "sector": "Health Care",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "SMD RISE PUBLIC COMPANY LIMITED",
-              "official_reference_source": "set_listed_companies",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-01-of-10.json",
-          "csv_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-01-of-10.csv"
-        },
-        {
-          "chunk_index": 2,
-          "chunk_count": 10,
-          "items": 4396,
-          "status_counts": {
-            "reference_gap": 1427,
-            "verified": 2969
-          },
-          "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-02-of-10.json",
-          "csv_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-02-of-10.csv"
-        },
-        {
-          "chunk_index": 3,
-          "chunk_count": 10,
-          "items": 4396,
-          "status_counts": {
-            "reference_gap": 1449,
-            "verified": 2947
-          },
-          "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-03-of-10.json",
-          "csv_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-03-of-10.csv"
-        },
-        {
-          "chunk_index": 4,
-          "chunk_count": 10,
-          "items": 4396,
-          "status_counts": {
-            "name_mismatch": 1,
-            "reference_gap": 1459,
-            "verified": 2936
-          },
-          "finding_examples": [
-            {
-              "listing_key": "HEL::TIETO",
-              "ticker": "TIETO",
-              "exchange": "HEL",
-              "asset_type": "Stock",
-              "name": "TietoEVRY Corp",
-              "country": "Finland",
-              "country_code": "FI",
-              "isin": "FI0009000277",
-              "sector": "Information Technology",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "Tieto Oyj",
-              "official_reference_source": "nasdaq_nordic_helsinki_shares",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-04-of-10.json",
-          "csv_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-04-of-10.csv"
-        },
-        {
-          "chunk_index": 5,
-          "chunk_count": 10,
-          "items": 4395,
-          "status_counts": {
-            "name_mismatch": 3,
-            "reference_gap": 1462,
-            "verified": 2930
-          },
-          "finding_examples": [
-            {
-              "listing_key": "CPH::MNBA",
-              "ticker": "MNBA",
-              "exchange": "CPH",
-              "asset_type": "Stock",
-              "name": "Moens Bank A/S",
-              "country": "Denmark",
-              "country_code": "DK",
-              "isin": "DK0060133841",
-              "sector": "Financials",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "M\u00f8ns Bank",
-              "official_reference_source": "nasdaq_nordic_copenhagen_shares",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "SET::IDG",
-              "ticker": "IDG",
-              "exchange": "SET",
-              "asset_type": "Stock",
-              "name": "IDG",
-              "country": "Thailand",
-              "country_code": "TH",
-              "isin": "",
-              "sector": "Information Technology",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "INDIGY PUBLIC COMPANY LIMITED",
-              "official_reference_source": "set_listed_companies",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "SET::SENX",
-              "ticker": "SENX",
-              "exchange": "SET",
-              "asset_type": "Stock",
-              "name": "Sena J Property PCL",
-              "country": "Thailand",
-              "country_code": "TH",
-              "isin": "",
-              "sector": "Real Estate",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "SEN X PUBLIC COMPANY LIMITED",
-              "official_reference_source": "set_listed_companies",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-05-of-10.json",
-          "csv_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-05-of-10.csv"
-        },
-        {
-          "chunk_index": 6,
-          "chunk_count": 10,
-          "items": 4395,
-          "status_counts": {
-            "reference_gap": 1436,
-            "verified": 2959
-          },
-          "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-06-of-10.json",
-          "csv_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-06-of-10.csv"
-        },
-        {
-          "chunk_index": 7,
-          "chunk_count": 10,
-          "items": 4395,
-          "status_counts": {
-            "name_mismatch": 1,
-            "reference_gap": 1427,
-            "verified": 2967
-          },
-          "finding_examples": [
-            {
-              "listing_key": "CPH::GRLA",
-              "ticker": "GRLA",
-              "exchange": "CPH",
-              "asset_type": "Stock",
-              "name": "Groenlandsbanken AS",
-              "country": "Denmark",
-              "country_code": "DK",
-              "isin": "DK0010230630",
-              "sector": "Financials",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "Gr\u00f8nlandsbanken",
-              "official_reference_source": "nasdaq_nordic_copenhagen_shares",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-07-of-10.json",
-          "csv_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-07-of-10.csv"
-        },
-        {
-          "chunk_index": 8,
-          "chunk_count": 10,
-          "items": 4395,
-          "status_counts": {
-            "name_mismatch": 1,
-            "reference_gap": 1443,
-            "verified": 2951
-          },
-          "finding_examples": [
-            {
-              "listing_key": "CPH::KBHL",
-              "ticker": "KBHL",
-              "exchange": "CPH",
-              "asset_type": "Stock",
-              "name": "Copenhagen Airports AS",
-              "country": "Denmark",
-              "country_code": "DK",
-              "isin": "DK0010201102",
-              "sector": "Industrials",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "K\u00f8benhavns Lufthavne",
-              "official_reference_source": "nasdaq_nordic_copenhagen_shares",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-08-of-10.json",
-          "csv_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-08-of-10.csv"
-        },
-        {
-          "chunk_index": 9,
-          "chunk_count": 10,
-          "items": 4395,
-          "status_counts": {
-            "reference_gap": 1466,
-            "verified": 2929
-          },
-          "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-09-of-10.json",
-          "csv_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-09-of-10.csv"
-        },
-        {
-          "chunk_index": 10,
-          "chunk_count": 10,
-          "items": 4395,
-          "status_counts": {
-            "reference_gap": 1430,
-            "verified": 2965
-          },
-          "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-10-of-10.json",
-          "csv_out": "data/stock_verification/run-20260409-set-mai-refresh-01/chunk-10-of-10.csv"
-        }
-      ],
-      "finding_rows": 8,
       "finding_examples": [
         {
           "listing_key": "SET::BKA",
@@ -8567,9 +7998,7 @@
           "figi": "",
           "lei": ""
         }
-      ],
-      "summary_json": "data/stock_verification/run-20260409-set-mai-refresh-01/summary.json",
-      "findings_csv": "data/stock_verification/run-20260409-set-mai-refresh-01/findings.csv"
+      ]
     },
     "exchange_coverage": [
       {
@@ -8926,14 +8355,14 @@
       {
         "exchange": "KRX",
         "items": 844,
-        "verified": 751,
-        "reference_gap": 93,
+        "verified": 840,
+        "reference_gap": 4,
         "missing_from_official": 0,
         "name_mismatch": 0,
         "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 751,
+        "officially_covered_items": 840,
         "verified_rate_on_covered": 100.0
       },
       {
@@ -9433,162 +8862,15 @@
     ]
   },
   "etf_verification": {
-    "run_dir": "data/etf_verification/run-20260409-set-mai-refresh-01",
-    "generated_at": "2026-04-09T10:35:26Z",
+    "run_dir": "data/etf_verification/run-20260409-set-etf-search-01",
+    "generated_at": "2026-04-09T11:05:06Z",
     "summary": {
-      "chunk_count": 10,
-      "completed_chunks": 10,
-      "missing_chunks": [],
       "items": 16610,
       "status_counts": {
         "name_mismatch": 1,
-        "reference_gap": 1388,
-        "verified": 15221
+        "reference_gap": 1381,
+        "verified": 15228
       },
-      "chunks": [
-        {
-          "chunk_index": 1,
-          "chunk_count": 10,
-          "items": 1661,
-          "status_counts": {
-            "reference_gap": 141,
-            "verified": 1520
-          },
-          "finding_examples": [],
-          "json_out": "data/etf_verification/run-20260409-set-mai-refresh-01/chunk-01-of-10.json",
-          "csv_out": "data/etf_verification/run-20260409-set-mai-refresh-01/chunk-01-of-10.csv"
-        },
-        {
-          "chunk_index": 2,
-          "chunk_count": 10,
-          "items": 1661,
-          "status_counts": {
-            "reference_gap": 143,
-            "verified": 1518
-          },
-          "finding_examples": [],
-          "json_out": "data/etf_verification/run-20260409-set-mai-refresh-01/chunk-02-of-10.json",
-          "csv_out": "data/etf_verification/run-20260409-set-mai-refresh-01/chunk-02-of-10.csv"
-        },
-        {
-          "chunk_index": 3,
-          "chunk_count": 10,
-          "items": 1661,
-          "status_counts": {
-            "reference_gap": 143,
-            "verified": 1518
-          },
-          "finding_examples": [],
-          "json_out": "data/etf_verification/run-20260409-set-mai-refresh-01/chunk-03-of-10.json",
-          "csv_out": "data/etf_verification/run-20260409-set-mai-refresh-01/chunk-03-of-10.csv"
-        },
-        {
-          "chunk_index": 4,
-          "chunk_count": 10,
-          "items": 1661,
-          "status_counts": {
-            "reference_gap": 146,
-            "verified": 1515
-          },
-          "finding_examples": [],
-          "json_out": "data/etf_verification/run-20260409-set-mai-refresh-01/chunk-04-of-10.json",
-          "csv_out": "data/etf_verification/run-20260409-set-mai-refresh-01/chunk-04-of-10.csv"
-        },
-        {
-          "chunk_index": 5,
-          "chunk_count": 10,
-          "items": 1661,
-          "status_counts": {
-            "reference_gap": 143,
-            "verified": 1518
-          },
-          "finding_examples": [],
-          "json_out": "data/etf_verification/run-20260409-set-mai-refresh-01/chunk-05-of-10.json",
-          "csv_out": "data/etf_verification/run-20260409-set-mai-refresh-01/chunk-05-of-10.csv"
-        },
-        {
-          "chunk_index": 6,
-          "chunk_count": 10,
-          "items": 1661,
-          "status_counts": {
-            "name_mismatch": 1,
-            "reference_gap": 137,
-            "verified": 1523
-          },
-          "finding_examples": [
-            {
-              "listing_key": "JSE::ETFBND",
-              "ticker": "ETFBND",
-              "exchange": "JSE",
-              "asset_type": "ETF",
-              "name": "Standard Bank Oil ETN",
-              "country": "South Africa",
-              "country_code": "ZA",
-              "isin": "ZAE000316659",
-              "sector": "",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "1nvest SA Bond ETF",
-              "official_reference_source": "jse_etf_list",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/etf_verification/run-20260409-set-mai-refresh-01/chunk-06-of-10.json",
-          "csv_out": "data/etf_verification/run-20260409-set-mai-refresh-01/chunk-06-of-10.csv"
-        },
-        {
-          "chunk_index": 7,
-          "chunk_count": 10,
-          "items": 1661,
-          "status_counts": {
-            "reference_gap": 125,
-            "verified": 1536
-          },
-          "finding_examples": [],
-          "json_out": "data/etf_verification/run-20260409-set-mai-refresh-01/chunk-07-of-10.json",
-          "csv_out": "data/etf_verification/run-20260409-set-mai-refresh-01/chunk-07-of-10.csv"
-        },
-        {
-          "chunk_index": 8,
-          "chunk_count": 10,
-          "items": 1661,
-          "status_counts": {
-            "reference_gap": 128,
-            "verified": 1533
-          },
-          "finding_examples": [],
-          "json_out": "data/etf_verification/run-20260409-set-mai-refresh-01/chunk-08-of-10.json",
-          "csv_out": "data/etf_verification/run-20260409-set-mai-refresh-01/chunk-08-of-10.csv"
-        },
-        {
-          "chunk_index": 9,
-          "chunk_count": 10,
-          "items": 1661,
-          "status_counts": {
-            "reference_gap": 132,
-            "verified": 1529
-          },
-          "finding_examples": [],
-          "json_out": "data/etf_verification/run-20260409-set-mai-refresh-01/chunk-09-of-10.json",
-          "csv_out": "data/etf_verification/run-20260409-set-mai-refresh-01/chunk-09-of-10.csv"
-        },
-        {
-          "chunk_index": 10,
-          "chunk_count": 10,
-          "items": 1661,
-          "status_counts": {
-            "reference_gap": 150,
-            "verified": 1511
-          },
-          "finding_examples": [],
-          "json_out": "data/etf_verification/run-20260409-set-mai-refresh-01/chunk-10-of-10.json",
-          "csv_out": "data/etf_verification/run-20260409-set-mai-refresh-01/chunk-10-of-10.csv"
-        }
-      ],
-      "finding_rows": 1,
       "finding_examples": [
         {
           "listing_key": "JSE::ETFBND",
@@ -9609,9 +8891,7 @@
           "figi": "",
           "lei": ""
         }
-      ],
-      "summary_json": "data/etf_verification/run-20260409-set-mai-refresh-01/summary.json",
-      "findings_csv": "data/etf_verification/run-20260409-set-mai-refresh-01/findings.csv"
+      ]
     },
     "exchange_coverage": [
       {
@@ -10059,15 +9339,15 @@
       {
         "exchange": "SET",
         "items": 8,
-        "verified": 0,
-        "reference_gap": 8,
+        "verified": 7,
+        "reference_gap": 1,
         "missing_from_official": 0,
         "name_mismatch": 0,
         "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 0,
-        "verified_rate_on_covered": null
+        "officially_covered_items": 7,
+        "verified_rate_on_covered": 100.0
       },
       {
         "exchange": "SIX",
@@ -10584,25 +9864,6 @@
       "stock_name_mismatch": 0,
       "stock_cross_exchange_collision": 0,
       "etf_reference_gap": 1,
-      "etf_missing_from_official": 0,
-      "etf_name_mismatch": 0,
-      "etf_cross_exchange_collision": 0,
-      "masterfile_missing": 0,
-      "masterfile_collisions": 0
-    },
-    {
-      "exchange": "KRX",
-      "venue_status": "official_partial",
-      "unresolved_findings": 103,
-      "reference_gap": 103,
-      "missing_from_official": 0,
-      "name_mismatch": 0,
-      "cross_exchange_collision": 0,
-      "stock_reference_gap": 93,
-      "stock_missing_from_official": 0,
-      "stock_name_mismatch": 0,
-      "stock_cross_exchange_collision": 0,
-      "etf_reference_gap": 10,
       "etf_missing_from_official": 0,
       "etf_name_mismatch": 0,
       "etf_cross_exchange_collision": 0,
@@ -11275,25 +10536,6 @@
       "masterfile_collisions": 0
     },
     {
-      "exchange": "SET",
-      "venue_status": "official_partial",
-      "unresolved_findings": 17,
-      "reference_gap": 13,
-      "missing_from_official": 0,
-      "name_mismatch": 4,
-      "cross_exchange_collision": 0,
-      "stock_reference_gap": 5,
-      "stock_missing_from_official": 0,
-      "stock_name_mismatch": 4,
-      "stock_cross_exchange_collision": 0,
-      "etf_reference_gap": 8,
-      "etf_missing_from_official": 0,
-      "etf_name_mismatch": 0,
-      "etf_cross_exchange_collision": 0,
-      "masterfile_missing": 0,
-      "masterfile_collisions": 0
-    },
-    {
       "exchange": "TWSE",
       "venue_status": "official_full",
       "unresolved_findings": 16,
@@ -11325,6 +10567,44 @@
       "stock_name_mismatch": 0,
       "stock_cross_exchange_collision": 0,
       "etf_reference_gap": 0,
+      "etf_missing_from_official": 0,
+      "etf_name_mismatch": 0,
+      "etf_cross_exchange_collision": 0,
+      "masterfile_missing": 0,
+      "masterfile_collisions": 0
+    },
+    {
+      "exchange": "KRX",
+      "venue_status": "official_partial",
+      "unresolved_findings": 14,
+      "reference_gap": 14,
+      "missing_from_official": 0,
+      "name_mismatch": 0,
+      "cross_exchange_collision": 0,
+      "stock_reference_gap": 4,
+      "stock_missing_from_official": 0,
+      "stock_name_mismatch": 0,
+      "stock_cross_exchange_collision": 0,
+      "etf_reference_gap": 10,
+      "etf_missing_from_official": 0,
+      "etf_name_mismatch": 0,
+      "etf_cross_exchange_collision": 0,
+      "masterfile_missing": 0,
+      "masterfile_collisions": 0
+    },
+    {
+      "exchange": "SET",
+      "venue_status": "official_partial",
+      "unresolved_findings": 10,
+      "reference_gap": 6,
+      "missing_from_official": 0,
+      "name_mismatch": 4,
+      "cross_exchange_collision": 0,
+      "stock_reference_gap": 5,
+      "stock_missing_from_official": 0,
+      "stock_name_mismatch": 4,
+      "stock_cross_exchange_collision": 0,
+      "etf_reference_gap": 1,
       "etf_missing_from_official": 0,
       "etf_name_mismatch": 0,
       "etf_cross_exchange_collision": 0,
