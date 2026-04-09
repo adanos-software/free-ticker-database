@@ -17,6 +17,7 @@ from scripts.fetch_exchange_masterfiles import (
     LEGACY_LSE_COMPANY_REPORTS_CACHE,
     LEGACY_LSE_INSTRUMENT_DIRECTORY_CACHE,
     LEGACY_LSE_INSTRUMENT_SEARCH_CACHE,
+    LEGACY_NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
     LEGACY_TMX_ETF_SCREENER_CACHE,
     LEGACY_TPEX_MAINBOARD_QUOTES_CACHE,
     LSE_PAGE_INITIALS,
@@ -64,7 +65,9 @@ from scripts.fetch_exchange_masterfiles import (
     load_lse_company_reports_rows,
     load_lse_instrument_directory_rows,
     load_lse_instrument_search_rows,
+    load_nasdaq_nordic_stockholm_etf_rows,
     load_nasdaq_nordic_stockholm_shares_rows,
+    NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
     load_sec_company_tickers_exchange_payload,
     load_tmx_etf_screener_payload,
     load_tpex_mainboard_quotes_payload,
@@ -84,6 +87,7 @@ from scripts.fetch_exchange_masterfiles import (
     parse_jse_exchange_traded_product_excel,
     parse_krx_etf_finder,
     parse_krx_listed_companies,
+    parse_nasdaq_nordic_stockholm_etfs,
     parse_lse_company_reports_html,
     parse_nasdaq_nordic_stockholm_shares,
     parse_nasdaq_listed,
@@ -3528,6 +3532,161 @@ def test_fetch_nasdaq_nordic_stockholm_shares_filters_to_sto() -> None:
     ]
 
 
+def test_parse_nasdaq_nordic_stockholm_etfs_maps_symbol_aliases() -> None:
+    payload = {
+        "data": {
+            "instrumentListing": {
+                "rows": [
+                    {
+                        "symbol": "XACT Sverige",
+                        "fullName": "XACT Sverige (UCITS ETF)",
+                        "isin": "SE0001056045",
+                    },
+                    {
+                        "symbol": "XACT BULL 2",
+                        "fullName": "XACT BULL 2",
+                        "isin": "SE0003051010",
+                    },
+                    {
+                        "symbol": "MONTDIV",
+                        "fullName": "Montrose Global Monthly Dividend MSCI World UCITS ETF",
+                        "isin": "IE000DMPF2D5",
+                    },
+                    {
+                        "symbol": "",
+                        "fullName": "Ignored",
+                        "isin": "IE0000000000",
+                    },
+                ]
+            }
+        }
+    }
+
+    rows = parse_nasdaq_nordic_stockholm_etfs(payload, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "XACT-SVERIGE",
+            "name": "XACT Sverige (UCITS ETF)",
+            "exchange": "STO",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "SE0001056045",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "XACT-SVERI",
+            "name": "XACT Sverige (UCITS ETF)",
+            "exchange": "STO",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "SE0001056045",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "XACT-BULL-2",
+            "name": "XACT BULL 2",
+            "exchange": "STO",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "SE0003051010",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "XACT-BULL-",
+            "name": "XACT BULL 2",
+            "exchange": "STO",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "SE0003051010",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "MONTDIV",
+            "name": "Montrose Global Monthly Dividend MSCI World UCITS ETF",
+            "exchange": "STO",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "IE000DMPF2D5",
+        },
+    ]
+
+
+def test_fetch_nasdaq_nordic_stockholm_etfs_filters_to_sto() -> None:
+    source = MasterfileSource(
+        key="nasdaq_nordic_stockholm_etfs",
+        provider="Nasdaq Nordic",
+        description="Official Stockholm ETF screener",
+        source_url="https://api.nasdaq.com/api/nordic/screener/etp",
+        format="nasdaq_nordic_stockholm_etfs_json",
+        reference_scope="listed_companies_subset",
+    )
+
+    class FakeResponse:
+        def __init__(self, payload, status_code=200):
+            self._payload = payload
+            self.status_code = status_code
+
+        def raise_for_status(self):
+            if self.status_code >= 400:
+                raise requests.HTTPError(f"status={self.status_code}")
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            self.calls.append((url, params))
+            assert params == {"category": "ETF", "tableonly": "false", "market": "STO"}
+            return FakeResponse(
+                {
+                    "data": {
+                        "instrumentListing": {
+                            "rows": [
+                                {"symbol": "XACT Sverige", "fullName": "XACT Sverige (UCITS ETF)"},
+                                {"symbol": "MONTDIV", "fullName": "Montrose Global Monthly Dividend MSCI World UCITS ETF"},
+                            ]
+                        }
+                    }
+                }
+            )
+
+    session = FakeSession()
+    rows = fetch_exchange_masterfiles.fetch_nasdaq_nordic_stockholm_etfs(source, session=session)
+
+    assert [row["ticker"] for row in rows] == ["XACT-SVERIGE", "XACT-SVERI", "MONTDIV"]
+    assert session.calls == [
+        (
+            "https://api.nasdaq.com/api/nordic/screener/etp",
+            {"category": "ETF", "tableonly": "false", "market": "STO"},
+        ),
+    ]
+
+
 def test_sto_source_is_modeled_as_partial_official_coverage() -> None:
     source = next(item for item in OFFICIAL_SOURCES if item.key == "nasdaq_nordic_stockholm_shares")
     assert source.reference_scope == "listed_companies_subset"
@@ -3561,6 +3720,39 @@ def test_fetch_source_rows_with_mode_uses_sto_cache(tmp_path, monkeypatch) -> No
 
     assert mode == "cache"
     assert rows[0]["ticker"] == "ABB"
+    assert rows[0]["exchange"] == "STO"
+
+
+def test_load_nasdaq_nordic_stockholm_etf_rows_prefers_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "nasdaq_nordic_stockholm_etfs.json"
+    cache_path.write_text(
+        '[{"ticker":"XACT-SVERI","name":"XACT Sverige (UCITS ETF)","exchange":"STO","asset_type":"ETF","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE", cache_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE", tmp_path / "missing.json")
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "nasdaq_nordic_stockholm_etfs")
+    rows, mode = load_nasdaq_nordic_stockholm_etf_rows(source)
+
+    assert mode == "cache"
+    assert rows == [{"ticker": "XACT-SVERI", "name": "XACT Sverige (UCITS ETF)", "exchange": "STO", "asset_type": "ETF", "listing_status": "active"}]
+
+
+def test_fetch_source_rows_with_mode_uses_sto_etf_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "nasdaq_nordic_stockholm_etfs.json"
+    cache_path.write_text(
+        '[{"ticker":"XACT-SVERI","name":"XACT Sverige (UCITS ETF)","exchange":"STO","asset_type":"ETF","listing_status":"active","source_key":"nasdaq_nordic_stockholm_etfs","reference_scope":"listed_companies_subset","official":"true","provider":"Nasdaq Nordic","source_url":"https://example.com","isin":"SE0001056045"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE", cache_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE", tmp_path / "missing.json")
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "nasdaq_nordic_stockholm_etfs")
+    rows, mode = fetch_source_rows_with_mode(source)
+
+    assert mode == "cache"
+    assert rows[0]["ticker"] == "XACT-SVERI"
     assert rows[0]["exchange"] == "STO"
 
 
