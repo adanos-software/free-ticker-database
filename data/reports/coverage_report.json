@@ -18,14 +18,14 @@
     "official_masterfile_collisions": 4430,
     "official_masterfile_missing": 4475,
     "official_full_exchanges": 12,
-    "official_partial_exchanges": 17,
+    "official_partial_exchanges": 18,
     "manual_only_exchanges": 0,
-    "missing_exchanges": 39,
+    "missing_exchanges": 38,
     "stock_verification_items": 43954,
-    "stock_verification_verified": 29716,
-    "stock_verification_reference_gap": 14234,
+    "stock_verification_verified": 29856,
+    "stock_verification_reference_gap": 14093,
     "stock_verification_missing_from_official": 0,
-    "stock_verification_name_mismatch": 4,
+    "stock_verification_name_mismatch": 5,
     "stock_verification_cross_exchange_collision": 0,
     "etf_verification_items": 16610,
     "etf_verification_verified": 15231,
@@ -36,22 +36,22 @@
   },
   "freshness": {
     "tickers_built_at": "2026-04-09T10:03:57Z",
-    "tickers_age_hours": 2.81,
-    "masterfiles_generated_at": "2026-04-09T12:51:50Z",
-    "masterfiles_age_hours": 0.01,
+    "tickers_age_hours": 3.45,
+    "masterfiles_generated_at": "2026-04-09T13:28:06Z",
+    "masterfiles_age_hours": 0.05,
     "identifiers_generated_at": "2026-04-09T10:03:57Z",
-    "identifiers_age_hours": 2.81,
+    "identifiers_age_hours": 3.45,
     "listing_history_observed_at": "2026-04-09T10:03:57Z",
-    "listing_history_age_hours": 2.81,
-    "latest_verification_run": "data/stock_verification/run-20260409-hel-search-01",
-    "latest_verification_generated_at": "2026-04-09T12:52:30Z",
+    "listing_history_age_hours": 3.45,
+    "latest_verification_run": "data/stock_verification/run-20260409-bmv-search-01",
+    "latest_verification_generated_at": "2026-04-09T13:30:39Z",
     "latest_verification_age_hours": 0.0,
-    "latest_stock_verification_run": "data/stock_verification/run-20260409-hel-search-01",
-    "latest_stock_verification_generated_at": "2026-04-09T12:52:30Z",
+    "latest_stock_verification_run": "data/stock_verification/run-20260409-bmv-search-01",
+    "latest_stock_verification_generated_at": "2026-04-09T13:30:39Z",
     "latest_stock_verification_age_hours": 0.0,
     "latest_etf_verification_run": "data/etf_verification/run-20260409-krx-isin-match-01",
     "latest_etf_verification_generated_at": "2026-04-09T12:20:51Z",
-    "latest_etf_verification_age_hours": 0.53
+    "latest_etf_verification_age_hours": 1.17
   },
   "source_coverage": [
     {
@@ -305,6 +305,15 @@
       "mode": "network",
       "rows": 51,
       "generated_at": "2026-04-09T11:28:35Z"
+    },
+    {
+      "key": "bmv_stock_search",
+      "provider": "BMV",
+      "reference_scope": "listed_companies_subset",
+      "official": true,
+      "mode": "network",
+      "rows": 141,
+      "generated_at": "2026-04-09T13:28:06Z"
     },
     {
       "key": "nasdaq_nordic_stockholm_shares",
@@ -795,10 +804,12 @@
     },
     {
       "exchange": "BMV",
-      "venue_status": "missing",
-      "official_source_count": 0,
+      "venue_status": "official_partial",
+      "official_source_count": 1,
       "manual_source_count": 0,
-      "reference_scopes": [],
+      "reference_scopes": [
+        "listed_companies_subset"
+      ],
       "tickers": 194,
       "isin_coverage": 147,
       "sector_coverage": 163,
@@ -812,19 +823,19 @@
       "masterfile_match_rate": null,
       "masterfile_collision_rate": null,
       "verification_items": 176,
-      "verification_verified": 0,
-      "verification_reference_gap": 176,
+      "verification_verified": 140,
+      "verification_reference_gap": 35,
       "verification_missing_from_official": 0,
-      "verification_name_mismatch": 0,
+      "verification_name_mismatch": 1,
       "verification_cross_exchange_collision": 0,
-      "verification_verified_rate_on_covered": null,
+      "verification_verified_rate_on_covered": 99.29,
       "stock_verification_items": 176,
-      "stock_verification_verified": 0,
-      "stock_verification_reference_gap": 176,
+      "stock_verification_verified": 140,
+      "stock_verification_reference_gap": 35,
       "stock_verification_missing_from_official": 0,
-      "stock_verification_name_mismatch": 0,
+      "stock_verification_name_mismatch": 1,
       "stock_verification_cross_exchange_collision": 0,
-      "stock_verification_verified_rate_on_covered": null,
+      "stock_verification_verified_rate_on_covered": 99.29,
       "etf_verification_items": 18,
       "etf_verification_verified": 0,
       "etf_verification_reference_gap": 18,
@@ -832,7 +843,7 @@
       "etf_verification_name_mismatch": 0,
       "etf_verification_cross_exchange_collision": 0,
       "etf_verification_verified_rate_on_covered": null,
-      "unresolved_count": 194
+      "unresolved_count": 54
     },
     {
       "exchange": "BSE_BW",
@@ -3649,10 +3660,12 @@
     },
     {
       "exchange": "BMV",
-      "venue_status": "missing",
-      "official_source_count": 0,
+      "venue_status": "official_partial",
+      "official_source_count": 1,
       "manual_source_count": 0,
-      "reference_scopes": [],
+      "reference_scopes": [
+        "listed_companies_subset"
+      ],
       "tickers": 194,
       "isin_coverage": 147,
       "sector_coverage": 163,
@@ -3666,19 +3679,19 @@
       "masterfile_match_rate": null,
       "masterfile_collision_rate": null,
       "verification_items": 176,
-      "verification_verified": 0,
-      "verification_reference_gap": 176,
+      "verification_verified": 140,
+      "verification_reference_gap": 35,
       "verification_missing_from_official": 0,
-      "verification_name_mismatch": 0,
+      "verification_name_mismatch": 1,
       "verification_cross_exchange_collision": 0,
-      "verification_verified_rate_on_covered": null,
+      "verification_verified_rate_on_covered": 99.29,
       "stock_verification_items": 176,
-      "stock_verification_verified": 0,
-      "stock_verification_reference_gap": 176,
+      "stock_verification_verified": 140,
+      "stock_verification_reference_gap": 35,
       "stock_verification_missing_from_official": 0,
-      "stock_verification_name_mismatch": 0,
+      "stock_verification_name_mismatch": 1,
       "stock_verification_cross_exchange_collision": 0,
-      "stock_verification_verified_rate_on_covered": null,
+      "stock_verification_verified_rate_on_covered": 99.29,
       "etf_verification_items": 18,
       "etf_verification_verified": 0,
       "etf_verification_reference_gap": 18,
@@ -3686,7 +3699,7 @@
       "etf_verification_name_mismatch": 0,
       "etf_verification_cross_exchange_collision": 0,
       "etf_verification_verified_rate_on_covered": null,
-      "unresolved_count": 194
+      "unresolved_count": 54
     },
     {
       "exchange": "BSE_BW",
@@ -6819,112 +6832,35 @@
     }
   ],
   "verification": {
-    "run_dir": "data/stock_verification/run-20260409-hel-search-01",
-    "generated_at": "2026-04-09T12:52:30Z",
+    "run_dir": "data/stock_verification/run-20260409-bmv-search-01",
+    "generated_at": "2026-04-09T13:30:39Z",
     "summary": {
-      "chunk_count": 1,
-      "completed_chunks": 1,
-      "missing_chunks": [],
       "items": 43954,
       "status_counts": {
-        "name_mismatch": 4,
-        "reference_gap": 14234,
-        "verified": 29716
+        "name_mismatch": 5,
+        "reference_gap": 14093,
+        "verified": 29856
       },
-      "chunks": [
-        {
-          "chunk_index": 1,
-          "chunk_count": 1,
-          "items": 43954,
-          "status_counts": {
-            "name_mismatch": 4,
-            "reference_gap": 14234,
-            "verified": 29716
-          },
-          "finding_examples": [
-            {
-              "listing_key": "SET::BKA",
-              "ticker": "BKA",
-              "exchange": "SET",
-              "asset_type": "Stock",
-              "name": "BKA",
-              "country": "Thailand",
-              "country_code": "TH",
-              "isin": "",
-              "sector": "",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "Bangkok Asset Intergroup Public Company Limited",
-              "official_reference_source": "set_listed_companies",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "SET::IDG",
-              "ticker": "IDG",
-              "exchange": "SET",
-              "asset_type": "Stock",
-              "name": "IDG",
-              "country": "Thailand",
-              "country_code": "TH",
-              "isin": "",
-              "sector": "Information Technology",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "INDIGY PUBLIC COMPANY LIMITED",
-              "official_reference_source": "set_listed_companies",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "SET::SENX",
-              "ticker": "SENX",
-              "exchange": "SET",
-              "asset_type": "Stock",
-              "name": "Sena J Property PCL",
-              "country": "Thailand",
-              "country_code": "TH",
-              "isin": "",
-              "sector": "Real Estate",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "SEN X PUBLIC COMPANY LIMITED",
-              "official_reference_source": "set_listed_companies",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "SET::SMD100",
-              "ticker": "SMD100",
-              "exchange": "SET",
-              "asset_type": "Stock",
-              "name": "SMD100_SAINTMED",
-              "country": "Thailand",
-              "country_code": "TH",
-              "isin": "",
-              "sector": "Health Care",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "SMD RISE PUBLIC COMPANY LIMITED",
-              "official_reference_source": "set_listed_companies",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/stock_verification/run-20260409-hel-search-01/chunk-01-of-01.json",
-          "csv_out": "data/stock_verification/run-20260409-hel-search-01/chunk-01-of-01.csv"
-        }
-      ],
-      "finding_rows": 4,
       "finding_examples": [
+        {
+          "listing_key": "BMV::CTAXTELA",
+          "ticker": "CTAXTELA",
+          "exchange": "BMV",
+          "asset_type": "Stock",
+          "name": "CONTRALADORA AXEL SAB",
+          "country": "Mexico",
+          "country_code": "MX",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "CONTROLADORA AXTEL, S.A.B. DE C.V.",
+          "official_reference_source": "bmv_stock_search",
+          "covered_by_official_directory": false,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
         {
           "listing_key": "SET::BKA",
           "ticker": "BKA",
@@ -7001,9 +6937,7 @@
           "figi": "",
           "lei": ""
         }
-      ],
-      "summary_json": "data/stock_verification/run-20260409-hel-search-01/summary.json",
-      "findings_csv": "data/stock_verification/run-20260409-hel-search-01/findings.csv"
+      ]
     },
     "exchange_coverage": [
       {
@@ -7100,15 +7034,15 @@
       {
         "exchange": "BMV",
         "items": 176,
-        "verified": 0,
-        "reference_gap": 176,
+        "verified": 140,
+        "reference_gap": 35,
         "missing_from_official": 0,
-        "name_mismatch": 0,
+        "name_mismatch": 1,
         "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 0,
-        "verified_rate_on_covered": null
+        "officially_covered_items": 141,
+        "verified_rate_on_covered": 99.29
       },
       {
         "exchange": "BSE_BW",
@@ -7867,112 +7801,35 @@
     ]
   },
   "stock_verification": {
-    "run_dir": "data/stock_verification/run-20260409-hel-search-01",
-    "generated_at": "2026-04-09T12:52:30Z",
+    "run_dir": "data/stock_verification/run-20260409-bmv-search-01",
+    "generated_at": "2026-04-09T13:30:39Z",
     "summary": {
-      "chunk_count": 1,
-      "completed_chunks": 1,
-      "missing_chunks": [],
       "items": 43954,
       "status_counts": {
-        "name_mismatch": 4,
-        "reference_gap": 14234,
-        "verified": 29716
+        "name_mismatch": 5,
+        "reference_gap": 14093,
+        "verified": 29856
       },
-      "chunks": [
-        {
-          "chunk_index": 1,
-          "chunk_count": 1,
-          "items": 43954,
-          "status_counts": {
-            "name_mismatch": 4,
-            "reference_gap": 14234,
-            "verified": 29716
-          },
-          "finding_examples": [
-            {
-              "listing_key": "SET::BKA",
-              "ticker": "BKA",
-              "exchange": "SET",
-              "asset_type": "Stock",
-              "name": "BKA",
-              "country": "Thailand",
-              "country_code": "TH",
-              "isin": "",
-              "sector": "",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "Bangkok Asset Intergroup Public Company Limited",
-              "official_reference_source": "set_listed_companies",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "SET::IDG",
-              "ticker": "IDG",
-              "exchange": "SET",
-              "asset_type": "Stock",
-              "name": "IDG",
-              "country": "Thailand",
-              "country_code": "TH",
-              "isin": "",
-              "sector": "Information Technology",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "INDIGY PUBLIC COMPANY LIMITED",
-              "official_reference_source": "set_listed_companies",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "SET::SENX",
-              "ticker": "SENX",
-              "exchange": "SET",
-              "asset_type": "Stock",
-              "name": "Sena J Property PCL",
-              "country": "Thailand",
-              "country_code": "TH",
-              "isin": "",
-              "sector": "Real Estate",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "SEN X PUBLIC COMPANY LIMITED",
-              "official_reference_source": "set_listed_companies",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "SET::SMD100",
-              "ticker": "SMD100",
-              "exchange": "SET",
-              "asset_type": "Stock",
-              "name": "SMD100_SAINTMED",
-              "country": "Thailand",
-              "country_code": "TH",
-              "isin": "",
-              "sector": "Health Care",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "SMD RISE PUBLIC COMPANY LIMITED",
-              "official_reference_source": "set_listed_companies",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/stock_verification/run-20260409-hel-search-01/chunk-01-of-01.json",
-          "csv_out": "data/stock_verification/run-20260409-hel-search-01/chunk-01-of-01.csv"
-        }
-      ],
-      "finding_rows": 4,
       "finding_examples": [
+        {
+          "listing_key": "BMV::CTAXTELA",
+          "ticker": "CTAXTELA",
+          "exchange": "BMV",
+          "asset_type": "Stock",
+          "name": "CONTRALADORA AXEL SAB",
+          "country": "Mexico",
+          "country_code": "MX",
+          "isin": "",
+          "sector": "",
+          "status": "name_mismatch",
+          "reason": "Dataset name does not match official exchange directory name.",
+          "official_reference_name": "CONTROLADORA AXTEL, S.A.B. DE C.V.",
+          "official_reference_source": "bmv_stock_search",
+          "covered_by_official_directory": false,
+          "cik": "",
+          "figi": "",
+          "lei": ""
+        },
         {
           "listing_key": "SET::BKA",
           "ticker": "BKA",
@@ -8049,9 +7906,7 @@
           "figi": "",
           "lei": ""
         }
-      ],
-      "summary_json": "data/stock_verification/run-20260409-hel-search-01/summary.json",
-      "findings_csv": "data/stock_verification/run-20260409-hel-search-01/findings.csv"
+      ]
     },
     "exchange_coverage": [
       {
@@ -8148,15 +8003,15 @@
       {
         "exchange": "BMV",
         "items": 176,
-        "verified": 0,
-        "reference_gap": 176,
+        "verified": 140,
+        "reference_gap": 35,
         "missing_from_official": 0,
-        "name_mismatch": 0,
+        "name_mismatch": 1,
         "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 0,
-        "verified_rate_on_covered": null
+        "officially_covered_items": 141,
+        "verified_rate_on_covered": 99.29
       },
       {
         "exchange": "BSE_BW",
@@ -9832,25 +9687,6 @@
       "masterfile_collisions": 0
     },
     {
-      "exchange": "BMV",
-      "venue_status": "missing",
-      "unresolved_findings": 194,
-      "reference_gap": 194,
-      "missing_from_official": 0,
-      "name_mismatch": 0,
-      "cross_exchange_collision": 0,
-      "stock_reference_gap": 176,
-      "stock_missing_from_official": 0,
-      "stock_name_mismatch": 0,
-      "stock_cross_exchange_collision": 0,
-      "etf_reference_gap": 18,
-      "etf_missing_from_official": 0,
-      "etf_name_mismatch": 0,
-      "etf_cross_exchange_collision": 0,
-      "masterfile_missing": 0,
-      "masterfile_collisions": 0
-    },
-    {
       "exchange": "BME",
       "venue_status": "missing",
       "unresolved_findings": 169,
@@ -10129,6 +9965,25 @@
       "stock_name_mismatch": 0,
       "stock_cross_exchange_collision": 0,
       "etf_reference_gap": 14,
+      "etf_missing_from_official": 0,
+      "etf_name_mismatch": 0,
+      "etf_cross_exchange_collision": 0,
+      "masterfile_missing": 0,
+      "masterfile_collisions": 0
+    },
+    {
+      "exchange": "BMV",
+      "venue_status": "official_partial",
+      "unresolved_findings": 54,
+      "reference_gap": 53,
+      "missing_from_official": 0,
+      "name_mismatch": 1,
+      "cross_exchange_collision": 0,
+      "stock_reference_gap": 35,
+      "stock_missing_from_official": 0,
+      "stock_name_mismatch": 1,
+      "stock_cross_exchange_collision": 0,
+      "etf_reference_gap": 18,
       "etf_missing_from_official": 0,
       "etf_name_mismatch": 0,
       "etf_cross_exchange_collision": 0,

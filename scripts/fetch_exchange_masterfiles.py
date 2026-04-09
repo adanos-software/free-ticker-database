@@ -92,6 +92,8 @@ JSE_INSTRUMENT_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "jse_instrument_search.json
 LEGACY_JSE_INSTRUMENT_SEARCH_CACHE = MASTERFILES_DIR / "jse_instrument_search.json"
 SET_ETF_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "set_etf_search.json"
 LEGACY_SET_ETF_SEARCH_CACHE = MASTERFILES_DIR / "set_etf_search.json"
+BMV_STOCK_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "bmv_stock_search.json"
+LEGACY_BMV_STOCK_SEARCH_CACHE = MASTERFILES_DIR / "bmv_stock_search.json"
 
 SEC_COMPANY_TICKERS_URL = "https://www.sec.gov/files/company_tickers_exchange.json"
 NASDAQ_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt"
@@ -175,10 +177,16 @@ NASDAQ_NORDIC_ETF_SOURCE_CONFIG = {
 NASDAQ_NORDIC_SHARE_SEARCH_SOURCE_CONFIG = {
     "nasdaq_nordic_helsinki_shares_search": {"exchange": "HEL", "currency": "EUR"},
 }
+BMV_STOCK_SEARCH_SOURCE_CONFIG = {
+    "bmv_stock_search": {"exchange": "BMV", "quote_search_id": 2},
+}
 TWSE_LISTED_COMPANIES_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
 TWSE_ETF_LIST_URL = "https://www.twse.com.tw/rwd/en/ETF/list"
 SET_LISTED_COMPANIES_URL = "https://www.set.or.th/dat/eod/listedcompany/static/listedCompanies_en_US.xls"
 SET_ETF_SEARCH_URL = "https://www.set.or.th/en/market/get-quote/etf"
+BMV_MOBILE_QUOTE_KEYS_URL = "https://www.bmv.com.mx/es/movil/JSONClaveCotizacion"
+BMV_SEARCH_TOKEN_URL = "https://www.bmv.com.mx/rest/tokenservice/token"
+BMV_SEARCH_URL = "https://www.bmv.com.mx/api/searchservice/v1"
 SZSE_STOCK_LIST_URL = "https://www.szse.cn/market/product/stock/list/index.html"
 SZSE_ETF_LIST_URL = "https://www.szse.cn/market/product/list/etfList/index.html"
 SZSE_REPORT_DATA_URL = "https://www.szse.cn/api/report/ShowReport/data"
@@ -648,6 +656,14 @@ OFFICIAL_SOURCES = [
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
+        key="bmv_stock_search",
+        provider="BMV",
+        description="Official BMV stock search supplement for exact ticker gaps",
+        source_url=BMV_SEARCH_URL,
+        format="bmv_stock_search_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
         key="nasdaq_nordic_stockholm_shares",
         provider="Nasdaq Nordic",
         description="Official Nasdaq Nordic Stockholm shares screener (Main Market + First North)",
@@ -990,6 +1006,46 @@ def lse_reference_gap_tickers(base_dirs: Iterable[Path] | None = None) -> set[st
                     if row.get("exchange") == "LSE" and row.get("status") == "reference_gap" and ticker:
                         tickers.add(ticker)
     return tickers
+
+
+def extract_bmv_json_wrapper_payload(text: str) -> Any:
+    marker_index = text.find("for(;;);")
+    if marker_index != -1:
+        text = text[marker_index + len("for(;;);") :].strip()
+    if text.startswith("("):
+        text = text[1:]
+    closing_index = text.rfind(")")
+    if closing_index != -1:
+        text = text[:closing_index]
+    return json.loads(text)
+
+
+def bmv_compose_reference_ticker(clave: str, serie: str) -> str:
+    normalized_clave = clave.strip().upper()
+    normalized_serie = serie.strip().upper().replace(" ", "").replace("*", "")
+    return f"{normalized_clave}{normalized_serie}"
+
+
+def bmv_stock_search_target_rows(
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    verification_dir: Path = STOCK_VERIFICATION_DIR,
+) -> list[dict[str, str]]:
+    config = BMV_STOCK_SEARCH_SOURCE_CONFIG[source.key]
+    target_tickers = latest_reference_gap_tickers(
+        verification_dir,
+        exchanges={config["exchange"]},
+    )
+    if not target_tickers:
+        return []
+    return [
+        row
+        for row in load_csv(listings_path)
+        if row.get("exchange") == config["exchange"]
+        and row.get("asset_type") == "Stock"
+        and row.get("ticker", "").strip() in target_tickers
+    ]
 
 
 def compact_company_name(value: str) -> str:
@@ -1610,6 +1666,146 @@ def fetch_nasdaq_nordic_helsinki_shares_search(
             if listing_ticker in seen:
                 break
     return rows
+
+
+def fetch_bmv_stock_search(
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    verification_dir: Path = STOCK_VERIFICATION_DIR,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    config = BMV_STOCK_SEARCH_SOURCE_CONFIG[source.key]
+    session = session or requests.Session()
+    quote_response = session.get(
+        BMV_MOBILE_QUOTE_KEYS_URL,
+        params={"idBusquedaCotizacion": config["quote_search_id"]},
+        timeout=REQUEST_TIMEOUT,
+    )
+    quote_response.raise_for_status()
+    quote_items = extract_bmv_json_wrapper_payload(quote_response.text).get("response", {}).get("clavesCotizacion") or []
+    quote_lookup = {
+        bmv_compose_reference_ticker(
+            str(item.get("clave", "")),
+            str(item.get("serie", "")),
+        ): (
+            str(item.get("clave", "")).strip().upper(),
+            str(item.get("serie", "")).strip().upper(),
+        )
+        for item in quote_items
+        if str(item.get("clave", "")).strip()
+    }
+
+    token_response = session.get(BMV_SEARCH_TOKEN_URL, timeout=REQUEST_TIMEOUT)
+    token_response.raise_for_status()
+    access_token = str(token_response.json().get("response", {}).get("access_token", "")).strip()
+    if not access_token:
+        raise ValueError("BMV search token missing access_token")
+
+    search_headers = {"Authorization": f"Bearer {access_token}", "Content-Type": "application/json"}
+    cached_hits_by_clave: dict[str, list[dict[str, Any]]] = {}
+    rows: list[dict[str, str]] = []
+
+    for listing_row in bmv_stock_search_target_rows(
+        source,
+        listings_path=listings_path,
+        verification_dir=verification_dir,
+    ):
+        listing_ticker = listing_row.get("ticker", "").strip().upper()
+        quote_match = quote_lookup.get(listing_ticker)
+        if quote_match is None:
+            continue
+        clave, serie = quote_match
+        if clave not in cached_hits_by_clave:
+            response = session.post(
+                source.source_url,
+                headers=search_headers,
+                json={
+                    "lang": "es",
+                    "payload": {
+                        "term": clave,
+                        "term2": "",
+                        "termT": clave,
+                        "searchType": "busquedaPanel",
+                    },
+                },
+                timeout=REQUEST_TIMEOUT,
+            )
+            response.raise_for_status()
+            search_payload = response.json()
+            busqueda_panel = search_payload.get("response", {}).get("busquedaPanel", {})
+            if not isinstance(busqueda_panel, dict):
+                cached_hits_by_clave[clave] = []
+            else:
+                stack: list[Any] = [
+                    busqueda_panel.get("busquedaGeneral", {})
+                    .get("instrumentosEmisoras", {})
+                    .get("instrumentos", {})
+                ]
+                hits: list[dict[str, Any]] = []
+                while stack:
+                    current = stack.pop()
+                    if isinstance(current, dict):
+                        if "_source" in current and isinstance(current["_source"], dict):
+                            hits.append(current["_source"])
+                        else:
+                            stack.extend(current.values())
+                    elif isinstance(current, list):
+                        stack.extend(current)
+                cached_hits_by_clave[clave] = hits
+
+        for hit in cached_hits_by_clave[clave]:
+            hit_clave = str(hit.get("cve_emisora", "")).strip().upper()
+            hit_serie = str(hit.get("serie", "")).strip().upper()
+            descripcion = str(hit.get("descripcion", "")).strip().upper()
+            mercado = str(hit.get("mercado", "")).strip().upper()
+            estatus = str(hit.get("estatus", "")).strip().upper()
+            official_name = str(hit.get("razon_social", "")).strip()
+            if hit_clave != clave or hit_serie != serie:
+                continue
+            if estatus != "ACTIVA":
+                continue
+            if mercado not in {"CAPITALES", "GLOBAL"}:
+                continue
+            if not descripcion.startswith("ACCIONES") or "SOCIEDADES DE INVERSION" in descripcion:
+                continue
+            if not official_name:
+                continue
+            row = {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": listing_ticker,
+                "name": official_name,
+                "exchange": config["exchange"],
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+            isin = listing_row.get("isin", "").strip()
+            if isin:
+                row["isin"] = isin
+            rows.append(row)
+            break
+    return rows
+
+
+def load_bmv_stock_search_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_bmv_stock_search(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in (BMV_STOCK_SEARCH_CACHE, LEGACY_BMV_STOCK_SEARCH_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    BMV_STOCK_SEARCH_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
 
 
 def load_jse_exchange_traded_product_rows(
@@ -4943,6 +5139,11 @@ def fetch_source_rows_with_mode(
         rows, mode = load_set_etf_search_rows(source, session=session)
         if rows is None:
             raise requests.RequestException("SET ETF search unavailable")
+        return rows, mode
+    if source.format == "bmv_stock_search_json":
+        rows, mode = load_bmv_stock_search_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("BMV stock search unavailable")
         return rows, mode
     if source.format == "szse_etf_list_json":
         rows, mode = load_szse_etf_list_rows(source, session=session)

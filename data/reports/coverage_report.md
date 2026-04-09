@@ -22,14 +22,14 @@
 | official_masterfile_collisions | 4430 |
 | official_masterfile_missing | 4475 |
 | official_full_exchanges | 12 |
-| official_partial_exchanges | 17 |
+| official_partial_exchanges | 18 |
 | manual_only_exchanges | 0 |
-| missing_exchanges | 39 |
+| missing_exchanges | 38 |
 | stock_verification_items | 43954 |
-| stock_verification_verified | 29716 |
-| stock_verification_reference_gap | 14234 |
+| stock_verification_verified | 29856 |
+| stock_verification_reference_gap | 14093 |
 | stock_verification_missing_from_official | 0 |
-| stock_verification_name_mismatch | 4 |
+| stock_verification_name_mismatch | 5 |
 | stock_verification_cross_exchange_collision | 0 |
 | etf_verification_items | 16610 |
 | etf_verification_verified | 15231 |
@@ -43,22 +43,22 @@
 | Metric | Value |
 |---|---|
 | tickers_built_at | 2026-04-09T10:03:57Z |
-| tickers_age_hours | 2.81 |
-| masterfiles_generated_at | 2026-04-09T12:51:50Z |
-| masterfiles_age_hours | 0.01 |
+| tickers_age_hours | 3.45 |
+| masterfiles_generated_at | 2026-04-09T13:28:06Z |
+| masterfiles_age_hours | 0.05 |
 | identifiers_generated_at | 2026-04-09T10:03:57Z |
-| identifiers_age_hours | 2.81 |
+| identifiers_age_hours | 3.45 |
 | listing_history_observed_at | 2026-04-09T10:03:57Z |
-| listing_history_age_hours | 2.81 |
-| latest_verification_run | data/stock_verification/run-20260409-hel-search-01 |
-| latest_verification_generated_at | 2026-04-09T12:52:30Z |
+| listing_history_age_hours | 3.45 |
+| latest_verification_run | data/stock_verification/run-20260409-bmv-search-01 |
+| latest_verification_generated_at | 2026-04-09T13:30:39Z |
 | latest_verification_age_hours | 0.0 |
-| latest_stock_verification_run | data/stock_verification/run-20260409-hel-search-01 |
-| latest_stock_verification_generated_at | 2026-04-09T12:52:30Z |
+| latest_stock_verification_run | data/stock_verification/run-20260409-bmv-search-01 |
+| latest_stock_verification_generated_at | 2026-04-09T13:30:39Z |
 | latest_stock_verification_age_hours | 0.0 |
 | latest_etf_verification_run | data/etf_verification/run-20260409-krx-isin-match-01 |
 | latest_etf_verification_generated_at | 2026-04-09T12:20:51Z |
-| latest_etf_verification_age_hours | 0.53 |
+| latest_etf_verification_age_hours | 1.17 |
 
 ## Source Coverage
 
@@ -92,6 +92,7 @@
 | jse_etf_list | JSE | listed_companies_subset | cache | 133 | 2026-04-09T11:28:35Z |
 | jse_etn_list | JSE | listed_companies_subset | cache | 94 | 2026-04-09T11:28:35Z |
 | jse_instrument_search | JSE | listed_companies_subset | network | 51 | 2026-04-09T11:28:35Z |
+| bmv_stock_search | BMV | listed_companies_subset | network | 141 | 2026-04-09T13:28:06Z |
 | nasdaq_nordic_stockholm_shares | Nasdaq Nordic | listed_companies_subset | cache | 747 | 2026-04-09T11:28:35Z |
 | nasdaq_nordic_helsinki_shares | Nasdaq Nordic | listed_companies_subset | cache | 194 | 2026-04-09T11:28:35Z |
 | nasdaq_nordic_helsinki_shares_search | Nasdaq Nordic | listed_companies_subset | network | 3 | 2026-04-09T12:51:50Z |
@@ -125,7 +126,7 @@
 | BATS | official_full | 1240 | 681 | 345 | 0 | 0 | 0 | 1243 | 1191 | 16 | 36 | 95.82 | 100.0 |
 | BCBA | missing | 64 | 51 | 50 | 0 | 48 | 0 | 0 | 0 | 0 | 0 |  |  |
 | BME | missing | 169 | 154 | 157 | 3 | 2 | 0 | 0 | 0 | 0 | 0 |  |  |
-| BMV | missing | 194 | 147 | 163 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |  |  |
+| BMV | official_partial | 194 | 147 | 163 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |  | 99.29 |
 | BSE_BW | missing | 39 | 39 | 6 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | BSE_HU | missing | 31 | 15 | 9 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | BVB | missing | 85 | 79 | 77 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
@@ -274,7 +275,6 @@
 | HOSE | missing | 260 | 260 | 0 | 0 | 0 |
 | EGX | missing | 225 | 225 | 0 | 0 | 0 |
 | NEO | missing | 201 | 201 | 0 | 0 | 0 |
-| BMV | missing | 194 | 194 | 0 | 0 | 0 |
 | BME | missing | 169 | 169 | 0 | 0 | 0 |
 | NGX | missing | 147 | 147 | 0 | 0 | 0 |
 | STO | official_partial | 128 | 128 | 0 | 0 | 0 |
@@ -284,3 +284,4 @@
 | CPH | official_partial | 86 | 86 | 0 | 0 | 0 |
 | BVB | missing | 85 | 85 | 0 | 0 | 0 |
 | AMS | official_full | 74 | 74 | 0 | 0 | 0 |
+| NYSE ARCA | official_full | 70 | 70 | 0 | 0 | 0 |

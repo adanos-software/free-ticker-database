@@ -11,8 +11,10 @@ import requests
 import scripts.fetch_exchange_masterfiles as fetch_exchange_masterfiles
 
 from scripts.fetch_exchange_masterfiles import (
+    BMV_STOCK_SEARCH_CACHE,
     B3_INSTRUMENTS_EQUITIES_CACHE,
     JSE_INSTRUMENT_SEARCH_CACHE,
+    LEGACY_BMV_STOCK_SEARCH_CACHE,
     LEGACY_B3_INSTRUMENTS_EQUITIES_CACHE,
     LEGACY_LSE_COMPANY_REPORTS_CACHE,
     LEGACY_LSE_INSTRUMENT_DIRECTORY_CACHE,
@@ -46,6 +48,7 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_b3_instruments_equities,
     fetch_b3_bdr_companies,
     fetch_b3_listed_funds,
+    fetch_bmv_stock_search,
     fetch_all_sources,
     fetch_krx_etf_finder,
     fetch_krx_listed_companies,
@@ -72,6 +75,7 @@ from scripts.fetch_exchange_masterfiles import (
     infer_jpx_asset_type,
     infer_lse_lookup_asset_type,
     load_b3_instruments_equities_rows,
+    load_bmv_stock_search_rows,
     load_jse_instrument_search_rows,
     NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE,
     NASDAQ_NORDIC_HELSINKI_ETFS_CACHE,
@@ -4252,6 +4256,239 @@ def test_fetch_nasdaq_nordic_helsinki_shares_search_backfills_exact_ticker_gaps(
     ]
 
 
+def test_fetch_bmv_stock_search_backfills_exact_ticker_gaps(tmp_path, monkeypatch) -> None:
+    source = MasterfileSource(
+        key="bmv_stock_search",
+        provider="BMV",
+        description="Official BMV stock search supplement",
+        source_url="https://www.bmv.com.mx/api/searchservice/v1",
+        format="bmv_stock_search_json",
+        reference_scope="listed_companies_subset",
+    )
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,exchange,asset_type,name,isin",
+                "AMXB,BMV,Stock,AMERICA MOVIL SAB DE CV,MX01AM050019",
+                "WALMEX,BMV,Stock,Wal-Mart de Mexico S.A.B. de C.V,MX01WA000038",
+                "AXAN,BMV,Stock,AXA SA,FR0000120628",
+                "AEROMEX,BMV,Stock,Grupo Aeromexico S.A.B. de C.V,MX01AE010005",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "latest_reference_gap_tickers",
+        lambda base_dir, exchanges=None: {"AMXB", "WALMEX", "AXAN", "AEROMEX"},
+    )
+
+    class FakeResponse:
+        def __init__(self, *, text: str | None = None, payload: object | None = None):
+            self.text = text or ""
+            self._payload = payload
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.get_calls = []
+            self.post_calls = []
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            self.get_calls.append((url, params))
+            if url == fetch_exchange_masterfiles.BMV_MOBILE_QUOTE_KEYS_URL:
+                assert params == {"idBusquedaCotizacion": 2}
+                return FakeResponse(
+                    text=(
+                        'for(;;);({"response":{"clavesCotizacion":['
+                        '{"clave":"AMX","serie":"B"},'
+                        '{"clave":"WALMEX","serie":"*"},'
+                        '{"clave":"AXA","serie":"N"}'
+                        ']}})'
+                    )
+                )
+            if url == fetch_exchange_masterfiles.BMV_SEARCH_TOKEN_URL:
+                return FakeResponse(payload={"response": {"access_token": "token-123"}})
+            raise AssertionError(url)
+
+        def post(self, url, headers=None, json=None, timeout=None):
+            self.post_calls.append((url, json))
+            assert url == "https://www.bmv.com.mx/api/searchservice/v1"
+            term = json["payload"]["term"]
+            payloads = {
+                "AMX": {
+                    "response": {
+                        "busquedaPanel": {
+                            "busquedaGeneral": {
+                                "instrumentosEmisoras": {
+                                    "instrumentos": {
+                                        "coincidenciaParcialInstrumentos": {
+                                            "emisoras": {
+                                                "hits": [
+                                                    {
+                                                        "_source": {
+                                                            "cve_emisora": "AMX",
+                                                            "serie": "B",
+                                                            "descripcion": "ACCIONES",
+                                                            "mercado": "Capitales",
+                                                            "estatus": "Activa",
+                                                            "razon_social": "AMERICA MOVIL, S.A.B. DE C.V.",
+                                                        }
+                                                    },
+                                                    {
+                                                        "_source": {
+                                                            "cve_emisora": "AMX",
+                                                            "serie": "00926",
+                                                            "descripcion": "CERTIFICADO BURSATIL",
+                                                            "mercado": "Deuda",
+                                                            "estatus": "Activa",
+                                                            "razon_social": "AMERICA MOVIL, S.A.B. DE C.V.",
+                                                        }
+                                                    },
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "WALMEX": {
+                    "response": {
+                        "busquedaPanel": {
+                            "busquedaGeneral": {
+                                "instrumentosEmisoras": {
+                                    "instrumentos": {
+                                        "coincidenciaParcialInstrumentos": {
+                                            "emisoras": {
+                                                "hits": [
+                                                    {
+                                                        "_source": {
+                                                            "cve_emisora": "WALMEX",
+                                                            "serie": "*",
+                                                            "descripcion": "ACCIONES",
+                                                            "mercado": "Capitales",
+                                                            "estatus": "Activa",
+                                                            "razon_social": "WAL - MART DE MEXICO, S.A.B. DE C.V.",
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "AXA": {
+                    "response": {
+                        "busquedaPanel": {
+                            "busquedaGeneral": {
+                                "instrumentosEmisoras": {
+                                    "instrumentos": {
+                                        "coincidenciaParcialInstrumentos": {
+                                            "emisoras": {
+                                                "hits": [
+                                                    {
+                                                        "_source": {
+                                                            "cve_emisora": "AXA",
+                                                            "serie": "N",
+                                                            "descripcion": "ACCIONES SISTEMA INTERNACIONAL DE COTIZACIONES",
+                                                            "mercado": "Global",
+                                                            "estatus": "Activa",
+                                                            "razon_social": "AXA SA",
+                                                        }
+                                                    },
+                                                    {
+                                                        "_source": {
+                                                            "cve_emisora": "AXAIM29",
+                                                            "serie": "BF",
+                                                            "descripcion": "ACCIONES SOCIEDADES DE INVERSION RENTA VARIABLE",
+                                                            "mercado": "Capitales",
+                                                            "estatus": "Activa",
+                                                            "razon_social": "CICLO DE VIDA 2029",
+                                                        }
+                                                    },
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+            }
+            return FakeResponse(payload=payloads[term])
+
+    session = FakeSession()
+    rows = fetch_bmv_stock_search(
+        source,
+        listings_path=listings_path,
+        verification_dir=tmp_path,
+        session=session,
+    )
+
+    assert rows == [
+        {
+            "source_key": "bmv_stock_search",
+            "provider": "BMV",
+            "source_url": "https://www.bmv.com.mx/api/searchservice/v1",
+            "ticker": "AMXB",
+            "name": "AMERICA MOVIL, S.A.B. DE C.V.",
+            "exchange": "BMV",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "MX01AM050019",
+        },
+        {
+            "source_key": "bmv_stock_search",
+            "provider": "BMV",
+            "source_url": "https://www.bmv.com.mx/api/searchservice/v1",
+            "ticker": "WALMEX",
+            "name": "WAL - MART DE MEXICO, S.A.B. DE C.V.",
+            "exchange": "BMV",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "MX01WA000038",
+        },
+        {
+            "source_key": "bmv_stock_search",
+            "provider": "BMV",
+            "source_url": "https://www.bmv.com.mx/api/searchservice/v1",
+            "ticker": "AXAN",
+            "name": "AXA SA",
+            "exchange": "BMV",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "FR0000120628",
+        },
+    ]
+    assert session.get_calls == [
+        (fetch_exchange_masterfiles.BMV_MOBILE_QUOTE_KEYS_URL, {"idBusquedaCotizacion": 2}),
+        (fetch_exchange_masterfiles.BMV_SEARCH_TOKEN_URL, None),
+    ]
+    assert session.post_calls == [
+        ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "AMX", "term2": "", "termT": "AMX", "searchType": "busquedaPanel"}}),
+        ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "WALMEX", "term2": "", "termT": "WALMEX", "searchType": "busquedaPanel"}}),
+        ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "AXA", "term2": "", "termT": "AXA", "searchType": "busquedaPanel"}}),
+    ]
+
+
 def test_parse_nasdaq_nordic_stockholm_etfs_maps_symbol_aliases() -> None:
     payload = {
         "data": {
@@ -4626,6 +4863,39 @@ def test_load_nasdaq_nordic_share_search_rows_prefers_cache(tmp_path, monkeypatc
             "ticker": "ERIBR",
             "name": "Ericsson B",
             "exchange": "HEL",
+            "asset_type": "Stock",
+            "listing_status": "active",
+        }
+    ]
+
+
+def test_load_bmv_stock_search_rows_falls_back_to_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "bmv_stock_search.json"
+    cache_path.write_text(
+        '[{"ticker":"AMXB","name":"AMERICA MOVIL, S.A.B. DE C.V.","exchange":"BMV","asset_type":"Stock","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "BMV_STOCK_SEARCH_CACHE", cache_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_BMV_STOCK_SEARCH_CACHE",
+        tmp_path / "missing.json",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_bmv_stock_search",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "bmv_stock_search")
+    rows, mode = load_bmv_stock_search_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "AMXB",
+            "name": "AMERICA MOVIL, S.A.B. DE C.V.",
+            "exchange": "BMV",
             "asset_type": "Stock",
             "listing_status": "active",
         }
