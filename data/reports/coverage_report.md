@@ -17,10 +17,10 @@
 | listing_status_intervals | 82729 |
 | listing_events | 24949 |
 | listing_keys | 60692 |
-| official_masterfile_symbols | 28029 |
-| official_masterfile_matches | 18959 |
+| official_masterfile_symbols | 28073 |
+| official_masterfile_matches | 18977 |
 | official_masterfile_collisions | 4509 |
-| official_masterfile_missing | 4561 |
+| official_masterfile_missing | 4587 |
 | official_full_exchanges | 13 |
 | official_partial_exchanges | 15 |
 | manual_only_exchanges | 0 |
@@ -32,9 +32,9 @@
 | stock_verification_name_mismatch | 0 |
 | stock_verification_cross_exchange_collision | 0 |
 | etf_verification_items | 16738 |
-| etf_verification_verified | 15464 |
+| etf_verification_verified | 15482 |
 | etf_verification_reference_gap | 1254 |
-| etf_verification_missing_from_official | 18 |
+| etf_verification_missing_from_official | 0 |
 | etf_verification_name_mismatch | 1 |
 | etf_verification_cross_exchange_collision | 1 |
 
@@ -43,22 +43,22 @@
 | Metric | Value |
 |---|---|
 | tickers_built_at | 2026-04-09T06:29:58Z |
-| tickers_age_hours | 0.26 |
+| tickers_age_hours | 0.42 |
 | masterfiles_generated_at | 2026-04-09T06:39:10Z |
-| masterfiles_age_hours | 0.11 |
+| masterfiles_age_hours | 0.26 |
 | identifiers_generated_at | 2026-04-09T06:44:51Z |
-| identifiers_age_hours | 0.01 |
+| identifiers_age_hours | 0.17 |
 | listing_history_observed_at | 2026-04-09T06:29:58Z |
-| listing_history_age_hours | 0.26 |
-| latest_verification_run | data/stock_verification/run-20260409-jse-search-01 |
-| latest_verification_generated_at | 2026-04-09T04:59:29Z |
-| latest_verification_age_hours | 1.77 |
-| latest_stock_verification_run | data/stock_verification/run-20260409-jse-search-01 |
-| latest_stock_verification_generated_at | 2026-04-09T04:59:29Z |
-| latest_stock_verification_age_hours | 1.77 |
-| latest_etf_verification_run | data/etf_verification/run-20260409-sto-trackers-02 |
-| latest_etf_verification_generated_at | 2026-04-09T06:39:50Z |
-| latest_etf_verification_age_hours | 0.1 |
+| listing_history_age_hours | 0.42 |
+| latest_verification_run | data/stock_verification/run-20260409-neo-dot-aliases-01 |
+| latest_verification_generated_at | 2026-04-09T06:52:14Z |
+| latest_verification_age_hours | 0.04 |
+| latest_stock_verification_run | data/stock_verification/run-20260409-neo-dot-aliases-01 |
+| latest_stock_verification_generated_at | 2026-04-09T06:52:14Z |
+| latest_stock_verification_age_hours | 0.04 |
+| latest_etf_verification_run | data/etf_verification/run-20260409-neo-dot-aliases-01 |
+| latest_etf_verification_generated_at | 2026-04-09T06:52:23Z |
+| latest_etf_verification_age_hours | 0.04 |
 
 ## Source Coverage
 
@@ -70,7 +70,7 @@
 | lse_instrument_search | LSE | security_lookup_subset | unknown | 926 | 2026-04-09T06:39:10Z |
 | lse_instrument_directory | LSE | security_lookup_subset | unknown | 64 | 2026-04-09T06:39:10Z |
 | asx_listed_companies | ASX | listed_companies_subset | unknown | 1979 | 2026-04-09T06:39:10Z |
-| cboe_canada_listing_directory | Cboe Canada | exchange_directory | unknown | 392 | 2026-04-09T06:39:10Z |
+| cboe_canada_listing_directory | Cboe Canada | exchange_directory | unknown | 436 | 2026-04-09T06:39:10Z |
 | asx_investment_products | ASX | listed_companies_subset | unknown | 426 | 2026-04-09T06:39:10Z |
 | set_listed_companies | SET | listed_companies_subset | unknown | 704 | 2026-04-09T06:39:10Z |
 | tmx_listed_issuers | TMX | listed_companies_subset | unknown | 3619 | 2026-04-09T06:39:10Z |
@@ -143,7 +143,7 @@
 | LUSE | missing | 22 | 22 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | MSE_MW | missing | 8 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | NASDAQ | official_full | 4627 | 3901 | 3618 | 3442 | 10 | 400 | 5446 | 4562 | 54 | 830 | 83.77 | 100.0 |
-| NEO | official_full | 201 | 78 | 21 | 0 | 0 | 0 | 392 | 178 | 83 | 131 | 45.41 | 90.91 |
+| NEO | official_full | 201 | 78 | 21 | 0 | 0 | 0 | 436 | 196 | 83 | 157 | 44.95 | 90.91 |
 | NGX | missing | 147 | 145 | 4 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | NMFQS | missing | 7 | 7 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | NSE_KE | missing | 46 | 46 | 6 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |

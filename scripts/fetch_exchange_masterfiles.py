@@ -1890,6 +1890,7 @@ def parse_cboe_canada_listing_directory_html(text: str, source: MasterfileSource
     except json.JSONDecodeError:
         return []
     rows: list[dict[str, str]] = []
+    seen: set[tuple[str, str, str]] = set()
     for record in payload:
         ticker = str(record.get("symbol") or "").strip().upper()
         name = str(record.get("name") or "").strip()
@@ -1902,20 +1903,30 @@ def parse_cboe_canada_listing_directory_html(text: str, source: MasterfileSource
             asset_type = "ETF"
         else:
             continue
-        rows.append(
-            {
-                "source_key": source.key,
-                "provider": source.provider,
-                "source_url": source.source_url,
-                "ticker": ticker,
-                "name": name,
-                "exchange": "NEO",
-                "asset_type": asset_type,
-                "listing_status": "active",
-                "reference_scope": source.reference_scope,
-                "official": "true",
-            }
-        )
+
+        tickers = [ticker]
+        if "." in ticker:
+            tickers.append(ticker.replace(".", "-"))
+
+        for candidate in tickers:
+            signature = (candidate, name, asset_type)
+            if signature in seen:
+                continue
+            seen.add(signature)
+            rows.append(
+                {
+                    "source_key": source.key,
+                    "provider": source.provider,
+                    "source_url": source.source_url,
+                    "ticker": candidate,
+                    "name": name,
+                    "exchange": "NEO",
+                    "asset_type": asset_type,
+                    "listing_status": "active",
+                    "reference_scope": source.reference_scope,
+                    "official": "true",
+                }
+            )
     return rows
 
 

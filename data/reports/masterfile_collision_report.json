@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 28029,
-    "matched": 18959,
+    "official_symbols": 28073,
+    "matched": 18977,
     "collisions": 4509,
-    "missing": 4561
+    "missing": 4587
   },
   "exchanges": [
     {
@@ -632,10 +632,10 @@
     },
     {
       "exchange": "NEO",
-      "official_symbols": 392,
-      "matched": 178,
+      "official_symbols": 436,
+      "matched": 196,
       "collisions": 83,
-      "missing": 131,
+      "missing": 157,
       "collision_examples": [
         {
           "ticker": "ABB",
@@ -745,6 +745,11 @@
           "exchange": "NEO"
         },
         {
+          "ticker": "BCCL-U",
+          "name": "GLOBAL X ENHANCED BITCOIN COVERED CALL ETF",
+          "exchange": "NEO"
+        },
+        {
           "ticker": "BCCL.U",
           "name": "GLOBAL X ENHANCED BITCOIN COVERED CALL ETF",
           "exchange": "NEO"
@@ -762,11 +767,6 @@
         {
           "ticker": "BYLD.B",
           "name": "MANULIFE SMART ENHANCED YIELD BOND ETF - UNHEDGED UNITS",
-          "exchange": "NEO"
-        },
-        {
-          "ticker": "CANO",
-          "name": "CANON CDR (CAD HEDGED)",
           "exchange": "NEO"
         }
       ]
