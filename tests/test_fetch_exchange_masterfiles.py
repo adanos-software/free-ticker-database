@@ -256,6 +256,7 @@ def test_parse_sec_company_tickers_exchange_normalizes_exchange_names():
             [320193, "Apple Inc.", "AAPL", "Nasdaq"],
             [732717, "AT&T Inc.", "T", "NYSE"],
             [884394, "SPDR S&P 500 ETF TRUST", "SPY", "NYSE"],
+            [999, "Acme OTC Markets Corp.", "ACME", "OTC"],
             [111, "Ignored", "BAD", None],
         ],
     }
@@ -265,7 +266,9 @@ def test_parse_sec_company_tickers_exchange_normalizes_exchange_names():
     assert rows[0]["exchange"] == "NASDAQ"
     assert rows[0]["asset_type"] == "Stock"
     assert rows[2]["asset_type"] == "ETF"
-    assert [row["ticker"] for row in rows] == ["AAPL", "T", "SPY"]
+    assert rows[3]["exchange"] == "OTC"
+    assert rows[3]["reference_scope"] == "listed_companies_subset"
+    assert [row["ticker"] for row in rows] == ["AAPL", "T", "SPY", "ACME"]
 
 
 def test_parse_twse_listed_companies_maps_twse_rows():

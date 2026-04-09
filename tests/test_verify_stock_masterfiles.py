@@ -1554,7 +1554,7 @@ def test_classify_row_downgrades_sto_peer_collision_to_reference_gap() -> None:
     assert result["reason"] == "Only weak cross-exchange collision evidence exists for this listing."
 
 
-def test_classify_row_downgrades_six_name_mismatch_to_reference_gap() -> None:
+def test_classify_row_accepts_trusted_six_rename_match() -> None:
     row = {
         "ticker": "EVE",
         "exchange": "SIX",
@@ -1585,8 +1585,8 @@ def test_classify_row_downgrades_six_name_mismatch_to_reference_gap() -> None:
         partial_covered_exchanges={"SIX"},
         identifier_map={},
     )
-    assert result["status"] == "reference_gap"
-    assert result["reason"] == "Only low-confidence issuer reference evidence exists for this listing."
+    assert result["status"] == "verified"
+    assert result["reason"] == "Matched active official exchange directory listing."
 
 
 def test_classify_row_verifies_exact_six_etf_product_match() -> None:

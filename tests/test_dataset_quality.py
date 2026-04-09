@@ -722,6 +722,53 @@ def test_should_exclude_stock_row_drops_psx_government_securities_and_rights():
     assert should_exclude_stock_row(rights_row) is True
 
 
+def test_should_exclude_stock_row_drops_krx_placeholder_and_structured_product_stocks():
+    from scripts.rebuild_dataset import should_exclude_stock_row
+
+    placeholder_row = {
+        "ticker": "238170",
+        "exchange": "KRX",
+        "asset_type": "Stock",
+        "name": "238170",
+        "isin": "",
+        "sector": "",
+        "aliases": "238170",
+    }
+    structured_row = {
+        "ticker": "570019",
+        "exchange": "KRX",
+        "asset_type": "Stock",
+        "name": "TRUE KOSPI Short Strangle 5% OT",
+        "isin": "",
+        "sector": "",
+        "aliases": "",
+    }
+
+    assert should_exclude_stock_row(placeholder_row) is True
+    assert should_exclude_stock_row(structured_row) is True
+
+
+def test_should_exclude_stock_row_drops_tmx_warrant_suffix_lines():
+    from scripts.rebuild_dataset import should_exclude_stock_row
+
+    row = {
+        "ticker": "ODV-WTV",
+        "exchange": "TSXV",
+        "asset_type": "Stock",
+        "name": "ODV-WTV",
+    }
+
+    assert should_exclude_stock_row(row) is True
+
+
+def test_alias_matches_company_accepts_trusted_non_lexical_renames():
+    from scripts.rebuild_dataset import alias_matches_company
+
+    assert alias_matches_company("Sena J Property PCL", "SEN X PUBLIC COMPANY LIMITED") is True
+    assert alias_matches_company("Daetwyl I", "Dätwyler Holding AG") is True
+    assert alias_matches_company("CONTRALADORA AXEL SAB", "CONTROLADORA AXTEL, S.A.B. DE C.V.") is True
+
+
 def test_apply_official_exchange_corrections_moves_krx_stock_to_kosdaq(monkeypatch):
     from scripts import rebuild_dataset
 
@@ -1013,6 +1060,9 @@ def test_cleaned_rows_respects_manual_isin_clear_over_official_fallback(monkeypa
 def test_artifact_counts_match():
     tickers_csv = load_csv("tickers.csv")
     aliases_csv = load_csv("aliases.csv")
+    listings_csv = load_csv("listings.csv")
+    listing_index_csv = load_csv("listing_index.csv")
+    identifiers_extended_csv = load_csv("identifiers_extended.csv")
 
     compact_json = json.loads((DATA_DIR / "tickers.json").read_text())
 
@@ -1028,12 +1078,24 @@ def test_artifact_counts_match():
 
     assert len(tickers_csv) == len(compact_tickers) == db_tickers
     assert len(aliases_csv) == db_aliases
+    assert len(listings_csv) == db_rows_for_table("listings")
+    assert len(listing_index_csv) == len(listings_csv)
+    assert len(identifiers_extended_csv) == len(listings_csv)
+
+
+def db_rows_for_table(table: str) -> int:
+    conn = sqlite3.connect(DATA_DIR / "tickers.db")
+    try:
+        return conn.execute(f'SELECT COUNT(*) FROM "{table}"').fetchone()[0]
+    finally:
+        conn.close()
 
 
 def test_readme_stats_and_claims_are_current():
     readme = (ROOT / "README.md").read_text()
     tickers_csv = load_csv("tickers.csv")
     aliases_csv = load_csv("aliases.csv")
+    cross_listings_csv = load_csv("cross_listings.csv")
     exchange_counts = Counter(row["exchange"] for row in tickers_csv)
 
     total = len(tickers_csv)
@@ -1054,6 +1116,26 @@ def test_readme_stats_and_claims_are_current():
     assert f"| XETRA | {exchange_counts['XETRA']:,} | Deutsche Boerse |" in readme
     assert f"| NYSE | {exchange_counts['NYSE']:,} | New York Stock Exchange |" in readme
     assert f"| ASX | {exchange_counts['ASX']:,} | Australian Securities Exchange |" in readme
+    assert (
+        f"Tables: `tickers` ({total:,} rows) + `aliases` ({len(aliases_csv):,} rows) + "
+        f"`cross_listings` ({len(cross_listings_csv):,} rows)"
+    ) in readme
+
+
+def test_listing_index_and_identifiers_extended_track_current_listings():
+    listings_csv = load_csv("listings.csv")
+    listing_index_csv = load_csv("listing_index.csv")
+    identifiers_extended_csv = load_csv("identifiers_extended.csv")
+
+    listing_keys = {row["listing_key"] for row in listings_csv}
+    listing_index_keys = {row["listing_key"] for row in listing_index_csv}
+    identifier_keys = {
+        f'{row["exchange"]}::{row["ticker"]}'
+        for row in identifiers_extended_csv
+    }
+
+    assert listing_index_keys == listing_keys
+    assert identifier_keys == listing_keys
 
 
 def test_release_docs_and_supporting_docs_are_current():

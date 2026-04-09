@@ -275,6 +275,12 @@ SEC_EXCHANGE_MAP = {
     "CboeBZX": "BATS",
 }
 
+
+def sec_reference_scope(exchange: str) -> str:
+    if exchange == "OTC":
+        return "listed_companies_subset"
+    return "exchange_directory"
+
 ETF_NAME_MARKERS = (
     " etf",
     " etn",
@@ -411,7 +417,7 @@ KRX_MARKET_ENGNAME_TO_EXCHANGE = {
 }
 SSE_JSONP_RE = re.compile(r"^[^(]+\((.*)\)\s*$", re.S)
 SSE_STOCK_TYPES = ("1", "2", "8")
-SSE_ETF_SUBCLASSES = ("01", "02", "03", "06", "08", "09", "31", "32", "33", "37")
+SSE_ETF_SUBCLASSES = ("01", "02", "03", "05", "06", "08", "09", "31", "32", "33", "37")
 PSX_SECTOR_LABEL_SKIP_MARKERS = (
     "select sector",
     "bond",
@@ -3863,7 +3869,7 @@ def parse_sec_company_tickers_exchange(payload: dict[str, Any], source: Masterfi
                 "exchange": exchange,
                 "asset_type": infer_asset_type(name),
                 "listing_status": "active",
-                "reference_scope": source.reference_scope,
+                "reference_scope": sec_reference_scope(exchange),
                 "official": "true",
             }
         )

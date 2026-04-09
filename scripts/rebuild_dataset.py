@@ -183,6 +183,7 @@ TAIWAN_ETF_TICKER_RE = re.compile(r"^00\d{2,4}[A-Z]?$")
 TAIWAN_NON_COMMON_STOCK_TICKER_RE = re.compile(r"^\d{4}B$")
 NEO_CDR_XDR_RE = re.compile(r"\b(?:cdr|xdr)\b", re.IGNORECASE)
 TMX_OFFICIAL_SERIES_TICKER_RE = re.compile(r"^(?P<root>[A-Z0-9]+)\.(?P<suffix>[A-Z0-9]+)$")
+TMX_WARRANT_TICKER_RE = re.compile(r"^[A-Z0-9]{1,8}-WT[A-Z]*$")
 PREFERRED_TICKER_SUFFIX_RE = re.compile(r"^[A-Z]{1,8}-P[A-Z]$")
 PREFERRED_PF_TICKER_RE = re.compile(r"^[A-Z]{1,8}-PF[A-Z]$")
 PREFERRED_PR_TICKER_RE = re.compile(r"^[A-Z]{1,8}-PR-[A-Z]$")
@@ -280,20 +281,28 @@ TRUSTED_NON_LEXICAL_ALIASES: dict[str, set[str]] = {
     "bmw": {"bayerische motoren werke", "bay.motoren werke ag st"},
     "citibank": {"citigroup", "citigroup inc."},
     "femsa": {"fomento economico mexicano", "fomento económico mexicano, s.a.b. de c.v."},
+    "contraladora axel sab": {"controladora axtel, s.a.b. de c.v."},
+    "daetwyl i": {"dätwyler holding ag"},
+    "evolva holding sa": {"evonext holdings sa"},
     "itaúsa - investimentos itaú": {"itausa", "itausa s.a."},
     "jereissati participações": {"iguatemi", "iguatemi s.a."},
     "keybank": {"keycorp"},
+    "leclanche sa": {"leclanché sa"},
     "maseca": {"gruma", "gruma s.a.b. de c.v.", "gruma sab de cv"},
     "munich re": {"muench.rueckversicherungs gesellschaft.vna o.n.", "muench. rueckvers. vna o.n."},
     "münchener rück": {"muench.rueckversicherungs gesellschaft.vna o.n.", "muench. rueckvers. vna o.n."},
     "nortonlifelock": {"gen digital"},
     "old navy": {"gap", "the gap"},
     "randon s.a. implementos e participações": {"randoncorp", "randoncorp s.a."},
+    "sena j property pcl": {"sen x public company limited"},
     "shareholder value": {"sharehold.val.bet.na o.n.", "synthaverse"},
     "shareholder value beteiligungen": {"sharehold.val.bet.na o.n.", "synthaverse"},
+    "smd100_saintmed": {"smd rise public company limited"},
+    "starrag group holding ag": {"starragtornos group ag"},
     "synthaverse": {"sharehold.val.bet.na o.n.", "synthaverse"},
     "tdg gold": {"tdggf", "tdg gold corp"},
     "tiger brokers": {"up fintech", "up fintech holding ltd", "up fintech holding"},
+    "banque cantonale du valais": {"walliser kantonalbank"},
 }
 ISIN_PREFIX_COUNTRIES = {
     "AT": "Austria",
@@ -567,7 +576,10 @@ def is_company_style_alias(alias: str) -> bool:
 
 
 def alias_matches_company(alias: str, company_name: str) -> bool:
-    if is_trusted_non_lexical_alias(alias, company_name):
+    if (
+        is_trusted_non_lexical_alias(alias, company_name)
+        or is_trusted_non_lexical_alias(company_name, alias)
+    ):
         return True
     alias_compact = normalized_compact(alias)
     company_compact = normalized_compact(company_name)
@@ -737,6 +749,18 @@ def should_exclude_stock_row(
             return True
         if PSX_RIGHTS_TICKER_RE.fullmatch(ticker) and ("(r)" in name or " rights" in name):
             return True
+    if row.get("exchange") == "KRX":
+        aliases = split_aliases(row.get("aliases", ""))
+        if (
+            ticker.isdigit()
+            and normalized_compact(row.get("name", "")) == normalized_compact(ticker)
+            and not row.get("isin")
+            and not row.get("sector")
+            and (not aliases or {normalized_compact(alias) for alias in aliases} <= {normalized_compact(ticker)})
+        ):
+            return True
+        if "strangle" in name:
+            return True
     if has_matching_krx_base_listing(row, stock_name_lookup):
         return True
     if row.get("exchange") == "ASX":
@@ -749,6 +773,8 @@ def should_exclude_stock_row(
     if row.get("exchange") in {"TWSE", "TPEX"} and TAIWAN_NON_COMMON_STOCK_TICKER_RE.fullmatch(ticker):
         return True
     if row.get("exchange") in {"AMS", "Euronext"} and EUROPEAN_CERTIFICATE_PATTERN.search(name):
+        return True
+    if row.get("exchange") in {"TSX", "TSXV"} and TMX_WARRANT_TICKER_RE.fullmatch(ticker):
         return True
     if row["ticker"].count("-P-"):
         return True
