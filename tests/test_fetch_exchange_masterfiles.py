@@ -4457,7 +4457,6 @@ def test_fetch_bmv_stock_search_backfills_exact_ticker_gaps(tmp_path, monkeypatc
                 "AMXB,BMV,Stock,AMERICA MOVIL SAB DE CV,MX01AM050019",
                 "WALMEX,BMV,Stock,Wal-Mart de Mexico S.A.B. de C.V,MX01WA000038",
                 "AXAN,BMV,Stock,AXA SA,FR0000120628",
-                "AEROMEX,BMV,Stock,Grupo Aeromexico S.A.B. de C.V,MX01AE010005",
             ]
         ),
         encoding="utf-8",
@@ -4465,7 +4464,7 @@ def test_fetch_bmv_stock_search_backfills_exact_ticker_gaps(tmp_path, monkeypatc
     monkeypatch.setattr(
         fetch_exchange_masterfiles,
         "latest_reference_gap_tickers",
-        lambda base_dir, exchanges=None: {"AMXB", "WALMEX", "AXAN", "AEROMEX"},
+        lambda base_dir, exchanges=None: {"AMXB", "WALMEX", "AXAN"},
     )
 
     class FakeResponse:
@@ -4670,6 +4669,144 @@ def test_fetch_bmv_stock_search_backfills_exact_ticker_gaps(tmp_path, monkeypatc
         ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "AMX", "term2": "", "termT": "AMX", "searchType": "busquedaPanel"}}),
         ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "WALMEX", "term2": "", "termT": "WALMEX", "searchType": "busquedaPanel"}}),
         ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "AXA", "term2": "", "termT": "AXA", "searchType": "busquedaPanel"}}),
+    ]
+
+
+def test_fetch_bmv_stock_search_uses_unique_strong_ticker_search_fallback(tmp_path, monkeypatch) -> None:
+    source = MasterfileSource(
+        key="bmv_stock_search",
+        provider="BMV",
+        description="Official BMV stock search supplement for exact ticker gaps",
+        source_url="https://www.bmv.com.mx/api/searchservice/v1",
+        format="bmv_stock_search_json",
+        reference_scope="listed_companies_subset",
+    )
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,exchange,asset_type,name,isin",
+                "AEROMEX,BMV,Stock,Grupo Aeroméxico S.A.B. de C.V,MX01AE010005",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "latest_reference_gap_tickers",
+        lambda base_dir, exchanges=None: {"AEROMEX"},
+    )
+
+    class FakeResponse:
+        def __init__(self, *, text: str | None = None, payload: object | None = None):
+            self.text = text or ""
+            self._payload = payload
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.get_calls = []
+            self.post_calls = []
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            self.get_calls.append((url, params))
+            if url == fetch_exchange_masterfiles.BMV_MOBILE_QUOTE_KEYS_URL:
+                return FakeResponse(
+                    text='for(;;);({"response":{"clavesCotizacion":[{"clave":"AMX","serie":"B"}]}})'
+                )
+            if url == fetch_exchange_masterfiles.BMV_SEARCH_TOKEN_URL:
+                return FakeResponse(payload={"response": {"access_token": "token-123"}})
+            raise AssertionError(url)
+
+        def post(self, url, headers=None, json=None, timeout=None):
+            self.post_calls.append((url, json))
+            assert url == "https://www.bmv.com.mx/api/searchservice/v1"
+            assert json == {
+                "lang": "es",
+                "payload": {
+                    "term": "AEROMEX",
+                    "term2": "",
+                    "termT": "AEROMEX",
+                    "searchType": "busquedaPanel",
+                },
+            }
+            return FakeResponse(
+                payload={
+                    "response": {
+                        "busquedaPanel": {
+                            "busquedaGeneral": {
+                                "instrumentosEmisoras": {
+                                    "instrumentos": {
+                                        "coincidenciaParcialInstrumentos": {
+                                            "emisoras": {
+                                                "hits": [
+                                                    {
+                                                        "_source": {
+                                                            "cve_emisora": "AERO",
+                                                            "serie": "*",
+                                                            "descripcion": "ACCIONES",
+                                                            "mercado": "Capitales",
+                                                            "estatus": "Activa",
+                                                            "razon_social": "GRUPO AEROMÉXICO, S.A.B. DE C.V.",
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            )
+
+    session = FakeSession()
+    rows = fetch_bmv_stock_search(
+        source,
+        listings_path=listings_path,
+        verification_dir=tmp_path,
+        session=session,
+    )
+
+    assert rows == [
+        {
+            "source_key": "bmv_stock_search",
+            "provider": "BMV",
+            "source_url": "https://www.bmv.com.mx/api/searchservice/v1",
+            "ticker": "AEROMEX",
+            "name": "GRUPO AEROMÉXICO, S.A.B. DE C.V.",
+            "exchange": "BMV",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "MX01AE010005",
+        }
+    ]
+    assert session.get_calls == [
+        (fetch_exchange_masterfiles.BMV_MOBILE_QUOTE_KEYS_URL, {"idBusquedaCotizacion": 2}),
+        (fetch_exchange_masterfiles.BMV_SEARCH_TOKEN_URL, None),
+        (fetch_exchange_masterfiles.BMV_SEARCH_TOKEN_URL, None),
+    ]
+    assert session.post_calls == [
+        (
+            "https://www.bmv.com.mx/api/searchservice/v1",
+            {
+                "lang": "es",
+                "payload": {
+                    "term": "AEROMEX",
+                    "term2": "",
+                    "termT": "AEROMEX",
+                    "searchType": "busquedaPanel",
+                },
+            },
+        )
     ]
 
 

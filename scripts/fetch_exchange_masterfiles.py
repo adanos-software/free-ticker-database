@@ -20,9 +20,9 @@ import pandas as pd
 import requests
 
 try:
-    from scripts.rebuild_dataset import normalize_tokens
+    from scripts.rebuild_dataset import alias_matches_company, normalize_tokens
 except ModuleNotFoundError:  # pragma: no cover - script execution path
-    from rebuild_dataset import normalize_tokens
+    from rebuild_dataset import alias_matches_company, normalize_tokens
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -1108,23 +1108,29 @@ def bmv_search_target_rows(
     verification_dir: Path = STOCK_VERIFICATION_DIR,
 ) -> list[dict[str, str]]:
     config = BMV_SEARCH_SOURCE_CONFIG[source.key]
-    target_tickers = latest_reference_gap_tickers(
-        verification_dir,
-        exchanges={config["exchange"]},
-    )
-    if not target_tickers:
-        return []
     return [
         row
         for row in load_csv(listings_path)
         if row.get("exchange") == config["exchange"]
         and row.get("asset_type") == "Stock"
-        and row.get("ticker", "").strip() in target_tickers
+        and row.get("ticker", "").strip()
     ]
 
 
 def compact_company_name(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", "", value.lower())
+
+
+def has_strong_company_name_match(left: str, right: str) -> bool:
+    if not alias_matches_company(left, right):
+        return False
+    left_compact = compact_company_name(left)
+    right_compact = compact_company_name(right)
+    if left_compact and right_compact and (
+        left_compact in right_compact or right_compact in left_compact
+    ):
+        return True
+    return len(normalize_tokens(left) & normalize_tokens(right)) >= 2
 
 
 def tmx_lookup_name_matches(listing_name: str, candidate_name: str) -> bool:
@@ -2040,6 +2046,117 @@ def build_bmv_reference_row(
     return row
 
 
+def extract_bmv_search_hits(payload: dict[str, Any]) -> list[dict[str, Any]]:
+    busqueda_panel = payload.get("response", {}).get("busquedaPanel", {})
+    if not isinstance(busqueda_panel, dict):
+        return []
+    stack: list[Any] = [busqueda_panel]
+    hits: list[dict[str, Any]] = []
+    while stack:
+        current = stack.pop()
+        if isinstance(current, dict):
+            source = current.get("_source")
+            if isinstance(source, dict):
+                hits.append(source)
+            else:
+                stack.extend(current.values())
+        elif isinstance(current, list):
+            stack.extend(current)
+    return hits
+
+
+def fetch_bmv_search_hits(
+    source: MasterfileSource,
+    term: str,
+    *,
+    access_token: str,
+    session: requests.Session | None = None,
+) -> list[dict[str, Any]]:
+    session = session or requests.Session()
+    response = session.post(
+        source.source_url,
+        headers={
+            "Authorization": f"Bearer {access_token}",
+            "Content-Type": "application/json",
+        },
+        json={
+            "lang": "es",
+            "payload": {
+                "term": term,
+                "term2": "",
+                "termT": term,
+                "searchType": "busquedaPanel",
+            },
+        },
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    return extract_bmv_search_hits(response.json())
+
+
+def bmv_stock_search_terms(ticker: str) -> list[str]:
+    normalized = ticker.strip().upper()
+    if not normalized:
+        return []
+    candidates = [normalized]
+    if "-" in normalized:
+        candidates.append(normalized.split("-", 1)[0])
+    if normalized.endswith(("A", "B", "N")) and len(normalized) > 1:
+        candidates.append(normalized[:-1])
+    seen: set[str] = set()
+    result: list[str] = []
+    for candidate in candidates:
+        if not candidate or candidate in seen:
+            continue
+        seen.add(candidate)
+        result.append(candidate)
+    return result
+
+
+def select_bmv_unique_stock_search_hit(
+    listing_row: dict[str, str],
+    hits: list[dict[str, Any]],
+) -> dict[str, Any] | None:
+    listing_name = listing_row.get("name", "").strip()
+    if not listing_name:
+        return None
+    candidates: list[dict[str, Any]] = []
+    for hit in hits:
+        official_name = str(hit.get("razon_social", "")).strip()
+        descripcion = str(hit.get("descripcion", "")).strip().upper()
+        mercado = str(hit.get("mercado", "")).strip().upper()
+        estatus = str(hit.get("estatus", "")).strip().upper()
+        clave = str(hit.get("cve_emisora", "")).strip().upper()
+        if (
+            not official_name
+            or not clave
+            or estatus != "ACTIVA"
+            or mercado not in {"CAPITALES", "GLOBAL"}
+            or not descripcion.startswith("ACCIONES")
+        ):
+            continue
+        if not (
+            has_strong_company_name_match(listing_name, official_name)
+            or has_strong_company_name_match(official_name, listing_name)
+        ):
+            continue
+        candidates.append(hit)
+    unique_candidates: list[dict[str, Any]] = []
+    seen_signatures: set[tuple[str, str]] = set()
+    for hit in candidates:
+        signature = (
+            str(hit.get("cve_emisora", "")).strip().upper(),
+            str(hit.get("serie", "")).strip().upper(),
+        )
+        if signature in seen_signatures:
+            continue
+        seen_signatures.add(signature)
+        unique_candidates.append(hit)
+    if len(unique_candidates) != 1:
+        return None
+    return unique_candidates[0]
+
+
 def fetch_bmv_exact_search_matches(
     source: MasterfileSource,
     *,
@@ -2089,42 +2206,12 @@ def fetch_bmv_exact_search_matches(
             continue
         clave, serie = quote_match
         if clave not in cached_hits_by_clave:
-            response = session.post(
-                source.source_url,
-                headers=search_headers,
-                json={
-                    "lang": "es",
-                    "payload": {
-                        "term": clave,
-                        "term2": "",
-                        "termT": clave,
-                        "searchType": "busquedaPanel",
-                    },
-                },
-                timeout=REQUEST_TIMEOUT,
+            cached_hits_by_clave[clave] = fetch_bmv_search_hits(
+                source,
+                clave,
+                access_token=access_token,
+                session=session,
             )
-            response.raise_for_status()
-            search_payload = response.json()
-            busqueda_panel = search_payload.get("response", {}).get("busquedaPanel", {})
-            if not isinstance(busqueda_panel, dict):
-                cached_hits_by_clave[clave] = []
-            else:
-                stack: list[Any] = [
-                    busqueda_panel.get("busquedaGeneral", {})
-                    .get("instrumentosEmisoras", {})
-                    .get("instrumentos", {})
-                ]
-                hits: list[dict[str, Any]] = []
-                while stack:
-                    current = stack.pop()
-                    if isinstance(current, dict):
-                        if "_source" in current and isinstance(current["_source"], dict):
-                            hits.append(current["_source"])
-                        else:
-                            stack.extend(current.values())
-                    elif isinstance(current, list):
-                        stack.extend(current)
-                cached_hits_by_clave[clave] = hits
 
         exact_hit = next(
             (
@@ -2149,6 +2236,7 @@ def fetch_bmv_stock_search(
 ) -> list[dict[str, str]]:
     config = BMV_SEARCH_SOURCE_CONFIG[source.key]
     rows: list[dict[str, str]] = []
+    covered_tickers: set[str] = set()
     for listing_row, hit in fetch_bmv_exact_search_matches(
         source,
         listings_path=listings_path,
@@ -2172,6 +2260,49 @@ def fetch_bmv_stock_search(
                 source,
                 listing_row,
                 name=official_name,
+                exchange=config["exchange"],
+            )
+        )
+        covered_tickers.add(listing_row.get("ticker", "").strip().upper())
+
+    fallback_rows = [
+        row
+        for row in bmv_search_target_rows(
+            source,
+            listings_path=listings_path,
+            verification_dir=verification_dir,
+        )
+        if row.get("ticker", "").strip().upper() not in covered_tickers
+    ]
+    if not fallback_rows:
+        return rows
+
+    token_response = (session or requests.Session()).get(BMV_SEARCH_TOKEN_URL, timeout=REQUEST_TIMEOUT)
+    token_response.raise_for_status()
+    access_token = str(token_response.json().get("response", {}).get("access_token", "")).strip()
+    if not access_token:
+        raise ValueError("BMV search token missing access_token")
+
+    session = session or requests.Session()
+    for listing_row in fallback_rows:
+        selected_hit = None
+        for term in bmv_stock_search_terms(listing_row.get("ticker", "")):
+            hits = fetch_bmv_search_hits(
+                source,
+                term,
+                access_token=access_token,
+                session=session,
+            )
+            selected_hit = select_bmv_unique_stock_search_hit(listing_row, hits)
+            if selected_hit is not None:
+                break
+        if selected_hit is None:
+            continue
+        rows.append(
+            build_bmv_reference_row(
+                source,
+                listing_row,
+                name=str(selected_hit.get("razon_social", "")).strip(),
                 exchange=config["exchange"],
             )
         )

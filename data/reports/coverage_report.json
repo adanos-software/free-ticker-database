@@ -22,8 +22,8 @@
     "manual_only_exchanges": 0,
     "missing_exchanges": 36,
     "stock_verification_items": 43903,
-    "stock_verification_verified": 30015,
-    "stock_verification_reference_gap": 13884,
+    "stock_verification_verified": 30017,
+    "stock_verification_reference_gap": 13882,
     "stock_verification_missing_from_official": 4,
     "stock_verification_name_mismatch": 0,
     "stock_verification_cross_exchange_collision": 0,
@@ -35,23 +35,23 @@
     "etf_verification_cross_exchange_collision": 1
   },
   "freshness": {
-    "tickers_built_at": "2026-04-09T19:15:12Z",
-    "tickers_age_hours": 0.01,
-    "masterfiles_generated_at": "2026-04-09T18:57:21Z",
-    "masterfiles_age_hours": 0.31,
-    "identifiers_generated_at": "2026-04-09T19:15:18Z",
-    "identifiers_age_hours": 0.01,
-    "listing_history_observed_at": "2026-04-09T19:15:12Z",
-    "listing_history_age_hours": 0.01,
-    "latest_verification_run": "data/stock_verification/run-20260409-eu-ca-cleanup-02",
-    "latest_verification_generated_at": "2026-04-09T19:15:29Z",
+    "tickers_built_at": "2026-04-09T19:48:57Z",
+    "tickers_age_hours": 0.02,
+    "masterfiles_generated_at": "2026-04-09T19:45:30Z",
+    "masterfiles_age_hours": 0.07,
+    "identifiers_generated_at": "2026-04-09T19:48:57Z",
+    "identifiers_age_hours": 0.02,
+    "listing_history_observed_at": "2026-04-09T19:48:57Z",
+    "listing_history_age_hours": 0.02,
+    "latest_verification_run": "data/stock_verification/run-20260409-bmv-search-fallback-01",
+    "latest_verification_generated_at": "2026-04-09T19:49:10Z",
     "latest_verification_age_hours": 0.01,
-    "latest_stock_verification_run": "data/stock_verification/run-20260409-eu-ca-cleanup-02",
-    "latest_stock_verification_generated_at": "2026-04-09T19:15:29Z",
+    "latest_stock_verification_run": "data/stock_verification/run-20260409-bmv-search-fallback-01",
+    "latest_stock_verification_generated_at": "2026-04-09T19:49:10Z",
     "latest_stock_verification_age_hours": 0.01,
     "latest_etf_verification_run": "data/etf_verification/run-20260409-eu-ca-cleanup-02",
     "latest_etf_verification_generated_at": "2026-04-09T19:15:28Z",
-    "latest_etf_verification_age_hours": 0.01
+    "latest_etf_verification_age_hours": 0.57
   },
   "source_coverage": [
     {
@@ -339,8 +339,8 @@
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 141,
-      "generated_at": "2026-04-09T13:28:06Z"
+      "rows": 143,
+      "generated_at": "2026-04-09T19:45:30Z"
     },
     {
       "key": "bmv_capital_trust_search",
@@ -868,15 +868,15 @@
       "masterfile_match_rate": null,
       "masterfile_collision_rate": null,
       "verification_items": 176,
-      "verification_verified": 157,
-      "verification_reference_gap": 19,
+      "verification_verified": 159,
+      "verification_reference_gap": 17,
       "verification_missing_from_official": 0,
       "verification_name_mismatch": 0,
       "verification_cross_exchange_collision": 0,
       "verification_verified_rate_on_covered": 100.0,
       "stock_verification_items": 176,
-      "stock_verification_verified": 157,
-      "stock_verification_reference_gap": 19,
+      "stock_verification_verified": 159,
+      "stock_verification_reference_gap": 17,
       "stock_verification_missing_from_official": 0,
       "stock_verification_name_mismatch": 0,
       "stock_verification_cross_exchange_collision": 0,
@@ -888,7 +888,7 @@
       "etf_verification_name_mismatch": 0,
       "etf_verification_cross_exchange_collision": 0,
       "etf_verification_verified_rate_on_covered": null,
-      "unresolved_count": 37
+      "unresolved_count": 35
     },
     {
       "exchange": "BSE_BW",
@@ -3728,15 +3728,15 @@
       "masterfile_match_rate": null,
       "masterfile_collision_rate": null,
       "verification_items": 176,
-      "verification_verified": 157,
-      "verification_reference_gap": 19,
+      "verification_verified": 159,
+      "verification_reference_gap": 17,
       "verification_missing_from_official": 0,
       "verification_name_mismatch": 0,
       "verification_cross_exchange_collision": 0,
       "verification_verified_rate_on_covered": 100.0,
       "stock_verification_items": 176,
-      "stock_verification_verified": 157,
-      "stock_verification_reference_gap": 19,
+      "stock_verification_verified": 159,
+      "stock_verification_reference_gap": 17,
       "stock_verification_missing_from_official": 0,
       "stock_verification_name_mismatch": 0,
       "stock_verification_cross_exchange_collision": 0,
@@ -3748,7 +3748,7 @@
       "etf_verification_name_mismatch": 0,
       "etf_verification_cross_exchange_collision": 0,
       "etf_verification_verified_rate_on_covered": null,
-      "unresolved_count": 37
+      "unresolved_count": 35
     },
     {
       "exchange": "BSE_BW",
@@ -6885,14 +6885,14 @@
     }
   ],
   "verification": {
-    "run_dir": "data/stock_verification/run-20260409-eu-ca-cleanup-02",
-    "generated_at": "2026-04-09T19:15:29Z",
+    "run_dir": "data/stock_verification/run-20260409-bmv-search-fallback-01",
+    "generated_at": "2026-04-09T19:49:10Z",
     "summary": {
       "items": 43903,
       "status_counts": {
         "missing_from_official": 4,
-        "reference_gap": 13884,
-        "verified": 30015
+        "reference_gap": 13882,
+        "verified": 30017
       },
       "finding_examples": [
         {
@@ -7068,14 +7068,14 @@
       {
         "exchange": "BMV",
         "items": 176,
-        "verified": 157,
-        "reference_gap": 19,
+        "verified": 159,
+        "reference_gap": 17,
         "missing_from_official": 0,
         "name_mismatch": 0,
         "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 157,
+        "officially_covered_items": 159,
         "verified_rate_on_covered": 100.0
       },
       {
@@ -7835,14 +7835,14 @@
     ]
   },
   "stock_verification": {
-    "run_dir": "data/stock_verification/run-20260409-eu-ca-cleanup-02",
-    "generated_at": "2026-04-09T19:15:29Z",
+    "run_dir": "data/stock_verification/run-20260409-bmv-search-fallback-01",
+    "generated_at": "2026-04-09T19:49:10Z",
     "summary": {
       "items": 43903,
       "status_counts": {
         "missing_from_official": 4,
-        "reference_gap": 13884,
-        "verified": 30015
+        "reference_gap": 13882,
+        "verified": 30017
       },
       "finding_examples": [
         {
@@ -8018,14 +8018,14 @@
       {
         "exchange": "BMV",
         "items": 176,
-        "verified": 157,
-        "reference_gap": 19,
+        "verified": 159,
+        "reference_gap": 17,
         "missing_from_official": 0,
         "name_mismatch": 0,
         "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 157,
+        "officially_covered_items": 159,
         "verified_rate_on_covered": 100.0
       },
       {
@@ -10080,25 +10080,6 @@
       "masterfile_collisions": 0
     },
     {
-      "exchange": "BMV",
-      "venue_status": "official_partial",
-      "unresolved_findings": 37,
-      "reference_gap": 37,
-      "missing_from_official": 0,
-      "name_mismatch": 0,
-      "cross_exchange_collision": 0,
-      "stock_reference_gap": 19,
-      "stock_missing_from_official": 0,
-      "stock_name_mismatch": 0,
-      "stock_cross_exchange_collision": 0,
-      "etf_reference_gap": 18,
-      "etf_missing_from_official": 0,
-      "etf_name_mismatch": 0,
-      "etf_cross_exchange_collision": 0,
-      "masterfile_missing": 0,
-      "masterfile_collisions": 0
-    },
-    {
       "exchange": "TSX",
       "venue_status": "official_partial",
       "unresolved_findings": 36,
@@ -10130,6 +10111,25 @@
       "stock_name_mismatch": 0,
       "stock_cross_exchange_collision": 0,
       "etf_reference_gap": 5,
+      "etf_missing_from_official": 0,
+      "etf_name_mismatch": 0,
+      "etf_cross_exchange_collision": 0,
+      "masterfile_missing": 0,
+      "masterfile_collisions": 0
+    },
+    {
+      "exchange": "BMV",
+      "venue_status": "official_partial",
+      "unresolved_findings": 35,
+      "reference_gap": 35,
+      "missing_from_official": 0,
+      "name_mismatch": 0,
+      "cross_exchange_collision": 0,
+      "stock_reference_gap": 17,
+      "stock_missing_from_official": 0,
+      "stock_name_mismatch": 0,
+      "stock_cross_exchange_collision": 0,
+      "etf_reference_gap": 18,
       "etf_missing_from_official": 0,
       "etf_name_mismatch": 0,
       "etf_cross_exchange_collision": 0,

@@ -26,8 +26,8 @@
 | manual_only_exchanges | 0 |
 | missing_exchanges | 36 |
 | stock_verification_items | 43903 |
-| stock_verification_verified | 30015 |
-| stock_verification_reference_gap | 13884 |
+| stock_verification_verified | 30017 |
+| stock_verification_reference_gap | 13882 |
 | stock_verification_missing_from_official | 4 |
 | stock_verification_name_mismatch | 0 |
 | stock_verification_cross_exchange_collision | 0 |
@@ -42,23 +42,23 @@
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-04-09T19:15:12Z |
-| tickers_age_hours | 0.01 |
-| masterfiles_generated_at | 2026-04-09T18:57:21Z |
-| masterfiles_age_hours | 0.31 |
-| identifiers_generated_at | 2026-04-09T19:15:18Z |
-| identifiers_age_hours | 0.01 |
-| listing_history_observed_at | 2026-04-09T19:15:12Z |
-| listing_history_age_hours | 0.01 |
-| latest_verification_run | data/stock_verification/run-20260409-eu-ca-cleanup-02 |
-| latest_verification_generated_at | 2026-04-09T19:15:29Z |
+| tickers_built_at | 2026-04-09T19:48:57Z |
+| tickers_age_hours | 0.02 |
+| masterfiles_generated_at | 2026-04-09T19:45:30Z |
+| masterfiles_age_hours | 0.07 |
+| identifiers_generated_at | 2026-04-09T19:48:57Z |
+| identifiers_age_hours | 0.02 |
+| listing_history_observed_at | 2026-04-09T19:48:57Z |
+| listing_history_age_hours | 0.02 |
+| latest_verification_run | data/stock_verification/run-20260409-bmv-search-fallback-01 |
+| latest_verification_generated_at | 2026-04-09T19:49:10Z |
 | latest_verification_age_hours | 0.01 |
-| latest_stock_verification_run | data/stock_verification/run-20260409-eu-ca-cleanup-02 |
-| latest_stock_verification_generated_at | 2026-04-09T19:15:29Z |
+| latest_stock_verification_run | data/stock_verification/run-20260409-bmv-search-fallback-01 |
+| latest_stock_verification_generated_at | 2026-04-09T19:49:10Z |
 | latest_stock_verification_age_hours | 0.01 |
 | latest_etf_verification_run | data/etf_verification/run-20260409-eu-ca-cleanup-02 |
 | latest_etf_verification_generated_at | 2026-04-09T19:15:28Z |
-| latest_etf_verification_age_hours | 0.01 |
+| latest_etf_verification_age_hours | 0.57 |
 
 ## Source Coverage
 
@@ -95,7 +95,7 @@
 | jse_instrument_search | JSE | listed_companies_subset | network | 51 | 2026-04-09T11:28:35Z |
 | bme_listed_companies | BME | listed_companies_subset | unknown | 0 |  |
 | bme_etf_list | BME | listed_companies_subset | unavailable | 0 | 2026-04-09T16:00:22Z |
-| bmv_stock_search | BMV | listed_companies_subset | network | 141 | 2026-04-09T13:28:06Z |
+| bmv_stock_search | BMV | listed_companies_subset | network | 143 | 2026-04-09T19:45:30Z |
 | bmv_capital_trust_search | BMV | listed_companies_subset | network | 16 | 2026-04-09T15:31:07Z |
 | nasdaq_nordic_stockholm_shares | Nasdaq Nordic | listed_companies_subset | cache | 747 | 2026-04-09T11:28:35Z |
 | nasdaq_nordic_helsinki_shares | Nasdaq Nordic | listed_companies_subset | cache | 194 | 2026-04-09T11:28:35Z |
