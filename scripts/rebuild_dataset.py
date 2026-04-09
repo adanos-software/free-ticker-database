@@ -796,6 +796,99 @@ def should_exclude_stock_row(
     return any(pattern.search(name) for pattern in NON_COMMON_PATTERNS)
 
 
+@lru_cache(maxsize=None)
+def load_active_official_set_stock_reference_names() -> dict[str, str]:
+    if not MASTERFILE_REFERENCE_CSV.exists():
+        return {}
+
+    names: dict[str, str] = {}
+    with MASTERFILE_REFERENCE_CSV.open(newline="", encoding="utf-8") as handle:
+        for row in csv.DictReader(handle):
+            if row.get("official") != "true":
+                continue
+            if row.get("listing_status") != "active":
+                continue
+            if row.get("exchange") != "SET":
+                continue
+            if row.get("asset_type") != "Stock":
+                continue
+            if row.get("source_key") != "set_listed_companies":
+                continue
+            ticker = row.get("ticker", "").strip().upper()
+            name = row.get("name", "").strip()
+            if ticker and name:
+                names[ticker] = name
+    return names
+
+
+@lru_cache(maxsize=None)
+def load_active_official_set_dr_tickers() -> frozenset[str]:
+    if not MASTERFILE_REFERENCE_CSV.exists():
+        return frozenset()
+
+    tickers: set[str] = set()
+    with MASTERFILE_REFERENCE_CSV.open(newline="", encoding="utf-8") as handle:
+        for row in csv.DictReader(handle):
+            if row.get("official") != "true":
+                continue
+            if row.get("listing_status") != "active":
+                continue
+            if row.get("exchange") != "SET":
+                continue
+            if row.get("source_key") != "set_dr_search":
+                continue
+            ticker = row.get("ticker", "").strip().upper()
+            if ticker:
+                tickers.add(ticker)
+    return frozenset(tickers)
+
+
+def has_matching_set_base_reference(row: dict[str, str]) -> bool:
+    if row.get("exchange") != "SET" or row.get("asset_type") != "Stock":
+        return False
+
+    ticker = row.get("ticker", "").strip().upper()
+    if not ticker.endswith("-R"):
+        return False
+
+    base_name = load_active_official_set_stock_reference_names().get(ticker[:-2])
+    if not base_name:
+        return False
+
+    current_name = row.get("name", "")
+    return alias_matches_company(current_name, base_name) or alias_matches_company(base_name, current_name)
+
+
+def should_exclude_row(
+    row: dict[str, str],
+    stock_base_name_index: dict[str, set[str]] | None = None,
+    stock_name_lookup: dict[str, set[str]] | None = None,
+) -> bool:
+    exchange = row.get("exchange")
+    ticker = row.get("ticker", "").strip().upper()
+    asset_type = row.get("asset_type")
+    name = row.get("name", "").lower()
+
+    if exchange == "SET":
+        if ticker.startswith("^"):
+            return True
+        if ticker in load_active_official_set_dr_tickers():
+            return True
+        if has_matching_set_base_reference(row):
+            return True
+
+    if asset_type == "Stock" and exchange == "SSE" and ticker.startswith("508"):
+        return True
+
+    if asset_type == "Stock" and exchange == "SZSE" and ticker.startswith("180"):
+        return True
+
+    if asset_type == "ETF" and exchange in {"SSE", "SZSE"} and "lof" in name:
+        return True
+
+    return should_exclude_stock_row(row, stock_base_name_index, stock_name_lookup)
+
+
 def normalize_input_row(row: dict[str, str]) -> dict[str, str]:
     normalized = dict(row)
     exchange = normalized.get("exchange", "")
@@ -1380,7 +1473,7 @@ def cleaned_rows():
     base_rows: list[dict[str, str]] = []
     for row in prepared_rows:
         row_key = (row["ticker"], row["exchange"])
-        if should_exclude_stock_row(row, stock_base_name_index, stock_name_lookup):
+        if should_exclude_row(row, stock_base_name_index, stock_name_lookup):
             continue
         merged_aliases = split_aliases(row["aliases"])
         identifier = None

@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-09T18:43:51Z",
-  "rows": 87481,
+  "generated_at": "2026-04-09T18:57:21Z",
+  "rows": 87833,
   "exchanges": [
     "AMS",
     "ASX",
@@ -69,6 +69,7 @@
     "psx_symbol_name_daily": 370,
     "set_etf_search": 13,
     "set_listed_companies": 933,
+    "set_dr_search": 352,
     "six_etf_products": 7349,
     "six_etp_products": 752,
     "six_equity_issuers": 241,
@@ -170,6 +171,14 @@
       "mode": "network",
       "rows": 13,
       "generated_at": "2026-04-09T11:28:35Z"
+    },
+    "set_dr_search": {
+      "provider": "SET",
+      "reference_scope": "listed_companies_subset",
+      "official": true,
+      "mode": "network",
+      "rows": 352,
+      "generated_at": "2026-04-09T18:57:21Z"
     },
     "tmx_listed_issuers": {
       "provider": "TMX",
@@ -577,6 +586,7 @@
     "bmv_stock_search": "network",
     "bmv_capital_trust_search": "network",
     "bme_etf_list": "unavailable",
-    "pse_listed_company_directory": "network"
+    "pse_listed_company_directory": "network",
+    "set_dr_search": "network"
   }
 }

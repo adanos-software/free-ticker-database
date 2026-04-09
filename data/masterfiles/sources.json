@@ -90,6 +90,15 @@
     "official": true
   },
   {
+    "key": "set_dr_search",
+    "provider": "SET",
+    "description": "Official Stock Exchange of Thailand DR quote directory",
+    "source_url": "https://www.set.or.th/en/market/get-quote/dr",
+    "format": "set_dr_search_html",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "tmx_listed_issuers",
     "provider": "TMX",
     "description": "Official TMX TSX/TSXV listed issuers workbook",

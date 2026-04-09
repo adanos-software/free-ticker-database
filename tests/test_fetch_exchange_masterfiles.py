@@ -30,6 +30,7 @@ from scripts.fetch_exchange_masterfiles import (
     LEGACY_NASDAQ_NORDIC_HELSINKI_ETFS_CACHE,
     LEGACY_NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
     LEGACY_NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE,
+    LEGACY_SET_DR_SEARCH_CACHE,
     LEGACY_SET_ETF_SEARCH_CACHE,
     LEGACY_SZSE_ETF_LIST_CACHE,
     LEGACY_TMX_ETF_SCREENER_CACHE,
@@ -97,6 +98,7 @@ from scripts.fetch_exchange_masterfiles import (
     load_nasdaq_nordic_stockholm_etf_rows,
     load_nasdaq_nordic_stockholm_tracker_rows,
     load_nasdaq_nordic_stockholm_shares_rows,
+    load_set_dr_search_rows,
     load_set_etf_search_rows,
     load_szse_etf_list_rows,
     merge_reference_rows,
@@ -111,6 +113,7 @@ from scripts.fetch_exchange_masterfiles import (
     load_pse_listed_company_directory_rows,
     parse_pse_listed_company_directory_html,
     load_tpex_mainboard_quotes_payload,
+    parse_set_dr_search_payload,
     parse_tpex_etf_filter,
     lse_instrument_search_target_tickers,
     parse_asx_listed_companies,
@@ -166,6 +169,7 @@ from scripts.fetch_exchange_masterfiles import (
     extract_psx_symbol_name_download_url,
     extract_psx_xid,
     SZSE_ETF_LIST_CACHE,
+    SET_DR_SEARCH_CACHE,
     SET_ETF_SEARCH_CACHE,
     TMX_MONEY_GRAPHQL_URL,
 )
@@ -1293,6 +1297,47 @@ def test_parse_set_quote_search_payload_keeps_only_etfs() -> None:
             "name": "THE ABF THAILAND BOND INDEX FUND",
             "exchange": "SET",
             "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_parse_set_dr_search_payload_keeps_only_drs() -> None:
+    text = """
+    <script>
+    window.__NUXT__=(function(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r){return {state:{quote:{searchOption:[
+      {symbol:a,nameTH:b,nameEN:c,market:d,securityType:e,typeSequence:f,industry:g,sector:h,querySector:h,isIFF:!1,isForeignListing:!1,remark:"",name:a,value:a,securityTypeName:i},
+      {symbol:j,nameTH:k,nameEN:l,market:m,securityType:n,typeSequence:o,industry:g,sector:h,querySector:h,isIFF:!1,isForeignListing:!1,remark:"",name:j,value:j,securityTypeName:p},
+      {symbol:q,nameTH:"Skip",nameEN:r,market:"SET",securityType:"L",typeSequence:7,industry:g,sector:h,querySector:h,isIFF:!1,isForeignListing:!1,remark:"",name:q,value:q,securityTypeName:"ETF"}
+    ],dropdownAdditional:[]}}}})("AMD80","เอเอ็มดี","Depositary Receipt on AMD Issued by KTB","SET","L",7,"","","DR","BABA80","บาบา","Depositary Receipt on BABA Issued by KTB","MAI","L",8,"DR","ABFTH","THE ABF THAILAND BOND INDEX FUND");
+    </script>
+    """
+
+    rows = parse_set_dr_search_payload(text, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "AMD80",
+            "name": "Depositary Receipt on AMD Issued by KTB",
+            "exchange": "SET",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "BABA80",
+            "name": "Depositary Receipt on BABA Issued by KTB",
+            "exchange": "SET",
+            "asset_type": "Stock",
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
@@ -5827,6 +5872,26 @@ def test_load_set_etf_search_rows_falls_back_to_cache(tmp_path, monkeypatch) -> 
     assert rows == [{"ticker": "ABFTH", "name": "THE ABF THAILAND BOND INDEX FUND", "exchange": "SET", "asset_type": "ETF", "listing_status": "active"}]
 
 
+def test_load_set_dr_search_rows_falls_back_to_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "set_dr_search.json"
+    cache_path.write_text(
+        '[{"ticker":"AMD80","name":"Depositary Receipt on AMD Issued by KTB","exchange":"SET","asset_type":"Stock","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.SET_DR_SEARCH_CACHE", cache_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_SET_DR_SEARCH_CACHE", tmp_path / "missing.json")
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.fetch_set_dr_search",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "set_dr_search")
+    rows, mode = load_set_dr_search_rows(source)
+
+    assert mode == "cache"
+    assert rows == [{"ticker": "AMD80", "name": "Depositary Receipt on AMD Issued by KTB", "exchange": "SET", "asset_type": "Stock", "listing_status": "active"}]
+
+
 def test_fetch_source_rows_with_mode_uses_set_etf_cache(tmp_path, monkeypatch) -> None:
     cache_path = tmp_path / "set_etf_search.json"
     cache_path.write_text(
@@ -5845,6 +5910,27 @@ def test_fetch_source_rows_with_mode_uses_set_etf_cache(tmp_path, monkeypatch) -
 
     assert mode == "cache"
     assert rows[0]["ticker"] == "ABFTH"
+    assert rows[0]["exchange"] == "SET"
+
+
+def test_fetch_source_rows_with_mode_uses_set_dr_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "set_dr_search.json"
+    cache_path.write_text(
+        '[{"ticker":"AMD80","name":"Depositary Receipt on AMD Issued by KTB","exchange":"SET","asset_type":"Stock","listing_status":"active","source_key":"set_dr_search","reference_scope":"listed_companies_subset","official":"true","provider":"SET","source_url":"https://example.com"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.SET_DR_SEARCH_CACHE", cache_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_SET_DR_SEARCH_CACHE", tmp_path / "missing.json")
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.fetch_set_dr_search",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "set_dr_search")
+    rows, mode = fetch_source_rows_with_mode(source)
+
+    assert mode == "cache"
+    assert rows[0]["ticker"] == "AMD80"
     assert rows[0]["exchange"] == "SET"
 
 

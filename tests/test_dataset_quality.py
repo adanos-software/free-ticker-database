@@ -761,6 +761,92 @@ def test_should_exclude_stock_row_drops_tmx_warrant_suffix_lines():
     assert should_exclude_stock_row(row) is True
 
 
+def test_should_exclude_row_drops_set_index_rows():
+    from scripts.rebuild_dataset import should_exclude_row
+
+    row = {
+        "ticker": "^SET",
+        "exchange": "SET",
+        "asset_type": "Stock",
+        "name": "SET Index",
+    }
+
+    assert should_exclude_row(row) is True
+
+
+def test_should_exclude_row_drops_official_set_dr_tickers(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "AMD80",
+        "exchange": "SET",
+        "asset_type": "Stock",
+        "name": "Advanced Micro Devices, Inc.",
+    }
+
+    monkeypatch.setattr(rebuild_dataset, "load_active_official_set_dr_tickers", lambda: frozenset({"AMD80"}))
+
+    assert rebuild_dataset.should_exclude_row(row) is True
+
+
+def test_should_exclude_row_drops_set_r_lines_with_matching_official_base(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "CPN-R",
+        "exchange": "SET",
+        "asset_type": "Stock",
+        "name": "Central Pattana Public Company Limited",
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_set_stock_reference_names",
+        lambda: {"CPN": "CENTRAL PATTANA PUBLIC COMPANY LIMITED"},
+    )
+
+    assert rebuild_dataset.should_exclude_row(row) is True
+
+
+def test_should_exclude_row_drops_sse_reit_stock_namespace():
+    from scripts.rebuild_dataset import should_exclude_row
+
+    row = {
+        "ticker": "508018",
+        "exchange": "SSE",
+        "asset_type": "Stock",
+        "name": "Huaxia Fund Management Co Ltd- China Communications Construction REIT",
+    }
+
+    assert should_exclude_row(row) is True
+
+
+def test_should_exclude_row_drops_szse_reit_stock_namespace():
+    from scripts.rebuild_dataset import should_exclude_row
+
+    row = {
+        "ticker": "180202",
+        "exchange": "SZSE",
+        "asset_type": "Stock",
+        "name": "China Asset Management Co. Ltd. - Yuexiu Highway REIT Fund",
+    }
+
+    assert should_exclude_row(row) is True
+
+
+def test_should_exclude_row_drops_china_lof_etf_lines():
+    from scripts.rebuild_dataset import should_exclude_row
+
+    row = {
+        "ticker": "160416",
+        "exchange": "SZSE",
+        "asset_type": "ETF",
+        "name": "HuaAn S&P Global Oil Index LOF QDII",
+    }
+
+    assert should_exclude_row(row) is True
+
+
 def test_alias_matches_company_accepts_trusted_non_lexical_renames():
     from scripts.rebuild_dataset import alias_matches_company
 

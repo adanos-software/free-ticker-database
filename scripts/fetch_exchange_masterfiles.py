@@ -92,6 +92,8 @@ JSE_INSTRUMENT_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "jse_instrument_search.json
 LEGACY_JSE_INSTRUMENT_SEARCH_CACHE = MASTERFILES_DIR / "jse_instrument_search.json"
 SET_ETF_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "set_etf_search.json"
 LEGACY_SET_ETF_SEARCH_CACHE = MASTERFILES_DIR / "set_etf_search.json"
+SET_DR_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "set_dr_search.json"
+LEGACY_SET_DR_SEARCH_CACHE = MASTERFILES_DIR / "set_dr_search.json"
 BMV_STOCK_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "bmv_stock_search.json"
 LEGACY_BMV_STOCK_SEARCH_CACHE = MASTERFILES_DIR / "bmv_stock_search.json"
 BMV_CAPITAL_TRUST_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "bmv_capital_trust_search.json"
@@ -198,6 +200,7 @@ TWSE_LISTED_COMPANIES_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
 TWSE_ETF_LIST_URL = "https://www.twse.com.tw/rwd/en/ETF/list"
 SET_LISTED_COMPANIES_URL = "https://www.set.or.th/dat/eod/listedcompany/static/listedCompanies_en_US.xls"
 SET_ETF_SEARCH_URL = "https://www.set.or.th/en/market/get-quote/etf"
+SET_DR_SEARCH_URL = "https://www.set.or.th/en/market/get-quote/dr"
 BMV_MOBILE_QUOTE_KEYS_URL = "https://www.bmv.com.mx/es/movil/JSONClaveCotizacion"
 BMV_SEARCH_TOKEN_URL = "https://www.bmv.com.mx/rest/tokenservice/token"
 BMV_SEARCH_URL = "https://www.bmv.com.mx/api/searchservice/v1"
@@ -545,6 +548,14 @@ OFFICIAL_SOURCES = [
         description="Official Stock Exchange of Thailand ETF quote directory",
         source_url=SET_ETF_SEARCH_URL,
         format="set_etf_search_html",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="set_dr_search",
+        provider="SET",
+        description="Official Stock Exchange of Thailand DR quote directory",
+        source_url=SET_DR_SEARCH_URL,
+        format="set_dr_search_html",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -1377,6 +1388,23 @@ def load_set_etf_search_rows(
 
     ensure_output_dirs()
     SET_ETF_SEARCH_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def load_set_dr_search_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_set_dr_search(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in (SET_DR_SEARCH_CACHE, LEGACY_SET_DR_SEARCH_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    SET_DR_SEARCH_CACHE.write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"
 
 
@@ -3344,6 +3372,10 @@ def parse_set_quote_search_payload(text: str, source: MasterfileSource) -> list[
     return parse_set_quote_search_rows(text, source, security_type_name="ETF", asset_type="ETF")
 
 
+def parse_set_dr_search_payload(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    return parse_set_quote_search_rows(text, source, security_type_name="DR", asset_type="Stock")
+
+
 def parse_set_listed_companies_html(text: str, source: MasterfileSource) -> list[dict[str, str]]:
     parser = _TableParser()
     parser.feed(text)
@@ -5204,6 +5236,14 @@ def fetch_set_etf_search(
     return parse_set_quote_search_payload(text, source)
 
 
+def fetch_set_dr_search(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    text = fetch_text(source.source_url, session=session)
+    return parse_set_dr_search_payload(text, source)
+
+
 def fetch_lse_company_reports(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
     session = session or requests.Session()
     rows: list[dict[str, str]] = []
@@ -5434,6 +5474,8 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return parse_set_listed_companies_html(text, source)
     if source.format == "set_etf_search_html":
         return fetch_set_etf_search(source, session=session)
+    if source.format == "set_dr_search_html":
+        return fetch_set_dr_search(source, session=session)
     if source.format == "tmx_listed_issuers_excel":
         content, mode = load_tmx_listed_issuers_content(session=session)
         if content is None:
@@ -5574,6 +5616,11 @@ def fetch_source_rows_with_mode(
         rows, mode = load_set_etf_search_rows(source, session=session)
         if rows is None:
             raise requests.RequestException("SET ETF search unavailable")
+        return rows, mode
+    if source.format == "set_dr_search_html":
+        rows, mode = load_set_dr_search_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("SET DR search unavailable")
         return rows, mode
     if source.format == "pse_listed_company_directory_html":
         rows, mode = load_pse_listed_company_directory_rows(source, session=session)
