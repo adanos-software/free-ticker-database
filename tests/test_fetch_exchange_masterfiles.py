@@ -18,6 +18,7 @@ from scripts.fetch_exchange_masterfiles import (
     LEGACY_LSE_INSTRUMENT_DIRECTORY_CACHE,
     LEGACY_LSE_INSTRUMENT_SEARCH_CACHE,
     LEGACY_NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
+    LEGACY_NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE,
     LEGACY_TMX_ETF_SCREENER_CACHE,
     LEGACY_TPEX_MAINBOARD_QUOTES_CACHE,
     LSE_PAGE_INITIALS,
@@ -48,6 +49,7 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_jse_exchange_traded_product_rows,
     fetch_jse_instrument_search_exact,
     fetch_nasdaq_nordic_stockholm_shares,
+    fetch_nasdaq_nordic_stockholm_trackers,
     fetch_psx_listed_companies,
     fetch_psx_symbol_name_daily,
     fetch_six_equity_issuers,
@@ -66,8 +68,10 @@ from scripts.fetch_exchange_masterfiles import (
     load_lse_instrument_directory_rows,
     load_lse_instrument_search_rows,
     load_nasdaq_nordic_stockholm_etf_rows,
+    load_nasdaq_nordic_stockholm_tracker_rows,
     load_nasdaq_nordic_stockholm_shares_rows,
     NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
+    NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE,
     load_sec_company_tickers_exchange_payload,
     load_tmx_etf_screener_payload,
     load_tpex_mainboard_quotes_payload,
@@ -88,6 +92,7 @@ from scripts.fetch_exchange_masterfiles import (
     parse_krx_etf_finder,
     parse_krx_listed_companies,
     parse_nasdaq_nordic_stockholm_etfs,
+    parse_nasdaq_nordic_stockholm_trackers,
     parse_lse_company_reports_html,
     parse_nasdaq_nordic_stockholm_shares,
     parse_nasdaq_listed,
@@ -3687,6 +3692,158 @@ def test_fetch_nasdaq_nordic_stockholm_etfs_filters_to_sto() -> None:
     ]
 
 
+def test_parse_nasdaq_nordic_stockholm_trackers_maps_symbol_aliases() -> None:
+    payload = {
+        "data": [
+            {
+                "group": "Warrants",
+                "instruments": [
+                    {
+                        "symbol": "BITCOIN XBT",
+                        "fullName": "Bitcoin Tracker One XBT Provider",
+                        "isin": "SE0007126024",
+                        "assetClass": "TRACKER_CERTIFICATES",
+                    },
+                    {
+                        "symbol": "ETHEREUM XBT",
+                        "fullName": "Ether Tracker One XBT PROVIDER",
+                        "isin": "SE0010296574",
+                        "assetClass": "TRACKER_CERTIFICATES",
+                    },
+                    {
+                        "symbol": "IGNORED",
+                        "fullName": "Ignored non-tracker",
+                        "isin": "SE0000000000",
+                        "assetClass": "ETF",
+                    },
+                ],
+            }
+        ]
+    }
+
+    rows = parse_nasdaq_nordic_stockholm_trackers(payload, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "BITCOIN-XBT",
+            "name": "Bitcoin Tracker One XBT Provider",
+            "exchange": "STO",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "SE0007126024",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "BITCOIN-XB",
+            "name": "Bitcoin Tracker One XBT Provider",
+            "exchange": "STO",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "SE0007126024",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "ETHEREUM-XBT",
+            "name": "Ether Tracker One XBT PROVIDER",
+            "exchange": "STO",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "SE0010296574",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "ETHEREUM-X",
+            "name": "Ether Tracker One XBT PROVIDER",
+            "exchange": "STO",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "SE0010296574",
+        },
+    ]
+
+
+def test_fetch_nasdaq_nordic_stockholm_trackers_uses_search_endpoint() -> None:
+    source = MasterfileSource(
+        key="nasdaq_nordic_stockholm_trackers",
+        provider="Nasdaq Nordic",
+        description="Official Stockholm tracker certificates",
+        source_url="https://api.nasdaq.com/api/nordic/search",
+        format="nasdaq_nordic_stockholm_trackers_json",
+        reference_scope="listed_companies_subset",
+    )
+
+    class FakeResponse:
+        def __init__(self, payload, status_code=200):
+            self._payload = payload
+            self.status_code = status_code
+
+        def raise_for_status(self):
+            if self.status_code >= 400:
+                raise requests.HTTPError(f"status={self.status_code}")
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            self.calls.append((url, params))
+            assert params == {"searchText": "XBT Provider"}
+            return FakeResponse(
+                {
+                    "data": [
+                        {
+                            "group": "Warrants",
+                            "instruments": [
+                                {
+                                    "symbol": "BITCOIN XBT",
+                                    "fullName": "Bitcoin Tracker One XBT Provider",
+                                    "isin": "SE0007126024",
+                                    "assetClass": "TRACKER_CERTIFICATES",
+                                },
+                                {
+                                    "symbol": "ETHEREUM XBT",
+                                    "fullName": "Ether Tracker One XBT PROVIDER",
+                                    "isin": "SE0010296574",
+                                    "assetClass": "TRACKER_CERTIFICATES",
+                                },
+                            ],
+                        }
+                    ]
+                }
+            )
+
+    session = FakeSession()
+    rows = fetch_exchange_masterfiles.fetch_nasdaq_nordic_stockholm_trackers(source, session=session)
+
+    assert [row["ticker"] for row in rows] == ["BITCOIN-XBT", "BITCOIN-XB", "ETHEREUM-XBT", "ETHEREUM-X"]
+    assert session.calls == [
+        (
+            "https://api.nasdaq.com/api/nordic/search",
+            {"searchText": "XBT Provider"},
+        ),
+    ]
+
+
 def test_sto_source_is_modeled_as_partial_official_coverage() -> None:
     source = next(item for item in OFFICIAL_SOURCES if item.key == "nasdaq_nordic_stockholm_shares")
     assert source.reference_scope == "listed_companies_subset"
@@ -3753,6 +3910,39 @@ def test_fetch_source_rows_with_mode_uses_sto_etf_cache(tmp_path, monkeypatch) -
 
     assert mode == "cache"
     assert rows[0]["ticker"] == "XACT-SVERI"
+    assert rows[0]["exchange"] == "STO"
+
+
+def test_load_nasdaq_nordic_stockholm_tracker_rows_prefers_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "nasdaq_nordic_stockholm_trackers.json"
+    cache_path.write_text(
+        '[{"ticker":"BITCOIN-XB","name":"Bitcoin Tracker One XBT Provider","exchange":"STO","asset_type":"ETF","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE", cache_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE", tmp_path / "missing.json")
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "nasdaq_nordic_stockholm_trackers")
+    rows, mode = load_nasdaq_nordic_stockholm_tracker_rows(source)
+
+    assert mode == "cache"
+    assert rows == [{"ticker": "BITCOIN-XB", "name": "Bitcoin Tracker One XBT Provider", "exchange": "STO", "asset_type": "ETF", "listing_status": "active"}]
+
+
+def test_fetch_source_rows_with_mode_uses_sto_tracker_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "nasdaq_nordic_stockholm_trackers.json"
+    cache_path.write_text(
+        '[{"ticker":"BITCOIN-XB","name":"Bitcoin Tracker One XBT Provider","exchange":"STO","asset_type":"ETF","listing_status":"active","source_key":"nasdaq_nordic_stockholm_trackers","reference_scope":"listed_companies_subset","official":"true","provider":"Nasdaq Nordic","source_url":"https://example.com","isin":"SE0007126024"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE", cache_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE", tmp_path / "missing.json")
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "nasdaq_nordic_stockholm_trackers")
+    rows, mode = fetch_source_rows_with_mode(source)
+
+    assert mode == "cache"
+    assert rows[0]["ticker"] == "BITCOIN-XB"
     assert rows[0]["exchange"] == "STO"
 
 

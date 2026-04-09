@@ -261,6 +261,15 @@
     "official": true
   },
   {
+    "key": "nasdaq_nordic_stockholm_trackers",
+    "provider": "Nasdaq Nordic",
+    "description": "Official Nasdaq Nordic Stockholm tracker certificates discovered via search",
+    "source_url": "https://api.nasdaq.com/api/nordic/search",
+    "format": "nasdaq_nordic_stockholm_trackers_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "twse_listed_companies",
     "provider": "TWSE",
     "description": "Official TWSE listed companies open data feed",
