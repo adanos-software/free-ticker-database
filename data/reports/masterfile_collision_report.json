@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 27725,
-    "matched": 18675,
-    "collisions": 4508,
-    "missing": 4542
+    "official_symbols": 28029,
+    "matched": 18959,
+    "collisions": 4509,
+    "missing": 4561
   },
   "exchanges": [
     {
@@ -149,15 +149,30 @@
     },
     {
       "exchange": "B3",
-      "official_symbols": 575,
-      "matched": 563,
+      "official_symbols": 878,
+      "matched": 847,
       "collisions": 0,
-      "missing": 12,
+      "missing": 31,
       "collision_examples": [],
       "missing_examples": [
         {
+          "ticker": "AGBK11",
+          "name": "BANCO AGIBANK S.A.",
+          "exchange": "B3"
+        },
+        {
           "ticker": "ALUP11",
           "name": "ALUPAR INVESTIMENTO S/A",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "AMZG11",
+          "name": "AMAZONAS DISTRIBUIDORA DE ENERGIA S.A.",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "B1003",
+          "name": "CIABRASF CIA BRASILEIRA DE SERVI\u00c7OS FINANCEIROS SA",
           "exchange": "B3"
         },
         {
@@ -176,33 +191,18 @@
           "exchange": "B3"
         },
         {
-          "ticker": "ENGI11",
-          "name": "ENERGISA S.A.",
+          "ticker": "BVEN11",
+          "name": "BOA VISTA ENERGIA S.A.",
           "exchange": "B3"
         },
         {
-          "ticker": "IGTI11",
-          "name": "IGUATEMI S.A.",
+          "ticker": "CEAC11",
+          "name": "ENERGISA ACRE - DISTRIBUIDORA DE ENERGIA S.A",
           "exchange": "B3"
         },
         {
-          "ticker": "KLBN11",
-          "name": "KLABIN S.A.",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "PPLA11",
-          "name": "PPLA PARTICIPATIONS LTD.",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "PSVM11",
-          "name": "PORTO SUDESTE V.M. S.A.",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "SANB11",
-          "name": "BCO SANTANDER (BRASIL) S.A.",
+          "ticker": "CEAL11",
+          "name": "EQUATORIAL ALAGOAS - DISTRIBUIDORA DE ENERGIA S.A.",
           "exchange": "B3"
         }
       ]
@@ -1574,9 +1574,9 @@
     },
     {
       "exchange": "TWSE",
-      "official_symbols": 1080,
+      "official_symbols": 1081,
       "matched": 1022,
-      "collisions": 34,
+      "collisions": 35,
       "missing": 24,
       "collision_examples": [
         {

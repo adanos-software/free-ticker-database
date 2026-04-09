@@ -15,94 +15,95 @@
 | lei_coverage | 921 |
 | listing_status_rows | 82729 |
 | listing_status_intervals | 82729 |
-| listing_events | 24941 |
+| listing_events | 24947 |
 | listing_keys | 60692 |
-| official_masterfile_symbols | 27725 |
-| official_masterfile_matches | 18675 |
-| official_masterfile_collisions | 4508 |
-| official_masterfile_missing | 4542 |
+| official_masterfile_symbols | 28029 |
+| official_masterfile_matches | 18959 |
+| official_masterfile_collisions | 4509 |
+| official_masterfile_missing | 4561 |
 | official_full_exchanges | 13 |
 | official_partial_exchanges | 15 |
 | manual_only_exchanges | 0 |
 | missing_exchanges | 40 |
 | stock_verification_items | 43954 |
-| stock_verification_verified | 28348 |
-| stock_verification_reference_gap | 15602 |
+| stock_verification_verified | 28663 |
+| stock_verification_reference_gap | 15287 |
 | stock_verification_missing_from_official | 4 |
 | stock_verification_name_mismatch | 0 |
 | stock_verification_cross_exchange_collision | 0 |
 | etf_verification_items | 16738 |
-| etf_verification_verified | 15384 |
-| etf_verification_reference_gap | 1328 |
+| etf_verification_verified | 15410 |
+| etf_verification_reference_gap | 1308 |
 | etf_verification_missing_from_official | 18 |
-| etf_verification_name_mismatch | 7 |
+| etf_verification_name_mismatch | 1 |
 | etf_verification_cross_exchange_collision | 1 |
 
 ## Freshness
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-04-08T18:18:09Z |
-| tickers_age_hours | 1.2 |
-| masterfiles_generated_at | 2026-04-08T19:29:33Z |
-| masterfiles_age_hours | 0.01 |
-| identifiers_generated_at | 2026-04-08T18:18:25Z |
-| identifiers_age_hours | 1.2 |
-| listing_history_observed_at | 2026-04-08T18:18:09Z |
-| listing_history_age_hours | 1.2 |
-| latest_verification_run | data/stock_verification/run-20260408-lse-refresh-04 |
-| latest_verification_generated_at | 2026-04-08T18:25:44Z |
-| latest_verification_age_hours | 1.08 |
-| latest_stock_verification_run | data/stock_verification/run-20260408-lse-refresh-04 |
-| latest_stock_verification_generated_at | 2026-04-08T18:25:44Z |
-| latest_stock_verification_age_hours | 1.08 |
-| latest_etf_verification_run | data/etf_verification/run-20260408-jse-etp-01 |
-| latest_etf_verification_generated_at | 2026-04-08T19:30:06Z |
+| tickers_built_at | 2026-04-09T04:57:36Z |
+| tickers_age_hours | 0.03 |
+| masterfiles_generated_at | 2026-04-09T04:50:15Z |
+| masterfiles_age_hours | 0.16 |
+| identifiers_generated_at | 2026-04-09T04:57:39Z |
+| identifiers_age_hours | 0.03 |
+| listing_history_observed_at | 2026-04-09T04:57:36Z |
+| listing_history_age_hours | 0.03 |
+| latest_verification_run | data/stock_verification/run-20260409-jse-search-01 |
+| latest_verification_generated_at | 2026-04-09T04:59:29Z |
+| latest_verification_age_hours | 0.0 |
+| latest_stock_verification_run | data/stock_verification/run-20260409-jse-search-01 |
+| latest_stock_verification_generated_at | 2026-04-09T04:59:29Z |
+| latest_stock_verification_age_hours | 0.0 |
+| latest_etf_verification_run | data/etf_verification/run-20260409-jse-search-01 |
+| latest_etf_verification_generated_at | 2026-04-09T04:59:35Z |
 | latest_etf_verification_age_hours | 0.0 |
 
 ## Source Coverage
 
 | Source | Provider | Scope | Mode | Rows | Generated At |
 |---|---|---|---|---|---|
-| nasdaq_listed | Nasdaq Trader | exchange_directory | network | 5419 | 2026-04-08T19:29:33Z |
-| nasdaq_other_listed | Nasdaq Trader | exchange_directory | network | 7086 | 2026-04-08T19:29:33Z |
-| lse_company_reports | LSE | listed_companies_subset | cache | 12397 | 2026-04-08T19:29:33Z |
-| lse_instrument_search | LSE | security_lookup_subset | network | 926 | 2026-04-08T19:29:33Z |
-| lse_instrument_directory | LSE | security_lookup_subset | cache | 64 | 2026-04-08T19:29:33Z |
-| asx_listed_companies | ASX | listed_companies_subset | network | 1979 | 2026-04-08T19:29:33Z |
-| cboe_canada_listing_directory | Cboe Canada | exchange_directory | network | 392 | 2026-04-08T19:29:33Z |
-| asx_investment_products | ASX | listed_companies_subset | network | 426 | 2026-04-08T19:29:33Z |
-| set_listed_companies | SET | listed_companies_subset | network | 704 | 2026-04-08T19:29:33Z |
-| tmx_listed_issuers | TMX | listed_companies_subset | cache | 3619 | 2026-04-08T19:29:33Z |
-| tmx_etf_screener | TMX | listed_companies_subset | cache | 1696 | 2026-04-08T19:29:33Z |
-| tmx_interlisted_companies | TMX | interlisted_subset | network | 266 | 2026-04-08T19:29:33Z |
-| euronext_equities | Euronext | exchange_directory | network | 3883 | 2026-04-08T19:29:33Z |
-| euronext_etfs | Euronext | listed_companies_subset | network | 3418 | 2026-04-08T19:29:33Z |
-| jpx_listed_issues | JPX | exchange_directory | network | 4444 | 2026-04-08T19:29:33Z |
-| deutsche_boerse_listed_companies | Deutsche Boerse | listed_companies_subset | network | 471 | 2026-04-08T19:29:33Z |
-| deutsche_boerse_etfs_etps | Deutsche Boerse | listed_companies_subset | network | 3433 | 2026-04-08T19:29:33Z |
-| deutsche_boerse_xetra_all_tradable_equities | Deutsche Boerse | listed_companies_subset | network | 986 | 2026-04-08T19:29:33Z |
-| six_equity_issuers | SIX | listed_companies_subset | network | 241 | 2026-04-08T19:29:33Z |
-| six_etf_products | SIX | listed_companies_subset | network | 2062 | 2026-04-08T19:29:33Z |
-| six_etp_products | SIX | listed_companies_subset | network | 167 | 2026-04-08T19:29:33Z |
-| b3_instruments_equities | B3 | exchange_directory | network | 575 | 2026-04-08T19:29:33Z |
-| b3_listed_etfs | B3 | listed_companies_subset | network | 187 | 2026-04-08T19:29:33Z |
-| b3_bdr_etfs | B3 | listed_companies_subset | network | 302 | 2026-04-08T19:29:33Z |
-| jse_etf_list | JSE | listed_companies_subset | cache | 133 | 2026-04-08T19:29:33Z |
-| jse_etn_list | JSE | listed_companies_subset | cache | 94 | 2026-04-08T19:29:33Z |
-| nasdaq_nordic_stockholm_shares | Nasdaq Nordic | listed_companies_subset | cache | 406 | 2026-04-08T19:29:33Z |
-| twse_listed_companies | TWSE | exchange_directory | network | 1080 | 2026-04-08T19:29:33Z |
-| twse_etf_list | TWSE | listed_companies_subset | network | 215 | 2026-04-08T19:29:33Z |
-| sse_a_share_list | SSE | listed_companies_subset | network | 2350 | 2026-04-08T19:29:33Z |
-| sse_etf_list | SSE | listed_companies_subset | network | 820 | 2026-04-08T19:29:33Z |
-| szse_a_share_list | SZSE | listed_companies_subset | network | 2886 | 2026-04-08T19:29:33Z |
-| szse_etf_list | SZSE | listed_companies_subset | network | 631 | 2026-04-08T19:29:33Z |
-| tpex_mainboard_daily_quotes | TPEX | listed_companies_subset | cache | 884 | 2026-04-08T19:29:33Z |
-| krx_listed_companies | KRX | listed_companies_subset | network | 2660 | 2026-04-08T19:29:33Z |
-| krx_etf_finder | KRX | listed_companies_subset | network | 1088 | 2026-04-08T19:29:33Z |
-| psx_listed_companies | PSX | listed_companies_subset | network | 565 | 2026-04-08T19:29:33Z |
-| psx_symbol_name_daily | PSX | listed_companies_subset | network | 370 | 2026-04-08T19:29:33Z |
-| sec_company_tickers_exchange | SEC | exchange_directory | cache | 10117 | 2026-04-08T19:29:33Z |
+| nasdaq_listed | Nasdaq Trader | exchange_directory | network | 5419 | 2026-04-09T04:50:15Z |
+| nasdaq_other_listed | Nasdaq Trader | exchange_directory | network | 7086 | 2026-04-09T04:50:15Z |
+| lse_company_reports | LSE | listed_companies_subset | cache | 12397 | 2026-04-09T04:50:15Z |
+| lse_instrument_search | LSE | security_lookup_subset | network | 926 | 2026-04-09T04:50:15Z |
+| lse_instrument_directory | LSE | security_lookup_subset | cache | 64 | 2026-04-09T04:50:15Z |
+| asx_listed_companies | ASX | listed_companies_subset | network | 1979 | 2026-04-09T04:50:15Z |
+| cboe_canada_listing_directory | Cboe Canada | exchange_directory | network | 392 | 2026-04-09T04:50:15Z |
+| asx_investment_products | ASX | listed_companies_subset | network | 426 | 2026-04-09T04:50:15Z |
+| set_listed_companies | SET | listed_companies_subset | network | 704 | 2026-04-09T04:50:15Z |
+| tmx_listed_issuers | TMX | listed_companies_subset | cache | 3619 | 2026-04-09T04:50:15Z |
+| tmx_etf_screener | TMX | listed_companies_subset | cache | 1696 | 2026-04-09T04:50:15Z |
+| tmx_interlisted_companies | TMX | interlisted_subset | network | 266 | 2026-04-09T04:50:15Z |
+| euronext_equities | Euronext | exchange_directory | network | 3883 | 2026-04-09T04:50:15Z |
+| euronext_etfs | Euronext | listed_companies_subset | network | 3418 | 2026-04-09T04:50:15Z |
+| jpx_listed_issues | JPX | exchange_directory | network | 4444 | 2026-04-09T04:50:15Z |
+| deutsche_boerse_listed_companies | Deutsche Boerse | listed_companies_subset | network | 471 | 2026-04-09T04:50:15Z |
+| deutsche_boerse_etfs_etps | Deutsche Boerse | listed_companies_subset | network | 3433 | 2026-04-09T04:50:15Z |
+| deutsche_boerse_xetra_all_tradable_equities | Deutsche Boerse | listed_companies_subset | network | 986 | 2026-04-09T04:50:15Z |
+| six_equity_issuers | SIX | listed_companies_subset | network | 241 | 2026-04-09T04:50:15Z |
+| six_etf_products | SIX | listed_companies_subset | network | 2062 | 2026-04-09T04:50:15Z |
+| six_etp_products | SIX | listed_companies_subset | network | 167 | 2026-04-09T04:50:15Z |
+| b3_instruments_equities | B3 | exchange_directory | network | 878 | 2026-04-09T04:50:15Z |
+| b3_listed_etfs | B3 | listed_companies_subset | network | 187 | 2026-04-09T04:50:15Z |
+| b3_bdr_etfs | B3 | listed_companies_subset | network | 302 | 2026-04-09T04:50:15Z |
+| jse_etf_list | JSE | listed_companies_subset | cache | 133 | 2026-04-09T04:50:15Z |
+| jse_etn_list | JSE | listed_companies_subset | cache | 94 | 2026-04-09T04:50:15Z |
+| jse_instrument_search | JSE | listed_companies_subset | network | 51 | 2026-04-09T04:50:15Z |
+| nasdaq_nordic_stockholm_shares | Nasdaq Nordic | listed_companies_subset | cache | 406 | 2026-04-09T04:50:15Z |
+| twse_listed_companies | TWSE | exchange_directory | network | 1081 | 2026-04-09T04:50:15Z |
+| twse_etf_list | TWSE | listed_companies_subset | network | 215 | 2026-04-09T04:50:15Z |
+| sse_a_share_list | SSE | listed_companies_subset | network | 2350 | 2026-04-09T04:50:15Z |
+| sse_etf_list | SSE | listed_companies_subset | network | 820 | 2026-04-09T04:50:15Z |
+| szse_a_share_list | SZSE | listed_companies_subset | network | 2886 | 2026-04-09T04:50:15Z |
+| szse_etf_list | SZSE | listed_companies_subset | network | 632 | 2026-04-09T04:50:15Z |
+| tpex_mainboard_daily_quotes | TPEX | listed_companies_subset | cache | 884 | 2026-04-09T04:50:15Z |
+| krx_listed_companies | KRX | listed_companies_subset | network | 2660 | 2026-04-09T04:50:15Z |
+| krx_etf_finder | KRX | listed_companies_subset | network | 1088 | 2026-04-09T04:50:15Z |
+| psx_listed_companies | PSX | listed_companies_subset | network | 565 | 2026-04-09T04:50:15Z |
+| psx_symbol_name_daily | PSX | listed_companies_subset | network | 370 | 2026-04-09T04:50:15Z |
+| sec_company_tickers_exchange | SEC | exchange_directory | cache | 10117 | 2026-04-09T04:50:15Z |
 
 ## Exchange Coverage
 
@@ -111,7 +112,7 @@
 | AMS | official_full | 222 | 182 | 131 | 0 | 144 | 0 | 509 | 148 | 288 | 73 | 29.08 | 100.0 |
 | ASX | official_partial | 1298 | 1036 | 702 | 30 | 1032 | 24 | 0 | 0 | 0 | 0 |  | 100.0 |
 | ATHEX | missing | 117 | 90 | 117 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
-| B3 | official_full | 959 | 316 | 443 | 0 | 0 | 0 | 575 | 563 | 0 | 12 | 97.91 | 100.0 |
+| B3 | official_full | 959 | 316 | 443 | 0 | 0 | 0 | 878 | 847 | 0 | 31 | 96.47 | 100.0 |
 | BATS | official_full | 1240 | 681 | 345 | 0 | 0 | 0 | 1244 | 1192 | 16 | 36 | 95.82 | 100.0 |
 | BCBA | missing | 64 | 51 | 50 | 0 | 48 | 0 | 0 | 0 | 0 | 0 |  |  |
 | BME | missing | 169 | 154 | 157 | 3 | 2 | 0 | 0 | 0 | 0 | 0 |  |  |
@@ -133,7 +134,7 @@
 | ICE_IS | missing | 18 | 17 | 3 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | IDX | missing | 697 | 580 | 508 | 1 | 2 | 0 | 0 | 0 | 0 | 0 |  |  |
 | ISE | missing | 14 | 14 | 10 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
-| JSE | official_partial | 213 | 181 | 98 | 2 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
+| JSE | official_partial | 213 | 181 | 98 | 2 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | KOSDAQ | official_partial | 1583 | 1154 | 1202 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | KRX | official_partial | 1790 | 1276 | 807 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | LSE | official_partial | 6408 | 5511 | 4355 | 16 | 22 | 5 | 0 | 0 | 0 | 0 |  | 100.0 |
@@ -168,7 +169,7 @@
 | TSE | official_full | 3214 | 0 | 0 | 0 | 0 | 0 | 4444 | 3214 | 1205 | 25 | 72.32 | 100.0 |
 | TSX | official_partial | 1756 | 1176 | 821 | 14 | 1092 | 23 | 0 | 0 | 0 | 0 |  | 100.0 |
 | TSXV | official_partial | 1077 | 512 | 631 | 17 | 531 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
-| TWSE | official_full | 1240 | 955 | 987 | 0 | 0 | 0 | 1080 | 1022 | 34 | 24 | 94.63 | 100.0 |
+| TWSE | official_full | 1240 | 955 | 987 | 0 | 0 | 0 | 1081 | 1022 | 35 | 24 | 94.54 | 100.0 |
 | US | missing | 54 | 0 | 1 | 2 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | USE_UG | missing | 7 | 7 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | VSE | missing | 36 | 34 | 32 | 0 | 22 | 0 | 0 | 0 | 0 | 0 |  |  |
@@ -262,7 +263,6 @@
 | OTCCE | missing | 505 | 505 | 0 | 0 | 0 |
 | WSE | missing | 349 | 349 | 0 | 0 | 0 |
 | TPEX | official_partial | 323 | 323 | 0 | 0 | 0 |
-| B3 | official_full | 317 | 317 | 0 | 0 | 0 |
 | HOSE | missing | 260 | 260 | 0 | 0 | 0 |
 | EGX | missing | 225 | 225 | 0 | 0 | 0 |
 | CPH | missing | 216 | 216 | 0 | 0 | 0 |
@@ -274,3 +274,4 @@
 | ATHEX | missing | 117 | 117 | 0 | 0 | 0 |
 | SSE_CL | missing | 116 | 116 | 0 | 0 | 0 |
 | PSE | missing | 105 | 105 | 0 | 0 | 0 |
+| KRX | official_partial | 103 | 103 | 0 | 0 | 0 |

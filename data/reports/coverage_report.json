@@ -11,46 +11,46 @@
     "lei_coverage": 921,
     "listing_status_rows": 82729,
     "listing_status_intervals": 82729,
-    "listing_events": 24941,
+    "listing_events": 24947,
     "listing_keys": 60692,
-    "official_masterfile_symbols": 27725,
-    "official_masterfile_matches": 18675,
-    "official_masterfile_collisions": 4508,
-    "official_masterfile_missing": 4542,
+    "official_masterfile_symbols": 28029,
+    "official_masterfile_matches": 18959,
+    "official_masterfile_collisions": 4509,
+    "official_masterfile_missing": 4561,
     "official_full_exchanges": 13,
     "official_partial_exchanges": 15,
     "manual_only_exchanges": 0,
     "missing_exchanges": 40,
     "stock_verification_items": 43954,
-    "stock_verification_verified": 28348,
-    "stock_verification_reference_gap": 15602,
+    "stock_verification_verified": 28663,
+    "stock_verification_reference_gap": 15287,
     "stock_verification_missing_from_official": 4,
     "stock_verification_name_mismatch": 0,
     "stock_verification_cross_exchange_collision": 0,
     "etf_verification_items": 16738,
-    "etf_verification_verified": 15384,
-    "etf_verification_reference_gap": 1328,
+    "etf_verification_verified": 15410,
+    "etf_verification_reference_gap": 1308,
     "etf_verification_missing_from_official": 18,
-    "etf_verification_name_mismatch": 7,
+    "etf_verification_name_mismatch": 1,
     "etf_verification_cross_exchange_collision": 1
   },
   "freshness": {
-    "tickers_built_at": "2026-04-08T18:18:09Z",
-    "tickers_age_hours": 1.2,
-    "masterfiles_generated_at": "2026-04-08T19:29:33Z",
-    "masterfiles_age_hours": 0.01,
-    "identifiers_generated_at": "2026-04-08T18:18:25Z",
-    "identifiers_age_hours": 1.2,
-    "listing_history_observed_at": "2026-04-08T18:18:09Z",
-    "listing_history_age_hours": 1.2,
-    "latest_verification_run": "data/stock_verification/run-20260408-lse-refresh-04",
-    "latest_verification_generated_at": "2026-04-08T18:25:44Z",
-    "latest_verification_age_hours": 1.08,
-    "latest_stock_verification_run": "data/stock_verification/run-20260408-lse-refresh-04",
-    "latest_stock_verification_generated_at": "2026-04-08T18:25:44Z",
-    "latest_stock_verification_age_hours": 1.08,
-    "latest_etf_verification_run": "data/etf_verification/run-20260408-jse-etp-01",
-    "latest_etf_verification_generated_at": "2026-04-08T19:30:06Z",
+    "tickers_built_at": "2026-04-09T04:57:36Z",
+    "tickers_age_hours": 0.03,
+    "masterfiles_generated_at": "2026-04-09T04:50:15Z",
+    "masterfiles_age_hours": 0.16,
+    "identifiers_generated_at": "2026-04-09T04:57:39Z",
+    "identifiers_age_hours": 0.03,
+    "listing_history_observed_at": "2026-04-09T04:57:36Z",
+    "listing_history_age_hours": 0.03,
+    "latest_verification_run": "data/stock_verification/run-20260409-jse-search-01",
+    "latest_verification_generated_at": "2026-04-09T04:59:29Z",
+    "latest_verification_age_hours": 0.0,
+    "latest_stock_verification_run": "data/stock_verification/run-20260409-jse-search-01",
+    "latest_stock_verification_generated_at": "2026-04-09T04:59:29Z",
+    "latest_stock_verification_age_hours": 0.0,
+    "latest_etf_verification_run": "data/etf_verification/run-20260409-jse-search-01",
+    "latest_etf_verification_generated_at": "2026-04-09T04:59:35Z",
     "latest_etf_verification_age_hours": 0.0
   },
   "source_coverage": [
@@ -61,7 +61,7 @@
       "official": true,
       "mode": "network",
       "rows": 5419,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "nasdaq_other_listed",
@@ -70,7 +70,7 @@
       "official": true,
       "mode": "network",
       "rows": 7086,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "lse_company_reports",
@@ -79,7 +79,7 @@
       "official": true,
       "mode": "cache",
       "rows": 12397,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "lse_instrument_search",
@@ -88,7 +88,7 @@
       "official": true,
       "mode": "network",
       "rows": 926,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "lse_instrument_directory",
@@ -97,7 +97,7 @@
       "official": true,
       "mode": "cache",
       "rows": 64,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "asx_listed_companies",
@@ -106,7 +106,7 @@
       "official": true,
       "mode": "network",
       "rows": 1979,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "cboe_canada_listing_directory",
@@ -115,7 +115,7 @@
       "official": true,
       "mode": "network",
       "rows": 392,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "asx_investment_products",
@@ -124,7 +124,7 @@
       "official": true,
       "mode": "network",
       "rows": 426,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "set_listed_companies",
@@ -133,7 +133,7 @@
       "official": true,
       "mode": "network",
       "rows": 704,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "tmx_listed_issuers",
@@ -142,7 +142,7 @@
       "official": true,
       "mode": "cache",
       "rows": 3619,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "tmx_etf_screener",
@@ -151,7 +151,7 @@
       "official": true,
       "mode": "cache",
       "rows": 1696,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "tmx_interlisted_companies",
@@ -160,7 +160,7 @@
       "official": true,
       "mode": "network",
       "rows": 266,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "euronext_equities",
@@ -169,7 +169,7 @@
       "official": true,
       "mode": "network",
       "rows": 3883,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "euronext_etfs",
@@ -178,7 +178,7 @@
       "official": true,
       "mode": "network",
       "rows": 3418,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "jpx_listed_issues",
@@ -187,7 +187,7 @@
       "official": true,
       "mode": "network",
       "rows": 4444,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "deutsche_boerse_listed_companies",
@@ -196,7 +196,7 @@
       "official": true,
       "mode": "network",
       "rows": 471,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "deutsche_boerse_etfs_etps",
@@ -205,7 +205,7 @@
       "official": true,
       "mode": "network",
       "rows": 3433,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "deutsche_boerse_xetra_all_tradable_equities",
@@ -214,7 +214,7 @@
       "official": true,
       "mode": "network",
       "rows": 986,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "six_equity_issuers",
@@ -223,7 +223,7 @@
       "official": true,
       "mode": "network",
       "rows": 241,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "six_etf_products",
@@ -232,7 +232,7 @@
       "official": true,
       "mode": "network",
       "rows": 2062,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "six_etp_products",
@@ -241,7 +241,7 @@
       "official": true,
       "mode": "network",
       "rows": 167,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "b3_instruments_equities",
@@ -249,8 +249,8 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 575,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "rows": 878,
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "b3_listed_etfs",
@@ -259,7 +259,7 @@
       "official": true,
       "mode": "network",
       "rows": 187,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "b3_bdr_etfs",
@@ -268,7 +268,7 @@
       "official": true,
       "mode": "network",
       "rows": 302,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "jse_etf_list",
@@ -277,7 +277,7 @@
       "official": true,
       "mode": "cache",
       "rows": 133,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "jse_etn_list",
@@ -286,7 +286,16 @@
       "official": true,
       "mode": "cache",
       "rows": 94,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
+    },
+    {
+      "key": "jse_instrument_search",
+      "provider": "JSE",
+      "reference_scope": "listed_companies_subset",
+      "official": true,
+      "mode": "network",
+      "rows": 51,
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "nasdaq_nordic_stockholm_shares",
@@ -295,7 +304,7 @@
       "official": true,
       "mode": "cache",
       "rows": 406,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "twse_listed_companies",
@@ -303,8 +312,8 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 1080,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "rows": 1081,
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "twse_etf_list",
@@ -313,7 +322,7 @@
       "official": true,
       "mode": "network",
       "rows": 215,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "sse_a_share_list",
@@ -322,7 +331,7 @@
       "official": true,
       "mode": "network",
       "rows": 2350,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "sse_etf_list",
@@ -331,7 +340,7 @@
       "official": true,
       "mode": "network",
       "rows": 820,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "szse_a_share_list",
@@ -340,7 +349,7 @@
       "official": true,
       "mode": "network",
       "rows": 2886,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "szse_etf_list",
@@ -348,8 +357,8 @@
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 631,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "rows": 632,
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "tpex_mainboard_daily_quotes",
@@ -358,7 +367,7 @@
       "official": true,
       "mode": "cache",
       "rows": 884,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "krx_listed_companies",
@@ -367,7 +376,7 @@
       "official": true,
       "mode": "network",
       "rows": 2660,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "krx_etf_finder",
@@ -376,7 +385,7 @@
       "official": true,
       "mode": "network",
       "rows": 1088,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "psx_listed_companies",
@@ -385,7 +394,7 @@
       "official": true,
       "mode": "network",
       "rows": 565,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "psx_symbol_name_daily",
@@ -394,7 +403,7 @@
       "official": true,
       "mode": "network",
       "rows": 370,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     },
     {
       "key": "sec_company_tickers_exchange",
@@ -403,7 +412,7 @@
       "official": true,
       "mode": "cache",
       "rows": 10117,
-      "generated_at": "2026-04-08T19:29:33Z"
+      "generated_at": "2026-04-09T04:50:15Z"
     }
   ],
   "exchange_coverage": [
@@ -549,34 +558,34 @@
       "cik_coverage": 0,
       "figi_coverage": 0,
       "lei_coverage": 0,
-      "masterfile_symbols": 575,
-      "masterfile_matches": 563,
+      "masterfile_symbols": 878,
+      "masterfile_matches": 847,
       "masterfile_collisions": 0,
-      "masterfile_missing": 12,
-      "masterfile_match_rate": 97.91,
+      "masterfile_missing": 31,
+      "masterfile_match_rate": 96.47,
       "masterfile_collision_rate": 0.0,
       "verification_items": 689,
-      "verification_verified": 422,
-      "verification_reference_gap": 267,
+      "verification_verified": 686,
+      "verification_reference_gap": 3,
       "verification_missing_from_official": 0,
       "verification_name_mismatch": 0,
       "verification_cross_exchange_collision": 0,
       "verification_verified_rate_on_covered": 100.0,
       "stock_verification_items": 689,
-      "stock_verification_verified": 422,
-      "stock_verification_reference_gap": 267,
+      "stock_verification_verified": 686,
+      "stock_verification_reference_gap": 3,
       "stock_verification_missing_from_official": 0,
       "stock_verification_name_mismatch": 0,
       "stock_verification_cross_exchange_collision": 0,
       "stock_verification_verified_rate_on_covered": 100.0,
       "etf_verification_items": 270,
-      "etf_verification_verified": 220,
-      "etf_verification_reference_gap": 50,
+      "etf_verification_verified": 240,
+      "etf_verification_reference_gap": 30,
       "etf_verification_missing_from_official": 0,
       "etf_verification_name_mismatch": 0,
       "etf_verification_cross_exchange_collision": 0,
       "etf_verification_verified_rate_on_covered": 100.0,
-      "unresolved_count": 317
+      "unresolved_count": 33
     },
     {
       "exchange": "BATS",
@@ -1447,7 +1456,7 @@
     {
       "exchange": "JSE",
       "venue_status": "official_partial",
-      "official_source_count": 2,
+      "official_source_count": 3,
       "manual_source_count": 0,
       "reference_scopes": [
         "listed_companies_subset"
@@ -1465,27 +1474,27 @@
       "masterfile_match_rate": null,
       "masterfile_collision_rate": null,
       "verification_items": 84,
-      "verification_verified": 0,
-      "verification_reference_gap": 84,
+      "verification_verified": 51,
+      "verification_reference_gap": 33,
       "verification_missing_from_official": 0,
       "verification_name_mismatch": 0,
       "verification_cross_exchange_collision": 0,
-      "verification_verified_rate_on_covered": null,
+      "verification_verified_rate_on_covered": 100.0,
       "stock_verification_items": 84,
-      "stock_verification_verified": 0,
-      "stock_verification_reference_gap": 84,
+      "stock_verification_verified": 51,
+      "stock_verification_reference_gap": 33,
       "stock_verification_missing_from_official": 0,
       "stock_verification_name_mismatch": 0,
       "stock_verification_cross_exchange_collision": 0,
-      "stock_verification_verified_rate_on_covered": null,
+      "stock_verification_verified_rate_on_covered": 100.0,
       "etf_verification_items": 129,
-      "etf_verification_verified": 118,
+      "etf_verification_verified": 124,
       "etf_verification_reference_gap": 4,
       "etf_verification_missing_from_official": 0,
-      "etf_verification_name_mismatch": 7,
+      "etf_verification_name_mismatch": 1,
       "etf_verification_cross_exchange_collision": 0,
-      "etf_verification_verified_rate_on_covered": 94.4,
-      "unresolved_count": 95
+      "etf_verification_verified_rate_on_covered": 99.2,
+      "unresolved_count": 38
     },
     {
       "exchange": "KOSDAQ",
@@ -2939,12 +2948,12 @@
       "cik_coverage": 0,
       "figi_coverage": 0,
       "lei_coverage": 0,
-      "masterfile_symbols": 1080,
+      "masterfile_symbols": 1081,
       "masterfile_matches": 1022,
-      "masterfile_collisions": 34,
+      "masterfile_collisions": 35,
       "masterfile_missing": 24,
-      "masterfile_match_rate": 94.63,
-      "masterfile_collision_rate": 3.15,
+      "masterfile_match_rate": 94.54,
+      "masterfile_collision_rate": 3.24,
       "verification_items": 1023,
       "verification_verified": 1022,
       "verification_reference_gap": 1,
@@ -3401,34 +3410,34 @@
       "cik_coverage": 0,
       "figi_coverage": 0,
       "lei_coverage": 0,
-      "masterfile_symbols": 575,
-      "masterfile_matches": 563,
+      "masterfile_symbols": 878,
+      "masterfile_matches": 847,
       "masterfile_collisions": 0,
-      "masterfile_missing": 12,
-      "masterfile_match_rate": 97.91,
+      "masterfile_missing": 31,
+      "masterfile_match_rate": 96.47,
       "masterfile_collision_rate": 0.0,
       "verification_items": 689,
-      "verification_verified": 422,
-      "verification_reference_gap": 267,
+      "verification_verified": 686,
+      "verification_reference_gap": 3,
       "verification_missing_from_official": 0,
       "verification_name_mismatch": 0,
       "verification_cross_exchange_collision": 0,
       "verification_verified_rate_on_covered": 100.0,
       "stock_verification_items": 689,
-      "stock_verification_verified": 422,
-      "stock_verification_reference_gap": 267,
+      "stock_verification_verified": 686,
+      "stock_verification_reference_gap": 3,
       "stock_verification_missing_from_official": 0,
       "stock_verification_name_mismatch": 0,
       "stock_verification_cross_exchange_collision": 0,
       "stock_verification_verified_rate_on_covered": 100.0,
       "etf_verification_items": 270,
-      "etf_verification_verified": 220,
-      "etf_verification_reference_gap": 50,
+      "etf_verification_verified": 240,
+      "etf_verification_reference_gap": 30,
       "etf_verification_missing_from_official": 0,
       "etf_verification_name_mismatch": 0,
       "etf_verification_cross_exchange_collision": 0,
       "etf_verification_verified_rate_on_covered": 100.0,
-      "unresolved_count": 317
+      "unresolved_count": 33
     },
     {
       "exchange": "BATS",
@@ -4299,7 +4308,7 @@
     {
       "exchange": "JSE",
       "venue_status": "official_partial",
-      "official_source_count": 2,
+      "official_source_count": 3,
       "manual_source_count": 0,
       "reference_scopes": [
         "listed_companies_subset"
@@ -4317,27 +4326,27 @@
       "masterfile_match_rate": null,
       "masterfile_collision_rate": null,
       "verification_items": 84,
-      "verification_verified": 0,
-      "verification_reference_gap": 84,
+      "verification_verified": 51,
+      "verification_reference_gap": 33,
       "verification_missing_from_official": 0,
       "verification_name_mismatch": 0,
       "verification_cross_exchange_collision": 0,
-      "verification_verified_rate_on_covered": null,
+      "verification_verified_rate_on_covered": 100.0,
       "stock_verification_items": 84,
-      "stock_verification_verified": 0,
-      "stock_verification_reference_gap": 84,
+      "stock_verification_verified": 51,
+      "stock_verification_reference_gap": 33,
       "stock_verification_missing_from_official": 0,
       "stock_verification_name_mismatch": 0,
       "stock_verification_cross_exchange_collision": 0,
-      "stock_verification_verified_rate_on_covered": null,
+      "stock_verification_verified_rate_on_covered": 100.0,
       "etf_verification_items": 129,
-      "etf_verification_verified": 118,
+      "etf_verification_verified": 124,
       "etf_verification_reference_gap": 4,
       "etf_verification_missing_from_official": 0,
-      "etf_verification_name_mismatch": 7,
+      "etf_verification_name_mismatch": 1,
       "etf_verification_cross_exchange_collision": 0,
-      "etf_verification_verified_rate_on_covered": 94.4,
-      "unresolved_count": 95
+      "etf_verification_verified_rate_on_covered": 99.2,
+      "unresolved_count": 38
     },
     {
       "exchange": "KOSDAQ",
@@ -5791,12 +5800,12 @@
       "cik_coverage": 0,
       "figi_coverage": 0,
       "lei_coverage": 0,
-      "masterfile_symbols": 1080,
+      "masterfile_symbols": 1081,
       "masterfile_matches": 1022,
-      "masterfile_collisions": 34,
+      "masterfile_collisions": 35,
       "masterfile_missing": 24,
-      "masterfile_match_rate": 94.63,
-      "masterfile_collision_rate": 3.15,
+      "masterfile_match_rate": 94.54,
+      "masterfile_collision_rate": 3.24,
       "verification_items": 1023,
       "verification_verified": 1022,
       "verification_reference_gap": 1,
@@ -6725,14 +6734,14 @@
     }
   ],
   "verification": {
-    "run_dir": "data/stock_verification/run-20260408-lse-refresh-04",
-    "generated_at": "2026-04-08T18:25:44Z",
+    "run_dir": "data/stock_verification/run-20260409-jse-search-01",
+    "generated_at": "2026-04-09T04:59:29Z",
     "summary": {
       "items": 43954,
       "status_counts": {
         "missing_from_official": 4,
-        "reference_gap": 15602,
-        "verified": 28348
+        "reference_gap": 15287,
+        "verified": 28663
       },
       "finding_examples": [
         {
@@ -6856,14 +6865,14 @@
       {
         "exchange": "B3",
         "items": 689,
-        "verified": 422,
-        "reference_gap": 267,
+        "verified": 686,
+        "reference_gap": 3,
         "missing_from_official": 0,
         "name_mismatch": 0,
         "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 422,
+        "officially_covered_items": 686,
         "verified_rate_on_covered": 100.0
       },
       {
@@ -7142,15 +7151,15 @@
       {
         "exchange": "JSE",
         "items": 84,
-        "verified": 0,
-        "reference_gap": 84,
+        "verified": 51,
+        "reference_gap": 33,
         "missing_from_official": 0,
         "name_mismatch": 0,
         "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 0,
-        "verified_rate_on_covered": null
+        "officially_covered_items": 51,
+        "verified_rate_on_covered": 100.0
       },
       {
         "exchange": "KOSDAQ",
@@ -7675,14 +7684,14 @@
     ]
   },
   "stock_verification": {
-    "run_dir": "data/stock_verification/run-20260408-lse-refresh-04",
-    "generated_at": "2026-04-08T18:25:44Z",
+    "run_dir": "data/stock_verification/run-20260409-jse-search-01",
+    "generated_at": "2026-04-09T04:59:29Z",
     "summary": {
       "items": 43954,
       "status_counts": {
         "missing_from_official": 4,
-        "reference_gap": 15602,
-        "verified": 28348
+        "reference_gap": 15287,
+        "verified": 28663
       },
       "finding_examples": [
         {
@@ -7806,14 +7815,14 @@
       {
         "exchange": "B3",
         "items": 689,
-        "verified": 422,
-        "reference_gap": 267,
+        "verified": 686,
+        "reference_gap": 3,
         "missing_from_official": 0,
         "name_mismatch": 0,
         "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 422,
+        "officially_covered_items": 686,
         "verified_rate_on_covered": 100.0
       },
       {
@@ -8092,15 +8101,15 @@
       {
         "exchange": "JSE",
         "items": 84,
-        "verified": 0,
-        "reference_gap": 84,
+        "verified": 51,
+        "reference_gap": 33,
         "missing_from_official": 0,
         "name_mismatch": 0,
         "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 0,
-        "verified_rate_on_covered": null
+        "officially_covered_items": 51,
+        "verified_rate_on_covered": 100.0
       },
       {
         "exchange": "KOSDAQ",
@@ -8625,665 +8634,18 @@
     ]
   },
   "etf_verification": {
-    "run_dir": "data/etf_verification/run-20260408-jse-etp-01",
-    "generated_at": "2026-04-08T19:30:06Z",
+    "run_dir": "data/etf_verification/run-20260409-jse-search-01",
+    "generated_at": "2026-04-09T04:59:35Z",
     "summary": {
-      "chunk_count": 10,
-      "completed_chunks": 10,
-      "missing_chunks": [],
       "items": 16738,
       "status_counts": {
         "cross_exchange_collision": 1,
         "missing_from_official": 18,
-        "name_mismatch": 7,
-        "reference_gap": 1328,
-        "verified": 15384
+        "name_mismatch": 1,
+        "reference_gap": 1308,
+        "verified": 15410
       },
-      "chunks": [
-        {
-          "chunk_index": 1,
-          "chunk_count": 10,
-          "items": 1674,
-          "status_counts": {
-            "missing_from_official": 2,
-            "name_mismatch": 1,
-            "reference_gap": 138,
-            "verified": 1533
-          },
-          "finding_examples": [
-            {
-              "listing_key": "JSE::ADETNC",
-              "ticker": "ADETNC",
-              "exchange": "JSE",
-              "asset_type": "ETF",
-              "name": "ADETNC",
-              "country": "South Africa",
-              "country_code": "ZA",
-              "isin": "",
-              "sector": "",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "FNB ETN on ADOBEC NOV25",
-              "official_reference_source": "jse_etn_list",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "NEO::BYLD-B",
-              "ticker": "BYLD-B",
-              "exchange": "NEO",
-              "asset_type": "ETF",
-              "name": "MANULIFE SMART ENHANCED YIELD BOND ETF - UNHEDGED UNITS",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "NEO::ZTM-U",
-              "ticker": "ZTM-U",
-              "exchange": "NEO",
-              "asset_type": "ETF",
-              "name": "BMO MID-TERM US TREASURY BOND INDEX ETF",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/etf_verification/run-20260408-jse-etp-01/chunk-01-of-10.json",
-          "csv_out": "data/etf_verification/run-20260408-jse-etp-01/chunk-01-of-10.csv"
-        },
-        {
-          "chunk_index": 2,
-          "chunk_count": 10,
-          "items": 1674,
-          "status_counts": {
-            "missing_from_official": 3,
-            "name_mismatch": 1,
-            "reference_gap": 138,
-            "verified": 1532
-          },
-          "finding_examples": [
-            {
-              "listing_key": "JSE::GSETNC",
-              "ticker": "GSETNC",
-              "exchange": "JSE",
-              "asset_type": "ETF",
-              "name": "GSETNC",
-              "country": "South Africa",
-              "country_code": "ZA",
-              "isin": "",
-              "sector": "Financials",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "FNB ETN on GSACHSC NOV25",
-              "official_reference_source": "jse_etn_list",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "NEO::BCCC-U",
-              "ticker": "BCCC-U",
-              "exchange": "NEO",
-              "asset_type": "ETF",
-              "name": "Global X Bitcoin Covered Call ETF",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "NEO::RPU-U",
-              "ticker": "RPU-U",
-              "exchange": "NEO",
-              "asset_type": "ETF",
-              "name": "PURPOSE US PREFERRED SHARE FUND NON-CURRENCY HEDGED USD",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "CA74641R2090",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "NEO::ZTS-U",
-              "ticker": "ZTS-U",
-              "exchange": "NEO",
-              "asset_type": "ETF",
-              "name": "BMO Short-Term US Treasury Bond Fund ETF USD",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "CA09660C2040",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/etf_verification/run-20260408-jse-etp-01/chunk-02-of-10.json",
-          "csv_out": "data/etf_verification/run-20260408-jse-etp-01/chunk-02-of-10.csv"
-        },
-        {
-          "chunk_index": 3,
-          "chunk_count": 10,
-          "items": 1674,
-          "status_counts": {
-            "missing_from_official": 1,
-            "name_mismatch": 2,
-            "reference_gap": 137,
-            "verified": 1534
-          },
-          "finding_examples": [
-            {
-              "listing_key": "JSE::FDETNC",
-              "ticker": "FDETNC",
-              "exchange": "JSE",
-              "asset_type": "ETF",
-              "name": "FDETNC",
-              "country": "South Africa",
-              "country_code": "ZA",
-              "isin": "",
-              "sector": "",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "FNB ETN on FORDC NOV25",
-              "official_reference_source": "jse_etn_list",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "JSE::PPETNC",
-              "ticker": "PPETNC",
-              "exchange": "JSE",
-              "asset_type": "ETF",
-              "name": "PPETNC",
-              "country": "South Africa",
-              "country_code": "ZA",
-              "isin": "",
-              "sector": "",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "FNB ETN on PAYPALC NOV25",
-              "official_reference_source": "jse_etn_list",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "NEO::EAFX-U",
-              "ticker": "EAFX-U",
-              "exchange": "NEO",
-              "asset_type": "ETF",
-              "name": "Global X MSCI EAFE Index ETF",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "CA37962B1031",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/etf_verification/run-20260408-jse-etp-01/chunk-03-of-10.json",
-          "csv_out": "data/etf_verification/run-20260408-jse-etp-01/chunk-03-of-10.csv"
-        },
-        {
-          "chunk_index": 4,
-          "chunk_count": 10,
-          "items": 1674,
-          "status_counts": {
-            "missing_from_official": 1,
-            "reference_gap": 136,
-            "verified": 1537
-          },
-          "finding_examples": [
-            {
-              "listing_key": "NEO::RSCC-U",
-              "ticker": "RSCC-U",
-              "exchange": "NEO",
-              "asset_type": "ETF",
-              "name": "GLOBAL X RUSSELL 2000 COVERED C",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/etf_verification/run-20260408-jse-etp-01/chunk-04-of-10.json",
-          "csv_out": "data/etf_verification/run-20260408-jse-etp-01/chunk-04-of-10.csv"
-        },
-        {
-          "chunk_index": 5,
-          "chunk_count": 10,
-          "items": 1674,
-          "status_counts": {
-            "missing_from_official": 2,
-            "name_mismatch": 1,
-            "reference_gap": 133,
-            "verified": 1538
-          },
-          "finding_examples": [
-            {
-              "listing_key": "JSE::JPETNC",
-              "ticker": "JPETNC",
-              "exchange": "JSE",
-              "asset_type": "ETF",
-              "name": "JPETNC",
-              "country": "South Africa",
-              "country_code": "ZA",
-              "isin": "",
-              "sector": "",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "FNB ETN on JPMORGC NOV25",
-              "official_reference_source": "jse_etn_list",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "NEO::CESG-B",
-              "ticker": "CESG-B",
-              "exchange": "NEO",
-              "asset_type": "ETF",
-              "name": "CI First Asset MSCI World ESG Impact ETF",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "NEO::ZMPU-F",
-              "ticker": "ZMPU-F",
-              "exchange": "NEO",
-              "asset_type": "ETF",
-              "name": "BMO MARKET+ US EQUITY ETF - HEDGED UNITS",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/etf_verification/run-20260408-jse-etp-01/chunk-05-of-10.json",
-          "csv_out": "data/etf_verification/run-20260408-jse-etp-01/chunk-05-of-10.csv"
-        },
-        {
-          "chunk_index": 6,
-          "chunk_count": 10,
-          "items": 1674,
-          "status_counts": {
-            "cross_exchange_collision": 1,
-            "missing_from_official": 3,
-            "name_mismatch": 1,
-            "reference_gap": 132,
-            "verified": 1537
-          },
-          "finding_examples": [
-            {
-              "listing_key": "JSE::ETFBND",
-              "ticker": "ETFBND",
-              "exchange": "JSE",
-              "asset_type": "ETF",
-              "name": "Standard Bank Oil ETN",
-              "country": "South Africa",
-              "country_code": "ZA",
-              "isin": "ZAE000316659",
-              "sector": "",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "1nvest SA Bond ETF",
-              "official_reference_source": "jse_etf_list",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "NEO::CHCL-B",
-              "ticker": "CHCL-B",
-              "exchange": "NEO",
-              "asset_type": "ETF",
-              "name": "CI Global Healthcare Leaders Index ETF",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "NEO::RSSX-U",
-              "ticker": "RSSX-U",
-              "exchange": "NEO",
-              "asset_type": "ETF",
-              "name": "GLOBAL X RUSSELL 2000 INDEX ETF",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "NEO::ZAAA-F",
-              "ticker": "ZAAA-F",
-              "exchange": "NEO",
-              "asset_type": "ETF",
-              "name": "BMO AAA CLO ETF (HEDGED UNITS)",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/etf_verification/run-20260408-jse-etp-01/chunk-06-of-10.json",
-          "csv_out": "data/etf_verification/run-20260408-jse-etp-01/chunk-06-of-10.csv"
-        },
-        {
-          "chunk_index": 7,
-          "chunk_count": 10,
-          "items": 1674,
-          "status_counts": {
-            "missing_from_official": 2,
-            "reference_gap": 121,
-            "verified": 1551
-          },
-          "finding_examples": [
-            {
-              "listing_key": "NEO::EMMX-U",
-              "ticker": "EMMX-U",
-              "exchange": "NEO",
-              "asset_type": "ETF",
-              "name": "Global X MSCI Emerging Markets Index ETF",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "CA37961X1069",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "NEO::ZBBZ-F",
-              "ticker": "ZBBZ-F",
-              "exchange": "NEO",
-              "asset_type": "ETF",
-              "name": "BMO BBB CLO ETF \u2013 Hedged Units",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/etf_verification/run-20260408-jse-etp-01/chunk-07-of-10.json",
-          "csv_out": "data/etf_verification/run-20260408-jse-etp-01/chunk-07-of-10.csv"
-        },
-        {
-          "chunk_index": 8,
-          "chunk_count": 10,
-          "items": 1674,
-          "status_counts": {
-            "missing_from_official": 1,
-            "reference_gap": 127,
-            "verified": 1546
-          },
-          "finding_examples": [
-            {
-              "listing_key": "NEO::ZTL-F",
-              "ticker": "ZTL-F",
-              "exchange": "NEO",
-              "asset_type": "ETF",
-              "name": "BMO LONG-TERM US TREASURY BOND INDEX ETF",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "CA05582Y3086",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/etf_verification/run-20260408-jse-etp-01/chunk-08-of-10.json",
-          "csv_out": "data/etf_verification/run-20260408-jse-etp-01/chunk-08-of-10.csv"
-        },
-        {
-          "chunk_index": 9,
-          "chunk_count": 10,
-          "items": 1673,
-          "status_counts": {
-            "missing_from_official": 2,
-            "reference_gap": 126,
-            "verified": 1545
-          },
-          "finding_examples": [
-            {
-              "listing_key": "NEO::CLU-C",
-              "ticker": "CLU-C",
-              "exchange": "NEO",
-              "asset_type": "ETF",
-              "name": "iSHARES US FUNDAMENTAL INDEX ETF",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "NEO::ZTL-U",
-              "ticker": "ZTL-U",
-              "exchange": "NEO",
-              "asset_type": "ETF",
-              "name": "BMO LONG-TERM US TREASURY BOND INDEX ETF",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/etf_verification/run-20260408-jse-etp-01/chunk-09-of-10.json",
-          "csv_out": "data/etf_verification/run-20260408-jse-etp-01/chunk-09-of-10.csv"
-        },
-        {
-          "chunk_index": 10,
-          "chunk_count": 10,
-          "items": 1673,
-          "status_counts": {
-            "missing_from_official": 1,
-            "name_mismatch": 1,
-            "reference_gap": 140,
-            "verified": 1531
-          },
-          "finding_examples": [
-            {
-              "listing_key": "JSE::BHETNC",
-              "ticker": "BHETNC",
-              "exchange": "JSE",
-              "asset_type": "ETF",
-              "name": "BHETNC",
-              "country": "South Africa",
-              "country_code": "ZA",
-              "isin": "",
-              "sector": "",
-              "status": "name_mismatch",
-              "reason": "Dataset name does not match official exchange directory name.",
-              "official_reference_name": "FNB ETN on BERKSHC NOV25",
-              "official_reference_source": "jse_etn_list",
-              "covered_by_official_directory": false,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "NEO::IBIT-U",
-              "ticker": "IBIT-U",
-              "exchange": "NEO",
-              "asset_type": "ETF",
-              "name": "iShares Bitcoin ETF USD",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/etf_verification/run-20260408-jse-etp-01/chunk-10-of-10.json",
-          "csv_out": "data/etf_verification/run-20260408-jse-etp-01/chunk-10-of-10.csv"
-        }
-      ],
-      "finding_rows": 25,
       "finding_examples": [
-        {
-          "listing_key": "JSE::ADETNC",
-          "ticker": "ADETNC",
-          "exchange": "JSE",
-          "asset_type": "ETF",
-          "name": "ADETNC",
-          "country": "South Africa",
-          "country_code": "ZA",
-          "isin": "",
-          "sector": "",
-          "status": "name_mismatch",
-          "reason": "Dataset name does not match official exchange directory name.",
-          "official_reference_name": "FNB ETN on ADOBEC NOV25",
-          "official_reference_source": "jse_etn_list",
-          "covered_by_official_directory": false,
-          "cik": "",
-          "figi": "",
-          "lei": ""
-        },
         {
           "listing_key": "NEO::BYLD-B",
           "ticker": "BYLD-B",
@@ -9318,25 +8680,6 @@
           "official_reference_name": "",
           "official_reference_source": "",
           "covered_by_official_directory": true,
-          "cik": "",
-          "figi": "",
-          "lei": ""
-        },
-        {
-          "listing_key": "JSE::GSETNC",
-          "ticker": "GSETNC",
-          "exchange": "JSE",
-          "asset_type": "ETF",
-          "name": "GSETNC",
-          "country": "South Africa",
-          "country_code": "ZA",
-          "isin": "",
-          "sector": "Financials",
-          "status": "name_mismatch",
-          "reason": "Dataset name does not match official exchange directory name.",
-          "official_reference_name": "FNB ETN on GSACHSC NOV25",
-          "official_reference_source": "jse_etn_list",
-          "covered_by_official_directory": false,
           "cik": "",
           "figi": "",
           "lei": ""
@@ -9399,44 +8742,6 @@
           "lei": ""
         },
         {
-          "listing_key": "JSE::FDETNC",
-          "ticker": "FDETNC",
-          "exchange": "JSE",
-          "asset_type": "ETF",
-          "name": "FDETNC",
-          "country": "South Africa",
-          "country_code": "ZA",
-          "isin": "",
-          "sector": "",
-          "status": "name_mismatch",
-          "reason": "Dataset name does not match official exchange directory name.",
-          "official_reference_name": "FNB ETN on FORDC NOV25",
-          "official_reference_source": "jse_etn_list",
-          "covered_by_official_directory": false,
-          "cik": "",
-          "figi": "",
-          "lei": ""
-        },
-        {
-          "listing_key": "JSE::PPETNC",
-          "ticker": "PPETNC",
-          "exchange": "JSE",
-          "asset_type": "ETF",
-          "name": "PPETNC",
-          "country": "South Africa",
-          "country_code": "ZA",
-          "isin": "",
-          "sector": "",
-          "status": "name_mismatch",
-          "reason": "Dataset name does not match official exchange directory name.",
-          "official_reference_name": "FNB ETN on PAYPALC NOV25",
-          "official_reference_source": "jse_etn_list",
-          "covered_by_official_directory": false,
-          "cik": "",
-          "figi": "",
-          "lei": ""
-        },
-        {
           "listing_key": "NEO::EAFX-U",
           "ticker": "EAFX-U",
           "exchange": "NEO",
@@ -9470,25 +8775,6 @@
           "official_reference_name": "",
           "official_reference_source": "",
           "covered_by_official_directory": true,
-          "cik": "",
-          "figi": "",
-          "lei": ""
-        },
-        {
-          "listing_key": "JSE::JPETNC",
-          "ticker": "JPETNC",
-          "exchange": "JSE",
-          "asset_type": "ETF",
-          "name": "JPETNC",
-          "country": "South Africa",
-          "country_code": "ZA",
-          "isin": "",
-          "sector": "",
-          "status": "name_mismatch",
-          "reason": "Dataset name does not match official exchange directory name.",
-          "official_reference_name": "FNB ETN on JPMORGC NOV25",
-          "official_reference_source": "jse_etn_list",
-          "covered_by_official_directory": false,
           "cik": "",
           "figi": "",
           "lei": ""
@@ -9703,25 +8989,6 @@
           "lei": ""
         },
         {
-          "listing_key": "JSE::BHETNC",
-          "ticker": "BHETNC",
-          "exchange": "JSE",
-          "asset_type": "ETF",
-          "name": "BHETNC",
-          "country": "South Africa",
-          "country_code": "ZA",
-          "isin": "",
-          "sector": "",
-          "status": "name_mismatch",
-          "reason": "Dataset name does not match official exchange directory name.",
-          "official_reference_name": "FNB ETN on BERKSHC NOV25",
-          "official_reference_source": "jse_etn_list",
-          "covered_by_official_directory": false,
-          "cik": "",
-          "figi": "",
-          "lei": ""
-        },
-        {
           "listing_key": "NEO::IBIT-U",
           "ticker": "IBIT-U",
           "exchange": "NEO",
@@ -9740,9 +9007,7 @@
           "figi": "",
           "lei": ""
         }
-      ],
-      "summary_json": "data/etf_verification/run-20260408-jse-etp-01/summary.json",
-      "findings_csv": "data/etf_verification/run-20260408-jse-etp-01/findings.csv"
+      ]
     },
     "exchange_coverage": [
       {
@@ -9787,14 +9052,14 @@
       {
         "exchange": "B3",
         "items": 270,
-        "verified": 220,
-        "reference_gap": 50,
+        "verified": 240,
+        "reference_gap": 30,
         "missing_from_official": 0,
         "name_mismatch": 0,
         "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 220,
+        "officially_covered_items": 240,
         "verified_rate_on_covered": 100.0
       },
       {
@@ -9956,15 +9221,15 @@
       {
         "exchange": "JSE",
         "items": 129,
-        "verified": 118,
+        "verified": 124,
         "reference_gap": 4,
         "missing_from_official": 0,
-        "name_mismatch": 7,
+        "name_mismatch": 1,
         "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
         "officially_covered_items": 125,
-        "verified_rate_on_covered": 94.4
+        "verified_rate_on_covered": 99.2
       },
       {
         "exchange": "KRX",
@@ -10551,25 +9816,6 @@
       "masterfile_collisions": 0
     },
     {
-      "exchange": "B3",
-      "venue_status": "official_full",
-      "unresolved_findings": 317,
-      "reference_gap": 317,
-      "missing_from_official": 0,
-      "name_mismatch": 0,
-      "cross_exchange_collision": 0,
-      "stock_reference_gap": 267,
-      "stock_missing_from_official": 0,
-      "stock_name_mismatch": 0,
-      "stock_cross_exchange_collision": 0,
-      "etf_reference_gap": 50,
-      "etf_missing_from_official": 0,
-      "etf_name_mismatch": 0,
-      "etf_cross_exchange_collision": 0,
-      "masterfile_missing": 12,
-      "masterfile_collisions": 0
-    },
-    {
       "exchange": "HOSE",
       "venue_status": "missing",
       "unresolved_findings": 260,
@@ -10812,25 +10058,6 @@
       "etf_reference_gap": 0,
       "etf_missing_from_official": 0,
       "etf_name_mismatch": 0,
-      "etf_cross_exchange_collision": 0,
-      "masterfile_missing": 0,
-      "masterfile_collisions": 0
-    },
-    {
-      "exchange": "JSE",
-      "venue_status": "official_partial",
-      "unresolved_findings": 95,
-      "reference_gap": 88,
-      "missing_from_official": 0,
-      "name_mismatch": 7,
-      "cross_exchange_collision": 0,
-      "stock_reference_gap": 84,
-      "stock_missing_from_official": 0,
-      "stock_name_mismatch": 0,
-      "stock_cross_exchange_collision": 0,
-      "etf_reference_gap": 4,
-      "etf_missing_from_official": 0,
-      "etf_name_mismatch": 7,
       "etf_cross_exchange_collision": 0,
       "masterfile_missing": 0,
       "masterfile_collisions": 0
@@ -11197,6 +10424,25 @@
       "masterfile_collisions": 0
     },
     {
+      "exchange": "JSE",
+      "venue_status": "official_partial",
+      "unresolved_findings": 38,
+      "reference_gap": 37,
+      "missing_from_official": 0,
+      "name_mismatch": 1,
+      "cross_exchange_collision": 0,
+      "stock_reference_gap": 33,
+      "stock_missing_from_official": 0,
+      "stock_name_mismatch": 0,
+      "stock_cross_exchange_collision": 0,
+      "etf_reference_gap": 4,
+      "etf_missing_from_official": 0,
+      "etf_name_mismatch": 1,
+      "etf_cross_exchange_collision": 0,
+      "masterfile_missing": 0,
+      "masterfile_collisions": 0
+    },
+    {
       "exchange": "VSE",
       "venue_status": "missing",
       "unresolved_findings": 36,
@@ -11213,6 +10459,25 @@
       "etf_name_mismatch": 0,
       "etf_cross_exchange_collision": 0,
       "masterfile_missing": 0,
+      "masterfile_collisions": 0
+    },
+    {
+      "exchange": "B3",
+      "venue_status": "official_full",
+      "unresolved_findings": 33,
+      "reference_gap": 33,
+      "missing_from_official": 0,
+      "name_mismatch": 0,
+      "cross_exchange_collision": 0,
+      "stock_reference_gap": 3,
+      "stock_missing_from_official": 0,
+      "stock_name_mismatch": 0,
+      "stock_cross_exchange_collision": 0,
+      "etf_reference_gap": 30,
+      "etf_missing_from_official": 0,
+      "etf_name_mismatch": 0,
+      "etf_cross_exchange_collision": 0,
+      "masterfile_missing": 31,
       "masterfile_collisions": 0
     },
     {
@@ -11460,7 +10725,7 @@
       "etf_name_mismatch": 0,
       "etf_cross_exchange_collision": 0,
       "masterfile_missing": 24,
-      "masterfile_collisions": 34
+      "masterfile_collisions": 35
     },
     {
       "exchange": "ISE",

@@ -12,6 +12,7 @@ import scripts.fetch_exchange_masterfiles as fetch_exchange_masterfiles
 
 from scripts.fetch_exchange_masterfiles import (
     B3_INSTRUMENTS_EQUITIES_CACHE,
+    JSE_INSTRUMENT_SEARCH_CACHE,
     LEGACY_B3_INSTRUMENTS_EQUITIES_CACHE,
     LEGACY_LSE_COMPANY_REPORTS_CACHE,
     LEGACY_LSE_INSTRUMENT_DIRECTORY_CACHE,
@@ -23,10 +24,13 @@ from scripts.fetch_exchange_masterfiles import (
     LSE_INSTRUMENT_DIRECTORY_CACHE,
     LSE_INSTRUMENT_SEARCH_CACHE,
     JSE_EXCHANGE_TRADED_PRODUCTS_URL,
+    JSE_SEARCH_URL,
     MasterfileSource,
     OFFICIAL_SOURCES,
     extract_lse_last_page,
     extract_jse_exchange_traded_product_download_url,
+    extract_jse_instrument_metadata,
+    extract_jse_instrument_search_links,
     extract_latest_asx_investment_products_url,
     SSE_ETF_SUBCLASSES,
     TMX_ETF_SCREENER_CACHE,
@@ -41,6 +45,7 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_lse_instrument_directory,
     fetch_lse_instrument_search_exact,
     fetch_jse_exchange_traded_product_rows,
+    fetch_jse_instrument_search_exact,
     fetch_nasdaq_nordic_stockholm_shares,
     fetch_psx_listed_companies,
     fetch_psx_symbol_name_daily,
@@ -55,6 +60,7 @@ from scripts.fetch_exchange_masterfiles import (
     infer_jpx_asset_type,
     infer_lse_lookup_asset_type,
     load_b3_instruments_equities_rows,
+    load_jse_instrument_search_rows,
     load_lse_company_reports_rows,
     load_lse_instrument_directory_rows,
     load_lse_instrument_search_rows,
@@ -2263,6 +2269,154 @@ def test_fetch_jse_exchange_traded_product_rows_uses_discovered_workbook_url() -
             "name": "EasyETFs AI World Actively Managed ETF",
             "exchange": "JSE",
             "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+        }
+    ]
+
+
+def test_extract_jse_instrument_search_links_returns_unique_absolute_urls() -> None:
+    html = """
+    <a href="/jse/instruments/3059">AVI</a>
+    <a href="https://www.jse.co.za/jse/instruments/3059">AVI duplicate</a>
+    <a href="/jse/instruments/3715">MCZ</a>
+    """
+
+    assert extract_jse_instrument_search_links(html) == [
+        "https://www.jse.co.za/jse/instruments/3059",
+        "https://www.jse.co.za/jse/instruments/3715",
+    ]
+
+
+def test_extract_jse_instrument_metadata_parses_meta_description() -> None:
+    html = """
+    <meta
+      name="description"
+      content="Instrument name: MC Mining Limited. Instrument code: MCZ. Instrument type: Equities. Listing date: 1970-01-01"
+    />
+    """
+
+    assert extract_jse_instrument_metadata(html) == {
+        "name": "MC Mining Limited",
+        "code": "MCZ",
+        "instrument_type": "Equities",
+    }
+
+
+def test_fetch_jse_instrument_search_exact_returns_only_exact_code_matches() -> None:
+    search_html = """
+    <a href="/jse/instruments/3262">enX Group Limited</a>
+    <a href="/jse/instruments/9999">Exact match</a>
+    """
+    mismatched_html = """
+    <meta name="description" content="Instrument name: enX Group Limited. Instrument code: ENX. Instrument type: Equities. Listing date: 1970-01-01" />
+    """
+    matched_html = """
+    <meta name="description" content="Instrument name: Example X Holdings Ltd. Instrument code: EXX. Instrument type: Equities. Listing date: 1970-01-01" />
+    """
+
+    class FakeResponse:
+        def __init__(self, text: str):
+            self.text = text
+
+        def raise_for_status(self) -> None:
+            return None
+
+    class FakeSession:
+        def get(self, url, params=None, headers=None, timeout=None):
+            if url == JSE_SEARCH_URL:
+                assert params == {"keys": "EXX"}
+                return FakeResponse(search_html)
+            if url == "https://www.jse.co.za/jse/instruments/3262":
+                return FakeResponse(mismatched_html)
+            if url == "https://www.jse.co.za/jse/instruments/9999":
+                return FakeResponse(matched_html)
+            raise AssertionError((url, params))
+
+    source = MasterfileSource(
+        key="jse_instrument_search",
+        provider="JSE",
+        description="JSE instrument search",
+        source_url=JSE_SEARCH_URL,
+        format="jse_instrument_search_html",
+        reference_scope="listed_companies_subset",
+    )
+
+    rows = fetch_jse_instrument_search_exact(
+        source,
+        ["EXX"],
+        session=FakeSession(),
+        asset_type_by_ticker={"EXX": "Stock"},
+    )
+
+    assert rows == [
+        {
+            "source_key": "jse_instrument_search",
+            "provider": "JSE",
+            "source_url": "https://www.jse.co.za/jse/instruments/9999",
+            "ticker": "EXX",
+            "name": "Example X Holdings Ltd",
+            "exchange": "JSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+        }
+    ]
+
+
+def test_jse_instrument_search_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "jse_instrument_search")
+    assert source.reference_scope == "listed_companies_subset"
+
+
+def test_load_jse_instrument_search_rows_prefers_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "jse_instrument_search.json"
+    cache_path.write_text(
+        json.dumps(
+            {
+                "AVI": [
+                    {
+                        "source_key": "jse_instrument_search",
+                        "provider": "JSE",
+                        "source_url": "https://www.jse.co.za/jse/instruments/3059",
+                        "ticker": "AVI",
+                        "name": "AVI Ltd",
+                        "exchange": "JSE",
+                        "asset_type": "Stock",
+                        "listing_status": "active",
+                        "reference_scope": "listed_companies_subset",
+                        "official": "true",
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.JSE_INSTRUMENT_SEARCH_CACHE", cache_path)
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.LEGACY_JSE_INSTRUMENT_SEARCH_CACHE",
+        tmp_path / "legacy_jse_instrument_search.json",
+    )
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.jse_instrument_search_target_tickers",
+        lambda *args, **kwargs: ["AVI"],
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "jse_instrument_search")
+    rows, mode = load_jse_instrument_search_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "source_key": "jse_instrument_search",
+            "provider": "JSE",
+            "source_url": "https://www.jse.co.za/jse/instruments/3059",
+            "ticker": "AVI",
+            "name": "AVI Ltd",
+            "exchange": "JSE",
+            "asset_type": "Stock",
             "listing_status": "active",
             "reference_scope": "listed_companies_subset",
             "official": "true",

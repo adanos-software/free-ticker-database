@@ -56,6 +56,8 @@ JSE_ETF_LIST_CACHE = MASTERFILE_CACHE_DIR / "jse_etf_list.json"
 LEGACY_JSE_ETF_LIST_CACHE = MASTERFILES_DIR / "jse_etf_list.json"
 JSE_ETN_LIST_CACHE = MASTERFILE_CACHE_DIR / "jse_etn_list.json"
 LEGACY_JSE_ETN_LIST_CACHE = MASTERFILES_DIR / "jse_etn_list.json"
+JSE_INSTRUMENT_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "jse_instrument_search.json"
+LEGACY_JSE_INSTRUMENT_SEARCH_CACHE = MASTERFILES_DIR / "jse_instrument_search.json"
 
 SEC_COMPANY_TICKERS_URL = "https://www.sec.gov/files/company_tickers_exchange.json"
 NASDAQ_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt"
@@ -97,6 +99,7 @@ B3_INSTRUMENTS_EQUITIES_URL = "https://arquivos.b3.com.br/bdi/table/InstrumentsE
 B3_FUNDS_LISTED_PROXY_URL = "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/"
 B3_BDR_COMPANIES_PROXY_URL = "https://sistemaswebb3-listados.b3.com.br/listedCompaniesProxy/CompanyCall/"
 JSE_EXCHANGE_TRADED_PRODUCTS_URL = "https://www.jse.co.za/trade/equities-market/exchange-traded-products"
+JSE_SEARCH_URL = "https://www.jse.co.za/search"
 NASDAQ_NORDIC_API_ROOT_URL = "https://api.nasdaq.com/api/nordic/"
 NASDAQ_NORDIC_SHARES_SCREENER_URL = "https://api.nasdaq.com/api/nordic/screener/shares"
 TWSE_LISTED_COMPANIES_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
@@ -128,6 +131,13 @@ REQUEST_TIMEOUT = 30.0
 LSE_UPDATE_OPENER_RE = re.compile(r"UpdateOpener\('(?P<name>(?:\\'|[^'])*)',\s*'(?P<meta>[^']*)'\)")
 CBOE_CANADA_LISTING_DIRECTORY_RE = re.compile(r"CTX\['listingDirectory'\]\s*=\s*(\[[\s\S]*?\]);")
 LSE_INSTRUMENT_SEARCH_MAX_WORKERS = 8
+JSE_INSTRUMENT_SEARCH_MAX_WORKERS = 4
+JSE_INSTRUMENT_LINK_RE = re.compile(r'href="(?P<href>(?:https://www\.jse\.co\.za)?/jse/instruments/\d+)"')
+JSE_INSTRUMENT_META_RE = re.compile(
+    r"Instrument name:\s*(?P<name>.*?)\.\s*"
+    r"Instrument code:\s*(?P<code>[A-Z0-9]+)\.\s*"
+    r"Instrument type:\s*(?P<instrument_type>.*?)\."
+)
 
 OTHER_LISTED_EXCHANGE_MAP = {
     "A": "NYSE MKT",
@@ -533,6 +543,14 @@ OFFICIAL_SOURCES = [
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
+        key="jse_instrument_search",
+        provider="JSE",
+        description="Official JSE instrument pages discovered via on-site search",
+        source_url=JSE_SEARCH_URL,
+        format="jse_instrument_search_html",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
         key="nasdaq_nordic_stockholm_shares",
         provider="Nasdaq Nordic",
         description="Official Nasdaq Nordic Stockholm Main Market shares screener",
@@ -740,6 +758,25 @@ def latest_reference_gap_tickers(
     return tickers
 
 
+def jse_instrument_search_target_tickers(
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    verification_dir: Path = STOCK_VERIFICATION_DIR,
+) -> list[str]:
+    reference_gap_tickers = latest_reference_gap_tickers(verification_dir, exchanges={"JSE"})
+    if not reference_gap_tickers:
+        return []
+    return sorted(
+        {
+            row.get("ticker", "").strip()
+            for row in load_csv(listings_path)
+            if row.get("exchange") == "JSE"
+            and row.get("asset_type") == "Stock"
+            and row.get("ticker", "").strip() in reference_gap_tickers
+        }
+    )
+
+
 def lse_reference_gap_tickers(base_dirs: Iterable[Path] | None = None) -> set[str]:
     base_dirs = tuple(base_dirs or (STOCK_VERIFICATION_DIR, ETF_VERIFICATION_DIR))
     tickers: set[str] = set()
@@ -872,6 +909,26 @@ def extract_jse_exchange_traded_product_download_url(page_html: str, product_typ
     else:
         raise ValueError(f"Unsupported JSE product type: {product_type}")
     return matches[-1] if matches else None
+
+
+def extract_jse_instrument_search_links(page_html: str) -> list[str]:
+    links: list[str] = []
+    for href in JSE_INSTRUMENT_LINK_RE.findall(page_html):
+        absolute_url = requests.compat.urljoin(JSE_SEARCH_URL, href)
+        if absolute_url not in links:
+            links.append(absolute_url)
+    return links
+
+
+def extract_jse_instrument_metadata(page_html: str) -> dict[str, str] | None:
+    match = JSE_INSTRUMENT_META_RE.search(page_html)
+    if not match:
+        return None
+    return {
+        "name": " ".join(unescape(match.group("name")).split()),
+        "code": match.group("code").strip().upper(),
+        "instrument_type": " ".join(unescape(match.group("instrument_type")).split()),
+    }
 
 
 def load_sec_company_tickers_exchange_payload(
@@ -1315,6 +1372,132 @@ def fetch_lse_instrument_search_exact(
                 row["asset_type"] = asset_type_by_ticker.get(query_ticker, "")
             rows.append(row)
     return rows
+
+
+def fetch_jse_instrument_search_exact(
+    source: MasterfileSource,
+    tickers: Iterable[str],
+    session: requests.Session | None = None,
+    asset_type_by_ticker: dict[str, str] | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    asset_type_by_ticker = asset_type_by_ticker or {}
+    rows: list[dict[str, str]] = []
+    for ticker in tickers:
+        query_ticker = ticker.strip().upper()
+        if not query_ticker:
+            continue
+        response = session.get(
+            source.source_url,
+            params={"keys": query_ticker},
+            headers={"User-Agent": USER_AGENT},
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        for instrument_url in extract_jse_instrument_search_links(response.text)[:6]:
+            instrument_response = session.get(
+                instrument_url,
+                headers={"User-Agent": USER_AGENT},
+                timeout=REQUEST_TIMEOUT,
+            )
+            instrument_response.raise_for_status()
+            metadata = extract_jse_instrument_metadata(instrument_response.text)
+            if metadata is None or metadata.get("code") != query_ticker:
+                continue
+            rows.append(
+                {
+                    "source_key": source.key,
+                    "provider": source.provider,
+                    "source_url": instrument_url,
+                    "ticker": query_ticker,
+                    "name": metadata["name"],
+                    "exchange": "JSE",
+                    "asset_type": asset_type_by_ticker.get(query_ticker, "Stock") or "Stock",
+                    "listing_status": "active",
+                    "reference_scope": source.reference_scope,
+                    "official": "true",
+                }
+            )
+            break
+    return rows
+
+
+def load_jse_instrument_search_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    target_tickers = jse_instrument_search_target_tickers()
+    asset_type_by_ticker = {
+        row.get("ticker", "").strip(): row.get("asset_type", "")
+        for row in load_csv(LISTINGS_CSV)
+        if row.get("exchange") == "JSE"
+        and row.get("asset_type") == "Stock"
+        and row.get("ticker", "").strip()
+    }
+
+    cached_lookup: dict[str, list[dict[str, str]]] = {}
+    for path in (JSE_INSTRUMENT_SEARCH_CACHE, LEGACY_JSE_INSTRUMENT_SEARCH_CACHE):
+        if not path.exists():
+            continue
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        if isinstance(payload, dict):
+            cached_lookup = {str(key): value for key, value in payload.items()}
+        elif isinstance(payload, list):
+            cached_lookup = group_rows_by_ticker(payload)
+        break
+
+    missing_tickers = [
+        ticker
+        for ticker in target_tickers
+        if ticker not in cached_lookup or not cached_lookup.get(ticker)
+    ]
+    used_network = False
+    if missing_tickers:
+        fetched_lookup = {ticker: [] for ticker in missing_tickers}
+        successful_fetch = False
+        max_workers = min(JSE_INSTRUMENT_SEARCH_MAX_WORKERS, len(missing_tickers))
+        if max_workers <= 1:
+            for ticker in missing_tickers:
+                try:
+                    fetched_lookup[ticker] = fetch_jse_instrument_search_exact(
+                        source,
+                        [ticker],
+                        session=session,
+                        asset_type_by_ticker=asset_type_by_ticker,
+                    )
+                except requests.RequestException:
+                    continue
+                successful_fetch = True
+        else:
+            with ThreadPoolExecutor(max_workers=max_workers) as executor:
+                futures = {
+                    executor.submit(
+                        fetch_jse_instrument_search_exact,
+                        source,
+                        [ticker],
+                        None,
+                        asset_type_by_ticker,
+                    ): ticker
+                    for ticker in missing_tickers
+                }
+                for future in as_completed(futures):
+                    ticker = futures[future]
+                    try:
+                        fetched_lookup[ticker] = future.result()
+                    except requests.RequestException:
+                        continue
+                    successful_fetch = True
+        if not cached_lookup and not successful_fetch:
+            return None, "unavailable"
+        cached_lookup.update(fetched_lookup)
+        ensure_output_dirs()
+        JSE_INSTRUMENT_SEARCH_CACHE.write_text(json.dumps(cached_lookup), encoding="utf-8")
+        used_network = successful_fetch
+
+    rows: list[dict[str, str]] = []
+    for ticker in target_tickers:
+        rows.extend(cached_lookup.get(ticker, []))
+    return rows, "network" if used_network else "cache"
 
 
 def load_lse_instrument_search_rows(
@@ -3102,6 +3285,25 @@ def fetch_jse_exchange_traded_product_rows(
     )
 
 
+def fetch_jse_instrument_search_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    asset_type_by_ticker = {
+        row.get("ticker", "").strip(): row.get("asset_type", "")
+        for row in load_csv(LISTINGS_CSV)
+        if row.get("exchange") == "JSE"
+        and row.get("asset_type") == "Stock"
+        and row.get("ticker", "").strip()
+    }
+    return fetch_jse_instrument_search_exact(
+        source,
+        jse_instrument_search_target_tickers(),
+        session=session,
+        asset_type_by_ticker=asset_type_by_ticker,
+    )
+
+
 def fetch_nasdaq_nordic_stockholm_shares(
     source: MasterfileSource,
     session: requests.Session | None = None,
@@ -3353,6 +3555,8 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return parse_tmx_etf_screener(payload, source)
     if source.format in {"jse_etf_list_xlsx", "jse_etn_list_xlsx"}:
         return fetch_jse_exchange_traded_product_rows(source, session=session)
+    if source.format == "jse_instrument_search_html":
+        return fetch_jse_instrument_search_rows(source, session=session)
     if source.format == "euronext_equities_semicolon_csv":
         text = fetch_text(source.source_url, session=session)
         return parse_euronext_equities_download(text, source)
@@ -3452,6 +3656,11 @@ def fetch_source_rows_with_mode(
         rows, mode = load_jse_exchange_traded_product_rows(source, session=session)
         if rows is None:
             raise requests.RequestException(f"{source.provider} {source.key} workbook unavailable")
+        return rows, mode
+    if source.format == "jse_instrument_search_html":
+        rows, mode = load_jse_instrument_search_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("JSE instrument search unavailable")
         return rows, mode
     if source.format == "nasdaq_nordic_stockholm_shares_json":
         rows, mode = load_nasdaq_nordic_stockholm_shares_rows(source, session=session)
