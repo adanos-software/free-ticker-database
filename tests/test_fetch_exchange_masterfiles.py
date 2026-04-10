@@ -32,6 +32,8 @@ from scripts.fetch_exchange_masterfiles import (
     LEGACY_LSE_INSTRUMENT_SEARCH_CACHE,
     LEGACY_NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE,
     LEGACY_NASDAQ_NORDIC_HELSINKI_ETFS_CACHE,
+    LEGACY_NGM_COMPANIES_PAGE_CACHE,
+    LEGACY_SPOTLIGHT_COMPANIES_DIRECTORY_CACHE,
     LEGACY_SPOTLIGHT_COMPANIES_SEARCH_CACHE,
     LEGACY_NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
     LEGACY_NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE,
@@ -79,6 +81,8 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_nasdaq_nordic_share_search,
     fetch_nasdaq_nordic_stockholm_shares,
     fetch_nasdaq_nordic_stockholm_trackers,
+    fetch_ngm_companies_page,
+    fetch_spotlight_companies_directory,
     fetch_spotlight_companies_search,
     fetch_psx_listed_companies,
     fetch_psx_symbol_name_daily,
@@ -111,6 +115,8 @@ from scripts.fetch_exchange_masterfiles import (
     load_nasdaq_nordic_stockholm_etf_rows,
     load_nasdaq_nordic_stockholm_tracker_rows,
     load_nasdaq_nordic_stockholm_shares_rows,
+    load_ngm_companies_rows,
+    load_spotlight_directory_rows,
     load_spotlight_search_rows,
     load_set_dr_search_rows,
     load_set_etf_search_rows,
@@ -120,7 +126,9 @@ from scripts.fetch_exchange_masterfiles import (
     dedupe_rows,
     NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
     NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE,
+    NGM_COMPANIES_PAGE_CACHE,
     PSE_LISTED_COMPANY_DIRECTORY_CACHE,
+    SPOTLIGHT_COMPANIES_DIRECTORY_CACHE,
     SPOTLIGHT_COMPANIES_SEARCH_CACHE,
     load_sec_company_tickers_exchange_payload,
     normalize_source_keys,
@@ -130,6 +138,8 @@ from scripts.fetch_exchange_masterfiles import (
     load_tmx_etf_screener_payload,
     load_pse_listed_company_directory_rows,
     parse_pse_listed_company_directory_html,
+    parse_ngm_companies_page_html,
+    parse_spotlight_company_title,
     load_tpex_mainboard_quotes_payload,
     parse_spotlight_search_heading,
     parse_set_dr_search_payload,
@@ -4992,6 +5002,145 @@ def test_parse_spotlight_search_heading_extracts_name_and_ticker() -> None:
     assert ticker == "ABAS"
 
 
+def test_parse_spotlight_company_title_extracts_name_and_ticker() -> None:
+    name, ticker = parse_spotlight_company_title("HomeMaid (HOME B) | Spotlight")
+
+    assert name == "HomeMaid"
+    assert ticker == "HOME B"
+
+
+def test_fetch_spotlight_companies_directory_builds_rows_from_detail_pages() -> None:
+    source = MasterfileSource(
+        key="spotlight_companies_directory",
+        provider="Spotlight",
+        description="Official Spotlight companies directory with detail-page symbols",
+        source_url="https://spotlightstockmarket.com/Umbraco/api/companyapi/GetCompanies",
+        format="spotlight_companies_directory_json",
+        reference_scope="listed_companies_subset",
+    )
+
+    class FakeResponse:
+        def __init__(self, *, payload=None, text=""):
+            self._payload = payload
+            self.text = text
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, headers=None, timeout=None):
+            self.calls.append(url)
+            if url.endswith("/GetCompanies"):
+                return FakeResponse(
+                    payload={
+                        "results": [
+                            {"heading": "HomeMaid AB", "url": "/sv/bolag/irabout?InstrumentId=XSAT01000436"},
+                            {"heading": "B Treasury Capital AB", "url": "/sv/bolag/irabout?InstrumentId=XSAT0000413578"},
+                        ]
+                    }
+                )
+            pages = {
+                "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT01000436": "<title>HomeMaid (HOME B) | Spotlight</title>",
+                "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT0000413578": "<title>B Treasury Capital AB (BTC B) | Spotlight</title>",
+            }
+            return FakeResponse(text=pages[url])
+
+    session = FakeSession()
+    rows = fetch_spotlight_companies_directory(source, session=session)
+
+    assert rows == [
+        {
+            "source_key": "spotlight_companies_directory",
+            "provider": "Spotlight",
+            "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT01000436",
+            "ticker": "HOME-B",
+            "name": "HomeMaid",
+            "exchange": "STO",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+        },
+        {
+            "source_key": "spotlight_companies_directory",
+            "provider": "Spotlight",
+            "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT0000413578",
+            "ticker": "BTC-B",
+            "name": "B Treasury Capital AB",
+            "exchange": "STO",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+        },
+    ]
+    assert session.calls == [
+        "https://spotlightstockmarket.com/Umbraco/api/companyapi/GetCompanies",
+        "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT01000436",
+        "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT0000413578",
+    ]
+
+
+def test_fetch_spotlight_companies_directory_skips_broken_detail_pages() -> None:
+    source = MasterfileSource(
+        key="spotlight_companies_directory",
+        provider="Spotlight",
+        description="Official Spotlight companies directory with detail-page symbols",
+        source_url="https://spotlightstockmarket.com/Umbraco/api/companyapi/GetCompanies",
+        format="spotlight_companies_directory_json",
+        reference_scope="listed_companies_subset",
+    )
+
+    class FakeResponse:
+        def __init__(self, *, payload=None, text=""):
+            self._payload = payload
+            self.text = text
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def get(self, url, headers=None, timeout=None):
+            if url.endswith("/GetCompanies"):
+                return FakeResponse(
+                    payload={
+                        "results": [
+                            {"heading": "Broken Co", "url": "/sv/bolag/irabout?InstrumentId=BROKEN"},
+                            {"heading": "HomeMaid AB", "url": "/sv/bolag/irabout?InstrumentId=XSAT01000436"},
+                        ]
+                    }
+                )
+            if "BROKEN" in url:
+                raise requests.RequestException("boom")
+            return FakeResponse(text="<title>HomeMaid (HOME B) | Spotlight</title>")
+
+    rows = fetch_spotlight_companies_directory(source, session=FakeSession())
+
+    assert rows == [
+        {
+            "source_key": "spotlight_companies_directory",
+            "provider": "Spotlight",
+            "source_url": "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT01000436",
+            "ticker": "HOME-B",
+            "name": "HomeMaid",
+            "exchange": "STO",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+        }
+    ]
+
+
 def test_fetch_spotlight_companies_search_backfills_exact_ticker_gaps(
     tmp_path, monkeypatch
 ) -> None:
@@ -5094,6 +5243,121 @@ def test_fetch_spotlight_companies_search_backfills_exact_ticker_gaps(
         ("https://spotlightstockmarket.com/Umbraco/api/companyapi/CompanySimpleSearch", {"searchText": "BIOWKS"}),
         ("https://spotlightstockmarket.com/Umbraco/api/companyapi/CompanySimpleSearch", {"searchText": "ASTOR"}),
     ]
+
+
+def test_parse_ngm_companies_page_html_maps_primary_symbols() -> None:
+    source = MasterfileSource(
+        key="ngm_companies_page",
+        provider="NGM",
+        description="Official Nordic Growth Market companies page",
+        source_url="https://www.ngm.se/en/our-companies/",
+        format="ngm_companies_page_html",
+        reference_scope="listed_companies_subset",
+    )
+    payload = html.escape(
+        json.dumps(
+            [
+                {
+                    "title": "Arbona AB",
+                    "symbols": [
+                        {"symbol": "ARBO A", "is_primary": True},
+                        {"symbol": "ARBO TO 1", "is_primary": False},
+                    ],
+                },
+                {
+                    "title": "Front Ventures AB",
+                    "symbols": [{"symbol": "FRNT B", "is_primary": True}],
+                },
+                {"title": "Empty Co", "symbols": []},
+            ]
+        ),
+        quote=True,
+    )
+    text = f'<html><body><company-list :items="{payload}" /></body></html>'
+
+    rows = parse_ngm_companies_page_html(text, source)
+
+    assert rows == [
+        {
+            "source_key": "ngm_companies_page",
+            "provider": "NGM",
+            "source_url": "https://www.ngm.se/en/our-companies/",
+            "ticker": "ARBO-A",
+            "name": "Arbona AB",
+            "exchange": "STO",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+        },
+        {
+            "source_key": "ngm_companies_page",
+            "provider": "NGM",
+            "source_url": "https://www.ngm.se/en/our-companies/",
+            "ticker": "FRNT-B",
+            "name": "Front Ventures AB",
+            "exchange": "STO",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+        },
+    ]
+
+
+def test_fetch_ngm_companies_page_parses_official_page() -> None:
+    source = MasterfileSource(
+        key="ngm_companies_page",
+        provider="NGM",
+        description="Official Nordic Growth Market companies page",
+        source_url="https://www.ngm.se/en/our-companies/",
+        format="ngm_companies_page_html",
+        reference_scope="listed_companies_subset",
+    )
+    payload = html.escape(
+        json.dumps(
+            [
+                {
+                    "title": "Lumito AB",
+                    "symbols": [{"symbol": "LUMITO", "is_primary": True}],
+                }
+            ]
+        ),
+        quote=True,
+    )
+
+    class FakeResponse:
+        text = f'<company-list :items="{payload}" />'
+
+        def raise_for_status(self):
+            return None
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, headers=None, timeout=None):
+            self.calls.append((url, timeout))
+            return FakeResponse()
+
+    session = FakeSession()
+    rows = fetch_ngm_companies_page(source, session=session)
+
+    assert rows == [
+        {
+            "source_key": "ngm_companies_page",
+            "provider": "NGM",
+            "source_url": "https://www.ngm.se/en/our-companies/",
+            "ticker": "LUMITO",
+            "name": "Lumito AB",
+            "exchange": "STO",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+        }
+    ]
+    assert session.calls == [("https://www.ngm.se/en/our-companies/", fetch_exchange_masterfiles.REQUEST_TIMEOUT)]
 
 
 def test_fetch_bmv_stock_search_backfills_exact_ticker_gaps(tmp_path, monkeypatch) -> None:
@@ -7249,6 +7513,62 @@ def test_load_spotlight_search_rows_prefers_cache(tmp_path, monkeypatch) -> None
     ]
 
 
+def test_load_spotlight_directory_rows_prefers_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "spotlight_companies_directory.json"
+    cache_path.write_text(
+        '[{"ticker":"HOME-B","name":"HomeMaid","exchange":"STO","asset_type":"Stock","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "SPOTLIGHT_COMPANIES_DIRECTORY_CACHE", cache_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_SPOTLIGHT_COMPANIES_DIRECTORY_CACHE",
+        tmp_path / "missing.json",
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "spotlight_companies_directory")
+    rows, mode = load_spotlight_directory_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "HOME-B",
+            "name": "HomeMaid",
+            "exchange": "STO",
+            "asset_type": "Stock",
+            "listing_status": "active",
+        }
+    ]
+
+
+def test_load_ngm_companies_rows_prefers_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "ngm_companies_page.json"
+    cache_path.write_text(
+        '[{"ticker":"ARBO-A","name":"Arbona AB","exchange":"STO","asset_type":"Stock","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "NGM_COMPANIES_PAGE_CACHE", cache_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_NGM_COMPANIES_PAGE_CACHE",
+        tmp_path / "missing.json",
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "ngm_companies_page")
+    rows, mode = load_ngm_companies_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "ARBO-A",
+            "name": "Arbona AB",
+            "exchange": "STO",
+            "asset_type": "Stock",
+            "listing_status": "active",
+        }
+    ]
+
+
 def test_load_bmv_stock_search_rows_falls_back_to_cache(tmp_path, monkeypatch) -> None:
     cache_path = tmp_path / "bmv_stock_search.json"
     cache_path.write_text(
@@ -7533,6 +7853,51 @@ def test_fetch_source_rows_with_mode_uses_szse_b_share_cache(tmp_path, monkeypat
     assert mode == "cache"
     assert rows[0]["ticker"] == "200011"
     assert rows[0]["exchange"] == "SZSE"
+
+
+def test_fetch_source_rows_with_mode_uses_ngm_companies_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "ngm_companies_page.json"
+    cache_path.write_text(
+        '[{"ticker":"ARBO-A","name":"Arbona AB","exchange":"STO","asset_type":"Stock","listing_status":"active","source_key":"ngm_companies_page","reference_scope":"listed_companies_subset","official":"true","provider":"NGM","source_url":"https://example.com"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.NGM_COMPANIES_PAGE_CACHE", cache_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_NGM_COMPANIES_PAGE_CACHE", tmp_path / "missing.json")
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.fetch_ngm_companies_page",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "ngm_companies_page")
+    rows, mode = fetch_source_rows_with_mode(source)
+
+    assert mode == "cache"
+    assert rows[0]["ticker"] == "ARBO-A"
+    assert rows[0]["exchange"] == "STO"
+
+
+def test_fetch_source_rows_with_mode_uses_spotlight_directory_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "spotlight_companies_directory.json"
+    cache_path.write_text(
+        '[{"ticker":"HOME-B","name":"HomeMaid","exchange":"STO","asset_type":"Stock","listing_status":"active","source_key":"spotlight_companies_directory","reference_scope":"listed_companies_subset","official":"true","provider":"Spotlight","source_url":"https://example.com"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.SPOTLIGHT_COMPANIES_DIRECTORY_CACHE", cache_path)
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.LEGACY_SPOTLIGHT_COMPANIES_DIRECTORY_CACHE",
+        tmp_path / "missing.json",
+    )
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.fetch_spotlight_companies_directory",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "spotlight_companies_directory")
+    rows, mode = fetch_source_rows_with_mode(source)
+
+    assert mode == "cache"
+    assert rows[0]["ticker"] == "HOME-B"
+    assert rows[0]["exchange"] == "STO"
 
 
 def test_load_set_etf_search_rows_falls_back_to_cache(tmp_path, monkeypatch) -> None:

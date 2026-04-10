@@ -86,6 +86,10 @@ NASDAQ_NORDIC_HELSINKI_SHARES_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nord
 LEGACY_NASDAQ_NORDIC_HELSINKI_SHARES_SEARCH_CACHE = MASTERFILES_DIR / "nasdaq_nordic_helsinki_shares_search.json"
 SPOTLIGHT_COMPANIES_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "spotlight_companies_search.json"
 LEGACY_SPOTLIGHT_COMPANIES_SEARCH_CACHE = MASTERFILES_DIR / "spotlight_companies_search.json"
+SPOTLIGHT_COMPANIES_DIRECTORY_CACHE = MASTERFILE_CACHE_DIR / "spotlight_companies_directory.json"
+LEGACY_SPOTLIGHT_COMPANIES_DIRECTORY_CACHE = MASTERFILES_DIR / "spotlight_companies_directory.json"
+NGM_COMPANIES_PAGE_CACHE = MASTERFILE_CACHE_DIR / "ngm_companies_page.json"
+LEGACY_NGM_COMPANIES_PAGE_CACHE = MASTERFILES_DIR / "ngm_companies_page.json"
 NASDAQ_NORDIC_HELSINKI_ETFS_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_helsinki_etfs.json"
 LEGACY_NASDAQ_NORDIC_HELSINKI_ETFS_CACHE = MASTERFILES_DIR / "nasdaq_nordic_helsinki_etfs.json"
 NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_copenhagen_shares.json"
@@ -249,6 +253,8 @@ TPEX_MAINBOARD_BASIC_INFO_URL = "https://mopsfin.twse.com.tw/opendata/t187ap03_O
 TPEX_EMERGING_BASIC_INFO_URL = "https://mopsfin.twse.com.tw/opendata/t187ap03_R.csv"
 SPOTLIGHT_COMPANIES_PAGE_URL = "https://spotlightstockmarket.com/en/market-overview/our-companies/"
 SPOTLIGHT_COMPANY_SEARCH_URL = "https://spotlightstockmarket.com/Umbraco/api/companyapi/CompanySimpleSearch"
+SPOTLIGHT_COMPANIES_DIRECTORY_URL = "https://spotlightstockmarket.com/Umbraco/api/companyapi/GetCompanies"
+NGM_COMPANIES_PAGE_URL = "https://www.ngm.se/en/our-companies/"
 KRX_LISTED_COMPANIES_URL = "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp"
 KRX_DATA_URL = "https://global.krx.co.kr/contents/GLB/99/GLB99000001.jspx"
 KRX_GENERATE_OTP_URL = "https://global.krx.co.kr/contents/COM/GenerateOTP.jspx"
@@ -262,6 +268,7 @@ PSE_LISTED_COMPANY_DIRECTORY_URL = "https://frames.pse.com.ph/listedCompany"
 USER_AGENT = "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)"
 SEC_CONTACT_EMAIL = os.environ.get("SEC_CONTACT_EMAIL", "opensource@adanos.software")
 REQUEST_TIMEOUT = 30.0
+SPOTLIGHT_DETAIL_TIMEOUT = 5.0
 PSE_SECURITY_TYPE_TO_ASSET_TYPE = {"C": "Stock", "P": "Stock", "E": "ETF"}
 PSE_ACTIVE_SECURITY_STATUSES = {"T", "V"}
 BMV_CAPITAL_TRUST_DESCRIPTIONS = {
@@ -827,11 +834,27 @@ OFFICIAL_SOURCES = [
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
+        key="spotlight_companies_directory",
+        provider="Spotlight",
+        description="Official Spotlight companies directory with detail-page symbols",
+        source_url=SPOTLIGHT_COMPANIES_DIRECTORY_URL,
+        format="spotlight_companies_directory_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
         key="spotlight_companies_search",
         provider="Spotlight",
         description="Official Spotlight company search supplement for exact Swedish stock ticker gaps",
         source_url=SPOTLIGHT_COMPANY_SEARCH_URL,
         format="spotlight_companies_search_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="ngm_companies_page",
+        provider="NGM",
+        description="Official Nordic Growth Market companies page",
+        source_url=NGM_COMPANIES_PAGE_URL,
+        format="ngm_companies_page_html",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -2107,6 +2130,46 @@ def parse_spotlight_search_heading(heading: str) -> tuple[str, str]:
     return text[: match.start()].strip(), match.group(1).strip().upper()
 
 
+def parse_spotlight_company_title(title: str) -> tuple[str, str]:
+    text = title.split("|", 1)[0].strip()
+    return parse_spotlight_search_heading(text)
+
+
+def parse_ngm_companies_page_html(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    match = re.search(r"<company-list\s+.*?:items=\"(\[.*?\])\".*?/>", text, re.S)
+    if match is None:
+        raise ValueError("NGM company list items payload not found")
+    items = json.loads(unescape(match.group(1)))
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for item in items:
+        name = str(item.get("title") or item.get("name") or "").strip()
+        if not name:
+            continue
+        for symbol in item.get("symbols") or []:
+            if not symbol.get("is_primary"):
+                continue
+            ticker = normalize_nasdaq_nordic_ticker(str(symbol.get("symbol", "")))
+            if not ticker or ticker in seen:
+                continue
+            rows.append(
+                {
+                    "source_key": source.key,
+                    "provider": source.provider,
+                    "source_url": source.source_url,
+                    "ticker": ticker,
+                    "name": name,
+                    "exchange": "STO",
+                    "asset_type": "Stock",
+                    "listing_status": "active",
+                    "reference_scope": source.reference_scope,
+                    "official": "true",
+                }
+            )
+            seen.add(ticker)
+    return rows
+
+
 def fetch_spotlight_companies_search(
     source: MasterfileSource,
     *,
@@ -2157,6 +2220,99 @@ def fetch_spotlight_companies_search(
             seen.add(listing_ticker)
             break
     return rows
+
+
+def fetch_spotlight_companies_directory(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    response = session.get(
+        source.source_url,
+        headers=spotlight_request_headers(),
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    payload = response.json()
+
+    detail_urls: list[str] = []
+    for item in payload.get("results") or []:
+        detail_url = str(item.get("url") or "").strip()
+        if not detail_url:
+            continue
+        if detail_url.startswith("/"):
+            detail_url = f"https://spotlightstockmarket.com{detail_url}"
+        detail_urls.append(detail_url)
+
+    def fetch_detail_row(detail_url: str, detail_session: requests.Session) -> dict[str, str] | None:
+        try:
+            detail_response = detail_session.get(
+                detail_url,
+                headers={"User-Agent": USER_AGENT},
+                timeout=SPOTLIGHT_DETAIL_TIMEOUT,
+            )
+            detail_response.raise_for_status()
+        except requests.RequestException:
+            return None
+        match = re.search(r"<title>(.*?)</title>", detail_response.text, re.I | re.S)
+        if match is None:
+            return None
+        name, ticker = parse_spotlight_company_title(unescape(strip_html_tags(match.group(1))))
+        ticker = normalize_nasdaq_nordic_ticker(ticker)
+        if not ticker or not name:
+            return None
+        return {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": detail_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "STO",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    if session is not None:
+        for detail_url in detail_urls:
+            row = fetch_detail_row(detail_url, session)
+            if row is None or row["ticker"] in seen:
+                continue
+            rows.append(row)
+            seen.add(row["ticker"])
+        return rows
+
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        futures = {
+            executor.submit(fetch_detail_row, detail_url, requests.Session()): detail_url
+            for detail_url in detail_urls
+        }
+        for future in as_completed(futures):
+            row = future.result()
+            if row is None or row["ticker"] in seen:
+                continue
+            rows.append(row)
+            seen.add(row["ticker"])
+    return rows
+
+
+def fetch_ngm_companies_page(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    response = session.get(
+        source.source_url,
+        headers={"User-Agent": USER_AGENT},
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    return parse_ngm_companies_page_html(response.text, source)
 
 
 def bme_cache_paths(source_key: str) -> tuple[Path, Path]:
@@ -3188,9 +3344,23 @@ def nasdaq_nordic_share_search_cache_paths(source_key: str) -> tuple[Path, Path]
 
 def spotlight_search_cache_paths(source_key: str) -> tuple[Path, Path]:
     mapping = {
+        "spotlight_companies_directory": (
+            SPOTLIGHT_COMPANIES_DIRECTORY_CACHE,
+            LEGACY_SPOTLIGHT_COMPANIES_DIRECTORY_CACHE,
+        ),
         "spotlight_companies_search": (
             SPOTLIGHT_COMPANIES_SEARCH_CACHE,
             LEGACY_SPOTLIGHT_COMPANIES_SEARCH_CACHE,
+        ),
+    }
+    return mapping[source_key]
+
+
+def ngm_companies_cache_paths(source_key: str) -> tuple[Path, Path]:
+    mapping = {
+        "ngm_companies_page": (
+            NGM_COMPANIES_PAGE_CACHE,
+            LEGACY_NGM_COMPANIES_PAGE_CACHE,
         ),
     }
     return mapping[source_key]
@@ -3265,6 +3435,42 @@ def load_spotlight_search_rows(
 
     ensure_output_dirs()
     spotlight_search_cache_paths(source.key)[0].write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def load_spotlight_directory_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in spotlight_search_cache_paths(source.key):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+
+    try:
+        rows = fetch_spotlight_companies_directory(source, session=session)
+    except requests.RequestException:
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    spotlight_search_cache_paths(source.key)[0].write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def load_ngm_companies_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in ngm_companies_cache_paths(source.key):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+
+    try:
+        rows = fetch_ngm_companies_page(source, session=session)
+    except (requests.RequestException, ValueError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    ngm_companies_cache_paths(source.key)[0].write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"
 
 
@@ -6674,6 +6880,10 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return fetch_nasdaq_nordic_share_search(source, session=session)
     if source.format == "spotlight_companies_search_json":
         return fetch_spotlight_companies_search(source, session=session)
+    if source.format == "spotlight_companies_directory_json":
+        return fetch_spotlight_companies_directory(source, session=session)
+    if source.format == "ngm_companies_page_html":
+        return fetch_ngm_companies_page(source, session=session)
     if source.format == "krx_listed_companies_json":
         return fetch_krx_listed_companies(source, session=session)
     if source.format == "krx_etf_finder_json":
@@ -6826,6 +7036,16 @@ def fetch_source_rows_with_mode(
         rows, mode = load_spotlight_search_rows(source, session=session)
         if rows is None:
             raise requests.RequestException("Spotlight company search unavailable")
+        return rows, mode
+    if source.format == "spotlight_companies_directory_json":
+        rows, mode = load_spotlight_directory_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("Spotlight company directory unavailable")
+        return rows, mode
+    if source.format == "ngm_companies_page_html":
+        rows, mode = load_ngm_companies_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("NGM companies page unavailable")
         return rows, mode
     if source.format in {
         "nasdaq_nordic_stockholm_etfs_json",

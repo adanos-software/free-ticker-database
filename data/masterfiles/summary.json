@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-10T11:26:34Z",
-  "rows": 89268,
+  "generated_at": "2026-04-10T11:54:52Z",
+  "rows": 89458,
   "exchanges": [
     "AMS",
     "ASX",
@@ -78,7 +78,9 @@
     "sse_etf_list": 845,
     "sse_a_share_list": 2350,
     "nasdaq_nordic_stockholm_shares": 747,
+    "spotlight_companies_directory": 137,
     "spotlight_companies_search": 20,
+    "ngm_companies_page": 53,
     "nasdaq_nordic_stockholm_trackers": 6,
     "nasdaq_nordic_stockholm_etfs": 33,
     "nasdaq_nordic_stockholm_shares_search": 1,
@@ -412,6 +414,14 @@
       "rows": 3,
       "generated_at": "2026-04-09T12:51:50Z"
     },
+    "spotlight_companies_directory": {
+      "provider": "Spotlight",
+      "reference_scope": "listed_companies_subset",
+      "official": true,
+      "mode": "network",
+      "rows": 137,
+      "generated_at": "2026-04-10T11:54:52Z"
+    },
     "spotlight_companies_search": {
       "provider": "Spotlight",
       "reference_scope": "listed_companies_subset",
@@ -419,6 +429,14 @@
       "mode": "network",
       "rows": 20,
       "generated_at": "2026-04-10T07:26:52Z"
+    },
+    "ngm_companies_page": {
+      "provider": "NGM",
+      "reference_scope": "listed_companies_subset",
+      "official": true,
+      "mode": "network",
+      "rows": 53,
+      "generated_at": "2026-04-10T11:40:27Z"
     },
     "nasdaq_nordic_copenhagen_shares": {
       "provider": "Nasdaq Nordic",
@@ -658,6 +676,8 @@
     "spotlight_companies_search": "network",
     "nasdaq_nordic_stockholm_shares_search": "network",
     "tpex_emerging_basic_info": "network",
-    "tpex_mainboard_basic_info": "cache"
+    "tpex_mainboard_basic_info": "cache",
+    "ngm_companies_page": "network",
+    "spotlight_companies_directory": "network"
   }
 }

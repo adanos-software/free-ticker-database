@@ -351,11 +351,29 @@
     "official": true
   },
   {
+    "key": "spotlight_companies_directory",
+    "provider": "Spotlight",
+    "description": "Official Spotlight companies directory with detail-page symbols",
+    "source_url": "https://spotlightstockmarket.com/Umbraco/api/companyapi/GetCompanies",
+    "format": "spotlight_companies_directory_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "spotlight_companies_search",
     "provider": "Spotlight",
     "description": "Official Spotlight company search supplement for exact Swedish stock ticker gaps",
     "source_url": "https://spotlightstockmarket.com/Umbraco/api/companyapi/CompanySimpleSearch",
     "format": "spotlight_companies_search_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "ngm_companies_page",
+    "provider": "NGM",
+    "description": "Official Nordic Growth Market companies page",
+    "source_url": "https://www.ngm.se/en/our-companies/",
+    "format": "ngm_companies_page_html",
     "reference_scope": "listed_companies_subset",
     "official": true
   },
