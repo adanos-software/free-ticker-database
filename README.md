@@ -9,14 +9,14 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 55
 
 | Metric | Value |
 |---|---|
-| **Total tickers** | 55,533 |
-| Stocks | 41,129 |
-| ETFs | 14,404 |
+| **Total tickers** | 55,514 |
+| Stocks | 41,120 |
+| ETFs | 14,394 |
 | Exchanges | 68 |
 | Countries | 68 |
-| ISIN coverage | 38,204 (68.8%) |
-| Sector coverage | 33,521 (60.4%) |
-| Total aliases | 87,525 |
+| ISIN coverage | 38,198 (68.8%) |
+| Sector coverage | 33,513 (60.4%) |
+| Total aliases | 87,505 |
 
 ## Formats
 
@@ -24,13 +24,13 @@ Choose the format that fits your use case:
 
 | File | Size | Best for |
 |---|---|---|
-| [`data/tickers.csv`](data/tickers.csv) | 4.9 MB | Excel, spreadsheets, quick lookups |
+| [`data/tickers.csv`](data/tickers.csv) | 5.2 MB | Excel, spreadsheets, quick lookups |
 | [`data/listings.csv`](data/listings.csv) | 6.1 MB | Listing-keyed export without global ticker ambiguity |
 | [`data/tickers.json`](data/tickers.json) | 10.9 MB | Web apps, APIs |
-| [`data/tickers.parquet`](data/tickers.parquet) | 2.5 MB | Pandas, data science |
-| [`data/tickers.db`](data/tickers.db) | 27.1 MB | SQL queries, local apps |
+| [`data/tickers.parquet`](data/tickers.parquet) | 2.6 MB | Pandas, data science |
+| [`data/tickers.db`](data/tickers.db) | 28.4 MB | SQL queries, local apps |
 | [`data/aliases.csv`](data/aliases.csv) | 2.2 MB | Alias/name resolution |
-| [`data/identifiers.csv`](data/identifiers.csv) | 939 KB | ISIN/WKN lookups |
+| [`data/identifiers.csv`](data/identifiers.csv) | 960 KB | ISIN/WKN lookups |
 | [`data/cross_listings.csv`](data/cross_listings.csv) | 313 KB | Cross-listed securities |
 
 Additional reference artifacts:
@@ -155,7 +155,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (55,533 rows) + `aliases` (87,525 rows) + `cross_listings` (8,652 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
+Tables: `tickers` (55,514 rows) + `aliases` (87,505 rows) + `cross_listings` (8,652 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
 
 ## Schema
 

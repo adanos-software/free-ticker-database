@@ -3531,6 +3531,7 @@ def test_fetch_tmx_etf_screener_quote_rows_normalizes_series_and_skips_name_mism
                 "ticker,name,exchange,asset_type",
                 "LYUV-U,Lysander-Canso U.S. Corporate Value Bond Fund,TSX,ETF",
                 "TKN-U,Ninepoint Web3 Innovators Fund,TSX,ETF",
+                "FFI-UN,Flaherty & Crumrine Investment Grade Preferred Income Fund,TSX,ETF",
             ]
         ),
         encoding="utf-8",
@@ -3544,6 +3545,7 @@ def test_fetch_tmx_etf_screener_quote_rows_normalizes_series_and_skips_name_mism
                 "ticker,name,exchange,status",
                 "LYUV-U,Lysander-Canso U.S. Corporate Value Bond Fund,TSX,missing_from_official",
                 "TKN-U,Ninepoint Web3 Innovators Fund,TSX,reference_gap",
+                "FFI-UN,Flaherty & Crumrine Investment Grade Preferred Income Fund,TSX,missing_from_official",
             ]
         ),
         encoding="utf-8",
@@ -3560,6 +3562,12 @@ def test_fetch_tmx_etf_screener_quote_rows_normalizes_series_and_skips_name_mism
             return {
                 "symbol": "TKN.U",
                 "name": "Ninepoint Crypto and AI Leaders ETF",
+                "exchangeCode": "TSX",
+            }
+        if symbol == "FFI.UN":
+            return {
+                "symbol": "FFI.UN",
+                "name": "Flaherty & Crumrine Investment Grade Fixed Income Fund",
                 "exchangeCode": "TSX",
             }
         return None
@@ -3580,6 +3588,12 @@ def test_fetch_tmx_etf_screener_quote_rows_normalizes_series_and_skips_name_mism
         {
             "symbol": "LYUV-U",
             "longname": "Lysander-Canso U.S. Corporate Value Bond Fund",
+            "exchange": "TSX",
+            "source_url": TMX_MONEY_GRAPHQL_URL,
+        },
+        {
+            "symbol": "FFI-UN",
+            "longname": "Flaherty & Crumrine Investment Grade Fixed Income Fund",
             "exchange": "TSX",
             "source_url": TMX_MONEY_GRAPHQL_URL,
         }

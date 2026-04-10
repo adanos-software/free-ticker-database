@@ -92,8 +92,6 @@ def test_residual_alias_collisions_and_metadata_contamination_are_removed():
     dte = ticker_exchange_row("DTE", "NYSE")
     gap = ticker_exchange_row("GAP", "NYSE")
     key = ticker_exchange_row("KEY", "NYSE")
-    tefn = ticker_exchange_row("TEFN", "BMV")
-
     assert gen["country"] == "United States"
     assert gen["isin"] == "US6687711084"
     assert gen_lse["country"] == "United States"
@@ -143,11 +141,7 @@ def test_residual_alias_collisions_and_metadata_contamination_are_removed():
     assert key["isin"] == "US4932671088"
     assert ticker_exchange_row("KEY-PL", "NYSE") is None
 
-    assert tefn["country"] == "Spain"
-    assert tefn["country_code"] == "ES"
-    assert tefn["isin"] == ""
-    assert tefn["sector"] == "Communication Services"
-    assert "intelicanna" not in tefn["aliases"]
+    assert ticker_exchange_row("TEFN", "BMV") is None
 
 
 def test_generic_fund_wrapper_aliases_removed():

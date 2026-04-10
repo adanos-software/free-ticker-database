@@ -454,3 +454,22 @@ FDL,TSX,0.99,This Canadian wrapper ticker collides with a distinct active US ETF
 GDXD,TSX,0.99,This Canadian wrapper ticker collides with a distinct active US ETN ticker in the current one-ticker core model; the TSX duplicate is removed from core to preserve global uniqueness.
 GDXU,TSX,0.99,This Canadian wrapper ticker collides with a distinct active US ETN ticker in the current one-ticker core model; the TSX duplicate is removed from core to preserve global uniqueness.
 TGRO,OTC,0.99,Official TMX ETF references show TGRO as an active TSX ETF while the current OTC row is the weaker conflicting listing in the current one-ticker core model.
+002231,SZSE,0.95,Official SZSE current A-share and B-share directories do not list this symbol as an active current listing; the remaining core row appears stale amid current delisting-risk disclosures.
+159969,SZSE,0.99,Official SZSE ETF directory does not list this code as an active ETF product; the remaining core row is a bare code-only non-core fund line.
+BAFARB,BMV,0.99,Official BMV search and issuer-directory references do not list this symbol as an active BMV listing.
+CERAMICB,BMV,0.99,Official BMV search and issuer-directory references do not list this symbol as an active BMV listing.
+COXA,BMV,0.99,Official BMV search does not list this symbol as an active BMV listing; only unrelated COX Global results remain for broader term matches.
+FHIPO14,BMV,0.99,Official BMV search does not list this symbol as an active BMV equity line; only unrelated debt/trust results remain for broader term matches.
+FRC,BMV,0.99,Official BMV search and issuer-directory references do not list this symbol as an active BMV listing.
+INVEXCOA,BMV,0.99,Official BMV search and issuer-directory references do not list this symbol as an active BMV listing.
+MONEXB,BMV,0.99,Official BMV search does not list this symbol as an active BMV equity line; broader term matches only resolve to unrelated fund share classes.
+TEFN,BMV,0.99,Official BMV search and issuer-directory references do not list this symbol as an active BMV listing.
+ACTI500M,BMV,0.99,Official BMV ETF/TRACS search does not list this symbol as an active BMV ETF or TRACS product.
+BBVANDQC,BMV,0.99,Official BMV ETF/TRACS search does not list this symbol as an active BMV ETF; broader term matches only resolve to unrelated BBVA mutual-fund share classes.
+DTN,BMV,0.99,Official BMV ETF/TRACS search does not list this symbol as an active BMV ETF; broader term matches only resolve to unrelated Global/SIC products.
+FFR,BMV,0.99,Official BMV ETF/TRACS search does not list this symbol as an active BMV ETF; broader term matches only resolve to unrelated Principal fund share classes.
+OPORT1B,BMV,0.99,Official BMV ETF/TRACS search does not list this symbol as an active BMV ETF or TRACS product.
+RSX,BMV,0.99,Official BMV ETF/TRACS search does not list this symbol as an active BMV ETF or TRACS product.
+VMEX19,BMV,0.99,Official BMV ETF/TRACS search does not list this symbol as an active BMV ETF or TRACS product.
+FHU,TSX,0.99,Official TMX ETF references and TMX Money do not list this stale TSX ETF line as active.
+MXF,TSX,0.99,Official TMX ETF references and TMX Money do not list this stale TSX ETF line as active; the current ticker collides with a distinct active NYSE symbol in the core universe.

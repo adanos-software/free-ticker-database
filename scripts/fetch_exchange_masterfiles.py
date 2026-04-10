@@ -268,6 +268,11 @@ BMV_ISSUER_DIRECTORY_QUERY_COMBINATIONS = (
     ("CGEN_GLOB", "CGEN_ELGA"),
     ("CGEN_GLOB", "CGEN_ELGE"),
 )
+TMX_EXACT_QUOTE_ACCEPTED_NAMES = {
+    ("TSX", "FFI-UN"): {
+        "Flaherty & Crumrine Investment Grade Fixed Income Fund",
+    },
+}
 LSE_UPDATE_OPENER_RE = re.compile(r"UpdateOpener\('(?P<name>(?:\\'|[^'])*)',\s*'(?P<meta>[^']*)'\)")
 CBOE_CANADA_LISTING_DIRECTORY_RE = re.compile(r"CTX\['listingDirectory'\]\s*=\s*(\[[\s\S]*?\]);")
 LSE_INSTRUMENT_SEARCH_MAX_WORKERS = 8
@@ -1783,7 +1788,11 @@ def fetch_tmx_etf_screener_quote_rows(
             if str(candidate.get("symbol", "")).strip().upper() != symbol:
                 continue
             candidate_name = str(candidate.get("name", "")).strip()
-            if not candidate_name or not tmx_lookup_name_matches(listing_name, candidate_name):
+            accepted_override_names = TMX_EXACT_QUOTE_ACCEPTED_NAMES.get((exchange, listing_ticker), set())
+            if not candidate_name or (
+                candidate_name not in accepted_override_names
+                and not tmx_lookup_name_matches(listing_name, candidate_name)
+            ):
                 continue
             rows.append(
                 {

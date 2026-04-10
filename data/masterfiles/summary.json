@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-10T05:43:24Z",
-  "rows": 87899,
+  "generated_at": "2026-04-10T06:29:36Z",
+  "rows": 87900,
   "exchanges": [
     "AMS",
     "ASX",
@@ -86,7 +86,7 @@
     "tpex_mainboard_daily_quotes": 884,
     "jpx_listed_issues": 4444,
     "tmx_listed_issuers": 3704,
-    "tmx_etf_screener": 1696,
+    "tmx_etf_screener": 1697,
     "tmx_interlisted_companies": 266,
     "twse_etf_list": 215,
     "twse_listed_companies": 1081,
@@ -195,9 +195,9 @@
       "provider": "TMX",
       "reference_scope": "listed_companies_subset",
       "official": true,
-      "mode": "cache",
-      "rows": 1696,
-      "generated_at": "2026-04-09T20:47:13Z"
+      "mode": "network",
+      "rows": 1697,
+      "generated_at": "2026-04-10T06:29:36Z"
     },
     "tmx_interlisted_companies": {
       "provider": "TMX",
@@ -571,7 +571,7 @@
     "asx_investment_products": "network",
     "set_listed_companies": "network",
     "tmx_listed_issuers": "network",
-    "tmx_etf_screener": "cache",
+    "tmx_etf_screener": "network",
     "tmx_interlisted_companies": "network",
     "euronext_equities": "network",
     "euronext_etfs": "network",
