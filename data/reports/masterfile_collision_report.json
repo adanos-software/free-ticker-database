@@ -2,8 +2,8 @@
   "global": {
     "official_symbols": 28293,
     "matched": 18658,
-    "collisions": 5665,
-    "missing": 3970
+    "collisions": 5654,
+    "missing": 3981
   },
   "exchanges": [
     {
@@ -1435,8 +1435,8 @@
       "exchange": "TSE",
       "official_symbols": 4444,
       "matched": 3214,
-      "collisions": 1205,
-      "missing": 25,
+      "collisions": 1200,
+      "missing": 30,
       "collision_examples": [
         {
           "ticker": "1301",
@@ -1521,8 +1521,18 @@
       ],
       "missing_examples": [
         {
+          "ticker": "1623",
+          "name": "NEXT FUNDS TOPIX-17 STEEL & NONFERROUS ETF",
+          "exchange": "TSE"
+        },
+        {
           "ticker": "1626",
           "name": "NEXT FUNDS TOPIX-17 IT & SERVICES,OTHERS ETF",
+          "exchange": "TSE"
+        },
+        {
+          "ticker": "2072",
+          "name": "Market Share Leaders Net Return ETN",
           "exchange": "TSE"
         },
         {
@@ -1558,16 +1568,6 @@
         {
           "ticker": "2929",
           "name": "Pharma Foods International Co.,Ltd.",
-          "exchange": "TSE"
-        },
-        {
-          "ticker": "3661",
-          "name": "m-up holdings,Inc.",
-          "exchange": "TSE"
-        },
-        {
-          "ticker": "4552",
-          "name": "JCR Pharmaceuticals Co.,Ltd.",
           "exchange": "TSE"
         }
       ]
@@ -1762,17 +1762,9 @@
       "exchange": "TWSE",
       "official_symbols": 1081,
       "matched": 1022,
-      "collisions": 35,
-      "missing": 24,
+      "collisions": 29,
+      "missing": 30,
       "collision_examples": [
-        {
-          "ticker": "1623",
-          "name": "\u5927\u6771\u96fb\u696d\u5ee0\u80a1\u4efd\u6709\u9650\u516c\u53f8",
-          "target_exchange": "TWSE",
-          "existing_exchanges": [
-            "TPEX"
-          ]
-        },
         {
           "ticker": "2020",
           "name": "\u7f8e\u4e9e\u92fc\u7ba1\u5ee0\u80a1\u4efd\u6709\u9650\u516c\u53f8",
@@ -1787,14 +1779,6 @@
           "target_exchange": "TWSE",
           "existing_exchanges": [
             "TSE"
-          ]
-        },
-        {
-          "ticker": "2072",
-          "name": "\u4e16\u7d00\u96e2\u5cb8\u98a8\u96fb\u8a2d\u5099\u80a1\u4efd\u6709\u9650\u516c\u53f8",
-          "target_exchange": "TWSE",
-          "existing_exchanges": [
-            "TPEX"
           ]
         },
         {
@@ -1844,12 +1828,38 @@
           "existing_exchanges": [
             "TSE"
           ]
+        },
+        {
+          "ticker": "3034",
+          "name": "\u806f\u8a60\u79d1\u6280\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "target_exchange": "TWSE",
+          "existing_exchanges": [
+            "TSE"
+          ]
+        },
+        {
+          "ticker": "3042",
+          "name": "\u53f0\u7063\u6676\u6280\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "target_exchange": "TWSE",
+          "existing_exchanges": [
+            "TSE"
+          ]
         }
       ],
       "missing_examples": [
         {
+          "ticker": "1623",
+          "name": "\u5927\u6771\u96fb\u696d\u5ee0\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "exchange": "TWSE"
+        },
+        {
           "ticker": "1626",
           "name": "\u827e\u7f8e\u7279(\u958b\u66fc)\u570b\u969b\u6709\u9650\u516c\u53f8",
+          "exchange": "TWSE"
+        },
+        {
+          "ticker": "2072",
+          "name": "\u4e16\u7d00\u96e2\u5cb8\u98a8\u96fb\u8a2d\u5099\u80a1\u4efd\u6709\u9650\u516c\u53f8",
           "exchange": "TWSE"
         },
         {
@@ -1885,16 +1895,6 @@
         {
           "ticker": "3661",
           "name": "\u4e16\u82af\u96fb\u5b50\u80a1\u4efd\u6709\u9650\u516c\u53f8",
-          "exchange": "TWSE"
-        },
-        {
-          "ticker": "4552",
-          "name": "\u529b\u9054\u63a7\u80a1\u6709\u9650\u516c\u53f8",
-          "exchange": "TWSE"
-        },
-        {
-          "ticker": "4571",
-          "name": "\u921e\u8208\u6a5f\u96fb\u570b\u969b\u80a1\u4efd\u6709\u9650\u516c\u53f8",
           "exchange": "TWSE"
         }
       ]

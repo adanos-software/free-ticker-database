@@ -64,6 +64,8 @@ TPEX_MAINBOARD_QUOTES_CACHE = MASTERFILE_CACHE_DIR / "tpex_mainboard_daily_close
 LEGACY_TPEX_MAINBOARD_QUOTES_CACHE = MASTERFILES_DIR / "tpex_mainboard_daily_close_quotes.json"
 TPEX_ETF_FILTER_CACHE = MASTERFILE_CACHE_DIR / "tpex_etf_filter.json"
 LEGACY_TPEX_ETF_FILTER_CACHE = MASTERFILES_DIR / "tpex_etf_filter.json"
+TPEX_MAINBOARD_BASIC_INFO_CACHE = MASTERFILE_CACHE_DIR / "tpex_mainboard_basic_info.csv"
+LEGACY_TPEX_MAINBOARD_BASIC_INFO_CACHE = MASTERFILES_DIR / "tpex_mainboard_basic_info.csv"
 TPEX_EMERGING_BASIC_INFO_CACHE = MASTERFILE_CACHE_DIR / "tpex_emerging_basic_info.csv"
 LEGACY_TPEX_EMERGING_BASIC_INFO_CACHE = MASTERFILES_DIR / "tpex_emerging_basic_info.csv"
 SZSE_ETF_LIST_CACHE = MASTERFILE_CACHE_DIR / "szse_etf_list.json"
@@ -243,6 +245,7 @@ SSE_JSONP_CALLBACK = "jsonpCallback"
 TPEX_MAINBOARD_QUOTES_URL = "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes"
 TPEX_ETF_FILTER_PAGE_URL = "https://info.tpex.org.tw/ETF/en/filter.html"
 TPEX_ETF_FILTER_API_URL = "https://info.tpex.org.tw/api/etfFilter"
+TPEX_MAINBOARD_BASIC_INFO_URL = "https://mopsfin.twse.com.tw/opendata/t187ap03_O.csv"
 TPEX_EMERGING_BASIC_INFO_URL = "https://mopsfin.twse.com.tw/opendata/t187ap03_R.csv"
 SPOTLIGHT_COMPANIES_PAGE_URL = "https://spotlightstockmarket.com/en/market-overview/our-companies/"
 SPOTLIGHT_COMPANY_SEARCH_URL = "https://spotlightstockmarket.com/Umbraco/api/companyapi/CompanySimpleSearch"
@@ -943,6 +946,14 @@ OFFICIAL_SOURCES = [
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
+        key="tpex_mainboard_basic_info",
+        provider="MOPS",
+        description="Official MOPS mainboard company basic information feed for TPEX listings",
+        source_url=TPEX_MAINBOARD_BASIC_INFO_URL,
+        format="tpex_mainboard_basic_csv",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
         key="tpex_emerging_basic_info",
         provider="MOPS",
         description="Official MOPS emerging company basic information feed for TPEX listings",
@@ -1517,6 +1528,30 @@ def load_tpex_emerging_basic_info_text(
     text = response.content.decode("utf-8-sig")
     ensure_output_dirs()
     TPEX_EMERGING_BASIC_INFO_CACHE.write_text(text, encoding="utf-8-sig")
+    return text, "network"
+
+
+def load_tpex_mainboard_basic_info_text(
+    session: requests.Session | None = None,
+) -> tuple[str | None, str]:
+    for path in (TPEX_MAINBOARD_BASIC_INFO_CACHE, LEGACY_TPEX_MAINBOARD_BASIC_INFO_CACHE):
+        if path.exists():
+            return path.read_text(encoding="utf-8-sig"), "cache"
+
+    session = session or requests.Session()
+    try:
+        response = session.get(
+            TPEX_MAINBOARD_BASIC_INFO_URL,
+            headers={"User-Agent": "Mozilla/5.0", "Accept": "text/csv,*/*"},
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+    except requests.RequestException:
+        return None, "unavailable"
+
+    text = response.content.decode("utf-8-sig")
+    ensure_output_dirs()
+    TPEX_MAINBOARD_BASIC_INFO_CACHE.write_text(text, encoding="utf-8-sig")
     return text, "network"
 
 
@@ -5368,6 +5403,14 @@ def parse_tpex_etf_filter(
 
 
 def parse_tpex_emerging_basic_info_csv(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    return parse_tpex_basic_info_csv(text, source)
+
+
+def parse_tpex_mainboard_basic_info_csv(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    return parse_tpex_basic_info_csv(text, source)
+
+
+def parse_tpex_basic_info_csv(text: str, source: MasterfileSource) -> list[dict[str, str]]:
     reader = csv.DictReader(io.StringIO(text))
     rows: list[dict[str, str]] = []
     seen: set[str] = set()
@@ -6617,6 +6660,11 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         )
         response.raise_for_status()
         return parse_tpex_etf_filter(response.json(), source)
+    if source.format == "tpex_mainboard_basic_csv":
+        text, mode = load_tpex_mainboard_basic_info_text(session=session)
+        if text is None:
+            raise requests.RequestException("TPEX mainboard basic info unavailable")
+        return parse_tpex_mainboard_basic_info_csv(text, source)
     if source.format == "tpex_emerging_basic_csv":
         text, mode = load_tpex_emerging_basic_info_text(session=session)
         if text is None:
@@ -6690,6 +6738,11 @@ def fetch_source_rows_with_mode(
         if payload is None:
             raise requests.RequestException("TPEX ETF filter unavailable")
         return parse_tpex_etf_filter(payload, source), mode
+    if source.format == "tpex_mainboard_basic_csv":
+        text, mode = load_tpex_mainboard_basic_info_text(session=session)
+        if text is None:
+            raise requests.RequestException("TPEX mainboard basic info unavailable")
+        return parse_tpex_mainboard_basic_info_csv(text, source), mode
     if source.format == "tpex_emerging_basic_csv":
         text, mode = load_tpex_emerging_basic_info_text(session=session)
         if text is None:

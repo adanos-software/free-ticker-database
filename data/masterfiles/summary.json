@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-10T08:20:00Z",
-  "rows": 88387,
+  "generated_at": "2026-04-10T11:26:34Z",
+  "rows": 89268,
   "exchanges": [
     "AMS",
     "ASX",
@@ -87,6 +87,7 @@
     "szse_b_share_list": 38,
     "tpex_etf_filter": 112,
     "tpex_mainboard_daily_quotes": 884,
+    "tpex_mainboard_basic_info": 881,
     "tpex_emerging_basic_info": 354,
     "jpx_listed_issues": 4444,
     "tmx_listed_issuers": 3704,
@@ -531,6 +532,14 @@
       "rows": 112,
       "generated_at": "2026-04-10T07:04:17Z"
     },
+    "tpex_mainboard_basic_info": {
+      "provider": "MOPS",
+      "reference_scope": "listed_companies_subset",
+      "official": true,
+      "mode": "cache",
+      "rows": 881,
+      "generated_at": "2026-04-10T11:26:34Z"
+    },
     "tpex_emerging_basic_info": {
       "provider": "MOPS",
       "reference_scope": "listed_companies_subset",
@@ -648,6 +657,7 @@
     "szse_b_share_list": "cache",
     "spotlight_companies_search": "network",
     "nasdaq_nordic_stockholm_shares_search": "network",
-    "tpex_emerging_basic_info": "network"
+    "tpex_emerging_basic_info": "network",
+    "tpex_mainboard_basic_info": "cache"
   }
 }

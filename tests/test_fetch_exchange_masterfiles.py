@@ -125,6 +125,7 @@ from scripts.fetch_exchange_masterfiles import (
     load_sec_company_tickers_exchange_payload,
     normalize_source_keys,
     load_tpex_etf_filter_payload,
+    load_tpex_mainboard_basic_info_text,
     load_tpex_emerging_basic_info_text,
     load_tmx_etf_screener_payload,
     load_pse_listed_company_directory_rows,
@@ -132,6 +133,7 @@ from scripts.fetch_exchange_masterfiles import (
     load_tpex_mainboard_quotes_payload,
     parse_spotlight_search_heading,
     parse_set_dr_search_payload,
+    parse_tpex_mainboard_basic_info_csv,
     parse_tpex_emerging_basic_info_csv,
     parse_tpex_etf_filter,
     lse_instrument_search_target_tickers,
@@ -1090,6 +1092,11 @@ def test_tpex_emerging_basic_info_source_is_modeled_as_partial_official_coverage
     assert source.reference_scope == "listed_companies_subset"
 
 
+def test_tpex_mainboard_basic_info_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "tpex_mainboard_basic_info")
+    assert source.reference_scope == "listed_companies_subset"
+
+
 def test_parse_tpex_mainboard_quotes_maps_tpex_rows():
     payload = [
         {"SecuritiesCompanyCode": "006201", "CompanyName": "元大富櫃50"},
@@ -1225,6 +1232,46 @@ def test_parse_tpex_emerging_basic_info_csv_maps_tpex_rows() -> None:
     ]
 
 
+def test_parse_tpex_mainboard_basic_info_csv_maps_tpex_rows() -> None:
+    text = "\n".join(
+        [
+            "出表日期,公司代號,公司名稱,公司簡稱,外國企業註冊地國,產業別,英文簡稱",
+            "1150410,4971,英特磊科技股份有限公司,IET-KY,KY 開曼群島,24,IntelliEPI Cayman",
+            "1150410,5381,光譜電工股份有限公司,光譜,－ ,28,Uniplus Electronics",
+            "1150410,ABC123,Skip Me,Skip Me,－ ,99,SKIP",
+        ]
+    )
+
+    rows = parse_tpex_mainboard_basic_info_csv(text, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "4971",
+            "name": "英特磊科技股份有限公司",
+            "exchange": "TPEX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "5381",
+            "name": "光譜電工股份有限公司",
+            "exchange": "TPEX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
 def test_load_tpex_mainboard_quotes_payload_prefers_cache(tmp_path, monkeypatch):
     cache_path = tmp_path / "tpex_mainboard_daily_close_quotes.json"
     cache_path.write_text('[{"SecuritiesCompanyCode":"6488","CompanyName":"環球晶圓股份有限公司"}]', encoding="utf-8")
@@ -1274,6 +1321,22 @@ def test_load_tpex_emerging_basic_info_text_prefers_cache(tmp_path, monkeypatch)
 
     assert mode == "cache"
     assert "乾杯股份有限公司" in text
+
+
+def test_load_tpex_mainboard_basic_info_text_prefers_cache(tmp_path, monkeypatch):
+    cache_path = tmp_path / "tpex_mainboard_basic_info.csv"
+    cache_path.write_text("出表日期,公司代號,公司名稱\n1150410,4971,英特磊科技股份有限公司\n", encoding="utf-8-sig")
+    monkeypatch.setattr(fetch_exchange_masterfiles, "TPEX_MAINBOARD_BASIC_INFO_CACHE", cache_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_TPEX_MAINBOARD_BASIC_INFO_CACHE",
+        tmp_path / "legacy.csv",
+    )
+
+    text, mode = load_tpex_mainboard_basic_info_text()
+
+    assert mode == "cache"
+    assert "英特磊科技股份有限公司" in text
 
 
 def test_parse_asx_listed_companies_skips_banner_lines():
