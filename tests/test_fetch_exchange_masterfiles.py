@@ -20,6 +20,7 @@ from scripts.fetch_exchange_masterfiles import (
     BMV_STOCK_SEARCH_CACHE,
     B3_INSTRUMENTS_EQUITIES_CACHE,
     JSE_INSTRUMENT_SEARCH_CACHE,
+    IDX_LISTED_COMPANIES_CACHE,
     LEGACY_BME_ETF_LIST_CACHE,
     LEGACY_BME_LISTED_COMPANIES_CACHE,
     LEGACY_BMV_CAPITAL_TRUST_SEARCH_CACHE,
@@ -32,6 +33,7 @@ from scripts.fetch_exchange_masterfiles import (
     LEGACY_LSE_INSTRUMENT_SEARCH_CACHE,
     LEGACY_NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE,
     LEGACY_NASDAQ_NORDIC_HELSINKI_ETFS_CACHE,
+    LEGACY_IDX_LISTED_COMPANIES_CACHE,
     LEGACY_NGM_COMPANIES_PAGE_CACHE,
     LEGACY_SPOTLIGHT_COMPANIES_DIRECTORY_CACHE,
     LEGACY_SPOTLIGHT_COMPANIES_SEARCH_CACHE,
@@ -78,6 +80,7 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_lse_instrument_search_exact,
     fetch_jse_exchange_traded_product_rows,
     fetch_jse_instrument_search_exact,
+    fetch_idx_listed_companies,
     fetch_nasdaq_nordic_share_search,
     fetch_nasdaq_nordic_stockholm_shares,
     fetch_nasdaq_nordic_stockholm_trackers,
@@ -106,6 +109,7 @@ from scripts.fetch_exchange_masterfiles import (
     load_bmv_issuer_directory_rows,
     load_bmv_stock_search_rows,
     load_jse_instrument_search_rows,
+    load_idx_listed_companies_rows,
     NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE,
     NASDAQ_NORDIC_HELSINKI_ETFS_CACHE,
     load_lse_company_reports_rows,
@@ -161,6 +165,7 @@ from scripts.fetch_exchange_masterfiles import (
     parse_euronext_etfs_download,
     parse_jpx_listed_issues_excel,
     parse_jse_exchange_traded_product_excel,
+    parse_idx_listed_companies_payload,
     parse_krx_etf_finder,
     parse_krx_listed_companies,
     parse_krx_product_finder_records,
@@ -7067,6 +7072,157 @@ def test_load_pse_listed_company_directory_rows_falls_back_to_cache(tmp_path, mo
             "listing_status": "active",
         }
     ]
+
+
+def test_parse_idx_listed_companies_payload_maps_rows() -> None:
+    source = MasterfileSource(
+        key="idx_listed_companies",
+        provider="IDX",
+        description="Official IDX stock list directory",
+        source_url="https://www.idx.id/primary/StockData/GetSecuritiesStock",
+        format="idx_listed_companies_json",
+        reference_scope="listed_companies_subset",
+    )
+    payload = {
+        "recordsTotal": 3,
+        "recordsFiltered": 3,
+        "data": [
+            {"Code": "AALI", "Name": "Astra Agro Lestari Tbk."},
+            {"Code": "BBCA", "Name": "Bank Central Asia Tbk."},
+            {"Code": "AALI", "Name": "Astra Agro Lestari Tbk."},
+            {"Code": "", "Name": "Missing Code"},
+        ],
+    }
+
+    rows = parse_idx_listed_companies_payload(payload, source)
+
+    assert rows == [
+        {
+            "source_key": "idx_listed_companies",
+            "provider": "IDX",
+            "source_url": "https://www.idx.id/primary/StockData/GetSecuritiesStock",
+            "ticker": "AALI",
+            "name": "Astra Agro Lestari Tbk.",
+            "exchange": "IDX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+        },
+        {
+            "source_key": "idx_listed_companies",
+            "provider": "IDX",
+            "source_url": "https://www.idx.id/primary/StockData/GetSecuritiesStock",
+            "ticker": "BBCA",
+            "name": "Bank Central Asia Tbk.",
+            "exchange": "IDX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+        },
+    ]
+
+
+def test_fetch_idx_listed_companies_paginates_official_api() -> None:
+    source = MasterfileSource(
+        key="idx_listed_companies",
+        provider="IDX",
+        description="Official IDX stock list directory",
+        source_url="https://www.idx.id/primary/StockData/GetSecuritiesStock",
+        format="idx_listed_companies_json",
+        reference_scope="listed_companies_subset",
+    )
+
+    class DummyResponse:
+        def __init__(self, payload: dict[str, object]):
+            self._payload = payload
+
+        def raise_for_status(self) -> None:
+            return None
+
+        def json(self) -> dict[str, object]:
+            return self._payload
+
+    class DummySession:
+        def __init__(self) -> None:
+            self.calls: list[dict[str, object]] = []
+
+        def get(self, url: str, *, params=None, headers=None, timeout=None):
+            self.calls.append({"url": url, "params": params, "headers": headers, "timeout": timeout})
+            if params["start"] == 0:
+                return DummyResponse(
+                    {
+                        "recordsTotal": 1001,
+                        "recordsFiltered": 1001,
+                        "data": [{"Code": "AALI", "Name": "Astra Agro Lestari Tbk."}],
+                    }
+                )
+            return DummyResponse(
+                {
+                    "recordsTotal": 1001,
+                    "recordsFiltered": 1001,
+                    "data": [{"Code": "BBCA", "Name": "Bank Central Asia Tbk."}],
+                }
+            )
+
+    session = DummySession()
+    rows = fetch_idx_listed_companies(source, session=session)
+
+    assert [row["ticker"] for row in rows] == ["AALI", "BBCA"]
+    assert [call["params"]["start"] for call in session.calls] == [0, 1000]
+    assert all(call["params"]["language"] == "en-us" for call in session.calls)
+
+
+def test_load_idx_listed_companies_rows_prefers_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "idx_listed_companies.json"
+    cache_path.write_text(
+        '[{"ticker":"AALI","name":"Astra Agro Lestari Tbk.","exchange":"IDX","asset_type":"Stock","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "IDX_LISTED_COMPANIES_CACHE", cache_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "LEGACY_IDX_LISTED_COMPANIES_CACHE", tmp_path / "missing.json")
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_idx_listed_companies",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "idx_listed_companies")
+    rows, mode = load_idx_listed_companies_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "AALI",
+            "name": "Astra Agro Lestari Tbk.",
+            "exchange": "IDX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+        }
+    ]
+
+
+def test_fetch_source_rows_with_mode_uses_idx_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "idx_listed_companies.json"
+    cache_path.write_text(
+        '[{"ticker":"AALI","name":"Astra Agro Lestari Tbk.","exchange":"IDX","asset_type":"Stock","listing_status":"active","source_key":"idx_listed_companies","reference_scope":"listed_companies_subset","official":"true","provider":"IDX","source_url":"https://example.com"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "IDX_LISTED_COMPANIES_CACHE", cache_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "LEGACY_IDX_LISTED_COMPANIES_CACHE", tmp_path / "missing.json")
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_idx_listed_companies",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "idx_listed_companies")
+    rows, mode = fetch_source_rows_with_mode(source)
+
+    assert mode == "cache"
+    assert rows[0]["ticker"] == "AALI"
+    assert rows[0]["exchange"] == "IDX"
 
 
 def test_parse_nasdaq_nordic_stockholm_etfs_maps_symbol_aliases() -> None:

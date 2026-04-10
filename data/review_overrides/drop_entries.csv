@@ -3,6 +3,7 @@ ticker,exchange,confidence,reason
 159969,SZSE,0.99,Official SZSE ETF directory does not list this code as an active ETF product; the remaining core row is a bare code-only non-core fund line.
 1623,TPEX,0.99,Official current TWSE MOPS company directory lists 1623 as an active TWSE stock while current TPEX mainboard and emerging-company MOPS directories do not list it; the remaining TPEX row is stale.
 2072,TPEX,0.99,Official current TWSE MOPS company directory lists 2072 as an active TWSE stock while current TPEX mainboard and emerging-company MOPS directories do not list it; the remaining TPEX row is stale.
+ARDO,IDX,0.99,Official IDX stock directory now lists the active issuer as ADRO while ARDO returns no active stock result; the remaining ARDO core row is a stale pre-rename ticker.
 4169,TPEX,0.99,Official current TWSE MOPS company directory lists 4169 as an active TWSE stock while current TPEX mainboard and emerging-company MOPS directories do not list it; the remaining TPEX row is stale.
 4773,TPEX,0.97,Official current TWSE/TPEX MOPS company directories do not list 4773 as an active current listing; the remaining TPEX core row appears stale.
 6722,TPEX,0.99,Official current TWSE MOPS company directory lists 6722 as an active TWSE stock while current TPEX mainboard and emerging-company MOPS directories do not list it; the remaining TPEX row is stale.
@@ -25,6 +26,7 @@ MCLR,STO,0.97,Official NGM companies directory lists Medclair under the active S
 MASHUP,STO,0.99,Official Nasdaq Nordic Stockholm directory lists the active Larkberget company as ticker LARK while the remaining MASHUP row carries a mismatched reused ISIN and stale ticker metadata.
 NOKIA,STO,0.99,Official Nasdaq Nordic Stockholm search lists ISIN FI0009000681 under the active Stockholm ticker NOKIA-SEK; the remaining NOKIA row is a stale local ticker form.
 NAVIGO-STA,STO,0.99,Official Nasdaq Nordic Stockholm directory lists ISIN SE0007100532 under the active ticker NAVIGO-STAM; the remaining NAVIGO-STA row is a stale pre-rename ticker.
+NOSIUM-B,STO,0.99,Official NGM companies directory lists the active Stockholm listing as SHI-B (NOSIUM AB); the remaining NOSIUM-B row is a stale pre-rename ticker.
 RLVNC,STO,0.97,Official NGM companies directory lists Relevance Communication Nordic under the active Stockholm ticker N55; the remaining RLVNC row is a stale ticker.
 STATE,STO,0.97,Official NGM companies directory lists SafeState under the active Stockholm ticker EOID; the remaining STATE row is a stale ticker.
 TCC-A,STO,0.97,Official NGM companies directory lists TCECUR Sweden AB under the active Stockholm ticker TCC; the remaining TCC-A row is a stale ticker.
@@ -62,6 +64,8 @@ BAC-PQ,NASDAQ,0.96,"Yahoo Finance resolves this symbol to NYSE rather than the c
 BACQ,NASDAQ,0.98,Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.
 BAFARB,BMV,0.99,Official BMV search and issuer-directory references do not list this symbol as an active BMV listing.
 BBVANDQC,BMV,0.99,Official BMV ETF/TRACS search does not list this symbol as an active BMV ETF; broader term matches only resolve to unrelated BBVA mutual-fund share classes.
+XCID,IDX,0.99,Official IDX active stock directory does not list XCID as an active stock listing; the remaining core row is a non-core DIRE or REIT line outside the current stock universe.
+XCIS,IDX,0.99,Official IDX active stock directory does not list XCIS as an active stock listing; the remaining core row is a non-core DIRE or REIT line outside the current stock universe.
 BCHT,OTC,0.96,"Yahoo Finance resolves this symbol to NYSE American rather than the current exchange, indicating the current listing is stale."
 BCLI,NASDAQ,0.96,"Yahoo Finance resolves this symbol to OTC Markets OTCQB rather than the current exchange, indicating the current listing is stale."
 BCSS-U,NYSE,0.98,Official US exchange directory does not list this stale non-common or bankruptcy line as an active common equity.

@@ -122,6 +122,8 @@ BME_ETF_LIST_CACHE = MASTERFILE_CACHE_DIR / "bme_etf_list.json"
 LEGACY_BME_ETF_LIST_CACHE = MASTERFILES_DIR / "bme_etf_list.json"
 PSE_LISTED_COMPANY_DIRECTORY_CACHE = MASTERFILE_CACHE_DIR / "pse_listed_company_directory.json"
 LEGACY_PSE_LISTED_COMPANY_DIRECTORY_CACHE = MASTERFILES_DIR / "pse_listed_company_directory.json"
+IDX_LISTED_COMPANIES_CACHE = MASTERFILE_CACHE_DIR / "idx_listed_companies.json"
+LEGACY_IDX_LISTED_COMPANIES_CACHE = MASTERFILES_DIR / "idx_listed_companies.json"
 
 SEC_COMPANY_TICKERS_URL = "https://www.sec.gov/files/company_tickers_exchange.json"
 NASDAQ_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt"
@@ -264,6 +266,9 @@ PSX_COMPANIES_BY_SECTOR_URL = "https://www.psx.com.pk/psx/custom-templates/compa
 PSX_DAILY_DOWNLOADS_URL = "https://dps.psx.com.pk/daily-downloads"
 PSE_LISTED_COMPANY_DIRECTORY_PAGE_URL = "https://www.pse.com.ph/listed-company-directory/"
 PSE_LISTED_COMPANY_DIRECTORY_URL = "https://frames.pse.com.ph/listedCompany"
+IDX_STOCK_LIST_PAGE_URL = "https://www.idx.id/en/market-data/stocks-data/stock-list"
+IDX_PRIMARY_API_ROOT_URL = "https://www.idx.id/primary"
+IDX_LISTED_COMPANIES_URL = f"{IDX_PRIMARY_API_ROOT_URL}/StockData/GetSecuritiesStock"
 
 USER_AGENT = "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)"
 SEC_CONTACT_EMAIL = os.environ.get("SEC_CONTACT_EMAIL", "opensource@adanos.software")
@@ -1024,6 +1029,14 @@ OFFICIAL_SOURCES = [
         format="pse_listed_company_directory_html",
     ),
     MasterfileSource(
+        key="idx_listed_companies",
+        provider="IDX",
+        description="Official IDX stock list directory",
+        source_url=IDX_LISTED_COMPANIES_URL,
+        format="idx_listed_companies_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
         key="sec_company_tickers_exchange",
         provider="SEC",
         description="Official SEC company ticker to exchange mapping",
@@ -1437,6 +1450,15 @@ def nasdaq_nordic_request_headers(referer: str = NASDAQ_NORDIC_STOCK_PAGE_URL) -
     }
 
 
+def idx_request_headers(referer: str = IDX_STOCK_LIST_PAGE_URL) -> dict[str, str]:
+    return {
+        "User-Agent": "Mozilla/5.0",
+        "Accept": "application/json, text/plain, */*",
+        "Referer": referer,
+        "Origin": "https://www.idx.id",
+    }
+
+
 def normalize_nasdaq_nordic_search_symbol(value: str) -> str:
     return "".join(ch for ch in str(value or "").upper() if ch.isalnum())
 
@@ -1682,6 +1704,23 @@ def load_pse_listed_company_directory_rows(
 
     ensure_output_dirs()
     PSE_LISTED_COMPANY_DIRECTORY_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def load_idx_listed_companies_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_idx_listed_companies(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in (IDX_LISTED_COMPANIES_CACHE, LEGACY_IDX_LISTED_COMPANIES_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    IDX_LISTED_COMPANIES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"
 
 
@@ -2167,6 +2206,78 @@ def parse_ngm_companies_page_html(text: str, source: MasterfileSource) -> list[d
                 }
             )
             seen.add(ticker)
+    return rows
+
+
+def parse_idx_listed_companies_payload(
+    payload: dict[str, Any],
+    source: MasterfileSource,
+) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for record in payload.get("data") or []:
+        ticker = str(record.get("Code") or "").strip().upper()
+        name = str(record.get("Name") or "").strip()
+        if not ticker or not name or ticker in seen:
+            continue
+        seen.add(ticker)
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "IDX",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
+def fetch_idx_listed_companies(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    start = 0
+    length = 1000
+    total = None
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+
+    while total is None or start < total:
+        response = session.get(
+            source.source_url,
+            params={
+                "start": start,
+                "length": length,
+                "code": "",
+                "sector": "",
+                "board": "",
+                "language": "en-us",
+            },
+            headers=idx_request_headers(),
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        payload = response.json()
+        total = int(payload.get("recordsFiltered") or payload.get("recordsTotal") or 0)
+        page_rows = parse_idx_listed_companies_payload(payload, source)
+        for row in page_rows:
+            ticker = row["ticker"]
+            if ticker in seen:
+                continue
+            seen.add(ticker)
+            rows.append(row)
+        if not page_rows:
+            break
+        start += length
+
     return rows
 
 
@@ -6894,6 +7005,8 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return fetch_psx_symbol_name_daily(source, session=session)
     if source.format == "pse_listed_company_directory_html":
         return fetch_pse_listed_company_directory(source, session=session)
+    if source.format == "idx_listed_companies_json":
+        return fetch_idx_listed_companies(source, session=session)
     if source.format == "sec_company_tickers_exchange_json":
         payload = fetch_json(source.source_url, session=session)
         return parse_sec_company_tickers_exchange(payload, source)
@@ -6972,6 +7085,11 @@ def fetch_source_rows_with_mode(
         rows, mode = load_pse_listed_company_directory_rows(source, session=session)
         if rows is None:
             raise requests.RequestException("PSE listed company directory unavailable")
+        return rows, mode
+    if source.format == "idx_listed_companies_json":
+        rows, mode = load_idx_listed_companies_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("IDX listed companies unavailable")
         return rows, mode
     if source.format == "bmv_stock_search_json":
         rows, mode = load_bmv_stock_search_rows(source, session=session)

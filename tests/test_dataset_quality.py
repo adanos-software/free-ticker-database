@@ -1295,6 +1295,20 @@ def test_artifact_counts_match():
     assert len(identifiers_extended_csv) == len(listings_csv)
 
 
+def test_sto_review_overrides_keep_current_hotel_and_remove_nosium_b():
+    tickers_csv = load_csv("tickers.csv")
+    by_key = {(row["ticker"], row["exchange"]): row for row in tickers_csv}
+
+    assert ("NOSIUM-B", "STO") not in by_key
+
+    hotel = by_key[("HOTEL", "STO")]
+    assert hotel["name"] == "Hotel Fast SSE"
+    assert hotel["country"] == "Sweden"
+    assert hotel["country_code"] == "SE"
+    assert hotel["isin"] == "SE0011415710"
+    assert hotel["aliases"] == "hotel fast sse"
+
+
 def db_rows_for_table(table: str) -> int:
     conn = sqlite3.connect(DATA_DIR / "tickers.db")
     try:

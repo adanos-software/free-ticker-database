@@ -567,6 +567,15 @@
     "official": true
   },
   {
+    "key": "idx_listed_companies",
+    "provider": "IDX",
+    "description": "Official IDX stock list directory",
+    "source_url": "https://www.idx.id/primary/StockData/GetSecuritiesStock",
+    "format": "idx_listed_companies_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "sec_company_tickers_exchange",
     "provider": "SEC",
     "description": "Official SEC company ticker to exchange mapping",

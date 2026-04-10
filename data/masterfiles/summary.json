@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-10T11:54:52Z",
-  "rows": 89458,
+  "generated_at": "2026-04-10T12:48:56Z",
+  "rows": 90414,
   "exchanges": [
     "AMS",
     "ASX",
@@ -10,6 +10,7 @@
     "CPH",
     "Euronext",
     "HEL",
+    "IDX",
     "IEX",
     "JSE",
     "KOSDAQ",
@@ -55,6 +56,7 @@
     "nasdaq_nordic_helsinki_shares": 194,
     "nasdaq_nordic_helsinki_shares_search": 3,
     "nasdaq_nordic_helsinki_etfs": 2,
+    "idx_listed_companies": 956,
     "jse_etf_list": 133,
     "jse_instrument_search": 51,
     "jse_etn_list": 94,
@@ -606,6 +608,14 @@
       "rows": 381,
       "generated_at": "2026-04-09T16:17:28Z"
     },
+    "idx_listed_companies": {
+      "provider": "IDX",
+      "reference_scope": "listed_companies_subset",
+      "official": true,
+      "mode": "network",
+      "rows": 956,
+      "generated_at": "2026-04-10T12:48:56Z"
+    },
     "sec_company_tickers_exchange": {
       "provider": "SEC",
       "reference_scope": "exchange_directory",
@@ -678,6 +688,7 @@
     "tpex_emerging_basic_info": "network",
     "tpex_mainboard_basic_info": "cache",
     "ngm_companies_page": "network",
-    "spotlight_companies_directory": "network"
+    "spotlight_companies_directory": "network",
+    "idx_listed_companies": "network"
   }
 }

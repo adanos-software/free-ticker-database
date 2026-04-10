@@ -9,14 +9,14 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 55
 
 | Metric | Value |
 |---|---|
-| **Total tickers** | 55,495 |
-| Stocks | 41,101 |
+| **Total tickers** | 55,491 |
+| Stocks | 41,097 |
 | ETFs | 14,394 |
 | Exchanges | 68 |
 | Countries | 68 |
-| ISIN coverage | 38,187 (68.8%) |
-| Sector coverage | 33,505 (60.4%) |
-| Total aliases | 87,474 |
+| ISIN coverage | 38,186 (68.8%) |
+| Sector coverage | 33,504 (60.4%) |
+| Total aliases | 87,467 |
 
 ## Formats
 
@@ -155,7 +155,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (55,495 rows) + `aliases` (87,474 rows) + `cross_listings` (8,649 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
+Tables: `tickers` (55,491 rows) + `aliases` (87,467 rows) + `cross_listings` (8,649 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
 
 ## Schema
 

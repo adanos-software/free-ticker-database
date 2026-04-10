@@ -489,9 +489,11 @@ COUNTRY_TO_ISO: dict[str, str] = {
     country: code for code, country in ISIN_PREFIX_COUNTRIES.items()
 } | COUNTRY_TO_ISO_EXTRA
 
-def split_aliases(value: str) -> list[str]:
+def split_aliases(value: str | list[str]) -> list[str]:
     if not value:
         return []
+    if isinstance(value, list):
+        return [part.strip() for part in value if isinstance(part, str) and part.strip()]
     return [part.strip() for part in value.split("|") if part.strip()]
 
 

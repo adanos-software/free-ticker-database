@@ -7,6 +7,18 @@ ticker,exchange,field,decision,proposed_value,confidence,reason
 00964,TWSE,name,update,CTBC Asia Pacific High Dividend ETF,0.97,Official TWSE ETF directory resolves 00964 to the listed ETF product name instead of a numeric placeholder.
 4971,TPEX,name,update,IET-KY,0.99,Official current TPEX daily quotes and MOPS mainboard company directory both resolve 4971 to the active listed short name IET-KY.
 FRILAN,STO,name,update,Frilans,0.99,Official Spotlight companies directory titles the active Stockholm listing as Frilans (FRILAN) instead of the legacy issuer name Invoicery Group AB.
+HOTEL,STO,name,update,Hotel Fast SSE,0.99,Official Nasdaq Nordic Stockholm directory lists HOTEL as the active Stockholm share Hotel Fast SSE rather than the stale cross-listed Lion E-Mobility row currently carried in the core dataset.
+HOTEL,STO,country,update,Sweden,0.99,Official Nasdaq Nordic Stockholm directory lists HOTEL as a Swedish Stockholm share rather than the stale Mexico-tagged row currently carried in the core dataset.
+HOTEL,STO,country_code,update,SE,0.99,Official Nasdaq Nordic Stockholm directory lists HOTEL as a Swedish Stockholm share rather than the stale Mexico-tagged row currently carried in the core dataset.
+HOTEL,STO,isin,update,SE0011415710,0.99,Official Nasdaq Nordic Stockholm directory lists HOTEL with ISIN SE0011415710 rather than the stale Lion E-Mobility ISIN currently carried in the core dataset.
+HOTEL,STO,sector,clear,,0.99,The stale Lion E-Mobility sector tag should not be preserved when normalizing HOTEL to the official Stockholm listing.
+HOTEL,STO,aliases,update,hotel fast sse,0.99,Official Nasdaq Nordic Stockholm directory lists HOTEL as Hotel Fast SSE and the stale Lion E-Mobility aliases should be removed from the core dataset.
+BJBR,IDX,name,update,Bank Pembangunan Daerah Jawa Barat dan Banten Tbk,0.99,Official IDX GetEmiten directory resolves BJBR to the current listed issuer name.
+BRIS,IDX,name,update,PT Bank Syariah Indonesia (Persero) Tbk,0.99,Official IDX GetEmiten directory resolves BRIS to the current listed issuer name.
+MCOR,IDX,name,update,PT Bank China Construction Bank Indonesia Tbk,0.99,Official IDX GetEmiten directory resolves MCOR to the current listed issuer name.
+PGJO,IDX,name,update,PT Bahtera Bumi Raya Tbk,0.99,Official IDX GetEmiten directory resolves PGJO to the current listed issuer name.
+PTPP,IDX,name,update,PP (Persero) Tbk,0.99,Official IDX GetEmiten directory resolves PTPP to the current listed issuer name.
+TDPM,IDX,name,update,PT Tianrong Chemicals Industry Tbk,0.99,Official IDX GetEmiten directory resolves TDPM to the current listed issuer name.
 0AD5,LSE,country,update,United States,0.95,Yahoo Finance verifies 0AD5.L as Gen Digital Inc. with United States issuer domicile.
 0AD5,LSE,country_code,update,US,0.95,Must match corrected issuer domicile.
 0HEC,LSE,country,update,United States,0.8,"AEP is a US-domiciled company. Other LSE international listings in this dataset (e.g. 0HV2, 0QXR) correctly show the issuer's home country. 'United Kingdom' is wrong here."

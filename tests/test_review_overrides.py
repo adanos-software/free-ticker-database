@@ -138,3 +138,10 @@ def test_load_review_overrides_and_apply_metadata(tmp_path, monkeypatch):
     )
     assert renamed_input["ticker"] == "BMAG"
     assert renamed_input["name"] == "Bajaj Mobility AG"
+
+
+def test_split_aliases_accepts_review_override_lists():
+    assert rebuild_dataset.split_aliases(["hotel fast sse", "", " stockholm "]) == [
+        "hotel fast sse",
+        "stockholm",
+    ]
