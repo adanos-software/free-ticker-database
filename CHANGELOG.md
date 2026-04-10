@@ -1,5 +1,22 @@
 # Changelog
 
+## [3.3.0] - 2026-04-10
+
+### Added
+
+- Added official IDX coverage and promoted IDX to zero unresolved gaps.
+- Added official TPEX mainboard stock coverage via the TWSE MOPS `t187ap03_O.csv` feed and completed TPEX stock/ETF reference coverage.
+- Added official TASE `searchentities` supplements for foreign ETFs and participating units.
+- Added official SZSE B-share coverage via the `ShowReport` `TABKEY=tab2` feed.
+
+### Changed
+
+- Refreshed all core exports, listing history artifacts, identifier snapshots, verification runs, and coverage reports to the 2026-04-10 build.
+- Reduced Stockholm unresolved gaps with additional official NGM, Spotlight, and Nasdaq Nordic mappings plus stale-listing cleanup.
+- Reduced TASE unresolved gaps from 26 to 14 by normalizing legacy `PSG-*` ETF rows to current official `IBI.*` listings where the mapping was uniquely supported.
+- Resolved remaining venue tails for TSX, TSXV, BMV, SZSE, and TPEX using official source expansions and conservative stale-row cleanup.
+- Improved global verification coverage to 31,379 verified stocks with 12,363 stock reference gaps and 15,964 verified ETFs with 601 ETF reference gaps.
+
 ## [3.2.0] - 2026-04-09
 
 ### Added

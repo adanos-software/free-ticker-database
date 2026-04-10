@@ -9,14 +9,14 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 55
 
 | Metric | Value |
 |---|---|
-| **Total tickers** | 55,491 |
-| Stocks | 41,097 |
-| ETFs | 14,394 |
+| **Total tickers** | 55,377 |
+| Stocks | 40,990 |
+| ETFs | 14,387 |
 | Exchanges | 68 |
 | Countries | 68 |
-| ISIN coverage | 38,186 (68.8%) |
-| Sector coverage | 33,504 (60.4%) |
-| Total aliases | 87,467 |
+| ISIN coverage | 38,487 (69.5%) |
+| Sector coverage | 33,443 (60.4%) |
+| Total aliases | 87,689 |
 
 ## Formats
 
@@ -120,7 +120,7 @@ This is the full listing-level export for downstream systems that want every ven
 ```json
 {
   "_meta": {
-    "version": "3.2.0",
+    "version": "3.3.0",
     "built_at": "2026-04-09T16:42:10Z",
     "total_tickers": 55616
   },
@@ -140,7 +140,7 @@ This is the full listing-level export for downstream systems that want every ven
 }
 ```
 
-JSON outputs use an envelope with a `_meta` block and a `tickers` array as of version `3.2.0`.
+JSON outputs use an envelope with a `_meta` block and a `tickers` array as of version `3.3.0`.
 
 ### tickers.db (SQLite)
 
@@ -155,7 +155,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (55,491 rows) + `aliases` (87,467 rows) + `cross_listings` (8,649 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
+Tables: `tickers` (55,377 rows) + `aliases` (87,689 rows) + `cross_listings` (8,664 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
 
 ## Schema
 
@@ -184,21 +184,21 @@ Tables: `tickers` (55,491 rows) + `aliases` (87,467 rows) + `cross_listings` (8,
 
 | Exchange | Tickers | Description |
 |---|---|---|
-| OTC | 9,303 | US OTC / Pink Sheets |
+| OTC | 9,304 | US OTC / Pink Sheets |
 | LSE | 4,530 | London Stock Exchange |
 | NASDAQ | 4,545 | NASDAQ |
-| SZSE | 3,085 | Shenzhen Stock Exchange |
-| XETRA | 2,086 | Deutsche Boerse |
+| SZSE | 3,083 | Shenzhen Stock Exchange |
+| XETRA | 2,075 | Deutsche Boerse |
 | SSE | 2,789 | Shanghai Stock Exchange |
 | NYSE | 2,055 | New York Stock Exchange |
-| NYSE ARCA | 2,592 | NYSE ARCA (ETFs) |
+| NYSE ARCA | 2,591 | NYSE ARCA (ETFs) |
 | KRX | 1,787 | Korea Exchange |
-| TSX | 1,583 | Toronto Stock Exchange |
+| TSX | 1,581 | Toronto Stock Exchange |
 | B3 | 923 | Sao Paulo Exchange |
 | TWSE | 1,240 | Taiwan Stock Exchange |
 | ASX | 1,295 | Australian Securities Exchange |
 | KOSDAQ | 1,583 | Korean OTC |
-| TPEX | 1,126 | Taipei Exchange |
+| TPEX | 1,118 | Taipei Exchange |
 | + 52 more | ... | |
 
 ## Data Quality

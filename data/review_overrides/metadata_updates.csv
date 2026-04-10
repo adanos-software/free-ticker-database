@@ -867,6 +867,13 @@ XRPR,BATS,name,update,REX-Osprey XRP ETF,0.96,Official exchange directory provid
 XV,NYSE ARCA,asset_type,update,ETF,0.99,Official reference classifies this listing as ETF/ETP: Simplify Target 15 Distribution ETF
 XV,NYSE ARCA,name,update,Simplify Target 15 Distribution ETF,0.97,Official reference provides a more specific ETF/ETP name: Simplify Target 15 Distribution ETF
 YAVG,XETRA,name,update,IncomeShares Broadcom (AVGO) Options ETP,0.98,Official Deutsche Boerse Xetra ETFs and ETPs master workbook provides the current product name for YAVG.
+B7J,XETRA,ticker,update,B7J1,0.99,Official Xetra stock directory resolves ISIN FI0009015309 under the active ticker B7J1 rather than the stale local ticker B7J.
+DGR,XETRA,country,update,Germany,0.99,Official Xetra stock directory resolves DGR to Deutsche Grundstücksauktionen AG; the current Australia metadata is contamination from the unrelated ASX issuer DGR Global.
+DGR,XETRA,country_code,update,DE,0.99,Must match the corrected German issuer domicile from the official Xetra stock directory.
+DGR,XETRA,isin,clear,,0.99,Official Xetra stock directory resolves DGR to Deutsche Grundstücksauktionen AG and not the contaminated Australian ISIN AU000000DGR8.
+DGR,XETRA,aliases,update,deutsche grundstücksauktionen|deutsche grundstuecksauktionen,0.99,Keep only the issuer aliases supported by the official Xetra listing and remove the contaminated DGR Global alias.
+STR,XETRA,ticker,update,XD4,0.99,Official Xetra stock directory resolves ISIN AT000000STR1 under the active ticker XD4 rather than the stale local ticker STR.
+VMED,XETRA,ticker,update,VME,0.99,Official Xetra stock directory resolves ISIN DE000A3MQR65 under the active ticker VME rather than the stale local ticker VMED.
 YLDW,NYSE ARCA,name,update,Westwood Enhanced Income Opportunity ETF,0.96,Official exchange directory provides the specific ETF/ETN product name: Westwood Enhanced Income Opportunity ETF
 YYAI,NASDAQ,name,update,AiRWA Inc.,0.95,Official listing name indicates a newer company name: AiRWA Inc. - Common Stock
 ZDAI,NASDAQ,name,update,"DirectBooking Technology Co., Ltd.",0.95,"Official listing name indicates a newer company name: DirectBooking Technology Co., Ltd. - Class A Ordinary Shares"
@@ -874,3 +881,66 @@ ZETX,NYSE ARCA,asset_type,update,ETF,0.99,Official reference classifies this lis
 ZETX,NYSE ARCA,name,update,Defiance Daily Target 2x Long ZETA ETF,0.97,Official reference provides a more specific ETF/ETP name: Defiance Daily Target 2x Long ZETA ETF
 ZTEK,NASDAQ,name,update,Zentek Ltd.,0.95,Official listing name indicates a newer company name: Zentek Ltd. - common stock
 ZVOL,BATS,name,update,Volatility Premium Plus ETF,0.96,Official exchange directory provides the specific ETF/ETN product name: Volatility Premium Plus ETF
+CESSA,CPH,exchange,update,STO,0.99,Official Spotlight reference already tracks CESSA as an active Spotlight listing and the current CPH row is an exchange misassignment.
+CESSA,CPH,name,update,Cessatech,0.97,Official Spotlight reference provides the current active company name for CESSA.
+VER,STO,country,update,Sweden,0.99,Official Nasdaq Stockholm reference provides Sweden as the current listing country for Verve Group.
+VER,STO,country_code,update,SE,0.99,Official Nasdaq Stockholm reference provides SE as the current listing country code for Verve Group.
+VER,STO,isin,update,SE0018538068,0.99,Official Nasdaq Stockholm reference provides the current Verve Group ISIN.
+ETFBND,JSE,name,update,1nvest SA Bond ETF,0.99,Official JSE ETF directory provides the current product name for ETFBND.
+SOLBE1,JSE,asset_type,update,Stock,0.99,Official JSE instrument search classifies SOLBE1 as an equity/BEE line rather than an ETF.
+SOLBE1,JSE,name,update,BEE - Sasol Limited,0.99,Official JSE instrument search provides the current equity display name for SOLBE1.
+YYLBEE,JSE,asset_type,update,Stock,0.99,Official JSE instrument search classifies YYLBEE as an equity/BEE line rather than an ETF.
+YYLBEE,JSE,name,update,YeboYethu (RF) Ltd,0.99,Official JSE instrument search provides the current equity display name for YYLBEE.
+MSLA,TASE,asset_type,update,Stock,0.99,Official TASE securities marketdata classifies MSLA as a share rather than an ETF.
+IBITEC-F,TASE,asset_type,update,ETF,0.99,Official TASE ETF marketdata classifies IBITEC-F as an ETF rather than a stock.
+MORE-S8,TASE,asset_type,update,ETF,0.99,Official TASE ETF marketdata classifies MORE-S8 as an ETF rather than a stock.
+IN-FF17,TASE,isin,update,IE000716YHJ7,0.99,Official TASE search entities provide the active foreign ETF ISIN for IN-FF17.
+IS-FF102,TASE,isin,update,IE00BYXPSP02,0.99,Official TASE search entities provide the active foreign ETF ISIN for IS-FF102.
+IS-FF501,TASE,isin,update,IE00B3WJKG14,0.99,Official TASE search entities provide the active foreign ETF ISIN for IS-FF501.
+IS-FF505,TASE,isin,update,IE00B6R52259,0.99,Official TASE search entities provide the active foreign ETF ISIN for IS-FF505.
+AMDA,TASE,isin,update,IL0011689622,0.99,Official TASE search entities provide the active participating unit ISIN for AMDA.
+GIVO,TASE,isin,update,IL0005060228,0.99,Official TASE search entities provide the active participating unit ISIN for GIVO.
+IARG,TASE,isin,update,IL0011733438,0.99,Official TASE search entities provide the active participating unit ISIN for IARG.
+IMED,TASE,isin,update,IL0011712309,0.99,Official TASE search entities provide the active participating unit ISIN for IMED.
+ISOP,TASE,isin,update,IL0011199242,0.99,Official TASE search entities provide the active participating unit ISIN for ISOP.
+LPHL,TASE,isin,update,IL0010912488,0.99,Official TASE search entities provide the active participating unit ISIN for LPHL.
+MIFT,TASE,isin,update,IL0011675019,0.99,Official TASE search entities provide the active participating unit ISIN for MIFT.
+MNRA,TASE,isin,update,IL0011784746,0.99,Official TASE search entities provide the active participating unit ISIN for MNRA.
+MPRS,TASE,isin,update,IL0011828980,0.99,Official TASE search entities provide the active participating unit ISIN for MPRS.
+NVPT,TASE,isin,update,IL0011419699,0.99,Official TASE search entities provide the active participating unit ISIN for NVPT.
+NWMD,TASE,isin,update,IL0004750209,0.99,Official TASE search entities provide the active participating unit ISIN for NWMD.
+RATI,TASE,isin,update,IL0003940157,0.99,Official TASE search entities provide the active participating unit ISIN for RATI.
+RTEN,TASE,isin,update,IL0011477507,0.99,Official TASE search entities provide the active participating unit ISIN for RTEN.
+RTPT,TASE,isin,update,IL0011398646,0.99,Official TASE search entities provide the active participating unit ISIN for RTPT.
+SMAG,TASE,isin,update,IL0011694812,0.99,Official TASE search entities provide the active participating unit ISIN for SMAG.
+UNCT,TASE,isin,update,IL0011686578,0.99,Official TASE search entities provide the active participating unit ISIN for UNCT.
+PSG-F106,TASE,ticker,update,IBI.F106,0.99,Official TASE search entities resolve legacy PSG-F106 to the current active IBI.F106 line with the same F106 exposure and MSCI AC World underlying.
+PSG-F106,TASE,name,update,I.B.I. SAL (4D) MSCI AC World,0.99,Official TASE search entities provide the current active TASE listing name for the legacy PSG-F106 exposure.
+PSG-F106,TASE,isin,update,IL0011497729,0.99,Official TASE search entities provide the active ISIN for the current IBI.F106 replacement line.
+PSG-F112,TASE,ticker,update,IBI.F112,0.99,Official TASE search entities resolve legacy PSG-F112 to the current active IBI.F112 line with the same F112 exposure and DAX currency-hedged underlying.
+PSG-F112,TASE,name,update,I.B.I. SAL (4A) DAX Currency-Hedged,0.99,Official TASE search entities provide the current active TASE listing name for the legacy PSG-F112 exposure.
+PSG-F112,TASE,isin,update,IL0011498305,0.99,Official TASE search entities provide the active ISIN for the current IBI.F112 replacement line.
+PSG-F126,TASE,ticker,update,IBI.F126,0.99,Official TASE search entities resolve legacy PSG-F126 to the current active IBI.F126 line with the same F126 exposure and S&P Health Care currency-hedged underlying.
+PSG-F126,TASE,name,update,I.B.I. SAL (4A) S&P Health Care Currency-Hedged,0.99,Official TASE search entities provide the current active TASE listing name for the legacy PSG-F126 exposure.
+PSG-F126,TASE,isin,update,IL0011482127,0.99,Official TASE search entities provide the active ISIN for the current IBI.F126 replacement line.
+PSG-F14,TASE,ticker,update,IBI.F14,0.99,Official TASE search entities resolve legacy PSG-F14 to the current active IBI.F14 line with the same Tel-Bond 60 CPI-linked exposure.
+PSG-F14,TASE,name,update,I.B.I. SAL (00) Tel-Bond 60 CPI - LINKED IL,0.99,Official TASE search entities provide the current active TASE listing name for the legacy PSG-F14 exposure.
+PSG-F14,TASE,isin,update,IL0011480063,0.99,Official TASE search entities provide the active ISIN for the current IBI.F14 replacement line.
+PSG-F16,TASE,ticker,update,IBI.F16,0.99,Official TASE search entities resolve legacy PSG-F16 to the current active IBI.F16 line with the same Tel Bond-CPI Linked exposure.
+PSG-F16,TASE,name,update,I.B.I. SAL (00) Tel Bond-CPI Linked IL,0.99,Official TASE search entities provide the current active TASE listing name for the legacy PSG-F16 exposure.
+PSG-F16,TASE,isin,update,IL0011480485,0.99,Official TASE search entities provide the active ISIN for the current IBI.F16 replacement line.
+PSG-F161,TASE,ticker,update,IBI.F161,0.99,Official TASE search entities resolve legacy PSG-F161 to the current active IBI.F161 line with the same Short TA-90 exposure.
+PSG-F161,TASE,name,update,I.B.I. SAL (6A) Short TA-90 (6582.848) IL,0.99,Official TASE search entities provide the current active TASE listing name for the legacy PSG-F161 exposure.
+PSG-F161,TASE,isin,update,IL0011492365,0.99,Official TASE search entities provide the active ISIN for the current IBI.F161 replacement line.
+PSG-F22,TASE,ticker,update,IBI.F22,0.99,Official TASE search entities resolve legacy PSG-F22 to the current active IBI.F22 line with the same Tel Bond-CPI Linked A exposure.
+PSG-F22,TASE,name,update,I.B.I. SAL (00) Tel Bond-CPI Linked A IL,0.99,Official TASE search entities provide the current active TASE listing name for the legacy PSG-F22 exposure.
+PSG-F22,TASE,isin,update,IL0011484776,0.99,Official TASE search entities provide the active ISIN for the current IBI.F22 replacement line.
+PSG-F42,TASE,ticker,update,IBI.F42,0.99,Official TASE search entities resolve legacy PSG-F42 to the current active IBI.F42 line with the same TA-125 exposure.
+PSG-F42,TASE,name,update,I.B.I. SAL (4A) TA-125 IL,0.99,Official TASE search entities provide the current active TASE listing name for the legacy PSG-F42 exposure.
+PSG-F42,TASE,isin,update,IL0011488082,0.99,Official TASE search entities provide the active ISIN for the current IBI.F42 replacement line.
+PSG-F61,TASE,ticker,update,IBI.F61,0.99,Official TASE search entities resolve legacy PSG-F61 to the current active IBI.F61 line with the same LBMA Gold Price AM exposure.
+PSG-F61,TASE,name,update,I.B.I. SAL (4D) LBMA Gold Price AM,0.99,Official TASE search entities provide the current active TASE listing name for the legacy PSG-F61 exposure.
+PSG-F61,TASE,isin,update,IL0011478752,0.99,Official TASE search entities provide the active ISIN for the current IBI.F61 replacement line.
+PSG-F65,TASE,ticker,update,IBI.F65,0.99,Official TASE search entities resolve legacy PSG-F65 to the current active IBI.F65 line with the same S&P 500 exposure.
+PSG-F65,TASE,name,update,I.B.I. SAL (4D) S&P 500,0.99,Official TASE search entities provide the current active TASE listing name for the legacy PSG-F65 exposure.
+PSG-F65,TASE,isin,update,IL0011481624,0.99,Official TASE search entities provide the active ISIN for the current IBI.F65 replacement line.

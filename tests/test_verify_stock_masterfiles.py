@@ -1663,6 +1663,300 @@ def test_classify_row_verifies_same_exchange_isin_match() -> None:
     assert result["official_reference_source"] == "six_etf_products"
 
 
+def test_classify_row_verifies_grouped_euronext_isin_match_for_ams() -> None:
+    row = {
+        "ticker": "INGA",
+        "exchange": "AMS",
+        "asset_type": "Stock",
+        "name": "ING Groep NV",
+        "country": "Netherlands",
+        "country_code": "NL",
+        "isin": "NL0011821202",
+        "sector": "Financials",
+    }
+    result = classify_row(
+        row,
+        active_by_key={},
+        any_by_key={},
+        active_by_ticker={},
+        active_by_exchange_isin={
+            ("Euronext", "NL0011821202"): [
+                {
+                    "ticker": "INGA",
+                    "exchange": "Euronext",
+                    "name": "ING GROEP N.V.",
+                    "asset_type": "Stock",
+                    "source_key": "euronext_equities",
+                    "listing_status": "active",
+                    "isin": "NL0011821202",
+                }
+            ]
+        },
+        covered_exchanges={"Euronext"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+    assert result["reason"] == "Matched active official exchange reference via same-exchange ISIN."
+    assert result["official_reference_name"] == "ING GROEP N.V."
+    assert result["official_reference_source"] == "euronext_equities"
+
+
+def test_classify_row_verifies_grouped_euronext_peer_match_for_ams() -> None:
+    row = {
+        "ticker": "ECMPA",
+        "exchange": "AMS",
+        "asset_type": "Stock",
+        "name": "Eurocommercial Properties N.V.",
+        "country": "Netherlands",
+        "country_code": "NL",
+        "isin": "NL0015000K93",
+        "sector": "Real Estate",
+    }
+    result = classify_row(
+        row,
+        active_by_key={},
+        any_by_key={},
+        active_by_ticker={
+            "ECMPA": [
+                {
+                    "ticker": "ECMPA",
+                    "exchange": "Euronext",
+                    "name": "EUROCOMMERCIAL",
+                    "asset_type": "Stock",
+                    "source_key": "euronext_equities",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        active_by_exchange_isin={},
+        covered_exchanges={"Euronext"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+    assert result["reason"] == "Matched grouped official exchange directory listing."
+    assert result["official_reference_name"] == "EUROCOMMERCIAL"
+    assert result["official_reference_source"] == "euronext_equities"
+
+
+def test_classify_row_verifies_grouped_six_isin_match_for_xetra_etf() -> None:
+    row = {
+        "ticker": "DBX1",
+        "exchange": "XETRA",
+        "asset_type": "ETF",
+        "name": "Xtrackers - MSCI Emerging Markets Swap UCITS ETF",
+        "country": "Germany",
+        "country_code": "DE",
+        "isin": "LU0292107645",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={},
+        any_by_key={},
+        active_by_ticker={},
+        active_by_exchange_isin={
+            ("SIX", "LU0292107645"): [
+                {
+                    "ticker": "XMEM",
+                    "exchange": "SIX",
+                    "name": "Xtrackers MSCI Emerging Markets Swap UCITS ETF 1C",
+                    "asset_type": "ETF",
+                    "source_key": "six_etf_products",
+                    "listing_status": "active",
+                    "isin": "LU0292107645",
+                }
+            ]
+        },
+        covered_exchanges={"SIX"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+    assert result["reason"] == "Matched active official exchange reference via same-exchange ISIN."
+    assert result["official_reference_name"] == "Xtrackers MSCI Emerging Markets Swap UCITS ETF 1C"
+    assert result["official_reference_source"] == "six_etf_products"
+
+
+def test_classify_row_verifies_xetra_abbreviated_same_ticker_name_after_normalization() -> None:
+    row = {
+        "ticker": "TNE5",
+        "exchange": "XETRA",
+        "asset_type": "Stock",
+        "name": "Telefónica S.A",
+        "country": "Spain",
+        "country_code": "ES",
+        "isin": "ES0178430E18",
+        "sector": "",
+        "aliases": "telefonica",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("XETRA", "TNE5"): [
+                {
+                    "ticker": "TNE5",
+                    "exchange": "XETRA",
+                    "name": "TELEFONICA INH.      EO 1",
+                    "asset_type": "Stock",
+                    "source_key": "deutsche_boerse_xetra_all_tradable_equities",
+                    "listing_status": "active",
+                    "isin": "",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        active_by_exchange_isin={},
+        covered_exchanges={"XETRA"},
+        partial_covered_exchanges={"XETRA"},
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+    assert result["official_reference_name"] == "TELEFONICA INH.      EO 1"
+
+
+def test_classify_row_verifies_grouped_peer_isin_match_for_xetra_stock() -> None:
+    row = {
+        "ticker": "DP4A",
+        "exchange": "XETRA",
+        "asset_type": "Stock",
+        "name": "A. P. Moller Maersk A/S",
+        "country": "Germany",
+        "country_code": "DE",
+        "isin": "DK0010244425",
+        "sector": "Industrials",
+    }
+    result = classify_row(
+        row,
+        active_by_key={},
+        any_by_key={},
+        active_by_ticker={},
+        active_by_exchange_isin={
+            ("CPH", "DK0010244425"): [
+                {
+                    "ticker": "MAERSK-A",
+                    "exchange": "CPH",
+                    "name": "A.P. Møller - Mærsk A",
+                    "asset_type": "Stock",
+                    "source_key": "nasdaq_nordic_copenhagen_shares",
+                    "listing_status": "active",
+                    "isin": "DK0010244425",
+                }
+            ]
+        },
+        covered_exchanges={"CPH"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+    assert result["reason"] == "Matched active official exchange reference via same-exchange ISIN."
+    assert result["official_reference_name"] == "A.P. Møller - Mærsk A"
+    assert result["official_reference_source"] == "nasdaq_nordic_copenhagen_shares"
+
+
+def test_classify_row_prefers_grouped_peer_isin_over_low_confidence_xetra_label() -> None:
+    row = {
+        "ticker": "DP4A",
+        "exchange": "XETRA",
+        "asset_type": "Stock",
+        "name": "A. P. Moller Maersk A/S",
+        "country": "Germany",
+        "country_code": "DE",
+        "isin": "DK0010244425",
+        "sector": "Industrials",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("XETRA", "DP4A"): [
+                {
+                    "ticker": "DP4A",
+                    "exchange": "XETRA",
+                    "name": "A.P.MOELL.-M.NAM A DK1000",
+                    "asset_type": "Stock",
+                    "source_key": "deutsche_boerse_xetra_all_tradable_equities",
+                    "listing_status": "active",
+                    "isin": "",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        active_by_exchange_isin={
+            ("XETRA", "DK0010244425"): [
+                {
+                    "ticker": "DP4A",
+                    "exchange": "XETRA",
+                    "name": "A.P.MOELL.-M.NAM A DK1000",
+                    "asset_type": "Stock",
+                    "source_key": "deutsche_boerse_xetra_all_tradable_equities",
+                    "listing_status": "active",
+                    "isin": "",
+                }
+            ],
+            ("CPH", "DK0010244425"): [
+                {
+                    "ticker": "MAERSK-A",
+                    "exchange": "CPH",
+                    "name": "A.P. Møller - Mærsk A",
+                    "asset_type": "Stock",
+                    "source_key": "nasdaq_nordic_copenhagen_shares",
+                    "listing_status": "active",
+                    "isin": "DK0010244425",
+                }
+            ],
+        },
+        covered_exchanges={"CPH"},
+        partial_covered_exchanges={"XETRA"},
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+    assert result["reason"] == "Matched active official grouped exchange reference via ISIN."
+    assert result["official_reference_name"] == "A.P. Møller - Mærsk A"
+    assert result["official_reference_source"] == "nasdaq_nordic_copenhagen_shares"
+
+
+def test_classify_row_verifies_grouped_six_isin_match_for_ams_etf() -> None:
+    row = {
+        "ticker": "2HCA",
+        "exchange": "AMS",
+        "asset_type": "ETF",
+        "name": "iShares MSCI World Health Care Sector ESG UCITS ETF USD Acc EUR",
+        "country": "Ireland",
+        "country_code": "IE",
+        "isin": "IE0009QS7W62",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={},
+        any_by_key={},
+        active_by_ticker={},
+        active_by_exchange_isin={
+            ("SIX", "IE0009QS7W62"): [
+                {
+                    "ticker": "WHCA",
+                    "exchange": "SIX",
+                    "name": "iShares MSCI Wor Health Care Sector Adv UCITS ETF USD (Acc)",
+                    "asset_type": "ETF",
+                    "source_key": "six_etf_products",
+                    "listing_status": "active",
+                    "isin": "IE0009QS7W62",
+                }
+            ]
+        },
+        covered_exchanges={"Euronext", "SIX"},
+        partial_covered_exchanges=set(),
+        identifier_map={},
+    )
+    assert result["status"] == "verified"
+    assert result["reason"] == "Matched active official exchange reference via same-exchange ISIN."
+    assert result["official_reference_name"] == "iShares MSCI Wor Health Care Sector Adv UCITS ETF USD (Acc)"
+    assert result["official_reference_source"] == "six_etf_products"
+
+
 def test_classify_row_downgrades_six_peer_collision_to_reference_gap() -> None:
     row = {
         "ticker": "ABT",

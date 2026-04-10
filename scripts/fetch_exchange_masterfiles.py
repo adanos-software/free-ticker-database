@@ -84,6 +84,10 @@ NASDAQ_NORDIC_HELSINKI_SHARES_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_hels
 LEGACY_NASDAQ_NORDIC_HELSINKI_SHARES_CACHE = MASTERFILES_DIR / "nasdaq_nordic_helsinki_shares.json"
 NASDAQ_NORDIC_HELSINKI_SHARES_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_helsinki_shares_search.json"
 LEGACY_NASDAQ_NORDIC_HELSINKI_SHARES_SEARCH_CACHE = MASTERFILES_DIR / "nasdaq_nordic_helsinki_shares_search.json"
+NASDAQ_NORDIC_COPENHAGEN_SHARES_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_copenhagen_shares_search.json"
+LEGACY_NASDAQ_NORDIC_COPENHAGEN_SHARES_SEARCH_CACHE = MASTERFILES_DIR / "nasdaq_nordic_copenhagen_shares_search.json"
+NASDAQ_NORDIC_COPENHAGEN_ETF_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_copenhagen_etf_search.json"
+LEGACY_NASDAQ_NORDIC_COPENHAGEN_ETF_SEARCH_CACHE = MASTERFILES_DIR / "nasdaq_nordic_copenhagen_etf_search.json"
 SPOTLIGHT_COMPANIES_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "spotlight_companies_search.json"
 LEGACY_SPOTLIGHT_COMPANIES_SEARCH_CACHE = MASTERFILES_DIR / "spotlight_companies_search.json"
 SPOTLIGHT_COMPANIES_DIRECTORY_CACHE = MASTERFILE_CACHE_DIR / "spotlight_companies_directory.json"
@@ -124,6 +128,14 @@ PSE_LISTED_COMPANY_DIRECTORY_CACHE = MASTERFILE_CACHE_DIR / "pse_listed_company_
 LEGACY_PSE_LISTED_COMPANY_DIRECTORY_CACHE = MASTERFILES_DIR / "pse_listed_company_directory.json"
 IDX_LISTED_COMPANIES_CACHE = MASTERFILE_CACHE_DIR / "idx_listed_companies.json"
 LEGACY_IDX_LISTED_COMPANIES_CACHE = MASTERFILES_DIR / "idx_listed_companies.json"
+TASE_SECURITIES_MARKETDATA_CACHE = MASTERFILE_CACHE_DIR / "tase_securities_marketdata.json"
+LEGACY_TASE_SECURITIES_MARKETDATA_CACHE = MASTERFILES_DIR / "tase_securities_marketdata.json"
+TASE_ETF_MARKETDATA_CACHE = MASTERFILE_CACHE_DIR / "tase_etf_marketdata.json"
+LEGACY_TASE_ETF_MARKETDATA_CACHE = MASTERFILES_DIR / "tase_etf_marketdata.json"
+TASE_FOREIGN_ETF_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "tase_foreign_etf_search.json"
+LEGACY_TASE_FOREIGN_ETF_SEARCH_CACHE = MASTERFILES_DIR / "tase_foreign_etf_search.json"
+TASE_PARTICIPATING_UNIT_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "tase_participating_unit_search.json"
+LEGACY_TASE_PARTICIPATING_UNIT_SEARCH_CACHE = MASTERFILES_DIR / "tase_participating_unit_search.json"
 
 SEC_COMPANY_TICKERS_URL = "https://www.sec.gov/files/company_tickers_exchange.json"
 NASDAQ_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt"
@@ -208,6 +220,10 @@ NASDAQ_NORDIC_ETF_SOURCE_CONFIG = {
 NASDAQ_NORDIC_SHARE_SEARCH_SOURCE_CONFIG = {
     "nasdaq_nordic_stockholm_shares_search": {"exchange": "STO", "currency": "SEK"},
     "nasdaq_nordic_helsinki_shares_search": {"exchange": "HEL", "currency": "EUR"},
+    "nasdaq_nordic_copenhagen_shares_search": {"exchange": "CPH", "currency": "DKK"},
+}
+NASDAQ_NORDIC_ETF_SEARCH_SOURCE_CONFIG = {
+    "nasdaq_nordic_copenhagen_etf_search": {"exchange": "CPH", "currency": "DKK"},
 }
 SPOTLIGHT_SEARCH_SOURCE_CONFIG = {
     "spotlight_companies_search": {"exchange": "STO"},
@@ -234,6 +250,7 @@ BMV_ISSUER_DIRECTORY_SEARCH_URL = (
     "https://staging.bmv.com.mx/es/Grupo_BMV/Informacion_de_emisora/_rid/541/_mto/3/_mod/doSearch"
 )
 BME_MARKET_API_ROOT_URL = "https://apiweb.bolsasymercados.es/Market/"
+BME_COMPANIES_SEARCH_PAGE_URL = "https://www.bolsasymercados.es/en/bme-exchange/companies-search.html"
 BME_LISTED_COMPANIES_API_URL = f"{BME_MARKET_API_ROOT_URL}v1/EQ/ListedCompanies"
 BME_SHARE_DETAILS_INFO_API_URL = f"{BME_MARKET_API_ROOT_URL}v1/EQ/ShareDetailsInfo"
 SZSE_STOCK_LIST_URL = "https://www.szse.cn/market/product/stock/list/index.html"
@@ -249,6 +266,11 @@ SSE_ETF_LIST_URL = "https://www.sse.com.cn/assortment/fund/etf/list/"
 SSE_COMMON_QUERY_URL = "https://query.sse.com.cn/sseQuery/commonQuery.do"
 SSE_JSONP_CALLBACK = "jsonpCallback"
 TPEX_MAINBOARD_QUOTES_URL = "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes"
+TASE_MARKET_SECURITIES_PAGE_URL = "https://market.tase.co.il/en/market_data/securities/data/all"
+TASE_API_ROOT_URL = "https://api.tase.co.il/api/"
+TASE_SECURITIES_MARKETDATA_URL = f"{TASE_API_ROOT_URL}security/securitiesmarketdata"
+TASE_ETF_MARKETDATA_URL = f"{TASE_API_ROOT_URL}marketdata/etfs"
+TASE_SEARCH_ENTITIES_URL = f"{TASE_API_ROOT_URL}content/searchentities?lang=1"
 TPEX_ETF_FILTER_PAGE_URL = "https://info.tpex.org.tw/ETF/en/filter.html"
 TPEX_ETF_FILTER_API_URL = "https://info.tpex.org.tw/api/etfFilter"
 TPEX_MAINBOARD_BASIC_INFO_URL = "https://mopsfin.twse.com.tw/opendata/t187ap03_O.csv"
@@ -871,6 +893,14 @@ OFFICIAL_SOURCES = [
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
+        key="nasdaq_nordic_copenhagen_shares_search",
+        provider="Nasdaq Nordic",
+        description="Official Nasdaq Nordic Copenhagen share search supplement for exact stock ticker gaps",
+        source_url=NASDAQ_NORDIC_SEARCH_URL,
+        format="nasdaq_nordic_copenhagen_shares_search_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
         key="nasdaq_nordic_stockholm_etfs",
         provider="Nasdaq Nordic",
         description="Official Nasdaq Nordic Stockholm ETF screener",
@@ -892,6 +922,14 @@ OFFICIAL_SOURCES = [
         description="Official Nasdaq Nordic Copenhagen ETF screener",
         source_url=NASDAQ_NORDIC_ETP_SCREENER_URL,
         format="nasdaq_nordic_copenhagen_etfs_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="nasdaq_nordic_copenhagen_etf_search",
+        provider="Nasdaq Nordic",
+        description="Official Nasdaq Nordic Copenhagen ETF search supplement",
+        source_url=NASDAQ_NORDIC_SEARCH_URL,
+        format="nasdaq_nordic_copenhagen_etf_search_json",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -1034,6 +1072,38 @@ OFFICIAL_SOURCES = [
         description="Official IDX stock list directory",
         source_url=IDX_LISTED_COMPANIES_URL,
         format="idx_listed_companies_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="tase_securities_marketdata",
+        provider="TASE",
+        description="Official TASE market securities directory (shares subset)",
+        source_url=TASE_SECURITIES_MARKETDATA_URL,
+        format="tase_securities_marketdata_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="tase_etf_marketdata",
+        provider="TASE",
+        description="Official TASE ETF market directory",
+        source_url=TASE_ETF_MARKETDATA_URL,
+        format="tase_etf_marketdata_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="tase_foreign_etf_search",
+        provider="TASE",
+        description="Official TASE search entity supplement for exact foreign ETF ticker gaps",
+        source_url=TASE_SEARCH_ENTITIES_URL,
+        format="tase_foreign_etf_search_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="tase_participating_unit_search",
+        provider="TASE",
+        description="Official TASE search entity supplement for exact participating unit stock ticker gaps",
+        source_url=TASE_SEARCH_ENTITIES_URL,
+        format="tase_participating_unit_search_json",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -1459,6 +1529,36 @@ def idx_request_headers(referer: str = IDX_STOCK_LIST_PAGE_URL) -> dict[str, str
     }
 
 
+def tase_market_request_headers(base_headers: dict[str, str] | None = None) -> dict[str, str]:
+    headers = {
+        "User-Agent": "Mozilla/5.0",
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json;charset=UTF-8",
+        "Referer": "https://market.tase.co.il/",
+        "Origin": "https://market.tase.co.il",
+        "Sec-Fetch-Site": "same-site",
+        "Sec-Fetch-Mode": "cors",
+        "Sec-Fetch-Dest": "empty",
+    }
+    for key, value in (base_headers or {}).items():
+        if value and key.lower() != "cookie":
+            headers[key] = value
+    return headers
+
+
+def bme_request_headers(referer: str = BME_COMPANIES_SEARCH_PAGE_URL) -> dict[str, str]:
+    return {
+        "User-Agent": "Mozilla/5.0",
+        "Accept": "application/json, text/plain, */*",
+        "Referer": referer,
+        "Origin": "https://www.bolsasymercados.es",
+        "X-Requested-With": "XMLHttpRequest",
+        "Sec-Fetch-Site": "same-site",
+        "Sec-Fetch-Mode": "cors",
+        "Sec-Fetch-Dest": "empty",
+    }
+
+
 def normalize_nasdaq_nordic_search_symbol(value: str) -> str:
     return "".join(ch for ch in str(value or "").upper() if ch.isalnum())
 
@@ -1724,6 +1824,475 @@ def load_idx_listed_companies_rows(
     return rows, "network"
 
 
+def bootstrap_tase_market_session(
+    session: requests.Session | None = None,
+) -> tuple[requests.Session, dict[str, str]]:
+    try:
+        from playwright.sync_api import sync_playwright
+    except ModuleNotFoundError as exc:  # pragma: no cover - exercised in integration only
+        raise requests.RequestException("Playwright is required for TASE bootstrap") from exc
+
+    request_session = session or requests.Session()
+    captured_headers: dict[str, str] = {}
+
+    with sync_playwright() as playwright:  # pragma: no cover - exercised in integration only
+        browser = playwright.chromium.launch(headless=True)
+        context = browser.new_context()
+        page = context.new_page()
+
+        def handle_response(response: Any) -> None:
+            if (
+                response.url.startswith(TASE_SECURITIES_MARKETDATA_URL)
+                and response.request.method.upper() == "POST"
+                and not captured_headers
+            ):
+                captured_headers.update(response.request.headers)
+
+        page.on("response", handle_response)
+        page.goto(TASE_MARKET_SECURITIES_PAGE_URL, wait_until="domcontentloaded", timeout=int(REQUEST_TIMEOUT * 1000))
+        page.wait_for_timeout(5000)
+        cookies = context.cookies()
+        browser.close()
+
+    if not captured_headers:
+        raise requests.RequestException("TASE market bootstrap did not capture API headers")
+
+    for cookie in cookies:
+        request_session.cookies.set(
+            cookie.get("name", ""),
+            cookie.get("value", ""),
+            domain=cookie.get("domain"),
+            path=cookie.get("path"),
+        )
+    return request_session, tase_market_request_headers(captured_headers)
+
+
+def parse_tase_securities_marketdata_payload(
+    payload: dict[str, Any],
+    source: MasterfileSource,
+) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for record in payload.get("Items") or []:
+        if str(record.get("Type") or "").strip().lower() != "shares":
+            continue
+        ticker = str(record.get("Symbol") or "").strip().upper()
+        name = str(record.get("Name") or "").strip()
+        if not ticker or not name or ticker in seen:
+            continue
+        seen.add(ticker)
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "TASE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        isin = str(record.get("ISIN_ID") or "").strip().upper()
+        if len(isin) == 12 and isin.isalnum():
+            row["isin"] = isin
+        rows.append(row)
+    return rows
+
+
+def normalize_tase_market_symbol(symbol: Any) -> str:
+    return str(symbol or "").strip().upper().replace(".", "-")
+
+
+def normalize_tase_search_symbol(symbol: Any) -> str:
+    return "".join(ch for ch in str(symbol or "").upper() if ch.isalnum())
+
+
+TASE_SEARCH_ENTITY_ETF_SUBTYPE_DESCS = {
+    "ETF Fund - Equity",
+    "ETF - Bonds",
+    "Foreign ETF - Equity",
+    "Foreign ETF - Bonds",
+}
+TASE_SEARCH_ENTITY_STOCK_SUBTYPE_DESCS = {
+    "Participating unit",
+}
+
+
+def fetch_tase_securities_marketdata(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session, headers = bootstrap_tase_market_session(session=session)
+
+    def fetch_page(page_num: int, total_rec: int) -> dict[str, Any]:
+        response = session.post(
+            source.source_url,
+            headers=headers,
+            data=json.dumps(
+                {
+                    "dType": 1,
+                    "TotalRec": max(total_rec, 1),
+                    "pageNum": page_num,
+                    "cl1": "0",
+                    "lang": "1",
+                }
+            ),
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        return response.json()
+
+    first_payload = fetch_page(1, 1)
+    total_rec = int(first_payload.get("TotalRec") or 0)
+    total_pages = max(1, (total_rec + 29) // 30) if total_rec else 1
+
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for page_num in range(1, total_pages + 1):
+        payload = first_payload if page_num == 1 else fetch_page(page_num, total_rec)
+        page_rows = parse_tase_securities_marketdata_payload(payload, source)
+        if not page_rows and page_num == 1:
+            break
+        for row in page_rows:
+            ticker = row["ticker"]
+            if ticker in seen:
+                continue
+            seen.add(ticker)
+            rows.append(row)
+    return rows
+
+
+def load_tase_securities_marketdata_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_tase_securities_marketdata(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in (TASE_SECURITIES_MARKETDATA_CACHE, LEGACY_TASE_SECURITIES_MARKETDATA_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    TASE_SECURITIES_MARKETDATA_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def parse_tase_etf_marketdata_payload(
+    payload: dict[str, Any],
+    source: MasterfileSource,
+) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for record in payload.get("Items") or []:
+        ticker = normalize_tase_market_symbol(record.get("Symbol"))
+        name = str(
+            record.get("LongName")
+            or record.get("SecurityLongName")
+            or record.get("Name")
+            or ""
+        ).strip()
+        if not ticker or not name or ticker in seen:
+            continue
+        seen.add(ticker)
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "TASE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        isin = str(record.get("ISIN") or record.get("ISIN_ID") or "").strip().upper()
+        if len(isin) == 12 and isin.isalnum():
+            row["isin"] = isin
+        rows.append(row)
+    return rows
+
+
+def fetch_tase_etf_marketdata(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session, headers = bootstrap_tase_market_session(session=session)
+    request_headers = dict(headers)
+    request_headers.setdefault("referer", TASE_MARKET_SECURITIES_PAGE_URL)
+
+    def fetch_page(page_num: int) -> dict[str, Any]:
+        response = session.post(
+            source.source_url,
+            headers=request_headers,
+            data=json.dumps({"pageNum": page_num, "lang": "1"}),
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        return response.json()
+
+    first_payload = fetch_page(1)
+    total_rec = int(first_payload.get("TotalRec") or 0)
+    total_pages = max(1, (total_rec + 29) // 30) if total_rec else 1
+
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for page_num in range(1, total_pages + 1):
+        payload = first_payload if page_num == 1 else fetch_page(page_num)
+        page_rows = parse_tase_etf_marketdata_payload(payload, source)
+        if not page_rows and page_num == 1:
+            break
+        for row in page_rows:
+            ticker = row["ticker"]
+            if ticker in seen:
+                continue
+            seen.add(ticker)
+            rows.append(row)
+    return rows
+
+
+def load_tase_etf_marketdata_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_tase_etf_marketdata(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in (TASE_ETF_MARKETDATA_CACHE, LEGACY_TASE_ETF_MARKETDATA_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    TASE_ETF_MARKETDATA_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def tase_foreign_etf_search_target_rows(
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    verification_dir: Path = ETF_VERIFICATION_DIR,
+) -> list[dict[str, str]]:
+    target_tickers = latest_reference_gap_tickers(
+        verification_dir,
+        exchanges={"TASE"},
+    )
+    if not target_tickers:
+        return []
+    return [
+        row
+        for row in load_csv(listings_path)
+        if row.get("exchange") == "TASE"
+        and row.get("asset_type") == "ETF"
+        and row.get("ticker", "").strip() in target_tickers
+    ]
+
+
+def fetch_tase_foreign_etf_search(
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    verification_dir: Path = ETF_VERIFICATION_DIR,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    target_rows = tase_foreign_etf_search_target_rows(
+        listings_path=listings_path,
+        verification_dir=verification_dir,
+    )
+    if not target_rows:
+        return []
+
+    session, headers = bootstrap_tase_market_session(session=session)
+    response = session.get(
+        source.source_url,
+        headers=tase_market_request_headers(headers),
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    payload = response.json()
+    if not isinstance(payload, list):
+        raise ValueError("TASE search entities payload must be a list")
+
+    entities_by_symbol: dict[str, list[dict[str, Any]]] = {}
+    for record in payload:
+        if not isinstance(record, dict):
+            continue
+        subtype_desc = str(record.get("SubTypeDesc") or "").strip()
+        symbol = str(record.get("Smb") or "").strip()
+        name = str(record.get("Name") or "").strip()
+        if subtype_desc not in TASE_SEARCH_ENTITY_ETF_SUBTYPE_DESCS or not symbol or not name:
+            continue
+        entities_by_symbol.setdefault(normalize_tase_search_symbol(symbol), []).append(record)
+
+    rows: list[dict[str, str]] = []
+    for listing_row in target_rows:
+        ticker = listing_row.get("ticker", "").strip()
+        if not ticker:
+            continue
+        listing_isin = listing_row.get("isin", "").strip().upper()
+        candidates = entities_by_symbol.get(normalize_tase_search_symbol(ticker), [])
+        if not candidates:
+            continue
+        filtered_candidates = []
+        for candidate in candidates:
+            candidate_isin = str(candidate.get("ISIN") or "").strip().upper()
+            if listing_isin and candidate_isin and candidate_isin != listing_isin:
+                continue
+            filtered_candidates.append(candidate)
+        if len(filtered_candidates) != 1:
+            continue
+        candidate = filtered_candidates[0]
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": str(candidate.get("Name") or "").strip(),
+            "exchange": "TASE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        candidate_isin = str(candidate.get("ISIN") or "").strip().upper()
+        if len(candidate_isin) == 12 and candidate_isin.isalnum():
+            row["isin"] = candidate_isin
+        rows.append(row)
+    return rows
+
+
+def load_tase_foreign_etf_search_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_tase_foreign_etf_search(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in (TASE_FOREIGN_ETF_SEARCH_CACHE, LEGACY_TASE_FOREIGN_ETF_SEARCH_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    TASE_FOREIGN_ETF_SEARCH_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def tase_participating_unit_search_target_rows(
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    verification_dir: Path = STOCK_VERIFICATION_DIR,
+) -> list[dict[str, str]]:
+    target_tickers = latest_reference_gap_tickers(
+        verification_dir,
+        exchanges={"TASE"},
+    )
+    if not target_tickers:
+        return []
+    return [
+        row
+        for row in load_csv(listings_path)
+        if row.get("exchange") == "TASE"
+        and row.get("asset_type") == "Stock"
+        and row.get("ticker", "").strip() in target_tickers
+    ]
+
+
+def fetch_tase_participating_unit_search(
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    verification_dir: Path = STOCK_VERIFICATION_DIR,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    target_rows = tase_participating_unit_search_target_rows(
+        listings_path=listings_path,
+        verification_dir=verification_dir,
+    )
+    if not target_rows:
+        return []
+
+    session, headers = bootstrap_tase_market_session(session=session)
+    response = session.get(
+        source.source_url,
+        headers=tase_market_request_headers(headers),
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    payload = response.json()
+    if not isinstance(payload, list):
+        raise ValueError("TASE search entities payload must be a list")
+
+    entities_by_symbol: dict[str, list[dict[str, Any]]] = {}
+    for record in payload:
+        if not isinstance(record, dict):
+            continue
+        subtype_desc = str(record.get("SubTypeDesc") or "").strip()
+        symbol = str(record.get("Smb") or "").strip()
+        name = str(record.get("Name") or "").strip()
+        if subtype_desc not in TASE_SEARCH_ENTITY_STOCK_SUBTYPE_DESCS or not symbol or not name:
+            continue
+        entities_by_symbol.setdefault(normalize_tase_search_symbol(symbol), []).append(record)
+
+    rows: list[dict[str, str]] = []
+    for listing_row in target_rows:
+        ticker = listing_row.get("ticker", "").strip()
+        if not ticker:
+            continue
+        listing_isin = listing_row.get("isin", "").strip().upper()
+        candidates = entities_by_symbol.get(normalize_tase_search_symbol(ticker), [])
+        if not candidates:
+            continue
+        filtered_candidates = []
+        for candidate in candidates:
+            candidate_isin = str(candidate.get("ISIN") or "").strip().upper()
+            if listing_isin and candidate_isin and candidate_isin != listing_isin:
+                continue
+            filtered_candidates.append(candidate)
+        if len(filtered_candidates) != 1:
+            continue
+        candidate = filtered_candidates[0]
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": str(candidate.get("Name") or "").strip(),
+            "exchange": "TASE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        candidate_isin = str(candidate.get("ISIN") or "").strip().upper()
+        if len(candidate_isin) == 12 and candidate_isin.isalnum():
+            row["isin"] = candidate_isin
+        rows.append(row)
+    return rows
+
+
+def load_tase_participating_unit_search_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_tase_participating_unit_search(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in (TASE_PARTICIPATING_UNIT_SEARCH_CACHE, LEGACY_TASE_PARTICIPATING_UNIT_SEARCH_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    TASE_PARTICIPATING_UNIT_SEARCH_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
 def load_szse_etf_list_rows(
     source: MasterfileSource,
     session: requests.Session | None = None,
@@ -1947,6 +2516,28 @@ def spotlight_search_target_rows(
     ]
 
 
+def nasdaq_nordic_etf_search_target_rows(
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    verification_dir: Path = ETF_VERIFICATION_DIR,
+) -> list[dict[str, str]]:
+    config = NASDAQ_NORDIC_ETF_SEARCH_SOURCE_CONFIG[source.key]
+    target_tickers = latest_reference_gap_tickers(
+        verification_dir,
+        exchanges={config["exchange"]},
+    )
+    if not target_tickers:
+        return []
+    return [
+        row
+        for row in load_csv(listings_path)
+        if row.get("exchange") == config["exchange"]
+        and row.get("asset_type") == "ETF"
+        and row.get("ticker", "").strip() in target_tickers
+    ]
+
+
 def fetch_tmx_etf_screener_quote_rows(
     payload: list[dict[str, Any]],
     *,
@@ -2094,6 +2685,9 @@ def fetch_nasdaq_nordic_share_search(
         normalized_term = listing_ticker.replace("-", " ").strip()
         if normalized_term and normalized_term not in search_terms:
             search_terms.append(normalized_term)
+        listing_name = str(listing_row.get("name", "")).strip()
+        if len(listing_ticker) <= 3 and listing_name and listing_name not in search_terms:
+            search_terms.append(listing_name)
         for search_term in search_terms:
             response = session.get(
                 source.source_url,
@@ -2101,6 +2695,8 @@ def fetch_nasdaq_nordic_share_search(
                 headers=headers,
                 timeout=REQUEST_TIMEOUT,
             )
+            if getattr(response, "status_code", 200) == 400:
+                continue
             response.raise_for_status()
             payload = response.json().get("data") or []
             for group in payload:
@@ -2121,7 +2717,7 @@ def fetch_nasdaq_nordic_share_search(
                     if not normalized_match:
                         continue
                     exact_symbol_match = symbol == listing_ticker
-                    if config["exchange"] == "STO":
+                    if config["exchange"] in {"STO", "CPH"}:
                         listing_isin = str(listing_row.get("isin", "")).strip().upper()
                         if not has_strong_company_name_match(
                             listing_row.get("name", ""),
@@ -2148,6 +2744,90 @@ def fetch_nasdaq_nordic_share_search(
                     if isin:
                         row["isin"] = isin
                     rows.append(row)
+                    seen.add(listing_ticker)
+                    break
+                if listing_ticker in seen:
+                    break
+            if listing_ticker in seen:
+                break
+    return rows
+
+
+def fetch_nasdaq_nordic_etf_search(
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    verification_dir: Path = ETF_VERIFICATION_DIR,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    config = NASDAQ_NORDIC_ETF_SEARCH_SOURCE_CONFIG[source.key]
+    session = session or requests.Session()
+    headers = nasdaq_nordic_request_headers(NASDAQ_NORDIC_ETF_PAGE_URL)
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for listing_row in nasdaq_nordic_etf_search_target_rows(
+        source,
+        listings_path=listings_path,
+        verification_dir=verification_dir,
+    ):
+        listing_ticker = listing_row.get("ticker", "").strip().upper()
+        listing_name = str(listing_row.get("name", "")).strip()
+        listing_isin = str(listing_row.get("isin", "")).strip().upper()
+        if not listing_ticker or listing_ticker in seen:
+            continue
+        search_terms = [listing_ticker]
+        normalized_term = listing_ticker.replace("-", " ").strip()
+        if normalized_term and normalized_term not in search_terms:
+            search_terms.append(normalized_term)
+        if listing_name and listing_name not in search_terms:
+            search_terms.append(listing_name)
+        for search_term in search_terms:
+            response = session.get(
+                source.source_url,
+                params={"searchText": search_term},
+                headers=headers,
+                timeout=REQUEST_TIMEOUT,
+            )
+            if getattr(response, "status_code", 200) == 400:
+                continue
+            response.raise_for_status()
+            payload = response.json().get("data") or []
+            for group in payload:
+                for instrument in group.get("instruments") or []:
+                    if str(instrument.get("currency", "")).strip().upper() != config["currency"]:
+                        continue
+                    if str(instrument.get("assetClass", "")).strip().upper() not in {"FUNDS", "ETF"}:
+                        continue
+                    symbol = str(instrument.get("symbol", "")).strip().upper()
+                    name = str(instrument.get("fullName", "")).strip()
+                    isin = str(instrument.get("isin", "")).strip().upper()
+                    if not name:
+                        continue
+                    normalized_match = (
+                        normalize_nasdaq_nordic_search_symbol(symbol)
+                        == normalize_nasdaq_nordic_search_symbol(listing_ticker)
+                    )
+                    if not normalized_match:
+                        continue
+                    if not has_strong_company_name_match(listing_name, name) and not (
+                        listing_isin and isin and listing_isin == isin
+                    ):
+                        continue
+                    rows.append(
+                        {
+                            "source_key": source.key,
+                            "provider": source.provider,
+                            "source_url": source.source_url,
+                            "ticker": listing_ticker,
+                            "name": name,
+                            "exchange": config["exchange"],
+                            "asset_type": "ETF",
+                            "listing_status": "active",
+                            "reference_scope": source.reference_scope,
+                            "official": "true",
+                            "isin": isin,
+                        }
+                    )
                     seen.add(listing_ticker)
                     break
                 if listing_ticker in seen:
@@ -2455,15 +3135,26 @@ def fetch_bme_listed_companies_payload(
     session: requests.Session | None = None,
 ) -> list[dict[str, Any]]:
     session = session or requests.Session()
-    response = session.get(
-        BME_LISTED_COMPANIES_API_URL,
-        params={"tradingSystem": trading_system, "page": 0, "pageSize": 0},
-        headers={"User-Agent": USER_AGENT},
-        timeout=REQUEST_TIMEOUT,
-    )
-    response.raise_for_status()
-    payload = response.json()
-    return payload.get("data") or []
+    page = 0
+    page_size = 100
+    rows: list[dict[str, Any]] = []
+
+    while True:
+        response = session.get(
+            BME_LISTED_COMPANIES_API_URL,
+            params={"tradingSystem": trading_system, "page": page, "pageSize": page_size},
+            headers=bme_request_headers(),
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        payload = response.json()
+        data = payload.get("data") or []
+        rows.extend(data)
+        if not payload.get("hasMoreResults") or not data:
+            break
+        page += 1
+
+    return rows
 
 
 def fetch_bme_share_details_info(
@@ -2475,7 +3166,7 @@ def fetch_bme_share_details_info(
     response = session.get(
         BME_SHARE_DETAILS_INFO_API_URL,
         params={"isin": isin, "language": "en"},
-        headers={"User-Agent": USER_AGENT},
+        headers=bme_request_headers(),
         timeout=REQUEST_TIMEOUT,
     )
     response.raise_for_status()
@@ -2539,16 +3230,19 @@ def fetch_bme_reference_rows(
             seen_pairs.add(pair)
             rows.append(row)
 
-    if config["asset_type"] == "ETF":
-        listings_by_isin: dict[str, list[dict[str, str]]] = {}
-        for listing_row in load_csv(listings_path):
-            if listing_row.get("exchange") != config["exchange"] or listing_row.get("asset_type") != "ETF":
-                continue
-            isin = listing_row.get("isin", "").strip().upper()
-            if not isin:
-                continue
-            listings_by_isin.setdefault(isin, []).append(listing_row)
+    listings_by_isin: dict[str, list[dict[str, str]]] = {}
+    for listing_row in load_csv(listings_path):
+        if (
+            listing_row.get("exchange") != config["exchange"]
+            or listing_row.get("asset_type") != config["asset_type"]
+        ):
+            continue
+        isin = listing_row.get("isin", "").strip().upper()
+        if not isin:
+            continue
+        listings_by_isin.setdefault(isin, []).append(listing_row)
 
+    if config["asset_type"] == "ETF":
         for item in listed_items:
             isin = str(item.get("isin", "")).strip().upper()
             official_name = str(item.get("shareName", "")).strip()
@@ -2565,12 +3259,30 @@ def fetch_bme_reference_rows(
                 )
         return rows
 
+    for item in listed_items:
+        isin = str(item.get("isin", "")).strip().upper()
+        official_name = str(item.get("shareName", "")).strip()
+        if not isin or not official_name:
+            continue
+        for listing_row in listings_by_isin.get(isin, []):
+            extend_rows(
+                {
+                    "ticker": listing_row.get("ticker", ""),
+                    "isin": isin,
+                    "name": official_name,
+                    "tradingSystem": config["trading_system"],
+                }
+            )
+
     if session is not None or len(listed_items) <= 1:
         for item in listed_items:
             isin = str(item.get("isin", "")).strip().upper()
             if not isin:
                 continue
-            detail = fetch_bme_share_details_info(isin, session=session)
+            try:
+                detail = fetch_bme_share_details_info(isin, session=session)
+            except requests.RequestException:
+                continue
             if str(detail.get("tradingSystem", "")).strip().upper() != config["trading_system"]:
                 continue
             extend_rows(detail)
@@ -2584,7 +3296,10 @@ def fetch_bme_reference_rows(
             if str(item.get("isin", "")).strip()
         }
         for future in as_completed(futures):
-            detail = future.result()
+            try:
+                detail = future.result()
+            except requests.RequestException:
+                continue
             if str(detail.get("tradingSystem", "")).strip().upper() != config["trading_system"]:
                 continue
             extend_rows(detail)
@@ -3449,6 +4164,20 @@ def nasdaq_nordic_share_search_cache_paths(source_key: str) -> tuple[Path, Path]
             NASDAQ_NORDIC_HELSINKI_SHARES_SEARCH_CACHE,
             LEGACY_NASDAQ_NORDIC_HELSINKI_SHARES_SEARCH_CACHE,
         ),
+        "nasdaq_nordic_copenhagen_shares_search": (
+            NASDAQ_NORDIC_COPENHAGEN_SHARES_SEARCH_CACHE,
+            LEGACY_NASDAQ_NORDIC_COPENHAGEN_SHARES_SEARCH_CACHE,
+        ),
+    }
+    return mapping[source_key]
+
+
+def nasdaq_nordic_etf_search_cache_paths(source_key: str) -> tuple[Path, Path]:
+    mapping = {
+        "nasdaq_nordic_copenhagen_etf_search": (
+            NASDAQ_NORDIC_COPENHAGEN_ETF_SEARCH_CACHE,
+            LEGACY_NASDAQ_NORDIC_COPENHAGEN_ETF_SEARCH_CACHE,
+        ),
     }
     return mapping[source_key]
 
@@ -3528,6 +4257,24 @@ def load_nasdaq_nordic_share_search_rows(
 
     ensure_output_dirs()
     nasdaq_nordic_share_search_cache_paths(source.key)[0].write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def load_nasdaq_nordic_etf_search_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in nasdaq_nordic_etf_search_cache_paths(source.key):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+
+    try:
+        rows = fetch_nasdaq_nordic_etf_search(source, session=session)
+    except requests.RequestException:
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    nasdaq_nordic_etf_search_cache_paths(source.key)[0].write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"
 
 
@@ -3975,7 +4722,7 @@ def load_jse_instrument_search_rows(
         used_network = successful_fetch
 
     rows: list[dict[str, str]] = []
-    for ticker in target_tickers:
+    for ticker in sorted(cached_lookup):
         rows.extend(cached_lookup.get(ticker, []))
     return rows, "network" if used_network else "cache"
 
@@ -6943,6 +7690,8 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return fetch_b3_bdr_companies(source, session=session)
     if source.format == "nasdaq_nordic_stockholm_shares_json":
         return fetch_nasdaq_nordic_stockholm_shares(source, session=session)
+    if source.format == "nasdaq_nordic_copenhagen_etf_search_json":
+        return fetch_nasdaq_nordic_etf_search(source, session=session)
     if source.format == "twse_listed_companies_json":
         payload = fetch_json(source.source_url, session=session)
         return parse_twse_listed_companies(payload, source)
@@ -6987,7 +7736,11 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         if text is None:
             raise requests.RequestException("TPEX emerging basic info unavailable")
         return parse_tpex_emerging_basic_info_csv(text, source)
-    if source.format in {"nasdaq_nordic_stockholm_shares_search_json", "nasdaq_nordic_helsinki_shares_search_json"}:
+    if source.format in {
+        "nasdaq_nordic_stockholm_shares_search_json",
+        "nasdaq_nordic_helsinki_shares_search_json",
+        "nasdaq_nordic_copenhagen_shares_search_json",
+    }:
         return fetch_nasdaq_nordic_share_search(source, session=session)
     if source.format == "spotlight_companies_search_json":
         return fetch_spotlight_companies_search(source, session=session)
@@ -7007,6 +7760,14 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return fetch_pse_listed_company_directory(source, session=session)
     if source.format == "idx_listed_companies_json":
         return fetch_idx_listed_companies(source, session=session)
+    if source.format == "tase_securities_marketdata_json":
+        return fetch_tase_securities_marketdata(source, session=session)
+    if source.format == "tase_etf_marketdata_json":
+        return fetch_tase_etf_marketdata(source, session=session)
+    if source.format == "tase_foreign_etf_search_json":
+        return fetch_tase_foreign_etf_search(source, session=session)
+    if source.format == "tase_participating_unit_search_json":
+        return fetch_tase_participating_unit_search(source, session=session)
     if source.format == "sec_company_tickers_exchange_json":
         payload = fetch_json(source.source_url, session=session)
         return parse_sec_company_tickers_exchange(payload, source)
@@ -7091,6 +7852,26 @@ def fetch_source_rows_with_mode(
         if rows is None:
             raise requests.RequestException("IDX listed companies unavailable")
         return rows, mode
+    if source.format == "tase_securities_marketdata_json":
+        rows, mode = load_tase_securities_marketdata_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("TASE securities marketdata unavailable")
+        return rows, mode
+    if source.format == "tase_etf_marketdata_json":
+        rows, mode = load_tase_etf_marketdata_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("TASE ETF marketdata unavailable")
+        return rows, mode
+    if source.format == "tase_foreign_etf_search_json":
+        rows, mode = load_tase_foreign_etf_search_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("TASE foreign ETF search unavailable")
+        return rows, mode
+    if source.format == "tase_participating_unit_search_json":
+        rows, mode = load_tase_participating_unit_search_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("TASE participating unit search unavailable")
+        return rows, mode
     if source.format == "bmv_stock_search_json":
         rows, mode = load_bmv_stock_search_rows(source, session=session)
         if rows is None:
@@ -7145,7 +7926,11 @@ def fetch_source_rows_with_mode(
         if rows is None:
             raise requests.RequestException(f"Nasdaq Nordic shares unavailable for {source.key}")
         return rows, mode
-    if source.format in {"nasdaq_nordic_stockholm_shares_search_json", "nasdaq_nordic_helsinki_shares_search_json"}:
+    if source.format in {
+        "nasdaq_nordic_stockholm_shares_search_json",
+        "nasdaq_nordic_helsinki_shares_search_json",
+        "nasdaq_nordic_copenhagen_shares_search_json",
+    }:
         rows, mode = load_nasdaq_nordic_share_search_rows(source, session=session)
         if rows is None:
             raise requests.RequestException(f"Nasdaq Nordic share search unavailable for {source.key}")
@@ -7173,6 +7958,11 @@ def fetch_source_rows_with_mode(
         rows, mode = load_nasdaq_nordic_stockholm_etf_rows(source, session=session)
         if rows is None:
             raise requests.RequestException(f"Nasdaq Nordic ETFs unavailable for {source.key}")
+        return rows, mode
+    if source.format == "nasdaq_nordic_copenhagen_etf_search_json":
+        rows, mode = load_nasdaq_nordic_etf_search_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("Nasdaq Nordic Copenhagen ETF search unavailable")
         return rows, mode
     if source.format == "nasdaq_nordic_stockholm_trackers_json":
         rows, mode = load_nasdaq_nordic_stockholm_tracker_rows(source, session=session)

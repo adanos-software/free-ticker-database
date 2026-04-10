@@ -862,6 +862,18 @@ def test_alias_matches_company_accepts_trusted_non_lexical_renames():
     assert alias_matches_company("CONTRALADORA AXEL SAB", "CONTROLADORA AXTEL, S.A.B. DE C.V.") is True
 
 
+def test_alias_matches_company_handles_xetra_diacritics_and_compact_labels():
+    from scripts.rebuild_dataset import alias_matches_company
+
+    assert alias_matches_company("L'Oréal S.A.", "L OREAL INH. EO 0,2") is True
+    assert alias_matches_company("Telefónica S.A", "TELEFONICA INH. EO 1") is True
+    assert alias_matches_company("Industria de Diseño Textil, S.A.", "INDITEX INH. EO 0,03") is True
+    assert alias_matches_company("Sartorius Stedim Biotech S.A.", "SARTOR.STED.B. EO-,20") is True
+    assert alias_matches_company("T. Rowe Price Group Inc", "T.ROW.PR.GRP DL-,20") is True
+    assert alias_matches_company("Raytheon Technologies Corp", "RTX CORP. -,01") is True
+    assert alias_matches_company("Deutsche Grundstücksauktionen AG", "DT.GRUNDST.AUKT.AG") is True
+
+
 def test_apply_official_exchange_corrections_moves_krx_stock_to_kosdaq(monkeypatch):
     from scripts import rebuild_dataset
 
@@ -1307,6 +1319,147 @@ def test_sto_review_overrides_keep_current_hotel_and_remove_nosium_b():
     assert hotel["country_code"] == "SE"
     assert hotel["isin"] == "SE0011415710"
     assert hotel["aliases"] == "hotel fast sse"
+
+
+def test_sto_review_overrides_drop_m8g_and_int_and_enrich_ver():
+    tickers_csv = load_csv("tickers.csv")
+    by_key = {(row["ticker"], row["exchange"]): row for row in tickers_csv}
+
+    assert ("M8G", "STO") not in by_key
+    assert ("INT", "STO") not in by_key
+
+    ver = by_key[("VER", "STO")]
+    assert ver["name"] == "Verve Group"
+    assert ver["country"] == "Sweden"
+    assert ver["country_code"] == "SE"
+    assert ver["isin"] == "SE0018538068"
+
+
+def test_cph_review_overrides_drop_delisted_rows_and_move_cessa_to_sto():
+    tickers_csv = load_csv("tickers.csv")
+    by_key = {(row["ticker"], row["exchange"]): row for row in tickers_csv}
+
+    assert ("BRAINP", "CPH") not in by_key
+    assert ("LEDIBOND", "CPH") not in by_key
+    assert ("CESSA", "CPH") not in by_key
+
+    cessa = by_key[("CESSA", "STO")]
+    assert cessa["name"] == "Cessatech"
+    assert cessa["country"] == "Denmark"
+    assert cessa["country_code"] == "DK"
+
+
+def test_jse_and_bats_review_overrides_fix_etfbnd_and_drop_fgro():
+    tickers_csv = load_csv("tickers.csv")
+    by_key = {(row["ticker"], row["exchange"]): row for row in tickers_csv}
+
+    assert ("FGRO", "BATS") not in by_key
+
+    etfbnd = by_key[("ETFBND", "JSE")]
+    assert etfbnd["name"] == "1nvest SA Bond ETF"
+
+    solbe1 = by_key[("SOLBE1", "JSE")]
+    assert solbe1["asset_type"] == "Stock"
+    assert solbe1["name"] == "BEE - Sasol Limited"
+
+    yylbee = by_key[("YYLBEE", "JSE")]
+    assert yylbee["asset_type"] == "Stock"
+    assert yylbee["name"] == "YeboYethu (RF) Ltd"
+
+    msla = by_key[("MSLA", "TASE")]
+    assert msla["asset_type"] == "Stock"
+
+    ibitec = by_key[("IBITEC-F", "TASE")]
+    assert ibitec["asset_type"] == "ETF"
+
+    more_s8 = by_key[("MORE-S8", "TASE")]
+    assert more_s8["asset_type"] == "ETF"
+
+    listings_csv = load_csv("listings.csv")
+    listings_by_key = {(row["ticker"], row["exchange"]): row for row in listings_csv}
+
+    in_ff17 = listings_by_key[("IN-FF17", "TASE")]
+    assert in_ff17["isin"] == "IE000716YHJ7"
+
+    is_ff102 = listings_by_key[("IS-FF102", "TASE")]
+    assert is_ff102["isin"] == "IE00BYXPSP02"
+
+
+def test_tase_review_overrides_rename_legacy_psagot_lines_and_drop_orbi():
+    listings_csv = load_csv("listings.csv")
+    by_key = {(row["ticker"], row["exchange"]): row for row in listings_csv}
+    listings_by_key = by_key
+
+    assert ("ORBI", "TASE") not in by_key
+    assert ("MDIN-L", "TASE") not in by_key
+    assert ("PSG-F106", "TASE") not in by_key
+    assert ("PSG-F65", "TASE") not in by_key
+
+    ibi_f106 = by_key[("IBI.F106", "TASE")]
+    assert ibi_f106["name"] == "I.B.I. SAL (4D) MSCI AC World"
+    assert ibi_f106["isin"] == "IL0011497729"
+
+    ibi_f65 = by_key[("IBI.F65", "TASE")]
+    assert ibi_f65["name"] == "I.B.I. SAL (4D) S&P 500"
+    assert ibi_f65["isin"] == "IL0011481624"
+
+    is_ff501 = listings_by_key[("IS-FF501", "TASE")]
+    assert is_ff501["isin"] == "IE00B3WJKG14"
+
+    is_ff505 = listings_by_key[("IS-FF505", "TASE")]
+    assert is_ff505["isin"] == "IE00B6R52259"
+
+    amda = listings_by_key[("AMDA", "TASE")]
+    assert amda["isin"] == "IL0011689622"
+
+    nvpt = listings_by_key[("NVPT", "TASE")]
+    assert nvpt["isin"] == "IL0011419699"
+
+    rati = listings_by_key[("RATI", "TASE")]
+    assert rati["isin"] == "IL0003940157"
+
+
+def test_drop_overrides_remove_stale_neo_and_placeholder_us_rows() -> None:
+    tickers_csv = load_csv("tickers.csv")
+    by_key = {(row["ticker"], row["exchange"]): row for row in tickers_csv}
+
+    for key in [
+        ("ATMY", "NEO"),
+        ("GLAS-A", "NEO"),
+        ("KUYA", "NEO"),
+        ("QIMC", "NEO"),
+        ("PTEST-X", "NYSE ARCA"),
+        ("ZTST", "BATS"),
+    ]:
+        assert key not in by_key
+
+
+def test_xetra_review_overrides_replace_stale_duplicate_and_legacy_tickers() -> None:
+    listings_csv = load_csv("listings.csv")
+    by_key = {(row["ticker"], row["exchange"]): row for row in listings_csv}
+
+    for key in [
+        ("42FB", "XETRA"),
+        ("BWQ", "XETRA"),
+        ("DIC", "XETRA"),
+        ("EXJ", "XETRA"),
+        ("HVXA", "XETRA"),
+        ("JY0", "XETRA"),
+        ("LSPP", "XETRA"),
+        ("M5S", "XETRA"),
+        ("PO1", "XETRA"),
+        ("TLIK", "XETRA"),
+        ("TR9", "XETRA"),
+    ]:
+        assert key not in by_key
+
+    assert by_key[("B7J1", "XETRA")]["name"] == "SRV Yhtiöt Oyj"
+    assert by_key[("BRNK", "XETRA")]["isin"] == "DE000A1X3XX4"
+    assert by_key[("DGR", "XETRA")]["country"] == "Germany"
+    assert by_key[("DGR", "XETRA")]["country_code"] == "DE"
+    assert by_key[("DGR", "XETRA")]["isin"] == ""
+    assert by_key[("XD4", "XETRA")]["name"] == "STRABAG"
+    assert by_key[("VME", "XETRA")]["name"] == "Viromed Medical AG"
 
 
 def db_rows_for_table(table: str) -> int:

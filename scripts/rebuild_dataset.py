@@ -4,6 +4,7 @@ import csv
 import json
 import re
 import sqlite3
+import unicodedata
 from collections import defaultdict
 from datetime import datetime, timezone
 from functools import lru_cache
@@ -283,8 +284,11 @@ TRUSTED_NON_LEXICAL_ALIASES: dict[str, set[str]] = {
     "femsa": {"fomento economico mexicano", "fomento económico mexicano, s.a.b. de c.v."},
     "contraladora axel sab": {"controladora axtel, s.a.b. de c.v."},
     "daetwyl i": {"dätwyler holding ag"},
+    "deutsche grundstücksauktionen ag": {"dt.grundst.aukt.ag", "dt grundst aukt ag"},
     "evolva holding sa": {"evonext holdings sa"},
     "itaúsa - investimentos itaú": {"itausa", "itausa s.a."},
+    "industria de diseno textil, s.a.": {"inditex"},
+    "industria de diseño textil, s.a.": {"inditex"},
     "jereissati participações": {"iguatemi", "iguatemi s.a."},
     "keybank": {"keycorp"},
     "leclanche sa": {"leclanché sa"},
@@ -293,7 +297,9 @@ TRUSTED_NON_LEXICAL_ALIASES: dict[str, set[str]] = {
     "münchener rück": {"muench.rueckversicherungs gesellschaft.vna o.n.", "muench. rueckvers. vna o.n."},
     "nortonlifelock": {"gen digital"},
     "old navy": {"gap", "the gap"},
+    "raytheon technologies corp": {"rtx corp", "rtx corporation", "rtx"},
     "randon s.a. implementos e participações": {"randoncorp", "randoncorp s.a."},
+    "sartorius stedim biotech s.a.": {"sartor sted b", "sartor stedim biotech", "sartor.sted.b."},
     "sena j property pcl": {"sen x public company limited"},
     "shareholder value": {"sharehold.val.bet.na o.n.", "synthaverse"},
     "shareholder value beteiligungen": {"sharehold.val.bet.na o.n.", "synthaverse"},
@@ -301,6 +307,7 @@ TRUSTED_NON_LEXICAL_ALIASES: dict[str, set[str]] = {
     "starrag group holding ag": {"starragtornos group ag"},
     "synthaverse": {"sharehold.val.bet.na o.n.", "synthaverse"},
     "tdg gold": {"tdggf", "tdg gold corp"},
+    "t. rowe price group inc": {"t.row.pr.grp", "t rowe price grp", "trowprgrp"},
     "tiger brokers": {"up fintech", "up fintech holding ltd", "up fintech holding"},
     "banque cantonale du valais": {"walliser kantonalbank"},
 }
@@ -508,9 +515,14 @@ def dedupe_keep_order(values: Iterable[str]) -> list[str]:
     return result
 
 
+def ascii_fold(value: str) -> str:
+    normalized = unicodedata.normalize("NFKD", value)
+    return "".join(character for character in normalized if not unicodedata.combining(character))
+
+
 @lru_cache(maxsize=None)
 def normalize_tokens(value: str) -> set[str]:
-    tokens = set(re.findall(r"[a-z0-9]+", value.lower()))
+    tokens = set(re.findall(r"[a-z0-9]+", ascii_fold(value).lower()))
     return {token for token in tokens if len(token) > 1 and token not in COMPANY_STOPWORDS}
 
 
@@ -533,7 +545,7 @@ def has_wrapper_term(value: str) -> bool:
 
 @lru_cache(maxsize=None)
 def normalized_compact(value: str) -> str:
-    return re.sub(r"[^a-z0-9]+", "", value.lower())
+    return re.sub(r"[^a-z0-9]+", "", ascii_fold(value).lower())
 
 
 BLOCKED_ALIAS_KEYS = {
@@ -557,6 +569,12 @@ def is_blocked_alias(alias: str) -> bool:
 
 def is_trusted_non_lexical_alias(alias: str, company_name: str) -> bool:
     trusted_companies = TRUSTED_NON_LEXICAL_ALIASES.get(alias.lower().strip())
+    if not trusted_companies:
+        alias_key = normalized_compact(alias)
+        for candidate_key, candidate_companies in TRUSTED_NON_LEXICAL_ALIASES.items():
+            if normalized_compact(candidate_key) == alias_key:
+                trusted_companies = candidate_companies
+                break
     if not trusted_companies:
         return False
     company_compact = normalized_compact(company_name)

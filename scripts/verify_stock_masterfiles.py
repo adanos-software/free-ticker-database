@@ -90,6 +90,13 @@ LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE = {
 }
 ABBREVIATED_OFFICIAL_LABEL_EXCHANGES = {"KRX", "KOSDAQ"}
 TMX_ROOT_SUFFIX_ETF_EXCHANGES = {"TSX", "TSXV"}
+GROUPED_ISIN_REFERENCE_EXCHANGE_FALLBACKS = {
+    "AMS": ("Euronext", "SIX"),
+    "XETRA": ("SIX", "CPH", "LSE"),
+}
+GROUPED_OFFICIAL_PEER_EXCHANGE_FALLBACKS = {
+    "AMS": {"Euronext"},
+}
 EURONEXT_LABEL_SPLIT_RE = re.compile(r"[\s./-]+")
 ETFISH_REFERENCE_MARKERS = (
     " etf",
@@ -121,6 +128,16 @@ def has_strong_company_name_match(left: str, right: str) -> bool:
     ):
         return True
     return len(normalize_tokens(left) & normalize_tokens(right)) >= 2
+
+
+def has_grouped_market_peer_name_match(left: str, right: str) -> bool:
+    left_compact = re.sub(r"[^a-z0-9]+", "", left.lower())
+    right_compact = re.sub(r"[^a-z0-9]+", "", right.lower())
+    if left_compact and right_compact and (
+        left_compact in right_compact or right_compact in left_compact
+    ):
+        return True
+    return bool(normalize_tokens(left) & normalize_tokens(right))
 
 
 def listing_name_candidates(row: dict[str, str]) -> list[str]:
@@ -275,7 +292,18 @@ def load_same_exchange_isin_reference_rows(
     isin = row.get("isin", "").strip().upper()
     if not exchange or not isin:
         return []
-    return list(active_by_exchange_isin.get((exchange, isin), []))
+    rows = list(active_by_exchange_isin.get((exchange, isin), []))
+    for fallback_exchange in GROUPED_ISIN_REFERENCE_EXCHANGE_FALLBACKS.get(exchange, ()):
+        rows.extend(active_by_exchange_isin.get((fallback_exchange, isin), []))
+    return rows
+
+
+def exchange_has_grouped_official_coverage(exchange: str, covered_exchanges: set[str]) -> bool:
+    return bool(GROUPED_OFFICIAL_PEER_EXCHANGE_FALLBACKS.get(exchange, set()) & covered_exchanges)
+
+
+def exchange_has_grouped_partial_coverage(exchange: str, partial_covered_exchanges: set[str]) -> bool:
+    return bool(GROUPED_OFFICIAL_PEER_EXCHANGE_FALLBACKS.get(exchange, set()) & partial_covered_exchanges)
 
 
 def classify_row(
@@ -299,6 +327,7 @@ def classify_row(
     reason = "No official exchange directory is wired for this exchange yet."
     reference_name = ""
     reference_source = ""
+    grouped_isin_rows = load_same_exchange_isin_reference_rows(row, active_by_exchange_isin)
 
     if active_reference_rows:
         preferred_reference = choose_preferred_reference(active_reference_rows, ticker)
@@ -380,6 +409,22 @@ def classify_row(
             ):
                 status = "verified"
                 reason = "Matched active official listing via same-ticker ISIN."
+            elif (
+                row.get("isin", "").strip()
+                and (
+                    grouped_same_type_isin_rows := [
+                        candidate
+                        for candidate in grouped_isin_rows
+                        if candidate.get("asset_type") == row.get("asset_type")
+                        and candidate.get("exchange") != exchange
+                    ]
+                )
+            ):
+                preferred_reference = choose_preferred_reference(grouped_same_type_isin_rows, ticker)
+                reference_name = preferred_reference.get("name", "")
+                reference_source = preferred_reference.get("source_key", "")
+                status = "verified"
+                reason = "Matched active official grouped exchange reference via ISIN."
             elif source_keys and source_keys <= LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE.get(exchange, set()):
                 status = "reference_gap"
                 reason = "Only low-confidence issuer reference evidence exists for this listing."
@@ -414,7 +459,7 @@ def classify_row(
             status = "reference_gap"
             reason = "Only low-confidence asset_type evidence exists for this listing."
     else:
-        same_exchange_isin_rows = load_same_exchange_isin_reference_rows(row, active_by_exchange_isin)
+        same_exchange_isin_rows = grouped_isin_rows
         tmx_root_reference_rows = load_tmx_root_reference_rows(row, active_by_key)
         if same_exchange_isin_rows:
             same_type_isin_rows = [
@@ -466,7 +511,7 @@ def classify_row(
             else:
                 status = "reference_gap"
                 reason = "Only an official TMX root listing exists for this stock class/unit suffix."
-        elif exchange in covered_exchanges:
+        elif exchange in covered_exchanges or exchange_has_grouped_official_coverage(exchange, covered_exchanges):
             non_active_rows = any_by_key.get(key, [])
             non_active_row = next((candidate for candidate in non_active_rows if candidate.get("listing_status") != "active"), None)
             peers = [peer for peer in active_by_ticker.get(ticker, []) if peer["exchange"] != exchange]
@@ -476,51 +521,72 @@ def classify_row(
                 reference_name = non_active_row.get("name", "")
                 reference_source = non_active_row.get("source_key", "")
             elif peers:
-                matching_peers = [
+                grouped_peer_exchanges = GROUPED_OFFICIAL_PEER_EXCHANGE_FALLBACKS.get(exchange, set())
+                grouped_peers = [
                     peer
                     for peer in peers
-                    if peer.get("asset_type") == row.get("asset_type")
-                    and (
-                        has_strong_company_name_match(peer.get("name", ""), row["name"])
-                        or has_strong_company_name_match(row["name"], peer.get("name", ""))
-                    )
+                    if peer.get("exchange") in grouped_peer_exchanges
+                    and peer.get("asset_type") == row.get("asset_type")
                 ]
-                if not matching_peers:
-                    status = "reference_gap"
-                    reason = "Only weak cross-exchange collision evidence exists for this listing."
-                    return {
-                        "listing_key": listing_key,
-                        "ticker": ticker,
-                        "exchange": exchange,
-                        "asset_type": row["asset_type"],
-                        "name": row["name"],
-                        "country": row["country"],
-                        "country_code": row["country_code"],
-                        "isin": row["isin"],
-                        "sector": row["sector"],
-                        "status": status,
-                        "reason": reason,
-                        "official_reference_name": reference_name,
-                        "official_reference_source": reference_source,
-                        "covered_by_official_directory": exchange in covered_exchanges,
-                        "cik": identifiers.get("cik", ""),
-                        "figi": identifiers.get("figi", ""),
-                        "lei": identifiers.get("lei", ""),
-                    }
-
-                peer_exchanges = {peer["exchange"] for peer in matching_peers}
-                peer_source_keys = {
-                    peer.get("source_key", "") for peer in matching_peers if peer.get("source_key", "")
-                }
-                peer_preview = ", ".join(sorted(peer_exchanges)[:4])
-                if peer_exchanges <= LOW_CONFIDENCE_COLLISION_PEER_EXCHANGES or (
-                    peer_source_keys and peer_source_keys <= LOW_CONFIDENCE_COLLISION_SOURCE_KEYS
+                if grouped_peers and any(
+                    has_grouped_market_peer_name_match(peer.get("name", ""), row["name"])
+                    or has_grouped_market_peer_name_match(row["name"], peer.get("name", ""))
+                    for peer in grouped_peers
                 ):
-                    status = "reference_gap"
-                    reason = "Only weak cross-exchange collision evidence exists for this listing."
+                    preferred_reference = choose_preferred_reference(grouped_peers, ticker)
+                    reference_name = preferred_reference.get("name", "")
+                    reference_source = preferred_reference.get("source_key", "")
+                    status = "verified"
+                    reason = "Matched grouped official exchange directory listing."
                 else:
-                    status = "cross_exchange_collision"
-                    reason = f"Official directory uses this ticker on other exchange(s): {peer_preview}."
+                    matching_peers = [
+                        peer
+                        for peer in peers
+                        if peer.get("asset_type") == row.get("asset_type")
+                        and (
+                            has_strong_company_name_match(peer.get("name", ""), row["name"])
+                            or has_strong_company_name_match(row["name"], peer.get("name", ""))
+                        )
+                    ]
+                    if not matching_peers:
+                        status = "reference_gap"
+                        reason = "Only weak cross-exchange collision evidence exists for this listing."
+                        return {
+                            "listing_key": listing_key,
+                            "ticker": ticker,
+                            "exchange": exchange,
+                            "asset_type": row["asset_type"],
+                            "name": row["name"],
+                            "country": row["country"],
+                            "country_code": row["country_code"],
+                            "isin": row["isin"],
+                            "sector": row["sector"],
+                            "status": status,
+                            "reason": reason,
+                            "official_reference_name": reference_name,
+                            "official_reference_source": reference_source,
+                            "covered_by_official_directory": (
+                                exchange in covered_exchanges
+                                or exchange_has_grouped_official_coverage(exchange, covered_exchanges)
+                            ),
+                            "cik": identifiers.get("cik", ""),
+                            "figi": identifiers.get("figi", ""),
+                            "lei": identifiers.get("lei", ""),
+                        }
+
+                    peer_exchanges = {peer["exchange"] for peer in matching_peers}
+                    peer_source_keys = {
+                        peer.get("source_key", "") for peer in matching_peers if peer.get("source_key", "")
+                    }
+                    peer_preview = ", ".join(sorted(peer_exchanges)[:4])
+                    if peer_exchanges <= LOW_CONFIDENCE_COLLISION_PEER_EXCHANGES or (
+                        peer_source_keys and peer_source_keys <= LOW_CONFIDENCE_COLLISION_SOURCE_KEYS
+                    ):
+                        status = "reference_gap"
+                        reason = "Only weak cross-exchange collision evidence exists for this listing."
+                    else:
+                        status = "cross_exchange_collision"
+                        reason = f"Official directory uses this ticker on other exchange(s): {peer_preview}."
             elif (exchange, row.get("asset_type", "")) in LOW_CONFIDENCE_MISSING_ASSET_TYPE_KEYS:
                 status = "reference_gap"
                 reason = "This asset type is not fully covered by the current official reference layer for this exchange."
@@ -530,7 +596,7 @@ def classify_row(
             else:
                 status = "missing_from_official"
                 reason = "Symbol is absent from the active official exchange directory for this exchange."
-        elif exchange in partial_covered_exchanges:
+        elif exchange in partial_covered_exchanges or exchange_has_grouped_partial_coverage(exchange, partial_covered_exchanges):
             status = "reference_gap"
             reason = "This exchange is only partially covered by the current official reference layer."
 
@@ -548,7 +614,10 @@ def classify_row(
         "reason": reason,
         "official_reference_name": reference_name,
         "official_reference_source": reference_source,
-        "covered_by_official_directory": exchange in covered_exchanges,
+        "covered_by_official_directory": (
+            exchange in covered_exchanges
+            or exchange_has_grouped_official_coverage(exchange, covered_exchanges)
+        ),
         "cik": identifiers.get("cik", ""),
         "figi": identifiers.get("figi", ""),
         "lei": identifiers.get("lei", ""),

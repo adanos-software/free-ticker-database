@@ -21,6 +21,10 @@ from scripts.fetch_exchange_masterfiles import (
     B3_INSTRUMENTS_EQUITIES_CACHE,
     JSE_INSTRUMENT_SEARCH_CACHE,
     IDX_LISTED_COMPANIES_CACHE,
+    TASE_SECURITIES_MARKETDATA_CACHE,
+    TASE_ETF_MARKETDATA_CACHE,
+    TASE_FOREIGN_ETF_SEARCH_CACHE,
+    TASE_PARTICIPATING_UNIT_SEARCH_CACHE,
     LEGACY_BME_ETF_LIST_CACHE,
     LEGACY_BME_LISTED_COMPANIES_CACHE,
     LEGACY_BMV_CAPITAL_TRUST_SEARCH_CACHE,
@@ -34,6 +38,10 @@ from scripts.fetch_exchange_masterfiles import (
     LEGACY_NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE,
     LEGACY_NASDAQ_NORDIC_HELSINKI_ETFS_CACHE,
     LEGACY_IDX_LISTED_COMPANIES_CACHE,
+    LEGACY_TASE_SECURITIES_MARKETDATA_CACHE,
+    LEGACY_TASE_ETF_MARKETDATA_CACHE,
+    LEGACY_TASE_FOREIGN_ETF_SEARCH_CACHE,
+    LEGACY_TASE_PARTICIPATING_UNIT_SEARCH_CACHE,
     LEGACY_NGM_COMPANIES_PAGE_CACHE,
     LEGACY_SPOTLIGHT_COMPANIES_DIRECTORY_CACHE,
     LEGACY_SPOTLIGHT_COMPANIES_SEARCH_CACHE,
@@ -81,6 +89,10 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_jse_exchange_traded_product_rows,
     fetch_jse_instrument_search_exact,
     fetch_idx_listed_companies,
+    fetch_tase_securities_marketdata,
+    fetch_tase_etf_marketdata,
+    fetch_tase_foreign_etf_search,
+    fetch_tase_participating_unit_search,
     fetch_nasdaq_nordic_share_search,
     fetch_nasdaq_nordic_stockholm_shares,
     fetch_nasdaq_nordic_stockholm_trackers,
@@ -110,6 +122,10 @@ from scripts.fetch_exchange_masterfiles import (
     load_bmv_stock_search_rows,
     load_jse_instrument_search_rows,
     load_idx_listed_companies_rows,
+    load_tase_securities_marketdata_rows,
+    load_tase_etf_marketdata_rows,
+    load_tase_foreign_etf_search_rows,
+    load_tase_participating_unit_search_rows,
     NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE,
     NASDAQ_NORDIC_HELSINKI_ETFS_CACHE,
     load_lse_company_reports_rows,
@@ -138,6 +154,8 @@ from scripts.fetch_exchange_masterfiles import (
     normalize_source_keys,
     load_tpex_etf_filter_payload,
     load_tpex_mainboard_basic_info_text,
+    parse_tase_securities_marketdata_payload,
+    parse_tase_etf_marketdata_payload,
     load_tpex_emerging_basic_info_text,
     load_tmx_etf_screener_payload,
     load_pse_listed_company_directory_rows,
@@ -3278,6 +3296,51 @@ def test_load_jse_instrument_search_rows_prefers_cache(tmp_path, monkeypatch) ->
     ]
 
 
+def test_load_jse_instrument_search_rows_keeps_existing_cached_rows_when_targets_change(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "jse_instrument_search.json"
+    cache_path.write_text(
+        json.dumps(
+            {
+                "AVI": [
+                    {
+                        "source_key": "jse_instrument_search",
+                        "provider": "JSE",
+                        "source_url": "https://www.jse.co.za/jse/instruments/3059",
+                        "ticker": "AVI",
+                        "name": "AVI Ltd",
+                        "exchange": "JSE",
+                        "asset_type": "Stock",
+                        "listing_status": "active",
+                        "reference_scope": "listed_companies_subset",
+                        "official": "true",
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.JSE_INSTRUMENT_SEARCH_CACHE", cache_path)
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.LEGACY_JSE_INSTRUMENT_SEARCH_CACHE",
+        tmp_path / "legacy_jse_instrument_search.json",
+    )
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.jse_instrument_search_target_tickers",
+        lambda *args, **kwargs: ["SBK"],
+    )
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.fetch_jse_instrument_search_exact",
+        lambda *args, **kwargs: [],
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "jse_instrument_search")
+    rows, mode = load_jse_instrument_search_rows(source)
+
+    assert mode == "network"
+    assert len(rows) == 1
+    assert rows[0]["ticker"] == "AVI"
+
+
 def test_infer_jpx_asset_type_prefers_section_label():
     assert infer_jpx_asset_type("ETFs/ ETNs", "Ordinary Corp.") == "ETF"
     assert infer_jpx_asset_type("Prime Market (Domestic)", "Ordinary Corp.") == "Stock"
@@ -4998,6 +5061,191 @@ def test_fetch_nasdaq_nordic_stockholm_shares_search_normalizes_official_symbol_
     ]
 
 
+def test_fetch_nasdaq_nordic_copenhagen_shares_search_normalizes_official_symbol_format(
+    tmp_path, monkeypatch
+) -> None:
+    source = MasterfileSource(
+        key="nasdaq_nordic_copenhagen_shares_search",
+        provider="Nasdaq Nordic",
+        description="Official Copenhagen share search supplement",
+        source_url="https://api.nasdaq.com/api/nordic/search",
+        format="nasdaq_nordic_copenhagen_shares_search_json",
+        reference_scope="listed_companies_subset",
+    )
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,exchange,asset_type,name,isin",
+                "AMBU-B,CPH,Stock,Ambu A/S,DK0060946788",
+                "BETCO-DKK,CPH,Stock,Better Collective A/S,DK0060952240",
+                "GN,CPH,Stock,GN Store Nord A/S,DK0010272632",
+                "HOTEL,CPH,Stock,Scandic Hotels Group AB,SE0007640156",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "latest_reference_gap_tickers",
+        lambda base_dir, exchanges=None: {"AMBU-B", "BETCO-DKK", "GN", "HOTEL"},
+    )
+
+    class FakeResponse:
+        def __init__(self, payload, status_code=200):
+            self._payload = payload
+            self.status_code = status_code
+
+        def raise_for_status(self):
+            if self.status_code >= 400:
+                raise requests.HTTPError(f"{self.status_code} error")
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            self.calls.append((url, params))
+            payloads = {
+                "AMBU-B": {"data": None},
+                "AMBU B": {
+                    "data": [
+                        {
+                            "group": "Shares Main Market",
+                            "instruments": [
+                                {
+                                    "symbol": "AMBU B",
+                                    "fullName": "Ambu",
+                                    "isin": "DK0060946788",
+                                    "assetClass": "SHARES",
+                                    "currency": "DKK",
+                                }
+                            ],
+                        }
+                    ]
+                },
+                "BETCO-DKK": {"data": None},
+                "BETCO DKK": {
+                    "data": [
+                        {
+                            "group": "Shares Main Market",
+                            "instruments": [
+                                {
+                                    "symbol": "BETCO DKK",
+                                    "fullName": "Better Collective",
+                                    "isin": "DK0060952240",
+                                    "assetClass": "SHARES",
+                                    "currency": "DKK",
+                                }
+                            ],
+                        }
+                    ]
+                },
+                "GN": {"data": None},
+                "GN Store Nord A/S": {
+                    "data": [
+                        {
+                            "group": "Shares Main Market",
+                            "instruments": [
+                                {
+                                    "symbol": "GN",
+                                    "fullName": "GN Store Nord",
+                                    "isin": "DK0010272632",
+                                    "assetClass": "SHARES",
+                                    "currency": "DKK",
+                                }
+                            ],
+                        }
+                    ]
+                },
+                "HOTEL": {
+                    "data": [
+                        {
+                            "group": "Shares Main Market",
+                            "instruments": [
+                                {
+                                    "symbol": "HOTEL",
+                                    "fullName": "Hotel Properties Ltd.",
+                                    "isin": "SG1DB3000004",
+                                    "assetClass": "SHARES",
+                                    "currency": "DKK",
+                                }
+                            ],
+                        }
+                    ]
+                },
+            }
+            if params["searchText"] == "GN":
+                return FakeResponse({"data": None}, status_code=400)
+            return FakeResponse(payloads[params["searchText"]])
+
+    session = FakeSession()
+    rows = fetch_nasdaq_nordic_share_search(
+        source,
+        listings_path=listings_path,
+        verification_dir=tmp_path,
+        session=session,
+    )
+
+    assert rows == sorted(
+        [
+            {
+                "source_key": "nasdaq_nordic_copenhagen_shares_search",
+                "provider": "Nasdaq Nordic",
+                "source_url": "https://api.nasdaq.com/api/nordic/search",
+                "ticker": "AMBU-B",
+                "name": "Ambu",
+                "exchange": "CPH",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": "listed_companies_subset",
+                "official": "true",
+                "isin": "DK0060946788",
+            },
+            {
+                "source_key": "nasdaq_nordic_copenhagen_shares_search",
+                "provider": "Nasdaq Nordic",
+                "source_url": "https://api.nasdaq.com/api/nordic/search",
+                "ticker": "BETCO-DKK",
+                "name": "Better Collective",
+                "exchange": "CPH",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": "listed_companies_subset",
+                "official": "true",
+                "isin": "DK0060952240",
+            },
+            {
+                "source_key": "nasdaq_nordic_copenhagen_shares_search",
+                "provider": "Nasdaq Nordic",
+                "source_url": "https://api.nasdaq.com/api/nordic/search",
+                "ticker": "GN",
+                "name": "GN Store Nord",
+                "exchange": "CPH",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": "listed_companies_subset",
+                "official": "true",
+                "isin": "DK0010272632",
+            },
+        ],
+        key=lambda row: row["ticker"],
+    )
+    assert session.calls == [
+        ("https://api.nasdaq.com/api/nordic/search", {"searchText": "AMBU-B"}),
+        ("https://api.nasdaq.com/api/nordic/search", {"searchText": "AMBU B"}),
+        ("https://api.nasdaq.com/api/nordic/search", {"searchText": "BETCO-DKK"}),
+        ("https://api.nasdaq.com/api/nordic/search", {"searchText": "BETCO DKK"}),
+        ("https://api.nasdaq.com/api/nordic/search", {"searchText": "GN"}),
+        ("https://api.nasdaq.com/api/nordic/search", {"searchText": "GN Store Nord A/S"}),
+        ("https://api.nasdaq.com/api/nordic/search", {"searchText": "HOTEL"}),
+    ]
+
+
 def test_parse_spotlight_search_heading_extracts_name_and_ticker() -> None:
     name, ticker = parse_spotlight_search_heading(
         "<b><u>ABAS</u></b> Protect (<b><u>ABAS</u></b>)"
@@ -6704,7 +6952,18 @@ def test_bme_sources_are_modeled_as_partial_official_coverage() -> None:
     assert etf_source.reference_scope == "listed_companies_subset"
 
 
-def test_fetch_bme_reference_rows_maps_official_tickers_and_variants() -> None:
+def test_bme_request_headers_match_browser_xhr_shape() -> None:
+    headers = fetch_exchange_masterfiles.bme_request_headers()
+
+    assert headers["Origin"] == "https://www.bolsasymercados.es"
+    assert headers["Referer"] == fetch_exchange_masterfiles.BME_COMPANIES_SEARCH_PAGE_URL
+    assert headers["X-Requested-With"] == "XMLHttpRequest"
+    assert headers["Sec-Fetch-Site"] == "same-site"
+    assert headers["Sec-Fetch-Mode"] == "cors"
+    assert headers["Sec-Fetch-Dest"] == "empty"
+
+
+def test_fetch_bme_reference_rows_maps_official_tickers_and_variants(tmp_path) -> None:
     source = MasterfileSource(
         key="bme_listed_companies",
         provider="BME",
@@ -6713,6 +6972,8 @@ def test_fetch_bme_reference_rows_maps_official_tickers_and_variants() -> None:
         format="bme_listed_companies_json",
         reference_scope="listed_companies_subset",
     )
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text("ticker,exchange,asset_type,name,isin\n", encoding="utf-8")
 
     class FakeResponse:
         def __init__(self, payload):
@@ -6731,15 +6992,25 @@ def test_fetch_bme_reference_rows_maps_official_tickers_and_variants() -> None:
         def get(self, url, params=None, headers=None, timeout=None):
             self.get_calls.append((url, params))
             if url == fetch_exchange_masterfiles.BME_LISTED_COMPANIES_API_URL:
-                assert params == {"tradingSystem": "SIBE", "page": 0, "pageSize": 0}
-                return FakeResponse(
-                    {
+                payloads = {
+                    0: {
+                        "hasMoreResults": True,
                         "data": [
                             {"isin": "ES0113900J37", "shareName": "BANCO SANTANDER", "tradingSystem": "SIBE"},
+                        ],
+                    },
+                    1: {
+                        "hasMoreResults": False,
+                        "data": [
                             {"isin": "ES0171996095", "shareName": "GRIFOLS CL.A PFD", "tradingSystem": "SIBE"},
-                        ]
-                    }
+                        ],
+                    },
+                }
+                assert params in (
+                    {"tradingSystem": "SIBE", "page": 0, "pageSize": 100},
+                    {"tradingSystem": "SIBE", "page": 1, "pageSize": 100},
                 )
+                return FakeResponse(payloads[params["page"]])
             if url == fetch_exchange_masterfiles.BME_SHARE_DETAILS_INFO_API_URL:
                 payloads = {
                     "ES0113900J37": {
@@ -6761,7 +7032,7 @@ def test_fetch_bme_reference_rows_maps_official_tickers_and_variants() -> None:
             raise AssertionError(url)
 
     session = FakeSession()
-    rows = fetch_bme_reference_rows(source, session=session)
+    rows = fetch_bme_reference_rows(source, listings_path=listings_path, session=session)
 
     assert rows == [
         {
@@ -6807,7 +7078,11 @@ def test_fetch_bme_reference_rows_maps_official_tickers_and_variants() -> None:
     assert session.get_calls == [
         (
             fetch_exchange_masterfiles.BME_LISTED_COMPANIES_API_URL,
-            {"tradingSystem": "SIBE", "page": 0, "pageSize": 0},
+            {"tradingSystem": "SIBE", "page": 0, "pageSize": 100},
+        ),
+        (
+            fetch_exchange_masterfiles.BME_LISTED_COMPANIES_API_URL,
+            {"tradingSystem": "SIBE", "page": 1, "pageSize": 100},
         ),
         (
             fetch_exchange_masterfiles.BME_SHARE_DETAILS_INFO_API_URL,
@@ -6858,9 +7133,10 @@ def test_fetch_bme_reference_rows_maps_official_etfs(tmp_path) -> None:
         def get(self, url, params=None, headers=None, timeout=None):
             self.get_calls.append((url, params))
             if url == fetch_exchange_masterfiles.BME_LISTED_COMPANIES_API_URL:
-                assert params == {"tradingSystem": "ETF", "page": 0, "pageSize": 0}
+                assert params == {"tradingSystem": "ETF", "page": 0, "pageSize": 100}
                 return FakeResponse(
                     {
+                        "hasMoreResults": False,
                         "data": [
                             {
                                 "isin": "ES0105336038",
@@ -6911,8 +7187,72 @@ def test_fetch_bme_reference_rows_maps_official_etfs(tmp_path) -> None:
     assert session.get_calls == [
         (
             fetch_exchange_masterfiles.BME_LISTED_COMPANIES_API_URL,
-            {"tradingSystem": "ETF", "page": 0, "pageSize": 0},
+            {"tradingSystem": "ETF", "page": 0, "pageSize": 100},
         )
+    ]
+
+
+def test_fetch_bme_reference_rows_uses_listing_isin_when_share_details_fail(tmp_path) -> None:
+    source = MasterfileSource(
+        key="bme_listed_companies",
+        provider="BME",
+        description="Official BME listed companies directory",
+        source_url="https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+        format="bme_listed_companies_json",
+        reference_scope="listed_companies_subset",
+    )
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,exchange,asset_type,name,isin",
+                "SAN,BME,Stock,Legacy Santander,ES0113900J37",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    class FakeResponse:
+        def __init__(self, payload):
+            self._payload = payload
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def get(self, url, params=None, headers=None, timeout=None):
+            if url == fetch_exchange_masterfiles.BME_LISTED_COMPANIES_API_URL:
+                return FakeResponse(
+                    {
+                        "hasMoreResults": False,
+                        "data": [
+                            {"isin": "ES0113900J37", "shareName": "BANCO SANTANDER", "tradingSystem": "SIBE"},
+                        ],
+                    }
+                )
+            if url == fetch_exchange_masterfiles.BME_SHARE_DETAILS_INFO_API_URL:
+                raise requests.RequestException("403")
+            raise AssertionError(url)
+
+    rows = fetch_bme_reference_rows(source, listings_path=listings_path, session=FakeSession())
+
+    assert rows == [
+        {
+            "source_key": "bme_listed_companies",
+            "provider": "BME",
+            "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+            "ticker": "SAN",
+            "name": "BANCO SANTANDER",
+            "exchange": "BME",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "ES0113900J37",
+        }
     ]
 
 
@@ -7223,6 +7563,563 @@ def test_fetch_source_rows_with_mode_uses_idx_cache(tmp_path, monkeypatch) -> No
     assert mode == "cache"
     assert rows[0]["ticker"] == "AALI"
     assert rows[0]["exchange"] == "IDX"
+
+
+def test_parse_tase_securities_marketdata_payload_filters_shares() -> None:
+    source = MasterfileSource(
+        key="tase_securities_marketdata",
+        provider="TASE",
+        description="Official TASE market securities directory (shares subset)",
+        source_url="https://api.tase.co.il/api/security/securitiesmarketdata",
+        format="tase_securities_marketdata_json",
+        reference_scope="listed_companies_subset",
+    )
+    payload = {
+        "Items": [
+            {"Symbol": "ABRA", "Name": "Abra", "Type": "Shares", "ISIN_ID": "IL0012345678"},
+            {"Symbol": "ABOU", "Name": "Aboitiz", "Type": "Shares", "ISIN_ID": ""},
+            {"Symbol": "ABRA", "Name": "Abra Duplicate", "Type": "Shares", "ISIN_ID": "IL0012345678"},
+            {"Symbol": "GOVB", "Name": "Gov Bond", "Type": "Bonds", "ISIN_ID": "IL0099999999"},
+            {"Symbol": "", "Name": "Missing Ticker", "Type": "Shares", "ISIN_ID": "IL0011111111"},
+        ]
+    }
+
+    rows = parse_tase_securities_marketdata_payload(payload, source)
+
+    assert rows == [
+        {
+            "source_key": "tase_securities_marketdata",
+            "provider": "TASE",
+            "source_url": "https://api.tase.co.il/api/security/securitiesmarketdata",
+            "ticker": "ABRA",
+            "name": "Abra",
+            "exchange": "TASE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "IL0012345678",
+        },
+        {
+            "source_key": "tase_securities_marketdata",
+            "provider": "TASE",
+            "source_url": "https://api.tase.co.il/api/security/securitiesmarketdata",
+            "ticker": "ABOU",
+            "name": "Aboitiz",
+            "exchange": "TASE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+        },
+    ]
+
+
+def test_fetch_tase_securities_marketdata_paginates_bootstrapped_api(monkeypatch) -> None:
+    source = MasterfileSource(
+        key="tase_securities_marketdata",
+        provider="TASE",
+        description="Official TASE market securities directory (shares subset)",
+        source_url="https://api.tase.co.il/api/security/securitiesmarketdata",
+        format="tase_securities_marketdata_json",
+        reference_scope="listed_companies_subset",
+    )
+
+    class DummyResponse:
+        def __init__(self, payload: dict[str, object]):
+            self._payload = payload
+
+        def raise_for_status(self) -> None:
+            return None
+
+        def json(self) -> dict[str, object]:
+            return self._payload
+
+    class DummySession:
+        def __init__(self) -> None:
+            self.calls: list[dict[str, object]] = []
+
+        def post(self, url: str, *, headers=None, data=None, timeout=None):
+            payload = json.loads(data)
+            self.calls.append({"url": url, "headers": headers, "payload": payload, "timeout": timeout})
+            if payload["pageNum"] == 1:
+                return DummyResponse(
+                    {
+                        "TotalRec": 31,
+                        "Items": [
+                            {"Symbol": "ABRA", "Name": "Abra", "Type": "Shares", "ISIN_ID": "IL0012345678"},
+                            {"Symbol": "BOND1", "Name": "Ignored Bond", "Type": "Bonds", "ISIN_ID": "IL0099999999"},
+                        ],
+                    }
+                )
+            return DummyResponse(
+                {
+                    "TotalRec": 31,
+                    "Items": [
+                        {"Symbol": "ABOU", "Name": "Aboitiz", "Type": "Shares", "ISIN_ID": ""},
+                    ],
+                }
+            )
+
+    session = DummySession()
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "bootstrap_tase_market_session",
+        lambda session=None: (session or DummySession(), {"Accept": "application/json"}),
+    )
+
+    rows = fetch_tase_securities_marketdata(source, session=session)
+
+    assert [row["ticker"] for row in rows] == ["ABRA", "ABOU"]
+    assert [call["payload"]["pageNum"] for call in session.calls] == [1, 2]
+    assert all(call["payload"]["cl1"] == "0" for call in session.calls)
+
+
+def test_load_tase_securities_marketdata_rows_prefers_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "tase_securities_marketdata.json"
+    cache_path.write_text(
+        '[{"ticker":"ABRA","name":"Abra","exchange":"TASE","asset_type":"Stock","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "TASE_SECURITIES_MARKETDATA_CACHE", cache_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_TASE_SECURITIES_MARKETDATA_CACHE",
+        tmp_path / "missing.json",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_tase_securities_marketdata",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "tase_securities_marketdata")
+    rows, mode = load_tase_securities_marketdata_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "ABRA",
+            "name": "Abra",
+            "exchange": "TASE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+        }
+    ]
+
+
+def test_parse_tase_etf_marketdata_payload_normalizes_symbols() -> None:
+    source = MasterfileSource(
+        key="tase_etf_marketdata",
+        provider="TASE",
+        description="Official TASE ETF market directory",
+        source_url="https://api.tase.co.il/api/marketdata/etfs",
+        format="tase_etf_marketdata_json",
+        reference_scope="listed_companies_subset",
+    )
+    payload = {
+        "Items": [
+            {"Symbol": "HRL.F303", "LongName": "Harel Sal Tel Bond", "ISIN": "IL0011507477"},
+            {"Symbol": "ANLT.F2", "SecurityLongName": "ATF S&P 500", "ISIN_ID": "IL0012189242"},
+            {"Symbol": "HRL.F303", "LongName": "Duplicate", "ISIN": "IL0011507477"},
+            {"Symbol": "", "LongName": "Missing", "ISIN": "IL0011111111"},
+        ]
+    }
+
+    rows = parse_tase_etf_marketdata_payload(payload, source)
+
+    assert rows == [
+        {
+            "source_key": "tase_etf_marketdata",
+            "provider": "TASE",
+            "source_url": "https://api.tase.co.il/api/marketdata/etfs",
+            "ticker": "HRL-F303",
+            "name": "Harel Sal Tel Bond",
+            "exchange": "TASE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "IL0011507477",
+        },
+        {
+            "source_key": "tase_etf_marketdata",
+            "provider": "TASE",
+            "source_url": "https://api.tase.co.il/api/marketdata/etfs",
+            "ticker": "ANLT-F2",
+            "name": "ATF S&P 500",
+            "exchange": "TASE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "IL0012189242",
+        },
+    ]
+
+
+def test_fetch_tase_etf_marketdata_paginates_bootstrapped_api(monkeypatch) -> None:
+    source = MasterfileSource(
+        key="tase_etf_marketdata",
+        provider="TASE",
+        description="Official TASE ETF market directory",
+        source_url="https://api.tase.co.il/api/marketdata/etfs",
+        format="tase_etf_marketdata_json",
+        reference_scope="listed_companies_subset",
+    )
+
+    class DummyResponse:
+        def __init__(self, payload: dict[str, object]):
+            self._payload = payload
+
+        def raise_for_status(self) -> None:
+            return None
+
+        def json(self) -> dict[str, object]:
+            return self._payload
+
+    class DummySession:
+        def __init__(self) -> None:
+            self.calls: list[dict[str, object]] = []
+
+        def post(self, url: str, *, headers=None, data=None, timeout=None):
+            payload = json.loads(data)
+            self.calls.append({"url": url, "headers": headers, "payload": payload, "timeout": timeout})
+            if payload["pageNum"] == 1:
+                return DummyResponse(
+                    {
+                        "TotalRec": 31,
+                        "Items": [
+                            {"Symbol": "HRL.F303", "LongName": "Harel Sal Tel Bond", "ISIN": "IL0011507477"},
+                        ],
+                    }
+                )
+            return DummyResponse(
+                {
+                    "TotalRec": 31,
+                    "Items": [
+                        {"Symbol": "ANLT.F2", "LongName": "ATF S&P 500", "ISIN": "IL0012189242"},
+                    ],
+                }
+            )
+
+    session = DummySession()
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "bootstrap_tase_market_session",
+        lambda session=None: (session or DummySession(), {"Accept": "application/json"}),
+    )
+
+    rows = fetch_tase_etf_marketdata(source, session=session)
+
+    assert [row["ticker"] for row in rows] == ["HRL-F303", "ANLT-F2"]
+    assert [call["payload"]["pageNum"] for call in session.calls] == [1, 2]
+    assert all(call["payload"]["lang"] == "1" for call in session.calls)
+
+
+def test_load_tase_etf_marketdata_rows_prefers_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "tase_etf_marketdata.json"
+    cache_path.write_text(
+        '[{"ticker":"HRL-F303","name":"Harel Sal Tel Bond","exchange":"TASE","asset_type":"ETF","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "TASE_ETF_MARKETDATA_CACHE", cache_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_TASE_ETF_MARKETDATA_CACHE",
+        tmp_path / "missing.json",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_tase_etf_marketdata",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "tase_etf_marketdata")
+    rows, mode = load_tase_etf_marketdata_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "HRL-F303",
+            "name": "Harel Sal Tel Bond",
+            "exchange": "TASE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+        }
+    ]
+
+
+def test_fetch_tase_foreign_etf_search_matches_normalized_symbols(monkeypatch, tmp_path) -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "tase_foreign_etf_search")
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,exchange,asset_type,name,isin",
+                "IN-FF1,TASE,ETF,Invesco S&P 500,IE00B3YCGJ38",
+                "ISFF505,TASE,ETF,iShares MSCI ACWI,IE00B6R52259",
+                "PSG-F106,TASE,ETF,Psagot AC World,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    verification_dir = tmp_path / "verification"
+    verification_dir.mkdir()
+    run_dir = verification_dir / "run-01"
+    run_dir.mkdir()
+    (run_dir / "chunk-01-of-01.csv").write_text(
+        "\n".join(
+            [
+                "ticker,exchange,status",
+                "IN-FF1,TASE,reference_gap",
+                "ISFF505,TASE,reference_gap",
+                "PSG-F106,TASE,reference_gap",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    class DummyResponse:
+        def raise_for_status(self) -> None:
+            return None
+
+        def json(self) -> list[dict[str, str]]:
+            return [
+                {
+                    "Smb": "IN.FF1",
+                    "Name": "INV.FRFS&P 500",
+                    "ISIN": "IE00B3YCGJ38",
+                    "SubTypeDesc": "Foreign ETF - Equity",
+                },
+                {
+                    "Smb": "IS.FF505",
+                    "Name": "ISH.FRF MSCIACW",
+                    "ISIN": "IE00B6R52259",
+                    "SubTypeDesc": "Foreign ETF - Equity",
+                },
+                {
+                    "Smb": "PSG.F106",
+                    "Name": "PSAGOT ETF ACW",
+                    "ISIN": "IL0000000001",
+                    "SubTypeDesc": "Deleted Fund",
+                },
+            ]
+
+    class DummySession:
+        def get(self, url: str, headers=None, timeout=None) -> DummyResponse:
+            assert url == fetch_exchange_masterfiles.TASE_SEARCH_ENTITIES_URL
+            return DummyResponse()
+
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "bootstrap_tase_market_session",
+        lambda session=None: (DummySession(), {"User-Agent": "Mozilla/5.0"}),
+    )
+
+    rows = fetch_tase_foreign_etf_search(
+        source,
+        listings_path=listings_path,
+        verification_dir=verification_dir,
+    )
+
+    assert rows == [
+        {
+            "source_key": "tase_foreign_etf_search",
+            "provider": "TASE",
+            "source_url": fetch_exchange_masterfiles.TASE_SEARCH_ENTITIES_URL,
+            "ticker": "IN-FF1",
+            "name": "INV.FRFS&P 500",
+            "exchange": "TASE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "IE00B3YCGJ38",
+        },
+        {
+            "source_key": "tase_foreign_etf_search",
+            "provider": "TASE",
+            "source_url": fetch_exchange_masterfiles.TASE_SEARCH_ENTITIES_URL,
+            "ticker": "ISFF505",
+            "name": "ISH.FRF MSCIACW",
+            "exchange": "TASE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "IE00B6R52259",
+        },
+    ]
+
+
+def test_load_tase_foreign_etf_search_rows_prefers_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "tase_foreign_etf_search.json"
+    cache_path.write_text(
+        '[{"ticker":"IN-FF1","name":"INV.FRFS&P 500","exchange":"TASE","asset_type":"ETF","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "TASE_FOREIGN_ETF_SEARCH_CACHE", cache_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_TASE_FOREIGN_ETF_SEARCH_CACHE",
+        tmp_path / "legacy_tase_foreign_etf_search.json",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_tase_foreign_etf_search",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "tase_foreign_etf_search")
+    rows, mode = load_tase_foreign_etf_search_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "IN-FF1",
+            "name": "INV.FRFS&P 500",
+            "exchange": "TASE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+        }
+    ]
+
+
+def test_fetch_tase_participating_unit_search_matches_exact_symbols(monkeypatch, tmp_path) -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "tase_participating_unit_search")
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,exchange,asset_type,name,isin",
+                "AMDA,TASE,Stock,Almeda Ventures Limited Partnership,",
+                "NVPT,TASE,Stock,Navitas Petroleum Limited Partnership,",
+                "RATI-L,TASE,Stock,Ratio Energies LP,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    verification_dir = tmp_path / "verification"
+    verification_dir.mkdir()
+    run_dir = verification_dir / "run-01"
+    run_dir.mkdir()
+    (run_dir / "chunk-01-of-01.csv").write_text(
+        "\n".join(
+            [
+                "ticker,exchange,status",
+                "AMDA,TASE,reference_gap",
+                "NVPT,TASE,reference_gap",
+                "RATI-L,TASE,reference_gap",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    class DummyResponse:
+        def raise_for_status(self) -> None:
+            return None
+
+        def json(self) -> list[dict[str, str]]:
+            return [
+                {
+                    "Smb": "AMDA",
+                    "Name": "ALMEDA PU",
+                    "ISIN": "IL0011689622",
+                    "SubTypeDesc": "Participating unit",
+                },
+                {
+                    "Smb": "NVPT",
+                    "Name": "NAVITAS PTRO PU",
+                    "ISIN": "IL0011419699",
+                    "SubTypeDesc": "Participating unit",
+                },
+                {
+                    "Smb": "RATI",
+                    "Name": "RATIO PU",
+                    "ISIN": "IL0003940157",
+                    "SubTypeDesc": "Participating unit",
+                },
+            ]
+
+    class DummySession:
+        def get(self, url: str, headers=None, timeout=None) -> DummyResponse:
+            assert url == fetch_exchange_masterfiles.TASE_SEARCH_ENTITIES_URL
+            return DummyResponse()
+
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "bootstrap_tase_market_session",
+        lambda session=None: (DummySession(), {"User-Agent": "Mozilla/5.0"}),
+    )
+
+    rows = fetch_tase_participating_unit_search(
+        source,
+        listings_path=listings_path,
+        verification_dir=verification_dir,
+    )
+
+    assert rows == [
+        {
+            "source_key": "tase_participating_unit_search",
+            "provider": "TASE",
+            "source_url": fetch_exchange_masterfiles.TASE_SEARCH_ENTITIES_URL,
+            "ticker": "AMDA",
+            "name": "ALMEDA PU",
+            "exchange": "TASE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "IL0011689622",
+        },
+        {
+            "source_key": "tase_participating_unit_search",
+            "provider": "TASE",
+            "source_url": fetch_exchange_masterfiles.TASE_SEARCH_ENTITIES_URL,
+            "ticker": "NVPT",
+            "name": "NAVITAS PTRO PU",
+            "exchange": "TASE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "IL0011419699",
+        },
+    ]
+
+
+def test_load_tase_participating_unit_search_rows_prefers_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "tase_participating_unit_search.json"
+    cache_path.write_text(
+        '[{"ticker":"AMDA","name":"ALMEDA PU","exchange":"TASE","asset_type":"Stock","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "TASE_PARTICIPATING_UNIT_SEARCH_CACHE", cache_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_TASE_PARTICIPATING_UNIT_SEARCH_CACHE",
+        tmp_path / "legacy_tase_participating_unit_search.json",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_tase_participating_unit_search",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "tase_participating_unit_search")
+    rows, mode = load_tase_participating_unit_search_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "AMDA",
+            "name": "ALMEDA PU",
+            "exchange": "TASE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+        }
+    ]
 
 
 def test_parse_nasdaq_nordic_stockholm_etfs_maps_symbol_aliases() -> None:
@@ -7632,6 +8529,164 @@ def test_load_nasdaq_nordic_stockholm_share_search_rows_prefers_cache(tmp_path, 
             "name": "Ericsson B",
             "exchange": "STO",
             "asset_type": "Stock",
+            "listing_status": "active",
+        }
+    ]
+
+
+def test_load_nasdaq_nordic_copenhagen_share_search_rows_prefers_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "nasdaq_nordic_copenhagen_shares_search.json"
+    cache_path.write_text(
+        '[{"ticker":"AMBU-B","name":"Ambu","exchange":"CPH","asset_type":"Stock","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "NASDAQ_NORDIC_COPENHAGEN_SHARES_SEARCH_CACHE",
+        cache_path,
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_NASDAQ_NORDIC_COPENHAGEN_SHARES_SEARCH_CACHE",
+        tmp_path / "missing.json",
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "nasdaq_nordic_copenhagen_shares_search")
+    rows, mode = load_nasdaq_nordic_share_search_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "AMBU-B",
+            "name": "Ambu",
+            "exchange": "CPH",
+            "asset_type": "Stock",
+            "listing_status": "active",
+        }
+    ]
+
+
+def test_fetch_nasdaq_nordic_copenhagen_etf_search_maps_exact_fund_symbol(monkeypatch, tmp_path) -> None:
+    source = MasterfileSource(
+        key="nasdaq_nordic_copenhagen_etf_search",
+        provider="Nasdaq Nordic",
+        description="Official Nasdaq Nordic Copenhagen ETF search supplement",
+        source_url="https://api.nasdaq.com/api/nordic/search",
+        format="nasdaq_nordic_copenhagen_etf_search_json",
+        reference_scope="listed_companies_subset",
+    )
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,exchange,asset_type,name,isin",
+                "MAJMEL,CPH,ETF,Maj Invest UCITS ETF Metal&El.,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    verification_dir = tmp_path / "verify"
+    verification_dir.mkdir()
+    run_dir = verification_dir / "run-01"
+    run_dir.mkdir()
+    (run_dir / "chunk-01-of-01.csv").write_text(
+        "\n".join(
+            [
+                "ticker,exchange,status",
+                "MAJMEL,CPH,reference_gap",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    class FakeResponse:
+        def __init__(self, payload, status_code=200):
+            self._payload = payload
+            self.status_code = status_code
+
+        def raise_for_status(self):
+            if self.status_code >= 400:
+                raise requests.HTTPError(f"status={self.status_code}")
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            self.calls.append((url, params))
+            return FakeResponse(
+                {
+                    "data": [
+                        {
+                            "group": "Funds",
+                            "instruments": [
+                                {
+                                    "symbol": "MAJMEL",
+                                    "fullName": "Maj Invest UCITS ETF Metaller & Elektrif",
+                                    "currency": "DKK",
+                                    "assetClass": "FUNDS",
+                                    "isin": "DK0061681913",
+                                }
+                            ],
+                        }
+                    ]
+                }
+            )
+
+    rows = fetch_exchange_masterfiles.fetch_nasdaq_nordic_etf_search(
+        source,
+        listings_path=listings_path,
+        verification_dir=verification_dir,
+        session=FakeSession(),
+    )
+
+    assert rows == [
+        {
+            "source_key": "nasdaq_nordic_copenhagen_etf_search",
+            "provider": "Nasdaq Nordic",
+            "source_url": "https://api.nasdaq.com/api/nordic/search",
+            "ticker": "MAJMEL",
+            "name": "Maj Invest UCITS ETF Metaller & Elektrif",
+            "exchange": "CPH",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "DK0061681913",
+        }
+    ]
+
+
+def test_load_nasdaq_nordic_copenhagen_etf_search_rows_prefers_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "nasdaq_nordic_copenhagen_etf_search.json"
+    cache_path.write_text(
+        '[{"ticker":"MAJMEL","name":"Maj Invest UCITS ETF Metaller & Elektrif","exchange":"CPH","asset_type":"ETF","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "NASDAQ_NORDIC_COPENHAGEN_ETF_SEARCH_CACHE",
+        cache_path,
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_NASDAQ_NORDIC_COPENHAGEN_ETF_SEARCH_CACHE",
+        tmp_path / "missing.json",
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "nasdaq_nordic_copenhagen_etf_search")
+    rows, mode = fetch_exchange_masterfiles.load_nasdaq_nordic_etf_search_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "MAJMEL",
+            "name": "Maj Invest UCITS ETF Metaller & Elektrif",
+            "exchange": "CPH",
+            "asset_type": "ETF",
             "listing_status": "active",
         }
     ]

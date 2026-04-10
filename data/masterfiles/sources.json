@@ -387,6 +387,15 @@
     "official": true
   },
   {
+    "key": "nasdaq_nordic_copenhagen_shares_search",
+    "provider": "Nasdaq Nordic",
+    "description": "Official Nasdaq Nordic Copenhagen share search supplement for exact stock ticker gaps",
+    "source_url": "https://api.nasdaq.com/api/nordic/search",
+    "format": "nasdaq_nordic_copenhagen_shares_search_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "nasdaq_nordic_stockholm_etfs",
     "provider": "Nasdaq Nordic",
     "description": "Official Nasdaq Nordic Stockholm ETF screener",
@@ -410,6 +419,15 @@
     "description": "Official Nasdaq Nordic Copenhagen ETF screener",
     "source_url": "https://api.nasdaq.com/api/nordic/screener/etp",
     "format": "nasdaq_nordic_copenhagen_etfs_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "nasdaq_nordic_copenhagen_etf_search",
+    "provider": "Nasdaq Nordic",
+    "description": "Official Nasdaq Nordic Copenhagen ETF search supplement",
+    "source_url": "https://api.nasdaq.com/api/nordic/search",
+    "format": "nasdaq_nordic_copenhagen_etf_search_json",
     "reference_scope": "listed_companies_subset",
     "official": true
   },
@@ -572,6 +590,42 @@
     "description": "Official IDX stock list directory",
     "source_url": "https://www.idx.id/primary/StockData/GetSecuritiesStock",
     "format": "idx_listed_companies_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "tase_securities_marketdata",
+    "provider": "TASE",
+    "description": "Official TASE market securities directory (shares subset)",
+    "source_url": "https://api.tase.co.il/api/security/securitiesmarketdata",
+    "format": "tase_securities_marketdata_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "tase_etf_marketdata",
+    "provider": "TASE",
+    "description": "Official TASE ETF market directory",
+    "source_url": "https://api.tase.co.il/api/marketdata/etfs",
+    "format": "tase_etf_marketdata_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "tase_foreign_etf_search",
+    "provider": "TASE",
+    "description": "Official TASE search entity supplement for exact foreign ETF ticker gaps",
+    "source_url": "https://api.tase.co.il/api/content/searchentities?lang=1",
+    "format": "tase_foreign_etf_search_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "tase_participating_unit_search",
+    "provider": "TASE",
+    "description": "Official TASE search entity supplement for exact participating unit stock ticker gaps",
+    "source_url": "https://api.tase.co.il/api/content/searchentities?lang=1",
+    "format": "tase_participating_unit_search_json",
     "reference_scope": "listed_companies_subset",
     "official": true
   },
