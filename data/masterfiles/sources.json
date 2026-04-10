@@ -306,6 +306,15 @@
     "official": true
   },
   {
+    "key": "bmv_issuer_directory",
+    "provider": "BMV",
+    "description": "Official BMV issuer directory supplement for local and global listings",
+    "source_url": "https://staging.bmv.com.mx/es/Grupo_BMV/Informacion_de_emisora/_rid/541/_mto/3/_mod/doSearch",
+    "format": "bmv_issuer_directory_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "nasdaq_nordic_stockholm_shares",
     "provider": "Nasdaq Nordic",
     "description": "Official Nasdaq Nordic Stockholm shares screener (Main Market + First North)",
@@ -419,6 +428,15 @@
     "description": "Official SZSE A-share list",
     "source_url": "https://www.szse.cn/market/product/stock/list/index.html",
     "format": "szse_a_share_list_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "szse_b_share_list",
+    "provider": "SZSE",
+    "description": "Official SZSE B-share list",
+    "source_url": "https://www.szse.cn/market/product/stock/list/index.html",
+    "format": "szse_b_share_list_json",
     "reference_scope": "listed_companies_subset",
     "official": true
   },

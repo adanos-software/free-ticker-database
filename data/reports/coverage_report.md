@@ -26,14 +26,14 @@
 | manual_only_exchanges | 0 |
 | missing_exchanges | 36 |
 | stock_verification_items | 43880 |
-| stock_verification_verified | 30018 |
-| stock_verification_reference_gap | 13858 |
+| stock_verification_verified | 30063 |
+| stock_verification_reference_gap | 13813 |
 | stock_verification_missing_from_official | 4 |
 | stock_verification_name_mismatch | 0 |
 | stock_verification_cross_exchange_collision | 0 |
 | etf_verification_items | 16577 |
-| etf_verification_verified | 15436 |
-| etf_verification_reference_gap | 1137 |
+| etf_verification_verified | 15438 |
+| etf_verification_reference_gap | 1135 |
 | etf_verification_missing_from_official | 2 |
 | etf_verification_name_mismatch | 1 |
 | etf_verification_cross_exchange_collision | 1 |
@@ -42,23 +42,23 @@
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-04-09T20:53:52Z |
-| tickers_age_hours | 0.04 |
-| masterfiles_generated_at | 2026-04-09T20:52:09Z |
-| masterfiles_age_hours | 0.07 |
-| identifiers_generated_at | 2026-04-09T20:56:13Z |
+| tickers_built_at | 2026-04-10T05:43:44Z |
+| tickers_age_hours | 0.01 |
+| masterfiles_generated_at | 2026-04-10T05:43:24Z |
+| masterfiles_age_hours | 0.01 |
+| identifiers_generated_at | 2026-04-10T05:43:59Z |
 | identifiers_age_hours | 0.0 |
-| listing_history_observed_at | 2026-04-09T20:53:52Z |
-| listing_history_age_hours | 0.04 |
-| latest_verification_run | data/stock_verification/run-20260409-venue-tail-final-05 |
-| latest_verification_generated_at | 2026-04-09T20:53:58Z |
-| latest_verification_age_hours | 0.04 |
-| latest_stock_verification_run | data/stock_verification/run-20260409-venue-tail-final-05 |
-| latest_stock_verification_generated_at | 2026-04-09T20:53:58Z |
-| latest_stock_verification_age_hours | 0.04 |
-| latest_etf_verification_run | data/etf_verification/run-20260409-venue-tail-final-04 |
-| latest_etf_verification_generated_at | 2026-04-09T20:53:03Z |
-| latest_etf_verification_age_hours | 0.05 |
+| listing_history_observed_at | 2026-04-10T05:43:44Z |
+| listing_history_age_hours | 0.01 |
+| latest_verification_run | data/stock_verification/run-20260410-szse-b-share-01 |
+| latest_verification_generated_at | 2026-04-10T05:44:07Z |
+| latest_verification_age_hours | 0.0 |
+| latest_stock_verification_run | data/stock_verification/run-20260410-szse-b-share-01 |
+| latest_stock_verification_generated_at | 2026-04-10T05:44:07Z |
+| latest_stock_verification_age_hours | 0.0 |
+| latest_etf_verification_run | data/etf_verification/run-20260410-bmv-search-root-01 |
+| latest_etf_verification_generated_at | 2026-04-10T05:30:24Z |
+| latest_etf_verification_age_hours | 0.23 |
 
 ## Source Coverage
 
@@ -95,9 +95,10 @@
 | jse_instrument_search | JSE | listed_companies_subset | network | 51 | 2026-04-09T11:28:35Z |
 | bme_listed_companies | BME | listed_companies_subset | unknown | 0 |  |
 | bme_etf_list | BME | listed_companies_subset | unavailable | 0 | 2026-04-09T16:00:22Z |
-| bmv_stock_search | BMV | listed_companies_subset | network | 143 | 2026-04-09T19:45:30Z |
+| bmv_stock_search | BMV | listed_companies_subset | network | 151 | 2026-04-10T05:26:11Z |
 | bmv_capital_trust_search | BMV | listed_companies_subset | network | 16 | 2026-04-09T15:31:07Z |
 | bmv_etf_search | BMV | listed_companies_subset | network | 9 | 2026-04-09T20:38:33Z |
+| bmv_issuer_directory | BMV | listed_companies_subset | network | 7 | 2026-04-10T04:59:07Z |
 | nasdaq_nordic_stockholm_shares | Nasdaq Nordic | listed_companies_subset | cache | 747 | 2026-04-09T11:28:35Z |
 | nasdaq_nordic_helsinki_shares | Nasdaq Nordic | listed_companies_subset | cache | 194 | 2026-04-09T11:28:35Z |
 | nasdaq_nordic_helsinki_shares_search | Nasdaq Nordic | listed_companies_subset | network | 3 | 2026-04-09T12:51:50Z |
@@ -111,6 +112,7 @@
 | sse_a_share_list | SSE | listed_companies_subset | network | 2350 | 2026-04-09T11:28:35Z |
 | sse_etf_list | SSE | listed_companies_subset | network | 845 | 2026-04-09T18:43:51Z |
 | szse_a_share_list | SZSE | listed_companies_subset | network | 2886 | 2026-04-09T11:28:35Z |
+| szse_b_share_list | SZSE | listed_companies_subset | cache | 38 | 2026-04-10T05:43:24Z |
 | szse_etf_list | SZSE | listed_companies_subset | network | 632 | 2026-04-09T11:28:35Z |
 | tpex_mainboard_daily_quotes | TPEX | listed_companies_subset | cache | 884 | 2026-04-09T11:28:35Z |
 | tpex_etf_filter | TPEX | listed_companies_subset | unavailable | 0 | 2026-04-09T11:28:35Z |

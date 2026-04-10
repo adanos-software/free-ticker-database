@@ -66,6 +66,8 @@ TPEX_ETF_FILTER_CACHE = MASTERFILE_CACHE_DIR / "tpex_etf_filter.json"
 LEGACY_TPEX_ETF_FILTER_CACHE = MASTERFILES_DIR / "tpex_etf_filter.json"
 SZSE_ETF_LIST_CACHE = MASTERFILE_CACHE_DIR / "szse_etf_list.json"
 LEGACY_SZSE_ETF_LIST_CACHE = MASTERFILES_DIR / "szse_etf_list.json"
+SZSE_B_SHARE_LIST_CACHE = MASTERFILE_CACHE_DIR / "szse_b_share_list.json"
+LEGACY_SZSE_B_SHARE_LIST_CACHE = MASTERFILES_DIR / "szse_b_share_list.json"
 NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_stockholm_shares.json"
 LEGACY_NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE = MASTERFILES_DIR / "nasdaq_nordic_stockholm_shares.json"
 NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_stockholm_etfs.json"
@@ -100,6 +102,8 @@ BMV_CAPITAL_TRUST_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "bmv_capital_trust_searc
 LEGACY_BMV_CAPITAL_TRUST_SEARCH_CACHE = MASTERFILES_DIR / "bmv_capital_trust_search.json"
 BMV_ETF_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "bmv_etf_search.json"
 LEGACY_BMV_ETF_SEARCH_CACHE = MASTERFILES_DIR / "bmv_etf_search.json"
+BMV_ISSUER_DIRECTORY_CACHE = MASTERFILE_CACHE_DIR / "bmv_issuer_directory.json"
+LEGACY_BMV_ISSUER_DIRECTORY_CACHE = MASTERFILES_DIR / "bmv_issuer_directory.json"
 BME_LISTED_COMPANIES_CACHE = MASTERFILE_CACHE_DIR / "bme_listed_companies.json"
 LEGACY_BME_LISTED_COMPANIES_CACHE = MASTERFILES_DIR / "bme_listed_companies.json"
 BME_ETF_LIST_CACHE = MASTERFILE_CACHE_DIR / "bme_etf_list.json"
@@ -207,6 +211,10 @@ SET_DR_SEARCH_URL = "https://www.set.or.th/en/market/get-quote/dr"
 BMV_MOBILE_QUOTE_KEYS_URL = "https://www.bmv.com.mx/es/movil/JSONClaveCotizacion"
 BMV_SEARCH_TOKEN_URL = "https://www.bmv.com.mx/rest/tokenservice/token"
 BMV_SEARCH_URL = "https://www.bmv.com.mx/api/searchservice/v1"
+BMV_ISSUER_DIRECTORY_URL = "https://staging.bmv.com.mx/es/emisoras/informacion-de-emisoras"
+BMV_ISSUER_DIRECTORY_SEARCH_URL = (
+    "https://staging.bmv.com.mx/es/Grupo_BMV/Informacion_de_emisora/_rid/541/_mto/3/_mod/doSearch"
+)
 BME_MARKET_API_ROOT_URL = "https://apiweb.bolsasymercados.es/Market/"
 BME_LISTED_COMPANIES_API_URL = f"{BME_MARKET_API_ROOT_URL}v1/EQ/ListedCompanies"
 BME_SHARE_DETAILS_INFO_API_URL = f"{BME_MARKET_API_ROOT_URL}v1/EQ/ShareDetailsInfo"
@@ -215,6 +223,7 @@ SZSE_ETF_LIST_URL = "https://www.szse.cn/market/product/list/etfList/index.html"
 SZSE_REPORT_DATA_URL = "https://www.szse.cn/api/report/ShowReport/data"
 SZSE_A_SHARE_CATALOG_ID = "1110"
 SZSE_A_SHARE_TAB_KEY = "tab1"
+SZSE_B_SHARE_TAB_KEY = "tab2"
 SZSE_ETF_CATALOG_ID = "1945"
 SZSE_ETF_TAB_KEY = "tab1"
 SSE_STOCK_LIST_URL = "https://www.sse.com.cn/assortment/stock/list/share/"
@@ -248,6 +257,16 @@ BMV_CAPITAL_TRUST_DESCRIPTIONS = {
 BMV_ETF_DESCRIPTION_MARKERS = (
     "TRACS",
     "CANASTAS DE ACCIONES",
+)
+BMV_ISSUER_DIRECTORY_QUERY_COMBINATIONS = (
+    ("CGEN_CAPIT", "CGEN_ELAC"),
+    ("CGEN_CAPIT", "CGEN_ELTRA"),
+    ("CGEN_CAPIT", "CGEN_ELFI"),
+    ("CGEN_CAPIT", "CGEN_ELFH"),
+    ("CGEN_CAPIT", "CGEN_ELFII"),
+    ("CGEN_CAPIT", "CGEN_FINMB"),
+    ("CGEN_GLOB", "CGEN_ELGA"),
+    ("CGEN_GLOB", "CGEN_ELGE"),
 )
 LSE_UPDATE_OPENER_RE = re.compile(r"UpdateOpener\('(?P<name>(?:\\'|[^'])*)',\s*'(?P<meta>[^']*)'\)")
 CBOE_CANADA_LISTING_DIRECTORY_RE = re.compile(r"CTX\['listingDirectory'\]\s*=\s*(\[[\s\S]*?\]);")
@@ -747,6 +766,14 @@ OFFICIAL_SOURCES = [
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
+        key="bmv_issuer_directory",
+        provider="BMV",
+        description="Official BMV issuer directory supplement for local and global listings",
+        source_url=BMV_ISSUER_DIRECTORY_SEARCH_URL,
+        format="bmv_issuer_directory_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
         key="nasdaq_nordic_stockholm_shares",
         provider="Nasdaq Nordic",
         description="Official Nasdaq Nordic Stockholm shares screener (Main Market + First North)",
@@ -847,6 +874,14 @@ OFFICIAL_SOURCES = [
         description="Official SZSE A-share list",
         source_url=SZSE_STOCK_LIST_URL,
         format="szse_a_share_list_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="szse_b_share_list",
+        provider="SZSE",
+        description="Official SZSE B-share list",
+        source_url=SZSE_STOCK_LIST_URL,
+        format="szse_b_share_list_json",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -1528,6 +1563,23 @@ def load_szse_etf_list_rows(
     return rows, "network"
 
 
+def load_szse_b_share_list_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_szse_b_share_list(source, session=session)
+    except (requests.RequestException, ValueError):
+        for path in (SZSE_B_SHARE_LIST_CACHE, LEGACY_SZSE_B_SHARE_LIST_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    SZSE_B_SHARE_LIST_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
 def load_tmx_etf_screener_payload(
     session: requests.Session | None = None,
 ) -> tuple[list[dict[str, Any]] | None, str]:
@@ -2065,6 +2117,7 @@ def build_bmv_reference_row(
     exchange: str,
     asset_type: str = "Stock",
     listing_status: str = "active",
+    isin: str = "",
 ) -> dict[str, str]:
     row = {
         "source_key": source.key,
@@ -2078,10 +2131,164 @@ def build_bmv_reference_row(
         "reference_scope": source.reference_scope,
         "official": "true",
     }
-    isin = listing_row.get("isin", "").strip()
+    isin = isin.strip() or listing_row.get("isin", "").strip()
     if isin:
         row["isin"] = isin
     return row
+
+
+def bmv_issuer_directory_target_rows(
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    stock_verification_dir: Path = STOCK_VERIFICATION_DIR,
+    etf_verification_dir: Path = ETF_VERIFICATION_DIR,
+) -> list[dict[str, str]]:
+    target_tickers = latest_verification_tickers(
+        stock_verification_dir,
+        exchanges={"BMV"},
+        statuses={"reference_gap", "missing_from_official"},
+    ) | latest_verification_tickers(
+        etf_verification_dir,
+        exchanges={"BMV"},
+        statuses={"reference_gap", "missing_from_official"},
+    )
+    if not target_tickers:
+        return []
+    return [
+        row
+        for row in load_csv(listings_path)
+        if row.get("exchange") == "BMV"
+        and row.get("ticker", "").strip().upper() in target_tickers
+    ]
+
+
+def bmv_issuer_directory_record_keys(record: dict[str, Any]) -> set[str]:
+    keys: set[str] = set()
+    serie = str(record.get("serie") or "").strip().upper().replace(" ", "").replace("*", "")
+    for value in (record.get("claveEmisora"), record.get("claveEmision")):
+        clave = str(value or "").strip().upper()
+        if not clave:
+            continue
+        keys.add(clave)
+        keys.add(bmv_compose_reference_ticker(clave, serie))
+    return keys
+
+
+def fetch_bmv_issuer_directory_records(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, Any]]:
+    session = session or requests.Session()
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Referer": BMV_ISSUER_DIRECTORY_URL,
+        "X-Requested-With": "XMLHttpRequest",
+    }
+    results: list[dict[str, Any]] = []
+    for market, instrument in BMV_ISSUER_DIRECTORY_QUERY_COMBINATIONS:
+        response = session.get(
+            source.source_url,
+            params={
+                "idTipoMercado": market,
+                "idTipoInstrumento": instrument,
+                "idTipoEmpresa": "",
+                "idSector": "",
+                "idSubsector": "",
+                "idRamo": "",
+                "idSubramo": "",
+            },
+            headers=headers,
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        payload = extract_bmv_json_wrapper_payload(response.text)
+        for record in payload.get("response", {}).get("resultado") or []:
+            if not isinstance(record, dict):
+                continue
+            enriched = dict(record)
+            enriched["_market"] = market
+            enriched["_instrument"] = instrument
+            results.append(enriched)
+    return results
+
+
+def fetch_bmv_issuer_directory(
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    stock_verification_dir: Path = STOCK_VERIFICATION_DIR,
+    etf_verification_dir: Path = ETF_VERIFICATION_DIR,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    target_rows = bmv_issuer_directory_target_rows(
+        listings_path=listings_path,
+        stock_verification_dir=stock_verification_dir,
+        etf_verification_dir=etf_verification_dir,
+    )
+    if not target_rows:
+        return []
+
+    records = fetch_bmv_issuer_directory_records(source, session=session)
+    rows: list[dict[str, str]] = []
+    for listing_row in target_rows:
+        listing_ticker = listing_row.get("ticker", "").strip().upper()
+        listing_isin = listing_row.get("isin", "").strip().upper()
+        listing_asset_type = listing_row.get("asset_type", "")
+        best_score = 0
+        best_matches: list[dict[str, Any]] = []
+        for record in records:
+            instrument = str(record.get("_instrument") or "")
+            is_etf_bucket = instrument in {"CGEN_ELTRA", "CGEN_ELGE"}
+            if listing_asset_type == "ETF" and not is_etf_bucket:
+                continue
+            if listing_asset_type == "Stock" and is_etf_bucket:
+                continue
+
+            score = 0
+            if listing_ticker and listing_ticker in bmv_issuer_directory_record_keys(record):
+                score += 2
+            record_isin = str(record.get("isin") or "").strip().upper()
+            if listing_isin and record_isin and listing_isin == record_isin:
+                score += 1
+            if score == 0:
+                continue
+            if score > best_score:
+                best_score = score
+                best_matches = [record]
+            elif score == best_score:
+                best_matches.append(record)
+
+        unique_matches = {
+            (
+                str(match.get("claveEmisora") or ""),
+                str(match.get("claveEmision") or ""),
+                str(match.get("serie") or ""),
+                str(match.get("razonSocial") or ""),
+                str(match.get("isin") or ""),
+            ): match
+            for match in best_matches
+        }
+        if best_score == 0 or len(unique_matches) != 1:
+            continue
+        match = next(iter(unique_matches.values()))
+        name = (
+            str(match.get("razonSocial") or "").strip()
+            or str(match.get("descripcion") or "").strip()
+        )
+        if not name:
+            continue
+        rows.append(
+            build_bmv_reference_row(
+                source,
+                listing_row,
+                name=name,
+                exchange="BMV",
+                asset_type=listing_asset_type or "Stock",
+                isin=str(match.get("isin") or ""),
+            )
+        )
+    return rows
 
 
 def extract_bmv_search_hits(payload: dict[str, Any]) -> list[dict[str, Any]]:
@@ -2136,19 +2343,90 @@ def bmv_stock_search_terms(ticker: str) -> list[str]:
     normalized = ticker.strip().upper()
     if not normalized:
         return []
-    candidates = [normalized]
+    queue: list[tuple[str, bool]] = [(normalized, True)]
     if "-" in normalized:
-        candidates.append(normalized.split("-", 1)[0])
-    if normalized.endswith(("A", "B", "N")) and len(normalized) > 1:
-        candidates.append(normalized[:-1])
+        queue.append((normalized.split("-", 1)[0], True))
+    trailing_numeric_match = re.fullmatch(r"(?P<base>[A-Z0-9]*[A-Z])\d+", normalized)
+    if trailing_numeric_match:
+        queue.append((trailing_numeric_match.group("base"), False))
+    hyphen_series_match = re.fullmatch(r"(?P<base>[A-Z0-9]+)(?P<series>[A-Z])-\d+", normalized)
+    if hyphen_series_match:
+        queue.append((hyphen_series_match.group("base"), False))
     seen: set[str] = set()
     result: list[str] = []
-    for candidate in candidates:
+    while queue:
+        candidate, can_trim_series_suffix = queue.pop(0)
         if not candidate or candidate in seen:
             continue
         seen.add(candidate)
         result.append(candidate)
+        if can_trim_series_suffix and candidate.endswith(("A", "B", "N")) and len(candidate) > 1:
+            queue.append((candidate[:-1], False))
     return result
+
+
+def bmv_search_text(value: Any) -> str:
+    if value is None:
+        return ""
+    return str(value).strip()
+
+
+def bmv_stock_search_hit_ticker_score(listing_ticker: str, hit: dict[str, Any]) -> int:
+    normalized_listing_ticker = re.sub(r"[^A-Z0-9]+", "", listing_ticker.strip().upper())
+    if not normalized_listing_ticker:
+        return 0
+
+    clave = bmv_search_text(hit.get("cve_emisora")).upper()
+    serie = bmv_search_text(hit.get("serie")).upper()
+    official_ticker = re.sub(r"[^A-Z0-9]+", "", bmv_compose_reference_ticker(clave, serie))
+    if official_ticker and official_ticker == normalized_listing_ticker:
+        return 3
+
+    normalized_clave = re.sub(r"[^A-Z0-9]+", "", clave)
+    if not normalized_clave:
+        return 0
+    if normalized_listing_ticker == normalized_clave:
+        return 2
+    if not normalized_listing_ticker.startswith(normalized_clave):
+        return 0
+
+    suffix = normalized_listing_ticker[len(normalized_clave) :]
+    if suffix.isdigit():
+        return 1
+    if re.fullmatch(r"[A-Z]\d+", suffix):
+        return 1
+    if re.fullmatch(r"[A-Z]{1,4}", suffix):
+        return 1
+    return 0
+
+
+def is_bmv_equity_search_hit(
+    hit: dict[str, Any],
+    *,
+    allow_suspended: bool = False,
+    allow_partial_metadata: bool = False,
+) -> bool:
+    descripcion = bmv_search_text(hit.get("descripcion")).upper()
+    mercado = bmv_search_text(hit.get("mercado")).upper()
+    estatus = bmv_search_text(hit.get("estatus")).upper()
+
+    if descripcion:
+        if not descripcion.startswith("ACCIONES") or "SOCIEDADES DE INVERSION" in descripcion:
+            return False
+    elif not allow_partial_metadata:
+        return False
+
+    if mercado:
+        if mercado not in {"CAPITALES", "GLOBAL"}:
+            return False
+    elif not allow_partial_metadata:
+        return False
+
+    if estatus:
+        if estatus == "ACTIVA":
+            return True
+        return allow_suspended and estatus == "SUSPENDIDA"
+    return allow_partial_metadata
 
 
 def select_bmv_unique_stock_search_hit(
@@ -2156,43 +2434,53 @@ def select_bmv_unique_stock_search_hit(
     hits: list[dict[str, Any]],
 ) -> dict[str, Any] | None:
     listing_name = listing_row.get("name", "").strip()
-    if not listing_name:
+    listing_ticker = listing_row.get("ticker", "").strip().upper()
+    if not listing_name or not listing_ticker:
         return None
-    candidates: list[dict[str, Any]] = []
+
+    exact_equity_candidates: list[tuple[int, dict[str, Any]]] = []
+    partial_root_candidates: list[tuple[int, dict[str, Any]]] = []
     for hit in hits:
-        official_name = str(hit.get("razon_social", "")).strip()
-        descripcion = str(hit.get("descripcion", "")).strip().upper()
-        mercado = str(hit.get("mercado", "")).strip().upper()
-        estatus = str(hit.get("estatus", "")).strip().upper()
-        clave = str(hit.get("cve_emisora", "")).strip().upper()
-        if (
-            not official_name
-            or not clave
-            or estatus != "ACTIVA"
-            or mercado not in {"CAPITALES", "GLOBAL"}
-            or not descripcion.startswith("ACCIONES")
-        ):
+        official_name = bmv_search_text(hit.get("razon_social"))
+        clave = bmv_search_text(hit.get("cve_emisora")).upper()
+        if not official_name or not clave:
             continue
         if not (
             has_strong_company_name_match(listing_name, official_name)
             or has_strong_company_name_match(official_name, listing_name)
         ):
             continue
-        candidates.append(hit)
-    unique_candidates: list[dict[str, Any]] = []
-    seen_signatures: set[tuple[str, str]] = set()
-    for hit in candidates:
-        signature = (
-            str(hit.get("cve_emisora", "")).strip().upper(),
-            str(hit.get("serie", "")).strip().upper(),
-        )
-        if signature in seen_signatures:
+
+        ticker_score = bmv_stock_search_hit_ticker_score(listing_ticker, hit)
+        if ticker_score == 0:
             continue
-        seen_signatures.add(signature)
-        unique_candidates.append(hit)
-    if len(unique_candidates) != 1:
-        return None
-    return unique_candidates[0]
+
+        if is_bmv_equity_search_hit(hit, allow_suspended=True):
+            exact_equity_candidates.append((ticker_score, hit))
+            continue
+        if ticker_score == 1 and is_bmv_equity_search_hit(hit, allow_partial_metadata=True):
+            partial_root_candidates.append((ticker_score, hit))
+
+    for candidates in (exact_equity_candidates, partial_root_candidates):
+        if not candidates:
+            continue
+        best_score = max(score for score, _ in candidates)
+        unique_candidates: list[dict[str, Any]] = []
+        seen_signatures: set[tuple[str, str]] = set()
+        for score, hit in candidates:
+            if score != best_score:
+                continue
+            signature = (
+                bmv_search_text(hit.get("cve_emisora")).upper(),
+                bmv_search_text(hit.get("serie")).upper(),
+            )
+            if signature in seen_signatures:
+                continue
+            seen_signatures.add(signature)
+            unique_candidates.append(hit)
+        if len(unique_candidates) == 1:
+            return unique_candidates[0]
+    return None
 
 
 def bmv_etf_search_terms(ticker: str) -> list[str]:
@@ -2299,15 +2587,8 @@ def fetch_bmv_exact_search_matches(
         if str(item.get("clave", "")).strip()
     }
 
-    token_response = session.get(BMV_SEARCH_TOKEN_URL, timeout=REQUEST_TIMEOUT)
-    token_response.raise_for_status()
-    access_token = str(token_response.json().get("response", {}).get("access_token", "")).strip()
-    if not access_token:
-        raise ValueError("BMV search token missing access_token")
-
-    search_headers = {"Authorization": f"Bearer {access_token}", "Content-Type": "application/json"}
-    cached_hits_by_clave: dict[str, list[dict[str, Any]]] = {}
     matches: list[tuple[dict[str, str], dict[str, Any]]] = []
+    listings_with_quote_matches: list[tuple[dict[str, str], str, str]] = []
 
     for listing_row in bmv_search_target_rows(
         source,
@@ -2319,6 +2600,19 @@ def fetch_bmv_exact_search_matches(
         if quote_match is None:
             continue
         clave, serie = quote_match
+        listings_with_quote_matches.append((listing_row, clave, serie))
+
+    if not listings_with_quote_matches:
+        return matches
+
+    token_response = session.get(BMV_SEARCH_TOKEN_URL, timeout=REQUEST_TIMEOUT)
+    token_response.raise_for_status()
+    access_token = str(token_response.json().get("response", {}).get("access_token", "")).strip()
+    if not access_token:
+        raise ValueError("BMV search token missing access_token")
+
+    cached_hits_by_clave: dict[str, list[dict[str, Any]]] = {}
+    for listing_row, clave, serie in listings_with_quote_matches:
         if clave not in cached_hits_by_clave:
             cached_hits_by_clave[clave] = fetch_bmv_search_hits(
                 source,
@@ -2357,15 +2651,8 @@ def fetch_bmv_stock_search(
         verification_dir=verification_dir,
         session=session,
     ):
-        descripcion = str(hit.get("descripcion", "")).strip().upper()
-        mercado = str(hit.get("mercado", "")).strip().upper()
-        estatus = str(hit.get("estatus", "")).strip().upper()
         official_name = str(hit.get("razon_social", "")).strip()
-        if estatus != "ACTIVA":
-            continue
-        if mercado not in {"CAPITALES", "GLOBAL"}:
-            continue
-        if not descripcion.startswith("ACCIONES") or "SOCIEDADES DE INVERSION" in descripcion:
+        if not is_bmv_equity_search_hit(hit, allow_suspended=True):
             continue
         if not official_name:
             continue
@@ -2590,6 +2877,23 @@ def load_bmv_etf_search_rows(
 
     ensure_output_dirs()
     BMV_ETF_SEARCH_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def load_bmv_issuer_directory_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_bmv_issuer_directory(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in (BMV_ISSUER_DIRECTORY_CACHE, LEGACY_BMV_ISSUER_DIRECTORY_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    BMV_ISSUER_DIRECTORY_CACHE.write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"
 
 
@@ -4409,6 +4713,31 @@ def parse_szse_a_share_list(payload: dict[str, Any] | list[dict[str, Any]], sour
     return rows
 
 
+def parse_szse_b_share_list(payload: dict[str, Any] | list[dict[str, Any]], source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for report in extract_szse_report_sections(payload):
+        for record in report.get("data", []) or []:
+            ticker = str(record.get("bgdm", "")).strip()
+            name = strip_html_tags(str(record.get("bgjc", "")).strip())
+            if not ticker or not name:
+                continue
+            rows.append(
+                {
+                    "source_key": source.key,
+                    "provider": source.provider,
+                    "source_url": source.source_url,
+                    "ticker": ticker,
+                    "name": name,
+                    "exchange": "SZSE",
+                    "asset_type": "Stock",
+                    "listing_status": "active",
+                    "reference_scope": source.reference_scope,
+                    "official": "true",
+                }
+            )
+    return rows
+
+
 def parse_szse_etf_list(payload: dict[str, Any] | list[dict[str, Any]], source: MasterfileSource) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     for report in extract_szse_report_sections(payload):
@@ -4498,6 +4827,38 @@ def parse_szse_a_share_workbook(content: bytes, source: MasterfileSource) -> lis
     return rows
 
 
+def parse_szse_b_share_workbook(content: bytes, source: MasterfileSource) -> list[dict[str, str]]:
+    dataframe = pd.read_excel(io.BytesIO(content), sheet_name=0)
+    rows: list[dict[str, str]] = []
+    for record in dataframe.to_dict(orient="records"):
+        ticker_value = record.get("B股代码")
+        name_value = record.get("公司全称") or record.get("B股简称")
+        if pd.isna(ticker_value) or pd.isna(name_value):
+            continue
+        ticker = str(ticker_value).strip()
+        if ticker.endswith(".0"):
+            ticker = ticker[:-2]
+        ticker = ticker.zfill(6)
+        name = str(name_value).strip()
+        if not ticker or not name:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "SZSE",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
 def fetch_szse_a_share_list(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
     session = session or requests.Session()
     headers = {
@@ -4558,6 +4919,97 @@ def fetch_szse_a_share_list(source: MasterfileSource, session: requests.Session 
                 raise last_error
             raise requests.RequestException("SZSE A-share list unavailable")
         page_rows = parse_szse_a_share_list(payload, source)
+        if not page_rows:
+            break
+        rows.extend(page_rows)
+        sections = extract_szse_report_sections(payload)
+        metadata = sections[0].get("metadata", {}) if sections else {}
+        total_pages = int(metadata.get("pagecount") or total_pages)
+        page += 1
+    return rows
+
+
+def fetch_szse_b_share_list(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Referer": source.source_url,
+        "Connection": "close",
+    }
+    try:
+        session.get(
+            source.source_url,
+            headers={"User-Agent": USER_AGENT, "Connection": "close"},
+            timeout=REQUEST_TIMEOUT,
+        )
+    except requests.RequestException:
+        pass
+
+    workbook_params = {
+        "SHOWTYPE": "xlsx",
+        "CATALOGID": SZSE_A_SHARE_CATALOG_ID,
+        "TABKEY": SZSE_B_SHARE_TAB_KEY,
+        "PAGENO": 1,
+        "random": "0.001",
+    }
+    for _attempt in range(3):
+        try:
+            response = session.get(
+                "https://www.szse.cn/api/report/ShowReport",
+                params=workbook_params,
+                timeout=REQUEST_TIMEOUT,
+            )
+            response.raise_for_status()
+            workbook_rows = parse_szse_b_share_workbook(response.content, source)
+            if workbook_rows:
+                return workbook_rows
+        except (requests.RequestException, ValueError):
+            continue
+    for _attempt in range(3):
+        try:
+            response = session.get(
+                "https://www.szse.cn/api/report/ShowReport",
+                params=workbook_params,
+                headers=headers,
+                timeout=REQUEST_TIMEOUT,
+            )
+            response.raise_for_status()
+            workbook_rows = parse_szse_b_share_workbook(response.content, source)
+            if workbook_rows:
+                return workbook_rows
+        except (requests.RequestException, ValueError):
+            continue
+
+    rows: list[dict[str, str]] = []
+    page = 1
+    total_pages = 1
+    while page <= total_pages:
+        params = {
+            "CATALOGID": SZSE_A_SHARE_CATALOG_ID,
+            "TABKEY": SZSE_B_SHARE_TAB_KEY,
+            "PAGENO": page,
+            "random": f"{page / 1000:.3f}",
+        }
+        payload: dict[str, Any] | list[dict[str, Any]] | None = None
+        last_error: Exception | None = None
+        for _attempt in range(3):
+            try:
+                response = session.get(
+                    SZSE_REPORT_DATA_URL,
+                    params=params,
+                    headers=headers,
+                    timeout=REQUEST_TIMEOUT,
+                )
+                response.raise_for_status()
+                payload = response.json()
+                break
+            except (requests.RequestException, ValueError) as exc:
+                last_error = exc
+        if payload is None:
+            if isinstance(last_error, requests.RequestException):
+                raise last_error
+            raise requests.RequestException("SZSE B-share list unavailable")
+        page_rows = parse_szse_b_share_list(payload, source)
         if not page_rows:
             break
         rows.extend(page_rows)
@@ -5883,6 +6335,11 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return fetch_sse_etf_list(source, session=session)
     if source.format == "szse_a_share_list_json":
         return fetch_szse_a_share_list(source, session=session)
+    if source.format == "szse_b_share_list_json":
+        rows, mode = load_szse_b_share_list_rows(source, session=session)
+        if rows is None:
+            return [], mode
+        return rows, mode
     if source.format == "szse_etf_list_json":
         rows, mode = load_szse_etf_list_rows(source, session=session)
         if rows is None:
@@ -5913,6 +6370,8 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "sec_company_tickers_exchange_json":
         payload = fetch_json(source.source_url, session=session)
         return parse_sec_company_tickers_exchange(payload, source)
+    if source.format == "bmv_issuer_directory_json":
+        return fetch_bmv_issuer_directory(source, session=session)
     if source.format == "bmv_etf_search_json":
         return fetch_bmv_etf_search(source, session=session)
     raise ValueError(f"Unsupported source format: {source.format}")
@@ -5991,6 +6450,16 @@ def fetch_source_rows_with_mode(
         rows, mode = load_bmv_etf_search_rows(source, session=session)
         if rows is None:
             raise requests.RequestException("BMV ETF search unavailable")
+        return rows, mode
+    if source.format == "bmv_issuer_directory_json":
+        rows, mode = load_bmv_issuer_directory_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("BMV issuer directory unavailable")
+        return rows, mode
+    if source.format == "szse_b_share_list_json":
+        rows, mode = load_szse_b_share_list_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("SZSE B-share list unavailable")
         return rows, mode
     if source.format == "szse_etf_list_json":
         rows, mode = load_szse_etf_list_rows(source, session=session)

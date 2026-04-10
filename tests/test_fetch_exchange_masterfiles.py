@@ -16,6 +16,7 @@ from scripts.fetch_exchange_masterfiles import (
     BME_LISTED_COMPANIES_CACHE,
     BMV_CAPITAL_TRUST_SEARCH_CACHE,
     BMV_ETF_SEARCH_CACHE,
+    BMV_ISSUER_DIRECTORY_CACHE,
     BMV_STOCK_SEARCH_CACHE,
     B3_INSTRUMENTS_EQUITIES_CACHE,
     JSE_INSTRUMENT_SEARCH_CACHE,
@@ -23,6 +24,7 @@ from scripts.fetch_exchange_masterfiles import (
     LEGACY_BME_LISTED_COMPANIES_CACHE,
     LEGACY_BMV_CAPITAL_TRUST_SEARCH_CACHE,
     LEGACY_BMV_ETF_SEARCH_CACHE,
+    LEGACY_BMV_ISSUER_DIRECTORY_CACHE,
     LEGACY_BMV_STOCK_SEARCH_CACHE,
     LEGACY_B3_INSTRUMENTS_EQUITIES_CACHE,
     LEGACY_LSE_COMPANY_REPORTS_CACHE,
@@ -61,6 +63,7 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_bme_reference_rows,
     fetch_bmv_capital_trust_search,
     fetch_bmv_etf_search,
+    fetch_bmv_issuer_directory,
     fetch_bmv_stock_search,
     fetch_all_sources,
     fetch_krx_etf_finder,
@@ -80,6 +83,7 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_sse_a_share_list,
     fetch_sse_etf_list,
     fetch_szse_a_share_list,
+    fetch_szse_b_share_list,
     fetch_szse_etf_list,
     fetch_source_rows_with_mode,
     fetch_tmx_money_etfs,
@@ -91,6 +95,7 @@ from scripts.fetch_exchange_masterfiles import (
     load_bme_reference_rows,
     load_bmv_capital_trust_search_rows,
     load_bmv_etf_search_rows,
+    load_bmv_issuer_directory_rows,
     load_bmv_stock_search_rows,
     load_jse_instrument_search_rows,
     NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE,
@@ -104,6 +109,7 @@ from scripts.fetch_exchange_masterfiles import (
     load_nasdaq_nordic_stockholm_shares_rows,
     load_set_dr_search_rows,
     load_set_etf_search_rows,
+    load_szse_b_share_list_rows,
     load_szse_etf_list_rows,
     merge_reference_rows,
     dedupe_rows,
@@ -157,6 +163,8 @@ from scripts.fetch_exchange_masterfiles import (
     parse_sse_etf_list,
     parse_szse_a_share_list,
     parse_szse_a_share_workbook,
+    parse_szse_b_share_list,
+    parse_szse_b_share_workbook,
     parse_szse_etf_list,
     parse_szse_etf_workbook,
     parse_tpex_mainboard_quotes,
@@ -657,6 +665,92 @@ def test_parse_szse_a_share_workbook_maps_szse_rows() -> None:
     ]
 
 
+def test_parse_szse_b_share_list_maps_szse_rows() -> None:
+    payload = {
+        "result": [
+            {
+                "metadata": {"pagecount": 1, "recordcount": 2},
+                "data": [
+                    {"bgdm": "200011", "bgjc": '<a href="/x">深物业B</a>'},
+                    {"bgdm": "200012", "bgjc": '<a href="/y">南玻B</a>'},
+                    {"bgdm": "", "bgjc": "Ignored"},
+                ],
+            }
+        ]
+    }
+
+    rows = parse_szse_b_share_list(payload, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "200011",
+            "name": "深物业B",
+            "exchange": "SZSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "200012",
+            "name": "南玻B",
+            "exchange": "SZSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_parse_szse_b_share_workbook_maps_szse_rows() -> None:
+    dataframe = pd.DataFrame(
+        [
+            {"B股代码": 200011, "B股简称": "深物业B"},
+            {"B股代码": "200012", "B股简称": "南玻B"},
+            {"B股代码": None, "B股简称": "Ignored"},
+        ]
+    )
+    content = io.BytesIO()
+    with pd.ExcelWriter(content, engine="openpyxl") as writer:
+        dataframe.to_excel(writer, sheet_name="B股列表", index=False)
+
+    rows = parse_szse_b_share_workbook(content.getvalue(), SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "200011",
+            "name": "深物业B",
+            "exchange": "SZSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "200012",
+            "name": "南玻B",
+            "exchange": "SZSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
 def test_parse_szse_etf_list_maps_szse_rows() -> None:
     payload = {
         "result": [
@@ -813,6 +907,70 @@ def test_fetch_szse_a_share_list_fetches_all_pages() -> None:
     assert all(call[1]["TABKEY"] == "tab1" for call in api_calls)
 
 
+def test_fetch_szse_b_share_list_fetches_all_pages() -> None:
+    source = MasterfileSource(
+        key="szse_b",
+        provider="SZSE",
+        description="SZSE B-share list",
+        source_url="https://www.szse.cn/market/product/stock/list/index.html",
+        format="szse_b_share_list_json",
+        reference_scope="listed_companies_subset",
+    )
+
+    class FakeResponse:
+        def __init__(self, payload=None, content=b""):
+            self._payload = payload
+            self.content = content
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, params=None, headers=None, **kwargs):
+            self.calls.append((url, params, headers, kwargs))
+            if params is None:
+                return FakeResponse({})
+            if params.get("SHOWTYPE") == "xlsx":
+                return FakeResponse({}, b"not-an-excel-file")
+            page = params["PAGENO"]
+            if page == 1:
+                return FakeResponse(
+                    {
+                        "result": [
+                            {
+                                "metadata": {"pagecount": 2, "recordcount": 2},
+                                "data": [{"bgdm": "200011", "bgjc": '<a href="/x">深物业B</a>'}],
+                            }
+                        ]
+                    }
+                )
+            return FakeResponse(
+                {
+                    "result": [
+                        {
+                            "metadata": {"pagecount": 2, "recordcount": 2},
+                            "data": [{"bgdm": "200012", "bgjc": '<a href="/y">南玻B</a>'}],
+                        }
+                    ]
+                }
+            )
+
+    session = FakeSession()
+    rows = fetch_szse_b_share_list(source, session=session)
+
+    assert [row["ticker"] for row in rows] == ["200011", "200012"]
+    api_calls = [call for call in session.calls if call[1] is not None and "SHOWTYPE" not in call[1]]
+    assert [call[1]["PAGENO"] for call in api_calls] == [1, 2]
+    assert all(call[1]["CATALOGID"] == "1110" for call in api_calls)
+    assert all(call[1]["TABKEY"] == "tab2" for call in api_calls)
+
+
 def test_fetch_szse_etf_list_fetches_all_pages() -> None:
     source = MasterfileSource(
         key="szse_etf",
@@ -890,6 +1048,11 @@ def test_fetch_szse_etf_list_fetches_all_pages() -> None:
 
 def test_szse_source_is_modeled_as_partial_official_coverage() -> None:
     source = next(item for item in OFFICIAL_SOURCES if item.key == "szse_a_share_list")
+    assert source.reference_scope == "listed_companies_subset"
+
+
+def test_szse_b_share_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "szse_b_share_list")
     assert source.reference_scope == "listed_companies_subset"
 
 
@@ -4875,7 +5038,6 @@ def test_fetch_bmv_stock_search_uses_unique_strong_ticker_search_fallback(tmp_pa
     assert session.get_calls == [
         (fetch_exchange_masterfiles.BMV_MOBILE_QUOTE_KEYS_URL, {"idBusquedaCotizacion": 2}),
         (fetch_exchange_masterfiles.BMV_SEARCH_TOKEN_URL, None),
-        (fetch_exchange_masterfiles.BMV_SEARCH_TOKEN_URL, None),
     ]
     assert session.post_calls == [
         (
@@ -4890,6 +5052,319 @@ def test_fetch_bmv_stock_search_uses_unique_strong_ticker_search_fallback(tmp_pa
                 },
             },
         )
+    ]
+
+
+def test_bmv_stock_search_terms_expand_hyphenated_series_suffixes() -> None:
+    assert fetch_exchange_masterfiles.bmv_stock_search_terms("LASITEB-1") == [
+        "LASITEB-1",
+        "LASITEB",
+        "LASITE",
+    ]
+
+
+def test_bmv_stock_search_terms_expand_trailing_numeric_suffixes() -> None:
+    assert fetch_exchange_masterfiles.bmv_stock_search_terms("FNOVA17") == [
+        "FNOVA17",
+        "FNOVA",
+    ]
+
+
+def test_fetch_bmv_stock_search_accepts_suspended_and_root_series_matches(tmp_path, monkeypatch) -> None:
+    source = MasterfileSource(
+        key="bmv_stock_search",
+        provider="BMV",
+        description="Official BMV stock search supplement for suspended and root-series matches",
+        source_url="https://www.bmv.com.mx/api/searchservice/v1",
+        format="bmv_stock_search_json",
+        reference_scope="listed_companies_subset",
+    )
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,exchange,asset_type,name,isin",
+                "GFAMSAA,BMV,Stock,Grupo Famsa S.A.B. de C.V,MX01GF010008",
+                "SAREB,BMV,Stock,Sare Holding S.A.B. de C.V,MX01SA030007",
+                "UNIFINA,BMV,Stock,Unifin Financiera S. A. B. de C. V,MX00UN000002",
+                "LASITEB-1,BMV,Stock,Sitios Latinoamérica S.A.B. de C.V.,",
+                "FNOVA17,BMV,Stock,Banco Actinver S.A. Institución de Banca Múltiple Grupo Financiero Actinver,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "latest_reference_gap_tickers",
+        lambda base_dir, exchanges=None: {"GFAMSAA", "SAREB", "UNIFINA", "LASITEB-1", "FNOVA17"},
+    )
+
+    class FakeResponse:
+        def __init__(self, *, text: str | None = None, payload: object | None = None):
+            self.text = text or ""
+            self._payload = payload
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.get_calls = []
+            self.post_calls = []
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            self.get_calls.append((url, params))
+            if url == fetch_exchange_masterfiles.BMV_MOBILE_QUOTE_KEYS_URL:
+                return FakeResponse(text='for(;;);({"response":{"clavesCotizacion":[]}})')
+            if url == fetch_exchange_masterfiles.BMV_SEARCH_TOKEN_URL:
+                return FakeResponse(payload={"response": {"access_token": "token-123"}})
+            raise AssertionError(url)
+
+        def post(self, url, headers=None, json=None, timeout=None):
+            self.post_calls.append((url, json))
+            term = json["payload"]["term"]
+            payloads = {
+                "GFAMSAA": {"response": {"busquedaPanel": {"busquedaGeneral": {"instrumentosEmisoras": {"instrumentos": {"coincidenciaParcialInstrumentos": {"emisoras": {"hits": []}}}}}}}},
+                "GFAMSA": {
+                    "response": {
+                        "busquedaPanel": {
+                            "busquedaGeneral": {
+                                "instrumentosEmisoras": {
+                                    "instrumentos": {
+                                        "coincidenciaParcialInstrumentos": {
+                                            "emisoras": {
+                                                "hits": [
+                                                    {
+                                                        "_source": {
+                                                            "cve_emisora": "GFAMSA",
+                                                            "serie": "A",
+                                                            "descripcion": "ACCIONES",
+                                                            "mercado": "Capitales",
+                                                            "estatus": "Suspendida",
+                                                            "razon_social": "GRUPO FAMSA, S.A.B. DE C.V.",
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "SAREB": {"response": {"busquedaPanel": {"busquedaGeneral": {"instrumentosEmisoras": {"instrumentos": {"coincidenciaParcialInstrumentos": {"emisoras": {"hits": []}}}}}}}},
+                "SARE": {
+                    "response": {
+                        "busquedaPanel": {
+                            "busquedaGeneral": {
+                                "instrumentosEmisoras": {
+                                    "instrumentos": {
+                                        "coincidenciaParcialInstrumentos": {
+                                            "emisoras": {
+                                                "hits": [
+                                                    {
+                                                        "_source": {
+                                                            "cve_emisora": "SARE",
+                                                            "serie": "B",
+                                                            "descripcion": "ACCIONES",
+                                                            "mercado": "Capitales",
+                                                            "estatus": "Suspendida",
+                                                            "razon_social": "SARE HOLDING, S.A.B. DE C.V.",
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "UNIFINA": {"response": {"busquedaPanel": {"busquedaGeneral": {"instrumentosEmisoras": {"instrumentos": {"coincidenciaParcialInstrumentos": {"emisoras": {"hits": []}}}}}}}},
+                "UNIFIN": {
+                    "response": {
+                        "busquedaPanel": {
+                            "busquedaGeneral": {
+                                "instrumentosEmisoras": {
+                                    "instrumentos": {
+                                        "coincidenciaParcialInstrumentos": {
+                                            "emisoras": {
+                                                "hits": [
+                                                    {
+                                                        "_source": {
+                                                            "cve_emisora": "UNIFIN",
+                                                            "serie": "A",
+                                                            "descripcion": "ACCIONES SEGUROS, FIANZAS Y ORGANIZACIONES AUXILIARES DE CREDITO",
+                                                            "mercado": "Capitales",
+                                                            "estatus": "Suspendida",
+                                                            "razon_social": "UNIFIN FINANCIERA, S.A.B. DE C.V.",
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "LASITEB-1": {"response": {"busquedaPanel": {"busquedaGeneral": {"instrumentosEmisoras": {"instrumentos": {"coincidenciaParcialInstrumentos": {"emisoras": {"hits": []}}}}}}}},
+                "LASITEB": {"response": {"busquedaPanel": {"busquedaGeneral": {"instrumentosEmisoras": {"instrumentos": {"coincidenciaParcialInstrumentos": {"emisoras": {"hits": []}}}}}}}},
+                "LASITE": {
+                    "response": {
+                        "busquedaPanel": {
+                            "busquedaGeneral": {
+                                "instrumentosEmisoras": {
+                                    "instrumentos": {
+                                        "coincidenciaParcialInstrumentos": {
+                                            "emisoras": {
+                                                "hits": [
+                                                    {
+                                                        "_source": {
+                                                            "cve_emisora": "LASITE",
+                                                            "serie": "*",
+                                                            "descripcion": "ACCIONES",
+                                                            "mercado": "Capitales",
+                                                            "estatus": "Activa",
+                                                            "razon_social": "SITIOS LATINOAMÉRICA, S.A.B. DE C.V.",
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "FNOVA17": {"response": {"busquedaPanel": {"busquedaGeneral": {"instrumentosEmisoras": {"instrumentos": {"coincidenciaParcialInstrumentos": {"emisoras": {"hits": []}}}}}}}},
+                "FNOVA": {
+                    "response": {
+                        "busquedaPanel": {
+                            "busquedaGeneral": {
+                                "instrumentosEmisoras": {
+                                    "instrumentos": {
+                                        "coincidenciaParcialInstrumentos": {
+                                            "emisoras": {
+                                                "hits": [
+                                                    {
+                                                        "_source": {
+                                                            "cve_emisora": "FNOVA",
+                                                            "serie": None,
+                                                            "descripcion": None,
+                                                            "mercado": None,
+                                                            "estatus": None,
+                                                            "razon_social": "BANCO ACTINVER, S.A. INSTITUCION DE BANCA MULTIPLE, GRUPO FINANCIERO ACTINVER",
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+            }
+            return FakeResponse(payload=payloads[term])
+
+    session = FakeSession()
+    rows = fetch_bmv_stock_search(
+        source,
+        listings_path=listings_path,
+        verification_dir=tmp_path,
+        session=session,
+    )
+
+    assert rows == [
+        {
+            "source_key": "bmv_stock_search",
+            "provider": "BMV",
+            "source_url": "https://www.bmv.com.mx/api/searchservice/v1",
+            "ticker": "GFAMSAA",
+            "name": "GRUPO FAMSA, S.A.B. DE C.V.",
+            "exchange": "BMV",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "MX01GF010008",
+        },
+        {
+            "source_key": "bmv_stock_search",
+            "provider": "BMV",
+            "source_url": "https://www.bmv.com.mx/api/searchservice/v1",
+            "ticker": "SAREB",
+            "name": "SARE HOLDING, S.A.B. DE C.V.",
+            "exchange": "BMV",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "MX01SA030007",
+        },
+        {
+            "source_key": "bmv_stock_search",
+            "provider": "BMV",
+            "source_url": "https://www.bmv.com.mx/api/searchservice/v1",
+            "ticker": "UNIFINA",
+            "name": "UNIFIN FINANCIERA, S.A.B. DE C.V.",
+            "exchange": "BMV",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "MX00UN000002",
+        },
+        {
+            "source_key": "bmv_stock_search",
+            "provider": "BMV",
+            "source_url": "https://www.bmv.com.mx/api/searchservice/v1",
+            "ticker": "LASITEB-1",
+            "name": "SITIOS LATINOAMÉRICA, S.A.B. DE C.V.",
+            "exchange": "BMV",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+        },
+        {
+            "source_key": "bmv_stock_search",
+            "provider": "BMV",
+            "source_url": "https://www.bmv.com.mx/api/searchservice/v1",
+            "ticker": "FNOVA17",
+            "name": "BANCO ACTINVER, S.A. INSTITUCION DE BANCA MULTIPLE, GRUPO FINANCIERO ACTINVER",
+            "exchange": "BMV",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+        },
+    ]
+    assert session.get_calls == [
+        (fetch_exchange_masterfiles.BMV_MOBILE_QUOTE_KEYS_URL, {"idBusquedaCotizacion": 2}),
+        (fetch_exchange_masterfiles.BMV_SEARCH_TOKEN_URL, None),
+    ]
+    assert session.post_calls == [
+        ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "GFAMSAA", "term2": "", "termT": "GFAMSAA", "searchType": "busquedaPanel"}}),
+        ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "GFAMSA", "term2": "", "termT": "GFAMSA", "searchType": "busquedaPanel"}}),
+        ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "SAREB", "term2": "", "termT": "SAREB", "searchType": "busquedaPanel"}}),
+        ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "SARE", "term2": "", "termT": "SARE", "searchType": "busquedaPanel"}}),
+        ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "UNIFINA", "term2": "", "termT": "UNIFINA", "searchType": "busquedaPanel"}}),
+        ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "UNIFIN", "term2": "", "termT": "UNIFIN", "searchType": "busquedaPanel"}}),
+        ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "LASITEB-1", "term2": "", "termT": "LASITEB-1", "searchType": "busquedaPanel"}}),
+        ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "LASITEB", "term2": "", "termT": "LASITEB", "searchType": "busquedaPanel"}}),
+        ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "LASITE", "term2": "", "termT": "LASITE", "searchType": "busquedaPanel"}}),
+        ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "FNOVA17", "term2": "", "termT": "FNOVA17", "searchType": "busquedaPanel"}}),
+        ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "FNOVA", "term2": "", "termT": "FNOVA", "searchType": "busquedaPanel"}}),
     ]
 
 
@@ -5290,6 +5765,255 @@ def test_fetch_bmv_etf_search_backfills_exact_and_root_matches(tmp_path, monkeyp
         ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "CSPX", "term2": "", "termT": "CSPX", "searchType": "busquedaPanel"}}),
         ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "NAFTRACISH", "term2": "", "termT": "NAFTRACISH", "searchType": "busquedaPanel"}}),
         ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "NAFTRAC", "term2": "", "termT": "NAFTRAC", "searchType": "busquedaPanel"}}),
+    ]
+
+
+def test_bmv_issuer_directory_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "bmv_issuer_directory")
+    assert source.reference_scope == "listed_companies_subset"
+
+
+def test_fetch_bmv_issuer_directory_backfills_local_and_global_matches(tmp_path, monkeypatch) -> None:
+    source = MasterfileSource(
+        key="bmv_issuer_directory",
+        provider="BMV",
+        description="Official BMV issuer directory supplement for local and global listings",
+        source_url="https://staging.bmv.com.mx/es/Grupo_BMV/Informacion_de_emisora/_rid/541/_mto/3/_mod/doSearch",
+        format="bmv_issuer_directory_json",
+        reference_scope="listed_companies_subset",
+    )
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,exchange,asset_type,name,isin",
+                "CREAL,BMV,Stock,Credito Real S.A.B. de C.V.,MX00CR000000",
+                "NION,BMV,Stock,NIO Inc,KYG6525F1028",
+                "ROGN,BMV,Stock,Roche Holding AG,CH0012032048",
+                "VDCAN,BMV,ETF,Vanguard Funds Public Limited Company - Vanguard USD Corporate 1-3 Year Bond UCI,IE00BGYWSV06",
+                "VFEAN,BMV,ETF,Vanguard Funds Public Limited Company - Vanguard FTSE Emerging Markets UCITS ETF,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    stock_verification_dir = tmp_path / "stock_verification" / "run-01"
+    stock_verification_dir.mkdir(parents=True)
+    (stock_verification_dir / "chunk-01-of-01.csv").write_text(
+        "\n".join(
+            [
+                "ticker,exchange,status",
+                "CREAL,BMV,reference_gap",
+                "NION,BMV,reference_gap",
+                "ROGN,BMV,reference_gap",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    etf_verification_dir = tmp_path / "etf_verification" / "run-01"
+    etf_verification_dir.mkdir(parents=True)
+    (etf_verification_dir / "chunk-01-of-01.csv").write_text(
+        "\n".join(
+            [
+                "ticker,exchange,status",
+                "VDCAN,BMV,reference_gap",
+                "VFEAN,BMV,reference_gap",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "BMV_ISSUER_DIRECTORY_QUERY_COMBINATIONS",
+        (
+            ("CGEN_CAPIT", "CGEN_ELAC"),
+            ("CGEN_GLOB", "CGEN_ELGA"),
+            ("CGEN_GLOB", "CGEN_ELGE"),
+        ),
+    )
+
+    class FakeResponse:
+        def __init__(self, text: str):
+            self.text = text
+
+        def raise_for_status(self):
+            return None
+
+    class FakeSession:
+        def __init__(self):
+            self.get_calls = []
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            self.get_calls.append((url, params))
+            payloads = {
+                ("CGEN_CAPIT", "CGEN_ELAC"): {
+                    "response": {
+                        "resultado": [
+                            {
+                                "claveEmisora": "CREAL",
+                                "serie": None,
+                                "razonSocial": "CREDITO REAL, S.A.B. DE C.V., SOFOM, E.N.R.",
+                                "isin": None,
+                            }
+                        ]
+                    }
+                },
+                ("CGEN_GLOB", "CGEN_ELGA"): {
+                    "response": {
+                        "resultado": [
+                            {
+                                "claveEmisora": None,
+                                "claveEmision": "NIO",
+                                "serie": "N",
+                                "razonSocial": "NIO Inc",
+                                "isin": "US62914V1061",
+                            },
+                            {
+                                "claveEmisora": None,
+                                "claveEmision": "ROG",
+                                "serie": "N",
+                                "razonSocial": "ROCHE HOLDING AG",
+                                "isin": "CH0012032048",
+                            },
+                        ]
+                    }
+                },
+                ("CGEN_GLOB", "CGEN_ELGE"): {
+                    "response": {
+                        "resultado": [
+                            {
+                                "claveEmisora": None,
+                                "claveEmision": "VDCA",
+                                "serie": "N",
+                                "razonSocial": "Vanguard USD Corporate 1-3 year UCITS ETF",
+                                "isin": "IE00BGYWSV06",
+                            },
+                            {
+                                "claveEmisora": None,
+                                "claveEmision": "VFEA",
+                                "serie": "N",
+                                "razonSocial": "Vanguard FTSE Emerging Markets UCITS ETF",
+                                "isin": "IE00BK5BR733",
+                            },
+                        ]
+                    }
+                },
+            }
+            payload = payloads[(params["idTipoMercado"], params["idTipoInstrumento"])]
+            return FakeResponse(f'for(;;);({json.dumps(payload)})')
+
+    session = FakeSession()
+    rows = fetch_bmv_issuer_directory(
+        source,
+        listings_path=listings_path,
+        stock_verification_dir=stock_verification_dir.parent,
+        etf_verification_dir=etf_verification_dir.parent,
+        session=session,
+    )
+
+    assert rows == [
+        {
+            "source_key": "bmv_issuer_directory",
+            "provider": "BMV",
+            "source_url": "https://staging.bmv.com.mx/es/Grupo_BMV/Informacion_de_emisora/_rid/541/_mto/3/_mod/doSearch",
+            "ticker": "CREAL",
+            "name": "CREDITO REAL, S.A.B. DE C.V., SOFOM, E.N.R.",
+            "exchange": "BMV",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "MX00CR000000",
+        },
+        {
+            "source_key": "bmv_issuer_directory",
+            "provider": "BMV",
+            "source_url": "https://staging.bmv.com.mx/es/Grupo_BMV/Informacion_de_emisora/_rid/541/_mto/3/_mod/doSearch",
+            "ticker": "NION",
+            "name": "NIO Inc",
+            "exchange": "BMV",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "US62914V1061",
+        },
+        {
+            "source_key": "bmv_issuer_directory",
+            "provider": "BMV",
+            "source_url": "https://staging.bmv.com.mx/es/Grupo_BMV/Informacion_de_emisora/_rid/541/_mto/3/_mod/doSearch",
+            "ticker": "ROGN",
+            "name": "ROCHE HOLDING AG",
+            "exchange": "BMV",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "CH0012032048",
+        },
+        {
+            "source_key": "bmv_issuer_directory",
+            "provider": "BMV",
+            "source_url": "https://staging.bmv.com.mx/es/Grupo_BMV/Informacion_de_emisora/_rid/541/_mto/3/_mod/doSearch",
+            "ticker": "VDCAN",
+            "name": "Vanguard USD Corporate 1-3 year UCITS ETF",
+            "exchange": "BMV",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "IE00BGYWSV06",
+        },
+        {
+            "source_key": "bmv_issuer_directory",
+            "provider": "BMV",
+            "source_url": "https://staging.bmv.com.mx/es/Grupo_BMV/Informacion_de_emisora/_rid/541/_mto/3/_mod/doSearch",
+            "ticker": "VFEAN",
+            "name": "Vanguard FTSE Emerging Markets UCITS ETF",
+            "exchange": "BMV",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "IE00BK5BR733",
+        },
+    ]
+    assert session.get_calls == [
+        (
+            "https://staging.bmv.com.mx/es/Grupo_BMV/Informacion_de_emisora/_rid/541/_mto/3/_mod/doSearch",
+            {
+                "idTipoMercado": "CGEN_CAPIT",
+                "idTipoInstrumento": "CGEN_ELAC",
+                "idTipoEmpresa": "",
+                "idSector": "",
+                "idSubsector": "",
+                "idRamo": "",
+                "idSubramo": "",
+            },
+        ),
+        (
+            "https://staging.bmv.com.mx/es/Grupo_BMV/Informacion_de_emisora/_rid/541/_mto/3/_mod/doSearch",
+            {
+                "idTipoMercado": "CGEN_GLOB",
+                "idTipoInstrumento": "CGEN_ELGA",
+                "idTipoEmpresa": "",
+                "idSector": "",
+                "idSubsector": "",
+                "idRamo": "",
+                "idSubramo": "",
+            },
+        ),
+        (
+            "https://staging.bmv.com.mx/es/Grupo_BMV/Informacion_de_emisora/_rid/541/_mto/3/_mod/doSearch",
+            {
+                "idTipoMercado": "CGEN_GLOB",
+                "idTipoInstrumento": "CGEN_ELGE",
+                "idTipoEmpresa": "",
+                "idSector": "",
+                "idSubsector": "",
+                "idRamo": "",
+                "idSubramo": "",
+            },
+        ),
     ]
 
 
@@ -6150,6 +6874,39 @@ def test_load_bmv_etf_search_rows_falls_back_to_cache(tmp_path, monkeypatch) -> 
     ]
 
 
+def test_load_bmv_issuer_directory_rows_falls_back_to_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "bmv_issuer_directory.json"
+    cache_path.write_text(
+        '[{"ticker":"ROGN","name":"ROCHE HOLDING AG","exchange":"BMV","asset_type":"Stock","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "BMV_ISSUER_DIRECTORY_CACHE", cache_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_BMV_ISSUER_DIRECTORY_CACHE",
+        tmp_path / "missing.json",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_bmv_issuer_directory",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "bmv_issuer_directory")
+    rows, mode = load_bmv_issuer_directory_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "ROGN",
+            "name": "ROCHE HOLDING AG",
+            "exchange": "BMV",
+            "asset_type": "Stock",
+            "listing_status": "active",
+        }
+    ]
+
+
 def test_fetch_source_rows_with_mode_uses_sto_cache(tmp_path, monkeypatch) -> None:
     cache_path = tmp_path / "nasdaq_nordic_stockholm_shares.json"
     cache_path.write_text(
@@ -6242,6 +6999,26 @@ def test_load_szse_etf_list_rows_falls_back_to_cache(tmp_path, monkeypatch) -> N
     assert rows == [{"ticker": "159199", "name": "石油ETF平安", "exchange": "SZSE", "asset_type": "ETF", "listing_status": "active"}]
 
 
+def test_load_szse_b_share_list_rows_falls_back_to_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "szse_b_share_list.json"
+    cache_path.write_text(
+        '[{"ticker":"200011","name":"深物业B","exchange":"SZSE","asset_type":"Stock","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.SZSE_B_SHARE_LIST_CACHE", cache_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_SZSE_B_SHARE_LIST_CACHE", tmp_path / "missing.json")
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.fetch_szse_b_share_list",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "szse_b_share_list")
+    rows, mode = load_szse_b_share_list_rows(source)
+
+    assert mode == "cache"
+    assert rows == [{"ticker": "200011", "name": "深物业B", "exchange": "SZSE", "asset_type": "Stock", "listing_status": "active"}]
+
+
 def test_fetch_source_rows_with_mode_uses_szse_etf_cache(tmp_path, monkeypatch) -> None:
     cache_path = tmp_path / "szse_etf_list.json"
     cache_path.write_text(
@@ -6260,6 +7037,27 @@ def test_fetch_source_rows_with_mode_uses_szse_etf_cache(tmp_path, monkeypatch) 
 
     assert mode == "cache"
     assert rows[0]["ticker"] == "159199"
+    assert rows[0]["exchange"] == "SZSE"
+
+
+def test_fetch_source_rows_with_mode_uses_szse_b_share_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "szse_b_share_list.json"
+    cache_path.write_text(
+        '[{"ticker":"200011","name":"深物业B","exchange":"SZSE","asset_type":"Stock","listing_status":"active","source_key":"szse_b_share_list","reference_scope":"listed_companies_subset","official":"true","provider":"SZSE","source_url":"https://example.com"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.SZSE_B_SHARE_LIST_CACHE", cache_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_SZSE_B_SHARE_LIST_CACHE", tmp_path / "missing.json")
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.fetch_szse_b_share_list",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "szse_b_share_list")
+    rows, mode = fetch_source_rows_with_mode(source)
+
+    assert mode == "cache"
+    assert rows[0]["ticker"] == "200011"
     assert rows[0]["exchange"] == "SZSE"
 
 

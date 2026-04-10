@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-09T20:52:09Z",
-  "rows": 87846,
+  "generated_at": "2026-04-10T05:43:24Z",
+  "rows": 87899,
   "exchanges": [
     "AMS",
     "ASX",
@@ -46,8 +46,9 @@
     "b3_listed_etfs": 187,
     "b3_bdr_etfs": 302,
     "nasdaq_other_listed": 7084,
-    "bmv_stock_search": 143,
+    "bmv_stock_search": 151,
     "bmv_etf_search": 9,
+    "bmv_issuer_directory": 7,
     "bmv_capital_trust_search": 16,
     "nasdaq_nordic_copenhagen_shares": 144,
     "nasdaq_nordic_copenhagen_etfs": 1,
@@ -81,6 +82,7 @@
     "nasdaq_nordic_stockholm_etfs": 33,
     "szse_a_share_list": 2886,
     "szse_etf_list": 632,
+    "szse_b_share_list": 38,
     "tpex_mainboard_daily_quotes": 884,
     "jpx_listed_issues": 4444,
     "tmx_listed_issuers": 3704,
@@ -346,8 +348,8 @@
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 143,
-      "generated_at": "2026-04-09T19:45:30Z"
+      "rows": 151,
+      "generated_at": "2026-04-10T05:26:11Z"
     },
     "bmv_capital_trust_search": {
       "provider": "BMV",
@@ -364,6 +366,14 @@
       "mode": "network",
       "rows": 9,
       "generated_at": "2026-04-09T20:38:33Z"
+    },
+    "bmv_issuer_directory": {
+      "provider": "BMV",
+      "reference_scope": "listed_companies_subset",
+      "official": true,
+      "mode": "network",
+      "rows": 7,
+      "generated_at": "2026-04-10T04:59:07Z"
     },
     "nasdaq_nordic_stockholm_shares": {
       "provider": "Nasdaq Nordic",
@@ -468,6 +478,14 @@
       "mode": "network",
       "rows": 2886,
       "generated_at": "2026-04-09T11:28:35Z"
+    },
+    "szse_b_share_list": {
+      "provider": "SZSE",
+      "reference_scope": "listed_companies_subset",
+      "official": true,
+      "mode": "cache",
+      "rows": 38,
+      "generated_at": "2026-04-10T05:43:24Z"
     },
     "szse_etf_list": {
       "provider": "SZSE",
@@ -597,6 +615,8 @@
     "bme_etf_list": "unavailable",
     "pse_listed_company_directory": "network",
     "set_dr_search": "network",
-    "bmv_etf_search": "network"
+    "bmv_etf_search": "network",
+    "bmv_issuer_directory": "network",
+    "szse_b_share_list": "cache"
   }
 }
