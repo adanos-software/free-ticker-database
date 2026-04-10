@@ -324,6 +324,15 @@
     "official": true
   },
   {
+    "key": "nasdaq_nordic_stockholm_shares_search",
+    "provider": "Nasdaq Nordic",
+    "description": "Official Nasdaq Nordic Stockholm share search supplement for exact stock ticker gaps",
+    "source_url": "https://api.nasdaq.com/api/nordic/search",
+    "format": "nasdaq_nordic_stockholm_shares_search_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "nasdaq_nordic_helsinki_shares",
     "provider": "Nasdaq Nordic",
     "description": "Official Nasdaq Nordic Helsinki shares screener (Main Market + First North)",
@@ -473,6 +482,15 @@
     "description": "Official TPEX ETF InfoHub filter directory",
     "source_url": "https://info.tpex.org.tw/ETF/en/filter.html",
     "format": "tpex_etf_filter_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "tpex_emerging_basic_info",
+    "provider": "MOPS",
+    "description": "Official MOPS emerging company basic information feed for TPEX listings",
+    "source_url": "https://mopsfin.twse.com.tw/opendata/t187ap03_R.csv",
+    "format": "tpex_emerging_basic_csv",
     "reference_scope": "listed_companies_subset",
     "official": true
   },

@@ -11,7 +11,7 @@
     "lei_coverage": 920,
     "listing_status_rows": 83029,
     "listing_status_intervals": 83029,
-    "listing_events": 25385,
+    "listing_events": 25400,
     "listing_keys": 60438,
     "official_masterfile_symbols": 28293,
     "official_masterfile_matches": 18658,
@@ -22,8 +22,8 @@
     "manual_only_exchanges": 0,
     "missing_exchanges": 36,
     "stock_verification_items": 43871,
-    "stock_verification_verified": 30083,
-    "stock_verification_reference_gap": 13784,
+    "stock_verification_verified": 30294,
+    "stock_verification_reference_gap": 13573,
     "stock_verification_missing_from_official": 4,
     "stock_verification_name_mismatch": 0,
     "stock_verification_cross_exchange_collision": 0,
@@ -35,23 +35,23 @@
     "etf_verification_cross_exchange_collision": 1
   },
   "freshness": {
-    "tickers_built_at": "2026-04-10T07:04:46Z",
-    "tickers_age_hours": 0.4,
-    "masterfiles_generated_at": "2026-04-10T07:26:52Z",
-    "masterfiles_age_hours": 0.03,
-    "identifiers_generated_at": "2026-04-10T07:28:33Z",
-    "identifiers_age_hours": 0.0,
-    "listing_history_observed_at": "2026-04-10T07:04:46Z",
-    "listing_history_age_hours": 0.4,
-    "latest_verification_run": "data/stock_verification/run-20260410-spotlight-search-01",
-    "latest_verification_generated_at": "2026-04-10T07:27:25Z",
-    "latest_verification_age_hours": 0.02,
-    "latest_stock_verification_run": "data/stock_verification/run-20260410-spotlight-search-01",
-    "latest_stock_verification_generated_at": "2026-04-10T07:27:25Z",
-    "latest_stock_verification_age_hours": 0.02,
+    "tickers_built_at": "2026-04-10T08:20:35Z",
+    "tickers_age_hours": 0.03,
+    "masterfiles_generated_at": "2026-04-10T08:20:00Z",
+    "masterfiles_age_hours": 0.04,
+    "identifiers_generated_at": "2026-04-10T08:20:38Z",
+    "identifiers_age_hours": 0.03,
+    "listing_history_observed_at": "2026-04-10T08:20:35Z",
+    "listing_history_age_hours": 0.03,
+    "latest_verification_run": "data/stock_verification/run-20260410-tpex-esb-mops-01",
+    "latest_verification_generated_at": "2026-04-10T08:22:09Z",
+    "latest_verification_age_hours": 0.0,
+    "latest_stock_verification_run": "data/stock_verification/run-20260410-tpex-esb-mops-01",
+    "latest_stock_verification_generated_at": "2026-04-10T08:22:09Z",
+    "latest_stock_verification_age_hours": 0.0,
     "latest_etf_verification_run": "data/etf_verification/run-20260410-tpex-etf-cache-01",
     "latest_etf_verification_generated_at": "2026-04-10T07:07:20Z",
-    "latest_etf_verification_age_hours": 0.35
+    "latest_etf_verification_age_hours": 1.25
   },
   "source_coverage": [
     {
@@ -379,6 +379,15 @@
       "generated_at": "2026-04-09T11:28:35Z"
     },
     {
+      "key": "nasdaq_nordic_stockholm_shares_search",
+      "provider": "Nasdaq Nordic",
+      "reference_scope": "listed_companies_subset",
+      "official": true,
+      "mode": "network",
+      "rows": 1,
+      "generated_at": "2026-04-10T08:06:23Z"
+    },
+    {
       "key": "nasdaq_nordic_helsinki_shares",
       "provider": "Nasdaq Nordic",
       "reference_scope": "listed_companies_subset",
@@ -530,6 +539,15 @@
       "mode": "cache",
       "rows": 112,
       "generated_at": "2026-04-10T07:04:17Z"
+    },
+    {
+      "key": "tpex_emerging_basic_info",
+      "provider": "MOPS",
+      "reference_scope": "listed_companies_subset",
+      "official": true,
+      "mode": "network",
+      "rows": 354,
+      "generated_at": "2026-04-10T08:20:00Z"
     },
     {
       "key": "krx_listed_companies",
@@ -2814,7 +2832,7 @@
     {
       "exchange": "STO",
       "venue_status": "official_partial",
-      "official_source_count": 4,
+      "official_source_count": 5,
       "manual_source_count": 0,
       "reference_scopes": [
         "listed_companies_subset"
@@ -2832,15 +2850,15 @@
       "masterfile_match_rate": null,
       "masterfile_collision_rate": null,
       "verification_items": 768,
-      "verification_verified": 660,
-      "verification_reference_gap": 108,
+      "verification_verified": 662,
+      "verification_reference_gap": 106,
       "verification_missing_from_official": 0,
       "verification_name_mismatch": 0,
       "verification_cross_exchange_collision": 0,
       "verification_verified_rate_on_covered": 100.0,
       "stock_verification_items": 768,
-      "stock_verification_verified": 660,
-      "stock_verification_reference_gap": 108,
+      "stock_verification_verified": 662,
+      "stock_verification_reference_gap": 106,
       "stock_verification_missing_from_official": 0,
       "stock_verification_name_mismatch": 0,
       "stock_verification_cross_exchange_collision": 0,
@@ -2852,7 +2870,7 @@
       "etf_verification_name_mismatch": 0,
       "etf_verification_cross_exchange_collision": 0,
       "etf_verification_verified_rate_on_covered": 100.0,
-      "unresolved_count": 108
+      "unresolved_count": 106
     },
     {
       "exchange": "SZSE",
@@ -2941,7 +2959,7 @@
     {
       "exchange": "TPEX",
       "venue_status": "official_partial",
-      "official_source_count": 2,
+      "official_source_count": 3,
       "manual_source_count": 0,
       "reference_scopes": [
         "listed_companies_subset"
@@ -2959,15 +2977,15 @@
       "masterfile_match_rate": null,
       "masterfile_collision_rate": null,
       "verification_items": 1017,
-      "verification_verified": 798,
-      "verification_reference_gap": 219,
+      "verification_verified": 1007,
+      "verification_reference_gap": 10,
       "verification_missing_from_official": 0,
       "verification_name_mismatch": 0,
       "verification_cross_exchange_collision": 0,
       "verification_verified_rate_on_covered": 100.0,
       "stock_verification_items": 1017,
-      "stock_verification_verified": 798,
-      "stock_verification_reference_gap": 219,
+      "stock_verification_verified": 1007,
+      "stock_verification_reference_gap": 10,
       "stock_verification_missing_from_official": 0,
       "stock_verification_name_mismatch": 0,
       "stock_verification_cross_exchange_collision": 0,
@@ -2979,7 +2997,7 @@
       "etf_verification_name_mismatch": 0,
       "etf_verification_cross_exchange_collision": 0,
       "etf_verification_verified_rate_on_covered": 100.0,
-      "unresolved_count": 219
+      "unresolved_count": 10
     },
     {
       "exchange": "TSE",
@@ -5676,7 +5694,7 @@
     {
       "exchange": "STO",
       "venue_status": "official_partial",
-      "official_source_count": 4,
+      "official_source_count": 5,
       "manual_source_count": 0,
       "reference_scopes": [
         "listed_companies_subset"
@@ -5694,15 +5712,15 @@
       "masterfile_match_rate": null,
       "masterfile_collision_rate": null,
       "verification_items": 768,
-      "verification_verified": 660,
-      "verification_reference_gap": 108,
+      "verification_verified": 662,
+      "verification_reference_gap": 106,
       "verification_missing_from_official": 0,
       "verification_name_mismatch": 0,
       "verification_cross_exchange_collision": 0,
       "verification_verified_rate_on_covered": 100.0,
       "stock_verification_items": 768,
-      "stock_verification_verified": 660,
-      "stock_verification_reference_gap": 108,
+      "stock_verification_verified": 662,
+      "stock_verification_reference_gap": 106,
       "stock_verification_missing_from_official": 0,
       "stock_verification_name_mismatch": 0,
       "stock_verification_cross_exchange_collision": 0,
@@ -5714,7 +5732,7 @@
       "etf_verification_name_mismatch": 0,
       "etf_verification_cross_exchange_collision": 0,
       "etf_verification_verified_rate_on_covered": 100.0,
-      "unresolved_count": 108
+      "unresolved_count": 106
     },
     {
       "exchange": "SZSE",
@@ -5803,7 +5821,7 @@
     {
       "exchange": "TPEX",
       "venue_status": "official_partial",
-      "official_source_count": 2,
+      "official_source_count": 3,
       "manual_source_count": 0,
       "reference_scopes": [
         "listed_companies_subset"
@@ -5821,15 +5839,15 @@
       "masterfile_match_rate": null,
       "masterfile_collision_rate": null,
       "verification_items": 1017,
-      "verification_verified": 798,
-      "verification_reference_gap": 219,
+      "verification_verified": 1007,
+      "verification_reference_gap": 10,
       "verification_missing_from_official": 0,
       "verification_name_mismatch": 0,
       "verification_cross_exchange_collision": 0,
       "verification_verified_rate_on_covered": 100.0,
       "stock_verification_items": 1017,
-      "stock_verification_verified": 798,
-      "stock_verification_reference_gap": 219,
+      "stock_verification_verified": 1007,
+      "stock_verification_reference_gap": 10,
       "stock_verification_missing_from_official": 0,
       "stock_verification_name_mismatch": 0,
       "stock_verification_cross_exchange_collision": 0,
@@ -5841,7 +5859,7 @@
       "etf_verification_name_mismatch": 0,
       "etf_verification_cross_exchange_collision": 0,
       "etf_verification_verified_rate_on_covered": 100.0,
-      "unresolved_count": 219
+      "unresolved_count": 10
     },
     {
       "exchange": "TSE",
@@ -6925,223 +6943,15 @@
     }
   ],
   "verification": {
-    "run_dir": "data/stock_verification/run-20260410-spotlight-search-01",
-    "generated_at": "2026-04-10T07:27:25Z",
+    "run_dir": "data/stock_verification/run-20260410-tpex-esb-mops-01",
+    "generated_at": "2026-04-10T08:22:09Z",
     "summary": {
-      "chunk_count": 10,
-      "completed_chunks": 10,
-      "missing_chunks": [],
       "items": 43871,
       "status_counts": {
         "missing_from_official": 4,
-        "reference_gap": 13784,
-        "verified": 30083
+        "reference_gap": 13573,
+        "verified": 30294
       },
-      "chunks": [
-        {
-          "chunk_index": 1,
-          "chunk_count": 10,
-          "items": 4388,
-          "status_counts": {
-            "reference_gap": 1384,
-            "verified": 3004
-          },
-          "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-01-of-10.json",
-          "csv_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-01-of-10.csv"
-        },
-        {
-          "chunk_index": 2,
-          "chunk_count": 10,
-          "items": 4387,
-          "status_counts": {
-            "reference_gap": 1393,
-            "verified": 2994
-          },
-          "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-02-of-10.json",
-          "csv_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-02-of-10.csv"
-        },
-        {
-          "chunk_index": 3,
-          "chunk_count": 10,
-          "items": 4387,
-          "status_counts": {
-            "reference_gap": 1374,
-            "verified": 3013
-          },
-          "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-03-of-10.json",
-          "csv_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-03-of-10.csv"
-        },
-        {
-          "chunk_index": 4,
-          "chunk_count": 10,
-          "items": 4387,
-          "status_counts": {
-            "missing_from_official": 1,
-            "reference_gap": 1371,
-            "verified": 3015
-          },
-          "finding_examples": [
-            {
-              "listing_key": "NEO::GLAS-A",
-              "ticker": "GLAS-A",
-              "exchange": "NEO",
-              "asset_type": "Stock",
-              "name": "Glass House Brands Inc.",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "CA3771304068",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-04-of-10.json",
-          "csv_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-04-of-10.csv"
-        },
-        {
-          "chunk_index": 5,
-          "chunk_count": 10,
-          "items": 4387,
-          "status_counts": {
-            "reference_gap": 1384,
-            "verified": 3003
-          },
-          "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-05-of-10.json",
-          "csv_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-05-of-10.csv"
-        },
-        {
-          "chunk_index": 6,
-          "chunk_count": 10,
-          "items": 4387,
-          "status_counts": {
-            "reference_gap": 1383,
-            "verified": 3004
-          },
-          "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-06-of-10.json",
-          "csv_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-06-of-10.csv"
-        },
-        {
-          "chunk_index": 7,
-          "chunk_count": 10,
-          "items": 4387,
-          "status_counts": {
-            "missing_from_official": 1,
-            "reference_gap": 1370,
-            "verified": 3016
-          },
-          "finding_examples": [
-            {
-              "listing_key": "NEO::QIMC",
-              "ticker": "QIMC",
-              "exchange": "NEO",
-              "asset_type": "Stock",
-              "name": "Quebec Innovative Materials Cor",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-07-of-10.json",
-          "csv_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-07-of-10.csv"
-        },
-        {
-          "chunk_index": 8,
-          "chunk_count": 10,
-          "items": 4387,
-          "status_counts": {
-            "reference_gap": 1383,
-            "verified": 3004
-          },
-          "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-08-of-10.json",
-          "csv_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-08-of-10.csv"
-        },
-        {
-          "chunk_index": 9,
-          "chunk_count": 10,
-          "items": 4387,
-          "status_counts": {
-            "missing_from_official": 2,
-            "reference_gap": 1382,
-            "verified": 3003
-          },
-          "finding_examples": [
-            {
-              "listing_key": "NEO::ATMY",
-              "ticker": "ATMY",
-              "exchange": "NEO",
-              "asset_type": "Stock",
-              "name": "Antimony Resources Corp.",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "NEO::KUYA",
-              "ticker": "KUYA",
-              "exchange": "NEO",
-              "asset_type": "Stock",
-              "name": "KUYA",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-09-of-10.json",
-          "csv_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-09-of-10.csv"
-        },
-        {
-          "chunk_index": 10,
-          "chunk_count": 10,
-          "items": 4387,
-          "status_counts": {
-            "reference_gap": 1360,
-            "verified": 3027
-          },
-          "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-10-of-10.json",
-          "csv_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-10-of-10.csv"
-        }
-      ],
-      "finding_rows": 4,
       "finding_examples": [
         {
           "listing_key": "NEO::GLAS-A",
@@ -7219,9 +7029,7 @@
           "figi": "",
           "lei": ""
         }
-      ],
-      "summary_json": "data/stock_verification/run-20260410-spotlight-search-01/summary.json",
-      "findings_csv": "data/stock_verification/run-20260410-spotlight-search-01/findings.csv"
+      ]
     },
     "exchange_coverage": [
       {
@@ -7890,14 +7698,14 @@
       {
         "exchange": "STO",
         "items": 768,
-        "verified": 660,
-        "reference_gap": 108,
+        "verified": 662,
+        "reference_gap": 106,
         "missing_from_official": 0,
         "name_mismatch": 0,
         "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 660,
+        "officially_covered_items": 662,
         "verified_rate_on_covered": 100.0
       },
       {
@@ -7929,14 +7737,14 @@
       {
         "exchange": "TPEX",
         "items": 1017,
-        "verified": 798,
-        "reference_gap": 219,
+        "verified": 1007,
+        "reference_gap": 10,
         "missing_from_official": 0,
         "name_mismatch": 0,
         "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 798,
+        "officially_covered_items": 1007,
         "verified_rate_on_covered": 100.0
       },
       {
@@ -8085,223 +7893,15 @@
     ]
   },
   "stock_verification": {
-    "run_dir": "data/stock_verification/run-20260410-spotlight-search-01",
-    "generated_at": "2026-04-10T07:27:25Z",
+    "run_dir": "data/stock_verification/run-20260410-tpex-esb-mops-01",
+    "generated_at": "2026-04-10T08:22:09Z",
     "summary": {
-      "chunk_count": 10,
-      "completed_chunks": 10,
-      "missing_chunks": [],
       "items": 43871,
       "status_counts": {
         "missing_from_official": 4,
-        "reference_gap": 13784,
-        "verified": 30083
+        "reference_gap": 13573,
+        "verified": 30294
       },
-      "chunks": [
-        {
-          "chunk_index": 1,
-          "chunk_count": 10,
-          "items": 4388,
-          "status_counts": {
-            "reference_gap": 1384,
-            "verified": 3004
-          },
-          "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-01-of-10.json",
-          "csv_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-01-of-10.csv"
-        },
-        {
-          "chunk_index": 2,
-          "chunk_count": 10,
-          "items": 4387,
-          "status_counts": {
-            "reference_gap": 1393,
-            "verified": 2994
-          },
-          "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-02-of-10.json",
-          "csv_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-02-of-10.csv"
-        },
-        {
-          "chunk_index": 3,
-          "chunk_count": 10,
-          "items": 4387,
-          "status_counts": {
-            "reference_gap": 1374,
-            "verified": 3013
-          },
-          "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-03-of-10.json",
-          "csv_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-03-of-10.csv"
-        },
-        {
-          "chunk_index": 4,
-          "chunk_count": 10,
-          "items": 4387,
-          "status_counts": {
-            "missing_from_official": 1,
-            "reference_gap": 1371,
-            "verified": 3015
-          },
-          "finding_examples": [
-            {
-              "listing_key": "NEO::GLAS-A",
-              "ticker": "GLAS-A",
-              "exchange": "NEO",
-              "asset_type": "Stock",
-              "name": "Glass House Brands Inc.",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "CA3771304068",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-04-of-10.json",
-          "csv_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-04-of-10.csv"
-        },
-        {
-          "chunk_index": 5,
-          "chunk_count": 10,
-          "items": 4387,
-          "status_counts": {
-            "reference_gap": 1384,
-            "verified": 3003
-          },
-          "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-05-of-10.json",
-          "csv_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-05-of-10.csv"
-        },
-        {
-          "chunk_index": 6,
-          "chunk_count": 10,
-          "items": 4387,
-          "status_counts": {
-            "reference_gap": 1383,
-            "verified": 3004
-          },
-          "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-06-of-10.json",
-          "csv_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-06-of-10.csv"
-        },
-        {
-          "chunk_index": 7,
-          "chunk_count": 10,
-          "items": 4387,
-          "status_counts": {
-            "missing_from_official": 1,
-            "reference_gap": 1370,
-            "verified": 3016
-          },
-          "finding_examples": [
-            {
-              "listing_key": "NEO::QIMC",
-              "ticker": "QIMC",
-              "exchange": "NEO",
-              "asset_type": "Stock",
-              "name": "Quebec Innovative Materials Cor",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-07-of-10.json",
-          "csv_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-07-of-10.csv"
-        },
-        {
-          "chunk_index": 8,
-          "chunk_count": 10,
-          "items": 4387,
-          "status_counts": {
-            "reference_gap": 1383,
-            "verified": 3004
-          },
-          "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-08-of-10.json",
-          "csv_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-08-of-10.csv"
-        },
-        {
-          "chunk_index": 9,
-          "chunk_count": 10,
-          "items": 4387,
-          "status_counts": {
-            "missing_from_official": 2,
-            "reference_gap": 1382,
-            "verified": 3003
-          },
-          "finding_examples": [
-            {
-              "listing_key": "NEO::ATMY",
-              "ticker": "ATMY",
-              "exchange": "NEO",
-              "asset_type": "Stock",
-              "name": "Antimony Resources Corp.",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            },
-            {
-              "listing_key": "NEO::KUYA",
-              "ticker": "KUYA",
-              "exchange": "NEO",
-              "asset_type": "Stock",
-              "name": "KUYA",
-              "country": "Canada",
-              "country_code": "CA",
-              "isin": "",
-              "sector": "",
-              "status": "missing_from_official",
-              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
-              "official_reference_name": "",
-              "official_reference_source": "",
-              "covered_by_official_directory": true,
-              "cik": "",
-              "figi": "",
-              "lei": ""
-            }
-          ],
-          "json_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-09-of-10.json",
-          "csv_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-09-of-10.csv"
-        },
-        {
-          "chunk_index": 10,
-          "chunk_count": 10,
-          "items": 4387,
-          "status_counts": {
-            "reference_gap": 1360,
-            "verified": 3027
-          },
-          "finding_examples": [],
-          "json_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-10-of-10.json",
-          "csv_out": "data/stock_verification/run-20260410-spotlight-search-01/chunk-10-of-10.csv"
-        }
-      ],
-      "finding_rows": 4,
       "finding_examples": [
         {
           "listing_key": "NEO::GLAS-A",
@@ -8379,9 +7979,7 @@
           "figi": "",
           "lei": ""
         }
-      ],
-      "summary_json": "data/stock_verification/run-20260410-spotlight-search-01/summary.json",
-      "findings_csv": "data/stock_verification/run-20260410-spotlight-search-01/findings.csv"
+      ]
     },
     "exchange_coverage": [
       {
@@ -9050,14 +8648,14 @@
       {
         "exchange": "STO",
         "items": 768,
-        "verified": 660,
-        "reference_gap": 108,
+        "verified": 662,
+        "reference_gap": 106,
         "missing_from_official": 0,
         "name_mismatch": 0,
         "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 660,
+        "officially_covered_items": 662,
         "verified_rate_on_covered": 100.0
       },
       {
@@ -9089,14 +8687,14 @@
       {
         "exchange": "TPEX",
         "items": 1017,
-        "verified": 798,
-        "reference_gap": 219,
+        "verified": 1007,
+        "reference_gap": 10,
         "missing_from_official": 0,
         "name_mismatch": 0,
         "cross_exchange_collision": 0,
         "asset_type_mismatch": 0,
         "non_active_official": 0,
-        "officially_covered_items": 798,
+        "officially_covered_items": 1007,
         "verified_rate_on_covered": 100.0
       },
       {
@@ -10234,25 +9832,6 @@
       "masterfile_collisions": 0
     },
     {
-      "exchange": "TPEX",
-      "venue_status": "official_partial",
-      "unresolved_findings": 219,
-      "reference_gap": 219,
-      "missing_from_official": 0,
-      "name_mismatch": 0,
-      "cross_exchange_collision": 0,
-      "stock_reference_gap": 219,
-      "stock_missing_from_official": 0,
-      "stock_name_mismatch": 0,
-      "stock_cross_exchange_collision": 0,
-      "etf_reference_gap": 0,
-      "etf_missing_from_official": 0,
-      "etf_name_mismatch": 0,
-      "etf_cross_exchange_collision": 0,
-      "masterfile_missing": 0,
-      "masterfile_collisions": 0
-    },
-    {
       "exchange": "BME",
       "venue_status": "missing",
       "unresolved_findings": 169,
@@ -10331,12 +9910,12 @@
     {
       "exchange": "STO",
       "venue_status": "official_partial",
-      "unresolved_findings": 108,
-      "reference_gap": 108,
+      "unresolved_findings": 106,
+      "reference_gap": 106,
       "missing_from_official": 0,
       "name_mismatch": 0,
       "cross_exchange_collision": 0,
-      "stock_reference_gap": 108,
+      "stock_reference_gap": 106,
       "stock_missing_from_official": 0,
       "stock_name_mismatch": 0,
       "stock_cross_exchange_collision": 0,
@@ -10945,6 +10524,25 @@
       "name_mismatch": 0,
       "cross_exchange_collision": 0,
       "stock_reference_gap": 14,
+      "stock_missing_from_official": 0,
+      "stock_name_mismatch": 0,
+      "stock_cross_exchange_collision": 0,
+      "etf_reference_gap": 0,
+      "etf_missing_from_official": 0,
+      "etf_name_mismatch": 0,
+      "etf_cross_exchange_collision": 0,
+      "masterfile_missing": 0,
+      "masterfile_collisions": 0
+    },
+    {
+      "exchange": "TPEX",
+      "venue_status": "official_partial",
+      "unresolved_findings": 10,
+      "reference_gap": 10,
+      "missing_from_official": 0,
+      "name_mismatch": 0,
+      "cross_exchange_collision": 0,
+      "stock_reference_gap": 10,
       "stock_missing_from_official": 0,
       "stock_name_mismatch": 0,
       "stock_cross_exchange_collision": 0,

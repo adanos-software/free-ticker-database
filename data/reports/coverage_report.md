@@ -15,7 +15,7 @@
 | lei_coverage | 920 |
 | listing_status_rows | 83029 |
 | listing_status_intervals | 83029 |
-| listing_events | 25385 |
+| listing_events | 25400 |
 | listing_keys | 60438 |
 | official_masterfile_symbols | 28293 |
 | official_masterfile_matches | 18658 |
@@ -26,8 +26,8 @@
 | manual_only_exchanges | 0 |
 | missing_exchanges | 36 |
 | stock_verification_items | 43871 |
-| stock_verification_verified | 30083 |
-| stock_verification_reference_gap | 13784 |
+| stock_verification_verified | 30294 |
+| stock_verification_reference_gap | 13573 |
 | stock_verification_missing_from_official | 4 |
 | stock_verification_name_mismatch | 0 |
 | stock_verification_cross_exchange_collision | 0 |
@@ -42,23 +42,23 @@
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-04-10T07:04:46Z |
-| tickers_age_hours | 0.4 |
-| masterfiles_generated_at | 2026-04-10T07:26:52Z |
-| masterfiles_age_hours | 0.03 |
-| identifiers_generated_at | 2026-04-10T07:28:33Z |
-| identifiers_age_hours | 0.0 |
-| listing_history_observed_at | 2026-04-10T07:04:46Z |
-| listing_history_age_hours | 0.4 |
-| latest_verification_run | data/stock_verification/run-20260410-spotlight-search-01 |
-| latest_verification_generated_at | 2026-04-10T07:27:25Z |
-| latest_verification_age_hours | 0.02 |
-| latest_stock_verification_run | data/stock_verification/run-20260410-spotlight-search-01 |
-| latest_stock_verification_generated_at | 2026-04-10T07:27:25Z |
-| latest_stock_verification_age_hours | 0.02 |
+| tickers_built_at | 2026-04-10T08:20:35Z |
+| tickers_age_hours | 0.03 |
+| masterfiles_generated_at | 2026-04-10T08:20:00Z |
+| masterfiles_age_hours | 0.04 |
+| identifiers_generated_at | 2026-04-10T08:20:38Z |
+| identifiers_age_hours | 0.03 |
+| listing_history_observed_at | 2026-04-10T08:20:35Z |
+| listing_history_age_hours | 0.03 |
+| latest_verification_run | data/stock_verification/run-20260410-tpex-esb-mops-01 |
+| latest_verification_generated_at | 2026-04-10T08:22:09Z |
+| latest_verification_age_hours | 0.0 |
+| latest_stock_verification_run | data/stock_verification/run-20260410-tpex-esb-mops-01 |
+| latest_stock_verification_generated_at | 2026-04-10T08:22:09Z |
+| latest_stock_verification_age_hours | 0.0 |
 | latest_etf_verification_run | data/etf_verification/run-20260410-tpex-etf-cache-01 |
 | latest_etf_verification_generated_at | 2026-04-10T07:07:20Z |
-| latest_etf_verification_age_hours | 0.35 |
+| latest_etf_verification_age_hours | 1.25 |
 
 ## Source Coverage
 
@@ -100,6 +100,7 @@
 | bmv_etf_search | BMV | listed_companies_subset | network | 9 | 2026-04-09T20:38:33Z |
 | bmv_issuer_directory | BMV | listed_companies_subset | network | 7 | 2026-04-10T04:59:07Z |
 | nasdaq_nordic_stockholm_shares | Nasdaq Nordic | listed_companies_subset | cache | 747 | 2026-04-09T11:28:35Z |
+| nasdaq_nordic_stockholm_shares_search | Nasdaq Nordic | listed_companies_subset | network | 1 | 2026-04-10T08:06:23Z |
 | nasdaq_nordic_helsinki_shares | Nasdaq Nordic | listed_companies_subset | cache | 194 | 2026-04-09T11:28:35Z |
 | nasdaq_nordic_helsinki_shares_search | Nasdaq Nordic | listed_companies_subset | network | 3 | 2026-04-09T12:51:50Z |
 | spotlight_companies_search | Spotlight | listed_companies_subset | network | 20 | 2026-04-10T07:26:52Z |
@@ -117,6 +118,7 @@
 | szse_etf_list | SZSE | listed_companies_subset | network | 632 | 2026-04-09T11:28:35Z |
 | tpex_mainboard_daily_quotes | TPEX | listed_companies_subset | cache | 884 | 2026-04-09T11:28:35Z |
 | tpex_etf_filter | TPEX | listed_companies_subset | cache | 112 | 2026-04-10T07:04:17Z |
+| tpex_emerging_basic_info | MOPS | listed_companies_subset | network | 354 | 2026-04-10T08:20:00Z |
 | krx_listed_companies | KRX | listed_companies_subset | network | 2771 | 2026-04-09T12:16:07Z |
 | krx_etf_finder | KRX | listed_companies_subset | network | 1089 | 2026-04-09T12:16:07Z |
 | psx_listed_companies | PSX | listed_companies_subset | network | 565 | 2026-04-09T11:28:35Z |
@@ -282,15 +284,15 @@
 | WSE | missing | 349 | 349 | 0 | 0 | 0 |
 | HOSE | missing | 260 | 260 | 0 | 0 | 0 |
 | EGX | missing | 225 | 225 | 0 | 0 | 0 |
-| TPEX | official_partial | 219 | 219 | 0 | 0 | 0 |
 | BME | missing | 169 | 169 | 0 | 0 | 0 |
 | NGX | missing | 147 | 147 | 0 | 0 | 0 |
 | ATHEX | missing | 117 | 117 | 0 | 0 | 0 |
 | SSE_CL | missing | 116 | 116 | 0 | 0 | 0 |
-| STO | official_partial | 108 | 108 | 0 | 0 | 0 |
+| STO | official_partial | 106 | 106 | 0 | 0 | 0 |
 | CPH | official_partial | 86 | 86 | 0 | 0 | 0 |
 | BVB | missing | 85 | 85 | 0 | 0 | 0 |
 | AMS | official_full | 74 | 74 | 0 | 0 | 0 |
 | NYSE ARCA | official_full | 69 | 69 | 0 | 0 | 0 |
 | XETRA | official_partial | 69 | 69 | 0 | 0 | 0 |
 | NASDAQ | official_full | 67 | 67 | 0 | 0 | 0 |
+| CSE_MA | missing | 66 | 66 | 0 | 0 | 0 |

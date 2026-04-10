@@ -64,12 +64,16 @@ TPEX_MAINBOARD_QUOTES_CACHE = MASTERFILE_CACHE_DIR / "tpex_mainboard_daily_close
 LEGACY_TPEX_MAINBOARD_QUOTES_CACHE = MASTERFILES_DIR / "tpex_mainboard_daily_close_quotes.json"
 TPEX_ETF_FILTER_CACHE = MASTERFILE_CACHE_DIR / "tpex_etf_filter.json"
 LEGACY_TPEX_ETF_FILTER_CACHE = MASTERFILES_DIR / "tpex_etf_filter.json"
+TPEX_EMERGING_BASIC_INFO_CACHE = MASTERFILE_CACHE_DIR / "tpex_emerging_basic_info.csv"
+LEGACY_TPEX_EMERGING_BASIC_INFO_CACHE = MASTERFILES_DIR / "tpex_emerging_basic_info.csv"
 SZSE_ETF_LIST_CACHE = MASTERFILE_CACHE_DIR / "szse_etf_list.json"
 LEGACY_SZSE_ETF_LIST_CACHE = MASTERFILES_DIR / "szse_etf_list.json"
 SZSE_B_SHARE_LIST_CACHE = MASTERFILE_CACHE_DIR / "szse_b_share_list.json"
 LEGACY_SZSE_B_SHARE_LIST_CACHE = MASTERFILES_DIR / "szse_b_share_list.json"
 NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_stockholm_shares.json"
 LEGACY_NASDAQ_NORDIC_STOCKHOLM_SHARES_CACHE = MASTERFILES_DIR / "nasdaq_nordic_stockholm_shares.json"
+NASDAQ_NORDIC_STOCKHOLM_SHARES_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_stockholm_shares_search.json"
+LEGACY_NASDAQ_NORDIC_STOCKHOLM_SHARES_SEARCH_CACHE = MASTERFILES_DIR / "nasdaq_nordic_stockholm_shares_search.json"
 NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_stockholm_etfs.json"
 LEGACY_NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE = MASTERFILES_DIR / "nasdaq_nordic_stockholm_etfs.json"
 NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_stockholm_trackers.json"
@@ -194,6 +198,7 @@ NASDAQ_NORDIC_ETF_SOURCE_CONFIG = {
     "nasdaq_nordic_copenhagen_etfs": {"exchange": "CPH", "market": "CPH"},
 }
 NASDAQ_NORDIC_SHARE_SEARCH_SOURCE_CONFIG = {
+    "nasdaq_nordic_stockholm_shares_search": {"exchange": "STO", "currency": "SEK"},
     "nasdaq_nordic_helsinki_shares_search": {"exchange": "HEL", "currency": "EUR"},
 }
 SPOTLIGHT_SEARCH_SOURCE_CONFIG = {
@@ -238,6 +243,7 @@ SSE_JSONP_CALLBACK = "jsonpCallback"
 TPEX_MAINBOARD_QUOTES_URL = "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes"
 TPEX_ETF_FILTER_PAGE_URL = "https://info.tpex.org.tw/ETF/en/filter.html"
 TPEX_ETF_FILTER_API_URL = "https://info.tpex.org.tw/api/etfFilter"
+TPEX_EMERGING_BASIC_INFO_URL = "https://mopsfin.twse.com.tw/opendata/t187ap03_R.csv"
 SPOTLIGHT_COMPANIES_PAGE_URL = "https://spotlightstockmarket.com/en/market-overview/our-companies/"
 SPOTLIGHT_COMPANY_SEARCH_URL = "https://spotlightstockmarket.com/Umbraco/api/companyapi/CompanySimpleSearch"
 KRX_LISTED_COMPANIES_URL = "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp"
@@ -794,6 +800,14 @@ OFFICIAL_SOURCES = [
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
+        key="nasdaq_nordic_stockholm_shares_search",
+        provider="Nasdaq Nordic",
+        description="Official Nasdaq Nordic Stockholm share search supplement for exact stock ticker gaps",
+        source_url=NASDAQ_NORDIC_SEARCH_URL,
+        format="nasdaq_nordic_stockholm_shares_search_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
         key="nasdaq_nordic_helsinki_shares",
         provider="Nasdaq Nordic",
         description="Official Nasdaq Nordic Helsinki shares screener (Main Market + First North)",
@@ -926,6 +940,14 @@ OFFICIAL_SOURCES = [
         description="Official TPEX ETF InfoHub filter directory",
         source_url=TPEX_ETF_FILTER_PAGE_URL,
         format="tpex_etf_filter_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="tpex_emerging_basic_info",
+        provider="MOPS",
+        description="Official MOPS emerging company basic information feed for TPEX listings",
+        source_url=TPEX_EMERGING_BASIC_INFO_URL,
+        format="tpex_emerging_basic_csv",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -1381,6 +1403,10 @@ def nasdaq_nordic_request_headers(referer: str = NASDAQ_NORDIC_STOCK_PAGE_URL) -
     }
 
 
+def normalize_nasdaq_nordic_search_symbol(value: str) -> str:
+    return "".join(ch for ch in str(value or "").upper() if ch.isalnum())
+
+
 def extract_jse_exchange_traded_product_download_url(page_html: str, product_type: str) -> str | None:
     product_type = product_type.strip().upper()
     if product_type == "ETF":
@@ -1468,6 +1494,30 @@ def load_tpex_etf_filter_payload(
     ensure_output_dirs()
     TPEX_ETF_FILTER_CACHE.write_text(json.dumps(payload), encoding="utf-8")
     return payload, "network"
+
+
+def load_tpex_emerging_basic_info_text(
+    session: requests.Session | None = None,
+) -> tuple[str | None, str]:
+    for path in (TPEX_EMERGING_BASIC_INFO_CACHE, LEGACY_TPEX_EMERGING_BASIC_INFO_CACHE):
+        if path.exists():
+            return path.read_text(encoding="utf-8-sig"), "cache"
+
+    session = session or requests.Session()
+    try:
+        response = session.get(
+            TPEX_EMERGING_BASIC_INFO_URL,
+            headers={"User-Agent": "Mozilla/5.0", "Accept": "text/csv,*/*"},
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+    except requests.RequestException:
+        return None, "unavailable"
+
+    text = response.content.decode("utf-8-sig")
+    ensure_output_dirs()
+    TPEX_EMERGING_BASIC_INFO_CACHE.write_text(text, encoding="utf-8-sig")
+    return text, "network"
 
 
 def load_set_etf_search_rows(
@@ -1923,7 +1973,7 @@ def fetch_tmx_stock_quote_rows(
     return rows
 
 
-def fetch_nasdaq_nordic_helsinki_shares_search(
+def fetch_nasdaq_nordic_share_search(
     source: MasterfileSource,
     *,
     listings_path: Path = LISTINGS_CSV,
@@ -1943,42 +1993,68 @@ def fetch_nasdaq_nordic_helsinki_shares_search(
         listing_ticker = listing_row.get("ticker", "").strip().upper()
         if not listing_ticker or listing_ticker in seen:
             continue
-        response = session.get(
-            source.source_url,
-            params={"searchText": listing_ticker},
-            headers=headers,
-            timeout=REQUEST_TIMEOUT,
-        )
-        response.raise_for_status()
-        payload = response.json().get("data") or []
-        for group in payload:
-            for instrument in group.get("instruments") or []:
-                if instrument.get("assetClass") != "SHARES":
-                    continue
-                if str(instrument.get("currency", "")).strip().upper() != config["currency"]:
-                    continue
-                symbol = str(instrument.get("symbol", "")).strip().upper()
-                name = str(instrument.get("fullName", "")).strip()
-                isin = str(instrument.get("isin", "")).strip().upper()
-                if symbol != listing_ticker or not name:
-                    continue
-                row = {
-                    "source_key": source.key,
-                    "provider": source.provider,
-                    "source_url": source.source_url,
-                    "ticker": symbol,
-                    "name": name,
-                    "exchange": config["exchange"],
-                    "asset_type": "Stock",
-                    "listing_status": "active",
-                    "reference_scope": source.reference_scope,
-                    "official": "true",
-                }
-                if isin:
-                    row["isin"] = isin
-                rows.append(row)
-                seen.add(symbol)
-                break
+        search_terms = [listing_ticker]
+        normalized_term = listing_ticker.replace("-", " ").strip()
+        if normalized_term and normalized_term not in search_terms:
+            search_terms.append(normalized_term)
+        for search_term in search_terms:
+            response = session.get(
+                source.source_url,
+                params={"searchText": search_term},
+                headers=headers,
+                timeout=REQUEST_TIMEOUT,
+            )
+            response.raise_for_status()
+            payload = response.json().get("data") or []
+            for group in payload:
+                for instrument in group.get("instruments") or []:
+                    if instrument.get("assetClass") != "SHARES":
+                        continue
+                    if str(instrument.get("currency", "")).strip().upper() != config["currency"]:
+                        continue
+                    symbol = str(instrument.get("symbol", "")).strip().upper()
+                    name = str(instrument.get("fullName", "")).strip()
+                    isin = str(instrument.get("isin", "")).strip().upper()
+                    if not name:
+                        continue
+                    normalized_match = (
+                        normalize_nasdaq_nordic_search_symbol(symbol)
+                        == normalize_nasdaq_nordic_search_symbol(listing_ticker)
+                    )
+                    if not normalized_match:
+                        continue
+                    exact_symbol_match = symbol == listing_ticker
+                    if config["exchange"] == "STO":
+                        listing_isin = str(listing_row.get("isin", "")).strip().upper()
+                        if not has_strong_company_name_match(
+                            listing_row.get("name", ""),
+                            name,
+                        ) and not (listing_isin and isin and listing_isin == isin):
+                            continue
+                    elif not exact_symbol_match and not has_strong_company_name_match(
+                        listing_row.get("name", ""),
+                        name,
+                    ):
+                        continue
+                    row = {
+                        "source_key": source.key,
+                        "provider": source.provider,
+                        "source_url": source.source_url,
+                        "ticker": listing_ticker,
+                        "name": name,
+                        "exchange": config["exchange"],
+                        "asset_type": "Stock",
+                        "listing_status": "active",
+                        "reference_scope": source.reference_scope,
+                        "official": "true",
+                    }
+                    if isin:
+                        row["isin"] = isin
+                    rows.append(row)
+                    seen.add(listing_ticker)
+                    break
+                if listing_ticker in seen:
+                    break
             if listing_ticker in seen:
                 break
     return rows
@@ -3063,6 +3139,10 @@ def nasdaq_nordic_shares_cache_paths(source_key: str) -> tuple[Path, Path]:
 
 def nasdaq_nordic_share_search_cache_paths(source_key: str) -> tuple[Path, Path]:
     mapping = {
+        "nasdaq_nordic_stockholm_shares_search": (
+            NASDAQ_NORDIC_STOCKHOLM_SHARES_SEARCH_CACHE,
+            LEGACY_NASDAQ_NORDIC_STOCKHOLM_SHARES_SEARCH_CACHE,
+        ),
         "nasdaq_nordic_helsinki_shares_search": (
             NASDAQ_NORDIC_HELSINKI_SHARES_SEARCH_CACHE,
             LEGACY_NASDAQ_NORDIC_HELSINKI_SHARES_SEARCH_CACHE,
@@ -3126,7 +3206,7 @@ def load_nasdaq_nordic_share_search_rows(
             return json.loads(path.read_text(encoding="utf-8")), "cache"
 
     try:
-        rows = fetch_nasdaq_nordic_helsinki_shares_search(source, session=session)
+        rows = fetch_nasdaq_nordic_share_search(source, session=session)
     except requests.RequestException:
         return None, "unavailable"
 
@@ -5287,6 +5367,37 @@ def parse_tpex_etf_filter(
     return rows
 
 
+def parse_tpex_emerging_basic_info_csv(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    reader = csv.DictReader(io.StringIO(text))
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for record in reader:
+        ticker = str(record.get("公司代號", "")).strip().upper()
+        company_name = str(record.get("公司名稱", "")).strip()
+        english_short_name = str(record.get("英文簡稱", "")).strip()
+        name = company_name or english_short_name
+        if not ticker or not name or not TPEX_CANONICAL_TICKER_RE.fullmatch(ticker):
+            continue
+        if ticker in seen:
+            continue
+        seen.add(ticker)
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "TPEX",
+                "asset_type": infer_taiwan_asset_type(ticker, name),
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
 def parse_b3_instruments_equities_table(table: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
     columns = [column.get("name", "") for column in table.get("columns") or []]
     rows: list[dict[str, str]] = []
@@ -6506,6 +6617,13 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         )
         response.raise_for_status()
         return parse_tpex_etf_filter(response.json(), source)
+    if source.format == "tpex_emerging_basic_csv":
+        text, mode = load_tpex_emerging_basic_info_text(session=session)
+        if text is None:
+            raise requests.RequestException("TPEX emerging basic info unavailable")
+        return parse_tpex_emerging_basic_info_csv(text, source)
+    if source.format in {"nasdaq_nordic_stockholm_shares_search_json", "nasdaq_nordic_helsinki_shares_search_json"}:
+        return fetch_nasdaq_nordic_share_search(source, session=session)
     if source.format == "spotlight_companies_search_json":
         return fetch_spotlight_companies_search(source, session=session)
     if source.format == "krx_listed_companies_json":
@@ -6572,6 +6690,11 @@ def fetch_source_rows_with_mode(
         if payload is None:
             raise requests.RequestException("TPEX ETF filter unavailable")
         return parse_tpex_etf_filter(payload, source), mode
+    if source.format == "tpex_emerging_basic_csv":
+        text, mode = load_tpex_emerging_basic_info_text(session=session)
+        if text is None:
+            raise requests.RequestException("TPEX emerging basic info unavailable")
+        return parse_tpex_emerging_basic_info_csv(text, source), mode
     if source.format == "set_etf_search_html":
         rows, mode = load_set_etf_search_rows(source, session=session)
         if rows is None:
@@ -6641,10 +6764,10 @@ def fetch_source_rows_with_mode(
         if rows is None:
             raise requests.RequestException(f"Nasdaq Nordic shares unavailable for {source.key}")
         return rows, mode
-    if source.format == "nasdaq_nordic_helsinki_shares_search_json":
+    if source.format in {"nasdaq_nordic_stockholm_shares_search_json", "nasdaq_nordic_helsinki_shares_search_json"}:
         rows, mode = load_nasdaq_nordic_share_search_rows(source, session=session)
         if rows is None:
-            raise requests.RequestException("Nasdaq Nordic Helsinki share search unavailable")
+            raise requests.RequestException(f"Nasdaq Nordic share search unavailable for {source.key}")
         return rows, mode
     if source.format == "spotlight_companies_search_json":
         rows, mode = load_spotlight_search_rows(source, session=session)

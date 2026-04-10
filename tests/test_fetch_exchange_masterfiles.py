@@ -40,6 +40,7 @@ from scripts.fetch_exchange_masterfiles import (
     LEGACY_SZSE_ETF_LIST_CACHE,
     LEGACY_TMX_ETF_SCREENER_CACHE,
     LEGACY_TPEX_ETF_FILTER_CACHE,
+    LEGACY_TPEX_EMERGING_BASIC_INFO_CACHE,
     LEGACY_TPEX_MAINBOARD_QUOTES_CACHE,
     LSE_PAGE_INITIALS,
     LSE_COMPANY_REPORTS_CACHE,
@@ -57,6 +58,7 @@ from scripts.fetch_exchange_masterfiles import (
     SSE_ETF_SUBCLASSES,
     TMX_ETF_SCREENER_CACHE,
     TPEX_ETF_FILTER_CACHE,
+    TPEX_EMERGING_BASIC_INFO_CACHE,
     TPEX_MAINBOARD_QUOTES_CACHE,
     fetch_b3_instruments_equities,
     fetch_b3_bdr_companies,
@@ -74,7 +76,7 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_lse_instrument_search_exact,
     fetch_jse_exchange_traded_product_rows,
     fetch_jse_instrument_search_exact,
-    fetch_nasdaq_nordic_helsinki_shares_search,
+    fetch_nasdaq_nordic_share_search,
     fetch_nasdaq_nordic_stockholm_shares,
     fetch_nasdaq_nordic_stockholm_trackers,
     fetch_spotlight_companies_search,
@@ -123,12 +125,14 @@ from scripts.fetch_exchange_masterfiles import (
     load_sec_company_tickers_exchange_payload,
     normalize_source_keys,
     load_tpex_etf_filter_payload,
+    load_tpex_emerging_basic_info_text,
     load_tmx_etf_screener_payload,
     load_pse_listed_company_directory_rows,
     parse_pse_listed_company_directory_html,
     load_tpex_mainboard_quotes_payload,
     parse_spotlight_search_heading,
     parse_set_dr_search_payload,
+    parse_tpex_emerging_basic_info_csv,
     parse_tpex_etf_filter,
     lse_instrument_search_target_tickers,
     parse_asx_listed_companies,
@@ -1081,6 +1085,11 @@ def test_tpex_etf_filter_source_is_modeled_as_partial_official_coverage() -> Non
     assert source.reference_scope == "listed_companies_subset"
 
 
+def test_tpex_emerging_basic_info_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "tpex_emerging_basic_info")
+    assert source.reference_scope == "listed_companies_subset"
+
+
 def test_parse_tpex_mainboard_quotes_maps_tpex_rows():
     payload = [
         {"SecuritiesCompanyCode": "006201", "CompanyName": "元大富櫃50"},
@@ -1176,6 +1185,46 @@ def test_parse_tpex_etf_filter_maps_tpex_etf_rows() -> None:
     ]
 
 
+def test_parse_tpex_emerging_basic_info_csv_maps_tpex_rows() -> None:
+    text = "\n".join(
+        [
+            "出表日期,公司代號,公司名稱,公司簡稱,外國企業註冊地國,產業別,英文簡稱",
+            "1150409,1269,乾杯股份有限公司,乾杯,－ ,16,KANPAI",
+            "1150409,1271,晨暉生物科技股份有限公司,晨暉生技,－ ,22,SunWay",
+            "1150409,ABC123,Skip Me,Skip Me,－ ,99,SKIP",
+        ]
+    )
+
+    rows = parse_tpex_emerging_basic_info_csv(text, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "1269",
+            "name": "乾杯股份有限公司",
+            "exchange": "TPEX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "1271",
+            "name": "晨暉生物科技股份有限公司",
+            "exchange": "TPEX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
 def test_load_tpex_mainboard_quotes_payload_prefers_cache(tmp_path, monkeypatch):
     cache_path = tmp_path / "tpex_mainboard_daily_close_quotes.json"
     cache_path.write_text('[{"SecuritiesCompanyCode":"6488","CompanyName":"環球晶圓股份有限公司"}]', encoding="utf-8")
@@ -1209,6 +1258,22 @@ def test_load_tpex_etf_filter_payload_prefers_cache(tmp_path, monkeypatch):
             }
         ],
     }
+
+
+def test_load_tpex_emerging_basic_info_text_prefers_cache(tmp_path, monkeypatch):
+    cache_path = tmp_path / "tpex_emerging_basic_info.csv"
+    cache_path.write_text("出表日期,公司代號,公司名稱\n1150409,1269,乾杯股份有限公司\n", encoding="utf-8-sig")
+    monkeypatch.setattr(fetch_exchange_masterfiles, "TPEX_EMERGING_BASIC_INFO_CACHE", cache_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_TPEX_EMERGING_BASIC_INFO_CACHE",
+        tmp_path / "legacy.csv",
+    )
+
+    text, mode = load_tpex_emerging_basic_info_text()
+
+    assert mode == "cache"
+    assert "乾杯股份有限公司" in text
 
 
 def test_parse_asx_listed_companies_skips_banner_lines():
@@ -4565,7 +4630,7 @@ def test_fetch_nasdaq_nordic_stockholm_shares_includes_first_north() -> None:
     ]
 
 
-def test_fetch_nasdaq_nordic_helsinki_shares_search_backfills_exact_ticker_gaps(
+def test_fetch_nasdaq_nordic_share_search_backfills_exact_ticker_gaps(
     tmp_path, monkeypatch
 ) -> None:
     source = MasterfileSource(
@@ -4663,17 +4728,18 @@ def test_fetch_nasdaq_nordic_helsinki_shares_search_backfills_exact_ticker_gaps(
             return FakeResponse(payloads[params["searchText"]])
 
     session = FakeSession()
-    rows = fetch_nasdaq_nordic_helsinki_shares_search(
+    rows = fetch_nasdaq_nordic_share_search(
         source,
         listings_path=listings_path,
         verification_dir=tmp_path,
         session=session,
     )
 
-    assert rows == [
-        {
-            "source_key": "nasdaq_nordic_helsinki_shares_search",
-            "provider": "Nasdaq Nordic",
+    assert rows == sorted(
+        [
+            {
+                "source_key": "nasdaq_nordic_helsinki_shares_search",
+                "provider": "Nasdaq Nordic",
             "source_url": "https://api.nasdaq.com/api/nordic/search",
             "ticker": "ERIBR",
             "name": "Ericsson B",
@@ -4694,14 +4760,163 @@ def test_fetch_nasdaq_nordic_helsinki_shares_search_backfills_exact_ticker_gaps(
             "asset_type": "Stock",
             "listing_status": "active",
             "reference_scope": "listed_companies_subset",
-            "official": "true",
-            "isin": "FI0009800197",
-        },
-    ]
+                "official": "true",
+                "isin": "FI0009800197",
+            },
+        ],
+        key=lambda row: row["ticker"],
+    )
     assert session.calls == [
         ("https://api.nasdaq.com/api/nordic/search", {"searchText": "ERIBR"}),
         ("https://api.nasdaq.com/api/nordic/search", {"searchText": "ILKKA1"}),
         ("https://api.nasdaq.com/api/nordic/search", {"searchText": "WITH"}),
+    ]
+
+
+def test_fetch_nasdaq_nordic_stockholm_shares_search_normalizes_official_symbol_format(
+    tmp_path, monkeypatch
+) -> None:
+    source = MasterfileSource(
+        key="nasdaq_nordic_stockholm_shares_search",
+        provider="Nasdaq Nordic",
+        description="Official Stockholm share search supplement",
+        source_url="https://api.nasdaq.com/api/nordic/search",
+        format="nasdaq_nordic_stockholm_shares_search_json",
+        reference_scope="listed_companies_subset",
+    )
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,exchange,asset_type,name,isin",
+                "ERIC-B,STO,Stock,Telefonaktiebolaget LM Ericsson Class B,SE0000108656",
+                "NOKIA-SEK,STO,Stock,Nokia Oyj,FI0009000681",
+                "HOTEL,STO,Stock,LION E-Mobility AG,CH0132594711",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "latest_reference_gap_tickers",
+        lambda base_dir, exchanges=None: {"ERIC-B", "NOKIA-SEK", "HOTEL"},
+    )
+
+    class FakeResponse:
+        def __init__(self, payload):
+            self._payload = payload
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            self.calls.append((url, params))
+            payloads = {
+                "ERIC-B": {"data": None},
+                "ERIC B": {
+                    "data": [
+                        {
+                            "group": "Shares Main Market",
+                            "instruments": [
+                                {
+                                    "symbol": "ERIC B",
+                                    "fullName": "Ericsson B",
+                                    "isin": "SE0000108656",
+                                    "assetClass": "SHARES",
+                                    "currency": "SEK",
+                                }
+                            ],
+                        }
+                    ]
+                },
+                "NOKIA-SEK": {"data": None},
+                "NOKIA SEK": {
+                    "data": [
+                        {
+                            "group": "Shares Main Market",
+                            "instruments": [
+                                {
+                                    "symbol": "NOKIA SEK",
+                                    "fullName": "Nokia Oyj",
+                                    "isin": "FI0009000681",
+                                    "assetClass": "SHARES",
+                                    "currency": "SEK",
+                                }
+                            ],
+                        }
+                    ]
+                },
+                "HOTEL": {
+                    "data": [
+                        {
+                            "group": "Shares Main Market",
+                            "instruments": [
+                                {
+                                    "symbol": "HOTEL",
+                                    "fullName": "Hotel Properties Ltd.",
+                                    "isin": "SG1DB3000004",
+                                    "assetClass": "SHARES",
+                                    "currency": "SEK",
+                                }
+                            ],
+                        }
+                    ]
+                },
+            }
+            return FakeResponse(payloads[params["searchText"]])
+
+    session = FakeSession()
+    rows = fetch_nasdaq_nordic_share_search(
+        source,
+        listings_path=listings_path,
+        verification_dir=tmp_path,
+        session=session,
+    )
+
+    assert rows == sorted(
+        [
+            {
+                "source_key": "nasdaq_nordic_stockholm_shares_search",
+                "provider": "Nasdaq Nordic",
+            "source_url": "https://api.nasdaq.com/api/nordic/search",
+            "ticker": "ERIC-B",
+            "name": "Ericsson B",
+            "exchange": "STO",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "SE0000108656",
+        },
+        {
+            "source_key": "nasdaq_nordic_stockholm_shares_search",
+            "provider": "Nasdaq Nordic",
+            "source_url": "https://api.nasdaq.com/api/nordic/search",
+            "ticker": "NOKIA-SEK",
+            "name": "Nokia Oyj",
+            "exchange": "STO",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+                "official": "true",
+                "isin": "FI0009000681",
+            },
+        ],
+        key=lambda row: row["ticker"],
+    )
+    assert session.calls == [
+        ("https://api.nasdaq.com/api/nordic/search", {"searchText": "ERIC-B"}),
+        ("https://api.nasdaq.com/api/nordic/search", {"searchText": "ERIC B"}),
+        ("https://api.nasdaq.com/api/nordic/search", {"searchText": "NOKIA-SEK"}),
+        ("https://api.nasdaq.com/api/nordic/search", {"searchText": "NOKIA SEK"}),
+        ("https://api.nasdaq.com/api/nordic/search", {"searchText": "HOTEL"}),
     ]
 
 
@@ -6901,6 +7116,38 @@ def test_load_nasdaq_nordic_share_search_rows_prefers_cache(tmp_path, monkeypatc
             "ticker": "ERIBR",
             "name": "Ericsson B",
             "exchange": "HEL",
+            "asset_type": "Stock",
+            "listing_status": "active",
+        }
+    ]
+
+
+def test_load_nasdaq_nordic_stockholm_share_search_rows_prefers_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "nasdaq_nordic_stockholm_shares_search.json"
+    cache_path.write_text(
+        '[{"ticker":"ERIC-B","name":"Ericsson B","exchange":"STO","asset_type":"Stock","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "NASDAQ_NORDIC_STOCKHOLM_SHARES_SEARCH_CACHE",
+        cache_path,
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_NASDAQ_NORDIC_STOCKHOLM_SHARES_SEARCH_CACHE",
+        tmp_path / "missing.json",
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "nasdaq_nordic_stockholm_shares_search")
+    rows, mode = load_nasdaq_nordic_share_search_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "ERIC-B",
+            "name": "Ericsson B",
+            "exchange": "STO",
             "asset_type": "Stock",
             "listing_status": "active",
         }
