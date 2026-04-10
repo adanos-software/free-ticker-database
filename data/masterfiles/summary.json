@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-10T06:29:36Z",
-  "rows": 87900,
+  "generated_at": "2026-04-10T07:26:52Z",
+  "rows": 88032,
   "exchanges": [
     "AMS",
     "ASX",
@@ -78,11 +78,13 @@
     "sse_etf_list": 845,
     "sse_a_share_list": 2350,
     "nasdaq_nordic_stockholm_shares": 747,
+    "spotlight_companies_search": 20,
     "nasdaq_nordic_stockholm_trackers": 6,
     "nasdaq_nordic_stockholm_etfs": 33,
     "szse_a_share_list": 2886,
     "szse_etf_list": 632,
     "szse_b_share_list": 38,
+    "tpex_etf_filter": 112,
     "tpex_mainboard_daily_quotes": 884,
     "jpx_listed_issues": 4444,
     "tmx_listed_issuers": 3704,
@@ -399,6 +401,14 @@
       "rows": 3,
       "generated_at": "2026-04-09T12:51:50Z"
     },
+    "spotlight_companies_search": {
+      "provider": "Spotlight",
+      "reference_scope": "listed_companies_subset",
+      "official": true,
+      "mode": "network",
+      "rows": 20,
+      "generated_at": "2026-04-10T07:26:52Z"
+    },
     "nasdaq_nordic_copenhagen_shares": {
       "provider": "Nasdaq Nordic",
       "reference_scope": "listed_companies_subset",
@@ -507,9 +517,9 @@
       "provider": "TPEX",
       "reference_scope": "listed_companies_subset",
       "official": true,
-      "mode": "unavailable",
-      "rows": 0,
-      "generated_at": "2026-04-09T11:28:35Z"
+      "mode": "cache",
+      "rows": 112,
+      "generated_at": "2026-04-10T07:04:17Z"
     },
     "krx_listed_companies": {
       "provider": "KRX",
@@ -598,7 +608,7 @@
     "szse_a_share_list": "network",
     "szse_etf_list": "network",
     "tpex_mainboard_daily_quotes": "cache",
-    "tpex_etf_filter": "unavailable",
+    "tpex_etf_filter": "cache",
     "krx_listed_companies": "network",
     "krx_etf_finder": "network",
     "psx_listed_companies": "network",
@@ -617,6 +627,7 @@
     "set_dr_search": "network",
     "bmv_etf_search": "network",
     "bmv_issuer_directory": "network",
-    "szse_b_share_list": "cache"
+    "szse_b_share_list": "cache",
+    "spotlight_companies_search": "network"
   }
 }

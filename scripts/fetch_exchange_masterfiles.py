@@ -78,6 +78,8 @@ NASDAQ_NORDIC_HELSINKI_SHARES_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_hels
 LEGACY_NASDAQ_NORDIC_HELSINKI_SHARES_CACHE = MASTERFILES_DIR / "nasdaq_nordic_helsinki_shares.json"
 NASDAQ_NORDIC_HELSINKI_SHARES_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_helsinki_shares_search.json"
 LEGACY_NASDAQ_NORDIC_HELSINKI_SHARES_SEARCH_CACHE = MASTERFILES_DIR / "nasdaq_nordic_helsinki_shares_search.json"
+SPOTLIGHT_COMPANIES_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "spotlight_companies_search.json"
+LEGACY_SPOTLIGHT_COMPANIES_SEARCH_CACHE = MASTERFILES_DIR / "spotlight_companies_search.json"
 NASDAQ_NORDIC_HELSINKI_ETFS_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_helsinki_etfs.json"
 LEGACY_NASDAQ_NORDIC_HELSINKI_ETFS_CACHE = MASTERFILES_DIR / "nasdaq_nordic_helsinki_etfs.json"
 NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_copenhagen_shares.json"
@@ -194,6 +196,9 @@ NASDAQ_NORDIC_ETF_SOURCE_CONFIG = {
 NASDAQ_NORDIC_SHARE_SEARCH_SOURCE_CONFIG = {
     "nasdaq_nordic_helsinki_shares_search": {"exchange": "HEL", "currency": "EUR"},
 }
+SPOTLIGHT_SEARCH_SOURCE_CONFIG = {
+    "spotlight_companies_search": {"exchange": "STO"},
+}
 BMV_SEARCH_SOURCE_CONFIG = {
     "bmv_stock_search": {"exchange": "BMV", "quote_search_id": 2, "asset_type": "Stock"},
     "bmv_capital_trust_search": {"exchange": "BMV", "quote_search_id": 2, "asset_type": "Stock"},
@@ -233,6 +238,8 @@ SSE_JSONP_CALLBACK = "jsonpCallback"
 TPEX_MAINBOARD_QUOTES_URL = "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes"
 TPEX_ETF_FILTER_PAGE_URL = "https://info.tpex.org.tw/ETF/en/filter.html"
 TPEX_ETF_FILTER_API_URL = "https://info.tpex.org.tw/api/etfFilter"
+SPOTLIGHT_COMPANIES_PAGE_URL = "https://spotlightstockmarket.com/en/market-overview/our-companies/"
+SPOTLIGHT_COMPANY_SEARCH_URL = "https://spotlightstockmarket.com/Umbraco/api/companyapi/CompanySimpleSearch"
 KRX_LISTED_COMPANIES_URL = "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp"
 KRX_DATA_URL = "https://global.krx.co.kr/contents/GLB/99/GLB99000001.jspx"
 KRX_GENERATE_OTP_URL = "https://global.krx.co.kr/contents/COM/GenerateOTP.jspx"
@@ -803,6 +810,14 @@ OFFICIAL_SOURCES = [
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
+        key="spotlight_companies_search",
+        provider="Spotlight",
+        description="Official Spotlight company search supplement for exact Swedish stock ticker gaps",
+        source_url=SPOTLIGHT_COMPANY_SEARCH_URL,
+        format="spotlight_companies_search_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
         key="nasdaq_nordic_copenhagen_shares",
         provider="Nasdaq Nordic",
         description="Official Nasdaq Nordic Copenhagen shares screener (Main Market + First North)",
@@ -1297,6 +1312,17 @@ def tpex_infohub_request_headers(referer: str = TPEX_ETF_FILTER_PAGE_URL) -> dic
     }
 
 
+def spotlight_request_headers(referer: str = SPOTLIGHT_COMPANIES_PAGE_URL) -> dict[str, str]:
+    return {
+        "User-Agent": USER_AGENT,
+        "Accept": "application/json,text/plain,*/*",
+        "Accept-Encoding": "gzip, deflate",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Referer": referer,
+        "X-Requested-With": "XMLHttpRequest",
+    }
+
+
 def krx_request_headers() -> dict[str, str]:
     return {
         "User-Agent": USER_AGENT,
@@ -1752,6 +1778,28 @@ def nasdaq_nordic_share_search_target_rows(
     ]
 
 
+def spotlight_search_target_rows(
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    verification_dir: Path = STOCK_VERIFICATION_DIR,
+) -> list[dict[str, str]]:
+    config = SPOTLIGHT_SEARCH_SOURCE_CONFIG[source.key]
+    target_tickers = latest_reference_gap_tickers(
+        verification_dir,
+        exchanges={config["exchange"]},
+    )
+    if not target_tickers:
+        return []
+    return [
+        row
+        for row in load_csv(listings_path)
+        if row.get("exchange") == config["exchange"]
+        and row.get("asset_type") == "Stock"
+        and row.get("ticker", "").strip() in target_tickers
+    ]
+
+
 def fetch_tmx_etf_screener_quote_rows(
     payload: list[dict[str, Any]],
     *,
@@ -1933,6 +1981,70 @@ def fetch_nasdaq_nordic_helsinki_shares_search(
                 break
             if listing_ticker in seen:
                 break
+    return rows
+
+
+def strip_html_tags(value: str) -> str:
+    return re.sub(r"<[^>]+>", "", value or "")
+
+
+def parse_spotlight_search_heading(heading: str) -> tuple[str, str]:
+    text = " ".join(unescape(strip_html_tags(heading)).split())
+    match = re.search(r"\(([^()]+)\)\s*$", text)
+    if match is None:
+        return text, ""
+    return text[: match.start()].strip(), match.group(1).strip().upper()
+
+
+def fetch_spotlight_companies_search(
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    verification_dir: Path = STOCK_VERIFICATION_DIR,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for listing_row in spotlight_search_target_rows(
+        source,
+        listings_path=listings_path,
+        verification_dir=verification_dir,
+    ):
+        listing_ticker = listing_row.get("ticker", "").strip().upper()
+        listing_name = listing_row.get("name", "").strip()
+        if not listing_ticker or listing_ticker in seen:
+            continue
+        response = session.get(
+            source.source_url,
+            params={"searchText": listing_ticker},
+            headers=spotlight_request_headers(),
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        for item in response.json().get("results") or []:
+            candidate_name, candidate_ticker = parse_spotlight_search_heading(str(item.get("heading", "")))
+            if candidate_ticker != listing_ticker or not candidate_name:
+                continue
+            if not has_strong_company_name_match(listing_name, candidate_name):
+                continue
+            rows.append(
+                {
+                    "source_key": source.key,
+                    "provider": source.provider,
+                    "source_url": source.source_url,
+                    "ticker": listing_ticker,
+                    "name": candidate_name,
+                    "exchange": "STO",
+                    "asset_type": "Stock",
+                    "listing_status": "active",
+                    "reference_scope": source.reference_scope,
+                    "official": "true",
+                    "isin": listing_row.get("isin", "").strip(),
+                }
+            )
+            seen.add(listing_ticker)
+            break
     return rows
 
 
@@ -2959,6 +3071,16 @@ def nasdaq_nordic_share_search_cache_paths(source_key: str) -> tuple[Path, Path]
     return mapping[source_key]
 
 
+def spotlight_search_cache_paths(source_key: str) -> tuple[Path, Path]:
+    mapping = {
+        "spotlight_companies_search": (
+            SPOTLIGHT_COMPANIES_SEARCH_CACHE,
+            LEGACY_SPOTLIGHT_COMPANIES_SEARCH_CACHE,
+        ),
+    }
+    return mapping[source_key]
+
+
 def nasdaq_nordic_etf_cache_paths(source_key: str) -> tuple[Path, Path]:
     mapping = {
         "nasdaq_nordic_stockholm_etfs": (
@@ -3010,6 +3132,24 @@ def load_nasdaq_nordic_share_search_rows(
 
     ensure_output_dirs()
     nasdaq_nordic_share_search_cache_paths(source.key)[0].write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def load_spotlight_search_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in spotlight_search_cache_paths(source.key):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+
+    try:
+        rows = fetch_spotlight_companies_search(source, session=session)
+    except requests.RequestException:
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    spotlight_search_cache_paths(source.key)[0].write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"
 
 
@@ -6366,6 +6506,8 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         )
         response.raise_for_status()
         return parse_tpex_etf_filter(response.json(), source)
+    if source.format == "spotlight_companies_search_json":
+        return fetch_spotlight_companies_search(source, session=session)
     if source.format == "krx_listed_companies_json":
         return fetch_krx_listed_companies(source, session=session)
     if source.format == "krx_etf_finder_json":
@@ -6503,6 +6645,11 @@ def fetch_source_rows_with_mode(
         rows, mode = load_nasdaq_nordic_share_search_rows(source, session=session)
         if rows is None:
             raise requests.RequestException("Nasdaq Nordic Helsinki share search unavailable")
+        return rows, mode
+    if source.format == "spotlight_companies_search_json":
+        rows, mode = load_spotlight_search_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("Spotlight company search unavailable")
         return rows, mode
     if source.format in {
         "nasdaq_nordic_stockholm_etfs_json",

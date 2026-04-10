@@ -32,6 +32,7 @@ from scripts.fetch_exchange_masterfiles import (
     LEGACY_LSE_INSTRUMENT_SEARCH_CACHE,
     LEGACY_NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE,
     LEGACY_NASDAQ_NORDIC_HELSINKI_ETFS_CACHE,
+    LEGACY_SPOTLIGHT_COMPANIES_SEARCH_CACHE,
     LEGACY_NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
     LEGACY_NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE,
     LEGACY_SET_DR_SEARCH_CACHE,
@@ -76,6 +77,7 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_nasdaq_nordic_helsinki_shares_search,
     fetch_nasdaq_nordic_stockholm_shares,
     fetch_nasdaq_nordic_stockholm_trackers,
+    fetch_spotlight_companies_search,
     fetch_psx_listed_companies,
     fetch_psx_symbol_name_daily,
     fetch_six_equity_issuers,
@@ -107,6 +109,7 @@ from scripts.fetch_exchange_masterfiles import (
     load_nasdaq_nordic_stockholm_etf_rows,
     load_nasdaq_nordic_stockholm_tracker_rows,
     load_nasdaq_nordic_stockholm_shares_rows,
+    load_spotlight_search_rows,
     load_set_dr_search_rows,
     load_set_etf_search_rows,
     load_szse_b_share_list_rows,
@@ -116,6 +119,7 @@ from scripts.fetch_exchange_masterfiles import (
     NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
     NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE,
     PSE_LISTED_COMPANY_DIRECTORY_CACHE,
+    SPOTLIGHT_COMPANIES_SEARCH_CACHE,
     load_sec_company_tickers_exchange_payload,
     normalize_source_keys,
     load_tpex_etf_filter_payload,
@@ -123,6 +127,7 @@ from scripts.fetch_exchange_masterfiles import (
     load_pse_listed_company_directory_rows,
     parse_pse_listed_company_directory_html,
     load_tpex_mainboard_quotes_payload,
+    parse_spotlight_search_heading,
     parse_set_dr_search_payload,
     parse_tpex_etf_filter,
     lse_instrument_search_target_tickers,
@@ -4700,6 +4705,119 @@ def test_fetch_nasdaq_nordic_helsinki_shares_search_backfills_exact_ticker_gaps(
     ]
 
 
+def test_parse_spotlight_search_heading_extracts_name_and_ticker() -> None:
+    name, ticker = parse_spotlight_search_heading(
+        "<b><u>ABAS</u></b> Protect (<b><u>ABAS</u></b>)"
+    )
+
+    assert name == "ABAS Protect"
+    assert ticker == "ABAS"
+
+
+def test_fetch_spotlight_companies_search_backfills_exact_ticker_gaps(
+    tmp_path, monkeypatch
+) -> None:
+    source = MasterfileSource(
+        key="spotlight_companies_search",
+        provider="Spotlight",
+        description="Official Spotlight company search supplement for exact Swedish stock ticker gaps",
+        source_url="https://spotlightstockmarket.com/Umbraco/api/companyapi/CompanySimpleSearch",
+        format="spotlight_companies_search_json",
+        reference_scope="listed_companies_subset",
+    )
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,exchange,asset_type,name,isin",
+                "ABAS,STO,Stock,ABAS Protect AB,SE0018588659",
+                "BIOWKS,STO,Stock,Bio-Works Technologies AB,SE0017563232",
+                "ASTOR,STO,Stock,Scandinavian Astor Group AB,SE0019175274",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "latest_reference_gap_tickers",
+        lambda base_dir, exchanges=None: {"ABAS", "BIOWKS", "ASTOR"},
+    )
+
+    class FakeResponse:
+        def __init__(self, payload):
+            self._payload = payload
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            self.calls.append((url, params))
+            payloads = {
+                "ABAS": {
+                    "results": [
+                        {"heading": "<b><u>ABAS</u></b> Protect (<b><u>ABAS</u></b>)"},
+                    ]
+                },
+                "BIOWKS": {
+                    "results": [
+                        {"heading": "Bio-Works Technologies (<b><u>BIOWKS</u></b>)"},
+                        {"heading": "Bio-Works Technologies TO 2 (<b><u>BIOWKS</u></b> TO 2)"},
+                    ]
+                },
+                "ASTOR": {"results": []},
+            }
+            return FakeResponse(payloads[params["searchText"]])
+
+    session = FakeSession()
+    rows = fetch_spotlight_companies_search(
+        source,
+        listings_path=listings_path,
+        verification_dir=tmp_path,
+        session=session,
+    )
+
+    assert rows == [
+        {
+            "source_key": "spotlight_companies_search",
+            "provider": "Spotlight",
+            "source_url": "https://spotlightstockmarket.com/Umbraco/api/companyapi/CompanySimpleSearch",
+            "ticker": "ABAS",
+            "name": "ABAS Protect",
+            "exchange": "STO",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "SE0018588659",
+        },
+        {
+            "source_key": "spotlight_companies_search",
+            "provider": "Spotlight",
+            "source_url": "https://spotlightstockmarket.com/Umbraco/api/companyapi/CompanySimpleSearch",
+            "ticker": "BIOWKS",
+            "name": "Bio-Works Technologies",
+            "exchange": "STO",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "SE0017563232",
+        },
+    ]
+    assert session.calls == [
+        ("https://spotlightstockmarket.com/Umbraco/api/companyapi/CompanySimpleSearch", {"searchText": "ABAS"}),
+        ("https://spotlightstockmarket.com/Umbraco/api/companyapi/CompanySimpleSearch", {"searchText": "BIOWKS"}),
+        ("https://spotlightstockmarket.com/Umbraco/api/companyapi/CompanySimpleSearch", {"searchText": "ASTOR"}),
+    ]
+
+
 def test_fetch_bmv_stock_search_backfills_exact_ticker_gaps(tmp_path, monkeypatch) -> None:
     source = MasterfileSource(
         key="bmv_stock_search",
@@ -6783,6 +6901,38 @@ def test_load_nasdaq_nordic_share_search_rows_prefers_cache(tmp_path, monkeypatc
             "ticker": "ERIBR",
             "name": "Ericsson B",
             "exchange": "HEL",
+            "asset_type": "Stock",
+            "listing_status": "active",
+        }
+    ]
+
+
+def test_load_spotlight_search_rows_prefers_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "spotlight_companies_search.json"
+    cache_path.write_text(
+        '[{"ticker":"ABAS","name":"ABAS Protect","exchange":"STO","asset_type":"Stock","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "SPOTLIGHT_COMPANIES_SEARCH_CACHE",
+        cache_path,
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_SPOTLIGHT_COMPANIES_SEARCH_CACHE",
+        tmp_path / "missing.json",
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "spotlight_companies_search")
+    rows, mode = load_spotlight_search_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "ABAS",
+            "name": "ABAS Protect",
+            "exchange": "STO",
             "asset_type": "Stock",
             "listing_status": "active",
         }

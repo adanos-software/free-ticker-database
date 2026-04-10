@@ -342,6 +342,15 @@
     "official": true
   },
   {
+    "key": "spotlight_companies_search",
+    "provider": "Spotlight",
+    "description": "Official Spotlight company search supplement for exact Swedish stock ticker gaps",
+    "source_url": "https://spotlightstockmarket.com/Umbraco/api/companyapi/CompanySimpleSearch",
+    "format": "spotlight_companies_search_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "nasdaq_nordic_copenhagen_shares",
     "provider": "Nasdaq Nordic",
     "description": "Official Nasdaq Nordic Copenhagen shares screener (Main Market + First North)",
