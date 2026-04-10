@@ -297,6 +297,15 @@
     "official": true
   },
   {
+    "key": "bmv_etf_search",
+    "provider": "BMV",
+    "description": "Official BMV ETF and TRACS search supplement",
+    "source_url": "https://www.bmv.com.mx/api/searchservice/v1",
+    "format": "bmv_etf_search_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "nasdaq_nordic_stockholm_shares",
     "provider": "Nasdaq Nordic",
     "description": "Official Nasdaq Nordic Stockholm shares screener (Main Market + First North)",

@@ -413,3 +413,44 @@ ESGB,NYSE ARCA,0.99,Official TMX listed-issuers workbook shows ESGB as a TSX ETF
 CGBI,AMS,0.99,Official TMX listed-issuers workbook shows CGBI as a TSX ETF while the current AMS core row carries a Canadian ISIN and is a wrong-venue contamination.
 XEU,Euronext,0.99,Official TMX listed-issuers workbook shows XEU as a TSX ETF while the current Euronext core row carries a Canadian ISIN and is a wrong-venue contamination.
 ESGA,NYSE ARCA,0.99,Official TMX listed-issuers workbook shows ESGA as a TSX ETF while the current NYSE ARCA core row carries a Canadian ISIN and is a wrong-venue contamination.
+HAUTE,SIX,0.99,Official SIX issuer references do not list this stale equity line as an active SIX listing.
+CBUSAS,SIX,0.99,Official SIX ETF and ETP reference exports do not list this stale line as an active SIX product.
+CSMXCP,SIX,0.99,Official SIX ETF and ETP reference exports do not list this stale line as an active SIX product.
+CU2E,SIX,0.99,Official SIX ETF and ETP reference exports do not list this stale line as an active SIX product.
+ELOW,SIX,0.99,Official SIX ETF and ETP reference exports do not list this stale line as an active SIX product.
+H500,SIX,0.99,Official SIX ETF and ETP reference exports do not list this stale line as an active SIX product.
+SXIPEX,SIX,0.99,Official SIX ETF and ETP reference exports do not list this stale line as an active SIX product.
+SXKPEX,SIX,0.99,Official SIX ETF and ETP reference exports do not list this stale line as an active SIX product.
+AOV,TSX,0.99,Official TMX listed-issuers and TMX Money references do not list this stale TSX stock line as active.
+MFR-UN,TSX,0.99,Official TMX listed-issuers and TMX Money references do not list this stale TSX unit line as active.
+NEW-A,TSX,0.99,Official TMX listed-issuers and TMX Money references do not list this stale TSX stock line as active.
+PTI,TSX,0.99,Official TMX listed-issuers and TMX Money references do not list this stale TSX stock line as active.
+RTU-UN,TSX,0.99,Official TMX listed-issuers and TMX Money references do not list this stale TSX unit line as active.
+UTC-C,TSX,0.99,Official TMX listed-issuers and TMX Money references do not list this stale TSX stock line as active.
+ALCC-P,TSXV,0.99,Official TMX listed-issuers and TMX Money references do not list this stale TSXV line as active.
+DUR-P,TSXV,0.99,Official TMX listed-issuers and TMX Money references do not list this stale TSXV line as active.
+DVR,TSXV,0.99,Official TMX listed-issuers and TMX Money references do not list this stale TSXV line as active.
+ELXR,TSXV,0.99,Official TMX listed-issuers and TMX Money references do not list this stale TSXV line as active.
+JAX,TSXV,0.99,Official TMX listed-issuers and TMX Money references do not list this stale TSXV line as active.
+LTE,TSXV,0.99,Official TMX listed-issuers and TMX Money references do not list this stale TSXV line as active.
+MIT,TSXV,0.99,Official TMX listed-issuers and TMX Money references do not list this stale TSXV line as active.
+MIZA-P,TSXV,0.99,Official TMX listed-issuers and TMX Money references do not list this stale TSXV line as active.
+NZN,TSXV,0.99,Official TMX listed-issuers and TMX Money references do not list this stale TSXV line as active.
+ONV-H,TSXV,0.99,Official TMX listed-issuers and TMX Money references do not list this stale TSXV line as active.
+PWIK-P,TSXV,0.99,Official TMX listed-issuers and TMX Money references do not list this stale TSXV line as active.
+RHT,TSXV,0.99,Official TMX listed-issuers and TMX Money references do not list this stale TSXV line as active.
+TRA,TSXV,0.99,Official TMX listed-issuers and TMX Money references do not list this stale TSXV line as active.
+FSR,TSX,0.99,Official TMX ETF references resolve this old TSX ETF symbol to a current ticker that collides with a distinct active US ticker in the current core universe; the stale TSX line should be removed from core.
+HGD,TSX,0.99,Official issuer references resolve this old TSX ETF symbol to a current ticker that collides with a distinct active US ticker in the current core universe; the stale TSX line should be removed from core.
+HGU,TSX,0.99,Official issuer references resolve this old TSX ETF symbol to a current ticker that collides with a distinct active US ticker in the current core universe; the stale TSX line should be removed from core.
+TOCA,TSX,0.99,Official TD ETF references resolve this old TSX ETF symbol to a current ticker that collides with a distinct active OTC ticker in the current core universe; the stale TSX line should be removed from core.
+FBT,NYSE ARCA,0.99,Official TMX ETF references show the Canadian FBT product belongs on TSX while the current NYSE ARCA row carries a Canadian ISIN and is wrong-venue contamination.
+FDN,NYSE ARCA,0.99,Official TMX ETF references show the Canadian FDN product belongs on TSX while the current NYSE ARCA row carries a Canadian ISIN and is wrong-venue contamination.
+GLDD,NASDAQ,0.99,Official TMX ETF references show the Canadian GLDD product belongs on TSX while the current NASDAQ row carries a foreign non-US ISIN and is wrong-venue contamination.
+MUSA,NYSE,0.99,Official TMX ETF references show the Canadian MUSA product belongs on TSX while the current NYSE row carries a Canadian ISIN and is wrong-venue contamination.
+NXTG,NASDAQ,0.99,Official TMX ETF references show the Canadian NXTG product belongs on TSX while the current NASDAQ row carries a non-US ISIN and is wrong-venue contamination.
+QCLN,NASDAQ,0.99,Official TMX ETF references show the Canadian QCLN product belongs on TSX while the current NASDAQ row carries a Canadian ISIN and is wrong-venue contamination.
+FDL,TSX,0.99,This Canadian wrapper ticker collides with a distinct active US ETF ticker in the current one-ticker core model; the TSX duplicate is removed from core to preserve global uniqueness.
+GDXD,TSX,0.99,This Canadian wrapper ticker collides with a distinct active US ETN ticker in the current one-ticker core model; the TSX duplicate is removed from core to preserve global uniqueness.
+GDXU,TSX,0.99,This Canadian wrapper ticker collides with a distinct active US ETN ticker in the current one-ticker core model; the TSX duplicate is removed from core to preserve global uniqueness.
+TGRO,OTC,0.99,Official TMX ETF references show TGRO as an active TSX ETF while the current OTC row is the weaker conflicting listing in the current one-ticker core model.

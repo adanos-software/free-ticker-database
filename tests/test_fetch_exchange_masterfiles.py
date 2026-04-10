@@ -15,12 +15,14 @@ from scripts.fetch_exchange_masterfiles import (
     BME_ETF_LIST_CACHE,
     BME_LISTED_COMPANIES_CACHE,
     BMV_CAPITAL_TRUST_SEARCH_CACHE,
+    BMV_ETF_SEARCH_CACHE,
     BMV_STOCK_SEARCH_CACHE,
     B3_INSTRUMENTS_EQUITIES_CACHE,
     JSE_INSTRUMENT_SEARCH_CACHE,
     LEGACY_BME_ETF_LIST_CACHE,
     LEGACY_BME_LISTED_COMPANIES_CACHE,
     LEGACY_BMV_CAPITAL_TRUST_SEARCH_CACHE,
+    LEGACY_BMV_ETF_SEARCH_CACHE,
     LEGACY_BMV_STOCK_SEARCH_CACHE,
     LEGACY_B3_INSTRUMENTS_EQUITIES_CACHE,
     LEGACY_LSE_COMPANY_REPORTS_CACHE,
@@ -58,6 +60,7 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_b3_listed_funds,
     fetch_bme_reference_rows,
     fetch_bmv_capital_trust_search,
+    fetch_bmv_etf_search,
     fetch_bmv_stock_search,
     fetch_all_sources,
     fetch_krx_etf_finder,
@@ -87,6 +90,7 @@ from scripts.fetch_exchange_masterfiles import (
     load_b3_instruments_equities_rows,
     load_bme_reference_rows,
     load_bmv_capital_trust_search_rows,
+    load_bmv_etf_search_rows,
     load_bmv_stock_search_rows,
     load_jse_instrument_search_rows,
     NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE,
@@ -3209,6 +3213,55 @@ def test_parse_tmx_listed_issuers_excel_maps_tsx_and_tsxv_rows() -> None:
     ]
 
 
+def test_parse_tmx_listed_issuers_excel_keeps_etfs_subset_scope_but_promotes_stocks(tmp_path) -> None:
+    source = MasterfileSource(
+        key="tmx_listed_issuers",
+        provider="TMX",
+        description="Official TSX/TSXV listed issuers workbook",
+        source_url="https://example.com/tmx.xlsx",
+        format="tmx_listed_issuers_excel",
+        reference_scope="listed_companies_subset",
+    )
+    buffer = io.BytesIO()
+    tsx_rows = pd.DataFrame(
+        [
+            {"Exchange": "TSX", "Name": "Blossom Gold Inc.", "Root\nTicker": "BGAU", "Sector": "Mining"},
+            {"Exchange": "TSX", "Name": "First Trust Dow Jones Internet Index ETF", "Root\nTicker": "FDN", "Sector": "ETF"},
+        ]
+    )
+    with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
+        tsx_rows.to_excel(writer, sheet_name="TSX Issuers December 2025", startrow=9, index=False)
+
+    rows = parse_tmx_listed_issuers_excel(buffer.getvalue(), source)
+
+    assert rows == [
+        {
+            "source_key": "tmx_listed_issuers",
+            "provider": "TMX",
+            "source_url": "https://example.com/tmx.xlsx",
+            "ticker": "BGAU",
+            "name": "Blossom Gold Inc.",
+            "exchange": "TSX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "tmx_listed_issuers",
+            "provider": "TMX",
+            "source_url": "https://example.com/tmx.xlsx",
+            "ticker": "FDN",
+            "name": "First Trust Dow Jones Internet Index ETF",
+            "exchange": "TSX",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+        },
+    ]
+
+
 def test_resolve_tmx_listed_issuers_download_url_uses_latest_workbook() -> None:
     class FakeResponse:
         def __init__(self, text: str):
@@ -3326,7 +3379,7 @@ def test_fetch_tmx_etf_screener_quote_rows_normalizes_series_and_skips_name_mism
         "\n".join(
             [
                 "ticker,name,exchange,status",
-                "LYUV-U,Lysander-Canso U.S. Corporate Value Bond Fund,TSX,reference_gap",
+                "LYUV-U,Lysander-Canso U.S. Corporate Value Bond Fund,TSX,missing_from_official",
                 "TKN-U,Ninepoint Web3 Innovators Fund,TSX,reference_gap",
             ]
         ),
@@ -3382,6 +3435,7 @@ def test_fetch_tmx_stock_quote_rows_backfills_tmx_suffix_stocks(tmp_path, monkey
             [
                 "ticker,name,exchange,asset_type,isin",
                 "ALAB-P,A-Labs Capital II Corp,TSXV,Stock,CA58504D1006",
+                "MBI-H,Med BioGene Inc,TSXV,Stock,",
                 "ODV-WTV,ODV-WTV,TSXV,Stock,",
                 "MMX,MMX,TSXV,Stock,US5732841060",
             ]
@@ -3396,6 +3450,7 @@ def test_fetch_tmx_stock_quote_rows_backfills_tmx_suffix_stocks(tmp_path, monkey
             [
                 "ticker,name,exchange,status",
                 "ALAB-P,A-Labs Capital II Corp,TSXV,reference_gap",
+                "MBI-H,Med BioGene Inc,TSXV,missing_from_official",
                 "ODV-WTV,ODV-WTV,TSXV,reference_gap",
                 "MMX,MMX,TSXV,reference_gap",
             ]
@@ -3406,6 +3461,7 @@ def test_fetch_tmx_stock_quote_rows_backfills_tmx_suffix_stocks(tmp_path, monkey
     def fake_fetch_tmx_money_quote(symbol: str, session=None):
         payloads = {
             "ALAB.P": {"symbol": "ALAB.P", "name": "A-Labs Capital II Corp.", "exchangeCode": "CDX"},
+            "MBI.H": {"symbol": "MBI.H", "name": "Many Bright Ideas Technologies Inc.", "exchangeCode": "CDX"},
             "ODV": {"symbol": "ODV", "name": "Osisko Development Corp.", "exchangeCode": "CDX"},
             "MMX": {"symbol": "MMX", "name": "Mustang Minerals Limited", "exchangeCode": "CDX"},
         }
@@ -3421,6 +3477,7 @@ def test_fetch_tmx_stock_quote_rows_backfills_tmx_suffix_stocks(tmp_path, monkey
             description="Official TSX/TSXV listed issuers workbook",
             source_url="https://www.tsx.com/en/listings/current-market-statistics/mig-archives",
             format="tmx_listed_issuers_excel",
+            reference_scope="listed_companies_subset",
         ),
         listings_path=listings_path,
         verification_dir=verification_dir,
@@ -3439,7 +3496,33 @@ def test_fetch_tmx_stock_quote_rows_backfills_tmx_suffix_stocks(tmp_path, monkey
             "reference_scope": "exchange_directory",
             "official": "true",
             "isin": "CA58504D1006",
-        }
+        },
+        {
+            "source_key": "tmx_listed_issuers",
+            "provider": "TMX",
+            "source_url": TMX_MONEY_GRAPHQL_URL,
+            "ticker": "MBI-H",
+            "name": "Many Bright Ideas Technologies Inc.",
+            "exchange": "TSXV",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "",
+        },
+        {
+            "source_key": "tmx_listed_issuers",
+            "provider": "TMX",
+            "source_url": TMX_MONEY_GRAPHQL_URL,
+            "ticker": "MMX",
+            "name": "Mustang Minerals Limited",
+            "exchange": "TSXV",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "US5732841060",
+        },
     ]
 
 
@@ -5052,6 +5135,164 @@ def test_fetch_bmv_capital_trust_search_backfills_exact_ticker_gaps(tmp_path, mo
     ]
 
 
+def test_fetch_bmv_etf_search_backfills_exact_and_root_matches(tmp_path, monkeypatch) -> None:
+    source = MasterfileSource(
+        key="bmv_etf_search",
+        provider="BMV",
+        description="Official BMV ETF and TRACS search supplement",
+        source_url="https://www.bmv.com.mx/api/searchservice/v1",
+        format="bmv_etf_search_json",
+        reference_scope="listed_companies_subset",
+    )
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,exchange,asset_type,name,isin",
+                "CSPXN,BMV,ETF,iShares Core S&P 500 UCITS ETF,",
+                "NAFTRACISH,BMV,ETF,NAFTRAC ISHARES,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    class FakeResponse:
+        def __init__(self, *, text: str | None = None, payload: object | None = None):
+            self.text = text or ""
+            self._payload = payload
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.get_calls = []
+            self.post_calls = []
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            self.get_calls.append((url, params))
+            if url == fetch_exchange_masterfiles.BMV_MOBILE_QUOTE_KEYS_URL:
+                return FakeResponse(
+                    text='for(;;);({"response":{"clavesCotizacion":[{"clave":"CSPX","serie":"N"}]}})'
+                )
+            if url == fetch_exchange_masterfiles.BMV_SEARCH_TOKEN_URL:
+                return FakeResponse(payload={"response": {"access_token": "token-123"}})
+            raise AssertionError(url)
+
+        def post(self, url, headers=None, json=None, timeout=None):
+            self.post_calls.append((url, json))
+            assert url == "https://www.bmv.com.mx/api/searchservice/v1"
+            term = json["payload"]["term"]
+            payloads = {
+                "CSPX": {
+                    "response": {
+                        "busquedaPanel": {
+                            "busquedaGeneral": {
+                                "instrumentosEmisoras": {
+                                    "instrumentos": {
+                                        "coincidenciaParcialInstrumentos": {
+                                            "emisoras": {
+                                                "hits": [
+                                                    {
+                                                        "_source": {
+                                                            "cve_emisora": "CSPX",
+                                                            "serie": "N",
+                                                            "descripcion": "CANASTAS DE ACCIONES (TRAC´S EXTRANJEROS).",
+                                                            "mercado": "Global",
+                                                            "estatus": "Activa",
+                                                            "instrumento": "iShares Core S&P 500 UCITS ETF USD (Acc)",
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "NAFTRACISH": {"response": {"busquedaPanel": {"busquedaGeneral": {"instrumentosEmisoras": {"instrumentos": {"coincidenciaParcialInstrumentos": {"emisoras": {"hits": []}}}}}}}},
+                "NAFTRAC": {
+                    "response": {
+                        "busquedaPanel": {
+                            "busquedaGeneral": {
+                                "instrumentosEmisoras": {
+                                    "instrumentos": {
+                                        "coincidenciaParcialInstrumentos": {
+                                            "emisoras": {
+                                                "hits": [
+                                                    {
+                                                        "_source": {
+                                                            "cve_emisora": "NAFTRAC",
+                                                            "serie": "ISHRS",
+                                                            "descripcion": "TRACS",
+                                                            "mercado": "Capitales",
+                                                            "estatus": "Activa",
+                                                            "instrumento": "NAFTRAC ISHRS",
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+            }
+            return FakeResponse(payload=payloads[term])
+
+    session = FakeSession()
+    rows = fetch_bmv_etf_search(
+        source,
+        listings_path=listings_path,
+        verification_dir=tmp_path,
+        session=session,
+    )
+
+    assert rows == [
+        {
+            "source_key": "bmv_etf_search",
+            "provider": "BMV",
+            "source_url": "https://www.bmv.com.mx/api/searchservice/v1",
+            "ticker": "CSPXN",
+            "name": "iShares Core S&P 500 UCITS ETF USD (Acc)",
+            "exchange": "BMV",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+        },
+        {
+            "source_key": "bmv_etf_search",
+            "provider": "BMV",
+            "source_url": "https://www.bmv.com.mx/api/searchservice/v1",
+            "ticker": "NAFTRACISH",
+            "name": "NAFTRAC ISHRS",
+            "exchange": "BMV",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+        },
+    ]
+    assert session.get_calls == [
+        (fetch_exchange_masterfiles.BMV_MOBILE_QUOTE_KEYS_URL, {"idBusquedaCotizacion": 2}),
+        (fetch_exchange_masterfiles.BMV_SEARCH_TOKEN_URL, None),
+        (fetch_exchange_masterfiles.BMV_SEARCH_TOKEN_URL, None),
+    ]
+    assert session.post_calls == [
+        ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "CSPX", "term2": "", "termT": "CSPX", "searchType": "busquedaPanel"}}),
+        ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "NAFTRACISH", "term2": "", "termT": "NAFTRACISH", "searchType": "busquedaPanel"}}),
+        ("https://www.bmv.com.mx/api/searchservice/v1", {"lang": "es", "payload": {"term": "NAFTRAC", "term2": "", "termT": "NAFTRAC", "searchType": "busquedaPanel"}}),
+    ]
+
+
 def test_bme_sources_are_modeled_as_partial_official_coverage() -> None:
     stock_source = next(item for item in OFFICIAL_SOURCES if item.key == "bme_listed_companies")
     etf_source = next(item for item in OFFICIAL_SOURCES if item.key == "bme_etf_list")
@@ -5871,6 +6112,39 @@ def test_load_bmv_capital_trust_search_rows_falls_back_to_cache(tmp_path, monkey
             "name": "DANHOS 13",
             "exchange": "BMV",
             "asset_type": "Stock",
+            "listing_status": "active",
+        }
+    ]
+
+
+def test_load_bmv_etf_search_rows_falls_back_to_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "bmv_etf_search.json"
+    cache_path.write_text(
+        '[{"ticker":"CSPXN","name":"iShares Core S&P 500 UCITS ETF USD (Acc)","exchange":"BMV","asset_type":"ETF","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "BMV_ETF_SEARCH_CACHE", cache_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_BMV_ETF_SEARCH_CACHE",
+        tmp_path / "missing.json",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_bmv_etf_search",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "bmv_etf_search")
+    rows, mode = load_bmv_etf_search_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "CSPXN",
+            "name": "iShares Core S&P 500 UCITS ETF USD (Acc)",
+            "exchange": "BMV",
+            "asset_type": "ETF",
             "listing_status": "active",
         }
     ]

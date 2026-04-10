@@ -9,14 +9,14 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 55
 
 | Metric | Value |
 |---|---|
-| **Total tickers** | 55,574 |
-| Stocks | 41,152 |
-| ETFs | 14,422 |
+| **Total tickers** | 55,533 |
+| Stocks | 41,129 |
+| ETFs | 14,404 |
 | Exchanges | 68 |
 | Countries | 68 |
-| ISIN coverage | 38,231 (68.8%) |
-| Sector coverage | 33,539 (60.4%) |
-| Total aliases | 87,588 |
+| ISIN coverage | 38,204 (68.8%) |
+| Sector coverage | 33,521 (60.4%) |
+| Total aliases | 87,525 |
 
 ## Formats
 
@@ -155,7 +155,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (55,574 rows) + `aliases` (87,588 rows) + `cross_listings` (8,665 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
+Tables: `tickers` (55,533 rows) + `aliases` (87,525 rows) + `cross_listings` (8,652 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
 
 ## Schema
 
@@ -184,16 +184,16 @@ Tables: `tickers` (55,574 rows) + `aliases` (87,588 rows) + `cross_listings` (8,
 
 | Exchange | Tickers | Description |
 |---|---|---|
-| OTC | 9,302 | US OTC / Pink Sheets |
+| OTC | 9,303 | US OTC / Pink Sheets |
 | LSE | 4,530 | London Stock Exchange |
-| NASDAQ | 4,548 | NASDAQ |
-| SZSE | 3,096 | Shenzhen Stock Exchange |
+| NASDAQ | 4,545 | NASDAQ |
+| SZSE | 3,085 | Shenzhen Stock Exchange |
 | XETRA | 2,086 | Deutsche Boerse |
-| SSE | 2,811 | Shanghai Stock Exchange |
-| NYSE | 2,056 | New York Stock Exchange |
-| NYSE ARCA | 2,595 | NYSE ARCA (ETFs) |
-| KRX | 1,789 | Korea Exchange |
-| TSX | 1,606 | Toronto Stock Exchange |
+| SSE | 2,789 | Shanghai Stock Exchange |
+| NYSE | 2,055 | New York Stock Exchange |
+| NYSE ARCA | 2,592 | NYSE ARCA (ETFs) |
+| KRX | 1,787 | Korea Exchange |
+| TSX | 1,583 | Toronto Stock Exchange |
 | B3 | 923 | Sao Paulo Exchange |
 | TWSE | 1,240 | Taiwan Stock Exchange |
 | ASX | 1,295 | Australian Securities Exchange |

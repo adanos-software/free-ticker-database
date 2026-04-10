@@ -98,6 +98,8 @@ BMV_STOCK_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "bmv_stock_search.json"
 LEGACY_BMV_STOCK_SEARCH_CACHE = MASTERFILES_DIR / "bmv_stock_search.json"
 BMV_CAPITAL_TRUST_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "bmv_capital_trust_search.json"
 LEGACY_BMV_CAPITAL_TRUST_SEARCH_CACHE = MASTERFILES_DIR / "bmv_capital_trust_search.json"
+BMV_ETF_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "bmv_etf_search.json"
+LEGACY_BMV_ETF_SEARCH_CACHE = MASTERFILES_DIR / "bmv_etf_search.json"
 BME_LISTED_COMPANIES_CACHE = MASTERFILE_CACHE_DIR / "bme_listed_companies.json"
 LEGACY_BME_LISTED_COMPANIES_CACHE = MASTERFILES_DIR / "bme_listed_companies.json"
 BME_ETF_LIST_CACHE = MASTERFILE_CACHE_DIR / "bme_etf_list.json"
@@ -189,8 +191,9 @@ NASDAQ_NORDIC_SHARE_SEARCH_SOURCE_CONFIG = {
     "nasdaq_nordic_helsinki_shares_search": {"exchange": "HEL", "currency": "EUR"},
 }
 BMV_SEARCH_SOURCE_CONFIG = {
-    "bmv_stock_search": {"exchange": "BMV", "quote_search_id": 2},
-    "bmv_capital_trust_search": {"exchange": "BMV", "quote_search_id": 2},
+    "bmv_stock_search": {"exchange": "BMV", "quote_search_id": 2, "asset_type": "Stock"},
+    "bmv_capital_trust_search": {"exchange": "BMV", "quote_search_id": 2, "asset_type": "Stock"},
+    "bmv_etf_search": {"exchange": "BMV", "quote_search_id": 2, "asset_type": "ETF"},
 }
 BME_LISTED_SOURCE_CONFIG = {
     "bme_listed_companies": {"exchange": "BME", "trading_system": "SIBE", "asset_type": "Stock"},
@@ -242,6 +245,10 @@ BMV_CAPITAL_TRUST_DESCRIPTIONS = {
     "FIDEICOMISOS DE INVERSION EN INFRAESTRUCTURA",
     "TRACS",
 }
+BMV_ETF_DESCRIPTION_MARKERS = (
+    "TRACS",
+    "CANASTAS DE ACCIONES",
+)
 LSE_UPDATE_OPENER_RE = re.compile(r"UpdateOpener\('(?P<name>(?:\\'|[^'])*)',\s*'(?P<meta>[^']*)'\)")
 CBOE_CANADA_LISTING_DIRECTORY_RE = re.compile(r"CTX\['listingDirectory'\]\s*=\s*(\[[\s\S]*?\]);")
 LSE_INSTRUMENT_SEARCH_MAX_WORKERS = 8
@@ -732,6 +739,14 @@ OFFICIAL_SOURCES = [
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
+        key="bmv_etf_search",
+        provider="BMV",
+        description="Official BMV ETF and TRACS search supplement",
+        source_url=BMV_SEARCH_URL,
+        format="bmv_etf_search_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
         key="nasdaq_nordic_stockholm_shares",
         provider="Nasdaq Nordic",
         description="Official Nasdaq Nordic Stockholm shares screener (Main Market + First North)",
@@ -1030,6 +1045,15 @@ def latest_reference_gap_tickers(
     *,
     exchanges: set[str] | None = None,
 ) -> set[str]:
+    return latest_verification_tickers(base_dir, exchanges=exchanges, statuses={"reference_gap"})
+
+
+def latest_verification_tickers(
+    base_dir: Path,
+    *,
+    exchanges: set[str] | None = None,
+    statuses: set[str] | None = None,
+) -> set[str]:
     latest_run = latest_verification_run(base_dir)
     if latest_run is None:
         return set()
@@ -1037,7 +1061,7 @@ def latest_reference_gap_tickers(
     for path in sorted(latest_run.glob("chunk-*-of-*.csv")):
         with path.open(newline="", encoding="utf-8") as handle:
             for row in csv.DictReader(handle):
-                if row.get("status") != "reference_gap":
+                if statuses and row.get("status") not in statuses:
                     continue
                 exchange = row.get("exchange", "")
                 ticker = row.get("ticker", "").strip()
@@ -1112,7 +1136,7 @@ def bmv_search_target_rows(
         row
         for row in load_csv(listings_path)
         if row.get("exchange") == config["exchange"]
-        and row.get("asset_type") == "Stock"
+        and row.get("asset_type") == config.get("asset_type", "Stock")
         and row.get("ticker", "").strip()
     ]
 
@@ -1612,9 +1636,10 @@ def tmx_etf_quote_lookup_target_rows(
     listings_path: Path = LISTINGS_CSV,
     verification_dir: Path = ETF_VERIFICATION_DIR,
 ) -> list[dict[str, str]]:
-    target_tickers = latest_reference_gap_tickers(
+    target_tickers = latest_verification_tickers(
         verification_dir,
         exchanges={"TSX", "TSXV"},
+        statuses={"reference_gap", "missing_from_official"},
     )
     if not target_tickers:
         return []
@@ -1632,9 +1657,10 @@ def tmx_stock_quote_lookup_target_rows(
     listings_path: Path = LISTINGS_CSV,
     verification_dir: Path = STOCK_VERIFICATION_DIR,
 ) -> list[dict[str, str]]:
-    target_tickers = latest_reference_gap_tickers(
+    target_tickers = latest_verification_tickers(
         verification_dir,
         exchanges={"TSX", "TSXV"},
+        statuses={"reference_gap", "missing_from_official"},
     )
     if not target_tickers:
         return []
@@ -1756,7 +1782,17 @@ def fetch_tmx_stock_quote_rows(
             if candidate_exchange != exchange:
                 continue
             candidate_name = str(candidate.get("name", "")).strip()
-            if not candidate_name or not tmx_lookup_name_matches(listing_name, candidate_name):
+            normalized_candidate_symbol = str(candidate.get("symbol", symbol)).strip().upper().replace(".", "-")
+            allow_code_like_refresh = (
+                compact_company_name(listing_name) == compact_company_name(listing_ticker)
+                and normalized_candidate_symbol == listing_ticker
+            )
+            allow_variant_symbol_refresh = normalized_candidate_symbol == listing_ticker
+            if not candidate_name or not (
+                tmx_lookup_name_matches(listing_name, candidate_name)
+                or allow_code_like_refresh
+                or allow_variant_symbol_refresh
+            ):
                 continue
             rows.append(
                 {
@@ -1768,7 +1804,7 @@ def fetch_tmx_stock_quote_rows(
                     "exchange": exchange,
                     "asset_type": "Stock",
                     "listing_status": "active",
-                    "reference_scope": source.reference_scope,
+                    "reference_scope": "exchange_directory",
                     "official": "true",
                     "isin": listing_row.get("isin", "").strip(),
                 }
@@ -2027,6 +2063,8 @@ def build_bmv_reference_row(
     *,
     name: str,
     exchange: str,
+    asset_type: str = "Stock",
+    listing_status: str = "active",
 ) -> dict[str, str]:
     row = {
         "source_key": source.key,
@@ -2035,8 +2073,8 @@ def build_bmv_reference_row(
         "ticker": listing_row.get("ticker", "").strip().upper(),
         "name": name,
         "exchange": exchange,
-        "asset_type": "Stock",
-        "listing_status": "active",
+        "asset_type": asset_type,
+        "listing_status": listing_status,
         "reference_scope": source.reference_scope,
         "official": "true",
     }
@@ -2141,6 +2179,82 @@ def select_bmv_unique_stock_search_hit(
         ):
             continue
         candidates.append(hit)
+    unique_candidates: list[dict[str, Any]] = []
+    seen_signatures: set[tuple[str, str]] = set()
+    for hit in candidates:
+        signature = (
+            str(hit.get("cve_emisora", "")).strip().upper(),
+            str(hit.get("serie", "")).strip().upper(),
+        )
+        if signature in seen_signatures:
+            continue
+        seen_signatures.add(signature)
+        unique_candidates.append(hit)
+    if len(unique_candidates) != 1:
+        return None
+    return unique_candidates[0]
+
+
+def bmv_etf_search_terms(ticker: str) -> list[str]:
+    normalized = ticker.strip().upper()
+    if not normalized:
+        return []
+    candidates = [normalized]
+    if "-" in normalized:
+        candidates.append(normalized.split("-", 1)[0])
+    for suffix in ("ISHRS", "ISHR", "ISH", "N", "C", "M"):
+        if normalized.endswith(suffix) and len(normalized) > len(suffix) + 1:
+            candidates.append(normalized[: -len(suffix)])
+    if len(normalized) > 3 and normalized[-2:].isdigit():
+        candidates.append(normalized[:-2])
+    seen: set[str] = set()
+    result: list[str] = []
+    for candidate in candidates:
+        if not candidate or candidate in seen:
+            continue
+        seen.add(candidate)
+        result.append(candidate)
+    return result
+
+
+def is_bmv_etf_search_hit(hit: dict[str, Any]) -> bool:
+    descripcion = str(hit.get("descripcion", "")).strip().upper()
+    mercado = str(hit.get("mercado", "")).strip().upper()
+    estatus = str(hit.get("estatus", "")).strip().upper()
+    return (
+        mercado in {"CAPITALES", "GLOBAL"}
+        and estatus == "ACTIVA"
+        and any(marker in descripcion for marker in BMV_ETF_DESCRIPTION_MARKERS)
+    )
+
+
+def bmv_search_hit_matches_listing_ticker(listing_ticker: str, hit: dict[str, Any]) -> bool:
+    official_ticker = bmv_compose_reference_ticker(
+        str(hit.get("cve_emisora", "")),
+        str(hit.get("serie", "")),
+    )
+    normalized_listing_ticker = listing_ticker.strip().upper()
+    if not normalized_listing_ticker or not official_ticker:
+        return False
+    if official_ticker == normalized_listing_ticker:
+        return True
+    return (
+        normalized_listing_ticker.endswith(("ISH", "ISHR"))
+        and official_ticker.startswith(normalized_listing_ticker)
+    )
+
+
+def select_bmv_unique_etf_search_hit(
+    listing_row: dict[str, str],
+    hits: list[dict[str, Any]],
+) -> dict[str, Any] | None:
+    listing_ticker = listing_row.get("ticker", "").strip().upper()
+    candidates = [
+        hit
+        for hit in hits
+        if is_bmv_etf_search_hit(hit)
+        and bmv_search_hit_matches_listing_ticker(listing_ticker, hit)
+    ]
     unique_candidates: list[dict[str, Any]] = []
     seen_signatures: set[tuple[str, str]] = set()
     for hit in candidates:
@@ -2374,6 +2488,108 @@ def load_bmv_capital_trust_search_rows(
 
     ensure_output_dirs()
     BMV_CAPITAL_TRUST_SEARCH_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def fetch_bmv_etf_search(
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    verification_dir: Path = ETF_VERIFICATION_DIR,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    config = BMV_SEARCH_SOURCE_CONFIG[source.key]
+    rows: list[dict[str, str]] = []
+    covered_tickers: set[str] = set()
+    for listing_row, hit in fetch_bmv_exact_search_matches(
+        source,
+        listings_path=listings_path,
+        verification_dir=verification_dir,
+        session=session,
+    ):
+        if not is_bmv_etf_search_hit(hit):
+            continue
+        if not bmv_search_hit_matches_listing_ticker(listing_row.get("ticker", ""), hit):
+            continue
+        name = str(hit.get("instrumento", "")).strip() or str(hit.get("razon_social", "")).strip()
+        if not name:
+            continue
+        rows.append(
+            build_bmv_reference_row(
+                source,
+                listing_row,
+                name=name,
+                exchange=config["exchange"],
+                asset_type="ETF",
+            )
+        )
+        covered_tickers.add(listing_row.get("ticker", "").strip().upper())
+
+    fallback_rows = [
+        row
+        for row in bmv_search_target_rows(
+            source,
+            listings_path=listings_path,
+            verification_dir=verification_dir,
+        )
+        if row.get("ticker", "").strip().upper() not in covered_tickers
+    ]
+    if not fallback_rows:
+        return rows
+
+    session = session or requests.Session()
+    token_response = session.get(BMV_SEARCH_TOKEN_URL, timeout=REQUEST_TIMEOUT)
+    token_response.raise_for_status()
+    access_token = str(token_response.json().get("response", {}).get("access_token", "")).strip()
+    if not access_token:
+        raise ValueError("BMV search token missing access_token")
+
+    for listing_row in fallback_rows:
+        selected_hit = None
+        for term in bmv_etf_search_terms(listing_row.get("ticker", "")):
+            hits = fetch_bmv_search_hits(
+                source,
+                term,
+                access_token=access_token,
+                session=session,
+            )
+            selected_hit = select_bmv_unique_etf_search_hit(listing_row, hits)
+            if selected_hit is not None:
+                break
+        if selected_hit is None:
+            continue
+        name = (
+            str(selected_hit.get("instrumento", "")).strip()
+            or str(selected_hit.get("razon_social", "")).strip()
+        )
+        if not name:
+            continue
+        rows.append(
+            build_bmv_reference_row(
+                source,
+                listing_row,
+                name=name,
+                exchange=config["exchange"],
+                asset_type="ETF",
+            )
+        )
+    return rows
+
+
+def load_bmv_etf_search_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_bmv_etf_search(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in (BMV_ETF_SEARCH_CACHE, LEGACY_BMV_ETF_SEARCH_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    BMV_ETF_SEARCH_CACHE.write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"
 
 
@@ -3893,6 +4109,7 @@ def parse_tmx_listed_issuers_excel(content: bytes, source: MasterfileSource) -> 
             sector = str(record.get("Sector", "")).strip()
             if not ticker or not name or ticker.lower() == "nan" or name.lower() == "nan":
                 continue
+            asset_type = infer_tmx_listed_asset_type(name, sector)
             rows.append(
                 {
                     "source_key": source.key,
@@ -3901,9 +4118,9 @@ def parse_tmx_listed_issuers_excel(content: bytes, source: MasterfileSource) -> 
                     "ticker": ticker,
                     "name": name,
                     "exchange": exchange,
-                    "asset_type": infer_tmx_listed_asset_type(name, sector),
+                    "asset_type": asset_type,
                     "listing_status": "active",
-                    "reference_scope": source.reference_scope,
+                    "reference_scope": "exchange_directory" if asset_type == "Stock" else source.reference_scope,
                     "official": "true",
                 }
             )
@@ -5696,6 +5913,8 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "sec_company_tickers_exchange_json":
         payload = fetch_json(source.source_url, session=session)
         return parse_sec_company_tickers_exchange(payload, source)
+    if source.format == "bmv_etf_search_json":
+        return fetch_bmv_etf_search(source, session=session)
     raise ValueError(f"Unsupported source format: {source.format}")
 
 
@@ -5767,6 +5986,11 @@ def fetch_source_rows_with_mode(
         rows, mode = load_bmv_capital_trust_search_rows(source, session=session)
         if rows is None:
             raise requests.RequestException("BMV capital trust search unavailable")
+        return rows, mode
+    if source.format == "bmv_etf_search_json":
+        rows, mode = load_bmv_etf_search_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("BMV ETF search unavailable")
         return rows, mode
     if source.format == "szse_etf_list_json":
         rows, mode = load_szse_etf_list_rows(source, session=session)

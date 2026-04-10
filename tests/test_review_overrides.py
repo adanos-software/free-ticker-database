@@ -62,6 +62,24 @@ def test_load_review_overrides_and_apply_metadata(tmp_path, monkeypatch):
                 "confidence": "0.9",
                 "reason": "contaminated",
             },
+            {
+                "ticker": "BBB",
+                "exchange": "SIX",
+                "field": "ticker",
+                "decision": "update",
+                "proposed_value": "BMAG",
+                "confidence": "0.99",
+                "reason": "official rename",
+            },
+            {
+                "ticker": "BBB",
+                "exchange": "SIX",
+                "field": "name",
+                "decision": "update",
+                "proposed_value": "Bajaj Mobility AG",
+                "confidence": "0.99",
+                "reason": "official rename",
+            },
         ],
     )
     write_csv(
@@ -108,3 +126,15 @@ def test_load_review_overrides_and_apply_metadata(tmp_path, monkeypatch):
     )
     assert updated_output["country_code"] == "US"
     assert updated_output["aliases"] == []
+
+    renamed_input = rebuild_dataset.apply_input_metadata_overrides(
+        {
+            "ticker": "BBB",
+            "exchange": "SIX",
+            "name": "PIERER Mobility AG",
+            "aliases": [],
+        },
+        metadata_overrides[("BBB", "SIX")],
+    )
+    assert renamed_input["ticker"] == "BMAG"
+    assert renamed_input["name"] == "Bajaj Mobility AG"
