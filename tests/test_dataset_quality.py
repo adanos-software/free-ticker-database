@@ -108,7 +108,7 @@ def test_residual_alias_collisions_and_metadata_contamination_are_removed():
     assert "MGR" not in amg["aliases"]
 
     assert cntx["country"] == "United States"
-    assert cntx["isin"] == ""
+    assert cntx["isin"] == "US21077P1084"
     assert "pt century textile industry" not in cntx["aliases"]
 
     assert cybr["country"] == "Ireland"

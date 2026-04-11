@@ -9,18 +9,18 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 52
 
 | Metric | Value |
 |---|---|
-| **Total tickers** | 52,868 |
-| Stocks | 38,813 |
+| **Total tickers** | 52,883 |
+| Stocks | 38,828 |
 | ETFs | 14,055 |
 | Exchanges | 67 |
 | Countries | 69 |
-| ISIN coverage | 42,750 (80.9%) |
-| Sector coverage | 31,885 (60.3%) |
-| Core listing-scope rows | 44,384 |
-| Core primary rows with ISIN | 35,687 |
-| Core primary rows missing ISIN | 8,697 |
-| Extended listing-scope rows | 15,857 |
-| Total aliases | 89,285 |
+| ISIN coverage | 42,838 (81.0%) |
+| Sector coverage | 31,900 (60.3%) |
+| Core listing-scope rows | 44,394 |
+| Core primary rows with ISIN | 35,769 |
+| Core primary rows missing ISIN | 8,625 |
+| Extended listing-scope rows | 15,847 |
+| Total aliases | 89,383 |
 
 ## Formats
 
@@ -171,7 +171,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (52,868 rows), `listings` (60,241 rows), `aliases` (89,285 rows), `cross_listings` (12,926 rows), and `instrument_scopes` (60,241 rows), with indexes on alias, exchange, country, sector, ISIN, listing scope, and instrument group key.
+Tables: `tickers` (52,883 rows), `listings` (60,241 rows), `aliases` (89,383 rows), `cross_listings` (12,908 rows), and `instrument_scopes` (60,241 rows), with indexes on alias, exchange, country, sector, ISIN, listing scope, and instrument group key.
 
 ## Schema
 
@@ -200,15 +200,15 @@ Tables: `tickers` (52,868 rows), `listings` (60,241 rows), `aliases` (89,285 row
 
 | Exchange | Tickers | Description |
 |---|---|---|
-| OTC | 8,484 | US OTC / Pink Sheets |
+| OTC | 8,489 | US OTC / Pink Sheets |
 | NASDAQ | 4,545 | NASDAQ |
-| LSE | 3,915 | London Stock Exchange |
+| LSE | 3,893 | London Stock Exchange |
 | TSE | 3,207 | Tokyo Stock Exchange |
 | SZSE | 3,083 | Shenzhen Stock Exchange |
 | SSE | 2,789 | Shanghai Stock Exchange |
 | NYSE ARCA | 2,594 | NYSE ARCA (ETFs) |
-| NYSE | 2,048 | New York Stock Exchange |
-| XETRA | 1,838 | Deutsche Boerse |
+| NYSE | 2,045 | New York Stock Exchange |
+| XETRA | 1,851 | Deutsche Boerse |
 | KRX | 1,788 | Korea Exchange |
 | KOSDAQ | 1,583 | Korean OTC |
 | TSX | 1,570 | Toronto Stock Exchange |
@@ -457,6 +457,15 @@ python3 scripts/backfill_yahoo_otc_isins.py --apply --timeout-seconds 10
 ```
 
 This accepts Yahoo Finance ISINs only when the ISIN checksum is valid and the Yahoo venue, quote type, and issuer name match the current OTC row. Accepted rows are merged into `data/review_overrides/metadata_updates.csv` and must still flow through `python3 scripts/rebuild_dataset.py`.
+
+For secondary broker coverage, the XTB OMI specification table can fill missing ISINs after strict ticker suffix/exchange, asset-type, and issuer-name gates:
+
+```bash
+python3 scripts/backfill_xtb_omi_isins.py --apply --timeout-seconds 30
+python3 scripts/rebuild_dataset.py
+```
+
+This reads the current XTB OMI PDF, writes audit reports under `data/xtb_verification/`, and only merges accepted ISINs into `data/review_overrides/metadata_updates.csv`. Treat XTB as a secondary verification source, not an official exchange masterfile.
 
 ## Data Sources
 
