@@ -3,24 +3,24 @@
 [![CI](https://github.com/adanos-software/free-ticker-database/actions/workflows/ci.yml/badge.svg)](https://github.com/adanos-software/free-ticker-database/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-A comprehensive, free-to-use stock and ETF ticker reference database covering 53,000+ primary securities and 60,000+ exchange listings across 67 exchanges and 68 countries.
+A comprehensive, free-to-use stock and ETF ticker reference database covering 52,000+ primary securities and 60,000+ exchange listings across 67 exchanges and 69 countries.
 
 ## Stats
 
 | Metric | Value |
 |---|---|
-| **Total tickers** | 53,141 |
-| Stocks | 39,086 |
+| **Total tickers** | 52,868 |
+| Stocks | 38,813 |
 | ETFs | 14,055 |
 | Exchanges | 67 |
-| Countries | 68 |
-| ISIN coverage | 41,846 (78.7%) |
-| Sector coverage | 32,099 (60.4%) |
-| Core listing-scope rows | 44,422 |
-| Core primary rows with ISIN | 35,651 |
-| Core primary rows missing ISIN | 8,771 |
-| Extended listing-scope rows | 15,819 |
-| Total aliases | 88,692 |
+| Countries | 69 |
+| ISIN coverage | 42,750 (80.9%) |
+| Sector coverage | 31,885 (60.3%) |
+| Core listing-scope rows | 44,384 |
+| Core primary rows with ISIN | 35,687 |
+| Core primary rows missing ISIN | 8,697 |
+| Extended listing-scope rows | 15,857 |
+| Total aliases | 89,285 |
 
 ## Formats
 
@@ -28,15 +28,15 @@ Choose the format that fits your use case:
 
 | File | Size | Best for |
 |---|---|---|
-| [`data/tickers.csv`](data/tickers.csv) | 4.8 MB | Excel, spreadsheets, quick lookups |
-| [`data/listings.csv`](data/listings.csv) | 6.1 MB | Listing-keyed export without global ticker ambiguity |
-| [`data/instrument_scopes.csv`](data/instrument_scopes.csv) | 5.0 MB | Core vs. extended listing scope |
-| [`data/tickers.json`](data/tickers.json) | 10.5 MB | Web apps, APIs |
-| [`data/tickers.parquet`](data/tickers.parquet) | 2.5 MB | Pandas, data science |
-| [`data/tickers.db`](data/tickers.db) | 36.2 MB | SQL queries, local apps |
-| [`data/aliases.csv`](data/aliases.csv) | 2.3 MB | Alias/name resolution |
+| [`data/tickers.csv`](data/tickers.csv) | 5.0 MB | Excel, spreadsheets, quick lookups |
+| [`data/listings.csv`](data/listings.csv) | 6.4 MB | Listing-keyed export without global ticker ambiguity |
+| [`data/instrument_scopes.csv`](data/instrument_scopes.csv) | 5.3 MB | Core vs. extended listing scope |
+| [`data/tickers.json`](data/tickers.json) | 11.0 MB | Web apps, APIs |
+| [`data/tickers.parquet`](data/tickers.parquet) | 2.6 MB | Pandas, data science |
+| [`data/tickers.db`](data/tickers.db) | 38.1 MB | SQL queries, local apps |
+| [`data/aliases.csv`](data/aliases.csv) | 2.4 MB | Alias/name resolution |
 | [`data/identifiers.csv`](data/identifiers.csv) | 960 KB | ISIN/WKN lookups |
-| [`data/cross_listings.csv`](data/cross_listings.csv) | 450 KB | Cross-listed securities |
+| [`data/cross_listings.csv`](data/cross_listings.csv) | 465 KB | Cross-listed securities |
 
 Additional reference artifacts:
 
@@ -137,8 +137,8 @@ OTC::VROYF,VROYF,OTC,Stock,CA92859L2012,CA92859L2012,extended,otc_listing,TSXV::
 {
   "_meta": {
     "version": "3.4.0",
-    "built_at": "2026-04-11T12:35:25Z",
-    "total_tickers": 53141
+    "built_at": "2026-04-11T15:04:41Z",
+    "total_tickers": 52868
   },
   "tickers": [
     {
@@ -171,7 +171,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (53,141 rows), `listings` (60,241 rows), `aliases` (88,692 rows), `cross_listings` (12,442 rows), and `instrument_scopes` (60,241 rows), with indexes on alias, exchange, country, sector, ISIN, listing scope, and instrument group key.
+Tables: `tickers` (52,868 rows), `listings` (60,241 rows), `aliases` (89,285 rows), `cross_listings` (12,926 rows), and `instrument_scopes` (60,241 rows), with indexes on alias, exchange, country, sector, ISIN, listing scope, and instrument group key.
 
 ## Schema
 
@@ -200,7 +200,7 @@ Tables: `tickers` (53,141 rows), `listings` (60,241 rows), `aliases` (88,692 row
 
 | Exchange | Tickers | Description |
 |---|---|---|
-| OTC | 8,719 | US OTC / Pink Sheets |
+| OTC | 8,484 | US OTC / Pink Sheets |
 | NASDAQ | 4,545 | NASDAQ |
 | LSE | 3,915 | London Stock Exchange |
 | TSE | 3,207 | Tokyo Stock Exchange |
@@ -208,7 +208,7 @@ Tables: `tickers` (53,141 rows), `listings` (60,241 rows), `aliases` (88,692 row
 | SSE | 2,789 | Shanghai Stock Exchange |
 | NYSE ARCA | 2,594 | NYSE ARCA (ETFs) |
 | NYSE | 2,048 | New York Stock Exchange |
-| XETRA | 1,851 | Deutsche Boerse |
+| XETRA | 1,838 | Deutsche Boerse |
 | KRX | 1,788 | Korea Exchange |
 | KOSDAQ | 1,583 | Korean OTC |
 | TSX | 1,570 | Toronto Stock Exchange |
@@ -216,7 +216,7 @@ Tables: `tickers` (53,141 rows), `listings` (60,241 rows), `aliases` (88,692 row
 | TWSE | 1,240 | Taiwan Stock Exchange |
 | BATS | 1,214 | Cboe BZX Exchange |
 | TPEX | 1,118 | Taipei Exchange |
-| TSXV | 1,061 | TSX Venture Exchange |
+| TSXV | 1,060 | TSX Venture Exchange |
 | B3 | 928 | Brasil Bolsa Balcao |
 | Bursa | 925 | Bursa Malaysia |
 | STO | 709 | Nasdaq Stockholm |
@@ -449,6 +449,14 @@ python3 scripts/verify_yahoo_listings.py --finding-type thin_otc_metadata --limi
 ```
 
 This uses `yfinance` as an external verification helper for suspicious listings and writes generated reports under `data/yahoo_verification/`. Treat Yahoo results as review signals, not a hard source of truth.
+
+For missing OTC ISINs, use the stricter gated override workflow:
+
+```bash
+python3 scripts/backfill_yahoo_otc_isins.py --apply --timeout-seconds 10
+```
+
+This accepts Yahoo Finance ISINs only when the ISIN checksum is valid and the Yahoo venue, quote type, and issuer name match the current OTC row. Accepted rows are merged into `data/review_overrides/metadata_updates.csv` and must still flow through `python3 scripts/rebuild_dataset.py`.
 
 ## Data Sources
 
