@@ -998,6 +998,41 @@ def test_classify_row_downgrades_tmx_listed_issuers_asset_type_mismatch_to_refer
     assert result["reason"] == "Only low-confidence asset_type evidence exists for this listing."
 
 
+def test_classify_row_downgrades_otc_profile_asset_type_mismatch_to_reference_gap() -> None:
+    row = {
+        "ticker": "ICFMF",
+        "exchange": "OTC",
+        "asset_type": "ETF",
+        "name": "ISHARES CDN FINL MONTHLY INCOME FD",
+        "country": "United States",
+        "country_code": "US",
+        "isin": "",
+        "sector": "",
+    }
+    result = classify_row(
+        row,
+        active_by_key={
+            ("OTC", "ICFMF"): [
+                {
+                    "ticker": "ICFMF",
+                    "exchange": "OTC",
+                    "name": "ISHARES CDN FINL MONTHLY INCOME FD",
+                    "asset_type": "Stock",
+                    "source_key": "otc_markets_security_profile",
+                    "listing_status": "active",
+                }
+            ]
+        },
+        any_by_key={},
+        active_by_ticker={},
+        covered_exchanges=set(),
+        partial_covered_exchanges={"OTC"},
+        identifier_map={},
+    )
+    assert result["status"] == "reference_gap"
+    assert result["reason"] == "Only low-confidence asset_type evidence exists for this listing."
+
+
 def test_classify_row_verifies_tsx_etf_series_suffix_from_tmx_root_listing() -> None:
     row = {
         "ticker": "BTCO-B",

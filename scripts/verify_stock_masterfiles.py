@@ -50,6 +50,7 @@ LOW_CONFIDENCE_MISSING_ASSET_TYPE_KEYS = {
 LOW_CONFIDENCE_ASSET_TYPE_SOURCE_KEYS = {
     "krx_listed_companies",
     "lse_company_reports",
+    "otc_markets_security_profile",
     "tmx_listed_issuers",
 }
 LOW_CONFIDENCE_COLLISION_PEER_EXCHANGES = {
@@ -79,7 +80,7 @@ LOW_CONFIDENCE_NAME_SOURCE_BY_EXCHANGE = {
     "NASDAQ": {"sec_company_tickers_exchange"},
     "NYSE": {"sec_company_tickers_exchange", "nasdaq_other_listed"},
     "NYSE MKT": {"sec_company_tickers_exchange", "nasdaq_other_listed"},
-    "OTC": {"sec_company_tickers_exchange"},
+    "OTC": {"sec_company_tickers_exchange", "otc_markets_security_profile"},
     "PSX": {"psx_listed_companies"},
     "SIX": {"six_equity_issuers", "six_etf_products", "six_etp_products"},
     "STO": {"nasdaq_nordic_stockholm_shares"},

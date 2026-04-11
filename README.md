@@ -3,20 +3,24 @@
 [![CI](https://github.com/adanos-software/free-ticker-database/actions/workflows/ci.yml/badge.svg)](https://github.com/adanos-software/free-ticker-database/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-A comprehensive, free-to-use stock and ETF ticker reference database covering 55,000+ primary securities and 60,000+ exchange listings across 68 exchanges and 68 countries.
+A comprehensive, free-to-use stock and ETF ticker reference database covering 53,000+ primary securities and 60,000+ exchange listings across 67 exchanges and 68 countries.
 
 ## Stats
 
 | Metric | Value |
 |---|---|
-| **Total tickers** | 55,377 |
-| Stocks | 40,990 |
-| ETFs | 14,387 |
-| Exchanges | 68 |
+| **Total tickers** | 53,141 |
+| Stocks | 39,086 |
+| ETFs | 14,055 |
+| Exchanges | 67 |
 | Countries | 68 |
-| ISIN coverage | 38,487 (69.5%) |
-| Sector coverage | 33,443 (60.4%) |
-| Total aliases | 87,689 |
+| ISIN coverage | 41,846 (78.7%) |
+| Sector coverage | 32,099 (60.4%) |
+| Core listing-scope rows | 44,422 |
+| Core primary rows with ISIN | 35,651 |
+| Core primary rows missing ISIN | 8,771 |
+| Extended listing-scope rows | 15,819 |
+| Total aliases | 88,692 |
 
 ## Formats
 
@@ -24,26 +28,27 @@ Choose the format that fits your use case:
 
 | File | Size | Best for |
 |---|---|---|
-| [`data/tickers.csv`](data/tickers.csv) | 5.2 MB | Excel, spreadsheets, quick lookups |
+| [`data/tickers.csv`](data/tickers.csv) | 4.8 MB | Excel, spreadsheets, quick lookups |
 | [`data/listings.csv`](data/listings.csv) | 6.1 MB | Listing-keyed export without global ticker ambiguity |
-| [`data/tickers.json`](data/tickers.json) | 10.9 MB | Web apps, APIs |
-| [`data/tickers.parquet`](data/tickers.parquet) | 2.6 MB | Pandas, data science |
-| [`data/tickers.db`](data/tickers.db) | 28.4 MB | SQL queries, local apps |
-| [`data/aliases.csv`](data/aliases.csv) | 2.2 MB | Alias/name resolution |
+| [`data/instrument_scopes.csv`](data/instrument_scopes.csv) | 5.0 MB | Core vs. extended listing scope |
+| [`data/tickers.json`](data/tickers.json) | 10.5 MB | Web apps, APIs |
+| [`data/tickers.parquet`](data/tickers.parquet) | 2.5 MB | Pandas, data science |
+| [`data/tickers.db`](data/tickers.db) | 36.2 MB | SQL queries, local apps |
+| [`data/aliases.csv`](data/aliases.csv) | 2.3 MB | Alias/name resolution |
 | [`data/identifiers.csv`](data/identifiers.csv) | 960 KB | ISIN/WKN lookups |
-| [`data/cross_listings.csv`](data/cross_listings.csv) | 313 KB | Cross-listed securities |
+| [`data/cross_listings.csv`](data/cross_listings.csv) | 450 KB | Cross-listed securities |
 
 Additional reference artifacts:
 
 | File | Size | Best for |
 |---|---|---|
 | [`data/identifiers_extended.csv`](data/identifiers_extended.csv) | 2.1 MB | FIGI/CIK/LEI enrichment snapshot |
-| [`data/listing_index.csv`](data/listing_index.csv) | 5.0 MB | Listing-keyed identity/export bridge |
-| [`data/masterfiles/reference.csv`](data/masterfiles/reference.csv) | 21.6 MB | Official exchange-masterfile reference rows |
+| [`data/listing_index.csv`](data/listing_index.csv) | 5.1 MB | Listing-keyed identity/export bridge |
+| [`data/masterfiles/reference.csv`](data/masterfiles/reference.csv) | 23.9 MB | Official exchange-masterfile reference rows |
 | [`data/masterfiles/supplemental_listings.csv`](data/masterfiles/supplemental_listings.csv) | 1.2 MB | Safe official listings added to the core export |
 | [`data/history/latest_snapshot.csv`](data/history/latest_snapshot.csv) | 6.8 MB | Current listing-status baseline |
-| [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | 364 KB | Machine-readable coverage metrics |
-| [`data/reports/masterfile_collision_report.json`](data/reports/masterfile_collision_report.json) | 41 KB | Official-symbol gaps blocked by cross-exchange collisions |
+| [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | 365 KB | Machine-readable coverage metrics |
+| [`data/reports/masterfile_collision_report.json`](data/reports/masterfile_collision_report.json) | 57 KB | Official-symbol gaps blocked by cross-exchange collisions |
 
 ### tickers.csv (flat, Excel-friendly, one row per security)
 
@@ -115,14 +120,25 @@ NASDAQ::AAPL,AAPL,NASDAQ,Apple Inc.,Stock,Information Technology,United States,U
 
 This is the full listing-level export for downstream systems that want every venue line with a stable `listing_key` today.
 
+### instrument_scopes.csv (core vs. extended listing model)
+
+```
+listing_key,ticker,exchange,asset_type,isin,instrument_group_key,instrument_scope,scope_reason,primary_listing_key
+NASDAQ::MSFT,MSFT,NASDAQ,Stock,US5949181045,US5949181045,core,primary_listing,NASDAQ::MSFT
+XETRA::MSF,MSF,XETRA,Stock,US5949181045,US5949181045,extended,secondary_cross_listing,NASDAQ::MSFT
+OTC::VROYF,VROYF,OTC,Stock,CA92859L2012,CA92859L2012,extended,otc_listing,TSXV::VROY
+```
+
+`core` marks the primary listing used by the canonical export. `extended` keeps OTC and secondary cross-listings available without polluting the core ticker universe. Core rows without a validated ISIN are explicitly tagged as `primary_listing_missing_isin`; filter to `scope_reason=primary_listing` when you need an ISIN-ready core universe. `primary_listing_key` links each extended row back to the chosen primary listing when the shared ISIN makes that possible.
+
 ### tickers.json
 
 ```json
 {
   "_meta": {
-    "version": "3.3.0",
-    "built_at": "2026-04-09T16:42:10Z",
-    "total_tickers": 55616
+    "version": "3.4.0",
+    "built_at": "2026-04-11T12:35:25Z",
+    "total_tickers": 53141
   },
   "tickers": [
     {
@@ -140,7 +156,7 @@ This is the full listing-level export for downstream systems that want every ven
 }
 ```
 
-JSON outputs use an envelope with a `_meta` block and a `tickers` array as of version `3.3.0`.
+JSON outputs use an envelope with a `_meta` block and a `tickers` array as of version `3.4.0`.
 
 ### tickers.db (SQLite)
 
@@ -155,7 +171,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (55,377 rows) + `aliases` (87,689 rows) + `cross_listings` (8,664 rows) with indexes on `alias`, `exchange`, `country`, `sector`, and `isin`.
+Tables: `tickers` (53,141 rows), `listings` (60,241 rows), `aliases` (88,692 rows), `cross_listings` (12,442 rows), and `instrument_scopes` (60,241 rows), with indexes on alias, exchange, country, sector, ISIN, listing scope, and instrument group key.
 
 ## Schema
 
@@ -184,22 +200,27 @@ Tables: `tickers` (55,377 rows) + `aliases` (87,689 rows) + `cross_listings` (8,
 
 | Exchange | Tickers | Description |
 |---|---|---|
-| OTC | 9,304 | US OTC / Pink Sheets |
-| LSE | 4,530 | London Stock Exchange |
+| OTC | 8,719 | US OTC / Pink Sheets |
 | NASDAQ | 4,545 | NASDAQ |
+| LSE | 3,915 | London Stock Exchange |
+| TSE | 3,207 | Tokyo Stock Exchange |
 | SZSE | 3,083 | Shenzhen Stock Exchange |
-| XETRA | 2,075 | Deutsche Boerse |
 | SSE | 2,789 | Shanghai Stock Exchange |
-| NYSE | 2,055 | New York Stock Exchange |
-| NYSE ARCA | 2,591 | NYSE ARCA (ETFs) |
-| KRX | 1,787 | Korea Exchange |
-| TSX | 1,581 | Toronto Stock Exchange |
-| B3 | 923 | Sao Paulo Exchange |
-| TWSE | 1,240 | Taiwan Stock Exchange |
-| ASX | 1,295 | Australian Securities Exchange |
+| NYSE ARCA | 2,594 | NYSE ARCA (ETFs) |
+| NYSE | 2,048 | New York Stock Exchange |
+| XETRA | 1,851 | Deutsche Boerse |
+| KRX | 1,788 | Korea Exchange |
 | KOSDAQ | 1,583 | Korean OTC |
+| TSX | 1,570 | Toronto Stock Exchange |
+| ASX | 1,295 | Australian Securities Exchange |
+| TWSE | 1,240 | Taiwan Stock Exchange |
+| BATS | 1,214 | Cboe BZX Exchange |
 | TPEX | 1,118 | Taipei Exchange |
-| + 52 more | ... | |
+| TSXV | 1,061 | TSX Venture Exchange |
+| B3 | 928 | Brasil Bolsa Balcao |
+| Bursa | 925 | Bursa Malaysia |
+| STO | 709 | Nasdaq Stockholm |
+| + 47 more | ... | |
 
 ## Data Quality
 
@@ -222,6 +243,7 @@ The repo now includes a second layer of reference tooling beyond the core datase
 - listing-status / rename / delisting history baselines
 - extended identifiers (`FIGI`, `CIK`, `LEI`)
 - exchange/country coverage reports
+- core vs. extended instrument-scope classification
 - chunked stock-universe verification against official exchange directories
 
 Generate the official masterfile reference rows:
@@ -257,7 +279,16 @@ Current live sources:
 - TWSE listed companies open-data JSON
 - TPEX mainboard daily quotes open-data JSON
 - TPEX ETF InfoHub export endpoint
+- Bursa Malaysia equity ISIN PDF
+- BME official listed-values PDF for SIBE, ETFs, and LATIBEX
+- BMV issuer, stock, capital-trust, and ETF search endpoints
+- WSE / NewConnect listed companies and WSE ETF lists
+- TASE securities, ETF, foreign ETF, and participating-unit market data
+- KRX listed company and ETF finder endpoints
+- HOSE/HNX/UPCOM securities directories
 - SEC `company_tickers_exchange.json` when the environment is allowed to fetch it, or a cached official snapshot when present locally
+
+Bursa Malaysia protects the equity ISIN PDF behind a browser session. To refresh that source from scratch, install the Python dependencies and run `python3 -m playwright install chromium` once before `python3 scripts/fetch_exchange_masterfiles.py --source bursa_equity_isin`.
 
 `data/reports/coverage_report.json` exposes both `exchange_coverage` and a machine-friendly `by_exchange` alias, plus separate stock and ETF verification summaries. That makes backlog prioritization easier without scraping the markdown report.
 
@@ -315,8 +346,9 @@ This writes:
 The coverage report now includes:
 
 - exchange venue-status classification (`official_full`, `official_partial`, `manual_only`, `missing`)
-- artifact freshness timestamps for the dataset, masterfiles, identifiers, listing history, and latest stock-verification run
+- artifact freshness timestamps for the dataset, masterfiles, identifiers, listing history, and latest stock/ETF verification runs
 - source coverage rows with fetch mode and row counts
+- global instrument-scope counts for `core`, OTC `extended`, and secondary cross-listings
 - per-exchange stock-verification rates for officially covered venues
 - unresolved gap summaries per exchange
 - B3-specific missing-symbol breakdowns

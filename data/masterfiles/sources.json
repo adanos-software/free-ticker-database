@@ -279,6 +279,33 @@
     "official": true
   },
   {
+    "key": "bme_listed_values",
+    "provider": "BME",
+    "description": "Official BME listed values PDF for SIBE, ETFs, and LATIBEX",
+    "source_url": "https://www.bolsasymercados.es/dam/descargas/exchange/renta-variable/listado-valores-renta-variable-es-en.pdf",
+    "format": "bme_listed_values_pdf",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "bme_growth_prices",
+    "provider": "BME Growth",
+    "description": "Official BME Growth market price directory with instrument detail pages",
+    "source_url": "https://www.bmegrowth.es/ing/Precios.aspx",
+    "format": "bme_growth_prices_html",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "bursa_equity_isin",
+    "provider": "Bursa Malaysia",
+    "description": "Official Bursa Malaysia equity ISIN PDF",
+    "source_url": "https://www.bursamalaysia.com/trade/trading_resources/equities/isin",
+    "format": "bursa_equity_isin_pdf",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "bmv_stock_search",
     "provider": "BMV",
     "description": "Official BMV stock search supplement for exact ticker gaps",
@@ -374,6 +401,15 @@
     "description": "Official Nordic Growth Market companies page",
     "source_url": "https://www.ngm.se/en/our-companies/",
     "format": "ngm_companies_page_html",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "ngm_market_data_equities",
+    "provider": "NGM",
+    "description": "Official Nordic Growth Market market-data supplement for active equities",
+    "source_url": "https://mdapi.ngm.se/api/beta/web/",
+    "format": "ngm_market_data_equities_json",
     "reference_scope": "listed_companies_subset",
     "official": true
   },
@@ -594,6 +630,33 @@
     "official": true
   },
   {
+    "key": "wse_listed_companies",
+    "provider": "GPW",
+    "description": "Official GPW listed companies directory",
+    "source_url": "https://www.gpw.pl/spolki",
+    "format": "wse_listed_companies_html",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "newconnect_listed_companies",
+    "provider": "NewConnect",
+    "description": "Official NewConnect listed companies directory",
+    "source_url": "https://newconnect.pl/spolki",
+    "format": "newconnect_listed_companies_html",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "wse_etf_list",
+    "provider": "GPW",
+    "description": "Official GPW ETF/ETC/ETN directory",
+    "source_url": "https://www.gpw.pl/etfy",
+    "format": "wse_etf_list_html",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "tase_securities_marketdata",
     "provider": "TASE",
     "description": "Official TASE market securities directory (shares subset)",
@@ -630,12 +693,66 @@
     "official": true
   },
   {
+    "key": "hose_listed_stocks",
+    "provider": "HOSE",
+    "description": "Official Ho Chi Minh Stock Exchange listed stocks directory",
+    "source_url": "https://api.hsx.vn/l/api/v1/2/securities/stock",
+    "format": "hose_listed_stocks_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "hose_etf_list",
+    "provider": "HOSE",
+    "description": "Official Ho Chi Minh Stock Exchange ETF directory",
+    "source_url": "https://api.hsx.vn/l/api/v1/2/securities/etf",
+    "format": "hose_etf_list_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "hose_fund_certificate_list",
+    "provider": "HOSE",
+    "description": "Official Ho Chi Minh Stock Exchange fund certificate directory",
+    "source_url": "https://api.hsx.vn/l/api/v1/2/securities/fundcertificate",
+    "format": "hose_fund_certificate_list_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "hnx_listed_securities",
+    "provider": "HNX",
+    "description": "Official Hanoi Stock Exchange listed securities directory",
+    "source_url": "https://www.hnx.vn/cophieu-etfs/chung-khoan-ny.html",
+    "format": "hnx_listed_securities_json",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "upcom_registered_securities",
+    "provider": "HNX",
+    "description": "Official Hanoi Stock Exchange UPCoM registered securities directory",
+    "source_url": "https://www.hnx.vn/cophieu-etfs/chung-khoan-uc.html",
+    "format": "upcom_registered_securities_json",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
     "key": "sec_company_tickers_exchange",
     "provider": "SEC",
     "description": "Official SEC company ticker to exchange mapping",
     "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
     "format": "sec_company_tickers_exchange_json",
     "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "otc_markets_security_profile",
+    "provider": "OTC Markets",
+    "description": "Official OTC Markets security profile supplement for OTC ISIN and status gaps",
+    "source_url": "https://www.otcmarkets.com/stock/{symbol}/security",
+    "format": "otc_markets_security_profile_json",
+    "reference_scope": "security_lookup_subset",
     "official": true
   }
 ]

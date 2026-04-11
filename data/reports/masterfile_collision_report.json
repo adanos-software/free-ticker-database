@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 28293,
-    "matched": 18658,
-    "collisions": 5649,
-    "missing": 3986
+    "official_symbols": 29689,
+    "matched": 18503,
+    "collisions": 6219,
+    "missing": 4967
   },
   "exchanges": [
     {
@@ -149,60 +149,60 @@
     },
     {
       "exchange": "B3",
-      "official_symbols": 878,
-      "matched": 847,
+      "official_symbols": 1218,
+      "matched": 627,
       "collisions": 0,
-      "missing": 31,
+      "missing": 591,
       "collision_examples": [],
       "missing_examples": [
         {
-          "ticker": "AGBK11",
-          "name": "BANCO AGIBANK S.A.",
+          "ticker": "AADA39",
+          "name": "21SHARES CARDANO ETP",
           "exchange": "B3"
         },
         {
-          "ticker": "ALUP11",
-          "name": "ALUPAR INVESTIMENTO S/A",
+          "ticker": "AAGR11",
+          "name": "ASSET BANK AGRONEG\u00d3CIOS FIAGRO -DC",
           "exchange": "B3"
         },
         {
-          "ticker": "AMZG11",
-          "name": "AMAZONAS DISTRIBUIDORA DE ENERGIA S.A.",
+          "ticker": "AAZQ11",
+          "name": "AZ QUEST SOLE FDO DE INV - FIAGRO - IMOB RESP LIM",
           "exchange": "B3"
         },
         {
-          "ticker": "B1003",
-          "name": "CIABRASF CIA BRASILEIRA DE SERVI\u00c7OS FINANCEIROS SA",
+          "ticker": "ABCP11",
+          "name": "GRAND PLAZA SHOPPING FDO INV IMOB - RESP LIM",
           "exchange": "B3"
         },
         {
-          "ticker": "BBAS11",
-          "name": "BCO BRASIL S.A.",
+          "ticker": "ABGD39",
+          "name": "ABRDN PHYSICAL GOLD SHARES ETF",
           "exchange": "B3"
         },
         {
-          "ticker": "BPAC11",
-          "name": "BCO BTG PACTUAL S.A.",
+          "ticker": "ACWX39",
+          "name": "ISHARES MSCI ACWI EX U.S. ETF",
           "exchange": "B3"
         },
         {
-          "ticker": "BRBI11",
-          "name": "BRBI BR PARTNERS S.A.",
+          "ticker": "ADSH11",
+          "name": "AD SHOPPING FUNDO DE INVESTIMENTO IMOB RESP LIM",
           "exchange": "B3"
         },
         {
-          "ticker": "BVEN11",
-          "name": "BOA VISTA ENERGIA S.A.",
+          "ticker": "AERO11",
+          "name": "HCO OPPS AERO I FDO DE INV IMOB RESP LIM",
           "exchange": "B3"
         },
         {
-          "ticker": "CEAC11",
-          "name": "ENERGISA ACRE - DISTRIBUIDORA DE ENERGIA S.A",
+          "ticker": "AETH39",
+          "name": "21SHARES ETHEREUM STAKING ETP",
           "exchange": "B3"
         },
         {
-          "ticker": "CEAL11",
-          "name": "EQUATORIAL ALAGOAS - DISTRIBUIDORA DE ENERGIA S.A.",
+          "ticker": "AFHF11",
+          "name": "AF INVEST REAL ESTATE MULTIFUN DE INV IMO LTDA",
           "exchange": "B3"
         }
       ]
@@ -210,8 +210,8 @@
     {
       "exchange": "BATS",
       "official_symbols": 1243,
-      "matched": 1191,
-      "collisions": 16,
+      "matched": 1200,
+      "collisions": 7,
       "missing": 36,
       "collision_examples": [
         {
@@ -223,35 +223,11 @@
           ]
         },
         {
-          "ticker": "AVRY",
-          "name": "Avory Foundational ETF",
-          "target_exchange": "BATS",
-          "existing_exchanges": [
-            "US"
-          ]
-        },
-        {
           "ticker": "BEZ",
           "name": "Tradr 2X Short BE Daily ETF",
           "target_exchange": "BATS",
           "existing_exchanges": [
             "ASX"
-          ]
-        },
-        {
-          "ticker": "EOSU",
-          "name": "T-REX 2X Long EOSE Daily Target ETF",
-          "target_exchange": "BATS",
-          "existing_exchanges": [
-            "US"
-          ]
-        },
-        {
-          "ticker": "FFF",
-          "name": "Founders 100 ETF",
-          "target_exchange": "BATS",
-          "existing_exchanges": [
-            "US"
           ]
         },
         {
@@ -271,14 +247,6 @@
           ]
         },
         {
-          "ticker": "KAMO",
-          "name": "Kensington Credit Opportunities ETF",
-          "target_exchange": "BATS",
-          "existing_exchanges": [
-            "US"
-          ]
-        },
-        {
           "ticker": "PAYM",
           "name": "TrueShares S&P Autocallable Defensive Income ETF",
           "target_exchange": "BATS",
@@ -287,11 +255,19 @@
           ]
         },
         {
-          "ticker": "PIEL",
-          "name": "Pacer International Export Leaders ETF",
+          "ticker": "STLR",
+          "name": "Stellar ETF",
           "target_exchange": "BATS",
           "existing_exchanges": [
-            "US"
+            "TSX"
+          ]
+        },
+        {
+          "ticker": "WQTM",
+          "name": "WisdomTree Quantum Computing Fund",
+          "target_exchange": "BATS",
+          "existing_exchanges": [
+            "LSE"
           ]
         }
       ],
@@ -490,12 +466,161 @@
       ]
     },
     {
-      "exchange": "NASDAQ",
-      "official_symbols": 5446,
-      "matched": 4558,
-      "collisions": 57,
-      "missing": 831,
+      "exchange": "HNX",
+      "official_symbols": 302,
+      "matched": 105,
+      "collisions": 158,
+      "missing": 39,
       "collision_examples": [
+        {
+          "ticker": "AAV",
+          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n AAV Group",
+          "target_exchange": "HNX",
+          "existing_exchanges": [
+            "TSX"
+          ]
+        },
+        {
+          "ticker": "ADC",
+          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n M\u0129 thu\u1eadt v\u00e0 Truy\u1ec1n th\u00f4ng",
+          "target_exchange": "HNX",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
+          "ticker": "ALT",
+          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n V\u0103n h\u00f3a T\u00e2n B\u00ecnh",
+          "target_exchange": "HNX",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "AMC",
+          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n Kho\u00e1ng s\u1ea3n \u00c1 Ch\u00e2u",
+          "target_exchange": "HNX",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
+          "ticker": "AME",
+          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n Alphanam E&C",
+          "target_exchange": "HNX",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
+          "ticker": "API",
+          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n \u0110\u1ea7u t\u01b0 Ch\u00e2u \u00e1 - Th\u00e1i B\u00ecnh D\u01b0\u01a1ng",
+          "target_exchange": "HNX",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "APS",
+          "name": "C\u00f4ng ty C\u1ed5 ph\u1ea7n Ch\u1ee9ng kho\u00e1n Ch\u00e2u \u00c1 - Th\u00e1i B\u00ecnh D\u01b0\u01a1ng",
+          "target_exchange": "HNX",
+          "existing_exchanges": [
+            "WSE"
+          ]
+        },
+        {
+          "ticker": "ATS",
+          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n T\u1eadp \u0111o\u00e0n \u0111\u1ea7u t\u01b0 ATS",
+          "target_exchange": "HNX",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
+          "ticker": "BAB",
+          "name": "Ng\u00e2n h\u00e0ng Th\u01b0\u01a1ng m\u1ea1i c\u1ed5 ph\u1ea7n B\u1eafc \u00c1",
+          "target_exchange": "HNX",
+          "existing_exchanges": [
+            "NYSE ARCA"
+          ]
+        },
+        {
+          "ticker": "BAX",
+          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n Th\u1ed1ng Nh\u1ea5t",
+          "target_exchange": "HNX",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        }
+      ],
+      "missing_examples": [
+        {
+          "ticker": "AMV",
+          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n SXKD D\u01b0\u1ee3c v\u00e0 trang thi\u1ebft b\u1ecb y t\u1ebf Vi\u1ec7t M\u1ef9",
+          "exchange": "HNX"
+        },
+        {
+          "ticker": "ARM",
+          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n Xu\u1ea5t nh\u1eadp kh\u1ea9u H\u00e0ng kh\u00f4ng",
+          "exchange": "HNX"
+        },
+        {
+          "ticker": "BBS",
+          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n Vicem bao b\u00ec B\u00fat S\u01a1n",
+          "exchange": "HNX"
+        },
+        {
+          "ticker": "BED",
+          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n S\u00e1ch v\u00e0 Thi\u1ebft b\u1ecb tr\u01b0\u1eddng h\u1ecdc \u0110\u00e0 N\u1eb5ng",
+          "exchange": "HNX"
+        },
+        {
+          "ticker": "BXH",
+          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n Vicem Bao b\u00ec H\u1ea3i Ph\u00f2ng",
+          "exchange": "HNX"
+        },
+        {
+          "ticker": "CJC",
+          "name": "CTCP C\u01a1 \u0111i\u1ec7n Mi\u1ec1n Trung",
+          "exchange": "HNX"
+        },
+        {
+          "ticker": "CKV",
+          "name": "CTCP COKYVINA",
+          "exchange": "HNX"
+        },
+        {
+          "ticker": "CX8",
+          "name": "CTCP \u0110\u1ea7u t\u01b0 v\u00e0 X\u00e2y l\u1eafp Constrexim s\u1ed1 8",
+          "exchange": "HNX"
+        },
+        {
+          "ticker": "DNC",
+          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n \u0110i\u1ec7n n\u01b0\u1edbc l\u1eafp m\u00e1y H\u1ea3i Ph\u00f2ng",
+          "exchange": "HNX"
+        },
+        {
+          "ticker": "ECI",
+          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n T\u1eadp \u0111o\u00e0n ECI",
+          "exchange": "HNX"
+        }
+      ]
+    },
+    {
+      "exchange": "NASDAQ",
+      "official_symbols": 5449,
+      "matched": 4568,
+      "collisions": 48,
+      "missing": 833,
+      "collision_examples": [
+        {
+          "ticker": "ACAA",
+          "name": "Averin Capital Acquisition Corp. - Class A Ordinary Shares",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "TSX"
+          ]
+        },
         {
           "ticker": "AIMS",
           "name": "Acuitas Small Cap Active ETF",
@@ -550,14 +675,6 @@
           "target_exchange": "NASDAQ",
           "existing_exchanges": [
             "ASX"
-          ]
-        },
-        {
-          "ticker": "AVOS",
-          "name": "Avos Global Equities ETF",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "US"
           ]
         },
         {
@@ -774,8 +891,8 @@
     {
       "exchange": "NYSE",
       "official_symbols": 3836,
-      "matched": 2059,
-      "collisions": 514,
+      "matched": 2060,
+      "collisions": 513,
       "missing": 1263,
       "collision_examples": [
         {
@@ -915,40 +1032,16 @@
     {
       "exchange": "NYSE ARCA",
       "official_symbols": 2615,
-      "matched": 2559,
-      "collisions": 37,
+      "matched": 2582,
+      "collisions": 14,
       "missing": 19,
       "collision_examples": [
-        {
-          "ticker": "AINT",
-          "name": "FINQ DOLLAR NEUTRAL U.S. Large Cap AI-Managed Equity ETF",
-          "target_exchange": "NYSE ARCA",
-          "existing_exchanges": [
-            "US"
-          ]
-        },
-        {
-          "ticker": "AIUP",
-          "name": "FINQ FIRST U.S. Large Cap AI-Managed Equity ETF",
-          "target_exchange": "NYSE ARCA",
-          "existing_exchanges": [
-            "US"
-          ]
-        },
         {
           "ticker": "BAR",
           "name": "GraniteShares Gold Trust Shares of Beneficial Interest",
           "target_exchange": "NYSE ARCA",
           "existing_exchanges": [
             "NYSE"
-          ]
-        },
-        {
-          "ticker": "BCGS",
-          "name": "Bancreek Global Select ETF",
-          "target_exchange": "NYSE ARCA",
-          "existing_exchanges": [
-            "US"
           ]
         },
         {
@@ -976,14 +1069,6 @@
           ]
         },
         {
-          "ticker": "COPZ",
-          "name": "Defiance Daily Target 2X Long Copper Miners ETF",
-          "target_exchange": "NYSE ARCA",
-          "existing_exchanges": [
-            "US"
-          ]
-        },
-        {
           "ticker": "CTWO",
           "name": "Common units",
           "target_exchange": "NYSE ARCA",
@@ -992,11 +1077,43 @@
           ]
         },
         {
-          "ticker": "DDDD",
-          "name": "YieldMax U.S. Stocks Target Double Distribution ETF",
+          "ticker": "ETHE",
+          "name": "Grayscale Ethereum Staking ETF Shares",
           "target_exchange": "NYSE ARCA",
           "existing_exchanges": [
-            "US"
+            "NYSE"
+          ]
+        },
+        {
+          "ticker": "FBT",
+          "name": "First Trust Amex Biotech Index Fund",
+          "target_exchange": "NYSE ARCA",
+          "existing_exchanges": [
+            "TSX"
+          ]
+        },
+        {
+          "ticker": "FDN",
+          "name": "First Trust DJ Internet Index Fund",
+          "target_exchange": "NYSE ARCA",
+          "existing_exchanges": [
+            "TSX"
+          ]
+        },
+        {
+          "ticker": "GGM",
+          "name": "GGM Macro Alignment ETF",
+          "target_exchange": "NYSE ARCA",
+          "existing_exchanges": [
+            "TSXV"
+          ]
+        },
+        {
+          "ticker": "KWIN",
+          "name": "KraneShares Wahed Alternative Income Index ETF",
+          "target_exchange": "NYSE ARCA",
+          "existing_exchanges": [
+            "EGX"
           ]
         }
       ],
@@ -1056,8 +1173,8 @@
     {
       "exchange": "NYSE MKT",
       "official_symbols": 313,
-      "matched": 233,
-      "collisions": 20,
+      "matched": 234,
+      "collisions": 19,
       "missing": 60,
       "collision_examples": [
         {
@@ -1196,8 +1313,8 @@
     },
     {
       "exchange": "OSL",
-      "official_symbols": 299,
-      "matched": 234,
+      "official_symbols": 298,
+      "matched": 233,
       "collisions": 64,
       "missing": 1,
       "collision_examples": [
@@ -1294,8 +1411,8 @@
       "exchange": "PSE",
       "official_symbols": 381,
       "matched": 90,
-      "collisions": 186,
-      "missing": 105,
+      "collisions": 185,
+      "missing": 106,
       "collision_examples": [
         {
           "ticker": "AAA",
@@ -1435,8 +1552,8 @@
       "exchange": "TSE",
       "official_symbols": 4444,
       "matched": 3214,
-      "collisions": 1200,
-      "missing": 30,
+      "collisions": 1199,
+      "missing": 31,
       "collision_examples": [
         {
           "ticker": "1301",
@@ -1574,10 +1691,10 @@
     },
     {
       "exchange": "TSX",
-      "official_symbols": 788,
-      "matched": 326,
-      "collisions": 461,
-      "missing": 1,
+      "official_symbols": 785,
+      "matched": 323,
+      "collisions": 460,
+      "missing": 2,
       "collision_examples": [
         {
           "ticker": "AAB",
@@ -1665,13 +1782,18 @@
           "ticker": "BPYP",
           "name": "Brookfield Property Preferred L.P.",
           "exchange": "TSX"
+        },
+        {
+          "ticker": "SGR",
+          "name": "Slate Grocery REIT",
+          "exchange": "TSX"
         }
       ]
     },
     {
       "exchange": "TSXV",
-      "official_symbols": 1600,
-      "matched": 1043,
+      "official_symbols": 1518,
+      "matched": 961,
       "collisions": 557,
       "missing": 0,
       "collision_examples": [
@@ -1896,6 +2018,147 @@
           "ticker": "3661",
           "name": "\u4e16\u82af\u96fb\u5b50\u80a1\u4efd\u6709\u9650\u516c\u53f8",
           "exchange": "TWSE"
+        }
+      ]
+    },
+    {
+      "exchange": "UPCOM",
+      "official_symbols": 837,
+      "matched": 2,
+      "collisions": 458,
+      "missing": 377,
+      "collision_examples": [
+        {
+          "ticker": "AAS",
+          "name": "CTCP Ch\u1ee9ng kho\u00e1n SmartInvest",
+          "target_exchange": "UPCOM",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
+        {
+          "ticker": "ABB",
+          "name": "Ng\u00e2n h\u00e0ng TMCP An B\u00ecnh",
+          "target_exchange": "UPCOM",
+          "existing_exchanges": [
+            "STO"
+          ]
+        },
+        {
+          "ticker": "ABC",
+          "name": "CTCP Truy\u1ec1n th\u00f4ng VMG",
+          "target_exchange": "UPCOM",
+          "existing_exchanges": [
+            "SSE_CL"
+          ]
+        },
+        {
+          "ticker": "ABI",
+          "name": "CTCP B\u1ea3o hi\u1ec3m Ng\u00e2n h\u00e0ng N\u00f4ng Nghi\u1ec7p",
+          "target_exchange": "UPCOM",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "ACE",
+          "name": "CTCP B\u00ea t\u00f4ng Ly t\u00e2m An Giang",
+          "target_exchange": "UPCOM",
+          "existing_exchanges": [
+            "STO"
+          ]
+        },
+        {
+          "ticker": "ACM",
+          "name": "CTCP T\u1eadp \u0111o\u00e0n Kho\u00e1ng s\u1ea3n \u00c1 C\u01b0\u1eddng",
+          "target_exchange": "UPCOM",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
+          "ticker": "ACS",
+          "name": "CTCP X\u00e2y l\u1eafp Th\u01b0\u01a1ng m\u1ea1i 2",
+          "target_exchange": "UPCOM",
+          "existing_exchanges": [
+            "BME"
+          ]
+        },
+        {
+          "ticker": "AG1",
+          "name": "CTCP 28.1",
+          "target_exchange": "UPCOM",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
+        {
+          "ticker": "AGF",
+          "name": "CTCP Xu\u1ea5t nh\u1eadp kh\u1ea9u Th\u1ee7y s\u1ea3n An Giang",
+          "target_exchange": "UPCOM",
+          "existing_exchanges": [
+            "TSX"
+          ]
+        },
+        {
+          "ticker": "AGM",
+          "name": "CTCP Xu\u1ea5t nh\u1eadp kh\u1ea9u An Giang",
+          "target_exchange": "UPCOM",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        }
+      ],
+      "missing_examples": [
+        {
+          "ticker": "A32",
+          "name": "CTCP 32",
+          "exchange": "UPCOM"
+        },
+        {
+          "ticker": "AAH",
+          "name": "C\u00f4ng ty C\u1ed5 ph\u1ea7n H\u1ee3p Nh\u1ea5t",
+          "exchange": "UPCOM"
+        },
+        {
+          "ticker": "ABW",
+          "name": "CTCP Ch\u1ee9ng kho\u00e1n An B\u00ecnh",
+          "exchange": "UPCOM"
+        },
+        {
+          "ticker": "ACV",
+          "name": "T\u1ed5ng c\u00f4ng ty C\u1ea3ng h\u00e0ng kh\u00f4ng Vi\u1ec7t Nam - CTCP",
+          "exchange": "UPCOM"
+        },
+        {
+          "ticker": "AVC",
+          "name": "CTCP Th\u1ee7y \u0111i\u1ec7n A V\u01b0\u01a1ng",
+          "exchange": "UPCOM"
+        },
+        {
+          "ticker": "AVF",
+          "name": "CTCP Vi\u1ec7t An",
+          "exchange": "UPCOM"
+        },
+        {
+          "ticker": "BAL",
+          "name": "CTCP Bao b\u00ec Bia - R\u01b0\u1ee3u - N\u01b0\u1edbc gi\u1ea3i kh\u00e1t",
+          "exchange": "UPCOM"
+        },
+        {
+          "ticker": "BBM",
+          "name": "CTCP Bia H\u00e0 N\u1ed9i - Nam \u0110\u1ecbnh",
+          "exchange": "UPCOM"
+        },
+        {
+          "ticker": "BCR",
+          "name": "CTCP BCG Land",
+          "exchange": "UPCOM"
+        },
+        {
+          "ticker": "BDG",
+          "name": "C\u00f4ng ty C\u1ed5 ph\u1ea7n May m\u1eb7c B\u00ecnh D\u01b0\u01a1ng",
+          "exchange": "UPCOM"
         }
       ]
     }

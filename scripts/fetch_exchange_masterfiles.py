@@ -6,6 +6,7 @@ import io
 import json
 import os
 import re
+import time
 import zipfile
 from base64 import b64encode
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -15,14 +16,16 @@ from html import unescape
 from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any, Iterable
+from urllib.parse import urljoin
 
 import pandas as pd
 import requests
+import urllib3
 
 try:
-    from scripts.rebuild_dataset import alias_matches_company, normalize_tokens
+    from scripts.rebuild_dataset import alias_matches_company, is_valid_isin, normalize_tokens
 except ModuleNotFoundError:  # pragma: no cover - script execution path
-    from rebuild_dataset import alias_matches_company, normalize_tokens
+    from rebuild_dataset import alias_matches_company, is_valid_isin, normalize_tokens
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -50,6 +53,8 @@ STOCK_VERIFICATION_DIR = DATA_DIR / "stock_verification"
 ETF_VERIFICATION_DIR = DATA_DIR / "etf_verification"
 SEC_COMPANY_TICKERS_CACHE = MASTERFILE_CACHE_DIR / "sec_company_tickers_exchange.json"
 LEGACY_SEC_COMPANY_TICKERS_CACHE = MASTERFILES_DIR / "sec_company_tickers_exchange.json"
+OTC_MARKETS_SECURITY_PROFILE_CACHE = MASTERFILE_CACHE_DIR / "otc_markets_security_profile.json"
+LEGACY_OTC_MARKETS_SECURITY_PROFILE_CACHE = MASTERFILES_DIR / "otc_markets_security_profile.json"
 LSE_COMPANY_REPORTS_CACHE = MASTERFILE_CACHE_DIR / "lse_company_reports.json"
 LEGACY_LSE_COMPANY_REPORTS_CACHE = MASTERFILES_DIR / "lse_company_reports.json"
 LSE_INSTRUMENT_DIRECTORY_CACHE = MASTERFILE_CACHE_DIR / "lse_instrument_directory.json"
@@ -94,6 +99,8 @@ SPOTLIGHT_COMPANIES_DIRECTORY_CACHE = MASTERFILE_CACHE_DIR / "spotlight_companie
 LEGACY_SPOTLIGHT_COMPANIES_DIRECTORY_CACHE = MASTERFILES_DIR / "spotlight_companies_directory.json"
 NGM_COMPANIES_PAGE_CACHE = MASTERFILE_CACHE_DIR / "ngm_companies_page.json"
 LEGACY_NGM_COMPANIES_PAGE_CACHE = MASTERFILES_DIR / "ngm_companies_page.json"
+NGM_MARKET_DATA_EQUITIES_CACHE = MASTERFILE_CACHE_DIR / "ngm_market_data_equities.json"
+LEGACY_NGM_MARKET_DATA_EQUITIES_CACHE = MASTERFILES_DIR / "ngm_market_data_equities.json"
 NASDAQ_NORDIC_HELSINKI_ETFS_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_helsinki_etfs.json"
 LEGACY_NASDAQ_NORDIC_HELSINKI_ETFS_CACHE = MASTERFILES_DIR / "nasdaq_nordic_helsinki_etfs.json"
 NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_copenhagen_shares.json"
@@ -124,10 +131,26 @@ BME_LISTED_COMPANIES_CACHE = MASTERFILE_CACHE_DIR / "bme_listed_companies.json"
 LEGACY_BME_LISTED_COMPANIES_CACHE = MASTERFILES_DIR / "bme_listed_companies.json"
 BME_ETF_LIST_CACHE = MASTERFILE_CACHE_DIR / "bme_etf_list.json"
 LEGACY_BME_ETF_LIST_CACHE = MASTERFILES_DIR / "bme_etf_list.json"
+BME_LISTED_VALUES_CACHE = MASTERFILE_CACHE_DIR / "bme_listed_values.json"
+LEGACY_BME_LISTED_VALUES_CACHE = MASTERFILES_DIR / "bme_listed_values.json"
+BME_LISTED_VALUES_PDF_CACHE = MASTERFILE_CACHE_DIR / "bme_listed_values.pdf"
+LEGACY_BME_LISTED_VALUES_PDF_CACHE = MASTERFILES_DIR / "bme_listed_values.pdf"
+BME_GROWTH_PRICES_CACHE = MASTERFILE_CACHE_DIR / "bme_growth_prices.json"
+LEGACY_BME_GROWTH_PRICES_CACHE = MASTERFILES_DIR / "bme_growth_prices.json"
+BURSA_EQUITY_ISIN_CACHE = MASTERFILE_CACHE_DIR / "bursa_equity_isin.json"
+LEGACY_BURSA_EQUITY_ISIN_CACHE = MASTERFILES_DIR / "bursa_equity_isin.json"
+BURSA_EQUITY_ISIN_PDF_CACHE = MASTERFILE_CACHE_DIR / "bursa_equity_isin.pdf"
+LEGACY_BURSA_EQUITY_ISIN_PDF_CACHE = MASTERFILES_DIR / "bursa_equity_isin.pdf"
 PSE_LISTED_COMPANY_DIRECTORY_CACHE = MASTERFILE_CACHE_DIR / "pse_listed_company_directory.json"
 LEGACY_PSE_LISTED_COMPANY_DIRECTORY_CACHE = MASTERFILES_DIR / "pse_listed_company_directory.json"
 IDX_LISTED_COMPANIES_CACHE = MASTERFILE_CACHE_DIR / "idx_listed_companies.json"
 LEGACY_IDX_LISTED_COMPANIES_CACHE = MASTERFILES_DIR / "idx_listed_companies.json"
+WSE_LISTED_COMPANIES_CACHE = MASTERFILE_CACHE_DIR / "wse_listed_companies.json"
+LEGACY_WSE_LISTED_COMPANIES_CACHE = MASTERFILES_DIR / "wse_listed_companies.json"
+WSE_ETF_LIST_CACHE = MASTERFILE_CACHE_DIR / "wse_etf_list.json"
+LEGACY_WSE_ETF_LIST_CACHE = MASTERFILES_DIR / "wse_etf_list.json"
+NEWCONNECT_LISTED_COMPANIES_CACHE = MASTERFILE_CACHE_DIR / "newconnect_listed_companies.json"
+LEGACY_NEWCONNECT_LISTED_COMPANIES_CACHE = MASTERFILES_DIR / "newconnect_listed_companies.json"
 TASE_SECURITIES_MARKETDATA_CACHE = MASTERFILE_CACHE_DIR / "tase_securities_marketdata.json"
 LEGACY_TASE_SECURITIES_MARKETDATA_CACHE = MASTERFILES_DIR / "tase_securities_marketdata.json"
 TASE_ETF_MARKETDATA_CACHE = MASTERFILE_CACHE_DIR / "tase_etf_marketdata.json"
@@ -136,8 +159,20 @@ TASE_FOREIGN_ETF_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "tase_foreign_etf_search.
 LEGACY_TASE_FOREIGN_ETF_SEARCH_CACHE = MASTERFILES_DIR / "tase_foreign_etf_search.json"
 TASE_PARTICIPATING_UNIT_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "tase_participating_unit_search.json"
 LEGACY_TASE_PARTICIPATING_UNIT_SEARCH_CACHE = MASTERFILES_DIR / "tase_participating_unit_search.json"
+HOSE_LISTED_STOCKS_CACHE = MASTERFILE_CACHE_DIR / "hose_listed_stocks.json"
+LEGACY_HOSE_LISTED_STOCKS_CACHE = MASTERFILES_DIR / "hose_listed_stocks.json"
+HOSE_ETF_LIST_CACHE = MASTERFILE_CACHE_DIR / "hose_etf_list.json"
+LEGACY_HOSE_ETF_LIST_CACHE = MASTERFILES_DIR / "hose_etf_list.json"
+HOSE_FUND_CERTIFICATE_LIST_CACHE = MASTERFILE_CACHE_DIR / "hose_fund_certificate_list.json"
+LEGACY_HOSE_FUND_CERTIFICATE_LIST_CACHE = MASTERFILES_DIR / "hose_fund_certificate_list.json"
+HNX_LISTED_SECURITIES_CACHE = MASTERFILE_CACHE_DIR / "hnx_listed_securities.json"
+LEGACY_HNX_LISTED_SECURITIES_CACHE = MASTERFILES_DIR / "hnx_listed_securities.json"
+UPCOM_REGISTERED_SECURITIES_CACHE = MASTERFILE_CACHE_DIR / "upcom_registered_securities.json"
+LEGACY_UPCOM_REGISTERED_SECURITIES_CACHE = MASTERFILES_DIR / "upcom_registered_securities.json"
 
 SEC_COMPANY_TICKERS_URL = "https://www.sec.gov/files/company_tickers_exchange.json"
+OTC_MARKETS_SECURITY_PROFILE_API_URL = "https://backend.otcmarkets.com/otcapi/company/profile/full/{symbol}"
+OTC_MARKETS_SECURITY_PROFILE_PAGE_URL = "https://www.otcmarkets.com/stock/{symbol}/security"
 NASDAQ_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt"
 NASDAQ_OTHER_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt"
 LSE_COMPANY_REPORTS_URL = (
@@ -237,6 +272,25 @@ BME_LISTED_SOURCE_CONFIG = {
     "bme_listed_companies": {"exchange": "BME", "trading_system": "SIBE", "asset_type": "Stock"},
     "bme_etf_list": {"exchange": "BME", "trading_system": "ETF", "asset_type": "ETF"},
 }
+HOSE_SECURITIES_SOURCE_CONFIG = {
+    "hose_listed_stocks": {"endpoint_type": "stock", "asset_type": "Stock"},
+    "hose_etf_list": {"endpoint_type": "etf", "asset_type": "ETF"},
+    "hose_fund_certificate_list": {"endpoint_type": "fundcertificate", "asset_type": "Stock"},
+}
+HNX_SECURITIES_SOURCE_CONFIG = {
+    "hnx_listed_securities": {
+        "exchange": "HNX",
+        "page_url": "https://www.hnx.vn/cophieu-etfs/chung-khoan-ny.html",
+        "endpoint_url": "https://www.hnx.vn/ModuleIssuer/List/ListSearch_Datas",
+        "market_code": "",
+    },
+    "upcom_registered_securities": {
+        "exchange": "UPCOM",
+        "page_url": "https://www.hnx.vn/cophieu-etfs/chung-khoan-uc.html",
+        "endpoint_url": "https://www.hnx.vn/ModuleIssuer/UC_Issuer/ListSearch_Datas",
+        "market_code": "UC",
+    },
+}
 TWSE_LISTED_COMPANIES_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
 TWSE_ETF_LIST_URL = "https://www.twse.com.tw/rwd/en/ETF/list"
 SET_LISTED_COMPANIES_URL = "https://www.set.or.th/dat/eod/listedcompany/static/listedCompanies_en_US.xls"
@@ -253,6 +307,12 @@ BME_MARKET_API_ROOT_URL = "https://apiweb.bolsasymercados.es/Market/"
 BME_COMPANIES_SEARCH_PAGE_URL = "https://www.bolsasymercados.es/en/bme-exchange/companies-search.html"
 BME_LISTED_COMPANIES_API_URL = f"{BME_MARKET_API_ROOT_URL}v1/EQ/ListedCompanies"
 BME_SHARE_DETAILS_INFO_API_URL = f"{BME_MARKET_API_ROOT_URL}v1/EQ/ShareDetailsInfo"
+BME_LISTED_VALUES_PDF_URL = (
+    "https://www.bolsasymercados.es/dam/descargas/exchange/renta-variable/"
+    "listado-valores-renta-variable-es-en.pdf"
+)
+BME_GROWTH_PRICES_URL = "https://www.bmegrowth.es/ing/Precios.aspx"
+BURSA_EQUITY_ISIN_PAGE_URL = "https://www.bursamalaysia.com/trade/trading_resources/equities/isin"
 SZSE_STOCK_LIST_URL = "https://www.szse.cn/market/product/stock/list/index.html"
 SZSE_ETF_LIST_URL = "https://www.szse.cn/market/product/list/etfList/index.html"
 SZSE_REPORT_DATA_URL = "https://www.szse.cn/api/report/ShowReport/data"
@@ -271,6 +331,17 @@ TASE_API_ROOT_URL = "https://api.tase.co.il/api/"
 TASE_SECURITIES_MARKETDATA_URL = f"{TASE_API_ROOT_URL}security/securitiesmarketdata"
 TASE_ETF_MARKETDATA_URL = f"{TASE_API_ROOT_URL}marketdata/etfs"
 TASE_SEARCH_ENTITIES_URL = f"{TASE_API_ROOT_URL}content/searchentities?lang=1"
+HOSE_SECURITIES_API_ROOT_URL = "https://api.hsx.vn/l/api/v1/2"
+HOSE_LISTED_STOCKS_URL = f"{HOSE_SECURITIES_API_ROOT_URL}/securities/stock"
+HOSE_ETF_LIST_URL = f"{HOSE_SECURITIES_API_ROOT_URL}/securities/etf"
+HOSE_FUND_CERTIFICATE_LIST_URL = f"{HOSE_SECURITIES_API_ROOT_URL}/securities/fundcertificate"
+HNX_LISTED_SECURITIES_PAGE_URL = HNX_SECURITIES_SOURCE_CONFIG["hnx_listed_securities"]["page_url"]
+HNX_LISTED_SECURITIES_URL = HNX_SECURITIES_SOURCE_CONFIG["hnx_listed_securities"]["endpoint_url"]
+UPCOM_REGISTERED_SECURITIES_PAGE_URL = HNX_SECURITIES_SOURCE_CONFIG["upcom_registered_securities"]["page_url"]
+UPCOM_REGISTERED_SECURITIES_URL = HNX_SECURITIES_SOURCE_CONFIG["upcom_registered_securities"]["endpoint_url"]
+VSDC_BASE_URL = "https://vsd.vn"
+VSDC_TOKEN_SEED_URL = f"{VSDC_BASE_URL}/en/ad/151482"
+VSDC_SEARCH_SUGGEST_URL = f"{VSDC_BASE_URL}/search-suggest"
 TPEX_ETF_FILTER_PAGE_URL = "https://info.tpex.org.tw/ETF/en/filter.html"
 TPEX_ETF_FILTER_API_URL = "https://info.tpex.org.tw/api/etfFilter"
 TPEX_MAINBOARD_BASIC_INFO_URL = "https://mopsfin.twse.com.tw/opendata/t187ap03_O.csv"
@@ -279,6 +350,11 @@ SPOTLIGHT_COMPANIES_PAGE_URL = "https://spotlightstockmarket.com/en/market-overv
 SPOTLIGHT_COMPANY_SEARCH_URL = "https://spotlightstockmarket.com/Umbraco/api/companyapi/CompanySimpleSearch"
 SPOTLIGHT_COMPANIES_DIRECTORY_URL = "https://spotlightstockmarket.com/Umbraco/api/companyapi/GetCompanies"
 NGM_COMPANIES_PAGE_URL = "https://www.ngm.se/en/our-companies/"
+NGM_MARKET_DATA_API_ROOT_URL = "https://mdapi.ngm.se/api/beta/web/"
+NGM_DETAILVIEW_SERVICE_URL = "https://mdweb.ngm.se/MDWebFront/detailview/service"
+NGM_DETAILVIEW_MODULE_BASE_URL = "https://mdweb.ngm.se/MDWebFront/detailview/"
+NGM_DETAILVIEW_PERMUTATION = "E66E1EEBE9B1CEBA056C88011CCBF307"
+NGM_DETAILVIEW_STRONG_NAME = "9CB8691CD75E82471063725CB524FFF9"
 KRX_LISTED_COMPANIES_URL = "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp"
 KRX_DATA_URL = "https://global.krx.co.kr/contents/GLB/99/GLB99000001.jspx"
 KRX_GENERATE_OTP_URL = "https://global.krx.co.kr/contents/COM/GenerateOTP.jspx"
@@ -291,8 +367,18 @@ PSE_LISTED_COMPANY_DIRECTORY_URL = "https://frames.pse.com.ph/listedCompany"
 IDX_STOCK_LIST_PAGE_URL = "https://www.idx.id/en/market-data/stocks-data/stock-list"
 IDX_PRIMARY_API_ROOT_URL = "https://www.idx.id/primary"
 IDX_LISTED_COMPANIES_URL = f"{IDX_PRIMARY_API_ROOT_URL}/StockData/GetSecuritiesStock"
+WSE_COMPANIES_PAGE_URL = "https://www.gpw.pl/spolki"
+WSE_ETF_PAGE_URL = "https://www.gpw.pl/etfy"
+WSE_AJAX_URL = "https://www.gpw.pl/ajaxindex.php"
+NEWCONNECT_COMPANIES_PAGE_URL = "https://newconnect.pl/spolki"
+NEWCONNECT_AJAX_URL = "https://newconnect.pl/ajaxindex.php"
 
 USER_AGENT = "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)"
+BROWSER_USER_AGENT = (
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) "
+    "Chrome/123.0.0.0 Safari/537.36"
+)
 SEC_CONTACT_EMAIL = os.environ.get("SEC_CONTACT_EMAIL", "opensource@adanos.software")
 REQUEST_TIMEOUT = 30.0
 SPOTLIGHT_DETAIL_TIMEOUT = 5.0
@@ -308,6 +394,27 @@ BMV_ETF_DESCRIPTION_MARKERS = (
     "TRACS",
     "CANASTAS DE ACCIONES",
 )
+BURSA_STOCK_ISSUE_DESCRIPTIONS = {
+    "ORDINARY SHARE",
+    "ORDINARY SHARE FOREIGN",
+    "REITS",
+    "CLOSE END FUND",
+}
+BURSA_ETF_ISSUE_DESCRIPTIONS = {"ETF"}
+BURSA_EQUITY_ISIN_PDF_HREF_RE = re.compile(
+    r"href=[\"'](?P<href>[^\"']*isinequity[^\"']*\.pdf)[\"']",
+    re.I,
+)
+BURSA_EQUITY_ISIN_PDF_URL_RE = re.compile(
+    r"https://www\.bursamalaysia\.com/sites/[^\"'<>]+/isinequity[^\"'<>]+\.pdf",
+    re.I,
+)
+BURSA_EQUITY_ISIN_4_DIGIT_RE = re.compile(r"^MY[QL](?P<ticker>\d{4})OO[0-9A-Z]{3}$")
+BURSA_EQUITY_ISIN_5_DIGIT_RE = re.compile(r"^MYL(?P<ticker>\d{5})O[0-9A-Z]{3}$")
+BURSA_REIT_ISIN_RE = re.compile(r"^MYL(?P<ticker>\d{4})TO[0-9A-Z]{3}$")
+BURSA_STAPLED_REIT_ISIN_RE = re.compile(r"^MYL(?P<ticker>\d{4}SS)[0-9A-Z]{3}$")
+BURSA_CLOSED_END_FUND_ISIN_RE = re.compile(r"^MYL(?P<ticker>\d{4})FO[0-9A-Z]{3}$")
+BURSA_ETF_ISIN_RE = re.compile(r"^MYL(?P<ticker>\d{4}E[A-Z])[0-9A-Z]{3}$")
 BMV_ISSUER_DIRECTORY_QUERY_COMBINATIONS = (
     ("CGEN_CAPIT", "CGEN_ELAC"),
     ("CGEN_CAPIT", "CGEN_ELTRA"),
@@ -333,6 +440,48 @@ JSE_INSTRUMENT_META_RE = re.compile(
     r"Instrument code:\s*(?P<code>[A-Z0-9]+)\.\s*"
     r"Instrument type:\s*(?P<instrument_type>.*?)\."
 )
+WSE_FORM_RE = re.compile(r"<form\b[^>]*\bid=['\"](?P<form_id>[^'\"]+)['\"][\s\S]*?</form>", re.I)
+WSE_INPUT_TAG_RE = re.compile(r"<input\b[^>]*>", re.I)
+WSE_ATTR_RE = re.compile(r"\b(?P<name>[A-Za-z_:][-A-Za-z0-9_:.]*)\s*=\s*(['\"])(?P<value>.*?)\2", re.S)
+WSE_CHECKED_RE = re.compile(r"\bchecked(?:\s*=\s*(['\"]).*?\1)?", re.I | re.S)
+WSE_COUNT_ALL_RE = re.compile(r"<span[^>]*\bid=['\"]count-all['\"][^>]*>(?P<count>\d+)</span>", re.I)
+WSE_COMPANY_LINK_RE = re.compile(
+    r'<a\s+href=["\'](?P<href>spolka\?isin=[^"\']+)["\'][^>]*>\s*'
+    r'<strong[^>]*class=["\']name["\'][^>]*>(?P<label>.*?)</strong>',
+    re.I | re.S,
+)
+WSE_ETF_LINK_RE = re.compile(
+    r'<a\s+href=["\'](?P<href>etf\?isin=[^"\']+)["\'][^>]*>\s*<b>(?P<ticker>.*?)</b>\s*</a>',
+    re.I | re.S,
+)
+BME_GROWTH_DETAIL_LINK_RE = re.compile(
+    r'<a\s+href=["\'](?P<href>/ing/Ficha/[^"\']+?_[A-Z]{2}[A-Z0-9]{10}\.aspx)["\'][^>]*>'
+    r"(?P<label>.*?)</a>",
+    re.I | re.S,
+)
+BME_GROWTH_PAGE_RE = re.compile(r"selPag\(['\"](?P<page>\d+)['\"]\)", re.I)
+BME_GROWTH_DETAIL_FIELD_RE = re.compile(
+    r"<h3>\s*(?P<label>Security name|Ticker|ISIN)\s*</h3>\s*<p>\s*(?P<value>.*?)\s*</p>",
+    re.I | re.S,
+)
+BME_GROWTH_H1_RE = re.compile(r"<h1[^>]*>(?P<name>.*?)</h1>", re.I | re.S)
+BME_LISTED_VALUES_ROW_RE = re.compile(
+    r"^(?P<date>\d{8})\s+"
+    r"(?P<segment>[A-Z]{2})\s+"
+    r"(?P<ticker>[A-Z0-9.-]+)\s+"
+    r"(?P<isin>[A-Z]{2}[A-Z0-9]{10})\s+"
+    r"(?P<rest>.+)$"
+)
+BME_LISTED_VALUES_NAME_RE = re.compile(
+    r"^(?P<name>.*?)\s+[-+]?\d[\d.,]*\s+[IVX]+\s+[\d.]+(?:\s+Fixing)?$"
+)
+BME_LISTED_VALUES_SEGMENT_ASSET_TYPES = {
+    "EQ": "Stock",
+    "LT": "Stock",
+    "TF": "ETF",
+}
+BME_GROWTH_RETRY_DELAY_SECONDS = 10.0
+ISIN_TOKEN_RE = re.compile(r"\b[A-Z]{2}[A-Z0-9]{10}\b")
 SET_NUXT_PREFIX = "window.__NUXT__=(function("
 SET_NUXT_FUNCTION_BODY_MARKER = "){"
 SET_NUXT_RETURN_MARKER = ";return "
@@ -358,6 +507,23 @@ SEC_EXCHANGE_MAP = {
     "OTC": "OTC",
     "CboeBZX": "BATS",
 }
+
+OTC_MARKETS_PROFILE_HEADERS = {
+    "accept": "application/json, text/plain, */*",
+    "origin": "https://www.otcmarkets.com",
+    "referer": "https://www.otcmarkets.com/",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-site",
+    "user-agent": (
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+        "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Safari/605.1.15"
+    ),
+}
+OTC_MARKETS_PROFILE_MAX_WORKERS = 24
+OTC_MARKETS_PROFILE_TIMEOUT = 4.0
+OTC_MARKETS_ADR_TYPE_NAMES = {"adr", "adrs"}
+CUSIP_RE = re.compile(r"^[A-Z0-9]{9}$")
 
 
 def sec_reference_scope(exchange: str) -> str:
@@ -450,9 +616,12 @@ DEUTSCHE_BOERSE_SHEETS = ("Prime Standard", "General Standard", "Scale", "Basic 
 B3_ALLOWED_CASH_CATEGORIES = {
     "ETF EQUITIES": "ETF",
     "ETF FOREIGN INDEX": "ETF",
+    "FUNDS": "ETF",
     "SHARES": "Stock",
     "UNIT": "Stock",
 }
+B3_CASH_STOCK_TICKER_RE = re.compile(r"^[A-Z0-9]{4}[3-8]B?$")
+B3_BDR_ETF_MARKERS = (" ETF", "ETP")
 B3_EXCLUDED_ISSUER_MARKERS = (
     "taxa de financiamento",
     "financ/termo",
@@ -461,6 +630,8 @@ B3_ETF_FUND_TYPES = ("ETF", "ETF-RF", "ETF-FII", "ETF-CRIPTO")
 B3_FUNDS_PAGE_SIZE = 120
 TPEX_CANONICAL_TICKER_RE = re.compile(r"(?:\d{4}|00\d{4}[A-Z]?)$")
 TPEX_ETF_TICKER_RE = re.compile(r"(?:\d{4}|00\d{3,4}[A-Z]?)$")
+TAIWAN_ISIN_TICKER_RE = re.compile(r"(?:\d{4}|00\d{3,4}[A-Z]?)$")
+TAIWAN_DOMESTIC_REGISTRATION_MARKERS = {"", "-", "－", "--", "—"}
 LSE_PAGE_INITIALS = tuple("ABCDEFGHIJKLMNOPQRSTUVWXYZ") + ("0",)
 TMX_LISTED_ISSUERS_HREF_RE = re.compile(
     r'href="([^"]+tsx-tsxv-listed-issuers-(\d{4})-(\d{2})-en\.xlsx)"',
@@ -497,6 +668,7 @@ KRX_MARKET_GUBUN_TO_EXCHANGE = {
 KRX_MARKET_ENGNAME_TO_EXCHANGE = {
     "KOSPI": "KRX",
     "KOSDAQ": "KOSDAQ",
+    "KOSDAQ GLOBAL": "KOSDAQ",
     "KONEX": "KRX",
 }
 SSE_JSONP_RE = re.compile(r"^[^(]+\((.*)\)\s*$", re.S)
@@ -797,6 +969,30 @@ OFFICIAL_SOURCES = [
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
+        key="bme_listed_values",
+        provider="BME",
+        description="Official BME listed values PDF for SIBE, ETFs, and LATIBEX",
+        source_url=BME_LISTED_VALUES_PDF_URL,
+        format="bme_listed_values_pdf",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="bme_growth_prices",
+        provider="BME Growth",
+        description="Official BME Growth market price directory with instrument detail pages",
+        source_url=BME_GROWTH_PRICES_URL,
+        format="bme_growth_prices_html",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="bursa_equity_isin",
+        provider="Bursa Malaysia",
+        description="Official Bursa Malaysia equity ISIN PDF",
+        source_url=BURSA_EQUITY_ISIN_PAGE_URL,
+        format="bursa_equity_isin_pdf",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
         key="bmv_stock_search",
         provider="BMV",
         description="Official BMV stock search supplement for exact ticker gaps",
@@ -882,6 +1078,14 @@ OFFICIAL_SOURCES = [
         description="Official Nordic Growth Market companies page",
         source_url=NGM_COMPANIES_PAGE_URL,
         format="ngm_companies_page_html",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="ngm_market_data_equities",
+        provider="NGM",
+        description="Official Nordic Growth Market market-data supplement for active equities",
+        source_url=NGM_MARKET_DATA_API_ROOT_URL,
+        format="ngm_market_data_equities_json",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -1075,6 +1279,30 @@ OFFICIAL_SOURCES = [
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
+        key="wse_listed_companies",
+        provider="GPW",
+        description="Official GPW listed companies directory",
+        source_url=WSE_COMPANIES_PAGE_URL,
+        format="wse_listed_companies_html",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="newconnect_listed_companies",
+        provider="NewConnect",
+        description="Official NewConnect listed companies directory",
+        source_url=NEWCONNECT_COMPANIES_PAGE_URL,
+        format="newconnect_listed_companies_html",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="wse_etf_list",
+        provider="GPW",
+        description="Official GPW ETF/ETC/ETN directory",
+        source_url=WSE_ETF_PAGE_URL,
+        format="wse_etf_list_html",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
         key="tase_securities_marketdata",
         provider="TASE",
         description="Official TASE market securities directory (shares subset)",
@@ -1107,11 +1335,59 @@ OFFICIAL_SOURCES = [
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
+        key="hose_listed_stocks",
+        provider="HOSE",
+        description="Official Ho Chi Minh Stock Exchange listed stocks directory",
+        source_url=HOSE_LISTED_STOCKS_URL,
+        format="hose_listed_stocks_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="hose_etf_list",
+        provider="HOSE",
+        description="Official Ho Chi Minh Stock Exchange ETF directory",
+        source_url=HOSE_ETF_LIST_URL,
+        format="hose_etf_list_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="hose_fund_certificate_list",
+        provider="HOSE",
+        description="Official Ho Chi Minh Stock Exchange fund certificate directory",
+        source_url=HOSE_FUND_CERTIFICATE_LIST_URL,
+        format="hose_fund_certificate_list_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="hnx_listed_securities",
+        provider="HNX",
+        description="Official Hanoi Stock Exchange listed securities directory",
+        source_url=HNX_LISTED_SECURITIES_PAGE_URL,
+        format="hnx_listed_securities_json",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
+        key="upcom_registered_securities",
+        provider="HNX",
+        description="Official Hanoi Stock Exchange UPCoM registered securities directory",
+        source_url=UPCOM_REGISTERED_SECURITIES_PAGE_URL,
+        format="upcom_registered_securities_json",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
         key="sec_company_tickers_exchange",
         provider="SEC",
         description="Official SEC company ticker to exchange mapping",
         source_url=SEC_COMPANY_TICKERS_URL,
         format="sec_company_tickers_exchange_json",
+    ),
+    MasterfileSource(
+        key="otc_markets_security_profile",
+        provider="OTC Markets",
+        description="Official OTC Markets security profile supplement for OTC ISIN and status gaps",
+        source_url=OTC_MARKETS_SECURITY_PROFILE_PAGE_URL,
+        format="otc_markets_security_profile_json",
+        reference_scope="security_lookup_subset",
     ),
 ]
 
@@ -1123,7 +1399,7 @@ def ensure_output_dirs() -> None:
 
 def write_csv(path: Path, fieldnames: list[str], rows: Iterable[dict[str, Any]]) -> None:
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -1264,6 +1540,22 @@ def latest_verification_tickers(
                 if ticker:
                     tickers.add(ticker)
     return tickers
+
+
+def missing_isin_listing_tickers(
+    *,
+    exchanges: set[str],
+    asset_types: set[str],
+    listings_path: Path = LISTINGS_CSV,
+) -> set[str]:
+    return {
+        row.get("ticker", "").strip()
+        for row in load_csv(listings_path)
+        if row.get("exchange") in exchanges
+        and row.get("asset_type") in asset_types
+        and row.get("ticker", "").strip()
+        and not row.get("isin", "").strip()
+    }
 
 
 def jse_instrument_search_target_tickers(
@@ -1546,6 +1838,42 @@ def tase_market_request_headers(base_headers: dict[str, str] | None = None) -> d
     return headers
 
 
+def hose_request_headers() -> dict[str, str]:
+    return {
+        "User-Agent": "Mozilla/5.0",
+        "Accept": "application/json, text/plain, */*",
+        "Referer": "https://www.hsx.vn/",
+        "Origin": "https://www.hsx.vn",
+        "Sec-Fetch-Site": "same-site",
+        "Sec-Fetch-Mode": "cors",
+        "Sec-Fetch-Dest": "empty",
+    }
+
+
+def hnx_request_headers(referer: str = "https://www.hnx.vn/") -> dict[str, str]:
+    return {
+        "User-Agent": "Mozilla/5.0",
+        "Accept": "application/json, text/javascript, */*; q=0.01",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Referer": referer,
+        "Origin": "https://www.hnx.vn",
+        "X-Requested-With": "XMLHttpRequest",
+    }
+
+
+def vsdc_request_headers(*, token: str = "", referer: str = VSDC_TOKEN_SEED_URL) -> dict[str, str]:
+    headers = {
+        "User-Agent": "Mozilla/5.0",
+        "Accept": "application/json, text/plain, */*",
+        "Referer": referer,
+        "Origin": VSDC_BASE_URL,
+        "X-Requested-With": "XMLHttpRequest",
+    }
+    if token:
+        headers["__VPToken"] = token
+    return headers
+
+
 def bme_request_headers(referer: str = BME_COMPANIES_SEARCH_PAGE_URL) -> dict[str, str]:
     return {
         "User-Agent": "Mozilla/5.0",
@@ -1557,6 +1885,31 @@ def bme_request_headers(referer: str = BME_COMPANIES_SEARCH_PAGE_URL) -> dict[st
         "Sec-Fetch-Mode": "cors",
         "Sec-Fetch-Dest": "empty",
     }
+
+
+def bme_growth_request_headers(referer: str = BME_GROWTH_PRICES_URL) -> dict[str, str]:
+    return {
+        "User-Agent": BROWSER_USER_AGENT,
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Referer": referer,
+    }
+
+
+def bme_growth_request_with_retries(
+    session: requests.Session,
+    method: str,
+    url: str,
+    **kwargs: Any,
+) -> requests.Response:
+    response = None
+    for attempt in range(4):
+        response = getattr(session, method)(url, **kwargs)
+        if getattr(response, "status_code", 200) < 500:
+            break
+        if attempt < 3:
+            time.sleep(BME_GROWTH_RETRY_DELAY_SECONDS)
+    assert response is not None
+    return response
 
 
 def normalize_nasdaq_nordic_search_symbol(value: str) -> str:
@@ -1609,6 +1962,78 @@ def load_sec_company_tickers_exchange_payload(
     ensure_output_dirs()
     SEC_COMPANY_TICKERS_CACHE.write_text(json.dumps(payload), encoding="utf-8")
     return payload, "network"
+
+
+def otc_markets_security_profile_targets(
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    rows = [
+        row
+        for row in load_csv(listings_path)
+        if row.get("exchange") == "OTC" and not row.get("isin", "").strip()
+    ]
+    return sorted(rows, key=lambda row: row.get("ticker", ""))
+
+
+def fetch_otc_markets_profile_payload(
+    symbol: str,
+    session: requests.Session | None = None,
+) -> dict[str, Any] | None:
+    url = OTC_MARKETS_SECURITY_PROFILE_API_URL.format(symbol=symbol)
+    request_session = session or requests
+    try:
+        response = request_session.get(
+            url,
+            params={"symbol": symbol},
+            headers=OTC_MARKETS_PROFILE_HEADERS,
+            timeout=OTC_MARKETS_PROFILE_TIMEOUT,
+        )
+        response.raise_for_status()
+    except requests.RequestException:
+        return None
+    if not response.headers.get("content-type", "").startswith("application/json"):
+        return None
+    payload = response.json()
+    return payload if isinstance(payload, dict) else None
+
+
+def fetch_otc_markets_security_profile(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    targets = otc_markets_security_profile_targets(listings_path)
+
+    def fetch_one(listing_row: dict[str, str]) -> list[dict[str, str]]:
+        symbol = listing_row["ticker"].strip().upper()
+        payload = fetch_otc_markets_profile_payload(symbol, session=session if session is not None else None)
+        if not payload:
+            return []
+        return parse_otc_markets_security_profile(payload, source, listing_row)
+
+    if session is not None:
+        return [row for target in targets for row in fetch_one(target)]
+
+    rows: list[dict[str, str]] = []
+    with ThreadPoolExecutor(max_workers=OTC_MARKETS_PROFILE_MAX_WORKERS) as executor:
+        futures = [executor.submit(fetch_one, target) for target in targets]
+        for future in as_completed(futures):
+            rows.extend(future.result())
+    return sorted(rows, key=lambda row: row["ticker"])
+
+
+def load_otc_markets_security_profile_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (OTC_MARKETS_SECURITY_PROFILE_CACHE, LEGACY_OTC_MARKETS_SECURITY_PROFILE_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+
+    rows = fetch_otc_markets_security_profile(source, session=session)
+    ensure_output_dirs()
+    OTC_MARKETS_SECURITY_PROFILE_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
 
 
 def load_tpex_mainboard_quotes_payload(
@@ -1821,6 +2246,283 @@ def load_idx_listed_companies_rows(
 
     ensure_output_dirs()
     IDX_LISTED_COMPANIES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def wse_request_headers(referer: str) -> dict[str, str]:
+    origin = ""
+    parsed = requests.compat.urlparse(referer)
+    if parsed.scheme and parsed.netloc:
+        origin = f"{parsed.scheme}://{parsed.netloc}"
+    return {
+        "User-Agent": USER_AGENT,
+        "Referer": referer,
+        "Origin": origin,
+        "X-Requested-With": "XMLHttpRequest",
+    }
+
+
+def extract_html_attr(tag: str, name: str) -> str:
+    for match in WSE_ATTR_RE.finditer(tag):
+        if match.group("name").lower() == name.lower():
+            return unescape(match.group("value"))
+    return ""
+
+
+def extract_html_form_inputs(text: str, form_id: str) -> dict[str, str]:
+    for match in WSE_FORM_RE.finditer(text):
+        if match.group("form_id") != form_id:
+            continue
+        form_html = match.group(0)
+        fields: dict[str, str] = {}
+        for tag in WSE_INPUT_TAG_RE.findall(form_html):
+            name = extract_html_attr(tag, "name").strip()
+            if not name:
+                continue
+            input_type = extract_html_attr(tag, "type").strip().lower() or "text"
+            if input_type == "checkbox" and not WSE_CHECKED_RE.search(tag):
+                continue
+            value = extract_html_attr(tag, "value")
+            if input_type == "checkbox" and not value:
+                value = "on"
+            fields[name] = value
+        return fields
+    raise ValueError(f"Unable to locate HTML form {form_id}")
+
+
+def parse_wse_company_label(label_html: str) -> tuple[str, str]:
+    text = " ".join(unescape(strip_html_tags(label_html)).split())
+    match = re.search(r"\(([^()]+)\)\s*$", text)
+    if match is None:
+        return text, ""
+    return text[: match.start()].strip(), match.group(1).strip().upper()
+
+
+def extract_wse_total_companies(text: str) -> int | None:
+    match = WSE_COUNT_ALL_RE.search(text)
+    if match is None:
+        return None
+    return int(match.group("count"))
+
+
+def parse_wse_company_search_html(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for match in WSE_COMPANY_LINK_RE.finditer(text):
+        href = unescape(match.group("href")).strip()
+        isin_match = re.search(r"isin=([A-Z0-9]+)", href, re.I)
+        name, ticker = parse_wse_company_label(match.group("label"))
+        if not ticker or not name or ticker in seen:
+            continue
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": requests.compat.urljoin(source.source_url, href),
+            "ticker": ticker,
+            "name": name,
+            "exchange": "WSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        if isin_match:
+            row["isin"] = isin_match.group(1).upper()
+        rows.append(row)
+        seen.add(ticker)
+    return rows
+
+
+def wse_etf_listing_names(
+    listings_path: Path = LISTINGS_CSV,
+) -> dict[str, str]:
+    names: dict[str, str] = {}
+    for row in load_csv(listings_path):
+        if row.get("exchange") != "WSE" or row.get("asset_type") != "ETF":
+            continue
+        ticker = row.get("ticker", "").strip().upper()
+        name = row.get("name", "").strip()
+        if ticker and name:
+            names[ticker] = name
+    return names
+
+
+def parse_wse_etf_list_html(
+    text: str,
+    source: MasterfileSource,
+    *,
+    listing_name_by_ticker: dict[str, str] | None = None,
+) -> list[dict[str, str]]:
+    listing_name_by_ticker = listing_name_by_ticker or {}
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for match in WSE_ETF_LINK_RE.finditer(text):
+        href = unescape(match.group("href")).strip()
+        isin_match = re.search(r"isin=([A-Z0-9]+)", href, re.I)
+        ticker = " ".join(unescape(strip_html_tags(match.group("ticker"))).split()).upper()
+        if not ticker or ticker in seen:
+            continue
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": requests.compat.urljoin(source.source_url, href),
+            "ticker": ticker,
+            "name": listing_name_by_ticker.get(ticker, ticker),
+            "exchange": "WSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        if isin_match:
+            row["isin"] = isin_match.group(1).upper()
+        rows.append(row)
+        seen.add(ticker)
+    return rows
+
+
+def fetch_wse_listed_companies(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    response = session.get(
+        source.source_url,
+        headers={"User-Agent": USER_AGENT},
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    rows = parse_wse_company_search_html(response.text, source)
+    seen = {row["ticker"] for row in rows}
+    form_data = extract_html_form_inputs(response.text, "search-form")
+    total = extract_wse_total_companies(response.text)
+    initial_page_size = max(len(rows), int(form_data.get("limit") or 10))
+    limit = 500
+    offset = int(form_data.get("offset") or 0) + initial_page_size
+
+    while total is None or offset < total:
+        payload = dict(form_data)
+        payload["offset"] = str(offset)
+        payload["limit"] = str(limit)
+        page_response = session.post(
+            WSE_AJAX_URL,
+            data=payload,
+            headers=wse_request_headers(source.source_url),
+            timeout=REQUEST_TIMEOUT,
+        )
+        page_response.raise_for_status()
+        page_rows = parse_wse_company_search_html(page_response.text, source)
+        if not page_rows:
+            break
+        for row in page_rows:
+            if row["ticker"] in seen:
+                continue
+            rows.append(row)
+            seen.add(row["ticker"])
+        if len(page_rows) < limit:
+            break
+        offset += limit
+    return rows
+
+
+def fetch_newconnect_listed_companies(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    response = session.get(
+        source.source_url,
+        headers={"User-Agent": USER_AGENT},
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    rows = parse_wse_company_search_html(response.text, source)
+    seen = {row["ticker"] for row in rows}
+    form_data = extract_html_form_inputs(response.text, "search-form")
+    initial_page_size = max(len(rows), int(form_data.get("limit") or 10))
+    limit = 500
+    offset = int(form_data.get("offset") or 0) + initial_page_size
+
+    while True:
+        payload = dict(form_data)
+        payload["offset"] = str(offset)
+        payload["limit"] = str(limit)
+        page_response = session.post(
+            NEWCONNECT_AJAX_URL,
+            data=payload,
+            headers=wse_request_headers(source.source_url),
+            timeout=REQUEST_TIMEOUT,
+        )
+        page_response.raise_for_status()
+        page_rows = parse_wse_company_search_html(page_response.text, source)
+        if not page_rows:
+            break
+        for row in page_rows:
+            if row["ticker"] in seen:
+                continue
+            rows.append(row)
+            seen.add(row["ticker"])
+        if len(page_rows) < limit:
+            break
+        offset += limit
+    return rows
+
+
+def fetch_wse_etf_list(
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    response = session.post(
+        WSE_AJAX_URL,
+        data={"action": "GPWQuotationsETF", "start": "ajaxList", "page": "etfy"},
+        headers=wse_request_headers(source.source_url),
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    return parse_wse_etf_list_html(
+        response.text,
+        source,
+        listing_name_by_ticker=wse_etf_listing_names(listings_path),
+    )
+
+
+def wse_cache_paths(source_key: str) -> tuple[Path, Path]:
+    mapping = {
+        "wse_listed_companies": (WSE_LISTED_COMPANIES_CACHE, LEGACY_WSE_LISTED_COMPANIES_CACHE),
+        "newconnect_listed_companies": (
+            NEWCONNECT_LISTED_COMPANIES_CACHE,
+            LEGACY_NEWCONNECT_LISTED_COMPANIES_CACHE,
+        ),
+        "wse_etf_list": (WSE_ETF_LIST_CACHE, LEGACY_WSE_ETF_LIST_CACHE),
+    }
+    return mapping[source_key]
+
+
+def load_wse_reference_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in wse_cache_paths(source.key):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+
+    try:
+        if source.key == "wse_listed_companies":
+            rows = fetch_wse_listed_companies(source, session=session)
+        elif source.key == "newconnect_listed_companies":
+            rows = fetch_newconnect_listed_companies(source, session=session)
+        else:
+            rows = fetch_wse_etf_list(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    wse_cache_paths(source.key)[0].write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"
 
 
@@ -2290,6 +2992,362 @@ def load_tase_participating_unit_search_rows(
 
     ensure_output_dirs()
     TASE_PARTICIPATING_UNIT_SEARCH_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def hose_securities_cache_paths(source_key: str) -> tuple[Path, Path]:
+    mapping = {
+        "hose_listed_stocks": (HOSE_LISTED_STOCKS_CACHE, LEGACY_HOSE_LISTED_STOCKS_CACHE),
+        "hose_etf_list": (HOSE_ETF_LIST_CACHE, LEGACY_HOSE_ETF_LIST_CACHE),
+        "hose_fund_certificate_list": (
+            HOSE_FUND_CERTIFICATE_LIST_CACHE,
+            LEGACY_HOSE_FUND_CERTIFICATE_LIST_CACHE,
+        ),
+    }
+    return mapping[source_key]
+
+
+def parse_hose_securities_payload(
+    payload: dict[str, Any],
+    source: MasterfileSource,
+    *,
+    asset_type: str,
+) -> list[dict[str, str]]:
+    data = payload.get("data") or {}
+    records = data.get("list") if isinstance(data, dict) else []
+    if not isinstance(records, list):
+        return []
+
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for record in records:
+        if not isinstance(record, dict):
+            continue
+        ticker = str(record.get("code") or "").strip().upper()
+        name = str(record.get("name") or record.get("brief") or "").strip()
+        isin = str(record.get("isin") or "").strip().upper()
+        if not ticker or not name or not isin or ticker in seen:
+            continue
+        seen.add(ticker)
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "HOSE",
+                "asset_type": asset_type,
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+                "isin": isin,
+            }
+        )
+    return rows
+
+
+def fetch_hose_securities_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    config = HOSE_SECURITIES_SOURCE_CONFIG[source.key]
+    session = session or requests.Session()
+    page_index = 1
+    page_size = 1000
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+
+    while True:
+        response = session.get(
+            source.source_url,
+            params={
+                "pageIndex": page_index,
+                "pageSize": page_size,
+                "code": "",
+                "alphabet": "",
+                "sectorId": "",
+            },
+            headers=hose_request_headers(),
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        payload = response.json()
+        page_rows = parse_hose_securities_payload(
+            payload,
+            source,
+            asset_type=config["asset_type"],
+        )
+        for row in page_rows:
+            ticker = row["ticker"]
+            if ticker in seen:
+                continue
+            seen.add(ticker)
+            rows.append(row)
+
+        data = payload.get("data") or {}
+        paging = data.get("paging") if isinstance(data, dict) else {}
+        total_pages = int(paging.get("totalPages") or page_index) if isinstance(paging, dict) else page_index
+        if page_index >= total_pages or not page_rows:
+            break
+        page_index += 1
+
+    return rows
+
+
+def load_hose_securities_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in hose_securities_cache_paths(source.key):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+
+    try:
+        rows = fetch_hose_securities_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    hose_securities_cache_paths(source.key)[0].write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def hnx_securities_cache_paths(source_key: str) -> tuple[Path, Path]:
+    mapping = {
+        "hnx_listed_securities": (HNX_LISTED_SECURITIES_CACHE, LEGACY_HNX_LISTED_SECURITIES_CACHE),
+        "upcom_registered_securities": (
+            UPCOM_REGISTERED_SECURITIES_CACHE,
+            LEGACY_UPCOM_REGISTERED_SECURITIES_CACHE,
+        ),
+    }
+    return mapping[source_key]
+
+
+VSDC_ISIN_RE = re.compile(r"^[A-Z]{2}[A-Z0-9]{10}$")
+VSDC_META_TAG_RE = re.compile(r"<meta\s+[^>]*>", re.IGNORECASE)
+VSDC_META_CONTENT_RE = re.compile(r"""content=["']([^"']+)["']""", re.IGNORECASE)
+HNX_SECURITY_TICKER_RE = re.compile(r"^[A-Z0-9]{1,10}$")
+
+
+def extract_vsdc_token(html: str) -> str:
+    for match in VSDC_META_TAG_RE.finditer(html):
+        tag = match.group(0)
+        if "__VPToken" not in tag:
+            continue
+        content_match = VSDC_META_CONTENT_RE.search(tag)
+        if content_match:
+            return content_match.group(1)
+    return ""
+
+
+def extract_vsdc_label_value(html: str, label: str) -> str:
+    pattern = re.compile(
+        rf"{re.escape(label)}\s*</[^>]+>\s*<[^>]+>\s*([^<]+)",
+        re.IGNORECASE,
+    )
+    match = pattern.search(html)
+    if not match:
+        return ""
+    return " ".join(unescape(match.group(1)).split()).strip()
+
+
+def choose_vsdc_security_detail_href(payload: dict[str, Any], ticker: str) -> str:
+    records = payload.get("data")
+    if not isinstance(records, list):
+        return ""
+    ticker_prefix = f"{ticker.upper()}:"
+    for record in records:
+        if not isinstance(record, dict):
+            continue
+        content = re.sub(r"<[^>]+>", "", str(record.get("content") or ""))
+        content = " ".join(unescape(content).split()).upper()
+        href = str(record.get("href") or "").strip()
+        if content.startswith(ticker_prefix) and href:
+            return href
+    return ""
+
+
+def fetch_vsdc_isin_for_ticker(
+    ticker: str,
+    *,
+    token: str,
+    cookies: dict[str, str] | None = None,
+) -> str:
+    ticker = ticker.strip().upper()
+    if not ticker:
+        return ""
+    session = requests.Session()
+    if cookies:
+        session.cookies.update(cookies)
+    search_response = session.post(
+        VSDC_SEARCH_SUGGEST_URL,
+        json={"text": ticker, "type": 5},
+        headers=vsdc_request_headers(token=token),
+        timeout=REQUEST_TIMEOUT,
+    )
+    search_response.raise_for_status()
+    href = choose_vsdc_security_detail_href(search_response.json(), ticker)
+    if not href:
+        return ""
+
+    detail_url = urljoin(VSDC_BASE_URL, href)
+    detail_response = session.get(
+        detail_url,
+        headers=vsdc_request_headers(token=token, referer=VSDC_TOKEN_SEED_URL),
+        timeout=REQUEST_TIMEOUT,
+    )
+    detail_response.raise_for_status()
+    code = extract_vsdc_label_value(detail_response.text, "Securities code:").upper()
+    isin = re.sub(r"\s+", "", extract_vsdc_label_value(detail_response.text, "ISIN:").upper())
+    if code != ticker or not VSDC_ISIN_RE.fullmatch(isin):
+        return ""
+    return isin
+
+
+def fetch_vsdc_isin_lookup(
+    tickers: Iterable[str],
+    *,
+    session: requests.Session | None = None,
+    max_workers: int = 8,
+) -> dict[str, str]:
+    unique_tickers = sorted({ticker.strip().upper() for ticker in tickers if ticker.strip()})
+    if not unique_tickers:
+        return {}
+
+    session = session or requests.Session()
+    token_response = session.get(
+        VSDC_TOKEN_SEED_URL,
+        headers={"User-Agent": "Mozilla/5.0", "Referer": VSDC_BASE_URL},
+        timeout=REQUEST_TIMEOUT,
+    )
+    token_response.raise_for_status()
+    token = extract_vsdc_token(token_response.text)
+    if not token:
+        return {}
+    cookies = session.cookies.get_dict()
+
+    lookup: dict[str, str] = {}
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = {
+            executor.submit(fetch_vsdc_isin_for_ticker, ticker, token=token, cookies=cookies): ticker
+            for ticker in unique_tickers
+        }
+        for future in as_completed(futures):
+            ticker = futures[future]
+            try:
+                isin = future.result()
+            except (requests.RequestException, ValueError, json.JSONDecodeError):
+                continue
+            if isin:
+                lookup[ticker] = isin
+    return lookup
+
+
+def parse_hnx_issuer_table_html(
+    content: str,
+    source: MasterfileSource,
+    *,
+    exchange: str,
+    isin_lookup: dict[str, str] | None = None,
+) -> list[dict[str, str]]:
+    parser = _TableParser()
+    parser.feed(content)
+    tables = [table for table in parser.tables if table]
+    if not tables:
+        return []
+
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    isin_lookup = isin_lookup or {}
+    for table_row in max(tables, key=len):
+        if len(table_row) < 3:
+            continue
+        ticker = table_row[1].strip().upper()
+        name = table_row[2].strip()
+        if ticker == "MÃ CK" or not ticker or not name or ticker in seen:
+            continue
+        if not HNX_SECURITY_TICKER_RE.fullmatch(ticker):
+            continue
+        seen.add(ticker)
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": exchange,
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+                "isin": isin_lookup.get(ticker, ""),
+            }
+        )
+    return rows
+
+
+def fetch_hnx_issuer_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    config = HNX_SECURITIES_SOURCE_CONFIG[source.key]
+    session = session or requests.Session()
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+    page_response = session.get(
+        config["page_url"],
+        headers=hnx_request_headers(),
+        timeout=REQUEST_TIMEOUT,
+        verify=False,
+    )
+    page_response.raise_for_status()
+    referer = getattr(page_response, "url", config["page_url"]) or config["page_url"]
+    response = session.post(
+        config["endpoint_url"],
+        data={
+            "p_issearch": 0,
+            "p_keysearch": "",
+            "p_market_code": config["market_code"],
+            "p_orderby": "STOCK_CODE",
+            "p_ordertype": "ASC",
+            "p_currentpage": 1,
+            "p_record_on_page": 1000,
+        },
+        headers=hnx_request_headers(referer),
+        timeout=REQUEST_TIMEOUT,
+        verify=False,
+    )
+    response.raise_for_status()
+    payload = response.json()
+    content = str(payload.get("Content") or "")
+    rows = parse_hnx_issuer_table_html(content, source, exchange=config["exchange"])
+    isin_lookup = fetch_vsdc_isin_lookup((row["ticker"] for row in rows), session=session)
+    return parse_hnx_issuer_table_html(
+        content,
+        source,
+        exchange=config["exchange"],
+        isin_lookup=isin_lookup,
+    )
+
+
+def load_hnx_issuer_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in hnx_securities_cache_paths(source.key):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+
+    try:
+        rows = fetch_hnx_issuer_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    hnx_securities_cache_paths(source.key)[0].write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"
 
 
@@ -2854,11 +3912,31 @@ def parse_spotlight_company_title(title: str) -> tuple[str, str]:
     return parse_spotlight_search_heading(text)
 
 
-def parse_ngm_companies_page_html(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+def spotlight_trade_url_from_detail_url(detail_url: str) -> str:
+    return detail_url.replace("irabout", "irtrade", 1)
+
+
+def extract_spotlight_detail_isin(text: str) -> str:
+    for candidate in ISIN_TOKEN_RE.findall(text):
+        if is_valid_isin(candidate):
+            return candidate
+    return ""
+
+
+def parse_ngm_companies_page_items(text: str) -> list[dict[str, Any]]:
     match = re.search(r"<company-list\s+.*?:items=\"(\[.*?\])\".*?/>", text, re.S)
     if match is None:
         raise ValueError("NGM company list items payload not found")
     items = json.loads(unescape(match.group(1)))
+    if not isinstance(items, list):
+        raise ValueError("NGM company list items payload is not a list")
+    return items
+
+
+def build_ngm_companies_page_rows(
+    items: list[dict[str, Any]],
+    source: MasterfileSource,
+) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     seen: set[str] = set()
     for item in items:
@@ -2871,22 +3949,87 @@ def parse_ngm_companies_page_html(text: str, source: MasterfileSource) -> list[d
             ticker = normalize_nasdaq_nordic_ticker(str(symbol.get("symbol", "")))
             if not ticker or ticker in seen:
                 continue
-            rows.append(
-                {
-                    "source_key": source.key,
-                    "provider": source.provider,
-                    "source_url": source.source_url,
-                    "ticker": ticker,
-                    "name": name,
-                    "exchange": "STO",
-                    "asset_type": "Stock",
-                    "listing_status": "active",
-                    "reference_scope": source.reference_scope,
-                    "official": "true",
-                }
-            )
+            row = {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "STO",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+            isin = str(symbol.get("isin") or "").strip().upper()
+            if is_valid_isin(isin):
+                row["isin"] = isin
+            rows.append(row)
             seen.add(ticker)
     return rows
+
+
+def ngm_order_book_ids_by_ticker(items: list[dict[str, Any]]) -> dict[str, str]:
+    order_book_ids: dict[str, str] = {}
+    for item in items:
+        for symbol in item.get("symbols") or []:
+            if not symbol.get("is_primary"):
+                continue
+            ticker = normalize_nasdaq_nordic_ticker(str(symbol.get("symbol", "")))
+            order_book_id = str(symbol.get("order_book_id") or symbol.get("orderBookId") or "").strip()
+            if ticker and order_book_id:
+                order_book_ids[ticker] = order_book_id
+    return order_book_ids
+
+
+def parse_ngm_companies_page_html(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    return build_ngm_companies_page_rows(parse_ngm_companies_page_items(text), source)
+
+
+def ngm_detailview_headers() -> dict[str, str]:
+    return {
+        "User-Agent": USER_AGENT,
+        "Content-Type": "text/x-gwt-rpc; charset=UTF-8",
+        "Referer": "https://mdweb.ngm.se/",
+        "X-GWT-Module-Base": NGM_DETAILVIEW_MODULE_BASE_URL,
+        "X-GWT-Permutation": NGM_DETAILVIEW_PERMUTATION,
+    }
+
+
+def build_ngm_detailview_find_instrument_payload(order_book_id: str) -> str:
+    order_book_id = order_book_id.strip()
+    return (
+        f"7|0|8|{NGM_DETAILVIEW_MODULE_BASE_URL}|{NGM_DETAILVIEW_STRONG_NAME}|"
+        "se.ngm.mdweb.front.client.rpc.SearchRPCService|findInstrument|"
+        f"java.lang.String/2004016611|Z|{order_book_id}|en_US|"
+        "1|2|3|4|5|5|5|5|5|6|7|0|0|8|0|"
+    )
+
+
+def extract_ngm_detailview_isin(text: str) -> str:
+    for candidate in ISIN_TOKEN_RE.findall(text):
+        if is_valid_isin(candidate):
+            return candidate
+    return ""
+
+
+def fetch_ngm_detailview_isin(
+    order_book_id: str,
+    *,
+    session: requests.Session | None = None,
+) -> str:
+    order_book_id = order_book_id.strip()
+    if not order_book_id:
+        return ""
+    session = session or requests.Session()
+    response = session.post(
+        NGM_DETAILVIEW_SERVICE_URL,
+        data=build_ngm_detailview_find_instrument_payload(order_book_id).encode("utf-8"),
+        headers=ngm_detailview_headers(),
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    return extract_ngm_detailview_isin(response.text)
 
 
 def parse_idx_listed_companies_payload(
@@ -3018,6 +4161,7 @@ def fetch_spotlight_companies_directory(
     *,
     session: requests.Session | None = None,
 ) -> list[dict[str, str]]:
+    provided_session = session is not None
     session = session or requests.Session()
     response = session.get(
         source.source_url,
@@ -3028,7 +4172,10 @@ def fetch_spotlight_companies_directory(
     payload = response.json()
 
     detail_urls: list[str] = []
-    for item in payload.get("results") or []:
+    results = payload.get("results") or []
+    if not results:
+        raise requests.RequestException("Spotlight companies directory returned no results")
+    for item in results:
         detail_url = str(item.get("url") or "").strip()
         if not detail_url:
             continue
@@ -3053,7 +4200,7 @@ def fetch_spotlight_companies_directory(
         ticker = normalize_nasdaq_nordic_ticker(ticker)
         if not ticker or not name:
             return None
-        return {
+        row = {
             "source_key": source.key,
             "provider": source.provider,
             "source_url": detail_url,
@@ -3065,10 +4212,23 @@ def fetch_spotlight_companies_directory(
             "reference_scope": source.reference_scope,
             "official": "true",
         }
+        try:
+            trade_response = detail_session.get(
+                spotlight_trade_url_from_detail_url(detail_url),
+                headers={"User-Agent": USER_AGENT},
+                timeout=SPOTLIGHT_DETAIL_TIMEOUT,
+            )
+            trade_response.raise_for_status()
+        except requests.RequestException:
+            return row
+        isin = extract_spotlight_detail_isin(trade_response.text)
+        if isin:
+            row["isin"] = isin
+        return row
 
     rows: list[dict[str, str]] = []
     seen: set[str] = set()
-    if session is not None:
+    if provided_session:
         for detail_url in detail_urls:
             row = fetch_detail_row(detail_url, session)
             if row is None or row["ticker"] in seen:
@@ -3103,13 +4263,106 @@ def fetch_ngm_companies_page(
         timeout=REQUEST_TIMEOUT,
     )
     response.raise_for_status()
-    return parse_ngm_companies_page_html(response.text, source)
+    items = parse_ngm_companies_page_items(response.text)
+    rows = build_ngm_companies_page_rows(items, source)
+    order_book_ids = ngm_order_book_ids_by_ticker(items)
+    for row in rows:
+        if row.get("isin"):
+            continue
+        order_book_id = order_book_ids.get(row["ticker"], "")
+        if not order_book_id:
+            continue
+        try:
+            isin = fetch_ngm_detailview_isin(order_book_id, session=session)
+        except requests.RequestException:
+            continue
+        if isin:
+            row["isin"] = isin
+    return rows
+
+
+NGM_MARKET_DATA_EQUITY_ENDPOINTS = (
+    "last_trades?cfi=ESVUFR",
+    "security_statistics/highest_turnover?cfi=ESVUFR",
+    "security_statistics/winners?cfi=ESVUFR",
+    "security_statistics/losers?cfi=ESVUFR",
+)
+
+
+def parse_ngm_market_data_equities(
+    payload: list[dict[str, Any]],
+    source: MasterfileSource,
+    *,
+    source_url: str | None = None,
+) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    row_source_url = source_url or source.source_url
+    for record in payload:
+        ticker = normalize_nasdaq_nordic_ticker(str(record.get("symbol") or ""))
+        name = str(record.get("name") or "").strip()
+        isin = str(record.get("isin") or "").strip().upper()
+        currency = str(record.get("currency") or "").strip().upper()
+        cfi = str(record.get("cfi") or "").strip().upper()
+        if not ticker or not name or not isin or ticker in seen:
+            continue
+        if currency and currency != "SEK":
+            continue
+        if cfi and not cfi.startswith("ES"):
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": row_source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "STO",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+                "isin": isin,
+            }
+        )
+        seen.add(ticker)
+    return rows
+
+
+def fetch_ngm_market_data_equities(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for endpoint in NGM_MARKET_DATA_EQUITY_ENDPOINTS:
+        endpoint_url = f"{source.source_url.rstrip('/')}/{endpoint}"
+        response = session.get(
+            endpoint_url,
+            headers={"User-Agent": USER_AGENT, "Accept": "application/json"},
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        for row in parse_ngm_market_data_equities(
+            response.json(),
+            source,
+            source_url=endpoint_url,
+        ):
+            if row["ticker"] in seen:
+                continue
+            rows.append(row)
+            seen.add(row["ticker"])
+    return rows
 
 
 def bme_cache_paths(source_key: str) -> tuple[Path, Path]:
     mapping = {
         "bme_listed_companies": (BME_LISTED_COMPANIES_CACHE, LEGACY_BME_LISTED_COMPANIES_CACHE),
         "bme_etf_list": (BME_ETF_LIST_CACHE, LEGACY_BME_ETF_LIST_CACHE),
+        "bme_listed_values": (BME_LISTED_VALUES_CACHE, LEGACY_BME_LISTED_VALUES_CACHE),
+        "bme_growth_prices": (BME_GROWTH_PRICES_CACHE, LEGACY_BME_GROWTH_PRICES_CACHE),
     }
     return mapping[source_key]
 
@@ -3204,6 +4457,115 @@ def build_bme_reference_rows(
             row["isin"] = isin
         rows.append(row)
     return rows
+
+
+def parse_bme_listed_values_text_lines(
+    lines: Iterable[str],
+    source: MasterfileSource,
+    *,
+    source_url: str | None = None,
+) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    seen: set[tuple[str, str, str]] = set()
+    row_source_url = source_url or source.source_url
+
+    for line in lines:
+        match = BME_LISTED_VALUES_ROW_RE.match(re.sub(r"\s+", " ", str(line)).strip())
+        if not match:
+            continue
+        asset_type = BME_LISTED_VALUES_SEGMENT_ASSET_TYPES.get(match.group("segment"))
+        if not asset_type:
+            continue
+        name_match = BME_LISTED_VALUES_NAME_RE.match(match.group("rest").strip())
+        name = (name_match.group("name") if name_match else match.group("rest")).strip()
+        ticker = match.group("ticker").strip().upper()
+        isin = match.group("isin").strip().upper()
+        row_key = (ticker, asset_type, isin)
+        if not ticker or not name or row_key in seen:
+            continue
+        seen.add(row_key)
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": row_source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "BME",
+                "asset_type": asset_type,
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+                "isin": isin,
+            }
+        )
+    return rows
+
+
+def parse_bme_listed_values_pdf(
+    content: bytes,
+    source: MasterfileSource,
+    *,
+    source_url: str | None = None,
+) -> list[dict[str, str]]:
+    try:
+        import pdfplumber
+    except ImportError as exc:
+        raise ImportError("BME listed values PDF parsing requires pdfplumber") from exc
+
+    lines: list[str] = []
+    with pdfplumber.open(io.BytesIO(content)) as pdf:
+        for page in pdf.pages:
+            text = page.extract_text(x_tolerance=1, y_tolerance=3) or ""
+            lines.extend(text.splitlines())
+    return parse_bme_listed_values_text_lines(lines, source, source_url=source_url)
+
+
+def fetch_bme_listed_values_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    response = session.get(
+        source.source_url,
+        headers={
+            "User-Agent": BROWSER_USER_AGENT,
+            "Accept": "application/pdf,*/*;q=0.8",
+            "Referer": "https://www.bolsasymercados.es/en/bme-exchange.html",
+        },
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    if not response.content.startswith(b"%PDF"):
+        raise requests.RequestException("BME listed values fetch did not return a PDF")
+
+    ensure_output_dirs()
+    BME_LISTED_VALUES_PDF_CACHE.write_bytes(response.content)
+    return parse_bme_listed_values_pdf(response.content, source, source_url=response.url)
+
+
+def load_bme_listed_values_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_bme_listed_values_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError, ImportError):
+        for path in (BME_LISTED_VALUES_CACHE, LEGACY_BME_LISTED_VALUES_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        for path in (BME_LISTED_VALUES_PDF_CACHE, LEGACY_BME_LISTED_VALUES_PDF_CACHE):
+            if path.exists():
+                try:
+                    return parse_bme_listed_values_pdf(path.read_bytes(), source), "cache"
+                except ImportError:
+                    continue
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    BME_LISTED_VALUES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
 
 
 def fetch_bme_reference_rows(
@@ -3323,6 +4685,472 @@ def load_bme_reference_rows(
     return rows, "network"
 
 
+def extract_bme_growth_detail_links(text: str) -> list[str]:
+    links: list[str] = []
+    seen: set[str] = set()
+    for match in BME_GROWTH_DETAIL_LINK_RE.finditer(text):
+        detail_url = requests.compat.urljoin(BME_GROWTH_PRICES_URL, unescape(match.group("href")).strip())
+        if detail_url in seen:
+            continue
+        links.append(detail_url)
+        seen.add(detail_url)
+    return links
+
+
+def extract_bme_growth_page_indexes(text: str) -> list[int]:
+    indexes = sorted({int(match.group("page")) for match in BME_GROWTH_PAGE_RE.finditer(text)})
+    return indexes or [0]
+
+
+def extract_bme_growth_form_fields(text: str) -> dict[str, str]:
+    match = re.search(r"<form\b[^>]*\bid=[\"']Form1[\"'][\s\S]*?</form>", text, re.I)
+    form_html = match.group(0) if match else text
+    fields: dict[str, str] = {}
+    for tag in WSE_INPUT_TAG_RE.findall(form_html):
+        name = extract_html_attr(tag, "name").strip()
+        if not name:
+            continue
+        fields[name] = extract_html_attr(tag, "value")
+    return fields
+
+
+def fetch_bme_growth_price_pages(
+    *,
+    session: requests.Session | None = None,
+) -> list[str]:
+    session = session or requests.Session()
+    response = bme_growth_request_with_retries(
+        session,
+        "get",
+        BME_GROWTH_PRICES_URL,
+        headers=bme_growth_request_headers(),
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    pages = [response.text]
+    page_indexes = extract_bme_growth_page_indexes(response.text)
+    current_text = response.text
+
+    for page_index in [page for page in page_indexes if page > 0]:
+        fields = extract_bme_growth_form_fields(current_text)
+        fields["ctl00$Contenido$NumPag"] = str(page_index)
+        fields["__EVENTTARGET"] = ""
+        fields["__EVENTARGUMENT"] = ""
+        # This submit input triggers the search handler and prevents page navigation when replayed by requests.
+        fields.pop("ctl00$Contenido$Buscar", None)
+        fields.pop("texto", None)
+        page_response = bme_growth_request_with_retries(
+            session,
+            "post",
+            BME_GROWTH_PRICES_URL,
+            data=fields,
+            headers={
+                **bme_growth_request_headers(),
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            timeout=REQUEST_TIMEOUT,
+        )
+        page_response.raise_for_status()
+        pages.append(page_response.text)
+        current_text = page_response.text
+
+    return pages
+
+
+def parse_bme_growth_detail_page(
+    text: str,
+    source: MasterfileSource,
+    *,
+    detail_url: str,
+) -> dict[str, str] | None:
+    fields: dict[str, str] = {}
+    for match in BME_GROWTH_DETAIL_FIELD_RE.finditer(text):
+        label = " ".join(unescape(strip_html_tags(match.group("label"))).split()).lower()
+        value = " ".join(unescape(strip_html_tags(match.group("value"))).split())
+        fields[label] = value
+
+    ticker = fields.get("ticker", "").strip().upper()
+    isin = fields.get("isin", "").strip().upper()
+    if not isin:
+        isin_match = re.search(r"_([A-Z]{2}[A-Z0-9]{10})\.aspx$", detail_url, re.I)
+        if isin_match:
+            isin = isin_match.group(1).upper()
+    name = ""
+    h1_match = BME_GROWTH_H1_RE.search(text)
+    if h1_match:
+        name = " ".join(unescape(strip_html_tags(h1_match.group("name"))).split())
+    if not name:
+        name = fields.get("security name", "").strip()
+    if not ticker or not name or not isin:
+        return None
+    return {
+        "source_key": source.key,
+        "provider": source.provider,
+        "source_url": detail_url,
+        "ticker": ticker,
+        "name": name,
+        "exchange": "BME",
+        "asset_type": "Stock",
+        "listing_status": "active",
+        "reference_scope": source.reference_scope,
+        "official": "true",
+        "isin": isin,
+    }
+
+
+def fetch_bme_growth_reference_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    detail_urls: list[str] = []
+    seen_urls: set[str] = set()
+    for page_html in fetch_bme_growth_price_pages(session=session):
+        for detail_url in extract_bme_growth_detail_links(page_html):
+            if detail_url in seen_urls:
+                continue
+            detail_urls.append(detail_url)
+            seen_urls.add(detail_url)
+
+    rows: list[dict[str, str]] = []
+    seen_tickers: set[str] = set()
+    for detail_url in detail_urls:
+        response = bme_growth_request_with_retries(
+            session,
+            "get",
+            detail_url,
+            headers=bme_growth_request_headers(BME_GROWTH_PRICES_URL),
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        row = parse_bme_growth_detail_page(response.text, source, detail_url=detail_url)
+        if row is None or row["ticker"] in seen_tickers:
+            continue
+        rows.append(row)
+        seen_tickers.add(row["ticker"])
+    return rows
+
+
+def load_bme_growth_reference_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_bme_growth_reference_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in (BME_GROWTH_PRICES_CACHE, LEGACY_BME_GROWTH_PRICES_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    BME_GROWTH_PRICES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def extract_bursa_equity_isin_pdf_url(text: str, base_url: str = BURSA_EQUITY_ISIN_PAGE_URL) -> str:
+    href_match = BURSA_EQUITY_ISIN_PDF_HREF_RE.search(text)
+    if href_match:
+        return urljoin(base_url, unescape(href_match.group("href")))
+
+    url_match = BURSA_EQUITY_ISIN_PDF_URL_RE.search(text)
+    if url_match:
+        return unescape(url_match.group(0))
+
+    return ""
+
+
+def bursa_asset_type_from_issue_description(issue_description: str) -> str:
+    normalized_issue = issue_description.strip().upper()
+    if normalized_issue in BURSA_ETF_ISSUE_DESCRIPTIONS:
+        return "ETF"
+    if normalized_issue in BURSA_STOCK_ISSUE_DESCRIPTIONS:
+        return "Stock"
+    return ""
+
+
+def derive_bursa_ticker_from_isin(isin: str, issue_description: str) -> str:
+    normalized_isin = isin.strip().upper()
+    normalized_issue = issue_description.strip().upper()
+    if len(normalized_isin) != 12:
+        return ""
+
+    if normalized_issue in BURSA_ETF_ISSUE_DESCRIPTIONS:
+        match = BURSA_ETF_ISIN_RE.fullmatch(normalized_isin)
+        return match.group("ticker") if match else ""
+
+    if normalized_issue == "REITS":
+        for pattern in (BURSA_REIT_ISIN_RE, BURSA_STAPLED_REIT_ISIN_RE):
+            match = pattern.fullmatch(normalized_isin)
+            if match:
+                return match.group("ticker")
+        return ""
+
+    if normalized_issue == "CLOSE END FUND":
+        match = BURSA_CLOSED_END_FUND_ISIN_RE.fullmatch(normalized_isin)
+        return match.group("ticker") if match else ""
+
+    if normalized_issue not in BURSA_STOCK_ISSUE_DESCRIPTIONS:
+        return ""
+
+    for pattern in (BURSA_EQUITY_ISIN_4_DIGIT_RE, BURSA_EQUITY_ISIN_5_DIGIT_RE):
+        match = pattern.fullmatch(normalized_isin)
+        if match:
+            return match.group("ticker")
+    return ""
+
+
+def clean_bursa_pdf_cell(value: Any) -> str:
+    if value is None:
+        return ""
+    return re.sub(r"\s+", " ", str(value)).strip()
+
+
+def parse_bursa_equity_isin_table_rows(
+    table_rows: Iterable[Iterable[Any]],
+    source: MasterfileSource,
+    *,
+    listings_by_isin: dict[str, list[dict[str, str]]] | None = None,
+    source_url: str | None = None,
+) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    seen: set[tuple[str, str, str]] = set()
+    row_source_url = source_url or source.source_url
+    listings_by_isin = listings_by_isin or {}
+
+    for raw_cells in table_rows:
+        cells = [clean_bursa_pdf_cell(cell) for cell in raw_cells]
+        if len(cells) < 5 or not cells[0].isdigit():
+            continue
+
+        isin_index = next(
+            (
+                index
+                for index, cell in enumerate(cells)
+                if re.fullmatch(r"[A-Z]{2}[A-Z0-9]{10}", cell.upper())
+            ),
+            -1,
+        )
+        if isin_index < 0 or isin_index + 1 >= len(cells):
+            continue
+
+        isin = cells[isin_index].upper()
+        issue_description = cells[isin_index + 1].upper()
+        asset_type = bursa_asset_type_from_issue_description(issue_description)
+        ticker = derive_bursa_ticker_from_isin(isin, issue_description)
+        name = cells[1] if len(cells) > 1 else ""
+        short_name = cells[2] if len(cells) > 2 else ""
+        if not asset_type or not (name or short_name):
+            continue
+
+        tickers = [ticker] if ticker else []
+        if not tickers:
+            tickers = sorted(
+                {
+                    row.get("ticker", "").strip().upper()
+                    for row in listings_by_isin.get(isin, [])
+                    if row.get("exchange") == "Bursa"
+                    and row.get("asset_type") == asset_type
+                    and row.get("ticker", "").strip()
+                }
+            )
+        for row_ticker in tickers:
+            row_key = (row_ticker, asset_type, isin)
+            if row_key in seen:
+                continue
+            seen.add(row_key)
+            rows.append(
+                {
+                    "source_key": source.key,
+                    "provider": source.provider,
+                    "source_url": row_source_url,
+                    "ticker": row_ticker,
+                    "name": name or short_name,
+                    "exchange": "Bursa",
+                    "asset_type": asset_type,
+                    "listing_status": "active",
+                    "reference_scope": source.reference_scope,
+                    "official": "true",
+                    "isin": isin,
+                }
+            )
+    return rows
+
+
+def parse_bursa_equity_isin_pdf(
+    content: bytes,
+    source: MasterfileSource,
+    *,
+    listings_by_isin: dict[str, list[dict[str, str]]] | None = None,
+    source_url: str | None = None,
+) -> list[dict[str, str]]:
+    try:
+        import pdfplumber
+    except ImportError as exc:
+        raise ImportError("Bursa equity ISIN PDF parsing requires pdfplumber") from exc
+
+    table_rows: list[list[Any]] = []
+    with pdfplumber.open(io.BytesIO(content)) as pdf:
+        for page in pdf.pages:
+            for table in page.extract_tables() or []:
+                table_rows.extend(table)
+    return parse_bursa_equity_isin_table_rows(
+        table_rows,
+        source,
+        listings_by_isin=listings_by_isin,
+        source_url=source_url,
+    )
+
+
+def fetch_bursa_equity_isin_pdf_direct(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> tuple[bytes, str]:
+    session = session or requests.Session()
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    }
+    page_response = session.get(source.source_url, headers=headers, timeout=REQUEST_TIMEOUT)
+    page_response.raise_for_status()
+    pdf_url = extract_bursa_equity_isin_pdf_url(page_response.text, source.source_url)
+    if not pdf_url:
+        raise requests.RequestException("Bursa equity ISIN PDF link not found")
+
+    pdf_response = session.get(
+        pdf_url,
+        headers={**headers, "Referer": source.source_url, "Accept": "application/pdf,*/*;q=0.8"},
+        timeout=REQUEST_TIMEOUT,
+    )
+    pdf_response.raise_for_status()
+    if not pdf_response.content.startswith(b"%PDF"):
+        raise requests.RequestException("Bursa equity ISIN direct fetch did not return a PDF")
+    return pdf_response.content, pdf_url
+
+
+def fetch_bursa_equity_isin_pdf_with_browser(source: MasterfileSource) -> tuple[bytes, str]:
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError as exc:
+        raise requests.RequestException("Bursa equity ISIN PDF fetch requires Playwright") from exc
+
+    try:
+        with sync_playwright() as playwright:
+            browser = playwright.chromium.launch(headless=True)
+            try:
+                context = browser.new_context(
+                    user_agent=(
+                        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                        "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+                    )
+                )
+                page = context.new_page()
+                page.goto(source.source_url, wait_until="domcontentloaded", timeout=REQUEST_TIMEOUT * 1000)
+
+                pdf_url = page.evaluate(
+                    """() => {
+                        const links = Array.from(document.querySelectorAll('a[href]'));
+                        const target = links.find((link) => {
+                            const href = String(link.href || '').toLowerCase();
+                            const text = String(link.textContent || '').toLowerCase();
+                            return href.includes('isinequity') ||
+                                text.includes('securities listed on bursa malaysia: equity');
+                        });
+                        return target ? target.href : '';
+                    }"""
+                )
+                if not pdf_url:
+                    raise requests.RequestException("Bursa equity ISIN PDF link not found in browser")
+
+                result = page.evaluate(
+                    """async (url) => {
+                        const response = await fetch(url, { credentials: 'include' });
+                        const buffer = await response.arrayBuffer();
+                        return {
+                            ok: response.ok,
+                            status: response.status,
+                            url: response.url,
+                            contentType: response.headers.get('content-type') || '',
+                            bytes: Array.from(new Uint8Array(buffer)),
+                        };
+                    }""",
+                    pdf_url,
+                )
+            finally:
+                browser.close()
+    except requests.RequestException:
+        raise
+    except Exception as exc:
+        raise requests.RequestException(f"Bursa equity ISIN browser fetch failed: {exc}") from exc
+
+    status = int(result.get("status") or 0)
+    content = bytes(result.get("bytes") or [])
+    if not result.get("ok") or status >= 400:
+        raise requests.RequestException(f"Bursa equity ISIN PDF fetch returned HTTP {status}")
+    if not content.startswith(b"%PDF"):
+        content_type = str(result.get("contentType") or "")
+        raise requests.RequestException(f"Bursa equity ISIN browser fetch returned {content_type or 'non-PDF content'}")
+    return content, str(result.get("url") or pdf_url)
+
+
+def load_bursa_listing_rows_by_isin(listings_path: Path = LISTINGS_CSV) -> dict[str, list[dict[str, str]]]:
+    rows_by_isin: dict[str, list[dict[str, str]]] = {}
+    for row in load_csv(listings_path):
+        if row.get("exchange") != "Bursa":
+            continue
+        isin = row.get("isin", "").strip().upper()
+        if not isin:
+            continue
+        rows_by_isin.setdefault(isin, []).append(row)
+    return rows_by_isin
+
+
+def fetch_bursa_equity_isin_rows(
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    try:
+        content, pdf_url = fetch_bursa_equity_isin_pdf_direct(source, session=session)
+    except requests.RequestException:
+        content, pdf_url = fetch_bursa_equity_isin_pdf_with_browser(source)
+
+    ensure_output_dirs()
+    BURSA_EQUITY_ISIN_PDF_CACHE.write_bytes(content)
+    return parse_bursa_equity_isin_pdf(
+        content,
+        source,
+        listings_by_isin=load_bursa_listing_rows_by_isin(listings_path),
+        source_url=pdf_url,
+    )
+
+
+def load_bursa_equity_isin_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_bursa_equity_isin_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError, ImportError):
+        for path in (BURSA_EQUITY_ISIN_CACHE, LEGACY_BURSA_EQUITY_ISIN_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        for path in (BURSA_EQUITY_ISIN_PDF_CACHE, LEGACY_BURSA_EQUITY_ISIN_PDF_CACHE):
+            if path.exists():
+                try:
+                    return parse_bursa_equity_isin_pdf(path.read_bytes(), source), "cache"
+                except ImportError:
+                    continue
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    BURSA_EQUITY_ISIN_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
 def build_bmv_reference_row(
     source: MasterfileSource,
     listing_row: dict[str, str],
@@ -3372,7 +5200,10 @@ def bmv_issuer_directory_target_rows(
         row
         for row in load_csv(listings_path)
         if row.get("exchange") == "BMV"
-        and row.get("ticker", "").strip().upper() in target_tickers
+        and (
+            row.get("ticker", "").strip().upper() in target_tickers
+            or not row.get("isin", "").strip()
+        )
     ]
 
 
@@ -3486,6 +5317,9 @@ def fetch_bmv_issuer_directory(
         if best_score == 0 or len(unique_matches) != 1:
             continue
         match = next(iter(unique_matches.values()))
+        record_isin = str(match.get("isin") or "").strip()
+        if not record_isin and not listing_isin:
+            continue
         name = (
             str(match.get("razonSocial") or "").strip()
             or str(match.get("descripcion") or "").strip()
@@ -3499,7 +5333,7 @@ def fetch_bmv_issuer_directory(
                 name=name,
                 exchange="BMV",
                 asset_type=listing_asset_type or "Stock",
-                isin=str(match.get("isin") or ""),
+                isin=record_isin,
             )
         )
     return rows
@@ -4202,6 +6036,10 @@ def ngm_companies_cache_paths(source_key: str) -> tuple[Path, Path]:
             NGM_COMPANIES_PAGE_CACHE,
             LEGACY_NGM_COMPANIES_PAGE_CACHE,
         ),
+        "ngm_market_data_equities": (
+            NGM_MARKET_DATA_EQUITIES_CACHE,
+            LEGACY_NGM_MARKET_DATA_EQUITIES_CACHE,
+        ),
     }
     return mapping[source_key]
 
@@ -4324,6 +6162,24 @@ def load_ngm_companies_rows(
 
     try:
         rows = fetch_ngm_companies_page(source, session=session)
+    except (requests.RequestException, ValueError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    ngm_companies_cache_paths(source.key)[0].write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def load_ngm_market_data_equity_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in ngm_companies_cache_paths(source.key):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+
+    try:
+        rows = fetch_ngm_market_data_equities(source, session=session)
     except (requests.RequestException, ValueError):
         return None, "unavailable"
 
@@ -4491,6 +6347,8 @@ def group_rows_by_ticker(rows: list[dict[str, str]]) -> dict[str, list[dict[str,
 
 def infer_lse_lookup_asset_type(instrument_code: str, name: str, fallback_asset_type: str = "") -> str:
     normalized = instrument_code.strip().upper()
+    if fallback_asset_type == "ETF":
+        return "ETF"
     if normalized.startswith(("ETF", "ETC", "ETN", "ETP", "ETS", "ECE", "EUE")):
         return "ETF"
     if normalized.startswith(("EQS", "SS", "ST")):
@@ -4531,16 +6389,26 @@ def lse_instrument_search_target_tickers(
     reference_gap_tickers: set[str] | None = None,
 ) -> list[str]:
     listings_path = listings_path or LISTINGS_CSV
+    listings_rows = load_csv(listings_path)
     target_tickers = {
         row.get("ticker", "").strip()
-        for row in load_csv(listings_path)
+        for row in listings_rows
         if row.get("exchange") == "LSE"
         and row.get("asset_type") in {"Stock", "ETF"}
         and row.get("ticker", "").strip()
     }
+    missing_isin_tickers = {
+        row.get("ticker", "").strip()
+        for row in listings_rows
+        if row.get("exchange") == "LSE"
+        and row.get("asset_type") in {"Stock", "ETF"}
+        and row.get("ticker", "").strip()
+        and not row.get("isin", "").strip()
+    }
     reference_gap_tickers = reference_gap_tickers if reference_gap_tickers is not None else lse_reference_gap_tickers()
-    if reference_gap_tickers:
-        target_tickers &= reference_gap_tickers
+    priority_tickers = reference_gap_tickers | missing_isin_tickers
+    if priority_tickers:
+        target_tickers &= priority_tickers
     return sorted(
         {
             ticker
@@ -4761,6 +6629,12 @@ def load_lse_instrument_search_rows(
         if ticker not in cached_lookup
         or not any(row.get("isin", "").strip() for row in cached_lookup.get(ticker, []))
     ]
+    for ticker, rows_for_ticker in cached_lookup.items():
+        if asset_type_by_ticker.get(ticker) != "ETF":
+            continue
+        for row in rows_for_ticker:
+            if row.get("asset_type") != "ETF":
+                row["asset_type"] = "ETF"
     used_network = False
     if missing_tickers:
         fetched_lookup = {ticker: [] for ticker in missing_tickers}
@@ -5626,6 +7500,7 @@ def parse_deutsche_boerse_listed_companies_excel(content: bytes, source: Masterf
                     "listing_status": "active",
                     "reference_scope": source.reference_scope,
                     "official": "true",
+                    "isin": isin,
                 }
             )
     return rows
@@ -5637,22 +7512,24 @@ def parse_deutsche_boerse_etfs_etps_excel(content: bytes, source: MasterfileSour
     for record in dataframe.to_dict(orient="records"):
         ticker = str(record.get("XETRA SYMBOL", "")).strip()
         name = str(record.get("PRODUCT NAME", "")).strip()
+        isin = str(record.get("ISIN", "")).strip().upper()
         if not ticker or not name or ticker.lower() == "nan" or name.lower() == "nan":
             continue
-        rows.append(
-            {
-                "source_key": source.key,
-                "provider": source.provider,
-                "source_url": source.source_url,
-                "ticker": ticker,
-                "name": name,
-                "exchange": "XETRA",
-                "asset_type": "ETF",
-                "listing_status": "active",
-                "reference_scope": source.reference_scope,
-                "official": "true",
-            }
-        )
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "XETRA",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        if is_valid_isin(isin):
+            row["isin"] = isin
+        rows.append(row)
     return rows
 
 
@@ -5674,23 +7551,25 @@ def parse_deutsche_boerse_xetra_all_tradable_csv(text: str, source: MasterfileSo
             continue
         ticker = str(record.get("Mnemonic", "")).strip()
         name = str(record.get("Instrument", "")).strip()
+        isin = str(record.get("ISIN", "")).strip().upper()
         if not ticker or not name or ticker.lower() == "nan" or name.lower() == "nan":
             continue
 
-        rows.append(
-            {
-                "source_key": source.key,
-                "provider": source.provider,
-                "source_url": source.source_url,
-                "ticker": ticker,
-                "name": name,
-                "exchange": "XETRA",
-                "asset_type": "Stock",
-                "listing_status": "active",
-                "reference_scope": source.reference_scope,
-                "official": "true",
-            }
-        )
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "XETRA",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        if is_valid_isin(isin):
+            row["isin"] = isin
+        rows.append(row)
     return rows
 
 
@@ -5824,6 +7703,7 @@ def parse_euronext_equities_download(text: str, source: MasterfileSource) -> lis
                 "listing_status": "active",
                 "reference_scope": euronext_reference_scope(market),
                 "official": "true",
+                "isin": isin,
             }
         )
     return rows
@@ -5856,6 +7736,7 @@ def parse_euronext_etfs_download(text: str, source: MasterfileSource) -> list[di
                 "listing_status": "active",
                 "reference_scope": euronext_reference_scope(market),
                 "official": "true",
+                "isin": isin,
             }
         )
     return rows
@@ -5888,6 +7769,133 @@ def parse_sec_company_tickers_exchange(payload: dict[str, Any], source: Masterfi
     return rows
 
 
+def isin_check_digit(body: str) -> str:
+    digits = ""
+    for char in body:
+        digits += char if char.isdigit() else str(ord(char) - 55)
+    total = 0
+    for index, digit in enumerate(reversed(digits)):
+        value = int(digit)
+        if index % 2 == 0:
+            value *= 2
+            if value > 9:
+                value -= 9
+        total += value
+    return str((10 - (total % 10)) % 10)
+
+
+def is_taiwan_domestic_registration(foreign_registration_country: str) -> bool:
+    normalized = re.sub(r"\s+", "", foreign_registration_country.strip())
+    return normalized in TAIWAN_DOMESTIC_REGISTRATION_MARKERS
+
+
+def derive_taiwan_isin(
+    ticker: str,
+    *,
+    emerging_board: bool = False,
+    foreign_registration_country: str = "",
+) -> str:
+    normalized_ticker = ticker.strip().upper()
+    if not TAIWAN_ISIN_TICKER_RE.fullmatch(normalized_ticker):
+        return ""
+    if foreign_registration_country and not is_taiwan_domestic_registration(foreign_registration_country):
+        return ""
+
+    if emerging_board and re.fullmatch(r"\d{4}", normalized_ticker):
+        body = f"TW000{normalized_ticker}B1"
+    else:
+        body = f"TW000{normalized_ticker}"
+        if len(body) > 11:
+            return ""
+        body = body.ljust(11, "0")
+
+    isin = f"{body}{isin_check_digit(body)}"
+    return isin if is_valid_isin(isin) else ""
+
+
+def derive_isin_from_otc_markets_cusip(
+    cusip: str,
+    *,
+    issuer_country: str,
+    type_name: str,
+    is_adr: bool,
+) -> str:
+    cleaned_cusip = re.sub(r"[^A-Z0-9]", "", cusip.upper())
+    if not CUSIP_RE.fullmatch(cleaned_cusip):
+        return ""
+
+    normalized_country = issuer_country.strip().upper()
+    normalized_type_name = type_name.strip().lower()
+    if is_adr or normalized_type_name in OTC_MARKETS_ADR_TYPE_NAMES:
+        prefix = "US"
+    elif normalized_country in {"US", "USA", "UNITED STATES"}:
+        prefix = "US"
+    elif normalized_country in {"CA", "CAN", "CANADA"}:
+        prefix = "CA"
+    else:
+        return ""
+
+    body = f"{prefix}{cleaned_cusip}"
+    isin = f"{body}{isin_check_digit(body)}"
+    return isin if is_valid_isin(isin) else ""
+
+
+def select_otc_markets_security(profile: dict[str, Any], symbol: str) -> dict[str, Any]:
+    normalized_symbol = symbol.strip().upper()
+    securities = profile.get("securities") or []
+    return next(
+        (
+            security
+            for security in securities
+            if str(security.get("symbol", "")).strip().upper() == normalized_symbol
+        ),
+        {},
+    )
+
+
+def parse_otc_markets_security_profile(
+    profile: dict[str, Any],
+    source: MasterfileSource,
+    listing_row: dict[str, str],
+) -> list[dict[str, str]]:
+    ticker = listing_row.get("ticker", "").strip().upper()
+    if not ticker:
+        return []
+    security = select_otc_markets_security(profile, ticker)
+    if not security:
+        return []
+
+    issuer_country = str(profile.get("countryId") or profile.get("country") or "")
+    type_name = str(security.get("typeName") or "")
+    isin = derive_isin_from_otc_markets_cusip(
+        str(security.get("cusip") or ""),
+        issuer_country=issuer_country,
+        type_name=type_name,
+        is_adr=bool(security.get("isAdr")),
+    )
+    name = str(profile.get("name") or security.get("issueName") or listing_row.get("name") or "").strip()
+    listing_status = "active"
+    status_name = str(security.get("statusName") or "").strip().lower()
+    if profile.get("deregistered") or security.get("isTest") or status_name in {"inactive", "deleted"}:
+        listing_status = "inactive"
+
+    return [
+        {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": OTC_MARKETS_SECURITY_PROFILE_PAGE_URL.format(symbol=ticker),
+            "ticker": ticker,
+            "name": name,
+            "exchange": "OTC",
+            "asset_type": listing_row.get("asset_type", "Stock") or "Stock",
+            "listing_status": listing_status,
+            "reference_scope": source.reference_scope,
+            "official": "true",
+            "isin": isin,
+        }
+    ]
+
+
 def parse_twse_listed_companies(payload: list[dict[str, Any]], source: MasterfileSource) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     for record in payload:
@@ -5895,20 +7903,25 @@ def parse_twse_listed_companies(payload: list[dict[str, Any]], source: Masterfil
         name = str(record.get("公司名稱", "")).strip()
         if not ticker or not name:
             continue
-        rows.append(
-            {
-                "source_key": source.key,
-                "provider": source.provider,
-                "source_url": source.source_url,
-                "ticker": ticker,
-                "name": name,
-                "exchange": "TWSE",
-                "asset_type": infer_taiwan_asset_type(ticker, name),
-                "listing_status": "active",
-                "reference_scope": source.reference_scope,
-                "official": "true",
-            }
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "TWSE",
+            "asset_type": infer_taiwan_asset_type(ticker, name),
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        isin = derive_taiwan_isin(
+            ticker,
+            foreign_registration_country=str(record.get("外國企業註冊地國", "")),
         )
+        if isin:
+            row["isin"] = isin
+        rows.append(row)
     return rows
 
 
@@ -5921,20 +7934,22 @@ def parse_twse_etf_list(payload: dict[str, Any], source: MasterfileSource) -> li
         name = str(record.get("Name of ETF", "")).strip()
         if not ticker or not name:
             continue
-        rows.append(
-            {
-                "source_key": source.key,
-                "provider": source.provider,
-                "source_url": source.source_url,
-                "ticker": ticker,
-                "name": name,
-                "exchange": "TWSE",
-                "asset_type": infer_taiwan_asset_type(ticker, name),
-                "listing_status": "active",
-                "reference_scope": source.reference_scope,
-                "official": "true",
-            }
-        )
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "TWSE",
+            "asset_type": infer_taiwan_asset_type(ticker, name),
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        isin = derive_taiwan_isin(ticker)
+        if isin:
+            row["isin"] = isin
+        rows.append(row)
     return rows
 
 
@@ -6414,19 +8429,25 @@ def parse_tpex_mainboard_quotes(payload: list[dict[str, Any]], source: Masterfil
         name = str(record.get("CompanyName", "")).strip()
         if not ticker or not name or not TPEX_CANONICAL_TICKER_RE.fullmatch(ticker):
             continue
+        asset_type = infer_taiwan_asset_type(ticker, name)
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "TPEX",
+            "asset_type": asset_type,
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        if asset_type == "ETF":
+            isin = derive_taiwan_isin(ticker)
+            if isin:
+                row["isin"] = isin
         rows.append(
-            {
-                "source_key": source.key,
-                "provider": source.provider,
-                "source_url": source.source_url,
-                "ticker": ticker,
-                "name": name,
-                "exchange": "TPEX",
-                "asset_type": infer_taiwan_asset_type(ticker, name),
-                "listing_status": "active",
-                "reference_scope": source.reference_scope,
-                "official": "true",
-            }
+            row
         )
     return rows
 
@@ -6449,32 +8470,39 @@ def parse_tpex_etf_filter(
         if ticker in seen:
             continue
         seen.add(ticker)
-        rows.append(
-            {
-                "source_key": source.key,
-                "provider": source.provider,
-                "source_url": source.source_url,
-                "ticker": ticker,
-                "name": name,
-                "exchange": "TPEX",
-                "asset_type": "ETF",
-                "listing_status": "active",
-                "reference_scope": source.reference_scope,
-                "official": "true",
-            }
-        )
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "TPEX",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        isin = derive_taiwan_isin(ticker)
+        if isin:
+            row["isin"] = isin
+        rows.append(row)
     return rows
 
 
 def parse_tpex_emerging_basic_info_csv(text: str, source: MasterfileSource) -> list[dict[str, str]]:
-    return parse_tpex_basic_info_csv(text, source)
+    return parse_tpex_basic_info_csv(text, source, emerging_board=True)
 
 
 def parse_tpex_mainboard_basic_info_csv(text: str, source: MasterfileSource) -> list[dict[str, str]]:
-    return parse_tpex_basic_info_csv(text, source)
+    return parse_tpex_basic_info_csv(text, source, emerging_board=False)
 
 
-def parse_tpex_basic_info_csv(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+def parse_tpex_basic_info_csv(
+    text: str,
+    source: MasterfileSource,
+    *,
+    emerging_board: bool,
+) -> list[dict[str, str]]:
     reader = csv.DictReader(io.StringIO(text))
     rows: list[dict[str, str]] = []
     seen: set[str] = set()
@@ -6488,20 +8516,26 @@ def parse_tpex_basic_info_csv(text: str, source: MasterfileSource) -> list[dict[
         if ticker in seen:
             continue
         seen.add(ticker)
-        rows.append(
-            {
-                "source_key": source.key,
-                "provider": source.provider,
-                "source_url": source.source_url,
-                "ticker": ticker,
-                "name": name,
-                "exchange": "TPEX",
-                "asset_type": infer_taiwan_asset_type(ticker, name),
-                "listing_status": "active",
-                "reference_scope": source.reference_scope,
-                "official": "true",
-            }
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "TPEX",
+            "asset_type": infer_taiwan_asset_type(ticker, name),
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        isin = derive_taiwan_isin(
+            ticker,
+            emerging_board=emerging_board,
+            foreign_registration_country=str(record.get("外國企業註冊地國", "")),
         )
+        if isin:
+            row["isin"] = isin
+        rows.append(row)
     return rows
 
 
@@ -6515,9 +8549,16 @@ def parse_b3_instruments_equities_table(table: dict[str, Any], source: Masterfil
         category = str(record.get("SctyCtgyNm", "")).strip()
         ticker = str(record.get("TckrSymb", "")).strip()
         name = str(record.get("CrpnNm") or record.get("AsstDesc") or "").strip()
+        isin = str(record.get("ISIN") or "").strip().upper()
         if market != "EQUITY-CASH" or segment != "CASH":
             continue
         asset_type = B3_ALLOWED_CASH_CATEGORIES.get(category)
+        combined_name = f"{name} {record.get('AsstDesc') or ''}".upper()
+        if not asset_type and category == "" and B3_CASH_STOCK_TICKER_RE.fullmatch(ticker):
+            asset_type = "Stock"
+        if not asset_type and category == "BDR" and ticker.endswith("39"):
+            if any(marker in combined_name for marker in B3_BDR_ETF_MARKERS):
+                asset_type = "ETF"
         if not asset_type or not ticker or not name:
             continue
         normalized_name = name.lower()
@@ -6526,20 +8567,21 @@ def parse_b3_instruments_equities_table(table: dict[str, Any], source: Masterfil
             continue
         if any(marker in normalized_desc for marker in B3_EXCLUDED_ISSUER_MARKERS):
             continue
-        rows.append(
-            {
-                "source_key": source.key,
-                "provider": source.provider,
-                "source_url": source.source_url,
-                "ticker": ticker,
-                "name": name,
-                "exchange": "B3",
-                "asset_type": asset_type,
-                "listing_status": "active",
-                "reference_scope": source.reference_scope,
-                "official": "true",
-            }
-        )
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "B3",
+            "asset_type": asset_type,
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        if is_valid_isin(isin):
+            row["isin"] = isin
+        rows.append(row)
     return rows
 
 
@@ -7486,19 +9528,47 @@ def fetch_krx_listed_companies(source: MasterfileSource, session: requests.Sessi
         payload = response.json().get("block1", [])
         rows.extend(parse_krx_listed_companies(payload, source, exchange=exchange))
 
-    covered_tickers = {row["ticker"] for row in rows}
-    target_tickers = latest_reference_gap_tickers(STOCK_VERIFICATION_DIR, exchanges={"KRX"})
-    if target_tickers:
-        finder_payload = fetch_krx_finder_records(
-            "dbms/comm/finder/finder_stkisu",
-            session=session,
-        )
-        for row in parse_krx_stock_finder_records(finder_payload, source):
-            if row["ticker"] not in target_tickers or row["ticker"] in covered_tickers:
-                continue
-            rows.append(row)
-            covered_tickers.add(row["ticker"])
-    return rows
+    target_tickers = latest_reference_gap_tickers(STOCK_VERIFICATION_DIR, exchanges={"KRX", "KOSDAQ"})
+    target_tickers |= missing_isin_listing_tickers(
+        exchanges={"KRX", "KOSDAQ"},
+        asset_types={"Stock"},
+    )
+    if not rows and not target_tickers:
+        return rows
+
+    finder_payload = fetch_krx_finder_records(
+        "dbms/comm/finder/finder_stkisu",
+        session=session,
+    )
+    exact_rows_by_ticker = {
+        row["ticker"]: row
+        for row in parse_krx_stock_finder_records(finder_payload, source)
+        if row.get("isin")
+    }
+    if not exact_rows_by_ticker:
+        return rows
+
+    merged_rows: list[dict[str, str]] = []
+    seen_tickers: set[str] = set()
+    for row in rows:
+        ticker = row["ticker"]
+        if ticker in seen_tickers:
+            continue
+        exact_row = exact_rows_by_ticker.get(ticker)
+        if exact_row:
+            merged_rows.append({**row, "isin": exact_row["isin"]})
+        else:
+            merged_rows.append(row)
+        seen_tickers.add(ticker)
+    for ticker in sorted(target_tickers):
+        if ticker in seen_tickers:
+            continue
+        exact_row = exact_rows_by_ticker.get(ticker)
+        if not exact_row:
+            continue
+        merged_rows.append(exact_row)
+        seen_tickers.add(ticker)
+    return merged_rows
 
 
 def fetch_krx_etf_finder(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
@@ -7513,7 +9583,11 @@ def fetch_krx_etf_finder(source: MasterfileSource, session: requests.Session | N
     rows = parse_krx_etf_finder(payload, source)
 
     target_tickers = latest_reference_gap_tickers(ETF_VERIFICATION_DIR, exchanges={"KRX"})
-    if not target_tickers:
+    target_tickers |= missing_isin_listing_tickers(
+        exchanges={"KRX"},
+        asset_types={"ETF"},
+    )
+    if not rows and not target_tickers:
         return rows
 
     exact_rows_by_ticker = {
@@ -7525,7 +9599,7 @@ def fetch_krx_etf_finder(source: MasterfileSource, session: requests.Session | N
             ),
             source,
         )
-        if row["ticker"] in target_tickers
+        if row.get("isin")
     }
     if not exact_rows_by_ticker:
         return rows
@@ -7534,20 +9608,22 @@ def fetch_krx_etf_finder(source: MasterfileSource, session: requests.Session | N
     seen_tickers: set[str] = set()
     for row in rows:
         ticker = row["ticker"]
-        if ticker in exact_rows_by_ticker:
-            if ticker in seen_tickers:
-                continue
-            merged_rows.append(exact_rows_by_ticker.pop(ticker))
-            seen_tickers.add(ticker)
-            continue
         if ticker in seen_tickers:
             continue
-        merged_rows.append(row)
+        exact_row = exact_rows_by_ticker.get(ticker)
+        if exact_row:
+            merged_rows.append({**row, "isin": exact_row["isin"]})
+        else:
+            merged_rows.append(row)
         seen_tickers.add(ticker)
-    for ticker, row in exact_rows_by_ticker.items():
+    for ticker in sorted(target_tickers):
         if ticker in seen_tickers:
             continue
-        merged_rows.append(row)
+        exact_row = exact_rows_by_ticker.get(ticker)
+        if not exact_row:
+            continue
+        merged_rows.append(exact_row)
+        seen_tickers.add(ticker)
     return merged_rows
 
 
@@ -7660,6 +9736,12 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return fetch_jse_instrument_search_rows(source, session=session)
     if source.format in {"bme_listed_companies_json", "bme_etf_list_json"}:
         return fetch_bme_reference_rows(source, session=session)
+    if source.format == "bme_listed_values_pdf":
+        return fetch_bme_listed_values_rows(source, session=session)
+    if source.format == "bme_growth_prices_html":
+        return fetch_bme_growth_reference_rows(source, session=session)
+    if source.format == "bursa_equity_isin_pdf":
+        return fetch_bursa_equity_isin_rows(source, session=session)
     if source.format == "euronext_equities_semicolon_csv":
         text = fetch_text(source.source_url, session=session)
         return parse_euronext_equities_download(text, source)
@@ -7748,6 +9830,8 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return fetch_spotlight_companies_directory(source, session=session)
     if source.format == "ngm_companies_page_html":
         return fetch_ngm_companies_page(source, session=session)
+    if source.format == "ngm_market_data_equities_json":
+        return fetch_ngm_market_data_equities(source, session=session)
     if source.format == "krx_listed_companies_json":
         return fetch_krx_listed_companies(source, session=session)
     if source.format == "krx_etf_finder_json":
@@ -7760,6 +9844,12 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return fetch_pse_listed_company_directory(source, session=session)
     if source.format == "idx_listed_companies_json":
         return fetch_idx_listed_companies(source, session=session)
+    if source.format == "wse_listed_companies_html":
+        return fetch_wse_listed_companies(source, session=session)
+    if source.format == "newconnect_listed_companies_html":
+        return fetch_newconnect_listed_companies(source, session=session)
+    if source.format == "wse_etf_list_html":
+        return fetch_wse_etf_list(source, session=session)
     if source.format == "tase_securities_marketdata_json":
         return fetch_tase_securities_marketdata(source, session=session)
     if source.format == "tase_etf_marketdata_json":
@@ -7768,9 +9858,19 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return fetch_tase_foreign_etf_search(source, session=session)
     if source.format == "tase_participating_unit_search_json":
         return fetch_tase_participating_unit_search(source, session=session)
+    if source.format in {
+        "hose_listed_stocks_json",
+        "hose_etf_list_json",
+        "hose_fund_certificate_list_json",
+    }:
+        return fetch_hose_securities_rows(source, session=session)
+    if source.format in {"hnx_listed_securities_json", "upcom_registered_securities_json"}:
+        return fetch_hnx_issuer_rows(source, session=session)
     if source.format == "sec_company_tickers_exchange_json":
         payload = fetch_json(source.source_url, session=session)
         return parse_sec_company_tickers_exchange(payload, source)
+    if source.format == "otc_markets_security_profile_json":
+        return fetch_otc_markets_security_profile(source, session=session)
     if source.format == "bmv_issuer_directory_json":
         return fetch_bmv_issuer_directory(source, session=session)
     if source.format == "bmv_etf_search_json":
@@ -7812,6 +9912,11 @@ def fetch_source_rows_with_mode(
         if payload is None:
             raise requests.RequestException("SEC company_tickers_exchange.json unavailable")
         return parse_sec_company_tickers_exchange(payload, source), mode
+    if source.format == "otc_markets_security_profile_json":
+        rows, mode = load_otc_markets_security_profile_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("OTC Markets security profiles unavailable")
+        return rows, mode
     if source.format == "tpex_mainboard_quotes_json":
         payload, mode = load_tpex_mainboard_quotes_payload(session=session)
         if payload is None:
@@ -7852,6 +9957,15 @@ def fetch_source_rows_with_mode(
         if rows is None:
             raise requests.RequestException("IDX listed companies unavailable")
         return rows, mode
+    if source.format in {
+        "wse_listed_companies_html",
+        "newconnect_listed_companies_html",
+        "wse_etf_list_html",
+    }:
+        rows, mode = load_wse_reference_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException(f"WSE reference rows unavailable for {source.key}")
+        return rows, mode
     if source.format == "tase_securities_marketdata_json":
         rows, mode = load_tase_securities_marketdata_rows(source, session=session)
         if rows is None:
@@ -7871,6 +9985,20 @@ def fetch_source_rows_with_mode(
         rows, mode = load_tase_participating_unit_search_rows(source, session=session)
         if rows is None:
             raise requests.RequestException("TASE participating unit search unavailable")
+        return rows, mode
+    if source.format in {
+        "hose_listed_stocks_json",
+        "hose_etf_list_json",
+        "hose_fund_certificate_list_json",
+    }:
+        rows, mode = load_hose_securities_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException(f"HOSE securities unavailable for {source.key}")
+        return rows, mode
+    if source.format in {"hnx_listed_securities_json", "upcom_registered_securities_json"}:
+        rows, mode = load_hnx_issuer_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException(f"HNX issuer rows unavailable for {source.key}")
         return rows, mode
     if source.format == "bmv_stock_search_json":
         rows, mode = load_bmv_stock_search_rows(source, session=session)
@@ -7912,6 +10040,21 @@ def fetch_source_rows_with_mode(
         if rows is None:
             raise requests.RequestException(f"BME reference rows unavailable for {source.key}")
         return rows, mode
+    if source.format == "bme_listed_values_pdf":
+        rows, mode = load_bme_listed_values_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("BME listed values rows unavailable")
+        return rows, mode
+    if source.format == "bme_growth_prices_html":
+        rows, mode = load_bme_growth_reference_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("BME Growth reference rows unavailable")
+        return rows, mode
+    if source.format == "bursa_equity_isin_pdf":
+        rows, mode = load_bursa_equity_isin_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("Bursa equity ISIN rows unavailable")
+        return rows, mode
     if source.format == "jse_instrument_search_html":
         rows, mode = load_jse_instrument_search_rows(source, session=session)
         if rows is None:
@@ -7949,6 +10092,11 @@ def fetch_source_rows_with_mode(
         rows, mode = load_ngm_companies_rows(source, session=session)
         if rows is None:
             raise requests.RequestException("NGM companies page unavailable")
+        return rows, mode
+    if source.format == "ngm_market_data_equities_json":
+        rows, mode = load_ngm_market_data_equity_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("NGM market-data equities unavailable")
         return rows, mode
     if source.format in {
         "nasdaq_nordic_stockholm_etfs_json",

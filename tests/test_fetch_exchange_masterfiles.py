@@ -18,19 +18,28 @@ from scripts.fetch_exchange_masterfiles import (
     BMV_ETF_SEARCH_CACHE,
     BMV_ISSUER_DIRECTORY_CACHE,
     BMV_STOCK_SEARCH_CACHE,
+    OTC_MARKETS_SECURITY_PROFILE_CACHE,
     B3_INSTRUMENTS_EQUITIES_CACHE,
     JSE_INSTRUMENT_SEARCH_CACHE,
     IDX_LISTED_COMPANIES_CACHE,
+    WSE_LISTED_COMPANIES_CACHE,
+    WSE_ETF_LIST_CACHE,
+    NEWCONNECT_LISTED_COMPANIES_CACHE,
     TASE_SECURITIES_MARKETDATA_CACHE,
     TASE_ETF_MARKETDATA_CACHE,
     TASE_FOREIGN_ETF_SEARCH_CACHE,
     TASE_PARTICIPATING_UNIT_SEARCH_CACHE,
+    HOSE_LISTED_STOCKS_CACHE,
+    HOSE_ETF_LIST_CACHE,
+    HNX_LISTED_SECURITIES_CACHE,
+    UPCOM_REGISTERED_SECURITIES_CACHE,
     LEGACY_BME_ETF_LIST_CACHE,
     LEGACY_BME_LISTED_COMPANIES_CACHE,
     LEGACY_BMV_CAPITAL_TRUST_SEARCH_CACHE,
     LEGACY_BMV_ETF_SEARCH_CACHE,
     LEGACY_BMV_ISSUER_DIRECTORY_CACHE,
     LEGACY_BMV_STOCK_SEARCH_CACHE,
+    LEGACY_OTC_MARKETS_SECURITY_PROFILE_CACHE,
     LEGACY_B3_INSTRUMENTS_EQUITIES_CACHE,
     LEGACY_LSE_COMPANY_REPORTS_CACHE,
     LEGACY_LSE_INSTRUMENT_DIRECTORY_CACHE,
@@ -38,10 +47,18 @@ from scripts.fetch_exchange_masterfiles import (
     LEGACY_NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE,
     LEGACY_NASDAQ_NORDIC_HELSINKI_ETFS_CACHE,
     LEGACY_IDX_LISTED_COMPANIES_CACHE,
+    LEGACY_WSE_LISTED_COMPANIES_CACHE,
+    LEGACY_WSE_ETF_LIST_CACHE,
+    LEGACY_NEWCONNECT_LISTED_COMPANIES_CACHE,
     LEGACY_TASE_SECURITIES_MARKETDATA_CACHE,
     LEGACY_TASE_ETF_MARKETDATA_CACHE,
     LEGACY_TASE_FOREIGN_ETF_SEARCH_CACHE,
     LEGACY_TASE_PARTICIPATING_UNIT_SEARCH_CACHE,
+    LEGACY_HOSE_LISTED_STOCKS_CACHE,
+    LEGACY_HOSE_ETF_LIST_CACHE,
+    LEGACY_HNX_LISTED_SECURITIES_CACHE,
+    LEGACY_UPCOM_REGISTERED_SECURITIES_CACHE,
+    LEGACY_NGM_MARKET_DATA_EQUITIES_CACHE,
     LEGACY_NGM_COMPANIES_PAGE_CACHE,
     LEGACY_SPOTLIGHT_COMPANIES_DIRECTORY_CACHE,
     LEGACY_SPOTLIGHT_COMPANIES_SEARCH_CACHE,
@@ -89,14 +106,21 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_jse_exchange_traded_product_rows,
     fetch_jse_instrument_search_exact,
     fetch_idx_listed_companies,
+    fetch_newconnect_listed_companies,
+    fetch_wse_etf_list,
+    fetch_wse_listed_companies,
     fetch_tase_securities_marketdata,
     fetch_tase_etf_marketdata,
     fetch_tase_foreign_etf_search,
     fetch_tase_participating_unit_search,
+    fetch_hose_securities_rows,
+    fetch_hnx_issuer_rows,
     fetch_nasdaq_nordic_share_search,
     fetch_nasdaq_nordic_stockholm_shares,
     fetch_nasdaq_nordic_stockholm_trackers,
     fetch_ngm_companies_page,
+    fetch_ngm_market_data_equities,
+    fetch_otc_markets_security_profile,
     fetch_spotlight_companies_directory,
     fetch_spotlight_companies_search,
     fetch_psx_listed_companies,
@@ -122,10 +146,13 @@ from scripts.fetch_exchange_masterfiles import (
     load_bmv_stock_search_rows,
     load_jse_instrument_search_rows,
     load_idx_listed_companies_rows,
+    load_wse_reference_rows,
     load_tase_securities_marketdata_rows,
     load_tase_etf_marketdata_rows,
     load_tase_foreign_etf_search_rows,
     load_tase_participating_unit_search_rows,
+    load_hose_securities_rows,
+    load_hnx_issuer_rows,
     NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE,
     NASDAQ_NORDIC_HELSINKI_ETFS_CACHE,
     load_lse_company_reports_rows,
@@ -136,6 +163,8 @@ from scripts.fetch_exchange_masterfiles import (
     load_nasdaq_nordic_stockholm_tracker_rows,
     load_nasdaq_nordic_stockholm_shares_rows,
     load_ngm_companies_rows,
+    load_ngm_market_data_equity_rows,
+    load_otc_markets_security_profile_rows,
     load_spotlight_directory_rows,
     load_spotlight_search_rows,
     load_set_dr_search_rows,
@@ -147,6 +176,7 @@ from scripts.fetch_exchange_masterfiles import (
     NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
     NASDAQ_NORDIC_STOCKHOLM_TRACKERS_CACHE,
     NGM_COMPANIES_PAGE_CACHE,
+    NGM_MARKET_DATA_EQUITIES_CACHE,
     PSE_LISTED_COMPANY_DIRECTORY_CACHE,
     SPOTLIGHT_COMPANIES_DIRECTORY_CACHE,
     SPOTLIGHT_COMPANIES_SEARCH_CACHE,
@@ -156,14 +186,19 @@ from scripts.fetch_exchange_masterfiles import (
     load_tpex_mainboard_basic_info_text,
     parse_tase_securities_marketdata_payload,
     parse_tase_etf_marketdata_payload,
+    parse_hose_securities_payload,
+    parse_hnx_issuer_table_html,
     load_tpex_emerging_basic_info_text,
     load_tmx_etf_screener_payload,
     load_pse_listed_company_directory_rows,
     parse_pse_listed_company_directory_html,
     parse_ngm_companies_page_html,
+    parse_ngm_market_data_equities,
     parse_spotlight_company_title,
+    extract_spotlight_detail_isin,
     load_tpex_mainboard_quotes_payload,
     parse_spotlight_search_heading,
+    spotlight_trade_url_from_detail_url,
     parse_set_dr_search_payload,
     parse_tpex_mainboard_basic_info_csv,
     parse_tpex_emerging_basic_info_csv,
@@ -181,6 +216,8 @@ from scripts.fetch_exchange_masterfiles import (
     parse_deutsche_boerse_xetra_all_tradable_csv,
     parse_euronext_equities_download,
     parse_euronext_etfs_download,
+    parse_wse_company_search_html,
+    parse_wse_etf_list_html,
     parse_jpx_listed_issues_excel,
     parse_jse_exchange_traded_product_excel,
     parse_idx_listed_companies_payload,
@@ -201,6 +238,7 @@ from scripts.fetch_exchange_masterfiles import (
     parse_set_listed_companies_html,
     parse_set_quote_search_payload,
     parse_sec_company_tickers_exchange,
+    parse_otc_markets_security_profile,
     parse_six_equity_issuers,
     parse_six_fund_products_csv,
     parse_sse_a_share_list,
@@ -219,11 +257,14 @@ from scripts.fetch_exchange_masterfiles import (
     parse_tmx_listed_issuers_excel,
     resolve_tmx_listed_issuers_download_url,
     tmx_stock_quote_symbol_variants,
+    derive_isin_from_otc_markets_cusip,
+    derive_taiwan_isin,
     sec_request_headers,
     select_official_sources,
     extract_psx_sector_options,
     extract_psx_symbol_name_download_url,
     extract_psx_xid,
+    extract_html_form_inputs,
     SZSE_ETF_LIST_CACHE,
     SET_DR_SEARCH_CACHE,
     SET_ETF_SEARCH_CACHE,
@@ -331,6 +372,157 @@ def test_parse_sec_company_tickers_exchange_normalizes_exchange_names():
     assert [row["ticker"] for row in rows] == ["AAPL", "T", "SPY", "ACME"]
 
 
+def test_derive_isin_from_otc_markets_cusip_is_conservative():
+    assert (
+        derive_isin_from_otc_markets_cusip(
+            "02028L107",
+            issuer_country="CA",
+            type_name="Ordinary Shares",
+            is_adr=False,
+        )
+        == "CA02028L1076"
+    )
+    assert (
+        derive_isin_from_otc_markets_cusip(
+            "75944B106",
+            issuer_country="US",
+            type_name="Common Stock",
+            is_adr=False,
+        )
+        == "US75944B1061"
+    )
+    assert (
+        derive_isin_from_otc_markets_cusip(
+            "02008B103",
+            issuer_country="DK",
+            type_name="ADR",
+            is_adr=True,
+        )
+        == "US02008B1035"
+    )
+    assert (
+        derive_isin_from_otc_markets_cusip(
+            "J02571107",
+            issuer_country="JP",
+            type_name="Ordinary Shares",
+            is_adr=False,
+        )
+        == ""
+    )
+
+
+def test_parse_otc_markets_security_profile_maps_verified_cusip_isin():
+    source = MasterfileSource(
+        key="otc_markets_security_profile",
+        provider="OTC Markets",
+        description="OTC profile",
+        source_url="https://www.otcmarkets.com/stock/{symbol}/security",
+        format="otc_markets_security_profile_json",
+        reference_scope="security_lookup_subset",
+    )
+    payload = {
+        "name": "Almadex Minerals Ltd.",
+        "countryId": "CA",
+        "securities": [
+            {
+                "symbol": "AAMMF",
+                "cusip": "02028L107",
+                "typeName": "Ordinary Shares",
+                "isAdr": False,
+                "tierName": "Pink Limited",
+            }
+        ],
+    }
+
+    rows = parse_otc_markets_security_profile(
+        payload,
+        source,
+        {
+            "ticker": "AAMMF",
+            "exchange": "OTC",
+            "name": "Almadex Minerals Ltd",
+            "asset_type": "Stock",
+            "isin": "",
+        },
+    )
+
+    assert rows == [
+        {
+            "source_key": "otc_markets_security_profile",
+            "provider": "OTC Markets",
+            "source_url": "https://www.otcmarkets.com/stock/AAMMF/security",
+            "ticker": "AAMMF",
+            "name": "Almadex Minerals Ltd.",
+            "exchange": "OTC",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "security_lookup_subset",
+            "official": "true",
+            "isin": "CA02028L1076",
+        }
+    ]
+
+
+def test_fetch_otc_markets_security_profile_targets_missing_otc_isins(tmp_path):
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "listing_key,ticker,exchange,name,asset_type,sector,country,country_code,isin,aliases",
+                "OTC::AAMMF,AAMMF,OTC,Almadex Minerals Ltd,Stock,Materials,United States,US,,",
+                "OTC::HASISIN,HASISIN,OTC,Has Isin Inc,Stock,,United States,US,US0000000002,",
+                "NASDAQ::AAMMF,AAMMF,NASDAQ,Wrong Venue Inc,Stock,,United States,US,,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    class FakeResponse:
+        headers = {"content-type": "application/json;charset=UTF-8"}
+
+        def json(self):
+            return {
+                "name": "Almadex Minerals Ltd.",
+                "countryId": "CA",
+                "securities": [
+                    {
+                        "symbol": "AAMMF",
+                        "cusip": "02028L107",
+                        "typeName": "Ordinary Shares",
+                    }
+                ],
+            }
+
+        def raise_for_status(self):
+            return None
+
+    class FakeSession:
+        def __init__(self):
+            self.urls: list[str] = []
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            self.urls.append(url)
+            assert params == {"symbol": "AAMMF"}
+            assert headers["referer"] == "https://www.otcmarkets.com/"
+            return FakeResponse()
+
+    session = FakeSession()
+    source = MasterfileSource(
+        key="otc_markets_security_profile",
+        provider="OTC Markets",
+        description="OTC profile",
+        source_url="https://www.otcmarkets.com/stock/{symbol}/security",
+        format="otc_markets_security_profile_json",
+        reference_scope="security_lookup_subset",
+    )
+
+    rows = fetch_otc_markets_security_profile(source, session=session, listings_path=listings_path)
+
+    assert len(session.urls) == 1
+    assert rows[0]["ticker"] == "AAMMF"
+    assert rows[0]["isin"] == "CA02028L1076"
+
+
 def test_parse_twse_listed_companies_maps_twse_rows():
     payload = [
         {"公司代號": "1101", "公司名稱": "臺灣水泥股份有限公司"},
@@ -349,6 +541,7 @@ def test_parse_twse_listed_companies_maps_twse_rows():
             "name": "臺灣水泥股份有限公司",
             "exchange": "TWSE",
             "asset_type": "Stock",
+            "isin": "TW0001101004",
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
@@ -361,6 +554,7 @@ def test_parse_twse_listed_companies_maps_twse_rows():
             "name": "元大台灣50",
             "exchange": "TWSE",
             "asset_type": "ETF",
+            "isin": "TW0000050004",
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
@@ -390,6 +584,7 @@ def test_parse_twse_etf_list_maps_twse_rows():
             "name": "JPMorgan (Taiwan) Taiwan Equity High Income Active ETF",
             "exchange": "TWSE",
             "asset_type": "ETF",
+            "isin": "TW00000401A1",
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
@@ -402,6 +597,7 @@ def test_parse_twse_etf_list_maps_twse_rows():
             "name": "Hua Nan NASDAQ 100 Technology ETF",
             "exchange": "TWSE",
             "asset_type": "ETF",
+            "isin": "TW0000098185",
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
@@ -1130,6 +1326,19 @@ def test_tpex_mainboard_basic_info_source_is_modeled_as_partial_official_coverag
     assert source.reference_scope == "listed_companies_subset"
 
 
+def test_derive_taiwan_isin_handles_board_specific_domestic_codes() -> None:
+    assert derive_taiwan_isin("2330") == "TW0002330008"
+    assert derive_taiwan_isin("00679B") == "TW00000679B0"
+    assert derive_taiwan_isin("1269", emerging_board=True) == "TW0001269B11"
+    assert (
+        derive_taiwan_isin(
+            "4971",
+            foreign_registration_country="KY 開曼群島",
+        )
+        == ""
+    )
+
+
 def test_parse_tpex_mainboard_quotes_maps_tpex_rows():
     payload = [
         {"SecuritiesCompanyCode": "006201", "CompanyName": "元大富櫃50"},
@@ -1149,6 +1358,7 @@ def test_parse_tpex_mainboard_quotes_maps_tpex_rows():
             "name": "元大富櫃50",
             "exchange": "TPEX",
             "asset_type": "ETF",
+            "isin": "TW0000062017",
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
@@ -1206,6 +1416,7 @@ def test_parse_tpex_etf_filter_maps_tpex_etf_rows() -> None:
             "name": "Yuanta/P-shares Taiwan GreTai 50 ETF",
             "exchange": "TPEX",
             "asset_type": "ETF",
+            "isin": "TW0000062017",
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
@@ -1218,6 +1429,7 @@ def test_parse_tpex_etf_filter_maps_tpex_etf_rows() -> None:
             "name": "Yuanta U.S. Treasury 20+ Year Bond ETF",
             "exchange": "TPEX",
             "asset_type": "ETF",
+            "isin": "TW00000679B0",
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
@@ -1246,6 +1458,7 @@ def test_parse_tpex_emerging_basic_info_csv_maps_tpex_rows() -> None:
             "name": "乾杯股份有限公司",
             "exchange": "TPEX",
             "asset_type": "Stock",
+            "isin": "TW0001269B11",
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
@@ -1258,6 +1471,7 @@ def test_parse_tpex_emerging_basic_info_csv_maps_tpex_rows() -> None:
             "name": "晨暉生物科技股份有限公司",
             "exchange": "TPEX",
             "asset_type": "Stock",
+            "isin": "TW0001271B17",
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
@@ -1298,6 +1512,7 @@ def test_parse_tpex_mainboard_basic_info_csv_maps_tpex_rows() -> None:
             "name": "光譜電工股份有限公司",
             "exchange": "TPEX",
             "asset_type": "Stock",
+            "isin": "TW0005381008",
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
@@ -2173,9 +2388,10 @@ def test_infer_lse_lookup_asset_type_uses_stock_fallback_for_stmm_trusts():
         == "Stock"
     )
     assert infer_lse_lookup_asset_type("EUE2", "IMGP IMGP DBI MNGD FUTURES FD R USD UCITS ETF", "Stock") == "ETF"
+    assert infer_lse_lookup_asset_type("STMM", "ISHARES IV PLC ISHS EUR GVMT BD 20YR TGT DUR EUR DIST", "ETF") == "ETF"
 
 
-def test_lse_instrument_search_target_tickers_selects_only_uncovered_lse_reference_gaps(tmp_path):
+def test_lse_instrument_search_target_tickers_selects_reference_gaps_and_missing_isins(tmp_path):
     listings_path = tmp_path / "listings.csv"
     listings_path.write_text(
         "\n".join(
@@ -2196,7 +2412,7 @@ def test_lse_instrument_search_target_tickers_selects_only_uncovered_lse_referen
         reference_gap_tickers={"PHGP", "ABF"},
     )
 
-    assert target_tickers == ["ABF", "PHGP"]
+    assert target_tickers == ["ABF", "PHGP", "VUSA"]
 
 
 def test_load_lse_instrument_search_rows_prefers_cache_and_only_fetches_missing(tmp_path, monkeypatch):
@@ -2214,7 +2430,7 @@ def test_load_lse_instrument_search_rows_prefers_cache_and_only_fetches_missing(
     )
     cache_path = tmp_path / "lse_instrument_search.json"
     cache_path.write_text(
-        '{"PHGP":[{"source_key":"lse_lookup","provider":"LSE","source_url":"https://example.com?codeName=PHGP","ticker":"PHGP","name":"WISDOMTREE METAL SECURITIES WISDOMTREE PHYSICAL GOLD £","exchange":"LSE","asset_type":"ETF","listing_status":"active","reference_scope":"security_lookup_subset","official":"true"}]}',
+        '{"PHGP":[{"source_key":"lse_lookup","provider":"LSE","source_url":"https://example.com?codeName=PHGP","ticker":"PHGP","name":"WISDOMTREE METAL SECURITIES WISDOMTREE PHYSICAL GOLD £","exchange":"LSE","asset_type":"Stock","listing_status":"active","reference_scope":"security_lookup_subset","official":"true","isin":"JE00B1VS3770"}]}',
         encoding="utf-8",
     )
     legacy_cache_path = tmp_path / "legacy.json"
@@ -2242,6 +2458,7 @@ def test_load_lse_instrument_search_rows_prefers_cache_and_only_fetches_missing(
         names = {
             "ABF": "ASSOCIATED BRITISH FOODS PLC ORD 5 15/22P",
             "PHGP": "WISDOMTREE METAL SECURITIES WISDOMTREE PHYSICAL GOLD £",
+            "VUSA": "VANGUARD FUNDS PLC VANGUARD S&P 500 UCITS ETF USD",
         }
         return [
             {
@@ -2272,9 +2489,13 @@ def test_load_lse_instrument_search_rows_prefers_cache_and_only_fetches_missing(
     rows, mode = load_lse_instrument_search_rows(source)
 
     assert mode == "network"
-    assert [item[0] for item in fetched] == [["ABF"], ["PHGP"]]
+    assert [item[0] for item in fetched] == [["ABF"], ["VUSA"]]
     assert fetched[0][1] == {"PHGP": "ETF", "VUSA": "ETF", "ABF": "Stock"}
-    assert [(row["ticker"], row["asset_type"], row.get("isin", "")) for row in rows] == [("ABF", "Stock", "ISIN-ABF"), ("PHGP", "ETF", "ISIN-PHGP")]
+    assert [(row["ticker"], row["asset_type"], row.get("isin", "")) for row in rows] == [
+        ("ABF", "Stock", "ISIN-ABF"),
+        ("PHGP", "ETF", "JE00B1VS3770"),
+        ("VUSA", "ETF", "ISIN-VUSA"),
+    ]
 
     monkeypatch.setattr(
         "scripts.fetch_exchange_masterfiles.fetch_lse_instrument_search_exact",
@@ -2283,7 +2504,11 @@ def test_load_lse_instrument_search_rows_prefers_cache_and_only_fetches_missing(
     rows, mode = load_lse_instrument_search_rows(source)
 
     assert mode == "cache"
-    assert [(row["ticker"], row["asset_type"], row.get("isin", "")) for row in rows] == [("ABF", "Stock", "ISIN-ABF"), ("PHGP", "ETF", "ISIN-PHGP")]
+    assert [(row["ticker"], row["asset_type"], row.get("isin", "")) for row in rows] == [
+        ("ABF", "Stock", "ISIN-ABF"),
+        ("PHGP", "ETF", "JE00B1VS3770"),
+        ("VUSA", "ETF", "ISIN-VUSA"),
+    ]
 
 
 def test_load_lse_instrument_search_rows_retains_cached_rows_outside_current_target_set(tmp_path, monkeypatch):
@@ -2436,6 +2661,12 @@ def test_parse_krx_stock_finder_records_maps_rows():
             "codeName": "아모레퍼시픽그룹1우",
             "marketEngName": "KOSPI",
             "full_code": "KR700279K016",
+        },
+        {
+            "short_code": "003380",
+            "codeName": "하림지주",
+            "marketEngName": "KOSDAQ GLOBAL",
+            "full_code": "KR7003380003",
         }
     ]
 
@@ -2454,7 +2685,20 @@ def test_parse_krx_stock_finder_records_maps_rows():
             "reference_scope": "exchange_directory",
             "official": "true",
             "isin": "KR700279K016",
-        }
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "003380",
+            "name": "하림지주",
+            "exchange": "KOSDAQ",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "KR7003380003",
+        },
     ]
 
 
@@ -2532,6 +2776,8 @@ def test_fetch_krx_listed_companies_fetches_kospi_kosdaq_and_konex(monkeypatch):
 
     monkeypatch.setattr("scripts.fetch_exchange_masterfiles.pd.read_html", lambda *_args, **_kwargs: [object()])
     monkeypatch.setattr("scripts.fetch_exchange_masterfiles.latest_reference_gap_tickers", lambda *_args, **_kwargs: set())
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.missing_isin_listing_tickers", lambda **_kwargs: set())
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.fetch_krx_finder_records", lambda *args, **kwargs: [])
     session = FakeSession()
     rows = fetch_krx_listed_companies(source, session=session)
 
@@ -2576,6 +2822,7 @@ def test_fetch_krx_listed_companies_supplements_target_gaps_from_finder(monkeypa
         "scripts.fetch_exchange_masterfiles.latest_reference_gap_tickers",
         lambda *_args, **_kwargs: {"00279K"},
     )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.missing_isin_listing_tickers", lambda **_kwargs: set())
     monkeypatch.setattr(
         "scripts.fetch_exchange_masterfiles.fetch_krx_finder_records",
         lambda *args, **kwargs: [
@@ -2607,6 +2854,61 @@ def test_fetch_krx_listed_companies_supplements_target_gaps_from_finder(monkeypa
     ]
 
 
+def test_fetch_krx_listed_companies_replaces_missing_isin_from_finder(monkeypatch):
+    source = MasterfileSource(
+        key="krx",
+        provider="KRX",
+        description="KRX listed companies",
+        source_url="https://example.com/krx",
+        format="krx_listed_companies_json",
+    )
+
+    class FakeResponse:
+        def __init__(self, text="", payload=None):
+            self.text = text
+            self._payload = payload
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.headers = {}
+
+        def get(self, url, **kwargs):
+            if "GenerateOTP.jspx" in url:
+                return FakeResponse(text="otp")
+            return FakeResponse(text="<table><tr><td>ok</td></tr></table>")
+
+        def post(self, url, data=None, **kwargs):
+            if data["market_gubun"] == "1":
+                return FakeResponse(payload={"block1": [{"isu_cd": "005930", "eng_cor_nm": "SAMSUNG ELECTRONICS"}]})
+            return FakeResponse(payload={"block1": []})
+
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.pd.read_html", lambda *_args, **_kwargs: [object()])
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.latest_reference_gap_tickers", lambda *_args, **_kwargs: set())
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.missing_isin_listing_tickers", lambda **_kwargs: {"005930"})
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.fetch_krx_finder_records",
+        lambda *args, **kwargs: [
+            {
+                "short_code": "005930",
+                "codeName": "삼성전자",
+                "marketEngName": "KOSPI",
+                "full_code": "KR7005930003",
+            }
+        ],
+    )
+
+    rows = fetch_krx_listed_companies(source, session=FakeSession())
+
+    assert rows[0]["ticker"] == "005930"
+    assert rows[0]["isin"] == "KR7005930003"
+
+
 def test_fetch_krx_etf_finder_posts_finder_request(monkeypatch):
     source = MasterfileSource(
         key="krx_etf_finder",
@@ -2632,6 +2934,7 @@ def test_fetch_krx_etf_finder_posts_finder_request(monkeypatch):
             return FakeResponse()
 
     monkeypatch.setattr("scripts.fetch_exchange_masterfiles.latest_reference_gap_tickers", lambda *_args, **_kwargs: set())
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.missing_isin_listing_tickers", lambda **_kwargs: set())
     session = FakeSession()
     rows = fetch_krx_etf_finder(source, session=session)
 
@@ -2650,7 +2953,20 @@ def test_fetch_krx_etf_finder_posts_finder_request(monkeypatch):
                 "Referer": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
             },
             30.0,
-        )
+        ),
+        (
+            "https://data.krx.co.kr/comm/bldAttendant/getJsonData.cmd",
+            {
+                "bld": "dbms/comm/finder/finder_secuprodisu",
+                "mktsel": "ALL",
+                "searchText": "",
+            },
+            {
+                "User-Agent": "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)",
+                "Referer": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+            },
+            30.0,
+        ),
     ]
 
 
@@ -2667,6 +2983,7 @@ def test_fetch_krx_etf_finder_replaces_target_gap_with_exact_product_finder_row(
         "scripts.fetch_exchange_masterfiles.latest_reference_gap_tickers",
         lambda *_args, **_kwargs: {"448100"},
     )
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.missing_isin_listing_tickers", lambda **_kwargs: set())
 
     def fake_fetch_krx_finder_records(bld, *, mktsel="ALL", search_text="", session=None):
         assert bld == "dbms/comm/finder/finder_secuprodisu"
@@ -2687,7 +3004,7 @@ def test_fetch_krx_etf_finder_replaces_target_gap_with_exact_product_finder_row(
             "provider": "KRX",
             "source_url": "https://example.com/krx-etf",
             "ticker": "448100",
-            "name": "ACE 테슬라밸류체인액티브",
+            "name": "ACE Tesla Value Chain Active",
             "exchange": "KRX",
             "asset_type": "ETF",
             "listing_status": "active",
@@ -2696,6 +3013,35 @@ def test_fetch_krx_etf_finder_replaces_target_gap_with_exact_product_finder_row(
             "isin": "KR7448100001",
         }
     ]
+
+
+def test_fetch_krx_etf_finder_replaces_missing_isin_from_product_finder(monkeypatch):
+    source = MasterfileSource(
+        key="krx_etf_finder",
+        provider="KRX",
+        description="KRX ETF finder",
+        source_url="https://example.com/krx-etf",
+        format="krx_etf_finder_json",
+    )
+
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.latest_reference_gap_tickers", lambda *_args, **_kwargs: set())
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.missing_isin_listing_tickers", lambda **_kwargs: {"448100"})
+
+    def fake_fetch_krx_finder_records(bld, *, mktsel="ALL", search_text="", session=None):
+        assert bld == "dbms/comm/finder/finder_secuprodisu"
+        if mktsel == "ETF":
+            return [{"short_code": "448100", "codeName": "ACE Tesla Value Chain Active"}]
+        return [{"short_code": "448100", "codeName": "ACE 테슬라밸류체인액티브", "full_code": "KR7448100001"}]
+
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.fetch_krx_finder_records",
+        fake_fetch_krx_finder_records,
+    )
+
+    rows = fetch_krx_etf_finder(source, session=object())
+
+    assert rows[0]["ticker"] == "448100"
+    assert rows[0]["isin"] == "KR7448100001"
 
 
 def test_krx_source_is_modeled_as_partial_official_coverage() -> None:
@@ -3383,6 +3729,7 @@ def test_parse_deutsche_boerse_listed_companies_excel_maps_xetra_rows(tmp_path):
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "isin": "DE0005557508",
         },
         {
             "source_key": "test",
@@ -3395,6 +3742,7 @@ def test_parse_deutsche_boerse_listed_companies_excel_maps_xetra_rows(tmp_path):
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "isin": "DE000A0WMPJ6",
         },
     ]
 
@@ -3441,6 +3789,7 @@ def test_parse_deutsche_boerse_etfs_etps_excel_maps_xetra_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "isin": "IE000J7QYHD8",
         },
         {
             "source_key": "test",
@@ -3453,6 +3802,7 @@ def test_parse_deutsche_boerse_etfs_etps_excel_maps_xetra_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "isin": "DE000A27Z304",
         },
     ]
 
@@ -3483,6 +3833,7 @@ def test_parse_deutsche_boerse_xetra_all_tradable_csv_maps_stock_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "isin": "US70450Y1038",
         }
     ]
 
@@ -4110,6 +4461,7 @@ def test_parse_euronext_equities_download_maps_markets():
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "isin": "IT0001233417",
         },
         {
             "source_key": "test",
@@ -4122,6 +4474,7 @@ def test_parse_euronext_equities_download_maps_markets():
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "isin": "BMG9156K1018",
         },
         {
             "source_key": "test",
@@ -4134,6 +4487,7 @@ def test_parse_euronext_equities_download_maps_markets():
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "isin": "NL0000000001",
         },
         {
             "source_key": "test",
@@ -4146,6 +4500,7 @@ def test_parse_euronext_equities_download_maps_markets():
             "listing_status": "active",
             "reference_scope": "secondary_listing_subset",
             "official": "true",
+            "isin": "US88579Y1010",
         },
     ]
 
@@ -4176,6 +4531,7 @@ def test_parse_euronext_etfs_download_keeps_etf_asset_type():
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "isin": "XS2337085422",
         },
         {
             "source_key": "test",
@@ -4188,6 +4544,7 @@ def test_parse_euronext_etfs_download_keeps_etf_asset_type():
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "isin": "FR0010411884",
         },
     ]
 
@@ -4205,7 +4562,11 @@ def test_parse_b3_instruments_equities_table_keeps_cash_stocks_and_etfs_only():
         ],
         "values": [
             ["PETR4", "PETROBRAS PN", "CASH", "EQUITY-CASH", "SHARES", "BRPETRACNPR6", "PETROLEO BRASILEIRO S.A. PETROBRAS"],
-            ["BOVA11", "ISHARES IBOV CI", "CASH", "EQUITY-CASH", "ETF EQUITIES", "BRBOVACTF004", "ISHARES IBOVESPA FUNDO DE INDICE"],
+            ["BOVA11", "ISHARES IBOV CI", "CASH", "EQUITY-CASH", "ETF EQUITIES", "BRBOVACTF003", "ISHARES IBOVESPA FUNDO DE INDICE"],
+            ["KNOX11", "FIP IE KNOX CI", "CASH", "EQUITY-CASH", "FUNDS", "BRKNOXCTF003", "KNOX DEBT FDO. INVEST. PART. INFRAESTRUTURA"],
+            ["BEWQ39", "MSCI FRANCE DRE", "CASH", "EQUITY-CASH", "BDR", "BRBEWQBDR009", "ISHARES MSCI FRANCE ETF"],
+            ["ATTB34", "ATT INC DRN ED", "CASH", "EQUITY-CASH", "BDR", "BRATTBBDR007", "AT&T INC."],
+            ["ADMF3", "", "CASH", "EQUITY-CASH", "", "BRADMFACNOR3", "CIABRASF CIA BRASILEIRA DE SERVIÇOS FINANCEIROS SA"],
             ["AAPL34", "APPLE DRN", "CASH", "EQUITY-CASH", "BDR", "BRAAPLBDR002", "APPLE INC."],
             ["TAXA150", "FINANC/TERMO", "CASH", "EQUITY-CASH", "SHARES", "BRTAXAINDM77", "TAXA DE FINANCIAMENTO"],
             ["PETR4T", "PETROBRAS PN", "EQUITY FORWARD", "EQUITY-DERIVATE", "COMMON EQUITIES FORWARD", "BRPETRTNO001", "PETROLEO BRASILEIRO S.A. PETROBRAS"],
@@ -4226,6 +4587,7 @@ def test_parse_b3_instruments_equities_table_keeps_cash_stocks_and_etfs_only():
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "isin": "BRPETRACNPR6",
         },
         {
             "source_key": "test",
@@ -4238,6 +4600,46 @@ def test_parse_b3_instruments_equities_table_keeps_cash_stocks_and_etfs_only():
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "isin": "BRBOVACTF003",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "KNOX11",
+            "name": "KNOX DEBT FDO. INVEST. PART. INFRAESTRUTURA",
+            "exchange": "B3",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "BRKNOXCTF003",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "BEWQ39",
+            "name": "ISHARES MSCI FRANCE ETF",
+            "exchange": "B3",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "BRBEWQBDR009",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "ADMF3",
+            "name": "CIABRASF CIA BRASILEIRA DE SERVIÇOS FINANCEIROS SA",
+            "exchange": "B3",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "BRADMFACNOR3",
         },
     ]
 
@@ -5262,6 +5664,16 @@ def test_parse_spotlight_company_title_extracts_name_and_ticker() -> None:
     assert ticker == "HOME B"
 
 
+def test_spotlight_trade_url_and_isin_extraction() -> None:
+    detail_url = "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT01001575"
+
+    assert (
+        spotlight_trade_url_from_detail_url(detail_url)
+        == "https://spotlightstockmarket.com/sv/bolag/irtrade?InstrumentId=XSAT01001575"
+    )
+    assert extract_spotlight_detail_isin("XSAT01001575 ISIN-kod SE0008014476") == "SE0008014476"
+
+
 def test_fetch_spotlight_companies_directory_builds_rows_from_detail_pages() -> None:
     source = MasterfileSource(
         key="spotlight_companies_directory",
@@ -5300,7 +5712,9 @@ def test_fetch_spotlight_companies_directory_builds_rows_from_detail_pages() -> 
                 )
             pages = {
                 "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT01000436": "<title>HomeMaid (HOME B) | Spotlight</title>",
+                "https://spotlightstockmarket.com/sv/bolag/irtrade?InstrumentId=XSAT01000436": "XSAT01000436 ISIN-kod SE0001426131",
                 "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT0000413578": "<title>B Treasury Capital AB (BTC B) | Spotlight</title>",
+                "https://spotlightstockmarket.com/sv/bolag/irtrade?InstrumentId=XSAT0000413578": "ISIN SE0025198542",
             }
             return FakeResponse(text=pages[url])
 
@@ -5319,6 +5733,7 @@ def test_fetch_spotlight_companies_directory_builds_rows_from_detail_pages() -> 
             "listing_status": "active",
             "reference_scope": "listed_companies_subset",
             "official": "true",
+            "isin": "SE0001426131",
         },
         {
             "source_key": "spotlight_companies_directory",
@@ -5331,12 +5746,15 @@ def test_fetch_spotlight_companies_directory_builds_rows_from_detail_pages() -> 
             "listing_status": "active",
             "reference_scope": "listed_companies_subset",
             "official": "true",
+            "isin": "SE0025198542",
         },
     ]
     assert session.calls == [
         "https://spotlightstockmarket.com/Umbraco/api/companyapi/GetCompanies",
         "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT01000436",
+        "https://spotlightstockmarket.com/sv/bolag/irtrade?InstrumentId=XSAT01000436",
         "https://spotlightstockmarket.com/sv/bolag/irabout?InstrumentId=XSAT0000413578",
+        "https://spotlightstockmarket.com/sv/bolag/irtrade?InstrumentId=XSAT0000413578",
     ]
 
 
@@ -5374,6 +5792,8 @@ def test_fetch_spotlight_companies_directory_skips_broken_detail_pages() -> None
                 )
             if "BROKEN" in url:
                 raise requests.RequestException("boom")
+            if "irtrade" in url:
+                return FakeResponse(text="ISIN-kod SE0001426131")
             return FakeResponse(text="<title>HomeMaid (HOME B) | Spotlight</title>")
 
     rows = fetch_spotlight_companies_directory(source, session=FakeSession())
@@ -5390,6 +5810,7 @@ def test_fetch_spotlight_companies_directory_skips_broken_detail_pages() -> None
             "listing_status": "active",
             "reference_scope": "listed_companies_subset",
             "official": "true",
+            "isin": "SE0001426131",
         }
     ]
 
@@ -5558,6 +5979,47 @@ def test_parse_ngm_companies_page_html_maps_primary_symbols() -> None:
     ]
 
 
+def test_fetch_ngm_detailview_isin_posts_official_gwt_payload() -> None:
+    class FakeResponse:
+        text = '//OK["SE0000598278","AIK Fotboll","instrumentID","2X7"]'
+
+        def raise_for_status(self):
+            return None
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def post(self, url, data=None, headers=None, timeout=None):
+            self.calls.append((url, data.decode("utf-8"), headers, timeout))
+            return FakeResponse()
+
+    session = FakeSession()
+    isin = fetch_exchange_masterfiles.fetch_ngm_detailview_isin("2X7", session=session)
+
+    assert isin == "SE0000598278"
+    assert session.calls == [
+        (
+            "https://mdweb.ngm.se/MDWebFront/detailview/service",
+            (
+                "7|0|8|https://mdweb.ngm.se/MDWebFront/detailview/|"
+                "9CB8691CD75E82471063725CB524FFF9|"
+                "se.ngm.mdweb.front.client.rpc.SearchRPCService|findInstrument|"
+                "java.lang.String/2004016611|Z|2X7|en_US|"
+                "1|2|3|4|5|5|5|5|5|6|7|0|0|8|0|"
+            ),
+            {
+                "User-Agent": fetch_exchange_masterfiles.USER_AGENT,
+                "Content-Type": "text/x-gwt-rpc; charset=UTF-8",
+                "Referer": "https://mdweb.ngm.se/",
+                "X-GWT-Module-Base": "https://mdweb.ngm.se/MDWebFront/detailview/",
+                "X-GWT-Permutation": "E66E1EEBE9B1CEBA056C88011CCBF307",
+            },
+            fetch_exchange_masterfiles.REQUEST_TIMEOUT,
+        )
+    ]
+
+
 def test_fetch_ngm_companies_page_parses_official_page() -> None:
     source = MasterfileSource(
         key="ngm_companies_page",
@@ -5569,18 +6031,19 @@ def test_fetch_ngm_companies_page_parses_official_page() -> None:
     )
     payload = html.escape(
         json.dumps(
-            [
-                {
-                    "title": "Lumito AB",
-                    "symbols": [{"symbol": "LUMITO", "is_primary": True}],
-                }
-            ]
-        ),
-        quote=True,
-    )
+                [
+                    {
+                        "title": "AIK Fotboll",
+                        "symbols": [{"symbol": "AIK B", "is_primary": True, "order_book_id": "2X7"}],
+                    }
+                ]
+            ),
+            quote=True,
+        )
 
     class FakeResponse:
-        text = f'<company-list :items="{payload}" />'
+        def __init__(self, text):
+            self.text = text
 
         def raise_for_status(self):
             return None
@@ -5590,8 +6053,12 @@ def test_fetch_ngm_companies_page_parses_official_page() -> None:
             self.calls = []
 
         def get(self, url, headers=None, timeout=None):
-            self.calls.append((url, timeout))
-            return FakeResponse()
+            self.calls.append(("GET", url, timeout))
+            return FakeResponse(f'<company-list :items="{payload}" />')
+
+        def post(self, url, data=None, headers=None, timeout=None):
+            self.calls.append(("POST", url, data.decode("utf-8"), timeout))
+            return FakeResponse('//OK["SE0000598278","AIK Fotboll","instrumentID","2X7"]')
 
     session = FakeSession()
     rows = fetch_ngm_companies_page(source, session=session)
@@ -5599,18 +6066,161 @@ def test_fetch_ngm_companies_page_parses_official_page() -> None:
     assert rows == [
         {
             "source_key": "ngm_companies_page",
+                "provider": "NGM",
+                "source_url": "https://www.ngm.se/en/our-companies/",
+                "ticker": "AIK-B",
+                "name": "AIK Fotboll",
+                "exchange": "STO",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": "listed_companies_subset",
+                "official": "true",
+                "isin": "SE0000598278",
+            }
+        ]
+    assert session.calls == [
+        ("GET", "https://www.ngm.se/en/our-companies/", fetch_exchange_masterfiles.REQUEST_TIMEOUT),
+        (
+            "POST",
+            "https://mdweb.ngm.se/MDWebFront/detailview/service",
+            (
+                "7|0|8|https://mdweb.ngm.se/MDWebFront/detailview/|"
+                "9CB8691CD75E82471063725CB524FFF9|"
+                "se.ngm.mdweb.front.client.rpc.SearchRPCService|findInstrument|"
+                "java.lang.String/2004016611|Z|2X7|en_US|"
+                "1|2|3|4|5|5|5|5|5|6|7|0|0|8|0|"
+            ),
+            fetch_exchange_masterfiles.REQUEST_TIMEOUT,
+        ),
+    ]
+
+
+def test_parse_ngm_market_data_equities_maps_symbols_and_isins() -> None:
+    source = MasterfileSource(
+        key="ngm_market_data_equities",
+        provider="NGM",
+        description="Official Nordic Growth Market market-data supplement for active equities",
+        source_url="https://mdapi.ngm.se/api/beta/web/",
+        format="ngm_market_data_equities_json",
+        reference_scope="listed_companies_subset",
+    )
+
+    rows = parse_ngm_market_data_equities(
+        [
+            {
+                "symbol": "ECC B",
+                "name": "Ecoclime Group B",
+                "isin": "SE0012729937",
+                "currency": "SEK",
+                "cfi": "ESVUFR",
+            },
+            {
+                "symbol": "BULL TEST",
+                "name": "BULL TEST",
+                "isin": "DE0000000001",
+                "currency": "SEK",
+                "cfi": "RFXXXX",
+            },
+            {
+                "symbol": "NOKIA",
+                "name": "Nokia Oyj",
+                "isin": "FI0009000681",
+                "currency": "EUR",
+                "cfi": "ESVUFR",
+            },
+        ],
+        source,
+        source_url="https://mdapi.ngm.se/api/beta/web/security_statistics/winners?cfi=ESVUFR",
+    )
+
+    assert rows == [
+        {
+            "source_key": "ngm_market_data_equities",
             "provider": "NGM",
-            "source_url": "https://www.ngm.se/en/our-companies/",
-            "ticker": "LUMITO",
-            "name": "Lumito AB",
+            "source_url": "https://mdapi.ngm.se/api/beta/web/security_statistics/winners?cfi=ESVUFR",
+            "ticker": "ECC-B",
+            "name": "Ecoclime Group B",
             "exchange": "STO",
             "asset_type": "Stock",
             "listing_status": "active",
             "reference_scope": "listed_companies_subset",
             "official": "true",
+            "isin": "SE0012729937",
         }
     ]
-    assert session.calls == [("https://www.ngm.se/en/our-companies/", fetch_exchange_masterfiles.REQUEST_TIMEOUT)]
+
+
+def test_fetch_ngm_market_data_equities_combines_official_endpoints() -> None:
+    source = MasterfileSource(
+        key="ngm_market_data_equities",
+        provider="NGM",
+        description="Official Nordic Growth Market market-data supplement for active equities",
+        source_url="https://mdapi.ngm.se/api/beta/web/",
+        format="ngm_market_data_equities_json",
+        reference_scope="listed_companies_subset",
+    )
+
+    class FakeResponse:
+        def __init__(self, payload):
+            self._payload = payload
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, headers=None, timeout=None):
+            self.calls.append(url)
+            payloads = {
+                "last_trades?cfi=ESVUFR": [
+                    {
+                        "symbol": "ARGO",
+                        "name": "Argo Defence Group",
+                        "isin": "SE0026820540",
+                        "currency": "SEK",
+                        "cfi": "ESVUFR",
+                    }
+                ],
+                "security_statistics/highest_turnover?cfi=ESVUFR": [
+                    {
+                        "symbol": "ARGO",
+                        "name": "Argo Defence Group",
+                        "isin": "SE0026820540",
+                        "currency": "SEK",
+                        "cfi": "ESVUFR",
+                    },
+                    {
+                        "symbol": "ASTOR",
+                        "name": "Scandinavian Astor Group",
+                        "isin": "SE0019175274",
+                        "currency": "SEK",
+                        "cfi": "ESVUFR",
+                    },
+                ],
+                "security_statistics/winners?cfi=ESVUFR": [],
+                "security_statistics/losers?cfi=ESVUFR": [],
+            }
+            return FakeResponse(payloads[url.split("/web/", 1)[1]])
+
+    session = FakeSession()
+    rows = fetch_ngm_market_data_equities(source, session=session)
+
+    assert [row["ticker"] for row in rows] == ["ARGO", "ASTOR"]
+    assert rows[0]["isin"] == "SE0026820540"
+    assert rows[1]["source_url"] == (
+        "https://mdapi.ngm.se/api/beta/web/security_statistics/highest_turnover?cfi=ESVUFR"
+    )
+    assert session.calls == [
+        "https://mdapi.ngm.se/api/beta/web/last_trades?cfi=ESVUFR",
+        "https://mdapi.ngm.se/api/beta/web/security_statistics/highest_turnover?cfi=ESVUFR",
+        "https://mdapi.ngm.se/api/beta/web/security_statistics/winners?cfi=ESVUFR",
+        "https://mdapi.ngm.se/api/beta/web/security_statistics/losers?cfi=ESVUFR",
+    ]
 
 
 def test_fetch_bmv_stock_search_backfills_exact_ticker_gaps(tmp_path, monkeypatch) -> None:
@@ -6717,6 +7327,7 @@ def test_fetch_bmv_issuer_directory_backfills_local_and_global_matches(tmp_path,
                 "CREAL,BMV,Stock,Credito Real S.A.B. de C.V.,MX00CR000000",
                 "NION,BMV,Stock,NIO Inc,KYG6525F1028",
                 "ROGN,BMV,Stock,Roche Holding AG,CH0012032048",
+                "BRKB,BMV,Stock,Berkshire Hathaway Inc,",
                 "VDCAN,BMV,ETF,Vanguard Funds Public Limited Company - Vanguard USD Corporate 1-3 Year Bond UCI,IE00BGYWSV06",
                 "VFEAN,BMV,ETF,Vanguard Funds Public Limited Company - Vanguard FTSE Emerging Markets UCITS ETF,",
             ]
@@ -6801,6 +7412,13 @@ def test_fetch_bmv_issuer_directory_backfills_local_and_global_matches(tmp_path,
                                 "razonSocial": "ROCHE HOLDING AG",
                                 "isin": "CH0012032048",
                             },
+                            {
+                                "claveEmisora": None,
+                                "claveEmision": "BRKB",
+                                "serie": "*",
+                                "razonSocial": "BERKSHIRE HATHAWAY INC",
+                                "isin": "US0846707026",
+                            },
                         ]
                     }
                 },
@@ -6881,6 +7499,19 @@ def test_fetch_bmv_issuer_directory_backfills_local_and_global_matches(tmp_path,
             "source_key": "bmv_issuer_directory",
             "provider": "BMV",
             "source_url": "https://staging.bmv.com.mx/es/Grupo_BMV/Informacion_de_emisora/_rid/541/_mto/3/_mod/doSearch",
+            "ticker": "BRKB",
+            "name": "BERKSHIRE HATHAWAY INC",
+            "exchange": "BMV",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "US0846707026",
+        },
+        {
+            "source_key": "bmv_issuer_directory",
+            "provider": "BMV",
+            "source_url": "https://staging.bmv.com.mx/es/Grupo_BMV/Informacion_de_emisora/_rid/541/_mto/3/_mod/doSearch",
             "ticker": "VDCAN",
             "name": "Vanguard USD Corporate 1-3 year UCITS ETF",
             "exchange": "BMV",
@@ -6950,6 +7581,183 @@ def test_bme_sources_are_modeled_as_partial_official_coverage() -> None:
 
     assert stock_source.reference_scope == "listed_companies_subset"
     assert etf_source.reference_scope == "listed_companies_subset"
+
+
+def test_bursa_equity_isin_source_is_modeled_as_partial_official_coverage() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "bursa_equity_isin")
+
+    assert source.provider == "Bursa Malaysia"
+    assert source.format == "bursa_equity_isin_pdf"
+    assert source.reference_scope == "listed_companies_subset"
+
+
+def test_derive_bursa_ticker_from_isin_handles_supported_official_shapes() -> None:
+    assert fetch_exchange_masterfiles.derive_bursa_ticker_from_isin("MYQ0306OO009", "ORDINARY SHARE") == "0306"
+    assert fetch_exchange_masterfiles.derive_bursa_ticker_from_isin("MYL03060O000", "ORDINARY SHARE") == "03060"
+    assert fetch_exchange_masterfiles.derive_bursa_ticker_from_isin("MYL5338TO007", "REITS") == "5338"
+    assert fetch_exchange_masterfiles.derive_bursa_ticker_from_isin("MYL5235SS008", "REITS") == "5235SS"
+    assert fetch_exchange_masterfiles.derive_bursa_ticker_from_isin("MYL5108FO003", "CLOSE END FUND") == "5108"
+    assert fetch_exchange_masterfiles.derive_bursa_ticker_from_isin("MYL0828EA003", "ETF") == "0828EA"
+    assert fetch_exchange_masterfiles.derive_bursa_ticker_from_isin("MYL1163PA000", "PREFERENCE SHARES") == ""
+    assert fetch_exchange_masterfiles.derive_bursa_ticker_from_isin("BMG9828L1072", "ORDINARY SHARE FOREIGN") == ""
+
+
+def test_parse_bursa_equity_isin_table_rows_maps_derivable_stock_and_etf_rows() -> None:
+    source = MasterfileSource(
+        key="bursa_equity_isin",
+        provider="Bursa Malaysia",
+        description="Official Bursa Malaysia equity ISIN PDF",
+        source_url="https://www.bursamalaysia.com/trade/trading_resources/equities/isin",
+        format="bursa_equity_isin_pdf",
+        reference_scope="listed_companies_subset",
+    )
+    table_rows = [
+        [
+            "No.",
+            "Stock Name (Long)",
+            "Stock Name (Short)",
+            "ISIN",
+            "Issue Description",
+            "Date Of Listing",
+            "Instrument Category",
+        ],
+        ["1", "SMART ASIA CHEMICAL BHD", "SMART", "MYQ0306OO009", "ORDINARY SHARE", "17/02/2025", ""],
+        ["2", "HYDROPIPES BERHAD", "HPI", "MYL03060O000", "ORDINARY SHARE", "27/09/2024", ""],
+        ["3", "TRADEPLUS SHARIAH GOLD TRACKER", "GOLDETF", "MYL0828EA003", "ETF", "06/12/2017", ""],
+        ["4", "ICAPITAL.BIZ BHD", "ICAP", "MYL5108FO003", "CLOSE END FUND", "19/10/2005", ""],
+        ["5", "KLCC PROP&REITS-STAPLED SEC", "KLCC", "MYL5235SS008", "REITS", "09/05/2013", ""],
+        ["6", "ALLIANZ MALAYSIA BERHAD", "ALLIANZ-PA", "MYL1163PA000", "PREFERENCE SHARES", "", ""],
+        ["7", "XIDELANG HOLDINGS LTD", "XDL", "BMG9828L1072", "ORDINARY SHARE", "", ""],
+    ]
+
+    rows = fetch_exchange_masterfiles.parse_bursa_equity_isin_table_rows(
+        table_rows,
+        source,
+        listings_by_isin={
+            "BMG9828L1072": [
+                {
+                    "ticker": "5156",
+                    "exchange": "Bursa",
+                    "asset_type": "Stock",
+                    "isin": "BMG9828L1072",
+                }
+            ]
+        },
+        source_url="https://example.com/isinequity.pdf",
+    )
+
+    assert rows == [
+        {
+            "source_key": "bursa_equity_isin",
+            "provider": "Bursa Malaysia",
+            "source_url": "https://example.com/isinequity.pdf",
+            "ticker": "0306",
+            "name": "SMART ASIA CHEMICAL BHD",
+            "exchange": "Bursa",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "MYQ0306OO009",
+        },
+        {
+            "source_key": "bursa_equity_isin",
+            "provider": "Bursa Malaysia",
+            "source_url": "https://example.com/isinequity.pdf",
+            "ticker": "03060",
+            "name": "HYDROPIPES BERHAD",
+            "exchange": "Bursa",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "MYL03060O000",
+        },
+        {
+            "source_key": "bursa_equity_isin",
+            "provider": "Bursa Malaysia",
+            "source_url": "https://example.com/isinequity.pdf",
+            "ticker": "0828EA",
+            "name": "TRADEPLUS SHARIAH GOLD TRACKER",
+            "exchange": "Bursa",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "MYL0828EA003",
+        },
+        {
+            "source_key": "bursa_equity_isin",
+            "provider": "Bursa Malaysia",
+            "source_url": "https://example.com/isinequity.pdf",
+            "ticker": "5108",
+            "name": "ICAPITAL.BIZ BHD",
+            "exchange": "Bursa",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "MYL5108FO003",
+        },
+        {
+            "source_key": "bursa_equity_isin",
+            "provider": "Bursa Malaysia",
+            "source_url": "https://example.com/isinequity.pdf",
+            "ticker": "5235SS",
+            "name": "KLCC PROP&REITS-STAPLED SEC",
+            "exchange": "Bursa",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "MYL5235SS008",
+        },
+        {
+            "source_key": "bursa_equity_isin",
+            "provider": "Bursa Malaysia",
+            "source_url": "https://example.com/isinequity.pdf",
+            "ticker": "5156",
+            "name": "XIDELANG HOLDINGS LTD",
+            "exchange": "Bursa",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "BMG9828L1072",
+        },
+    ]
+
+
+def test_load_bursa_equity_isin_rows_falls_back_to_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "bursa_equity_isin.json"
+    cache_path.write_text(
+        '[{"ticker":"0306","name":"SMART ASIA CHEMICAL BHD","exchange":"Bursa","asset_type":"Stock","listing_status":"active","isin":"MYQ0306OO009"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "BURSA_EQUITY_ISIN_CACHE", cache_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "LEGACY_BURSA_EQUITY_ISIN_CACHE", tmp_path / "missing.json")
+    monkeypatch.setattr(fetch_exchange_masterfiles, "BURSA_EQUITY_ISIN_PDF_CACHE", tmp_path / "missing.pdf")
+    monkeypatch.setattr(fetch_exchange_masterfiles, "LEGACY_BURSA_EQUITY_ISIN_PDF_CACHE", tmp_path / "missing-legacy.pdf")
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_bursa_equity_isin_rows",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "bursa_equity_isin")
+    rows, mode = fetch_exchange_masterfiles.load_bursa_equity_isin_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "0306",
+            "name": "SMART ASIA CHEMICAL BHD",
+            "exchange": "Bursa",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "isin": "MYQ0306OO009",
+        }
+    ]
 
 
 def test_bme_request_headers_match_browser_xhr_shape() -> None:
@@ -7192,6 +8000,70 @@ def test_fetch_bme_reference_rows_maps_official_etfs(tmp_path) -> None:
     ]
 
 
+def test_parse_bme_listed_values_text_lines_maps_equities_etfs_and_latibex() -> None:
+    source = MasterfileSource(
+        key="bme_listed_values",
+        provider="BME",
+        description="Official BME listed values PDF",
+        source_url="https://example.com/listado-valores-renta-variable-es-en.pdf",
+        format="bme_listed_values_pdf",
+        reference_scope="listed_companies_subset",
+    )
+
+    rows = fetch_exchange_masterfiles.parse_bme_listed_values_text_lines(
+        [
+            "20250905 EQ ADX ES0136463017 AUDAX RENOV 281,1641 III 100.000",
+            "20250905 TF BBVAI ES0105336038 ACCION IBEX 35 ETF F.I. COTIZADO ARMONIZADO 0 VI 3.000.000",
+            "20250905 LT XPBRA BRPETRACNPR6 PETROBRAS PR 78936,06 VI 60.000",
+            "Date Segment Ticker ISIN Code Security Name ADNT / Liquidity Band LIS Fixing",
+        ],
+        source,
+        source_url="https://example.com/current.pdf",
+    )
+
+    assert rows == [
+        {
+            "source_key": "bme_listed_values",
+            "provider": "BME",
+            "source_url": "https://example.com/current.pdf",
+            "ticker": "ADX",
+            "name": "AUDAX RENOV",
+            "exchange": "BME",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "ES0136463017",
+        },
+        {
+            "source_key": "bme_listed_values",
+            "provider": "BME",
+            "source_url": "https://example.com/current.pdf",
+            "ticker": "BBVAI",
+            "name": "ACCION IBEX 35 ETF F.I. COTIZADO ARMONIZADO",
+            "exchange": "BME",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "ES0105336038",
+        },
+        {
+            "source_key": "bme_listed_values",
+            "provider": "BME",
+            "source_url": "https://example.com/current.pdf",
+            "ticker": "XPBRA",
+            "name": "PETROBRAS PR",
+            "exchange": "BME",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "BRPETRACNPR6",
+        },
+    ]
+
+
 def test_fetch_bme_reference_rows_uses_listing_isin_when_share_details_fail(tmp_path) -> None:
     source = MasterfileSource(
         key="bme_listed_companies",
@@ -7287,6 +8159,108 @@ def test_load_bme_reference_rows_falls_back_to_cache(tmp_path, monkeypatch) -> N
             "listing_status": "active",
         }
     ]
+
+
+def test_extract_bme_growth_detail_links_dedupes_official_ficha_links() -> None:
+    html = """
+    <a href="/ing/Ficha/CUATROOCHENT_ES0105509006.aspx">CUATROOCHENT.</a>
+    <a href="/ing/Ficha/CUATROOCHENT_ES0105509006.aspx">CUATROOCHENT.</a>
+    <a href="/ing/Indice/Ficha/IBEX_Growth_Market__All_Share_ES0S00001149.aspx">Index</a>
+    <a href="/ing/Ficha/COX_ENERGY_MX01CO0U0028.aspx">COX ENERGY</a>
+    """
+
+    assert fetch_exchange_masterfiles.extract_bme_growth_detail_links(html) == [
+        "https://www.bmegrowth.es/ing/Ficha/CUATROOCHENT_ES0105509006.aspx",
+        "https://www.bmegrowth.es/ing/Ficha/COX_ENERGY_MX01CO0U0028.aspx",
+    ]
+
+
+def test_bme_growth_request_headers_use_full_browser_user_agent() -> None:
+    headers = fetch_exchange_masterfiles.bme_growth_request_headers()
+
+    assert "Chrome/" in headers["User-Agent"]
+    assert headers["Referer"] == fetch_exchange_masterfiles.BME_GROWTH_PRICES_URL
+
+
+def test_parse_bme_growth_detail_page_maps_ticker_name_and_isin() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "bme_growth_prices")
+    html = """
+    <h1>SOLUCIONES CUATROOCHENTA</h1>
+    <h3>Security name</h3><p>CUATROOCHENTA</p>
+    <h3>Ticker</h3><p>480S</p>
+    <h3>ISIN</h3><p>ES0105509006</p>
+    """
+
+    assert fetch_exchange_masterfiles.parse_bme_growth_detail_page(
+        html,
+        source,
+        detail_url="https://www.bmegrowth.es/ing/Ficha/CUATROOCHENT_ES0105509006.aspx",
+    ) == {
+        "source_key": "bme_growth_prices",
+        "provider": "BME Growth",
+        "source_url": "https://www.bmegrowth.es/ing/Ficha/CUATROOCHENT_ES0105509006.aspx",
+        "ticker": "480S",
+        "name": "SOLUCIONES CUATROOCHENTA",
+        "exchange": "BME",
+        "asset_type": "Stock",
+        "listing_status": "active",
+        "reference_scope": "listed_companies_subset",
+        "official": "true",
+        "isin": "ES0105509006",
+    }
+
+
+def test_fetch_bme_growth_price_pages_replays_viewstate_without_search_submit() -> None:
+    first_page = """
+    <form method="post" action="/ing/Precios.aspx" id="Form1">
+    <input type="hidden" name="__VIEWSTATE" value="state0" />
+    <input type="hidden" name="__EVENTTARGET" value="" />
+    <input type="hidden" name="__EVENTARGUMENT" value="" />
+    <input type="submit" name="ctl00$Contenido$Buscar" value=" Search " />
+    <input type="hidden" name="ctl00$Contenido$NumPag" id="NumPag" />
+    <a href="javascript:selPag('0');">A</a><a href="javascript:selPag('1');">B</a>
+    <a href="/ing/Ficha/CUATROOCHENT_ES0105509006.aspx">CUATROOCHENT.</a>
+    </form>
+    """
+    second_page = """
+    <form method="post" action="/ing/Precios.aspx" id="Form1">
+    <input type="hidden" name="__VIEWSTATE" value="state1" />
+    <input type="hidden" name="__EVENTTARGET" value="" />
+    <input type="hidden" name="__EVENTARGUMENT" value="" />
+    <input type="submit" name="ctl00$Contenido$Buscar" value=" Search " />
+    <input type="hidden" name="ctl00$Contenido$NumPag" id="NumPag" />
+    <a href="/ing/Ficha/COX_ENERGY_MX01CO0U0028.aspx">COX ENERGY</a>
+    </form>
+    """
+
+    class FakeResponse:
+        def __init__(self, text):
+            self.text = text
+
+        def raise_for_status(self):
+            return None
+
+    class FakeSession:
+        def __init__(self):
+            self.post_calls = []
+
+        def get(self, url, headers=None, timeout=None):
+            assert url == fetch_exchange_masterfiles.BME_GROWTH_PRICES_URL
+            return FakeResponse(first_page)
+
+        def post(self, url, data=None, headers=None, timeout=None):
+            self.post_calls.append((url, data, headers))
+            assert data["ctl00$Contenido$NumPag"] == "1"
+            assert "ctl00$Contenido$Buscar" not in data
+            assert data["__VIEWSTATE"] == "state0"
+            return FakeResponse(second_page)
+
+    session = FakeSession()
+
+    pages = fetch_exchange_masterfiles.fetch_bme_growth_price_pages(session=session)
+
+    assert pages == [first_page, second_page]
+    assert session.post_calls[0][0] == fetch_exchange_masterfiles.BME_GROWTH_PRICES_URL
 
 
 def test_parse_pse_listed_company_directory_html_maps_active_securities() -> None:
@@ -7563,6 +8537,466 @@ def test_fetch_source_rows_with_mode_uses_idx_cache(tmp_path, monkeypatch) -> No
     assert mode == "cache"
     assert rows[0]["ticker"] == "AALI"
     assert rows[0]["exchange"] == "IDX"
+
+
+def test_wse_sources_are_modeled_as_partial_official_coverage() -> None:
+    stock_source = next(item for item in OFFICIAL_SOURCES if item.key == "wse_listed_companies")
+    newconnect_source = next(item for item in OFFICIAL_SOURCES if item.key == "newconnect_listed_companies")
+    etf_source = next(item for item in OFFICIAL_SOURCES if item.key == "wse_etf_list")
+
+    assert stock_source.reference_scope == "listed_companies_subset"
+    assert newconnect_source.reference_scope == "listed_companies_subset"
+    assert etf_source.reference_scope == "listed_companies_subset"
+
+
+def test_extract_html_form_inputs_keeps_checked_boxes_and_empty_text() -> None:
+    text = """
+    <form action="/spolki" id='search-form'>
+        <input type="hidden" name="action" value="GPWCompanySearch"/>
+        <input type="hidden" name="limit" value="10"/>
+        <input type="text" name="searchText"/>
+        <input type="checkbox" name="index[WIG20]" checked />
+        <input type="checkbox" name="index[mWIG40]" />
+    </form>
+    """
+
+    fields = extract_html_form_inputs(text, "search-form")
+
+    assert fields == {
+        "action": "GPWCompanySearch",
+        "limit": "10",
+        "searchText": "",
+        "index[WIG20]": "on",
+    }
+
+
+def test_parse_wse_company_search_html_maps_rows() -> None:
+    source = MasterfileSource(
+        key="wse_listed_companies",
+        provider="GPW",
+        description="Official GPW listed companies directory",
+        source_url="https://www.gpw.pl/spolki",
+        format="wse_listed_companies_html",
+        reference_scope="listed_companies_subset",
+    )
+    text = """
+    <tbody id="search-result">
+        <tr>
+            <td>
+                <a href="spolka?isin=PL11BTS00015">
+                    <strong class="name">11 BIT STUDIOS SPÓŁKA AKCYJNA <span class="grey">(11B)</span></strong>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="spolka?isin=LU2237380790">
+                    <strong class="name">Allegro.eu S.A. <span class="grey">(ALE)</span></strong>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+    """
+
+    rows = parse_wse_company_search_html(text, source)
+
+    assert rows == [
+        {
+            "source_key": "wse_listed_companies",
+            "provider": "GPW",
+            "source_url": "https://www.gpw.pl/spolka?isin=PL11BTS00015",
+            "ticker": "11B",
+            "name": "11 BIT STUDIOS SPÓŁKA AKCYJNA",
+            "exchange": "WSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "PL11BTS00015",
+        },
+        {
+            "source_key": "wse_listed_companies",
+            "provider": "GPW",
+            "source_url": "https://www.gpw.pl/spolka?isin=LU2237380790",
+            "ticker": "ALE",
+            "name": "Allegro.eu S.A.",
+            "exchange": "WSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "LU2237380790",
+        },
+    ]
+
+
+def test_fetch_wse_listed_companies_uses_initial_page_and_ajax_pagination() -> None:
+    source = MasterfileSource(
+        key="wse_listed_companies",
+        provider="GPW",
+        description="Official GPW listed companies directory",
+        source_url="https://www.gpw.pl/spolki",
+        format="wse_listed_companies_html",
+        reference_scope="listed_companies_subset",
+    )
+    page_html = """
+    <h1>Lista spółek <small><span id="count-all">22</span> Spółek</small></h1>
+    <form action="/spolki" id='search-form' data-target="search-result">
+        <input type="hidden" name="action" value="GPWCompanySearch"/>
+        <input type="hidden" name="start" value="ajaxSearch"/>
+        <input type="hidden" name="page" value="spolki"/>
+        <input type="hidden" name="format" value="html"/>
+        <input type="hidden" name="lang" value="PL"/>
+        <input type="hidden" name="letter" value=""/>
+        <input type="hidden" name="offset" value="0"/>
+        <input type="hidden" name="limit" value="10"/>
+        <input type="text" name="searchText"/>
+        <input type="checkbox" name="index[WIG20]" checked />
+    </form>
+    <table id="lista-spolek"><tbody id="search-result">
+        <tr><td><a href="spolka?isin=PL11BTS00015"><strong class="name">11 BIT STUDIOS SPÓŁKA AKCYJNA <span class="grey">(11B)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLGRNKT00019"><strong class="name">3R GAMES SPÓŁKA AKCYJNA <span class="grey">(3RG)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PL4MASS00011"><strong class="name">4MASS SPÓŁKA AKCYJNA <span class="grey">(4MS)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLABAK000013"><strong class="name">ABAK SPÓŁKA AKCYJNA <span class="grey">(ABK)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=AU0000187577"><strong class="name">AB S.A. <span class="grey">(ABE)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLALIOR00045"><strong class="name">ALIOR BANK SPÓŁKA AKCYJNA <span class="grey">(ALR)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLAMBRA00013"><strong class="name">AMBRA SPÓŁKA AKCYJNA <span class="grey">(AMB)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLARHCM00016"><strong class="name">ARCHICOM SPÓŁKA AKCYJNA <span class="grey">(ARH)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLASSEE00014"><strong class="name">ASSECO SOUTH EASTERN EUROPE SPÓŁKA AKCYJNA <span class="grey">(ASE)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLASTRK00013"><strong class="name">ASTRO SPÓŁKA AKCYJNA <span class="grey">(AST)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLATAL000046"><strong class="name">ATAL SPÓŁKA AKCYJNA <span class="grey">(1AT)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLATC000011"><strong class="name">ATENDE SPÓŁKA AKCYJNA <span class="grey">(ATD)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLATMSO00013"><strong class="name">ATM SYSTEMY INFORMATYCZNE SPÓŁKA AKCYJNA <span class="grey">(ATO)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLATPRC00011"><strong class="name">AUTO PARTNER SPÓŁKA AKCYJNA <span class="grey">(APR)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLATRMG00017"><strong class="name">ATREM SPÓŁKA AKCYJNA <span class="grey">(ATR)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLAWBUD00017"><strong class="name">AWBUD SPÓŁKA AKCYJNA <span class="grey">(AWB)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLAPSEN00011"><strong class="name">APS ENERGIA SPÓŁKA AKCYJNA <span class="grey">(APE)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLANSWR00019"><strong class="name">ANSWEAR.COM SPÓŁKA AKCYJNA <span class="grey">(ANR)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLAQUA000014"><strong class="name">AQUABB SPÓŁKA AKCYJNA <span class="grey">(AQU)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLAOLPR00012"><strong class="name">AOL SPÓŁKA AKCYJNA <span class="grey">(AOL)</span></strong></a></td></tr>
+    </tbody></table>
+    """
+    page_two_html = """
+    <tr><td><a href="spolka?isin=LU2237380790"><strong class="name">Allegro.eu S.A. <span class="grey">(ALE)</span></strong></a></td></tr>
+    """
+
+    class DummyResponse:
+        def __init__(self, text: str):
+            self.text = text
+
+        def raise_for_status(self) -> None:
+            return None
+
+    class DummySession:
+        def __init__(self) -> None:
+            self.get_calls: list[dict[str, object]] = []
+            self.post_calls: list[dict[str, object]] = []
+
+        def get(self, url: str, *, headers=None, timeout=None):
+            self.get_calls.append({"url": url, "headers": headers, "timeout": timeout})
+            return DummyResponse(page_html)
+
+        def post(self, url: str, *, data=None, headers=None, timeout=None):
+            self.post_calls.append({"url": url, "data": data, "headers": headers, "timeout": timeout})
+            return DummyResponse(page_two_html)
+
+    session = DummySession()
+    rows = fetch_wse_listed_companies(source, session=session)
+
+    assert rows[0]["ticker"] == "11B"
+    assert rows[-1]["ticker"] == "ALE"
+    assert len(rows) == 21
+    assert session.post_calls == [
+        {
+            "url": "https://www.gpw.pl/ajaxindex.php",
+            "data": {
+                "action": "GPWCompanySearch",
+                "start": "ajaxSearch",
+                "page": "spolki",
+                "format": "html",
+                "lang": "PL",
+                "letter": "",
+                "offset": "20",
+                "limit": "500",
+                "searchText": "",
+                "index[WIG20]": "on",
+            },
+            "headers": fetch_exchange_masterfiles.wse_request_headers("https://www.gpw.pl/spolki"),
+            "timeout": fetch_exchange_masterfiles.REQUEST_TIMEOUT,
+        }
+    ]
+
+
+def test_fetch_newconnect_listed_companies_uses_initial_page_and_ajax_pagination() -> None:
+    source = MasterfileSource(
+        key="newconnect_listed_companies",
+        provider="NewConnect",
+        description="Official NewConnect listed companies directory",
+        source_url="https://newconnect.pl/spolki",
+        format="newconnect_listed_companies_html",
+        reference_scope="listed_companies_subset",
+    )
+    page_html = """
+    <form action="/spolki" id='search-form' data-target="search-result">
+        <input type="hidden" name="format" value="html"/>
+        <input type="hidden" name="lang" value="PL"/>
+        <input type="hidden" name="offset" value="0"/>
+        <input type="hidden" name="limit" value="10"/>
+        <input type="hidden" name="letter" value=""/>
+        <input type="hidden" name="action" value="NCCompany"/>
+        <input type="hidden" name="start" value="listAjax"/>
+        <input type="hidden" name="order" value="ncc_name"/>
+        <input type="hidden" name="order_type" value="ASC"/>
+        <input type="text" name="searchText"/>
+        <input type="checkbox" name="countries[1000]" checked />
+        <input type="checkbox" name="countries[1002]" checked />
+    </form>
+    <table><tbody id="search-result">
+        <tr><td><a href="spolka?isin=PLESLTN00010"><strong class="name">4MOBILITY SPÓŁKA AKCYJNA <span class="grey">(4MB)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLTRCPS00016"><strong class="name">7FIT SPÓŁKA AKCYJNA <span class="grey">(7FT)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PL7LVLS00017"><strong class="name">7LEVELS SPÓŁKA AKCYJNA <span class="grey">(7LV)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLABAK000013"><strong class="name">ABAK SPÓŁKA AKCYJNA <span class="grey">(ABK)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLABSIN00012"><strong class="name">ABS INVESTMENT ALTERNATYWNA SPÓŁKA INWESTYCYJNA SPÓŁKA AKCYJNA <span class="grey">(AIN)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLABMSA00019"><strong class="name">ABSOLUTE GAMES SPÓŁKA AKCYJNA <span class="grey">(AGS)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLABPLD00015"><strong class="name">ABPL SPÓŁKA AKCYJNA <span class="grey">(ABP)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLABRVS00012"><strong class="name">ABRYS SPÓŁKA AKCYJNA <span class="grey">(ABR)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLACAUT00014"><strong class="name">ACAUTOGAZ SPÓŁKA AKCYJNA <span class="grey">(ACG)</span></strong></a></td></tr>
+        <tr><td><a href="spolka?isin=PLACPPL00018"><strong class="name">ACP SPÓŁKA AKCYJNA <span class="grey">(ACP)</span></strong></a></td></tr>
+    </tbody></table>
+    """
+    page_two_html = """
+    <tr><td><a href="spolka?isin=PLMNDPL00012"><strong class="name">MIND DEVELOPMENT SPÓŁKA AKCYJNA <span class="grey">(MND)</span></strong></a></td></tr>
+    """
+
+    class DummyResponse:
+        def __init__(self, text: str):
+            self.text = text
+
+        def raise_for_status(self) -> None:
+            return None
+
+    class DummySession:
+        def __init__(self) -> None:
+            self.get_calls: list[dict[str, object]] = []
+            self.post_calls: list[dict[str, object]] = []
+
+        def get(self, url: str, *, headers=None, timeout=None):
+            self.get_calls.append({"url": url, "headers": headers, "timeout": timeout})
+            return DummyResponse(page_html)
+
+        def post(self, url: str, *, data=None, headers=None, timeout=None):
+            self.post_calls.append({"url": url, "data": data, "headers": headers, "timeout": timeout})
+            return DummyResponse(page_two_html)
+
+    session = DummySession()
+    rows = fetch_newconnect_listed_companies(source, session=session)
+
+    assert rows[0]["ticker"] == "4MB"
+    assert rows[-1]["ticker"] == "MND"
+    assert len(rows) == 11
+    assert session.post_calls == [
+        {
+            "url": "https://newconnect.pl/ajaxindex.php",
+            "data": {
+                "format": "html",
+                "lang": "PL",
+                "offset": "10",
+                "limit": "500",
+                "letter": "",
+                "action": "NCCompany",
+                "start": "listAjax",
+                "order": "ncc_name",
+                "order_type": "ASC",
+                "searchText": "",
+                "countries[1000]": "on",
+                "countries[1002]": "on",
+            },
+            "headers": fetch_exchange_masterfiles.wse_request_headers("https://newconnect.pl/spolki"),
+            "timeout": fetch_exchange_masterfiles.REQUEST_TIMEOUT,
+        }
+    ]
+
+
+def test_parse_wse_etf_list_html_maps_rows_with_listing_name_fallback() -> None:
+    source = MasterfileSource(
+        key="wse_etf_list",
+        provider="GPW",
+        description="Official GPW ETF/ETC/ETN directory",
+        source_url="https://www.gpw.pl/etfy",
+        format="wse_etf_list_html",
+        reference_scope="listed_companies_subset",
+    )
+    text = """
+    <tbody>
+        <tr>
+            <td id="id_Nazwa" class="left nowrap col1"><a href="etf?isin=PLBETWT00010"><b>ETFBCASH </b></a></td>
+            <td id="id_ISIN" class="left nowrap col2" style="display:none">PLBETWT00010</td>
+        </tr>
+        <tr>
+            <td id="id_Nazwa" class="left nowrap col1"><a href="etf?isin=PLPZUTR00013"><b>ETFPZUW20M </b></a></td>
+            <td id="id_ISIN" class="left nowrap col2" style="display:none">PLPZUTR00013</td>
+        </tr>
+    </tbody>
+    """
+
+    rows = parse_wse_etf_list_html(
+        text,
+        source,
+        listing_name_by_ticker={
+            "ETFBCASH": "Beta ETF Obligacji 6M",
+            "ETFPZUW20M": "PZU ETF WIG20 TR & MWIG40 - Investment Certificates ETF",
+        },
+    )
+
+    assert rows == [
+        {
+            "source_key": "wse_etf_list",
+            "provider": "GPW",
+            "source_url": "https://www.gpw.pl/etf?isin=PLBETWT00010",
+            "ticker": "ETFBCASH",
+            "name": "Beta ETF Obligacji 6M",
+            "exchange": "WSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "PLBETWT00010",
+        },
+        {
+            "source_key": "wse_etf_list",
+            "provider": "GPW",
+            "source_url": "https://www.gpw.pl/etf?isin=PLPZUTR00013",
+            "ticker": "ETFPZUW20M",
+            "name": "PZU ETF WIG20 TR & MWIG40 - Investment Certificates ETF",
+            "exchange": "WSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "PLPZUTR00013",
+        },
+    ]
+
+
+def test_fetch_wse_etf_list_uses_official_ajax(tmp_path) -> None:
+    source = MasterfileSource(
+        key="wse_etf_list",
+        provider="GPW",
+        description="Official GPW ETF/ETC/ETN directory",
+        source_url="https://www.gpw.pl/etfy",
+        format="wse_etf_list_html",
+        reference_scope="listed_companies_subset",
+    )
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,exchange,asset_type,name,isin",
+                "ETFBCASH,WSE,ETF,Beta ETF Obligacji 6M,",
+                "ETFPZUW20M,WSE,ETF,PZU ETF WIG20 TR & MWIG40 - Investment Certificates ETF,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    payload = """
+    <tbody>
+        <tr><td id="id_Nazwa" class="left nowrap col1"><a href="etf?isin=PLBETWT00010"><b>ETFBCASH </b></a></td></tr>
+        <tr><td id="id_Nazwa" class="left nowrap col1"><a href="etf?isin=PLPZUTR00013"><b>ETFPZUW20M </b></a></td></tr>
+    </tbody>
+    """
+
+    class DummyResponse:
+        def __init__(self, text: str):
+            self.text = text
+
+        def raise_for_status(self) -> None:
+            return None
+
+    class DummySession:
+        def __init__(self) -> None:
+            self.post_calls: list[dict[str, object]] = []
+
+        def post(self, url: str, *, data=None, headers=None, timeout=None):
+            self.post_calls.append({"url": url, "data": data, "headers": headers, "timeout": timeout})
+            return DummyResponse(payload)
+
+    session = DummySession()
+    rows = fetch_wse_etf_list(source, listings_path=listings_path, session=session)
+
+    assert [row["name"] for row in rows] == [
+        "Beta ETF Obligacji 6M",
+        "PZU ETF WIG20 TR & MWIG40 - Investment Certificates ETF",
+    ]
+    assert session.post_calls == [
+        {
+            "url": "https://www.gpw.pl/ajaxindex.php",
+            "data": {"action": "GPWQuotationsETF", "start": "ajaxList", "page": "etfy"},
+            "headers": fetch_exchange_masterfiles.wse_request_headers("https://www.gpw.pl/etfy"),
+            "timeout": fetch_exchange_masterfiles.REQUEST_TIMEOUT,
+        }
+    ]
+
+
+def test_load_wse_reference_rows_prefers_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "wse_listed_companies.json"
+    cache_path.write_text(
+        '[{"ticker":"11B","name":"11 bit studios S.A.","exchange":"WSE","asset_type":"Stock","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "WSE_LISTED_COMPANIES_CACHE", cache_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "LEGACY_WSE_LISTED_COMPANIES_CACHE", tmp_path / "missing.json")
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_wse_listed_companies",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "wse_listed_companies")
+    rows, mode = load_wse_reference_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "11B",
+            "name": "11 bit studios S.A.",
+            "exchange": "WSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+        }
+    ]
+
+
+def test_load_newconnect_reference_rows_prefers_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "newconnect_listed_companies.json"
+    cache_path.write_text(
+        '[{"ticker":"4MB","name":"4Mobility S.A.","exchange":"WSE","asset_type":"Stock","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "NEWCONNECT_LISTED_COMPANIES_CACHE", cache_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_NEWCONNECT_LISTED_COMPANIES_CACHE",
+        tmp_path / "missing.json",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_newconnect_listed_companies",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "newconnect_listed_companies")
+    rows, mode = load_wse_reference_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "4MB",
+            "name": "4Mobility S.A.",
+            "exchange": "WSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+        }
+    ]
 
 
 def test_parse_tase_securities_marketdata_payload_filters_shares() -> None:
@@ -8118,6 +9552,313 @@ def test_load_tase_participating_unit_search_rows_prefers_cache(tmp_path, monkey
             "exchange": "TASE",
             "asset_type": "Stock",
             "listing_status": "active",
+        }
+    ]
+
+
+def test_parse_hose_securities_payload_requires_isin() -> None:
+    source = MasterfileSource(
+        key="hose_listed_stocks",
+        provider="HOSE",
+        description="Official Ho Chi Minh Stock Exchange listed stocks directory",
+        source_url="https://api.hsx.vn/l/api/v1/2/securities/stock",
+        format="hose_listed_stocks_json",
+        reference_scope="listed_companies_subset",
+    )
+    payload = {
+        "data": {
+            "list": [
+                {"code": "AAA", "name": "An Phat Bioplastics Joint Stock Company", "isin": "VN000000AAA4"},
+                {"code": "AAA", "name": "Duplicate", "isin": "VN000000AAA4"},
+                {"code": "NOISIN", "name": "Missing ISIN", "isin": ""},
+                {"code": "", "name": "Missing Ticker", "isin": "VN0000000001"},
+            ]
+        }
+    }
+
+    rows = parse_hose_securities_payload(payload, source, asset_type="Stock")
+
+    assert rows == [
+        {
+            "source_key": "hose_listed_stocks",
+            "provider": "HOSE",
+            "source_url": "https://api.hsx.vn/l/api/v1/2/securities/stock",
+            "ticker": "AAA",
+            "name": "An Phat Bioplastics Joint Stock Company",
+            "exchange": "HOSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "VN000000AAA4",
+        }
+    ]
+
+
+def test_fetch_hose_securities_rows_paginates_official_api() -> None:
+    source = MasterfileSource(
+        key="hose_listed_stocks",
+        provider="HOSE",
+        description="Official Ho Chi Minh Stock Exchange listed stocks directory",
+        source_url="https://api.hsx.vn/l/api/v1/2/securities/stock",
+        format="hose_listed_stocks_json",
+        reference_scope="listed_companies_subset",
+    )
+
+    class DummyResponse:
+        def __init__(self, payload: dict[str, object]):
+            self._payload = payload
+
+        def raise_for_status(self) -> None:
+            return None
+
+        def json(self) -> dict[str, object]:
+            return self._payload
+
+    class DummySession:
+        def __init__(self) -> None:
+            self.calls: list[dict[str, object]] = []
+
+        def get(self, url: str, *, params=None, headers=None, timeout=None) -> DummyResponse:
+            self.calls.append({"url": url, "params": params, "headers": headers, "timeout": timeout})
+            page_index = params["pageIndex"]
+            if page_index == 1:
+                return DummyResponse(
+                    {
+                        "data": {
+                            "list": [
+                                {
+                                    "code": "AAA",
+                                    "name": "An Phat Bioplastics Joint Stock Company",
+                                    "isin": "VN000000AAA4",
+                                }
+                            ],
+                            "paging": {"pageIndex": 1, "pageSize": 1000, "totalCount": 2, "totalPages": 2},
+                        }
+                    }
+                )
+            return DummyResponse(
+                {
+                    "data": {
+                        "list": [
+                            {
+                                "code": "VNM",
+                                "name": "Viet Nam Dairy Products Joint Stock Company",
+                                "isin": "VN000000VNM8",
+                            }
+                        ],
+                        "paging": {"pageIndex": 2, "pageSize": 1000, "totalCount": 2, "totalPages": 2},
+                    }
+                }
+            )
+
+    session = DummySession()
+    rows = fetch_hose_securities_rows(source, session=session)
+
+    assert [row["ticker"] for row in rows] == ["AAA", "VNM"]
+    assert rows[1]["isin"] == "VN000000VNM8"
+    assert [call["params"]["pageIndex"] for call in session.calls] == [1, 2]
+    assert all(call["headers"]["Origin"] == "https://www.hsx.vn" for call in session.calls)
+
+
+def test_load_hose_securities_rows_prefers_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "hose_listed_stocks.json"
+    cache_path.write_text(
+        '[{"ticker":"AAA","name":"An Phat Bioplastics Joint Stock Company","exchange":"HOSE","asset_type":"Stock","listing_status":"active","isin":"VN000000AAA4"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "HOSE_LISTED_STOCKS_CACHE", cache_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_HOSE_LISTED_STOCKS_CACHE",
+        tmp_path / "missing.json",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_hose_securities_rows",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "hose_listed_stocks")
+    rows, mode = load_hose_securities_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "AAA",
+            "name": "An Phat Bioplastics Joint Stock Company",
+            "exchange": "HOSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "isin": "VN000000AAA4",
+        }
+    ]
+
+
+def test_load_hose_fund_certificate_rows_prefers_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "hose_fund_certificate_list.json"
+    cache_path.write_text(
+        '[{"ticker":"FUCVREIT","name":"Techcom Vietnam REIT Fund","exchange":"HOSE","asset_type":"Stock","listing_status":"active","isin":"VN0FUCVREIT6"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "HOSE_FUND_CERTIFICATE_LIST_CACHE", cache_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_HOSE_FUND_CERTIFICATE_LIST_CACHE",
+        tmp_path / "missing.json",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_hose_securities_rows",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "hose_fund_certificate_list")
+    rows, mode = load_hose_securities_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "FUCVREIT",
+            "name": "Techcom Vietnam REIT Fund",
+            "exchange": "HOSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "isin": "VN0FUCVREIT6",
+        }
+    ]
+
+
+def test_parse_hnx_issuer_table_html_uses_vsdc_isin_lookup() -> None:
+    source = MasterfileSource(
+        key="hnx_listed_securities",
+        provider="HNX",
+        description="Official Hanoi Stock Exchange listed securities directory",
+        source_url="https://www.hnx.vn/cophieu-etfs/chung-khoan-ny.html",
+        format="hnx_listed_securities_json",
+        reference_scope="exchange_directory",
+    )
+    content = """
+    <table>
+      <tr><th>STT</th><th>M&#227; CK</th><th>T&#234;n t&#7893; ch&#7913;c ph&#225;t h&#224;nh</th></tr>
+      <tr><td>1</td><td>DVM</td><td>Vietnam Medicinal Materials Joint Stock Company</td></tr>
+      <tr><td>2</td><td>DVM</td><td>Duplicate</td></tr>
+      <tr><td>3</td><td></td><td>Missing ticker</td></tr>
+    </table>
+    """
+
+    rows = parse_hnx_issuer_table_html(
+        content,
+        source,
+        exchange="HNX",
+        isin_lookup={"DVM": "VN000000DVM9"},
+    )
+
+    assert rows == [
+        {
+            "source_key": "hnx_listed_securities",
+            "provider": "HNX",
+            "source_url": "https://www.hnx.vn/cophieu-etfs/chung-khoan-ny.html",
+            "ticker": "DVM",
+            "name": "Vietnam Medicinal Materials Joint Stock Company",
+            "exchange": "HNX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "VN000000DVM9",
+        }
+    ]
+
+
+def test_fetch_hnx_issuer_rows_posts_official_search_params(monkeypatch) -> None:
+    source = MasterfileSource(
+        key="upcom_registered_securities",
+        provider="HNX",
+        description="Official Hanoi Stock Exchange UPCoM registered securities directory",
+        source_url="https://www.hnx.vn/cophieu-etfs/chung-khoan-uc.html",
+        format="upcom_registered_securities_json",
+        reference_scope="exchange_directory",
+    )
+    content = """
+    <table>
+      <tr><th>STT</th><th>M&#227; CK</th><th>T&#234;n t&#7893; ch&#7913;c ph&#225;t h&#224;nh</th></tr>
+      <tr><td>1</td><td>VNI</td><td>Viet Nam Land Investment Corporation</td></tr>
+    </table>
+    """
+
+    class DummyResponse:
+        def __init__(self, *, payload: dict[str, object] | None = None, url: str = ""):
+            self._payload = payload or {}
+            self.url = url
+
+        def raise_for_status(self) -> None:
+            return None
+
+        def json(self) -> dict[str, object]:
+            return self._payload
+
+    class DummySession:
+        def __init__(self) -> None:
+            self.get_calls: list[dict[str, object]] = []
+            self.post_calls: list[dict[str, object]] = []
+
+        def get(self, url: str, **kwargs) -> DummyResponse:
+            self.get_calls.append({"url": url, **kwargs})
+            return DummyResponse(url="https://www.hnx.vn/vi-vn/cophieu-etfs/chung-khoan-uc.html")
+
+        def post(self, url: str, **kwargs) -> DummyResponse:
+            self.post_calls.append({"url": url, **kwargs})
+            return DummyResponse(payload={"Content": content})
+
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_vsdc_isin_lookup",
+        lambda tickers, session=None: {"VNI": "VN000000VNI6"},
+    )
+
+    session = DummySession()
+    rows = fetch_hnx_issuer_rows(source, session=session)
+
+    assert rows[0]["exchange"] == "UPCOM"
+    assert rows[0]["isin"] == "VN000000VNI6"
+    assert session.get_calls[0]["verify"] is False
+    assert session.post_calls[0]["verify"] is False
+    assert session.post_calls[0]["data"]["p_keysearch"] == ""
+    assert session.post_calls[0]["data"]["p_market_code"] == "UC"
+    assert session.post_calls[0]["headers"]["Referer"] == "https://www.hnx.vn/vi-vn/cophieu-etfs/chung-khoan-uc.html"
+
+
+def test_load_hnx_issuer_rows_prefers_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "hnx_listed_securities.json"
+    cache_path.write_text(
+        '[{"ticker":"DVM","name":"Vietnam Medicinal Materials Joint Stock Company","exchange":"HNX","asset_type":"Stock","listing_status":"active","isin":"VN000000DVM9"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "HNX_LISTED_SECURITIES_CACHE", cache_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_HNX_LISTED_SECURITIES_CACHE",
+        tmp_path / "missing.json",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_hnx_issuer_rows",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("boom")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "hnx_listed_securities")
+    rows, mode = load_hnx_issuer_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "DVM",
+            "name": "Vietnam Medicinal Materials Joint Stock Company",
+            "exchange": "HNX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "isin": "VN000000DVM9",
         }
     ]
 

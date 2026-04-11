@@ -27,6 +27,7 @@ LISTINGS_CSV = DATA_DIR / "listings.csv"
 ALIASES_CSV = DATA_DIR / "aliases.csv"
 IDENTIFIERS_CSV = DATA_DIR / "identifiers.csv"
 IDENTIFIERS_EXTENDED_CSV = DATA_DIR / "identifiers_extended.csv"
+INSTRUMENT_SCOPES_CSV = DATA_DIR / "instrument_scopes.csv"
 TICKERS_JSON = DATA_DIR / "tickers.json"
 TICKERS_DB = DATA_DIR / "tickers.db"
 TICKERS_PARQUET = DATA_DIR / "tickers.parquet"
@@ -42,6 +43,7 @@ MANUAL_ISIN_CORRECTIONS = {
     "MSFT": "US5949181045",
     "TSLA": "US88160R1014",
 }
+PRIMARY_LISTING_MISSING_ISIN_SCOPE_REASON = "primary_listing_missing_isin"
 
 BAD_COMMON_ALIASES = {
     "angle",
@@ -163,8 +165,10 @@ GENERIC_ETF_PLACEHOLDER_NAMES_EXACT = {
 }
 BAD_GENERIC_FUND_ALIASES = GENERIC_FUND_WRAPPER_NAMES
 US_EXCHANGES = {"NASDAQ", "NYSE", "NYSE ARCA", "NYSE MKT", "BATS"}
+GENERIC_US_EXCHANGES = {"US"}
 OTC_EXCHANGES = {"OTC", "OTCCE", "OTCMKTS"}
-PRIMARY_VENUE_CORRECTION_EXCHANGES = US_EXCHANGES | OTC_EXCHANGES
+OTC_EXCHANGE_ALIASES = {"OTCCE": "OTC", "OTCMKTS": "OTC"}
+PRIMARY_VENUE_CORRECTION_EXCHANGES = US_EXCHANGES | GENERIC_US_EXCHANGES | OTC_EXCHANGES
 KOREAN_STOCK_EXCHANGES = {"KRX", "KOSDAQ"}
 STRICT_NUMERIC_NAMESPACE_EXCHANGES = {"Bursa", "KOSDAQ", "KRX", "TPEX", "TWSE"}
 EXCHANGE_TICKER_RE = re.compile(r"^[A-Z0-9-]+\.[A-Z]{1,6}$")
@@ -200,6 +204,10 @@ ETP_NAME_PATTERNS = (
     re.compile(r"\bvaneck\b", re.IGNORECASE),
     re.compile(r"^ish\b", re.IGNORECASE),
     re.compile(r"\bishares?\b", re.IGNORECASE),
+)
+DATED_FUTURE_NAME_RE = re.compile(
+    r"\bFuture\s+(?:Jan|Feb|Mar|Apr|May|Jun|June|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{2}\b",
+    re.IGNORECASE,
 )
 NON_COMMON_PATTERNS = (
     re.compile(r"\brights?\b", re.IGNORECASE),
@@ -361,6 +369,7 @@ ISIN_PREFIX_COUNTRIES = {
     "TH": "Thailand",
     "TR": "Turkey",
     "TW": "Taiwan",
+    "VN": "Vietnam",
     "ZA": "South Africa",
 }
 
@@ -794,6 +803,8 @@ def should_exclude_stock_row(
         return True
     if row.get("exchange") in {"AMS", "Euronext"} and EUROPEAN_CERTIFICATE_PATTERN.search(name):
         return True
+    if row.get("exchange") == "US" and DATED_FUTURE_NAME_RE.search(name):
+        return True
     if row.get("exchange") in {"TSX", "TSXV"} and TMX_WARRANT_TICKER_RE.fullmatch(ticker):
         return True
     if row["ticker"].count("-P-"):
@@ -917,6 +928,11 @@ def normalize_input_row(row: dict[str, str]) -> dict[str, str]:
     exchange = normalized.get("exchange", "")
     ticker = normalized.get("ticker", "").strip().upper()
     name = normalized.get("name", "")
+    if exchange in OTC_EXCHANGE_ALIASES:
+        normalized["exchange"] = OTC_EXCHANGE_ALIASES[exchange]
+        exchange = normalized["exchange"]
+    if normalized.get("asset_type") == "Stock" and exchange == "US" and generic_fund_wrapper_match(name):
+        normalized["asset_type"] = "ETF"
     if normalized.get("asset_type") == "ETF" and exchange == "NEO" and NEO_CDR_XDR_RE.search(name):
         normalized["asset_type"] = "Stock"
         return normalized
@@ -1014,6 +1030,30 @@ def load_active_official_isin_fallbacks() -> dict[tuple[str, str, str], str]:
     }
 
 
+def build_unique_name_isin_fallbacks(rows: list[dict[str, str]]) -> dict[tuple[str, str], str]:
+    grouped: dict[tuple[str, str], set[str]] = defaultdict(set)
+    for row in rows:
+        if row.get("exchange") in OTC_EXCHANGES:
+            continue
+        isin = row.get("isin", "").strip().upper()
+        if not is_valid_isin(isin):
+            continue
+        name = row.get("name", "").strip()
+        ticker = row.get("ticker", "").strip()
+        if not name or not ticker or is_code_like_name(name, ticker):
+            continue
+        key = normalized_compact(name)
+        if not key:
+            continue
+        grouped[(key, row["asset_type"])].add(isin)
+
+    return {
+        key: next(iter(isins))
+        for key, isins in grouped.items()
+        if len(isins) == 1
+    }
+
+
 def choose_preferred_official_reference_row(
     rows: tuple[dict[str, str], ...],
     current_name: str,
@@ -1025,6 +1065,71 @@ def choose_preferred_official_reference_row(
         or alias_matches_company(current_name, row.get("name", ""))
     ]
     return matching[0] if matching else rows[0]
+
+
+def is_vietnam_official_exchange_correction(
+    row: dict[str, str],
+    official_row: dict[str, str],
+) -> bool:
+    return bool(
+        row["asset_type"] == "Stock"
+        and row["exchange"] == "HOSE"
+        and official_row["exchange"] in {"HNX", "UPCOM"}
+        and official_row.get("source_key") == "hnx_listed_securities"
+    )
+
+
+def choose_official_exchange_correction_candidate(
+    row: dict[str, str],
+    candidates: tuple[dict[str, str], ...],
+) -> dict[str, str] | None:
+    target_exchanges = {candidate["exchange"] for candidate in candidates}
+    current_isin = row.get("isin", "").strip().upper()
+
+    if current_isin:
+        same_isin_candidates = tuple(
+            candidate
+            for candidate in candidates
+            if candidate.get("isin", "").strip().upper() == current_isin
+        )
+        same_isin_target_exchanges = {candidate["exchange"] for candidate in same_isin_candidates}
+        if len(same_isin_target_exchanges) == 1 and same_isin_candidates:
+            return choose_preferred_official_reference_row(same_isin_candidates, row["name"])
+
+    matching_candidates = tuple(
+        candidate
+        for candidate in candidates
+        if alias_matches_company(row["name"], candidate["name"])
+        or alias_matches_company(candidate["name"], row["name"])
+    )
+    if row["exchange"] == "US":
+        preferred_us_candidates = tuple(
+            candidate
+            for candidate in matching_candidates
+            if candidate["exchange"] in US_EXCHANGES
+            and candidate.get("source_key") in {"nasdaq_listed", "nasdaq_other_listed"}
+        )
+        preferred_us_target_exchanges = {candidate["exchange"] for candidate in preferred_us_candidates}
+        if len(preferred_us_target_exchanges) == 1 and preferred_us_candidates:
+            return choose_preferred_official_reference_row(preferred_us_candidates, row["name"])
+
+    matching_target_exchanges = {candidate["exchange"] for candidate in matching_candidates}
+    if len(matching_target_exchanges) == 1 and matching_candidates:
+        return choose_preferred_official_reference_row(matching_candidates, row["name"])
+
+    if len(target_exchanges) == 1:
+        return choose_preferred_official_reference_row(candidates, row["name"])
+
+    vietnam_candidates = tuple(
+        candidate
+        for candidate in candidates
+        if is_vietnam_official_exchange_correction(row, candidate)
+    )
+    vietnam_target_exchanges = {candidate["exchange"] for candidate in vietnam_candidates}
+    if len(vietnam_target_exchanges) == 1 and vietnam_candidates:
+        return choose_preferred_official_reference_row(vietnam_candidates, row["name"])
+
+    return None
 
 
 def should_correct_to_official_exchange(
@@ -1039,6 +1144,10 @@ def should_correct_to_official_exchange(
     safe_name_match = (
         alias_matches_company(row["name"], official_row["name"])
         or alias_matches_company(official_row["name"], row["name"])
+    )
+    same_isin = (
+        bool(row.get("isin", "").strip())
+        and row.get("isin", "").strip().upper() == official_row.get("isin", "").strip().upper()
     )
     code_like_name = is_code_like_name(row["name"], row["ticker"])
     wrapper_match = generic_fund_wrapper_match(row["name"])
@@ -1069,6 +1178,15 @@ def should_correct_to_official_exchange(
             row["asset_type"] == "Stock"
             and official_row.get("source_key") == "tmx_listed_issuers"
             and safe_name_match
+        )
+
+    if is_vietnam_official_exchange_correction(row, official_row):
+        return bool(
+            safe_name_match
+            or same_isin
+            or code_like_name
+            or not row.get("isin")
+            or not row.get("isin", "").strip().upper().startswith("VN")
         )
 
     if target_exchange in US_EXCHANGES:
@@ -1111,20 +1229,8 @@ def apply_official_exchange_corrections(rows: list[dict[str, str]]) -> list[dict
             corrected_rows.append(corrected)
             continue
 
-        official_row: dict[str, str] | None = None
-        target_exchanges = {candidate["exchange"] for candidate in candidates}
-        matching_candidates = [
-            candidate
-            for candidate in candidates
-            if alias_matches_company(row["name"], candidate["name"])
-            or alias_matches_company(candidate["name"], row["name"])
-        ]
-        matching_target_exchanges = {candidate["exchange"] for candidate in matching_candidates}
-        if len(matching_target_exchanges) == 1 and matching_candidates:
-            official_row = choose_preferred_official_reference_row(tuple(matching_candidates), row["name"])
-        elif len(target_exchanges) == 1:
-            official_row = choose_preferred_official_reference_row(candidates, row["name"])
-        elif row["asset_type"] == "ETF":
+        official_row = choose_official_exchange_correction_candidate(row, candidates)
+        if not official_row and row["asset_type"] == "ETF":
             us_candidates = [candidate for candidate in candidates if candidate["exchange"] in US_EXCHANGES]
             if row["exchange"] in OTC_EXCHANGES:
                 preferred_us_candidates = [
@@ -1148,6 +1254,15 @@ def apply_official_exchange_corrections(rows: list[dict[str, str]]) -> list[dict
 
         corrected = dict(row)
         corrected["exchange"] = official_row["exchange"]
+        if is_vietnam_official_exchange_correction(row, official_row) and is_valid_isin(
+            official_row.get("isin", "").strip().upper()
+        ):
+            corrected_isin = official_row["isin"].strip().upper()
+            corrected["isin"] = corrected_isin
+            inferred_country = country_from_isin(corrected_isin)
+            if inferred_country:
+                corrected["country"] = inferred_country
+                corrected["country_code"] = COUNTRY_TO_ISO.get(inferred_country, "")
         if (
             is_code_like_name(row["name"], row["ticker"])
             or wrapper_match
@@ -1493,7 +1608,12 @@ def apply_output_metadata_overrides(
         elif override["decision"] == "update":
             updated[field] = override.get("proposed_value", "")
 
-    if "country" in field_overrides and "country_code" not in field_overrides:
+    if "isin" in field_overrides and "country" not in field_overrides:
+        inferred_country = country_from_isin(updated.get("isin", ""))
+        if inferred_country:
+            updated["country"] = inferred_country
+            updated["country_code"] = COUNTRY_TO_ISO.get(inferred_country, "")
+    elif "country" in field_overrides and "country_code" not in field_overrides:
         updated["country_code"] = COUNTRY_TO_ISO.get(updated["country"], "")
     return updated
 
@@ -1516,6 +1636,7 @@ def cleaned_rows():
     prepared_rows = drop_stale_tmx_etf_duplicates(prepared_rows)
     stock_base_name_index = build_stock_base_name_index(prepared_rows)
     stock_name_lookup = build_stock_name_lookup(prepared_rows)
+    unique_name_isin_fallbacks = build_unique_name_isin_fallbacks(prepared_rows)
 
     base_rows: list[dict[str, str]] = []
     for row in prepared_rows:
@@ -1533,8 +1654,19 @@ def cleaned_rows():
         if identifier and identifier["wkn"]:
             merged_aliases.append(identifier["wkn"])
         merged = dict(row)
+        if "isin" not in review_metadata_updates.get(row_key, {}):
+            official_isin = official_isin_fallbacks.get((row["ticker"], row["exchange"], row["asset_type"]), "")
+            if official_isin and merged.get("isin") != official_isin:
+                merged["isin"] = official_isin
+                inferred_country = country_from_isin(official_isin)
+                if inferred_country:
+                    merged["country"] = inferred_country
+                    merged["country_code"] = COUNTRY_TO_ISO.get(inferred_country, "")
         if not merged.get("isin") and "isin" not in review_metadata_updates.get(row_key, {}):
-            merged["isin"] = official_isin_fallbacks.get((row["ticker"], row["exchange"], row["asset_type"]), "")
+            merged["isin"] = unique_name_isin_fallbacks.get(
+                (normalized_compact(row["name"]), row["asset_type"]),
+                "",
+            )
         merged["aliases"] = merged_aliases
         base_rows.append(merged)
 
@@ -1554,7 +1686,7 @@ def cleaned_rows():
         country = row["country"]
         inferred_country = country_from_isin(isin) if isin else None
         if inferred_country and inferred_country != country:
-            if row["exchange"] in OTC_EXCHANGES and country == "United States":
+            if row["exchange"] in OTC_EXCHANGES and country in {"", "United States"}:
                 country = inferred_country
             else:
                 isin = ""
@@ -1771,6 +1903,7 @@ def write_db(
     listing_rows: list[dict[str, str]],
     alias_rows: list[dict[str, str]],
     cross_listing_rows: list[dict[str, str]] | None = None,
+    instrument_scope_rows: list[dict[str, str]] | None = None,
 ):
     if TICKERS_DB.exists():
         TICKERS_DB.unlink()
@@ -1821,6 +1954,19 @@ def write_db(
                 FOREIGN KEY (listing_key) REFERENCES listings(listing_key) ON DELETE CASCADE
             );
 
+            CREATE TABLE instrument_scopes (
+                listing_key TEXT PRIMARY KEY,
+                ticker TEXT NOT NULL,
+                exchange TEXT NOT NULL,
+                asset_type TEXT NOT NULL,
+                isin TEXT DEFAULT '',
+                instrument_group_key TEXT NOT NULL,
+                instrument_scope TEXT NOT NULL,
+                scope_reason TEXT NOT NULL,
+                primary_listing_key TEXT NOT NULL,
+                FOREIGN KEY (listing_key) REFERENCES listings(listing_key) ON DELETE CASCADE
+            );
+
             CREATE INDEX idx_aliases_alias ON aliases(alias);
             CREATE INDEX idx_listings_ticker ON listings(ticker);
             CREATE INDEX idx_listings_exchange ON listings(exchange);
@@ -1829,6 +1975,8 @@ def write_db(
             CREATE INDEX idx_tickers_isin ON tickers(isin);
             CREATE INDEX idx_tickers_sector ON tickers(sector);
             CREATE INDEX idx_cross_listings_isin ON cross_listings(isin);
+            CREATE INDEX idx_instrument_scopes_scope ON instrument_scopes(instrument_scope);
+            CREATE INDEX idx_instrument_scopes_group_key ON instrument_scopes(instrument_group_key);
             """
         )
         conn.executemany(
@@ -1859,6 +2007,20 @@ def write_db(
                 VALUES (:isin, :listing_key, :ticker, :exchange, :is_primary)
                 """,
                 cross_listing_rows,
+            )
+        if instrument_scope_rows:
+            conn.executemany(
+                """
+                INSERT INTO instrument_scopes (
+                    listing_key, ticker, exchange, asset_type, isin, instrument_group_key,
+                    instrument_scope, scope_reason, primary_listing_key
+                )
+                VALUES (
+                    :listing_key, :ticker, :exchange, :asset_type, :isin, :instrument_group_key,
+                    :instrument_scope, :scope_reason, :primary_listing_key
+                )
+                """,
+                instrument_scope_rows,
             )
         conn.commit()
     finally:
@@ -1894,14 +2056,14 @@ EXCHANGE_ISIN_PREFIX: dict[str, str] = {
     "BME": "ES", "BMV": "MX", "BSE_BW": "BW", "BSE_HU": "HU", "BVB": "RO",
     "BVL": "PT", "Bursa": "MY", "CPH": "DK", "CSE_LK": "LK", "CSE_MA": "MA",
     "DSE_TZ": "TZ", "EGX": "EG", "Euronext": "FR", "GSE": "GH", "HEL": "FI",
-    "HOSE": "VN", "ICE_IS": "IS", "IDX": "ID", "ISE": "IE", "JSE": "ZA",
+    "HNX": "VN", "HOSE": "VN", "ICE_IS": "IS", "IDX": "ID", "ISE": "IE", "JSE": "ZA",
     "KOSDAQ": "KR", "KRX": "KR", "LSE": "GB", "LUSE": "ZM", "MSE_MW": "MW",
     "NASDAQ": "US", "NEO": "CA", "NGX": "NG", "NSE_KE": "KE",
     "NYSE": "US", "NYSE ARCA": "US", "NYSE MKT": "US", "NYSEARCH": "US",
     "OSL": "NO", "PSE": "PH", "PSE_CZ": "CZ", "PSX": "PK", "RSE": "RW",
     "SEM": "MU", "SET": "TH", "SIX": "CH", "SSE": "CN", "SSE_CL": "CL",
     "STO": "SE", "SZSE": "CN", "TASE": "IL", "TPEX": "TW", "TSX": "CA",
-    "TSXV": "CA", "TWSE": "TW", "USE_UG": "UG", "VSE": "AT", "WSE": "PL",
+    "TSXV": "CA", "TWSE": "TW", "UPCOM": "VN", "USE_UG": "UG", "VSE": "AT", "WSE": "PL",
     "XETRA": "DE", "ZSE": "HR", "ZSE_ZW": "ZW",
 }
 
@@ -1969,6 +2131,57 @@ def build_cross_listings(rows: list[dict[str, str]]) -> list[dict[str, str]]:
     return result
 
 
+def build_primary_listing_key_by_isin(rows: list[dict[str, str]]) -> dict[str, str]:
+    isin_groups: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for row in rows:
+        if row["isin"]:
+            isin_groups[row["isin"]].append(row)
+
+    return {
+        isin: row_listing_key(sorted(group, key=lambda candidate: cross_listing_sort_key(isin, candidate))[0])
+        for isin, group in isin_groups.items()
+    }
+
+
+def build_instrument_scope_rows(
+    rows: list[dict[str, str]],
+    primary_rows: list[dict[str, str]],
+) -> list[dict[str, str]]:
+    """Classify listing-level rows into the core or extended instrument universe."""
+    core_listing_keys = {row_listing_key(row) for row in primary_rows}
+    primary_listing_key_by_isin = build_primary_listing_key_by_isin(rows)
+    result: list[dict[str, str]] = []
+
+    for row in rows:
+        listing_key = row_listing_key(row)
+        isin = row.get("isin", "")
+        primary_listing_key = primary_listing_key_by_isin.get(isin, listing_key) if isin else listing_key
+        if row["exchange"] in OTC_EXCHANGES:
+            instrument_scope = "extended"
+            scope_reason = "otc_listing"
+        elif listing_key in core_listing_keys:
+            instrument_scope = "core"
+            scope_reason = "primary_listing" if isin else PRIMARY_LISTING_MISSING_ISIN_SCOPE_REASON
+        else:
+            instrument_scope = "extended"
+            scope_reason = "secondary_cross_listing"
+
+        result.append(
+            {
+                "listing_key": listing_key,
+                "ticker": row["ticker"],
+                "exchange": row["exchange"],
+                "asset_type": row["asset_type"],
+                "isin": isin,
+                "instrument_group_key": isin or listing_key,
+                "instrument_scope": instrument_scope,
+                "scope_reason": scope_reason,
+                "primary_listing_key": primary_listing_key,
+            }
+        )
+    return sorted(result, key=lambda row: row["listing_key"])
+
+
 def rebuild():
     rows, alias_type_lookup = cleaned_rows()
     listing_rows = build_listing_rows(rows)
@@ -1976,6 +2189,7 @@ def rebuild():
     alias_rows = build_alias_rows(primary_rows, alias_type_lookup)
     identifier_rows = build_identifier_rows(primary_rows)
     cross_listing_rows = build_cross_listings(rows)
+    instrument_scope_rows = build_instrument_scope_rows(rows, primary_rows)
 
     write_csv(
         TICKERS_CSV,
@@ -2007,8 +2221,23 @@ def rebuild():
         ["isin", "listing_key", "ticker", "exchange", "is_primary"],
         cross_listing_rows,
     )
+    write_csv(
+        INSTRUMENT_SCOPES_CSV,
+        [
+            "listing_key",
+            "ticker",
+            "exchange",
+            "asset_type",
+            "isin",
+            "instrument_group_key",
+            "instrument_scope",
+            "scope_reason",
+            "primary_listing_key",
+        ],
+        instrument_scope_rows,
+    )
     write_json(primary_rows)
-    write_db(primary_rows, listing_rows, alias_rows, cross_listing_rows)
+    write_db(primary_rows, listing_rows, alias_rows, cross_listing_rows, instrument_scope_rows)
     write_parquet(primary_rows)
 
     stats = {

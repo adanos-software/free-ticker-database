@@ -276,6 +276,10 @@ def test_global_summary_markdown_and_gaps_include_new_sections():
             tickers=[{"ticker": "AAA", "exchange": "NYSE", "asset_type": "Stock", "isin": "X", "sector": "Y"}],
             listings=[{"ticker": "AAA", "exchange": "NYSE", "asset_type": "Stock", "isin": "X", "sector": "Y"}],
             aliases=[{"ticker": "AAA", "alias": "alpha"}],
+            instrument_scopes=[
+                {"listing_key": "NYSE::AAA", "instrument_scope": "core", "scope_reason": "primary_listing"},
+                {"listing_key": "NYSE::BBB", "instrument_scope": "core", "scope_reason": "primary_listing_missing_isin"},
+            ],
             identifiers_extended=[{"ticker": "AAA", "exchange": "NYSE", "cik": "1", "figi": "", "lei": ""}],
             listing_status_history=[{"ticker": "AAA"}],
             listing_events=[{"ticker": "AAA"}],
@@ -331,6 +335,8 @@ def test_global_summary_markdown_and_gaps_include_new_sections():
 
     assert report["global"]["tickers"] == 1
     assert report["global"]["listing_keys"] == 1
+    assert report["global"]["instrument_scope_core"] == 2
+    assert report["global"]["instrument_scope_primary_listing_missing_isin"] == 1
     assert report["global"]["official_full_exchanges"] == 1
     assert report["global"]["etf_verification_items"] == 2
     assert "# Coverage Report" in markdown

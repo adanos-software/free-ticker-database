@@ -13,6 +13,51 @@ HOTEL,STO,country_code,update,SE,0.99,Official Nasdaq Nordic Stockholm directory
 HOTEL,STO,isin,update,SE0011415710,0.99,Official Nasdaq Nordic Stockholm directory lists HOTEL with ISIN SE0011415710 rather than the stale Lion E-Mobility ISIN currently carried in the core dataset.
 HOTEL,STO,sector,clear,,0.99,The stale Lion E-Mobility sector tag should not be preserved when normalizing HOTEL to the official Stockholm listing.
 HOTEL,STO,aliases,update,hotel fast sse,0.99,Official Nasdaq Nordic Stockholm directory lists HOTEL as Hotel Fast SSE and the stale Lion E-Mobility aliases should be removed from the core dataset.
+ABE,WSE,name,update,AB SPÓŁKA AKCYJNA,0.99,Official GPW listed companies directory resolves ABE to the active WSE issuer name.
+ABE,WSE,country,update,Poland,0.95,Official GPW listed companies directory resolves ABE to a Polish WSE issuer and the current Australia metadata is stale cross-exchange contamination.
+ABE,WSE,country_code,update,PL,0.95,Must match corrected issuer country for the active WSE listing.
+ABE,WSE,isin,update,PLAB00000019,0.99,Official GPW listed companies directory provides the active WSE ISIN for ABE.
+ABE,WSE,aliases,update,ab spółka akcyjna|ab s.a.,0.9,Replace unrelated foreign aliases with current WSE issuer aliases while avoiding the ambiguous short alias.
+ALI,WSE,name,update,ALTUS SPÓŁKA AKCYJNA,0.99,Official GPW listed companies directory resolves ALI to the active WSE issuer name.
+ALI,WSE,country,update,Poland,0.95,Official GPW listed companies directory resolves ALI to a Polish WSE issuer and the current Australia metadata is stale cross-exchange contamination.
+ALI,WSE,country_code,update,PL,0.95,Must match corrected issuer country for the active WSE listing.
+ALI,WSE,isin,update,PLATTFI00018,0.99,Official GPW listed companies directory provides the active WSE ISIN for ALI.
+ALI,WSE,aliases,update,altus spółka akcyjna|altus|altustfi,0.9,Replace unrelated foreign aliases with current WSE issuer aliases.
+APL,WSE,name,update,LC SPÓŁKA AKCYJNA,0.99,Official GPW listed companies directory resolves APL to the current WSE issuer name after the legacy Ampli label.
+APL,WSE,country,update,Poland,0.95,Official GPW listed companies directory resolves APL to a Polish WSE issuer and the current Australia metadata is stale cross-exchange contamination.
+APL,WSE,country_code,update,PL,0.95,Must match corrected issuer country for the active WSE listing.
+APL,WSE,isin,update,PLAMPLI00019,0.99,Official GPW listed companies directory provides the active WSE ISIN for APL.
+APL,WSE,aliases,update,lc spółka akcyjna|ampli,0.9,Replace unrelated foreign aliases with current WSE issuer aliases while avoiding the ambiguous short alias.
+FMG,WSE,name,update,WISE ENERGY SPÓŁKA AKCYJNA,0.99,Official GPW listed companies directory resolves FMG to the current WSE issuer name instead of the stale One SA label.
+FMG,WSE,country,update,Poland,0.95,Official GPW listed companies directory resolves FMG to a Polish WSE issuer.
+FMG,WSE,country_code,update,PL,0.95,Must match corrected issuer country for the active WSE listing.
+FMG,WSE,isin,update,PLTHP0000011,0.99,Official GPW listed companies directory provides the active WSE ISIN for FMG.
+FMG,WSE,aliases,update,wise energy spółka akcyjna|wise energy|one s.a.,0.9,Replace numeric placeholder aliases with current WSE issuer aliases.
+HUB,WSE,name,update,HUB.TECH SPÓŁKA AKCYJNA,0.99,Official NewConnect listed companies directory resolves HUB to the active WSE issuer name.
+HUB,WSE,country,update,Poland,0.95,Official NewConnect listed companies directory resolves HUB to a Polish WSE issuer and the current Australia metadata is stale cross-exchange contamination.
+HUB,WSE,country_code,update,PL,0.95,Must match corrected issuer country for the active WSE listing.
+HUB,WSE,isin,update,PLBRTZM00010,0.99,Official NewConnect listed companies directory provides the active WSE ISIN for HUB.
+HUB,WSE,aliases,update,hub.tech spółka akcyjna|hub.tech|hubstyle,0.9,Replace unrelated foreign aliases with current WSE issuer aliases.
+IFA,WSE,name,update,GENERATIONIS.AI SPÓŁKA AKCYJNA,0.99,Official NewConnect listed companies directory resolves IFA to the current WSE issuer name instead of the stale Infra SA label.
+IFA,WSE,country,update,Poland,0.95,Official NewConnect listed companies directory resolves IFA to a Polish WSE issuer and the current Canada metadata is stale cross-exchange contamination.
+IFA,WSE,country_code,update,PL,0.95,Must match corrected issuer country for the active WSE listing.
+IFA,WSE,isin,update,PLINFRA00015,0.99,Official NewConnect listed companies directory provides the active WSE ISIN for IFA.
+IFA,WSE,aliases,update,generationis.ai spółka akcyjna|generationis.ai|infra,0.9,Replace unrelated foreign aliases with current WSE issuer aliases.
+IMP,WSE,name,update,IMPERIO ALTERNATYWNA SPÓŁKA INWESTYCYJNA SPÓŁKA AKCYJNA,0.99,Official GPW listed companies directory resolves IMP to the current WSE issuer name.
+IMP,WSE,country,update,Poland,0.95,Official GPW listed companies directory resolves IMP to a Polish WSE issuer.
+IMP,WSE,country_code,update,PL,0.95,Must match corrected issuer country for the active WSE listing.
+IMP,WSE,isin,update,PLNFI0700018,0.99,Official GPW listed companies directory provides the active WSE ISIN for IMP.
+IMP,WSE,aliases,update,imperio alternatywna spółka inwestycyjna spółka akcyjna|imperio|impera capital,0.9,Replace unrelated foreign aliases with current WSE issuer aliases.
+OBL,WSE,name,update,ORZEŁ BIAŁY SPÓŁKA AKCYJNA,0.99,Official GPW listed companies directory resolves OBL to the current WSE issuer name.
+OBL,WSE,country,update,Poland,0.95,Official GPW listed companies directory resolves OBL to a Polish WSE issuer.
+OBL,WSE,country_code,update,PL,0.95,Must match corrected issuer country for the active WSE listing.
+OBL,WSE,isin,update,PLORZBL00013,0.99,Official GPW listed companies directory provides the active WSE ISIN for OBL.
+OBL,WSE,aliases,update,orzeł biały spółka akcyjna|orzeł biały|orzel bialy,0.9,Replace unrelated foreign aliases with current WSE issuer aliases.
+ORL,WSE,name,update,ORZEŁ SPÓŁKA AKCYJNA,0.99,Official NewConnect listed companies directory resolves ORL to the active WSE issuer name.
+ORL,WSE,country,update,Poland,0.95,Official NewConnect listed companies directory resolves ORL to a Polish WSE issuer and the current Israel metadata is stale cross-exchange contamination.
+ORL,WSE,country_code,update,PL,0.95,Must match corrected issuer country for the active WSE listing.
+ORL,WSE,isin,update,PLORZL000019,0.99,Official NewConnect listed companies directory provides the active WSE ISIN for ORL.
+ORL,WSE,aliases,update,orzeł spółka akcyjna|orzeł|orzel,0.9,Replace unrelated foreign aliases with current WSE issuer aliases.
 BJBR,IDX,name,update,Bank Pembangunan Daerah Jawa Barat dan Banten Tbk,0.99,Official IDX GetEmiten directory resolves BJBR to the current listed issuer name.
 BRIS,IDX,name,update,PT Bank Syariah Indonesia (Persero) Tbk,0.99,Official IDX GetEmiten directory resolves BRIS to the current listed issuer name.
 MCOR,IDX,name,update,PT Bank China Construction Bank Indonesia Tbk,0.99,Official IDX GetEmiten directory resolves MCOR to the current listed issuer name.
@@ -870,7 +915,7 @@ YAVG,XETRA,name,update,IncomeShares Broadcom (AVGO) Options ETP,0.98,Official De
 B7J,XETRA,ticker,update,B7J1,0.99,Official Xetra stock directory resolves ISIN FI0009015309 under the active ticker B7J1 rather than the stale local ticker B7J.
 DGR,XETRA,country,update,Germany,0.99,Official Xetra stock directory resolves DGR to Deutsche Grundstücksauktionen AG; the current Australia metadata is contamination from the unrelated ASX issuer DGR Global.
 DGR,XETRA,country_code,update,DE,0.99,Must match the corrected German issuer domicile from the official Xetra stock directory.
-DGR,XETRA,isin,clear,,0.99,Official Xetra stock directory resolves DGR to Deutsche Grundstücksauktionen AG and not the contaminated Australian ISIN AU000000DGR8.
+DGR,XETRA,isin,update,DE0005533400,0.99,Official Xetra stock directory resolves DGR to Deutsche Grundstücksauktionen AG with ISIN DE0005533400; replaces the contaminated Australian ISIN AU000000DGR8.
 DGR,XETRA,aliases,update,deutsche grundstücksauktionen|deutsche grundstuecksauktionen,0.99,Keep only the issuer aliases supported by the official Xetra listing and remove the contaminated DGR Global alias.
 STR,XETRA,ticker,update,XD4,0.99,Official Xetra stock directory resolves ISIN AT000000STR1 under the active ticker XD4 rather than the stale local ticker STR.
 VMED,XETRA,ticker,update,VME,0.99,Official Xetra stock directory resolves ISIN DE000A3MQR65 under the active ticker VME rather than the stale local ticker VMED.
@@ -944,3 +989,47 @@ PSG-F61,TASE,isin,update,IL0011478752,0.99,Official TASE search entities provide
 PSG-F65,TASE,ticker,update,IBI.F65,0.99,Official TASE search entities resolve legacy PSG-F65 to the current active IBI.F65 line with the same S&P 500 exposure.
 PSG-F65,TASE,name,update,I.B.I. SAL (4D) S&P 500,0.99,Official TASE search entities provide the current active TASE listing name for the legacy PSG-F65 exposure.
 PSG-F65,TASE,isin,update,IL0011481624,0.99,Official TASE search entities provide the active ISIN for the current IBI.F65 replacement line.
+PLUR,NASDAQ,isin,update,US72942G2030,0.99,Official TASE cross-listing reference identifies the active Pluri Inc. security ISIN and replaces the contaminated Plurilock-style Canadian ISIN.
+PLUR,NASDAQ,country,update,Israel,0.95,Issuer metadata should follow the Pluri issuer rather than the contaminated Canadian Plurilock-style identifier.
+PLUR,NASDAQ,country_code,update,IL,0.95,Issuer metadata should follow the Pluri issuer rather than the contaminated Canadian Plurilock-style identifier.
+PLUR,NASDAQ,wkn,clear,,0.95,The inherited WKN belongs to the contaminated Canadian identifier context and should not alias Pluri Inc.
+PLUR,NASDAQ,aliases,update,pluri,0.95,Keep only the issuer-name alias after removing the contaminated Canadian identifier context.
+AMIA,EGX,isin,update,EGS67221C019,0.9,ArabFinance company profile provides the EGX ISIN for Arab Moltaka Investments Co.
+CIRA,EGX,isin,update,EGS65541C012,0.9,ArabFinance company profile provides the EGX ISIN for Cairo for Investment and Real Estate Development SAE.
+GBCO,EGX,isin,update,EGS673T1C012,0.9,ArabFinance company profile provides the EGX ISIN for GB Corp.
+MEPA,EGX,isin,update,EGS3C4L1C015,0.9,ArabFinance company profile provides the EGX ISIN for Medical Packaging Company.
+NULL,EGX,ticker,update,TWSA,0.9,ArabFinance company profile resolves the placeholder NULL ticker to active EGX symbol TWSA for TAWASOA For Factoring.
+NULL,EGX,isin,update,EGS7D231C010,0.9,ArabFinance company profile provides the EGX ISIN for TAWASOA For Factoring.
+QNBE,EGX,isin,update,EGS60081C014,0.9,ArabFinance company profile provides the EGX ISIN for Qatar National Bank Egypt.
+PSTI,TASE,ticker,update,PLUR,0.99,Official TASE search entities resolve legacy PSTI to the current active PLUR share.
+PSTI,TASE,name,update,PLURI,0.99,Official TASE search entities provide the current active TASE listing name for the legacy PSTI line.
+PSTI,TASE,isin,update,US72942G2030,0.99,Official TASE search entities provide the active ISIN for the current PLUR replacement line.
+HRS&P-25,TASE,ticker,update,HRL.F25,0.99,Official TASE search entities resolve legacy HRS&P-25 to the current active HRL.F25 S&P 500 Harel Sal line.
+HRS&P-25,TASE,name,update,Harel Sal (4D) S&P 500,0.99,Official TASE search entities provide the current active TASE listing name for the legacy HRS&P-25 line.
+HRS&P-25,TASE,isin,update,IL0011490203,0.99,Official TASE search entities provide the active ISIN for the current HRL.F25 replacement line.
+PSG-F13,TASE,ticker,update,IBI.F13,0.99,Official TASE search entities resolve legacy PSG-F13 to the current active IBI.F13 Tel-Bond 40 CPI-linked line.
+PSG-F13,TASE,name,update,I.B.I. SAL (00) Tel-Bond 40 CPI - LINKED IL,0.99,Official TASE search entities provide the current active TASE listing name for the legacy PSG-F13 exposure.
+PSG-F13,TASE,isin,update,IL0011479743,0.99,Official TASE search entities provide the active ISIN for the current IBI.F13 replacement line.
+PSG-FK1,TASE,ticker,update,IBI.FK1,0.99,Official TASE search entities resolve legacy PSG-FK1 to the current active IBI.FK1 Kosher Tel-Bond 60 CPI-linked line.
+PSG-FK1,TASE,name,update,I.B.I. SAL (00) Kosher Tel-Bond 60 CPI - LINKED IL,0.99,Official TASE search entities provide the current active TASE listing name for the legacy PSG-FK1 exposure.
+PSG-FK1,TASE,isin,update,IL0011550766,0.99,Official TASE search entities provide the active ISIN for the current IBI.FK1 replacement line.
+PSG-FK4,TASE,ticker,update,IBI.FK4,0.99,Official TASE search entities resolve legacy PSG-FK4 to the current active IBI.FK4 Kosher TA-125 line.
+PSG-FK4,TASE,name,update,I.B.I. SAL (4A) Kosher TA-125 IL,0.99,Official TASE search entities provide the current active TASE listing name for the legacy PSG-FK4 exposure.
+PSG-FK4,TASE,isin,update,IL0011553240,0.99,Official TASE search entities provide the active ISIN for the current IBI.FK4 replacement line.
+COXE,BME,isin,update,MX01CO0U0028,0.94,Official BME Growth detail URL identifies COX Energy with Mexican ISIN MX01CO0U0028.
+ALQ,BME,isin,update,ES0105366001,0.94,Official BME Growth detail URL identifies Alquiber Quality with ISIN ES0105366001.
+DESA,BME,isin,update,ES0126251018,0.9,BME Growth admission/bulletin references and issuer profiles identify DESA with Spanish ISIN ES0126251018.
+EDR,BME,isin,update,LU1048328220,0.96,BME exchange profiles and issuer reference data identify eDreams Odigeo with ISIN LU1048328220.
+ETC,BME,isin,update,ES0105687000,0.94,Official BME Growth detail URL identifies Energy Solar Tech with ISIN ES0105687000.
+INDXA,BME,isin,update,ES0105702007,0.94,Official BME Growth detail URL identifies Indexa Capital Group with ISIN ES0105702007.
+MCM,BME,isin,update,ES0164180012,0.96,BME exchange profiles and issuer reference data identify Miquel y Costas & Miquel with ISIN ES0164180012.
+MFEA,BME,isin,update,NL0015001OI1,0.9,Current BME/market profiles identify the MFE-MediaForEurope A line with ISIN NL0015001OI1.
+OPTS,BME,isin,update,ES0105818019,0.94,Official BME Growth detail URL identifies Optare Solutions with ISIN ES0105818019.
+RDG,BME,isin,update,ES0105857009,0.94,Official BME Growth detail URL identifies Redegal with ISIN ES0105857009.
+RSS,BME,isin,update,ES0105717005,0.94,Official BME Growth detail URL identifies Revenga Ingenieros with ISIN ES0105717005.
+SCBTT,BME,isin,update,ES0105877007,0.9,BME Scaleup/BME Growth references and issuer profiles identify Better Consultants with ISIN ES0105877007.
+SCIG4,BME,isin,update,ES0105683009,0.9,BME Scaleup issuer references identify the SCIG4 line with ISIN ES0105683009.
+VANA,BME,isin,update,ES0105716130,0.94,Official BME Growth detail URL identifies Vanadi Coffee with ISIN ES0105716130.
+YIRG,BME,isin,update,ES0105653002,0.9,BME Scaleup issuer references identify YIRG with ISIN ES0105653002.
+YKTS,BME,isin,update,ES0105536009,0.9,BME Growth/issuer references identify Ktesios Real Estate Socimi with ISIN ES0105536009.
+YMIL,BME,isin,update,ES0105584009,0.9,BME Scaleup issuer references identify Milepro Logistica Ultima Milla Socimi with ISIN ES0105584009.

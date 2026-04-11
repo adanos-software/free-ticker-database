@@ -76,7 +76,7 @@ def test_yahoo_high_risk_aliases_removed():
     assert "BRK-A" not in ticker_row("BRK")["aliases"]
     assert "TBC" not in ticker_row("T")["aliases"]
     assert "TBC" not in listing_ticker_exchange_row("SOBA", "XETRA")["aliases"]
-    assert "pt itsec asia" not in ticker_row("CYBR")["aliases"]
+    assert "pt itsec asia" not in listing_ticker_exchange_row("CYBR", "LSE")["aliases"]
 
 
 def test_residual_alias_collisions_and_metadata_contamination_are_removed():
@@ -85,7 +85,7 @@ def test_residual_alias_collisions_and_metadata_contamination_are_removed():
     fg = ticker_exchange_row("FG", "NYSE")
     amg = ticker_exchange_row("AMG", "NYSE")
     cntx = ticker_exchange_row("CNTX", "NASDAQ")
-    cybr = ticker_exchange_row("CYBR", "LSE")
+    cybr = listing_ticker_exchange_row("CYBR", "LSE")
     sea = ticker_exchange_row("SEA", "NYSE ARCA")
     soba = listing_ticker_exchange_row("SOBA", "XETRA")
     att = ticker_exchange_row("T", "NYSE")
@@ -112,7 +112,7 @@ def test_residual_alias_collisions_and_metadata_contamination_are_removed():
     assert "pt century textile industry" not in cntx["aliases"]
 
     assert cybr["country"] == "Ireland"
-    assert cybr["isin"] == ""
+    assert cybr["isin"] == "IE00BJXRZJ40"
     assert "cyberark" not in cybr["aliases"]
 
     assert sea["country"] == "United States"
@@ -196,11 +196,25 @@ def test_non_common_instruments_removed():
 
 def test_country_examples_corrected():
     assert ticker_row("AAIGF")["country"] == "Hong Kong"
-    assert ticker_row("AANNF")["country"] == "Luxembourg"
+    assert listing_ticker_exchange_row("AANNF", "OTC")["country"] == "Luxembourg"
     assert listing_ticker_exchange_row("AAVMY", "OTC")["country"] == "Netherlands"
     assert listing_ticker_exchange_row("0A00", "LSE")["country"] == "Netherlands"
     assert listing_ticker_exchange_row("04Q", "XETRA")["country"] == "Finland"
     assert ticker_row("A1CR34") is None
+
+
+def test_country_from_isin_handles_vietnam_prefix():
+    from scripts.rebuild_dataset import country_from_isin
+
+    assert country_from_isin("VN000000IPA5") == "Vietnam"
+
+
+def test_vietnam_hnx_official_isin_fallback_corrects_country():
+    ipa = listing_ticker_exchange_row("IPA", "HNX")
+
+    assert ipa["isin"] == "VN000000IPA5"
+    assert ipa["country"] == "Vietnam"
+    assert ipa["country_code"] == "VN"
 
 
 def test_thin_otc_metadata_is_backfilled_for_verified_listings():
@@ -217,6 +231,12 @@ def test_thin_otc_metadata_is_backfilled_for_verified_listings():
     assert dtref["country_code"] == "AU"
     assert dtref["isin"] == "AU000000DTR1"
     assert dtref["sector"] == "Materials"
+
+
+def test_generic_us_legacy_exchange_is_removed_from_core():
+    assert all(row["exchange"] != "US" for row in load_csv("listings.csv"))
+    assert ticker_exchange_row("EFGD", "US") is None
+    assert ticker_exchange_row("RWAX", "US") is None
 
 
 def test_psx_name_corrections_and_alias_cleanup_applied():
@@ -245,7 +265,7 @@ def test_yahoo_corrected_etf_outliers_are_cleaned():
     assert netz["name"] == "TCW Transform Systems ETF"
     assert netz["country"] == "United States"
     assert netz["country_code"] == "US"
-    assert netz["isin"] == ""
+    assert netz["isin"] == "US29287L2051"
 
     assert tek["name"] == "iShares Technology Opportunities Active ETF"
     assert tek["country"] == "United States"
@@ -255,8 +275,8 @@ def test_yahoo_corrected_etf_outliers_are_cleaned():
 
 def test_non_otc_country_isin_mismatches_are_cleared_or_verified():
     assert ticker_exchange_row("T", "NYSE")["isin"] == "US00206R1023"
-    assert ticker_exchange_row("PKO", "WSE")["isin"] == ""
-    assert ticker_exchange_row("PRX", "AMS")["isin"] == ""
+    assert ticker_exchange_row("PKO", "WSE")["isin"] == "PLPKO0000016"
+    assert ticker_exchange_row("PRX", "AMS")["isin"] == "NL0013654783"
 
 
 def test_safe_tse_supplements_are_present_without_cross_exchange_collisions():
@@ -550,6 +570,27 @@ def test_should_drop_contextual_alias_drops_untrusted_shared_alias():
     assert should_drop_contextual_alias(row, "wealthsimple", alias_context) is True
 
 
+def test_should_exclude_stock_row_removes_dated_generic_us_futures_only():
+    from scripts.rebuild_dataset import should_exclude_stock_row
+
+    assert should_exclude_stock_row(
+        {
+            "ticker": "FGBLM26",
+            "name": "Euro Bund Future June 26",
+            "exchange": "US",
+            "asset_type": "Stock",
+        }
+    )
+    assert not should_exclude_stock_row(
+        {
+            "ticker": "FUTR",
+            "name": "Future plc",
+            "exchange": "LSE",
+            "asset_type": "Stock",
+        }
+    )
+
+
 def test_normalize_input_row_reclassifies_exchange_traded_products():
     from scripts.rebuild_dataset import normalize_input_row
 
@@ -590,6 +631,30 @@ def test_normalize_input_row_reclassifies_exchange_traded_products():
     assert etn["asset_type"] == "ETF"
     assert twse_etf["asset_type"] == "ETF"
     assert twse_reit["asset_type"] == "ETF"
+
+
+def test_normalize_input_row_canonicalizes_only_clear_otc_venues():
+    from scripts.rebuild_dataset import normalize_input_row
+
+    assert normalize_input_row({"ticker": "ABC", "exchange": "OTCCE", "asset_type": "Stock"})["exchange"] == "OTC"
+    assert normalize_input_row({"ticker": "ABC", "exchange": "OTCMKTS", "asset_type": "Stock"})["exchange"] == "OTC"
+    assert normalize_input_row({"ticker": "ABC", "exchange": "US", "asset_type": "Stock"})["exchange"] == "US"
+    assert normalize_input_row({"ticker": "ABC", "exchange": "NMFQS", "asset_type": "ETF"})["exchange"] == "NMFQS"
+
+
+def test_normalize_input_row_reclassifies_generic_us_fund_wrappers_to_etf():
+    from scripts.rebuild_dataset import normalize_input_row
+
+    row = normalize_input_row(
+        {
+            "ticker": "AINT",
+            "name": "Tidal Trust I",
+            "exchange": "US",
+            "asset_type": "Stock",
+        }
+    )
+
+    assert row["asset_type"] == "ETF"
 
 
 def test_normalize_input_row_reclassifies_neo_cdrs_and_xdrs_to_stock():
@@ -1061,6 +1126,218 @@ def test_apply_official_exchange_corrections_moves_tsx_stock_to_tsxv_on_official
     assert corrected[0]["exchange"] == "TSXV"
 
 
+def test_apply_official_exchange_corrections_moves_hose_stock_without_isin_to_hnx(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "DVM",
+        "name": "Vietnam Medicinal Materials JSC",
+        "exchange": "HOSE",
+        "asset_type": "Stock",
+        "country": "Vietnam",
+        "country_code": "VN",
+        "sector": "",
+        "isin": "",
+        "aliases": [],
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_reference_rows",
+        lambda: {
+            ("DVM", "Stock"): (
+                {
+                    "ticker": "DVM",
+                    "exchange": "HNX",
+                    "asset_type": "Stock",
+                    "name": "Cong ty co phan Duoc lieu Viet Nam",
+                    "source_key": "hnx_listed_securities",
+                    "reference_scope": "exchange_directory",
+                },
+            )
+        },
+    )
+
+    corrected = rebuild_dataset.apply_official_exchange_corrections([row])
+
+    assert corrected[0]["exchange"] == "HNX"
+
+
+def test_apply_official_exchange_corrections_moves_hose_stock_to_hnx_on_exact_isin(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "BKC",
+        "name": "BacKan Mineral Joint Stock Corp",
+        "exchange": "HOSE",
+        "asset_type": "Stock",
+        "country": "Vietnam",
+        "country_code": "VN",
+        "sector": "",
+        "isin": "VN000000BKC7",
+        "aliases": [],
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_reference_rows",
+        lambda: {
+            ("BKC", "Stock"): (
+                {
+                    "ticker": "BKC",
+                    "exchange": "HNX",
+                    "asset_type": "Stock",
+                    "name": "Công ty cổ phần Khoáng sản Bắc Kạn",
+                    "source_key": "hnx_listed_securities",
+                    "reference_scope": "exchange_directory",
+                    "isin": "VN000000BKC7",
+                },
+            )
+        },
+    )
+
+    corrected = rebuild_dataset.apply_official_exchange_corrections([row])
+
+    assert corrected[0]["exchange"] == "HNX"
+    assert corrected[0]["isin"] == "VN000000BKC7"
+
+
+def test_apply_official_exchange_corrections_prefers_hnx_exact_isin_over_foreign_candidate(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "KDM",
+        "name": "New Residential Urban Development Holdings Corp",
+        "exchange": "HOSE",
+        "asset_type": "Stock",
+        "country": "Vietnam",
+        "country_code": "VN",
+        "sector": "",
+        "isin": "VN000000KDM2",
+        "aliases": [],
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_reference_rows",
+        lambda: {
+            ("KDM", "Stock"): (
+                {
+                    "ticker": "KDM",
+                    "exchange": "WSE",
+                    "asset_type": "Stock",
+                    "name": "KDM SHIPPING PUBLIC LIMITED",
+                    "source_key": "wse_listed_companies",
+                    "reference_scope": "exchange_directory",
+                    "isin": "CY0102492119",
+                },
+                {
+                    "ticker": "KDM",
+                    "exchange": "HNX",
+                    "asset_type": "Stock",
+                    "name": "Công ty Cổ Phần Tập đoàn GCL",
+                    "source_key": "hnx_listed_securities",
+                    "reference_scope": "exchange_directory",
+                    "isin": "VN000000KDM2",
+                },
+            )
+        },
+    )
+
+    corrected = rebuild_dataset.apply_official_exchange_corrections([row])
+
+    assert corrected[0]["exchange"] == "HNX"
+    assert corrected[0]["isin"] == "VN000000KDM2"
+
+
+def test_apply_official_exchange_corrections_moves_generic_us_row_to_preferred_official_us_venue(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "TII",
+        "name": "Titan Mining Corporation",
+        "exchange": "US",
+        "asset_type": "Stock",
+        "country": "United States",
+        "country_code": "US",
+        "sector": "Materials",
+        "isin": "",
+        "aliases": [],
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_reference_rows",
+        lambda: {
+            ("TII", "Stock"): (
+                {
+                    "ticker": "TII",
+                    "exchange": "NYSE",
+                    "asset_type": "Stock",
+                    "name": "Titan Mining Corp",
+                    "source_key": "sec_company_tickers_exchange",
+                    "reference_scope": "exchange_directory",
+                    "isin": "",
+                },
+                {
+                    "ticker": "TII",
+                    "exchange": "NYSE MKT",
+                    "asset_type": "Stock",
+                    "name": "Titan Mining Corporation Common Shares",
+                    "source_key": "nasdaq_other_listed",
+                    "reference_scope": "exchange_directory",
+                    "isin": "",
+                },
+            )
+        },
+    )
+
+    corrected = rebuild_dataset.apply_official_exchange_corrections([row])
+
+    assert corrected[0]["exchange"] == "NYSE MKT"
+
+
+def test_apply_official_exchange_corrections_replaces_contaminated_hose_isin_from_hnx(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "GLT",
+        "name": "Global Electrical Technology Corp",
+        "exchange": "HOSE",
+        "asset_type": "Stock",
+        "country": "Vietnam",
+        "country_code": "VN",
+        "sector": "",
+        "isin": "US3773201062",
+        "aliases": [],
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_reference_rows",
+        lambda: {
+            ("GLT", "Stock"): (
+                {
+                    "ticker": "GLT",
+                    "exchange": "HNX",
+                    "asset_type": "Stock",
+                    "name": "Công ty cổ phần Kỹ thuật Điện Toàn Cầu",
+                    "source_key": "hnx_listed_securities",
+                    "reference_scope": "exchange_directory",
+                    "isin": "VN000000GLT8",
+                },
+            )
+        },
+    )
+
+    corrected = rebuild_dataset.apply_official_exchange_corrections([row])
+
+    assert corrected[0]["exchange"] == "HNX"
+    assert corrected[0]["isin"] == "VN000000GLT8"
+    assert corrected[0]["country"] == "Vietnam"
+    assert corrected[0]["country_code"] == "VN"
+
+
 def test_apply_official_exchange_corrections_prefers_unique_name_matched_exchange(monkeypatch):
     from scripts import rebuild_dataset
 
@@ -1246,6 +1523,255 @@ def test_cleaned_rows_backfills_unique_official_isin(monkeypatch):
     assert cleaned[0]["isin"] == "GB0007655250"
 
 
+def test_cleaned_rows_replaces_contaminated_isin_with_exact_official_isin(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "ACS",
+        "name": "ACS Actividades de Construccion y Servicios SA",
+        "exchange": "BME",
+        "asset_type": "Stock",
+        "sector": "",
+        "country": "Australia",
+        "country_code": "AU",
+        "isin": "AU000000ACS1",
+        "aliases": "",
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_data",
+        lambda: ([row], {}, defaultdict(list), {}, set()),
+    )
+    monkeypatch.setattr(rebuild_dataset, "load_review_overrides", lambda: (defaultdict(set), defaultdict(dict), set()))
+    monkeypatch.setattr(rebuild_dataset, "apply_official_exchange_corrections", lambda rows: rows)
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_isin_fallbacks",
+        lambda: {("ACS", "BME", "Stock"): "ES0167050915"},
+    )
+
+    cleaned, _ = rebuild_dataset.cleaned_rows()
+
+    assert cleaned[0]["isin"] == "ES0167050915"
+    assert cleaned[0]["country"] == "Spain"
+    assert cleaned[0]["country_code"] == "ES"
+
+
+def test_cleaned_rows_syncs_country_for_review_isin_override(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "ALQ",
+        "name": "Alquiber Quality SA",
+        "exchange": "BME",
+        "asset_type": "Stock",
+        "sector": "",
+        "country": "Australia",
+        "country_code": "AU",
+        "isin": "AU000000ALQ6",
+        "aliases": "",
+    }
+    metadata_updates = defaultdict(dict)
+    metadata_updates[("ALQ", "BME")]["isin"] = {
+        "decision": "update",
+        "proposed_value": "ES0105366001",
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_data",
+        lambda: ([row], {}, defaultdict(list), {}, set()),
+    )
+    monkeypatch.setattr(rebuild_dataset, "load_review_overrides", lambda: (defaultdict(set), metadata_updates, set()))
+    monkeypatch.setattr(rebuild_dataset, "apply_official_exchange_corrections", lambda rows: rows)
+    monkeypatch.setattr(rebuild_dataset, "load_active_official_isin_fallbacks", lambda: {})
+
+    cleaned, _ = rebuild_dataset.cleaned_rows()
+
+    assert cleaned[0]["isin"] == "ES0105366001"
+    assert cleaned[0]["country"] == "Spain"
+    assert cleaned[0]["country_code"] == "ES"
+
+
+def test_build_unique_name_isin_fallbacks_only_keeps_unique_non_otc_names():
+    from scripts.rebuild_dataset import build_unique_name_isin_fallbacks
+
+    rows = [
+        {
+            "ticker": "AEV",
+            "name": "Aboitiz Equity Ventures Inc",
+            "exchange": "PSE",
+            "asset_type": "Stock",
+            "isin": "PHY0001Z1040",
+        },
+        {
+            "ticker": "ABOIF",
+            "name": "Aboitiz Equity Ventures Inc",
+            "exchange": "OTC",
+            "asset_type": "Stock",
+            "isin": "",
+        },
+        {
+            "ticker": "DUP1",
+            "name": "Duplicate Name Fund",
+            "exchange": "SIX",
+            "asset_type": "ETF",
+            "isin": "IE0000000001",
+        },
+        {
+            "ticker": "DUP2",
+            "name": "Duplicate Name Fund",
+            "exchange": "XETRA",
+            "asset_type": "ETF",
+            "isin": "IE0000000002",
+        },
+    ]
+
+    fallbacks = build_unique_name_isin_fallbacks(rows)
+
+    assert fallbacks[("aboitizequityventuresinc", "Stock")] == "PHY0001Z1040"
+    assert ("duplicatenamefund", "ETF") not in fallbacks
+
+
+def test_cleaned_rows_backfills_unique_name_isin_for_otc_and_updates_country(monkeypatch):
+    from scripts import rebuild_dataset
+
+    primary = {
+        "ticker": "AEV",
+        "name": "Aboitiz Equity Ventures Inc",
+        "exchange": "PSE",
+        "asset_type": "Stock",
+        "sector": "",
+        "country": "Philippines",
+        "country_code": "PH",
+        "isin": "PHY0001Z1040",
+        "aliases": "",
+    }
+    otc = {
+        "ticker": "ABOIF",
+        "name": "Aboitiz Equity Ventures Inc",
+        "exchange": "OTC",
+        "asset_type": "Stock",
+        "sector": "",
+        "country": "United States",
+        "country_code": "US",
+        "isin": "",
+        "aliases": "",
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_data",
+        lambda: ([primary, otc], {}, defaultdict(list), {}, set()),
+    )
+    monkeypatch.setattr(rebuild_dataset, "load_review_overrides", lambda: (defaultdict(set), defaultdict(dict), set()))
+    monkeypatch.setattr(rebuild_dataset, "apply_official_exchange_corrections", lambda rows: rows)
+    monkeypatch.setattr(rebuild_dataset, "load_active_official_isin_fallbacks", lambda: {})
+
+    cleaned, _ = rebuild_dataset.cleaned_rows()
+    otc_row = next(row for row in cleaned if row["ticker"] == "ABOIF")
+
+    assert otc_row["isin"] == "PHY0001Z1040"
+    assert otc_row["country"] == "Philippines"
+    assert otc_row["country_code"] == "PH"
+
+
+def test_cleaned_rows_backfills_unique_name_isin_for_otc_with_blank_country(monkeypatch):
+    from scripts import rebuild_dataset
+
+    primary = {
+        "ticker": "VROY",
+        "name": "Vizsla Royalties Corp.",
+        "exchange": "TSXV",
+        "asset_type": "Stock",
+        "sector": "",
+        "country": "Canada",
+        "country_code": "CA",
+        "isin": "CA92859L2012",
+        "aliases": "",
+    }
+    otc = {
+        "ticker": "VROYF",
+        "name": "Vizsla Royalties Corp.",
+        "exchange": "OTC",
+        "asset_type": "Stock",
+        "sector": "",
+        "country": "",
+        "country_code": "",
+        "isin": "",
+        "aliases": "",
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_data",
+        lambda: ([primary, otc], {}, defaultdict(list), {}, set()),
+    )
+    monkeypatch.setattr(rebuild_dataset, "load_review_overrides", lambda: (defaultdict(set), defaultdict(dict), set()))
+    monkeypatch.setattr(rebuild_dataset, "apply_official_exchange_corrections", lambda rows: rows)
+    monkeypatch.setattr(rebuild_dataset, "load_active_official_isin_fallbacks", lambda: {})
+
+    cleaned, _ = rebuild_dataset.cleaned_rows()
+    otc_row = next(row for row in cleaned if row["ticker"] == "VROYF")
+
+    assert otc_row["isin"] == "CA92859L2012"
+    assert otc_row["country"] == "Canada"
+    assert otc_row["country_code"] == "CA"
+
+
+def test_cleaned_rows_skips_ambiguous_unique_name_isin_backfill(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "DUPX",
+        "name": "Duplicate Name Fund",
+        "exchange": "OTC",
+        "asset_type": "ETF",
+        "sector": "",
+        "country": "United States",
+        "country_code": "US",
+        "isin": "",
+        "aliases": "",
+    }
+    source_a = {
+        "ticker": "DUP1",
+        "name": "Duplicate Name Fund",
+        "exchange": "SIX",
+        "asset_type": "ETF",
+        "sector": "",
+        "country": "Ireland",
+        "country_code": "IE",
+        "isin": "IE0000000001",
+        "aliases": "",
+    }
+    source_b = {
+        "ticker": "DUP2",
+        "name": "Duplicate Name Fund",
+        "exchange": "XETRA",
+        "asset_type": "ETF",
+        "sector": "",
+        "country": "Ireland",
+        "country_code": "IE",
+        "isin": "IE0000000002",
+        "aliases": "",
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_data",
+        lambda: ([row, source_a, source_b], {}, defaultdict(list), {}, set()),
+    )
+    monkeypatch.setattr(rebuild_dataset, "load_review_overrides", lambda: (defaultdict(set), defaultdict(dict), set()))
+    monkeypatch.setattr(rebuild_dataset, "apply_official_exchange_corrections", lambda rows: rows)
+    monkeypatch.setattr(rebuild_dataset, "load_active_official_isin_fallbacks", lambda: {})
+
+    cleaned, _ = rebuild_dataset.cleaned_rows()
+    target = next(candidate for candidate in cleaned if candidate["ticker"] == "DUPX")
+
+    assert target["isin"] == ""
+
+
 def test_cleaned_rows_respects_manual_isin_clear_over_official_fallback(monkeypatch):
     from scripts import rebuild_dataset
 
@@ -1349,6 +1875,32 @@ def test_cph_review_overrides_drop_delisted_rows_and_move_cessa_to_sto():
     assert cessa["country_code"] == "DK"
 
 
+def test_wse_review_overrides_fix_legacy_names_and_drop_sgr():
+    tickers_csv = load_csv("tickers.csv")
+    by_key = {(row["ticker"], row["exchange"]): row for row in tickers_csv}
+
+    assert ("SGR", "WSE") not in by_key
+
+    expected = {
+        ("ABE", "WSE"): ("AB SPÓŁKA AKCYJNA", "PLAB00000019"),
+        ("ALI", "WSE"): ("ALTUS SPÓŁKA AKCYJNA", "PLATTFI00018"),
+        ("APL", "WSE"): ("LC SPÓŁKA AKCYJNA", "PLAMPLI00019"),
+        ("FMG", "WSE"): ("WISE ENERGY SPÓŁKA AKCYJNA", "PLTHP0000011"),
+        ("HUB", "WSE"): ("HUB.TECH SPÓŁKA AKCYJNA", "PLBRTZM00010"),
+        ("IFA", "WSE"): ("GENERATIONIS.AI SPÓŁKA AKCYJNA", "PLINFRA00015"),
+        ("IMP", "WSE"): ("IMPERIO ALTERNATYWNA SPÓŁKA INWESTYCYJNA SPÓŁKA AKCYJNA", "PLNFI0700018"),
+        ("OBL", "WSE"): ("ORZEŁ BIAŁY SPÓŁKA AKCYJNA", "PLORZBL00013"),
+        ("ORL", "WSE"): ("ORZEŁ SPÓŁKA AKCYJNA", "PLORZL000019"),
+    }
+
+    for key, (name, isin) in expected.items():
+        row = by_key[key]
+        assert row["name"] == name
+        assert row["country"] == "Poland"
+        assert row["country_code"] == "PL"
+        assert row["isin"] == isin
+
+
 def test_jse_and_bats_review_overrides_fix_etfbnd_and_drop_fgro():
     tickers_csv = load_csv("tickers.csv")
     by_key = {(row["ticker"], row["exchange"]): row for row in tickers_csv}
@@ -1394,6 +1946,24 @@ def test_tase_review_overrides_rename_legacy_psagot_lines_and_drop_orbi():
     assert ("MDIN-L", "TASE") not in by_key
     assert ("PSG-F106", "TASE") not in by_key
     assert ("PSG-F65", "TASE") not in by_key
+    assert ("PSTI", "TASE") not in by_key
+    assert ("HRS&P-25", "TASE") not in by_key
+    assert ("PSG-F13", "TASE") not in by_key
+    assert ("PSG-FK1", "TASE") not in by_key
+    assert ("PSG-FK4", "TASE") not in by_key
+
+    for dropped_ticker in [
+        "BMDX",
+        "GAMT",
+        "INSL",
+        "ITYF",
+        "NZHT",
+        "HRS&P-48",
+        "HRS&P-58",
+        "KSS&P-53",
+        "KSS&P-90",
+    ]:
+        assert (dropped_ticker, "TASE") not in by_key
 
     ibi_f106 = by_key[("IBI.F106", "TASE")]
     assert ibi_f106["name"] == "I.B.I. SAL (4D) MSCI AC World"
@@ -1402,6 +1972,35 @@ def test_tase_review_overrides_rename_legacy_psagot_lines_and_drop_orbi():
     ibi_f65 = by_key[("IBI.F65", "TASE")]
     assert ibi_f65["name"] == "I.B.I. SAL (4D) S&P 500"
     assert ibi_f65["isin"] == "IL0011481624"
+
+    plur = by_key[("PLUR", "TASE")]
+    assert plur["name"] == "PLURI"
+    assert plur["isin"] == "US72942G2030"
+
+    tickers_csv = load_csv("tickers.csv")
+    primary_by_key = {(row["ticker"], row["exchange"]): row for row in tickers_csv}
+    primary_plur = primary_by_key[("PLUR", "NASDAQ")]
+    assert primary_plur["isin"] == "US72942G2030"
+    assert primary_plur["country"] == "Israel"
+    assert primary_plur["country_code"] == "IL"
+    assert "A408KW" not in primary_plur["aliases"]
+    assert "CA72942L1031" not in primary_plur["aliases"]
+
+    hrl_f25 = by_key[("HRL.F25", "TASE")]
+    assert hrl_f25["name"] == "Harel Sal (4D) S&P 500"
+    assert hrl_f25["isin"] == "IL0011490203"
+
+    ibi_f13 = by_key[("IBI.F13", "TASE")]
+    assert ibi_f13["name"] == "I.B.I. SAL (00) Tel-Bond 40 CPI - LINKED IL"
+    assert ibi_f13["isin"] == "IL0011479743"
+
+    ibi_fk1 = by_key[("IBI.FK1", "TASE")]
+    assert ibi_fk1["name"] == "I.B.I. SAL (00) Kosher Tel-Bond 60 CPI - LINKED IL"
+    assert ibi_fk1["isin"] == "IL0011550766"
+
+    ibi_fk4 = by_key[("IBI.FK4", "TASE")]
+    assert ibi_fk4["name"] == "I.B.I. SAL (4A) Kosher TA-125 IL"
+    assert ibi_fk4["isin"] == "IL0011553240"
 
     is_ff501 = listings_by_key[("IS-FF501", "TASE")]
     assert is_ff501["isin"] == "IE00B3WJKG14"
@@ -1417,6 +2016,27 @@ def test_tase_review_overrides_rename_legacy_psagot_lines_and_drop_orbi():
 
     rati = listings_by_key[("RATI", "TASE")]
     assert rati["isin"] == "IL0003940157"
+
+
+def test_egx_review_overrides_fill_secondary_source_isins_and_replace_placeholder_ticker():
+    listings_csv = load_csv("listings.csv")
+    by_key = {(row["ticker"], row["exchange"]): row for row in listings_csv}
+
+    assert ("NULL", "EGX") not in by_key
+
+    expected_isins = {
+        "AMIA": "EGS67221C019",
+        "CIRA": "EGS65541C012",
+        "GBCO": "EGS673T1C012",
+        "MEPA": "EGS3C4L1C015",
+        "TWSA": "EGS7D231C010",
+        "QNBE": "EGS60081C014",
+    }
+    for ticker, isin in expected_isins.items():
+        row = by_key[(ticker, "EGX")]
+        assert row["isin"] == isin
+        assert row["country"] == "Egypt"
+        assert row["country_code"] == "EG"
 
 
 def test_drop_overrides_remove_stale_neo_and_placeholder_us_rows() -> None:
@@ -1457,7 +2077,7 @@ def test_xetra_review_overrides_replace_stale_duplicate_and_legacy_tickers() -> 
     assert by_key[("BRNK", "XETRA")]["isin"] == "DE000A1X3XX4"
     assert by_key[("DGR", "XETRA")]["country"] == "Germany"
     assert by_key[("DGR", "XETRA")]["country_code"] == "DE"
-    assert by_key[("DGR", "XETRA")]["isin"] == ""
+    assert by_key[("DGR", "XETRA")]["isin"] == "DE0005533400"
     assert by_key[("XD4", "XETRA")]["name"] == "STRABAG"
     assert by_key[("VME", "XETRA")]["name"] == "Viromed Medical AG"
 
@@ -1473,9 +2093,13 @@ def db_rows_for_table(table: str) -> int:
 def test_readme_stats_and_claims_are_current():
     readme = (ROOT / "README.md").read_text()
     tickers_csv = load_csv("tickers.csv")
+    listings_csv = load_csv("listings.csv")
     aliases_csv = load_csv("aliases.csv")
     cross_listings_csv = load_csv("cross_listings.csv")
+    instrument_scopes_csv = load_csv("instrument_scopes.csv")
     exchange_counts = Counter(row["exchange"] for row in tickers_csv)
+    instrument_scope_counts = Counter(row["instrument_scope"] for row in instrument_scopes_csv)
+    instrument_scope_reason_counts = Counter(row["scope_reason"] for row in instrument_scopes_csv)
 
     total = len(tickers_csv)
     stocks = sum(row["asset_type"] == "Stock" for row in tickers_csv)
@@ -1491,13 +2115,21 @@ def test_readme_stats_and_claims_are_current():
     assert f"| Total aliases | {len(aliases_csv):,} |" in readme
     assert f"| ISIN coverage | {isin_count:,} ({isin_count / total * 100:.1f}%) |" in readme
     assert f"| Sector coverage | {sector_count:,} ({sector_count / total * 100:.1f}%) |" in readme
+    assert f"| Core listing-scope rows | {instrument_scope_counts['core']:,} |" in readme
+    assert f"| Core primary rows with ISIN | {instrument_scope_reason_counts['primary_listing']:,} |" in readme
+    assert (
+        f"| Core primary rows missing ISIN | {instrument_scope_reason_counts['primary_listing_missing_isin']:,} |"
+        in readme
+    )
+    assert f"| Extended listing-scope rows | {instrument_scope_counts['extended']:,} |" in readme
     assert f"| NASDAQ | {exchange_counts['NASDAQ']:,} | NASDAQ |" in readme
     assert f"| XETRA | {exchange_counts['XETRA']:,} | Deutsche Boerse |" in readme
     assert f"| NYSE | {exchange_counts['NYSE']:,} | New York Stock Exchange |" in readme
     assert f"| ASX | {exchange_counts['ASX']:,} | Australian Securities Exchange |" in readme
     assert (
-        f"Tables: `tickers` ({total:,} rows) + `aliases` ({len(aliases_csv):,} rows) + "
-        f"`cross_listings` ({len(cross_listings_csv):,} rows)"
+        f"Tables: `tickers` ({total:,} rows), `listings` ({len(listings_csv):,} rows), "
+        f"`aliases` ({len(aliases_csv):,} rows), `cross_listings` ({len(cross_listings_csv):,} rows), "
+        f"and `instrument_scopes` ({len(instrument_scopes_csv):,} rows)"
     ) in readme
 
 
@@ -1536,11 +2168,13 @@ def test_open_source_project_files_exist_and_are_linked():
     assert (DATA_DIR / "history" / "latest_snapshot.csv").exists()
     assert (DATA_DIR / "identifiers_extended.csv").exists()
     assert (DATA_DIR / "listings.csv").exists()
+    assert (DATA_DIR / "instrument_scopes.csv").exists()
     assert (DATA_DIR / "listing_index.csv").exists()
     assert (DATA_DIR / "reports" / "coverage_report.json").exists()
     assert (DATA_DIR / "reports" / "masterfile_collision_report.json").exists()
     assert "identifiers_extended.csv" in readme
     assert "listings.csv" in readme
+    assert "instrument_scopes.csv" in readme
     assert "listing_index.csv" in readme
     assert "coverage_report.json" in readme
     assert "masterfile_collision_report.json" in readme
@@ -1685,6 +2319,38 @@ def test_tickers_csv_keeps_only_primary_cross_listing_rows():
     assert sum(row["is_primary"] == "1" for row in microsoft_rows) == 1
 
 
+def test_instrument_scopes_split_core_and_extended_listings():
+    rows = load_csv("instrument_scopes.csv")
+    by_key = {row["listing_key"]: row for row in rows}
+
+    assert by_key["NASDAQ::MSFT"]["instrument_scope"] == "core"
+    assert by_key["NASDAQ::MSFT"]["scope_reason"] == "primary_listing"
+    assert by_key["XETRA::MSF"]["instrument_scope"] == "extended"
+    assert by_key["XETRA::MSF"]["scope_reason"] == "secondary_cross_listing"
+    assert by_key["XETRA::MSF"]["primary_listing_key"] == "NASDAQ::MSFT"
+
+    otc_rows = [row for row in rows if row["exchange"] == "OTC"]
+    assert otc_rows
+    assert {row["instrument_scope"] for row in otc_rows} == {"extended"}
+    assert {row["scope_reason"] for row in otc_rows} == {"otc_listing"}
+
+
+def test_instrument_scope_rows_flag_core_primary_without_isin():
+    from scripts.rebuild_dataset import build_instrument_scope_rows
+
+    rows = [
+        {"ticker": "AAA", "exchange": "NYSE", "asset_type": "Stock", "isin": ""},
+        {"ticker": "BBB", "exchange": "NASDAQ", "asset_type": "Stock", "isin": "US0000000001"},
+    ]
+
+    by_key = {row["listing_key"]: row for row in build_instrument_scope_rows(rows, rows)}
+
+    assert by_key["NYSE::AAA"]["instrument_scope"] == "core"
+    assert by_key["NYSE::AAA"]["scope_reason"] == "primary_listing_missing_isin"
+    assert by_key["NASDAQ::BBB"]["instrument_scope"] == "core"
+    assert by_key["NASDAQ::BBB"]["scope_reason"] == "primary_listing"
+
+
 def test_core_export_corrects_safe_official_exchange_collisions():
     nby = ticker_row("NBY")
     csci = ticker_row("CSCI")
@@ -1749,6 +2415,18 @@ def test_listings_sqlite_table_matches_csv_rows():
     conn = sqlite3.connect(DATA_DIR / "tickers.db")
     try:
         db_rows = conn.execute("SELECT COUNT(*) FROM listings").fetchone()[0]
+    finally:
+        conn.close()
+
+    assert db_rows == len(csv_rows)
+
+
+def test_instrument_scopes_sqlite_table_matches_csv_rows():
+    csv_rows = load_csv("instrument_scopes.csv")
+
+    conn = sqlite3.connect(DATA_DIR / "tickers.db")
+    try:
+        db_rows = conn.execute("SELECT COUNT(*) FROM instrument_scopes").fetchone()[0]
     finally:
         conn.close()
 

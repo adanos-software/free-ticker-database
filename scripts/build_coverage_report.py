@@ -20,6 +20,7 @@ TICKERS_CSV = DATA_DIR / "tickers.csv"
 LISTINGS_CSV = DATA_DIR / "listings.csv"
 TICKERS_JSON = DATA_DIR / "tickers.json"
 ALIASES_CSV = DATA_DIR / "aliases.csv"
+INSTRUMENT_SCOPES_CSV = DATA_DIR / "instrument_scopes.csv"
 IDENTIFIERS_CSV = DATA_DIR / "identifiers.csv"
 IDENTIFIERS_EXTENDED_CSV = DATA_DIR / "identifiers_extended.csv"
 IDENTIFIER_SUMMARY_JSON = DATA_DIR / "identifier_summary.json"
@@ -317,6 +318,7 @@ def build_global_summary(
     tickers: list[dict[str, str]],
     listings: list[dict[str, str]],
     aliases: list[dict[str, str]],
+    instrument_scopes: list[dict[str, str]] | None,
     identifiers_extended: list[dict[str, str]],
     listing_status_history: list[dict[str, str]],
     listing_events: list[dict[str, str]],
@@ -325,6 +327,8 @@ def build_global_summary(
     etf_verification_summary: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     venue_status_counts = Counter(row["venue_status"] for row in exchange_coverage)
+    instrument_scope_counts = Counter(row["instrument_scope"] for row in (instrument_scopes or []))
+    scope_reason_counts = Counter(row["scope_reason"] for row in (instrument_scopes or []))
     summary = {
         "tickers": len(tickers),
         "aliases": len(aliases),
@@ -339,6 +343,13 @@ def build_global_summary(
         "listing_status_intervals": len(listing_status_history),
         "listing_events": len(listing_events),
         "listing_keys": len({row_listing_key(row) for row in listings}),
+        "instrument_scope_rows": len(instrument_scopes or []),
+        "instrument_scope_core": instrument_scope_counts.get("core", 0),
+        "instrument_scope_extended": instrument_scope_counts.get("extended", 0),
+        "instrument_scope_primary_listing": scope_reason_counts.get("primary_listing", 0),
+        "instrument_scope_primary_listing_missing_isin": scope_reason_counts.get("primary_listing_missing_isin", 0),
+        "instrument_scope_otc_listing": scope_reason_counts.get("otc_listing", 0),
+        "instrument_scope_secondary_cross_listing": scope_reason_counts.get("secondary_cross_listing", 0),
         "official_masterfile_symbols": sum(row["masterfile_symbols"] for row in exchange_coverage),
         "official_masterfile_matches": sum(row["masterfile_matches"] for row in exchange_coverage),
         "official_masterfile_collisions": sum(row["masterfile_collisions"] for row in exchange_coverage),
@@ -725,6 +736,7 @@ def build_report() -> dict[str, Any]:
     tickers = load_csv(TICKERS_CSV)
     listings = load_csv(LISTINGS_CSV)
     aliases = load_csv(ALIASES_CSV)
+    instrument_scopes = load_csv(INSTRUMENT_SCOPES_CSV)
     identifiers_extended = load_csv(IDENTIFIERS_EXTENDED_CSV)
     masterfiles = load_csv(MASTERFILE_REFERENCE_CSV)
     listing_status_history = load_csv(LISTING_STATUS_HISTORY_CSV)
@@ -749,6 +761,7 @@ def build_report() -> dict[str, Any]:
             tickers,
             listings,
             aliases,
+            instrument_scopes,
             identifiers_extended,
             listing_status_history,
             listing_events,
