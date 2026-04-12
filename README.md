@@ -15,7 +15,7 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 52
 | Exchanges | 67 |
 | Countries | 69 |
 | ISIN coverage | 44,235 (83.9%) |
-| Sector coverage | 33,919 (64.3%) |
+| Sector coverage | 33,930 (64.3%) |
 | Core listing-scope rows | 44,290 |
 | Core primary rows with ISIN | 37,191 |
 | Core primary rows missing ISIN | 7,099 |
