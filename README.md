@@ -14,13 +14,13 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 52
 | ETFs | 14,003 |
 | Exchanges | 67 |
 | Countries | 69 |
-| ISIN coverage | 44,260 (83.9%) |
-| Sector coverage | 35,661 (67.6%) |
+| ISIN coverage | 44,335 (84.1%) |
+| Sector coverage | 37,954 (72.0%) |
 | Core listing-scope rows | 44,290 |
-| Core primary rows with ISIN | 37,216 |
-| Core primary rows missing ISIN | 7,074 |
+| Core primary rows with ISIN | 37,244 |
+| Core primary rows missing ISIN | 7,046 |
 | Extended listing-scope rows | 15,951 |
-| Total aliases | 90,692 |
+| Total aliases | 90,767 |
 
 ## Formats
 
@@ -171,7 +171,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (52,747 rows), `listings` (60,241 rows), `aliases` (90,692 rows), `cross_listings` (13,133 rows), and `instrument_scopes` (60,241 rows), with indexes on alias, exchange, country, sector, ISIN, listing scope, and instrument group key.
+Tables: `tickers` (52,747 rows), `listings` (60,241 rows), `aliases` (90,767 rows), `cross_listings` (13,133 rows), and `instrument_scopes` (60,241 rows), with indexes on alias, exchange, country, sector, ISIN, listing scope, and instrument group key.
 
 ## Schema
 
