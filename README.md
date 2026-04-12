@@ -9,18 +9,18 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 52
 
 | Metric | Value |
 |---|---|
-| **Total tickers** | 52,883 |
-| Stocks | 38,828 |
-| ETFs | 14,055 |
+| **Total tickers** | 52,747 |
+| Stocks | 38,744 |
+| ETFs | 14,003 |
 | Exchanges | 67 |
 | Countries | 69 |
-| ISIN coverage | 42,838 (81.0%) |
-| Sector coverage | 31,900 (60.3%) |
-| Core listing-scope rows | 44,394 |
-| Core primary rows with ISIN | 35,769 |
-| Core primary rows missing ISIN | 8,625 |
-| Extended listing-scope rows | 15,847 |
-| Total aliases | 89,383 |
+| ISIN coverage | 44,131 (83.7%) |
+| Sector coverage | 31,827 (60.3%) |
+| Core listing-scope rows | 44,290 |
+| Core primary rows with ISIN | 37,090 |
+| Core primary rows missing ISIN | 7,200 |
+| Extended listing-scope rows | 15,951 |
+| Total aliases | 90,564 |
 
 ## Formats
 
@@ -28,15 +28,15 @@ Choose the format that fits your use case:
 
 | File | Size | Best for |
 |---|---|---|
-| [`data/tickers.csv`](data/tickers.csv) | 5.0 MB | Excel, spreadsheets, quick lookups |
-| [`data/listings.csv`](data/listings.csv) | 6.4 MB | Listing-keyed export without global ticker ambiguity |
-| [`data/instrument_scopes.csv`](data/instrument_scopes.csv) | 5.3 MB | Core vs. extended listing scope |
-| [`data/tickers.json`](data/tickers.json) | 11.0 MB | Web apps, APIs |
-| [`data/tickers.parquet`](data/tickers.parquet) | 2.6 MB | Pandas, data science |
-| [`data/tickers.db`](data/tickers.db) | 38.1 MB | SQL queries, local apps |
-| [`data/aliases.csv`](data/aliases.csv) | 2.4 MB | Alias/name resolution |
-| [`data/identifiers.csv`](data/identifiers.csv) | 960 KB | ISIN/WKN lookups |
-| [`data/cross_listings.csv`](data/cross_listings.csv) | 465 KB | Cross-listed securities |
+| [`data/tickers.csv`](data/tickers.csv) | 4.8 MB | Excel, spreadsheets, quick lookups |
+| [`data/listings.csv`](data/listings.csv) | 6.1 MB | Listing-keyed export without global ticker ambiguity |
+| [`data/instrument_scopes.csv`](data/instrument_scopes.csv) | 5.0 MB | Core vs. extended listing scope |
+| [`data/tickers.json`](data/tickers.json) | 10 MB | Web apps, APIs |
+| [`data/tickers.parquet`](data/tickers.parquet) | 2.5 MB | Pandas, data science |
+| [`data/tickers.db`](data/tickers.db) | 37 MB | SQL queries, local apps |
+| [`data/aliases.csv`](data/aliases.csv) | 2.3 MB | Alias/name resolution |
+| [`data/identifiers.csv`](data/identifiers.csv) | 983 KB | ISIN/WKN lookups |
+| [`data/cross_listings.csv`](data/cross_listings.csv) | 473 KB | Cross-listed securities |
 
 Additional reference artifacts:
 
@@ -136,9 +136,9 @@ OTC::VROYF,VROYF,OTC,Stock,CA92859L2012,CA92859L2012,extended,otc_listing,TSXV::
 ```json
 {
   "_meta": {
-    "version": "3.4.0",
-    "built_at": "2026-04-11T15:04:41Z",
-    "total_tickers": 52868
+    "version": "3.5.0",
+    "built_at": "2026-04-12T04:50:20Z",
+    "total_tickers": 52747
   },
   "tickers": [
     {
@@ -156,7 +156,7 @@ OTC::VROYF,VROYF,OTC,Stock,CA92859L2012,CA92859L2012,extended,otc_listing,TSXV::
 }
 ```
 
-JSON outputs use an envelope with a `_meta` block and a `tickers` array as of version `3.4.0`.
+JSON outputs use an envelope with a `_meta` block and a `tickers` array as of version `3.5.0`.
 
 ### tickers.db (SQLite)
 
@@ -171,7 +171,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (52,883 rows), `listings` (60,241 rows), `aliases` (89,383 rows), `cross_listings` (12,908 rows), and `instrument_scopes` (60,241 rows), with indexes on alias, exchange, country, sector, ISIN, listing scope, and instrument group key.
+Tables: `tickers` (52,747 rows), `listings` (60,241 rows), `aliases` (90,564 rows), `cross_listings` (13,133 rows), and `instrument_scopes` (60,241 rows), with indexes on alias, exchange, country, sector, ISIN, listing scope, and instrument group key.
 
 ## Schema
 
@@ -200,23 +200,23 @@ Tables: `tickers` (52,883 rows), `listings` (60,241 rows), `aliases` (89,383 row
 
 | Exchange | Tickers | Description |
 |---|---|---|
-| OTC | 8,489 | US OTC / Pink Sheets |
-| NASDAQ | 4,545 | NASDAQ |
-| LSE | 3,893 | London Stock Exchange |
-| TSE | 3,207 | Tokyo Stock Exchange |
+| OTC | 8,457 | US OTC / Pink Sheets |
+| NASDAQ | 4,538 | NASDAQ |
+| LSE | 3,892 | London Stock Exchange |
+| TSE | 3,195 | Tokyo Stock Exchange |
 | SZSE | 3,083 | Shenzhen Stock Exchange |
 | SSE | 2,789 | Shanghai Stock Exchange |
-| NYSE ARCA | 2,594 | NYSE ARCA (ETFs) |
-| NYSE | 2,045 | New York Stock Exchange |
-| XETRA | 1,851 | Deutsche Boerse |
+| NYSE ARCA | 2,571 | NYSE ARCA (ETFs) |
+| NYSE | 2,043 | New York Stock Exchange |
+| XETRA | 1,838 | Deutsche Boerse |
 | KRX | 1,788 | Korea Exchange |
 | KOSDAQ | 1,583 | Korean OTC |
-| TSX | 1,570 | Toronto Stock Exchange |
-| ASX | 1,295 | Australian Securities Exchange |
+| TSX | 1,568 | Toronto Stock Exchange |
+| ASX | 1,292 | Australian Securities Exchange |
 | TWSE | 1,240 | Taiwan Stock Exchange |
-| BATS | 1,214 | Cboe BZX Exchange |
+| BATS | 1,207 | Cboe BZX Exchange |
 | TPEX | 1,118 | Taipei Exchange |
-| TSXV | 1,060 | TSX Venture Exchange |
+| TSXV | 1,058 | TSX Venture Exchange |
 | B3 | 928 | Brasil Bolsa Balcao |
 | Bursa | 925 | Bursa Malaysia |
 | STO | 709 | Nasdaq Stockholm |
@@ -270,7 +270,7 @@ Current live sources:
 - Nasdaq Trader `nasdaqlisted.txt`
 - Nasdaq Trader `otherlisted.txt`
 - Nasdaq Nordic listed shares / ETF JSON endpoints for Stockholm, Helsinki, and Copenhagen
-- ASX `ASXListedCompanies.csv`
+- ASX `ASXListedCompanies.csv` and official ASX `ISIN.xls`
 - Deutsche Börse `Listed-companies.xlsx`
 - B3 `InstrumentsEquities` public API
 - TMX issuer workbook + ETF screener + `interlisted-companies.txt`
@@ -457,6 +457,24 @@ python3 scripts/backfill_yahoo_otc_isins.py --apply --timeout-seconds 10
 ```
 
 This accepts Yahoo Finance ISINs only when the ISIN checksum is valid and the Yahoo venue, quote type, and issuer name match the current OTC row. Accepted rows are merged into `data/review_overrides/metadata_updates.csv` and must still flow through `python3 scripts/rebuild_dataset.py`.
+
+For missing ASX ISINs, use the official ASX ISIN workbook:
+
+```bash
+python3 scripts/backfill_asx_isins.py --apply
+python3 scripts/rebuild_dataset.py
+```
+
+This reads ASX `ISIN.xls`, writes audit reports under `data/asx_verification/`, and merges accepted ISINs into `data/review_overrides/metadata_updates.csv` only after exact ASX code, issuer-name, numeric-token, and ISIN-checksum gates match.
+
+For small selected US ETF batches, Yahoo can be used as a secondary ISIN candidate source:
+
+```bash
+python3 scripts/backfill_yahoo_missing_isins.py --exchange BATS --asset-type ETF --limit 50 --apply
+python3 scripts/rebuild_dataset.py
+```
+
+Use this in small chunks unless you intentionally run a full venue block. It is stricter than general Yahoo verification because it checks venue, quote type, expected ISIN country prefix, strict name match, numeric-token match, and checksum; Yahoo remains a secondary source and should not be used for Japan/TSE ISINs.
 
 For secondary broker coverage, the XTB OMI specification table can fill missing ISINs after strict ticker suffix/exchange, asset-type, and issuer-name gates:
 

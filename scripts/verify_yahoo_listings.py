@@ -40,6 +40,7 @@ YAHOO_SUFFIX_BY_EXCHANGE: dict[str, str] = {
 }
 
 EXPECTED_YAHOO_EXCHANGE_CODES: dict[str, set[str]] = {
+    "BATS": {"BTS"},
     "NASDAQ": {"NMS", "NGM", "NCM"},
     "NYSE": {"NYQ"},
     "NYSE ARCA": {"PCX"},
@@ -49,6 +50,7 @@ EXPECTED_YAHOO_EXCHANGE_CODES: dict[str, set[str]] = {
 }
 
 EXPECTED_YAHOO_FULL_EXCHANGES: dict[str, set[str]] = {
+    "BATS": {"Cboe US"},
     "NASDAQ": {"NasdaqGS", "NasdaqGM", "NasdaqCM"},
     "NYSE": {"NYSE"},
     "NYSE ARCA": {"NYSEArca"},
@@ -76,7 +78,7 @@ def load_review_items(path: Path) -> list[dict[str, Any]]:
 
 
 def yahoo_symbol_candidates(ticker: str, exchange: str) -> list[str]:
-    if exchange in {"NASDAQ", "NYSE", "NYSE ARCA", "NYSE MKT", "OTC"}:
+    if exchange in {"BATS", "NASDAQ", "NYSE", "NYSE ARCA", "NYSE MKT", "OTC"}:
         return [ticker]
     suffix = YAHOO_SUFFIX_BY_EXCHANGE.get(exchange)
     if suffix:

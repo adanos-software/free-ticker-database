@@ -1,11 +1,11 @@
 {
   "global": {
-    "tickers": 52868,
-    "aliases": 89285,
-    "stocks": 38813,
-    "etfs": 14055,
-    "isin_coverage": 42750,
-    "sector_coverage": 31885,
+    "tickers": 52747,
+    "aliases": 90564,
+    "stocks": 38744,
+    "etfs": 14003,
+    "isin_coverage": 44131,
+    "sector_coverage": 31827,
     "cik_coverage": 7700,
     "figi_coverage": 3709,
     "lei_coverage": 920,
@@ -14,12 +14,12 @@
     "listing_events": 27371,
     "listing_keys": 60241,
     "instrument_scope_rows": 60241,
-    "instrument_scope_core": 44384,
-    "instrument_scope_extended": 15857,
-    "instrument_scope_primary_listing": 35687,
-    "instrument_scope_primary_listing_missing_isin": 8697,
+    "instrument_scope_core": 44290,
+    "instrument_scope_extended": 15951,
+    "instrument_scope_primary_listing": 37090,
+    "instrument_scope_primary_listing_missing_isin": 7200,
     "instrument_scope_otc_listing": 11097,
-    "instrument_scope_secondary_cross_listing": 4760,
+    "instrument_scope_secondary_cross_listing": 4854,
     "official_masterfile_symbols": 29689,
     "official_masterfile_matches": 18503,
     "official_masterfile_collisions": 6219,
@@ -42,23 +42,23 @@
     "etf_verification_cross_exchange_collision": 0
   },
   "freshness": {
-    "tickers_built_at": "2026-04-11T15:04:41Z",
+    "tickers_built_at": "2026-04-12T04:50:20Z",
     "tickers_age_hours": 0.0,
     "masterfiles_generated_at": "2026-04-11T12:28:19Z",
-    "masterfiles_age_hours": 2.61,
-    "identifiers_generated_at": "2026-04-11T15:04:41Z",
+    "masterfiles_age_hours": 16.37,
+    "identifiers_generated_at": "2026-04-12T04:50:20Z",
     "identifiers_age_hours": 0.0,
-    "listing_history_observed_at": "2026-04-11T15:04:41Z",
+    "listing_history_observed_at": "2026-04-12T04:50:20Z",
     "listing_history_age_hours": 0.0,
     "latest_verification_run": "data/stock_verification/run-20260411-b3-funds",
     "latest_verification_generated_at": "2026-04-11T12:29:29Z",
-    "latest_verification_age_hours": 2.59,
+    "latest_verification_age_hours": 16.35,
     "latest_stock_verification_run": "data/stock_verification/run-20260411-b3-funds",
     "latest_stock_verification_generated_at": "2026-04-11T12:29:29Z",
-    "latest_stock_verification_age_hours": 2.59,
+    "latest_stock_verification_age_hours": 16.35,
     "latest_etf_verification_run": "data/etf_verification/run-20260411-b3-funds",
     "latest_etf_verification_generated_at": "2026-04-11T12:29:46Z",
-    "latest_etf_verification_age_hours": 2.59
+    "latest_etf_verification_age_hours": 16.34
   },
   "source_coverage": [
     {
@@ -828,7 +828,7 @@
         "exchange_directory"
       ],
       "tickers": 222,
-      "isin_coverage": 215,
+      "isin_coverage": 216,
       "sector_coverage": 131,
       "cik_coverage": 0,
       "figi_coverage": 144,
@@ -871,7 +871,7 @@
         "listed_companies_subset"
       ],
       "tickers": 1298,
-      "isin_coverage": 1035,
+      "isin_coverage": 1192,
       "sector_coverage": 702,
       "cik_coverage": 30,
       "figi_coverage": 1032,
@@ -999,7 +999,7 @@
         "exchange_directory"
       ],
       "tickers": 1247,
-      "isin_coverage": 681,
+      "isin_coverage": 1166,
       "sector_coverage": 344,
       "cik_coverage": 0,
       "figi_coverage": 0,
@@ -1040,7 +1040,7 @@
       "manual_source_count": 0,
       "reference_scopes": [],
       "tickers": 64,
-      "isin_coverage": 52,
+      "isin_coverage": 53,
       "sector_coverage": 50,
       "cik_coverage": 0,
       "figi_coverage": 48,
@@ -1208,7 +1208,7 @@
       "manual_source_count": 0,
       "reference_scopes": [],
       "tickers": 31,
-      "isin_coverage": 16,
+      "isin_coverage": 19,
       "sector_coverage": 9,
       "cik_coverage": 0,
       "figi_coverage": 0,
@@ -1584,7 +1584,7 @@
         "secondary_listing_subset"
       ],
       "tickers": 975,
-      "isin_coverage": 967,
+      "isin_coverage": 968,
       "sector_coverage": 698,
       "cik_coverage": 7,
       "figi_coverage": 665,
@@ -2052,7 +2052,7 @@
         "security_lookup_subset"
       ],
       "tickers": 6408,
-      "isin_coverage": 6394,
+      "isin_coverage": 6396,
       "sector_coverage": 4355,
       "cik_coverage": 16,
       "figi_coverage": 22,
@@ -2177,7 +2177,7 @@
         "exchange_directory"
       ],
       "tickers": 4634,
-      "isin_coverage": 3920,
+      "isin_coverage": 4474,
       "sector_coverage": 3615,
       "cik_coverage": 3441,
       "figi_coverage": 10,
@@ -2220,7 +2220,7 @@
         "exchange_directory"
       ],
       "tickers": 197,
-      "isin_coverage": 78,
+      "isin_coverage": 79,
       "sector_coverage": 21,
       "cik_coverage": 0,
       "figi_coverage": 0,
@@ -2386,7 +2386,7 @@
         "exchange_directory"
       ],
       "tickers": 2078,
-      "isin_coverage": 1873,
+      "isin_coverage": 1971,
       "sector_coverage": 1966,
       "cik_coverage": 1993,
       "figi_coverage": 24,
@@ -2429,7 +2429,7 @@
         "exchange_directory"
       ],
       "tickers": 2650,
-      "isin_coverage": 2273,
+      "isin_coverage": 2446,
       "sector_coverage": 1308,
       "cik_coverage": 127,
       "figi_coverage": 6,
@@ -2472,7 +2472,7 @@
         "exchange_directory"
       ],
       "tickers": 238,
-      "isin_coverage": 226,
+      "isin_coverage": 229,
       "sector_coverage": 228,
       "cik_coverage": 221,
       "figi_coverage": 2,
@@ -2600,7 +2600,7 @@
         "security_lookup_subset"
       ],
       "tickers": 11097,
-      "isin_coverage": 9676,
+      "isin_coverage": 9681,
       "sector_coverage": 8309,
       "cik_coverage": 1795,
       "figi_coverage": 5,
@@ -2895,7 +2895,7 @@
         "listed_companies_subset"
       ],
       "tickers": 743,
-      "isin_coverage": 739,
+      "isin_coverage": 741,
       "sector_coverage": 496,
       "cik_coverage": 2,
       "figi_coverage": 0,
@@ -3194,7 +3194,7 @@
         "exchange_directory"
       ],
       "tickers": 3214,
-      "isin_coverage": 7,
+      "isin_coverage": 19,
       "sector_coverage": 0,
       "cik_coverage": 0,
       "figi_coverage": 0,
@@ -3239,7 +3239,7 @@
         "listed_companies_subset"
       ],
       "tickers": 1601,
-      "isin_coverage": 1081,
+      "isin_coverage": 1083,
       "sector_coverage": 767,
       "cik_coverage": 12,
       "figi_coverage": 991,
@@ -3284,7 +3284,7 @@
         "listed_companies_subset"
       ],
       "tickers": 1066,
-      "isin_coverage": 502,
+      "isin_coverage": 504,
       "sector_coverage": 625,
       "cik_coverage": 17,
       "figi_coverage": 524,
@@ -3666,7 +3666,7 @@
         "exchange_directory"
       ],
       "tickers": 222,
-      "isin_coverage": 215,
+      "isin_coverage": 216,
       "sector_coverage": 131,
       "cik_coverage": 0,
       "figi_coverage": 144,
@@ -3709,7 +3709,7 @@
         "listed_companies_subset"
       ],
       "tickers": 1298,
-      "isin_coverage": 1035,
+      "isin_coverage": 1192,
       "sector_coverage": 702,
       "cik_coverage": 30,
       "figi_coverage": 1032,
@@ -3837,7 +3837,7 @@
         "exchange_directory"
       ],
       "tickers": 1247,
-      "isin_coverage": 681,
+      "isin_coverage": 1166,
       "sector_coverage": 344,
       "cik_coverage": 0,
       "figi_coverage": 0,
@@ -3878,7 +3878,7 @@
       "manual_source_count": 0,
       "reference_scopes": [],
       "tickers": 64,
-      "isin_coverage": 52,
+      "isin_coverage": 53,
       "sector_coverage": 50,
       "cik_coverage": 0,
       "figi_coverage": 48,
@@ -4046,7 +4046,7 @@
       "manual_source_count": 0,
       "reference_scopes": [],
       "tickers": 31,
-      "isin_coverage": 16,
+      "isin_coverage": 19,
       "sector_coverage": 9,
       "cik_coverage": 0,
       "figi_coverage": 0,
@@ -4422,7 +4422,7 @@
         "secondary_listing_subset"
       ],
       "tickers": 975,
-      "isin_coverage": 967,
+      "isin_coverage": 968,
       "sector_coverage": 698,
       "cik_coverage": 7,
       "figi_coverage": 665,
@@ -4890,7 +4890,7 @@
         "security_lookup_subset"
       ],
       "tickers": 6408,
-      "isin_coverage": 6394,
+      "isin_coverage": 6396,
       "sector_coverage": 4355,
       "cik_coverage": 16,
       "figi_coverage": 22,
@@ -5015,7 +5015,7 @@
         "exchange_directory"
       ],
       "tickers": 4634,
-      "isin_coverage": 3920,
+      "isin_coverage": 4474,
       "sector_coverage": 3615,
       "cik_coverage": 3441,
       "figi_coverage": 10,
@@ -5058,7 +5058,7 @@
         "exchange_directory"
       ],
       "tickers": 197,
-      "isin_coverage": 78,
+      "isin_coverage": 79,
       "sector_coverage": 21,
       "cik_coverage": 0,
       "figi_coverage": 0,
@@ -5224,7 +5224,7 @@
         "exchange_directory"
       ],
       "tickers": 2078,
-      "isin_coverage": 1873,
+      "isin_coverage": 1971,
       "sector_coverage": 1966,
       "cik_coverage": 1993,
       "figi_coverage": 24,
@@ -5267,7 +5267,7 @@
         "exchange_directory"
       ],
       "tickers": 2650,
-      "isin_coverage": 2273,
+      "isin_coverage": 2446,
       "sector_coverage": 1308,
       "cik_coverage": 127,
       "figi_coverage": 6,
@@ -5310,7 +5310,7 @@
         "exchange_directory"
       ],
       "tickers": 238,
-      "isin_coverage": 226,
+      "isin_coverage": 229,
       "sector_coverage": 228,
       "cik_coverage": 221,
       "figi_coverage": 2,
@@ -5438,7 +5438,7 @@
         "security_lookup_subset"
       ],
       "tickers": 11097,
-      "isin_coverage": 9676,
+      "isin_coverage": 9681,
       "sector_coverage": 8309,
       "cik_coverage": 1795,
       "figi_coverage": 5,
@@ -5733,7 +5733,7 @@
         "listed_companies_subset"
       ],
       "tickers": 743,
-      "isin_coverage": 739,
+      "isin_coverage": 741,
       "sector_coverage": 496,
       "cik_coverage": 2,
       "figi_coverage": 0,
@@ -6032,7 +6032,7 @@
         "exchange_directory"
       ],
       "tickers": 3214,
-      "isin_coverage": 7,
+      "isin_coverage": 19,
       "sector_coverage": 0,
       "cik_coverage": 0,
       "figi_coverage": 0,
@@ -6077,7 +6077,7 @@
         "listed_companies_subset"
       ],
       "tickers": 1601,
-      "isin_coverage": 1081,
+      "isin_coverage": 1083,
       "sector_coverage": 767,
       "cik_coverage": 12,
       "figi_coverage": 991,
@@ -6122,7 +6122,7 @@
         "listed_companies_subset"
       ],
       "tickers": 1066,
-      "isin_coverage": 502,
+      "isin_coverage": 504,
       "sector_coverage": 625,
       "cik_coverage": 17,
       "figi_coverage": 524,
@@ -6497,7 +6497,7 @@
   "country_coverage": [
     {
       "country": "Argentina",
-      "tickers": 61,
+      "tickers": 60,
       "isin_coverage": 49,
       "sector_coverage": 47,
       "cik_coverage": 0,
@@ -6506,11 +6506,11 @@
     },
     {
       "country": "Australia",
-      "tickers": 1997,
-      "isin_coverage": 1734,
-      "sector_coverage": 1343,
-      "cik_coverage": 309,
-      "figi_coverage": 1061,
+      "tickers": 1959,
+      "isin_coverage": 1853,
+      "sector_coverage": 1315,
+      "cik_coverage": 306,
+      "figi_coverage": 1038,
       "lei_coverage": 67
     },
     {
@@ -6533,12 +6533,12 @@
     },
     {
       "country": "Bermuda",
-      "tickers": 188,
-      "isin_coverage": 188,
-      "sector_coverage": 169,
-      "cik_coverage": 60,
-      "figi_coverage": 7,
-      "lei_coverage": 13
+      "tickers": 191,
+      "isin_coverage": 191,
+      "sector_coverage": 171,
+      "cik_coverage": 61,
+      "figi_coverage": 9,
+      "lei_coverage": 14
     },
     {
       "country": "Botswana",
@@ -6560,21 +6560,21 @@
     },
     {
       "country": "Canada",
-      "tickers": 4914,
-      "isin_coverage": 3711,
-      "sector_coverage": 2886,
-      "cik_coverage": 669,
-      "figi_coverage": 1492,
+      "tickers": 4910,
+      "isin_coverage": 3714,
+      "sector_coverage": 2885,
+      "cik_coverage": 670,
+      "figi_coverage": 1491,
       "lei_coverage": 69
     },
     {
       "country": "Cayman Islands",
-      "tickers": 673,
-      "isin_coverage": 668,
-      "sector_coverage": 492,
-      "cik_coverage": 451,
+      "tickers": 680,
+      "isin_coverage": 675,
+      "sector_coverage": 498,
+      "cik_coverage": 458,
       "figi_coverage": 1,
-      "lei_coverage": 16
+      "lei_coverage": 18
     },
     {
       "country": "Chile",
@@ -6704,9 +6704,9 @@
     },
     {
       "country": "Hungary",
-      "tickers": 29,
+      "tickers": 26,
       "isin_coverage": 15,
-      "sector_coverage": 8,
+      "sector_coverage": 5,
       "cik_coverage": 0,
       "figi_coverage": 0,
       "lei_coverage": 0
@@ -6731,19 +6731,19 @@
     },
     {
       "country": "Indonesia",
-      "tickers": 798,
-      "isin_coverage": 683,
-      "sector_coverage": 607,
+      "tickers": 797,
+      "isin_coverage": 682,
+      "sector_coverage": 606,
       "cik_coverage": 48,
       "figi_coverage": 4,
       "lei_coverage": 4
     },
     {
       "country": "Ireland",
-      "tickers": 2407,
-      "isin_coverage": 2407,
-      "sector_coverage": 1073,
-      "cik_coverage": 62,
+      "tickers": 2408,
+      "isin_coverage": 2408,
+      "sector_coverage": 1075,
+      "cik_coverage": 65,
       "figi_coverage": 63,
       "lei_coverage": 7
     },
@@ -6758,11 +6758,11 @@
     },
     {
       "country": "Israel",
-      "tickers": 776,
-      "isin_coverage": 776,
-      "sector_coverage": 415,
-      "cik_coverage": 100,
-      "figi_coverage": 0,
+      "tickers": 778,
+      "isin_coverage": 778,
+      "sector_coverage": 416,
+      "cik_coverage": 101,
+      "figi_coverage": 1,
       "lei_coverage": 2
     },
     {
@@ -6776,7 +6776,7 @@
     },
     {
       "country": "Japan",
-      "tickers": 3537,
+      "tickers": 3525,
       "isin_coverage": 330,
       "sector_coverage": 226,
       "cik_coverage": 54,
@@ -6803,10 +6803,10 @@
     },
     {
       "country": "Luxembourg",
-      "tickers": 956,
-      "isin_coverage": 956,
-      "sector_coverage": 551,
-      "cik_coverage": 28,
+      "tickers": 957,
+      "isin_coverage": 957,
+      "sector_coverage": 552,
+      "cik_coverage": 30,
       "figi_coverage": 44,
       "lei_coverage": 5
     },
@@ -6857,7 +6857,7 @@
     },
     {
       "country": "Netherlands",
-      "tickers": 166,
+      "tickers": 165,
       "isin_coverage": 159,
       "sector_coverage": 128,
       "cik_coverage": 27,
@@ -6866,11 +6866,11 @@
     },
     {
       "country": "New Zealand",
-      "tickers": 26,
-      "isin_coverage": 26,
-      "sector_coverage": 26,
+      "tickers": 39,
+      "isin_coverage": 39,
+      "sector_coverage": 36,
       "cik_coverage": 7,
-      "figi_coverage": 1,
+      "figi_coverage": 22,
       "lei_coverage": 1
     },
     {
@@ -6984,7 +6984,7 @@
     {
       "country": "South Korea",
       "tickers": 3361,
-      "isin_coverage": 3353,
+      "isin_coverage": 3354,
       "sector_coverage": 2001,
       "cik_coverage": 1,
       "figi_coverage": 0,
@@ -7012,7 +7012,7 @@
       "country": "Sweden",
       "tickers": 761,
       "isin_coverage": 761,
-      "sector_coverage": 506,
+      "sector_coverage": 505,
       "cik_coverage": 14,
       "figi_coverage": 4,
       "lei_coverage": 1
@@ -7048,7 +7048,7 @@
       "country": "Thailand",
       "tickers": 588,
       "isin_coverage": 393,
-      "sector_coverage": 574,
+      "sector_coverage": 573,
       "cik_coverage": 42,
       "figi_coverage": 1,
       "lei_coverage": 6
@@ -7073,19 +7073,19 @@
     },
     {
       "country": "United Kingdom",
-      "tickers": 1553,
-      "isin_coverage": 1541,
-      "sector_coverage": 1093,
-      "cik_coverage": 111,
+      "tickers": 1537,
+      "isin_coverage": 1526,
+      "sector_coverage": 1085,
+      "cik_coverage": 113,
       "figi_coverage": 14,
       "lei_coverage": 24
     },
     {
       "country": "United States",
-      "tickers": 13788,
-      "isin_coverage": 10711,
-      "sector_coverage": 9107,
-      "cik_coverage": 4819,
+      "tickers": 13737,
+      "isin_coverage": 11824,
+      "sector_coverage": 9091,
+      "cik_coverage": 4812,
       "figi_coverage": 15,
       "lei_coverage": 553
     },

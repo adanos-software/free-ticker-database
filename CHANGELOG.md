@@ -2,13 +2,20 @@
 
 ## [Unreleased]
 
+## [3.5.0] - 2026-04-12
+
 ### Added
 
 - Added a gated Yahoo Finance OTC ISIN backfill workflow that writes accepted ISINs to review overrides only when venue, quote type, issuer name, and ISIN checksum all pass.
+- Added a gated official ASX `ISIN.xls` backfill workflow for missing ASX ISINs.
+- Added a strict selected-exchange Yahoo missing-ISIN helper for US ETF batches with venue, quote type, expected ISIN country prefix, issuer/product-name, numeric-token, checksum, and progress gates.
 
 ### Changed
 
 - Enriched 1,103 OTC rows with Yahoo Finance ISIN overrides and rebuilt core exports, reducing OTC rows without ISIN in `tickers.csv` from 2,524 to 1,421.
+- Enriched 154 ASX rows with official ASX ISIN overrides and rebuilt core exports and coverage reports.
+- Enriched 485 BATS ETF rows, 496 NASDAQ ETF rows, and 161 NYSE ARCA ETF rows with strictly gated secondary Yahoo ISIN overrides and rebuilt core exports and coverage reports to 44,131 ISIN-covered rows out of 52,747 primary tickers.
+- Made rebuild country handling idempotent for foreign listings by deriving issuer country from valid ISIN prefixes instead of repeatedly clearing and restoring cross-listing ISINs.
 
 ## [3.4.0] - 2026-04-11
 

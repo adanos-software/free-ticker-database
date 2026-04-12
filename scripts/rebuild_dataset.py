@@ -1686,11 +1686,7 @@ def cleaned_rows():
         country = row["country"]
         inferred_country = country_from_isin(isin) if isin else None
         if inferred_country and inferred_country != country:
-            if row["exchange"] in OTC_EXCHANGES and country in {"", "United States"}:
-                country = inferred_country
-            else:
-                isin = ""
-                inferred_country = None
+            country = inferred_country
         if inferred_country:
             country = inferred_country
 

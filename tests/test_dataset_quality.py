@@ -1594,6 +1594,37 @@ def test_cleaned_rows_syncs_country_for_review_isin_override(monkeypatch):
     assert cleaned[0]["country_code"] == "ES"
 
 
+def test_cleaned_rows_uses_isin_country_for_foreign_listing(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "1AST",
+        "name": "Austrian Stock Example AG",
+        "exchange": "XETRA",
+        "asset_type": "Stock",
+        "sector": "",
+        "country": "Germany",
+        "country_code": "DE",
+        "isin": "AT100ASTA001",
+        "aliases": "",
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_data",
+        lambda: ([row], {}, defaultdict(list), {}, set()),
+    )
+    monkeypatch.setattr(rebuild_dataset, "load_review_overrides", lambda: (defaultdict(set), defaultdict(dict), set()))
+    monkeypatch.setattr(rebuild_dataset, "apply_official_exchange_corrections", lambda rows: rows)
+    monkeypatch.setattr(rebuild_dataset, "load_active_official_isin_fallbacks", lambda: {})
+
+    cleaned, _ = rebuild_dataset.cleaned_rows()
+
+    assert cleaned[0]["isin"] == "AT100ASTA001"
+    assert cleaned[0]["country"] == "Austria"
+    assert cleaned[0]["country_code"] == "AT"
+
+
 def test_build_unique_name_isin_fallbacks_only_keeps_unique_non_otc_names():
     from scripts.rebuild_dataset import build_unique_name_isin_fallbacks
 
