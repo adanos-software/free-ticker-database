@@ -14,13 +14,13 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 52
 | ETFs | 14,003 |
 | Exchanges | 67 |
 | Countries | 69 |
-| ISIN coverage | 44,145 (83.7%) |
-| Sector coverage | 33,573 (63.6%) |
+| ISIN coverage | 44,235 (83.9%) |
+| Sector coverage | 33,919 (64.3%) |
 | Core listing-scope rows | 44,290 |
-| Core primary rows with ISIN | 37,104 |
-| Core primary rows missing ISIN | 7,186 |
+| Core primary rows with ISIN | 37,191 |
+| Core primary rows missing ISIN | 7,099 |
 | Extended listing-scope rows | 15,951 |
-| Total aliases | 90,577 |
+| Total aliases | 90,667 |
 
 ## Formats
 
@@ -35,7 +35,7 @@ Choose the format that fits your use case:
 | [`data/tickers.parquet`](data/tickers.parquet) | 2.5 MB | Pandas, data science |
 | [`data/tickers.db`](data/tickers.db) | 37 MB | SQL queries, local apps |
 | [`data/aliases.csv`](data/aliases.csv) | 2.3 MB | Alias/name resolution |
-| [`data/identifiers.csv`](data/identifiers.csv) | 983 KB | ISIN/WKN lookups |
+| [`data/identifiers.csv`](data/identifiers.csv) | 984 KB | ISIN/WKN lookups |
 | [`data/cross_listings.csv`](data/cross_listings.csv) | 473 KB | Cross-listed securities |
 
 Additional reference artifacts:
@@ -137,7 +137,7 @@ OTC::VROYF,VROYF,OTC,Stock,CA92859L2012,CA92859L2012,extended,otc_listing,TSXV::
 {
   "_meta": {
     "version": "3.5.0",
-    "built_at": "2026-04-12T05:18:30Z",
+    "built_at": "2026-04-12T06:11:53Z",
     "total_tickers": 52747
   },
   "tickers": [
@@ -171,7 +171,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (52,747 rows), `listings` (60,241 rows), `aliases` (90,577 rows), `cross_listings` (13,133 rows), and `instrument_scopes` (60,241 rows), with indexes on alias, exchange, country, sector, ISIN, listing scope, and instrument group key.
+Tables: `tickers` (52,747 rows), `listings` (60,241 rows), `aliases` (90,667 rows), `cross_listings` (13,133 rows), and `instrument_scopes` (60,241 rows), with indexes on alias, exchange, country, sector, ISIN, listing scope, and instrument group key.
 
 ## Schema
 
@@ -494,8 +494,27 @@ python3 scripts/rebuild_dataset.py
 
 By default this emits sector updates only and writes audit reports under `data/financedatabase_verification/`. FinanceDatabase ISINs are intentionally opt-in via `--enable-isin` because cross-listing collisions need separate manual review before they can be trusted as identifier overrides.
 
+For EODHD exchange-symbol-list ISIN enrichment, pass the API key via environment only:
+
+```bash
+EODHD_API_TOKEN=... python3 scripts/backfill_eodhd_metadata.py --apply
+python3 scripts/rebuild_dataset.py
+```
+
+By default this accepts only new ISINs that are not already present in the primary export and writes audit reports under `data/eodhd_verification/`. Use `--allow-existing-isin` only for manually reviewed cross-listing batches, because existing-ISIN matches can intentionally move rows from core primary to secondary cross-listing scope.
+
+For same-ISIN sector/category propagation, use the local peer workflow:
+
+```bash
+python3 scripts/backfill_sector_from_isin_peers.py --apply
+python3 scripts/rebuild_dataset.py
+```
+
+This writes audit reports under `data/isin_peer_sector_verification/` and only propagates a sector/category when the primary row is missing sector and every same-asset listing peer with the same ISIN normalizes to one sector value.
+
 ## Data Sources
 
+- **[EODHD](https://eodhd.com/financial-apis/)** - Secondary exchange-symbol-list ISIN candidates after strict venue/type/name/checksum gates
 - **[FinanceDatabase](https://github.com/JerBouma/FinanceDatabase)** - Sector classification and optional reviewed identifier candidates
 - **Production data** from [api.adanos.org](https://api.adanos.org) - Curated aliases, company name variants
 

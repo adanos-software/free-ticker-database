@@ -2211,6 +2211,7 @@ def rebuild():
         listing_rows,
     )
     write_csv(ALIASES_CSV, ["ticker", "alias", "alias_type"], alias_rows)
+    write_json(primary_rows)
     write_csv(IDENTIFIERS_CSV, ["ticker", "isin", "wkn"], identifier_rows)
     write_csv(
         CROSS_LISTINGS_CSV,
@@ -2232,7 +2233,6 @@ def rebuild():
         ],
         instrument_scope_rows,
     )
-    write_json(primary_rows)
     write_db(primary_rows, listing_rows, alias_rows, cross_listing_rows, instrument_scope_rows)
     write_parquet(primary_rows)
 
