@@ -52,17 +52,21 @@ def load_current_rows() -> tuple[list[dict[str, str]], str]:
     return load_csv(LISTINGS_CSV), built_at
 
 
+def listing_identity(row: dict[str, str]) -> str:
+    return row.get("listing_key") or row_listing_key(row)
+
+
 def compact_legacy_status_history(existing_rows: list[dict[str, str]]) -> list[dict[str, str]]:
-    by_listing: dict[tuple[str, str], list[dict[str, str]]] = {}
+    by_listing: dict[str, list[dict[str, str]]] = {}
     for row in existing_rows:
-        key = (row["ticker"], row["exchange"])
+        key = listing_identity(row)
         by_listing.setdefault(key, []).append(row)
 
     compacted: list[dict[str, str]] = []
-    for (ticker, exchange), rows in by_listing.items():
+    for rows in by_listing.values():
         current_interval: dict[str, str] | None = None
         for row in sorted(rows, key=lambda value: (value["observed_at"], value["status"])):
-            listing_key = row.get("listing_key") or row_listing_key(row)
+            listing_key = listing_identity(row)
             observed_at = row["observed_at"]
             status = row["status"]
             if current_interval and current_interval["status"] == status:
@@ -72,8 +76,8 @@ def compact_legacy_status_history(existing_rows: list[dict[str, str]]) -> list[d
                 compacted.append(current_interval)
             current_interval = {
                 "listing_key": listing_key,
-                "ticker": ticker,
-                "exchange": exchange,
+                "ticker": row["ticker"],
+                "exchange": row["exchange"],
                 "status": status,
                 "first_observed_at": observed_at,
                 "last_observed_at": observed_at,
@@ -92,7 +96,7 @@ def normalize_status_history(existing_rows: list[dict[str, str]]) -> list[dict[s
 
     normalized: list[dict[str, str]] = []
     for row in existing_rows:
-        listing_key = row.get("listing_key") or row_listing_key(row)
+        listing_key = listing_identity(row)
         first_observed_at = row.get("first_observed_at") or row.get("observed_at", "")
         last_observed_at = row.get("last_observed_at") or row.get("observed_at", "")
         if not first_observed_at:
@@ -138,7 +142,7 @@ def build_snapshot(rows: list[dict[str, str]], observed_at: str) -> list[dict[st
         sector, stock_sector, etf_category = sector_model_fields(row)
         snapshot.append(
             {
-                "listing_key": row_listing_key(row),
+                "listing_key": listing_identity(row),
                 "ticker": row["ticker"],
                 "exchange": row["exchange"],
                 "name": row["name"],
@@ -163,16 +167,16 @@ def build_event_rows(
 ) -> list[dict[str, str]]:
     if not previous_snapshot:
         return []
-    previous = {(row["ticker"], row["exchange"]): row for row in previous_snapshot}
-    current = {(row["ticker"], row["exchange"]): row for row in current_snapshot}
+    previous = {listing_identity(row): row for row in previous_snapshot}
+    current = {listing_identity(row): row for row in current_snapshot}
     events: list[dict[str, str]] = []
 
-    for key, row in sorted(current.items()):
+    for key, row in sorted(current.items(), key=lambda item: (item[1]["ticker"], item[1]["exchange"])):
         previous_row = previous.get(key)
         if previous_row is None:
             events.append(
                 {
-                    "listing_key": row_listing_key(row),
+                    "listing_key": listing_identity(row),
                     "ticker": row["ticker"],
                     "exchange": row["exchange"],
                     "event_type": "listed",
@@ -185,7 +189,7 @@ def build_event_rows(
         if previous_row["name"] != row["name"]:
             events.append(
                 {
-                    "listing_key": row_listing_key(row),
+                    "listing_key": listing_identity(row),
                     "ticker": row["ticker"],
                     "exchange": row["exchange"],
                     "event_type": "renamed",
@@ -195,12 +199,12 @@ def build_event_rows(
                 }
             )
 
-    for key, row in sorted(previous.items()):
+    for key, row in sorted(previous.items(), key=lambda item: (item[1]["ticker"], item[1]["exchange"])):
         if key in current:
             continue
         events.append(
             {
-                "listing_key": row_listing_key(row),
+                "listing_key": listing_identity(row),
                 "ticker": row["ticker"],
                 "exchange": row["exchange"],
                 "event_type": "delisted",
@@ -220,14 +224,14 @@ def merge_status_history(
     observed_at: str,
 ) -> list[dict[str, str]]:
     normalized_rows = normalize_status_history(existing_rows)
-    by_listing: dict[tuple[str, str], list[dict[str, str]]] = {}
+    by_listing: dict[str, list[dict[str, str]]] = {}
     for row in normalized_rows:
-        key = (row["ticker"], row["exchange"])
+        key = listing_identity(row)
         by_listing.setdefault(key, []).append(row)
 
     def upsert_status_interval(row: dict[str, str], status: str) -> None:
-        key = (row["ticker"], row["exchange"])
-        listing_key = row.get("listing_key") or row_listing_key(row)
+        key = listing_identity(row)
+        listing_key = listing_identity(row)
         intervals = by_listing.setdefault(key, [])
         if intervals and intervals[-1]["status"] == status:
             if observed_at > intervals[-1]["last_observed_at"]:
@@ -245,13 +249,13 @@ def merge_status_history(
             }
         )
 
-    current_keys = {(row["ticker"], row["exchange"]): row for row in current_snapshot}
+    current_keys = {listing_identity(row): row for row in current_snapshot}
 
     for row in current_snapshot:
         upsert_status_interval(row, "active")
 
     for row in previous_snapshot:
-        if (row["ticker"], row["exchange"]) in current_keys:
+        if listing_identity(row) in current_keys:
             continue
         upsert_status_interval(row, "delisted")
 
@@ -322,12 +326,12 @@ def build_history() -> dict[str, Any]:
 
     new_events = build_event_rows(previous_snapshot, current_snapshot, observed_at)
     event_keys = {
-        (row["ticker"], row["exchange"], row["event_type"], row["observed_at"])
+        (listing_identity(row), row["event_type"], row["observed_at"])
         for row in existing_events
     }
     merged_events = list(existing_events)
     for row in new_events:
-        key = (row["ticker"], row["exchange"], row["event_type"], row["observed_at"])
+        key = (listing_identity(row), row["event_type"], row["observed_at"])
         if key not in event_keys:
             merged_events.append(row)
             event_keys.add(key)
