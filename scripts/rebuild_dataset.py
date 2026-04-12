@@ -441,6 +441,36 @@ VALID_ETF_SECTORS: set[str] = VALID_STOCK_SECTORS | {
 }
 
 
+TICKER_EXPORT_FIELDNAMES = [
+    "ticker",
+    "name",
+    "exchange",
+    "asset_type",
+    "sector",
+    "stock_sector",
+    "etf_category",
+    "country",
+    "country_code",
+    "isin",
+    "aliases",
+]
+
+LISTING_EXPORT_FIELDNAMES = [
+    "listing_key",
+    "ticker",
+    "exchange",
+    "name",
+    "asset_type",
+    "sector",
+    "stock_sector",
+    "etf_category",
+    "country",
+    "country_code",
+    "isin",
+    "aliases",
+]
+
+
 def normalize_sector(sector: str, asset_type: str) -> str:
     """Return a canonical sector string, or '' if the value is garbage."""
     if not sector or len(sector) > 50:
@@ -451,6 +481,29 @@ def normalize_sector(sector: str, asset_type: str) -> str:
     if asset_type == "Stock":
         return mapped if mapped in VALID_STOCK_SECTORS else ""
     return ""
+
+
+def with_sector_model_fields(row: dict[str, str]) -> dict[str, str]:
+    """Derive typed metadata fields while preserving legacy `sector` output."""
+    updated = dict(row)
+    asset_type = updated.get("asset_type", "")
+    legacy_sector = updated.get("sector", "")
+    if asset_type == "Stock":
+        stock_sector = normalize_sector(updated.get("stock_sector", ""), "Stock") or normalize_sector(legacy_sector, "Stock")
+        updated["stock_sector"] = stock_sector
+        updated["etf_category"] = ""
+        updated["sector"] = stock_sector
+        return updated
+    if asset_type == "ETF":
+        etf_category = normalize_sector(updated.get("etf_category", ""), "ETF") or normalize_sector(legacy_sector, "ETF")
+        updated["stock_sector"] = ""
+        updated["etf_category"] = etf_category
+        updated["sector"] = etf_category
+        return updated
+    updated["stock_sector"] = ""
+    updated["etf_category"] = ""
+    updated["sector"] = normalize_sector(legacy_sector, asset_type)
+    return updated
 
 
 ISIN_FORMAT_RE = re.compile(r"^[A-Z]{2}[A-Z0-9]{9}[0-9]$")
@@ -1696,6 +1749,8 @@ def cleaned_rows():
             "exchange": row["exchange"],
             "asset_type": row["asset_type"],
             "sector": normalize_sector(row["sector"], row["asset_type"]),
+            "stock_sector": "",
+            "etf_category": "",
             "country": country,
             "country_code": COUNTRY_TO_ISO.get(country, ""),
             "isin": isin,
@@ -1703,7 +1758,12 @@ def cleaned_rows():
             "wkn": identifier.get("wkn", ""),
         }
         output_rows.append(
-            apply_output_metadata_overrides(output_row, review_metadata_updates.get((row["ticker"], row["exchange"]), {}))
+            with_sector_model_fields(
+                apply_output_metadata_overrides(
+                    output_row,
+                    review_metadata_updates.get((row["ticker"], row["exchange"]), {}),
+                )
+            )
         )
 
     return sorted(output_rows, key=lambda row: row["ticker"]), alias_type_lookup
@@ -1862,6 +1922,8 @@ def write_json(rows: list[dict[str, str]]):
             "exchange": row["exchange"],
             "asset_type": row["asset_type"],
             "sector": row["sector"],
+            "stock_sector": row["stock_sector"],
+            "etf_category": row["etf_category"],
             "country": row["country"],
             "country_code": row["country_code"],
             "isin": row["isin"],
@@ -1885,6 +1947,8 @@ def build_listing_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
             "name": row["name"],
             "asset_type": row["asset_type"],
             "sector": row["sector"],
+            "stock_sector": row["stock_sector"],
+            "etf_category": row["etf_category"],
             "country": row["country"],
             "country_code": row["country_code"],
             "isin": row["isin"],
@@ -1914,6 +1978,8 @@ def write_db(
                 exchange TEXT NOT NULL,
                 asset_type TEXT NOT NULL,
                 sector TEXT DEFAULT '',
+                stock_sector TEXT DEFAULT '',
+                etf_category TEXT DEFAULT '',
                 country TEXT DEFAULT '',
                 country_code TEXT DEFAULT '',
                 isin TEXT DEFAULT ''
@@ -1926,6 +1992,8 @@ def write_db(
                 name TEXT NOT NULL,
                 asset_type TEXT NOT NULL,
                 sector TEXT DEFAULT '',
+                stock_sector TEXT DEFAULT '',
+                etf_category TEXT DEFAULT '',
                 country TEXT DEFAULT '',
                 country_code TEXT DEFAULT '',
                 isin TEXT DEFAULT '',
@@ -1967,9 +2035,13 @@ def write_db(
             CREATE INDEX idx_listings_ticker ON listings(ticker);
             CREATE INDEX idx_listings_exchange ON listings(exchange);
             CREATE INDEX idx_listings_isin ON listings(isin);
+            CREATE INDEX idx_listings_stock_sector ON listings(stock_sector);
+            CREATE INDEX idx_listings_etf_category ON listings(etf_category);
             CREATE INDEX idx_tickers_exchange ON tickers(exchange);
             CREATE INDEX idx_tickers_isin ON tickers(isin);
             CREATE INDEX idx_tickers_sector ON tickers(sector);
+            CREATE INDEX idx_tickers_stock_sector ON tickers(stock_sector);
+            CREATE INDEX idx_tickers_etf_category ON tickers(etf_category);
             CREATE INDEX idx_cross_listings_isin ON cross_listings(isin);
             CREATE INDEX idx_instrument_scopes_scope ON instrument_scopes(instrument_scope);
             CREATE INDEX idx_instrument_scopes_group_key ON instrument_scopes(instrument_group_key);
@@ -1977,15 +2049,27 @@ def write_db(
         )
         conn.executemany(
             """
-            INSERT INTO tickers (ticker, name, exchange, asset_type, sector, country, country_code, isin)
-            VALUES (:ticker, :name, :exchange, :asset_type, :sector, :country, :country_code, :isin)
+            INSERT INTO tickers (
+                ticker, name, exchange, asset_type, sector, stock_sector, etf_category,
+                country, country_code, isin
+            )
+            VALUES (
+                :ticker, :name, :exchange, :asset_type, :sector, :stock_sector, :etf_category,
+                :country, :country_code, :isin
+            )
             """,
             rows,
         )
         conn.executemany(
             """
-            INSERT INTO listings (listing_key, ticker, exchange, name, asset_type, sector, country, country_code, isin, aliases)
-            VALUES (:listing_key, :ticker, :exchange, :name, :asset_type, :sector, :country, :country_code, :isin, :aliases)
+            INSERT INTO listings (
+                listing_key, ticker, exchange, name, asset_type, sector, stock_sector, etf_category,
+                country, country_code, isin, aliases
+            )
+            VALUES (
+                :listing_key, :ticker, :exchange, :name, :asset_type, :sector, :stock_sector, :etf_category,
+                :country, :country_code, :isin, :aliases
+            )
             """,
             listing_rows,
         )
@@ -2032,6 +2116,8 @@ def write_parquet(rows: list[dict[str, str]]):
                 "exchange": row["exchange"],
                 "asset_type": row["asset_type"],
                 "sector": row["sector"],
+                "stock_sector": row["stock_sector"],
+                "etf_category": row["etf_category"],
                 "country": row["country"],
                 "country_code": row["country_code"],
                 "isin": row["isin"],
@@ -2189,7 +2275,7 @@ def rebuild():
 
     write_csv(
         TICKERS_CSV,
-        ["ticker", "name", "exchange", "asset_type", "sector", "country", "country_code", "isin", "aliases"],
+        TICKER_EXPORT_FIELDNAMES,
         (
             {
                 "ticker": row["ticker"],
@@ -2197,6 +2283,8 @@ def rebuild():
                 "exchange": row["exchange"],
                 "asset_type": row["asset_type"],
                 "sector": row["sector"],
+                "stock_sector": row["stock_sector"],
+                "etf_category": row["etf_category"],
                 "country": row["country"],
                 "country_code": row["country_code"],
                 "isin": row["isin"],
@@ -2207,7 +2295,7 @@ def rebuild():
     )
     write_csv(
         LISTINGS_CSV,
-        ["listing_key", "ticker", "exchange", "name", "asset_type", "sector", "country", "country_code", "isin", "aliases"],
+        LISTING_EXPORT_FIELDNAMES,
         listing_rows,
     )
     write_csv(ALIASES_CSV, ["ticker", "alias", "alias_type"], alias_rows)
@@ -2244,6 +2332,8 @@ def rebuild():
         "countries": len({row["country"] for row in primary_rows if row["country"]}),
         "isin_coverage": sum(1 for row in primary_rows if row["isin"]),
         "sector_coverage": sum(1 for row in primary_rows if row["sector"]),
+        "stock_sector_coverage": sum(1 for row in primary_rows if row["stock_sector"]),
+        "etf_category_coverage": sum(1 for row in primary_rows if row["etf_category"]),
         "aliases": len(alias_rows),
     }
     print(json.dumps(stats, indent=2))

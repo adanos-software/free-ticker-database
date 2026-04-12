@@ -54,6 +54,26 @@ def load_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def stock_sector_value(row: dict[str, str]) -> str:
+    if row.get("asset_type") != "Stock":
+        return ""
+    return row.get("stock_sector", "") or row.get("sector", "")
+
+
+def etf_category_value(row: dict[str, str]) -> str:
+    if row.get("asset_type") != "ETF":
+        return ""
+    return row.get("etf_category", "") or row.get("sector", "")
+
+
+def metadata_sector_value(row: dict[str, str]) -> str:
+    if row.get("asset_type") == "Stock":
+        return stock_sector_value(row)
+    if row.get("asset_type") == "ETF":
+        return etf_category_value(row)
+    return row.get("sector", "")
+
+
 def parse_timestamp(value: str) -> datetime | None:
     if not value:
         return None
@@ -252,7 +272,7 @@ def build_exchange_report(
                 "reference_scopes": catalog_entry["reference_scopes"],
                 "tickers": len(exchange_rows),
                 "isin_coverage": sum(bool(row["isin"]) for row in exchange_rows),
-                "sector_coverage": sum(bool(row["sector"]) for row in exchange_rows),
+                "sector_coverage": sum(bool(metadata_sector_value(row)) for row in exchange_rows),
                 "cik_coverage": sum(bool(row.get("cik")) for row in identifiers),
                 "figi_coverage": sum(bool(row.get("figi")) for row in identifiers),
                 "lei_coverage": sum(bool(row.get("lei")) for row in identifiers),
@@ -305,7 +325,7 @@ def build_country_report(
                 "country": country,
                 "tickers": len(country_rows),
                 "isin_coverage": sum(bool(row["isin"]) for row in country_rows),
-                "sector_coverage": sum(bool(row["sector"]) for row in country_rows),
+                "sector_coverage": sum(bool(metadata_sector_value(row)) for row in country_rows),
                 "cik_coverage": sum(bool(row.get("cik")) for row in identifiers),
                 "figi_coverage": sum(bool(row.get("figi")) for row in identifiers),
                 "lei_coverage": sum(bool(row.get("lei")) for row in identifiers),
@@ -335,7 +355,9 @@ def build_global_summary(
         "stocks": sum(row["asset_type"] == "Stock" for row in tickers),
         "etfs": sum(row["asset_type"] == "ETF" for row in tickers),
         "isin_coverage": sum(bool(row["isin"]) for row in tickers),
-        "sector_coverage": sum(bool(row["sector"]) for row in tickers),
+        "sector_coverage": sum(bool(metadata_sector_value(row)) for row in tickers),
+        "stock_sector_coverage": sum(bool(stock_sector_value(row)) for row in tickers),
+        "etf_category_coverage": sum(bool(etf_category_value(row)) for row in tickers),
         "cik_coverage": sum(bool(row.get("cik")) for row in identifiers_extended),
         "figi_coverage": sum(bool(row.get("figi")) for row in identifiers_extended),
         "lei_coverage": sum(bool(row.get("lei")) for row in identifiers_extended),

@@ -92,7 +92,7 @@ def test_build_metadata_updates_emits_sector_override():
         {
             "ticker": "1301",
             "exchange": "TSE",
-            "field": "sector",
+            "field": "stock_sector",
             "decision": "update",
             "proposed_value": "Consumer Staples",
             "confidence": "0.74",

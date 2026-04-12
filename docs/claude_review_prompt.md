@@ -27,4 +27,5 @@ Your job:
 - Keep explanations short and evidence-based.
 - Use `alias_actions` only for aliases that need action.
 - Use `metadata_actions` only for specific field changes.
+- Prefer `stock_sector` for stock GICS-sector fixes and `etf_category` for ETF category fixes; `sector` is the legacy compatibility field.
 - Do not invent ISINs, exchanges, or company names.

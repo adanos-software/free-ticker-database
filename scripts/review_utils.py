@@ -93,7 +93,17 @@ def validate_review_response(payload: dict[str, object], schema: dict[str, objec
     if not isinstance(metadata_actions, list):
         errors.append("metadata_actions must be an array")
     else:
-        valid_fields = {"name", "exchange", "country", "country_code", "isin", "sector", "asset_type"}
+        valid_fields = {
+            "name",
+            "exchange",
+            "country",
+            "country_code",
+            "isin",
+            "sector",
+            "stock_sector",
+            "etf_category",
+            "asset_type",
+        }
         valid_decisions = {"keep", "update", "clear", "needs_human"}
         for index, action in enumerate(metadata_actions):
             if not isinstance(action, dict):

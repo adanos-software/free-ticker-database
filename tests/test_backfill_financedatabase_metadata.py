@@ -157,6 +157,7 @@ def test_build_metadata_updates_emits_one_row_per_field():
                 "decision": "accept",
                 "ticker": "1893",
                 "exchange": "TSE",
+                "asset_type": "Stock",
                 "sector_update": "Industrials",
                 "isin_update": "JP3309000002",
             },
@@ -170,6 +171,6 @@ def test_build_metadata_updates_emits_one_row_per_field():
         ]
     )
 
-    assert [update["field"] for update in updates] == ["sector", "isin"]
+    assert [update["field"] for update in updates] == ["stock_sector", "isin"]
     assert updates[0]["proposed_value"] == "Industrials"
     assert updates[1]["proposed_value"] == "JP3309000002"

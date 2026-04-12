@@ -228,6 +228,18 @@ def priority_for(field: str, exchange: str, missing_count: int) -> tuple[int, st
     return len(priority) + 1, "ranked_by_missing_count"
 
 
+def row_stock_sector(row: dict[str, str]) -> str:
+    if row.get("asset_type") != "Stock":
+        return ""
+    return row.get("stock_sector", "") or row.get("sector", "")
+
+
+def row_etf_category(row: dict[str, str]) -> str:
+    if row.get("asset_type") != "ETF":
+        return ""
+    return row.get("etf_category", "") or row.get("sector", "")
+
+
 def make_row(
     *,
     field: str,
@@ -280,15 +292,13 @@ def build_completion_backlog(
             isin_counts[exchange][asset_type] += 1
 
     for row in ticker_rows:
-        if row.get("sector", "").strip():
-            continue
         exchange = row.get("exchange", "")
         if not exchange:
             continue
         asset_type = row.get("asset_type", "")
-        if asset_type == "Stock":
+        if asset_type == "Stock" and not row_stock_sector(row).strip():
             stock_sector_counts[exchange] += 1
-        elif asset_type == "ETF":
+        elif asset_type == "ETF" and not row_etf_category(row).strip():
             etf_category_counts[exchange] += 1
 
     rows: list[CompletionBacklogRow] = []

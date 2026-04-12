@@ -116,23 +116,44 @@ def normalize_status_history(existing_rows: list[dict[str, str]]) -> list[dict[s
     )
 
 
+def sector_model_fields(row: dict[str, str]) -> tuple[str, str, str]:
+    asset_type = row.get("asset_type", "")
+    legacy_sector = row.get("sector", "")
+    stock_sector = row.get("stock_sector", "")
+    etf_category = row.get("etf_category", "")
+    if asset_type == "Stock":
+        stock_sector = stock_sector or legacy_sector
+        etf_category = ""
+        legacy_sector = stock_sector
+    elif asset_type == "ETF":
+        etf_category = etf_category or legacy_sector
+        stock_sector = ""
+        legacy_sector = etf_category
+    return legacy_sector, stock_sector, etf_category
+
+
 def build_snapshot(rows: list[dict[str, str]], observed_at: str) -> list[dict[str, str]]:
-    return [
-        {
-            "listing_key": row_listing_key(row),
-            "ticker": row["ticker"],
-            "exchange": row["exchange"],
-            "name": row["name"],
-            "asset_type": row["asset_type"],
-            "country": row["country"],
-            "country_code": row["country_code"],
-            "isin": row["isin"],
-            "sector": row["sector"],
-            "status": "active",
-            "observed_at": observed_at,
-        }
-        for row in rows
-    ]
+    snapshot: list[dict[str, str]] = []
+    for row in rows:
+        sector, stock_sector, etf_category = sector_model_fields(row)
+        snapshot.append(
+            {
+                "listing_key": row_listing_key(row),
+                "ticker": row["ticker"],
+                "exchange": row["exchange"],
+                "name": row["name"],
+                "asset_type": row["asset_type"],
+                "country": row["country"],
+                "country_code": row["country_code"],
+                "isin": row["isin"],
+                "sector": sector,
+                "stock_sector": stock_sector,
+                "etf_category": etf_category,
+                "status": "active",
+                "observed_at": observed_at,
+            }
+        )
+    return snapshot
 
 
 def build_event_rows(
@@ -320,7 +341,21 @@ def build_history() -> dict[str, Any]:
 
     write_csv(
         LATEST_SNAPSHOT_CSV,
-        ["listing_key", "ticker", "exchange", "name", "asset_type", "country", "country_code", "isin", "sector", "status", "observed_at"],
+        [
+            "listing_key",
+            "ticker",
+            "exchange",
+            "name",
+            "asset_type",
+            "country",
+            "country_code",
+            "isin",
+            "sector",
+            "stock_sector",
+            "etf_category",
+            "status",
+            "observed_at",
+        ],
         current_snapshot,
     )
     write_csv(

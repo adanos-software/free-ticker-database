@@ -86,7 +86,7 @@ def load_missing_sector_rows(
         for row in rows
         if row["exchange"] in exchanges
         and row["asset_type"] == "Stock"
-        and not row.get("sector", "").strip()
+        and not (row.get("stock_sector", "") or row.get("sector", "")).strip()
     ]
 
 
@@ -180,7 +180,7 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
             {
                 "ticker": result["ticker"],
                 "exchange": result["exchange"],
-                "field": "sector",
+                "field": "stock_sector",
                 "decision": "update",
                 "proposed_value": result["sector_update"],
                 "confidence": "0.76",

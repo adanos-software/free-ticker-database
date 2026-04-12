@@ -13,7 +13,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.build_pr_review_batches import DEFAULT_PR_BATCH_DIR
-from scripts.rebuild_dataset import ALIASES_CSV, IDENTIFIERS_CSV, TICKERS_CSV, rebuild, split_aliases
+from scripts.rebuild_dataset import ALIASES_CSV, IDENTIFIERS_CSV, TICKERS_CSV, TICKER_EXPORT_FIELDNAMES, rebuild, split_aliases
 
 
 DEFAULT_APPLY_SUMMARY = DEFAULT_PR_BATCH_DIR / "apply_summary.json"
@@ -148,6 +148,8 @@ def apply_operations(
                     identifier_lookup[ticker] = identifier_row
                 identifier_row["isin"] = new_value
             else:
+                if field in TICKER_EXPORT_FIELDNAMES and field not in ticker_row:
+                    ticker_row[field] = ""
                 if field not in ticker_row:
                     skipped.append({**operation, "skip_reason": "unsupported_field"})
                     continue
@@ -216,7 +218,7 @@ def main() -> None:
     if args.execute:
         write_csv(
             args.tickers_csv,
-            ["ticker", "name", "exchange", "asset_type", "sector", "country", "country_code", "isin", "aliases"],
+            TICKER_EXPORT_FIELDNAMES,
             updated_tickers,
         )
         write_csv(args.aliases_csv, ["ticker", "alias", "alias_type"], updated_aliases)

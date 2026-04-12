@@ -245,6 +245,33 @@ def analyze_dataset(
                 f"Country disagrees with ISIN prefix country {inferred_country}.",
             )
 
+        stock_sector = row.get("stock_sector", "")
+        etf_category = row.get("etf_category", "")
+
+        if row["asset_type"] == "Stock" and stock_sector and stock_sector not in VALID_STOCK_SECTORS:
+            add_finding(
+                findings_by_ticker,
+                ticker,
+                "invalid_stock_sector",
+                "high",
+                60,
+                "stock_sector",
+                stock_sector,
+                "stock_sector is not a canonical stock GICS sector.",
+            )
+
+        if row["asset_type"] == "ETF" and etf_category and etf_category not in VALID_ETF_SECTORS:
+            add_finding(
+                findings_by_ticker,
+                ticker,
+                "invalid_etf_category",
+                "high",
+                60,
+                "etf_category",
+                etf_category,
+                "etf_category is not a standardized ETF category.",
+            )
+
         if row["asset_type"] == "Stock" and row["sector"] and row["sector"] not in VALID_STOCK_SECTORS:
             add_finding(
                 findings_by_ticker,
@@ -267,6 +294,19 @@ def analyze_dataset(
                 "sector",
                 row["sector"],
                 "Sector is not a standardized ETF category.",
+            )
+
+        expected_legacy_sector = stock_sector if row["asset_type"] == "Stock" else etf_category if row["asset_type"] == "ETF" else row["sector"]
+        if expected_legacy_sector and row["sector"] != expected_legacy_sector:
+            add_finding(
+                findings_by_ticker,
+                ticker,
+                "legacy_sector_mismatch",
+                "medium",
+                35,
+                "sector",
+                row["sector"],
+                "Legacy sector must mirror stock_sector for stocks and etf_category for ETFs.",
             )
 
         if row["exchange"] in OTC_EXCHANGES and not row["isin"] and not row["sector"]:

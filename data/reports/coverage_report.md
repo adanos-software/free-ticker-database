@@ -10,6 +10,8 @@
 | etfs | 15091 |
 | isin_coverage | 45375 |
 | sector_coverage | 41738 |
+| stock_sector_coverage | 31152 |
+| etf_category_coverage | 10586 |
 | cik_coverage | 7700 |
 | figi_coverage | 3650 |
 | lei_coverage | 920 |
@@ -49,23 +51,23 @@
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-04-12T13:25:30Z |
-| tickers_age_hours | 0.0 |
+| tickers_built_at | 2026-04-12T13:52:41Z |
+| tickers_age_hours | 0.01 |
 | masterfiles_generated_at | 2026-04-12T11:47:56Z |
-| masterfiles_age_hours | 1.63 |
-| identifiers_generated_at | 2026-04-12T13:25:31Z |
-| identifiers_age_hours | 0.0 |
-| listing_history_observed_at | 2026-04-12T13:25:30Z |
-| listing_history_age_hours | 0.0 |
+| masterfiles_age_hours | 2.08 |
+| identifiers_generated_at | 2026-04-12T13:52:42Z |
+| identifiers_age_hours | 0.01 |
+| listing_history_observed_at | 2026-04-12T13:52:41Z |
+| listing_history_age_hours | 0.01 |
 | latest_verification_run | data/stock_verification/run-20260412-post-eodhd-fd |
 | latest_verification_generated_at | 2026-04-12T12:08:59Z |
-| latest_verification_age_hours | 1.28 |
+| latest_verification_age_hours | 1.73 |
 | latest_stock_verification_run | data/stock_verification/run-20260412-post-eodhd-fd |
 | latest_stock_verification_generated_at | 2026-04-12T12:08:59Z |
-| latest_stock_verification_age_hours | 1.28 |
+| latest_stock_verification_age_hours | 1.73 |
 | latest_etf_verification_run | data/etf_verification/run-20260412-post-eodhd-fd |
 | latest_etf_verification_generated_at | 2026-04-12T12:08:59Z |
-| latest_etf_verification_age_hours | 1.28 |
+| latest_etf_verification_age_hours | 1.73 |
 
 ## Source Coverage
 

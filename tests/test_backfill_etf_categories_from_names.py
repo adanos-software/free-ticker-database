@@ -89,14 +89,14 @@ def test_verify_etf_categories_refreshes_existing_classifier_updates():
             {"ticker": "B", "exchange": "XETRA", "asset_type": "ETF", "name": "Example Corporate Bond ETF", "sector": "Corporate Bonds"},
         ],
         exchanges={"XETRA"},
-        existing_classifier_update_keys={("A", "XETRA", "sector")},
+        existing_classifier_update_keys={("A", "XETRA")},
     )
 
     assert [result["ticker"] for result in results] == ["A"]
     assert results[0]["decision"] == "accept"
 
 
-def test_build_metadata_updates_emits_reviewed_legacy_sector_update():
+def test_build_metadata_updates_emits_reviewed_etf_category_update():
     updates = build_metadata_updates(
         [
             {
@@ -114,7 +114,7 @@ def test_build_metadata_updates_emits_reviewed_legacy_sector_update():
         {
             "ticker": "BND",
             "exchange": "NYSE ARCA",
-            "field": "sector",
+            "field": "etf_category",
             "decision": "update",
             "proposed_value": "Corporate Bonds",
             "confidence": "0.68",
@@ -123,7 +123,7 @@ def test_build_metadata_updates_emits_reviewed_legacy_sector_update():
     ]
 
 
-def test_load_existing_classifier_update_keys_reads_only_classifier_sector_rows(tmp_path):
+def test_load_existing_classifier_update_keys_reads_only_classifier_metadata_rows(tmp_path):
     path = tmp_path / "metadata_updates.csv"
     fieldnames = ["ticker", "exchange", "field", "decision", "proposed_value", "confidence", "reason"]
     with path.open("w", newline="", encoding="utf-8") as handle:
@@ -152,10 +152,10 @@ def test_load_existing_classifier_update_keys_reads_only_classifier_sector_rows(
             ]
         )
 
-    assert load_existing_classifier_update_keys(path) == {("KEEP", "XETRA", "sector")}
+    assert load_existing_classifier_update_keys(path) == {("KEEP", "XETRA")}
 
 
-def test_prune_stale_classifier_updates_keeps_other_sources(tmp_path):
+def test_prune_stale_classifier_updates_removes_legacy_classifier_rows_and_keeps_other_sources(tmp_path):
     path = tmp_path / "metadata_updates.csv"
     fieldnames = ["ticker", "exchange", "field", "decision", "proposed_value", "confidence", "reason"]
     with path.open("w", newline="", encoding="utf-8") as handle:
@@ -199,7 +199,7 @@ def test_prune_stale_classifier_updates_keeps_other_sources(tmp_path):
             {
                 "ticker": "KEEP",
                 "exchange": "XETRA",
-                "field": "sector",
+                "field": "etf_category",
                 "decision": "update",
                 "proposed_value": "Large Cap",
                 "confidence": "0.68",
@@ -209,4 +209,6 @@ def test_prune_stale_classifier_updates_keeps_other_sources(tmp_path):
     )
 
     rows = list(csv.DictReader(path.open(newline="", encoding="utf-8")))
-    assert [(row["ticker"], row["proposed_value"]) for row in rows] == [("KEEP", "Large Cap"), ("OTHER", "Bonds")]
+    assert [(row["ticker"], row["field"], row["proposed_value"]) for row in rows] == [
+        ("OTHER", "sector", "Bonds"),
+    ]

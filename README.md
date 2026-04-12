@@ -16,6 +16,8 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 53
 | Countries | 69 |
 | ISIN coverage | 45,375 (84.3%) |
 | Sector coverage | 41,738 (77.5%) |
+| Stock sector coverage | 31,152 |
+| ETF category coverage | 10,586 |
 | Core listing-scope rows | 45,413 |
 | Core primary rows with ISIN | 38,324 |
 | Core primary rows missing ISIN | 7,089 |
@@ -28,40 +30,42 @@ Choose the format that fits your use case:
 
 | File | Size | Best for |
 |---|---|---|
-| [`data/tickers.csv`](data/tickers.csv) | 5.0 MB | Excel, spreadsheets, quick lookups |
-| [`data/listings.csv`](data/listings.csv) | 6.4 MB | Listing-keyed export without global ticker ambiguity |
-| [`data/instrument_scopes.csv`](data/instrument_scopes.csv) | 5.2 MB | Core vs. extended listing scope |
-| [`data/tickers.json`](data/tickers.json) | 10.7 MB | Web apps, APIs |
-| [`data/tickers.parquet`](data/tickers.parquet) | 2.5 MB | Pandas, data science |
-| [`data/tickers.db`](data/tickers.db) | 37.8 MB | SQL queries, local apps |
-| [`data/aliases.csv`](data/aliases.csv) | 2.3 MB | Alias/name resolution |
-| [`data/identifiers.csv`](data/identifiers.csv) | 1007 KB | ISIN/WKN lookups |
-| [`data/cross_listings.csv`](data/cross_listings.csv) | 512 KB | Cross-listed securities |
+| [`data/tickers.csv`](data/tickers.csv) | 6.0 MB | Excel, spreadsheets, quick lookups |
+| [`data/listings.csv`](data/listings.csv) | 8.0 MB | Listing-keyed export without global ticker ambiguity |
+| [`data/instrument_scopes.csv`](data/instrument_scopes.csv) | 6.0 MB | Core vs. extended listing scope |
+| [`data/tickers.json`](data/tickers.json) | 13 MB | Web apps, APIs |
+| [`data/tickers.parquet`](data/tickers.parquet) | 3.3 MB | Pandas, data science |
+| [`data/tickers.db`](data/tickers.db) | 43 MB | SQL queries, local apps |
+| [`data/aliases.csv`](data/aliases.csv) | 3.0 MB | Alias/name resolution |
+| [`data/identifiers.csv`](data/identifiers.csv) | 1.0 MB | ISIN/WKN lookups |
+| [`data/cross_listings.csv`](data/cross_listings.csv) | 516 KB | Cross-listed securities |
 
 Additional reference artifacts:
 
 | File | Size | Best for |
 |---|---|---|
-| [`data/identifiers_extended.csv`](data/identifiers_extended.csv) | 2.2 MB | FIGI/CIK/LEI enrichment snapshot |
-| [`data/listing_index.csv`](data/listing_index.csv) | 5.3 MB | Listing-keyed identity/export bridge |
+| [`data/identifiers_extended.csv`](data/identifiers_extended.csv) | 3.0 MB | FIGI/CIK/LEI enrichment snapshot |
+| [`data/listing_index.csv`](data/listing_index.csv) | 6.0 MB | Listing-keyed identity/export bridge |
 | [`data/masterfiles/reference.csv`](data/masterfiles/reference.csv) | 24.0 MB | Official exchange-masterfile reference rows |
-| [`data/masterfiles/supplemental_listings.csv`](data/masterfiles/supplemental_listings.csv) | 2.2 MB | Safe official listings added to the core export |
-| [`data/history/latest_snapshot.csv`](data/history/latest_snapshot.csv) | 7.2 MB | Current listing-status baseline |
-| [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | 334 KB | Machine-readable coverage metrics |
+| [`data/masterfiles/supplemental_listings.csv`](data/masterfiles/supplemental_listings.csv) | 3.0 MB | Safe official listings added to the core export |
+| [`data/history/latest_snapshot.csv`](data/history/latest_snapshot.csv) | 8.0 MB | Current listing-status baseline |
+| [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | 336 KB | Machine-readable coverage metrics |
 | [`data/reports/completion_backlog.md`](data/reports/completion_backlog.md) | 8 KB | Prioritized ISIN/sector/category completion backlog |
-| [`data/reports/masterfile_collision_report.json`](data/reports/masterfile_collision_report.json) | 57 KB | Official-symbol gaps blocked by cross-exchange collisions |
+| [`data/reports/masterfile_collision_report.json`](data/reports/masterfile_collision_report.json) | 60 KB | Official-symbol gaps blocked by cross-exchange collisions |
 
 ### tickers.csv (flat, Excel-friendly, one row per security)
 
 ```
-ticker,name,exchange,asset_type,sector,country,country_code,isin,aliases
-KO,The Coca-Cola Company,NYSE,Stock,Consumer Staples,United States,US,US1912161007,191216|coca-cola|850663
-LPP,LPP S.A.,WSE,Stock,Consumer Cyclical,Poland,PL,PLLPP0000011,lpp|cropp|121065
+ticker,name,exchange,asset_type,sector,stock_sector,etf_category,country,country_code,isin,aliases
+KO,The Coca-Cola Company,NYSE,Stock,Consumer Staples,Consumer Staples,,United States,US,US1912161007,191216|coca-cola|850663
+LPP,LPP S.A.,WSE,Stock,Consumer Cyclical,Consumer Cyclical,,Poland,PL,PLLPP0000011,lpp|cropp|121065
 ```
 
 This is the canonical core export. When a security trades on multiple exchanges, `tickers.csv` keeps the primary listing only. Secondary listings stay in `cross_listings.csv` and `listings.csv`.
 
 ISIN is a dedicated column. Aliases are pipe-separated (`|`) for easy splitting.
+
+`sector` is retained as a backward-compatible legacy metadata field. Internally, stock rows now carry `stock_sector`; ETF rows carry `etf_category`. The legacy `sector` output mirrors the typed field for the row's `asset_type`.
 
 ### aliases.csv (1 row per alias)
 
@@ -115,8 +119,8 @@ This auxiliary export makes the current listing identity explicit as `exchange::
 ### listings.csv (full listing rows)
 
 ```
-listing_key,ticker,exchange,name,asset_type,sector,country,country_code,isin,aliases
-NASDAQ::AAPL,AAPL,NASDAQ,Apple Inc.,Stock,Information Technology,United States,US,US0378331005,apple|865985
+listing_key,ticker,exchange,name,asset_type,sector,stock_sector,etf_category,country,country_code,isin,aliases
+NASDAQ::AAPL,AAPL,NASDAQ,Apple Inc.,Stock,Information Technology,Information Technology,,United States,US,US0378331005,apple|865985
 ```
 
 This is the full listing-level export for downstream systems that want every venue line with a stable `listing_key` today.
@@ -138,7 +142,7 @@ OTC::VROYF,VROYF,OTC,Stock,CA92859L2012,CA92859L2012,extended,otc_listing,TSXV::
 {
   "_meta": {
     "version": "3.6.0",
-    "built_at": "2026-04-12T12:41:02Z",
+    "built_at": "2026-04-12T13:52:41Z",
     "total_tickers": 53826
   },
   "tickers": [
@@ -148,6 +152,8 @@ OTC::VROYF,VROYF,OTC,Stock,CA92859L2012,CA92859L2012,extended,otc_listing,TSXV::
       "exchange": "NYSE",
       "asset_type": "Stock",
       "sector": "Consumer Staples",
+      "stock_sector": "Consumer Staples",
+      "etf_category": "",
       "country": "United States",
       "country_code": "US",
       "isin": "US1912161007",
@@ -172,7 +178,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (53,826 rows), `listings` (61,956 rows), `aliases` (91,697 rows), `cross_listings` (14,196 rows), and `instrument_scopes` (61,956 rows), with indexes on alias, exchange, country, sector, ISIN, listing scope, and instrument group key.
+Tables: `tickers` (53,826 rows), `listings` (61,956 rows), `aliases` (91,697 rows), `cross_listings` (14,196 rows), and `instrument_scopes` (61,956 rows), with indexes on alias, exchange, country, sector, stock sector, ETF category, ISIN, listing scope, and instrument group key.
 
 ## Schema
 
@@ -184,7 +190,9 @@ Tables: `tickers` (53,826 rows), `listings` (61,956 rows), `aliases` (91,697 row
 | `name` | string | Company / fund name (max 200 chars) |
 | `exchange` | string | Exchange (NYSE, NASDAQ, LSE, HKEX, etc.) |
 | `asset_type` | string | `Stock` or `ETF` |
-| `sector` | string | GICS sector (e.g. Information Technology) |
+| `sector` | string | Backward-compatible combined metadata field derived from `stock_sector` for stocks and `etf_category` for ETFs |
+| `stock_sector` | string | Stock-sector classification (e.g. Information Technology) |
+| `etf_category` | string | ETF category classification (e.g. Large Cap, Government Bonds) |
 | `country` | string | Country of incorporation |
 | `country_code` | string | ISO 3166-1 alpha-2 code (e.g. US, DE, GB) |
 | `isin` | string | International Securities Identification Number |
@@ -235,7 +243,7 @@ Tables: `tickers` (53,826 rows), `listings` (61,956 rows), `aliases` (91,697 row
 - All field lengths within database constraints
 - Rights, units, warrants, notes, and preferred/depositary issues filtered from the stock universe
 - ISIN-based country corrections applied for foreign OTC rows
-- Sector names normalized to canonical GICS sectors (stocks) and standardized ETF categories
+- Stock sectors and ETF categories are tracked in typed fields while `sector` remains a legacy derived output
 - ISIN check digits validated via Luhn algorithm; invalid ISINs removed
 
 ## Reference Coverage
@@ -368,7 +376,7 @@ Build the prioritized completion backlog:
 python3 scripts/build_completion_backlog.py
 ```
 
-This writes `data/reports/completion_backlog.csv`, `data/reports/completion_backlog.json`, and `data/reports/completion_backlog.md`. The backlog uses `instrument_scopes.csv` for `primary_listing_missing_isin`, splits missing stock sectors from missing ETF categories, and assigns a recommended source plus review/confidence policy to each exchange-field block.
+This writes `data/reports/completion_backlog.csv`, `data/reports/completion_backlog.json`, and `data/reports/completion_backlog.md`. The backlog uses `instrument_scopes.csv` for `primary_listing_missing_isin`, splits missing stock sectors from missing ETF categories, and assigns a recommended source plus review/confidence policy to each exchange-field block. Current backlog totals are 7,089 missing primary ISINs, 7,583 missing stock sectors, and 4,505 missing ETF categories.
 
 Run the deterministic enrichment pipeline:
 
@@ -529,7 +537,7 @@ python3 scripts/backfill_sector_from_isin_peers.py --apply
 python3 scripts/rebuild_dataset.py
 ```
 
-This writes audit reports under `data/isin_peer_sector_verification/` and only propagates a sector/category when the primary row is missing sector and every same-asset listing peer with the same ISIN normalizes to one sector value.
+This writes audit reports under `data/isin_peer_sector_verification/` and only propagates a stock sector or ETF category when the primary row is missing the typed metadata field and every same-asset listing peer with the same ISIN normalizes to one value.
 
 ## Data Sources
 

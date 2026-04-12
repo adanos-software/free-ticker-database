@@ -220,7 +220,7 @@ def test_build_metadata_updates_handles_foreign_contamination_and_exchange_remap
         {
             "ticker": "NETZ",
             "exchange": "NASDAQ",
-            "field": "sector",
+            "field": "etf_category",
             "decision": "clear",
             "proposed_value": "",
             "confidence": "0.8",

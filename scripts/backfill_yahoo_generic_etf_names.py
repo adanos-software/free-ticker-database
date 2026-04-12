@@ -283,7 +283,7 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
                     {
                         "ticker": result["ticker"],
                         "exchange": result["exchange"],
-                        "field": "sector",
+                        "field": "etf_category",
                         "decision": "clear",
                         "proposed_value": "",
                         "confidence": "0.8",

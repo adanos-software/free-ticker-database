@@ -139,6 +139,22 @@ def expected_isin_prefix_match(exchange: str, isin: str) -> bool:
     return prefixes is None or isin.startswith(prefixes)
 
 
+def sector_value(row: dict[str, str]) -> str:
+    if row.get("asset_type") == "ETF":
+        return row.get("etf_category", "") or row.get("sector", "")
+    if row.get("asset_type") == "Stock":
+        return row.get("stock_sector", "") or row.get("sector", "")
+    return row.get("sector", "")
+
+
+def sector_target_field(asset_type: str) -> str:
+    if asset_type == "ETF":
+        return "etf_category"
+    if asset_type == "Stock":
+        return "stock_sector"
+    return "sector"
+
+
 def load_ticker_rows(tickers_csv: Path = TICKERS_CSV) -> list[dict[str, str]]:
     with tickers_csv.open(newline="", encoding="utf-8") as handle:
         return list(csv.DictReader(handle))
@@ -267,7 +283,7 @@ def evaluate_financedatabase_row(
         return {**base, "decision": "name_mismatch"}
 
     sector_update = ""
-    if include_sector and not row.get("sector", "").strip():
+    if include_sector and not sector_value(row).strip():
         sector_update = normalize_sector(candidate.sector, row["asset_type"])
 
     isin_update = ""
@@ -329,7 +345,7 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
                 {
                     "ticker": result["ticker"],
                     "exchange": result["exchange"],
-                    "field": "sector",
+                    "field": sector_target_field(result["asset_type"]),
                     "decision": "update",
                     "proposed_value": result["sector_update"],
                     "confidence": "0.78",
@@ -389,7 +405,7 @@ def main(argv: list[str] | None = None) -> None:
         if row["exchange"] in exchanges
         and row["asset_type"] in asset_types
         and (
-            (not args.disable_sector and not row.get("sector", "").strip())
+            (not args.disable_sector and not sector_value(row).strip())
             or (args.enable_isin and not row.get("isin", "").strip())
         )
     ]
@@ -424,7 +440,7 @@ def main(argv: list[str] | None = None) -> None:
                 "candidates": len(rows),
                 "decision_counts": dict(Counter(result["decision"] for result in results)),
                 "exchanges": sorted(exchanges),
-                "accepted_sector_updates": sum(1 for update in updates if update["field"] == "sector"),
+                "accepted_sector_updates": sum(1 for update in updates if update["field"] in {"stock_sector", "etf_category", "sector"}),
                 "accepted_isin_updates": sum(1 for update in updates if update["field"] == "isin"),
                 "json_out": display_path(args.json_out),
                 "csv_out": display_path(args.csv_out),

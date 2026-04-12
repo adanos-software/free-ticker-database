@@ -185,6 +185,8 @@ def test_build_snapshot_sets_active_status_and_listing_key():
             "country_code": "US",
             "isin": "US0000000001",
             "sector": "Industrials",
+            "stock_sector": "Industrials",
+            "etf_category": "",
             "status": "active",
             "observed_at": "2026-04-02T00:00:00Z",
         }

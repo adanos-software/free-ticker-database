@@ -196,7 +196,17 @@ def coerce_review_payload(payload: dict[str, object]) -> dict[str, object]:
     fields_requiring_verification = candidate.get("fields_requiring_verification")
     if isinstance(fields_requiring_verification, list):
         for field in fields_requiring_verification:
-            if field in {"name", "exchange", "country", "country_code", "isin", "sector", "asset_type"}:
+            if field in {
+                "name",
+                "exchange",
+                "country",
+                "country_code",
+                "isin",
+                "sector",
+                "stock_sector",
+                "etf_category",
+                "asset_type",
+            }:
                 metadata_actions.append(
                     {
                         "field": field,

@@ -33,6 +33,7 @@ REPORT_FIELDNAMES = [
     "decision",
 ]
 METADATA_UPDATE_FIELDNAMES = ["ticker", "exchange", "field", "decision", "proposed_value", "confidence", "reason"]
+CLASSIFIER_METADATA_FIELDS = {"sector", "etf_category"}
 CLASSIFIER_REASON_PREFIX = "Deterministic ETF-name classifier mapped"
 
 
@@ -145,15 +146,15 @@ def load_ticker_rows(tickers_csv: Path = TICKERS_CSV) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
-def load_existing_classifier_update_keys(path: Path) -> set[tuple[str, str, str]]:
+def load_existing_classifier_update_keys(path: Path) -> set[tuple[str, str]]:
     if not path.exists():
         return set()
     with path.open(newline="", encoding="utf-8") as handle:
         rows = list(csv.DictReader(handle))
     return {
-        (row["ticker"], row["exchange"], row["field"])
+        (row["ticker"], row["exchange"])
         for row in rows
-        if row.get("field") == "sector" and row.get("reason", "").startswith(CLASSIFIER_REASON_PREFIX)
+        if row.get("field") in CLASSIFIER_METADATA_FIELDS and row.get("reason", "").startswith(CLASSIFIER_REASON_PREFIX)
     }
 
 
@@ -193,16 +194,16 @@ def verify_etf_categories(
     rows: list[dict[str, str]],
     *,
     exchanges: set[str],
-    existing_classifier_update_keys: set[tuple[str, str, str]] | None = None,
+    existing_classifier_update_keys: set[tuple[str, str]] | None = None,
 ) -> list[dict[str, Any]]:
     existing_classifier_update_keys = existing_classifier_update_keys or set()
     results: list[dict[str, Any]] = []
     for row in rows:
-        key = (row["ticker"], row["exchange"], "sector")
+        key = (row["ticker"], row["exchange"])
         should_refresh_existing_classifier_update = key in existing_classifier_update_keys
         if row["exchange"] not in exchanges or row["asset_type"] != "ETF":
             continue
-        if row.get("sector", "").strip() and not should_refresh_existing_classifier_update:
+        if (row.get("etf_category", "") or row.get("sector", "")).strip() and not should_refresh_existing_classifier_update:
             continue
         candidate_row = {**row, "sector": ""} if should_refresh_existing_classifier_update else row
         results.append(evaluate_etf_row(candidate_row))
@@ -218,7 +219,7 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
             {
                 "ticker": result["ticker"],
                 "exchange": result["exchange"],
-                "field": "sector",
+                "field": "etf_category",
                 "decision": "update",
                 "proposed_value": result["category_update"],
                 "confidence": "0.68",
@@ -231,16 +232,16 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
 def prune_stale_classifier_updates(path: Path, updates: list[dict[str, str]]) -> None:
     if not path.exists():
         return
-    current_keys = {(update["ticker"], update["exchange"], update["field"]) for update in updates}
+    current_keys = {(update["ticker"], update["exchange"]) for update in updates}
     with path.open(newline="", encoding="utf-8") as handle:
         rows = list(csv.DictReader(handle))
     kept_rows = [
         row
         for row in rows
         if not (
-            row.get("field") == "sector"
+            row.get("field") in CLASSIFIER_METADATA_FIELDS
             and row.get("reason", "").startswith(CLASSIFIER_REASON_PREFIX)
-            and (row["ticker"], row["exchange"], row["field"]) not in current_keys
+            and ((row["ticker"], row["exchange"]) not in current_keys or row.get("field") != "etf_category")
         )
     ]
     with path.open("w", newline="", encoding="utf-8") as handle:

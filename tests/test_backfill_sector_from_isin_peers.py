@@ -67,7 +67,13 @@ def test_verify_sector_peers_filters_missing_sector_rows():
 def test_build_metadata_updates_emits_sector_override():
     updates = build_metadata_updates(
         [
-            {"decision": "accept", "ticker": "ABC", "exchange": "LSE", "sector_update": "Industrials"},
+            {
+                "decision": "accept",
+                "ticker": "ABC",
+                "exchange": "LSE",
+                "asset_type": "Stock",
+                "sector_update": "Industrials",
+            },
             {"decision": "no_sector_peer", "ticker": "BAD", "exchange": "LSE", "sector_update": ""},
         ]
     )
@@ -76,7 +82,7 @@ def test_build_metadata_updates_emits_sector_override():
         {
             "ticker": "ABC",
             "exchange": "LSE",
-            "field": "sector",
+            "field": "stock_sector",
             "decision": "update",
             "proposed_value": "Industrials",
             "confidence": "0.88",

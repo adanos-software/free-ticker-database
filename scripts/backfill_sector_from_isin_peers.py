@@ -45,14 +45,30 @@ def load_csv_rows(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
+def sector_value(row: dict[str, str]) -> str:
+    if row.get("asset_type") == "Stock":
+        return row.get("stock_sector", "") or row.get("sector", "")
+    if row.get("asset_type") == "ETF":
+        return row.get("etf_category", "") or row.get("sector", "")
+    return row.get("sector", "")
+
+
+def target_field_for_asset_type(asset_type: str) -> str:
+    if asset_type == "ETF":
+        return "etf_category"
+    if asset_type == "Stock":
+        return "stock_sector"
+    return "sector"
+
+
 def index_peer_sectors(listing_rows: list[dict[str, str]]) -> dict[tuple[str, str], list[dict[str, str]]]:
     indexed: dict[tuple[str, str], list[dict[str, str]]] = defaultdict(list)
     for row in listing_rows:
         isin = row.get("isin", "").strip().upper()
-        sector = row.get("sector", "").strip()
+        sector = sector_value(row).strip()
         if not isin or not sector:
             continue
-        indexed[(isin, row["asset_type"])].append(row)
+        indexed[(isin, row["asset_type"])].append({**row, "sector": sector})
     return indexed
 
 
@@ -70,7 +86,7 @@ def evaluate_sector_peer_row(
         "peer_count": len(peers),
         "peer_examples": "; ".join(f"{peer['exchange']}::{peer['ticker']}={peer['sector']}" for peer in peers[:5]),
     }
-    if row.get("sector", "").strip():
+    if sector_value(row).strip():
         return {**base, "decision": "already_has_sector"}
     if not base["isin"]:
         return {**base, "decision": "missing_isin"}
@@ -100,7 +116,7 @@ def verify_sector_peers(
         for row in ticker_rows
         if row["exchange"] in exchanges
         and row["asset_type"] in asset_types
-        and not row.get("sector", "").strip()
+        and not sector_value(row).strip()
         and row.get("isin", "").strip()
     ]
     return [
@@ -121,7 +137,7 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
             {
                 "ticker": result["ticker"],
                 "exchange": result["exchange"],
-                "field": "sector",
+                "field": target_field_for_asset_type(result["asset_type"]),
                 "decision": "update",
                 "proposed_value": result["sector_update"],
                 "confidence": "0.88",

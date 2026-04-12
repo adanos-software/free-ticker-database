@@ -96,7 +96,7 @@ def test_build_metadata_updates_emits_sector_override():
         {
             "ticker": "AAUC",
             "exchange": "NYSE",
-            "field": "sector",
+            "field": "stock_sector",
             "decision": "update",
             "proposed_value": "Materials",
             "confidence": "0.76",
