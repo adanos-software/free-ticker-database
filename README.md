@@ -3,24 +3,24 @@
 [![CI](https://github.com/adanos-software/free-ticker-database/actions/workflows/ci.yml/badge.svg)](https://github.com/adanos-software/free-ticker-database/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-A comprehensive, free-to-use stock and ETF ticker reference database covering 52,000+ primary securities and 60,000+ exchange listings across 67 exchanges and 69 countries.
+A comprehensive, free-to-use stock and ETF ticker reference database covering 53,000+ primary securities and 61,000+ exchange listings across 67 exchanges and 69 countries.
 
 ## Stats
 
 | Metric | Value |
 |---|---|
-| **Total tickers** | 52,747 |
-| Stocks | 38,744 |
-| ETFs | 14,003 |
+| **Total tickers** | 53,858 |
+| Stocks | 38,767 |
+| ETFs | 15,091 |
 | Exchanges | 67 |
 | Countries | 69 |
-| ISIN coverage | 44,335 (84.1%) |
-| Sector coverage | 37,954 (72.0%) |
-| Core listing-scope rows | 44,290 |
-| Core primary rows with ISIN | 37,244 |
-| Core primary rows missing ISIN | 7,046 |
-| Extended listing-scope rows | 15,951 |
-| Total aliases | 90,767 |
+| ISIN coverage | 45,374 (84.2%) |
+| Sector coverage | 37,935 (70.4%) |
+| Core listing-scope rows | 45,413 |
+| Core primary rows with ISIN | 38,291 |
+| Core primary rows missing ISIN | 7,122 |
+| Extended listing-scope rows | 16,543 |
+| Total aliases | 91,728 |
 
 ## Formats
 
@@ -28,26 +28,26 @@ Choose the format that fits your use case:
 
 | File | Size | Best for |
 |---|---|---|
-| [`data/tickers.csv`](data/tickers.csv) | 4.8 MB | Excel, spreadsheets, quick lookups |
-| [`data/listings.csv`](data/listings.csv) | 6.2 MB | Listing-keyed export without global ticker ambiguity |
-| [`data/instrument_scopes.csv`](data/instrument_scopes.csv) | 5.0 MB | Core vs. extended listing scope |
-| [`data/tickers.json`](data/tickers.json) | 10 MB | Web apps, APIs |
+| [`data/tickers.csv`](data/tickers.csv) | 5.0 MB | Excel, spreadsheets, quick lookups |
+| [`data/listings.csv`](data/listings.csv) | 6.4 MB | Listing-keyed export without global ticker ambiguity |
+| [`data/instrument_scopes.csv`](data/instrument_scopes.csv) | 5.2 MB | Core vs. extended listing scope |
+| [`data/tickers.json`](data/tickers.json) | 10.7 MB | Web apps, APIs |
 | [`data/tickers.parquet`](data/tickers.parquet) | 2.5 MB | Pandas, data science |
-| [`data/tickers.db`](data/tickers.db) | 37 MB | SQL queries, local apps |
+| [`data/tickers.db`](data/tickers.db) | 37.8 MB | SQL queries, local apps |
 | [`data/aliases.csv`](data/aliases.csv) | 2.3 MB | Alias/name resolution |
-| [`data/identifiers.csv`](data/identifiers.csv) | 984 KB | ISIN/WKN lookups |
-| [`data/cross_listings.csv`](data/cross_listings.csv) | 473 KB | Cross-listed securities |
+| [`data/identifiers.csv`](data/identifiers.csv) | 1007 KB | ISIN/WKN lookups |
+| [`data/cross_listings.csv`](data/cross_listings.csv) | 510 KB | Cross-listed securities |
 
 Additional reference artifacts:
 
 | File | Size | Best for |
 |---|---|---|
-| [`data/identifiers_extended.csv`](data/identifiers_extended.csv) | 2.1 MB | FIGI/CIK/LEI enrichment snapshot |
-| [`data/listing_index.csv`](data/listing_index.csv) | 5.1 MB | Listing-keyed identity/export bridge |
-| [`data/masterfiles/reference.csv`](data/masterfiles/reference.csv) | 23.9 MB | Official exchange-masterfile reference rows |
-| [`data/masterfiles/supplemental_listings.csv`](data/masterfiles/supplemental_listings.csv) | 1.2 MB | Safe official listings added to the core export |
-| [`data/history/latest_snapshot.csv`](data/history/latest_snapshot.csv) | 6.8 MB | Current listing-status baseline |
-| [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | 365 KB | Machine-readable coverage metrics |
+| [`data/identifiers_extended.csv`](data/identifiers_extended.csv) | 2.2 MB | FIGI/CIK/LEI enrichment snapshot |
+| [`data/listing_index.csv`](data/listing_index.csv) | 5.3 MB | Listing-keyed identity/export bridge |
+| [`data/masterfiles/reference.csv`](data/masterfiles/reference.csv) | 24.0 MB | Official exchange-masterfile reference rows |
+| [`data/masterfiles/supplemental_listings.csv`](data/masterfiles/supplemental_listings.csv) | 2.2 MB | Safe official listings added to the core export |
+| [`data/history/latest_snapshot.csv`](data/history/latest_snapshot.csv) | 7.1 MB | Current listing-status baseline |
+| [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | 334 KB | Machine-readable coverage metrics |
 | [`data/reports/masterfile_collision_report.json`](data/reports/masterfile_collision_report.json) | 57 KB | Official-symbol gaps blocked by cross-exchange collisions |
 
 ### tickers.csv (flat, Excel-friendly, one row per security)
@@ -137,8 +137,8 @@ OTC::VROYF,VROYF,OTC,Stock,CA92859L2012,CA92859L2012,extended,otc_listing,TSXV::
 {
   "_meta": {
     "version": "3.5.0",
-    "built_at": "2026-04-12T06:11:53Z",
-    "total_tickers": 52747
+    "built_at": "2026-04-12T12:08:23Z",
+    "total_tickers": 53858
   },
   "tickers": [
     {
@@ -171,7 +171,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (52,747 rows), `listings` (60,241 rows), `aliases` (90,767 rows), `cross_listings` (13,133 rows), and `instrument_scopes` (60,241 rows), with indexes on alias, exchange, country, sector, ISIN, listing scope, and instrument group key.
+Tables: `tickers` (53,858 rows), `listings` (61,956 rows), `aliases` (91,728 rows), `cross_listings` (14,134 rows), and `instrument_scopes` (61,956 rows), with indexes on alias, exchange, country, sector, ISIN, listing scope, and instrument group key.
 
 ## Schema
 
@@ -200,26 +200,28 @@ Tables: `tickers` (52,747 rows), `listings` (60,241 rows), `aliases` (90,767 row
 
 | Exchange | Tickers | Description |
 |---|---|---|
-| OTC | 8,457 | US OTC / Pink Sheets |
+| OTC | 8,445 | US OTC / Pink Sheets |
 | NASDAQ | 4,538 | NASDAQ |
 | LSE | 3,892 | London Stock Exchange |
-| TSE | 3,195 | Tokyo Stock Exchange |
+| TSE | 3,197 | Tokyo Stock Exchange |
 | SZSE | 3,083 | Shenzhen Stock Exchange |
 | SSE | 2,789 | Shanghai Stock Exchange |
 | NYSE ARCA | 2,571 | NYSE ARCA (ETFs) |
+| XETRA | 2,242 | Deutsche Boerse |
 | NYSE | 2,043 | New York Stock Exchange |
-| XETRA | 1,838 | Deutsche Boerse |
 | KRX | 1,788 | Korea Exchange |
+| TSX | 1,658 | Toronto Stock Exchange |
 | KOSDAQ | 1,583 | Korean OTC |
-| TSX | 1,568 | Toronto Stock Exchange |
-| ASX | 1,292 | Australian Securities Exchange |
-| TWSE | 1,240 | Taiwan Stock Exchange |
+| B3 | 1,506 | Brasil Bolsa Balcao |
+| ASX | 1,291 | Australian Securities Exchange |
+| TWSE | 1,242 | Taiwan Stock Exchange |
 | BATS | 1,207 | Cboe BZX Exchange |
 | TPEX | 1,118 | Taipei Exchange |
 | TSXV | 1,058 | TSX Venture Exchange |
-| B3 | 928 | Brasil Bolsa Balcao |
 | Bursa | 925 | Bursa Malaysia |
 | STO | 709 | Nasdaq Stockholm |
+| Euronext | 699 | Euronext |
+| IDX | 694 | Indonesia Stock Exchange |
 | + 47 more | ... | |
 
 ## Data Quality

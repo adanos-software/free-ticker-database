@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-11T12:28:19Z",
-  "rows": 97845,
+  "generated_at": "2026-04-12T11:47:56Z",
+  "rows": 97930,
   "exchanges": [
     "AMS",
     "ASX",
@@ -116,7 +116,7 @@
     "tpex_mainboard_basic_info": 881,
     "tpex_emerging_basic_info": 354,
     "jpx_listed_issues": 4444,
-    "tmx_listed_issuers": 3619,
+    "tmx_listed_issuers": 3704,
     "tmx_etf_screener": 1697,
     "tmx_interlisted_companies": 271,
     "twse_etf_list": 216,
@@ -222,9 +222,9 @@
       "provider": "TMX",
       "reference_scope": "listed_companies_subset",
       "official": true,
-      "mode": "cache",
-      "rows": 3619,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "mode": "network",
+      "rows": 3704,
+      "generated_at": "2026-04-12T11:47:56Z"
     },
     "tmx_etf_screener": {
       "provider": "TMX",
@@ -232,7 +232,7 @@
       "official": true,
       "mode": "cache",
       "rows": 1697,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-12T11:47:56Z"
     },
     "tmx_interlisted_companies": {
       "provider": "TMX",
@@ -400,7 +400,7 @@
       "official": true,
       "mode": "network",
       "rows": 1123,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-12T11:47:56Z"
     },
     "bmv_stock_search": {
       "provider": "BMV",
@@ -576,7 +576,7 @@
       "official": true,
       "mode": "network",
       "rows": 2351,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-12T11:47:56Z"
     },
     "sse_etf_list": {
       "provider": "SSE",
@@ -584,7 +584,7 @@
       "official": true,
       "mode": "network",
       "rows": 845,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-12T11:47:56Z"
     },
     "szse_a_share_list": {
       "provider": "SZSE",
@@ -592,7 +592,7 @@
       "official": true,
       "mode": "network",
       "rows": 2887,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-12T11:47:56Z"
     },
     "szse_b_share_list": {
       "provider": "SZSE",
@@ -600,7 +600,7 @@
       "official": true,
       "mode": "network",
       "rows": 38,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-12T11:47:56Z"
     },
     "szse_etf_list": {
       "provider": "SZSE",
@@ -608,7 +608,7 @@
       "official": true,
       "mode": "network",
       "rows": 633,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-12T11:47:56Z"
     },
     "tpex_mainboard_daily_quotes": {
       "provider": "TPEX",
@@ -688,7 +688,7 @@
       "official": true,
       "mode": "network",
       "rows": 957,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-12T11:47:56Z"
     },
     "wse_listed_companies": {
       "provider": "GPW",
@@ -815,7 +815,7 @@
     "set_listed_companies": "network",
     "set_etf_search": "network",
     "set_dr_search": "network",
-    "tmx_listed_issuers": "cache",
+    "tmx_listed_issuers": "network",
     "tmx_etf_screener": "cache",
     "tmx_interlisted_companies": "network",
     "euronext_equities": "network",

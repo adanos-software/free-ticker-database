@@ -508,7 +508,7 @@ def test_merge_supplemental_ticker_rows_refreshes_safe_fields(monkeypatch, tmp_p
         },
         {
             "ticker": "130A",
-            "name": "Veritas In Silico Inc.",
+            "name": "Old Name",
             "exchange": "TSE",
             "asset_type": "Stock",
             "sector": "",

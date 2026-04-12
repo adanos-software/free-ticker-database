@@ -1,17 +1,17 @@
 {
   "global": {
-    "official_symbols": 29689,
-    "matched": 18503,
-    "collisions": 6219,
-    "missing": 4967
+    "official_symbols": 29774,
+    "matched": 19264,
+    "collisions": 6345,
+    "missing": 4165
   },
   "exchanges": [
     {
       "exchange": "AMS",
       "official_symbols": 548,
-      "matched": 148,
+      "matched": 240,
       "collisions": 294,
-      "missing": 106,
+      "missing": 14,
       "collision_examples": [
         {
           "ticker": "2AAP",
@@ -96,53 +96,53 @@
       ],
       "missing_examples": [
         {
-          "ticker": "2GS",
-          "name": "Leverage Shares 2x Goldman Sachs ETP Securities",
+          "ticker": "AZRNW",
+          "name": "AZERION WARRANTS",
           "exchange": "AMS"
         },
         {
-          "ticker": "2NVD",
-          "name": "Leverage Shares 2x NVIDIA ETP Securities",
+          "ticker": "NAIW",
+          "name": "NAI WARRANTS",
           "exchange": "AMS"
         },
         {
-          "ticker": "2STS",
-          "name": "Leverage Shares -2x Short Tesla ETP Securities",
+          "ticker": "PPLA",
+          "name": "PPLA European Unit",
           "exchange": "AMS"
         },
         {
-          "ticker": "3CRM",
-          "name": "Leverage Shares 3x Salesforce.Com ETP Securities",
+          "ticker": "QEVW",
+          "name": "QEV WARRANTS",
           "exchange": "AMS"
         },
         {
-          "ticker": "3DIS",
-          "name": "Leverage Shares 3x Disney ETP Securities",
+          "ticker": "RCEG",
+          "name": "Robeco Climate Euro Government Bond UCITS ETF EUR Acc",
           "exchange": "AMS"
         },
         {
-          "ticker": "3JD",
-          "name": "Leverage Shares 3x JD.Com ETP Securities",
+          "ticker": "UIMY",
+          "name": "UBS Factor MSCI EMU Low Volatility UCITS ETF EUR dis",
           "exchange": "AMS"
         },
         {
-          "ticker": "3PYP",
-          "name": "Leverage Shares 3x PayPal ETP Securities",
+          "ticker": "VITD",
+          "name": "Vanguard US Treasury 3-7 Year Bond UCITS ETF USD Distributing",
           "exchange": "AMS"
         },
         {
-          "ticker": "3SQ",
-          "name": "Leverage Shares 3x Square ETP Securities",
+          "ticker": "VITS",
+          "name": "Vanguard US Treasury 3-7 Year Bond UCITS ETF USD Accumulating",
           "exchange": "AMS"
         },
         {
-          "ticker": "600X",
-          "name": "State Street SPDR STOXX Europe 600 SRI UCITS ETF (Acc)",
+          "ticker": "VLDP",
+          "name": "Vanguard US Treasury 7-10 Year Bond UCITS ETF USD Distributing",
           "exchange": "AMS"
         },
         {
-          "ticker": "ADAVE",
-          "name": "VALOUR CARDANO",
+          "ticker": "VLDS",
+          "name": "Vanguard US Treasury 7-10 Year Bond UCITS ETF USD Accumulating",
           "exchange": "AMS"
         }
       ]
@@ -150,59 +150,59 @@
     {
       "exchange": "B3",
       "official_symbols": 1218,
-      "matched": 627,
+      "matched": 1206,
       "collisions": 0,
-      "missing": 591,
+      "missing": 12,
       "collision_examples": [],
       "missing_examples": [
         {
-          "ticker": "AADA39",
-          "name": "21SHARES CARDANO ETP",
+          "ticker": "ALUP11",
+          "name": "ALUPAR INVESTIMENTO S/A",
           "exchange": "B3"
         },
         {
-          "ticker": "AAGR11",
-          "name": "ASSET BANK AGRONEG\u00d3CIOS FIAGRO -DC",
+          "ticker": "BBAS11",
+          "name": "BCO BRASIL S.A.",
           "exchange": "B3"
         },
         {
-          "ticker": "AAZQ11",
-          "name": "AZ QUEST SOLE FDO DE INV - FIAGRO - IMOB RESP LIM",
+          "ticker": "BPAC11",
+          "name": "BCO BTG PACTUAL S.A.",
           "exchange": "B3"
         },
         {
-          "ticker": "ABCP11",
-          "name": "GRAND PLAZA SHOPPING FDO INV IMOB - RESP LIM",
+          "ticker": "BRBI11",
+          "name": "BRBI BR PARTNERS S.A.",
           "exchange": "B3"
         },
         {
-          "ticker": "ABGD39",
-          "name": "ABRDN PHYSICAL GOLD SHARES ETF",
+          "ticker": "ENGI11",
+          "name": "ENERGISA S.A.",
           "exchange": "B3"
         },
         {
-          "ticker": "ACWX39",
-          "name": "ISHARES MSCI ACWI EX U.S. ETF",
+          "ticker": "IGTI11",
+          "name": "IGUATEMI S.A.",
           "exchange": "B3"
         },
         {
-          "ticker": "ADSH11",
-          "name": "AD SHOPPING FUNDO DE INVESTIMENTO IMOB RESP LIM",
+          "ticker": "KLBN11",
+          "name": "KLABIN S.A.",
           "exchange": "B3"
         },
         {
-          "ticker": "AERO11",
-          "name": "HCO OPPS AERO I FDO DE INV IMOB RESP LIM",
+          "ticker": "PPLA11",
+          "name": "PPLA PARTICIPATIONS LTD.",
           "exchange": "B3"
         },
         {
-          "ticker": "AETH39",
-          "name": "21SHARES ETHEREUM STAKING ETP",
+          "ticker": "PSVM11",
+          "name": "PORTO SUDESTE V.M. S.A.",
           "exchange": "B3"
         },
         {
-          "ticker": "AFHF11",
-          "name": "AF INVEST REAL ESTATE MULTIFUN DE INV IMO LTDA",
+          "ticker": "SANB11",
+          "name": "BCO SANTANDER (BRASIL) S.A.",
           "exchange": "B3"
         }
       ]
@@ -328,12 +328,20 @@
       "exchange": "Euronext",
       "official_symbols": 4385,
       "matched": 938,
-      "collisions": 2132,
-      "missing": 1315,
+      "collisions": 2248,
+      "missing": 1199,
       "collision_examples": [
         {
           "ticker": "0EMU",
           "name": "Ossiam MSCI EMU - UCITS ETF 1C (EUR)",
+          "target_exchange": "Euronext",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
+        {
+          "ticker": "0SWE",
+          "name": "OSSIAM MSCI WORLD - UCITS ETF 1C (EUR)",
           "target_exchange": "Euronext",
           "existing_exchanges": [
             "XETRA"
@@ -402,14 +410,6 @@
           "existing_exchanges": [
             "XETRA"
           ]
-        },
-        {
-          "ticker": "29ID",
-          "name": "iShares iBonds Dec 2029 Term $ Corp UCITS ETF USD (Dist)",
-          "target_exchange": "Euronext",
-          "existing_exchanges": [
-            "SIX"
-          ]
         }
       ],
       "missing_examples": [
@@ -421,11 +421,6 @@
         {
           "ticker": "0CAC",
           "name": "OSSIAM CAC 40 NR - UCITS ETF 1C (EUR)",
-          "exchange": "Euronext"
-        },
-        {
-          "ticker": "0SWE",
-          "name": "OSSIAM MSCI WORLD - UCITS ETF 1C (EUR)",
           "exchange": "Euronext"
         },
         {
@@ -461,6 +456,11 @@
         {
           "ticker": "3BTL",
           "name": "WISDOMTREE BTP 10Y 3X DAILY LEVERAGED",
+          "exchange": "Euronext"
+        },
+        {
+          "ticker": "3BTS",
+          "name": "WISDOMTREE BTP 10Y 3X DAILY SHORT",
           "exchange": "Euronext"
         }
       ]
@@ -610,8 +610,8 @@
       "exchange": "NASDAQ",
       "official_symbols": 5449,
       "matched": 4568,
-      "collisions": 48,
-      "missing": 833,
+      "collisions": 51,
+      "missing": 830,
       "collision_examples": [
         {
           "ticker": "ACAA",
@@ -627,6 +627,14 @@
           "target_exchange": "NASDAQ",
           "existing_exchanges": [
             "IDX"
+          ]
+        },
+        {
+          "ticker": "ANL",
+          "name": "Adlai Nortye Ltd. - American Depositary Shares",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "XETRA"
           ]
         },
         {
@@ -683,14 +691,6 @@
           "target_exchange": "NASDAQ",
           "existing_exchanges": [
             "TSXV"
-          ]
-        },
-        {
-          "ticker": "BRES",
-          "name": "Burney U.S. Equity Select ETF",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "LSE"
           ]
         }
       ],
@@ -751,8 +751,8 @@
       "exchange": "NEO",
       "official_symbols": 436,
       "matched": 196,
-      "collisions": 82,
-      "missing": 158,
+      "collisions": 85,
+      "missing": 155,
       "collision_examples": [
         {
           "ticker": "ABB",
@@ -892,8 +892,8 @@
       "exchange": "NYSE",
       "official_symbols": 3836,
       "matched": 2060,
-      "collisions": 513,
-      "missing": 1263,
+      "collisions": 515,
+      "missing": 1261,
       "collision_examples": [
         {
           "ticker": "ABX",
@@ -1314,9 +1314,9 @@
     {
       "exchange": "OSL",
       "official_symbols": 298,
-      "matched": 233,
+      "matched": 234,
       "collisions": 64,
-      "missing": 1,
+      "missing": 0,
       "collision_examples": [
         {
           "ticker": "ABG",
@@ -1399,13 +1399,7 @@
           ]
         }
       ],
-      "missing_examples": [
-        {
-          "ticker": "COGLD",
-          "name": "EDR Certified Origin Physical Gold PLC",
-          "exchange": "OSL"
-        }
-      ]
+      "missing_examples": []
     },
     {
       "exchange": "PSE",
@@ -1551,9 +1545,9 @@
     {
       "exchange": "TSE",
       "official_symbols": 4444,
-      "matched": 3214,
+      "matched": 3216,
       "collisions": 1199,
-      "missing": 31,
+      "missing": 29,
       "collision_examples": [
         {
           "ticker": "1301",
@@ -1691,8 +1685,8 @@
     },
     {
       "exchange": "TSX",
-      "official_symbols": 785,
-      "matched": 323,
+      "official_symbols": 788,
+      "matched": 326,
       "collisions": 460,
       "missing": 2,
       "collision_examples": [
@@ -1792,8 +1786,8 @@
     },
     {
       "exchange": "TSXV",
-      "official_symbols": 1518,
-      "matched": 961,
+      "official_symbols": 1600,
+      "matched": 1043,
       "collisions": 557,
       "missing": 0,
       "collision_examples": [
@@ -1883,9 +1877,9 @@
     {
       "exchange": "TWSE",
       "official_symbols": 1081,
-      "matched": 1022,
+      "matched": 1024,
       "collisions": 29,
-      "missing": 30,
+      "missing": 28,
       "collision_examples": [
         {
           "ticker": "2020",
@@ -2025,8 +2019,8 @@
       "exchange": "UPCOM",
       "official_symbols": 837,
       "matched": 2,
-      "collisions": 458,
-      "missing": 377,
+      "collisions": 460,
+      "missing": 375,
       "collision_examples": [
         {
           "ticker": "AAS",

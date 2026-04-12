@@ -1472,7 +1472,7 @@ def load_supplemental_ticker_rows() -> list[dict[str, str]]:
 def merge_ticker_row(base_row: dict[str, str], supplement_row: dict[str, str]) -> dict[str, str]:
     merged = dict(base_row)
     for field in ("name", "asset_type", "country", "country_code"):
-        if supplement_row.get(field):
+        if not merged.get(field) and supplement_row.get(field):
             merged[field] = supplement_row[field]
     for field in ("sector", "isin"):
         if not merged.get(field) and supplement_row.get(field):
