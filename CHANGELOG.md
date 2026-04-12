@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [3.7.0] - 2026-04-12
+
 ### Added
 
 - Added a field-level completion backlog report (`data/reports/completion_backlog.*`) that splits missing primary ISINs, stock sectors, and ETF categories by exchange and review policy.
@@ -15,6 +17,7 @@
 - Switched listing-history identity comparisons to `listing_key` while preserving the existing event output order.
 - Switched coverage-report identifier and masterfile-collision lookups to listing-key identity with ticker/exchange fallback for legacy inputs.
 - Added `listing_key` to `identifiers_extended.csv` so FIGI/CIK/LEI enrichment rows are explicitly listing-keyed while preserving `ticker` and `exchange`.
+- Documented ignored local probe/test artifacts and cleaned stale ETF-category provenance wording in the enrichment pipeline.
 
 ## [3.6.0] - 2026-04-12
 

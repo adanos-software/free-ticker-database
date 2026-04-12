@@ -223,7 +223,7 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
                 "decision": "update",
                 "proposed_value": result["category_update"],
                 "confidence": "0.68",
-                "reason": f"Deterministic ETF-name classifier mapped the product name to '{result['category_update']}' via rule '{result['matched_rule']}'. This is a category fill for legacy sector output, not a stock-sector assertion.",
+                "reason": f"Deterministic ETF-name classifier mapped the product name to '{result['category_update']}' via rule '{result['matched_rule']}'. This is an etf_category fill mirrored through the legacy sector output, not a stock-sector assertion.",
             }
         )
     return updates

@@ -67,6 +67,8 @@ ISIN is a dedicated column. Aliases are pipe-separated (`|`) for easy splitting.
 
 `sector` is retained as a backward-compatible legacy metadata field. Internally, stock rows now carry `stock_sector`; ETF rows carry `etf_category`. The legacy `sector` output mirrors the typed field for the row's `asset_type`.
 
+Local browser probes and test-run artifacts are intentionally excluded from the dataset. Generated scratch outputs belong in ignored `output/` or `test-results/` folders; committed reference artifacts live under `data/`.
+
 ### aliases.csv (1 row per alias)
 
 ```
@@ -141,8 +143,8 @@ OTC::VROYF,VROYF,OTC,Stock,CA92859L2012,CA92859L2012,extended,otc_listing,TSXV::
 ```json
 {
   "_meta": {
-    "version": "3.6.0",
-    "built_at": "2026-04-12T13:52:41Z",
+    "version": "3.7.0",
+    "built_at": "2026-04-12T14:24:33Z",
     "total_tickers": 53826
   },
   "tickers": [
@@ -163,7 +165,7 @@ OTC::VROYF,VROYF,OTC,Stock,CA92859L2012,CA92859L2012,extended,otc_listing,TSXV::
 }
 ```
 
-JSON outputs use an envelope with a `_meta` block and a `tickers` array as of version `3.6.0`.
+JSON outputs use an envelope with a `_meta` block and a `tickers` array as of version `3.7.0`.
 
 ### tickers.db (SQLite)
 
@@ -448,13 +450,13 @@ These overrides are applied automatically by `scripts/rebuild_dataset.py`.
 python3 scripts/rebuild_dataset.py
 ```
 
-5. Build small, actionable PR batches from the Claude decisions:
+6. Build small, actionable PR batches from the Claude decisions:
 
 ```bash
 python3 scripts/build_pr_review_batches.py
 ```
 
-6. Apply confirmed review batches back to the source CSVs:
+7. Apply confirmed review batches back to the source CSVs:
 
 ```bash
 python3 scripts/apply_review_batches.py --execute
@@ -462,7 +464,7 @@ python3 scripts/apply_review_batches.py --execute
 
 By default the script reads `data/pr_review_batches/manifest.json`, updates the source CSVs, and rebuilds derived artifacts unless `--skip-rebuild` is passed.
 
-7. Keep PRs batched by finding type or source update, not one PR per ticker.
+8. Keep PRs batched by finding type or source update, not one PR per ticker.
 
 Prompt and response schema:
 
