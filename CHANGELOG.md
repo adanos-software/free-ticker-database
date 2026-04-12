@@ -6,6 +6,11 @@
 
 - Added a field-level completion backlog report (`data/reports/completion_backlog.*`) that splits missing primary ISINs, stock sectors, and ETF categories by exchange and review policy.
 - Added a reproducible enrichment pipeline orchestrator for masterfile refreshes, backlog builds, reviewed local backfills, rebuilds, coverage reports, and audit queue refreshes.
+- Added a deterministic ETF-name category backfill that writes reviewed legacy `sector` category fills until the planned `etf_category` split lands.
+
+### Changed
+
+- Rebuilt coverage to 45,375 ISIN-covered rows and 41,738 sector/category-covered rows, reducing the ETF category backlog from 8,298 to 4,505 rows.
 
 ## [3.6.0] - 2026-04-12
 

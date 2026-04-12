@@ -87,6 +87,10 @@ def build_pipeline_commands(options: PipelineOptions) -> list[StageCommand]:
             [py, "scripts/backfill_financedatabase_metadata.py"],
             SECTOR_PRIORITY_EXCHANGES,
         )
+        etf_category_command = command_with_exchanges(
+            [py, "scripts/backfill_etf_categories_from_names.py"],
+            SECTOR_PRIORITY_EXCHANGES,
+        )
         commands.extend(
             [
                 StageCommand(
@@ -100,6 +104,12 @@ def build_pipeline_commands(options: PipelineOptions) -> list[StageCommand]:
                     command=maybe_apply(finance_command, apply=options.apply_reviewed_backfills),
                     mutates_data=options.apply_reviewed_backfills,
                     notes="Secondary FinanceDatabase sectors; reviewed name/exchange gates before apply.",
+                ),
+                StageCommand(
+                    name="etf_name_category_backfill",
+                    command=maybe_apply(etf_category_command, apply=options.apply_reviewed_backfills),
+                    mutates_data=options.apply_reviewed_backfills,
+                    notes="Deterministic ETF-name category classifier for legacy sector output until etf_category is split out.",
                 ),
             ]
         )

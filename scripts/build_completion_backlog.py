@@ -196,7 +196,7 @@ def policy_for(field: str, exchange: str, asset_type: str) -> tuple[str, str, bo
     if field == FIELD_MISSING_ETF_CATEGORY:
         return (
             "Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available.",
-            "scripts/backfill_sector_from_isin_peers.py; <planned scripts/backfill_etf_categories_from_names.py>",
+            "scripts/backfill_sector_from_isin_peers.py; scripts/backfill_etf_categories_from_names.py",
             True,
             "ETF categories must be stored as etf_category internally and surfaced through legacy sector only after deterministic taxonomy mapping.",
             f"{asset_type} rows should target etf_category, not stock_sector.",
