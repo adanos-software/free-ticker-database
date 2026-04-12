@@ -324,7 +324,6 @@ ISIN_PREFIX_COUNTRIES = {
     "AU": "Australia",
     "BE": "Belgium",
     "BM": "Bermuda",
-    "US": "United States",
     "BR": "Brazil",
     "CA": "Canada",
     "CH": "Switzerland",
@@ -410,35 +409,51 @@ VALID_STOCK_SECTORS: set[str] = {
     "Utilities",
 }
 
-# ETF-specific categories that are valid as-is
-VALID_ETF_SECTORS: set[str] = VALID_STOCK_SECTORS | {
-    "Blend",
-    "Bonds",
-    "Cash",
-    "Commodities Broad Basket",
-    "Corporate Bonds",
-    "Currencies",
-    "Derivatives",
-    "Developed Markets",
-    "Emerging Markets",
-    "Equities",
-    "Factors",
+# Canonical ETF categories. More specific provider names are folded into these
+# buckets in ETF_CATEGORY_MAP to keep the public schema stable.
+VALID_ETF_SECTORS: set[str] = {
     "Fixed Income",
-    "Frontier Markets",
-    "Government Bonds",
-    "Growth",
-    "High Yield Bonds",
-    "Inflation-Protected Securities",
-    "Investment Grade Bonds",
-    "Large Cap",
-    "Mid Cap",
-    "Micro Cap",
-    "Money Market Instruments",
-    "Municipal Bonds",
-    "Small Cap",
-    "Trading",
-    "Treasury Bonds",
-    "Value",
+    "Equity",
+    "Commodity",
+    "Real Estate",
+    "Multi-Asset",
+    "Currency",
+    "Volatility",
+    "Leveraged/Inverse",
+    "Alternative",
+    "Money Market",
+    "Thematic",
+    "Other",
+}
+
+ETF_CATEGORY_MAP: dict[str, str] = {
+    "Blend": "Equity",
+    "Bonds": "Fixed Income",
+    "Cash": "Money Market",
+    "Commodities Broad Basket": "Commodity",
+    "Corporate Bonds": "Fixed Income",
+    "Currencies": "Currency",
+    "Derivatives": "Alternative",
+    "Developed Markets": "Equity",
+    "Emerging Markets": "Equity",
+    "Equities": "Equity",
+    "Factors": "Equity",
+    "Frontier Markets": "Equity",
+    "Government Bonds": "Fixed Income",
+    "Growth": "Equity",
+    "High Yield Bonds": "Fixed Income",
+    "Inflation-Protected Securities": "Fixed Income",
+    "Investment Grade Bonds": "Fixed Income",
+    "Large Cap": "Equity",
+    "Mid Cap": "Equity",
+    "Micro Cap": "Equity",
+    "Money Market Instruments": "Money Market",
+    "Municipal Bonds": "Fixed Income",
+    "Small Cap": "Equity",
+    "Trading": "Other",
+    "Treasury Bonds": "Fixed Income",
+    "Value": "Equity",
+    **{sector: "Equity" for sector in VALID_STOCK_SECTORS - {"Real Estate"}},
 }
 
 
@@ -478,6 +493,7 @@ def normalize_sector(sector: str, asset_type: str) -> str:
         return ""
     mapped = SECTOR_STOCK_MAP.get(sector, sector)
     if asset_type == "ETF":
+        mapped = ETF_CATEGORY_MAP.get(mapped, mapped)
         return mapped if mapped in VALID_ETF_SECTORS else ""
     if asset_type == "Stock":
         return mapped if mapped in VALID_STOCK_SECTORS else ""
@@ -534,22 +550,27 @@ def is_valid_isin(isin: str) -> bool:
 # table and therefore need an explicit ISO 3166-1 alpha-2 mapping.
 COUNTRY_TO_ISO_EXTRA: dict[str, str] = {
     "Argentina": "AR",
+    "Bahrain": "BH",
     "Botswana": "BW",
     "Croatia": "HR",
     "Ghana": "GH",
     "Iceland": "IS",
+    "Kazakhstan": "KZ",
     "Kenya": "KE",
     "Malawi": "MW",
     "Mauritius": "MU",
     "Morocco": "MA",
     "Nigeria": "NG",
+    "Oman": "OM",
     "Pakistan": "PK",
     "Panama": "PA",
     "Rwanda": "RW",
+    "Slovenia": "SI",
     "Sri Lanka": "LK",
     "Tanzania": "TZ",
     "Uganda": "UG",
     "United States": "US",
+    "Ukraine": "UA",
     "Vietnam": "VN",
     "Zambia": "ZM",
     "Zimbabwe": "ZW",
@@ -1739,8 +1760,6 @@ def cleaned_rows():
         isin, aliases = clean_aliases(row, aliases, wkns, alias_context)
         country = row["country"]
         inferred_country = country_from_isin(isin) if isin else None
-        if inferred_country and inferred_country != country:
-            country = inferred_country
         if inferred_country:
             country = inferred_country
 

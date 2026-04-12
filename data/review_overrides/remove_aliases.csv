@@ -522,3 +522,5 @@ FG,NYSE,fasadgruppen group,Residual metadata cleanup: alias belongs to the unrel
 SEA,NYSE ARCA,sea forest,Residual metadata cleanup: alias belongs to an unrelated issuer and contaminates the cargo ETF listing.,0.9
 SEA,NYSE ARCA,seascape energy asia,Residual metadata cleanup: alias belongs to an unrelated issuer and contaminates the cargo ETF listing.,0.95
 ELCM,PSX,elite capital modaraba 1st,Official PSX references resolve ELCM to Elahi Cotton Mills Limited; retaining the First Elite Capital Modaraba alias would cross-contaminate two distinct PSX issuers.,0.99
+AAL,NASDAQ,anglo american,"Ticker-collision cleanup: Anglo American is the issuer behind the polluted GB ISIN, not American Airlines Group.",0.9
+EPM,NYSE MKT,eclipse metals,"Ticker-collision cleanup: Eclipse Metals is the issuer behind the polluted AU ISIN, not Evolution Petroleum Corporation.",0.9

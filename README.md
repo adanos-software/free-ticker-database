@@ -9,21 +9,21 @@ Free stock and ETF ticker reference data with primary tickers, listing-keyed ven
 
 | Metric | Value |
 |---|---:|
-| Primary tickers | 53,826 |
-| Full listing rows | 61,956 |
-| Stocks | 38,735 |
-| ETFs | 15,091 |
+| Primary tickers | 53,824 |
+| Full listing rows | 61,955 |
+| Stocks | 38,734 |
+| ETFs | 15,090 |
 | Exchanges | 67 |
-| Countries | 70 |
-| Aliases | 91,697 |
-| ISIN coverage | 45,375 (84.3%) |
-| Sector/category coverage | 41,738 (77.5%) |
-| Stock sector coverage | 31,152 |
+| Countries | 75 |
+| Aliases | 91,691 |
+| ISIN coverage | 45,374 (84.3%) |
+| Sector/category coverage | 41,736 (77.5%) |
+| Stock sector coverage | 31,150 |
 | ETF category coverage | 10,586 |
-| Core listing-scope rows | 45,413 |
-| Core primary rows with ISIN | 38,324 |
-| Core primary rows missing ISIN | 7,089 |
-| Extended listing-scope rows | 16,543 |
+| Core listing-scope rows | 45,410 |
+| Core primary rows with ISIN | 38,322 |
+| Core primary rows missing ISIN | 7,088 |
+| Extended listing-scope rows | 16,545 |
 
 ## Core Files
 
@@ -82,8 +82,8 @@ JSON metadata:
 {
   "_meta": {
     "version": "3.7.0",
-    "built_at": "2026-04-12T14:24:33Z",
-    "total_tickers": 53826
+    "built_at": "2026-04-12T16:02:51Z",
+    "total_tickers": 53824
   },
   "tickers": []
 }
@@ -107,9 +107,9 @@ Top exchanges by primary ticker count:
 
 | Exchange | Tickers |
 |---|---:|
-| OTC | 8,413 |
+| OTC | 8,414 |
 | NASDAQ | 4,538 |
-| LSE | 3,892 |
+| LSE | 3,890 |
 | TSE | 3,197 |
 | SZSE | 3,083 |
 | SSE | 2,789 |
@@ -119,7 +119,7 @@ Top exchanges by primary ticker count:
 | KRX | 1,788 |
 | TSX | 1,658 |
 | KOSDAQ | 1,583 |
-| B3 | 1,506 |
+| B3 | 1,505 |
 | ASX | 1,291 |
 | TWSE | 1,242 |
 

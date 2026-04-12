@@ -172,7 +172,6 @@ def post_json(
 
 def build_base_identifier_rows() -> list[dict[str, str]]:
     listings = load_csv(LISTINGS_CSV)
-    identifiers_by_ticker = {row["ticker"]: row for row in load_csv(IDENTIFIERS_CSV)}
     existing_extended: dict[str, dict[str, str]] = {}
     if IDENTIFIERS_EXTENDED_CSV.exists():
         existing_extended = {
@@ -184,15 +183,14 @@ def build_base_identifier_rows() -> list[dict[str, str]]:
         listing_key = listing_identity(listing_row)
         ticker = listing_row["ticker"]
         exchange = listing_row["exchange"]
-        identifier_row = identifiers_by_ticker.get(ticker, {"isin": "", "wkn": ""})
         existing_row = existing_extended.get(listing_key, {})
         rows.append(
             {
                 "listing_key": listing_key,
                 "ticker": ticker,
                 "exchange": exchange,
-                "isin": listing_row.get("isin", "") or identifier_row.get("isin", ""),
-                "wkn": identifier_row.get("wkn", ""),
+                "isin": listing_row.get("isin", "") or existing_row.get("isin", ""),
+                "wkn": existing_row.get("wkn", ""),
                 "figi": existing_row.get("figi", ""),
                 "cik": existing_row.get("cik", ""),
                 "lei": existing_row.get("lei", ""),

@@ -11,14 +11,14 @@ from scripts.backfill_sector_from_isin_peers import (
 def test_index_peer_sectors_uses_isin_and_asset_type():
     rows = [
         {"ticker": "ABC", "exchange": "XETRA", "asset_type": "Stock", "isin": "DE000ABC1234", "sector": "Industrials"},
-        {"ticker": "ABC", "exchange": "LSE", "asset_type": "ETF", "isin": "DE000ABC1234", "sector": "Developed Markets"},
+        {"ticker": "ABC", "exchange": "LSE", "asset_type": "ETF", "isin": "DE000ABC1234", "sector": "Equity"},
         {"ticker": "EMPTY", "exchange": "LSE", "asset_type": "Stock", "isin": "DE000ABC1234", "sector": ""},
     ]
 
     indexed = index_peer_sectors(rows)
 
     assert [row["sector"] for row in indexed[("DE000ABC1234", "Stock")]] == ["Industrials"]
-    assert [row["sector"] for row in indexed[("DE000ABC1234", "ETF")]] == ["Developed Markets"]
+    assert [row["sector"] for row in indexed[("DE000ABC1234", "ETF")]] == ["Equity"]
 
 
 def test_evaluate_sector_peer_row_accepts_single_normalized_sector():

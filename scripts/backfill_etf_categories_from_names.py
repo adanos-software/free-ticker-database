@@ -56,20 +56,24 @@ def rule(category: str, name: str, *patterns: str) -> CategoryRule:
 
 
 ETF_CATEGORY_RULES: tuple[CategoryRule, ...] = (
-    rule("Money Market Instruments", "money_market", r"\bmoney market\b", r"\bcash\b", "\uba38\ub2c8\ub9c8\ucf13"),
+    rule("Money Market", "money_market", r"\bmoney market\b", r"\bcash\b", "\uba38\ub2c8\ub9c8\ucf13"),
     rule(
-        "Trading",
-        "trading",
+        "Leveraged/Inverse",
+        "leveraged_inverse",
         r"\bleveraged\b",
         r"\binverse\b",
         r"\bbull\b",
         r"\bbear\b",
         r"\b[23]x\b",
         r"\bshort (?!term\b)",
-        r"\bcovered call\b",
-        r"\bbuffer\b",
         "\ub808\ubc84\ub9ac\uc9c0",
         "\uc778\ubc84\uc2a4",
+    ),
+    rule(
+        "Alternative",
+        "alternative",
+        r"\bcovered call\b",
+        r"\bbuffer\b",
         "\ucee4\ubc84\ub4dc\ucf5c",
     ),
     rule("Corporate Bonds", "corporate_bonds", r"\bcorporate bonds?\b", "\ud68c\uc0ac\ucc44"),

@@ -98,10 +98,10 @@
     {
       "asset_type": "All",
       "confidence_policy": "Official B3 rows can be accepted after exact code and checksum gates; FinanceDatabase ISINs require peer-conflict review.",
-      "etf_missing_count": 45,
+      "etf_missing_count": 44,
       "exchange": "B3",
       "field": "missing_isin_primary",
-      "missing_count": 285,
+      "missing_count": 284,
       "notes": "B3 has strong official coverage but residual identifier and category gaps.",
       "official_source_count": 3,
       "priority_bucket": "top_priority",
@@ -899,7 +899,7 @@
       "etf_missing_count": 0,
       "exchange": "XETRA",
       "field": "missing_sector_stock",
-      "missing_count": 126,
+      "missing_count": 127,
       "notes": "Good candidate for deterministic local review batches.",
       "official_source_count": 3,
       "priority_bucket": "top_priority",
@@ -908,7 +908,7 @@
       "reference_scopes": "listed_companies_subset",
       "review_needed": true,
       "script": "scripts/backfill_financedatabase_metadata.py; scripts/backfill_sector_from_isin_peers.py",
-      "stock_missing_count": 126,
+      "stock_missing_count": 127,
       "target_field": "stock_sector",
       "venue_status": "official_partial"
     },
@@ -2074,10 +2074,10 @@
     {
       "asset_type": "ETF",
       "confidence_policy": "ETF categories must be stored as etf_category internally and surfaced through legacy sector only after deterministic taxonomy mapping.",
-      "etf_missing_count": 603,
+      "etf_missing_count": 602,
       "exchange": "B3",
       "field": "missing_etf_category",
-      "missing_count": 603,
+      "missing_count": 602,
       "notes": "ETF rows should target etf_category, not stock_sector.",
       "official_source_count": 3,
       "priority_bucket": "top_priority",
@@ -2801,11 +2801,11 @@
       "missing_sector_stock": 61
     },
     "field_totals": {
-      "missing_etf_category": 4505,
-      "missing_isin_primary": 7089,
-      "missing_sector_stock": 7583
+      "missing_etf_category": 4504,
+      "missing_isin_primary": 7088,
+      "missing_sector_stock": 7584
     },
-    "generated_at": "2026-04-12T14:24:53Z",
+    "generated_at": "2026-04-12T16:03:02Z",
     "model_notes": {
       "listing_key_first": "Use listing_key as the internal identity for future full-universe work; global ticker uniqueness still blocks official symbol collisions.",
       "sector_split": "Use stock_sector for stock rows and etf_category for ETF rows; keep sector as legacy derived output.",

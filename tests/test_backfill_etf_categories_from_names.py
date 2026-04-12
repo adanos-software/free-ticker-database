@@ -24,32 +24,32 @@ def test_load_ticker_rows_reads_csv(tmp_path):
 
 
 def test_classify_etf_category_uses_specific_order_before_equity_fallback():
-    assert classify_etf_category("Example US Corporate Bond ETF") == ("Corporate Bonds", "corporate_bonds")
-    assert classify_etf_category("Example S&P 500 Index Fund") == ("Large Cap", "large_cap")
-    assert classify_etf_category("Example Dow Jones Industrial Average ETF") == ("Large Cap", "large_cap")
-    assert classify_etf_category("Example NY Dow Industrial Average ETF") == ("Large Cap", "large_cap")
-    assert classify_etf_category("Example Gold Futures ETF") == ("Commodities Broad Basket", "commodities")
-    assert classify_etf_category("Example Equity Index Fund") == ("Equities", "equities")
-    assert classify_etf_category("Example Nikkei 225 Currency-hedged ETF") == ("Large Cap", "large_cap")
-    assert classify_etf_category("Example Currency Basket ETF") == ("Currencies", "currencies")
+    assert classify_etf_category("Example US Corporate Bond ETF") == ("Fixed Income", "corporate_bonds")
+    assert classify_etf_category("Example S&P 500 Index Fund") == ("Equity", "large_cap")
+    assert classify_etf_category("Example Dow Jones Industrial Average ETF") == ("Equity", "large_cap")
+    assert classify_etf_category("Example NY Dow Industrial Average ETF") == ("Equity", "large_cap")
+    assert classify_etf_category("Example Gold Futures ETF") == ("Commodity", "commodities")
+    assert classify_etf_category("Example Equity Index Fund") == ("Equity", "equities")
+    assert classify_etf_category("Example Nikkei 225 Currency-hedged ETF") == ("Equity", "large_cap")
+    assert classify_etf_category("Example Currency Basket ETF") == ("Currency", "currencies")
 
 
 def test_classify_etf_category_handles_common_non_english_markers():
     assert classify_etf_category("KODEX 27-12 \ud68c\uc0ac\ucc44(AA-\uc774\uc0c1)\uc561\ud2f0\ube0c") == (
-        "Corporate Bonds",
+        "Fixed Income",
         "corporate_bonds",
     )
     assert classify_etf_category("TIGER \ubbf8\uad6d\ucd08\ub2e8\uae30(3\uac1c\uc6d4\uc774\ud558)\uad6d\ucc44") == (
-        "Treasury Bonds",
+        "Fixed Income",
         "treasury_bonds",
     )
     assert classify_etf_category("KODEX \ubbf8\uad6dS&P500\ub370\uc77c\ub9ac\ucee4\ubc84\ub4dc\ucf5cOTM") == (
-        "Trading",
-        "trading",
+        "Alternative",
+        "alternative",
     )
     assert classify_etf_category("TIGER \uc5d4\ube44\ub514\uc544\ubbf8\uad6d\ucc44\ucee4\ubc84\ub4dc\ucf5c\ubc38\ub7f0\uc2a4") == (
-        "Trading",
-        "trading",
+        "Alternative",
+        "alternative",
     )
 
 
@@ -79,7 +79,7 @@ def test_verify_etf_categories_filters_exchange_and_existing_category():
     )
 
     assert [result["ticker"] for result in results] == ["A"]
-    assert results[0]["category_update"] == "Corporate Bonds"
+    assert results[0]["category_update"] == "Fixed Income"
 
 
 def test_verify_etf_categories_refreshes_existing_classifier_updates():
@@ -103,7 +103,7 @@ def test_build_metadata_updates_emits_reviewed_etf_category_update():
                 "decision": "accept",
                 "ticker": "BND",
                 "exchange": "NYSE ARCA",
-                "category_update": "Corporate Bonds",
+                "category_update": "Fixed Income",
                 "matched_rule": "corporate_bonds",
             },
             {"decision": "no_rule_match", "ticker": "BAD", "exchange": "NYSE ARCA"},
@@ -116,9 +116,9 @@ def test_build_metadata_updates_emits_reviewed_etf_category_update():
             "exchange": "NYSE ARCA",
             "field": "etf_category",
             "decision": "update",
-            "proposed_value": "Corporate Bonds",
+            "proposed_value": "Fixed Income",
             "confidence": "0.68",
-            "reason": "Deterministic ETF-name classifier mapped the product name to 'Corporate Bonds' via rule 'corporate_bonds'. This is an etf_category fill mirrored through the legacy sector output, not a stock-sector assertion.",
+            "reason": "Deterministic ETF-name classifier mapped the product name to 'Fixed Income' via rule 'corporate_bonds'. This is an etf_category fill mirrored through the legacy sector output, not a stock-sector assertion.",
         }
     ]
 
@@ -136,9 +136,9 @@ def test_load_existing_classifier_update_keys_reads_only_classifier_metadata_row
                     "exchange": "XETRA",
                     "field": "sector",
                     "decision": "update",
-                    "proposed_value": "Large Cap",
+                    "proposed_value": "Equity",
                     "confidence": "0.68",
-                    "reason": "Deterministic ETF-name classifier mapped the product name to 'Large Cap' via rule 'large_cap'. This is an etf_category fill mirrored through the legacy sector output, not a stock-sector assertion.",
+                    "reason": "Deterministic ETF-name classifier mapped the product name to 'Equity' via rule 'large_cap'. This is an etf_category fill mirrored through the legacy sector output, not a stock-sector assertion.",
                 },
                 {
                     "ticker": "OTHER",
@@ -168,9 +168,9 @@ def test_prune_stale_classifier_updates_removes_legacy_classifier_rows_and_keeps
                     "exchange": "XETRA",
                     "field": "sector",
                     "decision": "update",
-                    "proposed_value": "Large Cap",
+                    "proposed_value": "Equity",
                     "confidence": "0.68",
-                    "reason": "Deterministic ETF-name classifier mapped the product name to 'Large Cap' via rule 'large_cap'. This is an etf_category fill mirrored through the legacy sector output, not a stock-sector assertion.",
+                    "reason": "Deterministic ETF-name classifier mapped the product name to 'Equity' via rule 'large_cap'. This is an etf_category fill mirrored through the legacy sector output, not a stock-sector assertion.",
                 },
                 {
                     "ticker": "DROP",
@@ -201,7 +201,7 @@ def test_prune_stale_classifier_updates_removes_legacy_classifier_rows_and_keeps
                 "exchange": "XETRA",
                 "field": "etf_category",
                 "decision": "update",
-                "proposed_value": "Large Cap",
+                "proposed_value": "Equity",
                 "confidence": "0.68",
                 "reason": "new reason",
             }
