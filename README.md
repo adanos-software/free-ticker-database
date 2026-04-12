@@ -136,8 +136,8 @@ OTC::VROYF,VROYF,OTC,Stock,CA92859L2012,CA92859L2012,extended,otc_listing,TSXV::
 ```json
 {
   "_meta": {
-    "version": "3.5.0",
-    "built_at": "2026-04-12T12:28:42Z",
+    "version": "3.6.0",
+    "built_at": "2026-04-12T12:41:02Z",
     "total_tickers": 53826
   },
   "tickers": [
@@ -156,7 +156,7 @@ OTC::VROYF,VROYF,OTC,Stock,CA92859L2012,CA92859L2012,extended,otc_listing,TSXV::
 }
 ```
 
-JSON outputs use an envelope with a `_meta` block and a `tickers` array as of version `3.5.0`.
+JSON outputs use an envelope with a `_meta` block and a `tickers` array as of version `3.6.0`.
 
 ### tickers.db (SQLite)
 
