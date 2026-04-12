@@ -2126,7 +2126,6 @@ def test_readme_stats_and_claims_are_current():
     tickers_csv = load_csv("tickers.csv")
     listings_csv = load_csv("listings.csv")
     aliases_csv = load_csv("aliases.csv")
-    cross_listings_csv = load_csv("cross_listings.csv")
     instrument_scopes_csv = load_csv("instrument_scopes.csv")
     exchange_counts = Counter(row["exchange"] for row in tickers_csv)
     instrument_scope_counts = Counter(row["instrument_scope"] for row in instrument_scopes_csv)
@@ -2139,13 +2138,14 @@ def test_readme_stats_and_claims_are_current():
     isin_count = sum(bool(row["isin"]) for row in tickers_csv)
     sector_count = sum(bool(row["sector"]) for row in tickers_csv)
 
-    assert f"| **Total tickers** | {total:,} |" in readme
+    assert f"| Primary tickers | {total:,} |" in readme
+    assert f"| Full listing rows | {len(listings_csv):,} |" in readme
     assert f"| Stocks | {stocks:,} |" in readme
     assert f"| ETFs | {etfs:,} |" in readme
     assert f"| Countries | {countries:,} |" in readme
-    assert f"| Total aliases | {len(aliases_csv):,} |" in readme
+    assert f"| Aliases | {len(aliases_csv):,} |" in readme
     assert f"| ISIN coverage | {isin_count:,} ({isin_count / total * 100:.1f}%) |" in readme
-    assert f"| Sector coverage | {sector_count:,} ({sector_count / total * 100:.1f}%) |" in readme
+    assert f"| Sector/category coverage | {sector_count:,} ({sector_count / total * 100:.1f}%) |" in readme
     assert f"| Core listing-scope rows | {instrument_scope_counts['core']:,} |" in readme
     assert f"| Core primary rows with ISIN | {instrument_scope_reason_counts['primary_listing']:,} |" in readme
     assert (
@@ -2153,15 +2153,11 @@ def test_readme_stats_and_claims_are_current():
         in readme
     )
     assert f"| Extended listing-scope rows | {instrument_scope_counts['extended']:,} |" in readme
-    assert f"| NASDAQ | {exchange_counts['NASDAQ']:,} | NASDAQ |" in readme
-    assert f"| XETRA | {exchange_counts['XETRA']:,} | Deutsche Boerse |" in readme
-    assert f"| NYSE | {exchange_counts['NYSE']:,} | New York Stock Exchange |" in readme
-    assert f"| ASX | {exchange_counts['ASX']:,} | Australian Securities Exchange |" in readme
-    assert (
-        f"Tables: `tickers` ({total:,} rows), `listings` ({len(listings_csv):,} rows), "
-        f"`aliases` ({len(aliases_csv):,} rows), `cross_listings` ({len(cross_listings_csv):,} rows), "
-        f"and `instrument_scopes` ({len(instrument_scopes_csv):,} rows)"
-    ) in readme
+    assert f"| NASDAQ | {exchange_counts['NASDAQ']:,} |" in readme
+    assert f"| XETRA | {exchange_counts['XETRA']:,} |" in readme
+    assert f"| NYSE | {exchange_counts['NYSE']:,} |" in readme
+    assert f"| ASX | {exchange_counts['ASX']:,} |" in readme
+    assert "SQLite tables: `tickers`, `listings`, `aliases`, `cross_listings`, and `instrument_scopes`." in readme
 
 
 def test_listing_index_and_identifiers_extended_track_current_listings():
@@ -2208,8 +2204,8 @@ def test_open_source_project_files_exist_and_are_linked():
     assert "masterfile_collision_report.json" in readme
 
     assert "[![CI]" in readme
-    assert "## Project Health" in readme
-    assert "Release notes: [GitHub Releases]" in readme
+    assert "## Project" in readme
+    assert "Releases: [GitHub Releases]" in readme
     assert "Changelog: [CHANGELOG.md]" in readme
 
 
