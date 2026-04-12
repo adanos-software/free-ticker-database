@@ -2171,10 +2171,7 @@ def test_listing_index_and_identifiers_extended_track_current_listings():
 
     listing_keys = {row["listing_key"] for row in listings_csv}
     listing_index_keys = {row["listing_key"] for row in listing_index_csv}
-    identifier_keys = {
-        f'{row["exchange"]}::{row["ticker"]}'
-        for row in identifiers_extended_csv
-    }
+    identifier_keys = {row["listing_key"] for row in identifiers_extended_csv}
 
     assert listing_index_keys == listing_keys
     assert identifier_keys == listing_keys

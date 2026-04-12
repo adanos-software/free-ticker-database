@@ -101,11 +101,11 @@ Securities traded on multiple exchanges share the same ISIN. The `is_primary` fl
 ### identifiers_extended.csv (FIGI / CIK / LEI)
 
 ```
-ticker,exchange,isin,wkn,figi,cik,lei,figi_source,cik_source,lei_source
-AAPL,NASDAQ,US0378331005,865985,,0000320193,,,SEC company_tickers_exchange.json,
+listing_key,ticker,exchange,isin,wkn,figi,cik,lei,figi_source,cik_source,lei_source
+NASDAQ::AAPL,AAPL,NASDAQ,US0378331005,865985,,0000320193,,,SEC company_tickers_exchange.json,
 ```
 
-This is an auxiliary enrichment file layered on top of the core dataset. `CIK` comes from the SEC company-ticker reference when available, `FIGI` from OpenFIGI, and `LEI` from GLEIF.
+This is an auxiliary enrichment file layered on top of the listing-level dataset. `listing_key` makes the row identity explicit; `CIK` comes from the SEC company-ticker reference when available, `FIGI` from OpenFIGI, and `LEI` from GLEIF.
 
 ### listing_index.csv (listing-keyed bridge)
 

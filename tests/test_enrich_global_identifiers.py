@@ -202,8 +202,8 @@ def test_build_base_identifier_rows_preserves_existing_extended_values(tmp_path,
     identifiers.write_text("ticker,isin,wkn\nAAPL,US0378331005,\n", encoding="utf-8")
     identifiers_extended = tmp_path / "identifiers_extended.csv"
     identifiers_extended.write_text(
-        "ticker,exchange,isin,wkn,figi,cik,lei,figi_source,cik_source,lei_source\n"
-        "AAPL,NASDAQ,US0378331005,,BBG000B9XRY4,0000320193,HWUPKR0MPOU8FGXBT394,OpenFIGI,SEC,GLEIF\n",
+        "listing_key,ticker,exchange,isin,wkn,figi,cik,lei,figi_source,cik_source,lei_source\n"
+        "NASDAQ::AAPL,AAPL,NASDAQ,US0378331005,,BBG000B9XRY4,0000320193,HWUPKR0MPOU8FGXBT394,OpenFIGI,SEC,GLEIF\n",
         encoding="utf-8",
     )
     monkeypatch.setattr("scripts.enrich_global_identifiers.LISTINGS_CSV", listings)
@@ -214,6 +214,7 @@ def test_build_base_identifier_rows_preserves_existing_extended_values(tmp_path,
 
     assert rows == [
         {
+            "listing_key": "NASDAQ::AAPL",
             "ticker": "AAPL",
             "exchange": "NASDAQ",
             "isin": "US0378331005",

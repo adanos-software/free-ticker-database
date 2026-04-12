@@ -67,6 +67,10 @@ def load_csv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
+def listing_identity(row: dict[str, str]) -> str:
+    return row.get("listing_key") or row_listing_key(row)
+
+
 def write_csv(path: Path, fieldnames: list[str], rows: list[dict[str, str]]) -> None:
     with path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fieldnames)
@@ -167,20 +171,24 @@ def post_json(
 
 
 def build_base_identifier_rows() -> list[dict[str, str]]:
-    listings = {(row["ticker"], row["exchange"]): row for row in load_csv(LISTINGS_CSV)}
+    listings = load_csv(LISTINGS_CSV)
     identifiers_by_ticker = {row["ticker"]: row for row in load_csv(IDENTIFIERS_CSV)}
-    existing_extended: dict[tuple[str, str], dict[str, str]] = {}
+    existing_extended: dict[str, dict[str, str]] = {}
     if IDENTIFIERS_EXTENDED_CSV.exists():
         existing_extended = {
-            (row["ticker"], row["exchange"]): row
+            listing_identity(row): row
             for row in load_csv(IDENTIFIERS_EXTENDED_CSV)
         }
     rows: list[dict[str, str]] = []
-    for (ticker, exchange), listing_row in sorted(listings.items()):
+    for listing_row in sorted(listings, key=lambda row: (row["ticker"], row["exchange"])):
+        listing_key = listing_identity(listing_row)
+        ticker = listing_row["ticker"]
+        exchange = listing_row["exchange"]
         identifier_row = identifiers_by_ticker.get(ticker, {"isin": "", "wkn": ""})
-        existing_row = existing_extended.get((ticker, exchange), {})
+        existing_row = existing_extended.get(listing_key, {})
         rows.append(
             {
+                "listing_key": listing_key,
                 "ticker": ticker,
                 "exchange": exchange,
                 "isin": listing_row.get("isin", "") or identifier_row.get("isin", ""),
@@ -460,6 +468,7 @@ def build_summary(rows: list[dict[str, str]]) -> dict[str, Any]:
 
 def persist_rows(rows: list[dict[str, str]]) -> dict[str, Any]:
     fieldnames = [
+        "listing_key",
         "ticker",
         "exchange",
         "isin",
@@ -495,7 +504,7 @@ def persist_rows(rows: list[dict[str, str]]) -> dict[str, Any]:
         listing_index_fieldnames,
         [
             {
-                "listing_key": row_listing_key(row),
+                "listing_key": listing_identity(row),
                 "ticker": row["ticker"],
                 "exchange": row["exchange"],
                 "name": row.get("name", ""),
