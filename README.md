@@ -48,6 +48,7 @@ Additional reference artifacts:
 | [`data/masterfiles/supplemental_listings.csv`](data/masterfiles/supplemental_listings.csv) | 2.2 MB | Safe official listings added to the core export |
 | [`data/history/latest_snapshot.csv`](data/history/latest_snapshot.csv) | 7.2 MB | Current listing-status baseline |
 | [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | 334 KB | Machine-readable coverage metrics |
+| [`data/reports/completion_backlog.md`](data/reports/completion_backlog.md) | 8 KB | Prioritized ISIN/sector/category completion backlog |
 | [`data/reports/masterfile_collision_report.json`](data/reports/masterfile_collision_report.json) | 57 KB | Official-symbol gaps blocked by cross-exchange collisions |
 
 ### tickers.csv (flat, Excel-friendly, one row per security)
@@ -360,6 +361,22 @@ It also separates official masterfile rows into:
 - `match`: listing already present in the core export
 - `collision`: official symbol blocked by the current global-unique `ticker` model because the symbol already exists on another exchange
 - `missing`: official symbol not present and not blocked by a known collision
+
+Build the prioritized completion backlog:
+
+```bash
+python3 scripts/build_completion_backlog.py
+```
+
+This writes `data/reports/completion_backlog.csv`, `data/reports/completion_backlog.json`, and `data/reports/completion_backlog.md`. The backlog uses `instrument_scopes.csv` for `primary_listing_missing_isin`, splits missing stock sectors from missing ETF categories, and assigns a recommended source plus review/confidence policy to each exchange-field block.
+
+Run the deterministic enrichment pipeline:
+
+```bash
+python3 scripts/run_enrichment_pipeline.py --dry-run
+```
+
+By default the pipeline plans `fetch_exchange_masterfiles`, completion backlog generation, local reviewed sector backfill reports, rebuilds, identifier/listing-history refreshes, coverage reports, audit queue refreshes, and a final backlog rebuild. Add `--include-secondary-network` to include EODHD/Yahoo candidate stages, and add `--apply-reviewed-backfills` only when you intentionally want accepted reviewed candidates merged into review overrides.
 
 ## Review Queue
 

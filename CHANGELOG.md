@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Added
+
+- Added a field-level completion backlog report (`data/reports/completion_backlog.*`) that splits missing primary ISINs, stock sectors, and ETF categories by exchange and review policy.
+- Added a reproducible enrichment pipeline orchestrator for masterfile refreshes, backlog builds, reviewed local backfills, rebuilds, coverage reports, and audit queue refreshes.
+
 ## [3.6.0] - 2026-04-12
 
 ### Added
