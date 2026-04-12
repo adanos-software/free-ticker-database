@@ -324,6 +324,7 @@ ISIN_PREFIX_COUNTRIES = {
     "AU": "Australia",
     "BE": "Belgium",
     "BM": "Bermuda",
+    "US": "United States",
     "BR": "Brazil",
     "CA": "Canada",
     "CH": "Switzerland",

@@ -14,7 +14,7 @@ Free stock and ETF ticker reference data with primary tickers, listing-keyed ven
 | Stocks | 38,735 |
 | ETFs | 15,091 |
 | Exchanges | 67 |
-| Countries | 69 |
+| Countries | 70 |
 | Aliases | 91,697 |
 | ISIN coverage | 45,375 (84.3%) |
 | Sector/category coverage | 41,738 (77.5%) |
