@@ -8,9 +8,9 @@ from pathlib import Path
 from typing import Any
 
 try:
-    from scripts.listing_keys import row_listing_key
+    from scripts.listing_keys import build_listing_key, row_listing_key
 except ModuleNotFoundError:  # pragma: no cover - script execution path
-    from listing_keys import row_listing_key
+    from listing_keys import build_listing_key, row_listing_key
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -52,6 +52,10 @@ def load_json(path: Path) -> Any:
     if not path.exists():
         return {}
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def listing_identity(row: dict[str, str]) -> str:
+    return row.get("listing_key") or row_listing_key(row)
 
 
 def stock_sector_value(row: dict[str, str]) -> str:
@@ -202,7 +206,7 @@ def build_exchange_report(
     etf_verification_exchange_rows: list[dict[str, Any]] | None = None,
 ) -> list[dict[str, Any]]:
     identifier_lookup = {
-        (row["ticker"], row["exchange"]): row for row in identifiers_extended
+        listing_identity(row): row for row in identifiers_extended
     }
     stock_verification_lookup = {
         row["exchange"]: row for row in (stock_verification_exchange_rows or [])
@@ -228,7 +232,7 @@ def build_exchange_report(
     rows: list[dict[str, Any]] = []
     for exchange in exchanges:
         exchange_rows = [row for row in tickers if row["exchange"] == exchange]
-        identifiers = [identifier_lookup.get((row["ticker"], row["exchange"]), {}) for row in exchange_rows]
+        identifiers = [identifier_lookup.get(listing_identity(row), {}) for row in exchange_rows]
         dataset_symbols = {row["ticker"] for row in exchange_rows}
         master_symbols = master_by_exchange.get(exchange, set())
         matched = dataset_symbols & master_symbols if master_symbols else set()
@@ -314,12 +318,12 @@ def build_country_report(
     identifiers_extended: list[dict[str, str]],
 ) -> list[dict[str, Any]]:
     identifier_lookup = {
-        (row["ticker"], row["exchange"]): row for row in identifiers_extended
+        listing_identity(row): row for row in identifiers_extended
     }
     rows: list[dict[str, Any]] = []
     for country in sorted({row["country"] for row in tickers if row["country"]}):
         country_rows = [row for row in tickers if row["country"] == country]
-        identifiers = [identifier_lookup.get((row["ticker"], row["exchange"]), {}) for row in country_rows]
+        identifiers = [identifier_lookup.get(listing_identity(row), {}) for row in country_rows]
         rows.append(
             {
                 "country": country,
@@ -683,9 +687,9 @@ def build_masterfile_collision_report(
     tickers: list[dict[str, str]],
     masterfiles: list[dict[str, str]],
 ) -> dict[str, Any]:
-    dataset_keys = {(row["ticker"], row["exchange"]) for row in tickers if row["ticker"] and row["exchange"]}
+    dataset_keys = {listing_identity(row) for row in tickers if row["ticker"] and row["exchange"]}
     dataset_exchanges_by_ticker: dict[str, set[str]] = defaultdict(set)
-    seen_masterfile_keys: set[tuple[str, str]] = set()
+    seen_masterfile_keys: set[str] = set()
     for row in tickers:
         if row["ticker"] and row["exchange"]:
             dataset_exchanges_by_ticker[row["ticker"]].add(row["exchange"])
@@ -696,7 +700,7 @@ def build_masterfile_collision_report(
             continue
         exchange = row["exchange"]
         ticker = row["ticker"]
-        key = (ticker, exchange)
+        key = build_listing_key(ticker, exchange)
         if key in seen_masterfile_keys:
             continue
         seen_masterfile_keys.add(key)
