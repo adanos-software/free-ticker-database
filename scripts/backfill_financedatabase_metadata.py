@@ -15,7 +15,7 @@ if str(ROOT) not in sys.path:
 
 from scripts.backfill_xtb_omi_isins import names_match
 from scripts.backfill_yahoo_generic_etf_names import merge_metadata_updates
-from scripts.rebuild_dataset import TICKERS_CSV, is_valid_isin, normalize_sector
+from scripts.rebuild_dataset import LISTINGS_CSV, TICKERS_CSV, is_valid_isin, normalize_sector
 
 
 DEFAULT_OUTPUT_DIR = ROOT / "data" / "financedatabase_verification"
@@ -144,6 +144,15 @@ def load_ticker_rows(tickers_csv: Path = TICKERS_CSV) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
+def index_existing_isin_rows(rows: list[dict[str, str]]) -> dict[str, list[dict[str, str]]]:
+    indexed: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for row in rows:
+        isin = row.get("isin", "").strip().upper()
+        if isin:
+            indexed[isin].append(row)
+    return indexed
+
+
 def load_financedatabase_rows() -> list[FinanceDatabaseRow]:
     try:
         import financedatabase as fd
@@ -222,6 +231,7 @@ def evaluate_financedatabase_row(
     *,
     include_sector: bool = True,
     include_isin: bool = True,
+    existing_isin_rows_by_isin: dict[str, list[dict[str, str]]] | None = None,
 ) -> dict[str, Any]:
     base = {
         "ticker": row["ticker"],
@@ -266,6 +276,15 @@ def evaluate_financedatabase_row(
             return {**base, "decision": "invalid_isin"}
         if not expected_isin_prefix_match(row["exchange"], candidate.isin):
             return {**base, "decision": "isin_country_mismatch"}
+        existing_isin_peers = (existing_isin_rows_by_isin or {}).get(candidate.isin, [])
+        if any(
+            not (
+                names_match(peer.get("name", ""), row["name"])
+                or names_match(peer.get("name", ""), candidate.name)
+            )
+            for peer in existing_isin_peers
+        ):
+            return {**base, "decision": "isin_peer_name_mismatch"}
         isin_update = candidate.isin
 
     if not sector_update and not isin_update:
@@ -285,6 +304,7 @@ def verify_financedatabase_metadata(
     *,
     include_sector: bool = True,
     include_isin: bool = True,
+    existing_isin_rows_by_isin: dict[str, list[dict[str, str]]] | None = None,
 ) -> list[dict[str, Any]]:
     indexed_rows = index_financedatabase_rows(financedatabase_rows)
     return [
@@ -293,6 +313,7 @@ def verify_financedatabase_metadata(
             find_financedatabase_candidates(row, indexed_rows),
             include_sector=include_sector,
             include_isin=include_isin,
+            existing_isin_rows_by_isin=existing_isin_rows_by_isin,
         )
         for row in rows
     ]
@@ -324,7 +345,7 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
                     "decision": "update",
                     "proposed_value": result["isin_update"],
                     "confidence": "0.74",
-                    "reason": "FinanceDatabase supplied a valid ISIN for a row without ISIN; accepted only after ticker, mapped exchange code, asset type, issuer/product-name, expected ISIN country prefix, and checksum gates matched.",
+                    "reason": "FinanceDatabase supplied a valid ISIN for a row without ISIN; accepted only after ticker, mapped exchange code, asset type, issuer/product-name, expected ISIN country prefix, existing-ISIN peer-name, and checksum gates matched.",
                 }
             )
     return updates
@@ -382,6 +403,7 @@ def main(argv: list[str] | None = None) -> None:
         load_financedatabase_rows(),
         include_sector=not args.disable_sector,
         include_isin=args.enable_isin,
+        existing_isin_rows_by_isin=index_existing_isin_rows(load_ticker_rows(LISTINGS_CSV)),
     )
     updates = build_metadata_updates(results)
 

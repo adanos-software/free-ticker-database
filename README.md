@@ -9,18 +9,18 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 53
 
 | Metric | Value |
 |---|---|
-| **Total tickers** | 53,858 |
-| Stocks | 38,767 |
+| **Total tickers** | 53,826 |
+| Stocks | 38,735 |
 | ETFs | 15,091 |
 | Exchanges | 67 |
 | Countries | 69 |
-| ISIN coverage | 45,374 (84.2%) |
-| Sector coverage | 37,935 (70.4%) |
+| ISIN coverage | 45,375 (84.3%) |
+| Sector coverage | 37,945 (70.5%) |
 | Core listing-scope rows | 45,413 |
-| Core primary rows with ISIN | 38,291 |
-| Core primary rows missing ISIN | 7,122 |
+| Core primary rows with ISIN | 38,324 |
+| Core primary rows missing ISIN | 7,089 |
 | Extended listing-scope rows | 16,543 |
-| Total aliases | 91,728 |
+| Total aliases | 91,697 |
 
 ## Formats
 
@@ -36,7 +36,7 @@ Choose the format that fits your use case:
 | [`data/tickers.db`](data/tickers.db) | 37.8 MB | SQL queries, local apps |
 | [`data/aliases.csv`](data/aliases.csv) | 2.3 MB | Alias/name resolution |
 | [`data/identifiers.csv`](data/identifiers.csv) | 1007 KB | ISIN/WKN lookups |
-| [`data/cross_listings.csv`](data/cross_listings.csv) | 510 KB | Cross-listed securities |
+| [`data/cross_listings.csv`](data/cross_listings.csv) | 512 KB | Cross-listed securities |
 
 Additional reference artifacts:
 
@@ -46,7 +46,7 @@ Additional reference artifacts:
 | [`data/listing_index.csv`](data/listing_index.csv) | 5.3 MB | Listing-keyed identity/export bridge |
 | [`data/masterfiles/reference.csv`](data/masterfiles/reference.csv) | 24.0 MB | Official exchange-masterfile reference rows |
 | [`data/masterfiles/supplemental_listings.csv`](data/masterfiles/supplemental_listings.csv) | 2.2 MB | Safe official listings added to the core export |
-| [`data/history/latest_snapshot.csv`](data/history/latest_snapshot.csv) | 7.1 MB | Current listing-status baseline |
+| [`data/history/latest_snapshot.csv`](data/history/latest_snapshot.csv) | 7.2 MB | Current listing-status baseline |
 | [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | 334 KB | Machine-readable coverage metrics |
 | [`data/reports/masterfile_collision_report.json`](data/reports/masterfile_collision_report.json) | 57 KB | Official-symbol gaps blocked by cross-exchange collisions |
 
@@ -137,8 +137,8 @@ OTC::VROYF,VROYF,OTC,Stock,CA92859L2012,CA92859L2012,extended,otc_listing,TSXV::
 {
   "_meta": {
     "version": "3.5.0",
-    "built_at": "2026-04-12T12:08:23Z",
-    "total_tickers": 53858
+    "built_at": "2026-04-12T12:28:42Z",
+    "total_tickers": 53826
   },
   "tickers": [
     {
@@ -171,7 +171,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (53,858 rows), `listings` (61,956 rows), `aliases` (91,728 rows), `cross_listings` (14,134 rows), and `instrument_scopes` (61,956 rows), with indexes on alias, exchange, country, sector, ISIN, listing scope, and instrument group key.
+Tables: `tickers` (53,826 rows), `listings` (61,956 rows), `aliases` (91,697 rows), `cross_listings` (14,196 rows), and `instrument_scopes` (61,956 rows), with indexes on alias, exchange, country, sector, ISIN, listing scope, and instrument group key.
 
 ## Schema
 
@@ -200,7 +200,7 @@ Tables: `tickers` (53,858 rows), `listings` (61,956 rows), `aliases` (91,728 row
 
 | Exchange | Tickers | Description |
 |---|---|---|
-| OTC | 8,445 | US OTC / Pink Sheets |
+| OTC | 8,413 | US OTC / Pink Sheets |
 | NASDAQ | 4,538 | NASDAQ |
 | LSE | 3,892 | London Stock Exchange |
 | TSE | 3,197 | Tokyo Stock Exchange |

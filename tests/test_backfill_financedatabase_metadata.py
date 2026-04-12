@@ -119,6 +119,37 @@ def test_evaluate_financedatabase_row_rejects_name_and_country_mismatch():
     )["decision"] == "isin_country_mismatch"
 
 
+def test_evaluate_financedatabase_row_rejects_existing_isin_peer_name_mismatch():
+    result = evaluate_financedatabase_row(
+        {
+            "ticker": "2531",
+            "exchange": "TSE",
+            "asset_type": "Stock",
+            "name": "TAKARA HOLDINGS INC.",
+            "sector": "",
+            "isin": "",
+        },
+        [
+            FinanceDatabaseRow(
+                symbol="2531.T",
+                base_ticker="2531",
+                name="Takara Holdings Inc.",
+                exchange="JPX",
+                asset_type="Stock",
+                sector="Consumer Defensive",
+                isin="JP3459600007",
+            )
+        ],
+        existing_isin_rows_by_isin={
+            "JP3459600007": [
+                {"ticker": "TAX", "exchange": "NASDAQ", "name": "Cambria Tax Aware ETF"}
+            ]
+        },
+    )
+
+    assert result["decision"] == "isin_peer_name_mismatch"
+
+
 def test_build_metadata_updates_emits_one_row_per_field():
     updates = build_metadata_updates(
         [
