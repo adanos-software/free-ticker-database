@@ -14,13 +14,13 @@ A comprehensive, free-to-use stock and ETF ticker reference database covering 52
 | ETFs | 14,003 |
 | Exchanges | 67 |
 | Countries | 69 |
-| ISIN coverage | 44,131 (83.7%) |
-| Sector coverage | 31,827 (60.3%) |
+| ISIN coverage | 44,145 (83.7%) |
+| Sector coverage | 33,573 (63.6%) |
 | Core listing-scope rows | 44,290 |
-| Core primary rows with ISIN | 37,090 |
-| Core primary rows missing ISIN | 7,200 |
+| Core primary rows with ISIN | 37,104 |
+| Core primary rows missing ISIN | 7,186 |
 | Extended listing-scope rows | 15,951 |
-| Total aliases | 90,564 |
+| Total aliases | 90,577 |
 
 ## Formats
 
@@ -29,7 +29,7 @@ Choose the format that fits your use case:
 | File | Size | Best for |
 |---|---|---|
 | [`data/tickers.csv`](data/tickers.csv) | 4.8 MB | Excel, spreadsheets, quick lookups |
-| [`data/listings.csv`](data/listings.csv) | 6.1 MB | Listing-keyed export without global ticker ambiguity |
+| [`data/listings.csv`](data/listings.csv) | 6.2 MB | Listing-keyed export without global ticker ambiguity |
 | [`data/instrument_scopes.csv`](data/instrument_scopes.csv) | 5.0 MB | Core vs. extended listing scope |
 | [`data/tickers.json`](data/tickers.json) | 10 MB | Web apps, APIs |
 | [`data/tickers.parquet`](data/tickers.parquet) | 2.5 MB | Pandas, data science |
@@ -137,7 +137,7 @@ OTC::VROYF,VROYF,OTC,Stock,CA92859L2012,CA92859L2012,extended,otc_listing,TSXV::
 {
   "_meta": {
     "version": "3.5.0",
-    "built_at": "2026-04-12T04:50:20Z",
+    "built_at": "2026-04-12T05:18:30Z",
     "total_tickers": 52747
   },
   "tickers": [
@@ -171,7 +171,7 @@ SELECT t.* FROM tickers t JOIN aliases a ON t.ticker = a.ticker WHERE a.alias = 
 SELECT * FROM tickers WHERE isin = 'US1912161007';
 ```
 
-Tables: `tickers` (52,747 rows), `listings` (60,241 rows), `aliases` (90,564 rows), `cross_listings` (13,133 rows), and `instrument_scopes` (60,241 rows), with indexes on alias, exchange, country, sector, ISIN, listing scope, and instrument group key.
+Tables: `tickers` (52,747 rows), `listings` (60,241 rows), `aliases` (90,577 rows), `cross_listings` (13,133 rows), and `instrument_scopes` (60,241 rows), with indexes on alias, exchange, country, sector, ISIN, listing scope, and instrument group key.
 
 ## Schema
 
@@ -485,9 +485,18 @@ python3 scripts/rebuild_dataset.py
 
 This reads the current XTB OMI PDF, writes audit reports under `data/xtb_verification/`, and only merges accepted ISINs into `data/review_overrides/metadata_updates.csv`. Treat XTB as a secondary verification source, not an official exchange masterfile.
 
+For FinanceDatabase sector enrichment, use the ticker/exchange/name-gated workflow:
+
+```bash
+python3 scripts/backfill_financedatabase_metadata.py --apply
+python3 scripts/rebuild_dataset.py
+```
+
+By default this emits sector updates only and writes audit reports under `data/financedatabase_verification/`. FinanceDatabase ISINs are intentionally opt-in via `--enable-isin` because cross-listing collisions need separate manual review before they can be trusted as identifier overrides.
+
 ## Data Sources
 
-- **[FinanceDatabase](https://github.com/JerBouma/FinanceDatabase)** - Sector classification, WKNs, additional ISINs
+- **[FinanceDatabase](https://github.com/JerBouma/FinanceDatabase)** - Sector classification and optional reviewed identifier candidates
 - **Production data** from [api.adanos.org](https://api.adanos.org) - Curated aliases, company name variants
 
 ## License

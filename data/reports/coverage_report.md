@@ -5,11 +5,11 @@
 | Metric | Value |
 |---|---|
 | tickers | 52747 |
-| aliases | 90564 |
+| aliases | 90577 |
 | stocks | 38744 |
 | etfs | 14003 |
-| isin_coverage | 44131 |
-| sector_coverage | 31827 |
+| isin_coverage | 44145 |
+| sector_coverage | 33573 |
 | cik_coverage | 7700 |
 | figi_coverage | 3709 |
 | lei_coverage | 920 |
@@ -20,8 +20,8 @@
 | instrument_scope_rows | 60241 |
 | instrument_scope_core | 44290 |
 | instrument_scope_extended | 15951 |
-| instrument_scope_primary_listing | 37090 |
-| instrument_scope_primary_listing_missing_isin | 7200 |
+| instrument_scope_primary_listing | 37104 |
+| instrument_scope_primary_listing_missing_isin | 7186 |
 | instrument_scope_otc_listing | 11097 |
 | instrument_scope_secondary_cross_listing | 4854 |
 | official_masterfile_symbols | 29689 |
@@ -49,23 +49,23 @@
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-04-12T04:50:20Z |
+| tickers_built_at | 2026-04-12T05:18:30Z |
 | tickers_age_hours | 0.0 |
 | masterfiles_generated_at | 2026-04-11T12:28:19Z |
-| masterfiles_age_hours | 16.37 |
-| identifiers_generated_at | 2026-04-12T04:50:20Z |
+| masterfiles_age_hours | 16.84 |
+| identifiers_generated_at | 2026-04-12T05:18:30Z |
 | identifiers_age_hours | 0.0 |
-| listing_history_observed_at | 2026-04-12T04:50:20Z |
+| listing_history_observed_at | 2026-04-12T05:18:30Z |
 | listing_history_age_hours | 0.0 |
 | latest_verification_run | data/stock_verification/run-20260411-b3-funds |
 | latest_verification_generated_at | 2026-04-11T12:29:29Z |
-| latest_verification_age_hours | 16.35 |
+| latest_verification_age_hours | 16.82 |
 | latest_stock_verification_run | data/stock_verification/run-20260411-b3-funds |
 | latest_stock_verification_generated_at | 2026-04-11T12:29:29Z |
-| latest_stock_verification_age_hours | 16.35 |
+| latest_stock_verification_age_hours | 16.82 |
 | latest_etf_verification_run | data/etf_verification/run-20260411-b3-funds |
 | latest_etf_verification_generated_at | 2026-04-11T12:29:46Z |
-| latest_etf_verification_age_hours | 16.34 |
+| latest_etf_verification_age_hours | 16.81 |
 
 ## Source Coverage
 
@@ -161,15 +161,15 @@
 | Exchange | Venue Status | Tickers | ISIN | Sector | CIK | FIGI | LEI | Masterfile Symbols | Matches | Collisions | Missing | Match Rate | Verified on Covered |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | AMS | official_full | 222 | 216 | 131 | 0 | 144 | 0 | 548 | 148 | 294 | 106 | 27.01 | 100.0 |
-| ASX | official_partial | 1298 | 1192 | 702 | 30 | 1032 | 24 | 0 | 0 | 0 | 0 |  | 100.0 |
+| ASX | official_partial | 1298 | 1192 | 719 | 30 | 1032 | 24 | 0 | 0 | 0 | 0 |  | 100.0 |
 | ATHEX | missing | 117 | 91 | 117 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
-| B3 | official_full | 959 | 673 | 443 | 0 | 0 | 0 | 1218 | 627 | 0 | 591 | 51.48 | 100.0 |
+| B3 | official_full | 959 | 673 | 460 | 0 | 0 | 0 | 1218 | 627 | 0 | 591 | 51.48 | 100.0 |
 | BATS | official_full | 1247 | 1166 | 344 | 0 | 0 | 0 | 1243 | 1200 | 7 | 36 | 96.54 | 100.0 |
 | BCBA | missing | 64 | 53 | 50 | 0 | 48 | 0 | 0 | 0 | 0 | 0 |  |  |
 | BME | official_partial | 169 | 169 | 157 | 3 | 2 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
-| BMV | official_partial | 179 | 160 | 157 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
+| BMV | official_partial | 179 | 160 | 165 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | BSE_BW | missing | 39 | 39 | 6 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
-| BSE_HU | missing | 31 | 19 | 9 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
+| BSE_HU | missing | 31 | 19 | 12 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | BVB | missing | 85 | 79 | 77 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | BVL | missing | 33 | 0 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | Bursa | official_partial | 926 | 926 | 922 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
@@ -178,7 +178,7 @@
 | CSE_MA | missing | 66 | 66 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | DSE_TZ | missing | 17 | 15 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | EGX | missing | 225 | 225 | 125 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
-| Euronext | official_full | 975 | 968 | 698 | 7 | 665 | 65 | 4385 | 938 | 2132 | 1315 | 21.39 | 100.0 |
+| Euronext | official_full | 975 | 968 | 704 | 7 | 665 | 65 | 4385 | 938 | 2132 | 1315 | 21.39 | 100.0 |
 | GSE | missing | 19 | 18 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | HEL | official_partial | 188 | 188 | 137 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | HNX | official_full | 105 | 105 | 13 | 0 | 0 | 0 | 302 | 105 | 158 | 39 | 34.77 | 100.0 |
@@ -187,21 +187,21 @@
 | IDX | official_partial | 694 | 579 | 508 | 1 | 2 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | ISE | missing | 14 | 14 | 10 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | JSE | official_partial | 213 | 183 | 98 | 2 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
-| KOSDAQ | official_partial | 1583 | 1578 | 1202 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
+| KOSDAQ | official_partial | 1583 | 1578 | 1228 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | KRX | official_partial | 1788 | 1786 | 807 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | LSE | official_partial | 6408 | 6396 | 4355 | 16 | 22 | 5 | 0 | 0 | 0 | 0 |  | 100.0 |
 | LUSE | missing | 22 | 22 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | MSE_MW | missing | 8 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | NASDAQ | official_full | 4634 | 4474 | 3615 | 3441 | 10 | 400 | 5449 | 4568 | 48 | 833 | 83.83 | 100.0 |
-| NEO | official_full | 197 | 79 | 21 | 0 | 0 | 0 | 436 | 196 | 82 | 158 | 44.95 | 100.0 |
+| NEO | official_full | 197 | 79 | 44 | 0 | 0 | 0 | 436 | 196 | 82 | 158 | 44.95 | 100.0 |
 | NGX | missing | 147 | 145 | 4 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | NMFQS | missing | 7 | 7 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | NSE_KE | missing | 46 | 46 | 6 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
-| NYSE | official_full | 2078 | 1971 | 1966 | 1993 | 24 | 372 | 3836 | 2060 | 513 | 1263 | 53.7 | 100.0 |
+| NYSE | official_full | 2078 | 1985 | 1966 | 1993 | 24 | 372 | 3836 | 2060 | 513 | 1263 | 53.7 | 100.0 |
 | NYSE ARCA | official_full | 2650 | 2446 | 1308 | 127 | 6 | 3 | 2615 | 2582 | 14 | 19 | 98.74 | 100.0 |
 | NYSE MKT | official_full | 238 | 229 | 228 | 221 | 2 | 26 | 313 | 234 | 19 | 60 | 74.76 | 100.0 |
 | NYSEARCA | missing | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
-| OSL | official_full | 240 | 236 | 170 | 2 | 196 | 0 | 298 | 233 | 64 | 1 | 78.19 | 100.0 |
+| OSL | official_full | 240 | 236 | 172 | 2 | 196 | 0 | 298 | 233 | 64 | 1 | 78.19 | 100.0 |
 | OTC | official_partial | 11097 | 9681 | 8309 | 1795 | 5 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | PSE | official_full | 90 | 90 | 4 | 1 | 0 | 0 | 381 | 90 | 185 | 106 | 23.62 | 100.0 |
 | PSE_CZ | missing | 24 | 18 | 10 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
@@ -216,15 +216,15 @@
 | SZSE | official_partial | 3083 | 2596 | 1928 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | TASE | official_partial | 673 | 673 | 303 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | TPEX | official_partial | 1118 | 1107 | 1000 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
-| TSE | official_full | 3214 | 19 | 0 | 0 | 0 | 0 | 4444 | 3214 | 1199 | 31 | 72.32 | 100.0 |
-| TSX | official_full | 1601 | 1083 | 767 | 12 | 991 | 23 | 785 | 323 | 460 | 2 | 41.15 | 99.32 |
-| TSXV | official_full | 1066 | 504 | 625 | 17 | 524 | 0 | 1518 | 961 | 557 | 0 | 63.31 | 92.71 |
+| TSE | official_full | 3214 | 19 | 1607 | 0 | 0 | 0 | 4444 | 3214 | 1199 | 31 | 72.32 | 100.0 |
+| TSX | official_full | 1601 | 1083 | 774 | 12 | 991 | 23 | 785 | 323 | 460 | 2 | 41.15 | 99.32 |
+| TSXV | official_full | 1066 | 504 | 640 | 17 | 524 | 0 | 1518 | 961 | 557 | 0 | 63.31 | 92.71 |
 | TWSE | official_full | 1240 | 1166 | 987 | 0 | 0 | 0 | 1081 | 1022 | 29 | 30 | 94.54 | 100.0 |
 | UPCOM | official_full | 2 | 2 | 1 | 0 | 0 | 0 | 837 | 2 | 458 | 377 | 0.24 | 100.0 |
 | USE_UG | missing | 7 | 7 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | VSE | missing | 36 | 34 | 32 | 0 | 22 | 0 | 0 | 0 | 0 | 0 |  |  |
 | WSE | official_partial | 348 | 348 | 258 | 7 | 1 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
-| XETRA | official_partial | 3007 | 3003 | 1333 | 8 | 9 | 2 | 0 | 0 | 0 | 0 |  | 100.0 |
+| XETRA | official_partial | 3007 | 3003 | 1348 | 8 | 9 | 2 | 0 | 0 | 0 | 0 |  | 100.0 |
 | ZSE | missing | 23 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | ZSE_ZW | missing | 27 | 27 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 
@@ -233,13 +233,13 @@
 | Country | Tickers | ISIN | Sector | CIK | FIGI | LEI |
 |---|---|---|---|---|---|---|
 | Argentina | 60 | 49 | 47 | 0 | 48 | 0 |
-| Australia | 1959 | 1853 | 1315 | 306 | 1038 | 67 |
+| Australia | 1959 | 1853 | 1331 | 306 | 1038 | 67 |
 | Austria | 58 | 56 | 48 | 11 | 50 | 11 |
-| Belgium | 122 | 121 | 79 | 8 | 37 | 1 |
-| Bermuda | 191 | 191 | 171 | 61 | 9 | 14 |
+| Belgium | 122 | 121 | 83 | 8 | 37 | 1 |
+| Bermuda | 191 | 191 | 172 | 61 | 9 | 14 |
 | Botswana | 25 | 25 | 1 | 0 | 0 | 0 |
-| Brazil | 930 | 643 | 424 | 0 | 0 | 0 |
-| Canada | 4910 | 3714 | 2885 | 670 | 1491 | 69 |
+| Brazil | 930 | 643 | 441 | 0 | 0 | 0 |
+| Canada | 4910 | 3714 | 2930 | 670 | 1491 | 69 |
 | Cayman Islands | 680 | 675 | 498 | 458 | 1 | 18 |
 | Chile | 116 | 85 | 93 | 0 | 0 | 0 |
 | China | 5968 | 4869 | 3510 | 10 | 0 | 0 |
@@ -250,54 +250,54 @@
 | Egypt | 254 | 254 | 153 | 13 | 0 | 1 |
 | Finland | 193 | 193 | 141 | 1 | 0 | 0 |
 | France | 708 | 702 | 549 | 27 | 484 | 60 |
-| Germany | 666 | 662 | 436 | 17 | 7 | 6 |
+| Germany | 666 | 662 | 448 | 17 | 7 | 6 |
 | Ghana | 18 | 17 | 2 | 0 | 0 | 0 |
 | Greece | 130 | 104 | 129 | 4 | 0 | 0 |
 | Guernsey | 62 | 62 | 55 | 7 | 1 | 0 |
 | Hong Kong | 66 | 66 | 59 | 1 | 1 | 0 |
-| Hungary | 26 | 15 | 5 | 0 | 0 | 0 |
+| Hungary | 26 | 15 | 8 | 0 | 0 | 0 |
 | Iceland | 18 | 17 | 3 | 1 | 0 | 0 |
 | India | 1 | 1 | 1 | 0 | 0 | 0 |
 | Indonesia | 797 | 682 | 606 | 48 | 4 | 4 |
-| Ireland | 2408 | 2408 | 1075 | 65 | 63 | 7 |
+| Ireland | 2408 | 2408 | 1077 | 65 | 63 | 7 |
 | Isle of Man | 9 | 9 | 9 | 3 | 0 | 0 |
 | Israel | 778 | 778 | 416 | 101 | 1 | 2 |
 | Italy | 118 | 118 | 99 | 2 | 5 | 0 |
-| Japan | 3525 | 330 | 226 | 54 | 0 | 0 |
+| Japan | 3525 | 330 | 1833 | 54 | 0 | 0 |
 | Jersey | 149 | 149 | 57 | 18 | 1 | 4 |
 | Kenya | 45 | 45 | 6 | 0 | 0 | 0 |
-| Luxembourg | 957 | 957 | 552 | 30 | 44 | 5 |
+| Luxembourg | 957 | 957 | 553 | 30 | 44 | 5 |
 | Malawi | 8 | 5 | 0 | 0 | 0 | 0 |
 | Malaysia | 923 | 923 | 917 | 0 | 0 | 0 |
 | Mauritius | 51 | 51 | 3 | 1 | 0 | 0 |
-| Mexico | 143 | 124 | 123 | 4 | 0 | 0 |
+| Mexico | 143 | 124 | 131 | 4 | 0 | 0 |
 | Morocco | 66 | 66 | 2 | 0 | 0 | 0 |
 | Netherlands | 165 | 159 | 128 | 27 | 70 | 1 |
 | New Zealand | 39 | 39 | 36 | 7 | 22 | 1 |
 | Nigeria | 145 | 143 | 3 | 0 | 0 | 0 |
-| Norway | 248 | 244 | 190 | 9 | 166 | 1 |
+| Norway | 248 | 244 | 192 | 9 | 166 | 1 |
 | Pakistan | 367 | 263 | 13 | 3 | 0 | 0 |
 | Panama | 1 | 0 | 1 | 1 | 0 | 0 |
 | Peru | 33 | 0 | 3 | 0 | 0 | 0 |
 | Philippines | 120 | 120 | 30 | 16 | 0 | 2 |
 | Poland | 371 | 371 | 273 | 31 | 1 | 5 |
-| Portugal | 34 | 34 | 25 | 0 | 9 | 1 |
+| Portugal | 34 | 34 | 27 | 0 | 9 | 1 |
 | Romania | 86 | 82 | 76 | 7 | 0 | 0 |
 | Rwanda | 2 | 2 | 0 | 0 | 0 | 0 |
 | Singapore | 73 | 71 | 63 | 18 | 1 | 2 |
 | South Africa | 228 | 198 | 107 | 6 | 0 | 0 |
-| South Korea | 3361 | 3354 | 2001 | 1 | 0 | 0 |
+| South Korea | 3361 | 3354 | 2027 | 1 | 0 | 0 |
 | Spain | 220 | 220 | 184 | 11 | 7 | 3 |
 | Sri Lanka | 3 | 0 | 0 | 0 | 0 | 0 |
 | Sweden | 761 | 761 | 505 | 14 | 4 | 1 |
-| Switzerland | 375 | 373 | 245 | 24 | 6 | 6 |
+| Switzerland | 376 | 373 | 246 | 24 | 6 | 6 |
 | Taiwan | 2342 | 2257 | 1971 | 0 | 0 | 0 |
 | Tanzania | 15 | 13 | 2 | 0 | 0 | 0 |
 | Thailand | 588 | 393 | 573 | 42 | 1 | 6 |
 | Turkey | 1 | 1 | 0 | 0 | 0 | 0 |
 | Uganda | 7 | 7 | 0 | 0 | 0 | 0 |
 | United Kingdom | 1537 | 1526 | 1085 | 113 | 14 | 24 |
-| United States | 13737 | 11824 | 9091 | 4812 | 15 | 553 |
+| United States | 13737 | 11838 | 9091 | 4812 | 15 | 553 |
 | Vietnam | 262 | 262 | 152 | 2 | 1 | 0 |
 | Zambia | 22 | 22 | 1 | 0 | 0 | 0 |
 | Zimbabwe | 27 | 27 | 3 | 0 | 0 | 0 |
