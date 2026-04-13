@@ -2139,21 +2139,28 @@ def test_readme_stats_and_claims_are_current():
     isin_count = sum(bool(row["isin"]) for row in tickers_csv)
     sector_count = sum(bool(row["sector"]) for row in tickers_csv)
 
-    assert f"| Primary tickers | {total:,} |" in readme
-    assert f"| Full listing rows | {len(listings_csv):,} |" in readme
-    assert f"| Stocks | {stocks:,} |" in readme
-    assert f"| ETFs | {etfs:,} |" in readme
-    assert f"| Countries | {countries:,} |" in readme
-    assert f"| Aliases | {len(aliases_csv):,} |" in readme
-    assert f"| ISIN coverage | {isin_count:,} ({isin_count / total * 100:.1f}%) |" in readme
-    assert f"| Sector/category coverage | {sector_count:,} ({sector_count / total * 100:.1f}%) |" in readme
-    assert f"| Core listing-scope rows | {instrument_scope_counts['core']:,} |" in readme
-    assert f"| Core primary rows with ISIN | {instrument_scope_reason_counts['primary_listing']:,} |" in readme
+    assert "| Metric | Value | Meaning |" in readme
+    assert f"| Primary tickers | {total:,} | Rows in `data/tickers.csv`;" in readme
+    assert f"| Full listing rows | {len(listings_csv):,} | Rows in `data/listings.csv`;" in readme
+    assert f"| Stocks | {stocks:,} | Primary ticker rows where `asset_type=Stock`. |" in readme
+    assert f"| ETFs | {etfs:,} | Primary ticker rows where `asset_type=ETF`. |" in readme
+    assert f"| Countries | {countries:,} | Distinct non-empty `country` values" in readme
+    assert f"| Aliases | {len(aliases_csv):,} | Rows in `data/aliases.csv`;" in readme
+    assert f"| ISIN coverage | {isin_count:,} ({isin_count / total * 100:.1f}%) | Primary ticker rows" in readme
     assert (
-        f"| Core primary rows missing ISIN | {instrument_scope_reason_counts['primary_listing_missing_isin']:,} |"
+        f"| Sector/category coverage | {sector_count:,} ({sector_count / total * 100:.1f}%) | Primary ticker rows"
         in readme
     )
-    assert f"| Extended listing-scope rows | {instrument_scope_counts['extended']:,} |" in readme
+    assert f"| Core listing-scope rows | {instrument_scope_counts['core']:,} | Rows in `data/instrument_scopes.csv`" in readme
+    assert f"| Core primary rows with ISIN | {instrument_scope_reason_counts['primary_listing']:,} | Core primary" in readme
+    assert (
+        f"| Core primary rows missing ISIN | {instrument_scope_reason_counts['primary_listing_missing_isin']:,} | Core primary"
+        in readme
+    )
+    assert (
+        f"| Extended listing-scope rows | {instrument_scope_counts['extended']:,} | Rows in `data/instrument_scopes.csv`"
+        in readme
+    )
     assert f"| NASDAQ | {exchange_counts['NASDAQ']:,} |" in readme
     assert f"| XETRA | {exchange_counts['XETRA']:,} |" in readme
     assert f"| NYSE | {exchange_counts['NYSE']:,} |" in readme
