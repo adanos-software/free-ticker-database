@@ -1,11 +1,11 @@
 # Completion Backlog
 
-Generated at: `2026-04-13T10:00:36Z`
+Generated at: `2026-04-13T11:17:09Z`
 
 ## Summary
 
-- Missing primary ISIN rows: `7164`
-- Missing stock sectors: `7566`
+- Missing primary ISIN rows: `7165`
+- Missing stock sectors: `7563`
 - Missing ETF categories: `4508`
 - Official symbol collisions blocking global-unique ticker ingestion: `6345`
 
@@ -30,7 +30,7 @@ Generated at: `2026-04-13T10:00:36Z`
 
 | Rank | Exchange | Asset type | Missing | Venue | Source | Review |
 |---|---|---|---:|---|---|---|
-| 1 | OTC | Stock | 2002 | official_partial | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
+| 1 | OTC | Stock | 1999 | official_partial | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
 | 2 | SSE | Stock | 788 | official_partial | Official exchange industry classifications first; FinanceDatabase as reviewed fallback. | yes |
 | 3 | SZSE | Stock | 807 | official_partial | Official exchange industry classifications first; FinanceDatabase as reviewed fallback. | yes |
 | 4 | XETRA | Stock | 125 | official_partial | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
@@ -64,7 +64,7 @@ Generated at: `2026-04-13T10:00:36Z`
 
 | Rank | Exchange | Missing total | Missing stock_sector | Missing etf_category | Venue |
 |---|---|---:|---:|---:|---|
-| 1 | OTC | 2042 | 2002 | 40 | official_partial |
+| 1 | OTC | 2039 | 1999 | 40 | official_partial |
 | 2 | SSE | 1267 | 788 | 479 | official_partial |
 | 3 | SZSE | 1144 | 807 | 337 | official_partial |
 | 4 | XETRA | 521 | 125 | 396 | official_partial |

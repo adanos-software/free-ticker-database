@@ -1,0 +1,51 @@
+name: Daily Symbol Changes
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-symbol-changes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Fetch symbol changes
+        run: python scripts/fetch_symbol_changes.py
+
+      - name: Validate symbol changes parser
+        run: python -m pytest tests/test_fetch_symbol_changes.py -q
+
+      - name: Open update pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: automation/symbol-changes
+          delete-branch: true
+          commit-message: Update daily symbol changes
+          title: Update daily symbol changes
+          body: |
+            Automated daily refresh of the secondary-review symbol-change feed.
+
+            Outputs:
+            - data/corporate_actions/symbol_changes.csv
+            - data/corporate_actions/symbol_changes.json
+            - data/reports/symbol_changes_review.csv
+            - data/reports/symbol_changes_review.json
+            - data/reports/symbol_changes_review.md

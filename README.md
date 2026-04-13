@@ -15,14 +15,14 @@ Free stock and ETF ticker reference data with primary tickers, listing-keyed ven
 | ETFs | 15,079 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 67 | Distinct non-empty `exchange` values in the primary ticker export. |
 | Countries | 81 | Distinct non-empty `country` values in the primary ticker export. |
-| Aliases | 91,384 | Rows in `data/aliases.csv`; searchable aliases and identifier tokens mapped to primary tickers. |
+| Aliases | 91,300 | Rows in `data/aliases.csv`; searchable aliases and identifier tokens mapped to primary tickers. |
 | ISIN coverage | 45,259 (84.1%) | Primary ticker rows with a non-empty `isin`. |
-| Sector/category coverage | 41,715 (77.6%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 31,144 | Primary ticker rows with a non-empty `stock_sector`. |
+| Sector/category coverage | 41,718 (77.6%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Stock sector coverage | 31,147 | Primary ticker rows with a non-empty `stock_sector`. |
 | ETF category coverage | 10,571 | Primary ticker rows with a non-empty `etf_category`. |
 | Core listing-scope rows | 45,346 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
-| Core primary rows with ISIN | 38,182 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
-| Core primary rows missing ISIN | 7,164 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
+| Core primary rows with ISIN | 38,181 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
+| Core primary rows missing ISIN | 7,165 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
 | Extended listing-scope rows | 16,609 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
 
 ## Core Files
@@ -50,6 +50,8 @@ Reference and audit files:
 | [`data/history/latest_snapshot.csv`](data/history/latest_snapshot.csv) | Current listing-status baseline |
 | [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | Machine-readable coverage report |
 | [`data/reports/completion_backlog.md`](data/reports/completion_backlog.md) | Prioritized missing ISIN/sector/category backlog |
+| [`data/reports/entry_quality.md`](data/reports/entry_quality.md) | Per-listing deterministic quality scan summary |
+| [`data/reports/ohlcv_plausibility.md`](data/reports/ohlcv_plausibility.md) | Kronos-inspired market-data plausibility queue |
 | [`data/reports/masterfile_collision_report.json`](data/reports/masterfile_collision_report.json) | Official-symbol gaps blocked by ticker collisions |
 
 ## Data Model
@@ -94,6 +96,8 @@ SQLite tables: `tickers`, `listings`, `aliases`, `cross_listings`, and `instrume
 ## Quality
 
 - Valid ISINs are checksum-verified.
+- `data/reports/entry_quality.csv` stores one deterministic quality row per `listing_key`.
+- `data/reports/ohlcv_plausibility.csv` stores optional market-data hygiene checks; default runs are no-network and omit unchecked rows unless local OHLCV samples, `--fetch-yahoo`, or `--include-not-checked` are provided.
 - Obvious common-word, wrapper, celebrity, product, junk, short, and numeric aliases are filtered.
 - Rights, units, warrants, notes, preferreds, and depositary lines are filtered from the stock universe.
 - Foreign OTC country metadata is corrected from valid ISIN prefixes where possible.
@@ -128,6 +132,15 @@ For full exchange, country, source, and verification coverage, use:
 ```bash
 python3 scripts/build_coverage_report.py
 python3 scripts/build_completion_backlog.py
+python3 scripts/build_entry_quality_report.py
+python3 scripts/build_ohlcv_plausibility_report.py
+python3 scripts/fetch_symbol_changes.py
+```
+
+Long OHLCV fetch runs should use streaming checkpoints:
+
+```bash
+python3 scripts/build_ohlcv_plausibility_report.py --fetch-yahoo --include-not-checked --stream --resume
 ```
 
 ## Refresh Pipeline
@@ -139,6 +152,9 @@ python3 scripts/rebuild_dataset.py
 python3 scripts/build_listing_history.py
 python3 scripts/build_coverage_report.py
 python3 scripts/build_completion_backlog.py
+python3 scripts/build_entry_quality_report.py
+python3 scripts/build_ohlcv_plausibility_report.py
+python3 scripts/fetch_symbol_changes.py
 ```
 
 Planned enrichment run:
@@ -162,10 +178,13 @@ Main targeted backfills:
 | XTB OMI ISIN candidates | `scripts/backfill_xtb_omi_isins.py` |
 | Yahoo OTC ISIN candidates | `scripts/backfill_yahoo_otc_isins.py` |
 | ASX official ISINs | `scripts/backfill_asx_isins.py` |
+| Daily symbol-change feed | `scripts/fetch_symbol_changes.py` |
 
 Review queue:
 
 ```bash
+python3 scripts/build_entry_quality_report.py
+python3 scripts/build_ohlcv_plausibility_report.py
 python3 scripts/audit_dataset.py --write-defaults
 python3 scripts/run_claude_review_queue.py --model sonnet --skip-existing
 python3 scripts/build_claude_review_overrides.py --min-confidence 0.8

@@ -7,10 +7,16 @@ def test_pipeline_default_stages_are_safe_and_ordered():
     stages = build_pipeline_commands(PipelineOptions(python="python3"))
     names = [stage.name for stage in stages]
 
-    assert names[:2] == ["fetch_masterfiles", "completion_backlog_before"]
+    assert names[:3] == ["fetch_masterfiles", "fetch_symbol_changes", "completion_backlog_before"]
     assert "same_isin_sector_peer_backfill" in names
     assert "financedatabase_sector_backfill" in names
-    assert names[-4:] == ["build_listing_history", "build_coverage_report", "audit_dataset", "completion_backlog_after"]
+    assert names[-5:] == [
+        "build_coverage_report",
+        "build_entry_quality_report",
+        "build_ohlcv_plausibility_report",
+        "audit_dataset",
+        "completion_backlog_after",
+    ]
     assert "eodhd_reviewed_isin_backfill" not in names
     assert all("--apply" not in stage.command for stage in stages)
 

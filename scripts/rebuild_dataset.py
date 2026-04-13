@@ -1484,10 +1484,9 @@ def clean_aliases(
         # Skip very short name aliases (<=2 chars) -- too ambiguous
         if len(alias) <= 2 and not looks_like_identifier(alias, wkns, cleaned_isin):
             continue
-        # Keep strict numeric-namespace codes, but they will be typed as
-        # exchange_ticker later instead of ambiguous name aliases.
+        # Numeric namespace tickers are already the row ticker. Keeping them
+        # as aliases creates ambiguous numeric lookup triggers.
         if is_numeric_exchange_alias(row, alias, wkns, cleaned_isin):
-            cleaned_aliases.append(alias)
             continue
         # Skip pure-numeric aliases that aren't identifiers (WKN/ISIN)
         if alias.isdigit() and alias not in wkns and alias != cleaned_isin:

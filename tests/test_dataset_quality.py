@@ -2252,12 +2252,16 @@ def test_open_source_project_files_exist_and_are_linked():
     assert (DATA_DIR / "instrument_scopes.csv").exists()
     assert (DATA_DIR / "listing_index.csv").exists()
     assert (DATA_DIR / "reports" / "coverage_report.json").exists()
+    assert (DATA_DIR / "reports" / "entry_quality.md").exists()
+    assert (DATA_DIR / "reports" / "ohlcv_plausibility.md").exists()
     assert (DATA_DIR / "reports" / "masterfile_collision_report.json").exists()
     assert "identifiers_extended.csv" in readme
     assert "listings.csv" in readme
     assert "instrument_scopes.csv" in readme
     assert "listing_index.csv" in readme
     assert "coverage_report.json" in readme
+    assert "entry_quality.md" in readme
+    assert "ohlcv_plausibility.md" in readme
     assert "masterfile_collision_report.json" in readme
 
     assert "[![CI]" in readme
@@ -2318,7 +2322,7 @@ def test_no_depositary_issues_in_stock_universe():
     assert not depositary, f"Depositary issues found: {depositary[:10]}"
 
 
-def test_numeric_namespace_aliases_bypass_strict_company_matching():
+def test_numeric_namespace_aliases_are_removed_from_listing_aliases():
     from scripts.rebuild_dataset import clean_aliases
 
     row = {
@@ -2332,7 +2336,7 @@ def test_numeric_namespace_aliases_bypass_strict_company_matching():
 
     _, aliases = clean_aliases(row, ["0050"], set())
 
-    assert aliases == ["0050"]
+    assert aliases == []
 
 
 def test_b3_non_canonical_stock_lines_are_removed():

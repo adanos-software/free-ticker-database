@@ -424,7 +424,7 @@
       "etf_missing_count": 1,
       "exchange": "BMV",
       "field": "missing_isin_primary",
-      "missing_count": 19,
+      "missing_count": 20,
       "notes": "Source research needed before applying.",
       "official_source_count": 4,
       "priority_bucket": "ranked_by_missing_count",
@@ -433,7 +433,7 @@
       "reference_scopes": "listed_companies_subset",
       "review_needed": true,
       "script": "scripts/fetch_exchange_masterfiles.py; scripts/backfill_eodhd_metadata.py",
-      "stock_missing_count": 18,
+      "stock_missing_count": 19,
       "target_field": "isin",
       "venue_status": "official_partial"
     },
@@ -842,7 +842,7 @@
       "etf_missing_count": 0,
       "exchange": "OTC",
       "field": "missing_sector_stock",
-      "missing_count": 2002,
+      "missing_count": 1999,
       "notes": "OTC is noisy; do not apply thin-name sector guesses without issuer evidence.",
       "official_source_count": 2,
       "priority_bucket": "top_priority",
@@ -851,7 +851,7 @@
       "reference_scopes": "listed_companies_subset|security_lookup_subset",
       "review_needed": true,
       "script": "scripts/backfill_sec_sic_sectors.py; scripts/backfill_alphavantage_sectors.py; scripts/backfill_financedatabase_metadata.py",
-      "stock_missing_count": 2002,
+      "stock_missing_count": 1999,
       "target_field": "stock_sector",
       "venue_status": "official_partial"
     },
@@ -2821,10 +2821,10 @@
     },
     "field_totals": {
       "missing_etf_category": 4508,
-      "missing_isin_primary": 7164,
-      "missing_sector_stock": 7566
+      "missing_isin_primary": 7165,
+      "missing_sector_stock": 7563
     },
-    "generated_at": "2026-04-13T10:00:36Z",
+    "generated_at": "2026-04-13T11:17:09Z",
     "model_notes": {
       "listing_key_first": "Use listing_key as the internal identity for future full-universe work; global ticker uniqueness still blocks official symbol collisions.",
       "sector_split": "Use stock_sector for stock rows and etf_category for ETF rows; the legacy sector export has been removed.",

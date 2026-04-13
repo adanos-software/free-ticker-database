@@ -68,6 +68,14 @@ def build_pipeline_commands(options: PipelineOptions) -> list[StageCommand]:
                 notes="Refresh official exchange masterfiles before deriving backlog priorities.",
             )
         )
+        commands.append(
+            StageCommand(
+                name="fetch_symbol_changes",
+                command=[py, "scripts/fetch_symbol_changes.py"],
+                mutates_data=True,
+                notes="Refresh secondary-review symbol-change feed and match it against current listings.",
+            )
+        )
 
     commands.append(
         StageCommand(
@@ -165,6 +173,18 @@ def build_pipeline_commands(options: PipelineOptions) -> list[StageCommand]:
                 command=[py, "scripts/build_coverage_report.py"],
                 mutates_data=True,
                 notes="Refresh coverage and collision metrics.",
+            ),
+            StageCommand(
+                name="build_entry_quality_report",
+                command=[py, "scripts/build_entry_quality_report.py"],
+                mutates_data=True,
+                notes="Refresh listing-keyed deterministic quality status for every row.",
+            ),
+            StageCommand(
+                name="build_ohlcv_plausibility_report",
+                command=[py, "scripts/build_ohlcv_plausibility_report.py"],
+                mutates_data=True,
+                notes="Refresh Kronos-inspired OHLCV plausibility queue without network fetches by default.",
             ),
             StageCommand(
                 name="audit_dataset",

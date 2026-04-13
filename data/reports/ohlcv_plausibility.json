@@ -1,0 +1,38 @@
+{
+  "_meta": {
+    "generated_at": "2026-04-13T11:51:43Z",
+    "rows": 0,
+    "selected_rows": 61955,
+    "skipped_not_checked_rows": 61955,
+    "csv_out": "data/reports/ohlcv_plausibility.csv",
+    "source_files": {
+      "listings_csv": "data/listings.csv",
+      "entry_quality_csv": "data/reports/entry_quality.csv"
+    },
+    "method": "Kronos-inspired OHLCV plausibility heuristics: missing bars, stale bars, invalid OHLC, open/previous-close jumps, zero-volume streaks, and stagnant-close streaks.",
+    "parameters": {
+      "fetch_yahoo": false,
+      "include_not_checked": false,
+      "max_fetch": 250,
+      "chart_range": "1y",
+      "interval": "1d",
+      "min_bars": 128,
+      "stale_days": 21,
+      "price_jump_threshold": 0.3,
+      "zero_volume_streak_threshold": 5,
+      "stagnant_close_streak_threshold": 10,
+      "filters": {
+        "exchange": [],
+        "asset_type": [],
+        "focus_status": [],
+        "max_rows": 0
+      }
+    }
+  },
+  "summary": {
+    "status_counts": {},
+    "issue_counts": {},
+    "top_flagged_exchanges": []
+  },
+  "flagged_items": []
+}
