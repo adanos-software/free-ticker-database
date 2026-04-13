@@ -1,132 +1,36 @@
-Gemma Plausibility Review
-generated_at: 2026-04-13T07:57:15+00:00
-model: gemma4:26b
+Codex Plausibility Review
+generated_at: 2026-04-13T08:52:29Z
 input: data/tickers.csv
-checkpoint: data/llm_plausibility_review/gemma4_findings.jsonl
+method: 10 Codex workers over primary ticker ranges plus deterministic dataset audit
 reviewed_rows: 53789/53789
-findings: 0
-review_errors: 117
-resolved_or_removed_findings: 46
-accepted_false_positive_findings: 8
-resolved_or_removed_review_errors: 332
-policy: conservative; missing ISIN/sector/category alone is not a finding
+audit_min_score_40_findings: 0
+tests: python3 -m pytest tests/ -q -> 648 passed
+policy: conservative; missing ISIN/sector/category alone is not a finding; cross-issuer metadata is fixed only when the row context is clear
 
 
-Review Errors
-[REVIEW_ERROR] 0TD2 LSE: LLM response could not be parsed: Unterminated string starting at: line 9 column 13 (char 135) | suggestion=Retry this row or inspect manually. | name=Eni S.p.A. | isin=US26874R1086
-[REVIEW_ERROR] 0TDF LSE: LLM response could not be parsed: Unterminated string starting at: line 1 column 106 (char 105) | suggestion=Retry this row or inspect manually. | name=Roche Holding AG | isin=US7711951043
-[REVIEW_ERROR] 1322 TSE: LLM response could not be parsed: Unterminated string starting at: line 5 column 22 (char 132) | suggestion=Retry this row or inspect manually. | name=Listed Index Fund China A Share (Panda) E Fund CSI300 | isin=
-[REVIEW_ERROR] 1555 TSE: LLM response could not be parsed: Unterminated string starting at: line 1 column 98 (char 97) | suggestion=Retry this row or inspect manually. | name=Listed Index Fund Australian REIT (S&P/ASX200 A-REIT) | isin=
-[REVIEW_ERROR] 1573 TSE: LLM response could not be parsed: Unterminated string starting at: line 1 column 91 (char 90) | suggestion=Retry this row or inspect manually. | name=China Bear -1x HSCEI ETF | isin=
-[REVIEW_ERROR] 51FL LSE: LLM response could not be parsed: Unterminated string starting at: line 1 column 91 (char 90) | suggestion=Retry this row or inspect manually. | name=SOCIETATEA ENERGETICA ELECTRICA SA GDR (EACH REPR 4ORD) (144A) | isin=US83367Y1082
-[REVIEW_ERROR] 8508 TSE: LLM response could not be parsed: Unterminated string starting at: line 1 column 42 (char 41) | suggestion=Retry this row or inspect manually. | name=J Trust Co.,Ltd. | isin=
-[REVIEW_ERROR] 8951 TSE: LLM response could not be parsed: Unterminated string starting at: line 1 column 94 (char 93) | suggestion=Retry this row or inspect manually. | name=Nippon Building Fund Inc. | isin=
-[REVIEW_ERROR] 900300 KOSDAQ: LLM response could not be parsed: Unterminated string starting at: line 1 column 98 (char 97) | suggestion=Retry this row or inspect manually. | name=Organic Tea Cosmetics Holdings Co. Ltd. | isin=HK0000312568
-[REVIEW_ERROR] ACWX39 B3: LLM response could not be parsed: Unterminated string starting at: line 1 column 92 (char 91) | suggestion=Retry this row or inspect manually. | name=ISHARES MSCI ACWI EX U.S. ETF | isin=BRACWXBDR001
-[REVIEW_ERROR] AFRINSURE NGX: LLM response could not be parsed: Unterminated string starting at: line 1 column 96 (char 95) | suggestion=Retry this row or inspect manually. | name=AFRICAN ALLIANCE INSURANCE PLC | isin=NGAFRINSURE4
-[REVIEW_ERROR] AGESY OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 144 (char 143) | suggestion=Retry this row or inspect manually. | name=ageas SA/NV | isin=US00844W2089
-[REVIEW_ERROR] ALZR11 B3: LLM response could not be parsed: Unterminated string starting at: line 1 column 178 (char 177) | suggestion=Retry this row or inspect manually. | name=ALIANZA TRUST RENDA IMOBILIARIA FII RESP LIM | isin=BRALZRCTF006
-[REVIEW_ERROR] AMAR3 B3: LLM response could not be parsed: Unterminated string starting at: line 1 column 193 (char 192) | suggestion=Retry this row or inspect manually. | name=MARISA LOJAS S.A. | isin=BRAMARACNOR4
-[REVIEW_ERROR] ARCI LSE: LLM response could not be parsed: Unterminated string starting at: line 1 column 94 (char 93) | suggestion=Retry this row or inspect manually. | name=ARK Artificial Intelligence & Robotics UCITS ETF Class A USD Accumulation GBP | isin=ID1000161003
-[REVIEW_ERROR] ARMH NYSE ARCA: LLM response could not be parsed: Unterminated string starting at: line 1 column 102 (char 101) | suggestion=Retry this row or inspect manually. | name=Arm Holdings PLC ADRhedged | isin=US74016W7598
-[REVIEW_ERROR] ASCBF OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 48 (char 47) | suggestion=Retry this row or inspect manually. | name=A SPAC II Acquisition Corp. | isin=VGG0543H1091
-[REVIEW_ERROR] ASOZF OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 43 (char 42) | suggestion=Retry this row or inspect manually. | name=Asseco Poland S.A | isin=AU000000ACP7
-[REVIEW_ERROR] AWEVF OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 113 (char 112) | suggestion=Retry this row or inspect manually. | name=Alphawave IP Group plc | isin=CAG033551078
-[REVIEW_ERROR] BAER39 B3: LLM response could not be parsed: Unterminated string starting at: line 1 column 92 (char 91) | suggestion=Retry this row or inspect manually. | name=Ishares Us Aerospace & Defense ETF | isin=BRBAERBDR003
-[REVIEW_ERROR] BCRB39 B3: LLM response could not be parsed: Expecting ',' delimiter: line 1 column 232 (char 231) | suggestion=Retry this row or inspect manually. | name=ISHARES LOW CARBON OPTIMIZED MSCI ACWI ETF | isin=BRBCRBBDR005
-[REVIEW_ERROR] BEWG39 B3: LLM response could not be parsed: Unterminated string starting at: line 1 column 111 (char 110) | suggestion=Retry this row or inspect manually. | name=Ishares Msci Germany ETF | isin=BRBEWGBDR000
-[REVIEW_ERROR] BEWL39 B3: LLM response could not be parsed: Unterminated string starting at: line 1 column 233 (char 232) | suggestion=Retry this row or inspect manually. | name=iShares Inc. - iShares MSCI Switzerland ETF | isin=BRBEWLBDR000
-[REVIEW_ERROR] BEWO39 B3: LLM response could not be parsed: Unterminated string starting at: line 1 column 130 (char 129) | suggestion=Retry this row or inspect manually. | name=ISHARES MSCI AUSTRIA ETF | isin=BRBEWOBDR004
-[REVIEW_ERROR] BEZU39 B3: LLM response could not be parsed: Unterminated string starting at: line 1 column 92 (char 91) | suggestion=Retry this row or inspect manually. | name=Ishares Msci Eurozone ETF | isin=BRBEZUBDR004
-[REVIEW_ERROR] BKMA LSE: LLM response could not be parsed: Unterminated string starting at: line 1 column 91 (char 90) | suggestion=Retry this row or inspect manually. | name=BANKMUSCAT (S.A.O.G) GDR (EACH REPR 4 COM STK) (144A) | isin=US0637461015
-[REVIEW_ERROR] BPF TSX: LLM response could not be parsed: Unterminated string starting at: line 1 column 98 (char 97) | suggestion=Retry this row or inspect manually. | name=Boston Pizza Royalties Income Fund | isin=
-[REVIEW_ERROR] BRNA BVB: LLM response could not be parsed: Unterminated string starting at: line 1 column 93 (char 92) | suggestion=Retry this row or inspect manually. | name=ROMNAV SA BRAILA | isin=ID1000125602
-[REVIEW_ERROR] BTSNY OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 89 (char 88) | suggestion=Retry this row or inspect manually. | name=Betsson AB (publ) | isin=US08764P1030
-[REVIEW_ERROR] BURBY OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 127 (char 126) | suggestion=Retry this row or inspect manually. | name=Burberry Group Plc | isin=US12082W2044
-[REVIEW_ERROR] BWOR39 B3: LLM response could not be parsed: Unterminated string starting at: line 1 column 71 (char 70) | suggestion=Retry this row or inspect manually. | name=XTRACKERS MSCI WORLD UCITS ETF | isin=BRBWORBDR006
-[REVIEW_ERROR] CACU BVB: LLM response could not be parsed: Unterminated string starting at: line 2 column 9 (char 382) | suggestion=Retry this row or inspect manually. | name=Sifi CJ Logistic SA | isin=ROCACUACNOR8
-[REVIEW_ERROR] CEIR LSE: LLM response could not be parsed: Unterminated string starting at: line 1 column 88 (char 87) | suggestion=Retry this row or inspect manually. | name=Compal Electronics Inc. GDR Reg S | isin=US20440Y2000
-[REVIEW_ERROR] CFCI OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 91 (char 90) | suggestion=Retry this row or inspect manually. | name=CIPHER-CORE Inc. | isin=KE2000002168
-[REVIEW_ERROR] CFMOF OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 113 (char 112) | suggestion=Retry this row or inspect manually. | name=Cofinimmo SA/NV | isin=
-[REVIEW_ERROR] CFRHF OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 193 (char 192) | suggestion=Retry this row or inspect manually. | name=Compagnie Financière Richemont SA | isin=US2043191079
-[REVIEW_ERROR] CGLD OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 42 (char 41) | suggestion=Retry this row or inspect manually. | name=Buscar Co | isin=US12316W2026
-[REVIEW_ERROR] CHIC SET: LLM response could not be parsed: Unterminated string starting at: line 1 column 90 (char 89) | suggestion=Retry this row or inspect manually. | name=Chic Republic PCL | isin=US37950E8049
-[REVIEW_ERROR] CPIC LSE: LLM response could not be parsed: Unterminated string starting at: line 1 column 88 (char 87) | suggestion=Retry this row or inspect manually. | name=China Pacific Insurance (Group) Co. Ltd. | isin=US16951T1198
-[REVIEW_ERROR] CRB Euronext: LLM response could not be parsed: Unterminated string starting at: line 1 column 92 (char 91) | suggestion=Retry this row or inspect manually. | name=Lyxor Commodities Refinitiv/CoreCommodity CRB TR UCITS ETF - Acc-EUR | isin=AU000000CRB1
-[REVIEW_ERROR] CRYIF OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 101 (char 100) | suggestion=Retry this row or inspect manually. | name=Crystal International Group Ltd. | isin=
-[REVIEW_ERROR] CSSXF OTC: LLM response could not be parsed: Expecting ',' delimiter: line 1 column 195 (char 194) | suggestion=Retry this row or inspect manually. | name=China Shuifa Singyes Energy Holdings Limited | isin=
-[REVIEW_ERROR] CYPC LSE: LLM response could not be parsed: Unterminated string starting at: line 1 column 88 (char 87) | suggestion=Retry this row or inspect manually. | name=China Yangtze Power Co. Ltd. GDR | isin=US16955G1132
-[REVIEW_ERROR] DCP TSX: LLM response could not be parsed: Unterminated string starting at: line 1 column 94 (char 93) | suggestion=Retry this row or inspect manually. | name=Desjardins Canadian Preferred Share Index ETF | isin=CA25058Y1034
-[REVIEW_ERROR] DPCDF OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 92 (char 91) | suggestion=Retry this row or inspect manually. | name=DPC DASH LTD/ADR | isin=VGG2R04S1048
-[REVIEW_ERROR] DPM TSX: LLM response could not be parsed: Unterminated string starting at: line 1 column 91 (char 90) | suggestion=Retry this row or inspect manually. | name=Dundee Precious Metals Inc | isin=AU0000413890
-[REVIEW_ERROR] DTB NYSE: LLM response could not be parsed: Unterminated string starting at: line 1 column 292 (char 291) | suggestion=Retry this row or inspect manually. | name=DTE Energy Company 2020 Series | isin=KE0000000158
-[REVIEW_ERROR] EGLE NYSE ARCA: LLM response could not be parsed: Unterminated string starting at: line 1 column 97 (char 96) | suggestion=Retry this row or inspect manually. | name=Global X S&P 500 U.S. Revenue Leaders ETF | isin=US37960A3620
-[REVIEW_ERROR] EMWPF OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 110 (char 109) | suggestion=Retry this row or inspect manually. | name=Eros Media World Plc | isin=USG3788R1052
-[REVIEW_ERROR] EPOAY OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 113 (char 112) | suggestion=Retry this row or inspect manually. | name=Epiroc Aktiebolag | isin=US29429L4023
-[REVIEW_ERROR] EUXTF OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 185 (char 184) | suggestion=Retry this row or inspect manually. | name=Euronext N.V | isin=AU000000ENX0
-[REVIEW_ERROR] EVMT NASDAQ: LLM response could not be parsed: Unterminated string starting at: line 1 column 94 (char 93) | suggestion=Retry this row or inspect manually. | name=Invesco Electric Vehicle Metals Commodity Strategy No K-1 ETF | isin=US46090F2092
-[REVIEW_ERROR] EWJV39 B3: LLM response could not be parsed: Unterminated string starting at: line 1 column 89 (char 88) | suggestion=Retry this row or inspect manually. | name=ISHARES MSCI JAPAN VALUE ETF | isin=BREWJVBDR002
-[REVIEW_ERROR] FADL LSE: LLM response could not be parsed: Unterminated string starting at: line 1 column 91 (char 90) | suggestion=Retry this row or inspect manually. | name=Fadel Partners Inc | isin=USU3033R1024
-[REVIEW_ERROR] GARPF OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 111 (char 110) | suggestion=Retry this row or inspect manually. | name=Golden Agri-Resources Ltd | isin=MU0117U00026
-[REVIEW_ERROR] GGBL ASX: LLM response could not be parsed: Unterminated string starting at: line 12 column 14 (char 124) | suggestion=Retry this row or inspect manually. | name=Betashares Wealthbuilder Global Geared Complex Etf | isin=AU0000420358
-[REVIEW_ERROR] GLPL PSX: LLM response could not be parsed: Unterminated string starting at: line 1 column 203 (char 202) | suggestion=Retry this row or inspect manually. | name=Gillette Pakistan Ltd | isin=IL0010919335
-[REVIEW_ERROR] GSSC NYSE ARCA: LLM response could not be parsed: Unterminated string starting at: line 1 column 168 (char 167) | suggestion=Retry this row or inspect manually. | name=Goldman Sachs ActiveBeta® U.S. Small Cap Equity ETF | isin=EGS30441C017
-[REVIEW_ERROR] HBCN BMV: LLM response could not be parsed: Unterminated string starting at: line 1 column 91 (char 90) | suggestion=Retry this row or inspect manually. | name=HSBC Holdings plc | isin=US4042804066
-[REVIEW_ERROR] HMDCF OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 66 (char 65) | suggestion=Retry this row or inspect manually. | name=HUTCHMED (China) Limited | isin=JP3787000003
-[REVIEW_ERROR] HONYFLOUR NGX: LLM response could not be parsed: Unterminated string starting at: line 1 column 93 (char 92) | suggestion=Retry this row or inspect manually. | name=HONEYWELL FLOUR MILL PLC | isin=NGHONYFLOUR7
-[REVIEW_ERROR] HUI LSE: LLM response could not be parsed: Unterminated string starting at: line 1 column 90 (char 89) | suggestion=Retry this row or inspect manually. | name=HYDROGEN UTOPIA INTERNATIONAL PLC | isin=IT0005618423
-[REVIEW_ERROR] IF1 ASX: LLM response could not be parsed: Unterminated string starting at: line 1 column 87 (char 86) | suggestion=Retry this row or inspect manually. | name=IBERDROLA FINANZAS, S.A.U. | isin=
-[REVIEW_ERROR] IHRMF OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 112 (char 111) | suggestion=Retry this row or inspect manually. | name=iShares Public Limited Company - iShares MSCI Japan UCITS ETF USD (Dist) | isin=
-[REVIEW_ERROR] IIP TSX: LLM response could not be parsed: Unterminated string starting at: line 1 column 96 (char 95) | suggestion=Retry this row or inspect manually. | name=InterRent Real Estate Investment Trust | isin=
-[REVIEW_ERROR] INFI TSXV: LLM response could not be parsed: Unterminated string starting at: line 1 column 94 (char 93) | suggestion=Retry this row or inspect manually. | name=Infinitum Copper Corp. | isin=CA45675B1040
-[REVIEW_ERROR] INGR NYSE: LLM response could not be parsed: Unterminated string starting at: line 1 column 91 (char 90) | suggestion=Retry this row or inspect manually. | name=Ingredion Incorporated | isin=US4571871023
-[REVIEW_ERROR] IPB NYSE: LLM response could not be parsed: Unterminated string starting at: line 1 column 125 (char 124) | suggestion=Retry this row or inspect manually. | name=Merrill Lynch & Co., Inc. 6.0518% Index Plus Trust Certificates Series 2003-1 | isin=AU000000IPB2
-[REVIEW_ERROR] IPCEF OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 112 (char 111) | suggestion=Retry this row or inspect manually. | name=ISPACE INC. | isin=JP3102360009
-[REVIEW_ERROR] ISCHF OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 97 (char 96) | suggestion=Retry this row or inspect manually. | name=ISHARES ETF CH ISHARES SWISS DOMESTIC GOVT BD 3-7 ETF CH | isin=
-[REVIEW_ERROR] IYWCL SSE_CL: LLM response could not be parsed: Unterminated string starting at: line 1 column 92 (char 91) | suggestion=Retry this row or inspect manually. | name=iShares Trust - iShares U.S. Technology ETF | isin=
-[REVIEW_ERROR] KINUF OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 96 (char 95) | suggestion=Retry this row or inspect manually. | name=Kintetsu Group Holdings Co.Ltd | isin=
-[REVIEW_ERROR] LKSGF OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 155 (char 154) | suggestion=Retry this row or inspect manually. | name=Luks Group (Vietnam Holdings) Company Limited | isin=
-[REVIEW_ERROR] LO1 ASX: LLM response could not be parsed: Unterminated string starting at: line 1 column 105 (char 104) | suggestion=Retry this row or inspect manually. | name=LLOYDS BANKING GROUP PLC | isin=
-[REVIEW_ERROR] LU7 ASX: LLM response could not be parsed: Unterminated string starting at: line 1 column 252 (char 251) | suggestion=Retry this row or inspect manually. | name=LITHIUM UNIVERSE LIMITED | isin=AU000000MGG2
-[REVIEW_ERROR] MAPT3 B3: LLM response could not be parsed: Unterminated string starting at: line 1 column 101 (char 100) | suggestion=Retry this row or inspect manually. | name=CEMEPE INVESTIMENTOS S.A. | isin=BRMAPTACNOR8
-[REVIEW_ERROR] MARK OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 94 (char 93) | suggestion=Retry this row or inspect manually. | name=Remark Holdings Inc | isin=ID1000140106
-[REVIEW_ERROR] MCNICHOLS NGX: LLM response could not be parsed: Unterminated string starting at: line 1 column 47 (char 46) | suggestion=Retry this row or inspect manually. | name=MCNICHOLS NIGERIA PLC | isin=NGMCNICHOLS7
-[REVIEW_ERROR] MMVVF OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 43 (char 42) | suggestion=Retry this row or inspect manually. | name=Multimetaverse Holdings Ltd | isin=VGG6360J1021
-[REVIEW_ERROR] NLB LSE: LLM response could not be parsed: Unterminated string starting at: line 1 column 90 (char 89) | suggestion=Retry this row or inspect manually. | name=Nova Ljubljanska Banka d.d. | isin=US66980N2036
-[REVIEW_ERROR] NPFMCRFBK NGX: LLM response could not be parsed: Unterminated string starting at: line 1 column 172 (char 171) | suggestion=Retry this row or inspect manually. | name=NPF MICRO FINANCE BANK PLC | isin=NGNPFMCRFBK0
-[REVIEW_ERROR] NXTG TSX: LLM response could not be parsed: Unterminated string starting at: line 1 column 91 (char 90) | suggestion=Retry this row or inspect manually. | name=First Trust Indxx NextG ETF | isin=AU0000207912
-[REVIEW_ERROR] OTPD LSE: LLM response could not be parsed: Unterminated string starting at: line 1 column 91 (char 90) | suggestion=Retry this row or inspect manually. | name=OTP Bank Plc | isin=USX607461166
-[REVIEW_ERROR] PRAG XETRA: LLM response could not be parsed: Unterminated string starting at: line 4 column 3 (char 71) | suggestion=Retry this row or inspect manually. | name=Amundi Index Solutions - Amundi Prime Global Govies UCITS ETF DR (C) | isin=LU2089238971
-[REVIEW_ERROR] PSB TSX: LLM response could not be parsed: Unterminated string starting at: line 1 column 92 (char 91) | suggestion=Retry this row or inspect manually. | name=Invesco 1-5 Year Laddered Investment Grade Corporate Bond Index ETF | isin=CA46138N1078
-[REVIEW_ERROR] PSGTF OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 115 (char 114) | suggestion=Retry this row or inspect manually. | name=PT Semen Indonesia (Persero) Tbk | isin=
-[REVIEW_ERROR] PSKOF OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 62 (char 61) | suggestion=Retry this row or inspect manually. | name=Polski Koncern Naftowy ORLEN Spólka Akcyjna | isin=
-[REVIEW_ERROR] PTR BVB: LLM response could not be parsed: Unterminated string starting at: line 1 column 93 (char 92) | suggestion=Retry this row or inspect manually. | name=Rompetrol Well | isin=AU000000PTR5
-[REVIEW_ERROR] QHE LSE: LLM response could not be parsed: Unterminated string starting at: line 1 column 87 (char 86) | suggestion=Retry this row or inspect manually. | name=Quantum Helium Limited | isin=AU0000XINET1
-[REVIEW_ERROR] QSPD XETRA: LLM response could not be parsed: Unterminated string starting at: line 9 column 18 (char 139) | suggestion=Retry this row or inspect manually. | name=Invesco S&P 500 Quality UCITS ETF â€“ Dist | isin=IE000SNCKVM9
-[REVIEW_ERROR] RCR.P TSXV: LLM response could not be parsed: Unterminated string starting at: line 2 column 14 (char 140) | suggestion=Retry this row or inspect manually. | name=Canna 8 Investment Trust | isin=
-[REVIEW_ERROR] RDS TSXV: LLM response could not be parsed: Expecting ',' delimiter: line 1 column 54 (char 53) | suggestion=Retry this row or inspect manually. | name=Ressources Minieres Radisson Inc | isin=AU000000RDS3
-[REVIEW_ERROR] RGI NYSE ARCA: LLM response could not be parsed: Unterminated string starting at: line 1 column 125 (char 124) | suggestion=Retry this row or inspect manually. | name=Invesco S&P 500® Equal Weight Industrials ETF | isin=CA75622R1001
-[REVIEW_ERROR] RTBRISCOE NGX: LLM response could not be parsed: Unterminated string starting at: line 1 column 47 (char 46) | suggestion=Retry this row or inspect manually. | name=R T BRISCOE PLC | isin=NGRTBRISCOE9
-[REVIEW_ERROR] SAGE TSXV: LLM response could not be parsed: Unterminated string starting at: line 1 column 99 (char 98) | suggestion=Retry this row or inspect manually. | name=Sage Potash Corp. | isin=US78667J1088
-[REVIEW_ERROR] SAK SET: LLM response could not be parsed: Unterminated string starting at: line 1 column 93 (char 92) | suggestion=Retry this row or inspect manually. | name=Saksiam Leasing Public Company Limited | isin=JP3399310006
-[REVIEW_ERROR] SDC SET: LLM response could not be parsed: Unterminated string starting at: line 1 column 92 (char 91) | suggestion=Retry this row or inspect manually. | name=Samart Digital Public Company Limited | isin=US83192H1068
-[REVIEW_ERROR] SDIC LSE: LLM response could not be parsed: Unterminated string starting at: line 5 column 21 (char 152) | suggestion=Retry this row or inspect manually. | name=SDIC Power Holdings Co Ltd GDR - Reg S | isin=US78397C2098
-[REVIEW_ERROR] SFG WSE: LLM response could not be parsed: Unterminated string starting at: line 1 column 93 (char 92) | suggestion=Retry this row or inspect manually. | name=Silvano Fashion Group AS | isin=EE3100001751
-[REVIEW_ERROR] SIDN BMV: LLM response could not be parsed: Unterminated string starting at: line 1 column 91 (char 90) | suggestion=Retry this row or inspect manually. | name=Companhia Siderúrgica Nacional | isin=US20440W1053
-[REVIEW_ERROR] SILK11 B3: LLM response could not be parsed: Unterminated string starting at: line 1 column 92 (char 91) | suggestion=Retry this row or inspect manually. | name=IT NOW ETF CONNECT E FUND MSCI CHINA A50 FDO DE IN | isin=BRSILKCTF009
-[REVIEW_ERROR] SIRM XETRA: LLM response could not be parsed: Unterminated string starting at: line 1 column 90 (char 89) | suggestion=Retry this row or inspect manually. | name=SIRMA GROUP HOLD. EO 0,51 | isin=BG1100032140
-[REVIEW_ERROR] SLGC TSX: LLM response could not be parsed: Unterminated string starting at: line 1 column 93 (char 92) | suggestion=Retry this row or inspect manually. | name=Sun Life MFS Global Core Plus Bond Fund | isin=US83444K1051
-[REVIEW_ERROR] SOXD TSX: LLM response could not be parsed: Unterminated string starting at: line 1 column 92 (char 91) | suggestion=Retry this row or inspect manually. | name=MegaShort (-3X) US Semiconductors Daily Leveraged Alternative ETF | isin=
-[REVIEW_ERROR] SPMD NYSE ARCA: LLM response could not be parsed: Unterminated string starting at: line 1 column 102 (char 101) | suggestion=Retry this row or inspect manually. | name=SPDR Russell Small Cap Completeness | isin=EGS73BR1C013
-[REVIEW_ERROR] SRU TSX: LLM response could not be parsed: Unterminated string starting at: line 1 column 41 (char 40) | suggestion=Retry this row or inspect manually. | name=SmartCentres Real Estate Investment Trust | isin=
-[REVIEW_ERROR] SVN HNX: LLM response could not be parsed: Unterminated string starting at: line 1 column 90 (char 89) | suggestion=Retry this row or inspect manually. | name=Vexilla Viet Nam Group JSC | isin=VN000000SVN5
-[REVIEW_ERROR] TDAQ BATS: LLM response could not be parsed: Unterminated string starting at: line 1 column 42 (char 41) | suggestion=Retry this row or inspect manually. | name=ETF Opportunities Trust TappAlp | isin=
-[REVIEW_ERROR] TEEG LSE: LLM response could not be parsed: Unterminated string starting at: line 1 column 205 (char 204) | suggestion=Retry this row or inspect manually. | name=Telecom Egypt Company S.A.E | isin=US87927T2024
-[REVIEW_ERROR] TRANSPOWER NGX: LLM response could not be parsed: Unterminated string starting at: line 1 column 94 (char 93) | suggestion=Retry this row or inspect manually. | name=TRANSCORP POWER PLC | isin=NGTRANSPOWE3
-[REVIEW_ERROR] TTNMF OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 99 (char 98) | suggestion=Retry this row or inspect manually. | name=Toho Titanium Co Ltd | isin=CA8883411040
-[REVIEW_ERROR] TURK39 B3: LLM response could not be parsed: Unterminated string starting at: line 1 column 92 (char 91) | suggestion=Retry this row or inspect manually. | name=ISHARES MSCI TURKEY ETF | isin=BRTURKBDR000
-[REVIEW_ERROR] UNJCF OTC: LLM response could not be parsed: Unterminated string starting at: line 1 column 109 (char 108) | suggestion=Retry this row or inspect manually. | name=Unicaja Banco S.A | isin=AU0000113565
-[REVIEW_ERROR] UTIP LSE: LLM response could not be parsed: Unterminated string starting at: line 1 column 93 (char 92) | suggestion=Retry this row or inspect manually. | name=SPDR Barclays U.S. TIPS UCITS | isin=AU0000292831
-[REVIEW_ERROR] WADA XETRA: LLM response could not be parsed: Unterminated string starting at: line 1 column 98 (char 97) | suggestion=Retry this row or inspect manually. | name=WisdomTree Cardano EUR | isin=GB00BNGJ9J32
-[REVIEW_ERROR] XESP OTC: LLM response could not be parsed: Unterminated string starting at: line 8 column 14 (char 167) | suggestion=Retry this row or inspect manually. | name=CannAssist International Corp | isin=LU0592216393
-[REVIEW_ERROR] HLFDF OTC: LLM response could not be parsed: Unterminated string starting at: line 3 column 29 (char 629) | suggestion=Retry this row or inspect manually. | name=Halfords Group plc | isin=CA08660X1015
+Integrated Fix Classes
+
+- Reclassified clear exchange-traded-product rows whose names contain "Exchange Traded Fund".
+- Added missing ISIN-prefix country mappings for several valid exchange prefixes: BG, FO, GA, GH, LI, LK, MC, MT, MU, NG, PK, SI, ZW.
+- Fixed review-alias removal order so manually removed identifier/WKN aliases are not re-added after the removal phase.
+- Rebuilt tickers, listings, listing index, aliases, identifiers, cross-listings, SQLite, JSON, and Parquet artifacts.
+- Updated README snapshot metrics to the rebuilt Codex-reviewed state.
+
+
+Concrete Corrections Applied
+
+- KRX/KOSDAQ label corrections: 218410 -> RFHIC, 225570 -> NEXON Games, 267250 -> HD HYUNDAI, 329180 -> HD HYUNDAI HEAVY INDUSTRIES.
+- KRX ETF label corrections: 449780 -> KIWOOM 미국S&P500(H), 452360 -> SOL 미국배당다우존스(H).
+- SSE typo correction: 520550 -> China Merchants Fund Management Co. Ltd. - High Dividend Hk Equities Fund.
+- False alias removals: HUG/WSE, KLR/LSE, BNET/OTC, BOLT/NASDAQ, BMR/NASDAQ, ACC/SET, ABR/NYSE, AAP/NYSE, ACB/NASDAQ, AAM/NYSE, BOL/Euronext, BNJ/NYSE, BOK/PSX, BRC/NYSE, BTI/NYSE, BWB/NASDAQ, BPM/LSE, CAMP/NASDAQ, SSE 600550/603348/688056, ELMA/OTC, EIS/NYSE ARCA, FTSM/NASDAQ, FINC/TSX, RAIL/NASDAQ, RDN/NYSE, RTH/NASDAQ, RVT/NYSE, SHE/NYSE ARCA, TAN/NYSE ARCA, RCT/NASDAQ, RAMP/NYSE, PFM/NASDAQ, NIM/TSXV, MFG/NYSE, MRC/LSE, MMS/NYSE, MTH/NYSE, MTO/LSE, NEM/NYSE.
+- Contaminated ISINs cleared where no stronger replacement source was available: BNET/OTC, BOLT/NASDAQ, BMR/NASDAQ, ACC/SET, AAGAF/OTC, ELMA/OTC, FTSM/NASDAQ, FINC/TSX, RAIL/NASDAQ, RDN/NYSE, RTH/NASDAQ, RVT/NYSE, SHE/NYSE ARCA, TAN/NYSE ARCA, RCT/NASDAQ, MFG/NYSE, MRC/LSE, MIN/NYSE, MTH/NYSE, MTO/LSE, MMS/NYSE, KLR/LSE.
+- Contaminated ISIN replaced where sufficiently clear: NEM/NYSE -> US6516391066.
+- Country fixes from clear context: BNET/OTC US, BMR/NASDAQ Israel, ELMA/OTC US, RAIL/NASDAQ US, RDN/NYSE US, RTH/NASDAQ US, RVT/NYSE US, SHE/NYSE ARCA US, TAN/NYSE ARCA US, MIN/NYSE US, MTH/NYSE US, MMS/NYSE US, NEM/NYSE US.
+- Sector fixes from clear context: KLR/LSE -> Industrials, MRC/LSE -> Financials, RDN/NYSE -> Financials, MTH/NYSE -> Consumer Discretionary.
+
+
+Deliberately Not Changed
+
+- TOETF/OTC: kept as-is for now. Worker found conflicting classification signals: SEC indicates TOSEI CORP/ADR stock context, while existing EODHD/local review data classifies the row as ETF. This needs a stricter OTC/SEC source decision before changing asset_type.
+- ENKA/CSE_LK: left unchanged. The name looks suspicious, but the row needs venue-specific evidence before changing country/exchange/name.
+- Several cleared ISIN rows are now intentionally missing ISIN. A false ISIN is worse than a missing ISIN; these should go into the next sourced backfill pass.

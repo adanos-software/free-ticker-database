@@ -200,6 +200,7 @@ ETP_NAME_PATTERNS = (
     re.compile(r"\betf\b", re.IGNORECASE),
     re.compile(r"\betn\b", re.IGNORECASE),
     re.compile(r"\betp\b", re.IGNORECASE),
+    re.compile(r"\bexchange traded fund\b", re.IGNORECASE),
     re.compile(r"\bwisdomtree\b", re.IGNORECASE),
     re.compile(r"\bvaneck\b", re.IGNORECASE),
     re.compile(r"^ish\b", re.IGNORECASE),
@@ -323,6 +324,7 @@ ISIN_PREFIX_COUNTRIES = {
     "AT": "Austria",
     "AU": "Australia",
     "BE": "Belgium",
+    "BG": "Bulgaria",
     "BM": "Bermuda",
     "BR": "Brazil",
     "CA": "Canada",
@@ -336,9 +338,12 @@ ISIN_PREFIX_COUNTRIES = {
     "EG": "Egypt",
     "ES": "Spain",
     "FI": "Finland",
+    "FO": "Faroe Islands",
     "FR": "France",
+    "GA": "Gabon",
     "GB": "United Kingdom",
     "GG": "Guernsey",
+    "GH": "Ghana",
     "GR": "Greece",
     "HK": "Hong Kong",
     "HU": "Hungary",
@@ -352,25 +357,34 @@ ISIN_PREFIX_COUNTRIES = {
     "JP": "Japan",
     "KR": "South Korea",
     "KY": "Cayman Islands",
+    "LI": "Liechtenstein",
+    "LK": "Sri Lanka",
     "LU": "Luxembourg",
+    "MC": "Monaco",
+    "MT": "Malta",
+    "MU": "Mauritius",
     "MX": "Mexico",
     "MY": "Malaysia",
     "NL": "Netherlands",
+    "NG": "Nigeria",
     "NO": "Norway",
     "NZ": "New Zealand",
     "PE": "Peru",
     "PH": "Philippines",
+    "PK": "Pakistan",
     "PL": "Poland",
     "PT": "Portugal",
     "QA": "Qatar",
     "RO": "Romania",
     "SE": "Sweden",
     "SG": "Singapore",
+    "SI": "Slovenia",
     "TH": "Thailand",
     "TR": "Turkey",
     "TW": "Taiwan",
     "VN": "Vietnam",
     "ZA": "South Africa",
+    "ZW": "Zimbabwe",
 }
 
 # ---------------------------------------------------------------------------
@@ -1724,10 +1738,10 @@ def cleaned_rows():
             merged_aliases.extend(extra_aliases.get(row["ticker"], []))
             identifier = identifier_lookup.get(row_key) or identifier_lookup.get((row["ticker"], ""))
         alias_removals = review_alias_removals.get(row_key, set())
-        if alias_removals:
-            merged_aliases = [alias for alias in merged_aliases if alias not in alias_removals]
         if identifier and identifier["wkn"]:
             merged_aliases.append(identifier["wkn"])
+        if alias_removals:
+            merged_aliases = [alias for alias in merged_aliases if alias not in alias_removals]
         merged = dict(row)
         if "isin" not in review_metadata_updates.get(row_key, {}):
             official_isin = official_isin_fallbacks.get((row["ticker"], row["exchange"], row["asset_type"]), "")

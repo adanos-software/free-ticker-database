@@ -144,6 +144,34 @@ def test_residual_alias_collisions_and_metadata_contamination_are_removed():
     assert ticker_exchange_row("TEFN", "BMV") is None
 
 
+def test_codex_worker_collision_findings_are_cleaned():
+    bmr = ticker_exchange_row("BMR", "NASDAQ")
+    rail = ticker_exchange_row("RAIL", "NASDAQ")
+    rdn = ticker_exchange_row("RDN", "NYSE")
+    klr = ticker_exchange_row("KLR", "LSE")
+
+    assert bmr["isin"] == ""
+    assert bmr["country"] == "Israel"
+    assert "ballymore resources" not in bmr["aliases"]
+    assert "A3DV8W" not in bmr["aliases"]
+
+    assert rail["isin"] == ""
+    assert rail["country"] == "United States"
+    assert "railcare group ab" not in rail["aliases"]
+    assert "A0D890" not in rail["aliases"]
+
+    assert rdn["isin"] == ""
+    assert rdn["country"] == "United States"
+    assert rdn["sector"] == "Financials"
+    assert "raiden resources" not in rdn["aliases"]
+    assert "750236" not in rdn["aliases"]
+
+    assert klr["isin"] == ""
+    assert klr["country"] == ""
+    assert klr["sector"] == "Industrials"
+    assert "kaili resources" not in klr["aliases"]
+
+
 def test_generic_fund_wrapper_aliases_removed():
     aliases = {(row["ticker"], row["alias"]) for row in load_csv("aliases.csv")}
     blocked = {
@@ -207,6 +235,14 @@ def test_country_from_isin_handles_vietnam_prefix():
     from scripts.rebuild_dataset import country_from_isin
 
     assert country_from_isin("VN000000IPA5") == "Vietnam"
+
+
+def test_country_from_isin_handles_additional_exchange_prefixes():
+    from scripts.rebuild_dataset import country_from_isin
+
+    assert country_from_isin("MT0000780107") == "Malta"
+    assert country_from_isin("LI0315487269") == "Liechtenstein"
+    assert country_from_isin("PK0043901013") == "Pakistan"
 
 
 def test_vietnam_hnx_official_isin_fallback_corrects_country():
@@ -611,6 +647,14 @@ def test_normalize_input_row_reclassifies_exchange_traded_products():
             "asset_type": "Stock",
         }
     )
+    exchange_traded_fund = normalize_input_row(
+        {
+            "ticker": "DMCS",
+            "name": "Datvest Modified Consumer Staples Exchange Traded Fund",
+            "exchange": "ZSE_ZW",
+            "asset_type": "Stock",
+        }
+    )
     twse_etf = normalize_input_row(
         {
             "ticker": "0052",
@@ -630,6 +674,7 @@ def test_normalize_input_row_reclassifies_exchange_traded_products():
 
     assert wisdomtree["asset_type"] == "ETF"
     assert etn["asset_type"] == "ETF"
+    assert exchange_traded_fund["asset_type"] == "ETF"
     assert twse_etf["asset_type"] == "ETF"
     assert twse_reit["asset_type"] == "ETF"
 
