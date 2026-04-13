@@ -542,6 +542,14 @@ def main() -> None:
     if csv_out:
         write_review_csv(csv_out, review_items)
 
+    def display_path(path: Path | None) -> str | None:
+        if not path:
+            return None
+        try:
+            return str(path.relative_to(ROOT))
+        except ValueError:
+            return str(path)
+
     finding_count = sum(len(item.findings) for item in review_items)
     print(
         json.dumps(
@@ -549,8 +557,8 @@ def main() -> None:
                 "flagged_entries": len(review_items),
                 "findings": finding_count,
                 "min_score": args.min_score,
-                "json_out": str(json_out.relative_to(ROOT)) if json_out else None,
-                "csv_out": str(csv_out.relative_to(ROOT)) if csv_out else None,
+                "json_out": display_path(json_out),
+                "csv_out": display_path(csv_out),
                 "finding_types": payload["summary"],
                 "top_tickers": [item.ticker for item in review_items[:10]],
             },

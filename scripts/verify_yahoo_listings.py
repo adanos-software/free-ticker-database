@@ -3,8 +3,10 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import signal
 import sys
 import time
+from contextlib import contextmanager
 from pathlib import Path
 from typing import Any
 
@@ -112,6 +114,26 @@ def normalize_isin(value: Any) -> str:
     return "" if normalized == "-" else normalized
 
 
+@contextmanager
+def symbol_timeout(seconds: float | None):
+    if not seconds or seconds <= 0:
+        yield
+        return
+
+    previous_handler = signal.getsignal(signal.SIGALRM)
+
+    def raise_timeout(_signum: int, _frame: object) -> None:
+        raise TimeoutError(f"Yahoo symbol fetch exceeded {seconds:g}s")
+
+    signal.signal(signal.SIGALRM, raise_timeout)
+    signal.setitimer(signal.ITIMER_REAL, seconds)
+    try:
+        yield
+    finally:
+        signal.setitimer(signal.ITIMER_REAL, 0)
+        signal.signal(signal.SIGALRM, previous_handler)
+
+
 def evaluate_row(row: dict[str, Any], yahoo_result: dict[str, Any]) -> dict[str, Any]:
     yahoo_name = choose_yahoo_name(yahoo_result)
     yahoo_exchange = str(yahoo_result.get("exchange") or "")
@@ -158,7 +180,7 @@ def evaluate_row(row: dict[str, Any], yahoo_result: dict[str, Any]) -> dict[str,
     }
 
 
-def fetch_yahoo_symbol(symbol: str) -> dict[str, Any]:
+def fetch_yahoo_symbol(symbol: str, *, timeout_seconds: float | None = None) -> dict[str, Any]:
     try:
         import yfinance as yf
     except ImportError as exc:  # pragma: no cover - exercised via CLI environment
@@ -166,9 +188,10 @@ def fetch_yahoo_symbol(symbol: str) -> dict[str, Any]:
             "yfinance is required for Yahoo verification. Install it locally with `pip install yfinance`."
         ) from exc
 
-    ticker = yf.Ticker(symbol)
-    info = ticker.info
-    history = ticker.history(period="5d")
+    with symbol_timeout(timeout_seconds):
+        ticker = yf.Ticker(symbol)
+        info = ticker.info
+        history = ticker.history(period="5d")
     exists = bool(info.get("symbol") or len(history) > 0)
     return {
         "exists": exists,
@@ -185,7 +208,12 @@ def fetch_yahoo_symbol(symbol: str) -> dict[str, Any]:
     }
 
 
-def verify_items(items: list[dict[str, Any]], *, delay_seconds: float) -> list[dict[str, Any]]:
+def verify_items(
+    items: list[dict[str, Any]],
+    *,
+    delay_seconds: float,
+    symbol_timeout_seconds: float | None,
+) -> list[dict[str, Any]]:
     results: list[dict[str, Any]] = []
     for index, item in enumerate(items):
         candidates = yahoo_symbol_candidates(str(item["ticker"]), str(item["exchange"]))
@@ -208,7 +236,7 @@ def verify_items(items: list[dict[str, Any]], *, delay_seconds: float) -> list[d
         matched_result = None
         for symbol in candidates:
             try:
-                yahoo_result = fetch_yahoo_symbol(symbol)
+                yahoo_result = fetch_yahoo_symbol(symbol, timeout_seconds=symbol_timeout_seconds)
             except Exception as exc:  # noqa: BLE001
                 last_error = str(exc)
                 continue
@@ -262,6 +290,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--include-ticker", action="append", default=[])
     parser.add_argument("--limit", type=int)
     parser.add_argument("--delay-seconds", type=float, default=0.0)
+    parser.add_argument("--symbol-timeout-seconds", type=float, default=30.0)
     return parser.parse_args(argv)
 
 
@@ -280,7 +309,11 @@ def main(argv: list[str] | None = None) -> None:
     if args.limit is not None:
         items = items[: args.limit]
 
-    results = verify_items(items, delay_seconds=args.delay_seconds)
+    results = verify_items(
+        items,
+        delay_seconds=args.delay_seconds,
+        symbol_timeout_seconds=args.symbol_timeout_seconds,
+    )
     args.json_out.parent.mkdir(parents=True, exist_ok=True)
     args.json_out.write_text(json.dumps(results, indent=2), encoding="utf-8")
     write_csv(args.csv_out, results)

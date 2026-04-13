@@ -353,10 +353,11 @@ def test_contaminated_us_primaries_cleaned():
 
 
 def test_depositary_and_cross_issuer_aliases_removed():
-    ubs = ticker_row("UBS")
+    ubs = listing_ticker_exchange_row("UBS", "NYSE")
     asml_ams = ticker_exchange_row("ASML", "AMS")
 
     assert ticker_row("ARM") is None
+    assert ubs is not None
     assert asml_ams is not None
     assert asml_ams["country"] == "Netherlands"
     assert asml_ams["aliases"] == ""

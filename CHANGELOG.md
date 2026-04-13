@@ -2,6 +2,20 @@
 
 ## [Unreleased]
 
+## [3.8.0] - 2026-04-13
+
+### Added
+
+- Added a local Gemma plausibility-review workflow with resumable checkpoints, human-readable `error.txt` output, accepted-false-positive overrides, and tests for stale finding reconciliation.
+- Added reviewed LLM plausibility accepts for known false positives so local model output does not masquerade as authoritative exchange evidence.
+
+### Changed
+
+- Completed the local Gemma pass across the primary ticker export with zero active structured data findings; remaining review-error rows are parse/retry cases.
+- Applied reviewed Yahoo, XTB, and official cross-market reference overrides to replace or clear same-ticker cross-exchange ISIN contamination.
+- Rebuilt the canonical exports to 53,789 primary tickers, 61,955 listing rows, 45,281 ISIN-covered rows, and 41,714 sector/category-covered rows.
+- Tightened dataset audit coverage for invalid ISIN, country/ISIN, and alias-contamination findings; the rebuilt audit now reports zero flagged entries.
+
 ## [3.7.0] - 2026-04-12
 
 ### Added

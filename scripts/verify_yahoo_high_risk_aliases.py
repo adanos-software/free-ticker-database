@@ -190,7 +190,7 @@ def merge_remove_overrides(path: Path, overrides: list[dict[str, str]]) -> None:
             key
             for row in merged_rows
             for key in row.keys()
-            if key not in preferred_field_order
+            if key and key not in preferred_field_order
         }
     )
     path.parent.mkdir(parents=True, exist_ok=True)

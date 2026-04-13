@@ -1,0 +1,9 @@
+ticker,exchange,field,current_value,reason,confidence
+002793,SZSE,isin,CNE1000026S7,Reviewed false positive: ISIN is valid alphanumeric ISIN and passes the repository ISIN checksum validator.,0.95
+0032,Bursa,isin,MYQ0032OO001,Reviewed false positive: Bursa Malaysia official ISIN masterfile lists this ISIN and it passes the repository ISIN checksum validator.,0.95
+0820EA,Bursa,isin,MYL0820EA000,Reviewed false positive: Bursa Malaysia official ISIN masterfile lists this ETF ISIN and it passes the repository ISIN checksum validator.,0.95
+0QT6,LSE,isin,US3722791098,Reviewed false positive: LSE cross-listing/depositary-style line can use a US-prefix identifier while country remains the underlying issuer domicile France.,0.90
+ACL,TSXV,country_code,AU,Reviewed false positive: TMX official reference carries the AU ISIN/country for this TSXV issuer; exchange country and issuer domicile can differ.,0.90
+BFXI39,B3,isin,BRBFXIBDR001,Reviewed false positive: B3 official instrument data lists this Brazilian BDR ETF ISIN and it passes the repository ISIN checksum validator.,0.95
+SFSREIT,NGX,isin,NGSKYESHELT8,Reviewed false positive: Nigerian ISIN passes the repository ISIN checksum validator for this NGX real-estate trust row.,0.90
+SLQX,XETRA,isin,BGSLOBI02187,Reviewed false positive: Deutsche Boerse official ETF/ETP reference lists the Bulgarian UCITS ETF ISIN for this XETRA listing.,0.95

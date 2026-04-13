@@ -10,7 +10,9 @@ ticker,exchange,alias,reason,confidence
 0QXR,LSE,jeep,"Jeep is a consumer vehicle brand owned by Stellantis, not the company or fund name. Product brand aliases should not be included.",0.87
 0QXR,LSE,ram trucks,"RAM Trucks is a vehicle brand owned by Stellantis, not the issuer name. Product/brand alias.",0.87
 0QYJ,LSE,marc benioff,"Person/celebrity name; should never serve as a ticker alias for the corporate entity Salesforce, Inc.",0.8
+0VGV,LSE,srm entertainment,Residual audit cleanup: alias belongs to a different issuer and creates a direct cross-company collision with SEA.,0.9
 21XJ,XETRA,airbnb,'airbnb' refers to Airbnb Inc. (ABNB); it has no relation to the 21Shares Binance BNB ETP. The phonetic similarity between 'BNB' and 'ABNB' is not a legitimate alias basis.,0.8
+AAL,NASDAQ,anglo american,"Ticker-collision cleanup: Anglo American is the issuer behind the polluted GB ISIN, not American Airlines Group.",0.9
 AAT,NYSE,alta,Yahoo alias verification marked `alta` as likely_other_entity.,
 ABS,OSL,abs cbn,Yahoo alias verification marked `abs cbn` as likely_other_entity.,
 ABS,OSL,asseco business solutions,Yahoo alias verification marked `asseco business solutions` as likely_other_entity.,
@@ -31,6 +33,7 @@ ALT,NASDAQ,alteo,Yahoo alias verification marked `alteo` as likely_other_entity.
 ALT,NASDAQ,altitude,Yahoo alias verification marked `altitude` as likely_other_entity.,
 ALT,NASDAQ,altur slatina,Yahoo alias verification marked `altur slatina` as likely_other_entity.,
 ALT,NASDAQ,alturas minerals,Yahoo alias verification marked `alturas minerals` as likely_other_entity.,
+ALUM,LSE,arab aluminum,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 ALV,NYSE,allianz,Allianz SE is a distinct German insurance company (ETR:ALV); no corporate connection to Autoliv Inc.,0.8
 ALV,NYSE,allianz se vna o.n,German exchange-specific description for Allianz SE shares; entirely unrelated to Autoliv.,0.8
 ALV,NYSE,alvo minerals,Alvo Minerals is a separate ASX-listed mining company; no connection to Autoliv.,0.8
@@ -38,6 +41,9 @@ ALV,NYSE,alvopetro energy,Alvopetro Energy is a separate TSX-listed oil company;
 ALZ,STO,allianz,"Allianz is a major German insurer (ALV on Xetra), entirely unrelated to Alzinova AB. Cross-company collision.",0.85
 AMC,NYSE,amica,Yahoo alias verification marked `amica` as likely_other_entity.,
 AMDD,NASDAQ,advanced micro devices,"AMD (Advanced Micro Devices) is the underlying tracked by this bear ETF, not the issuer. The alias correctly identifies a different entity and would cause severe routing confusion.",0.8
+AMG,NYSE,MGR,Residual audit cleanup: external symbol-style alias collides with other AMG-related listings and is not needed as a name alias.,0.9
+AMG,NYSE,amg advanced metallurgical group,Residual metadata cleanup: alias belongs to the unrelated Amsterdam-listed metallurgical issuer rather than Affiliated Managers Group.,0.95
+AMG,NYSE,atlas metals,Residual metadata cleanup: alias belongs to an unrelated issuer and contaminates the Affiliated Managers Group listing.,0.9
 AMM,XETRA,almaden minerals,Almaden Minerals is a Canadian mining company; no relationship to The Grounds Real Estate Development AG.,0.87
 ANI,XETRA,afine investments,Yahoo alias verification marked `afine investments` as likely_other_entity.,
 ANI,XETRA,asia network international,Yahoo alias verification marked `asia network international` as likely_other_entity.,
@@ -47,10 +53,12 @@ APL,WSE,associate global partners,Yahoo alias verification marked `associate glo
 APO,NYSE,asian palm oil public,Yahoo alias verification marked `asian palm oil public` as likely_other_entity.,
 APS,WSE,aptose biosciences,Yahoo alias verification marked `aptose biosciences` as likely_other_entity.,
 ARG,Euronext,argo investments,Yahoo alias verification marked `argo investments` as likely_other_entity.,
+ARKO,NASDAQ,pt arkora hydro,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 ARL,NYSE,arlen,Yahoo alias verification marked `arlen` as likely_other_entity.,
 ARL,NYSE,astral foods,Yahoo alias verification marked `astral foods` as likely_other_entity.,
 ARL,NYSE,aurum lake mining,Yahoo alias verification marked `aurum lake mining` as likely_other_entity.,
 ARREF,OTC,argo investments,Yahoo alias verification marked `argo investments` as likely_other_entity.,
+ARS,LSE,aerostar bacau,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 ART,LSE,airtasker,Yahoo alias verification marked `airtasker` as likely_other_entity.,
 ART,LSE,argent,Yahoo alias verification marked `argent` as likely_other_entity.,
 ART,LSE,arteche lantegi elkartea,Yahoo alias verification marked `arteche lantegi elkartea` as likely_other_entity.,
@@ -63,6 +71,8 @@ ASL,LSE,argentum silver,Unrelated company; cross-company collision and no overla
 ASL,LSE,automatic systems,Generic/unrelated company name; no overlap with Aberforth Smaller Companies Trust.,0.82
 AST,LSE,arctic stream,Yahoo alias verification marked `arctic stream` as likely_other_entity.,
 AST,LSE,taseco air services jsc,Yahoo alias verification marked `taseco air services jsc` as likely_other_entity.,
+ATG,LSE,articore,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
+ATG,LSE,atm grupa,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 ATT,LSE,altitude minerals,Yahoo alias verification marked `altitude minerals` as likely_other_entity.,
 ATT,LSE,attacq,Yahoo alias verification marked `attacq` as likely_other_entity.,
 ATT,LSE,attendo ab,Yahoo alias verification marked `attendo ab` as likely_other_entity.,
@@ -73,6 +83,9 @@ BAT,STO,brait,Yahoo alias verification marked `brait` as likely_other_entity.,
 BID,HOSE,bid corporation,Bid Corporation is a South African JSE-listed company; it has no relation to the Joint Stock Commercial Bank for Investment and Development of Vietnam (BIDV).,0.82
 BIRD,NASDAQ,blackbird,Yahoo alias verification marked `blackbird` as likely_other_entity.,
 BIRD,NASDAQ,thunderbird minerals,Yahoo alias verification marked `thunderbird minerals` as likely_other_entity.,
+BMC,STO,binh dinh minerals jsc,Dataset audit flagged low company-name overlap; alias belongs to a different BMC issuer and contaminates Brock Milton Capital on STO.,0.95
+BMC,STO,bmc minerals,Dataset audit flagged low company-name overlap; alias belongs to a different BMC issuer and contaminates Brock Milton Capital on STO.,0.9
+BMC,STO,bumech,Dataset audit flagged low company-name overlap; alias belongs to a different BMC issuer and contaminates Brock Milton Capital on STO.,0.9
 BOLT,NASDAQ,biolight life sciences,Yahoo alias verification marked `biolight life sciences` as likely_other_entity.,
 BOLT,NASDAQ,boldt,Yahoo alias verification marked `boldt` as likely_other_entity.,
 BPN,WSE,850518,850518 is the German WKN for BP plc; misattributed to this entry; no relation to Blackpoin.,0.8
@@ -104,10 +117,14 @@ CAMB,Euronext,cambria gold mines,Cambria Gold Mines is an unrelated mining compa
 CAP,Euronext,capitea,Swedish financial company; unrelated to Capgemini SE.,0.8
 CAP,Euronext,cash plus,Generic term with no connection to Capgemini; likely a collision artifact.,0.8
 CAP,Euronext,yen bai forest jsc,Vietnamese forestry company; no connection to Capgemini SE.,0.8
+CARE,NASDAQ,careium,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
+CARE,NASDAQ,metro healthcare indonesia,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 CAT,NYSE,catapult group international,Australian ASX-listed sports analytics company trading as CAT; unrelated to Caterpillar Inc.,0.88
 CAT,NYSE,caxton,No connection to Caterpillar Inc; likely a collision artifact.,0.88
 CAT,NYSE,central azucarera de tarlac,Philippine sugar company listed as CAT on PSE; unrelated to Caterpillar Inc.,0.88
 CBGB,LSE,carlsberg,Carlsberg is a Danish brewer with no connection to a Goldman Sachs China bond ETF; ticker/name similarity caused the contamination.,0.85
+CCAP,NASDAQ,corestate capital holding,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
+CCAP,NASDAQ,qala for financial investments,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 CGNT,NASDAQ,copper giant resources,Unrelated mining company; no lexical or structural connection to Cognyte Software Ltd.,0.82
 CIH,CSE_MA,china index holdings,China Index Holdings is an unrelated Chinese company; no connection to a Moroccan real-estate credit institution.,0.82
 CLS,NYSE,clicks,Clicks Group is a South African retail/pharmacy company (JSE: CLS); unrelated to Celestica Inc.,0.88
@@ -119,10 +136,14 @@ CMG,NYSE,critical minerals,Different company; no connection to Chipotle,0.82
 CNA,NYSE,centrica,"Centrica PLC is a UK energy company; ISIN GB00B033F229 belongs to Centrica, not CNA Financial. Alias contaminated from wrong ISIN source.",0.82
 CNO,NYSE,california nanotechnologies,California Nanotechnologies is an unrelated company; no lexical or corporate connection to CNO Financial Group.,0.82
 CNQ,NYSE,clean teq water,Clean TeQ Water is an unrelated Australian water technology company; no connection to Canadian Natural Resources.,0.85
+CNTB,NASDAQ,pt century textile industry,Residual audit cleanup: alias belongs to an unrelated Indonesian textile issuer and contaminates the biotech listing.,0.95
+CNTX,NASDAQ,pt century textile industry,Residual audit cleanup: alias belongs to an unrelated Indonesian textile issuer and contaminates the therapeutics listing.,0.95
+COF,NYSE,centuria office reit,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 COM,NYSE ARCA,catenon,Yahoo alias verification marked `catenon` as likely_other_entity.,
 COM,NYSE ARCA,comptoir,Yahoo alias verification marked `comptoir` as likely_other_entity.,
 COMB,NYSE ARCA,compagnie du bois sauvage,Compagnie du Bois Sauvage is a Belgian investment holding company; entirely unrelated to this GraniteShares US commodity ETF.,0.83
 COPRD,NYSE MKT,idaho copper,Yahoo alias verification marked `idaho copper` as likely_other_entity.,
+COUR,NYSE,courtois,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 COV,Euronext,cleo diagnostics,"Cleo Diagnostics is ASX:COV, an Australian medical firm — different issuer on a different exchange.",0.8
 COV,Euronext,covalon technologies,"Covalon Technologies is TSXV:COV, a Canadian medical device company — different issuer on a different exchange.",0.8
 CPA,NYSE,colgate-palmolive,Colgate-Palmolive (NYSE: CL) is a completely unrelated consumer goods company. Alias was incorrectly attributed to Copa Holdings.,0.82
@@ -134,8 +155,11 @@ CPI,LSE,cpi europe,Unrelated entity; CPI abbreviation collision with no corporat
 CPRI,NYSE,jimmy choo,"Jimmy Choo is a product brand owned by Capri Holdings, not a company identifier.",0.8
 CPRI,NYSE,michael kors,"Michael Kors is a product brand and celebrity name, not the company/fund name.",0.8
 CPRI,NYSE,versace,"Versace is a brand owned by Capri Holdings, not an issuer name or listing identifier.",0.8
+CPT,NYSE,cpt drives & power,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 CRON,NASDAQ,cannabis,Generic industry/sector term shared across many companies; not a valid company or fund identifier.,0.88
 CRSP,NASDAQ,gene editing,"Generic technology descriptor shared across at least 6 companies (CRSP, EDIT, NTLA, 0IFK, 0JBU, 0VRQ); not a valid issuer-specific alias.",0.9
+CYBP,LSE,cyberark,Residual audit cleanup: product/constituent alias does not identify the ETF share class itself and creates a collision with CYBR.,0.9
+CYBR,LSE,cyberark,Residual audit cleanup: product/constituent alias does not identify the ETF share class itself and creates a collision with CYBP.,0.9
 CYBR,LSE,pt itsec asia,Yahoo alias verification marked `pt itsec asia` as likely_other_entity.,
 DAR,NYSE,dar global,Yahoo alias verification marked `dar global` as likely_other_entity.,
 DAR,NYSE,darelle online solutions,Yahoo alias verification marked `darelle online solutions` as likely_other_entity.,
@@ -147,6 +171,9 @@ DHC,NASDAQ,DHCNI,"DHCNI is an exchange ticker for a separate Diversified Healthc
 DHC,NASDAQ,DHCNL,"DHCNL is a separate Diversified Healthcare Trust notes series ticker, not a company alias.",0.82
 DSN,HOSE,danske bank,Cross-company collision; Danske Bank is a Danish financial institution with no relation to Dam Sen Water Park Corp (Vietnam).,0.82
 DSV,CPH,discovery silver,Cross-company collision; 'Discovery Silver' is a Canadian mining company with no relation to DSV Panalpina A/S.,0.88
+DTE,NYSE,DTB,Residual audit cleanup: unrelated ticker-style alias with weak issuer overlap.,0.9
+DTE,NYSE,DTG,Residual audit cleanup: unrelated ticker-style alias with weak issuer overlap.,0.9
+DTE,NYSE,DTW,Residual audit cleanup: unrelated ticker-style alias with weak issuer overlap.,0.9
 DTE,NYSE,deutsche telekom,Yahoo alias verification marked `deutsche telekom` as likely_other_entity.,
 EA,NASDAQ,285512,"Numeric code consistent with a Thai SET stock identifier for Energy Absolute, not Electronic Arts.",0.82
 EA,NASDAQ,ea sports,"EA Sports is a product brand/division, not the issuer name. Review rules require removing obvious product aliases.",0.82
@@ -158,11 +185,13 @@ ECL,NYSE,ecol,"ECOL was the ticker for US Ecology Holdings, a different company.
 ECL,NYSE,engie energia chile,Unrelated Chilean energy company.,0.88
 ECL,NYSE,excelsior capital,Unrelated company with no connection to Ecolab.,0.88
 EDIT,NASDAQ,gene editing,Generic industry/technology descriptor shared across six distinct companies. Not a valid identifier for Editas Medicine specifically.,0.92
+ELCM,PSX,elite capital modaraba 1st,Official PSX references resolve ELCM to Elahi Cotton Mills Limited; retaining the First Elite Capital Modaraba alias would cross-contaminate two distinct PSX issuers.,0.99
 ELE,NASDAQ,endesa,Endesa is a major Spanish electricity utility (BME:ELE); completely unrelated to Elemental Royalty Corporation and the collision is between two distinct ELE tickers on different exchanges.,0.82
 ELO,OSL,eloro resources,Eloro Resources is a Canadian mining company (TSXV:ELO); unrelated to Elopak AS and clearly a cross-company collision.,0.9
 ELV,NYSE,elevra lithium,Unrelated lithium mining company; shares only a prefix with Elevance.,0.88
 ELV,NYSE,elvila,Unrelated Spanish furniture retailer.,0.88
 EMM,NYSE ARCA,giyani metals,Current EMM row is an ETF; Giyani Metals is an unrelated issuer alias contamination.,0.95
+EPM,NYSE MKT,eclipse metals,"Ticker-collision cleanup: Eclipse Metals is the issuer behind the polluted AU ISIN, not Evolution Petroleum Corporation.",0.9
 ERD,TSX,eroad,EROAD is a New Zealand/ASX telematics company entirely unrelated to Erdene Resource Development on TSX.,0.85
 ESLA,NASDAQ,estée lauder companies,Estée Lauder Companies (NYSE: EL) is an unrelated cosmetics conglomerate; no lexical or business connection to Estrella Immunopharma.,0.85
 ESNT,NYSE,essentra,"Essentra plc is a distinct UK company (LSE: ESNT); only superficially similar name, not an alias for Essent Group Ltd.",0.85
@@ -177,10 +206,17 @@ EWL,NYSE ARCA,edwards lifesciences,"Edwards Lifesciences trades as EW on NYSE, n
 EXP,NYSE,exemplar reitail,Yahoo alias verification marked `exemplar reitail` as likely_other_entity.,
 EXP,NYSE,experience,Yahoo alias verification marked `experience` as likely_other_entity.,
 FAIR,LSE,fairchild gold,Yahoo alias verification marked `fairchild gold` as likely_other_entity.,
+FAST,NASDAQ,fast food indonesia,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
+FAST,NASDAQ,fastned b.v,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 FCHDF,OTC,fairchild gold,Yahoo alias verification marked `fairchild gold` as likely_other_entity.,
 FCL,ASX,fast cables,No lexical or semantic connection to Fineos Corporation Holdings; likely a collision from a different company.,0.85
 FEX,NASDAQ,fenix resources,"Fenix Resources is an ASX-listed Australian mining company with FEX ticker; corresponds to the AU ISIN, not this NASDAQ ETF.",0.8
 FEX,NASDAQ,fjordland exploration,Fjordland Exploration is an unrelated Canadian mining company; cross-company collision.,0.8
+FG,NYSE,FGSN,"Residual audit cleanup: alias points to a different F&G instrument, not the common NYSE line.",0.9
+FG,NYSE,fasadgruppen group,Residual metadata cleanup: alias belongs to the unrelated Swedish construction group rather than F&G Annuities & Life.,0.95
+FGN,NYSE,FGN,Residual audit cleanup: redundant ticker-self alias should not be stored as a name alias.,0.85
+FGN,NYSE,FGSN,Residual audit cleanup: alias points to a different F&G instrument and creates a collision with FG.,0.9
+FID,NASDAQ,fiducian,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 FINGF,OTC,china index holdings,Belongs to a different company (CIH/FTT); no connection to Finning International.,0.8
 FML,ASX,fan milk,Fan Milk is a distinct West African FMCG company; no connection to Focus Minerals.,0.8
 FML,ASX,feroze1888 mills,Feroze1888 Mills is a distinct Pakistani textile company; no connection to Focus Minerals.,0.8
@@ -189,6 +225,7 @@ FTI,NYSE,fortifai,Yahoo alias verification marked `fortifai` as likely_other_ent
 FTI,NYSE,function international,Yahoo alias verification marked `function international` as likely_other_entity.,
 FTT,TSX,885970,Numeric code unrelated to Finning International; likely a stock code for a different instrument.,0.85
 FTT,TSX,china index holdings,China Index Holdings (CIH) is an entirely different company; unrelated to Finning International.,0.85
+GAP,NYSE,gale pacific,Residual audit cleanup: alias belongs to an unrelated Australian issuer and contaminates Gap Inc.,0.95
 GIGA,XETRA,gigante salmon as,Yahoo alias verification marked `gigante salmon as` as likely_other_entity.,
 GIGA,XETRA,gigas hosting,Yahoo alias verification marked `gigas hosting` as likely_other_entity.,
 GIGA,XETRA,gigasun,Yahoo alias verification marked `gigasun` as likely_other_entity.,
@@ -200,18 +237,24 @@ GM,NYSE,chevy,"Brand/product nickname for the Chevrolet division, not the issuer
 GMD,ASX,gemadept,Gemadept is a Vietnamese logistics/shipping company; no connection to Genesis Minerals.,0.82
 GMD,ASX,grupo mexicano de desarrollo,Grupo Mexicano de Desarrollo is a Mexican construction conglomerate; confirmed cross-company collision.,0.82
 GML,ASX,gemfields,Gemfields Group is a separate gemstone mining company; cross-company collision confirmed.,0.82
+GMM,NASDAQ,grammer,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 GOLF,NYSE,golf & co,Yahoo alias verification marked `golf & co` as likely_other_entity.,
+GRIN,NASDAQ,grindrod shipping,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 GRL,LSE,greenlight metals,Yahoo alias verification marked `greenlight metals` as likely_other_entity.,
 GSC,NYSE ARCA,gs chain,Current GSC row is an ETF; gs chain is an unrelated alias contamination.,0.95
+GSF,LSE,grieg seafood a,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 GT,NASDAQ,gt resources,GT Resources is a separate mining company. No relation to Goodyear Tire & Rubber Co.,0.85
 H,NYSE,hydro one,Hydro One is a Canadian utility company unrelated to Hyatt Hotels; cross-company collision.,0.82
 HBAN,NASDAQ,helvetia holding,Helvetia Holding is a Swiss insurance group; entirely unrelated to Huntington Bancshares.,0.83
+HUM,NYSE,humana ab,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
+HUM,NYSE,humm,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 ICON,NASDAQ,iconic labs,Yahoo alias verification marked `iconic labs` as likely_other_entity.,
 ICON,NASDAQ,international iconic gold exploration,Yahoo alias verification marked `international iconic gold exploration` as likely_other_entity.,
 ICON,NASDAQ,island concepts indonesia,Yahoo alias verification marked `island concepts indonesia` as likely_other_entity.,
 IMC,LSE,ibero mining,Yahoo alias verification marked `ibero mining` as likely_other_entity.,
 IMC,LSE,inmocemento,Yahoo alias verification marked `inmocemento` as likely_other_entity.,
 IMI,LSE,ironman international,Yahoo alias verification marked `ironman international` as likely_other_entity.,
+INTL,BATS,intelicanna,Residual audit cleanup: alias belongs to an unrelated cannabis issuer and contaminates the ETF row.,0.95
 IPO,NYSE ARCA,inplay oil,Yahoo alias verification marked `inplay oil` as likely_other_entity.,
 IPO,NYSE ARCA,intersport polska,Yahoo alias verification marked `intersport polska` as likely_other_entity.,
 IREN,NASDAQ,investis holding,Investis is an unrelated Swiss/UK digital communications company; flagged cross-collision with no connection to IREN Ltd.,0.82
@@ -230,6 +273,10 @@ LAB,NASDAQ,labrador gold,Yahoo alias verification marked `labrador gold` as like
 LC,NYSE,lepanto consolidated mining,Lepanto Consolidated Mining is a Philippine company. The Philippine ISIN in the entry likely originates from that collision; it does not belong to LendingClub.,0.82
 LEAD,BATS,logindo samudramakmur,Yahoo alias verification marked `logindo samudramakmur` as likely_other_entity.,
 LFST,NASDAQ,lifeist wellness,Lifeist Wellness is a separate Canadian cannabis/wellness company sharing the LFST ticker on CSE. The CA ISIN in this entry originates from that collision.,0.83
+LHC,HOSE,leo holdings iii,Residual audit cleanup: alias belongs to an unrelated SPAC/holding entity and contaminates the Vietnam issuer.,0.95
+LION,NYSE,lion capital,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
+LION,NYSE,lion metal works,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
+LION,NYSE,lionheart acquisition ii,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 LIT,NYSE ARCA,argentina lithium & energy,Argentina Lithium & Energy Corp is a separate Canadian junior miner; not related to this US ETF.,0.82
 LIT,NYSE ARCA,argentina lithium and energy,Duplicate of 'argentina lithium & energy'; same rationale.,0.82
 LIT,NYSE ARCA,lease it public,No meaningful lexical or structural connection to Global X Lithium & Battery Tech ETF.,0.82
@@ -238,6 +285,7 @@ LIT,NYSE ARCA,livium,"Livium (formerly Lithium Australia) is an ASX-listed compa
 LKY,TSXV,locksley resources,Yahoo alias verification marked `locksley resources` as likely_other_entity.,
 LKYLY,OTC,locksley resources,Yahoo alias verification marked `locksley resources` as likely_other_entity.,
 LOVE,NASDAQ,cannara biotech,Cannara Biotech is a Canadian cannabis company (ticker LOVE on CSE) with no connection to The Lovesac Company.,0.93
+LTGHF,OTC,leo holdings iii,Residual audit cleanup: alias belongs to an unrelated SPAC/holding entity and contaminates the healthcare issuer.,0.95
 LYYB,XETRA,liberty all-star equity,Yahoo alias verification marked `liberty all-star equity` as likely_other_entity.,
 MAC,NYSE,macroasia,MacroAsia Corporation is a Philippine airline services company; unrelated to Macerich.,0.82
 MAC,NYSE,marechale capital,Marechale Capital is a separate UK financial firm; unrelated.,0.82
@@ -276,6 +324,8 @@ MG,NYSE,magna international,"Cross-company collision; Magna International trades
 MG,NYSE,millennium global,Weak overlap and unrelated to Mistras Group; likely a different company sharing the MG ticker.,0.8
 MGA,NYSE,mega uranium,Cross-company collision; Australian uranium company unrelated to Magna International.,0.85
 MGA,NYSE,metalsgrove mining,Australian mining company; no connection to Magna International.,0.85
+MGRD,NYSE,MGR,Residual audit cleanup: external symbol-style alias collides with other AMG-related listings and is not needed as a name alias.,0.9
+MGRE,NYSE,MGR,Residual audit cleanup: external symbol-style alias collides with other AMG-related listings and is not needed as a name alias.,0.9
 MNC,WSE,magnetic north acquisition,Cross-company collision; Canadian mining company unrelated to Mennica Polska.,0.83
 MNC,WSE,merino &,Truncated/incomplete alias with no clear connection to Mennica Polska.,0.83
 MRC,LSE,mercator medical,Yahoo alias verification marked `mercator medical` as likely_other_entity.,
@@ -287,6 +337,8 @@ MTE,LSE,micron,Short form of Micron Technology; unrelated to this UK investment 
 MTE,LSE,micron technology,Micron Technology is a US semiconductor company (NASDAQ:MU); entirely unrelated to Montanaro European Smaller Companies Trust.,0.82
 MTS,BME,metallis resources,"Cross-company collision; Australian mining company sharing MTS on ASX, unrelated to ArcelorMittal.",0.8
 MTS,BME,metcash,Australian retail/wholesale company; no connection to ArcelorMittal.,0.8
+MUB,NYSE ARCA,mackenzie unconstrained bond etf,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
+MUB,NYSE ARCA,mühlbauer holding,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 MUR,NYSE,murapol,Polish real estate developer; no connection to Murphy Oil Corporation.,0.83
 MUR,NYSE,murchison minerals,"Cross-company collision; Canadian mining company sharing MUR ticker, unrelated to Murphy Oil.",0.83
 NAS,LSE,norwegian air shuttle a,"Norwegian Air Shuttle trades as NAS on Oslo Stock Exchange, not LSE. Completely different company and exchange.",0.8
@@ -298,6 +350,8 @@ NET,NYSE,netlinkz,"Refers to NetLinkz Limited, a distinct Australian company; un
 NETZ,NASDAQ,carbon streaming,Current NETZ row is an ETF; Carbon Streaming is an unrelated issuer alias contamination.,0.95
 NEU,NYSE,neuca,"Refers to NEUCA S.A., a distinct Polish pharmaceutical distributor; unrelated to NewMarket Corporation.",0.82
 NEU,NYSE,neuren pharmaceuticals,"Refers to Neuren Pharmaceuticals, a distinct Australian company; cross-company collision confirmed by findings.",0.82
+NGS,NYSE,ngs group ab,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
+NGS,NYSE,nutritional growth solutions,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 NOBL,BATS,noble plains uranium,Noble Plains Uranium is a distinct mining company unrelated to ProShares S&P 500 Dividend Aristocrats ETF.,0.88
 NOS,Euronext,premier investments,"Premier Investments is an unrelated Australian retail company. No connection to NOS S.G.P.S., a Portuguese telecom.",0.82
 NTG,XETRA,nordic technology group,Different company using NTG ticker; unrelated to Nabaltec AG.,0.8
@@ -311,10 +365,12 @@ OGN,NYSE,origin enterprises,"Refers to Origin Enterprises plc, a distinct Irish 
 OGN,NYSE,orogen royalties,"Refers to Orogen Royalties Inc., a distinct Canadian mining company; unrelated to Organon & Co.",0.83
 OPM,Euronext,opteam,Yahoo alias verification marked `opteam` as likely_other_entity.,
 OPM,Euronext,plastic omnium,Yahoo alias verification marked `plastic omnium` as likely_other_entity.,
+OVB,BATS,onboard biotechnologies,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 PAL,NASDAQ,palfinger,Yahoo alias verification marked `palfinger` as likely_other_entity.,
 PAL,NASDAQ,pantaflix,Yahoo alias verification marked `pantaflix` as likely_other_entity.,
 PAY,NYSE,paypoint,"Refers to PayPoint plc (LSE), a distinct UK company; weak overlap flagged by findings.",0.83
 PAY,NYSE,payton planar magnetics,"Refers to Payton Planar Magnetics Ltd., a distinct Israeli company; cross-company collision confirmed by findings.",0.83
+PB,NYSE,president bakery public,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 PDD,NASDAQ,temu,"Temu is a consumer product/brand owned by PDD Holdings, not an identifier for the issuer itself.",0.85
 PIM,NYSE,pinnacle minerals,Unrelated company; no lexical connection to Putnam Master Intermediate Income Trust.,0.8
 PIM,NYSE,plastic industry,Generic unrelated term with no connection to this fund.,0.8
@@ -361,12 +417,14 @@ PTL,NYSE ARCA,polyplex (thailand) public,Yahoo alias verification marked `polypl
 PTL,NYSE ARCA,prestal,Yahoo alias verification marked `prestal` as likely_other_entity.,
 PZA,NYSE ARCA,invesco bnp paribas cleantech,Does not match 'Invesco National AMT-Free Municipal Bond ETF'; appears to be an alias for a different Invesco product.,0.8
 PZA,NYSE ARCA,pizza pizza royalty,"Pizza Pizza Royalty Corp trades as PZA on the TSX, not NYSE ARCA. This alias belongs to a different company on a different exchange.",0.8
+QUAL,BATS,quality & reliability a.b.e.e,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 RAD,ASX,RADX,Collision alias shared with RAD and RDPTF on other exchanges; weak lexical overlap with 'Radiopharm Theranostics'.,0.85
 RARE,NASDAQ,tactical resources,Unrelated to Ultragenyx; collision alias from a different company.,0.82
 RBTX,LSE,vicarious surgical,"Vicarious Surgical is an individual robotics company (ticker RBOT), not this iShares UCITS ETF. Collision alias with no relation to the fund.",0.85
 RC,NYSE,RCC,Yahoo alias verification marked `RCC` as likely_other_entity.,
 RCH,LSE,richelieu hardware,"Richelieu Hardware Ltd trades as RCH on the TSX (Canada), not LSE. This alias belongs to a different company on a different exchange.",0.82
 RCRS,XETRA,cyberark,"CyberArk is an individual stock (CYBR on NASDAQ); it is a holding within the ETF's universe, not an alias for the fund itself. Collision alias across CYBP, CYBR, and RCRS.",0.83
+REZ,NYSE ARCA,resources & energy,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 RLC,ASX,robinsons land,Robinsons Land Corporation is a Philippine real estate company listed on the PSE; entirely different issuer from Reedy Lagoon Corporation.,0.8
 ROS,VSE,roscan gold,Roscan Gold is a Canadian/West African gold exploration company; entirely unrelated to Rosenbauer International AG.,0.8
 RPL,ASX,roshan packages,Roshan Packages is a Pakistani packaging company; no connection to Regal Partners.,0.82
@@ -389,10 +447,14 @@ SCP,LSE,scalare partners,Yahoo alias verification marked `scalare partners` as l
 SCP,LSE,scope fluidics,Yahoo alias verification marked `scope fluidics` as likely_other_entity.,
 SCP,LSE,southern concrete pile,Yahoo alias verification marked `southern concrete pile` as likely_other_entity.,
 SCT,LSE,toyota caetano,Yahoo alias verification marked `toyota caetano` as likely_other_entity.,
+SEA,NYSE ARCA,sea forest,Residual metadata cleanup: alias belongs to an unrelated issuer and contaminates the cargo ETF listing.,0.9
+SEA,NYSE ARCA,seascape energy asia,Residual metadata cleanup: alias belongs to an unrelated issuer and contaminates the cargo ETF listing.,0.95
 SEA,NYSE ARCA,spear reit,Yahoo alias verification marked `spear reit` as likely_other_entity.,
+SEA,NYSE ARCA,srm entertainment,Residual audit cleanup: alias belongs to a different issuer and creates a direct cross-company collision with 0VGV.,0.9
 SHG,NYSE,sea harvest,South African seafood company; unrelated to Shinhan Financial Group.,0.8
 SHG,NYSE,singular health,Unrelated company; no connection to Shinhan.,0.8
 SHG,NYSE,starhedge,Unrelated entity; no lexical overlap with Shinhan.,0.8
+SKT,NYSE,sky network television,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 SLM,NASDAQ,sanlam,Sanlam is a South African financial services company unrelated to SLM Corp.,0.8
 SLM,NASDAQ,solis minerals,"Solis Minerals is an Australian mining company that trades as SLM on ASX, not related to SLM Corp.",0.8
 SNAG,NASDAQ,silver north resources,Yahoo alias verification marked `silver north resources` as likely_other_entity.,
@@ -406,6 +468,7 @@ SNX,NYSE,synectics,Synectics PLC is a separate UK-listed surveillance company; c
 SO,NYSE,SOJC,"Separate preferred share instrument (Southern Company Series 2020C), not an alias for the common stock SO.",0.88
 SO,NYSE,SOJD,"Separate preferred share instrument (Southern Company Series 2020D), not an alias for the common stock SO.",0.88
 SO,NYSE,siamrajathanee public,Thai company; unrelated to Southern Company.,0.88
+SOBA,XETRA,TBB,Residual audit cleanup: unrelated ticker-style alias carried over from another AT&T line.,0.9
 SOBA,XETRA,TBC,Yahoo alias verification marked `TBC` as likely_other_entity.,
 SOBA,XETRA,tbc,Yahoo alias verification marked `tbc` as likely_other_entity.,
 SPC,NASDAQ,saha pathanapibul public,Yahoo alias verification marked `saha pathanapibul public` as likely_other_entity.,
@@ -437,16 +500,21 @@ SUS,LSE,surgical science sweden,Surgical Science Sweden is a Swedish medtech com
 SVT,LSE,saigon viendong technology jsc,"Vietnamese technology company, no relation to Severn Trent PLC.",0.88
 SVT,LSE,servotronics,Servotronics is a separate US-listed company; not an alias for Severn Trent.,0.88
 SVT,LSE,sun vending technology,Unrelated technology company; no lexical or business connection to Severn Trent.,0.88
+T,NYSE,TBB,Residual audit cleanup: unrelated ticker-style alias carried over from another AT&T line.,0.9
 T,NYSE,TBC,Yahoo alias verification marked `TBC` as likely_other_entity.,
 T,NYSE,tbc,Yahoo alias verification marked `tbc` as likely_other_entity.,
 T,NYSE,telus,Telus Corporation is a Canadian telecom company entirely unrelated to AT&T Inc; the CA ISIN likely belongs to Telus.,0.85
+TAXI,NASDAQ,express transindo utama,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 TBLL,NYSE ARCA,tombill mines,Tombill Mines is an unrelated Canadian mining company. It has no lexical or structural connection to the Invesco Short Term Treasury ETF.,0.9
 TECH,NASDAQ,cirtek holdings philippines,Philippine electronics company; unrelated to Bio-Techne Corp.,0.85
 TECH,NASDAQ,indosterling technomedia,Indonesian media company; unrelated to Bio-Techne Corp.,0.85
 TECH,NASDAQ,techstep a,Norwegian IT services company; unrelated to Bio-Techne Corp.,0.85
+TEFN,BMV,intelicanna,Residual audit cleanup: alias belongs to an unrelated cannabis issuer and contaminates the Telefonica line.,0.95
 TEK,NYSE,tekcapital,Current TEK row is an ETF; Tekcapital is an unrelated issuer alias contamination.,0.95
 TER,NASDAQ,terracom,TerraComm/Terracom is a distinct Australian telecom company; no connection to Teradyne.,0.85
 TER,NASDAQ,terrascend,Cross-company collision; TerrAscend is a distinct cannabis company listed separately.,0.85
+TFI,NYSE ARCA,thai film industries public,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
+TMB,NASDAQ,tambourah metals,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 TOT,NYSE,360 capital reit,Current TOT row is an ETF; 360 Capital REIT is an unrelated issuer alias contamination.,0.96
 TOT,NYSE,total energy services,Current TOT row is an ETF; Total Energy Services is an unrelated issuer alias contamination.,0.96
 TOT,NYSE,transimex transportation jsc,Current TOT row is an ETF; Transimex Transportation JSC is an unrelated issuer alias contamination.,0.96
@@ -478,6 +546,7 @@ VIS,NYSE ARCA,visual international,Weak overlap with fund name and no evidence o
 VMC,NYSE,venus metals corporation,Venus Metals Corporation is a separate ASX-listed company (VMC on ASX); unrelated to Vulcan Materials.,0.87
 VMC,NYSE,victorias milling,Philippine milling company; unrelated to Vulcan Materials Company.,0.87
 VMC,NYSE,vimeco jsc,Vietnamese construction company; unrelated to Vulcan Materials Company.,0.87
+VOT,NYSE ARCA,votum,LLM triage surfaced a ticker-collision alias; local row/name/source checks show the alias belongs to a different issuer or instrument.,0.86
 VRDN,NASDAQ,viridien,"Viridien is the rebranded CGG SA, a French seismic data company — entirely unrelated to Viridian Therapeutics.",0.85
 VZLA,NYSE MKT,wisdomtree physical platinum,WisdomTree Physical Platinum is an unrelated ETP product with no connection to Vizsla Resources/Silver.,0.8
 WFC,NYSE,wall financial,Wall Financial is an unrelated Canadian real estate company with no connection to Wells Fargo.,0.85
@@ -494,33 +563,19 @@ YUM,NYSE,pizza hut,Pizza Hut is a subsidiary brand/franchise of Yum! Brands; qua
 YUM,NYSE,taco bell,Taco Bell is a subsidiary brand/franchise of Yum! Brands; qualifies as a product/brand alias.,0.92
 ZEN,LSE,immo-zenobe gramme,Yahoo alias verification marked `immo-zenobe gramme` as likely_other_entity.,
 ZEN,LSE,zentek,Yahoo alias verification marked `zentek` as likely_other_entity.,
-0VGV,LSE,srm entertainment,Residual audit cleanup: alias belongs to a different issuer and creates a direct cross-company collision with SEA.,0.9
-AMG,NYSE,MGR,Residual audit cleanup: external symbol-style alias collides with other AMG-related listings and is not needed as a name alias.,0.9
-CNTB,NASDAQ,pt century textile industry,Residual audit cleanup: alias belongs to an unrelated Indonesian textile issuer and contaminates the biotech listing.,0.95
-CNTX,NASDAQ,pt century textile industry,Residual audit cleanup: alias belongs to an unrelated Indonesian textile issuer and contaminates the therapeutics listing.,0.95
-CYBP,LSE,cyberark,Residual audit cleanup: product/constituent alias does not identify the ETF share class itself and creates a collision with CYBR.,0.9
-CYBR,LSE,cyberark,Residual audit cleanup: product/constituent alias does not identify the ETF share class itself and creates a collision with CYBP.,0.9
-DTE,NYSE,DTB,Residual audit cleanup: unrelated ticker-style alias with weak issuer overlap.,0.9
-DTE,NYSE,DTG,Residual audit cleanup: unrelated ticker-style alias with weak issuer overlap.,0.9
-DTE,NYSE,DTW,Residual audit cleanup: unrelated ticker-style alias with weak issuer overlap.,0.9
-FG,NYSE,FGSN,Residual audit cleanup: alias points to a different F&G instrument, not the common NYSE line.,0.9
-FGN,NYSE,FGN,Residual audit cleanup: redundant ticker-self alias should not be stored as a name alias.,0.85
-FGN,NYSE,FGSN,Residual audit cleanup: alias points to a different F&G instrument and creates a collision with FG.,0.9
-GAP,NYSE,gale pacific,Residual audit cleanup: alias belongs to an unrelated Australian issuer and contaminates Gap Inc.,0.95
-INTL,BATS,intelicanna,Residual audit cleanup: alias belongs to an unrelated cannabis issuer and contaminates the ETF row.,0.95
-LHC,HOSE,leo holdings iii,Residual audit cleanup: alias belongs to an unrelated SPAC/holding entity and contaminates the Vietnam issuer.,0.95
-LTGHF,OTC,leo holdings iii,Residual audit cleanup: alias belongs to an unrelated SPAC/holding entity and contaminates the healthcare issuer.,0.95
-MGRD,NYSE,MGR,Residual audit cleanup: external symbol-style alias collides with other AMG-related listings and is not needed as a name alias.,0.9
-MGRE,NYSE,MGR,Residual audit cleanup: external symbol-style alias collides with other AMG-related listings and is not needed as a name alias.,0.9
-SEA,NYSE ARCA,srm entertainment,Residual audit cleanup: alias belongs to a different issuer and creates a direct cross-company collision with 0VGV.,0.9
-SOBA,XETRA,TBB,Residual audit cleanup: unrelated ticker-style alias carried over from another AT&T line.,0.9
-T,NYSE,TBB,Residual audit cleanup: unrelated ticker-style alias carried over from another AT&T line.,0.9
-TEFN,BMV,intelicanna,Residual audit cleanup: alias belongs to an unrelated cannabis issuer and contaminates the Telefonica line.,0.95
-AMG,NYSE,amg advanced metallurgical group,Residual metadata cleanup: alias belongs to the unrelated Amsterdam-listed metallurgical issuer rather than Affiliated Managers Group.,0.95
-AMG,NYSE,atlas metals,Residual metadata cleanup: alias belongs to an unrelated issuer and contaminates the Affiliated Managers Group listing.,0.9
-FG,NYSE,fasadgruppen group,Residual metadata cleanup: alias belongs to the unrelated Swedish construction group rather than F&G Annuities & Life.,0.95
-SEA,NYSE ARCA,sea forest,Residual metadata cleanup: alias belongs to an unrelated issuer and contaminates the cargo ETF listing.,0.9
-SEA,NYSE ARCA,seascape energy asia,Residual metadata cleanup: alias belongs to an unrelated issuer and contaminates the cargo ETF listing.,0.95
-ELCM,PSX,elite capital modaraba 1st,Official PSX references resolve ELCM to Elahi Cotton Mills Limited; retaining the First Elite Capital Modaraba alias would cross-contaminate two distinct PSX issuers.,0.99
-AAL,NASDAQ,anglo american,"Ticker-collision cleanup: Anglo American is the issuer behind the polluted GB ISIN, not American Airlines Group.",0.9
-EPM,NYSE MKT,eclipse metals,"Ticker-collision cleanup: Eclipse Metals is the issuer behind the polluted AU ISIN, not Evolution Petroleum Corporation.",0.9
+BSM,NYSE,buildersmart public,LLM triage confirmed this alias belongs to the unrelated Thai issuer that polluted the Black Stone Minerals row.,0.90
+GEL,NYSE,general engineering public,LLM triage confirmed this alias belongs to the unrelated Thai issuer that polluted the Genesis Energy row.,0.90
+GEL,NYSE,tangelo games,LLM triage confirmed this alias belongs to an unrelated issuer and not Genesis Energy LP.,0.88
+NBP,NASDAQ,national bank of pakistan,LLM triage confirmed this alias belongs to the Pakistan ticker collision and not NovaBridge Biosciences.,0.88
+PICO,SET,pelangi indah canindo,LLM triage confirmed this alias belongs to the IDX PICO issuer and not SET-listed Pico Thailand.,0.88
+TGN,BVB,tungsten mining nl,LLM triage confirmed this alias belongs to the Australian ticker collision and not BVB-listed Transgaz.,0.90
+WEC,NYSE,white energy,LLM triage confirmed this alias belongs to the Australian issuer that polluted the WEC Energy row.,0.90
+EMV,LSE,emvision medical devices,LLM triage confirmed this alias belongs to the unrelated Australian issuer and not the iShares UCITS ETF.,0.88
+FOOD,LSE,alliance select foods international,LLM triage confirmed this alias belongs to the unrelated Philippine issuer and not the Rize UCITS ETF.,0.88
+CCG,NASDAQ,comms,"Audit found alias belongs to ASX Comms Group, not Nasdaq Cheche Group Inc.",0.90
+GGR,NASDAQ,golden globe resources,"Audit found alias belongs to ASX Golden Globe Resources, not Nasdaq Gogoro Inc.",0.90
+GGR,NASDAQ,grupo greening 2022,"Audit found alias belongs to a Spanish issuer, not Nasdaq Gogoro Inc.",0.90
+LIN,NASDAQ,lindian resources,"Audit found alias belongs to ASX Lindian Resources, not Nasdaq Linde plc.",0.90
+LIN,NASDAQ,linedata services,"Audit found alias belongs to Euronext Linedata Services, not Nasdaq Linde plc.",0.90
+MLAA,NASDAQ,l agence automobiliere,"Audit found alias belongs to Euronext Agence Automobiliere, not Nasdaq Mountain Lake Acquisition Corp. II.",0.90
+PACH,NASDAQ,paint & chemicals industries,"Audit found alias belongs to a separate PSX issuer, not Nasdaq Pioneer Acquisition I Corp.",0.90
