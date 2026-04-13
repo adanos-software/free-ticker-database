@@ -51,6 +51,7 @@ BAD_COMMON_ALIASES = {
     "circus",
     "coke",
     "elon",
+    "loads",
     "musk",
     "pandora",
     "reserved",
@@ -476,7 +477,6 @@ TICKER_EXPORT_FIELDNAMES = [
     "name",
     "exchange",
     "asset_type",
-    "sector",
     "stock_sector",
     "etf_category",
     "country",
@@ -491,7 +491,6 @@ LISTING_EXPORT_FIELDNAMES = [
     "exchange",
     "name",
     "asset_type",
-    "sector",
     "stock_sector",
     "etf_category",
     "country",
@@ -515,7 +514,7 @@ def normalize_sector(sector: str, asset_type: str) -> str:
 
 
 def with_sector_model_fields(row: dict[str, str]) -> dict[str, str]:
-    """Derive typed metadata fields while preserving legacy `sector` output."""
+    """Derive typed metadata fields from legacy or typed sector inputs."""
     updated = dict(row)
     asset_type = updated.get("asset_type", "")
     legacy_sector = updated.get("sector", "")
@@ -1782,9 +1781,9 @@ def cleaned_rows():
             "name": row["name"],
             "exchange": row["exchange"],
             "asset_type": row["asset_type"],
-            "sector": normalize_sector(row["sector"], row["asset_type"]),
-            "stock_sector": "",
-            "etf_category": "",
+            "sector": normalize_sector(row.get("sector", ""), row["asset_type"]),
+            "stock_sector": normalize_sector(row.get("stock_sector", ""), "Stock"),
+            "etf_category": normalize_sector(row.get("etf_category", ""), "ETF"),
             "country": country,
             "country_code": COUNTRY_TO_ISO.get(country, ""),
             "isin": isin,
@@ -1955,7 +1954,6 @@ def write_json(rows: list[dict[str, str]]):
             "name": row["name"],
             "exchange": row["exchange"],
             "asset_type": row["asset_type"],
-            "sector": row["sector"],
             "stock_sector": row["stock_sector"],
             "etf_category": row["etf_category"],
             "country": row["country"],
@@ -1980,7 +1978,6 @@ def build_listing_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
             "exchange": row["exchange"],
             "name": row["name"],
             "asset_type": row["asset_type"],
-            "sector": row["sector"],
             "stock_sector": row["stock_sector"],
             "etf_category": row["etf_category"],
             "country": row["country"],
@@ -2011,7 +2008,6 @@ def write_db(
                 name TEXT NOT NULL,
                 exchange TEXT NOT NULL,
                 asset_type TEXT NOT NULL,
-                sector TEXT DEFAULT '',
                 stock_sector TEXT DEFAULT '',
                 etf_category TEXT DEFAULT '',
                 country TEXT DEFAULT '',
@@ -2025,7 +2021,6 @@ def write_db(
                 exchange TEXT NOT NULL,
                 name TEXT NOT NULL,
                 asset_type TEXT NOT NULL,
-                sector TEXT DEFAULT '',
                 stock_sector TEXT DEFAULT '',
                 etf_category TEXT DEFAULT '',
                 country TEXT DEFAULT '',
@@ -2073,7 +2068,6 @@ def write_db(
             CREATE INDEX idx_listings_etf_category ON listings(etf_category);
             CREATE INDEX idx_tickers_exchange ON tickers(exchange);
             CREATE INDEX idx_tickers_isin ON tickers(isin);
-            CREATE INDEX idx_tickers_sector ON tickers(sector);
             CREATE INDEX idx_tickers_stock_sector ON tickers(stock_sector);
             CREATE INDEX idx_tickers_etf_category ON tickers(etf_category);
             CREATE INDEX idx_cross_listings_isin ON cross_listings(isin);
@@ -2084,11 +2078,11 @@ def write_db(
         conn.executemany(
             """
             INSERT INTO tickers (
-                ticker, name, exchange, asset_type, sector, stock_sector, etf_category,
+                ticker, name, exchange, asset_type, stock_sector, etf_category,
                 country, country_code, isin
             )
             VALUES (
-                :ticker, :name, :exchange, :asset_type, :sector, :stock_sector, :etf_category,
+                :ticker, :name, :exchange, :asset_type, :stock_sector, :etf_category,
                 :country, :country_code, :isin
             )
             """,
@@ -2097,11 +2091,11 @@ def write_db(
         conn.executemany(
             """
             INSERT INTO listings (
-                listing_key, ticker, exchange, name, asset_type, sector, stock_sector, etf_category,
+                listing_key, ticker, exchange, name, asset_type, stock_sector, etf_category,
                 country, country_code, isin, aliases
             )
             VALUES (
-                :listing_key, :ticker, :exchange, :name, :asset_type, :sector, :stock_sector, :etf_category,
+                :listing_key, :ticker, :exchange, :name, :asset_type, :stock_sector, :etf_category,
                 :country, :country_code, :isin, :aliases
             )
             """,
@@ -2149,7 +2143,6 @@ def write_parquet(rows: list[dict[str, str]]):
                 "name": row["name"],
                 "exchange": row["exchange"],
                 "asset_type": row["asset_type"],
-                "sector": row["sector"],
                 "stock_sector": row["stock_sector"],
                 "etf_category": row["etf_category"],
                 "country": row["country"],
@@ -2316,7 +2309,6 @@ def rebuild():
                 "name": row["name"],
                 "exchange": row["exchange"],
                 "asset_type": row["asset_type"],
-                "sector": row["sector"],
                 "stock_sector": row["stock_sector"],
                 "etf_category": row["etf_category"],
                 "country": row["country"],
@@ -2365,7 +2357,7 @@ def rebuild():
         "exchanges": len({row["exchange"] for row in primary_rows if row["exchange"]}),
         "countries": len({row["country"] for row in primary_rows if row["country"]}),
         "isin_coverage": sum(1 for row in primary_rows if row["isin"]),
-        "sector_coverage": sum(1 for row in primary_rows if row["sector"]),
+        "sector_coverage": sum(1 for row in primary_rows if row["stock_sector"] or row["etf_category"]),
         "stock_sector_coverage": sum(1 for row in primary_rows if row["stock_sector"]),
         "etf_category_coverage": sum(1 for row in primary_rows if row["etf_category"]),
         "aliases": len(alias_rows),

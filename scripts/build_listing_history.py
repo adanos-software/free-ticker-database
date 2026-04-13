@@ -120,7 +120,7 @@ def normalize_status_history(existing_rows: list[dict[str, str]]) -> list[dict[s
     )
 
 
-def sector_model_fields(row: dict[str, str]) -> tuple[str, str, str]:
+def sector_model_fields(row: dict[str, str]) -> tuple[str, str]:
     asset_type = row.get("asset_type", "")
     legacy_sector = row.get("sector", "")
     stock_sector = row.get("stock_sector", "")
@@ -132,14 +132,13 @@ def sector_model_fields(row: dict[str, str]) -> tuple[str, str, str]:
     elif asset_type == "ETF":
         etf_category = etf_category or legacy_sector
         stock_sector = ""
-        legacy_sector = etf_category
-    return legacy_sector, stock_sector, etf_category
+    return stock_sector, etf_category
 
 
 def build_snapshot(rows: list[dict[str, str]], observed_at: str) -> list[dict[str, str]]:
     snapshot: list[dict[str, str]] = []
     for row in rows:
-        sector, stock_sector, etf_category = sector_model_fields(row)
+        stock_sector, etf_category = sector_model_fields(row)
         snapshot.append(
             {
                 "listing_key": listing_identity(row),
@@ -150,7 +149,6 @@ def build_snapshot(rows: list[dict[str, str]], observed_at: str) -> list[dict[st
                 "country": row["country"],
                 "country_code": row["country_code"],
                 "isin": row["isin"],
-                "sector": sector,
                 "stock_sector": stock_sector,
                 "etf_category": etf_category,
                 "status": "active",
@@ -354,7 +352,6 @@ def build_history() -> dict[str, Any]:
             "country",
             "country_code",
             "isin",
-            "sector",
             "stock_sector",
             "etf_category",
             "status",

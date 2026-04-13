@@ -198,7 +198,7 @@ def policy_for(field: str, exchange: str, asset_type: str) -> tuple[str, str, bo
             "Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available.",
             "scripts/backfill_sector_from_isin_peers.py; scripts/backfill_etf_categories_from_names.py",
             True,
-            "ETF categories must be stored as etf_category internally and surfaced through legacy sector only after deterministic taxonomy mapping.",
+                "ETF categories must be stored as etf_category after deterministic taxonomy mapping.",
             f"{asset_type} rows should target etf_category, not stock_sector.",
         )
 
@@ -375,7 +375,7 @@ def summarize(rows: list[CompletionBacklogRow], coverage_report: dict[str, Any],
         "exchanges_by_field": {field: len(exchanges) for field, exchanges in sorted(exchanges_by_field.items())},
         "official_masterfile_collisions": coverage_report.get("global", {}).get("official_masterfile_collisions", 0),
         "model_notes": {
-            "sector_split": "Use stock_sector for stock rows and etf_category for ETF rows; keep sector as legacy derived output.",
+            "sector_split": "Use stock_sector for stock rows and etf_category for ETF rows; the legacy sector export has been removed.",
             "listing_key_first": "Use listing_key as the internal identity for future full-universe work; global ticker uniqueness still blocks official symbol collisions.",
             "source_blocks": ["TSE ISIN", "China ETF/Sector", "Canada", "B3", "XETRA/LSE ETF categories", "missing venues"],
         },
@@ -477,7 +477,7 @@ def render_markdown(rows: list[CompletionBacklogRow], summary: dict[str, Any]) -
             "",
             "- `stock_sector` should become the internal target for stock sector backfills.",
             "- `etf_category` should become the internal target for ETF category backfills.",
-            "- The existing `sector` field should remain as a legacy derived output until downstream consumers migrate.",
+            "- The legacy `sector` export has been removed to avoid duplicating typed metadata.",
             "- Future full-universe ingestion should be `listing_key`-first because official symbol collisions still block global-unique ticker ingestion.",
             "",
             "## Source Block Order",

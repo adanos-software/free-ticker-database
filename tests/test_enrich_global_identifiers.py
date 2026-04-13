@@ -194,8 +194,8 @@ def test_normalize_company_name_strips_punctuation():
 def test_build_base_identifier_rows_preserves_existing_extended_values(tmp_path, monkeypatch):
     listings = tmp_path / "listings.csv"
     listings.write_text(
-        "listing_key,ticker,exchange,name,asset_type,sector,country,country_code,isin,aliases\n"
-        "NASDAQ::AAPL,AAPL,NASDAQ,Apple Inc.,Stock,,United States,US,US0378331005,\n",
+        "listing_key,ticker,exchange,name,asset_type,stock_sector,etf_category,country,country_code,isin,aliases\n"
+        "NASDAQ::AAPL,AAPL,NASDAQ,Apple Inc.,Stock,,,United States,US,US0378331005,\n",
         encoding="utf-8",
     )
     identifiers = tmp_path / "identifiers.csv"

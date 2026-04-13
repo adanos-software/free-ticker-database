@@ -4,28 +4,28 @@
 
 | Metric | Value |
 |---|---|
-| tickers | 53824 |
-| aliases | 91691 |
-| stocks | 38734 |
-| etfs | 15090 |
-| isin_coverage | 45374 |
-| sector_coverage | 41736 |
-| stock_sector_coverage | 31150 |
-| etf_category_coverage | 10586 |
+| tickers | 53789 |
+| aliases | 91384 |
+| stocks | 38710 |
+| etfs | 15079 |
+| isin_coverage | 45259 |
+| sector_coverage | 41715 |
+| stock_sector_coverage | 31144 |
+| etf_category_coverage | 10571 |
 | cik_coverage | 7700 |
 | figi_coverage | 3650 |
 | lei_coverage | 920 |
 | listing_status_rows | 86652 |
 | listing_status_intervals | 86652 |
-| listing_events | 29389 |
+| listing_events | 29399 |
 | listing_keys | 61955 |
 | instrument_scope_rows | 61955 |
-| instrument_scope_core | 45410 |
-| instrument_scope_extended | 16545 |
-| instrument_scope_primary_listing | 38322 |
-| instrument_scope_primary_listing_missing_isin | 7088 |
+| instrument_scope_core | 45346 |
+| instrument_scope_extended | 16609 |
+| instrument_scope_primary_listing | 38182 |
+| instrument_scope_primary_listing_missing_isin | 7164 |
 | instrument_scope_otc_listing | 11097 |
-| instrument_scope_secondary_cross_listing | 5448 |
+| instrument_scope_secondary_cross_listing | 5512 |
 | official_masterfile_symbols | 29774 |
 | official_masterfile_matches | 19264 |
 | official_masterfile_collisions | 6345 |
@@ -51,23 +51,23 @@
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-04-12T16:02:51Z |
-| tickers_age_hours | 0.0 |
+| tickers_built_at | 2026-04-13T10:00:11Z |
+| tickers_age_hours | 0.01 |
 | masterfiles_generated_at | 2026-04-12T11:47:56Z |
-| masterfiles_age_hours | 4.25 |
-| identifiers_generated_at | 2026-04-12T16:02:55Z |
+| masterfiles_age_hours | 22.21 |
+| identifiers_generated_at | 2026-04-13T10:00:19Z |
 | identifiers_age_hours | 0.0 |
-| listing_history_observed_at | 2026-04-12T16:02:51Z |
-| listing_history_age_hours | 0.0 |
+| listing_history_observed_at | 2026-04-13T10:00:11Z |
+| listing_history_age_hours | 0.01 |
 | latest_verification_run | data/stock_verification/run-20260412-post-eodhd-fd |
 | latest_verification_generated_at | 2026-04-12T12:08:59Z |
-| latest_verification_age_hours | 3.9 |
+| latest_verification_age_hours | 21.86 |
 | latest_stock_verification_run | data/stock_verification/run-20260412-post-eodhd-fd |
 | latest_stock_verification_generated_at | 2026-04-12T12:08:59Z |
-| latest_stock_verification_age_hours | 3.9 |
+| latest_stock_verification_age_hours | 21.86 |
 | latest_etf_verification_run | data/etf_verification/run-20260412-post-eodhd-fd |
 | latest_etf_verification_generated_at | 2026-04-12T12:08:59Z |
-| latest_etf_verification_age_hours | 3.9 |
+| latest_etf_verification_age_hours | 21.86 |
 
 ## Source Coverage
 
@@ -191,26 +191,26 @@
 | JSE | official_partial | 213 | 183 | 138 | 2 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | KOSDAQ | official_partial | 1583 | 1578 | 1228 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | KRX | official_partial | 1788 | 1786 | 1167 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
-| LSE | official_partial | 6408 | 6397 | 5106 | 16 | 22 | 5 | 0 | 0 | 0 | 0 |  | 100.0 |
+| LSE | official_partial | 6408 | 6361 | 5106 | 16 | 22 | 5 | 0 | 0 | 0 | 0 |  | 100.0 |
 | LUSE | missing | 22 | 22 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | MSE_MW | missing | 8 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
-| NASDAQ | official_full | 4634 | 4494 | 4373 | 3441 | 10 | 400 | 5449 | 4568 | 51 | 830 | 83.83 | 100.0 |
+| NASDAQ | official_full | 4634 | 4482 | 4373 | 3441 | 10 | 400 | 5449 | 4568 | 51 | 830 | 83.83 | 100.0 |
 | NEO | official_full | 197 | 79 | 129 | 0 | 0 | 0 | 436 | 196 | 85 | 155 | 44.95 | 100.0 |
 | NGX | missing | 147 | 145 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | NMFQS | missing | 7 | 7 | 6 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | NSE_KE | missing | 46 | 46 | 7 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
-| NYSE | official_full | 2078 | 2017 | 2031 | 1993 | 24 | 372 | 3836 | 2060 | 515 | 1261 | 53.7 | 100.0 |
-| NYSE ARCA | official_full | 2650 | 2453 | 2081 | 127 | 6 | 3 | 2615 | 2582 | 14 | 19 | 98.74 | 100.0 |
+| NYSE | official_full | 2078 | 2002 | 2031 | 1993 | 24 | 372 | 3836 | 2060 | 515 | 1261 | 53.7 | 100.0 |
+| NYSE ARCA | official_full | 2650 | 2448 | 2081 | 127 | 6 | 3 | 2615 | 2582 | 14 | 19 | 98.74 | 100.0 |
 | NYSE MKT | official_full | 238 | 234 | 238 | 221 | 2 | 26 | 313 | 234 | 19 | 60 | 74.76 | 100.0 |
 | NYSEARCA | missing | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | OSL | official_full | 241 | 237 | 176 | 2 | 196 | 0 | 298 | 234 | 64 | 0 | 78.52 | 100.0 |
-| OTC | official_partial | 11097 | 9735 | 8655 | 1795 | 5 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
+| OTC | official_partial | 11097 | 9731 | 8655 | 1795 | 5 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | PSE | official_full | 90 | 90 | 13 | 1 | 0 | 0 | 381 | 90 | 185 | 106 | 23.62 | 100.0 |
 | PSE_CZ | missing | 24 | 18 | 10 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | PSX | official_partial | 373 | 269 | 227 | 3 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | RSE | missing | 2 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
 | SEM | missing | 53 | 53 | 4 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
-| SET | official_partial | 547 | 352 | 535 | 4 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
+| SET | official_partial | 547 | 351 | 535 | 4 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | SIX | official_partial | 743 | 741 | 590 | 2 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | SSE | official_partial | 2789 | 2175 | 1522 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | SSE_CL | missing | 116 | 85 | 98 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
@@ -218,9 +218,9 @@
 | SZSE | official_partial | 3083 | 2596 | 1939 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | TASE | official_partial | 673 | 673 | 502 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | TPEX | official_partial | 1118 | 1107 | 1094 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
-| TSE | official_full | 3216 | 68 | 3095 | 0 | 0 | 0 | 4444 | 3216 | 1199 | 29 | 72.37 | 100.0 |
-| TSX | official_full | 1895 | 1333 | 1387 | 12 | 932 | 23 | 788 | 326 | 460 | 2 | 41.37 | 100.0 |
-| TSXV | official_full | 1066 | 528 | 644 | 17 | 524 | 0 | 1600 | 1043 | 557 | 0 | 65.19 | 100.0 |
+| TSE | official_full | 3216 | 68 | 3096 | 0 | 0 | 0 | 4444 | 3216 | 1199 | 29 | 72.37 | 100.0 |
+| TSX | official_full | 1895 | 1331 | 1387 | 12 | 932 | 23 | 788 | 326 | 460 | 2 | 41.37 | 100.0 |
+| TSXV | official_full | 1066 | 523 | 644 | 17 | 524 | 0 | 1600 | 1043 | 557 | 0 | 65.19 | 100.0 |
 | TWSE | official_full | 1242 | 1168 | 1117 | 0 | 0 | 0 | 1081 | 1024 | 29 | 28 | 94.73 | 100.0 |
 | UPCOM | official_full | 2 | 2 | 1 | 0 | 0 | 0 | 837 | 2 | 460 | 375 | 0.24 | 100.0 |
 | USE_UG | missing | 7 | 7 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  |  |
@@ -235,80 +235,86 @@
 | Country | Tickers | ISIN | Sector | CIK | FIGI | LEI |
 |---|---|---|---|---|---|---|
 | Argentina | 60 | 49 | 47 | 0 | 48 | 0 |
-| Australia | 1957 | 1852 | 1462 | 305 | 1037 | 67 |
-| Austria | 59 | 57 | 50 | 11 | 50 | 11 |
+| Australia | 1806 | 1701 | 1313 | 231 | 1029 | 62 |
+| Austria | 59 | 57 | 50 | 9 | 48 | 9 |
 | Bahrain | 2 | 2 | 0 | 0 | 0 | 0 |
-| Belgium | 124 | 123 | 98 | 8 | 37 | 1 |
-| Bermuda | 191 | 191 | 179 | 61 | 9 | 14 |
-| Botswana | 25 | 25 | 1 | 0 | 0 | 0 |
+| Belgium | 123 | 122 | 97 | 7 | 37 | 1 |
+| Bermuda | 190 | 190 | 178 | 61 | 9 | 14 |
+| Botswana | 24 | 24 | 1 | 0 | 0 | 0 |
 | Brazil | 1512 | 1228 | 631 | 0 | 0 | 0 |
-| Canada | 4986 | 3767 | 3673 | 665 | 1432 | 67 |
-| Cayman Islands | 680 | 675 | 627 | 459 | 1 | 18 |
-| Chile | 117 | 86 | 99 | 0 | 0 | 0 |
-| China | 5985 | 4884 | 3564 | 10 | 0 | 0 |
+| Bulgaria | 14 | 14 | 12 | 3 | 0 | 0 |
+| Canada | 4967 | 3746 | 3653 | 664 | 1431 | 67 |
+| Cayman Islands | 685 | 680 | 633 | 465 | 1 | 18 |
+| Chile | 118 | 87 | 100 | 1 | 0 | 1 |
+| China | 5987 | 4886 | 3566 | 13 | 0 | 0 |
 | Croatia | 23 | 0 | 1 | 0 | 0 | 0 |
 | Cyprus | 15 | 15 | 11 | 2 | 3 | 0 |
 | Czech Republic | 22 | 16 | 8 | 0 | 0 | 0 |
-| Denmark | 146 | 146 | 124 | 4 | 1 | 0 |
-| Egypt | 257 | 257 | 158 | 13 | 0 | 1 |
+| Denmark | 143 | 143 | 122 | 3 | 1 | 0 |
+| Egypt | 246 | 246 | 147 | 6 | 0 | 0 |
+| Faroe Islands | 3 | 3 | 2 | 0 | 0 | 0 |
 | Finland | 194 | 194 | 145 | 1 | 0 | 0 |
-| France | 710 | 706 | 583 | 27 | 484 | 60 |
-| Germany | 793 | 790 | 593 | 17 | 6 | 6 |
-| Ghana | 18 | 17 | 2 | 0 | 0 | 0 |
-| Greece | 131 | 105 | 129 | 4 | 0 | 0 |
+| France | 699 | 695 | 572 | 18 | 483 | 59 |
+| Gabon | 1 | 1 | 1 | 0 | 0 | 0 |
+| Germany | 779 | 775 | 583 | 14 | 6 | 5 |
+| Ghana | 20 | 19 | 3 | 0 | 0 | 0 |
+| Greece | 129 | 103 | 127 | 4 | 0 | 0 |
 | Guernsey | 62 | 62 | 55 | 7 | 1 | 0 |
-| Hong Kong | 67 | 67 | 60 | 1 | 1 | 0 |
-| Hungary | 26 | 15 | 8 | 0 | 0 | 0 |
+| Hong Kong | 68 | 67 | 61 | 2 | 1 | 0 |
+| Hungary | 25 | 14 | 8 | 0 | 0 | 0 |
 | Iceland | 18 | 17 | 3 | 1 | 0 | 0 |
 | India | 10 | 10 | 7 | 0 | 0 | 0 |
-| Indonesia | 797 | 682 | 607 | 48 | 4 | 4 |
-| Ireland | 2565 | 2565 | 2212 | 64 | 60 | 7 |
-| Isle of Man | 9 | 9 | 9 | 3 | 0 | 0 |
-| Israel | 779 | 779 | 616 | 101 | 1 | 2 |
+| Indonesia | 754 | 639 | 566 | 24 | 2 | 1 |
+| Ireland | 2568 | 2568 | 2214 | 66 | 62 | 7 |
+| Isle of Man | 10 | 10 | 10 | 3 | 0 | 0 |
+| Israel | 770 | 769 | 607 | 94 | 1 | 1 |
 | Italy | 121 | 121 | 102 | 2 | 5 | 0 |
 | Japan | 3511 | 363 | 3307 | 41 | 0 | 0 |
 | Jersey | 162 | 162 | 144 | 18 | 1 | 4 |
 | Kazakhstan | 2 | 2 | 0 | 0 | 0 | 0 |
 | Kenya | 45 | 45 | 7 | 0 | 0 | 0 |
+| Liechtenstein | 4 | 4 | 3 | 0 | 0 | 0 |
 | Luxembourg | 1027 | 1027 | 894 | 29 | 43 | 5 |
 | Malawi | 8 | 5 | 0 | 0 | 0 | 0 |
 | Malaysia | 923 | 923 | 918 | 0 | 0 | 0 |
-| Mauritius | 51 | 51 | 4 | 1 | 0 | 0 |
+| Malta | 6 | 6 | 6 | 0 | 1 | 0 |
+| Mauritius | 69 | 69 | 19 | 6 | 1 | 0 |
 | Mexico | 133 | 114 | 121 | 4 | 0 | 0 |
+| Monaco | 2 | 2 | 2 | 0 | 1 | 0 |
 | Morocco | 67 | 67 | 2 | 0 | 0 | 0 |
-| Netherlands | 207 | 201 | 170 | 27 | 70 | 1 |
-| New Zealand | 39 | 39 | 36 | 7 | 22 | 1 |
-| Nigeria | 146 | 144 | 7 | 0 | 0 | 0 |
-| Norway | 251 | 247 | 198 | 9 | 166 | 1 |
+| Netherlands | 209 | 202 | 171 | 28 | 71 | 1 |
+| New Zealand | 37 | 37 | 34 | 5 | 22 | 1 |
+| Nigeria | 150 | 148 | 11 | 0 | 0 | 0 |
+| Norway | 247 | 242 | 193 | 6 | 165 | 0 |
 | Oman | 1 | 1 | 0 | 0 | 0 | 0 |
-| Pakistan | 368 | 264 | 224 | 3 | 0 | 0 |
+| Pakistan | 377 | 273 | 231 | 9 | 0 | 0 |
 | Panama | 1 | 0 | 1 | 1 | 0 | 0 |
 | Peru | 33 | 0 | 3 | 0 | 0 | 0 |
-| Philippines | 120 | 120 | 40 | 16 | 0 | 2 |
-| Poland | 373 | 373 | 280 | 31 | 1 | 5 |
+| Philippines | 110 | 110 | 31 | 11 | 0 | 1 |
+| Poland | 358 | 358 | 268 | 21 | 1 | 5 |
 | Portugal | 34 | 34 | 28 | 0 | 9 | 1 |
 | Qatar | 1 | 1 | 1 | 0 | 0 | 0 |
-| Romania | 87 | 83 | 78 | 7 | 0 | 0 |
+| Romania | 78 | 74 | 69 | 3 | 0 | 0 |
 | Rwanda | 2 | 2 | 0 | 0 | 0 | 0 |
 | Singapore | 74 | 72 | 65 | 18 | 1 | 2 |
-| Slovenia | 1 | 1 | 1 | 0 | 0 | 0 |
-| South Africa | 234 | 204 | 153 | 6 | 0 | 0 |
+| Slovenia | 2 | 2 | 2 | 0 | 0 | 0 |
+| South Africa | 231 | 201 | 152 | 6 | 0 | 0 |
 | South Korea | 3364 | 3357 | 2390 | 0 | 0 | 0 |
-| Spain | 224 | 224 | 193 | 11 | 7 | 3 |
+| Spain | 223 | 223 | 192 | 10 | 7 | 3 |
 | Sri Lanka | 3 | 0 | 0 | 0 | 0 | 0 |
-| Sweden | 766 | 766 | 520 | 14 | 4 | 1 |
-| Switzerland | 400 | 398 | 306 | 24 | 4 | 6 |
+| Sweden | 762 | 762 | 516 | 11 | 4 | 1 |
+| Switzerland | 398 | 396 | 303 | 21 | 4 | 5 |
 | Taiwan | 2348 | 2263 | 2197 | 0 | 0 | 0 |
 | Tanzania | 15 | 13 | 2 | 0 | 0 | 0 |
-| Thailand | 588 | 393 | 575 | 42 | 1 | 6 |
+| Thailand | 569 | 373 | 556 | 27 | 1 | 3 |
 | Turkey | 1 | 1 | 0 | 0 | 0 | 0 |
 | Uganda | 7 | 7 | 0 | 0 | 0 | 0 |
 | Ukraine | 1 | 1 | 1 | 0 | 0 | 0 |
-| United Kingdom | 1276 | 1265 | 1028 | 110 | 14 | 23 |
-| United States | 14134 | 12315 | 11793 | 4954 | 23 | 588 |
-| Vietnam | 262 | 262 | 156 | 2 | 1 | 0 |
+| United Kingdom | 1252 | 1241 | 1007 | 94 | 14 | 18 |
+| United States | 14324 | 12489 | 11992 | 5102 | 27 | 608 |
+| Vietnam | 261 | 261 | 156 | 2 | 0 | 0 |
 | Zambia | 22 | 22 | 2 | 0 | 0 | 0 |
-| Zimbabwe | 27 | 27 | 3 | 0 | 0 | 0 |
+| Zimbabwe | 28 | 28 | 4 | 0 | 0 | 0 |
 
 ## Unresolved Gaps
 

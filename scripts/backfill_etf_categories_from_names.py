@@ -185,7 +185,7 @@ def evaluate_etf_row(row: dict[str, str]) -> dict[str, Any]:
     }
     if row["asset_type"] != "ETF":
         return {**base, "decision": "not_etf"}
-    if row.get("sector", "").strip():
+    if (row.get("etf_category", "") or row.get("sector", "")).strip():
         return {**base, "decision": "already_has_category"}
 
     category, matched_rule = classify_etf_category(row["name"])
@@ -227,7 +227,7 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
                 "decision": "update",
                 "proposed_value": result["category_update"],
                 "confidence": "0.68",
-                "reason": f"Deterministic ETF-name classifier mapped the product name to '{result['category_update']}' via rule '{result['matched_rule']}'. This is an etf_category fill mirrored through the legacy sector output, not a stock-sector assertion.",
+                "reason": f"Deterministic ETF-name classifier mapped the product name to '{result['category_update']}' via rule '{result['matched_rule']}'. This is an etf_category fill, not a stock-sector assertion.",
             }
         )
     return updates

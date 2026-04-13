@@ -48,6 +48,8 @@ def test_common_word_aliases_removed():
         ("TSLA", "elon"),
         ("TSLA", "musk"),
         ("KO", "coke"),
+        ("LOADS", "loads"),
+        ("LOADSR1", "loads"),
         ("CA1", "circus"),
         ("LPP", "reserved"),
         ("0R0X", "cybertruck"),
@@ -117,7 +119,7 @@ def test_residual_alias_collisions_and_metadata_contamination_are_removed():
 
     assert sea["country"] == "United States"
     assert sea["isin"] == "US26922B8651"
-    assert sea["sector"] == ""
+    assert sea["etf_category"] == ""
     assert "sea forest" not in sea["aliases"]
     assert "seascape energy asia" not in sea["aliases"]
     assert "srm entertainment" not in sea["aliases"]
@@ -162,13 +164,13 @@ def test_codex_worker_collision_findings_are_cleaned():
 
     assert rdn["isin"] == ""
     assert rdn["country"] == "United States"
-    assert rdn["sector"] == "Financials"
+    assert rdn["stock_sector"] == "Financials"
     assert "raiden resources" not in rdn["aliases"]
     assert "750236" not in rdn["aliases"]
 
     assert klr["isin"] == ""
     assert klr["country"] == ""
-    assert klr["sector"] == "Industrials"
+    assert klr["stock_sector"] == "Industrials"
     assert "kaili resources" not in klr["aliases"]
 
 
@@ -266,7 +268,7 @@ def test_thin_otc_metadata_is_backfilled_for_verified_listings():
     assert dtref["country"] == "Australia"
     assert dtref["country_code"] == "AU"
     assert dtref["isin"] == "AU000000DTR1"
-    assert dtref["sector"] == "Materials"
+    assert dtref["stock_sector"] == "Materials"
 
 
 def test_generic_us_legacy_exchange_is_removed_from_core():
@@ -296,7 +298,7 @@ def test_yahoo_corrected_etf_outliers_are_cleaned():
     assert cam["country"] == "United States"
     assert cam["country_code"] == "US"
     assert cam["isin"] == "US00039J7726"
-    assert cam["sector"] == ""
+    assert cam["etf_category"] == ""
 
     assert netz["name"] == "TCW Transform Systems ETF"
     assert netz["country"] == "United States"
@@ -2182,10 +2184,12 @@ def test_readme_stats_and_claims_are_current():
     etfs = sum(row["asset_type"] == "ETF" for row in tickers_csv)
     countries = len({row["country"] for row in tickers_csv if row["country"]})
     isin_count = sum(bool(row["isin"]) for row in tickers_csv)
-    sector_count = sum(bool(row["sector"]) for row in tickers_csv)
+    sector_count = sum(bool(row["stock_sector"] or row["etf_category"]) for row in tickers_csv)
 
     assert "| Metric | Value | Meaning |" in readme
-    assert f"| Primary tickers | {total:,} | Rows in `data/tickers.csv`;" in readme
+    assert "sector" not in tickers_csv[0]
+    assert "sector" not in listings_csv[0]
+    assert f"| Primary tickers | {total:,} | Rows in `data/tickers.csv`; one primary row per security. |" in readme
     assert f"| Full listing rows | {len(listings_csv):,} | Rows in `data/listings.csv`;" in readme
     assert f"| Stocks | {stocks:,} | Primary ticker rows where `asset_type=Stock`. |" in readme
     assert f"| ETFs | {etfs:,} | Primary ticker rows where `asset_type=ETF`. |" in readme
@@ -2281,10 +2285,19 @@ def test_sectors_are_normalized():
 
     rows = load_csv("tickers.csv")
     deprecated = set(SECTOR_STOCK_MAP)
-    found = {r["sector"] for r in rows if r["sector"]}
+    found = {
+        value
+        for row in rows
+        for value in (row["stock_sector"], row["etf_category"])
+        if value
+    }
     overlap = found & deprecated
     assert not overlap, f"Deprecated sector names still present: {overlap}"
-    long = [r for r in rows if r["sector"] and len(r["sector"]) > 50]
+    long = [
+        r
+        for r in rows
+        if any(value and len(value) > 50 for value in (r["stock_sector"], r["etf_category"]))
+    ]
     assert not long, f"Garbage sector values found: {[r['ticker'] for r in long]}"
 
 

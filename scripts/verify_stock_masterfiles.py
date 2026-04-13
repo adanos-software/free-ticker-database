@@ -141,6 +141,14 @@ def has_grouped_market_peer_name_match(left: str, right: str) -> bool:
     return bool(normalize_tokens(left) & normalize_tokens(right))
 
 
+def metadata_sector(row: dict[str, str]) -> str:
+    if row.get("asset_type") == "Stock":
+        return row.get("stock_sector", "") or row.get("sector", "")
+    if row.get("asset_type") == "ETF":
+        return row.get("etf_category", "") or row.get("sector", "")
+    return row.get("sector", "")
+
+
 def listing_name_candidates(row: dict[str, str]) -> list[str]:
     aliases = [alias.strip() for alias in row.get("aliases", "").split("|") if alias.strip()]
     return [row.get("name", ""), *aliases]
@@ -561,7 +569,7 @@ def classify_row(
                             "country": row["country"],
                             "country_code": row["country_code"],
                             "isin": row["isin"],
-                            "sector": row["sector"],
+                            "sector": metadata_sector(row),
                             "status": status,
                             "reason": reason,
                             "official_reference_name": reference_name,
@@ -610,7 +618,7 @@ def classify_row(
         "country": row["country"],
         "country_code": row["country_code"],
         "isin": row["isin"],
-        "sector": row["sector"],
+        "sector": metadata_sector(row),
         "status": status,
         "reason": reason,
         "official_reference_name": reference_name,

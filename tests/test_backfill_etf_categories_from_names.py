@@ -118,7 +118,7 @@ def test_build_metadata_updates_emits_reviewed_etf_category_update():
             "decision": "update",
             "proposed_value": "Fixed Income",
             "confidence": "0.68",
-            "reason": "Deterministic ETF-name classifier mapped the product name to 'Fixed Income' via rule 'corporate_bonds'. This is an etf_category fill mirrored through the legacy sector output, not a stock-sector assertion.",
+            "reason": "Deterministic ETF-name classifier mapped the product name to 'Fixed Income' via rule 'corporate_bonds'. This is an etf_category fill, not a stock-sector assertion.",
         }
     ]
 
@@ -138,7 +138,7 @@ def test_load_existing_classifier_update_keys_reads_only_classifier_metadata_row
                     "decision": "update",
                     "proposed_value": "Equity",
                     "confidence": "0.68",
-                    "reason": "Deterministic ETF-name classifier mapped the product name to 'Equity' via rule 'large_cap'. This is an etf_category fill mirrored through the legacy sector output, not a stock-sector assertion.",
+                    "reason": "Deterministic ETF-name classifier mapped the product name to 'Equity' via rule 'large_cap'. This is an etf_category fill, not a stock-sector assertion.",
                 },
                 {
                     "ticker": "OTHER",
@@ -170,7 +170,7 @@ def test_prune_stale_classifier_updates_removes_legacy_classifier_rows_and_keeps
                     "decision": "update",
                     "proposed_value": "Equity",
                     "confidence": "0.68",
-                    "reason": "Deterministic ETF-name classifier mapped the product name to 'Equity' via rule 'large_cap'. This is an etf_category fill mirrored through the legacy sector output, not a stock-sector assertion.",
+                    "reason": "Deterministic ETF-name classifier mapped the product name to 'Equity' via rule 'large_cap'. This is an etf_category fill, not a stock-sector assertion.",
                 },
                 {
                     "ticker": "DROP",
@@ -179,7 +179,7 @@ def test_prune_stale_classifier_updates_removes_legacy_classifier_rows_and_keeps
                     "decision": "update",
                     "proposed_value": "Fixed Income",
                     "confidence": "0.68",
-                    "reason": "Deterministic ETF-name classifier mapped the product name to 'Fixed Income' via rule 'fixed_income'. This is an etf_category fill mirrored through the legacy sector output, not a stock-sector assertion.",
+                    "reason": "Deterministic ETF-name classifier mapped the product name to 'Fixed Income' via rule 'fixed_income'. This is an etf_category fill, not a stock-sector assertion.",
                 },
                 {
                     "ticker": "OTHER",

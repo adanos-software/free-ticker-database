@@ -2,6 +2,17 @@
 
 ## [Unreleased]
 
+## [4.0.0] - 2026-04-13
+
+### Changed
+
+- Removed the legacy `sector` column from public ticker, listing, JSON, Parquet, SQLite, and latest-snapshot exports; consumers should use `stock_sector` for stocks and `etf_category` for ETFs.
+- Rebuilt coverage, completion-backlog, identifier, and listing-history artifacts against the typed sector/category schema.
+
+### Breaking
+
+- Public exports no longer include the duplicated `sector` field.
+
 ## [3.8.0] - 2026-04-13
 
 ### Added

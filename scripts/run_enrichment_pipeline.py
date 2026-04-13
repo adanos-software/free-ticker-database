@@ -109,7 +109,7 @@ def build_pipeline_commands(options: PipelineOptions) -> list[StageCommand]:
                     name="etf_name_category_backfill",
                     command=maybe_apply(etf_category_command, apply=options.apply_reviewed_backfills),
                     mutates_data=options.apply_reviewed_backfills,
-                    notes="Deterministic ETF-name classifier for reviewed etf_category fills while preserving legacy sector output.",
+                    notes="Deterministic ETF-name classifier for reviewed etf_category fills.",
                 ),
             ]
         )

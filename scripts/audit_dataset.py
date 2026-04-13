@@ -247,6 +247,7 @@ def analyze_dataset(
 
         stock_sector = row.get("stock_sector", "")
         etf_category = row.get("etf_category", "")
+        category_metadata = stock_sector if row["asset_type"] == "Stock" else etf_category
 
         if row["asset_type"] == "Stock" and stock_sector and stock_sector not in VALID_STOCK_SECTORS:
             add_finding(
@@ -272,44 +273,7 @@ def analyze_dataset(
                 "etf_category is not a standardized ETF category.",
             )
 
-        if row["asset_type"] == "Stock" and row["sector"] and row["sector"] not in VALID_STOCK_SECTORS:
-            add_finding(
-                findings_by_ticker,
-                ticker,
-                "invalid_stock_sector",
-                "high",
-                60,
-                "sector",
-                row["sector"],
-                "Sector is not a canonical stock GICS sector.",
-            )
-
-        if row["asset_type"] == "ETF" and row["sector"] and row["sector"] not in VALID_ETF_SECTORS:
-            add_finding(
-                findings_by_ticker,
-                ticker,
-                "invalid_etf_sector",
-                "high",
-                60,
-                "sector",
-                row["sector"],
-                "Sector is not a standardized ETF category.",
-            )
-
-        expected_legacy_sector = stock_sector if row["asset_type"] == "Stock" else etf_category if row["asset_type"] == "ETF" else row["sector"]
-        if expected_legacy_sector and row["sector"] != expected_legacy_sector:
-            add_finding(
-                findings_by_ticker,
-                ticker,
-                "legacy_sector_mismatch",
-                "medium",
-                35,
-                "sector",
-                row["sector"],
-                "Legacy sector must mirror stock_sector for stocks and etf_category for ETFs.",
-            )
-
-        if row["exchange"] in OTC_EXCHANGES and not row["isin"] and not row["sector"]:
+        if row["exchange"] in OTC_EXCHANGES and not row["isin"] and not category_metadata:
             add_finding(
                 findings_by_ticker,
                 ticker,

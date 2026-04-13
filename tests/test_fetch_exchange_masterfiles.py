@@ -468,10 +468,10 @@ def test_fetch_otc_markets_security_profile_targets_missing_otc_isins(tmp_path):
     listings_path.write_text(
         "\n".join(
             [
-                "listing_key,ticker,exchange,name,asset_type,sector,country,country_code,isin,aliases",
-                "OTC::AAMMF,AAMMF,OTC,Almadex Minerals Ltd,Stock,Materials,United States,US,,",
-                "OTC::HASISIN,HASISIN,OTC,Has Isin Inc,Stock,,United States,US,US0000000002,",
-                "NASDAQ::AAMMF,AAMMF,NASDAQ,Wrong Venue Inc,Stock,,United States,US,,",
+                "listing_key,ticker,exchange,name,asset_type,stock_sector,etf_category,country,country_code,isin,aliases",
+                "OTC::AAMMF,AAMMF,OTC,Almadex Minerals Ltd,Stock,Materials,,United States,US,,",
+                "OTC::HASISIN,HASISIN,OTC,Has Isin Inc,Stock,,,United States,US,US0000000002,",
+                "NASDAQ::AAMMF,AAMMF,NASDAQ,Wrong Venue Inc,Stock,,,United States,US,,",
             ]
         ),
         encoding="utf-8",

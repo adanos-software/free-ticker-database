@@ -9,15 +9,15 @@ Free stock and ETF ticker reference data with primary tickers, listing-keyed ven
 
 | Metric | Value | Meaning |
 |---|---:|---|
-| Primary tickers | 53,789 | Rows in `data/tickers.csv`; one backward-compatible primary row per security. |
+| Primary tickers | 53,789 | Rows in `data/tickers.csv`; one primary row per security. |
 | Full listing rows | 61,955 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
 | Stocks | 38,710 | Primary ticker rows where `asset_type=Stock`. |
 | ETFs | 15,079 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 67 | Distinct non-empty `exchange` values in the primary ticker export. |
 | Countries | 81 | Distinct non-empty `country` values in the primary ticker export. |
-| Aliases | 91,386 | Rows in `data/aliases.csv`; searchable aliases and identifier tokens mapped to primary tickers. |
+| Aliases | 91,384 | Rows in `data/aliases.csv`; searchable aliases and identifier tokens mapped to primary tickers. |
 | ISIN coverage | 45,259 (84.1%) | Primary ticker rows with a non-empty `isin`. |
-| Sector/category coverage | 41,715 (77.6%) | Primary ticker rows with a non-empty legacy `sector` value, derived from stock sectors or ETF categories. |
+| Sector/category coverage | 41,715 (77.6%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
 | Stock sector coverage | 31,144 | Primary ticker rows with a non-empty `stock_sector`. |
 | ETF category coverage | 10,571 | Primary ticker rows with a non-empty `etf_category`. |
 | Core listing-scope rows | 45,346 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
@@ -54,24 +54,24 @@ Reference and audit files:
 
 ## Data Model
 
-`tickers.csv` is the backward-compatible primary export:
+`tickers.csv` is the primary-security export:
 
 ```csv
-ticker,name,exchange,asset_type,sector,stock_sector,etf_category,country,country_code,isin,aliases
-KO,The Coca-Cola Company,NYSE,Stock,Consumer Staples,Consumer Staples,,United States,US,US1912161007,191216|coca-cola|850663
+ticker,name,exchange,asset_type,stock_sector,etf_category,country,country_code,isin,aliases
+KO,The Coca-Cola Company,NYSE,Stock,Consumer Staples,,United States,US,US1912161007,191216|coca-cola|850663
 ```
 
 `listings.csv` is the full venue export:
 
 ```csv
-listing_key,ticker,exchange,name,asset_type,sector,stock_sector,etf_category,country,country_code,isin,aliases
-NASDAQ::AAPL,AAPL,NASDAQ,Apple Inc.,Stock,Information Technology,Information Technology,,United States,US,US0378331005,apple|865985
+listing_key,ticker,exchange,name,asset_type,stock_sector,etf_category,country,country_code,isin,aliases
+NASDAQ::AAPL,AAPL,NASDAQ,Apple Inc.,Stock,Information Technology,,United States,US,US0378331005,apple|865985
 ```
 
 Important rules:
 
 - `ticker` is globally unique only in `tickers.csv`; use `listing_key` for venue-level identity.
-- `sector` is legacy output. Stocks use `stock_sector`; ETFs use `etf_category`.
+- Stocks use `stock_sector`; ETFs use `etf_category`.
 - `instrument_scopes.csv` marks `core`, OTC `extended`, and secondary cross-listings.
 - Core rows without ISIN are tagged as `scope_reason=primary_listing_missing_isin`.
 - Secondary listings stay in `listings.csv` and `cross_listings.csv`; `tickers.csv` keeps one primary row per security.
@@ -81,8 +81,8 @@ JSON metadata:
 ```json
 {
   "_meta": {
-    "version": "3.8.0",
-    "built_at": "2026-04-13T08:52:26Z",
+    "version": "4.0.0",
+    "built_at": "2026-04-13T09:56:07Z",
     "total_tickers": 53789
   },
   "tickers": []
