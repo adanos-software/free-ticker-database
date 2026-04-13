@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
   update-symbol-changes:
@@ -33,19 +32,29 @@ jobs:
       - name: Validate symbol changes parser
         run: python -m pytest tests/test_fetch_symbol_changes.py -q
 
-      - name: Open update pull request
-        uses: peter-evans/create-pull-request@v6
-        with:
-          branch: automation/symbol-changes
-          delete-branch: true
-          commit-message: Update daily symbol changes
-          title: Update daily symbol changes
-          body: |
-            Automated daily refresh of the secondary-review symbol-change feed.
+      - name: Push update branch
+        run: |
+          if git diff --quiet -- \
+            data/corporate_actions/symbol_changes.csv \
+            data/corporate_actions/symbol_changes.json \
+            data/reports/symbol_changes_review.csv \
+            data/reports/symbol_changes_review.json \
+            data/reports/symbol_changes_review.md; then
+            echo "No symbol-change updates."
+            exit 0
+          fi
 
-            Outputs:
-            - data/corporate_actions/symbol_changes.csv
-            - data/corporate_actions/symbol_changes.json
-            - data/reports/symbol_changes_review.csv
-            - data/reports/symbol_changes_review.json
-            - data/reports/symbol_changes_review.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c automation/symbol-changes
+          git add \
+            data/corporate_actions/symbol_changes.csv \
+            data/corporate_actions/symbol_changes.json \
+            data/reports/symbol_changes_review.csv \
+            data/reports/symbol_changes_review.json \
+            data/reports/symbol_changes_review.md
+          git commit -m "Update daily symbol changes"
+          git push --force origin HEAD:automation/symbol-changes
+
+          echo "Updated automation/symbol-changes."
+          echo "PR URL: https://github.com/adanos-software/free-ticker-database/compare/main...automation/symbol-changes?quick_pull=1"
