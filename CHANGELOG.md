@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [3.10.1] - 2026-04-14
+
+### Fixed
+
+- Added `lxml` as an explicit dependency so CI can run `pandas.read_html` parser tests on fresh GitHub Actions runners.
+
 ## [3.10.0] - 2026-04-14
 
 ### Added

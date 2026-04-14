@@ -85,8 +85,8 @@ JSON metadata:
 ```json
 {
   "_meta": {
-    "version": "3.10.0",
-    "built_at": "2026-04-14T04:43:46Z",
+    "version": "3.10.1",
+    "built_at": "2026-04-14T05:01:29Z",
     "total_tickers": 53446
   },
   "tickers": []
