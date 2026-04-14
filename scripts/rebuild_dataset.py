@@ -168,9 +168,10 @@ BAD_GENERIC_FUND_ALIASES = GENERIC_FUND_WRAPPER_NAMES
 US_EXCHANGES = {"NASDAQ", "NYSE", "NYSE ARCA", "NYSE MKT", "BATS"}
 GENERIC_US_EXCHANGES = {"US"}
 OTC_EXCHANGES = {"OTC", "OTCCE", "OTCMKTS"}
-OTC_EXCHANGE_ALIASES = {"OTCCE": "OTC", "OTCMKTS": "OTC"}
+EXCHANGE_ALIASES = {"OTCCE": "OTC", "OTCMKTS": "OTC", "NYSEARCA": "NYSE ARCA"}
 PRIMARY_VENUE_CORRECTION_EXCHANGES = US_EXCHANGES | GENERIC_US_EXCHANGES | OTC_EXCHANGES
 KOREAN_STOCK_EXCHANGES = {"KRX", "KOSDAQ"}
+SAME_EXCHANGE_TICKER_CORRECTION_EXCHANGES = {"NGX"}
 STRICT_NUMERIC_NAMESPACE_EXCHANGES = {"Bursa", "KOSDAQ", "KRX", "TPEX", "TWSE"}
 EXCHANGE_TICKER_RE = re.compile(r"^[A-Z0-9-]+\.[A-Z]{1,6}$")
 IDENTIFIER_RE = re.compile(r"^[A-Z0-9]{5,12}$")
@@ -403,10 +404,26 @@ SECTOR_STOCK_MAP: dict[str, str] = {
     "Consumer Cyclical": "Consumer Discretionary",
     "Consumer Defensive": "Consumer Staples",
     "Financial Services": "Financials",
+    "Banking": "Financials",
+    "FINANCIAL SERVICES": "Financials",
     "Communications": "Communication Services",
+    "ICT": "Communication Services",
     "Commercial Real Estate": "Real Estate",
     "Residential Real Estate": "Real Estate",
     "REITs": "Real Estate",
+    "Property": "Real Estate",
+    "CONSTRUCTION/REAL ESTATE": "Real Estate",
+    "Agriculture": "Consumer Staples",
+    "AGRICULTURE": "Consumer Staples",
+    "CONSUMER GOODS": "Consumer Staples",
+    "Mining": "Materials",
+    "NATURAL RESOURCES": "Materials",
+    "OIL AND GAS": "Energy",
+    "HEALTHCARE": "Health Care",
+    "INDUSTRIAL GOODS": "Industrials",
+    "Retail & Wholesale": "Consumer Discretionary",
+    "Security Services": "Industrials",
+    "Tourism": "Consumer Discretionary",
 }
 
 # Canonical GICS sectors (for stocks)
@@ -1016,8 +1033,8 @@ def normalize_input_row(row: dict[str, str]) -> dict[str, str]:
     exchange = normalized.get("exchange", "")
     ticker = normalized.get("ticker", "").strip().upper()
     name = normalized.get("name", "")
-    if exchange in OTC_EXCHANGE_ALIASES:
-        normalized["exchange"] = OTC_EXCHANGE_ALIASES[exchange]
+    if exchange in EXCHANGE_ALIASES:
+        normalized["exchange"] = EXCHANGE_ALIASES[exchange]
         exchange = normalized["exchange"]
     if normalized.get("asset_type") == "Stock" and exchange == "US" and generic_fund_wrapper_match(name):
         normalized["asset_type"] = "ETF"
@@ -1115,6 +1132,32 @@ def load_active_official_isin_fallbacks() -> dict[tuple[str, str, str], str]:
         key: next(iter(isins))
         for key, isins in grouped.items()
         if len(isins) == 1
+    }
+
+
+@lru_cache(maxsize=None)
+def load_active_official_sector_fallbacks() -> dict[tuple[str, str, str], str]:
+    grouped: dict[tuple[str, str, str], set[str]] = defaultdict(set)
+    if not MASTERFILE_REFERENCE_CSV.exists():
+        return {}
+
+    with MASTERFILE_REFERENCE_CSV.open(newline="", encoding="utf-8") as handle:
+        for row in csv.DictReader(handle):
+            if row.get("official") != "true":
+                continue
+            if row.get("listing_status") != "active":
+                continue
+            if row.get("reference_scope") in {"", "manual"}:
+                continue
+            sector = normalize_sector(row.get("sector", "").strip(), row.get("asset_type", ""))
+            if not sector:
+                continue
+            grouped[(row["ticker"], row["exchange"], row["asset_type"])].add(sector)
+
+    return {
+        key: next(iter(sectors))
+        for key, sectors in grouped.items()
+        if len(sectors) == 1
     }
 
 
@@ -1293,15 +1336,89 @@ def should_correct_to_official_exchange(
     return False
 
 
+def active_official_rows_by_exchange_asset(
+    reference_rows: dict[tuple[str, str], tuple[dict[str, str], ...]],
+) -> dict[tuple[str, str], tuple[dict[str, str], ...]]:
+    grouped: dict[tuple[str, str], list[dict[str, str]]] = defaultdict(list)
+    for rows in reference_rows.values():
+        for row in rows:
+            grouped[(row.get("exchange", ""), row.get("asset_type", ""))].append(row)
+    return {key: tuple(rows) for key, rows in grouped.items()}
+
+
+def choose_same_exchange_ticker_correction_candidate(
+    row: dict[str, str],
+    candidates: tuple[dict[str, str], ...],
+) -> dict[str, str] | None:
+    if row.get("exchange") not in SAME_EXCHANGE_TICKER_CORRECTION_EXCHANGES:
+        return None
+
+    ticker = row.get("ticker", "")
+    matches = [
+        candidate
+        for candidate in candidates
+        if candidate.get("ticker") != ticker
+        and candidate.get("ticker", "").startswith(ticker)
+        and 0 < len(candidate.get("ticker", "")) - len(ticker) <= 2
+        and (
+            alias_matches_company(row.get("name", ""), candidate.get("name", ""))
+            or alias_matches_company(candidate.get("name", ""), row.get("name", ""))
+        )
+    ]
+    if len(matches) != 1:
+        return None
+    return matches[0]
+
+
+def maybe_correct_same_exchange_ticker(
+    row: dict[str, str],
+    candidates: tuple[dict[str, str], ...],
+    *,
+    occupied_listing_keys: set[str],
+) -> dict[str, str] | None:
+    official_row = choose_same_exchange_ticker_correction_candidate(row, candidates)
+    if official_row is None:
+        return None
+
+    corrected = dict(row)
+    corrected["ticker"] = official_row["ticker"]
+    if official_row.get("name"):
+        corrected["name"] = official_row["name"]
+    if is_valid_isin(official_row.get("isin", "").strip().upper()):
+        corrected["isin"] = official_row["isin"].strip().upper()
+
+    aliases = dedupe_keep_order([*split_aliases(row.get("aliases", [])), row["ticker"]])
+    corrected["aliases"] = "|".join(aliases)
+
+    old_listing_key = row_listing_key(row)
+    new_listing_key = row_listing_key(corrected)
+    if new_listing_key in occupied_listing_keys and new_listing_key != old_listing_key:
+        return None
+
+    occupied_listing_keys.discard(old_listing_key)
+    occupied_listing_keys.add(new_listing_key)
+    return corrected
+
+
 def apply_official_exchange_corrections(rows: list[dict[str, str]]) -> list[dict[str, str]]:
     reference_rows = load_active_official_reference_rows()
     if not reference_rows:
         return rows
 
+    same_exchange_reference_rows = active_official_rows_by_exchange_asset(reference_rows)
     occupied_listing_keys = {row_listing_key(row) for row in rows}
     corrected_rows: list[dict[str, str]] = []
 
     for row in rows:
+        same_exchange_correction = maybe_correct_same_exchange_ticker(
+            row,
+            same_exchange_reference_rows.get((row["exchange"], row["asset_type"]), ()),
+            occupied_listing_keys=occupied_listing_keys,
+        )
+        if same_exchange_correction is not None:
+            corrected_rows.append(same_exchange_correction)
+            continue
+
         key = (row["ticker"], row["asset_type"])
         candidates = reference_rows.get(key, ())
         if not candidates:
@@ -1709,6 +1826,7 @@ def cleaned_rows():
     ticker_rows, alias_type_lookup, extra_aliases, identifier_lookup, core_row_keys = load_data()
     review_alias_removals, review_metadata_updates, review_drop_entries = load_review_overrides()
     official_isin_fallbacks = load_active_official_isin_fallbacks()
+    official_sector_fallbacks = load_active_official_sector_fallbacks()
 
     prepared_rows: list[dict[str, str]] = []
     for row in ticker_rows:
@@ -1752,6 +1870,18 @@ def cleaned_rows():
         if not merged.get("isin") and "isin" not in review_metadata_updates.get(row_key, {}):
             merged["isin"] = unique_name_isin_fallbacks.get(
                 (normalized_compact(row["name"]), row["asset_type"]),
+                "",
+            )
+        sector_overridden = any(
+            field in review_metadata_updates.get(row_key, {})
+            for field in ("sector", "stock_sector", "etf_category")
+        )
+        if (
+            not sector_overridden
+            and not (merged.get("sector") or merged.get("stock_sector") or merged.get("etf_category"))
+        ):
+            merged["sector"] = official_sector_fallbacks.get(
+                (row["ticker"], row["exchange"], row["asset_type"]),
                 "",
             )
         merged["aliases"] = merged_aliases
@@ -2162,7 +2292,7 @@ def write_parquet(rows: list[dict[str, str]]):
 EXCHANGE_ISIN_PREFIX: dict[str, str] = {
     "AMS": "NL", "ASX": "AU", "ATHEX": "GR", "B3": "BR", "BCBA": "AR",
     "BME": "ES", "BMV": "MX", "BSE_BW": "BW", "BSE_HU": "HU", "BVB": "RO",
-    "BVL": "PT", "Bursa": "MY", "CPH": "DK", "CSE_LK": "LK", "CSE_MA": "MA",
+    "BVC": "CO", "BVL": "PT", "Bursa": "MY", "CPH": "DK", "CSE_LK": "LK", "CSE_MA": "MA",
     "DSE_TZ": "TZ", "EGX": "EG", "Euronext": "FR", "GSE": "GH", "HEL": "FI",
     "HNX": "VN", "HOSE": "VN", "ICE_IS": "IS", "IDX": "ID", "ISE": "IE", "JSE": "ZA",
     "KOSDAQ": "KR", "KRX": "KR", "LSE": "GB", "LUSE": "ZM", "MSE_MW": "MW",
@@ -2190,6 +2320,15 @@ def cross_listing_sort_key(isin: str, row: dict[str, str]) -> tuple[int, int, st
     return (-is_home, rank, row["ticker"], exchange)
 
 
+def primary_ticker_collision_sort_key(row: dict[str, str]) -> tuple[int, int, int, str, str]:
+    isin = row.get("isin", "")
+    exchange = row["exchange"]
+    is_home = 1 if isin and EXCHANGE_ISIN_PREFIX.get(exchange) == isin[:2] else 0
+    has_isin = 1 if isin else 0
+    rank = EXCHANGE_RANK.get(exchange, 99)
+    return (-is_home, -has_isin, rank, exchange, row["name"])
+
+
 def build_primary_ticker_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
     """Collapse cross-listed securities to a single primary row in the core export."""
     primary_listing_key_by_isin: dict[str, str] = {}
@@ -2210,7 +2349,19 @@ def build_primary_ticker_rows(rows: list[dict[str, str]]) -> list[dict[str, str]
             continue
         if row_listing_key(row) == primary_listing_key_by_isin[isin]:
             primary_rows.append(row)
-    return primary_rows
+
+    primary_listing_key_by_ticker: dict[str, str] = {}
+    ticker_groups: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for row in primary_rows:
+        ticker_groups[row["ticker"]].append(row)
+    for ticker, group in ticker_groups.items():
+        preferred = sorted(group, key=primary_ticker_collision_sort_key)[0]
+        primary_listing_key_by_ticker[ticker] = row_listing_key(preferred)
+    return [
+        row
+        for row in primary_rows
+        if row_listing_key(row) == primary_listing_key_by_ticker[row["ticker"]]
+    ]
 
 
 def build_cross_listings(rows: list[dict[str, str]]) -> list[dict[str, str]]:

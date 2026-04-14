@@ -4,7 +4,7 @@ import html
 import io
 import json
 import zipfile
-from base64 import b64decode
+from base64 import b64decode, b64encode
 from datetime import datetime, timezone
 
 import pandas as pd
@@ -17,11 +17,16 @@ from scripts.fetch_exchange_masterfiles import (
     BMV_CAPITAL_TRUST_SEARCH_CACHE,
     BMV_ETF_SEARCH_CACHE,
     BMV_ISSUER_DIRECTORY_CACHE,
+    BMV_MARKET_DATA_SECURITIES_CACHE,
     BMV_STOCK_SEARCH_CACHE,
+    QSE_MARKET_WATCH_CACHE,
+    SIX_SHARE_DETAILS_FQS_CACHE,
     OTC_MARKETS_SECURITY_PROFILE_CACHE,
+    OTC_MARKETS_STOCK_SCREENER_CACHE,
     B3_INSTRUMENTS_EQUITIES_CACHE,
     JSE_INSTRUMENT_SEARCH_CACHE,
     IDX_LISTED_COMPANIES_CACHE,
+    IDX_COMPANY_PROFILES_CACHE,
     WSE_LISTED_COMPANIES_CACHE,
     WSE_ETF_LIST_CACHE,
     NEWCONNECT_LISTED_COMPANIES_CACHE,
@@ -38,15 +43,21 @@ from scripts.fetch_exchange_masterfiles import (
     LEGACY_BMV_CAPITAL_TRUST_SEARCH_CACHE,
     LEGACY_BMV_ETF_SEARCH_CACHE,
     LEGACY_BMV_ISSUER_DIRECTORY_CACHE,
+    LEGACY_BMV_MARKET_DATA_SECURITIES_CACHE,
     LEGACY_BMV_STOCK_SEARCH_CACHE,
+    LEGACY_QSE_MARKET_WATCH_CACHE,
+    LEGACY_SIX_SHARE_DETAILS_FQS_CACHE,
     LEGACY_OTC_MARKETS_SECURITY_PROFILE_CACHE,
+    LEGACY_OTC_MARKETS_STOCK_SCREENER_CACHE,
     LEGACY_B3_INSTRUMENTS_EQUITIES_CACHE,
     LEGACY_LSE_COMPANY_REPORTS_CACHE,
     LEGACY_LSE_INSTRUMENT_DIRECTORY_CACHE,
     LEGACY_LSE_INSTRUMENT_SEARCH_CACHE,
+    LEGACY_LSE_PRICE_EXPLORER_CACHE,
     LEGACY_NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE,
     LEGACY_NASDAQ_NORDIC_HELSINKI_ETFS_CACHE,
     LEGACY_IDX_LISTED_COMPANIES_CACHE,
+    LEGACY_IDX_COMPANY_PROFILES_CACHE,
     LEGACY_WSE_LISTED_COMPANIES_CACHE,
     LEGACY_WSE_ETF_LIST_CACHE,
     LEGACY_NEWCONNECT_LISTED_COMPANIES_CACHE,
@@ -75,11 +86,13 @@ from scripts.fetch_exchange_masterfiles import (
     LSE_COMPANY_REPORTS_CACHE,
     LSE_INSTRUMENT_DIRECTORY_CACHE,
     LSE_INSTRUMENT_SEARCH_CACHE,
+    LSE_PRICE_EXPLORER_CACHE,
     JSE_EXCHANGE_TRADED_PRODUCTS_URL,
     JSE_SEARCH_URL,
     MasterfileSource,
     OFFICIAL_SOURCES,
     extract_lse_last_page,
+    extract_lse_price_explorer_search,
     extract_jse_exchange_traded_product_download_url,
     extract_jse_instrument_metadata,
     extract_jse_instrument_search_links,
@@ -96,6 +109,7 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_bmv_capital_trust_search,
     fetch_bmv_etf_search,
     fetch_bmv_issuer_directory,
+    fetch_bmv_market_data_securities,
     fetch_bmv_stock_search,
     fetch_all_sources,
     fetch_krx_etf_finder,
@@ -103,9 +117,12 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_lse_company_reports,
     fetch_lse_instrument_directory,
     fetch_lse_instrument_search_exact,
+    fetch_lse_price_explorer_rows,
     fetch_jse_exchange_traded_product_rows,
     fetch_jse_instrument_search_exact,
+    fetch_jpx_tse_stock_detail_rows,
     fetch_idx_listed_companies,
+    fetch_idx_company_profiles,
     fetch_newconnect_listed_companies,
     fetch_wse_etf_list,
     fetch_wse_listed_companies,
@@ -115,18 +132,21 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_tase_participating_unit_search,
     fetch_hose_securities_rows,
     fetch_hnx_issuer_rows,
+    fetch_nasdaq_nordic_iceland_shares,
     fetch_nasdaq_nordic_share_search,
     fetch_nasdaq_nordic_stockholm_shares,
     fetch_nasdaq_nordic_stockholm_trackers,
     fetch_ngm_companies_page,
     fetch_ngm_market_data_equities,
     fetch_otc_markets_security_profile,
+    fetch_qse_market_watch_rows,
     fetch_spotlight_companies_directory,
     fetch_spotlight_companies_search,
     fetch_psx_listed_companies,
     fetch_psx_symbol_name_daily,
     fetch_six_equity_issuers,
     fetch_six_fund_products,
+    fetch_six_share_details_fqs,
     fetch_sse_a_share_list,
     fetch_sse_etf_list,
     fetch_szse_a_share_list,
@@ -138,14 +158,19 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_tmx_etf_screener_quote_rows,
     infer_jpx_asset_type,
     infer_lse_lookup_asset_type,
+    jpx_tse_stock_detail_target_rows,
+    jse_instrument_search_target_tickers,
     load_b3_instruments_equities_rows,
     load_bme_reference_rows,
     load_bmv_capital_trust_search_rows,
     load_bmv_etf_search_rows,
     load_bmv_issuer_directory_rows,
+    load_bmv_market_data_securities_rows,
     load_bmv_stock_search_rows,
     load_jse_instrument_search_rows,
+    load_jpx_tse_stock_detail_rows,
     load_idx_listed_companies_rows,
+    load_idx_company_profiles_rows,
     load_wse_reference_rows,
     load_tase_securities_marketdata_rows,
     load_tase_etf_marketdata_rows,
@@ -158,6 +183,7 @@ from scripts.fetch_exchange_masterfiles import (
     load_lse_company_reports_rows,
     load_lse_instrument_directory_rows,
     load_lse_instrument_search_rows,
+    load_lse_price_explorer_rows,
     load_nasdaq_nordic_share_search_rows,
     load_nasdaq_nordic_stockholm_etf_rows,
     load_nasdaq_nordic_stockholm_tracker_rows,
@@ -165,10 +191,14 @@ from scripts.fetch_exchange_masterfiles import (
     load_ngm_companies_rows,
     load_ngm_market_data_equity_rows,
     load_otc_markets_security_profile_rows,
+    load_otc_markets_stock_screener_rows,
+    load_psx_dps_symbols_rows,
+    load_qse_market_watch_rows,
     load_spotlight_directory_rows,
     load_spotlight_search_rows,
     load_set_dr_search_rows,
     load_set_etf_search_rows,
+    load_set_stock_search_rows,
     load_szse_b_share_list_rows,
     load_szse_etf_list_rows,
     merge_reference_rows,
@@ -181,6 +211,7 @@ from scripts.fetch_exchange_masterfiles import (
     SPOTLIGHT_COMPANIES_DIRECTORY_CACHE,
     SPOTLIGHT_COMPANIES_SEARCH_CACHE,
     load_sec_company_tickers_exchange_payload,
+    load_six_share_details_fqs_rows,
     normalize_source_keys,
     load_tpex_etf_filter_payload,
     load_tpex_mainboard_basic_info_text,
@@ -192,6 +223,9 @@ from scripts.fetch_exchange_masterfiles import (
     load_tmx_etf_screener_payload,
     load_pse_listed_company_directory_rows,
     parse_pse_listed_company_directory_html,
+    build_pse_cz_share_rows,
+    parse_pse_cz_detail_ticker,
+    parse_pse_cz_share_links,
     parse_ngm_companies_page_html,
     parse_ngm_market_data_equities,
     parse_spotlight_company_title,
@@ -206,6 +240,47 @@ from scripts.fetch_exchange_masterfiles import (
     lse_instrument_search_target_tickers,
     parse_asx_listed_companies,
     parse_asx_investment_products_excel,
+    parse_athex_classification_lines,
+    parse_bse_bw_listed_companies_html,
+    parse_bursa_closing_prices_table_rows,
+    parse_bse_hu_marketdata_html,
+    parse_bse_india_scrips_payload,
+    parse_egx_listed_stocks_viewstate,
+    parse_hkex_securities_list_workbook,
+    parse_bahrain_bourse_isin_codes_html,
+    parse_bmv_market_data_instruments_html,
+    parse_bmv_market_data_profile_html,
+    parse_bist_kap_company_list,
+    parse_bist_kap_mkk_listed_securities_payload,
+    parse_adx_market_watch_payloads,
+    parse_tadawul_active_symbols,
+    parse_tadawul_securities_payload,
+    parse_boursa_kuwait_legacy_mix_payload,
+    parse_bvc_rv_issuers_payload,
+    parse_byma_equity_detail_payload,
+    parse_byma_header_search_payload,
+    parse_cavali_bvl_emisores_html_pages,
+    parse_cse_lk_all_security_code_payload,
+    parse_cse_lk_company_info_summary_payload,
+    parse_cse_ma_jsonapi_collection,
+    parse_dse_tz_listed_companies_html,
+    parse_mse_mw_mainboard_html,
+    parse_msx_companies_payload,
+    parse_qse_market_watch_payload,
+    parse_nse_india_equity_csv,
+    parse_nse_india_etf_csv,
+    parse_nse_ke_listed_companies_html,
+    parse_nzx_instruments_next_data_payload,
+    parse_nasdaq_mutual_fund_quote_payload,
+    parse_bolsa_santiago_instruments_payload,
+    parse_gse_listed_companies_markdown,
+    parse_luse_listed_companies_markdown,
+    parse_rse_listed_companies_html,
+    parse_sem_isin_workbook,
+    parse_use_ug_market_snapshot_html,
+    parse_zse_zw_issuers_payload,
+    parse_bvb_fund_units_directory_html,
+    parse_bvb_shares_directory_html,
     parse_b3_bdr_companies_payload,
     parse_b3_instruments_equities_table,
     parse_b3_listed_funds_payload,
@@ -218,9 +293,17 @@ from scripts.fetch_exchange_masterfiles import (
     parse_euronext_etfs_download,
     parse_wse_company_search_html,
     parse_wse_etf_list_html,
+    normalize_wse_stock_sector,
+    parse_vienna_listed_companies_html,
+    parse_zagreb_securities_html,
     parse_jpx_listed_issues_excel,
+    parse_jpx_tse_stock_detail_payload,
     parse_jse_exchange_traded_product_excel,
+    parse_ngx_company_profile_detail_html,
+    parse_ngx_company_profile_directory_html,
+    parse_ngx_equities_price_list_payload,
     parse_idx_listed_companies_payload,
+    parse_idx_company_profiles_payload,
     parse_krx_etf_finder,
     parse_krx_listed_companies,
     parse_krx_product_finder_records,
@@ -229,18 +312,25 @@ from scripts.fetch_exchange_masterfiles import (
     parse_nasdaq_nordic_stockholm_etfs,
     parse_nasdaq_nordic_stockholm_trackers,
     parse_lse_company_reports_html,
+    parse_lse_price_explorer_rows,
     parse_nasdaq_nordic_stockholm_shares,
     parse_nasdaq_listed,
     parse_other_listed,
     parse_psx_listed_companies,
+    parse_psx_dps_symbols_payload,
     parse_psx_symbol_name_daily,
     LEGACY_PSE_LISTED_COMPANY_DIRECTORY_CACHE,
     parse_set_listed_companies_html,
     parse_set_quote_search_payload,
+    parse_set_stock_search_payload,
     parse_sec_company_tickers_exchange,
     parse_otc_markets_security_profile,
+    parse_otc_markets_stock_screener_csv,
     parse_six_equity_issuers,
     parse_six_fund_products_csv,
+    parse_six_share_details_fqs_payload,
+    parse_dfm_company_profile_payloads,
+    parse_sgx_securities_prices_payload,
     parse_sse_a_share_list,
     parse_sse_etf_list,
     parse_szse_a_share_list,
@@ -265,10 +355,15 @@ from scripts.fetch_exchange_masterfiles import (
     extract_psx_symbol_name_download_url,
     extract_psx_xid,
     extract_html_form_inputs,
+    extract_aspnet_viewstate_strings,
+    normalize_egx_sector,
     SZSE_ETF_LIST_CACHE,
     SET_DR_SEARCH_CACHE,
     SET_ETF_SEARCH_CACHE,
+    SET_STOCK_SEARCH_CACHE,
     TMX_MONEY_GRAPHQL_URL,
+    LEGACY_SET_STOCK_SEARCH_CACHE,
+    build_six_share_details_rows,
 )
 
 
@@ -521,6 +616,114 @@ def test_fetch_otc_markets_security_profile_targets_missing_otc_isins(tmp_path):
     assert len(session.urls) == 1
     assert rows[0]["ticker"] == "AAMMF"
     assert rows[0]["isin"] == "CA02028L1076"
+
+
+def test_parse_otc_markets_stock_screener_csv_maps_conservative_equity_rows():
+    source = MasterfileSource(
+        key="otc_markets_stock_screener",
+        provider="OTC Markets",
+        description="OTC stock screener",
+        source_url="https://www.otcmarkets.com/research/stock-screener/api/downloadCSV",
+        format="otc_markets_stock_screener_csv",
+        reference_scope="exchange_directory",
+    )
+    text = "\n".join(
+        [
+            "Symbol,Security Name,Tier,Price,Change %,Vol,Sec Type,Country,State",
+            "AAPL,Apple Inc,OTCQX,100,,1,Common Stock,USA,California",
+            "DUP,First Name,OTCQB,1,,0,Common Stock,USA,",
+            "DUP,Second Name,OTCQB,1,,0,Common Stock,USA,",
+            "VUSA,ETF Name,OTCID,1,,0,ETFs,USA,",
+            "WARR,Ignored Warrant,OTCID,1,,0,Warrants,USA,",
+            "UNIT,Ignored Unit,OTCID,1,,0,Units,USA,",
+        ]
+    )
+
+    rows = parse_otc_markets_stock_screener_csv(text, source)
+
+    assert rows == [
+        {
+            "source_key": "otc_markets_stock_screener",
+            "provider": "OTC Markets",
+            "source_url": "https://www.otcmarkets.com/research/stock-screener/api/downloadCSV",
+            "ticker": "AAPL",
+            "name": "Apple Inc",
+            "exchange": "OTC",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "otc_markets_stock_screener",
+            "provider": "OTC Markets",
+            "source_url": "https://www.otcmarkets.com/research/stock-screener/api/downloadCSV",
+            "ticker": "DUP",
+            "name": "First Name",
+            "exchange": "OTC",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "otc_markets_stock_screener",
+            "provider": "OTC Markets",
+            "source_url": "https://www.otcmarkets.com/research/stock-screener/api/downloadCSV",
+            "ticker": "VUSA",
+            "name": "ETF Name",
+            "exchange": "OTC",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_load_otc_markets_stock_screener_rows_prefers_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "otc_markets_stock_screener.csv"
+    cache_path.write_text(
+        "\n".join(
+            [
+                "Symbol,Security Name,Tier,Price,Change %,Vol,Sec Type,Country,State",
+                "AAPL,Apple Inc,OTCQX,100,,1,Common Stock,USA,California",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "OTC_MARKETS_STOCK_SCREENER_CACHE", cache_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_OTC_MARKETS_STOCK_SCREENER_CACHE",
+        tmp_path / "missing.csv",
+    )
+    source = MasterfileSource(
+        key="otc_markets_stock_screener",
+        provider="OTC Markets",
+        description="OTC stock screener",
+        source_url="https://www.otcmarkets.com/research/stock-screener/api/downloadCSV",
+        format="otc_markets_stock_screener_csv",
+        reference_scope="exchange_directory",
+    )
+
+    rows, mode = load_otc_markets_stock_screener_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "source_key": "otc_markets_stock_screener",
+            "provider": "OTC Markets",
+            "source_url": "https://www.otcmarkets.com/research/stock-screener/api/downloadCSV",
+            "ticker": "AAPL",
+            "name": "Apple Inc",
+            "exchange": "OTC",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        }
+    ]
 
 
 def test_parse_twse_listed_companies_maps_twse_rows():
@@ -825,8 +1028,8 @@ def test_parse_szse_a_share_list_maps_szse_rows() -> None:
             {
                 "metadata": {"pagecount": 1, "recordcount": 2},
                 "data": [
-                    {"agdm": "000001", "agjc": '<a href="/x">平安银行</a>'},
-                    {"agdm": "300750", "agjc": '<a href="/y">宁德时代</a>'},
+                    {"agdm": "000001", "agjc": '<a href="/x">平安银行</a>', "sshymc": "J 金融业"},
+                    {"agdm": "300750", "agjc": '<a href="/y">宁德时代</a>', "sshymc": "C 制造业"},
                     {"agdm": "", "agjc": "Ignored"},
                 ],
             }
@@ -847,6 +1050,7 @@ def test_parse_szse_a_share_list_maps_szse_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "sector": "Financials",
         },
         {
             "source_key": "test",
@@ -859,6 +1063,7 @@ def test_parse_szse_a_share_list_maps_szse_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "sector": "Industrials",
         },
     ]
 
@@ -866,8 +1071,8 @@ def test_parse_szse_a_share_list_maps_szse_rows() -> None:
 def test_parse_szse_a_share_workbook_maps_szse_rows() -> None:
     dataframe = pd.DataFrame(
         [
-            {"A股代码": 1, "公司全称": "平安银行股份有限公司"},
-            {"A股代码": "300750", "公司全称": "宁德时代新能源科技股份有限公司"},
+            {"A股代码": 1, "公司全称": "平安银行股份有限公司", "所属行业": "J 金融业"},
+            {"A股代码": "300750", "公司全称": "宁德时代新能源科技股份有限公司", "所属行业": "C 制造业"},
             {"A股代码": None, "公司全称": "Ignored"},
         ]
     )
@@ -889,6 +1094,7 @@ def test_parse_szse_a_share_workbook_maps_szse_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "sector": "Financials",
         },
         {
             "source_key": "test",
@@ -901,6 +1107,7 @@ def test_parse_szse_a_share_workbook_maps_szse_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "sector": "Industrials",
         },
     ]
 
@@ -911,8 +1118,8 @@ def test_parse_szse_b_share_list_maps_szse_rows() -> None:
             {
                 "metadata": {"pagecount": 1, "recordcount": 2},
                 "data": [
-                    {"bgdm": "200011", "bgjc": '<a href="/x">深物业B</a>'},
-                    {"bgdm": "200012", "bgjc": '<a href="/y">南玻B</a>'},
+                    {"bgdm": "200011", "bgjc": '<a href="/x">深物业B</a>', "sshymc": "K 房地产"},
+                    {"bgdm": "200012", "bgjc": '<a href="/y">南玻B</a>', "sshymc": "C 制造业"},
                     {"bgdm": "", "bgjc": "Ignored"},
                 ],
             }
@@ -933,6 +1140,7 @@ def test_parse_szse_b_share_list_maps_szse_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "sector": "Real Estate",
         },
         {
             "source_key": "test",
@@ -945,6 +1153,7 @@ def test_parse_szse_b_share_list_maps_szse_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "sector": "Industrials",
         },
     ]
 
@@ -952,8 +1161,8 @@ def test_parse_szse_b_share_list_maps_szse_rows() -> None:
 def test_parse_szse_b_share_workbook_maps_szse_rows() -> None:
     dataframe = pd.DataFrame(
         [
-            {"B股代码": 200011, "B股简称": "深物业B"},
-            {"B股代码": "200012", "B股简称": "南玻B"},
+            {"B股代码": 200011, "B股简称": "深物业B", "所属行业": "K 房地产"},
+            {"B股代码": "200012", "B股简称": "南玻B", "所属行业": "C 制造业"},
             {"B股代码": None, "B股简称": "Ignored"},
         ]
     )
@@ -975,6 +1184,7 @@ def test_parse_szse_b_share_workbook_maps_szse_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "sector": "Real Estate",
         },
         {
             "source_key": "test",
@@ -987,6 +1197,7 @@ def test_parse_szse_b_share_workbook_maps_szse_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "sector": "Industrials",
         },
     ]
 
@@ -1430,6 +1641,7 @@ def test_parse_tpex_etf_filter_maps_tpex_etf_rows() -> None:
             "exchange": "TPEX",
             "asset_type": "ETF",
             "isin": "TW00000679B0",
+            "sector": "Fixed Income",
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
@@ -1459,6 +1671,7 @@ def test_parse_tpex_emerging_basic_info_csv_maps_tpex_rows() -> None:
             "exchange": "TPEX",
             "asset_type": "Stock",
             "isin": "TW0001269B11",
+            "sector": "Consumer Discretionary",
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
@@ -1472,6 +1685,7 @@ def test_parse_tpex_emerging_basic_info_csv_maps_tpex_rows() -> None:
             "exchange": "TPEX",
             "asset_type": "Stock",
             "isin": "TW0001271B17",
+            "sector": "Health Care",
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
@@ -1500,6 +1714,7 @@ def test_parse_tpex_mainboard_basic_info_csv_maps_tpex_rows() -> None:
             "name": "英特磊科技股份有限公司",
             "exchange": "TPEX",
             "asset_type": "Stock",
+            "sector": "Information Technology",
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
@@ -1513,6 +1728,7 @@ def test_parse_tpex_mainboard_basic_info_csv_maps_tpex_rows() -> None:
             "exchange": "TPEX",
             "asset_type": "Stock",
             "isin": "TW0005381008",
+            "sector": "Information Technology",
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
@@ -1612,6 +1828,7 @@ def test_parse_asx_listed_companies_skips_banner_lines():
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "sector": "Industrials",
         },
         {
             "source_key": "test",
@@ -1893,6 +2110,126 @@ def test_parse_set_dr_search_payload_keeps_only_drs() -> None:
     ]
 
 
+def test_parse_set_stock_search_payload_keeps_common_stock_and_etfs() -> None:
+    payload = {
+        "securitySymbols": [
+            {
+                "symbol": "ADVANC",
+                "nameEN": "ADVANCED INFO SERVICE PUBLIC COMPANY LIMITED",
+                "market": "SET",
+                "securityType": "S",
+                "industry": "TECH",
+                "sector": "ICT",
+            },
+            {
+                "symbol": "1DIV",
+                "nameEN": "ThaiDEX SET High Dividend ETF",
+                "market": "SET",
+                "securityType": "L",
+                "industry": "",
+                "sector": "",
+            },
+            {
+                "symbol": "ADVANC-F",
+                "nameEN": "ADVANCED INFO SERVICE PUBLIC COMPANY LIMITED",
+                "market": "SET",
+                "securityType": "F",
+                "industry": "TECH",
+                "sector": "ICT",
+            },
+            {
+                "symbol": "AMD80",
+                "nameEN": "Depositary Receipt on AMD Issued by KTB",
+                "market": "SET",
+                "securityType": "X",
+                "industry": "",
+                "sector": "",
+            },
+            {
+                "symbol": "A5-W4",
+                "nameEN": "Warrants of ASSET FIVE GROUP PUBLIC COMPANY LIMITED",
+                "market": "SET",
+                "securityType": "W",
+                "industry": "PROPCON",
+                "sector": "PROP",
+            },
+        ]
+    }
+
+    rows = parse_set_stock_search_payload(payload, SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "ADVANC",
+            "name": "ADVANCED INFO SERVICE PUBLIC COMPANY LIMITED",
+            "exchange": "SET",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "sector": "Communication Services",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "1DIV",
+            "name": "ThaiDEX SET High Dividend ETF",
+            "exchange": "SET",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_load_set_stock_search_rows_prefers_cache(monkeypatch, tmp_path) -> None:
+    payload = {
+        "securitySymbols": [
+            {
+                "symbol": "2S",
+                "nameEN": "2S METAL PUBLIC COMPANY LIMITED",
+                "market": "SET",
+                "securityType": "S",
+                "industry": "INDUS",
+                "sector": "STEEL",
+            }
+        ]
+    }
+    cache = tmp_path / "set_stock_search.json"
+    cache.write_text(json.dumps(payload), encoding="utf-8")
+    monkeypatch.setattr(fetch_exchange_masterfiles, "SET_STOCK_SEARCH_CACHE", cache)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "LEGACY_SET_STOCK_SEARCH_CACHE", tmp_path / "missing.json")
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_set_stock_search",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("blocked")),
+    )
+
+    rows, mode = load_set_stock_search_rows(SOURCE)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "2S",
+            "name": "2S METAL PUBLIC COMPANY LIMITED",
+            "exchange": "SET",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "sector": "Materials",
+        }
+    ]
+
+
 def test_parse_lse_company_reports_html_maps_lse_rows():
     html = """
     <html>
@@ -1934,6 +2271,159 @@ def test_parse_lse_company_reports_html_maps_lse_rows():
             "official": "true",
         },
     ]
+
+
+def test_parse_lse_price_explorer_rows_maps_equity_and_etfs_only():
+    source = MasterfileSource(
+        key="lse_price_explorer",
+        provider="LSE",
+        description="LSE price explorer",
+        source_url="https://example.com/price-explorer",
+        format="lse_price_explorer_json",
+        reference_scope="exchange_directory",
+    )
+    rows = parse_lse_price_explorer_rows(
+        [
+            {
+                "tidm": "SPA",
+                "category": "EQUITY",
+                "issuername": "1SPATIAL PLC",
+                "description": "1SPATIAL PLC ORD 10P",
+                "name": "ORD 10P",
+                "isin": "GB00BFZ45C84",
+            },
+            {
+                "tidm": "CBTC",
+                "category": "ETFS",
+                "issuername": "21SHARES AG",
+                "description": "21SHARES AG 21SHARES BITCOIN CORE ETP",
+                "name": "21SHARES BITCOIN CORE ETP",
+                "isin": "CH1199067674",
+            },
+            {
+                "tidm": "ZL04",
+                "category": "BONDS",
+                "description": "6.700% NTS 17/10/28",
+                "isin": "XS0000000000",
+            },
+        ],
+        source,
+    )
+
+    assert rows == [
+        {
+            "source_key": "lse_price_explorer",
+            "provider": "LSE",
+            "source_url": "https://example.com/price-explorer",
+            "ticker": "SPA",
+            "name": "1SPATIAL PLC",
+            "exchange": "LSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "GB00BFZ45C84",
+        },
+        {
+            "source_key": "lse_price_explorer",
+            "provider": "LSE",
+            "source_url": "https://example.com/price-explorer",
+            "ticker": "CBTC",
+            "name": "21SHARES AG 21SHARES BITCOIN CORE ETP",
+            "exchange": "LSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "CH1199067674",
+        },
+    ]
+
+
+def test_fetch_lse_price_explorer_rows_paginates_equity_and_etfs():
+    source = MasterfileSource(
+        key="lse_price_explorer",
+        provider="LSE",
+        description="LSE price explorer",
+        source_url="https://example.com/price-explorer",
+        format="lse_price_explorer_json",
+        reference_scope="exchange_directory",
+    )
+
+    class FakeResponse:
+        def __init__(self, payload):
+            self._payload = payload
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.params = []
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            self.params.append(params)
+            page = int(params["parameters"].rsplit("page=", 1)[1])
+            content = [
+                {
+                    "tidm": "SPA" if page == 0 else "CBTC",
+                    "category": "EQUITY" if page == 0 else "ETFS",
+                    "issuername": "1SPATIAL PLC" if page == 0 else "21SHARES AG",
+                    "description": "1SPATIAL PLC ORD 10P"
+                    if page == 0
+                    else "21SHARES AG 21SHARES BITCOIN CORE ETP",
+                    "name": "ORD 10P" if page == 0 else "21SHARES BITCOIN CORE ETP",
+                    "isin": "GB00BFZ45C84" if page == 0 else "CH1199067674",
+                }
+            ]
+            return FakeResponse(
+                {
+                    "components": [
+                        {
+                            "content": [
+                                {
+                                    "name": "priceexplorersearch",
+                                    "value": {"content": content, "totalPages": 2},
+                                }
+                            ]
+                        }
+                    ]
+                }
+            )
+
+    session = FakeSession()
+    rows = fetch_lse_price_explorer_rows(source, session=session)
+
+    assert [row["ticker"] for row in rows] == ["CBTC", "SPA"]
+    assert all("categories=EQUITY,ETFS" in call["parameters"] for call in session.params)
+    assert [call["path"] for call in session.params] == [
+        "live-markets/market-data-dashboard/price-explorer",
+        "live-markets/market-data-dashboard/price-explorer",
+    ]
+
+
+def test_load_lse_price_explorer_rows_prefers_cache(tmp_path, monkeypatch):
+    cache_path = tmp_path / "lse_price_explorer.json"
+    cache_path.write_text('[{"ticker":"SPA","name":"1SPATIAL PLC"}]', encoding="utf-8")
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LSE_PRICE_EXPLORER_CACHE", cache_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_LSE_PRICE_EXPLORER_CACHE", tmp_path / "legacy.json")
+
+    source = MasterfileSource(
+        key="lse_price_explorer",
+        provider="LSE",
+        description="LSE price explorer",
+        source_url="https://example.com/price-explorer",
+        format="lse_price_explorer_json",
+        reference_scope="exchange_directory",
+    )
+
+    rows, mode = load_lse_price_explorer_rows(source)
+
+    assert rows == [{"ticker": "SPA", "name": "1SPATIAL PLC"}]
+    assert mode == "cache"
 
 
 def test_parse_cboe_canada_listing_directory_html_maps_supported_security_types() -> None:
@@ -2581,10 +3071,14 @@ def test_parse_krx_listed_companies_maps_market_rows():
         {
             "isu_cd": "005930",
             "eng_cor_nm": "SAMSUNG ELECTRONICS",
+            "std_ind_cd": "032601",
+            "ind_nm": "Manufacture of Semiconductor",
         },
         {
             "isu_cd": "091990",
             "eng_cor_nm": "CELLTRIONHEALTHCARE",
+            "std_ind_cd": "032101",
+            "ind_nm": "Manufacture of Medicaments",
         },
         {
             "isu_cd": "",
@@ -2606,6 +3100,7 @@ def test_parse_krx_listed_companies_maps_market_rows():
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "sector": "Information Technology",
         },
         {
             "source_key": "test",
@@ -2618,6 +3113,7 @@ def test_parse_krx_listed_companies_maps_market_rows():
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "sector": "Health Care",
         },
     ]
 
@@ -3044,14 +3540,14 @@ def test_fetch_krx_etf_finder_replaces_missing_isin_from_product_finder(monkeypa
     assert rows[0]["isin"] == "KR7448100001"
 
 
-def test_krx_source_is_modeled_as_partial_official_coverage() -> None:
+def test_krx_source_is_modeled_as_exchange_directory() -> None:
     source = next(item for item in OFFICIAL_SOURCES if item.key == "krx_listed_companies")
-    assert source.reference_scope == "listed_companies_subset"
+    assert source.reference_scope == "exchange_directory"
 
 
-def test_krx_etf_finder_source_is_modeled_as_partial_official_coverage() -> None:
+def test_krx_etf_finder_source_is_modelled_as_exchange_directory() -> None:
     source = next(item for item in OFFICIAL_SOURCES if item.key == "krx_etf_finder")
-    assert source.reference_scope == "listed_companies_subset"
+    assert source.reference_scope == "exchange_directory"
 
 
 def test_extract_psx_xid_and_sector_options() -> None:
@@ -3218,6 +3714,96 @@ def test_parse_psx_symbol_name_daily_prefers_full_name_and_filters_to_known_tick
     ]
 
 
+def test_parse_psx_dps_symbols_payload_filters_debt_rights_and_maps_sectors() -> None:
+    source = MasterfileSource(
+        key="psx_dps_symbols",
+        provider="PSX",
+        description="PSX DPS symbols",
+        source_url="https://dps.psx.com.pk/symbols",
+        format="psx_dps_symbols_json",
+        reference_scope="exchange_directory",
+    )
+
+    rows = parse_psx_dps_symbols_payload(
+        [
+            {
+                "symbol": "AGTL",
+                "name": "Al-Ghazi Tractors Limited",
+                "sectorName": "AUTOMOBILE ASSEMBLER",
+                "isETF": False,
+                "isDebt": False,
+            },
+            {
+                "symbol": "MIIETF",
+                "name": "MII ETF",
+                "sectorName": "EXCHANGE TRADED FUND",
+                "isETF": True,
+                "isDebt": False,
+            },
+            {
+                "symbol": "AKBLTFC6",
+                "name": "Askari Bank(TFC6)",
+                "sectorName": "BILLS AND BONDS",
+                "isETF": False,
+                "isDebt": True,
+            },
+            {
+                "symbol": "786R",
+                "name": "786 Investment (Right)",
+                "sectorName": "INV. BANKS / INV. COS. / SECURITIES COS.",
+                "isETF": False,
+                "isDebt": False,
+            },
+        ],
+        source,
+    )
+
+    assert [(row["ticker"], row["asset_type"], row["sector"]) for row in rows] == [
+        ("AGTL", "Stock", "Consumer Discretionary"),
+        ("MIIETF", "ETF", "Equity"),
+    ]
+    assert all(row["official"] == "true" for row in rows)
+
+
+def test_load_psx_dps_symbols_rows_prefers_cache_on_network_error(monkeypatch, tmp_path) -> None:
+    source = MasterfileSource(
+        key="psx_dps_symbols",
+        provider="PSX",
+        description="PSX DPS symbols",
+        source_url="https://dps.psx.com.pk/symbols",
+        format="psx_dps_symbols_json",
+        reference_scope="exchange_directory",
+    )
+    cache_path = tmp_path / "psx_dps_symbols.json"
+    legacy_path = tmp_path / "legacy_psx_dps_symbols.json"
+    cache_path.write_text(
+        json.dumps(
+            [
+                {
+                    "symbol": "AGTL",
+                    "name": "Al-Ghazi Tractors Limited",
+                    "sectorName": "AUTOMOBILE ASSEMBLER",
+                    "isETF": False,
+                    "isDebt": False,
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "PSX_DPS_SYMBOLS_CACHE", cache_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "LEGACY_PSX_DPS_SYMBOLS_CACHE", legacy_path)
+
+    def fail_fetch(*args, **kwargs):
+        raise requests.RequestException("network unavailable")
+
+    monkeypatch.setattr(fetch_exchange_masterfiles, "fetch_psx_dps_symbols", fail_fetch)
+
+    rows, mode = load_psx_dps_symbols_rows(source)
+
+    assert mode == "cache"
+    assert [(row["ticker"], row["sector"]) for row in rows] == [("AGTL", "Consumer Discretionary")]
+
+
 def test_fetch_psx_symbol_name_daily_downloads_latest_available_symbol_file(monkeypatch) -> None:
     source = MasterfileSource(
         key="psx_symbol_name_daily",
@@ -3331,9 +3917,9 @@ def test_deutsche_boerse_etfs_etps_source_is_modeled_as_partial_official_coverag
     assert source.reference_scope == "listed_companies_subset"
 
 
-def test_deutsche_boerse_xetra_all_tradable_source_is_modeled_as_partial_official_coverage() -> None:
+def test_deutsche_boerse_xetra_all_tradable_source_is_modeled_as_exchange_directory() -> None:
     source = next(item for item in OFFICIAL_SOURCES if item.key == "deutsche_boerse_xetra_all_tradable_equities")
-    assert source.reference_scope == "listed_companies_subset"
+    assert source.reference_scope == "exchange_directory"
 
 
 def test_parse_jpx_listed_issues_excel_maps_tse_rows(tmp_path):
@@ -3378,6 +3964,102 @@ def test_parse_jpx_listed_issues_excel_maps_tse_rows(tmp_path):
     ]
 
 
+def test_parse_jpx_tse_stock_detail_payload_maps_isin_and_sector() -> None:
+    row = parse_jpx_tse_stock_detail_payload(
+        {
+            "section1": {
+                "data": {
+                    "7203/T": {
+                        "TTCODE2": "7203",
+                        "FLLNE": "TOYOTA MOTOR CORP.",
+                        "ISIN": "JP3633400001",
+                        "JSECE_CNV": "Transportation Equipment",
+                    }
+                }
+            }
+        },
+        SOURCE,
+        fallback_asset_type="Stock",
+    )
+
+    assert row == {
+        "source_key": "test",
+        "provider": "test",
+        "source_url": "https://example.com7203",
+        "ticker": "7203",
+        "name": "TOYOTA MOTOR CORP.",
+        "exchange": "TSE",
+        "asset_type": "Stock",
+        "listing_status": "active",
+        "reference_scope": "exchange_directory",
+        "official": "true",
+        "isin": "JP3633400001",
+        "sector": "Consumer Discretionary",
+    }
+
+
+def test_jpx_tse_stock_detail_target_rows_dedupes_tse_stock_and_etf_rows(tmp_path) -> None:
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,exchange,asset_type,name,isin",
+                "7203,TSE,Stock,Toyota,",
+                "7203,TSE,Stock,Toyota duplicate,",
+                "1306,TSE,ETF,Topix ETF,",
+                "MSFT,NASDAQ,Stock,Microsoft,US5949181045",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    rows = jpx_tse_stock_detail_target_rows(listings_path)
+
+    assert [(row["ticker"], row["asset_type"]) for row in rows] == [("1306", "ETF"), ("7203", "Stock")]
+
+
+def test_fetch_jpx_tse_stock_detail_rows_uses_official_detail_api(tmp_path) -> None:
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text("ticker,exchange,asset_type,name,isin\n7203,TSE,Stock,Toyota,\n", encoding="utf-8")
+    urls: list[str] = []
+
+    class FakeResponse:
+        def __init__(self, payload=None):
+            self._payload = payload or {}
+
+        def raise_for_status(self) -> None:
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def get(self, url, headers=None, timeout=None):
+            urls.append(url)
+            if "stock_detail" in url:
+                assert headers["Referer"].endswith("qcode=7203")
+                return FakeResponse(
+                    {
+                        "section1": {
+                            "data": {
+                                "7203/T": {
+                                    "TTCODE2": "7203",
+                                    "FLLNE": "TOYOTA MOTOR CORP.",
+                                    "ISIN": "JP3633400001",
+                                }
+                            }
+                        }
+                    }
+                )
+            return FakeResponse({})
+
+    rows = fetch_jpx_tse_stock_detail_rows(SOURCE, listings_path=listings_path, session=FakeSession())
+
+    assert rows[0]["isin"] == "JP3633400001"
+    assert any("F=e_stock_search" in url for url in urls)
+    assert any("F=ctl/stock_detail&qcode=7203" in url for url in urls)
+
+
 def test_extract_jse_exchange_traded_product_download_url_picks_latest_match() -> None:
     html = """
     <a href="https://www.jse.co.za/sites/default/files/media/documents/etf-list-v86/ETF%20List%20v.86.xlsx">old etf</a>
@@ -3402,6 +4084,14 @@ def test_parse_jse_exchange_traded_product_excel_skips_section_headers() -> None
             [
                 {"Alpha": "Top 40 Equity", "Long Name": None},
                 {"Alpha": "ETFT40", "Long Name": "1nvest Top 40 ETF"},
+                {"Alpha": None, "Long Name": None},
+                {"Alpha": "Actively Managed", "Long Name": None},
+                {
+                    "Alpha": "91DINC",
+                    "Long Name": "Ninety One Diversified Income Prescient Feeder Actively Managed ETF",
+                    "Underlying": "ASISA SA Multi-Asset Income",
+                },
+                {"Alpha": "Equity", "Long Name": None},
                 {"Alpha": "ADETNC", "Long Name": "FNB ETN on ADOBEC NOV25"},
                 {"Alpha": None, "Long Name": None},
             ]
@@ -3425,6 +4115,20 @@ def test_parse_jse_exchange_traded_product_excel_skips_section_headers() -> None
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "sector": "Equity",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://www.jse.co.za/sites/default/files/media/documents/etf-list-v87/ETF%20List%20v.87.xlsx",
+            "ticker": "91DINC",
+            "name": "Ninety One Diversified Income Prescient Feeder Actively Managed ETF",
+            "exchange": "JSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "sector": "Multi-Asset",
         },
         {
             "source_key": "test",
@@ -3437,6 +4141,7 @@ def test_parse_jse_exchange_traded_product_excel_skips_section_headers() -> None
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "sector": "Equity",
         },
     ]
 
@@ -3513,12 +4218,19 @@ def test_extract_jse_instrument_metadata_parses_meta_description() -> None:
       name="description"
       content="Instrument name: MC Mining Limited. Instrument code: MCZ. Instrument type: Equities. Listing date: 1970-01-01"
     />
+    <div class="instrument-profile__sector">
+      <span class="instrument-profile__sector--sector">Basic Resources</span>
+    </div>
+    <div class="instrument-profile__industry">
+      <span class="instrument-profile__industry--Industry">Materials</span>
+    </div>
     """
 
     assert extract_jse_instrument_metadata(html) == {
         "name": "MC Mining Limited",
         "code": "MCZ",
         "instrument_type": "Equities",
+        "sector": "Materials",
     }
 
 
@@ -3532,6 +4244,7 @@ def test_fetch_jse_instrument_search_exact_returns_only_exact_code_matches() -> 
     """
     matched_html = """
     <meta name="description" content="Instrument name: Example X Holdings Ltd. Instrument code: EXX. Instrument type: Equities. Listing date: 1970-01-01" />
+    <div class="instrument-profile__industry"><span class="instrument-profile__industry--Industry">Industrials</span></div>
     """
 
     class FakeResponse:
@@ -3580,6 +4293,7 @@ def test_fetch_jse_instrument_search_exact_returns_only_exact_code_matches() -> 
             "listing_status": "active",
             "reference_scope": "listed_companies_subset",
             "official": "true",
+            "sector": "Industrials",
         }
     ]
 
@@ -3587,6 +4301,27 @@ def test_fetch_jse_instrument_search_exact_returns_only_exact_code_matches() -> 
 def test_jse_instrument_search_source_is_modeled_as_partial_official_coverage() -> None:
     source = next(item for item in OFFICIAL_SOURCES if item.key == "jse_instrument_search")
     assert source.reference_scope == "listed_companies_subset"
+
+
+def test_jse_instrument_search_target_tickers_include_current_metadata_gaps(tmp_path, monkeypatch) -> None:
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,exchange,asset_type,isin,stock_sector,sector",
+                "CPIP,JSE,Stock,,Financials,Financials",
+                "PMR,JSE,Stock,,,",
+                "STX40,JSE,ETF,,,",
+                "ALE,LSE,Stock,,,",
+                "AVI,JSE,Stock,ZAE000049433,,",
+                "EXX,JSE,Stock,ZAE000084992,Energy,Energy",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "latest_reference_gap_tickers", lambda *_args, **_kwargs: {"EXX"})
+
+    assert jse_instrument_search_target_tickers(listings_path=listings_path) == ["AVI", "CPIP", "EXX", "PMR"]
 
 
 def test_load_jse_instrument_search_rows_prefers_cache(tmp_path, monkeypatch) -> None:
@@ -3766,11 +4501,18 @@ def test_parse_deutsche_boerse_etfs_etps_excel_maps_xetra_rows() -> None:
                     "XETRA SYMBOL": "ARAW",
                 },
                 {
-                    "PRODUCT TYPE": "ETP",
+                    "PRODUCT TYPE": "ETN",
                     "PRODUCT NAME": "ETC Group Physical Bitcoin",
                     "ISIN": "DE000A27Z304",
                     "PRODUCT FAMILY": "ETC Group",
                     "XETRA SYMBOL": "BTCE",
+                },
+                {
+                    "PRODUCT TYPE": "ETC",
+                    "PRODUCT NAME": "BNPP Gold ETC",
+                    "ISIN": "DE000PB8C0P8",
+                    "PRODUCT FAMILY": "BNPP ETC",
+                    "XETRA SYMBOL": "BNQG",
                 },
             ]
         ).to_excel(writer, sheet_name="ETFs & ETPs", startrow=8, index=False)
@@ -3803,19 +4545,37 @@ def test_parse_deutsche_boerse_etfs_etps_excel_maps_xetra_rows() -> None:
             "reference_scope": "exchange_directory",
             "official": "true",
             "isin": "DE000A27Z304",
+            "sector": "Alternative",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "BNQG",
+            "name": "BNPP Gold ETC",
+            "exchange": "XETRA",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "DE000PB8C0P8",
+            "sector": "Commodity",
         },
     ]
 
 
-def test_parse_deutsche_boerse_xetra_all_tradable_csv_maps_stock_rows() -> None:
+def test_parse_deutsche_boerse_xetra_all_tradable_csv_maps_stock_and_etp_rows() -> None:
     text = "\n".join(
         [
             "Market:;XETR",
             "Date Last Update:;07.04.2026",
-            "Product Status;Instrument Status;Instrument;ISIN;Product ID;Instrument ID;WKN;Mnemonic;MIC Code;Product Assignment Group;Instrument Type",
-            "Active;Active;PAYPAL HDGS INC.DL-,0001;US70450Y1038;1;2;A14R7U;2PP;XETR;AUS0;CS",
-            "Active;Active;XTRACKERS MSCI WORLD UCITS ETF;IE00BJ0KDQ92;1;2;A1XB5U;XDWD;XETR;PAG_ETF;ETF",
-            "Inactive;Active;OLD EQUITY;US0000000001;1;2;000000;OLD;XETR;PAG_EQU;CS",
+            "Product Status;Instrument Status;Instrument;ISIN;Product ID;Instrument ID;WKN;Mnemonic;MIC Code;Product Assignment Group;Product Assignment Group Description;Instrument Type",
+            "Active;Active;PAYPAL HDGS INC.DL-,0001;US70450Y1038;1;2;A14R7U;2PP;XETR;AUS0;AUSTRALIEN NEUSEELAND OZEANIEN;CS",
+            "Active;Active;XTRACKERS II EUR CORPORATE BOND UCITS ETF;LU0478205379;1;2;DBX0;XBLC;XETR;FONA;EXCHANGE TRADED FUNDS - RENTEN;ETF",
+            "Active;Active;SGIS O.E. ETC ICE EUA;DE000ETC0001;1;2;ETC000;SGS1;XETR;ETC1;EXCHANGE TRADED COMMODITIES;ETC",
+            "Active;Active;21SHARES HODL BSK ETP OE;CH0445689208;1;2;A3GCRR;21XH;XETR;ETN0;EXCHANGE TRADED NOTES;ETN",
+            "Active;Active;MUTARES KGAA BZR;DE000A41YEC7;1;2;A41YEC;MUXA;XETR;SDX1;SDAX;SR",
+            "Inactive;Active;OLD EQUITY;US0000000001;1;2;000000;OLD;XETR;PAG_EQU;AUSTRALIEN NEUSEELAND OZEANIEN;CS",
         ]
     )
 
@@ -3834,7 +4594,49 @@ def test_parse_deutsche_boerse_xetra_all_tradable_csv_maps_stock_rows() -> None:
             "reference_scope": "exchange_directory",
             "official": "true",
             "isin": "US70450Y1038",
-        }
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "XBLC",
+            "name": "XTRACKERS II EUR CORPORATE BOND UCITS ETF",
+            "exchange": "XETRA",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "LU0478205379",
+            "sector": "Fixed Income",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "SGS1",
+            "name": "SGIS O.E. ETC ICE EUA",
+            "exchange": "XETRA",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "DE000ETC0001",
+            "sector": "Commodity",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "21XH",
+            "name": "21SHARES HODL BSK ETP OE",
+            "exchange": "XETRA",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "CH0445689208",
+            "sector": "Alternative",
+        },
     ]
 
 
@@ -4443,6 +5245,7 @@ def test_parse_euronext_equities_download_maps_markets():
             'A2A;IT0001233417;A2A;"Euronext Milan";EUR;2.458;2.481;2.454;2.457;" 17:37";CET;8256154;20352541.80;2.457;',
             '"2020 BULKERS";BMG9156K1018;2020;"Oslo Børs";NOK;137.80;140.70;135.50;140.40;" 13:07";CET;166844;23212042.70;-;-',
             '"AEX ETF";NL0000000001;AEX;"Euronext Amsterdam";EUR;1;1;1;1;" 17:35";CET;1;1;1;',
+            '"AIB GROUP PLC";IE00BF0L3536;A5G;"Euronext Dublin";EUR;9.46;9.578;9.442;9.564;" 21:07";IST;3693893;35243700.07;9.564;',
             '"3M";US88579Y1010;4MMM;EuroTLX;EUR;1;1;1;1;" 12:56";CET;1;1;1;',
         ]
     )
@@ -4488,6 +5291,19 @@ def test_parse_euronext_equities_download_maps_markets():
             "reference_scope": "exchange_directory",
             "official": "true",
             "isin": "NL0000000001",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "A5G",
+            "name": "AIB GROUP PLC",
+            "exchange": "ISE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "IE00BF0L3536",
         },
         {
             "source_key": "test",
@@ -5169,6 +5985,71 @@ def test_fetch_nasdaq_nordic_stockholm_shares_includes_first_north() -> None:
         (
             "https://api.nasdaq.com/api/nordic/screener/shares",
             {"category": "FIRST_NORTH", "tableonly": "false", "market": "STO"},
+        ),
+    ]
+
+
+def test_fetch_nasdaq_nordic_iceland_shares_uses_ice_market() -> None:
+    source = MasterfileSource(
+        key="nasdaq_nordic_iceland_shares",
+        provider="Nasdaq Nordic",
+        description="Official Iceland shares screener",
+        source_url="https://api.nasdaq.com/api/nordic/screener/shares",
+        format="nasdaq_nordic_iceland_shares_json",
+        reference_scope="listed_companies_subset",
+    )
+
+    class FakeResponse:
+        def __init__(self, payload):
+            self._payload = payload
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            self.calls.append((url, params))
+            assert params in (
+                {"category": "MAIN_MARKET", "tableonly": "false", "market": "ICE"},
+                {"category": "FIRST_NORTH", "tableonly": "false", "market": "ICE"},
+            )
+            return FakeResponse(
+                {
+                    "data": {
+                        "instrumentListing": {
+                            "rows": [
+                                {
+                                    "symbol": "ALVO",
+                                    "fullName": "Alvotech",
+                                    "isin": "LU2458332611",
+                                    "sector": "Health Care",
+                                }
+                            ]
+                        }
+                    }
+                }
+            )
+
+    session = FakeSession()
+    rows = fetch_nasdaq_nordic_iceland_shares(source, session=session)
+
+    assert {row["ticker"] for row in rows} == {"ALVO"}
+    assert rows[0]["exchange"] == "ICE_IS"
+    assert rows[0]["isin"] == "LU2458332611"
+    assert session.calls == [
+        (
+            "https://api.nasdaq.com/api/nordic/screener/shares",
+            {"category": "MAIN_MARKET", "tableonly": "false", "market": "ICE"},
+        ),
+        (
+            "https://api.nasdaq.com/api/nordic/screener/shares",
+            {"category": "FIRST_NORTH", "tableonly": "false", "market": "ICE"},
         ),
     ]
 
@@ -7310,6 +8191,56 @@ def test_bmv_issuer_directory_source_is_modeled_as_partial_official_coverage() -
     assert source.reference_scope == "listed_companies_subset"
 
 
+def test_parse_bmv_market_data_pages_extracts_isin_and_profile_taxonomy() -> None:
+    stats_html = """
+    <section>
+      <table>
+        <thead><tr><th>Tipo Valor</th><th>Serie</th><th>Isin</th><th>Estatus</th><th>Descripci&oacute;n</th></tr></thead>
+        <tbody>
+          <tr><td>1I</td><td>N</td><td>IE00BFMXXD54</td><td>ACTIVA</td><td>CANASTAS DE ACCIONES</td></tr>
+          <tr><td>1I</td><td>C</td><td>not-an-isin</td><td>ACTIVA</td><td>CANASTAS DE ACCIONES</td></tr>
+        </tbody>
+      </table>
+    </section>
+    """
+    profile_html = """
+    <table class="info">
+      <tr><td>Sector:</td><td>SERVICIOS FINANCIEROS</td></tr>
+      <tr><td>Clasificaci&oacute;n ETF:</td><td>ACCIONES</td></tr>
+      <tr><td>Objeto de Inversi&oacute;n:</td><td>Replica el S&amp;P 500</td></tr>
+    </table>
+    """
+
+    assert parse_bmv_market_data_instruments_html(stats_html) == [
+        {
+            "tipo_valor": "1I",
+            "serie": "N",
+            "isin": "IE00BFMXXD54",
+            "estatus": "ACTIVA",
+            "descripcion": "CANASTAS DE ACCIONES",
+        },
+        {
+            "tipo_valor": "1I",
+            "serie": "C",
+            "isin": "",
+            "estatus": "ACTIVA",
+            "descripcion": "CANASTAS DE ACCIONES",
+        }
+    ]
+    assert parse_bmv_market_data_profile_html(profile_html) == {
+        "SECTOR": "SERVICIOS FINANCIEROS",
+        "CLASIFICACION ETF": "ACCIONES",
+        "OBJETO DE INVERSION": "Replica el S&P 500",
+    }
+
+
+def test_bmv_market_data_securities_source_is_modeled_as_official_supplement() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "bmv_market_data_securities")
+    assert source.provider == "BMV"
+    assert source.reference_scope == "listed_companies_subset"
+    assert source.format == "bmv_market_data_security_pages_html"
+
+
 def test_fetch_bmv_issuer_directory_backfills_local_and_global_matches(tmp_path, monkeypatch) -> None:
     source = MasterfileSource(
         key="bmv_issuer_directory",
@@ -7578,9 +8509,12 @@ def test_fetch_bmv_issuer_directory_backfills_local_and_global_matches(tmp_path,
 def test_bme_sources_are_modeled_as_partial_official_coverage() -> None:
     stock_source = next(item for item in OFFICIAL_SOURCES if item.key == "bme_listed_companies")
     etf_source = next(item for item in OFFICIAL_SOURCES if item.key == "bme_etf_list")
+    security_prices_source = next(item for item in OFFICIAL_SOURCES if item.key == "bme_security_prices_directory")
 
     assert stock_source.reference_scope == "listed_companies_subset"
     assert etf_source.reference_scope == "listed_companies_subset"
+    assert security_prices_source.format == "bme_security_prices_json"
+    assert security_prices_source.reference_scope == "exchange_directory"
 
 
 def test_bursa_equity_isin_source_is_modeled_as_partial_official_coverage() -> None:
@@ -7588,6 +8522,14 @@ def test_bursa_equity_isin_source_is_modeled_as_partial_official_coverage() -> N
 
     assert source.provider == "Bursa Malaysia"
     assert source.format == "bursa_equity_isin_pdf"
+    assert source.reference_scope == "listed_companies_subset"
+
+
+def test_bursa_closing_prices_source_is_modeled_as_official_sector_subset() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "bursa_closing_prices")
+
+    assert source.provider == "Bursa Malaysia"
+    assert source.format == "bursa_closing_prices_pdf"
     assert source.reference_scope == "listed_companies_subset"
 
 
@@ -7728,6 +8670,54 @@ def test_parse_bursa_equity_isin_table_rows_maps_derivable_stock_and_etf_rows() 
     ]
 
 
+def test_parse_bursa_closing_prices_table_rows_maps_sector_and_etf_category() -> None:
+    source = MasterfileSource(
+        key="bursa_closing_prices",
+        provider="Bursa Malaysia",
+        description="Official Bursa Malaysia closing price PDF with board and sector labels",
+        source_url="https://www.bursamalaysia.com/misc/missftp/securities/example.pdf",
+        format="bursa_closing_prices_pdf",
+        reference_scope="listed_companies_subset",
+    )
+    table_rows = [
+        ["Stock Code", "Stock Name", "Stock Long Name", "Board", "Sector", "Closing Price"],
+        ["0002", "KOTRA", "KOTRA INDUSTRIES BHD", "MAIN MARKET", "HEALTH CARE", "4.440"],
+        ["0820EA", "FBMKLCI-EA", "FTSE BURSA MALAYSIA KLCI ETF", "EXCHANGE\nTRADED", "EXCHANGE TRADED FUND-EQUITY", "1.745"],
+        ["0001CC", "SCOMNET-CC", "CW SUPERCOMNET", "STRCWARR", "HEALTH CARE", "0.030"],
+    ]
+
+    rows = parse_bursa_closing_prices_table_rows(table_rows, source, source_url="https://example.com/bursa.pdf")
+
+    assert rows == [
+        {
+            "source_key": "bursa_closing_prices",
+            "provider": "Bursa Malaysia",
+            "source_url": "https://example.com/bursa.pdf",
+            "ticker": "0002",
+            "name": "KOTRA INDUSTRIES BHD",
+            "exchange": "Bursa",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "sector": "Health Care",
+        },
+        {
+            "source_key": "bursa_closing_prices",
+            "provider": "Bursa Malaysia",
+            "source_url": "https://example.com/bursa.pdf",
+            "ticker": "0820EA",
+            "name": "FTSE BURSA MALAYSIA KLCI ETF",
+            "exchange": "Bursa",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "sector": "Equity",
+        },
+    ]
+
+
 def test_load_bursa_equity_isin_rows_falls_back_to_cache(tmp_path, monkeypatch) -> None:
     cache_path = tmp_path / "bursa_equity_isin.json"
     cache_path.write_text(
@@ -7827,6 +8817,8 @@ def test_fetch_bme_reference_rows_maps_official_tickers_and_variants(tmp_path) -
                         "name": "BANCO SANTANDER",
                         "shortName": "B.SANTANDER",
                         "tradingSystem": "SIBE",
+                        "sector": "05",
+                        "subsector": "01",
                     },
                     "ES0171996095": {
                         "isin": "ES0171996095",
@@ -7834,6 +8826,8 @@ def test_fetch_bme_reference_rows_maps_official_tickers_and_variants(tmp_path) -
                         "name": "GRIFOLS, S.A. CL.A PFD",
                         "shortName": "GRIFOLS A PFD",
                         "tradingSystem": "SIBE",
+                        "sector": "03",
+                        "subsector": "05",
                     },
                 }
                 return FakeResponse(payloads[params["isin"]])
@@ -7855,6 +8849,7 @@ def test_fetch_bme_reference_rows_maps_official_tickers_and_variants(tmp_path) -
             "reference_scope": "listed_companies_subset",
             "official": "true",
             "isin": "ES0113900J37",
+            "sector": "Financials",
         },
         {
             "source_key": "bme_listed_companies",
@@ -7868,6 +8863,7 @@ def test_fetch_bme_reference_rows_maps_official_tickers_and_variants(tmp_path) -
             "reference_scope": "listed_companies_subset",
             "official": "true",
             "isin": "ES0171996095",
+            "sector": "Health Care",
         },
         {
             "source_key": "bme_listed_companies",
@@ -7881,6 +8877,7 @@ def test_fetch_bme_reference_rows_maps_official_tickers_and_variants(tmp_path) -
             "reference_scope": "listed_companies_subset",
             "official": "true",
             "isin": "ES0171996095",
+            "sector": "Health Care",
         },
     ]
     assert session.get_calls == [
@@ -8064,6 +9061,65 @@ def test_parse_bme_listed_values_text_lines_maps_equities_etfs_and_latibex() -> 
     ]
 
 
+def test_enrich_bme_listed_value_rows_with_share_details_adds_stock_sector() -> None:
+    rows = [
+        {
+            "ticker": "ISE",
+            "exchange": "BME",
+            "asset_type": "Stock",
+            "isin": "ES0143421073",
+        },
+        {
+            "ticker": "2INVE",
+            "exchange": "BME",
+            "asset_type": "ETF",
+            "isin": "FR0011036268",
+        },
+    ]
+
+    class FakeResponse:
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return {"isin": "ES0143421073", "sector": "04", "subsector": "02"}
+
+    class FakeSession:
+        def __init__(self):
+            self.get_calls = []
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            self.get_calls.append((url, params))
+            return FakeResponse()
+
+    session = FakeSession()
+
+    assert fetch_exchange_masterfiles.enrich_bme_listed_value_rows_with_share_details(
+        rows,
+        session=session,
+    ) == [
+        {
+            "ticker": "ISE",
+            "exchange": "BME",
+            "asset_type": "Stock",
+            "isin": "ES0143421073",
+            "sector": "Consumer Discretionary",
+        },
+        {
+            "ticker": "2INVE",
+            "exchange": "BME",
+            "asset_type": "ETF",
+            "isin": "FR0011036268",
+        },
+    ]
+    assert session.get_calls == [
+        (
+            fetch_exchange_masterfiles.BME_SHARE_DETAILS_INFO_API_URL,
+            {"isin": "ES0143421073", "language": "en"},
+        )
+    ]
+
+
 def test_fetch_bme_reference_rows_uses_listing_isin_when_share_details_fail(tmp_path) -> None:
     source = MasterfileSource(
         key="bme_listed_companies",
@@ -8128,6 +9184,108 @@ def test_fetch_bme_reference_rows_uses_listing_isin_when_share_details_fail(tmp_
     ]
 
 
+def test_fetch_bme_security_prices_rows_maps_mixed_trading_systems() -> None:
+    source = MasterfileSource(
+        key="bme_security_prices_directory",
+        provider="BME",
+        description="Official BME security prices directory",
+        source_url=fetch_exchange_masterfiles.BME_LISTED_COMPANIES_API_URL,
+        format="bme_security_prices_json",
+        reference_scope="exchange_directory",
+    )
+
+    class FakeResponse:
+        def __init__(self, payload):
+            self._payload = payload
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.get_calls = []
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            self.get_calls.append((url, params))
+            if url == fetch_exchange_masterfiles.BME_LISTED_COMPANIES_API_URL:
+                assert params == {
+                    "tradingSystem": fetch_exchange_masterfiles.BME_SECURITY_PRICES_TRADING_SYSTEMS,
+                    "page": 0,
+                    "pageSize": 100,
+                }
+                return FakeResponse(
+                    {
+                        "hasMoreResults": False,
+                        "data": [
+                            {"isin": "ES0105877007", "shareName": "BETTER CONSULTANTS", "tradingSystem": "MTF"},
+                            {
+                                "isin": "FR0011036268",
+                                "shareName": "AMUNDI IBEX 35 DOBL INV DIAR (-2X) UCITS",
+                                "tradingSystem": "ETF",
+                            },
+                        ],
+                    }
+                )
+            if url == fetch_exchange_masterfiles.BME_SHARE_DETAILS_INFO_API_URL:
+                payloads = {
+                    "ES0105877007": {
+                        "isin": "ES0105877007",
+                        "ticker": "SCBTT",
+                        "name": "BETTER CONSULTANTS",
+                        "shortName": "BETTER",
+                        "tradingSystem": "MTF",
+                        "sector": "06",
+                        "subsector": "02",
+                    },
+                    "FR0011036268": {
+                        "isin": "FR0011036268",
+                        "ticker": "2INVE",
+                        "name": "AMUNDI IBEX 35 DOBL INV DIAR (-2X) UCITS",
+                        "shortName": "AMUIBEX2INVE",
+                        "tradingSystem": "ETF",
+                        "sector": "05",
+                        "subsector": "07",
+                    },
+                }
+                return FakeResponse(payloads[params["isin"]])
+            raise AssertionError(url)
+
+    rows = fetch_exchange_masterfiles.fetch_bme_security_prices_rows(source, session=FakeSession())
+
+    assert rows == [
+        {
+            "source_key": "bme_security_prices_directory",
+            "provider": "BME",
+            "source_url": fetch_exchange_masterfiles.BME_LISTED_COMPANIES_API_URL,
+            "ticker": "SCBTT",
+            "name": "BETTER CONSULTANTS",
+            "exchange": "BME",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "ES0105877007",
+            "sector": "Information Technology",
+        },
+        {
+            "source_key": "bme_security_prices_directory",
+            "provider": "BME",
+            "source_url": fetch_exchange_masterfiles.BME_LISTED_COMPANIES_API_URL,
+            "ticker": "2INVE",
+            "name": "AMUNDI IBEX 35 DOBL INV DIAR (-2X) UCITS",
+            "exchange": "BME",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "FR0011036268",
+        },
+    ]
+
+
 def test_load_bme_reference_rows_falls_back_to_cache(tmp_path, monkeypatch) -> None:
     cache_path = tmp_path / "bme_listed_companies.json"
     cache_path.write_text(
@@ -8159,6 +9317,31 @@ def test_load_bme_reference_rows_falls_back_to_cache(tmp_path, monkeypatch) -> N
             "listing_status": "active",
         }
     ]
+
+
+def test_load_bme_security_prices_rows_ignores_partial_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "bme_security_prices_directory.json"
+    cache_path.write_text(
+        '[{"ticker":"SAN","name":"BANCO SANTANDER","exchange":"BME","asset_type":"Stock","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "BME_SECURITY_PRICES_CACHE", cache_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_BME_SECURITY_PRICES_CACHE",
+        tmp_path / "missing.json",
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_bme_security_prices_rows",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("blocked")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "bme_security_prices_directory")
+    rows, mode = fetch_exchange_masterfiles.load_bme_security_prices_rows(source)
+
+    assert mode == "unavailable"
+    assert rows is None
 
 
 def test_extract_bme_growth_detail_links_dedupes_official_ficha_links() -> None:
@@ -8388,6 +9571,1546 @@ def test_load_pse_listed_company_directory_rows_falls_back_to_cache(tmp_path, mo
     ]
 
 
+def test_parse_pse_cz_share_links_extracts_isin_detail_links() -> None:
+    text = """
+    <td class="item-title js-item-title" data-title="COLTCZ">
+        <a href="/en/detail/CZ0009008942"> COLTCZ </a>
+        <div class="isin"> CZ0009008942 </div>
+    </td>
+    <td class="item-title js-item-title" data-title="DOOSAN">
+        <a href="/en/detail/CZ1008000310"> DOOSAN </a>
+        <div class="isin"> CZ1008000310 </div>
+    </td>
+    """
+
+    rows = parse_pse_cz_share_links(text, "https://www.pse.cz/en/market-data/shares/prime-market")
+
+    assert rows == [
+        {
+            "isin": "CZ0009008942",
+            "label": "COLTCZ",
+            "detail_url": "https://www.pse.cz/en/detail/CZ0009008942",
+        },
+        {
+            "isin": "CZ1008000310",
+            "label": "DOOSAN",
+            "detail_url": "https://www.pse.cz/en/detail/CZ1008000310",
+        },
+    ]
+
+
+def test_parse_pse_cz_detail_ticker_prefers_xetra_ticker() -> None:
+    text = """
+    <table>
+        <tr><td>Ticker Bloomberg</td><td>DSPW CP Equity</td></tr>
+        <tr><td>Ticker Reuters</td><td>DSPW.PR</td></tr>
+        <tr><td>Ticker Xetra®</td><td>DSPW</td></tr>
+    </table>
+    """
+
+    assert parse_pse_cz_detail_ticker(text) == "DSPW"
+
+
+def test_build_pse_cz_share_rows_uses_current_listing_name_and_detail_ticker(tmp_path) -> None:
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "listing_key,ticker,exchange,name,asset_type,stock_sector,etf_category,country,country_code,isin,aliases",
+                "PSE_CZ::CZG,CZG,PSE_CZ,Colt CZ Group SE,Stock,Industrials,,Czech Republic,CZ,CZ0009008942,",
+                "PSE_CZ::DSPW,DSPW,PSE_CZ,Doosan Skoda Power as,Stock,,,,CZ,CZ1008000310,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    source = MasterfileSource(
+        key="pse_cz_shares_directory",
+        provider="Prague Stock Exchange",
+        description="Official Prague Stock Exchange share market directory",
+        source_url="https://www.pse.cz/en/market-data/shares/prime-market",
+        format="pse_cz_shares_directory_html",
+        reference_scope="listed_companies_subset",
+    )
+    links = [
+        {
+            "isin": "CZ0009008942",
+            "label": "COLTCZ",
+            "detail_url": "https://www.pse.cz/en/detail/CZ0009008942",
+        },
+        {
+            "isin": "CZ1008000310",
+            "label": "DOOSAN",
+            "detail_url": "https://www.pse.cz/en/detail/CZ1008000310",
+        },
+    ]
+    detail_html_by_isin = {
+        "CZ0009008942": "<tr><td>Ticker Xetra®</td><td>CZG</td></tr>",
+        "CZ1008000310": "<tr><td>Ticker Reuters</td><td>DSPW.PR</td></tr>",
+    }
+
+    rows = build_pse_cz_share_rows(
+        links,
+        detail_html_by_isin,
+        source,
+        listings_path=listings_path,
+    )
+
+    assert rows == [
+        {
+            "source_key": "pse_cz_shares_directory",
+            "provider": "Prague Stock Exchange",
+            "source_url": "https://www.pse.cz/en/detail/CZ0009008942",
+            "ticker": "CZG",
+            "name": "Colt CZ Group SE",
+            "exchange": "PSE_CZ",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "CZ0009008942",
+        },
+        {
+            "source_key": "pse_cz_shares_directory",
+            "provider": "Prague Stock Exchange",
+            "source_url": "https://www.pse.cz/en/detail/CZ1008000310",
+            "ticker": "DSPW",
+            "name": "Doosan Skoda Power as",
+            "exchange": "PSE_CZ",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "CZ1008000310",
+        },
+    ]
+
+
+def test_parse_bse_bw_listed_companies_html_matches_current_rows_by_name(tmp_path) -> None:
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "listing_key,ticker,exchange,name,asset_type,stock_sector,etf_category,country,country_code,isin,aliases",
+                "BSE_BW::ABBL-EQO,ABBL-EQO,BSE_BW,ABSA BANK OF BOTSWANA LIMITED,Stock,,,,BW,BW0000000025,",
+                "BSE_BW::BTE-EQO,BTE-EQO,BSE_BW,BOTALA,Stock,,,,AU,AU0000224552,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    source = MasterfileSource(
+        key="bse_bw_listed_companies",
+        provider="BSE Botswana",
+        description="Official Botswana Stock Exchange listed companies directory",
+        source_url="https://www.bse.co.bw/companies/",
+        format="bse_bw_listed_companies_html",
+        reference_scope="listed_companies_subset",
+    )
+    text = """
+    <div class="lvca-panel">
+        <div class="lvca-panel-title">ABSA Bank of Botswana Limited</div>
+        <div class="lvca-panel-content">
+            <table>
+                <tr><th>COUNTER</th><td>ABSA</td></tr>
+                <tr><th>Sector</th><td>Banking</td></tr>
+                <tr><th>Board</th><td>Domestic Main Board</td></tr>
+            </table>
+        </div>
+    </div><!-- .lvca-panel -->
+    <div class="lvca-panel">
+        <div class="lvca-panel-title">Botala Energy Limited</div>
+        <div class="lvca-panel-content">
+            <table>
+                <tr><th>COUNTER</th><td>BOTALA</td></tr>
+                <tr><th>Sector</th><td>Mining</td></tr>
+            </table>
+        </div>
+    </div><!-- .lvca-panel -->
+    """
+
+    rows = parse_bse_bw_listed_companies_html(text, source, listings_path=listings_path)
+
+    assert rows == [
+        {
+            "source_key": "bse_bw_listed_companies",
+            "provider": "BSE Botswana",
+            "source_url": "https://www.bse.co.bw/companies/",
+            "ticker": "ABBL-EQO",
+            "name": "ABSA BANK OF BOTSWANA LIMITED",
+            "exchange": "BSE_BW",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "BW0000000025",
+            "sector": "Banking",
+        },
+        {
+            "source_key": "bse_bw_listed_companies",
+            "provider": "BSE Botswana",
+            "source_url": "https://www.bse.co.bw/companies/",
+            "ticker": "BTE-EQO",
+            "name": "BOTALA",
+            "exchange": "BSE_BW",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "AU0000224552",
+            "sector": "Mining",
+        },
+    ]
+
+
+def test_parse_cse_ma_jsonapi_collection_extracts_official_instruments() -> None:
+    source = MasterfileSource(
+        key="cse_ma_listed_companies",
+        provider="Casablanca Stock Exchange",
+        description="Official Casablanca Stock Exchange active equity instruments JSONAPI directory",
+        source_url="https://www.casablanca-bourse.com/en/marche-cash/instruments-actions",
+        format="cse_ma_listed_companies_json",
+        reference_scope="exchange_directory",
+    )
+    payload = {
+        "data": [
+            {
+                "type": "instrument",
+                "id": "instrument-1",
+                "attributes": {
+                    "symbol": "AFM",
+                    "codeISIN": "MA0000012296",
+                    "libelleEN": "AFMA",
+                    "instrument_url": "/en/live-market/instruments/AFM",
+                },
+                "relationships": {
+                    "codeSociete": {"data": {"type": "emetteur", "id": "issuer-1"}},
+                },
+            },
+            {
+                "type": "instrument",
+                "id": "instrument-2",
+                "attributes": {
+                    "symbol": "ADI",
+                    "codeISIN": "MA0000011819",
+                    "libelleEN": "ALLIANCES",
+                    "instrument_url": "/en/live-market/instruments/ADI",
+                },
+                "relationships": {
+                    "codeSociete": {"data": {"type": "emetteur", "id": "issuer-2"}},
+                },
+            },
+        ],
+        "included": [
+            {
+                "type": "emetteur",
+                "id": "issuer-1",
+                "attributes": {"raisonSociale": "AFMA SA"},
+            },
+            {
+                "type": "emetteur",
+                "id": "issuer-2",
+                "attributes": {"name": "ALLIANCES DEVELOPPEMENT IMMOBILIER SA"},
+            },
+        ],
+        "links": {"next": {"href": "https://api.casablanca-bourse.com/en/api/bourse_data/instrument?page%5Boffset%5D=50"}},
+    }
+
+    rows, next_url = parse_cse_ma_jsonapi_collection(payload, source)
+
+    assert next_url == "https://api.casablanca-bourse.com/en/api/bourse_data/instrument?page%5Boffset%5D=50"
+    assert rows == [
+        {
+            "source_key": "cse_ma_listed_companies",
+            "provider": "Casablanca Stock Exchange",
+            "source_url": "https://www.casablanca-bourse.com/en/live-market/instruments/AFM",
+            "ticker": "AFM",
+            "name": "AFMA SA",
+            "exchange": "CSE_MA",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "MA0000012296",
+        },
+        {
+            "source_key": "cse_ma_listed_companies",
+            "provider": "Casablanca Stock Exchange",
+            "source_url": "https://www.casablanca-bourse.com/en/live-market/instruments/ADI",
+            "ticker": "ADI",
+            "name": "ALLIANCES DEVELOPPEMENT IMMOBILIER SA",
+            "exchange": "CSE_MA",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "MA0000011819",
+        },
+    ]
+
+
+def test_parse_nse_ke_listed_companies_html_extracts_symbols_isins_and_sectors() -> None:
+    source = MasterfileSource(
+        key="nse_ke_listed_companies",
+        provider="NSE Kenya",
+        description="Official Nairobi Securities Exchange listed companies page",
+        source_url="https://www.nse.co.ke/listed-companies/",
+        format="nse_ke_listed_companies_html",
+        reference_scope="exchange_directory",
+    )
+    html = """
+    [toggle title=&#8221;BANKING&#8221;]
+    [nectar_animated_title heading_tag=&#8221;h6&#8221; text=&#8221;Absa Bank Kenya PLC&#8221;][vc_column_text]
+    <strong>Trading Symbol:<span>ABSA</span><br /></strong></p>
+    <p><strong>ISIN CODE:<span>KE0000000067</span><br /></strong>[/vc_column_text]
+    [toggle title=&#8221;EXCHANGE TRADED FUND&#8221;]
+    [nectar_animated_title heading_tag=&#8221;h6&#8221; text=&#8221;Satrix MSCI World Feeder ETF&#8221;][vc_column_text]
+    <strong>Trading Symbol:SMWF.E0000<br /></strong></p>
+    <p><strong>ISIN CODE:ZAE000246104<br /></strong>[/vc_column_text]
+    [toggle title=&#8221;REAL ESTATE INVESTMENT TRUST&#8221;]
+    [nectar_animated_title heading_tag=&#8221;h6&#8221; text=&#8221;Shri Krishana Overseas (SKL)&#8221;][vc_column_text]
+    <strong>Trading Symbol:SKL.O0000<br /></strong></p>
+    <p><strong>ISIN: KE9900001216</strong>[/vc_column_text]
+    """
+
+    assert parse_nse_ke_listed_companies_html(html, source) == [
+        {
+            "source_key": "nse_ke_listed_companies",
+            "provider": "NSE Kenya",
+            "source_url": "https://www.nse.co.ke/listed-companies/",
+            "ticker": "ABSA",
+            "name": "Absa Bank Kenya PLC",
+            "exchange": "NSE_KE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "KE0000000067",
+            "sector": "Financials",
+        },
+        {
+            "source_key": "nse_ke_listed_companies",
+            "provider": "NSE Kenya",
+            "source_url": "https://www.nse.co.ke/listed-companies/",
+            "ticker": "SMWF.E0000",
+            "name": "Satrix MSCI World Feeder ETF",
+            "exchange": "NSE_KE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "ZAE000246104",
+        },
+        {
+            "source_key": "nse_ke_listed_companies",
+            "provider": "NSE Kenya",
+            "source_url": "https://www.nse.co.ke/listed-companies/",
+            "ticker": "SKL.O0000",
+            "name": "Shri Krishana Overseas (SKL)",
+            "exchange": "NSE_KE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "KE9900001216",
+            "sector": "Real Estate",
+        },
+    ]
+
+
+def test_parse_sem_isin_workbook_gates_official_rows_by_current_listing_isin(tmp_path) -> None:
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "listing_key,ticker,exchange,name,asset_type,stock_sector,etf_category,country,country_code,isin,aliases",
+                "SEM::ADBF,ADBF,SEM,AFRICAN DOMESTIC BOND FUND ETF - (USD),ETF,,Bond,Mauritius,MU,MU0607S00004,",
+                "SEM::AEIB,AEIB,SEM,AFREXIMBANK,Stock,Financials,,Mauritius,MU,MU0559N00040,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    workbook = io.BytesIO()
+    with pd.ExcelWriter(workbook) as writer:
+        pd.DataFrame(
+            [
+                ["COMPANIES LISTED ON THE OFFICIAL MARKET", None, None, None, None],
+                [None, None, None, None, None],
+                ["ISSUER NAME", "ISSUE DESCRIPTION", "ISIN", "CFI", "FISN"],
+                [
+                    "AFRICAN DOMESTIC BOND FUND",
+                    "REDEEMABLE PARTICIPATING SHARES",
+                    "MU0607S00004",
+                    "CEOIBS",
+                    "ADBF/RED PART SH USD",
+                ],
+                ["AFRICAN EXPORT-IMPORT BANK", "DEPOSITARY RECEIPT", "MU0559N00040", "EDSNDR", "AFREXIMBANK/DR USD"],
+                ["ABC BANKING CORPORATION LIMITED", "10 YEARS NOTE", "MU0507D01634", "DTFUFR", "ABC BANKING/NOTE"],
+            ]
+        ).to_excel(writer, sheet_name="Official Market", header=False, index=False)
+        pd.DataFrame([["ISSUER NAME", "ISSUE DESCRIPTION", "ISIN", "CFI", "FISN"]]).to_excel(
+            writer,
+            sheet_name="DEM",
+            header=False,
+            index=False,
+        )
+    source = MasterfileSource(
+        key="sem_isin",
+        provider="SEM",
+        description="Official Stock Exchange of Mauritius CDS ISIN workbook",
+        source_url="https://www.stockexchangeofmauritius.com/media/11318/isin.xlsx",
+        format="sem_isin_xlsx",
+        reference_scope="exchange_directory",
+    )
+
+    assert parse_sem_isin_workbook(workbook.getvalue(), source, listings_path=listings_path) == [
+        {
+            "source_key": "sem_isin",
+            "provider": "SEM",
+            "source_url": "https://www.stockexchangeofmauritius.com/cds/isins",
+            "ticker": "ADBF",
+            "name": "AFRICAN DOMESTIC BOND FUND ETF - (USD)",
+            "exchange": "SEM",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "MU0607S00004",
+            "sector": "Bond",
+        },
+        {
+            "source_key": "sem_isin",
+            "provider": "SEM",
+            "source_url": "https://www.stockexchangeofmauritius.com/cds/isins",
+            "ticker": "AEIB",
+            "name": "AFREXIMBANK",
+            "exchange": "SEM",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "MU0559N00040",
+            "sector": "Financials",
+        },
+    ]
+
+
+def test_parse_bse_hu_marketdata_html_gates_to_exact_current_tickers(tmp_path) -> None:
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "listing_key,ticker,exchange,name,asset_type,stock_sector,etf_category,country,country_code,isin,aliases",
+                "BSE_HU::ALTEO,ALTEO,BSE_HU,ALTEO Energiaszolgaltato Nyrt.,Stock,Utilities,,Hungary,HU,,",
+                "BSE_HU::BAYER,BAYER,BSE_HU,Bayer AG,Stock,Health Care,,Germany,DE,,",
+                "BSE_HU::AUTOW,AUTOW,BSE_HU,AutoWallis Nyrt,Stock,Consumer Discretionary,,Hungary,HU,,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    text = """
+    <script>
+    window.dataSourceResults={
+      "TickerDataSource":[
+        {"seccode":"ALTEO","isin":"HU0000155726","instrgrpids":["RESZVENY"]},
+        {"seccode":"AUTOWALLIS","isin":"HU0000164504","instrgrpids":["RESZVENY"]},
+        {"seccode":"BAYER","isin":"DE000BAY0017","instrgrpids":["BETAMARKET"]}
+      ],
+      "PromptTablesDataSource;instrgrpid=W_BETF;filterEmpty=false":{"rows":[
+        {"seccode":"ETFCETOPOTP","isin":"HU0000734454","instrgrpids":["W_ETF"]}
+      ]}
+    };
+    </script>
+    """
+    source = MasterfileSource(
+        key="bse_hu_listed_companies",
+        provider="Budapest Stock Exchange",
+        description="Official Budapest Stock Exchange embedded market-data feed",
+        source_url="https://www.bet.hu/oldalak/beta_piac#reszvenyek",
+        format="bse_hu_marketdata_html",
+        reference_scope="listed_companies_subset",
+    )
+
+    assert parse_bse_hu_marketdata_html(text, source, listings_path=listings_path) == [
+        {
+            "source_key": "bse_hu_listed_companies",
+            "provider": "Budapest Stock Exchange",
+            "source_url": "https://www.bet.hu/oldalak/beta_piac#reszvenyek",
+            "ticker": "ALTEO",
+            "name": "ALTEO Energiaszolgaltato Nyrt.",
+            "exchange": "BSE_HU",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "HU0000155726",
+        },
+        {
+            "source_key": "bse_hu_listed_companies",
+            "provider": "Budapest Stock Exchange",
+            "source_url": "https://www.bet.hu/oldalak/beta_piac#reszvenyek",
+            "ticker": "BAYER",
+            "name": "Bayer AG",
+            "exchange": "BSE_HU",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "DE000BAY0017",
+        },
+    ]
+
+
+def test_parse_egx_listed_stocks_viewstate_matches_by_isin(tmp_path) -> None:
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "listing_key,ticker,exchange,name,asset_type,stock_sector,etf_category,country,country_code,isin,aliases",
+                "EGX::ACAP,ACAP,EGX,Local A Capital,Stock,,,Egypt,EG,EGS697S1C015,",
+                "EGX::ASCM,ASCM,EGX,ASEC Mining,Stock,,,Egypt,EG,EGS10001C013,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    strings = [
+        "A Capital Holding",
+        "show('ctl00_C_L_GridView2_ctl02_divContainer', 'x')",
+        "show('ctl00_C_L_GridView2_ctl02_divContainer', 'x')",
+        "/en/StocksData.aspx?ISIN=EGS697S1C015",
+        "/en/NewsList.aspx?ISIN=EGS697S1C015",
+        "EGS697S1C015",
+        "Real Estate",
+        "ASEC Company For Mining - ASCOM",
+        "show('ctl00_C_L_GridView2_ctl03_divContainer', 'x')",
+        "/en/StocksData.aspx?ISIN=EGS10001C013",
+        "EGS10001C013",
+        "Basic Resources",
+        "Not In Current Universe",
+        "show('ctl00_C_L_GridView2_ctl04_divContainer', 'x')",
+        "/en/StocksData.aspx?ISIN=EGS597R1C017",
+        "EGS597R1C017",
+        "Education Services",
+    ]
+    raw = b"".join(b"\x05" + bytes([len(value.encode())]) + value.encode() for value in strings)
+    viewstate = html.escape(b64encode(raw).decode("ascii"))
+    source = MasterfileSource(
+        key="egx_listed_stocks",
+        provider="EGX",
+        description="Official EGX listed stocks",
+        source_url="https://www.egx.com.eg/en/ListedStocks.aspx",
+        format="egx_listed_stocks_viewstate",
+        reference_scope="listed_companies_subset",
+    )
+
+    rows = parse_egx_listed_stocks_viewstate(
+        f'<form id="aspnetForm"><input type="hidden" name="__VIEWSTATE" value="{viewstate}"></form>',
+        source,
+        listings_path=listings_path,
+    )
+
+    assert rows == [
+        {
+            "source_key": "egx_listed_stocks",
+            "provider": "EGX",
+            "source_url": "https://www.egx.com.eg/en/ListedStocks.aspx",
+            "ticker": "ACAP",
+            "name": "A Capital Holding",
+            "exchange": "EGX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "EGS697S1C015",
+            "sector": "Real Estate",
+        },
+        {
+            "source_key": "egx_listed_stocks",
+            "provider": "EGX",
+            "source_url": "https://www.egx.com.eg/en/ListedStocks.aspx",
+            "ticker": "ASCM",
+            "name": "ASEC Company For Mining - ASCOM",
+            "exchange": "EGX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "EGS10001C013",
+            "sector": "Materials",
+        },
+    ]
+
+
+def test_egx_viewstate_string_extractor_and_sector_normalizer() -> None:
+    strings = ["A Capital Holding", "Basic Resources", "Textile & Durables"]
+    raw = b"".join(b"\x05" + bytes([len(value.encode())]) + value.encode() for value in strings)
+
+    assert extract_aspnet_viewstate_strings(b64encode(raw).decode("ascii")) == strings
+    assert normalize_egx_sector("Basic Resources") == "Materials"
+    assert normalize_egx_sector("IT , Media &amp; Communication Services") == "Communication Services"
+    assert normalize_egx_sector("Textile & Durables") == "Consumer Discretionary"
+
+
+def test_parse_zse_zw_issuers_payload_maps_exact_ticker_and_isin_fallback(tmp_path) -> None:
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "listing_key,ticker,exchange,name,asset_type,stock_sector,etf_category,country,country_code,isin,aliases",
+                "ZSE_ZW::NPKZ,NPKZ,ZSE_ZW,NAMPAK ZIMBABWE LIMITED,Stock,,,Zimbabwe,ZW,ZW0009012213,",
+                "ZSE_ZW::AFDS,AFDS,ZSE_ZW,AFRICAN DISTILLERS LIMITED,Stock,,,Zimbabwe,ZW,ZW0009011025,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    source = MasterfileSource(
+        key="zse_zw_listed_companies",
+        provider="ZSE Zimbabwe",
+        description="Official Zimbabwe Stock Exchange issuer APIs",
+        source_url="https://www.zse.co.zw/listed-securities/equity",
+        format="zse_zw_issuers_json",
+        reference_scope="listed_companies_subset",
+    )
+
+    assert parse_zse_zw_issuers_payload(
+        {
+            "issuers": [{"short_name": "NPKZ.ZW", "name": "Nampak Zimbabwe Limited"}],
+            "price_sheet": [{"isin": "ZW0009011025", "name": "AFDIS DISTILLERS LIMITED"}],
+        },
+        source,
+        listings_path=listings_path,
+    ) == [
+        {
+            "source_key": "zse_zw_listed_companies",
+            "provider": "ZSE Zimbabwe",
+            "source_url": "https://www.zse.co.zw/listed-securities/equity",
+            "ticker": "NPKZ",
+            "name": "Nampak Zimbabwe Limited",
+            "exchange": "ZSE_ZW",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "ZW0009012213",
+        },
+        {
+            "source_key": "zse_zw_listed_companies",
+            "provider": "ZSE Zimbabwe",
+            "source_url": "https://www.zse.co.zw/listed-securities/equity",
+            "ticker": "AFDS",
+            "name": "AFDIS DISTILLERS LIMITED",
+            "exchange": "ZSE_ZW",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "ZW0009011025",
+        },
+    ]
+
+
+def test_parse_small_african_exchange_html_sources_gate_to_current_rows(tmp_path) -> None:
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "listing_key,ticker,exchange,name,asset_type,stock_sector,etf_category,country,country_code,isin,aliases",
+                "DSE_TZ::CRDB,CRDB,DSE_TZ,CRDB BANK LTD,Stock,Financials,,Tanzania,TZ,TZ1996100305,",
+                "DSE_TZ::TCCL,TCCL,DSE_TZ,TANGA CEMENT PUBLIC LTD CO.,Stock,Materials,,Tanzania,TZ,TZ1996100057,",
+                "MSE_MW::FDHB,FDHB,MSE_MW,FDH BANK PLC,Stock,Financials,,Malawi,MW,,",
+                "USE_UG::AIRTELUGAN,AIRTELUGAN,USE_UG,AIRTEL UGANDA LIMITED,Stock,Communication Services,,Uganda,UG,UG0000001582,",
+                "USE_UG::BATU,BATU,USE_UG,BRITISH AMERICAN TOBACCO UGANDA LTD,Stock,Consumer Staples,,Uganda,UG,UG0000000022,",
+                "USE_UG::BOBU,BOBU,USE_UG,BANK OF BARODA UGANDA LTD,Stock,Financials,,Uganda,UG,UG0000000055,",
+                "USE_UG::DFCU,DFCU,USE_UG,DFCU GROUP,Stock,Financials,,Uganda,UG,UG0000000147,",
+                "USE_UG::MTNU,MTNU,USE_UG,MTN UGANDA LIMITED,Stock,Communication Services,,Uganda,UG,UG0000001566,",
+                "USE_UG::UMEM,UMEM,USE_UG,UMEME LIMITED,Stock,Utilities,,Uganda,UG,UG0000001145,",
+                "RSE::BLR,BLR,RSE,BRALIRWA LTD,Stock,Consumer Staples,,Rwanda,RW,RW000A1H63N6,",
+                "GSE::GCB,GCB,GSE,GHANA COMMERCIAL BANK LTD.,Stock,Financials,,Ghana,GH,GH0000000094,",
+                "GSE::AADS,AADS,GSE,ANGLOGOLD ASHANTI GHANIAN DEPOSITORY SHARES,Stock,,,Ghana,GH,GH0000000615,",
+                "LUSE::ZMBF,ZMBF,LUSE,ZAMBEEF PRODUCTS PLC,Stock,Consumer Staples,,Zambia,ZM,ZM0000000201,",
+                "LUSE::CECZ,CECZ,LUSE,COPPERBELT ENERGY CORPORATION PLC,Stock,Utilities,,Zambia,ZM,ZM0000000136,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    dse_source = MasterfileSource(
+        key="dse_tz_listed_companies",
+        provider="DSE Tanzania",
+        description="Official DSE table",
+        source_url="https://www.dse.co.tz/listed/company/list",
+        format="dse_tz_listed_companies_html",
+        reference_scope="listed_companies_subset",
+    )
+    mse_source = MasterfileSource(
+        key="mse_mw_listed_companies",
+        provider="MSE Malawi",
+        description="Official MSE mainboard",
+        source_url="https://mse.co.mw/market/mainboard",
+        format="mse_mw_mainboard_html",
+        reference_scope="listed_companies_subset",
+    )
+    use_source = MasterfileSource(
+        key="use_ug_listed_companies",
+        provider="USE Uganda",
+        description="Official USE snapshot",
+        source_url="https://www.use.or.ug/market-statistics/market-snapshot",
+        format="use_ug_market_snapshot_html",
+        reference_scope="listed_companies_subset",
+    )
+    rse_source = MasterfileSource(
+        key="rse_listed_companies",
+        provider="RSE",
+        description="Official RSE cards",
+        source_url="https://www.rse.rw/listed-compagnies",
+        format="rse_listed_companies_html",
+        reference_scope="listed_companies_subset",
+    )
+    gse_source = MasterfileSource(
+        key="gse_listed_companies",
+        provider="GSE",
+        description="Official GSE listed-company markdown",
+        source_url="https://gse.com.gh/listed-companies/",
+        format="gse_listed_companies_markdown",
+        reference_scope="listed_companies_subset",
+    )
+    luse_source = MasterfileSource(
+        key="luse_listed_companies",
+        provider="LuSE",
+        description="Official LuSE listed-company markdown",
+        source_url="https://www.luse.co.zm/listed-companies/",
+        format="luse_listed_companies_markdown",
+        reference_scope="listed_companies_subset",
+    )
+
+    dse_html = """
+    <table><tr><th>No</th><th>Company Code</th><th>Company description</th><th>Profile</th></tr>
+    <tr><td>1</td><td>CRDB</td><td></td><td>View</td></tr>
+    <tr><td>2</td><td>TCPLC</td><td></td><td>View</td></tr>
+    <tr><td>2</td><td>UNKNOWN</td><td></td><td>View</td></tr></table>
+    """
+    mse_html = '<a href="https://mse.co.mw/company/MWFDHB001166">FDHB</a><a href="/company/MWXXXX010000">UNKNOWN</a>'
+    use_html = """
+    <table><tr><th>Stock Code</th><th>Name</th></tr>
+    <tr><td>AIRTEL UGANDA</td><td>AIRTEL UGANDA LIMITED</td></tr>
+    <tr><td>BOBU</td><td>Bank of Baroda Uganda</td></tr>
+    <tr><td>BATU</td><td>British American Tobacco Uganda</td></tr>
+    <tr><td>DFCU</td><td>DEVELOPMENT FINANCE COMPANY OF UGANDA LTD</td></tr>
+    <tr><td>MTNU</td><td>MTN UGANDA LIMITED</td></tr>
+    <tr><td>UMEME</td><td>UMEME LIMITED</td></tr>
+    <tr><td>NOPE</td><td>No Match PLC</td></tr></table>
+    """
+    rse_html = """
+    <span class="listed-compagnies-card-item-name">Bralirwa</span>
+    <span class="listed-compagnies-card-item-name">No Match</span>
+    """
+    gse_markdown = """
+    | Symbol | Company | Date Listed |
+    | --- | --- | --- |
+    | [GCB](https://gse.com.gh/listed-companies/GCB) | Ghana Commercial Bank Limited | 17/05/1996 |
+    | [AGA](https://gse.com.gh/listed-companies/AGA) | AngloGold Ashanti Plc | 27/04/2004 |
+    """
+    luse_markdown = """
+    *    ZMBF
+
+    # Zambeef Plc
+
+    *    CEC
+
+    # Copperbelt Energy Corporation Plc
+    """
+
+    assert [row["ticker"] for row in parse_dse_tz_listed_companies_html(dse_html, dse_source, listings_path=listings_path)] == [
+        "CRDB",
+        "TCCL",
+    ]
+    assert parse_mse_mw_mainboard_html(mse_html, mse_source, listings_path=listings_path)[0]["isin"] == "MWFDHB001166"
+    assert [row["ticker"] for row in parse_use_ug_market_snapshot_html(use_html, use_source, listings_path=listings_path)] == [
+        "AIRTELUGAN",
+        "BOBU",
+        "BATU",
+        "DFCU",
+        "MTNU",
+        "UMEM",
+    ]
+    assert [row["ticker"] for row in parse_rse_listed_companies_html(rse_html, rse_source, listings_path=listings_path)] == [
+        "BLR"
+    ]
+    gse_rows = parse_gse_listed_companies_markdown(gse_markdown, gse_source, listings_path=listings_path)
+    assert [(row["ticker"], row["name"]) for row in gse_rows] == [
+        ("GCB", "Ghana Commercial Bank Limited")
+    ]
+    luse_rows = parse_luse_listed_companies_markdown(luse_markdown, luse_source, listings_path=listings_path)
+    assert [(row["ticker"], row["name"]) for row in luse_rows] == [("ZMBF", "Zambeef Plc")]
+
+
+def test_parse_bolsa_santiago_instruments_payload_gates_to_current_rows(tmp_path) -> None:
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "listing_key,ticker,exchange,name,asset_type,stock_sector,etf_category,country,country_code,isin,aliases",
+                "SSE_CL::AGUAS-A,AGUAS-A,SSE_CL,Aguas Andinas S.A,Stock,Utilities,,Chile,CL,CL0000000035,",
+                "SSE_CL::AZULAZUL,AZULAZUL,SSE_CL,Azul Azul Sa,Stock,Consumer Discretionary,,Chile,CL,CL0000006172,",
+                "SSE_CL::CFIBCHREN1,CFIBCHREN1,SSE_CL,Fondo de Inversión Banchile Rentas Inmobiliarias,ETF,,Real Estate,Chile,CL,,",
+                "BCBA::AZUL AZUL,AZUL AZUL,BCBA,Wrong Exchange,Stock,,,Argentina,AR,,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    source = MasterfileSource(
+        key="bolsa_santiago_instruments",
+        provider="Bolsa de Santiago",
+        description="Official Bolsa de Santiago instruments API",
+        source_url="https://www.bolsadesantiago.com/api/RV_ResumenMercado/getInstrumentos",
+        format="bolsa_santiago_instruments_json",
+        reference_scope="exchange_directory",
+    )
+    payload = {
+        "listaResult": [
+            {"NEMO": "AGUAS-A", "RAZON_SOCIAL": "AGUAS ANDINAS S.A., SERIE A", "TIPO": "A"},
+            {"NEMO": "AZUL AZUL", "RAZON_SOCIAL": "AZUL AZUL S.A.", "TIPO": "A"},
+            {
+                "NEMO": "CFIBCHREN1",
+                "RAZON_SOCIAL": "FONDO DE INVERSIÓN BANCHILE RENTAS INMOBILIARIAS",
+                "TIPO": "A",
+            },
+            {"NEMO": "AAPL", "RAZON_SOCIAL": "APPLE INC", "TIPO": "A"},
+        ]
+    }
+
+    rows = parse_bolsa_santiago_instruments_payload(payload, source, listings_path=listings_path)
+
+    assert [(row["ticker"], row["name"], row["asset_type"], row["isin"]) for row in rows] == [
+        ("AGUAS-A", "AGUAS ANDINAS S.A., SERIE A", "Stock", "CL0000000035"),
+        ("AZULAZUL", "AZUL AZUL S.A.", "Stock", "CL0000006172"),
+        (
+            "CFIBCHREN1",
+            "FONDO DE INVERSIÓN BANCHILE RENTAS INMOBILIARIAS",
+            "ETF",
+            "",
+        ),
+    ]
+
+
+def test_parse_nasdaq_mutual_fund_quote_payload_gates_to_fund_network() -> None:
+    source = MasterfileSource(
+        key="nasdaq_mutual_fund_quotes",
+        provider="Nasdaq",
+        description="Official Nasdaq Fund Network quote API",
+        source_url="https://api.nasdaq.com/api/screener/mutualfunds",
+        format="nasdaq_mutual_fund_quote_json",
+        reference_scope="security_lookup_subset",
+    )
+    listing = {
+        "ticker": "VRGWX",
+        "exchange": "NMFQS",
+        "name": "Vanguard Russell 1000 Growth Index Fund Institutional Shares",
+        "asset_type": "ETF",
+        "isin": "US92206C6729",
+    }
+    payload = {
+        "data": {
+            "symbol": "VRGWX",
+            "companyName": "Vanguard Russell 1000 Growth Index Fd Insti Cl",
+            "exchange": "Nasdaq Fund Network",
+            "stockType": "Managed Fund",
+        }
+    }
+
+    row = parse_nasdaq_mutual_fund_quote_payload(payload, source, listing)
+
+    assert row == {
+        "source_key": "nasdaq_mutual_fund_quotes",
+        "provider": "Nasdaq",
+        "source_url": "https://api.nasdaq.com/api/quote/VRGWX/info?assetclass=mutualfunds",
+        "ticker": "VRGWX",
+        "name": "Vanguard Russell 1000 Growth Index Fd Insti Cl",
+        "exchange": "NMFQS",
+        "asset_type": "ETF",
+        "listing_status": "active",
+        "reference_scope": "security_lookup_subset",
+        "official": "true",
+        "isin": "US92206C6729",
+    }
+    assert parse_nasdaq_mutual_fund_quote_payload(
+        {"data": {**payload["data"], "exchange": "Other"}},
+        source,
+        listing,
+    ) is None
+
+
+def test_parse_bvc_rv_issuers_payload_gates_to_current_bvc_rows(tmp_path) -> None:
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "listing_key,ticker,exchange,name,asset_type,stock_sector,etf_category,country,country_code,isin,aliases",
+                "BVC::CELSIA,CELSIA,BVC,Celsia: CELSIA,Stock,,,Colombia,CO,,",
+                "CSE_LK::CELSIA,CELSIA,CSE_LK,Celsia: CELSIA,Stock,,,Sri Lanka,LK,,",
+                "BVC::ENKA,ENKA,BVC,Enka de Colombia S.A.: ENKA,Stock,,,Colombia,CO,,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    source = MasterfileSource(
+        key="bvc_colombia_issuers",
+        provider="BVC",
+        description="Official BVC local-equity issuer API",
+        source_url="https://rest.bvc.com.co/market-information/rv/lvl-3/issuer?filters[marketDataRv][type]=Local",
+        format="bvc_rv_issuers_json",
+        reference_scope="listed_companies_subset",
+    )
+    payload = {
+        "data": [
+            {"issuerName": "CELSIA", "symbol": "CELSIA", "industryName": {"en": "Utilities"}},
+            {"issuerName": "Enka de Colombia", "symbol": "ENKA", "industryName": {"en": "Basic Materials"}},
+            {"issuerName": "No Match", "symbol": "NOPE", "industryName": {"en": "Financials"}},
+        ]
+    }
+
+    rows = parse_bvc_rv_issuers_payload(payload, source, listings_path=listings_path)
+
+    assert rows == [
+        {
+            "source_key": "bvc_colombia_issuers",
+            "provider": "BVC",
+            "source_url": "https://rest.bvc.com.co/market-information/rv/lvl-3/issuer?filters[marketDataRv][type]=Local",
+            "ticker": "CELSIA",
+            "name": "CELSIA",
+            "exchange": "BVC",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "",
+            "sector": "Utilities",
+        },
+        {
+            "source_key": "bvc_colombia_issuers",
+            "provider": "BVC",
+            "source_url": "https://rest.bvc.com.co/market-information/rv/lvl-3/issuer?filters[marketDataRv][type]=Local",
+            "ticker": "ENKA",
+            "name": "Enka de Colombia",
+            "exchange": "BVC",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "",
+            "sector": "Materials",
+        },
+    ]
+
+
+def test_parse_cse_lk_all_security_code_payload_gates_active_current_symbols(tmp_path) -> None:
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "listing_key,ticker,exchange,name,asset_type,stock_sector,etf_category,country,country_code,isin,aliases",
+                "CSE_LK::ABAN,ABAN,CSE_LK,Abans Electricals PLC,Stock,,,Sri Lanka,LK,,",
+                "BVC::CELSIA,CELSIA,BVC,Celsia: CELSIA,Stock,,,Colombia,CO,,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    source = MasterfileSource(
+        key="cse_lk_all_security_code",
+        provider="CSE Sri Lanka",
+        description="Official Colombo Stock Exchange all-security-code API",
+        source_url="https://www.cse.lk/api/allSecurityCode",
+        format="cse_lk_all_security_code_json",
+        reference_scope="exchange_directory",
+    )
+    payload = [
+        {"name": "ABANS ELECTRICALS PLC", "symbol": "ABAN.N0000", "active": 1},
+        {"name": "INACTIVE PLC", "symbol": "OLD.N0000", "active": 0},
+        {"name": "CELSIA", "symbol": "CELSIA", "active": 1},
+    ]
+
+    rows = parse_cse_lk_all_security_code_payload(payload, source, listings_path=listings_path)
+
+    assert rows == [
+        {
+            "source_key": "cse_lk_all_security_code",
+            "provider": "CSE Sri Lanka",
+            "source_url": "https://www.cse.lk/api/allSecurityCode",
+            "ticker": "ABAN",
+            "name": "ABANS ELECTRICALS PLC",
+            "exchange": "CSE_LK",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "",
+        }
+    ]
+
+
+def test_parse_cse_lk_company_info_summary_payload_requires_valid_isin() -> None:
+    source = MasterfileSource(
+        key="cse_lk_company_info_summary",
+        provider="CSE Sri Lanka",
+        description="Official Colombo Stock Exchange company-info detail API",
+        source_url="https://www.cse.lk/api/companyInfoSummery",
+        format="cse_lk_company_info_summary_json",
+        reference_scope="exchange_directory",
+    )
+
+    row = parse_cse_lk_company_info_summary_payload(
+        {
+            "reqSymbolInfo": {
+                "symbol": "ABAN.N0000",
+                "name": "ABANS ELECTRICALS PLC",
+                "isin": "LK0001N00004",
+            }
+        },
+        source,
+    )
+
+    assert row == {
+        "source_key": "cse_lk_company_info_summary",
+        "provider": "CSE Sri Lanka",
+        "source_url": "https://www.cse.lk/api/companyInfoSummery",
+        "ticker": "ABAN.N0000",
+        "name": "ABANS ELECTRICALS PLC",
+        "exchange": "CSE_LK",
+        "asset_type": "Stock",
+        "listing_status": "active",
+        "reference_scope": "exchange_directory",
+        "official": "true",
+        "isin": "LK0001N00004",
+    }
+    assert parse_cse_lk_company_info_summary_payload(
+        {"reqSymbolInfo": {"symbol": "ABNS.D0000", "name": "ABANS PLC", "isin": None}},
+        source,
+    ) is None
+
+
+def test_parse_byma_equity_detail_payload_accepts_exact_local_equity() -> None:
+    source = MasterfileSource(
+        key="byma_equity_details",
+        provider="BYMA",
+        description="Official Open BYMADATA equity detail endpoint",
+        source_url="https://open.bymadata.com.ar/vanoms-be-core/rest/api/bymadata/free/bnown/fichatecnica/especies/general",
+        format="byma_equity_details_json",
+        reference_scope="security_lookup_subset",
+    )
+    listing = {
+        "ticker": "ALUA",
+        "exchange": "BCBA",
+        "name": "Aluar Aluminio Argentino",
+        "asset_type": "Stock",
+        "isin": "",
+    }
+
+    row = parse_byma_equity_detail_payload(
+        {
+            "data": [
+                {
+                    "codigoIsin": "ARALUA010258",
+                    "tipoEspecie": "Acciones",
+                    "insType": "EQUITY",
+                    "emisor": "ALUAR ALUMINIO ARGENTINO S.A.",
+                }
+            ]
+        },
+        source,
+        listing,
+        remote_symbol="ALUA",
+    )
+
+    assert row == {
+        "source_key": "byma_equity_details",
+        "provider": "BYMA",
+        "source_url": "https://open.bymadata.com.ar/vanoms-be-core/rest/api/bymadata/free/bnown/fichatecnica/especies/general",
+        "ticker": "ALUA",
+        "name": "ALUAR ALUMINIO ARGENTINO S.A.",
+        "exchange": "BCBA",
+        "asset_type": "Stock",
+        "listing_status": "active",
+        "reference_scope": "security_lookup_subset",
+        "official": "true",
+        "isin": "ARALUA010258",
+    }
+
+
+def test_parse_byma_equity_detail_payload_name_gates_remote_symbol_alias() -> None:
+    source = MasterfileSource(
+        key="byma_equity_details",
+        provider="BYMA",
+        description="Official Open BYMADATA equity detail endpoint",
+        source_url="https://open.bymadata.com.ar/vanoms-be-core/rest/api/bymadata/free/bnown/fichatecnica/especies/general",
+        format="byma_equity_details_json",
+        reference_scope="security_lookup_subset",
+    )
+    listing = {
+        "ticker": "BA-C",
+        "exchange": "BCBA",
+        "name": "BANK OF AMERICA CORPORATION CED",
+        "asset_type": "Stock",
+        "isin": "",
+    }
+    payload = {
+        "data": [
+            {
+                "codigoIsin": "ARDEUT112851",
+                "tipoEspecie": "Cedears",
+                "denominacion": "BANK OF AMERICA CORPORATION",
+                "emisor": "BANCO COMAFI S.A.",
+            }
+        ]
+    }
+
+    assert parse_byma_equity_detail_payload(payload, source, listing, remote_symbol="BA.C") == {
+        "source_key": "byma_equity_details",
+        "provider": "BYMA",
+        "source_url": "https://open.bymadata.com.ar/vanoms-be-core/rest/api/bymadata/free/bnown/fichatecnica/especies/general",
+        "ticker": "BA-C",
+        "name": "BANK OF AMERICA CORPORATION",
+        "exchange": "BCBA",
+        "asset_type": "Stock",
+        "listing_status": "active",
+        "reference_scope": "security_lookup_subset",
+        "official": "true",
+        "isin": "ARDEUT112851",
+    }
+    assert parse_byma_equity_detail_payload(payload, source, {**listing, "name": "The Boeing Company"}, remote_symbol="BA.C") is None
+
+
+def test_parse_byma_header_search_payload_confirms_exact_stock_symbol() -> None:
+    source = MasterfileSource(
+        key="byma_equity_details",
+        provider="BYMA",
+        description="Official Open BYMADATA equity detail endpoint",
+        source_url="https://open.bymadata.com.ar/vanoms-be-core/rest/api/bymadata/free/bnown/fichatecnica/especies/general",
+        format="byma_equity_details_json",
+        reference_scope="security_lookup_subset",
+    )
+    listing = {
+        "ticker": "BRIO",
+        "exchange": "BCBA",
+        "name": "Banco Santander Rio S.A",
+        "asset_type": "Stock",
+        "isin": "",
+    }
+    payload = [
+        {"symbol": "BRIO", "market": "BYMA", "description": 'BCO. SANTANDER RIO - ORD. B 1 VOTO', "type": "Accion"},
+        {"symbol": "BRIO1", "market": "BYMA", "description": "Bond", "type": "Bono"},
+        {"symbol": "BRIO", "market": "SENEBI", "description": "Other market", "type": "Accion"},
+    ]
+
+    assert parse_byma_header_search_payload(payload, source, listing) == {
+        "source_key": "byma_equity_details",
+        "provider": "BYMA",
+        "source_url": "https://open.bymadata.com.ar/vanoms-be-core/rest/api/bymadata/free/bnown/fichatecnica/especies/general",
+        "ticker": "BRIO",
+        "name": 'BCO. SANTANDER RIO - ORD. B 1 VOTO',
+        "exchange": "BCBA",
+        "asset_type": "Stock",
+        "listing_status": "active",
+        "reference_scope": "security_lookup_subset",
+        "official": "true",
+        "isin": "",
+    }
+
+
+def test_parse_cavali_bvl_emisores_html_pages_gates_to_current_bvl_equities(tmp_path) -> None:
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "listing_key,ticker,exchange,name,asset_type,stock_sector,etf_category,country,country_code,isin,aliases",
+                "BVL::AENZAC1,AENZAC1,BVL,Aenza S.A.A.,Stock,Industrials,,Peru,PE,,",
+                "BVL::ETFPERUD,ETFPERUD,BVL,Fondo Bursatil Van Eck El Dorado Peru ETF,ETF,,Peru ETF,Peru,PE,,",
+                "BVL::LUSURC1,LUSURC1,BVL,Luz del Sur S.A.A.,Stock,Utilities,,Peru,PE,,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    html = """
+    <table>
+        <tr><th>ISIN</th><th>EMPRESA</th><th>NEMONICO</th><th>GRUPO</th><th>TIPO</th><th>MONEDA</th><th>V. NOMINAL</th><th>TASA</th></tr>
+        <tr><td>PEP736581005</td><td>AENZA S.A.A.</td><td>AENZAC1</td><td>ACCIONES</td><td>COMUNES</td><td>SOLES</td><td>1</td><td>-</td></tr>
+        <tr><td>PEP798008004</td><td>FONDO BURSÁTIL VAN ECK EL DORADO PERÚ ETF</td><td>ETFPERUD</td><td>UNIDAD DE PARTICIPACION</td><td>UNIDAD DE PARTICIPACION ETFS</td><td>DÓLARES</td><td>-</td><td>-</td></tr>
+        <tr><td>PEP70252M259</td><td>LUZ DEL SUR S.A.A.</td><td>LUSURC1</td><td>BONOS</td><td>CORPORATIVOS</td><td>SOLES</td><td>5000</td><td>6.6875</td></tr>
+        <tr><td>PEP111111111</td><td>UNKNOWN S.A.A.</td><td>UNKNOWNC1</td><td>ACCIONES</td><td>COMUNES</td><td>SOLES</td><td>1</td><td>-</td></tr>
+    </table>
+    """
+    source = MasterfileSource(
+        key="bvl_issuers_directory",
+        provider="CAVALI",
+        description="Official Peruvian CSD issuer securities registry",
+        source_url="https://cavali-corporativa.screativa.com/emisores",
+        format="cavali_bvl_emisores_html",
+        reference_scope="security_lookup_subset",
+    )
+
+    assert parse_cavali_bvl_emisores_html_pages([html], source, listings_path=listings_path) == [
+        {
+            "source_key": "bvl_issuers_directory",
+            "provider": "CAVALI",
+            "source_url": "https://cavali-corporativa.screativa.com/emisores",
+            "ticker": "AENZAC1",
+            "name": "AENZA S.A.A.",
+            "exchange": "BVL",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "security_lookup_subset",
+            "official": "true",
+            "isin": "PEP736581005",
+        },
+        {
+            "source_key": "bvl_issuers_directory",
+            "provider": "CAVALI",
+            "source_url": "https://cavali-corporativa.screativa.com/emisores",
+            "ticker": "ETFPERUD",
+            "name": "FONDO BURSÁTIL VAN ECK EL DORADO PERÚ ETF",
+            "exchange": "BVL",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "security_lookup_subset",
+            "official": "true",
+            "isin": "PEP798008004",
+        },
+    ]
+
+
+def test_parse_bvb_shares_directory_html_extracts_symbol_name_and_isin() -> None:
+    source = MasterfileSource(
+        key="bvb_shares_directory",
+        provider="BVB",
+        description="Official Bucharest Stock Exchange shares directory with ISINs",
+        source_url="https://m.bvb.ro/FinancialInstruments/Markets/Shares",
+        format="bvb_shares_directory_html",
+    )
+    text = """
+    <table id="gv">
+        <tr>
+            <td>
+                <a href="/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=TLV"><b>
+                    TLV</b></a><p style="font-size: 11px">ROTLVAACNOR1</p>
+            </td>
+            <td align="left">BANCA TRANSILVANIA S.A.</td>
+            <td align="right">36,7800</td>
+            <td class="numericspvar" align="right">0,77</td>
+            <td align="right">09.04.2026 17:55</td>
+            <td align="center">Premium</td>
+        </tr>
+        <tr>
+            <td>
+                <a href="/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=PE"><b>
+                    PE</b></a><p style="font-size: 11px">CY0200900914</p>
+            </td>
+            <td align="left">Premier Energy PLC</td>
+            <td align="right">41,3000</td>
+            <td class="numericspvar" align="right">-0,24</td>
+            <td align="right">09.04.2026 17:54</td>
+            <td align="center">Int'l</td>
+        </tr>
+    </table>
+    """
+
+    rows = parse_bvb_shares_directory_html(text, source)
+
+    assert rows == [
+        {
+            "source_key": "bvb_shares_directory",
+            "provider": "BVB",
+            "source_url": "https://m.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=TLV",
+            "ticker": "TLV",
+            "name": "BANCA TRANSILVANIA S.A.",
+            "exchange": "BVB",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "ROTLVAACNOR1",
+        },
+        {
+            "source_key": "bvb_shares_directory",
+            "provider": "BVB",
+            "source_url": "https://m.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=PE",
+            "ticker": "PE",
+            "name": "Premier Energy PLC",
+            "exchange": "BVB",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "CY0200900914",
+        },
+    ]
+
+
+def test_parse_bvb_fund_units_directory_html_keeps_only_etf_rows() -> None:
+    source = MasterfileSource(
+        key="bvb_fund_units_directory",
+        provider="BVB",
+        description="Official Bucharest Stock Exchange fund units directory gated to ETF rows",
+        source_url="https://m.bvb.ro/FinancialInstruments/Markets/FundUnits",
+        format="bvb_fund_units_directory_html",
+        reference_scope="listed_companies_subset",
+    )
+    text = """
+    <table id="gv">
+        <tr>
+            <td>
+                <a href="/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=PTENGETF"><b>
+                    PTENGETF</b></a><p style="font-size: 11px">ROR9ULE5VKA1</p>
+            </td>
+            <td>FONDUL DESCHIS DE INVESTITII ETF ENERGIE PATRIA-TRADEVILLE</td>
+            <td align="right">13,1200</td>
+            <td class="numericspvar" align="right">0,00</td>
+            <td align="right">09.04.2026 17:55</td>
+            <td>ETF</td>
+        </tr>
+        <tr>
+            <td>
+                <a href="/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=BTF"><b>
+                    BTF</b></a><p style="font-size: 11px">ROFIIN0000T6</p>
+            </td>
+            <td>F.I.A.I.R. BET FI INDEX INVEST</td>
+            <td align="right">2360,0000</td>
+            <td class="numericspvar" align="right">0,00</td>
+            <td align="right">09.04.2026 17:55</td>
+            <td>Units</td>
+        </tr>
+    </table>
+    """
+
+    rows = parse_bvb_fund_units_directory_html(text, source)
+
+    assert rows == [
+        {
+            "source_key": "bvb_fund_units_directory",
+            "provider": "BVB",
+            "source_url": "https://m.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=PTENGETF",
+            "ticker": "PTENGETF",
+            "name": "FONDUL DESCHIS DE INVESTITII ETF ENERGIE PATRIA-TRADEVILLE",
+            "exchange": "BVB",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "ROR9ULE5VKA1",
+        },
+    ]
+
+
+def test_parse_athex_classification_lines_maps_current_stock_rows() -> None:
+    source = MasterfileSource(
+        key="athex_sector_classification",
+        provider="ATHEX",
+        description="Official ATHEX companies sector classification PDF with ISINs",
+        source_url="https://www.athexgroup.gr/documents/athex-classification.pdf",
+        format="athex_sector_classification_pdf",
+        reference_scope="listed_companies_subset",
+    )
+    listings_by_ticker = {
+        "MERKO": {
+            "ticker": "MERKO",
+            "exchange": "ATHEX",
+            "name": "MERMEREN KOMBINAT A.D. PRILEP",
+            "asset_type": "Stock",
+        },
+        "AETF": {
+            "ticker": "AETF",
+            "exchange": "ATHEX",
+            "name": "ALPHA ETF FTSE Athex Large Cap Equity UCITS",
+            "asset_type": "ETF",
+        },
+    }
+    lines = [
+        (
+            "GRK014011008 MERKO MERMEREN KOMBINAT A.D. PRILEP "
+            "1700 Basic Resources 1755 Nonferrous Metals 5510 Basic Resources 55102015 Metal Fabricating"
+        ),
+        (
+            "GRF000153004 AETF ALPHA ETF FTSE Athex Large Cap Equity UCITS "
+            "8700 Financial Services 8771 Asset Managers 3020 Financial Services 30202010 Asset Managers"
+        ),
+    ]
+
+    rows = parse_athex_classification_lines(lines, source, listings_by_ticker=listings_by_ticker)
+
+    assert rows == [
+        {
+            "source_key": "athex_sector_classification",
+            "provider": "ATHEX",
+            "source_url": "https://www.athexgroup.gr/documents/athex-classification.pdf",
+            "ticker": "MERKO",
+            "name": "MERMEREN KOMBINAT A.D. PRILEP",
+            "exchange": "ATHEX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "GRK014011008",
+            "sector": "Materials",
+        },
+    ]
+
+
+def test_parse_ngx_equities_price_list_payload_matches_current_rows_by_ticker(tmp_path) -> None:
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "listing_key,ticker,exchange,name,asset_type,stock_sector,etf_category,country,country_code,isin,aliases",
+                "NGX::ACCESSCORP,ACCESSCORP,NGX,ACCESS HOLDINGS PLC,Stock,,,,NG,NGACCESS0005,",
+                "NGX::ABCTRANS,ABCTRANS,NGX,ABC TRANSPORT PLC,Stock,,,,NG,NGABCTRANS01,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    source = MasterfileSource(
+        key="ngx_equities_price_list",
+        provider="NGX",
+        description="Official Nigerian Exchange equities price list API with sector labels",
+        source_url="https://doclib.ngxgroup.com/REST/api/statistics/equities/?market=&sector=&orderby=&pageSize=300&pageNo=0",
+        format="ngx_equities_price_list_json",
+        reference_scope="listed_companies_subset",
+    )
+    payload = [
+        {"Symbol": "ACCESSCORP", "Sector": "FINANCIAL SERVICES", "Company2": "ACCESSCORP "},
+        {"Symbol": "ABCTRANS", "Sector": "SERVICES", "Company2": "ABCTRANS "},
+        {"Symbol": "BOND2028", "Sector": "BONDS", "Company2": "BOND2028"},
+    ]
+
+    rows = parse_ngx_equities_price_list_payload(payload, source, listings_path=listings_path)
+
+    assert rows == [
+        {
+            "source_key": "ngx_equities_price_list",
+            "provider": "NGX",
+            "source_url": "https://doclib.ngxgroup.com/REST/api/statistics/equities/?market=&sector=&orderby=&pageSize=300&pageNo=0",
+            "ticker": "ACCESSCORP",
+            "name": "ACCESS HOLDINGS PLC",
+            "exchange": "NGX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "NGACCESS0005",
+            "sector": "FINANCIAL SERVICES",
+        },
+        {
+            "source_key": "ngx_equities_price_list",
+            "provider": "NGX",
+            "source_url": "https://doclib.ngxgroup.com/REST/api/statistics/equities/?market=&sector=&orderby=&pageSize=300&pageNo=0",
+            "ticker": "ABCTRANS",
+            "name": "ABC TRANSPORT PLC",
+            "exchange": "NGX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "NGABCTRANS01",
+            "sector": "SERVICES",
+        },
+    ]
+
+
+def test_parse_vienna_listed_companies_html_matches_current_vse_by_isin(tmp_path) -> None:
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "listing_key,ticker,exchange,name,asset_type,stock_sector,etf_category,country,country_code,isin,aliases",
+                "VSE::AGR,AGR,VSE,AGRANA Beteiligungs-AG,Stock,Consumer Staples,,Austria,AT,AT000AGRANA3,",
+                "XETRA::AGR,AGR,XETRA,AGRANA Beteiligungs-AG,Stock,Consumer Staples,,Austria,AT,AT000AGRANA3,",
+                "VSE::NOISIN,NOISIN,VSE,No ISIN AG,Stock,,,,AT,,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    source = MasterfileSource(
+        key="vienna_listed_companies",
+        provider="Wiener Boerse",
+        description="Official Vienna Stock Exchange listed companies directory",
+        source_url="https://www.wienerborse.at/en/listing/shares/companies-list/",
+        format="vienna_listed_companies_html",
+        reference_scope="listed_companies_subset",
+    )
+    text = """
+    <table>
+        <thead>
+            <tr><th>ISIN</th><th>Issuer</th><th>Country</th><th>Market</th><th>Market Segment</th><th>Type of Security</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>AT000AGRANA3</td><td>AGRANA Beteiligungs-AG</td><td>Austria</td><td>Vienna</td><td>Prime Market</td><td>Equity Share</td></tr>
+            <tr><td>AT0000BOND01</td><td>Bond Issuer</td><td>Austria</td><td>Vienna</td><td>Bond Market</td><td>Bond</td></tr>
+            <tr><td>AT000UNMATCH0</td><td>Unmatched AG</td><td>Austria</td><td>Vienna</td><td>Prime Market</td><td>Equity Share</td></tr>
+        </tbody>
+    </table>
+    """
+
+    rows = parse_vienna_listed_companies_html(text, source, listings_path=listings_path)
+
+    assert rows == [
+        {
+            "source_key": "vienna_listed_companies",
+            "provider": "Wiener Boerse",
+            "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
+            "ticker": "AGR",
+            "name": "AGRANA Beteiligungs-AG",
+            "exchange": "VSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "AT000AGRANA3",
+        }
+    ]
+
+
+def test_parse_zagreb_securities_html_maps_active_equity_rows() -> None:
+    source = MasterfileSource(
+        key="zagreb_securities_directory",
+        provider="ZSE Croatia",
+        description="Official Zagreb Stock Exchange listed share directory",
+        source_url="https://zse.hr/en/shares/68",
+        format="zagreb_securities_html",
+        reference_scope="listed_companies_subset",
+    )
+    text = """
+    <table>
+        <tbody>
+            <tr data-status="LISTED_SECURITIES" data-type="EQTY">
+                <td>ADRS</td><td>HRADRSRA0007</td><td>ADRIS GRUPA d. d.</td><td>Consumer Staples</td>
+                <td>Regular</td><td>1</td><td>2003-01-01</td><td>-</td>
+            </tr>
+            <tr data-status="DELISTED_SECURITIES" data-type="EQTY">
+                <td>OLD</td><td>HROLD0RA0001</td><td>Old Issuer d.d.</td><td>Industrials</td>
+                <td>Regular</td><td>1</td><td>2003-01-01</td><td>2020-01-01</td>
+            </tr>
+            <tr data-status="LISTED_SECURITIES" data-type="BOND">
+                <td>BOND</td><td>HRBONDRA0001</td><td>Bond Issuer d.d.</td><td>Financials</td>
+                <td>Regular</td><td>1</td><td>2003-01-01</td><td>-</td>
+            </tr>
+        </tbody>
+    </table>
+    """
+
+    rows = parse_zagreb_securities_html(text, source)
+
+    assert rows == [
+        {
+            "source_key": "zagreb_securities_directory",
+            "provider": "ZSE Croatia",
+            "source_url": "https://zse.hr/en/shares/68",
+            "ticker": "ADRS",
+            "name": "ADRIS GRUPA d. d.",
+            "exchange": "ZSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "HRADRSRA0007",
+            "sector": "Consumer Staples",
+        }
+    ]
+
+
 def test_parse_idx_listed_companies_payload_maps_rows() -> None:
     source = MasterfileSource(
         key="idx_listed_companies",
@@ -8436,6 +11159,94 @@ def test_parse_idx_listed_companies_payload_maps_rows() -> None:
             "official": "true",
         },
     ]
+
+
+def test_parse_idx_company_profiles_payload_maps_idx_sectors() -> None:
+    source = MasterfileSource(
+        key="idx_company_profiles",
+        provider="IDX",
+        description="Official IDX company profiles metadata API",
+        source_url="https://www.idx.id/primary/ListedCompany/GetCompanyProfiles",
+        format="idx_company_profiles_json",
+        reference_scope="exchange_directory",
+    )
+    payload = {
+        "recordsTotal": 4,
+        "recordsFiltered": 4,
+        "data": [
+            {
+                "KodeEmiten": "AALI",
+                "NamaEmiten": "Astra Agro Lestari Tbk",
+                "Sektor": "Barang Konsumen Primer",
+                "SubSektor": "Makanan & Minuman",
+            },
+            {
+                "KodeEmiten": "TLKM",
+                "NamaEmiten": "Telkom Indonesia (Persero) Tbk",
+                "Sektor": "Infrastruktur",
+                "SubSektor": "Telekomunikasi",
+            },
+            {
+                "KodeEmiten": "JSMR",
+                "NamaEmiten": "Jasa Marga (Persero) Tbk",
+                "Sektor": "Infrastruktur",
+                "SubSektor": "Infrastruktur Transportasi",
+            },
+            {
+                "KodeEmiten": "AALI",
+                "NamaEmiten": "Astra Agro Lestari Tbk",
+                "Sektor": "Barang Konsumen Primer",
+                "SubSektor": "Makanan & Minuman",
+            },
+        ],
+    }
+
+    rows = parse_idx_company_profiles_payload(payload, source)
+
+    assert [(row["ticker"], row["sector"]) for row in rows] == [
+        ("AALI", "Consumer Staples"),
+        ("TLKM", "Communication Services"),
+        ("JSMR", "Industrials"),
+    ]
+    assert all(row["official"] == "true" for row in rows)
+
+
+def test_load_idx_company_profiles_rows_falls_back_to_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "idx_company_profiles.json"
+    legacy_path = tmp_path / "legacy_idx_company_profiles.json"
+    cache_path.write_text(
+        json.dumps(
+            [
+                {
+                    "source_key": "idx_company_profiles",
+                    "provider": "IDX",
+                    "source_url": "https://www.idx.id/primary/ListedCompany/GetCompanyProfiles",
+                    "ticker": "AALI",
+                    "name": "Astra Agro Lestari Tbk",
+                    "exchange": "IDX",
+                    "asset_type": "Stock",
+                    "listing_status": "active",
+                    "reference_scope": "exchange_directory",
+                    "official": "true",
+                    "sector": "Consumer Staples",
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "IDX_COMPANY_PROFILES_CACHE", cache_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "LEGACY_IDX_COMPANY_PROFILES_CACHE", legacy_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_idx_company_profiles",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("network unavailable")),
+    )
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "idx_company_profiles")
+
+    rows, mode = load_idx_company_profiles_rows(source)
+
+    assert mode == "cache"
+    assert [(row["ticker"], row["sector"]) for row in rows] == [("AALI", "Consumer Staples")]
 
 
 def test_fetch_idx_listed_companies_paginates_official_api() -> None:
@@ -8586,6 +11397,7 @@ def test_parse_wse_company_search_html_maps_rows() -> None:
                 <a href="spolka?isin=PL11BTS00015">
                     <strong class="name">11 BIT STUDIOS SPÓŁKA AKCYJNA <span class="grey">(11B)</span></strong>
                 </a>
+                <small class="grey">Główny Rynek | WIG-gry, WIG | Gry</small>
             </td>
         </tr>
         <tr>
@@ -8593,6 +11405,7 @@ def test_parse_wse_company_search_html_maps_rows() -> None:
                 <a href="spolka?isin=LU2237380790">
                     <strong class="name">Allegro.eu S.A. <span class="grey">(ALE)</span></strong>
                 </a>
+                <small class="grey">Główny Rynek | Handel Internetowy</small>
             </td>
         </tr>
     </tbody>
@@ -8613,6 +11426,7 @@ def test_parse_wse_company_search_html_maps_rows() -> None:
             "reference_scope": "listed_companies_subset",
             "official": "true",
             "isin": "PL11BTS00015",
+            "sector": "Communication Services",
         },
         {
             "source_key": "wse_listed_companies",
@@ -8626,8 +11440,19 @@ def test_parse_wse_company_search_html_maps_rows() -> None:
             "reference_scope": "listed_companies_subset",
             "official": "true",
             "isin": "LU2237380790",
+            "sector": "Consumer Discretionary",
         },
     ]
+
+
+def test_normalize_wse_stock_sector_maps_polish_exchange_labels() -> None:
+    assert normalize_wse_stock_sector("oprogramowanie") == "Information Technology"
+    assert normalize_wse_stock_sector("Gry") == "Communication Services"
+    assert normalize_wse_stock_sector("banki komercyjne") == "Financials"
+    assert normalize_wse_stock_sector("sprzedaż nieruchomości") == "Real Estate"
+    assert normalize_wse_stock_sector("Sprzęt i Materiały Medyczne") == "Health Care"
+    assert normalize_wse_stock_sector("produkcja rolna i rybołówstwo") == "Consumer Staples"
+    assert normalize_wse_stock_sector("Usługi dla przedsiębiorstw") == "Industrials"
 
 
 def test_fetch_wse_listed_companies_uses_initial_page_and_ajax_pagination() -> None:
@@ -9153,8 +11978,24 @@ def test_parse_tase_etf_marketdata_payload_normalizes_symbols() -> None:
     )
     payload = {
         "Items": [
-            {"Symbol": "HRL.F303", "LongName": "Harel Sal Tel Bond", "ISIN": "IL0011507477"},
-            {"Symbol": "ANLT.F2", "SecurityLongName": "ATF S&P 500", "ISIN_ID": "IL0012189242"},
+            {
+                "Symbol": "HRL.F303",
+                "LongName": "Harel Sal Tel Bond",
+                "ISIN": "IL0011507477",
+                "Classification": "Israeli bonds - Corporate and Convertibles",
+            },
+            {
+                "Symbol": "ANLT.F2",
+                "SecurityLongName": "ATF S&P 500",
+                "ISIN_ID": "IL0012189242",
+                "Classification": "Foreign Shares - FX-Hedged Geographical Stocks",
+            },
+            {
+                "Symbol": "KSM.F208",
+                "SecurityLongName": "KSM Short TA-RealEstate",
+                "ISIN_ID": "IL0011866345",
+                "Classification": "Leveraged - Short Leveraged, High-Risk - Stocks in Israel",
+            },
             {"Symbol": "HRL.F303", "LongName": "Duplicate", "ISIN": "IL0011507477"},
             {"Symbol": "", "LongName": "Missing", "ISIN": "IL0011111111"},
         ]
@@ -9175,6 +12016,7 @@ def test_parse_tase_etf_marketdata_payload_normalizes_symbols() -> None:
             "reference_scope": "listed_companies_subset",
             "official": "true",
             "isin": "IL0011507477",
+            "sector": "Fixed Income",
         },
         {
             "source_key": "tase_etf_marketdata",
@@ -9188,6 +12030,21 @@ def test_parse_tase_etf_marketdata_payload_normalizes_symbols() -> None:
             "reference_scope": "listed_companies_subset",
             "official": "true",
             "isin": "IL0012189242",
+            "sector": "Equity",
+        },
+        {
+            "source_key": "tase_etf_marketdata",
+            "provider": "TASE",
+            "source_url": "https://api.tase.co.il/api/marketdata/etfs",
+            "ticker": "KSM-F208",
+            "name": "KSM Short TA-RealEstate",
+            "exchange": "TASE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+            "official": "true",
+            "isin": "IL0011866345",
+            "sector": "Leveraged/Inverse",
         },
     ]
 
@@ -9593,6 +12450,60 @@ def test_parse_hose_securities_payload_requires_isin() -> None:
             "isin": "VN000000AAA4",
         }
     ]
+
+
+def test_parse_hose_securities_payload_maps_conservative_categories() -> None:
+    source = MasterfileSource(
+        key="hose_etf_list",
+        provider="HOSE",
+        description="Official Ho Chi Minh Stock Exchange ETF directory",
+        source_url="https://api.hsx.vn/l/api/v1/2/securities/etf",
+        format="hose_etf_list_json",
+        reference_scope="listed_companies_subset",
+    )
+    payload = {
+        "data": {
+            "list": [
+                {
+                    "code": "FUESSVFL",
+                    "name": "SSIAM VNFIN LEAD ETF",
+                    "isin": "VN0FUESSVFL3",
+                    "refIndex": "VNFIN LEAD",
+                }
+            ]
+        }
+    }
+
+    rows = parse_hose_securities_payload(payload, source, asset_type="ETF")
+
+    assert rows[0]["sector"] == "Equity"
+
+
+def test_parse_hose_securities_payload_maps_reit_fund_certificate() -> None:
+    source = MasterfileSource(
+        key="hose_fund_certificate_list",
+        provider="HOSE",
+        description="Official Ho Chi Minh Stock Exchange fund certificate directory",
+        source_url="https://api.hsx.vn/l/api/v1/2/securities/fundcertificate",
+        format="hose_fund_certificate_list_json",
+        reference_scope="listed_companies_subset",
+    )
+    payload = {
+        "data": {
+            "list": [
+                {
+                    "code": "FUCVREIT",
+                    "name": "Techcom Vietnam REIT Fund",
+                    "isin": "VN0FUCVREIT6",
+                    "displayText": "FUCVREIT | Quỹ Đầu tư Bất động sản Techcom Việt Nam",
+                }
+            ]
+        }
+    }
+
+    rows = parse_hose_securities_payload(payload, source, asset_type="Stock")
+
+    assert rows[0]["sector"] == "Real Estate"
 
 
 def test_fetch_hose_securities_rows_paginates_official_api() -> None:
@@ -10987,8 +13898,8 @@ def test_fetch_source_rows_with_mode_uses_sto_tracker_cache(tmp_path, monkeypatc
 def test_parse_six_equity_issuers_maps_rows() -> None:
     payload = {
         "itemList": [
-            {"valorSymbol": "ABBN", "company": "ABB Ltd"},
-            {"valorSymbol": "ROG", "company": "Roche Holding AG"},
+            {"valorSymbol": "ABBN", "company": "ABB Ltd", "isin": "CH0012221716"},
+            {"valorSymbol": "ROG", "company": "Roche Holding AG", "isin": "CH0012032048"},
             {"valorSymbol": "", "company": "Ignored"},
         ]
     }
@@ -11007,6 +13918,7 @@ def test_parse_six_equity_issuers_maps_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "isin": "CH0012221716",
         },
         {
             "source_key": "test",
@@ -11019,6 +13931,7 @@ def test_parse_six_equity_issuers_maps_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "isin": "CH0012032048",
         },
     ]
 
@@ -11078,6 +13991,180 @@ def test_fetch_six_equity_issuers_uses_official_endpoint() -> None:
 
 def test_six_source_is_modeled_as_partial_official_coverage() -> None:
     source = next(item for item in OFFICIAL_SOURCES if item.key == "six_equity_issuers")
+    assert source.reference_scope == "listed_companies_subset"
+
+
+def test_parse_six_share_details_fqs_payload_maps_rows() -> None:
+    payload = {
+        "colNames": ["ISIN", "IssuerNameFull", "ValorSymbol", "IndustrySectorDesc", "AssetClassDesc"],
+        "rowData": [
+            ["CH1169360919", "Accelleron Industries AG", "ACLN", "Electrical engineering & electronics", ""],
+            ["IE00B14X4S71", "iShares plc", "IBTS", "Indices", "Fixed Income"],
+        ],
+    }
+
+    rows = parse_six_share_details_fqs_payload(payload)
+
+    assert rows == [
+        {
+            "ISIN": "CH1169360919",
+            "IssuerNameFull": "Accelleron Industries AG",
+            "ValorSymbol": "ACLN",
+            "IndustrySectorDesc": "Electrical engineering & electronics",
+            "AssetClassDesc": "",
+        },
+        {
+            "ISIN": "IE00B14X4S71",
+            "IssuerNameFull": "iShares plc",
+            "ValorSymbol": "IBTS",
+            "IndustrySectorDesc": "Indices",
+            "AssetClassDesc": "Fixed Income",
+        },
+    ]
+
+
+def test_build_six_share_details_rows_maps_stock_and_etf_taxonomy() -> None:
+    stock_payload = {
+        "colNames": ["ISIN", "IssuerNameFull", "ValorSymbol", "IndustrySectorDesc", "AssetClassDesc"],
+        "rowData": [["CH1169360919", "Accelleron Industries AG", "ACLN", "Electrical engineering & electronics", ""]],
+    }
+    etf_payload = {
+        "colNames": ["ISIN", "FundLongName", "ValorSymbol", "IndustrySectorDesc", "AssetClassDesc"],
+        "rowData": [
+            ["IE00B14X4S71", "iShares $ Treasury Bond 1-3yr UCITS ETF USD (Dist)", "IBTS", "Indices", "Fixed Income"]
+        ],
+    }
+
+    stock_rows = build_six_share_details_rows(
+        stock_payload,
+        SOURCE,
+        {
+            "ticker": "ACLN",
+            "name": "Accelleron Industries AG",
+            "exchange": "SIX",
+            "asset_type": "Stock",
+            "isin": "CH1169360919",
+        },
+    )
+    etf_rows = build_six_share_details_rows(
+        etf_payload,
+        SOURCE,
+        {
+            "ticker": "IE00B14X4S",
+            "name": "iShares $ Treasury Bond 1-3yr UCITS ETF USD",
+            "exchange": "SIX",
+            "asset_type": "ETF",
+            "isin": "IE00B14X4S71",
+        },
+    )
+
+    assert stock_rows[0]["ticker"] == "ACLN"
+    assert stock_rows[0]["sector"] == "Industrials"
+    assert etf_rows[0]["ticker"] == "IE00B14X4S"
+    assert etf_rows[0]["sector"] == "Fixed Income"
+
+
+def test_build_six_share_details_rows_special_cases_misc_services() -> None:
+    payload = {
+        "colNames": ["ISIN", "IssuerNameFull", "ValorSymbol", "IndustrySectorDesc"],
+        "rowData": [
+            ["CH1107979838", "R&S Group Holding AG", "RSGN", "Misc. services"],
+            ["CH1386220409", "Sunrise Communications AG", "SUNN", "Misc. services"],
+        ],
+    }
+
+    rsgn_rows = build_six_share_details_rows(
+        payload,
+        SOURCE,
+        {"ticker": "RSGN", "name": "R&S GROUP HOLDING AG", "exchange": "SIX", "asset_type": "Stock", "isin": "CH1107979838"},
+    )
+    sunn_rows = build_six_share_details_rows(
+        payload,
+        SOURCE,
+        {"ticker": "SUNN", "name": "SUNRISE N", "exchange": "SIX", "asset_type": "Stock", "isin": "CH1386220409"},
+    )
+
+    assert rsgn_rows[0]["sector"] == "Industrials"
+    assert sunn_rows[0]["sector"] == "Communication Services"
+
+
+def test_fetch_six_share_details_fqs_uses_current_missing_taxonomy_rows(tmp_path) -> None:
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "ticker,name,exchange,asset_type,stock_sector,etf_category,sector,country,country_code,isin,aliases",
+                "ACLN,Accelleron Industries AG,SIX,Stock,,,,Switzerland,CH,CH1169360919,accelleron",
+                "ROG,Roche Holding AG,SIX,Stock,Health Care,,,Switzerland,CH,CH0012032048,roche",
+                "IE00B14X4S,iShares $ Treasury Bond 1-3yr UCITS ETF USD,SIX,ETF,,,,Ireland,IE,IE00B14X4S71,ishares",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    source = MasterfileSource(
+        key="six_shares_explorer_full",
+        provider="SIX",
+        description="Official SIX FQS supplement",
+        source_url="https://www.six-group.com/fqs/ref.json",
+        format="six_share_details_fqs_json",
+        reference_scope="listed_companies_subset",
+    )
+
+    class FakeResponse:
+        def __init__(self, payload):
+            self._payload = payload
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            self.calls.append((url, params, headers, timeout))
+            isin = params["where"].split("=", 1)[1]
+            if isin == "CH1169360919":
+                return FakeResponse(
+                    {
+                        "colNames": ["ISIN", "IssuerNameFull", "ValorSymbol", "IndustrySectorDesc", "AssetClassDesc"],
+                        "rowData": [
+                            ["CH1169360919", "Accelleron Industries AG", "ACLN", "Electrical engineering & electronics", ""]
+                        ],
+                    }
+                )
+            return FakeResponse(
+                {
+                    "colNames": ["ISIN", "FundLongName", "ValorSymbol", "IndustrySectorDesc", "AssetClassDesc"],
+                    "rowData": [
+                        [
+                            "IE00B14X4S71",
+                            "iShares $ Treasury Bond 1-3yr UCITS ETF USD (Dist)",
+                            "IBTS",
+                            "Indices",
+                            "Fixed Income",
+                        ]
+                    ],
+                }
+            )
+
+    session = FakeSession()
+    rows = fetch_six_share_details_fqs(source, session=session, listings_path=listings_path)
+
+    assert [(row["ticker"], row["sector"]) for row in rows] == [
+        ("ACLN", "Industrials"),
+        ("IE00B14X4S", "Fixed Income"),
+    ]
+    assert [call[1]["where"] for call in session.calls] == ["ISIN=CH1169360919", "ISIN=IE00B14X4S71"]
+    assert all(call[2]["Accept"] == "application/json,text/plain,*/*" for call in session.calls)
+
+
+def test_six_share_details_source_is_official_taxonomy_supplement() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "six_shares_explorer_full")
+    assert source.format == "six_share_details_fqs_json"
     assert source.reference_scope == "listed_companies_subset"
 
 
@@ -11226,6 +14313,44 @@ def test_parse_six_fund_products_csv_maps_rows() -> None:
             "isin": "GB00BMTP1736",
         },
     ]
+
+
+def test_parse_six_fund_products_csv_maps_asset_class_to_category() -> None:
+    text = "\n".join(
+        [
+            "FundLongName;ValorSymbol;FundReutersTicker;FundBloombergTicker;ISIN;TradingBaseCurrency;FundCurrency;ProductLineDesc;AssetClassDesc",
+            "SIX Equity ETF;EQTY;;;IE0000000001;USD;USD;Exchange Traded Funds;Equity Developed Markets",
+            "SIX Crypto ETP;CRYP;;;CH0000000002;USD;USD;Exchange Traded Product;Crypto",
+            "SIX Bond ETF;BOND;;;LU0000000003;CHF;CHF;Exchange Traded Funds;Fixed Income",
+        ]
+    )
+
+    rows = parse_six_fund_products_csv(text, SOURCE)
+
+    assert rows[0]["sector"] == "Equity"
+    assert rows[3]["sector"] == "Alternative"
+    assert rows[6]["sector"] == "Fixed Income"
+
+
+def test_parse_six_fund_products_csv_maps_reuters_currency_aliases() -> None:
+    text = "\n".join(
+        [
+            "FundLongName;ValorSymbol;FundReutersTicker;FundBloombergTicker;ISIN;TradingBaseCurrency;FundCurrency;ProductLineDesc;AssetClassDesc",
+            "21Shares Ethereum Core ETP;ETHC;CETH S;CETH SE;CH1209763130;USD;USD;Exchange Traded Product;Crypto",
+        ]
+    )
+
+    rows = parse_six_fund_products_csv(text, SOURCE)
+
+    assert [row["ticker"] for row in rows] == [
+        "ETHC",
+        "ETHC-USD",
+        "ETHCUSD",
+        "CETH",
+        "CETH-USD",
+        "CETHUSD",
+    ]
+    assert {row["sector"] for row in rows} == {"Alternative"}
 
 
 def test_fetch_six_fund_products_uses_official_endpoint() -> None:
@@ -11405,6 +14530,96 @@ def test_merge_reference_rows_replaces_only_selected_sources() -> None:
     ]
 
 
+def test_parse_ngx_company_profile_detail_html_extracts_official_name_and_sector() -> None:
+    html = """
+    <strong class="CompanyName">FIRST HOLDCO PLC (FIRSTHOLDCO)</strong>
+    <strong class="Symbol">FIRSTHOLDCO</strong>
+    <strong class="Sector">FINANCIAL SERVICES</strong>
+    """
+
+    assert parse_ngx_company_profile_detail_html(html) == {
+        "ticker": "FIRSTHOLDCO",
+        "name": "FIRST HOLDCO PLC",
+        "sector": "FINANCIAL SERVICES",
+    }
+
+
+def test_parse_ngx_company_profile_directory_html_matches_prefix_replaced_current_listing(tmp_path) -> None:
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text(
+        "\n".join(
+            [
+                "listing_key,ticker,exchange,name,asset_type,stock_sector,etf_category,country,country_code,isin,aliases",
+                "NGX::FIRSTHOLDC,FIRSTHOLDC,NGX,FIRST HOLDCO PLC,Stock,,,,NG,NGFBNH000009,first hold",
+                "NGX::ABBEYBDS,ABBEYBDS,NGX,ABBEY MORTGAGE BANK PLC,Stock,,,,NG,NGABBEYBDS3,abbey",
+                "NGX::DUNLOP,DUNLOP,NGX,DN TYRE & RUBBER PLC,Stock,,,,NG,NGDUNLOP0005,dn tyre",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    html = """
+    <a href="https://ngxgroup.com/exchange/data/company-profile/?symbol=FIRSTHOLDCO&directory=companydirectory">FIRSTHOLDCO</a>
+    <a href="https://ngxgroup.com/exchange/data/company-profile/?symbol=ABBEYBDS&directory=companydirectory">ABBEYBDS</a>
+    """
+    source = MasterfileSource(
+        key="ngx_company_profile_directory",
+        provider="NGX",
+        description="Official Nigerian Exchange company profile directory",
+        source_url="https://ngxgroup.com/exchange/data/company-profile/",
+        format="ngx_company_profile_directory_html",
+        reference_scope="exchange_directory",
+    )
+
+    rows = parse_ngx_company_profile_directory_html(
+        html,
+        source,
+        profile_details_by_symbol={
+            "FIRSTHOLDCO": {
+                "ticker": "FIRSTHOLDCO",
+                "name": "FIRST HOLDCO PLC",
+                "sector": "FINANCIAL SERVICES",
+            },
+            "ABBEYBDS": {
+                "ticker": "ABBEYBDS",
+                "name": "ABBEY MORTGAGE BANK PLC",
+                "sector": "FINANCIAL SERVICES",
+            },
+        },
+        listings_path=listings_path,
+    )
+
+    assert rows == [
+        {
+            "source_key": "ngx_company_profile_directory",
+            "provider": "NGX",
+            "source_url": "https://ngxgroup.com/exchange/data/company-profile/?symbol=ABBEYBDS&directory=companydirectory",
+            "ticker": "ABBEYBDS",
+            "name": "ABBEY MORTGAGE BANK PLC",
+            "exchange": "NGX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "NGABBEYBDS3",
+            "sector": "FINANCIAL SERVICES",
+        },
+        {
+            "source_key": "ngx_company_profile_directory",
+            "provider": "NGX",
+            "source_url": "https://ngxgroup.com/exchange/data/company-profile/?symbol=FIRSTHOLDCO&directory=companydirectory",
+            "ticker": "FIRSTHOLDCO",
+            "name": "FIRST HOLDCO PLC",
+            "exchange": "NGX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "NGFBNH000009",
+            "sector": "FINANCIAL SERVICES",
+        },
+    ]
+
+
 def test_dedupe_rows_normalizes_none_values_before_sorting() -> None:
     rows = dedupe_rows(
         [
@@ -11460,6 +14675,1297 @@ def test_sec_request_headers_include_contactable_user_agent(monkeypatch):
 
     assert headers["User-Agent"] == "free-ticker-database/2.0 (sec@example.com)"
     assert headers["Referer"] == "https://www.sec.gov/"
+
+
+def test_parse_nse_india_equity_csv_filters_rights_and_keeps_isins() -> None:
+    source = MasterfileSource(
+        key="nse_india_securities_available",
+        provider="NSE India",
+        description="Official NSE India securities",
+        source_url="https://www.nseindia.com/static/market-data/securities-available-for-trading",
+        format="nse_india_securities_available_csv",
+    )
+    text = "\n".join(
+        [
+            "SYMBOL,NAME_OF_COMPANY,SERIES,DATE_OF_LISTING,PAID_UP_VALUE,ISIN_NUMBER,FACE_VALUE,",
+            "VIVIDEL,Vivid Electromech Limited,ST,07-Apr-26,10,INE24H301028,10,",
+            "SUNREST-RE,Sunrest Lifescience Ltd-RE,ST,02-Apr-26,10,INE0PLZ20012,10,",
+            "NOTSME,Not SME Limited,BE,01-Jan-26,10,INE111111111,10,",
+        ]
+    )
+
+    rows = parse_nse_india_equity_csv(text, source, source_url="https://example.com/sme.csv", sme=True)
+
+    assert rows == [
+        {
+            "source_key": "nse_india_securities_available",
+            "provider": "NSE India",
+            "source_url": "https://example.com/sme.csv",
+            "ticker": "VIVIDEL",
+            "name": "Vivid Electromech Limited",
+            "exchange": "NSE_IN",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "INE24H301028",
+        }
+    ]
+
+
+def test_parse_nse_india_etf_csv_maps_conservative_categories() -> None:
+    source = MasterfileSource(
+        key="nse_india_securities_available",
+        provider="NSE India",
+        description="Official NSE India securities",
+        source_url="https://www.nseindia.com/static/market-data/securities-available-for-trading",
+        format="nse_india_securities_available_csv",
+    )
+    text = "\n".join(
+        [
+            "Symbol,Underlying,SecurityName,DateofListing,MarketLot,ISINNumber,FaceValue",
+            "GOLDBEES,Gold,NIPINDETFGOLDBEES,19-Mar-07,1,INF204KB17I5,1",
+            "LIQUIDBEES,GovernmentSecurities,NIPINDETFLIQUIDBEES,16-Jul-03,1,INF732E01037,1000",
+            "NIFTYBEES,Nifty50,NIPINDETFNIFTYBEES,08-Jan-02,1,INF204KB14I2,1",
+        ]
+    )
+
+    rows = parse_nse_india_etf_csv(text, source, source_url="https://example.com/etf.csv")
+
+    assert [(row["ticker"], row["asset_type"], row["sector"]) for row in rows] == [
+        ("GOLDBEES", "ETF", "Commodity"),
+        ("LIQUIDBEES", "ETF", "Fixed Income"),
+        ("NIFTYBEES", "ETF", "Equity"),
+    ]
+
+
+def test_nse_india_source_is_modeled_as_official_exchange_directory() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "nse_india_securities_available")
+
+    assert source.provider == "NSE India"
+    assert source.reference_scope == "exchange_directory"
+    assert source.format == "nse_india_securities_available_csv"
+
+
+def test_parse_bse_india_scrips_payload_keeps_active_isin_rows_and_etfs() -> None:
+    source = MasterfileSource(
+        key="bse_india_scrips",
+        provider="BSE India",
+        description="Official BSE India scrips",
+        source_url="https://www.bseindia.com/corporates/List_Scrips.html",
+        format="bse_india_scrips_json",
+    )
+    payload = [
+        {
+            "scrip_id": "RELIANCE",
+            "Scrip_Name": "Reliance Industries Ltd",
+            "Status": "Active",
+            "Segment": "Equity",
+            "ISIN_NUMBER": "INE002A01018",
+            "Issuer_Name": "Reliance Industries Limited",
+        },
+        {
+            "scrip_id": "NIFTYIETF",
+            "Scrip_Name": "ICICI Prudential Nifty 50 ETF",
+            "Status": "Active",
+            "Segment": "Equity",
+            "ISIN_NUMBER": "INF109K012R6",
+            "Issuer_Name": "ICICI Prudential Mutual Fund",
+        },
+        {
+            "scrip_id": "DELISTED",
+            "Scrip_Name": "Delisted Co",
+            "Status": "Delisted",
+            "Segment": "Equity",
+            "ISIN_NUMBER": "INE000000000",
+        },
+        {
+            "scrip_id": "NOISIN",
+            "Scrip_Name": "No ISIN Co",
+            "Status": "Active",
+            "Segment": "Equity",
+            "ISIN_NUMBER": "",
+        },
+    ]
+
+    rows = parse_bse_india_scrips_payload(payload, source)
+
+    assert rows == [
+        {
+            "source_key": "bse_india_scrips",
+            "provider": "BSE India",
+            "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
+            "ticker": "RELIANCE",
+            "name": "Reliance Industries Ltd",
+            "exchange": "BSE_IN",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "INE002A01018",
+        },
+        {
+            "source_key": "bse_india_scrips",
+            "provider": "BSE India",
+            "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
+            "ticker": "NIFTYIETF",
+            "name": "ICICI Prudential Nifty 50 ETF",
+            "exchange": "BSE_IN",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "INF109K012R6",
+            "sector": "Equity",
+        },
+    ]
+
+
+def test_bse_india_source_is_modelled_as_official_exchange_directory() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "bse_india_scrips")
+
+    assert source.provider == "BSE India"
+    assert source.reference_scope == "exchange_directory"
+    assert source.format == "bse_india_scrips_json"
+
+
+def test_parse_hkex_securities_list_workbook_keeps_equity_reit_and_etfs() -> None:
+    source = MasterfileSource(
+        key="hkex_securities_list",
+        provider="HKEX",
+        description="Official HKEX securities list",
+        source_url="https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+        format="hkex_securities_list_xlsx",
+    )
+    rows = [
+        ["List of Securities", None, None, None, None, None],
+        ["Updated as at 14/04/2026", None, None, None, None, None],
+        ["Stock Code", "Name of Securities", "Category", "Sub-Category", "ISIN", "Trading Currency"],
+        ["00005", "HSBC HOLDINGS", "Equity", "Equity Securities (Main Board)", "GB0005405286", "HKD"],
+        ["00405", "YUEXIU REIT", "Real Estate Investment Trusts", "", "HK0405033157", "HKD"],
+        ["07500", "FI2 CSOP HSCEI", "Exchange Traded Products", "Leveraged and Inverse", "HK0000345782", "HKD"],
+        ["02527", "PTT N3508", "Debt Securities", "", "USY71548AX22", "USD"],
+        ["09999", "NO ISIN", "Equity", "Equity Securities (Main Board)", "", "HKD"],
+    ]
+    buffer = io.BytesIO()
+    pd.DataFrame(rows).to_excel(buffer, index=False, header=False)
+
+    parsed_rows = parse_hkex_securities_list_workbook(buffer.getvalue(), source)
+
+    assert parsed_rows == [
+        {
+            "source_key": "hkex_securities_list",
+            "provider": "HKEX",
+            "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+            "ticker": "00005",
+            "name": "HSBC HOLDINGS",
+            "exchange": "HKEX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "GB0005405286",
+        },
+        {
+            "source_key": "hkex_securities_list",
+            "provider": "HKEX",
+            "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+            "ticker": "00405",
+            "name": "YUEXIU REIT",
+            "exchange": "HKEX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "HK0405033157",
+            "sector": "Real Estate",
+        },
+        {
+            "source_key": "hkex_securities_list",
+            "provider": "HKEX",
+            "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+            "ticker": "07500",
+            "name": "FI2 CSOP HSCEI",
+            "exchange": "HKEX",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "HK0000345782",
+            "sector": "Leveraged/Inverse",
+        },
+    ]
+
+
+def test_hkex_securities_list_source_is_modeled_as_official_exchange_directory() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "hkex_securities_list")
+
+    assert source.provider == "HKEX"
+    assert source.reference_scope == "exchange_directory"
+    assert source.format == "hkex_securities_list_xlsx"
+
+
+def test_parse_sgx_securities_prices_payload_keeps_stock_reit_adr_and_etfs() -> None:
+    source = MasterfileSource(
+        key="sgx_securities_prices",
+        provider="SGX",
+        description="Official SGX securities prices",
+        source_url="https://www.sgx.com/securities/securities-prices",
+        format="sgx_securities_prices_json",
+    )
+    payload = {
+        "data": {
+            "prices": [
+                {"nc": "LVR", "n": "17LIVE GROUP", "type": "stocks"},
+                {"nc": "A35", "n": "ABF SG BOND ETF", "type": "etfs"},
+                {"nc": "C38U", "n": "CapLand IntCom T", "type": "reits"},
+                {"nc": "S27", "n": "SIA ADR", "type": "adrs"},
+                {"nc": "VT2W", "n": "17LIVE W281207", "type": "companywarrants"},
+                {"nc": "", "n": "Missing Code", "type": "stocks"},
+            ]
+        }
+    }
+
+    rows = parse_sgx_securities_prices_payload(payload, source)
+
+    assert rows == [
+        {
+            "source_key": "sgx_securities_prices",
+            "provider": "SGX",
+            "source_url": "https://api.sgx.com/securities/v1.1",
+            "ticker": "LVR",
+            "name": "17LIVE GROUP",
+            "exchange": "SGX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "sgx_securities_prices",
+            "provider": "SGX",
+            "source_url": "https://api.sgx.com/securities/v1.1",
+            "ticker": "A35",
+            "name": "ABF SG BOND ETF",
+            "exchange": "SGX",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "sector": "Fixed Income",
+        },
+        {
+            "source_key": "sgx_securities_prices",
+            "provider": "SGX",
+            "source_url": "https://api.sgx.com/securities/v1.1",
+            "ticker": "C38U",
+            "name": "CapLand IntCom T",
+            "exchange": "SGX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "sector": "Real Estate",
+        },
+        {
+            "source_key": "sgx_securities_prices",
+            "provider": "SGX",
+            "source_url": "https://api.sgx.com/securities/v1.1",
+            "ticker": "S27",
+            "name": "SIA ADR",
+            "exchange": "SGX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_sgx_securities_prices_source_is_modeled_as_official_exchange_directory() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "sgx_securities_prices")
+
+    assert source.provider == "SGX"
+    assert source.reference_scope == "exchange_directory"
+    assert source.format == "sgx_securities_prices_json"
+
+
+def test_parse_dfm_company_profile_payloads_keeps_dfm_stock_reit_and_etfs() -> None:
+    source = MasterfileSource(
+        key="dfm_listed_securities",
+        provider="DFM",
+        description="Official DFM listed securities",
+        source_url="https://www.dfm.ae/issuers/listed-securities/company-profile-page",
+        format="dfm_listed_securities_json",
+    )
+    profiles = [
+        {
+            "Symbol": "DFM",
+            "Market": "DFM",
+            "ISIN": "AED000901010",
+            "Sector": "Financials",
+            "InstrumentType": "equities",
+            "FullName": "Dubai Financial Market PJSC",
+        },
+        {
+            "Symbol": "AMCREIT",
+            "Market": "DFM",
+            "ISIN": "AEA003630067",
+            "Sector": "Real Estate Investment Trust",
+            "InstrumentType": "realEstateInvestmentTrust",
+            "FullName": "Al Mal Capital REIT",
+        },
+        {
+            "Symbol": "CHAE",
+            "Market": "DFM",
+            "ISIN": "IE00BKDMN692",
+            "Sector": "Exchange Traded Funds",
+            "InstrumentType": "exchangeTradedFunds",
+            "FullName": "Chimera S&P UAE UCITS ETF - Share Class A - Accumulating",
+        },
+        {
+            "Symbol": "ABTC",
+            "Market": "NASDAQ Dubai",
+            "ISIN": "CH0454664001",
+            "Sector": "",
+            "InstrumentType": "funds",
+            "FullName": "21Shares Bitcoin ETP",
+        },
+        {
+            "Symbol": "NOISIN",
+            "Market": "DFM",
+            "ISIN": "",
+            "Sector": "Financials",
+            "InstrumentType": "equities",
+            "FullName": "No ISIN PJSC",
+        },
+    ]
+
+    rows = parse_dfm_company_profile_payloads(profiles, source)
+
+    assert rows == [
+        {
+            "source_key": "dfm_listed_securities",
+            "provider": "DFM",
+            "source_url": "https://api2.dfm.ae/web/widgets/v1/data",
+            "ticker": "DFM",
+            "name": "Dubai Financial Market PJSC",
+            "exchange": "DFM",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "AED000901010",
+            "sector": "Financials",
+        },
+        {
+            "source_key": "dfm_listed_securities",
+            "provider": "DFM",
+            "source_url": "https://api2.dfm.ae/web/widgets/v1/data",
+            "ticker": "AMCREIT",
+            "name": "Al Mal Capital REIT",
+            "exchange": "DFM",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "AEA003630067",
+            "sector": "Real Estate",
+        },
+        {
+            "source_key": "dfm_listed_securities",
+            "provider": "DFM",
+            "source_url": "https://api2.dfm.ae/web/widgets/v1/data",
+            "ticker": "CHAE",
+            "name": "Chimera S&P UAE UCITS ETF - Share Class A - Accumulating",
+            "exchange": "DFM",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "IE00BKDMN692",
+            "sector": "Equity",
+        },
+    ]
+
+
+def test_dfm_listed_securities_source_is_modeled_as_official_exchange_directory() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "dfm_listed_securities")
+
+    assert source.provider == "DFM"
+    assert source.reference_scope == "exchange_directory"
+    assert source.format == "dfm_listed_securities_json"
+
+
+def test_parse_boursa_kuwait_legacy_mix_payload_keeps_regular_and_reit_rows() -> None:
+    source = MasterfileSource(
+        key="boursa_kuwait_stocks",
+        provider="Boursa Kuwait",
+        description="Official Boursa Kuwait market data",
+        source_url="https://www.boursakuwait.com.kw/en/securities/main-market/overview---main-market/",
+        format="boursa_kuwait_legacy_mix_json",
+    )
+    payload = {
+        "HED": {
+            "TD": (
+                "EXCHANGE|SYMBOL|INSTRUMENT_TYPE|SYMBOL_DESCRIPTION|SECTOR|CURRENCY|SHRT_DSC|"
+                "DECIMAL_PLACES|MARKET_ID|LOT_SIZE|UNIT|INDEX_TYPE|COMPANY_CODE|CORRECTION_FACTOR|"
+                "EQUITY_SYMBOL|CFID|SERIAL|TI|RIC_CODE|DS|ISIN_CODE|LASTTRADABLEDATE|SOURCE_SHORT_ID|"
+                "STRIKE_PRICE|EXP_DATE|OPI|AST|TSZ|TCL1|TCL2|TCL3|FSSD|FSED|SSSD|SSED|MDATE|TC|"
+                "FSSH|FSEH|SSSH|SSEH|BBGID|GROUP_SECTORS|LOT_SIZE_DEC|CONTRACT_SIZE|LISTING_DATE"
+            ),
+            "SCTD": "SECTOR|SECT_DSC|SORT_KEY",
+        },
+        "DAT": {
+            "SCTD": [
+                "24|Banking|",
+                "22|Telecommunications|",
+            ],
+            "TD": [
+                "KSE|NBK`B|0|NATIONAL BANK OF KUWAIT|24|KWD|NBK|-1|B|0|||101|10||||||NBK|KW0EQ0100010||||||||||||||||||||||||",
+                "KSE|NBK`R|0|National Bank of Kuwait|24|KWD|NBK|-1|P|1|||101|10||||||NBK|KW0EQ0100010||||||||||||||||||||||||",
+                "KSE|OOREDOO`R|0|National Mobile Telecommunications|22|KWD|OOREDOO|-1|M|1|||613|10||||||OOREDOO|KW0EQ0601058||||||||||||||||||||||||",
+                "KSE|BAITAKREIT`F|65|KFH Capital REIT||KWD|BAITAKREIT|-1|T|1|||949|10||||||BAITAKREIT|KW0EQ0909493||||||||||||||||||||||||",
+                "KSE|BADISIN`R|0|Bad ISIN|24|KWD|BAD|-1|M|1|||999|10||||||BAD|BAD||||||||||||||||||||||||",
+            ],
+        },
+    }
+
+    rows = parse_boursa_kuwait_legacy_mix_payload(payload, source)
+
+    assert rows == [
+        {
+            "source_key": "boursa_kuwait_stocks",
+            "provider": "Boursa Kuwait",
+            "source_url": "https://www.boursakuwait.com.kw/data-api/legacy-mix-services",
+            "ticker": "NBK",
+            "name": "National Bank of Kuwait",
+            "exchange": "BK",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "KW0EQ0100010",
+            "sector": "Financials",
+        },
+        {
+            "source_key": "boursa_kuwait_stocks",
+            "provider": "Boursa Kuwait",
+            "source_url": "https://www.boursakuwait.com.kw/data-api/legacy-mix-services",
+            "ticker": "OOREDOO",
+            "name": "National Mobile Telecommunications",
+            "exchange": "BK",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "KW0EQ0601058",
+            "sector": "Communication Services",
+        },
+        {
+            "source_key": "boursa_kuwait_stocks",
+            "provider": "Boursa Kuwait",
+            "source_url": "https://www.boursakuwait.com.kw/data-api/legacy-mix-services",
+            "ticker": "BAITAKREIT",
+            "name": "KFH Capital REIT",
+            "exchange": "BK",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "KW0EQ0909493",
+            "sector": "Real Estate",
+        },
+    ]
+
+
+def test_boursa_kuwait_stocks_source_is_modeled_as_official_exchange_directory() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "boursa_kuwait_stocks")
+
+    assert source.provider == "Boursa Kuwait"
+    assert source.reference_scope == "exchange_directory"
+    assert source.format == "boursa_kuwait_legacy_mix_json"
+
+
+def test_parse_bist_kap_mkk_listed_securities_payload_joins_kap_stocks_to_mkk_isins() -> None:
+    source = MasterfileSource(
+        key="bist_kap_mkk_listed_securities",
+        provider="KAP/MKK",
+        description="Official BIST KAP/MKK listed securities",
+        source_url="https://www.kap.org.tr/tr/bist-sirketler",
+        format="bist_kap_mkk_listed_securities_json",
+    )
+    kap_content = (
+        '"mkkMemberOid":"cid-ak","kapMemberTitle":"AKBANK T.A.Ş.",'
+        '"relatedMemberTitle":"","stockCode":"AKBNK","cityName":"İSTANBUL"'
+        '"mkkMemberOid":"cid-as","kapMemberTitle":"ASELSAN ELEKTRONİK SANAYİ VE TİCARET A.Ş.",'
+        '"relatedMemberTitle":"","stockCode":"ASELS","cityName":"ANKARA"'
+    )
+    kap_html = f"<html><script>self.__next_f.push([1,{json.dumps(kap_content)}])</script></html>"
+    mkk_payload = [
+        {
+            "borsaKodu": "AKBNK",
+            "aciklama": "AKBANK T.A.Ş.",
+            "isinKodu": "TRAAKBNK91N6",
+            "kategori": "HS",
+            "takasKodu": "ESKİ",
+        },
+        {
+            "borsaKodu": "ASELS",
+            "aciklama": "ASELSAN ELEKTRONİK SANAYİ VE TİCARET A.Ş. İMTİYAZLI",
+            "isinKodu": "TREASLS00018",
+            "kategori": "HS",
+            "takasKodu": "İMTİYAZ",
+        },
+        {
+            "borsaKodu": "ASELS",
+            "aciklama": "ASELSAN ELEKTRONİK SANAYİ VE TİCARET A.Ş.",
+            "isinKodu": "TRAASELS91H2",
+            "kategori": "HS",
+            "takasKodu": "ESKİ",
+        },
+        {
+            "borsaKodu": "GLDTR",
+            "aciklama": "QNB FİNANS PORTFÖY ALTIN KATILIM BORSA YATIRIM FONU",
+            "isinKodu": "TRYFNBK00055",
+            "kategori": "BYF",
+            "takasKodu": "BORSA YATIRIM FONU",
+        },
+        {
+            "borsaKodu": "ANRUV",
+            "aciklama": "AKBNKP3004260098.00GRM00000.1NA",
+            "isinKodu": "TRWGRNM19133",
+            "kategori": "VR",
+            "takasKodu": "VARANT",
+        },
+    ]
+
+    assert parse_bist_kap_company_list(kap_html) == {
+        "AKBNK": "AKBANK T.A.Ş.",
+        "ASELS": "ASELSAN ELEKTRONİK SANAYİ VE TİCARET A.Ş.",
+    }
+    rows = parse_bist_kap_mkk_listed_securities_payload(kap_html, mkk_payload, source)
+
+    assert rows == [
+        {
+            "source_key": "bist_kap_mkk_listed_securities",
+            "provider": "KAP/MKK",
+            "source_url": "https://www.kap.org.tr/tr/bist-sirketler",
+            "ticker": "AKBNK",
+            "name": "AKBANK T.A.Ş.",
+            "exchange": "BIST",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "TRAAKBNK91N6",
+        },
+        {
+            "source_key": "bist_kap_mkk_listed_securities",
+            "provider": "KAP/MKK",
+            "source_url": "https://www.kap.org.tr/tr/bist-sirketler",
+            "ticker": "ASELS",
+            "name": "ASELSAN ELEKTRONİK SANAYİ VE TİCARET A.Ş.",
+            "exchange": "BIST",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "TRAASELS91H2",
+        },
+        {
+            "source_key": "bist_kap_mkk_listed_securities",
+            "provider": "KAP/MKK",
+            "source_url": "https://www.mkk.com.tr/api/getSecurities",
+            "ticker": "GLDTR",
+            "name": "QNB FİNANS PORTFÖY ALTIN KATILIM BORSA YATIRIM FONU",
+            "exchange": "BIST",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "TRYFNBK00055",
+            "sector": "Commodity",
+        },
+    ]
+
+
+def test_bist_kap_mkk_listed_securities_source_is_modeled_as_official_exchange_directory() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "bist_kap_mkk_listed_securities")
+
+    assert source.provider == "KAP/MKK"
+    assert source.reference_scope == "exchange_directory"
+    assert source.format == "bist_kap_mkk_listed_securities_json"
+
+
+def test_parse_bahrain_bourse_isin_codes_html_keeps_local_equities_only() -> None:
+    source = MasterfileSource(
+        key="bahrain_bourse_listed_companies",
+        provider="Bahrain Bourse",
+        description="Official Bahrain Bourse ISIN codes",
+        source_url="https://bahrainbourse.com/en/Bahrain%20Clear/ISINCodes",
+        format="bahrain_bourse_isin_codes_html",
+    )
+    html = """
+        <table>
+            <tr><th>BHB Company Symbol</th><th>ISIN</th><th>Issuer Name</th><th>Issue Description</th><th>CFI</th><th>LEI</th><th>FISN</th></tr>
+            <tr><td>Equities</td></tr>
+            <tr><td>ABC</td><td>BH0008794115</td><td>Arab Banking Corporation B.S.C.</td><td>Common Share</td><td>ESVUFR</td><td></td><td>ABC/Sh USD 10</td></tr>
+            <tr><td>EBRIT</td><td>BH0005158K14</td><td>Eskan Bank Realty Income Trust</td><td>Mutual Fund</td><td>CBXIXX</td><td></td><td>Eskan Bk REIT/Sh BHD 1</td></tr>
+            <tr><td>Equities (Non Bahrain Companies)</td></tr>
+            <tr><td>KFH</td><td>KW0EQ0100085</td><td>Kuwait Finance House K.S.C.P.</td><td>Common Share</td><td>ESVUFR</td><td></td><td>KFH/Sh KWD 0.1</td></tr>
+            <tr><td>Bahrain Investment Market (BIM)</td></tr>
+            <tr><td>HOPE</td><td>BH0003538822</td><td>HOPE VENTURES HOLDING B.S.C (c)</td><td>Common Share</td><td>ESVUFR</td><td></td><td>HOPE/Sh BHD 0.1</td></tr>
+            <tr><td>Bonds &amp; Sukuk</td></tr>
+            <tr><td>GDEV22.BND</td><td>BH0006FH0881</td><td>Government Development Bond - Issue 22</td><td>Government Bond</td><td>DBVUFR</td><td></td><td>Govt Bond</td></tr>
+        </table>
+    """
+
+    rows = parse_bahrain_bourse_isin_codes_html(html, source)
+
+    assert rows == [
+        {
+            "source_key": "bahrain_bourse_listed_companies",
+            "provider": "Bahrain Bourse",
+            "source_url": "https://bahrainbourse.com/en/Bahrain%20Clear/ISINCodes",
+            "ticker": "ABC",
+            "name": "Arab Banking Corporation B.S.C.",
+            "exchange": "BHB",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "BH0008794115",
+        },
+        {
+            "source_key": "bahrain_bourse_listed_companies",
+            "provider": "Bahrain Bourse",
+            "source_url": "https://bahrainbourse.com/en/Bahrain%20Clear/ISINCodes",
+            "ticker": "EBRIT",
+            "name": "Eskan Bank Realty Income Trust",
+            "exchange": "BHB",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "BH0005158K14",
+            "sector": "Real Estate",
+        },
+        {
+            "source_key": "bahrain_bourse_listed_companies",
+            "provider": "Bahrain Bourse",
+            "source_url": "https://bahrainbourse.com/en/Bahrain%20Clear/ISINCodes",
+            "ticker": "HOPE",
+            "name": "HOPE VENTURES HOLDING B.S.C (c)",
+            "exchange": "BHB",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "BH0003538822",
+        },
+    ]
+
+
+def test_bahrain_bourse_listed_companies_source_is_modeled_as_official_exchange_directory() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "bahrain_bourse_listed_companies")
+
+    assert source.provider == "Bahrain Bourse"
+    assert source.reference_scope == "exchange_directory"
+    assert source.format == "bahrain_bourse_isin_codes_html"
+
+
+def test_parse_tadawul_securities_payload_filters_active_stocks_and_funds() -> None:
+    source = MasterfileSource(
+        key="tadawul_main_market_watch",
+        provider="Saudi Exchange",
+        description="Official Saudi Exchange securities",
+        source_url="https://www.saudiexchange.sa/wps/portal/tadawul/market-participants/issuers/issuers-directory",
+        format="tadawul_securities_json",
+    )
+    issuer_directory_html = """
+        <script>
+        var issuers = [
+          { company: "2010", companyDisplay: "SABIC", price: "1",
+            link: "/wps/portal/saudiexchange/hidden/company-profile-main/?companySymbol=2010#chart_tab2" },
+          { company: "9505", companyDisplay: "Arab Sea", price: "1",
+            link: "/wps/portal/saudiexchange/hidden/company-profile-nomu-parallel/?companySymbol=9505#chart_tab2" },
+          { company: "4700", companyDisplay: "Alkhabeer Income", price: "1",
+            link: "/wps/portal/saudiexchange/hidden/company-profile-main/?companySymbol=4700#chart_tab2" }
+        ];
+        </script>
+    """
+    search_payload = [
+        {
+            "symbol": "2010",
+            "tradingNameEn": "SABIC",
+            "companyNameEN": "Saudi Basic Industries Corp.",
+            "market_type": "M",
+            "isin": "SA0007879121",
+        },
+        {
+            "symbol": "9505",
+            "tradingNameEn": "Arab Sea",
+            "companyNameEN": "Arab Sea Information Systems Co.",
+            "market_type": "S",
+            "isin": "SA14TG012N13",
+        },
+        {
+            "symbol": "4330",
+            "tradingNameEn": "Riyad REIT",
+            "companyNameEN": "Riyad REIT Fund",
+            "market_type": "M",
+            "isin": "SA14GG523Q50",
+        },
+        {
+            "symbol": "9405",
+            "tradingNameEn": "Albilad Gold ETF",
+            "companyNameEN": "Albilad Gold ETF",
+            "market_type": "E",
+            "isin": "SA000A0T0LJ8",
+        },
+        {
+            "symbol": "4700",
+            "tradingNameEn": "Alkhabeer Diversified Income",
+            "companyNameEN": "Alkhabeer Diversified Income Traded Fund",
+            "market_type": "C",
+            "isin": "SA1590D1RLL8",
+        },
+        {
+            "symbol": "5302",
+            "tradingNameEn": "Sukuk 2030",
+            "companyNameEN": "Government Sukuk",
+            "market_type": "B",
+            "isin": "SA000A0T0LJ8",
+        },
+        {
+            "symbol": "ABCD",
+            "tradingNameEn": "Ignored Option",
+            "companyNameEN": "Ignored Option",
+            "market_type": "D",
+            "isin": "",
+        },
+    ]
+
+    assert parse_tadawul_active_symbols(issuer_directory_html) == {"2010", "9505", "4700"}
+    rows = parse_tadawul_securities_payload(issuer_directory_html, search_payload, source)
+
+    assert rows == [
+        {
+            "source_key": "tadawul_main_market_watch",
+            "provider": "Saudi Exchange",
+            "source_url": "https://www.saudiexchange.sa/tadawul.eportal.theme.helper/ThemeSearchUtilityServlet",
+            "ticker": "2010",
+            "name": "SABIC",
+            "exchange": "TADAWUL",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "SA0007879121",
+        },
+        {
+            "source_key": "tadawul_main_market_watch",
+            "provider": "Saudi Exchange",
+            "source_url": "https://www.saudiexchange.sa/tadawul.eportal.theme.helper/ThemeSearchUtilityServlet",
+            "ticker": "9505",
+            "name": "Arab Sea",
+            "exchange": "TADAWUL",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "SA14TG012N13",
+        },
+        {
+            "source_key": "tadawul_main_market_watch",
+            "provider": "Saudi Exchange",
+            "source_url": "https://www.saudiexchange.sa/tadawul.eportal.theme.helper/ThemeSearchUtilityServlet",
+            "ticker": "9405",
+            "name": "Albilad Gold ETF",
+            "exchange": "TADAWUL",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "SA000A0T0LJ8",
+            "sector": "Commodity",
+        },
+        {
+            "source_key": "tadawul_main_market_watch",
+            "provider": "Saudi Exchange",
+            "source_url": "https://www.saudiexchange.sa/tadawul.eportal.theme.helper/ThemeSearchUtilityServlet",
+            "ticker": "4700",
+            "name": "Alkhabeer Diversified Income",
+            "exchange": "TADAWUL",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "SA1590D1RLL8",
+            "sector": "Multi-Asset",
+        },
+    ]
+
+
+def test_tadawul_main_market_watch_source_is_modeled_as_official_exchange_directory() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "tadawul_main_market_watch")
+
+    assert source.provider == "Saudi Exchange"
+    assert source.reference_scope == "exchange_directory"
+    assert source.format == "tadawul_securities_json"
+
+
+def test_parse_adx_market_watch_payloads_keeps_primary_equities_growth_and_etfs() -> None:
+    source = MasterfileSource(
+        key="adx_market_watch",
+        provider="ADX",
+        description="ADX market watch",
+        source_url="https://www.adx.ae/english/pages/marketwatch.aspx",
+        format="adx_market_watch_json",
+    )
+    issuers_payload = {
+        "response": {
+            "issuers": [
+                {
+                    "tradingCode": "ADAVIATION",
+                    "nameEnglish": "Abu Dhabi Aviation Co",
+                    "isin": "AEA001001014",
+                    "sectorNameArabic": "Consumer Discretionary",
+                    "status": "L",
+                },
+                {
+                    "tradingCode": "ANAN",
+                    "nameEnglish": "ANAN INVESTMENT HOLDING P.J.S.C",
+                    "isin": "AEW000201015",
+                    "sectorNameArabic": "Financials",
+                    "status": "L",
+                },
+                {
+                    "tradingCode": "SUKUK",
+                    "nameEnglish": "Chimera Umbrella Fund - Chimera JP Morgan Global Sukuk",
+                    "isin": "AEC01443C244",
+                    "status": "L",
+                },
+                {
+                    "tradingCode": "GFH",
+                    "nameEnglish": "GFH Financial Group B.S.C",
+                    "isin": "BH000A0CAQK6",
+                    "sectorNameArabic": "Financials",
+                    "status": "L",
+                },
+            ]
+        }
+    }
+    main_market_payload = {
+        "response": {
+            "results": [
+                {
+                    "companySymbol": "ADAVIATION",
+                    "companyISIN": "AEA001001014",
+                    "companyID": "Abu Dhabi Aviation Co",
+                    "boardId": "EQTY",
+                },
+                {
+                    "companySymbol": "E7",
+                    "companyISIN": "AEE01073A225",
+                    "companyID": "E7 Group PJSC",
+                    "boardId": "EQTY",
+                },
+                {
+                    "companySymbol": "GFH",
+                    "companyISIN": "BH000A0CAQK6",
+                    "companyID": "GFH Financial Group B.S.C",
+                    "boardId": "DUAL",
+                },
+                {
+                    "companySymbol": "E7W",
+                    "companyISIN": "AER01074A228",
+                    "companyID": "E7 Group PJSC Warrants",
+                    "boardId": "SPCW",
+                },
+            ]
+        }
+    }
+    growth_market_payload = {
+        "response": {
+            "results": [
+                {
+                    "companySymbol": "ANAN",
+                    "companyISIN": "AEW000201015",
+                    "companyID": "ANAN INVESTMENT HOLDING P.J.S.C",
+                    "boardId": "PRCN",
+                }
+            ]
+        }
+    }
+    etf_payload = {
+        "response": {
+            "results": [
+                {
+                    "companySymbol": "SUKUK",
+                    "companyISIN": "AEC01443C244",
+                    "companyID": "Chimera Umbrella Fund - Chimera JP Morgan Global Sukuk",
+                    "boardId": "FUND",
+                }
+            ]
+        }
+    }
+    symbol_sector_payload = {
+        "response": {
+            "companies": {
+                "company": [
+                    {"symbol": "ADAVIATION", "sectorNameEn": "Consumer Discretionary"},
+                    {"symbol": "ANAN", "sectorNameEn": "Industrial"},
+                ]
+            }
+        }
+    }
+
+    rows = parse_adx_market_watch_payloads(
+        issuers_payload,
+        main_market_payload,
+        growth_market_payload,
+        etf_payload,
+        symbol_sector_payload,
+        source,
+    )
+
+    assert rows == [
+        {
+            "source_key": "adx_market_watch",
+            "provider": "ADX",
+            "source_url": "https://www.adx.ae/english/pages/marketwatch.aspx",
+            "ticker": "ADAVIATION",
+            "name": "Abu Dhabi Aviation Co",
+            "exchange": "ADX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "AEA001001014",
+            "sector": "Consumer Discretionary",
+        },
+        {
+            "source_key": "adx_market_watch",
+            "provider": "ADX",
+            "source_url": "https://www.adx.ae/english/pages/marketwatch.aspx",
+            "ticker": "E7",
+            "name": "E7 Group PJSC",
+            "exchange": "ADX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "AEE01073A225",
+        },
+        {
+            "source_key": "adx_market_watch",
+            "provider": "ADX",
+            "source_url": "https://www.adx.ae/english/pages/marketwatch.aspx",
+            "ticker": "ANAN",
+            "name": "ANAN INVESTMENT HOLDING P.J.S.C",
+            "exchange": "ADX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "AEW000201015",
+            "sector": "Industrials",
+        },
+        {
+            "source_key": "adx_market_watch",
+            "provider": "ADX",
+            "source_url": "https://www.adx.ae/english/pages/marketwatch.aspx",
+            "ticker": "SUKUK",
+            "name": "Chimera Umbrella Fund - Chimera JP Morgan Global Sukuk",
+            "exchange": "ADX",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "AEC01443C244",
+            "sector": "Fixed Income",
+        },
+    ]
+
+
+def test_adx_market_watch_source_is_modeled_as_official_exchange_directory() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "adx_market_watch")
+
+    assert source.provider == "ADX"
+    assert source.reference_scope == "exchange_directory"
+    assert source.format == "adx_market_watch_json"
+
+
+def test_parse_qse_market_watch_payload_keeps_stocks_and_etfs_only() -> None:
+    source = MasterfileSource(
+        key="qse_market_watch",
+        provider="QSE",
+        description="Official QSE market watch",
+        source_url="https://www.qe.com.qa/wp/mw/data/MarketWatch.txt",
+        format="qse_market_watch_json",
+    )
+    payload = {
+        "rows": [
+            {
+                "Symbol": "QNBK",
+                "CompanyEN": "QNB",
+                "CompType": "COMP",
+                "SectorEN": "Banks & Financial Services",
+            },
+            {
+                "Symbol": "QETF",
+                "CompanyEN": "QE Index ETF",
+                "CompType": "ETF",
+                "SectorEN": "ETF",
+            },
+            {
+                "Symbol": "TQES",
+                "CompanyEN": "Techno Q",
+                "CompType": "V",
+                "SectorEN": "QVM",
+            },
+            {
+                "Symbol": "GA85",
+                "CompanyEN": "Bond 4.30% 240830",
+                "CompType": "BOND",
+                "SectorEN": "Government Bonds",
+            },
+        ]
+    }
+
+    rows = parse_qse_market_watch_payload(payload, source)
+
+    assert rows == [
+        {
+            "source_key": "qse_market_watch",
+            "provider": "QSE",
+            "source_url": "https://www.qe.com.qa/wp/mw/data/MarketWatch.txt",
+            "ticker": "QNBK",
+            "name": "QNB",
+            "exchange": "QSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "sector": "Financials",
+        },
+        {
+            "source_key": "qse_market_watch",
+            "provider": "QSE",
+            "source_url": "https://www.qe.com.qa/wp/mw/data/MarketWatch.txt",
+            "ticker": "QETF",
+            "name": "QE Index ETF",
+            "exchange": "QSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "sector": "Equity",
+        },
+        {
+            "source_key": "qse_market_watch",
+            "provider": "QSE",
+            "source_url": "https://www.qe.com.qa/wp/mw/data/MarketWatch.txt",
+            "ticker": "TQES",
+            "name": "Techno Q",
+            "exchange": "QSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_fetch_qse_market_watch_rows_uses_curl_user_agent() -> None:
+    source = MasterfileSource(
+        key="qse_market_watch",
+        provider="QSE",
+        description="Official QSE market watch",
+        source_url="https://www.qe.com.qa/wp/mw/data/MarketWatch.txt",
+        format="qse_market_watch_json",
+    )
+
+    class FakeResponse:
+        def json(self):
+            return {"rows": [{"Symbol": "ORDS", "CompanyEN": "Ooredoo", "CompType": "COMP", "SectorEN": "Telecoms"}]}
+
+        def raise_for_status(self):
+            return None
+
+    class FakeSession:
+        def __init__(self):
+            self.headers = None
+
+        def get(self, url, headers=None, timeout=None):
+            assert url == "https://www.qe.com.qa/wp/mw/data/MarketWatch.txt"
+            self.headers = headers
+            return FakeResponse()
+
+    session = FakeSession()
+
+    rows = fetch_qse_market_watch_rows(source, session=session)
+
+    assert session.headers["User-Agent"] == "curl/8.0"
+    assert rows[0]["ticker"] == "ORDS"
+    assert rows[0]["sector"] == "Communication Services"
+
+
+def test_qse_market_watch_source_is_modeled_as_official_exchange_directory() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "qse_market_watch")
+
+    assert source.provider == "QSE"
+    assert source.reference_scope == "exchange_directory"
+    assert source.format == "qse_market_watch_json"
+
+
+def test_parse_msx_companies_payload_keeps_active_stock_rows_only() -> None:
+    source = MasterfileSource(
+        key="muscat_securities_companies",
+        provider="MSX",
+        description="Official MSX companies",
+        source_url="https://www.msx.om/companies.aspx",
+        format="msx_companies_json",
+    )
+    payload = {
+        "d": [
+            {"Symbol": "CMII", "LongNameEn": "CONSTRUCTION MATERIAL INDUSTRIES", "Listed": "1", "Sector": "3", "SubSector": "11"},
+            {"Symbol": "BANK", "LongNameEn": "BANK MUSCAT", "Listed": "2", "Sector": "1", "SubSector": "1"},
+            {"Symbol": "RIGHT", "LongNameEn": "AL ANWAR HOLDING -RIGHT ISSUE", "Listed": "1", "Sector": "1", "SubSector": "1"},
+            {"Symbol": "BOND", "LongNameEn": "OMAN BOND", "Listed": "1", "Sector": "4", "SubSector": "0"},
+            {"Symbol": "OLD", "LongNameEn": "OLD COMPANY", "Listed": "3", "Sector": "3", "SubSector": "11"},
+        ]
+    }
+
+    rows = parse_msx_companies_payload(payload, source)
+
+    assert rows == [
+        {
+            "source_key": "muscat_securities_companies",
+            "provider": "MSX",
+            "source_url": "https://www.msx.om/companies.aspx",
+            "ticker": "CMII",
+            "name": "CONSTRUCTION MATERIAL INDUSTRIES",
+            "exchange": "MSX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "sector": "Materials",
+        },
+        {
+            "source_key": "muscat_securities_companies",
+            "provider": "MSX",
+            "source_url": "https://www.msx.om/companies.aspx",
+            "ticker": "BANK",
+            "name": "BANK MUSCAT",
+            "exchange": "MSX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "sector": "Financial Services",
+        },
+    ]
+
+
+def test_msx_companies_source_is_modeled_as_official_exchange_directory() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "muscat_securities_companies")
+
+    assert source.provider == "MSX"
+    assert source.reference_scope == "exchange_directory"
+    assert source.format == "msx_companies_json"
+
+
+def test_parse_nzx_instruments_next_data_payload_keeps_nzsx_stocks_and_etfs() -> None:
+    source = MasterfileSource(
+        key="nzx_instruments",
+        provider="NZX",
+        description="Official NZX instruments",
+        source_url="https://new.nzx.com/markets/NZSX",
+        format="nzx_instruments_next_data",
+    )
+    payload = {
+        "props": {
+            "pageProps": {
+                "data": {
+                    "instruments": {
+                        "activeInstruments": [
+                            {
+                                "isin": "NZAIAE0002S6",
+                                "code": "AIA",
+                                "name": "Auckland International Airport Limited Ordinary Shares",
+                                "marketType": "NZSX",
+                                "category": "SHRS",
+                                "subCategory": None,
+                                "type": "SHRS",
+                            },
+                            {
+                                "isin": "NZAGGE0006S8",
+                                "code": "AGG",
+                                "name": "Smart Global Aggregate Bond ETF Units",
+                                "marketType": "NZSX",
+                                "category": "SHRS",
+                                "subCategory": "ETF",
+                                "type": "UNIT",
+                            },
+                            {
+                                "isin": "NZAIAD0240L9",
+                                "code": "AIA240",
+                                "name": "Auckland Airport bond",
+                                "marketType": "NZDX",
+                                "category": "RGBD",
+                                "subCategory": "CORP",
+                                "type": "FRBD",
+                            },
+                        ]
+                    }
+                }
+            }
+        }
+    }
+
+    rows = parse_nzx_instruments_next_data_payload(payload, source)
+
+    assert rows == [
+        {
+            "source_key": "nzx_instruments",
+            "provider": "NZX",
+            "source_url": "https://new.nzx.com/markets/NZSX",
+            "ticker": "AIA",
+            "name": "Auckland International Airport Limited Ordinary Shares",
+            "exchange": "NZX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "NZAIAE0002S6",
+        },
+        {
+            "source_key": "nzx_instruments",
+            "provider": "NZX",
+            "source_url": "https://new.nzx.com/markets/NZSX",
+            "ticker": "AGG",
+            "name": "Smart Global Aggregate Bond ETF Units",
+            "exchange": "NZX",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "NZAGGE0006S8",
+            "sector": "Fixed Income",
+        },
+    ]
+
+
+def test_nzx_instruments_source_is_modeled_as_official_exchange_directory() -> None:
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "nzx_instruments")
+
+    assert source.provider == "NZX"
+    assert source.reference_scope == "exchange_directory"
+    assert source.format == "nzx_instruments_next_data"
 
 
 def test_fetch_source_rows_with_mode_uses_sec_cache(tmp_path, monkeypatch):

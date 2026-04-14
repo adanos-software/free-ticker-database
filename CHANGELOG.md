@@ -2,6 +2,21 @@
 
 ## [Unreleased]
 
+## [3.10.0] - 2026-04-14
+
+### Added
+
+- Added a source-inventory backlog builder (`data/reports/source_inventory_gap.*`) that reconciles official full, official partial, normalization-alias, and global-expansion candidates against the coverage report.
+- Added curated official source candidates in `data/masterfiles/source_candidates.json` so source gaps have explicit implementation status, blockers, review policy, and provenance.
+- Added official CSE Sri Lanka company-info detail coverage with 310 ISIN-bearing reference rows while keeping CSE_LK out of the core export until reliable sector taxonomy is available.
+- Added reviewed StockAnalysis metadata backfill tooling for tightly gated secondary ISIN and stock-sector fills.
+
+### Changed
+
+- Rebuilt the canonical exports to 53,446 primary tickers, 61,944 listing rows, 48,235 ISIN-covered rows, and 44,865 sector/category-covered rows.
+- Reconciled the source inventory to 0 missing current-scope sources, 0 parser todo rows, and 0 real global-expansion candidates; remaining work is field completion and taxonomy coverage.
+- Refreshed official masterfile reference coverage, completion backlog, listing history, identifier snapshots, and coverage reports against the expanded source set.
+
 ## [3.9.0] - 2026-04-13
 
 ### Changed

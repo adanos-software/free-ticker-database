@@ -175,6 +175,12 @@ def build_pipeline_commands(options: PipelineOptions) -> list[StageCommand]:
                 notes="Refresh coverage and collision metrics.",
             ),
             StageCommand(
+                name="build_source_inventory",
+                command=[py, "scripts/build_source_inventory.py"],
+                mutates_data=True,
+                notes="Refresh official source-candidate inventory and missing-source priorities.",
+            ),
+            StageCommand(
                 name="build_entry_quality_report",
                 command=[py, "scripts/build_entry_quality_report.py"],
                 mutates_data=True,

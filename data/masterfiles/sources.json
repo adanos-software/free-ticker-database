@@ -45,6 +45,15 @@
     "official": true
   },
   {
+    "key": "lse_price_explorer",
+    "provider": "LSE",
+    "description": "Official London Stock Exchange price explorer equity and ETF directory",
+    "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+    "format": "lse_price_explorer_json",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
     "key": "asx_listed_companies",
     "provider": "ASX",
     "description": "Official ASX listed companies directory",
@@ -78,6 +87,15 @@
     "source_url": "https://www.set.or.th/dat/eod/listedcompany/static/listedCompanies_en_US.xls",
     "format": "set_listed_companies_html",
     "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "set_stock_search",
+    "provider": "SET",
+    "description": "Official Stock Exchange of Thailand stock search API",
+    "source_url": "https://www.set.or.th/api/set/stock/list",
+    "format": "set_stock_search_json",
+    "reference_scope": "exchange_directory",
     "official": true
   },
   {
@@ -153,6 +171,15 @@
     "official": true
   },
   {
+    "key": "jpx_tse_stock_detail",
+    "provider": "JPX",
+    "description": "Official JPX/TSE Stock Data Search detail records with ISINs",
+    "source_url": "https://quote.jpx.co.jp/jpxhp/jcgi/wrap/qjsonp.aspx?F=ctl/stock_detail&qcode=",
+    "format": "jpx_tse_stock_detail_json",
+    "reference_scope": "security_identifier_registry_subset",
+    "official": true
+  },
+  {
     "key": "deutsche_boerse_listed_companies",
     "provider": "Deutsche Boerse",
     "description": "Official Deutsche Boerse listed companies workbook",
@@ -173,10 +200,10 @@
   {
     "key": "deutsche_boerse_xetra_all_tradable_equities",
     "provider": "Deutsche Boerse",
-    "description": "Official Deutsche Boerse Xetra all tradable instruments directory (equities subset)",
+    "description": "Official Deutsche Boerse Xetra all tradable instruments directory for shares and ETPs",
     "source_url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv",
     "format": "deutsche_boerse_xetra_all_tradable_csv",
-    "reference_scope": "listed_companies_subset",
+    "reference_scope": "exchange_directory",
     "official": true
   },
   {
@@ -185,6 +212,15 @@
     "description": "Official SIX Swiss Exchange equity issuers directory",
     "source_url": "https://www.six-group.com/sheldon/equity_issuers/v1/equity_issuers.json",
     "format": "six_equity_issuers_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "six_shares_explorer_full",
+    "provider": "SIX",
+    "description": "Official SIX FQS share and fund detail taxonomy supplement",
+    "source_url": "https://www.six-group.com/fqs/ref.json",
+    "format": "six_share_details_fqs_json",
     "reference_scope": "listed_companies_subset",
     "official": true
   },
@@ -288,11 +324,29 @@
     "official": true
   },
   {
+    "key": "bme_security_prices_directory",
+    "provider": "BME",
+    "description": "Official BME security price directory for SIBE, Floor, Latibex, MTF, and ETFs",
+    "source_url": "https://apiweb.bolsasymercados.es/Market/v1/EQ/ListedCompanies",
+    "format": "bme_security_prices_json",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
     "key": "bme_growth_prices",
     "provider": "BME Growth",
     "description": "Official BME Growth market price directory with instrument detail pages",
     "source_url": "https://www.bmegrowth.es/ing/Precios.aspx",
     "format": "bme_growth_prices_html",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "athex_sector_classification",
+    "provider": "ATHEX",
+    "description": "Official ATHEX companies sector classification PDF with ISINs",
+    "source_url": "https://www.athexgroup.gr/documents/10180/5517704/ATHEX%2BClassification%2BVer0.810%2B%28EN%29.pdf/5c49a27d-1078-4974-990b-5a5e1f278b73",
+    "format": "athex_sector_classification_pdf",
     "reference_scope": "listed_companies_subset",
     "official": true
   },
@@ -303,6 +357,348 @@
     "source_url": "https://www.bursamalaysia.com/trade/trading_resources/equities/isin",
     "format": "bursa_equity_isin_pdf",
     "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "bursa_closing_prices",
+    "provider": "Bursa Malaysia",
+    "description": "Official Bursa Malaysia closing price PDF with board and sector labels",
+    "source_url": "https://www.bursamalaysia.com/misc/missftp/securities/securities_equities_year_end_closing_prices_20250702.pdf?t=1751516082",
+    "format": "bursa_closing_prices_pdf",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "bse_bw_listed_companies",
+    "provider": "BSE Botswana",
+    "description": "Official Botswana Stock Exchange listed companies directory",
+    "source_url": "https://www.bse.co.bw/companies/",
+    "format": "bse_bw_listed_companies_html",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "bse_hu_listed_companies",
+    "provider": "Budapest Stock Exchange",
+    "description": "Official Budapest Stock Exchange embedded market-data feed for equities and BETA products",
+    "source_url": "https://www.bet.hu/oldalak/beta_piac#reszvenyek",
+    "format": "bse_hu_marketdata_html",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "egx_listed_stocks",
+    "provider": "EGX",
+    "description": "Official Egyptian Exchange listed-stocks page decoded from ASP.NET ViewState",
+    "source_url": "https://www.egx.com.eg/en/ListedStocks.aspx",
+    "format": "egx_listed_stocks_viewstate",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "bvl_issuers_directory",
+    "provider": "CAVALI",
+    "description": "Official Peruvian CSD issuer securities registry with BVL ISIN and ticker fields",
+    "source_url": "https://cavali-corporativa.screativa.com/emisores",
+    "format": "cavali_bvl_emisores_html",
+    "reference_scope": "security_lookup_subset",
+    "official": true
+  },
+  {
+    "key": "cse_ma_listed_companies",
+    "provider": "Casablanca Stock Exchange",
+    "description": "Official Casablanca Stock Exchange active equity instruments JSONAPI directory",
+    "source_url": "https://www.casablanca-bourse.com/en/marche-cash/instruments-actions",
+    "format": "cse_ma_listed_companies_json",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "cse_lk_all_security_code",
+    "provider": "CSE Sri Lanka",
+    "description": "Official Colombo Stock Exchange all-security-code API",
+    "source_url": "https://www.cse.lk/api/allSecurityCode",
+    "format": "cse_lk_all_security_code_json",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "cse_lk_company_info_summary",
+    "provider": "CSE Sri Lanka",
+    "description": "Official Colombo Stock Exchange company-info detail API with ISIN",
+    "source_url": "https://www.cse.lk/api/companyInfoSummery",
+    "format": "cse_lk_company_info_summary_json",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "dse_tz_listed_companies",
+    "provider": "DSE Tanzania",
+    "description": "Official Dar es Salaam Stock Exchange listed-company table",
+    "source_url": "https://www.dse.co.tz/listed/company/list",
+    "format": "dse_tz_listed_companies_html",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "bvc_colombia_issuers",
+    "provider": "BVC",
+    "description": "Official Bolsa de Valores de Colombia local-equity issuer API with sector labels",
+    "source_url": "https://rest.bvc.com.co/market-information/rv/lvl-3/issuer?filters[marketDataRv][type]=Local",
+    "format": "bvc_rv_issuers_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "byma_equity_details",
+    "provider": "BYMA",
+    "description": "Official Open BYMADATA equity detail endpoint for BCBA/BYMA instruments",
+    "source_url": "https://open.bymadata.com.ar/vanoms-be-core/rest/api/bymadata/free/bnown/fichatecnica/especies/general",
+    "format": "byma_equity_details_json",
+    "reference_scope": "security_lookup_subset",
+    "official": true
+  },
+  {
+    "key": "mse_mw_listed_companies",
+    "provider": "MSE Malawi",
+    "description": "Official Malawi Stock Exchange mainboard table with company links",
+    "source_url": "https://mse.co.mw/market/mainboard",
+    "format": "mse_mw_mainboard_html",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "nse_ke_listed_companies",
+    "provider": "NSE Kenya",
+    "description": "Official Nairobi Securities Exchange listed companies page with symbols, ISINs, and local sector sections",
+    "source_url": "https://www.nse.co.ke/listed-companies/",
+    "format": "nse_ke_listed_companies_html",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "nse_india_securities_available",
+    "provider": "NSE India",
+    "description": "Official NSE India securities-available CSVs for equity and ETF symbols",
+    "source_url": "https://www.nseindia.com/static/market-data/securities-available-for-trading",
+    "format": "nse_india_securities_available_csv",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "bse_india_scrips",
+    "provider": "BSE India",
+    "description": "Official BSE India active equity scrip API with ISINs",
+    "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
+    "format": "bse_india_scrips_json",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "hkex_securities_list",
+    "provider": "HKEX",
+    "description": "Official HKEX list of securities workbook with stock codes, categories, and ISINs",
+    "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+    "format": "hkex_securities_list_xlsx",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "sgx_securities_prices",
+    "provider": "SGX",
+    "description": "Official Singapore Exchange securities prices API with stock and ETF trading universe",
+    "source_url": "https://www.sgx.com/securities/securities-prices",
+    "format": "sgx_securities_prices_json",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "dfm_listed_securities",
+    "provider": "DFM",
+    "description": "Official Dubai Financial Market stocks API plus company profile lookup with ISINs and sectors",
+    "source_url": "https://www.dfm.ae/issuers/listed-securities/company-profile-page",
+    "format": "dfm_listed_securities_json",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "boursa_kuwait_stocks",
+    "provider": "Boursa Kuwait",
+    "description": "Official Boursa Kuwait market data API with listed symbols, ISINs, and sector codes",
+    "source_url": "https://www.boursakuwait.com.kw/en/securities/main-market/overview---main-market/",
+    "format": "boursa_kuwait_legacy_mix_json",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "bahrain_bourse_listed_companies",
+    "provider": "Bahrain Bourse",
+    "description": "Official Bahrain Bourse ISIN code table for local equities and Bahrain Investment Market listings",
+    "source_url": "https://bahrainbourse.com/en/Bahrain%20Clear/ISINCodes",
+    "format": "bahrain_bourse_isin_codes_html",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "bist_kap_mkk_listed_securities",
+    "provider": "KAP/MKK",
+    "description": "Official BIST listed-company list from KAP joined to official MKK ISIN security registry",
+    "source_url": "https://www.kap.org.tr/tr/bist-sirketler",
+    "format": "bist_kap_mkk_listed_securities_json",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "tadawul_main_market_watch",
+    "provider": "Saudi Exchange",
+    "description": "Official Saudi Exchange issuer directory joined to official theme search symbol/ISIN feed",
+    "source_url": "https://www.saudiexchange.sa/wps/portal/tadawul/market-participants/issuers/issuers-directory",
+    "format": "tadawul_securities_json",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "adx_market_watch",
+    "provider": "ADX",
+    "description": "Official Abu Dhabi Securities Exchange issuer directory joined to official market-watch security boards",
+    "source_url": "https://www.adx.ae/english/pages/marketwatch.aspx",
+    "format": "adx_market_watch_json",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "qse_market_watch",
+    "provider": "QSE",
+    "description": "Official Qatar Stock Exchange MarketWatch stock and ETF directory",
+    "source_url": "https://www.qe.com.qa/wp/mw/data/MarketWatch.txt",
+    "format": "qse_market_watch_json",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "muscat_securities_companies",
+    "provider": "MSX",
+    "description": "Official Muscat Stock Exchange active company directory",
+    "source_url": "https://www.msx.om/companies.aspx",
+    "format": "msx_companies_json",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "rse_listed_companies",
+    "provider": "RSE",
+    "description": "Official Rwanda Stock Exchange listed-company cards",
+    "source_url": "https://www.rse.rw/listed-compagnies",
+    "format": "rse_listed_companies_html",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "gse_listed_companies",
+    "provider": "GSE",
+    "description": "Official Ghana Stock Exchange listed-company page captured as markdown",
+    "source_url": "https://gse.com.gh/listed-companies/",
+    "format": "gse_listed_companies_markdown",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "luse_listed_companies",
+    "provider": "LuSE",
+    "description": "Official Lusaka Securities Exchange listed-company page captured as markdown",
+    "source_url": "https://www.luse.co.zm/listed-companies/",
+    "format": "luse_listed_companies_markdown",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "bolsa_santiago_instruments",
+    "provider": "Bolsa de Santiago",
+    "description": "Official Bolsa de Santiago instruments API captured through a browser session",
+    "source_url": "https://www.bolsadesantiago.com/api/RV_ResumenMercado/getInstrumentos",
+    "format": "bolsa_santiago_instruments_json",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "sem_isin",
+    "provider": "SEM",
+    "description": "Official Stock Exchange of Mauritius CDS ISIN workbook for Official Market and DEM instruments",
+    "source_url": "https://www.stockexchangeofmauritius.com/media/11318/isin.xlsx",
+    "format": "sem_isin_xlsx",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "use_ug_listed_companies",
+    "provider": "USE Uganda",
+    "description": "Official Uganda Securities Exchange market-snapshot listed-company table",
+    "source_url": "https://www.use.or.ug/market-statistics/market-snapshot",
+    "format": "use_ug_market_snapshot_html",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "nzx_instruments",
+    "provider": "NZX",
+    "description": "Official New Zealand Exchange NZSX instruments dataset from the market page Next.js payload",
+    "source_url": "https://new.nzx.com/markets/NZSX",
+    "format": "nzx_instruments_next_data",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "nasdaq_mutual_fund_quotes",
+    "provider": "Nasdaq",
+    "description": "Official Nasdaq Fund Network quote API for current NMFQS symbols",
+    "source_url": "https://api.nasdaq.com/api/screener/mutualfunds",
+    "format": "nasdaq_mutual_fund_quote_json",
+    "reference_scope": "security_lookup_subset",
+    "official": true
+  },
+  {
+    "key": "zse_zw_listed_companies",
+    "provider": "ZSE Zimbabwe",
+    "description": "Official Zimbabwe Stock Exchange listed issuer and price-sheet APIs",
+    "source_url": "https://www.zse.co.zw/listed-securities/equity",
+    "format": "zse_zw_issuers_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "bvb_shares_directory",
+    "provider": "BVB",
+    "description": "Official Bucharest Stock Exchange shares directory with ISINs across Regulated, AeRO, and SMT Intl tabs",
+    "source_url": "https://m.bvb.ro/FinancialInstruments/Markets/Shares",
+    "format": "bvb_shares_directory_html",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
+    "key": "bvb_fund_units_directory",
+    "provider": "BVB",
+    "description": "Official Bucharest Stock Exchange fund units directory gated to ETF rows",
+    "source_url": "https://m.bvb.ro/FinancialInstruments/Markets/FundUnits",
+    "format": "bvb_fund_units_directory_html",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "ngx_equities_price_list",
+    "provider": "NGX",
+    "description": "Official Nigerian Exchange equities price list API with sector labels",
+    "source_url": "https://doclib.ngxgroup.com/REST/api/statistics/equities/?market=&sector=&orderby=&pageSize=300&pageNo=0",
+    "format": "ngx_equities_price_list_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "ngx_company_profile_directory",
+    "provider": "NGX",
+    "description": "Official Nigerian Exchange company profile directory with issuer names and sectors",
+    "source_url": "https://ngxgroup.com/exchange/data/company-profile/",
+    "format": "ngx_company_profile_directory_html",
+    "reference_scope": "exchange_directory",
     "official": true
   },
   {
@@ -329,6 +725,15 @@
     "description": "Official BMV ETF and TRACS search supplement",
     "source_url": "https://www.bmv.com.mx/api/searchservice/v1",
     "format": "bmv_etf_search_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "bmv_market_data_securities",
+    "provider": "BMV",
+    "description": "Official BMV issuer market-data pages with instrument ISINs and issuer taxonomy",
+    "source_url": "https://www.bmv.com.mx/es/emisoras/estadisticas",
+    "format": "bmv_market_data_security_pages_html",
     "reference_scope": "listed_companies_subset",
     "official": true
   },
@@ -374,6 +779,15 @@
     "description": "Official Nasdaq Nordic Helsinki share search supplement for exact stock ticker gaps",
     "source_url": "https://api.nasdaq.com/api/nordic/search",
     "format": "nasdaq_nordic_helsinki_shares_search_json",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "nasdaq_nordic_iceland_shares",
+    "provider": "Nasdaq Nordic",
+    "description": "Official Nasdaq Nordic Iceland shares screener (Main Market + First North)",
+    "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+    "format": "nasdaq_nordic_iceland_shares_json",
     "reference_scope": "listed_companies_subset",
     "official": true
   },
@@ -578,10 +992,10 @@
   {
     "key": "krx_listed_companies",
     "provider": "KRX",
-    "description": "Official KRX listed company directory",
+    "description": "Official KRX listed company directory with industry taxonomy",
     "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
     "format": "krx_listed_companies_json",
-    "reference_scope": "listed_companies_subset",
+    "reference_scope": "exchange_directory",
     "official": true
   },
   {
@@ -590,7 +1004,7 @@
     "description": "Official KRX ETF issue finder",
     "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
     "format": "krx_etf_finder_json",
-    "reference_scope": "listed_companies_subset",
+    "reference_scope": "exchange_directory",
     "official": true
   },
   {
@@ -612,6 +1026,15 @@
     "official": true
   },
   {
+    "key": "psx_dps_symbols",
+    "provider": "PSX",
+    "description": "Official PSX DPS symbols directory",
+    "source_url": "https://dps.psx.com.pk/symbols",
+    "format": "psx_dps_symbols_json",
+    "reference_scope": "exchange_directory",
+    "official": true
+  },
+  {
     "key": "pse_listed_company_directory",
     "provider": "PSE",
     "description": "Official PSE listed company directory frame",
@@ -621,12 +1044,30 @@
     "official": true
   },
   {
+    "key": "pse_cz_shares_directory",
+    "provider": "Prague Stock Exchange",
+    "description": "Official Prague Stock Exchange share market directory",
+    "source_url": "https://www.pse.cz/en/market-data/shares/prime-market",
+    "format": "pse_cz_shares_directory_html",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "idx_listed_companies",
     "provider": "IDX",
     "description": "Official IDX stock list directory",
     "source_url": "https://www.idx.id/primary/StockData/GetSecuritiesStock",
     "format": "idx_listed_companies_json",
     "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "idx_company_profiles",
+    "provider": "IDX",
+    "description": "Official IDX company profiles metadata API",
+    "source_url": "https://www.idx.id/primary/ListedCompany/GetCompanyProfiles",
+    "format": "idx_company_profiles_json",
+    "reference_scope": "exchange_directory",
     "official": true
   },
   {
@@ -738,6 +1179,24 @@
     "official": true
   },
   {
+    "key": "vienna_listed_companies",
+    "provider": "Wiener Boerse",
+    "description": "Official Vienna Stock Exchange listed companies directory",
+    "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
+    "format": "vienna_listed_companies_html",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
+    "key": "zagreb_securities_directory",
+    "provider": "ZSE Croatia",
+    "description": "Official Zagreb Stock Exchange listed share directory",
+    "source_url": "https://zse.hr/en/shares/68",
+    "format": "zagreb_securities_html",
+    "reference_scope": "listed_companies_subset",
+    "official": true
+  },
+  {
     "key": "sec_company_tickers_exchange",
     "provider": "SEC",
     "description": "Official SEC company ticker to exchange mapping",
@@ -753,6 +1212,15 @@
     "source_url": "https://www.otcmarkets.com/stock/{symbol}/security",
     "format": "otc_markets_security_profile_json",
     "reference_scope": "security_lookup_subset",
+    "official": true
+  },
+  {
+    "key": "otc_markets_stock_screener",
+    "provider": "OTC Markets",
+    "description": "Official OTC Markets stock screener CSV export excluding Grey and Expert Market access",
+    "source_url": "https://www.otcmarkets.com/research/stock-screener/api/downloadCSV?greyAccess=false&expertAccess=false",
+    "format": "otc_markets_stock_screener_csv",
+    "reference_scope": "exchange_directory",
     "official": true
   }
 ]

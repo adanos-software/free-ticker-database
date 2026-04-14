@@ -6,9 +6,13 @@ import io
 import json
 import os
 import re
+import shutil
+import subprocess
+import sys
+import tempfile
 import time
 import zipfile
-from base64 import b64encode
+from base64 import b64decode, b64encode
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import asdict, dataclass
 from datetime import datetime, timedelta, timezone
@@ -16,16 +20,17 @@ from html import unescape
 from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any, Iterable
-from urllib.parse import urljoin
+from urllib.parse import quote, urljoin
+from urllib.request import Request, urlopen
 
 import pandas as pd
 import requests
 import urllib3
 
 try:
-    from scripts.rebuild_dataset import alias_matches_company, is_valid_isin, normalize_tokens
+    from scripts.rebuild_dataset import alias_matches_company, ascii_fold, is_valid_isin, normalize_sector, normalize_tokens
 except ModuleNotFoundError:  # pragma: no cover - script execution path
-    from rebuild_dataset import alias_matches_company, is_valid_isin, normalize_tokens
+    from rebuild_dataset import alias_matches_company, ascii_fold, is_valid_isin, normalize_sector, normalize_tokens
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -47,6 +52,7 @@ MASTERFILE_FIELDNAMES = [
     "reference_scope",
     "official",
     "isin",
+    "sector",
 ]
 LISTINGS_CSV = DATA_DIR / "listings.csv"
 STOCK_VERIFICATION_DIR = DATA_DIR / "stock_verification"
@@ -55,16 +61,23 @@ SEC_COMPANY_TICKERS_CACHE = MASTERFILE_CACHE_DIR / "sec_company_tickers_exchange
 LEGACY_SEC_COMPANY_TICKERS_CACHE = MASTERFILES_DIR / "sec_company_tickers_exchange.json"
 OTC_MARKETS_SECURITY_PROFILE_CACHE = MASTERFILE_CACHE_DIR / "otc_markets_security_profile.json"
 LEGACY_OTC_MARKETS_SECURITY_PROFILE_CACHE = MASTERFILES_DIR / "otc_markets_security_profile.json"
+OTC_MARKETS_STOCK_SCREENER_CACHE = MASTERFILE_CACHE_DIR / "otc_markets_stock_screener.csv"
+LEGACY_OTC_MARKETS_STOCK_SCREENER_CACHE = MASTERFILES_DIR / "otc_markets_stock_screener.csv"
 LSE_COMPANY_REPORTS_CACHE = MASTERFILE_CACHE_DIR / "lse_company_reports.json"
 LEGACY_LSE_COMPANY_REPORTS_CACHE = MASTERFILES_DIR / "lse_company_reports.json"
 LSE_INSTRUMENT_DIRECTORY_CACHE = MASTERFILE_CACHE_DIR / "lse_instrument_directory.json"
 LEGACY_LSE_INSTRUMENT_DIRECTORY_CACHE = MASTERFILES_DIR / "lse_instrument_directory.json"
 LSE_INSTRUMENT_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "lse_instrument_search.json"
 LEGACY_LSE_INSTRUMENT_SEARCH_CACHE = MASTERFILES_DIR / "lse_instrument_search.json"
+LSE_PRICE_EXPLORER_CACHE = MASTERFILE_CACHE_DIR / "lse_price_explorer.json"
+LEGACY_LSE_PRICE_EXPLORER_CACHE = MASTERFILES_DIR / "lse_price_explorer.json"
 TMX_LISTED_ISSUERS_CACHE = MASTERFILE_CACHE_DIR / "tmx_listed_issuers.xlsx"
 LEGACY_TMX_LISTED_ISSUERS_CACHE = MASTERFILES_DIR / "tmx_listed_issuers.xlsx"
 TMX_ETF_SCREENER_CACHE = MASTERFILE_CACHE_DIR / "tmx_etf_screener.json"
 LEGACY_TMX_ETF_SCREENER_CACHE = MASTERFILES_DIR / "tmx_etf_screener.json"
+JPX_TSE_STOCK_DETAIL_CACHE = MASTERFILE_CACHE_DIR / "jpx_tse_stock_detail.json"
+JPX_TSE_STOCK_DETAIL_PARTIAL_CACHE = MASTERFILE_CACHE_DIR / "jpx_tse_stock_detail.partial.json"
+LEGACY_JPX_TSE_STOCK_DETAIL_CACHE = MASTERFILES_DIR / "jpx_tse_stock_detail.json"
 TPEX_MAINBOARD_QUOTES_CACHE = MASTERFILE_CACHE_DIR / "tpex_mainboard_daily_close_quotes.json"
 LEGACY_TPEX_MAINBOARD_QUOTES_CACHE = MASTERFILES_DIR / "tpex_mainboard_daily_close_quotes.json"
 TPEX_ETF_FILTER_CACHE = MASTERFILE_CACHE_DIR / "tpex_etf_filter.json"
@@ -89,6 +102,8 @@ NASDAQ_NORDIC_HELSINKI_SHARES_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_hels
 LEGACY_NASDAQ_NORDIC_HELSINKI_SHARES_CACHE = MASTERFILES_DIR / "nasdaq_nordic_helsinki_shares.json"
 NASDAQ_NORDIC_HELSINKI_SHARES_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_helsinki_shares_search.json"
 LEGACY_NASDAQ_NORDIC_HELSINKI_SHARES_SEARCH_CACHE = MASTERFILES_DIR / "nasdaq_nordic_helsinki_shares_search.json"
+NASDAQ_NORDIC_ICELAND_SHARES_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_iceland_shares.json"
+LEGACY_NASDAQ_NORDIC_ICELAND_SHARES_CACHE = MASTERFILES_DIR / "nasdaq_nordic_iceland_shares.json"
 NASDAQ_NORDIC_COPENHAGEN_SHARES_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_copenhagen_shares_search.json"
 LEGACY_NASDAQ_NORDIC_COPENHAGEN_SHARES_SEARCH_CACHE = MASTERFILES_DIR / "nasdaq_nordic_copenhagen_shares_search.json"
 NASDAQ_NORDIC_COPENHAGEN_ETF_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_nordic_copenhagen_etf_search.json"
@@ -119,14 +134,22 @@ SET_ETF_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "set_etf_search.json"
 LEGACY_SET_ETF_SEARCH_CACHE = MASTERFILES_DIR / "set_etf_search.json"
 SET_DR_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "set_dr_search.json"
 LEGACY_SET_DR_SEARCH_CACHE = MASTERFILES_DIR / "set_dr_search.json"
+SET_STOCK_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "set_stock_search.json"
+LEGACY_SET_STOCK_SEARCH_CACHE = MASTERFILES_DIR / "set_stock_search.json"
+PSX_DPS_SYMBOLS_CACHE = MASTERFILE_CACHE_DIR / "psx_dps_symbols.json"
+LEGACY_PSX_DPS_SYMBOLS_CACHE = MASTERFILES_DIR / "psx_dps_symbols.json"
 BMV_STOCK_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "bmv_stock_search.json"
 LEGACY_BMV_STOCK_SEARCH_CACHE = MASTERFILES_DIR / "bmv_stock_search.json"
 BMV_CAPITAL_TRUST_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "bmv_capital_trust_search.json"
 LEGACY_BMV_CAPITAL_TRUST_SEARCH_CACHE = MASTERFILES_DIR / "bmv_capital_trust_search.json"
 BMV_ETF_SEARCH_CACHE = MASTERFILE_CACHE_DIR / "bmv_etf_search.json"
 LEGACY_BMV_ETF_SEARCH_CACHE = MASTERFILES_DIR / "bmv_etf_search.json"
+BMV_MARKET_DATA_SECURITIES_CACHE = MASTERFILE_CACHE_DIR / "bmv_market_data_securities.json"
+LEGACY_BMV_MARKET_DATA_SECURITIES_CACHE = MASTERFILES_DIR / "bmv_market_data_securities.json"
 BMV_ISSUER_DIRECTORY_CACHE = MASTERFILE_CACHE_DIR / "bmv_issuer_directory.json"
 LEGACY_BMV_ISSUER_DIRECTORY_CACHE = MASTERFILES_DIR / "bmv_issuer_directory.json"
+SIX_SHARE_DETAILS_FQS_CACHE = MASTERFILE_CACHE_DIR / "six_share_details_fqs.json"
+LEGACY_SIX_SHARE_DETAILS_FQS_CACHE = MASTERFILES_DIR / "six_share_details_fqs.json"
 BME_LISTED_COMPANIES_CACHE = MASTERFILE_CACHE_DIR / "bme_listed_companies.json"
 LEGACY_BME_LISTED_COMPANIES_CACHE = MASTERFILES_DIR / "bme_listed_companies.json"
 BME_ETF_LIST_CACHE = MASTERFILE_CACHE_DIR / "bme_etf_list.json"
@@ -135,16 +158,104 @@ BME_LISTED_VALUES_CACHE = MASTERFILE_CACHE_DIR / "bme_listed_values.json"
 LEGACY_BME_LISTED_VALUES_CACHE = MASTERFILES_DIR / "bme_listed_values.json"
 BME_LISTED_VALUES_PDF_CACHE = MASTERFILE_CACHE_DIR / "bme_listed_values.pdf"
 LEGACY_BME_LISTED_VALUES_PDF_CACHE = MASTERFILES_DIR / "bme_listed_values.pdf"
+BME_SECURITY_PRICES_CACHE = MASTERFILE_CACHE_DIR / "bme_security_prices_directory.json"
+LEGACY_BME_SECURITY_PRICES_CACHE = MASTERFILES_DIR / "bme_security_prices_directory.json"
 BME_GROWTH_PRICES_CACHE = MASTERFILE_CACHE_DIR / "bme_growth_prices.json"
 LEGACY_BME_GROWTH_PRICES_CACHE = MASTERFILES_DIR / "bme_growth_prices.json"
+ATHEX_CLASSIFICATION_CACHE = MASTERFILE_CACHE_DIR / "athex_sector_classification.json"
+LEGACY_ATHEX_CLASSIFICATION_CACHE = MASTERFILES_DIR / "athex_sector_classification.json"
+ATHEX_CLASSIFICATION_PDF_CACHE = MASTERFILE_CACHE_DIR / "athex_sector_classification.pdf"
+LEGACY_ATHEX_CLASSIFICATION_PDF_CACHE = MASTERFILES_DIR / "athex_sector_classification.pdf"
 BURSA_EQUITY_ISIN_CACHE = MASTERFILE_CACHE_DIR / "bursa_equity_isin.json"
 LEGACY_BURSA_EQUITY_ISIN_CACHE = MASTERFILES_DIR / "bursa_equity_isin.json"
 BURSA_EQUITY_ISIN_PDF_CACHE = MASTERFILE_CACHE_DIR / "bursa_equity_isin.pdf"
 LEGACY_BURSA_EQUITY_ISIN_PDF_CACHE = MASTERFILES_DIR / "bursa_equity_isin.pdf"
+BURSA_CLOSING_PRICES_CACHE = MASTERFILE_CACHE_DIR / "bursa_closing_prices.json"
+LEGACY_BURSA_CLOSING_PRICES_CACHE = MASTERFILES_DIR / "bursa_closing_prices.json"
+BURSA_CLOSING_PRICES_PDF_CACHE = MASTERFILE_CACHE_DIR / "bursa_closing_prices.pdf"
+LEGACY_BURSA_CLOSING_PRICES_PDF_CACHE = MASTERFILES_DIR / "bursa_closing_prices.pdf"
+BSE_BW_LISTED_COMPANIES_CACHE = MASTERFILE_CACHE_DIR / "bse_bw_listed_companies.json"
+LEGACY_BSE_BW_LISTED_COMPANIES_CACHE = MASTERFILES_DIR / "bse_bw_listed_companies.json"
+BSE_HU_MARKETDATA_CACHE = MASTERFILE_CACHE_DIR / "bse_hu_marketdata.json"
+LEGACY_BSE_HU_MARKETDATA_CACHE = MASTERFILES_DIR / "bse_hu_marketdata.json"
+EGX_LISTED_STOCKS_CACHE = MASTERFILE_CACHE_DIR / "egx_listed_stocks.json"
+LEGACY_EGX_LISTED_STOCKS_CACHE = MASTERFILES_DIR / "egx_listed_stocks.json"
+BVL_ISSUERS_DIRECTORY_CACHE = MASTERFILE_CACHE_DIR / "bvl_issuers_directory.json"
+LEGACY_BVL_ISSUERS_DIRECTORY_CACHE = MASTERFILES_DIR / "bvl_issuers_directory.json"
+CSE_MA_LISTED_COMPANIES_CACHE = MASTERFILE_CACHE_DIR / "cse_ma_listed_companies.json"
+LEGACY_CSE_MA_LISTED_COMPANIES_CACHE = MASTERFILES_DIR / "cse_ma_listed_companies.json"
+CSE_LK_ALL_SECURITY_CODE_CACHE = MASTERFILE_CACHE_DIR / "cse_lk_all_security_code.json"
+LEGACY_CSE_LK_ALL_SECURITY_CODE_CACHE = MASTERFILES_DIR / "cse_lk_all_security_code.json"
+CSE_LK_COMPANY_INFO_SUMMARY_CACHE = MASTERFILE_CACHE_DIR / "cse_lk_company_info_summary.json"
+LEGACY_CSE_LK_COMPANY_INFO_SUMMARY_CACHE = MASTERFILES_DIR / "cse_lk_company_info_summary.json"
+DSE_TZ_LISTED_COMPANIES_CACHE = MASTERFILE_CACHE_DIR / "dse_tz_listed_companies.json"
+LEGACY_DSE_TZ_LISTED_COMPANIES_CACHE = MASTERFILES_DIR / "dse_tz_listed_companies.json"
+BVC_RV_ISSUERS_CACHE = MASTERFILE_CACHE_DIR / "bvc_rv_issuers.json"
+LEGACY_BVC_RV_ISSUERS_CACHE = MASTERFILES_DIR / "bvc_rv_issuers.json"
+BYMA_EQUITY_DETAILS_CACHE = MASTERFILE_CACHE_DIR / "byma_equity_details.json"
+LEGACY_BYMA_EQUITY_DETAILS_CACHE = MASTERFILES_DIR / "byma_equity_details.json"
+MSE_MW_MAINBOARD_CACHE = MASTERFILE_CACHE_DIR / "mse_mw_mainboard.json"
+LEGACY_MSE_MW_MAINBOARD_CACHE = MASTERFILES_DIR / "mse_mw_mainboard.json"
+NSE_KE_LISTED_COMPANIES_CACHE = MASTERFILE_CACHE_DIR / "nse_ke_listed_companies.json"
+LEGACY_NSE_KE_LISTED_COMPANIES_CACHE = MASTERFILES_DIR / "nse_ke_listed_companies.json"
+NSE_IN_SECURITIES_AVAILABLE_CACHE = MASTERFILE_CACHE_DIR / "nse_in_securities_available.json"
+LEGACY_NSE_IN_SECURITIES_AVAILABLE_CACHE = MASTERFILES_DIR / "nse_in_securities_available.json"
+BSE_IN_SCRIPS_CACHE = MASTERFILE_CACHE_DIR / "bse_in_scrips.json"
+LEGACY_BSE_IN_SCRIPS_CACHE = MASTERFILES_DIR / "bse_in_scrips.json"
+HKEX_SECURITIES_LIST_CACHE = MASTERFILE_CACHE_DIR / "hkex_securities_list.json"
+LEGACY_HKEX_SECURITIES_LIST_CACHE = MASTERFILES_DIR / "hkex_securities_list.json"
+SGX_SECURITIES_PRICES_CACHE = MASTERFILE_CACHE_DIR / "sgx_securities_prices.json"
+LEGACY_SGX_SECURITIES_PRICES_CACHE = MASTERFILES_DIR / "sgx_securities_prices.json"
+DFM_LISTED_SECURITIES_CACHE = MASTERFILE_CACHE_DIR / "dfm_listed_securities.json"
+LEGACY_DFM_LISTED_SECURITIES_CACHE = MASTERFILES_DIR / "dfm_listed_securities.json"
+BOURSA_KUWAIT_STOCKS_CACHE = MASTERFILE_CACHE_DIR / "boursa_kuwait_stocks.json"
+LEGACY_BOURSA_KUWAIT_STOCKS_CACHE = MASTERFILES_DIR / "boursa_kuwait_stocks.json"
+BAHRAIN_BOURSE_LISTED_COMPANIES_CACHE = MASTERFILE_CACHE_DIR / "bahrain_bourse_listed_companies.json"
+LEGACY_BAHRAIN_BOURSE_LISTED_COMPANIES_CACHE = MASTERFILES_DIR / "bahrain_bourse_listed_companies.json"
+BIST_KAP_MKK_LISTED_SECURITIES_CACHE = MASTERFILE_CACHE_DIR / "bist_kap_mkk_listed_securities.json"
+LEGACY_BIST_KAP_MKK_LISTED_SECURITIES_CACHE = MASTERFILES_DIR / "bist_kap_mkk_listed_securities.json"
+TADAWUL_SECURITIES_CACHE = MASTERFILE_CACHE_DIR / "tadawul_securities.json"
+LEGACY_TADAWUL_SECURITIES_CACHE = MASTERFILES_DIR / "tadawul_securities.json"
+ADX_MARKET_WATCH_CACHE = MASTERFILE_CACHE_DIR / "adx_market_watch.json"
+LEGACY_ADX_MARKET_WATCH_CACHE = MASTERFILES_DIR / "adx_market_watch.json"
+QSE_MARKET_WATCH_CACHE = MASTERFILE_CACHE_DIR / "qse_market_watch.json"
+LEGACY_QSE_MARKET_WATCH_CACHE = MASTERFILES_DIR / "qse_market_watch.json"
+MSX_COMPANIES_CACHE = MASTERFILE_CACHE_DIR / "msx_companies.json"
+LEGACY_MSX_COMPANIES_CACHE = MASTERFILES_DIR / "msx_companies.json"
+RSE_LISTED_COMPANIES_CACHE = MASTERFILE_CACHE_DIR / "rse_listed_companies.json"
+LEGACY_RSE_LISTED_COMPANIES_CACHE = MASTERFILES_DIR / "rse_listed_companies.json"
+GSE_LISTED_COMPANIES_CACHE = MASTERFILE_CACHE_DIR / "gse_listed_companies.json"
+LEGACY_GSE_LISTED_COMPANIES_CACHE = MASTERFILES_DIR / "gse_listed_companies.json"
+LUSE_LISTED_COMPANIES_CACHE = MASTERFILE_CACHE_DIR / "luse_listed_companies.json"
+LEGACY_LUSE_LISTED_COMPANIES_CACHE = MASTERFILES_DIR / "luse_listed_companies.json"
+BOLSA_SANTIAGO_INSTRUMENTS_CACHE = MASTERFILE_CACHE_DIR / "bolsa_santiago_instruments.json"
+LEGACY_BOLSA_SANTIAGO_INSTRUMENTS_CACHE = MASTERFILES_DIR / "bolsa_santiago_instruments.json"
+SEM_ISIN_CACHE = MASTERFILE_CACHE_DIR / "sem_isin.json"
+LEGACY_SEM_ISIN_CACHE = MASTERFILES_DIR / "sem_isin.json"
+USE_UG_MARKET_SNAPSHOT_CACHE = MASTERFILE_CACHE_DIR / "use_ug_market_snapshot.json"
+LEGACY_USE_UG_MARKET_SNAPSHOT_CACHE = MASTERFILES_DIR / "use_ug_market_snapshot.json"
+NZX_INSTRUMENTS_CACHE = MASTERFILE_CACHE_DIR / "nzx_instruments.json"
+LEGACY_NZX_INSTRUMENTS_CACHE = MASTERFILES_DIR / "nzx_instruments.json"
+NASDAQ_MUTUAL_FUND_QUOTES_CACHE = MASTERFILE_CACHE_DIR / "nasdaq_mutual_fund_quotes.json"
+LEGACY_NASDAQ_MUTUAL_FUND_QUOTES_CACHE = MASTERFILES_DIR / "nasdaq_mutual_fund_quotes.json"
+BVB_SHARES_DIRECTORY_CACHE = MASTERFILE_CACHE_DIR / "bvb_shares_directory.json"
+LEGACY_BVB_SHARES_DIRECTORY_CACHE = MASTERFILES_DIR / "bvb_shares_directory.json"
+ZSE_ZW_ISSUERS_CACHE = MASTERFILE_CACHE_DIR / "zse_zw_issuers.json"
+LEGACY_ZSE_ZW_ISSUERS_CACHE = MASTERFILES_DIR / "zse_zw_issuers.json"
+BVB_FUND_UNITS_DIRECTORY_CACHE = MASTERFILE_CACHE_DIR / "bvb_fund_units_directory.json"
+LEGACY_BVB_FUND_UNITS_DIRECTORY_CACHE = MASTERFILES_DIR / "bvb_fund_units_directory.json"
+NGX_EQUITIES_PRICE_LIST_CACHE = MASTERFILE_CACHE_DIR / "ngx_equities_price_list.json"
+LEGACY_NGX_EQUITIES_PRICE_LIST_CACHE = MASTERFILES_DIR / "ngx_equities_price_list.json"
+NGX_COMPANY_PROFILE_DIRECTORY_CACHE = MASTERFILE_CACHE_DIR / "ngx_company_profile_directory.json"
+LEGACY_NGX_COMPANY_PROFILE_DIRECTORY_CACHE = MASTERFILES_DIR / "ngx_company_profile_directory.json"
 PSE_LISTED_COMPANY_DIRECTORY_CACHE = MASTERFILE_CACHE_DIR / "pse_listed_company_directory.json"
 LEGACY_PSE_LISTED_COMPANY_DIRECTORY_CACHE = MASTERFILES_DIR / "pse_listed_company_directory.json"
+PSE_CZ_SHARES_DIRECTORY_CACHE = MASTERFILE_CACHE_DIR / "pse_cz_shares_directory.json"
+LEGACY_PSE_CZ_SHARES_DIRECTORY_CACHE = MASTERFILES_DIR / "pse_cz_shares_directory.json"
 IDX_LISTED_COMPANIES_CACHE = MASTERFILE_CACHE_DIR / "idx_listed_companies.json"
 LEGACY_IDX_LISTED_COMPANIES_CACHE = MASTERFILES_DIR / "idx_listed_companies.json"
+IDX_COMPANY_PROFILES_CACHE = MASTERFILE_CACHE_DIR / "idx_company_profiles.json"
+LEGACY_IDX_COMPANY_PROFILES_CACHE = MASTERFILES_DIR / "idx_company_profiles.json"
 WSE_LISTED_COMPANIES_CACHE = MASTERFILE_CACHE_DIR / "wse_listed_companies.json"
 LEGACY_WSE_LISTED_COMPANIES_CACHE = MASTERFILES_DIR / "wse_listed_companies.json"
 WSE_ETF_LIST_CACHE = MASTERFILE_CACHE_DIR / "wse_etf_list.json"
@@ -169,10 +280,19 @@ HNX_LISTED_SECURITIES_CACHE = MASTERFILE_CACHE_DIR / "hnx_listed_securities.json
 LEGACY_HNX_LISTED_SECURITIES_CACHE = MASTERFILES_DIR / "hnx_listed_securities.json"
 UPCOM_REGISTERED_SECURITIES_CACHE = MASTERFILE_CACHE_DIR / "upcom_registered_securities.json"
 LEGACY_UPCOM_REGISTERED_SECURITIES_CACHE = MASTERFILES_DIR / "upcom_registered_securities.json"
+VIENNA_LISTED_COMPANIES_CACHE = MASTERFILE_CACHE_DIR / "vienna_listed_companies.json"
+LEGACY_VIENNA_LISTED_COMPANIES_CACHE = MASTERFILES_DIR / "vienna_listed_companies.json"
+ZAGREB_SECURITIES_CACHE = MASTERFILE_CACHE_DIR / "zagreb_securities_directory.json"
+LEGACY_ZAGREB_SECURITIES_CACHE = MASTERFILES_DIR / "zagreb_securities_directory.json"
 
 SEC_COMPANY_TICKERS_URL = "https://www.sec.gov/files/company_tickers_exchange.json"
 OTC_MARKETS_SECURITY_PROFILE_API_URL = "https://backend.otcmarkets.com/otcapi/company/profile/full/{symbol}"
 OTC_MARKETS_SECURITY_PROFILE_PAGE_URL = "https://www.otcmarkets.com/stock/{symbol}/security"
+OTC_MARKETS_STOCK_SCREENER_PAGE_URL = "https://www.otcmarkets.com/research/stock-screener"
+OTC_MARKETS_STOCK_SCREENER_CSV_URL = (
+    "https://www.otcmarkets.com/research/stock-screener/api/downloadCSV?"
+    "greyAccess=false&expertAccess=false"
+)
 NASDAQ_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt"
 NASDAQ_OTHER_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt"
 LSE_COMPANY_REPORTS_URL = (
@@ -187,10 +307,40 @@ LSE_INSTRUMENT_DIRECTORY_URL = (
     "https://www.londonstockexchange.com/exchange/instrument-result.html"
     "?codeName=&search=search&page={page}"
 )
+LSE_PRICE_EXPLORER_URL = "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer"
+LSE_PRICE_EXPLORER_API_URL = "https://api.londonstockexchange.com/api/v1/pages"
+LSE_PRICE_EXPLORER_PAGE_PATH = "live-markets/market-data-dashboard/price-explorer"
 CBOE_CANADA_LISTING_DIRECTORY_URL = "https://www.cboe.com/ca/equities/market-activity/listing-directory/"
 CBOE_CANADA_LISTING_DIRECTORY_API_URL = "https://www-api.cboe.com/ca/equities/listing-directory-data/"
 ASX_LISTED_URL = "https://www.asx.com.au/asx/research/ASXListedCompanies.csv"
 ASX_FUNDS_STATISTICS_URL = "https://www.asx.com.au/issuers/investment-products/asx-funds-statistics"
+ASX_GICS_INDUSTRY_GROUP_SECTOR_MAP = {
+    "Automobiles & Components": "Consumer Discretionary",
+    "Banks": "Financials",
+    "Capital Goods": "Industrials",
+    "Commercial & Professional Services": "Industrials",
+    "Consumer Discretionary Distribution & Retail": "Consumer Discretionary",
+    "Consumer Durables & Apparel": "Consumer Discretionary",
+    "Consumer Services": "Consumer Discretionary",
+    "Consumer Staples Distribution & Retail": "Consumer Staples",
+    "Energy": "Energy",
+    "Equity Real Estate Investment Trusts (REITs)": "Real Estate",
+    "Financial Services": "Financials",
+    "Food, Beverage & Tobacco": "Consumer Staples",
+    "Health Care Equipment & Services": "Health Care",
+    "Household & Personal Products": "Consumer Staples",
+    "Insurance": "Financials",
+    "Materials": "Materials",
+    "Media & Entertainment": "Communication Services",
+    "Pharmaceuticals, Biotechnology & Life Sciences": "Health Care",
+    "Real Estate Management & Development": "Real Estate",
+    "Semiconductors & Semiconductor Equipment": "Information Technology",
+    "Software & Services": "Information Technology",
+    "Technology Hardware & Equipment": "Information Technology",
+    "Telecommunication Services": "Communication Services",
+    "Transportation": "Industrials",
+    "Utilities": "Utilities",
+}
 TMX_INTERLISTED_URL = "https://www.tsx.com/files/trading/interlisted-companies.txt"
 TMX_LISTED_ISSUERS_ARCHIVE_URL = "https://www.tsx.com/en/listings/current-market-statistics/mig-archives"
 TMX_ETF_SCREENER_URL = "https://dgr53wu9i7rmp.cloudfront.net/etfs/etfs.json"
@@ -212,10 +362,26 @@ EURONEXT_ETFS_DOWNLOAD_URL = (
     "XESM,XLDN,XLIS,XMLI,XMOT,XMSM,XOAM,XOAS,XOBD,XOSL,XPAR,XPMC"
 )
 JPX_LISTED_ISSUES_URL = "https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls"
+JPX_STOCK_SEARCH_URL = "https://quote.jpx.co.jp/jpxhp/main/index.aspx?F=e_stock_search"
+JPX_STOCK_DETAIL_PAGE_URL = "https://quote.jpx.co.jp/jpxhp/main/index.aspx?f=e_stock_detail&qcode="
+JPX_STOCK_DETAIL_API_URL = "https://quote.jpx.co.jp/jpxhp/jcgi/wrap/qjsonp.aspx?F=ctl/stock_detail&qcode="
+JPX_STOCK_DETAIL_WORKERS = 6
+JPX_STOCK_DETAIL_TIMEOUT = 5.0
 DEUTSCHE_BOERSE_LISTED_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/67858/dd766fc6588100c79294324175f95501/data/Listed-companies.xlsx"
 DEUTSCHE_BOERSE_ETPS_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/1553442/2936716b8f6c2d7a0bb85337485bdcdb/data/Master_DataSheet_Download.xls"
 DEUTSCHE_BOERSE_XETRA_ALL_TRADABLE_URL = "https://www.cashmarket.deutsche-boerse.com/resource/blob/1528/b52ea43a2edac92e8283d40645d1c076/data/t7-xetr-allTradableInstruments.csv"
+DEUTSCHE_BOERSE_ETP_PRODUCT_TYPE_CATEGORY_MAP = {
+    "ETC": "Commodity",
+    "ETN": "Alternative",
+}
+DEUTSCHE_BOERSE_XETRA_INSTRUMENT_TYPE_ASSET_TYPE = {
+    "CS": "Stock",
+    "ETF": "ETF",
+    "ETN": "ETF",
+    "ETC": "ETF",
+}
 SIX_EQUITY_ISSUERS_URL = "https://www.six-group.com/sheldon/equity_issuers/v1/equity_issuers.json"
+SIX_SHARE_DETAILS_FQS_URL = "https://www.six-group.com/fqs/ref.json"
 SIX_ETF_EXPLORER_URL = "https://www.six-group.com/en/market-data/etf/etf-explorer.html"
 SIX_ETP_EXPLORER_URL = "https://www.six-group.com/en/market-data/etp/etp-explorer.html"
 B3_INSTRUMENTS_EQUITIES_URL = "https://arquivos.b3.com.br/bdi/table/InstrumentsEquities"
@@ -223,6 +389,22 @@ B3_FUNDS_LISTED_PROXY_URL = "https://sistemaswebb3-listados.b3.com.br/fundsListe
 B3_BDR_COMPANIES_PROXY_URL = "https://sistemaswebb3-listados.b3.com.br/listedCompaniesProxy/CompanyCall/"
 JSE_EXCHANGE_TRADED_PRODUCTS_URL = "https://www.jse.co.za/trade/equities-market/exchange-traded-products"
 JSE_SEARCH_URL = "https://www.jse.co.za/search"
+JSE_EXCHANGE_TRADED_PRODUCT_CATEGORY_MAP = {
+    "Top 40 Equity": "Equity",
+    "Other Local Equity": "Equity",
+    "International Equity": "Equity",
+    "Commodities": "Commodity",
+    "Local Bonds": "Fixed Income",
+    "International Bonds": "Fixed Income",
+    "Money Market": "Money Market",
+    "Multi-Asset Class": "Multi-Asset",
+    "Local Property": "Real Estate",
+    "International Property": "Real Estate",
+    "Equity": "Equity",
+    "Commodity": "Commodity",
+    "Currency": "Currency",
+    "Interest Rate": "Fixed Income",
+}
 NASDAQ_NORDIC_API_ROOT_URL = "https://api.nasdaq.com/api/nordic/"
 NASDAQ_NORDIC_SHARES_SCREENER_URL = "https://api.nasdaq.com/api/nordic/screener/shares"
 NASDAQ_NORDIC_ETP_SCREENER_URL = "https://api.nasdaq.com/api/nordic/screener/etp"
@@ -244,6 +426,11 @@ NASDAQ_NORDIC_SHARES_SOURCE_CONFIG = {
     "nasdaq_nordic_copenhagen_shares": {
         "exchange": "CPH",
         "market": "CPH",
+        "categories": ("MAIN_MARKET", "FIRST_NORTH"),
+    },
+    "nasdaq_nordic_iceland_shares": {
+        "exchange": "ICE_IS",
+        "market": "ICE",
         "categories": ("MAIN_MARKET", "FIRST_NORTH"),
     },
 }
@@ -294,11 +481,16 @@ HNX_SECURITIES_SOURCE_CONFIG = {
 TWSE_LISTED_COMPANIES_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
 TWSE_ETF_LIST_URL = "https://www.twse.com.tw/rwd/en/ETF/list"
 SET_LISTED_COMPANIES_URL = "https://www.set.or.th/dat/eod/listedcompany/static/listedCompanies_en_US.xls"
+SET_STOCK_SEARCH_URL = "https://www.set.or.th/en/market/product/stock/search"
+SET_STOCK_LIST_API_URL = "https://www.set.or.th/api/set/stock/list"
 SET_ETF_SEARCH_URL = "https://www.set.or.th/en/market/get-quote/etf"
 SET_DR_SEARCH_URL = "https://www.set.or.th/en/market/get-quote/dr"
 BMV_MOBILE_QUOTE_KEYS_URL = "https://www.bmv.com.mx/es/movil/JSONClaveCotizacion"
 BMV_SEARCH_TOKEN_URL = "https://www.bmv.com.mx/rest/tokenservice/token"
 BMV_SEARCH_URL = "https://www.bmv.com.mx/api/searchservice/v1"
+BMV_MARKET_DATA_SECURITIES_URL = "https://www.bmv.com.mx/es/emisoras/estadisticas"
+BMV_MARKET_DATA_PROFILE_URL_TEMPLATE = "https://www.bmv.com.mx/es/emisoras/perfil/{issuer}-{issuer_id}"
+BMV_MARKET_DATA_STATS_URL_TEMPLATE = "https://www.bmv.com.mx/es/emisoras/estadisticas/{issuer}-{issuer_id}"
 BMV_ISSUER_DIRECTORY_URL = "https://staging.bmv.com.mx/es/emisoras/informacion-de-emisoras"
 BMV_ISSUER_DIRECTORY_SEARCH_URL = (
     "https://staging.bmv.com.mx/es/Grupo_BMV/Informacion_de_emisora/_rid/541/_mto/3/_mod/doSearch"
@@ -307,12 +499,136 @@ BME_MARKET_API_ROOT_URL = "https://apiweb.bolsasymercados.es/Market/"
 BME_COMPANIES_SEARCH_PAGE_URL = "https://www.bolsasymercados.es/en/bme-exchange/companies-search.html"
 BME_LISTED_COMPANIES_API_URL = f"{BME_MARKET_API_ROOT_URL}v1/EQ/ListedCompanies"
 BME_SHARE_DETAILS_INFO_API_URL = f"{BME_MARKET_API_ROOT_URL}v1/EQ/ShareDetailsInfo"
+BME_SECURITY_PRICES_PAGE_URL = "https://www.bolsasymercados.es/en/bme-exchange/companies-search.html"
+BME_SECURITY_PRICES_TRADING_SYSTEMS = "SIBE,Floor,Latibex,MTF,ETF"
+BME_SECURITY_PRICES_MIN_CACHE_ROWS = 500
 BME_LISTED_VALUES_PDF_URL = (
     "https://www.bolsasymercados.es/dam/descargas/exchange/renta-variable/"
     "listado-valores-renta-variable-es-en.pdf"
 )
 BME_GROWTH_PRICES_URL = "https://www.bmegrowth.es/ing/Precios.aspx"
+BME_SECTOR_TO_CANONICAL_STOCK_SECTOR = {
+    "01": "Energy",
+    "02": "Industrials",
+    "03": "Consumer Discretionary",
+    "04": "Consumer Discretionary",
+    "05": "Financials",
+    "06": "Information Technology",
+    "07": "Real Estate",
+}
+BME_SUBSECTOR_TO_CANONICAL_STOCK_SECTOR = {
+    ("01", "02"): "Utilities",
+    ("01", "03"): "Utilities",
+    ("01", "04"): "Utilities",
+    ("02", "01"): "Materials",
+    ("02", "04"): "Materials",
+    ("02", "05"): "Materials",
+    ("03", "01"): "Consumer Staples",
+    ("03", "03"): "Materials",
+    ("03", "05"): "Health Care",
+    ("04", "03"): "Communication Services",
+    ("04", "04"): "Industrials",
+    ("04", "05"): "Industrials",
+    ("04", "06"): "Industrials",
+    ("06", "01"): "Communication Services",
+}
+BME_TRADING_SYSTEM_TO_ASSET_TYPE = {
+    "ETF": "ETF",
+    "FLOOR": "Stock",
+    "LATIBEX": "Stock",
+    "MTF": "Stock",
+    "SIBE": "Stock",
+}
+ATHEX_CLASSIFICATION_PDF_URL = (
+    "https://www.athexgroup.gr/documents/10180/5517704/"
+    "ATHEX%2BClassification%2BVer0.810%2B%28EN%29.pdf/5c49a27d-1078-4974-990b-5a5e1f278b73"
+)
 BURSA_EQUITY_ISIN_PAGE_URL = "https://www.bursamalaysia.com/trade/trading_resources/equities/isin"
+BURSA_CLOSING_PRICES_PDF_URL = (
+    "https://www.bursamalaysia.com/misc/missftp/securities/"
+    "securities_equities_year_end_closing_prices_20250702.pdf?t=1751516082"
+)
+BSE_BW_LISTED_COMPANIES_URL = "https://www.bse.co.bw/companies/"
+BSE_HU_BETA_MARKET_URL = "https://www.bet.hu/oldalak/beta_piac#reszvenyek"
+EGX_LISTED_STOCKS_URL = "https://www.egx.com.eg/en/ListedStocks.aspx"
+CAVALI_BVL_EMISORES_URL = "https://cavali-corporativa.screativa.com/emisores"
+CASABLANCA_BOURSE_INSTRUMENTS_URL = "https://www.casablanca-bourse.com/en/marche-cash/instruments-actions"
+CSE_LK_ALL_SECURITY_CODE_URL = "https://www.cse.lk/api/allSecurityCode"
+CSE_LK_COMPANY_INFO_SUMMARY_URL = "https://www.cse.lk/api/companyInfoSummery"
+CSE_LK_COMPANY_INFO_WORKERS = 8
+DSE_TZ_LISTED_COMPANIES_URL = "https://www.dse.co.tz/listed/company/list"
+BVC_HANDSHAKE_URL = "https://www.bvc.com.co/api/handshake"
+BVC_RV_ISSUERS_URL = (
+    "https://rest.bvc.com.co/market-information/rv/lvl-3/issuer?"
+    "filters[marketDataRv][type]=Local"
+)
+BVC_RV_ISSUERS_FILTERS = "filters[marketDataRv][type]=Local"
+BVC_RV_ISSUERS_PAGE_URL = "https://www.bvc.com.co/list-of-issuers-local-market"
+BYMA_API_BASE_URL = "https://open.bymadata.com.ar/vanoms-be-core/rest/api"
+BYMA_EQUITY_DETAIL_URL = f"{BYMA_API_BASE_URL}/bymadata/free/bnown/fichatecnica/especies/general"
+BYMA_HEADER_SEARCH_URL = f"{BYMA_API_BASE_URL}/bymadata/free/instruments-for-header-search"
+BYMA_EQUITY_DETAILS_PAGE_URL = "https://open.bymadata.com.ar/#/issuers-negociable-securities-information"
+MSE_MW_MARKET_MAINBOARD_URL = "https://mse.co.mw/market/mainboard"
+NSE_KE_LISTED_COMPANIES_URL = "https://www.nse.co.ke/listed-companies/"
+NSE_KE_LISTED_COMPANIES_API_URL = "https://www.nse.co.ke/wp-json/wp/v2/pages?slug=listed-companies"
+NSE_IN_SECURITIES_AVAILABLE_PAGE_URL = "https://www.nseindia.com/static/market-data/securities-available-for-trading"
+NSE_IN_EQUITY_LIST_URL = "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv"
+NSE_IN_SME_EQUITY_LIST_URL = "https://nsearchives.nseindia.com/emerge/corporates/content/SME_EQUITY_L.csv"
+NSE_IN_ETF_LIST_URL = "https://nsearchives.nseindia.com/content/equities/eq_etfseclist.csv"
+BSE_IN_SCRIPS_PAGE_URL = "https://www.bseindia.com/corporates/List_Scrips.html"
+BSE_IN_SCRIPS_API_URL = "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w"
+HKEX_SECURITIES_LIST_URL = "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx"
+HKEX_SECURITIES_PRICES_PAGE_URL = "https://www.hkex.com.hk/Market-Data/Securities-Prices/Equities"
+SGX_SECURITIES_PRICES_PAGE_URL = "https://www.sgx.com/securities/securities-prices"
+SGX_SECURITIES_PRICES_API_URL = "https://api.sgx.com/securities/v1.1"
+DFM_LISTED_SECURITIES_PAGE_URL = "https://www.dfm.ae/issuers/listed-securities/company-profile-page"
+DFM_STOCKS_API_URL = "https://api2.dfm.ae/mw/v1/stocks"
+DFM_COMPANY_PROFILE_API_URL = "https://api2.dfm.ae/web/widgets/v1/data"
+BOURSA_KUWAIT_STOCKS_PAGE_URL = "https://www.boursakuwait.com.kw/en/securities/main-market/overview---main-market/"
+BOURSA_KUWAIT_LEGACY_MIX_API_URL = "https://www.boursakuwait.com.kw/data-api/legacy-mix-services"
+BAHRAIN_BOURSE_HOME_URL = "https://bahrainbourse.com/en"
+BAHRAIN_BOURSE_ISIN_CODES_URL = "https://bahrainbourse.com/en/Bahrain%20Clear/ISINCodes"
+BIST_LISTED_COMPANIES_PAGE_URL = "https://www.kap.org.tr/tr/bist-sirketler"
+BIST_MKK_SECURITIES_PAGE_URL = "https://www.mkk.com.tr/en/depository-services/information-center/list-securities"
+BIST_MKK_SECURITIES_API_URL = "https://www.mkk.com.tr/api/getSecurities"
+TADAWUL_ISSUERS_DIRECTORY_URL = "https://www.saudiexchange.sa/wps/portal/tadawul/market-participants/issuers/issuers-directory"
+TADAWUL_THEME_SEARCH_URL = "https://www.saudiexchange.sa/tadawul.eportal.theme.helper/ThemeSearchUtilityServlet"
+ADX_MARKET_WATCH_PAGE_URL = "https://www.adx.ae/english/pages/marketwatch.aspx"
+ADX_API_BASE_URL = "https://apigateway.adx.ae"
+ADX_GATEWAY_API_KEY = "1863a94c-582b-46f9-b4f0-0d02c0cc5307"
+ADX_ISSUERS_API_URL = f"{ADX_API_BASE_URL}/adx/tradings/1.1/issuers"
+ADX_MAIN_MARKET_API_URL = f"{ADX_API_BASE_URL}/adx/marketwatch/1.1/securityBoards/mainMarket"
+ADX_GROWTH_MARKET_API_URL = f"{ADX_API_BASE_URL}/adx/marketwatch/1.1/securityBoards/growthMarket"
+ADX_ETF_API_URL = f"{ADX_API_BASE_URL}/adx/marketwatch/1.1/securityBoards/etf"
+ADX_SYMBOL_SECTOR_API_URL = f"{ADX_API_BASE_URL}/adx/lookups/1.0/data/symbol-sector"
+QSE_LISTED_COMPANIES_URL = "https://www.qe.com.qa/listed-companies"
+QSE_MARKET_WATCH_URL = "https://www.qe.com.qa/wp/mw/data/MarketWatch.txt"
+MSX_COMPANIES_URL = "https://www.msx.om/companies.aspx"
+MSX_COMPANIES_LIST_URL = "https://www.msx.om/companies.aspx/List"
+RSE_LISTED_COMPANIES_URL = "https://www.rse.rw/listed-compagnies"
+GSE_LISTED_COMPANIES_URL = "https://gse.com.gh/listed-companies/"
+LUSE_LISTED_COMPANIES_URL = "https://www.luse.co.zm/listed-companies/"
+BOLSA_SANTIAGO_INSTRUMENTS_PAGE_URL = "https://www.bolsadesantiago.com/informacion-instrumentos"
+BOLSA_SANTIAGO_INSTRUMENTS_URL = "https://www.bolsadesantiago.com/api/RV_ResumenMercado/getInstrumentos"
+SEM_ISIN_PAGE_URL = "https://www.stockexchangeofmauritius.com/cds/isins"
+SEM_ISIN_XLSX_URL = "https://www.stockexchangeofmauritius.com/media/11318/isin.xlsx"
+USE_UG_MARKET_SNAPSHOT_URL = "https://www.use.or.ug/market-statistics/market-snapshot"
+NZX_INSTRUMENTS_URL = "https://new.nzx.com/markets/NZSX"
+NASDAQ_MUTUAL_FUND_SCREENER_URL = "https://api.nasdaq.com/api/screener/mutualfunds"
+NASDAQ_MUTUAL_FUND_QUOTE_URL_TEMPLATE = "https://api.nasdaq.com/api/quote/{ticker}/info?assetclass=mutualfunds"
+NASDAQ_MUTUAL_FUND_PAGE_URL = "https://www.nasdaq.com/market-activity/mutual-funds"
+ZSE_ZW_LISTED_EQUITIES_URL = "https://www.zse.co.zw/listed-securities/equity"
+ZSE_ZW_API_ROOT_URL = "https://ds88jcmqc11je.cloudfront.net"
+ZSE_ZW_ISSUERS_URL = f"{ZSE_ZW_API_ROOT_URL}/api/issuers"
+ZSE_ZW_PRICE_SHEET_URL = f"{ZSE_ZW_API_ROOT_URL}/api/fetch/price-sheet?exchange=ZSE"
+BVB_SHARES_DIRECTORY_URL = "https://m.bvb.ro/FinancialInstruments/Markets/Shares"
+BVB_FUND_UNITS_DIRECTORY_URL = "https://m.bvb.ro/FinancialInstruments/Markets/FundUnits"
+NGX_EQUITIES_PRICE_LIST_PAGE_URL = "https://ngxgroup.com/exchange/data/equities-price-list/"
+NGX_EQUITIES_PRICE_LIST_URL = (
+    "https://doclib.ngxgroup.com/REST/api/statistics/equities/"
+    "?market=&sector=&orderby=&pageSize=300&pageNo=0"
+)
+NGX_COMPANY_PROFILE_DIRECTORY_URL = "https://ngxgroup.com/exchange/data/company-profile/"
 SZSE_STOCK_LIST_URL = "https://www.szse.cn/market/product/stock/list/index.html"
 SZSE_ETF_LIST_URL = "https://www.szse.cn/market/product/list/etfList/index.html"
 SZSE_REPORT_DATA_URL = "https://www.szse.cn/api/report/ShowReport/data"
@@ -362,16 +678,27 @@ KRX_JSON_DATA_URL = "https://data.krx.co.kr/comm/bldAttendant/getJsonData.cmd"
 PSX_LISTED_COMPANIES_URL = "https://www.psx.com.pk/psx/resources-and-tools/listings/listed-companies"
 PSX_COMPANIES_BY_SECTOR_URL = "https://www.psx.com.pk/psx/custom-templates/companiesSearch-sector"
 PSX_DAILY_DOWNLOADS_URL = "https://dps.psx.com.pk/daily-downloads"
+PSX_DPS_SYMBOLS_URL = "https://dps.psx.com.pk/symbols"
 PSE_LISTED_COMPANY_DIRECTORY_PAGE_URL = "https://www.pse.com.ph/listed-company-directory/"
 PSE_LISTED_COMPANY_DIRECTORY_URL = "https://frames.pse.com.ph/listedCompany"
+PSE_CZ_SHARES_URL = "https://www.pse.cz/en/market-data/shares/prime-market"
+PSE_CZ_SHARES_MARKET_URLS = (
+    "https://www.pse.cz/en/market-data/shares/prime-market",
+    "https://www.pse.cz/en/market-data/shares/standard-market",
+    "https://www.pse.cz/en/market-data/shares/free-market",
+    "https://www.pse.cz/en/market-data/shares/start-market",
+)
 IDX_STOCK_LIST_PAGE_URL = "https://www.idx.id/en/market-data/stocks-data/stock-list"
 IDX_PRIMARY_API_ROOT_URL = "https://www.idx.id/primary"
 IDX_LISTED_COMPANIES_URL = f"{IDX_PRIMARY_API_ROOT_URL}/StockData/GetSecuritiesStock"
+IDX_COMPANY_PROFILES_URL = f"{IDX_PRIMARY_API_ROOT_URL}/ListedCompany/GetCompanyProfiles"
 WSE_COMPANIES_PAGE_URL = "https://www.gpw.pl/spolki"
 WSE_ETF_PAGE_URL = "https://www.gpw.pl/etfy"
 WSE_AJAX_URL = "https://www.gpw.pl/ajaxindex.php"
 NEWCONNECT_COMPANIES_PAGE_URL = "https://newconnect.pl/spolki"
 NEWCONNECT_AJAX_URL = "https://newconnect.pl/ajaxindex.php"
+VIENNA_LISTED_COMPANIES_URL = "https://www.wienerborse.at/en/listing/shares/companies-list/"
+ZAGREB_SECURITIES_URL = "https://zse.hr/en/shares/68"
 
 USER_AGENT = "free-ticker-database/2.0 (+https://github.com/adanos-software/free-ticker-database)"
 BROWSER_USER_AGENT = (
@@ -394,6 +721,20 @@ BMV_ETF_DESCRIPTION_MARKERS = (
     "TRACS",
     "CANASTAS DE ACCIONES",
 )
+BMV_STOCK_SECTOR_MAP = {
+    "BIENES RAICES": "Real Estate",
+    "ENERGIA": "Energy",
+    "INDUSTRIAL": "Industrials",
+    "MATERIALES": "Materials",
+    "PRODUCTOS DE CONSUMO FRECUENTE": "Consumer Staples",
+    "PRODUCTOS DE CONSUMO NO BASICO": "Consumer Discretionary",
+    "SALUD": "Health Care",
+    "SERVICIOS Y BIENES DE CONSUMO NO BASICO": "Consumer Discretionary",
+    "SERVICIOS DE TELECOMUNICACIONES": "Communication Services",
+    "SERVICIOS FINANCIEROS": "Financials",
+    "SERVICIOS PUBLICOS": "Utilities",
+    "TECNOLOGIA DE LA INFORMACION": "Information Technology",
+}
 BURSA_STOCK_ISSUE_DESCRIPTIONS = {
     "ORDINARY SHARE",
     "ORDINARY SHARE FOREIGN",
@@ -415,6 +756,26 @@ BURSA_REIT_ISIN_RE = re.compile(r"^MYL(?P<ticker>\d{4})TO[0-9A-Z]{3}$")
 BURSA_STAPLED_REIT_ISIN_RE = re.compile(r"^MYL(?P<ticker>\d{4}SS)[0-9A-Z]{3}$")
 BURSA_CLOSED_END_FUND_ISIN_RE = re.compile(r"^MYL(?P<ticker>\d{4})FO[0-9A-Z]{3}$")
 BURSA_ETF_ISIN_RE = re.compile(r"^MYL(?P<ticker>\d{4}E[A-Z])[0-9A-Z]{3}$")
+BURSA_CLOSING_PRICES_STOCK_BOARDS = {"MAIN MARKET", "ACE MARKET", "LEAP MARKET"}
+BURSA_CLOSING_PRICES_STOCK_SECTOR_MAP = {
+    "CONSTRUCTION": "Industrials",
+    "CONSUMER PRODUCTS & SERVICES": "Consumer Discretionary",
+    "ENERGY": "Energy",
+    "FINANCIAL SERVICES": "Financials",
+    "HEALTH CARE": "Health Care",
+    "INDUSTRIAL PRODUCTS & SERVICES": "Industrials",
+    "PLANTATION": "Consumer Staples",
+    "PROPERTY": "Real Estate",
+    "REITS": "Real Estate",
+    "TECHNOLOGY": "Information Technology",
+    "TELECOMMUNICATIONS & MEDIA": "Communication Services",
+    "TRANSPORTATION & LOGISTICS": "Industrials",
+    "UTILITIES": "Utilities",
+}
+BURSA_CLOSING_PRICES_ETF_CATEGORY_MAP = {
+    "EXCHANGE TRADED FUND-EQUITY": "Equity",
+    "EXCHANGE TRADED FUND-FIXED INCOME": "Fixed Income",
+}
 BMV_ISSUER_DIRECTORY_QUERY_COMBINATIONS = (
     ("CGEN_CAPIT", "CGEN_ELAC"),
     ("CGEN_CAPIT", "CGEN_ELTRA"),
@@ -433,12 +794,21 @@ TMX_EXACT_QUOTE_ACCEPTED_NAMES = {
 LSE_UPDATE_OPENER_RE = re.compile(r"UpdateOpener\('(?P<name>(?:\\'|[^'])*)',\s*'(?P<meta>[^']*)'\)")
 CBOE_CANADA_LISTING_DIRECTORY_RE = re.compile(r"CTX\['listingDirectory'\]\s*=\s*(\[[\s\S]*?\]);")
 LSE_INSTRUMENT_SEARCH_MAX_WORKERS = 8
+LSE_PRICE_EXPLORER_PAGE_SIZE = 2000
+LSE_PRICE_EXPLORER_CATEGORY_TO_ASSET_TYPE = {
+    "EQUITY": "Stock",
+    "ETFS": "ETF",
+}
 JSE_INSTRUMENT_SEARCH_MAX_WORKERS = 4
 JSE_INSTRUMENT_LINK_RE = re.compile(r'href="(?P<href>(?:https://www\.jse\.co\.za)?/jse/instruments/\d+)"')
 JSE_INSTRUMENT_META_RE = re.compile(
     r"Instrument name:\s*(?P<name>.*?)\.\s*"
     r"Instrument code:\s*(?P<code>[A-Z0-9]+)\.\s*"
     r"Instrument type:\s*(?P<instrument_type>.*?)\."
+)
+JSE_INSTRUMENT_PROFILE_VALUE_RE = re.compile(
+    r'instrument-profile__(?P<field>sector|industry)--[^"\']*["\'][^>]*>(?P<value>.*?)</span>',
+    re.I | re.S,
 )
 WSE_FORM_RE = re.compile(r"<form\b[^>]*\bid=['\"](?P<form_id>[^'\"]+)['\"][\s\S]*?</form>", re.I)
 WSE_INPUT_TAG_RE = re.compile(r"<input\b[^>]*>", re.I)
@@ -450,8 +820,118 @@ WSE_COMPANY_LINK_RE = re.compile(
     r'<strong[^>]*class=["\']name["\'][^>]*>(?P<label>.*?)</strong>',
     re.I | re.S,
 )
+WSE_SMALL_GREY_RE = re.compile(
+    r'<small[^>]*class=["\'][^"\']*\bgrey\b[^"\']*["\'][^>]*>(?P<value>.*?)</small>',
+    re.I | re.S,
+)
 WSE_ETF_LINK_RE = re.compile(
     r'<a\s+href=["\'](?P<href>etf\?isin=[^"\']+)["\'][^>]*>\s*<b>(?P<ticker>.*?)</b>\s*</a>',
+    re.I | re.S,
+)
+HTML_TD_RE = re.compile(r"<td[^>]*>(?P<value>.*?)</td>", re.I | re.S)
+HTML_TH_TD_ROW_RE = re.compile(
+    r"<tr[^>]*>\s*<th[^>]*>(?P<label>.*?)</th>\s*<td[^>]*>(?P<value>.*?)</td>\s*</tr>",
+    re.I | re.S,
+)
+BSE_BW_PANEL_RE = re.compile(
+    r'<div[^>]*class="[^"]*\blvca-panel\b[^"]*"[^>]*>.*?'
+    r'<div[^>]*class="[^"]*\blvca-panel-title\b[^"]*"[^>]*>(?P<title>.*?)</div>\s*'
+    r'<div[^>]*class="[^"]*\blvca-panel-content\b[^"]*"[^>]*>(?P<body>.*?)'
+    r"</div>\s*</div>\s*<!--\s*\.lvca-panel\s*-->",
+    re.I | re.S,
+)
+CAVALI_PAGE_COUNT_RE = re.compile(r"P[aá]g\s+\d+\s+de\s+(?P<count>\d+)", re.I)
+CAVALI_STOCK_GROUPS = {
+    "ACCIONES",
+    "CERTIFICADOS DE PARTICIPACION",
+    "CERTIFICADOS DE PARTICIPACIÓN",
+    "CUOTAS DE PARTICIPACION",
+    "CUOTAS DE PARTICIPACIÓN",
+}
+CAVALI_ETF_GROUPS = {
+    "UNIDAD DE PARTICIPACION",
+    "UNIDAD DE PARTICIPACIÓN",
+}
+BVB_INSTRUMENT_ROW_RE = re.compile(
+    r"<tr\b[^>]*>(?P<body>.*?)</tr>",
+    re.I | re.S,
+)
+BVB_INSTRUMENT_LINK_RE = re.compile(
+    r'<a\s+href="(?P<href>/FinancialInstruments/Details/FinancialInstrumentsDetails\.aspx\?s=(?P<href_ticker>[^"]+))"[^>]*>\s*'
+    r"<b>\s*(?P<ticker>.*?)\s*</b>\s*</a>",
+    re.I | re.S,
+)
+BVB_INSTRUMENT_ISIN_RE = re.compile(r"<p[^>]*>\s*(?P<isin>[A-Z]{2}[A-Z0-9]{10})\s*</p>", re.I | re.S)
+BVB_SHARES_ASYNC_TABS = (
+    "ctl00$ctl00$body$rightColumnPlaceHolder$TabsControlPiete$lb1",
+    "ctl00$ctl00$body$rightColumnPlaceHolder$TabsControlPiete$lb2",
+)
+NSE_KE_COMPANY_TITLE_RE = re.compile(r"\[nectar_animated_title\b", re.I)
+NSE_KE_TITLE_TEXT_RE = re.compile(r'\btext=["“”″](?P<name>.*?)["“”″]\]', re.I | re.S)
+NSE_KE_SECTION_TITLE_RE = re.compile(r'\btitle=["“”″](?P<title>.*?)["“”″]', re.I | re.S)
+NSE_KE_SYMBOL_RE = re.compile(
+    r"Trading\s+Symbol:\s*(?P<symbol>.*?)(?:ISIN\s*(?:CODE)?\s*:|<br\s*/?>|\[/vc_column_text\])",
+    re.I | re.S,
+)
+NSE_KE_ISIN_RE = re.compile(
+    r"ISIN\s*(?:CODE)?\s*:\s*(?P<isin>.*?)(?:<br\s*/?>|\[/vc_column_text\])",
+    re.I | re.S,
+)
+NSE_KE_SECTOR_MAP = {
+    "AGRICULTURAL": "Consumer Staples",
+    "AUTOMOBILES AND ACCESSORIES": "Consumer Discretionary",
+    "BANKING": "Financials",
+    "CONSTRUCTION AND ALLIED": "Materials",
+    "ENERGY AND PETROLEUM": "Energy",
+    "INSURANCE": "Financials",
+    "INVESTMENT": "Financials",
+    "INVESTMENT SERVICES": "Financials",
+    "TELECOMMUNICATION AND TECHNOLOGY": "Communication Services",
+    "REAL ESTATE INVESTMENT TRUST": "Real Estate",
+}
+ATHEX_CLASSIFICATION_LINE_RE = re.compile(
+    r"^(?P<isin>[A-Z]{2}[A-Z0-9]{10})\s+(?P<ticker>[A-Z0-9]+)\s+(?P<rest>.+)$"
+)
+ATHEX_SUPER_SECTOR_MAP = {
+    "Banks": "Financials",
+    "Basic Resources": "Materials",
+    "Construction & Materials": "Industrials",
+    "Consumer Products & Services": "Consumer Discretionary",
+    "Energy": "Energy",
+    "Financial Services": "Financials",
+    "Food, Beverage & Tobacco": "Consumer Staples",
+    "Health Care": "Health Care",
+    "Industrial Goods & Services": "Industrials",
+    "Insurance": "Financials",
+    "Media": "Communication Services",
+    "Personal Care, Drug & Grocery Stores": "Consumer Staples",
+    "Real Estate": "Real Estate",
+    "Retail": "Consumer Discretionary",
+    "Technology": "Information Technology",
+    "Telecommunications": "Communication Services",
+    "Travel & Leisure": "Consumer Discretionary",
+    "Utilities": "Utilities",
+}
+ZAGREB_SECURITIES_ROW_RE = re.compile(
+    r"<tr\b(?P<attrs>[^>]*)>(?P<body>.*?)</tr>",
+    re.I | re.S,
+)
+PSE_CZ_SHARE_LINK_RE = re.compile(
+    r'<td[^>]*class="[^"]*\bitem-title\b[^"]*"[^>]*>.*?'
+    r'<a\s+href="(?P<href>/en/detail/(?P<isin>[A-Z0-9]+))">\s*(?P<label>.*?)\s*</a>\s*'
+    r'<div[^>]*class="[^"]*\bisin\b[^"]*"[^>]*>\s*(?P=isin)\s*</div>',
+    re.I | re.S,
+)
+PSE_CZ_TICKER_XETRA_RE = re.compile(
+    r"<td[^>]*>\s*Ticker Xetra.*?</td>\s*<td[^>]*>(?P<ticker>.*?)</td>",
+    re.I | re.S,
+)
+PSE_CZ_TICKER_BLOOMBERG_RE = re.compile(
+    r"<td[^>]*>\s*Ticker Bloomberg\s*</td>\s*<td[^>]*>(?P<ticker>.*?)</td>",
+    re.I | re.S,
+)
+PSE_CZ_TICKER_REUTERS_RE = re.compile(
+    r"<td[^>]*>\s*Ticker Reuters\s*</td>\s*<td[^>]*>(?P<ticker>.*?)</td>",
     re.I | re.S,
 )
 BME_GROWTH_DETAIL_LINK_RE = re.compile(
@@ -487,6 +967,44 @@ SET_NUXT_FUNCTION_BODY_MARKER = "){"
 SET_NUXT_RETURN_MARKER = ";return "
 SET_NUXT_SEARCH_OPTION_MARKER = "searchOption:["
 SET_NUXT_SEARCH_OPTION_END_MARKER = "],dropdownAdditional:"
+SET_STOCK_SEARCH_SECURITY_TYPES = {"S": "Stock", "L": "ETF"}
+SET_STOCK_SEARCH_SECTOR_MAP = {
+    "AGRI": "Consumer Staples",
+    "AGRO": "Consumer Staples",
+    "AUTO": "Consumer Discretionary",
+    "BANK": "Financials",
+    "COMM": "Consumer Discretionary",
+    "CONMAT": "Materials",
+    "CONS": "Industrials",
+    "CONSUMP": "Consumer Discretionary",
+    "ENERG": "Energy",
+    "ETRON": "Information Technology",
+    "FASHION": "Consumer Discretionary",
+    "FIN": "Financials",
+    "FINCIAL": "Financials",
+    "FOOD": "Consumer Staples",
+    "HELTH": "Health Care",
+    "HOME": "Consumer Discretionary",
+    "ICT": "Communication Services",
+    "IMM": "Industrials",
+    "INDUS": "Industrials",
+    "INSUR": "Financials",
+    "MEDIA": "Communication Services",
+    "PAPER": "Materials",
+    "PERSON": "Consumer Staples",
+    "PETRO": "Materials",
+    "PF&REIT": "Real Estate",
+    "PKG": "Materials",
+    "PROF": "Industrials",
+    "PROP": "Real Estate",
+    "PROPCON": "Real Estate",
+    "RESOURC": "Energy",
+    "SERVICE": "Consumer Discretionary",
+    "STEEL": "Materials",
+    "TECH": "Information Technology",
+    "TOURISM": "Consumer Discretionary",
+    "TRANS": "Industrials",
+}
 JS_IDENTIFIER_RE = re.compile(r"^[A-Za-z_$][A-Za-z0-9_$]*$")
 
 OTHER_LISTED_EXCHANGE_MAP = {
@@ -523,6 +1041,13 @@ OTC_MARKETS_PROFILE_HEADERS = {
 OTC_MARKETS_PROFILE_MAX_WORKERS = 24
 OTC_MARKETS_PROFILE_TIMEOUT = 4.0
 OTC_MARKETS_ADR_TYPE_NAMES = {"adr", "adrs"}
+OTC_MARKETS_STOCK_SCREENER_STOCK_TYPES = {
+    "adrs",
+    "common stock",
+    "foreign ordinary shares",
+    "new york registry shs",
+    "preferred stock",
+}
 CUSIP_RE = re.compile(r"^[A-Z0-9]{9}$")
 
 
@@ -580,6 +1105,26 @@ SIX_FUND_DOWNLOAD_FIELDS = (
     "UnderlyingProviderDesc",
 )
 
+SIX_SHARE_DETAILS_FQS_FIELDS = (
+    "ISIN",
+    "IssuerNameFull",
+    "IssuerNameShort",
+    "FundLongName",
+    "ShortName",
+    "ProductLine",
+    "ProductLineDesc",
+    "TitleSegment",
+    "TitleSegmentDesc",
+    "TradingBaseCurrency",
+    "ValorNumber",
+    "ValorSymbol",
+    "SBISector",
+    "SBISectorDesc",
+    "ListingSegmentDesc",
+    "IndustrySectorDesc",
+    "AssetClassDesc",
+)
+
 _SIX_FUND_DOWNLOAD_SELECT = ",".join(SIX_FUND_DOWNLOAD_FIELDS)
 SIX_ETF_PRODUCTS_URL = (
     "https://www.six-group.com/fqs/ref.csv"
@@ -597,9 +1142,39 @@ SIX_ETP_PRODUCTS_URL = (
     "&page=1"
     "&pagesize=99999"
 )
+SIX_ASSET_CLASS_CATEGORY_MAP = {
+    "commodities": "Commodity",
+    "crypto": "Alternative",
+    "equity developed markets": "Equity",
+    "equity emerging markets": "Equity",
+    "equity strategy": "Equity",
+    "equity themes": "Equity",
+    "fixed income": "Fixed Income",
+    "funds": "Other",
+    "loans": "Fixed Income",
+    "money market": "Money Market",
+    "other": "Other",
+    "volatility": "Volatility",
+}
+SIX_SHARE_INDUSTRY_STOCK_SECTOR_MAP = {
+    "banks": "Financials",
+    "chemicals, pharma": "Health Care",
+    "electrical engineering & electronics": "Industrials",
+    "food, luxury goods": "Consumer Staples",
+    "insurance companies": "Financials",
+    "investment companies": "Financials",
+    "real-estate companies": "Real Estate",
+    "telecommunications": "Communication Services",
+    "utilities": "Utilities",
+}
+SIX_SHARE_MISC_SERVICE_STOCK_SECTOR_OVERRIDES = {
+    "RSGN": "Industrials",
+    "SUNN": "Communication Services",
+}
 
 EURONEXT_MARKET_MAP = {
     "Euronext Amsterdam": "AMS",
+    "Euronext Dublin": "ISE",
     "Oslo Børs": "OSL",
     "Euronext Oslo Børs": "OSL",
     "Euronext Expand Oslo": "OSL",
@@ -632,6 +1207,42 @@ TPEX_CANONICAL_TICKER_RE = re.compile(r"(?:\d{4}|00\d{4}[A-Z]?)$")
 TPEX_ETF_TICKER_RE = re.compile(r"(?:\d{4}|00\d{3,4}[A-Z]?)$")
 TAIWAN_ISIN_TICKER_RE = re.compile(r"(?:\d{4}|00\d{3,4}[A-Z]?)$")
 TAIWAN_DOMESTIC_REGISTRATION_MARKERS = {"", "-", "－", "--", "—"}
+TAIWAN_INDUSTRY_CODE_SECTOR_MAP = {
+    "01": "Materials",  # Cement
+    "02": "Consumer Staples",  # Food
+    "03": "Materials",  # Plastics
+    "04": "Consumer Discretionary",  # Textiles
+    "05": "Industrials",  # Electric machinery
+    "06": "Industrials",  # Electrical and cable
+    "08": "Materials",  # Glass and ceramics
+    "09": "Materials",  # Paper and pulp
+    "10": "Materials",  # Steel and iron
+    "11": "Consumer Discretionary",  # Rubber
+    "12": "Consumer Discretionary",  # Automobile
+    "14": "Industrials",  # Building material and construction
+    "15": "Industrials",  # Shipping and transportation
+    "16": "Consumer Discretionary",  # Tourism
+    "17": "Financials",  # Finance and insurance
+    "18": "Consumer Discretionary",  # Trading and consumers' goods
+    "21": "Materials",  # Chemical
+    "22": "Health Care",  # Biotechnology and medical care
+    "23": "Utilities",  # Oil, gas and electricity
+    "24": "Information Technology",  # Semiconductor
+    "25": "Information Technology",  # Computer and peripheral equipment
+    "26": "Information Technology",  # Optoelectronic
+    "27": "Communication Services",  # Communications and internet
+    "28": "Information Technology",  # Electronic parts/components
+    "29": "Information Technology",  # Electronic products distribution
+    "30": "Information Technology",  # Information service
+    "31": "Information Technology",  # Other electronic
+    "32": "Communication Services",  # Cultural and creative
+    "33": "Consumer Staples",  # Agriculture technology
+    "34": "Consumer Discretionary",  # E-commerce
+    "35": "Industrials",  # Green energy and environmental services
+    "36": "Information Technology",  # Digital cloud
+    "37": "Consumer Discretionary",  # Sports and leisure
+    "38": "Consumer Discretionary",  # Household living
+}
 LSE_PAGE_INITIALS = tuple("ABCDEFGHIJKLMNOPQRSTUVWXYZ") + ("0",)
 TMX_LISTED_ISSUERS_HREF_RE = re.compile(
     r'href="([^"]+tsx-tsxv-listed-issuers-(\d{4})-(\d{2})-en\.xlsx)"',
@@ -671,9 +1282,211 @@ KRX_MARKET_ENGNAME_TO_EXCHANGE = {
     "KOSDAQ GLOBAL": "KOSDAQ",
     "KONEX": "KRX",
 }
+KRX_STD_INDUSTRY_PREFIX_SECTOR_MAP = {
+    "01": "Consumer Staples",
+    "02": "Materials",
+    "03": "Industrials",
+    "04": "Utilities",
+    "05": "Utilities",
+    "06": "Industrials",
+    "07": "Consumer Discretionary",
+    "08": "Industrials",
+    "09": "Consumer Discretionary",
+    "10": "Information Technology",
+    "11": "Financials",
+    "12": "Real Estate",
+    "13": "Industrials",
+    "14": "Industrials",
+    "16": "Consumer Discretionary",
+    "17": "Health Care",
+    "18": "Consumer Discretionary",
+}
+KRX_INDUSTRY_KEYWORD_SECTOR_RULES = (
+    (
+        "Health Care",
+        (
+            "biotechnology",
+            "diagnostic",
+            "health",
+            "hospital",
+            "medical",
+            "medicament",
+            "medicinal",
+            "pharma",
+        ),
+    ),
+    (
+        "Financials",
+        ("banking", "credit", "financial", "funding", "insurance", "investment", "pension", "trust"),
+    ),
+    ("Real Estate", ("real estate",)),
+    ("Utilities", ("distribution of gaseous fuel", "electricity", "sewerage", "steam", "water supply")),
+    ("Energy", ("coal", "gas extraction", "oil", "petroleum")),
+    (
+        "Information Technology",
+        (
+            "computer",
+            "data processing",
+            "electronic component",
+            "electronic video and audio equipment",
+            "information service",
+            "measuring",
+            "optical instrument",
+            "peripheral",
+            "semiconductor",
+            "software",
+            "system integration",
+            "telecommunication and broadcasting apparatus",
+            "web portal",
+        ),
+    ),
+    ("Communication Services", ("advertising", "broadcasting", "motion picture", "publishing", "telecommunications")),
+    (
+        "Consumer Staples",
+        (
+            "beverage",
+            "dairy",
+            "edible",
+            "feed",
+            "fish",
+            "food",
+            "grain",
+            "livestock",
+            "meat",
+            "tobacco",
+            "vegetable and animal oils",
+        ),
+    ),
+    (
+        "Consumer Discretionary",
+        (
+            "accommodation",
+            "amusement",
+            "apparel",
+            "arts",
+            "domestic appliances",
+            "education",
+            "footwear",
+            "furniture",
+            "household goods",
+            "leather",
+            "luggage",
+            "motor vehicle",
+            "recreation",
+            "retail",
+            "travel",
+            "wearing",
+        ),
+    ),
+    (
+        "Materials",
+        (
+            "basic chemical",
+            "cement",
+            "ceramic",
+            "chemical products",
+            "fertilizer",
+            "glass",
+            "iron",
+            "man-made fiber",
+            "metal",
+            "mineral",
+            "paper",
+            "plastic",
+            "pulp",
+            "rubber",
+            "steel",
+            "textile",
+            "wood",
+        ),
+    ),
+    (
+        "Industrials",
+        (
+            "aircraft",
+            "architectural",
+            "business support",
+            "construction",
+            "engineering",
+            "fabricated metal",
+            "head offices",
+            "machinery",
+            "management consultancy",
+            "scientific",
+            "ship",
+            "technical services",
+            "transport",
+            "weapon",
+        ),
+    ),
+)
+EGX_LISTED_STOCKS_DATA_ISIN_RE = re.compile(r"StocksData\.aspx\?ISIN=([A-Z0-9]{12})")
+EGX_VIEWSTATE_RE = re.compile(
+    r"<input\b(?=[^>]*(?:name|id)=[\"']__VIEWSTATE[\"'])(?P<tag>[^>]*)>",
+    re.I | re.S,
+)
+EGX_VIEWSTATE_VALUE_RE = re.compile(r"\bvalue=(?P<quote>[\"'])(?P<value>.*?)(?P=quote)", re.I | re.S)
+EGX_GRID_ROW_MARKER = "show('ctl00_C_L_GridView2_ctl"
+EGX_SECTOR_MAP = {
+    "banks": "Financials",
+    "basic resources": "Materials",
+    "health care & pharmaceuticals": "Health Care",
+    "industrial goods , services and automobiles": "Industrials",
+    "real estate": "Real Estate",
+    "travel & leisure": "Consumer Discretionary",
+    "utilities": "Utilities",
+    "it , media & communication services": "Communication Services",
+    "food, beverages and tobacco": "Consumer Staples",
+    "energy & support services": "Energy",
+    "trade & distributors": "Consumer Discretionary",
+    "shipping & transportation services": "Industrials",
+    "education services": "Consumer Discretionary",
+    "non-bank financial services": "Financials",
+    "contracting & construction engineering": "Industrials",
+    "textile & durables": "Consumer Discretionary",
+    "building materials": "Materials",
+    "paper & packaging": "Materials",
+}
 SSE_JSONP_RE = re.compile(r"^[^(]+\((.*)\)\s*$", re.S)
 SSE_STOCK_TYPES = ("1", "2", "8")
 SSE_ETF_SUBCLASSES = ("01", "02", "03", "05", "06", "08", "09", "31", "32", "33", "37")
+CHINA_CSRC_SECTOR_MAP = {
+    "A": "Consumer Staples",
+    "B": "Materials",
+    "C": "Industrials",
+    "D": "Utilities",
+    "E": "Industrials",
+    "F": "Consumer Discretionary",
+    "G": "Industrials",
+    "H": "Consumer Discretionary",
+    "I": "Information Technology",
+    "J": "Financials",
+    "K": "Real Estate",
+    "L": "Industrials",
+    "M": "Industrials",
+    "N": "Utilities",
+    "O": "Consumer Discretionary",
+    "P": "Consumer Discretionary",
+    "Q": "Health Care",
+    "R": "Communication Services",
+    "S": "Industrials",
+}
+IDX_SECTOR_MAP = {
+    "barang baku": "Materials",
+    "barang konsumen non-primer": "Consumer Discretionary",
+    "barang konsumen primer": "Consumer Staples",
+    "energi": "Energy",
+    "kesehatan": "Health Care",
+    "keuangan": "Financials",
+    "perindustrian": "Industrials",
+    "properti & real estat": "Real Estate",
+    "teknologi": "Information Technology",
+    "transportasi & logistik": "Industrials",
+}
+IDX_INFRASTRUCTURE_SUBSECTOR_MAP = {
+    "telekomunikasi": "Communication Services",
+    "utilitas": "Utilities",
+}
 PSX_SECTOR_LABEL_SKIP_MARKERS = (
     "select sector",
     "bond",
@@ -684,6 +1497,47 @@ PSX_ETF_SECTOR_LABEL_MARKERS = (
     "exchange traded fund",
     "exchange-traded fund",
 )
+PSX_DPS_SECTOR_SKIP_MARKERS = (
+    "bills and bonds",
+    "close - end mutual fund",
+    "close-end mutual fund",
+)
+PSX_DPS_SECTOR_MAP = {
+    "AUTOMOBILE ASSEMBLER": "Consumer Discretionary",
+    "AUTOMOBILE PARTS & ACCESSORIES": "Consumer Discretionary",
+    "CABLE & ELECTRICAL GOODS": "Industrials",
+    "CEMENT": "Materials",
+    "CHEMICAL": "Materials",
+    "COMMERCIAL BANKS": "Financials",
+    "ENGINEERING": "Industrials",
+    "FERTILIZER": "Materials",
+    "FOOD & PERSONAL CARE PRODUCTS": "Consumer Staples",
+    "GLASS & CERAMICS": "Materials",
+    "INSURANCE": "Financials",
+    "INV. BANKS / INV. COS. / SECURITIES COS.": "Financials",
+    "JUTE": "Consumer Discretionary",
+    "LEASING COMPANIES": "Financials",
+    "LEATHER & TANNERIES": "Consumer Discretionary",
+    "MODARABAS": "Financials",
+    "OIL & GAS EXPLORATION COMPANIES": "Energy",
+    "OIL & GAS MARKETING COMPANIES": "Energy",
+    "PAPER, BOARD & PACKAGING": "Materials",
+    "PHARMACEUTICALS": "Health Care",
+    "POWER GENERATION & DISTRIBUTION": "Utilities",
+    "PROPERTY": "Real Estate",
+    "REAL ESTATE INVESTMENT TRUST": "Real Estate",
+    "REFINERY": "Energy",
+    "SUGAR & ALLIED INDUSTRIES": "Consumer Staples",
+    "SYNTHETIC & RAYON": "Materials",
+    "TECHNOLOGY & COMMUNICATION": "Communication Services",
+    "TEXTILE COMPOSITE": "Consumer Discretionary",
+    "TEXTILE SPINNING": "Consumer Discretionary",
+    "TEXTILE WEAVING": "Consumer Discretionary",
+    "TOBACCO": "Consumer Staples",
+    "TRANSPORT": "Industrials",
+    "VANASPATI & ALLIED INDUSTRIES": "Consumer Staples",
+    "WOOLLEN": "Consumer Discretionary",
+}
 ASX_MONTH_MAP = {
     "jan": 1,
     "january": 1,
@@ -765,6 +1619,14 @@ OFFICIAL_SOURCES = [
         reference_scope="security_lookup_subset",
     ),
     MasterfileSource(
+        key="lse_price_explorer",
+        provider="LSE",
+        description="Official London Stock Exchange price explorer equity and ETF directory",
+        source_url=LSE_PRICE_EXPLORER_URL,
+        format="lse_price_explorer_json",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
         key="asx_listed_companies",
         provider="ASX",
         description="Official ASX listed companies directory",
@@ -794,6 +1656,13 @@ OFFICIAL_SOURCES = [
         source_url=SET_LISTED_COMPANIES_URL,
         format="set_listed_companies_html",
         reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="set_stock_search",
+        provider="SET",
+        description="Official Stock Exchange of Thailand stock search API",
+        source_url=SET_STOCK_LIST_API_URL,
+        format="set_stock_search_json",
     ),
     MasterfileSource(
         key="set_etf_search",
@@ -858,6 +1727,14 @@ OFFICIAL_SOURCES = [
         format="jpx_listed_issues_excel",
     ),
     MasterfileSource(
+        key="jpx_tse_stock_detail",
+        provider="JPX",
+        description="Official JPX/TSE Stock Data Search detail records with ISINs",
+        source_url=JPX_STOCK_DETAIL_API_URL,
+        format="jpx_tse_stock_detail_json",
+        reference_scope="security_identifier_registry_subset",
+    ),
+    MasterfileSource(
         key="deutsche_boerse_listed_companies",
         provider="Deutsche Boerse",
         description="Official Deutsche Boerse listed companies workbook",
@@ -876,10 +1753,10 @@ OFFICIAL_SOURCES = [
     MasterfileSource(
         key="deutsche_boerse_xetra_all_tradable_equities",
         provider="Deutsche Boerse",
-        description="Official Deutsche Boerse Xetra all tradable instruments directory (equities subset)",
+        description="Official Deutsche Boerse Xetra all tradable instruments directory for shares and ETPs",
         source_url=DEUTSCHE_BOERSE_XETRA_ALL_TRADABLE_URL,
         format="deutsche_boerse_xetra_all_tradable_csv",
-        reference_scope="listed_companies_subset",
+        reference_scope="exchange_directory",
     ),
     MasterfileSource(
         key="six_equity_issuers",
@@ -887,6 +1764,14 @@ OFFICIAL_SOURCES = [
         description="Official SIX Swiss Exchange equity issuers directory",
         source_url=SIX_EQUITY_ISSUERS_URL,
         format="six_equity_issuers_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="six_shares_explorer_full",
+        provider="SIX",
+        description="Official SIX FQS share and fund detail taxonomy supplement",
+        source_url=SIX_SHARE_DETAILS_FQS_URL,
+        format="six_share_details_fqs_json",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -977,11 +1862,27 @@ OFFICIAL_SOURCES = [
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
+        key="bme_security_prices_directory",
+        provider="BME",
+        description="Official BME security price directory for SIBE, Floor, Latibex, MTF, and ETFs",
+        source_url=BME_LISTED_COMPANIES_API_URL,
+        format="bme_security_prices_json",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
         key="bme_growth_prices",
         provider="BME Growth",
         description="Official BME Growth market price directory with instrument detail pages",
         source_url=BME_GROWTH_PRICES_URL,
         format="bme_growth_prices_html",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="athex_sector_classification",
+        provider="ATHEX",
+        description="Official ATHEX companies sector classification PDF with ISINs",
+        source_url=ATHEX_CLASSIFICATION_PDF_URL,
+        format="athex_sector_classification_pdf",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -991,6 +1892,309 @@ OFFICIAL_SOURCES = [
         source_url=BURSA_EQUITY_ISIN_PAGE_URL,
         format="bursa_equity_isin_pdf",
         reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="bursa_closing_prices",
+        provider="Bursa Malaysia",
+        description="Official Bursa Malaysia closing price PDF with board and sector labels",
+        source_url=BURSA_CLOSING_PRICES_PDF_URL,
+        format="bursa_closing_prices_pdf",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="bse_bw_listed_companies",
+        provider="BSE Botswana",
+        description="Official Botswana Stock Exchange listed companies directory",
+        source_url=BSE_BW_LISTED_COMPANIES_URL,
+        format="bse_bw_listed_companies_html",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="bse_hu_listed_companies",
+        provider="Budapest Stock Exchange",
+        description="Official Budapest Stock Exchange embedded market-data feed for equities and BETA products",
+        source_url=BSE_HU_BETA_MARKET_URL,
+        format="bse_hu_marketdata_html",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="egx_listed_stocks",
+        provider="EGX",
+        description="Official Egyptian Exchange listed-stocks page decoded from ASP.NET ViewState",
+        source_url=EGX_LISTED_STOCKS_URL,
+        format="egx_listed_stocks_viewstate",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="bvl_issuers_directory",
+        provider="CAVALI",
+        description="Official Peruvian CSD issuer securities registry with BVL ISIN and ticker fields",
+        source_url=CAVALI_BVL_EMISORES_URL,
+        format="cavali_bvl_emisores_html",
+        reference_scope="security_lookup_subset",
+    ),
+    MasterfileSource(
+        key="cse_ma_listed_companies",
+        provider="Casablanca Stock Exchange",
+        description="Official Casablanca Stock Exchange active equity instruments JSONAPI directory",
+        source_url=CASABLANCA_BOURSE_INSTRUMENTS_URL,
+        format="cse_ma_listed_companies_json",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
+        key="cse_lk_all_security_code",
+        provider="CSE Sri Lanka",
+        description="Official Colombo Stock Exchange all-security-code API",
+        source_url=CSE_LK_ALL_SECURITY_CODE_URL,
+        format="cse_lk_all_security_code_json",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
+        key="cse_lk_company_info_summary",
+        provider="CSE Sri Lanka",
+        description="Official Colombo Stock Exchange company-info detail API with ISIN",
+        source_url=CSE_LK_COMPANY_INFO_SUMMARY_URL,
+        format="cse_lk_company_info_summary_json",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
+        key="dse_tz_listed_companies",
+        provider="DSE Tanzania",
+        description="Official Dar es Salaam Stock Exchange listed-company table",
+        source_url=DSE_TZ_LISTED_COMPANIES_URL,
+        format="dse_tz_listed_companies_html",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="bvc_colombia_issuers",
+        provider="BVC",
+        description="Official Bolsa de Valores de Colombia local-equity issuer API with sector labels",
+        source_url=BVC_RV_ISSUERS_URL,
+        format="bvc_rv_issuers_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="byma_equity_details",
+        provider="BYMA",
+        description="Official Open BYMADATA equity detail endpoint for BCBA/BYMA instruments",
+        source_url=BYMA_EQUITY_DETAIL_URL,
+        format="byma_equity_details_json",
+        reference_scope="security_lookup_subset",
+    ),
+    MasterfileSource(
+        key="mse_mw_listed_companies",
+        provider="MSE Malawi",
+        description="Official Malawi Stock Exchange mainboard table with company links",
+        source_url=MSE_MW_MARKET_MAINBOARD_URL,
+        format="mse_mw_mainboard_html",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="nse_ke_listed_companies",
+        provider="NSE Kenya",
+        description="Official Nairobi Securities Exchange listed companies page with symbols, ISINs, and local sector sections",
+        source_url=NSE_KE_LISTED_COMPANIES_URL,
+        format="nse_ke_listed_companies_html",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
+        key="nse_india_securities_available",
+        provider="NSE India",
+        description="Official NSE India securities-available CSVs for equity and ETF symbols",
+        source_url=NSE_IN_SECURITIES_AVAILABLE_PAGE_URL,
+        format="nse_india_securities_available_csv",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
+        key="bse_india_scrips",
+        provider="BSE India",
+        description="Official BSE India active equity scrip API with ISINs",
+        source_url=BSE_IN_SCRIPS_PAGE_URL,
+        format="bse_india_scrips_json",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
+        key="hkex_securities_list",
+        provider="HKEX",
+        description="Official HKEX list of securities workbook with stock codes, categories, and ISINs",
+        source_url=HKEX_SECURITIES_LIST_URL,
+        format="hkex_securities_list_xlsx",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
+        key="sgx_securities_prices",
+        provider="SGX",
+        description="Official Singapore Exchange securities prices API with stock and ETF trading universe",
+        source_url=SGX_SECURITIES_PRICES_PAGE_URL,
+        format="sgx_securities_prices_json",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
+        key="dfm_listed_securities",
+        provider="DFM",
+        description="Official Dubai Financial Market stocks API plus company profile lookup with ISINs and sectors",
+        source_url=DFM_LISTED_SECURITIES_PAGE_URL,
+        format="dfm_listed_securities_json",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
+        key="boursa_kuwait_stocks",
+        provider="Boursa Kuwait",
+        description="Official Boursa Kuwait market data API with listed symbols, ISINs, and sector codes",
+        source_url=BOURSA_KUWAIT_STOCKS_PAGE_URL,
+        format="boursa_kuwait_legacy_mix_json",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
+        key="bahrain_bourse_listed_companies",
+        provider="Bahrain Bourse",
+        description="Official Bahrain Bourse ISIN code table for local equities and Bahrain Investment Market listings",
+        source_url=BAHRAIN_BOURSE_ISIN_CODES_URL,
+        format="bahrain_bourse_isin_codes_html",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
+        key="bist_kap_mkk_listed_securities",
+        provider="KAP/MKK",
+        description="Official BIST listed-company list from KAP joined to official MKK ISIN security registry",
+        source_url=BIST_LISTED_COMPANIES_PAGE_URL,
+        format="bist_kap_mkk_listed_securities_json",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
+        key="tadawul_main_market_watch",
+        provider="Saudi Exchange",
+        description="Official Saudi Exchange issuer directory joined to official theme search symbol/ISIN feed",
+        source_url=TADAWUL_ISSUERS_DIRECTORY_URL,
+        format="tadawul_securities_json",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
+        key="adx_market_watch",
+        provider="ADX",
+        description="Official Abu Dhabi Securities Exchange issuer directory joined to official market-watch security boards",
+        source_url=ADX_MARKET_WATCH_PAGE_URL,
+        format="adx_market_watch_json",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
+        key="qse_market_watch",
+        provider="QSE",
+        description="Official Qatar Stock Exchange MarketWatch stock and ETF directory",
+        source_url=QSE_MARKET_WATCH_URL,
+        format="qse_market_watch_json",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
+        key="muscat_securities_companies",
+        provider="MSX",
+        description="Official Muscat Stock Exchange active company directory",
+        source_url=MSX_COMPANIES_URL,
+        format="msx_companies_json",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
+        key="rse_listed_companies",
+        provider="RSE",
+        description="Official Rwanda Stock Exchange listed-company cards",
+        source_url=RSE_LISTED_COMPANIES_URL,
+        format="rse_listed_companies_html",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="gse_listed_companies",
+        provider="GSE",
+        description="Official Ghana Stock Exchange listed-company page captured as markdown",
+        source_url=GSE_LISTED_COMPANIES_URL,
+        format="gse_listed_companies_markdown",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="luse_listed_companies",
+        provider="LuSE",
+        description="Official Lusaka Securities Exchange listed-company page captured as markdown",
+        source_url=LUSE_LISTED_COMPANIES_URL,
+        format="luse_listed_companies_markdown",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="bolsa_santiago_instruments",
+        provider="Bolsa de Santiago",
+        description="Official Bolsa de Santiago instruments API captured through a browser session",
+        source_url=BOLSA_SANTIAGO_INSTRUMENTS_URL,
+        format="bolsa_santiago_instruments_json",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
+        key="sem_isin",
+        provider="SEM",
+        description="Official Stock Exchange of Mauritius CDS ISIN workbook for Official Market and DEM instruments",
+        source_url=SEM_ISIN_XLSX_URL,
+        format="sem_isin_xlsx",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
+        key="use_ug_listed_companies",
+        provider="USE Uganda",
+        description="Official Uganda Securities Exchange market-snapshot listed-company table",
+        source_url=USE_UG_MARKET_SNAPSHOT_URL,
+        format="use_ug_market_snapshot_html",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="nzx_instruments",
+        provider="NZX",
+        description="Official New Zealand Exchange NZSX instruments dataset from the market page Next.js payload",
+        source_url=NZX_INSTRUMENTS_URL,
+        format="nzx_instruments_next_data",
+    ),
+    MasterfileSource(
+        key="nasdaq_mutual_fund_quotes",
+        provider="Nasdaq",
+        description="Official Nasdaq Fund Network quote API for current NMFQS symbols",
+        source_url=NASDAQ_MUTUAL_FUND_SCREENER_URL,
+        format="nasdaq_mutual_fund_quote_json",
+        reference_scope="security_lookup_subset",
+    ),
+    MasterfileSource(
+        key="zse_zw_listed_companies",
+        provider="ZSE Zimbabwe",
+        description="Official Zimbabwe Stock Exchange listed issuer and price-sheet APIs",
+        source_url=ZSE_ZW_LISTED_EQUITIES_URL,
+        format="zse_zw_issuers_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="bvb_shares_directory",
+        provider="BVB",
+        description="Official Bucharest Stock Exchange shares directory with ISINs across Regulated, AeRO, and SMT Intl tabs",
+        source_url=BVB_SHARES_DIRECTORY_URL,
+        format="bvb_shares_directory_html",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
+        key="bvb_fund_units_directory",
+        provider="BVB",
+        description="Official Bucharest Stock Exchange fund units directory gated to ETF rows",
+        source_url=BVB_FUND_UNITS_DIRECTORY_URL,
+        format="bvb_fund_units_directory_html",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="ngx_equities_price_list",
+        provider="NGX",
+        description="Official Nigerian Exchange equities price list API with sector labels",
+        source_url=NGX_EQUITIES_PRICE_LIST_URL,
+        format="ngx_equities_price_list_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="ngx_company_profile_directory",
+        provider="NGX",
+        description="Official Nigerian Exchange company profile directory with issuer names and sectors",
+        source_url=NGX_COMPANY_PROFILE_DIRECTORY_URL,
+        format="ngx_company_profile_directory_html",
+        reference_scope="exchange_directory",
     ),
     MasterfileSource(
         key="bmv_stock_search",
@@ -1014,6 +2218,14 @@ OFFICIAL_SOURCES = [
         description="Official BMV ETF and TRACS search supplement",
         source_url=BMV_SEARCH_URL,
         format="bmv_etf_search_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="bmv_market_data_securities",
+        provider="BMV",
+        description="Official BMV issuer market-data pages with instrument ISINs and issuer taxonomy",
+        source_url=BMV_MARKET_DATA_SECURITIES_URL,
+        format="bmv_market_data_security_pages_html",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -1054,6 +2266,14 @@ OFFICIAL_SOURCES = [
         description="Official Nasdaq Nordic Helsinki share search supplement for exact stock ticker gaps",
         source_url=NASDAQ_NORDIC_SEARCH_URL,
         format="nasdaq_nordic_helsinki_shares_search_json",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="nasdaq_nordic_iceland_shares",
+        provider="Nasdaq Nordic",
+        description="Official Nasdaq Nordic Iceland shares screener (Main Market + First North)",
+        source_url=NASDAQ_NORDIC_SHARES_SCREENER_URL,
+        format="nasdaq_nordic_iceland_shares_json",
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
@@ -1234,10 +2454,10 @@ OFFICIAL_SOURCES = [
     MasterfileSource(
         key="krx_listed_companies",
         provider="KRX",
-        description="Official KRX listed company directory",
+        description="Official KRX listed company directory with industry taxonomy",
         source_url=KRX_LISTED_COMPANIES_URL,
         format="krx_listed_companies_json",
-        reference_scope="listed_companies_subset",
+        reference_scope="exchange_directory",
     ),
     MasterfileSource(
         key="krx_etf_finder",
@@ -1245,7 +2465,7 @@ OFFICIAL_SOURCES = [
         description="Official KRX ETF issue finder",
         source_url="https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
         format="krx_etf_finder_json",
-        reference_scope="listed_companies_subset",
+        reference_scope="exchange_directory",
     ),
     MasterfileSource(
         key="psx_listed_companies",
@@ -1264,11 +2484,27 @@ OFFICIAL_SOURCES = [
         reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
+        key="psx_dps_symbols",
+        provider="PSX",
+        description="Official PSX DPS symbols directory",
+        source_url=PSX_DPS_SYMBOLS_URL,
+        format="psx_dps_symbols_json",
+        reference_scope="exchange_directory",
+    ),
+    MasterfileSource(
         key="pse_listed_company_directory",
         provider="PSE",
         description="Official PSE listed company directory frame",
         source_url=PSE_LISTED_COMPANY_DIRECTORY_URL,
         format="pse_listed_company_directory_html",
+    ),
+    MasterfileSource(
+        key="pse_cz_shares_directory",
+        provider="Prague Stock Exchange",
+        description="Official Prague Stock Exchange share market directory",
+        source_url=PSE_CZ_SHARES_URL,
+        format="pse_cz_shares_directory_html",
+        reference_scope="listed_companies_subset",
     ),
     MasterfileSource(
         key="idx_listed_companies",
@@ -1277,6 +2513,14 @@ OFFICIAL_SOURCES = [
         source_url=IDX_LISTED_COMPANIES_URL,
         format="idx_listed_companies_json",
         reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="idx_company_profiles",
+        provider="IDX",
+        description="Official IDX company profiles metadata API",
+        source_url=IDX_COMPANY_PROFILES_URL,
+        format="idx_company_profiles_json",
+        reference_scope="exchange_directory",
     ),
     MasterfileSource(
         key="wse_listed_companies",
@@ -1375,6 +2619,22 @@ OFFICIAL_SOURCES = [
         reference_scope="exchange_directory",
     ),
     MasterfileSource(
+        key="vienna_listed_companies",
+        provider="Wiener Boerse",
+        description="Official Vienna Stock Exchange listed companies directory",
+        source_url=VIENNA_LISTED_COMPANIES_URL,
+        format="vienna_listed_companies_html",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
+        key="zagreb_securities_directory",
+        provider="ZSE Croatia",
+        description="Official Zagreb Stock Exchange listed share directory",
+        source_url=ZAGREB_SECURITIES_URL,
+        format="zagreb_securities_html",
+        reference_scope="listed_companies_subset",
+    ),
+    MasterfileSource(
         key="sec_company_tickers_exchange",
         provider="SEC",
         description="Official SEC company ticker to exchange mapping",
@@ -1388,6 +2648,14 @@ OFFICIAL_SOURCES = [
         source_url=OTC_MARKETS_SECURITY_PROFILE_PAGE_URL,
         format="otc_markets_security_profile_json",
         reference_scope="security_lookup_subset",
+    ),
+    MasterfileSource(
+        key="otc_markets_stock_screener",
+        provider="OTC Markets",
+        description="Official OTC Markets stock screener CSV export excluding Grey and Expert Market access",
+        source_url=OTC_MARKETS_STOCK_SCREENER_CSV_URL,
+        format="otc_markets_stock_screener_csv",
+        reference_scope="exchange_directory",
     ),
 ]
 
@@ -1564,17 +2832,19 @@ def jse_instrument_search_target_tickers(
     verification_dir: Path = STOCK_VERIFICATION_DIR,
 ) -> list[str]:
     reference_gap_tickers = latest_reference_gap_tickers(verification_dir, exchanges={"JSE"})
-    if not reference_gap_tickers:
-        return []
-    return sorted(
-        {
-            row.get("ticker", "").strip()
-            for row in load_csv(listings_path)
-            if row.get("exchange") == "JSE"
-            and row.get("asset_type") == "Stock"
-            and row.get("ticker", "").strip() in reference_gap_tickers
-        }
-    )
+    current_gap_tickers = {
+        row.get("ticker", "").strip()
+        for row in load_csv(listings_path)
+        if row.get("exchange") == "JSE"
+        and row.get("asset_type") == "Stock"
+        and row.get("ticker", "").strip()
+        and (
+            row.get("ticker", "").strip() in reference_gap_tickers
+            or not row.get("isin", "").strip()
+            or not (row.get("stock_sector", "").strip() or row.get("sector", "").strip())
+        )
+    }
+    return sorted(current_gap_tickers)
 
 
 def lse_reference_gap_tickers(base_dirs: Iterable[Path] | None = None) -> set[str]:
@@ -1618,12 +2888,24 @@ def bmv_search_target_rows(
     verification_dir: Path = STOCK_VERIFICATION_DIR,
 ) -> list[dict[str, str]]:
     config = BMV_SEARCH_SOURCE_CONFIG[source.key]
+    target_tickers = latest_verification_tickers(
+        verification_dir,
+        exchanges={config["exchange"]},
+        statuses={"reference_gap", "missing_from_official"},
+    )
+    asset_type = config.get("asset_type", "Stock")
+    sector_fields = ("etf_category", "sector") if asset_type == "ETF" else ("stock_sector", "sector")
     return [
         row
         for row in load_csv(listings_path)
         if row.get("exchange") == config["exchange"]
-        and row.get("asset_type") == config.get("asset_type", "Stock")
+        and row.get("asset_type") == asset_type
         and row.get("ticker", "").strip()
+        and (
+            row.get("ticker", "").strip().upper() in target_tickers
+            or not row.get("isin", "").strip()
+            or not any(row.get(field, "").strip() for field in sector_fields)
+        )
     ]
 
 
@@ -1812,6 +3094,15 @@ def nasdaq_nordic_request_headers(referer: str = NASDAQ_NORDIC_STOCK_PAGE_URL) -
     }
 
 
+def nasdaq_us_request_headers(referer: str = NASDAQ_MUTUAL_FUND_PAGE_URL) -> dict[str, str]:
+    return {
+        "User-Agent": BROWSER_USER_AGENT,
+        "Accept": "application/json,text/plain,*/*",
+        "Referer": referer,
+        "Origin": "https://www.nasdaq.com",
+    }
+
+
 def idx_request_headers(referer: str = IDX_STOCK_LIST_PAGE_URL) -> dict[str, str]:
     return {
         "User-Agent": "Mozilla/5.0",
@@ -1936,15 +3227,34 @@ def extract_jse_instrument_search_links(page_html: str) -> list[str]:
     return links
 
 
+def extract_jse_instrument_profile_values(page_html: str) -> dict[str, str]:
+    values: dict[str, str] = {}
+    for match in JSE_INSTRUMENT_PROFILE_VALUE_RE.finditer(page_html):
+        field = match.group("field").lower()
+        value = " ".join(unescape(strip_html_tags(match.group("value"))).split())
+        if value:
+            values[field] = value
+    return values
+
+
 def extract_jse_instrument_metadata(page_html: str) -> dict[str, str] | None:
     match = JSE_INSTRUMENT_META_RE.search(page_html)
     if not match:
         return None
-    return {
+    profile_values = extract_jse_instrument_profile_values(page_html)
+    sector = normalize_sector(profile_values.get("industry", ""), "Stock") or normalize_sector(
+        profile_values.get("sector", ""),
+        "Stock",
+    )
+    metadata = {
         "name": " ".join(unescape(match.group("name")).split()),
         "code": match.group("code").strip().upper(),
         "instrument_type": " ".join(unescape(match.group("instrument_type")).split()),
     }
+    if sector:
+        metadata["sector"] = sector
+    return metadata
+
 
 
 def load_sec_company_tickers_exchange_payload(
@@ -2034,6 +3344,91 @@ def load_otc_markets_security_profile_rows(
     ensure_output_dirs()
     OTC_MARKETS_SECURITY_PROFILE_CACHE.write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"
+
+
+def otc_markets_screener_headers() -> dict[str, str]:
+    return {
+        "Accept": "text/csv,*/*",
+        "Referer": OTC_MARKETS_STOCK_SCREENER_PAGE_URL,
+        "User-Agent": BROWSER_USER_AGENT,
+    }
+
+
+def infer_otc_markets_stock_screener_asset_type(sec_type: str) -> str:
+    normalized = sec_type.strip().lower()
+    if normalized == "etfs":
+        return "ETF"
+    if normalized in OTC_MARKETS_STOCK_SCREENER_STOCK_TYPES:
+        return "Stock"
+    return ""
+
+
+def parse_otc_markets_stock_screener_csv(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for record in csv.DictReader(io.StringIO(text)):
+        ticker = str(record.get("Symbol", "")).strip().upper()
+        name = str(record.get("Security Name", "")).strip()
+        sec_type = str(record.get("Sec Type", "")).strip()
+        asset_type = infer_otc_markets_stock_screener_asset_type(sec_type)
+        if not ticker or not name or not asset_type or ticker in seen:
+            continue
+        seen.add(ticker)
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "OTC",
+                "asset_type": asset_type,
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
+def fetch_otc_markets_stock_screener_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    request_session = session or requests.Session()
+    response = request_session.get(
+        source.source_url,
+        headers=otc_markets_screener_headers(),
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    text = response.text
+    return parse_otc_markets_stock_screener_csv(text, source)
+
+
+def load_otc_markets_stock_screener_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (OTC_MARKETS_STOCK_SCREENER_CACHE, LEGACY_OTC_MARKETS_STOCK_SCREENER_CACHE):
+        if path.exists():
+            return parse_otc_markets_stock_screener_csv(path.read_text(encoding="utf-8"), source), "cache"
+
+    try:
+        request_session = session or requests.Session()
+        response = request_session.get(
+            source.source_url,
+            headers=otc_markets_screener_headers(),
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        text = response.text
+    except requests.RequestException:
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    OTC_MARKETS_STOCK_SCREENER_CACHE.write_text(text, encoding="utf-8")
+    return parse_otc_markets_stock_screener_csv(text, source), "network"
 
 
 def load_tpex_mainboard_quotes_payload(
@@ -2159,6 +3554,46 @@ def load_set_dr_search_rows(
     return rows, "network"
 
 
+def load_set_stock_search_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_set_stock_search(source, session=session)
+    except (ImportError, RuntimeError, requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in (SET_STOCK_SEARCH_CACHE, LEGACY_SET_STOCK_SEARCH_CACHE):
+            if path.exists():
+                return parse_set_stock_search_payload(
+                    json.loads(path.read_text(encoding="utf-8")),
+                    source,
+                ), "cache"
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    SET_STOCK_SEARCH_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return parse_set_stock_search_payload(rows, source), "network"
+
+
+def load_psx_dps_symbols_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        payload = fetch_psx_dps_symbols(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in (PSX_DPS_SYMBOLS_CACHE, LEGACY_PSX_DPS_SYMBOLS_CACHE):
+            if path.exists():
+                return parse_psx_dps_symbols_payload(
+                    json.loads(path.read_text(encoding="utf-8")),
+                    source,
+                ), "cache"
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    PSX_DPS_SYMBOLS_CACHE.write_text(json.dumps(payload), encoding="utf-8")
+    return parse_psx_dps_symbols_payload(payload, source), "network"
+
+
 def parse_pse_listed_company_directory_html(text: str, source: MasterfileSource) -> list[dict[str, str]]:
     match = re.search(r'id="store-json"[^>]*value="([^"]+)"', text)
     if match is None:
@@ -2232,6 +3667,4437 @@ def load_pse_listed_company_directory_rows(
     return rows, "network"
 
 
+def parse_pse_cz_share_links(text: str, page_url: str) -> list[dict[str, str]]:
+    links: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for match in PSE_CZ_SHARE_LINK_RE.finditer(text):
+        isin = match.group("isin").strip().upper()
+        if not is_valid_isin(isin) or isin in seen:
+            continue
+        links.append(
+            {
+                "isin": isin,
+                "label": clean_html_text(match.group("label")).upper(),
+                "detail_url": urljoin(page_url, match.group("href")),
+            }
+        )
+        seen.add(isin)
+    return links
+
+
+def parse_pse_cz_detail_ticker(text: str) -> str:
+    for pattern in (PSE_CZ_TICKER_XETRA_RE, PSE_CZ_TICKER_REUTERS_RE, PSE_CZ_TICKER_BLOOMBERG_RE):
+        match = pattern.search(text)
+        if match is None:
+            continue
+        ticker = clean_html_text(match.group("ticker")).upper()
+        ticker = ticker.split()[0]
+        ticker = ticker.split(".", 1)[0]
+        if ticker and re.fullmatch(r"[A-Z0-9&.-]+", ticker):
+            return ticker
+    return ""
+
+
+def listing_rows_by_exchange_ticker(exchange: str, listings_path: Path = LISTINGS_CSV) -> dict[str, dict[str, str]]:
+    rows: dict[str, dict[str, str]] = {}
+    for row in load_csv(listings_path):
+        if row.get("exchange") != exchange:
+            continue
+        ticker = row.get("ticker", "").strip().upper()
+        if ticker:
+            rows.setdefault(ticker, row)
+    return rows
+
+
+def build_pse_cz_share_rows(
+    share_links: list[dict[str, str]],
+    detail_html_by_isin: dict[str, str],
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    listings_by_isin = listing_rows_by_exchange_isin("PSE_CZ", listings_path=listings_path)
+    listings_by_ticker = listing_rows_by_exchange_ticker("PSE_CZ", listings_path=listings_path)
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+
+    for link in share_links:
+        isin = link["isin"].strip().upper()
+        detail_html = detail_html_by_isin.get(isin, "")
+        ticker = parse_pse_cz_detail_ticker(detail_html) or link.get("label", "").strip().upper()
+        if not ticker or ticker in seen or not is_valid_isin(isin):
+            continue
+        listing = listings_by_ticker.get(ticker) or listings_by_isin.get(isin)
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": link["detail_url"],
+                "ticker": ticker,
+                "name": (listing or {}).get("name") or link.get("label", ticker),
+                "exchange": "PSE_CZ",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+                "isin": isin,
+            }
+        )
+        seen.add(ticker)
+    return rows
+
+
+def fetch_pse_cz_shares_directory(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    share_links: list[dict[str, str]] = []
+    seen_isins: set[str] = set()
+    for page_url in PSE_CZ_SHARES_MARKET_URLS:
+        response = session.get(page_url, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT)
+        response.raise_for_status()
+        for link in parse_pse_cz_share_links(response.text, page_url):
+            if link["isin"] in seen_isins:
+                continue
+            share_links.append(link)
+            seen_isins.add(link["isin"])
+
+    detail_html_by_isin: dict[str, str] = {}
+    for link in share_links:
+        response = session.get(link["detail_url"], headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT)
+        response.raise_for_status()
+        detail_html_by_isin[link["isin"]] = response.text
+
+    return build_pse_cz_share_rows(
+        share_links,
+        detail_html_by_isin,
+        source,
+        listings_path=listings_path,
+    )
+
+
+def load_pse_cz_shares_directory_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (PSE_CZ_SHARES_DIRECTORY_CACHE, LEGACY_PSE_CZ_SHARES_DIRECTORY_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_pse_cz_shares_directory(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    PSE_CZ_SHARES_DIRECTORY_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def clean_html_text(value: str) -> str:
+    return " ".join(unescape(strip_html_tags(value)).split())
+
+
+def listing_rows_by_exchange_isin(exchange: str, listings_path: Path = LISTINGS_CSV) -> dict[str, dict[str, str]]:
+    rows: dict[str, dict[str, str]] = {}
+    for row in load_csv(listings_path):
+        if row.get("exchange") != exchange:
+            continue
+        isin = row.get("isin", "").strip().upper()
+        if isin and is_valid_isin(isin):
+            rows.setdefault(isin, row)
+    return rows
+
+
+def bse_bw_listing_match_key(value: str) -> str:
+    return compact_company_name(value)
+
+
+def find_bse_bw_listing_for_name(
+    name: str,
+    current_rows: list[dict[str, str]],
+) -> dict[str, str] | None:
+    official_key = bse_bw_listing_match_key(name)
+    if not official_key:
+        return None
+    for row in current_rows:
+        row_key = bse_bw_listing_match_key(row.get("name", ""))
+        if row_key and row_key == official_key:
+            return row
+    for row in current_rows:
+        row_key = bse_bw_listing_match_key(row.get("name", ""))
+        if row_key and len(row_key) >= 5 and row_key in official_key:
+            return row
+        if row_key and len(official_key) >= 8 and official_key in row_key:
+            return row
+    official_tokens = {token.rstrip("s") for token in normalize_tokens(name) if len(token) >= 4}
+    for row in current_rows:
+        row_tokens = {
+            token.rstrip("s")
+            for token in normalize_tokens(row.get("name", ""))
+            if len(token) >= 4
+        }
+        if len(official_tokens & row_tokens) >= 2:
+            return row
+    return None
+
+
+def parse_bse_bw_listed_companies_html(
+    text: str,
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    current_rows = [
+        row
+        for row in load_csv(listings_path)
+        if row.get("exchange") == "BSE_BW"
+    ]
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for match in BSE_BW_PANEL_RE.finditer(text):
+        name = clean_html_text(match.group("title"))
+        fields = {
+            clean_html_text(field.group("label")).lower(): clean_html_text(field.group("value"))
+            for field in HTML_TH_TD_ROW_RE.finditer(match.group("body"))
+        }
+        counter = fields.get("counter", "").strip().upper()
+        sector = fields.get("sector", "").strip()
+        listing = find_bse_bw_listing_for_name(name, current_rows)
+        if not listing:
+            continue
+        ticker = listing.get("ticker", "").strip().upper() or counter
+        if not ticker or ticker in seen or not name:
+            continue
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": (listing or {}).get("name") or name,
+            "exchange": "BSE_BW",
+            "asset_type": (listing or {}).get("asset_type") or "Stock",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        if (listing or {}).get("isin"):
+            row["isin"] = listing["isin"]
+        if sector:
+            row["sector"] = sector
+        rows.append(row)
+        seen.add(ticker)
+    return rows
+
+
+def fetch_bse_bw_listed_companies(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    text = fetch_text(source.source_url, session=session)
+    return parse_bse_bw_listed_companies_html(text, source)
+
+
+def load_bse_bw_listed_companies_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (BSE_BW_LISTED_COMPANIES_CACHE, LEGACY_BSE_BW_LISTED_COMPANIES_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_bse_bw_listed_companies(source, session=session)
+    except (requests.RequestException, ValueError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    BSE_BW_LISTED_COMPANIES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def extract_bse_hu_datasource_payload(text: str) -> dict[str, Any]:
+    marker = "window.dataSourceResults="
+    marker_index = text.find(marker)
+    if marker_index == -1:
+        raise ValueError("BSE HU dataSourceResults payload not found")
+    body_start = text.find("{", marker_index + len(marker))
+    if body_start == -1:
+        raise ValueError("BSE HU dataSourceResults JSON start not found")
+    body_end = find_javascript_block_end(text, body_start, open_char="{", close_char="}")
+    payload = json.loads(text[body_start : body_end + 1])
+    if not isinstance(payload, dict):
+        raise ValueError("BSE HU dataSourceResults payload is not an object")
+    return payload
+
+
+def bse_hu_datasource_records(payload: dict[str, Any]) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for value in payload.values():
+        candidate_rows: list[Any] = []
+        if isinstance(value, list):
+            candidate_rows = value
+        elif isinstance(value, dict) and isinstance(value.get("rows"), list):
+            candidate_rows = value["rows"]
+        for record in candidate_rows:
+            if not isinstance(record, dict):
+                continue
+            ticker = str(record.get("seccode") or "").strip().upper()
+            isin = str(record.get("isin") or "").strip().upper()
+            if not ticker or ticker in seen or not is_valid_isin(isin):
+                continue
+            rows.append(record)
+            seen.add(ticker)
+    return rows
+
+
+def parse_bse_hu_marketdata_html(
+    text: str,
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    current_rows_by_ticker = {
+        row.get("ticker", "").strip().upper(): row
+        for row in load_csv(listings_path)
+        if row.get("exchange") == "BSE_HU" and row.get("ticker", "").strip()
+    }
+    rows: list[dict[str, str]] = []
+    for record in bse_hu_datasource_records(extract_bse_hu_datasource_payload(text)):
+        ticker = str(record.get("seccode") or "").strip().upper()
+        isin = str(record.get("isin") or "").strip().upper()
+        listing = current_rows_by_ticker.get(ticker)
+        if not listing:
+            continue
+        name = listing.get("name", "").strip()
+        if not name:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "BSE_HU",
+                "asset_type": listing.get("asset_type", "") or infer_asset_type(name),
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+                "isin": isin,
+            }
+        )
+    return rows
+
+
+def fetch_bse_hu_marketdata_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    text = fetch_text(source.source_url, session=session)
+    return parse_bse_hu_marketdata_html(text, source)
+
+
+def load_bse_hu_marketdata_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (BSE_HU_MARKETDATA_CACHE, LEGACY_BSE_HU_MARKETDATA_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_bse_hu_marketdata_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    BSE_HU_MARKETDATA_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def normalize_egx_sector(value: str) -> str:
+    sector = clean_html_text(value)
+    return EGX_SECTOR_MAP.get(sector.lower(), "")
+
+
+def extract_egx_viewstate(text: str) -> str:
+    match = EGX_VIEWSTATE_RE.search(text)
+    if not match:
+        raise ValueError("EGX __VIEWSTATE input not found")
+    value_match = EGX_VIEWSTATE_VALUE_RE.search(match.group("tag"))
+    if not value_match:
+        raise ValueError("EGX __VIEWSTATE value not found")
+    return unescape(value_match.group("value"))
+
+
+def extract_aspnet_viewstate_strings(viewstate: str) -> list[str]:
+    try:
+        raw = b64decode(viewstate)
+    except ValueError as exc:
+        raise ValueError("EGX __VIEWSTATE is not valid base64") from exc
+
+    strings: list[str] = []
+    index = 0
+    while index < len(raw) - 2:
+        if raw[index] != 0x05:
+            index += 1
+            continue
+        length = raw[index + 1]
+        start = index + 2
+        end = start + length
+        if length <= 0 or end > len(raw):
+            index += 1
+            continue
+        value_bytes = raw[start:end]
+        try:
+            value = value_bytes.decode("utf-8")
+        except UnicodeDecodeError:
+            index += 1
+            continue
+        if all(char >= " " and char != "\x7f" for char in value):
+            strings.append(value)
+            index = end
+            continue
+        index += 1
+    return strings
+
+
+def parse_egx_listed_stocks_viewstate(
+    text: str,
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    current_by_isin = listing_rows_by_exchange_isin("EGX", listings_path=listings_path)
+    if not current_by_isin:
+        return []
+
+    strings = extract_aspnet_viewstate_strings(extract_egx_viewstate(text))
+    rows_by_isin: dict[str, dict[str, str]] = {}
+    for index, name_value in enumerate(strings[:-2]):
+        if name_value.startswith("show("):
+            continue
+        if not strings[index + 1].startswith(EGX_GRID_ROW_MARKER):
+            continue
+
+        name = clean_html_text(name_value)
+        window = strings[index : index + 18]
+        isin = ""
+        sector = ""
+        for offset, value in enumerate(window):
+            match = EGX_LISTED_STOCKS_DATA_ISIN_RE.search(value)
+            if not match:
+                continue
+            isin = match.group(1).upper()
+            for sector_index in range(offset + 1, min(len(window) - 1, offset + 10)):
+                if window[sector_index].strip().upper() == isin:
+                    sector = normalize_egx_sector(window[sector_index + 1])
+                    break
+            break
+
+        if not name or not is_valid_isin(isin) or isin not in current_by_isin:
+            continue
+        rows_by_isin.setdefault(
+            isin,
+            build_current_listing_reference_row(
+                source,
+                current_by_isin[isin],
+                name=name,
+                isin=isin,
+                sector=sector,
+            ),
+        )
+
+    return sorted(rows_by_isin.values(), key=lambda row: row["ticker"])
+
+
+def fetch_egx_listed_stocks_html_with_browser(source: MasterfileSource) -> str:
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError as exc:  # pragma: no cover - depends on local browser tooling
+        raise requests.RequestException("Playwright is required for EGX browser capture") from exc
+
+    profile_dir = Path(tempfile.mkdtemp(prefix="egx-chrome-"))
+    context = None
+    try:
+        with sync_playwright() as playwright:
+            launch_kwargs = {
+                "headless": True,
+                "args": ["--disable-blink-features=AutomationControlled"],
+                "user_agent": BROWSER_USER_AGENT,
+                "locale": "en-US",
+                "viewport": {"width": 1440, "height": 1000},
+            }
+            try:
+                context = playwright.chromium.launch_persistent_context(
+                    str(profile_dir),
+                    channel="chrome",
+                    **launch_kwargs,
+                )
+            except Exception:
+                context = playwright.chromium.launch_persistent_context(str(profile_dir), **launch_kwargs)
+            page = context.new_page()
+            page.goto(source.source_url, wait_until="domcontentloaded", timeout=60_000)
+            for _ in range(24):
+                try:
+                    html = page.content()
+                except Exception:
+                    page.wait_for_timeout(2_500)
+                    continue
+                if "__VIEWSTATE" in html and "GridView2" in html and len(html) > 50_000:
+                    return html
+                page.wait_for_timeout(2_500)
+    except Exception as exc:  # pragma: no cover - network/browser dependent
+        raise requests.RequestException("EGX browser capture unavailable") from exc
+    finally:
+        if context is not None:
+            try:
+                context.close()
+            except Exception:
+                pass
+        shutil.rmtree(profile_dir, ignore_errors=True)
+
+    raise requests.RequestException("EGX browser capture did not expose listed-stocks ViewState")
+
+
+def fetch_egx_listed_stocks_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    del session
+    text = fetch_egx_listed_stocks_html_with_browser(source)
+    rows = parse_egx_listed_stocks_viewstate(text, source)
+    if not rows:
+        raise ValueError("EGX listed-stocks ViewState did not match current listings")
+    return rows
+
+
+def load_egx_listed_stocks_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (EGX_LISTED_STOCKS_CACHE, LEGACY_EGX_LISTED_STOCKS_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_egx_listed_stocks_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    EGX_LISTED_STOCKS_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def current_exchange_listings(exchange: str, listings_path: Path = LISTINGS_CSV) -> list[dict[str, str]]:
+    return [
+        row
+        for row in load_csv(listings_path)
+        if row.get("exchange") == exchange and row.get("ticker", "").strip()
+    ]
+
+
+def build_current_listing_reference_row(
+    source: MasterfileSource,
+    listing: dict[str, str],
+    *,
+    name: str | None = None,
+    isin: str | None = None,
+    sector: str | None = None,
+) -> dict[str, str]:
+    row = {
+        "source_key": source.key,
+        "provider": source.provider,
+        "source_url": source.source_url,
+        "ticker": listing.get("ticker", "").strip().upper(),
+        "name": (name or listing.get("name", "")).strip(),
+        "exchange": listing.get("exchange", "").strip(),
+        "asset_type": listing.get("asset_type", "").strip() or infer_asset_type(name or listing.get("name", "")),
+        "listing_status": "active",
+        "reference_scope": source.reference_scope,
+        "official": "true",
+        "isin": (isin or listing.get("isin", "")).strip().upper(),
+    }
+    if sector:
+        row["sector"] = sector.strip()
+    return row
+
+
+DSE_TZ_VISIBLE_TICKER_OVERRIDES = {
+    # DSE uses the current TCPLC code, while the local DB still carries the legacy TCCL ticker.
+    "TCPLC": "TCCL",
+}
+
+
+def parse_dse_tz_listed_companies_html(
+    text: str,
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    current_by_ticker = {
+        row.get("ticker", "").strip().upper(): row for row in current_exchange_listings("DSE_TZ", listings_path)
+    }
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for table in pd.read_html(io.StringIO(text)):
+        if "Company Code" not in table.columns:
+            continue
+        for record in table.to_dict("records"):
+            official_ticker = str(record.get("Company Code") or "").strip().upper()
+            ticker = DSE_TZ_VISIBLE_TICKER_OVERRIDES.get(official_ticker, official_ticker)
+            listing = current_by_ticker.get(ticker)
+            if not listing or ticker in seen:
+                continue
+            seen.add(ticker)
+            rows.append(build_current_listing_reference_row(source, listing))
+    return rows
+
+
+def fetch_dse_tz_listed_companies(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    response = session.get(source.source_url, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT, verify=False)
+    response.raise_for_status()
+    return parse_dse_tz_listed_companies_html(response.text, source)
+
+
+def load_dse_tz_listed_companies_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (DSE_TZ_LISTED_COMPANIES_CACHE, LEGACY_DSE_TZ_LISTED_COMPANIES_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_dse_tz_listed_companies(source, session=session)
+    except (requests.RequestException, ValueError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    DSE_TZ_LISTED_COMPANIES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def parse_mse_mw_mainboard_html(
+    text: str,
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    current_by_ticker = {
+        row.get("ticker", "").strip().upper(): row for row in current_exchange_listings("MSE_MW", listings_path)
+    }
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for match in re.finditer(
+        r'<a[^>]+href=["\'](?:https://mse\.co\.mw)?/company/([A-Z0-9]{12})["\'][^>]*>(.*?)</a>',
+        text,
+        re.IGNORECASE | re.DOTALL,
+    ):
+        isin = match.group(1).strip().upper()
+        ticker = re.sub(r"<[^>]+>", "", match.group(2)).strip().upper()
+        listing = current_by_ticker.get(ticker)
+        if not listing or ticker in seen or not is_valid_isin(isin):
+            continue
+        seen.add(ticker)
+        rows.append(build_current_listing_reference_row(source, listing, isin=isin))
+    return rows
+
+
+def fetch_mse_mw_mainboard_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    text = fetch_text(source.source_url, session=session)
+    return parse_mse_mw_mainboard_html(text, source)
+
+
+def load_mse_mw_mainboard_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (MSE_MW_MAINBOARD_CACHE, LEGACY_MSE_MW_MAINBOARD_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_mse_mw_mainboard_rows(source, session=session)
+    except (requests.RequestException, ValueError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    MSE_MW_MAINBOARD_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def find_current_listing_by_name(
+    official_name: str,
+    current_rows: list[dict[str, str]],
+    seen_tickers: set[str],
+) -> dict[str, str] | None:
+    for row in current_rows:
+        ticker = row.get("ticker", "").strip().upper()
+        if ticker in seen_tickers:
+            continue
+        if alias_matches_company(official_name, row.get("name", "")):
+            return row
+    return None
+
+
+USE_UG_VISIBLE_TICKER_OVERRIDES = {
+    # USE writes these labels in the Stock Code column; the local DB keeps compact ticker symbols.
+    "AIRTEL UGANDA": "AIRTELUGAN",
+    "UMEME": "UMEM",
+}
+
+
+def parse_use_ug_market_snapshot_html(
+    text: str,
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    current_by_ticker = {
+        row.get("ticker", "").strip().upper(): row for row in current_exchange_listings("USE_UG", listings_path)
+    }
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for table in pd.read_html(io.StringIO(text)):
+        if "Stock Code" not in table.columns or "Name" not in table.columns:
+            continue
+        for record in table.to_dict("records"):
+            official_ticker = str(record.get("Stock Code") or "").strip().upper()
+            ticker = USE_UG_VISIBLE_TICKER_OVERRIDES.get(official_ticker, official_ticker.replace(" ", ""))
+            official_name = str(record.get("Name") or "").strip()
+            listing = current_by_ticker.get(ticker)
+            if not listing or ticker in seen:
+                continue
+            seen.add(ticker)
+            rows.append(build_current_listing_reference_row(source, listing, name=official_name))
+    return rows
+
+
+def fetch_use_ug_market_snapshot_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    text = fetch_text(source.source_url, session=session)
+    return parse_use_ug_market_snapshot_html(text, source)
+
+
+def load_use_ug_market_snapshot_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (USE_UG_MARKET_SNAPSHOT_CACHE, LEGACY_USE_UG_MARKET_SNAPSHOT_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_use_ug_market_snapshot_rows(source, session=session)
+    except (requests.RequestException, ValueError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    USE_UG_MARKET_SNAPSHOT_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def parse_nasdaq_mutual_fund_quote_payload(
+    payload: dict[str, Any],
+    source: MasterfileSource,
+    listing: dict[str, str],
+) -> dict[str, str] | None:
+    data = payload.get("data")
+    if not isinstance(data, dict):
+        return None
+    ticker = listing.get("ticker", "").strip().upper()
+    if str(data.get("symbol") or "").strip().upper() != ticker:
+        return None
+    if str(data.get("exchange") or "").strip() != "Nasdaq Fund Network":
+        return None
+    name = str(data.get("companyName") or "").strip()
+    if not name:
+        return None
+    row = build_current_listing_reference_row(source, listing, name=name)
+    row["source_url"] = NASDAQ_MUTUAL_FUND_QUOTE_URL_TEMPLATE.format(ticker=ticker)
+    return row
+
+
+def fetch_nasdaq_mutual_fund_quote_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    rows: list[dict[str, str]] = []
+    for listing in current_exchange_listings("NMFQS"):
+        ticker = listing.get("ticker", "").strip().upper()
+        if not ticker:
+            continue
+        payload = fetch_json(
+            NASDAQ_MUTUAL_FUND_QUOTE_URL_TEMPLATE.format(ticker=ticker),
+            session=session,
+            headers=nasdaq_us_request_headers(),
+        )
+        row = parse_nasdaq_mutual_fund_quote_payload(payload, source, listing)
+        if row:
+            rows.append(row)
+    return rows
+
+
+def load_nasdaq_mutual_fund_quote_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (NASDAQ_MUTUAL_FUND_QUOTES_CACHE, LEGACY_NASDAQ_MUTUAL_FUND_QUOTES_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_nasdaq_mutual_fund_quote_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    NASDAQ_MUTUAL_FUND_QUOTES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def parse_rse_listed_companies_html(
+    text: str,
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    current_rows = current_exchange_listings("RSE", listings_path)
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for match in re.finditer(r'class=["\']listed-compagnies-card-item-name["\'][^>]*>(.*?)</span>', text, re.DOTALL):
+        official_name = unescape(re.sub(r"<[^>]+>", "", match.group(1))).strip()
+        listing = find_current_listing_by_name(official_name, current_rows, seen)
+        if not listing:
+            continue
+        seen.add(listing.get("ticker", "").strip().upper())
+        rows.append(build_current_listing_reference_row(source, listing, name=official_name))
+    return rows
+
+
+def fetch_rse_listed_companies_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    response = session.get(source.source_url, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT, verify=False)
+    response.raise_for_status()
+    return parse_rse_listed_companies_html(response.text, source)
+
+
+def load_rse_listed_companies_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (RSE_LISTED_COMPANIES_CACHE, LEGACY_RSE_LISTED_COMPANIES_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_rse_listed_companies_rows(source, session=session)
+    except (requests.RequestException, ValueError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    RSE_LISTED_COMPANIES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def official_reader_url(source_url: str) -> str:
+    return f"https://r.jina.ai/http://r.jina.ai/http://{source_url}"
+
+
+def fetch_official_reader_markdown(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> str:
+    session = session or requests.Session()
+    response = session.get(
+        official_reader_url(source.source_url),
+        headers={"User-Agent": USER_AGENT},
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    return response.text
+
+
+GSE_LISTED_MARKDOWN_ROW_RE = re.compile(
+    r"^\s*\|\s*\[(?P<ticker>[A-Z0-9][A-Z0-9 .-]*)\]\([^)]*\)\s*\|\s*(?P<name>[^|]+?)\s*\|",
+    re.MULTILINE,
+)
+
+
+def parse_gse_listed_companies_markdown(
+    text: str,
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    current_by_ticker = {
+        row.get("ticker", "").strip().upper(): row for row in current_exchange_listings("GSE", listings_path)
+    }
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for match in GSE_LISTED_MARKDOWN_ROW_RE.finditer(text):
+        ticker = re.sub(r"\s+", " ", match.group("ticker")).strip().upper()
+        name = clean_html_text(match.group("name")).strip()
+        listing = current_by_ticker.get(ticker)
+        if not listing or ticker in seen or not name:
+            continue
+        seen.add(ticker)
+        rows.append(build_current_listing_reference_row(source, listing, name=name))
+    return rows
+
+
+def fetch_gse_listed_companies_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    text = fetch_official_reader_markdown(source, session=session)
+    return parse_gse_listed_companies_markdown(text, source)
+
+
+def load_gse_listed_companies_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (GSE_LISTED_COMPANIES_CACHE, LEGACY_GSE_LISTED_COMPANIES_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_gse_listed_companies_rows(source, session=session)
+    except (requests.RequestException, ValueError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    GSE_LISTED_COMPANIES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+LUSE_LISTED_MARKDOWN_ROW_RE = re.compile(
+    r"^\s*\*\s+(?P<ticker>[A-Z0-9][A-Z0-9 .-]{0,20}[A-Z0-9])\s*\n+\s*#\s+(?P<name>[^\n]+)",
+    re.MULTILINE,
+)
+
+
+def normalize_luse_listed_ticker(value: str) -> str:
+    return re.sub(r"\s+", " ", value).strip().upper()
+
+
+def clean_luse_listed_name(value: str, ticker: str) -> str:
+    name = clean_html_text(value).strip()
+    for separator in (" – ", " - "):
+        prefix = f"{ticker}{separator}"
+        if name.upper().startswith(prefix.upper()):
+            return name[len(prefix) :].strip()
+    return name
+
+
+def parse_luse_listed_companies_markdown(
+    text: str,
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    current_by_ticker = {
+        row.get("ticker", "").strip().upper(): row for row in current_exchange_listings("LUSE", listings_path)
+    }
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for match in LUSE_LISTED_MARKDOWN_ROW_RE.finditer(text):
+        ticker = normalize_luse_listed_ticker(match.group("ticker"))
+        listing = current_by_ticker.get(ticker)
+        if not listing or ticker in seen:
+            continue
+        name = clean_luse_listed_name(match.group("name"), ticker)
+        if not name:
+            continue
+        seen.add(ticker)
+        rows.append(build_current_listing_reference_row(source, listing, name=name))
+    return rows
+
+
+def fetch_luse_listed_companies_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    text = fetch_official_reader_markdown(source, session=session)
+    return parse_luse_listed_companies_markdown(text, source)
+
+
+def load_luse_listed_companies_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (LUSE_LISTED_COMPANIES_CACHE, LEGACY_LUSE_LISTED_COMPANIES_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_luse_listed_companies_rows(source, session=session)
+    except (requests.RequestException, ValueError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    LUSE_LISTED_COMPANIES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def normalize_bolsa_santiago_nemo(value: Any) -> str:
+    return re.sub(r"\s+", "", str(value or "").strip().upper())
+
+
+def parse_bolsa_santiago_instruments_payload(
+    payload: dict[str, Any],
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    current_by_normalized_ticker = {
+        normalize_bolsa_santiago_nemo(row.get("ticker", "")): row
+        for row in current_exchange_listings("SSE_CL", listings_path)
+    }
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for record in payload.get("listaResult", []):
+        if not isinstance(record, dict):
+            continue
+        normalized_ticker = normalize_bolsa_santiago_nemo(record.get("NEMO"))
+        listing = current_by_normalized_ticker.get(normalized_ticker)
+        if not listing:
+            continue
+        ticker = listing.get("ticker", "").strip().upper()
+        if not ticker or ticker in seen:
+            continue
+        name = clean_html_text(str(record.get("RAZON_SOCIAL") or "")).strip()
+        if not name:
+            continue
+        seen.add(ticker)
+        rows.append(build_current_listing_reference_row(source, listing, name=name))
+    return rows
+
+
+def fetch_bolsa_santiago_instruments_payload_via_browser() -> dict[str, Any]:
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError as exc:  # pragma: no cover - optional browser dependency
+        raise requests.RequestException("Playwright is required for Bolsa de Santiago browser fetch") from exc
+
+    with sync_playwright() as playwright:
+        browser = playwright.chromium.launch(headless=True)
+        try:
+            context = browser.new_context(
+                locale="es-CL",
+                user_agent=BROWSER_USER_AGENT,
+                viewport={"width": 1365, "height": 900},
+            )
+            page = context.new_page()
+            page.goto(
+                BOLSA_SANTIAGO_INSTRUMENTS_PAGE_URL,
+                wait_until="domcontentloaded",
+                timeout=int(REQUEST_TIMEOUT * 1000),
+            )
+            # Radware blocks raw requests; normal browser interaction is enough to set the session cookies.
+            page.mouse.move(80, 80)
+            page.mouse.down()
+            page.mouse.move(220, 180)
+            page.mouse.up()
+            page.wait_for_timeout(8000)
+            result = page.evaluate(
+                """async ({ tokenUrl, instrumentsUrl }) => {
+                    const tokenResponse = await fetch(tokenUrl, {
+                        headers: { "Accept": "application/json, text/plain, */*" }
+                    });
+                    const tokenPayload = await tokenResponse.json();
+                    const response = await fetch(instrumentsUrl, {
+                        method: "POST",
+                        headers: {
+                            "Accept": "application/json, text/plain, */*",
+                            "Content-Type": "application/json;charset=UTF-8",
+                            "X-CSRF-Token": tokenPayload.csrf || ""
+                        },
+                        body: "{}"
+                    });
+                    return { status: response.status, text: await response.text() };
+                }""",
+                {
+                    "tokenUrl": "https://www.bolsadesantiago.com/api/Securities/csrfToken",
+                    "instrumentsUrl": BOLSA_SANTIAGO_INSTRUMENTS_URL,
+                },
+            )
+        finally:
+            browser.close()
+
+    if int(result.get("status") or 0) != 200:
+        raise requests.HTTPError(f"Bolsa de Santiago instruments API returned {result.get('status')}")
+    payload = json.loads(str(result.get("text") or ""))
+    if not isinstance(payload, dict):
+        raise ValueError("Bolsa de Santiago instruments payload must be an object")
+    return payload
+
+
+def fetch_bolsa_santiago_instruments_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    del session
+    payload = fetch_bolsa_santiago_instruments_payload_via_browser()
+    return parse_bolsa_santiago_instruments_payload(payload, source)
+
+
+def load_bolsa_santiago_instruments_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (BOLSA_SANTIAGO_INSTRUMENTS_CACHE, LEGACY_BOLSA_SANTIAGO_INSTRUMENTS_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_bolsa_santiago_instruments_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    BOLSA_SANTIAGO_INSTRUMENTS_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def zse_zw_short_name_ticker(value: Any) -> str:
+    return str(value or "").strip().upper().split(".", 1)[0]
+
+
+def parse_zse_zw_issuers_payload(
+    payload: dict[str, Any],
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    current_rows = current_exchange_listings("ZSE_ZW", listings_path)
+    current_by_ticker = {row.get("ticker", "").strip().upper(): row for row in current_rows}
+    current_by_isin = {
+        row.get("isin", "").strip().upper(): row
+        for row in current_rows
+        if is_valid_isin(row.get("isin", "").strip().upper())
+    }
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+
+    for record in payload.get("issuers", []):
+        if not isinstance(record, dict):
+            continue
+        ticker = zse_zw_short_name_ticker(record.get("short_name"))
+        listing = current_by_ticker.get(ticker)
+        if not listing or ticker in seen:
+            continue
+        seen.add(ticker)
+        rows.append(build_current_listing_reference_row(source, listing, name=str(record.get("name") or "")))
+
+    for record in payload.get("price_sheet", []):
+        if not isinstance(record, dict):
+            continue
+        isin = str(record.get("isin") or "").strip().upper()
+        listing = current_by_isin.get(isin)
+        if not listing:
+            continue
+        ticker = listing.get("ticker", "").strip().upper()
+        if ticker in seen:
+            continue
+        seen.add(ticker)
+        name = str(record.get("name") or record.get("symbol") or listing.get("name", "")).strip()
+        rows.append(build_current_listing_reference_row(source, listing, name=name, isin=isin))
+
+    return rows
+
+
+def fetch_zse_zw_issuers_payload(session: requests.Session | None = None) -> dict[str, Any]:
+    session = session or requests.Session()
+    issuers: list[dict[str, Any]] = []
+    for market in ("equity", "etf"):
+        payload = fetch_json(f"{ZSE_ZW_ISSUERS_URL}?exchange=ZSE&market={market}", session=session)
+        if isinstance(payload, list):
+            issuers.extend(payload)
+    price_payload = fetch_json(ZSE_ZW_PRICE_SHEET_URL, session=session)
+    price_sheet = price_payload.get("data", []) if isinstance(price_payload, dict) else []
+    return {"issuers": issuers, "price_sheet": price_sheet}
+
+
+def fetch_zse_zw_issuers_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    return parse_zse_zw_issuers_payload(fetch_zse_zw_issuers_payload(session=session), source)
+
+
+def load_zse_zw_issuers_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (ZSE_ZW_ISSUERS_CACHE, LEGACY_ZSE_ZW_ISSUERS_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_zse_zw_issuers_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    ZSE_ZW_ISSUERS_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def cavali_normalize_group(value: str) -> str:
+    return value.strip().upper().replace("Ó", "O")
+
+
+def cavali_row_matches_listing_asset_type(
+    row_group: str,
+    row_type: str,
+    listing_asset_type: str,
+) -> bool:
+    group = cavali_normalize_group(row_group)
+    row_type_upper = row_type.strip().upper()
+    if listing_asset_type == "ETF":
+        return group in {cavali_normalize_group(value) for value in CAVALI_ETF_GROUPS} and "ETF" in row_type_upper
+    if listing_asset_type == "Stock":
+        return group in {cavali_normalize_group(value) for value in CAVALI_STOCK_GROUPS}
+    return False
+
+
+def parse_cavali_bvl_emisores_html_pages(
+    html_pages: Iterable[str],
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    current_rows_by_ticker = {
+        row.get("ticker", "").strip().upper(): row
+        for row in load_csv(listings_path)
+        if row.get("exchange") == "BVL" and row.get("ticker", "").strip()
+    }
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for text in html_pages:
+        parser = _TableParser()
+        parser.feed(text)
+        for table in parser.tables:
+            if not table:
+                continue
+            header = [cell.strip().upper() for cell in table[0]]
+            if {"ISIN", "EMPRESA", "NEMONICO", "GRUPO", "TIPO"} - set(header):
+                continue
+            isin_index = header.index("ISIN")
+            name_index = header.index("EMPRESA")
+            ticker_index = header.index("NEMONICO")
+            group_index = header.index("GRUPO")
+            type_index = header.index("TIPO")
+            for record in table[1:]:
+                if len(record) <= max(isin_index, name_index, ticker_index, group_index, type_index):
+                    continue
+                ticker = record[ticker_index].strip().upper()
+                isin = record[isin_index].strip().upper()
+                name = record[name_index].strip()
+                listing = current_rows_by_ticker.get(ticker)
+                if (
+                    not listing
+                    or ticker in seen
+                    or not name
+                    or not is_valid_isin(isin)
+                    or not cavali_row_matches_listing_asset_type(
+                        record[group_index],
+                        record[type_index],
+                        listing.get("asset_type", ""),
+                    )
+                ):
+                    continue
+                rows.append(
+                    {
+                        "source_key": source.key,
+                        "provider": source.provider,
+                        "source_url": source.source_url,
+                        "ticker": ticker,
+                        "name": name,
+                        "exchange": "BVL",
+                        "asset_type": listing.get("asset_type", "") or infer_asset_type(name),
+                        "listing_status": "active",
+                        "reference_scope": source.reference_scope,
+                        "official": "true",
+                        "isin": isin,
+                    }
+                )
+                seen.add(ticker)
+    return rows
+
+
+def cavali_page_count(text: str) -> int:
+    match = CAVALI_PAGE_COUNT_RE.search(text)
+    if match is None:
+        return 1
+    return max(1, int(match.group("count")))
+
+
+def fetch_cavali_bvl_emisores_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    response = session.get(source.source_url, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT)
+    response.raise_for_status()
+    html_pages = [response.text]
+    for page in range(2, cavali_page_count(response.text) + 1):
+        page_response = session.get(
+            source.source_url,
+            params={"page": page},
+            headers={"User-Agent": USER_AGENT},
+            timeout=REQUEST_TIMEOUT,
+        )
+        page_response.raise_for_status()
+        html_pages.append(page_response.text)
+    return parse_cavali_bvl_emisores_html_pages(html_pages, source)
+
+
+def load_cavali_bvl_emisores_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (BVL_ISSUERS_DIRECTORY_CACHE, LEGACY_BVL_ISSUERS_DIRECTORY_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_cavali_bvl_emisores_rows(source, session=session)
+    except (requests.RequestException, ValueError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    BVL_ISSUERS_DIRECTORY_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def extract_next_data_json(text: str) -> str:
+    match = re.search(
+        r'<script[^>]+id=["\']__NEXT_DATA__["\'][^>]*>(?P<payload>.*?)</script>',
+        text,
+        re.I | re.S,
+    )
+    if not match:
+        raise ValueError("Missing Next.js data payload")
+    return unescape(match.group("payload"))
+
+
+def normalize_nzx_etf_category(name: Any) -> str:
+    value = str(name or "").lower()
+    if not value:
+        return ""
+    if any(marker in value for marker in ("bond", "cash", "deposit", "aggregate")):
+        return "Fixed Income"
+    if any(marker in value for marker in ("gold", "commodity", "carbon")):
+        return "Commodity"
+    if any(marker in value for marker in ("property", "real estate", "reit")):
+        return "Real Estate"
+    if any(marker in value for marker in ("inverse", "leveraged")):
+        return "Leveraged/Inverse"
+    if "etf" in value or "index" in value or "equity" in value:
+        return "Equity"
+    return ""
+
+
+def parse_nzx_instruments_next_data_payload(
+    payload: dict[str, Any],
+    source: MasterfileSource,
+) -> list[dict[str, str]]:
+    instruments = (
+        ((payload.get("props") or {}).get("pageProps") or {})
+        .get("data", {})
+        .get("instruments", {})
+        .get("activeInstruments", [])
+    )
+    if not isinstance(instruments, list):
+        raise ValueError("Unexpected NZX instruments payload")
+
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for record in instruments:
+        if not isinstance(record, dict) or str(record.get("marketType") or "").strip().upper() != "NZSX":
+            continue
+        ticker = str(record.get("code") or "").strip().upper()
+        name = str(record.get("name") or "").strip()
+        isin = str(record.get("isin") or "").strip().upper()
+        if not ticker or not name or ticker in seen:
+            continue
+        category = str(record.get("category") or "").strip().upper()
+        instrument_type = str(record.get("type") or "").strip().upper()
+        subcategory = str(record.get("subCategory") or "").strip().upper()
+        if category != "SHRS" or instrument_type not in {"SHRS", "UNIT"}:
+            continue
+
+        asset_type = "ETF" if subcategory == "ETF" or " ETF" in f" {name.upper()} " else "Stock"
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "NZX",
+            "asset_type": asset_type,
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        if is_valid_isin(isin):
+            row["isin"] = isin
+        if asset_type == "ETF":
+            etf_category = normalize_nzx_etf_category(name)
+            if etf_category:
+                row["sector"] = etf_category
+        rows.append(row)
+        seen.add(ticker)
+    return rows
+
+
+def parse_nzx_instruments_next_data_html(html: str, source: MasterfileSource) -> list[dict[str, str]]:
+    payload = json.loads(extract_next_data_json(html))
+    return parse_nzx_instruments_next_data_payload(payload, source)
+
+
+def fetch_nzx_instruments_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    response = (session or requests).get(source.source_url, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT)
+    response.raise_for_status()
+    return parse_nzx_instruments_next_data_html(response.text, source)
+
+
+def load_nzx_instruments_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (NZX_INSTRUMENTS_CACHE, LEGACY_NZX_INSTRUMENTS_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_nzx_instruments_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    NZX_INSTRUMENTS_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def cse_ma_relationship_id(item: dict[str, Any], relationship_name: str) -> str:
+    relationship = (item.get("relationships") or {}).get(relationship_name) or {}
+    data = relationship.get("data") or {}
+    return str(data.get("id") or "")
+
+
+def parse_cse_ma_jsonapi_collection(
+    payload: dict[str, Any],
+    source: MasterfileSource,
+) -> tuple[list[dict[str, str]], str]:
+    included_by_key = {
+        (str(item.get("type") or ""), str(item.get("id") or "")): item
+        for item in payload.get("included", [])
+        if isinstance(item, dict)
+    }
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for item in payload.get("data", []):
+        attributes = item.get("attributes") or {}
+        ticker = str(attributes.get("symbol") or "").strip().upper()
+        isin = str(attributes.get("codeISIN") or "").strip().upper()
+        issuer_id = cse_ma_relationship_id(item, "codeSociete")
+        issuer = included_by_key.get(("emetteur", issuer_id), {})
+        issuer_attributes = issuer.get("attributes") or {}
+        name = (
+            str(issuer_attributes.get("raisonSociale") or "").strip()
+            or str(issuer_attributes.get("name") or "").strip()
+            or str(attributes.get("libelleEN") or "").strip()
+            or str(attributes.get("libelleFR") or "").strip()
+        )
+        if not ticker or ticker in seen or not name:
+            continue
+
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": urljoin(CASABLANCA_BOURSE_INSTRUMENTS_URL, str(attributes.get("instrument_url") or "")),
+            "ticker": ticker,
+            "name": name,
+            "exchange": "CSE_MA",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        if is_valid_isin(isin):
+            row["isin"] = isin
+        rows.append(row)
+        seen.add(ticker)
+    next_url = str(((payload.get("links") or {}).get("next") or {}).get("href") or "")
+    return rows, next_url
+
+
+def cse_ma_initial_collection_from_next_payload(payload: dict[str, Any]) -> dict[str, Any]:
+    paragraphs = (((payload.get("pageProps") or {}).get("node") or {}).get("field_vactory_paragraphs") or [])
+    for paragraph in paragraphs:
+        widget_data = ((paragraph.get("field_vactory_component") or {}).get("widget_data") or "")
+        if not widget_data or "collection" not in widget_data or "instrument" not in widget_data:
+            continue
+        widget = json.loads(widget_data)
+        components = widget.get("components") or []
+        for component in components:
+            collection = ((component.get("collection") or {}).get("data") or {})
+            if collection.get("data"):
+                return collection
+    raise ValueError("Unexpected Casablanca Stock Exchange instruments payload")
+
+
+def fetch_cse_ma_listed_companies(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+    page_response = session.get(
+        source.source_url,
+        headers={"User-Agent": BROWSER_USER_AGENT},
+        timeout=REQUEST_TIMEOUT,
+        verify=False,
+    )
+    page_response.raise_for_status()
+    shell_payload = json.loads(extract_next_data_json(page_response.text))
+    build_id = str(shell_payload.get("buildId") or "").strip()
+    if not build_id:
+        raise ValueError("Missing Casablanca Stock Exchange Next.js build id")
+    next_data_url = urljoin(source.source_url, f"/_next/data/{build_id}/en/marche-cash/instruments-actions.json")
+    next_data_response = session.get(
+        next_data_url,
+        headers={"User-Agent": BROWSER_USER_AGENT, "Accept": "application/json"},
+        timeout=REQUEST_TIMEOUT,
+        verify=False,
+    )
+    next_data_response.raise_for_status()
+    next_payload = next_data_response.json()
+    collection = cse_ma_initial_collection_from_next_payload(next_payload)
+
+    rows: list[dict[str, str]] = []
+    seen_urls: set[str] = set()
+    while collection:
+        collection_rows, next_url = parse_cse_ma_jsonapi_collection(collection, source)
+        rows.extend(collection_rows)
+        if not next_url or next_url in seen_urls:
+            break
+        seen_urls.add(next_url)
+        response = session.get(
+            next_url,
+            headers={"User-Agent": BROWSER_USER_AGENT, "Accept": "application/vnd.api+json"},
+            timeout=REQUEST_TIMEOUT,
+            verify=False,
+        )
+        response.raise_for_status()
+        collection = response.json()
+
+    rows = dedupe_rows(rows)
+    if not rows:
+        raise ValueError("Unexpected Casablanca Stock Exchange instruments payload")
+    return rows
+
+
+def load_cse_ma_listed_companies_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (CSE_MA_LISTED_COMPANIES_CACHE, LEGACY_CSE_MA_LISTED_COMPANIES_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_cse_ma_listed_companies(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    CSE_MA_LISTED_COMPANIES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+BVC_SECTOR_MAP = {
+    "basic materials": "Materials",
+    "consumer goods": "Consumer Staples",
+    "consumer services": "Consumer Discretionary",
+    "energy": "Energy",
+    "financials": "Financials",
+    "health care": "Health Care",
+    "industrials": "Industrials",
+    "oil & gas": "Energy",
+    "real estate": "Real Estate",
+    "technology": "Information Technology",
+    "telecommunications": "Communication Services",
+    "utilities": "Utilities",
+}
+
+
+def bvc_request_headers(filters: str, token: str) -> dict[str, str]:
+    return {
+        "User-Agent": BROWSER_USER_AGENT,
+        "Accept": "application/json,text/plain,*/*",
+        "Origin": "https://www.bvc.com.co",
+        "Referer": BVC_RV_ISSUERS_PAGE_URL,
+        "token": token,
+        "k": b64encode(filters.encode("utf-8")).decode("ascii"),
+    }
+
+
+def fetch_bvc_handshake_token(session: requests.Session) -> str:
+    response = session.get(
+        f"{BVC_HANDSHAKE_URL}?ts={int(time.time() * 1000)}&r={time.time_ns()}",
+        headers={"User-Agent": BROWSER_USER_AGENT, "Accept": "application/json"},
+        timeout=REQUEST_TIMEOUT,
+        verify=False,
+    )
+    response.raise_for_status()
+    token = str((response.json() or {}).get("token") or "").strip()
+    if not token:
+        raise ValueError("Missing BVC handshake token")
+    return token
+
+
+def normalize_bvc_sector(value: Any) -> str:
+    sector = str(value or "").strip()
+    if not sector:
+        return ""
+    return BVC_SECTOR_MAP.get(sector.lower(), sector)
+
+
+def parse_bvc_rv_issuers_payload(
+    payload: dict[str, Any],
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    current_by_ticker = {
+        row.get("ticker", "").strip().upper(): row for row in current_exchange_listings("BVC", listings_path)
+    }
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for record in payload.get("data", []):
+        if not isinstance(record, dict):
+            continue
+        ticker = str(record.get("symbol") or "").strip().upper()
+        listing = current_by_ticker.get(ticker)
+        if not listing or ticker in seen:
+            continue
+        name = str(record.get("issuerName") or "").strip() or listing.get("name", "")
+        industry = record.get("industryName") or {}
+        sector = ""
+        if isinstance(industry, dict):
+            sector = normalize_bvc_sector(industry.get("en") or industry.get("es_CO"))
+        else:
+            sector = normalize_bvc_sector(industry)
+        rows.append(build_current_listing_reference_row(source, listing, name=name, sector=sector))
+        seen.add(ticker)
+    return rows
+
+
+def fetch_bvc_rv_issuers_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+    token = fetch_bvc_handshake_token(session)
+    response = session.get(
+        source.source_url,
+        headers=bvc_request_headers(BVC_RV_ISSUERS_FILTERS, token),
+        timeout=REQUEST_TIMEOUT,
+        verify=False,
+    )
+    response.raise_for_status()
+    return parse_bvc_rv_issuers_payload(response.json(), source)
+
+
+def load_bvc_rv_issuers_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (BVC_RV_ISSUERS_CACHE, LEGACY_BVC_RV_ISSUERS_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_bvc_rv_issuers_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    BVC_RV_ISSUERS_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def byma_request_headers() -> dict[str, str]:
+    return {
+        "User-Agent": BROWSER_USER_AGENT,
+        "Accept": "application/json,text/plain,*/*",
+        "Content-Type": "application/json",
+        "Origin": "https://open.bymadata.com.ar",
+        "Referer": BYMA_EQUITY_DETAILS_PAGE_URL,
+    }
+
+
+def byma_post_json(
+    session: requests.Session,
+    url: str,
+    payload: dict[str, str],
+) -> dict[str, Any] | list[dict[str, Any]]:
+    response = session.post(
+        url,
+        json=payload,
+        headers=byma_request_headers(),
+        timeout=REQUEST_TIMEOUT,
+        verify=False,
+    )
+    response.raise_for_status()
+    return response.json()
+
+
+def byma_current_ticker_candidates(ticker: str) -> list[str]:
+    ticker = ticker.strip().upper()
+    candidates = [ticker]
+    if "-" in ticker:
+        candidates.append(ticker.replace("-", "."))
+    return list(dict.fromkeys(candidate for candidate in candidates if candidate))
+
+
+def byma_name_tokens(value: str) -> set[str]:
+    tokens = {token for token in normalize_tokens(value) if len(token) >= 3}
+    tokens.update(token.rstrip("ns") for token in list(tokens) if len(token) >= 6)
+    return {token for token in tokens if len(token) >= 3}
+
+
+def byma_names_compatible(local_name: str, official_name: str) -> bool:
+    local_tokens = byma_name_tokens(local_name)
+    official_tokens = byma_name_tokens(official_name)
+    if not local_tokens or not official_tokens:
+        return False
+    common_tokens = local_tokens & official_tokens
+    return len(common_tokens) >= 2 or any(len(token) >= 6 for token in common_tokens)
+
+
+def byma_official_name(record: dict[str, Any], fallback: str) -> str:
+    instrument_type = str(record.get("tipoEspecie") or "").strip().lower()
+    if "cedear" in instrument_type:
+        return str(record.get("denominacion") or record.get("simboloMercado") or fallback).strip()
+    return str(record.get("emisor") or record.get("denominacion") or fallback).strip()
+
+
+def parse_byma_equity_detail_payload(
+    payload: dict[str, Any],
+    source: MasterfileSource,
+    listing: dict[str, str],
+    *,
+    remote_symbol: str | None = None,
+) -> dict[str, str] | None:
+    data = payload.get("data")
+    if not isinstance(data, list) or not data:
+        return None
+    record = next((item for item in data if isinstance(item, dict)), None)
+    if not record:
+        return None
+    instrument_type = str(record.get("tipoEspecie") or "").strip().lower()
+    instrument_class = str(record.get("insType") or "").strip().lower()
+    if "cedear" not in instrument_type and "accion" not in instrument_type and instrument_class != "equity":
+        return None
+    name = byma_official_name(record, listing.get("name", ""))
+    if remote_symbol and remote_symbol.strip().upper() != listing.get("ticker", "").strip().upper():
+        if not byma_names_compatible(listing.get("name", ""), name):
+            return None
+    isin = str(record.get("codigoIsin") or "").strip().upper()
+    if isin and not is_valid_isin(isin):
+        isin = ""
+    return build_current_listing_reference_row(source, listing, name=name, isin=isin)
+
+
+def parse_byma_header_search_payload(
+    payload: list[dict[str, Any]],
+    source: MasterfileSource,
+    listing: dict[str, str],
+) -> dict[str, str] | None:
+    ticker = listing.get("ticker", "").strip().upper()
+    for record in payload:
+        if not isinstance(record, dict):
+            continue
+        if str(record.get("market") or "").strip().upper() != "BYMA":
+            continue
+        if str(record.get("type") or "").strip().lower() != "accion":
+            continue
+        if str(record.get("symbol") or "").strip().upper() != ticker:
+            continue
+        return build_current_listing_reference_row(
+            source,
+            listing,
+            name=str(record.get("description") or listing.get("name", "")).strip(),
+        )
+    return None
+
+
+def fetch_byma_equity_details_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for listing in current_exchange_listings("BCBA"):
+        ticker = listing.get("ticker", "").strip().upper()
+        if not ticker or ticker in seen:
+            continue
+        row = None
+        for candidate in byma_current_ticker_candidates(ticker):
+            try:
+                payload = byma_post_json(session, BYMA_EQUITY_DETAIL_URL, {"symbol": candidate})
+            except (requests.RequestException, json.JSONDecodeError):
+                continue
+            if isinstance(payload, dict):
+                row = parse_byma_equity_detail_payload(payload, source, listing, remote_symbol=candidate)
+            if row:
+                break
+        if not row:
+            try:
+                payload = byma_post_json(session, BYMA_HEADER_SEARCH_URL, {"key": "searchInstruments", "value": ticker})
+            except (requests.RequestException, json.JSONDecodeError):
+                payload = []
+            if isinstance(payload, list):
+                row = parse_byma_header_search_payload(payload, source, listing)
+        if row:
+            rows.append(row)
+            seen.add(ticker)
+    return dedupe_rows(rows)
+
+
+def load_byma_equity_details_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (BYMA_EQUITY_DETAILS_CACHE, LEGACY_BYMA_EQUITY_DETAILS_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_byma_equity_details_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    BYMA_EQUITY_DETAILS_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def cse_lk_request_headers() -> dict[str, str]:
+    return {
+        "User-Agent": BROWSER_USER_AGENT,
+        "Accept": "application/json,text/plain,*/*",
+        "x-api-key": b64encode(b"Cse123Api").decode("ascii"),
+    }
+
+
+def parse_cse_lk_all_security_code_payload(
+    payload: list[dict[str, Any]],
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    current_by_ticker = {
+        row.get("ticker", "").strip().upper(): row for row in current_exchange_listings("CSE_LK", listings_path)
+    }
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for record in payload:
+        if not isinstance(record, dict) or int(record.get("active") or 0) != 1:
+            continue
+        symbol = str(record.get("symbol") or "").strip().upper()
+        ticker_candidates = [symbol]
+        if "." in symbol:
+            ticker_candidates.append(symbol.split(".", 1)[0])
+        ticker = next((candidate for candidate in ticker_candidates if candidate in current_by_ticker), "")
+        listing = current_by_ticker.get(ticker)
+        if not ticker or not listing or ticker in seen:
+            continue
+        name = str(record.get("name") or "").strip() or listing.get("name", "")
+        rows.append(build_current_listing_reference_row(source, listing, name=name))
+        seen.add(ticker)
+    return rows
+
+
+def fetch_cse_lk_all_security_code_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    payload = fetch_json(source.source_url, session=session, headers=cse_lk_request_headers())
+    if not isinstance(payload, list):
+        raise ValueError("Unexpected CSE Sri Lanka security-code payload")
+    return parse_cse_lk_all_security_code_payload(payload, source)
+
+
+def load_cse_lk_all_security_code_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (CSE_LK_ALL_SECURITY_CODE_CACHE, LEGACY_CSE_LK_ALL_SECURITY_CODE_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_cse_lk_all_security_code_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    CSE_LK_ALL_SECURITY_CODE_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def parse_cse_lk_company_info_summary_payload(
+    payload: dict[str, Any],
+    source: MasterfileSource,
+) -> dict[str, str] | None:
+    if not isinstance(payload, dict):
+        return None
+    info = payload.get("reqSymbolInfo")
+    if not isinstance(info, dict):
+        return None
+    symbol = str(info.get("symbol") or "").strip().upper()
+    name = str(info.get("name") or "").strip()
+    isin = str(info.get("isin") or "").strip().upper()
+    if not symbol or not name or not is_valid_isin(isin):
+        return None
+    return {
+        "source_key": source.key,
+        "provider": source.provider,
+        "source_url": source.source_url,
+        "ticker": symbol,
+        "name": name,
+        "exchange": "CSE_LK",
+        "asset_type": "Stock",
+        "listing_status": "active",
+        "reference_scope": source.reference_scope,
+        "official": "true",
+        "isin": isin,
+    }
+
+
+def fetch_cse_lk_company_info_summary_payload(
+    symbol: str,
+    *,
+    session: requests.Session | None = None,
+) -> dict[str, Any]:
+    headers = cse_lk_request_headers()
+    if session is not None:
+        response = session.post(
+            CSE_LK_COMPANY_INFO_SUMMARY_URL,
+            data={"symbol": symbol},
+            headers=headers,
+            timeout=15,
+        )
+    else:
+        response = requests.post(
+            CSE_LK_COMPANY_INFO_SUMMARY_URL,
+            data={"symbol": symbol},
+            headers=headers,
+            timeout=15,
+        )
+    response.raise_for_status()
+    payload = response.json()
+    if not isinstance(payload, dict):
+        raise ValueError("Unexpected CSE Sri Lanka company-info payload")
+    return payload
+
+
+def fetch_cse_lk_company_info_summary_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    security_payload = fetch_json(CSE_LK_ALL_SECURITY_CODE_URL, session=session, headers=cse_lk_request_headers())
+    if not isinstance(security_payload, list):
+        raise ValueError("Unexpected CSE Sri Lanka security-code payload")
+    symbols = [
+        str(record.get("symbol") or "").strip().upper()
+        for record in security_payload
+        if isinstance(record, dict) and int(record.get("active") or 0) == 1
+    ]
+
+    rows: list[dict[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+
+    def append_payload(payload: dict[str, Any]) -> None:
+        row = parse_cse_lk_company_info_summary_payload(payload, source)
+        if row is None:
+            return
+        key = (row["ticker"], row["isin"])
+        if key in seen:
+            return
+        rows.append(row)
+        seen.add(key)
+
+    if session is not None:
+        for symbol in symbols:
+            append_payload(fetch_cse_lk_company_info_summary_payload(symbol, session=session))
+    else:
+        with ThreadPoolExecutor(max_workers=CSE_LK_COMPANY_INFO_WORKERS) as executor:
+            futures = {
+                executor.submit(fetch_cse_lk_company_info_summary_payload, symbol): symbol
+                for symbol in symbols
+            }
+            for future in as_completed(futures):
+                append_payload(future.result())
+
+    return sorted(rows, key=lambda row: (row["ticker"], row["isin"]))
+
+
+def load_cse_lk_company_info_summary_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (CSE_LK_COMPANY_INFO_SUMMARY_CACHE, LEGACY_CSE_LK_COMPANY_INFO_SUMMARY_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_cse_lk_company_info_summary_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    CSE_LK_COMPANY_INFO_SUMMARY_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def extract_nse_ke_wp_json_payload(text: str) -> list[dict[str, Any]]:
+    payload_start = text.find('[{"id"')
+    if payload_start < 0:
+        payload_start = text.find("[")
+    if payload_start < 0:
+        raise ValueError("Missing NSE Kenya WordPress JSON payload")
+    payload = json.loads(text[payload_start:])
+    if not isinstance(payload, list):
+        raise ValueError("Unexpected NSE Kenya WordPress JSON payload")
+    return payload
+
+
+def nse_ke_section_title_before(content: str, position: int) -> str:
+    toggle_start = content.rfind("[toggle", 0, position)
+    if toggle_start < 0:
+        return ""
+    section_matches = list(NSE_KE_SECTION_TITLE_RE.finditer(content[toggle_start:position]))
+    if not section_matches:
+        return ""
+    return clean_html_text(section_matches[-1].group("title")).upper()
+
+
+def nse_ke_asset_type(name: str, section: str) -> str:
+    upper_name = name.upper()
+    if section == "EXCHANGE TRADED FUND" or " ETF" in f" {upper_name} ":
+        return "ETF"
+    return "Stock"
+
+
+def parse_nse_ke_listed_companies_html(
+    text: str,
+    source: MasterfileSource,
+) -> list[dict[str, str]]:
+    content = unescape(text)
+    title_matches = list(NSE_KE_COMPANY_TITLE_RE.finditer(content))
+    rows: list[dict[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+    for index, title_match in enumerate(title_matches):
+        start = title_match.start()
+        end = title_matches[index + 1].start() if index + 1 < len(title_matches) else len(content)
+        block = content[start:end]
+        name_match = NSE_KE_TITLE_TEXT_RE.search(block)
+        symbol_match = NSE_KE_SYMBOL_RE.search(block)
+        isin_match = NSE_KE_ISIN_RE.search(block)
+        if not name_match or not symbol_match or not isin_match:
+            continue
+
+        name = clean_html_text(name_match.group("name"))
+        ticker = clean_html_text(symbol_match.group("symbol")).upper()
+        isin = clean_html_text(isin_match.group("isin")).upper()
+        if not ticker or not name or not is_valid_isin(isin):
+            continue
+
+        section = nse_ke_section_title_before(content, start)
+        asset_type = nse_ke_asset_type(name, section)
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "NSE_KE",
+            "asset_type": asset_type,
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+            "isin": isin,
+        }
+        sector = NSE_KE_SECTOR_MAP.get(section, "")
+        if sector and asset_type == "Stock":
+            row["sector"] = sector
+        key = (ticker, asset_type)
+        if key not in seen:
+            rows.append(row)
+            seen.add(key)
+
+    if not rows:
+        raise ValueError("Unexpected NSE Kenya listed companies payload")
+    return rows
+
+
+def fetch_nse_ke_listed_companies(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    response = session.get(
+        NSE_KE_LISTED_COMPANIES_API_URL,
+        headers={"User-Agent": BROWSER_USER_AGENT, "Accept": "application/json"},
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    payload = extract_nse_ke_wp_json_payload(response.text)
+    if not payload:
+        raise ValueError("Unexpected NSE Kenya WordPress JSON payload")
+    rendered_content = (((payload[0] or {}).get("content") or {}).get("rendered") or "")
+    if not rendered_content:
+        raise ValueError("Unexpected NSE Kenya listed companies payload")
+    return parse_nse_ke_listed_companies_html(rendered_content, source)
+
+
+def load_nse_ke_listed_companies_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (NSE_KE_LISTED_COMPANIES_CACHE, LEGACY_NSE_KE_LISTED_COMPANIES_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_nse_ke_listed_companies(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    NSE_KE_LISTED_COMPANIES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def nse_india_headers() -> dict[str, str]:
+    return {
+        "Accept": "text/csv,*/*",
+        "Referer": NSE_IN_SECURITIES_AVAILABLE_PAGE_URL,
+        "User-Agent": BROWSER_USER_AGENT,
+    }
+
+
+def normalize_nse_india_csv_record(record: dict[str, Any]) -> dict[str, str]:
+    return {str(key or "").strip(): str(value or "").strip() for key, value in record.items()}
+
+
+def normalize_nse_india_etf_category(underlying: str, name: str) -> str:
+    value = f"{underlying} {name}".lower()
+    if not value.strip():
+        return ""
+    if any(marker in value for marker in ("gold", "silver", "commodity")):
+        return "Commodity"
+    if any(marker in value for marker in ("liquid", "gsec", "government", "bond", "debt", "money market")):
+        return "Fixed Income"
+    if any(marker in value for marker in ("bank", "nifty", "sensex", "index", "equity", "midcap", "smallcap")):
+        return "Equity"
+    return ""
+
+
+def build_nse_india_row(
+    source: MasterfileSource,
+    *,
+    ticker: str,
+    name: str,
+    isin: str,
+    asset_type: str,
+    source_url: str,
+    sector: str = "",
+) -> dict[str, str] | None:
+    ticker = ticker.strip().upper()
+    name = name.strip()
+    isin = isin.strip().upper()
+    if not ticker or not name or not is_valid_isin(isin):
+        return None
+    row = {
+        "source_key": source.key,
+        "provider": source.provider,
+        "source_url": source_url,
+        "ticker": ticker,
+        "name": name,
+        "exchange": "NSE_IN",
+        "asset_type": asset_type,
+        "listing_status": "active",
+        "reference_scope": source.reference_scope,
+        "official": "true",
+        "isin": isin,
+    }
+    if sector:
+        row["sector"] = sector
+    return row
+
+
+def parse_nse_india_equity_csv(
+    text: str,
+    source: MasterfileSource,
+    *,
+    source_url: str,
+    sme: bool = False,
+) -> list[dict[str, str]]:
+    reader = csv.DictReader(io.StringIO(text.lstrip("\ufeff")))
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    allowed_series = {"SM", "ST"} if sme else {"EQ"}
+    for raw_record in reader:
+        record = normalize_nse_india_csv_record(raw_record)
+        ticker = (record.get("SYMBOL") or "").strip().upper()
+        series = (record.get("SERIES") or "").strip().upper()
+        if series not in allowed_series or ticker.endswith("-RE") or ticker in seen:
+            continue
+        name = record.get("NAME OF COMPANY") or record.get("NAME_OF_COMPANY") or ""
+        isin = record.get("ISIN NUMBER") or record.get("ISIN_NUMBER") or ""
+        row = build_nse_india_row(
+            source,
+            ticker=ticker,
+            name=name,
+            isin=isin,
+            asset_type="Stock",
+            source_url=source_url,
+        )
+        if row:
+            rows.append(row)
+            seen.add(ticker)
+    return rows
+
+
+def parse_nse_india_etf_csv(
+    text: str,
+    source: MasterfileSource,
+    *,
+    source_url: str,
+) -> list[dict[str, str]]:
+    reader = csv.DictReader(io.StringIO(text.lstrip("\ufeff")))
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for raw_record in reader:
+        record = normalize_nse_india_csv_record(raw_record)
+        ticker = (record.get("Symbol") or record.get("SYMBOL") or "").strip().upper()
+        if not ticker or ticker in seen:
+            continue
+        underlying = record.get("Underlying", "")
+        security_name = record.get("SecurityName", "")
+        isin = record.get("ISINNumber", "")
+        row = build_nse_india_row(
+            source,
+            ticker=ticker,
+            name=security_name or underlying,
+            isin=isin,
+            asset_type="ETF",
+            source_url=source_url,
+            sector=normalize_nse_india_etf_category(underlying, security_name),
+        )
+        if row:
+            rows.append(row)
+            seen.add(ticker)
+    return rows
+
+
+def fetch_nse_india_securities_available_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    rows: list[dict[str, str]] = []
+    for url, parser in (
+        (NSE_IN_EQUITY_LIST_URL, lambda text: parse_nse_india_equity_csv(text, source, source_url=url)),
+        (
+            NSE_IN_SME_EQUITY_LIST_URL,
+            lambda text: parse_nse_india_equity_csv(text, source, source_url=url, sme=True),
+        ),
+        (NSE_IN_ETF_LIST_URL, lambda text: parse_nse_india_etf_csv(text, source, source_url=url)),
+    ):
+        response = session.get(url, headers=nse_india_headers(), timeout=REQUEST_TIMEOUT)
+        response.raise_for_status()
+        rows.extend(parser(response.text))
+    if not rows:
+        raise ValueError("Unexpected NSE India securities-available payload")
+    return dedupe_rows(rows)
+
+
+def load_nse_india_securities_available_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (NSE_IN_SECURITIES_AVAILABLE_CACHE, LEGACY_NSE_IN_SECURITIES_AVAILABLE_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_nse_india_securities_available_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    NSE_IN_SECURITIES_AVAILABLE_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def bse_india_headers() -> dict[str, str]:
+    return {
+        "Accept": "application/json, text/plain, */*",
+        "Origin": "https://www.bseindia.com",
+        "Referer": BSE_IN_SCRIPS_PAGE_URL,
+        "User-Agent": BROWSER_USER_AGENT,
+    }
+
+
+def infer_bse_india_asset_type(record: dict[str, Any]) -> str:
+    ticker = str(record.get("scrip_id") or "").strip().upper()
+    name = str(record.get("Scrip_Name") or "").strip().upper()
+    issuer = str(record.get("Issuer_Name") or "").strip().upper()
+    if (
+        " ETF" in f" {name} "
+        or ticker.endswith("BEES")
+        or "IETF" in ticker
+        or ("MUTUAL FUND" in issuer and any(marker in name for marker in ("NIFTY", "SENSEX", "GOLD", "LIQUID")))
+    ):
+        return "ETF"
+    return "Stock"
+
+
+def parse_bse_india_scrips_payload(payload: list[dict[str, Any]], source: MasterfileSource) -> list[dict[str, str]]:
+    if not isinstance(payload, list):
+        raise ValueError("Unexpected BSE India scrips payload")
+    rows: list[dict[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+    for record in payload:
+        if not isinstance(record, dict):
+            continue
+        if str(record.get("Status") or "").strip().lower() != "active":
+            continue
+        if str(record.get("Segment") or "").strip() != "Equity":
+            continue
+        ticker = str(record.get("scrip_id") or "").strip().upper()
+        name = str(record.get("Scrip_Name") or record.get("Issuer_Name") or "").strip()
+        isin = str(record.get("ISIN_NUMBER") or "").strip().upper()
+        asset_type = infer_bse_india_asset_type(record)
+        key = (ticker, asset_type)
+        if not ticker or not name or not is_valid_isin(isin) or key in seen:
+            continue
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "BSE_IN",
+            "asset_type": asset_type,
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+            "isin": isin,
+        }
+        if asset_type == "ETF":
+            sector = normalize_nse_india_etf_category("", name)
+            if sector:
+                row["sector"] = sector
+        rows.append(row)
+        seen.add(key)
+    if not rows:
+        raise ValueError("Unexpected BSE India scrips payload")
+    return rows
+
+
+def fetch_bse_india_scrips_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    response = session.get(
+        BSE_IN_SCRIPS_API_URL,
+        headers=bse_india_headers(),
+        params={"Group": "", "Scripcode": "", "industry": "", "segment": "Equity", "status": "Active"},
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    return parse_bse_india_scrips_payload(response.json(), source)
+
+
+def load_bse_india_scrips_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (BSE_IN_SCRIPS_CACHE, LEGACY_BSE_IN_SCRIPS_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_bse_india_scrips_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    BSE_IN_SCRIPS_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def normalize_hkex_etp_category(sub_category: str, name: str) -> str:
+    value = f"{sub_category} {name}".lower()
+    if "leveraged" in value or "inverse" in value:
+        return "Leveraged/Inverse"
+    if any(marker in value for marker in ("bond", "treasury", "money market", "deposit", "income")):
+        return "Fixed Income"
+    if any(marker in value for marker in ("gold", "silver", "commodity", "oil")):
+        return "Commodity"
+    if any(marker in value for marker in ("reit", "property", "real estate")):
+        return "Real Estate"
+    if "currency" in value:
+        return "Currency"
+    if "multi" in value or "asset" in value:
+        return "Multi-Asset"
+    return "Equity"
+
+
+def parse_hkex_securities_list_workbook(content: bytes, source: MasterfileSource) -> list[dict[str, str]]:
+    dataframe = pd.read_excel(io.BytesIO(content), sheet_name=0, header=2, dtype=str)
+    rows: list[dict[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+    for record in dataframe.to_dict(orient="records"):
+        ticker = str(record.get("Stock Code") or "").strip().zfill(5)
+        name = str(record.get("Name of Securities") or "").strip()
+        category = str(record.get("Category") or "").strip()
+        sub_category = str(record.get("Sub-Category") or "").strip()
+        isin = str(record.get("ISIN") or "").strip().upper()
+        if not ticker or not name or not is_valid_isin(isin):
+            continue
+        if category == "Exchange Traded Products":
+            asset_type = "ETF"
+            sector = normalize_hkex_etp_category(sub_category, name)
+        elif category == "Real Estate Investment Trusts":
+            asset_type = "Stock"
+            sector = "Real Estate"
+        elif category == "Equity":
+            asset_type = "Stock"
+            sector = ""
+        else:
+            continue
+        key = (ticker, asset_type)
+        if key in seen:
+            continue
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "HKEX",
+            "asset_type": asset_type,
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+            "isin": isin,
+        }
+        if sector:
+            row["sector"] = sector
+        rows.append(row)
+        seen.add(key)
+    if not rows:
+        raise ValueError("Unexpected HKEX securities list workbook")
+    return rows
+
+
+def fetch_hkex_securities_list_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    response = session.get(source.source_url, headers={"User-Agent": BROWSER_USER_AGENT}, timeout=REQUEST_TIMEOUT)
+    response.raise_for_status()
+    content = response.content
+    return parse_hkex_securities_list_workbook(content, source)
+
+
+def load_hkex_securities_list_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (HKEX_SECURITIES_LIST_CACHE, LEGACY_HKEX_SECURITIES_LIST_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_hkex_securities_list_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    HKEX_SECURITIES_LIST_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+SGX_SECURITIES_PRICE_ASSET_TYPES = {
+    "stocks": ("Stock", ""),
+    "adrs": ("Stock", ""),
+    "businesstrusts": ("Stock", ""),
+    "reits": ("Stock", "Real Estate"),
+    "etfs": ("ETF", ""),
+}
+
+
+def sgx_request_headers() -> dict[str, str]:
+    return {
+        "Accept": "application/json",
+        "Referer": SGX_SECURITIES_PRICES_PAGE_URL,
+        "User-Agent": BROWSER_USER_AGENT,
+    }
+
+
+def parse_sgx_securities_prices_payload(payload: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
+    prices = (payload.get("data") or {}).get("prices")
+    if not isinstance(prices, list):
+        raise ValueError("Unexpected SGX securities prices payload")
+    rows: list[dict[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+    for record in prices:
+        if not isinstance(record, dict):
+            continue
+        mapping = SGX_SECURITIES_PRICE_ASSET_TYPES.get(str(record.get("type") or "").strip().lower())
+        if not mapping:
+            continue
+        asset_type, default_sector = mapping
+        ticker = str(record.get("nc") or "").strip().upper()
+        name = str(record.get("n") or record.get("issuer-name") or "").strip()
+        if not ticker or not name:
+            continue
+        key = (ticker, asset_type)
+        if key in seen:
+            continue
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": SGX_SECURITIES_PRICES_API_URL,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "SGX",
+            "asset_type": asset_type,
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        sector = default_sector
+        if asset_type == "ETF":
+            sector = normalize_hkex_etp_category("", name)
+        if sector:
+            row["sector"] = sector
+        rows.append(row)
+        seen.add(key)
+    if not rows:
+        raise ValueError("Unexpected SGX securities prices payload")
+    return rows
+
+
+def fetch_sgx_securities_prices_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    response = session.get(
+        SGX_SECURITIES_PRICES_API_URL,
+        headers=sgx_request_headers(),
+        params={"excludetypes": "bonds"},
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    return parse_sgx_securities_prices_payload(response.json(), source)
+
+
+def load_sgx_securities_prices_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (SGX_SECURITIES_PRICES_CACHE, LEGACY_SGX_SECURITIES_PRICES_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_sgx_securities_prices_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    SGX_SECURITIES_PRICES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+DFM_MARKET_CODES = {"510", "520"}
+DFM_ASSET_TYPE_BY_INSTRUMENT_TYPE = {
+    "equities": ("Stock", ""),
+    "realestateinvestmenttrust": ("Stock", "Real Estate"),
+    "exchangetradedfunds": ("ETF", ""),
+    "funds": ("ETF", ""),
+}
+
+
+def dfm_request_headers(*, form: bool = False) -> dict[str, str]:
+    headers = {
+        "Accept": "application/json, text/plain, */*",
+        "Referer": DFM_LISTED_SECURITIES_PAGE_URL,
+        "User-Agent": BROWSER_USER_AGENT,
+    }
+    if form:
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    return headers
+
+
+def normalize_dfm_instrument_type(value: str) -> str:
+    return re.sub(r"[^a-z]", "", str(value or "").strip().lower())
+
+
+def normalize_dfm_etf_category(name: str) -> str:
+    value = name.lower()
+    if any(marker in value for marker in ("bitcoin", "ether", "crypto")):
+        return "Alternative"
+    return normalize_hkex_etp_category("", name)
+
+
+def parse_dfm_company_profile_payloads(
+    profiles: list[dict[str, Any]],
+    source: MasterfileSource,
+) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+    for profile in profiles:
+        if not isinstance(profile, dict):
+            continue
+        if str(profile.get("Market") or "").strip() != "DFM":
+            continue
+        instrument_type = normalize_dfm_instrument_type(str(profile.get("InstrumentType") or ""))
+        mapping = DFM_ASSET_TYPE_BY_INSTRUMENT_TYPE.get(instrument_type)
+        if mapping is None:
+            continue
+        asset_type, default_sector = mapping
+        ticker = str(profile.get("Symbol") or "").strip().upper()
+        name = str(profile.get("FullName") or profile.get("ShortName") or "").strip()
+        isin = str(profile.get("ISIN") or "").strip().upper()
+        key = (ticker, asset_type)
+        if not ticker or not name or not is_valid_isin(isin) or key in seen:
+            continue
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": DFM_COMPANY_PROFILE_API_URL,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "DFM",
+            "asset_type": asset_type,
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+            "isin": isin,
+        }
+        if asset_type == "ETF":
+            sector = normalize_sector(str(profile.get("Sector") or ""), "ETF") or normalize_dfm_etf_category(name)
+        else:
+            sector = default_sector or normalize_sector(str(profile.get("Sector") or ""), "Stock")
+            if not sector and "reit" in name.lower():
+                sector = "Real Estate"
+        if sector:
+            row["sector"] = sector
+        rows.append(row)
+        seen.add(key)
+    if not rows:
+        raise ValueError("Unexpected DFM listed securities payload")
+    return rows
+
+
+def fetch_dfm_listed_securities_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    response = session.get(DFM_STOCKS_API_URL, headers=dfm_request_headers(), timeout=REQUEST_TIMEOUT)
+    response.raise_for_status()
+    securities = response.json()
+    if not isinstance(securities, list):
+        raise ValueError("Unexpected DFM stocks payload")
+
+    profiles: list[dict[str, Any]] = []
+    for security in securities:
+        if not isinstance(security, dict):
+            continue
+        if str(security.get("market") or "").strip() not in DFM_MARKET_CODES:
+            continue
+        symbol = str(security.get("id") or "").strip().upper()
+        if not symbol:
+            continue
+        profile_response = session.post(
+            DFM_COMPANY_PROFILE_API_URL,
+            headers=dfm_request_headers(form=True),
+            data={"Command": "companyprofile", "lang": "en", "symbol": symbol},
+            timeout=REQUEST_TIMEOUT,
+        )
+        profile_response.raise_for_status()
+        profile = profile_response.json()
+        if isinstance(profile, dict):
+            profiles.append(profile)
+    return parse_dfm_company_profile_payloads(profiles, source)
+
+
+def load_dfm_listed_securities_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (DFM_LISTED_SECURITIES_CACHE, LEGACY_DFM_LISTED_SECURITIES_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_dfm_listed_securities_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    DFM_LISTED_SECURITIES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+BOURSA_KUWAIT_REGULAR_SUFFIXES = {"R"}
+BOURSA_KUWAIT_REIT_SUFFIXES = {"F"}
+BOURSA_KUWAIT_REGULAR_MARKETS = {"M", "P"}
+BOURSA_KUWAIT_REIT_MARKETS = {"T"}
+BOURSA_KUWAIT_PARAMS = {
+    "UID": "3166765",
+    "SID": "3090B191-7C82-49EE-AC52-706F081F265D",
+    "L": "EN",
+    "UNC": "0",
+    "UE": "KSE",
+    "H": "1",
+    "M": "1",
+    "RT": "303",
+    "SRC": "KSE",
+    "AS": "1",
+}
+
+
+def boursa_kuwait_request_headers() -> dict[str, str]:
+    return {
+        "Accept": "application/json, text/plain, */*",
+        "Referer": BOURSA_KUWAIT_STOCKS_PAGE_URL,
+        "User-Agent": BROWSER_USER_AGENT,
+    }
+
+
+def boursa_kuwait_header_index(header: str) -> dict[str, int]:
+    return {field: index for index, field in enumerate(str(header or "").split("|"))}
+
+
+def normalize_boursa_kuwait_sector(label: str) -> str:
+    cleaned = str(label or "").strip()
+    mapped = {
+        "Telecommunications": "Communication Services",
+        "Technology": "Information Technology",
+        "Banking": "Financials",
+        "Banks": "Financials",
+        "Insurance": "Financials",
+    }.get(cleaned, cleaned)
+    return normalize_sector(mapped, "Stock")
+
+
+def boursa_kuwait_sector_map(payload: dict[str, Any]) -> dict[str, str]:
+    header = ((payload.get("HED") or {}).get("SCTD") or "").split("|")
+    index = {field: position for position, field in enumerate(header)}
+    if "SECTOR" not in index or "SECT_DSC" not in index:
+        return {}
+    sector_rows = (payload.get("DAT") or {}).get("SCTD") or []
+    sectors: dict[str, str] = {}
+    for row in sector_rows:
+        values = str(row).split("|")
+        code = values[index["SECTOR"]] if index["SECTOR"] < len(values) else ""
+        label = values[index["SECT_DSC"]] if index["SECT_DSC"] < len(values) else ""
+        sector = normalize_boursa_kuwait_sector(label)
+        if code and sector:
+            sectors[code] = sector
+    return sectors
+
+
+def parse_boursa_kuwait_legacy_mix_payload(
+    payload: dict[str, Any],
+    source: MasterfileSource,
+) -> list[dict[str, str]]:
+    rows_data = (payload.get("DAT") or {}).get("TD")
+    header = (payload.get("HED") or {}).get("TD")
+    if not isinstance(rows_data, list) or not isinstance(header, str):
+        raise ValueError("Unexpected Boursa Kuwait market data payload")
+    index = boursa_kuwait_header_index(header)
+    required = {"SYMBOL", "SYMBOL_DESCRIPTION", "MARKET_ID", "INSTRUMENT_TYPE", "SECTOR", "ISIN_CODE"}
+    if not required.issubset(index):
+        raise ValueError("Unexpected Boursa Kuwait market data header")
+
+    sector_map = boursa_kuwait_sector_map(payload)
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for raw_row in rows_data:
+        values = str(raw_row).split("|")
+        symbol_value = values[index["SYMBOL"]] if index["SYMBOL"] < len(values) else ""
+        if "`" in symbol_value:
+            ticker, suffix = symbol_value.split("`", 1)
+        else:
+            ticker, suffix = symbol_value, ""
+        ticker = ticker.strip().upper()
+        suffix = suffix.strip().upper()
+        market_id = values[index["MARKET_ID"]].strip().upper() if index["MARKET_ID"] < len(values) else ""
+        instrument_type = values[index["INSTRUMENT_TYPE"]].strip() if index["INSTRUMENT_TYPE"] < len(values) else ""
+        if suffix in BOURSA_KUWAIT_REGULAR_SUFFIXES and market_id in BOURSA_KUWAIT_REGULAR_MARKETS:
+            sector = sector_map.get(values[index["SECTOR"]].strip() if index["SECTOR"] < len(values) else "", "")
+        elif suffix in BOURSA_KUWAIT_REIT_SUFFIXES and market_id in BOURSA_KUWAIT_REIT_MARKETS and instrument_type == "65":
+            sector = "Real Estate"
+        else:
+            continue
+        name = values[index["SYMBOL_DESCRIPTION"]].strip() if index["SYMBOL_DESCRIPTION"] < len(values) else ""
+        isin = values[index["ISIN_CODE"]].strip().upper() if index["ISIN_CODE"] < len(values) else ""
+        if not ticker or not name or not is_valid_isin(isin) or ticker in seen:
+            continue
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": BOURSA_KUWAIT_LEGACY_MIX_API_URL,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "BK",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+            "isin": isin,
+        }
+        if sector:
+            row["sector"] = sector
+        rows.append(row)
+        seen.add(ticker)
+    if not rows:
+        raise ValueError("Unexpected Boursa Kuwait market data payload")
+    return rows
+
+
+def fetch_boursa_kuwait_stocks_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    response = session.get(
+        BOURSA_KUWAIT_LEGACY_MIX_API_URL,
+        headers=boursa_kuwait_request_headers(),
+        params=BOURSA_KUWAIT_PARAMS,
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    return parse_boursa_kuwait_legacy_mix_payload(response.json(), source)
+
+
+def load_boursa_kuwait_stocks_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (BOURSA_KUWAIT_STOCKS_CACHE, LEGACY_BOURSA_KUWAIT_STOCKS_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_boursa_kuwait_stocks_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    BOURSA_KUWAIT_STOCKS_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+BAHRAIN_BOURSE_LOCAL_EQUITY_SECTIONS = {"Equities", "Bahrain Investment Market (BIM)"}
+
+
+def bahrain_bourse_request_headers(accept: str = "text/html,*/*") -> dict[str, str]:
+    return {
+        "Accept": accept,
+        "Accept-Language": "en-US,en;q=0.9",
+        "Referer": BAHRAIN_BOURSE_HOME_URL,
+        "User-Agent": BROWSER_USER_AGENT,
+    }
+
+
+def bahrain_bourse_get(
+    session: requests.Session,
+    url: str,
+    *,
+    accept: str = "text/html,*/*",
+):
+    response = session.get(url, headers=bahrain_bourse_request_headers(accept), timeout=REQUEST_TIMEOUT)
+    if response.status_code != 403:
+        return response
+    try:
+        from curl_cffi import requests as curl_requests  # type: ignore[import-not-found]
+    except ImportError:
+        return response
+    return curl_requests.get(
+        url,
+        headers=bahrain_bourse_request_headers(accept),
+        impersonate="chrome120",
+        timeout=REQUEST_TIMEOUT,
+    )
+
+
+def classify_bahrain_bourse_security(name: str, issue_description: str, fisn: str) -> tuple[str, str]:
+    description = ascii_fold(issue_description).lower()
+    combined = ascii_fold(f"{name} {issue_description} {fisn}").lower()
+    if "common share" in description:
+        return "Stock", ""
+    if "mutual fund" in description and any(marker in combined for marker in ("reit", "realty", "real estate")):
+        return "Stock", "Real Estate"
+    return "", ""
+
+
+def parse_bahrain_bourse_isin_codes_html(html: str, source: MasterfileSource) -> list[dict[str, str]]:
+    parser = _TableParser()
+    parser.feed(html)
+    source_table = next(
+        (
+            table
+            for table in parser.tables
+            if table and {"BHB Company Symbol", "ISIN", "Issuer Name", "Issue Description"} <= set(table[0])
+        ),
+        None,
+    )
+    if not source_table:
+        raise ValueError("Unexpected Bahrain Bourse ISIN code table")
+
+    section = ""
+    rows: list[dict[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+    for cells in source_table[1:]:
+        if len(cells) == 1:
+            section = cells[0].strip()
+            continue
+        if len(cells) < 4 or section not in BAHRAIN_BOURSE_LOCAL_EQUITY_SECTIONS:
+            continue
+        ticker = cells[0].strip().upper()
+        isin = cells[1].strip().upper()
+        name = cells[2].strip()
+        issue_description = cells[3].strip()
+        fisn = cells[6].strip() if len(cells) > 6 else ""
+        asset_type, sector = classify_bahrain_bourse_security(name, issue_description, fisn)
+        key = (ticker, asset_type)
+        if not ticker or not name or not is_valid_isin(isin) or not asset_type or key in seen:
+            continue
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "BHB",
+            "asset_type": asset_type,
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+            "isin": isin,
+        }
+        if sector:
+            row["sector"] = sector
+        rows.append(row)
+        seen.add(key)
+    if not rows:
+        raise ValueError("Unexpected Bahrain Bourse ISIN code table")
+    return rows
+
+
+def fetch_bahrain_bourse_listed_companies_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    response = bahrain_bourse_get(session, BAHRAIN_BOURSE_ISIN_CODES_URL)
+    response.raise_for_status()
+    return parse_bahrain_bourse_isin_codes_html(response.text, source)
+
+
+def load_bahrain_bourse_listed_companies_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (BAHRAIN_BOURSE_LISTED_COMPANIES_CACHE, LEGACY_BAHRAIN_BOURSE_LISTED_COMPANIES_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_bahrain_bourse_listed_companies_rows(source, session=session)
+    except (requests.RequestException, ValueError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    BAHRAIN_BOURSE_LISTED_COMPANIES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+BIST_KAP_NEXT_DATA_RE = re.compile(r"self\.__next_f\.push\(\[1,(\".*\")\]\)\s*$", re.S)
+BIST_KAP_COMPANY_RE = re.compile(
+    r'"mkkMemberOid":"(?P<company_id>[^"]+)",'
+    r'"kapMemberTitle":"(?P<name>[^"]+)",'
+    r'"relatedMemberTitle":"(?P<auditor>[^"]*)",'
+    r'"stockCode":"(?P<stock_codes>[^"]+)",'
+    r'"cityName":"(?P<city>[^"]*)"',
+)
+BIST_STOCK_CATEGORY = "HS"
+BIST_ETF_CATEGORY = "BYF"
+BIST_PRIMARY_SHARE_TAKAS_CODE = "eski"
+
+
+def bist_request_headers() -> dict[str, str]:
+    return {
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "User-Agent": BROWSER_USER_AGENT,
+    }
+
+
+def bist_mkk_request_headers() -> dict[str, str]:
+    return {
+        "Accept": "application/json, text/plain, */*",
+        "Referer": BIST_MKK_SECURITIES_PAGE_URL,
+        "User-Agent": BROWSER_USER_AGENT,
+    }
+
+
+def normalize_bist_takas_code(value: str) -> str:
+    return ascii_fold(str(value or "")).strip().lower()
+
+
+def normalize_bist_etf_category(name: str) -> str:
+    value = ascii_fold(name).lower()
+    if any(marker in value for marker in ("altin", "gumus")):
+        return "Commodity"
+    if any(marker in value for marker in ("tlref", "tahvil", "borclanma", "para piyasasi")):
+        return "Fixed Income"
+    return normalize_hkex_etp_category("", name)
+
+
+def parse_bist_kap_company_list(html: str) -> dict[str, str]:
+    scripts = re.findall(r"<script[^>]*>(.*?)</script>", html, re.I | re.S)
+    if not scripts:
+        raise ValueError("Unexpected KAP BIST company page")
+    script = max(scripts, key=len)
+    match = BIST_KAP_NEXT_DATA_RE.search(script)
+    if not match:
+        raise ValueError("Unexpected KAP BIST company page")
+    content = json.loads(match.group(1))
+
+    companies: dict[str, str] = {}
+    for company_match in BIST_KAP_COMPANY_RE.finditer(content):
+        name = company_match.group("name").strip()
+        for ticker in company_match.group("stock_codes").split(","):
+            ticker = ticker.strip().upper()
+            if ticker and name and ticker not in companies:
+                companies[ticker] = name
+    if not companies:
+        raise ValueError("Unexpected KAP BIST company page")
+    return companies
+
+
+def parse_bist_kap_mkk_listed_securities_payload(
+    kap_html: str,
+    mkk_payload: list[dict[str, Any]],
+    source: MasterfileSource,
+) -> list[dict[str, str]]:
+    kap_companies = parse_bist_kap_company_list(kap_html)
+
+    stock_rows_by_ticker: dict[str, list[dict[str, Any]]] = {}
+    etf_rows: list[dict[str, Any]] = []
+    for item in mkk_payload:
+        if not isinstance(item, dict):
+            continue
+        ticker = str(item.get("borsaKodu") or "").strip().upper()
+        isin = str(item.get("isinKodu") or "").strip().upper()
+        category = str(item.get("kategori") or item.get("kiymetSinifi") or "").strip()
+        if not ticker or not is_valid_isin(isin):
+            continue
+        if category == BIST_STOCK_CATEGORY and ticker in kap_companies:
+            stock_rows_by_ticker.setdefault(ticker, []).append(item)
+        elif category == BIST_ETF_CATEGORY:
+            etf_rows.append(item)
+
+    rows: list[dict[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+    for ticker, mkk_rows in sorted(stock_rows_by_ticker.items()):
+        preferred = sorted(
+            mkk_rows,
+            key=lambda item: (
+                normalize_bist_takas_code(str(item.get("takasKodu") or "")) != BIST_PRIMARY_SHARE_TAKAS_CODE,
+                str(item.get("isinKodu") or ""),
+            ),
+        )[0]
+        if normalize_bist_takas_code(str(preferred.get("takasKodu") or "")) != BIST_PRIMARY_SHARE_TAKAS_CODE:
+            continue
+        key = (ticker, "Stock")
+        if key in seen:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": BIST_LISTED_COMPANIES_PAGE_URL,
+                "ticker": ticker,
+                "name": kap_companies[ticker],
+                "exchange": "BIST",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+                "isin": str(preferred.get("isinKodu") or "").strip().upper(),
+            }
+        )
+        seen.add(key)
+
+    for item in sorted(etf_rows, key=lambda row: str(row.get("borsaKodu") or "")):
+        ticker = str(item.get("borsaKodu") or "").strip().upper()
+        name = str(item.get("aciklama") or "").strip()
+        isin = str(item.get("isinKodu") or "").strip().upper()
+        key = (ticker, "ETF")
+        if not ticker or not name or not is_valid_isin(isin) or key in seen:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": BIST_MKK_SECURITIES_API_URL,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "BIST",
+                "asset_type": "ETF",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+                "isin": isin,
+                "sector": normalize_bist_etf_category(name),
+            }
+        )
+        seen.add(key)
+
+    if not rows:
+        raise ValueError("Unexpected KAP/MKK BIST securities payload")
+    return rows
+
+
+def fetch_bist_kap_mkk_listed_securities_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    kap_response = session.get(BIST_LISTED_COMPANIES_PAGE_URL, headers=bist_request_headers(), timeout=REQUEST_TIMEOUT)
+    kap_response.raise_for_status()
+    mkk_response = session.get(
+        BIST_MKK_SECURITIES_API_URL,
+        headers=bist_mkk_request_headers(),
+        timeout=REQUEST_TIMEOUT,
+    )
+    mkk_response.raise_for_status()
+    mkk_payload = mkk_response.json()
+    if not isinstance(mkk_payload, list):
+        raise ValueError("Unexpected MKK securities payload")
+    return parse_bist_kap_mkk_listed_securities_payload(kap_response.text, mkk_payload, source)
+
+
+def load_bist_kap_mkk_listed_securities_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (BIST_KAP_MKK_LISTED_SECURITIES_CACHE, LEGACY_BIST_KAP_MKK_LISTED_SECURITIES_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_bist_kap_mkk_listed_securities_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    BIST_KAP_MKK_LISTED_SECURITIES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+TADAWUL_ACTIVE_SECURITY_RE = re.compile(
+    r"\{\s*company:\s*\"(?P<symbol>[^\"]+)\",\s*"
+    r"companyDisplay:\s*\"(?P<name>[^\"]+)\"(?P<body>.*?)"
+    r"link:\s*\"(?P<link>[^\"]+)\"",
+    re.S,
+)
+TADAWUL_STOCK_MARKET_TYPES = {"M", "S"}
+TADAWUL_FUND_MARKET_TYPES = {"C", "E"}
+
+
+def tadawul_request_headers(accept: str = "text/html,*/*") -> dict[str, str]:
+    return {
+        "Accept": accept,
+        "Accept-Language": "en-US,en;q=0.9",
+        "Referer": TADAWUL_ISSUERS_DIRECTORY_URL,
+        "User-Agent": BROWSER_USER_AGENT,
+    }
+
+
+def tadawul_get(
+    session: requests.Session,
+    url: str,
+    *,
+    accept: str = "text/html,*/*",
+):
+    response = session.get(url, headers=tadawul_request_headers(accept), timeout=REQUEST_TIMEOUT)
+    if response.status_code != 403:
+        return response
+    try:
+        from curl_cffi import requests as curl_requests  # type: ignore[import-not-found]
+    except ImportError:
+        return response
+    return curl_requests.get(
+        url,
+        headers=tadawul_request_headers(accept),
+        impersonate="chrome120",
+        timeout=REQUEST_TIMEOUT,
+    )
+
+
+def parse_tadawul_active_symbols(html: str) -> set[str]:
+    active: set[str] = set()
+    for match in TADAWUL_ACTIVE_SECURITY_RE.finditer(html):
+        symbol = match.group("symbol").strip().upper()
+        link = match.group("link")
+        if symbol and "company-profile" in link:
+            active.add(symbol)
+    if not active:
+        raise ValueError("Unexpected Saudi Exchange issuer directory payload")
+    return active
+
+
+def normalize_tadawul_fund_category(name: str, market_type: str) -> str:
+    if market_type == "C":
+        return "Multi-Asset"
+    value = ascii_fold(name).lower()
+    if "gold" in value:
+        return "Commodity"
+    if "sukuk" in value or "government" in value or "sovereign" in value:
+        return "Fixed Income"
+    if "multi asset" in value:
+        return "Multi-Asset"
+    return normalize_hkex_etp_category("", name)
+
+
+def parse_tadawul_securities_payload(
+    issuer_directory_html: str,
+    search_payload: list[dict[str, Any]],
+    source: MasterfileSource,
+) -> list[dict[str, str]]:
+    active_symbols = parse_tadawul_active_symbols(issuer_directory_html)
+    rows: list[dict[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+    for item in search_payload:
+        if not isinstance(item, dict):
+            continue
+        symbol = str(item.get("symbol") or "").strip().upper()
+        market_type = str(item.get("market_type") or "").strip().upper()
+        name = str(item.get("tradingNameEn") or item.get("companyNameEN") or "").strip()
+        company_name = str(item.get("companyNameEN") or name).strip()
+        isin = str(item.get("isin") or "").strip().upper()
+        if not symbol or not name or not is_valid_isin(isin):
+            continue
+        if market_type in TADAWUL_STOCK_MARKET_TYPES:
+            if symbol not in active_symbols:
+                continue
+            asset_type = "Stock"
+            sector = "Real Estate" if "reit" in f"{name} {company_name}".lower() else ""
+        elif market_type in TADAWUL_FUND_MARKET_TYPES:
+            if market_type != "E" and symbol not in active_symbols:
+                continue
+            asset_type = "ETF"
+            sector = normalize_tadawul_fund_category(f"{name} {company_name}", market_type)
+        else:
+            continue
+        key = (symbol, asset_type)
+        if key in seen:
+            continue
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": TADAWUL_THEME_SEARCH_URL,
+            "ticker": symbol,
+            "name": name,
+            "exchange": "TADAWUL",
+            "asset_type": asset_type,
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+            "isin": isin,
+        }
+        if sector:
+            row["sector"] = sector
+        rows.append(row)
+        seen.add(key)
+    if not rows:
+        raise ValueError("Unexpected Saudi Exchange symbol payload")
+    return rows
+
+
+def fetch_tadawul_securities_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    directory_response = tadawul_get(session, TADAWUL_ISSUERS_DIRECTORY_URL)
+    directory_response.raise_for_status()
+    search_response = tadawul_get(session, TADAWUL_THEME_SEARCH_URL, accept="application/json, text/javascript, */*; q=0.01")
+    search_response.raise_for_status()
+    search_payload = search_response.json()
+    if not isinstance(search_payload, list):
+        raise ValueError("Unexpected Saudi Exchange search payload")
+    return parse_tadawul_securities_payload(directory_response.text, search_payload, source)
+
+
+def load_tadawul_securities_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (TADAWUL_SECURITIES_CACHE, LEGACY_TADAWUL_SECURITIES_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_tadawul_securities_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    TADAWUL_SECURITIES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+ADX_STOCK_BOARDS = {"EQTY", "PRCN"}
+ADX_ETF_BOARDS = {"FUND"}
+ADX_EXCLUDED_BOARDS = {"DUAL", "SPCW"}
+ADX_STOCK_SECTOR_MAP = {
+    "Industrial": "Industrials",
+    "Technology": "Information Technology",
+    "Telecommunication": "Communication Services",
+}
+
+
+def adx_request_headers() -> dict[str, str]:
+    return {
+        "Accept": "application/json",
+        "Channel-ID": "OSS WEB",
+        "Content-Type": "application/json",
+        "Origin": "https://www.adx.ae",
+        "Referer": "https://www.adx.ae/",
+        "User-Agent": BROWSER_USER_AGENT,
+        "X-Correlation-ID": "uuid",
+        "adx-Gateway-APIKey": ADX_GATEWAY_API_KEY,
+    }
+
+
+def adx_get_json(session: requests.Session, url: str) -> dict[str, Any]:
+    response = session.get(url, headers=adx_request_headers(), timeout=REQUEST_TIMEOUT)
+    if response.status_code == 403:
+        try:
+            from curl_cffi import requests as curl_requests  # type: ignore[import-not-found]
+        except ImportError:
+            response.raise_for_status()
+        response = curl_requests.get(
+            url,
+            headers=adx_request_headers(),
+            impersonate="chrome120",
+            timeout=REQUEST_TIMEOUT,
+        )
+    response.raise_for_status()
+    payload = response.json()
+    if not isinstance(payload, dict):
+        raise ValueError("Unexpected ADX API payload")
+    return payload
+
+
+def adx_response_list(payload: dict[str, Any], *path: str) -> list[dict[str, Any]]:
+    value: Any = payload
+    for key in path:
+        if not isinstance(value, dict):
+            raise ValueError("Unexpected ADX API payload")
+        value = value.get(key)
+    if not isinstance(value, list):
+        raise ValueError("Unexpected ADX API payload")
+    return [item for item in value if isinstance(item, dict)]
+
+
+def normalize_adx_stock_sector(label: str) -> str:
+    cleaned = str(label or "").strip()
+    mapped = ADX_STOCK_SECTOR_MAP.get(cleaned, cleaned)
+    return normalize_sector(mapped, "Stock")
+
+
+def normalize_adx_etf_category(name: str) -> str:
+    value = ascii_fold(name).lower()
+    if any(marker in value for marker in ("sukuk", "bond", "treasury", "t-bill", "bill")):
+        return "Fixed Income"
+    if any(marker in value for marker in ("gold", "silver", "commodity", "oil", "carbon")):
+        return "Commodity"
+    if any(marker in value for marker in ("reit", "property", "real estate")):
+        return "Real Estate"
+    if "currency" in value:
+        return "Currency"
+    if "multi asset" in value:
+        return "Multi-Asset"
+    return "Equity"
+
+
+def parse_adx_market_watch_payloads(
+    issuers_payload: dict[str, Any],
+    main_market_payload: dict[str, Any],
+    growth_market_payload: dict[str, Any],
+    etf_payload: dict[str, Any],
+    symbol_sector_payload: dict[str, Any],
+    source: MasterfileSource,
+) -> list[dict[str, str]]:
+    issuer_rows = adx_response_list(issuers_payload, "response", "issuers")
+    sector_rows = adx_response_list(symbol_sector_payload, "response", "companies", "company")
+
+    sector_by_symbol = {
+        str(item.get("symbol") or "").strip().upper(): normalize_adx_stock_sector(str(item.get("sectorNameEn") or ""))
+        for item in sector_rows
+    }
+    boards_by_symbol: dict[str, str] = {}
+    market_rows: list[tuple[dict[str, Any], str, str]] = []
+    for payload, asset_type in (
+        (main_market_payload, "Stock"),
+        (growth_market_payload, "Stock"),
+        (etf_payload, "ETF"),
+    ):
+        for item in adx_response_list(payload, "response", "results"):
+            symbol = str(item.get("companySymbol") or "").strip().upper()
+            board = str(item.get("boardId") or "").strip().upper()
+            if symbol:
+                boards_by_symbol[symbol] = board
+                market_rows.append((item, asset_type, board))
+
+    issuer_by_symbol = {
+        str(item.get("tradingCode") or item.get("eqCode") or item.get("dSymbol") or "").strip().upper(): item
+        for item in issuer_rows
+        if str(item.get("status") or "").strip().upper() == "L"
+    }
+
+    rows: list[dict[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+    for market_item, asset_type, board in market_rows:
+        if board in ADX_EXCLUDED_BOARDS:
+            continue
+        if asset_type == "Stock" and board not in ADX_STOCK_BOARDS:
+            continue
+        if asset_type == "ETF" and board not in ADX_ETF_BOARDS:
+            continue
+        ticker = str(market_item.get("companySymbol") or "").strip().upper()
+        issuer = issuer_by_symbol.get(ticker, {})
+        name = str(issuer.get("nameEnglish") or market_item.get("companyID") or "").strip()
+        isin = str(issuer.get("isin") or market_item.get("companyISIN") or "").strip().upper()
+        key = (ticker, asset_type)
+        if not ticker or not name or not is_valid_isin(isin) or key in seen:
+            continue
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": ADX_MARKET_WATCH_PAGE_URL,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "ADX",
+            "asset_type": asset_type,
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+            "isin": isin,
+        }
+        if asset_type == "Stock":
+            sector = sector_by_symbol.get(ticker) or normalize_adx_stock_sector(str(issuer.get("sectorNameArabic") or ""))
+        else:
+            sector = normalize_adx_etf_category(name)
+        if sector:
+            row["sector"] = sector
+        rows.append(row)
+        seen.add(key)
+    if not rows:
+        raise ValueError("Unexpected ADX market-watch payload")
+    return rows
+
+
+def fetch_adx_market_watch_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    return parse_adx_market_watch_payloads(
+        adx_get_json(session, ADX_ISSUERS_API_URL),
+        adx_get_json(session, ADX_MAIN_MARKET_API_URL),
+        adx_get_json(session, ADX_GROWTH_MARKET_API_URL),
+        adx_get_json(session, ADX_ETF_API_URL),
+        adx_get_json(session, ADX_SYMBOL_SECTOR_API_URL),
+        source,
+    )
+
+
+def load_adx_market_watch_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (ADX_MARKET_WATCH_CACHE, LEGACY_ADX_MARKET_WATCH_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_adx_market_watch_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    ADX_MARKET_WATCH_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+QSE_COMP_TYPE_ASSET_TYPE = {"COMP": "Stock", "V": "Stock", "ETF": "ETF"}
+QSE_STOCK_SECTOR_MAP = {
+    "Banks & Financial Services": "Financials",
+    "Insurance": "Financials",
+    "Industrials": "Industrials",
+    "Real Estate": "Real Estate",
+    "Telecoms": "Communication Services",
+    "Transportation": "Industrials",
+}
+QSE_ETF_CATEGORY_MAP = {"ETF": "Equity"}
+
+
+def qse_request_headers() -> dict[str, str]:
+    return {
+        "Accept": "text/plain, application/json, */*",
+        "Referer": QSE_LISTED_COMPANIES_URL,
+        # The official host intermittently resets browser-like requests from this environment.
+        "User-Agent": "curl/8.0",
+    }
+
+
+def normalize_qse_sector(record: dict[str, Any], asset_type: str) -> str:
+    sector = str(record.get("SectorEN") or "").strip()
+    if asset_type == "ETF":
+        return QSE_ETF_CATEGORY_MAP.get(sector, "")
+    return QSE_STOCK_SECTOR_MAP.get(sector, "")
+
+
+def parse_qse_market_watch_payload(payload: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
+    records = payload.get("rows")
+    if not isinstance(records, list):
+        raise ValueError("Unexpected QSE MarketWatch payload")
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for record in records:
+        if not isinstance(record, dict):
+            continue
+        comp_type = str(record.get("CompType") or "").strip().upper()
+        asset_type = QSE_COMP_TYPE_ASSET_TYPE.get(comp_type, "")
+        ticker = str(record.get("Symbol") or "").strip().upper()
+        name = str(record.get("CompanyEN") or "").strip()
+        if not asset_type or not ticker or not name or ticker in seen:
+            continue
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "QSE",
+            "asset_type": asset_type,
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        sector = normalize_qse_sector(record, asset_type)
+        if sector:
+            row["sector"] = sector
+        rows.append(row)
+        seen.add(ticker)
+    if not rows:
+        raise ValueError("Unexpected QSE MarketWatch payload")
+    return rows
+
+
+def fetch_qse_market_watch_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    response = session.get(QSE_MARKET_WATCH_URL, headers=qse_request_headers(), timeout=REQUEST_TIMEOUT)
+    response.raise_for_status()
+    return parse_qse_market_watch_payload(response.json(), source)
+
+
+def load_qse_market_watch_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (QSE_MARKET_WATCH_CACHE, LEGACY_QSE_MARKET_WATCH_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_qse_market_watch_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    QSE_MARKET_WATCH_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+MSX_SUBSECTOR_STOCK_SECTOR_MAP = {
+    "1": "Financial Services",
+    "2": "Financial Services",
+    "3": "Financial Services",
+    "4": "Financial Services",
+    "6": "Consumer Staples",
+    "7": "Materials",
+    "8": "Industrials",
+    "9": "Consumer Discretionary",
+    "10": "Materials",
+    "11": "Materials",
+    "12": "Materials",
+    "13": "Materials",
+    "14": "Health Care",
+    "15": "Industrials",
+    "16": "Communication Services",
+    "17": "Consumer Discretionary",
+    "18": "Industrials",
+    "19": "Energy",
+    "20": "Consumer Discretionary",
+    "21": "Utilities",
+    "22": "Industrials",
+    "23": "Health Care",
+    "24": "Real Estate",
+    "25": "Energy",
+    "26": "Materials",
+}
+MSX_SECTOR_STOCK_SECTOR_FALLBACK = {
+    "1": "Financial Services",
+    "3": "Industrials",
+    "5": "Consumer Discretionary",
+}
+
+
+def msx_request_headers(referer: str = MSX_COMPANIES_URL) -> dict[str, str]:
+    return {
+        "Accept": "application/json, text/javascript, */*; q=0.01",
+        "Content-Type": "application/json; charset=UTF-8",
+        "Referer": referer,
+        "User-Agent": BROWSER_USER_AGENT,
+        "X-Requested-With": "XMLHttpRequest",
+    }
+
+
+def normalize_msx_stock_sector(record: dict[str, Any]) -> str:
+    return MSX_SUBSECTOR_STOCK_SECTOR_MAP.get(str(record.get("SubSector") or "").strip()) or MSX_SECTOR_STOCK_SECTOR_FALLBACK.get(
+        str(record.get("Sector") or "").strip(),
+        "",
+    )
+
+
+def parse_msx_companies_payload(payload: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
+    records = payload.get("d")
+    if not isinstance(records, list):
+        raise ValueError("Unexpected MSX companies payload")
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for record in records:
+        if not isinstance(record, dict):
+            continue
+        listed_status = str(record.get("Listed") or "").strip()
+        sector_code = str(record.get("Sector") or "").strip()
+        ticker = str(record.get("Symbol") or "").strip().upper()
+        name = str(record.get("LongNameEn") or "").strip()
+        upper_name = name.upper()
+        if (
+            listed_status not in {"1", "2"}
+            or sector_code not in {"1", "3", "5"}
+            or not ticker
+            or not name
+            or ticker in seen
+            or "RIGHT ISSUE" in upper_name
+            or upper_name.endswith("-R I")
+        ):
+            continue
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "MSX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        sector = normalize_msx_stock_sector(record)
+        if sector:
+            row["sector"] = sector
+        rows.append(row)
+        seen.add(ticker)
+    if not rows:
+        raise ValueError("Unexpected MSX companies payload")
+    return rows
+
+
+def fetch_msx_companies_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    response = session.post(
+        MSX_COMPANIES_LIST_URL,
+        headers=msx_request_headers(source.source_url),
+        data="{}",
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    return parse_msx_companies_payload(response.json(), source)
+
+
+def load_msx_companies_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (MSX_COMPANIES_CACHE, LEGACY_MSX_COMPANIES_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_msx_companies_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    MSX_COMPANIES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def sem_sheet_header_index(df: pd.DataFrame) -> int:
+    for index, row in df.iterrows():
+        values = {str(value).strip().upper() for value in row.tolist() if pd.notna(value)}
+        if {"ISSUER NAME", "ISSUE DESCRIPTION", "ISIN"} <= values:
+            return int(index)
+    raise ValueError("Unexpected SEM ISIN workbook header")
+
+
+def parse_sem_isin_workbook(
+    content: bytes,
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    workbook = pd.ExcelFile(io.BytesIO(content))
+    listings_by_isin = listing_rows_by_exchange_isin("SEM", listings_path=listings_path)
+    rows: list[dict[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+    for sheet_name in ("Official Market", "DEM"):
+        if sheet_name not in workbook.sheet_names:
+            continue
+        raw_df = pd.read_excel(workbook, sheet_name=sheet_name, header=None, dtype=str)
+        header_index = sem_sheet_header_index(raw_df)
+        header = [str(value).strip().upper() if pd.notna(value) else "" for value in raw_df.iloc[header_index].tolist()]
+        isin_col = header.index("ISIN")
+        for _, raw_row in raw_df.iloc[header_index + 1 :].iterrows():
+            isin = str(raw_row.iloc[isin_col] if len(raw_row) > isin_col else "").strip().upper()
+            if not is_valid_isin(isin):
+                continue
+            listing = listings_by_isin.get(isin)
+            if not listing or listing.get("asset_type") not in {"Stock", "ETF"}:
+                continue
+            key = (listing["ticker"], listing["asset_type"])
+            if key in seen:
+                continue
+            row = {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": SEM_ISIN_PAGE_URL,
+                "ticker": listing["ticker"],
+                "name": listing.get("name", "").strip(),
+                "exchange": "SEM",
+                "asset_type": listing["asset_type"],
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+                "isin": isin,
+            }
+            sector = listing.get("stock_sector") or listing.get("etf_category") or listing.get("sector") or ""
+            if sector:
+                row["sector"] = sector
+            rows.append(row)
+            seen.add(key)
+
+    if not rows:
+        raise ValueError("Unexpected SEM ISIN workbook payload")
+    return rows
+
+
+def fetch_sem_isin_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    response = session.get(
+        source.source_url,
+        headers={"User-Agent": BROWSER_USER_AGENT},
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    return parse_sem_isin_workbook(response.content, source)
+
+
+def load_sem_isin_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (SEM_ISIN_CACHE, LEGACY_SEM_ISIN_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_sem_isin_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    SEM_ISIN_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def parse_bvb_instrument_directory_html(
+    text: str,
+    source: MasterfileSource,
+    *,
+    asset_type: str,
+    category_filter: str | None = None,
+) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for row_match in BVB_INSTRUMENT_ROW_RE.finditer(text):
+        row_html = row_match.group("body")
+        link_match = BVB_INSTRUMENT_LINK_RE.search(row_html)
+        isin_match = BVB_INSTRUMENT_ISIN_RE.search(row_html)
+        cells = HTML_TD_RE.findall(row_html)
+        if link_match is None or isin_match is None or len(cells) < 2:
+            continue
+
+        ticker = clean_html_text(link_match.group("ticker")).strip().upper()
+        href_ticker = clean_html_text(link_match.group("href_ticker")).strip().upper()
+        isin = clean_html_text(isin_match.group("isin")).strip().upper()
+        name = clean_html_text(cells[1]).rstrip(";").strip()
+        category = clean_html_text(cells[-1]).strip()
+        if category_filter and category_filter.upper() not in category.upper():
+            continue
+        if not ticker or ticker != href_ticker or ticker in seen or not name or not is_valid_isin(isin):
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": urljoin(source.source_url, link_match.group("href")),
+                "ticker": ticker,
+                "name": name,
+                "exchange": "BVB",
+                "asset_type": asset_type,
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+                "isin": isin,
+            }
+        )
+        seen.add(ticker)
+    if not rows:
+        raise ValueError("Unexpected BVB instrument directory HTML")
+    return rows
+
+
+def parse_bvb_shares_directory_html(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    return parse_bvb_instrument_directory_html(text, source, asset_type="Stock")
+
+
+def parse_bvb_fund_units_directory_html(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    return parse_bvb_instrument_directory_html(text, source, asset_type="ETF", category_filter="ETF")
+
+
+def fetch_bvb_market_page_text(source_url: str, session: requests.Session) -> str:
+    response = session.get(source_url, headers={"User-Agent": BROWSER_USER_AGENT}, timeout=REQUEST_TIMEOUT)
+    response.raise_for_status()
+    return response.text
+
+
+def fetch_bvb_async_tab_text(
+    source_url: str,
+    page_text: str,
+    tab_target: str,
+    session: requests.Session,
+) -> str:
+    fields = extract_html_form_inputs(page_text, "aspnetForm")
+    fields.update(
+        {
+            "ctl00$ctl00$MasterScriptManager": f"{tab_target}|{tab_target}",
+            "__EVENTTARGET": tab_target,
+            "__EVENTARGUMENT": "",
+            "__ASYNCPOST": "true",
+        }
+    )
+    response = session.post(
+        source_url,
+        data=fields,
+        headers={
+            "User-Agent": BROWSER_USER_AGENT,
+            "Referer": source_url,
+            "X-MicrosoftAjax": "Delta=true",
+            "X-Requested-With": "XMLHttpRequest",
+        },
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    return response.text
+
+
+def dedupe_bvb_reference_rows(rows: Iterable[dict[str, str]]) -> list[dict[str, str]]:
+    deduped: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for row in rows:
+        ticker = row.get("ticker", "").strip().upper()
+        if not ticker or ticker in seen:
+            continue
+        deduped.append(row)
+        seen.add(ticker)
+    return deduped
+
+
+def fetch_bvb_shares_directory(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    text = fetch_bvb_market_page_text(source.source_url, session)
+    rows = parse_bvb_shares_directory_html(text, source)
+    for tab_target in BVB_SHARES_ASYNC_TABS:
+        tab_text = fetch_bvb_async_tab_text(source.source_url, text, tab_target, session)
+        rows.extend(parse_bvb_shares_directory_html(tab_text, source))
+    return dedupe_bvb_reference_rows(rows)
+
+
+def fetch_bvb_fund_units_directory(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    text = fetch_bvb_market_page_text(source.source_url, session)
+    return parse_bvb_fund_units_directory_html(text, source)
+
+
+def load_bvb_shares_directory_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (BVB_SHARES_DIRECTORY_CACHE, LEGACY_BVB_SHARES_DIRECTORY_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_bvb_shares_directory(source, session=session)
+    except (requests.RequestException, ValueError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    BVB_SHARES_DIRECTORY_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def load_bvb_fund_units_directory_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (BVB_FUND_UNITS_DIRECTORY_CACHE, LEGACY_BVB_FUND_UNITS_DIRECTORY_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_bvb_fund_units_directory(source, session=session)
+    except (requests.RequestException, ValueError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    BVB_FUND_UNITS_DIRECTORY_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def ngx_request_headers() -> dict[str, str]:
+    return {
+        "User-Agent": "Mozilla/5.0",
+        "Accept": "application/json;odata=verbose",
+        "Referer": NGX_EQUITIES_PRICE_LIST_PAGE_URL,
+        "Origin": "https://ngxgroup.com",
+    }
+
+
+NGX_COMPANY_PROFILE_LINK_RE = re.compile(
+    r"company-profile/\?symbol=(?P<symbol>[^&\"']+)&(?:amp;)?directory=companydirectory",
+    re.IGNORECASE,
+)
+NGX_COMPANY_PROFILE_FIELD_RE = re.compile(
+    r'<strong\s+class="(?P<class>CompanyName|Symbol|Sector)">(?P<value>.*?)</strong>',
+    re.IGNORECASE | re.DOTALL,
+)
+
+
+def ngx_company_profile_url(symbol: str) -> str:
+    return f"{NGX_COMPANY_PROFILE_DIRECTORY_URL}?symbol={symbol}&directory=companydirectory"
+
+
+def clean_ngx_profile_text(value: str) -> str:
+    return re.sub(r"\s+", " ", unescape(re.sub(r"<[^>]+>", " ", value))).strip()
+
+
+def normalize_ngx_company_name(value: str, ticker: str) -> str:
+    cleaned = clean_ngx_profile_text(value)
+    if ticker:
+        cleaned = re.sub(rf"\s*\(\s*{re.escape(ticker)}\s*\)\s*$", "", cleaned, flags=re.IGNORECASE)
+    return cleaned.strip()
+
+
+def extract_ngx_company_profile_symbols(html: str) -> list[str]:
+    seen: set[str] = set()
+    symbols: list[str] = []
+    for match in NGX_COMPANY_PROFILE_LINK_RE.finditer(html):
+        symbol = clean_ngx_profile_text(match.group("symbol")).upper()
+        if not symbol or symbol in seen:
+            continue
+        symbols.append(symbol)
+        seen.add(symbol)
+    return symbols
+
+
+def parse_ngx_company_profile_detail_html(html: str) -> dict[str, str]:
+    values: dict[str, str] = {}
+    for match in NGX_COMPANY_PROFILE_FIELD_RE.finditer(html):
+        field = match.group("class").lower()
+        values[field] = clean_ngx_profile_text(match.group("value"))
+
+    ticker = values.get("symbol", "").strip().upper()
+    name = normalize_ngx_company_name(values.get("companyname", ""), ticker)
+    sector = values.get("sector", "").strip()
+    if not ticker or not name:
+        return {}
+    return {"ticker": ticker, "name": name, "sector": sector}
+
+
+def find_ngx_prefix_replaced_listing(
+    official_ticker: str,
+    profile_name: str,
+    *,
+    missing_current_by_ticker: dict[str, dict[str, str]],
+) -> dict[str, str] | None:
+    candidates = [
+        row
+        for ticker, row in missing_current_by_ticker.items()
+        if official_ticker.startswith(ticker) and 0 < len(official_ticker) - len(ticker) <= 2
+    ]
+    matches = [
+        row
+        for row in candidates
+        if alias_matches_company(profile_name, row.get("name", ""))
+        or alias_matches_company(row.get("name", ""), profile_name)
+    ]
+    if len(matches) == 1:
+        return matches[0]
+    return None
+
+
+def build_ngx_company_profile_directory_rows(
+    symbols: Iterable[str],
+    source: MasterfileSource,
+    *,
+    profile_details_by_symbol: dict[str, dict[str, str]],
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    current_by_ticker = {
+        row.get("ticker", "").strip().upper(): row
+        for row in load_csv(listings_path)
+        if row.get("exchange") == "NGX" and row.get("asset_type") == "Stock"
+    }
+    symbol_set = {symbol.strip().upper() for symbol in symbols if symbol.strip()}
+    missing_current_by_ticker = {
+        ticker: row for ticker, row in current_by_ticker.items() if ticker not in symbol_set
+    }
+
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for symbol in sorted(symbol_set):
+        detail = profile_details_by_symbol.get(symbol, {})
+        profile_ticker = detail.get("ticker", symbol).strip().upper()
+        if profile_ticker != symbol:
+            continue
+
+        listing = current_by_ticker.get(symbol)
+        if listing is None and detail.get("name"):
+            listing = find_ngx_prefix_replaced_listing(
+                symbol,
+                detail["name"],
+                missing_current_by_ticker=missing_current_by_ticker,
+            )
+        if listing is None or symbol in seen:
+            continue
+
+        name = detail.get("name") or listing.get("name", "") or symbol
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": ngx_company_profile_url(symbol),
+            "ticker": symbol,
+            "name": name,
+            "exchange": "NGX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        if listing.get("isin"):
+            row["isin"] = listing["isin"]
+        if detail.get("sector"):
+            row["sector"] = detail["sector"]
+        rows.append(row)
+        seen.add(symbol)
+    return rows
+
+
+def parse_ngx_company_profile_directory_html(
+    html: str,
+    source: MasterfileSource,
+    *,
+    profile_details_by_symbol: dict[str, dict[str, str]],
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    symbols = extract_ngx_company_profile_symbols(html)
+    if not symbols:
+        raise ValueError("Unexpected NGX company profile directory HTML")
+    return build_ngx_company_profile_directory_rows(
+        symbols,
+        source,
+        profile_details_by_symbol=profile_details_by_symbol,
+        listings_path=listings_path,
+    )
+
+
+def fetch_ngx_company_profile_detail(
+    symbol: str,
+    *,
+    session: requests.Session | None = None,
+) -> dict[str, str]:
+    response = (session or requests).get(ngx_company_profile_url(symbol), headers={"User-Agent": "Mozilla/5.0"}, timeout=30)
+    response.raise_for_status()
+    return parse_ngx_company_profile_detail_html(response.text)
+
+
+def ngx_company_profile_symbols_to_fetch(symbols: Iterable[str], *, listings_path: Path = LISTINGS_CSV) -> list[str]:
+    symbol_set = {symbol.strip().upper() for symbol in symbols if symbol.strip()}
+    current_symbols = {
+        row.get("ticker", "").strip().upper()
+        for row in load_csv(listings_path)
+        if row.get("exchange") == "NGX" and row.get("asset_type") == "Stock"
+    }
+    return sorted(
+        symbol
+        for symbol in symbol_set - current_symbols
+        for current in current_symbols - symbol_set
+        if symbol.startswith(current) and 0 < len(symbol) - len(current) <= 2
+    )
+
+
+def fetch_ngx_company_profile_directory(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    response = (session or requests).get(source.source_url, headers={"User-Agent": "Mozilla/5.0"}, timeout=30)
+    response.raise_for_status()
+    symbols = extract_ngx_company_profile_symbols(response.text)
+    if not symbols:
+        raise ValueError("Unexpected NGX company profile directory HTML")
+
+    details: dict[str, dict[str, str]] = {}
+    target_symbols = ngx_company_profile_symbols_to_fetch(symbols)
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        futures = {
+            executor.submit(fetch_ngx_company_profile_detail, symbol, session=session): symbol
+            for symbol in target_symbols
+        }
+        for future in as_completed(futures):
+            symbol = futures[future]
+            try:
+                detail = future.result()
+            except (requests.RequestException, ValueError):
+                continue
+            if detail:
+                details[symbol] = detail
+
+    return build_ngx_company_profile_directory_rows(
+        symbols,
+        source,
+        profile_details_by_symbol=details,
+    )
+
+
+def load_ngx_company_profile_directory_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (NGX_COMPANY_PROFILE_DIRECTORY_CACHE, LEGACY_NGX_COMPANY_PROFILE_DIRECTORY_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_ngx_company_profile_directory(source, session=session)
+    except (requests.RequestException, ValueError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    NGX_COMPANY_PROFILE_DIRECTORY_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def parse_ngx_equities_price_list_payload(
+    payload: Any,
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    if not isinstance(payload, list):
+        raise ValueError("Unexpected NGX equities price list payload")
+    current_by_ticker = {
+        row.get("ticker", "").strip().upper(): row
+        for row in load_csv(listings_path)
+        if row.get("exchange") == "NGX"
+    }
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for record in payload:
+        if not isinstance(record, dict):
+            continue
+        ticker = str(record.get("Symbol", "")).strip().upper()
+        listing = current_by_ticker.get(ticker)
+        if not ticker or ticker in seen or listing is None:
+            continue
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": listing.get("name", "") or str(record.get("Company2", "")).strip() or ticker,
+            "exchange": "NGX",
+            "asset_type": listing.get("asset_type", "") or "Stock",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        if listing.get("isin"):
+            row["isin"] = listing["isin"]
+        sector = str(record.get("Sector", "")).strip()
+        if sector:
+            row["sector"] = sector
+        rows.append(row)
+        seen.add(ticker)
+    return rows
+
+
+def fetch_ngx_equities_price_list(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    payload = fetch_json(source.source_url, session=session, headers=ngx_request_headers())
+    return parse_ngx_equities_price_list_payload(payload, source)
+
+
+def load_ngx_equities_price_list_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (NGX_EQUITIES_PRICE_LIST_CACHE, LEGACY_NGX_EQUITIES_PRICE_LIST_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_ngx_equities_price_list(source, session=session)
+    except (requests.RequestException, ValueError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    NGX_EQUITIES_PRICE_LIST_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def parse_vienna_listed_companies_html(
+    text: str,
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    listings_by_isin = listing_rows_by_exchange_isin("VSE", listings_path=listings_path)
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for table in pd.read_html(io.StringIO(text)):
+        columns = {str(column) for column in table.columns}
+        if not {"ISIN", "Issuer", "Type of Security"} <= columns:
+            continue
+        for record in table.to_dict("records"):
+            isin = str(record.get("ISIN", "")).strip().upper()
+            issuer = str(record.get("Issuer", "")).strip()
+            security_type = str(record.get("Type of Security", "")).strip().lower()
+            listing = listings_by_isin.get(isin)
+            if not listing or isin in seen or "equity" not in security_type:
+                continue
+            rows.append(
+                {
+                    "source_key": source.key,
+                    "provider": source.provider,
+                    "source_url": source.source_url,
+                    "ticker": listing["ticker"],
+                    "name": issuer or listing["name"],
+                    "exchange": "VSE",
+                    "asset_type": "Stock",
+                    "listing_status": "active",
+                    "reference_scope": source.reference_scope,
+                    "official": "true",
+                    "isin": isin,
+                }
+            )
+            seen.add(isin)
+    return rows
+
+
+def fetch_vienna_listed_companies(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    text = fetch_text(source.source_url, session=session)
+    return parse_vienna_listed_companies_html(text, source)
+
+
+def load_vienna_listed_companies_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (VIENNA_LISTED_COMPANIES_CACHE, LEGACY_VIENNA_LISTED_COMPANIES_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_vienna_listed_companies(source, session=session)
+    except (requests.RequestException, ValueError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    VIENNA_LISTED_COMPANIES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def parse_zagreb_securities_html(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for match in ZAGREB_SECURITIES_ROW_RE.finditer(text):
+        attrs = match.group("attrs")
+        if "LISTED_SECURITIES" not in attrs or "EQTY" not in attrs.upper():
+            continue
+        cells = [clean_html_text(cell.group("value")) for cell in HTML_TD_RE.finditer(match.group("body"))]
+        if len(cells) < 3:
+            continue
+        ticker, isin, name = cells[0].strip().upper(), cells[1].strip().upper(), cells[2].strip()
+        sector = cells[3].strip() if len(cells) > 3 else ""
+        delisting_date = cells[7].strip() if len(cells) > 7 else ""
+        if not ticker or not name or not is_valid_isin(isin) or (delisting_date and delisting_date != "-"):
+            continue
+        if ticker in seen:
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "ZSE",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+                "isin": isin,
+                "sector": sector,
+            }
+        )
+        seen.add(ticker)
+    return rows
+
+
+def fetch_zagreb_securities(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    text = fetch_text(source.source_url, session=session)
+    return parse_zagreb_securities_html(text, source)
+
+
+def load_zagreb_securities_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (ZAGREB_SECURITIES_CACHE, LEGACY_ZAGREB_SECURITIES_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    try:
+        rows = fetch_zagreb_securities(source, session=session)
+    except (requests.RequestException, ValueError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    ZAGREB_SECURITIES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
 def load_idx_listed_companies_rows(
     source: MasterfileSource,
     session: requests.Session | None = None,
@@ -2246,6 +8112,23 @@ def load_idx_listed_companies_rows(
 
     ensure_output_dirs()
     IDX_LISTED_COMPANIES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def load_idx_company_profiles_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_idx_company_profiles(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in (IDX_COMPANY_PROFILES_CACHE, LEGACY_IDX_COMPANY_PROFILES_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    IDX_COMPANY_PROFILES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"
 
 
@@ -2298,6 +8181,74 @@ def parse_wse_company_label(label_html: str) -> tuple[str, str]:
     return text[: match.start()].strip(), match.group(1).strip().upper()
 
 
+WSE_STOCK_SECTOR_RULES: tuple[tuple[str, str], ...] = (
+    ("bank", "Financials"),
+    ("finans", "Financials"),
+    ("inwestycy", "Financials"),
+    ("zarzadzanie aktywami", "Financials"),
+    ("aktywami", "Financials"),
+    ("ubezpiec", "Financials"),
+    ("nieruchomosci", "Real Estate"),
+    ("energetyk", "Utilities"),
+    ("energia", "Utilities"),
+    ("paliw", "Energy"),
+    ("ropa", "Energy"),
+    ("gaz", "Energy"),
+    ("gornictwo", "Materials"),
+    ("biotechnologia", "Health Care"),
+    ("medycz", "Health Care"),
+    ("farmac", "Health Care"),
+    ("gry", "Communication Services"),
+    ("wydawnict", "Communication Services"),
+    ("media", "Communication Services"),
+    ("oprogramowanie", "Information Technology"),
+    ("komputery", "Information Technology"),
+    ("informaty", "Information Technology"),
+    ("elektronika", "Information Technology"),
+    ("internet", "Consumer Discretionary"),
+    ("podrozy", "Consumer Discretionary"),
+    ("sieci handlowe", "Consumer Discretionary"),
+    ("sprzedaz", "Consumer Discretionary"),
+    ("samochod", "Consumer Discretionary"),
+    ("odziez", "Consumer Discretionary"),
+    ("kosmetyki", "Consumer Staples"),
+    ("chemia gospodarcza", "Consumer Staples"),
+    ("napoje", "Consumer Staples"),
+    ("spozyw", "Consumer Staples"),
+    ("produkcja rolna", "Consumer Staples"),
+    ("rybolow", "Consumer Staples"),
+    ("budownictwo", "Industrials"),
+    ("usługi dla przedsiebiorstw", "Industrials"),
+    ("transport", "Industrials"),
+    ("drewno", "Materials"),
+    ("papier", "Materials"),
+    ("chemia", "Materials"),
+)
+
+
+def extract_wse_company_sector_label(row_html: str) -> str:
+    match = WSE_SMALL_GREY_RE.search(row_html)
+    if match is None:
+        return ""
+    text = " ".join(unescape(strip_html_tags(match.group("value"))).split())
+    if "|" in text:
+        return text.rsplit("|", 1)[-1].strip()
+    return text.strip()
+
+
+def normalize_wse_stock_sector(label: str) -> str:
+    if not label:
+        return ""
+    folded = ascii_fold(label).lower()
+    canonical = normalize_sector(label, "Stock")
+    if canonical:
+        return canonical
+    for keyword, sector in WSE_STOCK_SECTOR_RULES:
+        if keyword in folded:
+            return sector
+    return ""
+
+
 def extract_wse_total_companies(text: str) -> int | None:
     match = WSE_COUNT_ALL_RE.search(text)
     if match is None:
@@ -2328,6 +8279,11 @@ def parse_wse_company_search_html(text: str, source: MasterfileSource) -> list[d
         }
         if isin_match:
             row["isin"] = isin_match.group(1).upper()
+        row_end = text.find("</tr>", match.end())
+        if row_end != -1:
+            sector = normalize_wse_stock_sector(extract_wse_company_sector_label(text[match.end() : row_end]))
+            if sector:
+                row["sector"] = sector
         rows.append(row)
         seen.add(ticker)
     return rows
@@ -2621,6 +8577,23 @@ TASE_SEARCH_ENTITY_STOCK_SUBTYPE_DESCS = {
 }
 
 
+def normalize_tase_etf_category(classification: Any) -> str:
+    value = str(classification or "").strip().lower()
+    if not value:
+        return ""
+    if any(marker in value for marker in ("leveraged", "short leveraged", "high-risk")):
+        return "Leveraged/Inverse"
+    if "bond" in value:
+        return "Fixed Income"
+    if "commodit" in value:
+        return "Commodity"
+    if any(marker in value for marker in ("share", "stock", "hitech", "hi-tech")):
+        return "Equity"
+    if "currency" in value or "fx" in value:
+        return "Currency"
+    return ""
+
+
 def fetch_tase_securities_marketdata(
     source: MasterfileSource,
     *,
@@ -2715,6 +8688,9 @@ def parse_tase_etf_marketdata_payload(
         isin = str(record.get("ISIN") or record.get("ISIN_ID") or "").strip().upper()
         if len(isin) == 12 and isin.isalnum():
             row["isin"] = isin
+        sector = normalize_tase_etf_category(record.get("Classification"))
+        if sector:
+            row["sector"] = sector
         rows.append(row)
     return rows
 
@@ -3007,6 +8983,19 @@ def hose_securities_cache_paths(source_key: str) -> tuple[Path, Path]:
     return mapping[source_key]
 
 
+def normalize_hose_security_sector(record: dict[str, Any], asset_type: str) -> str:
+    haystack = " ".join(
+        str(record.get(key) or "")
+        for key in ("name", "brief", "displayText", "refIndex")
+    ).lower()
+    if asset_type == "ETF":
+        if "etf" in haystack or any(marker in haystack for marker in ("vn30", "vn100", "vnx", "vnfin", "diamond")):
+            return "Equity"
+    if "reit" in haystack or "bất động sản" in haystack:
+        return "Real Estate" if asset_type == "Stock" else "Real Estate"
+    return ""
+
+
 def parse_hose_securities_payload(
     payload: dict[str, Any],
     source: MasterfileSource,
@@ -3029,21 +9018,23 @@ def parse_hose_securities_payload(
         if not ticker or not name or not isin or ticker in seen:
             continue
         seen.add(ticker)
-        rows.append(
-            {
-                "source_key": source.key,
-                "provider": source.provider,
-                "source_url": source.source_url,
-                "ticker": ticker,
-                "name": name,
-                "exchange": "HOSE",
-                "asset_type": asset_type,
-                "listing_status": "active",
-                "reference_scope": source.reference_scope,
-                "official": "true",
-                "isin": isin,
-            }
-        )
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "HOSE",
+            "asset_type": asset_type,
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+            "isin": isin,
+        }
+        sector = normalize_hose_security_sector(record, asset_type)
+        if sector:
+            row["sector"] = sector
+        rows.append(row)
     return rows
 
 
@@ -4061,6 +10052,45 @@ def parse_idx_listed_companies_payload(
     return rows
 
 
+def normalize_idx_sector(sector: Any, subsector: Any = "") -> str:
+    sector_text = str(sector or "").strip().lower()
+    subsector_text = str(subsector or "").strip().lower()
+    if sector_text == "infrastruktur":
+        return IDX_INFRASTRUCTURE_SUBSECTOR_MAP.get(subsector_text, "Industrials")
+    return IDX_SECTOR_MAP.get(sector_text, "")
+
+
+def parse_idx_company_profiles_payload(
+    payload: dict[str, Any],
+    source: MasterfileSource,
+) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for record in payload.get("data") or []:
+        ticker = str(record.get("KodeEmiten") or "").strip().upper()
+        name = str(record.get("NamaEmiten") or "").strip()
+        if not ticker or not name or ticker in seen:
+            continue
+        seen.add(ticker)
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "IDX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        sector = normalize_idx_sector(record.get("Sektor"), record.get("SubSektor"))
+        if sector:
+            row["sector"] = sector
+        rows.append(row)
+    return rows
+
+
 def fetch_idx_listed_companies(
     source: MasterfileSource,
     *,
@@ -4091,6 +10121,47 @@ def fetch_idx_listed_companies(
         payload = response.json()
         total = int(payload.get("recordsFiltered") or payload.get("recordsTotal") or 0)
         page_rows = parse_idx_listed_companies_payload(payload, source)
+        for row in page_rows:
+            ticker = row["ticker"]
+            if ticker in seen:
+                continue
+            seen.add(ticker)
+            rows.append(row)
+        if not page_rows:
+            break
+        start += length
+
+    return rows
+
+
+def fetch_idx_company_profiles(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    start = 0
+    length = 1000
+    total = None
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+
+    while total is None or start < total:
+        response = session.get(
+            source.source_url,
+            params={
+                "start": start,
+                "length": length,
+                "code": "",
+                "language": "en-us",
+            },
+            headers=idx_request_headers(),
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        payload = response.json()
+        total = int(payload.get("recordsFiltered") or payload.get("recordsTotal") or 0)
+        page_rows = parse_idx_company_profiles_payload(payload, source)
         for row in page_rows:
             ticker = row["ticker"]
             if ticker in seen:
@@ -4362,6 +10433,7 @@ def bme_cache_paths(source_key: str) -> tuple[Path, Path]:
         "bme_listed_companies": (BME_LISTED_COMPANIES_CACHE, LEGACY_BME_LISTED_COMPANIES_CACHE),
         "bme_etf_list": (BME_ETF_LIST_CACHE, LEGACY_BME_ETF_LIST_CACHE),
         "bme_listed_values": (BME_LISTED_VALUES_CACHE, LEGACY_BME_LISTED_VALUES_CACHE),
+        "bme_security_prices_directory": (BME_SECURITY_PRICES_CACHE, LEGACY_BME_SECURITY_PRICES_CACHE),
         "bme_growth_prices": (BME_GROWTH_PRICES_CACHE, LEGACY_BME_GROWTH_PRICES_CACHE),
     }
     return mapping[source_key]
@@ -4386,10 +10458,10 @@ def fetch_bme_listed_companies_payload(
     trading_system: str,
     *,
     session: requests.Session | None = None,
+    page_size: int = 100,
 ) -> list[dict[str, Any]]:
     session = session or requests.Session()
     page = 0
-    page_size = 100
     rows: list[dict[str, Any]] = []
 
     while True:
@@ -4408,6 +10480,11 @@ def fetch_bme_listed_companies_payload(
         page += 1
 
     return rows
+
+
+def bme_asset_type_from_trading_system(trading_system: str) -> str:
+    normalized = trading_system.strip().upper()
+    return BME_TRADING_SYSTEM_TO_ASSET_TYPE.get(normalized, "Stock")
 
 
 def fetch_bme_share_details_info(
@@ -4455,8 +10532,20 @@ def build_bme_reference_rows(
         isin = str(detail.get("isin", "")).strip().upper()
         if isin:
             row["isin"] = isin
+        sector = normalize_bme_stock_sector(detail) if asset_type == "Stock" else ""
+        if sector:
+            row["sector"] = sector
         rows.append(row)
     return rows
+
+
+def normalize_bme_stock_sector(detail: dict[str, Any]) -> str:
+    sector_code = str(detail.get("sector", "")).strip().zfill(2)
+    subsector_code = str(detail.get("subsector", "")).strip().zfill(2)
+    return (
+        BME_SUBSECTOR_TO_CANONICAL_STOCK_SECTOR.get((sector_code, subsector_code))
+        or BME_SECTOR_TO_CANONICAL_STOCK_SECTOR.get(sector_code, "")
+    )
 
 
 def parse_bme_listed_values_text_lines(
@@ -4521,6 +10610,31 @@ def parse_bme_listed_values_pdf(
     return parse_bme_listed_values_text_lines(lines, source, source_url=source_url)
 
 
+def enrich_bme_listed_value_rows_with_share_details(
+    rows: list[dict[str, str]],
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    enriched_rows: list[dict[str, str]] = []
+    sector_by_isin: dict[str, str] = {}
+    for row in rows:
+        enriched_row = dict(row)
+        isin = row.get("isin", "").strip().upper()
+        if row.get("asset_type") == "Stock" and isin and not row.get("sector"):
+            if isin not in sector_by_isin:
+                try:
+                    detail = fetch_bme_share_details_info(isin, session=session)
+                except requests.RequestException:
+                    sector_by_isin[isin] = ""
+                else:
+                    sector_by_isin[isin] = normalize_bme_stock_sector(detail)
+            if sector_by_isin[isin]:
+                enriched_row["sector"] = sector_by_isin[isin]
+        enriched_rows.append(enriched_row)
+    return enriched_rows
+
+
 def fetch_bme_listed_values_rows(
     source: MasterfileSource,
     *,
@@ -4542,7 +10656,10 @@ def fetch_bme_listed_values_rows(
 
     ensure_output_dirs()
     BME_LISTED_VALUES_PDF_CACHE.write_bytes(response.content)
-    return parse_bme_listed_values_pdf(response.content, source, source_url=response.url)
+    return enrich_bme_listed_value_rows_with_share_details(
+        parse_bme_listed_values_pdf(response.content, source, source_url=response.url),
+        session=session,
+    )
 
 
 def load_bme_listed_values_rows(
@@ -4565,6 +10682,220 @@ def load_bme_listed_values_rows(
 
     ensure_output_dirs()
     BME_LISTED_VALUES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def fetch_bme_security_prices_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    listed_items = fetch_bme_listed_companies_payload(
+        BME_SECURITY_PRICES_TRADING_SYSTEMS,
+        session=session,
+    )
+    rows: list[dict[str, str]] = []
+    seen_pairs: set[tuple[str, str]] = set()
+
+    def add_detail(detail: dict[str, Any]) -> None:
+        trading_system = str(detail.get("tradingSystem", "")).strip()
+        asset_type = bme_asset_type_from_trading_system(trading_system)
+        for row in build_bme_reference_rows(source, detail, exchange="BME", asset_type=asset_type):
+            pair = (row["ticker"], row.get("isin", ""))
+            if pair in seen_pairs:
+                continue
+            seen_pairs.add(pair)
+            rows.append(row)
+
+    if not isinstance(session, requests.Session) or len(listed_items) <= 1:
+        for item in listed_items:
+            isin = str(item.get("isin", "")).strip().upper()
+            if not isin:
+                continue
+            try:
+                add_detail(fetch_bme_share_details_info(isin, session=session))
+            except requests.RequestException:
+                continue
+        return rows
+
+    max_workers = min(8, len(listed_items))
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = {
+            executor.submit(fetch_bme_share_details_info, str(item.get("isin", "")).strip().upper()): item
+            for item in listed_items
+            if str(item.get("isin", "")).strip()
+        }
+        for future in as_completed(futures):
+            try:
+                add_detail(future.result())
+            except requests.RequestException:
+                continue
+    return rows
+
+
+def load_bme_security_prices_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_bme_security_prices_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in bme_cache_paths(source.key):
+            if path.exists():
+                cached_rows = json.loads(path.read_text(encoding="utf-8"))
+                if len(cached_rows) >= BME_SECURITY_PRICES_MIN_CACHE_ROWS:
+                    return cached_rows, "cache"
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    bme_cache_paths(source.key)[0].write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def parse_athex_classification_lines(
+    lines: Iterable[str],
+    source: MasterfileSource,
+    *,
+    listings_by_ticker: dict[str, dict[str, str]] | None = None,
+    source_url: str | None = None,
+) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for raw_line in lines:
+        line = " ".join(raw_line.split())
+        match = ATHEX_CLASSIFICATION_LINE_RE.match(line)
+        if match is None:
+            continue
+
+        rest = match.group("rest")
+        first_code = re.search(r"\s\d{4}\s", rest)
+        if first_code is None:
+            continue
+        company = rest[: first_code.start()].strip()
+        tail = rest[first_code.start() + 1 :]
+        numeric_tokens = list(re.finditer(r"\b\d{4,8}\b", tail))
+        if len(numeric_tokens) < 4:
+            continue
+
+        ticker = match.group("ticker").strip().upper()
+        isin = match.group("isin").strip().upper()
+        if not ticker or ticker in seen or not company or not is_valid_isin(isin):
+            continue
+
+        listing = (listings_by_ticker or {}).get(ticker)
+        if listings_by_ticker is not None and listing is None:
+            continue
+        asset_type = (listing or {}).get("asset_type", "Stock")
+        if asset_type != "Stock":
+            continue
+
+        new_super_sector = tail[numeric_tokens[2].end() : numeric_tokens[3].start()].strip()
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source_url or source.source_url,
+                "ticker": ticker,
+                "name": (listing or {}).get("name") or company,
+                "exchange": "ATHEX",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+                "isin": isin,
+                "sector": ATHEX_SUPER_SECTOR_MAP.get(new_super_sector, ""),
+            }
+        )
+        seen.add(ticker)
+    if not rows:
+        raise ValueError("Unexpected ATHEX classification PDF text")
+    return rows
+
+
+def parse_athex_classification_pdf(
+    content: bytes,
+    source: MasterfileSource,
+    *,
+    listings_by_ticker: dict[str, dict[str, str]] | None = None,
+    source_url: str | None = None,
+) -> list[dict[str, str]]:
+    try:
+        import pdfplumber
+    except ImportError as exc:
+        raise ImportError("ATHEX classification PDF parsing requires pdfplumber") from exc
+
+    lines: list[str] = []
+    with pdfplumber.open(io.BytesIO(content)) as pdf:
+        for page in pdf.pages:
+            text = page.extract_text(x_tolerance=1, y_tolerance=3) or ""
+            lines.extend(text.splitlines())
+    return parse_athex_classification_lines(
+        lines,
+        source,
+        listings_by_ticker=listings_by_ticker,
+        source_url=source_url,
+    )
+
+
+def fetch_athex_classification_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    response = session.get(
+        source.source_url,
+        headers={
+            "User-Agent": BROWSER_USER_AGENT,
+            "Accept": "application/pdf,*/*;q=0.8",
+            "Referer": "https://www.athexgroup.gr/en",
+        },
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    if not response.content.startswith(b"%PDF"):
+        raise requests.RequestException("ATHEX classification fetch did not return a PDF")
+
+    ensure_output_dirs()
+    ATHEX_CLASSIFICATION_PDF_CACHE.write_bytes(response.content)
+    return parse_athex_classification_pdf(
+        response.content,
+        source,
+        listings_by_ticker=listing_rows_by_exchange_ticker("ATHEX", listings_path=listings_path),
+        source_url=response.url,
+    )
+
+
+def load_athex_classification_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (ATHEX_CLASSIFICATION_CACHE, LEGACY_ATHEX_CLASSIFICATION_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    for path in (ATHEX_CLASSIFICATION_PDF_CACHE, LEGACY_ATHEX_CLASSIFICATION_PDF_CACHE):
+        if path.exists():
+            try:
+                return (
+                    parse_athex_classification_pdf(
+                        path.read_bytes(),
+                        source,
+                        listings_by_ticker=listing_rows_by_exchange_ticker("ATHEX"),
+                        source_url=source.source_url,
+                    ),
+                    "cache",
+                )
+            except ImportError:
+                continue
+    try:
+        rows = fetch_athex_classification_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError, ImportError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    ATHEX_CLASSIFICATION_CACHE.write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"
 
 
@@ -5151,6 +11482,186 @@ def load_bursa_equity_isin_rows(
     return rows, "network"
 
 
+def normalize_bursa_closing_prices_sector(value: Any) -> str:
+    return re.sub(r"\s+", " ", str(value or "").replace("\n", " ")).strip().upper()
+
+
+def parse_bursa_closing_prices_table_rows(
+    table_rows: Iterable[Iterable[Any]],
+    source: MasterfileSource,
+    *,
+    source_url: str | None = None,
+) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+    row_source_url = source_url or source.source_url
+
+    for raw_cells in table_rows:
+        cells = [clean_bursa_pdf_cell(cell) for cell in raw_cells]
+        if len(cells) < 5:
+            continue
+
+        ticker = cells[0].strip().upper().replace(" ", "")
+        short_name = cells[1].strip()
+        long_name = cells[2].strip()
+        board = normalize_bursa_closing_prices_sector(cells[3])
+        sector_label = normalize_bursa_closing_prices_sector(cells[4])
+        if not ticker or ticker == "STOCKCODE":
+            continue
+
+        asset_type = ""
+        sector = ""
+        if board in BURSA_CLOSING_PRICES_STOCK_BOARDS:
+            asset_type = "Stock"
+            sector = BURSA_CLOSING_PRICES_STOCK_SECTOR_MAP.get(sector_label, "")
+        elif board == "EXCHANGE TRADED" or sector_label.startswith("EXCHANGE TRADED FUND"):
+            asset_type = "ETF"
+            sector = BURSA_CLOSING_PRICES_ETF_CATEGORY_MAP.get(sector_label, "")
+        if not asset_type:
+            continue
+
+        row_key = (ticker, asset_type)
+        if row_key in seen:
+            continue
+        seen.add(row_key)
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": row_source_url,
+            "ticker": ticker,
+            "name": long_name or short_name,
+            "exchange": "Bursa",
+            "asset_type": asset_type,
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        if sector:
+            row["sector"] = sector
+        rows.append(row)
+    return rows
+
+
+def parse_bursa_closing_prices_pdf(
+    content: bytes,
+    source: MasterfileSource,
+    *,
+    source_url: str | None = None,
+) -> list[dict[str, str]]:
+    try:
+        import pdfplumber
+    except ImportError as exc:
+        raise ImportError("Bursa closing-prices PDF parsing requires pdfplumber") from exc
+
+    table_rows: list[list[Any]] = []
+    with pdfplumber.open(io.BytesIO(content)) as pdf:
+        for page in pdf.pages:
+            for table in page.extract_tables() or []:
+                table_rows.extend(table)
+    return parse_bursa_closing_prices_table_rows(table_rows, source, source_url=source_url)
+
+
+def fetch_bursa_pdf_url_direct(
+    url: str,
+    *,
+    session: requests.Session | None = None,
+) -> bytes:
+    session = session or requests.Session()
+    response = session.get(
+        url,
+        headers={
+            "User-Agent": USER_AGENT,
+            "Accept": "application/pdf,*/*;q=0.8",
+            "Referer": "https://www.bursamalaysia.com/",
+        },
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    if not response.content.startswith(b"%PDF"):
+        raise requests.RequestException("Bursa direct PDF fetch did not return a PDF")
+    return response.content
+
+
+def fetch_bursa_pdf_url_with_browser(url: str) -> bytes:
+    try:
+        from playwright.sync_api import Error as PlaywrightError
+        from playwright.sync_api import sync_playwright
+    except ImportError as exc:
+        raise requests.RequestException("Bursa PDF fetch requires Playwright") from exc
+
+    try:
+        with sync_playwright() as playwright:
+            browser = playwright.chromium.launch(headless=True)
+            try:
+                context = browser.new_context(
+                    accept_downloads=True,
+                    user_agent=(
+                        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                        "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+                    ),
+                )
+                page = context.new_page()
+                with page.expect_download(timeout=REQUEST_TIMEOUT * 1000) as download_info:
+                    try:
+                        page.goto(url, wait_until="commit", timeout=REQUEST_TIMEOUT * 1000)
+                    except PlaywrightError as exc:
+                        if "Download is starting" not in str(exc):
+                            raise
+                download = download_info.value
+                path = download.path()
+                if not path:
+                    raise requests.RequestException("Bursa browser PDF download path unavailable")
+                content = Path(path).read_bytes()
+            finally:
+                browser.close()
+    except requests.RequestException:
+        raise
+    except Exception as exc:
+        raise requests.RequestException(f"Bursa browser PDF fetch failed: {exc}") from exc
+
+    if not content.startswith(b"%PDF"):
+        raise requests.RequestException("Bursa browser PDF fetch returned non-PDF content")
+    return content
+
+
+def fetch_bursa_closing_prices_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    try:
+        content = fetch_bursa_pdf_url_direct(source.source_url, session=session)
+    except requests.RequestException:
+        content = fetch_bursa_pdf_url_with_browser(source.source_url)
+
+    ensure_output_dirs()
+    BURSA_CLOSING_PRICES_PDF_CACHE.write_bytes(content)
+    return parse_bursa_closing_prices_pdf(content, source, source_url=source.source_url)
+
+
+def load_bursa_closing_prices_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_bursa_closing_prices_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError, ImportError):
+        for path in (BURSA_CLOSING_PRICES_CACHE, LEGACY_BURSA_CLOSING_PRICES_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        for path in (BURSA_CLOSING_PRICES_PDF_CACHE, LEGACY_BURSA_CLOSING_PRICES_PDF_CACHE):
+            if path.exists():
+                try:
+                    return parse_bursa_closing_prices_pdf(path.read_bytes(), source), "cache"
+                except ImportError:
+                    continue
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    BURSA_CLOSING_PRICES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
 def build_bmv_reference_row(
     source: MasterfileSource,
     listing_row: dict[str, str],
@@ -5160,6 +11671,7 @@ def build_bmv_reference_row(
     asset_type: str = "Stock",
     listing_status: str = "active",
     isin: str = "",
+    sector: str = "",
 ) -> dict[str, str]:
     row = {
         "source_key": source.key,
@@ -5176,6 +11688,9 @@ def build_bmv_reference_row(
     isin = isin.strip() or listing_row.get("isin", "").strip()
     if isin:
         row["isin"] = isin
+    sector = normalize_sector(sector.strip(), asset_type)
+    if sector:
+        row["sector"] = sector
     return row
 
 
@@ -5710,6 +12225,7 @@ def fetch_bmv_stock_search(
                 listing_row,
                 name=official_name,
                 exchange=config["exchange"],
+                isin=str(hit.get("isin") or ""),
             )
         )
         covered_tickers.add(listing_row.get("ticker", "").strip().upper())
@@ -5753,6 +12269,7 @@ def fetch_bmv_stock_search(
                 listing_row,
                 name=str(selected_hit.get("razon_social", "")).strip(),
                 exchange=config["exchange"],
+                isin=str(selected_hit.get("isin") or ""),
             )
         )
     return rows
@@ -5804,6 +12321,7 @@ def fetch_bmv_capital_trust_search(
                 listing_row,
                 name=instrumento,
                 exchange=config["exchange"],
+                isin=str(hit.get("isin") or ""),
             )
         )
     return rows
@@ -5856,6 +12374,7 @@ def fetch_bmv_etf_search(
                 name=name,
                 exchange=config["exchange"],
                 asset_type="ETF",
+                isin=str(hit.get("isin") or ""),
             )
         )
         covered_tickers.add(listing_row.get("ticker", "").strip().upper())
@@ -5906,6 +12425,7 @@ def fetch_bmv_etf_search(
                 name=name,
                 exchange=config["exchange"],
                 asset_type="ETF",
+                isin=str(selected_hit.get("isin") or ""),
             )
         )
     return rows
@@ -5925,6 +12445,306 @@ def load_bmv_etf_search_rows(
 
     ensure_output_dirs()
     BMV_ETF_SEARCH_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
+def bmv_market_data_target_rows(
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    stock_verification_dir: Path = STOCK_VERIFICATION_DIR,
+    etf_verification_dir: Path = ETF_VERIFICATION_DIR,
+) -> list[dict[str, str]]:
+    stock_gap_tickers = latest_verification_tickers(
+        stock_verification_dir,
+        exchanges={"BMV"},
+        statuses={"reference_gap", "missing_from_official"},
+    )
+    etf_gap_tickers = latest_verification_tickers(
+        etf_verification_dir,
+        exchanges={"BMV"},
+        statuses={"reference_gap", "missing_from_official"},
+    )
+    rows: list[dict[str, str]] = []
+    for row in load_csv(listings_path):
+        if row.get("exchange") != "BMV" or row.get("asset_type") not in {"Stock", "ETF"}:
+            continue
+        ticker = row.get("ticker", "").strip().upper()
+        if not ticker:
+            continue
+        if row.get("asset_type") == "Stock":
+            if ticker in stock_gap_tickers or not row.get("isin", "").strip() or not row.get("stock_sector", "").strip():
+                rows.append(row)
+            continue
+        if ticker in etf_gap_tickers or not row.get("isin", "").strip() or not row.get("etf_category", "").strip():
+            rows.append(row)
+    return rows
+
+
+def normalize_bmv_profile_label(value: str) -> str:
+    return re.sub(r"[^A-Z0-9]+", " ", ascii_fold(value).upper()).strip()
+
+
+def normalize_bmv_stock_sector(value: str) -> str:
+    return normalize_sector(BMV_STOCK_SECTOR_MAP.get(normalize_bmv_profile_label(value), ""), "Stock")
+
+
+def normalize_bmv_etf_category(value: str, investment_objective: str = "") -> str:
+    normalized = normalize_bmv_profile_label(value)
+    objective = normalize_bmv_profile_label(investment_objective)
+    combined = f" {normalized} {objective} "
+    if "INVERS" in combined or "APALANC" in combined:
+        return "Leveraged/Inverse"
+    if "MATERIA" in combined or "COMMOD" in combined or "CRUDO" in combined or "WTI" in combined:
+        return "Commodity"
+    if "DIVISA" in combined or "MONEDA" in combined or "CURRENCY" in combined:
+        return "Currency"
+    if "MERCADO DE DINERO" in combined or "CASH" in combined:
+        return "Money Market"
+    if "DEUDA" in combined or "RENTA FIJA" in combined or "BONO" in combined or "BOND" in combined:
+        return "Fixed Income"
+    if "MULTI" in combined:
+        return "Multi-Asset"
+    if "ACCION" in combined or "EQUITY" in combined or "INDICE" in combined:
+        return "Equity"
+    return ""
+
+
+def parse_bmv_market_data_instruments_html(text: str) -> list[dict[str, str]]:
+    parser = _TableParser()
+    parser.feed(text)
+    instruments: list[dict[str, str]] = []
+    for table in parser.tables:
+        if not table:
+            continue
+        headers = [normalize_bmv_profile_label(cell) for cell in table[0]]
+        if "SERIE" not in headers or "ESTATUS" not in headers:
+            continue
+        for raw_row in table[1:]:
+            if len(raw_row) != len(headers):
+                continue
+            normalized_row = dict(zip(headers, raw_row))
+            isin = normalized_row.get("ISIN", "").strip().upper()
+            if not is_valid_isin(isin):
+                isin = ""
+            instruments.append(
+                {
+                    "tipo_valor": normalized_row.get("TIPO VALOR", "").strip(),
+                    "serie": normalized_row.get("SERIE", "").strip(),
+                    "isin": isin,
+                    "estatus": normalized_row.get("ESTATUS", "").strip(),
+                    "descripcion": normalized_row.get("DESCRIPCION", "").strip(),
+                }
+            )
+    return instruments
+
+
+def parse_bmv_market_data_profile_html(text: str) -> dict[str, str]:
+    parser = _TableParser()
+    parser.feed(text)
+    metadata: dict[str, str] = {}
+    for table in parser.tables:
+        for row in table:
+            if len(row) < 2:
+                continue
+            key = normalize_bmv_profile_label(row[0])
+            value = row[1].strip()
+            if key and value:
+                metadata[key] = value
+    return metadata
+
+
+def bmv_instrument_matches_listing(
+    listing_ticker: str,
+    issuer: str,
+    instrument: dict[str, str],
+) -> bool:
+    pseudo_hit = {"cve_emisora": issuer, "serie": instrument.get("serie", "")}
+    if bmv_search_hit_matches_listing_ticker(listing_ticker, pseudo_hit):
+        return True
+    official_ticker = re.sub(r"[^A-Z0-9]+", "", bmv_compose_reference_ticker(issuer, instrument.get("serie", "")))
+    normalized_listing_ticker = re.sub(r"[^A-Z0-9]+", "", listing_ticker.strip().upper())
+    return bool(official_ticker and official_ticker == normalized_listing_ticker)
+
+
+def select_bmv_market_data_instrument(
+    listing_row: dict[str, str],
+    hit: dict[str, Any],
+    instruments: list[dict[str, str]],
+) -> dict[str, str] | None:
+    issuer = bmv_search_text(hit.get("cve_emisora")).upper()
+    if not issuer:
+        return None
+    candidates = [
+        instrument
+        for instrument in instruments
+        if bmv_instrument_matches_listing(listing_row.get("ticker", ""), issuer, instrument)
+    ]
+    if not candidates:
+        hit_series = bmv_search_text(hit.get("serie")).upper()
+        candidates = [
+            instrument
+            for instrument in instruments
+            if hit_series and normalize_bmv_profile_label(instrument.get("serie", "")) == normalize_bmv_profile_label(hit_series)
+        ]
+    if len(candidates) != 1:
+        return None
+    return candidates[0]
+
+
+def select_bmv_market_data_search_hit(
+    source: MasterfileSource,
+    listing_row: dict[str, str],
+    *,
+    access_token: str,
+    session: requests.Session,
+) -> dict[str, Any] | None:
+    if listing_row.get("asset_type") == "ETF":
+        terms = bmv_etf_search_terms(listing_row.get("ticker", ""))
+        selector = select_bmv_unique_etf_search_hit
+    else:
+        terms = bmv_stock_search_terms(listing_row.get("ticker", ""))
+        selector = select_bmv_unique_stock_search_hit
+    for term in terms:
+        search_source = MasterfileSource(
+            key=source.key,
+            provider=source.provider,
+            description=source.description,
+            source_url=BMV_SEARCH_URL,
+            format=source.format,
+            reference_scope=source.reference_scope,
+        )
+        hits = fetch_bmv_search_hits(search_source, term, access_token=access_token, session=session)
+        selected = selector(listing_row, hits)
+        if selected is not None:
+            return selected
+    return None
+
+
+def fetch_bmv_market_data_page(session: requests.Session, url: str) -> str:
+    response = session.get(
+        url,
+        headers={"User-Agent": USER_AGENT, "Referer": BMV_ISSUER_DIRECTORY_URL},
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    return response.text
+
+
+def fetch_bmv_market_data_securities(
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    stock_verification_dir: Path = STOCK_VERIFICATION_DIR,
+    etf_verification_dir: Path = ETF_VERIFICATION_DIR,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    target_rows = bmv_market_data_target_rows(
+        listings_path=listings_path,
+        stock_verification_dir=stock_verification_dir,
+        etf_verification_dir=etf_verification_dir,
+    )
+    if not target_rows:
+        return []
+
+    session = session or requests.Session()
+    token_response = session.get(BMV_SEARCH_TOKEN_URL, timeout=REQUEST_TIMEOUT)
+    token_response.raise_for_status()
+    access_token = str(token_response.json().get("response", {}).get("access_token", "")).strip()
+    if not access_token:
+        raise ValueError("BMV search token missing access_token")
+
+    rows: list[dict[str, str]] = []
+    page_cache: dict[tuple[str, str], tuple[list[dict[str, str]], dict[str, str]]] = {}
+    for listing_row in target_rows:
+        selected_hit = select_bmv_market_data_search_hit(
+            source,
+            listing_row,
+            access_token=access_token,
+            session=session,
+        )
+        if selected_hit is None:
+            continue
+        issuer = bmv_search_text(selected_hit.get("cve_emisora")).upper()
+        issuer_id = bmv_search_text(selected_hit.get("id_empresa"))
+        if not issuer or not issuer_id:
+            continue
+
+        cache_key = (issuer, issuer_id)
+        if cache_key not in page_cache:
+            stats_url = BMV_MARKET_DATA_STATS_URL_TEMPLATE.format(issuer=issuer, issuer_id=issuer_id)
+            profile_url = BMV_MARKET_DATA_PROFILE_URL_TEMPLATE.format(issuer=issuer, issuer_id=issuer_id)
+            try:
+                instruments = parse_bmv_market_data_instruments_html(
+                    fetch_bmv_market_data_page(session, stats_url)
+                )
+                profile = parse_bmv_market_data_profile_html(
+                    fetch_bmv_market_data_page(session, profile_url)
+                )
+            except requests.RequestException:
+                page_cache[cache_key] = ([], {})
+                continue
+            page_cache[cache_key] = (instruments, profile)
+
+        instruments, profile = page_cache[cache_key]
+        instrument = select_bmv_market_data_instrument(listing_row, selected_hit, instruments)
+        if instrument is None:
+            continue
+
+        asset_type = listing_row.get("asset_type", "") or "Stock"
+        if asset_type == "ETF":
+            etf_context = " ".join(
+                value
+                for value in (
+                    profile.get("OBJETO DE INVERSION", ""),
+                    bmv_search_text(selected_hit.get("razon_social")),
+                    bmv_search_text(selected_hit.get("instrumento")),
+                    bmv_search_text(selected_hit.get("descripcion")),
+                    listing_row.get("name", ""),
+                )
+                if value
+            )
+            sector = normalize_bmv_etf_category(
+                profile.get("CLASIFICACION ETF", ""),
+                etf_context,
+            )
+        else:
+            sector = normalize_bmv_stock_sector(profile.get("SECTOR", ""))
+        name = (
+            bmv_search_text(selected_hit.get("razon_social"))
+            or bmv_search_text(selected_hit.get("instrumento"))
+            or listing_row.get("name", "")
+        )
+        row = build_bmv_reference_row(
+            source,
+            listing_row,
+            name=name,
+            exchange="BMV",
+            asset_type=asset_type,
+            listing_status="active"
+            if normalize_bmv_profile_label(instrument.get("estatus", "")) == "ACTIVA"
+            else "suspended",
+            isin=instrument.get("isin", ""),
+            sector=sector,
+        )
+        if row.get("isin") or row.get("sector"):
+            rows.append(row)
+    return rows
+
+
+def load_bmv_market_data_securities_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_bmv_market_data_securities(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in (BMV_MARKET_DATA_SECURITIES_CACHE, LEGACY_BMV_MARKET_DATA_SECURITIES_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    BMV_MARKET_DATA_SECURITIES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"
 
 
@@ -5979,6 +12799,10 @@ def nasdaq_nordic_shares_cache_paths(source_key: str) -> tuple[Path, Path]:
         "nasdaq_nordic_helsinki_shares": (
             NASDAQ_NORDIC_HELSINKI_SHARES_CACHE,
             LEGACY_NASDAQ_NORDIC_HELSINKI_SHARES_CACHE,
+        ),
+        "nasdaq_nordic_iceland_shares": (
+            NASDAQ_NORDIC_ICELAND_SHARES_CACHE,
+            LEGACY_NASDAQ_NORDIC_ICELAND_SHARES_CACHE,
         ),
         "nasdaq_nordic_copenhagen_shares": (
             NASDAQ_NORDIC_COPENHAGEN_SHARES_CACHE,
@@ -6258,6 +13082,105 @@ def load_lse_company_reports_rows(
     return rows, "network"
 
 
+def extract_lse_price_explorer_search(payload: dict[str, Any]) -> dict[str, Any]:
+    for component in payload.get("components", []):
+        for item in component.get("content", []):
+            if item.get("name") == "priceexplorersearch" and isinstance(item.get("value"), dict):
+                return item["value"]
+    raise ValueError("LSE price explorer payload does not contain priceexplorersearch")
+
+
+def parse_lse_price_explorer_rows(records: Iterable[dict[str, Any]], source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    seen_tickers: set[str] = set()
+    for record in records:
+        category = str(record.get("category") or "").strip().upper()
+        asset_type = LSE_PRICE_EXPLORER_CATEGORY_TO_ASSET_TYPE.get(category)
+        if not asset_type:
+            continue
+        ticker = str(record.get("tidm") or "").strip().upper()
+        if not ticker or ticker in seen_tickers:
+            continue
+        seen_tickers.add(ticker)
+
+        description = str(record.get("description") or "").strip()
+        issuer_name = str(record.get("issuername") or "").strip()
+        instrument_name = str(record.get("name") or "").strip()
+        if asset_type == "Stock":
+            name = issuer_name or description or instrument_name
+        else:
+            name = description or " ".join(part for part in (issuer_name, instrument_name) if part)
+        if not name:
+            continue
+
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "LSE",
+            "asset_type": asset_type,
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        isin = str(record.get("isin") or "").strip().upper()
+        if isin and is_valid_isin(isin):
+            row["isin"] = isin
+        rows.append(row)
+    return rows
+
+
+def fetch_lse_price_explorer_rows(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    categories = ",".join(LSE_PRICE_EXPLORER_CATEGORY_TO_ASSET_TYPE)
+    headers = {
+        "User-Agent": BROWSER_USER_AGENT,
+        "Origin": "https://www.londonstockexchange.com",
+        "Referer": LSE_PRICE_EXPLORER_URL,
+    }
+    rows: list[dict[str, str]] = []
+    page = 0
+    total_pages = 1
+    while page < total_pages:
+        parameters = f"categories={categories}&size={LSE_PRICE_EXPLORER_PAGE_SIZE}&page={page}"
+        response = session.get(
+            LSE_PRICE_EXPLORER_API_URL,
+            params={"path": LSE_PRICE_EXPLORER_PAGE_PATH, "parameters": parameters},
+            headers=headers,
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        search_payload = extract_lse_price_explorer_search(response.json())
+        rows.extend(parse_lse_price_explorer_rows(search_payload.get("content") or [], source))
+        total_pages = int(search_payload.get("totalPages") or 1)
+        page += 1
+
+    deduped: dict[str, dict[str, str]] = {}
+    for row in rows:
+        deduped.setdefault(row["ticker"], row)
+    return [deduped[ticker] for ticker in sorted(deduped)]
+
+
+def load_lse_price_explorer_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    for path in (LSE_PRICE_EXPLORER_CACHE, LEGACY_LSE_PRICE_EXPLORER_CACHE):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+
+    try:
+        rows = fetch_lse_price_explorer_rows(source, session=session)
+    except requests.RequestException:
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    LSE_PRICE_EXPLORER_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
 def extract_lse_last_page(text: str) -> int:
     pages = [int(page) for page in LSE_PAGE_NUMBER_RE.findall(text)]
     return max(pages) if pages else 1
@@ -6499,20 +13422,21 @@ def fetch_jse_instrument_search_exact(
             metadata = extract_jse_instrument_metadata(instrument_response.text)
             if metadata is None or metadata.get("code") != query_ticker:
                 continue
-            rows.append(
-                {
-                    "source_key": source.key,
-                    "provider": source.provider,
-                    "source_url": instrument_url,
-                    "ticker": query_ticker,
-                    "name": metadata["name"],
-                    "exchange": "JSE",
-                    "asset_type": asset_type_by_ticker.get(query_ticker, "Stock") or "Stock",
-                    "listing_status": "active",
-                    "reference_scope": source.reference_scope,
-                    "official": "true",
-                }
-            )
+            row = {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": instrument_url,
+                "ticker": query_ticker,
+                "name": metadata["name"],
+                "exchange": "JSE",
+                "asset_type": asset_type_by_ticker.get(query_ticker, "Stock") or "Stock",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+            if metadata.get("sector"):
+                row["sector"] = metadata["sector"]
+            rows.append(row)
             break
     return rows
 
@@ -6778,20 +13702,24 @@ def parse_asx_listed_companies(text: str, source: MasterfileSource) -> list[dict
         if not ticker:
             continue
         name = (row.get("Company name") or "").strip()
-        rows.append(
-            {
-                "source_key": source.key,
-                "provider": source.provider,
-                "source_url": source.source_url,
-                "ticker": ticker,
-                "name": name,
-                "exchange": "ASX",
-                "asset_type": infer_asset_type(name),
-                "listing_status": "active",
-                "reference_scope": source.reference_scope,
-                "official": "true",
-            }
-        )
+        asset_type = infer_asset_type(name)
+        output_row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "ASX",
+            "asset_type": asset_type,
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        if asset_type == "Stock":
+            sector = ASX_GICS_INDUSTRY_GROUP_SECTOR_MAP.get((row.get("GICS industry group") or "").strip(), "")
+            if sector:
+                output_row["sector"] = sector
+        rows.append(output_row)
     return rows
 
 
@@ -7229,6 +14157,45 @@ def parse_set_dr_search_payload(text: str, source: MasterfileSource) -> list[dic
     return parse_set_quote_search_rows(text, source, security_type_name="DR", asset_type="Stock")
 
 
+def parse_set_stock_search_payload(payload: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    seen_tickers: set[str] = set()
+    for item in payload.get("securitySymbols", []):
+        if not isinstance(item, dict):
+            continue
+        security_type = str(item.get("securityType") or "").strip().upper()
+        asset_type = SET_STOCK_SEARCH_SECURITY_TYPES.get(security_type)
+        if asset_type is None:
+            continue
+
+        ticker = str(item.get("symbol") or "").strip().upper()
+        market = str(item.get("market") or "").strip().upper()
+        name = str(item.get("nameEN") or "").strip() or str(item.get("nameTH") or "").strip()
+        if market not in {"SET", "MAI"} or not ticker or not name or ticker in seen_tickers:
+            continue
+        seen_tickers.add(ticker)
+
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "SET",
+            "asset_type": asset_type,
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        sector = SET_STOCK_SEARCH_SECTOR_MAP.get(
+            str(item.get("sector") or "").strip().upper()
+        ) or SET_STOCK_SEARCH_SECTOR_MAP.get(str(item.get("industry") or "").strip().upper())
+        if sector:
+            row["sector"] = sector
+        rows.append(row)
+    return rows
+
+
 def parse_set_listed_companies_html(text: str, source: MasterfileSource) -> list[dict[str, str]]:
     parser = _TableParser()
     parser.feed(text)
@@ -7291,24 +14258,35 @@ def parse_krx_listed_companies(
     rows: list[dict[str, str]] = []
     for record in payload:
         ticker = str(record.get("isu_cd", "")).strip()
-        name = str(record.get("eng_cor_nm", "")).strip()
+        name = clean_html_text(str(record.get("eng_cor_nm", "")))
         if not ticker or not name or ticker.lower() == "nan" or name.lower() == "nan":
             continue
-        rows.append(
-            {
-                "source_key": source.key,
-                "provider": source.provider,
-                "source_url": source.source_url,
-                "ticker": ticker,
-                "name": name,
-                "exchange": exchange,
-                "asset_type": "Stock",
-                "listing_status": "active",
-                "reference_scope": source.reference_scope,
-                "official": "true",
-            }
-        )
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": exchange,
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        sector = normalize_krx_stock_sector(record.get("ind_nm"), record.get("std_ind_cd"))
+        if sector:
+            row["sector"] = sector
+        rows.append(row)
     return rows
+
+
+def normalize_krx_stock_sector(industry_name: Any, industry_code: Any = "") -> str:
+    industry = clean_html_text(str(industry_name or "")).lower()
+    for sector, keywords in KRX_INDUSTRY_KEYWORD_SECTOR_RULES:
+        if any(keyword in industry for keyword in keywords):
+            return sector
+    industry_prefix = str(industry_code or "").strip()[:2]
+    return KRX_STD_INDUSTRY_PREFIX_SECTOR_MAP.get(industry_prefix, "")
 
 
 def normalize_krx_finder_isin(value: Any) -> str:
@@ -7409,6 +14387,48 @@ def infer_jpx_asset_type(section: str, name: str) -> str:
     return infer_asset_type(name)
 
 
+JPX_33_INDUSTRY_TO_SECTOR_EN: dict[str, str] = {
+    "Air Transportation": "Industrials",
+    "Banks": "Financials",
+    "Chemicals": "Materials",
+    "Construction": "Industrials",
+    "Electric Appliances": "Information Technology",
+    "Electric Power and Gas": "Utilities",
+    "Fishery, Agriculture and Forestry": "Consumer Staples",
+    "Foods": "Consumer Staples",
+    "Glass and Ceramics Products": "Materials",
+    "Information & Communication": "Communication Services",
+    "Insurance": "Financials",
+    "Iron and Steel": "Materials",
+    "Land Transportation": "Industrials",
+    "Machinery": "Industrials",
+    "Marine Transportation": "Industrials",
+    "Metal Products": "Industrials",
+    "Mining": "Materials",
+    "Nonferrous Metals": "Materials",
+    "Oil and Coal Products": "Energy",
+    "Other Financing Business": "Financials",
+    "Other Products": "Consumer Discretionary",
+    "Pharmaceutical": "Health Care",
+    "Precision Instruments": "Health Care",
+    "Pulp and Paper": "Materials",
+    "Real Estate": "Real Estate",
+    "Retail Trade": "Consumer Discretionary",
+    "Rubber Products": "Materials",
+    "Securities and Commodities Futures": "Financials",
+    "Services": "Industrials",
+    "Textiles and Apparels": "Consumer Discretionary",
+    "Transportation Equipment": "Consumer Discretionary",
+    "Warehousing and Harbor Transportation Service": "Industrials",
+    "Wholesale Trade": "Industrials",
+}
+
+
+def normalize_jpx_33_industry_sector(value: str, asset_type: str) -> str:
+    mapped = JPX_33_INDUSTRY_TO_SECTOR_EN.get(value.strip(), "")
+    return mapped or normalize_sector(value, asset_type)
+
+
 def parse_jpx_listed_issues_excel(content: bytes, source: MasterfileSource) -> list[dict[str, str]]:
     dataframe = pd.read_excel(io.BytesIO(content))
     rows: list[dict[str, str]] = []
@@ -7437,6 +14457,226 @@ def parse_jpx_listed_issues_excel(content: bytes, source: MasterfileSource) -> l
     return rows
 
 
+def jpx_request_headers(referer: str | None = None) -> dict[str, str]:
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Accept": "application/json,text/plain,*/*",
+        "Connection": "close",
+    }
+    if referer:
+        headers["Referer"] = referer
+    return headers
+
+
+def jpx_tse_stock_detail_target_rows(listings_path: Path = LISTINGS_CSV) -> list[dict[str, str]]:
+    rows = [
+        row
+        for row in load_csv(listings_path)
+        if row.get("exchange") == "TSE"
+        and row.get("asset_type") in {"Stock", "ETF"}
+        and row.get("ticker", "").strip()
+    ]
+    deduped: dict[str, dict[str, str]] = {}
+    for row in rows:
+        deduped.setdefault(row["ticker"].strip(), row)
+    return [deduped[ticker] for ticker in sorted(deduped)]
+
+
+def parse_jpx_tse_stock_detail_payload(
+    payload: dict[str, Any],
+    source: MasterfileSource,
+    *,
+    fallback_ticker: str = "",
+    fallback_asset_type: str = "",
+) -> dict[str, str] | None:
+    section = payload.get("section1", {})
+    data = section.get("data", {})
+    if not isinstance(data, dict) or not data:
+        return None
+    detail = next(iter(data.values()))
+    if not isinstance(detail, dict):
+        return None
+    ticker = str(detail.get("TTCODE2") or fallback_ticker).strip()
+    isin = str(detail.get("ISIN") or "").strip().upper()
+    if not ticker or not is_valid_isin(isin):
+        return None
+    name = str(detail.get("FLLNE") or detail.get("NAMEE") or detail.get("FLLN") or detail.get("NAME") or "").strip()
+    asset_type = fallback_asset_type or infer_jpx_asset_type(
+        " ".join(
+            str(detail.get(key) or "")
+            for key in ("LISSE_CNV", "LISS_CNV", "PSTSE", "PSTS")
+        ),
+        name,
+    )
+    row = {
+        "source_key": source.key,
+        "provider": source.provider,
+        "source_url": f"{source.source_url}{quote(ticker)}",
+        "ticker": ticker,
+        "name": name,
+        "exchange": "TSE",
+        "asset_type": asset_type,
+        "listing_status": "active",
+        "reference_scope": source.reference_scope,
+        "official": "true",
+        "isin": isin,
+    }
+    sector = normalize_jpx_33_industry_sector(str(detail.get("JSECE_CNV") or detail.get("JSEC_CNV") or ""), asset_type)
+    if sector:
+        row["sector"] = sector
+    return row
+
+
+def fetch_jpx_tse_stock_detail_payload(
+    ticker: str,
+    session: requests.Session | None = None,
+) -> dict[str, Any]:
+    url = f"{JPX_STOCK_DETAIL_API_URL}{quote(ticker)}"
+    referer = f"{JPX_STOCK_DETAIL_PAGE_URL}{quote(ticker)}"
+    headers = jpx_request_headers(referer)
+    if session is None:
+        curl = shutil.which("curl")
+        if curl:
+            command = [
+                curl,
+                "--fail",
+                "--silent",
+                "--show-error",
+                "--location",
+                "--http1.1",
+                "--no-keepalive",
+                "--connect-timeout",
+                "2",
+                "--max-time",
+                str(JPX_STOCK_DETAIL_TIMEOUT),
+            ]
+            for key, value in headers.items():
+                command.extend(["--header", f"{key}: {value}"])
+            command.append(url)
+            result = subprocess.run(
+                command,
+                check=True,
+                capture_output=True,
+                text=True,
+                timeout=JPX_STOCK_DETAIL_TIMEOUT + 2,
+            )
+            return json.loads(result.stdout)
+
+        request = Request(url, headers=headers)
+        with urlopen(request, timeout=JPX_STOCK_DETAIL_TIMEOUT) as response:
+            return json.loads(response.read().decode("utf-8"))
+
+    response = session.get(url, headers=headers, timeout=JPX_STOCK_DETAIL_TIMEOUT)
+    try:
+        response.raise_for_status()
+        return response.json()
+    finally:
+        close = getattr(response, "close", None)
+        if close is not None:
+            close()
+
+
+def fetch_jpx_tse_stock_detail_rows(
+    source: MasterfileSource,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    if session is not None:
+        session.get(JPX_STOCK_SEARCH_URL, headers=jpx_request_headers(), timeout=REQUEST_TIMEOUT).raise_for_status()
+    targets = jpx_tse_stock_detail_target_rows(listings_path)
+    rows_by_ticker: dict[str, dict[str, str]] = {}
+
+    if session is None:
+        for cache_path in (
+            JPX_TSE_STOCK_DETAIL_CACHE,
+            JPX_TSE_STOCK_DETAIL_PARTIAL_CACHE,
+            LEGACY_JPX_TSE_STOCK_DETAIL_CACHE,
+        ):
+            if not cache_path.exists():
+                continue
+            try:
+                cached_rows = json.loads(cache_path.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                continue
+            if isinstance(cached_rows, list):
+                for cached_row in cached_rows:
+                    if isinstance(cached_row, dict) and cached_row.get("ticker") and cached_row.get("isin"):
+                        rows_by_ticker[str(cached_row["ticker"])] = dict(cached_row)
+
+    def fetch_target(listing_row: dict[str, str]) -> dict[str, str] | None:
+        payload = fetch_jpx_tse_stock_detail_payload(listing_row["ticker"], session=session)
+        row = parse_jpx_tse_stock_detail_payload(
+            payload,
+            source,
+            fallback_ticker=listing_row["ticker"],
+            fallback_asset_type=listing_row.get("asset_type", ""),
+        )
+        return row
+
+    def write_partial_cache() -> None:
+        if session is not None:
+            return
+        ensure_output_dirs()
+        partial_rows = [rows_by_ticker[ticker] for ticker in sorted(rows_by_ticker)]
+        JPX_TSE_STOCK_DETAIL_PARTIAL_CACHE.write_text(json.dumps(partial_rows), encoding="utf-8")
+
+    remaining_targets = [row for row in targets if row["ticker"].strip() not in rows_by_ticker]
+    if session is None:
+        print(
+            f"JPX/TSE stock detail: cached {len(rows_by_ticker)}/{len(targets)} rows; "
+            f"fetching {len(remaining_targets)} remaining rows",
+            file=sys.stderr,
+        )
+        completed = 0
+        with ThreadPoolExecutor(max_workers=JPX_STOCK_DETAIL_WORKERS) as executor:
+            future_rows = {executor.submit(fetch_target, row): row for row in remaining_targets}
+            for future in as_completed(future_rows):
+                completed += 1
+                try:
+                    row = future.result()
+                except (OSError, ValueError, json.JSONDecodeError, subprocess.SubprocessError):
+                    continue
+                if row is not None:
+                    rows_by_ticker[row["ticker"]] = row
+                if completed % 100 == 0:
+                    write_partial_cache()
+                    print(
+                        f"JPX/TSE stock detail: {len(rows_by_ticker)}/{len(targets)} rows cached",
+                        file=sys.stderr,
+                    )
+        write_partial_cache()
+    else:
+        for listing_row in targets:
+            row = fetch_target(listing_row)
+            if row is not None:
+                rows_by_ticker[row["ticker"]] = row
+
+    rows = [rows_by_ticker[ticker] for ticker in sorted(rows_by_ticker)]
+    if targets and not rows:
+        raise ValueError("JPX/TSE stock detail API returned no usable ISIN rows")
+    return rows
+
+
+def load_jpx_tse_stock_detail_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_jpx_tse_stock_detail_rows(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError, subprocess.SubprocessError):
+        for path in (JPX_TSE_STOCK_DETAIL_CACHE, LEGACY_JPX_TSE_STOCK_DETAIL_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    JPX_TSE_STOCK_DETAIL_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    if JPX_TSE_STOCK_DETAIL_PARTIAL_CACHE.exists():
+        JPX_TSE_STOCK_DETAIL_PARTIAL_CACHE.unlink()
+    return rows, "network"
+
+
 def parse_jse_exchange_traded_product_excel(
     content: bytes,
     source: MasterfileSource,
@@ -7445,26 +14685,66 @@ def parse_jse_exchange_traded_product_excel(
 ) -> list[dict[str, str]]:
     dataframe = pd.read_excel(io.BytesIO(content), sheet_name=0)
     rows: list[dict[str, str]] = []
+    current_section = ""
     for record in dataframe.to_dict(orient="records"):
         ticker = str(record.get("Alpha", "")).strip()
         name = re.sub(r"\s+", " ", str(record.get("Long Name", "")).strip())
+        if ticker and ticker.lower() != "nan" and (not name or name.lower() == "nan"):
+            if ticker in JSE_EXCHANGE_TRADED_PRODUCT_CATEGORY_MAP or ticker == "Actively Managed":
+                current_section = ticker
+            continue
         if not ticker or not name or ticker.lower() == "nan" or name.lower() == "nan":
             continue
-        rows.append(
-            {
-                "source_key": source.key,
-                "provider": source.provider,
-                "source_url": source_url,
-                "ticker": ticker,
-                "name": name,
-                "exchange": "JSE",
-                "asset_type": "ETF",
-                "listing_status": "active",
-                "reference_scope": source.reference_scope,
-                "official": "true",
-            }
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "JSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        category = normalize_jse_exchange_traded_product_category(
+            current_section,
+            str(record.get("Underlying", "")).strip(),
+            str(record.get("Description", "")).strip(),
         )
+        if category:
+            row["sector"] = category
+        rows.append(row)
     return rows
+
+
+def normalize_jse_exchange_traded_product_category(
+    section: str,
+    underlying: str,
+    description: str = "",
+) -> str:
+    mapped = JSE_EXCHANGE_TRADED_PRODUCT_CATEGORY_MAP.get(section)
+    if mapped:
+        return mapped
+    if section != "Actively Managed":
+        return ""
+    normalized = ascii_fold(f" {underlying} {description} ").lower()
+    if "property" in normalized or "reit" in normalized:
+        return "Real Estate"
+    if "multi-asset" in normalized or "multi asset" in normalized or "balanced" in normalized:
+        return "Multi-Asset"
+    if "equity" in normalized:
+        return "Equity"
+    if (
+        "fixed income" in normalized
+        or "global income" in normalized
+        or "short-term deposit" in normalized
+        or "short term deposit" in normalized
+        or "investment grade" in normalized
+        or "floating rate" in normalized
+    ):
+        return "Fixed Income"
+    return ""
 
 
 def map_deutsche_boerse_exchange(exchange_field: str) -> str:
@@ -7513,6 +14793,7 @@ def parse_deutsche_boerse_etfs_etps_excel(content: bytes, source: MasterfileSour
         ticker = str(record.get("XETRA SYMBOL", "")).strip()
         name = str(record.get("PRODUCT NAME", "")).strip()
         isin = str(record.get("ISIN", "")).strip().upper()
+        product_type = str(record.get("PRODUCT TYPE", "")).strip().upper()
         if not ticker or not name or ticker.lower() == "nan" or name.lower() == "nan":
             continue
         row = {
@@ -7529,8 +14810,24 @@ def parse_deutsche_boerse_etfs_etps_excel(content: bytes, source: MasterfileSour
         }
         if is_valid_isin(isin):
             row["isin"] = isin
+        category = DEUTSCHE_BOERSE_ETP_PRODUCT_TYPE_CATEGORY_MAP.get(product_type)
+        if category:
+            row["sector"] = category
         rows.append(row)
     return rows
+
+
+def normalize_deutsche_boerse_xetra_etp_category(instrument_type: str, product_group_description: str) -> str:
+    normalized_type = instrument_type.strip().upper()
+    if normalized_type in {"ETC", "ETN"}:
+        return DEUTSCHE_BOERSE_ETP_PRODUCT_TYPE_CATEGORY_MAP[normalized_type]
+
+    normalized_group = re.sub(r"\s+", " ", product_group_description.strip().upper())
+    if "RENTEN" in normalized_group or "BOND" in normalized_group:
+        return "Fixed Income"
+    if "COMMODIT" in normalized_group:
+        return "Commodity"
+    return ""
 
 
 def parse_deutsche_boerse_xetra_all_tradable_csv(text: str, source: MasterfileSource) -> list[dict[str, str]]:
@@ -7547,7 +14844,9 @@ def parse_deutsche_boerse_xetra_all_tradable_csv(text: str, source: MasterfileSo
             continue
         if record.get("MIC Code") != "XETR":
             continue
-        if record.get("Instrument Type") != "CS":
+        instrument_type = str(record.get("Instrument Type", "")).strip().upper()
+        asset_type = DEUTSCHE_BOERSE_XETRA_INSTRUMENT_TYPE_ASSET_TYPE.get(instrument_type, "")
+        if not asset_type:
             continue
         ticker = str(record.get("Mnemonic", "")).strip()
         name = str(record.get("Instrument", "")).strip()
@@ -7562,13 +14861,20 @@ def parse_deutsche_boerse_xetra_all_tradable_csv(text: str, source: MasterfileSo
             "ticker": ticker,
             "name": name,
             "exchange": "XETRA",
-            "asset_type": "Stock",
+            "asset_type": asset_type,
             "listing_status": "active",
             "reference_scope": source.reference_scope,
             "official": "true",
         }
         if is_valid_isin(isin):
             row["isin"] = isin
+        if asset_type == "ETF":
+            category = normalize_deutsche_boerse_xetra_etp_category(
+                instrument_type,
+                str(record.get("Product Assignment Group Description", "")),
+            )
+            if category:
+                row["sector"] = category
         rows.append(row)
     return rows
 
@@ -7813,6 +15119,51 @@ def derive_taiwan_isin(
     return isin if is_valid_isin(isin) else ""
 
 
+def normalize_taiwan_stock_sector(industry_code: Any) -> str:
+    code = str(industry_code or "").strip().zfill(2)
+    return normalize_sector(TAIWAN_INDUSTRY_CODE_SECTOR_MAP.get(code, ""), "Stock")
+
+
+def normalize_tpex_etf_category(record: dict[str, Any]) -> str:
+    ticker = str(record.get("stockNo") or "").strip().upper()
+    haystack = " ".join(
+        str(record.get(key) or "")
+        for key in ("stockName", "indexName")
+    ).lower()
+    if ticker.endswith("B") or any(
+        marker in haystack
+        for marker in (
+            "bond",
+            "corporate",
+            "treasury",
+            "worldbig",
+            "fixed income",
+            "income active",
+        )
+    ):
+        return "Fixed Income"
+    if "balanced" in haystack:
+        return "Multi-Asset"
+    if any(
+        marker in haystack
+        for marker in (
+            "s&p 500",
+            "stoxx",
+            "equity",
+            "big tech",
+            "tech",
+            "5g",
+            "commercial and wholesale trade",
+            "japan",
+            "usa",
+            "u.s.",
+            "china",
+        )
+    ):
+        return "Equity"
+    return ""
+
+
 def derive_isin_from_otc_markets_cusip(
     cusip: str,
     *,
@@ -7949,6 +15300,9 @@ def parse_twse_etf_list(payload: dict[str, Any], source: MasterfileSource) -> li
         isin = derive_taiwan_isin(ticker)
         if isin:
             row["isin"] = isin
+        category = normalize_tpex_etf_category(record)
+        if category:
+            row["sector"] = category
         rows.append(row)
     return rows
 
@@ -7958,6 +15312,14 @@ def parse_sse_jsonp(text: str) -> dict[str, Any]:
     if not match:
         raise ValueError("Invalid SSE JSONP payload")
     return json.loads(match.group(1))
+
+
+def normalize_china_csrc_sector(value: Any) -> str:
+    text = str(value or "").strip()
+    if not text:
+        return ""
+    code = text[0].upper()
+    return CHINA_CSRC_SECTOR_MAP.get(code, "")
 
 
 def parse_sse_a_share_list(payload: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
@@ -7971,20 +15333,22 @@ def parse_sse_a_share_list(payload: dict[str, Any], source: MasterfileSource) ->
         name = str(record.get("FULL_NAME", "")).strip() or str(record.get("SEC_NAME_CN", "")).strip()
         if not ticker or not name:
             continue
-        rows.append(
-            {
-                "source_key": source.key,
-                "provider": source.provider,
-                "source_url": source.source_url,
-                "ticker": ticker,
-                "name": name,
-                "exchange": "SSE",
-                "asset_type": "Stock",
-                "listing_status": "active",
-                "reference_scope": source.reference_scope,
-                "official": "true",
-            }
-        )
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "SSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        sector = normalize_china_csrc_sector(record.get("CSRC_CODE") or record.get("CSRC_CODE_DESC"))
+        if sector:
+            row["sector"] = sector
+        rows.append(row)
     return rows
 
 
@@ -8039,20 +15403,22 @@ def parse_szse_a_share_list(payload: dict[str, Any] | list[dict[str, Any]], sour
             name = strip_html_tags(str(record.get("agjc", "")).strip())
             if not ticker or not name:
                 continue
-            rows.append(
-                {
-                    "source_key": source.key,
-                    "provider": source.provider,
-                    "source_url": source.source_url,
-                    "ticker": ticker,
-                    "name": name,
-                    "exchange": "SZSE",
-                    "asset_type": "Stock",
-                    "listing_status": "active",
-                    "reference_scope": source.reference_scope,
-                    "official": "true",
-                }
-            )
+            row = {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "SZSE",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+            sector = normalize_china_csrc_sector(record.get("sshymc"))
+            if sector:
+                row["sector"] = sector
+            rows.append(row)
     return rows
 
 
@@ -8064,20 +15430,22 @@ def parse_szse_b_share_list(payload: dict[str, Any] | list[dict[str, Any]], sour
             name = strip_html_tags(str(record.get("bgjc", "")).strip())
             if not ticker or not name:
                 continue
-            rows.append(
-                {
-                    "source_key": source.key,
-                    "provider": source.provider,
-                    "source_url": source.source_url,
-                    "ticker": ticker,
-                    "name": name,
-                    "exchange": "SZSE",
-                    "asset_type": "Stock",
-                    "listing_status": "active",
-                    "reference_scope": source.reference_scope,
-                    "official": "true",
-                }
-            )
+            row = {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "SZSE",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+            sector = normalize_china_csrc_sector(record.get("sshymc"))
+            if sector:
+                row["sector"] = sector
+            rows.append(row)
     return rows
 
 
@@ -8153,20 +15521,22 @@ def parse_szse_a_share_workbook(content: bytes, source: MasterfileSource) -> lis
         name = str(name_value).strip()
         if not ticker or not name:
             continue
-        rows.append(
-            {
-                "source_key": source.key,
-                "provider": source.provider,
-                "source_url": source.source_url,
-                "ticker": ticker,
-                "name": name,
-                "exchange": "SZSE",
-                "asset_type": "Stock",
-                "listing_status": "active",
-                "reference_scope": source.reference_scope,
-                "official": "true",
-            }
-        )
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "SZSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        sector = normalize_china_csrc_sector(record.get("所属行业"))
+        if sector:
+            row["sector"] = sector
+        rows.append(row)
     return rows
 
 
@@ -8185,20 +15555,22 @@ def parse_szse_b_share_workbook(content: bytes, source: MasterfileSource) -> lis
         name = str(name_value).strip()
         if not ticker or not name:
             continue
-        rows.append(
-            {
-                "source_key": source.key,
-                "provider": source.provider,
-                "source_url": source.source_url,
-                "ticker": ticker,
-                "name": name,
-                "exchange": "SZSE",
-                "asset_type": "Stock",
-                "listing_status": "active",
-                "reference_scope": source.reference_scope,
-                "official": "true",
-            }
-        )
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "SZSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        sector = normalize_china_csrc_sector(record.get("所属行业"))
+        if sector:
+            row["sector"] = sector
+        rows.append(row)
     return rows
 
 
@@ -8485,6 +15857,9 @@ def parse_tpex_etf_filter(
         isin = derive_taiwan_isin(ticker)
         if isin:
             row["isin"] = isin
+        category = normalize_tpex_etf_category(record)
+        if category:
+            row["sector"] = category
         rows.append(row)
     return rows
 
@@ -8535,6 +15910,9 @@ def parse_tpex_basic_info_csv(
         )
         if isin:
             row["isin"] = isin
+        sector = normalize_taiwan_stock_sector(record.get("產業別"))
+        if sector:
+            row["sector"] = sector
         rows.append(row)
     return rows
 
@@ -8790,20 +16168,97 @@ def parse_six_equity_issuers(payload: dict[str, Any], source: MasterfileSource) 
         name = str(record.get("company", "")).strip()
         if not ticker or not name:
             continue
-        rows.append(
-            {
-                "source_key": source.key,
-                "provider": source.provider,
-                "source_url": source.source_url,
-                "ticker": ticker,
-                "name": name,
-                "exchange": "SIX",
-                "asset_type": "Stock",
-                "listing_status": "active",
-                "reference_scope": source.reference_scope,
-                "official": "true",
-            }
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "SIX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        isin = str(record.get("isin", "")).strip().upper()
+        if isin:
+            row["isin"] = isin
+        rows.append(row)
+    return rows
+
+
+def six_share_details_target_rows(listings_path: Path = LISTINGS_CSV) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for row in load_csv(listings_path):
+        if row.get("exchange") != "SIX" or not row.get("isin", "").strip():
+            continue
+        asset_type = row.get("asset_type", "").strip()
+        if asset_type == "Stock" and not (row.get("stock_sector", "").strip() or row.get("sector", "").strip()):
+            rows.append(row)
+        elif asset_type == "ETF" and not (row.get("etf_category", "").strip() or row.get("sector", "").strip()):
+            rows.append(row)
+    return rows
+
+
+def parse_six_share_details_fqs_payload(payload: dict[str, Any]) -> list[dict[str, str]]:
+    col_names = [str(name) for name in payload.get("colNames") or []]
+    rows: list[dict[str, str]] = []
+    for values in payload.get("rowData") or []:
+        if not isinstance(values, list):
+            continue
+        rows.append({name: str(value or "").strip() for name, value in zip(col_names, values)})
+    return rows
+
+
+def normalize_six_share_stock_sector(record: dict[str, str], listing: dict[str, str]) -> str:
+    industry = " ".join(record.get("IndustrySectorDesc", "").split()).strip()
+    key = industry.lower()
+    if key == "misc. services":
+        ticker = listing.get("ticker", "").strip().upper()
+        name_context = f"{listing.get('name', '')} {record.get('IssuerNameFull', '')} {record.get('ShortName', '')}".lower()
+        if ticker in SIX_SHARE_MISC_SERVICE_STOCK_SECTOR_OVERRIDES:
+            return SIX_SHARE_MISC_SERVICE_STOCK_SECTOR_OVERRIDES[ticker]
+        if "sunrise" in name_context:
+            return "Communication Services"
+        if "r&s" in name_context or "transform" in name_context:
+            return "Industrials"
+        return ""
+    return normalize_sector(SIX_SHARE_INDUSTRY_STOCK_SECTOR_MAP.get(key, industry), "Stock")
+
+
+def normalize_six_share_etf_category(record: dict[str, str]) -> str:
+    return normalize_six_fund_asset_class_category(record.get("AssetClassDesc", ""))
+
+
+def build_six_share_details_rows(
+    payload: dict[str, Any],
+    source: MasterfileSource,
+    listing: dict[str, str],
+) -> list[dict[str, str]]:
+    asset_type = listing.get("asset_type", "").strip()
+    listing_isin = listing.get("isin", "").strip().upper()
+    if asset_type not in {"Stock", "ETF"} or not is_valid_isin(listing_isin):
+        return []
+
+    rows: list[dict[str, str]] = []
+    for record in parse_six_share_details_fqs_payload(payload):
+        record_isin = record.get("ISIN", "").strip().upper()
+        if record_isin != listing_isin:
+            continue
+        sector = (
+            normalize_six_share_etf_category(record)
+            if asset_type == "ETF"
+            else normalize_six_share_stock_sector(record, listing)
         )
+        if not sector:
+            continue
+        name = (
+            record.get("IssuerNameFull", "")
+            or record.get("FundLongName", "")
+            or record.get("ShortName", "")
+            or listing.get("name", "")
+        )
+        rows.append(build_current_listing_reference_row(source, listing, name=name, isin=record_isin, sector=sector))
     return rows
 
 
@@ -8818,6 +16273,7 @@ def parse_six_fund_products_csv(text: str, source: MasterfileSource) -> list[dic
     for record in reader:
         name = str(record.get("FundLongName", "")).strip()
         isin = str(record.get("ISIN", "")).strip().upper()
+        category = normalize_six_fund_asset_class_category(record.get("AssetClassDesc", ""))
         if not name:
             continue
         for ticker in iter_six_fund_product_tickers(record):
@@ -8825,22 +16281,28 @@ def parse_six_fund_products_csv(text: str, source: MasterfileSource) -> list[dic
             if key in seen:
                 continue
             seen.add(key)
-            rows.append(
-                {
-                    "source_key": source.key,
-                    "provider": source.provider,
-                    "source_url": source.source_url,
-                    "ticker": ticker,
-                    "name": name,
-                    "exchange": "SIX",
-                    "asset_type": "ETF",
-                    "listing_status": "active",
-                    "reference_scope": source.reference_scope,
-                    "official": "true",
-                    "isin": isin,
-                }
-            )
+            row = {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "SIX",
+                "asset_type": "ETF",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+                "isin": isin,
+            }
+            if category:
+                row["sector"] = category
+            rows.append(row)
     return rows
+
+
+def normalize_six_fund_asset_class_category(value: Any) -> str:
+    asset_class = " ".join(str(value or "").split()).strip().lower()
+    return SIX_ASSET_CLASS_CATEGORY_MAP.get(asset_class, "")
 
 
 def normalize_six_reuters_ticker(value: str) -> str:
@@ -8880,8 +16342,13 @@ def iter_six_fund_product_tickers(record: dict[str, str]) -> list[str]:
 
     reuters_ticker = normalize_six_reuters_ticker(str(record.get("FundReutersTicker", "")))
     bloomberg_ticker = normalize_six_bloomberg_ticker(str(record.get("FundBloombergTicker", "")))
-    add(reuters_ticker)
-    add(bloomberg_ticker)
+    currencies = [currency for currency in (trading_currency, fund_currency) if currency]
+    for market_ticker in (reuters_ticker, bloomberg_ticker):
+        add(market_ticker)
+        if market_ticker and not any(market_ticker.endswith(currency) for currency in currencies):
+            for currency in currencies:
+                add(f"{market_ticker}-{currency}")
+                add(f"{market_ticker}{currency}")
     if valor_symbol and fund_currency:
         add(f"{valor_symbol}{fund_currency}")
     return tickers
@@ -8947,6 +16414,56 @@ def parse_psx_listed_companies(
                 "official": "true",
             }
         )
+    return rows
+
+
+def should_skip_psx_dps_symbol(ticker: str, name: str, sector: str) -> bool:
+    lowered_name = " ".join(name.lower().split())
+    lowered_sector = " ".join(sector.lower().split())
+    if any(marker in lowered_sector for marker in PSX_DPS_SECTOR_SKIP_MARKERS):
+        return True
+    if "exchange traded fund" in lowered_sector:
+        return False
+    if "(right" in lowered_name or " right)" in lowered_name or lowered_name.endswith(" right"):
+        return True
+    if ticker.endswith("R") and "right" in lowered_name:
+        return True
+    return False
+
+
+def parse_psx_dps_symbols_payload(payload: list[dict[str, Any]], source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    seen_tickers: set[str] = set()
+    for item in payload:
+        ticker = str(item.get("symbol") or "").strip().upper()
+        name = str(item.get("name") or "").strip()
+        sector = str(item.get("sectorName") or "").strip().upper()
+        if not ticker or not name or ticker in seen_tickers:
+            continue
+        if item.get("isDebt") or should_skip_psx_dps_symbol(ticker, name, sector):
+            continue
+        seen_tickers.add(ticker)
+
+        asset_type = "ETF" if item.get("isETF") or "EXCHANGE TRADED FUND" in sector else "Stock"
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "PSX",
+            "asset_type": asset_type,
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        if asset_type == "ETF":
+            row["sector"] = "Equity"
+        else:
+            canonical_sector = PSX_DPS_SECTOR_MAP.get(sector)
+            if canonical_sector:
+                row["sector"] = canonical_sector
+        rows.append(row)
     return rows
 
 
@@ -9051,6 +16568,23 @@ def fetch_psx_symbol_name_daily(source: MasterfileSource, session: requests.Sess
             row["source_url"] = download_url
         return rows
     return []
+
+
+def fetch_psx_dps_symbols(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> list[dict[str, Any]]:
+    session = session or requests.Session()
+    response = session.get(
+        source.source_url,
+        headers={"User-Agent": USER_AGENT, "Accept": "application/json,*/*"},
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    payload = response.json()
+    if not isinstance(payload, list):
+        raise ValueError("PSX DPS symbols payload must be a JSON array")
+    return payload
 
 
 def fetch_sse_a_share_list(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
@@ -9330,6 +16864,13 @@ def fetch_nasdaq_nordic_copenhagen_shares(
     return fetch_nasdaq_nordic_shares(source, session=session)
 
 
+def fetch_nasdaq_nordic_iceland_shares(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    return fetch_nasdaq_nordic_shares(source, session=session)
+
+
 def fetch_nasdaq_nordic_etfs(
     source: MasterfileSource,
     session: requests.Session | None = None,
@@ -9418,6 +16959,56 @@ def fetch_six_equity_issuers(
     return parse_six_equity_issuers(response.json(), source)
 
 
+def fetch_six_share_details_fqs(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+    *,
+    listings_path: Path = LISTINGS_CSV,
+) -> list[dict[str, str]]:
+    session = session or requests.Session()
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Accept": "application/json,text/plain,*/*",
+        "Referer": "https://www.six-group.com/en/market-data/shares/share-explorer.html",
+    }
+    rows: list[dict[str, str]] = []
+    seen: set[tuple[str, str, str]] = set()
+    select_fields = ",".join(SIX_SHARE_DETAILS_FQS_FIELDS)
+    for listing in six_share_details_target_rows(listings_path=listings_path):
+        isin = listing.get("isin", "").strip().upper()
+        response = session.get(
+            source.source_url,
+            params={"select": select_fields, "where": f"ISIN={isin}", "pagesize": 50},
+            headers=headers,
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        for row in build_six_share_details_rows(response.json(), source, listing):
+            signature = (row.get("ticker", ""), row.get("isin", ""), row.get("sector", ""))
+            if signature in seen:
+                continue
+            seen.add(signature)
+            rows.append(row)
+    return rows
+
+
+def load_six_share_details_fqs_rows(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> tuple[list[dict[str, str]] | None, str]:
+    try:
+        rows = fetch_six_share_details_fqs(source, session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in (SIX_SHARE_DETAILS_FQS_CACHE, LEGACY_SIX_SHARE_DETAILS_FQS_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    SIX_SHARE_DETAILS_FQS_CACHE.write_text(json.dumps(rows), encoding="utf-8")
+    return rows, "network"
+
+
 def fetch_six_fund_products(
     source: MasterfileSource,
     session: requests.Session | None = None,
@@ -9451,6 +17042,59 @@ def fetch_set_dr_search(
 ) -> list[dict[str, str]]:
     text = fetch_text(source.source_url, session=session)
     return parse_set_dr_search_payload(text, source)
+
+
+def fetch_set_stock_search(
+    source: MasterfileSource,
+    session: requests.Session | None = None,
+) -> dict[str, Any]:
+    session = session or requests.Session()
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Accept": "application/json,text/plain,*/*",
+        "Referer": SET_STOCK_SEARCH_URL,
+    }
+    response = session.get(source.source_url, headers=headers, timeout=REQUEST_TIMEOUT)
+    if response.ok and response.headers.get("content-type", "").startswith("application/json"):
+        return response.json()
+
+    try:
+        from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
+        from playwright.sync_api import sync_playwright
+    except ImportError as exc:
+        raise ImportError("SET stock search API requires Playwright when requests is blocked") from exc
+
+    with sync_playwright() as playwright:
+        browser = playwright.chromium.launch(headless=True)
+        try:
+            context = browser.new_context(
+                locale="en-US",
+                user_agent=USER_AGENT,
+                extra_http_headers={"Accept-Language": "en-US,en;q=0.9"},
+            )
+            page = context.new_page()
+            page.goto(SET_STOCK_SEARCH_URL, wait_until="networkidle", timeout=60_000)
+            result = page.evaluate(
+                """async (apiUrl) => {
+                    const response = await fetch(apiUrl, {
+                        credentials: "include",
+                        headers: {accept: "application/json,text/plain,*/*"}
+                    });
+                    const text = await response.text();
+                    if (!response.ok) {
+                        throw new Error(`${response.status} ${text.slice(0, 120)}`);
+                    }
+                    return JSON.parse(text);
+                }""",
+                source.source_url,
+            )
+        except PlaywrightTimeoutError as exc:
+            raise requests.RequestException("SET stock search browser fetch timed out") from exc
+        finally:
+            browser.close()
+    if not isinstance(result, dict):
+        raise ValueError("SET stock search API payload must be a JSON object")
+    return result
 
 
 def fetch_lse_company_reports(source: MasterfileSource, session: requests.Session | None = None) -> list[dict[str, str]]:
@@ -9701,6 +17345,8 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
             lse_instrument_search_target_tickers([]),
             session=session,
         )
+    if source.format == "lse_price_explorer_json":
+        return fetch_lse_price_explorer_rows(source, session=session)
     if source.format == "asx_listed_companies_csv":
         text = fetch_text(source.source_url, session=session)
         return parse_asx_listed_companies(text, source)
@@ -9715,6 +17361,8 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "set_listed_companies_html":
         text = fetch_bytes(source.source_url, session=session).decode("windows-1250", errors="replace")
         return parse_set_listed_companies_html(text, source)
+    if source.format == "set_stock_search_json":
+        return parse_set_stock_search_payload(fetch_set_stock_search(source, session=session), source)
     if source.format == "set_etf_search_html":
         return fetch_set_etf_search(source, session=session)
     if source.format == "set_dr_search_html":
@@ -9738,10 +17386,88 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return fetch_bme_reference_rows(source, session=session)
     if source.format == "bme_listed_values_pdf":
         return fetch_bme_listed_values_rows(source, session=session)
+    if source.format == "bme_security_prices_json":
+        return fetch_bme_security_prices_rows(source, session=session)
     if source.format == "bme_growth_prices_html":
         return fetch_bme_growth_reference_rows(source, session=session)
+    if source.format == "athex_sector_classification_pdf":
+        return fetch_athex_classification_rows(source, session=session)
     if source.format == "bursa_equity_isin_pdf":
         return fetch_bursa_equity_isin_rows(source, session=session)
+    if source.format == "bursa_closing_prices_pdf":
+        return fetch_bursa_closing_prices_rows(source, session=session)
+    if source.format == "bse_bw_listed_companies_html":
+        return fetch_bse_bw_listed_companies(source, session=session)
+    if source.format == "bse_hu_marketdata_html":
+        return fetch_bse_hu_marketdata_rows(source, session=session)
+    if source.format == "egx_listed_stocks_viewstate":
+        return fetch_egx_listed_stocks_rows(source, session=session)
+    if source.format == "cavali_bvl_emisores_html":
+        return fetch_cavali_bvl_emisores_rows(source, session=session)
+    if source.format == "cse_ma_listed_companies_json":
+        return fetch_cse_ma_listed_companies(source, session=session)
+    if source.format == "cse_lk_all_security_code_json":
+        return fetch_cse_lk_all_security_code_rows(source, session=session)
+    if source.format == "cse_lk_company_info_summary_json":
+        return fetch_cse_lk_company_info_summary_rows(source)
+    if source.format == "bvc_rv_issuers_json":
+        return fetch_bvc_rv_issuers_rows(source, session=session)
+    if source.format == "byma_equity_details_json":
+        return fetch_byma_equity_details_rows(source, session=session)
+    if source.format == "dse_tz_listed_companies_html":
+        return fetch_dse_tz_listed_companies(source, session=session)
+    if source.format == "mse_mw_mainboard_html":
+        return fetch_mse_mw_mainboard_rows(source, session=session)
+    if source.format == "nse_ke_listed_companies_html":
+        return fetch_nse_ke_listed_companies(source, session=session)
+    if source.format == "nse_india_securities_available_csv":
+        return fetch_nse_india_securities_available_rows(source, session=session)
+    if source.format == "bse_india_scrips_json":
+        return fetch_bse_india_scrips_rows(source, session=session)
+    if source.format == "hkex_securities_list_xlsx":
+        return fetch_hkex_securities_list_rows(source, session=session)
+    if source.format == "sgx_securities_prices_json":
+        return fetch_sgx_securities_prices_rows(source, session=session)
+    if source.format == "dfm_listed_securities_json":
+        return fetch_dfm_listed_securities_rows(source, session=session)
+    if source.format == "boursa_kuwait_legacy_mix_json":
+        return fetch_boursa_kuwait_stocks_rows(source, session=session)
+    if source.format == "bist_kap_mkk_listed_securities_json":
+        return fetch_bist_kap_mkk_listed_securities_rows(source, session=session)
+    if source.format == "tadawul_securities_json":
+        return fetch_tadawul_securities_rows(source, session=session)
+    if source.format == "adx_market_watch_json":
+        return fetch_adx_market_watch_rows(source, session=session)
+    if source.format == "qse_market_watch_json":
+        return fetch_qse_market_watch_rows(source, session=session)
+    if source.format == "msx_companies_json":
+        return fetch_msx_companies_rows(source, session=session)
+    if source.format == "rse_listed_companies_html":
+        return fetch_rse_listed_companies_rows(source, session=session)
+    if source.format == "gse_listed_companies_markdown":
+        return fetch_gse_listed_companies_rows(source, session=session)
+    if source.format == "luse_listed_companies_markdown":
+        return fetch_luse_listed_companies_rows(source, session=session)
+    if source.format == "bolsa_santiago_instruments_json":
+        return fetch_bolsa_santiago_instruments_rows(source, session=session)
+    if source.format == "sem_isin_xlsx":
+        return fetch_sem_isin_rows(source, session=session)
+    if source.format == "use_ug_market_snapshot_html":
+        return fetch_use_ug_market_snapshot_rows(source, session=session)
+    if source.format == "nzx_instruments_next_data":
+        return fetch_nzx_instruments_rows(source, session=session)
+    if source.format == "nasdaq_mutual_fund_quote_json":
+        return fetch_nasdaq_mutual_fund_quote_rows(source, session=session)
+    if source.format == "zse_zw_issuers_json":
+        return fetch_zse_zw_issuers_rows(source, session=session)
+    if source.format == "bvb_shares_directory_html":
+        return fetch_bvb_shares_directory(source, session=session)
+    if source.format == "bvb_fund_units_directory_html":
+        return fetch_bvb_fund_units_directory(source, session=session)
+    if source.format == "ngx_company_profile_directory_html":
+        return fetch_ngx_company_profile_directory(source, session=session)
+    if source.format == "ngx_equities_price_list_json":
+        return fetch_ngx_equities_price_list(source, session=session)
     if source.format == "euronext_equities_semicolon_csv":
         text = fetch_text(source.source_url, session=session)
         return parse_euronext_equities_download(text, source)
@@ -9751,6 +17477,8 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "jpx_listed_issues_excel":
         content = fetch_bytes(source.source_url, session=session)
         return parse_jpx_listed_issues_excel(content, source)
+    if source.format == "jpx_tse_stock_detail_json":
+        return fetch_jpx_tse_stock_detail_rows(source)
     if source.format == "deutsche_boerse_listed_companies_excel":
         content = fetch_bytes(source.source_url, session=session)
         return parse_deutsche_boerse_listed_companies_excel(content, source)
@@ -9762,6 +17490,8 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return parse_deutsche_boerse_xetra_all_tradable_csv(text, source)
     if source.format == "six_equity_issuers_json":
         return fetch_six_equity_issuers(source, session=session)
+    if source.format == "six_share_details_fqs_json":
+        return fetch_six_share_details_fqs(source, session=session)
     if source.format == "six_fund_products_csv":
         return fetch_six_fund_products(source, session=session)
     if source.format == "b3_instruments_equities_api":
@@ -9770,7 +17500,12 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return fetch_b3_listed_funds(source, session=session)
     if source.format == "b3_bdr_companies_api":
         return fetch_b3_bdr_companies(source, session=session)
-    if source.format == "nasdaq_nordic_stockholm_shares_json":
+    if source.format in {
+        "nasdaq_nordic_stockholm_shares_json",
+        "nasdaq_nordic_helsinki_shares_json",
+        "nasdaq_nordic_iceland_shares_json",
+        "nasdaq_nordic_copenhagen_shares_json",
+    }:
         return fetch_nasdaq_nordic_stockholm_shares(source, session=session)
     if source.format == "nasdaq_nordic_copenhagen_etf_search_json":
         return fetch_nasdaq_nordic_etf_search(source, session=session)
@@ -9840,10 +17575,20 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return fetch_psx_listed_companies(source, session=session)
     if source.format == "psx_symbol_name_daily_zip":
         return fetch_psx_symbol_name_daily(source, session=session)
+    if source.format == "psx_dps_symbols_json":
+        return parse_psx_dps_symbols_payload(fetch_psx_dps_symbols(source, session=session), source)
     if source.format == "pse_listed_company_directory_html":
         return fetch_pse_listed_company_directory(source, session=session)
+    if source.format == "pse_cz_shares_directory_html":
+        return fetch_pse_cz_shares_directory(source, session=session)
+    if source.format == "vienna_listed_companies_html":
+        return fetch_vienna_listed_companies(source, session=session)
+    if source.format == "zagreb_securities_html":
+        return fetch_zagreb_securities(source, session=session)
     if source.format == "idx_listed_companies_json":
         return fetch_idx_listed_companies(source, session=session)
+    if source.format == "idx_company_profiles_json":
+        return fetch_idx_company_profiles(source, session=session)
     if source.format == "wse_listed_companies_html":
         return fetch_wse_listed_companies(source, session=session)
     if source.format == "newconnect_listed_companies_html":
@@ -9871,8 +17616,12 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
         return parse_sec_company_tickers_exchange(payload, source)
     if source.format == "otc_markets_security_profile_json":
         return fetch_otc_markets_security_profile(source, session=session)
+    if source.format == "otc_markets_stock_screener_csv":
+        return fetch_otc_markets_stock_screener_rows(source, session=session)
     if source.format == "bmv_issuer_directory_json":
         return fetch_bmv_issuer_directory(source, session=session)
+    if source.format == "bmv_market_data_security_pages_html":
+        return fetch_bmv_market_data_securities(source, session=session)
     if source.format == "bmv_etf_search_json":
         return fetch_bmv_etf_search(source, session=session)
     raise ValueError(f"Unsupported source format: {source.format}")
@@ -9897,10 +17646,20 @@ def fetch_source_rows_with_mode(
         if rows is None:
             raise requests.RequestException("LSE instrument search unavailable")
         return rows, mode
+    if source.format == "lse_price_explorer_json":
+        rows, mode = load_lse_price_explorer_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("LSE price explorer unavailable")
+        return rows, mode
     if source.format == "b3_instruments_equities_api":
         rows, mode = load_b3_instruments_equities_rows(source, session=session)
         if rows is None:
             raise requests.RequestException("B3 instruments equities unavailable")
+        return rows, mode
+    if source.format == "six_share_details_fqs_json":
+        rows, mode = load_six_share_details_fqs_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("SIX share details FQS unavailable")
         return rows, mode
     if source.format == "cboe_canada_listing_directory_json":
         return parse_cboe_canada_listing_directory_payload(
@@ -9916,6 +17675,11 @@ def fetch_source_rows_with_mode(
         rows, mode = load_otc_markets_security_profile_rows(source, session=session)
         if rows is None:
             raise requests.RequestException("OTC Markets security profiles unavailable")
+        return rows, mode
+    if source.format == "otc_markets_stock_screener_csv":
+        rows, mode = load_otc_markets_stock_screener_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("OTC Markets stock screener unavailable")
         return rows, mode
     if source.format == "tpex_mainboard_quotes_json":
         payload, mode = load_tpex_mainboard_quotes_payload(session=session)
@@ -9947,15 +17711,45 @@ def fetch_source_rows_with_mode(
         if rows is None:
             raise requests.RequestException("SET DR search unavailable")
         return rows, mode
+    if source.format == "set_stock_search_json":
+        rows, mode = load_set_stock_search_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("SET stock search unavailable")
+        return rows, mode
+    if source.format == "psx_dps_symbols_json":
+        rows, mode = load_psx_dps_symbols_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("PSX DPS symbols unavailable")
+        return rows, mode
     if source.format == "pse_listed_company_directory_html":
         rows, mode = load_pse_listed_company_directory_rows(source, session=session)
         if rows is None:
             raise requests.RequestException("PSE listed company directory unavailable")
         return rows, mode
+    if source.format == "pse_cz_shares_directory_html":
+        rows, mode = load_pse_cz_shares_directory_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("Prague Stock Exchange shares directory unavailable")
+        return rows, mode
+    if source.format == "vienna_listed_companies_html":
+        rows, mode = load_vienna_listed_companies_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("Vienna listed companies unavailable")
+        return rows, mode
+    if source.format == "zagreb_securities_html":
+        rows, mode = load_zagreb_securities_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("Zagreb securities directory unavailable")
+        return rows, mode
     if source.format == "idx_listed_companies_json":
         rows, mode = load_idx_listed_companies_rows(source, session=session)
         if rows is None:
             raise requests.RequestException("IDX listed companies unavailable")
+        return rows, mode
+    if source.format == "idx_company_profiles_json":
+        rows, mode = load_idx_company_profiles_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("IDX company profiles unavailable")
         return rows, mode
     if source.format in {
         "wse_listed_companies_html",
@@ -10020,6 +17814,11 @@ def fetch_source_rows_with_mode(
         if rows is None:
             raise requests.RequestException("BMV issuer directory unavailable")
         return rows, mode
+    if source.format == "bmv_market_data_security_pages_html":
+        rows, mode = load_bmv_market_data_securities_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("BMV market-data security pages unavailable")
+        return rows, mode
     if source.format == "szse_b_share_list_json":
         rows, mode = load_szse_b_share_list_rows(source, session=session)
         if rows is None:
@@ -10045,15 +17844,220 @@ def fetch_source_rows_with_mode(
         if rows is None:
             raise requests.RequestException("BME listed values rows unavailable")
         return rows, mode
+    if source.format == "bme_security_prices_json":
+        rows, mode = load_bme_security_prices_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("BME security prices rows unavailable")
+        return rows, mode
     if source.format == "bme_growth_prices_html":
         rows, mode = load_bme_growth_reference_rows(source, session=session)
         if rows is None:
             raise requests.RequestException("BME Growth reference rows unavailable")
         return rows, mode
+    if source.format == "jpx_tse_stock_detail_json":
+        rows, mode = load_jpx_tse_stock_detail_rows(source)
+        if rows is None:
+            raise requests.RequestException("JPX/TSE stock detail ISIN rows unavailable")
+        return rows, mode
+    if source.format == "athex_sector_classification_pdf":
+        rows, mode = load_athex_classification_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("ATHEX classification rows unavailable")
+        return rows, mode
     if source.format == "bursa_equity_isin_pdf":
         rows, mode = load_bursa_equity_isin_rows(source, session=session)
         if rows is None:
             raise requests.RequestException("Bursa equity ISIN rows unavailable")
+        return rows, mode
+    if source.format == "bursa_closing_prices_pdf":
+        rows, mode = load_bursa_closing_prices_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("Bursa closing-prices rows unavailable")
+        return rows, mode
+    if source.format == "bse_bw_listed_companies_html":
+        rows, mode = load_bse_bw_listed_companies_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("BSE Botswana listed companies unavailable")
+        return rows, mode
+    if source.format == "bse_hu_marketdata_html":
+        rows, mode = load_bse_hu_marketdata_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("Budapest Stock Exchange marketdata unavailable")
+        return rows, mode
+    if source.format == "egx_listed_stocks_viewstate":
+        rows, mode = load_egx_listed_stocks_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("EGX listed stocks unavailable")
+        return rows, mode
+    if source.format == "cavali_bvl_emisores_html":
+        rows, mode = load_cavali_bvl_emisores_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("CAVALI BVL issuer rows unavailable")
+        return rows, mode
+    if source.format == "cse_ma_listed_companies_json":
+        rows, mode = load_cse_ma_listed_companies_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("Casablanca Stock Exchange listed companies unavailable")
+        return rows, mode
+    if source.format == "cse_lk_all_security_code_json":
+        rows, mode = load_cse_lk_all_security_code_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("CSE Sri Lanka all-security-code API unavailable")
+        return rows, mode
+    if source.format == "cse_lk_company_info_summary_json":
+        rows, mode = load_cse_lk_company_info_summary_rows(source)
+        if rows is None:
+            raise requests.RequestException("CSE Sri Lanka company-info summary API unavailable")
+        return rows, mode
+    if source.format == "bvc_rv_issuers_json":
+        rows, mode = load_bvc_rv_issuers_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("BVC local-equity issuer API unavailable")
+        return rows, mode
+    if source.format == "byma_equity_details_json":
+        rows, mode = load_byma_equity_details_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("BYMA equity detail API unavailable")
+        return rows, mode
+    if source.format == "dse_tz_listed_companies_html":
+        rows, mode = load_dse_tz_listed_companies_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("DSE Tanzania listed companies unavailable")
+        return rows, mode
+    if source.format == "mse_mw_mainboard_html":
+        rows, mode = load_mse_mw_mainboard_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("MSE Malawi mainboard unavailable")
+        return rows, mode
+    if source.format == "nse_ke_listed_companies_html":
+        rows, mode = load_nse_ke_listed_companies_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("NSE Kenya listed companies unavailable")
+        return rows, mode
+    if source.format == "nse_india_securities_available_csv":
+        rows, mode = load_nse_india_securities_available_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("NSE India securities-available CSVs unavailable")
+        return rows, mode
+    if source.format == "bse_india_scrips_json":
+        rows, mode = load_bse_india_scrips_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("BSE India scrip API unavailable")
+        return rows, mode
+    if source.format == "hkex_securities_list_xlsx":
+        rows, mode = load_hkex_securities_list_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("HKEX securities list workbook unavailable")
+        return rows, mode
+    if source.format == "sgx_securities_prices_json":
+        rows, mode = load_sgx_securities_prices_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("SGX securities prices API unavailable")
+        return rows, mode
+    if source.format == "dfm_listed_securities_json":
+        rows, mode = load_dfm_listed_securities_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("DFM listed securities API unavailable")
+        return rows, mode
+    if source.format == "boursa_kuwait_legacy_mix_json":
+        rows, mode = load_boursa_kuwait_stocks_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("Boursa Kuwait market data API unavailable")
+        return rows, mode
+    if source.format == "bahrain_bourse_isin_codes_html":
+        rows, mode = load_bahrain_bourse_listed_companies_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("Bahrain Bourse ISIN code table unavailable")
+        return rows, mode
+    if source.format == "bist_kap_mkk_listed_securities_json":
+        rows, mode = load_bist_kap_mkk_listed_securities_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("KAP/MKK BIST securities unavailable")
+        return rows, mode
+    if source.format == "tadawul_securities_json":
+        rows, mode = load_tadawul_securities_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("Saudi Exchange securities unavailable")
+        return rows, mode
+    if source.format == "adx_market_watch_json":
+        rows, mode = load_adx_market_watch_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("ADX market-watch securities unavailable")
+        return rows, mode
+    if source.format == "qse_market_watch_json":
+        rows, mode = load_qse_market_watch_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("QSE MarketWatch unavailable")
+        return rows, mode
+    if source.format == "msx_companies_json":
+        rows, mode = load_msx_companies_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("MSX companies API unavailable")
+        return rows, mode
+    if source.format == "rse_listed_companies_html":
+        rows, mode = load_rse_listed_companies_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("RSE listed companies unavailable")
+        return rows, mode
+    if source.format == "gse_listed_companies_markdown":
+        rows, mode = load_gse_listed_companies_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("GSE listed companies unavailable")
+        return rows, mode
+    if source.format == "luse_listed_companies_markdown":
+        rows, mode = load_luse_listed_companies_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("LuSE listed companies unavailable")
+        return rows, mode
+    if source.format == "bolsa_santiago_instruments_json":
+        rows, mode = load_bolsa_santiago_instruments_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("Bolsa de Santiago instruments unavailable")
+        return rows, mode
+    if source.format == "sem_isin_xlsx":
+        rows, mode = load_sem_isin_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("SEM ISIN workbook unavailable")
+        return rows, mode
+    if source.format == "use_ug_market_snapshot_html":
+        rows, mode = load_use_ug_market_snapshot_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("USE Uganda market snapshot unavailable")
+        return rows, mode
+    if source.format == "nzx_instruments_next_data":
+        rows, mode = load_nzx_instruments_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("NZX instruments unavailable")
+        return rows, mode
+    if source.format == "nasdaq_mutual_fund_quote_json":
+        rows, mode = load_nasdaq_mutual_fund_quote_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("Nasdaq mutual fund quote API unavailable")
+        return rows, mode
+    if source.format == "zse_zw_issuers_json":
+        rows, mode = load_zse_zw_issuers_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("ZSE Zimbabwe issuer API unavailable")
+        return rows, mode
+    if source.format == "bvb_shares_directory_html":
+        rows, mode = load_bvb_shares_directory_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("BVB shares directory unavailable")
+        return rows, mode
+    if source.format == "bvb_fund_units_directory_html":
+        rows, mode = load_bvb_fund_units_directory_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("BVB fund units directory unavailable")
+        return rows, mode
+    if source.format == "ngx_company_profile_directory_html":
+        rows, mode = load_ngx_company_profile_directory_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("NGX company profile directory unavailable")
+        return rows, mode
+    if source.format == "ngx_equities_price_list_json":
+        rows, mode = load_ngx_equities_price_list_rows(source, session=session)
+        if rows is None:
+            raise requests.RequestException("NGX equities price list unavailable")
         return rows, mode
     if source.format == "jse_instrument_search_html":
         rows, mode = load_jse_instrument_search_rows(source, session=session)
@@ -10063,6 +18067,7 @@ def fetch_source_rows_with_mode(
     if source.format in {
         "nasdaq_nordic_stockholm_shares_json",
         "nasdaq_nordic_helsinki_shares_json",
+        "nasdaq_nordic_iceland_shares_json",
         "nasdaq_nordic_copenhagen_shares_json",
     }:
         rows, mode = load_nasdaq_nordic_stockholm_shares_rows(source, session=session)

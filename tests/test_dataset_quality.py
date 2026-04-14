@@ -459,6 +459,44 @@ def test_build_alias_rows_marks_numeric_namespace_aliases_as_exchange_ticker():
     ]
 
 
+def test_build_primary_ticker_rows_keeps_one_legacy_row_per_ticker():
+    from scripts.rebuild_dataset import build_primary_ticker_rows
+
+    rows = [
+        {
+            "ticker": "GLDU",
+            "exchange": "LSE",
+            "name": "UBS ETC ON BBG CMCI GOLD IDX USD",
+            "isin": "CH0346134395",
+        },
+        {
+            "ticker": "GLDU",
+            "exchange": "TSX",
+            "name": "Global X Gold Producer Equity Daily Bull ETF",
+            "isin": "CA08660T1003",
+        },
+        {
+            "ticker": "PLUR",
+            "exchange": "TASE",
+            "name": "PLURI",
+            "isin": "US72942G2030",
+        },
+        {
+            "ticker": "PLUR",
+            "exchange": "NASDAQ",
+            "name": "Pluri Inc.",
+            "isin": "US72942G2030",
+        },
+    ]
+
+    primary = build_primary_ticker_rows(rows)
+
+    assert [(row["ticker"], row["exchange"]) for row in primary] == [
+        ("GLDU", "TSX"),
+        ("PLUR", "NASDAQ"),
+    ]
+
+
 def test_namespace_collision_respects_manual_isin_corrections(monkeypatch):
     from scripts import rebuild_dataset
 
@@ -681,11 +719,15 @@ def test_normalize_input_row_reclassifies_exchange_traded_products():
     assert twse_reit["asset_type"] == "ETF"
 
 
-def test_normalize_input_row_canonicalizes_only_clear_otc_venues():
+def test_normalize_input_row_canonicalizes_clear_exchange_aliases():
     from scripts.rebuild_dataset import normalize_input_row
 
     assert normalize_input_row({"ticker": "ABC", "exchange": "OTCCE", "asset_type": "Stock"})["exchange"] == "OTC"
     assert normalize_input_row({"ticker": "ABC", "exchange": "OTCMKTS", "asset_type": "Stock"})["exchange"] == "OTC"
+    assert (
+        normalize_input_row({"ticker": "BTYB", "exchange": "NYSEARCA", "asset_type": "ETF"})["exchange"]
+        == "NYSE ARCA"
+    )
     assert normalize_input_row({"ticker": "ABC", "exchange": "US", "asset_type": "Stock"})["exchange"] == "US"
     assert normalize_input_row({"ticker": "ABC", "exchange": "NMFQS", "asset_type": "ETF"})["exchange"] == "NMFQS"
 
@@ -1431,6 +1473,45 @@ def test_apply_official_exchange_corrections_prefers_unique_name_matched_exchang
     assert corrected[0]["exchange"] == "TSXV"
 
 
+def test_apply_official_exchange_corrections_updates_ngx_prefix_replaced_ticker(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "FIRSTHOLDC",
+        "name": "FIRST HOLDCO PLC",
+        "exchange": "NGX",
+        "asset_type": "Stock",
+        "country": "Nigeria",
+        "country_code": "NG",
+        "sector": "",
+        "isin": "NGFBNH000009",
+        "aliases": ["first hold"],
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_reference_rows",
+        lambda: {
+            ("FIRSTHOLDCO", "Stock"): (
+                {
+                    "ticker": "FIRSTHOLDCO",
+                    "exchange": "NGX",
+                    "asset_type": "Stock",
+                    "name": "FIRST HOLDCO PLC",
+                    "source_key": "ngx_company_profile_directory",
+                    "reference_scope": "exchange_directory",
+                },
+            )
+        },
+    )
+
+    corrected = rebuild_dataset.apply_official_exchange_corrections([row])
+
+    assert corrected[0]["ticker"] == "FIRSTHOLDCO"
+    assert corrected[0]["exchange"] == "NGX"
+    assert corrected[0]["aliases"] == "first hold|FIRSTHOLDC"
+
+
 def test_should_not_correct_krx_stock_without_krx_official_source():
     from scripts.rebuild_dataset import should_correct_to_official_exchange
 
@@ -1538,6 +1619,93 @@ def test_load_active_official_isin_fallbacks_only_keeps_unique_active_official_v
     assert fallbacks == {("AAA", "LSE", "Stock"): "GB0002634946"}
 
 
+def test_load_active_official_sector_fallbacks_only_keeps_unique_active_official_values(tmp_path, monkeypatch):
+    from scripts import rebuild_dataset
+
+    reference_csv = tmp_path / "reference.csv"
+    with reference_csv.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=[
+                "ticker",
+                "exchange",
+                "asset_type",
+                "official",
+                "listing_status",
+                "reference_scope",
+                "sector",
+            ],
+        )
+        writer.writeheader()
+        writer.writerows(
+            [
+                {
+                    "ticker": "ABBL-EQO",
+                    "exchange": "BSE_BW",
+                    "asset_type": "Stock",
+                    "official": "true",
+                    "listing_status": "active",
+                    "reference_scope": "listed_companies_subset",
+                    "sector": "Banking",
+                },
+                {
+                    "ticker": "ABBL-EQO",
+                    "exchange": "BSE_BW",
+                    "asset_type": "Stock",
+                    "official": "true",
+                    "listing_status": "active",
+                    "reference_scope": "security_lookup_subset",
+                    "sector": "Financial Services",
+                },
+                {
+                    "ticker": "BBB",
+                    "exchange": "BSE_BW",
+                    "asset_type": "Stock",
+                    "official": "true",
+                    "listing_status": "active",
+                    "reference_scope": "listed_companies_subset",
+                    "sector": "Banking",
+                },
+                {
+                    "ticker": "BBB",
+                    "exchange": "BSE_BW",
+                    "asset_type": "Stock",
+                    "official": "true",
+                    "listing_status": "active",
+                    "reference_scope": "security_lookup_subset",
+                    "sector": "Mining",
+                },
+                {
+                    "ticker": "CCC",
+                    "exchange": "BSE_BW",
+                    "asset_type": "Stock",
+                    "official": "false",
+                    "listing_status": "active",
+                    "reference_scope": "listed_companies_subset",
+                    "sector": "Banking",
+                },
+                {
+                    "ticker": "DDD",
+                    "exchange": "BSE_BW",
+                    "asset_type": "Stock",
+                    "official": "true",
+                    "listing_status": "inactive",
+                    "reference_scope": "listed_companies_subset",
+                    "sector": "Banking",
+                },
+            ]
+        )
+
+    monkeypatch.setattr(rebuild_dataset, "MASTERFILE_REFERENCE_CSV", reference_csv)
+    rebuild_dataset.load_active_official_sector_fallbacks.cache_clear()
+    try:
+        fallbacks = rebuild_dataset.load_active_official_sector_fallbacks()
+    finally:
+        rebuild_dataset.load_active_official_sector_fallbacks.cache_clear()
+
+    assert fallbacks == {("ABBL-EQO", "BSE_BW", "Stock"): "Financials"}
+
+
 def test_cleaned_rows_backfills_unique_official_isin(monkeypatch):
     from scripts import rebuild_dataset
 
@@ -1569,6 +1737,40 @@ def test_cleaned_rows_backfills_unique_official_isin(monkeypatch):
     cleaned, _ = rebuild_dataset.cleaned_rows()
 
     assert cleaned[0]["isin"] == "GB0007655250"
+
+
+def test_cleaned_rows_backfills_unique_official_sector(monkeypatch):
+    from scripts import rebuild_dataset
+
+    row = {
+        "ticker": "ABBL-EQO",
+        "name": "ABSA BANK OF BOTSWANA LIMITED",
+        "exchange": "BSE_BW",
+        "asset_type": "Stock",
+        "sector": "",
+        "country": "Botswana",
+        "country_code": "BW",
+        "isin": "BW0000000025",
+        "aliases": "",
+    }
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_data",
+        lambda: ([row], {}, defaultdict(list), {}, set()),
+    )
+    monkeypatch.setattr(rebuild_dataset, "load_review_overrides", lambda: (defaultdict(set), defaultdict(dict), set()))
+    monkeypatch.setattr(rebuild_dataset, "apply_official_exchange_corrections", lambda rows: rows)
+    monkeypatch.setattr(rebuild_dataset, "load_active_official_isin_fallbacks", lambda: {})
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_sector_fallbacks",
+        lambda: {("ABBL-EQO", "BSE_BW", "Stock"): "Financials"},
+    )
+
+    cleaned, _ = rebuild_dataset.cleaned_rows()
+
+    assert cleaned[0]["stock_sector"] == "Financials"
 
 
 def test_cleaned_rows_replaces_contaminated_isin_with_exact_official_isin(monkeypatch):

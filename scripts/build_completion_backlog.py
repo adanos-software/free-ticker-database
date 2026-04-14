@@ -98,11 +98,11 @@ def policy_for(field: str, exchange: str, asset_type: str) -> tuple[str, str, bo
     if field == FIELD_MISSING_ISIN:
         if exchange == "TSE":
             return (
-                "Official JPX/TSE ISIN-capable source; current JPX listed-issues coverage does not fill most ISINs.",
-                "scripts/fetch_exchange_masterfiles.py --source <new_tse_isin_source>",
+                "Official JPX/TSE Stock Data Search detail API; supplements listed-issues rows with ISINs.",
+                "scripts/fetch_exchange_masterfiles.py --source jpx_tse_stock_detail",
                 True,
-                "Official source preferred; require listing-key/ticker, issuer-name, asset-type, expected JP prefix, and ISIN checksum gates before applying.",
-                "Largest primary ISIN gap; do not use Yahoo as the TSE authority.",
+                "Accept after exact TSE ticker, official JPX detail payload, expected JP prefix where applicable, and ISIN checksum gates.",
+                "Largest primary ISIN gap; source is official JPX/TSE, not Yahoo.",
             )
         if exchange in {"SSE", "SZSE"}:
             return (

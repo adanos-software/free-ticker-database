@@ -9,21 +9,21 @@ Free stock and ETF ticker reference data with primary tickers, listing-keyed ven
 
 | Metric | Value | Meaning |
 |---|---:|---|
-| Primary tickers | 53,789 | Rows in `data/tickers.csv`; one primary row per security. |
-| Full listing rows | 61,955 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
-| Stocks | 38,710 | Primary ticker rows where `asset_type=Stock`. |
-| ETFs | 15,079 | Primary ticker rows where `asset_type=ETF`. |
-| Exchanges | 67 | Distinct non-empty `exchange` values in the primary ticker export. |
-| Countries | 81 | Distinct non-empty `country` values in the primary ticker export. |
-| Aliases | 91,300 | Rows in `data/aliases.csv`; searchable aliases and identifier tokens mapped to primary tickers. |
-| ISIN coverage | 45,259 (84.1%) | Primary ticker rows with a non-empty `isin`. |
-| Sector/category coverage | 41,718 (77.6%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 31,147 | Primary ticker rows with a non-empty `stock_sector`. |
-| ETF category coverage | 10,571 | Primary ticker rows with a non-empty `etf_category`. |
-| Core listing-scope rows | 45,346 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
-| Core primary rows with ISIN | 38,181 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
-| Core primary rows missing ISIN | 7,165 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
-| Extended listing-scope rows | 16,609 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
+| Primary tickers | 53,446 | Rows in `data/tickers.csv`; one primary row per security. |
+| Full listing rows | 61,944 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
+| Stocks | 38,437 | Primary ticker rows where `asset_type=Stock`. |
+| ETFs | 15,009 | Primary ticker rows where `asset_type=ETF`. |
+| Exchanges | 66 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
+| Countries | 81 | Distinct non-empty `country` values in `data/tickers.csv`. |
+| Aliases | 93,855 | Rows in `data/aliases.csv`; alias-to-listing lookup rows after generic-word filtering. |
+| ISIN coverage | 48,235 (90.2%) | Primary ticker rows with a non-empty `isin`. |
+| Sector/category coverage | 44,865 (83.9%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Stock sector coverage | 33,909 | Primary ticker rows with a non-empty `stock_sector`. |
+| ETF category coverage | 10,956 | Primary ticker rows with a non-empty `etf_category`. |
+| Core listing-scope rows | 45,220 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
+| Core primary rows with ISIN | 41,302 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
+| Core primary rows missing ISIN | 3,918 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
+| Extended listing-scope rows | 16,724 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
 
 ## Core Files
 
@@ -46,9 +46,11 @@ Reference and audit files:
 | [`data/listing_index.csv`](data/listing_index.csv) | Listing-keyed identity bridge |
 | [`data/identifiers_extended.csv`](data/identifiers_extended.csv) | FIGI/CIK/LEI enrichment snapshot |
 | [`data/masterfiles/reference.csv`](data/masterfiles/reference.csv) | Official exchange-masterfile reference rows |
+| [`data/masterfiles/source_candidates.json`](data/masterfiles/source_candidates.json) | Official source candidates not yet implemented as parsers |
 | [`data/masterfiles/supplemental_listings.csv`](data/masterfiles/supplemental_listings.csv) | Safe official listings added to the core export |
 | [`data/history/latest_snapshot.csv`](data/history/latest_snapshot.csv) | Current listing-status baseline |
 | [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | Machine-readable coverage report |
+| [`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md) | Missing/partial/global official-source backlog |
 | [`data/reports/completion_backlog.md`](data/reports/completion_backlog.md) | Prioritized missing ISIN/sector/category backlog |
 | [`data/reports/entry_quality.md`](data/reports/entry_quality.md) | Per-listing deterministic quality scan summary |
 | [`data/reports/ohlcv_plausibility.md`](data/reports/ohlcv_plausibility.md) | Kronos-inspired market-data plausibility queue |
@@ -83,9 +85,9 @@ JSON metadata:
 ```json
 {
   "_meta": {
-    "version": "3.9.0",
-    "built_at": "2026-04-13T09:56:07Z",
-    "total_tickers": 53789
+    "version": "3.10.0",
+    "built_at": "2026-04-14T04:43:46Z",
+    "total_tickers": 53446
   },
   "tickers": []
 }
@@ -111,15 +113,15 @@ Top exchanges by primary ticker count:
 
 | Exchange | Tickers |
 |---|---:|
-| OTC | 8,442 |
+| OTC | 8,474 |
 | NASDAQ | 4,538 |
-| LSE | 3,840 |
-| TSE | 3,198 |
+| LSE | 3,781 |
+| TSE | 3,197 |
 | SZSE | 3,083 |
 | SSE | 2,789 |
-| NYSE ARCA | 2,570 |
-| XETRA | 2,234 |
-| NYSE | 2,040 |
+| NYSE ARCA | 2,571 |
+| XETRA | 2,205 |
+| NYSE | 2,042 |
 | KRX | 1,788 |
 | TSX | 1,658 |
 | KOSDAQ | 1,583 |
@@ -131,6 +133,7 @@ For full exchange, country, source, and verification coverage, use:
 
 ```bash
 python3 scripts/build_coverage_report.py
+python3 scripts/build_source_inventory.py
 python3 scripts/build_completion_backlog.py
 python3 scripts/build_entry_quality_report.py
 python3 scripts/build_ohlcv_plausibility_report.py
@@ -151,6 +154,7 @@ Quick rebuild:
 python3 scripts/rebuild_dataset.py
 python3 scripts/build_listing_history.py
 python3 scripts/build_coverage_report.py
+python3 scripts/build_source_inventory.py
 python3 scripts/build_completion_backlog.py
 python3 scripts/build_entry_quality_report.py
 python3 scripts/build_ohlcv_plausibility_report.py
@@ -193,7 +197,9 @@ python3 scripts/rebuild_dataset.py
 
 ## Sources
 
-Primary exchange/reference inputs include Nasdaq Trader, Nasdaq Nordic, ASX, Deutsche Boerse, B3, TMX, Euronext, JPX, TWSE, TPEX, Bursa Malaysia, BME, BMV, WSE/NewConnect, TASE, KRX, HOSE/HNX/UPCOM, and SEC company tickers.
+Implemented primary exchange/reference inputs include Nasdaq Trader, Nasdaq Nordic, ASX, Deutsche Boerse, B3, TMX, Euronext, JPX/TSE, TWSE, TPEX, SSE/SZSE, Bursa Malaysia, BME, BMV, WSE/NewConnect, TASE, KRX, HOSE/HNX/UPCOM, CSE Sri Lanka, and SEC company tickers.
+
+Official source candidates and reconciled source gaps are tracked in [`data/masterfiles/source_candidates.json`](data/masterfiles/source_candidates.json) and summarized by [`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md). Current source inventory status: `0` missing current-scope sources, `0` parser todo rows, `0` real global-expansion candidates, `30` official-full rows, and `34` official-partial rows. Remaining work is now field-completion and taxonomy coverage, not undiscovered exchange-source inventory.
 
 Secondary/reviewed enrichment inputs include [EODHD](https://eodhd.com/financial-apis/), [FinanceDatabase](https://github.com/JerBouma/FinanceDatabase), XTB OMI specification data, Yahoo Finance review helpers, OpenFIGI, GLEIF, and curated production aliases from [api.adanos.org](https://api.adanos.org).
 

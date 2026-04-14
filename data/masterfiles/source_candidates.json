@@ -1,0 +1,1159 @@
+[
+  {
+    "key": "athex_sector_classification",
+    "exchange": "ATHEX",
+    "venue_name": "Athens Stock Exchange",
+    "country": "Greece",
+    "provider": "ATHEX",
+    "source_url": "https://www.athexgroup.gr/documents/10180/5517704/ATHEX%2BClassification%2BVer0.810%2B%28EN%29.pdf/5c49a27d-1078-4974-990b-5a5e1f278b73",
+    "candidate_scope": "listed_companies_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "pdf",
+    "implementation_status": "implemented",
+    "priority": "high",
+    "blocker": "active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset",
+    "notes": "The official ATHEX sector-classification PDF exposes ISIN, symbol, company name, and sector classification for many current ATHEX stock rows. A true active exchange-directory endpoint is still needed for full ATHEX coverage."
+  },
+  {
+    "key": "byma_equity_details",
+    "exchange": "BCBA",
+    "venue_name": "Bolsas y Mercados Argentinos",
+    "country": "Argentina",
+    "provider": "BYMA",
+    "source_url": "https://open.bymadata.com.ar/vanoms-be-core/rest/api/bymadata/free/bnown/fichatecnica/especies/general",
+    "candidate_scope": "security_lookup_subset",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "byma_equity_details_json",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented via official Open BYMADATA equity-detail endpoint; some legacy BCBA symbols remain unmatched without manual ticker normalization",
+    "notes": "Official Open BYMADATA POST endpoint exposes symbol-keyed equity detail data, including codigoIsin, tipoEspecie, denomination, and issuer fields. The parser only emits rows for current BCBA listings and keeps non-exact/ticker-normalized matches name-gated."
+  },
+  {
+    "key": "bse_bw_listed_companies",
+    "exchange": "BSE_BW",
+    "venue_name": "Botswana Stock Exchange",
+    "country": "Botswana",
+    "provider": "BSE Botswana",
+    "source_url": "https://www.bse.co.bw/companies/",
+    "candidate_scope": "listed_companies_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "dse_tz_listed_companies_html",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented via official companies page with conservative local listing-name matching",
+    "notes": "Official companies page exposes BSE counter, sector and board but not our feed-style *-EQO symbols. Parser only emits rows when the official issuer name matches an existing BSE_BW listing, then uses the local listing ticker/ISIN and official sector label."
+  },
+  {
+    "key": "bse_hu_listed_companies",
+    "exchange": "BSE_HU",
+    "venue_name": "Budapest Stock Exchange",
+    "country": "Hungary",
+    "provider": "Budapest Stock Exchange",
+    "source_url": "https://www.bet.hu/oldalak/beta_piac#reszvenyek",
+    "candidate_scope": "listed_companies_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "embedded_json",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented via official embedded market-data feed; residual local shortcut tickers need explicit symbol alias review",
+    "notes": "Official BET market-data page exposes seccode and ISIN for Hungarian listed and BETA products. Parser only emits exact current local tickers; BSE_HU shortcuts like ADID/AUTOW/RICHT stay out until a reviewed official symbol mapping exists."
+  },
+  {
+    "key": "bvb_shares_directory",
+    "exchange": "BVB",
+    "venue_name": "Bucharest Stock Exchange",
+    "country": "Romania",
+    "provider": "BVB",
+    "source_url": "https://m.bvb.ro/FinancialInstruments/Markets/Shares",
+    "candidate_scope": "exchange_directory_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "html_or_api",
+    "implementation_status": "implemented",
+    "priority": "high",
+    "blocker": "implemented via official mobile BVB shares tabs and fund-units table",
+    "notes": "The official mobile shares page exposes active BVB stock symbols, issuer names, ISINs, and market category across Regulated, AeRO, and SMT Intl tabs. The official FundUnits page adds BVB ETF rows."
+  },
+  {
+    "key": "bvl_issuers_directory",
+    "exchange": "BVL",
+    "venue_name": "Bolsa de Valores de Lima",
+    "country": "Peru",
+    "provider": "CAVALI",
+    "source_url": "https://cavali-corporativa.screativa.com/emisores",
+    "candidate_scope": "security_identifier_registry_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "paginated_html",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented via official CAVALI issuer securities registry; BVL Angular issuer page still needs endpoint discovery for a pure exchange directory",
+    "notes": "The CAVALI CSD issuer registry exposes ISIN, issuer name, BVL nemonico, security group and type across a paginated table. Parser gates to current BVL tickers and allowed equity/ETF-like groups to avoid bond and commercial-paper rows."
+  },
+  {
+    "key": "cse_lk_company_info_summary",
+    "exchange": "CSE_LK",
+    "venue_name": "Colombo Stock Exchange",
+    "country": "Sri Lanka",
+    "provider": "CSE Sri Lanka",
+    "source_url": "https://www.cse.lk/api/companyInfoSummery",
+    "candidate_scope": "listed_companies_candidate",
+    "asset_types": [
+      "Stock"
+    ],
+    "expected_format": "cse_lk_company_info_summary_json",
+    "implementation_status": "implemented",
+    "priority": "low",
+    "blocker": "implemented via official CSE Sri Lanka all-security-code directory plus companyInfoSummery detail API; dataset import remains gated until a reliable stock-sector taxonomy path is available",
+    "notes": "Official CSE Sri Lanka APIs expose active security codes, issuer names, and ISINs for most active securities. The detail parser writes audited reference.csv rows but does not automatically add the venue to core tickers because sector classification is not exposed by the reachable detail endpoint."
+  },
+  {
+    "key": "cse_ma_listed_companies",
+    "exchange": "CSE_MA",
+    "venue_name": "Casablanca Stock Exchange",
+    "country": "Morocco",
+    "provider": "Casablanca Stock Exchange",
+    "source_url": "https://www.casablanca-bourse.com/en/marche-cash/instruments-actions",
+    "candidate_scope": "exchange_directory_candidate",
+    "asset_types": [
+      "Stock"
+    ],
+    "expected_format": "cse_ma_listed_companies_json",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented via official Casablanca Bourse Next.js/JSONAPI active equity instrument collection",
+    "notes": "The official Casablanca Bourse active instrument page exposes a JSONAPI collection with symbol, ISIN, issuer, and instrument URL for active class-code 1 stock rows. Sector labels still need a separate official taxonomy path."
+  },
+  {
+    "key": "dse_tz_listed_companies",
+    "exchange": "DSE_TZ",
+    "venue_name": "Dar es Salaam Stock Exchange",
+    "country": "Tanzania",
+    "provider": "DSE Tanzania",
+    "source_url": "https://www.dse.co.tz/listed/company/list",
+    "candidate_scope": "listed_companies_candidate",
+    "asset_types": [
+      "Stock"
+    ],
+    "expected_format": "html",
+    "implementation_status": "implemented",
+    "priority": "low",
+    "blocker": "implemented via official listed-company table; profile pages still need a richer ISIN/sector endpoint",
+    "notes": "Parser gates official DSE company codes to current DSE_TZ rows and emits a conservative listed-company subset using existing local identifiers where the page has no ISIN column; TCPLC is explicitly mapped to the local legacy TCCL row."
+  },
+  {
+    "key": "egx_listed_securities",
+    "exchange": "EGX",
+    "venue_name": "Egyptian Exchange",
+    "country": "Egypt",
+    "provider": "EGX",
+    "source_url": "https://www.egx.com.eg/en/ListedStocks.aspx",
+    "candidate_scope": "exchange_directory_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "html_or_api",
+    "implementation_status": "implemented",
+    "priority": "high",
+    "blocker": "implemented via browser-captured official ASP.NET ViewState; raw non-browser requests still hit the EGX/TSPD challenge",
+    "notes": "The official EGX ListedStocks.aspx page exposes company name, ISIN, and EGX sector in __VIEWSTATE after the browser challenge. The parser conservatively matches by existing EGX ISIN because the decoded strings do not expose a clean ticker column."
+  },
+  {
+    "key": "gse_listed_companies",
+    "exchange": "GSE",
+    "venue_name": "Ghana Stock Exchange",
+    "country": "Ghana",
+    "provider": "GSE",
+    "source_url": "https://gse.com.gh/listed-companies/",
+    "candidate_scope": "listed_companies_candidate",
+    "asset_types": [
+      "Stock"
+    ],
+    "expected_format": "gse_listed_companies_markdown",
+    "implementation_status": "implemented",
+    "priority": "low",
+    "blocker": "implemented via official listed-company page captured through the reader fallback because direct requests hit a Cloudflare challenge",
+    "notes": "The official Ghana company list verifies symbol/name coverage for current exact GSE tickers. The source intentionally does not infer ISIN or sector, and it keeps non-exact legacy ticker differences such as AADS versus AGA as reference gaps."
+  },
+  {
+    "key": "nasdaq_iceland_shares",
+    "exchange": "ICE_IS",
+    "venue_name": "Nasdaq Iceland",
+    "country": "Iceland",
+    "provider": "Nasdaq Nordic",
+    "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+    "candidate_scope": "exchange_directory_candidate",
+    "asset_types": [
+      "Stock"
+    ],
+    "expected_format": "nasdaq_nordic_screener_json",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "parser implemented; residual gaps need ticker-level review",
+    "notes": "Wired into the existing Nasdaq Nordic screener parser with official market=ICE."
+  },
+  {
+    "key": "euronext_dublin_equities",
+    "exchange": "ISE",
+    "venue_name": "Euronext Dublin",
+    "country": "Ireland",
+    "provider": "Euronext",
+    "source_url": "https://live.euronext.com/en/pd_es/data/stocks/download?mics=XDUB",
+    "candidate_scope": "exchange_directory_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "euronext_equities_semicolon_csv",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "reconciled through existing Euronext all-stock feed",
+    "notes": "Euronext Dublin rows are present in the existing Euronext all-stock feed and now map to the ISE bucket."
+  },
+  {
+    "key": "luse_listed_companies",
+    "exchange": "LUSE",
+    "venue_name": "Lusaka Securities Exchange",
+    "country": "Zambia",
+    "provider": "LuSE",
+    "source_url": "https://www.luse.co.zm/listed-companies/",
+    "candidate_scope": "listed_companies_candidate",
+    "asset_types": [
+      "Stock"
+    ],
+    "expected_format": "luse_listed_companies_markdown",
+    "implementation_status": "implemented",
+    "priority": "low",
+    "blocker": "implemented via official listed-company page captured through the reader fallback because direct requests hit a Cloudflare challenge",
+    "notes": "The official Zambia listed-company source verifies symbol/name coverage for current exact LuSE tickers. The source intentionally does not infer ISIN or sector, and it keeps non-exact legacy ticker differences such as CECZ versus CEC as reference gaps."
+  },
+  {
+    "key": "mse_mw_listed_companies",
+    "exchange": "MSE_MW",
+    "venue_name": "Malawi Stock Exchange",
+    "country": "Malawi",
+    "provider": "MSE Malawi",
+    "source_url": "https://mse.co.mw/market/mainboard",
+    "candidate_scope": "listed_companies_candidate",
+    "asset_types": [
+      "Stock"
+    ],
+    "expected_format": "html",
+    "implementation_status": "implemented",
+    "priority": "low",
+    "blocker": "implemented via official mainboard table and company links",
+    "notes": "The official MSE mainboard page exposes listed symbols and /company/{ISIN} links. Parser gates exact current MSE_MW symbols and uses valid ISINs from the official company links."
+  },
+  {
+    "key": "ngx_equities_price_list",
+    "exchange": "NGX",
+    "venue_name": "Nigerian Exchange",
+    "country": "Nigeria",
+    "provider": "NGX",
+    "source_url": "https://doclib.ngxgroup.com/REST/api/statistics/equities/?market=&sector=&orderby=&pageSize=300&pageNo=0",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock"
+    ],
+    "expected_format": "json",
+    "implementation_status": "implemented",
+    "priority": "high",
+    "blocker": "implemented as official daily price-list subset, not a full directory",
+    "notes": "Used for active NGX symbol/sector evidence after filtering against current NGX stock listings. It is intentionally modeled as listed_companies_subset because suspended/stale symbols can be absent from the daily price list."
+  },
+  {
+    "key": "ngx_company_profile_directory",
+    "exchange": "NGX",
+    "venue_name": "Nigerian Exchange",
+    "country": "Nigeria",
+    "provider": "NGX",
+    "source_url": "https://ngxgroup.com/exchange/data/company-profile/",
+    "candidate_scope": "exchange_directory_candidate",
+    "asset_types": [
+      "Stock"
+    ],
+    "expected_format": "html",
+    "implementation_status": "implemented",
+    "priority": "high",
+    "blocker": "implemented via official company-profile symbol directory plus detail fetch for prefix-renamed local tickers",
+    "notes": "Models NGX as official_full for active stock symbols and corrects truncated local symbols such as FIRSTHOLDC -> FIRSTHOLDCO and LIVINGTRUS -> LIVINGTRUST. DUNLOP and VANLEER remain absent from the active official profile directory."
+  },
+  {
+    "key": "nasdaq_mutual_fund_quotes",
+    "exchange": "NMFQS",
+    "venue_name": "Nasdaq Fund Network",
+    "country": "United States",
+    "provider": "Nasdaq",
+    "source_url": "https://api.nasdaq.com/api/screener/mutualfunds",
+    "candidate_scope": "security_identifier_registry_candidate",
+    "asset_types": [
+      "ETF"
+    ],
+    "expected_format": "nasdaq_mutual_fund_quote_json",
+    "implementation_status": "implemented",
+    "priority": "low",
+    "blocker": "implemented via official Nasdaq Fund Network quote API for current NMFQS symbols",
+    "notes": "NMFQS rows are Nasdaq Fund Network mutual-fund symbols, not Namibia Stock Exchange listings. Parser queries the official Nasdaq quote API for each current local NMFQS symbol and preserves existing ISINs from the local listing rows because the quote endpoint verifies symbol/name/exchange but does not publish ISIN."
+  },
+  {
+    "key": "nse_ke_listed_companies",
+    "exchange": "NSE_KE",
+    "venue_name": "Nairobi Securities Exchange",
+    "country": "Kenya",
+    "provider": "NSE Kenya",
+    "source_url": "https://www.nse.co.ke/listed-companies/",
+    "candidate_scope": "listed_companies_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "nse_ke_listed_companies_html",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented via official NSE Kenya WordPress listed-companies content",
+    "notes": "The official listed-companies page exposes symbol and ISIN per company, grouped by NSE local sector sections; clear local sectors are conservatively mapped to the database sector taxonomy."
+  },
+  {
+    "key": "pse_cz_shares_directory",
+    "exchange": "PSE_CZ",
+    "venue_name": "Prague Stock Exchange",
+    "country": "Czech Republic",
+    "provider": "Prague Stock Exchange",
+    "source_url": "https://www.pse.cz/en/market-data/shares/prime-market",
+    "candidate_scope": "listed_companies_candidate",
+    "asset_types": [
+      "Stock"
+    ],
+    "expected_format": "html_or_api",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented via official market pages plus detail-page ticker extraction",
+    "notes": "Do not confuse with Philippine PSE, which is already modeled as PSE. Parser fetches Prime/Standard/Free/Start market pages and detail pages to map ISINs to the PSE Xetra ticker used by the dataset."
+  },
+  {
+    "key": "rse_listed_companies",
+    "exchange": "RSE",
+    "venue_name": "Rwanda Stock Exchange",
+    "country": "Rwanda",
+    "provider": "RSE",
+    "source_url": "https://www.rse.rw/listed-compagnies",
+    "candidate_scope": "listed_companies_candidate",
+    "asset_types": [
+      "Stock"
+    ],
+    "expected_format": "html",
+    "implementation_status": "implemented",
+    "priority": "low",
+    "blocker": "implemented via official listed-company cards; site certificate requires verify=false in this environment",
+    "notes": "Parser matches official RSE listed-company card names to current RSE rows by conservative company-name matching."
+  },
+  {
+    "key": "sem_listed_companies",
+    "exchange": "SEM",
+    "venue_name": "Stock Exchange of Mauritius",
+    "country": "Mauritius",
+    "provider": "SEM",
+    "source_url": "https://www.stockexchangeofmauritius.com/",
+    "candidate_scope": "listed_companies_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "sem_isin_xlsx",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented via official SEM CDS ISIN workbook",
+    "notes": "The official CDS ISIN workbook covers Official Market and DEM instruments; parser gates rows against current SEM listings by ISIN to avoid importing debt/preference instruments as ticker rows."
+  },
+  {
+    "key": "bolsa_santiago_instruments",
+    "exchange": "SSE_CL",
+    "venue_name": "Santiago Stock Exchange",
+    "country": "Chile",
+    "provider": "Bolsa de Santiago",
+    "source_url": "https://www.bolsadesantiago.com/api/RV_ResumenMercado/getInstrumentos",
+    "candidate_scope": "exchange_directory_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "bolsa_santiago_instruments_json",
+    "implementation_status": "implemented",
+    "priority": "high",
+    "blocker": "implemented through the official Bolsa de Santiago instruments API using a browser session to satisfy Radware/CSRF requirements",
+    "notes": "The official Angular endpoint returns NEMO, issuer name, and instrument type after a browser session is established from informacion-instrumentos. The parser gates to current SSE_CL listings by exact ticker or whitespace-normalized NEMO only; it does not infer ISIN or sector/category from this source."
+  },
+  {
+    "key": "use_ug_listed_companies",
+    "exchange": "USE_UG",
+    "venue_name": "Uganda Securities Exchange",
+    "country": "Uganda",
+    "provider": "USE Uganda",
+    "source_url": "https://www.use.or.ug/market-statistics/market-snapshot",
+    "candidate_scope": "listed_companies_candidate",
+    "asset_types": [
+      "Stock"
+    ],
+    "expected_format": "html",
+    "implementation_status": "implemented",
+    "priority": "low",
+    "blocker": "implemented via official market-snapshot table",
+    "notes": "Parser gates official USE market-snapshot stock codes to current USE_UG rows and uses explicit ticker-label overrides for AIRTEL UGANDA and UMEME."
+  },
+  {
+    "key": "vienna_listed_companies",
+    "exchange": "VSE",
+    "venue_name": "Vienna Stock Exchange",
+    "country": "Austria",
+    "provider": "Wiener Boerse",
+    "source_url": "https://www.wienerborse.at/en/listing/shares/companies-list/",
+    "candidate_scope": "listed_companies_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "html_or_api",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented as ISIN join against current VSE listings",
+    "notes": "Official table contains ISIN and issuer but no ticker; parser conservatively emits only current VSE listings matched by ISIN."
+  },
+  {
+    "key": "zagreb_securities_directory",
+    "exchange": "ZSE",
+    "venue_name": "Zagreb Stock Exchange",
+    "country": "Croatia",
+    "provider": "ZSE Croatia",
+    "source_url": "https://zse.hr/en/shares/68",
+    "candidate_scope": "listed_companies_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "html_or_api",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented via official listed-securities table",
+    "notes": "Parser extracts active equity rows with ticker, ISIN, issuer name, and listed status from the official ZSE shares page."
+  },
+  {
+    "key": "zse_zw_listed_companies",
+    "exchange": "ZSE_ZW",
+    "venue_name": "Zimbabwe Stock Exchange",
+    "country": "Zimbabwe",
+    "provider": "ZSE Zimbabwe",
+    "source_url": "https://www.zse.co.zw/listed-securities/equity",
+    "candidate_scope": "listed_companies_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "zse_zw_issuers_json",
+    "implementation_status": "implemented",
+    "priority": "low",
+    "blocker": "implemented via official ZSE front-end API and price-sheet API",
+    "notes": "Parser uses the official ZSE issuer API for exact short_name matches and the official price-sheet API as an ISIN fallback for current rows whose local ticker differs from ZSE short_name."
+  },
+  {
+    "key": "nyse_arca_alias_normalization",
+    "exchange": "NYSEARCA",
+    "venue_name": "NYSE Arca duplicate bucket",
+    "country": "United States",
+    "provider": "Nasdaq Trader / SEC",
+    "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+    "candidate_scope": "normalization_alias",
+    "asset_types": [
+      "ETF"
+    ],
+    "expected_format": "existing_source_alias",
+    "implementation_status": "implemented",
+    "priority": "high",
+    "blocker": "reconciled by normalizing NYSEARCA to NYSE ARCA",
+    "notes": "This is not a separate exchange source; the legacy venue alias is normalized to NYSE ARCA so the existing official NYSE ARCA source coverage applies."
+  },
+  {
+    "key": "asx_cash_market_directory",
+    "exchange": "ASX",
+    "venue_name": "Australian Securities Exchange",
+    "country": "Australia",
+    "provider": "ASX",
+    "source_url": "https://www.asx.com.au/asx/research/ASXListedCompanies.csv",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "asx_listed_companies_csv",
+    "implementation_status": "implemented",
+    "priority": "high",
+    "blocker": "implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values",
+    "notes": "The reachable official ASX listed-companies CSV exposes Company name, ASX code, and GICS industry group. Parser keeps the existing ASX symbol/name coverage and now maps GICS industry groups to canonical stock sectors; Not Applic/Class Pend remain empty and ETF categories still require the ASX investment-products workbook or name classifier."
+  },
+  {
+    "key": "bme_security_prices_directory",
+    "exchange": "BME",
+    "venue_name": "BME Spanish Exchanges",
+    "country": "Spain",
+    "provider": "BME",
+    "source_url": "https://www.bolsasymercados.es/en/bme-exchange/securities/stock-prices",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "bme_security_prices_json",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "parser implemented via official BME ListedCompanies API with SIBE, Floor, Latibex, MTF, and ETF trading-system parameters; live refresh is currently host-blocked/403 from this environment, and partial caches are ignored",
+    "notes": "The official BME Market API exposes ISIN, issuer name, trading system, sector, and subsector for the full security-price universe. Detail calls provide the official ticker used by the reference parser; residual local ticker drift should be handled through reviewed normalization rather than silently trusting secondary symbols."
+  },
+  {
+    "key": "bmv_market_data_securities",
+    "exchange": "BMV",
+    "venue_name": "Bolsa Mexicana de Valores",
+    "country": "Mexico",
+    "provider": "BMV",
+    "source_url": "https://www.bmv.com.mx/es/emisoras/estadisticas",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "bmv_market_data_security_pages_html",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented via official BMV issuer market-data/profile pages; some local trust/equity rows still omit ISIN in the reachable BMV instrument table",
+    "notes": "The official BMV search feed exposes issuer IDs and the issuer estadisticas/perfil pages expose instrument ISIN rows plus stock-sector and ETF taxonomy labels. Parser uses search only as the page locator and gates output by current BMV listings."
+  },
+  {
+    "key": "bursa_equities_prices_directory",
+    "exchange": "Bursa",
+    "venue_name": "Bursa Malaysia",
+    "country": "Malaysia",
+    "provider": "Bursa Malaysia",
+    "source_url": "https://www.bursamalaysia.com/market_information/equities_prices",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "html_or_api",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented via official Bursa year-end closing-price PDF captured through browser download; live equities-prices API still Cloudflare-blocked for repeatable direct refreshes",
+    "notes": "Existing Bursa ISIN PDF fills identifiers and the official closing-price PDF adds board plus sector/category labels for the listed 2024 universe. Residual Bursa gaps are post-2024 new listings, so they need an official IPO/company-profile path rather than the year-end PDF."
+  },
+  {
+    "key": "nasdaq_nordic_copenhagen_full_search",
+    "exchange": "CPH",
+    "venue_name": "Nasdaq Copenhagen",
+    "country": "Denmark",
+    "provider": "Nasdaq Nordic",
+    "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "nasdaq_nordic_screener_json",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "reconciled through existing official Nasdaq Nordic Copenhagen shares, share-search, ETF, and ETF-search feeds",
+    "notes": "The current official source layer already has Copenhagen screener and search feeds for shares plus ETF coverage. Remaining CPH gaps are field-level metadata or listing normalization work, not a missing source-discovery item."
+  },
+  {
+    "key": "nasdaq_nordic_helsinki_full_search",
+    "exchange": "HEL",
+    "venue_name": "Nasdaq Helsinki",
+    "country": "Finland",
+    "provider": "Nasdaq Nordic",
+    "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "nasdaq_nordic_screener_json",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "reconciled through existing official Nasdaq Nordic Helsinki shares, share-search, and ETF feeds",
+    "notes": "The current official source layer already has Helsinki screener and search feeds for shares plus ETF coverage. Remaining HEL gaps are field-level metadata or listing normalization work, not a missing source-discovery item."
+  },
+  {
+    "key": "nasdaq_nordic_stockholm_full_search",
+    "exchange": "STO",
+    "venue_name": "Nasdaq Stockholm",
+    "country": "Sweden",
+    "provider": "Nasdaq Nordic",
+    "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "nasdaq_nordic_screener_json",
+    "implementation_status": "implemented",
+    "priority": "high",
+    "blocker": "reconciled through existing official Nasdaq Nordic Stockholm shares, share-search, ETF, tracker, Spotlight, and NGM feeds",
+    "notes": "The current official source layer already has Stockholm screener/search feeds plus adjacent Swedish venue feeds for Spotlight and NGM. Remaining STO gaps are field-level metadata or listing normalization work, not a missing source-discovery item."
+  },
+  {
+    "key": "stockanalysis_hose_company_profiles",
+    "exchange": "HOSE",
+    "venue_name": "Ho Chi Minh Stock Exchange",
+    "country": "Vietnam",
+    "provider": "StockAnalysis",
+    "source_url": "https://stockanalysis.com/quote/hose/{ticker}/company/",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "stockanalysis_company_profile_html_review",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "review_needed": true,
+    "blocker": "resolved by scripts/backfill_stockanalysis_metadata.py as a reviewed secondary company-profile source after official HOSE/VSDC feeds did not expose the single LCG stock-sector residual",
+    "notes": "Existing HOSE stock, ETF, and fund-certificate sources cover current HOSE identifiers. The residual LCG sector was filled from StockAnalysis company-profile industry metadata through metadata_updates.csv with issuer-name and exact exchange URL gates; it is intentionally labeled as reviewed secondary metadata, not official exchange data."
+  },
+  {
+    "key": "idx_company_profiles",
+    "exchange": "IDX",
+    "venue_name": "Indonesia Stock Exchange",
+    "country": "Indonesia",
+    "provider": "IDX",
+    "source_url": "https://www.idx.id/primary/ListedCompany/GetCompanyProfiles",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "idx_company_profiles_json",
+    "implementation_status": "implemented",
+    "priority": "high",
+    "blocker": "implemented via official IDX ListedCompany/GetCompanyProfiles JSON API",
+    "notes": "Official IDX company profiles expose Sektor/SubSektor metadata for listed issuers. Parser maps IDX sector labels to canonical stock sectors and keeps this source separate from the lighter stock-list feed; no ISIN field is exposed."
+  },
+  {
+    "key": "jse_listed_companies_directory",
+    "exchange": "JSE",
+    "venue_name": "Johannesburg Stock Exchange",
+    "country": "South Africa",
+    "provider": "JSE",
+    "source_url": "https://www.jse.co.za/trade/equities-market/listed-companies",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "jse_instrument_search_html",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented by extending existing official JSE instrument profile parser to read Sector/Industry fields; reachable instrument pages still do not expose ISIN values, so residual ISIN gaps need a separate official registry or reviewed issuer filings",
+    "notes": "JSE instrument profile pages expose instrument code/name/type plus Sector and Industry. Parser now maps the official Industry value into canonical stock_sector; ISIN is not present in the reachable profile HTML."
+  },
+  {
+    "key": "krx_data_portal_full_directory",
+    "exchange": "KRX",
+    "venue_name": "Korea Exchange",
+    "country": "South Korea",
+    "provider": "KRX",
+    "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "krx_data_portal_json",
+    "implementation_status": "implemented",
+    "priority": "high",
+    "blocker": "implemented through existing official KRX listed-company and ETF-finder endpoints; residual ETF-category gaps require product-name taxonomy because the ETF finder exposes names and ISINs but no asset-class bucket",
+    "notes": "The KRX listed-company parser now uses official std_ind_cd/ind_nm fields from the Global KRX feed and maps them to canonical stock_sector values. The KRX ETF finder is modeled as an exchange-directory source for active ETF identifiers."
+  },
+  {
+    "key": "kosdaq_data_portal_full_directory",
+    "exchange": "KOSDAQ",
+    "venue_name": "KOSDAQ",
+    "country": "South Korea",
+    "provider": "KRX",
+    "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "krx_data_portal_json",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented through the existing official KRX listed-company endpoint; residual KOSDAQ gaps are field-level review issues rather than a missing source-discovery item",
+    "notes": "KOSDAQ rows share the same KRX Global listed-company endpoint. The parser now uses official std_ind_cd/ind_nm fields to fill stock_sector when the taxonomy can be mapped deterministically."
+  },
+  {
+    "key": "lse_trading_instruments_full_directory",
+    "exchange": "LSE",
+    "venue_name": "London Stock Exchange",
+    "country": "United Kingdom",
+    "provider": "LSE",
+    "source_url": "https://www.londonstockexchange.com/live-markets/market-data-dashboard/price-explorer",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "lse_price_explorer_json",
+    "implementation_status": "implemented",
+    "priority": "high",
+    "blocker": "",
+    "notes": "Implemented via the official Price Explorer pages API with categories=EQUITY,ETFS; bonds and other instruments are intentionally excluded from the Stock/ETF masterfile scope."
+  },
+  {
+    "key": "otc_markets_stock_screener",
+    "exchange": "OTC",
+    "venue_name": "OTC Markets",
+    "country": "United States",
+    "provider": "OTC Markets",
+    "source_url": "https://www.otcmarkets.com/research/stock-screener/api/downloadCSV?greyAccess=false&expertAccess=false",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "otc_markets_stock_screener_csv",
+    "implementation_status": "implemented",
+    "priority": "high",
+    "blocker": "implemented via official OTC Markets stock-screener CSV export with Grey/Expert Market access disabled",
+    "notes": "Largest partial source block. The screener validates OTC symbol/name/tier coverage for stock-like rows and ETFs, but it does not expose ISINs or GICS sectors. Grey and Expert Market access remain excluded intentionally so OTC stays an extended/listing-scope policy area rather than leaking into core primary completeness."
+  },
+  {
+    "key": "psx_dps_symbols_directory",
+    "exchange": "PSX",
+    "venue_name": "Pakistan Stock Exchange",
+    "country": "Pakistan",
+    "provider": "PSX",
+    "source_url": "https://dps.psx.com.pk/symbols",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "psx_dps_symbols_json",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented via official PSX DPS /symbols JSON endpoint",
+    "notes": "Direct official DPS JSON improves PSX stock and ETF symbol/name/sector coverage. Parser skips debt instruments, rights, bonds and closed-end mutual funds, maps PSX sector labels to canonical sectors, and treats the feed as an official exchange directory without ISIN coverage."
+  },
+  {
+    "key": "set_stock_search",
+    "exchange": "SET",
+    "venue_name": "Stock Exchange of Thailand",
+    "country": "Thailand",
+    "provider": "SET",
+    "source_url": "https://www.set.or.th/api/set/stock/list",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "set_stock_search_json",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented via the official SET stock-list API discovered from the Nuxt stock-search page",
+    "notes": "The API is protected by Incapsula for direct requests from this environment, so the fetcher uses requests first, then an optional Playwright browser capture, and finally cache fallback. The parser conservatively keeps common-stock and ETF security types only and maps official SET sector codes to canonical stock sectors where possible."
+  },
+  {
+    "key": "six_shares_explorer_full",
+    "exchange": "SIX",
+    "venue_name": "SIX Swiss Exchange",
+    "country": "Switzerland",
+    "provider": "SIX",
+    "source_url": "https://www.six-group.com/fqs/ref.json",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock"
+    ],
+    "expected_format": "six_share_details_fqs_json",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented via the official SIX FQS ref.json detail endpoint; residual gaps are now data-level taxonomy mapping only",
+    "notes": "The parser queries current SIX listing gaps by ISIN and maps official IndustrySectorDesc for stocks plus AssetClassDesc for ETF categories. Rows are gated back to the local SIX listing by ISIN and preserve the local ticker when the official ValorSymbol differs from the dataset ticker."
+  },
+  {
+    "key": "sse_industry_classification",
+    "exchange": "SSE",
+    "venue_name": "Shanghai Stock Exchange",
+    "country": "China",
+    "provider": "SSE",
+    "source_url": "https://www.sse.com.cn/assortment/stock/list/share/",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "sse_common_query_json",
+    "implementation_status": "implemented",
+    "priority": "high",
+    "blocker": "implemented via existing official SSE stock-list CSRC_CODE fields",
+    "notes": "SSE stock-list records expose official CSRC industry codes/descriptions. The parser now maps those top-level CSRC codes to canonical stock_sector values; ETF category gaps still need a fund taxonomy/name-classifier path."
+  },
+  {
+    "key": "szse_industry_classification",
+    "exchange": "SZSE",
+    "venue_name": "Shenzhen Stock Exchange",
+    "country": "China",
+    "provider": "SZSE",
+    "source_url": "https://www.szse.cn/market/product/stock/list/index.html",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "szse_report_json",
+    "implementation_status": "implemented",
+    "priority": "high",
+    "blocker": "implemented via existing official SZSE report-list industry fields",
+    "notes": "SZSE A/B-share report rows and workbooks expose official 所属行业/sshymc CSRC industry values. The parser now maps those top-level CSRC codes to canonical stock_sector values; ETF category gaps still need a fund taxonomy/name-classifier path."
+  },
+  {
+    "key": "tase_company_profiles",
+    "exchange": "TASE",
+    "venue_name": "Tel Aviv Stock Exchange",
+    "country": "Israel",
+    "provider": "TASE",
+    "source_url": "https://market.tase.co.il/en/market_data/securities/data/all",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "tase_etf_marketdata_json",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "stock-sector taxonomy still not exposed by the reachable marketdata endpoint",
+    "notes": "Existing official TASE ETF marketdata records expose Classification values; the parser now maps these to canonical etf_category buckets. Reachable stock security records still do not expose a usable sector taxonomy, so residual stock_sector gaps need a separate company-profile endpoint or reviewed secondary source."
+  },
+  {
+    "key": "stockanalysis_tpex_company_profiles",
+    "exchange": "TPEX",
+    "venue_name": "Taipei Exchange",
+    "country": "Taiwan",
+    "provider": "StockAnalysis",
+    "source_url": "https://stockanalysis.com/quote/tpex/{ticker}/company/",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "stockanalysis_company_profile_html_review",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "review_needed": true,
+    "blocker": "resolved by scripts/backfill_stockanalysis_metadata.py as a reviewed secondary company-profile source because official TPEX/MOPS feeds identify the KY issuers but do not expose their foreign ISINs",
+    "notes": "TPEX stock-sector and ETF-category coverage is complete for the current universe after the official TPEX/MOPS parser work. The remaining KY foreign-issuer ISIN tail was filled from StockAnalysis company pages through metadata_updates.csv with exact exchange URL, issuer-name, and ISIN-checksum gates; it is intentionally labeled as reviewed secondary metadata, not official exchange data."
+  },
+  {
+    "key": "gpw_instrument_cards",
+    "exchange": "WSE",
+    "venue_name": "Warsaw Stock Exchange",
+    "country": "Poland",
+    "provider": "GPW",
+    "source_url": "https://www.gpw.pl/spolki",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "wse_listed_companies_html",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented by extending existing official GPW/NewConnect list parsers to read the sector label from result rows; residual gaps are mostly unclassified official labels or ETF category tail",
+    "notes": "The reachable GPW and NewConnect list pages expose granular sector labels in the official result HTML. Parser now maps conservative Polish sector labels to canonical stock_sector values without using a secondary source."
+  },
+  {
+    "key": "deutsche_boerse_instrument_reference_full",
+    "exchange": "XETRA",
+    "venue_name": "Xetra",
+    "country": "Germany",
+    "provider": "Deutsche Boerse",
+    "source_url": "https://www.xetra.com/xetra-en/instruments/instruments",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "deutsche_boerse_xetra_all_tradable_csv",
+    "implementation_status": "implemented",
+    "priority": "high",
+    "blocker": "implemented through the existing official t7-xetr-allTradableInstruments.csv feed; residual stock-sector gaps require a separate issuer-industry taxonomy because the tradable-instruments feed only exposes product assignment groups",
+    "notes": "Parser now treats the official Xetra all-tradable CSV as an exchange-directory source for active XETR shares and ETPs. ETF/ETN/ETC rows are included, with conservative official product-group category mapping for fixed-income ETFs, ETNs, and ETCs."
+  },
+  {
+    "key": "nse_india_securities_available",
+    "exchange": "NSE_IN",
+    "venue_name": "National Stock Exchange of India",
+    "country": "India",
+    "provider": "NSE India",
+    "source_url": "https://www.nseindia.com/static/market-data/securities-available-for-trading",
+    "candidate_scope": "global_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "nse_india_securities_available_csv",
+    "implementation_status": "implemented",
+    "priority": "high",
+    "blocker": "implemented via official NSE India securities-available CSVs; still outside the current primary exchange universe until listing-key-first/global expansion imports NSE_IN rows",
+    "notes": "The official securities-available page links mainboard equity, SME equity, and ETF CSVs with symbol, company/security name, series, and ISIN. Parser keeps EQ mainboard stocks, SM/ST SME stocks excluding rights-entitlement suffixes, and ETF rows with conservative underlying-based ETF categories."
+  },
+  {
+    "key": "bse_india_scrips",
+    "exchange": "BSE_IN",
+    "venue_name": "BSE India",
+    "country": "India",
+    "provider": "BSE India",
+    "source_url": "https://www.bseindia.com/corporates/List_Scrips.html",
+    "candidate_scope": "global_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "bse_india_scrips_json",
+    "implementation_status": "implemented",
+    "priority": "high",
+    "blocker": "implemented via official BSEIndiaAPI active equity scrip endpoint; still outside the current primary exchange universe until listing-key-first/global expansion imports BSE_IN rows and reconciles India primary-listing decisions with NSE_IN",
+    "notes": "The official ListofScripData API exposes active BSE equity scrip_id, issuer/security name, status, segment, ISIN, and profile URL. Parser keeps active Equity rows with valid ISIN and uses conservative ETF detection for explicit ETF/BEES/IETF rows."
+  },
+  {
+    "key": "hkex_securities_list",
+    "exchange": "HKEX",
+    "venue_name": "Hong Kong Exchanges and Clearing",
+    "country": "Hong Kong",
+    "provider": "HKEX",
+    "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
+    "candidate_scope": "global_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "hkex_securities_list_xlsx",
+    "implementation_status": "implemented",
+    "priority": "high",
+    "blocker": "implemented via official HKEX ListOfSecurities workbook; still outside the current primary exchange universe until listing-key-first/global expansion imports HKEX rows",
+    "notes": "The official HKEX securities-list workbook exposes stock code, name, category/sub-category, ISIN, and trading currency. Parser keeps equities, REITs, and exchange-traded products, excluding warrants, derivatives, and debt securities."
+  },
+  {
+    "key": "sgx_securities_prices",
+    "exchange": "SGX",
+    "venue_name": "Singapore Exchange",
+    "country": "Singapore",
+    "provider": "SGX",
+    "source_url": "https://www.sgx.com/securities/securities-prices",
+    "candidate_scope": "global_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "sgx_securities_prices_json",
+    "implementation_status": "implemented",
+    "priority": "high",
+    "blocker": "implemented via official SGX securities prices API; this feed exposes tradeable stock/ETF universe and instrument types but does not expose ISIN, so a separate SGX identifier source is still needed before importing SGX rows as complete core listings",
+    "notes": "The official api.sgx.com securities endpoint exposes SGX code, name, market board, instrument type, and trading metadata. Parser keeps stocks, REITs, business trusts, ADRs, and ETFs, excluding warrants, certificates, and bonds."
+  },
+  {
+    "key": "nzx_instruments",
+    "exchange": "NZX",
+    "venue_name": "New Zealand Exchange",
+    "country": "New Zealand",
+    "provider": "NZX",
+    "source_url": "https://new.nzx.com/markets/NZSX",
+    "candidate_scope": "global_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "html_or_api",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented via official NZX NZSX market page Next.js payload; still outside the current primary exchange universe until the listing-key-first expansion imports NZX rows",
+    "notes": "The official NZX market page embeds active instruments with code, name, ISIN, market, and category. Parser conservatively keeps NZSX share/unit rows and maps ETF units to ETF categories while excluding NZDX bonds and NZCX derivatives."
+  },
+  {
+    "key": "tadawul_main_market_watch",
+    "exchange": "TADAWUL",
+    "venue_name": "Saudi Exchange",
+    "country": "Saudi Arabia",
+    "provider": "Saudi Exchange",
+    "source_url": "https://www.saudiexchange.sa/wps/portal/tadawul/market-participants/issuers/issuers-directory",
+    "candidate_scope": "global_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "tadawul_securities_json",
+    "implementation_status": "implemented",
+    "priority": "high",
+    "blocker": "implemented via official issuer directory plus official ThemeSearch symbol/ISIN feed; still outside the current primary exchange universe until the listing-key-first expansion imports TADAWUL rows",
+    "notes": "The official issuer directory identifies active company symbols, while the official theme-search JSON feed exposes symbol, English name, market type, and ISIN. Parser keeps active M/S stock rows and E/C traded fund rows with valid ISINs, and excludes derivatives, sukuk/bonds, and mutual funds."
+  },
+  {
+    "key": "dfm_listed_securities",
+    "exchange": "DFM",
+    "venue_name": "Dubai Financial Market",
+    "country": "United Arab Emirates",
+    "provider": "DFM",
+    "source_url": "https://www.dfm.ae/issuers/listed-securities/company-profile-page",
+    "candidate_scope": "global_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "dfm_listed_securities_json",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented for DFM market rows via official DFM stocks API plus company profile endpoint; Nasdaq Dubai rows from the same API are intentionally not imported under DFM until NASDAQ_DUBAI is modeled separately",
+    "notes": "The official DFM stocks endpoint exposes tradeable symbols and market codes; companyprofile returns market, instrument type, full name, ISIN, and sector. Parser keeps only DFM-market equities, REITs, and ETFs with valid ISINs."
+  },
+  {
+    "key": "adx_market_watch",
+    "exchange": "ADX",
+    "venue_name": "Abu Dhabi Securities Exchange",
+    "country": "United Arab Emirates",
+    "provider": "ADX",
+    "source_url": "https://www.adx.ae/english/pages/marketwatch.aspx",
+    "candidate_scope": "global_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "adx_market_watch_json",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented as official source; not yet imported into the current primary exchange universe",
+    "notes": "Uses the official ADX API gateway issuer directory plus main-market, growth-market, ETF, and symbol-sector boards. Dual-listed and warrant boards are excluded from the primary source rows."
+  },
+  {
+    "key": "qse_market_watch",
+    "exchange": "QSE",
+    "venue_name": "Qatar Stock Exchange",
+    "country": "Qatar",
+    "provider": "QSE",
+    "source_url": "https://www.qe.com.qa/wp/mw/data/MarketWatch.txt",
+    "candidate_scope": "global_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "qse_market_watch_json",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented via official QSE MarketWatch text feed; the reachable official company/profile feeds do not expose ISIN, so this source must not be promoted into core without a separate QSE ISIN registry",
+    "notes": "Parser keeps QSE stock, venture, and ETF rows from the official MarketWatch feed, excludes bond/sukuk/T-bill rows, and maps clear QSE sector labels to canonical stock sectors or ETF categories."
+  },
+  {
+    "key": "boursa_kuwait_stocks",
+    "exchange": "BK",
+    "venue_name": "Boursa Kuwait",
+    "country": "Kuwait",
+    "provider": "Boursa Kuwait",
+    "source_url": "https://www.boursakuwait.com.kw/en/securities/main-market/overview---main-market/",
+    "candidate_scope": "global_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "boursa_kuwait_legacy_mix_json",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented via official Boursa Kuwait legacy market-data API; still outside the current primary exchange universe until listing-key-first/global expansion imports BK rows",
+    "notes": "The official Gatsby page loads /data-api/legacy-mix-services. Parser keeps regular Premier/Main market listings and the REIT market row with valid ISINs, excluding buy-in duplicate rows."
+  },
+  {
+    "key": "bahrain_bourse_listed_companies",
+    "exchange": "BHB",
+    "venue_name": "Bahrain Bourse",
+    "country": "Bahrain",
+    "provider": "Bahrain Bourse",
+    "source_url": "https://bahrainbourse.com/en/Bahrain%20Clear/ISINCodes",
+    "candidate_scope": "global_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "bahrain_bourse_isin_codes_html",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented as official source; still outside the current primary exchange universe until listing-key-first/global expansion imports BHB rows",
+    "notes": "The official Bahrain Bourse ISIN table is SharePoint-backed. Parser keeps local Equities plus Bahrain Investment Market rows and excludes non-Bahrain cross-listings and Bonds/Sukuk."
+  },
+  {
+    "key": "muscat_securities_companies",
+    "exchange": "MSX",
+    "venue_name": "Muscat Stock Exchange",
+    "country": "Oman",
+    "provider": "MSX",
+    "source_url": "https://www.msx.om/companies.aspx",
+    "candidate_scope": "global_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "msx_companies_json",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented via official MSX companies.aspx/List API; still outside the current primary exchange universe until listing-key-first/global expansion imports MSX rows",
+    "notes": "The official MSX companies API exposes symbol, company name, listing state, sector, and subsector. Parser keeps active regular stock rows and excludes rights and bond-like sectors; the source does not expose ISIN, so a separate CSD/security registry remains needed before complete core import."
+  },
+  {
+    "key": "bist_kap_mkk_listed_securities",
+    "exchange": "BIST",
+    "venue_name": "Borsa Istanbul",
+    "country": "Turkey",
+    "provider": "KAP/MKK",
+    "source_url": "https://www.kap.org.tr/tr/bist-sirketler",
+    "candidate_scope": "global_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "bist_kap_mkk_listed_securities_json",
+    "implementation_status": "implemented",
+    "priority": "high",
+    "blocker": "not yet in current exchange bucket list; official source is implemented as a global-expansion feed pending listing-key import",
+    "notes": "KAP provides the official BIST listed-company ticker set; MKK provides the official securities registry with ISINs. Parser keeps only normal HS share classes and BYF ETFs, excluding warrants, bonds, and privileged share classes."
+  },
+  {
+    "key": "bvc_colombia_issuers",
+    "exchange": "BVC",
+    "venue_name": "Colombia Stock Exchange",
+    "country": "Colombia",
+    "provider": "BVC",
+    "source_url": "https://rest.bvc.com.co/market-information/rv/lvl-3/issuer?filters[marketDataRv][type]=Local",
+    "candidate_scope": "listed_companies_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "bvc_rv_issuers_json",
+    "implementation_status": "implemented",
+    "priority": "medium",
+    "blocker": "implemented via official BVC local-equity issuer API using the site handshake token; rows only enter through reviewed current BVC listings",
+    "notes": "Official BVC API exposes local-market issuer symbols, issuer names, country, and industry labels. This also provides evidence to move the legacy CSE_LK CELSIA/ENKA/EXITO rows into BVC."
+  }
+]

@@ -10,13 +10,13 @@ def test_pipeline_default_stages_are_safe_and_ordered():
     assert names[:3] == ["fetch_masterfiles", "fetch_symbol_changes", "completion_backlog_before"]
     assert "same_isin_sector_peer_backfill" in names
     assert "financedatabase_sector_backfill" in names
-    assert names[-5:] == [
-        "build_coverage_report",
+    assert names[-4:] == [
         "build_entry_quality_report",
         "build_ohlcv_plausibility_report",
         "audit_dataset",
         "completion_backlog_after",
     ]
+    assert names[names.index("build_coverage_report") + 1] == "build_source_inventory"
     assert "eodhd_reviewed_isin_backfill" not in names
     assert all("--apply" not in stage.command for stage in stages)
 
