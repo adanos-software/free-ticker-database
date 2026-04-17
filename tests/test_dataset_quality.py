@@ -157,19 +157,19 @@ def test_codex_worker_collision_findings_are_cleaned():
     assert "ballymore resources" not in bmr["aliases"]
     assert "A3DV8W" not in bmr["aliases"]
 
-    assert rail["isin"] == ""
+    assert rail["isin"] == "US3570231007"
     assert rail["country"] == "United States"
     assert "railcare group ab" not in rail["aliases"]
     assert "A0D890" not in rail["aliases"]
 
-    assert rdn["isin"] == ""
+    assert rdn["isin"] == "US7502361014"
     assert rdn["country"] == "United States"
     assert rdn["stock_sector"] == "Financials"
     assert "raiden resources" not in rdn["aliases"]
     assert "750236" not in rdn["aliases"]
 
-    assert klr["isin"] == ""
-    assert klr["country"] == ""
+    assert klr["isin"] == "GB0004866223"
+    assert klr["country"] == "United Kingdom"
     assert klr["stock_sector"] == "Industrials"
     assert "kaili resources" not in klr["aliases"]
 
@@ -2645,6 +2645,24 @@ def test_instrument_scope_rows_flag_core_primary_without_isin():
     assert by_key["NYSE::AAA"]["scope_reason"] == "primary_listing_missing_isin"
     assert by_key["NASDAQ::BBB"]["instrument_scope"] == "core"
     assert by_key["NASDAQ::BBB"]["scope_reason"] == "primary_listing"
+
+
+def test_instrument_scope_rows_do_not_self_link_symbol_collisions():
+    from scripts.rebuild_dataset import build_instrument_scope_rows
+
+    rows = [
+        {"ticker": "GLDU", "exchange": "TSX", "asset_type": "ETF", "isin": "CA08660T1003"},
+        {"ticker": "GLDU", "exchange": "LSE", "asset_type": "ETF", "isin": "CH0346134395"},
+    ]
+    primary_rows = [rows[0]]
+
+    by_key = {row["listing_key"]: row for row in build_instrument_scope_rows(rows, primary_rows)}
+
+    assert by_key["TSX::GLDU"]["instrument_scope"] == "core"
+    assert by_key["TSX::GLDU"]["scope_reason"] == "primary_listing"
+    assert by_key["LSE::GLDU"]["instrument_scope"] == "extended"
+    assert by_key["LSE::GLDU"]["scope_reason"] == "global_ticker_collision"
+    assert by_key["LSE::GLDU"]["primary_listing_key"] == "LSE::GLDU"
 
 
 def test_core_export_corrects_safe_official_exchange_collisions():

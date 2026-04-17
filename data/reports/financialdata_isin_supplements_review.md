@@ -1,6 +1,6 @@
 # FinancialData ISIN Supplements
 
-Generated at: `2026-04-17T07:48:53Z`
+Generated at: `2026-04-17T08:09:33Z`
 
 FinancialData rows are used only as discovery signals. Accepted supplement rows require an official active masterfile row, a valid ISIN, issuer-name gate, no existing global ticker, and no existing/selected ISIN.
 

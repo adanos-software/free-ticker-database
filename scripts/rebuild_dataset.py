@@ -2427,7 +2427,11 @@ def build_instrument_scope_rows(
             scope_reason = "primary_listing" if isin else PRIMARY_LISTING_MISSING_ISIN_SCOPE_REASON
         else:
             instrument_scope = "extended"
-            scope_reason = "secondary_cross_listing"
+            scope_reason = (
+                "secondary_cross_listing"
+                if primary_listing_key != listing_key
+                else "global_ticker_collision"
+            )
 
         result.append(
             {

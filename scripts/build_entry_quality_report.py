@@ -265,8 +265,82 @@ def company_compact_key(value: str) -> str:
     return compact
 
 
+OTC_NAME_NOISE_TOKENS = {
+    "ab",
+    "adr",
+    "ag",
+    "as",
+    "b",
+    "co",
+    "corp",
+    "corporation",
+    "cv",
+    "de",
+    "inc",
+    "ltd",
+    "limited",
+    "new",
+    "nv",
+    "ord",
+    "pa",
+    "plc",
+    "publ",
+    "s",
+    "sa",
+    "se",
+    "shs",
+    "spa",
+    "uns",
+}
+
+
+def ascii_tokens(value: str) -> list[str]:
+    normalized = unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode("ascii")
+    return [token.lower() for token in re.findall(r"[A-Za-z0-9]+", normalized)]
+
+
+def informative_name_tokens(value: str) -> list[str]:
+    return [
+        token
+        for token in ascii_tokens(value)
+        if token not in OTC_NAME_NOISE_TOKENS and len(token) > 1
+    ]
+
+
+def consonant_skeleton(token: str) -> str:
+    return "".join(character for character in token if character not in "aeiouy")
+
+
+def abbreviation_token_matches(left: str, right: str) -> bool:
+    if left == right:
+        return True
+    if len(left) >= 4 and len(right) >= 4 and (left.startswith(right[:4]) or right.startswith(left[:4])):
+        return True
+
+    left_skeleton = consonant_skeleton(left)
+    right_skeleton = consonant_skeleton(right)
+    return bool(
+        len(left_skeleton) >= 3
+        and len(right_skeleton) >= 3
+        and (left_skeleton.startswith(right_skeleton) or right_skeleton.startswith(left_skeleton))
+    )
+
+
+def abbreviated_official_name_matches(left: str, right: str) -> bool:
+    left_tokens = informative_name_tokens(left)
+    right_tokens = informative_name_tokens(right)
+    if not left_tokens or not right_tokens:
+        return False
+
+    left_matches = sum(any(abbreviation_token_matches(left_token, right_token) for right_token in right_tokens) for left_token in left_tokens)
+    right_matches = sum(any(abbreviation_token_matches(right_token, left_token) for left_token in left_tokens) for right_token in right_tokens)
+    return left_matches / len(left_tokens) >= 0.6 and right_matches / len(right_tokens) >= 0.6
+
+
 def names_match(left: str, right: str) -> bool:
     if alias_matches_company(left, right):
+        return True
+    if abbreviated_official_name_matches(left, right):
         return True
     left_compact = company_compact_key(left)
     right_compact = company_compact_key(right)

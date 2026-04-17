@@ -9,20 +9,20 @@ Free stock and ETF ticker reference data with primary tickers, listing-keyed ven
 
 | Metric | Value | Meaning |
 |---|---:|---|
-| Primary tickers | 53,998 | Rows in `data/tickers.csv`; one primary row per security. |
+| Primary tickers | 53,997 | Rows in `data/tickers.csv`; one primary row per security. |
 | Full listing rows | 62,496 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
-| Stocks | 38,988 | Primary ticker rows where `asset_type=Stock`. |
+| Stocks | 38,987 | Primary ticker rows where `asset_type=Stock`. |
 | ETFs | 15,010 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 69 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 81 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 94,959 | Rows in `data/aliases.csv`; alias-to-listing lookup rows after generic-word filtering. |
-| ISIN coverage | 48,787 (90.3%) | Primary ticker rows with a non-empty `isin`. |
-| Sector/category coverage | 44,884 (83.1%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 33,927 | Primary ticker rows with a non-empty `stock_sector`. |
-| ETF category coverage | 10,957 | Primary ticker rows with a non-empty `etf_category`. |
+| Aliases | 94,964 | Rows in `data/aliases.csv`; alias-to-listing lookup rows after generic-word filtering. |
+| ISIN coverage | 48,794 (90.4%) | Primary ticker rows with a non-empty `isin`. |
+| Sector/category coverage | 44,934 (83.2%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Stock sector coverage | 33,965 | Primary ticker rows with a non-empty `stock_sector`. |
+| ETF category coverage | 10,969 | Primary ticker rows with a non-empty `etf_category`. |
 | Core listing-scope rows | 45,772 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
-| Core primary rows with ISIN | 41,854 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
-| Core primary rows missing ISIN | 3,918 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
+| Core primary rows with ISIN | 41,862 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
+| Core primary rows missing ISIN | 3,910 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
 | Extended listing-scope rows | 16,724 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
 
 ## Core Files
@@ -87,8 +87,8 @@ JSON metadata:
 {
   "_meta": {
     "version": "3.11.0",
-    "built_at": "2026-04-17T07:55:42Z",
-    "total_tickers": 53998
+    "built_at": "2026-04-17T08:15:47Z",
+    "total_tickers": 53997
   },
   "tickers": []
 }
@@ -114,7 +114,7 @@ Top exchanges by primary ticker count:
 
 | Exchange | Tickers |
 |---|---:|
-| OTC | 8,226 |
+| OTC | 8,225 |
 | NASDAQ | 4,538 |
 | LSE | 3,773 |
 | TSE | 3,191 |

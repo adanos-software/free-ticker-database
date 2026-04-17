@@ -224,6 +224,48 @@ def test_entry_quality_does_not_flag_local_script_official_names_as_mismatch():
     assert all(issue.issue_type != "official_name_mismatch" for issue in report_rows[0].issues)
 
 
+def test_entry_quality_accepts_official_otc_abbreviated_names():
+    listing = row(
+        "OTC::ADHC",
+        "ADHC",
+        "OTC",
+        "American Diversified Holdings Corp",
+        isin="US02541R3003",
+    )
+    report_rows = assess_entries(
+        [listing],
+        tickers=[listing],
+        scopes=[scope("OTC::ADHC", "ADHC", "OTC", isin="US02541R3003", instrument_scope="extended", scope_reason="otc_listing")],
+        identifiers=[{"listing_key": "OTC::ADHC", "ticker": "ADHC", "exchange": "OTC", "isin": "US02541R3003", "wkn": "", "figi": "", "cik": "", "lei": "", "figi_source": "", "cik_source": "", "lei_source": ""}],
+        masterfiles=[official_ref("ADHC", "OTC", "AMER DIVRSFD HLDGS CORP", "", asset_type="Stock")],
+        aliases=[],
+        coverage_report={"by_exchange": [{"exchange": "OTC", "venue_status": "official_full"}]},
+    )
+
+    assert all(issue.issue_type != "official_name_mismatch" for issue in report_rows[0].issues)
+
+
+def test_entry_quality_keeps_true_otc_rename_mismatch_visible():
+    listing = row(
+        "OTC::AECX",
+        "AECX",
+        "OTC",
+        "CurrentC Power Corporation",
+        isin="US92855W2017",
+    )
+    report_rows = assess_entries(
+        [listing],
+        tickers=[listing],
+        scopes=[scope("OTC::AECX", "AECX", "OTC", isin="US92855W2017", instrument_scope="extended", scope_reason="otc_listing")],
+        identifiers=[{"listing_key": "OTC::AECX", "ticker": "AECX", "exchange": "OTC", "isin": "US92855W2017", "wkn": "", "figi": "", "cik": "", "lei": "", "figi_source": "", "cik_source": "", "lei_source": ""}],
+        masterfiles=[official_ref("AECX", "OTC", "ACADIA ENERGY CORP", "", asset_type="Stock")],
+        aliases=[],
+        coverage_report={"by_exchange": [{"exchange": "OTC", "venue_status": "official_full"}]},
+    )
+
+    assert any(issue.issue_type == "official_name_mismatch" for issue in report_rows[0].issues)
+
+
 def test_entry_quality_prefers_matching_official_isin_over_short_name_mismatch():
     listing = row(
         "KRX::000180",

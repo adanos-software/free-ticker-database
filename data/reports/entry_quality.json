@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-04-17T07:45:48Z",
+    "generated_at": "2026-04-17T08:15:57Z",
     "rows": 62496,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,10 +14,10 @@
   },
   "summary": {
     "status_counts": {
-      "notice": 5496,
-      "pass": 44642,
-      "source_gap": 12074,
-      "warn": 284
+      "notice": 5497,
+      "pass": 44680,
+      "source_gap": 12056,
+      "warn": 263
     },
     "evidence_level_counts": {
       "identifier_enriched": 208,
@@ -26,29 +26,26 @@
       "valid_isin": 3430
     },
     "severity_counts": {
-      "high": 2,
-      "low": 5989,
-      "medium": 282,
-      "source_gap": 15553
+      "low": 5986,
+      "medium": 263,
+      "source_gap": 15525
     },
     "issue_counts": {
       "official_reference_gap": 4449,
-      "missing_etf_category": 4013,
-      "shared_name_alias": 4006,
-      "expected_missing_primary_isin": 3918,
-      "missing_stock_sector": 3173,
-      "low_company_name_overlap": 1983,
-      "official_name_mismatch": 282,
-      "secondary_listing_points_to_self": 1,
-      "country_isin_mismatch": 1
+      "shared_name_alias": 4004,
+      "missing_etf_category": 4002,
+      "expected_missing_primary_isin": 3910,
+      "missing_stock_sector": 3164,
+      "low_company_name_overlap": 1982,
+      "official_name_mismatch": 263
     },
     "top_flagged_exchanges": [
       {
         "exchange": "OTC",
-        "pass": 6510,
-        "notice": 1613,
+        "pass": 6527,
+        "notice": 1615,
         "source_gap": 2688,
-        "warn": 282
+        "warn": 263
       },
       {
         "exchange": "B3",
@@ -76,15 +73,14 @@
       },
       {
         "exchange": "LSE",
-        "pass": 5084,
-        "notice": 776,
-        "source_gap": 553,
-        "warn": 2
+        "pass": 5092,
+        "notice": 775,
+        "source_gap": 548
       },
       {
         "exchange": "KRX",
-        "pass": 1214,
-        "source_gap": 531,
+        "pass": 1215,
+        "source_gap": 530,
         "notice": 51
       },
       {
@@ -106,14 +102,14 @@
       },
       {
         "exchange": "NASDAQ",
-        "pass": 3644,
+        "pass": 3646,
         "notice": 578,
-        "source_gap": 412
+        "source_gap": 410
       },
       {
         "exchange": "XETRA",
-        "pass": 3239,
-        "source_gap": 354,
+        "pass": 3242,
+        "source_gap": 351,
         "notice": 159
       },
       {
@@ -6950,24 +6946,6 @@
       ]
     },
     {
-      "listing_key": "LSE::0AAU",
-      "ticker": "0AAU",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
       "listing_key": "LSE::0AAZ",
       "ticker": "0AAZ",
       "exchange": "LSE",
@@ -8220,24 +8198,6 @@
           "field": "aliases",
           "value": "husqvarna ab",
           "message": "Alias is shared by 2 entity keys; verify it is not a false-positive trigger."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0GZK",
-      "ticker": "0GZK",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
         }
       ]
     },
@@ -13808,24 +13768,6 @@
       ]
     },
     {
-      "listing_key": "LSE::0QC9",
-      "ticker": "0QC9",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
       "listing_key": "LSE::0QCO",
       "ticker": "0QCO",
       "exchange": "LSE",
@@ -14655,7 +14597,7 @@
       "exchange": "LSE",
       "asset_type": "Stock",
       "quality_status": "notice",
-      "quality_score": 75,
+      "quality_score": 85,
       "recommended_action": "review_when_tuning_aliases",
       "issues": [
         {
@@ -14664,13 +14606,6 @@
           "field": "aliases",
           "value": "visa inc",
           "message": "Alias is shared by 2 entity keys; verify it is not a false-positive trigger."
-        },
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
         }
       ]
     },
@@ -19132,6 +19067,81 @@
     {
       "listing_key": "SZSE::159605",
       "ticker": "159605",
+      "exchange": "SZSE",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 80,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        },
+        {
+          "issue_type": "missing_etf_category",
+          "severity": "source_gap",
+          "field": "etf_category",
+          "value": "",
+          "message": "Core ETF listing has no etf_category."
+        }
+      ]
+    },
+    {
+      "listing_key": "SZSE::159606",
+      "ticker": "159606",
+      "exchange": "SZSE",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 80,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        },
+        {
+          "issue_type": "missing_etf_category",
+          "severity": "source_gap",
+          "field": "etf_category",
+          "value": "",
+          "message": "Core ETF listing has no etf_category."
+        }
+      ]
+    },
+    {
+      "listing_key": "SZSE::159607",
+      "ticker": "159607",
+      "exchange": "SZSE",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 80,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        },
+        {
+          "issue_type": "missing_etf_category",
+          "severity": "source_gap",
+          "field": "etf_category",
+          "value": "",
+          "message": "Core ETF listing has no etf_category."
+        }
+      ]
+    },
+    {
+      "listing_key": "SZSE::159608",
+      "ticker": "159608",
       "exchange": "SZSE",
       "asset_type": "ETF",
       "quality_status": "source_gap",

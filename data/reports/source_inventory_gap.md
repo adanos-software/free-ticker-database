@@ -1,6 +1,6 @@
 # Source Inventory Gap
 
-Generated at: `2026-04-17T07:45:42Z`
+Generated at: `2026-04-17T08:15:53Z`
 
 ## Summary
 
@@ -40,13 +40,13 @@ _No rows._
 | 18 | ICE_IS | official_partial | 18 | 0 | 15 | nasdaq_iceland_shares | Nasdaq Nordic | parser implemented; residual gaps need ticker-level review |
 | 19 | VSE | official_partial | 36 | 2 | 4 | vienna_listed_companies | Wiener Boerse | implemented as ISIN join against current VSE listings |
 | 20 | BSE_BW | official_partial | 39 | 0 | 11 | bse_bw_listed_companies | BSE Botswana | implemented via official companies page with conservative local listing-name matching |
-| 21 | HEL | official_partial | 188 | 0 | 48 | nasdaq_nordic_helsinki_full_search | Nasdaq Nordic | reconciled through existing official Nasdaq Nordic Helsinki shares, share-search, and ETF feeds |
+| 21 | HEL | official_partial | 188 | 0 | 47 | nasdaq_nordic_helsinki_full_search | Nasdaq Nordic | reconciled through existing official Nasdaq Nordic Helsinki shares, share-search, and ETF feeds |
 | 22 | BVC | official_partial | 3 | 3 | 0 | bvc_colombia_issuers | BVC | implemented via official BVC local-equity issuer API using the site handshake token; rows only enter through reviewed current BVC listings |
 | 23 | Bursa | official_partial | 936 | 0 | 2 | bursa_equities_prices_directory | Bursa Malaysia | implemented via official Bursa year-end closing-price PDF captured through browser download; live equities-prices API still Cloudflare-blocked for repeatable direct refreshes |
 | 24 | BVL | official_partial | 33 | 2 | 30 | bvl_issuers_directory | CAVALI | implemented via official CAVALI issuer securities registry; BVL Angular issuer page still needs endpoint discovery for a pure exchange directory |
 | 25 | PSE_CZ | official_partial | 24 | 1 | 14 | pse_cz_shares_directory | Prague Stock Exchange | implemented via official market pages plus detail-page ticker extraction |
 | 26 | BCBA | official_partial | 64 | 3 | 14 | byma_equity_details | BYMA | implemented via official Open BYMADATA equity-detail endpoint; some legacy BCBA symbols remain unmatched without manual ticker normalization |
-| 27 | ZSE_ZW | official_partial | 27 | 0 | 24 | zse_zw_listed_companies | ZSE Zimbabwe | implemented via official ZSE front-end API and price-sheet API |
+| 27 | ZSE_ZW | official_partial | 27 | 0 | 23 | zse_zw_listed_companies | ZSE Zimbabwe | implemented via official ZSE front-end API and price-sheet API |
 | 28 | MSE_MW | official_partial | 8 | 0 | 8 | mse_mw_listed_companies | MSE Malawi | implemented via official mainboard table and company links |
 | 29 | LUSE | official_partial | 22 | 0 | 20 | luse_listed_companies | LuSE | implemented via official listed-company page captured through the reader fallback because direct requests hit a Cloudflare challenge |
 | 30 | USE_UG | official_partial | 7 | 0 | 7 | use_ug_listed_companies | USE Uganda | implemented via official market-snapshot table |
@@ -79,13 +79,13 @@ _No rows._
 | 18 | ICE_IS | official_partial | 18 | 0 | 15 | nasdaq_iceland_shares | Nasdaq Nordic | parser implemented; residual gaps need ticker-level review |
 | 19 | VSE | official_partial | 36 | 2 | 4 | vienna_listed_companies | Wiener Boerse | implemented as ISIN join against current VSE listings |
 | 20 | BSE_BW | official_partial | 39 | 0 | 11 | bse_bw_listed_companies | BSE Botswana | implemented via official companies page with conservative local listing-name matching |
-| 21 | HEL | official_partial | 188 | 0 | 48 | nasdaq_nordic_helsinki_full_search | Nasdaq Nordic | reconciled through existing official Nasdaq Nordic Helsinki shares, share-search, and ETF feeds |
+| 21 | HEL | official_partial | 188 | 0 | 47 | nasdaq_nordic_helsinki_full_search | Nasdaq Nordic | reconciled through existing official Nasdaq Nordic Helsinki shares, share-search, and ETF feeds |
 | 22 | BVC | official_partial | 3 | 3 | 0 | bvc_colombia_issuers | BVC | implemented via official BVC local-equity issuer API using the site handshake token; rows only enter through reviewed current BVC listings |
 | 23 | Bursa | official_partial | 936 | 0 | 2 | bursa_equities_prices_directory | Bursa Malaysia | implemented via official Bursa year-end closing-price PDF captured through browser download; live equities-prices API still Cloudflare-blocked for repeatable direct refreshes |
 | 24 | BVL | official_partial | 33 | 2 | 30 | bvl_issuers_directory | CAVALI | implemented via official CAVALI issuer securities registry; BVL Angular issuer page still needs endpoint discovery for a pure exchange directory |
 | 25 | PSE_CZ | official_partial | 24 | 1 | 14 | pse_cz_shares_directory | Prague Stock Exchange | implemented via official market pages plus detail-page ticker extraction |
 | 26 | BCBA | official_partial | 64 | 3 | 14 | byma_equity_details | BYMA | implemented via official Open BYMADATA equity-detail endpoint; some legacy BCBA symbols remain unmatched without manual ticker normalization |
-| 27 | ZSE_ZW | official_partial | 27 | 0 | 24 | zse_zw_listed_companies | ZSE Zimbabwe | implemented via official ZSE front-end API and price-sheet API |
+| 27 | ZSE_ZW | official_partial | 27 | 0 | 23 | zse_zw_listed_companies | ZSE Zimbabwe | implemented via official ZSE front-end API and price-sheet API |
 | 28 | MSE_MW | official_partial | 8 | 0 | 8 | mse_mw_listed_companies | MSE Malawi | implemented via official mainboard table and company links |
 | 29 | LUSE | official_partial | 22 | 0 | 20 | luse_listed_companies | LuSE | implemented via official listed-company page captured through the reader fallback because direct requests hit a Cloudflare challenge |
 | 30 | USE_UG | official_partial | 7 | 0 | 7 | use_ug_listed_companies | USE Uganda | implemented via official market-snapshot table |
