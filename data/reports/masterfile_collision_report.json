@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 78283,
-    "matched": 42972,
-    "collisions": 10866,
-    "missing": 24445
+    "official_symbols": 78237,
+    "matched": 42879,
+    "collisions": 10878,
+    "missing": 24480
   },
   "exchanges": [
     {
@@ -350,10 +350,10 @@
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1243,
-      "matched": 1200,
-      "collisions": 7,
-      "missing": 36,
+      "official_symbols": 1239,
+      "matched": 1191,
+      "collisions": 8,
+      "missing": 40,
       "collision_examples": [
         {
           "ticker": "ARKI",
@@ -369,6 +369,14 @@
           "target_exchange": "BATS",
           "existing_exchanges": [
             "ASX"
+          ]
+        },
+        {
+          "ticker": "CBOX",
+          "name": "Calamos Tax-Aware Collateral ETF",
+          "target_exchange": "BATS",
+          "existing_exchanges": [
+            "LSE"
           ]
         },
         {
@@ -3128,10 +3136,10 @@
     },
     {
       "exchange": "NYSE",
-      "official_symbols": 3836,
+      "official_symbols": 3842,
       "matched": 2060,
       "collisions": 517,
-      "missing": 1259,
+      "missing": 1265,
       "collision_examples": [
         {
           "ticker": "ABX",
@@ -3269,10 +3277,10 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2615,
-      "matched": 2583,
-      "collisions": 13,
-      "missing": 19,
+      "official_symbols": 2620,
+      "matched": 2585,
+      "collisions": 15,
+      "missing": 20,
       "collision_examples": [
         {
           "ticker": "BAR",
@@ -3280,6 +3288,22 @@
           "target_exchange": "NYSE ARCA",
           "existing_exchanges": [
             "NYSE"
+          ]
+        },
+        {
+          "ticker": "BAVA",
+          "name": "Common Shares of Beneficial Interest of Bitwise Avalanche ETF",
+          "target_exchange": "NYSE ARCA",
+          "existing_exchanges": [
+            "CPH"
+          ]
+        },
+        {
+          "ticker": "CAGE",
+          "name": "Calamos Autocallable Growth ETF",
+          "target_exchange": "NYSE ARCA",
+          "existing_exchanges": [
+            "TSX"
           ]
         },
         {
@@ -3337,22 +3361,6 @@
           "existing_exchanges": [
             "TSXV"
           ]
-        },
-        {
-          "ticker": "KWIN",
-          "name": "KraneShares Wahed Alternative Income Index ETF",
-          "target_exchange": "NYSE ARCA",
-          "existing_exchanges": [
-            "EGX"
-          ]
-        },
-        {
-          "ticker": "MIGO",
-          "name": "MIG Core ETF",
-          "target_exchange": "NYSE ARCA",
-          "existing_exchanges": [
-            "LSE"
-          ]
         }
       ],
       "missing_examples": [
@@ -3374,6 +3382,11 @@
         {
           "ticker": "DLUX",
           "name": "DoubleLine Ultrashort Income ETF",
+          "exchange": "NYSE ARCA"
+        },
+        {
+          "ticker": "DPRE",
+          "name": "Virtus Duff & Phelps Real Estate Income ETF",
           "exchange": "NYSE ARCA"
         },
         {
@@ -3400,20 +3413,15 @@
           "ticker": "IVEP",
           "name": "Dan IVES Wedbush AI Power & Infrastructure ETF",
           "exchange": "NYSE ARCA"
-        },
-        {
-          "ticker": "JHDG",
-          "name": "John Hancock Hedged Equity ETF",
-          "exchange": "NYSE ARCA"
         }
       ]
     },
     {
       "exchange": "NYSE MKT",
-      "official_symbols": 313,
+      "official_symbols": 312,
       "matched": 234,
       "collisions": 19,
-      "missing": 60,
+      "missing": 59,
       "collision_examples": [
         {
           "ticker": "AEF",
@@ -4864,8 +4872,8 @@
     },
     {
       "exchange": "TSX",
-      "official_symbols": 788,
-      "matched": 326,
+      "official_symbols": 785,
+      "matched": 323,
       "collisions": 460,
       "missing": 2,
       "collision_examples": [
@@ -4965,8 +4973,8 @@
     },
     {
       "exchange": "TSXV",
-      "official_symbols": 1600,
-      "matched": 1043,
+      "official_symbols": 1518,
+      "matched": 961,
       "collisions": 556,
       "missing": 1,
       "collision_examples": [
@@ -5343,10 +5351,10 @@
     },
     {
       "exchange": "XETRA",
-      "official_symbols": 4429,
-      "matched": 3642,
-      "collisions": 773,
-      "missing": 14,
+      "official_symbols": 4462,
+      "matched": 3641,
+      "collisions": 782,
+      "missing": 39,
       "collision_examples": [
         {
           "ticker": "0GZK",
@@ -5431,53 +5439,53 @@
       ],
       "missing_examples": [
         {
-          "ticker": "H4ZM",
-          "name": "HSBC MSCI RU CAP. UC. ETF",
+          "ticker": "ADY1",
+          "name": "LEVERAGE SHARES (ADI) ETP",
           "exchange": "XETRA"
         },
         {
-          "ticker": "M5S",
-          "name": "H2 CORE AG INH O.N.",
+          "ticker": "AMY1",
+          "name": "LEVERAGE SHARES AMAT ETP",
           "exchange": "XETRA"
         },
         {
-          "ticker": "PO1",
-          "name": "POB AG NA O.N.",
+          "ticker": "ARDY",
+          "name": "LEVERAGE SHARES AIL ETP",
           "exchange": "XETRA"
         },
         {
-          "ticker": "RCEG",
-          "name": "R.C.E.G.BD EOA",
+          "ticker": "BMBY",
+          "name": "LEVERAGE SHARES BMNR ETP",
           "exchange": "XETRA"
         },
         {
-          "ticker": "UIMY",
-          "name": "UBSFACMSCIEMULVOL EOAD",
+          "ticker": "CCNA",
+          "name": "OML-MSCI EU UN. U.ETFEOA",
           "exchange": "XETRA"
         },
         {
-          "ticker": "VITD",
-          "name": "VAN.UT3-7Y BE DLD",
+          "ticker": "CCNC",
+          "name": "OML-MSCI WO.UN. U.ETFEOA",
           "exchange": "XETRA"
         },
         {
-          "ticker": "VITS",
-          "name": "VAN.UT3-7Y BE DLA",
+          "ticker": "CCNG",
+          "name": "OML-MSCI EUGB1 U.ETFEOA",
           "exchange": "XETRA"
         },
         {
-          "ticker": "VLDP",
-          "name": "VAN.UT7-10Y BE DLD",
+          "ticker": "CCNH",
+          "name": "OML-MSCI EUGB U.ETFEOA",
           "exchange": "XETRA"
         },
         {
-          "ticker": "VLDS",
-          "name": "VAN.UT7-10Y BE DLA",
+          "ticker": "CCNI",
+          "name": "OML-MSCI EU IG U.ETFEOA",
           "exchange": "XETRA"
         },
         {
-          "ticker": "VPYT",
-          "name": "VANECK PYTH ETN 39",
+          "ticker": "CILY",
+          "name": "LEVERAGE SHARES CRCL ETP",
           "exchange": "XETRA"
         }
       ]

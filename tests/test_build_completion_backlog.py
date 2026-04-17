@@ -88,4 +88,20 @@ def test_render_markdown_includes_model_and_source_block_notes():
     assert "`stock_sector`" in markdown
     assert "`etf_category`" in markdown
     assert "listing_key" in markdown
-    assert "TSE ISIN" in markdown
+    assert "High-count primary ISIN residuals" in markdown
+
+
+def test_completion_backlog_ranks_by_missing_count_before_static_source_order():
+    rows = build_completion_backlog(
+        [],
+        [
+            {"exchange": "TSE", "asset_type": "Stock", "scope_reason": "primary_listing_missing_isin"},
+            {"exchange": "TSX", "asset_type": "Stock", "scope_reason": "primary_listing_missing_isin"},
+            {"exchange": "TSX", "asset_type": "Stock", "scope_reason": "primary_listing_missing_isin"},
+            {"exchange": "TSX", "asset_type": "Stock", "scope_reason": "primary_listing_missing_isin"},
+        ],
+        {"by_exchange": []},
+    )
+
+    assert row_for(rows, exchange="TSX", field=FIELD_MISSING_ISIN).priority_rank == 1
+    assert row_for(rows, exchange="TSE", field=FIELD_MISSING_ISIN).priority_rank == 2

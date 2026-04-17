@@ -96,6 +96,34 @@ def test_verify_etf_categories_refreshes_existing_classifier_updates():
     assert results[0]["decision"] == "accept"
 
 
+def test_verify_etf_categories_refreshes_existing_etf_category_updates():
+    results = verify_etf_categories(
+        [
+            {
+                "ticker": "A",
+                "exchange": "XETRA",
+                "asset_type": "ETF",
+                "name": "Example Corporate Bond ETF",
+                "sector": "",
+                "etf_category": "Fixed Income",
+            },
+            {
+                "ticker": "B",
+                "exchange": "XETRA",
+                "asset_type": "ETF",
+                "name": "Example Corporate Bond ETF",
+                "sector": "",
+                "etf_category": "Fixed Income",
+            },
+        ],
+        exchanges={"XETRA"},
+        existing_classifier_update_keys={("A", "XETRA")},
+    )
+
+    assert [result["ticker"] for result in results] == ["A"]
+    assert results[0]["decision"] == "accept"
+
+
 def test_build_metadata_updates_emits_reviewed_etf_category_update():
     updates = build_metadata_updates(
         [
@@ -212,3 +240,38 @@ def test_prune_stale_classifier_updates_removes_legacy_classifier_rows_and_keeps
     assert [(row["ticker"], row["field"], row["proposed_value"]) for row in rows] == [
         ("OTHER", "sector", "Bonds"),
     ]
+
+
+def test_prune_stale_classifier_updates_respects_exchange_scope(tmp_path):
+    path = tmp_path / "metadata_updates.csv"
+    fieldnames = ["ticker", "exchange", "field", "decision", "proposed_value", "confidence", "reason"]
+    with path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(
+            [
+                {
+                    "ticker": "DROP",
+                    "exchange": "XETRA",
+                    "field": "etf_category",
+                    "decision": "update",
+                    "proposed_value": "Equity",
+                    "confidence": "0.68",
+                    "reason": "Deterministic ETF-name classifier mapped the product name to 'Equity' via rule 'large_cap'. This is an etf_category fill, not a stock-sector assertion.",
+                },
+                {
+                    "ticker": "KEEP",
+                    "exchange": "KRX",
+                    "field": "etf_category",
+                    "decision": "update",
+                    "proposed_value": "Equity",
+                    "confidence": "0.68",
+                    "reason": "Deterministic ETF-name classifier mapped the product name to 'Equity' via rule 'large_cap'. This is an etf_category fill, not a stock-sector assertion.",
+                },
+            ]
+        )
+
+    prune_stale_classifier_updates(path, [], exchanges={"XETRA"})
+
+    rows = list(csv.DictReader(path.open(newline="", encoding="utf-8")))
+    assert [(row["ticker"], row["exchange"]) for row in rows] == [("KEEP", "KRX")]

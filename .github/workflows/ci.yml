@@ -26,3 +26,6 @@ jobs:
 
       - name: Run test suite
         run: python -m pytest tests/ -q
+
+      - name: Check entry quality gate
+        run: python scripts/check_entry_quality_gate.py

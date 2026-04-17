@@ -206,6 +206,7 @@ def meaningful_latin_tokens(value: str) -> set[str]:
         "etf",
         "fund",
         "interest",
+        "issuer",
         "ky",
         "ord",
         "shares",
@@ -277,6 +278,7 @@ OTC_NAME_NOISE_TOKENS = {
     "cv",
     "de",
     "inc",
+    "issuer",
     "ltd",
     "limited",
     "new",
@@ -313,6 +315,8 @@ def consonant_skeleton(token: str) -> str:
 
 def abbreviation_token_matches(left: str, right: str) -> bool:
     if left == right:
+        return True
+    if len(left) >= 4 and len(right) >= 4 and left[:3] == right[:3]:
         return True
     if len(left) >= 4 and len(right) >= 4 and (left.startswith(right[:4]) or right.startswith(left[:4])):
         return True

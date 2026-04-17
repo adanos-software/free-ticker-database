@@ -102,7 +102,7 @@ def policy_for(field: str, exchange: str, asset_type: str) -> tuple[str, str, bo
                 "scripts/fetch_exchange_masterfiles.py --source jpx_tse_stock_detail",
                 True,
                 "Accept after exact TSE ticker, official JPX detail payload, expected JP prefix where applicable, and ISIN checksum gates.",
-                "Largest primary ISIN gap; source is official JPX/TSE, not Yahoo.",
+                "Small residual primary ISIN gap; source is official JPX/TSE, not Yahoo.",
             )
         if exchange in {"SSE", "SZSE"}:
             return (
@@ -222,10 +222,20 @@ def target_field_for(field: str) -> str:
 
 
 def priority_for(field: str, exchange: str, missing_count: int) -> tuple[int, str]:
+    if field == FIELD_MISSING_ISIN and missing_count >= 100:
+        return 0, "top_impact"
+    if field == FIELD_MISSING_STOCK_SECTOR and missing_count >= 250:
+        return 0, "top_impact"
+    if field == FIELD_MISSING_ETF_CATEGORY and missing_count >= 200:
+        return 0, "top_impact"
+    return 0, "ranked_by_missing_count"
+
+
+def source_order_for(field: str, exchange: str) -> int:
     priority = ISIN_PRIORITY if field == FIELD_MISSING_ISIN else SECTOR_CATEGORY_PRIORITY
     if exchange in priority:
-        return priority.index(exchange) + 1, "top_priority"
-    return len(priority) + 1, "ranked_by_missing_count"
+        return priority.index(exchange)
+    return len(priority)
 
 
 def row_stock_sector(row: dict[str, str]) -> str:
@@ -354,7 +364,7 @@ def rank_backlog_rows(rows: list[CompletionBacklogRow]) -> list[CompletionBacklo
     for field in fields:
         field_rows = sorted(
             [row for row in rows if row.field == field],
-            key=lambda row: (row.priority_rank, -row.missing_count, row.exchange, row.asset_type),
+            key=lambda row: (-row.missing_count, source_order_for(row.field, row.exchange), row.exchange, row.asset_type),
         )
         for rank, row in enumerate(field_rows, start=1):
             ranked_rows.append(replace(row, priority_rank=rank))
@@ -377,7 +387,14 @@ def summarize(rows: list[CompletionBacklogRow], coverage_report: dict[str, Any],
         "model_notes": {
             "sector_split": "Use stock_sector for stock rows and etf_category for ETF rows; the legacy sector export has been removed.",
             "listing_key_first": "Use listing_key as the internal identity for future full-universe work; global ticker uniqueness still blocks official symbol collisions.",
-            "source_blocks": ["TSE ISIN", "China ETF/Sector", "Canada", "B3", "XETRA/LSE ETF categories", "missing venues"],
+            "source_blocks": [
+                "High-count primary ISIN residuals",
+                "High-count stock-sector residuals",
+                "High-count ETF-category residuals",
+                "OTC warning review queue",
+                "Source-gap venues by missing count",
+                "Missing venues",
+            ],
         },
     }
 
@@ -427,10 +444,9 @@ def format_combined_sector_table(rows: list[CompletionBacklogRow], limit: int = 
             counts[row.exchange]["stock"] += row.missing_count
         else:
             counts[row.exchange]["etf"] += row.missing_count
-    priority_lookup = {exchange: index + 1 for index, exchange in enumerate(SECTOR_CATEGORY_PRIORITY)}
     selected = sorted(
         counts.items(),
-        key=lambda item: (priority_lookup.get(item[0], 1000), -(item[1]["stock"] + item[1]["etf"]), item[0]),
+        key=lambda item: (-(item[1]["stock"] + item[1]["etf"]), item[0]),
     )[:limit]
     if not selected:
         return "_No rows._\n"
@@ -482,11 +498,11 @@ def render_markdown(rows: list[CompletionBacklogRow], summary: dict[str, Any]) -
             "",
             "## Source Block Order",
             "",
-            "1. TSE ISIN",
-            "2. China ETF/Sector",
-            "3. Canada",
-            "4. B3",
-            "5. XETRA/LSE ETF categories",
+            "1. High-count primary ISIN residuals",
+            "2. High-count stock-sector residuals",
+            "3. High-count ETF-category residuals",
+            "4. OTC warning review queue",
+            "5. Source-gap venues by missing count",
             "6. Missing venues",
             "",
         ]

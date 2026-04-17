@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-04-17T08:15:57Z",
+    "generated_at": "2026-04-17T08:36:23Z",
     "rows": 62496,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,38 +14,38 @@
   },
   "summary": {
     "status_counts": {
-      "notice": 5497,
-      "pass": 44680,
-      "source_gap": 12056,
-      "warn": 263
+      "notice": 5500,
+      "pass": 44714,
+      "source_gap": 12026,
+      "warn": 256
     },
     "evidence_level_counts": {
-      "identifier_enriched": 208,
-      "official_reference": 58047,
-      "scoped_source_gap": 811,
-      "valid_isin": 3430
+      "identifier_enriched": 220,
+      "official_reference": 57954,
+      "scoped_source_gap": 883,
+      "valid_isin": 3439
     },
     "severity_counts": {
       "low": 5986,
-      "medium": 263,
-      "source_gap": 15525
+      "medium": 256,
+      "source_gap": 15574
     },
     "issue_counts": {
-      "official_reference_gap": 4449,
+      "official_reference_gap": 4542,
       "shared_name_alias": 4004,
-      "missing_etf_category": 4002,
+      "missing_etf_category": 3958,
       "expected_missing_primary_isin": 3910,
       "missing_stock_sector": 3164,
       "low_company_name_overlap": 1982,
-      "official_name_mismatch": 263
+      "official_name_mismatch": 256
     },
     "top_flagged_exchanges": [
       {
         "exchange": "OTC",
-        "pass": 6527,
-        "notice": 1615,
+        "pass": 6531,
+        "notice": 1618,
         "source_gap": 2688,
-        "warn": 263
+        "warn": 256
       },
       {
         "exchange": "B3",
@@ -69,19 +69,19 @@
         "exchange": "NYSE ARCA",
         "notice": 278,
         "source_gap": 570,
-        "pass": 1803
-      },
-      {
-        "exchange": "LSE",
-        "pass": 5092,
-        "notice": 775,
-        "source_gap": 548
+        "pass": 1807
       },
       {
         "exchange": "KRX",
         "pass": 1215,
         "source_gap": 530,
         "notice": 51
+      },
+      {
+        "exchange": "LSE",
+        "pass": 5121,
+        "notice": 775,
+        "source_gap": 519
       },
       {
         "exchange": "SZSE",
@@ -96,26 +96,26 @@
       },
       {
         "exchange": "TSXV",
-        "source_gap": 451,
-        "pass": 355,
+        "source_gap": 457,
+        "pass": 349,
         "notice": 260
       },
       {
         "exchange": "NASDAQ",
-        "pass": 3646,
+        "pass": 3647,
         "notice": 578,
-        "source_gap": 410
+        "source_gap": 409
       },
       {
         "exchange": "XETRA",
-        "pass": 3242,
-        "source_gap": 351,
+        "pass": 3253,
+        "source_gap": 340,
         "notice": 159
       },
       {
         "exchange": "BATS",
-        "source_gap": 308,
-        "pass": 890,
+        "source_gap": 313,
+        "pass": 881,
         "notice": 49
       },
       {

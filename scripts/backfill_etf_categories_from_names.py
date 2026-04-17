@@ -209,7 +209,11 @@ def verify_etf_categories(
             continue
         if (row.get("etf_category", "") or row.get("sector", "")).strip() and not should_refresh_existing_classifier_update:
             continue
-        candidate_row = {**row, "sector": ""} if should_refresh_existing_classifier_update else row
+        candidate_row = (
+            {**row, "sector": "", "etf_category": ""}
+            if should_refresh_existing_classifier_update
+            else row
+        )
         results.append(evaluate_etf_row(candidate_row))
     return results
 
@@ -233,7 +237,12 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
     return updates
 
 
-def prune_stale_classifier_updates(path: Path, updates: list[dict[str, str]]) -> None:
+def prune_stale_classifier_updates(
+    path: Path,
+    updates: list[dict[str, str]],
+    *,
+    exchanges: set[str] | None = None,
+) -> None:
     if not path.exists():
         return
     current_keys = {(update["ticker"], update["exchange"]) for update in updates}
@@ -245,6 +254,7 @@ def prune_stale_classifier_updates(path: Path, updates: list[dict[str, str]]) ->
         if not (
             row.get("field") in CLASSIFIER_METADATA_FIELDS
             and row.get("reason", "").startswith(CLASSIFIER_REASON_PREFIX)
+            and (exchanges is None or row["exchange"] in exchanges)
             and ((row["ticker"], row["exchange"]) not in current_keys or row.get("field") != "etf_category")
         )
     ]
@@ -302,7 +312,7 @@ def main(argv: list[str] | None = None) -> None:
     write_report_csv(args.csv_out, results)
 
     if args.apply:
-        prune_stale_classifier_updates(args.metadata_updates_csv, updates)
+        prune_stale_classifier_updates(args.metadata_updates_csv, updates, exchanges=exchanges)
     if args.apply and updates:
         merge_metadata_updates(args.metadata_updates_csv, updates)
 
