@@ -1,17 +1,17 @@
 {
   "global": {
     "official_symbols": 78283,
-    "matched": 42430,
-    "collisions": 10379,
-    "missing": 25474
+    "matched": 42972,
+    "collisions": 10866,
+    "missing": 24445
   },
   "exchanges": [
     {
       "exchange": "ADX",
       "official_symbols": 120,
       "matched": 0,
-      "collisions": 30,
-      "missing": 90,
+      "collisions": 31,
+      "missing": 89,
       "collision_examples": [
         {
           "ticker": "ADIB",
@@ -883,16 +883,48 @@
     {
       "exchange": "BSE_IN",
       "official_symbols": 5015,
-      "matched": 0,
-      "collisions": 278,
-      "missing": 4737,
+      "matched": 5,
+      "collisions": 758,
+      "missing": 4252,
       "collision_examples": [
+        {
+          "ticker": "63MOONS",
+          "name": "63 Moons Technologies Ltd",
+          "target_exchange": "BSE_IN",
+          "existing_exchanges": [
+            "NSE_IN"
+          ]
+        },
+        {
+          "ticker": "AAVAS",
+          "name": "AAVAS Financiers Ltd",
+          "target_exchange": "BSE_IN",
+          "existing_exchanges": [
+            "NSE_IN"
+          ]
+        },
         {
           "ticker": "ABB",
           "name": "ABB India Ltd",
           "target_exchange": "BSE_IN",
           "existing_exchanges": [
             "STO"
+          ]
+        },
+        {
+          "ticker": "ABDL",
+          "name": "Allied Blenders and Distillers Ltd",
+          "target_exchange": "BSE_IN",
+          "existing_exchanges": [
+            "NSE_IN"
+          ]
+        },
+        {
+          "ticker": "ABFRL",
+          "name": "Aditya Birla Fashion and Retail Ltd",
+          "target_exchange": "BSE_IN",
+          "existing_exchanges": [
+            "NSE_IN"
           ]
         },
         {
@@ -933,38 +965,6 @@
           "target_exchange": "BSE_IN",
           "existing_exchanges": [
             "TSXV"
-          ]
-        },
-        {
-          "ticker": "AEL",
-          "name": "Amba Enterprises Ltd",
-          "target_exchange": "BSE_IN",
-          "existing_exchanges": [
-            "ASX"
-          ]
-        },
-        {
-          "ticker": "AGI",
-          "name": "Agi Greenpac Ltd",
-          "target_exchange": "BSE_IN",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
-        {
-          "ticker": "AHCL",
-          "name": "Anlon Healthcare Ltd",
-          "target_exchange": "BSE_IN",
-          "existing_exchanges": [
-            "PSX"
-          ]
-        },
-        {
-          "ticker": "ALKA",
-          "name": "Alka India Ltd",
-          "target_exchange": "BSE_IN",
-          "existing_exchanges": [
-            "IDX"
           ]
         }
       ],
@@ -1648,9 +1648,9 @@
     {
       "exchange": "HKEX",
       "official_symbols": 3126,
-      "matched": 0,
+      "matched": 39,
       "collisions": 82,
-      "missing": 3044,
+      "missing": 3005,
       "collision_examples": [
         {
           "ticker": "00636",
@@ -2189,9 +2189,9 @@
     {
       "exchange": "KRX",
       "official_symbols": 2042,
-      "matched": 1780,
+      "matched": 1788,
       "collisions": 3,
-      "missing": 259,
+      "missing": 251,
       "collision_examples": [
         {
           "ticker": "002210",
@@ -2235,11 +2235,6 @@
           "exchange": "KRX"
         },
         {
-          "ticker": "000100",
-          "name": "YUHAN",
-          "exchange": "KRX"
-        },
-        {
           "ticker": "000300",
           "name": "DHAUTONEX",
           "exchange": "KRX"
@@ -2268,15 +2263,20 @@
           "ticker": "000650",
           "name": "CHUNIL EXP",
           "exchange": "KRX"
+        },
+        {
+          "ticker": "000680",
+          "name": "LS Networks",
+          "exchange": "KRX"
         }
       ]
     },
     {
       "exchange": "LSE",
       "official_symbols": 10899,
-      "matched": 6329,
+      "matched": 6336,
       "collisions": 1159,
-      "missing": 3411,
+      "missing": 3404,
       "collision_examples": [
         {
           "ticker": "0GZJ",
@@ -2847,9 +2847,9 @@
     {
       "exchange": "NSE_IN",
       "official_symbols": 2998,
-      "matched": 0,
-      "collisions": 180,
-      "missing": 2818,
+      "matched": 483,
+      "collisions": 182,
+      "missing": 2333,
       "collision_examples": [
         {
           "ticker": "ABB",
@@ -2892,6 +2892,14 @@
           ]
         },
         {
+          "ticker": "ADOR",
+          "name": "Ador Welding Limited",
+          "target_exchange": "NSE_IN",
+          "existing_exchanges": [
+            "BSE_IN"
+          ]
+        },
+        {
           "ticker": "AGI",
           "name": "AGI Greenpac Limited",
           "target_exchange": "NSE_IN",
@@ -2921,14 +2929,6 @@
           "target_exchange": "NSE_IN",
           "existing_exchanges": [
             "ATHEX"
-          ]
-        },
-        {
-          "ticker": "APEX",
-          "name": "Apex Frozen Foods Limited",
-          "target_exchange": "NSE_IN",
-          "existing_exchanges": [
-            "LSE"
           ]
         }
       ],
@@ -2969,11 +2969,6 @@
           "exchange": "NSE_IN"
         },
         {
-          "ticker": "63MOONS",
-          "name": "63 moons technologies limited",
-          "exchange": "NSE_IN"
-        },
-        {
           "ticker": "AAATECH",
           "name": "AAA Technologies Limited",
           "exchange": "NSE_IN"
@@ -2981,6 +2976,11 @@
         {
           "ticker": "AADHARHFC",
           "name": "Aadhar Housing Finance Limited",
+          "exchange": "NSE_IN"
+        },
+        {
+          "ticker": "AAKAAR",
+          "name": "Aakaar Medical Technologies Limited",
           "exchange": "NSE_IN"
         }
       ]
@@ -3130,8 +3130,8 @@
       "exchange": "NYSE",
       "official_symbols": 3836,
       "matched": 2060,
-      "collisions": 514,
-      "missing": 1262,
+      "collisions": 517,
+      "missing": 1259,
       "collision_examples": [
         {
           "ticker": "ABX",
@@ -4066,8 +4066,8 @@
       "exchange": "PSX",
       "official_symbols": 712,
       "matched": 371,
-      "collisions": 145,
-      "missing": 196,
+      "collisions": 146,
+      "missing": 195,
       "collision_examples": [
         {
           "ticker": "AAL",

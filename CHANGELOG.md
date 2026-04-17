@@ -2,6 +2,20 @@
 
 ## [Unreleased]
 
+## [3.11.0] - 2026-04-17
+
+### Added
+
+- Added FinancialData.net international-symbol ingestion as a secondary discovery source with match, current-gap, and global-expansion reports.
+- Added an official-ISIN supplement builder that accepts FinancialData-discovered rows only after matching an official active masterfile row with a valid ISIN, issuer-name gate, and no global ticker/ISIN collision.
+- Added persistent FinancialData review artifacts and tests so accepted official-ISIN supplements remain idempotent across rebuilds.
+
+### Changed
+
+- Rebuilt the canonical exports to 53,998 primary tickers, 62,496 listing rows, 48,787 ISIN-covered rows, and 44,884 sector/category-covered rows.
+- Expanded official-ISIN-backed coverage with 555 supplemental rows across NSE India, HKEX, Bursa, KRX, LSE, BSE India, and B3 while keeping FinancialData itself review-only.
+- Refreshed listing history, identifier snapshots, completion backlog, source inventory, entry-quality reports, and README metrics against the expanded dataset.
+
 ## [3.10.1] - 2026-04-14
 
 ### Fixed

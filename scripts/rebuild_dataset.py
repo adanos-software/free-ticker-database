@@ -33,6 +33,7 @@ TICKERS_DB = DATA_DIR / "tickers.db"
 TICKERS_PARQUET = DATA_DIR / "tickers.parquet"
 CROSS_LISTINGS_CSV = DATA_DIR / "cross_listings.csv"
 MASTERFILE_SUPPLEMENT_CSV = DATA_DIR / "masterfiles" / "supplemental_listings.csv"
+FINANCIALDATA_ISIN_SUPPLEMENT_CSV = DATA_DIR / "masterfiles" / "financialdata_isin_supplemental_listings.csv"
 MASTERFILE_REFERENCE_CSV = DATA_DIR / "masterfiles" / "reference.csv"
 REVIEW_OVERRIDES_DIR = DATA_DIR / "review_overrides"
 REVIEW_REMOVE_ALIASES_CSV = REVIEW_OVERRIDES_DIR / "remove_aliases.csv"
@@ -1667,10 +1668,13 @@ def load_data():
 
 
 def load_supplemental_ticker_rows() -> list[dict[str, str]]:
-    if not MASTERFILE_SUPPLEMENT_CSV.exists():
-        return []
-    with MASTERFILE_SUPPLEMENT_CSV.open(newline="", encoding="utf-8") as handle:
-        return list(csv.DictReader(handle))
+    rows: list[dict[str, str]] = []
+    for path in (MASTERFILE_SUPPLEMENT_CSV, FINANCIALDATA_ISIN_SUPPLEMENT_CSV):
+        if not path.exists():
+            continue
+        with path.open(newline="", encoding="utf-8") as handle:
+            rows.extend(csv.DictReader(handle))
+    return rows
 
 
 def merge_ticker_row(base_row: dict[str, str], supplement_row: dict[str, str]) -> dict[str, str]:

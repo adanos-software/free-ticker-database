@@ -461,6 +461,7 @@ def test_build_supplement_rows_skips_ambiguous_missing_numeric_tickers():
 
 def test_merge_supplemental_ticker_rows_refreshes_safe_fields(monkeypatch, tmp_path):
     supplemental = tmp_path / "supplemental.csv"
+    financialdata_supplemental = tmp_path / "financialdata_supplemental.csv"
     supplemental.write_text(
         "\n".join(
             [
@@ -471,10 +472,20 @@ def test_merge_supplemental_ticker_rows_refreshes_safe_fields(monkeypatch, tmp_p
         ),
         encoding="utf-8",
     )
+    financialdata_supplemental.write_text(
+        "\n".join(
+            [
+                "ticker,name,exchange,asset_type,sector,country,country_code,isin,aliases,source_key,source_url,reference_scope",
+                "RELIANCE,Reliance Industries Limited,NSE_IN,Stock,,India,IN,INE002A01018,Reliance Industries Limited,nse,https://example.com/nse,exchange_directory",
+            ]
+        ),
+        encoding="utf-8",
+    )
 
     from scripts import rebuild_dataset
 
     monkeypatch.setattr(rebuild_dataset, "MASTERFILE_SUPPLEMENT_CSV", supplemental)
+    monkeypatch.setattr(rebuild_dataset, "FINANCIALDATA_ISIN_SUPPLEMENT_CSV", financialdata_supplemental)
     base_rows = [
         {
             "ticker": "130A",
@@ -495,6 +506,17 @@ def test_merge_supplemental_ticker_rows_refreshes_safe_fields(monkeypatch, tmp_p
     )
 
     assert merged == [
+        {
+            "ticker": "RELIANCE",
+            "name": "Reliance Industries Limited",
+            "exchange": "NSE_IN",
+            "asset_type": "Stock",
+            "sector": "",
+            "country": "India",
+            "country_code": "IN",
+            "isin": "INE002A01018",
+            "aliases": "Reliance Industries Limited",
+        },
         {
             "ticker": "1306",
             "name": "NEXT FUNDS TOPIX Exchange Traded Fund",
@@ -535,6 +557,7 @@ def test_merge_supplemental_ticker_rows_prefers_official_tmx_series_ticker(monke
     from scripts import rebuild_dataset
 
     monkeypatch.setattr(rebuild_dataset, "MASTERFILE_SUPPLEMENT_CSV", supplemental)
+    monkeypatch.setattr(rebuild_dataset, "FINANCIALDATA_ISIN_SUPPLEMENT_CSV", tmp_path / "missing_financialdata.csv")
     base_rows = [
         {
             "ticker": "ACAP-P",

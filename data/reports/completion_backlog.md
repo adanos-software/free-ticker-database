@@ -1,13 +1,13 @@
 # Completion Backlog
 
-Generated at: `2026-04-14T05:01:35Z`
+Generated at: `2026-04-17T07:45:39Z`
 
 ## Summary
 
 - Missing primary ISIN rows: `3918`
-- Missing stock sectors: `4528`
+- Missing stock sectors: `5061`
 - Missing ETF categories: `4053`
-- Official symbol collisions blocking global-unique ticker ingestion: `10379`
+- Official symbol collisions blocking global-unique ticker ingestion: `10866`
 
 ## Top Missing Primary ISINs
 
@@ -33,15 +33,15 @@ Generated at: `2026-04-14T05:01:35Z`
 | 1 | OTC | Stock | 1888 | official_full | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
 | 2 | XETRA | Stock | 122 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
 | 3 | B3 | Stock | 279 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
-| 4 | LSE | Stock | 331 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
+| 4 | LSE | Stock | 338 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
 | 5 | TSX | Stock | 97 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
-| 6 | TSXV | Stock | 418 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
-| 7 | STO | Stock | 231 | official_partial | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
-| 8 | Euronext | Stock | 133 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 9 | HNX | Stock | 92 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 10 | PSE | Stock | 77 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 11 | TASE | Stock | 70 | official_partial | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
-| 12 | CSE_MA | Stock | 64 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 6 | NSE_IN | Stock | 483 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 7 | TSXV | Stock | 418 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
+| 8 | STO | Stock | 231 | official_partial | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
+| 9 | Euronext | Stock | 133 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 10 | HNX | Stock | 92 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 11 | PSE | Stock | 77 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 12 | TASE | Stock | 70 | official_partial | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
 
 ## Top Missing ETF Categories
 
@@ -71,11 +71,11 @@ Generated at: `2026-04-14T05:01:35Z`
 | 5 | B3 | 881 | 279 | 602 | official_full |
 | 6 | NYSE ARCA | 523 | 0 | 523 | official_full |
 | 7 | KRX | 527 | 0 | 527 | official_full |
-| 8 | LSE | 551 | 331 | 220 | official_full |
+| 8 | LSE | 558 | 338 | 220 | official_full |
 | 9 | TSX | 302 | 97 | 205 | official_full |
-| 10 | TSXV | 421 | 418 | 3 | official_full |
-| 11 | NASDAQ | 249 | 13 | 236 | official_full |
-| 12 | STO | 237 | 231 | 6 | official_partial |
+| 10 | NSE_IN | 483 | 483 | 0 | official_full |
+| 11 | TSXV | 421 | 418 | 3 | official_full |
+| 12 | NASDAQ | 249 | 13 | 236 | official_full |
 
 ## Model Migration Prep
 

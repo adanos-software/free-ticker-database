@@ -9,19 +9,19 @@ Free stock and ETF ticker reference data with primary tickers, listing-keyed ven
 
 | Metric | Value | Meaning |
 |---|---:|---|
-| Primary tickers | 53,446 | Rows in `data/tickers.csv`; one primary row per security. |
-| Full listing rows | 61,944 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
-| Stocks | 38,437 | Primary ticker rows where `asset_type=Stock`. |
-| ETFs | 15,009 | Primary ticker rows where `asset_type=ETF`. |
-| Exchanges | 66 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
+| Primary tickers | 53,998 | Rows in `data/tickers.csv`; one primary row per security. |
+| Full listing rows | 62,496 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
+| Stocks | 38,988 | Primary ticker rows where `asset_type=Stock`. |
+| ETFs | 15,010 | Primary ticker rows where `asset_type=ETF`. |
+| Exchanges | 69 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 81 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 93,855 | Rows in `data/aliases.csv`; alias-to-listing lookup rows after generic-word filtering. |
-| ISIN coverage | 48,235 (90.2%) | Primary ticker rows with a non-empty `isin`. |
-| Sector/category coverage | 44,865 (83.9%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 33,909 | Primary ticker rows with a non-empty `stock_sector`. |
-| ETF category coverage | 10,956 | Primary ticker rows with a non-empty `etf_category`. |
-| Core listing-scope rows | 45,220 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
-| Core primary rows with ISIN | 41,302 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
+| Aliases | 94,959 | Rows in `data/aliases.csv`; alias-to-listing lookup rows after generic-word filtering. |
+| ISIN coverage | 48,787 (90.3%) | Primary ticker rows with a non-empty `isin`. |
+| Sector/category coverage | 44,884 (83.1%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Stock sector coverage | 33,927 | Primary ticker rows with a non-empty `stock_sector`. |
+| ETF category coverage | 10,957 | Primary ticker rows with a non-empty `etf_category`. |
+| Core listing-scope rows | 45,772 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
+| Core primary rows with ISIN | 41,854 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
 | Core primary rows missing ISIN | 3,918 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
 | Extended listing-scope rows | 16,724 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
 
@@ -48,6 +48,7 @@ Reference and audit files:
 | [`data/masterfiles/reference.csv`](data/masterfiles/reference.csv) | Official exchange-masterfile reference rows |
 | [`data/masterfiles/source_candidates.json`](data/masterfiles/source_candidates.json) | Official source candidates not yet implemented as parsers |
 | [`data/masterfiles/supplemental_listings.csv`](data/masterfiles/supplemental_listings.csv) | Safe official listings added to the core export |
+| [`data/masterfiles/financialdata_isin_supplemental_listings.csv`](data/masterfiles/financialdata_isin_supplemental_listings.csv) | FinancialData-discovered rows accepted only after official ISIN-bearing masterfile match |
 | [`data/history/latest_snapshot.csv`](data/history/latest_snapshot.csv) | Current listing-status baseline |
 | [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | Machine-readable coverage report |
 | [`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md) | Missing/partial/global official-source backlog |
@@ -85,9 +86,9 @@ JSON metadata:
 ```json
 {
   "_meta": {
-    "version": "3.10.1",
-    "built_at": "2026-04-14T05:01:29Z",
-    "total_tickers": 53446
+    "version": "3.11.0",
+    "built_at": "2026-04-17T07:55:42Z",
+    "total_tickers": 53998
   },
   "tickers": []
 }
@@ -113,16 +114,16 @@ Top exchanges by primary ticker count:
 
 | Exchange | Tickers |
 |---|---:|
-| OTC | 8,474 |
+| OTC | 8,226 |
 | NASDAQ | 4,538 |
-| LSE | 3,781 |
-| TSE | 3,197 |
+| LSE | 3,773 |
+| TSE | 3,191 |
 | SZSE | 3,083 |
 | SSE | 2,789 |
 | NYSE ARCA | 2,571 |
 | XETRA | 2,205 |
 | NYSE | 2,042 |
-| KRX | 1,788 |
+| KRX | 1,796 |
 | TSX | 1,658 |
 | KOSDAQ | 1,583 |
 | B3 | 1,505 |
@@ -138,6 +139,7 @@ python3 scripts/build_completion_backlog.py
 python3 scripts/build_entry_quality_report.py
 python3 scripts/build_ohlcv_plausibility_report.py
 python3 scripts/fetch_symbol_changes.py
+FINANCIALDATA_API_KEY=... python3 scripts/fetch_financialdata_symbols.py
 ```
 
 Long OHLCV fetch runs should use streaming checkpoints:
@@ -183,6 +185,8 @@ Main targeted backfills:
 | Yahoo OTC ISIN candidates | `scripts/backfill_yahoo_otc_isins.py` |
 | ASX official ISINs | `scripts/backfill_asx_isins.py` |
 | Daily symbol-change feed | `scripts/fetch_symbol_changes.py` |
+| FinancialData.net symbol match | `scripts/fetch_financialdata_symbols.py` |
+| FinancialData.net official-ISIN supplements | `scripts/build_financialdata_isin_supplements.py` |
 
 Review queue:
 
@@ -201,7 +205,9 @@ Implemented primary exchange/reference inputs include Nasdaq Trader, Nasdaq Nord
 
 Official source candidates and reconciled source gaps are tracked in [`data/masterfiles/source_candidates.json`](data/masterfiles/source_candidates.json) and summarized by [`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md). Current source inventory status: `0` missing current-scope sources, `0` parser todo rows, `0` real global-expansion candidates, `30` official-full rows, and `34` official-partial rows. Remaining work is now field-completion and taxonomy coverage, not undiscovered exchange-source inventory.
 
-Secondary/reviewed enrichment inputs include [EODHD](https://eodhd.com/financial-apis/), [FinanceDatabase](https://github.com/JerBouma/FinanceDatabase), XTB OMI specification data, Yahoo Finance review helpers, OpenFIGI, GLEIF, and curated production aliases from [api.adanos.org](https://api.adanos.org).
+Secondary/reviewed enrichment inputs include [EODHD](https://eodhd.com/financial-apis/), [FinanceDatabase](https://github.com/JerBouma/FinanceDatabase), XTB OMI specification data, Yahoo Finance review helpers, [FinancialData.net](https://financialdata.net/documentation) symbol-universe matching, OpenFIGI, GLEIF, and curated production aliases from [api.adanos.org](https://api.adanos.org).
+
+FinancialData.net output is intentionally review-only: the international-symbols endpoint has `trading_symbol` and `registrant_name`, but no ISIN or sector. The sync writes [`data/financialdata/international_stock_symbols.csv`](data/financialdata/international_stock_symbols.csv), [`data/reports/financialdata_symbol_match.md`](data/reports/financialdata_symbol_match.md), [`data/reports/financialdata_current_exchange_gaps.csv`](data/reports/financialdata_current_exchange_gaps.csv), and [`data/reports/financialdata_global_expansion_candidates.csv`](data/reports/financialdata_global_expansion_candidates.csv). Missing rows are split into current-exchange gaps and global expansion candidates. The follow-up [`scripts/build_financialdata_isin_supplements.py`](scripts/build_financialdata_isin_supplements.py) only writes supplemental core rows when the FinancialData discovery row matches an official active masterfile row with a valid ISIN, name gate, no existing global ticker, and no existing/selected ISIN.
 
 ## Project
 

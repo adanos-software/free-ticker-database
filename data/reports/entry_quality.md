@@ -1,51 +1,54 @@
 # Entry Quality Report
 
-Generated at: `2026-04-13T11:17:12Z`
+Generated at: `2026-04-17T07:45:48Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| notice | 5,567 |
-| pass | 34,408 |
-| source_gap | 21,980 |
+| notice | 5,496 |
+| pass | 44,642 |
+| source_gap | 12,074 |
+| warn | 284 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 9,052 |
-| expected_missing_primary_isin | 7,165 |
-| missing_stock_sector | 5,564 |
-| missing_etf_category | 4,468 |
-| shared_name_alias | 4,050 |
-| low_company_name_overlap | 1,998 |
-| venue_missing_official_source | 1,250 |
+| official_reference_gap | 4,449 |
+| missing_etf_category | 4,013 |
+| shared_name_alias | 4,006 |
+| expected_missing_primary_isin | 3,918 |
+| missing_stock_sector | 3,173 |
+| low_company_name_overlap | 1,983 |
+| official_name_mismatch | 282 |
+| secondary_listing_points_to_self | 1 |
+| country_isin_mismatch | 1 |
 
 ## Top Flagged Exchanges
 
 | Exchange | Pass | Notice | Source Gap | Warn | Quarantine |
 |---|---:|---:|---:|---:|---:|
-| OTC | 2,602 | 1,634 | 6,861 | 0 | 0 |
-| TSE | 67 | 0 | 3,149 | 0 | 0 |
-| SSE | 1,421 | 41 | 1,327 | 0 | 0 |
-| SZSE | 1,881 | 58 | 1,144 | 0 | 0 |
+| OTC | 6,510 | 1,613 | 2,688 | 282 | 0 |
 | B3 | 473 | 138 | 926 | 0 | 0 |
 | TSX | 1,054 | 148 | 693 | 0 | 0 |
-| KRX | 1,114 | 51 | 623 | 0 | 0 |
-| NYSE ARCA | 1,803 | 278 | 569 | 0 | 0 |
-| XETRA | 3,039 | 160 | 553 | 0 | 0 |
-| LSE | 5,055 | 805 | 548 | 0 | 0 |
-| ASX | 713 | 117 | 468 | 0 | 0 |
+| SSE | 2,089 | 42 | 658 | 0 | 0 |
+| NYSE ARCA | 1,803 | 278 | 570 | 0 | 0 |
+| LSE | 5,084 | 776 | 553 | 2 | 0 |
+| KRX | 1,214 | 51 | 531 | 0 | 0 |
+| SZSE | 2,523 | 58 | 502 | 0 | 0 |
+| NSE_IN | 0 | 2 | 481 | 0 | 0 |
 | TSXV | 355 | 260 | 451 | 0 | 0 |
-| NASDAQ | 3,645 | 577 | 412 | 0 | 0 |
-| KOSDAQ | 1,196 | 35 | 352 | 0 | 0 |
+| NASDAQ | 3,644 | 578 | 412 | 0 | 0 |
+| XETRA | 3,239 | 159 | 354 | 0 | 0 |
 | BATS | 890 | 49 | 308 | 0 | 0 |
-| STO | 397 | 98 | 230 | 0 | 0 |
-| EGX | 0 | 2 | 223 | 0 | 0 |
-| TASE | 444 | 14 | 215 | 0 | 0 |
-| PSX | 159 | 8 | 206 | 0 | 0 |
-| SET | 324 | 25 | 198 | 0 | 0 |
+| STO | 401 | 94 | 230 | 0 | 0 |
+| ASX | 974 | 117 | 207 | 0 | 0 |
+| SET | 325 | 25 | 197 | 0 | 0 |
+| TWSE | 1,072 | 2 | 168 | 0 | 0 |
+| Euronext | 742 | 81 | 152 | 0 | 0 |
+| BMV | 8 | 36 | 135 | 0 | 0 |
+| TASE | 529 | 14 | 130 | 0 | 0 |
 
 ## Notes
 

@@ -145,6 +145,24 @@ def build_pipeline_commands(options: PipelineOptions) -> list[StageCommand]:
                     mutates_data=options.apply_reviewed_backfills,
                     notes="Secondary Yahoo ETF identifier candidates; use only as small reviewed batches.",
                 ),
+                StageCommand(
+                    name="financialdata_symbol_match",
+                    command=[py, "scripts/fetch_financialdata_symbols.py"],
+                    mutates_data=True,
+                    notes=(
+                        "Secondary FinancialData.net international stock symbol universe; "
+                        "writes match/gap reports only and never applies rows because the source has no ISIN."
+                    ),
+                ),
+                StageCommand(
+                    name="financialdata_official_isin_supplements",
+                    command=[py, "scripts/build_financialdata_isin_supplements.py"],
+                    mutates_data=True,
+                    notes=(
+                        "Matches FinancialData discovery rows to official ISIN-bearing masterfiles and writes "
+                        "safe supplemental listings for the rebuild."
+                    ),
+                ),
             ]
         )
 

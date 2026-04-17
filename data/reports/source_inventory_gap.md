@@ -1,6 +1,6 @@
 # Source Inventory Gap
 
-Generated at: `2026-04-14T05:01:35Z`
+Generated at: `2026-04-17T07:45:42Z`
 
 ## Summary
 
@@ -42,7 +42,7 @@ _No rows._
 | 20 | BSE_BW | official_partial | 39 | 0 | 11 | bse_bw_listed_companies | BSE Botswana | implemented via official companies page with conservative local listing-name matching |
 | 21 | HEL | official_partial | 188 | 0 | 48 | nasdaq_nordic_helsinki_full_search | Nasdaq Nordic | reconciled through existing official Nasdaq Nordic Helsinki shares, share-search, and ETF feeds |
 | 22 | BVC | official_partial | 3 | 3 | 0 | bvc_colombia_issuers | BVC | implemented via official BVC local-equity issuer API using the site handshake token; rows only enter through reviewed current BVC listings |
-| 23 | Bursa | official_partial | 926 | 0 | 2 | bursa_equities_prices_directory | Bursa Malaysia | implemented via official Bursa year-end closing-price PDF captured through browser download; live equities-prices API still Cloudflare-blocked for repeatable direct refreshes |
+| 23 | Bursa | official_partial | 936 | 0 | 2 | bursa_equities_prices_directory | Bursa Malaysia | implemented via official Bursa year-end closing-price PDF captured through browser download; live equities-prices API still Cloudflare-blocked for repeatable direct refreshes |
 | 24 | BVL | official_partial | 33 | 2 | 30 | bvl_issuers_directory | CAVALI | implemented via official CAVALI issuer securities registry; BVL Angular issuer page still needs endpoint discovery for a pure exchange directory |
 | 25 | PSE_CZ | official_partial | 24 | 1 | 14 | pse_cz_shares_directory | Prague Stock Exchange | implemented via official market pages plus detail-page ticker extraction |
 | 26 | BCBA | official_partial | 64 | 3 | 14 | byma_equity_details | BYMA | implemented via official Open BYMADATA equity-detail endpoint; some legacy BCBA symbols remain unmatched without manual ticker normalization |
@@ -81,7 +81,7 @@ _No rows._
 | 20 | BSE_BW | official_partial | 39 | 0 | 11 | bse_bw_listed_companies | BSE Botswana | implemented via official companies page with conservative local listing-name matching |
 | 21 | HEL | official_partial | 188 | 0 | 48 | nasdaq_nordic_helsinki_full_search | Nasdaq Nordic | reconciled through existing official Nasdaq Nordic Helsinki shares, share-search, and ETF feeds |
 | 22 | BVC | official_partial | 3 | 3 | 0 | bvc_colombia_issuers | BVC | implemented via official BVC local-equity issuer API using the site handshake token; rows only enter through reviewed current BVC listings |
-| 23 | Bursa | official_partial | 926 | 0 | 2 | bursa_equities_prices_directory | Bursa Malaysia | implemented via official Bursa year-end closing-price PDF captured through browser download; live equities-prices API still Cloudflare-blocked for repeatable direct refreshes |
+| 23 | Bursa | official_partial | 936 | 0 | 2 | bursa_equities_prices_directory | Bursa Malaysia | implemented via official Bursa year-end closing-price PDF captured through browser download; live equities-prices API still Cloudflare-blocked for repeatable direct refreshes |
 | 24 | BVL | official_partial | 33 | 2 | 30 | bvl_issuers_directory | CAVALI | implemented via official CAVALI issuer securities registry; BVL Angular issuer page still needs endpoint discovery for a pure exchange directory |
 | 25 | PSE_CZ | official_partial | 24 | 1 | 14 | pse_cz_shares_directory | Prague Stock Exchange | implemented via official market pages plus detail-page ticker extraction |
 | 26 | BCBA | official_partial | 64 | 3 | 14 | byma_equity_details | BYMA | implemented via official Open BYMADATA equity-detail endpoint; some legacy BCBA symbols remain unmatched without manual ticker normalization |
