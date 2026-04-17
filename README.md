@@ -9,21 +9,21 @@ Free stock and ETF ticker reference data with primary tickers, listing-keyed ven
 
 | Metric | Value | Meaning |
 |---|---:|---|
-| Primary tickers | 53,997 | Rows in `data/tickers.csv`; one primary row per security. |
+| Primary tickers | 54,020 | Rows in `data/tickers.csv`; one primary row per security. |
 | Full listing rows | 62,496 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
-| Stocks | 38,987 | Primary ticker rows where `asset_type=Stock`. |
-| ETFs | 15,010 | Primary ticker rows where `asset_type=ETF`. |
+| Stocks | 39,004 | Primary ticker rows where `asset_type=Stock`. |
+| ETFs | 15,016 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 69 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 81 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 94,965 | Rows in `data/aliases.csv`; alias-to-listing lookup rows after generic-word filtering. |
-| ISIN coverage | 48,794 (90.4%) | Primary ticker rows with a non-empty `isin`. |
-| Sector/category coverage | 44,978 (83.3%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 33,965 | Primary ticker rows with a non-empty `stock_sector`. |
-| ETF category coverage | 11,013 | Primary ticker rows with a non-empty `etf_category`. |
-| Core listing-scope rows | 45,772 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
-| Core primary rows with ISIN | 41,862 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
-| Core primary rows missing ISIN | 3,910 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
-| Extended listing-scope rows | 16,724 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
+| Aliases | 103,490 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
+| ISIN coverage | 48,794 (90.3%) | Primary ticker rows with a non-empty `isin`. |
+| Sector/category coverage | 44,996 (83.3%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Stock sector coverage | 33,979 | Primary ticker rows with a non-empty `stock_sector`. |
+| ETF category coverage | 11,017 | Primary ticker rows with a non-empty `etf_category`. |
+| Core listing-scope rows | 45,782 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
+| Core primary rows with ISIN | 41,854 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
+| Core primary rows missing ISIN | 3,928 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
+| Extended listing-scope rows | 16,714 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
 
 ## Core Files
 
@@ -33,6 +33,8 @@ Free stock and ETF ticker reference data with primary tickers, listing-keyed ven
 | [`data/listings.csv`](data/listings.csv) | Full listing-level export keyed by `listing_key` |
 | [`data/instrument_scopes.csv`](data/instrument_scopes.csv) | Core vs. extended listing scope and primary-listing links |
 | [`data/aliases.csv`](data/aliases.csv) | Alias/name/identifier lookup |
+| [`data/adanos/ticker_reference.csv`](data/adanos/ticker_reference.csv) | Adanos Sentiment API-safe reference export with conservative natural-language aliases |
+| [`data/adanos/natural_language_aliases.csv`](data/adanos/natural_language_aliases.csv) | Natural-language alias candidates with detection policy and confidence |
 | [`data/identifiers.csv`](data/identifiers.csv) | Compact ISIN/WKN lookup |
 | [`data/cross_listings.csv`](data/cross_listings.csv) | Same-ISIN listings across exchanges |
 | [`data/tickers.json`](data/tickers.json) | JSON export for APIs and apps |
@@ -53,6 +55,7 @@ Reference and audit files:
 | [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | Machine-readable coverage report |
 | [`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md) | Missing/partial/global official-source backlog |
 | [`data/reports/completion_backlog.md`](data/reports/completion_backlog.md) | Prioritized missing ISIN/sector/category backlog |
+| [`data/reports/alias_quality.md`](data/reports/alias_quality.md) | Alias safety report for natural-language mention detection |
 | [`data/reports/entry_quality.md`](data/reports/entry_quality.md) | Per-listing deterministic quality scan summary |
 | [`data/reports/ohlcv_plausibility.md`](data/reports/ohlcv_plausibility.md) | Kronos-inspired market-data plausibility queue |
 | [`data/reports/masterfile_collision_report.json`](data/reports/masterfile_collision_report.json) | Official-symbol gaps blocked by ticker collisions |
@@ -63,14 +66,14 @@ Reference and audit files:
 
 ```csv
 ticker,name,exchange,asset_type,stock_sector,etf_category,country,country_code,isin,aliases
-KO,The Coca-Cola Company,NYSE,Stock,Consumer Staples,,United States,US,US1912161007,191216|coca-cola|850663
+KO,The Coca-Cola Company,NYSE,Stock,Consumer Staples,,United States,US,US1912161007,coca-cola
 ```
 
 `listings.csv` is the full venue export:
 
 ```csv
 listing_key,ticker,exchange,name,asset_type,stock_sector,etf_category,country,country_code,isin,aliases
-NASDAQ::AAPL,AAPL,NASDAQ,Apple Inc.,Stock,Information Technology,,United States,US,US0378331005,apple|865985
+NASDAQ::AAPL,AAPL,NASDAQ,Apple Inc,Stock,Information Technology,,United States,US,US0378331005,apple
 ```
 
 Important rules:
@@ -80,14 +83,16 @@ Important rules:
 - `instrument_scopes.csv` marks `core`, OTC `extended`, and secondary cross-listings.
 - Core rows without ISIN are tagged as `scope_reason=primary_listing_missing_isin`.
 - Secondary listings stay in `listings.csv` and `cross_listings.csv`; `tickers.csv` keeps one primary row per security.
+- `tickers.csv.aliases` is restricted to conservative natural-language aliases. ISINs, WKNs, and exchange-ticker aliases stay in `data/aliases.csv` and identifier exports.
+- `data/adanos/ticker_reference.csv` is the preferred import for Adanos Sentiment API ticker detection.
 
 JSON metadata:
 
 ```json
 {
   "_meta": {
-    "version": "3.11.0",
-    "built_at": "2026-04-17T08:15:47Z",
+    "version": "3.12.0",
+    "built_at": "2026-04-17T15:53:00Z",
     "total_tickers": 53997
   },
   "tickers": []
@@ -99,6 +104,9 @@ SQLite tables: `tickers`, `listings`, `aliases`, `cross_listings`, and `instrume
 ## Quality
 
 - Valid ISINs are checksum-verified.
+- `data/reports/alias_quality.csv` classifies every alias as safe, review-only, or identifier-only for mention detection.
+- Natural-language aliases are derived from current security names on every rebuild, then normalized to API-safe aliases.
+- Duplicate natural-language aliases are either assigned to a clear best owner or removed from public alias columns.
 - `data/reports/entry_quality.csv` stores one deterministic quality row per `listing_key`.
 - `data/reports/ohlcv_plausibility.csv` stores optional market-data hygiene checks; default runs are no-network and omit unchecked rows unless local OHLCV samples, `--fetch-yahoo`, or `--include-not-checked` are provided.
 - Obvious common-word, wrapper, celebrity, product, junk, short, and numeric aliases are filtered.
@@ -114,15 +122,15 @@ Top exchanges by primary ticker count:
 
 | Exchange | Tickers |
 |---|---:|
-| OTC | 8,225 |
-| NASDAQ | 4,538 |
-| LSE | 3,773 |
+| OTC | 8,238 |
+| NASDAQ | 4,540 |
+| LSE | 3,775 |
 | TSE | 3,191 |
 | SZSE | 3,083 |
 | SSE | 2,789 |
 | NYSE ARCA | 2,577 |
-| XETRA | 2,204 |
-| NYSE | 2,042 |
+| XETRA | 2,205 |
+| NYSE | 2,046 |
 | KRX | 1,796 |
 | TSX | 1,658 |
 | KOSDAQ | 1,583 |
@@ -136,6 +144,8 @@ For full exchange, country, source, and verification coverage, use:
 python3 scripts/build_coverage_report.py
 python3 scripts/build_source_inventory.py
 python3 scripts/build_completion_backlog.py
+python3 scripts/build_alias_quality_report.py
+python3 scripts/build_adanos_ticker_reference.py
 python3 scripts/build_entry_quality_report.py
 python3 scripts/build_ohlcv_plausibility_report.py
 python3 scripts/fetch_symbol_changes.py
@@ -158,6 +168,8 @@ python3 scripts/build_listing_history.py
 python3 scripts/build_coverage_report.py
 python3 scripts/build_source_inventory.py
 python3 scripts/build_completion_backlog.py
+python3 scripts/build_alias_quality_report.py
+python3 scripts/build_adanos_ticker_reference.py
 python3 scripts/build_entry_quality_report.py
 python3 scripts/build_ohlcv_plausibility_report.py
 python3 scripts/fetch_symbol_changes.py

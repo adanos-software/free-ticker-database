@@ -14,8 +14,20 @@ from typing import Iterable
 import pandas as pd
 
 try:
+    from scripts.alias_policy import (
+        is_common_single_word_alias,
+        is_generic_wrapper_alias,
+        normalize_alias_text,
+        should_drop_from_ticker_alias_column,
+    )
     from scripts.listing_keys import row_listing_key
 except ModuleNotFoundError:  # pragma: no cover - script execution path
+    from alias_policy import (
+        is_common_single_word_alias,
+        is_generic_wrapper_alias,
+        normalize_alias_text,
+        should_drop_from_ticker_alias_column,
+    )
     from listing_keys import row_listing_key
 
 
@@ -47,22 +59,104 @@ MANUAL_ISIN_CORRECTIONS = {
 PRIMARY_LISTING_MISSING_ISIN_SCOPE_REASON = "primary_listing_missing_isin"
 
 BAD_COMMON_ALIASES = {
+    "american",
+    "agent",
     "angle",
     "azure",
     "circus",
     "coke",
+    "colorado",
+    "delta",
+    "east",
     "elon",
+    "energy",
+    "flow",
+    "focus",
+    "frequency",
+    "general",
+    "geo",
+    "global",
+    "grains",
+    "green",
+    "growth",
+    "guru",
     "loads",
+    "lottery",
+    "media",
     "musk",
+    "national",
+    "north",
+    "opportunities",
     "pandora",
+    "popular",
+    "property",
     "reserved",
+    "samsung",
+    "science",
+    "south",
+    "target",
+    "united",
+    "west",
+    "world",
 }
 BAD_CONTAMINATED_ALIASES = {
+    "ama marine public",
     "arima real estate socimi",
+    "asia green energy public",
+    "botala energy",
+    "brave",
+    "btc health",
+    "city steel public",
+    "clover pakistan",
+    "corton enhanced income",
+    "cue energy resources",
+    "delta djakarta",
+    "delta electronics thailand public",
+    "earth tech environment public",
+    "eastern commercial leasing public",
+    "equity metals",
     "euv",
+    "evoke pharma",
+    "evolve all-in-one ultrayield",
+    "first abacus financial",
+    "fox marble",
+    "gamma resources",
+    "geo exploration",
     "gpu",
+    "helix resources",
     "jensen",
     "lithography",
+    "principal shareholders yield",
+    "quest patent research",
+    "rani zim shopping centers",
+    "rivernorth managed duration municipal income ii",
+    "saigon general service",
+    "savvylong 2x shopify",
+    "srisawad capital 1969",
+    "titan environmental solutions",
+    "tridomain performance materials pt",
+    "harvest canadian t-bill",
+    "bank mega",
+    "mega lifesciences public",
+    "meeka metals",
+    "mexican gold",
+    "misr financial investments",
+    "nestle nigeria",
+    "pan asia footwear public",
+    "premier african minerals",
+    "premier air charter",
+    "principal spectrum tactical allocation",
+    "ps business parks preferred i",
+    "puma energy zambia",
+    "ninepoint bitcoin",
+    "tmt motor jsc",
+    "tmt steel public",
+    "trematon capital investments",
+    "tradr 2x short tsla",
+    "betashares global uranium",
+    "virtus stone harbor emerging markets income",
+    "canadian universe bond",
+    "vaneck global defence",
     "ubm development",
     "united bus service",
     "urbas grupo financiero",
@@ -177,6 +271,64 @@ STRICT_NUMERIC_NAMESPACE_EXCHANGES = {"Bursa", "KOSDAQ", "KRX", "TPEX", "TWSE"}
 EXCHANGE_TICKER_RE = re.compile(r"^[A-Z0-9-]+\.[A-Z]{1,6}$")
 IDENTIFIER_RE = re.compile(r"^[A-Z0-9]{5,12}$")
 NUMERIC_TICKER_RE = re.compile(r"^[0-9]{3,6}[A-Z]?$")
+LEGAL_ALIAS_SUFFIX_PATTERNS = (
+    re.compile(r"\b(?:class|cl)\s+[a-z]\s+common\s+stock\b", re.IGNORECASE),
+    re.compile(r"\bclass\s+[a-z0-9-]+\b", re.IGNORECASE),
+    re.compile(r"\bcommon\s+stock\b", re.IGNORECASE),
+    re.compile(r"\bordinary\s+shares?\b", re.IGNORECASE),
+    re.compile(r"\bregistered\s+shares?\b", re.IGNORECASE),
+    re.compile(r"\bbearer\s+shares?\b", re.IGNORECASE),
+    re.compile(r"\b(?:american\s+)?depositary\s+(?:shares?|receipts?)\b", re.IGNORECASE),
+    re.compile(r"\b(?:adr|ads|gdr|144a|reg\s+s|repr|ord(?:\s+shs?)?|shs?|eqty\s+shs?)\b", re.IGNORECASE),
+    re.compile(r"\b(?:incorporated|inc|corporation|corp|company|co|limited|ltd|plc|p\.l\.c\.?)\b\.?", re.IGNORECASE),
+    re.compile(r"\b(?:s\.a\.b\.?\s+de\s+c\.v\.?|s\.a\.?|s/a|a\.s\.?|sa|se|ag|nv|n\.v\.|asa|ab|bhd|berhad|spa|sp\.a\.?|kgaa|k\.k\.?|kk|l\.p\.?|lp|publ)\b\.?", re.IGNORECASE),
+    re.compile(r"\bspolka\s+akcyjna\b", re.IGNORECASE),
+    re.compile(r"\b(?:vna|na|o\.n\.?|on)\b\.?", re.IGNORECASE),
+)
+STOCK_INDUSTRY_TAIL_PATTERNS = (
+    re.compile(r"\b(?:electric|eletric)\s+power\b$", re.IGNORECASE),
+    re.compile(r"\btechno\b$", re.IGNORECASE),
+    re.compile(r"\bpharmaceutical(?:s)?\b$", re.IGNORECASE),
+    re.compile(r"\bbiotherapeutics\b$", re.IGNORECASE),
+)
+ETF_PROVIDER_PREFIX_PATTERNS = (
+    re.compile(r"^global\s+x\s+", re.IGNORECASE),
+    re.compile(r"^leverage(?:\s+shares)?\s+", re.IGNORECASE),
+    re.compile(r"^microsectors\s+", re.IGNORECASE),
+    re.compile(r"^ishares\s+", re.IGNORECASE),
+    re.compile(r"^first\s+trust\s+", re.IGNORECASE),
+    re.compile(r"^proshares\s+", re.IGNORECASE),
+    re.compile(r"^spdr\s+", re.IGNORECASE),
+    re.compile(r"^lyxor\s+", re.IGNORECASE),
+    re.compile(r"^flexshares\s+", re.IGNORECASE),
+    re.compile(r"^wisdomtree\s+", re.IGNORECASE),
+    re.compile(r"^bmo\s+", re.IGNORECASE),
+    re.compile(r"^miraeasset\s+", re.IGNORECASE),
+    re.compile(r"^nh-amundi\s+", re.IGNORECASE),
+)
+ETF_WRAPPER_TOKEN_RE = re.compile(
+    r"\b(?:ucits|etf|etn|fund|trust|index|daily|shares?|series|portfolio|corporate\s+class|exchange\s+traded)\b",
+    re.IGNORECASE,
+)
+ETF_SHARE_CLASS_TOKEN_RE = re.compile(
+    r"\b(?:acc|dist|dis|hedged|unhedged|cad|usd|eur|gbp|chf|jpy|aud|h)\b",
+    re.IGNORECASE,
+)
+ETF_SHELL_PREFIX_RE = re.compile(
+    r"^(?:multi[- ]units\s+luxembourg|j\.?p\.?\s+morgan\s+exchange[- ]traded\s+fund\s+trust|(?:the\s+)?\d{4}\s+etf\s+series\s+trust(?:\s+ii)?|ea\s+series\s+trust|ishares\s+(?:i|ii|iii|iv|v|vi|vii|viii|ix|x)\s+plc)\s*[-:]\s*",
+    re.IGNORECASE,
+)
+BRAND_QUALIFIER_TOKENS = {
+    "biotherapeutics",
+    "biosciences",
+    "healthtech",
+    "pharma",
+    "pharmaceutical",
+    "pharmaceuticals",
+    "therapeutics",
+    "technology",
+    "technologies",
+}
 B3_DEPOSITARY_TICKER_RE = re.compile(r".*(31|32|33|34|35|39)$")
 B3_FRACTIONAL_TICKER_RE = re.compile(r".*F$")
 B3_UNIT_TICKER_RE = re.compile(r".*11$")
@@ -234,6 +386,7 @@ COMPANY_STOPWORDS = {
     "a",
     "ab",
     "ag",
+    "akcyjna",
     "asa",
     "bank",
     "class",
@@ -259,6 +412,7 @@ COMPANY_STOPWORDS = {
     "sa",
     "se",
     "shares",
+    "spolka",
     "stock",
 }
 CORPORATE_ALIAS_MARKERS = {
@@ -630,7 +784,110 @@ def dedupe_keep_order(values: Iterable[str]) -> list[str]:
     return result
 
 
+def clean_alias_spacing(value: str) -> str:
+    value = re.sub(r"[(){}\[\],;:]+", " ", value)
+    value = re.sub(r"[|_$#]+", " ", value)
+    value = re.sub(r"\s*/\s*", "/", value)
+    value = re.sub(r"\s*&\s*$", " ", value)
+    value = re.sub(r"\s*\+\s*$", " ", value)
+    value = re.sub(r"\s+", " ", value)
+    return value.strip(" .-/+&").strip()
+
+
+def strip_legal_alias_suffixes(value: str) -> str:
+    cleaned = value
+    previous = ""
+    while cleaned != previous:
+        previous = cleaned
+        for pattern in LEGAL_ALIAS_SUFFIX_PATTERNS:
+            cleaned = pattern.sub(" ", cleaned)
+        cleaned = clean_alias_spacing(cleaned)
+    return cleaned
+
+
+def strip_stock_industry_tail(value: str) -> str:
+    cleaned = value
+    for pattern in STOCK_INDUSTRY_TAIL_PATTERNS:
+        cleaned = pattern.sub(" ", cleaned)
+    return clean_alias_spacing(cleaned)
+
+
+def has_malformed_alias_punctuation(value: str) -> bool:
+    return bool(
+        not value
+        or re.search(r"(?:[&+$#]|-\$)$", value)
+        or re.search(r"(?:&#|;|_|\|)", value)
+        or re.search(r"\b[a-z]$", value) and len(value.split()) > 1
+    )
+
+
+def has_partial_name_token_alias(alias: str, company_name: str) -> bool:
+    alias_tokens = re.findall(r"[a-z0-9]+", normalize_alias_text(alias).lower())
+    company_tokens = re.findall(r"[a-z0-9]+", normalize_alias_text(company_name).lower())
+    for alias_token in alias_tokens:
+        if len(alias_token) < 4:
+            continue
+        for token in company_tokens:
+            if token != alias_token and token.startswith(alias_token):
+                return True
+    return False
+
+
+def is_safe_single_word_brand(value: str) -> bool:
+    return bool(
+        value
+        and re.fullmatch(r"[a-z0-9][a-z0-9-]{4,}", value)
+        and not is_blocked_alias(value)
+        and not is_common_single_word_alias(value)
+    )
+
+
+def stock_alias_candidates(alias: str) -> list[str]:
+    base = strip_legal_alias_suffixes(alias)
+    concise = strip_stock_industry_tail(base)
+    if re.search(r"\b(?:(?:electric|eletric)\s+power|techno)\b$", base, re.IGNORECASE):
+        candidates = [concise]
+    else:
+        candidates = [base, concise]
+    tokens = concise.split()
+    if len(tokens) == 2 and tokens[1] in BRAND_QUALIFIER_TOKENS and is_safe_single_word_brand(tokens[0]):
+        candidates.append(tokens[0])
+    return [candidate for candidate in dedupe_keep_order(candidates) if candidate]
+
+
+def etf_alias_candidate(alias: str) -> str:
+    cleaned = strip_legal_alias_suffixes(alias)
+    cleaned = ETF_SHELL_PREFIX_RE.sub("", cleaned)
+    if " - " in cleaned:
+        left, right = cleaned.split(" - ", 1)
+        if is_generic_wrapper_alias(left) or re.search(r"\b(?:trust|fund|plc|multi[- ]units|series)\b", left, re.IGNORECASE):
+            cleaned = right
+    previous = ""
+    while cleaned != previous:
+        previous = cleaned
+        for pattern in ETF_PROVIDER_PREFIX_PATTERNS:
+            cleaned = pattern.sub("", cleaned)
+        cleaned = re.sub(r"^(?:i|ii|iii|iv|v|vi|vii|viii|ix|x)\s*-\s*", "", cleaned, flags=re.IGNORECASE)
+    cleaned = ETF_WRAPPER_TOKEN_RE.sub(" ", cleaned)
+    cleaned = ETF_SHARE_CLASS_TOKEN_RE.sub(" ", cleaned)
+    cleaned = re.sub(r"\b(?:dr|de|december|january|february|march|april|may|june|july|august|september|october|november)\b", " ", cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r"\bu\s+s\b", "us", cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r"\$+", " ", cleaned)
+    cleaned = clean_alias_spacing(cleaned)
+    return cleaned
+
+
+def alias_candidates_for_row(row: dict[str, str], alias: str) -> list[str]:
+    normalized = normalize_alias_text(alias).lower()
+    if not normalized:
+        return []
+    if row.get("asset_type") == "ETF":
+        return [candidate for candidate in (etf_alias_candidate(normalized),) if candidate]
+    return stock_alias_candidates(normalized)
+
+
 def ascii_fold(value: str) -> str:
+    value = value.translate(str.maketrans({"Ł": "L", "ł": "l"}))
     normalized = unicodedata.normalize("NFKD", value)
     return "".join(character for character in normalized if not unicodedata.combining(character))
 
@@ -639,6 +896,22 @@ def ascii_fold(value: str) -> str:
 def normalize_tokens(value: str) -> set[str]:
     tokens = set(re.findall(r"[a-z0-9]+", ascii_fold(value).lower()))
     return {token for token in tokens if len(token) > 1 and token not in COMPANY_STOPWORDS}
+
+
+@lru_cache(maxsize=None)
+def semantic_name_tokens(value: str) -> set[str]:
+    tokens = normalize_tokens(value)
+    expanded = set(tokens)
+    for token in tokens:
+        if token.endswith("s") and len(token) > 4:
+            expanded.add(token[:-1])
+        if token == "airlines":
+            expanded.update({"air", "line", "lines"})
+        if token == "maxico":
+            expanded.add("mexico")
+        if token == "participaaaes":
+            expanded.add("participacoes")
+    return expanded
 
 
 def looks_like_identifier(alias: str, wkns: set[str], isin: str) -> bool:
@@ -722,7 +995,18 @@ def alias_matches_company(alias: str, company_name: str) -> bool:
         alias_compact in company_compact or company_compact in alias_compact
     ):
         return True
-    return bool(normalize_tokens(alias) & normalize_tokens(company_name))
+    alias_tokens = semantic_name_tokens(alias)
+    company_tokens = semantic_name_tokens(company_name)
+    if not alias_tokens or not company_tokens:
+        return False
+    shared_tokens = alias_tokens & company_tokens
+    if len(shared_tokens) >= 2:
+        return True
+    if alias_tokens <= company_tokens or company_tokens <= alias_tokens:
+        return True
+    if len(shared_tokens) == 1 and len(alias_tokens) == 1:
+        return True
+    return False
 
 
 def is_depositary_row(row: dict[str, str]) -> bool:
@@ -1562,6 +1846,9 @@ def should_drop_contextual_alias(
     if not context or len(context["entities"]) < 2:
         return False
 
+    if alias_matches_company(alias, row["name"]):
+        return False
+
     entity_key = entity_key_for_row(row)
     if context["matching_entities"]:
         return entity_key not in context["matching_entities"]
@@ -1589,36 +1876,45 @@ def clean_aliases(
     cleaned_isin = MANUAL_ISIN_CORRECTIONS.get(row["ticker"], row["isin"])
     cleaned_aliases: list[str] = []
 
-    for alias in aliases:
-        lowered = alias.lower()
-        if is_blocked_alias(alias):
-            continue
-        if has_wrapper_term(alias):
-            continue
-        if should_drop_contextual_alias(row, alias, alias_context):
-            continue
-        if lowered.startswith("1x "):
-            continue
-        # Skip very short name aliases (<=2 chars) -- too ambiguous
-        if len(alias) <= 2 and not looks_like_identifier(alias, wkns, cleaned_isin):
-            continue
-        # Numeric namespace tickers are already the row ticker. Keeping them
-        # as aliases creates ambiguous numeric lookup triggers.
-        if is_numeric_exchange_alias(row, alias, wkns, cleaned_isin):
-            continue
-        # Skip pure-numeric aliases that aren't identifiers (WKN/ISIN)
-        if alias.isdigit() and alias not in wkns and alias != cleaned_isin:
-            continue
-        if (
-            looks_like_external_symbol_alias(alias)
-            and not looks_like_identifier(alias, wkns, cleaned_isin)
-            and not alias_matches_company(alias, row["name"])
-        ):
-            continue
-        if strict_alias_filter and not looks_like_identifier(alias, wkns, cleaned_isin):
-            if not alias_matches_company(alias, row["name"]):
+    for source_alias in aliases:
+        for alias in alias_candidates_for_row(row, source_alias):
+            lowered = alias.lower()
+            if has_malformed_alias_punctuation(alias):
                 continue
-        cleaned_aliases.append(alias)
+            if has_partial_name_token_alias(alias, row["name"]):
+                continue
+            if should_drop_from_ticker_alias_column(alias=alias, isin=cleaned_isin, wkns=wkns):
+                continue
+            if is_blocked_alias(alias):
+                continue
+            if has_wrapper_term(alias) or is_generic_wrapper_alias(alias):
+                continue
+            if should_drop_contextual_alias(row, alias, alias_context):
+                continue
+            if lowered.startswith("1x "):
+                continue
+            # Skip very short name aliases (<=2 chars) -- too ambiguous
+            if len(alias) <= 2 and not looks_like_identifier(alias, wkns, cleaned_isin):
+                continue
+            # Numeric namespace tickers are already the row ticker. Keeping them
+            # as aliases creates ambiguous numeric lookup triggers.
+            if is_numeric_exchange_alias(row, alias, wkns, cleaned_isin):
+                continue
+            # Skip pure-numeric aliases that aren't identifiers (WKN/ISIN)
+            if alias.isdigit() and alias not in wkns and alias != cleaned_isin:
+                continue
+            if (
+                looks_like_external_symbol_alias(alias)
+                and not looks_like_identifier(alias, wkns, cleaned_isin)
+                and not alias_matches_company(alias, row["name"])
+            ):
+                continue
+            if not looks_like_identifier(alias, wkns, cleaned_isin) and not alias_matches_company(alias, row["name"]):
+                continue
+            if strict_alias_filter and not looks_like_identifier(alias, wkns, cleaned_isin):
+                if not alias_matches_company(alias, row["name"]):
+                    continue
+            cleaned_aliases.append(alias)
 
     if suspicious_us_primary:
         cleaned_isin = MANUAL_ISIN_CORRECTIONS.get(row["ticker"], "")
@@ -1898,7 +2194,7 @@ def cleaned_rows():
     output_rows: list[dict[str, str]] = []
     for row in base_rows:
         row_key = (row["ticker"], row["exchange"])
-        aliases = dedupe_keep_order(row["aliases"])
+        aliases = dedupe_keep_order([row["name"], *row["aliases"]])
         identifier = identifier_lookup.get(row_key) or identifier_lookup.get((row["ticker"], ""), {"wkn": ""})
         wkns = {identifier["wkn"]} if identifier.get("wkn") else set()
         if is_namespace_collision_row(row, aliases, wkns):
@@ -1923,16 +2219,78 @@ def cleaned_rows():
             "aliases": aliases,
             "wkn": identifier.get("wkn", ""),
         }
+        output_row = apply_output_metadata_overrides(
+            output_row,
+            review_metadata_updates.get((row["ticker"], row["exchange"]), {}),
+        )
+        _, output_aliases = clean_aliases(output_row, output_row.get("aliases", []), wkns, alias_context)
+        output_row["aliases"] = output_aliases
         output_rows.append(
             with_sector_model_fields(
-                apply_output_metadata_overrides(
-                    output_row,
-                    review_metadata_updates.get((row["ticker"], row["exchange"]), {}),
-                )
+                output_row
             )
         )
 
+    output_rows = drop_duplicate_ticker_aliases(output_rows)
     return sorted(output_rows, key=lambda row: row["ticker"]), alias_type_lookup
+
+
+def duplicate_alias_owner_score(row: dict[str, str], alias: str) -> int:
+    score = 0
+    if row.get("exchange") in OTC_EXCHANGES:
+        score -= 30
+    else:
+        score += 10
+    if row.get("asset_type") == "Stock":
+        score += 5
+    if strip_legal_alias_suffixes(normalize_alias_text(row.get("name", "")).lower()) == alias:
+        score += 30
+    if row.get("exchange") in {"XETRA", "LSE", "Euronext", "SIX", "NYSE", "NASDAQ", "TSX", "TSE"}:
+        score += 3
+    return score
+
+
+def allowed_duplicate_alias_rows(entries: list[tuple[int, dict[str, str]]], alias: str) -> set[int]:
+    entity_keys = {
+        f"isin:{row['isin']}" if row.get("isin") else f"ticker:{row['ticker']}"
+        for _, row in entries
+    }
+    if len(entity_keys) <= 1:
+        return {index for index, _ in entries}
+
+    scored = [(duplicate_alias_owner_score(row, alias), index) for index, row in entries]
+    scored.sort(reverse=True)
+    if len(scored) < 2 or scored[0][0] <= scored[1][0]:
+        return set()
+    return {scored[0][1]}
+
+
+def drop_duplicate_ticker_aliases(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    alias_to_entries: dict[str, list[tuple[int, dict[str, str]]]] = defaultdict(list)
+    for index, row in enumerate(rows):
+        for alias in row.get("aliases", []):
+            normalized = normalize_alias_text(alias).lower()
+            if normalized:
+                alias_to_entries[normalized].append((index, row))
+
+    allowed_by_alias = {
+        alias: allowed_duplicate_alias_rows(entries, alias)
+        for alias, entries in alias_to_entries.items()
+        if len({index for index, _ in entries}) > 1
+    }
+    if not allowed_by_alias:
+        return rows
+
+    cleaned_rows: list[dict[str, str]] = []
+    for index, row in enumerate(rows):
+        cleaned = dict(row)
+        cleaned["aliases"] = [
+            alias
+            for alias in row.get("aliases", [])
+            if index in allowed_by_alias.get(normalize_alias_text(alias).lower(), {index})
+        ]
+        cleaned_rows.append(cleaned)
+    return cleaned_rows
 
 
 def cleanse_conflicting_isin_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
@@ -2034,6 +2392,8 @@ def build_alias_rows(rows: list[dict[str, str]], alias_type_lookup: dict[tuple[s
         all_aliases = []
         if row["isin"]:
             all_aliases.append((row["isin"], "isin"))
+        if row["wkn"]:
+            all_aliases.append((row["wkn"], "wkn"))
         for alias in row["aliases"]:
             if is_numeric_exchange_alias(row, alias, wkns, row["isin"]):
                 alias_type = "exchange_ticker"

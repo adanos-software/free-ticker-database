@@ -1,52 +1,49 @@
 # Entry Quality Report
 
-Generated at: `2026-04-17T08:36:23Z`
+Generated at: `2026-04-17T17:06:38Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| notice | 5,500 |
-| pass | 44,714 |
-| source_gap | 12,026 |
-| warn | 256 |
+| pass | 48,880 |
+| source_gap | 12,754 |
+| warn | 862 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
 | official_reference_gap | 4,542 |
-| shared_name_alias | 4,004 |
-| missing_etf_category | 3,958 |
-| expected_missing_primary_isin | 3,910 |
+| missing_etf_category | 3,960 |
+| expected_missing_primary_isin | 3,928 |
 | missing_stock_sector | 3,164 |
-| low_company_name_overlap | 1,982 |
-| official_name_mismatch | 256 |
+| official_name_mismatch | 862 |
 
 ## Top Flagged Exchanges
 
 | Exchange | Pass | Notice | Source Gap | Warn | Quarantine |
 |---|---:|---:|---:|---:|---:|
-| OTC | 6,531 | 1,618 | 2,688 | 256 | 0 |
-| B3 | 473 | 138 | 926 | 0 | 0 |
-| TSX | 1,054 | 148 | 693 | 0 | 0 |
-| SSE | 2,089 | 42 | 658 | 0 | 0 |
-| NYSE ARCA | 1,807 | 278 | 570 | 0 | 0 |
-| KRX | 1,215 | 51 | 530 | 0 | 0 |
-| LSE | 5,121 | 775 | 519 | 0 | 0 |
-| SZSE | 2,523 | 58 | 502 | 0 | 0 |
-| NSE_IN | 0 | 2 | 481 | 0 | 0 |
-| TSXV | 349 | 260 | 457 | 0 | 0 |
-| NASDAQ | 3,647 | 578 | 409 | 0 | 0 |
-| XETRA | 3,253 | 159 | 340 | 0 | 0 |
-| BATS | 881 | 49 | 313 | 0 | 0 |
-| STO | 401 | 94 | 230 | 0 | 0 |
-| ASX | 974 | 117 | 207 | 0 | 0 |
-| SET | 325 | 25 | 197 | 0 | 0 |
-| TWSE | 1,072 | 2 | 168 | 0 | 0 |
-| Euronext | 742 | 81 | 152 | 0 | 0 |
-| BMV | 8 | 36 | 135 | 0 | 0 |
-| TASE | 529 | 14 | 130 | 0 | 0 |
+| OTC | 7,591 | 0 | 2,866 | 636 | 0 |
+| B3 | 605 | 0 | 932 | 0 | 0 |
+| TSX | 1,125 | 0 | 767 | 3 | 0 |
+| NYSE ARCA | 1,954 | 0 | 613 | 87 | 0 |
+| SSE | 2,131 | 0 | 658 | 0 | 0 |
+| TSXV | 444 | 0 | 603 | 19 | 0 |
+| LSE | 5,819 | 0 | 595 | 1 | 0 |
+| KRX | 1,266 | 0 | 530 | 0 | 0 |
+| SZSE | 2,581 | 0 | 502 | 0 | 0 |
+| NSE_IN | 0 | 0 | 483 | 0 | 0 |
+| NASDAQ | 4,159 | 0 | 447 | 28 | 0 |
+| XETRA | 3,403 | 0 | 349 | 0 | 0 |
+| BATS | 919 | 0 | 320 | 4 | 0 |
+| STO | 488 | 0 | 237 | 0 | 0 |
+| ASX | 1,082 | 0 | 212 | 4 | 0 |
+| SET | 341 | 0 | 184 | 22 | 0 |
+| BMV | 8 | 0 | 171 | 0 | 0 |
+| TWSE | 1,072 | 0 | 170 | 0 | 0 |
+| Euronext | 816 | 0 | 159 | 0 | 0 |
+| NYSE | 1,935 | 0 | 118 | 28 | 0 |
 
 ## Notes
 

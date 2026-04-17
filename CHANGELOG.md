@@ -2,6 +2,18 @@
 
 ## [Unreleased]
 
+## [3.12.0] - 2026-04-17
+
+### Added
+
+- Added an alias-policy module, alias quality reports, and Adanos Sentiment API-safe ticker-reference exports with natural-language detection policies.
+
+### Changed
+
+- Restricted `tickers.csv.aliases` to conservative natural-language aliases while keeping ISIN/WKN and exchange-ticker identifiers in structured alias/identifier exports.
+- Normalized API aliases by stripping security/legal suffixes, removing trademark/non-ASCII symbols, shortening ETF product names, deriving concise company aliases, and dropping cross-exchange alias contamination.
+- Rebuilt canonical exports to 54,020 primary tickers, 62,496 listing rows, 48,794 ISIN-covered rows, 44,996 sector/category-covered rows, and 103,490 structured alias rows.
+
 ## [3.11.0] - 2026-04-17
 
 ### Added

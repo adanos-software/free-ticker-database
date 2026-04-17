@@ -8218,7 +8218,7 @@ WSE_STOCK_SECTOR_RULES: tuple[tuple[str, str], ...] = (
     ("produkcja rolna", "Consumer Staples"),
     ("rybolow", "Consumer Staples"),
     ("budownictwo", "Industrials"),
-    ("usługi dla przedsiebiorstw", "Industrials"),
+    ("uslugi dla przedsiebiorstw", "Industrials"),
     ("transport", "Industrials"),
     ("drewno", "Materials"),
     ("papier", "Materials"),

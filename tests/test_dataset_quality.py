@@ -363,13 +363,13 @@ def test_supplement_only_rows_do_not_inherit_cross_exchange_aliases():
     assert aeu["aliases"] == "atomic eagle"
 
     assert azt is not None
-    assert azt["aliases"] == "arcticzymes technologies a"
+    assert azt["aliases"] == "arcticzymes"
 
     assert prs is not None
     assert prs["aliases"] == "prosafe"
 
     assert eam is not None
-    assert eam["aliases"] == "eam solar a"
+    assert eam["aliases"] == "eam solar"
 
 
 def test_contaminated_us_primaries_cleaned():
@@ -398,7 +398,7 @@ def test_depositary_and_cross_issuer_aliases_removed():
     assert ubs is not None
     assert asml_ams is not None
     assert asml_ams["country"] == "Netherlands"
-    assert asml_ams["aliases"] == ""
+    assert asml_ams["aliases"] == "asml holding"
     assert "ubm development" not in ubs["aliases"]
     assert "united bus service" not in ubs["aliases"]
     assert "urbas grupo financiero" not in ubs["aliases"]
@@ -2125,7 +2125,7 @@ def test_sto_review_overrides_keep_current_hotel_and_remove_nosium_b():
     assert hotel["country"] == "Sweden"
     assert hotel["country_code"] == "SE"
     assert hotel["isin"] == "SE0011415710"
-    assert hotel["aliases"] == "hotel fast sse"
+    assert hotel["aliases"] == ""
 
 
 def test_sto_review_overrides_drop_m8g_and_int_and_enrich_ver():

@@ -3137,8 +3137,8 @@
     {
       "exchange": "NYSE",
       "official_symbols": 3842,
-      "matched": 2060,
-      "collisions": 517,
+      "matched": 2063,
+      "collisions": 514,
       "missing": 1265,
       "collision_examples": [
         {
@@ -3278,8 +3278,8 @@
     {
       "exchange": "NYSE ARCA",
       "official_symbols": 2620,
-      "matched": 2585,
-      "collisions": 15,
+      "matched": 2584,
+      "collisions": 16,
       "missing": 20,
       "collision_examples": [
         {
@@ -3296,6 +3296,14 @@
           "target_exchange": "NYSE ARCA",
           "existing_exchanges": [
             "CPH"
+          ]
+        },
+        {
+          "ticker": "BWET",
+          "name": "Breakwave Tanker Shipping ETF",
+          "target_exchange": "NYSE ARCA",
+          "existing_exchanges": [
+            "NYSE"
           ]
         },
         {
@@ -3352,14 +3360,6 @@
           "target_exchange": "NYSE ARCA",
           "existing_exchanges": [
             "TSX"
-          ]
-        },
-        {
-          "ticker": "GGM",
-          "name": "GGM Macro Alignment ETF",
-          "target_exchange": "NYSE ARCA",
-          "existing_exchanges": [
-            "TSXV"
           ]
         }
       ],
@@ -3419,8 +3419,8 @@
     {
       "exchange": "NYSE MKT",
       "official_symbols": 312,
-      "matched": 234,
-      "collisions": 19,
+      "matched": 232,
+      "collisions": 21,
       "missing": 59,
       "collision_examples": [
         {
@@ -3464,6 +3464,14 @@
           ]
         },
         {
+          "ticker": "CTGO",
+          "name": "Contango Silver & Gold Inc. Common Stock",
+          "target_exchange": "NYSE MKT",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
           "ticker": "CVU",
           "name": "CPI Aerostructures, Inc. Common Stock",
           "target_exchange": "NYSE MKT",
@@ -3493,14 +3501,6 @@
           "target_exchange": "NYSE MKT",
           "existing_exchanges": [
             "Euronext"
-          ]
-        },
-        {
-          "ticker": "GLV",
-          "name": "Clough Global Dividend and Income Fund Common Shares of beneficial interest",
-          "target_exchange": "NYSE MKT",
-          "existing_exchanges": [
-            "LSE"
           ]
         }
       ],
