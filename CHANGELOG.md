@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+## [3.12.1] - 2026-04-18
+
+### Fixed
+
+- Updated the entry-quality warn allowlist to match the reviewed v3.12.0 warning queue so CI blocks only new warnings.
+- Updated GitHub Actions workflow dependencies to Node 24-compatible `actions/checkout@v6` and `actions/setup-python@v6`.
+
 ## [3.12.0] - 2026-04-17
 
 ### Added

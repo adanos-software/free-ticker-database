@@ -91,7 +91,7 @@ JSON metadata:
 ```json
 {
   "_meta": {
-    "version": "3.12.0",
+    "version": "3.12.1",
     "built_at": "2026-04-17T15:53:00Z",
     "total_tickers": 53997
   },
