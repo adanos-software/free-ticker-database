@@ -1,0 +1,117 @@
+{
+  "_meta": {
+    "generated_at": "2026-04-18T12:50:40Z",
+    "source_files": {
+      "adanos_reference_csv": "data/adanos/ticker_reference.csv"
+    }
+  },
+  "summary": {
+    "reference_rows": 54020,
+    "alias_entries": 49401,
+    "tickers_with_aliases": 43287,
+    "positive_probes": 5,
+    "positive_misses": 0,
+    "negative_probes": 5,
+    "negative_hits": 0
+  },
+  "positive_misses": [],
+  "negative_hits": [],
+  "positive_results": [
+    {
+      "id": "positive_msft",
+      "text": "Microsoft reported stronger cloud revenue.",
+      "expected_ticker": "MSFT",
+      "matched": true,
+      "matches": [
+        {
+          "ticker": "MSFT",
+          "alias": "microsoft"
+        },
+        {
+          "ticker": "CLD",
+          "alias": "cloud"
+        }
+      ]
+    },
+    {
+      "id": "positive_nvda",
+      "text": "Nvidia shares moved higher after the chip update.",
+      "expected_ticker": "NVDA",
+      "matched": true,
+      "matches": [
+        {
+          "ticker": "NVDA",
+          "alias": "nvidia"
+        }
+      ]
+    },
+    {
+      "id": "positive_tsla",
+      "text": "Tesla deliveries are back in focus this quarter.",
+      "expected_ticker": "TSLA",
+      "matched": true,
+      "matches": [
+        {
+          "ticker": "TSLA",
+          "alias": "tesla"
+        }
+      ]
+    },
+    {
+      "id": "positive_amzn",
+      "text": "Amazon announced another investment in logistics.",
+      "expected_ticker": "AMZN",
+      "matched": true,
+      "matches": [
+        {
+          "ticker": "AMZN",
+          "alias": "amazon"
+        }
+      ]
+    },
+    {
+      "id": "positive_meta",
+      "text": "Meta Platforms launched a new advertising product.",
+      "expected_ticker": "META",
+      "matched": true,
+      "matches": [
+        {
+          "ticker": "META",
+          "alias": "meta platforms"
+        }
+      ]
+    }
+  ],
+  "negative_results": [
+    {
+      "id": "negative_common_market",
+      "text": "The market moved higher before the close.",
+      "matched": false,
+      "matches": []
+    },
+    {
+      "id": "negative_common_bank",
+      "text": "The central bank held rates steady.",
+      "matched": false,
+      "matches": []
+    },
+    {
+      "id": "negative_common_gold",
+      "text": "Gold and cash were discussed as defensive assets.",
+      "matched": false,
+      "matches": []
+    },
+    {
+      "id": "negative_common_call",
+      "text": "We have a call next week about the product roadmap.",
+      "matched": false,
+      "matches": []
+    },
+    {
+      "id": "negative_common_energy",
+      "text": "Energy costs remain high for consumers.",
+      "matched": false,
+      "matches": []
+    }
+  ]
+}

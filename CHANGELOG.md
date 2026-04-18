@@ -2,6 +2,19 @@
 
 ## [Unreleased]
 
+## [3.13.0] - 2026-04-18
+
+### Added
+
+- Added a central database release-gate validator with JSON/Markdown reports for structural integrity, ISIN validity, listing scope consistency, Adanos alias safety, and coverage-report coherence.
+- Added an Adanos Sentiment API detection simulator that smoke-tests natural-language ticker aliases against positive and negative text probes.
+- Added CI enforcement for the database release-gate validator.
+
+### Changed
+
+- Blocked generic organization aliases such as `central bank` from natural-language detection exports after the simulator identified a false-positive risk.
+- Rebuilt canonical exports to 54,020 primary tickers, 62,496 listing rows, 48,794 ISIN-covered rows, 44,996 sector/category-covered rows, and 103,489 structured alias rows.
+
 ## [3.12.1] - 2026-04-18
 
 ### Fixed

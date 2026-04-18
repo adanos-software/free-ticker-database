@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from scripts.alias_policy import (
     classify_alias_for_natural_language,
+    is_generic_organization_alias,
     is_generic_wrapper_alias,
     should_drop_from_ticker_alias_column,
 )
@@ -45,6 +46,20 @@ def test_generic_fund_wrapper_aliases_are_blocked():
 
     assert decision.status == "reject"
     assert decision.reason == "generic_fund_or_trust_wrapper"
+
+
+def test_generic_organization_aliases_are_blocked():
+    assert is_generic_organization_alias("Central Bank")
+
+    decision = classify_alias_for_natural_language(
+        alias="Central Bank",
+        alias_type="name",
+        ticker="CBSU",
+    )
+
+    assert decision.status == "reject"
+    assert decision.reason == "generic_organization_alias"
+    assert should_drop_from_ticker_alias_column(alias="Central Bank")
 
 
 def test_short_common_aliases_are_blocked_unless_trusted_brand():

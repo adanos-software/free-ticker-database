@@ -15,7 +15,7 @@ Free stock and ETF ticker reference data with primary tickers, listing-keyed ven
 | ETFs | 15,016 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 69 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 81 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 103,490 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
+| Aliases | 103,489 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
 | ISIN coverage | 48,794 (90.3%) | Primary ticker rows with a non-empty `isin`. |
 | Sector/category coverage | 44,996 (83.3%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
 | Stock sector coverage | 33,979 | Primary ticker rows with a non-empty `stock_sector`. |
@@ -56,7 +56,9 @@ Reference and audit files:
 | [`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md) | Missing/partial/global official-source backlog |
 | [`data/reports/completion_backlog.md`](data/reports/completion_backlog.md) | Prioritized missing ISIN/sector/category backlog |
 | [`data/reports/alias_quality.md`](data/reports/alias_quality.md) | Alias safety report for natural-language mention detection |
+| [`data/reports/adanos_detection_simulation.md`](data/reports/adanos_detection_simulation.md) | Mention-detection smoke test for Adanos natural-language aliases |
 | [`data/reports/entry_quality.md`](data/reports/entry_quality.md) | Per-listing deterministic quality scan summary |
+| [`data/reports/validation_report.md`](data/reports/validation_report.md) | Release-gate validation summary across structure, ISINs, scopes, aliases, and reports |
 | [`data/reports/ohlcv_plausibility.md`](data/reports/ohlcv_plausibility.md) | Kronos-inspired market-data plausibility queue |
 | [`data/reports/masterfile_collision_report.json`](data/reports/masterfile_collision_report.json) | Official-symbol gaps blocked by ticker collisions |
 
@@ -91,9 +93,9 @@ JSON metadata:
 ```json
 {
   "_meta": {
-    "version": "3.12.1",
+    "version": "3.13.0",
     "built_at": "2026-04-17T15:53:00Z",
-    "total_tickers": 53997
+    "total_tickers": 54020
   },
   "tickers": []
 }
@@ -105,9 +107,11 @@ SQLite tables: `tickers`, `listings`, `aliases`, `cross_listings`, and `instrume
 
 - Valid ISINs are checksum-verified.
 - `data/reports/alias_quality.csv` classifies every alias as safe, review-only, or identifier-only for mention detection.
+- `data/reports/adanos_detection_simulation.json` measures positive alias hits and negative false-positive probes for the Sentiment API import.
 - Natural-language aliases are derived from current security names on every rebuild, then normalized to API-safe aliases.
 - Duplicate natural-language aliases are either assigned to a clear best owner or removed from public alias columns.
 - `data/reports/entry_quality.csv` stores one deterministic quality row per `listing_key`.
+- `data/reports/validation_report.json` is the release gate: duplicate keys, invalid ISINs, typed sector/category leakage, Adanos alias findings, unexpected entry-quality warnings, and stale coverage counts must be clean.
 - `data/reports/ohlcv_plausibility.csv` stores optional market-data hygiene checks; default runs are no-network and omit unchecked rows unless local OHLCV samples, `--fetch-yahoo`, or `--include-not-checked` are provided.
 - Obvious common-word, wrapper, celebrity, product, junk, short, and numeric aliases are filtered.
 - Rights, units, warrants, notes, preferreds, and depositary lines are filtered from the stock universe.
@@ -146,7 +150,9 @@ python3 scripts/build_source_inventory.py
 python3 scripts/build_completion_backlog.py
 python3 scripts/build_alias_quality_report.py
 python3 scripts/build_adanos_ticker_reference.py
+python3 scripts/simulate_adanos_detection.py
 python3 scripts/build_entry_quality_report.py
+python3 scripts/validate_database.py
 python3 scripts/build_ohlcv_plausibility_report.py
 python3 scripts/fetch_symbol_changes.py
 FINANCIALDATA_API_KEY=... python3 scripts/fetch_financialdata_symbols.py
@@ -170,7 +176,9 @@ python3 scripts/build_source_inventory.py
 python3 scripts/build_completion_backlog.py
 python3 scripts/build_alias_quality_report.py
 python3 scripts/build_adanos_ticker_reference.py
+python3 scripts/simulate_adanos_detection.py
 python3 scripts/build_entry_quality_report.py
+python3 scripts/validate_database.py
 python3 scripts/build_ohlcv_plausibility_report.py
 python3 scripts/fetch_symbol_changes.py
 ```

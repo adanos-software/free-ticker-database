@@ -5,7 +5,7 @@
 | Metric | Value |
 |---|---|
 | tickers | 54020 |
-| aliases | 103490 |
+| aliases | 103489 |
 | stocks | 39004 |
 | etfs | 15016 |
 | isin_coverage | 48794 |
@@ -51,23 +51,23 @@
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-04-17T17:06:21Z |
-| tickers_age_hours | 0.01 |
+| tickers_built_at | 2026-04-18T12:50:03Z |
+| tickers_age_hours | 0.02 |
 | masterfiles_generated_at | 2026-04-17T08:30:48Z |
-| masterfiles_age_hours | 8.6 |
-| identifiers_generated_at | 2026-04-17T17:06:25Z |
-| identifiers_age_hours | 0.0 |
-| listing_history_observed_at | 2026-04-17T17:06:21Z |
-| listing_history_age_hours | 0.01 |
+| masterfiles_age_hours | 28.34 |
+| identifiers_generated_at | 2026-04-18T12:50:03Z |
+| identifiers_age_hours | 0.02 |
+| listing_history_observed_at | 2026-04-18T12:50:03Z |
+| listing_history_age_hours | 0.02 |
 | latest_verification_run | data/stock_verification/run-20260417-083718-postrebuild |
 | latest_verification_generated_at | 2026-04-17T08:37:21Z |
-| latest_verification_age_hours | 8.49 |
+| latest_verification_age_hours | 28.23 |
 | latest_stock_verification_run | data/stock_verification/run-20260417-083718-postrebuild |
 | latest_stock_verification_generated_at | 2026-04-17T08:37:21Z |
-| latest_stock_verification_age_hours | 8.49 |
+| latest_stock_verification_age_hours | 28.23 |
 | latest_etf_verification_run | data/etf_verification/run-20260417-083718-postrebuild |
 | latest_etf_verification_generated_at | 2026-04-17T08:37:23Z |
-| latest_etf_verification_age_hours | 8.49 |
+| latest_etf_verification_age_hours | 28.23 |
 
 ## Source Coverage
 
