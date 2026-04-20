@@ -2,6 +2,20 @@
 
 ## [Unreleased]
 
+## [3.14.0] - 2026-04-20
+
+### Added
+
+- Added targeted metadata refreshes for B3, TMX, LSE, and related review-gated coverage gaps.
+- Added official B3 ETF and BDR fund rows plus refreshed official B3 ISIN coverage from the latest B3 masterfile data.
+- Added reviewed FinanceDatabase stock-sector overrides for selected LSE investment trust and energy listings.
+
+### Changed
+
+- Rebuilt canonical exports to 54,026 primary tickers, 62,496 listing rows, 48,808 ISIN-covered rows, 45,006 sector/category-covered rows, and 103,499 structured alias rows.
+- Reduced core primary rows missing ISIN to 3,920 and refreshed validation, source inventory, completion backlog, entry-quality, alias-quality, Adanos reference, and listing-history artifacts.
+- Fixed the scheduled symbol-changes workflow by preventing duplicate GitHub auth headers and upgrading `peter-evans/create-pull-request` to `v8.1.1`.
+
 ## [3.13.0] - 2026-04-18
 
 ### Added
