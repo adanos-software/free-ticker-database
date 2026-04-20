@@ -1,11 +1,11 @@
 # Completion Backlog
 
-Generated at: `2026-04-17T17:06:42Z`
+Generated at: `2026-04-20T17:46:45Z`
 
 ## Summary
 
-- Missing primary ISIN rows: `3928`
-- Missing stock sectors: `5025`
+- Missing primary ISIN rows: `3920`
+- Missing stock sectors: `5021`
 - Missing ETF categories: `3999`
 - Official symbol collisions blocking global-unique ticker ingestion: `10878`
 
@@ -17,7 +17,7 @@ Generated at: `2026-04-17T17:06:42Z`
 | 2 | TSX | All | 564 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
 | 3 | TSXV | All | 543 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
 | 4 | SZSE | All | 487 | official_partial | Official SSE/SZSE share and ETF feeds first; reviewed EODHD/XTB fallback only for unresolved rows. | yes |
-| 5 | B3 | All | 284 | official_full | Official B3 InstrumentsEquities first; FinanceDatabase reviewed fallback for residual identifiers. | yes |
+| 5 | B3 | All | 276 | official_full | Official B3 InstrumentsEquities first; FinanceDatabase reviewed fallback for residual identifiers. | yes |
 | 6 | NYSE ARCA | All | 207 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 7 | SET | All | 196 | official_full | Official exchange masterfile or reviewed secondary identifier source. | yes |
 | 8 | NASDAQ | All | 156 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
@@ -33,7 +33,7 @@ Generated at: `2026-04-17T17:06:42Z`
 | 1 | OTC | Stock | 1861 | official_full | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
 | 2 | NSE_IN | Stock | 483 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 3 | TSXV | Stock | 418 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
-| 4 | LSE | Stock | 333 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
+| 4 | LSE | Stock | 329 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
 | 5 | B3 | Stock | 279 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
 | 6 | STO | Stock | 231 | official_partial | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
 | 7 | Euronext | Stock | 133 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
@@ -67,8 +67,8 @@ Generated at: `2026-04-17T17:06:42Z`
 | 1 | OTC | 1900 | 1861 | 39 | official_full |
 | 2 | B3 | 881 | 279 | 602 | official_full |
 | 3 | KRX | 526 | 0 | 526 | official_full |
-| 4 | LSE | 522 | 333 | 189 | official_full |
-| 5 | NYSE ARCA | 522 | 0 | 522 | official_full |
+| 4 | NYSE ARCA | 522 | 0 | 522 | official_full |
+| 5 | LSE | 518 | 329 | 189 | official_full |
 | 6 | NSE_IN | 483 | 483 | 0 | official_full |
 | 7 | SSE | 479 | 0 | 479 | official_partial |
 | 8 | TSXV | 421 | 418 | 3 | official_full |

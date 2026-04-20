@@ -79,10 +79,10 @@
     {
       "asset_type": "All",
       "confidence_policy": "Official B3 rows can be accepted after exact code and checksum gates; FinanceDatabase ISINs require peer-conflict review.",
-      "etf_missing_count": 44,
+      "etf_missing_count": 37,
       "exchange": "B3",
       "field": "missing_isin_primary",
-      "missing_count": 284,
+      "missing_count": 276,
       "notes": "B3 has strong official coverage but residual identifier and category gaps.",
       "official_source_count": 3,
       "priority_bucket": "top_impact",
@@ -91,7 +91,7 @@
       "reference_scopes": "exchange_directory|listed_companies_subset",
       "review_needed": true,
       "script": "scripts/fetch_exchange_masterfiles.py --source b3_instruments_equities; scripts/backfill_financedatabase_metadata.py --enable-isin",
-      "stock_missing_count": 240,
+      "stock_missing_count": 239,
       "target_field": "isin",
       "venue_status": "official_full"
     },
@@ -766,7 +766,7 @@
       "etf_missing_count": 0,
       "exchange": "LSE",
       "field": "missing_sector_stock",
-      "missing_count": 333,
+      "missing_count": 329,
       "notes": "Good candidate for deterministic local review batches.",
       "official_source_count": 4,
       "priority_bucket": "top_impact",
@@ -775,7 +775,7 @@
       "reference_scopes": "exchange_directory|listed_companies_subset|security_lookup_subset",
       "review_needed": true,
       "script": "scripts/backfill_financedatabase_metadata.py; scripts/backfill_sector_from_isin_peers.py",
-      "stock_missing_count": 333,
+      "stock_missing_count": 329,
       "target_field": "stock_sector",
       "venue_status": "official_full"
     },
@@ -2441,10 +2441,10 @@
     },
     "field_totals": {
       "missing_etf_category": 3999,
-      "missing_isin_primary": 3928,
-      "missing_sector_stock": 5025
+      "missing_isin_primary": 3920,
+      "missing_sector_stock": 5021
     },
-    "generated_at": "2026-04-17T17:06:42Z",
+    "generated_at": "2026-04-20T17:46:45Z",
     "model_notes": {
       "listing_key_first": "Use listing_key as the internal identity for future full-universe work; global ticker uniqueness still blocks official symbol collisions.",
       "sector_split": "Use stock_sector for stock rows and etf_category for ETF rows; the legacy sector export has been removed.",

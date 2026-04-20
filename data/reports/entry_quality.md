@@ -1,23 +1,23 @@
 # Entry Quality Report
 
-Generated at: `2026-04-18T12:50:24Z`
+Generated at: `2026-04-20T17:46:51Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 48,880 |
-| source_gap | 12,754 |
+| pass | 48,905 |
+| source_gap | 12,729 |
 | warn | 862 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 4,542 |
+| official_reference_gap | 4,453 |
 | missing_etf_category | 3,960 |
-| expected_missing_primary_isin | 3,928 |
-| missing_stock_sector | 3,164 |
+| expected_missing_primary_isin | 3,920 |
+| missing_stock_sector | 3,160 |
 | official_name_mismatch | 862 |
 
 ## Top Flagged Exchanges
@@ -25,12 +25,12 @@ Generated at: `2026-04-18T12:50:24Z`
 | Exchange | Pass | Notice | Source Gap | Warn | Quarantine |
 |---|---:|---:|---:|---:|---:|
 | OTC | 7,591 | 0 | 2,866 | 636 | 0 |
-| B3 | 605 | 0 | 932 | 0 | 0 |
+| B3 | 618 | 0 | 919 | 0 | 0 |
 | TSX | 1,125 | 0 | 767 | 3 | 0 |
 | NYSE ARCA | 1,954 | 0 | 613 | 87 | 0 |
 | SSE | 2,131 | 0 | 658 | 0 | 0 |
-| TSXV | 444 | 0 | 603 | 19 | 0 |
-| LSE | 5,819 | 0 | 595 | 1 | 0 |
+| TSXV | 452 | 0 | 595 | 19 | 0 |
+| LSE | 5,823 | 0 | 591 | 1 | 0 |
 | KRX | 1,266 | 0 | 530 | 0 | 0 |
 | SZSE | 2,581 | 0 | 502 | 0 | 0 |
 | NSE_IN | 0 | 0 | 483 | 0 | 0 |

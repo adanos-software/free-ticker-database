@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-04-18T12:50:24Z",
+    "generated_at": "2026-04-20T17:46:51Z",
     "rows": 62496,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,25 +14,25 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 48880,
-      "source_gap": 12754,
+      "pass": 48905,
+      "source_gap": 12729,
       "warn": 862
     },
     "evidence_level_counts": {
-      "identifier_enriched": 220,
-      "official_reference": 57954,
-      "scoped_source_gap": 886,
-      "valid_isin": 3436
+      "identifier_enriched": 208,
+      "official_reference": 58043,
+      "scoped_source_gap": 813,
+      "valid_isin": 3432
     },
     "severity_counts": {
       "medium": 862,
-      "source_gap": 15594
+      "source_gap": 15493
     },
     "issue_counts": {
-      "official_reference_gap": 4542,
+      "official_reference_gap": 4453,
       "missing_etf_category": 3960,
-      "expected_missing_primary_isin": 3928,
-      "missing_stock_sector": 3164,
+      "expected_missing_primary_isin": 3920,
+      "missing_stock_sector": 3160,
       "official_name_mismatch": 862
     },
     "top_flagged_exchanges": [
@@ -44,8 +44,8 @@
       },
       {
         "exchange": "B3",
-        "source_gap": 932,
-        "pass": 605
+        "source_gap": 919,
+        "pass": 618
       },
       {
         "exchange": "TSX",
@@ -66,14 +66,14 @@
       },
       {
         "exchange": "TSXV",
-        "source_gap": 603,
-        "pass": 444,
+        "source_gap": 595,
+        "pass": 452,
         "warn": 19
       },
       {
         "exchange": "LSE",
-        "pass": 5819,
-        "source_gap": 595,
+        "pass": 5823,
+        "source_gap": 591,
         "warn": 1
       },
       {
