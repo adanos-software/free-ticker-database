@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -34,7 +36,7 @@ jobs:
         run: python -m pytest tests/test_fetch_symbol_changes.py -q
 
       - name: Open update pull request
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8.1.1
         with:
           branch: automation/symbol-changes
           delete-branch: true
