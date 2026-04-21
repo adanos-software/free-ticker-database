@@ -15,7 +15,7 @@ Free stock and ETF ticker reference data with primary tickers, listing-keyed ven
 | ETFs | 15,020 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 69 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 81 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 103,499 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
+| Aliases | 103,462 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
 | ISIN coverage | 48,808 (90.3%) | Primary ticker rows with a non-empty `isin`. |
 | Sector/category coverage | 45,006 (83.3%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
 | Stock sector coverage | 33,985 | Primary ticker rows with a non-empty `stock_sector`. |
