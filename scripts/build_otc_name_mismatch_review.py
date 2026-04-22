@@ -17,7 +17,9 @@ if str(ROOT) not in sys.path:
 from scripts.build_entry_quality_report import (
     DEFAULT_CSV_OUT as ENTRY_QUALITY_CSV,
     MASTERFILE_REFERENCE_CSV,
+    OTC_REVIEW_DECISIONS_CSV,
     abbreviated_official_name_matches,
+    build_otc_review_decision_lookup,
     informative_name_tokens,
     is_valid_isin,
     names_match,
@@ -46,6 +48,8 @@ class OtcNameMismatchReview:
     official_token_count: int
     review_class: str
     review_priority: str
+    review_decision: str
+    decision_reason: str
     recommended_action: str
 
 
@@ -127,8 +131,10 @@ def classify_name_mismatch(current_name: str, official_name: str, isin: str) -> 
 def build_review_rows(
     entry_quality_rows: Iterable[dict[str, str]],
     masterfile_rows: Iterable[dict[str, str]],
+    otc_review_decision_rows: Iterable[dict[str, str]] | None = None,
 ) -> list[OtcNameMismatchReview]:
     official_lookup = build_official_lookup(masterfile_rows)
+    otc_review_decision_lookup = build_otc_review_decision_lookup(otc_review_decision_rows or [])
     review_rows: list[OtcNameMismatchReview] = []
 
     for row in entry_quality_rows:
@@ -137,6 +143,10 @@ def build_review_rows(
         if row.get("quality_status") != "warn":
             continue
         if "official_name_mismatch" not in row.get("issue_types", "").split("|"):
+            continue
+
+        review_decision = otc_review_decision_lookup.get((row["ticker"], row["exchange"]), {})
+        if review_decision.get("decision") == "keep_current_reviewed":
             continue
 
         refs = official_lookup.get((row["ticker"], row["exchange"], row["asset_type"]), [])
@@ -148,6 +158,10 @@ def build_review_rows(
             official_name,
             row.get("isin", ""),
         )
+        if review_decision.get("decision") == "hold_unresolved":
+            review_class = "hold_unresolved"
+            review_priority = "held"
+            recommended_action = "source_needed_for_resolution"
         review_rows.append(
             OtcNameMismatchReview(
                 listing_key=row["listing_key"],
@@ -164,11 +178,13 @@ def build_review_rows(
                 official_token_count=len(official_tokens),
                 review_class=review_class,
                 review_priority=review_priority,
+                review_decision=review_decision.get("decision", ""),
+                decision_reason=review_decision.get("reason", ""),
                 recommended_action=recommended_action,
             )
         )
 
-    priority_rank = {"critical": 0, "high": 1, "medium": 2, "low": 3}
+    priority_rank = {"critical": 0, "high": 1, "medium": 2, "low": 3, "held": 4}
     return sorted(
         review_rows,
         key=lambda item: (
@@ -222,7 +238,7 @@ def write_markdown(path: Path, payload: dict[str, object]) -> None:
         f"Generated at: `{payload['_meta']['generated_at']}`",  # type: ignore[index]
         "",
         "This report is a deterministic review queue for OTC `official_name_mismatch` warnings.",
-        "It does not apply metadata updates automatically.",
+        "Reviewed `keep_current_reviewed` decisions are excluded from the active queue.",
         "",
         "## Summary",
         "",
@@ -247,6 +263,8 @@ def write_markdown(path: Path, payload: dict[str, object]) -> None:
             "",
             "## Policy",
             "",
+            "- `keep_current_reviewed` suppresses already-reviewed stale OTC naming noise where the current canonical dataset name is intentionally retained.",
+            "- `hold_unresolved` marks source-limited ambiguities that remain intentionally open until a stronger issuer-history source is available.",
             "- `probable_otc_rename_or_symbol_reuse` needs an ISIN-bearing issuer/source check before applying a name update.",
             "- `stale_or_symbol_reuse_without_isin` is the highest-risk bucket because ticker reuse cannot be disambiguated locally.",
             "- `weak_abbreviation_or_truncation_review` should improve the matcher only when the official OTC abbreviation is clearly the same issuer.",
@@ -260,6 +278,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build OTC name mismatch review queue from entry quality warnings.")
     parser.add_argument("--entry-quality-csv", type=Path, default=ENTRY_QUALITY_CSV)
     parser.add_argument("--masterfile-reference-csv", type=Path, default=MASTERFILE_REFERENCE_CSV)
+    parser.add_argument("--otc-review-decisions-csv", type=Path, default=OTC_REVIEW_DECISIONS_CSV)
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_CSV_OUT)
     parser.add_argument("--json-out", type=Path, default=DEFAULT_JSON_OUT)
     parser.add_argument("--md-out", type=Path, default=DEFAULT_MD_OUT)
@@ -271,6 +290,7 @@ def main(argv: list[str] | None = None) -> int:
     rows = build_review_rows(
         load_csv(args.entry_quality_csv),
         load_csv(args.masterfile_reference_csv),
+        load_csv(args.otc_review_decisions_csv) if args.otc_review_decisions_csv.exists() else [],
     )
     generated_at = utc_now()
     payload = summarize(rows, generated_at, args.csv_out)

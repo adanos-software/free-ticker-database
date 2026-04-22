@@ -99,6 +99,47 @@ def test_build_review_rows_filters_to_otc_official_name_warns():
     assert rows[0].review_class == "probable_otc_rename_or_symbol_reuse"
 
 
+def test_build_review_rows_skips_reviewed_keep_current_entries():
+    rows = build_review_rows(
+        [entry_row("HKRHF", "3DG Holdings (International) Limited", "BMG4587L1090")],
+        [official_ref("HKRHF", "HONG KONG RESOURCES HOLDINGS CO LTD")],
+        otc_review_decision_rows=[
+            {
+                "ticker": "HKRHF",
+                "exchange": "OTC",
+                "decision": "keep_current_reviewed",
+                "confidence": "high",
+                "reason": "Reviewed stale OTC official name.",
+            }
+        ],
+    )
+
+    assert rows == []
+
+
+def test_build_review_rows_reclassifies_held_unresolved_entries():
+    rows = build_review_rows(
+        [entry_row("POELF", "The Navigator Company S.A", "PLNFI0500012")],
+        [official_ref("POELF", "PORTUCEL EMPRS ORD")],
+        otc_review_decision_rows=[
+            {
+                "ticker": "POELF",
+                "exchange": "OTC",
+                "decision": "hold_unresolved",
+                "confidence": "medium",
+                "reason": "Needs stronger issuer-history source.",
+            }
+        ],
+    )
+
+    assert len(rows) == 1
+    assert rows[0].review_class == "hold_unresolved"
+    assert rows[0].review_priority == "held"
+    assert rows[0].review_decision == "hold_unresolved"
+    assert rows[0].decision_reason == "Needs stronger issuer-history source."
+    assert rows[0].recommended_action == "source_needed_for_resolution"
+
+
 def test_otc_review_writes_csv_and_markdown(tmp_path):
     rows = build_review_rows(
         [entry_row("AECX", "CurrentC Power Corporation", "US92855W2017")],

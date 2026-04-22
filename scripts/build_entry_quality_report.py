@@ -22,6 +22,7 @@ from scripts.rebuild_dataset import (
     IDENTIFIERS_EXTENDED_CSV,
     LISTINGS_CSV,
     MASTERFILE_REFERENCE_CSV,
+    REVIEW_METADATA_UPDATES_CSV,
     TICKERS_CSV,
     VALID_ETF_SECTORS,
     VALID_STOCK_SECTORS,
@@ -36,6 +37,7 @@ from scripts.rebuild_dataset import (
 )
 
 REPORTS_DIR = ROOT / "data" / "reports"
+OTC_REVIEW_DECISIONS_CSV = ROOT / "data" / "review_overrides" / "otc_review_decisions.csv"
 INSTRUMENT_SCOPES_CSV = ROOT / "data" / "instrument_scopes.csv"
 COVERAGE_REPORT_JSON = REPORTS_DIR / "coverage_report.json"
 DEFAULT_CSV_OUT = REPORTS_DIR / "entry_quality.csv"
@@ -135,6 +137,17 @@ def build_official_reference_lookup(
     return dict(lookup)
 
 
+def build_same_isin_listing_lookup(
+    listings: Iterable[dict[str, str]],
+) -> dict[str, list[dict[str, str]]]:
+    lookup: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for row in listings:
+        isin = row.get("isin", "")
+        if isin:
+            lookup[isin].append(row)
+    return dict(lookup)
+
+
 def alias_entity_key(row: dict[str, str]) -> str:
     isin = row.get("isin", "")
     if isin and is_valid_isin(isin):
@@ -155,6 +168,42 @@ def build_alias_context(
             if alias:
                 context[alias.lower()].add(alias_entity_key(row))
     return dict(context)
+
+
+def build_reviewed_name_override_lookup(
+    metadata_updates: Iterable[dict[str, str]],
+) -> dict[tuple[str, str], str]:
+    lookup: dict[tuple[str, str], str] = {}
+    for row in metadata_updates:
+        if row.get("exchange") != "OTC":
+            continue
+        if row.get("field") != "name":
+            continue
+        if row.get("decision") != "update":
+            continue
+        proposed_value = row.get("proposed_value", "").strip()
+        if not proposed_value:
+            continue
+        lookup[(row.get("ticker", ""), row.get("exchange", ""))] = proposed_value
+    return lookup
+
+
+def build_otc_review_decision_lookup(
+    otc_review_decisions: Iterable[dict[str, str]],
+) -> dict[tuple[str, str], dict[str, str]]:
+    lookup: dict[tuple[str, str], dict[str, str]] = {}
+    for row in otc_review_decisions:
+        ticker = row.get("ticker", "").strip()
+        exchange = row.get("exchange", "").strip()
+        decision = row.get("decision", "").strip()
+        if not ticker or not exchange or not decision:
+            continue
+        lookup[(ticker, exchange)] = {
+            "decision": decision,
+            "confidence": row.get("confidence", "").strip(),
+            "reason": row.get("reason", "").strip(),
+        }
+    return lookup
 
 
 def add_issue(
@@ -234,6 +283,11 @@ def unicode_compact(value: str) -> str:
     return "".join(character for character in normalized if character.isalnum())
 
 
+def ascii_compact(value: str) -> str:
+    normalized = unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode("ascii").casefold()
+    return "".join(character for character in normalized if character.isalnum())
+
+
 def company_compact_key(value: str) -> str:
     compact = unicode_compact(value)
     suffixes = (
@@ -266,6 +320,61 @@ def company_compact_key(value: str) -> str:
     return compact
 
 
+def ascii_company_compact_key(value: str) -> str:
+    compact = ascii_compact(value)
+    suffixes = (
+        "commonstock",
+        "corporation",
+        "incorporated",
+        "aktiengesellschaft",
+        "societeanonyme",
+        "limited",
+        "company",
+        "holdings",
+        "holding",
+        "publ",
+        "oyjabp",
+        "oyj",
+        "corp",
+        "inc",
+        "ltd",
+        "plc",
+        "ord",
+        "shs",
+        "classa",
+        "classb",
+        "seriesa",
+        "seriesb",
+        "sera",
+        "serb",
+        "sa",
+        "se",
+        "ag",
+        "ab",
+        "nv",
+        "spa",
+        "cva",
+    )
+    changed = True
+    while changed:
+        changed = False
+        for suffix in suffixes:
+            if compact.endswith(suffix) and len(compact) > len(suffix) + 3:
+                compact = compact[: -len(suffix)]
+                changed = True
+    return compact
+
+
+def security_line_markers(value: str) -> set[str]:
+    normalized = unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode("ascii").casefold()
+    markers = set(re.findall(r"\b(?:class|series|ser|pref|preferred|ordinary|ord|gds|gdr|nvdr)\b", normalized))
+    if re.search(r"\bseries\s+[a-z0-9]+\b", normalized):
+        markers.add("series_line")
+    if re.search(r"\bclass\s+[a-z0-9]+\b", normalized):
+        markers.add("class_line")
+    return markers
+
+
 OTC_NAME_NOISE_TOKENS = {
     "ab",
     "adr",
@@ -273,6 +382,8 @@ OTC_NAME_NOISE_TOKENS = {
     "as",
     "aktiengesellschaft",
     "b",
+    "cda",
+    "cl",
     "co",
     "corp",
     "corporation",
@@ -305,31 +416,58 @@ OTC_NAME_NOISE_TOKENS = {
     "va",
     "azioni",
     "of",
+    "ak",
+    "sub",
+    "vtg",
 }
 
 OTC_TOKEN_NORMALIZATION = {
     "amr": "amro",
     "bhd": "berhad",
     "bk": "bank",
+    "bncrp": "bancorp",
     "bncrptn": "bancorporation",
     "bncshs": "bancshares",
+    "citzns": "citizens",
     "coml": "commercial",
     "corpn": "corporation",
     "dev": "development",
+    "ed": "education",
+    "finl": "financial",
+    "fncl": "financial",
+    "frmrs": "farmers",
     "glbl": "global",
     "grp": "group",
     "hldgs": "holdings",
     "hldg": "holding",
     "intl": "international",
+    "ges": "gesellschaft",
+    "mgmt": "management",
     "mng": "mining",
     "mtls": "metals",
+    "natl": "national",
     "pharmctl": "pharmaceutical",
     "ppty": "property",
+    "pptys": "properties",
     "res": "resources",
     "pwr": "power",
+    "ruekvr": "ruckversicherungs",
     "svcs": "services",
     "tel": "telephone",
     "techs": "technologies",
+    "cmntys": "communities",
+    "cap": "capital",
+    "lobalaw": "loblaw",
+    "sig": "signal",
+    "stk": "stock",
+    "tr": "trust",
+    "transcontl": "transcontinental",
+    "yds": "yards",
+}
+
+OTC_STALE_NAME_SOURCE_KEYS = {
+    "otc_markets_security_profile",
+    "otc_markets_stock_screener",
 }
 
 OTC_WRAPPER_MARKERS = (
@@ -404,7 +542,11 @@ def abbreviated_official_name_matches(left: str, right: str) -> bool:
 
     left_matches = sum(any(abbreviation_token_matches(left_token, right_token) for right_token in right_tokens) for left_token in left_tokens)
     right_matches = sum(any(abbreviation_token_matches(right_token, left_token) for left_token in left_tokens) for right_token in right_tokens)
-    return left_matches / len(left_tokens) >= 0.6 and right_matches / len(right_tokens) >= 0.6
+    if left_matches / len(left_tokens) < 0.6:
+        return False
+    if right_matches / len(right_tokens) >= 0.6:
+        return True
+    return left_matches == len(left_tokens) and len(right_tokens) - right_matches <= 2
 
 
 def names_match(left: str, right: str) -> bool:
@@ -418,6 +560,33 @@ def names_match(left: str, right: str) -> bool:
         left_compact
         and right_compact
         and (left_compact in right_compact or right_compact in left_compact)
+    )
+
+
+def strong_company_name_corroboration(left: str, right: str) -> bool:
+    if not names_are_comparable(left, right):
+        return False
+
+    left_markers = security_line_markers(left)
+    right_markers = security_line_markers(right)
+    if left_markers ^ right_markers:
+        return False
+
+    left_compact = ascii_company_compact_key(left)
+    right_compact = ascii_company_compact_key(right)
+    if left_compact and right_compact and left_compact == right_compact:
+        return True
+
+    left_tokens = set(informative_name_tokens(left))
+    right_tokens = set(informative_name_tokens(right))
+    if not left_tokens or not right_tokens:
+        return False
+
+    overlap = left_tokens & right_tokens
+    return (
+        len(overlap) >= 2
+        and len(overlap) / len(left_tokens) >= 0.75
+        and len(overlap) / len(right_tokens) >= 0.75
     )
 
 
@@ -514,6 +683,10 @@ def assess_aliases(
 def assess_reference_match(
     row: dict[str, str],
     official_refs: list[dict[str, str]],
+    same_isin_peers: list[dict[str, str]],
+    official_lookup: dict[tuple[str, str, str], list[dict[str, str]]],
+    reviewed_name_override: str,
+    otc_review_decision: dict[str, str],
     issues: list[EntryIssue],
 ) -> None:
     if not official_refs:
@@ -539,11 +712,43 @@ def assess_reference_match(
         if official_name_is_informative(ref.get("name", ""), row.get("ticker", ""))
     ]
     comparable_names = [name for name in official_names if names_are_comparable(row.get("name", ""), name)]
+    corroborating_peer_names: list[str] = []
+    if row.get("exchange") == "OTC" and row.get("isin"):
+        for peer in same_isin_peers:
+            if (
+                peer.get("listing_key") == row.get("listing_key")
+                or peer.get("exchange") == "OTC"
+                or peer.get("asset_type") != row.get("asset_type")
+            ):
+                continue
+
+            peer_official_refs = official_lookup.get(
+                (peer.get("ticker", ""), peer.get("exchange", ""), peer.get("asset_type", "")),
+                [],
+            )
+            if not peer_official_refs:
+                continue
+            if not any(names_match(peer.get("name", ""), ref.get("name", "")) for ref in peer_official_refs):
+                continue
+            if strong_company_name_corroboration(row.get("name", ""), peer.get("name", "")):
+                corroborating_peer_names.append(peer.get("name", ""))
+
     if comparable_names and not any(
         names_match(row.get("name", ""), name)
         or (row.get("exchange") == "OTC" and otc_wrapper_style_name_matches(row.get("name", ""), name))
         for name in comparable_names
-    ):
+    ) and not corroborating_peer_names:
+        if row.get("exchange") == "OTC" and otc_review_decision.get("decision") == "keep_current_reviewed":
+            return
+        source_keys = {ref.get("source_key", "") for ref in official_refs if ref.get("source_key")}
+        if (
+            row.get("exchange") == "OTC"
+            and reviewed_name_override
+            and row.get("name", "") == reviewed_name_override
+            and source_keys
+            and source_keys <= OTC_STALE_NAME_SOURCE_KEYS
+        ):
+            return
         add_issue(
             issues,
             "official_name_mismatch",
@@ -623,6 +828,10 @@ def assess_entry(
     scope: dict[str, str],
     identifier: dict[str, str],
     official_refs: list[dict[str, str]],
+    same_isin_peers: list[dict[str, str]],
+    official_lookup: dict[tuple[str, str, str], list[dict[str, str]]],
+    reviewed_name_override: str,
+    otc_review_decision: dict[str, str],
     venue_status: str,
     alias_context: dict[str, set[str]],
 ) -> EntryQualityRow:
@@ -851,7 +1060,15 @@ def assess_entry(
                 "Venue has no official source coverage in the current masterfile layer.",
             )
 
-    assess_reference_match(row, official_refs, issues)
+    assess_reference_match(
+        row,
+        official_refs,
+        same_isin_peers,
+        official_lookup,
+        reviewed_name_override,
+        otc_review_decision,
+        issues,
+    )
     assess_aliases(row, identifier, alias_context, issues)
 
     evidence_level, evidence_sources = build_evidence(row, scope, identifier, official_refs)
@@ -885,6 +1102,8 @@ def assess_entries(
     scopes: list[dict[str, str]],
     identifiers: list[dict[str, str]],
     masterfiles: list[dict[str, str]],
+    metadata_updates: list[dict[str, str]] | None = None,
+    otc_review_decisions: list[dict[str, str]] | None = None,
     aliases: list[dict[str, str]],
     coverage_report: dict[str, Any],
 ) -> list[EntryQualityRow]:
@@ -895,7 +1114,10 @@ def assess_entries(
     scope_lookup = build_scope_lookup(scopes)
     identifier_lookup = build_identifier_lookup(identifiers)
     official_lookup = build_official_reference_lookup(masterfiles)
+    same_isin_lookup = build_same_isin_listing_lookup(listings)
     alias_context = build_alias_context(listings)
+    reviewed_name_overrides = build_reviewed_name_override_lookup(metadata_updates or [])
+    otc_review_decision_lookup = build_otc_review_decision_lookup(otc_review_decisions or [])
     venue_lookup = build_venue_lookup(coverage_report)
 
     rows: list[EntryQualityRow] = []
@@ -910,6 +1132,10 @@ def assess_entries(
                 scope=scope_lookup.get(row.get("listing_key", ""), {}),
                 identifier=identifier_lookup.get(row.get("listing_key", ""), {}),
                 official_refs=official_lookup.get(key, []),
+                same_isin_peers=same_isin_lookup.get(row.get("isin", ""), []),
+                official_lookup=official_lookup,
+                reviewed_name_override=reviewed_name_overrides.get((row.get("ticker", ""), row.get("exchange", "")), ""),
+                otc_review_decision=otc_review_decision_lookup.get((row.get("ticker", ""), row.get("exchange", "")), {}),
                 venue_status=venue_lookup.get(row.get("exchange", ""), ""),
                 alias_context=alias_context,
             )
@@ -1097,6 +1323,8 @@ def build_report(args: argparse.Namespace) -> tuple[list[EntryQualityRow], dict[
         scopes=load_csv(args.instrument_scopes_csv),
         identifiers=load_csv(args.identifiers_extended_csv),
         masterfiles=load_csv(args.masterfile_reference_csv),
+        metadata_updates=load_csv(REVIEW_METADATA_UPDATES_CSV),
+        otc_review_decisions=load_csv(OTC_REVIEW_DECISIONS_CSV) if OTC_REVIEW_DECISIONS_CSV.exists() else [],
         aliases=load_csv(ROOT / "data" / "aliases.csv"),
         coverage_report=load_json(args.coverage_report_json),
     )

@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-04-22T06:33:09Z",
-    "rows": 62571,
+    "generated_at": "2026-04-22T09:47:07Z",
+    "rows": 62539,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,35 +14,32 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 49265,
-      "source_gap": 12724,
-      "warn": 582
+      "pass": 49455,
+      "source_gap": 13021,
+      "warn": 63
     },
     "evidence_level_counts": {
-      "identifier_enriched": 211,
-      "official_reference": 58117,
-      "scoped_source_gap": 813,
-      "valid_isin": 3430
+      "identifier_enriched": 215,
+      "official_reference": 57781,
+      "scoped_source_gap": 883,
+      "valid_isin": 3660
     },
     "severity_counts": {
-      "high": 124,
-      "medium": 458,
-      "source_gap": 15374
+      "high": 63,
+      "source_gap": 15640
     },
     "issue_counts": {
-      "official_reference_gap": 4454,
-      "expected_missing_primary_isin": 3932,
-      "missing_etf_category": 3829,
-      "missing_stock_sector": 3159,
-      "official_name_mismatch": 458,
-      "country_isin_mismatch": 124
+      "official_reference_gap": 4758,
+      "expected_missing_primary_isin": 3894,
+      "missing_etf_category": 3830,
+      "missing_stock_sector": 3158,
+      "country_isin_mismatch": 63
     },
     "top_flagged_exchanges": [
       {
         "exchange": "OTC",
-        "pass": 7764,
-        "source_gap": 2866,
-        "warn": 458
+        "pass": 7887,
+        "source_gap": 3169
       },
       {
         "exchange": "B3",
@@ -55,26 +52,25 @@
         "source_gap": 755
       },
       {
-        "exchange": "LSE",
-        "pass": 5756,
-        "warn": 93,
-        "source_gap": 566
-      },
-      {
         "exchange": "SSE",
         "source_gap": 658,
         "pass": 2131
       },
       {
         "exchange": "NYSE ARCA",
-        "pass": 2003,
-        "source_gap": 651
+        "pass": 2004,
+        "source_gap": 650
+      },
+      {
+        "exchange": "LSE",
+        "pass": 5803,
+        "warn": 60,
+        "source_gap": 552
       },
       {
         "exchange": "TSXV",
-        "source_gap": 604,
-        "pass": 458,
-        "warn": 4
+        "source_gap": 603,
+        "pass": 463
       },
       {
         "exchange": "KRX",
@@ -93,15 +89,14 @@
       },
       {
         "exchange": "NASDAQ",
-        "pass": 4196,
-        "source_gap": 435,
-        "warn": 3
+        "pass": 4199,
+        "source_gap": 434,
+        "warn": 1
       },
       {
         "exchange": "XETRA",
-        "pass": 3421,
-        "source_gap": 357,
-        "warn": 1
+        "pass": 3422,
+        "source_gap": 357
       },
       {
         "exchange": "BATS",
@@ -121,13 +116,11 @@
       {
         "exchange": "SET",
         "source_gap": 198,
-        "pass": 347,
-        "warn": 2
+        "pass": 349
       },
       {
         "exchange": "BMV",
-        "source_gap": 159,
-        "warn": 12,
+        "source_gap": 171,
         "pass": 8
       },
       {
@@ -6392,24 +6385,6 @@
           "field": "country",
           "value": "Japan",
           "message": "Country disagrees with ISIN prefix country United States."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0L95",
-      "ticker": "0L95",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
         }
       ]
     },
@@ -20618,6 +20593,24 @@
     {
       "listing_key": "SZSE::301275",
       "ticker": "301275",
+      "exchange": "SZSE",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "SZSE::301301",
+      "ticker": "301301",
       "exchange": "SZSE",
       "asset_type": "Stock",
       "quality_status": "source_gap",

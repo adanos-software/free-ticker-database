@@ -63,6 +63,7 @@ OTC_MARKETS_SECURITY_PROFILE_CACHE = MASTERFILE_CACHE_DIR / "otc_markets_securit
 LEGACY_OTC_MARKETS_SECURITY_PROFILE_CACHE = MASTERFILES_DIR / "otc_markets_security_profile.json"
 OTC_MARKETS_STOCK_SCREENER_CACHE = MASTERFILE_CACHE_DIR / "otc_markets_stock_screener.csv"
 LEGACY_OTC_MARKETS_STOCK_SCREENER_CACHE = MASTERFILES_DIR / "otc_markets_stock_screener.csv"
+OTC_NAME_MISMATCH_REVIEW_CSV = DATA_DIR / "reports" / "otc_name_mismatch_review.csv"
 LSE_COMPANY_REPORTS_CACHE = MASTERFILE_CACHE_DIR / "lse_company_reports.json"
 LEGACY_LSE_COMPANY_REPORTS_CACHE = MASTERFILES_DIR / "lse_company_reports.json"
 LSE_INSTRUMENT_DIRECTORY_CACHE = MASTERFILE_CACHE_DIR / "lse_instrument_directory.json"
@@ -3276,13 +3277,32 @@ def load_sec_company_tickers_exchange_payload(
 
 def otc_markets_security_profile_targets(
     listings_path: Path = LISTINGS_CSV,
+    otc_name_mismatch_review_path: Path = OTC_NAME_MISMATCH_REVIEW_CSV,
 ) -> list[dict[str, str]]:
     rows = [
         row
         for row in load_csv(listings_path)
         if row.get("exchange") == "OTC" and not row.get("isin", "").strip()
     ]
-    return sorted(rows, key=lambda row: row.get("ticker", ""))
+    rows_by_key = {
+        row.get("listing_key", ""): row
+        for row in rows
+        if row.get("listing_key")
+    }
+
+    if otc_name_mismatch_review_path.exists():
+        listing_lookup = {
+            row.get("listing_key", ""): row
+            for row in load_csv(listings_path)
+            if row.get("exchange") == "OTC" and row.get("listing_key")
+        }
+        for review_row in load_csv(otc_name_mismatch_review_path):
+            listing_key = review_row.get("listing_key", "")
+            listing_row = listing_lookup.get(listing_key)
+            if listing_row:
+                rows_by_key[listing_key] = listing_row
+
+    return sorted(rows_by_key.values(), key=lambda row: row.get("ticker", ""))
 
 
 def fetch_otc_markets_profile_payload(
@@ -3311,8 +3331,9 @@ def fetch_otc_markets_security_profile(
     source: MasterfileSource,
     session: requests.Session | None = None,
     listings_path: Path = LISTINGS_CSV,
+    otc_name_mismatch_review_path: Path = OTC_NAME_MISMATCH_REVIEW_CSV,
 ) -> list[dict[str, str]]:
-    targets = otc_markets_security_profile_targets(listings_path)
+    targets = otc_markets_security_profile_targets(listings_path, otc_name_mismatch_review_path)
 
     def fetch_one(listing_row: dict[str, str]) -> list[dict[str, str]]:
         symbol = listing_row["ticker"].strip().upper()
@@ -3335,12 +3356,31 @@ def fetch_otc_markets_security_profile(
 def load_otc_markets_security_profile_rows(
     source: MasterfileSource,
     session: requests.Session | None = None,
+    listings_path: Path = LISTINGS_CSV,
+    otc_name_mismatch_review_path: Path = OTC_NAME_MISMATCH_REVIEW_CSV,
 ) -> tuple[list[dict[str, str]] | None, str]:
+    target_tickers = {
+        row.get("ticker", "").strip().upper()
+        for row in otc_markets_security_profile_targets(listings_path, otc_name_mismatch_review_path)
+        if row.get("ticker", "").strip()
+    }
     for path in (OTC_MARKETS_SECURITY_PROFILE_CACHE, LEGACY_OTC_MARKETS_SECURITY_PROFILE_CACHE):
         if path.exists():
-            return json.loads(path.read_text(encoding="utf-8")), "cache"
+            cached_rows = json.loads(path.read_text(encoding="utf-8"))
+            cached_tickers = {
+                str(row.get("ticker", "")).strip().upper()
+                for row in cached_rows
+                if isinstance(row, dict) and str(row.get("ticker", "")).strip()
+            }
+            if not target_tickers or target_tickers <= cached_tickers:
+                return cached_rows, "cache"
 
-    rows = fetch_otc_markets_security_profile(source, session=session)
+    rows = fetch_otc_markets_security_profile(
+        source,
+        session=session,
+        listings_path=listings_path,
+        otc_name_mismatch_review_path=otc_name_mismatch_review_path,
+    )
     ensure_output_dirs()
     OTC_MARKETS_SECURITY_PROFILE_CACHE.write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"

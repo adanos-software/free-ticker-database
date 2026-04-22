@@ -2,6 +2,19 @@
 
 ## [Unreleased]
 
+## [3.15.0] - 2026-04-22
+
+### Added
+
+- Added a persistent OTC review-decision workflow with committed `otc_review_decisions.csv` overrides so reviewed keep-current and hold-unresolved cases no longer re-open on every rebuild.
+- Added release-tested OTC review suppressions and queue handling for reviewed stale-name cases in the entry-quality and OTC review reports.
+
+### Changed
+
+- Resolved the remaining active OTC name-mismatch queue to zero by applying reviewed issuer-name, ISIN, country, and drop decisions for the final unresolved OTC cases.
+- Rebuilt canonical exports to 54,037 primary tickers, 62,539 listing rows, 48,900 ISIN-covered rows, 45,163 sector/category-covered rows, and 103,580 structured alias rows.
+- Refreshed validation, listing-history, identifier, coverage, completion-backlog, OTC review, override-debt, and Adanos reference artifacts against the cleaned dataset.
+
 ## [3.14.0] - 2026-04-20
 
 ### Added

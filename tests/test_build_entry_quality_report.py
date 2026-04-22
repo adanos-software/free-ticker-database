@@ -64,10 +64,19 @@ def scope(
     }
 
 
-def official_ref(ticker: str, exchange: str, name: str, isin: str, asset_type: str = "Stock") -> dict[str, str]:
+def official_ref(
+    ticker: str,
+    exchange: str,
+    name: str,
+    isin: str,
+    asset_type: str = "Stock",
+    *,
+    source_key: str = "test_masterfile",
+    provider: str = "Test Exchange",
+) -> dict[str, str]:
     return {
-        "source_key": "test_masterfile",
-        "provider": "Test Exchange",
+        "source_key": source_key,
+        "provider": provider,
         "source_url": "https://example.test",
         "ticker": ticker,
         "name": name,
@@ -371,6 +380,256 @@ def test_entry_quality_accepts_otc_development_wrapper_abbreviations():
     assert all(issue.issue_type != "official_name_mismatch" for issue in report_rows[0].issues)
 
 
+def test_entry_quality_accepts_otc_management_and_share_class_abbreviations():
+    listing = row(
+        "OTC::AGFMF",
+        "AGFMF",
+        "OTC",
+        "AGF Management Limited",
+        isin="CA0010931027",
+    )
+    report_rows = assess_entries(
+        [listing],
+        tickers=[listing],
+        scopes=[scope("OTC::AGFMF", "AGFMF", "OTC", isin="CA0010931027", instrument_scope="extended", scope_reason="otc_listing")],
+        identifiers=[{"listing_key": "OTC::AGFMF", "ticker": "AGFMF", "exchange": "OTC", "isin": "CA0010931027", "wkn": "", "figi": "", "cik": "", "lei": "", "figi_source": "", "cik_source": "", "lei_source": ""}],
+        masterfiles=[official_ref("AGFMF", "OTC", "AGF MGMT LTD B", "", asset_type="Stock")],
+        aliases=[],
+        coverage_report={"by_exchange": [{"exchange": "OTC", "venue_status": "official_full"}]},
+    )
+
+    assert all(issue.issue_type != "official_name_mismatch" for issue in report_rows[0].issues)
+
+
+def test_entry_quality_accepts_otc_education_and_communities_abbreviations():
+    listing = row(
+        "OTC::GECSF",
+        "GECSF",
+        "OTC",
+        "Global Education Communities Corp.",
+        isin="CA37960M1041",
+    )
+    report_rows = assess_entries(
+        [listing],
+        tickers=[listing],
+        scopes=[scope("OTC::GECSF", "GECSF", "OTC", isin="CA37960M1041", instrument_scope="extended", scope_reason="otc_listing")],
+        identifiers=[{"listing_key": "OTC::GECSF", "ticker": "GECSF", "exchange": "OTC", "isin": "CA37960M1041", "wkn": "", "figi": "", "cik": "", "lei": "", "figi_source": "", "cik_source": "", "lei_source": ""}],
+        masterfiles=[official_ref("GECSF", "OTC", "GLOBAL ED CMNTYS CORP", "", asset_type="Stock")],
+        aliases=[],
+        coverage_report={"by_exchange": [{"exchange": "OTC", "venue_status": "official_full"}]},
+    )
+
+    assert all(issue.issue_type != "official_name_mismatch" for issue in report_rows[0].issues)
+
+
+def test_entry_quality_accepts_otc_properties_and_signal_abbreviations():
+    listing = row(
+        "OTC::GZUHF",
+        "GZUHF",
+        "OTC",
+        "Guangzhou R&F Properties Co. Ltd",
+        isin="CNE1000000N2",
+    )
+    report_rows = assess_entries(
+        [listing],
+        tickers=[listing],
+        scopes=[scope("OTC::GZUHF", "GZUHF", "OTC", isin="CNE1000000N2", instrument_scope="extended", scope_reason="otc_listing")],
+        identifiers=[{"listing_key": "OTC::GZUHF", "ticker": "GZUHF", "exchange": "OTC", "isin": "CNE1000000N2", "wkn": "", "figi": "", "cik": "", "lei": "", "figi_source": "", "cik_source": "", "lei_source": ""}],
+        masterfiles=[official_ref("GZUHF", "OTC", "GUANGZHOU R&F PPTYS CO H", "", asset_type="Stock")],
+        aliases=[],
+        coverage_report={"by_exchange": [{"exchange": "OTC", "venue_status": "official_full"}]},
+    )
+
+    assert all(issue.issue_type != "official_name_mismatch" for issue in report_rows[0].issues)
+
+
+def test_entry_quality_accepts_otc_bancorp_and_location_abbreviations():
+    listing = row(
+        "OTC::CZBC",
+        "CZBC",
+        "OTC",
+        "Citizens Bancorp",
+        isin="US1729501072",
+    )
+    report_rows = assess_entries(
+        [listing],
+        tickers=[listing],
+        scopes=[scope("OTC::CZBC", "CZBC", "OTC", isin="US1729501072", instrument_scope="extended", scope_reason="otc_listing")],
+        identifiers=[{"listing_key": "OTC::CZBC", "ticker": "CZBC", "exchange": "OTC", "isin": "US1729501072", "wkn": "", "figi": "", "cik": "", "lei": "", "figi_source": "", "cik_source": "", "lei_source": ""}],
+        masterfiles=[official_ref("CZBC", "OTC", "CITZNS BNCRP CORVALLIS OR", "", asset_type="Stock")],
+        aliases=[],
+        coverage_report={"by_exchange": [{"exchange": "OTC", "venue_status": "official_full"}]},
+    )
+
+    assert all(issue.issue_type != "official_name_mismatch" for issue in report_rows[0].issues)
+
+
+def test_entry_quality_suppresses_stale_otc_name_after_reviewed_override():
+    listing = row(
+        "OTC::LCHTF",
+        "LCHTF",
+        "OTC",
+        "Text S.A.",
+        isin="COD04PA00014",
+        country="Poland",
+        country_code="PL",
+    )
+    report_rows = assess_entries(
+        [listing],
+        tickers=[listing],
+        scopes=[scope("OTC::LCHTF", "LCHTF", "OTC", isin="COD04PA00014", instrument_scope="extended", scope_reason="otc_listing")],
+        identifiers=[{"listing_key": "OTC::LCHTF", "ticker": "LCHTF", "exchange": "OTC", "isin": "COD04PA00014", "wkn": "", "figi": "", "cik": "", "lei": "", "figi_source": "", "cik_source": "", "lei_source": ""}],
+        masterfiles=[
+            official_ref(
+                "LCHTF",
+                "OTC",
+                "LIVECHAT SOFTWARE SA",
+                "",
+                asset_type="Stock",
+                source_key="otc_markets_stock_screener",
+                provider="OTC Markets",
+            )
+        ],
+        metadata_updates=[
+            {
+                "ticker": "LCHTF",
+                "exchange": "OTC",
+                "field": "name",
+                "decision": "update",
+                "proposed_value": "Text S.A.",
+                "confidence": "0.98",
+                "reason": "Manual OTC issuer-by-issuer review April 2026: issuer/IR pages and OTC profile use Text S.A.; LiveChat Software is the former name.",
+            }
+        ],
+        aliases=[],
+        coverage_report={"by_exchange": [{"exchange": "OTC", "venue_status": "official_full"}]},
+    )
+
+    assert all(issue.issue_type != "official_name_mismatch" for issue in report_rows[0].issues)
+
+
+def test_entry_quality_accepts_otc_name_when_same_isin_peer_is_officially_confirmed():
+    otc_listing = row(
+        "OTC::NTULF",
+        "NTULF",
+        "OTC",
+        "BIPROGY Inc.",
+        isin="JP3754200008",
+        country="Japan",
+        country_code="JP",
+    )
+    tse_listing = row(
+        "TSE::8056",
+        "8056",
+        "TSE",
+        "BIPROGY Inc.",
+        isin="JP3754200008",
+        country="Japan",
+        country_code="JP",
+    )
+    report_rows = assess_entries(
+        [otc_listing, tse_listing],
+        tickers=[otc_listing, tse_listing],
+        scopes=[
+            scope("OTC::NTULF", "NTULF", "OTC", isin="JP3754200008", instrument_scope="extended", scope_reason="otc_listing"),
+            scope("TSE::8056", "8056", "TSE", isin="JP3754200008"),
+        ],
+        identifiers=[
+            {"listing_key": "OTC::NTULF", "ticker": "NTULF", "exchange": "OTC", "isin": "JP3754200008", "wkn": "", "figi": "", "cik": "", "lei": "", "figi_source": "", "cik_source": "", "lei_source": ""},
+            {"listing_key": "TSE::8056", "ticker": "8056", "exchange": "TSE", "isin": "JP3754200008", "wkn": "", "figi": "", "cik": "", "lei": "", "figi_source": "", "cik_source": "", "lei_source": ""},
+        ],
+        masterfiles=[
+            official_ref("NTULF", "OTC", "NIHON UNISYS LTD ORD", "", asset_type="Stock"),
+            official_ref("8056", "TSE", "BIPROGY Inc.", "JP3754200008", asset_type="Stock"),
+        ],
+        aliases=[],
+        coverage_report={"by_exchange": [{"exchange": "OTC", "venue_status": "official_full"}, {"exchange": "TSE", "venue_status": "official_full"}]},
+    )
+
+    by_key = {quality_row.listing_key: quality_row for quality_row in report_rows}
+    assert all(issue.issue_type != "official_name_mismatch" for issue in by_key["OTC::NTULF"].issues)
+
+
+def test_entry_quality_keeps_otc_false_peer_overlap_visible():
+    otc_listing = row(
+        "OTC::FLLLF",
+        "FLLLF",
+        "OTC",
+        "Feel Foods Ltd",
+        isin="US8322482071",
+    )
+    nasdaq_listing = row(
+        "NASDAQ::SFD",
+        "SFD",
+        "NASDAQ",
+        "Smithfield Foods, Inc. Common Stock",
+        isin="US8322482071",
+    )
+    report_rows = assess_entries(
+        [otc_listing, nasdaq_listing],
+        tickers=[otc_listing, nasdaq_listing],
+        scopes=[
+            scope("OTC::FLLLF", "FLLLF", "OTC", isin="US8322482071", instrument_scope="extended", scope_reason="otc_listing"),
+            scope("NASDAQ::SFD", "SFD", "NASDAQ", isin="US8322482071"),
+        ],
+        identifiers=[
+            {"listing_key": "OTC::FLLLF", "ticker": "FLLLF", "exchange": "OTC", "isin": "US8322482071", "wkn": "", "figi": "", "cik": "", "lei": "", "figi_source": "", "cik_source": "", "lei_source": ""},
+            {"listing_key": "NASDAQ::SFD", "ticker": "SFD", "exchange": "NASDAQ", "isin": "US8322482071", "wkn": "", "figi": "", "cik": "", "lei": "", "figi_source": "", "cik_source": "", "lei_source": ""},
+        ],
+        masterfiles=[
+            official_ref("FLLLF", "OTC", "ULTRA BRANDS LTD", "", asset_type="Stock"),
+            official_ref("SFD", "NASDAQ", "Smithfield Foods, Inc.", "US8322482071", asset_type="Stock"),
+        ],
+        aliases=[],
+        coverage_report={"by_exchange": [{"exchange": "OTC", "venue_status": "official_full"}, {"exchange": "NASDAQ", "venue_status": "official_full"}]},
+    )
+
+    by_key = {quality_row.listing_key: quality_row for quality_row in report_rows}
+    assert any(issue.issue_type == "official_name_mismatch" for issue in by_key["OTC::FLLLF"].issues)
+
+
+def test_entry_quality_accepts_otc_name_with_ascii_legal_form_peer_corroboration():
+    otc_listing = row(
+        "OTC::TVFCF",
+        "TVFCF",
+        "OTC",
+        "Télévision Française 1 Société anonyme",
+        isin="FR0000054900",
+        country="France",
+        country_code="FR",
+    )
+    lse_listing = row(
+        "LSE::0NQT",
+        "0NQT",
+        "LSE",
+        "Television Francaise 1 SA",
+        isin="FR0000054900",
+        country="France",
+        country_code="FR",
+    )
+    report_rows = assess_entries(
+        [otc_listing, lse_listing],
+        tickers=[otc_listing, lse_listing],
+        scopes=[
+            scope("OTC::TVFCF", "TVFCF", "OTC", isin="FR0000054900", instrument_scope="extended", scope_reason="otc_listing"),
+            scope("LSE::0NQT", "0NQT", "LSE", isin="FR0000054900"),
+        ],
+        identifiers=[
+            {"listing_key": "OTC::TVFCF", "ticker": "TVFCF", "exchange": "OTC", "isin": "FR0000054900", "wkn": "", "figi": "", "cik": "", "lei": "", "figi_source": "", "cik_source": "", "lei_source": ""},
+            {"listing_key": "LSE::0NQT", "ticker": "0NQT", "exchange": "LSE", "isin": "FR0000054900", "wkn": "", "figi": "", "cik": "", "lei": "", "figi_source": "", "cik_source": "", "lei_source": ""},
+        ],
+        masterfiles=[
+            official_ref("TVFCF", "OTC", "TELEVISION FRANCHISE", "", asset_type="Stock"),
+            official_ref("0NQT", "LSE", "Television Francaise 1 SA", "FR0000054900", asset_type="Stock"),
+        ],
+        aliases=[],
+        coverage_report={"by_exchange": [{"exchange": "OTC", "venue_status": "official_full"}, {"exchange": "LSE", "venue_status": "official_full"}]},
+    )
+
+    by_key = {quality_row.listing_key: quality_row for quality_row in report_rows}
+    assert all(issue.issue_type != "official_name_mismatch" for issue in by_key["OTC::TVFCF"].issues)
+
+
 def test_entry_quality_keeps_true_otc_rename_mismatch_visible():
     listing = row(
         "OTC::AECX",
@@ -390,6 +649,28 @@ def test_entry_quality_keeps_true_otc_rename_mismatch_visible():
     )
 
     assert any(issue.issue_type == "official_name_mismatch" for issue in report_rows[0].issues)
+
+
+def test_entry_quality_suppresses_reviewed_otc_hold_from_active_mismatch_queue():
+    listing = row(
+        "OTC::HKRHF",
+        "HKRHF",
+        "OTC",
+        "3DG Holdings (International) Limited",
+        isin="BMG4587L1090",
+    )
+    report_rows = assess_entries(
+        [listing],
+        tickers=[listing],
+        scopes=[scope("OTC::HKRHF", "HKRHF", "OTC", isin="BMG4587L1090", instrument_scope="extended", scope_reason="otc_listing")],
+        identifiers=[{"listing_key": "OTC::HKRHF", "ticker": "HKRHF", "exchange": "OTC", "isin": "BMG4587L1090", "wkn": "", "figi": "", "cik": "", "lei": "", "figi_source": "", "cik_source": "", "lei_source": ""}],
+        masterfiles=[official_ref("HKRHF", "OTC", "HONG KONG RESOURCES HOLDINGS CO LTD", "", asset_type="Stock", source_key="otc_markets_stock_screener", provider="OTC Markets")],
+        aliases=[],
+        coverage_report={"by_exchange": [{"exchange": "OTC", "venue_status": "official_full"}]},
+        otc_review_decisions=[{"ticker": "HKRHF", "exchange": "OTC", "decision": "keep_current_reviewed", "confidence": "high", "reason": "Reviewed stale OTC official name."}],
+    )
+
+    assert all(issue.issue_type != "official_name_mismatch" for issue in report_rows[0].issues)
 
 
 def test_entry_quality_prefers_matching_official_isin_over_short_name_mismatch():

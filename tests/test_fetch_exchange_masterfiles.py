@@ -558,7 +558,7 @@ def test_parse_otc_markets_security_profile_maps_verified_cusip_isin():
     ]
 
 
-def test_fetch_otc_markets_security_profile_targets_missing_otc_isins(tmp_path):
+def test_fetch_otc_markets_security_profile_targets_include_missing_isin_and_review_queue(tmp_path):
     listings_path = tmp_path / "listings.csv"
     listings_path.write_text(
         "\n".join(
@@ -571,17 +571,30 @@ def test_fetch_otc_markets_security_profile_targets_missing_otc_isins(tmp_path):
         ),
         encoding="utf-8",
     )
+    review_path = tmp_path / "otc_name_mismatch_review.csv"
+    review_path.write_text(
+        "\n".join(
+            [
+                "listing_key,ticker,exchange,asset_type,current_name,official_name,isin,country,official_sources,token_overlap,current_token_count,official_token_count,review_class,review_priority,recommended_action",
+                "OTC::HASISIN,HASISIN,OTC,Stock,Has Isin Inc,Current Has Isin Inc,US0000000002,United States,otc_markets_stock_screener,0.5,3,3,weak_abbreviation_or_truncation_review,medium,review",
+            ]
+        ),
+        encoding="utf-8",
+    )
 
     class FakeResponse:
+        def __init__(self, symbol: str):
+            self.symbol = symbol
+
         headers = {"content-type": "application/json;charset=UTF-8"}
 
         def json(self):
             return {
-                "name": "Almadex Minerals Ltd.",
+                "name": "Almadex Minerals Ltd." if self.symbol == "AAMMF" else "Has Isin Inc.",
                 "countryId": "CA",
                 "securities": [
                     {
-                        "symbol": "AAMMF",
+                        "symbol": self.symbol,
                         "cusip": "02028L107",
                         "typeName": "Ordinary Shares",
                     }
@@ -597,9 +610,9 @@ def test_fetch_otc_markets_security_profile_targets_missing_otc_isins(tmp_path):
 
         def get(self, url, params=None, headers=None, timeout=None):
             self.urls.append(url)
-            assert params == {"symbol": "AAMMF"}
+            assert params in ({"symbol": "AAMMF"}, {"symbol": "HASISIN"})
             assert headers["referer"] == "https://www.otcmarkets.com/"
-            return FakeResponse()
+            return FakeResponse(params["symbol"])
 
     session = FakeSession()
     source = MasterfileSource(
@@ -611,11 +624,16 @@ def test_fetch_otc_markets_security_profile_targets_missing_otc_isins(tmp_path):
         reference_scope="security_lookup_subset",
     )
 
-    rows = fetch_otc_markets_security_profile(source, session=session, listings_path=listings_path)
+    rows = fetch_otc_markets_security_profile(
+        source,
+        session=session,
+        listings_path=listings_path,
+        otc_name_mismatch_review_path=review_path,
+    )
 
-    assert len(session.urls) == 1
-    assert rows[0]["ticker"] == "AAMMF"
-    assert rows[0]["isin"] == "CA02028L1076"
+    assert len(session.urls) == 2
+    assert {row["ticker"] for row in rows} == {"AAMMF", "HASISIN"}
+    assert next(row for row in rows if row["ticker"] == "AAMMF")["isin"] == "CA02028L1076"
 
 
 def test_parse_otc_markets_stock_screener_csv_maps_conservative_equity_rows():

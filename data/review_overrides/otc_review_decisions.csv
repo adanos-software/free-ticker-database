@@ -1,0 +1,27 @@
+ticker,exchange,decision,confidence,reason
+HKRHF,OTC,keep_current_reviewed,high,HKEX and issuer materials show Hong Kong Resources Holdings renamed to 3DG Holdings (International); the canonical dataset name is already current and the OTC official label is legacy.
+HURRY,OTC,keep_current_reviewed,high,Hurriyet investor relations identifies the issuer as Hurrriyet Gazetecilik ve Matbaacilik A.S.; the OTC official label is only ADR-style shorthand.
+HVRRF,OTC,keep_current_reviewed,high,Hannover Re investor and OTC materials identify the issuer as Hannover Ruck SE; the OTC official label is only a share shorthand.
+JRFIF,OTC,keep_current_reviewed,high,Japan Metropolitan Fund Investment Corporation is the issuer on the official fund site; the OTC label is a shortened variant of the same issuer.
+JSAIY,OTC,keep_current_reviewed,high,OTC filing materials identify the issuer as J Sainsbury plc; the OTC official name is an ADR label rather than a different company.
+KEWL,OTC,keep_current_reviewed,high,Company materials identify the issuer as Keweenaw Land Association Limited; the OTC official name is a shortened common-name variant.
+KMFI,OTC,keep_current_reviewed,high,OTC annual-report materials identify The Keller Manufacturing Company Inc.; the current canonical name already matches the issuer.
+KPCPY,OTC,keep_current_reviewed,high,KASIKORNBANK official materials use KASIKORNBANK Public Company Limited; the OTC official name is ADR/common-name shorthand.
+KYKOY,OTC,keep_current_reviewed,high,Kyowa Kirin history materials show the issuer now uses Kyowa Kirin Co Ltd; the canonical dataset name is already current.
+RICFY,OTC,keep_current_reviewed,high,Recordati issuer and OTC profile materials already identify Recordati Industria Chimica e Farmaceutica S.p.A.; the OTC official name is only ADR-style abbreviation noise.
+RPNMF,OTC,keep_current_reviewed,high,Rapala issuer materials use Rapala VMC Corporation; the OTC official name appears stale while the current canonical name already matches the issuer.
+SCABY,OTC,keep_current_reviewed,high,SCA official materials use Svenska Cellulosa Aktiebolaget SCA (publ); the OTC official name is only a truncated ADR label.
+SNLC,OTC,keep_current_reviewed,high,Security National official materials use Security National Corporation; the canonical dataset name already matches the current issuer.
+TTAPY,OTC,keep_current_reviewed,high,TTW official materials use TTW Public Company Limited; the OTC official name is ADR/truncation shorthand.
+TVBCY,OTC,keep_current_reviewed,high,TVB official materials use Television Broadcasts Limited; the OTC official name is ADR/truncation shorthand.
+TVLF,OTC,keep_current_reviewed,high,OTC filing materials identify Tennessee Valley Financial Holdings Inc.; the canonical dataset name already matches the issuer and the OTC label is truncated.
+TYCB,OTC,keep_current_reviewed,medium,OTC filing materials identify Calvin B. Taylor Bankshares Inc.; the canonical dataset name is a shorthand form of the same issuer.
+TYCMY,OTC,keep_current_reviewed,high,Issuer and ADR materials identify Tingyi Cayman Islands Holding Corp.; no evidence of a different issuer exists.
+VGWEF,OTC,keep_current_reviewed,medium,Vanguard fund materials indicate a fund umbrella versus ETF shorthand mismatch, not an issuer mismatch; the current canonical name is intentionally retained.
+VRLAF,OTC,keep_current_reviewed,high,Issuer materials identify Verallia S.A.; the OTC official name is the same company with location shorthand.
+WRLC,OTC,keep_current_reviewed,high,Available issuer materials still align the symbol with Windrock Land Co; no evidence of cross-issuer reuse exists.
+WSOUF,OTC,keep_current_reviewed,high,Available issuer materials align the symbol with Washington H. Soul Pattinson and Company Limited; the OTC official name is truncated shorthand.
+POELF,OTC,keep_current_reviewed,high,The Navigator Company's own materials state the former Portucel group rebranded as The Navigator Company in early 2016 and the dataset contains the active Euronext peer under NVG with matching Portuguese issuer identity; the OTC official label is legacy.
+RZSMF,OTC,keep_current_reviewed,high,RCS MediaGroup's current issuer site uses RCS MediaGroup while the issuer LEI legal name explicitly includes the long-form Rizzoli Corriere della Sera Mediagroup name as an alternate legal form; treat the OTC official label as a legacy legal-name expansion rather than a different issuer.
+SDIIF,OTC,keep_current_reviewed,high,SDI Group's investor site states the issuer trades on AIM under SDI and archived company materials state Scientific Digital Imaging plc changed its name to SDI Group plc on October 30 2019; the OTC official label is stale.
+SVMRF,OTC,keep_current_reviewed,high,Magnora's 2024 annual report states the company divested most rights associated with Sevan Marine in 2018 and continued as Magnora ASA; the OTC official label is stale legacy naming rather than a current issuer mismatch.

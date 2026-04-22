@@ -1,31 +1,31 @@
 {
   "global": {
-    "tickers": 54095,
-    "aliases": 103650,
-    "stocks": 39006,
-    "etfs": 15089,
-    "isin_coverage": 48869,
-    "sector_coverage": 45211,
-    "stock_sector_coverage": 33986,
-    "etf_category_coverage": 11225,
-    "cik_coverage": 7723,
+    "tickers": 54037,
+    "aliases": 103580,
+    "stocks": 38956,
+    "etfs": 15081,
+    "isin_coverage": 48900,
+    "sector_coverage": 45163,
+    "stock_sector_coverage": 33947,
+    "etf_category_coverage": 11216,
+    "cik_coverage": 7722,
     "figi_coverage": 3650,
     "lei_coverage": 920,
-    "listing_status_rows": 87346,
-    "listing_status_intervals": 87346,
-    "listing_events": 30724,
-    "listing_keys": 62571,
-    "instrument_scope_rows": 62571,
-    "instrument_scope_core": 45858,
-    "instrument_scope_extended": 16713,
-    "instrument_scope_primary_listing": 41926,
-    "instrument_scope_primary_listing_missing_isin": 3932,
-    "instrument_scope_otc_listing": 11088,
-    "instrument_scope_secondary_cross_listing": 5624,
+    "listing_status_rows": 87378,
+    "listing_status_intervals": 87378,
+    "listing_events": 30957,
+    "listing_keys": 62539,
+    "instrument_scope_rows": 62539,
+    "instrument_scope_core": 45844,
+    "instrument_scope_extended": 16695,
+    "instrument_scope_primary_listing": 41950,
+    "instrument_scope_primary_listing_missing_isin": 3894,
+    "instrument_scope_otc_listing": 11056,
+    "instrument_scope_secondary_cross_listing": 5638,
     "official_masterfile_symbols": 78384,
-    "official_masterfile_matches": 43048,
-    "official_masterfile_collisions": 10878,
-    "official_masterfile_missing": 24458,
+    "official_masterfile_matches": 43017,
+    "official_masterfile_collisions": 10877,
+    "official_masterfile_missing": 24490,
     "official_full_exchanges": 46,
     "official_partial_exchanges": 34,
     "manual_only_exchanges": 0,
@@ -44,23 +44,23 @@
     "etf_verification_cross_exchange_collision": 0
   },
   "freshness": {
-    "tickers_built_at": "2026-04-22T06:33:03Z",
+    "tickers_built_at": "2026-04-22T09:46:47Z",
     "tickers_age_hours": 0.02,
-    "masterfiles_generated_at": "2026-04-22T05:37:41Z",
-    "masterfiles_age_hours": 0.94,
-    "identifiers_generated_at": "2026-04-22T06:34:02Z",
-    "identifiers_age_hours": 0.0,
-    "listing_history_observed_at": "2026-04-22T06:33:03Z",
+    "masterfiles_generated_at": "2026-04-22T06:55:17Z",
+    "masterfiles_age_hours": 2.88,
+    "identifiers_generated_at": "2026-04-22T09:46:47Z",
+    "identifiers_age_hours": 0.02,
+    "listing_history_observed_at": "2026-04-22T09:46:47Z",
     "listing_history_age_hours": 0.02,
     "latest_verification_run": "data/stock_verification/run-20260422-final-clean",
-    "latest_verification_generated_at": "2026-04-22T06:06:48Z",
-    "latest_verification_age_hours": 0.45,
+    "latest_verification_generated_at": "2026-04-22T07:00:28Z",
+    "latest_verification_age_hours": 2.79,
     "latest_stock_verification_run": "data/stock_verification/run-20260422-final-clean",
-    "latest_stock_verification_generated_at": "2026-04-22T06:06:48Z",
-    "latest_stock_verification_age_hours": 0.45,
+    "latest_stock_verification_generated_at": "2026-04-22T07:00:28Z",
+    "latest_stock_verification_age_hours": 2.79,
     "latest_etf_verification_run": "data/etf_verification/run-20260422-final-clean",
-    "latest_etf_verification_generated_at": "2026-04-22T06:06:48Z",
-    "latest_etf_verification_age_hours": 0.45
+    "latest_etf_verification_generated_at": "2026-04-22T07:00:28Z",
+    "latest_etf_verification_age_hours": 2.79
   },
   "source_coverage": [
     {
@@ -70,7 +70,7 @@
       "official": true,
       "mode": "network",
       "rows": 5419,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "nasdaq_other_listed",
@@ -79,7 +79,7 @@
       "official": true,
       "mode": "network",
       "rows": 7089,
-      "generated_at": "2026-04-17T08:30:48Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "lse_company_reports",
@@ -88,7 +88,7 @@
       "official": true,
       "mode": "cache",
       "rows": 12397,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "lse_instrument_search",
@@ -97,7 +97,7 @@
       "official": true,
       "mode": "network",
       "rows": 1628,
-      "generated_at": "2026-04-11T11:54:28Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "lse_instrument_directory",
@@ -106,7 +106,7 @@
       "official": true,
       "mode": "cache",
       "rows": 64,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "lse_price_explorer",
@@ -115,7 +115,7 @@
       "official": true,
       "mode": "cache",
       "rows": 10899,
-      "generated_at": "2026-04-17T08:30:48Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "asx_listed_companies",
@@ -124,7 +124,7 @@
       "official": true,
       "mode": "network",
       "rows": 1979,
-      "generated_at": "2026-04-13T18:11:20Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "cboe_canada_listing_directory",
@@ -133,7 +133,7 @@
       "official": true,
       "mode": "network",
       "rows": 436,
-      "generated_at": "2026-04-17T08:29:11Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "asx_investment_products",
@@ -142,7 +142,7 @@
       "official": true,
       "mode": "network",
       "rows": 426,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "set_listed_companies",
@@ -151,7 +151,7 @@
       "official": true,
       "mode": "network",
       "rows": 933,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "set_stock_search",
@@ -160,7 +160,7 @@
       "official": true,
       "mode": "network",
       "rows": 946,
-      "generated_at": "2026-04-13T17:32:06Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "set_etf_search",
@@ -169,7 +169,7 @@
       "official": true,
       "mode": "network",
       "rows": 13,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "set_dr_search",
@@ -178,7 +178,7 @@
       "official": true,
       "mode": "network",
       "rows": 352,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "tmx_listed_issuers",
@@ -187,7 +187,7 @@
       "official": true,
       "mode": "network",
       "rows": 3704,
-      "generated_at": "2026-04-22T05:37:41Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "tmx_etf_screener",
@@ -196,7 +196,7 @@
       "official": true,
       "mode": "network",
       "rows": 1707,
-      "generated_at": "2026-04-22T05:37:41Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "tmx_interlisted_companies",
@@ -205,7 +205,7 @@
       "official": true,
       "mode": "network",
       "rows": 271,
-      "generated_at": "2026-04-22T05:37:41Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "euronext_equities",
@@ -214,7 +214,7 @@
       "official": true,
       "mode": "network",
       "rows": 3882,
-      "generated_at": "2026-04-13T13:15:07Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "euronext_etfs",
@@ -223,7 +223,7 @@
       "official": true,
       "mode": "network",
       "rows": 3465,
-      "generated_at": "2026-04-11T11:23:10Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "jpx_listed_issues",
@@ -232,7 +232,7 @@
       "official": true,
       "mode": "network",
       "rows": 4444,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "jpx_tse_stock_detail",
@@ -241,7 +241,7 @@
       "official": true,
       "mode": "network",
       "rows": 3212,
-      "generated_at": "2026-04-17T08:27:18Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "deutsche_boerse_listed_companies",
@@ -250,7 +250,7 @@
       "official": true,
       "mode": "network",
       "rows": 471,
-      "generated_at": "2026-04-11T11:23:10Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "deutsche_boerse_etfs_etps",
@@ -259,7 +259,7 @@
       "official": true,
       "mode": "network",
       "rows": 3475,
-      "generated_at": "2026-04-17T08:30:48Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "deutsche_boerse_xetra_all_tradable_equities",
@@ -268,7 +268,7 @@
       "official": true,
       "mode": "network",
       "rows": 4462,
-      "generated_at": "2026-04-17T08:30:48Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "six_equity_issuers",
@@ -277,7 +277,7 @@
       "official": true,
       "mode": "network",
       "rows": 241,
-      "generated_at": "2026-04-13T20:29:46Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "six_shares_explorer_full",
@@ -286,7 +286,7 @@
       "official": true,
       "mode": "network",
       "rows": 12,
-      "generated_at": "2026-04-13T22:49:36Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "six_etf_products",
@@ -295,7 +295,7 @@
       "official": true,
       "mode": "network",
       "rows": 8568,
-      "generated_at": "2026-04-13T20:29:46Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "six_etp_products",
@@ -304,7 +304,7 @@
       "official": true,
       "mode": "network",
       "rows": 810,
-      "generated_at": "2026-04-13T20:29:46Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "b3_instruments_equities",
@@ -313,7 +313,7 @@
       "official": true,
       "mode": "network",
       "rows": 1280,
-      "generated_at": "2026-04-20T17:42:19Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "b3_listed_etfs",
@@ -322,7 +322,7 @@
       "official": true,
       "mode": "network",
       "rows": 187,
-      "generated_at": "2026-04-20T17:43:02Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "b3_bdr_etfs",
@@ -331,7 +331,7 @@
       "official": true,
       "mode": "network",
       "rows": 302,
-      "generated_at": "2026-04-20T17:43:09Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "jse_etf_list",
@@ -340,7 +340,7 @@
       "official": true,
       "mode": "network",
       "rows": 133,
-      "generated_at": "2026-04-13T18:26:38Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "jse_etn_list",
@@ -349,7 +349,7 @@
       "official": true,
       "mode": "network",
       "rows": 94,
-      "generated_at": "2026-04-13T18:26:38Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "jse_instrument_search",
@@ -358,7 +358,7 @@
       "official": true,
       "mode": "network",
       "rows": 12,
-      "generated_at": "2026-04-13T20:06:19Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "bme_listed_companies",
@@ -367,7 +367,7 @@
       "official": true,
       "mode": "network",
       "rows": 57,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "bme_etf_list",
@@ -376,7 +376,7 @@
       "official": true,
       "mode": "cache",
       "rows": 5,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "bme_listed_values",
@@ -385,7 +385,7 @@
       "official": true,
       "mode": "network",
       "rows": 156,
-      "generated_at": "2026-04-13T18:32:18Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "bme_security_prices_directory",
@@ -394,7 +394,7 @@
       "official": true,
       "mode": "unavailable",
       "rows": 0,
-      "generated_at": "2026-04-13T19:48:24Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "bme_growth_prices",
@@ -403,7 +403,7 @@
       "official": true,
       "mode": "unavailable",
       "rows": 0,
-      "generated_at": "2026-04-11T12:16:59Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "athex_sector_classification",
@@ -412,7 +412,7 @@
       "official": true,
       "mode": "network",
       "rows": 91,
-      "generated_at": "2026-04-13T14:52:37Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "bursa_equity_isin",
@@ -421,7 +421,7 @@
       "official": true,
       "mode": "network",
       "rows": 1123,
-      "generated_at": "2026-04-12T11:47:56Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "bursa_closing_prices",
@@ -430,7 +430,7 @@
       "official": true,
       "mode": "network",
       "rows": 1281,
-      "generated_at": "2026-04-13T20:43:05Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "bse_bw_listed_companies",
@@ -439,7 +439,7 @@
       "official": true,
       "mode": "network",
       "rows": 26,
-      "generated_at": "2026-04-13T13:54:28Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "bse_hu_listed_companies",
@@ -448,7 +448,7 @@
       "official": true,
       "mode": "network",
       "rows": 12,
-      "generated_at": "2026-04-13T15:39:43Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "egx_listed_stocks",
@@ -457,7 +457,7 @@
       "official": true,
       "mode": "network",
       "rows": 190,
-      "generated_at": "2026-04-13T18:54:08Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "bvl_issuers_directory",
@@ -466,7 +466,7 @@
       "official": true,
       "mode": "network",
       "rows": 31,
-      "generated_at": "2026-04-13T15:32:10Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "cse_ma_listed_companies",
@@ -475,7 +475,7 @@
       "official": true,
       "mode": "network",
       "rows": 80,
-      "generated_at": "2026-04-13T15:06:41Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "cse_lk_all_security_code",
@@ -484,7 +484,7 @@
       "official": true,
       "mode": "network",
       "rows": 0,
-      "generated_at": "2026-04-13T16:30:08Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "cse_lk_company_info_summary",
@@ -493,7 +493,7 @@
       "official": true,
       "mode": "network",
       "rows": 310,
-      "generated_at": "2026-04-14T00:35:27Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "dse_tz_listed_companies",
@@ -502,7 +502,7 @@
       "official": true,
       "mode": "network",
       "rows": 17,
-      "generated_at": "2026-04-13T15:56:17Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "bvc_colombia_issuers",
@@ -511,7 +511,7 @@
       "official": true,
       "mode": "network",
       "rows": 3,
-      "generated_at": "2026-04-13T16:30:08Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "byma_equity_details",
@@ -520,7 +520,7 @@
       "official": true,
       "mode": "network",
       "rows": 63,
-      "generated_at": "2026-04-13T16:43:12Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "mse_mw_listed_companies",
@@ -529,7 +529,7 @@
       "official": true,
       "mode": "network",
       "rows": 8,
-      "generated_at": "2026-04-13T15:56:17Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "nse_ke_listed_companies",
@@ -538,7 +538,7 @@
       "official": true,
       "mode": "network",
       "rows": 66,
-      "generated_at": "2026-04-13T15:14:39Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "nse_india_securities_available",
@@ -547,7 +547,7 @@
       "official": true,
       "mode": "network",
       "rows": 2998,
-      "generated_at": "2026-04-13T21:00:21Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "bse_india_scrips",
@@ -556,7 +556,7 @@
       "official": true,
       "mode": "network",
       "rows": 5015,
-      "generated_at": "2026-04-13T21:10:05Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "hkex_securities_list",
@@ -565,7 +565,7 @@
       "official": true,
       "mode": "network",
       "rows": 3126,
-      "generated_at": "2026-04-13T21:15:25Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "sgx_securities_prices",
@@ -574,7 +574,7 @@
       "official": true,
       "mode": "network",
       "rows": 736,
-      "generated_at": "2026-04-13T21:21:45Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "dfm_listed_securities",
@@ -583,7 +583,7 @@
       "official": true,
       "mode": "network",
       "rows": 71,
-      "generated_at": "2026-04-13T21:29:52Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "boursa_kuwait_stocks",
@@ -592,7 +592,7 @@
       "official": true,
       "mode": "network",
       "rows": 141,
-      "generated_at": "2026-04-13T21:35:19Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "bahrain_bourse_listed_companies",
@@ -601,7 +601,7 @@
       "official": true,
       "mode": "network",
       "rows": 41,
-      "generated_at": "2026-04-13T22:14:05Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "bist_kap_mkk_listed_securities",
@@ -610,7 +610,7 @@
       "official": true,
       "mode": "network",
       "rows": 636,
-      "generated_at": "2026-04-13T21:44:57Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "tadawul_main_market_watch",
@@ -619,7 +619,7 @@
       "official": true,
       "mode": "network",
       "rows": 411,
-      "generated_at": "2026-04-13T21:55:44Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "adx_market_watch",
@@ -628,7 +628,7 @@
       "official": true,
       "mode": "network",
       "rows": 120,
-      "generated_at": "2026-04-13T22:05:57Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "qse_market_watch",
@@ -637,7 +637,7 @@
       "official": true,
       "mode": "network",
       "rows": 57,
-      "generated_at": "2026-04-13T23:13:36Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "muscat_securities_companies",
@@ -646,7 +646,7 @@
       "official": true,
       "mode": "network",
       "rows": 108,
-      "generated_at": "2026-04-13T21:05:11Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "rse_listed_companies",
@@ -655,7 +655,7 @@
       "official": true,
       "mode": "network",
       "rows": 2,
-      "generated_at": "2026-04-13T15:56:17Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "gse_listed_companies",
@@ -664,7 +664,7 @@
       "official": true,
       "mode": "network",
       "rows": 18,
-      "generated_at": "2026-04-13T16:52:56Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "luse_listed_companies",
@@ -673,7 +673,7 @@
       "official": true,
       "mode": "network",
       "rows": 15,
-      "generated_at": "2026-04-13T16:52:56Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "bolsa_santiago_instruments",
@@ -682,7 +682,7 @@
       "official": true,
       "mode": "network",
       "rows": 115,
-      "generated_at": "2026-04-13T17:08:10Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "sem_isin",
@@ -691,7 +691,7 @@
       "official": true,
       "mode": "network",
       "rows": 47,
-      "generated_at": "2026-04-13T15:19:02Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "use_ug_listed_companies",
@@ -700,7 +700,7 @@
       "official": true,
       "mode": "network",
       "rows": 7,
-      "generated_at": "2026-04-13T15:56:17Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "nzx_instruments",
@@ -709,7 +709,7 @@
       "official": true,
       "mode": "network",
       "rows": 173,
-      "generated_at": "2026-04-13T20:52:21Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "nasdaq_mutual_fund_quotes",
@@ -718,7 +718,7 @@
       "official": true,
       "mode": "network",
       "rows": 7,
-      "generated_at": "2026-04-13T16:03:40Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "zse_zw_listed_companies",
@@ -727,7 +727,7 @@
       "official": true,
       "mode": "network",
       "rows": 27,
-      "generated_at": "2026-04-13T15:56:17Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "bvb_shares_directory",
@@ -736,7 +736,7 @@
       "official": true,
       "mode": "network",
       "rows": 347,
-      "generated_at": "2026-04-13T14:41:14Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "bvb_fund_units_directory",
@@ -745,7 +745,7 @@
       "official": true,
       "mode": "network",
       "rows": 8,
-      "generated_at": "2026-04-13T14:41:14Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "ngx_equities_price_list",
@@ -754,7 +754,7 @@
       "official": true,
       "mode": "network",
       "rows": 131,
-      "generated_at": "2026-04-13T14:00:36Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "ngx_company_profile_directory",
@@ -763,7 +763,7 @@
       "official": true,
       "mode": "network",
       "rows": 133,
-      "generated_at": "2026-04-13T14:19:30Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "bmv_stock_search",
@@ -772,7 +772,7 @@
       "official": true,
       "mode": "network",
       "rows": 15,
-      "generated_at": "2026-04-13T20:19:54Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "bmv_capital_trust_search",
@@ -781,7 +781,7 @@
       "official": true,
       "mode": "network",
       "rows": 7,
-      "generated_at": "2026-04-13T20:19:54Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "bmv_etf_search",
@@ -790,7 +790,7 @@
       "official": true,
       "mode": "network",
       "rows": 7,
-      "generated_at": "2026-04-13T20:19:54Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "bmv_market_data_securities",
@@ -799,7 +799,7 @@
       "official": true,
       "mode": "network",
       "rows": 17,
-      "generated_at": "2026-04-13T22:32:56Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "bmv_issuer_directory",
@@ -808,7 +808,7 @@
       "official": true,
       "mode": "network",
       "rows": 0,
-      "generated_at": "2026-04-13T20:19:54Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "nasdaq_nordic_stockholm_shares",
@@ -817,7 +817,7 @@
       "official": true,
       "mode": "cache",
       "rows": 747,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "nasdaq_nordic_stockholm_shares_search",
@@ -826,7 +826,7 @@
       "official": true,
       "mode": "cache",
       "rows": 1,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "nasdaq_nordic_helsinki_shares",
@@ -835,7 +835,7 @@
       "official": true,
       "mode": "cache",
       "rows": 194,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "nasdaq_nordic_helsinki_shares_search",
@@ -844,7 +844,7 @@
       "official": true,
       "mode": "cache",
       "rows": 3,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "nasdaq_nordic_iceland_shares",
@@ -853,7 +853,7 @@
       "official": true,
       "mode": "network",
       "rows": 32,
-      "generated_at": "2026-04-13T13:15:07Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "spotlight_companies_directory",
@@ -862,7 +862,7 @@
       "official": true,
       "mode": "cache",
       "rows": 137,
-      "generated_at": "2026-04-11T09:48:13Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "spotlight_companies_search",
@@ -871,7 +871,7 @@
       "official": true,
       "mode": "cache",
       "rows": 20,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "ngm_companies_page",
@@ -880,7 +880,7 @@
       "official": true,
       "mode": "cache",
       "rows": 53,
-      "generated_at": "2026-04-11T09:30:20Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "ngm_market_data_equities",
@@ -889,7 +889,7 @@
       "official": true,
       "mode": "cache",
       "rows": 33,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "nasdaq_nordic_copenhagen_shares",
@@ -898,7 +898,7 @@
       "official": true,
       "mode": "cache",
       "rows": 144,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "nasdaq_nordic_copenhagen_shares_search",
@@ -907,7 +907,7 @@
       "official": true,
       "mode": "cache",
       "rows": 0,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "nasdaq_nordic_stockholm_etfs",
@@ -916,7 +916,7 @@
       "official": true,
       "mode": "cache",
       "rows": 33,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "nasdaq_nordic_helsinki_etfs",
@@ -925,7 +925,7 @@
       "official": true,
       "mode": "cache",
       "rows": 2,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "nasdaq_nordic_copenhagen_etfs",
@@ -934,7 +934,7 @@
       "official": true,
       "mode": "cache",
       "rows": 1,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "nasdaq_nordic_copenhagen_etf_search",
@@ -943,7 +943,7 @@
       "official": true,
       "mode": "cache",
       "rows": 1,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "nasdaq_nordic_stockholm_trackers",
@@ -952,7 +952,7 @@
       "official": true,
       "mode": "cache",
       "rows": 6,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "twse_listed_companies",
@@ -961,7 +961,7 @@
       "official": true,
       "mode": "network",
       "rows": 1081,
-      "generated_at": "2026-04-11T11:06:37Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "twse_etf_list",
@@ -970,7 +970,7 @@
       "official": true,
       "mode": "network",
       "rows": 216,
-      "generated_at": "2026-04-11T11:06:37Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "sse_a_share_list",
@@ -979,7 +979,7 @@
       "official": true,
       "mode": "network",
       "rows": 2352,
-      "generated_at": "2026-04-17T08:28:00Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "sse_etf_list",
@@ -988,7 +988,7 @@
       "official": true,
       "mode": "network",
       "rows": 847,
-      "generated_at": "2026-04-17T08:28:00Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "szse_a_share_list",
@@ -997,7 +997,7 @@
       "official": true,
       "mode": "network",
       "rows": 2888,
-      "generated_at": "2026-04-17T08:28:00Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "szse_b_share_list",
@@ -1006,7 +1006,7 @@
       "official": true,
       "mode": "network",
       "rows": 38,
-      "generated_at": "2026-04-17T08:28:00Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "szse_etf_list",
@@ -1015,7 +1015,7 @@
       "official": true,
       "mode": "network",
       "rows": 635,
-      "generated_at": "2026-04-17T08:28:00Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "tpex_mainboard_daily_quotes",
@@ -1024,7 +1024,7 @@
       "official": true,
       "mode": "cache",
       "rows": 884,
-      "generated_at": "2026-04-11T10:58:35Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "tpex_etf_filter",
@@ -1033,7 +1033,7 @@
       "official": true,
       "mode": "cache",
       "rows": 112,
-      "generated_at": "2026-04-13T20:19:08Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "tpex_mainboard_basic_info",
@@ -1042,7 +1042,7 @@
       "official": true,
       "mode": "cache",
       "rows": 881,
-      "generated_at": "2026-04-13T20:19:08Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "tpex_emerging_basic_info",
@@ -1051,7 +1051,7 @@
       "official": true,
       "mode": "cache",
       "rows": 354,
-      "generated_at": "2026-04-13T20:19:08Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "krx_listed_companies",
@@ -1060,7 +1060,7 @@
       "official": true,
       "mode": "network",
       "rows": 2769,
-      "generated_at": "2026-04-13T19:32:56Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "krx_etf_finder",
@@ -1069,7 +1069,7 @@
       "official": true,
       "mode": "network",
       "rows": 1093,
-      "generated_at": "2026-04-13T19:32:56Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "psx_listed_companies",
@@ -1078,7 +1078,7 @@
       "official": true,
       "mode": "network",
       "rows": 565,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "psx_symbol_name_daily",
@@ -1087,7 +1087,7 @@
       "official": true,
       "mode": "network",
       "rows": 370,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "psx_dps_symbols",
@@ -1096,7 +1096,7 @@
       "official": true,
       "mode": "network",
       "rows": 712,
-      "generated_at": "2026-04-13T17:39:29Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "pse_listed_company_directory",
@@ -1105,7 +1105,7 @@
       "official": true,
       "mode": "network",
       "rows": 381,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "pse_cz_shares_directory",
@@ -1114,7 +1114,7 @@
       "official": true,
       "mode": "network",
       "rows": 63,
-      "generated_at": "2026-04-13T13:43:15Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "idx_listed_companies",
@@ -1123,7 +1123,7 @@
       "official": true,
       "mode": "network",
       "rows": 957,
-      "generated_at": "2026-04-12T11:47:56Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "idx_company_profiles",
@@ -1132,7 +1132,7 @@
       "official": true,
       "mode": "network",
       "rows": 958,
-      "generated_at": "2026-04-13T17:50:09Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "wse_listed_companies",
@@ -1141,7 +1141,7 @@
       "official": true,
       "mode": "network",
       "rows": 399,
-      "generated_at": "2026-04-13T19:57:43Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "newconnect_listed_companies",
@@ -1150,7 +1150,7 @@
       "official": true,
       "mode": "network",
       "rows": 364,
-      "generated_at": "2026-04-13T19:57:43Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "wse_etf_list",
@@ -1159,7 +1159,7 @@
       "official": true,
       "mode": "network",
       "rows": 25,
-      "generated_at": "2026-04-13T19:57:43Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "tase_securities_marketdata",
@@ -1168,7 +1168,7 @@
       "official": true,
       "mode": "network",
       "rows": 524,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "tase_etf_marketdata",
@@ -1177,7 +1177,7 @@
       "official": true,
       "mode": "network",
       "rows": 460,
-      "generated_at": "2026-04-13T17:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "tase_foreign_etf_search",
@@ -1186,7 +1186,7 @@
       "official": true,
       "mode": "network",
       "rows": 15,
-      "generated_at": "2026-04-11T07:41:23Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "tase_participating_unit_search",
@@ -1195,7 +1195,7 @@
       "official": true,
       "mode": "network",
       "rows": 16,
-      "generated_at": "2026-04-11T07:41:33Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "hose_listed_stocks",
@@ -1204,7 +1204,7 @@
       "official": true,
       "mode": "network",
       "rows": 403,
-      "generated_at": "2026-04-13T20:24:27Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "hose_etf_list",
@@ -1213,7 +1213,7 @@
       "official": true,
       "mode": "network",
       "rows": 18,
-      "generated_at": "2026-04-13T20:24:27Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "hose_fund_certificate_list",
@@ -1222,7 +1222,7 @@
       "official": true,
       "mode": "network",
       "rows": 4,
-      "generated_at": "2026-04-13T20:24:27Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "hnx_listed_securities",
@@ -1231,7 +1231,7 @@
       "official": true,
       "mode": "cache",
       "rows": 302,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "upcom_registered_securities",
@@ -1240,7 +1240,7 @@
       "official": true,
       "mode": "cache",
       "rows": 837,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "vienna_listed_companies",
@@ -1249,7 +1249,7 @@
       "official": true,
       "mode": "network",
       "rows": 22,
-      "generated_at": "2026-04-13T13:34:49Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "zagreb_securities_directory",
@@ -1258,7 +1258,7 @@
       "official": true,
       "mode": "network",
       "rows": 76,
-      "generated_at": "2026-04-13T13:34:49Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "sec_company_tickers_exchange",
@@ -1267,16 +1267,16 @@
       "official": true,
       "mode": "cache",
       "rows": 10117,
-      "generated_at": "2026-04-11T06:56:58Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "otc_markets_security_profile",
       "provider": "OTC Markets",
       "reference_scope": "security_lookup_subset",
       "official": true,
-      "mode": "cache",
-      "rows": 1705,
-      "generated_at": "2026-04-11T10:46:59Z"
+      "mode": "network",
+      "rows": 214,
+      "generated_at": "2026-04-22T06:55:17Z"
     },
     {
       "key": "otc_markets_stock_screener",
@@ -1285,7 +1285,7 @@
       "official": true,
       "mode": "network",
       "rows": 11972,
-      "generated_at": "2026-04-13T17:19:54Z"
+      "generated_at": "2026-04-22T06:55:17Z"
     }
   ],
   "exchange_coverage": [
@@ -2895,17 +2895,17 @@
         "security_lookup_subset"
       ],
       "tickers": 6415,
-      "isin_coverage": 6370,
+      "isin_coverage": 6402,
       "sector_coverage": 5147,
       "cik_coverage": 16,
       "figi_coverage": 22,
       "lei_coverage": 5,
       "masterfile_symbols": 10899,
       "masterfile_matches": 6336,
-      "masterfile_collisions": 1159,
-      "masterfile_missing": 3404,
+      "masterfile_collisions": 1158,
+      "masterfile_missing": 3405,
       "masterfile_match_rate": 58.13,
-      "masterfile_collision_rate": 10.63,
+      "masterfile_collision_rate": 10.62,
       "verification_items": 3669,
       "verification_verified": 3640,
       "verification_reference_gap": 4,
@@ -3067,7 +3067,7 @@
         "exchange_directory"
       ],
       "tickers": 4634,
-      "isin_coverage": 4478,
+      "isin_coverage": 4479,
       "sector_coverage": 4392,
       "cik_coverage": 3441,
       "figi_coverage": 10,
@@ -3325,8 +3325,8 @@
         "exchange_directory"
       ],
       "tickers": 2081,
-      "isin_coverage": 2003,
-      "sector_coverage": 2036,
+      "isin_coverage": 2005,
+      "sector_coverage": 2035,
       "cik_coverage": 1996,
       "figi_coverage": 24,
       "lei_coverage": 372,
@@ -3368,7 +3368,7 @@
         "exchange_directory"
       ],
       "tickers": 2654,
-      "isin_coverage": 2446,
+      "isin_coverage": 2448,
       "sector_coverage": 2124,
       "cik_coverage": 126,
       "figi_coverage": 6,
@@ -3541,17 +3541,17 @@
         "listed_companies_subset",
         "security_lookup_subset"
       ],
-      "tickers": 11088,
-      "isin_coverage": 9794,
-      "sector_coverage": 8685,
-      "cik_coverage": 1819,
+      "tickers": 11056,
+      "isin_coverage": 9813,
+      "sector_coverage": 8662,
+      "cik_coverage": 1818,
       "figi_coverage": 5,
       "lei_coverage": 0,
       "masterfile_symbols": 11972,
-      "masterfile_matches": 7830,
+      "masterfile_matches": 7799,
       "masterfile_collisions": 25,
-      "masterfile_missing": 4117,
-      "masterfile_match_rate": 65.4,
+      "masterfile_missing": 4148,
+      "masterfile_match_rate": 65.14,
       "masterfile_collision_rate": 0.21,
       "verification_items": 10884,
       "verification_verified": 7013,
@@ -4366,7 +4366,7 @@
         "listed_companies_subset"
       ],
       "tickers": 1066,
-      "isin_coverage": 520,
+      "isin_coverage": 521,
       "sector_coverage": 644,
       "cik_coverage": 17,
       "figi_coverage": 524,
@@ -6354,17 +6354,17 @@
         "security_lookup_subset"
       ],
       "tickers": 6415,
-      "isin_coverage": 6370,
+      "isin_coverage": 6402,
       "sector_coverage": 5147,
       "cik_coverage": 16,
       "figi_coverage": 22,
       "lei_coverage": 5,
       "masterfile_symbols": 10899,
       "masterfile_matches": 6336,
-      "masterfile_collisions": 1159,
-      "masterfile_missing": 3404,
+      "masterfile_collisions": 1158,
+      "masterfile_missing": 3405,
       "masterfile_match_rate": 58.13,
-      "masterfile_collision_rate": 10.63,
+      "masterfile_collision_rate": 10.62,
       "verification_items": 3669,
       "verification_verified": 3640,
       "verification_reference_gap": 4,
@@ -6526,7 +6526,7 @@
         "exchange_directory"
       ],
       "tickers": 4634,
-      "isin_coverage": 4478,
+      "isin_coverage": 4479,
       "sector_coverage": 4392,
       "cik_coverage": 3441,
       "figi_coverage": 10,
@@ -6784,8 +6784,8 @@
         "exchange_directory"
       ],
       "tickers": 2081,
-      "isin_coverage": 2003,
-      "sector_coverage": 2036,
+      "isin_coverage": 2005,
+      "sector_coverage": 2035,
       "cik_coverage": 1996,
       "figi_coverage": 24,
       "lei_coverage": 372,
@@ -6827,7 +6827,7 @@
         "exchange_directory"
       ],
       "tickers": 2654,
-      "isin_coverage": 2446,
+      "isin_coverage": 2448,
       "sector_coverage": 2124,
       "cik_coverage": 126,
       "figi_coverage": 6,
@@ -7000,17 +7000,17 @@
         "listed_companies_subset",
         "security_lookup_subset"
       ],
-      "tickers": 11088,
-      "isin_coverage": 9794,
-      "sector_coverage": 8685,
-      "cik_coverage": 1819,
+      "tickers": 11056,
+      "isin_coverage": 9813,
+      "sector_coverage": 8662,
+      "cik_coverage": 1818,
       "figi_coverage": 5,
       "lei_coverage": 0,
       "masterfile_symbols": 11972,
-      "masterfile_matches": 7830,
+      "masterfile_matches": 7799,
       "masterfile_collisions": 25,
-      "masterfile_missing": 4117,
-      "masterfile_match_rate": 65.4,
+      "masterfile_missing": 4148,
+      "masterfile_match_rate": 65.14,
       "masterfile_collision_rate": 0.21,
       "verification_items": 10884,
       "verification_verified": 7013,
@@ -7825,7 +7825,7 @@
         "listed_companies_subset"
       ],
       "tickers": 1066,
-      "isin_coverage": 520,
+      "isin_coverage": 521,
       "sector_coverage": 644,
       "cik_coverage": 17,
       "figi_coverage": 524,
@@ -8218,9 +8218,9 @@
     },
     {
       "country": "Australia",
-      "tickers": 1744,
-      "isin_coverage": 1639,
-      "sector_coverage": 1531,
+      "tickers": 1743,
+      "isin_coverage": 1638,
+      "sector_coverage": 1530,
       "cik_coverage": 229,
       "figi_coverage": 1027,
       "lei_coverage": 61
@@ -8236,8 +8236,8 @@
     },
     {
       "country": "Bahrain",
-      "tickers": 2,
-      "isin_coverage": 2,
+      "tickers": 1,
+      "isin_coverage": 1,
       "sector_coverage": 0,
       "cik_coverage": 0,
       "figi_coverage": 0,
@@ -8272,9 +8272,9 @@
     },
     {
       "country": "Brazil",
-      "tickers": 1565,
-      "isin_coverage": 1289,
-      "sector_coverage": 665,
+      "tickers": 1562,
+      "isin_coverage": 1286,
+      "sector_coverage": 662,
       "cik_coverage": 0,
       "figi_coverage": 0,
       "lei_coverage": 0
@@ -8290,37 +8290,37 @@
     },
     {
       "country": "Canada",
-      "tickers": 4944,
-      "isin_coverage": 3716,
+      "tickers": 4947,
+      "isin_coverage": 3720,
       "sector_coverage": 3681,
-      "cik_coverage": 669,
-      "figi_coverage": 1430,
+      "cik_coverage": 668,
+      "figi_coverage": 1426,
       "lei_coverage": 66
     },
     {
       "country": "Cayman Islands",
-      "tickers": 710,
-      "isin_coverage": 705,
-      "sector_coverage": 647,
+      "tickers": 709,
+      "isin_coverage": 704,
+      "sector_coverage": 646,
       "cik_coverage": 465,
       "figi_coverage": 1,
       "lei_coverage": 18
     },
     {
       "country": "Chile",
-      "tickers": 116,
-      "isin_coverage": 87,
-      "sector_coverage": 101,
-      "cik_coverage": 1,
+      "tickers": 115,
+      "isin_coverage": 86,
+      "sector_coverage": 100,
+      "cik_coverage": 0,
       "figi_coverage": 0,
-      "lei_coverage": 1
+      "lei_coverage": 0
     },
     {
       "country": "China",
-      "tickers": 6003,
-      "isin_coverage": 4902,
-      "sector_coverage": 5161,
-      "cik_coverage": 13,
+      "tickers": 5994,
+      "isin_coverage": 4893,
+      "sector_coverage": 5155,
+      "cik_coverage": 10,
       "figi_coverage": 0,
       "lei_coverage": 0
     },
@@ -8371,8 +8371,8 @@
     },
     {
       "country": "Egypt",
-      "tickers": 243,
-      "isin_coverage": 243,
+      "tickers": 241,
+      "isin_coverage": 241,
       "sector_coverage": 212,
       "cik_coverage": 6,
       "figi_coverage": 0,
@@ -8416,10 +8416,10 @@
     },
     {
       "country": "Germany",
-      "tickers": 768,
-      "isin_coverage": 764,
-      "sector_coverage": 659,
-      "cik_coverage": 14,
+      "tickers": 767,
+      "isin_coverage": 763,
+      "sector_coverage": 658,
+      "cik_coverage": 13,
       "figi_coverage": 6,
       "lei_coverage": 5
     },
@@ -8434,8 +8434,8 @@
     },
     {
       "country": "Greece",
-      "tickers": 130,
-      "isin_coverage": 111,
+      "tickers": 129,
+      "isin_coverage": 110,
       "sector_coverage": 128,
       "cik_coverage": 4,
       "figi_coverage": 0,
@@ -8461,8 +8461,8 @@
     },
     {
       "country": "Hungary",
-      "tickers": 23,
-      "isin_coverage": 16,
+      "tickers": 22,
+      "isin_coverage": 15,
       "sector_coverage": 8,
       "cik_coverage": 0,
       "figi_coverage": 0,
@@ -8479,27 +8479,27 @@
     },
     {
       "country": "India",
-      "tickers": 497,
-      "isin_coverage": 497,
-      "sector_coverage": 6,
+      "tickers": 488,
+      "isin_coverage": 488,
+      "sector_coverage": 0,
       "cik_coverage": 0,
       "figi_coverage": 0,
       "lei_coverage": 0
     },
     {
       "country": "Indonesia",
-      "tickers": 745,
-      "isin_coverage": 630,
-      "sector_coverage": 742,
-      "cik_coverage": 22,
+      "tickers": 744,
+      "isin_coverage": 629,
+      "sector_coverage": 741,
+      "cik_coverage": 21,
       "figi_coverage": 2,
       "lei_coverage": 1
     },
     {
       "country": "Ireland",
-      "tickers": 2576,
-      "isin_coverage": 2576,
-      "sector_coverage": 2296,
+      "tickers": 2578,
+      "isin_coverage": 2578,
+      "sector_coverage": 2298,
       "cik_coverage": 67,
       "figi_coverage": 63,
       "lei_coverage": 7
@@ -8551,8 +8551,8 @@
     },
     {
       "country": "Kazakhstan",
-      "tickers": 2,
-      "isin_coverage": 2,
+      "tickers": 1,
+      "isin_coverage": 1,
       "sector_coverage": 0,
       "cik_coverage": 0,
       "figi_coverage": 0,
@@ -8659,8 +8659,8 @@
     },
     {
       "country": "Morocco",
-      "tickers": 67,
-      "isin_coverage": 67,
+      "tickers": 66,
+      "isin_coverage": 66,
       "sector_coverage": 2,
       "cik_coverage": 0,
       "figi_coverage": 0,
@@ -8668,10 +8668,10 @@
     },
     {
       "country": "Netherlands",
-      "tickers": 196,
+      "tickers": 195,
       "isin_coverage": 189,
-      "sector_coverage": 168,
-      "cik_coverage": 29,
+      "sector_coverage": 167,
+      "cik_coverage": 28,
       "figi_coverage": 71,
       "lei_coverage": 1
     },
@@ -8686,8 +8686,8 @@
     },
     {
       "country": "Nigeria",
-      "tickers": 147,
-      "isin_coverage": 145,
+      "tickers": 146,
+      "isin_coverage": 144,
       "sector_coverage": 113,
       "cik_coverage": 0,
       "figi_coverage": 0,
@@ -8703,18 +8703,9 @@
       "lei_coverage": 0
     },
     {
-      "country": "Oman",
-      "tickers": 1,
-      "isin_coverage": 1,
-      "sector_coverage": 0,
-      "cik_coverage": 0,
-      "figi_coverage": 0,
-      "lei_coverage": 0
-    },
-    {
       "country": "Pakistan",
-      "tickers": 376,
-      "isin_coverage": 272,
+      "tickers": 375,
+      "isin_coverage": 271,
       "sector_coverage": 357,
       "cik_coverage": 9,
       "figi_coverage": 0,
@@ -8749,9 +8740,9 @@
     },
     {
       "country": "Poland",
-      "tickers": 353,
-      "isin_coverage": 353,
-      "sector_coverage": 315,
+      "tickers": 350,
+      "isin_coverage": 350,
+      "sector_coverage": 313,
       "cik_coverage": 21,
       "figi_coverage": 1,
       "lei_coverage": 5
@@ -8764,15 +8755,6 @@
       "cik_coverage": 0,
       "figi_coverage": 9,
       "lei_coverage": 1
-    },
-    {
-      "country": "Qatar",
-      "tickers": 1,
-      "isin_coverage": 1,
-      "sector_coverage": 1,
-      "cik_coverage": 0,
-      "figi_coverage": 0,
-      "lei_coverage": 0
     },
     {
       "country": "Romania",
@@ -8803,27 +8785,27 @@
     },
     {
       "country": "Slovenia",
-      "tickers": 2,
-      "isin_coverage": 2,
-      "sector_coverage": 2,
+      "tickers": 1,
+      "isin_coverage": 1,
+      "sector_coverage": 1,
       "cik_coverage": 0,
       "figi_coverage": 0,
       "lei_coverage": 0
     },
     {
       "country": "South Africa",
-      "tickers": 229,
-      "isin_coverage": 200,
-      "sector_coverage": 219,
-      "cik_coverage": 6,
+      "tickers": 228,
+      "isin_coverage": 199,
+      "sector_coverage": 218,
+      "cik_coverage": 5,
       "figi_coverage": 0,
       "lei_coverage": 0
     },
     {
       "country": "South Korea",
-      "tickers": 3372,
-      "isin_coverage": 3365,
-      "sector_coverage": 2843,
+      "tickers": 3369,
+      "isin_coverage": 3362,
+      "sector_coverage": 2840,
       "cik_coverage": 0,
       "figi_coverage": 0,
       "lei_coverage": 0
@@ -8857,9 +8839,9 @@
     },
     {
       "country": "Taiwan",
-      "tickers": 2337,
-      "isin_coverage": 2263,
-      "sector_coverage": 2210,
+      "tickers": 2333,
+      "isin_coverage": 2259,
+      "sector_coverage": 2208,
       "cik_coverage": 0,
       "figi_coverage": 0,
       "lei_coverage": 0
@@ -8875,9 +8857,9 @@
     },
     {
       "country": "Thailand",
-      "tickers": 568,
-      "isin_coverage": 372,
-      "sector_coverage": 563,
+      "tickers": 565,
+      "isin_coverage": 369,
+      "sector_coverage": 560,
       "cik_coverage": 27,
       "figi_coverage": 1,
       "lei_coverage": 3
@@ -8901,31 +8883,22 @@
       "lei_coverage": 0
     },
     {
-      "country": "Ukraine",
-      "tickers": 1,
-      "isin_coverage": 1,
-      "sector_coverage": 1,
-      "cik_coverage": 0,
-      "figi_coverage": 0,
-      "lei_coverage": 0
-    },
-    {
       "country": "United Kingdom",
-      "tickers": 1333,
-      "isin_coverage": 1322,
-      "sector_coverage": 1131,
+      "tickers": 1345,
+      "isin_coverage": 1334,
+      "sector_coverage": 1142,
       "cik_coverage": 95,
       "figi_coverage": 15,
       "lei_coverage": 19
     },
     {
       "country": "United States",
-      "tickers": 14228,
-      "isin_coverage": 12479,
-      "sector_coverage": 12062,
-      "cik_coverage": 5084,
-      "figi_coverage": 27,
-      "lei_coverage": 608
+      "tickers": 14239,
+      "isin_coverage": 12545,
+      "sector_coverage": 12068,
+      "cik_coverage": 5090,
+      "figi_coverage": 31,
+      "lei_coverage": 610
     },
     {
       "country": "Vietnam",
@@ -8957,8 +8930,11 @@
   ],
   "verification": {
     "run_dir": "data/stock_verification/run-20260422-final-clean",
-    "generated_at": "2026-04-22T06:06:48Z",
+    "generated_at": "2026-04-22T07:00:28Z",
     "summary": {
+      "chunk_count": 1,
+      "completed_chunks": 1,
+      "missing_chunks": [],
       "items": 44402,
       "status_counts": {
         "asset_type_mismatch": 8,
@@ -8969,6 +8945,502 @@
         "reference_gap": 3517,
         "verified": 39637
       },
+      "chunks": [
+        {
+          "chunk_index": 1,
+          "chunk_count": 1,
+          "items": 44402,
+          "status_counts": {
+            "asset_type_mismatch": 8,
+            "cross_exchange_collision": 2,
+            "missing_from_official": 44,
+            "name_mismatch": 1093,
+            "non_active_official": 101,
+            "reference_gap": 3517,
+            "verified": 39637
+          },
+          "finding_examples": [
+            {
+              "listing_key": "CSE_MA::ATTIJARIWA",
+              "ticker": "ATTIJARIWA",
+              "exchange": "CSE_MA",
+              "asset_type": "Stock",
+              "name": "ATTIJARIWAFA BANK",
+              "country": "Morocco",
+              "country_code": "MA",
+              "isin": "MA0000011926",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "CSE_MA::DELATTRE-L",
+              "ticker": "DELATTRE-L",
+              "exchange": "CSE_MA",
+              "asset_type": "Stock",
+              "name": "DELATTRE LEVIVIER MAROC",
+              "country": "Morocco",
+              "country_code": "MA",
+              "isin": "MA0000011777",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "CSE_MA::MED-PAPER",
+              "ticker": "MED-PAPER",
+              "exchange": "CSE_MA",
+              "asset_type": "Stock",
+              "name": "MED PAPER",
+              "country": "Morocco",
+              "country_code": "MA",
+              "isin": "MA0000011447",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "CSE_MA::SOTHEMA",
+              "ticker": "SOTHEMA",
+              "exchange": "CSE_MA",
+              "asset_type": "Stock",
+              "name": "SOTHEMA",
+              "country": "Morocco",
+              "country_code": "MA",
+              "isin": "MA0000011645",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "CSE_MA::STOKVIS-NO",
+              "ticker": "STOKVIS-NO",
+              "exchange": "CSE_MA",
+              "asset_type": "Stock",
+              "name": "STOKVIS NORD AFRIQUE",
+              "country": "Morocco",
+              "country_code": "MA",
+              "isin": "MA0000011843",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "KOSDAQ::032685",
+              "ticker": "032685",
+              "exchange": "KOSDAQ",
+              "asset_type": "Stock",
+              "name": "Softcen Co. Ltd",
+              "country": "South Korea",
+              "country_code": "KR",
+              "isin": "KR7032681009",
+              "sector": "Information Technology",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "KOSDAQ::444920",
+              "ticker": "444920",
+              "exchange": "KOSDAQ",
+              "asset_type": "Stock",
+              "name": "444920",
+              "country": "South Korea",
+              "country_code": "KR",
+              "isin": "",
+              "sector": "Financials",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "KOSDAQ::450940",
+              "ticker": "450940",
+              "exchange": "KOSDAQ",
+              "asset_type": "Stock",
+              "name": "450940",
+              "country": "South Korea",
+              "country_code": "KR",
+              "isin": "",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "KOSDAQ::455910",
+              "ticker": "455910",
+              "exchange": "KOSDAQ",
+              "asset_type": "Stock",
+              "name": "455910",
+              "country": "South Korea",
+              "country_code": "KR",
+              "isin": "",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "KOSDAQ::457940",
+              "ticker": "457940",
+              "exchange": "KOSDAQ",
+              "asset_type": "Stock",
+              "name": "457940",
+              "country": "South Korea",
+              "country_code": "KR",
+              "isin": "",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "KOSDAQ::458610",
+              "ticker": "458610",
+              "exchange": "KOSDAQ",
+              "asset_type": "Stock",
+              "name": "Korea No.12 Special Purpose Acquisition Co., Ltd.",
+              "country": "South Korea",
+              "country_code": "KR",
+              "isin": "",
+              "sector": "Financials",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "KRX::00279K",
+              "ticker": "00279K",
+              "exchange": "KRX",
+              "asset_type": "Stock",
+              "name": "AMOREPACIFIC Group",
+              "country": "South Korea",
+              "country_code": "KR",
+              "isin": "KR700279K010",
+              "sector": "Consumer Staples",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "KRX::019175",
+              "ticker": "019175",
+              "exchange": "KRX",
+              "asset_type": "Stock",
+              "name": "Shinpoong Pharmaceutical Co Ltd",
+              "country": "South Korea",
+              "country_code": "KR",
+              "isin": "KR7019171008",
+              "sector": "Health Care",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::0A90",
+              "ticker": "0A90",
+              "exchange": "LSE",
+              "asset_type": "Stock",
+              "name": "0A90",
+              "country": "Luxembourg",
+              "country_code": "LU",
+              "isin": "LU1789205884",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::0EIE",
+              "ticker": "0EIE",
+              "exchange": "LSE",
+              "asset_type": "Stock",
+              "name": "WithSecure Oyj",
+              "country": "Finland",
+              "country_code": "FI",
+              "isin": "FI4000519228",
+              "sector": "Information Technology",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::0NYY",
+              "ticker": "0NYY",
+              "exchange": "LSE",
+              "asset_type": "Stock",
+              "name": "Banco Comercial Portugues S/A",
+              "country": "United Kingdom",
+              "country_code": "GB",
+              "isin": "",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::0P0001J2VW",
+              "ticker": "0P0001J2VW",
+              "exchange": "LSE",
+              "asset_type": "Stock",
+              "name": "Amundi Index Solutions - Amundi MSCI Europe SRI PAB ",
+              "country": "United Kingdom",
+              "country_code": "GB",
+              "isin": "",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::0USB",
+              "ticker": "0USB",
+              "exchange": "LSE",
+              "asset_type": "Stock",
+              "name": "Dolly Varden Silver Corp.",
+              "country": "Canada",
+              "country_code": "CA",
+              "isin": "CA2568277834",
+              "sector": "Materials",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::0V90",
+              "ticker": "0V90",
+              "exchange": "LSE",
+              "asset_type": "Stock",
+              "name": "New Gold Inc.",
+              "country": "Canada",
+              "country_code": "CA",
+              "isin": "CA6445351068",
+              "sector": "Materials",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::0Y5F",
+              "ticker": "0Y5F",
+              "exchange": "LSE",
+              "asset_type": "Stock",
+              "name": "Endo International PLC",
+              "country": "United Kingdom",
+              "country_code": "GB",
+              "isin": "",
+              "sector": "Health Care",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::CSRD",
+              "ticker": "CSRD",
+              "exchange": "LSE",
+              "asset_type": "Stock",
+              "name": "Cordiant Digital Infrastructure Ltd",
+              "country": "Guernsey",
+              "country_code": "GG",
+              "isin": "GG00BMDGQT90",
+              "sector": "Financials",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::CVBP",
+              "ticker": "CVBP",
+              "exchange": "LSE",
+              "asset_type": "Stock",
+              "name": "Coventry Building Society",
+              "country": "United Kingdom",
+              "country_code": "GB",
+              "isin": "",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::CYK",
+              "ticker": "CYK",
+              "exchange": "LSE",
+              "asset_type": "Stock",
+              "name": "Cykel AI PLC",
+              "country": "United Kingdom",
+              "country_code": "GB",
+              "isin": "GB00BJ9MHH56",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::KITW",
+              "ticker": "KITW",
+              "exchange": "LSE",
+              "asset_type": "Stock",
+              "name": "Kitwave Group PLC",
+              "country": "United Kingdom",
+              "country_code": "GB",
+              "isin": "GB00BNYKB709",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::LKCS",
+              "ticker": "LKCS",
+              "exchange": "LSE",
+              "asset_type": "Stock",
+              "name": "LKCS",
+              "country": "United States",
+              "country_code": "US",
+              "isin": "US5495202039",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            }
+          ],
+          "json_out": "data/stock_verification/run-20260422-final-clean/chunk-01-of-01.json",
+          "csv_out": "data/stock_verification/run-20260422-final-clean/chunk-01-of-01.csv"
+        }
+      ],
+      "finding_rows": 1246,
       "finding_examples": [
         {
           "listing_key": "CSE_MA::ATTIJARIWA",
@@ -9445,7 +9917,9 @@
           "figi": "",
           "lei": ""
         }
-      ]
+      ],
+      "summary_json": "data/stock_verification/run-20260422-final-clean/summary.json",
+      "findings_csv": "data/stock_verification/run-20260422-final-clean/findings.csv"
     },
     "exchange_coverage": [
       {
@@ -10336,8 +10810,11 @@
   },
   "stock_verification": {
     "run_dir": "data/stock_verification/run-20260422-final-clean",
-    "generated_at": "2026-04-22T06:06:48Z",
+    "generated_at": "2026-04-22T07:00:28Z",
     "summary": {
+      "chunk_count": 1,
+      "completed_chunks": 1,
+      "missing_chunks": [],
       "items": 44402,
       "status_counts": {
         "asset_type_mismatch": 8,
@@ -10348,6 +10825,502 @@
         "reference_gap": 3517,
         "verified": 39637
       },
+      "chunks": [
+        {
+          "chunk_index": 1,
+          "chunk_count": 1,
+          "items": 44402,
+          "status_counts": {
+            "asset_type_mismatch": 8,
+            "cross_exchange_collision": 2,
+            "missing_from_official": 44,
+            "name_mismatch": 1093,
+            "non_active_official": 101,
+            "reference_gap": 3517,
+            "verified": 39637
+          },
+          "finding_examples": [
+            {
+              "listing_key": "CSE_MA::ATTIJARIWA",
+              "ticker": "ATTIJARIWA",
+              "exchange": "CSE_MA",
+              "asset_type": "Stock",
+              "name": "ATTIJARIWAFA BANK",
+              "country": "Morocco",
+              "country_code": "MA",
+              "isin": "MA0000011926",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "CSE_MA::DELATTRE-L",
+              "ticker": "DELATTRE-L",
+              "exchange": "CSE_MA",
+              "asset_type": "Stock",
+              "name": "DELATTRE LEVIVIER MAROC",
+              "country": "Morocco",
+              "country_code": "MA",
+              "isin": "MA0000011777",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "CSE_MA::MED-PAPER",
+              "ticker": "MED-PAPER",
+              "exchange": "CSE_MA",
+              "asset_type": "Stock",
+              "name": "MED PAPER",
+              "country": "Morocco",
+              "country_code": "MA",
+              "isin": "MA0000011447",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "CSE_MA::SOTHEMA",
+              "ticker": "SOTHEMA",
+              "exchange": "CSE_MA",
+              "asset_type": "Stock",
+              "name": "SOTHEMA",
+              "country": "Morocco",
+              "country_code": "MA",
+              "isin": "MA0000011645",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "CSE_MA::STOKVIS-NO",
+              "ticker": "STOKVIS-NO",
+              "exchange": "CSE_MA",
+              "asset_type": "Stock",
+              "name": "STOKVIS NORD AFRIQUE",
+              "country": "Morocco",
+              "country_code": "MA",
+              "isin": "MA0000011843",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "KOSDAQ::032685",
+              "ticker": "032685",
+              "exchange": "KOSDAQ",
+              "asset_type": "Stock",
+              "name": "Softcen Co. Ltd",
+              "country": "South Korea",
+              "country_code": "KR",
+              "isin": "KR7032681009",
+              "sector": "Information Technology",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "KOSDAQ::444920",
+              "ticker": "444920",
+              "exchange": "KOSDAQ",
+              "asset_type": "Stock",
+              "name": "444920",
+              "country": "South Korea",
+              "country_code": "KR",
+              "isin": "",
+              "sector": "Financials",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "KOSDAQ::450940",
+              "ticker": "450940",
+              "exchange": "KOSDAQ",
+              "asset_type": "Stock",
+              "name": "450940",
+              "country": "South Korea",
+              "country_code": "KR",
+              "isin": "",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "KOSDAQ::455910",
+              "ticker": "455910",
+              "exchange": "KOSDAQ",
+              "asset_type": "Stock",
+              "name": "455910",
+              "country": "South Korea",
+              "country_code": "KR",
+              "isin": "",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "KOSDAQ::457940",
+              "ticker": "457940",
+              "exchange": "KOSDAQ",
+              "asset_type": "Stock",
+              "name": "457940",
+              "country": "South Korea",
+              "country_code": "KR",
+              "isin": "",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "KOSDAQ::458610",
+              "ticker": "458610",
+              "exchange": "KOSDAQ",
+              "asset_type": "Stock",
+              "name": "Korea No.12 Special Purpose Acquisition Co., Ltd.",
+              "country": "South Korea",
+              "country_code": "KR",
+              "isin": "",
+              "sector": "Financials",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "KRX::00279K",
+              "ticker": "00279K",
+              "exchange": "KRX",
+              "asset_type": "Stock",
+              "name": "AMOREPACIFIC Group",
+              "country": "South Korea",
+              "country_code": "KR",
+              "isin": "KR700279K010",
+              "sector": "Consumer Staples",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "KRX::019175",
+              "ticker": "019175",
+              "exchange": "KRX",
+              "asset_type": "Stock",
+              "name": "Shinpoong Pharmaceutical Co Ltd",
+              "country": "South Korea",
+              "country_code": "KR",
+              "isin": "KR7019171008",
+              "sector": "Health Care",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::0A90",
+              "ticker": "0A90",
+              "exchange": "LSE",
+              "asset_type": "Stock",
+              "name": "0A90",
+              "country": "Luxembourg",
+              "country_code": "LU",
+              "isin": "LU1789205884",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::0EIE",
+              "ticker": "0EIE",
+              "exchange": "LSE",
+              "asset_type": "Stock",
+              "name": "WithSecure Oyj",
+              "country": "Finland",
+              "country_code": "FI",
+              "isin": "FI4000519228",
+              "sector": "Information Technology",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::0NYY",
+              "ticker": "0NYY",
+              "exchange": "LSE",
+              "asset_type": "Stock",
+              "name": "Banco Comercial Portugues S/A",
+              "country": "United Kingdom",
+              "country_code": "GB",
+              "isin": "",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::0P0001J2VW",
+              "ticker": "0P0001J2VW",
+              "exchange": "LSE",
+              "asset_type": "Stock",
+              "name": "Amundi Index Solutions - Amundi MSCI Europe SRI PAB ",
+              "country": "United Kingdom",
+              "country_code": "GB",
+              "isin": "",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::0USB",
+              "ticker": "0USB",
+              "exchange": "LSE",
+              "asset_type": "Stock",
+              "name": "Dolly Varden Silver Corp.",
+              "country": "Canada",
+              "country_code": "CA",
+              "isin": "CA2568277834",
+              "sector": "Materials",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::0V90",
+              "ticker": "0V90",
+              "exchange": "LSE",
+              "asset_type": "Stock",
+              "name": "New Gold Inc.",
+              "country": "Canada",
+              "country_code": "CA",
+              "isin": "CA6445351068",
+              "sector": "Materials",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::0Y5F",
+              "ticker": "0Y5F",
+              "exchange": "LSE",
+              "asset_type": "Stock",
+              "name": "Endo International PLC",
+              "country": "United Kingdom",
+              "country_code": "GB",
+              "isin": "",
+              "sector": "Health Care",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::CSRD",
+              "ticker": "CSRD",
+              "exchange": "LSE",
+              "asset_type": "Stock",
+              "name": "Cordiant Digital Infrastructure Ltd",
+              "country": "Guernsey",
+              "country_code": "GG",
+              "isin": "GG00BMDGQT90",
+              "sector": "Financials",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::CVBP",
+              "ticker": "CVBP",
+              "exchange": "LSE",
+              "asset_type": "Stock",
+              "name": "Coventry Building Society",
+              "country": "United Kingdom",
+              "country_code": "GB",
+              "isin": "",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::CYK",
+              "ticker": "CYK",
+              "exchange": "LSE",
+              "asset_type": "Stock",
+              "name": "Cykel AI PLC",
+              "country": "United Kingdom",
+              "country_code": "GB",
+              "isin": "GB00BJ9MHH56",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::KITW",
+              "ticker": "KITW",
+              "exchange": "LSE",
+              "asset_type": "Stock",
+              "name": "Kitwave Group PLC",
+              "country": "United Kingdom",
+              "country_code": "GB",
+              "isin": "GB00BNYKB709",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::LKCS",
+              "ticker": "LKCS",
+              "exchange": "LSE",
+              "asset_type": "Stock",
+              "name": "LKCS",
+              "country": "United States",
+              "country_code": "US",
+              "isin": "US5495202039",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            }
+          ],
+          "json_out": "data/stock_verification/run-20260422-final-clean/chunk-01-of-01.json",
+          "csv_out": "data/stock_verification/run-20260422-final-clean/chunk-01-of-01.csv"
+        }
+      ],
+      "finding_rows": 1246,
       "finding_examples": [
         {
           "listing_key": "CSE_MA::ATTIJARIWA",
@@ -10824,7 +11797,9 @@
           "figi": "",
           "lei": ""
         }
-      ]
+      ],
+      "summary_json": "data/stock_verification/run-20260422-final-clean/summary.json",
+      "findings_csv": "data/stock_verification/run-20260422-final-clean/findings.csv"
     },
     "exchange_coverage": [
       {
@@ -11715,8 +12690,11 @@
   },
   "etf_verification": {
     "run_dir": "data/etf_verification/run-20260422-final-clean",
-    "generated_at": "2026-04-22T06:06:48Z",
+    "generated_at": "2026-04-22T07:00:28Z",
     "summary": {
+      "chunk_count": 1,
+      "completed_chunks": 1,
+      "missing_chunks": [],
       "items": 18174,
       "status_counts": {
         "asset_type_mismatch": 7,
@@ -11726,6 +12704,501 @@
         "reference_gap": 294,
         "verified": 17830
       },
+      "chunks": [
+        {
+          "chunk_index": 1,
+          "chunk_count": 1,
+          "items": 18174,
+          "status_counts": {
+            "asset_type_mismatch": 7,
+            "missing_from_official": 33,
+            "name_mismatch": 9,
+            "non_active_official": 1,
+            "reference_gap": 294,
+            "verified": 17830
+          },
+          "finding_examples": [
+            {
+              "listing_key": "BATS::GDMA",
+              "ticker": "GDMA",
+              "exchange": "BATS",
+              "asset_type": "ETF",
+              "name": "Alpha Architect Gdsdn Dynmc Mlt-Asst ETF",
+              "country": "United States",
+              "country_code": "US",
+              "isin": "US02072L8708",
+              "sector": "",
+              "status": "name_mismatch",
+              "reason": "Dataset name does not match official exchange directory name.",
+              "official_reference_name": "Gadsden Dynamic Multi-Asset ETF",
+              "official_reference_source": "nasdaq_other_listed",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "JSE::CSGOVI",
+              "ticker": "CSGOVI",
+              "exchange": "JSE",
+              "asset_type": "ETF",
+              "name": "CoreShares Wealth GOVI Bond Exchange Traded Fund",
+              "country": "South Africa",
+              "country_code": "ZA",
+              "isin": "",
+              "sector": "Fixed Income",
+              "status": "name_mismatch",
+              "reason": "Dataset name does not match official exchange directory name.",
+              "official_reference_name": "10X GOVI ETF",
+              "official_reference_source": "jse_etf_list",
+              "covered_by_official_directory": false,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "JSE::NGPLD",
+              "ticker": "NGPLD",
+              "exchange": "JSE",
+              "asset_type": "ETF",
+              "name": "NewGold Palladium ETF",
+              "country": "South Africa",
+              "country_code": "ZA",
+              "isin": "ZAE000182507",
+              "sector": "Commodity",
+              "status": "name_mismatch",
+              "reason": "Dataset name does not match official exchange directory name.",
+              "official_reference_name": "NewPalladium ETF",
+              "official_reference_source": "jse_etf_list",
+              "covered_by_official_directory": false,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "JSE::NGPLT",
+              "ticker": "NGPLT",
+              "exchange": "JSE",
+              "asset_type": "ETF",
+              "name": "NewGold Platinum ETF",
+              "country": "South Africa",
+              "country_code": "ZA",
+              "isin": "ZAE000177580",
+              "sector": "Commodity",
+              "status": "name_mismatch",
+              "reason": "Dataset name does not match official exchange directory name.",
+              "official_reference_name": "NewPlat ETF",
+              "official_reference_source": "jse_etf_list",
+              "covered_by_official_directory": false,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "KRX::394350",
+              "ticker": "394350",
+              "exchange": "KRX",
+              "asset_type": "ETF",
+              "name": "KOSEF Lyxor Global Future Mobility MSCI",
+              "country": "South Korea",
+              "country_code": "KR",
+              "isin": "KR7394350003",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "KRX::426330",
+              "ticker": "426330",
+              "exchange": "KRX",
+              "asset_type": "ETF",
+              "name": "KOSEF USA ETF Industry STOXX",
+              "country": "South Korea",
+              "country_code": "KR",
+              "isin": "KR7426330007",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "KRX::441330",
+              "ticker": "441330",
+              "exchange": "KRX",
+              "asset_type": "ETF",
+              "name": "KOSEF China A50 Connect MSCI",
+              "country": "South Korea",
+              "country_code": "KR",
+              "isin": "KR7441330008",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "KRX::460280",
+              "ticker": "460280",
+              "exchange": "KRX",
+              "asset_type": "ETF",
+              "name": "460280",
+              "country": "South Korea",
+              "country_code": "KR",
+              "isin": "",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "KRX::520009",
+              "ticker": "520009",
+              "exchange": "KRX",
+              "asset_type": "ETF",
+              "name": "Daewoo Leveraged Crude Oil Futures ETN",
+              "country": "South Korea",
+              "country_code": "KR",
+              "isin": "KRG522100095",
+              "sector": "Equity",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "KRX::530023",
+              "ticker": "530023",
+              "exchange": "KRX",
+              "asset_type": "ETF",
+              "name": "Samsung Leverage ChinaA50 Futures ETN(H)",
+              "country": "South Korea",
+              "country_code": "KR",
+              "isin": "",
+              "sector": "Equity",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::3SPP",
+              "ticker": "3SPP",
+              "exchange": "LSE",
+              "asset_type": "ETF",
+              "name": "GraniteShares 3x Short PayPal Daily ETP",
+              "country": "United Kingdom",
+              "country_code": "GB",
+              "isin": "",
+              "sector": "Other",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::GSEM",
+              "ticker": "GSEM",
+              "exchange": "LSE",
+              "asset_type": "ETF",
+              "name": "Goldman Sachs ActiveBeta Emerging Market Equity UCITS ETF A USD Acc",
+              "country": "Ireland",
+              "country_code": "IE",
+              "isin": "IE00BJ5CMD00",
+              "sector": "Equity",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::IQGA1",
+              "ticker": "IQGA1",
+              "exchange": "LSE",
+              "asset_type": "ETF",
+              "name": "INVESCO GLOBAL ENHANCED EQUITY UCITS ETF",
+              "country": "United Kingdom",
+              "country_code": "GB",
+              "isin": "",
+              "sector": "Equity",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::OUFU",
+              "ticker": "OUFU",
+              "exchange": "LSE",
+              "asset_type": "ETF",
+              "name": "Ossiam US ESG Low Carbon Equity Factors UCITS ETF 1A USD Acc USD",
+              "country": "Ireland",
+              "country_code": "IE",
+              "isin": "IE00BJBLDJ48",
+              "sector": "Equity",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "LSE::TING",
+              "ticker": "TING",
+              "exchange": "LSE",
+              "asset_type": "ETF",
+              "name": "Tabula US Enhanced Infla UCITS ETF GBP H",
+              "country": "Ireland",
+              "country_code": "IE",
+              "isin": "IE00BN0T9H70",
+              "sector": "Fixed Income",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "NGX::GREENWETF",
+              "ticker": "GREENWETF",
+              "exchange": "NGX",
+              "asset_type": "ETF",
+              "name": "GREENWICH ASSET ETF",
+              "country": "Nigeria",
+              "country_code": "NG",
+              "isin": "NGGREENWETF2",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "NGX::LOTUSHAL15",
+              "ticker": "LOTUSHAL15",
+              "exchange": "NGX",
+              "asset_type": "ETF",
+              "name": "LOTUS HALAL EQUITY ETF",
+              "country": "Nigeria",
+              "country_code": "NG",
+              "isin": "NGLOTUSHAL13",
+              "sector": "Equity",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "NGX::MERGROWTH",
+              "ticker": "MERGROWTH",
+              "exchange": "NGX",
+              "asset_type": "ETF",
+              "name": "MERISTEM GROWTH EXCHANGE TRADED FUND",
+              "country": "Nigeria",
+              "country_code": "NG",
+              "isin": "NGMERGROWTH1",
+              "sector": "Equity",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "NGX::MERVALUE",
+              "ticker": "MERVALUE",
+              "exchange": "NGX",
+              "asset_type": "ETF",
+              "name": "MERISTEM VALUE EXCHANGE TRADED FUND",
+              "country": "Nigeria",
+              "country_code": "NG",
+              "isin": "NGMERVALUE06",
+              "sector": "Equity",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "NGX::NEWGOLD",
+              "ticker": "NEWGOLD",
+              "exchange": "NGX",
+              "asset_type": "ETF",
+              "name": "NEWGOLD EXCHANGE TRADED FUND",
+              "country": "South Africa",
+              "country_code": "ZA",
+              "isin": "ZAE000060067",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "NGX::SIAMLETF40",
+              "ticker": "SIAMLETF40",
+              "exchange": "NGX",
+              "asset_type": "ETF",
+              "name": "SIAML PENSION ETF 40",
+              "country": "Nigeria",
+              "country_code": "NG",
+              "isin": "NGSIAMLETF46",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "NGX::STANBICETF",
+              "ticker": "STANBICETF",
+              "exchange": "NGX",
+              "asset_type": "ETF",
+              "name": "STANBIC IBTC ETF 30",
+              "country": "Nigeria",
+              "country_code": "NG",
+              "isin": "NGSTBKETF308",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "NGX::VETBANK",
+              "ticker": "VETBANK",
+              "exchange": "NGX",
+              "asset_type": "ETF",
+              "name": "VETIVA BANKING ETF",
+              "country": "Nigeria",
+              "country_code": "NG",
+              "isin": "NGVETBANK009",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "NGX::VETGOODS",
+              "ticker": "VETGOODS",
+              "exchange": "NGX",
+              "asset_type": "ETF",
+              "name": "VETIVA CONSUMER GOODS ETF",
+              "country": "Nigeria",
+              "country_code": "NG",
+              "isin": "NGVETGOODS08",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            },
+            {
+              "listing_key": "NGX::VETGRIF30",
+              "ticker": "VETGRIF30",
+              "exchange": "NGX",
+              "asset_type": "ETF",
+              "name": "VETIVA GRIFFIN 30 ETF",
+              "country": "Nigeria",
+              "country_code": "NG",
+              "isin": "NGVETGRIF309",
+              "sector": "",
+              "status": "missing_from_official",
+              "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+              "official_reference_name": "",
+              "official_reference_source": "",
+              "covered_by_official_directory": true,
+              "cik": "",
+              "figi": "",
+              "lei": ""
+            }
+          ],
+          "json_out": "data/etf_verification/run-20260422-final-clean/chunk-01-of-01.json",
+          "csv_out": "data/etf_verification/run-20260422-final-clean/chunk-01-of-01.csv"
+        }
+      ],
+      "finding_rows": 50,
       "finding_examples": [
         {
           "listing_key": "BATS::GDMA",
@@ -12202,7 +13675,9 @@
           "figi": "",
           "lei": ""
         }
-      ]
+      ],
+      "summary_json": "data/etf_verification/run-20260422-final-clean/summary.json",
+      "findings_csv": "data/etf_verification/run-20260422-final-clean/findings.csv"
     },
     "exchange_coverage": [
       {
@@ -12861,7 +14336,7 @@
       "etf_missing_from_official": 0,
       "etf_name_mismatch": 4,
       "etf_cross_exchange_collision": 0,
-      "masterfile_missing": 4117,
+      "masterfile_missing": 4148,
       "masterfile_collisions": 25
     },
     {
@@ -13032,8 +14507,8 @@
       "etf_missing_from_official": 5,
       "etf_name_mismatch": 0,
       "etf_cross_exchange_collision": 0,
-      "masterfile_missing": 3404,
-      "masterfile_collisions": 1159
+      "masterfile_missing": 3405,
+      "masterfile_collisions": 1158
     },
     {
       "exchange": "EGX",
