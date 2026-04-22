@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-04-20T17:46:51Z",
-    "rows": 62496,
+    "generated_at": "2026-04-22T06:33:09Z",
+    "rows": 62571,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,50 +14,51 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 48905,
-      "source_gap": 12729,
-      "warn": 862
+      "pass": 49265,
+      "source_gap": 12724,
+      "warn": 582
     },
     "evidence_level_counts": {
-      "identifier_enriched": 208,
-      "official_reference": 58043,
+      "identifier_enriched": 211,
+      "official_reference": 58117,
       "scoped_source_gap": 813,
-      "valid_isin": 3432
+      "valid_isin": 3430
     },
     "severity_counts": {
-      "medium": 862,
-      "source_gap": 15493
+      "high": 124,
+      "medium": 458,
+      "source_gap": 15374
     },
     "issue_counts": {
-      "official_reference_gap": 4453,
-      "missing_etf_category": 3960,
-      "expected_missing_primary_isin": 3920,
-      "missing_stock_sector": 3160,
-      "official_name_mismatch": 862
+      "official_reference_gap": 4454,
+      "expected_missing_primary_isin": 3932,
+      "missing_etf_category": 3829,
+      "missing_stock_sector": 3159,
+      "official_name_mismatch": 458,
+      "country_isin_mismatch": 124
     },
     "top_flagged_exchanges": [
       {
         "exchange": "OTC",
-        "pass": 7591,
-        "warn": 636,
-        "source_gap": 2866
+        "pass": 7764,
+        "source_gap": 2866,
+        "warn": 458
       },
       {
         "exchange": "B3",
-        "source_gap": 919,
-        "pass": 618
+        "source_gap": 940,
+        "pass": 644
       },
       {
         "exchange": "TSX",
-        "warn": 3,
-        "source_gap": 767,
-        "pass": 1125
+        "pass": 1147,
+        "source_gap": 755
       },
       {
-        "exchange": "NYSE ARCA",
-        "pass": 1954,
-        "source_gap": 613,
-        "warn": 87
+        "exchange": "LSE",
+        "pass": 5756,
+        "warn": 93,
+        "source_gap": 566
       },
       {
         "exchange": "SSE",
@@ -65,16 +66,15 @@
         "pass": 2131
       },
       {
-        "exchange": "TSXV",
-        "source_gap": 595,
-        "pass": 452,
-        "warn": 19
+        "exchange": "NYSE ARCA",
+        "pass": 2003,
+        "source_gap": 651
       },
       {
-        "exchange": "LSE",
-        "pass": 5823,
-        "source_gap": 591,
-        "warn": 1
+        "exchange": "TSXV",
+        "source_gap": 604,
+        "pass": 458,
+        "warn": 4
       },
       {
         "exchange": "KRX",
@@ -83,8 +83,9 @@
       },
       {
         "exchange": "SZSE",
-        "pass": 2581,
-        "source_gap": 502
+        "pass": 2580,
+        "source_gap": 502,
+        "warn": 1
       },
       {
         "exchange": "NSE_IN",
@@ -92,41 +93,41 @@
       },
       {
         "exchange": "NASDAQ",
-        "pass": 4159,
-        "source_gap": 447,
-        "warn": 28
+        "pass": 4196,
+        "source_gap": 435,
+        "warn": 3
       },
       {
         "exchange": "XETRA",
-        "pass": 3403,
-        "source_gap": 349
+        "pass": 3421,
+        "source_gap": 357,
+        "warn": 1
       },
       {
         "exchange": "BATS",
-        "source_gap": 320,
-        "pass": 919,
-        "warn": 4
+        "source_gap": 293,
+        "pass": 950
       },
       {
         "exchange": "STO",
-        "source_gap": 237,
-        "pass": 488
+        "source_gap": 236,
+        "pass": 489
       },
       {
         "exchange": "ASX",
-        "pass": 1082,
-        "source_gap": 212,
-        "warn": 4
+        "pass": 1087,
+        "source_gap": 211
       },
       {
         "exchange": "SET",
-        "source_gap": 184,
-        "pass": 341,
-        "warn": 22
+        "source_gap": 198,
+        "pass": 347,
+        "warn": 2
       },
       {
         "exchange": "BMV",
-        "source_gap": 171,
+        "source_gap": 159,
+        "warn": 12,
         "pass": 8
       },
       {
@@ -136,14 +137,13 @@
       },
       {
         "exchange": "Euronext",
-        "source_gap": 159,
-        "pass": 816
+        "source_gap": 158,
+        "pass": 817
       },
       {
-        "exchange": "NYSE",
-        "pass": 1935,
-        "source_gap": 118,
-        "warn": 28
+        "exchange": "TASE",
+        "source_gap": 131,
+        "pass": 542
       }
     ]
   },
@@ -883,6 +883,24 @@
           "field": "isin",
           "value": "",
           "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "SZSE::001289",
+      "ticker": "001289",
+      "exchange": "SZSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "China",
+          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -4503,6 +4521,96 @@
       ]
     },
     {
+      "listing_key": "LSE::0A22",
+      "ticker": "0A22",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Belgium",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0A2B",
+      "ticker": "0A2B",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Spain",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0A2K",
+      "ticker": "0A2K",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Netherlands",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0A2L",
+      "ticker": "0A2L",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Spain",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0A2M",
+      "ticker": "0A2M",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Netherlands",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
       "listing_key": "LSE::0A2T",
       "ticker": "0A2T",
       "exchange": "LSE",
@@ -4521,20 +4629,243 @@
       ]
     },
     {
+      "listing_key": "LSE::0A2V",
+      "ticker": "0A2V",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "France",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0A2W",
+      "ticker": "0A2W",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Germany",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0A2X",
+      "ticker": "0A2X",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "China",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
       "listing_key": "LSE::0A2Y",
       "ticker": "0A2Y",
       "exchange": "LSE",
       "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
+      "quality_status": "warn",
+      "quality_score": 30,
+      "recommended_action": "review_or_backfill",
       "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Spain",
+          "message": "Country disagrees with ISIN prefix country United States."
+        },
         {
           "issue_type": "missing_stock_sector",
           "severity": "source_gap",
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0A32",
+      "ticker": "0A32",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "China",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0A3T",
+      "ticker": "0A3T",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Singapore",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0A56",
+      "ticker": "0A56",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "South Africa",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0A6Q",
+      "ticker": "0A6Q",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Hong Kong",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0A6U",
+      "ticker": "0A6U",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "China",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0A6W",
+      "ticker": "0A6W",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Switzerland",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0A6X",
+      "ticker": "0A6X",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Brazil",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0A7F",
+      "ticker": "0A7F",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Norway",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0A8Q",
+      "ticker": "0A8Q",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "China",
+          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -4816,14 +5147,39 @@
       ]
     },
     {
+      "listing_key": "LSE::0ACX",
+      "ticker": "0ACX",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "United Kingdom",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
       "listing_key": "LSE::0ADF",
       "ticker": "0ADF",
       "exchange": "LSE",
       "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
+      "quality_status": "warn",
+      "quality_score": 30,
+      "recommended_action": "review_or_backfill",
       "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "United Kingdom",
+          "message": "Country disagrees with ISIN prefix country United States."
+        },
         {
           "issue_type": "missing_stock_sector",
           "severity": "source_gap",
@@ -5248,6 +5604,60 @@
       ]
     },
     {
+      "listing_key": "LSE::0HKY",
+      "ticker": "0HKY",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "China",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0HL8",
+      "ticker": "0HL8",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Brazil",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0HLE",
+      "ticker": "0HLE",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Spain",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
       "listing_key": "LSE::0HLQ",
       "ticker": "0HLQ",
       "exchange": "LSE",
@@ -5262,6 +5672,24 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0HN3",
+      "ticker": "0HN3",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Australia",
+          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -5320,6 +5748,24 @@
       ]
     },
     {
+      "listing_key": "LSE::0I3G",
+      "ticker": "0I3G",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Mexico",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
       "listing_key": "LSE::0I3I",
       "ticker": "0I3I",
       "exchange": "LSE",
@@ -5334,6 +5780,24 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0I4T",
+      "ticker": "0I4T",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "France",
+          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -5356,6 +5820,24 @@
       ]
     },
     {
+      "listing_key": "LSE::0I74",
+      "ticker": "0I74",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "China",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
       "listing_key": "LSE::0I9F",
       "ticker": "0I9F",
       "exchange": "LSE",
@@ -5370,6 +5852,42 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0ICU",
+      "ticker": "0ICU",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "South Africa",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0IID",
+      "ticker": "0IID",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Sweden",
+          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -5428,6 +5946,42 @@
       ]
     },
     {
+      "listing_key": "LSE::0IVW",
+      "ticker": "0IVW",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Jersey",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0IYR",
+      "ticker": "0IYR",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "South Africa",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
       "listing_key": "LSE::0J0V",
       "ticker": "0J0V",
       "exchange": "LSE",
@@ -5464,6 +6018,24 @@
       ]
     },
     {
+      "listing_key": "LSE::0J39",
+      "ticker": "0J39",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "South Africa",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
       "listing_key": "LSE::0J3H",
       "ticker": "0J3H",
       "exchange": "LSE",
@@ -5478,6 +6050,24 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0J5T",
+      "ticker": "0J5T",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Japan",
+          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -5500,6 +6090,24 @@
       ]
     },
     {
+      "listing_key": "LSE::0JOQ",
+      "ticker": "0JOQ",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "China",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
       "listing_key": "LSE::0JW2",
       "ticker": "0JW2",
       "exchange": "LSE",
@@ -5514,6 +6122,42 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0K1Y",
+      "ticker": "0K1Y",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Japan",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0K75",
+      "ticker": "0K75",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "China",
+          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -5536,6 +6180,60 @@
       ]
     },
     {
+      "listing_key": "LSE::0K85",
+      "ticker": "0K85",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Japan",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0K8D",
+      "ticker": "0K8D",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Finland",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0K9E",
+      "ticker": "0K9E",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Switzerland",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
       "listing_key": "LSE::0KEI",
       "ticker": "0KEI",
       "exchange": "LSE",
@@ -5550,6 +6248,24 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0KHP",
+      "ticker": "0KHP",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Brazil",
+          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -5608,6 +6324,24 @@
       ]
     },
     {
+      "listing_key": "LSE::0KWZ",
+      "ticker": "0KWZ",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "United Kingdom",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
       "listing_key": "LSE::0KZA",
       "ticker": "0KZA",
       "exchange": "LSE",
@@ -5622,6 +6356,42 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0L2T",
+      "ticker": "0L2T",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "South Korea",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0L7L",
+      "ticker": "0L7L",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Japan",
+          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -5676,6 +6446,96 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0L9Y",
+      "ticker": "0L9Y",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Netherlands",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0LBF",
+      "ticker": "0LBF",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Brazil",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0LEA",
+      "ticker": "0LEA",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "China",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0LER",
+      "ticker": "0LER",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Israel",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0LG5",
+      "ticker": "0LG5",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Japan",
+          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -5748,6 +6608,24 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0M42",
+      "ticker": "0M42",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Netherlands",
+          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -6536,6 +7414,24 @@
       ]
     },
     {
+      "listing_key": "LSE::0S2J",
+      "ticker": "0S2J",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "South Africa",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
       "listing_key": "LSE::0STP",
       "ticker": "0STP",
       "exchange": "LSE",
@@ -6550,6 +7446,96 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0TD2",
+      "ticker": "0TD2",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Italy",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0TDD",
+      "ticker": "0TDD",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Denmark",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0TDF",
+      "ticker": "0TDF",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Switzerland",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0TDG",
+      "ticker": "0TDG",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Chile",
+          "message": "Country disagrees with ISIN prefix country United States."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::0TGA",
+      "ticker": "0TGA",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "country_isin_mismatch",
+          "severity": "high",
+          "field": "country",
+          "value": "Italy",
+          "message": "Country disagrees with ISIN prefix country United States."
         }
       ]
     },
@@ -19644,985 +20630,6 @@
           "field": "isin",
           "value": "",
           "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301301",
-      "ticker": "301301",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301307",
-      "ticker": "301307",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301311",
-      "ticker": "301311",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301313",
-      "ticker": "301313",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301315",
-      "ticker": "301315",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301316",
-      "ticker": "301316",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301321",
-      "ticker": "301321",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301325",
-      "ticker": "301325",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301331",
-      "ticker": "301331",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301332",
-      "ticker": "301332",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301335",
-      "ticker": "301335",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301336",
-      "ticker": "301336",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301349",
-      "ticker": "301349",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301368",
-      "ticker": "301368",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301379",
-      "ticker": "301379",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301386",
-      "ticker": "301386",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301388",
-      "ticker": "301388",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301390",
-      "ticker": "301390",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301392",
-      "ticker": "301392",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301397",
-      "ticker": "301397",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::301400",
-      "ticker": "301400",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301479",
-      "ticker": "301479",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301488",
-      "ticker": "301488",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301498",
-      "ticker": "301498",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301510",
-      "ticker": "301510",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301511",
-      "ticker": "301511",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301512",
-      "ticker": "301512",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301539",
-      "ticker": "301539",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301589",
-      "ticker": "301589",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301591",
-      "ticker": "301591",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301600",
-      "ticker": "301600",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301611",
-      "ticker": "301611",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::301658",
-      "ticker": "301658",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "TWSE::3018",
-      "ticker": "3018",
-      "exchange": "TWSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "SZSE::302132",
-      "ticker": "302132",
-      "exchange": "SZSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::302190",
-      "ticker": "302190",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::302450",
-      "ticker": "302450",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "TWSE::3026",
-      "ticker": "3026",
-      "exchange": "TWSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::304760",
-      "ticker": "304760",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::304770",
-      "ticker": "304770",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::304780",
-      "ticker": "304780",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::305050",
-      "ticker": "305050",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::305540",
-      "ticker": "305540",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::305720",
-      "ticker": "305720",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::306530",
-      "ticker": "306530",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::306950",
-      "ticker": "306950",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::307520",
-      "ticker": "307520",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::308620",
-      "ticker": "308620",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::309230",
-      "ticker": "309230",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::30GB",
-      "ticker": "30GB",
-      "exchange": "LSE",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "AMS::30ID",
-      "ticker": "30ID",
-      "exchange": "AMS",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 80,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        },
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "AMS",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::310080",
-      "ticker": "310080",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::310960",
-      "ticker": "310960",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::310970",
-      "ticker": "310970",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
         }
       ]
     }

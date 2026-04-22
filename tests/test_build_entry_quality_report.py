@@ -245,6 +245,132 @@ def test_entry_quality_accepts_official_otc_abbreviated_names():
     assert all(issue.issue_type != "official_name_mismatch" for issue in report_rows[0].issues)
 
 
+def test_entry_quality_accepts_otc_unsponsored_adr_wrapper_names():
+    listing = row(
+        "OTC::AACAY",
+        "AACAY",
+        "OTC",
+        "AAC Technologies Holdings Inc",
+        isin="US0003041052",
+    )
+    report_rows = assess_entries(
+        [listing],
+        tickers=[listing],
+        scopes=[scope("OTC::AACAY", "AACAY", "OTC", isin="US0003041052", instrument_scope="extended", scope_reason="otc_listing")],
+        identifiers=[{"listing_key": "OTC::AACAY", "ticker": "AACAY", "exchange": "OTC", "isin": "US0003041052", "wkn": "", "figi": "", "cik": "", "lei": "", "figi_source": "", "cik_source": "", "lei_source": ""}],
+        masterfiles=[official_ref("AACAY", "OTC", "AAC TECHS HLDGS UNSP/ADR", "", asset_type="Stock")],
+        aliases=[],
+        coverage_report={"by_exchange": [{"exchange": "OTC", "venue_status": "official_full"}]},
+    )
+
+    assert all(issue.issue_type != "official_name_mismatch" for issue in report_rows[0].issues)
+
+
+def test_entry_quality_accepts_otc_bank_adr_abbreviations():
+    listing = row(
+        "OTC::AAVMY",
+        "AAVMY",
+        "OTC",
+        "ABN AMRO Bank N.V",
+        isin="NL0011540547",
+    )
+    report_rows = assess_entries(
+        [listing],
+        tickers=[listing],
+        scopes=[scope("OTC::AAVMY", "AAVMY", "OTC", isin="NL0011540547", instrument_scope="extended", scope_reason="otc_listing")],
+        identifiers=[{"listing_key": "OTC::AAVMY", "ticker": "AAVMY", "exchange": "OTC", "isin": "NL0011540547", "wkn": "", "figi": "", "cik": "", "lei": "", "figi_source": "", "cik_source": "", "lei_source": ""}],
+        masterfiles=[official_ref("AAVMY", "OTC", "ABN AMR BK N V UNSP/ADR", "", asset_type="Stock")],
+        aliases=[],
+        coverage_report={"by_exchange": [{"exchange": "OTC", "venue_status": "official_full"}]},
+    )
+
+    assert all(issue.issue_type != "official_name_mismatch" for issue in report_rows[0].issues)
+
+
+def test_entry_quality_accepts_otc_power_and_telephone_abbreviations():
+    listing = row(
+        "OTC::APTL",
+        "APTL",
+        "OTC",
+        "Alaska Power & Telephone Company",
+        isin="US0117642068",
+    )
+    report_rows = assess_entries(
+        [listing],
+        tickers=[listing],
+        scopes=[scope("OTC::APTL", "APTL", "OTC", isin="US0117642068", instrument_scope="extended", scope_reason="otc_listing")],
+        identifiers=[{"listing_key": "OTC::APTL", "ticker": "APTL", "exchange": "OTC", "isin": "US0117642068", "wkn": "", "figi": "", "cik": "", "lei": "", "figi_source": "", "cik_source": "", "lei_source": ""}],
+        masterfiles=[official_ref("APTL", "OTC", "ALASKA PWR & TEL CO", "", asset_type="Stock")],
+        aliases=[],
+        coverage_report={"by_exchange": [{"exchange": "OTC", "venue_status": "official_full"}]},
+    )
+
+    assert all(issue.issue_type != "official_name_mismatch" for issue in report_rows[0].issues)
+
+
+def test_entry_quality_accepts_otc_berhad_abbreviation():
+    listing = row(
+        "OTC::BRYAF",
+        "BRYAF",
+        "OTC",
+        "Berjaya Corporation Berhad",
+        isin="",
+    )
+    report_rows = assess_entries(
+        [listing],
+        tickers=[listing],
+        scopes=[scope("OTC::BRYAF", "BRYAF", "OTC", isin="", instrument_scope="extended", scope_reason="otc_listing")],
+        identifiers=[{"listing_key": "OTC::BRYAF", "ticker": "BRYAF", "exchange": "OTC", "isin": "", "wkn": "", "figi": "", "cik": "", "lei": "", "figi_source": "", "cik_source": "", "lei_source": ""}],
+        masterfiles=[official_ref("BRYAF", "OTC", "Berjaya Corporation BHD", "", asset_type="Stock")],
+        aliases=[],
+        coverage_report={"by_exchange": [{"exchange": "OTC", "venue_status": "official_full"}]},
+    )
+
+    assert all(issue.issue_type != "official_name_mismatch" for issue in report_rows[0].issues)
+
+
+def test_entry_quality_accepts_otc_mining_and_resources_abbreviations():
+    listing = row(
+        "OTC::BENZF",
+        "BENZF",
+        "OTC",
+        "Benz Mining Corp",
+        isin="CA08279D2081",
+    )
+    report_rows = assess_entries(
+        [listing],
+        tickers=[listing],
+        scopes=[scope("OTC::BENZF", "BENZF", "OTC", isin="CA08279D2081", instrument_scope="extended", scope_reason="otc_listing")],
+        identifiers=[{"listing_key": "OTC::BENZF", "ticker": "BENZF", "exchange": "OTC", "isin": "CA08279D2081", "wkn": "", "figi": "", "cik": "", "lei": "", "figi_source": "", "cik_source": "", "lei_source": ""}],
+        masterfiles=[official_ref("BENZF", "OTC", "BENZ MNG CORP", "", asset_type="Stock")],
+        aliases=[],
+        coverage_report={"by_exchange": [{"exchange": "OTC", "venue_status": "official_full"}]},
+    )
+
+    assert all(issue.issue_type != "official_name_mismatch" for issue in report_rows[0].issues)
+
+
+def test_entry_quality_accepts_otc_development_wrapper_abbreviations():
+    listing = row(
+        "OTC::HLDCY",
+        "HLDCY",
+        "OTC",
+        "Henderson Land Development",
+        isin="US42506L1070",
+    )
+    report_rows = assess_entries(
+        [listing],
+        tickers=[listing],
+        scopes=[scope("OTC::HLDCY", "HLDCY", "OTC", isin="US42506L1070", instrument_scope="extended", scope_reason="otc_listing")],
+        identifiers=[{"listing_key": "OTC::HLDCY", "ticker": "HLDCY", "exchange": "OTC", "isin": "US42506L1070", "wkn": "", "figi": "", "cik": "", "lei": "", "figi_source": "", "cik_source": "", "lei_source": ""}],
+        masterfiles=[official_ref("HLDCY", "OTC", "HENDERSON LD DEV S/ADR", "", asset_type="Stock")],
+        aliases=[],
+        coverage_report={"by_exchange": [{"exchange": "OTC", "venue_status": "official_full"}]},
+    )
+
+    assert all(issue.issue_type != "official_name_mismatch" for issue in report_rows[0].issues)
+
+
 def test_entry_quality_keeps_true_otc_rename_mismatch_visible():
     listing = row(
         "OTC::AECX",

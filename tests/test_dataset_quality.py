@@ -247,6 +247,40 @@ def test_country_from_isin_handles_additional_exchange_prefixes():
     assert country_from_isin("PK0043901013") == "Pakistan"
 
 
+def test_country_from_isin_handles_common_global_prefixes():
+    from scripts.rebuild_dataset import country_from_isin
+
+    assert country_from_isin("US60687Y1091") == "United States"
+    assert country_from_isin("LT0000131872") == "Lithuania"
+    assert country_from_isin("MHY8564W1030") == "Marshall Islands"
+
+
+def test_normalize_input_row_repairs_mojibake_name():
+    from scripts.rebuild_dataset import normalize_input_row
+
+    row = {
+        "ticker": "AERO",
+        "exchange": "NYSE",
+        "asset_type": "Stock",
+        "name": "Grupo AeromÃ©xico, S.A.B. de C.V.",
+    }
+
+    assert normalize_input_row(row)["name"] == "Grupo Aeroméxico, S.A.B. de C.V."
+
+
+def test_normalize_input_row_preserves_legitimate_non_ascii_name():
+    from scripts.rebuild_dataset import normalize_input_row
+
+    row = {
+        "ticker": "ATED3",
+        "exchange": "B3",
+        "asset_type": "Stock",
+        "name": "ATOM EDUCAÇÃO E EDITORA S.A.",
+    }
+
+    assert normalize_input_row(row)["name"] == "ATOM EDUCAÇÃO E EDITORA S.A."
+
+
 def test_vietnam_hnx_official_isin_fallback_corrects_country():
     ipa = listing_ticker_exchange_row("IPA", "HNX")
 
@@ -2125,7 +2159,10 @@ def test_sto_review_overrides_keep_current_hotel_and_remove_nosium_b():
     assert hotel["country"] == "Sweden"
     assert hotel["country_code"] == "SE"
     assert hotel["isin"] == "SE0011415710"
-    assert hotel["aliases"] == ""
+    assert hotel["aliases"] == "hotel fast sse"
+
+    maxent_b = by_key[("MAXENT-B", "STO")]
+    assert maxent_b["aliases"] == ""
 
 
 def test_sto_review_overrides_drop_m8g_and_int_and_enrich_ver():
@@ -2455,6 +2492,7 @@ def test_open_source_project_files_exist_and_are_linked():
     assert (DATA_DIR / "listing_index.csv").exists()
     assert (DATA_DIR / "reports" / "coverage_report.json").exists()
     assert (DATA_DIR / "reports" / "entry_quality.md").exists()
+    assert (DATA_DIR / "reports" / "override_debt_report.md").exists()
     assert (DATA_DIR / "reports" / "ohlcv_plausibility.md").exists()
     assert (DATA_DIR / "reports" / "masterfile_collision_report.json").exists()
     assert "identifiers_extended.csv" in readme
@@ -2463,6 +2501,7 @@ def test_open_source_project_files_exist_and_are_linked():
     assert "listing_index.csv" in readme
     assert "coverage_report.json" in readme
     assert "entry_quality.md" in readme
+    assert "override_debt_report.md" in readme
     assert "ohlcv_plausibility.md" in readme
     assert "masterfile_collision_report.json" in readme
 

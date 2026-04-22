@@ -271,29 +271,79 @@ OTC_NAME_NOISE_TOKENS = {
     "adr",
     "ag",
     "as",
+    "aktiengesellschaft",
     "b",
     "co",
     "corp",
     "corporation",
+    "company",
+    "comm",
     "cv",
     "de",
+    "spns",
     "inc",
     "issuer",
     "ltd",
     "limited",
     "new",
     "nv",
+    "per",
     "ord",
     "pa",
+    "pk",
     "plc",
     "publ",
     "s",
     "sa",
+    "societa",
     "se",
     "shs",
     "spa",
+    "unsadr",
+    "unsp",
     "uns",
+    "va",
+    "azioni",
+    "of",
 }
+
+OTC_TOKEN_NORMALIZATION = {
+    "amr": "amro",
+    "bhd": "berhad",
+    "bk": "bank",
+    "bncrptn": "bancorporation",
+    "bncshs": "bancshares",
+    "coml": "commercial",
+    "corpn": "corporation",
+    "dev": "development",
+    "glbl": "global",
+    "grp": "group",
+    "hldgs": "holdings",
+    "hldg": "holding",
+    "intl": "international",
+    "mng": "mining",
+    "mtls": "metals",
+    "pharmctl": "pharmaceutical",
+    "ppty": "property",
+    "res": "resources",
+    "pwr": "power",
+    "svcs": "services",
+    "tel": "telephone",
+    "techs": "technologies",
+}
+
+OTC_WRAPPER_MARKERS = (
+    "adr",
+    "ord",
+    "spns",
+    "spns/adr",
+    "unsp",
+    "s/adr",
+    "unsp/adr",
+    "u/adr",
+    "s adr",
+    "unsadr",
+)
 
 
 def ascii_tokens(value: str) -> list[str]:
@@ -303,10 +353,26 @@ def ascii_tokens(value: str) -> list[str]:
 
 def informative_name_tokens(value: str) -> list[str]:
     return [
-        token
+        OTC_TOKEN_NORMALIZATION.get(token, token)
         for token in ascii_tokens(value)
         if token not in OTC_NAME_NOISE_TOKENS and len(token) > 1
     ]
+
+
+def otc_wrapper_style_name_matches(left: str, right: str) -> bool:
+    lowered = right.lower()
+    if not any(marker in lowered for marker in OTC_WRAPPER_MARKERS):
+        return False
+
+    left_tokens = set(informative_name_tokens(left))
+    right_tokens = set(informative_name_tokens(right))
+    if not left_tokens or not right_tokens:
+        return False
+
+    # OTC official references often abbreviate issuer names and add ADR/ORD wrappers;
+    # if the normalized wrapper-side token set is fully contained in the current name,
+    # treat it as equivalent rather than a rename.
+    return len(right_tokens) >= 2 and right_tokens <= left_tokens
 
 
 def consonant_skeleton(token: str) -> str:
@@ -473,7 +539,11 @@ def assess_reference_match(
         if official_name_is_informative(ref.get("name", ""), row.get("ticker", ""))
     ]
     comparable_names = [name for name in official_names if names_are_comparable(row.get("name", ""), name)]
-    if comparable_names and not any(names_match(row.get("name", ""), name) for name in comparable_names):
+    if comparable_names and not any(
+        names_match(row.get("name", ""), name)
+        or (row.get("exchange") == "OTC" and otc_wrapper_style_name_matches(row.get("name", ""), name))
+        for name in comparable_names
+    ):
         add_issue(
             issues,
             "official_name_mismatch",

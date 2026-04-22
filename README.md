@@ -9,21 +9,21 @@ Free stock and ETF ticker reference data with primary tickers, listing-keyed ven
 
 | Metric | Value | Meaning |
 |---|---:|---|
-| Primary tickers | 54,026 | Rows in `data/tickers.csv`; one primary row per security. |
-| Full listing rows | 62,496 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
+| Primary tickers | 54,095 | Rows in `data/tickers.csv`; one primary row per security. |
+| Full listing rows | 62,571 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
 | Stocks | 39,006 | Primary ticker rows where `asset_type=Stock`. |
-| ETFs | 15,020 | Primary ticker rows where `asset_type=ETF`. |
+| ETFs | 15,089 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 69 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
-| Countries | 81 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 103,462 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
-| ISIN coverage | 48,808 (90.3%) | Primary ticker rows with a non-empty `isin`. |
-| Sector/category coverage | 45,006 (83.3%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 33,985 | Primary ticker rows with a non-empty `stock_sector`. |
-| ETF category coverage | 11,021 | Primary ticker rows with a non-empty `etf_category`. |
-| Core listing-scope rows | 45,788 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
-| Core primary rows with ISIN | 41,868 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
-| Core primary rows missing ISIN | 3,920 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
-| Extended listing-scope rows | 16,708 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
+| Countries | 83 | Distinct non-empty `country` values in `data/tickers.csv`. |
+| Aliases | 103,650 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
+| ISIN coverage | 48,869 (90.3%) | Primary ticker rows with a non-empty `isin`. |
+| Sector/category coverage | 45,211 (83.6%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Stock sector coverage | 33,986 | Primary ticker rows with a non-empty `stock_sector`. |
+| ETF category coverage | 11,225 | Primary ticker rows with a non-empty `etf_category`. |
+| Core listing-scope rows | 45,858 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
+| Core primary rows with ISIN | 41,926 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
+| Core primary rows missing ISIN | 3,932 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
+| Extended listing-scope rows | 16,713 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
 
 ## Core Files
 
@@ -59,8 +59,10 @@ Reference and audit files:
 | [`data/reports/adanos_detection_simulation.md`](data/reports/adanos_detection_simulation.md) | Mention-detection smoke test for Adanos natural-language aliases |
 | [`data/reports/entry_quality.md`](data/reports/entry_quality.md) | Per-listing deterministic quality scan summary |
 | [`data/reports/validation_report.md`](data/reports/validation_report.md) | Release-gate validation summary across structure, ISINs, scopes, aliases, and reports |
+| [`data/reports/override_debt_report.md`](data/reports/override_debt_report.md) | Open reviewed metadata/alias override debt after canonical normalization |
 | [`data/reports/ohlcv_plausibility.md`](data/reports/ohlcv_plausibility.md) | Kronos-inspired market-data plausibility queue |
 | [`data/reports/masterfile_collision_report.json`](data/reports/masterfile_collision_report.json) | Official-symbol gaps blocked by ticker collisions |
+| [`docs/quality_improvement_plan.md`](docs/quality_improvement_plan.md) | Structured quality roadmap from the latest full-dataset audit |
 
 ## Data Model
 
@@ -94,8 +96,8 @@ JSON metadata:
 {
   "_meta": {
     "version": "3.14.0",
-    "built_at": "2026-04-17T15:53:00Z",
-    "total_tickers": 54026
+    "built_at": "2026-04-22T06:33:03Z",
+    "total_tickers": 54095
   },
   "tickers": []
 }
@@ -111,7 +113,7 @@ SQLite tables: `tickers`, `listings`, `aliases`, `cross_listings`, and `instrume
 - Natural-language aliases are derived from current security names on every rebuild, then normalized to API-safe aliases.
 - Duplicate natural-language aliases are either assigned to a clear best owner or removed from public alias columns.
 - `data/reports/entry_quality.csv` stores one deterministic quality row per `listing_key`.
-- `data/reports/validation_report.json` is the release gate: duplicate keys, invalid ISINs, typed sector/category leakage, Adanos alias findings, unexpected entry-quality warnings, and stale coverage counts must be clean.
+- `data/reports/validation_report.json` is the release gate: duplicate keys, invalid ISINs, typed sector/category leakage, blank country metadata on ISIN-bearing rows, mojibake name corruption, Adanos alias findings, unexpected entry-quality warnings, and stale coverage counts must be clean.
 - `data/reports/ohlcv_plausibility.csv` stores optional market-data hygiene checks; default runs are no-network and omit unchecked rows unless local OHLCV samples, `--fetch-yahoo`, or `--include-not-checked` are provided.
 - Obvious common-word, wrapper, celebrity, product, junk, short, and numeric aliases are filtered.
 - Rights, units, warrants, notes, preferreds, and depositary lines are filtered from the stock universe.
@@ -126,19 +128,19 @@ Top exchanges by primary ticker count:
 
 | Exchange | Tickers |
 |---|---:|
-| OTC | 8,238 |
+| OTC | 8,237 |
 | NASDAQ | 4,540 |
 | LSE | 3,775 |
 | TSE | 3,191 |
 | SZSE | 3,083 |
 | SSE | 2,789 |
-| NYSE ARCA | 2,577 |
-| XETRA | 2,205 |
+| NYSE ARCA | 2,578 |
+| XETRA | 2,230 |
 | NYSE | 2,046 |
 | KRX | 1,796 |
-| TSX | 1,658 |
+| TSX | 1,665 |
 | KOSDAQ | 1,583 |
-| B3 | 1,510 |
+| B3 | 1,557 |
 | ASX | 1,291 |
 | TWSE | 1,242 |
 

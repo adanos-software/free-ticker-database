@@ -7,11 +7,25 @@ BATS::FETH,FETH,BATS,official_name_mismatch|missing_etf_category,Known v3.12.0 o
 BATS::MTRA,MTRA,BATS,official_name_mismatch|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category source gap review queue.
 BATS::TDAQ,TDAQ,BATS,official_name_mismatch|expected_missing_primary_isin|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category and primary-ISIN source gap review queue.
 BATS::VMAX,VMAX,BATS,official_name_mismatch|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category source gap review queue.
+BMV::BCSN,BCSN,BMV,country_isin_mismatch|official_reference_gap,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+BMV::CIGN,CIGN,BMV,country_isin_mismatch|official_reference_gap,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+BMV::DEON,DEON,BMV,country_isin_mismatch|official_reference_gap,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+BMV::GGBN,GGBN,BMV,country_isin_mismatch|official_reference_gap,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+BMV::GSKN,GSKN,BMV,country_isin_mismatch|official_reference_gap,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+BMV::HBCN,HBCN,BMV,country_isin_mismatch|official_reference_gap,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+BMV::LYGN,LYGN,BMV,country_isin_mismatch|official_reference_gap,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+BMV::NION,NION,BMV,country_isin_mismatch|official_reference_gap,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+BMV::PUKN,PUKN,BMV,country_isin_mismatch|official_reference_gap,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+BMV::SIDN,SIDN,BMV,country_isin_mismatch|official_reference_gap,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+BMV::ULN,ULN,BMV,country_isin_mismatch|official_reference_gap,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+BMV::VODN,VODN,BMV,country_isin_mismatch|official_reference_gap,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+BSE_HU::ADID,ADID,BSE_HU,country_isin_mismatch|official_reference_gap,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
 IDX::AIMS,AIMS,IDX,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 IDX::BBKP,BBKP,IDX,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 IDX::BBYB,BBYB,IDX,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 IDX::BPFI,BPFI,IDX,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 IDX::ESSA,ESSA,IDX,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+IDX::STRK,STRK,IDX,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
 IDX::VRNA,VRNA,IDX,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 JSE::ETFGLD,ETFGLD,JSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 JSE::ETFPLD,ETFPLD,JSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
@@ -24,7 +38,100 @@ JSE::NEWSLV,NEWSLV,JSE,official_name_mismatch,Known v3.12.0 official-name mismat
 JSE::SBPP,SBPP,JSE,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
 JSE::STXGVI,STXGVI,JSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 JSE::SXM,SXM,JSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+LSE::0A22,0A22,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0A2B,0A2B,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0A2K,0A2K,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0A2L,0A2L,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0A2M,0A2M,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0A2V,0A2V,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0A2W,0A2W,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0A2X,0A2X,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0A2Y,0A2Y,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0A32,0A32,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0A3T,0A3T,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0A56,0A56,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0A6Q,0A6Q,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0A6U,0A6U,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0A6W,0A6W,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0A6X,0A6X,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0A7F,0A7F,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0A8Q,0A8Q,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0ACX,0ACX,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0ADF,0ADF,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0HKY,0HKY,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0HL8,0HL8,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0HLE,0HLE,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0HN3,0HN3,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0I3G,0I3G,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0I4T,0I4T,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0I74,0I74,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0ICU,0ICU,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0IID,0IID,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0IVW,0IVW,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0IYR,0IYR,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0J39,0J39,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0J5T,0J5T,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0JOQ,0JOQ,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0K1Y,0K1Y,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0K75,0K75,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0K85,0K85,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0K8D,0K8D,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0K9E,0K9E,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0KHP,0KHP,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0KWZ,0KWZ,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0L2T,0L2T,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0L7L,0L7L,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0L9Y,0L9Y,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0LBF,0LBF,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0LEA,0LEA,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0LER,0LER,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0LG5,0LG5,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0M42,0M42,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0S2J,0S2J,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0TD2,0TD2,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0TDD,0TDD,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0TDF,0TDF,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0TDG,0TDG,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::0TGA,0TGA,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::32QX,32QX,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::37OC,37OC,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::51FL,51FL,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::59OT,59OT,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::78QZ,78QZ,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::ALBH,ALBH,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::AXBA,AXBA,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::BC94,BC94,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::BKMA,BKMA,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::BOAR,BOAR,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::CBKD,CBKD,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::CBQS,CBQS,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::CEIR,CEIR,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::CNSD,CNSD,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::CPIC,CPIC,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::CYPC,CYPC,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::DTVL,DTVL,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
 LSE::GMP,GMP,LSE,official_name_mismatch|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category source gap review queue.
+LSE::HHPG,HHPG,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::HLPD,HLPD,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::HSBK,HSBK,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::HTSC,HTSC,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::LGLD,LGLD,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::LTOD,LTOD,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::MHID,MHID,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::MHPC,MHPC,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::NLB,NLB,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::OTPD,OTPD,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::RIGD,RIGD,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::SBIA,SBIA,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::SBID,SBID,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::SDIC,SDIC,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::SMSD,SMSD,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::TEEG,TEEG,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::TTST,TTST,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::UBLS,UBLS,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::UPLL,UPLL,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::WML,WML,LSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+LSE::ZENB,ZENB,LSE,country_isin_mismatch|missing_stock_sector,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
 NASDAQ::ADAM,ADAM,NASDAQ,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
 NASDAQ::ADAMM,ADAMM,NASDAQ,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
 NASDAQ::ATAI,ATAI,NASDAQ,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
@@ -37,15 +144,18 @@ NASDAQ::CGEM,CGEM,NASDAQ,official_name_mismatch,Known v3.12.0 official-name mism
 NASDAQ::CIFR,CIFR,NASDAQ,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 NASDAQ::CLIR,CLIR,NASDAQ,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 NASDAQ::ELAB,ELAB,NASDAQ,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NASDAQ::GDS,GDS,NASDAQ,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
 NASDAQ::GTEC,GTEC,NASDAQ,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 NASDAQ::GYRO,GYRO,NASDAQ,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 NASDAQ::HCM,HCM,NASDAQ,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 NASDAQ::HTCO,HTCO,NASDAQ,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 NASDAQ::KALA,KALA,NASDAQ,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NASDAQ::LOT,LOT,NASDAQ,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
 NASDAQ::MSGM,MSGM,NASDAQ,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 NASDAQ::NWL,NWL,NASDAQ,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 NASDAQ::OBAI,OBAI,NASDAQ,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
 NASDAQ::PENN,PENN,NASDAQ,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NASDAQ::PLUR,PLUR,NASDAQ,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
 NASDAQ::PODC,PODC,NASDAQ,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 NASDAQ::RIOT,RIOT,NASDAQ,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 NASDAQ::SBC,SBC,NASDAQ,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
@@ -54,6 +164,38 @@ NASDAQ::STRL,STRL,NASDAQ,official_name_mismatch,Known v3.12.0 official-name mism
 NASDAQ::UVSP,UVSP,NASDAQ,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 NASDAQ::XLO,XLO,NASDAQ,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 NEO::KNR,KNR,NEO,official_name_mismatch|missing_stock_sector,Known v3.12.0 official-name mismatch plus stock-sector source gap review queue.
+NYSE::AKO-A,AKO-A,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NYSE::AKO-B,AKO-B,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NYSE::ASC,ASC,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NYSE::BCH,BCH,NYSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+NYSE::BRCE,BRCE,NYSE,official_name_mismatch|expected_missing_primary_isin|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category and primary-ISIN source gap review queue.
+NYSE::BRIE,BRIE,NYSE,official_name_mismatch|expected_missing_primary_isin|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category and primary-ISIN source gap review queue.
+NYSE::BRT,BRT,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NYSE::CAG,CAG,NYSE,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
+NYSE::EARN,EARN,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NYSE::EDU,EDU,NYSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+NYSE::FHI,FHI,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NYSE::FLG,FLG,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NYSE::FMS,FMS,NYSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+NYSE::GGT,GGT,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NYSE::GTN,GTN,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NYSE::GTN-A,GTN-A,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NYSE::HIG,HIG,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NYSE::LBRT,LBRT,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NYSE::NXDT,NXDT,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NYSE::ONL,ONL,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NYSE::PBH,PBH,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NYSE::RRX,RRX,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NYSE::RVT,RVT,NYSE,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
+NYSE::SSL,SSL,NYSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+NYSE::TBLU,TBLU,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NYSE::TCAI,TCAI,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NYSE::TIMB,TIMB,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NYSE::TNGY,TNGY,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NYSE::TPYP,TPYP,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NYSE::WLTG,WLTG,NYSE,official_name_mismatch|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category source gap review queue.
+NYSE::WOR,WOR,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+NYSE::WTTR,WTTR,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 NYSE ARCA::BBHL,BBHL,NYSE ARCA,official_name_mismatch|expected_missing_primary_isin|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category and primary-ISIN source gap review queue.
 NYSE ARCA::BBHM,BBHM,NYSE ARCA,official_name_mismatch|expected_missing_primary_isin|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category and primary-ISIN source gap review queue.
 NYSE ARCA::BENJ,BENJ,NYSE ARCA,official_name_mismatch|expected_missing_primary_isin|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category and primary-ISIN source gap review queue.
@@ -146,34 +288,6 @@ NYSE MKT::NBH,NBH,NYSE MKT,official_name_mismatch,Known v3.12.0 official-name mi
 NYSE MKT::UUU,UUU,NYSE MKT,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 NYSE MKT::VZLA,VZLA,NYSE MKT,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 NYSE MKT::XPL,XPL,NYSE MKT,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::AKO-A,AKO-A,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::AKO-B,AKO-B,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::ASC,ASC,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::BRCE,BRCE,NYSE,official_name_mismatch|expected_missing_primary_isin|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category and primary-ISIN source gap review queue.
-NYSE::BRIE,BRIE,NYSE,official_name_mismatch|expected_missing_primary_isin|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category and primary-ISIN source gap review queue.
-NYSE::BRT,BRT,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::CAG,CAG,NYSE,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
-NYSE::EARN,EARN,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::FHI,FHI,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::FLG,FLG,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::GGT,GGT,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::GTN,GTN,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::GTN-A,GTN-A,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::HIG,HIG,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::LBRT,LBRT,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::NXDT,NXDT,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::ONL,ONL,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::PBH,PBH,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::RRX,RRX,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::RVT,RVT,NYSE,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
-NYSE::TBLU,TBLU,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::TCAI,TCAI,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::TIMB,TIMB,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::TNGY,TNGY,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::TPYP,TPYP,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::WLTG,WLTG,NYSE,official_name_mismatch|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category source gap review queue.
-NYSE::WOR,WOR,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::WTTR,WTTR,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 OTC::AACAY,AACAY,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 OTC::AAVMY,AAVMY,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 OTC::ABNAF,ABNAF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
@@ -818,6 +932,7 @@ PSX::TPLT,TPLT,PSX,official_name_mismatch,Known v3.12.0 official-name mismatch r
 PSX::UDLI,UDLI,PSX,official_name_mismatch|expected_missing_primary_isin|missing_stock_sector,Known v3.12.0 official-name mismatch plus stock-sector and primary-ISIN source gap review queue.
 SET::BBIK,BBIK,SET,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
 SET::BVG,BVG,SET,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
+SET::CHIC,CHIC,SET,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
 SET::COM7,COM7,SET,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 SET::CPANEL,CPANEL,SET,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
 SET::DTCENT,DTCENT,SET,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
@@ -833,19 +948,24 @@ SET::RABBIT,RABBIT,SET,official_name_mismatch|expected_missing_primary_isin,Know
 SET::READY,READY,SET,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
 SET::ROCTEC,ROCTEC,SET,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 SET::SAWAD,SAWAD,SET,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+SET::SDC,SDC,SET,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
 SET::STECON,STECON,SET,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
 SET::TIDLOR,TIDLOR,SET,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
 SET::TPBI,TPBI,SET,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 SET::TSTE,TSTE,SET,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 SET::TVDH,TVDH,SET,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
 SSE_CL::CFINHRFLA,CFINHRFLA,SSE_CL,official_name_mismatch|expected_missing_primary_isin|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category and primary-ISIN source gap review queue.
+SZSE::001289,001289,SZSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
 TSX::AAV,AAV,TSX,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 TSX::TKN,TKN,TSX,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 TSX::TVK,TVK,TSX,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 TSXV::AVN,AVN,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+TSXV::BIGG,BIGG,TSXV,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
 TSXV::CVW,CVW,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+TSXV::DTEA,DTEA,TSXV,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
 TSXV::FWZ,FWZ,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 TSXV::GRB,GRB,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+TSXV::IFOS,IFOS,TSXV,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
 TSXV::JEV,JEV,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 TSXV::KEEK,KEEK,TSXV,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
 TSXV::LLG,LLG,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
@@ -855,9 +975,13 @@ TSXV::MCF,MCF,TSXV,official_name_mismatch|expected_missing_primary_isin,Known v3
 TSXV::OPHR,OPHR,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 TSXV::PNPN,PNPN,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 TSXV::RBX,RBX,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+TSXV::SAGE,SAGE,TSXV,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
 TSXV::ULT,ULT,TSXV,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
 TSXV::URZ,URZ,TSXV,official_name_mismatch|expected_missing_primary_isin|missing_stock_sector,Known v3.12.0 official-name mismatch plus stock-sector and primary-ISIN source gap review queue.
 TSXV::VIZ,VIZ,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 TSXV::WAM,WAM,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 TSXV::WHN,WHN,TSXV,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
 TSXV::ZMA,ZMA,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
+WSE::HUG,HUG,WSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+WSE::SVRS,SVRS,WSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
+XETRA::AHLA,AHLA,XETRA,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."

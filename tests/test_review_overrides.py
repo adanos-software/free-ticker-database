@@ -145,3 +145,34 @@ def test_split_aliases_accepts_review_override_lists():
         "hotel fast sse",
         "stockholm",
     ]
+
+
+def test_apply_output_metadata_overrides_reinfers_country_from_isin_after_clear():
+    updated = rebuild_dataset.apply_output_metadata_overrides(
+        {
+            "ticker": "MFG",
+            "exchange": "NYSE",
+            "country": "",
+            "country_code": "",
+            "isin": "US60687Y1091",
+            "aliases": [],
+        },
+        {
+            "country": {
+                "decision": "clear",
+                "proposed_value": "",
+                "confidence": "0.9",
+                "reason": "clear contaminated country before ISIN inference",
+            }
+        },
+    )
+
+    assert updated["country"] == "United States"
+    assert updated["country_code"] == "US"
+
+
+def test_apply_review_alias_removals_removes_name_derived_aliases_too():
+    aliases = ["alten", "alten sa", "legacy"]
+    removals = {"alten", "legacy"}
+
+    assert rebuild_dataset.apply_review_alias_removals(aliases, removals) == ["alten sa"]

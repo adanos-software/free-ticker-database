@@ -1,6 +1,6 @@
 # Database Validation Report
 
-Generated at: `2026-04-21T10:43:44Z`
+Generated at: `2026-04-22T06:34:43Z`
 
 Status: `PASS`
 
@@ -8,11 +8,11 @@ Status: `PASS`
 
 | Metric | Value |
 |---|---:|
-| ticker_rows | 54,026 |
-| listing_rows | 62,496 |
-| adanos_reference_rows | 54,026 |
-| entry_quality_rows | 62,496 |
-| error_gates | 27 |
+| ticker_rows | 54,095 |
+| listing_rows | 62,571 |
+| adanos_reference_rows | 54,095 |
+| entry_quality_rows | 62,571 |
+| error_gates | 30 |
 | failed_error_gates | 0 |
 | info_gates | 5 |
 
@@ -33,6 +33,8 @@ Status: `PASS`
 | invalid_adanos_asset_type_rows | error | PASS | 0 | 0 |
 | invalid_isin_rows | error | PASS | 0 | 0 |
 | invalid_country_code_rows | error | PASS | 0 | 0 |
+| rows_missing_country_metadata_despite_isin | error | PASS | 0 | 0 |
+| rows_with_mojibake_names | error | PASS | 0 | 0 |
 | ticker_rows_missing_listing | error | PASS | 0 | 0 |
 | listing_rows_missing_instrument_scope | error | PASS | 0 | 0 |
 | primary_rows_that_are_known_secondary_cross_listings | error | PASS | 0 | 0 |
@@ -45,11 +47,12 @@ Status: `PASS`
 | adanos_alias_findings | error | PASS | 0 | 0 |
 | adanos_alias_parse_errors | error | PASS | 0 | 0 |
 | adanos_alias_common_word_count | error | PASS | 0 | 0 |
-| expected_missing_primary_isin | info | PASS | 3920 |  |
-| missing_stock_sector | info | PASS | 3160 |  |
-| missing_etf_category | info | PASS | 3960 |  |
-| source_gap_rows | info | PASS | 12729 |  |
-| allowed_warn_rows | info | PASS | 862 |  |
+| review_alias_removals_open_count | error | PASS | 0 | 0 |
+| expected_missing_primary_isin | info | PASS | 3932 |  |
+| missing_stock_sector | info | PASS | 3159 |  |
+| missing_etf_category | info | PASS | 3829 |  |
+| source_gap_rows | info | PASS | 12724 |  |
+| allowed_warn_rows | info | PASS | 986 |  |
 | coverage_report_tickers_mismatch | error | PASS | 0 | 0 |
 | coverage_report_listing_keys_mismatch | error | PASS | 0 | 0 |
 

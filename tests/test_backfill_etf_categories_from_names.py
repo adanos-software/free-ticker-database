@@ -25,6 +25,8 @@ def test_load_ticker_rows_reads_csv(tmp_path):
 
 def test_classify_etf_category_uses_specific_order_before_equity_fallback():
     assert classify_etf_category("Example US Corporate Bond ETF") == ("Fixed Income", "corporate_bonds")
+    assert classify_etf_category("Example Ethereum & Treasuries Rotation Strategy ETF") == ("Alternative", "digital_assets")
+    assert classify_etf_category("Example Bitcoin ETF") == ("Alternative", "digital_assets")
     assert classify_etf_category("Example S&P 500 Index Fund") == ("Equity", "large_cap")
     assert classify_etf_category("Example Dow Jones Industrial Average ETF") == ("Equity", "large_cap")
     assert classify_etf_category("Example NY Dow Industrial Average ETF") == ("Equity", "large_cap")

@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-20T17:43:09Z",
-  "rows": 148209,
+  "generated_at": "2026-04-22T05:37:41Z",
+  "rows": 148190,
   "exchanges": [
     "ADX",
     "AMS",
@@ -202,7 +202,7 @@
     "jpx_listed_issues": 4444,
     "jpx_tse_stock_detail": 3212,
     "tmx_listed_issuers": 3704,
-    "tmx_etf_screener": 1726,
+    "tmx_etf_screener": 1707,
     "tmx_interlisted_companies": 271,
     "twse_etf_list": 216,
     "twse_listed_companies": 1081,
@@ -329,15 +329,15 @@
       "official": true,
       "mode": "network",
       "rows": 3704,
-      "generated_at": "2026-04-20T17:41:46Z"
+      "generated_at": "2026-04-22T05:37:41Z"
     },
     "tmx_etf_screener": {
       "provider": "TMX",
       "reference_scope": "listed_companies_subset",
       "official": true,
-      "mode": "cache",
-      "rows": 1726,
-      "generated_at": "2026-04-20T17:42:13Z"
+      "mode": "network",
+      "rows": 1707,
+      "generated_at": "2026-04-22T05:37:41Z"
     },
     "tmx_interlisted_companies": {
       "provider": "TMX",
@@ -345,7 +345,7 @@
       "official": true,
       "mode": "network",
       "rows": 271,
-      "generated_at": "2026-04-20T17:42:16Z"
+      "generated_at": "2026-04-22T05:37:41Z"
     },
     "euronext_equities": {
       "provider": "Euronext",
@@ -1321,7 +1321,7 @@
     "set_etf_search": "network",
     "set_dr_search": "network",
     "tmx_listed_issuers": "network",
-    "tmx_etf_screener": "cache",
+    "tmx_etf_screener": "network",
     "tmx_interlisted_companies": "network",
     "euronext_equities": "network",
     "euronext_etfs": "network",

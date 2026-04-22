@@ -3,6 +3,7 @@ from __future__ import annotations
 import csv
 import json
 import re
+import unicodedata
 import sqlite3
 import unicodedata
 from collections import defaultdict
@@ -517,7 +518,9 @@ ISIN_PREFIX_COUNTRIES = {
     "LI": "Liechtenstein",
     "LK": "Sri Lanka",
     "LU": "Luxembourg",
+    "LT": "Lithuania",
     "MC": "Monaco",
+    "MH": "Marshall Islands",
     "MT": "Malta",
     "MU": "Mauritius",
     "MX": "Mexico",
@@ -539,10 +542,13 @@ ISIN_PREFIX_COUNTRIES = {
     "TH": "Thailand",
     "TR": "Turkey",
     "TW": "Taiwan",
+    "US": "United States",
     "VN": "Vietnam",
     "ZA": "South Africa",
     "ZW": "Zimbabwe",
 }
+MOJIBAKE_RE = re.compile(r"(?:Ã[\u0080-\u00BF]|Â[\u0080-\u00BF]|â[\u0080-\u00BF]{1,2}|�|\\x[0-9a-fA-F]{2})")
+ZERO_WIDTH_RE = re.compile(r"[\u200b\u200c\u200d\ufeff]")
 
 # ---------------------------------------------------------------------------
 # Sector normalisation
@@ -1317,7 +1323,8 @@ def normalize_input_row(row: dict[str, str]) -> dict[str, str]:
     normalized = dict(row)
     exchange = normalized.get("exchange", "")
     ticker = normalized.get("ticker", "").strip().upper()
-    name = normalized.get("name", "")
+    name = repair_mojibake_text(normalized.get("name", ""))
+    normalized["name"] = name
     if exchange in EXCHANGE_ALIASES:
         normalized["exchange"] = EXCHANGE_ALIASES[exchange]
         exchange = normalized["exchange"]
@@ -1340,6 +1347,27 @@ def normalize_input_row(row: dict[str, str]) -> dict[str, str]:
         ):
             normalized["asset_type"] = "ETF"
     return normalized
+
+
+def repair_mojibake_text(value: str) -> str:
+    if not value or not MOJIBAKE_RE.search(value):
+        return value
+
+    best = value
+    best_score = len(MOJIBAKE_RE.findall(value))
+    for encoding in ("cp1252", "latin1"):
+        try:
+            candidate = value.encode(encoding).decode("utf-8")
+        except (UnicodeEncodeError, UnicodeDecodeError):
+            continue
+        candidate = ZERO_WIDTH_RE.sub("", unicodedata.normalize("NFKC", candidate))
+        score = len(MOJIBAKE_RE.findall(candidate))
+        if score < best_score:
+            best = candidate
+            best_score = score
+        if score == 0:
+            break
+    return best
 
 
 def is_code_like_name(name: str, ticker: str) -> bool:
@@ -2112,14 +2140,19 @@ def apply_output_metadata_overrides(
         elif override["decision"] == "update":
             updated[field] = override.get("proposed_value", "")
 
-    if "isin" in field_overrides and "country" not in field_overrides:
-        inferred_country = country_from_isin(updated.get("isin", ""))
-        if inferred_country:
-            updated["country"] = inferred_country
-            updated["country_code"] = COUNTRY_TO_ISO.get(inferred_country, "")
+    inferred_country = country_from_isin(updated.get("isin", ""))
+    if inferred_country and (not updated.get("country") or not updated.get("country_code")):
+        updated["country"] = inferred_country
+        updated["country_code"] = COUNTRY_TO_ISO.get(inferred_country, "")
     elif "country" in field_overrides and "country_code" not in field_overrides:
         updated["country_code"] = COUNTRY_TO_ISO.get(updated["country"], "")
     return updated
+
+
+def apply_review_alias_removals(aliases: list[str], removals: set[str]) -> list[str]:
+    if not removals:
+        return aliases
+    return [alias for alias in aliases if alias not in removals]
 
 
 def cleaned_rows():
@@ -2157,7 +2190,7 @@ def cleaned_rows():
         if identifier and identifier["wkn"]:
             merged_aliases.append(identifier["wkn"])
         if alias_removals:
-            merged_aliases = [alias for alias in merged_aliases if alias not in alias_removals]
+            merged_aliases = apply_review_alias_removals(merged_aliases, alias_removals)
         merged = dict(row)
         if "isin" not in review_metadata_updates.get(row_key, {}):
             official_isin = official_isin_fallbacks.get((row["ticker"], row["exchange"], row["asset_type"]), "")
@@ -2207,7 +2240,7 @@ def cleaned_rows():
 
         output_row = {
             "ticker": row["ticker"],
-            "name": row["name"],
+            "name": repair_mojibake_text(row["name"]),
             "exchange": row["exchange"],
             "asset_type": row["asset_type"],
             "sector": normalize_sector(row.get("sector", ""), row["asset_type"]),
@@ -2224,6 +2257,7 @@ def cleaned_rows():
             review_metadata_updates.get((row["ticker"], row["exchange"]), {}),
         )
         _, output_aliases = clean_aliases(output_row, output_row.get("aliases", []), wkns, alias_context)
+        output_aliases = apply_review_alias_removals(output_aliases, review_alias_removals.get(row_key, set()))
         output_row["aliases"] = output_aliases
         output_rows.append(
             with_sector_model_fields(
@@ -2243,6 +2277,8 @@ def duplicate_alias_owner_score(row: dict[str, str], alias: str) -> int:
         score += 10
     if row.get("asset_type") == "Stock":
         score += 5
+    if normalize_alias_text(row.get("name", "")).lower() == alias:
+        score += 40
     if strip_legal_alias_suffixes(normalize_alias_text(row.get("name", "")).lower()) == alias:
         score += 30
     if row.get("exchange") in {"XETRA", "LSE", "Euronext", "SIX", "NYSE", "NASDAQ", "TSX", "TSE"}:

@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import re
 import sys
 from collections import Counter
 from dataclasses import dataclass
@@ -16,7 +17,7 @@ if str(ROOT) not in sys.path:
 
 from scripts.alias_policy import is_common_single_word_alias, normalize_alias_text
 from scripts.check_entry_quality_gate import allowed_warn_keys, check_entry_quality_gate
-from scripts.rebuild_dataset import is_valid_isin
+from scripts.rebuild_dataset import country_from_isin, is_valid_isin
 
 DATA_DIR = ROOT / "data"
 REPORTS_DIR = DATA_DIR / "reports"
@@ -28,6 +29,7 @@ DEFAULT_ADANOS_REFERENCE_CSV = DATA_DIR / "adanos" / "ticker_reference.csv"
 DEFAULT_ENTRY_QUALITY_CSV = REPORTS_DIR / "entry_quality.csv"
 DEFAULT_WARN_ALLOWLIST_CSV = REPORTS_DIR / "entry_quality_warn_allowlist.csv"
 DEFAULT_ADANOS_ALIAS_AUDIT_CSV = REPORTS_DIR / "adanos_alias_audit.csv"
+DEFAULT_REVIEW_REMOVE_ALIASES_CSV = DATA_DIR / "review_overrides" / "remove_aliases.csv"
 DEFAULT_COVERAGE_REPORT_JSON = REPORTS_DIR / "coverage_report.json"
 DEFAULT_JSON_OUT = REPORTS_DIR / "validation_report.json"
 DEFAULT_MD_OUT = REPORTS_DIR / "validation_report.md"
@@ -68,6 +70,7 @@ ADANOS_COLUMNS = {
     "aliases",
 }
 ENTRY_QUALITY_COLUMNS = {"listing_key", "quality_status"}
+MOJIBAKE_RE = re.compile(r"(?:Ã[\u0080-\u00BF]|Â[\u0080-\u00BF]|â[\u0080-\u00BF]{1,2}|�|\\x[0-9a-fA-F]{2})")
 
 
 @dataclass(frozen=True)
@@ -153,6 +156,47 @@ def invalid_country_code_rows(rows: list[dict[str, str]], id_field: str) -> list
     return invalid
 
 
+def rows_missing_country_metadata_despite_isin(rows: list[dict[str, str]], id_field: str) -> list[str]:
+    invalid: list[str] = []
+    for row in rows:
+        isin = row.get("isin", "").strip().upper()
+        if not isin:
+            continue
+        if not country_from_isin(isin):
+            continue
+        country = row.get("country", "").strip()
+        country_code = row.get("country_code", "").strip()
+        if not country or not country_code:
+            invalid.append(row.get(id_field, ""))
+    return invalid
+
+
+def rows_with_mojibake_names(rows: list[dict[str, str]], id_field: str) -> list[str]:
+    invalid: list[str] = []
+    for row in rows:
+        name = row.get("name", "")
+        if name and MOJIBAKE_RE.search(name):
+            invalid.append(row.get(id_field, ""))
+    return invalid
+
+
+def unresolved_review_alias_removals(
+    tickers: list[dict[str, str]],
+    review_remove_aliases: list[dict[str, str]],
+) -> list[str]:
+    by_key = {(row["ticker"], row["exchange"]): row for row in tickers}
+    unresolved: list[str] = []
+    for review in review_remove_aliases:
+        row = by_key.get((review.get("ticker", ""), review.get("exchange", "")))
+        if not row:
+            continue
+        aliases = {alias for alias in row.get("aliases", "").split("|") if alias}
+        alias = review.get("alias", "")
+        if alias and alias in aliases:
+            unresolved.append(f"{review.get('exchange', '')}::{review.get('ticker', '')}:{alias}")
+    return unresolved
+
+
 def listing_key(row: dict[str, str]) -> str:
     return f"{row.get('exchange', '')}::{row.get('ticker', '')}"
 
@@ -223,6 +267,7 @@ def build_validation_report(
     entry_quality: list[dict[str, str]],
     allowed_warns: set[str],
     adanos_alias_findings: list[dict[str, str]],
+    review_remove_aliases: list[dict[str, str]] | None = None,
     coverage_report: dict[str, Any] | None = None,
     path_to_columns: dict[Path, set[str]] | None = None,
     required_columns_by_path: dict[Path, set[str]] | None = None,
@@ -230,6 +275,7 @@ def build_validation_report(
 ) -> dict[str, Any]:
     generated_at = generated_at or utc_now()
     path_to_columns = path_to_columns or {}
+    review_remove_aliases = review_remove_aliases or []
 
     listing_keys = {row["listing_key"] for row in listings if row.get("listing_key")}
     instrument_scope_by_key = {
@@ -297,6 +343,18 @@ def build_validation_report(
                 invalid_country_code_rows(tickers, "ticker") + invalid_country_code_rows(listings, "listing_key"),
             ),
             fail_gate(
+                "rows_missing_country_metadata_despite_isin",
+                len(rows_missing_country_metadata_despite_isin(tickers, "ticker"))
+                + len(rows_missing_country_metadata_despite_isin(listings, "listing_key")),
+                rows_missing_country_metadata_despite_isin(tickers, "ticker")
+                + rows_missing_country_metadata_despite_isin(listings, "listing_key"),
+            ),
+            fail_gate(
+                "rows_with_mojibake_names",
+                len(rows_with_mojibake_names(tickers, "ticker")) + len(rows_with_mojibake_names(listings, "listing_key")),
+                rows_with_mojibake_names(tickers, "ticker") + rows_with_mojibake_names(listings, "listing_key"),
+            ),
+            fail_gate(
                 "ticker_rows_missing_listing",
                 len([key for key in ticker_listing_keys if key not in listing_keys]),
                 [key for key in ticker_listing_keys if key not in listing_keys],
@@ -345,6 +403,11 @@ def build_validation_report(
             ),
             fail_gate("adanos_alias_parse_errors", len(adanos_alias_parse_errors), adanos_alias_parse_errors),
             fail_gate("adanos_alias_common_word_count", len(adanos_common_word_aliases), adanos_common_word_aliases),
+            fail_gate(
+                "review_alias_removals_open_count",
+                len(unresolved_review_alias_removals(tickers, review_remove_aliases)),
+                unresolved_review_alias_removals(tickers, review_remove_aliases),
+            ),
             info_gate(
                 "expected_missing_primary_isin",
                 sum(1 for row in entry_quality if "expected_missing_primary_isin" in row.get("issue_types", "")),
@@ -374,6 +437,7 @@ def build_validation_report(
                 "adanos_reference_csv": display_path(DEFAULT_ADANOS_REFERENCE_CSV),
                 "entry_quality_csv": display_path(DEFAULT_ENTRY_QUALITY_CSV),
                 "adanos_alias_audit_csv": display_path(DEFAULT_ADANOS_ALIAS_AUDIT_CSV),
+                "review_remove_aliases_csv": display_path(DEFAULT_REVIEW_REMOVE_ALIASES_CSV),
                 "coverage_report_json": display_path(DEFAULT_COVERAGE_REPORT_JSON),
             },
         },
@@ -442,6 +506,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--entry-quality-csv", type=Path, default=DEFAULT_ENTRY_QUALITY_CSV)
     parser.add_argument("--warn-allowlist-csv", type=Path, default=DEFAULT_WARN_ALLOWLIST_CSV)
     parser.add_argument("--adanos-alias-audit-csv", type=Path, default=DEFAULT_ADANOS_ALIAS_AUDIT_CSV)
+    parser.add_argument("--review-remove-aliases-csv", type=Path, default=DEFAULT_REVIEW_REMOVE_ALIASES_CSV)
     parser.add_argument("--coverage-report-json", type=Path, default=DEFAULT_COVERAGE_REPORT_JSON)
     parser.add_argument("--json-out", type=Path, default=DEFAULT_JSON_OUT)
     parser.add_argument("--md-out", type=Path, default=DEFAULT_MD_OUT)
@@ -475,6 +540,9 @@ def main(argv: list[str] | None = None) -> int:
         entry_quality=load_csv(args.entry_quality_csv),
         allowed_warns=allowed_warn_keys(args.warn_allowlist_csv),
         adanos_alias_findings=load_csv(args.adanos_alias_audit_csv) if args.adanos_alias_audit_csv.exists() else [],
+        review_remove_aliases=(
+            load_csv(args.review_remove_aliases_csv) if args.review_remove_aliases_csv.exists() else []
+        ),
         coverage_report=coverage_report,
         path_to_columns=path_to_columns,
         required_columns_by_path=required_columns_by_path,

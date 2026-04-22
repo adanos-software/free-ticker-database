@@ -1,31 +1,31 @@
 # OTC Name Mismatch Review
 
-Generated at: `2026-04-17T08:36:24Z`
+Generated at: `2026-04-22T06:33:11Z`
 
 This report is a deterministic review queue for OTC `official_name_mismatch` warnings.
 It does not apply metadata updates automatically.
 
 ## Summary
 
-- Rows: 256
-- With ISIN: 186
-- Without ISIN: 70
+- Rows: 458
+- With ISIN: 359
+- Without ISIN: 99
 
 ## Review Classes
 
 | Class | Rows |
 |---|---:|
-| probable_otc_rename_or_symbol_reuse | 180 |
-| stale_or_symbol_reuse_without_isin | 68 |
-| weak_abbreviation_or_truncation_review | 8 |
+| weak_abbreviation_or_truncation_review | 235 |
+| probable_otc_rename_or_symbol_reuse | 156 |
+| stale_or_symbol_reuse_without_isin | 67 |
 
 ## Priority
 
 | Priority | Rows |
 |---|---:|
-| high | 180 |
-| critical | 68 |
-| medium | 8 |
+| medium | 235 |
+| high | 156 |
+| critical | 67 |
 
 ## Policy
 

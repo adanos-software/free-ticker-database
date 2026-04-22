@@ -85,6 +85,7 @@ def test_validation_report_passes_clean_minimal_dataset():
         entry_quality=[entry_quality(tickers[0])],
         allowed_warns=set(),
         adanos_alias_findings=[],
+        review_remove_aliases=[],
         coverage_report={"global": {"tickers": 1, "listing_keys": 1}},
         generated_at="2026-04-18T00:00:00Z",
     )
@@ -121,6 +122,7 @@ def test_validation_report_fails_hard_release_gates():
                 "issue_type": "common_single_word_alias",
             }
         ],
+        review_remove_aliases=[{"ticker": "MSFT", "exchange": "NASDAQ", "alias": "microsoft"}],
         coverage_report={"global": {"tickers": 99, "listing_keys": 1}},
         generated_at="2026-04-18T00:00:00Z",
     )
@@ -134,7 +136,96 @@ def test_validation_report_fails_hard_release_gates():
     assert gates["entry_quality_unexpected_warn_count"]["actual"] == 1
     assert gates["adanos_alias_findings"]["actual"] == 1
     assert gates["adanos_alias_common_word_count"]["actual"] == 1
+    assert gates["review_alias_removals_open_count"]["actual"] == 1
     assert gates["coverage_report_tickers_mismatch"]["actual"] == 1
+
+
+def test_validation_report_fails_rows_missing_country_metadata_despite_isin():
+    bad = ticker()
+    bad["country"] = ""
+    bad["country_code"] = ""
+
+    report = build_validation_report(
+        tickers=[bad],
+        listings=[listing(bad)],
+        instrument_scopes=[scope(bad)],
+        adanos_reference=[adanos_reference(bad)],
+        entry_quality=[entry_quality(bad)],
+        allowed_warns=set(),
+        adanos_alias_findings=[],
+        review_remove_aliases=[],
+        coverage_report={"global": {"tickers": 1, "listing_keys": 1}},
+        generated_at="2026-04-22T00:00:00Z",
+    )
+
+    gates = {gate["name"]: gate for gate in report["gates"]}
+    assert report["passed"] is False
+    assert gates["rows_missing_country_metadata_despite_isin"]["actual"] == 2
+
+
+def test_validation_report_ignores_blank_country_when_isin_prefix_is_not_mappable():
+    bad = ticker(isin="XS2691037282")
+    bad["country"] = ""
+    bad["country_code"] = ""
+
+    report = build_validation_report(
+        tickers=[bad],
+        listings=[listing(bad)],
+        instrument_scopes=[scope(bad)],
+        adanos_reference=[adanos_reference(bad)],
+        entry_quality=[entry_quality(bad)],
+        allowed_warns=set(),
+        adanos_alias_findings=[],
+        review_remove_aliases=[],
+        coverage_report={"global": {"tickers": 1, "listing_keys": 1}},
+        generated_at="2026-04-22T00:00:00Z",
+    )
+
+    gates = {gate["name"]: gate for gate in report["gates"]}
+    assert gates["rows_missing_country_metadata_despite_isin"]["actual"] == 0
+
+
+def test_validation_report_fails_rows_with_mojibake_names():
+    bad = ticker()
+    bad["name"] = "Grupo AeromÃ©xico, S.A.B. de C.V."
+
+    report = build_validation_report(
+        tickers=[bad],
+        listings=[listing(bad)],
+        instrument_scopes=[scope(bad)],
+        adanos_reference=[adanos_reference(bad)],
+        entry_quality=[entry_quality(bad)],
+        allowed_warns=set(),
+        adanos_alias_findings=[],
+        review_remove_aliases=[],
+        coverage_report={"global": {"tickers": 1, "listing_keys": 1}},
+        generated_at="2026-04-22T00:00:00Z",
+    )
+
+    gates = {gate["name"]: gate for gate in report["gates"]}
+    assert report["passed"] is False
+    assert gates["rows_with_mojibake_names"]["actual"] == 2
+
+
+def test_validation_report_allows_legitimate_non_ascii_names():
+    good = ticker()
+    good["name"] = "ATOM EDUCAÇÃO E EDITORA S.A."
+
+    report = build_validation_report(
+        tickers=[good],
+        listings=[listing(good)],
+        instrument_scopes=[scope(good)],
+        adanos_reference=[adanos_reference(good)],
+        entry_quality=[entry_quality(good)],
+        allowed_warns=set(),
+        adanos_alias_findings=[],
+        review_remove_aliases=[],
+        coverage_report={"global": {"tickers": 1, "listing_keys": 1}},
+        generated_at="2026-04-22T00:00:00Z",
+    )
+
+    gates = {gate["name"]: gate for gate in report["gates"]}
+    assert gates["rows_with_mojibake_names"]["actual"] == 0
 
 
 def test_parse_adanos_aliases_rejects_non_json_or_non_string_items():
@@ -155,6 +246,7 @@ def test_validation_report_accepts_custom_required_column_paths(tmp_path: Path):
         entry_quality=[entry_quality(tickers[0])],
         allowed_warns=set(),
         adanos_alias_findings=[],
+        review_remove_aliases=[],
         coverage_report={"global": {"tickers": 1, "listing_keys": 1}},
         path_to_columns={custom_tickers: set(tickers[0])},
         required_columns_by_path={custom_tickers: set(tickers[0])},
@@ -174,6 +266,7 @@ def test_validation_report_writers(tmp_path: Path):
         entry_quality=[entry_quality(tickers[0])],
         allowed_warns=set(),
         adanos_alias_findings=[],
+        review_remove_aliases=[],
         coverage_report={"global": {"tickers": 1, "listing_keys": 1}},
         generated_at="2026-04-18T00:00:00Z",
     )

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-04-21T10:43:44Z",
+    "generated_at": "2026-04-22T06:34:43Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "listings_csv": "data/listings.csv",
@@ -8,16 +8,17 @@
       "adanos_reference_csv": "data/adanos/ticker_reference.csv",
       "entry_quality_csv": "data/reports/entry_quality.csv",
       "adanos_alias_audit_csv": "data/reports/adanos_alias_audit.csv",
+      "review_remove_aliases_csv": "data/review_overrides/remove_aliases.csv",
       "coverage_report_json": "data/reports/coverage_report.json"
     }
   },
   "passed": true,
   "summary": {
-    "ticker_rows": 54026,
-    "listing_rows": 62496,
-    "adanos_reference_rows": 54026,
-    "entry_quality_rows": 62496,
-    "error_gates": 27,
+    "ticker_rows": 54095,
+    "listing_rows": 62571,
+    "adanos_reference_rows": 54095,
+    "entry_quality_rows": 62571,
+    "error_gates": 30,
     "failed_error_gates": 0,
     "info_gates": 5
   },
@@ -114,6 +115,20 @@
       "limit": 0
     },
     {
+      "name": "rows_missing_country_metadata_despite_isin",
+      "severity": "error",
+      "passed": true,
+      "actual": 0,
+      "limit": 0
+    },
+    {
+      "name": "rows_with_mojibake_names",
+      "severity": "error",
+      "passed": true,
+      "actual": 0,
+      "limit": 0
+    },
+    {
       "name": "ticker_rows_missing_listing",
       "severity": "error",
       "passed": true,
@@ -198,38 +213,45 @@
       "limit": 0
     },
     {
+      "name": "review_alias_removals_open_count",
+      "severity": "error",
+      "passed": true,
+      "actual": 0,
+      "limit": 0
+    },
+    {
       "name": "expected_missing_primary_isin",
       "severity": "info",
       "passed": true,
-      "actual": 3920,
+      "actual": 3932,
       "limit": null
     },
     {
       "name": "missing_stock_sector",
       "severity": "info",
       "passed": true,
-      "actual": 3160,
+      "actual": 3159,
       "limit": null
     },
     {
       "name": "missing_etf_category",
       "severity": "info",
       "passed": true,
-      "actual": 3960,
+      "actual": 3829,
       "limit": null
     },
     {
       "name": "source_gap_rows",
       "severity": "info",
       "passed": true,
-      "actual": 12729,
+      "actual": 12724,
       "limit": null
     },
     {
       "name": "allowed_warn_rows",
       "severity": "info",
       "passed": true,
-      "actual": 862,
+      "actual": 986,
       "limit": null
     },
     {
