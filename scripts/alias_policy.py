@@ -85,34 +85,53 @@ COMMON_SINGLE_WORD_ALIASES = {
 }
 COMMON_SINGLE_WORD_ALIASES.update(
     {
-        "agent",
-        "brave",
-        "colorado",
-        "delta",
-        "energy",
-        "focus",
-        "frequency",
-        "general",
-        "geo",
-        "grains",
-        "green",
-        "growth",
-        "guru",
-        "human",
-        "hyundai",
-        "korea",
-        "lottery",
-        "media",
-        "national",
-        "opportunities",
-        "popular",
-        "property",
-        "science",
-        "samsung",
-        "target",
-        "united",
-        "world",
-    }
+    "agent",
+    "actions",
+    "brave",
+    "bimbo",
+    "colorado",
+    "conduit",
+    "crops",
+    "desktop",
+    "delta",
+    "energy",
+    "elements",
+    "figs",
+    "focus",
+    "frequency",
+    "general",
+    "geo",
+    "grains",
+    "green",
+    "growth",
+    "guru",
+    "healthcare",
+    "hella",
+    "holdings",
+    "human",
+    "hyundai",
+    "korea",
+    "lottery",
+    "media",
+    "national",
+    "nations",
+    "members",
+    "opportunities",
+    "packages",
+    "popular",
+    "property",
+    "science",
+    "samsung",
+    "starts",
+    "target",
+    "technologies",
+    "tracker",
+    "united",
+    "vietnam",
+    "winners",
+    "wills",
+    "world",
+}
 )
 
 TRUSTED_SHORT_BRAND_ALIASES = {
@@ -170,6 +189,29 @@ GENERIC_WRAPPER_EXACT = {
 
 GENERIC_ORGANIZATION_EXACT = {
     "central bank",
+}
+
+GENERIC_MULTIWORD_ALIAS_EXACT = {
+    "a capital",
+    "ai infrastructure",
+    "as one",
+    "can do",
+    "can one",
+    "clean energy",
+    "early age",
+    "government bond",
+    "greater than",
+    "monthly income",
+    "money market",
+    "physical silver",
+    "precious metals",
+    "premium income",
+    "renewable energy",
+    "the beach",
+    "the global",
+    "the lottery",
+    "tracker fund",
+    "wealth management",
 }
 
 
@@ -251,6 +293,11 @@ def is_generic_organization_alias(alias: str) -> bool:
     return normalized in GENERIC_ORGANIZATION_EXACT
 
 
+def is_generic_multiword_alias(alias: str) -> bool:
+    normalized = normalize_natural_language_alias(alias)
+    return normalized in GENERIC_MULTIWORD_ALIAS_EXACT
+
+
 def is_short_single_word_alias(alias: str) -> bool:
     normalized = normalize_natural_language_alias(alias)
     return bool(re.fullmatch(r"[a-z0-9&.+-]+", normalized) and len(compact_alias(normalized)) <= 4)
@@ -299,6 +346,8 @@ def classify_alias_for_natural_language(
         return AliasDecision("reject", "blocked", "0.95", "generic_fund_or_trust_wrapper")
     if is_generic_organization_alias(normalized):
         return AliasDecision("reject", "blocked", "0.95", "generic_organization_alias")
+    if is_generic_multiword_alias(normalized):
+        return AliasDecision("reject", "blocked", "0.95", "generic_multiword_alias")
     if is_common_single_word_alias(normalized):
         return AliasDecision("reject", "blocked", "0.95", "common_word_alias")
     if is_short_single_word_alias(normalized) and not should_keep_short_alias(normalized):
@@ -324,6 +373,8 @@ def should_drop_from_ticker_alias_column(
     if is_generic_wrapper_alias(normalized):
         return True
     if is_generic_organization_alias(normalized):
+        return True
+    if is_generic_multiword_alias(normalized):
         return True
     if is_common_single_word_alias(normalized):
         return True

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from scripts.alias_policy import (
     classify_alias_for_natural_language,
+    is_generic_multiword_alias,
     is_generic_organization_alias,
     is_generic_wrapper_alias,
     should_drop_from_ticker_alias_column,
@@ -62,6 +63,20 @@ def test_generic_organization_aliases_are_blocked():
     assert should_drop_from_ticker_alias_column(alias="Central Bank")
 
 
+def test_generic_multiword_aliases_are_blocked():
+    assert is_generic_multiword_alias("Government Bond")
+
+    decision = classify_alias_for_natural_language(
+        alias="Government Bond",
+        alias_type="name",
+        ticker="ZGB",
+    )
+
+    assert decision.status == "reject"
+    assert decision.reason == "generic_multiword_alias"
+    assert should_drop_from_ticker_alias_column(alias="Government Bond")
+
+
 def test_short_common_aliases_are_blocked_unless_trusted_brand():
     unsafe = classify_alias_for_natural_language(alias="leo", alias_type="name", ticker="002131")
     trusted = classify_alias_for_natural_language(alias="ford", alias_type="name", ticker="F")
@@ -71,6 +86,14 @@ def test_short_common_aliases_are_blocked_unless_trusted_brand():
     assert should_drop_from_ticker_alias_column(alias="leo")
     assert trusted.status == "accept"
     assert not should_drop_from_ticker_alias_column(alias="ford")
+
+
+def test_new_common_word_aliases_are_blocked():
+    decision = classify_alias_for_natural_language(alias="Healthcare", alias_type="name", ticker="603313")
+
+    assert decision.status == "reject"
+    assert decision.reason == "common_word_alias"
+    assert should_drop_from_ticker_alias_column(alias="Healthcare")
 
 
 def test_duplicate_ticker_aliases_are_removed_from_public_alias_column():
