@@ -23,7 +23,7 @@ Build both upload folders:
 ```bash
 python3 scripts/build_public_dataset_package.py \
   --kaggle-id adanosorg/free-global-stock-ticker-database \
-  --hf-repo-id adanos/free-global-stock-ticker-database
+  --hf-repo-id adanosorg/free-global-stock-ticker-database
 ```
 
 Generated folders:
@@ -90,10 +90,10 @@ Create a public dataset repository, then upload the generated Hugging Face folde
 CLI flow:
 
 ```bash
-huggingface-cli repo create free-global-stock-ticker-database --type dataset --organization adanos
+huggingface-cli repo create free-global-stock-ticker-database --type dataset --organization adanosorg
 cd output/public_dataset/huggingface
 git init
-git remote add origin https://huggingface.co/datasets/adanos/free-global-stock-ticker-database
+git remote add origin https://huggingface.co/datasets/adanosorg/free-global-stock-ticker-database
 git add .
 git commit -m "Initial dataset release"
 git push origin main
