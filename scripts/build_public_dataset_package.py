@@ -188,7 +188,10 @@ def read_version() -> str:
 
 def ensure_clean_dir(path: Path) -> None:
     if path.exists():
-        shutil.rmtree(path)
+        if path.is_dir():
+            shutil.rmtree(path)
+        else:
+            path.unlink()
     path.mkdir(parents=True, exist_ok=True)
 
 
@@ -261,6 +264,32 @@ def dataset_summary() -> dict[str, int]:
         dataset_file.name: count_rows(dataset_file.source)
         for dataset_file in FILES
     }
+
+
+def summarize_count(count: int) -> str:
+    if count >= 1_000_000:
+        return f"{count // 1_000_000}M+"
+    if count >= 1_000:
+        return f"{count // 1_000}K+"
+    return str(count)
+
+
+def isin_coverage() -> str:
+    tickers = next(dataset_file for dataset_file in FILES if dataset_file.name == "tickers.csv")
+    dataframe = pd.read_csv(tickers.source, dtype=str, keep_default_na=False, usecols=["isin"])
+    if dataframe.empty:
+        return "0%"
+    coverage = dataframe["isin"].str.strip().ne("").mean()
+    return f"{int(coverage * 100)}%+"
+
+
+def cover_metrics(rows: dict[str, int]) -> list[tuple[str, str]]:
+    return [
+        (summarize_count(rows["tickers.csv"]), "primary tickers"),
+        (summarize_count(rows["listings.csv"]), "listing rows"),
+        (summarize_count(rows["aliases.csv"]), "aliases"),
+        (isin_coverage(), "ISIN coverage"),
+    ]
 
 
 def recommended_use(platform: str) -> str:
@@ -384,9 +413,23 @@ This is reference data, not investment advice. Coverage and metadata quality var
 
 def load_font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
     candidates = [
-        "/System/Library/Fonts/Supplemental/Arial Bold.ttf" if bold else "/System/Library/Fonts/Supplemental/Arial.ttf",
+        (
+            "/System/Library/Fonts/Supplemental/Arial Bold.ttf"
+            if bold
+            else "/System/Library/Fonts/Supplemental/Arial.ttf"
+        ),
         "/System/Library/Fonts/Helvetica.ttc",
         "/Library/Fonts/Arial.ttf",
+        (
+            "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf"
+            if bold
+            else "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"
+        ),
+        (
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+            if bold
+            else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+        ),
     ]
     for candidate in candidates:
         try:
@@ -396,7 +439,7 @@ def load_font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFo
     return ImageFont.load_default()
 
 
-def write_cover_image(target: Path) -> None:
+def write_cover_image(target: Path, rows: dict[str, int]) -> None:
     width, height = 1120, 560
     image = Image.new("RGB", (width, height), "#f6f8fb")
     draw = ImageDraw.Draw(image)
@@ -432,12 +475,7 @@ def write_cover_image(target: Path) -> None:
     draw.text((88, 78), "Free Global Stock Ticker Database", font=title_font, fill=dark)
     draw.text((90, 154), "Global stocks and ETFs with listings, identifiers, aliases, and symbol changes", font=subtitle_font, fill=muted)
 
-    metrics = [
-        ("54K+", "primary tickers"),
-        ("62K+", "listing rows"),
-        ("103K+", "aliases"),
-        ("90%+", "ISIN coverage"),
-    ]
+    metrics = cover_metrics(rows)
     x = 106
     for value, label in metrics:
         draw.rounded_rectangle((x, 398, x + 190, 482), radius=12, fill="#ffffff", outline="#d2dae5", width=1)
@@ -466,6 +504,7 @@ version: {read_version()}
 
 def build_package(output: Path, kaggle_id: str, hf_repo_id: str) -> None:
     validate_dataset_files()
+    rows = dataset_summary()
 
     kaggle = output / "kaggle"
     huggingface = output / "huggingface"
@@ -474,7 +513,7 @@ def build_package(output: Path, kaggle_id: str, hf_repo_id: str) -> None:
 
     copy_csvs(kaggle)
     copy_license(kaggle)
-    write_cover_image(kaggle)
+    write_cover_image(kaggle, rows)
     write_kaggle_metadata(kaggle, kaggle_id)
     write_readme(kaggle, platform="kaggle", repo_id=kaggle_id)
     write_citation(kaggle)
