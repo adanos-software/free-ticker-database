@@ -17,7 +17,7 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = ROOT / "output" / "public_dataset"
 KAGGLE_ID = "adanosorg/free-global-stock-ticker-database"
-HF_REPO_ID = "adanos/free-global-stock-ticker-database"
+HF_REPO_ID = "adanosorg/free-global-stock-ticker-database"
 KAGGLE_METADATA_FILE = "dataset-metadata.json"
 COVER_IMAGE = "dataset-cover-image.png"
 PROVENANCE = (
@@ -277,30 +277,53 @@ def recommended_use(platform: str) -> str:
 - Use `symbol_changes.csv` for reviewed ticker-change monitoring."""
 
 
+def hf_config_name(file_name: str) -> str:
+    return Path(file_name).stem
+
+
 def write_readme(target: Path, *, platform: str, repo_id: str) -> None:
     version = read_version()
     rows = dataset_summary()
     frontmatter = ""
     if platform == "huggingface":
-        frontmatter = """---
+        config_lines = []
+        for dataset_file in FILES:
+            if not dataset_file.parquet:
+                continue
+            config_name = hf_config_name(dataset_file.name)
+            parquet_name = Path(dataset_file.name).with_suffix(".parquet").name
+            config_lines.append(f"- config_name: {config_name}")
+            config_lines.append("  data_files:")
+            config_lines.append(f'  - split: train')
+            config_lines.append(f"    path: {parquet_name}")
+        configs_block = "\n".join(config_lines)
+        frontmatter = f"""---
 license: mit
 pretty_name: Free Global Stock Ticker Database
+language:
+- en
 tags:
 - finance
 - stocks
 - etf
 - ticker
 - isin
-- stock-market
+- wkn
+- securities
+- equities
+- tabular
+- reference-data
 size_categories:
 - 100K<n<1M
+configs:
+{configs_block}
 ---
 
 """
 
     body = f"""# Free Global Stock Ticker Database
 
-Public stock and ETF ticker reference data maintained by Adanos Software GmbH.
+Global stocks and ETFs with listings, identifiers, aliases, and reviewed symbol changes. Maintained by Adanos Software GmbH for ticker detection, identifier resolution, and market-data workflows.
 
 Source and project page: https://adanos.org
 
@@ -317,6 +340,21 @@ Version: `{version}`
 """
     for dataset_file in FILES:
         body += f"| `{dataset_file.name}` | {rows[dataset_file.name]:,} | {dataset_file.description} |\n"
+
+    if platform == "huggingface":
+        body += f"""
+## How to Load
+
+```python
+from datasets import load_dataset
+
+tickers = load_dataset("{repo_id}", "tickers", split="train")
+listings = load_dataset("{repo_id}", "listings", split="train")
+aliases = load_dataset("{repo_id}", "aliases", split="train")
+```
+
+Each file is exposed as its own config (`tickers`, `listings`, `aliases`, `identifiers`, `cross_listings`, `instrument_scopes`, `listing_events`, `symbol_changes`). Parquet variants are used by the loader; CSV variants remain available for direct download.
+"""
 
     body += f"""
 ## Recommended Use
