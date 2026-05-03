@@ -748,6 +748,7 @@ COUNTRY_TO_ISO_EXTRA: dict[str, str] = {
     "Iceland": "IS",
     "Kazakhstan": "KZ",
     "Kenya": "KE",
+    "Kuwait": "KW",
     "Malawi": "MW",
     "Mauritius": "MU",
     "Morocco": "MA",
@@ -756,10 +757,12 @@ COUNTRY_TO_ISO_EXTRA: dict[str, str] = {
     "Pakistan": "PK",
     "Panama": "PA",
     "Rwanda": "RW",
+    "Saudi Arabia": "SA",
     "Slovenia": "SI",
     "Sri Lanka": "LK",
     "Tanzania": "TZ",
     "Uganda": "UG",
+    "United Arab Emirates": "AE",
     "United States": "US",
     "Ukraine": "UA",
     "Vietnam": "VN",
@@ -1166,6 +1169,16 @@ def should_exclude_stock_row(
         if B3_DEPOSITARY_TICKER_RE.fullmatch(ticker):
             return True
         if B3_UNIT_TICKER_RE.fullmatch(ticker):
+            return True
+    if row.get("exchange") == "BSE_IN":
+        if "fund" in name and (
+            "segregated portfolio" in name
+            or "dividend plan" in name
+            or "growth plan" in name
+            or "bonus plan" in name
+            or "monthly dividend" in name
+            or "quarterly dividend" in name
+        ):
             return True
     if row.get("exchange") == "PSX":
         if PSX_CORPORATE_ACTION_TICKER_RE.fullmatch(ticker):

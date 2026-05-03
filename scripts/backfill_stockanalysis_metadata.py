@@ -26,7 +26,12 @@ DEFAULT_JSON_OUT = DEFAULT_OUTPUT_DIR / "stockanalysis_metadata_backfill.json"
 DEFAULT_METADATA_UPDATES_CSV = ROOT / "data" / "review_overrides" / "metadata_updates.csv"
 
 EXCHANGE_SLUGS = {
+    "BIST": "ist",
+    "BSE_IN": "nse",
+    "HKEX": "hkg",
     "HOSE": "hose",
+    "NSE_IN": "nse",
+    "SGX": "sgx",
     "TPEX": "tpex",
 }
 
@@ -80,12 +85,24 @@ def stockanalysis_company_url(exchange: str, ticker: str) -> str:
     slug = EXCHANGE_SLUGS.get(exchange)
     if not slug:
         raise ValueError(f"Unsupported StockAnalysis exchange mapping: {exchange}")
+    if exchange == "HKEX" and ticker.isdigit():
+        ticker = ticker[-4:]
     return f"https://stockanalysis.com/quote/{slug}/{ticker}/company/"
 
 
-def fetch_stockanalysis_company_profile(exchange: str, ticker: str, session: requests.Session) -> StockAnalysisProfile:
+def fetch_stockanalysis_company_profile(
+    exchange: str,
+    ticker: str,
+    session: requests.Session,
+    *,
+    timeout_seconds: float = 30,
+) -> StockAnalysisProfile:
     url = stockanalysis_company_url(exchange, ticker)
-    response = session.get(url, headers={"User-Agent": USER_AGENT, "Accept": "text/html,*/*"}, timeout=30)
+    response = session.get(
+        url,
+        headers={"User-Agent": USER_AGENT, "Accept": "text/html,*/*"},
+        timeout=timeout_seconds,
+    )
     response.raise_for_status()
     return parse_stockanalysis_company_profile(response.text, url)
 
@@ -227,6 +244,9 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--json-out", type=Path, default=DEFAULT_JSON_OUT)
     parser.add_argument("--metadata-updates-csv", type=Path, default=DEFAULT_METADATA_UPDATES_CSV)
     parser.add_argument("--apply", action="store_true")
+    parser.add_argument("--limit", type=int)
+    parser.add_argument("--offset", type=int, default=0)
+    parser.add_argument("--timeout-seconds", type=float, default=10)
     return parser.parse_args(argv)
 
 
@@ -239,13 +259,22 @@ def main(argv: list[str] | None = None) -> None:
         for row in load_targets(args.listings_csv, exchanges)
         if not ticker_filter or row.get("ticker", "").strip().upper() in ticker_filter
     ]
+    if args.offset:
+        targets = targets[args.offset :]
+    if args.limit is not None:
+        targets = targets[: args.limit]
 
     session = requests.Session()
     results: list[dict[str, Any]] = []
     errors: list[dict[str, str]] = []
     for row in targets:
         try:
-            profile = fetch_stockanalysis_company_profile(row["exchange"], row["ticker"], session)
+            profile = fetch_stockanalysis_company_profile(
+                row["exchange"],
+                row["ticker"],
+                session,
+                timeout_seconds=args.timeout_seconds,
+            )
             results.append(evaluate_target(row, profile))
         except requests.RequestException as exc:
             errors.append({"ticker": row["ticker"], "exchange": row["exchange"], "error": str(exc)})

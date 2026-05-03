@@ -225,7 +225,7 @@ def test_non_common_instruments_removed():
 
 
 def test_country_examples_corrected():
-    assert ticker_row("AAIGF")["country"] == "Hong Kong"
+    assert listing_ticker_exchange_row("AAIGF", "OTC")["country"] == "Hong Kong"
     assert listing_ticker_exchange_row("AANNF", "OTC")["country"] == "Luxembourg"
     assert listing_ticker_exchange_row("AAVMY", "OTC")["country"] == "Netherlands"
     assert listing_ticker_exchange_row("0A00", "LSE")["country"] == "Netherlands"
@@ -2589,6 +2589,14 @@ def test_b3_non_canonical_stock_lines_are_removed():
     assert "ALUP11" not in tickers
 
 
+def test_bse_india_fund_plan_lines_are_removed_from_stock_universe():
+    tickers = {row["ticker"] for row in load_csv("tickers.csv") if row["exchange"] == "BSE_IN"}
+
+    assert "08ABB" not in tickers
+    assert "08ADD" not in tickers
+    assert "11GPG" not in tickers
+
+
 def test_asx_non_canonical_lines_are_removed_or_retyped():
     assert ticker_exchange_row("AN3PK", "ASX") is None
     assert ticker_exchange_row("AMCDD", "ASX") is None
@@ -2650,7 +2658,11 @@ def test_tickers_csv_keeps_only_primary_cross_listing_rows():
 
     cross_rows = load_csv("cross_listings.csv")
     microsoft_rows = [row for row in cross_rows if row["isin"] == "US5949181045"]
-    assert {row["listing_key"] for row in microsoft_rows} == {"NASDAQ::MSFT", "XETRA::MSF"}
+    assert {row["listing_key"] for row in microsoft_rows} == {
+        "NASDAQ::MSFT",
+        "XETRA::MSF",
+        "HKEX::04338",
+    }
     assert sum(row["is_primary"] == "1" for row in microsoft_rows) == 1
 
 

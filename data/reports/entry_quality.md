@@ -1,23 +1,23 @@
 # Entry Quality Report
 
-Generated at: `2026-04-22T09:47:07Z`
+Generated at: `2026-05-03T20:01:22Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 49,455 |
-| source_gap | 13,021 |
+| pass | 54,333 |
+| source_gap | 16,696 |
 | warn | 63 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
+| missing_stock_sector | 7,874 |
 | official_reference_gap | 4,758 |
-| expected_missing_primary_isin | 3,894 |
-| missing_etf_category | 3,830 |
-| missing_stock_sector | 3,158 |
+| expected_missing_primary_isin | 4,578 |
+| missing_etf_category | 2,433 |
 | country_isin_mismatch | 63 |
 
 ## Top Flagged Exchanges
@@ -25,25 +25,25 @@ Generated at: `2026-04-22T09:47:07Z`
 | Exchange | Pass | Notice | Source Gap | Warn | Quarantine |
 |---|---:|---:|---:|---:|---:|
 | OTC | 7,887 | 0 | 3,169 | 0 | 0 |
-| B3 | 644 | 0 | 940 | 0 | 0 |
-| TSX | 1,147 | 0 | 755 | 0 | 0 |
-| SSE | 2,131 | 0 | 658 | 0 | 0 |
-| NYSE ARCA | 2,004 | 0 | 650 | 0 | 0 |
-| LSE | 5,803 | 0 | 552 | 60 | 0 |
-| TSXV | 463 | 0 | 603 | 0 | 0 |
-| KRX | 1,266 | 0 | 530 | 0 | 0 |
-| SZSE | 2,580 | 0 | 502 | 1 | 0 |
-| NSE_IN | 0 | 0 | 483 | 0 | 0 |
-| NASDAQ | 4,199 | 0 | 434 | 1 | 0 |
-| XETRA | 3,422 | 0 | 357 | 0 | 0 |
-| BATS | 950 | 0 | 293 | 0 | 0 |
-| STO | 489 | 0 | 236 | 0 | 0 |
-| ASX | 1,087 | 0 | 211 | 0 | 0 |
+| BSE_IN | 7 | 0 | 2,633 | 0 | 0 |
+| HKEX | 1,905 | 0 | 1,139 | 0 | 0 |
+| TSX | 1,189 | 0 | 714 | 0 | 0 |
+| SSE | 2,149 | 0 | 640 | 0 | 0 |
+| TSXV | 464 | 0 | 602 | 0 | 0 |
+| SGX | 10 | 0 | 584 | 0 | 0 |
+| B3 | 1,070 | 0 | 514 | 0 | 0 |
+| NYSE ARCA | 2,152 | 0 | 502 | 0 | 0 |
+| SZSE | 2,583 | 0 | 499 | 1 | 0 |
+| KRX | 1,313 | 0 | 483 | 0 | 0 |
+| LSE | 5,951 | 0 | 404 | 60 | 0 |
+| NASDAQ | 4,267 | 0 | 366 | 1 | 0 |
+| CSE_LK | 0 | 0 | 307 | 0 | 0 |
+| NSE_IN | 990 | 0 | 244 | 0 | 0 |
+| STO | 492 | 0 | 233 | 0 | 0 |
+| BATS | 1,013 | 0 | 230 | 0 | 0 |
+| ASX | 1,096 | 0 | 202 | 0 | 0 |
 | SET | 349 | 0 | 198 | 0 | 0 |
-| BMV | 8 | 0 | 171 | 0 | 0 |
-| TWSE | 1,072 | 0 | 170 | 0 | 0 |
-| Euronext | 817 | 0 | 158 | 0 | 0 |
-| TASE | 542 | 0 | 131 | 0 | 0 |
+| XETRA | 3,607 | 0 | 172 | 0 | 0 |
 
 ## Notes
 

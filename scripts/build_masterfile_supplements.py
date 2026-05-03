@@ -32,13 +32,69 @@ SUPPLEMENT_EXCHANGES: dict[str, dict[str, str]] = {
         "country": "Australia",
         "country_code": "AU",
     },
+    "ADX": {
+        "country": "United Arab Emirates",
+        "country_code": "AE",
+    },
     "B3": {
         "country": "Brazil",
         "country_code": "BR",
     },
+    "BHB": {
+        "country": "Bahrain",
+        "country_code": "BH",
+    },
+    "BIST": {
+        "country": "Turkey",
+        "country_code": "TR",
+    },
+    "BK": {
+        "country": "Kuwait",
+        "country_code": "KW",
+    },
+    "BSE_IN": {
+        "country": "India",
+        "country_code": "IN",
+    },
+    "CSE_LK": {
+        "country": "Sri Lanka",
+        "country_code": "LK",
+    },
+    "DFM": {
+        "country": "United Arab Emirates",
+        "country_code": "AE",
+    },
+    "HKEX": {
+        "country": "Hong Kong",
+        "country_code": "HK",
+    },
+    "MSX": {
+        "country": "Oman",
+        "country_code": "OM",
+    },
+    "NSE_IN": {
+        "country": "India",
+        "country_code": "IN",
+    },
+    "NZX": {
+        "country": "New Zealand",
+        "country_code": "NZ",
+    },
     "OSL": {
         "country": "Norway",
         "country_code": "NO",
+    },
+    "QSE": {
+        "country": "Qatar",
+        "country_code": "QA",
+    },
+    "SGX": {
+        "country": "Singapore",
+        "country_code": "SG",
+    },
+    "TADAWUL": {
+        "country": "Saudi Arabia",
+        "country_code": "SA",
     },
     "TSX": {
         "country": "Canada",
@@ -178,7 +234,7 @@ def build_supplement_rows(
             "name": row["name"],
             "exchange": exchange,
             "asset_type": row["asset_type"],
-            "sector": "",
+            "sector": row.get("sector", ""),
             "country": exchange_meta["country"],
             "country_code": exchange_meta["country_code"],
             "isin": "",

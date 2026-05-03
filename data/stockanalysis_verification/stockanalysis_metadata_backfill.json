@@ -1,10 +1,5009 @@
 {
-  "targets": 12,
-  "results": 12,
-  "updates": 12,
+  "targets": 1000,
+  "results": 0,
+  "updates": 0,
   "applied": true,
-  "decision_counts": {
-    "accept": 12
-  },
-  "errors": []
+  "decision_counts": {},
+  "errors": [
+    {
+      "ticker": "1STCUS",
+      "exchange": "BSE_IN",
+      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/nse/1STCUS/company/"
+    },
+    {
+      "ticker": "3BBLACKBIO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/3BBLACKBIO/company/"
+    },
+    {
+      "ticker": "3BFILMS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/3BFILMS/company/"
+    },
+    {
+      "ticker": "3CIT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/3CIT/company/"
+    },
+    {
+      "ticker": "4THGEN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/4THGEN/company/"
+    },
+    {
+      "ticker": "7NR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/7NR/company/"
+    },
+    {
+      "ticker": "7SEASL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/7SEASL/company/"
+    },
+    {
+      "ticker": "7TEC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/7TEC/company/"
+    },
+    {
+      "ticker": "A1L",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/A1L/company/"
+    },
+    {
+      "ticker": "A2ZINFRA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/A2ZINFRA/company/"
+    },
+    {
+      "ticker": "AADIIND",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AADIIND/company/"
+    },
+    {
+      "ticker": "AAIL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AAIL/company/"
+    },
+    {
+      "ticker": "AANANDALAK",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AANANDALAK/company/"
+    },
+    {
+      "ticker": "AANCHALISP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AANCHALISP/company/"
+    },
+    {
+      "ticker": "AAPLUSTRAD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AAPLUSTRAD/company/"
+    },
+    {
+      "ticker": "AARCON",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AARCON/company/"
+    },
+    {
+      "ticker": "AARSHYAM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AARSHYAM/company/"
+    },
+    {
+      "ticker": "AASHKA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AASHKA/company/"
+    },
+    {
+      "ticker": "AASTAFIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AASTAFIN/company/"
+    },
+    {
+      "ticker": "AAYUSH",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AAYUSH/company/"
+    },
+    {
+      "ticker": "AAYUSHBULL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AAYUSHBULL/company/"
+    },
+    {
+      "ticker": "ABAN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ABAN/company/"
+    },
+    {
+      "ticker": "ABANSENT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ABANSENT/company/"
+    },
+    {
+      "ticker": "ABATEAS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ABATEAS/company/"
+    },
+    {
+      "ticker": "ABCINDQ",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ABCINDQ/company/"
+    },
+    {
+      "ticker": "ABHICAP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ABHICAP/company/"
+    },
+    {
+      "ticker": "ABHIFIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ABHIFIN/company/"
+    },
+    {
+      "ticker": "ABHIINFRA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ABHIINFRA/company/"
+    },
+    {
+      "ticker": "ABHIJIT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ABHIJIT/company/"
+    },
+    {
+      "ticker": "ABIRAFN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ABIRAFN/company/"
+    },
+    {
+      "ticker": "ABMKNO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ABMKNO/company/"
+    },
+    {
+      "ticker": "ABRFL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ABRFL/company/"
+    },
+    {
+      "ticker": "ABRIL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ABRIL/company/"
+    },
+    {
+      "ticker": "ABVL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ABVL/company/"
+    },
+    {
+      "ticker": "ACCEDERE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ACCEDERE/company/"
+    },
+    {
+      "ticker": "ACCEL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ACCEL/company/"
+    },
+    {
+      "ticker": "ACCELERATE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ACCELERATE/company/"
+    },
+    {
+      "ticker": "ACCORDTS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ACCORDTS/company/"
+    },
+    {
+      "ticker": "ACEALPHA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ACEALPHA/company/"
+    },
+    {
+      "ticker": "ACEEDU",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ACEEDU/company/"
+    },
+    {
+      "ticker": "ACEENGITEC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ACEENGITEC/company/"
+    },
+    {
+      "ticker": "ACEMEN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ACEMEN/company/"
+    },
+    {
+      "ticker": "ACESEPP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ACESEPP/company/"
+    },
+    {
+      "ticker": "ACESOFT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ACESOFT/company/"
+    },
+    {
+      "ticker": "ACFL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ACFL/company/"
+    },
+    {
+      "ticker": "ACFSL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ACFSL/company/"
+    },
+    {
+      "ticker": "ACHYUT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ACHYUT/company/"
+    },
+    {
+      "ticker": "ACIIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ACIIN/company/"
+    },
+    {
+      "ticker": "ACKNIT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ACKNIT/company/"
+    },
+    {
+      "ticker": "ACLD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ACLD/company/"
+    },
+    {
+      "ticker": "ACME",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ACME/company/"
+    },
+    {
+      "ticker": "ACML",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ACML/company/"
+    },
+    {
+      "ticker": "ACROW",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ACROW/company/"
+    },
+    {
+      "ticker": "ACSTECH",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ACSTECH/company/"
+    },
+    {
+      "ticker": "ACTIVE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ACTIVE/company/"
+    },
+    {
+      "ticker": "ADARSHPL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ADARSHPL/company/"
+    },
+    {
+      "ticker": "ADCINDIA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ADCINDIA/company/"
+    },
+    {
+      "ticker": "ADCON",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ADCON/company/"
+    },
+    {
+      "ticker": "ADCOUNTY",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ADCOUNTY/company/"
+    },
+    {
+      "ticker": "ADDIND",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ADDIND/company/"
+    },
+    {
+      "ticker": "ADESHWAR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ADESHWAR/company/"
+    },
+    {
+      "ticker": "ADHBHUTIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ADHBHUTIN/company/"
+    },
+    {
+      "ticker": "ADHHATA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ADHHATA/company/"
+    },
+    {
+      "ticker": "ADHIRAJ",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ADHIRAJ/company/"
+    },
+    {
+      "ticker": "ADINATH",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ADINATH/company/"
+    },
+    {
+      "ticker": "ADISHAKTI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ADISHAKTI/company/"
+    },
+    {
+      "ticker": "ADITYA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ADITYA/company/"
+    },
+    {
+      "ticker": "ADITYASP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ADITYASP/company/"
+    },
+    {
+      "ticker": "ADJIA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ADJIA/company/"
+    },
+    {
+      "ticker": "ADLINE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ADLINE/company/"
+    },
+    {
+      "ticker": "ADMACH",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ADMACH/company/"
+    },
+    {
+      "ticker": "ADMANUM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ADMANUM/company/"
+    },
+    {
+      "ticker": "ADOR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ADOR/company/"
+    },
+    {
+      "ticker": "ADTECH",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ADTECH/company/"
+    },
+    {
+      "ticker": "ADVIKCA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ADVIKCA/company/"
+    },
+    {
+      "ticker": "ADVIKLA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ADVIKLA/company/"
+    },
+    {
+      "ticker": "ADVLIFE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ADVLIFE/company/"
+    },
+    {
+      "ticker": "ADVMULT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ADVMULT/company/"
+    },
+    {
+      "ticker": "ADVPETR-B",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ADVPETR-B/company/"
+    },
+    {
+      "ticker": "AEIM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AEIM/company/"
+    },
+    {
+      "ticker": "AEONXDIGI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AEONXDIGI/company/"
+    },
+    {
+      "ticker": "AERPACE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AERPACE/company/"
+    },
+    {
+      "ticker": "AFCOM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AFCOM/company/"
+    },
+    {
+      "ticker": "AFEL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AFEL/company/"
+    },
+    {
+      "ticker": "AFIL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AFIL/company/"
+    },
+    {
+      "ticker": "AGARWAL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AGARWAL/company/"
+    },
+    {
+      "ticker": "AGIOPAPER",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AGIOPAPER/company/"
+    },
+    {
+      "ticker": "AGOL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AGOL/company/"
+    },
+    {
+      "ticker": "AGRIBIO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AGRIBIO/company/"
+    },
+    {
+      "ticker": "AGSTRA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AGSTRA/company/"
+    },
+    {
+      "ticker": "AGVENTURES",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AGVENTURES/company/"
+    },
+    {
+      "ticker": "AHASOLAR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AHASOLAR/company/"
+    },
+    {
+      "ticker": "AHMDSTE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AHMDSTE/company/"
+    },
+    {
+      "ticker": "AICHAMP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AICHAMP/company/"
+    },
+    {
+      "ticker": "AIHL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AIHL/company/"
+    },
+    {
+      "ticker": "AIKPIPES",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AIKPIPES/company/"
+    },
+    {
+      "ticker": "AIMCOPEST",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AIMCOPEST/company/"
+    },
+    {
+      "ticker": "AIML",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AIML/company/"
+    },
+    {
+      "ticker": "AIRFLOA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AIRFLOA/company/"
+    },
+    {
+      "ticker": "AIRLTD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AIRLTD/company/"
+    },
+    {
+      "ticker": "AJANTSOY",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AJANTSOY/company/"
+    },
+    {
+      "ticker": "AJCJEWEL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AJCJEWEL/company/"
+    },
+    {
+      "ticker": "AJCON",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AJCON/company/"
+    },
+    {
+      "ticker": "AJWAFUN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AJWAFUN/company/"
+    },
+    {
+      "ticker": "AKCAPIT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AKCAPIT/company/"
+    },
+    {
+      "ticker": "ALANSCOTT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ALANSCOTT/company/"
+    },
+    {
+      "ticker": "ALCHCORP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ALCHCORP/company/"
+    },
+    {
+      "ticker": "ALEXANDER",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ALEXANDER/company/"
+    },
+    {
+      "ticker": "ALFAICA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ALFAICA/company/"
+    },
+    {
+      "ticker": "ALFATRAN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ALFATRAN/company/"
+    },
+    {
+      "ticker": "ALFAVIO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ALFAVIO/company/"
+    },
+    {
+      "ticker": "ALFL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ALFL/company/"
+    },
+    {
+      "ticker": "ALFREDHE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ALFREDHE/company/"
+    },
+    {
+      "ticker": "ALKOSIGN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ALKOSIGN/company/"
+    },
+    {
+      "ticker": "ALNATRD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ALNATRD/company/"
+    },
+    {
+      "ticker": "ALPHAIND",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ALPHAIND/company/"
+    },
+    {
+      "ticker": "ALPHALOGIC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ALPHALOGIC/company/"
+    },
+    {
+      "ticker": "ALPINEHOU",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ALPINEHOU/company/"
+    },
+    {
+      "ticker": "ALSL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ALSL/company/"
+    },
+    {
+      "ticker": "ALSTONE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ALSTONE/company/"
+    },
+    {
+      "ticker": "ALUFLUOR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ALUFLUOR/company/"
+    },
+    {
+      "ticker": "AMALGAM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AMALGAM/company/"
+    },
+    {
+      "ticker": "AMANAYA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AMANAYA/company/"
+    },
+    {
+      "ticker": "AMARJOTHI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AMARJOTHI/company/"
+    },
+    {
+      "ticker": "AMARNATH",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AMARNATH/company/"
+    },
+    {
+      "ticker": "AMARSEC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AMARSEC/company/"
+    },
+    {
+      "ticker": "AMBALALSA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AMBALALSA/company/"
+    },
+    {
+      "ticker": "AMBARPIL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AMBARPIL/company/"
+    },
+    {
+      "ticker": "AMBIT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AMBIT/company/"
+    },
+    {
+      "ticker": "AMBOAGRI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AMBOAGRI/company/"
+    },
+    {
+      "ticker": "AMCOIND",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AMCOIND/company/"
+    },
+    {
+      "ticker": "AMEENJI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AMEENJI/company/"
+    },
+    {
+      "ticker": "AMERISE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AMERISE/company/"
+    },
+    {
+      "ticker": "AMFORG",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AMFORG/company/"
+    },
+    {
+      "ticker": "AMIC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AMIC/company/"
+    },
+    {
+      "ticker": "AMINTAN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AMINTAN/company/"
+    },
+    {
+      "ticker": "AMITINT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AMITINT/company/"
+    },
+    {
+      "ticker": "AMITSEC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AMITSEC/company/"
+    },
+    {
+      "ticker": "AMKAY",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AMKAY/company/"
+    },
+    {
+      "ticker": "AMPVOLTS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AMPVOLTS/company/"
+    },
+    {
+      "ticker": "AMRAAGRI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AMRAAGRI/company/"
+    },
+    {
+      "ticker": "AMRAFIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AMRAFIN/company/"
+    },
+    {
+      "ticker": "AMRAPLIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AMRAPLIN/company/"
+    },
+    {
+      "ticker": "AMTL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AMTL/company/"
+    },
+    {
+      "ticker": "AMWILL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AMWILL/company/"
+    },
+    {
+      "ticker": "ANANDPROJ",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ANANDPROJ/company/"
+    },
+    {
+      "ticker": "ANDHRAPET",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ANDHRAPET/company/"
+    },
+    {
+      "ticker": "ANDREWYU",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ANDREWYU/company/"
+    },
+    {
+      "ticker": "ANGEL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ANGEL/company/"
+    },
+    {
+      "ticker": "ANIRIT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ANIRIT/company/"
+    },
+    {
+      "ticker": "ANIRITPP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ANIRITPP/company/"
+    },
+    {
+      "ticker": "ANJANI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ANJANI/company/"
+    },
+    {
+      "ticker": "ANJANIFIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ANJANIFIN/company/"
+    },
+    {
+      "ticker": "ANJANIFOODS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ANJANIFOODS/company/"
+    },
+    {
+      "ticker": "ANKIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ANKIN/company/"
+    },
+    {
+      "ticker": "ANKITMETAL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ANKITMETAL/company/"
+    },
+    {
+      "ticker": "ANNAINFRA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ANNAINFRA/company/"
+    },
+    {
+      "ticker": "ANSALAPI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ANSALAPI/company/"
+    },
+    {
+      "ticker": "ANSALBU",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ANSALBU/company/"
+    },
+    {
+      "ticker": "ANSALHSG",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ANSALHSG/company/"
+    },
+    {
+      "ticker": "ANSINDUS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ANSINDUS/company/"
+    },
+    {
+      "ticker": "ANTARIKSH",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ANTARIKSH/company/"
+    },
+    {
+      "ticker": "ANUPAM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ANUPAM/company/"
+    },
+    {
+      "ticker": "ANUROOP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ANUROOP/company/"
+    },
+    {
+      "ticker": "ANVRDHI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ANVRDHI/company/"
+    },
+    {
+      "ticker": "APIL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/APIL/company/"
+    },
+    {
+      "ticker": "APIS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/APIS/company/"
+    },
+    {
+      "ticker": "APLAB",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/APLAB/company/"
+    },
+    {
+      "ticker": "APLABPP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/APLABPP/company/"
+    },
+    {
+      "ticker": "APMIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/APMIN/company/"
+    },
+    {
+      "ticker": "APOLLOFI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/APOLLOFI/company/"
+    },
+    {
+      "ticker": "APOORVA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/APOORVA/company/"
+    },
+    {
+      "ticker": "APPL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/APPL/company/"
+    },
+    {
+      "ticker": "APTPACK",
+      "exchange": "BSE_IN",
+      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/nse/APTPACK/company/"
+    },
+    {
+      "ticker": "ARAVALIS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARAVALIS/company/"
+    },
+    {
+      "ticker": "ARCEEIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARCEEIN/company/"
+    },
+    {
+      "ticker": "ARCFIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARCFIN/company/"
+    },
+    {
+      "ticker": "ARCHITORG",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARCHITORG/company/"
+    },
+    {
+      "ticker": "ARCL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARCL/company/"
+    },
+    {
+      "ticker": "AREXMIS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AREXMIS/company/"
+    },
+    {
+      "ticker": "ARIGATO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARIGATO/company/"
+    },
+    {
+      "ticker": "ARIHANT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARIHANT/company/"
+    },
+    {
+      "ticker": "ARISE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARISE/company/"
+    },
+    {
+      "ticker": "ARISINT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARISINT/company/"
+    },
+    {
+      "ticker": "ARITAS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARITAS/company/"
+    },
+    {
+      "ticker": "ARMAN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARMAN/company/"
+    },
+    {
+      "ticker": "ARNOLD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARNOLD/company/"
+    },
+    {
+      "ticker": "ARROWHEAD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARROWHEAD/company/"
+    },
+    {
+      "ticker": "ARSHIYA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARSHIYA/company/"
+    },
+    {
+      "ticker": "ARSIFHDG",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARSIFHDG/company/"
+    },
+    {
+      "ticker": "ARSIFHRG",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARSIFHRG/company/"
+    },
+    {
+      "ticker": "ARSIFHRHD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARSIFHRHD/company/"
+    },
+    {
+      "ticker": "ARSIFHRMD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARSIFHRMD/company/"
+    },
+    {
+      "ticker": "ARTEFACT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARTEFACT/company/"
+    },
+    {
+      "ticker": "ARTSON",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARTSON/company/"
+    },
+    {
+      "ticker": "ARUNAHTEL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARUNAHTEL/company/"
+    },
+    {
+      "ticker": "ARYACAPM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARYACAPM/company/"
+    },
+    {
+      "ticker": "ARYAMAN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARYAMAN/company/"
+    },
+    {
+      "ticker": "ARYAN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARYAN/company/"
+    },
+    {
+      "ticker": "ARYAVAN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ARYAVAN/company/"
+    },
+    {
+      "ticker": "ASARFI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASARFI/company/"
+    },
+    {
+      "ticker": "ASCENSIVE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASCENSIVE/company/"
+    },
+    {
+      "ticker": "ASHAI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASHAI/company/"
+    },
+    {
+      "ticker": "ASHCAP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASHCAP/company/"
+    },
+    {
+      "ticker": "ASHIKA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASHIKA/company/"
+    },
+    {
+      "ticker": "ASHIS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASHIS/company/"
+    },
+    {
+      "ticker": "ASHISHPO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASHISHPO/company/"
+    },
+    {
+      "ticker": "ASHNI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASHNI/company/"
+    },
+    {
+      "ticker": "ASHNOOR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASHNOOR/company/"
+    },
+    {
+      "ticker": "ASHOKRE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASHOKRE/company/"
+    },
+    {
+      "ticker": "ASHRAM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASHRAM/company/"
+    },
+    {
+      "ticker": "ASHSI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASHSI/company/"
+    },
+    {
+      "ticker": "ASHUTPM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASHUTPM/company/"
+    },
+    {
+      "ticker": "ASIACAP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASIACAP/company/"
+    },
+    {
+      "ticker": "ASIANTNE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASIANTNE/company/"
+    },
+    {
+      "ticker": "ASIAPAK",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASIAPAK/company/"
+    },
+    {
+      "ticker": "ASIIL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASIIL/company/"
+    },
+    {
+      "ticker": "ASINPET",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASINPET/company/"
+    },
+    {
+      "ticker": "ASITCFIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASITCFIN/company/"
+    },
+    {
+      "ticker": "ASMTEC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASMTEC/company/"
+    },
+    {
+      "ticker": "ASPIRA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASPIRA/company/"
+    },
+    {
+      "ticker": "ASRL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASRL/company/"
+    },
+    {
+      "ticker": "ASSAMENT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASSAMENT/company/"
+    },
+    {
+      "ticker": "ASSOCER",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASSOCER/company/"
+    },
+    {
+      "ticker": "ASSOCIATED",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASSOCIATED/company/"
+    },
+    {
+      "ticker": "ASTALLTD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASTALLTD/company/"
+    },
+    {
+      "ticker": "ASTAR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASTAR/company/"
+    },
+    {
+      "ticker": "ASTONEALAB",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASTONEALAB/company/"
+    },
+    {
+      "ticker": "ASTRONMULT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASTRONMULT/company/"
+    },
+    {
+      "ticker": "ASUTENT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASUTENT/company/"
+    },
+    {
+      "ticker": "ASYL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ASYL/company/"
+    },
+    {
+      "ticker": "ATENPAPERS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ATENPAPERS/company/"
+    },
+    {
+      "ticker": "ATHARVENT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ATHARVENT/company/"
+    },
+    {
+      "ticker": "ATHCON",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ATHCON/company/"
+    },
+    {
+      "ticker": "ATHENAGLO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ATHENAGLO/company/"
+    },
+    {
+      "ticker": "ATISHAY",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ATISHAY/company/"
+    },
+    {
+      "ticker": "ATLPP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ATLPP/company/"
+    },
+    {
+      "ticker": "ATVOENT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ATVOENT/company/"
+    },
+    {
+      "ticker": "ATVPR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ATVPR/company/"
+    },
+    {
+      "ticker": "AUROLAB",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AUROLAB/company/"
+    },
+    {
+      "ticker": "AUSOMENT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AUSOMENT/company/"
+    },
+    {
+      "ticker": "AUSTENG",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AUSTENG/company/"
+    },
+    {
+      "ticker": "AUSTERE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AUSTERE/company/"
+    },
+    {
+      "ticker": "AUTOINT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AUTOINT/company/"
+    },
+    {
+      "ticker": "AUTOPINS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AUTOPINS/company/"
+    },
+    {
+      "ticker": "AUTOPRD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AUTOPRD/company/"
+    },
+    {
+      "ticker": "AVAILFC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AVAILFC/company/"
+    },
+    {
+      "ticker": "AVANCE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AVANCE/company/"
+    },
+    {
+      "ticker": "AVASARA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AVASARA/company/"
+    },
+    {
+      "ticker": "AVEER",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AVEER/company/"
+    },
+    {
+      "ticker": "AVIVA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AVIVA/company/"
+    },
+    {
+      "ticker": "AVONMERC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AVONMERC/company/"
+    },
+    {
+      "ticker": "AXELPOLY",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AXELPOLY/company/"
+    },
+    {
+      "ticker": "AXENTRA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AXENTRA/company/"
+    },
+    {
+      "ticker": "AXISOL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AXISOL/company/"
+    },
+    {
+      "ticker": "AXTEL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AXTEL/company/"
+    },
+    {
+      "ticker": "AZADIND",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AZADIND/company/"
+    },
+    {
+      "ticker": "AZTEC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/AZTEC/company/"
+    },
+    {
+      "ticker": "B2BSOFT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/B2BSOFT/company/"
+    },
+    {
+      "ticker": "BACPHAR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BACPHAR/company/"
+    },
+    {
+      "ticker": "BAIKAKAJI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BAIKAKAJI/company/"
+    },
+    {
+      "ticker": "BAJAJST",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BAJAJST/company/"
+    },
+    {
+      "ticker": "BAJGLOB",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BAJGLOB/company/"
+    },
+    {
+      "ticker": "BALGOPAL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BALGOPAL/company/"
+    },
+    {
+      "ticker": "BALTE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BALTE/company/"
+    },
+    {
+      "ticker": "BAMBINO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BAMBINO/company/"
+    },
+    {
+      "ticker": "BAMPSL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BAMPSL/company/"
+    },
+    {
+      "ticker": "BANASFN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BANASFN/company/"
+    },
+    {
+      "ticker": "BANDARAM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BANDARAM/company/"
+    },
+    {
+      "ticker": "BANGANGA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BANGANGA/company/"
+    },
+    {
+      "ticker": "BANSTEA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BANSTEA/company/"
+    },
+    {
+      "ticker": "BAPACK",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BAPACK/company/"
+    },
+    {
+      "ticker": "BARODARY",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BARODARY/company/"
+    },
+    {
+      "ticker": "BAROEXT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BAROEXT/company/"
+    },
+    {
+      "ticker": "BARONINF",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BARONINF/company/"
+    },
+    {
+      "ticker": "BASANTGL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BASANTGL/company/"
+    },
+    {
+      "ticker": "BATLIBOI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BATLIBOI/company/"
+    },
+    {
+      "ticker": "BAZELINTER",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BAZELINTER/company/"
+    },
+    {
+      "ticker": "BCCFUBA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BCCFUBA/company/"
+    },
+    {
+      "ticker": "BCCPP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BCCPP/company/"
+    },
+    {
+      "ticker": "BCLENTERPR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BCLENTERPR/company/"
+    },
+    {
+      "ticker": "BDH",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BDH/company/"
+    },
+    {
+      "ticker": "BEDMUTHA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BEDMUTHA/company/"
+    },
+    {
+      "ticker": "BEEKAY",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BEEKAY/company/"
+    },
+    {
+      "ticker": "BEEYU",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BEEYU/company/"
+    },
+    {
+      "ticker": "BEEZAASAN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BEEZAASAN/company/"
+    },
+    {
+      "ticker": "BEFOUNDMOL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BEFOUNDMOL/company/"
+    },
+    {
+      "ticker": "BELDING",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BELDING/company/"
+    },
+    {
+      "ticker": "BEMHY",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BEMHY/company/"
+    },
+    {
+      "ticker": "BENARA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BENARA/company/"
+    },
+    {
+      "ticker": "BENARAS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BENARAS/company/"
+    },
+    {
+      "ticker": "BENCHMARK",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BENCHMARK/company/"
+    },
+    {
+      "ticker": "BENGALASM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BENGALASM/company/"
+    },
+    {
+      "ticker": "BENGALS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BENGALS/company/"
+    },
+    {
+      "ticker": "BENGALT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BENGALT/company/"
+    },
+    {
+      "ticker": "BENTCOM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BENTCOM/company/"
+    },
+    {
+      "ticker": "BERLDRG",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BERLDRG/company/"
+    },
+    {
+      "ticker": "BERVINL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BERVINL/company/"
+    },
+    {
+      "ticker": "BERYLSE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BERYLSE/company/"
+    },
+    {
+      "ticker": "BESTAGRO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BESTAGRO/company/"
+    },
+    {
+      "ticker": "BESTEAST",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BESTEAST/company/"
+    },
+    {
+      "ticker": "BETXIND",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BETXIND/company/"
+    },
+    {
+      "ticker": "BFLAFL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BFLAFL/company/"
+    },
+    {
+      "ticker": "BFUTILITIE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BFUTILITIE/company/"
+    },
+    {
+      "ticker": "BGDL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BGDL/company/"
+    },
+    {
+      "ticker": "BGIL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BGIL/company/"
+    },
+    {
+      "ticker": "BGLOBAL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BGLOBAL/company/"
+    },
+    {
+      "ticker": "BGRENERGY",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BGRENERGY/company/"
+    },
+    {
+      "ticker": "BGWTATO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BGWTATO/company/"
+    },
+    {
+      "ticker": "BHAGGAS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BHAGGAS/company/"
+    },
+    {
+      "ticker": "BHAGWOX",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BHAGWOX/company/"
+    },
+    {
+      "ticker": "BHANDERI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BHANDERI/company/"
+    },
+    {
+      "ticker": "BHARAT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BHARAT/company/"
+    },
+    {
+      "ticker": "BHARATAGRI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BHARATAGRI/company/"
+    },
+    {
+      "ticker": "BHARATROHAN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BHARATROHAN/company/"
+    },
+    {
+      "ticker": "BHASKAGR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BHASKAGR/company/"
+    },
+    {
+      "ticker": "BHATEXT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BHATEXT/company/"
+    },
+    {
+      "ticker": "BHATIA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BHATIA/company/"
+    },
+    {
+      "ticker": "BHAVIK",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BHAVIK/company/"
+    },
+    {
+      "ticker": "BHILSPIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BHILSPIN/company/"
+    },
+    {
+      "ticker": "BHUDEVI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BHUDEVI/company/"
+    },
+    {
+      "ticker": "BI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BI/company/"
+    },
+    {
+      "ticker": "BIBCL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BIBCL/company/"
+    },
+    {
+      "ticker": "BIHSPONG",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BIHSPONG/company/"
+    },
+    {
+      "ticker": "BIJHANS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BIJHANS/company/"
+    },
+    {
+      "ticker": "BILLWIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BILLWIN/company/"
+    },
+    {
+      "ticker": "BILVYAPAR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BILVYAPAR/company/"
+    },
+    {
+      "ticker": "BIMETAL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BIMETAL/company/"
+    },
+    {
+      "ticker": "BINDALEXPO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BINDALEXPO/company/"
+    },
+    {
+      "ticker": "BINNYMILLS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BINNYMILLS/company/"
+    },
+    {
+      "ticker": "BIOGEN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BIOGEN/company/"
+    },
+    {
+      "ticker": "BIRLAPREC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BIRLAPREC/company/"
+    },
+    {
+      "ticker": "BIZOTIC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BIZOTIC/company/"
+    },
+    {
+      "ticker": "BJDUP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BJDUP/company/"
+    },
+    {
+      "ticker": "BLACKROSE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BLACKROSE/company/"
+    },
+    {
+      "ticker": "BLBLIMITED",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BLBLIMITED/company/"
+    },
+    {
+      "ticker": "BLIL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BLIL/company/"
+    },
+    {
+      "ticker": "BLOIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BLOIN/company/"
+    },
+    {
+      "ticker": "BLUECHIP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BLUECHIP/company/"
+    },
+    {
+      "ticker": "BLUECHIPT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BLUECHIPT/company/"
+    },
+    {
+      "ticker": "BLUECLOUDS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BLUECLOUDS/company/"
+    },
+    {
+      "ticker": "BLUEGOD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BLUEGOD/company/"
+    },
+    {
+      "ticker": "BMAL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BMAL/company/"
+    },
+    {
+      "ticker": "BNAGROCHEM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BNAGROCHEM/company/"
+    },
+    {
+      "ticker": "BNALTD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BNALTD/company/"
+    },
+    {
+      "ticker": "BNRSEC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BNRSEC/company/"
+    },
+    {
+      "ticker": "BNRUDY",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BNRUDY/company/"
+    },
+    {
+      "ticker": "BODHTREE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BODHTREE/company/"
+    },
+    {
+      "ticker": "BOMBCYC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BOMBCYC/company/"
+    },
+    {
+      "ticker": "BOMBWIR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BOMBWIR/company/"
+    },
+    {
+      "ticker": "BOMOXY-B1",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BOMOXY-B1/company/"
+    },
+    {
+      "ticker": "BOMTALKIES",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BOMTALKIES/company/"
+    },
+    {
+      "ticker": "BONDADA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BONDADA/company/"
+    },
+    {
+      "ticker": "BORANA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BORANA/company/"
+    },
+    {
+      "ticker": "BOSTON",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BOSTON/company/"
+    },
+    {
+      "ticker": "BPAGRI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BPAGRI/company/"
+    },
+    {
+      "ticker": "BPCAP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BPCAP/company/"
+    },
+    {
+      "ticker": "BPLPHARMA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BPLPHARMA/company/"
+    },
+    {
+      "ticker": "BRADYM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BRADYM/company/"
+    },
+    {
+      "ticker": "BRAHMINFRA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BRAHMINFRA/company/"
+    },
+    {
+      "ticker": "BRAWN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BRAWN/company/"
+    },
+    {
+      "ticker": "BRGIL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BRGIL/company/"
+    },
+    {
+      "ticker": "BRIDGESE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BRIDGESE/company/"
+    },
+    {
+      "ticker": "BRIGHTBR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BRIGHTBR/company/"
+    },
+    {
+      "ticker": "BRIJLEAS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BRIJLEAS/company/"
+    },
+    {
+      "ticker": "BRIPORT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BRIPORT/company/"
+    },
+    {
+      "ticker": "BRISK",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BRISK/company/"
+    },
+    {
+      "ticker": "BROACH",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BROACH/company/"
+    },
+    {
+      "ticker": "BRPL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BRPL/company/"
+    },
+    {
+      "ticker": "BSELALGO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BSELALGO/company/"
+    },
+    {
+      "ticker": "BTTL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/BTTL/company/"
+    },
+    {
+      "ticker": "CALCOM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CALCOM/company/"
+    },
+    {
+      "ticker": "CALLISTA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CALLISTA/company/"
+    },
+    {
+      "ticker": "CAMEXLTD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CAMEXLTD/company/"
+    },
+    {
+      "ticker": "CANDOUR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CANDOUR/company/"
+    },
+    {
+      "ticker": "CAPFIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CAPFIN/company/"
+    },
+    {
+      "ticker": "CAPPIPES",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CAPPIPES/company/"
+    },
+    {
+      "ticker": "CAPRICORN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CAPRICORN/company/"
+    },
+    {
+      "ticker": "CAPRIHANS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CAPRIHANS/company/"
+    },
+    {
+      "ticker": "CAPRO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CAPRO/company/"
+    },
+    {
+      "ticker": "CAPTRUST",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CAPTRUST/company/"
+    },
+    {
+      "ticker": "CARGOSOL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CARGOSOL/company/"
+    },
+    {
+      "ticker": "CARGOTRANS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CARGOTRANS/company/"
+    },
+    {
+      "ticker": "CARNATIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CARNATIN/company/"
+    },
+    {
+      "ticker": "CASPIAN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CASPIAN/company/"
+    },
+    {
+      "ticker": "CATVISION",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CATVISION/company/"
+    },
+    {
+      "ticker": "CBPL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CBPL/company/"
+    },
+    {
+      "ticker": "CCAL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CCAL/company/"
+    },
+    {
+      "ticker": "CCDL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CCDL/company/"
+    },
+    {
+      "ticker": "CCLINTER",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CCLINTER/company/"
+    },
+    {
+      "ticker": "CDG",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CDG/company/"
+    },
+    {
+      "ticker": "CEEJAY",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CEEJAY/company/"
+    },
+    {
+      "ticker": "CEENIK",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CEENIK/company/"
+    },
+    {
+      "ticker": "CEETAIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CEETAIN/company/"
+    },
+    {
+      "ticker": "CELLA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CELLA/company/"
+    },
+    {
+      "ticker": "CEMAINFRA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CEMAINFRA/company/"
+    },
+    {
+      "ticker": "CENLUB",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CENLUB/company/"
+    },
+    {
+      "ticker": "CEREBRAINT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CEREBRAINT/company/"
+    },
+    {
+      "ticker": "CFEL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CFEL/company/"
+    },
+    {
+      "ticker": "CGFL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CGFL/company/"
+    },
+    {
+      "ticker": "CGVAK",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CGVAK/company/"
+    },
+    {
+      "ticker": "CHADPAP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHADPAP/company/"
+    },
+    {
+      "ticker": "CHALLANI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHALLANI/company/"
+    },
+    {
+      "ticker": "CHANDNIMACH",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHANDNIMACH/company/"
+    },
+    {
+      "ticker": "CHANDRAP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHANDRAP/company/"
+    },
+    {
+      "ticker": "CHANDRIMA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHANDRIMA/company/"
+    },
+    {
+      "ticker": "CHARMS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHARMS/company/"
+    },
+    {
+      "ticker": "CHATHA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHATHA/company/"
+    },
+    {
+      "ticker": "CHCL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHCL/company/"
+    },
+    {
+      "ticker": "CHDCHEM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHDCHEM/company/"
+    },
+    {
+      "ticker": "CHECKPOINT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHECKPOINT/company/"
+    },
+    {
+      "ticker": "CHEMCRUX",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHEMCRUX/company/"
+    },
+    {
+      "ticker": "CHEMIESYNT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHEMIESYNT/company/"
+    },
+    {
+      "ticker": "CHEMKART",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHEMKART/company/"
+    },
+    {
+      "ticker": "CHEMTECH",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHEMTECH/company/"
+    },
+    {
+      "ticker": "CHENFERRO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHENFERRO/company/"
+    },
+    {
+      "ticker": "CHIRAHARIT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHIRAHARIT/company/"
+    },
+    {
+      "ticker": "CHLLTD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHLLTD/company/"
+    },
+    {
+      "ticker": "CHLOGIST",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHLOGIST/company/"
+    },
+    {
+      "ticker": "CHMBBRW",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHMBBRW/company/"
+    },
+    {
+      "ticker": "CHOKSI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHOKSI/company/"
+    },
+    {
+      "ticker": "CHOKSILA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHOKSILA/company/"
+    },
+    {
+      "ticker": "CHORDIA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHORDIA/company/"
+    },
+    {
+      "ticker": "CHOTHANI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHOTHANI/company/"
+    },
+    {
+      "ticker": "CHOWGULSTM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHOWGULSTM/company/"
+    },
+    {
+      "ticker": "CHROME",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHROME/company/"
+    },
+    {
+      "ticker": "CHRTEDCA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CHRTEDCA/company/"
+    },
+    {
+      "ticker": "CIANAGRO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CIANAGRO/company/"
+    },
+    {
+      "ticker": "CILSEC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CILSEC/company/"
+    },
+    {
+      "ticker": "CINDHO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CINDHO/company/"
+    },
+    {
+      "ticker": "CINDRELL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CINDRELL/company/"
+    },
+    {
+      "ticker": "CITADEL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CITADEL/company/"
+    },
+    {
+      "ticker": "CITICHEM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CITICHEM/company/"
+    },
+    {
+      "ticker": "CITIPOR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CITIPOR/company/"
+    },
+    {
+      "ticker": "CITURGIA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CITURGIA/company/"
+    },
+    {
+      "ticker": "CITYMAN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CITYMAN/company/"
+    },
+    {
+      "ticker": "CITYON",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CITYON/company/"
+    },
+    {
+      "ticker": "CITYONLINE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CITYONLINE/company/"
+    },
+    {
+      "ticker": "CITYSQUARE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CITYSQUARE/company/"
+    },
+    {
+      "ticker": "CJGEL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CJGEL/company/"
+    },
+    {
+      "ticker": "CLARA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CLARA/company/"
+    },
+    {
+      "ticker": "CLASELE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CLASELE/company/"
+    },
+    {
+      "ticker": "CLCIND",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CLCIND/company/"
+    },
+    {
+      "ticker": "CLEDUCATE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CLEDUCATE/company/"
+    },
+    {
+      "ticker": "CLENON",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CLENON/company/"
+    },
+    {
+      "ticker": "CLFL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CLFL/company/"
+    },
+    {
+      "ticker": "CLIOINFO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CLIOINFO/company/"
+    },
+    {
+      "ticker": "CMBL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CMBL/company/"
+    },
+    {
+      "ticker": "CMICABLES",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CMICABLES/company/"
+    },
+    {
+      "ticker": "CMMHOSP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CMMHOSP/company/"
+    },
+    {
+      "ticker": "CMXLTD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CMXLTD/company/"
+    },
+    {
+      "ticker": "CNCRD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CNCRD/company/"
+    },
+    {
+      "ticker": "CNINFOTECH",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CNINFOTECH/company/"
+    },
+    {
+      "ticker": "COARO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/COARO/company/"
+    },
+    {
+      "ticker": "COCHINM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/COCHINM/company/"
+    },
+    {
+      "ticker": "COCHMAL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/COCHMAL/company/"
+    },
+    {
+      "ticker": "COCKERILL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/COCKERILL/company/"
+    },
+    {
+      "ticker": "COLAB",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/COLAB/company/"
+    },
+    {
+      "ticker": "COLINZ",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/COLINZ/company/"
+    },
+    {
+      "ticker": "COLORCHIPS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/COLORCHIPS/company/"
+    },
+    {
+      "ticker": "COMCL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/COMCL/company/"
+    },
+    {
+      "ticker": "COMFINCAP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/COMFINCAP/company/"
+    },
+    {
+      "ticker": "COMFINTE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/COMFINTE/company/"
+    },
+    {
+      "ticker": "COMMAND",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/COMMAND/company/"
+    },
+    {
+      "ticker": "COMPEAU",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/COMPEAU/company/"
+    },
+    {
+      "ticker": "COMPINFO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/COMPINFO/company/"
+    },
+    {
+      "ticker": "COMPUPN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/COMPUPN/company/"
+    },
+    {
+      "ticker": "COMRADE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/COMRADE/company/"
+    },
+    {
+      "ticker": "CONART",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CONART/company/"
+    },
+    {
+      "ticker": "CONCORD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CONCORD/company/"
+    },
+    {
+      "ticker": "CONSTRONIC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CONSTRONIC/company/"
+    },
+    {
+      "ticker": "CONTAINE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CONTAINE/company/"
+    },
+    {
+      "ticker": "CONTAINER",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CONTAINER/company/"
+    },
+    {
+      "ticker": "CONTCHM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CONTCHM/company/"
+    },
+    {
+      "ticker": "CONTICON",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CONTICON/company/"
+    },
+    {
+      "ticker": "CONTILI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CONTILI/company/"
+    },
+    {
+      "ticker": "CONTPTR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CONTPTR/company/"
+    },
+    {
+      "ticker": "CORAGRO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CORAGRO/company/"
+    },
+    {
+      "ticker": "CORALAB",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CORALAB/company/"
+    },
+    {
+      "ticker": "CORNE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CORNE/company/"
+    },
+    {
+      "ticker": "COROENGG",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/COROENGG/company/"
+    },
+    {
+      "ticker": "COSMICCRF",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/COSMICCRF/company/"
+    },
+    {
+      "ticker": "COSMOFE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/COSMOFE/company/"
+    },
+    {
+      "ticker": "COSPOWER",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/COSPOWER/company/"
+    },
+    {
+      "ticker": "COSYN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/COSYN/company/"
+    },
+    {
+      "ticker": "COTFAB",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/COTFAB/company/"
+    },
+    {
+      "ticker": "COVANCE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/COVANCE/company/"
+    },
+    {
+      "ticker": "COVIDH",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/COVIDH/company/"
+    },
+    {
+      "ticker": "CPML",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CPML/company/"
+    },
+    {
+      "ticker": "CRANEINFRA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CRANEINFRA/company/"
+    },
+    {
+      "ticker": "CRANESSOFT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CRANESSOFT/company/"
+    },
+    {
+      "ticker": "CRANEX",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CRANEX/company/"
+    },
+    {
+      "ticker": "CRAVATEX",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CRAVATEX/company/"
+    },
+    {
+      "ticker": "CREATIVE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CREATIVE/company/"
+    },
+    {
+      "ticker": "CRESANTO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CRESANTO/company/"
+    },
+    {
+      "ticker": "CRESCENTIS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CRESCENTIS/company/"
+    },
+    {
+      "ticker": "CRIMSON",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CRIMSON/company/"
+    },
+    {
+      "ticker": "CROISSANCE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CROISSANCE/company/"
+    },
+    {
+      "ticker": "CROPSTER",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CROPSTER/company/"
+    },
+    {
+      "ticker": "CRSL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CRSL/company/"
+    },
+    {
+      "ticker": "CRSTCHM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CRSTCHM/company/"
+    },
+    {
+      "ticker": "CRYOGENIC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CRYOGENIC/company/"
+    },
+    {
+      "ticker": "CRYSTAL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CRYSTAL/company/"
+    },
+    {
+      "ticker": "CSURGSU",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CSURGSU/company/"
+    },
+    {
+      "ticker": "CTCL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CTCL/company/"
+    },
+    {
+      "ticker": "CTLLAB",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CTLLAB/company/"
+    },
+    {
+      "ticker": "CUBIFIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CUBIFIN/company/"
+    },
+    {
+      "ticker": "CUPIDALBV",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CUPIDALBV/company/"
+    },
+    {
+      "ticker": "CURAA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CURAA/company/"
+    },
+    {
+      "ticker": "CYBELEIND",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/CYBELEIND/company/"
+    },
+    {
+      "ticker": "DACHEPALLI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DACHEPALLI/company/"
+    },
+    {
+      "ticker": "DAICHI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DAICHI/company/"
+    },
+    {
+      "ticker": "DAIKAFFI",
+      "exchange": "BSE_IN",
+      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/nse/DAIKAFFI/company/"
+    },
+    {
+      "ticker": "DANLAW",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DANLAW/company/"
+    },
+    {
+      "ticker": "DANUBE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DANUBE/company/"
+    },
+    {
+      "ticker": "DAPS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DAPS/company/"
+    },
+    {
+      "ticker": "DARJEELING",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DARJEELING/company/"
+    },
+    {
+      "ticker": "DARSHANORNA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DARSHANORNA/company/"
+    },
+    {
+      "ticker": "DATIWARE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DATIWARE/company/"
+    },
+    {
+      "ticker": "DAULAT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DAULAT/company/"
+    },
+    {
+      "ticker": "DAVIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DAVIN/company/"
+    },
+    {
+      "ticker": "DBCORP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DBCORP/company/"
+    },
+    {
+      "ticker": "DCMFINSERV",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DCMFINSERV/company/"
+    },
+    {
+      "ticker": "DCMSIL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DCMSIL/company/"
+    },
+    {
+      "ticker": "DECCAN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DECCAN/company/"
+    },
+    {
+      "ticker": "DECIPHER",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DECIPHER/company/"
+    },
+    {
+      "ticker": "DECNGOLD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DECNGOLD/company/"
+    },
+    {
+      "ticker": "DECOMIC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DECOMIC/company/"
+    },
+    {
+      "ticker": "DECPO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DECPO/company/"
+    },
+    {
+      "ticker": "DEEPAI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DEEPAI/company/"
+    },
+    {
+      "ticker": "DEEPAKCHEM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DEEPAKCHEM/company/"
+    },
+    {
+      "ticker": "DEEPAKSP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DEEPAKSP/company/"
+    },
+    {
+      "ticker": "DEFRAIL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DEFRAIL/company/"
+    },
+    {
+      "ticker": "DENISCHEM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DENISCHEM/company/"
+    },
+    {
+      "ticker": "DESCO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DESCO/company/"
+    },
+    {
+      "ticker": "DESHRAK",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DESHRAK/company/"
+    },
+    {
+      "ticker": "DEVINE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DEVINE/company/"
+    },
+    {
+      "ticker": "DEVITRD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DEVITRD/company/"
+    },
+    {
+      "ticker": "DEVLAB",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DEVLAB/company/"
+    },
+    {
+      "ticker": "DFL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DFL/company/"
+    },
+    {
+      "ticker": "DFPL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DFPL/company/"
+    },
+    {
+      "ticker": "DHABRIYA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DHABRIYA/company/"
+    },
+    {
+      "ticker": "DHAMPURE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DHAMPURE/company/"
+    },
+    {
+      "ticker": "DHANCOT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DHANCOT/company/"
+    },
+    {
+      "ticker": "DHANFAB",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DHANFAB/company/"
+    },
+    {
+      "ticker": "DHANROTO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DHANROTO/company/"
+    },
+    {
+      "ticker": "DHANSAFAL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DHANSAFAL/company/"
+    },
+    {
+      "ticker": "DHARAN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DHARAN/company/"
+    },
+    {
+      "ticker": "DHARFIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DHARFIN/company/"
+    },
+    {
+      "ticker": "DHARNI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DHARNI/company/"
+    },
+    {
+      "ticker": "DHATRE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DHATRE/company/"
+    },
+    {
+      "ticker": "DHENUBUILD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DHENUBUILD/company/"
+    },
+    {
+      "ticker": "DHILLON",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DHILLON/company/"
+    },
+    {
+      "ticker": "DHINDIA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DHINDIA/company/"
+    },
+    {
+      "ticker": "DHOOTIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DHOOTIN/company/"
+    },
+    {
+      "ticker": "DHPIND",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DHPIND/company/"
+    },
+    {
+      "ticker": "DHRUVCA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DHRUVCA/company/"
+    },
+    {
+      "ticker": "DHYAANITR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DHYAANITR/company/"
+    },
+    {
+      "ticker": "DIAMANT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DIAMANT/company/"
+    },
+    {
+      "ticker": "DIANATEA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DIANATEA/company/"
+    },
+    {
+      "ticker": "DIDL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DIDL/company/"
+    },
+    {
+      "ticker": "DIGILOGIC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DIGILOGIC/company/"
+    },
+    {
+      "ticker": "DIKSAT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DIKSAT/company/"
+    },
+    {
+      "ticker": "DILIGENT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DILIGENT/company/"
+    },
+    {
+      "ticker": "DISAQ",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DISAQ/company/"
+    },
+    {
+      "ticker": "DITCO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DITCO/company/"
+    },
+    {
+      "ticker": "DIVSHKT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DIVSHKT/company/"
+    },
+    {
+      "ticker": "DJML",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DJML/company/"
+    },
+    {
+      "ticker": "DJSSS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DJSSS/company/"
+    },
+    {
+      "ticker": "DKUAL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DKUAL/company/"
+    },
+    {
+      "ticker": "DLCL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DLCL/company/"
+    },
+    {
+      "ticker": "DLTNCBL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DLTNCBL/company/"
+    },
+    {
+      "ticker": "DMR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DMR/company/"
+    },
+    {
+      "ticker": "DOLFIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DOLFIN/company/"
+    },
+    {
+      "ticker": "DOLPHMED",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DOLPHMED/company/"
+    },
+    {
+      "ticker": "DPL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DPL/company/"
+    },
+    {
+      "ticker": "DRA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DRA/company/"
+    },
+    {
+      "ticker": "DRAGARWQ",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DRAGARWQ/company/"
+    },
+    {
+      "ticker": "DRONACHRYA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DRONACHRYA/company/"
+    },
+    {
+      "ticker": "DSINVEST",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DSINVEST/company/"
+    },
+    {
+      "ticker": "DUCON",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DUCON/company/"
+    },
+    {
+      "ticker": "DUKEOFS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DUKEOFS/company/"
+    },
+    {
+      "ticker": "DUNCANENG",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DUNCANENG/company/"
+    },
+    {
+      "ticker": "DUROPACK",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DUROPACK/company/"
+    },
+    {
+      "ticker": "DUROPLY",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DUROPLY/company/"
+    },
+    {
+      "ticker": "DUTRON",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DUTRON/company/"
+    },
+    {
+      "ticker": "DYNAMICP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DYNAMICP/company/"
+    },
+    {
+      "ticker": "DYNAMIND",
+      "exchange": "BSE_IN",
+      "error": "429 Client Error: Too Many Requests for url: https://stockanalysis.com/quote/nse/DYNAMIND/company/"
+    },
+    {
+      "ticker": "DYNAVSN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/DYNAVSN/company/"
+    },
+    {
+      "ticker": "EARKART",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EARKART/company/"
+    },
+    {
+      "ticker": "EASTBUILD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EASTBUILD/company/"
+    },
+    {
+      "ticker": "EASTINDIA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EASTINDIA/company/"
+    },
+    {
+      "ticker": "EASTRED",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EASTRED/company/"
+    },
+    {
+      "ticker": "EASTSILK",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EASTSILK/company/"
+    },
+    {
+      "ticker": "EASTWEST",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EASTWEST/company/"
+    },
+    {
+      "ticker": "EASUN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EASUN/company/"
+    },
+    {
+      "ticker": "EASYFIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EASYFIN/company/"
+    },
+    {
+      "ticker": "EBIX",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EBIX/company/"
+    },
+    {
+      "ticker": "ECOBOAR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ECOBOAR/company/"
+    },
+    {
+      "ticker": "ECOHOTELS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ECOHOTELS/company/"
+    },
+    {
+      "ticker": "ECOPLAST",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ECOPLAST/company/"
+    },
+    {
+      "ticker": "ECORECO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ECORECO/company/"
+    },
+    {
+      "ticker": "ECSTSTL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ECSTSTL/company/"
+    },
+    {
+      "ticker": "EDUCOMP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EDUCOMP/company/"
+    },
+    {
+      "ticker": "EDVENSWA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EDVENSWA/company/"
+    },
+    {
+      "ticker": "EENTER",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EENTER/company/"
+    },
+    {
+      "ticker": "EIGHTY",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EIGHTY/company/"
+    },
+    {
+      "ticker": "EIKO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EIKO/company/"
+    },
+    {
+      "ticker": "EKAMLEA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EKAMLEA/company/"
+    },
+    {
+      "ticker": "EKANSH",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EKANSH/company/"
+    },
+    {
+      "ticker": "EKENNIS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EKENNIS/company/"
+    },
+    {
+      "ticker": "ELAND",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ELAND/company/"
+    },
+    {
+      "ticker": "ELANGO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ELANGO/company/"
+    },
+    {
+      "ticker": "ELANTAS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ELANTAS/company/"
+    },
+    {
+      "ticker": "ELCIDIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ELCIDIN/company/"
+    },
+    {
+      "ticker": "ELEFLOR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ELEFLOR/company/"
+    },
+    {
+      "ticker": "ELEMARB",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ELEMARB/company/"
+    },
+    {
+      "ticker": "ELFIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ELFIN/company/"
+    },
+    {
+      "ticker": "ELFORGE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ELFORGE/company/"
+    },
+    {
+      "ticker": "ELITECON",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ELITECON/company/"
+    },
+    {
+      "ticker": "ELIXIR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ELIXIR/company/"
+    },
+    {
+      "ticker": "ELNET",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ELNET/company/"
+    },
+    {
+      "ticker": "ELPROINTL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ELPROINTL/company/"
+    },
+    {
+      "ticker": "EMAINDIA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EMAINDIA/company/"
+    },
+    {
+      "ticker": "EMBDL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EMBDL/company/"
+    },
+    {
+      "ticker": "EMERALD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EMERALD/company/"
+    },
+    {
+      "ticker": "EMERALL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EMERALL/company/"
+    },
+    {
+      "ticker": "EMERGENT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EMERGENT/company/"
+    },
+    {
+      "ticker": "EMIAC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EMIAC/company/"
+    },
+    {
+      "ticker": "EMMESSA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EMMESSA/company/"
+    },
+    {
+      "ticker": "EMMFORCE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EMMFORCE/company/"
+    },
+    {
+      "ticker": "EMPIND",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EMPIND/company/"
+    },
+    {
+      "ticker": "EMROCK",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EMROCK/company/"
+    },
+    {
+      "ticker": "ENBETRD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ENBETRD/company/"
+    },
+    {
+      "ticker": "ENCASH",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ENCASH/company/"
+    },
+    {
+      "ticker": "ENCODE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ENCODE/company/"
+    },
+    {
+      "ticker": "ENKEIWHEL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ENKEIWHEL/company/"
+    },
+    {
+      "ticker": "ENTRINT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ENTRINT/company/"
+    },
+    {
+      "ticker": "ENVAIREL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ENVAIREL/company/"
+    },
+    {
+      "ticker": "EPBIO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EPBIO/company/"
+    },
+    {
+      "ticker": "EPSOMPRO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EPSOMPRO/company/"
+    },
+    {
+      "ticker": "EPUJA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EPUJA/company/"
+    },
+    {
+      "ticker": "EQUILATERA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EQUILATERA/company/"
+    },
+    {
+      "ticker": "EQUIPPP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EQUIPPP/company/"
+    },
+    {
+      "ticker": "ERPSOFT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ERPSOFT/company/"
+    },
+    {
+      "ticker": "ESARIND",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ESARIND/company/"
+    },
+    {
+      "ticker": "ESCORP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ESCORP/company/"
+    },
+    {
+      "ticker": "ESHAMEDIA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ESHAMEDIA/company/"
+    },
+    {
+      "ticker": "ESPIRE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ESPIRE/company/"
+    },
+    {
+      "ticker": "ESQRMON",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ESQRMON/company/"
+    },
+    {
+      "ticker": "ESSEX",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ESSEX/company/"
+    },
+    {
+      "ticker": "ETIL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ETIL/company/"
+    },
+    {
+      "ticker": "EUPHORIAIT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EUPHORIAIT/company/"
+    },
+    {
+      "ticker": "EUREKAI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EUREKAI/company/"
+    },
+    {
+      "ticker": "EUROLED",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EUROLED/company/"
+    },
+    {
+      "ticker": "EVANS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EVANS/company/"
+    },
+    {
+      "ticker": "EVERESTO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EVERESTO/company/"
+    },
+    {
+      "ticker": "EVERFIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EVERFIN/company/"
+    },
+    {
+      "ticker": "EVEXIA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EVEXIA/company/"
+    },
+    {
+      "ticker": "EVOQ",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EVOQ/company/"
+    },
+    {
+      "ticker": "EXATO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EXATO/company/"
+    },
+    {
+      "ticker": "EXHICON",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EXHICON/company/"
+    },
+    {
+      "ticker": "EXPLICITFIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EXPLICITFIN/company/"
+    },
+    {
+      "ticker": "EXPOEAPL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EXPOEAPL/company/"
+    },
+    {
+      "ticker": "EY",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/EY/company/"
+    },
+    {
+      "ticker": "FAALCON",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FAALCON/company/"
+    },
+    {
+      "ticker": "FABCLEAN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FABCLEAN/company/"
+    },
+    {
+      "ticker": "FABINO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FABINO/company/"
+    },
+    {
+      "ticker": "FACORALL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FACORALL/company/"
+    },
+    {
+      "ticker": "FAMILYCARE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FAMILYCARE/company/"
+    },
+    {
+      "ticker": "FAZE3Q",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FAZE3Q/company/"
+    },
+    {
+      "ticker": "FCONSUMER",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FCONSUMER/company/"
+    },
+    {
+      "ticker": "FEDDERSHOL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FEDDERSHOL/company/"
+    },
+    {
+      "ticker": "FELDVR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FELDVR/company/"
+    },
+    {
+      "ticker": "FERMENTA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FERMENTA/company/"
+    },
+    {
+      "ticker": "FERVENTSYN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FERVENTSYN/company/"
+    },
+    {
+      "ticker": "FFPL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FFPL/company/"
+    },
+    {
+      "ticker": "FIBERWEB",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FIBERWEB/company/"
+    },
+    {
+      "ticker": "FILME",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FILME/company/"
+    },
+    {
+      "ticker": "FILTRA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FILTRA/company/"
+    },
+    {
+      "ticker": "FILTRON",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FILTRON/company/"
+    },
+    {
+      "ticker": "FINELINE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FINELINE/company/"
+    },
+    {
+      "ticker": "FIRSTFIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FIRSTFIN/company/"
+    },
+    {
+      "ticker": "FLEXFO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FLEXFO/company/"
+    },
+    {
+      "ticker": "FLFL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FLFL/company/"
+    },
+    {
+      "ticker": "FLOMIC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FLOMIC/company/"
+    },
+    {
+      "ticker": "FLORACORP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FLORACORP/company/"
+    },
+    {
+      "ticker": "FLUIDOM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FLUIDOM/company/"
+    },
+    {
+      "ticker": "FMEC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FMEC/company/"
+    },
+    {
+      "ticker": "FONE4",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FONE4/company/"
+    },
+    {
+      "ticker": "FORBESCO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FORBESCO/company/"
+    },
+    {
+      "ticker": "FORINTL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FORINTL/company/"
+    },
+    {
+      "ticker": "FORTISMLR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FORTISMLR/company/"
+    },
+    {
+      "ticker": "FOSECOC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FOSECOC/company/"
+    },
+    {
+      "ticker": "FRANKLIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FRANKLIN/company/"
+    },
+    {
+      "ticker": "FRANKLININD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FRANKLININD/company/"
+    },
+    {
+      "ticker": "FRASER",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FRASER/company/"
+    },
+    {
+      "ticker": "FRATELLI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FRATELLI/company/"
+    },
+    {
+      "ticker": "FREDUN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FREDUN/company/"
+    },
+    {
+      "ticker": "FRONTCAP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FRONTCAP/company/"
+    },
+    {
+      "ticker": "FRONTCORP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FRONTCORP/company/"
+    },
+    {
+      "ticker": "FRONTFN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FRONTFN/company/"
+    },
+    {
+      "ticker": "FRONTSP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FRONTSP/company/"
+    },
+    {
+      "ticker": "FRUTION",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FRUTION/company/"
+    },
+    {
+      "ticker": "FTL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FTL/company/"
+    },
+    {
+      "ticker": "FUNDVISER",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FUNDVISER/company/"
+    },
+    {
+      "ticker": "FUTSOL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FUTSOL/company/"
+    },
+    {
+      "ticker": "FUTURSEC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FUTURSEC/company/"
+    },
+    {
+      "ticker": "FYNX",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/FYNX/company/"
+    },
+    {
+      "ticker": "GAGAN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GAGAN/company/"
+    },
+    {
+      "ticker": "GAJANANSEC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GAJANANSEC/company/"
+    },
+    {
+      "ticker": "GALACTICO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GALACTICO/company/"
+    },
+    {
+      "ticker": "GALADA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GALADA/company/"
+    },
+    {
+      "ticker": "GALADAFIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GALADAFIN/company/"
+    },
+    {
+      "ticker": "GALAGEX",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GALAGEX/company/"
+    },
+    {
+      "ticker": "GALLARD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GALLARD/company/"
+    },
+    {
+      "ticker": "GALLOPENT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GALLOPENT/company/"
+    },
+    {
+      "ticker": "GALXBRG",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GALXBRG/company/"
+    },
+    {
+      "ticker": "GAMCO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GAMCO/company/"
+    },
+    {
+      "ticker": "GANGAPA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GANGAPA/company/"
+    },
+    {
+      "ticker": "GANGAPHARM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GANGAPHARM/company/"
+    },
+    {
+      "ticker": "GANHOLD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GANHOLD/company/"
+    },
+    {
+      "ticker": "GANONPRO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GANONPRO/company/"
+    },
+    {
+      "ticker": "GANVERSE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GANVERSE/company/"
+    },
+    {
+      "ticker": "GARBIFIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GARBIFIN/company/"
+    },
+    {
+      "ticker": "GARGFUR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GARGFUR/company/"
+    },
+    {
+      "ticker": "GARGI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GARGI/company/"
+    },
+    {
+      "ticker": "GARMNTMNTR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GARMNTMNTR/company/"
+    },
+    {
+      "ticker": "GARNET",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GARNET/company/"
+    },
+    {
+      "ticker": "GARNETINT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GARNETINT/company/"
+    },
+    {
+      "ticker": "GARWAMAR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GARWAMAR/company/"
+    },
+    {
+      "ticker": "GARWSYN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GARWSYN/company/"
+    },
+    {
+      "ticker": "GAYAPROJ",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GAYAPROJ/company/"
+    },
+    {
+      "ticker": "GAYATRI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GAYATRI/company/"
+    },
+    {
+      "ticker": "GAYATRIBI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GAYATRIBI/company/"
+    },
+    {
+      "ticker": "GBFL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GBFL/company/"
+    },
+    {
+      "ticker": "GBLINFRA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GBLINFRA/company/"
+    },
+    {
+      "ticker": "GBLOGISTIC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GBLOGISTIC/company/"
+    },
+    {
+      "ticker": "GCMCAPI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GCMCAPI/company/"
+    },
+    {
+      "ticker": "GCMCOMM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GCMCOMM/company/"
+    },
+    {
+      "ticker": "GCMSECU",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GCMSECU/company/"
+    },
+    {
+      "ticker": "GCONNECT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GCONNECT/company/"
+    },
+    {
+      "ticker": "GDLLEAS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GDLLEAS/company/"
+    },
+    {
+      "ticker": "GEE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GEE/company/"
+    },
+    {
+      "ticker": "GEETANJ",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GEETANJ/company/"
+    },
+    {
+      "ticker": "GEMAROMA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GEMAROMA/company/"
+    },
+    {
+      "ticker": "GEMENVIRO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GEMENVIRO/company/"
+    },
+    {
+      "ticker": "GEMSI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GEMSI/company/"
+    },
+    {
+      "ticker": "GEMSPIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GEMSPIN/company/"
+    },
+    {
+      "ticker": "GENESIS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GENESIS/company/"
+    },
+    {
+      "ticker": "GENNEX",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GENNEX/company/"
+    },
+    {
+      "ticker": "GENPHARMA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GENPHARMA/company/"
+    },
+    {
+      "ticker": "GENSOL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GENSOL/company/"
+    },
+    {
+      "ticker": "GENUSPRIME",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GENUSPRIME/company/"
+    },
+    {
+      "ticker": "GETALONG",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GETALONG/company/"
+    },
+    {
+      "ticker": "GFSTEELS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GFSTEELS/company/"
+    },
+    {
+      "ticker": "GGAUTO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GGAUTO/company/"
+    },
+    {
+      "ticker": "GGDPROP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GGDPROP/company/"
+    },
+    {
+      "ticker": "GGENG",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GGENG/company/"
+    },
+    {
+      "ticker": "GGPL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GGPL/company/"
+    },
+    {
+      "ticker": "GHUSHINE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GHUSHINE/company/"
+    },
+    {
+      "ticker": "GHVINFRA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GHVINFRA/company/"
+    },
+    {
+      "ticker": "GIANLIFE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GIANLIFE/company/"
+    },
+    {
+      "ticker": "GILADAFINS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GILADAFINS/company/"
+    },
+    {
+      "ticker": "GINISILK",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GINISILK/company/"
+    },
+    {
+      "ticker": "GITARENEW",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GITARENEW/company/"
+    },
+    {
+      "ticker": "GKB",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GKB/company/"
+    },
+    {
+      "ticker": "GKCONS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GKCONS/company/"
+    },
+    {
+      "ticker": "GLAAMUP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GLAAMUP/company/"
+    },
+    {
+      "ticker": "GLANCE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GLANCE/company/"
+    },
+    {
+      "ticker": "GLHRL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GLHRL/company/"
+    },
+    {
+      "ticker": "GLITTEKG",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GLITTEKG/company/"
+    },
+    {
+      "ticker": "GLOBALCA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GLOBALCA/company/"
+    },
+    {
+      "ticker": "GLOBALLOG",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GLOBALLOG/company/"
+    },
+    {
+      "ticker": "GLOBOFFS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GLOBOFFS/company/"
+    },
+    {
+      "ticker": "GLOBTIER",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GLOBTIER/company/"
+    },
+    {
+      "ticker": "GLOBUSCON",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GLOBUSCON/company/"
+    },
+    {
+      "ticker": "GMPL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GMPL/company/"
+    },
+    {
+      "ticker": "GNRL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GNRL/company/"
+    },
+    {
+      "ticker": "GOBLIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GOBLIN/company/"
+    },
+    {
+      "ticker": "GODAVARI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GODAVARI/company/"
+    },
+    {
+      "ticker": "GOEL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GOEL/company/"
+    },
+    {
+      "ticker": "GOELCONS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GOELCONS/company/"
+    },
+    {
+      "ticker": "GOGIACAPGL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GOGIACAPGL/company/"
+    },
+    {
+      "ticker": "GOKAKTEX",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GOKAKTEX/company/"
+    },
+    {
+      "ticker": "GOLCA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GOLCA/company/"
+    },
+    {
+      "ticker": "GOLDENCREST",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GOLDENCREST/company/"
+    },
+    {
+      "ticker": "GOLDENTOBC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GOLDENTOBC/company/"
+    },
+    {
+      "ticker": "GOLDLEG",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GOLDLEG/company/"
+    },
+    {
+      "ticker": "GOLECHA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GOLECHA/company/"
+    },
+    {
+      "ticker": "GOLKONDA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GOLKONDA/company/"
+    },
+    {
+      "ticker": "GOLKUNDIA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GOLKUNDIA/company/"
+    },
+    {
+      "ticker": "GOODRICKE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GOODRICKE/company/"
+    },
+    {
+      "ticker": "GOODYEAR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GOODYEAR/company/"
+    },
+    {
+      "ticker": "GOPAIST",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GOPAIST/company/"
+    },
+    {
+      "ticker": "GORANIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GORANIN/company/"
+    },
+    {
+      "ticker": "GOTHIPL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GOTHIPL/company/"
+    },
+    {
+      "ticker": "GOURMET",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GOURMET/company/"
+    },
+    {
+      "ticker": "GOWRALE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GOWRALE/company/"
+    },
+    {
+      "ticker": "GOYALASS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GOYALASS/company/"
+    },
+    {
+      "ticker": "GPAPL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GPAPL/company/"
+    },
+    {
+      "ticker": "GPSL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GPSL/company/"
+    },
+    {
+      "ticker": "GRAMEVA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GRAMEVA/company/"
+    },
+    {
+      "ticker": "GRANDMA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GRANDMA/company/"
+    },
+    {
+      "ticker": "GRANDOAK",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GRANDOAK/company/"
+    },
+    {
+      "ticker": "GRATEXI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GRATEXI/company/"
+    },
+    {
+      "ticker": "GRAUWEIL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GRAUWEIL/company/"
+    },
+    {
+      "ticker": "GRAVISSHO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GRAVISSHO/company/"
+    },
+    {
+      "ticker": "GRAVITY",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GRAVITY/company/"
+    },
+    {
+      "ticker": "GREENCREST",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GREENCREST/company/"
+    },
+    {
+      "ticker": "GRERENEW",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GRERENEW/company/"
+    },
+    {
+      "ticker": "GROARC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GROARC/company/"
+    },
+    {
+      "ticker": "GROVY",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GROVY/company/"
+    },
+    {
+      "ticker": "GROWINGTON",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GROWINGTON/company/"
+    },
+    {
+      "ticker": "GSAUTO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GSAUTO/company/"
+    },
+    {
+      "ticker": "GSBFIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GSBFIN/company/"
+    },
+    {
+      "ticker": "GSLSEC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GSLSEC/company/"
+    },
+    {
+      "ticker": "GSLTD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GSLTD/company/"
+    },
+    {
+      "ticker": "GTEIT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GTEIT/company/"
+    },
+    {
+      "ticker": "GTNINDS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GTNINDS/company/"
+    },
+    {
+      "ticker": "GTNTEX",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GTNTEX/company/"
+    },
+    {
+      "ticker": "GTTDATA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GTTDATA/company/"
+    },
+    {
+      "ticker": "GUJARATPOLY",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GUJARATPOLY/company/"
+    },
+    {
+      "ticker": "GUJCONT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GUJCONT/company/"
+    },
+    {
+      "ticker": "GUJCOTEX",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GUJCOTEX/company/"
+    },
+    {
+      "ticker": "GUJCRAFT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GUJCRAFT/company/"
+    },
+    {
+      "ticker": "GUJCRED",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GUJCRED/company/"
+    },
+    {
+      "ticker": "GUJHOTE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GUJHOTE/company/"
+    },
+    {
+      "ticker": "GUJHYSPIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GUJHYSPIN/company/"
+    },
+    {
+      "ticker": "GUJINJEC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GUJINJEC/company/"
+    },
+    {
+      "ticker": "GUJINTRX",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GUJINTRX/company/"
+    },
+    {
+      "ticker": "GUJINV",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GUJINV/company/"
+    },
+    {
+      "ticker": "GUJPETR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GUJPETR/company/"
+    },
+    {
+      "ticker": "GUJSTATFIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GUJSTATFIN/company/"
+    },
+    {
+      "ticker": "GUJTERC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GUJTERC/company/"
+    },
+    {
+      "ticker": "GUJTLRM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GUJTLRM/company/"
+    },
+    {
+      "ticker": "GUJWIND",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GUJWIND/company/"
+    },
+    {
+      "ticker": "GVBL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GVBL/company/"
+    },
+    {
+      "ticker": "GVFILM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GVFILM/company/"
+    },
+    {
+      "ticker": "GVKPIL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GVKPIL/company/"
+    },
+    {
+      "ticker": "GVL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GVL/company/"
+    },
+    {
+      "ticker": "GVPIL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GVPIL/company/"
+    },
+    {
+      "ticker": "GVTD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GVTD/company/"
+    },
+    {
+      "ticker": "GYANDEV",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/GYANDEV/company/"
+    },
+    {
+      "ticker": "HALDYNGL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HALDYNGL/company/"
+    },
+    {
+      "ticker": "HAMPS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HAMPS/company/"
+    },
+    {
+      "ticker": "HAMPTON",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HAMPTON/company/"
+    },
+    {
+      "ticker": "HANMAN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HANMAN/company/"
+    },
+    {
+      "ticker": "HANNAH",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HANNAH/company/"
+    },
+    {
+      "ticker": "HANSUGAR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HANSUGAR/company/"
+    },
+    {
+      "ticker": "HARAFIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HARAFIN/company/"
+    },
+    {
+      "ticker": "HARCR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HARCR/company/"
+    },
+    {
+      "ticker": "HARDCAS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HARDCAS/company/"
+    },
+    {
+      "ticker": "HARIAAPL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HARIAAPL/company/"
+    },
+    {
+      "ticker": "HARIAEXPO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HARIAEXPO/company/"
+    },
+    {
+      "ticker": "HARIGOV",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HARIGOV/company/"
+    },
+    {
+      "ticker": "HARISH",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HARISH/company/"
+    },
+    {
+      "ticker": "HARLETH",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HARLETH/company/"
+    },
+    {
+      "ticker": "HARSHDEEP",
+      "exchange": "BSE_IN",
+      "error": "404 Client Error: Not Found for url: https://stockanalysis.com/quote/nse/HARSHDEEP/company/"
+    },
+    {
+      "ticker": "HARSHILAGR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HARSHILAGR/company/"
+    },
+    {
+      "ticker": "HARYNACAP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HARYNACAP/company/"
+    },
+    {
+      "ticker": "HASJUICE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HASJUICE/company/"
+    },
+    {
+      "ticker": "HASTIFIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HASTIFIN/company/"
+    },
+    {
+      "ticker": "HATHWAYB",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HATHWAYB/company/"
+    },
+    {
+      "ticker": "HAWAENG",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HAWAENG/company/"
+    },
+    {
+      "ticker": "HAWKINCOOK",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HAWKINCOOK/company/"
+    },
+    {
+      "ticker": "HAZOOR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HAZOOR/company/"
+    },
+    {
+      "ticker": "HBEL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HBEL/company/"
+    },
+    {
+      "ticker": "HBESD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HBESD/company/"
+    },
+    {
+      "ticker": "HBGHOTELS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HBGHOTELS/company/"
+    },
+    {
+      "ticker": "HBLEAS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HBLEAS/company/"
+    },
+    {
+      "ticker": "HBPOR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HBPOR/company/"
+    },
+    {
+      "ticker": "HCKKVENTURE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HCKKVENTURE/company/"
+    },
+    {
+      "ticker": "HCLTD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HCLTD/company/"
+    },
+    {
+      "ticker": "HDIL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HDIL/company/"
+    },
+    {
+      "ticker": "HEALINV",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HEALINV/company/"
+    },
+    {
+      "ticker": "HEALTHYLIFE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HEALTHYLIFE/company/"
+    },
+    {
+      "ticker": "HEERAISP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HEERAISP/company/"
+    },
+    {
+      "ticker": "HELLOJI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HELLOJI/company/"
+    },
+    {
+      "ticker": "HELPAGE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HELPAGE/company/"
+    },
+    {
+      "ticker": "HEMANG",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HEMANG/company/"
+    },
+    {
+      "ticker": "HEMORGANIC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HEMORGANIC/company/"
+    },
+    {
+      "ticker": "HERCULES",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HERCULES/company/"
+    },
+    {
+      "ticker": "HFIL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HFIL/company/"
+    },
+    {
+      "ticker": "HIGHENE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HIGHENE/company/"
+    },
+    {
+      "ticker": "HIGHNESS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HIGHNESS/company/"
+    },
+    {
+      "ticker": "HIIL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HIIL/company/"
+    },
+    {
+      "ticker": "HIKLASS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HIKLASS/company/"
+    },
+    {
+      "ticker": "HILIKS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HILIKS/company/"
+    },
+    {
+      "ticker": "HILLTONE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HILLTONE/company/"
+    },
+    {
+      "ticker": "HIMTEK",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HIMTEK/company/"
+    },
+    {
+      "ticker": "HINDADH",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HINDADH/company/"
+    },
+    {
+      "ticker": "HINDALUMI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HINDALUMI/company/"
+    },
+    {
+      "ticker": "HINDAPL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HINDAPL/company/"
+    },
+    {
+      "ticker": "HINDBIO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HINDBIO/company/"
+    },
+    {
+      "ticker": "HINDHARD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HINDHARD/company/"
+    },
+    {
+      "ticker": "HINDMILL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HINDMILL/company/"
+    },
+    {
+      "ticker": "HINDMOTORS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HINDMOTORS/company/"
+    },
+    {
+      "ticker": "HINDTIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HINDTIN/company/"
+    },
+    {
+      "ticker": "HINDUST",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HINDUST/company/"
+    },
+    {
+      "ticker": "HIPOLIN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HIPOLIN/company/"
+    },
+    {
+      "ticker": "HIRAUTO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HIRAUTO/company/"
+    },
+    {
+      "ticker": "HISARSP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HISARSP/company/"
+    },
+    {
+      "ticker": "HITECHGEAR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HITECHGEAR/company/"
+    },
+    {
+      "ticker": "HITKITGLO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HITKITGLO/company/"
+    },
+    {
+      "ticker": "HITTCO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HITTCO/company/"
+    },
+    {
+      "ticker": "HMEML",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HMEML/company/"
+    },
+    {
+      "ticker": "HOCL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HOCL/company/"
+    },
+    {
+      "ticker": "HOTLSILV",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HOTLSILV/company/"
+    },
+    {
+      "ticker": "HOWARHO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HOWARHO/company/"
+    },
+    {
+      "ticker": "HPBL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HPBL/company/"
+    },
+    {
+      "ticker": "HPCOTTON",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HPCOTTON/company/"
+    },
+    {
+      "ticker": "HRMNYCP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HRMNYCP/company/"
+    },
+    {
+      "ticker": "HRYNSHP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HRYNSHP/company/"
+    },
+    {
+      "ticker": "HSIL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HSIL/company/"
+    },
+    {
+      "ticker": "HVL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HVL/company/"
+    },
+    {
+      "ticker": "HYPERSOFT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/HYPERSOFT/company/"
+    },
+    {
+      "ticker": "IBINFO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/IBINFO/company/"
+    },
+    {
+      "ticker": "ICDSLTD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ICDSLTD/company/"
+    },
+    {
+      "ticker": "ICODEX",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ICODEX/company/"
+    },
+    {
+      "ticker": "ICONIKSPEV",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ICONIKSPEV/company/"
+    },
+    {
+      "ticker": "ICSL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/ICSL/company/"
+    },
+    {
+      "ticker": "IDENTIXWEB",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/IDENTIXWEB/company/"
+    },
+    {
+      "ticker": "IECEDU",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/IECEDU/company/"
+    },
+    {
+      "ticker": "IFINSEC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/IFINSEC/company/"
+    },
+    {
+      "ticker": "IFINSER",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/IFINSER/company/"
+    },
+    {
+      "ticker": "IGCIL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/IGCIL/company/"
+    },
+    {
+      "ticker": "IGLFXPL-B",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/IGLFXPL-B/company/"
+    },
+    {
+      "ticker": "IIRM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/IIRM/company/"
+    },
+    {
+      "ticker": "IISL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/IISL/company/"
+    },
+    {
+      "ticker": "IITLPROJ",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/IITLPROJ/company/"
+    },
+    {
+      "ticker": "IKOMA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/IKOMA/company/"
+    },
+    {
+      "ticker": "IL&FSENGG",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/IL&FSENGG/company/"
+    },
+    {
+      "ticker": "IL&FSTRANS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/IL&FSTRANS/company/"
+    },
+    {
+      "ticker": "IMEC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/IMEC/company/"
+    },
+    {
+      "ticker": "IMPEXFERRO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/IMPEXFERRO/company/"
+    },
+    {
+      "ticker": "INANI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INANI/company/"
+    },
+    {
+      "ticker": "INANISEC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INANISEC/company/"
+    },
+    {
+      "ticker": "INCAP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INCAP/company/"
+    },
+    {
+      "ticker": "INCON",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INCON/company/"
+    },
+    {
+      "ticker": "INDAG",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDAG/company/"
+    },
+    {
+      "ticker": "INDAGIV",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDAGIV/company/"
+    },
+    {
+      "ticker": "INDBNK",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDBNK/company/"
+    },
+    {
+      "ticker": "INDCEMCAP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDCEMCAP/company/"
+    },
+    {
+      "ticker": "INDCTST",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDCTST/company/"
+    },
+    {
+      "ticker": "INDERGR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDERGR/company/"
+    },
+    {
+      "ticker": "INDGELA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDGELA/company/"
+    },
+    {
+      "ticker": "INDIAHOME",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDIAHOME/company/"
+    },
+    {
+      "ticker": "INDIAHOMES",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDIAHOMES/company/"
+    },
+    {
+      "ticker": "INDIANACRY",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDIANACRY/company/"
+    },
+    {
+      "ticker": "INDIANVSH",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDIANVSH/company/"
+    },
+    {
+      "ticker": "INDICAP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDICAP/company/"
+    },
+    {
+      "ticker": "INDINFO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDINFO/company/"
+    },
+    {
+      "ticker": "INDLEASE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDLEASE/company/"
+    },
+    {
+      "ticker": "INDOBELL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDOBELL/company/"
+    },
+    {
+      "ticker": "INDOCITY",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDOCITY/company/"
+    },
+    {
+      "ticker": "INDOCRED",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDOCRED/company/"
+    },
+    {
+      "ticker": "INDOEURO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDOEURO/company/"
+    },
+    {
+      "ticker": "INDOKEM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDOKEM/company/"
+    },
+    {
+      "ticker": "INDONG",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDONG/company/"
+    },
+    {
+      "ticker": "INDOSMC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDOSMC/company/"
+    },
+    {
+      "ticker": "INDPRUD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDPRUD/company/"
+    },
+    {
+      "ticker": "INDRANIB",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDRANIB/company/"
+    },
+    {
+      "ticker": "INDRENEW",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDRENEW/company/"
+    },
+    {
+      "ticker": "INDSILHYD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDSILHYD/company/"
+    },
+    {
+      "ticker": "INDSOYA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDSOYA/company/"
+    },
+    {
+      "ticker": "INDSUCR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDSUCR/company/"
+    },
+    {
+      "ticker": "INDTONER",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDTONER/company/"
+    },
+    {
+      "ticker": "INDUSFINL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDUSFINL/company/"
+    },
+    {
+      "ticker": "INDXTRA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INDXTRA/company/"
+    },
+    {
+      "ticker": "INFLAME",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INFLAME/company/"
+    },
+    {
+      "ticker": "INFONATIVE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INFONATIVE/company/"
+    },
+    {
+      "ticker": "INFORTEC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INFORTEC/company/"
+    },
+    {
+      "ticker": "INFRONICS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INFRONICS/company/"
+    },
+    {
+      "ticker": "INLANPR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INLANPR/company/"
+    },
+    {
+      "ticker": "INLCM",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INLCM/company/"
+    },
+    {
+      "ticker": "INNOCORP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INNOCORP/company/"
+    },
+    {
+      "ticker": "INNOKAIZ",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INNOKAIZ/company/"
+    },
+    {
+      "ticker": "INNOVATIVE",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INNOVATIVE/company/"
+    },
+    {
+      "ticker": "INNOVATORS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INNOVATORS/company/"
+    },
+    {
+      "ticker": "INNOVTEC",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INNOVTEC/company/"
+    },
+    {
+      "ticker": "INOVSYNTH",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INOVSYNTH/company/"
+    },
+    {
+      "ticker": "INRADIA",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INRADIA/company/"
+    },
+    {
+      "ticker": "INSPIRISYS",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INSPIRISYS/company/"
+    },
+    {
+      "ticker": "INTCAPL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INTCAPL/company/"
+    },
+    {
+      "ticker": "INTECCAP",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INTECCAP/company/"
+    },
+    {
+      "ticker": "INTEGFD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INTEGFD/company/"
+    },
+    {
+      "ticker": "INTEGHIT",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INTEGHIT/company/"
+    },
+    {
+      "ticker": "INTEGRAEN",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INTEGRAEN/company/"
+    },
+    {
+      "ticker": "INTEGSW",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INTEGSW/company/"
+    },
+    {
+      "ticker": "INTERDIGI",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INTERDIGI/company/"
+    },
+    {
+      "ticker": "INTETHR",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INTETHR/company/"
+    },
+    {
+      "ticker": "INTLCOMBQ",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INTLCOMBQ/company/"
+    },
+    {
+      "ticker": "INTRGLB",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INTRGLB/company/"
+    },
+    {
+      "ticker": "INTSTOIL",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INTSTOIL/company/"
+    },
+    {
+      "ticker": "INVIGO",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INVIGO/company/"
+    },
+    {
+      "ticker": "INVPRECQ",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/INVPRECQ/company/"
+    },
+    {
+      "ticker": "IPOWER",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/IPOWER/company/"
+    },
+    {
+      "ticker": "IPRINGLTD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/IPRINGLTD/company/"
+    },
+    {
+      "ticker": "IRONWOOD",
+      "exchange": "BSE_IN",
+      "error": "403 Client Error: Forbidden for url: https://stockanalysis.com/quote/nse/IRONWOOD/company/"
+    }
+  ]
 }

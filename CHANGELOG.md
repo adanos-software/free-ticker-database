@@ -2,6 +2,27 @@
 
 ## [Unreleased]
 
+## [3.16.0] - 2026-05-03
+
+### Added
+
+- Added official supplemental-listing coverage for ADX, Bahrain Bourse, Borsa Istanbul, Boursa Kuwait, BSE India, CSE Sri Lanka, DFM, HKEX, MSX, NSE India, NZX, QSE, SGX, and Saudi Exchange.
+- Added StockAnalysis batch controls and exchange mappings for BIST, HKEX, NSE India, SGX, and BSE India review runs.
+- Added broader deterministic ETF category rules for money-market, fixed-income, commodity, real-estate, alternative, large-cap, factor, and equity-index product names.
+
+### Changed
+
+- Rebuilt canonical exports to 61,984 primary tickers, 71,092 listing rows, 56,175 ISIN-covered rows, 49,846 sector/category-covered rows, and 118,209 structured alias rows.
+- Expanded ETF category coverage to 13,152 rows while keeping non-matching active/structured ETF products in the review backlog instead of applying a generic ETF fallback.
+- Reduced the field-completion backlog to 4,578 missing core-primary ISINs, 9,686 missing stock sectors, and 2,452 missing ETF categories.
+- Refreshed listing history, identifier snapshots, coverage, source-inventory, completion-backlog, alias-quality, Adanos reference, entry-quality, and validation artifacts for the expanded dataset.
+
+### Fixed
+
+- Removed BSE India fund plan and segregated-portfolio lines from the stock universe.
+- Preserved official sector/category metadata when building safe supplemental listings.
+- Updated cross-listing expectations for Microsoft after HKEX official coverage added `HKEX::04338`.
+
 ## [3.15.0] - 2026-04-22
 
 ### Added

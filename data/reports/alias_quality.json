@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-04-21T10:43:33Z",
-    "rows": 103462,
+    "generated_at": "2026-05-03T20:01:10Z",
+    "rows": 118209,
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "aliases_csv": "data/aliases.csv"
@@ -9,30 +9,30 @@
   },
   "summary": {
     "status_counts": {
-      "reject": 53737,
-      "accept": 49360,
-      "review": 365
+      "reject": 61095,
+      "accept": 56635,
+      "review": 479
     },
     "detection_policy_counts": {
-      "identifier_only": 53737,
-      "safe_natural_language": 49360,
-      "symbol_alias_only": 365
+      "identifier_only": 61095,
+      "safe_natural_language": 56635,
+      "symbol_alias_only": 479
     },
     "reason_counts": {
-      "identifier_alias": 53737,
-      "accepted_name_alias": 49360,
-      "same_as_ticker": 365
+      "identifier_alias": 61095,
+      "accepted_name_alias": 56635,
+      "same_as_ticker": 479
     },
     "alias_type_status_counts": {
       "isin": {
-        "reject": 48808
+        "reject": 56175
       },
       "name": {
-        "accept": 49360,
-        "review": 365
+        "accept": 56635,
+        "review": 479
       },
       "wkn": {
-        "reject": 4929
+        "reject": 4920
       }
     }
   },
@@ -101,6 +101,16 @@
       {
         "ticker": "000009",
         "alias": "CNE000000222",
+        "alias_type": "isin",
+        "status": "reject",
+        "detection_policy": "identifier_only",
+        "confidence": "0.99",
+        "reason": "identifier_alias",
+        "duplicate_ticker_count": "1"
+      },
+      {
+        "ticker": "00001",
+        "alias": "KYG217651051",
         "alias_type": "isin",
         "status": "reject",
         "detection_policy": "identifier_only",
@@ -179,6 +189,16 @@
         "duplicate_ticker_count": "1"
       },
       {
+        "ticker": "00002",
+        "alias": "HK0002007356",
+        "alias_type": "isin",
+        "status": "reject",
+        "detection_policy": "identifier_only",
+        "confidence": "0.99",
+        "reason": "identifier_alias",
+        "duplicate_ticker_count": "1"
+      },
+      {
         "ticker": "000021",
         "alias": "CNE000000FK4",
         "alias_type": "isin",
@@ -239,6 +259,16 @@
         "duplicate_ticker_count": "1"
       },
       {
+        "ticker": "00003",
+        "alias": "HK0003000038",
+        "alias_type": "isin",
+        "status": "reject",
+        "detection_policy": "identifier_only",
+        "confidence": "0.99",
+        "reason": "identifier_alias",
+        "duplicate_ticker_count": "1"
+      },
+      {
         "ticker": "000030",
         "alias": "CNE0000009Z0",
         "alias_type": "isin",
@@ -257,42 +287,22 @@
         "confidence": "0.99",
         "reason": "identifier_alias",
         "duplicate_ticker_count": "1"
-      },
-      {
-        "ticker": "000032",
-        "alias": "CNE000000BK3",
-        "alias_type": "isin",
-        "status": "reject",
-        "detection_policy": "identifier_only",
-        "confidence": "0.99",
-        "reason": "identifier_alias",
-        "duplicate_ticker_count": "1"
-      },
-      {
-        "ticker": "000034",
-        "alias": "CNE000000DQ6",
-        "alias_type": "isin",
-        "status": "reject",
-        "detection_policy": "identifier_only",
-        "confidence": "0.99",
-        "reason": "identifier_alias",
-        "duplicate_ticker_count": "1"
-      },
-      {
-        "ticker": "000035",
-        "alias": "CNE000000FN8",
-        "alias_type": "isin",
-        "status": "reject",
-        "detection_policy": "identifier_only",
-        "confidence": "0.99",
-        "reason": "identifier_alias",
-        "duplicate_ticker_count": "1"
       }
     ],
     "review": [
       {
         "ticker": "ACAST",
         "alias": "acast",
+        "alias_type": "name",
+        "status": "review",
+        "detection_policy": "symbol_alias_only",
+        "confidence": "0.80",
+        "reason": "same_as_ticker",
+        "duplicate_ticker_count": "1"
+      },
+      {
+        "ticker": "ACCEDERE",
+        "alias": "accedere",
         "alias_type": "name",
         "status": "review",
         "detection_policy": "symbol_alias_only",
@@ -331,8 +341,38 @@
         "duplicate_ticker_count": "1"
       },
       {
+        "ticker": "ADJIA",
+        "alias": "adjia",
+        "alias_type": "name",
+        "status": "review",
+        "detection_policy": "symbol_alias_only",
+        "confidence": "0.80",
+        "reason": "same_as_ticker",
+        "duplicate_ticker_count": "1"
+      },
+      {
+        "ticker": "ADYEN",
+        "alias": "adyen",
+        "alias_type": "name",
+        "status": "review",
+        "detection_policy": "symbol_alias_only",
+        "confidence": "0.80",
+        "reason": "same_as_ticker",
+        "duplicate_ticker_count": "1"
+      },
+      {
         "ticker": "AFROMEDIA",
         "alias": "afromedia",
+        "alias_type": "name",
+        "status": "review",
+        "detection_policy": "symbol_alias_only",
+        "confidence": "0.80",
+        "reason": "same_as_ticker",
+        "duplicate_ticker_count": "1"
+      },
+      {
+        "ticker": "AHASOLAR",
+        "alias": "ahasolar",
         "alias_type": "name",
         "status": "review",
         "detection_policy": "symbol_alias_only",
@@ -371,6 +411,16 @@
         "duplicate_ticker_count": "1"
       },
       {
+        "ticker": "ALKOSIGN",
+        "alias": "alkosign",
+        "alias_type": "name",
+        "status": "review",
+        "detection_policy": "symbol_alias_only",
+        "confidence": "0.80",
+        "reason": "same_as_ticker",
+        "duplicate_ticker_count": "1"
+      },
+      {
         "ticker": "ALMENDRAL",
         "alias": "almendral",
         "alias_type": "name",
@@ -401,8 +451,28 @@
         "duplicate_ticker_count": "1"
       },
       {
+        "ticker": "AMERISE",
+        "alias": "amerise",
+        "alias_type": "name",
+        "status": "review",
+        "detection_policy": "symbol_alias_only",
+        "confidence": "0.80",
+        "reason": "same_as_ticker",
+        "duplicate_ticker_count": "1"
+      },
+      {
         "ticker": "AMNGV",
         "alias": "amngv",
+        "alias_type": "name",
+        "status": "review",
+        "detection_policy": "symbol_alias_only",
+        "confidence": "0.80",
+        "reason": "same_as_ticker",
+        "duplicate_ticker_count": "1"
+      },
+      {
+        "ticker": "AMPVOLTS",
+        "alias": "ampvolts",
         "alias_type": "name",
         "status": "review",
         "detection_policy": "symbol_alias_only",
@@ -469,92 +539,12 @@
         "confidence": "0.80",
         "reason": "same_as_ticker",
         "duplicate_ticker_count": "1"
-      },
-      {
-        "ticker": "APXIF",
-        "alias": "apxif",
-        "alias_type": "name",
-        "status": "review",
-        "detection_policy": "symbol_alias_only",
-        "confidence": "0.80",
-        "reason": "same_as_ticker",
-        "duplicate_ticker_count": "1"
-      },
-      {
-        "ticker": "ARADEL",
-        "alias": "aradel",
-        "alias_type": "name",
-        "status": "review",
-        "detection_policy": "symbol_alias_only",
-        "confidence": "0.80",
-        "reason": "same_as_ticker",
-        "duplicate_ticker_count": "1"
-      },
-      {
-        "ticker": "ARCHIES",
-        "alias": "archies",
-        "alias_type": "name",
-        "status": "review",
-        "detection_policy": "symbol_alias_only",
-        "confidence": "0.80",
-        "reason": "same_as_ticker",
-        "duplicate_ticker_count": "1"
-      },
-      {
-        "ticker": "ARCOMA",
-        "alias": "arcoma",
-        "alias_type": "name",
-        "status": "review",
-        "detection_policy": "symbol_alias_only",
-        "confidence": "0.80",
-        "reason": "same_as_ticker",
-        "duplicate_ticker_count": "1"
-      },
-      {
-        "ticker": "ARCUD",
-        "alias": "arcud",
-        "alias_type": "name",
-        "status": "review",
-        "detection_policy": "symbol_alias_only",
-        "confidence": "0.80",
-        "reason": "same_as_ticker",
-        "duplicate_ticker_count": "1"
-      },
-      {
-        "ticker": "ARVIND",
-        "alias": "arvind",
-        "alias_type": "name",
-        "status": "review",
-        "detection_policy": "symbol_alias_only",
-        "confidence": "0.80",
-        "reason": "same_as_ticker",
-        "duplicate_ticker_count": "1"
-      },
-      {
-        "ticker": "ASTRAL",
-        "alias": "astral",
-        "alias_type": "name",
-        "status": "review",
-        "detection_policy": "symbol_alias_only",
-        "confidence": "0.80",
-        "reason": "same_as_ticker",
-        "duplicate_ticker_count": "1"
       }
     ],
     "accept": [
       {
         "ticker": "000001",
         "alias": "ping an bank",
-        "alias_type": "name",
-        "status": "accept",
-        "detection_policy": "safe_natural_language",
-        "confidence": "0.90",
-        "reason": "accepted_name_alias",
-        "duplicate_ticker_count": "1"
-      },
-      {
-        "ticker": "000002",
-        "alias": "china vanke",
         "alias_type": "name",
         "status": "accept",
         "detection_policy": "safe_natural_language",
@@ -633,6 +623,16 @@
         "duplicate_ticker_count": "1"
       },
       {
+        "ticker": "00001",
+        "alias": "ckh holdings",
+        "alias_type": "name",
+        "status": "accept",
+        "detection_policy": "safe_natural_language",
+        "confidence": "0.90",
+        "reason": "accepted_name_alias",
+        "duplicate_ticker_count": "1"
+      },
+      {
         "ticker": "000010",
         "alias": "shenzhen ecobeauty",
         "alias_type": "name",
@@ -645,6 +645,16 @@
       {
         "ticker": "000014",
         "alias": "shahe industry",
+        "alias_type": "name",
+        "status": "accept",
+        "detection_policy": "safe_natural_language",
+        "confidence": "0.90",
+        "reason": "accepted_name_alias",
+        "duplicate_ticker_count": "1"
+      },
+      {
+        "ticker": "00002",
+        "alias": "clp holdings",
         "alias_type": "name",
         "status": "accept",
         "detection_policy": "safe_natural_language",
@@ -685,6 +695,16 @@
       {
         "ticker": "000029",
         "alias": "shenzhen special economic zone real estate & properties group",
+        "alias_type": "name",
+        "status": "accept",
+        "detection_policy": "safe_natural_language",
+        "confidence": "0.90",
+        "reason": "accepted_name_alias",
+        "duplicate_ticker_count": "1"
+      },
+      {
+        "ticker": "00003",
+        "alias": "hk & china gas",
         "alias_type": "name",
         "status": "accept",
         "detection_policy": "safe_natural_language",
@@ -765,26 +785,6 @@
       {
         "ticker": "000036",
         "alias": "china union",
-        "alias_type": "name",
-        "status": "accept",
-        "detection_policy": "safe_natural_language",
-        "confidence": "0.90",
-        "reason": "accepted_name_alias",
-        "duplicate_ticker_count": "1"
-      },
-      {
-        "ticker": "000039",
-        "alias": "china international marine containers group",
-        "alias_type": "name",
-        "status": "accept",
-        "detection_policy": "safe_natural_language",
-        "confidence": "0.90",
-        "reason": "accepted_name_alias",
-        "duplicate_ticker_count": "1"
-      },
-      {
-        "ticker": "000039",
-        "alias": "china international marine containers",
         "alias_type": "name",
         "status": "accept",
         "detection_policy": "safe_natural_language",
