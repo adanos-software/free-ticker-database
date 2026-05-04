@@ -58,6 +58,8 @@ REVIEW_METADATA_UPDATES_CSV = REVIEW_OVERRIDES_DIR / "metadata_updates.csv"
 REVIEW_DROP_ENTRIES_CSV = REVIEW_OVERRIDES_DIR / "drop_entries.csv"
 MANUAL_ISIN_CORRECTIONS = {
     "AAPL": "US0378331005",
+    # Keep NASDAQ BMR ungrouped; same-ticker ASX/TSXV listings have caused recurring identifier collisions.
+    "BMR": "",
     "MSFT": "US5949181045",
     "TSLA": "US88160R1014",
 }

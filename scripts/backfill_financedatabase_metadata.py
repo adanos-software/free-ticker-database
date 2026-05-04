@@ -34,6 +34,7 @@ FINANCEDATABASE_EXCHANGE_CODES: dict[str, set[str]] = {
     "BSE_IN": {"BSE"},
     "Bursa": {"KLS"},
     "CPH": {"CPH"},
+    "CSE_LK": {"CSE"},
     "Euronext": {"BRU", "LIS", "PAR"},
     "HEL": {"HEL"},
     "HKEX": {"HKG"},
@@ -51,6 +52,8 @@ FINANCEDATABASE_EXCHANGE_CODES: dict[str, set[str]] = {
     "NYSE MKT": {"ASE"},
     "OSL": {"OSL"},
     "OTC": {"PNK"},
+    "PSE_CZ": {"PRA"},
+    "QSE": {"DOH"},
     "SET": {"SET"},
     "SGX": {"SES"},
     "SIX": {"EBS"},
@@ -58,6 +61,7 @@ FINANCEDATABASE_EXCHANGE_CODES: dict[str, set[str]] = {
     "STO": {"STO"},
     "SZSE": {"SHZ"},
     "TASE": {"TLV"},
+    "TADAWUL": {"SAU"},
     "TPEX": {"TWO"},
     "TSE": {"JPX"},
     "TSX": {"TOR"},
@@ -74,17 +78,21 @@ EXPECTED_ISIN_PREFIXES: dict[str, tuple[str, ...]] = {
     "BMV": ("MX",),
     "BSE_HU": ("HU",),
     "Bursa": ("MY",),
+    "CSE_LK": ("LK",),
     "NASDAQ": ("US",),
     "NEO": ("CA",),
     "NYSE": ("US",),
     "NYSE ARCA": ("US",),
     "NYSE MKT": ("US",),
+    "PSE_CZ": ("CZ",),
+    "QSE": ("QA",),
     "SET": ("TH",),
     "SIX": ("CH",),
     "SSE": ("CN",),
     "STO": ("SE",),
     "SZSE": ("CN",),
     "TASE": ("IL",),
+    "TADAWUL": ("SA",),
     "TPEX": ("TW",),
     "TSE": ("JP",),
     "TSX": ("CA",),
@@ -235,6 +243,8 @@ def find_financedatabase_candidates(
 ) -> list[FinanceDatabaseRow]:
     result: list[FinanceDatabaseRow] = []
     ticker_keys = {normalized_ticker_key(row["ticker"])}
+    if row["exchange"] == "CSE_LK":
+        ticker_keys.add(normalized_ticker_key(row["ticker"]).replace(".", ""))
     if row["exchange"] == "HKEX" and row["ticker"].isdigit():
         ticker_keys.add(str(int(row["ticker"])))
         ticker_keys.add(str(int(row["ticker"])).zfill(4))

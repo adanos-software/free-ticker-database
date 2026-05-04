@@ -1,6 +1,6 @@
 # Source Inventory Gap
 
-Generated at: `2026-05-04T18:10:05Z`
+Generated at: `2026-05-04T18:39:49Z`
 
 ## Summary
 
@@ -22,7 +22,7 @@ _No rows._
 |---|---|---|---:|---:|---:|---|---|---|
 | 1 | STO | official_partial | 725 | 0 | 234 | nasdaq_nordic_stockholm_full_search | Nasdaq Nordic | reconciled through existing official Nasdaq Nordic Stockholm shares, share-search, ETF, tracker, Spotlight, and NGM feeds |
 | 2 | EGX | official_partial | 225 | 0 | 29 | egx_listed_securities | EGX | implemented via browser-captured official ASP.NET ViewState; raw non-browser requests still hit the EGX/TSPD challenge |
-| 3 | ASX | official_partial | 1298 | 105 | 73 | asx_cash_market_directory | ASX | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
+| 3 | ASX | official_partial | 1298 | 105 | 56 | asx_cash_market_directory | ASX | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
 | 4 | ATHEX | official_partial | 117 | 19 | 0 | athex_sector_classification | ATHEX | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
 | 5 | SZSE | official_partial | 3083 | 487 | 0 | szse_industry_classification | SZSE | implemented via existing official SZSE report-list industry fields |
 | 6 | SSE | official_partial | 2789 | 614 | 0 | sse_industry_classification | SSE | implemented via existing official SSE stock-list CSRC_CODE fields |
@@ -44,7 +44,7 @@ _No rows._
 | 22 | BVC | official_partial | 3 | 3 | 0 | bvc_colombia_issuers | BVC | implemented via official BVC local-equity issuer API using the site handshake token; rows only enter through reviewed current BVC listings |
 | 23 | Bursa | official_partial | 936 | 0 | 2 | bursa_equities_prices_directory | Bursa Malaysia | implemented via official Bursa year-end closing-price PDF captured through browser download; live equities-prices API still Cloudflare-blocked for repeatable direct refreshes |
 | 24 | BVL | official_partial | 33 | 2 | 30 | bvl_issuers_directory | CAVALI | implemented via official CAVALI issuer securities registry; BVL Angular issuer page still needs endpoint discovery for a pure exchange directory |
-| 25 | PSE_CZ | official_partial | 24 | 1 | 14 | pse_cz_shares_directory | Prague Stock Exchange | implemented via official market pages plus detail-page ticker extraction |
+| 25 | PSE_CZ | official_partial | 24 | 1 | 12 | pse_cz_shares_directory | Prague Stock Exchange | implemented via official market pages plus detail-page ticker extraction |
 | 26 | BCBA | official_partial | 64 | 3 | 14 | byma_equity_details | BYMA | implemented via official Open BYMADATA equity-detail endpoint; some legacy BCBA symbols remain unmatched without manual ticker normalization |
 | 27 | ZSE_ZW | official_partial | 27 | 0 | 21 | zse_zw_listed_companies | ZSE Zimbabwe | implemented via official ZSE front-end API and price-sheet API |
 | 28 | MSE_MW | official_partial | 8 | 0 | 8 | mse_mw_listed_companies | MSE Malawi | implemented via official mainboard table and company links |
@@ -61,7 +61,7 @@ _No rows._
 |---|---|---|---:|---:|---:|---|---|---|
 | 1 | STO | official_partial | 725 | 0 | 234 | nasdaq_nordic_stockholm_full_search | Nasdaq Nordic | reconciled through existing official Nasdaq Nordic Stockholm shares, share-search, ETF, tracker, Spotlight, and NGM feeds |
 | 2 | EGX | official_partial | 225 | 0 | 29 | egx_listed_securities | EGX | implemented via browser-captured official ASP.NET ViewState; raw non-browser requests still hit the EGX/TSPD challenge |
-| 3 | ASX | official_partial | 1298 | 105 | 73 | asx_cash_market_directory | ASX | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
+| 3 | ASX | official_partial | 1298 | 105 | 56 | asx_cash_market_directory | ASX | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
 | 4 | ATHEX | official_partial | 117 | 19 | 0 | athex_sector_classification | ATHEX | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
 | 5 | SZSE | official_partial | 3083 | 487 | 0 | szse_industry_classification | SZSE | implemented via existing official SZSE report-list industry fields |
 | 6 | SSE | official_partial | 2789 | 614 | 0 | sse_industry_classification | SSE | implemented via existing official SSE stock-list CSRC_CODE fields |
@@ -83,7 +83,7 @@ _No rows._
 | 22 | BVC | official_partial | 3 | 3 | 0 | bvc_colombia_issuers | BVC | implemented via official BVC local-equity issuer API using the site handshake token; rows only enter through reviewed current BVC listings |
 | 23 | Bursa | official_partial | 936 | 0 | 2 | bursa_equities_prices_directory | Bursa Malaysia | implemented via official Bursa year-end closing-price PDF captured through browser download; live equities-prices API still Cloudflare-blocked for repeatable direct refreshes |
 | 24 | BVL | official_partial | 33 | 2 | 30 | bvl_issuers_directory | CAVALI | implemented via official CAVALI issuer securities registry; BVL Angular issuer page still needs endpoint discovery for a pure exchange directory |
-| 25 | PSE_CZ | official_partial | 24 | 1 | 14 | pse_cz_shares_directory | Prague Stock Exchange | implemented via official market pages plus detail-page ticker extraction |
+| 25 | PSE_CZ | official_partial | 24 | 1 | 12 | pse_cz_shares_directory | Prague Stock Exchange | implemented via official market pages plus detail-page ticker extraction |
 | 26 | BCBA | official_partial | 64 | 3 | 14 | byma_equity_details | BYMA | implemented via official Open BYMADATA equity-detail endpoint; some legacy BCBA symbols remain unmatched without manual ticker normalization |
 | 27 | ZSE_ZW | official_partial | 27 | 0 | 21 | zse_zw_listed_companies | ZSE Zimbabwe | implemented via official ZSE front-end API and price-sheet API |
 | 28 | MSE_MW | official_partial | 8 | 0 | 8 | mse_mw_listed_companies | MSE Malawi | implemented via official mainboard table and company links |

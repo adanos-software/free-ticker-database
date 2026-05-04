@@ -1,23 +1,23 @@
 # Entry Quality Report
 
-Generated at: `2026-05-04T18:10:08Z`
+Generated at: `2026-05-04T18:39:52Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 56,837 |
-| source_gap | 14,192 |
+| pass | 57,175 |
+| source_gap | 13,854 |
 | warn | 63 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| missing_stock_sector | 6,139 |
+| missing_stock_sector | 5,834 |
 | official_reference_gap | 5,321 |
-| expected_missing_primary_isin | 3,941 |
-| missing_etf_category | 469 |
+| expected_missing_primary_isin | 3,917 |
+| missing_etf_category | 435 |
 | country_isin_mismatch | 63 |
 
 ## Top Flagged Exchanges
@@ -25,25 +25,25 @@ Generated at: `2026-05-04T18:10:08Z`
 | Exchange | Pass | Notice | Source Gap | Warn | Quarantine |
 |---|---:|---:|---:|---:|---:|
 | OTC | 7,887 | 0 | 3,169 | 0 | 0 |
-| BSE_IN | 1,193 | 0 | 1,447 | 0 | 0 |
+| BSE_IN | 1,196 | 0 | 1,444 | 0 | 0 |
 | B3 | 762 | 0 | 822 | 0 | 0 |
-| HKEX | 2,223 | 0 | 821 | 0 | 0 |
-| TSX | 1,214 | 0 | 689 | 0 | 0 |
+| HKEX | 2,341 | 0 | 703 | 0 | 0 |
+| TSX | 1,220 | 0 | 683 | 0 | 0 |
 | SSE | 2,173 | 0 | 616 | 0 | 0 |
-| TSXV | 487 | 0 | 579 | 0 | 0 |
+| TSXV | 488 | 0 | 578 | 0 | 0 |
 | SZSE | 2,593 | 0 | 489 | 1 | 0 |
 | LSE | 5,975 | 0 | 380 | 60 | 0 |
-| NYSE ARCA | 2,282 | 0 | 372 | 0 | 0 |
-| CSE_LK | 0 | 0 | 307 | 0 | 0 |
-| NASDAQ | 4,355 | 0 | 278 | 1 | 0 |
-| SGX | 322 | 0 | 272 | 0 | 0 |
+| NYSE ARCA | 2,283 | 0 | 371 | 0 | 0 |
+| SGX | 325 | 0 | 269 | 0 | 0 |
+| NASDAQ | 4,369 | 0 | 264 | 1 | 0 |
 | NSE_IN | 990 | 0 | 244 | 0 | 0 |
 | STO | 492 | 0 | 233 | 0 | 0 |
-| SET | 350 | 0 | 197 | 0 | 0 |
+| SET | 351 | 0 | 196 | 0 | 0 |
 | XETRA | 3,608 | 0 | 171 | 0 | 0 |
-| TADAWUL | 20 | 0 | 171 | 0 | 0 |
 | BMV | 8 | 0 | 171 | 0 | 0 |
-| BATS | 1,076 | 0 | 167 | 0 | 0 |
+| BATS | 1,079 | 0 | 164 | 0 | 0 |
+| TADAWUL | 28 | 0 | 163 | 0 | 0 |
+| ASX | 1,146 | 0 | 152 | 0 | 0 |
 
 ## Notes
 
