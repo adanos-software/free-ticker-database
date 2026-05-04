@@ -1,13 +1,13 @@
 # Completion Backlog
 
-Generated at: `2026-05-04T07:20:36Z`
+Generated at: `2026-05-04T08:18:34Z`
 
 ## Summary
 
-- Missing primary ISIN rows: `4535`
-- Missing stock sectors: `9683`
-- Missing ETF categories: `894`
-- Official symbol collisions tracked in exchange references: `10922`
+- Missing primary ISIN rows: `3941`
+- Missing stock sectors: `9647`
+- Missing ETF categories: `892`
+- Official symbol collisions tracked in exchange references: `10923`
 - Core rows hidden only by the legacy global-ticker compatibility export: `1`
 
 ## Top Missing Primary ISINs
@@ -15,26 +15,26 @@ Generated at: `2026-05-04T07:20:36Z`
 | Rank | Exchange | Asset type | Missing | Venue | Source | Review |
 |---|---|---|---:|---|---|---|
 | 1 | SSE | All | 614 | official_partial | Official SSE/SZSE share and ETF feeds first; reviewed EODHD/XTB fallback only for unresolved rows. | yes |
-| 2 | SGX | All | 584 | official_full | Official exchange masterfile or reviewed secondary identifier source. | yes |
-| 3 | TSX | All | 562 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
-| 4 | TSXV | All | 512 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
-| 5 | SZSE | All | 487 | official_partial | Official SSE/SZSE share and ETF feeds first; reviewed EODHD/XTB fallback only for unresolved rows. | yes |
-| 6 | B3 | All | 276 | official_full | Official B3 InstrumentsEquities first; FinanceDatabase reviewed fallback for residual identifiers. | yes |
-| 7 | SET | All | 196 | official_full | Official exchange masterfile or reviewed secondary identifier source. | yes |
-| 8 | NYSE ARCA | All | 174 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
-| 9 | NASDAQ | All | 147 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
-| 10 | NEO | All | 118 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
-| 11 | IDX | All | 115 | official_full | Official exchange masterfile or reviewed secondary identifier source. | yes |
-| 12 | PSX | All | 107 | official_full | Official exchange masterfile or reviewed secondary identifier source. | yes |
+| 2 | TSX | All | 562 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
+| 3 | TSXV | All | 512 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
+| 4 | SZSE | All | 487 | official_partial | Official SSE/SZSE share and ETF feeds first; reviewed EODHD/XTB fallback only for unresolved rows. | yes |
+| 5 | B3 | All | 271 | official_full | Official B3 InstrumentsEquities first; FinanceDatabase reviewed fallback for residual identifiers. | yes |
+| 6 | SET | All | 196 | official_full | Official exchange masterfile or reviewed secondary identifier source. | yes |
+| 7 | NYSE ARCA | All | 173 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
+| 8 | NASDAQ | All | 147 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
+| 9 | NEO | All | 118 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
+| 10 | IDX | All | 115 | official_full | Official exchange masterfile or reviewed secondary identifier source. | yes |
+| 11 | PSX | All | 107 | official_full | Official exchange masterfile or reviewed secondary identifier source. | yes |
+| 12 | ASX | All | 105 | official_partial | Official ASX ISIN workbook. | no |
 
 ## Top Missing Stock Sectors
 
 | Rank | Exchange | Asset type | Missing | Venue | Source | Review |
 |---|---|---|---:|---|---|---|
 | 1 | BSE_IN | Stock | 2632 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 2 | OTC | Stock | 1809 | official_full | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
+| 2 | OTC | Stock | 1805 | official_full | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
 | 3 | HKEX | Stock | 1139 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 4 | SGX | Stock | 501 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 4 | SGX | Stock | 470 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 5 | TSXV | Stock | 417 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
 | 6 | LSE | Stock | 325 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
 | 7 | CSE_LK | Stock | 307 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
@@ -66,9 +66,9 @@ Generated at: `2026-05-04T07:20:36Z`
 | Rank | Exchange | Missing total | Missing stock_sector | Missing etf_category | Venue |
 |---|---|---:|---:|---:|---|
 | 1 | BSE_IN | 2633 | 2632 | 1 | official_full |
-| 2 | OTC | 1828 | 1809 | 19 | official_full |
+| 2 | OTC | 1824 | 1805 | 19 | official_full |
 | 3 | HKEX | 1139 | 1139 | 0 | official_full |
-| 4 | SGX | 501 | 501 | 0 | official_full |
+| 4 | SGX | 470 | 470 | 0 | official_full |
 | 5 | TSXV | 420 | 417 | 3 | official_full |
 | 6 | LSE | 361 | 325 | 36 | official_full |
 | 7 | B3 | 320 | 279 | 41 | official_full |

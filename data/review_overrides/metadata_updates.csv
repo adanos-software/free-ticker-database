@@ -9367,3 +9367,22 @@ ZWQT,TSX,etf_category,update,Fixed Income,0.68,"Deterministic ETF-name classifie
 ZYDUSLIFE,NSE_IN,stock_sector,update,Health Care,0.72,StockAnalysis company page provided sector/industry metadata for a row missing stock_sector; accepted as reviewed secondary metadata after exact exchange URL and issuer-name gate. Source: https://stockanalysis.com/quote/nse/ZYDUSLIFE/company/
 ZYDUSWELL,NSE_IN,stock_sector,update,Consumer Staples,0.72,StockAnalysis company page provided sector/industry metadata for a row missing stock_sector; accepted as reviewed secondary metadata after exact exchange URL and issuer-name gate. Source: https://stockanalysis.com/quote/nse/ZYDUSWELL/company/
 CAM,NYSE ARCA,etf_category,clear,,0.95,Reviewed cleanup: keep the corrected Yahoo/official NYSE ARCA ETF identity for CAM but clear the stale ETF category because the deterministic classifier now returns no_rule_match and no other reviewed source currently confirms a category.
+MKZ-UN,TSX,name,update,Mackenzie Master Limited Partnership,0.95,Reviewed TMX refresh official listed issuer record resolves truncated legacy name to Mackenzie Master Limited Partnership.
+0FWY,LSE,isin,update,NO0010310956,0.97,Reviewed official LSE price explorer exact ticker 0FWY Stock asset type issuer name SALMAR ASA and valid ISIN.
+0R3N,LSE,isin,update,DE000A12B8Z4,0.97,Reviewed official LSE price explorer exact ticker 0R3N Stock asset type issuer name TLG IMMOBILIEN AG and valid ISIN.
+GOLD-EUR,Euronext,name,update,Amundi Physical Gold ETC,0.95,Reviewed official Euronext ETF directory ticker GOLD-EUR maps to symbol GOLD and product name matches Amundi Physical Gold ETC.
+GOLD-EUR,Euronext,isin,update,FR0013416716,0.97,Reviewed official Euronext ETF directory ticker GOLD-EUR maps to symbol GOLD with valid ISIN FR0013416716.
+GOLD-EUR,Euronext,country,update,France,0.95,Reviewed Euronext ISIN domicile cleanup for FR0013416716.
+GOLD-EUR,Euronext,country_code,update,FR,0.95,Reviewed Euronext ISIN domicile cleanup for FR0013416716.
+GOLD-EUR,Euronext,etf_category,update,Commodity,0.88,Reviewed product category cleanup official Euronext product name is Amundi Physical Gold ETC.
+IU28-EUR,Euronext,name,update,iShares iBonds Dec 2028 Term $ High Yield Corp UCITS ETF USD (Acc),0.95,Reviewed official Euronext ETF directory ticker IU28-EUR maps to symbol IU28 and product name matches iShares iBonds Dec 2028 high yield corporate bond ETF.
+IU28-EUR,Euronext,isin,update,IE0008YWAFL1,0.97,Reviewed official Euronext ETF directory ticker IU28-EUR maps to symbol IU28 with valid ISIN IE0008YWAFL1.
+IU28-EUR,Euronext,country,update,Ireland,0.95,Reviewed Euronext ISIN domicile cleanup for IE0008YWAFL1.
+IU28-EUR,Euronext,country_code,update,IE,0.95,Reviewed Euronext ISIN domicile cleanup for IE0008YWAFL1.
+IU28-EUR,Euronext,etf_category,update,Fixed Income,0.88,Reviewed product category cleanup official Euronext product name is an iShares high yield corporate bond UCITS ETF.
+IU29-EUR,Euronext,name,update,iShares iBonds Dec 2029 Term $ High Yield Corp UCITS ETF USD (Acc),0.95,Reviewed official Euronext ETF directory ticker IU29-EUR maps to symbol IU29 and product name matches iShares iBonds Dec 2029 high yield corporate bond ETF.
+IU29-EUR,Euronext,isin,update,IE00094KNQN4,0.97,Reviewed official Euronext ETF directory ticker IU29-EUR maps to symbol IU29 with valid ISIN IE00094KNQN4.
+IU29-EUR,Euronext,country,update,Ireland,0.95,Reviewed Euronext ISIN domicile cleanup for IE00094KNQN4.
+IU29-EUR,Euronext,country_code,update,IE,0.95,Reviewed Euronext ISIN domicile cleanup for IE00094KNQN4.
+IU29-EUR,Euronext,etf_category,update,Fixed Income,0.88,Reviewed product category cleanup official Euronext product name is an iShares high yield corporate bond UCITS ETF.
+XRP,NYSE ARCA,isin,update,US09174F1075,0.78,Reviewed Yahoo Finance ETF ISIN lookup exact NYSE Arca exchange ETF quote type matching product name Bitwise XRP ETF and valid US ISIN.

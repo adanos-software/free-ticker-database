@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-05-04T07:20:39Z",
+    "generated_at": "2026-05-04T08:18:37Z",
     "rows": 71092,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,25 +14,25 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 55174,
-      "source_gap": 15855,
+      "pass": 54836,
+      "source_gap": 16193,
       "warn": 63
     },
     "evidence_level_counts": {
-      "identifier_enriched": 3555,
-      "official_reference": 66332,
-      "scoped_source_gap": 880,
-      "valid_isin": 325
+      "identifier_enriched": 4045,
+      "official_reference": 65771,
+      "scoped_source_gap": 943,
+      "valid_isin": 333
     },
     "severity_counts": {
       "high": 63,
-      "source_gap": 18045
+      "source_gap": 17978
     },
     "issue_counts": {
-      "missing_stock_sector": 7874,
-      "official_reference_gap": 4760,
-      "expected_missing_primary_isin": 4535,
-      "missing_etf_category": 876,
+      "missing_stock_sector": 7842,
+      "official_reference_gap": 5321,
+      "expected_missing_primary_isin": 3941,
+      "missing_etf_category": 874,
       "country_isin_mismatch": 63
     },
     "top_flagged_exchanges": [
@@ -52,46 +52,46 @@
         "source_gap": 1139
       },
       {
+        "exchange": "B3",
+        "source_gap": 832,
+        "pass": 752
+      },
+      {
         "exchange": "TSX",
         "pass": 1206,
         "source_gap": 697
       },
       {
         "exchange": "SSE",
-        "pass": 2174,
-        "source_gap": 615
-      },
-      {
-        "exchange": "SGX",
-        "source_gap": 584,
-        "pass": 10
+        "pass": 2173,
+        "source_gap": 616
       },
       {
         "exchange": "TSXV",
-        "source_gap": 570,
-        "pass": 496
+        "source_gap": 579,
+        "pass": 487
       },
       {
         "exchange": "SZSE",
-        "pass": 2594,
-        "source_gap": 488,
+        "pass": 2593,
+        "source_gap": 489,
         "warn": 1
       },
       {
+        "exchange": "SGX",
+        "source_gap": 470,
+        "pass": 124
+      },
+      {
         "exchange": "LSE",
-        "pass": 5956,
+        "pass": 5958,
         "warn": 60,
-        "source_gap": 399
+        "source_gap": 397
       },
       {
         "exchange": "NYSE ARCA",
-        "pass": 2210,
-        "source_gap": 444
-      },
-      {
-        "exchange": "B3",
-        "source_gap": 387,
-        "pass": 1197
+        "pass": 2211,
+        "source_gap": 443
       },
       {
         "exchange": "NASDAQ",

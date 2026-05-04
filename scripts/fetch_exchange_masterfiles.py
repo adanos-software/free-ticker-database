@@ -206,6 +206,7 @@ LEGACY_BSE_IN_SCRIPS_CACHE = MASTERFILES_DIR / "bse_in_scrips.json"
 HKEX_SECURITIES_LIST_CACHE = MASTERFILE_CACHE_DIR / "hkex_securities_list.json"
 LEGACY_HKEX_SECURITIES_LIST_CACHE = MASTERFILES_DIR / "hkex_securities_list.json"
 SGX_SECURITIES_PRICES_CACHE = MASTERFILE_CACHE_DIR / "sgx_securities_prices.json"
+SGX_MARKET_METADATA_CACHE = MASTERFILE_CACHE_DIR / "sgx_market_metadata.json"
 LEGACY_SGX_SECURITIES_PRICES_CACHE = MASTERFILES_DIR / "sgx_securities_prices.json"
 DFM_LISTED_SECURITIES_CACHE = MASTERFILE_CACHE_DIR / "dfm_listed_securities.json"
 LEGACY_DFM_LISTED_SECURITIES_CACHE = MASTERFILES_DIR / "dfm_listed_securities.json"
@@ -582,6 +583,7 @@ HKEX_SECURITIES_LIST_URL = "https://www.hkex.com.hk/eng/services/trading/securit
 HKEX_SECURITIES_PRICES_PAGE_URL = "https://www.hkex.com.hk/Market-Data/Securities-Prices/Equities"
 SGX_SECURITIES_PRICES_PAGE_URL = "https://www.sgx.com/securities/securities-prices"
 SGX_SECURITIES_PRICES_API_URL = "https://api.sgx.com/securities/v1.1"
+SGX_MARKET_METADATA_API_URL = "https://api.sgx.com/marketmetadata/v2"
 DFM_LISTED_SECURITIES_PAGE_URL = "https://www.dfm.ae/issuers/listed-securities/company-profile-page"
 DFM_STOCKS_API_URL = "https://api2.dfm.ae/mw/v1/stocks"
 DFM_COMPANY_PROFILE_API_URL = "https://api2.dfm.ae/web/widgets/v1/data"
@@ -6315,6 +6317,73 @@ def parse_sgx_securities_prices_payload(payload: dict[str, Any], source: Masterf
     return rows
 
 
+def parse_sgx_market_metadata_payload(payload: dict[str, Any]) -> dict[str, dict[str, str]]:
+    records = payload.get("data") or []
+    if not isinstance(records, list):
+        raise ValueError("Unexpected SGX market metadata payload")
+    metadata: dict[str, dict[str, str]] = {}
+    for record in records:
+        if not isinstance(record, dict):
+            continue
+        ticker = str(record.get("stockCode") or "").strip().upper()
+        isin = str(record.get("isinCode") or "").strip().upper()
+        if not ticker or not is_valid_isin(isin):
+            continue
+        metadata[ticker] = {
+            "isin": isin,
+            "metadata_name": str(record.get("issuerName") or "").strip(),
+            "ibm_code": str(record.get("ibmCode") or "").strip(),
+        }
+    if not metadata:
+        raise ValueError("Unexpected SGX market metadata payload")
+    return metadata
+
+
+def fetch_sgx_market_metadata(
+    *,
+    session: requests.Session | None = None,
+) -> dict[str, dict[str, str]]:
+    session = session or requests.Session()
+    response = session.get(
+        SGX_MARKET_METADATA_API_URL,
+        headers=sgx_request_headers(),
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    return parse_sgx_market_metadata_payload(response.json())
+
+
+def load_sgx_market_metadata(
+    session: requests.Session | None = None,
+) -> tuple[dict[str, dict[str, str]] | None, str]:
+    if SGX_MARKET_METADATA_CACHE.exists():
+        cached = json.loads(SGX_MARKET_METADATA_CACHE.read_text(encoding="utf-8"))
+        if isinstance(cached, dict) and cached:
+            return cached, "cache"
+    try:
+        metadata = fetch_sgx_market_metadata(session=session)
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        return None, "unavailable"
+
+    ensure_output_dirs()
+    SGX_MARKET_METADATA_CACHE.write_text(json.dumps(metadata, sort_keys=True), encoding="utf-8")
+    return metadata, "network"
+
+
+def merge_sgx_market_metadata(rows: list[dict[str, str]], metadata: dict[str, dict[str, str]] | None) -> list[dict[str, str]]:
+    if not metadata:
+        return rows
+    merged: list[dict[str, str]] = []
+    for row in rows:
+        enriched = dict(row)
+        ticker = enriched.get("ticker", "").strip().upper()
+        details = metadata.get(ticker)
+        if details and details.get("isin"):
+            enriched["isin"] = details["isin"]
+        merged.append(enriched)
+    return merged
+
+
 def fetch_sgx_securities_prices_rows(
     source: MasterfileSource,
     *,
@@ -6328,7 +6397,9 @@ def fetch_sgx_securities_prices_rows(
         timeout=REQUEST_TIMEOUT,
     )
     response.raise_for_status()
-    return parse_sgx_securities_prices_payload(response.json(), source)
+    rows = parse_sgx_securities_prices_payload(response.json(), source)
+    metadata, _ = load_sgx_market_metadata(session=session)
+    return merge_sgx_market_metadata(rows, metadata)
 
 
 def load_sgx_securities_prices_rows(
@@ -6337,7 +6408,9 @@ def load_sgx_securities_prices_rows(
 ) -> tuple[list[dict[str, str]] | None, str]:
     for path in (SGX_SECURITIES_PRICES_CACHE, LEGACY_SGX_SECURITIES_PRICES_CACHE):
         if path.exists():
-            return json.loads(path.read_text(encoding="utf-8")), "cache"
+            rows = json.loads(path.read_text(encoding="utf-8"))
+            if isinstance(rows, list) and any(row.get("isin") for row in rows if isinstance(row, dict)):
+                return rows, "cache"
     try:
         rows = fetch_sgx_securities_prices_rows(source, session=session)
     except (requests.RequestException, ValueError, json.JSONDecodeError):

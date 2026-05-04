@@ -973,8 +973,8 @@
     "expected_format": "sgx_securities_prices_json",
     "implementation_status": "implemented",
     "priority": "high",
-    "blocker": "implemented via official SGX securities prices API; this feed exposes tradeable stock/ETF universe and instrument types but does not expose ISIN, so a separate SGX identifier source is still needed before importing SGX rows as complete core listings",
-    "notes": "The official api.sgx.com securities endpoint exposes SGX code, name, market board, instrument type, and trading metadata. Parser keeps stocks, REITs, business trusts, ADRs, and ETFs, excluding warrants, certificates, and bonds."
+    "blocker": "implemented via official SGX securities prices API plus official SGX marketmetadata v2 identifier feed; only isolated rows missing from marketmetadata remain without ISIN",
+    "notes": "The official api.sgx.com securities endpoint exposes SGX code, name, market board, instrument type, and trading metadata. The official api.sgx.com/marketmetadata/v2 endpoint maps SGX stockCode to valid ISINs and IBM codes. Parser keeps stocks, REITs, business trusts, ADRs, and ETFs, excluding warrants, certificates, and bonds."
   },
   {
     "key": "nzx_instruments",
