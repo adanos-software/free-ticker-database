@@ -2,6 +2,24 @@
 
 ## [Unreleased]
 
+## [3.19.0] - 2026-05-04
+
+### Added
+
+- Added official SGX marketmetadata v2 enrichment to the SGX securities-prices parser, filling official ISINs for almost all current SGX rows from SGX-provided identifier metadata.
+- Expanded deterministic ETF-name category rules for volatility, fixed-income, municipal, duration, multi-asset, leveraged/inverse, digital-asset, commodity, real-estate, technology, and equity-index products.
+
+### Changed
+
+- Rebuilt canonical exports to 61,846 primary tickers, 71,092 listing rows, 56,675 ISIN-covered rows, 51,713 sector/category-covered rows, and 118,631 structured alias rows.
+- Increased ETF category coverage to 15,098 rows and reduced the ETF category backlog from 892 to 486 rows.
+- Reduced missing core-primary ISIN rows to 3,941 after the official SGX metadata refresh.
+- Refreshed listing history, identifier snapshots, coverage, source-inventory, completion-backlog, alias-quality, Adanos reference, entry-quality, and validation artifacts.
+
+### Fixed
+
+- Updated ETF outlier expectations for Yahoo-corrected ETF rows that are now deterministically categorized by the ETF-name classifier.
+
 ## [3.18.0] - 2026-05-04
 
 ### Added

@@ -53,23 +53,23 @@
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-05-04T08:43:29Z |
-| tickers_age_hours | 0.0 |
+| tickers_built_at | 2026-05-04T08:47:57Z |
+| tickers_age_hours | 0.01 |
 | masterfiles_generated_at | 2026-05-04T08:17:46Z |
-| masterfiles_age_hours | 0.43 |
-| identifiers_generated_at | 2026-05-04T08:43:31Z |
+| masterfiles_age_hours | 0.51 |
+| identifiers_generated_at | 2026-05-04T08:47:59Z |
 | identifiers_age_hours | 0.0 |
-| listing_history_observed_at | 2026-05-04T08:43:29Z |
-| listing_history_age_hours | 0.0 |
+| listing_history_observed_at | 2026-05-04T08:47:57Z |
+| listing_history_age_hours | 0.01 |
 | latest_verification_run | data/stock_verification/run-20260504-sgx-isin-refresh |
 | latest_verification_generated_at | 2026-05-04T08:25:42Z |
-| latest_verification_age_hours | 0.3 |
+| latest_verification_age_hours | 0.38 |
 | latest_stock_verification_run | data/stock_verification/run-20260504-sgx-isin-refresh |
 | latest_stock_verification_generated_at | 2026-05-04T08:25:42Z |
-| latest_stock_verification_age_hours | 0.3 |
+| latest_stock_verification_age_hours | 0.38 |
 | latest_etf_verification_run | data/etf_verification/run-20260504-sgx-isin-refresh |
 | latest_etf_verification_generated_at | 2026-05-04T08:25:46Z |
-| latest_etf_verification_age_hours | 0.3 |
+| latest_etf_verification_age_hours | 0.37 |
 
 ## Source Coverage
 

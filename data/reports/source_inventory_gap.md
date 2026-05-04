@@ -1,6 +1,6 @@
 # Source Inventory Gap
 
-Generated at: `2026-05-04T08:43:42Z`
+Generated at: `2026-05-04T08:48:10Z`
 
 ## Summary
 
@@ -22,7 +22,7 @@ _No rows._
 |---|---|---|---:|---:|---:|---|---|---|
 | 1 | STO | official_partial | 725 | 0 | 234 | nasdaq_nordic_stockholm_full_search | Nasdaq Nordic | reconciled through existing official Nasdaq Nordic Stockholm shares, share-search, ETF, tracker, Spotlight, and NGM feeds |
 | 2 | EGX | official_partial | 225 | 0 | 29 | egx_listed_securities | EGX | implemented via browser-captured official ASP.NET ViewState; raw non-browser requests still hit the EGX/TSPD challenge |
-| 3 | ASX | official_partial | 1298 | 105 | 78 | asx_cash_market_directory | ASX | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
+| 3 | ASX | official_partial | 1298 | 105 | 73 | asx_cash_market_directory | ASX | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
 | 4 | ATHEX | official_partial | 117 | 19 | 0 | athex_sector_classification | ATHEX | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
 | 5 | SZSE | official_partial | 3083 | 487 | 0 | szse_industry_classification | SZSE | implemented via existing official SZSE report-list industry fields |
 | 6 | SSE | official_partial | 2789 | 614 | 0 | sse_industry_classification | SSE | implemented via existing official SSE stock-list CSRC_CODE fields |
@@ -33,7 +33,7 @@ _No rows._
 | 11 | BME | official_partial | 169 | 0 | 9 | bme_security_prices_directory | BME | parser implemented via official BME ListedCompanies API with SIBE, Floor, Latibex, MTF, and ETF trading-system parameters; live refresh is currently host-blocked/403 from this environment, and partial caches are ignored |
 | 12 | TASE | official_partial | 673 | 0 | 84 | tase_company_profiles | TASE | stock-sector taxonomy still not exposed by the reachable marketdata endpoint |
 | 13 | JSE | official_partial | 212 | 29 | 5 | jse_listed_companies_directory | JSE | implemented by extending existing official JSE instrument profile parser to read Sector/Industry fields; reachable instrument pages still do not expose ISIN values, so residual ISIN gaps need a separate official registry or reviewed issuer filings |
-| 14 | WSE | official_partial | 348 | 0 | 34 | gpw_instrument_cards | GPW | implemented by extending existing official GPW/NewConnect list parsers to read the sector label from result rows; residual gaps are mostly unclassified official labels or ETF category tail |
+| 14 | WSE | official_partial | 348 | 0 | 26 | gpw_instrument_cards | GPW | implemented by extending existing official GPW/NewConnect list parsers to read the sector label from result rows; residual gaps are mostly unclassified official labels or ETF category tail |
 | 15 | ZSE | official_partial | 23 | 0 | 22 | zagreb_securities_directory | ZSE Croatia | implemented via official listed-securities table |
 | 16 | CPH | official_partial | 131 | 0 | 18 | nasdaq_nordic_copenhagen_full_search | Nasdaq Nordic | reconciled through existing official Nasdaq Nordic Copenhagen shares, share-search, ETF, and ETF-search feeds |
 | 17 | BSE_HU | official_partial | 31 | 8 | 18 | bse_hu_listed_companies | Budapest Stock Exchange | implemented via official embedded market-data feed; residual local shortcut tickers need explicit symbol alias review |
@@ -61,7 +61,7 @@ _No rows._
 |---|---|---|---:|---:|---:|---|---|---|
 | 1 | STO | official_partial | 725 | 0 | 234 | nasdaq_nordic_stockholm_full_search | Nasdaq Nordic | reconciled through existing official Nasdaq Nordic Stockholm shares, share-search, ETF, tracker, Spotlight, and NGM feeds |
 | 2 | EGX | official_partial | 225 | 0 | 29 | egx_listed_securities | EGX | implemented via browser-captured official ASP.NET ViewState; raw non-browser requests still hit the EGX/TSPD challenge |
-| 3 | ASX | official_partial | 1298 | 105 | 78 | asx_cash_market_directory | ASX | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
+| 3 | ASX | official_partial | 1298 | 105 | 73 | asx_cash_market_directory | ASX | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
 | 4 | ATHEX | official_partial | 117 | 19 | 0 | athex_sector_classification | ATHEX | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
 | 5 | SZSE | official_partial | 3083 | 487 | 0 | szse_industry_classification | SZSE | implemented via existing official SZSE report-list industry fields |
 | 6 | SSE | official_partial | 2789 | 614 | 0 | sse_industry_classification | SSE | implemented via existing official SSE stock-list CSRC_CODE fields |
@@ -72,7 +72,7 @@ _No rows._
 | 11 | BME | official_partial | 169 | 0 | 9 | bme_security_prices_directory | BME | parser implemented via official BME ListedCompanies API with SIBE, Floor, Latibex, MTF, and ETF trading-system parameters; live refresh is currently host-blocked/403 from this environment, and partial caches are ignored |
 | 12 | TASE | official_partial | 673 | 0 | 84 | tase_company_profiles | TASE | stock-sector taxonomy still not exposed by the reachable marketdata endpoint |
 | 13 | JSE | official_partial | 212 | 29 | 5 | jse_listed_companies_directory | JSE | implemented by extending existing official JSE instrument profile parser to read Sector/Industry fields; reachable instrument pages still do not expose ISIN values, so residual ISIN gaps need a separate official registry or reviewed issuer filings |
-| 14 | WSE | official_partial | 348 | 0 | 34 | gpw_instrument_cards | GPW | implemented by extending existing official GPW/NewConnect list parsers to read the sector label from result rows; residual gaps are mostly unclassified official labels or ETF category tail |
+| 14 | WSE | official_partial | 348 | 0 | 26 | gpw_instrument_cards | GPW | implemented by extending existing official GPW/NewConnect list parsers to read the sector label from result rows; residual gaps are mostly unclassified official labels or ETF category tail |
 | 15 | ZSE | official_partial | 23 | 0 | 22 | zagreb_securities_directory | ZSE Croatia | implemented via official listed-securities table |
 | 16 | CPH | official_partial | 131 | 0 | 18 | nasdaq_nordic_copenhagen_full_search | Nasdaq Nordic | reconciled through existing official Nasdaq Nordic Copenhagen shares, share-search, ETF, and ETF-search feeds |
 | 17 | BSE_HU | official_partial | 31 | 8 | 18 | bse_hu_listed_companies | Budapest Stock Exchange | implemented via official embedded market-data feed; residual local shortcut tickers need explicit symbol alias review |
