@@ -10,8 +10,8 @@
 | stocks | 46262 |
 | etfs | 15584 |
 | isin_coverage | 56675 |
-| sector_coverage | 51713 |
-| stock_sector_coverage | 36615 |
+| sector_coverage | 53416 |
+| stock_sector_coverage | 38318 |
 | etf_category_coverage | 15098 |
 | cik_coverage | 7722 |
 | figi_coverage | 63603 |
@@ -53,23 +53,23 @@
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-05-04T08:47:57Z |
-| tickers_age_hours | 0.01 |
+| tickers_built_at | 2026-05-04T18:09:52Z |
+| tickers_age_hours | 0.0 |
 | masterfiles_generated_at | 2026-05-04T08:17:46Z |
-| masterfiles_age_hours | 0.51 |
-| identifiers_generated_at | 2026-05-04T08:47:59Z |
+| masterfiles_age_hours | 9.87 |
+| identifiers_generated_at | 2026-05-04T18:09:54Z |
 | identifiers_age_hours | 0.0 |
-| listing_history_observed_at | 2026-05-04T08:47:57Z |
-| listing_history_age_hours | 0.01 |
+| listing_history_observed_at | 2026-05-04T18:09:52Z |
+| listing_history_age_hours | 0.0 |
 | latest_verification_run | data/stock_verification/run-20260504-sgx-isin-refresh |
 | latest_verification_generated_at | 2026-05-04T08:25:42Z |
-| latest_verification_age_hours | 0.38 |
+| latest_verification_age_hours | 9.74 |
 | latest_stock_verification_run | data/stock_verification/run-20260504-sgx-isin-refresh |
 | latest_stock_verification_generated_at | 2026-05-04T08:25:42Z |
-| latest_stock_verification_age_hours | 0.38 |
+| latest_stock_verification_age_hours | 9.74 |
 | latest_etf_verification_run | data/etf_verification/run-20260504-sgx-isin-refresh |
 | latest_etf_verification_generated_at | 2026-05-04T08:25:46Z |
-| latest_etf_verification_age_hours | 0.37 |
+| latest_etf_verification_age_hours | 9.74 |
 
 ## Source Coverage
 
@@ -230,7 +230,7 @@
 | BMV | official_partial | 179 | 160 | 174 | 0 | 159 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | BSE_BW | official_partial | 39 | 39 | 28 | 0 | 38 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | BSE_HU | official_partial | 31 | 23 | 13 | 0 | 23 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
-| BSE_IN | official_full | 2640 | 2640 | 6 | 0 | 2626 | 0 | 5015 | 2640 | 758 | 1617 | 52.64 | 100.0 |
+| BSE_IN | official_full | 2640 | 2640 | 1192 | 0 | 2626 | 0 | 5015 | 2640 | 758 | 1617 | 52.64 | 100.0 |
 | BVB | official_full | 80 | 80 | 76 | 0 | 80 | 0 | 347 | 75 | 121 | 151 | 21.61 | 100.0 |
 | BVC | official_partial | 3 | 0 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | BVL | official_partial | 33 | 31 | 3 | 0 | 31 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
@@ -244,7 +244,7 @@
 | Euronext | official_full | 975 | 972 | 755 | 7 | 969 | 65 | 4370 | 938 | 2240 | 1192 | 21.46 | 100.0 |
 | GSE | official_partial | 19 | 18 | 2 | 0 | 18 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | HEL | official_partial | 188 | 188 | 141 | 1 | 188 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
-| HKEX | official_full | 3044 | 3044 | 1868 | 0 | 3037 | 0 | 3126 | 3044 | 82 | 0 | 97.38 | 100.0 |
+| HKEX | official_full | 3044 | 3044 | 2186 | 0 | 3037 | 0 | 3126 | 3044 | 82 | 0 | 97.38 | 100.0 |
 | HNX | official_full | 105 | 105 | 13 | 0 | 105 | 0 | 302 | 105 | 158 | 39 | 34.77 | 100.0 |
 | HOSE | official_partial | 153 | 153 | 153 | 2 | 153 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | ICE_IS | official_partial | 18 | 18 | 3 | 1 | 18 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
@@ -276,7 +276,7 @@
 | RSE | official_partial | 2 | 2 | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | SEM | official_full | 53 | 53 | 4 | 1 | 50 | 0 | 47 | 47 | 0 | 0 | 100.0 | 90.2 |
 | SET | official_full | 547 | 351 | 545 | 4 | 342 | 0 | 946 | 547 | 350 | 49 | 57.82 | 100.0 |
-| SGX | official_full | 594 | 591 | 85 | 0 | 10 | 0 | 738 | 592 | 142 | 4 | 80.22 | 99.63 |
+| SGX | official_full | 594 | 591 | 284 | 0 | 10 | 0 | 738 | 592 | 142 | 4 | 80.22 | 99.63 |
 | SIX | official_partial | 743 | 743 | 743 | 2 | 743 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | SSE | official_partial | 2789 | 2175 | 2789 | 0 | 2175 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | SSE_CL | official_full | 116 | 87 | 101 | 0 | 85 | 0 | 115 | 115 | 0 | 0 | 100.0 | 98.97 |
@@ -306,14 +306,14 @@
 | Austria | 57 | 55 | 48 | 8 | 55 | 8 |
 | Bahrain | 30 | 30 | 2 | 0 | 28 | 0 |
 | Belgium | 121 | 120 | 96 | 7 | 120 | 1 |
-| Bermuda | 531 | 531 | 377 | 59 | 509 | 14 |
+| Bermuda | 531 | 531 | 408 | 59 | 509 | 14 |
 | Botswana | 24 | 24 | 20 | 0 | 24 | 0 |
 | Brazil | 1563 | 1292 | 1255 | 0 | 1276 | 0 |
 | Bulgaria | 14 | 14 | 13 | 3 | 14 | 0 |
 | Canada | 4906 | 3721 | 3815 | 659 | 3453 | 66 |
-| Cayman Islands | 2059 | 2054 | 1309 | 450 | 1939 | 18 |
+| Cayman Islands | 2059 | 2054 | 1549 | 450 | 1939 | 18 |
 | Chile | 115 | 86 | 101 | 0 | 84 | 0 |
-| China | 6345 | 5244 | 6097 | 1 | 5240 | 0 |
+| China | 6345 | 5244 | 6145 | 1 | 5240 | 0 |
 | Colombia | 3 | 0 | 3 | 0 | 0 | 0 |
 | Croatia | 23 | 23 | 1 | 0 | 23 | 0 |
 | Cyprus | 15 | 15 | 11 | 2 | 14 | 0 |
@@ -328,14 +328,14 @@
 | Ghana | 20 | 19 | 4 | 0 | 18 | 0 |
 | Greece | 129 | 110 | 128 | 4 | 106 | 0 |
 | Guernsey | 68 | 68 | 60 | 7 | 65 | 0 |
-| Hong Kong | 468 | 467 | 421 | 1 | 468 | 0 |
+| Hong Kong | 468 | 467 | 424 | 1 | 468 | 0 |
 | Hungary | 22 | 15 | 8 | 0 | 15 | 0 |
 | Iceland | 18 | 18 | 3 | 1 | 18 | 0 |
-| India | 3873 | 3873 | 996 | 0 | 3857 | 0 |
+| India | 3873 | 3873 | 2182 | 0 | 3857 | 0 |
 | Indonesia | 744 | 629 | 743 | 21 | 628 | 1 |
 | Ireland | 2588 | 2588 | 2569 | 67 | 2581 | 7 |
 | Isle of Man | 15 | 15 | 15 | 3 | 14 | 0 |
-| Israel | 769 | 768 | 695 | 94 | 765 | 1 |
+| Israel | 769 | 768 | 696 | 94 | 765 | 1 |
 | Italy | 124 | 124 | 104 | 2 | 122 | 0 |
 | Japan | 3311 | 3307 | 3249 | 15 | 3307 | 0 |
 | Jersey | 171 | 171 | 162 | 18 | 171 | 4 |
@@ -346,10 +346,10 @@
 | Lithuania | 2 | 2 | 2 | 0 | 2 | 0 |
 | Luxembourg | 1029 | 1029 | 1011 | 28 | 1026 | 5 |
 | Malawi | 8 | 8 | 0 | 0 | 7 | 0 |
-| Malaysia | 938 | 938 | 930 | 0 | 932 | 0 |
+| Malaysia | 938 | 938 | 931 | 0 | 932 | 0 |
 | Malta | 6 | 6 | 6 | 0 | 6 | 0 |
 | Marshall Islands | 38 | 38 | 37 | 31 | 30 | 0 |
-| Mauritius | 69 | 69 | 20 | 6 | 64 | 0 |
+| Mauritius | 69 | 69 | 21 | 6 | 64 | 0 |
 | Mexico | 134 | 115 | 124 | 4 | 114 | 0 |
 | Monaco | 2 | 2 | 2 | 0 | 2 | 0 |
 | Morocco | 66 | 66 | 2 | 0 | 62 | 0 |
@@ -368,7 +368,7 @@
 | Romania | 83 | 83 | 78 | 3 | 83 | 0 |
 | Rwanda | 2 | 2 | 0 | 0 | 2 | 0 |
 | Saudi Arabia | 191 | 191 | 20 | 0 | 191 | 0 |
-| Singapore | 547 | 542 | 102 | 15 | 53 | 2 |
+| Singapore | 547 | 542 | 292 | 15 | 53 | 2 |
 | Slovenia | 1 | 1 | 1 | 0 | 1 | 0 |
 | South Africa | 228 | 199 | 218 | 5 | 183 | 0 |
 | South Korea | 3369 | 3362 | 3364 | 0 | 3361 | 0 |
@@ -378,7 +378,7 @@
 | Switzerland | 390 | 390 | 373 | 21 | 387 | 5 |
 | Taiwan | 2333 | 2259 | 2271 | 0 | 2055 | 0 |
 | Tanzania | 15 | 13 | 2 | 0 | 13 | 0 |
-| Thailand | 566 | 370 | 561 | 27 | 358 | 3 |
+| Thailand | 566 | 370 | 563 | 27 | 358 | 3 |
 | Turkey | 614 | 614 | 524 | 0 | 614 | 0 |
 | Uganda | 7 | 7 | 0 | 0 | 7 | 0 |
 | United Arab Emirates | 123 | 123 | 122 | 0 | 123 | 0 |

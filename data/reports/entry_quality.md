@@ -1,20 +1,20 @@
 # Entry Quality Report
 
-Generated at: `2026-05-04T08:48:13Z`
+Generated at: `2026-05-04T18:10:08Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 55,135 |
-| source_gap | 15,894 |
+| pass | 56,837 |
+| source_gap | 14,192 |
 | warn | 63 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| missing_stock_sector | 7,842 |
+| missing_stock_sector | 6,139 |
 | official_reference_gap | 5,321 |
 | expected_missing_primary_isin | 3,941 |
 | missing_etf_category | 469 |
@@ -25,18 +25,18 @@ Generated at: `2026-05-04T08:48:13Z`
 | Exchange | Pass | Notice | Source Gap | Warn | Quarantine |
 |---|---:|---:|---:|---:|---:|
 | OTC | 7,887 | 0 | 3,169 | 0 | 0 |
-| BSE_IN | 7 | 0 | 2,633 | 0 | 0 |
-| HKEX | 1,905 | 0 | 1,139 | 0 | 0 |
+| BSE_IN | 1,193 | 0 | 1,447 | 0 | 0 |
 | B3 | 762 | 0 | 822 | 0 | 0 |
+| HKEX | 2,223 | 0 | 821 | 0 | 0 |
 | TSX | 1,214 | 0 | 689 | 0 | 0 |
 | SSE | 2,173 | 0 | 616 | 0 | 0 |
 | TSXV | 487 | 0 | 579 | 0 | 0 |
 | SZSE | 2,593 | 0 | 489 | 1 | 0 |
-| SGX | 124 | 0 | 470 | 0 | 0 |
 | LSE | 5,975 | 0 | 380 | 60 | 0 |
 | NYSE ARCA | 2,282 | 0 | 372 | 0 | 0 |
 | CSE_LK | 0 | 0 | 307 | 0 | 0 |
 | NASDAQ | 4,355 | 0 | 278 | 1 | 0 |
+| SGX | 322 | 0 | 272 | 0 | 0 |
 | NSE_IN | 990 | 0 | 244 | 0 | 0 |
 | STO | 492 | 0 | 233 | 0 | 0 |
 | SET | 350 | 0 | 197 | 0 | 0 |

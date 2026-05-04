@@ -31,10 +31,12 @@ FINANCEDATABASE_EXCHANGE_CODES: dict[str, set[str]] = {
     "BME": {"MCE"},
     "BMV": {"MEX"},
     "BSE_HU": {"BUD"},
+    "BSE_IN": {"BSE"},
     "Bursa": {"KLS"},
     "CPH": {"CPH"},
     "Euronext": {"BRU", "LIS", "PAR"},
     "HEL": {"HEL"},
+    "HKEX": {"HKG"},
     "HNX": {"HAN"},
     "HOSE": {"HCM"},
     "IDX": {"JKT"},
@@ -50,6 +52,7 @@ FINANCEDATABASE_EXCHANGE_CODES: dict[str, set[str]] = {
     "OSL": {"OSL"},
     "OTC": {"PNK"},
     "SET": {"SET"},
+    "SGX": {"SES"},
     "SIX": {"EBS"},
     "SSE": {"SHH"},
     "STO": {"STO"},
@@ -231,13 +234,22 @@ def find_financedatabase_candidates(
     indexed_rows: dict[tuple[str, str, str], list[FinanceDatabaseRow]],
 ) -> list[FinanceDatabaseRow]:
     result: list[FinanceDatabaseRow] = []
+    ticker_keys = {normalized_ticker_key(row["ticker"])}
+    if row["exchange"] == "HKEX" and row["ticker"].isdigit():
+        ticker_keys.add(str(int(row["ticker"])))
+        ticker_keys.add(str(int(row["ticker"])).zfill(4))
     for exchange_code in FINANCEDATABASE_EXCHANGE_CODES.get(row["exchange"], set()):
-        result.extend(
-            indexed_rows.get(
-                (normalized_ticker_key(row["ticker"]), exchange_code, row["asset_type"]),
-                [],
+        for ticker_key in ticker_keys:
+            result.extend(
+                indexed_rows.get(
+                    (ticker_key, exchange_code, row["asset_type"]),
+                    [],
+                )
             )
-        )
+    unique: dict[tuple[str, str], FinanceDatabaseRow] = {}
+    for candidate in result:
+        unique[(candidate.symbol, candidate.exchange)] = candidate
+    result = list(unique.values())
     return result
 
 
@@ -279,7 +291,12 @@ def evaluate_financedatabase_row(
         }
     )
 
-    if not names_match(candidate.name, row["name"]):
+    same_valid_isin = (
+        bool(row.get("isin", "").strip())
+        and is_valid_isin(row.get("isin", "").strip().upper())
+        and candidate.isin == row.get("isin", "").strip().upper()
+    )
+    if not names_match(candidate.name, row["name"]) and not same_valid_isin:
         return {**base, "decision": "name_mismatch"}
 
     sector_update = ""

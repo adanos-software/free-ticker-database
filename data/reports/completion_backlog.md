@@ -1,11 +1,11 @@
 # Completion Backlog
 
-Generated at: `2026-05-04T08:48:10Z`
+Generated at: `2026-05-04T18:10:05Z`
 
 ## Summary
 
 - Missing primary ISIN rows: `3941`
-- Missing stock sectors: `9647`
+- Missing stock sectors: `7944`
 - Missing ETF categories: `486`
 - Official symbol collisions tracked in exchange references: `10923`
 - Core rows hidden only by the legacy global-ticker compatibility export: `1`
@@ -31,14 +31,14 @@ Generated at: `2026-05-04T08:48:10Z`
 
 | Rank | Exchange | Asset type | Missing | Venue | Source | Review |
 |---|---|---|---:|---|---|---|
-| 1 | BSE_IN | Stock | 2632 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 2 | OTC | Stock | 1805 | official_full | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
-| 3 | HKEX | Stock | 1139 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 4 | SGX | Stock | 470 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 5 | TSXV | Stock | 417 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
-| 6 | LSE | Stock | 325 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
-| 7 | CSE_LK | Stock | 307 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 8 | B3 | Stock | 279 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
+| 1 | OTC | Stock | 1805 | official_full | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
+| 2 | BSE_IN | Stock | 1446 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 3 | HKEX | Stock | 821 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 4 | TSXV | Stock | 417 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
+| 5 | LSE | Stock | 325 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
+| 6 | CSE_LK | Stock | 307 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 7 | B3 | Stock | 279 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
+| 8 | SGX | Stock | 271 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 9 | NSE_IN | Stock | 244 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 10 | STO | Stock | 231 | official_partial | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
 | 11 | TADAWUL | Stock | 171 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
@@ -65,14 +65,14 @@ Generated at: `2026-05-04T08:48:10Z`
 
 | Rank | Exchange | Missing total | Missing stock_sector | Missing etf_category | Venue |
 |---|---|---:|---:|---:|---|
-| 1 | BSE_IN | 2633 | 2632 | 1 | official_full |
-| 2 | OTC | 1823 | 1805 | 18 | official_full |
-| 3 | HKEX | 1139 | 1139 | 0 | official_full |
-| 4 | SGX | 470 | 470 | 0 | official_full |
-| 5 | TSXV | 420 | 417 | 3 | official_full |
-| 6 | LSE | 344 | 325 | 19 | official_full |
-| 7 | B3 | 308 | 279 | 29 | official_full |
-| 8 | CSE_LK | 307 | 307 | 0 | official_full |
+| 1 | OTC | 1823 | 1805 | 18 | official_full |
+| 2 | BSE_IN | 1447 | 1446 | 1 | official_full |
+| 3 | HKEX | 821 | 821 | 0 | official_full |
+| 4 | TSXV | 420 | 417 | 3 | official_full |
+| 5 | LSE | 344 | 325 | 19 | official_full |
+| 6 | B3 | 308 | 279 | 29 | official_full |
+| 7 | CSE_LK | 307 | 307 | 0 | official_full |
+| 8 | SGX | 271 | 271 | 0 | official_full |
 | 9 | NSE_IN | 244 | 244 | 0 | official_full |
 | 10 | STO | 232 | 231 | 1 | official_partial |
 | 11 | NYSE ARCA | 181 | 0 | 181 | official_full |
