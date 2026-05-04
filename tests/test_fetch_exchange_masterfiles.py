@@ -945,8 +945,14 @@ def test_sse_source_is_modeled_as_partial_official_coverage() -> None:
 def test_parse_sse_etf_list_maps_sse_rows() -> None:
     payload = {
         "result": [
-            {"fundCode": "510300", "secNameFull": "沪深300ETF华泰柏瑞", "fundAbbr": "300ETF"},
-            {"fundCode": "513100", "secNameFull": "", "fundAbbr": "纳指ETF"},
+            {
+                "fundCode": "510300",
+                "secNameFull": "沪深300ETF华泰柏瑞",
+                "fundAbbr": "300ETF",
+                "subClass": "03",
+                "INDEX_NAME": "沪深300指数",
+            },
+            {"fundCode": "511600", "secNameFull": "华安日日鑫ETF", "fundAbbr": "货币ETF", "subClass": "05"},
             {"fundCode": "", "secNameFull": "Ignored"},
         ]
     }
@@ -965,18 +971,20 @@ def test_parse_sse_etf_list_maps_sse_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "sector": "Equity",
         },
         {
             "source_key": "test",
             "provider": "test",
             "source_url": "https://example.com",
-            "ticker": "513100",
-            "name": "纳指ETF",
+            "ticker": "511600",
+            "name": "华安日日鑫ETF",
             "exchange": "SSE",
             "asset_type": "ETF",
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "sector": "Money Market",
         },
     ]
 
@@ -1229,10 +1237,12 @@ def test_parse_szse_etf_list_maps_szse_rows() -> None:
                     {
                         "sys_key": '<a href="/x"><u>159176</u></a>',
                         "kzjcurl": '<a href="/y"><u>家电ETF华宝</u></a>',
+                        "nhzs": "931021",
                     },
                     {
                         "sys_key": '<a href="/z"><u>159869</u></a>',
                         "kzjcurl": '<a href="/q"><u>游戏ETF</u></a>',
+                        "nhzs": "399804",
                     },
                     {"sys_key": "", "kzjcurl": "Ignored"},
                 ],
@@ -1254,6 +1264,7 @@ def test_parse_szse_etf_list_maps_szse_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "sector": "Equity",
         },
         {
             "source_key": "test",
@@ -1266,6 +1277,7 @@ def test_parse_szse_etf_list_maps_szse_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "sector": "Equity",
         },
     ]
 
@@ -1273,8 +1285,8 @@ def test_parse_szse_etf_list_maps_szse_rows() -> None:
 def test_parse_szse_etf_workbook_maps_szse_rows() -> None:
     dataframe = pd.DataFrame(
         [
-            {"证券代码": 159176, "证券简称": "家电ETF华宝"},
-            {"证券代码": "159869", "证券简称": "游戏ETF"},
+            {"证券代码": 159176, "证券简称": "家电ETF华宝", "拟合指数": "931021"},
+            {"证券代码": "159869", "证券简称": "游戏ETF", "拟合指数": "399804"},
             {"证券代码": None, "证券简称": "Ignored"},
         ]
     )
@@ -1296,6 +1308,7 @@ def test_parse_szse_etf_workbook_maps_szse_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "sector": "Equity",
         },
         {
             "source_key": "test",
@@ -1308,6 +1321,7 @@ def test_parse_szse_etf_workbook_maps_szse_rows() -> None:
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "sector": "Equity",
         },
     ]
 
@@ -3164,6 +3178,7 @@ def test_parse_krx_etf_finder_maps_rows():
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "sector": "Equity",
         }
     ]
 
@@ -3240,6 +3255,7 @@ def test_parse_krx_product_finder_records_maps_rows():
             "reference_scope": "exchange_directory",
             "official": "true",
             "isin": "KR7448100001",
+            "sector": "Equity",
         }
     ]
 
@@ -3454,6 +3470,7 @@ def test_fetch_krx_etf_finder_posts_finder_request(monkeypatch):
 
     assert rows[0]["ticker"] == "451060"
     assert rows[0]["asset_type"] == "ETF"
+    assert rows[0]["sector"] == "Equity"
     assert session.calls == [
         (
             "https://data.krx.co.kr/comm/bldAttendant/getJsonData.cmd",
@@ -3525,6 +3542,7 @@ def test_fetch_krx_etf_finder_replaces_target_gap_with_exact_product_finder_row(
             "reference_scope": "exchange_directory",
             "official": "true",
             "isin": "KR7448100001",
+            "sector": "Equity",
         }
     ]
 
@@ -5497,7 +5515,7 @@ def test_parse_b3_listed_funds_payload_maps_acronym_to_11_ticker():
         ],
     }
 
-    rows = parse_b3_listed_funds_payload(payload, SOURCE)
+    rows = parse_b3_listed_funds_payload(payload, SOURCE, fund_type="ETF-RF")
 
     assert rows == [
         {
@@ -5511,6 +5529,7 @@ def test_parse_b3_listed_funds_payload_maps_acronym_to_11_ticker():
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "sector": "Fixed Income",
         }
     ]
 

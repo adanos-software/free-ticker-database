@@ -1203,6 +1203,19 @@ B3_EXCLUDED_ISSUER_MARKERS = (
     "financ/termo",
 )
 B3_ETF_FUND_TYPES = ("ETF", "ETF-RF", "ETF-FII", "ETF-CRIPTO")
+B3_ETF_FUND_TYPE_CATEGORY_MAP = {
+    "ETF": "Equity",
+    "ETF-RF": "Fixed Income",
+    "ETF-FII": "Real Estate",
+    "ETF-CRIPTO": "Alternative",
+}
+B3_ETF_NAME_CATEGORY_RULES: tuple[tuple[str, tuple[str, ...]], ...] = (
+    ("Currency", ("DOLAR", "DÓLAR", "CAMBIAL")),
+    ("Commodity", ("BOI GORDO", "MILHO", "OURO", "COMMODITY", "AGRO")),
+    ("Fixed Income", ("RENDA FIXA", "IMA-B", "IRF-M", "CDI", "TESOURO", "SELIC", "DAP")),
+    ("Real Estate", ("FII", "IFIX", "REITS", "IMOBILI", "RECEBIVEIS IMOB", "RECEBÍVEIS IMOB")),
+    ("Alternative", ("BITCOIN", "ETHEREUM", "CRIPTO", "CRYPTO", "HASHDEX")),
+)
 B3_FUNDS_PAGE_SIZE = 120
 TPEX_CANONICAL_TICKER_RE = re.compile(r"(?:\d{4}|00\d{4}[A-Z]?)$")
 TPEX_ETF_TICKER_RE = re.compile(r"(?:\d{4}|00\d{3,4}[A-Z]?)$")
@@ -1421,6 +1434,16 @@ KRX_INDUSTRY_KEYWORD_SECTOR_RULES = (
         ),
     ),
 )
+KRX_ETF_NAME_CATEGORY_RULES: tuple[tuple[str, tuple[str, ...]], ...] = (
+    ("Money Market", ("CD금리", "머니마켓", "MONEY MARKET", "CASH")),
+    ("Leveraged/Inverse", ("레버리지", "인버스", "2X", "3X", "SHORT", "BEAR", "BULL")),
+    ("Alternative", ("커버드콜", "옵션", "비트코인", "이더리움", "BITCOIN", "ETHEREUM", "CRYPTO")),
+    ("Fixed Income", ("채권", "국채", "회사채", "KTB", "BOND", "TREASURY", "FIXED INCOME")),
+    ("Commodity", ("원유", "금", "은", "구리", "천연가스", "농산물", "GOLD", "SILVER", "OIL", "COMMODITY")),
+    ("Currency", ("달러", "USD", "JPY", "CURRENCY", "FX")),
+    ("Real Estate", ("리츠", "REIT")),
+    ("Equity", ("ETF", "액티브", "KOSPI", "KOSDAQ", "KRX", "MSCI", "S&P", "NASDAQ", "STOXX", "CSI")),
+)
 EGX_LISTED_STOCKS_DATA_ISIN_RE = re.compile(r"StocksData\.aspx\?ISIN=([A-Z0-9]{12})")
 EGX_VIEWSTATE_RE = re.compile(
     r"<input\b(?=[^>]*(?:name|id)=[\"']__VIEWSTATE[\"'])(?P<tag>[^>]*)>",
@@ -1451,6 +1474,29 @@ EGX_SECTOR_MAP = {
 SSE_JSONP_RE = re.compile(r"^[^(]+\((.*)\)\s*$", re.S)
 SSE_STOCK_TYPES = ("1", "2", "8")
 SSE_ETF_SUBCLASSES = ("01", "02", "03", "05", "06", "08", "09", "31", "32", "33", "37")
+SSE_ETF_SUBCLASS_CATEGORY_MAP = {
+    "01": "Equity",
+    "02": "Fixed Income",
+    "03": "Equity",
+    "05": "Money Market",
+    "06": "Commodity",
+    "08": "Equity",
+    "09": "Equity",
+    "31": "Equity",
+    "32": "Fixed Income",
+    "33": "Equity",
+    "37": "Fixed Income",
+}
+CHINA_ETF_NAME_CATEGORY_RULES: tuple[tuple[str, tuple[str, ...]], ...] = (
+    ("Money Market", ("货币", "现金", "money market", "cash")),
+    ("Leveraged/Inverse", ("杠杆", "反向", "inverse", "leveraged")),
+    ("Alternative", ("比特币", "以太坊", "虚拟", "crypto", "bitcoin", "ethereum")),
+    ("Fixed Income", ("债", "国债", "公司债", "可转债", "短融", "政金债", "信用债", "bond", "treasury")),
+    ("Commodity", ("黄金", "上海金", "有色", "豆粕", "油气", "commodity", "gold", "oil")),
+    ("Real Estate", ("地产", "房地产", "reit", "real estate")),
+    ("Currency", ("货币对", "外汇", "currency", "fx")),
+    ("Equity", ("指数", "沪深", "中证", "上证", "深证", "创业板", "科创", "港股", "恒生", "标普", "纳斯达克", "msci", "csi", "sse", "szse")),
+)
 CHINA_CSRC_SECTOR_MAP = {
     "A": "Consumer Staples",
     "B": "Materials",
@@ -14336,6 +14382,14 @@ def normalize_krx_finder_isin(value: Any) -> str:
     return normalized
 
 
+def normalize_krx_etf_category(name: Any) -> str:
+    haystack = f" {ascii_fold(str(name or '')).upper()} {str(name or '').upper()} "
+    for category, markers in KRX_ETF_NAME_CATEGORY_RULES:
+        if any(marker in haystack for marker in markers):
+            return category
+    return "Equity"
+
+
 def parse_krx_stock_finder_records(
     payload: list[dict[str, Any]],
     source: MasterfileSource,
@@ -14387,6 +14441,7 @@ def parse_krx_etf_finder(
                 "listing_status": "active",
                 "reference_scope": source.reference_scope,
                 "official": "true",
+                "sector": normalize_krx_etf_category(name),
             }
         )
     return rows
@@ -14415,6 +14470,7 @@ def parse_krx_product_finder_records(
                 "reference_scope": source.reference_scope,
                 "official": "true",
                 "isin": normalize_krx_finder_isin(record.get("full_code", "")),
+                "sector": normalize_krx_etf_category(name),
             }
         )
     return rows
@@ -15392,6 +15448,14 @@ def parse_sse_a_share_list(payload: dict[str, Any], source: MasterfileSource) ->
     return rows
 
 
+def normalize_china_etf_category(*values: Any, default: str = "") -> str:
+    haystack = " ".join(str(value or "").strip() for value in values).lower()
+    for category, markers in CHINA_ETF_NAME_CATEGORY_RULES:
+        if any(marker in haystack for marker in markers):
+            return category
+    return default
+
+
 def parse_sse_etf_list(payload: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     records = payload.get("result") or (payload.get("pageHelp") or {}).get("data") or []
@@ -15400,20 +15464,28 @@ def parse_sse_etf_list(payload: dict[str, Any], source: MasterfileSource) -> lis
         name = str(record.get("secNameFull", "")).strip() or str(record.get("fundAbbr", "")).strip()
         if not ticker or not name:
             continue
-        rows.append(
-            {
-                "source_key": source.key,
-                "provider": source.provider,
-                "source_url": source.source_url,
-                "ticker": ticker,
-                "name": name,
-                "exchange": "SSE",
-                "asset_type": "ETF",
-                "listing_status": "active",
-                "reference_scope": source.reference_scope,
-                "official": "true",
-            }
+        subclass = str(record.get("subClass") or "").strip()
+        category = normalize_china_etf_category(
+            name,
+            record.get("fundAbbr"),
+            record.get("INDEX_NAME"),
+            default=SSE_ETF_SUBCLASS_CATEGORY_MAP.get(subclass, ""),
         )
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "SSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        if category:
+            row["sector"] = category
+        rows.append(row)
     return rows
 
 
@@ -15497,20 +15569,22 @@ def parse_szse_etf_list(payload: dict[str, Any] | list[dict[str, Any]], source: 
             name = strip_html_tags(str(record.get("kzjcurl", "")).strip())
             if not ticker or not name:
                 continue
-            rows.append(
-                {
-                    "source_key": source.key,
-                    "provider": source.provider,
-                    "source_url": source.source_url,
-                    "ticker": ticker,
-                    "name": name,
-                    "exchange": "SZSE",
-                    "asset_type": "ETF",
-                    "listing_status": "active",
-                    "reference_scope": source.reference_scope,
-                    "official": "true",
-                }
-            )
+            row = {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "SZSE",
+                "asset_type": "ETF",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+            category = normalize_china_etf_category(name, record.get("nhzs"), default="Equity")
+            if category:
+                row["sector"] = category
+            rows.append(row)
     return rows
 
 
@@ -15529,20 +15603,22 @@ def parse_szse_etf_workbook(content: bytes, source: MasterfileSource) -> list[di
         name = str(name_value).strip()
         if not ticker or not name:
             continue
-        rows.append(
-            {
-                "source_key": source.key,
-                "provider": source.provider,
-                "source_url": source.source_url,
-                "ticker": ticker,
-                "name": name,
-                "exchange": "SZSE",
-                "asset_type": "ETF",
-                "listing_status": "active",
-                "reference_scope": source.reference_scope,
-                "official": "true",
-            }
-        )
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "SZSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        category = normalize_china_etf_category(name, record.get("拟合指数"), default="Equity")
+        if category:
+            row["sector"] = category
+        rows.append(row)
     return rows
 
 
@@ -16003,27 +16079,42 @@ def parse_b3_instruments_equities_table(table: dict[str, Any], source: Masterfil
     return rows
 
 
-def parse_b3_listed_funds_payload(payload: dict[str, Any], source: MasterfileSource) -> list[dict[str, str]]:
+def normalize_b3_listed_fund_category(fund_type: str, name: str) -> str:
+    normalized_name = ascii_fold(name).upper()
+    for category, markers in B3_ETF_NAME_CATEGORY_RULES:
+        if any(marker in normalized_name for marker in markers):
+            return category
+    return B3_ETF_FUND_TYPE_CATEGORY_MAP.get(fund_type.strip().upper(), "")
+
+
+def parse_b3_listed_funds_payload(
+    payload: dict[str, Any],
+    source: MasterfileSource,
+    *,
+    fund_type: str = "",
+) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     for record in payload.get("results") or []:
         acronym = str(record.get("acronym") or "").strip().upper()
         name = str(record.get("fundName") or "").strip()
         if not acronym or not name:
             continue
-        rows.append(
-            {
-                "source_key": source.key,
-                "provider": source.provider,
-                "source_url": source.source_url,
-                "ticker": f"{acronym}11",
-                "name": name,
-                "exchange": "B3",
-                "asset_type": "ETF",
-                "listing_status": "active",
-                "reference_scope": source.reference_scope,
-                "official": "true",
-            }
-        )
+        category = normalize_b3_listed_fund_category(fund_type, name)
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": f"{acronym}11",
+            "name": name,
+            "exchange": "B3",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        if category:
+            row["sector"] = category
+        rows.append(row)
     return rows
 
 
@@ -16775,7 +16866,7 @@ def fetch_b3_listed_funds(source: MasterfileSource, session: requests.Session | 
         )
         response.raise_for_status()
         payload = response.json()
-        rows.extend(parse_b3_listed_funds_payload(payload, source))
+        rows.extend(parse_b3_listed_funds_payload(payload, source, fund_type=fund_type))
         total_pages = int((payload.get("page") or {}).get("totalPages") or 1)
         for page in range(2, total_pages + 1):
             filters["pageNumber"] = page
@@ -16785,7 +16876,7 @@ def fetch_b3_listed_funds(source: MasterfileSource, session: requests.Session | 
                 timeout=REQUEST_TIMEOUT,
             )
             response.raise_for_status()
-            rows.extend(parse_b3_listed_funds_payload(response.json(), source))
+            rows.extend(parse_b3_listed_funds_payload(response.json(), source, fund_type=fund_type))
     return rows
 
 

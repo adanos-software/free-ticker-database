@@ -1,6 +1,6 @@
 # Alias Quality Report
 
-Generated at: `2026-05-04T05:14:20Z`
+Generated at: `2026-05-04T05:32:40Z`
 
 This report classifies `data/aliases.csv` for Natural-Language detection safety.
 Identifier aliases remain useful for lookup, but are rejected for mention detection.

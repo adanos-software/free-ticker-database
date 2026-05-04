@@ -538,6 +538,7 @@ def main(
 ) -> dict[str, Any]:
     rows = build_base_identifier_rows()
     session = requests.Session()
+    openfigi_api_key = openfigi_api_key or os.environ.get("OPENFIGI_API_KEY") or None
     errors: list[str] = []
     if enable_cik:
         payload, payload_source = load_sec_payload(session=session)

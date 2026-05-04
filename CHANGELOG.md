@@ -2,6 +2,37 @@
 
 ## [Unreleased]
 
+## [3.18.0] - 2026-05-04
+
+### Added
+
+- Added official-source ETF category normalization for SSE, SZSE, B3, and KRX exchange-masterfile feeds.
+- Added OpenFIGI-backed FIGI enrichment to the listing-keyed extended identifier snapshot.
+
+### Changed
+
+- Rebuilt canonical exports to 61,941 primary tickers, 71,092 listing rows, 56,175 ISIN-covered rows, 51,364 sector/category-covered rows, and 118,208 structured alias rows.
+- Expanded ETF category coverage to 14,710 rows and reduced the ETF category backlog to 876 entry-quality source gaps.
+- Expanded listing-keyed FIGI coverage to 63,603 rows while keeping missing primary ISIN rows review-gated by venue source.
+- Refreshed listing history, identifier snapshots, coverage, source-inventory, completion-backlog, alias-quality, Adanos reference, entry-quality, and validation artifacts.
+
+### Fixed
+
+- Let `scripts/enrich_global_identifiers.py` read `OPENFIGI_API_KEY` from the environment for keyed FIGI refreshes without passing secrets as CLI arguments.
+
+## [3.17.0] - 2026-05-04
+
+### Added
+
+- Added the listing-key-first core data model with collision-safe `listing_key` identity across core, listing, alias, scope, and report exports.
+- Added listing-scope exports and collision reports so global ticker collisions no longer block venue-level official rows.
+
+### Changed
+
+- Rebuilt canonical exports to 61,941 primary tickers, 71,092 listing rows, 56,175 ISIN-covered rows, 50,898 sector/category-covered rows, and 118,208 structured alias rows.
+- Reduced legacy primary ticker collision exposure to one compatibility row while preserving official venue rows in listing-keyed exports.
+- Refreshed validation, source inventory, completion backlog, entry-quality, alias-quality, Adanos reference, and listing-history artifacts for the listing-key-first model.
+
 ## [3.16.0] - 2026-05-03
 
 ### Added
