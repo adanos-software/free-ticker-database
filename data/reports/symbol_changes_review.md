@@ -1,6 +1,6 @@
 # Symbol Changes Review
 
-Generated at: `2026-05-03T08:15:32Z`
+Generated at: `2026-05-04T08:42:19Z`
 
 Daily secondary-source symbol-change feed. Rows are review signals, not automatic canonical ticker updates.
 
@@ -8,27 +8,27 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 
 | Metric | Rows |
 |---|---:|
-| Fetched rows | 226 |
-| Merged history rows | 241 |
-| Review rows | 241 |
+| Fetched rows | 230 |
+| Merged history rows | 246 |
+| Review rows | 246 |
 
 ## Match Status
 
 | Status | Rows |
 |---|---:|
-| new_symbol_present_old_symbol_missing | 145 |
-| no_matching_listing | 15 |
-| old_and_new_symbols_present | 57 |
-| old_symbol_present_new_symbol_missing | 24 |
+| new_symbol_present_old_symbol_missing | 144 |
+| no_matching_listing | 16 |
+| old_and_new_symbols_present | 60 |
+| old_symbol_present_new_symbol_missing | 26 |
 
 ## Recommended Actions
 
 | Action | Rows |
 |---|---:|
-| already_reflected_or_new_symbol_added | 145 |
-| ignore_or_map_exchange_scope_before_applying | 15 |
-| review_duplicate_or_cross_listing_state | 57 |
-| review_possible_rename_or_delisting | 24 |
+| already_reflected_or_new_symbol_added | 144 |
+| ignore_or_map_exchange_scope_before_applying | 16 |
+| review_duplicate_or_cross_listing_state | 60 |
+| review_possible_rename_or_delisting | 26 |
 
 ## Policy
 
