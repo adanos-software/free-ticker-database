@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-05-04T08:39:45Z",
+    "generated_at": "2026-05-04T08:43:45Z",
     "rows": 71092,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,8 +14,8 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 55060,
-      "source_gap": 15969,
+      "pass": 55135,
+      "source_gap": 15894,
       "warn": 63
     },
     "evidence_level_counts": {
@@ -26,13 +26,13 @@
     },
     "severity_counts": {
       "high": 63,
-      "source_gap": 17674
+      "source_gap": 17573
     },
     "issue_counts": {
       "missing_stock_sector": 7842,
       "official_reference_gap": 5321,
       "expected_missing_primary_isin": 3941,
-      "missing_etf_category": 570,
+      "missing_etf_category": 469,
       "country_isin_mismatch": 63
     },
     "top_flagged_exchanges": [
@@ -53,13 +53,13 @@
       },
       {
         "exchange": "B3",
-        "source_gap": 824,
-        "pass": 760
+        "source_gap": 822,
+        "pass": 762
       },
       {
         "exchange": "TSX",
-        "pass": 1211,
-        "source_gap": 692
+        "pass": 1214,
+        "source_gap": 689
       },
       {
         "exchange": "SSE",
@@ -84,14 +84,14 @@
       },
       {
         "exchange": "LSE",
-        "pass": 5974,
+        "pass": 5975,
         "warn": 60,
-        "source_gap": 381
+        "source_gap": 380
       },
       {
         "exchange": "NYSE ARCA",
-        "pass": 2265,
-        "source_gap": 389
+        "pass": 2282,
+        "source_gap": 372
       },
       {
         "exchange": "CSE_LK",
@@ -99,8 +99,8 @@
       },
       {
         "exchange": "NASDAQ",
-        "pass": 4331,
-        "source_gap": 302,
+        "pass": 4355,
+        "source_gap": 278,
         "warn": 1
       },
       {
@@ -119,11 +119,6 @@
         "pass": 350
       },
       {
-        "exchange": "BATS",
-        "pass": 1064,
-        "source_gap": 179
-      },
-      {
         "exchange": "XETRA",
         "pass": 3608,
         "source_gap": 171
@@ -137,6 +132,11 @@
         "exchange": "BMV",
         "source_gap": 171,
         "pass": 8
+      },
+      {
+        "exchange": "BATS",
+        "pass": 1076,
+        "source_gap": 167
       }
     ]
   },

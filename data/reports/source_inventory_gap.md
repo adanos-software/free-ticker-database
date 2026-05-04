@@ -1,6 +1,6 @@
 # Source Inventory Gap
 
-Generated at: `2026-05-04T08:39:42Z`
+Generated at: `2026-05-04T08:43:42Z`
 
 ## Summary
 
@@ -22,7 +22,7 @@ _No rows._
 |---|---|---|---:|---:|---:|---|---|---|
 | 1 | STO | official_partial | 725 | 0 | 234 | nasdaq_nordic_stockholm_full_search | Nasdaq Nordic | reconciled through existing official Nasdaq Nordic Stockholm shares, share-search, ETF, tracker, Spotlight, and NGM feeds |
 | 2 | EGX | official_partial | 225 | 0 | 29 | egx_listed_securities | EGX | implemented via browser-captured official ASP.NET ViewState; raw non-browser requests still hit the EGX/TSPD challenge |
-| 3 | ASX | official_partial | 1298 | 105 | 155 | asx_cash_market_directory | ASX | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
+| 3 | ASX | official_partial | 1298 | 105 | 78 | asx_cash_market_directory | ASX | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
 | 4 | ATHEX | official_partial | 117 | 19 | 0 | athex_sector_classification | ATHEX | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
 | 5 | SZSE | official_partial | 3083 | 487 | 0 | szse_industry_classification | SZSE | implemented via existing official SZSE report-list industry fields |
 | 6 | SSE | official_partial | 2789 | 614 | 0 | sse_industry_classification | SSE | implemented via existing official SSE stock-list CSRC_CODE fields |
@@ -61,7 +61,7 @@ _No rows._
 |---|---|---|---:|---:|---:|---|---|---|
 | 1 | STO | official_partial | 725 | 0 | 234 | nasdaq_nordic_stockholm_full_search | Nasdaq Nordic | reconciled through existing official Nasdaq Nordic Stockholm shares, share-search, ETF, tracker, Spotlight, and NGM feeds |
 | 2 | EGX | official_partial | 225 | 0 | 29 | egx_listed_securities | EGX | implemented via browser-captured official ASP.NET ViewState; raw non-browser requests still hit the EGX/TSPD challenge |
-| 3 | ASX | official_partial | 1298 | 105 | 155 | asx_cash_market_directory | ASX | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
+| 3 | ASX | official_partial | 1298 | 105 | 78 | asx_cash_market_directory | ASX | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
 | 4 | ATHEX | official_partial | 117 | 19 | 0 | athex_sector_classification | ATHEX | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
 | 5 | SZSE | official_partial | 3083 | 487 | 0 | szse_industry_classification | SZSE | implemented via existing official SZSE report-list industry fields |
 | 6 | SSE | official_partial | 2789 | 614 | 0 | sse_industry_classification | SSE | implemented via existing official SSE stock-list CSRC_CODE fields |

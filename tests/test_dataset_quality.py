@@ -332,17 +332,19 @@ def test_yahoo_corrected_etf_outliers_are_cleaned():
     assert cam["country"] == "United States"
     assert cam["country_code"] == "US"
     assert cam["isin"] == "US00039J7726"
-    assert cam["etf_category"] == ""
+    assert cam["etf_category"] == "Fixed Income"
 
     assert netz["name"] == "TCW Transform Systems ETF"
     assert netz["country"] == "United States"
     assert netz["country_code"] == "US"
     assert netz["isin"] == "US29287L2051"
+    assert netz["etf_category"] == "Equity"
 
     assert tek["name"] == "iShares Technology Opportunities Active ETF"
     assert tek["country"] == "United States"
     assert tek["country_code"] == "US"
     assert tek["isin"] == "US09290C7728"
+    assert tek["etf_category"] == "Equity"
 
 
 def test_non_otc_country_isin_mismatches_are_cleared_or_verified():
