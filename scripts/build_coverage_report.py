@@ -18,6 +18,7 @@ DATA_DIR = ROOT / "data"
 REPORTS_DIR = DATA_DIR / "reports"
 TICKERS_CSV = DATA_DIR / "tickers.csv"
 LISTINGS_CSV = DATA_DIR / "listings.csv"
+CORE_LISTINGS_CSV = DATA_DIR / "core_listings.csv"
 TICKERS_JSON = DATA_DIR / "tickers.json"
 ALIASES_CSV = DATA_DIR / "aliases.csv"
 INSTRUMENT_SCOPES_CSV = DATA_DIR / "instrument_scopes.csv"
@@ -349,12 +350,17 @@ def build_global_summary(
     exchange_coverage: list[dict[str, Any]],
     stock_verification_summary: dict[str, Any] | None = None,
     etf_verification_summary: dict[str, Any] | None = None,
+    core_listings: list[dict[str, str]] | None = None,
 ) -> dict[str, Any]:
     venue_status_counts = Counter(row["venue_status"] for row in exchange_coverage)
     instrument_scope_counts = Counter(row["instrument_scope"] for row in (instrument_scopes or []))
     scope_reason_counts = Counter(row["scope_reason"] for row in (instrument_scopes or []))
+    core_listings = core_listings or tickers
+    legacy_primary_listing_keys = {listing_identity(row) for row in tickers}
+    core_listing_keys = {row.get("listing_key") or row_listing_key(row) for row in core_listings}
     summary = {
         "tickers": len(tickers),
+        "core_listings": len(core_listings),
         "aliases": len(aliases),
         "stocks": sum(row["asset_type"] == "Stock" for row in tickers),
         "etfs": sum(row["asset_type"] == "ETF" for row in tickers),
@@ -376,6 +382,7 @@ def build_global_summary(
         "instrument_scope_primary_listing_missing_isin": scope_reason_counts.get("primary_listing_missing_isin", 0),
         "instrument_scope_otc_listing": scope_reason_counts.get("otc_listing", 0),
         "instrument_scope_secondary_cross_listing": scope_reason_counts.get("secondary_cross_listing", 0),
+        "legacy_primary_ticker_collision_rows": len(core_listing_keys - legacy_primary_listing_keys),
         "official_masterfile_symbols": sum(row["masterfile_symbols"] for row in exchange_coverage),
         "official_masterfile_matches": sum(row["masterfile_matches"] for row in exchange_coverage),
         "official_masterfile_collisions": sum(row["masterfile_collisions"] for row in exchange_coverage),
@@ -761,6 +768,7 @@ def build_report() -> dict[str, Any]:
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     tickers = load_csv(TICKERS_CSV)
     listings = load_csv(LISTINGS_CSV)
+    core_listings = load_csv(CORE_LISTINGS_CSV)
     aliases = load_csv(ALIASES_CSV)
     instrument_scopes = load_csv(INSTRUMENT_SCOPES_CSV)
     identifiers_extended = load_csv(IDENTIFIERS_EXTENDED_CSV)
@@ -794,6 +802,7 @@ def build_report() -> dict[str, Any]:
             exchange_coverage,
             stock_verification_summary=stock_verification["summary"],
             etf_verification_summary=etf_verification["summary"],
+            core_listings=core_listings,
         ),
         "freshness": build_freshness_report(
             masterfile_summary,

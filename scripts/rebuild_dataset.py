@@ -37,13 +37,17 @@ DATA_DIR = ROOT / "data"
 
 TICKERS_CSV = DATA_DIR / "tickers.csv"
 LISTINGS_CSV = DATA_DIR / "listings.csv"
+CORE_LISTINGS_CSV = DATA_DIR / "core_listings.csv"
 ALIASES_CSV = DATA_DIR / "aliases.csv"
+CORE_ALIASES_CSV = DATA_DIR / "core_aliases.csv"
 IDENTIFIERS_CSV = DATA_DIR / "identifiers.csv"
 IDENTIFIERS_EXTENDED_CSV = DATA_DIR / "identifiers_extended.csv"
 INSTRUMENT_SCOPES_CSV = DATA_DIR / "instrument_scopes.csv"
 TICKERS_JSON = DATA_DIR / "tickers.json"
+CORE_LISTINGS_JSON = DATA_DIR / "core_listings.json"
 TICKERS_DB = DATA_DIR / "tickers.db"
 TICKERS_PARQUET = DATA_DIR / "tickers.parquet"
+CORE_LISTINGS_PARQUET = DATA_DIR / "core_listings.parquet"
 CROSS_LISTINGS_CSV = DATA_DIR / "cross_listings.csv"
 MASTERFILE_SUPPLEMENT_CSV = DATA_DIR / "masterfiles" / "supplemental_listings.csv"
 FINANCIALDATA_ISIN_SUPPLEMENT_CSV = DATA_DIR / "masterfiles" / "financialdata_isin_supplemental_listings.csv"
@@ -675,6 +679,22 @@ LISTING_EXPORT_FIELDNAMES = [
     "country_code",
     "isin",
     "aliases",
+]
+
+CORE_LISTING_EXPORT_FIELDNAMES = [
+    "listing_key",
+    "ticker",
+    "exchange",
+    "name",
+    "asset_type",
+    "stock_sector",
+    "etf_category",
+    "country",
+    "country_code",
+    "isin",
+    "aliases",
+    "instrument_group_key",
+    "scope_reason",
 ]
 
 
@@ -2465,6 +2485,47 @@ def build_alias_rows(rows: list[dict[str, str]], alias_type_lookup: dict[tuple[s
     return alias_rows
 
 
+def build_core_alias_rows(rows: list[dict[str, str]], alias_type_lookup: dict[tuple[str, str], str]) -> list[dict[str, str]]:
+    alias_rows: list[dict[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+    for row in rows:
+        listing_key = row_listing_key(row)
+        wkns = {row["wkn"]} if row["wkn"] else set()
+        all_aliases = []
+        if row["isin"]:
+            all_aliases.append((row["isin"], "isin"))
+        if row["wkn"]:
+            all_aliases.append((row["wkn"], "wkn"))
+        for alias in row["aliases"]:
+            if is_numeric_exchange_alias(row, alias, wkns, row["isin"]):
+                alias_type = "exchange_ticker"
+            elif (row["ticker"], alias) in alias_type_lookup:
+                alias_type = alias_type_lookup[(row["ticker"], alias)]
+            elif alias in wkns:
+                alias_type = "wkn"
+            elif EXCHANGE_TICKER_RE.match(alias):
+                alias_type = "exchange_ticker"
+            else:
+                alias_type = "name"
+            all_aliases.append((alias, alias_type))
+
+        for alias, alias_type in all_aliases:
+            key = (listing_key, alias)
+            if key in seen:
+                continue
+            seen.add(key)
+            alias_rows.append(
+                {
+                    "listing_key": listing_key,
+                    "ticker": row["ticker"],
+                    "exchange": row["exchange"],
+                    "alias": alias,
+                    "alias_type": alias_type,
+                }
+            )
+    return alias_rows
+
+
 def build_identifier_rows(rows: list[dict[str, str]]):
     return [{"ticker": row["ticker"], "isin": row["isin"], "wkn": row["wkn"]} for row in rows]
 
@@ -2512,6 +2573,19 @@ def write_json(rows: list[dict[str, str]]):
     )
 
 
+def write_core_listings_json(rows: list[dict[str, str]]):
+    meta = {
+        "version": get_version(),
+        "built_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "total_core_listings": len(rows),
+    }
+    envelope = {"_meta": meta, "core_listings": rows}
+    CORE_LISTINGS_JSON.write_text(
+        json.dumps(envelope, separators=(",", ":")),
+        encoding="utf-8",
+    )
+
+
 def build_listing_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
     return [
         {
@@ -2531,10 +2605,41 @@ def build_listing_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
     ]
 
 
+def build_core_listing_export_rows(
+    core_rows: list[dict[str, str]],
+    instrument_scope_rows: list[dict[str, str]],
+) -> list[dict[str, str]]:
+    scope_by_key = {row["listing_key"]: row for row in instrument_scope_rows}
+    result: list[dict[str, str]] = []
+    for row in core_rows:
+        listing_key = row_listing_key(row)
+        scope = scope_by_key.get(listing_key, {})
+        result.append(
+            {
+                "listing_key": listing_key,
+                "ticker": row["ticker"],
+                "exchange": row["exchange"],
+                "name": row["name"],
+                "asset_type": row["asset_type"],
+                "stock_sector": row["stock_sector"],
+                "etf_category": row["etf_category"],
+                "country": row["country"],
+                "country_code": row["country_code"],
+                "isin": row["isin"],
+                "aliases": "|".join(row["aliases"]),
+                "instrument_group_key": scope.get("instrument_group_key", row.get("isin", "") or listing_key),
+                "scope_reason": scope.get("scope_reason", PRIMARY_LISTING_MISSING_ISIN_SCOPE_REASON if not row.get("isin") else "primary_listing"),
+            }
+        )
+    return result
+
+
 def write_db(
     rows: list[dict[str, str]],
     listing_rows: list[dict[str, str]],
     alias_rows: list[dict[str, str]],
+    core_listing_rows: list[dict[str, str]] | None = None,
+    core_alias_rows: list[dict[str, str]] | None = None,
     cross_listing_rows: list[dict[str, str]] | None = None,
     instrument_scope_rows: list[dict[str, str]] | None = None,
 ):
@@ -2571,12 +2676,38 @@ def write_db(
                 aliases TEXT DEFAULT ''
             );
 
+            CREATE TABLE core_listings (
+                listing_key TEXT PRIMARY KEY,
+                ticker TEXT NOT NULL,
+                exchange TEXT NOT NULL,
+                name TEXT NOT NULL,
+                asset_type TEXT NOT NULL,
+                stock_sector TEXT DEFAULT '',
+                etf_category TEXT DEFAULT '',
+                country TEXT DEFAULT '',
+                country_code TEXT DEFAULT '',
+                isin TEXT DEFAULT '',
+                aliases TEXT DEFAULT '',
+                instrument_group_key TEXT NOT NULL,
+                scope_reason TEXT NOT NULL
+            );
+
             CREATE TABLE aliases (
                 ticker TEXT NOT NULL,
                 alias TEXT NOT NULL,
                 alias_type TEXT NOT NULL,
                 PRIMARY KEY (ticker, alias),
                 FOREIGN KEY (ticker) REFERENCES tickers(ticker) ON DELETE CASCADE
+            );
+
+            CREATE TABLE core_aliases (
+                listing_key TEXT NOT NULL,
+                ticker TEXT NOT NULL,
+                exchange TEXT NOT NULL,
+                alias TEXT NOT NULL,
+                alias_type TEXT NOT NULL,
+                PRIMARY KEY (listing_key, alias),
+                FOREIGN KEY (listing_key) REFERENCES core_listings(listing_key) ON DELETE CASCADE
             );
 
             CREATE TABLE cross_listings (
@@ -2603,11 +2734,16 @@ def write_db(
             );
 
             CREATE INDEX idx_aliases_alias ON aliases(alias);
+            CREATE INDEX idx_core_aliases_alias ON core_aliases(alias);
             CREATE INDEX idx_listings_ticker ON listings(ticker);
             CREATE INDEX idx_listings_exchange ON listings(exchange);
             CREATE INDEX idx_listings_isin ON listings(isin);
             CREATE INDEX idx_listings_stock_sector ON listings(stock_sector);
             CREATE INDEX idx_listings_etf_category ON listings(etf_category);
+            CREATE INDEX idx_core_listings_ticker ON core_listings(ticker);
+            CREATE INDEX idx_core_listings_exchange ON core_listings(exchange);
+            CREATE INDEX idx_core_listings_isin ON core_listings(isin);
+            CREATE INDEX idx_core_listings_group_key ON core_listings(instrument_group_key);
             CREATE INDEX idx_tickers_exchange ON tickers(exchange);
             CREATE INDEX idx_tickers_isin ON tickers(isin);
             CREATE INDEX idx_tickers_stock_sector ON tickers(stock_sector);
@@ -2650,6 +2786,28 @@ def write_db(
             """,
             alias_rows,
         )
+        if core_listing_rows:
+            conn.executemany(
+                """
+                INSERT INTO core_listings (
+                    listing_key, ticker, exchange, name, asset_type, stock_sector, etf_category,
+                    country, country_code, isin, aliases, instrument_group_key, scope_reason
+                )
+                VALUES (
+                    :listing_key, :ticker, :exchange, :name, :asset_type, :stock_sector, :etf_category,
+                    :country, :country_code, :isin, :aliases, :instrument_group_key, :scope_reason
+                )
+                """,
+                core_listing_rows,
+            )
+        if core_alias_rows:
+            conn.executemany(
+                """
+                INSERT INTO core_aliases (listing_key, ticker, exchange, alias, alias_type)
+                VALUES (:listing_key, :ticker, :exchange, :alias, :alias_type)
+                """,
+                core_alias_rows,
+            )
         if cross_listing_rows:
             conn.executemany(
                 """
@@ -2698,6 +2856,11 @@ def write_parquet(rows: list[dict[str, str]]):
     frame.to_parquet(TICKERS_PARQUET, index=False)
 
 
+def write_core_listings_parquet(rows: list[dict[str, str]]):
+    frame = pd.DataFrame(rows)
+    frame.to_parquet(CORE_LISTINGS_PARQUET, index=False)
+
+
 # ---------------------------------------------------------------------------
 # Cross-listings
 # ---------------------------------------------------------------------------
@@ -2742,8 +2905,34 @@ def primary_ticker_collision_sort_key(row: dict[str, str]) -> tuple[int, int, in
     return (-is_home, -has_isin, rank, exchange, row["name"])
 
 
+def build_core_security_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    """Return one core row per security, keyed by primary listing rather than global ticker."""
+    primary_listing_key_by_isin: dict[str, str] = {}
+    isin_groups: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for row in rows:
+        if row["isin"]:
+            isin_groups[row["isin"]].append(row)
+
+    for isin, group in isin_groups.items():
+        preferred = sorted(group, key=lambda candidate: cross_listing_sort_key(isin, candidate))[0]
+        primary_listing_key_by_isin[isin] = row_listing_key(preferred)
+
+    core_rows: list[dict[str, str]] = []
+    for row in rows:
+        if row["exchange"] in OTC_EXCHANGES:
+            continue
+        isin = row["isin"]
+        if not isin:
+            core_rows.append(row)
+            continue
+        if row_listing_key(row) == primary_listing_key_by_isin[isin]:
+            core_rows.append(row)
+
+    return sorted(core_rows, key=lambda row: row_listing_key(row))
+
+
 def build_primary_ticker_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
-    """Collapse cross-listed securities to a single primary row in the core export."""
+    """Build the legacy global-ticker export used by tickers.csv."""
     primary_listing_key_by_isin: dict[str, str] = {}
     isin_groups: dict[str, list[dict[str, str]]] = defaultdict(list)
     for row in rows:
@@ -2861,11 +3050,14 @@ def build_instrument_scope_rows(
 def rebuild():
     rows, alias_type_lookup = cleaned_rows()
     listing_rows = build_listing_rows(rows)
+    core_rows = build_core_security_rows(rows)
     primary_rows = build_primary_ticker_rows(rows)
+    instrument_scope_rows = build_instrument_scope_rows(rows, core_rows)
+    core_listing_rows = build_core_listing_export_rows(core_rows, instrument_scope_rows)
     alias_rows = build_alias_rows(primary_rows, alias_type_lookup)
+    core_alias_rows = build_core_alias_rows(core_rows, alias_type_lookup)
     identifier_rows = build_identifier_rows(primary_rows)
     cross_listing_rows = build_cross_listings(rows)
-    instrument_scope_rows = build_instrument_scope_rows(rows, primary_rows)
 
     write_csv(
         TICKERS_CSV,
@@ -2891,8 +3083,19 @@ def rebuild():
         LISTING_EXPORT_FIELDNAMES,
         listing_rows,
     )
+    write_csv(
+        CORE_LISTINGS_CSV,
+        CORE_LISTING_EXPORT_FIELDNAMES,
+        core_listing_rows,
+    )
     write_csv(ALIASES_CSV, ["ticker", "alias", "alias_type"], alias_rows)
+    write_csv(
+        CORE_ALIASES_CSV,
+        ["listing_key", "ticker", "exchange", "alias", "alias_type"],
+        core_alias_rows,
+    )
     write_json(primary_rows)
+    write_core_listings_json(core_listing_rows)
     write_csv(IDENTIFIERS_CSV, ["ticker", "isin", "wkn"], identifier_rows)
     write_csv(
         CROSS_LISTINGS_CSV,
@@ -2914,11 +3117,21 @@ def rebuild():
         ],
         instrument_scope_rows,
     )
-    write_db(primary_rows, listing_rows, alias_rows, cross_listing_rows, instrument_scope_rows)
+    write_db(
+        primary_rows,
+        listing_rows,
+        alias_rows,
+        core_listing_rows,
+        core_alias_rows,
+        cross_listing_rows,
+        instrument_scope_rows,
+    )
     write_parquet(primary_rows)
+    write_core_listings_parquet(core_listing_rows)
 
     stats = {
         "tickers": len(primary_rows),
+        "core_listings": len(core_rows),
         "stocks": sum(1 for row in primary_rows if row["asset_type"] == "Stock"),
         "etfs": sum(1 for row in primary_rows if row["asset_type"] == "ETF"),
         "exchanges": len({row["exchange"] for row in primary_rows if row["exchange"]}),

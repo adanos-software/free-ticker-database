@@ -1,11 +1,11 @@
 {
   "_meta": {
-    "generated_at": "2026-05-03T20:01:22Z",
+    "generated_at": "2026-05-04T05:14:33Z",
     "rows": 71092,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
-      "tickers_csv": "data/tickers.csv",
+      "core_listings_csv": "data/core_listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
       "identifiers_extended_csv": "data/identifiers_extended.csv",
       "masterfile_reference_csv": "data/masterfiles/reference.csv",
@@ -14,8 +14,8 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 54333,
-      "source_gap": 16696,
+      "pass": 54929,
+      "source_gap": 16100,
       "warn": 63
     },
     "evidence_level_counts": {
@@ -26,13 +26,13 @@
     },
     "severity_counts": {
       "high": 63,
-      "source_gap": 19643
+      "source_gap": 18509
     },
     "issue_counts": {
       "missing_stock_sector": 7874,
       "official_reference_gap": 4758,
-      "expected_missing_primary_isin": 4578,
-      "missing_etf_category": 2433,
+      "expected_missing_primary_isin": 4535,
+      "missing_etf_category": 1342,
       "country_isin_mismatch": 63
     },
     "top_flagged_exchanges": [
@@ -53,18 +53,13 @@
       },
       {
         "exchange": "TSX",
-        "pass": 1189,
-        "source_gap": 714
+        "pass": 1206,
+        "source_gap": 697
       },
       {
         "exchange": "SSE",
-        "pass": 2149,
-        "source_gap": 640
-      },
-      {
-        "exchange": "TSXV",
-        "source_gap": 602,
-        "pass": 464
+        "pass": 2159,
+        "source_gap": 630
       },
       {
         "exchange": "SGX",
@@ -72,36 +67,36 @@
         "pass": 10
       },
       {
-        "exchange": "B3",
-        "source_gap": 514,
-        "pass": 1070
-      },
-      {
-        "exchange": "NYSE ARCA",
-        "pass": 2152,
-        "source_gap": 502
+        "exchange": "TSXV",
+        "source_gap": 570,
+        "pass": 496
       },
       {
         "exchange": "SZSE",
-        "pass": 2583,
-        "source_gap": 499,
+        "pass": 2584,
+        "source_gap": 498,
         "warn": 1
       },
       {
-        "exchange": "KRX",
-        "pass": 1313,
-        "source_gap": 483
+        "exchange": "LSE",
+        "pass": 5956,
+        "warn": 60,
+        "source_gap": 399
       },
       {
-        "exchange": "LSE",
-        "pass": 5951,
-        "warn": 60,
-        "source_gap": 404
+        "exchange": "NYSE ARCA",
+        "pass": 2210,
+        "source_gap": 444
+      },
+      {
+        "exchange": "B3",
+        "source_gap": 400,
+        "pass": 1184
       },
       {
         "exchange": "NASDAQ",
-        "pass": 4267,
-        "source_gap": 366,
+        "pass": 4302,
+        "source_gap": 331,
         "warn": 1
       },
       {
@@ -119,85 +114,36 @@
         "pass": 492
       },
       {
-        "exchange": "BATS",
-        "pass": 1013,
-        "source_gap": 230
+        "exchange": "KRX",
+        "pass": 1578,
+        "source_gap": 218
       },
       {
-        "exchange": "ASX",
-        "pass": 1096,
-        "source_gap": 202
+        "exchange": "BATS",
+        "pass": 1033,
+        "source_gap": 210
       },
       {
         "exchange": "SET",
-        "source_gap": 198,
-        "pass": 349
+        "source_gap": 197,
+        "pass": 350
+      },
+      {
+        "exchange": "ASX",
+        "pass": 1109,
+        "source_gap": 189
       },
       {
         "exchange": "XETRA",
-        "pass": 3607,
-        "source_gap": 172
+        "pass": 3608,
+        "source_gap": 171
       }
     ]
   },
   "flagged_items": [
     {
-      "listing_key": "KRX::0000H0",
-      "ticker": "0000H0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
       "listing_key": "KRX::0000J0",
       "ticker": "0000J0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::0000Z0",
-      "ticker": "0000Z0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::0001P0",
-      "ticker": "0001P0",
       "exchange": "KRX",
       "asset_type": "ETF",
       "quality_status": "source_gap",
@@ -246,24 +192,6 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::0002C0",
-      "ticker": "0002C0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
         }
       ]
     },
@@ -412,44 +340,8 @@
       ]
     },
     {
-      "listing_key": "KRX::0005C0",
-      "ticker": "0005C0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
       "listing_key": "KRX::0005D0",
       "ticker": "0005D0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::0005G0",
-      "ticker": "0005G0",
       "exchange": "KRX",
       "asset_type": "ETF",
       "quality_status": "source_gap",
@@ -520,24 +412,6 @@
       ]
     },
     {
-      "listing_key": "KRX::0007G0",
-      "ticker": "0007G0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
       "listing_key": "KRX::0007N0",
       "ticker": "0007N0",
       "exchange": "KRX",
@@ -588,24 +462,6 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::0008E0",
-      "ticker": "0008E0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
         }
       ]
     },
@@ -1960,24 +1816,6 @@
       ]
     },
     {
-      "listing_key": "KRX::0013P0",
-      "ticker": "0013P0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
       "listing_key": "HKEX::00147",
       "ticker": "00147",
       "exchange": "HKEX",
@@ -2028,42 +1866,6 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::0015B0",
-      "ticker": "0015B0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::0015K0",
-      "ticker": "0015K0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
         }
       ]
     },
@@ -2158,24 +1960,6 @@
       ]
     },
     {
-      "listing_key": "KRX::0018Z0",
-      "ticker": "0018Z0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
       "listing_key": "HKEX::00195",
       "ticker": "00195",
       "exchange": "HKEX",
@@ -2208,24 +1992,6 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::0020H0",
-      "ticker": "0020H0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
         }
       ]
     },
@@ -2284,60 +2050,6 @@
       ]
     },
     {
-      "listing_key": "KRX::0021C0",
-      "ticker": "0021C0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::0021D0",
-      "ticker": "0021D0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::0021E0",
-      "ticker": "0021E0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
       "listing_key": "HKEX::00232",
       "ticker": "00232",
       "exchange": "HKEX",
@@ -2352,42 +2064,6 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::0023A0",
-      "ticker": "0023A0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::0023B0",
-      "ticker": "0023B0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
         }
       ]
     },
@@ -2554,42 +2230,6 @@
       ]
     },
     {
-      "listing_key": "KRX::0026E0",
-      "ticker": "0026E0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::0026S0",
-      "ticker": "0026S0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
       "listing_key": "HKEX::00271",
       "ticker": "00271",
       "exchange": "HKEX",
@@ -2622,24 +2262,6 @@
           "field": "exchange",
           "value": "KRX",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::0028X0",
-      "ticker": "0028X0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
         }
       ]
     },
@@ -2806,24 +2428,6 @@
       ]
     },
     {
-      "listing_key": "KRX::0035T0",
-      "ticker": "0035T0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
       "listing_key": "HKEX::00361",
       "ticker": "00361",
       "exchange": "HKEX",
@@ -2914,24 +2518,6 @@
       ]
     },
     {
-      "listing_key": "KRX::0036R0",
-      "ticker": "0036R0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
       "listing_key": "HKEX::00372",
       "ticker": "00372",
       "exchange": "HKEX",
@@ -2986,42 +2572,6 @@
       ]
     },
     {
-      "listing_key": "KRX::0038A0",
-      "ticker": "0038A0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::0040S0",
-      "ticker": "0040S0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
       "listing_key": "HKEX::00412",
       "ticker": "00412",
       "exchange": "HKEX",
@@ -3060,24 +2610,6 @@
     {
       "listing_key": "KRX::0041D0",
       "ticker": "0041D0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::0041E0",
-      "ticker": "0041E0",
       "exchange": "KRX",
       "asset_type": "ETF",
       "quality_status": "source_gap",
@@ -3184,24 +2716,6 @@
       ]
     },
     {
-      "listing_key": "KRX::0043Y0",
-      "ticker": "0043Y0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
       "listing_key": "HKEX::00444",
       "ticker": "00444",
       "exchange": "HKEX",
@@ -3274,78 +2788,6 @@
       ]
     },
     {
-      "listing_key": "KRX::0047A0",
-      "ticker": "0047A0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::0047N0",
-      "ticker": "0047N0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::0047P0",
-      "ticker": "0047P0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::0047R0",
-      "ticker": "0047R0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
       "listing_key": "HKEX::00480",
       "ticker": "00480",
       "exchange": "HKEX",
@@ -3378,24 +2820,6 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::0048K0",
-      "ticker": "0048K0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
         }
       ]
     },
@@ -3508,42 +2932,6 @@
       ]
     },
     {
-      "listing_key": "KRX::0051A0",
-      "ticker": "0051A0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::0051G0",
-      "ticker": "0051G0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
       "listing_key": "HKEX::00521",
       "ticker": "00521",
       "exchange": "HKEX",
@@ -3630,24 +3018,6 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "KRX::0053L0",
-      "ticker": "0053L0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
         }
       ]
     },
@@ -4303,24 +3673,6 @@
       ]
     },
     {
-      "listing_key": "TWSE::00690",
-      "ticker": "00690",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
       "listing_key": "HKEX::00699",
       "ticker": "00699",
       "exchange": "HKEX",
@@ -4771,24 +4123,6 @@
       ]
     },
     {
-      "listing_key": "KRX::0082V0",
-      "ticker": "0082V0",
-      "exchange": "KRX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
       "listing_key": "HKEX::00831",
       "ticker": "00831",
       "exchange": "HKEX",
@@ -5041,116 +4375,8 @@
       ]
     },
     {
-      "listing_key": "TWSE::00875",
-      "ticker": "00875",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "TWSE::00881",
-      "ticker": "00881",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "TWSE::00893",
-      "ticker": "00893",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
       "listing_key": "TWSE::00894",
       "ticker": "00894",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "TWSE::00897",
-      "ticker": "00897",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "TWSE::00898",
-      "ticker": "00898",
-      "exchange": "TWSE",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
-      "listing_key": "TWSE::00901",
-      "ticker": "00901",
       "exchange": "TWSE",
       "asset_type": "ETF",
       "quality_status": "source_gap",
@@ -18175,6 +17401,780 @@
     {
       "listing_key": "HKEX::08147",
       "ticker": "08147",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08148",
+      "ticker": "08148",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08149",
+      "ticker": "08149",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08152",
+      "ticker": "08152",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08153",
+      "ticker": "08153",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08158",
+      "ticker": "08158",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08159",
+      "ticker": "08159",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08160",
+      "ticker": "08160",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08161",
+      "ticker": "08161",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08162",
+      "ticker": "08162",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08163",
+      "ticker": "08163",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08168",
+      "ticker": "08168",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08169",
+      "ticker": "08169",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08172",
+      "ticker": "08172",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08173",
+      "ticker": "08173",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08176",
+      "ticker": "08176",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08178",
+      "ticker": "08178",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08179",
+      "ticker": "08179",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08181",
+      "ticker": "08181",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08186",
+      "ticker": "08186",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08187",
+      "ticker": "08187",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08188",
+      "ticker": "08188",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08189",
+      "ticker": "08189",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08191",
+      "ticker": "08191",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08193",
+      "ticker": "08193",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08195",
+      "ticker": "08195",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08196",
+      "ticker": "08196",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08198",
+      "ticker": "08198",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08200",
+      "ticker": "08200",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08201",
+      "ticker": "08201",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08203",
+      "ticker": "08203",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08205",
+      "ticker": "08205",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08206",
+      "ticker": "08206",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08210",
+      "ticker": "08210",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08213",
+      "ticker": "08213",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08217",
+      "ticker": "08217",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08218",
+      "ticker": "08218",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08219",
+      "ticker": "08219",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08220",
+      "ticker": "08220",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08221",
+      "ticker": "08221",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08222",
+      "ticker": "08222",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08223",
+      "ticker": "08223",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08225",
+      "ticker": "08225",
+      "exchange": "HKEX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "HKEX::08226",
+      "ticker": "08226",
       "exchange": "HKEX",
       "asset_type": "Stock",
       "quality_status": "source_gap",

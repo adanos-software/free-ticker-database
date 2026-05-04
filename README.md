@@ -3,35 +3,38 @@
 [![CI](https://github.com/adanos-software/free-ticker-database/actions/workflows/ci.yml/badge.svg)](https://github.com/adanos-software/free-ticker-database/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Free stock and ETF ticker reference data with primary tickers, listing-keyed venue rows, aliases, ISIN/WKN identifiers, cross-listings, and coverage reports.
+Free stock and ETF ticker reference data with collision-safe core listings, legacy primary tickers, listing-keyed venue rows, aliases, ISIN/WKN identifiers, cross-listings, and coverage reports.
 
 ## Snapshot
 
 | Metric | Value | Meaning |
 |---|---:|---|
-| Primary tickers | 61,984 | Rows in `data/tickers.csv`; one primary row per security. |
+| Core listings | 54,173 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
+| Primary tickers | 61,941 | Rows in `data/tickers.csv`; one primary row per security. |
 | Full listing rows | 71,092 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
-| Stocks | 46,380 | Primary ticker rows where `asset_type=Stock`. |
+| Stocks | 46,337 | Primary ticker rows where `asset_type=Stock`. |
 | ETFs | 15,604 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 80 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 86 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 118,209 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
-| ISIN coverage | 56,175 (90.6%) | Primary ticker rows with a non-empty `isin`. |
-| Sector/category coverage | 49,846 (80.4%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 36,694 | Primary ticker rows with a non-empty `stock_sector`. |
-| ETF category coverage | 13,152 | Primary ticker rows with a non-empty `etf_category`. |
-| Core listing-scope rows | 54,172 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
-| Core primary rows with ISIN | 49,594 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
-| Core primary rows missing ISIN | 4,578 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
-| Extended listing-scope rows | 16,920 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
+| Aliases | 118,208 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
+| ISIN coverage | 56,175 (90.7%) | Primary ticker rows with a non-empty `isin`. |
+| Sector/category coverage | 50,898 (82.2%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Stock sector coverage | 36,654 | Primary ticker rows with a non-empty `stock_sector`. |
+| ETF category coverage | 14,244 | Primary ticker rows with a non-empty `etf_category`. |
+| Core listing-scope rows | 54,173 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
+| Core primary rows with ISIN | 49,638 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
+| Core primary rows missing ISIN | 4,535 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
+| Extended listing-scope rows | 16,919 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
 
 ## Core Files
 
 | File | Use |
 |---|---|
+| [`data/core_listings.csv`](data/core_listings.csv) | Collision-safe canonical core export keyed by `listing_key` |
 | [`data/tickers.csv`](data/tickers.csv) | Canonical primary ticker export, one row per security |
 | [`data/listings.csv`](data/listings.csv) | Full listing-level export keyed by `listing_key` |
 | [`data/instrument_scopes.csv`](data/instrument_scopes.csv) | Core vs. extended listing scope and primary-listing links |
+| [`data/core_aliases.csv`](data/core_aliases.csv) | Collision-safe alias/name/identifier lookup keyed by `listing_key` |
 | [`data/aliases.csv`](data/aliases.csv) | Alias/name/identifier lookup |
 | [`data/adanos/ticker_reference.csv`](data/adanos/ticker_reference.csv) | Adanos Sentiment API-safe reference export with conservative natural-language aliases |
 | [`data/adanos/natural_language_aliases.csv`](data/adanos/natural_language_aliases.csv) | Natural-language alias candidates with detection policy and confidence |
@@ -66,7 +69,14 @@ Reference and audit files:
 
 ## Data Model
 
-`tickers.csv` is the primary-security export:
+`core_listings.csv` is the collision-safe canonical core export:
+
+```csv
+listing_key,ticker,exchange,name,asset_type,stock_sector,etf_category,country,country_code,isin,aliases,instrument_group_key,scope_reason
+NASDAQ::AAPL,AAPL,NASDAQ,Apple Inc,Stock,Information Technology,,United States,US,US0378331005,apple,US0378331005,primary_listing
+```
+
+`tickers.csv` is the legacy compatibility export:
 
 ```csv
 ticker,name,exchange,asset_type,stock_sector,etf_category,country,country_code,isin,aliases
@@ -82,12 +92,14 @@ NASDAQ::AAPL,AAPL,NASDAQ,Apple Inc,Stock,Information Technology,,United States,U
 
 Important rules:
 
+- `core_listings.csv` is the canonical core security export; `listing_key` is the stable identity.
+- `tickers.csv` is a compatibility view that keeps one row per globally unique `ticker`.
 - `ticker` is globally unique only in `tickers.csv`; use `listing_key` for venue-level identity.
 - Stocks use `stock_sector`; ETFs use `etf_category`.
 - `instrument_scopes.csv` marks `core`, OTC `extended`, and secondary cross-listings.
 - Core rows without ISIN are tagged as `scope_reason=primary_listing_missing_isin`.
-- Secondary listings stay in `listings.csv` and `cross_listings.csv`; `tickers.csv` keeps one primary row per security.
-- `tickers.csv.aliases` is restricted to conservative natural-language aliases. ISINs, WKNs, and exchange-ticker aliases stay in `data/aliases.csv` and identifier exports.
+- Secondary listings stay in `listings.csv` and `cross_listings.csv`; `core_listings.csv` keeps one primary listing row per security.
+- `tickers.csv.aliases` is restricted to conservative natural-language aliases. ISINs, WKNs, and exchange-ticker aliases stay in `data/aliases.csv`, `data/core_aliases.csv`, and identifier exports.
 - `data/adanos/ticker_reference.csv` is the preferred import for Adanos Sentiment API ticker detection.
 
 JSON metadata:
@@ -95,15 +107,16 @@ JSON metadata:
 ```json
 {
   "_meta": {
-    "version": "3.16.0",
-    "built_at": "2026-05-03T19:46:01Z",
-    "total_tickers": 61984
+    "version": "3.17.0",
+    "built_at": "2026-05-04T05:14:13Z",
+    "total_tickers": 61941
   },
   "tickers": []
 }
 ```
 
 SQLite tables: `tickers`, `listings`, `aliases`, `cross_listings`, and `instrument_scopes`.
+Additional collision-safe tables: `core_listings` and `core_aliases`.
 
 ## Quality
 

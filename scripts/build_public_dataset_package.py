@@ -58,6 +58,26 @@ FILES = [
         },
     ),
     DatasetFile(
+        ROOT / "data" / "core_listings.csv",
+        "core_listings.csv",
+        "Collision-safe canonical core export keyed by listing_key, one primary listing row per security.",
+        {
+            "listing_key": "Stable venue-level key in EXCHANGE::TICKER format.",
+            "ticker": "Primary listing ticker symbol for the security.",
+            "exchange": "Primary listing exchange code.",
+            "name": "Current security or fund name.",
+            "asset_type": "Instrument class, currently Stock or ETF.",
+            "stock_sector": "Sector for stock rows.",
+            "etf_category": "Category for ETF rows.",
+            "country": "Issuer or primary listing country name.",
+            "country_code": "ISO-like country code when available.",
+            "isin": "International Securities Identification Number when available.",
+            "aliases": "Conservative natural-language aliases for mention detection.",
+            "instrument_group_key": "Security grouping key, usually derived from ISIN.",
+            "scope_reason": "Why the row is part of the core security export.",
+        },
+    ),
+    DatasetFile(
         ROOT / "data" / "listings.csv",
         "listings.csv",
         "Venue-level listing export keyed by listing_key, including cross-listings.",
@@ -83,6 +103,18 @@ FILES = [
             "ticker": "Primary ticker symbol in the dataset.",
             "alias": "Lookup value.",
             "alias_type": "Alias category such as name, isin, wkn, or symbol.",
+        },
+    ),
+    DatasetFile(
+        ROOT / "data" / "core_aliases.csv",
+        "core_aliases.csv",
+        "Structured alias and identifier lookup rows keyed by listing_key for the collision-safe core export.",
+        {
+            "listing_key": "Stable venue-level key in EXCHANGE::TICKER format.",
+            "ticker": "Primary listing ticker symbol for the security.",
+            "exchange": "Primary listing exchange code.",
+            "alias": "Lookup value.",
+            "alias_type": "Alias category such as name, isin, wkn, or exchange_ticker.",
         },
     ),
     DatasetFile(
@@ -284,25 +316,34 @@ def isin_coverage() -> str:
 
 
 def cover_metrics(rows: dict[str, int]) -> list[tuple[str, str]]:
-    return [
+    metrics: list[tuple[str, str]] = []
+    if "core_listings.csv" in rows:
+        metrics.append((summarize_count(rows["core_listings.csv"]), "core listings"))
+    metrics.extend(
+        [
         (summarize_count(rows["tickers.csv"]), "primary tickers"),
         (summarize_count(rows["listings.csv"]), "listing rows"),
         (summarize_count(rows["aliases.csv"]), "aliases"),
         (isin_coverage(), "ISIN coverage"),
-    ]
+        ]
+    )
+    return metrics
 
 
 def recommended_use(platform: str) -> str:
     if platform == "huggingface":
-        ticker_line = "- Use `tickers.csv` or `tickers.parquet` for one canonical row per security."
+        ticker_line = "- Use `core_listings.csv` or `core_listings.parquet` for the collision-safe canonical security export."
+        legacy_line = "- Use `tickers.csv` or `tickers.parquet` only for legacy one-row-per-global-ticker compatibility."
         listings_line = "- Use `listings.csv` or `listings.parquet` when exchange-level identity matters."
     else:
-        ticker_line = "- Use `tickers.csv` for one canonical row per security."
+        ticker_line = "- Use `core_listings.csv` for the collision-safe canonical security export."
+        legacy_line = "- Use `tickers.csv` only for legacy one-row-per-global-ticker compatibility."
         listings_line = "- Use `listings.csv` when exchange-level identity matters."
     return f"""{ticker_line}
+{legacy_line}
 {listings_line}
 - Use `listing_key` rather than `ticker` for venue-level joins.
-- Use `aliases.csv` for ticker, name, ISIN, WKN, and symbol lookup workflows.
+- Use `core_aliases.csv` for collision-safe core alias lookup and `aliases.csv` for legacy ticker-keyed lookup.
 - Use `symbol_changes.csv` for reviewed ticker-change monitoring."""
 
 

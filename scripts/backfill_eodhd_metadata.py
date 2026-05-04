@@ -333,6 +333,12 @@ def write_report_csv(path: Path, rows: list[dict[str, Any]]) -> None:
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Backfill missing ISINs from EODHD exchange-symbol-list data.")
+    parser.add_argument(
+        "--tickers-csv",
+        type=Path,
+        default=TICKERS_CSV,
+        help="Input CSV to scan for missing ISIN rows. Defaults to data/tickers.csv; use data/core_listings.csv for listing-key-first primary gaps.",
+    )
     parser.add_argument("--json-out", type=Path, default=DEFAULT_REPORT_JSON)
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_REPORT_CSV)
     parser.add_argument("--metadata-updates-csv", type=Path, default=DEFAULT_METADATA_UPDATES_CSV)
@@ -362,7 +368,7 @@ def main(argv: list[str] | None = None) -> None:
         raise SystemExit(f"Unsupported EODHD exchange(s): {', '.join(unsupported)}")
 
     asset_types = set(args.asset_type or ["ETF", "Stock"])
-    with TICKERS_CSV.open(newline="", encoding="utf-8") as handle:
+    with args.tickers_csv.open(newline="", encoding="utf-8") as handle:
         ticker_rows = list(csv.DictReader(handle))
     existing_isins = {row["isin"].strip().upper() for row in ticker_rows if row.get("isin", "").strip()}
     rows = [
@@ -413,6 +419,7 @@ def main(argv: list[str] | None = None) -> None:
                 "accepted_isin_updates": len(updates),
                 "json_out": display_path(args.json_out),
                 "csv_out": display_path(args.csv_out),
+                "tickers_csv": display_path(args.tickers_csv),
                 "applied": args.apply,
             },
             indent=2,

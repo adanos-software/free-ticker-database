@@ -17,13 +17,13 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.rebuild_dataset import (
+    CORE_LISTINGS_CSV,
     COUNTRY_TO_ISO,
     EXCHANGE_TICKER_RE,
     IDENTIFIERS_EXTENDED_CSV,
     LISTINGS_CSV,
     MASTERFILE_REFERENCE_CSV,
     REVIEW_METADATA_UPDATES_CSV,
-    TICKERS_CSV,
     VALID_ETF_SECTORS,
     VALID_STOCK_SECTORS,
     alias_matches_company,
@@ -1098,7 +1098,8 @@ def assess_entry(
 def assess_entries(
     listings: list[dict[str, str]],
     *,
-    tickers: list[dict[str, str]],
+    tickers: list[dict[str, str]] | None = None,
+    core_listings: list[dict[str, str]] | None = None,
     scopes: list[dict[str, str]],
     identifiers: list[dict[str, str]],
     masterfiles: list[dict[str, str]],
@@ -1110,7 +1111,8 @@ def assess_entries(
     listing_key_counts = Counter(row.get("listing_key", "") for row in listings)
     duplicate_listing_keys = {key for key, count in listing_key_counts.items() if key and count > 1}
     listing_keys = {row["listing_key"] for row in listings}
-    primary_listing_keys = {listing_key_for(row) for row in tickers}
+    primary_source_rows = core_listings or tickers or []
+    primary_listing_keys = {row.get("listing_key", "") or listing_key_for(row) for row in primary_source_rows}
     scope_lookup = build_scope_lookup(scopes)
     identifier_lookup = build_identifier_lookup(identifiers)
     official_lookup = build_official_reference_lookup(masterfiles)
@@ -1167,7 +1169,7 @@ def summarize(rows: list[EntryQualityRow], generated_at: str, csv_out: Path) -> 
             "csv_out": display_path(csv_out),
             "source_files": {
                 "listings_csv": str(LISTINGS_CSV.relative_to(ROOT)),
-                "tickers_csv": str(TICKERS_CSV.relative_to(ROOT)),
+                "core_listings_csv": str(CORE_LISTINGS_CSV.relative_to(ROOT)),
                 "instrument_scopes_csv": str(INSTRUMENT_SCOPES_CSV.relative_to(ROOT)),
                 "identifiers_extended_csv": str(IDENTIFIERS_EXTENDED_CSV.relative_to(ROOT)),
                 "masterfile_reference_csv": str(MASTERFILE_REFERENCE_CSV.relative_to(ROOT)),
@@ -1305,7 +1307,7 @@ def write_markdown(path: Path, payload: dict[str, Any]) -> None:
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build a listing-keyed quality report for every ticker database entry.")
     parser.add_argument("--listings-csv", type=Path, default=LISTINGS_CSV)
-    parser.add_argument("--tickers-csv", type=Path, default=TICKERS_CSV)
+    parser.add_argument("--core-listings-csv", type=Path, default=CORE_LISTINGS_CSV)
     parser.add_argument("--instrument-scopes-csv", type=Path, default=INSTRUMENT_SCOPES_CSV)
     parser.add_argument("--identifiers-extended-csv", type=Path, default=IDENTIFIERS_EXTENDED_CSV)
     parser.add_argument("--masterfile-reference-csv", type=Path, default=MASTERFILE_REFERENCE_CSV)
@@ -1319,7 +1321,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 def build_report(args: argparse.Namespace) -> tuple[list[EntryQualityRow], dict[str, Any]]:
     rows = assess_entries(
         load_csv(args.listings_csv),
-        tickers=load_csv(args.tickers_csv),
+        core_listings=load_csv(args.core_listings_csv),
         scopes=load_csv(args.instrument_scopes_csv),
         identifiers=load_csv(args.identifiers_extended_csv),
         masterfiles=load_csv(args.masterfile_reference_csv),

@@ -1,13 +1,14 @@
 # Completion Backlog
 
-Generated at: `2026-05-03T20:01:08Z`
+Generated at: `2026-05-04T05:14:18Z`
 
 ## Summary
 
-- Missing primary ISIN rows: `4578`
-- Missing stock sectors: `9686`
-- Missing ETF categories: `2452`
-- Official symbol collisions blocking global-unique ticker ingestion: `10922`
+- Missing primary ISIN rows: `4535`
+- Missing stock sectors: `9683`
+- Missing ETF categories: `1360`
+- Official symbol collisions tracked in exchange references: `10922`
+- Core rows hidden only by the legacy global-ticker compatibility export: `1`
 
 ## Top Missing Primary ISINs
 
@@ -15,8 +16,8 @@ Generated at: `2026-05-03T20:01:08Z`
 |---|---|---|---:|---|---|---|
 | 1 | SSE | All | 614 | official_partial | Official SSE/SZSE share and ETF feeds first; reviewed EODHD/XTB fallback only for unresolved rows. | yes |
 | 2 | SGX | All | 584 | official_full | Official exchange masterfile or reviewed secondary identifier source. | yes |
-| 3 | TSX | All | 572 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
-| 4 | TSXV | All | 545 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
+| 3 | TSX | All | 562 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
+| 4 | TSXV | All | 512 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
 | 5 | SZSE | All | 487 | official_partial | Official SSE/SZSE share and ETF feeds first; reviewed EODHD/XTB fallback only for unresolved rows. | yes |
 | 6 | B3 | All | 276 | official_full | Official B3 InstrumentsEquities first; FinanceDatabase reviewed fallback for residual identifiers. | yes |
 | 7 | SET | All | 196 | official_full | Official exchange masterfile or reviewed secondary identifier source. | yes |
@@ -31,7 +32,7 @@ Generated at: `2026-05-03T20:01:08Z`
 | Rank | Exchange | Asset type | Missing | Venue | Source | Review |
 |---|---|---|---:|---|---|---|
 | 1 | BSE_IN | Stock | 2632 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 2 | OTC | Stock | 1812 | official_full | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
+| 2 | OTC | Stock | 1809 | official_full | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
 | 3 | HKEX | Stock | 1139 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 4 | SGX | Stock | 501 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 5 | TSXV | Stock | 417 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
@@ -47,42 +48,43 @@ Generated at: `2026-05-03T20:01:08Z`
 
 | Rank | Exchange | Asset type | Missing | Venue | Source | Review |
 |---|---|---|---:|---|---|---|
-| 1 | KRX | ETF | 477 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 2 | SSE | ETF | 438 | official_partial | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 3 | NYSE ARCA | ETF | 327 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 4 | SZSE | ETF | 322 | official_partial | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 5 | B3 | ETF | 170 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 6 | NASDAQ | ETF | 157 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 7 | ASX | ETF | 133 | official_partial | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 8 | BATS | ETF | 126 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 9 | TSX | ETF | 71 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 10 | LSE | ETF | 42 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 11 | TWSE | ETF | 37 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 12 | TSE | ETF | 27 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 1 | NYSE ARCA | ETF | 258 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 2 | KRX | ETF | 212 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 3 | SSE | ETF | 147 | official_partial | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 4 | NASDAQ | ETF | 119 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 5 | ASX | ETF | 114 | official_partial | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 6 | BATS | ETF | 105 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 7 | SZSE | ETF | 95 | official_partial | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 8 | TSX | ETF | 57 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 9 | B3 | ETF | 56 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 10 | LSE | ETF | 36 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 11 | TWSE | ETF | 30 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 12 | OTC | ETF | 19 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
 
 ## Combined Sector/ETF Category Priority
 
 | Rank | Exchange | Missing total | Missing stock_sector | Missing etf_category | Venue |
 |---|---|---:|---:|---:|---|
 | 1 | BSE_IN | 2633 | 2632 | 1 | official_full |
-| 2 | OTC | 1831 | 1812 | 19 | official_full |
+| 2 | OTC | 1828 | 1809 | 19 | official_full |
 | 3 | HKEX | 1139 | 1139 | 0 | official_full |
 | 4 | SGX | 501 | 501 | 0 | official_full |
-| 5 | KRX | 477 | 0 | 477 | official_full |
-| 6 | B3 | 449 | 279 | 170 | official_full |
-| 7 | SSE | 438 | 0 | 438 | official_partial |
-| 8 | TSXV | 420 | 417 | 3 | official_full |
-| 9 | LSE | 367 | 325 | 42 | official_full |
-| 10 | NYSE ARCA | 327 | 0 | 327 | official_full |
-| 11 | SZSE | 322 | 0 | 322 | official_partial |
-| 12 | CSE_LK | 307 | 307 | 0 | official_full |
+| 5 | TSXV | 420 | 417 | 3 | official_full |
+| 6 | LSE | 361 | 325 | 36 | official_full |
+| 7 | B3 | 335 | 279 | 56 | official_full |
+| 8 | CSE_LK | 307 | 307 | 0 | official_full |
+| 9 | NYSE ARCA | 258 | 0 | 258 | official_full |
+| 10 | NSE_IN | 244 | 244 | 0 | official_full |
+| 11 | STO | 232 | 231 | 1 | official_partial |
+| 12 | KRX | 212 | 0 | 212 | official_full |
 
 ## Model Migration Prep
 
 - `stock_sector` should become the internal target for stock sector backfills.
 - `etf_category` should become the internal target for ETF category backfills.
 - The legacy `sector` export has been removed to avoid duplicating typed metadata.
-- Future full-universe ingestion should be `listing_key`-first because official symbol collisions still block global-unique ticker ingestion.
+- `core_listings.csv` is the collision-safe canonical core export keyed by `listing_key`.
+- `tickers.csv` remains the legacy one-row-per-global-ticker compatibility export.
 
 ## Source Block Order
 

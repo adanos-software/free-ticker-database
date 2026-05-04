@@ -53,6 +53,12 @@ def test_classify_etf_category_handles_common_non_english_markers():
         "Alternative",
         "alternative",
     )
+    assert classify_etf_category("\ub85c\ubd07ETF") == ("Equity", "industrials")
+    assert classify_etf_category("\uc2e0\ucc3dETF") == ("Equity", "information_technology")
+    assert classify_etf_category("\u6807\u666e500ETF") == ("Equity", "large_cap")
+    assert classify_etf_category("ETF BRADESCO IBOVESPA FDO DE INDICE") == ("Equity", "equities")
+    assert classify_etf_category("Kiwoom KOSEF USD Futures ETF") == ("Currency", "currencies")
+    assert classify_etf_category("MiraeAsset TIGER KTB 3-10 ETF") == ("Fixed Income", "treasury_bonds")
 
 
 def test_evaluate_etf_row_accepts_only_missing_etf_category():
