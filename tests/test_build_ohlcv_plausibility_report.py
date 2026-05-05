@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import csv
 from argparse import Namespace
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 
 from scripts.build_ohlcv_plausibility_report import (
     OhlcvBar,
@@ -119,11 +119,13 @@ def test_build_report_uses_local_ohlcv_samples(tmp_path):
         writer.writeheader()
         writer.writerow({"listing_key": "NASDAQ::MSFT", "quality_status": "pass"})
 
+    today = datetime.now(UTC).date()
+    dates = [today - timedelta(days=4), today - timedelta(days=3), today - timedelta(days=1)]
     (ohlcv_dir / "NASDAQ__MSFT.csv").write_text(
         "date,open,high,low,close,volume\n"
-        "2026-04-09,100,105,99,104,1000\n"
-        "2026-04-10,104,106,103,105,1200\n"
-        "2026-04-13,105,107,104,106,900\n",
+        f"{dates[0]},100,105,99,104,1000\n"
+        f"{dates[1]},104,106,103,105,1200\n"
+        f"{dates[2]},105,107,104,106,900\n",
         encoding="utf-8",
     )
 

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-05-04T18:39:52Z",
+    "generated_at": "2026-05-05T04:33:31Z",
     "rows": 71092,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,8 +14,8 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 57175,
-      "source_gap": 13854,
+      "pass": 58493,
+      "source_gap": 12536,
       "warn": 63
     },
     "evidence_level_counts": {
@@ -26,11 +26,11 @@
     },
     "severity_counts": {
       "high": 63,
-      "source_gap": 15507
+      "source_gap": 14130
     },
     "issue_counts": {
-      "missing_stock_sector": 5834,
       "official_reference_gap": 5321,
+      "missing_stock_sector": 4457,
       "expected_missing_primary_isin": 3917,
       "missing_etf_category": 435,
       "country_isin_mismatch": 63
@@ -42,14 +42,9 @@
         "source_gap": 3169
       },
       {
-        "exchange": "BSE_IN",
-        "source_gap": 1444,
-        "pass": 1196
-      },
-      {
         "exchange": "B3",
-        "source_gap": 822,
-        "pass": 762
+        "source_gap": 806,
+        "pass": 778
       },
       {
         "exchange": "HKEX",
@@ -138,6 +133,11 @@
         "exchange": "ASX",
         "pass": 1146,
         "source_gap": 152
+      },
+      {
+        "exchange": "Euronext",
+        "source_gap": 147,
+        "pass": 828
       }
     ]
   },

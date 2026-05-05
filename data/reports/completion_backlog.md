@@ -1,11 +1,11 @@
 # Completion Backlog
 
-Generated at: `2026-05-04T18:39:49Z`
+Generated at: `2026-05-05T04:33:27Z`
 
 ## Summary
 
 - Missing primary ISIN rows: `3917`
-- Missing stock sectors: `7639`
+- Missing stock sectors: `6262`
 - Missing ETF categories: `452`
 - Official symbol collisions tracked in exchange references: `10923`
 - Core rows hidden only by the legacy global-ticker compatibility export: `1`
@@ -32,16 +32,16 @@ Generated at: `2026-05-04T18:39:49Z`
 | Rank | Exchange | Asset type | Missing | Venue | Source | Review |
 |---|---|---|---:|---|---|---|
 | 1 | OTC | Stock | 1805 | official_full | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
-| 2 | BSE_IN | Stock | 1443 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 3 | HKEX | Stock | 703 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 4 | TSXV | Stock | 416 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
-| 5 | LSE | Stock | 325 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
-| 6 | B3 | Stock | 279 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
-| 7 | SGX | Stock | 268 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 8 | NSE_IN | Stock | 244 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 9 | STO | Stock | 231 | official_partial | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
-| 10 | TADAWUL | Stock | 163 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
-| 11 | CSE_LK | Stock | 143 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 2 | HKEX | Stock | 703 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 3 | TSXV | Stock | 416 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
+| 4 | LSE | Stock | 325 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
+| 5 | SGX | Stock | 268 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 6 | NSE_IN | Stock | 244 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 7 | STO | Stock | 231 | official_partial | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
+| 8 | B3 | Stock | 204 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
+| 9 | TADAWUL | Stock | 163 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 10 | CSE_LK | Stock | 143 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 11 | BSE_IN | Stock | 141 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 12 | Euronext | Stock | 132 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 
 ## Top Missing ETF Categories
@@ -66,17 +66,17 @@ Generated at: `2026-05-04T18:39:49Z`
 | Rank | Exchange | Missing total | Missing stock_sector | Missing etf_category | Venue |
 |---|---|---:|---:|---:|---|
 | 1 | OTC | 1823 | 1805 | 18 | official_full |
-| 2 | BSE_IN | 1444 | 1443 | 1 | official_full |
-| 3 | HKEX | 703 | 703 | 0 | official_full |
-| 4 | TSXV | 419 | 416 | 3 | official_full |
-| 5 | LSE | 344 | 325 | 19 | official_full |
-| 6 | B3 | 308 | 279 | 29 | official_full |
-| 7 | SGX | 268 | 268 | 0 | official_full |
-| 8 | NSE_IN | 244 | 244 | 0 | official_full |
-| 9 | STO | 232 | 231 | 1 | official_partial |
-| 10 | NYSE ARCA | 180 | 0 | 180 | official_full |
-| 11 | TADAWUL | 163 | 163 | 0 | official_full |
-| 12 | CSE_LK | 143 | 143 | 0 | official_full |
+| 2 | HKEX | 703 | 703 | 0 | official_full |
+| 3 | TSXV | 419 | 416 | 3 | official_full |
+| 4 | LSE | 344 | 325 | 19 | official_full |
+| 5 | SGX | 268 | 268 | 0 | official_full |
+| 6 | NSE_IN | 244 | 244 | 0 | official_full |
+| 7 | B3 | 233 | 204 | 29 | official_full |
+| 8 | STO | 232 | 231 | 1 | official_partial |
+| 9 | NYSE ARCA | 180 | 0 | 180 | official_full |
+| 10 | TADAWUL | 163 | 163 | 0 | official_full |
+| 11 | CSE_LK | 143 | 143 | 0 | official_full |
+| 12 | BSE_IN | 142 | 141 | 1 | official_full |
 
 ## Model Migration Prep
 

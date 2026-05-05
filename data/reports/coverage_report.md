@@ -10,8 +10,8 @@
 | stocks | 46260 |
 | etfs | 15584 |
 | isin_coverage | 56697 |
-| sector_coverage | 53753 |
-| stock_sector_coverage | 38621 |
+| sector_coverage | 55130 |
+| stock_sector_coverage | 39998 |
 | etf_category_coverage | 15132 |
 | cik_coverage | 7722 |
 | figi_coverage | 63603 |
@@ -53,23 +53,23 @@
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-05-04T18:39:37Z |
-| tickers_age_hours | 0.0 |
+| tickers_built_at | 2026-05-05T04:33:14Z |
+| tickers_age_hours | 0.01 |
 | masterfiles_generated_at | 2026-05-04T08:17:46Z |
-| masterfiles_age_hours | 10.37 |
-| identifiers_generated_at | 2026-05-04T18:39:39Z |
+| masterfiles_age_hours | 20.26 |
+| identifiers_generated_at | 2026-05-05T04:33:17Z |
 | identifiers_age_hours | 0.0 |
-| listing_history_observed_at | 2026-05-04T18:39:37Z |
-| listing_history_age_hours | 0.0 |
+| listing_history_observed_at | 2026-05-05T04:33:14Z |
+| listing_history_age_hours | 0.01 |
 | latest_verification_run | data/stock_verification/run-20260504-sgx-isin-refresh |
 | latest_verification_generated_at | 2026-05-04T08:25:42Z |
-| latest_verification_age_hours | 10.24 |
+| latest_verification_age_hours | 20.13 |
 | latest_stock_verification_run | data/stock_verification/run-20260504-sgx-isin-refresh |
 | latest_stock_verification_generated_at | 2026-05-04T08:25:42Z |
-| latest_stock_verification_age_hours | 10.24 |
+| latest_stock_verification_age_hours | 20.13 |
 | latest_etf_verification_run | data/etf_verification/run-20260504-sgx-isin-refresh |
 | latest_etf_verification_generated_at | 2026-05-04T08:25:46Z |
-| latest_etf_verification_age_hours | 10.24 |
+| latest_etf_verification_age_hours | 20.13 |
 
 ## Source Coverage
 
@@ -220,7 +220,7 @@
 | AMS | official_full | 314 | 310 | 226 | 0 | 307 | 0 | 548 | 240 | 294 | 14 | 43.8 | 100.0 |
 | ASX | official_partial | 1298 | 1193 | 1242 | 30 | 1162 | 24 | 0 | 0 | 0 | 0 |  | 100.0 |
 | ATHEX | official_partial | 117 | 98 | 117 | 0 | 95 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
-| B3 | official_full | 1584 | 1313 | 1264 | 0 | 1297 | 0 | 589 | 548 | 0 | 41 | 93.04 | 100.0 |
+| B3 | official_full | 1584 | 1313 | 1339 | 0 | 1297 | 0 | 589 | 548 | 0 | 41 | 93.04 | 100.0 |
 | BATS | official_full | 1243 | 1165 | 1178 | 0 | 1120 | 0 | 1239 | 1191 | 9 | 39 | 96.13 | 100.0 |
 | BCBA | official_partial | 64 | 61 | 50 | 0 | 60 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | BHB | official_full | 29 | 29 | 2 | 0 | 27 | 0 | 41 | 29 | 9 | 3 | 70.73 | 100.0 |
@@ -230,7 +230,7 @@
 | BMV | official_partial | 179 | 160 | 174 | 0 | 159 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | BSE_BW | official_partial | 39 | 39 | 28 | 0 | 38 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | BSE_HU | official_partial | 31 | 23 | 13 | 0 | 23 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
-| BSE_IN | official_full | 2640 | 2640 | 1195 | 0 | 2626 | 0 | 5015 | 2640 | 758 | 1617 | 52.64 | 100.0 |
+| BSE_IN | official_full | 2640 | 2640 | 2497 | 0 | 2626 | 0 | 5015 | 2640 | 758 | 1617 | 52.64 | 100.0 |
 | BVB | official_full | 80 | 80 | 76 | 0 | 80 | 0 | 347 | 75 | 121 | 151 | 21.61 | 100.0 |
 | BVC | official_partial | 3 | 0 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | BVL | official_partial | 33 | 31 | 3 | 0 | 31 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
@@ -308,7 +308,7 @@
 | Belgium | 121 | 120 | 96 | 7 | 120 | 1 |
 | Bermuda | 531 | 531 | 414 | 59 | 509 | 14 |
 | Botswana | 24 | 24 | 20 | 0 | 24 | 0 |
-| Brazil | 1563 | 1292 | 1255 | 0 | 1276 | 0 |
+| Brazil | 1563 | 1292 | 1330 | 0 | 1276 | 0 |
 | Bulgaria | 14 | 14 | 13 | 3 | 14 | 0 |
 | Canada | 4906 | 3721 | 3824 | 659 | 3453 | 66 |
 | Cayman Islands | 2060 | 2055 | 1621 | 451 | 1940 | 18 |
@@ -331,7 +331,7 @@
 | Hong Kong | 468 | 468 | 427 | 1 | 468 | 0 |
 | Hungary | 22 | 15 | 8 | 0 | 15 | 0 |
 | Iceland | 18 | 18 | 3 | 1 | 18 | 0 |
-| India | 3873 | 3873 | 2185 | 0 | 3857 | 0 |
+| India | 3873 | 3873 | 3487 | 0 | 3857 | 0 |
 | Indonesia | 744 | 629 | 743 | 21 | 628 | 1 |
 | Ireland | 2588 | 2588 | 2570 | 67 | 2581 | 7 |
 | Isle of Man | 15 | 15 | 15 | 3 | 14 | 0 |

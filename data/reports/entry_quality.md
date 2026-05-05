@@ -1,21 +1,21 @@
 # Entry Quality Report
 
-Generated at: `2026-05-04T18:39:52Z`
+Generated at: `2026-05-05T04:33:31Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 57,175 |
-| source_gap | 13,854 |
+| pass | 58,493 |
+| source_gap | 12,536 |
 | warn | 63 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| missing_stock_sector | 5,834 |
 | official_reference_gap | 5,321 |
+| missing_stock_sector | 4,457 |
 | expected_missing_primary_isin | 3,917 |
 | missing_etf_category | 435 |
 | country_isin_mismatch | 63 |
@@ -25,8 +25,7 @@ Generated at: `2026-05-04T18:39:52Z`
 | Exchange | Pass | Notice | Source Gap | Warn | Quarantine |
 |---|---:|---:|---:|---:|---:|
 | OTC | 7,887 | 0 | 3,169 | 0 | 0 |
-| BSE_IN | 1,196 | 0 | 1,444 | 0 | 0 |
-| B3 | 762 | 0 | 822 | 0 | 0 |
+| B3 | 778 | 0 | 806 | 0 | 0 |
 | HKEX | 2,341 | 0 | 703 | 0 | 0 |
 | TSX | 1,220 | 0 | 683 | 0 | 0 |
 | SSE | 2,173 | 0 | 616 | 0 | 0 |
@@ -44,6 +43,7 @@ Generated at: `2026-05-04T18:39:52Z`
 | BATS | 1,079 | 0 | 164 | 0 | 0 |
 | TADAWUL | 28 | 0 | 163 | 0 | 0 |
 | ASX | 1,146 | 0 | 152 | 0 | 0 |
+| Euronext | 828 | 0 | 147 | 0 | 0 |
 
 ## Notes
 

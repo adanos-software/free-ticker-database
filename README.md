@@ -19,8 +19,8 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 | Aliases | 118,650 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
 | ISIN coverage | 56,697 (91.7%) | Primary ticker rows with a non-empty `isin`. |
 | FIGI coverage | 63,603 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
-| Sector/category coverage | 53,753 (86.9%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 38,621 | Primary ticker rows with a non-empty `stock_sector`. |
+| Sector/category coverage | 55,130 (89.1%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Stock sector coverage | 39,998 | Primary ticker rows with a non-empty `stock_sector`. |
 | ETF category coverage | 15,132 | Primary ticker rows with a non-empty `etf_category`. |
 | Core listing-scope rows | 54,116 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
 | Core primary rows with ISIN | 50,199 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
@@ -109,8 +109,8 @@ JSON metadata:
 {
   "_meta": {
     "version": "3.19.0",
-    "built_at": "2026-05-04T18:09:52Z",
-    "total_tickers": 61846
+    "built_at": "2026-05-05T04:33:14Z",
+    "total_tickers": 61844
   },
   "tickers": []
 }
