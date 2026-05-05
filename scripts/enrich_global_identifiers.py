@@ -183,18 +183,20 @@ def build_base_identifier_rows() -> list[dict[str, str]]:
         listing_key = listing_identity(listing_row)
         ticker = listing_row["ticker"]
         exchange = listing_row["exchange"]
+        isin = listing_row.get("isin", "")
         existing_row = existing_extended.get(listing_key, {})
+        figi = existing_row.get("figi", "") if isin else ""
         rows.append(
             {
                 "listing_key": listing_key,
                 "ticker": ticker,
                 "exchange": exchange,
-                "isin": listing_row.get("isin", "") or existing_row.get("isin", ""),
+                "isin": isin,
                 "wkn": existing_row.get("wkn", ""),
-                "figi": existing_row.get("figi", ""),
+                "figi": figi,
                 "cik": existing_row.get("cik", ""),
                 "lei": existing_row.get("lei", ""),
-                "figi_source": existing_row.get("figi_source", ""),
+                "figi_source": existing_row.get("figi_source", "") if figi else "",
                 "cik_source": existing_row.get("cik_source", ""),
                 "lei_source": existing_row.get("lei_source", ""),
                 "name": listing_row["name"],
@@ -303,7 +305,25 @@ def select_openfigi_candidate(
     if exact_ticker:
         return str(exact_ticker[0].get("figi", ""))
 
-    return str(candidates[0].get("figi", ""))
+    return ""
+
+
+def clear_cross_isin_figi_collisions(rows: list[dict[str, str]]) -> int:
+    figi_to_isins: dict[str, set[str]] = {}
+    for row in rows:
+        figi = row.get("figi", "")
+        isin = row.get("isin", "")
+        if figi and isin:
+            figi_to_isins.setdefault(figi, set()).add(isin)
+
+    ambiguous_figis = {figi for figi, isins in figi_to_isins.items() if len(isins) > 1}
+    cleared = 0
+    for row in rows:
+        if row.get("figi") in ambiguous_figis:
+            row["figi"] = ""
+            row["figi_source"] = ""
+            cleared += 1
+    return cleared
 
 
 def build_figi_matches(
@@ -465,6 +485,7 @@ def build_summary(rows: list[dict[str, str]]) -> dict[str, Any]:
 
 
 def persist_rows(rows: list[dict[str, str]]) -> dict[str, Any]:
+    clear_cross_isin_figi_collisions(rows)
     fieldnames = [
         "listing_key",
         "ticker",

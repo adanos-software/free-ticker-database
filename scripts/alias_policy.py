@@ -316,7 +316,7 @@ def should_keep_short_alias(alias: str) -> bool:
 def duplicate_alias_counts(alias_rows: list[dict[str, str]]) -> Counter[str]:
     alias_to_tickers: dict[str, set[str]] = {}
     for row in alias_rows:
-        alias = row.get("alias", "")
+        alias = normalize_natural_language_alias(row.get("alias", ""))
         ticker = row.get("ticker", "")
         if not alias or not ticker:
             continue

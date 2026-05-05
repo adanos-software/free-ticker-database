@@ -8,6 +8,7 @@ from scripts.enrich_global_identifiers import (
     apply_lei,
     apply_sec_cik,
     build_summary,
+    clear_cross_isin_figi_collisions,
     build_figi_matches,
     build_base_identifier_rows,
     build_sec_cik_index,
@@ -142,6 +143,13 @@ def test_select_openfigi_candidate_prefers_exchange_hint_and_ticker():
     assert select_openfigi_candidate(row, candidates) == "CNFIGI"
 
 
+def test_select_openfigi_candidate_rejects_unmatched_fallback():
+    row = {"ticker": "0MJK", "exchange": "LSE"}
+    candidates = [{"ticker": "EBS", "exchCode": "US", "figi": "BBG000BMTW42"}]
+
+    assert select_openfigi_candidate(row, candidates) == ""
+
+
 def test_build_figi_matches_uses_row_level_selection():
     rows = [
         {"ticker": "SHOP", "exchange": "TSX", "isin": "CA82509L1076"},
@@ -231,6 +239,42 @@ def test_build_base_identifier_rows_preserves_existing_extended_values(tmp_path,
             "asset_type": "Stock",
         }
     ]
+
+
+def test_build_base_identifier_rows_does_not_preserve_stale_isin(tmp_path, monkeypatch):
+    listings = tmp_path / "listings.csv"
+    listings.write_text(
+        "listing_key,ticker,exchange,name,asset_type,stock_sector,etf_category,country,country_code,isin,aliases\n"
+        "NASDAQ::AEC,AEC,NASDAQ,Anfield Energy Inc.,Stock,,,United States,US,,\n",
+        encoding="utf-8",
+    )
+    identifiers_extended = tmp_path / "identifiers_extended.csv"
+    identifiers_extended.write_text(
+        "listing_key,ticker,exchange,isin,wkn,figi,cik,lei,figi_source,cik_source,lei_source\n"
+        "NASDAQ::AEC,AEC,NASDAQ,CA00830W1059,,BBG00QFZ5HJ5,,,,OpenFIGI,,\n",
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.enrich_global_identifiers.LISTINGS_CSV", listings)
+    monkeypatch.setattr("scripts.enrich_global_identifiers.IDENTIFIERS_EXTENDED_CSV", identifiers_extended)
+
+    rows = build_base_identifier_rows()
+
+    assert rows[0]["isin"] == ""
+    assert rows[0]["figi"] == ""
+    assert rows[0]["figi_source"] == ""
+
+
+def test_clear_cross_isin_figi_collisions_removes_ambiguous_figis():
+    rows = [
+        {"isin": "AT0000652011", "figi": "BBG000BMTW42", "figi_source": "OpenFIGI"},
+        {"isin": "US29089Q1058", "figi": "BBG000BMTW42", "figi_source": "OpenFIGI"},
+        {"isin": "US0378331005", "figi": "BBG000B9XRY4", "figi_source": "OpenFIGI"},
+    ]
+
+    assert clear_cross_isin_figi_collisions(rows) == 2
+    assert rows[0]["figi"] == ""
+    assert rows[1]["figi"] == ""
+    assert rows[2]["figi"] == "BBG000B9XRY4"
 
 
 def test_with_retries_retries_request_exceptions():

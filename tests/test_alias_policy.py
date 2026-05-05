@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from scripts.alias_policy import (
     classify_alias_for_natural_language,
+    duplicate_alias_counts,
     is_generic_multiword_alias,
     is_generic_organization_alias,
     is_generic_wrapper_alias,
@@ -34,6 +35,17 @@ def test_duplicate_name_aliases_require_review():
 
     assert decision.status == "review"
     assert decision.detection_policy == "ambiguous_duplicate"
+
+
+def test_duplicate_alias_counts_use_normalized_alias_keys():
+    counts = duplicate_alias_counts(
+        [
+            {"ticker": "AAA", "alias": "Shared Issuer"},
+            {"ticker": "BBB", "alias": "shared issuer"},
+        ]
+    )
+
+    assert counts["shared issuer"] == 2
 
 
 def test_generic_fund_wrapper_aliases_are_blocked():

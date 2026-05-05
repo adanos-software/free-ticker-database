@@ -37,6 +37,43 @@ def test_adanos_reference_exports_only_safe_natural_language_aliases():
     assert json.loads(reference_rows[0]["aliases"]) == ["microsoft"]
 
 
+def test_adanos_reference_holds_normalized_duplicate_aliases_for_review():
+    tickers = [
+        {
+            "ticker": "AAA",
+            "name": "Alpha Inc",
+            "exchange": "NASDAQ",
+            "asset_type": "Stock",
+            "stock_sector": "Industrials",
+            "etf_category": "",
+            "country": "United States",
+            "country_code": "US",
+            "isin": "",
+        },
+        {
+            "ticker": "BBB",
+            "name": "Beta Inc",
+            "exchange": "NYSE",
+            "asset_type": "Stock",
+            "stock_sector": "Industrials",
+            "etf_category": "",
+            "country": "United States",
+            "country_code": "US",
+            "isin": "",
+        },
+    ]
+    aliases = [
+        {"ticker": "AAA", "alias": "Shared Issuer", "alias_type": "name"},
+        {"ticker": "BBB", "alias": "shared issuer", "alias_type": "name"},
+    ]
+
+    natural_aliases = build_natural_alias_rows(tickers, aliases)
+    reference_rows = build_ticker_reference_rows(tickers, natural_aliases)
+
+    assert {row["detection_policy"] for row in natural_aliases} == {"ambiguous_duplicate"}
+    assert [json.loads(row["aliases"]) for row in reference_rows] == [[], []]
+
+
 def test_adanos_reference_uses_etf_category_as_legacy_sector():
     tickers = [
         {

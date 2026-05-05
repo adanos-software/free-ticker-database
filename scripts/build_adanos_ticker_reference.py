@@ -12,7 +12,11 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from scripts.alias_policy import classify_alias_for_natural_language, duplicate_alias_counts
+from scripts.alias_policy import (
+    classify_alias_for_natural_language,
+    duplicate_alias_counts,
+    normalize_natural_language_alias,
+)
 
 DATA_DIR = ROOT / "data"
 TICKERS_CSV = DATA_DIR / "tickers.csv"
@@ -76,11 +80,12 @@ def build_natural_alias_rows(
         ticker_row = ticker_lookup.get(ticker)
         if not ticker_row:
             continue
+        alias_key = normalize_natural_language_alias(alias_row["alias"])
         decision = classify_alias_for_natural_language(
             alias=alias_row["alias"],
             alias_type=alias_row["alias_type"],
             ticker=ticker,
-            duplicate_ticker_count=duplicate_counts.get(alias_row["alias"], 1),
+            duplicate_ticker_count=duplicate_counts.get(alias_key, 1),
             isin=ticker_row.get("isin", ""),
             wkns=set(),
         )

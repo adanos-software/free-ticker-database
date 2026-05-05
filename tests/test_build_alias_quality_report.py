@@ -25,6 +25,22 @@ def test_build_alias_quality_rows_classifies_detection_safety():
     assert by_alias_type[("AAA", "shared issuer", "name")]["duplicate_ticker_count"] == "2"
 
 
+def test_build_alias_quality_rows_counts_normalized_duplicate_aliases():
+    tickers = [
+        {"ticker": "AAA", "isin": "", "wkn": ""},
+        {"ticker": "BBB", "isin": "", "wkn": ""},
+    ]
+    aliases = [
+        {"ticker": "AAA", "alias": "Shared Issuer", "alias_type": "name"},
+        {"ticker": "BBB", "alias": "shared issuer", "alias_type": "name"},
+    ]
+
+    rows = build_alias_quality_rows(tickers, aliases)
+
+    assert {row["detection_policy"] for row in rows} == {"ambiguous_duplicate"}
+    assert {row["duplicate_ticker_count"] for row in rows} == {"2"}
+
+
 def test_alias_quality_summary_counts_status_policy_and_type():
     rows = [
         {
