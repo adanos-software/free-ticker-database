@@ -1,13 +1,13 @@
 # Entry Quality Report
 
-Generated at: `2026-05-05T04:33:31Z`
+Generated at: `2026-05-05T05:49:43Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 58,493 |
-| source_gap | 12,536 |
+| pass | 59,188 |
+| source_gap | 11,841 |
 | warn | 63 |
 
 ## Issue Counts
@@ -15,8 +15,8 @@ Generated at: `2026-05-05T04:33:31Z`
 | Issue | Rows |
 |---|---:|
 | official_reference_gap | 5,321 |
-| missing_stock_sector | 4,457 |
 | expected_missing_primary_isin | 3,917 |
+| missing_stock_sector | 3,762 |
 | missing_etf_category | 435 |
 | country_isin_mismatch | 63 |
 
@@ -26,7 +26,6 @@ Generated at: `2026-05-05T04:33:31Z`
 |---|---:|---:|---:|---:|---:|
 | OTC | 7,887 | 0 | 3,169 | 0 | 0 |
 | B3 | 778 | 0 | 806 | 0 | 0 |
-| HKEX | 2,341 | 0 | 703 | 0 | 0 |
 | TSX | 1,220 | 0 | 683 | 0 | 0 |
 | SSE | 2,173 | 0 | 616 | 0 | 0 |
 | TSXV | 488 | 0 | 578 | 0 | 0 |
@@ -44,6 +43,7 @@ Generated at: `2026-05-05T04:33:31Z`
 | TADAWUL | 28 | 0 | 163 | 0 | 0 |
 | ASX | 1,146 | 0 | 152 | 0 | 0 |
 | Euronext | 828 | 0 | 147 | 0 | 0 |
+| CSE_LK | 164 | 0 | 143 | 0 | 0 |
 
 ## Notes
 

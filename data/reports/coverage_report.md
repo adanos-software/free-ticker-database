@@ -10,8 +10,8 @@
 | stocks | 46260 |
 | etfs | 15584 |
 | isin_coverage | 56697 |
-| sector_coverage | 55130 |
-| stock_sector_coverage | 39998 |
+| sector_coverage | 55825 |
+| stock_sector_coverage | 40693 |
 | etf_category_coverage | 15132 |
 | cik_coverage | 7722 |
 | figi_coverage | 63603 |
@@ -53,23 +53,23 @@
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-05-05T04:33:14Z |
-| tickers_age_hours | 0.01 |
+| tickers_built_at | 2026-05-05T05:49:27Z |
+| tickers_age_hours | 0.0 |
 | masterfiles_generated_at | 2026-05-04T08:17:46Z |
-| masterfiles_age_hours | 20.26 |
-| identifiers_generated_at | 2026-05-05T04:33:17Z |
+| masterfiles_age_hours | 21.53 |
+| identifiers_generated_at | 2026-05-05T05:49:29Z |
 | identifiers_age_hours | 0.0 |
-| listing_history_observed_at | 2026-05-05T04:33:14Z |
-| listing_history_age_hours | 0.01 |
+| listing_history_observed_at | 2026-05-05T05:49:27Z |
+| listing_history_age_hours | 0.0 |
 | latest_verification_run | data/stock_verification/run-20260504-sgx-isin-refresh |
 | latest_verification_generated_at | 2026-05-04T08:25:42Z |
-| latest_verification_age_hours | 20.13 |
+| latest_verification_age_hours | 21.4 |
 | latest_stock_verification_run | data/stock_verification/run-20260504-sgx-isin-refresh |
 | latest_stock_verification_generated_at | 2026-05-04T08:25:42Z |
-| latest_stock_verification_age_hours | 20.13 |
+| latest_stock_verification_age_hours | 21.4 |
 | latest_etf_verification_run | data/etf_verification/run-20260504-sgx-isin-refresh |
 | latest_etf_verification_generated_at | 2026-05-04T08:25:46Z |
-| latest_etf_verification_age_hours | 20.13 |
+| latest_etf_verification_age_hours | 21.4 |
 
 ## Source Coverage
 
@@ -244,7 +244,7 @@
 | Euronext | official_full | 975 | 972 | 755 | 7 | 969 | 65 | 4370 | 938 | 2240 | 1192 | 21.46 | 100.0 |
 | GSE | official_partial | 19 | 18 | 2 | 0 | 18 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | HEL | official_partial | 188 | 188 | 141 | 1 | 188 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
-| HKEX | official_full | 3044 | 3044 | 2310 | 0 | 3037 | 0 | 3126 | 3044 | 82 | 0 | 97.38 | 100.0 |
+| HKEX | official_full | 3044 | 3044 | 3005 | 0 | 3037 | 0 | 3126 | 3044 | 82 | 0 | 97.38 | 100.0 |
 | HNX | official_full | 105 | 105 | 13 | 0 | 105 | 0 | 302 | 105 | 158 | 39 | 34.77 | 100.0 |
 | HOSE | official_partial | 153 | 153 | 153 | 2 | 153 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | ICE_IS | official_partial | 18 | 18 | 3 | 1 | 18 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
@@ -306,14 +306,14 @@
 | Austria | 57 | 55 | 48 | 8 | 55 | 8 |
 | Bahrain | 30 | 30 | 2 | 0 | 28 | 0 |
 | Belgium | 121 | 120 | 96 | 7 | 120 | 1 |
-| Bermuda | 531 | 531 | 414 | 59 | 509 | 14 |
+| Bermuda | 531 | 531 | 509 | 59 | 509 | 14 |
 | Botswana | 24 | 24 | 20 | 0 | 24 | 0 |
 | Brazil | 1563 | 1292 | 1330 | 0 | 1276 | 0 |
 | Bulgaria | 14 | 14 | 13 | 3 | 14 | 0 |
 | Canada | 4906 | 3721 | 3824 | 659 | 3453 | 66 |
-| Cayman Islands | 2060 | 2055 | 1621 | 451 | 1940 | 18 |
+| Cayman Islands | 2060 | 2055 | 2017 | 451 | 1940 | 18 |
 | Chile | 115 | 86 | 101 | 0 | 84 | 0 |
-| China | 6345 | 5244 | 6181 | 1 | 5240 | 0 |
+| China | 6345 | 5244 | 6343 | 1 | 5240 | 0 |
 | Colombia | 3 | 0 | 3 | 0 | 0 | 0 |
 | Croatia | 23 | 23 | 1 | 0 | 23 | 0 |
 | Cyprus | 15 | 15 | 11 | 2 | 14 | 0 |
@@ -328,7 +328,7 @@
 | Ghana | 20 | 19 | 4 | 0 | 18 | 0 |
 | Greece | 129 | 110 | 128 | 4 | 106 | 0 |
 | Guernsey | 68 | 68 | 60 | 7 | 65 | 0 |
-| Hong Kong | 468 | 468 | 427 | 1 | 468 | 0 |
+| Hong Kong | 468 | 468 | 466 | 1 | 468 | 0 |
 | Hungary | 22 | 15 | 8 | 0 | 15 | 0 |
 | Iceland | 18 | 18 | 3 | 1 | 18 | 0 |
 | India | 3873 | 3873 | 3487 | 0 | 3857 | 0 |
@@ -336,8 +336,8 @@
 | Ireland | 2588 | 2588 | 2570 | 67 | 2581 | 7 |
 | Isle of Man | 15 | 15 | 15 | 3 | 14 | 0 |
 | Israel | 769 | 768 | 696 | 94 | 765 | 1 |
-| Italy | 124 | 124 | 104 | 2 | 122 | 0 |
-| Japan | 3311 | 3307 | 3249 | 15 | 3307 | 0 |
+| Italy | 124 | 124 | 105 | 2 | 122 | 0 |
+| Japan | 3311 | 3307 | 3250 | 15 | 3307 | 0 |
 | Jersey | 171 | 171 | 162 | 18 | 171 | 4 |
 | Kazakhstan | 1 | 1 | 0 | 0 | 1 | 0 |
 | Kenya | 45 | 45 | 13 | 0 | 42 | 0 |
@@ -382,7 +382,7 @@
 | Turkey | 614 | 614 | 524 | 0 | 614 | 0 |
 | Uganda | 7 | 7 | 0 | 0 | 7 | 0 |
 | United Arab Emirates | 123 | 123 | 122 | 0 | 123 | 0 |
-| United Kingdom | 1347 | 1336 | 1159 | 96 | 1325 | 19 |
+| United Kingdom | 1347 | 1336 | 1160 | 96 | 1325 | 19 |
 | United States | 14250 | 12613 | 12706 | 5104 | 11746 | 610 |
 | Vietnam | 261 | 261 | 167 | 2 | 261 | 0 |
 | Zambia | 22 | 22 | 2 | 0 | 21 | 0 |
