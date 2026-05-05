@@ -67,6 +67,10 @@ def sector_for_api(row: dict[str, str]) -> str:
     return row.get("stock_sector") or row.get("etf_category") or ""
 
 
+def clean_api_text(value: str) -> str:
+    return (value or "").strip()
+
+
 def build_natural_alias_rows(
     tickers: list[dict[str, str]],
     aliases: list[dict[str, str]],
@@ -119,14 +123,14 @@ def build_ticker_reference_rows(
         aliases = sorted(dict.fromkeys(accepted_aliases_by_ticker.get(ticker["ticker"], [])))
         rows.append(
             {
-                "ticker": ticker["ticker"],
-                "name": ticker["name"],
-                "exchange": ticker["exchange"],
-                "asset_type": ticker["asset_type"],
-                "sector": sector_for_api(ticker),
-                "country": ticker["country"],
-                "country_code": ticker.get("country_code", ""),
-                "isin": ticker.get("isin", ""),
+                "ticker": clean_api_text(ticker["ticker"]),
+                "name": clean_api_text(ticker["name"]),
+                "exchange": clean_api_text(ticker["exchange"]),
+                "asset_type": clean_api_text(ticker["asset_type"]),
+                "sector": clean_api_text(sector_for_api(ticker)),
+                "country": clean_api_text(ticker["country"]),
+                "country_code": clean_api_text(ticker.get("country_code", "")),
+                "isin": clean_api_text(ticker.get("isin", "")),
                 "aliases": json.dumps(aliases, ensure_ascii=False),
             }
         )

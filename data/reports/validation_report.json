@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-05-05T06:25:10Z",
+    "generated_at": "2026-05-05T06:45:21Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "listings_csv": "data/listings.csv",
@@ -25,7 +25,7 @@
     "listing_rows": 71092,
     "adanos_reference_rows": 61844,
     "entry_quality_rows": 71092,
-    "error_gates": 73,
+    "error_gates": 74,
     "failed_error_gates": 0,
     "info_gates": 5
   },
@@ -172,6 +172,13 @@
     },
     {
       "name": "invalid_adanos_asset_type_rows",
+      "severity": "error",
+      "passed": true,
+      "actual": 0,
+      "limit": 0
+    },
+    {
+      "name": "adanos_reference_untrimmed_name_count",
       "severity": "error",
       "passed": true,
       "actual": 0,

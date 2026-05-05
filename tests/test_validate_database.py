@@ -243,6 +243,30 @@ def test_validation_report_fails_hard_release_gates():
     assert gates["coverage_report_tickers_mismatch"]["actual"] == 1
 
 
+def test_validation_report_fails_untrimmed_adanos_reference_names():
+    msft = ticker("MSFT")
+    adanos = adanos_reference(msft)
+    adanos["name"] = "Microsoft Corporation "
+
+    report = build_validation_report(
+        tickers=[msft],
+        listings=[listing(msft)],
+        instrument_scopes=[scope(msft)],
+        adanos_reference=[adanos],
+        entry_quality=[entry_quality(msft)],
+        allowed_warns=set(),
+        adanos_alias_findings=[],
+        review_remove_aliases=[],
+        coverage_report={"global": {"tickers": 1, "listing_keys": 1}},
+        generated_at="2026-04-18T00:00:00Z",
+    )
+
+    gates = {gate["name"]: gate for gate in report["gates"]}
+    assert report["passed"] is False
+    assert gates["adanos_reference_untrimmed_name_count"]["actual"] == 1
+    assert "NASDAQ::MSFT" in gates["adanos_reference_untrimmed_name_count"]["details"][0]
+
+
 def test_validation_report_fails_duplicate_public_aliases():
     msft = ticker("MSFT")
     apple = ticker("AAPL")

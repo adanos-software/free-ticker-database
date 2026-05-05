@@ -93,3 +93,33 @@ def test_adanos_reference_uses_etf_category_as_legacy_sector():
 
     assert reference_rows[0]["sector"] == "Broad Market ETF"
     assert json.loads(reference_rows[0]["aliases"]) == []
+
+
+def test_adanos_reference_trims_api_text_fields():
+    tickers = [
+        {
+            "ticker": " AB ",
+            "name": "AllianceBernstein Holding L.P. ",
+            "exchange": " NYSE ",
+            "asset_type": " Stock ",
+            "stock_sector": " Financials ",
+            "etf_category": "",
+            "country": " United States ",
+            "country_code": " US ",
+            "isin": " US01881G1067 ",
+        }
+    ]
+
+    reference_rows = build_ticker_reference_rows(tickers, [])
+
+    assert reference_rows[0] == {
+        "ticker": "AB",
+        "name": "AllianceBernstein Holding L.P.",
+        "exchange": "NYSE",
+        "asset_type": "Stock",
+        "sector": "Financials",
+        "country": "United States",
+        "country_code": "US",
+        "isin": "US01881G1067",
+        "aliases": "[]",
+    }

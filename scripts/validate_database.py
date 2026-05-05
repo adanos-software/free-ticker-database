@@ -214,6 +214,14 @@ def invalid_asset_type_rows(rows: list[dict[str, str]], id_field: str) -> list[s
     return [row.get(id_field, "") for row in rows if row.get("asset_type") not in ASSET_TYPES]
 
 
+def adanos_reference_rows_with_untrimmed_names(rows: list[dict[str, str]]) -> list[str]:
+    return [
+        f"{row.get('exchange', '')}::{row.get('ticker', '')}:{row.get('name', '')!r}"
+        for row in rows
+        if row.get("name", "") != row.get("name", "").strip()
+    ]
+
+
 def invalid_isin_rows(rows: list[dict[str, str]], id_field: str) -> list[str]:
     invalid: list[str] = []
     for row in rows:
@@ -725,6 +733,11 @@ def build_validation_report(
                 "invalid_adanos_asset_type_rows",
                 len(invalid_asset_type_rows(adanos_reference, "ticker")),
                 invalid_asset_type_rows(adanos_reference, "ticker"),
+            ),
+            fail_gate(
+                "adanos_reference_untrimmed_name_count",
+                len(adanos_reference_rows_with_untrimmed_names(adanos_reference)),
+                adanos_reference_rows_with_untrimmed_names(adanos_reference),
             ),
             fail_gate(
                 "invalid_isin_rows",

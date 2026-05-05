@@ -1,6 +1,6 @@
 # Database Validation Report
 
-Generated at: `2026-05-05T06:25:10Z`
+Generated at: `2026-05-05T06:45:21Z`
 
 Status: `PASS`
 
@@ -12,7 +12,7 @@ Status: `PASS`
 | listing_rows | 71,092 |
 | adanos_reference_rows | 61,844 |
 | entry_quality_rows | 71,092 |
-| error_gates | 73 |
+| error_gates | 74 |
 | failed_error_gates | 0 |
 | info_gates | 5 |
 
@@ -41,6 +41,7 @@ Status: `PASS`
 | invalid_listing_asset_type_rows | error | PASS | 0 | 0 |
 | invalid_core_listing_asset_type_rows | error | PASS | 0 | 0 |
 | invalid_adanos_asset_type_rows | error | PASS | 0 | 0 |
+| adanos_reference_untrimmed_name_count | error | PASS | 0 | 0 |
 | invalid_isin_rows | error | PASS | 0 | 0 |
 | duplicate_identifier_ticker_count | error | PASS | 0 | 0 |
 | duplicate_identifier_listing_key_count | error | PASS | 0 | 0 |
