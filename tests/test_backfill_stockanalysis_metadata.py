@@ -4,6 +4,7 @@ from scripts.backfill_stockanalysis_metadata import (
     build_metadata_updates,
     evaluate_target,
     parse_stockanalysis_company_profile,
+    stockanalysis_company_url,
     stockanalysis_sector_to_canonical,
 )
 
@@ -36,6 +37,10 @@ def test_stockanalysis_sector_to_canonical_uses_industry_fallback() -> None:
     )
 
     assert stockanalysis_sector_to_canonical(profile) == "Industrials"
+
+
+def test_stockanalysis_company_url_supports_otc_profiles() -> None:
+    assert stockanalysis_company_url("OTC", "OTCM") == "https://stockanalysis.com/quote/otc/OTCM/company/"
 
 
 def test_evaluate_target_accepts_valid_isin_and_sector_with_name_gate() -> None:

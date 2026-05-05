@@ -766,7 +766,7 @@
       "etf_missing_count": 0,
       "exchange": "OTC",
       "field": "missing_sector_stock",
-      "missing_count": 1805,
+      "missing_count": 1787,
       "notes": "OTC is noisy; do not apply thin-name sector guesses without issuer evidence.",
       "official_source_count": 3,
       "priority_bucket": "top_impact",
@@ -775,7 +775,7 @@
       "reference_scopes": "exchange_directory|listed_companies_subset|security_lookup_subset",
       "review_needed": true,
       "script": "scripts/backfill_sec_sic_sectors.py; scripts/backfill_alphavantage_sectors.py; scripts/backfill_financedatabase_metadata.py",
-      "stock_missing_count": 1805,
+      "stock_missing_count": 1787,
       "target_field": "stock_sector",
       "venue_status": "official_full"
     },
@@ -2594,9 +2594,9 @@
     "field_totals": {
       "missing_etf_category": 452,
       "missing_isin_primary": 3917,
-      "missing_sector_stock": 5567
+      "missing_sector_stock": 5549
     },
-    "generated_at": "2026-05-05T05:49:40Z",
+    "generated_at": "2026-05-05T06:00:02Z",
     "legacy_primary_ticker_collision_rows": 1,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",

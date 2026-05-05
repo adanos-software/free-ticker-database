@@ -6,12 +6,12 @@
 |---|---|
 | tickers | 61844 |
 | core_listings | 54116 |
-| aliases | 118650 |
+| aliases | 118657 |
 | stocks | 46260 |
 | etfs | 15584 |
-| isin_coverage | 56697 |
-| sector_coverage | 55825 |
-| stock_sector_coverage | 40693 |
+| isin_coverage | 56704 |
+| sector_coverage | 55843 |
+| stock_sector_coverage | 40711 |
 | etf_category_coverage | 15132 |
 | cik_coverage | 7722 |
 | figi_coverage | 63603 |
@@ -53,23 +53,23 @@
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-05-05T05:49:27Z |
-| tickers_age_hours | 0.0 |
+| tickers_built_at | 2026-05-05T05:59:49Z |
+| tickers_age_hours | 0.01 |
 | masterfiles_generated_at | 2026-05-04T08:17:46Z |
-| masterfiles_age_hours | 21.53 |
-| identifiers_generated_at | 2026-05-05T05:49:29Z |
+| masterfiles_age_hours | 21.71 |
+| identifiers_generated_at | 2026-05-05T05:59:52Z |
 | identifiers_age_hours | 0.0 |
-| listing_history_observed_at | 2026-05-05T05:49:27Z |
-| listing_history_age_hours | 0.0 |
+| listing_history_observed_at | 2026-05-05T05:59:49Z |
+| listing_history_age_hours | 0.01 |
 | latest_verification_run | data/stock_verification/run-20260504-sgx-isin-refresh |
 | latest_verification_generated_at | 2026-05-04T08:25:42Z |
-| latest_verification_age_hours | 21.4 |
+| latest_verification_age_hours | 21.57 |
 | latest_stock_verification_run | data/stock_verification/run-20260504-sgx-isin-refresh |
 | latest_stock_verification_generated_at | 2026-05-04T08:25:42Z |
-| latest_stock_verification_age_hours | 21.4 |
+| latest_stock_verification_age_hours | 21.57 |
 | latest_etf_verification_run | data/etf_verification/run-20260504-sgx-isin-refresh |
 | latest_etf_verification_generated_at | 2026-05-04T08:25:46Z |
-| latest_etf_verification_age_hours | 21.4 |
+| latest_etf_verification_age_hours | 21.57 |
 
 ## Source Coverage
 
@@ -268,7 +268,7 @@
 | NYSE MKT | official_full | 236 | 232 | 236 | 219 | 208 | 26 | 312 | 232 | 21 | 59 | 74.36 | 100.0 |
 | NZX | official_full | 45 | 45 | 23 | 0 | 45 | 0 | 173 | 45 | 126 | 2 | 26.01 | 100.0 |
 | OSL | official_full | 241 | 237 | 177 | 2 | 236 | 0 | 298 | 234 | 64 | 0 | 78.52 | 100.0 |
-| OTC | official_full | 11056 | 9826 | 8681 | 1818 | 9252 | 0 | 11972 | 7799 | 27 | 4146 | 65.14 | 88.97 |
+| OTC | official_full | 11056 | 9833 | 8699 | 1818 | 9252 | 0 | 11972 | 7799 | 27 | 4146 | 65.14 | 88.97 |
 | PSE | official_full | 90 | 90 | 13 | 1 | 90 | 0 | 381 | 90 | 185 | 106 | 23.62 | 100.0 |
 | PSE_CZ | official_partial | 24 | 23 | 12 | 0 | 22 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | PSX | official_full | 373 | 266 | 357 | 3 | 269 | 0 | 712 | 371 | 151 | 190 | 52.11 | 99.73 |
@@ -310,8 +310,8 @@
 | Botswana | 24 | 24 | 20 | 0 | 24 | 0 |
 | Brazil | 1563 | 1292 | 1330 | 0 | 1276 | 0 |
 | Bulgaria | 14 | 14 | 13 | 3 | 14 | 0 |
-| Canada | 4906 | 3721 | 3824 | 659 | 3453 | 66 |
-| Cayman Islands | 2060 | 2055 | 2017 | 451 | 1940 | 18 |
+| Canada | 4907 | 3722 | 3826 | 659 | 3453 | 66 |
+| Cayman Islands | 2060 | 2055 | 2018 | 451 | 1940 | 18 |
 | Chile | 115 | 86 | 101 | 0 | 84 | 0 |
 | China | 6345 | 5244 | 6343 | 1 | 5240 | 0 |
 | Colombia | 3 | 0 | 3 | 0 | 0 | 0 |
@@ -333,7 +333,7 @@
 | Iceland | 18 | 18 | 3 | 1 | 18 | 0 |
 | India | 3873 | 3873 | 3487 | 0 | 3857 | 0 |
 | Indonesia | 744 | 629 | 743 | 21 | 628 | 1 |
-| Ireland | 2588 | 2588 | 2570 | 67 | 2581 | 7 |
+| Ireland | 2588 | 2588 | 2571 | 67 | 2581 | 7 |
 | Isle of Man | 15 | 15 | 15 | 3 | 14 | 0 |
 | Israel | 769 | 768 | 696 | 94 | 765 | 1 |
 | Italy | 124 | 124 | 105 | 2 | 122 | 0 |
@@ -383,7 +383,7 @@
 | Uganda | 7 | 7 | 0 | 0 | 7 | 0 |
 | United Arab Emirates | 123 | 123 | 122 | 0 | 123 | 0 |
 | United Kingdom | 1347 | 1336 | 1160 | 96 | 1325 | 19 |
-| United States | 14250 | 12613 | 12706 | 5104 | 11746 | 610 |
+| United States | 14250 | 12619 | 12721 | 5104 | 11747 | 610 |
 | Vietnam | 261 | 261 | 167 | 2 | 261 | 0 |
 | Zambia | 22 | 22 | 2 | 0 | 21 | 0 |
 | Zimbabwe | 28 | 28 | 7 | 0 | 25 | 0 |

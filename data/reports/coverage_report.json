@@ -2,12 +2,12 @@
   "global": {
     "tickers": 61844,
     "core_listings": 54116,
-    "aliases": 118650,
+    "aliases": 118657,
     "stocks": 46260,
     "etfs": 15584,
-    "isin_coverage": 56697,
-    "sector_coverage": 55825,
-    "stock_sector_coverage": 40693,
+    "isin_coverage": 56704,
+    "sector_coverage": 55843,
+    "stock_sector_coverage": 40711,
     "etf_category_coverage": 15132,
     "cik_coverage": 7722,
     "figi_coverage": 63603,
@@ -46,23 +46,23 @@
     "etf_verification_cross_exchange_collision": 0
   },
   "freshness": {
-    "tickers_built_at": "2026-05-05T05:49:27Z",
-    "tickers_age_hours": 0.0,
+    "tickers_built_at": "2026-05-05T05:59:49Z",
+    "tickers_age_hours": 0.01,
     "masterfiles_generated_at": "2026-05-04T08:17:46Z",
-    "masterfiles_age_hours": 21.53,
-    "identifiers_generated_at": "2026-05-05T05:49:29Z",
+    "masterfiles_age_hours": 21.71,
+    "identifiers_generated_at": "2026-05-05T05:59:52Z",
     "identifiers_age_hours": 0.0,
-    "listing_history_observed_at": "2026-05-05T05:49:27Z",
-    "listing_history_age_hours": 0.0,
+    "listing_history_observed_at": "2026-05-05T05:59:49Z",
+    "listing_history_age_hours": 0.01,
     "latest_verification_run": "data/stock_verification/run-20260504-sgx-isin-refresh",
     "latest_verification_generated_at": "2026-05-04T08:25:42Z",
-    "latest_verification_age_hours": 21.4,
+    "latest_verification_age_hours": 21.57,
     "latest_stock_verification_run": "data/stock_verification/run-20260504-sgx-isin-refresh",
     "latest_stock_verification_generated_at": "2026-05-04T08:25:42Z",
-    "latest_stock_verification_age_hours": 21.4,
+    "latest_stock_verification_age_hours": 21.57,
     "latest_etf_verification_run": "data/etf_verification/run-20260504-sgx-isin-refresh",
     "latest_etf_verification_generated_at": "2026-05-04T08:25:46Z",
-    "latest_etf_verification_age_hours": 21.4
+    "latest_etf_verification_age_hours": 21.57
   },
   "source_coverage": [
     {
@@ -3544,8 +3544,8 @@
         "security_lookup_subset"
       ],
       "tickers": 11056,
-      "isin_coverage": 9826,
-      "sector_coverage": 8681,
+      "isin_coverage": 9833,
+      "sector_coverage": 8699,
       "cik_coverage": 1818,
       "figi_coverage": 9252,
       "lei_coverage": 0,
@@ -7003,8 +7003,8 @@
         "security_lookup_subset"
       ],
       "tickers": 11056,
-      "isin_coverage": 9826,
-      "sector_coverage": 8681,
+      "isin_coverage": 9833,
+      "sector_coverage": 8699,
       "cik_coverage": 1818,
       "figi_coverage": 9252,
       "lei_coverage": 0,
@@ -8292,9 +8292,9 @@
     },
     {
       "country": "Canada",
-      "tickers": 4906,
-      "isin_coverage": 3721,
-      "sector_coverage": 3824,
+      "tickers": 4907,
+      "isin_coverage": 3722,
+      "sector_coverage": 3826,
       "cik_coverage": 659,
       "figi_coverage": 3453,
       "lei_coverage": 66
@@ -8303,7 +8303,7 @@
       "country": "Cayman Islands",
       "tickers": 2060,
       "isin_coverage": 2055,
-      "sector_coverage": 2017,
+      "sector_coverage": 2018,
       "cik_coverage": 451,
       "figi_coverage": 1940,
       "lei_coverage": 18
@@ -8501,7 +8501,7 @@
       "country": "Ireland",
       "tickers": 2588,
       "isin_coverage": 2588,
-      "sector_coverage": 2570,
+      "sector_coverage": 2571,
       "cik_coverage": 67,
       "figi_coverage": 2581,
       "lei_coverage": 7
@@ -8950,10 +8950,10 @@
     {
       "country": "United States",
       "tickers": 14250,
-      "isin_coverage": 12613,
-      "sector_coverage": 12706,
+      "isin_coverage": 12619,
+      "sector_coverage": 12721,
       "cik_coverage": 5104,
-      "figi_coverage": 11746,
+      "figi_coverage": 11747,
       "lei_coverage": 610
     },
     {

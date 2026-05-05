@@ -31,6 +31,7 @@ EXCHANGE_SLUGS = {
     "HKEX": "hkg",
     "HOSE": "hose",
     "NSE_IN": "nse",
+    "OTC": "otc",
     "SGX": "sgx",
     "TPEX": "tpex",
 }

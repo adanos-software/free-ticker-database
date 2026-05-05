@@ -1,11 +1,11 @@
 # Completion Backlog
 
-Generated at: `2026-05-05T05:49:40Z`
+Generated at: `2026-05-05T06:00:02Z`
 
 ## Summary
 
 - Missing primary ISIN rows: `3917`
-- Missing stock sectors: `5567`
+- Missing stock sectors: `5549`
 - Missing ETF categories: `452`
 - Official symbol collisions tracked in exchange references: `10923`
 - Core rows hidden only by the legacy global-ticker compatibility export: `1`
@@ -31,7 +31,7 @@ Generated at: `2026-05-05T05:49:40Z`
 
 | Rank | Exchange | Asset type | Missing | Venue | Source | Review |
 |---|---|---|---:|---|---|---|
-| 1 | OTC | Stock | 1805 | official_full | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
+| 1 | OTC | Stock | 1787 | official_full | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
 | 2 | TSXV | Stock | 416 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
 | 3 | LSE | Stock | 325 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
 | 4 | SGX | Stock | 268 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
@@ -65,7 +65,7 @@ Generated at: `2026-05-05T05:49:40Z`
 
 | Rank | Exchange | Missing total | Missing stock_sector | Missing etf_category | Venue |
 |---|---|---:|---:|---:|---|
-| 1 | OTC | 1823 | 1805 | 18 | official_full |
+| 1 | OTC | 1805 | 1787 | 18 | official_full |
 | 2 | TSXV | 419 | 416 | 3 | official_full |
 | 3 | LSE | 344 | 325 | 19 | official_full |
 | 4 | SGX | 268 | 268 | 0 | official_full |
