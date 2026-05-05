@@ -2,6 +2,28 @@
 
 ## [Unreleased]
 
+## [3.20.0] - 2026-05-05
+
+### Added
+
+- Added official HKEX HSIC browser-backed sector backfill for Hong Kong equities after matching live HKEX quote-page industry metadata to the official HKEX securities workbook.
+- Added official B3 and BSE India sector backfills, plus a reviewed StockAnalysis OTC metadata backfill for selected OTC rows.
+- Added broader database validation gates covering core listings, listing index, cross-listing pairs, instrument scopes, identifier summaries, FIGI/ISIN collisions, canonical sector/category values, metadata override leakage, entry-quality coverage, duplicate public aliases, and trimmed Adanos names.
+
+### Changed
+
+- Rebuilt canonical exports to 61,844 primary tickers, 71,092 listing rows, 56,704 ISIN-covered rows, 55,843 sector/category-covered rows, and 118,657 structured alias rows.
+- Increased stock-sector coverage to 40,711 rows and kept ETF category coverage at 15,132 rows after normalizing legacy ETF-category override values to canonical buckets.
+- Reduced the field-completion backlog to 3,917 missing core-primary ISINs, 5,549 missing stock sectors, and 452 missing ETF categories.
+- Tightened identifier enrichment by dropping stale ISIN carry-forward and ambiguous/stale OpenFIGI mappings instead of preserving questionable FIGI coverage.
+- Refreshed listing history, identifier snapshots, coverage, source-inventory, completion-backlog, alias-quality, Adanos reference, entry-quality, and validation artifacts.
+
+### Fixed
+
+- Fixed case/normalization-sensitive alias duplicate detection so equivalent natural-language aliases are held for review instead of exported to Adanos detection.
+- Fixed stale identifier propagation where `identifiers_extended.csv` could retain ISINs after the authoritative listing row no longer had one.
+- Fixed Adanos ticker-reference name hygiene by trimming API export text fields and adding a release gate for untrimmed names.
+
 ## [3.19.0] - 2026-05-04
 
 ### Added
