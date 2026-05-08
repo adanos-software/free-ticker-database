@@ -30,13 +30,15 @@ DEFAULT_OUTPUT_DIR = ROOT / "data" / "yahoo_verification"
 DEFAULT_REPORT_JSON = DEFAULT_OUTPUT_DIR / "missing_isin_backfill.json"
 DEFAULT_REPORT_CSV = DEFAULT_OUTPUT_DIR / "missing_isin_backfill.csv"
 DEFAULT_METADATA_UPDATES_CSV = ROOT / "data" / "review_overrides" / "metadata_updates.csv"
-DEFAULT_EXCHANGES = ("BATS", "NASDAQ", "NYSE", "NYSE ARCA", "NYSE MKT")
+DEFAULT_EXCHANGES = ("BATS", "NASDAQ", "NYSE", "NYSE ARCA", "NYSE MKT", "TSX", "TSXV")
 EXPECTED_ISIN_PREFIXES = {
     "BATS": ("US",),
     "NASDAQ": ("US",),
     "NYSE": ("US",),
     "NYSE ARCA": ("US",),
     "NYSE MKT": ("US",),
+    "TSX": ("CA",),
+    "TSXV": ("CA",),
 }
 
 REPORT_FIELDNAMES = [

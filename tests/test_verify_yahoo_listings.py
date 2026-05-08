@@ -15,6 +15,7 @@ from scripts.verify_yahoo_listings import (
 def test_yahoo_symbol_candidates_cover_us_and_suffix_exchanges():
     assert yahoo_symbol_candidates("AAPL", "NASDAQ") == ["AAPL"]
     assert yahoo_symbol_candidates("0AD5", "LSE") == ["0AD5.L"]
+    assert yahoo_symbol_candidates("AF.P", "TSXV") == ["AF.P.V"]
     assert yahoo_symbol_candidates("PKO", "WSE") == ["PKO.WA"]
     assert yahoo_symbol_candidates("BOL", "Euronext") == []
 
@@ -22,6 +23,8 @@ def test_yahoo_symbol_candidates_cover_us_and_suffix_exchanges():
 def test_expected_exchange_and_quote_type_matching():
     assert expected_exchange_match("NASDAQ", "NMS", "NasdaqGS") is True
     assert expected_exchange_match("NYSE ARCA", "PCX", "NYSEArca") is True
+    assert expected_exchange_match("TSX", "TOR", "Toronto") is True
+    assert expected_exchange_match("TSXV", "VAN", "TSXV") is True
     assert expected_exchange_match("NYSE", "NMS", "NasdaqGS") is False
     assert expected_exchange_match("Euronext", "PAR", "Paris") is None
 

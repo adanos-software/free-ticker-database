@@ -53,6 +53,25 @@ def test_evaluate_missing_isin_row_accepts_valid_yahoo_match():
     assert result["yahoo_isin"] == "US02072Q6897"
 
 
+def test_evaluate_missing_isin_row_accepts_valid_tsxv_yahoo_match():
+    result = evaluate_missing_isin_row(
+        {"ticker": "AF.P", "exchange": "TSXV", "asset_type": "Stock", "name": "AF2 Capital Corp."},
+        {
+            "exists": True,
+            "symbol": "AF.P.V",
+            "longName": "AF2 Capital Corp",
+            "quoteType": "EQUITY",
+            "exchange": "VAN",
+            "fullExchangeName": "TSXV",
+            "isin": "CA0010941015",
+            "history_rows": 5,
+        },
+    )
+
+    assert result["decision"] == "accept"
+    assert result["yahoo_isin"] == "CA0010941015"
+
+
 def test_evaluate_missing_isin_row_rejects_number_token_mismatch():
     result = evaluate_missing_isin_row(
         {"ticker": "AAPR", "exchange": "BATS", "asset_type": "ETF", "name": "Innovator Equity Defined Protection ETF - 2 Yr To April 2026"},

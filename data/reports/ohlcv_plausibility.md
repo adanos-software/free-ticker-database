@@ -1,6 +1,6 @@
 # OHLCV Plausibility Report
 
-Generated at: `2026-05-08T09:02:33Z`
+Generated at: `2026-05-08T10:09:35Z`
 
 This report uses Kronos-inspired deterministic OHLCV hygiene checks. It does not fill ISINs, sectors, or ETF categories.
 

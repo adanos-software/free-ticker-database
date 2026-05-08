@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-05-08T09:02:29Z",
+    "generated_at": "2026-05-08T10:14:27Z",
     "rows": 71092,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,24 +14,24 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 59292,
-      "source_gap": 11737,
+      "pass": 59821,
+      "source_gap": 11208,
       "warn": 63
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4039,
-      "official_reference": 65771,
-      "scoped_source_gap": 940,
-      "valid_isin": 342
+      "identifier_enriched": 3570,
+      "official_reference": 66312,
+      "scoped_source_gap": 864,
+      "valid_isin": 346
     },
     "severity_counts": {
       "high": 63,
-      "source_gap": 13316
+      "source_gap": 12651
     },
     "issue_counts": {
-      "official_reference_gap": 5321,
-      "expected_missing_primary_isin": 3917,
-      "missing_stock_sector": 3762,
+      "official_reference_gap": 4780,
+      "expected_missing_primary_isin": 3862,
+      "missing_stock_sector": 3693,
       "missing_etf_category": 316,
       "country_isin_mismatch": 63
     },
@@ -40,11 +40,6 @@
         "exchange": "OTC",
         "pass": 7887,
         "source_gap": 3169
-      },
-      {
-        "exchange": "B3",
-        "source_gap": 801,
-        "pass": 783
       },
       {
         "exchange": "TSX",
@@ -58,8 +53,8 @@
       },
       {
         "exchange": "TSXV",
-        "source_gap": 578,
-        "pass": 488
+        "source_gap": 559,
+        "pass": 507
       },
       {
         "exchange": "SZSE",
@@ -74,14 +69,14 @@
         "source_gap": 373
       },
       {
+        "exchange": "B3",
+        "source_gap": 360,
+        "pass": 1224
+      },
+      {
         "exchange": "NYSE ARCA",
         "pass": 2342,
         "source_gap": 312
-      },
-      {
-        "exchange": "SGX",
-        "pass": 325,
-        "source_gap": 269
       },
       {
         "exchange": "NSE_IN",
@@ -100,19 +95,24 @@
         "pass": 492
       },
       {
+        "exchange": "SGX",
+        "pass": 392,
+        "source_gap": 202
+      },
+      {
         "exchange": "SET",
         "source_gap": 196,
         "pass": 351
       },
       {
-        "exchange": "XETRA",
-        "pass": 3608,
-        "source_gap": 171
-      },
-      {
         "exchange": "BMV",
         "source_gap": 171,
         "pass": 8
+      },
+      {
+        "exchange": "XETRA",
+        "pass": 3610,
+        "source_gap": 169
       },
       {
         "exchange": "TADAWUL",
@@ -11914,24 +11914,6 @@
       ]
     },
     {
-      "listing_key": "SGX::1D5",
-      "ticker": "1D5",
-      "exchange": "SGX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
       "listing_key": "SET::1DIV",
       "ticker": "1DIV",
       "exchange": "SET",
@@ -11952,60 +11934,6 @@
     {
       "listing_key": "SGX::1E3",
       "ticker": "1E3",
-      "exchange": "SGX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "SGX::1F1",
-      "ticker": "1F1",
-      "exchange": "SGX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "SGX::1F2",
-      "ticker": "1F2",
-      "exchange": "SGX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "SGX::1F3",
-      "ticker": "1F3",
       "exchange": "SGX",
       "asset_type": "Stock",
       "quality_status": "source_gap",
@@ -12094,24 +12022,6 @@
       ]
     },
     {
-      "listing_key": "SGX::1R6",
-      "ticker": "1R6",
-      "exchange": "SGX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
       "listing_key": "LSE::1SN",
       "ticker": "1SN",
       "exchange": "LSE",
@@ -12150,24 +12060,6 @@
     {
       "listing_key": "SGX::1U8",
       "ticker": "1U8",
-      "exchange": "SGX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "SGX::1V3",
-      "ticker": "1V3",
       "exchange": "SGX",
       "asset_type": "Stock",
       "quality_status": "source_gap",
@@ -15156,24 +15048,6 @@
       ]
     },
     {
-      "listing_key": "SGX::40F",
-      "ticker": "40F",
-      "exchange": "SGX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
       "listing_key": "SGX::40T",
       "ticker": "40T",
       "exchange": "SGX",
@@ -15465,24 +15339,6 @@
       ]
     },
     {
-      "listing_key": "SGX::41F",
-      "ticker": "41F",
-      "exchange": "SGX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
       "listing_key": "SGX::41H",
       "ticker": "41H",
       "exchange": "SGX",
@@ -15652,80 +15508,8 @@
       ]
     },
     {
-      "listing_key": "SGX::42C",
-      "ticker": "42C",
-      "exchange": "SGX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
       "listing_key": "SGX::42F",
       "ticker": "42F",
-      "exchange": "SGX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "SGX::42L",
-      "ticker": "42L",
-      "exchange": "SGX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "SGX::42S",
-      "ticker": "42S",
-      "exchange": "SGX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "SGX::42W",
-      "ticker": "42W",
       "exchange": "SGX",
       "asset_type": "Stock",
       "quality_status": "source_gap",
@@ -15817,42 +15601,6 @@
       "listing_key": "TADAWUL::4327",
       "ticker": "4327",
       "exchange": "TADAWUL",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "SGX::43A",
-      "ticker": "43A",
-      "exchange": "SGX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "SGX::43F",
-      "ticker": "43F",
-      "exchange": "SGX",
       "asset_type": "Stock",
       "quality_status": "source_gap",
       "quality_score": 90,
@@ -18463,6 +18211,258 @@
     {
       "listing_key": "SSE::513310",
       "ticker": "513310",
+      "exchange": "SSE",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "SSE::513320",
+      "ticker": "513320",
+      "exchange": "SSE",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "SSE::513330",
+      "ticker": "513330",
+      "exchange": "SSE",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "SSE::513350",
+      "ticker": "513350",
+      "exchange": "SSE",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "SSE::513360",
+      "ticker": "513360",
+      "exchange": "SSE",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "SSE::513380",
+      "ticker": "513380",
+      "exchange": "SSE",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "SSE::513390",
+      "ticker": "513390",
+      "exchange": "SSE",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "SSE::513400",
+      "ticker": "513400",
+      "exchange": "SSE",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "SSE::513520",
+      "ticker": "513520",
+      "exchange": "SSE",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "SSE::513530",
+      "ticker": "513530",
+      "exchange": "SSE",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "SSE::513550",
+      "ticker": "513550",
+      "exchange": "SSE",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "SSE::513560",
+      "ticker": "513560",
+      "exchange": "SSE",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "SSE::513580",
+      "ticker": "513580",
+      "exchange": "SSE",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "SSE::513590",
+      "ticker": "513590",
+      "exchange": "SSE",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "SSE::513630",
+      "ticker": "513630",
       "exchange": "SSE",
       "asset_type": "ETF",
       "quality_status": "source_gap",

@@ -49,6 +49,8 @@ EXPECTED_YAHOO_EXCHANGE_CODES: dict[str, set[str]] = {
     "NYSE MKT": {"ASE"},
     "OTC": {"PNK", "OQB", "OEM"},
     "LSE": {"LSE"},
+    "TSX": {"TOR"},
+    "TSXV": {"VAN"},
 }
 
 EXPECTED_YAHOO_FULL_EXCHANGES: dict[str, set[str]] = {
@@ -59,6 +61,8 @@ EXPECTED_YAHOO_FULL_EXCHANGES: dict[str, set[str]] = {
     "NYSE MKT": {"NYSEAmerican"},
     "OTC": {"OTC Markets OTCPK", "OTC Markets OTCQB", "OTC Markets OTCQX"},
     "LSE": {"LSE"},
+    "TSX": {"Toronto"},
+    "TSXV": {"TSXV"},
 }
 
 EXPECTED_QUOTE_TYPES: dict[str, set[str]] = {
