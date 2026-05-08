@@ -34,6 +34,11 @@ def test_classify_etf_category_uses_specific_order_before_equity_fallback():
     assert classify_etf_category("Example Equity Index Fund") == ("Equity", "equities")
     assert classify_etf_category("Example Nikkei 225 Currency-hedged ETF") == ("Equity", "large_cap")
     assert classify_etf_category("Example Currency Basket ETF") == ("Currency", "currencies")
+    assert classify_etf_category("ProShares Ultra COIN ETF") == ("Leveraged/Inverse", "leveraged_inverse")
+    assert classify_etf_category("iShares LifePath Target Date 2050 ETF") == ("Multi-Asset", "multi_asset")
+    assert classify_etf_category("Example Preferred and Income ETF") == ("Fixed Income", "fixed_income")
+    assert classify_etf_category("United States Gasoline Fund LP") == ("Commodity", "commodities")
+    assert classify_etf_category("ASML Holding NV ADRhedged") == ("Equity", "equities")
 
 
 def test_classify_etf_category_handles_common_non_english_markers():

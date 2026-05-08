@@ -119,7 +119,7 @@ def test_residual_alias_collisions_and_metadata_contamination_are_removed():
 
     assert sea["country"] == "United States"
     assert sea["isin"] == "US26922B8651"
-    assert sea["etf_category"] == ""
+    assert sea["etf_category"] == "Equity"
     assert "sea forest" not in sea["aliases"]
     assert "seascape energy asia" not in sea["aliases"]
     assert "srm entertainment" not in sea["aliases"]

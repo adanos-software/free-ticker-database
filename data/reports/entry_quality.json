@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-05-05T06:47:52Z",
+    "generated_at": "2026-05-08T09:02:29Z",
     "rows": 71092,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,8 +14,8 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 59188,
-      "source_gap": 11841,
+      "pass": 59292,
+      "source_gap": 11737,
       "warn": 63
     },
     "evidence_level_counts": {
@@ -26,13 +26,13 @@
     },
     "severity_counts": {
       "high": 63,
-      "source_gap": 13435
+      "source_gap": 13316
     },
     "issue_counts": {
       "official_reference_gap": 5321,
       "expected_missing_primary_isin": 3917,
       "missing_stock_sector": 3762,
-      "missing_etf_category": 435,
+      "missing_etf_category": 316,
       "country_isin_mismatch": 63
     },
     "top_flagged_exchanges": [
@@ -43,8 +43,8 @@
       },
       {
         "exchange": "B3",
-        "source_gap": 806,
-        "pass": 778
+        "source_gap": 801,
+        "pass": 783
       },
       {
         "exchange": "TSX",
@@ -69,14 +69,14 @@
       },
       {
         "exchange": "LSE",
-        "pass": 5975,
+        "pass": 5982,
         "warn": 60,
-        "source_gap": 380
+        "source_gap": 373
       },
       {
         "exchange": "NYSE ARCA",
-        "pass": 2283,
-        "source_gap": 371
+        "pass": 2342,
+        "source_gap": 312
       },
       {
         "exchange": "SGX",
@@ -84,15 +84,15 @@
         "source_gap": 269
       },
       {
-        "exchange": "NASDAQ",
-        "pass": 4369,
-        "source_gap": 264,
-        "warn": 1
-      },
-      {
         "exchange": "NSE_IN",
         "pass": 990,
         "source_gap": 244
+      },
+      {
+        "exchange": "NASDAQ",
+        "pass": 4392,
+        "source_gap": 241,
+        "warn": 1
       },
       {
         "exchange": "STO",
@@ -115,19 +115,19 @@
         "pass": 8
       },
       {
-        "exchange": "BATS",
-        "pass": 1079,
-        "source_gap": 164
-      },
-      {
         "exchange": "TADAWUL",
         "source_gap": 163,
         "pass": 28
       },
       {
+        "exchange": "BATS",
+        "pass": 1088,
+        "source_gap": 155
+      },
+      {
         "exchange": "ASX",
-        "pass": 1146,
-        "source_gap": 152
+        "pass": 1147,
+        "source_gap": 151
       },
       {
         "exchange": "Euronext",

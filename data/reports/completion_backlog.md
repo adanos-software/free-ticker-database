@@ -1,12 +1,12 @@
 # Completion Backlog
 
-Generated at: `2026-05-05T06:47:49Z`
+Generated at: `2026-05-08T09:02:15Z`
 
 ## Summary
 
 - Missing primary ISIN rows: `3917`
 - Missing stock sectors: `5549`
-- Missing ETF categories: `452`
+- Missing ETF categories: `333`
 - Official symbol collisions tracked in exchange references: `10923`
 - Core rows hidden only by the legacy global-ticker compatibility export: `1`
 
@@ -48,14 +48,14 @@ Generated at: `2026-05-05T06:47:49Z`
 
 | Rank | Exchange | Asset type | Missing | Venue | Source | Review |
 |---|---|---|---:|---|---|---|
-| 1 | NYSE ARCA | ETF | 180 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 2 | NASDAQ | ETF | 56 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 3 | BATS | ETF | 49 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 4 | B3 | ETF | 29 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 5 | LSE | ETF | 19 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 6 | OTC | ETF | 18 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 7 | TSX | ETF | 16 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 8 | ASX | ETF | 15 | official_partial | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 1 | NYSE ARCA | ETF | 110 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 2 | BATS | ETF | 37 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 3 | NASDAQ | ETF | 32 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 4 | B3 | ETF | 24 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 5 | OTC | ETF | 18 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 6 | TSX | ETF | 16 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 7 | ASX | ETF | 14 | official_partial | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 8 | LSE | ETF | 12 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
 | 9 | NYSE | ETF | 11 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
 | 10 | SSE_CL | ETF | 8 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
 | 11 | XETRA | ETF | 6 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
@@ -67,16 +67,16 @@ Generated at: `2026-05-05T06:47:49Z`
 |---|---|---:|---:|---:|---|
 | 1 | OTC | 1805 | 1787 | 18 | official_full |
 | 2 | TSXV | 419 | 416 | 3 | official_full |
-| 3 | LSE | 344 | 325 | 19 | official_full |
+| 3 | LSE | 337 | 325 | 12 | official_full |
 | 4 | SGX | 268 | 268 | 0 | official_full |
 | 5 | NSE_IN | 244 | 244 | 0 | official_full |
-| 6 | B3 | 233 | 204 | 29 | official_full |
-| 7 | STO | 232 | 231 | 1 | official_partial |
-| 8 | NYSE ARCA | 180 | 0 | 180 | official_full |
-| 9 | TADAWUL | 163 | 163 | 0 | official_full |
-| 10 | CSE_LK | 143 | 143 | 0 | official_full |
-| 11 | BSE_IN | 142 | 141 | 1 | official_full |
-| 12 | Euronext | 133 | 132 | 1 | official_full |
+| 6 | STO | 232 | 231 | 1 | official_partial |
+| 7 | B3 | 228 | 204 | 24 | official_full |
+| 8 | TADAWUL | 163 | 163 | 0 | official_full |
+| 9 | CSE_LK | 143 | 143 | 0 | official_full |
+| 10 | BSE_IN | 142 | 141 | 1 | official_full |
+| 11 | Euronext | 133 | 132 | 1 | official_full |
+| 12 | XETRA | 126 | 120 | 6 | official_full |
 
 ## Model Migration Prep
 
