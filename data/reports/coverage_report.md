@@ -6,13 +6,13 @@
 |---|---|
 | tickers | 61845 |
 | core_listings | 54118 |
-| aliases | 118713 |
+| aliases | 118714 |
 | stocks | 46261 |
 | etfs | 15584 |
-| isin_coverage | 56760 |
-| sector_coverage | 56038 |
+| isin_coverage | 56761 |
+| sector_coverage | 56088 |
 | stock_sector_coverage | 40787 |
-| etf_category_coverage | 15251 |
+| etf_category_coverage | 15301 |
 | cik_coverage | 7722 |
 | figi_coverage | 63445 |
 | lei_coverage | 920 |
@@ -23,8 +23,8 @@
 | instrument_scope_rows | 71092 |
 | instrument_scope_core | 54118 |
 | instrument_scope_extended | 16974 |
-| instrument_scope_primary_listing | 50256 |
-| instrument_scope_primary_listing_missing_isin | 3862 |
+| instrument_scope_primary_listing | 50257 |
+| instrument_scope_primary_listing_missing_isin | 3861 |
 | instrument_scope_otc_listing | 11056 |
 | instrument_scope_secondary_cross_listing | 5918 |
 | legacy_primary_ticker_collision_rows | 1 |
@@ -53,22 +53,22 @@
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-05-08T10:09:12Z |
-| tickers_age_hours | 0.09 |
-| masterfiles_generated_at | 2026-05-08T09:44:46Z |
-| masterfiles_age_hours | 0.49 |
-| identifiers_generated_at | 2026-05-08T10:09:12Z |
-| identifiers_age_hours | 0.09 |
-| listing_history_observed_at | 2026-05-08T10:09:12Z |
-| listing_history_age_hours | 0.09 |
-| latest_verification_run | data/stock_verification/run-20260508-source-backfill |
-| latest_verification_generated_at | 2026-05-08T10:14:22Z |
+| tickers_built_at | 2026-05-08T10:31:18Z |
+| tickers_age_hours | 0.03 |
+| masterfiles_generated_at | 2026-05-08T10:29:59Z |
+| masterfiles_age_hours | 0.05 |
+| identifiers_generated_at | 2026-05-08T10:31:18Z |
+| identifiers_age_hours | 0.03 |
+| listing_history_observed_at | 2026-05-08T10:31:18Z |
+| listing_history_age_hours | 0.03 |
+| latest_verification_run | data/stock_verification/run-20260508-cboe-b3-backfill |
+| latest_verification_generated_at | 2026-05-08T10:33:14Z |
 | latest_verification_age_hours | 0.0 |
-| latest_stock_verification_run | data/stock_verification/run-20260508-source-backfill |
-| latest_stock_verification_generated_at | 2026-05-08T10:14:22Z |
+| latest_stock_verification_run | data/stock_verification/run-20260508-cboe-b3-backfill |
+| latest_stock_verification_generated_at | 2026-05-08T10:33:14Z |
 | latest_stock_verification_age_hours | 0.0 |
-| latest_etf_verification_run | data/etf_verification/run-20260508-source-backfill |
-| latest_etf_verification_generated_at | 2026-05-08T10:14:22Z |
+| latest_etf_verification_run | data/etf_verification/run-20260508-cboe-b3-backfill |
+| latest_etf_verification_generated_at | 2026-05-08T10:33:14Z |
 | latest_etf_verification_age_hours | 0.0 |
 
 ## Source Coverage
@@ -102,9 +102,9 @@
 | six_shares_explorer_full | SIX | listed_companies_subset | network | 12 | 2026-04-22T06:55:17Z |
 | six_etf_products | SIX | listed_companies_subset | network | 8568 | 2026-04-22T06:55:17Z |
 | six_etp_products | SIX | listed_companies_subset | network | 810 | 2026-04-22T06:55:17Z |
-| b3_instruments_equities | B3 | exchange_directory | network | 1277 | 2026-05-08T09:44:46Z |
-| b3_listed_etfs | B3 | listed_companies_subset | network | 188 | 2026-05-08T09:44:46Z |
-| b3_bdr_etfs | B3 | listed_companies_subset | network | 302 | 2026-05-08T09:44:46Z |
+| b3_instruments_equities | B3 | exchange_directory | network | 1277 | 2026-05-08T10:29:59Z |
+| b3_listed_etfs | B3 | listed_companies_subset | network | 188 | 2026-05-08T10:29:59Z |
+| b3_bdr_etfs | B3 | listed_companies_subset | network | 302 | 2026-05-08T10:29:59Z |
 | jse_etf_list | JSE | listed_companies_subset | network | 133 | 2026-04-22T06:55:17Z |
 | jse_etn_list | JSE | listed_companies_subset | network | 94 | 2026-04-22T06:55:17Z |
 | jse_instrument_search | JSE | listed_companies_subset | network | 12 | 2026-04-22T06:55:17Z |
@@ -220,8 +220,8 @@
 | AMS | official_full | 314 | 310 | 226 | 0 | 307 | 0 | 548 | 240 | 294 | 14 | 43.8 | 100.0 |
 | ASX | official_partial | 1298 | 1193 | 1243 | 30 | 1161 | 24 | 0 | 0 | 0 | 0 |  | 100.0 |
 | ATHEX | official_partial | 117 | 98 | 117 | 0 | 95 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
-| B3 | official_full | 1584 | 1317 | 1344 | 0 | 1293 | 0 | 1277 | 1245 | 0 | 32 | 97.49 | 100.0 |
-| BATS | official_full | 1243 | 1165 | 1190 | 0 | 1118 | 0 | 1239 | 1191 | 9 | 39 | 96.13 | 100.0 |
+| B3 | official_full | 1584 | 1317 | 1366 | 0 | 1293 | 0 | 1277 | 1245 | 0 | 32 | 97.49 | 100.0 |
+| BATS | official_full | 1243 | 1166 | 1219 | 0 | 1118 | 0 | 1239 | 1191 | 9 | 39 | 96.13 | 100.0 |
 | BCBA | official_partial | 64 | 61 | 50 | 0 | 60 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | BHB | official_full | 29 | 29 | 2 | 0 | 27 | 0 | 41 | 29 | 9 | 3 | 70.73 | 100.0 |
 | BIST | official_full | 614 | 614 | 524 | 0 | 614 | 0 | 636 | 614 | 20 | 2 | 96.54 | 100.0 |
@@ -308,7 +308,7 @@
 | Belgium | 121 | 120 | 96 | 7 | 120 | 1 |
 | Bermuda | 531 | 531 | 511 | 59 | 507 | 14 |
 | Botswana | 24 | 24 | 20 | 0 | 24 | 0 |
-| Brazil | 1566 | 1299 | 1337 | 0 | 1275 | 0 |
+| Brazil | 1566 | 1299 | 1358 | 0 | 1275 | 0 |
 | Bulgaria | 14 | 14 | 13 | 3 | 14 | 0 |
 | Canada | 4906 | 3771 | 3829 | 658 | 3399 | 66 |
 | Cayman Islands | 2060 | 2055 | 2024 | 451 | 1939 | 18 |
@@ -383,7 +383,7 @@
 | Uganda | 7 | 7 | 0 | 0 | 7 | 0 |
 | United Arab Emirates | 123 | 123 | 122 | 0 | 123 | 0 |
 | United Kingdom | 1347 | 1336 | 1161 | 96 | 1320 | 19 |
-| United States | 14250 | 12619 | 12829 | 5104 | 11729 | 610 |
+| United States | 14250 | 12620 | 12858 | 5104 | 11729 | 610 |
 | Vietnam | 261 | 261 | 167 | 2 | 260 | 0 |
 | Zambia | 22 | 22 | 2 | 0 | 21 | 0 |
 | Zimbabwe | 28 | 28 | 7 | 0 | 25 | 0 |

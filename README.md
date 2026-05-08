@@ -16,15 +16,15 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 | ETFs | 15,584 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 80 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 86 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 118,713 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
-| ISIN coverage | 56,760 (91.8%) | Primary ticker rows with a non-empty `isin`. |
+| Aliases | 118,714 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
+| ISIN coverage | 56,761 (91.8%) | Primary ticker rows with a non-empty `isin`. |
 | FIGI coverage | 63,445 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
-| Sector/category coverage | 56,038 (90.6%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Sector/category coverage | 56,088 (90.7%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
 | Stock sector coverage | 40,787 | Primary ticker rows with a non-empty `stock_sector`. |
-| ETF category coverage | 15,251 | Primary ticker rows with a non-empty `etf_category`. |
+| ETF category coverage | 15,301 | Primary ticker rows with a non-empty `etf_category`. |
 | Core listing-scope rows | 54,118 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
-| Core primary rows with ISIN | 50,256 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
-| Core primary rows missing ISIN | 3,862 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
+| Core primary rows with ISIN | 50,257 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
+| Core primary rows missing ISIN | 3,861 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
 | Extended listing-scope rows | 16,974 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
 
 ## Core Files

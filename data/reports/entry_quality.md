@@ -1,13 +1,13 @@
 # Entry Quality Report
 
-Generated at: `2026-05-08T10:14:27Z`
+Generated at: `2026-05-08T10:33:18Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 59,821 |
-| source_gap | 11,208 |
+| pass | 59,870 |
+| source_gap | 11,159 |
 | warn | 63 |
 
 ## Issue Counts
@@ -15,9 +15,9 @@ Generated at: `2026-05-08T10:14:27Z`
 | Issue | Rows |
 |---|---:|
 | official_reference_gap | 4,780 |
-| expected_missing_primary_isin | 3,862 |
+| expected_missing_primary_isin | 3,861 |
 | missing_stock_sector | 3,693 |
-| missing_etf_category | 316 |
+| missing_etf_category | 266 |
 | country_isin_mismatch | 63 |
 
 ## Top Flagged Exchanges
@@ -30,7 +30,7 @@ Generated at: `2026-05-08T10:14:27Z`
 | TSXV | 507 | 0 | 559 | 0 | 0 |
 | SZSE | 2,593 | 0 | 489 | 1 | 0 |
 | LSE | 5,982 | 0 | 373 | 60 | 0 |
-| B3 | 1,224 | 0 | 360 | 0 | 0 |
+| B3 | 1,245 | 0 | 339 | 0 | 0 |
 | NYSE ARCA | 2,342 | 0 | 312 | 0 | 0 |
 | NSE_IN | 990 | 0 | 244 | 0 | 0 |
 | NASDAQ | 4,392 | 0 | 241 | 1 | 0 |
@@ -40,10 +40,10 @@ Generated at: `2026-05-08T10:14:27Z`
 | BMV | 8 | 0 | 171 | 0 | 0 |
 | XETRA | 3,610 | 0 | 169 | 0 | 0 |
 | TADAWUL | 28 | 0 | 163 | 0 | 0 |
-| BATS | 1,088 | 0 | 155 | 0 | 0 |
 | ASX | 1,147 | 0 | 151 | 0 | 0 |
 | Euronext | 828 | 0 | 147 | 0 | 0 |
 | CSE_LK | 164 | 0 | 143 | 0 | 0 |
+| BSE_IN | 2,498 | 0 | 142 | 0 | 0 |
 
 ## Notes
 

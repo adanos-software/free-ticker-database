@@ -2,13 +2,13 @@
   "global": {
     "tickers": 61845,
     "core_listings": 54118,
-    "aliases": 118713,
+    "aliases": 118714,
     "stocks": 46261,
     "etfs": 15584,
-    "isin_coverage": 56760,
-    "sector_coverage": 56038,
+    "isin_coverage": 56761,
+    "sector_coverage": 56088,
     "stock_sector_coverage": 40787,
-    "etf_category_coverage": 15251,
+    "etf_category_coverage": 15301,
     "cik_coverage": 7722,
     "figi_coverage": 63445,
     "lei_coverage": 920,
@@ -19,8 +19,8 @@
     "instrument_scope_rows": 71092,
     "instrument_scope_core": 54118,
     "instrument_scope_extended": 16974,
-    "instrument_scope_primary_listing": 50256,
-    "instrument_scope_primary_listing_missing_isin": 3862,
+    "instrument_scope_primary_listing": 50257,
+    "instrument_scope_primary_listing_missing_isin": 3861,
     "instrument_scope_otc_listing": 11056,
     "instrument_scope_secondary_cross_listing": 5918,
     "legacy_primary_ticker_collision_rows": 1,
@@ -46,22 +46,22 @@
     "etf_verification_cross_exchange_collision": 0
   },
   "freshness": {
-    "tickers_built_at": "2026-05-08T10:09:12Z",
-    "tickers_age_hours": 0.09,
-    "masterfiles_generated_at": "2026-05-08T09:44:46Z",
-    "masterfiles_age_hours": 0.49,
-    "identifiers_generated_at": "2026-05-08T10:09:12Z",
-    "identifiers_age_hours": 0.09,
-    "listing_history_observed_at": "2026-05-08T10:09:12Z",
-    "listing_history_age_hours": 0.09,
-    "latest_verification_run": "data/stock_verification/run-20260508-source-backfill",
-    "latest_verification_generated_at": "2026-05-08T10:14:22Z",
+    "tickers_built_at": "2026-05-08T10:31:18Z",
+    "tickers_age_hours": 0.03,
+    "masterfiles_generated_at": "2026-05-08T10:29:59Z",
+    "masterfiles_age_hours": 0.05,
+    "identifiers_generated_at": "2026-05-08T10:31:18Z",
+    "identifiers_age_hours": 0.03,
+    "listing_history_observed_at": "2026-05-08T10:31:18Z",
+    "listing_history_age_hours": 0.03,
+    "latest_verification_run": "data/stock_verification/run-20260508-cboe-b3-backfill",
+    "latest_verification_generated_at": "2026-05-08T10:33:14Z",
     "latest_verification_age_hours": 0.0,
-    "latest_stock_verification_run": "data/stock_verification/run-20260508-source-backfill",
-    "latest_stock_verification_generated_at": "2026-05-08T10:14:22Z",
+    "latest_stock_verification_run": "data/stock_verification/run-20260508-cboe-b3-backfill",
+    "latest_stock_verification_generated_at": "2026-05-08T10:33:14Z",
     "latest_stock_verification_age_hours": 0.0,
-    "latest_etf_verification_run": "data/etf_verification/run-20260508-source-backfill",
-    "latest_etf_verification_generated_at": "2026-05-08T10:14:22Z",
+    "latest_etf_verification_run": "data/etf_verification/run-20260508-cboe-b3-backfill",
+    "latest_etf_verification_generated_at": "2026-05-08T10:33:14Z",
     "latest_etf_verification_age_hours": 0.0
   },
   "source_coverage": [
@@ -315,7 +315,7 @@
       "official": true,
       "mode": "network",
       "rows": 1277,
-      "generated_at": "2026-05-08T09:44:46Z"
+      "generated_at": "2026-05-08T10:29:59Z"
     },
     {
       "key": "b3_listed_etfs",
@@ -324,7 +324,7 @@
       "official": true,
       "mode": "network",
       "rows": 188,
-      "generated_at": "2026-05-08T09:44:46Z"
+      "generated_at": "2026-05-08T10:29:59Z"
     },
     {
       "key": "b3_bdr_etfs",
@@ -333,7 +333,7 @@
       "official": true,
       "mode": "network",
       "rows": 302,
-      "generated_at": "2026-05-08T09:44:46Z"
+      "generated_at": "2026-05-08T10:29:59Z"
     },
     {
       "key": "jse_etf_list",
@@ -1474,7 +1474,7 @@
       ],
       "tickers": 1584,
       "isin_coverage": 1317,
-      "sector_coverage": 1344,
+      "sector_coverage": 1366,
       "cik_coverage": 0,
       "figi_coverage": 1293,
       "lei_coverage": 0,
@@ -1516,8 +1516,8 @@
         "exchange_directory"
       ],
       "tickers": 1243,
-      "isin_coverage": 1165,
-      "sector_coverage": 1190,
+      "isin_coverage": 1166,
+      "sector_coverage": 1219,
       "cik_coverage": 0,
       "figi_coverage": 1118,
       "lei_coverage": 0,
@@ -4933,7 +4933,7 @@
       ],
       "tickers": 1584,
       "isin_coverage": 1317,
-      "sector_coverage": 1344,
+      "sector_coverage": 1366,
       "cik_coverage": 0,
       "figi_coverage": 1293,
       "lei_coverage": 0,
@@ -4975,8 +4975,8 @@
         "exchange_directory"
       ],
       "tickers": 1243,
-      "isin_coverage": 1165,
-      "sector_coverage": 1190,
+      "isin_coverage": 1166,
+      "sector_coverage": 1219,
       "cik_coverage": 0,
       "figi_coverage": 1118,
       "lei_coverage": 0,
@@ -8276,7 +8276,7 @@
       "country": "Brazil",
       "tickers": 1566,
       "isin_coverage": 1299,
-      "sector_coverage": 1337,
+      "sector_coverage": 1358,
       "cik_coverage": 0,
       "figi_coverage": 1275,
       "lei_coverage": 0
@@ -8950,8 +8950,8 @@
     {
       "country": "United States",
       "tickers": 14250,
-      "isin_coverage": 12619,
-      "sector_coverage": 12829,
+      "isin_coverage": 12620,
+      "sector_coverage": 12858,
       "cik_coverage": 5104,
       "figi_coverage": 11729,
       "lei_coverage": 610
@@ -8985,8 +8985,8 @@
     }
   ],
   "verification": {
-    "run_dir": "data/stock_verification/run-20260508-source-backfill",
-    "generated_at": "2026-05-08T10:14:22Z",
+    "run_dir": "data/stock_verification/run-20260508-cboe-b3-backfill",
+    "generated_at": "2026-05-08T10:33:14Z",
     "summary": {
       "chunk_count": 8,
       "completed_chunks": 8,
@@ -14441,8 +14441,8 @@
     ]
   },
   "stock_verification": {
-    "run_dir": "data/stock_verification/run-20260508-source-backfill",
-    "generated_at": "2026-05-08T10:14:22Z",
+    "run_dir": "data/stock_verification/run-20260508-cboe-b3-backfill",
+    "generated_at": "2026-05-08T10:33:14Z",
     "summary": {
       "chunk_count": 8,
       "completed_chunks": 8,
@@ -19897,8 +19897,8 @@
     ]
   },
   "etf_verification": {
-    "run_dir": "data/etf_verification/run-20260508-source-backfill",
-    "generated_at": "2026-05-08T10:14:22Z",
+    "run_dir": "data/etf_verification/run-20260508-cboe-b3-backfill",
+    "generated_at": "2026-05-08T10:33:14Z",
     "summary": {
       "chunk_count": 8,
       "completed_chunks": 8,

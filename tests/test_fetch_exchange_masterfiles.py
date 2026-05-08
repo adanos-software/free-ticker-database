@@ -5453,6 +5453,7 @@ def test_parse_b3_instruments_equities_table_keeps_cash_stocks_and_etfs_only():
             "reference_scope": "exchange_directory",
             "official": "true",
             "isin": "BRBOVACTF003",
+            "sector": "Equity",
         },
         {
             "source_key": "test",
@@ -5466,6 +5467,7 @@ def test_parse_b3_instruments_equities_table_keeps_cash_stocks_and_etfs_only():
             "reference_scope": "exchange_directory",
             "official": "true",
             "isin": "BRKNOXCTF003",
+            "sector": "Other",
         },
         {
             "source_key": "test",

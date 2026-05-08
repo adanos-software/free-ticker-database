@@ -1198,6 +1198,11 @@ B3_ALLOWED_CASH_CATEGORIES = {
     "SHARES": "Stock",
     "UNIT": "Stock",
 }
+B3_CASH_ETF_CATEGORY_MAP = {
+    "ETF EQUITIES": "Equity",
+    "ETF FOREIGN INDEX": "Equity",
+    "FUNDS": "Other",
+}
 B3_CASH_STOCK_TICKER_RE = re.compile(r"^[A-Z0-9]{4}[3-8]B?$")
 B3_BDR_ETF_MARKERS = (" ETF", "ETP")
 B3_EXCLUDED_ISSUER_MARKERS = (
@@ -1217,6 +1222,7 @@ B3_ETF_NAME_CATEGORY_RULES: tuple[tuple[str, tuple[str, ...]], ...] = (
     ("Fixed Income", ("RENDA FIXA", "IMA-B", "IRF-M", "CDI", "TESOURO", "SELIC", "DAP")),
     ("Real Estate", ("FII", "IFIX", "REITS", "IMOBILI", "RECEBIVEIS IMOB", "RECEBÍVEIS IMOB")),
     ("Alternative", ("BITCOIN", "ETHEREUM", "CRIPTO", "CRYPTO", "HASHDEX")),
+    ("Equity", ("STEEL ETF",)),
 )
 B3_FUNDS_PAGE_SIZE = 120
 TPEX_CANONICAL_TICKER_RE = re.compile(r"(?:\d{4}|00\d{4}[A-Z]?)$")
@@ -16148,6 +16154,10 @@ def parse_b3_instruments_equities_table(table: dict[str, Any], source: Masterfil
         }
         if is_valid_isin(isin):
             row["isin"] = isin
+        if asset_type == "ETF":
+            sector = B3_CASH_ETF_CATEGORY_MAP.get(category) or normalize_b3_listed_fund_category("", combined_name)
+            if sector:
+                row["sector"] = sector
         rows.append(row)
     return rows
 

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-05-08T10:14:27Z",
+    "generated_at": "2026-05-08T10:33:18Z",
     "rows": 71092,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,25 +14,25 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 59821,
-      "source_gap": 11208,
+      "pass": 59870,
+      "source_gap": 11159,
       "warn": 63
     },
     "evidence_level_counts": {
       "identifier_enriched": 3570,
       "official_reference": 66312,
-      "scoped_source_gap": 864,
-      "valid_isin": 346
+      "scoped_source_gap": 863,
+      "valid_isin": 347
     },
     "severity_counts": {
       "high": 63,
-      "source_gap": 12651
+      "source_gap": 12600
     },
     "issue_counts": {
       "official_reference_gap": 4780,
-      "expected_missing_primary_isin": 3862,
+      "expected_missing_primary_isin": 3861,
       "missing_stock_sector": 3693,
-      "missing_etf_category": 316,
+      "missing_etf_category": 266,
       "country_isin_mismatch": 63
     },
     "top_flagged_exchanges": [
@@ -70,8 +70,8 @@
       },
       {
         "exchange": "B3",
-        "source_gap": 360,
-        "pass": 1224
+        "source_gap": 339,
+        "pass": 1245
       },
       {
         "exchange": "NYSE ARCA",
@@ -120,11 +120,6 @@
         "pass": 28
       },
       {
-        "exchange": "BATS",
-        "pass": 1088,
-        "source_gap": 155
-      },
-      {
         "exchange": "ASX",
         "pass": 1147,
         "source_gap": 151
@@ -138,6 +133,11 @@
         "exchange": "CSE_LK",
         "pass": 164,
         "source_gap": 143
+      },
+      {
+        "exchange": "BSE_IN",
+        "pass": 2498,
+        "source_gap": 142
       }
     ]
   },
