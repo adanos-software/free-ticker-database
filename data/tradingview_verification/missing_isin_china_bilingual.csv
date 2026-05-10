@@ -1,0 +1,828 @@
+ticker,exchange,asset_type,name,tv_symbol,tv_name,tv_exchange,tv_type,tv_subtype,tv_isin,tv_sector,tv_industry,tv_country,name_match,peer_name_match,decision
+001229,SZSE,Stock,Guangdong AVCiT Tech Hldg Co,001229,Guangdong Avcit Technology Holding Co Ltd. Class A,SZSE,stock,common,CNE100005JC1,Consumer Durables,Electronics/Appliances,China,False,True,name_mismatch
+001239,SZSE,Stock,Xiangtan Yongda Mach Mnfg Co,001239,"Xiangtan Yongda Machinery Manufacturing Co., Ltd. Class A",SZSE,stock,common,CNE100006CJ9,Producer Manufacturing,Metal Fabrication,China,False,True,name_mismatch
+001255,SZSE,Stock,Zhejiang Bofay Elec Co Ltd,001255,"Zhejiang Bofay Electric Co., Ltd. Class A",SZSE,stock,common,CNE100005KS5,Process Industries,Industrial Specialties,China,False,True,name_mismatch
+001316,SZSE,Stock,Zhejiang XiaSha Precision,001316,"Lubair Aviation Technology Co., Ltd. Class A",SZSE,stock,common,CNE100005DM3,Distribution Services,Wholesale Distributors,China,False,True,name_mismatch
+001366,SZSE,Stock,Boen Group Co. Ltd. Cl A,001366,"Boen Group Co., Ltd. Class A",SZSE,stock,common,CNE1000061K1,Process Industries,Agricultural Commodities/Milling,China,False,True,name_mismatch
+001387,SZSE,Stock,Hefei Snowky Elec Co Ltd,001387,"Hefei Snowky Electric Co., Ltd. Class A",SZSE,stock,common,CNE100006D83,Consumer Durables,Electronics/Appliances,China,False,True,name_mismatch
+001388,SZSE,Stock,Shandong Senter Electn Co Ltd,001388,"Shandong Senter Electronic Co., Ltd. Class A",SZSE,stock,common,CNE1000071J2,Electronic Technology,Aerospace & Defense,China,False,True,name_mismatch
+159001,SZSE,ETF,货币ETF易方达,159001,E FUND MANAGEMENT CO LTD,SZSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
+159003,SZSE,ETF,招商快线ETF,159003,CHINA MERCHANTS FUND MANAGEMENT CO,SZSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
+159005,SZSE,ETF,快钱ETF汇添富,159005,China Universal Income fast money Money market Fund Class A Units,SZSE,fund,etf,CNE1000039J9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159150,SZSE,ETF,深证50ETF易方达,159150,E Fund Shenzhen 50 Index ETF,SZSE,fund,etf,CNE100006B28,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159350,SZSE,ETF,深证50ETF富国,159350,Fullgoal Shenzhen Securities 50 ETF,SZSE,fund,etf,CNE100006B85,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159367,SZSE,ETF,China Securities Tech Innovation and Entrepreneurship 50 ETF,159367,ChinaAMC GEM 50 Units,SZSE,fund,etf,CNE100006T77,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,name_mismatch
+159501,SZSE,ETF,纳指ETF嘉实,159501,Harvest Nasdaq 100 Exchange Traded Fund Units,SZSE,fund,etf,CNE1000062L7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159502,SZSE,ETF,标普生物科技ETF嘉实,159502,Harvest S&P Biotechnology Select Industry ETF,SZSE,fund,etf,CNE100006CZ5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159505,SZSE,ETF,国证2000ETF博时,159505,Bosera CNI 2000 ETF,SZSE,fund,etf,CNE1000069F4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159506,SZSE,ETF,港股通医疗ETF富国,159506,Hang Seng Healthcare ETF,SZSE,fund,etf,CNE100006368,Miscellaneous,Investment Trusts/Mutual Funds,Hong Kong,False,True,accept
+159507,SZSE,ETF,通信ETF广发,159507,GF Guozheng Communication ETF,SZSE,fund,etf,CNE1000062Y0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159508,SZSE,ETF,生物医药ETF华安,159508,Huaan Guozheng Biomedical ETF,SZSE,fund,etf,CNE1000063X0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159509,SZSE,ETF,纳指科技ETF景顺,159509,INVESCO Great Wall Nasdaq Technology Market Cap Weighted Exchange Traded Fund Units,SZSE,fund,etf,CNE1000063Y8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159510,SZSE,ETF,沪深300价值ETF华夏,159510,ChinaAMC CSI Smart Selected 300 Value Stable Exchange Traded Fund Units,SZSE,fund,etf,CNE1000065Z0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159511,SZSE,ETF,通信ETF南方,159511,China Southern CSI Communication Services Exchange Traded Fund Units,SZSE,fund,etf,CNE100006608,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159512,SZSE,ETF,汽车ETF广发,159512,GF CSI All Share Automobiles ETF,SZSE,fund,etf,CNE1000063Z5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159513,SZSE,ETF,纳斯达克100ETF大成,159513,Da Cheng Nasdaq 100 Exchange Traded Fund Units,SZSE,fund,etf,CNE1000063F7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159515,SZSE,ETF,国企红利ETF鹏扬,159515,Pengyang CSI State-owned Enterprises Dividend Exchange Traded Fund Units,SZSE,fund,etf,CNE1000066V7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159516,SZSE,ETF,半导体设备ETF国泰,159516,Guotai CSI Semiconductor Material & Equipment Thematic Exchange Traded Fund Units,SZSE,fund,etf,CNE100006400,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159517,SZSE,ETF,中证800增强ETF银华,159517,Yinhua CSI 800 Enhanced Strategy Industry Exchange Traded Fund,SZSE,fund,etf,CNE1000066Z8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159518,SZSE,ETF,标普油气ETF嘉实,159518,Harvest S&P Oil & Gas Exploration & Production Select Industry Exchange Traded Fund Units,SZSE,fund,etf,CNE1000069G2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159519,SZSE,ETF,港股国企ETF国泰,159519,Guotai CSI Hong Kong Mainland State-Owned Enterprises Defense Industry Exchange Traded Fund Units,SZSE,fund,etf,CNE1000066W5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159520,SZSE,ETF,消费龙头ETF工银,159520,ICBCCS CSI Consumer Top Index ETF,SZSE,fund,etf,CNE100006723,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159521,SZSE,ETF,国证2000ETF平安,159521,PING AN CNI2000 Industry Exchange Traded Fund Units,SZSE,fund,etf,CNE1000066X3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159523,SZSE,ETF,沪深300成长ETF华夏,159523,Chinaamc Csi Smart Selected 300 Growth Innovation ETF,SZSE,fund,etf,CNE100006731,Miscellaneous,Investment Trusts/Mutual Funds,Hong Kong,False,True,accept
+159527,SZSE,ETF,云计算ETF广发,159527,GF CSI Cloud Computing&Big Data Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100006F73,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159529,SZSE,ETF,标普消费ETF景顺,159529,INVESCO Great Wall S&P Consumption Selact Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100006F81,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159530,SZSE,ETF,机器人ETF易方达,159530,E Fund CNI Robot Industry Index ETF,SZSE,fund,etf,CNE100006D00,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159531,SZSE,ETF,中证2000ETF南方,159531,China Southern CSI2000 Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100006749,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159532,SZSE,ETF,中证2000ETF易方达,159532,E Fund CNI2000 Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100006756,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159535,SZSE,ETF,中证2000ETF嘉实,159535,Harvest CSI 2000 ETF,SZSE,fund,etf,CNE100006830,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159536,SZSE,ETF,中证2000ETF汇添富,159536,China Universal CSI 2000 Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100006848,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159537,SZSE,ETF,信创ETF国泰,159537,Guotai CNI Information Technology Innovation Theme Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100006863,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159538,SZSE,ETF,信创ETF富国,159538,Fullgoal CNI Information Technology Innovation Theme Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100006764,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159539,SZSE,ETF,信创ETF广发,159539,GF CNI Information Technology Innovation Theme Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100006871,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159540,SZSE,ETF,信创ETF易方达,159540,E Fund CNI Information Technology Innovation Theme Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100006889,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159541,SZSE,ETF,创业板综ETF万家,159541,Wanjia ChiNext Comprehensive ETF,SZSE,fund,etf,CNE100006954,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159543,SZSE,ETF,国证2000ETF工银,159543,ICBC Credit Suisse CNI 2000 Index ETF,SZSE,fund,etf,CNE1000069H0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159546,SZSE,ETF,集成电路ETF国泰,159546,Guotai CSI All-Share Integerated Circuit Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100006962,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159547,SZSE,ETF,红利低波ETF华夏,159547,ChinaAMC CSI Dividend Low Volatility Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100006F99,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159549,SZSE,ETF,红利低波ETF天弘,159549,Tianhong CSI Dividends Low Volatility 100 Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100006B36,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159551,SZSE,ETF,机器人ETF国泰,159551,Guotai CSI Robot Index Exchange Traded Fund Units,SZSE,fund,etf,CNE1000069J6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159555,SZSE,ETF,中证2000增强ETF银华,159555,Yinhua CSI 2000 Enhanced Strategy Exchange Traded Fund Units,SZSE,fund,etf,CNE100006B93,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159556,SZSE,ETF,中证2000增强ETF平安,159556,PING AN CSI2000 Enhance Strategic Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100006D18,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159559,SZSE,ETF,机器人ETF景顺,159559,INVESCO Great Wall CNI Robot Industry Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100006BB8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159560,SZSE,ETF,芯片ETF景顺,159560,INVESCO Great Wall CSI Chip Industry Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100006B44,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159562,SZSE,ETF,黄金股ETF华夏,159562,ChinaAMC CSI SSH Gold Industry Eq ETF,SZSE,fund,etf,CNE100006D26,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159563,SZSE,ETF,创业板综ETF华夏,159563,Chinaamc Gem Comprehensive Etf,SZSE,fund,etf,CNE100006FB9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159565,SZSE,ETF,"E Fund Management Co., Ltd. - Csi Auto Components Thematic Index ETF",159565,E Fund CSI Auto Parts Theme Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100006FC7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,name_mismatch
+159567,SZSE,ETF,港股创新药ETF银华,159567,Yinhua China Sec Hong Kong Stock Connect Innovative Drug Etf,SZSE,fund,etf,CNE100006D34,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159568,SZSE,ETF,港股互联网ETF博时,159568,Bosera Hong Kong Stock Connect Internet Etf,SZSE,fund,etf,CNE100006FF0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159570,SZSE,ETF,港股通创新药ETF汇添富,159570,China Universal CNI HK Connect Innovative Drug ETF,SZSE,fund,etf,CNE100006D42,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159571,SZSE,ETF,创业板200ETF富国,159571,Fullgoal Growth Enterprise Mid-Cap 200 Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100006CC4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159572,SZSE,ETF,创业板200ETF易方达,159572,E Fund GEM Mid-Cap 200 Index ETF,SZSE,fund,etf,CNE100006CD2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159573,SZSE,ETF,创业板200ETF华夏,159573,ChinaAMC GEM Mid-Cap 200 Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100006CF7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159575,SZSE,ETF,创业板200ETF银华,159575,Yinhua GEM Mid-Cap 200 Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100006BC6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159576,SZSE,ETF,深证100ETF广发,159576,GF Shenzhen 100 Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100006CG5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159577,SZSE,ETF,美国50ETF汇添富,159577,China Universal MSIC USA50 Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100006FG8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159601,SZSE,ETF,A50ETF华夏,159601,ChinaAMC MSCI China A 50 Connect ETF,SZSE,fund,etf,CNE100004XW3,Miscellaneous,Investment Trusts/Mutual Funds,Hong Kong,False,True,accept
+159602,SZSE,ETF,中国A50ETF南方,159602,China Southern MSCI China A 50 Connect ETF Units,SZSE,fund,etf,CNE100004XX1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159603,SZSE,ETF,科创创业ETF天弘,159603,Tianhong CSI STAR&CHINEXT 50 Index ETF,SZSE,fund,etf,CNE100005DF7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159605,SZSE,ETF,中概互联ETF广发,159605,GF CSI Overseas China Internet 30 ETF,SZSE,fund,etf,CNE1000054D1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159606,SZSE,ETF,中证500成长ETF易方达,159606,E Fund CSI 500 Quality Growth Exchange Traded Fund Units,SZSE,fund,etf,CNE100005618,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159607,SZSE,ETF,中概互联网ETF嘉实,159607,Harvest CSI Overseas China Internet 30 ETF,SZSE,fund,etf,CNE1000054F6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159608,SZSE,ETF,稀有金属ETF广发,159608,GF CSI Rare Metals Industry ETF,SZSE,fund,etf,CNE100005626,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159609,SZSE,ETF,光伏ETF浦银,159609,AXA SPDB CSI Photovoltaic Industry ETF Units,SZSE,fund,etf,CNE100005DG5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159610,SZSE,ETF,中证500增强ETF景顺,159610,INVESCO Great Wall CSI 500 Enhanced Strategy ETF,SZSE,fund,etf,CNE100005634,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159611,SZSE,ETF,电力ETF广发,159611,GF CSI All Share Electric Utilities ETF,SZSE,fund,etf,CNE100005642,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159612,SZSE,ETF,标普500ETF国泰,159612,Guotai S&P 500 ETF,SZSE,fund,etf,CNE100005CV6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159613,SZSE,ETF,信息安全ETF嘉实,159613,Harvest CSI Information Security ETF,SZSE,fund,etf,CNE100005659,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159615,SZSE,ETF,恒生生物科技ETF南方,159615,China Southern Hang Seng Biotechnology Exchange Traded Fund Units,SZSE,fund,etf,CNE100005G99,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159616,SZSE,ETF,农牧ETF建信,159616,CCB CSI Agriculture and Animal Husbandry Thematic ETF,SZSE,fund,etf,CNE100005HX1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159617,SZSE,ETF,中证500价值ETF华夏,159617,ChinaAMC CSI Smart Selected 500 Value Stable Strategy Exchange Traded Fund Units,SZSE,fund,etf,CNE100005DH3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159618,SZSE,ETF,光伏ETF华安,159618,Huaan CSI Photovoltaic Industry ETF,SZSE,fund,etf,CNE100005915,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159619,SZSE,ETF,基建ETF国泰,159619,Guotai CSI Infrastructure ETF,SZSE,fund,etf,CNE1000057Q6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159620,SZSE,ETF,中证500成长ETF华夏,159620,ChinaAMC CSI Smart Selected 500 Growth Innovation Index Exchange Traded Fund,SZSE,fund,etf,CNE100005HY9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159621,SZSE,ETF,ESGETF国泰,159621,Guotai MSCI China A ESG General ETF,SZSE,fund,etf,CNE100005KN6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159622,SZSE,ETF,创新药ETF东财,159622,Eastmoney CSI SH-HK-SZ Brand Name Drug Industry Exchange Traded Fund Units,SZSE,fund,etf,CNE100005YZ1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159623,SZSE,ETF,成渝经济圈ETF博时,159623,Bosera CSI Chengdu-Chongqing Economic Circle Component Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100005KP1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159625,SZSE,ETF,绿色电力ETF嘉实,159625,Harvest CNI Green Electricity Exchange Traded Fund,SZSE,fund,etf,CNE100005923,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159627,SZSE,ETF,A100ETF华夏,159627,ChinaAMC CSI A100 ETF Units,SZSE,fund,etf,CNE100005N82,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159628,SZSE,ETF,国证2000ETF万家,159628,Wanjia CNI 2000 ETF Units,SZSE,fund,etf,CNE100005GB9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159629,SZSE,ETF,中证1000ETF富国,159629,Fullgoal CSI 1000 ETF,SZSE,fund,etf,CNE100005HZ6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159630,SZSE,ETF,A100ETF汇添富,159630,China Universal CSI A100 ETF,SZSE,fund,etf,CNE100005LS3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159631,SZSE,ETF,A100ETF招商,159631,China Merchants CSI 100 ETF,SZSE,fund,etf,CNE100005J05,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159632,SZSE,ETF,纳斯达克ETF华安,159632,HuaAn Nasdaq 100 Index ETF,SZSE,fund,etf,CNE100005J13,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159633,SZSE,ETF,中证1000ETF易方达,159633,E Fund CSI 1000 ETF,SZSE,fund,etf,CNE100005J21,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159635,SZSE,ETF,基建ETF华夏,159635,ChinaAMC CSI Construction & Engineering ETF,SZSE,fund,etf,CNE100005GC7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159636,SZSE,ETF,港股通科技30ETF工银,159636,ICBC Credit Suisse CNI HK Connect Technology ETF,SZSE,fund,etf,CNE100005GD5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159637,SZSE,ETF,新能源车ETF东财,159637,Eastmoney CSI New Energy Car ETF,SZSE,fund,etf,CNE100005J39,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159638,SZSE,ETF,高端装备ETF嘉实,159638,Harvest CSI High-End Equipment Sub-industry 50 Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100005J47,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159639,SZSE,ETF,碳中和ETF南方,159639,China Southern CSI SEEE Carbon Neutral Index ETF,SZSE,fund,etf,CNE100005GF0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159640,SZSE,ETF,碳中和龙头ETF工银,159640,ICBCCS CSI SEEE Carbon Neutral Index ETF,SZSE,fund,etf,CNE100005GG8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159641,SZSE,ETF,碳中和ETF招商,159641,CMF CSI SEEE Carbon Neutral Index ETF,SZSE,fund,etf,CNE100005GH6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159642,SZSE,ETF,碳中和ETF大成,159642,Dacheng CSI Shanghai Huan Exchange Carbon Neutral ETF,SZSE,fund,etf,CNE100005GJ2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159643,SZSE,ETF,疫苗ETF国泰,159643,Guotai CNI Vaccine and Biotechnology ETF,SZSE,fund,etf,CNE100005J54,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159645,SZSE,ETF,疫苗ETF富国,159645,Fuguo Guozheng Vaccine & Biotechnology ETF,SZSE,fund,etf,CNE100005KQ9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159647,SZSE,ETF,中药ETF鹏华,159647,Penghua CSI Traditional Chinese Medicine ETF,SZSE,fund,etf,CNE100005J70,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159649,SZSE,ETF,国开债ETF华安,159649,HuaAn ChinaBond 1-5 Year CDB Bond Exchange Traded Fund Units,SZSE,fund,etf,CNE100005LT1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159650,SZSE,ETF,国开债ETF博时,159650,Bosera ChinaBond 0-3 Year CDB Bond ETF Units,SZSE,fund,etf,CNE100005LV7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159651,SZSE,ETF,国开债ETF平安,159651,PING AN FUND MGMT CO LTD,SZSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
+159652,SZSE,ETF,有色ETF汇添富,159652,China Universal CSI Non-ferrous Metal Sub-Industry Exchange Traded Fund,SZSE,fund,etf,CNE100005SQ2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159653,SZSE,ETF,ESG300ETF国联安,159653,Penghua CNI ESG 300 ETF,SZSE,fund,etf,CNE100005Y22,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159655,SZSE,ETF,标普500ETF华夏,159655,ChinaAMC S&P 500 ETF Units,SZSE,fund,etf,CNE100005LW5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159656,SZSE,ETF,沪深300成长ETF万家,159656,Wanjia CSI 300 Growth Exchange Traded Fund Units,SZSE,fund,etf,CNE100005S87,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159657,SZSE,ETF,疫苗ETF鹏华,159657,Penghua CNI Vaccine and Biotechnology ETF Units,SZSE,fund,etf,CNE100005WG5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159658,SZSE,ETF,数字经济ETF华安,159658,HuaAn CSI Digital Economy ETF Units,SZSE,fund,etf,CNE100005LX3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159659,SZSE,ETF,纳斯达克100ETF招商,159659,China Merchants Nasdaq 100 ETF QDII,SZSE,fund,etf,CNE100005VX2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159660,SZSE,ETF,纳指ETF汇添富,159660,China Universal Nasdaq 100 ETF,SZSE,fund,etf,CNE100005YJ5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159661,SZSE,ETF,A100ETF嘉实,159661,Harvest CSI A100 Index ETF,SZSE,fund,etf,CNE100006B51,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159662,SZSE,ETF,交运ETF南方,159662,China Southern CNI Transportation Index ETF,SZSE,fund,etf,CNE100005NB5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159663,SZSE,ETF,机床ETF华夏,159663,ChinaAMC CSI Machine Tool Exchange Traded Fund Units,SZSE,fund,etf,CNE100005M42,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159665,SZSE,ETF,半导体龙头ETF工银,159665,ICBCCS CNI Semiconductor Chips Exchange Traded Fund Units,SZSE,fund,etf,CNE100005S20,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159666,SZSE,ETF,交通运输ETF华夏,159666,ChinaAMC CSI All-Share Transportation Exchange Traded Fund Units,SZSE,fund,etf,CNE100005SR0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159667,SZSE,ETF,工业母机ETF国泰,159667,Guotai CSI Machine Tool Exchange Traded Fund Units,SZSE,fund,etf,CNE100005LY1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159669,SZSE,ETF,绿色电力ETF国泰,159669,Guotai CNI Green Electricity Exchange Traded Fund,SZSE,fund,etf,CNE100005SB4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159670,SZSE,ETF,消费50ETF国联安,159670,GTJA CSI Consumption 50 Exchange Traded Fund Units,SZSE,fund,etf,CNE100005Z05,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159671,SZSE,ETF,稀有金属ETF工银,159671,ICBCCS CSI Rare Metals Industry Exchange Traded Fund Units,SZSE,fund,etf,CNE100005Y06,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159672,SZSE,ETF,消费ETF博时,159672,Bosera CSI Consumer ETF Units,SZSE,fund,etf,CNE100005Y55,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159673,SZSE,ETF,沪深300ETF鹏华,159673,Penghua CSI 300 Exchange Traded Fund Units,SZSE,fund,etf,CNE1000063G5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159675,SZSE,ETF,创业板增强ETF嘉实,159675,Harvest GEM Enhanced Strategy Exchange Traded Fund Units,SZSE,fund,etf,CNE100005NC3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159676,SZSE,ETF,创业板增强ETF富国,159676,Fullgoal ChiNext Enhanced Strategy ETF,SZSE,fund,etf,CNE100005YC0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159677,SZSE,ETF,中证1000增强ETF银华,159677,Yinhua CSI 1000 Enhanced Strategy Exchange Traded Fund Units,SZSE,fund,etf,CNE100005ND1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159678,SZSE,ETF,500增强ETF博时,159678,Bosera CSI 500 ETF,SZSE,fund,etf,CNE100005W32,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159679,SZSE,ETF,中证1000增强ETF国泰,159679,Guotai CSI 1000 Enhanced Strategy Exchange Traded Fund Units,SZSE,fund,etf,CNE100005VY0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159680,SZSE,ETF,中证1000增强ETF招商,159680,CMF CSI 1000 Enhanced Strategy Exchange Traded Fund,SZSE,fund,etf,CNE100005NF6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159681,SZSE,ETF,创业板50ETF鹏华,159681,Penghua Growth Enterprise 50 Index ETF,SZSE,fund,etf,CNE100005SC2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159682,SZSE,ETF,Invesco Great Wall Fund Managment Co Ltd - Szse Chinext 50 Index ETF,159682,INVESCO Great Wall Growth Enterprise 50 Index ETF,SZSE,fund,etf,CNE100005S53,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,name_mismatch
+159685,SZSE,ETF,1000增强ETF天弘,159685,Tianhong CSI 1000 Enhanced Strategy ETF,SZSE,fund,etf,CNE100005Y48,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159686,SZSE,ETF,A100ETF易方达,159686,E Fund CSI A100 ETF Units,SZSE,fund,etf,CNE1000063H3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159687,SZSE,ETF,亚太精选ETF南方,159687,China Southern Fund CSOP Galaxy CIMB FTSE Asia Pacific Low Carbon Select Index ETF,SZSE,fund,etf,CNE100005S79,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159688,SZSE,ETF,恒生互联网ETF华安,159688,HuaAn Hang Seng Internet & Information Technology ETF Units,SZSE,fund,etf,CNE100005TY4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159689,SZSE,ETF,消费ETF南方,159689,CSI Consumer ETF,SZSE,fund,etf,CNE100005Y14,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159690,SZSE,ETF,有色矿业ETF招商,159690,CMF CSI Nonferrous Metal Mining Theme Exchange Traded Fund Units,SZSE,fund,etf,CNE1000062Z7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159691,SZSE,ETF,港股红利ETF工银,159691,ICBCCS CSI Hong Kong Connect High Dividend Yield Select ETF Units,SZSE,fund,etf,CNE100005YK3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159692,SZSE,ETF,证券ETF东财,159692,Eastmoney CSI Securities House 30 Exchange Traded Fund Units,SZSE,fund,etf,CNE100005Z54,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159695,SZSE,ETF,通信ETF嘉实,159695,Harvest CNI Communications Exchange Traded Fund Units,SZSE,fund,etf,CNE100006418,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159696,SZSE,ETF,纳指ETF易方达,159696,E Fund Nasdaq 100 Exchange Traded Fund Units,SZSE,fund,etf,CNE100006665,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159697,SZSE,ETF,石油ETF鹏华,159697,Penghua CNI Oil&Gas Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100005Z13,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159698,SZSE,ETF,粮食ETF鹏华,159698,Penghua CNI Grain Industry Exchange Traded Fund Units,SZSE,fund,etf,CNE100006616,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159699,SZSE,ETF,恒生消费ETF广发,159699,GF Hang Seng Consumption ETF,SZSE,fund,etf,CNE100006673,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159701,SZSE,ETF,物联网ETF招商,159701,CMF CSI Internet of Things ETF,SZSE,fund,etf,CNE100004QR7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159703,SZSE,ETF,新材料ETF天弘,159703,Tianhong CSI New Materials ETF,SZSE,fund,etf,CNE100004HV8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159706,SZSE,ETF,深证100ETF华安,159706,Huaan Shenzhen 100 ETF,SZSE,fund,etf,CNE100005667,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159707,SZSE,ETF,地产ETF华宝,159707,Hwabao WP CSI 800 Real Estate ETF,SZSE,fund,etf,CNE100004XY9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159708,SZSE,ETF,红利ETF西部利得,159708,Western Leadbank SESZ Dividend ETF,SZSE,fund,etf,CNE100004JJ9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159709,SZSE,ETF,物联网ETF工银,159709,ICBCCS SZSE Internet of Things 50 Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100004JK7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159711,SZSE,ETF,港股通50ETF华夏,159711,ChinaAMC CSI HK Connect 50 Index ETF,SZSE,fund,etf,CNE100005675,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159712,SZSE,ETF,港股通50ETF国泰,159712,Guotai CSI HK Connect 50 Index ETF Units,SZSE,fund,etf,CNE100004QS5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159713,SZSE,ETF,稀土ETF富国,159713,Fullgoal CSI Rare Earth Industry ETF,SZSE,fund,etf,CNE100004PN8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159715,SZSE,ETF,稀土ETF易方达,159715,E Fund CSI Rare Earth Industry ETF Units,SZSE,fund,etf,CNE100004QT3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159716,SZSE,ETF,深证100ETF华宝,159716,Hwabao WP SZSE 100 Index ETF Units,SZSE,fund,etf,CNE100004JL5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159717,SZSE,ETF,ESGETF鹏华,159717,Penghua CNI ESG 300 ETF,SZSE,fund,etf,CNE100004QV9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159718,SZSE,ETF,港股医药ETF平安,159718,PING AN CSI HK Connect Health Care Composite ETF,SZSE,fund,etf,CNE100005683,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159719,SZSE,ETF,国企ETF平安,159719,PING AN FTSE China SOE Sustainable Prosperity ETF,SZSE,fund,etf,CNE100005691,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159720,SZSE,ETF,智能车ETF泰康,159720,Taikang CSI Intelligent Electric Vehicles Exchange Traded Fund Units,SZSE,fund,etf,CNE100004M43,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159721,SZSE,ETF,深证100ETF永赢,159721,Maxwealth SZSE Innovation 100 Index ETF,SZSE,fund,etf,CNE100004JM3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159723,SZSE,ETF,科技龙头ETF汇添富,159723,China Universal CSI SH-HK-SZ Technology Top ETF,SZSE,fund,etf,CNE100004QW7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159725,SZSE,ETF,线上消费ETF工银,159725,ICBC Credit Suisse China Securities Online Consumer ETF,SZSE,fund,etf,CNE100004JN1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159726,SZSE,ETF,港股通高股息ETF华夏,159726,ChinaAMC Hang Seng Hong Kong Stock Connect Mainland China Companies High Dividend Yield Exchange Traded Fund Units,SZSE,fund,etf,CNE1000054G4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159728,SZSE,ETF,在线消费ETF南方,159728,China Southern CNI Online Consumption ETF,SZSE,fund,etf,CNE1000056B0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159729,SZSE,ETF,互联网ETF汇添富,159729,China Universal CSI SH-HK-SZ Internet Exchange Traded Fund,SZSE,fund,etf,CNE100004MV8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159730,SZSE,ETF,家电ETF博时,159730,Bosera CNI Top Household Appliances ETF,SZSE,fund,etf,CNE1000056C8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159731,SZSE,ETF,石化ETF华夏,159731,China Securities Petrochemical Industry ETF,SZSE,fund,etf,CNE1000054H2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159732,SZSE,ETF,消费电子ETF华夏,159732,ChinaAMC CNI Consumer Electronic Exchange Traded Fund,SZSE,fund,etf,CNE100004PP3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159735,SZSE,ETF,港股消费ETF银华,159735,Yinhua CSI HK Stock Connect Consumer Thematic Exchange Traded Fund,SZSE,fund,etf,CNE100004HW6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159736,SZSE,ETF,食品饮料ETF天弘,159736,Tianhong CSI Food & Beverag Exchange ETF Units,SZSE,fund,etf,CNE100004QY3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159738,SZSE,ETF,云计算ETF华泰柏瑞,159738,Huatai-PB CSI SH-HK-SZ Cloud Computing Industry ETF,SZSE,fund,etf,CNE1000056D6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159739,SZSE,ETF,云计算ETF鹏华,159739,Penghua CSI Cloud Computing & Big Data ETF,SZSE,fund,etf,CNE100004XZ6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159740,SZSE,ETF,恒生科技ETF大成,159740,Dacheng Hang Seng Technology ETF (QDII),SZSE,fund,etf,CNE100004HX4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159741,SZSE,ETF,恒生科技ETF嘉实,159741,Harvest Hang Seng TECH Index Exchange Traded Fund,SZSE,fund,etf,CNE100004HY2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159742,SZSE,ETF,恒生科技ETF博时,159742,Bosera Hang Seng TECH ETF I,SZSE,fund,etf,CNE100004HZ9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159743,SZSE,ETF,湖北ETF博时,159743,Bosera CSI Hubei Transformation of Old and New Economic Drivers ETF,SZSE,fund,etf,CNE1000056F1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159745,SZSE,ETF,建材ETF国泰,159745,Guotai CSI All Share Construction Materials Exchange Traded Fund,SZSE,fund,etf,CNE100004J06,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159747,SZSE,ETF,香港科技ETF南方,159747,China Southern CSI Hong Kong Technology Exchange Traded Fund,SZSE,fund,etf,CNE100004M50,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159748,SZSE,ETF,创新药ETF富国,159748,Fullgoal CSI SH-HK-SZ Brand Name Drug Industry ETF Units,SZSE,fund,etf,CNE1000054J8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159750,SZSE,ETF,港股科技50ETF招商,159750,CMF CSI Hong Kong Technology ETF Units,SZSE,fund,etf,CNE100004Y07,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159751,SZSE,ETF,港股通科技ETF鹏华,159751,Penghua CSI Hong Kong Connect Technology ETF,SZSE,fund,etf,CNE1000056G9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159752,SZSE,ETF,新能源ETF申万菱信,159752,SWS CSI CN Mainland New Energy Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100004M68,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159755,SZSE,ETF,电池ETF广发,159755,GF CNI New Energy Vehicles Battery Exchange Traded Fund,SZSE,fund,etf,CNE100004JP6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159757,SZSE,ETF,电池ETF景顺,159757,INVESCO Great Wall CNI New Energy Vehicles Battery Exchange Traded Fund Units,SZSE,fund,etf,CNE100004MW6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159758,SZSE,ETF,红利质量ETF华夏,159758,ChinaAM CSI Dividend Quality ETF,SZSE,fund,etf,CNE1000056H7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159760,SZSE,ETF,医疗健康ETF泰康,159760,Taikang CNI Public Health Index ETF,SZSE,fund,etf,CNE1000054K6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159761,SZSE,ETF,新材料ETF国泰,159761,Guotai CSI New Materials ETF,SZSE,fund,etf,CNE1000054L4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159763,SZSE,ETF,新材料ETF建信,159763,CCB CSI New Materials Index ETF Units,SZSE,fund,etf,CNE100004PQ1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159766,SZSE,ETF,旅游ETF富国,159766,Fullgoal CSI Tourism Thematic Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100004MX4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159767,SZSE,ETF,电池龙头ETF兴银,159767,Xingyin CNI New Energy Vehicles Battery Exchange Traded Fund,SZSE,fund,etf,CNE100004MY2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159768,SZSE,ETF,房地产ETF银华,159768,Yinhua CSI China Mainland Real Estate Exchange Traded Fund Units,SZSE,fund,etf,CNE1000057R4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159770,SZSE,ETF,机器人ETF天弘,159770,Tianhong CSI Robot ETF Units,SZSE,fund,etf,CNE100004Y15,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159773,SZSE,ETF,创业板科技ETF华泰柏瑞,159773,Huatai-PB GEM Technology ETF,SZSE,fund,etf,CNE100004QZ0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159775,SZSE,ETF,电池ETF建信,159775,CCB CNI New Energy Vehicles Battery ETF,SZSE,fund,etf,CNE1000056J3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159776,SZSE,ETF,港股医药ETF银华,159776,Yinhua CSI HK Connect Health Care Composite Exchange Traded Fund Units,SZSE,fund,etf,CNE1000057T0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159777,SZSE,ETF,创科技ETF国联安,159777,GTJA GEM Technology ETF,SZSE,fund,etf,CNE100004R06,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159778,SZSE,ETF,工业互联网ETF鹏华,159778,Penghua CSI Industrial Internet Thematic ETF,SZSE,fund,etf,CNE1000057V6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159779,SZSE,ETF,消费电子ETF招商,159779,CMF CSI Consumer Electronics Thematic Exchange Traded Fund Units,SZSE,fund,etf,CNE100004Y23,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159780,SZSE,ETF,科创创业50ETF南方,159780,China Southern CSI STAR&CHINEXT 50 Index ETF,SZSE,fund,etf,CNE100004M76,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159781,SZSE,ETF,科创创业ETF易方达,159781,E Fund CSI Technology Innovation and Entrepreneurship 50ETF,SZSE,fund,etf,CNE100004M84,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159782,SZSE,ETF,双创50ETF银华,159782,Yinhua CSI STAR&CHINEXT 50 Index ETF,SZSE,fund,etf,CNE100004M92,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159783,SZSE,ETF,科创创业50ETF华夏,159783,ChinaAMC CSI STAR&CHINEXT 50 Index Exchange Traded Fund,SZSE,fund,etf,CNE100004MB0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159786,SZSE,ETF,VRETF银华,159786,Yinhua CSI Virtual Reality Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100004PR9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159787,SZSE,ETF,建材ETF易方达,159787,E Fund CSI All Share Construction Materials Exchange Traded Fund Units,SZSE,fund,etf,CNE1000057W4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159788,SZSE,ETF,港股通100ETF易方达,159788,E Fund CSI HK Connect China 100 Index Exchange Traded Fund Units,SZSE,fund,etf,CNE1000057X2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159790,SZSE,ETF,碳中和ETF华夏,159790,ChinaAMC CSI China Mainland Low Carbon Economy ETF Units,SZSE,fund,etf,CNE100004PS7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159791,SZSE,ETF,300ESGETF华夏,159791,ChinaAMC CSI 300 ESG Index ETF,SZSE,fund,etf,CNE1000057Y0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159792,SZSE,ETF,港股通互联网ETF富国,159792,Wells Fargo China Securities Hong Kong Stock Connect Internet ETF,SZSE,fund,etf,CNE100004R14,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159793,SZSE,ETF,线上消费ETF平安,159793,PING AN CSI SH-HK-SZ Online Consumption Exchange Traded Fund Units,SZSE,fund,etf,CNE100004Y31,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159795,SZSE,ETF,智能汽车ETF汇添富,159795,China Universal CSI Intelligent Vehicle Index ETF Units,SZSE,fund,etf,CNE1000057Z7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159796,SZSE,ETF,电池ETF汇添富,159796,China Universal CSI Battery Thematic ETF,SZSE,fund,etf,CNE100005808,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159797,SZSE,ETF,医疗器械ETF汇添富,159797,China Universal CSI All-Medical Device Index ETF,SZSE,fund,etf,CNE100005CW4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159798,SZSE,ETF,消费ETF易方达,159798,E Fund CSI Consumption 50 ETF Units,SZSE,fund,etf,CNE100005931,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159801,SZSE,ETF,芯片ETF广发,159801,GF CNI Semiconductor Chip ETF,SZSE,fund,etf,CNE1000044P6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159804,SZSE,ETF,创中盘88ETF国寿,159804,China Life AMP China Securities GEM Mid Cap Selected 88 Exchange Traded Fund Units,SZSE,fund,etf,CNE1000044S0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159805,SZSE,ETF,传媒ETF鹏华,159805,Penghua CSI Media Exchange Traded Fund Units,SZSE,fund,etf,CNE1000044T8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159806,SZSE,ETF,新能源车ETF国泰,159806,Guotai CSI New Energy Vehicles Exchange Traded Fund Units,SZSE,fund,etf,CNE1000044V4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159807,SZSE,ETF,科技ETF易方达,159807,E Fund CSI Technology ETF,SZSE,fund,etf,CNE1000044W2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159808,SZSE,ETF,创100ETF融通,159808,Rongtong GEM ETF,SZSE,fund,etf,CNE1000044X0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159810,SZSE,ETF,创业板ETF浦银,159810,AXA SPDB Gem ETF,SZSE,fund,etf,CNE1000044Z5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159811,SZSE,ETF,5GETF博时,159811,Bosera CSI 5G Industry 50 ETF,SZSE,fund,etf,CNE100004504,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159812,SZSE,ETF,黄金ETF前海开源,159812,QHKY Gold ETF,SZSE,fund,etf,CNE100004512,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159813,SZSE,ETF,半导体ETF鹏华,159813,Penghua CNI Semiconductor Chips ETF,SZSE,fund,etf,CNE100004520,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159814,SZSE,ETF,创业大盘ETF西部利得,159814,Western Leadbank GEM Large Cap ETF,SZSE,fund,etf,CNE100004538,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159816,SZSE,ETF,0-4年地方债ETF鹏华,159816,Penghua CSI 0-4 Year Local Government Bond Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100004553,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159819,SZSE,ETF,人工智能ETF易方达,159819,E Fund CSI Artificial Intelligence ETF,SZSE,fund,etf,CNE100004561,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159820,SZSE,ETF,中证500ETF天弘,159820,Tianhong CSI 500 ETF,SZSE,fund,etf,CNE100004579,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159821,SZSE,ETF,创业板ETF中银证券,159821,BOC International ChiNext Index ETF,SZSE,fund,etf,CNE100004587,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159822,SZSE,ETF,新经济ETF银华,159822,Yinhua ICBC CSOP S&P New China Sectors ETF,SZSE,fund,etf,CNE100004595,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159824,SZSE,ETF,新能源车ETF博时,159824,Bosera New Energy Vehicles ETF,SZSE,fund,etf,CNE100004B79,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159825,SZSE,ETF,农业ETF富国,159825,Fullgoal CSI Agriculture Thematic Index Exchange Traded Fund,SZSE,fund,etf,CNE100004B61,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159827,SZSE,ETF,农业ETF银华,159827,Yinhua CSI Agriculture Thematic Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100006426,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159828,SZSE,ETF,医疗ETF国泰,159828,Guotai CSI Medical Service Exchange Traded Fund Units,SZSE,fund,etf,CNE100005S04,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159830,SZSE,ETF,金ETF天弘,159830,Tianhong Shanghai Gold ETF,SZSE,fund,etf,CNE100004MC8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159831,SZSE,ETF,金ETF嘉实,159831,Harvest Shanghai Gold Exchange Traded Fund Units,SZSE,fund,etf,CNE100005949,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159834,SZSE,ETF,金ETF南方,159834,China Southern Shanghai Gold ETF,SZSE,fund,etf,CNE100005832,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159835,SZSE,ETF,创新药ETF建信,159835,CCB CSI Brand Name Drug Industry Exchange Traded Fund Units,SZSE,fund,etf,CNE100004GD8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159836,SZSE,ETF,创业板300ETF天弘,159836,Tianhong GEM 300 Exchange Traded Fund,SZSE,fund,etf,CNE100004J14,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159837,SZSE,ETF,生物科技ETF易方达,159837,E Fund CSI Biotechnology Thematic Exchange Traded Fund Units,SZSE,fund,etf,CNE100004GF3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159838,SZSE,ETF,医药50ETF博时,159838,Bosera CSI Health Care 50 ETF,SZSE,fund,etf,CNE100004MZ9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159839,SZSE,ETF,生物医药ETF汇添富,159839,China Universal Guozheng Biological Medicine Exchange Traded Fund Units,SZSE,fund,etf,CNE100004GG1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159840,SZSE,ETF,锂电池ETF工银,159840,ICBCCS CNI New Energy Vehicles Battery ETF Units,SZSE,fund,etf,CNE100004PT5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159841,SZSE,ETF,证券ETF天弘,159841,Tianhong All-Share Index Securities Companies Exchange Traded Fund,SZSE,fund,etf,CNE100004GH9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159842,SZSE,ETF,券商ETF银华,159842,Yinhua CSI Securities Company ETF,SZSE,fund,etf,CNE100004GJ5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159843,SZSE,ETF,食品饮料ETF招商,159843,China Merchants CSI Food & Berverage ETF Fund,SZSE,fund,etf,CNE100004GK3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159845,SZSE,ETF,中证1000ETF华夏,159845,ChinaAMC CSI 1000 Exchange Traded Fund,SZSE,fund,etf,CNE100004GL1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159847,SZSE,ETF,医疗ETF易方达,159847,E Fund CSI Medical ETF,SZSE,fund,etf,CNE100004MD6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159848,SZSE,ETF,证券ETF国联安,159848,CPIC CSI Securities Companies ETF Index Fund,SZSE,fund,etf,CNE100004GM9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159849,SZSE,ETF,生物科技ETF招商,159849,China Merchants CSI Biotechnology Theme ETF,SZSE,fund,etf,CNE100004GN7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159850,SZSE,ETF,恒生国企ETF华夏,159850,ChinaAMC Hang Seng China Enterprises Exchange Traded Fund(QDII) Units,SZSE,fund,etf,CNE100004GP2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159851,SZSE,ETF,金融科技ETF华宝,159851,Hwabao WP CSI Fintech Theme ETF,SZSE,fund,etf,CNE100004GQ0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159852,SZSE,ETF,软件ETF嘉实,159852,Harvest CSI Software & Services Exchange Traded Fund,SZSE,fund,etf,CNE100004GR8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159856,SZSE,ETF,互联网龙头ETF工银,159856,ICBCCS CSI SH-HK-SZ Internet Exchange Traded Fund Units,SZSE,fund,etf,CNE100004GT4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159857,SZSE,ETF,光伏ETF天弘,159857,Tianhong CSI Photovoltaic Industry ETF,SZSE,fund,etf,CNE100004GV0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159858,SZSE,ETF,创新药ETF南方,159858,China Southern CSI Brand Name Drug Industry Exchange Traded Fund,SZSE,fund,etf,CNE100004GW8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159859,SZSE,ETF,生物医药ETF天弘,159859,Tianhong Guozheng Biological Medicine Exchange Traded Fund Units,SZSE,fund,etf,CNE100004JQ4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159861,SZSE,ETF,碳中和50ETF国泰,159861,Guotai CSI Environmental Protection Industry 50 Exchange Traded Fund,SZSE,fund,etf,CNE100004GX6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159862,SZSE,ETF,食品饮料ETF银华,159862,Yinhua CSI Food & Beverage Sub-industry Index ETF Units,SZSE,fund,etf,CNE100004Y49,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159863,SZSE,ETF,光伏ETF鹏华,159863,Penghua CSI Photovoltaic Industry Exchange Traded Fund,SZSE,fund,etf,CNE100004GY4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159864,SZSE,ETF,光伏ETF国泰,159864,Guotai CSI Photovoltaic Industry ETF Units,SZSE,fund,etf,CNE100004N00,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159865,SZSE,ETF,养殖ETF国泰,159865,Guotai CSI Livestock Breeding Exchange Traded Fund,SZSE,fund,etf,CNE100004G58,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159866,SZSE,ETF,日经ETF工银,159866,ICBCCS Daiwa Nikkei225 (QDII) ETF,SZSE,fund,etf,CNE100004GZ1,Miscellaneous,Investment Trusts/Mutual Funds,Japan,False,True,accept
+159867,SZSE,ETF,养殖ETF鹏华,159867,Penghua CSI Livestock Breeding Exchange Traded Fund Units,SZSE,fund,etf,CNE100004H08,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159869,SZSE,ETF,游戏ETF华夏,159869,China Securities Animation Game ETF,SZSE,fund,etf,CNE100004H16,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159870,SZSE,ETF,化工ETF鹏华,159870,Penghua CSI Chemicals Sub-Industry ETF,SZSE,fund,etf,CNE100004H24,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159871,SZSE,ETF,有色ETF银华,159871,Yinhua CSI Nonferrous Metal Exchange Traded Fund,SZSE,fund,etf,CNE100004H32,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159872,SZSE,ETF,智能网联汽车ETF鹏华,159872,Penghua CSI Connected Car Index ETF,SZSE,fund,etf,CNE100004JR2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159873,SZSE,ETF,医疗设备ETF天弘,159873,Tianhong CSI healthcare equipment and services Index ETF,SZSE,fund,etf,CNE100004H40,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159875,SZSE,ETF,新能源ETF嘉实,159875,Harvest CSI New Energy ETF Units,SZSE,fund,etf,CNE100004PW9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159876,SZSE,ETF,有色ETF华宝,159876,Hwabao WP CSI Nonferrous Metal Exchange Traded Fund Units,SZSE,fund,etf,CNE100004H57,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159877,SZSE,ETF,医疗ETF南方,159877,China Southern All Share Health Care ETF,SZSE,fund,etf,CNE100004Y56,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159880,SZSE,ETF,有色ETF鹏华,159880,Penghua Guozheng Nonferrous Metal Industry Excgabge Traded Fund Units,SZSE,fund,etf,CNE100004H65,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159881,SZSE,ETF,有色金属ETF国泰,159881,Guotai CSI Nonferrous Metal Index ETF,SZSE,fund,etf,CNE100004JS0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159883,SZSE,ETF,医疗器械ETF永赢,159883,Maxwealth CSI Medical Device ETF Index Fund,SZSE,fund,etf,CNE100004HK1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159885,SZSE,ETF,碳中和ETF鹏华,159885,Penghua CSI China Mainland Low Carbon Economy Index Exchange Traded Fund,SZSE,fund,etf,CNE100004HL9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159886,SZSE,ETF,机械ETF富国,159886,Fullgoal CSI Detailed Chemical Industry ETF Index Fund,SZSE,fund,etf,CNE100004HM7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159887,SZSE,ETF,银行ETF富国,159887,Fullgoal CSI 800 Banks Exchange Traded Fund Units,SZSE,fund,etf,CNE100004J22,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159888,SZSE,ETF,智能汽车ETF华夏,159888,ChinaAMC CSI Intelligent Vehicle Units,SZSE,fund,etf,CNE100004J30,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159889,SZSE,ETF,智能汽车ETF国泰,159889,Guotai CSI Intelligent Vehicle Index ETF,SZSE,fund,etf,CNE100004PX7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159890,SZSE,ETF,云计算ETF招商,159890,CMF CSI Cloud Computing & Big Data Index Exchange Traded Fund,SZSE,fund,etf,CNE100004H73,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159891,SZSE,ETF,医疗ETF建信,159891,CCB Principal CSI All Share Health Care Equip & Services ETF,SZSE,fund,etf,CNE100004J48,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159892,SZSE,ETF,恒生医药ETF华夏,159892,ChinaAMC Hang Seng Hong Kong-Listed Biotech Index ETF Units A,SZSE,fund,etf,CNE100004R30,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159895,SZSE,ETF,物联网ETF易方达,159895,E Fund CSI Internet of Things ETF,SZSE,fund,etf,CNE100004Y64,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159896,SZSE,ETF,物联网ETF南方,159896,China Southern CSI Internet of Things ETF,SZSE,fund,etf,CNE1000054N0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159899,SZSE,ETF,软件ETF招商,159899,CMF CSI All-Share Software Index Exchange Traded Fund Units,SZSE,fund,etf,CNE100004J71,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159925,SZSE,ETF,沪深300ETF南方,159925,China Southern CSI 300 Index ETF Units,SZSE,fund,etf,CNE100005F25,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159928,SZSE,ETF,消费ETF汇添富,159928,CSI Consumer Staples ETF,SZSE,fund,etf,CNE100005F33,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159929,SZSE,ETF,医药ETF汇添富,159929,CSI Health Care ETF,SZSE,fund,etf,CNE1000063B6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159930,SZSE,ETF,China Universal Asset Management - CSI Energy Fund,159930,CHINA UNIVERSAL ASSET MANAGEMENT,SZSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,True,False,missing_isin
+159931,SZSE,ETF,金融地产ETF汇添富,159931,CHINA UNIVERSAL ASSET MANAGEMENT,SZSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
+159933,SZSE,ETF,金融地产ETF国投瑞银,159933,UBS SDIC FUND MANAGEMENT CO LTD,SZSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
+159934,SZSE,ETF,黄金ETF易方达,159934,E FUND MANAGEMENT CO LTD,SZSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
+159935,SZSE,ETF,中证500ETF景顺,159935,INVESCO GREAT WALL FUND MGMT CO LTD,SZSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
+159936,SZSE,ETF,可选消费ETF广发,159936,GF FUND MANAGEMENT CO LTD,SZSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
+159937,SZSE,ETF,黄金ETF博时,159937,Bosera Gold Exchange Traded Securities Investment Fund Units,SZSE,fund,etf,CN0009239244,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159938,SZSE,ETF,医药ETF广发,159938,GF CSI All-Share Health Care ETF,SZSE,fund,etf,CNE1000037P0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159940,SZSE,ETF,金融地产ETF广发,159940,GF CSI All-Share Financials ETF,SZSE,fund,etf,CNE1000037R6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159941,SZSE,ETF,纳指ETF广发,159941,GF Nasdaq-100 ETF,SZSE,fund,etf,CNE1000037S4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159948,SZSE,ETF,创业板ETF南方,159948,China Southern ChiNext ETF,SZSE,fund,etf,CNE1000037Y2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159949,SZSE,ETF,创业板50ETF华安,159949,Huaan ChiNext 50 ETF Units,SZSE,fund,etf,CNE1000037Z9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159952,SZSE,ETF,创业板ETF广发,159952,GF GEM ETF,SZSE,fund,etf,CNE100003811,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159954,SZSE,ETF,恒生中国企业ETF南方,159954,China Southern Hang Seng China Enterprises Index ETF Units,SZSE,fund,etf,CNE100003837,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159956,SZSE,ETF,创业板ETF建信,159956,CCB ChiNext ETF,SZSE,fund,etf,CNE100003852,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159957,SZSE,ETF,创业板ETF华夏,159957,China AMC Chinext ETF,SZSE,fund,etf,CNE100003860,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159958,SZSE,ETF,创业板ETF工银,159958,ICBCCS GEM Exchange Traded Fund Units,SZSE,fund,etf,CNE100003878,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159959,SZSE,ETF,央企ETF银华,159959,Yinhua CSI Central-SOEs' Structural Reform ETF,SZSE,fund,etf,CNE100003FY8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159960,SZSE,ETF,恒生中国企业ETF平安,159960,Ping An HK Stock Hang Seng China Index Fund,SZSE,fund,etf,CNE100003886,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159961,SZSE,ETF,深100ETF方正富邦,159961,Founder Fubon SZSE 100 ETF,SZSE,fund,etf,CNE100003FZ5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159964,SZSE,ETF,创业板ETF平安,159964,PING AN GEM Exchange Traded Fund,SZSE,fund,etf,CNE100003T70,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159965,SZSE,ETF,央视50ETF国联,159965,Zhongrong CCTV 50 Exchange Traded Fund,SZSE,fund,etf,CNE100003T88,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159966,SZSE,ETF,创业板价值ETF华夏,159966,China AMC GEM Low Wave Blue Chip Trading Open Index Fund,SZSE,fund,etf,CNE100003T96,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159967,SZSE,ETF,创业板成长ETF华夏,159967,ChinaAMC SZSE ChiNext Momentum Growth Exchange Traded Fund Units,SZSE,fund,etf,CNE100003TB7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159968,SZSE,ETF,中证500ETF博时,159968,Bosera CSI Smallcap 500 Index ETF,SZSE,fund,etf,CNE100003TC5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159970,SZSE,ETF,深100ETF工银,159970,ICBCCS Shenzhen Stock Exchange 100 ETF Fund,SZSE,fund,etf,CNE100003TF8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159971,SZSE,ETF,创业板ETF富国,159971,Fullgoal ChiNext Index ETF,SZSE,fund,etf,CNE100003TG6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159972,SZSE,ETF,5年地方债ETF鹏华,159972,Penghua CSI 5 Years Local government bond transaction open index securities investment fund Units,SZSE,fund,etf,CNE100003TH4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159973,SZSE,ETF,民企ETF弘毅远方,159973,Hony Horizon CNI Private-owned Leading 100 ETF,SZSE,fund,etf,CNE100004B95,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159974,SZSE,ETF,央企创新ETF富国,159974,Fullgoal Central State-Owned Enterprises Innovation-Driven ETF,SZSE,fund,etf,CNE1000045C1,,,,False,True,accept
+159975,SZSE,ETF,深100ETF招商,159975,China Merchants SZSE 100 Index ETF,SZSE,fund,etf,CNE1000045D9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159976,SZSE,ETF,湾创ETF工银,159976,ICBC Credit Suisse Guangdong-Hong Kong-Macao Greater Bay Area Innovation 100 Traded Open Index Securities Investment Fund,SZSE,fund,etf,CNE1000045F4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159977,SZSE,ETF,创业板ETF天弘,159977,TIANHONG GEM Exchanged Opened Index Securities Investment Fund Units,SZSE,fund,etf,CNE1000045G2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159980,SZSE,ETF,有色ETF大成,159980,Dacheng Non-ferrous Metals Futures ETF,SZSE,fund,etf,CNE1000045K4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159981,SZSE,ETF,能源化工ETF建信,159981,CCB Yisheng Zhengshang Energy & Chemical ETF,SZSE,fund,etf,CNE1000045L2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159982,SZSE,ETF,中证500ETF鹏华,159982,Penghua CSI 500 Index ETF Fund,SZSE,fund,etf,CNE1000045M0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159985,SZSE,ETF,豆粕ETF华夏,159985,China Feed Soybean Meal Futures Trading Open-end Securities Investment Fund ETF,SZSE,fund,etf,CNE1000045Q1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159991,SZSE,ETF,创业板大盘ETF招商,159991,China Merchants CHINEXT Large Cap Index ETF,SZSE,fund,etf,CNE1000045W9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159992,SZSE,ETF,创新药ETF银华,159992,Yinhua CSI Brand Name Drug Industry ETF,SZSE,fund,etf,CNE1000045X7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159993,SZSE,ETF,证券ETF鹏华,159993,Penghua China Securities Leading ETF,SZSE,fund,etf,CNE1000045Y5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159994,SZSE,ETF,通信ETF银华,159994,Yinhua CSI 5G Communication Index ETF Fund,SZSE,fund,etf,CNE1000045Z2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159996,SZSE,ETF,家电ETF国泰,159996,Guotai CSI All Share Household Appliances ETF,SZSE,fund,etf,CNE100004611,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159997,SZSE,ETF,电子ETF天弘,159997,Tianhong CSI Electronics ETF,SZSE,fund,etf,CNE100004629,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+159998,SZSE,ETF,计算机ETF天弘,159998,Tianhong CSI Computer ETF,SZSE,fund,etf,CNE100004637,Miscellaneous,Investment Trusts/Mutual Funds,Cameroon,False,True,accept
+301047,SZSE,Stock,Sino BiologicalInc.,301047,Sino Biological Inc. Class A,SZSE,stock,common,CNE100004Q23,Health Technology,Pharmaceuticals: Major,China,False,True,name_mismatch
+301177,SZSE,Stock,DR Corporation Limited,301177,DR Corporation Limited Class A,SZSE,stock,common,CNE100005501,Consumer Durables,Other Consumer Specialties,China,False,True,name_mismatch
+301207,SZSE,Stock,Hualan Biological Bacterin Inc.,301207,Hualan Biological Vaccine Inc. Class A,SZSE,stock,common,CNE1000058J9,Health Technology,Biotechnology,China,False,True,name_mismatch
+301539,SZSE,Stock,Hongxin Tech Co Ltd,301539,"ZheJiang HongXin Technology Co., Ltd. Class A",SZSE,stock,common,CNE100006HP5,Process Industries,Industrial Specialties,China,False,True,name_mismatch
+301589,SZSE,Stock,Novastar Co Ltd,301589,"Xi'an Novastar Tech Co., Ltd. Class A",SZSE,stock,common,CNE100006FM6,Distribution Services,Electronics Distributors,China,False,True,name_mismatch
+510100,SSE,ETF,上证50ETF易方达,510100,E FUND SSE 50 INDEX EXCHANGE-TRADED FUND,SSE,fund,etf,CNE100003KZ5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+510200,SSE,ETF,上证券商ETF汇安,510200,Hui'an SSE Securities ETF,SSE,fund,etf,CNE100003VJ6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+510350,SSE,ETF,沪深300ETF工银,510350,ICBCCS CSI 300 ETF,SSE,fund,etf,CNE100003HN7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+510360,SSE,ETF,沪深300ETF广发,510360,GF CSI 300 Index ETF Fund,SSE,fund,etf,CNE100005FK2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+510370,SSE,ETF,沪深300ETF兴业,510370,CIB CSI 300 ETF,SSE,fund,etf,CNE100003V35,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+510380,SSE,ETF,沪深300ETF国寿,510380,China Life AMP SHSE-SZSE 300 Exchange Traded Fund,SSE,fund,etf,CNE100002SJ4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+510390,SSE,ETF,沪深300ETF平安,510390,PING AN HS300 ETF,SSE,fund,etf,CNE100002S49,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+510530,SSE,ETF,中证500ETF工银,510530,ICBCCS CSI 500 ETF,SSE,fund,etf,CNE100003XV7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+510550,SSE,ETF,中证500ETF方正富邦,510550,Founder Fubon CSI 500 Exchange Traded Fund Units,SSE,fund,etf,CNE100003H74,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+510570,SSE,ETF,中证500ETF兴业,510570,CIB CSI 500 Exchange Traded Fund Units,SSE,fund,etf,CNE100003VX7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+510580,SSE,ETF,中证500ETF易方达,510580,E Fund CSI 500 ETF,SSE,fund,etf,CNE100005FL0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+510590,SSE,ETF,中证500ETF平安,510590,PING AN CSI 500 Exchange Traded Fund Units,SSE,fund,etf,CNE100002S15,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+510600,SSE,ETF,上证50ETF申万菱信,510600,SWS SSE 50 Exchange Traded Fund,SSE,fund,etf,CNE100003126,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+510710,SSE,ETF,上证50ETF博时,510710,Bosera SSE 50 Index ETF,SSE,fund,etf,CNE100006KP9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+510720,SSE,ETF,Guotai Asset Management Co Ltd - Dividend Monthly ETF,510720,Guotai SSE state-Owned Enterprise Dividends Exchange Traded Fund Units,SSE,fund,etf,CNE100006GD3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,name_mismatch
+510760,SSE,ETF,上证指数ETF国泰,510760,Guotai SSE Composite Index ETF,SSE,fund,etf,CNE100004DM6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+510770,SSE,ETF,G60创新ETF申万菱信,510770,SWS SSE G60 Component Index ETF Units,SSE,fund,etf,CNE100004VZ0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+510800,SSE,ETF,上证50ETF建信,510800,CCB SSE 50 ETF,SSE,fund,etf,CNE100002S64,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+510850,SSE,ETF,上证50ETF工银,510850,ICBCCS SSE 50 Exchange Traded Fund,SSE,fund,etf,CNE100003HP2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+510980,SSE,ETF,上证指数ETF汇添富,510980,China Universal Shanghai Composite Index Exchange Traded Fund,SSE,fund,etf,CNE100006BW4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+510990,SSE,ETF,180ESGETF工银,510990,ICBCCS CSI 180 ESG Index ETF,SSE,fund,etf,CNE100004VR7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+511020,SSE,ETF,国债ETF平安,511020,Ping An CSI 5-10 Yrs National Bond Open Index Fund,SSE,fund,etf,CNE100003H41,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+511060,SSE,ETF,5年地方债ETF海富通,511060,HFT SSE 5 Years Local Government Bond Transaction Open Index Securities Investment Fund ETF,SSE,fund,etf,CNE100003XB9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+511090,SSE,ETF,30年国债ETF鹏扬,511090,Pengyang ChinaBond 30 Year CDB Bond Exchange Traded Fund Units,SSE,fund,etf,CNE100005T11,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+511100,SSE,ETF,国债ETF华夏,511100,ChinaAMC SSE Benchmark Market Making Treasury Bonds Index Exchange Traded Fund Units,SSE,fund,etf,CNE100006BR4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+511180,SSE,ETF,可转债ETF海富通,511180,HFT SSE Investment Grade Convertible Bond and Exchangeable Bond Exchange Traded Fund Units,SSE,fund,etf,CNE100003V76,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+511260,SSE,ETF,Guotai SSE 10-Y Gov Bd ETF,511260,Guotai SSE 10 Years Treasury Bond Exchange Traded Fund Units,SSE,fund,etf,CNE100002S98,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,name_mismatch
+511270,SSE,ETF,10年地方债ETF海富通,511270,SSE 10-Year Local Government Bond Exchange Traded Fund Units,SSE,fund,etf,CNE100003696,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+511360,SSE,ETF,短融ETF海富通,511360,HFT CSI Short Term Note 50 Exchange Traded Fund Units,SSE,fund,etf,CNE100003V84,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+511380,SSE,ETF,可转债ETF博时,511380,Bosera CSI Convertible Bond and Exchangeable Bond Index ETF Units,SSE,fund,etf,CNE100003VQ1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+511520,SSE,ETF,政金债ETF富国,511520,Wells Fargo China Bond 7-10 Year Policy Financial Bond ETF,SSE,fund,etf,CNE100005TS6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+511580,SSE,ETF,国债政金债ETF招商,511580,CMF CSI Policy Bank Bond 3-5Y Index ETF Units,SSE,fund,etf,CNE100005TN7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+511600,SSE,ETF,华安日日鑫ETF,511600,Currency ETF,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
+511620,SSE,ETF,货币ETF国泰,511620,Guotai Shunli Exchange Traded Money Market Fund Units A,SSE,fund,etf,CNE100002S80,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+511650,SSE,ETF,货币ETF华夏,511650,ChinaAMC Kuaixian,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
+511670,SSE,ETF,华泰天天金ETF,511670,Huatai Exchange Traded Money Market Fund,SSE,fund,etf,CNE100002S72,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+511690,SSE,ETF,交易货币ETF大成,511690,Trading Currency,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
+511700,SSE,ETF,货币ETF平安,511700,Onfloor Currency,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
+511770,SSE,ETF,金鹰增益货币ETF,511770,Golden Eagle Gain,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
+511800,SSE,ETF,易方达货币ETF,511800,E Fund Money Market Fund ETF,SSE,fund,etf,CNE0999009R0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+511810,SSE,ETF,货币ETF南方,511810,China Southern Cash-Management Transaction Type Money Market Fund Class H Units,SSE,fund,etf,CNE0999009S8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+511820,SSE,ETF,鹏华添利ETF,511820,Penghua Tianli,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
+511830,SSE,ETF,货币ETF华泰柏瑞,511830,Huatai Currency,SSE,fund,etf,,,,,False,False,missing_isin
+511850,SSE,ETF,招商财富宝ETF,511850,Caifubao E,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
+511860,SSE,ETF,货币ETF博时,511860,Bosera Currency,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
+511880,SSE,ETF,银华日利ETF,511880,XD Yinhua Rili,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
+511900,SSE,ETF,富国货币ETF,511900,Fullgoal Currency,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
+511910,SSE,ETF,融通货币ETF,511910,Rongtong Money Market Securities Investment Fund E Units,SSE,fund,etf,CNE1000028W5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+511930,SSE,ETF,货币ETF国联,511930,Zhongrong Riying,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
+511950,SSE,ETF,添利货币ETF广发,511950,GF Tianli,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
+511960,SSE,ETF,货币ETF嘉实,511960,Harvest Kuaixian,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
+511970,SSE,ETF,国寿货币ETF,511970,China Life AMP Money Market Fund E Units,SSE,fund,etf,CNE1000028C7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+511980,SSE,ETF,货币ETF汇添富,511980,China Universal Tian Fu Tong Money Market Fund Units Class E,SSE,fund,mutual,CNE1000029K8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,asset_type_mismatch
+511990,SSE,ETF,华宝添益ETF,511990,Hwabao WP Listed Money Market Fund A Units,SSE,fund,etf,CNE099900456,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512040,SSE,ETF,价值100ETF富国,512040,Fullgoal CSI Value Exchange Traded Fund Units,SSE,fund,etf,CNE100003HH9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512070,SSE,ETF,证券保险ETF易方达,512070,Non-bank ETF,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
+512090,SSE,ETF,MSCIA股ETF易方达,512090,E Fund MSCI China A Inclusion Index Exchange Traded Fund Units,SSE,fund,etf,CNE100003159,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512100,SSE,ETF,中证1000ETF南方,512100,China Southern CSI 1000 Exchange Traded Fund,SSE,fund,etf,CNE1000063T8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512150,SSE,ETF,富时A50ETF汇安,512150,Huian FTSE China A50 ETF Fund,SSE,fund,etf,CNE100003HB2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512160,SSE,ETF,MSCI中国A股ETF南方,512160,China Southern MSCI China A Shares ETF Index Fund,SSE,fund,etf,CNE100003118,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512190,SSE,ETF,浙商之江凤凰ETF,512190,Zheshang Huijin CSI Zhejiang Phoenix Action 50 Exchange Traded Fund Units,SSE,fund,etf,CNE100003VT5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512200,SSE,ETF,房地产ETF南方,512200,China Southern CSI All Share Real Estate Index Exchange Traded Fund Units,SSE,fund,etf,CNE100002SD7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512260,SSE,ETF,中证500低波动ETF华安,512260,HuaAn CSI 500 Sector Neutral Low volatility ETF,SSE,fund,etf,CNE100003HG1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512290,SSE,ETF,Guotai CSI Biomedicine ETF,512290,Guotai CSI Bio-medicine Exchange Traded Fund,SSE,fund,etf,CNE100003KR2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,name_mismatch
+512360,SSE,ETF,MSCIA股ETF平安,512360,Ping An MSCI China A-Shares International ETF,SSE,fund,etf,CNE100003142,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512380,SSE,ETF,MSCI中国ETF银华,512380,Yinhua MSCI China A Share Exchange Traded Fund,SSE,fund,etf,CNE100003H25,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512390,SSE,ETF,中国低波ETF平安,512390,PING AN MSCI China A Low Volatility Exchange Traded Fund,SSE,fund,etf,CNE1000030Z4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512520,SSE,ETF,MSCI中国ETF华泰柏瑞,512520,Huatai-PineBridge MSCI China A Index ETF,SSE,fund,etf,CNE100003167,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512530,SSE,ETF,沪深300红利ETF建信,512530,CCB Principal CSI 300 Dividend Traded Open-end Index Fund,SSE,fund,etf,CNE100003XD5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512550,SSE,ETF,富时A50ETF嘉实,512550,Harvest FTSE China A50 ETF,SSE,fund,etf,CNE100002SL0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512560,SSE,ETF,军工ETF易方达,512560,E Fund CSI National Defense Industry Exchange Traded Fund Units,SSE,fund,etf,CNE100002SC9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512570,SSE,ETF,证券ETF易方达,512570,E Fund CSI All Share Brokerage ETF Fund,SSE,fund,etf,CNE100002SB1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512580,SSE,ETF,GF CSI Envirnmt Protect Inds ETF,512580,GF CSI Environmental Protection Industry ETF,SSE,fund,etf,CNE100005FM8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,name_mismatch
+512650,SSE,ETF,China Universal CSI Y-Rivdel int dev ETF,512650,China Universal CSI Yangze River Delta Integrated Dev ETF,SSE,fund,etf,CNE100003L29,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,name_mismatch
+512670,SSE,ETF,国防ETF鹏华,512670,Penghua CSI National Defense Exchange Traded Fund,SSE,fund,etf,CNE100003XJ2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512680,SSE,ETF,军工ETF广发,512680,GF CSI Military Industry ETF,SSE,fund,etf,CNE100005FN6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512700,SSE,ETF,银行ETF南方,512700,China Southern CSI Bank Exchange Traded Fund Units,SSE,fund,etf,CNE100002SF2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512710,SSE,ETF,军工龙头ETF富国,512710,Fullgoal CSI Military Top Exchange Traded Fund Units,SSE,fund,etf,CNE100003L03,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512730,SSE,ETF,银行ETF鹏华,512730,Penghua CSI Banks Index ETF Fund,SSE,fund,etf,CNE100003W75,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512750,SSE,ETF,基本面50ETF嘉实,512750,Harvest CSI Ruilian Fundamentals 50 ETF,SSE,fund,etf,CNE100003KP6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512770,SSE,ETF,战略新兴ETF华夏,512770,Strategic Emerging Component Index Exchange Traded Fund Units,SSE,fund,etf,CNE100003134,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512820,SSE,ETF,银行ETF汇添富,512820,China Universal CSI Bank ETF,SSE,fund,etf,CNE100003HF3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512870,SSE,ETF,杭州湾区ETF南华,512870,Nanhua CSI Hangzhou Bay Area Exchange Traded Fund,SSE,fund,etf,CNE100003H82,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512890,SSE,ETF,红利低波ETF华泰柏瑞,512890,Huatai-PB CSI Dividend Low Volatility Exchange Traded Fund Units,SSE,fund,etf,CNE100003H66,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512900,SSE,ETF,证券ETF南方,512900,China Southern CSI All Share Securities Companies Etf,SSE,fund,etf,CNE100005FP1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512910,SSE,ETF,A100ETF广发,512910,GF CSI A100 ETF,SSE,fund,etf,CNE100003KQ4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512930,SSE,ETF,AI人工智能ETF平安,512930,PING AN CSI Artificial Intelligence Exchange Traded Fund Units,SSE,fund,etf,CNE100003L37,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512950,SSE,ETF,央企改革ETF华夏,512950,ChinaAMC CSI Central-SOEs' Structural Reform Exchange Traded Fund Units,SSE,fund,etf,CNE100003HM9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+512960,SSE,ETF,央企结构调整ETF博时,512960,Bosera CSI Central-SOEs' Structural Reform Index ETF,SSE,fund,etf,CNE100003HL1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513010,SSE,ETF,恒生科技ETF易方达,513010,E Fund Hang Seng TECH Index ETF,SSE,fund,etf,CNE100004T20,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513020,SSE,ETF,港股科技ETF国泰,513020,Guotai CSI Hong Kong Technology ETF Units,SSE,fund,etf,CNE100004VN6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513040,SSE,ETF,港股通互联网ETF易方达,513040,E Fund CSI Hong Kong Connect Internet Index Exchange Traded Fund Units,SSE,fund,etf,CNE1000060Y4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513050,SSE,ETF,E Fund CSI China Ovsea Net 50 QDII-ETF,513050,E Fund CSI Overseas China Internet 50 ETF,SSE,fund,etf,CNE100006BX2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,name_mismatch
+513060,SSE,ETF,恒生医疗ETF博时,513060,Bosera Hang Seng Healthcare Exchange Traded Fund,SSE,fund,etf,CNE100004DQ7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513070,SSE,ETF,港股通消费ETF易方达,513070,E Fund CSI HK Stock Connect Consumer Thematic Exchange Traded Fund Units,SSE,fund,etf,CNE100005BL9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513080,SSE,ETF,法国ETF华安,513080,HuaAn France CAC40 ETF,SSE,fund,etf,CNE100003VF4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513090,SSE,ETF,香港证券ETF易方达,513090,E Fund CSI Hong Kong Securities Investment Theme Exchange Traded Fund Units,SSE,fund,etf,CNE100003W18,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513110,SSE,ETF,纳指ETF华泰柏瑞,513110,Huatai-PB Nasdaq 100 Exchange Traded Fund Units,SSE,fund,etf,CNE100005TF3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513120,SSE,ETF,港股创新药ETF广发,513120,GF CSI Hong Kong Brand Name Drug Exchange Traded Fund Units,SSE,fund,etf,CNE100005BG9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513130,SSE,ETF,恒生科技ETF华泰柏瑞,513130,Huatai-PB CSOP Hang Seng TECH Index Exchange Traded Fund Units,SSE,fund,etf,CNE100004T46,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513140,SSE,ETF,港股通金融ETF华泰柏瑞,513140,Huatai-PB CSI HK 300 Financial Services Exchange Traded Fund Units,SSE,fund,etf,CNE100005TM9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513150,SSE,ETF,港股通科技ETF华泰柏瑞,513150,Huatai-PB CSI Hong Kong Technology ETF,SSE,fund,etf,CNE100004W82,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513160,SSE,ETF,港股科技ETF银华,513160,Yinhua Hang Seng SCHK China Technology ETF,SSE,fund,etf,CNE100004WP9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513180,SSE,ETF,恒生科技ETF华夏,513180,ChinaAMC Hang Seng TECH Index ETEF,SSE,fund,etf,CNE100004T12,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513190,SSE,ETF,港股通金融ETF华夏,513190,ChinaAMC CSI HK Connect Mainland Finance Index Exchange Traded Fund Units,SSE,fund,etf,CNE1000067Q5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513200,SSE,ETF,港股通医药ETF易方达,513200,E Fund CSI HK Connect Health Care Composite Exchange Traded Fund Units,SSE,fund,etf,CNE100004WT1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513220,SSE,ETF,中概互联ETF招商,513220,CMF CSI Global China Internet Exchange Traded Fund Units,SSE,fund,etf,CNE100005B11,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513230,SSE,ETF,港股通消费ETF华夏,513230,ChinaAMC CSI HK Stock Connect Consumer Thematic ETF Units,SSE,fund,etf,CNE100005BM7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513260,SSE,ETF,恒生科技ETF汇添富,513260,China Universal Hang Seng TECH Index ETF Units,SSE,fund,etf,CNE100005C51,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513280,SSE,ETF,恒生生物科技ETF汇添富,513280,China Univ Hang Seng Hong Kong-Listed Biotech IDX ETF,SSE,fund,etf,CNE100005C44,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513290,SSE,ETF,纳指生物科技ETF汇添富,513290,China Universal Nasdaq Biotechnology Index Exchange Traded Fund Units,SSE,fund,etf,CNE100005C36,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513300,SSE,ETF,纳斯达克ETF华夏,513300,ChinaAMC Nasdaq-100 Index Exchange Traded Fund (QDII),SSE,fund,etf,CNE100004DH6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513310,SSE,ETF,中韩半导体ETF华泰柏瑞,513310,Huatai-PB CSI Korea Exchange China and Korea Semiconductor Exchange Traded Fund Units,SSE,fund,etf,CNE100005TB2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513320,SSE,ETF,港股通新经济ETF易方达,513320,E Fund HS HK Stocks Connect New Economy Exchange Traded Fund,SSE,fund,etf,CNE100005BF1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513330,SSE,ETF,恒生互联网ETF华夏,513330,ChinaAMC Hang Seng Internet & Information Technology ETF,SSE,fund,etf,CNE100004FL3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513350,SSE,ETF,标普油气ETF富国,513350,Fullgoal S&P Oil&Gas Exploration&Production Select Industries Index ETF,SSE,fund,etf,CNE100006C19,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513360,SSE,ETF,教育ETF博时,513360,Bosera CSI Global China Education Thematic ETF,SSE,fund,etf,CNE100004TH2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513380,SSE,ETF,恒生科技ETF广发,513380,GF Hang Seng Technology ETF,SSE,fund,etf,CNE100005B78,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513390,SSE,ETF,纳指100ETF博时,513390,Bosera Nasdaq 100 ETF,SSE,fund,etf,CNE100006145,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513400,SSE,ETF,道琼斯ETF鹏华,513400,Penghua Dow Jones Industrials Average Index Exchange Traded Fund Units,SSE,fund,etf,CNE100006BM5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513520,SSE,ETF,日经ETF华夏,513520,ChinaAMC Nomura Nikkei 225 Exchange Traded Fund Units,SSE,fund,etf,CNE100003L45,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513530,SSE,ETF,港股通红利ETF华泰柏瑞,513530,Huatai-PB CSI HK Connect HDY Investment Index Exchange Traded Fund,SSE,fund,etf,CNE100005B94,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513550,SSE,ETF,港股通50ETF华泰柏瑞,513550,Huatai-PineBridge CSI HK Connect 50 ETF,SSE,fund,etf,CNE100004D77,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513560,SSE,ETF,香港科技ETF兴银,513560,Xingyin CSI Hong Kong Stocks Connect Exchange Traded Fund Units,SSE,fund,etf,CNE100005G32,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513580,SSE,ETF,恒生科技ETF华安,513580,HuaAn Hang Seng TECH ETF QDII,SSE,fund,etf,CNE100004T38,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513590,SSE,ETF,港股通消费ETF鹏华,513590,Penghua CSI HK Stock Connect Consumer Thematic Exchange Traded Fund Units,SSE,fund,etf,CNE100004W74,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513630,SSE,ETF,港股低波红利ETF摩根,513630,JPMorgan S&P Hong Kong Stock Connect Low Volatility Dividend,SSE,fund,etf,CNE100006C50,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513650,SSE,ETF,标普500ETF南方,513650,China Southern S&P 500 Exchange Traded Fund Units,SSE,fund,etf,CNE100005SZ3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513660,SSE,ETF,恒生ETF华夏,513660,ChinaAMC SH-HK Stock Connect Hang Seng Index ETF,SSE,fund,etf,CNE1000028V7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513690,SSE,ETF,港股红利ETF博时,513690,Bosera Hang Seng High Dividend Yield ETF,SSE,fund,etf,CNE100004SW3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513700,SSE,ETF,港股通医药ETF鹏华,513700,Penghua CSI HK Connect Health Care Composite ETF,SSE,fund,etf,CNE100004V59,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513730,SSE,ETF,SOUTHEAST ASIA,513730,Huatai-PB CSOP SGX Pan Southeast Asia Technology Index Exchange Traded Fund,SSE,fund,etf,CNE100006C27,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,name_mismatch
+513750,SSE,ETF,港股通非银ETF广发,513750,GF CSI HK Non-Bank Financial Topics Index Exchange Traded Fund,SSE,fund,etf,CNE100006822,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513770,SSE,ETF,港股互联网ETF华宝,513770,Hwabao WP CSI Hong Kong Connect Internet ETF Units,SSE,fund,etf,CNE100005C28,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513800,SSE,ETF,日本东证指数ETF南方,513800,China Southern Dingfeng TOPIX Exchange Traded Fund Units,SSE,fund,etf,CNE100003KY8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513810,SSE,ETF,港股国企ETF华夏,513810,ChinaAMC CSI Hong Kong Mainland State-Owned Enterprises Defense Industry Exchange Traded Fund Units,SSE,fund,etf,CNE100006806,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513850,SSE,ETF,E FUND MSCI USA 50 ETF (QDII),513850,E Fund MSCI US 50 Exchange Traded Fund Units,SSE,fund,etf,CNE1000060S6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,name_mismatch
+513860,SSE,ETF,港股通科技ETF海富通,513860,HFT CSI Hong Kong Connect Technology Exchange Traded Fund,SSE,fund,etf,CNE100004VL0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513870,SSE,ETF,纳指ETF富国,513870,Fullgoal Nasdaq-100 Index ETF,SSE,fund,etf,CNE100006C76,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513880,SSE,ETF,日经225ETF华安,513880,HuaAn Mitsubishi UFJ Nikkei 225 Exchange Traded Fund Units,SSE,fund,etf,CNE100003KX0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513890,SSE,ETF,恒生科技ETF摩根,513890,CIFM Hang Seng TECH Index ETF,SSE,fund,etf,CNE100004X73,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513900,SSE,ETF,港股通100ETF华安,513900,HuaAn CES Stock Connect HK Select 100,SSE,fund,etf,CNE100003100,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513910,SSE,ETF,港股通央企红利ETF华夏,513910,SOEs Dividend Index Exchange Traded Fund Units,SSE,fund,etf,CNE100006F16,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513920,SSE,ETF,港股通央企红利ETF华安,513920,Huaan Hang Seng Hong Kong Stock Connect China Central Enterprises Dividend ETF,SSE,fund,etf,CNE100006BQ6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513950,SSE,ETF,恒生红利ETF富国,513950,Fullgoal Hang Seng SCHK High Dividend Low Volatility Exchange Traded Fund,SSE,fund,etf,CNE100006178,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513970,SSE,ETF,恒生消费ETF景顺,513970,INVESCO Great Wall Hang Seng Consumption Exchange Traded Fund Units,SSE,fund,etf,CNE100006152,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513980,SSE,ETF,港股科技ETF景顺,513980,INVESCO Great Wall CSI Hong Kong Connect Technology Index Exchange Traded Fund Units,SSE,fund,etf,CNE100004VK2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+513990,SSE,ETF,港股通ETF招商,513990,CMF SSE HK Equities Exchange Traded Fund,SSE,fund,etf,CNE100003WC9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515010,SSE,ETF,证券ETF华夏,515010,ChinaAmc CSI All Share Investment Banking & Brokerage ETF,SSE,fund,etf,CNE100003X58,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515020,SSE,ETF,银行ETF华夏,515020,Huaxia CSI Transaction Open Index Securities Investment Fund,SSE,fund,etf,CNE100003WY3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515050,SSE,ETF,ChinaAMC CSI 5G Communication ETF,515050,China AMC CSI 5G Communication Exchanged Open Index Securities Investment Fund,SSE,fund,etf,CNE100003X09,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,name_mismatch
+515060,SSE,ETF,China Asset Management Co. Ltd. - ChinaAMC CSI All Share Real Estate ETF Fund,515060,ChinaAMC CSI Refers To Real Estate Transaction Type Open Index Securities Investment Fund ETF,SSE,fund,etf,CNE100003WL0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,name_mismatch
+515070,SSE,ETF,China Asset Management Co. - Csi Artificial Intelligence Theme ETF Fund,515070,ChinaAMC CSI Artificial Intelligence ETF,SSE,fund,etf,CNE100003WD7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,name_mismatch
+515080,SSE,ETF,中证红利ETF招商,515080,China Merchants CSI Dividend Trading Open Index Securities Investment Fund Units,SSE,fund,etf,CNE100003WW7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515090,SSE,ETF,可持续发展ETF博时,515090,Bosera CSI Sustainable Development 100 Exchange Traded Fund Units,SSE,fund,etf,CNE100003W34,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515100,SSE,ETF,红利低波100ETF景顺,515100,INVESCO Great Wall CSI Dividend Low Volatility 100 Index Exchange Traded Fund Units,SSE,fund,etf,CNE100003V50,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515110,SSE,ETF,一带一路ETF易方达,515110,E Fund CSI SOEs Along Belt & Road Index ETF,SSE,fund,etf,CNE100003WR7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515120,SSE,ETF,创新药ETF广发,515120,GF CSI Innovative Drug Industry ETF,SSE,fund,etf,CNE100004DF0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515130,SSE,ETF,沪深300ETF博时,515130,Bosera CSI 300 Index ETF,SSE,fund,etf,CNE100003VN8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515150,SSE,ETF,一带一路ETF富国,515150,Fullgoal CSI SOEs along Belt & Road Index ETF Fund,SSE,fund,etf,CNE100003X41,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515160,SSE,ETF,MSCI中国ETF招商,515160,China Merchants MSCI China A-Shares International,SSE,fund,etf,CNE100003WB1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515170,SSE,ETF,食品饮料ETF华夏,515170,ChinaAMC CSI Food & Beverage Sub-industry Index Exchange Traded Fund,SSE,fund,etf,CNE100004D51,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515180,SSE,ETF,红利ETF易方达,515180,E Fund CSI Dividend Trading Open Index Securities Investment Fund Units,SSE,fund,etf,CNE100003WJ4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515190,SSE,ETF,中证500ETF中银证券,515190,BOC Securities CSI 500 ETF,SSE,fund,etf,CNE100003VW9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515200,SSE,ETF,SWS MU Fund Management Co Ltd - SWS MU CSI Innovation 100 ETF,515200,Shen Wan Lingxin CSI R&D Innovation 100 Transaction Open Index Securities Investment Fund Units,SSE,fund,etf,CNE100003WZ0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,name_mismatch
+515210,SSE,ETF,Guotai CSI Ferrous Metals ETF,515210,Guotai CSI Steel Exchange Traded Fund Units,SSE,fund,etf,CNE100003WG0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,name_mismatch
+515230,SSE,ETF,软件ETF国泰,515230,Guotai CSI All Share Software Index ETF,SSE,fund,etf,CNE100004FJ7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515250,SSE,ETF,智能汽车ETF富国,515250,Fullgoal CSI Intelligent Vehicle Index ETF Units,SSE,fund,etf,CNE100004D93,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515260,SSE,ETF,电子ETF华宝,515260,Hwabao WP CSI Electronics 50 Exchange Traded Fund Units,SSE,fund,etf,CNE100004FM1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515290,SSE,ETF,银行ETF天弘,515290,Tianhong CSI Bank ETF,SSE,fund,etf,CNE100004DB9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515300,SSE,ETF,300红利低波ETF嘉实,515300,Harvest CSI 300 Dividend Low Volatility ETF,SSE,fund,etf,CNE100003XF0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515310,SSE,ETF,沪深300ETF汇添富,515310,China Universal CSI 300 ETF,SSE,fund,etf,CNE100003W91,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515320,SSE,ETF,电子50ETF华安,515320,Huaan CSI Electronics 50 Index Exchange Traded Fund,SSE,fund,etf,CNE100004DG8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515330,SSE,ETF,沪深300ETF天弘,515330,Tianhong CSI 300 Trading Open Index Securities Investment Fund Units,SSE,fund,etf,CNE100003WN6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515350,SSE,ETF,沪深300ETF民生加银,515350,Minsheng Royal CSI 300 Index ETF,SSE,fund,etf,CNE100003WP1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515360,SSE,ETF,沪深300ETF方正富邦,515360,Founder Fubon SHSE-SZSE 300 Index Exchange Traded Fund Units,SSE,fund,etf,CNE100003XC7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515380,SSE,ETF,沪深300ETF泰康,515380,Taikang CSI 300 ETF,SSE,fund,etf,CNE100003WH8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515390,SSE,ETF,沪深300ETF华安,515390,Huaan CSI 300 ETF,SSE,fund,etf,CNE100003WM8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515400,SSE,ETF,大数据ETF富国,515400,Fullgoal CSI Big Data Industry Index ETF,SSE,fund,etf,CNE100004D85,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515450,SSE,ETF,红利低波50ETF南方,515450,China Southern S&P China A Share 50 ETF,SSE,fund,etf,CNE100003W00,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515530,SSE,ETF,中证500ETF泰康,515530,Taikang CSI 500 Exchange Traded Fund Units,SSE,fund,etf,CNE100004DN4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515550,SSE,ETF,中证500ETF国联,515550,Zhongrong CSI 500 Trading Open Index Securities Investment Fund Units,SSE,fund,etf,CNE100003X17,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515560,SSE,ETF,证券ETF建信,515560,CCB CSI All Share Investment Banking & BrokerageExchange Traded Fund Units,SSE,fund,etf,CNE100003VB3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515580,SSE,ETF,科技100ETF华泰柏瑞,515580,Huatai Bairui CSI Technology 100 Trading Open Index Securities Investment Fund Units,SSE,fund,etf,CNE100003WX5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515590,SSE,ETF,500等权ETF前海开源,515590,First Seafront CSI 500 Equal Weight Index ETF,SSE,fund,etf,CNE100003XQ7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515600,SSE,ETF,央企创新ETF广发,515600,GF CSI Central-SOEs Innovation Driven Index ETF,SSE,fund,etf,CNE100003X66,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515630,SSE,ETF,证券保险ETF鹏华,515630,Penghua CSI 800 Securities Insurance ETF,SSE,fund,etf,CNE100003VR9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515660,SSE,ETF,沪深300ETF国联安,515660,CPIC CSI 300 Index ETF Fund,SSE,fund,etf,CNE100003X25,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515680,SSE,ETF,央企创新ETF嘉实,515680,Harvest CSI Central-SOEs Innovation Driven Index ETF,SSE,fund,etf,CNE100003XN4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515710,SSE,ETF,食品饮料ETF华宝,515710,Hwabao WP CSI Food & Beverage Sub-industry Index ETF,SSE,fund,etf,CNE100004D69,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515750,SSE,ETF,科技50ETF富国,515750,Fullgoal CSI Technology 50 Strategy ETF,SSE,fund,etf,CNE100003WQ9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515760,SSE,ETF,浙江国资ETF华夏,515760,ChinaAMC CSI Zhejiang SOEs Innovation Exchange Traded Fund Units,SSE,fund,etf,CNE100003TZ6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515770,SSE,ETF,China International Fund Management Co. Ltd. - Cifm Msci China A ETF,515770,CIFM MSCI China A RMB Index ETF,SSE,fund,etf,CNE100003VC1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,name_mismatch
+515790,SSE,ETF,光伏ETF华泰柏瑞,515790,Huatai-PB CSI Photovoltaic Industry Index Exchange Traded Fund Units,SSE,fund,etf,CNE100004DC7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515800,SSE,ETF,中证800ETF汇添富,515800,China Universal CSI 800 Index ETF Fund,SSE,fund,etf,CNE100003WV9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515810,SSE,ETF,中证800ETF易方达,515810,E Fund CSI 800 Exchanged Opened Index Securities Investment Fund Units A,SSE,fund,etf,CNE100003WS5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515850,SSE,ETF,证券ETF富国,515850,Fullgoal CSI Securities ETF,SSE,fund,etf,CNE100003X90,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515860,SSE,ETF,科技ETF嘉实,515860,Harvest CSI Emerging Tech 100 Index ETF,SSE,fund,etf,CNE100003XP9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515890,SSE,ETF,红利ETF博时,515890,Bosera CSI Dividend ETF,SSE,fund,etf,CNE100003VP3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515900,SSE,ETF,央企创新ETF博时,515900,Bosera CSI Cenreal enterprise Propel Exchanged Opened Index Securities Investment Fund Units,SSE,fund,etf,CNE100003X74,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515910,SSE,ETF,质量ETF中金,515910,CICC MSCI China A International Quality Index Exchange Traded Fund Units,SSE,fund,etf,CNE100004D44,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515920,SSE,ETF,智能消费ETF博时,515920,Bosera CSI Inteligent Consumer Index ETF,SSE,fund,etf,CNE100004DD5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515950,SSE,ETF,医药50ETF富国,515950,Fullgoal CSI Health Care 50 Index ETF,SSE,fund,etf,CNE100003VV1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515960,SSE,ETF,医药ETF嘉实,515960,Harvest CSI Health Care and Medical 100 Strategy Exchange Traded Fund Units,SSE,fund,etf,CNE100003XK0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+515990,SSE,ETF,一带一路ETF汇添富,515990,China Universal CSI SOEs Along Belt & Road Index ETF,SSE,fund,etf,CNE100003WT3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516000,SSE,ETF,大数据ETF华夏,516000,ChinaAMC CSI Big Data Industry Index Exchange Traded Fund Units,SSE,fund,etf,CNE100004FN9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516010,SSE,ETF,游戏ETF国泰,516010,Cathay CSI Animation and Games ETF,SSE,fund,etf,CNE100004DY1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516020,SSE,ETF,化工ETF华宝,516020,Hwabao WP CSI Chemicals Sub-industry Exchange Traded Fund Units,SSE,fund,etf,CNE100004DW5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516050,SSE,ETF,科技龙头ETF工银,516050,ICBC Credit Suisse CSI Technology Top Index ETF,SSE,fund,etf,CNE100004FS8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516060,SSE,ETF,创新药ETF工银,516060,ICBCCS CSI Brand Name Drug Industry Exchange Traded Fund Units,SSE,fund,etf,CNE100004FV2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516070,SSE,ETF,低碳ETF易方达,516070,E Fund CSI China Mainland Low Carbon Economy Exchange Traded Fund Units,SSE,fund,etf,CNE100004TV3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516080,SSE,ETF,创新药ETF易方达,516080,E Fund CSI Brand Name Drug Industry Exchange Traded Fund Units,SSE,fund,etf,CNE100004FG3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516090,SSE,ETF,新能源ETF易方达,516090,E Fund CSI New Energy Exchange Traded Fund Units,SSE,fund,etf,CNE100004DT1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516100,SSE,ETF,金融科技ETF华夏,516100,ChinaAMC CSI Fintech Theme Index Exchange Traded Fund,SSE,fund,etf,CNE100004TY7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516110,SSE,ETF,汽车ETF国泰,516110,Guotai CSI 800 Automobiles & Components Index ETF,SSE,fund,etf,CNE100004F34,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516120,SSE,ETF,化工ETF富国,516120,Fullgoal CSI Detailed Chemical Industry ETF Index Fund,SSE,fund,etf,CNE100004DX3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516130,SSE,ETF,消费龙头ETF华宝,516130,Hwabao WP CSI Consumer Top Index ETF,SSE,fund,etf,CNE100004X24,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516150,SSE,ETF,稀土ETF嘉实,516150,Harvest CSI Rare Earth Industry ETF,SSE,fund,etf,CNE100004SX1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516160,SSE,ETF,新能源ETF南方,516160,China Southern CSI New Energy Exchange Traded Fund Units,SSE,fund,etf,CNE100004FQ2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516180,SSE,ETF,光伏ETF平安,516180,PING AN CSI Photovoltaic Industry Exchange Traded Fund Units,SSE,fund,etf,CNE100004F67,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516190,SSE,ETF,传媒ETF华夏,516190,ChinaAMC CSI Cultural Recreation & Media Index ETF Units,SSE,fund,etf,CNE100004VT3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516200,SSE,ETF,证券ETF华安,516200,Huaan Csi All Share Securities Cos. ETF,SSE,fund,etf,CNE100004F75,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516210,SSE,ETF,银行ETF华安,516210,HuaAn CSI Bank Index ETF,SSE,fund,etf,CNE100004W25,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516220,SSE,ETF,化工ETF国泰,516220,Guotai CSI Chemicals Sub-industry ETF Units,SSE,fund,etf,CNE100004DV7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516260,SSE,ETF,物联网ETF华夏,516260,ChinaAMC CSI Internet of Things Index ETF Units,SSE,fund,etf,CNE100004WC7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516270,SSE,ETF,新能源ETF华安,516270,Huaan CSI CN Mainland New Energy Exchange Traded Fund Units,SSE,fund,etf,CNE100004V67,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516290,SSE,ETF,光伏ETF汇添富,516290,China Universal CSI Photovoltaic Industry Exchange Traded Fund,SSE,fund,etf,CNE100004W33,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516300,SSE,ETF,中证1000ETF华泰柏瑞,516300,Huatai-PB CSI 1000 Exchange Traded Fund Units,SSE,fund,etf,CNE100004F42,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516310,SSE,ETF,银行ETF易方达,516310,E Fund CSI Bank ETF,SSE,fund,etf,CNE100004TD1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516320,SSE,ETF,高端装备ETF华夏,516320,ChinaAMC CSI Equipment Manufacturing Industry Stimulus ETF,SSE,fund,etf,CNE100004T79,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516330,SSE,ETF,物联网ETF华泰柏瑞,516330,Huatai-PB CSI Internet of Things Index Exchange Traded Fund Units,SSE,fund,etf,CNE100004SQ5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516350,SSE,ETF,芯片ETF易方达,516350,E Fund CSI Chip Industry ETF,SSE,fund,etf,CNE100004WW5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516360,SSE,ETF,新材料ETF华宝,516360,Hwabao WP CSI New Materials ETF,SSE,fund,etf,CNE100004TR1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516380,SSE,ETF,智能电动车ETF华宝,516380,Hwabao WP CSI Smart Electric Car Index ETF,SSE,fund,etf,CNE100004VQ9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516390,SSE,ETF,新能源车ETF汇添富,516390,China Universal CSI New Energy Vehicles Industry Exchange Traded Fund,SSE,fund,etf,CNE100004T53,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516500,SSE,ETF,生物科技ETF华夏,516500,ChinaAMC CSI Biotechnology Thematic Exchange Traded Fund,SSE,fund,etf,CNE100004F18,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516510,SSE,ETF,云计算ETF易方达,516510,E Fund CSI Cloud Computing & Big Data Index ETF,SSE,fund,etf,CNE100004SR3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516520,SSE,ETF,智能驾驶ETF华泰柏瑞,516520,Huatai-Pinebridge CSI Smart Vehicle ETF Index Fund,SSE,fund,etf,CNE100004F83,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516530,SSE,ETF,物流ETF银华,516530,Yinhua CSI Modern Logistics ETF,SSE,fund,etf,CNE100004WY1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516550,SSE,ETF,农业ETF嘉实,516550,Harvest CSI Grand Agriculture ETF,SSE,fund,etf,CNE100004SY9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516560,SSE,ETF,养老ETF华宝,516560,Huabao Pension ETF,SSE,fund,etf,CNE100004VS5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516570,SSE,ETF,化工行业ETF易方达,516570,E Fund CSI Petrochemical Industry Stimulus ETF,SSE,fund,etf,CNE100004VM8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516580,SSE,ETF,新能源ETF博时,516580,Bosera CSI New Energy ETF,SSE,fund,etf,CNE100004VD7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516590,SSE,ETF,智能汽车ETF易方达,516590,E Fund CSI Intelligent Electric Vehicles ETF,SSE,fund,etf,CNE100004TL4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516600,SSE,ETF,消费服务ETF工银,516600,ICBCCS CSI Leading Consumption and Services Exchange Traded Fund Units,SSE,fund,etf,CNE100004FR0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516610,SSE,ETF,医疗设备ETF大成,516610,Da Cheng CSI Health Care Equipment & Services ETF,SSE,fund,etf,CNE100004SV5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516620,SSE,ETF,影视ETF国泰,516620,Guotai CSI Film & Television ETF,SSE,fund,etf,CNE100004T61,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516630,SSE,ETF,云计算ETF华夏,516630,ChinaAMC CSI Cloud Computing & Big Data ETF,SSE,fund,etf,CNE100004VX5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516640,SSE,ETF,芯片ETF富国,516640,Fullgoal CSI Chip Industry ETF,SSE,fund,etf,CNE100004XF8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516650,SSE,ETF,有色金属ETF华夏,516650,ChinaAMC CSI Non-ferrous Metal Sub-industry ETF,SSE,fund,etf,CNE100004XC5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516660,SSE,ETF,新能源车ETF华安,516660,HuaAn CSI New Energy Vehicles Index Exchange Traded Fund Units,SSE,fund,etf,CNE100004D28,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516670,SSE,ETF,畜牧养殖ETF招商,516670,China Merchants CSI Livestock Breeding ETF,SSE,fund,etf,CNE100004SZ6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516700,SSE,ETF,大数据ETF华宝,516700,Hwabao WP CSI Big Data Industry ETF,SSE,fund,etf,CNE100004TM2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516710,SSE,ETF,新材料ETF华夏,516710,ChinaAMC CSI New Materials Index ETF,SSE,fund,etf,CNE100004XV5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516720,SSE,ETF,ESGETF浦银,516720,SPDB-AXA CSI Shanghai-HK-Shenzhen Game and Cultural Media ETF,SSE,fund,etf,CNE100004TC3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516730,SSE,ETF,证券ETF浦银,516730,AXA SPDB CSI All Share Investment Banking & Brokerage 30 ETF Units,SSE,fund,etf,CNE100004T95,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516750,SSE,ETF,建材ETF富国,516750,Fullgoal CSI All Share Construction Materials ETF,SSE,fund,etf,CNE100004XP7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516760,SSE,ETF,养殖ETF平安,516760,PING AN CSI Livestock Breeding Exchange Traded Fund Units,SSE,fund,etf,CNE100004DS3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516770,SSE,ETF,游戏ETF华泰柏瑞,516770,Huatai-PB CSI Anime Comic & Game Exchange TradedFund Units,SSE,fund,etf,CNE100004DZ8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516780,SSE,ETF,稀土ETF华泰柏瑞,516780,Huatai-PB CSI Rare Earth Industry Exchange Traded Fund Units,SSE,fund,etf,CNE100004F00,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516790,SSE,ETF,医疗ETF华泰柏瑞,516790,Huatai-PineBridge CSI Healthcare Equipment Services ETF,SSE,fund,etf,CNE100004ST9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516800,SSE,ETF,智能制造ETF华宝,516800,Hwabao WP CSI Intelligent Manufacturing Exchange Traded Fund Units,SSE,fund,etf,CNE100004D02,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516810,SSE,ETF,农业ETF华夏,516810,ChinaAMC CSI Agriculture Thematic Index ETF,SSE,fund,etf,CNE100004XR3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516820,SSE,ETF,医疗创新ETF平安,516820,PING AN CSI Health Care Innovation Index ETF,SSE,fund,etf,CNE100004VP1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516830,SSE,ETF,沪深300ESGETF富国,516830,Fullgoal CSI 300 ESG Index Exchange Traded Fund,SSE,fund,etf,CNE100004XB7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516850,SSE,ETF,新能源ETF华夏,516850,ChinaAMC CSI New Energy Exchange Traded Fund Units,SSE,fund,etf,CNE100004DR5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516860,SSE,ETF,金融科技ETF博时,516860,Bosera Fin-tech ETF,SSE,fund,etf,CNE100004WJ2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516880,SSE,ETF,光伏ETF银华,516880,Yinhua CSI Photovoltaic Industry Index Exchange Trader Fund,SSE,fund,etf,CNE100004D36,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516890,SSE,ETF,新材料ETF平安,516890,PING AN CSI New Materials Exchange Traded Fund,SSE,fund,etf,CNE100004TQ3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516900,SSE,ETF,食品饮料ETF华安,516900,Huaan CSI SWS Food & Beverage Exchange Traded Fund Units,SSE,fund,etf,CNE100004F26,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516910,SSE,ETF,物流ETF富国,516910,Fullgoal CSI Modern Logistics ETF,SSE,fund,etf,CNE100004X81,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516920,SSE,ETF,芯片ETF汇添富,516920,China Universal CSI Chip Industry Index Exchange Traded Fund,SSE,fund,etf,CNE100004WD5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516930,SSE,ETF,生物科技ETF民生加银,516930,Minsheng Royal CSI Biotechnology Thematic ETF,SSE,fund,etf,CNE100004X99,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516950,SSE,ETF,基建ETF银华,516950,Yinhua CSI Infrastructure ETF,SSE,fund,etf,CNE100004TP5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516960,SSE,ETF,机械ETF国泰,516960,Guotai CSI Machinery Sub-industry Index ETF,SSE,fund,etf,CNE100004SS1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516970,SSE,ETF,基建ETF广发,516970,GF CSI Information Security ETF,SSE,fund,etf,CNE100004VJ4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+516980,SSE,ETF,证券先锋ETF华富,516980,Harfor CSI Securities House Pioneer Strategy ETF,SSE,fund,etf,CNE100004FP4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517000,SSE,ETF,沪港深500ETF银华,517000,Yinhua CSI SH-HK-SZ 500 Exchange Traded Fund Units,SSE,fund,etf,CNE100004FH1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517010,SSE,ETF,沪港深500ETF易方达,517010,E Fund CSI Shanghai-Hong Kong-Shenzhen 500 ETF,SSE,fund,etf,CNE100004TT7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517030,SSE,ETF,沪港深300ETF易方达,517030,E Fund CSI Shanghai-Hong Kong-Shenzhen 300 ETF,SSE,fund,etf,CNE100004TS9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517050,SSE,ETF,互联网ETF华泰柏瑞,517050,Huatai-PB CSI SH-HK-SZ Internet Exchange Traded Fund Units,SSE,fund,etf,CNE100004F91,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517080,SSE,ETF,沪港深500ETF汇添富,517080,China Universal CSI SH-HK-SZ 500 Exchange Traded Fund Units,SSE,fund,etf,CNE100004FC2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517090,SSE,ETF,央企共赢ETF国泰,517090,Guotai FTSE China SOE Sustainable Prosperity ETF,SSE,fund,etf,CNE100004TN0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517100,SSE,ETF,沪港深500ETF富国,517100,Fullgoal CSI SSE-HKEx-SZSE 500 Exchange Traded Fund Units,SSE,fund,etf,CNE100004FF5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517110,SSE,ETF,创新药ETF国泰,517110,Guotai CSI SH-HK-SZ Brand Name Drug Industry ETF,SSE,fund,etf,CNE100004TK6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517120,SSE,ETF,创新药ETF华泰柏瑞,517120,Huatai-PB CSI SH-HK-SZ Brand Name Drug Industry ETF,SSE,fund,etf,CNE100004V42,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517160,SSE,ETF,长江保护ETF南方,517160,China Southern CSI Yangtze River Protection ETF,SSE,fund,etf,CNE100004WX3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517170,SSE,ETF,沪港深500ETF华夏,517170,ChinaAMC SSE-HKEx-SZSE 500 ETF,SSE,fund,etf,CNE100004TW1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517180,SSE,ETF,中国国企ETF南方,517180,China Southern FTSE China SOE Sustainable Prosperity ETF,SSE,fund,etf,CNE100004X16,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517200,SSE,ETF,互联网ETF嘉实,517200,Harvest CSI SH-HK-SZ Internet Exchange Traded Fund Units,SSE,fund,etf,CNE100004FB4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517300,SSE,ETF,沪港深300ETF国寿,517300,China Life AMP CSI SH-HK-SZ 300 Exchange Traded Fund Units,SSE,fund,etf,CNE100004FK5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517330,SSE,ETF,长江保护ETF易方达,517330,E Fund CSI Yangtze River Protection ETF,SSE,fund,etf,CNE100004WZ8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517350,SSE,ETF,沪港深科技ETF广发,517350,GF CSI SH-HK-SZ Technology Top Exchange Traded Fund Units,SSE,fund,etf,CNE100004TG4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517360,SSE,ETF,沪港深科技ETF华安,517360,Huaan CSI Shanghai HK Shenzhen Tech 100 ETF Fund,SSE,fund,etf,CNE100004T87,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517380,SSE,ETF,创新药ETF天弘,517380,Tianhong Hang Seng Shanghai-Shenzhen-Hong Kong Innovative Drug Select 50 Index Exchange Traded Fund,SSE,fund,etf,CNE100004XJ0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517390,SSE,ETF,云计算ETF天弘,517390,Tianhong CSI SH-HK-SZ Cloud Computing Industry ETF,SSE,fund,etf,CNE100004XM4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517520,SSE,ETF,黄金股ETF永赢,517520,Maxwealth CSI SH-SZ-HK Gold Industry Equity ETF,SSE,fund,etf,CNE100006C43,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517550,SSE,ETF,沪港深消费龙头ETF招商,517550,CMF CSI SH-HK-SZ Consumer Top ETF,SSE,fund,etf,CNE100005BX4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517660,SSE,ETF,物联网ETF天弘,517660,Tianhong CSI SH-HK-SZ Internet ETF Units,SSE,fund,etf,CNE100004XS1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517770,SSE,ETF,游戏传媒ETF浦银,517770,AXA SPDB CSI SH-HK-SZ Game & Cultural Media ETF,SSE,fund,etf,CNE100004VB1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517800,SSE,ETF,人工智能50ETF方正富邦,517800,Founder Fubon CSI SH-HK-SZ ARTIFICIAL INTELLIGENCE 50 ETF,SSE,fund,etf,CNE100004W58,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517850,SSE,ETF,张江ETF汇添富,517850,China Universal CSI SH-HK-SZ Zhangjiang Innovation 50 ETF Units,SSE,fund,etf,CNE100005BC8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517880,SSE,ETF,品牌消费ETF华泰柏瑞,517880,Huatai-PB CSI SH-HK-SZ Consumer Brand 50 ETF,SSE,fund,etf,CNE100004VG0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517900,SSE,ETF,银行AH优选ETF招商,517900,CMF CSI Banks AH Price Select ETF,SSE,fund,etf,CNE100005BZ9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+517990,SSE,ETF,沪港深医药ETF招商,517990,CMF CSI SSE-HKEx-SZSE 500 Medicine Health ETF,SSE,fund,etf,CNE100005BB0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+518600,SSE,ETF,金ETF广发,518600,GF Shanghai Gold Exchange Traded Fund Units,SSE,fund,etf,CNE100004DP9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+518660,SSE,ETF,黄金ETF工银,518660,ICBC Credit Suisse Gold ETF,SSE,fund,etf,CNE100003XT1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+518680,SSE,ETF,金ETF富国,518680,Fullgoal Shanghai Gold Exchange Traded Fund,SSE,fund,etf,CNE100003V27,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+518850,SSE,ETF,黄金ETF华夏,518850,ChinaAMC Gold ETF,SSE,fund,etf,CNE100003VD9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+518860,SSE,ETF,上海金ETF建信,518860,CCB Shanghai Gold Exchange Traded Fund Units,SSE,fund,etf,CNE100003V92,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+518890,SSE,ETF,上海金ETF中银,518890,BOC SHAU ETF,SSE,fund,etf,CNE100003V01,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+520550,SSE,ETF,China Merchants Fund Management Co. Ltd. - High Dividend Hk Equities Fund,520550,CMF Hang Seng Hong Kong Stock Connect High Dividend Low Volatility Exchange Traded Fund Units,SSE,fund,etf,CNE100006RB4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,name_mismatch
+560000,SSE,ETF,智能电车ETF浦银,560000,AXA SPDB CSI Intelligent Electric Vehicles ETF,SSE,fund,etf,CNE100004V83,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560010,SSE,ETF,中证1000ETF广发,560010,GF CSI 1000 Exchange Traded Fund Units,SSE,fund,etf,CNE100005B29,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560020,SSE,ETF,红利ETF汇添富,560020,China Universal CSI Dividend ETF,SSE,fund,etf,CNE100006814,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560030,SSE,ETF,800价值ETF汇添富,560030,China Universal CSI 800 Value Exchange Traded Fund Units,SSE,fund,etf,CNE1000063S0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560050,SSE,ETF,中国A50ETF汇添富,560050,China Universal MSCI China A 50 Connect ETF Units,SSE,fund,etf,CNE100004WQ7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560060,SSE,ETF,碳中和ETF汇添富,560060,China Universal CSI SEEE Carbon Neutral Index Exchange Traded Fund Units,SSE,fund,etf,CNE100005FQ9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560070,SSE,ETF,央企红利ETF汇添富,560070,China Universal CSI Guoxin Central-SOEs Shareholder Return Exchange Traded Fund Units,SSE,fund,etf,CNE1000060W8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560080,SSE,ETF,中药ETF汇添富,560080,China Universal CSI Traditional Chinese Medicine Exchange Traded Fund Units,SSE,fund,etf,CNE100005TX6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560090,SSE,ETF,证券ETF汇添富,560090,China Universal CSI All Share Investment Banking & Brokerage ETF Units,SSE,fund,etf,CNE100005SS8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560100,SSE,ETF,中证500增强ETF南方,560100,China Southern CSI 500 Enhanced Strategy Exchange Traded Fund Units,SSE,fund,etf,CNE100005BQ8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560110,SSE,ETF,中证1000ETF汇添富,560110,China Universal CSI 1000 Exchange Traded Fund Units,SSE,fund,etf,CNE100005TW8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560170,SSE,ETF,央企科技ETF南方,560170,China Southern CSI Guoxin Central-SOEs Technology Lead ETF,SSE,fund,etf,CNE1000063P6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560180,SSE,ETF,沪深300ESGETF南方,560180,China Southern CSI 300 ESG Benchmark ETF Units,SSE,fund,etf,CNE100006160,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560220,SSE,ETF,中证2000ETF广发,560220,GF CSI 2000 ETF,SSE,fund,etf,CNE1000067J0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560260,SSE,ETF,医疗ETF广发,560260,GF CSI Medical ETF,SSE,fund,etf,CNE1000067W3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560280,SSE,ETF,工程机械ETF广发,560280,GF CSI Construction Machinery Index Exchange Traded Fund Units,SSE,fund,etf,CNE100006798,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560300,SSE,ETF,CHINA UNIVERSAL CSI TELECOMMUNICATIONS THEME ETF,560300,China Universal CSI Telecom Thematic Index Exchange Traded Fund Units,SSE,fund,etf,CNE100006BT0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,name_mismatch
+560330,SSE,ETF,沪深300价值ETF申万菱信,560330,SWS CSI 300 Value Exchange Traded Fund Units,SSE,fund,etf,CNE100006129,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560500,SSE,ETF,500质量成长ETF鹏扬,560500,Pengyang CSI 500 Quality and Growth ETF Units,SSE,fund,etf,CNE100004WH6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560550,SSE,ETF,碳中和ETF广发,560550,GF CSI SEEE Carbon Neutral Index Exchange Traded Fund Units,SSE,fund,etf,CNE100005FR7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560560,SSE,ETF,碳中和ETF泰康,560560,Taikang CSI China Mainland Low Carbon Economy ETF,SSE,fund,etf,CNE100004W17,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560580,SSE,ETF,电力ETF南方,560580,China Southern CSI All Share Electric Utilities Exchange Traded Fund Units,SSE,fund,etf,CNE100006111,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560590,SSE,ETF,中证1000增强ETF鹏华,560590,Penghua CSI 1000 Enhanced Index Exchange Traded Fund,SSE,fund,etf,CNE1000067R3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560650,SSE,ETF,核心50ETF民生加银,560650,Minsheng Royal CSI Enterprise Core Competitiveness 50 Exchange Traded Fund Units,SSE,fund,etf,CNE100005BW6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560660,SSE,ETF,云计算50ETF新华,560660,New China CSI Cloud Computing 50 Index ETF,SSE,fund,etf,CNE100004WB9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560680,SSE,ETF,消费ETF广发,560680,GF CSI All-Share Consumer Staples ETF,SSE,fund,etf,CNE100005FS5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560700,SSE,ETF,央企红利ETF广发,560700,GF CSI Guoxin Central-SOEs Shareholder Return Exchange Traded Fund Units,SSE,fund,etf,CNE1000060V0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560780,SSE,ETF,半导体设备ETF广发,560780,GF CSI Semiconductor Material & Equipment Thematic Exchange Traded Fund Units,SSE,fund,etf,CNE100006C92,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560800,SSE,ETF,数字经济ETF鹏扬,560800,Pengyang CSI Digital Economy ETF,SSE,fund,etf,CNE100004WM6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560860,SSE,ETF,工业有色ETF万家,560860,Wanjia CSI Industrial Non-ferrous Metal Exchange Traded Fund Units,SSE,fund,etf,CNE100005T03,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560880,SSE,ETF,家电ETF广发,560880,GF CSI All Share Household Appliances Exchange Traded Fund Units,SSE,fund,etf,CNE100004WK0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560900,SSE,ETF,创新药ETF摩根,560900,CIFM CSI Brand Name Drug Industry Exchange Traded Fund Units,SSE,fund,etf,CNE100005B86,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560950,SSE,ETF,中证500增强ETF汇添富,560950,China Universal CSI 500 Enhanced Strategy Exchange Traded Fund Units,SSE,fund,etf,CNE1000060Z1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560980,SSE,ETF,光伏龙头ETF广发,560980,GF CSI Photovoltaic Leading 30 ETF,SSE,fund,etf,CNE100005FT3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+560990,SSE,ETF,科技先锋ETF中金,560990,CICC CSI Technology Pioneer Exchange Traded Fund Units,SSE,fund,etf,CNE100005B52,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561000,SSE,ETF,沪深300增强ETF华安,561000,HuaAn CSI 300 Enhance Strategic Exchange Traded Fund Units,SSE,fund,etf,CNE100005T37,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561010,SSE,ETF,软件ETF华安,561010,HuaAn CSI All Share Software Development Index Exchange Traded Fund Units,SSE,fund,etf,CNE100006C68,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561060,SSE,ETF,国企红利ETF华安,561060,HuaAn CSI State-owned Enterprises Dividend Index Exchange Traded Fund Units,SSE,fund,etf,CNE1000067X1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561100,SSE,ETF,消费电子ETF富国,561100,Fullgoal CSI Consumer Electronics Thematic ETF Units,SSE,fund,etf,CNE100004XN2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561120,SSE,ETF,家电ETF富国,561120,Fullgoal CSI All Share Household Appliances Exchange Traded Fund Units,SSE,fund,etf,CNE100004XL6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561130,SSE,ETF,国货ETF富国,561130,Fullgoal CSI National Brands Project of Xinhua ETF,SSE,fund,etf,CNE100004XT9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561160,SSE,ETF,电池ETF富国,561160,Fullgoal CSI Battery Thematic ETF,SSE,fund,etf,CNE100005G40,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561170,SSE,ETF,绿色电力ETF富国,561170,Fullgoal CSI Green Electricity ETF Units,SSE,fund,etf,CNE100005SX8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561180,SSE,ETF,A100ETF富国,561180,Fullgoal CSI A100 ETF Units,SSE,fund,etf,CNE100005TR8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561190,SSE,ETF,碳中和ETF富国,561190,Fullgoal CSI SEEE Carbon Neutral Index Exchange Traded Fund Units,SSE,fund,etf,CNE100005FV9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561200,SSE,ETF,中证A100ETF工银,561200,ICBC Credit Suisse CSI 100 ETF,SSE,fund,etf,CNE1000067C5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561260,SSE,ETF,能源ETF工银,561260,ICBCCS CSI Guoxin Central-SOEs Modern Energy Exchange Traded Fund Units,SSE,fund,etf,CNE1000063N1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561280,SSE,ETF,中证1000增强ETF工银,561280,ICBCCS CSI 1000 Enhanced Exchange Traded Fund Units,SSE,fund,etf,CNE1000067Y9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561300,SSE,ETF,沪深300增强ETF国泰,561300,Guotai CSI 300 Enhance Strategic ETF,SSE,fund,etf,CNE100005BR6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561310,SSE,ETF,消电ETF国泰,561310,Guotai CSI Consumer Electronics Thematic ETF,SSE,fund,etf,CNE100004VC9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561320,SSE,ETF,交运ETF国泰,561320,Guotai CSI China Mainland Transportation Exchange Traded Fund Units,SSE,fund,etf,CNE100005TD8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561330,SSE,ETF,矿业ETF国泰,561330,Guotai CSI Nonferrous Metal Mining Index ETF Units,SSE,fund,etf,CNE100005TP2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561350,SSE,ETF,中证500ETF国泰,561350,Guotai CSI 500 ETF,SSE,fund,etf,CNE100004XK8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561360,SSE,ETF,石油ETF国泰,561360,Cathay CSI Oil & Gas Industry ETF,SSE,fund,etf,CNE1000067V5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561370,SSE,ETF,中证2000ETF国泰,561370,Guotai CSI2000 Index,SSE,fund,etf,CNE1000067F8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561500,SSE,ETF,漂亮50ETF华泰柏瑞,561500,Huatai-PB CSI Enterprise Core Competitiveness 50 Exchange Traded Fund Units,SSE,fund,etf,CNE100004VF2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561510,SSE,ETF,中药ETF华泰柏瑞,561510,Huatai-PB CSI Traditional Chinese Medicine Exchange Traded Fund Units,SSE,fund,etf,CNE100005FW7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561550,SSE,ETF,中证500增强ETF华泰柏瑞,561550,Huatai-PB CSI 500 Enhanced Strategy ETF,SSE,fund,etf,CNE100005BS4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561560,SSE,ETF,电力ETF华泰柏瑞,561560,Huatai-PB CSI All Share Electric Utilities ETF,SSE,fund,etf,CNE100005B60,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561580,SSE,ETF,央企红利ETF华泰柏瑞,561580,Huatai-PB CSI Central State-Owned Enterprises Dividend Exchange Traded Fund Units,SSE,fund,etf,CNE100006137,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561590,SSE,ETF,中证1000增强ETF华泰柏瑞,561590,Huatai-PB CSI 1000 Enhanced Strategy Exchange Traded Fund Units,SSE,fund,etf,CNE100005T86,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561600,SSE,ETF,消费电子ETF平安,561600,PING AN CSI Consumer Electronics Thematic ETF,SSE,fund,etf,CNE100004VY3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561700,SSE,ETF,电力ETF博时,561700,Bosera CSI All Share Electric Utilities ETF,SSE,fund,etf,CNE100005FX5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561780,SSE,ETF,1000增强ETF博时,561780,Boshi CSI 1000 Enhanced ETF,SSE,fund,etf,CNE100006772,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561790,SSE,ETF,央企能源ETF博时,561790,BOSERA CSI Guoxin Central-SOEs Modern Energy Exchange Traded Fund Units,SSE,fund,etf,CNE1000063M3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561800,SSE,ETF,稀有金属ETF华富,561800,Harfor CSI Rare Metals Industry Exchange Traded Fund,SSE,fund,etf,CNE100004XG6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561900,SSE,ETF,沪深300ESGETF招商,561900,CMF CSI 300 ESG Exchange Traded Fund,SSE,fund,etf,CNE100004V75,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561910,SSE,ETF,电池ETF招商,561910,China Merchants CSI Battery ETF,SSE,fund,etf,CNE100004W66,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561920,SSE,ETF,疫苗ETF招商,561920,CMF CSI Vaccine and Biotechnology Exchange Traded Fund Units,SSE,fund,etf,CNE100005ST6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561950,SSE,ETF,中证500增强ETF招商,561950,CMF CSI 500 Enhanced Strategy Exchange Traded Fund Units,SSE,fund,etf,CNE100006186,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561960,SSE,ETF,央企回报ETF招商,561960,CMF CSI Guoxin Central-SOEs Shareholder Return Exchange Traded Fund Units,SSE,fund,etf,CNE1000060X6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561980,SSE,ETF,半导体设备ETF招商,561980,China Merchants Securities Semiconductor Industry ETF,SSE,fund,etf,CNE1000067Z6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+561990,SSE,ETF,沪深300增强ETF招商,561990,CMF CSI 300 Enhance Strategic Exchange Traded Fund,SSE,fund,etf,CNE100005BP0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562000,SSE,ETF,A100ETF华宝,562000,Hwabao WP CSI A100 Index ETF Units,SSE,fund,etf,CNE100005FY3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562010,SSE,ETF,绿色能源ETF华宝,562010,Hwabao WP CSI Green Energy ETF,SSE,fund,etf,CNE100005T78,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562030,SSE,ETF,信创ETF华宝,562030,Huabao CSI Information Technology App. Innovation Industry ETF,SSE,fund,etf,CNE1000067D3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562060,SSE,ETF,标普A股红利ETF华宝,562060,Huabao S&P China A Share Dividend Opportunity ETF,SSE,fund,etf,CNE100006BV6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562300,SSE,ETF,碳中和ETF银华,562300,Yinhua CSI Interior Low-Carbon Economy Theme ETF,SSE,fund,etf,CNE100004WN4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562310,SSE,ETF,沪深300成长ETF银华,562310,Yinhua CSI 300 Growth ETF,SSE,fund,etf,CNE100005TQ0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562320,SSE,ETF,沪深300价值ETF银华,562320,Yinhua CSI 300 Value ETF,SSE,fund,etf,CNE100005T29,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562330,SSE,ETF,中证500价值ETF银华,562330,Yinhua CSI 500 Value Exchange Traded Fund Units,SSE,fund,etf,CNE100005SW0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562350,SSE,ETF,电力ETF银华,562350,Yinhua CSI All Share Electric Utilities ETF,SSE,fund,etf,CNE100005G16,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562360,SSE,ETF,机器人ETF银华,562360,Yinhua CSI Robot ETF,SSE,fund,etf,CNE100004X40,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562380,SSE,ETF,央企科技ETF银华,562380,Yinhua CSI Guoxin Central-SOEs Technology Lead Exchange Traded Fund Units,SSE,fund,etf,CNE1000063R2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562390,SSE,ETF,中药ETF银华,562390,Yinhua CSI Traditional Chinese Medicine Exchange Traded Fund Units,SSE,fund,etf,CNE100005G24,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562500,SSE,ETF,机器人ETF华夏,562500,China AMC Robot ETF,SSE,fund,etf,CNE100004WL8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562510,SSE,ETF,旅游ETF华夏,562510,ChinaAMC CSI Tourism Thematic Index ETF Units,SSE,fund,etf,CNE100005C02,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562520,SSE,ETF,中证1000成长ETF华夏,562520,ChinaAMC CSI Smart Selected 1000 Growth Innovation ETF Units,SSE,fund,etf,CNE100005C10,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562530,SSE,ETF,中证1000价值ETF华夏,562530,ChinaAMC CSI Smart Selected 1000 Value Stable Exchange Traded Fund Units,SSE,fund,etf,CNE100005FZ0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562550,SSE,ETF,绿电ETF华夏,562550,ChinaAMC CSI Green Power ETF,SSE,fund,etf,CNE1000061B0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562590,SSE,ETF,半导体设备ETF华夏,562590,ChinaAMC CSI Semiconductor Material & Equipment Thematic Bond Securities Investment Seed Fund Units,SSE,fund,etf,CNE100006780,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562600,SSE,ETF,医疗器械ETF华夏,562600,ChinaAMC CSI All Share Health Care Instrument Index ETF,SSE,fund,etf,CNE100006C84,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562660,SSE,ETF,中证2000ETF华夏,562660,ChinaAMC CSI2000 Index Exchange Traded Fund Units,SSE,fund,etf,CNE1000067K8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562800,SSE,ETF,稀有金属ETF嘉实,562800,Harvest CSI Rare Metals Industry Exchange Traded Fund Units,SSE,fund,etf,CNE100004VH8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562850,SSE,ETF,央企能源ETF嘉实,562850,Harvest CSI Guoxin Central-SOEs Modern Energy Exchange Traded Fund Units,SSE,fund,etf,CNE1000063L5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562860,SSE,ETF,疫苗ETF嘉实,562860,Harvest Bosera CSI Vaccine and Biotechnology Exchange Traded Fund Units,SSE,fund,etf,CNE100005SV2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562880,SSE,ETF,电池ETF嘉实,562880,Harvest CSI Battery Thematic Index Exchange Traded Fund,SSE,fund,etf,CNE100004WF0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562900,SSE,ETF,农业ETF易方达,562900,E Fund CSI Modern Agriculture Exchange Traded Fund,SSE,fund,etf,CNE100004WS3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562910,SSE,ETF,高端制造ETF易方达,562910,E Fund CSI Equipment Manufacturing Industry Stimulus ETF,SSE,fund,etf,CNE100004WV7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562920,SSE,ETF,信息安全ETF易方达,562920,E Fund SSE Information Security Exchange Traded Fund Units,SSE,fund,etf,CNE100005BD6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562930,SSE,ETF,软件ETF易方达,562930,E Fund China Securities Software Services ETF,SSE,fund,etf,CNE100006103,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562950,SSE,ETF,消费电子ETF易方达,562950,E Fund CSI Consumer Electronics Thematic ETF,SSE,fund,etf,CNE100005BK1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562960,SSE,ETF,绿色电力ETF易方达,562960,E Fund CSI Green Electricity ETF,SSE,fund,etf,CNE100006194,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+562990,SSE,ETF,碳中和ETF易方达,562990,E Fund CSI SEEE Carbon Neutral Index Exchange Traded Fund Units,SSE,fund,etf,CNE100005G08,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+563000,SSE,ETF,中国A50ETF易方达,563000,E Fund MSCI China A 50 Connect ETF Units,SSE,fund,etf,CNE100004WR5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+563010,SSE,ETF,电信ETF易方达,563010,E Fund CSI Telecom Thematic Exchange Traded Fund Units,SSE,fund,etf,CNE1000060T4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+563030,SSE,ETF,中证500增强ETF易方达,563030,E Fund CSI 500 Enhanced Strategy ETF,SSE,fund,etf,CNE100005SY6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+563050,SSE,ETF,央企科技ETF易方达,563050,E Fund CSI Guoxin Central-SOEs Technology Lead Exchange Traded Fund Units,SSE,fund,etf,CNE1000063Q4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+563200,SSE,ETF,中证2000ETF富国,563200,Fullgoal CSI 2000 ETF,SSE,fund,etf,CNE1000067H4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+563300,SSE,ETF,中证2000ETF华泰柏瑞,563300,Huatai-PB CSI2000 Index ETF,SSE,fund,etf,CNE1000067G6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+563330,SSE,ETF,A SHARES ETF,563330,Huatai-PB CSI A shares Index Exchange Traded Fund Units,SSE,fund,etf,CNE100006C35,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,name_mismatch
+588000,SSE,ETF,科创50ETF华夏,588000,China AMC SSE STAR 50 Index ETF,SSE,fund,etf,CNE100004DL8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588010,SSE,ETF,科创新材料ETF博时,588010,Bosera SSE STAR New Materials Exchange Traded Fund Units,SSE,fund,etf,CNE100005TK3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588020,SSE,ETF,科创成长ETF易方达,588020,E Fund SSE Science and Technology Innovate Board Growth ETF,SSE,fund,etf,CNE1000067S1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588030,SSE,ETF,科创100ETF博时,588030,Bosera SSE Science and Technology Innovation Board 100 Index Exchange Traded Fund Units,SSE,fund,etf,CNE1000067M4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588050,SSE,ETF,科创50ETF工银,588050,ICBC Credit Suisse SSE Star 50 Index ETF,SSE,fund,etf,CNE100004FT6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588060,SSE,ETF,科创50ETF广发,588060,GF STAR Market 50 Exchange Traded Fund,SSE,fund,etf,CNE100004T04,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588080,SSE,ETF,科创50ETF易方达,588080,E Fund SSE Science and Technology Innovation Board 50 Exchange Traded Fund,SSE,fund,etf,CNE100004DK0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588090,SSE,ETF,科创50ETF华泰柏瑞,588090,Huatai- Pinebridge Star50 ETF,SSE,fund,etf,CNE100004DJ2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588100,SSE,ETF,科创信息ETF嘉实,588100,Harvest SSE STAR Next Generation Information Technology Exchange Traded Fund Units,SSE,fund,etf,CNE100005B37,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588110,SSE,ETF,科创成长ETF广发,588110,GF SSE Science and Technology Innovation Board Growth ETF,SSE,fund,etf,CNE1000067T9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588120,SSE,ETF,科创100ETF国泰,588120,Guotai SSE Science and Technology Innovation Board 100 Index Exchange Traded Fund Units,SSE,fund,etf,CNE1000067N2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588140,SSE,ETF,"Gf Fund Management Co.,Ltd - Gf Star 200 ETF",588140,GF SSE STAR Market 200 ETF,SSE,fund,etf,CNE100007390,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,name_mismatch
+588150,SSE,ETF,科创50ETF南方,588150,China Southern SSE Science and Technology Innovation Board 50 ETF,SSE,fund,etf,CNE100005BJ3,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588160,SSE,ETF,科创新材料ETF南方,588160,China Southern SSE STAR New Materials Exchange Traded Fund Units,SSE,fund,etf,CNE100005TG1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588180,SSE,ETF,科创50ETF国联安,588180,Guolianan SSE Science & Technology Innovation Board 50 ETF,SSE,fund,etf,CNE100004V91,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588190,SSE,ETF,Yinhua SSE Tchnlgy Invtn Board 100 ETF,588190,Yinhua SSE Science and Technology Innovation Board 100 Index Exchange Traded Fund Units,SSE,fund,etf,CNE1000067P7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,name_mismatch
+588200,SSE,ETF,科创芯片ETF嘉实,588200,Harvest SSE Science & Technology Innovation Board Chip ETF,SSE,fund,etf,CNE100005TH9,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588210,SSE,ETF,E FUND SSE SCI-TECH INNOVATION BOARD 100 ETF,588210,E Fund SSE Science and Technology Innovation Board 100 Index Exchange Traded Fund Units,SSE,fund,etf,CNE100006C01,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,name_mismatch
+588220,SSE,ETF,科创100ETF鹏华,588220,Penghua SSE Science and Technology Innovation Board 100 Index Exchange Traded Fund Units,SSE,fund,etf,CNE1000067L6,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588260,SSE,ETF,科创信息ETF华安,588260,HuaAn SSE STAR Next Generation Information Technology ETF,SSE,fund,etf,CNE100005B45,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588280,SSE,ETF,科创50ETF华安,588280,HuaAn SSE Science and Technology Innovation Board 50 ETF Units,SSE,fund,etf,CNE100004X08,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588290,SSE,ETF,科创芯片ETF华安,588290,HuaAn SSE STAR CHIP Exchange Traded Fund Units,SSE,fund,etf,CNE100005TJ5,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588300,SSE,ETF,科创创业50ETF招商,588300,China Merchants Technological Innovation 50 ETF Fund,SSE,fund,etf,CNE100004V00,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588310,SSE,ETF,科创创业ETF方正富邦,588310,Founder Fubon CSI STAR&CHINEXT 50 Index ETF,SSE,fund,etf,CNE100004W09,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588320,SSE,ETF,双创50增强ETF广发,588320,GF CSI STAR&CHINEXT 50 Enhance Strategic ETF Units,SSE,fund,etf,CNE100005T94,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588330,SSE,ETF,双创50ETF华宝,588330,Hwabao WP CSI Tech Innovation & Entrepreneurship 50 Index ETF,SSE,fund,etf,CNE100004V26,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588350,SSE,ETF,科创创业50ETF鹏扬,588350,Pengyang CSI STAR&CHINEXT 50 ETF,SSE,fund,etf,CNE100005TL1,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588360,SSE,ETF,科创创业ETF国泰,588360,Guotai CSI STAR&CHINEXT 50 Index Exchange Traded Fund,SSE,fund,etf,CNE100004V18,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588370,SSE,ETF,科创50增强ETF南方,588370,China Southern SSE Science and Technology Innovation Board 50 Enhanced Strategy ETF Units,SSE,fund,etf,CNE100005T60,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588380,SSE,ETF,科创创业ETF富国,588380,Wells Fargo CSI Technology Innovation & Entrepreneurship 50ETF,SSE,fund,etf,CNE100004TZ4,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588390,SSE,ETF,科创创业ETF博时,588390,Bosera CSI STAR CHINEXT 50 Index Fund,SSE,fund,etf,CNE100004W41,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588400,SSE,ETF,科创创业ETF嘉实,588400,Harvest CSI STAR&CHINEXT 50 Index Exchange Traded Fund,SSE,fund,etf,CNE100004V34,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588460,SSE,ETF,科创50增强ETF鹏华,588460,Penghua SSE Science and Technology Innovation Board 50 ETF,SSE,fund,etf,CNE100005T52,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588700,SSE,ETF,科创医药ETF嘉实,588700,Harvest SSE Science and Technology Innovation Board Biopharmaceutical ETF,SSE,fund,etf,CNE100006BP8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588800,SSE,ETF,科创100ETF华夏,588800,ChinaAMC SSE Science and Technology Innovation Board 100 Index Exchange Traded Fund Units,SSE,fund,etf,CNE100006BY0,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588880,SSE,ETF,科创100ETF华泰柏瑞,588880,Huatai-PB SSE Science and Technology Innovation Board 100 Index ETF,SSE,fund,etf,CNE100006BZ7,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+588900,SSE,ETF,科创100ETF南方,588900,China Southern SSE Science and Technology Innovation Board 100 Index Exchange Traded Fund Units,SSE,fund,etf,CNE100006BS2,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
+601956,SSE,Stock,Hubei Donper Electromechanical Group Co. Ltd.,601956,HUBEI DONPER ELECTROMECHANICAL GROU,SSE,stock,common,,Producer Manufacturing,Industrial Machinery,China,True,False,missing_isin
+603091,SSE,Stock,ZX PACKING ORD A (SHH) EQSW Exp:,603091,"Zhejiang Zhongxin Environmental Protection Technology Group Co., Ltd. Class A",SSE,stock,common,CNE1000078K5,Process Industries,Containers/Packaging,China,False,True,name_mismatch
+603150,SSE,Stock,Anhui Higasket Plastics Co.Ltd.,603150,"Higa Co., Ltd. Class A",SSE,stock,common,CNE100007812,Producer Manufacturing,Industrial Machinery,China,False,True,name_mismatch
+603207,SSE,Stock,XIAO FANG ORD A (SHH) EQSW Exp:,603207,"Shanghai Xiao Fang Pharmaceutical Co., Ltd. Class A",SSE,stock,common,CNE1000078H1,Health Technology,Pharmaceuticals: Major,China,False,True,name_mismatch
+603284,SSE,Stock,Anhui Linping Circular Dvlp Co,603284,ANHUI LINPING CIRCULAR DEV CO LTD,SSE,stock,common,,Process Industries,Pulp & Paper,China,True,False,missing_isin
+603296,SSE,Stock,HUAQIN TECHNOLOGY LTD A,603296,"Huaqin Co., Ltd. Class A",SSE,stock,common,CNE100006M82,Electronic Technology,Telecommunications Equipment,China,False,True,name_mismatch
+605068,SSE,Stock,Mingxin Automotive Leather Co. Ltd.,605068,"Mingxin New Material Co., Ltd. Class A",SSE,stock,common,CNE1000077F7,Producer Manufacturing,Auto Parts: OEM,China,False,True,name_mismatch
+688136,SSE,Stock,Shandong Kexing Bioproducts Co. Ltd. A,688136,"Kexing Biopharm Co., Ltd. Class A",SSE,stock,common,CNE100006ZG6,Health Technology,Pharmaceuticals: Major,China,False,True,name_mismatch
+688218,SSE,Stock,Jiangsu Beiren Robot System Co Ltd,688218,"Jiangsu Beiren Smart Manufacturing Technology Co., Ltd. Class A",SSE,stock,common,CNE1000076T0,Producer Manufacturing,Industrial Machinery,China,False,True,name_mismatch
+688221,SSE,Stock,Frontier Biopharmaceuticals (Nanjing) Co. Ltd. A,688221,Frontier Biotechnologies Inc. Class A,SSE,stock,common,CNE100005XF5,Health Technology,Biotechnology,China,False,True,name_mismatch
+688223,SSE,Stock,JinkoSolar Co. Ltd. A,688223,"Jinko Solar Co., Ltd. Class A",SSE,stock,common,CNE100005R96,Electronic Technology,Semiconductors,China,False,True,name_mismatch
+688235,SSE,Stock,BeiGene Ltd.,688235,BeOne Medicines Ltd. Class A,SSE,stock,common,CNE100005XT6,Health Technology,Pharmaceuticals: Major,Switzerland,False,True,name_mismatch
+688450,SSE,Stock,AGIOE ORD A (SHH) EQSW Exp:,688450,"Suzhou Agioe Technologies Co., Ltd. Class A",SSE,stock,common,CNE100007887,Electronic Technology,Electronic Equipment/Instruments,China,False,True,name_mismatch
+688573,SSE,Stock,XINYUREN ORD A (SHH) EQSW Exp:,688573,"Shenzhen Xinyuren Technology Co., Ltd. Class A",SSE,stock,common,CNE1000078F5,Producer Manufacturing,Industrial Machinery,China,False,True,name_mismatch
+688592,SSE,Stock,COMNAV ORD A (SHH) EQSW Exp:,688592,ComNav Technology Ltd. Class A,SSE,stock,common,CNE1000078D0,Electronic Technology,Electronic Components,China,False,True,name_mismatch
+688602,SSE,Stock,CHEMSPEC ORD A (SHH) EQSW Exp:,688602,Shanghai Chemspec Corporation Class A,SSE,stock,common,CNE100007879,Process Industries,Chemicals: Major Diversified,China,False,True,name_mismatch
+688603,SSE,Stock,Guangdong Skychem Technology Co. Ltd. A,688603,"Shanghai Skychem Technology Co., Ltd. Class A",SSE,stock,common,CNE100006ZL6,Process Industries,Chemicals: Specialty,China,False,True,name_mismatch
+688610,SSE,Stock,I-TEK ORD A (SHH) EQSW Exp:,688610,"Hefei I-TEK OptoElectronics Co., Ltd. Class A",SSE,stock,common,CNE100007861,Consumer Durables,Electronics/Appliances,China,False,True,name_mismatch
+688615,SSE,Stock,INTSIG ORD A (SHH) EQSW Exp:,688615,"Intsig Information Co., Ltd. Class A",SSE,stock,common,CNE1000078L3,Technology Services,Packaged Software,China,False,True,name_mismatch
+688638,SSE,Stock,UTIMES ORD A (SHH) EQSW Exp:,688638,"Shenzhen UTIMES Intelligent Equipment Co., Ltd. Class A",SSE,stock,common,CNE100007853,Producer Manufacturing,Industrial Machinery,China,False,True,name_mismatch
+688646,SSE,Stock,YIFILASER ORD A (SHH) EQSW Exp:,688646,Wuhan Yifi Laser Corporation Limited Class A,SSE,stock,common,CNE1000078B4,Producer Manufacturing,Industrial Machinery,China,False,True,name_mismatch
+688651,SSE,Stock,WEBRAY ORD A (SHH) EQSW Exp:,688651,WebRAY Tech Group Inc. Class A,SSE,stock,common,CNE100007895,Technology Services,Information Technology Services,China,False,True,name_mismatch
+688671,SSE,Stock,BESCIENT ORD A (SHH) EQSW Exp:,688671,"Bescient Technologies Co.,Ltd. Class A",SSE,stock,common,CNE1000078C2,Electronic Technology,Electronic Equipment/Instruments,China,False,True,name_mismatch
+688693,SSE,Stock,CONVERT ORD A (SHH) EQSW Exp:,688693,"Suzhou Convert Semiconductor Co., Ltd. Class A",SSE,stock,common,CNE1000078G3,Electronic Technology,Semiconductors,China,False,True,name_mismatch
+688710,SSE,Stock,INNOSTAR ORD A (SHH) EQSW Exp:,688710,Shanghai InnoStar Bio-tech Co. Ltd. Class A,SSE,stock,common,CNE1000078J7,Health Technology,Pharmaceuticals: Major,China,False,True,name_mismatch
+689009,SSE,Stock,Ninebot Ltd,689009,Ninebot Ltd. CDR Class A,SSE,dr,,CNE100007788,Utilities,Electric Utilities,China,False,True,asset_type_mismatch

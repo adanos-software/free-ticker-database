@@ -38,6 +38,7 @@ def target_row(**overrides):
 
 def test_map_tradingview_sector_to_canonical_stock_sector():
     assert map_tradingview_sector("Energy Minerals", "Integrated Oil") == "Energy"
+    assert map_tradingview_sector("Commercial Services", "Miscellaneous Commercial Services") == "Industrials"
     assert map_tradingview_sector("Finance", "Major Banks") == "Financials"
     assert map_tradingview_sector("Finance", "Real Estate Development") == "Real Estate"
     assert map_tradingview_sector("Finance", "Financial Conglomerates") == ""
@@ -59,6 +60,12 @@ def test_evaluate_row_accepts_clear_sector_match():
 def test_evaluate_row_rejects_name_mismatch():
     result = evaluate_row(target_row(), tv_row(name="Unrelated Company"))
     assert result["decision"] == "name_mismatch"
+
+
+def test_evaluate_row_accepts_same_isin_name_variant():
+    result = evaluate_row(target_row(name="PTT PCL", isin="TH0646010Z00"), tv_row(name="PTT Public Co., Ltd."))
+    assert result["decision"] == "accept"
+    assert result["sector_update"] == "Energy"
 
 
 def test_evaluate_row_rejects_unsupported_sector():

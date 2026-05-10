@@ -19,6 +19,14 @@ def test_map_sec_sic_to_sector_handles_exact_and_range_mappings():
     assert map_sec_sic_to_sector("2834") == "Health Care"
     assert map_sec_sic_to_sector("6770") == "Financials"
     assert map_sec_sic_to_sector("6513") == "Real Estate"
+    assert map_sec_sic_to_sector("6552") == "Real Estate"
+    assert map_sec_sic_to_sector("7011") == "Consumer Discretionary"
+    assert map_sec_sic_to_sector("7381") == "Industrials"
+    assert map_sec_sic_to_sector("7900") == "Communication Services"
+    assert map_sec_sic_to_sector("8082") == "Health Care"
+    assert map_sec_sic_to_sector("8200") == "Consumer Discretionary"
+    assert map_sec_sic_to_sector("8731") == "Health Care"
+    assert map_sec_sic_to_sector("4412") == "Industrials"
     assert map_sec_sic_to_sector("9999") == ""
 
 

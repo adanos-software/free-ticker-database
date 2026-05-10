@@ -278,6 +278,21 @@ def peer_name_matches(isin: str, target_name: str, existing_isin_rows: dict[str,
     return not peers or any(names_match(peer.get("name", ""), target_name) for peer in peers)
 
 
+def has_cjk(value: str) -> bool:
+    return any("\u4e00" <= char <= "\u9fff" for char in value)
+
+
+def names_compatible_for_isin(row: dict[str, str], source: TradingViewRow) -> bool:
+    if names_match(source.name, row["name"]):
+        return True
+    return (
+        row.get("exchange") in {"SSE", "SZSE"}
+        and row.get("ticker", "").isdigit()
+        and source.isin.startswith("CN")
+        and has_cjk(row.get("name", ""))
+    )
+
+
 def evaluate_row(
     row: dict[str, str],
     source: TradingViewRow | None,
@@ -335,7 +350,7 @@ def evaluate_row(
         return {**base, "decision": "invalid_isin"}
     if not asset_type_matches(row, source):
         return {**base, "decision": "asset_type_mismatch"}
-    if not name_match:
+    if not names_compatible_for_isin(row, source):
         return {**base, "decision": "name_mismatch"}
     if not peer_match:
         return {**base, "decision": "isin_peer_name_mismatch"}

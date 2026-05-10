@@ -1,13 +1,13 @@
 # Entry Quality Report
 
-Generated at: `2026-05-10T06:21:01Z`
+Generated at: `2026-05-10T18:42:35Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 62,483 |
-| source_gap | 8,546 |
+| pass | 63,855 |
+| source_gap | 7,174 |
 | warn | 63 |
 
 ## Issue Counts
@@ -15,9 +15,9 @@ Generated at: `2026-05-10T06:21:01Z`
 | Issue | Rows |
 |---|---:|
 | official_reference_gap | 4,780 |
-| missing_stock_sector | 2,596 |
-| expected_missing_primary_isin | 1,971 |
-| missing_etf_category | 221 |
+| missing_stock_sector | 2,072 |
+| expected_missing_primary_isin | 1,230 |
+| missing_etf_category | 78 |
 | country_isin_mismatch | 63 |
 
 ## Top Flagged Exchanges
@@ -25,25 +25,25 @@ Generated at: `2026-05-10T06:21:01Z`
 | Exchange | Pass | Notice | Source Gap | Warn | Quarantine |
 |---|---:|---:|---:|---:|---:|
 | OTC | 7,887 | 0 | 3,169 | 0 | 0 |
-| SSE | 2,301 | 0 | 488 | 0 | 0 |
-| SZSE | 2,739 | 0 | 343 | 1 | 0 |
 | B3 | 1,264 | 0 | 320 | 0 | 0 |
-| LSE | 6,111 | 0 | 244 | 60 | 0 |
-| TSXV | 788 | 0 | 278 | 0 | 0 |
-| TSX | 1,652 | 0 | 251 | 0 | 0 |
-| SGX | 395 | 0 | 199 | 0 | 0 |
+| TSXV | 794 | 0 | 272 | 0 | 0 |
+| LSE | 6,156 | 0 | 199 | 60 | 0 |
+| TSX | 1,664 | 0 | 239 | 0 | 0 |
 | BMV | 8 | 0 | 171 | 0 | 0 |
-| NYSE ARCA | 2,488 | 0 | 166 | 0 | 0 |
-| ASX | 1,150 | 0 | 148 | 0 | 0 |
 | Euronext | 828 | 0 | 147 | 0 | 0 |
+| ASX | 1,155 | 0 | 143 | 0 | 0 |
 | CSE_LK | 164 | 0 | 143 | 0 | 0 |
-| NASDAQ | 4,492 | 0 | 141 | 1 | 0 |
-| TADAWUL | 56 | 0 | 135 | 0 | 0 |
-| XETRA | 3,657 | 0 | 122 | 0 | 0 |
-| STO | 618 | 0 | 107 | 0 | 0 |
-| TWSE | 1,136 | 0 | 106 | 0 | 0 |
+| NYSE ARCA | 2,525 | 0 | 129 | 0 | 0 |
+| NASDAQ | 4,523 | 0 | 110 | 1 | 0 |
 | BK | 2 | 0 | 102 | 0 | 0 |
 | AMS | 219 | 0 | 95 | 0 | 0 |
+| BME | 75 | 0 | 94 | 0 | 0 |
+| MSX | 1 | 0 | 90 | 0 | 0 |
+| XETRA | 3,691 | 0 | 88 | 0 | 0 |
+| JSE | 130 | 0 | 82 | 0 | 0 |
+| TWSE | 1,162 | 0 | 80 | 0 | 0 |
+| PSE | 14 | 0 | 76 | 0 | 0 |
+| BATS | 1,169 | 0 | 74 | 0 | 0 |
 
 ## Notes
 

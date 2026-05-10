@@ -3,6 +3,8 @@ from scripts.backfill_tradingview_missing_isins import (
     asset_type_matches,
     build_metadata_updates,
     evaluate_row,
+    has_cjk,
+    names_compatible_for_isin,
     ticker_variants,
 )
 
@@ -57,6 +59,23 @@ def test_evaluate_row_accepts_strict_match():
     result = evaluate_row(target_row(), tv_row(), {})
     assert result["decision"] == "accept"
     assert result["tv_isin"] == "CA82509L1076"
+
+
+def test_names_compatible_accepts_china_bilingual_exact_numeric_symbol():
+    row = target_row(ticker="510100", exchange="SSE", asset_type="ETF", name="上证50ETF易方达")
+    source = tv_row(
+        request_symbol="SSE:510100",
+        symbol="510100",
+        exchange="SSE",
+        instrument_type="fund",
+        subtype="etf",
+        isin="CNE100003KZ5",
+        name="E FUND SSE 50 INDEX EXCHANGE-TRADED FUND",
+        typespecs=("etf",),
+    )
+    assert has_cjk(row["name"])
+    assert names_compatible_for_isin(row, source)
+    assert evaluate_row(row, source, {})["decision"] == "accept"
 
 
 def test_evaluate_row_rejects_exchange_mismatch():

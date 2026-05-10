@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+### Added
+
+- Added TradingView ETF asset-class category backfill, a China bilingual ISIN gate for exact SSE/SZSE ETF symbols, same-ISIN TradingView gates for abbreviated stock/ETF product names, and additional official SEC SIC-to-sector mappings for OTC rows.
+
+### Changed
+
+- Rebuilt canonical exports to 61,653 primary tickers, 71,092 listing rows, 59,218 ISIN-covered rows, 57,818 sector/category-covered rows, and 121,195 structured alias rows.
+- Reduced the field-completion backlog to 1,230 missing core-primary ISINs, 3,740 missing stock sectors, and 95 missing ETF categories.
+- Refreshed coverage, completion-backlog, Adanos reference, detection simulation, entry-quality, and validation artifacts.
+
 ## [3.21.0] - 2026-05-10
 
 ### Added

@@ -21,7 +21,7 @@ from scripts.backfill_tradingview_missing_isins import (
 )
 from scripts.backfill_yahoo_generic_etf_names import merge_metadata_updates
 from scripts.backfill_xtb_omi_isins import names_match
-from scripts.rebuild_dataset import TICKERS_CSV, normalize_sector
+from scripts.rebuild_dataset import TICKERS_CSV, is_valid_isin, normalize_sector
 
 
 DEFAULT_OUTPUT_DIR = ROOT / "data" / "tradingview_verification"
@@ -31,6 +31,7 @@ DEFAULT_METADATA_UPDATES_CSV = ROOT / "data" / "review_overrides" / "metadata_up
 
 TRADINGVIEW_STOCK_SECTOR_MAP = {
     "Communications": "Communication Services",
+    "Commercial Services": "Industrials",
     "Consumer Durables": "Consumer Discretionary",
     "Consumer Non-Durables": "Consumer Staples",
     "Consumer Services": "Consumer Discretionary",
@@ -70,6 +71,7 @@ REPORT_FIELDNAMES = [
     "tv_name",
     "tv_exchange",
     "tv_type",
+    "tv_isin",
     "tv_sector",
     "tv_industry",
     "sector_update",
@@ -122,6 +124,7 @@ def evaluate_row(row: dict[str, str], source: TradingViewRow | None) -> dict[str
         "tv_name": "",
         "tv_exchange": "",
         "tv_type": "",
+        "tv_isin": "",
         "tv_sector": "",
         "tv_industry": "",
         "sector_update": "",
@@ -135,6 +138,7 @@ def evaluate_row(row: dict[str, str], source: TradingViewRow | None) -> dict[str
             "tv_name": source.name,
             "tv_exchange": source.exchange,
             "tv_type": source.instrument_type,
+            "tv_isin": source.isin,
             "tv_sector": source.sector,
             "tv_industry": source.industry,
         }
@@ -144,7 +148,12 @@ def evaluate_row(row: dict[str, str], source: TradingViewRow | None) -> dict[str
         return {**base, "decision": "exchange_mismatch"}
     if source.instrument_type != "stock":
         return {**base, "decision": "asset_type_mismatch"}
-    if not names_match(source.name, row["name"]):
+    same_isin = (
+        is_valid_isin(row.get("isin", ""))
+        and is_valid_isin(source.isin)
+        and row.get("isin", "").strip().upper() == source.isin
+    )
+    if not names_match(source.name, row["name"]) and not same_isin:
         return {**base, "decision": "name_mismatch"}
 
     sector = map_tradingview_sector(source.sector, source.industry)
