@@ -2,6 +2,17 @@
 
 ## [Unreleased]
 
+### Added
+
+- Added free-source B3 COTAHIST and NYSE Group Security Master sample backfills for review-gated ISIN and ETF-category fills.
+- Added review-gated TradingView free scanner backfills for missing ISINs and stock-sector candidates across supported venues.
+
+### Changed
+
+- Rebuilt canonical exports to 61,653 primary tickers, 71,092 listing rows, 58,477 ISIN-covered rows, 57,123 sector/category-covered rows, and 120,454 structured alias rows.
+- Reduced the field-completion backlog to 1,971 missing core-primary ISINs, 4,292 missing stock sectors, and 238 missing ETF categories.
+- Refreshed coverage, completion-backlog, Adanos reference, detection simulation, entry-quality, and validation artifacts.
+
 ## [3.20.0] - 2026-05-05
 
 ### Added

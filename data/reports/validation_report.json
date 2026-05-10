@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-05-08T10:33:19Z",
+    "generated_at": "2026-05-10T06:21:02Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "listings_csv": "data/listings.csv",
@@ -21,9 +21,9 @@
   },
   "passed": true,
   "summary": {
-    "ticker_rows": 61845,
+    "ticker_rows": 61653,
     "listing_rows": 71092,
-    "adanos_reference_rows": 61845,
+    "adanos_reference_rows": 61653,
     "entry_quality_rows": 71092,
     "error_gates": 74,
     "failed_error_gates": 0,
@@ -454,28 +454,28 @@
       "name": "expected_missing_primary_isin",
       "severity": "info",
       "passed": true,
-      "actual": 3861,
+      "actual": 1971,
       "limit": null
     },
     {
       "name": "missing_stock_sector",
       "severity": "info",
       "passed": true,
-      "actual": 3693,
+      "actual": 2596,
       "limit": null
     },
     {
       "name": "missing_etf_category",
       "severity": "info",
       "passed": true,
-      "actual": 266,
+      "actual": 221,
       "limit": null
     },
     {
       "name": "source_gap_rows",
       "severity": "info",
       "passed": true,
-      "actual": 11159,
+      "actual": 8546,
       "limit": null
     },
     {
