@@ -43,6 +43,10 @@ def test_stockanalysis_company_url_supports_otc_profiles() -> None:
     assert stockanalysis_company_url("OTC", "OTCM") == "https://stockanalysis.com/quote/otc/OTCM/company/"
 
 
+def test_stockanalysis_company_url_supports_lse_profiles() -> None:
+    assert stockanalysis_company_url("LSE", "VOD") == "https://stockanalysis.com/quote/lon/VOD/company/"
+
+
 def test_evaluate_target_accepts_valid_isin_and_sector_with_name_gate() -> None:
     profile = parse_stockanalysis_company_profile(
         """

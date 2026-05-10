@@ -1,13 +1,13 @@
 # Entry Quality Report
 
-Generated at: `2026-05-10T18:42:35Z`
+Generated at: `2026-05-10T20:22:43Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 63,855 |
-| source_gap | 7,174 |
+| pass | 64,061 |
+| source_gap | 6,917 |
 | warn | 63 |
 
 ## Issue Counts
@@ -15,9 +15,9 @@ Generated at: `2026-05-10T18:42:35Z`
 | Issue | Rows |
 |---|---:|
 | official_reference_gap | 4,780 |
-| missing_stock_sector | 2,072 |
-| expected_missing_primary_isin | 1,230 |
-| missing_etf_category | 78 |
+| missing_stock_sector | 1,867 |
+| expected_missing_primary_isin | 1,099 |
+| missing_etf_category | 77 |
 | country_isin_mismatch | 63 |
 
 ## Top Flagged Exchanges
@@ -25,14 +25,14 @@ Generated at: `2026-05-10T18:42:35Z`
 | Exchange | Pass | Notice | Source Gap | Warn | Quarantine |
 |---|---:|---:|---:|---:|---:|
 | OTC | 7,887 | 0 | 3,169 | 0 | 0 |
-| B3 | 1,264 | 0 | 320 | 0 | 0 |
-| TSXV | 794 | 0 | 272 | 0 | 0 |
-| LSE | 6,156 | 0 | 199 | 60 | 0 |
-| TSX | 1,664 | 0 | 239 | 0 | 0 |
+| B3 | 1,265 | 0 | 319 | 0 | 0 |
+| LSE | 6,181 | 0 | 174 | 60 | 0 |
+| TSX | 1,693 | 0 | 210 | 0 | 0 |
 | BMV | 8 | 0 | 171 | 0 | 0 |
+| TSXV | 901 | 0 | 165 | 0 | 0 |
 | Euronext | 828 | 0 | 147 | 0 | 0 |
-| ASX | 1,155 | 0 | 143 | 0 | 0 |
 | CSE_LK | 164 | 0 | 143 | 0 | 0 |
+| ASX | 1,157 | 0 | 141 | 0 | 0 |
 | NYSE ARCA | 2,525 | 0 | 129 | 0 | 0 |
 | NASDAQ | 4,523 | 0 | 110 | 1 | 0 |
 | BK | 2 | 0 | 102 | 0 | 0 |
@@ -41,9 +41,9 @@ Generated at: `2026-05-10T18:42:35Z`
 | MSX | 1 | 0 | 90 | 0 | 0 |
 | XETRA | 3,691 | 0 | 88 | 0 | 0 |
 | JSE | 130 | 0 | 82 | 0 | 0 |
-| TWSE | 1,162 | 0 | 80 | 0 | 0 |
 | PSE | 14 | 0 | 76 | 0 | 0 |
 | BATS | 1,169 | 0 | 74 | 0 | 0 |
+| TASE | 599 | 0 | 74 | 0 | 0 |
 
 ## Notes
 

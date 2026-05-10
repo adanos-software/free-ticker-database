@@ -48,6 +48,7 @@ def test_ticker_variants_uses_dots_for_canadian_classes():
 
 def test_asset_type_matches_stock_and_etf_rows():
     assert asset_type_matches(target_row(asset_type="Stock"), tv_row(instrument_type="stock"))
+    assert asset_type_matches(target_row(asset_type="Stock"), tv_row(instrument_type="dr", subtype=""))
     assert asset_type_matches(
         target_row(asset_type="ETF"),
         tv_row(instrument_type="fund", subtype="etf", typespecs=("etf",)),
@@ -86,6 +87,16 @@ def test_evaluate_row_rejects_exchange_mismatch():
 def test_evaluate_row_rejects_name_mismatch():
     result = evaluate_row(target_row(), tv_row(name="Unrelated Mining Corp."), {})
     assert result["decision"] == "name_mismatch"
+
+
+def test_evaluate_row_accepts_name_variant_with_matching_isin_peer():
+    result = evaluate_row(
+        target_row(ticker="BEK-B", name="Becker Milk Co Ltd Cl B Nv Spec (BEK-B.TO"),
+        tv_row(symbol="BEK.B", name="Becker Milk Company Limited Class B", isin="CA0756532044"),
+        {"CA0756532044": [target_row(name="Becker Milk Co Ltd Cl B Nv Spec (BEK-B.TO", isin="CA0756532044")]},
+    )
+    assert result["decision"] == "accept"
+    assert result["tv_isin"] == "CA0756532044"
 
 
 def test_evaluate_row_rejects_conflicting_existing_isin_peer():

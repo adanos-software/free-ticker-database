@@ -9,23 +9,23 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 
 | Metric | Value | Meaning |
 |---|---:|---|
-| Core listings | 54,058 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
-| Primary tickers | 61,653 | Rows in `data/tickers.csv`; one primary row per security. |
-| Full listing rows | 71,092 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
-| Stocks | 46,104 | Primary ticker rows where `asset_type=Stock`. |
-| ETFs | 15,549 | Primary ticker rows where `asset_type=ETF`. |
+| Core listings | 54,000 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
+| Primary tickers | 61,455 | Rows in `data/tickers.csv`; one primary row per security. |
+| Full listing rows | 71,041 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
+| Stocks | 45,911 | Primary ticker rows where `asset_type=Stock`. |
+| ETFs | 15,544 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 80 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 86 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 121,195 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
-| ISIN coverage | 59,218 (96.1%) | Primary ticker rows with a non-empty `isin`. |
+| Aliases | 121,314 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
+| ISIN coverage | 59,445 (96.7%) | Primary ticker rows with a non-empty `isin`. |
 | FIGI coverage | 63,440 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
-| Sector/category coverage | 57,818 (93.8%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 42,364 | Primary ticker rows with a non-empty `stock_sector`. |
-| ETF category coverage | 15,454 | Primary ticker rows with a non-empty `etf_category`. |
-| Core listing-scope rows | 54,058 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
-| Core primary rows with ISIN | 52,828 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
-| Core primary rows missing ISIN | 1,230 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
-| Extended listing-scope rows | 17,034 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
+| Sector/category coverage | 58,654 (95.4%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Stock sector coverage | 43,204 | Primary ticker rows with a non-empty `stock_sector`. |
+| ETF category coverage | 15,450 | Primary ticker rows with a non-empty `etf_category`. |
+| Core listing-scope rows | 54,000 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
+| Core primary rows with ISIN | 52,901 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
+| Core primary rows missing ISIN | 1,099 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
+| Extended listing-scope rows | 17,041 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
 
 ## Core Files
 
@@ -110,7 +110,7 @@ JSON metadata:
   "_meta": {
     "version": "3.20.0",
     "built_at": "2026-05-10T18:25:50Z",
-    "total_tickers": 61653
+    "total_tickers": 61455
   },
   "tickers": []
 }

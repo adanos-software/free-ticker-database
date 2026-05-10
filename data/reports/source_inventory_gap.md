@@ -1,6 +1,6 @@
 # Source Inventory Gap
 
-Generated at: `2026-05-10T18:42:32Z`
+Generated at: `2026-05-10T20:22:40Z`
 
 ## Summary
 
@@ -22,10 +22,10 @@ _No rows._
 |---|---|---|---:|---:|---:|---|---|---|
 | 1 | STO | official_partial | 725 | 0 | 64 | nasdaq_nordic_stockholm_full_search | Nasdaq Nordic | reconciled through existing official Nasdaq Nordic Stockholm shares, share-search, ETF, tracker, Spotlight, and NGM feeds |
 | 2 | EGX | official_partial | 225 | 0 | 29 | egx_listed_securities | EGX | implemented via browser-captured official ASP.NET ViewState; raw non-browser requests still hit the EGX/TSPD challenge |
-| 3 | ASX | official_partial | 1298 | 105 | 47 | asx_cash_market_directory | ASX | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
+| 3 | ASX | official_partial | 1298 | 105 | 45 | asx_cash_market_directory | ASX | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
 | 4 | ATHEX | official_partial | 117 | 8 | 0 | athex_sector_classification | ATHEX | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
-| 5 | SZSE | official_partial | 3083 | 24 | 0 | szse_industry_classification | SZSE | implemented via existing official SZSE report-list industry fields |
-| 6 | SSE | official_partial | 2789 | 62 | 0 | sse_industry_classification | SSE | implemented via existing official SSE stock-list CSRC_CODE fields |
+| 5 | SZSE | official_partial | 3083 | 14 | 0 | szse_industry_classification | SZSE | implemented via existing official SZSE report-list industry fields |
+| 6 | SSE | official_partial | 2789 | 42 | 0 | sse_industry_classification | SSE | implemented via existing official SSE stock-list CSRC_CODE fields |
 | 7 | TPEX | official_partial | 1118 | 0 | 0 | stockanalysis_tpex_company_profiles | StockAnalysis | resolved by scripts/backfill_stockanalysis_metadata.py as a reviewed secondary company-profile source because official TPEX/MOPS feeds identify the KY issuers but do not expose their foreign ISINs |
 | 8 | SIX | official_partial | 743 | 0 | 0 | six_shares_explorer_full | SIX | implemented via the official SIX FQS ref.json detail endpoint; residual gaps are now data-level taxonomy mapping only |
 | 9 | HOSE | official_partial | 153 | 0 | 0 | stockanalysis_hose_company_profiles | StockAnalysis | resolved by scripts/backfill_stockanalysis_metadata.py as a reviewed secondary company-profile source after official HOSE/VSDC feeds did not expose the single LCG stock-sector residual |
@@ -61,10 +61,10 @@ _No rows._
 |---|---|---|---:|---:|---:|---|---|---|
 | 1 | STO | official_partial | 725 | 0 | 64 | nasdaq_nordic_stockholm_full_search | Nasdaq Nordic | reconciled through existing official Nasdaq Nordic Stockholm shares, share-search, ETF, tracker, Spotlight, and NGM feeds |
 | 2 | EGX | official_partial | 225 | 0 | 29 | egx_listed_securities | EGX | implemented via browser-captured official ASP.NET ViewState; raw non-browser requests still hit the EGX/TSPD challenge |
-| 3 | ASX | official_partial | 1298 | 105 | 47 | asx_cash_market_directory | ASX | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
+| 3 | ASX | official_partial | 1298 | 105 | 45 | asx_cash_market_directory | ASX | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
 | 4 | ATHEX | official_partial | 117 | 8 | 0 | athex_sector_classification | ATHEX | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
-| 5 | SZSE | official_partial | 3083 | 24 | 0 | szse_industry_classification | SZSE | implemented via existing official SZSE report-list industry fields |
-| 6 | SSE | official_partial | 2789 | 62 | 0 | sse_industry_classification | SSE | implemented via existing official SSE stock-list CSRC_CODE fields |
+| 5 | SZSE | official_partial | 3083 | 14 | 0 | szse_industry_classification | SZSE | implemented via existing official SZSE report-list industry fields |
+| 6 | SSE | official_partial | 2789 | 42 | 0 | sse_industry_classification | SSE | implemented via existing official SSE stock-list CSRC_CODE fields |
 | 7 | TPEX | official_partial | 1118 | 0 | 0 | stockanalysis_tpex_company_profiles | StockAnalysis | resolved by scripts/backfill_stockanalysis_metadata.py as a reviewed secondary company-profile source because official TPEX/MOPS feeds identify the KY issuers but do not expose their foreign ISINs |
 | 8 | SIX | official_partial | 743 | 0 | 0 | six_shares_explorer_full | SIX | implemented via the official SIX FQS ref.json detail endpoint; residual gaps are now data-level taxonomy mapping only |
 | 9 | HOSE | official_partial | 153 | 0 | 0 | stockanalysis_hose_company_profiles | StockAnalysis | resolved by scripts/backfill_stockanalysis_metadata.py as a reviewed secondary company-profile source after official HOSE/VSDC feeds did not expose the single LCG stock-sector residual |

@@ -261,7 +261,7 @@ def asset_type_matches(target: dict[str, str], source: TradingViewRow) -> bool:
     if target.get("asset_type") == "ETF":
         return source.instrument_type == "fund" and (source.subtype == "etf" or "etf" in source.typespecs)
     if target.get("asset_type") == "Stock":
-        return source.instrument_type == "stock"
+        return source.instrument_type in {"stock", "dr"}
     return False
 
 
@@ -276,6 +276,10 @@ def choose_source_for_row(row: dict[str, str], source_rows: dict[str, TradingVie
 def peer_name_matches(isin: str, target_name: str, existing_isin_rows: dict[str, list[dict[str, str]]]) -> bool:
     peers = existing_isin_rows.get(isin, [])
     return not peers or any(names_match(peer.get("name", ""), target_name) for peer in peers)
+
+
+def has_matching_existing_peer(isin: str, target_name: str, existing_isin_rows: dict[str, list[dict[str, str]]]) -> bool:
+    return any(names_match(peer.get("name", ""), target_name) for peer in existing_isin_rows.get(isin, []))
 
 
 def has_cjk(value: str) -> bool:
@@ -337,6 +341,7 @@ def evaluate_row(
     symbol_match = normalize_symbol(source.symbol) == normalize_symbol(row["ticker"])
     name_match = names_match(source.name, row["name"]) if source.name else False
     peer_match = peer_name_matches(source.isin, row["name"], existing_isin_rows) if source.isin else False
+    peer_corroborates_name = has_matching_existing_peer(source.isin, row["name"], existing_isin_rows) if source.isin else False
     base["name_match"] = name_match
     base["peer_name_match"] = peer_match
 
@@ -350,7 +355,7 @@ def evaluate_row(
         return {**base, "decision": "invalid_isin"}
     if not asset_type_matches(row, source):
         return {**base, "decision": "asset_type_mismatch"}
-    if not names_compatible_for_isin(row, source):
+    if not names_compatible_for_isin(row, source) and not peer_corroborates_name:
         return {**base, "decision": "name_mismatch"}
     if not peer_match:
         return {**base, "decision": "isin_peer_name_mismatch"}
