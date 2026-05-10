@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [3.21.0] - 2026-05-10
+
 ### Added
 
 - Added free-source B3 COTAHIST and NYSE Group Security Master sample backfills for review-gated ISIN and ETF-category fills.
