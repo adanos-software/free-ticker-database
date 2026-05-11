@@ -170,3 +170,56 @@ def test_implemented_source_without_isin_marks_identifier_as_source_gap() -> Non
 
     assert len(rows) == 1
     assert rows[0].gap_class == "official_identifier_not_exposed_source_gap"
+
+
+def test_exact_official_reference_without_isin_marks_identifier_as_source_gap() -> None:
+    rows = build_source_gap_classifications(
+        core_listings=[
+            {
+                "listing_key": "PSX::TEST",
+                "ticker": "TEST",
+                "exchange": "PSX",
+                "asset_type": "Stock",
+                "name": "Test Limited",
+                "scope_reason": "primary_listing_missing_isin",
+            }
+        ],
+        tickers=[],
+        masterfile_reference_rows=[
+            {
+                "ticker": "TEST",
+                "exchange": "PSX",
+                "official": "true",
+                "isin": "",
+            }
+        ],
+    )
+
+    assert len(rows) == 1
+    assert rows[0].gap_class == "official_identifier_not_exposed_source_gap"
+
+
+def test_current_official_directory_absence_marks_identifier_as_source_gap() -> None:
+    rows = build_source_gap_classifications(
+        core_listings=[
+            {
+                "listing_key": "B3::TEST3",
+                "ticker": "TEST3",
+                "exchange": "B3",
+                "asset_type": "Stock",
+                "name": "Test SA",
+                "scope_reason": "primary_listing_missing_isin",
+            }
+        ],
+        tickers=[],
+        b3_cotahist_isin_probe_rows=[
+            {
+                "ticker": "TEST3",
+                "exchange": "B3",
+                "decision": "no_cotahist_match",
+            }
+        ],
+    )
+
+    assert len(rows) == 1
+    assert rows[0].gap_class == "official_current_directory_absent_identifier_gap"

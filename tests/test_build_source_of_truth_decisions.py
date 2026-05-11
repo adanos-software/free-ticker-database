@@ -25,6 +25,7 @@ def test_build_decisions_maps_gap_classes_to_outcomes() -> None:
     rows = build_decisions(
         [
             classification("official_identifier_source_gap", listing_key="TSX::AAA"),
+            classification("official_current_directory_absent_identifier_gap", listing_key="B3::STALE"),
             classification("adr_cdr_or_depositary_sector_gap", listing_key="TSX::CDR"),
             classification("official_industry_taxonomy_unavailable_gap", listing_key="LSE::NOSECTOR"),
             classification("otc_sector_source_gap", listing_key="OTC::BBB"),
@@ -35,6 +36,7 @@ def test_build_decisions_maps_gap_classes_to_outcomes() -> None:
     by_key = {row.listing_key: row for row in rows}
     assert by_key["TSX::AAA"].source_of_truth_outcome == "official_fill_required"
     assert by_key["TSX::AAA"].fill_action == "fill_from_source"
+    assert by_key["B3::STALE"].source_of_truth_outcome == "accepted_source_gap"
     assert by_key["TSX::CDR"].source_of_truth_outcome == "core_exclusion_candidate"
     assert by_key["LSE::NOSECTOR"].source_of_truth_outcome == "accepted_source_gap"
     assert by_key["OTC::BBB"].source_of_truth_outcome == "accepted_source_gap"

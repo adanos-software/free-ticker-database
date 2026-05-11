@@ -47,6 +47,7 @@ ACCEPTED_SOURCE_GAP_CLASSES = {
     "digital_asset_etf_category_gap",
     "equity_etf_category_gap",
     "fixed_income_etf_category_gap",
+    "official_current_directory_absent_identifier_gap",
     "official_identifier_not_exposed_source_gap",
     "official_industry_taxonomy_unavailable_gap",
     "otc_sector_source_gap",
