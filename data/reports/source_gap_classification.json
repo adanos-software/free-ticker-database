@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-05-11T06:35:27Z",
+    "generated_at": "2026-05-11T08:19:08Z",
     "rows": 3860,
     "field_totals": {
       "missing_etf_category": 94,
@@ -17,12 +17,12 @@
       "fixed_income_etf_category_gap": 1,
       "fund_or_trust_identifier_gap": 294,
       "fundlike_stock_sector_gap": 74,
-      "generic_etf_category_source_gap": 20,
       "inactive_or_legacy_identifier_gap": 158,
       "official_current_directory_absent_identifier_gap": 64,
       "official_identifier_not_exposed_source_gap": 326,
-      "official_identifier_source_gap": 54,
+      "official_identifier_reference_unmatched_gap": 54,
       "official_industry_taxonomy_unavailable_gap": 1664,
+      "official_product_reference_unmatched_category_gap": 20,
       "official_product_taxonomy_unavailable_gap": 70,
       "otc_sector_source_gap": 840,
       "shell_or_cpc_sector_gap": 90
@@ -31,7 +31,7 @@
       "missing_etf_category:commodity_etf_category_gap": 2,
       "missing_etf_category:equity_etf_category_gap": 1,
       "missing_etf_category:fixed_income_etf_category_gap": 1,
-      "missing_etf_category:generic_etf_category_source_gap": 20,
+      "missing_etf_category:official_product_reference_unmatched_category_gap": 20,
       "missing_etf_category:official_product_taxonomy_unavailable_gap": 70,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 45,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 35,
@@ -40,7 +40,7 @@
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 158,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 64,
       "missing_isin_primary:official_identifier_not_exposed_source_gap": 326,
-      "missing_isin_primary:official_identifier_source_gap": 54,
+      "missing_isin_primary:official_identifier_reference_unmatched_gap": 54,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 39,
       "missing_sector_stock:fundlike_stock_sector_gap": 74,
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 1664,
@@ -189,11 +189,11 @@
       "exchange": "AMS",
       "asset_type": "ETF",
       "name": "iSh Brzil LTN BRL Gvt Bnd",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_reference_unmatched_category_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source layer exists, but the residual ETF row has no exact official product reference; require alias/current-listing evidence or product taxonomy before filling.",
+      "recommended_next_source": "Official product directory, alias review, or reviewed product provider profile.",
+      "source_gate": "Require an exact official symbol/alias match before filling or mapping etf_category."
     },
     {
       "field": "missing_etf_category",
@@ -343,11 +343,11 @@
       "exchange": "B3",
       "asset_type": "ETF",
       "name": "INVESTO BLUESTAR US LISTED E-BROKERS ETF FDO INV",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_reference_unmatched_category_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source layer exists, but the residual ETF row has no exact official product reference; require alias/current-listing evidence or product taxonomy before filling.",
+      "recommended_next_source": "Official product directory, alias review, or reviewed product provider profile.",
+      "source_gate": "Require an exact official symbol/alias match before filling or mapping etf_category."
     },
     {
       "field": "missing_etf_category",
@@ -357,11 +357,11 @@
       "exchange": "B3",
       "asset_type": "ETF",
       "name": "INTER EQI TEVA ETF BOLSA SEM ESTATAIS FDO DE ÍNDIC",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_reference_unmatched_category_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source layer exists, but the residual ETF row has no exact official product reference; require alias/current-listing evidence or product taxonomy before filling.",
+      "recommended_next_source": "Official product directory, alias review, or reviewed product provider profile.",
+      "source_gate": "Require an exact official symbol/alias match before filling or mapping etf_category."
     },
     {
       "field": "missing_etf_category",
@@ -371,11 +371,11 @@
       "exchange": "B3",
       "asset_type": "ETF",
       "name": "ICATU VANGUARDA INCENTIVADO EM INFRAESTRUTURA",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_reference_unmatched_category_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source layer exists, but the residual ETF row has no exact official product reference; require alias/current-listing evidence or product taxonomy before filling.",
+      "recommended_next_source": "Official product directory, alias review, or reviewed product provider profile.",
+      "source_gate": "Require an exact official symbol/alias match before filling or mapping etf_category."
     },
     {
       "field": "missing_etf_category",
@@ -385,11 +385,11 @@
       "exchange": "BATS",
       "asset_type": "ETF",
       "name": "Discipline Fund ETF",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_reference_unmatched_category_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source layer exists, but the residual ETF row has no exact official product reference; require alias/current-listing evidence or product taxonomy before filling.",
+      "recommended_next_source": "Official product directory, alias review, or reviewed product provider profile.",
+      "source_gate": "Require an exact official symbol/alias match before filling or mapping etf_category."
     },
     {
       "field": "missing_etf_category",
@@ -413,11 +413,11 @@
       "exchange": "BATS",
       "asset_type": "ETF",
       "name": "Unusual Whales Subversive Republican Trading ETF",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_reference_unmatched_category_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source layer exists, but the residual ETF row has no exact official product reference; require alias/current-listing evidence or product taxonomy before filling.",
+      "recommended_next_source": "Official product directory, alias review, or reviewed product provider profile.",
+      "source_gate": "Require an exact official symbol/alias match before filling or mapping etf_category."
     },
     {
       "field": "missing_etf_category",
@@ -427,11 +427,11 @@
       "exchange": "BATS",
       "asset_type": "ETF",
       "name": "Advisors Series Trust - Reverb ETF",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_reference_unmatched_category_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source layer exists, but the residual ETF row has no exact official product reference; require alias/current-listing evidence or product taxonomy before filling.",
+      "recommended_next_source": "Official product directory, alias review, or reviewed product provider profile.",
+      "source_gate": "Require an exact official symbol/alias match before filling or mapping etf_category."
     },
     {
       "field": "missing_etf_category",
@@ -469,11 +469,11 @@
       "exchange": "BSE_BW",
       "asset_type": "ETF",
       "name": "VGE-ETF",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_reference_unmatched_category_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source layer exists, but the residual ETF row has no exact official product reference; require alias/current-listing evidence or product taxonomy before filling.",
+      "recommended_next_source": "Official product directory, alias review, or reviewed product provider profile.",
+      "source_gate": "Require an exact official symbol/alias match before filling or mapping etf_category."
     },
     {
       "field": "missing_etf_category",
@@ -553,11 +553,11 @@
       "exchange": "BVL",
       "asset_type": "ETF",
       "name": "Peru Soberano Van Eck Eldorado ID ETF",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_reference_unmatched_category_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source layer exists, but the residual ETF row has no exact official product reference; require alias/current-listing evidence or product taxonomy before filling.",
+      "recommended_next_source": "Official product directory, alias review, or reviewed product provider profile.",
+      "source_gate": "Require an exact official symbol/alias match before filling or mapping etf_category."
     },
     {
       "field": "missing_etf_category",
@@ -609,11 +609,11 @@
       "exchange": "JSE",
       "asset_type": "ETF",
       "name": "Satrix Swix Top 40 ETF",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_reference_unmatched_category_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source layer exists, but the residual ETF row has no exact official product reference; require alias/current-listing evidence or product taxonomy before filling.",
+      "recommended_next_source": "Official product directory, alias review, or reviewed product provider profile.",
+      "source_gate": "Require an exact official symbol/alias match before filling or mapping etf_category."
     },
     {
       "field": "missing_etf_category",
@@ -623,11 +623,11 @@
       "exchange": "KRX",
       "asset_type": "ETF",
       "name": "KOSEF USA ETF Industry STOXX",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_reference_unmatched_category_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source layer exists, but the residual ETF row has no exact official product reference; require alias/current-listing evidence or product taxonomy before filling.",
+      "recommended_next_source": "Official product directory, alias review, or reviewed product provider profile.",
+      "source_gate": "Require an exact official symbol/alias match before filling or mapping etf_category."
     },
     {
       "field": "missing_etf_category",
@@ -637,11 +637,11 @@
       "exchange": "KRX",
       "asset_type": "ETF",
       "name": "460280",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_reference_unmatched_category_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source layer exists, but the residual ETF row has no exact official product reference; require alias/current-listing evidence or product taxonomy before filling.",
+      "recommended_next_source": "Official product directory, alias review, or reviewed product provider profile.",
+      "source_gate": "Require an exact official symbol/alias match before filling or mapping etf_category."
     },
     {
       "field": "missing_etf_category",
@@ -707,11 +707,11 @@
       "exchange": "NGX",
       "asset_type": "ETF",
       "name": "GREENWICH ASSET ETF",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_reference_unmatched_category_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source layer exists, but the residual ETF row has no exact official product reference; require alias/current-listing evidence or product taxonomy before filling.",
+      "recommended_next_source": "Official product directory, alias review, or reviewed product provider profile.",
+      "source_gate": "Require an exact official symbol/alias match before filling or mapping etf_category."
     },
     {
       "field": "missing_etf_category",
@@ -721,11 +721,11 @@
       "exchange": "NGX",
       "asset_type": "ETF",
       "name": "SIAML PENSION ETF 40",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_reference_unmatched_category_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source layer exists, but the residual ETF row has no exact official product reference; require alias/current-listing evidence or product taxonomy before filling.",
+      "recommended_next_source": "Official product directory, alias review, or reviewed product provider profile.",
+      "source_gate": "Require an exact official symbol/alias match before filling or mapping etf_category."
     },
     {
       "field": "missing_etf_category",
@@ -735,11 +735,11 @@
       "exchange": "NGX",
       "asset_type": "ETF",
       "name": "STANBIC IBTC ETF 30",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_reference_unmatched_category_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source layer exists, but the residual ETF row has no exact official product reference; require alias/current-listing evidence or product taxonomy before filling.",
+      "recommended_next_source": "Official product directory, alias review, or reviewed product provider profile.",
+      "source_gate": "Require an exact official symbol/alias match before filling or mapping etf_category."
     },
     {
       "field": "missing_etf_category",
@@ -749,11 +749,11 @@
       "exchange": "NGX",
       "asset_type": "ETF",
       "name": "VETIVA BANKING ETF",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_reference_unmatched_category_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source layer exists, but the residual ETF row has no exact official product reference; require alias/current-listing evidence or product taxonomy before filling.",
+      "recommended_next_source": "Official product directory, alias review, or reviewed product provider profile.",
+      "source_gate": "Require an exact official symbol/alias match before filling or mapping etf_category."
     },
     {
       "field": "missing_etf_category",
@@ -763,11 +763,11 @@
       "exchange": "NGX",
       "asset_type": "ETF",
       "name": "VETIVA CONSUMER GOODS ETF",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_reference_unmatched_category_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source layer exists, but the residual ETF row has no exact official product reference; require alias/current-listing evidence or product taxonomy before filling.",
+      "recommended_next_source": "Official product directory, alias review, or reviewed product provider profile.",
+      "source_gate": "Require an exact official symbol/alias match before filling or mapping etf_category."
     },
     {
       "field": "missing_etf_category",
@@ -777,11 +777,11 @@
       "exchange": "NGX",
       "asset_type": "ETF",
       "name": "VETIVA GRIFFIN 30 ETF",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_reference_unmatched_category_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source layer exists, but the residual ETF row has no exact official product reference; require alias/current-listing evidence or product taxonomy before filling.",
+      "recommended_next_source": "Official product directory, alias review, or reviewed product provider profile.",
+      "source_gate": "Require an exact official symbol/alias match before filling or mapping etf_category."
     },
     {
       "field": "missing_etf_category",
@@ -833,11 +833,11 @@
       "exchange": "NYSE ARCA",
       "asset_type": "ETF",
       "name": "SPDR STOXX Europe 50 ETF",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_reference_unmatched_category_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source layer exists, but the residual ETF row has no exact official product reference; require alias/current-listing evidence or product taxonomy before filling.",
+      "recommended_next_source": "Official product directory, alias review, or reviewed product provider profile.",
+      "source_gate": "Require an exact official symbol/alias match before filling or mapping etf_category."
     },
     {
       "field": "missing_etf_category",
@@ -889,11 +889,11 @@
       "exchange": "NYSE ARCA",
       "asset_type": "ETF",
       "name": "Litman Gregory Funds Trust",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_reference_unmatched_category_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source layer exists, but the residual ETF row has no exact official product reference; require alias/current-listing evidence or product taxonomy before filling.",
+      "recommended_next_source": "Official product directory, alias review, or reviewed product provider profile.",
+      "source_gate": "Require an exact official symbol/alias match before filling or mapping etf_category."
     },
     {
       "field": "missing_etf_category",
@@ -2891,11 +2891,11 @@
       "exchange": "ASX",
       "asset_type": "Stock",
       "name": "RAMHA",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -3031,11 +3031,11 @@
       "exchange": "ATHEX",
       "asset_type": "Stock",
       "name": "AKTR",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -3045,11 +3045,11 @@
       "exchange": "ATHEX",
       "asset_type": "Stock",
       "name": "Allwyn AG",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -3059,11 +3059,11 @@
       "exchange": "ATHEX",
       "asset_type": "Stock",
       "name": "BOCHGR",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -3073,11 +3073,11 @@
       "exchange": "ATHEX",
       "asset_type": "Stock",
       "name": "Ballys Intralot S.A.",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -3087,11 +3087,11 @@
       "exchange": "ATHEX",
       "asset_type": "Stock",
       "name": "ONYX",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -3101,11 +3101,11 @@
       "exchange": "ATHEX",
       "asset_type": "Stock",
       "name": "Orilina Properties REIC S.A.",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -3115,11 +3115,11 @@
       "exchange": "ATHEX",
       "asset_type": "Stock",
       "name": "SOFTWEB",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -3129,11 +3129,11 @@
       "exchange": "ATHEX",
       "asset_type": "Stock",
       "name": "TRESTATES",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -6601,11 +6601,11 @@
       "exchange": "BCBA",
       "asset_type": "Stock",
       "name": "Banco de Galicia y Buenos Aires SA Class B 1 Vote",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -6923,11 +6923,11 @@
       "exchange": "BSE_HU",
       "asset_type": "Stock",
       "name": "Amixa Holding Nyrt",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -6937,11 +6937,11 @@
       "exchange": "BSE_HU",
       "asset_type": "Stock",
       "name": "AutoWallis Nyrt",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -6965,11 +6965,11 @@
       "exchange": "BSE_HU",
       "asset_type": "Stock",
       "name": "FuturAqua Mineral Water Production & Asset Management NyRt.",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -6979,11 +6979,11 @@
       "exchange": "BSE_HU",
       "asset_type": "Stock",
       "name": "Takarék Jelzálogbank Nyrt.",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -6993,11 +6993,11 @@
       "exchange": "BSE_HU",
       "asset_type": "Stock",
       "name": "Nutex Investments PLC",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -7007,11 +7007,11 @@
       "exchange": "BSE_HU",
       "asset_type": "Stock",
       "name": "Waberers",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -7077,11 +7077,11 @@
       "exchange": "BVL",
       "asset_type": "Stock",
       "name": "Luz del Sur S.A.A.",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -7119,11 +7119,11 @@
       "exchange": "Euronext",
       "asset_type": "Stock",
       "name": "BCP S&P500 EUR",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -7133,11 +7133,11 @@
       "exchange": "Euronext",
       "asset_type": "Stock",
       "name": "SCR- Sibelco NV",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -7147,11 +7147,11 @@
       "exchange": "Euronext",
       "asset_type": "Stock",
       "name": "Euronext S Stellantis 030323 GR",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -7287,11 +7287,11 @@
       "exchange": "JSE",
       "asset_type": "Stock",
       "name": "Grindrod Limited",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -7301,11 +7301,11 @@
       "exchange": "JSE",
       "asset_type": "Stock",
       "name": "iOCO Limited",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -7357,11 +7357,11 @@
       "exchange": "KOSDAQ",
       "asset_type": "Stock",
       "name": "444920",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -7371,11 +7371,11 @@
       "exchange": "KOSDAQ",
       "asset_type": "Stock",
       "name": "450940",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -7385,11 +7385,11 @@
       "exchange": "KOSDAQ",
       "asset_type": "Stock",
       "name": "455910",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -7399,11 +7399,11 @@
       "exchange": "KOSDAQ",
       "asset_type": "Stock",
       "name": "457940",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -7413,11 +7413,11 @@
       "exchange": "KOSDAQ",
       "asset_type": "Stock",
       "name": "Korea No.12 Special Purpose Acquisition Co., Ltd.",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -7483,11 +7483,11 @@
       "exchange": "LSE",
       "asset_type": "Stock",
       "name": "Banco Comercial Portugues S/A",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -7497,11 +7497,11 @@
       "exchange": "LSE",
       "asset_type": "Stock",
       "name": "Amundi Index Solutions - Amundi MSCI Europe SRI PAB",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -7511,11 +7511,11 @@
       "exchange": "LSE",
       "asset_type": "Stock",
       "name": "Endo International PLC",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -7525,11 +7525,11 @@
       "exchange": "LSE",
       "asset_type": "Stock",
       "name": "Coventry Building Society",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -7539,11 +7539,11 @@
       "exchange": "LSE",
       "asset_type": "Stock",
       "name": "Manchester Building Society 6.75% PIBS",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -7553,11 +7553,11 @@
       "exchange": "LSE",
       "asset_type": "Stock",
       "name": "Skipton Building Society 8.5% PIBS",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -7567,11 +7567,11 @@
       "exchange": "LSE",
       "asset_type": "Stock",
       "name": "SL Private Equity",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -7581,11 +7581,11 @@
       "exchange": "LSE",
       "asset_type": "Stock",
       "name": "Thames Ventures VCT 1",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -7595,11 +7595,11 @@
       "exchange": "LSE",
       "asset_type": "Stock",
       "name": "Various Eateries PLC",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -9373,11 +9373,11 @@
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "name": "Avidity Biosciences, Inc",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -11375,11 +11375,11 @@
       "exchange": "OSL",
       "asset_type": "Stock",
       "name": "EIENDOMSSPAR",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -11389,11 +11389,11 @@
       "exchange": "OSL",
       "asset_type": "Stock",
       "name": "Elopak ASA",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -11403,11 +11403,11 @@
       "exchange": "OSL",
       "asset_type": "Stock",
       "name": "LOKOTECH GROUP TR",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -11417,11 +11417,11 @@
       "exchange": "OSL",
       "asset_type": "Stock",
       "name": "StandardCoin AS",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -11431,11 +11431,11 @@
       "exchange": "PSE_CZ",
       "asset_type": "Stock",
       "name": "J&T ARCH INVESTMENTS SICAV a.s.",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -12411,11 +12411,11 @@
       "exchange": "SGX",
       "asset_type": "Stock",
       "name": "Broadway Ind",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -12425,11 +12425,11 @@
       "exchange": "SGX",
       "asset_type": "Stock",
       "name": "AF Global",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -14427,11 +14427,11 @@
       "exchange": "TSX",
       "asset_type": "Stock",
       "name": "Becker Milk Co Ltd Cl B Nv Spec (BEK-B.TO",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -14581,11 +14581,11 @@
       "exchange": "TSX",
       "asset_type": "Stock",
       "name": "Dorel Industries Inc Cl.A Mv (DII-A.TO",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -14777,11 +14777,11 @@
       "exchange": "TSX",
       "asset_type": "Stock",
       "name": "Northview Residential REIT",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -14973,11 +14973,11 @@
       "exchange": "TSX",
       "asset_type": "Stock",
       "name": "Sprott Physical Platinum & Palladium Tr",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -15029,11 +15029,11 @@
       "exchange": "TSX",
       "asset_type": "Stock",
       "name": "TVA Group Inc",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -15085,11 +15085,11 @@
       "exchange": "TSX",
       "asset_type": "Stock",
       "name": "M Split Corp",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -15897,11 +15897,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Partners Value Investments LP",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -16247,11 +16247,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "XTAO Inc.",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -16261,11 +16261,11 @@
       "exchange": "VSE",
       "asset_type": "Stock",
       "name": "AMS OSRAM AG",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
@@ -16275,11 +16275,11 @@
       "exchange": "VSE",
       "asset_type": "Stock",
       "name": "La Française des Jeux Société anonyme",
-      "gap_class": "official_identifier_source_gap",
+      "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",

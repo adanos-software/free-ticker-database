@@ -46,7 +46,9 @@ GAP_CLASS_POLICIES = {
     "official_industry_taxonomy_unavailable_gap": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
     "official_identifier_not_exposed_source_gap": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
     "official_current_directory_absent_identifier_gap": "A current official venue probe did not find the residual listing in the active instrument directory; keep the identifier blank until active-listing evidence or a registry record appears.",
+    "official_identifier_reference_unmatched_gap": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
     "official_product_taxonomy_unavailable_gap": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+    "official_product_reference_unmatched_category_gap": "An official venue/product source layer exists, but the residual ETF row has no exact official product reference; require alias/current-listing evidence or product taxonomy before filling.",
     "exchange_industry_source_gap": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
     "fundlike_stock_sector_gap": "Require issuer classification; do not map fund/trust-like stock rows from product-name tokens alone.",
     "shell_or_cpc_sector_gap": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
@@ -191,6 +193,12 @@ def classify_missing_isin(row: dict[str, str]) -> tuple[str, str, str]:
             "Separate official CSD/security registry or exchange detail feed with ISIN.",
             "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
         )
+    if row.get("_official_identifier_reference_unmatched") == "true":
+        return (
+            "official_identifier_reference_unmatched_gap",
+            "Official exchange directory, alias review, or CSD/security registry detail.",
+            "Require an exact official symbol/alias match or direct registry record before filling ISIN.",
+        )
     return (
         "official_identifier_source_gap",
         "Official exchange detail feed or reviewed secondary identifier source.",
@@ -276,6 +284,12 @@ def classify_missing_etf_category(row: dict[str, str]) -> tuple[str, str, str]:
             "official_product_taxonomy_unavailable_gap",
             "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
             "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
+        )
+    if row.get("_official_product_reference_unmatched") == "true":
+        return (
+            "official_product_reference_unmatched_category_gap",
+            "Official product directory, alias review, or reviewed product provider profile.",
+            "Require an exact official symbol/alias match before filling or mapping etf_category.",
         )
     return (
         "generic_etf_category_source_gap",
@@ -376,6 +390,9 @@ def build_source_gap_classifications(
             row = {
                 **row,
                 "_official_current_directory_absent": "true" if key in current_directory_absent_keys else "",
+                "_official_identifier_reference_unmatched": (
+                    "true" if exchange in implemented_source_exchanges and key not in official_reference_by_key else ""
+                ),
                 "_official_identifier_not_exposed": (
                     "true" if exchange in isin_not_exposed_exchanges or key in official_reference_without_isin_keys else ""
                 ),
@@ -392,6 +409,13 @@ def build_source_gap_classifications(
                 "true"
                 if (exchange, row.get("ticker", "")) in official_reference_without_product_taxonomy_keys
                 or (exchange == "OTC" and row.get("asset_type") == "ETF")
+                else ""
+            ),
+            "_official_product_reference_unmatched": (
+                "true"
+                if row.get("asset_type") == "ETF"
+                and exchange in implemented_source_exchanges
+                and (exchange, row.get("ticker", "")) not in official_reference_by_key
                 else ""
             ),
         }

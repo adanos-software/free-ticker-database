@@ -225,6 +225,40 @@ def test_current_official_directory_absence_marks_identifier_as_source_gap() -> 
     assert rows[0].gap_class == "official_current_directory_absent_identifier_gap"
 
 
+def test_implemented_official_source_without_exact_reference_marks_identifier_source_gap() -> None:
+    rows = build_source_gap_classifications(
+        core_listings=[
+            {
+                "listing_key": "TESTX::ALIAS",
+                "ticker": "ALIAS",
+                "exchange": "TESTX",
+                "asset_type": "Stock",
+                "name": "Alias Plc",
+                "scope_reason": "primary_listing_missing_isin",
+            }
+        ],
+        tickers=[],
+        source_inventory_rows=[
+            {
+                "exchange": "TESTX",
+                "current_status": "official_full",
+                "implementation_status": "implemented",
+            }
+        ],
+        masterfile_reference_rows=[
+            {
+                "ticker": "CANON",
+                "exchange": "TESTX",
+                "official": "true",
+                "isin": "GB0000000000",
+            }
+        ],
+    )
+
+    assert len(rows) == 1
+    assert rows[0].gap_class == "official_identifier_reference_unmatched_gap"
+
+
 def test_official_etf_reference_without_taxonomy_marks_product_taxonomy_source_gap() -> None:
     rows = build_source_gap_classifications(
         core_listings=[],
@@ -250,6 +284,40 @@ def test_official_etf_reference_without_taxonomy_marks_product_taxonomy_source_g
 
     assert len(rows) == 1
     assert rows[0].gap_class == "official_product_taxonomy_unavailable_gap"
+
+
+def test_implemented_official_source_without_exact_product_reference_marks_category_source_gap() -> None:
+    rows = build_source_gap_classifications(
+        core_listings=[],
+        tickers=[
+            {
+                "ticker": "ETFALIAS",
+                "exchange": "TESTX",
+                "asset_type": "ETF",
+                "name": "Alias ETF",
+                "stock_sector": "",
+                "etf_category": "",
+            }
+        ],
+        source_inventory_rows=[
+            {
+                "exchange": "TESTX",
+                "current_status": "official_full",
+                "implementation_status": "implemented",
+            }
+        ],
+        masterfile_reference_rows=[
+            {
+                "ticker": "ETF",
+                "exchange": "TESTX",
+                "official": "true",
+                "sector": "Equity",
+            }
+        ],
+    )
+
+    assert len(rows) == 1
+    assert rows[0].gap_class == "official_product_reference_unmatched_category_gap"
 
 
 def test_rhodium_etcs_are_classified_as_commodity_category_gaps() -> None:

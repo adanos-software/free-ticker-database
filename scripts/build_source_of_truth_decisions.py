@@ -48,8 +48,10 @@ ACCEPTED_SOURCE_GAP_CLASSES = {
     "equity_etf_category_gap",
     "fixed_income_etf_category_gap",
     "official_current_directory_absent_identifier_gap",
+    "official_identifier_reference_unmatched_gap",
     "official_identifier_not_exposed_source_gap",
     "official_industry_taxonomy_unavailable_gap",
+    "official_product_reference_unmatched_category_gap",
     "official_product_taxonomy_unavailable_gap",
     "otc_sector_source_gap",
 }
