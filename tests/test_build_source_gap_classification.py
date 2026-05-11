@@ -116,3 +116,57 @@ def test_depositary_stock_sector_gap_does_not_require_underlying_sector_fill() -
 
     assert len(rows) == 1
     assert rows[0].gap_class == "adr_cdr_or_depositary_sector_gap"
+
+
+def test_implemented_official_source_marks_residual_sector_as_source_gap() -> None:
+    rows = build_source_gap_classifications(
+        core_listings=[],
+        tickers=[
+            {
+                "ticker": "ABC",
+                "exchange": "TESTX",
+                "asset_type": "Stock",
+                "name": "ABC PLC",
+                "stock_sector": "",
+                "etf_category": "",
+            }
+        ],
+        source_inventory_rows=[
+            {
+                "exchange": "TESTX",
+                "current_status": "official_full",
+                "implementation_status": "implemented",
+            }
+        ],
+    )
+
+    assert len(rows) == 1
+    assert rows[0].gap_class == "official_industry_taxonomy_unavailable_gap"
+
+
+def test_implemented_source_without_isin_marks_identifier_as_source_gap() -> None:
+    rows = build_source_gap_classifications(
+        core_listings=[
+            {
+                "listing_key": "MSX::BKMB",
+                "ticker": "BKMB",
+                "exchange": "MSX",
+                "asset_type": "Stock",
+                "name": "BANK MUSCAT",
+                "scope_reason": "primary_listing_missing_isin",
+            }
+        ],
+        tickers=[],
+        source_inventory_rows=[
+            {
+                "exchange": "MSX",
+                "current_status": "official_full",
+                "implementation_status": "implemented",
+                "notes": "The official MSX companies API exposes symbol and sector but does not expose ISIN.",
+                "blocker": "",
+            }
+        ],
+    )
+
+    assert len(rows) == 1
+    assert rows[0].gap_class == "official_identifier_not_exposed_source_gap"

@@ -26,6 +26,8 @@ REPORTS_DIR = DATA_DIR / "reports"
 DEFAULT_TICKERS_CSV = DATA_DIR / "tickers.csv"
 DEFAULT_CORE_LISTINGS_CSV = DATA_DIR / "core_listings.csv"
 DEFAULT_TMX_STOCK_SECTOR_BACKFILL_CSV = DATA_DIR / "tmx_verification" / "stock_sector_backfill.csv"
+DEFAULT_SOURCE_INVENTORY_GAP_CSV = REPORTS_DIR / "source_inventory_gap.csv"
+DEFAULT_MASTERFILE_REFERENCE_CSV = DATA_DIR / "masterfiles" / "reference.csv"
 DEFAULT_CSV_OUT = REPORTS_DIR / "source_gap_classification.csv"
 DEFAULT_JSON_OUT = REPORTS_DIR / "source_gap_classification.json"
 DEFAULT_MD_OUT = REPORTS_DIR / "source_gap_classification.md"
@@ -39,6 +41,8 @@ GAP_CLASS_POLICIES = {
     "official_identifier_source_gap": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
     "otc_sector_source_gap": "Require SEC SIC, issuer filing, OTCMarkets profile, or reviewed secondary profile data; no name-only sector guesses.",
     "adr_cdr_or_depositary_sector_gap": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+    "official_industry_taxonomy_unavailable_gap": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+    "official_identifier_not_exposed_source_gap": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
     "exchange_industry_source_gap": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
     "fundlike_stock_sector_gap": "Require issuer classification; do not map fund/trust-like stock rows from product-name tokens alone.",
     "shell_or_cpc_sector_gap": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
@@ -125,6 +129,12 @@ def classify_missing_isin(row: dict[str, str]) -> tuple[str, str, str]:
     blob = normalized_blob(row)
     ticker = row.get("ticker", "").upper()
     exchange = row.get("exchange", "")
+    if row.get("_official_identifier_not_exposed") == "true":
+        return (
+            "official_identifier_not_exposed_source_gap",
+            "Separate official CSD/security registry or exchange detail feed with ISIN.",
+            "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+        )
     if has_any(blob, (" CDR", "CAD HEDGED", "DEPOSITARY", " ADR", " BDR", " RECEIPT")):
         return (
             "adr_cdr_or_depositary_identifier_gap",
@@ -212,6 +222,12 @@ def classify_missing_stock_sector(row: dict[str, str]) -> tuple[str, str, str]:
             "Issuer classification from official exchange or reviewed profile source.",
             "Canonical stock sector only with issuer-level classification evidence.",
         )
+    if row.get("_official_source_implemented") == "true":
+        return (
+            "official_industry_taxonomy_unavailable_gap",
+            "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+            "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+        )
     return (
         "exchange_industry_source_gap",
         "Official exchange industry feed or reviewed secondary company profile.",
@@ -282,6 +298,8 @@ def build_source_gap_classifications(
     tickers: list[dict[str, str]],
     core_listings: list[dict[str, str]],
     tmx_sector_results: list[dict[str, str]] | None = None,
+    source_inventory_rows: list[dict[str, str]] | None = None,
+    masterfile_reference_rows: list[dict[str, str]] | None = None,
 ) -> list[SourceGapClassificationRow]:
     rows: list[SourceGapClassificationRow] = []
     tmx_sector_by_key = {
@@ -289,12 +307,40 @@ def build_source_gap_classifications(
         for row in tmx_sector_results or []
         if row.get("tmx_sector", "")
     }
+    implemented_source_exchanges = {
+        row.get("exchange", "")
+        for row in source_inventory_rows or []
+        if row.get("implementation_status") == "implemented"
+        and row.get("current_status", "").startswith("official_")
+    }
+    isin_not_exposed_exchanges = {
+        row.get("exchange", "")
+        for row in source_inventory_rows or []
+        if row.get("implementation_status") == "implemented"
+        and (
+            "does not expose ISIN" in row.get("blocker", "")
+            or "does not expose ISIN" in row.get("notes", "")
+            or "does not expose a usable ISIN" in row.get("notes", "")
+        )
+    }
+    implemented_source_exchanges.update(
+        row.get("exchange", "")
+        for row in masterfile_reference_rows or []
+        if row.get("official", "").lower() == "true" and row.get("exchange", "")
+    )
     for row in core_listings:
         if row.get("scope_reason") == "primary_listing_missing_isin":
+            exchange = row.get("exchange", "")
+            row = {**row, "_official_identifier_not_exposed": "true" if exchange in isin_not_exposed_exchanges else ""}
             rows.append(make_row(FIELD_MISSING_ISIN, row))
     for row in tickers:
         listing_key = row.get("listing_key") or f"{row.get('exchange', '')}::{row.get('ticker', '')}"
-        row = {**row, "_tmx_sector": tmx_sector_by_key.get(listing_key, "")}
+        exchange = row.get("exchange", "")
+        row = {
+            **row,
+            "_tmx_sector": tmx_sector_by_key.get(listing_key, ""),
+            "_official_source_implemented": "true" if exchange in implemented_source_exchanges else "",
+        }
         if row.get("asset_type") == "Stock" and not row.get("stock_sector", "").strip():
             rows.append(make_row(FIELD_MISSING_STOCK_SECTOR, row))
         elif row.get("asset_type") == "ETF" and not row.get("etf_category", "").strip():
@@ -397,6 +443,8 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--tickers-csv", type=Path, default=DEFAULT_TICKERS_CSV)
     parser.add_argument("--core-listings-csv", type=Path, default=DEFAULT_CORE_LISTINGS_CSV)
     parser.add_argument("--tmx-stock-sector-backfill-csv", type=Path, default=DEFAULT_TMX_STOCK_SECTOR_BACKFILL_CSV)
+    parser.add_argument("--source-inventory-gap-csv", type=Path, default=DEFAULT_SOURCE_INVENTORY_GAP_CSV)
+    parser.add_argument("--masterfile-reference-csv", type=Path, default=DEFAULT_MASTERFILE_REFERENCE_CSV)
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_CSV_OUT)
     parser.add_argument("--json-out", type=Path, default=DEFAULT_JSON_OUT)
     parser.add_argument("--md-out", type=Path, default=DEFAULT_MD_OUT)
@@ -409,6 +457,8 @@ def main(argv: list[str] | None = None) -> None:
         tickers=load_csv(args.tickers_csv),
         core_listings=load_csv(args.core_listings_csv),
         tmx_sector_results=load_csv(args.tmx_stock_sector_backfill_csv),
+        source_inventory_rows=load_csv(args.source_inventory_gap_csv),
+        masterfile_reference_rows=load_csv(args.masterfile_reference_csv),
     )
     generated_at = utc_now()
     summary = summarize(rows, generated_at)
