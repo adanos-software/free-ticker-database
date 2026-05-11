@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-05-11T05:49:20Z",
+    "generated_at": "2026-05-11T05:58:31Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "listings_csv": "data/listings.csv",
@@ -17,7 +17,8 @@
       "review_remove_aliases_csv": "data/review_overrides/remove_aliases.csv",
       "review_metadata_updates_csv": "data/review_overrides/metadata_updates.csv",
       "coverage_report_json": "data/reports/coverage_report.json",
-      "source_gap_classification_csv": "data/reports/source_gap_classification.csv"
+      "source_gap_classification_csv": "data/reports/source_gap_classification.csv",
+      "source_of_truth_decisions_csv": "data/reports/source_of_truth_decisions.csv"
     }
   },
   "passed": true,
@@ -26,7 +27,7 @@
     "listing_rows": 71041,
     "adanos_reference_rows": 61455,
     "entry_quality_rows": 71041,
-    "error_gates": 77,
+    "error_gates": 82,
     "failed_error_gates": 0,
     "info_gates": 5
   },
@@ -110,6 +111,13 @@
     },
     {
       "name": "required_columns:data/reports/source_gap_classification.csv",
+      "severity": "error",
+      "passed": true,
+      "actual": 0,
+      "limit": 0
+    },
+    {
+      "name": "required_columns:data/reports/source_of_truth_decisions.csv",
       "severity": "error",
       "passed": true,
       "actual": 0,
@@ -418,6 +426,34 @@
     },
     {
       "name": "source_gap_classification_current_gap_mismatch",
+      "severity": "error",
+      "passed": true,
+      "actual": 0,
+      "limit": 0
+    },
+    {
+      "name": "source_of_truth_decision_invalid_rows",
+      "severity": "error",
+      "passed": true,
+      "actual": 0,
+      "limit": 0
+    },
+    {
+      "name": "source_of_truth_decision_duplicate_keys",
+      "severity": "error",
+      "passed": true,
+      "actual": 0,
+      "limit": 0
+    },
+    {
+      "name": "source_of_truth_decision_gap_mismatch",
+      "severity": "error",
+      "passed": true,
+      "actual": 0,
+      "limit": 0
+    },
+    {
+      "name": "source_of_truth_decision_class_mismatch",
       "severity": "error",
       "passed": true,
       "actual": 0,

@@ -39,6 +39,7 @@ DEFAULT_REVIEW_REMOVE_ALIASES_CSV = DATA_DIR / "review_overrides" / "remove_alia
 DEFAULT_REVIEW_METADATA_UPDATES_CSV = DATA_DIR / "review_overrides" / "metadata_updates.csv"
 DEFAULT_COVERAGE_REPORT_JSON = REPORTS_DIR / "coverage_report.json"
 DEFAULT_SOURCE_GAP_CLASSIFICATION_CSV = REPORTS_DIR / "source_gap_classification.csv"
+DEFAULT_SOURCE_OF_TRUTH_DECISIONS_CSV = REPORTS_DIR / "source_of_truth_decisions.csv"
 DEFAULT_JSON_OUT = REPORTS_DIR / "validation_report.json"
 DEFAULT_MD_OUT = REPORTS_DIR / "validation_report.md"
 
@@ -136,7 +137,25 @@ SOURCE_GAP_CLASSIFICATION_COLUMNS = {
     "recommended_next_source",
     "source_gate",
 }
+SOURCE_OF_TRUTH_DECISION_COLUMNS = {
+    "field",
+    "target_field",
+    "listing_key",
+    "ticker",
+    "exchange",
+    "asset_type",
+    "name",
+    "gap_class",
+    "source_of_truth_outcome",
+    "core_action",
+    "fill_action",
+    "review_needed",
+    "decision_policy",
+    "next_action",
+    "source_gate",
+}
 SOURCE_GAP_FIELDS = {"missing_isin_primary", "missing_sector_stock", "missing_etf_category"}
+SOURCE_OF_TRUTH_OUTCOMES = {"official_fill_required", "accepted_source_gap", "core_exclusion_candidate"}
 MOJIBAKE_RE = re.compile(r"(?:Ã[\u0080-\u00BF]|Â[\u0080-\u00BF]|â[\u0080-\u00BF]{1,2}|�|\\x[0-9a-fA-F]{2})")
 
 
@@ -471,6 +490,69 @@ def source_gap_classification_mismatches(
     return [f"missing:{key}" for key in missing] + [f"stale:{key}" for key in extra]
 
 
+def source_of_truth_decision_expected_keys(classification_rows: list[dict[str, str]]) -> set[str]:
+    return source_gap_actual_keys(classification_rows)
+
+
+def source_of_truth_decision_actual_keys(rows: list[dict[str, str]]) -> set[str]:
+    return source_gap_actual_keys(rows)
+
+
+def duplicate_source_of_truth_decision_keys(rows: list[dict[str, str]]) -> list[str]:
+    counts = Counter(f"{row.get('field', '')}|{row.get('listing_key', '')}" for row in rows)
+    return sorted(key for key, count in counts.items() if count > 1)
+
+
+def invalid_source_of_truth_decision_rows(rows: list[dict[str, str]]) -> list[str]:
+    invalid: list[str] = []
+    for row in rows:
+        field = row.get("field", "")
+        listing_id = row.get("listing_key", "")
+        row_id = f"{field}|{listing_id}"
+        outcome = row.get("source_of_truth_outcome", "")
+        if field not in SOURCE_GAP_FIELDS:
+            invalid.append(f"{row_id}:invalid_field")
+        elif row.get("target_field", "") not in {"isin", "stock_sector", "etf_category"}:
+            invalid.append(f"{row_id}:invalid_target_field")
+        elif outcome not in SOURCE_OF_TRUTH_OUTCOMES:
+            invalid.append(f"{row_id}:invalid_outcome")
+        elif row.get("review_needed", "").lower() != "true":
+            invalid.append(f"{row_id}:review_not_required")
+        elif not row.get("gap_class", "").strip():
+            invalid.append(f"{row_id}:missing_gap_class")
+        elif not row.get("decision_policy", "").strip() or not row.get("next_action", "").strip():
+            invalid.append(f"{row_id}:missing_policy")
+        elif outcome == "core_exclusion_candidate" and row.get("core_action") != "review_for_core_exclusion":
+            invalid.append(f"{row_id}:invalid_core_action")
+        elif outcome != "core_exclusion_candidate" and row.get("core_action") != "keep_in_current_scope":
+            invalid.append(f"{row_id}:invalid_core_action")
+    return sorted(invalid)
+
+
+def source_of_truth_decision_mismatches(
+    decision_rows: list[dict[str, str]],
+    classification_rows: list[dict[str, str]],
+) -> list[str]:
+    expected = source_of_truth_decision_expected_keys(classification_rows)
+    actual = source_of_truth_decision_actual_keys(decision_rows)
+    missing = sorted(expected - actual)
+    extra = sorted(actual - expected)
+    return [f"missing:{key}" for key in missing] + [f"stale:{key}" for key in extra]
+
+
+def source_of_truth_decision_class_mismatches(
+    decision_rows: list[dict[str, str]],
+    classification_rows: list[dict[str, str]],
+) -> list[str]:
+    class_by_key = {f"{row.get('field', '')}|{row.get('listing_key', '')}": row.get("gap_class", "") for row in classification_rows}
+    invalid: list[str] = []
+    for row in decision_rows:
+        key = f"{row.get('field', '')}|{row.get('listing_key', '')}"
+        if key in class_by_key and row.get("gap_class", "") != class_by_key[key]:
+            invalid.append(f"{key}:decision={row.get('gap_class', '')}:classification={class_by_key[key]}")
+    return sorted(invalid)
+
+
 def rows_with_mojibake_names(rows: list[dict[str, str]], id_field: str) -> list[str]:
     invalid: list[str] = []
     for row in rows:
@@ -666,6 +748,7 @@ def build_validation_report(
     review_remove_aliases: list[dict[str, str]] | None = None,
     review_metadata_updates: list[dict[str, str]] | None = None,
     source_gap_classifications: list[dict[str, str]] | None = None,
+    source_of_truth_decisions: list[dict[str, str]] | None = None,
     coverage_report: dict[str, Any] | None = None,
     path_to_columns: dict[Path, set[str]] | None = None,
     required_columns_by_path: dict[Path, set[str]] | None = None,
@@ -676,6 +759,7 @@ def build_validation_report(
     review_remove_aliases = review_remove_aliases or []
     review_metadata_updates = review_metadata_updates or []
     source_gap_classifications = source_gap_classifications or []
+    source_of_truth_decisions = source_of_truth_decisions or []
     identifiers = identifiers or []
     identifiers_extended = identifiers_extended or []
     has_identifier_inputs = bool(identifiers or identifiers_extended or identifier_summary is not None)
@@ -744,6 +828,22 @@ def build_validation_report(
     source_gap_mismatches = (
         source_gap_classification_mismatches(source_gap_classifications, tickers, core_listings)
         if source_gap_classifications
+        else []
+    )
+    source_of_truth_invalid_rows = (
+        invalid_source_of_truth_decision_rows(source_of_truth_decisions) if source_of_truth_decisions else []
+    )
+    source_of_truth_duplicate_keys = (
+        duplicate_source_of_truth_decision_keys(source_of_truth_decisions) if source_of_truth_decisions else []
+    )
+    source_of_truth_mismatches = (
+        source_of_truth_decision_mismatches(source_of_truth_decisions, source_gap_classifications)
+        if source_of_truth_decisions and source_gap_classifications
+        else []
+    )
+    source_of_truth_class_mismatches = (
+        source_of_truth_decision_class_mismatches(source_of_truth_decisions, source_gap_classifications)
+        if source_of_truth_decisions and source_gap_classifications
         else []
     )
 
@@ -986,6 +1086,26 @@ def build_validation_report(
                 source_gap_mismatches,
             ),
             fail_gate(
+                "source_of_truth_decision_invalid_rows",
+                len(source_of_truth_invalid_rows),
+                source_of_truth_invalid_rows,
+            ),
+            fail_gate(
+                "source_of_truth_decision_duplicate_keys",
+                len(source_of_truth_duplicate_keys),
+                source_of_truth_duplicate_keys,
+            ),
+            fail_gate(
+                "source_of_truth_decision_gap_mismatch",
+                len(source_of_truth_mismatches),
+                source_of_truth_mismatches,
+            ),
+            fail_gate(
+                "source_of_truth_decision_class_mismatch",
+                len(source_of_truth_class_mismatches),
+                source_of_truth_class_mismatches,
+            ),
+            fail_gate(
                 "adanos_reference_row_count_mismatch",
                 0 if len(adanos_reference) == len(tickers) else abs(len(adanos_reference) - len(tickers)),
                 [] if len(adanos_reference) == len(tickers) else [f"adanos={len(adanos_reference)} tickers={len(tickers)}"],
@@ -1137,6 +1257,7 @@ def build_validation_report(
                 "review_metadata_updates_csv": display_path(DEFAULT_REVIEW_METADATA_UPDATES_CSV),
                 "coverage_report_json": display_path(DEFAULT_COVERAGE_REPORT_JSON),
                 "source_gap_classification_csv": display_path(DEFAULT_SOURCE_GAP_CLASSIFICATION_CSV),
+                "source_of_truth_decisions_csv": display_path(DEFAULT_SOURCE_OF_TRUTH_DECISIONS_CSV),
             },
         },
         "passed": not failed_error_gates,
@@ -1214,6 +1335,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--review-metadata-updates-csv", type=Path, default=DEFAULT_REVIEW_METADATA_UPDATES_CSV)
     parser.add_argument("--coverage-report-json", type=Path, default=DEFAULT_COVERAGE_REPORT_JSON)
     parser.add_argument("--source-gap-classification-csv", type=Path, default=DEFAULT_SOURCE_GAP_CLASSIFICATION_CSV)
+    parser.add_argument("--source-of-truth-decisions-csv", type=Path, default=DEFAULT_SOURCE_OF_TRUTH_DECISIONS_CSV)
     parser.add_argument("--json-out", type=Path, default=DEFAULT_JSON_OUT)
     parser.add_argument("--md-out", type=Path, default=DEFAULT_MD_OUT)
     parser.add_argument("--no-write", action="store_true", help="Print summary only; do not write report files.")
@@ -1235,6 +1357,7 @@ def main(argv: list[str] | None = None) -> int:
         args.entry_quality_csv,
         args.review_metadata_updates_csv,
         args.source_gap_classification_csv,
+        args.source_of_truth_decisions_csv,
     ]
     path_to_columns = {path: csv_columns(path) for path in paths}
     required_columns_by_path = {
@@ -1250,6 +1373,7 @@ def main(argv: list[str] | None = None) -> int:
         args.entry_quality_csv: ENTRY_QUALITY_COLUMNS,
         args.review_metadata_updates_csv: METADATA_UPDATE_COLUMNS,
         args.source_gap_classification_csv: SOURCE_GAP_CLASSIFICATION_COLUMNS,
+        args.source_of_truth_decisions_csv: SOURCE_OF_TRUTH_DECISION_COLUMNS,
     }
     coverage_report = load_json(args.coverage_report_json) if args.coverage_report_json.exists() else None
     payload = build_validation_report(
@@ -1274,6 +1398,9 @@ def main(argv: list[str] | None = None) -> int:
         ),
         source_gap_classifications=(
             load_csv(args.source_gap_classification_csv) if args.source_gap_classification_csv.exists() else []
+        ),
+        source_of_truth_decisions=(
+            load_csv(args.source_of_truth_decisions_csv) if args.source_of_truth_decisions_csv.exists() else []
         ),
         coverage_report=coverage_report,
         path_to_columns=path_to_columns,

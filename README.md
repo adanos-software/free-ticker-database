@@ -60,6 +60,7 @@ Reference and audit files:
 | [`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md) | Missing/partial/global official-source backlog |
 | [`data/reports/completion_backlog.md`](data/reports/completion_backlog.md) | Prioritized missing ISIN/sector/category backlog |
 | [`data/reports/source_gap_classification.md`](data/reports/source_gap_classification.md) | Deterministic residual source-gap classes and row-level source gates |
+| [`data/reports/source_of_truth_decisions.md`](data/reports/source_of_truth_decisions.md) | Source-of-truth outcomes for each residual gap: fill, accepted source gap, or core-exclusion candidate |
 | [`data/reports/alias_quality.md`](data/reports/alias_quality.md) | Alias safety report for natural-language mention detection |
 | [`data/reports/adanos_detection_simulation.md`](data/reports/adanos_detection_simulation.md) | Mention-detection smoke test for Adanos natural-language aliases |
 | [`data/reports/entry_quality.md`](data/reports/entry_quality.md) | Per-listing deterministic quality scan summary |
@@ -128,7 +129,7 @@ Additional collision-safe tables: `core_listings` and `core_aliases`.
 - Natural-language aliases are derived from current security names on every rebuild, then normalized to API-safe aliases.
 - Duplicate natural-language aliases are either assigned to a clear best owner or removed from public alias columns.
 - `data/reports/entry_quality.csv` stores one deterministic quality row per `listing_key`.
-- `data/reports/validation_report.json` is the release gate: duplicate keys, invalid ISINs, typed sector/category leakage, blank country metadata on ISIN-bearing rows, mojibake name corruption, Adanos alias findings, unexpected entry-quality warnings, stale coverage counts, and stale/unclassified residual source gaps must be clean.
+- `data/reports/validation_report.json` is the release gate: duplicate keys, invalid ISINs, typed sector/category leakage, blank country metadata on ISIN-bearing rows, mojibake name corruption, Adanos alias findings, unexpected entry-quality warnings, stale coverage counts, stale/unclassified residual source gaps, and stale source-of-truth decisions must be clean.
 - `data/reports/ohlcv_plausibility.csv` stores optional market-data hygiene checks; default runs are no-network and omit unchecked rows unless local OHLCV samples, `--fetch-yahoo`, or `--include-not-checked` are provided.
 - Obvious common-word, wrapper, celebrity, product, junk, short, and numeric aliases are filtered.
 - Rights, units, warrants, notes, preferreds, and depositary lines are filtered from the stock universe.

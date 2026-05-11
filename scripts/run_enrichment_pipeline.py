@@ -222,6 +222,18 @@ def build_pipeline_commands(options: PipelineOptions) -> list[StageCommand]:
                 mutates_data=True,
                 notes="Refresh completion backlog after the final coverage report.",
             ),
+            StageCommand(
+                name="build_source_gap_classification",
+                command=[py, "scripts/build_source_gap_classification.py"],
+                mutates_data=True,
+                notes="Classify every residual ISIN/sector/category gap into deterministic rest classes.",
+            ),
+            StageCommand(
+                name="build_source_of_truth_decisions",
+                command=[py, "scripts/build_source_of_truth_decisions.py"],
+                mutates_data=True,
+                notes="Convert residual gap classes into fill, accepted source-gap, or core-exclusion outcomes.",
+            ),
         ]
     )
 
