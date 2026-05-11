@@ -25,6 +25,7 @@ DATA_DIR = ROOT / "data"
 REPORTS_DIR = DATA_DIR / "reports"
 DEFAULT_TICKERS_CSV = DATA_DIR / "tickers.csv"
 DEFAULT_CORE_LISTINGS_CSV = DATA_DIR / "core_listings.csv"
+DEFAULT_TMX_STOCK_SECTOR_BACKFILL_CSV = DATA_DIR / "tmx_verification" / "stock_sector_backfill.csv"
 DEFAULT_CSV_OUT = REPORTS_DIR / "source_gap_classification.csv"
 DEFAULT_JSON_OUT = REPORTS_DIR / "source_gap_classification.json"
 DEFAULT_MD_OUT = REPORTS_DIR / "source_gap_classification.md"
@@ -37,6 +38,7 @@ GAP_CLASS_POLICIES = {
     "inactive_or_legacy_identifier_gap": "Require evidence that the listing is active/current and an official identifier source; otherwise keep classified as a source gap.",
     "official_identifier_source_gap": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
     "otc_sector_source_gap": "Require SEC SIC, issuer filing, OTCMarkets profile, or reviewed secondary profile data; no name-only sector guesses.",
+    "adr_cdr_or_depositary_sector_gap": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
     "exchange_industry_source_gap": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
     "fundlike_stock_sector_gap": "Require issuer classification; do not map fund/trust-like stock rows from product-name tokens alone.",
     "shell_or_cpc_sector_gap": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
@@ -179,11 +181,24 @@ def classify_missing_isin(row: dict[str, str]) -> tuple[str, str, str]:
 def classify_missing_stock_sector(row: dict[str, str]) -> tuple[str, str, str]:
     blob = normalized_blob(row)
     exchange = row.get("exchange", "")
+    tmx_sector = row.get("_tmx_sector", "")
     if exchange == "OTC":
         return (
             "otc_sector_source_gap",
             "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
             "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
+        )
+    if has_any(blob, (" CDR", "CAD HEDGED", "DEPOSITARY", " ADR", " BDR", " RECEIPT")):
+        return (
+            "adr_cdr_or_depositary_sector_gap",
+            "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+            "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope.",
+        )
+    if exchange in {"TSX", "TSXV"} and tmx_sector == "CPC":
+        return (
+            "shell_or_cpc_sector_gap",
+            "Official TMX issuer workbook classifies this row as CPC.",
+            "Do not fill stock_sector; review for core exclusion as a capital-pool issuer.",
         )
     if has_any(blob, (" ACQUISITION", " SPAC", " CAPITAL POOL", " HOLDINGS CORP", " VENTURES CORP")):
         return (
@@ -266,12 +281,20 @@ def build_source_gap_classifications(
     *,
     tickers: list[dict[str, str]],
     core_listings: list[dict[str, str]],
+    tmx_sector_results: list[dict[str, str]] | None = None,
 ) -> list[SourceGapClassificationRow]:
     rows: list[SourceGapClassificationRow] = []
+    tmx_sector_by_key = {
+        f"{row.get('exchange', '')}::{row.get('ticker', '')}": row.get("tmx_sector", "")
+        for row in tmx_sector_results or []
+        if row.get("tmx_sector", "")
+    }
     for row in core_listings:
         if row.get("scope_reason") == "primary_listing_missing_isin":
             rows.append(make_row(FIELD_MISSING_ISIN, row))
     for row in tickers:
+        listing_key = row.get("listing_key") or f"{row.get('exchange', '')}::{row.get('ticker', '')}"
+        row = {**row, "_tmx_sector": tmx_sector_by_key.get(listing_key, "")}
         if row.get("asset_type") == "Stock" and not row.get("stock_sector", "").strip():
             rows.append(make_row(FIELD_MISSING_STOCK_SECTOR, row))
         elif row.get("asset_type") == "ETF" and not row.get("etf_category", "").strip():
@@ -373,6 +396,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Classify residual ticker database source gaps without filling values.")
     parser.add_argument("--tickers-csv", type=Path, default=DEFAULT_TICKERS_CSV)
     parser.add_argument("--core-listings-csv", type=Path, default=DEFAULT_CORE_LISTINGS_CSV)
+    parser.add_argument("--tmx-stock-sector-backfill-csv", type=Path, default=DEFAULT_TMX_STOCK_SECTOR_BACKFILL_CSV)
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_CSV_OUT)
     parser.add_argument("--json-out", type=Path, default=DEFAULT_JSON_OUT)
     parser.add_argument("--md-out", type=Path, default=DEFAULT_MD_OUT)
@@ -384,6 +408,7 @@ def main(argv: list[str] | None = None) -> None:
     rows = build_source_gap_classifications(
         tickers=load_csv(args.tickers_csv),
         core_listings=load_csv(args.core_listings_csv),
+        tmx_sector_results=load_csv(args.tmx_stock_sector_backfill_csv),
     )
     generated_at = utc_now()
     summary = summarize(rows, generated_at)

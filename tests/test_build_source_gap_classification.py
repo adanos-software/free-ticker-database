@@ -69,3 +69,50 @@ def test_summarize_reports_field_and_class_totals() -> None:
     assert summary["field_totals"] == {FIELD_MISSING_ISIN: 1}
     assert summary["class_totals"] == {"capital_pool_or_halted_identifier_gap": 1}
     assert summary["policy"]["release_gate"]
+
+
+def test_tmx_cpc_sector_evidence_classifies_as_core_exclusion_candidate() -> None:
+    rows = build_source_gap_classifications(
+        core_listings=[],
+        tickers=[
+            {
+                "ticker": "AAA.P",
+                "exchange": "TSXV",
+                "asset_type": "Stock",
+                "name": "First Tidal Acquisition Corp.",
+                "stock_sector": "",
+                "etf_category": "",
+            }
+        ],
+        tmx_sector_results=[
+            {
+                "ticker": "AAA.P",
+                "exchange": "TSXV",
+                "tmx_sector": "CPC",
+                "decision": "unsupported_or_ambiguous_tmx_sector",
+            }
+        ],
+    )
+
+    assert len(rows) == 1
+    assert rows[0].gap_class == "shell_or_cpc_sector_gap"
+    assert "TMX" in rows[0].recommended_next_source
+
+
+def test_depositary_stock_sector_gap_does_not_require_underlying_sector_fill() -> None:
+    rows = build_source_gap_classifications(
+        core_listings=[],
+        tickers=[
+            {
+                "ticker": "BENZ",
+                "exchange": "TSX",
+                "asset_type": "Stock",
+                "name": "Mercedes-Benz CDR (CAD Hedged)",
+                "stock_sector": "",
+                "etf_category": "",
+            }
+        ],
+    )
+
+    assert len(rows) == 1
+    assert rows[0].gap_class == "adr_cdr_or_depositary_sector_gap"

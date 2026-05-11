@@ -41,7 +41,9 @@ def test_pipeline_can_include_secondary_network_and_apply_flag():
     assert "yahoo_reviewed_etf_isin_backfill" in names
     assert "financialdata_symbol_match" in names
     assert names[names.index("financialdata_symbol_match") + 1] == "financialdata_official_isin_supplements"
+    assert names[names.index("financialdata_official_isin_supplements") + 1] == "set_sec_reviewed_isin_backfill"
     assert any(stage.name == "eodhd_reviewed_isin_backfill" and "--apply" in stage.command for stage in stages)
+    assert any(stage.name == "set_sec_reviewed_isin_backfill" and "--apply" in stage.command for stage in stages)
     assert any(stage.name == "same_isin_sector_peer_backfill" and stage.mutates_data for stage in stages)
 
 

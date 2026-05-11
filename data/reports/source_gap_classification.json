@@ -1,27 +1,28 @@
 {
   "summary": {
-    "generated_at": "2026-05-11T05:57:38Z",
-    "rows": 3900,
+    "generated_at": "2026-05-11T06:16:03Z",
+    "rows": 3860,
     "field_totals": {
       "missing_etf_category": 94,
-      "missing_isin_primary": 1099,
+      "missing_isin_primary": 1059,
       "missing_sector_stock": 2707
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 45,
+      "adr_cdr_or_depositary_sector_gap": 39,
       "capital_pool_or_halted_identifier_gap": 35,
       "commodity_etf_category_gap": 1,
       "debt_or_securitized_identifier_gap": 83,
       "equity_etf_category_gap": 1,
-      "exchange_industry_source_gap": 1769,
+      "exchange_industry_source_gap": 1664,
       "fixed_income_etf_category_gap": 1,
-      "fund_or_trust_identifier_gap": 295,
-      "fundlike_stock_sector_gap": 76,
+      "fund_or_trust_identifier_gap": 294,
+      "fundlike_stock_sector_gap": 74,
       "generic_etf_category_source_gap": 91,
       "inactive_or_legacy_identifier_gap": 158,
-      "official_identifier_source_gap": 483,
+      "official_identifier_source_gap": 444,
       "otc_sector_source_gap": 840,
-      "shell_or_cpc_sector_gap": 22
+      "shell_or_cpc_sector_gap": 90
     },
     "class_by_field": {
       "missing_etf_category:commodity_etf_category_gap": 1,
@@ -31,13 +32,14 @@
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 45,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 35,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 83,
-      "missing_isin_primary:fund_or_trust_identifier_gap": 295,
+      "missing_isin_primary:fund_or_trust_identifier_gap": 294,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 158,
-      "missing_isin_primary:official_identifier_source_gap": 483,
-      "missing_sector_stock:exchange_industry_source_gap": 1769,
-      "missing_sector_stock:fundlike_stock_sector_gap": 76,
+      "missing_isin_primary:official_identifier_source_gap": 444,
+      "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 39,
+      "missing_sector_stock:exchange_industry_source_gap": 1664,
+      "missing_sector_stock:fundlike_stock_sector_gap": 74,
       "missing_sector_stock:otc_sector_source_gap": 840,
-      "missing_sector_stock:shell_or_cpc_sector_gap": 22
+      "missing_sector_stock:shell_or_cpc_sector_gap": 90
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
@@ -108,10 +110,6 @@
           "rows": 52
         },
         {
-          "exchange": "SET",
-          "rows": 46
-        },
-        {
           "exchange": "NEO",
           "rows": 45
         },
@@ -122,6 +120,10 @@
         {
           "exchange": "NASDAQ",
           "rows": 40
+        },
+        {
+          "exchange": "NYSE",
+          "rows": 39
         }
       ],
       "missing_sector_stock": [
@@ -12314,34 +12316,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "SET::A5",
-      "ticker": "A5",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Asset Five Group PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::ALPHAX",
-      "ticker": "ALPHAX",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Alpha Divisions PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "SET::AXTRART",
       "ticker": "AXTRART",
       "exchange": "SET",
@@ -12370,132 +12344,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "SET::BLESS",
-      "ticker": "BLESS",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Bless Asset Group PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::CEYE",
-      "ticker": "CEYE",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Chamni&#39;s Eye PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::CHASE",
-      "ticker": "CHASE",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Chase Asia PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::CIVIL",
-      "ticker": "CIVIL",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Civil Engineering PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::CREDIT",
-      "ticker": "CREDIT",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Thai Credit Pcl",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::DEXON",
-      "ticker": "DEXON",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Dexon Technology PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::DIF",
-      "ticker": "DIF",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Digital Telecommunications Infrastructure Fund",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
-      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::DPAINT",
-      "ticker": "DPAINT",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Delta Paint PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::EGATIF",
-      "ticker": "EGATIF",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "North Bangkok Power Plant",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "SET::FTREIT",
       "ticker": "FTREIT",
       "exchange": "SET",
@@ -12506,34 +12354,6 @@
       "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
       "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
       "source_gate": "Exact fund/trust symbol and product name with checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::GLORY",
-      "ticker": "GLORY",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Glory Forever PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::IMH",
-      "ticker": "IMH",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Intermedical Care and Lab Hospital Public Company Limited",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
     },
     {
       "field": "missing_isin_primary",
@@ -12552,389 +12372,11 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "SET::IROYAL",
-      "ticker": "IROYAL",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "IROYAL_INTERROYAL ENGINEERING",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::ITTHI",
-      "ticker": "ITTHI",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Itthirit Nice Corp. PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::JDF",
-      "ticker": "JDF",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "JD Food PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::KGEN",
-      "ticker": "KGEN",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "King Gen PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::KK",
-      "ticker": "KK",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "K&K Superstore Southern Public Company Limited",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::KLINIQ",
-      "ticker": "KLINIQ",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "The Klinique Med Clinic PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::LHFG",
-      "ticker": "LHFG",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "LH Financial Group Public Company Limited",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::MASTER",
-      "ticker": "MASTER",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Master Style PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::MOSHI",
-      "ticker": "MOSHI",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Moshi Moshi Retail Corp. PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::NATION",
-      "ticker": "NATION",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Nation Group (Thailand) PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::NTSC",
-      "ticker": "NTSC",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Nutrition SC PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::NV",
-      "ticker": "NV",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Nova Organic PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::PANEL",
-      "ticker": "PANEL",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "PANELESMATIC SOLUTIONS PUBLIC COMPANY LIMITED",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::PEACE",
-      "ticker": "PEACE",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Peace & Living PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::SCGD",
-      "ticker": "SCGD",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "SCG Decor PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::SENX",
-      "ticker": "SENX",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Sena J Property PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::SJWD",
-      "ticker": "SJWD",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "SCGJWD LOGISTICS PCL NON-VOTING DR",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::SMD100",
-      "ticker": "SMD100",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "SMD100_SAINTMED",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::TEGH",
-      "ticker": "TEGH",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Thai Eastern Group Holdings PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::TEKA",
-      "ticker": "TEKA",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Teka Construction PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::TIDLOR",
-      "ticker": "TIDLOR",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Tidlor Holdings Public Company Limited",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::TIGER",
-      "ticker": "TIGER",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Thai Enger Holding Public Company Limited",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::TL",
-      "ticker": "TL",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Techlead NPN Public Company Limited",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::TMAN",
-      "ticker": "TMAN",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "T Man Pharmaceutical PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::TURTLE",
-      "ticker": "TURTLE",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Super Turtle PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::WFX",
-      "ticker": "WFX",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "World Flex PCL",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "SET::WHAIR",
       "ticker": "WHAIR",
       "exchange": "SET",
       "asset_type": "Stock",
       "name": "WHA Industrial Leasehold REIT",
-      "gap_class": "official_identifier_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
-      "recommended_next_source": "Official exchange detail feed or reviewed secondary identifier source.",
-      "source_gate": "Exact exchange/symbol/name, expected country prefix where applicable, and checksum."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SET::YONG",
-      "ticker": "YONG",
-      "exchange": "SET",
-      "asset_type": "Stock",
-      "name": "Yong Concrete PCL",
       "gap_class": "official_identifier_source_gap",
       "review_needed": "true",
       "confidence_policy": "Require official exchange masterfile/detail feed or a reviewed secondary identifier source with exact symbol, name, country-prefix, and checksum gates.",
@@ -33067,11 +32509,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "HONDA MOTOR CO LTD CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33081,11 +32523,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "MITSUBISHI CORP CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33095,11 +32537,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "NESTLE SA CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33109,11 +32551,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "NINTENDO CO LTD CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33123,11 +32565,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "CIE FINANCIERE RICHEMONT AG CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33137,11 +32579,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "ROCHE HOLDING AG CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33151,11 +32593,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "SAP SE CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33165,11 +32607,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "SOFTBANK GROUP CORP CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33179,11 +32621,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "TOYOTA MOTOR CORP CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33193,11 +32635,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "VOLKSWAGEN CDR (CAD HEDGED)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33207,11 +32649,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "APPLE (aapl) BMO CDR (CAD HEDGED)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33221,11 +32663,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "APOLLO (APO) BMO CDR (CAD HEDGED)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33235,11 +32677,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "BOEING (BA) BMO CDR (CAD HEDGED)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33249,11 +32691,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "Coinbase (COIN) BMO CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33263,11 +32705,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "COSTCO )COST) BMO CDR (CAD HEDGED)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33277,11 +32719,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "INTEL (INTC) BMO CDR (CAD HEDGED)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33291,11 +32733,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "ELI LILLY (LLY) BMO CDR (CAD HEDGED)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33305,11 +32747,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "MASTERCARD (MA) BMO CDR (CAD HEDGED)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33319,11 +32761,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "McDonalds (MCD) BMO CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33333,11 +32775,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "Micron Technology (MU) BMO CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33347,11 +32789,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "MICROSOFT (MSFT) BMO CDR (CAD HEDGED)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33361,11 +32803,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "PayPal (PYPL) BMO CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33375,11 +32817,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "SUPER MICRO COMPUTER (SMCI) BMO XDR (CAD HEDGED)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33389,11 +32831,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "VISTRA (VST) BMO CDR (CAD HEDGED)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33403,11 +32845,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "WALMART (WMT) BMO CDR (CAD HEDGED)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -33417,11 +32859,11 @@
       "exchange": "NEO",
       "asset_type": "Stock",
       "name": "EXXON MOBIL (XOM) BMO CDR (CAD HEDGED)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -51309,11 +50751,11 @@
       "exchange": "TSX",
       "asset_type": "Stock",
       "name": "Mercedes-Benz CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -51337,11 +50779,11 @@
       "exchange": "TSX",
       "asset_type": "Stock",
       "name": "Bank of America CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -51351,11 +50793,11 @@
       "exchange": "TSX",
       "asset_type": "Stock",
       "name": "Constellation Energy CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -51435,11 +50877,11 @@
       "exchange": "TSX",
       "asset_type": "Stock",
       "name": "ING CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -51477,11 +50919,11 @@
       "exchange": "TSX",
       "asset_type": "Stock",
       "name": "LVMH CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -51533,11 +50975,11 @@
       "exchange": "TSX",
       "asset_type": "Stock",
       "name": "Nestlé CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -51547,11 +50989,11 @@
       "exchange": "TSX",
       "asset_type": "Stock",
       "name": "Novartis CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -51561,11 +51003,11 @@
       "exchange": "TSX",
       "asset_type": "Stock",
       "name": "Oracle CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -51617,11 +51059,11 @@
       "exchange": "TSX",
       "asset_type": "Stock",
       "name": "Siemens CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -51673,11 +51115,11 @@
       "exchange": "TSX",
       "asset_type": "Stock",
       "name": "UBS CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -51687,11 +51129,11 @@
       "exchange": "TSX",
       "asset_type": "Stock",
       "name": "Visa CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -51729,11 +51171,11 @@
       "exchange": "TSX",
       "asset_type": "Stock",
       "name": "Philip Morris CDR (CAD Hedged)",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",
@@ -51757,11 +51199,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "AD4 Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -51774,8 +51216,8 @@
       "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
       "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
-      "recommended_next_source": "Current issuer business description or official industry classification.",
-      "source_gate": "Canonical sector requires active operating-business evidence."
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -51802,8 +51244,8 @@
       "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
       "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
-      "recommended_next_source": "Current issuer business description or official industry classification.",
-      "source_gate": "Canonical sector requires active operating-business evidence."
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -51813,11 +51255,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "AMV II Capital Corporation",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -51827,11 +51269,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Amaya Big Sky Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -51841,11 +51283,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Artrari One Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -51855,11 +51297,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Anquiro Ventures Ltd.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -51869,11 +51311,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Ankh II Capital Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -51883,11 +51325,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "A2ZCryptocap Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -51900,8 +51342,8 @@
       "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
       "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
-      "recommended_next_source": "Current issuer business description or official industry classification.",
-      "source_gate": "Canonical sector requires active operating-business evidence."
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -51911,11 +51353,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Bow Lake Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -51928,8 +51370,8 @@
       "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
       "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
-      "recommended_next_source": "Current issuer business description or official industry classification.",
-      "source_gate": "Canonical sector requires active operating-business evidence."
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -51939,11 +51381,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Caplink Ventures Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -51953,11 +51395,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Chicane Capital I Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -51967,11 +51409,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Chablis Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -51981,11 +51423,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Chicane Capital II Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52009,11 +51451,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "CNJ Capital Investments Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52023,11 +51465,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Constellation Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52037,11 +51479,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "CarbonTech Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52051,11 +51493,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "DGL Investments No. 1 Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52068,8 +51510,8 @@
       "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
       "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
-      "recommended_next_source": "Current issuer business description or official industry classification.",
-      "source_gate": "Canonical sector requires active operating-business evidence."
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52079,11 +51521,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "ECC Ventures 6 Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52093,11 +51535,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "ECC Ventures 5 Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52107,11 +51549,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Aneesh Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52121,11 +51563,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Monaghan Capital Fund Ltd.",
-      "gap_class": "fundlike_stock_sector_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require issuer classification; do not map fund/trust-like stock rows from product-name tokens alone.",
-      "recommended_next_source": "Issuer classification from official exchange or reviewed profile source.",
-      "source_gate": "Canonical stock sector only with issuer-level classification evidence."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52149,11 +51591,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Evocati Capital Resources Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52163,11 +51605,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Fife Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52177,11 +51619,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "First and Goal Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52194,8 +51636,8 @@
       "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
       "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
-      "recommended_next_source": "Current issuer business description or official industry classification.",
-      "source_gate": "Canonical sector requires active operating-business evidence."
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52205,11 +51647,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Florence One Capital Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52219,11 +51661,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Fountainhall Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52233,11 +51675,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Golden Star Capital Ventures Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52247,11 +51689,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Global Investments Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52261,11 +51703,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Can-Gow Capital Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52289,11 +51731,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "G2M Cap Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52303,11 +51745,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Galaxy Ventures Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52317,11 +51759,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Haw Capital 2 Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52331,11 +51773,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Haviland Enviro Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52345,11 +51787,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "H2 Ventures 1 Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52359,11 +51801,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Inceptus Capital Ltd.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52373,11 +51815,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Ikigai Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52401,11 +51843,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Jo-Jo Capital Canada Ltd.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52415,11 +51857,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Kelly Ventures Ltd.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52429,11 +51871,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "KP3993 Resources Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52443,11 +51885,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "LDB Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52460,8 +51902,8 @@
       "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
       "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
-      "recommended_next_source": "Current issuer business description or official industry classification.",
-      "source_gate": "Canonical sector requires active operating-business evidence."
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52485,11 +51927,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Mandeville Ventures Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52499,11 +51941,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Michichi Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52527,11 +51969,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "New Media Capital 2.0 Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52541,11 +51983,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Cann-is Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52555,11 +51997,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "NL2 Capital Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52583,11 +52025,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Navion Capital II Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52597,11 +52039,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Oa Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52614,8 +52056,8 @@
       "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
       "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
-      "recommended_next_source": "Current issuer business description or official industry classification.",
-      "source_gate": "Canonical sector requires active operating-business evidence."
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52625,11 +52067,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Pardus Ventures Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52639,11 +52081,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Pentagon I Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52667,11 +52109,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Rockport Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52681,11 +52123,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Canna 8 Investment Trust",
-      "gap_class": "fundlike_stock_sector_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require issuer classification; do not map fund/trust-like stock rows from product-name tokens alone.",
-      "recommended_next_source": "Issuer classification from official exchange or reviewed profile source.",
-      "source_gate": "Canonical stock sector only with issuer-level classification evidence."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52698,8 +52140,8 @@
       "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
       "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
-      "recommended_next_source": "Current issuer business description or official industry classification.",
-      "source_gate": "Canonical sector requires active operating-business evidence."
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52709,11 +52151,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Shine Box Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52737,11 +52179,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Roshni Capital Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52751,11 +52193,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Raging Rhino Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52765,11 +52207,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Rockmount Capital Corporation",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52779,11 +52221,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Savanna Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52796,8 +52238,8 @@
       "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
       "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
-      "recommended_next_source": "Current issuer business description or official industry classification.",
-      "source_gate": "Canonical sector requires active operating-business evidence."
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52807,11 +52249,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "St. Davids Capital Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52821,11 +52263,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Seven Oaks Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52835,11 +52277,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Sparrowhawk Opportunity Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52849,11 +52291,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Shellron Capital Ltd.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52863,11 +52305,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Searchlight Innovations Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52908,8 +52350,8 @@
       "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
       "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
-      "recommended_next_source": "Current issuer business description or official industry classification.",
-      "source_gate": "Canonical sector requires active operating-business evidence."
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52919,11 +52361,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Thermopylae Capital Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52933,11 +52375,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Transition Opportunities Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52975,11 +52417,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Tup Capital Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -52989,11 +52431,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Upstart Investments Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -53003,11 +52445,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Valencia Capital Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -53017,11 +52459,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Veteran Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -53045,11 +52487,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Wittering Capital Corp.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -53073,11 +52515,11 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Woodbridge Ventures II Inc.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -53090,8 +52532,8 @@
       "gap_class": "shell_or_cpc_sector_gap",
       "review_needed": "true",
       "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
-      "recommended_next_source": "Current issuer business description or official industry classification.",
-      "source_gate": "Canonical sector requires active operating-business evidence."
+      "recommended_next_source": "Official TMX issuer workbook classifies this row as CPC.",
+      "source_gate": "Do not fill stock_sector; review for core exclusion as a capital-pool issuer."
     },
     {
       "field": "missing_sector_stock",
@@ -54193,11 +53635,11 @@
       "exchange": "ZSE",
       "asset_type": "Stock",
       "name": "Adris Grupa d.d.",
-      "gap_class": "exchange_industry_source_gap",
+      "gap_class": "adr_cdr_or_depositary_sector_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
-      "recommended_next_source": "Official exchange industry feed or reviewed secondary company profile.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
+      "confidence_policy": "Do not infer stock sector from the underlying issuer; require a reviewed decision that the depositary/CDR program belongs in core stock scope before filling.",
+      "recommended_next_source": "Depositary/CDR program scope review, not underlying issuer sector propagation.",
+      "source_gate": "Keep stock_sector blank unless reviewed evidence confirms the program should remain core stock scope."
     },
     {
       "field": "missing_sector_stock",

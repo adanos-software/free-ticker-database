@@ -163,6 +163,15 @@ def build_pipeline_commands(options: PipelineOptions) -> list[StageCommand]:
                         "safe supplemental listings for the rebuild."
                     ),
                 ),
+                StageCommand(
+                    name="set_sec_reviewed_isin_backfill",
+                    command=maybe_apply([py, "scripts/backfill_set_sec_isins.py"], apply=options.apply_reviewed_backfills),
+                    mutates_data=options.apply_reviewed_backfills,
+                    notes=(
+                        "Official Thailand SEC ISIN search candidates for SET common stocks; applies only exact-symbol, "
+                        "TH-prefix, checksum-gated reviewed updates."
+                    ),
+                ),
             ]
         )
 

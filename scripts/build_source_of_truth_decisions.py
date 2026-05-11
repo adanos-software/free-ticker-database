@@ -34,6 +34,7 @@ OFFICIAL_FILL_REQUIRED_CLASSES = {
 }
 CORE_EXCLUSION_CANDIDATE_CLASSES = {
     "adr_cdr_or_depositary_identifier_gap",
+    "adr_cdr_or_depositary_sector_gap",
     "capital_pool_or_halted_identifier_gap",
     "debt_or_securitized_identifier_gap",
     "fund_or_trust_identifier_gap",

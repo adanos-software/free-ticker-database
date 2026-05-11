@@ -4,14 +4,14 @@
 
 | Metric | Value |
 |---|---|
-| tickers | 61455 |
-| core_listings | 54000 |
-| aliases | 121314 |
-| stocks | 45911 |
+| tickers | 61454 |
+| core_listings | 53999 |
+| aliases | 121351 |
+| stocks | 45910 |
 | etfs | 15544 |
-| isin_coverage | 59445 |
-| sector_coverage | 58654 |
-| stock_sector_coverage | 43204 |
+| isin_coverage | 59484 |
+| sector_coverage | 58653 |
+| stock_sector_coverage | 43203 |
 | etf_category_coverage | 15450 |
 | cik_coverage | 7722 |
 | figi_coverage | 63440 |
@@ -21,12 +21,12 @@
 | listing_events | 39625 |
 | listing_keys | 71041 |
 | instrument_scope_rows | 71041 |
-| instrument_scope_core | 54000 |
-| instrument_scope_extended | 17041 |
-| instrument_scope_primary_listing | 52901 |
-| instrument_scope_primary_listing_missing_isin | 1099 |
+| instrument_scope_core | 53999 |
+| instrument_scope_extended | 17042 |
+| instrument_scope_primary_listing | 52940 |
+| instrument_scope_primary_listing_missing_isin | 1059 |
 | instrument_scope_otc_listing | 11056 |
-| instrument_scope_secondary_cross_listing | 5985 |
+| instrument_scope_secondary_cross_listing | 5986 |
 | legacy_primary_ticker_collision_rows | 1 |
 | official_masterfile_symbols | 78401 |
 | official_masterfile_matches | 51491 |
@@ -53,23 +53,23 @@
 
 | Metric | Value |
 |---|---|
-| tickers_built_at | 2026-05-11T05:47:38Z |
-| tickers_age_hours | 0.0 |
+| tickers_built_at | 2026-05-11T06:15:53Z |
+| tickers_age_hours | 0.03 |
 | masterfiles_generated_at | 2026-05-08T10:29:59Z |
-| masterfiles_age_hours | 67.3 |
-| identifiers_generated_at | 2026-05-11T05:47:41Z |
-| identifiers_age_hours | 0.0 |
-| listing_history_observed_at | 2026-05-11T05:47:38Z |
-| listing_history_age_hours | 0.0 |
+| masterfiles_age_hours | 67.8 |
+| identifiers_generated_at | 2026-05-11T06:15:53Z |
+| identifiers_age_hours | 0.03 |
+| listing_history_observed_at | 2026-05-11T06:15:53Z |
+| listing_history_age_hours | 0.03 |
 | latest_verification_run | data/stock_verification/run-20260508-cboe-b3-backfill |
 | latest_verification_generated_at | 2026-05-08T10:33:14Z |
-| latest_verification_age_hours | 67.24 |
+| latest_verification_age_hours | 67.74 |
 | latest_stock_verification_run | data/stock_verification/run-20260508-cboe-b3-backfill |
 | latest_stock_verification_generated_at | 2026-05-08T10:33:14Z |
-| latest_stock_verification_age_hours | 67.24 |
+| latest_stock_verification_age_hours | 67.74 |
 | latest_etf_verification_run | data/etf_verification/run-20260508-cboe-b3-backfill |
 | latest_etf_verification_generated_at | 2026-05-08T10:33:14Z |
-| latest_etf_verification_age_hours | 67.24 |
+| latest_etf_verification_age_hours | 67.74 |
 
 ## Source Coverage
 
@@ -275,7 +275,7 @@
 | QSE | official_full | 54 | 27 | 47 | 0 | 0 | 0 | 57 | 54 | 2 | 1 | 94.74 | 100.0 |
 | RSE | official_partial | 2 | 2 | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | SEM | official_full | 53 | 53 | 4 | 1 | 50 | 0 | 47 | 47 | 0 | 0 | 100.0 | 90.2 |
-| SET | official_full | 547 | 501 | 547 | 4 | 342 | 0 | 946 | 547 | 350 | 49 | 57.82 | 100.0 |
+| SET | official_full | 547 | 541 | 547 | 4 | 342 | 0 | 946 | 547 | 350 | 49 | 57.82 | 100.0 |
 | SGX | official_full | 594 | 591 | 515 | 0 | 8 | 0 | 738 | 592 | 142 | 4 | 80.22 | 99.63 |
 | SIX | official_partial | 743 | 743 | 743 | 2 | 743 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
 | SSE | official_partial | 2789 | 2747 | 2789 | 0 | 2175 | 0 | 0 | 0 | 0 | 0 |  | 100.0 |
@@ -378,7 +378,7 @@
 | Switzerland | 390 | 390 | 385 | 21 | 387 | 5 |
 | Taiwan | 2273 | 2273 | 2272 | 0 | 2055 | 0 |
 | Tanzania | 15 | 13 | 2 | 0 | 13 | 0 |
-| Thailand | 566 | 520 | 565 | 27 | 358 | 3 |
+| Thailand | 565 | 559 | 564 | 27 | 358 | 3 |
 | Turkey | 614 | 614 | 608 | 0 | 614 | 0 |
 | Uganda | 7 | 7 | 0 | 0 | 7 | 0 |
 | United Arab Emirates | 123 | 123 | 122 | 0 | 123 | 0 |
