@@ -2,15 +2,22 @@
 
 ## [Unreleased]
 
+## [3.22.0] - 2026-05-11
+
 ### Added
 
+- Added a residual source-gap classification report (`data/reports/source_gap_classification.*`) that assigns every remaining primary-ISIN, stock-sector, and ETF-category gap to a deterministic rest class with a row-level source gate.
+- Added release-gate validation for the source-gap classification report so stale, missing, unclassified, or non-review-gated residual gaps fail validation.
+- Added a StockAnalysis list-screener backfill for review-gated free-source ISIN, stock-sector, and ETF-category evidence across OTC, B3, LSE, TSX, TSXV, ASX, SSE, and SZSE.
+- Added official TWSE ISIN/sector and TMX TSX/TSXV stock-sector backfills with audit reports and focused unit coverage.
 - Added TradingView ETF asset-class category backfill, a China bilingual ISIN gate for exact SSE/SZSE ETF symbols, same-ISIN TradingView gates for abbreviated stock/ETF product names, and additional official SEC SIC-to-sector mappings for OTC rows.
 
 ### Changed
 
-- Rebuilt canonical exports to 61,653 primary tickers, 71,092 listing rows, 59,218 ISIN-covered rows, 57,818 sector/category-covered rows, and 121,195 structured alias rows.
-- Reduced the field-completion backlog to 1,230 missing core-primary ISINs, 3,740 missing stock sectors, and 95 missing ETF categories.
-- Refreshed coverage, completion-backlog, Adanos reference, detection simulation, entry-quality, and validation artifacts.
+- Rebuilt canonical exports to 61,455 primary tickers, 71,041 listing rows, 59,445 ISIN-covered rows, 58,654 sector/category-covered rows, and 121,314 structured alias rows.
+- Reduced the field-completion backlog to 1,099 missing core-primary ISINs, 2,707 missing stock sectors, and 94 missing ETF categories.
+- Classified all 3,900 remaining source gaps into hard residual classes without filling any values heuristically.
+- Refreshed coverage, completion-backlog, source-gap classification, Adanos reference, detection simulation, entry-quality, and validation artifacts.
 
 ## [3.21.0] - 2026-05-10
 

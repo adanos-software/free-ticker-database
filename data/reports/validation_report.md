@@ -1,6 +1,6 @@
 # Database Validation Report
 
-Generated at: `2026-05-10T20:23:04Z`
+Generated at: `2026-05-11T05:49:20Z`
 
 Status: `PASS`
 
@@ -12,7 +12,7 @@ Status: `PASS`
 | listing_rows | 71,041 |
 | adanos_reference_rows | 61,455 |
 | entry_quality_rows | 71,041 |
-| error_gates | 74 |
+| error_gates | 77 |
 | failed_error_gates | 0 |
 | info_gates | 5 |
 
@@ -31,6 +31,7 @@ Status: `PASS`
 | required_columns:data/adanos/ticker_reference.csv | error | PASS | 0 | 0 |
 | required_columns:data/reports/entry_quality.csv | error | PASS | 0 | 0 |
 | required_columns:data/review_overrides/metadata_updates.csv | error | PASS | 0 | 0 |
+| required_columns:data/reports/source_gap_classification.csv | error | PASS | 0 | 0 |
 | duplicate_primary_ticker_count | error | PASS | 0 | 0 |
 | duplicate_listing_key_count | error | PASS | 0 | 0 |
 | duplicate_instrument_scope_listing_key_count | error | PASS | 0 | 0 |
@@ -73,6 +74,8 @@ Status: `PASS`
 | noncanonical_etf_category_rows | error | PASS | 0 | 0 |
 | metadata_updates_noncanonical_typed_values | error | PASS | 0 | 0 |
 | metadata_updates_typed_leakage | error | PASS | 0 | 0 |
+| source_gap_classification_invalid_rows | error | PASS | 0 | 0 |
+| source_gap_classification_current_gap_mismatch | error | PASS | 0 | 0 |
 | adanos_reference_row_count_mismatch | error | PASS | 0 | 0 |
 | entry_quality_quarantine_count | error | PASS | 0 | 0 |
 | entry_quality_unexpected_warn_count | error | PASS | 0 | 0 |

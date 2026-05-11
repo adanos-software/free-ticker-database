@@ -38,6 +38,7 @@ DEFAULT_ADANOS_ALIAS_AUDIT_CSV = REPORTS_DIR / "adanos_alias_audit.csv"
 DEFAULT_REVIEW_REMOVE_ALIASES_CSV = DATA_DIR / "review_overrides" / "remove_aliases.csv"
 DEFAULT_REVIEW_METADATA_UPDATES_CSV = DATA_DIR / "review_overrides" / "metadata_updates.csv"
 DEFAULT_COVERAGE_REPORT_JSON = REPORTS_DIR / "coverage_report.json"
+DEFAULT_SOURCE_GAP_CLASSIFICATION_CSV = REPORTS_DIR / "source_gap_classification.csv"
 DEFAULT_JSON_OUT = REPORTS_DIR / "validation_report.json"
 DEFAULT_MD_OUT = REPORTS_DIR / "validation_report.md"
 
@@ -121,6 +122,21 @@ METADATA_UPDATE_COLUMNS = {
     "confidence",
     "reason",
 }
+SOURCE_GAP_CLASSIFICATION_COLUMNS = {
+    "field",
+    "target_field",
+    "listing_key",
+    "ticker",
+    "exchange",
+    "asset_type",
+    "name",
+    "gap_class",
+    "review_needed",
+    "confidence_policy",
+    "recommended_next_source",
+    "source_gate",
+}
+SOURCE_GAP_FIELDS = {"missing_isin_primary", "missing_sector_stock", "missing_etf_category"}
 MOJIBAKE_RE = re.compile(r"(?:Ã[\u0080-\u00BF]|Â[\u0080-\u00BF]|â[\u0080-\u00BF]{1,2}|�|\\x[0-9a-fA-F]{2})")
 
 
@@ -401,6 +417,60 @@ def metadata_updates_with_typed_leakage(
     return invalid
 
 
+def source_gap_expected_keys(tickers: list[dict[str, str]], core_listings: list[dict[str, str]]) -> set[str]:
+    keys: set[str] = set()
+    for row in core_listings:
+        if row.get("scope_reason") == "primary_listing_missing_isin" and row.get("listing_key"):
+            keys.add(f"missing_isin_primary|{row['listing_key']}")
+    for row in tickers:
+        key = listing_key(row)
+        if row.get("asset_type") == "Stock" and not row.get("stock_sector", "").strip():
+            keys.add(f"missing_sector_stock|{key}")
+        elif row.get("asset_type") == "ETF" and not row.get("etf_category", "").strip():
+            keys.add(f"missing_etf_category|{key}")
+    return keys
+
+
+def source_gap_actual_keys(rows: list[dict[str, str]]) -> set[str]:
+    return {
+        f"{row.get('field', '')}|{row.get('listing_key', '')}"
+        for row in rows
+        if row.get("field") and row.get("listing_key")
+    }
+
+
+def invalid_source_gap_classification_rows(rows: list[dict[str, str]]) -> list[str]:
+    invalid: list[str] = []
+    for row in rows:
+        field = row.get("field", "")
+        listing_id = row.get("listing_key", "")
+        gap_class = row.get("gap_class", "").strip()
+        row_id = f"{field}|{listing_id}"
+        if field not in SOURCE_GAP_FIELDS:
+            invalid.append(f"{row_id}:invalid_field")
+        elif row.get("target_field", "") not in {"isin", "stock_sector", "etf_category"}:
+            invalid.append(f"{row_id}:invalid_target_field")
+        elif not listing_id or not gap_class or gap_class == "unclassified":
+            invalid.append(f"{row_id}:unclassified")
+        elif row.get("review_needed", "").lower() != "true":
+            invalid.append(f"{row_id}:review_not_required")
+        elif not row.get("confidence_policy", "").strip() or not row.get("source_gate", "").strip():
+            invalid.append(f"{row_id}:missing_policy")
+    return sorted(invalid)
+
+
+def source_gap_classification_mismatches(
+    rows: list[dict[str, str]],
+    tickers: list[dict[str, str]],
+    core_listings: list[dict[str, str]],
+) -> list[str]:
+    expected = source_gap_expected_keys(tickers, core_listings)
+    actual = source_gap_actual_keys(rows)
+    missing = sorted(expected - actual)
+    extra = sorted(actual - expected)
+    return [f"missing:{key}" for key in missing] + [f"stale:{key}" for key in extra]
+
+
 def rows_with_mojibake_names(rows: list[dict[str, str]], id_field: str) -> list[str]:
     invalid: list[str] = []
     for row in rows:
@@ -595,6 +665,7 @@ def build_validation_report(
     cross_listings: list[dict[str, str]] | None = None,
     review_remove_aliases: list[dict[str, str]] | None = None,
     review_metadata_updates: list[dict[str, str]] | None = None,
+    source_gap_classifications: list[dict[str, str]] | None = None,
     coverage_report: dict[str, Any] | None = None,
     path_to_columns: dict[Path, set[str]] | None = None,
     required_columns_by_path: dict[Path, set[str]] | None = None,
@@ -604,6 +675,7 @@ def build_validation_report(
     path_to_columns = path_to_columns or {}
     review_remove_aliases = review_remove_aliases or []
     review_metadata_updates = review_metadata_updates or []
+    source_gap_classifications = source_gap_classifications or []
     identifiers = identifiers or []
     identifiers_extended = identifiers_extended or []
     has_identifier_inputs = bool(identifiers or identifiers_extended or identifier_summary is not None)
@@ -666,6 +738,14 @@ def build_validation_report(
     )
     noncanonical_metadata_updates = metadata_updates_with_noncanonical_typed_values(review_metadata_updates)
     metadata_typed_leakage = metadata_updates_with_typed_leakage(review_metadata_updates, typed_rows)
+    source_gap_invalid_rows = (
+        invalid_source_gap_classification_rows(source_gap_classifications) if source_gap_classifications else []
+    )
+    source_gap_mismatches = (
+        source_gap_classification_mismatches(source_gap_classifications, tickers, core_listings)
+        if source_gap_classifications
+        else []
+    )
 
     adanos_alias_parse_errors: list[str] = []
     adanos_common_word_aliases: list[str] = []
@@ -896,6 +976,16 @@ def build_validation_report(
                 metadata_typed_leakage,
             ),
             fail_gate(
+                "source_gap_classification_invalid_rows",
+                len(source_gap_invalid_rows),
+                source_gap_invalid_rows,
+            ),
+            fail_gate(
+                "source_gap_classification_current_gap_mismatch",
+                len(source_gap_mismatches),
+                source_gap_mismatches,
+            ),
+            fail_gate(
                 "adanos_reference_row_count_mismatch",
                 0 if len(adanos_reference) == len(tickers) else abs(len(adanos_reference) - len(tickers)),
                 [] if len(adanos_reference) == len(tickers) else [f"adanos={len(adanos_reference)} tickers={len(tickers)}"],
@@ -1046,6 +1136,7 @@ def build_validation_report(
                 "review_remove_aliases_csv": display_path(DEFAULT_REVIEW_REMOVE_ALIASES_CSV),
                 "review_metadata_updates_csv": display_path(DEFAULT_REVIEW_METADATA_UPDATES_CSV),
                 "coverage_report_json": display_path(DEFAULT_COVERAGE_REPORT_JSON),
+                "source_gap_classification_csv": display_path(DEFAULT_SOURCE_GAP_CLASSIFICATION_CSV),
             },
         },
         "passed": not failed_error_gates,
@@ -1122,6 +1213,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--review-remove-aliases-csv", type=Path, default=DEFAULT_REVIEW_REMOVE_ALIASES_CSV)
     parser.add_argument("--review-metadata-updates-csv", type=Path, default=DEFAULT_REVIEW_METADATA_UPDATES_CSV)
     parser.add_argument("--coverage-report-json", type=Path, default=DEFAULT_COVERAGE_REPORT_JSON)
+    parser.add_argument("--source-gap-classification-csv", type=Path, default=DEFAULT_SOURCE_GAP_CLASSIFICATION_CSV)
     parser.add_argument("--json-out", type=Path, default=DEFAULT_JSON_OUT)
     parser.add_argument("--md-out", type=Path, default=DEFAULT_MD_OUT)
     parser.add_argument("--no-write", action="store_true", help="Print summary only; do not write report files.")
@@ -1142,6 +1234,7 @@ def main(argv: list[str] | None = None) -> int:
         args.adanos_reference_csv,
         args.entry_quality_csv,
         args.review_metadata_updates_csv,
+        args.source_gap_classification_csv,
     ]
     path_to_columns = {path: csv_columns(path) for path in paths}
     required_columns_by_path = {
@@ -1156,6 +1249,7 @@ def main(argv: list[str] | None = None) -> int:
         args.adanos_reference_csv: ADANOS_COLUMNS,
         args.entry_quality_csv: ENTRY_QUALITY_COLUMNS,
         args.review_metadata_updates_csv: METADATA_UPDATE_COLUMNS,
+        args.source_gap_classification_csv: SOURCE_GAP_CLASSIFICATION_COLUMNS,
     }
     coverage_report = load_json(args.coverage_report_json) if args.coverage_report_json.exists() else None
     payload = build_validation_report(
@@ -1177,6 +1271,9 @@ def main(argv: list[str] | None = None) -> int:
         ),
         review_metadata_updates=(
             load_csv(args.review_metadata_updates_csv) if args.review_metadata_updates_csv.exists() else []
+        ),
+        source_gap_classifications=(
+            load_csv(args.source_gap_classification_csv) if args.source_gap_classification_csv.exists() else []
         ),
         coverage_report=coverage_report,
         path_to_columns=path_to_columns,

@@ -132,6 +132,91 @@ def test_validation_report_passes_clean_minimal_dataset():
     assert report["summary"]["failed_error_gates"] == 0
 
 
+def test_validation_report_gates_source_gap_classifications():
+    missing = ticker("MISS", stock_sector="", isin="")
+    report = build_validation_report(
+        tickers=[missing],
+        listings=[listing(missing)],
+        core_listings=[core_listing(missing)],
+        instrument_scopes=[scope(missing, scope_reason="primary_listing_missing_isin")],
+        adanos_reference=[adanos_reference(missing)],
+        entry_quality=[entry_quality(missing)],
+        allowed_warns=set(),
+        adanos_alias_findings=[],
+        source_gap_classifications=[
+            {
+                "field": "missing_isin_primary",
+                "target_field": "isin",
+                "listing_key": "NASDAQ::MISS",
+                "ticker": "MISS",
+                "exchange": "NASDAQ",
+                "asset_type": "Stock",
+                "name": "Microsoft Corporation",
+                "gap_class": "official_identifier_source_gap",
+                "review_needed": "true",
+                "confidence_policy": "Require reviewed evidence.",
+                "recommended_next_source": "Official feed.",
+                "source_gate": "Exact symbol/name and checksum.",
+            },
+            {
+                "field": "missing_sector_stock",
+                "target_field": "stock_sector",
+                "listing_key": "NASDAQ::MISS",
+                "ticker": "MISS",
+                "exchange": "NASDAQ",
+                "asset_type": "Stock",
+                "name": "Microsoft Corporation",
+                "gap_class": "exchange_industry_source_gap",
+                "review_needed": "true",
+                "confidence_policy": "Require reviewed evidence.",
+                "recommended_next_source": "Official industry feed.",
+                "source_gate": "Exact symbol/name and canonical sector.",
+            },
+        ],
+        generated_at="2026-05-11T00:00:00Z",
+    )
+
+    gates = {gate["name"]: gate for gate in report["gates"]}
+    assert gates["source_gap_classification_invalid_rows"]["actual"] == 0
+    assert gates["source_gap_classification_current_gap_mismatch"]["actual"] == 0
+
+
+def test_validation_report_fails_stale_or_missing_source_gap_classifications():
+    missing = ticker("MISS", stock_sector="", isin="")
+    report = build_validation_report(
+        tickers=[missing],
+        listings=[listing(missing)],
+        core_listings=[core_listing(missing)],
+        instrument_scopes=[scope(missing, scope_reason="primary_listing_missing_isin")],
+        adanos_reference=[adanos_reference(missing)],
+        entry_quality=[entry_quality(missing)],
+        allowed_warns=set(),
+        adanos_alias_findings=[],
+        source_gap_classifications=[
+            {
+                "field": "missing_isin_primary",
+                "target_field": "isin",
+                "listing_key": "NASDAQ::STALE",
+                "ticker": "STALE",
+                "exchange": "NASDAQ",
+                "asset_type": "Stock",
+                "name": "Stale Corporation",
+                "gap_class": "",
+                "review_needed": "false",
+                "confidence_policy": "",
+                "recommended_next_source": "",
+                "source_gate": "",
+            }
+        ],
+        generated_at="2026-05-11T00:00:00Z",
+    )
+
+    gates = {gate["name"]: gate for gate in report["gates"]}
+    assert report["passed"] is False
+    assert gates["source_gap_classification_invalid_rows"]["actual"] == 1
+    assert gates["source_gap_classification_current_gap_mismatch"]["actual"] == 3
+
+
 def test_validation_report_passes_listing_key_scope_and_cross_listing_gates():
     msft = ticker("MSFT")
     msf = ticker("MSF")
