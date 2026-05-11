@@ -2,6 +2,20 @@
 
 ## [Unreleased]
 
+## [3.23.0] - 2026-05-11
+
+### Added
+
+- Added the source-of-truth decision report (`data/reports/source_of_truth_decisions.*`) that assigns each residual metadata gap to `accepted_source_gap` or `core_exclusion_candidate`.
+- Added review-gated residual classes for official identifier sources that do not expose ISINs, current official directory misses, unmatched official symbol references, official product-taxonomy gaps, and unmatched ETF product references.
+- Added official Thailand SEC SET ISIN backfill coverage for review-gated SET identifier fills.
+
+### Changed
+
+- Reduced `official_fill_required` from 2,199 to 0 by separating real fill obligations from documented source gaps and scope-review candidates.
+- Rebuilt source-gap, source-of-truth, and validation reports with 3,042 accepted source gaps and 818 core-exclusion candidates.
+- Refreshed validation artifacts with 82 error gates and 0 failed gates.
+
 ## [3.22.0] - 2026-05-11
 
 ### Added
