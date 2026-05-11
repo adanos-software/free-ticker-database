@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-05-11T06:31:53Z",
+    "generated_at": "2026-05-11T06:35:27Z",
     "rows": 3860,
     "field_totals": {
       "missing_etf_category": 94,
@@ -11,26 +11,28 @@
       "adr_cdr_or_depositary_identifier_gap": 45,
       "adr_cdr_or_depositary_sector_gap": 39,
       "capital_pool_or_halted_identifier_gap": 35,
-      "commodity_etf_category_gap": 1,
+      "commodity_etf_category_gap": 2,
       "debt_or_securitized_identifier_gap": 83,
       "equity_etf_category_gap": 1,
       "fixed_income_etf_category_gap": 1,
       "fund_or_trust_identifier_gap": 294,
       "fundlike_stock_sector_gap": 74,
-      "generic_etf_category_source_gap": 91,
+      "generic_etf_category_source_gap": 20,
       "inactive_or_legacy_identifier_gap": 158,
       "official_current_directory_absent_identifier_gap": 64,
       "official_identifier_not_exposed_source_gap": 326,
       "official_identifier_source_gap": 54,
       "official_industry_taxonomy_unavailable_gap": 1664,
+      "official_product_taxonomy_unavailable_gap": 70,
       "otc_sector_source_gap": 840,
       "shell_or_cpc_sector_gap": 90
     },
     "class_by_field": {
-      "missing_etf_category:commodity_etf_category_gap": 1,
+      "missing_etf_category:commodity_etf_category_gap": 2,
       "missing_etf_category:equity_etf_category_gap": 1,
       "missing_etf_category:fixed_income_etf_category_gap": 1,
-      "missing_etf_category:generic_etf_category_source_gap": 91,
+      "missing_etf_category:generic_etf_category_source_gap": 20,
+      "missing_etf_category:official_product_taxonomy_unavailable_gap": 70,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 45,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 35,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 83,
@@ -201,11 +203,11 @@
       "exchange": "AMS",
       "asset_type": "ETF",
       "name": "SPDR BB SB USCorEH",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -215,11 +217,11 @@
       "exchange": "ASX",
       "asset_type": "ETF",
       "name": "CADENCE OPPORTUNITIES FUND LIMITED.",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -229,11 +231,11 @@
       "exchange": "ASX",
       "asset_type": "ETF",
       "name": "DOMINION INCOME TRUST 1",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -243,11 +245,11 @@
       "exchange": "ASX",
       "asset_type": "ETF",
       "name": "OPHIR HIGH CONVICTION FUND",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -257,11 +259,11 @@
       "exchange": "ASX",
       "asset_type": "ETF",
       "name": "PEPPER RESIDENTIAL SECURITIES TRUST NO. 40",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -271,11 +273,11 @@
       "exchange": "ASX",
       "asset_type": "ETF",
       "name": "PEPPER SPARKZ TRUST NO.6",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -285,11 +287,11 @@
       "exchange": "ASX",
       "asset_type": "ETF",
       "name": "PEPPER SPARKZ TRUST NO.8",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -299,11 +301,11 @@
       "exchange": "ASX",
       "asset_type": "ETF",
       "name": "PEPPER SPARKZ TRUST NO.9",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -313,11 +315,11 @@
       "exchange": "ASX",
       "asset_type": "ETF",
       "name": "SCENTRE GROUP TRUST 1 AND SCENTRE GROUP TRUST 2",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -327,11 +329,11 @@
       "exchange": "ASX",
       "asset_type": "ETF",
       "name": "VICINITY CENTRES TRUST",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -439,11 +441,11 @@
       "exchange": "BATS",
       "asset_type": "ETF",
       "name": "Tema Monopolies and Oligopolies ETF",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -453,11 +455,11 @@
       "exchange": "BMV",
       "asset_type": "ETF",
       "name": "iShares NAFTRAC",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -481,11 +483,11 @@
       "exchange": "BVB",
       "asset_type": "ETF",
       "name": "Intercapital ETF D.o.o.",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -495,11 +497,11 @@
       "exchange": "BVB",
       "asset_type": "ETF",
       "name": "Intercapital ETF D.o.o.",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -509,11 +511,11 @@
       "exchange": "BVB",
       "asset_type": "ETF",
       "name": "FDI ETF ENERGIE PATRIA TRADEVIL",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -523,11 +525,11 @@
       "exchange": "BVB",
       "asset_type": "ETF",
       "name": "Fondul Deschis De Investitii BET Tradeville",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -537,11 +539,11 @@
       "exchange": "BVL",
       "asset_type": "ETF",
       "name": "Fondo Bursatil Van Eck El Dorado Peru ETF",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -565,11 +567,11 @@
       "exchange": "CPH",
       "asset_type": "ETF",
       "name": "Xact Kapitalforvaltning",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -579,11 +581,11 @@
       "exchange": "Euronext",
       "asset_type": "ETF",
       "name": "21Shares Render ETP",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -593,11 +595,11 @@
       "exchange": "HEL",
       "asset_type": "ETF",
       "name": "Seligson & Co OMX Helsinki 25",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -649,11 +651,11 @@
       "exchange": "LSE",
       "asset_type": "ETF",
       "name": "Gabelli Merchant Partners PLC",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -663,11 +665,11 @@
       "exchange": "LSE",
       "asset_type": "ETF",
       "name": "X SDG 12 CIRCULAR ECONOMY",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -677,11 +679,11 @@
       "exchange": "NASDAQ",
       "asset_type": "ETF",
       "name": "STKd 100% NVDA & 100% AMD ETF",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -691,11 +693,11 @@
       "exchange": "NEO",
       "asset_type": "ETF",
       "name": "Hamilton EnhancedTechnology DayMAX™ ETF",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -789,11 +791,11 @@
       "exchange": "NMFQS",
       "asset_type": "ETF",
       "name": "Vanguard Scottsdale Funds - Vanguard Russell 1000 ETF",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -803,11 +805,11 @@
       "exchange": "NYSE",
       "asset_type": "ETF",
       "name": "C1 Fund Inc.",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -817,11 +819,11 @@
       "exchange": "NYSE",
       "asset_type": "ETF",
       "name": "WisdomTree Inc.",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -845,11 +847,11 @@
       "exchange": "NYSE ARCA",
       "asset_type": "ETF",
       "name": "GMO ETF Trust (Name to be changed from The 2023 ETF Series Trust II)",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -859,11 +861,11 @@
       "exchange": "NYSE ARCA",
       "asset_type": "ETF",
       "name": "Man ETF Series Trust",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -873,11 +875,11 @@
       "exchange": "NYSE ARCA",
       "asset_type": "ETF",
       "name": "Man ETF Series Trust",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -901,11 +903,11 @@
       "exchange": "NYSE ARCA",
       "asset_type": "ETF",
       "name": "Manager Directed Portfolios",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -915,11 +917,11 @@
       "exchange": "OSL",
       "asset_type": "ETF",
       "name": "DNB OBX",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -929,11 +931,11 @@
       "exchange": "OTC",
       "asset_type": "ETF",
       "name": "Ultimus Managers Trust",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -943,11 +945,11 @@
       "exchange": "OTC",
       "asset_type": "ETF",
       "name": "OBAM N.V. Classic",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -957,11 +959,11 @@
       "exchange": "OTC",
       "asset_type": "ETF",
       "name": "Invesco Markets III plc",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -971,11 +973,11 @@
       "exchange": "OTC",
       "asset_type": "ETF",
       "name": "ISHARES V PLC",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -985,11 +987,11 @@
       "exchange": "OTC",
       "asset_type": "ETF",
       "name": "ISHARES V PLC",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -999,11 +1001,11 @@
       "exchange": "OTC",
       "asset_type": "ETF",
       "name": "ISHARES IV PLC",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1013,11 +1015,11 @@
       "exchange": "OTC",
       "asset_type": "ETF",
       "name": "IISBF",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1027,11 +1029,11 @@
       "exchange": "OTC",
       "asset_type": "ETF",
       "name": "ISHARES V PLC",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1055,11 +1057,11 @@
       "exchange": "OTC",
       "asset_type": "ETF",
       "name": "ISHARES V PLC",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1069,11 +1071,11 @@
       "exchange": "OTC",
       "asset_type": "ETF",
       "name": "ITPUF",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1083,11 +1085,11 @@
       "exchange": "OTC",
       "asset_type": "ETF",
       "name": "ISHARES V PLC",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1097,11 +1099,11 @@
       "exchange": "OTC",
       "asset_type": "ETF",
       "name": "IXSRF",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1111,11 +1113,11 @@
       "exchange": "OTC",
       "asset_type": "ETF",
       "name": "PRPEF",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1125,11 +1127,11 @@
       "exchange": "OTC",
       "asset_type": "ETF",
       "name": "PSUCF",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1139,11 +1141,11 @@
       "exchange": "OTC",
       "asset_type": "ETF",
       "name": "iShares II plc.",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1153,11 +1155,11 @@
       "exchange": "OTC",
       "asset_type": "ETF",
       "name": "VANECK UCITS ETFS PUB LTD CO.",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1167,11 +1169,11 @@
       "exchange": "OTC",
       "asset_type": "ETF",
       "name": "WISDOMTREE ISSUER ICAV",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1181,11 +1183,11 @@
       "exchange": "SSE_CL",
       "asset_type": "ETF",
       "name": "Fondo de Inversión Banchile Rentas Inmobiliarias",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1195,11 +1197,11 @@
       "exchange": "SSE_CL",
       "asset_type": "ETF",
       "name": "BTG Pactual Renta Comercial F. I.",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1209,11 +1211,11 @@
       "exchange": "SSE_CL",
       "asset_type": "ETF",
       "name": "Fondo De Inversion ETF Singular Chile Corporativo",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1223,11 +1225,11 @@
       "exchange": "SSE_CL",
       "asset_type": "ETF",
       "name": "FI ETF SINGULAR IPSA",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1237,11 +1239,11 @@
       "exchange": "SSE_CL",
       "asset_type": "ETF",
       "name": "Moneda Deuda Latinoamericana fondo de inversion",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1251,11 +1253,11 @@
       "exchange": "SSE_CL",
       "asset_type": "ETF",
       "name": "Aurus Capital Renta Inmobiliaria Fondo de Inversión",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1265,11 +1267,11 @@
       "exchange": "SSE_CL",
       "asset_type": "ETF",
       "name": "Fi Nevasa Ahorro, Serie A",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1279,11 +1281,11 @@
       "exchange": "SSE_CL",
       "asset_type": "ETF",
       "name": "Fondo Mutuo ETF IT Now IPSA",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1293,11 +1295,11 @@
       "exchange": "STO",
       "asset_type": "ETF",
       "name": "XACT NORDEN",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1307,11 +1309,11 @@
       "exchange": "TSE",
       "asset_type": "ETF",
       "name": "PBR Improvement over 1x ETF",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1335,11 +1337,11 @@
       "exchange": "TSE",
       "asset_type": "ETF",
       "name": "Investor-Management Unite as One ETF",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1349,11 +1351,11 @@
       "exchange": "TSE",
       "asset_type": "ETF",
       "name": "FUNDINNO,INC.",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1363,11 +1365,11 @@
       "exchange": "TSE",
       "asset_type": "ETF",
       "name": "YUTAKA TRUSTY SECURITIES CO.,LTD.",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1377,11 +1379,11 @@
       "exchange": "TSX",
       "asset_type": "ETF",
       "name": "JFT Strategies Fund",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1391,11 +1393,11 @@
       "exchange": "TSX",
       "asset_type": "ETF",
       "name": "Dream Impact Trust",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1405,11 +1407,11 @@
       "exchange": "TSX",
       "asset_type": "ETF",
       "name": "Ravensource Fund",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1419,11 +1421,11 @@
       "exchange": "TSXV",
       "asset_type": "ETF",
       "name": "Monaghan Capital Fund Ltd.",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1433,11 +1435,11 @@
       "exchange": "TSXV",
       "asset_type": "ETF",
       "name": "Canna 8 Investment Trust",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1447,11 +1449,11 @@
       "exchange": "TSXV",
       "asset_type": "ETF",
       "name": "Starlight U.S. Residential Fund (Multi-Family) Investment LP",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1461,11 +1463,11 @@
       "exchange": "WSE",
       "asset_type": "ETF",
       "name": "ETFBTCPL",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1475,11 +1477,11 @@
       "exchange": "WSE",
       "asset_type": "ETF",
       "name": "Beta ETF WIG20lev Potrfelowy Fundusz Inwestycyjny Zamkniety",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "official_product_taxonomy_unavailable_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
+      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
     },
     {
       "field": "missing_etf_category",
@@ -1489,11 +1491,11 @@
       "exchange": "XETRA",
       "asset_type": "ETF",
       "name": "db Physical Rhodium ETC (EUR)",
-      "gap_class": "generic_etf_category_source_gap",
+      "gap_class": "commodity_etf_category_gap",
       "review_needed": "true",
-      "confidence_policy": "Require official fund category/asset class or reviewed deterministic product-name classifier evidence.",
-      "recommended_next_source": "Official fund category/asset-class feed or reviewed deterministic product-name classifier.",
-      "source_gate": "Exact ETF symbol/name and canonical etf_category mapping evidence."
+      "confidence_policy": "Require official fund asset class or deterministic product evidence; commodity tokens alone need review if ambiguous.",
+      "recommended_next_source": "Official fund asset class or reviewed product profile.",
+      "source_gate": "Exact ETF symbol/name and deterministic commodity exposure evidence."
     },
     {
       "field": "missing_isin_primary",

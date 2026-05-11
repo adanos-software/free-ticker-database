@@ -223,3 +223,49 @@ def test_current_official_directory_absence_marks_identifier_as_source_gap() -> 
 
     assert len(rows) == 1
     assert rows[0].gap_class == "official_current_directory_absent_identifier_gap"
+
+
+def test_official_etf_reference_without_taxonomy_marks_product_taxonomy_source_gap() -> None:
+    rows = build_source_gap_classifications(
+        core_listings=[],
+        tickers=[
+            {
+                "ticker": "ETF1",
+                "exchange": "TESTX",
+                "asset_type": "ETF",
+                "name": "Test ETF",
+                "stock_sector": "",
+                "etf_category": "",
+            }
+        ],
+        masterfile_reference_rows=[
+            {
+                "ticker": "ETF1",
+                "exchange": "TESTX",
+                "official": "true",
+                "sector": "",
+            }
+        ],
+    )
+
+    assert len(rows) == 1
+    assert rows[0].gap_class == "official_product_taxonomy_unavailable_gap"
+
+
+def test_rhodium_etcs_are_classified_as_commodity_category_gaps() -> None:
+    rows = build_source_gap_classifications(
+        core_listings=[],
+        tickers=[
+            {
+                "ticker": "XFRD",
+                "exchange": "XETRA",
+                "asset_type": "ETF",
+                "name": "db Physical Rhodium ETC (EUR)",
+                "stock_sector": "",
+                "etf_category": "",
+            }
+        ],
+    )
+
+    assert len(rows) == 1
+    assert rows[0].gap_class == "commodity_etf_category_gap"

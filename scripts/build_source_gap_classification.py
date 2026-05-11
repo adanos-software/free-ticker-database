@@ -46,6 +46,7 @@ GAP_CLASS_POLICIES = {
     "official_industry_taxonomy_unavailable_gap": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
     "official_identifier_not_exposed_source_gap": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
     "official_current_directory_absent_identifier_gap": "A current official venue probe did not find the residual listing in the active instrument directory; keep the identifier blank until active-listing evidence or a registry record appears.",
+    "official_product_taxonomy_unavailable_gap": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
     "exchange_industry_source_gap": "Require official exchange industry classification or reviewed secondary profile data mapped to canonical stock sectors.",
     "fundlike_stock_sector_gap": "Require issuer classification; do not map fund/trust-like stock rows from product-name tokens alone.",
     "shell_or_cpc_sector_gap": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
@@ -252,7 +253,7 @@ def classify_missing_etf_category(row: dict[str, str]) -> tuple[str, str, str]:
             "Official fund asset class or reviewed product profile.",
             "Exact ETF symbol/name and deterministic digital-asset exposure evidence.",
         )
-    if has_any(blob, (" GOLD", " SILVER", " OIL", " GAS", " COMMODITY", " COPPER")):
+    if has_any(blob, (" GOLD", " SILVER", " OIL", " GAS", " COMMODITY", " COPPER", " RHODIUM")):
         return (
             "commodity_etf_category_gap",
             "Official fund asset class or reviewed product profile.",
@@ -269,6 +270,12 @@ def classify_missing_etf_category(row: dict[str, str]) -> tuple[str, str, str]:
             "equity_etf_category_gap",
             "Official fund asset class or reviewed product profile.",
             "Exact ETF symbol/name and deterministic equity exposure evidence.",
+        )
+    if row.get("_official_product_taxonomy_not_exposed") == "true":
+        return (
+            "official_product_taxonomy_unavailable_gap",
+            "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
+            "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
         )
     return (
         "generic_etf_category_source_gap",
@@ -349,6 +356,9 @@ def build_source_gap_classifications(
     official_reference_without_isin_keys = {
         key for key, values in official_reference_by_key.items() if not any(row.get("isin", "").strip() for row in values)
     }
+    official_reference_without_product_taxonomy_keys = {
+        key for key, values in official_reference_by_key.items() if not any(row.get("sector", "").strip() for row in values)
+    }
     current_directory_absent_keys = {
         (row.get("exchange", ""), row.get("ticker", ""))
         for row in b3_cotahist_isin_probe_rows or []
@@ -378,6 +388,12 @@ def build_source_gap_classifications(
             **row,
             "_tmx_sector": tmx_sector_by_key.get(listing_key, ""),
             "_official_source_implemented": "true" if exchange in implemented_source_exchanges else "",
+            "_official_product_taxonomy_not_exposed": (
+                "true"
+                if (exchange, row.get("ticker", "")) in official_reference_without_product_taxonomy_keys
+                or (exchange == "OTC" and row.get("asset_type") == "ETF")
+                else ""
+            ),
         }
         if row.get("asset_type") == "Stock" and not row.get("stock_sector", "").strip():
             rows.append(make_row(FIELD_MISSING_STOCK_SECTOR, row))
