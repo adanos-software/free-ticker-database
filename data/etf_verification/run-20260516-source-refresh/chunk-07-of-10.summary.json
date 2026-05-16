@@ -1,0 +1,72 @@
+{
+  "chunk_index": 7,
+  "chunk_count": 10,
+  "items": 1887,
+  "status_counts": {
+    "asset_type_mismatch": 1,
+    "missing_from_official": 2,
+    "reference_gap": 137,
+    "verified": 1747
+  },
+  "finding_examples": [
+    {
+      "listing_key": "KRX::460280",
+      "ticker": "460280",
+      "exchange": "KRX",
+      "asset_type": "ETF",
+      "name": "460280",
+      "country": "South Korea",
+      "country_code": "KR",
+      "isin": "",
+      "sector": "",
+      "status": "missing_from_official",
+      "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+      "official_reference_name": "",
+      "official_reference_source": "",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "",
+      "lei": ""
+    },
+    {
+      "listing_key": "NGX::MERVALUE",
+      "ticker": "MERVALUE",
+      "exchange": "NGX",
+      "asset_type": "ETF",
+      "name": "MERISTEM VALUE EXCHANGE TRADED FUND",
+      "country": "Nigeria",
+      "country_code": "NG",
+      "isin": "NGMERVALUE06",
+      "sector": "Equity",
+      "status": "missing_from_official",
+      "reason": "Symbol is absent from the active official exchange directory for this exchange.",
+      "official_reference_name": "",
+      "official_reference_source": "",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "BBG00X8R7M94",
+      "lei": ""
+    },
+    {
+      "listing_key": "OTC::CUYTY",
+      "ticker": "CUYTY",
+      "exchange": "OTC",
+      "asset_type": "ETF",
+      "name": "Etablissementen Franz Colruyt NV ADR",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "US1968501015",
+      "sector": "Equity",
+      "status": "asset_type_mismatch",
+      "reason": "Dataset asset_type=ETF but official reference says Stock.",
+      "official_reference_name": "COLRUYT GRP N.V UNSP/ADR",
+      "official_reference_source": "otc_markets_stock_screener",
+      "covered_by_official_directory": true,
+      "cik": "",
+      "figi": "BBG000PLRKK9",
+      "lei": ""
+    }
+  ],
+  "json_out": "data/etf_verification/run-20260516-source-refresh/chunk-07-of-10.json",
+  "csv_out": "data/etf_verification/run-20260516-source-refresh/chunk-07-of-10.csv"
+}

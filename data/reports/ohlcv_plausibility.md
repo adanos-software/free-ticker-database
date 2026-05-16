@@ -1,6 +1,6 @@
 # OHLCV Plausibility Report
 
-Generated at: `2026-05-11T05:47:49Z`
+Generated at: `2026-05-16T17:23:09Z`
 
 This report uses Kronos-inspired deterministic OHLCV hygiene checks. It does not fill ISINs, sectors, or ETF categories.
 
@@ -8,9 +8,9 @@ This report uses Kronos-inspired deterministic OHLCV hygiene checks. It does not
 
 | Metric | Rows |
 |---|---:|
-| Selected listing rows | 71,041 |
+| Selected listing rows | 71,043 |
 | Checked rows written | 0 |
-| Unchecked rows skipped | 71,041 |
+| Unchecked rows skipped | 71,043 |
 
 ## Status Counts
 

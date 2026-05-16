@@ -9,23 +9,23 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 
 | Metric | Value | Meaning |
 |---|---:|---|
-| Core listings | 53,999 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
-| Primary tickers | 61,454 | Rows in `data/tickers.csv`; one primary row per security. |
-| Full listing rows | 71,041 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
-| Stocks | 45,910 | Primary ticker rows where `asset_type=Stock`. |
-| ETFs | 15,544 | Primary ticker rows where `asset_type=ETF`. |
+| Core listings | 54,002 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
+| Primary tickers | 61,439 | Rows in `data/tickers.csv`; one primary row per security. |
+| Full listing rows | 71,043 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
+| Stocks | 45,885 | Primary ticker rows where `asset_type=Stock`. |
+| ETFs | 15,554 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 80 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 86 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 121,351 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
-| ISIN coverage | 59,484 (96.8%) | Primary ticker rows with a non-empty `isin`. |
-| FIGI coverage | 63,440 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
-| Sector/category coverage | 58,653 (95.4%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 43,203 | Primary ticker rows with a non-empty `stock_sector`. |
-| ETF category coverage | 15,450 | Primary ticker rows with a non-empty `etf_category`. |
-| Core listing-scope rows | 53,999 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
-| Core primary rows with ISIN | 52,940 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
+| Aliases | 121,431 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
+| ISIN coverage | 59,608 (97.0%) | Primary ticker rows with a non-empty `isin`. |
+| FIGI coverage | 63,434 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
+| Sector/category coverage | 58,736 (95.6%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Stock sector coverage | 43,287 | Primary ticker rows with a non-empty `stock_sector`. |
+| ETF category coverage | 15,449 | Primary ticker rows with a non-empty `etf_category`. |
+| Core listing-scope rows | 54,002 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
+| Core primary rows with ISIN | 52,943 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
 | Core primary rows missing ISIN | 1,059 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
-| Extended listing-scope rows | 17,042 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
+| Extended listing-scope rows | 17,041 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
 
 ## Core Files
 
@@ -110,9 +110,9 @@ JSON metadata:
 ```json
 {
   "_meta": {
-    "version": "3.23.0",
-    "built_at": "2026-05-11T08:21:58Z",
-    "total_tickers": 61454
+    "version": "3.24.0",
+    "built_at": "2026-05-16T17:21:31Z",
+    "total_tickers": 61439
   },
   "tickers": []
 }
@@ -144,19 +144,19 @@ Top exchanges by primary ticker count:
 
 | Exchange | Tickers |
 |---|---:|
-| OTC | 7,596 |
-| NASDAQ | 4,539 |
-| LSE | 3,762 |
+| OTC | 7,438 |
+| NASDAQ | 4,540 |
+| LSE | 3,763 |
 | TSE | 3,190 |
 | SZSE | 3,083 |
 | HKEX | 2,841 |
 | SSE | 2,787 |
-| BSE_IN | 2,639 |
-| NYSE ARCA | 2,568 |
+| BSE_IN | 2,641 |
+| NYSE ARCA | 2,567 |
 | XETRA | 2,227 |
-| NYSE | 2,045 |
+| NYSE | 2,046 |
 | KRX | 1,796 |
-| TSX | 1,636 |
+| TSX | 1,632 |
 | KOSDAQ | 1,583 |
 | B3 | 1,555 |
 | ASX | 1,291 |

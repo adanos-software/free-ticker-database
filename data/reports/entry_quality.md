@@ -1,49 +1,51 @@
 # Entry Quality Report
 
-Generated at: `2026-05-11T06:16:02Z`
+Generated at: `2026-05-16T17:23:09Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 64,101 |
-| source_gap | 6,877 |
-| warn | 63 |
+| pass | 62,386 |
+| source_gap | 8,440 |
+| warn | 217 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 4,780 |
-| missing_stock_sector | 1,867 |
+| official_reference_gap | 6,526 |
+| missing_stock_sector | 1,781 |
 | expected_missing_primary_isin | 1,059 |
+| official_name_mismatch | 154 |
 | missing_etf_category | 77 |
 | country_isin_mismatch | 63 |
+| venue_missing_official_source | 8 |
 
 ## Top Flagged Exchanges
 
 | Exchange | Pass | Notice | Source Gap | Warn | Quarantine |
 |---|---:|---:|---:|---:|---:|
-| OTC | 7,887 | 0 | 3,169 | 0 | 0 |
-| B3 | 1,265 | 0 | 319 | 0 | 0 |
-| LSE | 6,181 | 0 | 174 | 60 | 0 |
-| TSX | 1,693 | 0 | 210 | 0 | 0 |
-| BMV | 8 | 0 | 171 | 0 | 0 |
-| TSXV | 901 | 0 | 165 | 0 | 0 |
-| Euronext | 828 | 0 | 147 | 0 | 0 |
+| OTC | 7,813 | 0 | 3,097 | 146 | 0 |
+| B3 | 378 | 0 | 1,206 | 0 | 0 |
+| SSE | 2,229 | 0 | 560 | 0 | 0 |
+| LSE | 6,149 | 0 | 206 | 60 | 0 |
+| TSXV | 836 | 0 | 230 | 0 | 0 |
+| TSX | 1,691 | 0 | 213 | 0 | 0 |
+| BSE_IN | 2,438 | 0 | 204 | 0 | 0 |
+| NASDAQ | 4,485 | 0 | 145 | 5 | 0 |
+| Euronext | 826 | 0 | 149 | 0 | 0 |
 | CSE_LK | 164 | 0 | 143 | 0 | 0 |
-| ASX | 1,157 | 0 | 141 | 0 | 0 |
-| NYSE ARCA | 2,525 | 0 | 129 | 0 | 0 |
-| NASDAQ | 4,523 | 0 | 110 | 1 | 0 |
+| ASX | 1,156 | 0 | 141 | 1 | 0 |
+| NYSE ARCA | 2,517 | 0 | 136 | 0 | 0 |
+| TASE | 564 | 0 | 109 | 0 | 0 |
+| BME | 67 | 0 | 102 | 0 | 0 |
 | BK | 2 | 0 | 102 | 0 | 0 |
-| AMS | 219 | 0 | 95 | 0 | 0 |
-| BME | 75 | 0 | 94 | 0 | 0 |
+| XETRA | 3,682 | 0 | 97 | 0 | 0 |
+| AMS | 218 | 0 | 96 | 0 | 0 |
 | MSX | 1 | 0 | 90 | 0 | 0 |
-| XETRA | 3,691 | 0 | 88 | 0 | 0 |
-| JSE | 130 | 0 | 82 | 0 | 0 |
-| PSE | 14 | 0 | 76 | 0 | 0 |
-| BATS | 1,169 | 0 | 74 | 0 | 0 |
-| TASE | 599 | 0 | 74 | 0 | 0 |
+| JSE | 124 | 0 | 88 | 0 | 0 |
+| BATS | 1,158 | 0 | 83 | 0 | 0 |
 
 ## Notes
 

@@ -343,7 +343,11 @@ def build_source_gap_classifications(
         row.get("exchange", "")
         for row in source_inventory_rows or []
         if row.get("implementation_status") == "implemented"
-        and row.get("current_status", "").startswith("official_")
+        and (
+            row.get("current_status", "").startswith("official_")
+            or row.get("blocker", "").startswith("implemented via official")
+            or "official" in row.get("notes", "").lower()
+        )
     }
     isin_not_exposed_exchanges = {
         row.get("exchange", "")

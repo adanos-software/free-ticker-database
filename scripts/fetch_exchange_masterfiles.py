@@ -4637,6 +4637,19 @@ GSE_LISTED_MARKDOWN_ROW_RE = re.compile(
 )
 
 
+def markdown_table_cells(line: str) -> list[str]:
+    if not line.lstrip().startswith("|"):
+        return []
+    return [cell.strip() for cell in line.strip().strip("|").split("|")]
+
+
+def clean_markdown_link_text(value: str) -> str:
+    match = re.search(r"\[([^\]]+)\]\([^)]*\)", value)
+    if match:
+        return clean_html_text(match.group(1)).strip()
+    return clean_html_text(re.sub(r"\([^)]*\)", "", value)).strip()
+
+
 def parse_gse_listed_companies_markdown(
     text: str,
     source: MasterfileSource,
@@ -4648,6 +4661,22 @@ def parse_gse_listed_companies_markdown(
     }
     rows: list[dict[str, str]] = []
     seen: set[str] = set()
+    for line in text.splitlines():
+        cells = markdown_table_cells(line)
+        if len(cells) < 3 or set(cells[0]) <= {"-"}:
+            continue
+        symbol_cell = cells[1] if cells[0].isdigit() else cells[0]
+        name_cell = cells[2] if cells[0].isdigit() else cells[1]
+        ticker = clean_markdown_link_text(symbol_cell).upper()
+        name = clean_markdown_link_text(name_cell)
+        listing = current_by_ticker.get(ticker)
+        if not listing or ticker in seen or not name or ticker == "SYMBOL":
+            continue
+        seen.add(ticker)
+        rows.append(build_current_listing_reference_row(source, listing, name=name))
+    if rows:
+        return rows
+
     for match in GSE_LISTED_MARKDOWN_ROW_RE.finditer(text):
         ticker = re.sub(r"\s+", " ", match.group("ticker")).strip().upper()
         name = clean_html_text(match.group("name")).strip()
@@ -4683,6 +4712,49 @@ def load_gse_listed_companies_rows(
     ensure_output_dirs()
     GSE_LISTED_COMPANIES_CACHE.write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"
+
+
+def parse_cse_ma_reader_markdown(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for line in text.splitlines():
+        cells = markdown_table_cells(line)
+        if len(cells) < 4 or set(cells[0]) <= {"-"} or cells[0].upper() == "TICKER":
+            continue
+        ticker = clean_markdown_link_text(cells[0]).upper()
+        isin = clean_markdown_link_text(cells[1]).upper()
+        issuer = clean_markdown_link_text(cells[2])
+        instrument = clean_markdown_link_text(cells[3])
+        if not ticker or ticker in seen or not is_valid_isin(isin):
+            continue
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": urljoin(CASABLANCA_BOURSE_INSTRUMENTS_URL, f"/en/live-market/instruments/{ticker}"),
+                "ticker": ticker,
+                "name": instrument or issuer,
+                "exchange": "CSE_MA",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+                "isin": isin,
+            }
+        )
+        seen.add(ticker)
+    if not rows:
+        raise ValueError("Unexpected Casablanca Stock Exchange reader payload")
+    return rows
+
+
+def fetch_cse_ma_reader_rows(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> list[dict[str, str]]:
+    text = fetch_official_reader_markdown(source, session=session)
+    return parse_cse_ma_reader_markdown(text, source)
 
 
 LUSE_LISTED_MARKDOWN_ROW_RE = re.compile(
@@ -5329,7 +5401,10 @@ def load_cse_ma_listed_companies_rows(
     try:
         rows = fetch_cse_ma_listed_companies(source, session=session)
     except (requests.RequestException, ValueError, json.JSONDecodeError):
-        return None, "unavailable"
+        try:
+            rows = fetch_cse_ma_reader_rows(source, session=session)
+        except (requests.RequestException, ValueError):
+            return None, "unavailable"
 
     ensure_output_dirs()
     CSE_MA_LISTED_COMPANIES_CACHE.write_text(json.dumps(rows), encoding="utf-8")

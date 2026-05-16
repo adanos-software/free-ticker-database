@@ -1,17 +1,17 @@
 {
   "global": {
-    "official_symbols": 78401,
-    "matched": 51491,
-    "collisions": 10913,
-    "missing": 15997
+    "official_symbols": 77262,
+    "matched": 49725,
+    "collisions": 11096,
+    "missing": 16441
   },
   "exchanges": [
     {
       "exchange": "ADX",
-      "official_symbols": 120,
-      "matched": 86,
-      "collisions": 31,
-      "missing": 3,
+      "official_symbols": 122,
+      "matched": 85,
+      "collisions": 33,
+      "missing": 4,
       "collision_examples": [
         {
           "ticker": "ADIB",
@@ -27,6 +27,14 @@
           "target_exchange": "ADX",
           "existing_exchanges": [
             "OTC"
+          ]
+        },
+        {
+          "ticker": "AGIX",
+          "name": "KraneShares Artificial Intelligence & Technology ETF",
+          "target_exchange": "ADX",
+          "existing_exchanges": [
+            "NASDAQ"
           ]
         },
         {
@@ -84,17 +92,14 @@
           "existing_exchanges": [
             "TSXV"
           ]
-        },
-        {
-          "ticker": "DANA",
-          "name": "DANA GAS PJSC",
-          "target_exchange": "ADX",
-          "existing_exchanges": [
-            "NYSE ARCA"
-          ]
         }
       ],
       "missing_examples": [
+        {
+          "ticker": "EMOBILITY",
+          "name": "Emirates Mobility Company",
+          "exchange": "ADX"
+        },
         {
           "ticker": "LUXURY",
           "name": "Boreas S&P Absolute Luxury UCITS ETF \u2013 AED (Dist)",
@@ -114,10 +119,10 @@
     },
     {
       "exchange": "AMS",
-      "official_symbols": 548,
-      "matched": 240,
-      "collisions": 294,
-      "missing": 14,
+      "official_symbols": 581,
+      "matched": 239,
+      "collisions": 301,
+      "missing": 41,
       "collision_examples": [
         {
           "ticker": "2AAP",
@@ -207,122 +212,93 @@
           "exchange": "AMS"
         },
         {
-          "ticker": "NAIW",
-          "name": "NAI WARRANTS",
+          "ticker": "BLC3",
+          "name": "Leverage Shares 3x Long Blockchain Leaders ETP",
           "exchange": "AMS"
         },
         {
-          "ticker": "PPLA",
-          "name": "PPLA European Unit",
+          "ticker": "BLCY",
+          "name": "IncomeShares Blockchain Leaders ETP",
           "exchange": "AMS"
         },
         {
-          "ticker": "QEVW",
-          "name": "QEV WARRANTS",
+          "ticker": "BSWE",
+          "name": "BlueSphere World Equity UCITS ETF",
           "exchange": "AMS"
         },
         {
-          "ticker": "RCEG",
-          "name": "Robeco Climate Euro Government Bond UCITS ETF EUR Acc",
+          "ticker": "COLT",
+          "name": "COLT",
           "exchange": "AMS"
         },
         {
-          "ticker": "UIMY",
-          "name": "UBS Factor MSCI EMU Low Volatility UCITS ETF EUR dis",
+          "ticker": "ECLU",
+          "name": "iShares \u20ac AAA CLO Active UCITS ETF EUR (Dist)",
           "exchange": "AMS"
         },
         {
-          "ticker": "VITD",
-          "name": "Vanguard US Treasury 3-7 Year Bond UCITS ETF USD Distributing",
+          "ticker": "ESXY",
+          "name": "IncomeShares Eurostoxx 50 Options ETP",
           "exchange": "AMS"
         },
         {
-          "ticker": "VITS",
-          "name": "Vanguard US Treasury 3-7 Year Bond UCITS ETF USD Accumulating",
+          "ticker": "EUFG",
+          "name": "iShares Europe Foreign Focus UCITS ETF EUR (Acc)",
           "exchange": "AMS"
         },
         {
-          "ticker": "VLDP",
-          "name": "Vanguard US Treasury 7-10 Year Bond UCITS ETF USD Distributing",
+          "ticker": "EURP",
+          "name": "iShares Europe Domestic Focus UCITS ETF EUR (Acc)",
           "exchange": "AMS"
         },
         {
-          "ticker": "VLDS",
-          "name": "Vanguard US Treasury 7-10 Year Bond UCITS ETF USD Accumulating",
+          "ticker": "GLMY",
+          "name": "IncomeShares Gold Miners+ Yield ETP",
           "exchange": "AMS"
         }
       ]
     },
     {
       "exchange": "B3",
-      "official_symbols": 1277,
-      "matched": 1245,
+      "official_symbols": 9,
+      "matched": 8,
       "collisions": 0,
-      "missing": 32,
+      "missing": 1,
       "collision_examples": [],
       "missing_examples": [
         {
           "ticker": "ALUP11",
           "name": "ALUPAR INVESTIMENTO S/A",
           "exchange": "B3"
-        },
-        {
-          "ticker": "ANGV39",
-          "name": "VANECK FALLEN ANGEL HIGH YIELD BOND ETF",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "AZUL3",
-          "name": "AZUL S.A.",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "BAOM39",
-          "name": "ISHARES CORE 40/60 MODERATE ALLOCATION ETF",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "BBAS11",
-          "name": "BCO BRASIL S.A.",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "BBER39",
-          "name": "JPMORGAN BETABUILDERS EUROPE ETF",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "BDRE39",
-          "name": "JPMORGAN DIVERSIFIED RETURN US SMALLCAP EQUITY ETF",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "BEWM39",
-          "name": "ISHARES MSCI MALAYSIA ETF",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "BFPX39",
-          "name": "FIRST TRUST US EQUITY OPPORTUNITIES ETF",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "BIAI39",
-          "name": "ISHARES US BROKERDEALER & SECURITIES EXCHANGES ETF",
-          "exchange": "B3"
         }
       ]
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1239,
-      "matched": 1191,
-      "collisions": 9,
-      "missing": 39,
+      "official_symbols": 1316,
+      "matched": 1180,
+      "collisions": 19,
+      "missing": 117,
       "collision_examples": [
         {
           "ticker": "ARKI",
           "name": "ARK DIET Q2 Buffer ETF",
+          "target_exchange": "BATS",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
+        {
+          "ticker": "AV",
+          "name": "Corgi Aerospace & Commercial Aviation ETF",
+          "target_exchange": "BATS",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
+        {
+          "ticker": "BAY",
+          "name": "Corgi Bay Area Based ETF",
           "target_exchange": "BATS",
           "existing_exchanges": [
             "LSE"
@@ -337,11 +313,43 @@
           ]
         },
         {
+          "ticker": "BLCK",
+          "name": "Corgi Crypto Infrastructure ETF",
+          "target_exchange": "BATS",
+          "existing_exchanges": [
+            "TSX"
+          ]
+        },
+        {
+          "ticker": "CBOT",
+          "name": "Corgi Robots & Humanoids ETF",
+          "target_exchange": "BATS",
+          "existing_exchanges": [
+            "Euronext"
+          ]
+        },
+        {
           "ticker": "CBOX",
           "name": "Calamos Tax-Aware Collateral ETF",
           "target_exchange": "BATS",
           "existing_exchanges": [
             "LSE"
+          ]
+        },
+        {
+          "ticker": "CMAG",
+          "name": "Corgi Mag 7 ETF",
+          "target_exchange": "BATS",
+          "existing_exchanges": [
+            "TSX"
+          ]
+        },
+        {
+          "ticker": "CTMA",
+          "name": "Corgi U.S. Equities 30% Structured Buffer ETF - May Series",
+          "target_exchange": "BATS",
+          "existing_exchanges": [
+            "TSX"
           ]
         },
         {
@@ -351,49 +359,14 @@
           "existing_exchanges": [
             "OTC"
           ]
-        },
-        {
-          "ticker": "IBX",
-          "name": "Tradr 2X Long IBM Daily ETF",
-          "target_exchange": "BATS",
-          "existing_exchanges": [
-            "ASX"
-          ]
-        },
-        {
-          "ticker": "PAYM",
-          "name": "TrueShares S&P Autocallable Defensive Income ETF",
-          "target_exchange": "BATS",
-          "existing_exchanges": [
-            "TSX"
-          ]
-        },
-        {
-          "ticker": "SPCL",
-          "name": "Defiance Pure Space Daily 2X Strategy ETF",
-          "target_exchange": "BATS",
-          "existing_exchanges": [
-            "NSE_IN"
-          ]
-        },
-        {
-          "ticker": "STLR",
-          "name": "Stellar ETF",
-          "target_exchange": "BATS",
-          "existing_exchanges": [
-            "TSX"
-          ]
-        },
-        {
-          "ticker": "WQTM",
-          "name": "WisdomTree Quantum Computing Fund",
-          "target_exchange": "BATS",
-          "existing_exchanges": [
-            "LSE"
-          ]
         }
       ],
       "missing_examples": [
+        {
+          "ticker": "AAOG",
+          "name": "Leverage Shares 2X Long AAOI Daily ETF",
+          "exchange": "BATS"
+        },
         {
           "ticker": "AAUA",
           "name": "Alpha Architect US Equity 3 ETF",
@@ -405,43 +378,38 @@
           "exchange": "BATS"
         },
         {
+          "ticker": "ACVU",
+          "name": "Hartford Alpha Capture Value ETF",
+          "exchange": "BATS"
+        },
+        {
+          "ticker": "ALDB",
+          "name": "Aptus Laddered Deep Buffer ETF",
+          "exchange": "BATS"
+        },
+        {
+          "ticker": "AMAU",
+          "name": "Leverage Shares 2X Long AMAT Daily ETF",
+          "exchange": "BATS"
+        },
+        {
+          "ticker": "AMKL",
+          "name": "Defiance Daily Target 2X Long AMKR ETF",
+          "exchange": "BATS"
+        },
+        {
+          "ticker": "AMPU",
+          "name": "Defiance Daily Target 2X Long AMPX ETF",
+          "exchange": "BATS"
+        },
+        {
+          "ticker": "APDB",
+          "name": "Aptus April Deep Buffer ETF",
+          "exchange": "BATS"
+        },
+        {
           "ticker": "ARLI",
           "name": "AllianzIM International Equity Buffer15 Uncapped Apr ETF",
-          "exchange": "BATS"
-        },
-        {
-          "ticker": "ASTN",
-          "name": "Defiance Daily Target 2X Short ASTS ETF",
-          "exchange": "BATS"
-        },
-        {
-          "ticker": "BFEW",
-          "name": "FT Vest Laddered U.S. Equity Equal Weight Buffer ETF",
-          "exchange": "BATS"
-        },
-        {
-          "ticker": "BFXU",
-          "name": "FT Vest Laddered U.S. Equity Uncapped Accelerator ETF",
-          "exchange": "BATS"
-        },
-        {
-          "ticker": "BTFL",
-          "name": "Defiance Daily Target 2X Long BITF ETF",
-          "exchange": "BATS"
-        },
-        {
-          "ticker": "BUFE",
-          "name": "FT Vest Laddered Emerging Markets Buffer ETF",
-          "exchange": "BATS"
-        },
-        {
-          "ticker": "CHNL",
-          "name": "Chainlink ETF",
-          "exchange": "BATS"
-        },
-        {
-          "ticker": "CHNU",
-          "name": "2x Chainlink ETF",
           "exchange": "BATS"
         }
       ]
@@ -634,22 +602,22 @@
       ],
       "missing_examples": [
         {
-          "ticker": "MANAS",
-          "name": "MANAS ENERJ\u0130 Y\u00d6NET\u0130M\u0130 SANAY\u0130 VE T\u0130CARET A.\u015e.",
+          "ticker": "AAGYO",
+          "name": "A\u011eAO\u011eLU AVRASYA GAYR\u0130MENKUL YATIRIM ORTAKLI\u011eI A.\u015e.",
           "exchange": "BIST"
         },
         {
-          "ticker": "ROYAL",
-          "name": "ROYAL HALI \u0130PL\u0130K TEKST\u0130L MOB\u0130LYA SANAY\u0130 VE T\u0130CARET A.\u015e.",
+          "ticker": "MANAS",
+          "name": "MANAS ENERJ\u0130 Y\u00d6NET\u0130M\u0130 SANAY\u0130 VE T\u0130CARET A.\u015e.",
           "exchange": "BIST"
         }
       ]
     },
     {
       "exchange": "BK",
-      "official_symbols": 141,
+      "official_symbols": 140,
       "matched": 104,
-      "collisions": 28,
+      "collisions": 27,
       "missing": 9,
       "collision_examples": [
         {
@@ -741,7 +709,7 @@
         },
         {
           "ticker": "GFH",
-          "name": "GFH Financial Group BSC",
+          "name": "GFH Bank B.S.C.",
           "exchange": "BK"
         },
         {
@@ -783,10 +751,10 @@
     },
     {
       "exchange": "BSE_IN",
-      "official_symbols": 5015,
-      "matched": 2640,
-      "collisions": 758,
-      "missing": 1617,
+      "official_symbols": 4847,
+      "matched": 2464,
+      "collisions": 752,
+      "missing": 1631,
       "collision_examples": [
         {
           "ticker": "63MOONS",
@@ -1065,12 +1033,17 @@
     },
     {
       "exchange": "CSE_LK",
-      "official_symbols": 310,
+      "official_symbols": 315,
       "matched": 307,
       "collisions": 0,
-      "missing": 3,
+      "missing": 8,
       "collision_examples": [],
       "missing_examples": [
+        {
+          "ticker": "ATL.R0000",
+          "name": "AMANA TAKAFUL  PLC",
+          "exchange": "CSE_LK"
+        },
         {
           "ticker": "CALC.U0000",
           "name": "CAL FIVE YEAR CLOSED END FUND (\u201cUnits\u201d)",
@@ -1085,19 +1058,39 @@
           "ticker": "CALU.U0000",
           "name": "CAL THREE YEAR CLOSED END FUND (\u201cUnits\u201d)",
           "exchange": "CSE_LK"
+        },
+        {
+          "ticker": "JXG.N0000",
+          "name": "JANASHAKTHI LIMITED",
+          "exchange": "CSE_LK"
+        },
+        {
+          "ticker": "LVEF.R0000",
+          "name": "LVL ENERGY FUND PLC",
+          "exchange": "CSE_LK"
+        },
+        {
+          "ticker": "MERC.R0000",
+          "name": "MERCANTILE INVESTMENTS AND FINANCE PLC",
+          "exchange": "CSE_LK"
+        },
+        {
+          "ticker": "VFIN.R0000",
+          "name": "VALLIBEL FINANCE PLC",
+          "exchange": "CSE_LK"
         }
       ]
     },
     {
       "exchange": "CSE_MA",
-      "official_symbols": 80,
+      "official_symbols": 50,
       "matched": 1,
-      "collisions": 59,
-      "missing": 20,
+      "collisions": 37,
+      "missing": 12,
       "collision_examples": [
         {
           "ticker": "ADH",
-          "name": "DOUJA PROMOTION GROUPE ADDOHA SA",
+          "name": "DOUJA PROM ADDOHA",
           "target_exchange": "CSE_MA",
           "existing_exchanges": [
             "ASX"
@@ -1105,7 +1098,7 @@
         },
         {
           "ticker": "ADI",
-          "name": "ALLIANCES DEVELOPPEMENT IMMOBILIER SA",
+          "name": "ALLIANCES",
           "target_exchange": "CSE_MA",
           "existing_exchanges": [
             "NASDAQ"
@@ -1153,7 +1146,7 @@
         },
         {
           "ticker": "ARD",
-          "name": "Aradei Capital SA",
+          "name": "ARADEI CAPITAL",
           "target_exchange": "CSE_MA",
           "existing_exchanges": [
             "ASX"
@@ -1169,7 +1162,7 @@
         },
         {
           "ticker": "BCI",
-          "name": "BANQUE MAROCAINE POUR LE COMMERCE ET L'INDUSTRIE",
+          "name": "BMCI",
           "target_exchange": "CSE_MA",
           "existing_exchanges": [
             "NYSE ARCA"
@@ -1194,7 +1187,7 @@
         },
         {
           "ticker": "DHO",
-          "name": "DELTA HOLDING SA",
+          "name": "DELTA HOLDING",
           "exchange": "CSE_MA"
         },
         {
@@ -1330,7 +1323,7 @@
         },
         {
           "ticker": "GFH",
-          "name": "GFH Financial Group B.S.C.",
+          "name": "GFH Bank B.S.C.",
           "exchange": "DFM"
         },
         {
@@ -1367,10 +1360,10 @@
     },
     {
       "exchange": "Euronext",
-      "official_symbols": 4370,
-      "matched": 938,
-      "collisions": 2240,
-      "missing": 1192,
+      "official_symbols": 4393,
+      "matched": 936,
+      "collisions": 2252,
+      "missing": 1205,
       "collision_examples": [
         {
           "ticker": "0EMU",
@@ -1470,6 +1463,11 @@
           "exchange": "Euronext"
         },
         {
+          "ticker": "1PUT",
+          "name": "WisdomTree 1-Day Equity Put Premium",
+          "exchange": "Euronext"
+        },
+        {
           "ticker": "26TA",
           "name": "iShares iBnds 26 \u20ac Italy Gvt UCITS ETF A",
           "exchange": "Euronext"
@@ -1498,20 +1496,15 @@
           "ticker": "3BTL",
           "name": "WISDOMTREE BTP 10Y 3X DAILY LEVERAGED",
           "exchange": "Euronext"
-        },
-        {
-          "ticker": "3BTS",
-          "name": "WISDOMTREE BTP 10Y 3X DAILY SHORT",
-          "exchange": "Euronext"
         }
       ]
     },
     {
       "exchange": "HKEX",
-      "official_symbols": 3126,
-      "matched": 3044,
+      "official_symbols": 3154,
+      "matched": 3040,
       "collisions": 82,
-      "missing": 0,
+      "missing": 32,
       "collision_examples": [
         {
           "ticker": "00636",
@@ -1594,23 +1587,66 @@
           ]
         }
       ],
-      "missing_examples": []
+      "missing_examples": [
+        {
+          "ticker": "00068",
+          "name": "MANYCORE TECH",
+          "exchange": "HKEX"
+        },
+        {
+          "ticker": "01187",
+          "name": "COFOE MEDICAL",
+          "exchange": "HKEX"
+        },
+        {
+          "ticker": "01236",
+          "name": "LDROBOT",
+          "exchange": "HKEX"
+        },
+        {
+          "ticker": "01609",
+          "name": "STAR SPORTS MED",
+          "exchange": "HKEX"
+        },
+        {
+          "ticker": "01611",
+          "name": "BITFIRE GROUP",
+          "exchange": "HKEX"
+        },
+        {
+          "ticker": "01879",
+          "name": "XIZHI TECH-P",
+          "exchange": "HKEX"
+        },
+        {
+          "ticker": "02476",
+          "name": "VGT",
+          "exchange": "HKEX"
+        },
+        {
+          "ticker": "02493",
+          "name": "MABWELL-B",
+          "exchange": "HKEX"
+        },
+        {
+          "ticker": "02940",
+          "name": "WELLCELL H-OLD",
+          "exchange": "HKEX"
+        },
+        {
+          "ticker": "02944",
+          "name": "ZHONGKE GP-OLD",
+          "exchange": "HKEX"
+        }
+      ]
     },
     {
       "exchange": "HNX",
-      "official_symbols": 302,
+      "official_symbols": 301,
       "matched": 105,
-      "collisions": 158,
+      "collisions": 157,
       "missing": 39,
       "collision_examples": [
-        {
-          "ticker": "AAV",
-          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n AAV Group",
-          "target_exchange": "HNX",
-          "existing_exchanges": [
-            "TSX"
-          ]
-        },
         {
           "ticker": "ADC",
           "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n M\u0129 thu\u1eadt v\u00e0 Truy\u1ec1n th\u00f4ng",
@@ -1678,6 +1714,14 @@
         {
           "ticker": "BAX",
           "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n Th\u1ed1ng Nh\u1ea5t",
+          "target_exchange": "HNX",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
+          "ticker": "BCC",
+          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n Xi m\u0103ng B\u1ec9m S\u01a1n",
           "target_exchange": "HNX",
           "existing_exchanges": [
             "NYSE"
@@ -1880,10 +1924,10 @@
     },
     {
       "exchange": "ISE",
-      "official_symbols": 15,
+      "official_symbols": 19,
       "matched": 9,
       "collisions": 6,
-      "missing": 0,
+      "missing": 4,
       "collision_examples": [
         {
           "ticker": "BIRG",
@@ -1934,14 +1978,35 @@
           ]
         }
       ],
-      "missing_examples": []
+      "missing_examples": [
+        {
+          "ticker": "FXIT",
+          "name": "FinEx Funds ICAV FinEx USA Information Technology UCITS ETF USD Shares",
+          "exchange": "ISE"
+        },
+        {
+          "ticker": "FXRE",
+          "name": "FinEx US REIT UCITS ETF",
+          "exchange": "ISE"
+        },
+        {
+          "ticker": "FXUS",
+          "name": "FinEx Funds ICAV FinEx USA UCITS ETF USD Shares",
+          "exchange": "ISE"
+        },
+        {
+          "ticker": "FXWO",
+          "name": "FinEx Funds ICAV FinEx Global Equity UCITS ETF (USD Class)",
+          "exchange": "ISE"
+        }
+      ]
     },
     {
       "exchange": "KOSDAQ",
-      "official_symbols": 1820,
-      "matched": 1577,
+      "official_symbols": 1819,
+      "matched": 1575,
       "collisions": 0,
-      "missing": 243,
+      "missing": 244,
       "collision_examples": [],
       "missing_examples": [
         {
@@ -1990,18 +2055,18 @@
           "exchange": "KOSDAQ"
         },
         {
-          "ticker": "0013V0",
-          "name": "Samjinfood",
+          "ticker": "0011T0",
+          "name": "CHAEVI",
           "exchange": "KOSDAQ"
         }
       ]
     },
     {
       "exchange": "KRX",
-      "official_symbols": 2048,
-      "matched": 1786,
+      "official_symbols": 2054,
+      "matched": 1784,
       "collisions": 3,
-      "missing": 259,
+      "missing": 267,
       "collision_examples": [
         {
           "ticker": "002210",
@@ -2083,10 +2148,10 @@
     },
     {
       "exchange": "LSE",
-      "official_symbols": 10899,
-      "matched": 6336,
-      "collisions": 1160,
-      "missing": 3403,
+      "official_symbols": 11015,
+      "matched": 6321,
+      "collisions": 1184,
+      "missing": 3510,
       "collision_examples": [
         {
           "ticker": "0GZJ",
@@ -2330,10 +2395,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5449,
-      "matched": 4568,
-      "collisions": 54,
-      "missing": 827,
+      "official_symbols": 5510,
+      "matched": 4528,
+      "collisions": 70,
+      "missing": 912,
       "collision_examples": [
         {
           "ticker": "ACAA",
@@ -2344,11 +2409,35 @@
           ]
         },
         {
+          "ticker": "AIAI",
+          "name": "AIAI Holdings Corporation - Class A common stock",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
+        {
           "ticker": "AIMS",
           "name": "Acuitas Small Cap Active ETF",
           "target_exchange": "NASDAQ",
           "existing_exchanges": [
             "IDX"
+          ]
+        },
+        {
+          "ticker": "ALP",
+          "name": "Alpha Compute Corp  - Common Stock",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "NSE_KE"
+          ]
+        },
+        {
+          "ticker": "AMA",
+          "name": "Defiance Daily Target 2X Long AMAT ETF",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "ASX"
           ]
         },
         {
@@ -2390,30 +2479,6 @@
           "existing_exchanges": [
             "LSE"
           ]
-        },
-        {
-          "ticker": "ASML",
-          "name": "ASML Holding N.V. - New York Registry Shares",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "AMS"
-          ]
-        },
-        {
-          "ticker": "AVL",
-          "name": "Direxion Daily AVGO Bull 2X ETF",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "ASX"
-          ]
-        },
-        {
-          "ticker": "BMM",
-          "name": "Blue Moon Metals Inc. - Common Shares",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "TSXV"
-          ]
         }
       ],
       "missing_examples": [
@@ -2443,8 +2508,18 @@
           "exchange": "NASDAQ"
         },
         {
+          "ticker": "AACO",
+          "name": "Abony Acquisition Corp. I - Class A Ordinary Share",
+          "exchange": "NASDAQ"
+        },
+        {
           "ticker": "AACOU",
           "name": "Abony Acquisition Corp. I - Units",
+          "exchange": "NASDAQ"
+        },
+        {
+          "ticker": "AACOW",
+          "name": "Abony Acquisition Corp. I - Warrants",
           "exchange": "NASDAQ"
         },
         {
@@ -2455,16 +2530,6 @@
         {
           "ticker": "ABLVW",
           "name": "Able View Global Inc. - Warrant",
-          "exchange": "NASDAQ"
-        },
-        {
-          "ticker": "ABVEW",
-          "name": "Above Food Ingredients Inc. - Warrant",
-          "exchange": "NASDAQ"
-        },
-        {
-          "ticker": "ABVX",
-          "name": "Abivax SA - American Depositary Shares",
           "exchange": "NASDAQ"
         }
       ]
@@ -2621,17 +2686,33 @@
     },
     {
       "exchange": "NSE_IN",
-      "official_symbols": 2998,
-      "matched": 1234,
-      "collisions": 182,
-      "missing": 1582,
+      "official_symbols": 2974,
+      "matched": 1211,
+      "collisions": 290,
+      "missing": 1473,
       "collision_examples": [
+        {
+          "ticker": "3BBLACKBIO",
+          "name": "3B Blackbio Dx Limited",
+          "target_exchange": "NSE_IN",
+          "existing_exchanges": [
+            "BSE_IN"
+          ]
+        },
         {
           "ticker": "ABB",
           "name": "ABB India Limited",
           "target_exchange": "NSE_IN",
           "existing_exchanges": [
             "STO"
+          ]
+        },
+        {
+          "ticker": "ABMKNO",
+          "name": "ABM Knowledgeware Limited",
+          "target_exchange": "NSE_IN",
+          "existing_exchanges": [
+            "BSE_IN"
           ]
         },
         {
@@ -2667,6 +2748,14 @@
           ]
         },
         {
+          "ticker": "ACSTECH",
+          "name": "ACS Technologies Limited",
+          "target_exchange": "NSE_IN",
+          "existing_exchanges": [
+            "BSE_IN"
+          ]
+        },
+        {
           "ticker": "ADOR",
           "name": "Ador Welding Limited",
           "target_exchange": "NSE_IN",
@@ -2680,30 +2769,6 @@
           "target_exchange": "NSE_IN",
           "existing_exchanges": [
             "NYSE"
-          ]
-        },
-        {
-          "ticker": "AHCL",
-          "name": "Anlon Healthcare Limited",
-          "target_exchange": "NSE_IN",
-          "existing_exchanges": [
-            "PSX"
-          ]
-        },
-        {
-          "ticker": "AKG",
-          "name": "Akg Exim Limited",
-          "target_exchange": "NSE_IN",
-          "existing_exchanges": [
-            "ASX"
-          ]
-        },
-        {
-          "ticker": "ALPHA",
-          "name": "KOTAKMAMC-KOTAKALPHA",
-          "target_exchange": "NSE_IN",
-          "existing_exchanges": [
-            "ATHEX"
           ]
         }
       ],
@@ -2754,8 +2819,8 @@
           "exchange": "NSE_IN"
         },
         {
-          "ticker": "AAREYDRUGS",
-          "name": "Aarey Drugs & Pharmaceuticals Limited",
+          "ticker": "AARNAV",
+          "name": "Aarnav Fashions Limited",
           "exchange": "NSE_IN"
         }
       ]
@@ -2903,10 +2968,10 @@
     },
     {
       "exchange": "NYSE",
-      "official_symbols": 3842,
-      "matched": 2063,
-      "collisions": 524,
-      "missing": 1255,
+      "official_symbols": 3856,
+      "matched": 2052,
+      "collisions": 528,
+      "missing": 1276,
       "collision_examples": [
         {
           "ticker": "ABX",
@@ -3044,10 +3109,10 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2620,
-      "matched": 2584,
-      "collisions": 17,
-      "missing": 19,
+      "official_symbols": 2645,
+      "matched": 2576,
+      "collisions": 24,
+      "missing": 45,
       "collision_examples": [
         {
           "ticker": "BAR",
@@ -3063,6 +3128,22 @@
           "target_exchange": "NYSE ARCA",
           "existing_exchanges": [
             "CPH"
+          ]
+        },
+        {
+          "ticker": "BHYP",
+          "name": "Common Shares of Beneficial Interest of Bitwise Hyperliquid ETF",
+          "target_exchange": "NYSE ARCA",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
+        {
+          "ticker": "BUYB",
+          "name": "ProShares S&P 500 Buyback Aristocrats ETF",
+          "target_exchange": "NYSE ARCA",
+          "existing_exchanges": [
+            "LSE"
           ]
         },
         {
@@ -3112,22 +3193,6 @@
           "existing_exchanges": [
             "NYSE"
           ]
-        },
-        {
-          "ticker": "FBT",
-          "name": "First Trust Amex Biotech Index Fund",
-          "target_exchange": "NYSE ARCA",
-          "existing_exchanges": [
-            "TSX"
-          ]
-        },
-        {
-          "ticker": "FDN",
-          "name": "First Trust DJ Internet Index Fund",
-          "target_exchange": "NYSE ARCA",
-          "existing_exchanges": [
-            "TSX"
-          ]
         }
       ],
       "missing_examples": [
@@ -3137,8 +3202,23 @@
           "exchange": "NYSE ARCA"
         },
         {
+          "ticker": "ACYS",
+          "name": "FT Vest Laddered Autocallable Barrier & Resilient Income ETF",
+          "exchange": "NYSE ARCA"
+        },
+        {
           "ticker": "BITW",
           "name": "Common Shares of Beneficial Interest",
+          "exchange": "NYSE ARCA"
+        },
+        {
+          "ticker": "CLOO",
+          "name": "NYLI Investment Grade CLO ETF",
+          "exchange": "NYSE ARCA"
+        },
+        {
+          "ticker": "CLUB",
+          "name": "Billionaires Club ETF",
           "exchange": "NYSE ARCA"
         },
         {
@@ -3165,29 +3245,14 @@
           "ticker": "DUTY",
           "name": "U.S. Defense ETF",
           "exchange": "NYSE ARCA"
-        },
-        {
-          "ticker": "IBCB",
-          "name": "iShares iBonds Dec 2036 Term Corporate ETF",
-          "exchange": "NYSE ARCA"
-        },
-        {
-          "ticker": "INDZ",
-          "name": "VanEck India Select ETF",
-          "exchange": "NYSE ARCA"
-        },
-        {
-          "ticker": "IVEP",
-          "name": "Dan IVES Wedbush AI Power & Infrastructure ETF",
-          "exchange": "NYSE ARCA"
         }
       ]
     },
     {
       "exchange": "NYSE MKT",
-      "official_symbols": 312,
+      "official_symbols": 314,
       "matched": 232,
-      "collisions": 21,
+      "collisions": 23,
       "missing": 59,
       "collision_examples": [
         {
@@ -3427,9 +3492,9 @@
     },
     {
       "exchange": "OSL",
-      "official_symbols": 298,
-      "matched": 234,
-      "collisions": 64,
+      "official_symbols": 296,
+      "matched": 230,
+      "collisions": 66,
       "missing": 0,
       "collision_examples": [
         {
@@ -3517,10 +3582,10 @@
     },
     {
       "exchange": "OTC",
-      "official_symbols": 11972,
-      "matched": 7799,
-      "collisions": 27,
-      "missing": 4146,
+      "official_symbols": 11957,
+      "matched": 7679,
+      "collisions": 35,
+      "missing": 4243,
       "collision_examples": [
         {
           "ticker": "AEAE",
@@ -3528,6 +3593,14 @@
           "target_exchange": "OTC",
           "existing_exchanges": [
             "XETRA"
+          ]
+        },
+        {
+          "ticker": "AREB",
+          "name": "AMERICAN REBEL HLDGS INC",
+          "target_exchange": "OTC",
+          "existing_exchanges": [
+            "NASDAQ"
           ]
         },
         {
@@ -3541,6 +3614,14 @@
         {
           "ticker": "BCOW",
           "name": "1895 BANCORP OF WISC",
+          "target_exchange": "OTC",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "BKYI",
+          "name": "BIO-KEY INTL INC",
           "target_exchange": "OTC",
           "existing_exchanges": [
             "NASDAQ"
@@ -3585,22 +3666,6 @@
           "existing_exchanges": [
             "LSE"
           ]
-        },
-        {
-          "ticker": "GBNY",
-          "name": "GENERATIONS BANCRP NY INC",
-          "target_exchange": "OTC",
-          "existing_exchanges": [
-            "NASDAQ"
-          ]
-        },
-        {
-          "ticker": "GLBZ",
-          "name": "GLEN BURNIE BANCORP",
-          "target_exchange": "OTC",
-          "existing_exchanges": [
-            "NASDAQ"
-          ]
         }
       ],
       "missing_examples": [
@@ -3617,6 +3682,11 @@
         {
           "ticker": "AAKAY",
           "name": "AAK AB UNSP/ADR",
+          "exchange": "OTC"
+        },
+        {
+          "ticker": "AALYF",
+          "name": "AUDIENCE ANALYTICS LTD",
           "exchange": "OTC"
         },
         {
@@ -3647,11 +3717,6 @@
         {
           "ticker": "ABBAF",
           "name": "ABRDN ASIAN INCOME FUND",
-          "exchange": "OTC"
-        },
-        {
-          "ticker": "ABFRF",
-          "name": "ABERFORTH SM CO PLC",
           "exchange": "OTC"
         }
       ]
@@ -3799,10 +3864,10 @@
     },
     {
       "exchange": "PSX",
-      "official_symbols": 712,
+      "official_symbols": 714,
       "matched": 371,
       "collisions": 151,
-      "missing": 190,
+      "missing": 192,
       "collision_examples": [
         {
           "ticker": "AAL",
@@ -3981,10 +4046,10 @@
     },
     {
       "exchange": "SET",
-      "official_symbols": 946,
-      "matched": 547,
+      "official_symbols": 945,
+      "matched": 545,
       "collisions": 350,
-      "missing": 49,
+      "missing": 50,
       "collision_examples": [
         {
           "ticker": "A",
@@ -4233,8 +4298,8 @@
     },
     {
       "exchange": "SSE_CL",
-      "official_symbols": 115,
-      "matched": 115,
+      "official_symbols": 112,
+      "matched": 112,
       "collisions": 0,
       "missing": 0,
       "collision_examples": [],
@@ -4348,10 +4413,10 @@
     },
     {
       "exchange": "TSE",
-      "official_symbols": 4444,
-      "matched": 3216,
-      "collisions": 1191,
-      "missing": 37,
+      "official_symbols": 4449,
+      "matched": 3206,
+      "collisions": 1187,
+      "missing": 56,
       "collision_examples": [
         {
           "ticker": "1301",
@@ -4489,9 +4554,9 @@
     },
     {
       "exchange": "TSX",
-      "official_symbols": 788,
-      "matched": 326,
-      "collisions": 461,
+      "official_symbols": 785,
+      "matched": 324,
+      "collisions": 460,
       "missing": 1,
       "collision_examples": [
         {
@@ -4585,8 +4650,8 @@
     },
     {
       "exchange": "TSXV",
-      "official_symbols": 1600,
-      "matched": 1043,
+      "official_symbols": 1518,
+      "matched": 961,
       "collisions": 556,
       "missing": 1,
       "collision_examples": [
@@ -4681,9 +4746,9 @@
     },
     {
       "exchange": "TWSE",
-      "official_symbols": 1081,
+      "official_symbols": 1086,
       "matched": 973,
-      "collisions": 29,
+      "collisions": 34,
       "missing": 79,
       "collision_examples": [
         {
@@ -4822,10 +4887,10 @@
     },
     {
       "exchange": "UPCOM",
-      "official_symbols": 837,
+      "official_symbols": 832,
       "matched": 2,
-      "collisions": 470,
-      "missing": 365,
+      "collisions": 468,
+      "missing": 362,
       "collision_examples": [
         {
           "ticker": "AAS",
@@ -4935,11 +5000,6 @@
           "exchange": "UPCOM"
         },
         {
-          "ticker": "AVF",
-          "name": "CTCP Vi\u1ec7t An",
-          "exchange": "UPCOM"
-        },
-        {
           "ticker": "BAL",
           "name": "CTCP Bao b\u00ec Bia - R\u01b0\u1ee3u - N\u01b0\u1edbc gi\u1ea3i kh\u00e1t",
           "exchange": "UPCOM"
@@ -4958,15 +5018,20 @@
           "ticker": "BDG",
           "name": "C\u00f4ng ty C\u1ed5 ph\u1ea7n May m\u1eb7c B\u00ecnh D\u01b0\u01a1ng",
           "exchange": "UPCOM"
+        },
+        {
+          "ticker": "BDW",
+          "name": "CTCP C\u1ea5p tho\u00e1t n\u01b0\u1edbc B\u00ecnh \u0110\u1ecbnh",
+          "exchange": "UPCOM"
         }
       ]
     },
     {
       "exchange": "XETRA",
-      "official_symbols": 4462,
-      "matched": 3668,
-      "collisions": 782,
-      "missing": 12,
+      "official_symbols": 4519,
+      "matched": 3658,
+      "collisions": 795,
+      "missing": 66,
       "collision_examples": [
         {
           "ticker": "0GZK",
@@ -5051,53 +5116,53 @@
       ],
       "missing_examples": [
         {
-          "ticker": "M5S",
-          "name": "H2 CORE AG INH O.N.",
+          "ticker": "AAVD",
+          "name": "ACATIS ALTERSVORSORGE.ETF",
           "exchange": "XETRA"
         },
         {
-          "ticker": "PO1",
-          "name": "POB AG NA O.N.",
+          "ticker": "ASPF",
+          "name": "AM.SP 500 FNCLS DLA",
           "exchange": "XETRA"
         },
         {
-          "ticker": "RCEG",
-          "name": "R.C.E.G.BD EOA",
+          "ticker": "AWEX",
+          "name": "X.IEX.A-WEXUS E 1CDLA",
           "exchange": "XETRA"
         },
         {
-          "ticker": "UIMY",
-          "name": "UBSFACMSCIEMULVOL EOAD",
+          "ticker": "BCKY",
+          "name": "LEVERAGE SHARES ETP 76",
           "exchange": "XETRA"
         },
         {
-          "ticker": "VITD",
-          "name": "VAN.UT3-7Y BE DLD",
+          "ticker": "CAKD",
+          "name": "WEI-CAIE DLD",
           "exchange": "XETRA"
         },
         {
-          "ticker": "VITS",
-          "name": "VAN.UT3-7Y BE DLA",
+          "ticker": "CBK0",
+          "name": "COMMERZBANK AG Z. VERK.",
           "exchange": "XETRA"
         },
         {
-          "ticker": "VLDP",
-          "name": "VAN.UT7-10Y BE DLD",
+          "ticker": "CEPP",
+          "name": "IS7-SP5003PRCA HGDEOA",
           "exchange": "XETRA"
         },
         {
-          "ticker": "VLDS",
-          "name": "VAN.UT7-10Y BE DLA",
+          "ticker": "DOTM",
+          "name": "WITR MU.AS.I. ETP 2062",
           "exchange": "XETRA"
         },
         {
-          "ticker": "VPYT",
-          "name": "VANECK PYTH ETN 39",
+          "ticker": "EMGD",
+          "name": "FT-FTSE EM CLDLD",
           "exchange": "XETRA"
         },
         {
-          "ticker": "VUDE",
-          "name": "VAN.UT1-3Y BE HGDEOA",
+          "ticker": "EMH1",
+          "name": "PFERDEWETTEN.DE NA JGE",
           "exchange": "XETRA"
         }
       ]

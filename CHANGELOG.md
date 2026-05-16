@@ -2,6 +2,26 @@
 
 ## [Unreleased]
 
+## [3.24.0] - 2026-05-16
+
+### Added
+
+- Added a full official/review-gated source-refresh pass across exchange masterfiles, listing exports, identifiers, sector/category fills, aliases, residual source-gap reports, and source-of-truth decisions.
+- Added resilient official-reader parsing for Ghana Stock Exchange markdown tables and a Casablanca Stock Exchange reader fallback when the public Next.js/API path is unavailable.
+- Added fresh stock and ETF verification runs for the release, covering 52,170 stock checks and 18,873 ETF checks against the current official/reference universe.
+
+### Changed
+
+- Rebuilt canonical exports to 61,439 primary tickers, 71,043 listing rows, 59,608 ISIN-covered rows, 58,736 sector/category-covered rows, and 121,431 structured alias rows.
+- Refreshed corporate-action symbol-change inputs to 230 fetched rows and 255 reviewed rows.
+- Applied only review-gated refresh changes: 10 same-ISIN sector peer updates, 2 official-name-gated FinancialData ISIN supplement rows, and 2,433 deterministic ETF-name category updates.
+- Rebuilt completion, source-gap, source-of-truth, entry-quality, OHLCV plausibility, Adanos reference, alias audit, detection simulation, coverage, listing-history, and validation reports.
+- Kept `official_fill_required` at 0, leaving residual metadata gaps classified only as `accepted_source_gap` or `core_exclusion_candidate`.
+
+### Fixed
+
+- Classified temporarily blocked but implemented official sources as accepted source gaps when the source inventory documents an official implementation path.
+
 ## [3.23.0] - 2026-05-11
 
 ### Added
