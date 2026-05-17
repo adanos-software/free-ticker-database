@@ -1,6 +1,6 @@
 # Symbol Changes Review
 
-Generated at: `2026-05-16T16:57:23Z`
+Generated at: `2026-05-17T08:32:13Z`
 
 Daily secondary-source symbol-change feed. Rows are review signals, not automatic canonical ticker updates.
 
@@ -8,7 +8,7 @@ Daily secondary-source symbol-change feed. Rows are review signals, not automati
 
 | Metric | Rows |
 |---|---:|
-| Fetched rows | 230 |
+| Fetched rows | 229 |
 | Merged history rows | 255 |
 | Review rows | 255 |
 
