@@ -1,7 +1,18 @@
 {
-  "generated_at": "2026-05-16T17:22:58Z",
-  "rows": 0,
-  "issue_counts": {},
-  "severity_counts": {},
+  "_meta": {
+    "generated_at": "2026-05-25T02:04:26Z",
+    "source_files": {
+      "adanos_reference_csv": "data/adanos/ticker_reference.csv"
+    },
+    "policy": "Adanos natural-language aliases must be normalized, ASCII-safe, non-common-word, and issuer-compatible before they can support mention detection. Findings are blocking evidence for data cleanup or matcher tightening; do not infer aliases from unverified names."
+  },
+  "summary": {
+    "rows": 0,
+    "issue_counts": {},
+    "severity_counts": {},
+    "blocking_issue_count": 0
+  },
+  "policy": "Adanos natural-language aliases must be normalized, ASCII-safe, non-common-word, and issuer-compatible before they can support mention detection. Findings are blocking evidence for data cleanup or matcher tightening; do not infer aliases from unverified names.",
+  "findings": [],
   "examples": []
 }

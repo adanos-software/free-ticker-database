@@ -59,6 +59,7 @@ B3_ENGLISH_SECTOR_MAP = {
 }
 
 REPORT_FIELDNAMES = [
+    "listing_key",
     "ticker",
     "exchange",
     "asset_type",
@@ -69,7 +70,12 @@ REPORT_FIELDNAMES = [
     "b3_subsector",
     "b3_segment",
     "sector_update",
+    "source_url",
     "decision",
+    "verification_evidence_required",
+    "official_source_context",
+    "sector_review_context",
+    "apply_gate_context",
 ]
 
 
@@ -81,6 +87,7 @@ class B3SectorRow:
     sector: str
     subsector: str
     segment: str
+    source_url: str
 
 
 def display_path(path: Path) -> str:
@@ -157,6 +164,7 @@ def load_b3_sector_rows(workbook_bytes: bytes) -> list[B3SectorRow]:
                 sector=sector,
                 subsector=current_subsector,
                 segment=current_segment,
+                source_url=B3_SECTOR_ZIP_URL,
             )
         )
     return rows
@@ -201,14 +209,19 @@ def load_b3_industry_download_rows(workbook_bytes: bytes) -> list[B3SectorRow]:
                 sector=sector,
                 subsector=current_subsector,
                 segment=current_segment,
+                source_url=B3_INDUSTRY_XLSX_URL,
             )
         )
     return rows
 
 
 def ticker_root(ticker: str) -> str:
-    match = re.match(r"^[A-Z]+", ticker.strip().upper())
-    return match.group(0)[:4] if match else ticker.strip().upper()[:4]
+    value = ticker.strip().upper()
+    match = re.match(r"^([A-Z0-9]{1,4})(?:\d{1,2}[A-Z]?)?$", value)
+    if match:
+        return match.group(1)
+    match = re.match(r"^[A-Z0-9]{1,4}", value)
+    return match.group(0) if match else value[:4]
 
 
 def load_target_rows(path: Path) -> list[dict[str, str]]:
@@ -223,6 +236,47 @@ def load_target_rows(path: Path) -> list[dict[str, str]]:
     ]
 
 
+def verification_evidence_required_for(decision: str) -> str:
+    if decision == "accept":
+        return "official_b3_sector_classification_row_with_unique_code_root_and_single_canonical_sector"
+    if decision == "ambiguous_b3_code_match":
+        return "manual_b3_code_root_review_required_before_sector_update"
+    return "official_b3_sector_classification_code_root_match_required_before_sector_update"
+
+
+def official_source_context_for(row: dict[str, Any]) -> str:
+    return (
+        f"b3_code={row.get('b3_code', '') or 'none'};"
+        f"b3_name={row.get('b3_name', '') or 'none'};"
+        f"b3_source_url={row.get('source_url', '') or 'none'}"
+    )
+
+
+def sector_review_context_for(row: dict[str, Any]) -> str:
+    return (
+        f"b3_sector_pt={row.get('b3_sector_pt', '') or 'none'};"
+        f"b3_subsector={row.get('b3_subsector', '') or 'none'};"
+        f"b3_segment={row.get('b3_segment', '') or 'none'};"
+        f"sector_update={row.get('sector_update', '') or 'none'}"
+    )
+
+
+def apply_gate_context_for(row: dict[str, Any]) -> str:
+    return (
+        f"decision={row.get('decision', '') or 'none'};"
+        f"verification_evidence_required={row.get('verification_evidence_required', '') or 'none'}"
+    )
+
+
+def with_review_contexts(row: dict[str, Any]) -> dict[str, Any]:
+    enriched = dict(row)
+    enriched["verification_evidence_required"] = verification_evidence_required_for(str(enriched.get("decision") or ""))
+    enriched["official_source_context"] = official_source_context_for(enriched)
+    enriched["sector_review_context"] = sector_review_context_for(enriched)
+    enriched["apply_gate_context"] = apply_gate_context_for(enriched)
+    return enriched
+
+
 def evaluate_rows(targets: list[dict[str, str]], b3_rows: list[B3SectorRow]) -> list[dict[str, Any]]:
     by_code: dict[str, list[B3SectorRow]] = {}
     for row in b3_rows:
@@ -232,6 +286,7 @@ def evaluate_rows(targets: list[dict[str, str]], b3_rows: list[B3SectorRow]) -> 
     for target in targets:
         candidates = by_code.get(ticker_root(target["ticker"]), [])
         base = {
+            "listing_key": f"{target['exchange']}::{target['ticker']}",
             "ticker": target["ticker"],
             "exchange": target["exchange"],
             "asset_type": target["asset_type"],
@@ -242,25 +297,30 @@ def evaluate_rows(targets: list[dict[str, str]], b3_rows: list[B3SectorRow]) -> 
             "b3_subsector": "",
             "b3_segment": "",
             "sector_update": "",
+            "source_url": "",
         }
         if not candidates:
-            results.append({**base, "decision": "no_b3_code_match"})
+            results.append(with_review_contexts({**base, "decision": "no_b3_code_match"}))
             continue
         sectors = {candidate.sector for candidate in candidates}
         if len(sectors) != 1:
-            results.append({**base, "decision": "ambiguous_b3_code_match"})
+            results.append(with_review_contexts({**base, "decision": "ambiguous_b3_code_match"}))
             continue
         candidate = candidates[0]
+        source_url = "; ".join(sorted({candidate.source_url for candidate in candidates}))
         results.append(
-            {
-                **base,
-                "b3_name": candidate.name,
-                "b3_sector_pt": candidate.sector_pt,
-                "b3_subsector": candidate.subsector,
-                "b3_segment": candidate.segment,
-                "sector_update": candidate.sector,
-                "decision": "accept",
-            }
+            with_review_contexts(
+                {
+                    **base,
+                    "b3_name": candidate.name,
+                    "b3_sector_pt": candidate.sector_pt,
+                    "b3_subsector": candidate.subsector,
+                    "b3_segment": candidate.segment,
+                    "sector_update": candidate.sector,
+                    "source_url": source_url,
+                    "decision": "accept",
+                }
+            )
         )
     return results
 
@@ -275,9 +335,9 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
             "proposed_value": result["sector_update"],
             "confidence": "0.86",
             "reason": (
-                "Official B3 sector-classification ZIP mapped the B3 issuer code root to a canonical stock_sector; "
+                "Official B3 sector-classification source mapped the B3 issuer code root to a canonical stock_sector; "
                 "accepted only when the B3 code root matched uniquely and resolved to one canonical sector. "
-                f"Source: {B3_SECTOR_ZIP_URL}"
+                f"Source: {result['source_url']}"
             ),
         }
         for result in results
@@ -288,7 +348,7 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
 def write_report_csv(path: Path, rows: list[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=REPORT_FIELDNAMES)
+        writer = csv.DictWriter(handle, fieldnames=REPORT_FIELDNAMES, lineterminator="\n")
         writer.writeheader()
         for row in rows:
             writer.writerow({field: row.get(field, "") for field in REPORT_FIELDNAMES})
@@ -309,44 +369,66 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 def main(argv: list[str] | None = None) -> None:
     args = parse_args(argv)
-    zip_bytes = args.source_zip.read_bytes() if args.source_zip else download_b3_sector_zip(B3_SECTOR_ZIP_URL, args.timeout_seconds)
-    xlsx_bytes = (
-        args.source_xlsx.read_bytes()
-        if args.source_xlsx
-        else download_b3_industry_xlsx(B3_INDUSTRY_XLSX_URL, args.timeout_seconds)
-    )
-    b3_rows = [
-        *load_b3_sector_rows(extract_workbook(zip_bytes)),
-        *load_b3_industry_download_rows(xlsx_bytes),
-    ]
+    b3_rows: list[B3SectorRow] = []
+    source_fetch_errors: dict[str, str] = {}
+    if args.source_zip:
+        b3_rows.extend(load_b3_sector_rows(extract_workbook(args.source_zip.read_bytes())))
+    else:
+        try:
+            b3_rows.extend(
+                load_b3_sector_rows(
+                    extract_workbook(download_b3_sector_zip(B3_SECTOR_ZIP_URL, args.timeout_seconds))
+                )
+            )
+        except Exception as exc:
+            source_fetch_errors["b3_sector_zip"] = f"{type(exc).__name__}: {exc}"
+    if args.source_xlsx:
+        b3_rows.extend(load_b3_industry_download_rows(args.source_xlsx.read_bytes()))
+    else:
+        try:
+            b3_rows.extend(
+                load_b3_industry_download_rows(
+                    download_b3_industry_xlsx(B3_INDUSTRY_XLSX_URL, args.timeout_seconds)
+                )
+            )
+        except Exception as exc:
+            source_fetch_errors["b3_industry_xlsx"] = f"{type(exc).__name__}: {exc}"
+    if not b3_rows:
+        raise RuntimeError(f"No official B3 sector rows loaded; source_fetch_errors={source_fetch_errors}")
     targets = load_target_rows(args.tickers_csv)
     results = evaluate_rows(targets, b3_rows)
     updates = build_metadata_updates(results)
     if args.apply and updates:
         merge_metadata_updates(args.metadata_updates_csv, updates)
+    summary = {
+        "accepted_sector_updates": len(updates),
+        "applied": args.apply,
+        "b3_classification_rows": len(b3_rows),
+        "candidates": len(targets),
+        "csv_out": display_path(args.csv_out),
+        "decision_counts": dict(Counter(row["decision"] for row in results)),
+        "json_out": display_path(args.json_out),
+        "source_fetch_errors": source_fetch_errors,
+        "policy": {
+            "source": "Official B3 sector classification sources are used; unavailable official sources are recorded as source fetch errors.",
+            "no_guessing": "Sector updates require a unique B3 code-root match and one canonical official sector.",
+            "traceability": "Every probe row is listing-keyed and includes official source, sector review, and apply-gate context.",
+        },
+    }
 
     args.json_out.parent.mkdir(parents=True, exist_ok=True)
     args.json_out.write_text(
-        json.dumps([row for row in results if row["decision"] == "accept"], indent=2, ensure_ascii=False, sort_keys=True),
+        json.dumps(
+            {"summary": summary, "rows": [row for row in results if row["decision"] == "accept"]},
+            indent=2,
+            ensure_ascii=False,
+            sort_keys=True,
+        ),
         encoding="utf-8",
     )
     write_report_csv(args.csv_out, results)
 
-    print(
-        json.dumps(
-            {
-                "accepted_sector_updates": len(updates),
-                "applied": args.apply,
-                "b3_classification_rows": len(b3_rows),
-                "candidates": len(targets),
-                "csv_out": display_path(args.csv_out),
-                "decision_counts": dict(Counter(row["decision"] for row in results)),
-                "json_out": display_path(args.json_out),
-            },
-            indent=2,
-            sort_keys=True,
-        )
-    )
+    print(json.dumps(summary, indent=2, sort_keys=True))
 
 
 if __name__ == "__main__":

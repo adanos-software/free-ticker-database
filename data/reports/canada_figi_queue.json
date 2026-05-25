@@ -1,0 +1,43 @@
+{
+  "summary": {
+    "generated_at": "2026-05-25T12:54:47Z",
+    "rows": 0,
+    "batch_size": 100,
+    "batches": 0,
+    "excluded_openfigi_gap_rows": 151,
+    "exchange_totals": {},
+    "asset_type_totals": {},
+    "openfigi_exchange_hint_totals": {},
+    "apply_eligibility_totals": {
+      "keep_figi_blank_as_reviewed_openfigi_source_gap_until_stronger_source": 151,
+      "no_active_openfigi_probe_rows": 1
+    },
+    "verification_evidence_required_totals": {
+      "none_queue_drained_or_candidates_excluded_as_reviewed_source_gaps": 1,
+      "stronger_figi_source_required_for_reviewed_openfigi_no_match_or_cross_isin_collision": 151
+    },
+    "review_strategy_totals": {
+      "keep_reviewed_openfigi_source_gaps_excluded_until_stronger_source": 151,
+      "no_active_openfigi_probe_rows_after_gates": 1
+    },
+    "top_canada_figi_queue_review_batches": [
+      {
+        "exchange": "reviewed_openfigi_source_gap",
+        "asset_type": "all",
+        "openfigi_exchange_hint": "CN",
+        "rows": 151,
+        "review_strategy": "keep_reviewed_openfigi_source_gaps_excluded_until_stronger_source",
+        "apply_eligibility": "keep_figi_blank_as_reviewed_openfigi_source_gap_until_stronger_source",
+        "verification_evidence_required": "stronger_figi_source_required_for_reviewed_openfigi_no_match_or_cross_isin_collision",
+        "recommended_next_source": "Stronger FIGI source or reviewed OpenFIGI re-check evidence for the existing reviewed source gap.",
+        "source_gate": "Do not re-probe or fill FIGI from symbol/name; keep blank until stronger reviewed FIGI evidence exists."
+      }
+    ],
+    "policy": {
+      "input_gate": "Only canada_residual_review rows with valid ISIN, missing FIGI, and figi_decision=missing_figi_openfigi_candidate are queued.",
+      "reviewed_gap_gate": "Rows with an accepted OpenFIGI no-match or FIGI-collision review are excluded until a stronger source is available.",
+      "no_symbol_guessing": "Rows without ISIN are excluded; OpenFIGI candidate selection must still prefer the Canada exchange hint and ticker."
+    }
+  },
+  "rows": []
+}

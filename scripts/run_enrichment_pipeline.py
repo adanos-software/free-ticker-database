@@ -214,6 +214,12 @@ def build_pipeline_commands(options: PipelineOptions) -> list[StageCommand]:
                 notes="Refresh listing-keyed deterministic quality status for every row.",
             ),
             StageCommand(
+                name="check_entry_quality_gate",
+                command=[py, "scripts/check_entry_quality_gate.py"],
+                mutates_data=True,
+                notes="Refresh command evidence for entry-quality release gating.",
+            ),
+            StageCommand(
                 name="build_ohlcv_plausibility_report",
                 command=[py, "scripts/build_ohlcv_plausibility_report.py"],
                 mutates_data=True,
@@ -242,6 +248,30 @@ def build_pipeline_commands(options: PipelineOptions) -> list[StageCommand]:
                 command=[py, "scripts/build_source_of_truth_decisions.py"],
                 mutates_data=True,
                 notes="Convert residual gap classes into fill, accepted source-gap, or core-exclusion outcomes.",
+            ),
+            StageCommand(
+                name="validate_database",
+                command=[py, "scripts/validate_database.py"],
+                mutates_data=True,
+                notes="Refresh validation_report evidence before campaign, release, and PR review summaries.",
+            ),
+            StageCommand(
+                name="build_improvement_campaign_report",
+                command=[py, "scripts/build_improvement_campaign_report.py"],
+                mutates_data=True,
+                notes="Refresh campaign-level before/after and remaining-review evidence.",
+            ),
+            StageCommand(
+                name="build_release_acceptance_report",
+                command=[py, "scripts/build_release_acceptance_report.py"],
+                mutates_data=True,
+                notes="Refresh release gate evidence across validation, quality, campaign, and alias-safety reports.",
+            ),
+            StageCommand(
+                name="build_pr_review_summary",
+                command=[py, "scripts/build_pr_review_summary.py"],
+                mutates_data=True,
+                notes="Refresh compact PR review entry point after campaign and acceptance evidence is current.",
             ),
         ]
     )

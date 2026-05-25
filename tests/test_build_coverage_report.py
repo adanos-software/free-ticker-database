@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 
 from scripts.build_coverage_report import (
     build_b3_gap_breakdown,
+    build_b3_masterfile_diagnostics,
     build_country_report,
     build_exchange_reference_catalog,
     build_exchange_report,
@@ -12,8 +13,14 @@ from scripts.build_coverage_report import (
     build_gap_report,
     build_global_summary,
     build_masterfile_collision_report,
+    build_source_freshness_summary,
+    build_source_report,
+    freshness_review_context_for,
+    freshness_review_signal_rows,
     load_verification_report,
     render_markdown,
+    refresh_gate_context_for,
+    source_artifact_context_for,
 )
 
 
@@ -49,6 +56,308 @@ def test_build_exchange_reference_catalog_classifies_venue_statuses():
             "reference_scopes": ["interlisted_subset"],
         },
     }
+
+
+def test_build_source_report_adds_age_and_freshness_status(monkeypatch):
+    class FixedDateTime(datetime):
+        @classmethod
+        def now(cls, tz=None):
+            return cls(2026, 4, 8, 12, 0, tzinfo=timezone.utc)
+
+    monkeypatch.setattr("scripts.build_coverage_report.datetime", FixedDateTime)
+    rows = build_source_report(
+        [
+            {
+                "key": "nasdaq_listed",
+                "provider": "Nasdaq Trader",
+                "reference_scope": "exchange_directory",
+                "official": True,
+            },
+            {
+                "key": "old_source",
+                "provider": "Old Exchange",
+                "reference_scope": "exchange_directory",
+                "official": True,
+            },
+            {
+                "key": "stale_subset",
+                "provider": "Subset Exchange",
+                "reference_scope": "listed_companies_subset",
+                "official": True,
+            },
+            {
+                "key": "unavailable_full",
+                "provider": "Unavailable Exchange",
+                "reference_scope": "exchange_directory",
+                "official": True,
+            },
+        ],
+        {
+            "generated_at": "2026-04-08T00:00:00Z",
+            "source_details": {
+                "nasdaq_listed": {
+                    "mode": "network",
+                    "rows": 10,
+                    "generated_at": "2026-04-08T00:00:00Z",
+                },
+                "old_source": {
+                    "mode": "cache",
+                    "rows": 5,
+                    "generated_at": "2026-03-30T00:00:00Z",
+                },
+                "stale_subset": {
+                    "mode": "network",
+                    "rows": 7,
+                    "generated_at": "2026-04-03T12:00:00Z",
+                },
+                "unavailable_full": {
+                    "mode": "unavailable",
+                    "rows": 0,
+                    "generated_at": "2026-04-08T00:00:00Z",
+                    "last_error": "official endpoint returned 403; partial caches are ignored",
+                },
+            },
+        },
+    )
+
+    assert rows[0]["age_hours"] == 12.0
+    assert rows[0]["age_bucket"] == "age_0_48h"
+    assert rows[0]["freshness_status"] == "fresh"
+    assert rows[0]["refresh_priority"] == "P4"
+    assert rows[0]["refresh_queue"] == "fresh_no_refresh_needed"
+    assert rows[0]["review_strategy"] == "no_refresh_required"
+    assert rows[0]["evidence_required"] == "fresh_source_generated_at_with_age_under_48h"
+    assert rows[0]["recommended_refresh_action"] == "no_refresh_needed"
+    assert rows[0]["recommended_next_source"] == (
+        "No refresh needed; retain current fresh source evidence for scope exchange_directory."
+    )
+    assert rows[0]["source_gate"] == "Freshness evidence is present; no data change is authorized by freshness alone."
+    assert rows[0]["source_artifact_context"] == source_artifact_context_for(rows[0])
+    assert rows[0]["freshness_review_context"] == freshness_review_context_for(rows[0])
+    assert rows[0]["refresh_gate_context"] == refresh_gate_context_for(rows[0])
+    assert rows[1]["freshness_status"] == "old"
+    assert rows[1]["age_bucket"] == "age_168_336h"
+    assert rows[1]["refresh_priority"] == "P1"
+    assert rows[1]["refresh_queue"] == "refresh_official_exchange_directory_before_identity_or_collision_work"
+    assert rows[1]["review_strategy"] == "refresh_official_exchange_directory_before_identity_or_collision_work"
+    assert rows[1]["evidence_required"] == "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count"
+    assert rows[1]["recommended_refresh_action"] == "refresh_official_exchange_directory_before_identity_or_collision_work"
+    assert rows[1]["recommended_next_source"] == (
+        "Refresh the official exchange-directory source for scope exchange_directory using mode cache."
+    )
+    assert rows[1]["source_gate"] == (
+        "Do not perform identity, collision, or listing-add work until the official exchange directory is freshly regenerated."
+    )
+    assert rows[2]["freshness_status"] == "stale"
+    assert rows[2]["age_bucket"] == "age_48_168h"
+    assert rows[2]["refresh_priority"] == "P2"
+    assert rows[2]["refresh_queue"] == "refresh_official_subset_before_gap_enrichment"
+    assert rows[2]["review_strategy"] == "refresh_official_subset_before_gap_enrichment"
+    assert rows[2]["evidence_required"] == "official_subset_refresh_artifact_with_generated_at_scope_and_row_count"
+    assert rows[2]["recommended_refresh_action"] == "refresh_official_subset_before_gap_enrichment"
+    assert rows[2]["recommended_next_source"] == (
+        "Refresh the official subset source for scope listed_companies_subset before identifier or metadata gap work."
+    )
+    assert rows[2]["source_gate"] == (
+        "Do not fill identifiers, sectors, or categories from stale subset data until a fresh scoped artifact exists."
+    )
+    assert rows[3]["freshness_status"] == "fresh"
+    assert rows[3]["last_error"] == "official endpoint returned 403; partial caches are ignored"
+    assert rows[3]["refresh_priority"] == "P1"
+    assert rows[3]["refresh_queue"] == "restore_or_replace_unavailable_source_before_data_fill"
+    assert rows[3]["review_strategy"] == "restore_or_replace_unavailable_source_before_data_fill"
+    assert rows[3]["evidence_required"] == "source_restored_or_replaced_with_official_or_documented_unavailable_decision"
+    assert rows[3]["recommended_refresh_action"] == "restore_or_replace_unavailable_source_before_data_fill"
+    assert rows[3]["recommended_next_source"] == (
+        "Restore the unavailable official source for scope exchange_directory, or document an official replacement/unavailable decision."
+    )
+    assert rows[3]["source_gate"] == (
+        "Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists."
+    )
+
+
+def test_source_freshness_contexts_are_derived_from_row_fields():
+    row = {
+        "key": "nasdaq_listed",
+        "provider": "Nasdaq Trader",
+        "reference_scope": "exchange_directory",
+        "official": True,
+        "mode": "network",
+        "rows": 5471,
+        "generated_at": "2026-05-24T15:53:44Z",
+        "age_bucket": "age_0_48h",
+        "freshness_status": "fresh",
+        "refresh_priority": "P4",
+        "refresh_queue": "fresh_no_refresh_needed",
+        "recommended_refresh_action": "no_refresh_needed",
+        "review_strategy": "no_refresh_required",
+        "evidence_required": "fresh_source_generated_at_with_age_under_48h",
+    }
+
+    assert (
+        source_artifact_context_for(row)
+        == "key=nasdaq_listed;provider=Nasdaq Trader;reference_scope=exchange_directory;"
+        "official=true;mode=network;rows=5471;last_error=none"
+    )
+    assert (
+        freshness_review_context_for(row)
+        == "generated_at=2026-05-24T15:53:44Z;age_bucket=age_0_48h;"
+        "freshness_status=fresh;refresh_priority=P4"
+    )
+    assert (
+        refresh_gate_context_for(row)
+        == "refresh_queue=fresh_no_refresh_needed;recommended_refresh_action=no_refresh_needed;"
+        "review_strategy=no_refresh_required;evidence_required=fresh_source_generated_at_with_age_under_48h"
+    )
+
+
+def test_freshness_review_signal_rows_surface_symbol_change_age_without_apply_authority():
+    rows = freshness_review_signal_rows(
+        {
+            "tickers_built_at": "2026-04-06T00:00:00Z",
+            "tickers_age_hours": 12.0,
+            "symbol_changes_generated_at": "2026-04-06T10:00:00Z",
+            "symbol_changes_age_hours": 2.0,
+            "symbol_changes_review_rows": 7,
+        }
+    )
+
+    assert rows == [
+        {
+            "signal": "Dataset build",
+            "generated_at": "2026-04-06T00:00:00Z",
+            "age_hours": 12.0,
+            "rows": "",
+            "source_gate": "dataset_age_visibility_no_data_change_authorized",
+        },
+        {
+            "signal": "Symbol changes",
+            "generated_at": "2026-04-06T10:00:00Z",
+            "age_hours": 2.0,
+            "rows": 7,
+            "source_gate": "symbol_change_age_visibility_no_symbol_change_authorized",
+        },
+    ]
+
+
+def test_build_source_freshness_summary_prioritizes_old_official_exchange_directories():
+    summary = build_source_freshness_summary(
+        [
+            {
+                "key": "old_full",
+                "provider": "Old Full",
+                "reference_scope": "exchange_directory",
+                "official": True,
+                "mode": "cache",
+                "rows": 50,
+                "age_hours": 200.0,
+                "age_bucket": "age_168_336h",
+                "freshness_status": "old",
+                "refresh_priority": "P1",
+                "refresh_queue": "refresh_official_exchange_directory_before_identity_or_collision_work",
+                "recommended_refresh_action": "refresh_official_exchange_directory_before_identity_or_collision_work",
+            },
+            {
+                "key": "fresh_full",
+                "provider": "Fresh Full",
+                "reference_scope": "exchange_directory",
+                "official": True,
+                "mode": "network",
+                "rows": 10,
+                "age_hours": 2.0,
+                "age_bucket": "age_0_48h",
+                "freshness_status": "fresh",
+                "refresh_priority": "P4",
+                "refresh_queue": "fresh_no_refresh_needed",
+                "recommended_refresh_action": "no_refresh_needed",
+            },
+        ]
+    )
+
+    assert summary["source_count"] == 2
+    assert summary["freshness_status_totals"] == {"fresh": 1, "old": 1}
+    assert summary["source_age_bucket_totals"] == {"age_0_48h": 1, "age_168_336h": 1}
+    assert summary["refresh_priority_totals"] == {"P1": 1, "P4": 1}
+    assert summary["refresh_queue_totals"] == {
+        "fresh_no_refresh_needed": 1,
+        "refresh_official_exchange_directory_before_identity_or_collision_work": 1,
+    }
+    assert summary["refresh_queue_scope_totals"] == {
+        "fresh_no_refresh_needed": {"exchange_directory": 1},
+        "refresh_official_exchange_directory_before_identity_or_collision_work": {"exchange_directory": 1},
+    }
+    assert summary["refresh_queue_mode_totals"] == {
+        "fresh_no_refresh_needed": {"network": 1},
+        "refresh_official_exchange_directory_before_identity_or_collision_work": {"cache": 1},
+    }
+    assert summary["refresh_queue_priority_totals"] == {
+        "fresh_no_refresh_needed": {"P4": 1},
+        "refresh_official_exchange_directory_before_identity_or_collision_work": {"P1": 1},
+    }
+    assert summary["refresh_queue_age_bucket_totals"] == {
+        "fresh_no_refresh_needed": {"age_0_48h": 1},
+        "refresh_official_exchange_directory_before_identity_or_collision_work": {"age_168_336h": 1},
+    }
+    assert summary["recommended_refresh_action_totals"] == {
+        "no_refresh_needed": 1,
+        "refresh_official_exchange_directory_before_identity_or_collision_work": 1,
+    }
+    assert summary["refresh_queue_review_strategy_totals"] == {
+        "fresh_no_refresh_needed": {"no_refresh_required": 1},
+        "refresh_official_exchange_directory_before_identity_or_collision_work": {
+            "refresh_official_exchange_directory_before_identity_or_collision_work": 1,
+        },
+    }
+    assert summary["refresh_queue_evidence_required_totals"] == {
+        "fresh_no_refresh_needed": {"fresh_source_generated_at_with_age_under_48h": 1},
+        "refresh_official_exchange_directory_before_identity_or_collision_work": {
+            "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count": 1,
+        },
+    }
+    assert summary["top_source_refresh_batches"] == [
+        {
+            "refresh_queue": "refresh_official_exchange_directory_before_identity_or_collision_work",
+            "reference_scope": "exchange_directory",
+            "mode": "cache",
+            "refresh_priority": "P1",
+            "source_count": 1,
+            "total_rows": 50,
+            "max_age_hours": 200.0,
+            "review_strategy": "refresh_official_exchange_directory_before_identity_or_collision_work",
+            "evidence_required": "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count",
+            "recommended_next_source": (
+                "Refresh the official exchange-directory source for scope exchange_directory using mode cache."
+            ),
+            "source_gate": (
+                "Do not perform identity, collision, or listing-add work until the official exchange directory is freshly regenerated."
+            ),
+        },
+        {
+            "refresh_queue": "fresh_no_refresh_needed",
+            "reference_scope": "exchange_directory",
+            "mode": "network",
+            "refresh_priority": "P4",
+            "source_count": 1,
+            "total_rows": 10,
+            "max_age_hours": 2.0,
+            "review_strategy": "no_refresh_required",
+            "evidence_required": "fresh_source_generated_at_with_age_under_48h",
+            "recommended_next_source": (
+                "No refresh needed; retain current fresh source evidence for scope exchange_directory."
+            ),
+            "source_gate": "Freshness evidence is present; no data change is authorized by freshness alone.",
+        },
+    ]
+    assert summary["old_official_exchange_directory_count"] == 1
+    assert summary["top_old_official_exchange_directories"] == [
+        {
+            "key": "old_full",
+            "provider": "Old Full",
+            "mode": "cache",
+            "rows": 50,
+            "age_hours": 200.0,
+        }
+    ]
 
 
 def test_build_exchange_report_includes_masterfile_and_verification_rates():
@@ -272,6 +581,14 @@ def test_global_summary_markdown_and_gaps_include_new_sections():
         }
     ]
     report = {
+        "_meta": {
+            "generated_at": "2026-04-06T01:00:00Z",
+            "source_files": {
+                "tickers_csv": "data/tickers.csv",
+                "listings_csv": "data/listings.csv",
+            },
+            "policy": "Coverage and freshness report only. It does not authorize inferred identifiers, sectors, categories, names, or symbol changes.",
+        },
         "global": build_global_summary(
             tickers=[{"ticker": "AAA", "exchange": "NYSE", "asset_type": "Stock", "isin": "X", "sector": "Y"}],
             listings=[{"ticker": "AAA", "exchange": "NYSE", "asset_type": "Stock", "isin": "X", "sector": "Y"}],
@@ -287,7 +604,13 @@ def test_global_summary_markdown_and_gaps_include_new_sections():
             stock_verification_summary={"items": 1, "status_counts": {"verified": 1}},
             etf_verification_summary={"items": 2, "status_counts": {"verified": 1, "reference_gap": 1}},
         ),
-        "freshness": {"tickers_built_at": "2026-04-06T00:00:00Z"},
+        "freshness": {
+            "tickers_built_at": "2026-04-06T00:00:00Z",
+            "tickers_age_hours": 1.0,
+            "symbol_changes_generated_at": "2026-04-06T00:30:00Z",
+            "symbol_changes_age_hours": 0.5,
+            "symbol_changes_review_rows": 3,
+        },
         "source_coverage": [
             {
                 "key": "nasdaq_listed",
@@ -296,8 +619,13 @@ def test_global_summary_markdown_and_gaps_include_new_sections():
                 "mode": "network",
                 "rows": 10,
                 "generated_at": "2026-04-06T00:00:00Z",
+                "age_hours": 1.0,
+                "freshness_status": "fresh",
+                "refresh_priority": "P4",
+                "recommended_refresh_action": "no_refresh_needed",
             }
         ],
+        "source_freshness_summary": {"refresh_priority_totals": {"P4": 1}},
         "exchange_coverage": [
             {
                 "exchange": "NYSE",
@@ -335,12 +663,19 @@ def test_global_summary_markdown_and_gaps_include_new_sections():
 
     assert report["global"]["tickers"] == 1
     assert report["global"]["listing_keys"] == 1
+    assert report["_meta"]["generated_at"]
+    assert report["_meta"]["source_files"]["tickers_csv"] == "data/tickers.csv"
+    assert report["_meta"]["policy"].startswith("Coverage and freshness report only.")
     assert report["global"]["instrument_scope_core"] == 2
     assert report["global"]["instrument_scope_primary_listing_missing_isin"] == 1
     assert report["global"]["official_full_exchanges"] == 1
     assert report["global"]["etf_verification_items"] == 2
     assert "# Coverage Report" in markdown
     assert "## Freshness" in markdown
+    assert "## Freshness Review Summary" in markdown
+    assert "Symbol changes | 2026-04-06T00:30:00Z | 0.5 | 3" in markdown
+    assert "symbol_change_age_visibility_no_symbol_change_authorized" in markdown
+    assert "### Source Freshness Totals" in markdown
     assert "## Source Coverage" in markdown
     assert "## Unresolved Gaps" in markdown
 
@@ -372,16 +707,20 @@ def test_build_freshness_report_calculates_ages(tmp_path, monkeypatch):
     identifiers_csv = tmp_path / "identifiers.csv"
     identifiers_extended_csv = tmp_path / "identifiers_extended.csv"
     identifier_summary_json = tmp_path / "identifier_summary.json"
-    for path in (identifiers_csv, identifiers_extended_csv, identifier_summary_json):
+    symbol_changes_review_json = tmp_path / "symbol_changes_review.json"
+    for path in (identifiers_csv, identifiers_extended_csv, identifier_summary_json, symbol_changes_review_json):
         path.write_text("", encoding="utf-8")
 
     older = datetime(2026, 4, 6, 10, 30, tzinfo=timezone.utc).timestamp()
-    for path in (identifiers_csv, identifiers_extended_csv, identifier_summary_json):
+    for path in (identifiers_csv, identifiers_extended_csv, identifier_summary_json, symbol_changes_review_json):
         os.utime(path, (older, older))
+    newer_symbol_review_mtime = datetime(2026, 4, 7, 10, 30, tzinfo=timezone.utc).timestamp()
+    os.utime(symbol_changes_review_json, (newer_symbol_review_mtime, newer_symbol_review_mtime))
 
     monkeypatch.setattr("scripts.build_coverage_report.IDENTIFIERS_CSV", identifiers_csv)
     monkeypatch.setattr("scripts.build_coverage_report.IDENTIFIERS_EXTENDED_CSV", identifiers_extended_csv)
     monkeypatch.setattr("scripts.build_coverage_report.IDENTIFIER_SUMMARY_JSON", identifier_summary_json)
+    monkeypatch.setattr("scripts.build_coverage_report.SYMBOL_CHANGES_REVIEW_JSON", symbol_changes_review_json)
 
     freshness = build_freshness_report(
         {"generated_at": "2026-04-06T10:00:00Z"},
@@ -389,6 +728,20 @@ def test_build_freshness_report_calculates_ages(tmp_path, monkeypatch):
         {"observed_at": "2026-04-06T12:00:00Z"},
         {"run_dir": "data/stock_verification/run-a", "generated_at": "2026-04-06T13:00:00Z"},
         {"run_dir": "data/etf_verification/run-b", "generated_at": "2026-04-06T14:00:00Z"},
+        {
+            "_meta": {"generated_at": "2026-04-06T15:00:00Z"},
+            "summary": {"review_rows": 12},
+        },
+        {
+            "source_gap_classification": (
+                {"summary": {"generated_at": "2026-04-06T16:00:00Z", "rows": 34}},
+                tmp_path / "source_gap_classification.json",
+            ),
+            "ohlcv_plausibility": (
+                {"_meta": {"generated_at": "2026-04-06T17:00:00Z", "rows": 56}},
+                tmp_path / "ohlcv_plausibility.json",
+            ),
+        },
     )
 
     assert freshness["masterfiles_generated_at"] == "2026-04-06T10:00:00Z"
@@ -396,25 +749,33 @@ def test_build_freshness_report_calculates_ages(tmp_path, monkeypatch):
     assert freshness["listing_history_observed_at"] == "2026-04-06T12:00:00Z"
     assert freshness["latest_verification_run"] == "data/stock_verification/run-a"
     assert freshness["latest_etf_verification_run"] == "data/etf_verification/run-b"
+    assert freshness["symbol_changes_generated_at"] == "2026-04-06T15:00:00Z"
+    assert freshness["symbol_changes_review_rows"] == 12
+    assert freshness["source_gap_classification_generated_at"] == "2026-04-06T16:00:00Z"
+    assert freshness["source_gap_classification_rows"] == 34
+    assert freshness["ohlcv_plausibility_generated_at"] == "2026-04-06T17:00:00Z"
+    assert freshness["ohlcv_plausibility_rows"] == 56
 
 
 def test_build_freshness_report_uses_newer_identifier_artifact_timestamp(tmp_path, monkeypatch):
     identifiers_csv = tmp_path / "identifiers.csv"
     identifiers_extended_csv = tmp_path / "identifiers_extended.csv"
     identifier_summary_json = tmp_path / "identifier_summary.json"
-    for path in (identifiers_csv, identifiers_extended_csv, identifier_summary_json):
+    symbol_changes_review_json = tmp_path / "symbol_changes_review.json"
+    for path in (identifiers_csv, identifiers_extended_csv, identifier_summary_json, symbol_changes_review_json):
         path.write_text("", encoding="utf-8")
 
     newer = datetime(2026, 4, 6, 12, 30, tzinfo=timezone.utc).timestamp()
     os.utime(identifiers_csv, (newer, newer))
 
     older = datetime(2026, 4, 6, 10, 15, tzinfo=timezone.utc).timestamp()
-    for path in (identifiers_extended_csv, identifier_summary_json):
+    for path in (identifiers_extended_csv, identifier_summary_json, symbol_changes_review_json):
         os.utime(path, (older, older))
 
     monkeypatch.setattr("scripts.build_coverage_report.IDENTIFIERS_CSV", identifiers_csv)
     monkeypatch.setattr("scripts.build_coverage_report.IDENTIFIERS_EXTENDED_CSV", identifiers_extended_csv)
     monkeypatch.setattr("scripts.build_coverage_report.IDENTIFIER_SUMMARY_JSON", identifier_summary_json)
+    monkeypatch.setattr("scripts.build_coverage_report.SYMBOL_CHANGES_REVIEW_JSON", symbol_changes_review_json)
 
     freshness = build_freshness_report(
         {"generated_at": "2026-04-06T10:00:00Z"},
@@ -489,6 +850,75 @@ def test_build_gap_report_and_b3_breakdown():
         "fractional_line": 1,
         "local_share_line": 1,
     }
+
+
+def test_build_b3_masterfile_diagnostics_compares_dataset_against_active_official_directory():
+    diagnostics = build_b3_masterfile_diagnostics(
+        [
+            {"listing_key": "B3::PETR4", "ticker": "PETR4", "exchange": "B3", "asset_type": "Stock", "name": "Petrobras"},
+            {"listing_key": "B3::AFOF11", "ticker": "AFOF11", "exchange": "B3", "asset_type": "ETF", "name": "Alianza FOFII"},
+            {"listing_key": "B3::ABBV34", "ticker": "ABBV34", "exchange": "B3", "asset_type": "Stock", "name": "AbbVie BDR"},
+            {"listing_key": "NYSE::PETR", "ticker": "PETR", "exchange": "NYSE", "asset_type": "Stock", "name": "Petrobras ADR"},
+        ],
+        [
+            {
+                "source_key": "b3_instruments_equities",
+                "ticker": "PETR4",
+                "exchange": "B3",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": "exchange_directory",
+                "official": "true",
+            },
+            {
+                "source_key": "b3_listed_etfs",
+                "ticker": "AFOF11",
+                "exchange": "B3",
+                "asset_type": "ETF",
+                "listing_status": "active",
+                "reference_scope": "listed_companies_subset",
+                "official": "true",
+            },
+            {
+                "source_key": "b3_instruments_equities",
+                "ticker": "VALE3",
+                "exchange": "B3",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": "exchange_directory",
+                "official": "true",
+            },
+        ],
+    )
+
+    assert diagnostics["dataset_rows"] == 3
+    assert diagnostics["active_exchange_directory_rows"] == 2
+    assert diagnostics["matched_dataset_rows"] == 1
+    assert diagnostics["missing_dataset_rows"] == 2
+    assert diagnostics["official_any_source_matched_dataset_rows"] == 2
+    assert diagnostics["official_any_source_missing_dataset_rows"] == 1
+    assert diagnostics["official_any_source_match_rate"] == 66.67
+    assert diagnostics["official_active_symbols_not_in_dataset"] == 1
+    assert diagnostics["dataset_match_rate"] == 33.33
+    assert diagnostics["missing_category_totals"] == {
+        "bdr_or_foreign_receipt": 1,
+        "unit_or_fund_line": 1,
+    }
+    assert diagnostics["missing_asset_type_totals"] == {"ETF": 1, "Stock": 1}
+    assert diagnostics["missing_source_presence_totals"] == {
+        "absent_from_all_b3_masterfile_sources": 1,
+        "present_only_in_non_exchange_directory_source": 1,
+    }
+    assert diagnostics["missing_examples"]["unit_or_fund_line"] == [
+        {
+            "listing_key": "B3::AFOF11",
+            "ticker": "AFOF11",
+            "asset_type": "ETF",
+            "name": "Alianza FOFII",
+            "source_presence": "present_only_in_non_exchange_directory_source",
+            "candidate_sources": "b3_listed_etfs",
+        }
+    ]
 
 
 def test_load_verification_report_reads_latest_chunk_rows(tmp_path):

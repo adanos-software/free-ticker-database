@@ -48,6 +48,14 @@ class OtcNameMismatchReview:
     official_token_count: int
     review_class: str
     review_priority: str
+    apply_eligibility: str
+    verification_evidence_required: str
+    review_strategy: str
+    recommended_next_source: str
+    source_gate: str
+    official_source_context: str
+    identity_review_context: str
+    decision_review_context: str
     review_decision: str
     decision_reason: str
     recommended_action: str
@@ -66,7 +74,7 @@ def write_csv(path: Path, rows: list[OtcNameMismatchReview]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     fieldnames = list(OtcNameMismatchReview.__dataclass_fields__)
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
         for row in rows:
             writer.writerow(asdict(row))
@@ -128,6 +136,115 @@ def classify_name_mismatch(current_name: str, official_name: str, isin: str) -> 
     )
 
 
+def apply_eligibility_for(review_class: str) -> str:
+    if review_class == "hold_unresolved":
+        return "keep_current_until_stronger_issuer_history_source"
+    if review_class == "stale_or_symbol_reuse_without_isin":
+        return "blocked_until_official_issuer_identity_source_or_quarantine_decision"
+    if review_class == "probable_otc_rename_or_symbol_reuse":
+        return "blocked_until_isin_anchored_issuer_history_review"
+    if review_class == "weak_abbreviation_or_truncation_review":
+        return "matcher_tuning_only_no_metadata_apply_until_exact_identity_review"
+    if review_class == "matcher_false_positive":
+        return "no_metadata_change_authorized_tighten_matcher_only"
+    return "manual_review_required"
+
+
+def verification_evidence_for(review_class: str) -> str:
+    if review_class == "hold_unresolved":
+        return "stronger_official_or_reviewed_issuer_history_source_before_any_name_change"
+    if review_class == "stale_or_symbol_reuse_without_isin":
+        return "official_otc_profile_registry_or_issuer_history_source_matching_listing_key_before_name_or_quarantine_action"
+    if review_class == "probable_otc_rename_or_symbol_reuse":
+        return "official_or_reviewed_isin_bearing_source_matching_current_issuer_listing_key_and_name"
+    if review_class == "weak_abbreviation_or_truncation_review":
+        return "official_alias_or_abbreviation_evidence_with_exact_listing_identity_match"
+    if review_class == "matcher_false_positive":
+        return "entry_quality_matcher_regression_evidence_no_dataset_metadata_change"
+    return "manual_review_required"
+
+
+def recommended_next_source_for(review_class: str) -> str:
+    if review_class == "hold_unresolved":
+        return "Stronger official or reviewed issuer-history source matching the OTC listing key."
+    if review_class == "stale_or_symbol_reuse_without_isin":
+        return "Official OTC profile, registry, exchange notice, or issuer-history source matching the listing key."
+    if review_class == "probable_otc_rename_or_symbol_reuse":
+        return "Official or reviewed ISIN-bearing issuer-history source matching current issuer, listing key, and name."
+    if review_class == "weak_abbreviation_or_truncation_review":
+        return "Official alias, abbreviation, issuer, OTC profile, or registry evidence matching the exact listing identity."
+    if review_class == "matcher_false_positive":
+        return "Entry-quality matcher regression evidence; no issuer metadata source is needed for a data change."
+    return "Manual reviewed OTC identity source matching the listing key."
+
+
+def source_gate_for(review_class: str) -> str:
+    if review_class == "hold_unresolved":
+        return "Keep current name until stronger issuer-history evidence resolves the ambiguity."
+    if review_class == "stale_or_symbol_reuse_without_isin":
+        return "Do not rename or trust reused OTC symbol without listing-keyed official identity or quarantine evidence."
+    if review_class == "probable_otc_rename_or_symbol_reuse":
+        return "Do not change the name until ISIN-anchored evidence proves the same current issuer."
+    if review_class == "weak_abbreviation_or_truncation_review":
+        return "Tune matcher only after official alias evidence; do not change metadata from abbreviation alone."
+    if review_class == "matcher_false_positive":
+        return "Matcher-only fix; no ticker, listing, name, sector, or category change is authorized."
+    return "Manual review required before any OTC name or metadata change."
+
+
+def review_strategy_for(review_class: str) -> str:
+    if review_class == "hold_unresolved":
+        return "keep_current_until_stronger_issuer_history_source"
+    if review_class == "stale_or_symbol_reuse_without_isin":
+        return "resolve_or_quarantine_with_official_otc_profile_or_issuer_history"
+    if review_class == "probable_otc_rename_or_symbol_reuse":
+        return "verify_isin_anchored_issuer_history_before_name_change"
+    if review_class == "weak_abbreviation_or_truncation_review":
+        return "review_official_alias_or_abbreviation_before_matcher_tuning"
+    if review_class == "matcher_false_positive":
+        return "tighten_matcher_without_dataset_metadata_change"
+    return "manual_otc_name_review"
+
+
+def official_source_context_for(*, official_sources: str, official_name: str) -> str:
+    return (
+        f"official_sources={official_sources or 'none'};"
+        f"official_name_present={'true' if official_name else 'false'}"
+    )
+
+
+def identity_review_context_for(
+    *,
+    token_overlap: int,
+    current_token_count: int,
+    official_token_count: int,
+    isin: str,
+    country: str,
+) -> str:
+    return (
+        f"token_overlap={token_overlap};"
+        f"current_token_count={current_token_count};"
+        f"official_token_count={official_token_count};"
+        f"isin_presence={'with_isin' if isin else 'without_isin'};"
+        f"country={country or 'none'}"
+    )
+
+
+def decision_review_context_for(
+    *,
+    review_class: str,
+    apply_eligibility: str,
+    verification_evidence_required: str,
+    review_decision: str,
+) -> str:
+    return (
+        f"review_class={review_class or 'none'};"
+        f"apply_eligibility={apply_eligibility or 'none'};"
+        f"verification_evidence_required={verification_evidence_required or 'none'};"
+        f"review_decision={review_decision or 'none'}"
+    )
+
+
 def build_review_rows(
     entry_quality_rows: Iterable[dict[str, str]],
     masterfile_rows: Iterable[dict[str, str]],
@@ -162,6 +279,13 @@ def build_review_rows(
             review_class = "hold_unresolved"
             review_priority = "held"
             recommended_action = "source_needed_for_resolution"
+        official_sources = "|".join(sorted({ref.get("source_key", "") for ref in refs if ref.get("source_key")}))
+        token_overlap = len(current_tokens & official_tokens)
+        current_token_count = len(current_tokens)
+        official_token_count = len(official_tokens)
+        apply_eligibility = apply_eligibility_for(review_class)
+        verification_evidence_required = verification_evidence_for(review_class)
+        decision = review_decision.get("decision", "")
         review_rows.append(
             OtcNameMismatchReview(
                 listing_key=row["listing_key"],
@@ -172,13 +296,35 @@ def build_review_rows(
                 official_name=official_name,
                 isin=row.get("isin", ""),
                 country=row.get("country", ""),
-                official_sources="|".join(sorted({ref.get("source_key", "") for ref in refs if ref.get("source_key")})),
-                token_overlap=len(current_tokens & official_tokens),
-                current_token_count=len(current_tokens),
-                official_token_count=len(official_tokens),
+                official_sources=official_sources,
+                token_overlap=token_overlap,
+                current_token_count=current_token_count,
+                official_token_count=official_token_count,
                 review_class=review_class,
                 review_priority=review_priority,
-                review_decision=review_decision.get("decision", ""),
+                apply_eligibility=apply_eligibility,
+                verification_evidence_required=verification_evidence_required,
+                review_strategy=review_strategy_for(review_class),
+                recommended_next_source=recommended_next_source_for(review_class),
+                source_gate=source_gate_for(review_class),
+                official_source_context=official_source_context_for(
+                    official_sources=official_sources,
+                    official_name=official_name,
+                ),
+                identity_review_context=identity_review_context_for(
+                    token_overlap=token_overlap,
+                    current_token_count=current_token_count,
+                    official_token_count=official_token_count,
+                    isin=row.get("isin", ""),
+                    country=row.get("country", ""),
+                ),
+                decision_review_context=decision_review_context_for(
+                    review_class=review_class,
+                    apply_eligibility=apply_eligibility,
+                    verification_evidence_required=verification_evidence_required,
+                    review_decision=decision,
+                ),
+                review_decision=decision,
                 decision_reason=review_decision.get("reason", ""),
                 recommended_action=recommended_action,
             )
@@ -206,6 +352,7 @@ def summarize(rows: list[OtcNameMismatchReview], generated_at: str, csv_out: Pat
             "generated_at": generated_at,
             "rows": len(rows),
             "csv_out": csv_display_path,
+            "policy": "Review queue only. OTC names are not changed unless an official or reviewed issuer-history source matches the listing_key and required identity evidence.",
             "source_files": {
                 "entry_quality_csv": str(ENTRY_QUALITY_CSV.relative_to(ROOT)),
                 "masterfile_reference_csv": str(MASTERFILE_REFERENCE_CSV.relative_to(ROOT)),
@@ -214,6 +361,36 @@ def summarize(rows: list[OtcNameMismatchReview], generated_at: str, csv_out: Pat
         "summary": {
             "review_class_counts": dict(Counter(row.review_class for row in rows).most_common()),
             "review_priority_counts": dict(Counter(row.review_priority for row in rows).most_common()),
+            "apply_eligibility_counts": dict(Counter(row.apply_eligibility for row in rows).most_common()),
+            "verification_evidence_required_counts": dict(
+                Counter(row.verification_evidence_required for row in rows).most_common()
+            ),
+            "review_strategy_counts": dict(Counter(review_strategy_for(row.review_class) for row in rows).most_common()),
+            "top_otc_name_mismatch_review_batches": [
+                {
+                    "review_priority": priority,
+                    "review_class": review_class,
+                    "isin_presence": isin_presence,
+                    "official_sources": official_sources,
+                    "rows": count,
+                    "review_strategy": review_strategy_for(review_class),
+                    "verification_evidence_required": verification_evidence_for(review_class),
+                    "recommended_next_source": recommended_next_source_for(review_class),
+                    "source_gate": source_gate_for(review_class),
+                }
+                for (priority, review_class, isin_presence, official_sources), count in sorted(
+                    Counter(
+                        (
+                            row.review_priority,
+                            row.review_class,
+                            "with_isin" if row.isin else "without_isin",
+                            row.official_sources or "missing_official_source",
+                        )
+                        for row in rows
+                    ).items(),
+                    key=lambda item: (-item[1], item[0][0], item[0][1], item[0][2], item[0][3]),
+                )[:10]
+            ],
             "with_isin": sum(1 for row in rows if row.isin),
             "without_isin": sum(1 for row in rows if not row.isin),
             "official_source_counts": dict(
@@ -257,6 +434,35 @@ def write_markdown(path: Path, payload: dict[str, object]) -> None:
     lines.extend(["", "## Priority", "", "| Priority | Rows |", "|---|---:|"])
     for priority, count in summary["review_priority_counts"].items():  # type: ignore[index,union-attr]
         lines.append(f"| {priority} | {count:,} |")
+
+    lines.extend(["", "## Apply Eligibility", "", "| Eligibility | Rows |", "|---|---:|"])
+    for eligibility, count in summary["apply_eligibility_counts"].items():  # type: ignore[index,union-attr]
+        lines.append(f"| {eligibility} | {count:,} |")
+
+    lines.extend(["", "## Verification Evidence", "", "| Evidence Required | Rows |", "|---|---:|"])
+    for evidence, count in summary["verification_evidence_required_counts"].items():  # type: ignore[index,union-attr]
+        lines.append(f"| {evidence} | {count:,} |")
+
+    lines.extend(["", "## Review Strategies", "", "| Strategy | Rows |", "|---|---:|"])
+    for strategy, count in summary["review_strategy_counts"].items():  # type: ignore[index,union-attr]
+        lines.append(f"| {strategy} | {count:,} |")
+
+    lines.extend(
+        [
+            "",
+            "## Top Review Batches",
+            "",
+            "| Priority | Class | ISIN | Official sources | Rows | Strategy | Evidence required | Recommended next source | Source gate |",
+            "|---|---|---|---|---:|---|---|---|---|",
+        ]
+    )
+    for batch in summary["top_otc_name_mismatch_review_batches"]:  # type: ignore[index,union-attr]
+        lines.append(
+            f"| {batch['review_priority']} | {batch['review_class']} | {batch['isin_presence']} | "
+            f"{batch['official_sources']} | {batch['rows']:,} | {batch['review_strategy']} | "
+            f"{batch['verification_evidence_required']} | {batch['recommended_next_source']} | "
+            f"{batch['source_gate']} |"
+        )
 
     lines.extend(
         [
@@ -306,6 +512,8 @@ def main(argv: list[str] | None = None) -> int:
                 "md_out": str(args.md_out.relative_to(ROOT)),
                 "review_class_counts": payload["summary"]["review_class_counts"],  # type: ignore[index]
                 "review_priority_counts": payload["summary"]["review_priority_counts"],  # type: ignore[index]
+                "apply_eligibility_counts": payload["summary"]["apply_eligibility_counts"],  # type: ignore[index]
+                "verification_evidence_required_counts": payload["summary"]["verification_evidence_required_counts"],  # type: ignore[index]
             },
             indent=2,
         )

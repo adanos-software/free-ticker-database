@@ -1204,6 +1204,7 @@ B3_CASH_ETF_CATEGORY_MAP = {
     "FUNDS": "Other",
 }
 B3_CASH_STOCK_TICKER_RE = re.compile(r"^[A-Z0-9]{4}[3-8]B?$")
+B3_CASH_TAIL_EMPTY_PAGE_LIMIT = 3
 B3_BDR_ETF_MARKERS = (" ETF", "ETP")
 B3_EXCLUDED_ISSUER_MARKERS = (
     "taxa de financiamento",
@@ -2722,7 +2723,7 @@ def ensure_output_dirs() -> None:
 
 def write_csv(path: Path, fieldnames: list[str], rows: Iterable[dict[str, Any]]) -> None:
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames, extrasaction="ignore")
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, extrasaction="ignore", lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -2766,9 +2767,12 @@ def merge_reference_rows(
     refreshed_rows: Iterable[dict[str, str]],
     *,
     source_keys: Iterable[str],
+    preserve_source_keys: Iterable[str] | None = None,
 ) -> list[dict[str, str]]:
     selected_source_keys = set(source_keys)
-    preserved_rows = [row for row in existing_rows if row.get("source_key", "") not in selected_source_keys]
+    preserved_source_keys = set(preserve_source_keys or ())
+    replace_source_keys = selected_source_keys - preserved_source_keys
+    preserved_rows = [row for row in existing_rows if row.get("source_key", "") not in replace_source_keys]
     return dedupe_rows([*preserved_rows, *refreshed_rows])
 
 
@@ -6131,12 +6135,12 @@ def load_nse_india_securities_available_rows(
     source: MasterfileSource,
     session: requests.Session | None = None,
 ) -> tuple[list[dict[str, str]] | None, str]:
-    for path in (NSE_IN_SECURITIES_AVAILABLE_CACHE, LEGACY_NSE_IN_SECURITIES_AVAILABLE_CACHE):
-        if path.exists():
-            return json.loads(path.read_text(encoding="utf-8")), "cache"
     try:
         rows = fetch_nse_india_securities_available_rows(source, session=session)
     except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in (NSE_IN_SECURITIES_AVAILABLE_CACHE, LEGACY_NSE_IN_SECURITIES_AVAILABLE_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
         return None, "unavailable"
 
     ensure_output_dirs()
@@ -6230,12 +6234,12 @@ def load_bse_india_scrips_rows(
     source: MasterfileSource,
     session: requests.Session | None = None,
 ) -> tuple[list[dict[str, str]] | None, str]:
-    for path in (BSE_IN_SCRIPS_CACHE, LEGACY_BSE_IN_SCRIPS_CACHE):
-        if path.exists():
-            return json.loads(path.read_text(encoding="utf-8")), "cache"
     try:
         rows = fetch_bse_india_scrips_rows(source, session=session)
     except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in (BSE_IN_SCRIPS_CACHE, LEGACY_BSE_IN_SCRIPS_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
         return None, "unavailable"
 
     ensure_output_dirs()
@@ -6324,12 +6328,12 @@ def load_hkex_securities_list_rows(
     source: MasterfileSource,
     session: requests.Session | None = None,
 ) -> tuple[list[dict[str, str]] | None, str]:
-    for path in (HKEX_SECURITIES_LIST_CACHE, LEGACY_HKEX_SECURITIES_LIST_CACHE):
-        if path.exists():
-            return json.loads(path.read_text(encoding="utf-8")), "cache"
     try:
         rows = fetch_hkex_securities_list_rows(source, session=session)
     except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in (HKEX_SECURITIES_LIST_CACHE, LEGACY_HKEX_SECURITIES_LIST_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
         return None, "unavailable"
 
     ensure_output_dirs()
@@ -9520,6 +9524,30 @@ def parse_hnx_issuer_table_html(
     return rows
 
 
+def cached_hnx_isin_lookup(source: MasterfileSource) -> dict[str, str]:
+    lookup: dict[str, str] = {}
+    for path in hnx_securities_cache_paths(source.key):
+        if not path.exists():
+            continue
+        try:
+            cached_rows = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        if not isinstance(cached_rows, list):
+            continue
+        for row in cached_rows:
+            if not isinstance(row, dict):
+                continue
+            ticker = str(row.get("ticker", "")).strip().upper()
+            name_key = compact_company_name(str(row.get("name", "")))
+            isin = str(row.get("isin", "")).strip().upper()
+            if ticker and name_key and VSDC_ISIN_RE.fullmatch(isin):
+                lookup[f"{ticker}\t{name_key}"] = isin
+        if lookup:
+            break
+    return lookup
+
+
 def fetch_hnx_issuer_rows(
     source: MasterfileSource,
     *,
@@ -9555,7 +9583,14 @@ def fetch_hnx_issuer_rows(
     payload = response.json()
     content = str(payload.get("Content") or "")
     rows = parse_hnx_issuer_table_html(content, source, exchange=config["exchange"])
-    isin_lookup = fetch_vsdc_isin_lookup((row["ticker"] for row in rows), session=session)
+    cached_lookup = cached_hnx_isin_lookup(source)
+    isin_lookup = {
+        row["ticker"]: cached_lookup[f"{row['ticker']}\t{compact_company_name(row['name'])}"]
+        for row in rows
+        if f"{row['ticker']}\t{compact_company_name(row['name'])}" in cached_lookup
+    }
+    missing_tickers = [row["ticker"] for row in rows if row["ticker"] not in isin_lookup]
+    isin_lookup.update(fetch_vsdc_isin_lookup(missing_tickers, session=session))
     return parse_hnx_issuer_table_html(
         content,
         source,
@@ -9568,18 +9603,19 @@ def load_hnx_issuer_rows(
     source: MasterfileSource,
     session: requests.Session | None = None,
 ) -> tuple[list[dict[str, str]] | None, str]:
-    for path in hnx_securities_cache_paths(source.key):
-        if path.exists():
-            return json.loads(path.read_text(encoding="utf-8")), "cache"
-
     try:
         rows = fetch_hnx_issuer_rows(source, session=session)
     except (requests.RequestException, ValueError, json.JSONDecodeError):
-        return None, "unavailable"
+        rows = None
+    else:
+        ensure_output_dirs()
+        hnx_securities_cache_paths(source.key)[0].write_text(json.dumps(rows), encoding="utf-8")
+        return rows, "network"
 
-    ensure_output_dirs()
-    hnx_securities_cache_paths(source.key)[0].write_text(json.dumps(rows), encoding="utf-8")
-    return rows, "network"
+    for path in hnx_securities_cache_paths(source.key):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8")), "cache"
+    return None, "unavailable"
 
 
 def load_szse_etf_list_rows(
@@ -10937,6 +10973,7 @@ def fetch_bme_security_prices_rows(
     )
     rows: list[dict[str, str]] = []
     seen_pairs: set[tuple[str, str]] = set()
+    processed_isins: set[str] = set()
 
     def add_detail(detail: dict[str, Any]) -> None:
         trading_system = str(detail.get("tradingSystem", "")).strip()
@@ -10959,12 +10996,23 @@ def fetch_bme_security_prices_rows(
                 continue
         return rows
 
+    first_isin = next((str(item.get("isin", "")).strip().upper() for item in listed_items if str(item.get("isin", "")).strip()), "")
+    if first_isin:
+        try:
+            add_detail(fetch_bme_share_details_info(first_isin, session=session))
+            processed_isins.add(first_isin)
+        except requests.HTTPError as exc:
+            if exc.response is not None and exc.response.status_code in {401, 403}:
+                raise
+        except requests.RequestException:
+            processed_isins.add(first_isin)
+
     max_workers = min(8, len(listed_items))
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         futures = {
             executor.submit(fetch_bme_share_details_info, str(item.get("isin", "")).strip().upper()): item
             for item in listed_items
-            if str(item.get("isin", "")).strip()
+            if str(item.get("isin", "")).strip().upper() not in processed_isins
         }
         for future in as_completed(futures):
             try:
@@ -13407,13 +13455,12 @@ def load_lse_price_explorer_rows(
     source: MasterfileSource,
     session: requests.Session | None = None,
 ) -> tuple[list[dict[str, str]] | None, str]:
-    for path in (LSE_PRICE_EXPLORER_CACHE, LEGACY_LSE_PRICE_EXPLORER_CACHE):
-        if path.exists():
-            return json.loads(path.read_text(encoding="utf-8")), "cache"
-
     try:
         rows = fetch_lse_price_explorer_rows(source, session=session)
-    except requests.RequestException:
+    except (requests.RequestException, ValueError, json.JSONDecodeError):
+        for path in (LSE_PRICE_EXPLORER_CACHE, LEGACY_LSE_PRICE_EXPLORER_CACHE):
+            if path.exists():
+                return json.loads(path.read_text(encoding="utf-8")), "cache"
         return None, "unavailable"
 
     ensure_output_dirs()
@@ -16990,16 +17037,20 @@ def fetch_b3_instruments_equities(source: MasterfileSource, session: requests.Se
         return rows
 
     cash_rows_seen = False
+    empty_pages_after_cash = 0
     # The B3 consolidated table places cash equities in the last pages.
     for page in range(page_count, 0, -1):
         table = first_table if page == 1 else fetch_page(page)
         page_rows = parse_b3_instruments_equities_table(table, source)
         if page_rows:
             cash_rows_seen = True
+            empty_pages_after_cash = 0
             rows.extend(page_rows)
             continue
         if cash_rows_seen:
-            break
+            empty_pages_after_cash += 1
+            if empty_pages_after_cash >= B3_CASH_TAIL_EMPTY_PAGE_LIMIT:
+                break
     return rows
 
 
@@ -18136,7 +18187,10 @@ def fetch_source_rows_with_mode(
     if source.format == "bme_security_prices_json":
         rows, mode = load_bme_security_prices_rows(source, session=session)
         if rows is None:
-            raise requests.RequestException("BME security prices rows unavailable")
+            raise requests.RequestException(
+                "BME security prices rows unavailable; official detail fetch failed and no complete cache "
+                f"(>={BME_SECURITY_PRICES_MIN_CACHE_ROWS} rows) is available; partial caches are ignored"
+            )
         return rows, mode
     if source.format == "bme_growth_prices_html":
         rows, mode = load_bme_growth_reference_rows(source, session=session)
@@ -18473,6 +18527,7 @@ def build_summary(
     generated_at: str | None = None,
     source_metadata_overrides: dict[str, dict[str, Any]] | None = None,
     refreshed_source_keys: Iterable[str] | None = None,
+    source_errors: Iterable[dict[str, str]] | None = None,
 ) -> dict[str, Any]:
     exchanges = sorted({row["exchange"] for row in rows if row["exchange"]})
     source_counts: dict[str, int] = {}
@@ -18480,22 +18535,35 @@ def build_summary(
         source_counts[row["source_key"]] = source_counts.get(row["source_key"], 0) + 1
     source_metadata_overrides = source_metadata_overrides or {}
     source_modes = source_modes or {}
+    source_error_by_key = {
+        error.get("source_key", ""): error.get("error", "")
+        for error in source_errors or []
+        if error.get("source_key") and error.get("error")
+    }
     refreshed = set(refreshed_source_keys or source_modes.keys() or source_counts.keys())
-    source_details = {
-        source.key: {
+    def source_generated_at(source_key: str) -> str:
+        mode = source_modes.get(source_key, source_metadata_overrides.get(source_key, {}).get("mode", "unknown"))
+        previous_generated_at = str(source_metadata_overrides.get(source_key, {}).get("generated_at", ""))
+        if source_key not in refreshed:
+            return previous_generated_at
+        if mode in {"cache", "unavailable"} and previous_generated_at:
+            return previous_generated_at
+        return generated_at or ""
+
+    source_details = {}
+    for source in OFFICIAL_SOURCES:
+        detail = {
             "provider": source.provider,
             "reference_scope": source.reference_scope,
             "official": source.official,
             "mode": source_modes.get(source.key, source_metadata_overrides.get(source.key, {}).get("mode", "unknown")),
             "rows": source_counts.get(source.key, 0),
-            "generated_at": (
-                generated_at or ""
-                if source.key in refreshed
-                else str(source_metadata_overrides.get(source.key, {}).get("generated_at", ""))
-            ),
+            "generated_at": source_generated_at(source.key),
         }
-        for source in OFFICIAL_SOURCES
-    }
+        last_error = source_error_by_key.get(source.key, source_metadata_overrides.get(source.key, {}).get("last_error", ""))
+        if last_error:
+            detail["last_error"] = last_error
+        source_details[source.key] = detail
     summary = {
         "generated_at": generated_at or "",
         "rows": len(rows),
@@ -18532,10 +18600,27 @@ def fetch_all_sources(
     if include_manual:
         rows.extend(load_manual_masterfiles(manual_dir or MASTERFILES_DIR / "manual"))
     deduped = dedupe_rows(rows)
-    summary = build_summary(deduped, source_modes=source_modes, generated_at=generated_at)
+    summary = build_summary(deduped, source_modes=source_modes, generated_at=generated_at, source_errors=errors)
     if errors:
         summary["errors"] = errors
     return deduped, summary
+
+
+def merge_summary_errors(
+    existing_errors: Iterable[dict[str, str]] | None,
+    refreshed_errors: Iterable[dict[str, str]] | None,
+    refreshed_source_keys: set[str],
+) -> list[dict[str, str]]:
+    errors_by_source = {
+        error.get("source_key", ""): error
+        for error in existing_errors or []
+        if error.get("source_key") and error.get("source_key") not in refreshed_source_keys
+    }
+    for error in refreshed_errors or []:
+        source_key = error.get("source_key", "")
+        if source_key:
+            errors_by_source[source_key] = error
+    return [errors_by_source[source_key] for source_key in sorted(errors_by_source)]
 
 
 def persist_source_metadata() -> None:
@@ -18581,19 +18666,34 @@ def main(argv: list[str] | None = None) -> None:
     selected_source_keys = {source.key for source in selected_sources}
     if args.sources and MASTERFILE_REFERENCE_CSV.exists():
         existing_rows = load_csv(MASTERFILE_REFERENCE_CSV)
-        rows = merge_reference_rows(existing_rows, rows, source_keys=selected_source_keys)
+        unavailable_source_keys = {
+            source_key
+            for source_key, mode in summary.get("source_modes", {}).items()
+            if mode == "unavailable"
+        }
+        rows = merge_reference_rows(
+            existing_rows,
+            rows,
+            source_keys=selected_source_keys,
+            preserve_source_keys=unavailable_source_keys,
+        )
         existing_summary: dict[str, Any] = {}
         if MASTERFILE_SUMMARY_JSON.exists():
             existing_summary = json.loads(MASTERFILE_SUMMARY_JSON.read_text(encoding="utf-8"))
         merged_source_modes = dict(existing_summary.get("source_modes", {}))
         merged_source_modes.update(summary.get("source_modes", {}))
-        errors = summary.get("errors")
+        errors = merge_summary_errors(
+            existing_summary.get("errors"),
+            summary.get("errors"),
+            selected_source_keys,
+        )
         summary = build_summary(
             rows,
             source_modes=merged_source_modes,
             generated_at=summary.get("generated_at"),
             source_metadata_overrides=existing_summary.get("source_details", {}),
             refreshed_source_keys=selected_source_keys,
+            source_errors=errors,
         )
         if errors:
             summary["errors"] = errors
