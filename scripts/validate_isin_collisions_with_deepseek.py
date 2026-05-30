@@ -79,16 +79,18 @@ def load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def select_top_groups(payload: dict[str, Any], limit: int) -> list[dict[str, Any]]:
+def select_top_groups(payload: dict[str, Any], limit: int, offset: int = 0) -> list[dict[str, Any]]:
     """Highest-risk collision groups first (ticker-collision, then most listings).
 
-    The queue is already sorted that way, so this simply takes the first rows
-    that carry enough member context to triage.
+    The queue is already sorted that way, so this takes a contiguous ``limit``
+    window starting at ``offset``. ``offset`` lets a large sweep be split into
+    disjoint chunks that can run in parallel and be merged afterwards.
     """
 
     items = payload.get("items", [])
     selected = [item for item in items if isinstance(item, dict) and item.get("_members")]
-    return selected[:limit]
+    start = max(0, offset)
+    return selected[start : start + limit]
 
 
 def compact_group(group: dict[str, Any]) -> dict[str, Any]:
@@ -234,31 +236,49 @@ def run_validation(
     batch_size: int,
     call_fn: Callable[[str], dict[str, Any]] | None,
     sleep_seconds: float = 0.0,
+    max_attempts: int = 2,
+    retry_backoff_seconds: float = 0.0,
+    offset: int = 0,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
-    groups = select_top_groups(queue_payload, limit)
+    groups = select_top_groups(queue_payload, limit, offset=offset)
     verdicts: list[dict[str, Any]] = []
     errors: list[dict[str, Any]] = []
     for batch_index, batch in enumerate(chunk(groups, batch_size), start=1):
         prompt = build_prompt(batch)
-        try:
-            payload = dry_run_payload(batch) if call_fn is None else call_fn(prompt)
-            verdicts.extend(normalize_batch(payload, batch))
-            if call_fn is not None and sleep_seconds:
-                time.sleep(sleep_seconds)
-        except (
-            ValueError,
-            KeyError,
-            json.JSONDecodeError,
-            urllib.error.URLError,
-            http.client.HTTPException,
-            TimeoutError,
-            ConnectionError,
-            OSError,
-            RuntimeError,
-        ) as exc:
-            # A single flaky batch (transient read/connection error, malformed
-            # response) must not abort the whole validation run; record and continue.
-            errors.append({"batch_index": batch_index, "error": f"{type(exc).__name__}: {exc}"})
+        last_exc: Exception | None = None
+        for attempt in range(1, max(1, max_attempts) + 1):
+            try:
+                payload = dry_run_payload(batch) if call_fn is None else call_fn(prompt)
+                verdicts.extend(normalize_batch(payload, batch))
+                last_exc = None
+                if call_fn is not None and sleep_seconds:
+                    time.sleep(sleep_seconds)
+                break
+            except (
+                ValueError,
+                KeyError,
+                json.JSONDecodeError,
+                urllib.error.URLError,
+                http.client.HTTPException,
+                TimeoutError,
+                ConnectionError,
+                OSError,
+                RuntimeError,
+            ) as exc:
+                # A single flaky batch (transient read/connection error, malformed
+                # response) must not abort the whole run. Retry a few times, then
+                # record and continue so the rest of the sweep still completes.
+                last_exc = exc
+                if call_fn is not None and attempt < max_attempts and retry_backoff_seconds:
+                    time.sleep(retry_backoff_seconds)
+        if last_exc is not None:
+            errors.append(
+                {
+                    "batch_index": batch_index,
+                    "error": f"{type(last_exc).__name__}: {last_exc}",
+                    "attempts": max(1, max_attempts),
+                }
+            )
     return verdicts, errors
 
 
@@ -333,9 +353,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--model", default=DEFAULT_MODEL)
     parser.add_argument("--base-url", default=DEFAULT_BASE_URL)
     parser.add_argument("--limit", type=int, default=DEFAULT_LIMIT)
+    parser.add_argument("--offset", type=int, default=0, help="Skip this many groups before validating (for chunked runs).")
     parser.add_argument("--batch-size", type=int, default=DEFAULT_BATCH_SIZE)
     parser.add_argument("--timeout", type=float, default=120.0)
     parser.add_argument("--sleep-seconds", type=float, default=0.5)
+    parser.add_argument("--max-attempts", type=int, default=2, help="Attempts per batch before recording an error.")
+    parser.add_argument("--retry-backoff-seconds", type=float, default=2.0)
     parser.add_argument("--dry-run", action="store_true")
     return parser.parse_args(argv)
 
@@ -367,6 +390,9 @@ def main(argv: list[str] | None = None) -> int:
         batch_size=args.batch_size,
         call_fn=call_fn,
         sleep_seconds=args.sleep_seconds,
+        max_attempts=args.max_attempts,
+        retry_backoff_seconds=args.retry_backoff_seconds,
+        offset=args.offset,
     )
     payload = {
         "_meta": {

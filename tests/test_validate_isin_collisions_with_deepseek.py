@@ -36,6 +36,20 @@ def test_select_top_groups_keeps_order_and_limit():
     assert selected[0]["isin"] == "CA08663L1040"
 
 
+def test_select_top_groups_offset_returns_disjoint_window():
+    payload = {
+        "items": [
+            {"isin": "A", "_members": [{"listing_key": "A::1"}]},
+            {"isin": "B", "_members": [{"listing_key": "B::1"}]},
+            {"isin": "C", "_members": [{"listing_key": "C::1"}]},
+        ]
+    }
+    first = select_top_groups(payload, limit=2, offset=0)
+    rest = select_top_groups(payload, limit=2, offset=2)
+    assert [g["isin"] for g in first] == ["A", "B"]
+    assert [g["isin"] for g in rest] == ["C"]
+
+
 def test_build_prompt_includes_members_and_requests_exact_count():
     prompt = build_prompt([SAMPLE])
     assert "Return exactly 1 verdict objects" in prompt
@@ -112,6 +126,39 @@ def test_run_validation_records_batch_errors_without_raising():
     assert verdicts == []
     assert len(errors) == 1
     assert errors[0]["batch_index"] == 1
+    assert errors[0]["attempts"] == 2
+
+
+def test_run_validation_retries_transient_batch_failure_then_succeeds():
+    import http.client
+
+    payload = {"items": [SAMPLE]}
+    calls = {"n": 0}
+
+    def flaky_then_ok(_prompt):
+        calls["n"] += 1
+        if calls["n"] == 1:
+            raise http.client.IncompleteRead(b"")  # first attempt fails
+        return {
+            "verdicts": [
+                {
+                    "isin": "CA08663L1040",
+                    "classification": "distinct_issuers",
+                    "likely_correct_listing_keys": ["TSX::SPXU"],
+                    "likely_misassigned_listing_keys": ["NYSE ARCA::SPXU"],
+                    "confidence": 0.9,
+                    "evidence_needed": "official registry",
+                    "rationale": "ISIN country is CA",
+                }
+            ]
+        }
+
+    verdicts, errors = run_validation(
+        queue_payload=payload, limit=12, batch_size=4, call_fn=flaky_then_ok, max_attempts=2
+    )
+    assert errors == []
+    assert len(verdicts) == 1
+    assert calls["n"] == 2  # retried once, then succeeded
 
 
 def test_run_validation_survives_transient_connection_errors():
