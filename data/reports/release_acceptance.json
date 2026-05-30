@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-05-30T07:31:28Z",
+    "generated_at": "2026-05-30T16:24:58Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -206,18 +206,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-05-30T07:31:28Z",
+      "release_generated_at": "2026-05-30T16:24:58Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-05-30T07:31:25Z"
+          "generated_at": "2026-05-30T16:24:55Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-05-30T07:31:25Z"
+          "generated_at": "2026-05-30T16:24:54Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -232,12 +232,12 @@
         "improvement_campaigns": {
           "path": "data/reports/improvement_campaigns.json",
           "exists": true,
-          "generated_at": "2026-05-25T13:47:04Z"
+          "generated_at": "2026-05-30T16:24:41Z"
         },
         "symbol_changes_review": {
           "path": "data/reports/symbol_changes_review.json",
           "exists": true,
-          "generated_at": "2026-05-25T11:07:48Z"
+          "generated_at": "2026-05-30T16:24:00Z"
         },
         "ohlcv_plausibility": {
           "path": "data/reports/ohlcv_plausibility.json",
@@ -354,7 +354,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-05-30T07:31:25Z",
+      "generated_at": "2026-05-30T16:24:54Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -589,7 +589,7 @@
       "source_file_mismatches": {},
       "unexpected_source_files": [],
       "policy_missing_markers": [],
-      "rows": 263,
+      "rows": 271,
       "missing_summary_keys": [],
       "row_count_mismatch": {},
       "row_gaps": [],
@@ -1154,8 +1154,8 @@
       "passed": true,
       "batches": 10,
       "summary_next_review_batches": 10,
-      "summary_next_review_batch_rows": 28741,
-      "computed_next_review_batch_rows": 28741,
+      "summary_next_review_batch_rows": 28749,
+      "computed_next_review_batch_rows": 28749,
       "observed_campaign_keys_by_priority": {
         "1": "b3",
         "2": "otc",
