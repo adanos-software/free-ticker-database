@@ -71,8 +71,9 @@ CSV_FIELDNAMES = [
     "closure_status",
 ]
 
-# Corporate-form suffixes and noise tokens stripped before name comparison so that
-# share-class and depositary variants of the same issuer cluster together.
+# Corporate-form suffixes used both to detect full issuer names and to strip noise
+# before name comparison so that share-class and depositary variants of the same
+# issuer cluster together.
 _SUFFIX_RE = re.compile(
     r"\b("
     r"LIMITED|LTD|INC|INCORPORATED|CORP|CORPORATION|COMPANY|CO|PLC|LLC|LP|"
@@ -81,6 +82,21 @@ _SUFFIX_RE = re.compile(
     r"CLASS|ORD|ORDINARY|COMMON|STOCK|SHARES|SHARE|ADR|GDR|SPONSORED|UNSPONSORED|"
     r"DEPOSITARY|RECEIPTS|UNIT|UNITS|THE|NEW|REGISTERED"
     r")\b"
+)
+
+# A trailing trading-currency code appended by some venue feeds (for example SGX
+# "HongkongLand USD"). Only a *trailing* code is stripped, and only during
+# token/compact-key comparison -- never used to decide whether a name is a full
+# issuer name. This keeps an abbreviated mnemonic like "DFIRG USD" out of the
+# full-name set, and leaves a mid-name currency token in place (so heavily
+# abbreviated product names that happen to share one are not split apart). A bare
+# trailing currency token never identifies an issuer, so stripping it cannot merge
+# two genuinely distinct issuers.
+_TRAILING_CURRENCY_RE = re.compile(
+    r"(?:\s|^)("
+    r"USD|EUR|GBP|GBX|CHF|HKD|SGD|JPY|CNY|CNH|AUD|CAD|NZD|SEK|NOK|DKK|"
+    r"ZAR|INR|KRW|TWD|THB|MYR|IDR|BRL|MXN|ILS|AED|SAR|PLN|HUF|CZK"
+    r")\s*$"
 )
 _STOP_TOKENS = {
     "A",
@@ -175,15 +191,18 @@ def load_csv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
-def _name_tokens_with(name: str, fold) -> set[str]:
+def _strip_noise(name: str, fold) -> str:
     cleaned = _SUFFIX_RE.sub(" ", fold(name or "").upper())
-    cleaned = re.sub(r"[^A-Z0-9 ]", " ", cleaned)
+    return _TRAILING_CURRENCY_RE.sub(" ", cleaned)
+
+
+def _name_tokens_with(name: str, fold) -> set[str]:
+    cleaned = re.sub(r"[^A-Z0-9 ]", " ", _strip_noise(name, fold))
     return {tok for tok in cleaned.split() if len(tok) > 1 and tok not in _STOP_TOKENS}
 
 
 def _compact_key_with(name: str, fold) -> str:
-    cleaned = _SUFFIX_RE.sub(" ", fold(name or "").upper())
-    return re.sub(r"[^A-Z0-9]", "", cleaned)
+    return re.sub(r"[^A-Z0-9]", "", _strip_noise(name, fold))
 
 
 def name_tokens(name: str) -> set[str]:

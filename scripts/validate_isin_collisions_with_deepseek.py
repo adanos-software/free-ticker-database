@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import http.client
 import json
 import os
 import sys
@@ -244,8 +245,20 @@ def run_validation(
             verdicts.extend(normalize_batch(payload, batch))
             if call_fn is not None and sleep_seconds:
                 time.sleep(sleep_seconds)
-        except (ValueError, KeyError, json.JSONDecodeError, urllib.error.URLError, RuntimeError) as exc:
-            errors.append({"batch_index": batch_index, "error": str(exc)})
+        except (
+            ValueError,
+            KeyError,
+            json.JSONDecodeError,
+            urllib.error.URLError,
+            http.client.HTTPException,
+            TimeoutError,
+            ConnectionError,
+            OSError,
+            RuntimeError,
+        ) as exc:
+            # A single flaky batch (transient read/connection error, malformed
+            # response) must not abort the whole validation run; record and continue.
+            errors.append({"batch_index": batch_index, "error": f"{type(exc).__name__}: {exc}"})
     return verdicts, errors
 
 

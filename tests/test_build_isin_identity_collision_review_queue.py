@@ -55,6 +55,15 @@ def test_compact_name_key_collapses_spacing_and_punctuation_variants():
     assert compact_name_key("Genex Pharmaceutical Inc") != compact_name_key("Genix Pharmaceuticals Corporation")
 
 
+def test_trailing_currency_code_is_stripped_but_mid_name_currency_is_kept():
+    # A trailing venue currency suffix collapses ("HongkongLand USD" -> the issuer).
+    assert compact_name_key("HongkongLand USD") == compact_name_key("Hongkong Land Holdings Limited")
+    # A non-trailing currency token is preserved, so it cannot silently drop signal.
+    assert "USD" in name_tokens("iShrs iBnds Dec26 Crp USD D")
+    # A currency code is not, by itself, enough to make a mnemonic a full name.
+    assert not is_full_name("DFIRG USD")
+
+
 def test_clustering_reconciles_unicode_and_compound_variants_of_one_issuer():
     # Nordic diacritic-drop, German umlaut expansion, and compound spacing all
     # describe a single issuer and must not be reported as a collision.

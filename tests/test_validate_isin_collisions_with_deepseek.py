@@ -114,6 +114,22 @@ def test_run_validation_records_batch_errors_without_raising():
     assert errors[0]["batch_index"] == 1
 
 
+def test_run_validation_survives_transient_connection_errors():
+    import http.client
+
+    payload = {"items": [SAMPLE]}
+
+    def flaky_call(_prompt):
+        raise http.client.IncompleteRead(b"")  # transient network read failure
+
+    verdicts, errors = run_validation(
+        queue_payload=payload, limit=12, batch_size=4, call_fn=flaky_call
+    )
+    assert verdicts == []
+    assert len(errors) == 1
+    assert "IncompleteRead" in errors[0]["error"]
+
+
 def test_dry_run_path_produces_uncertain_verdicts():
     payload = {"items": [SAMPLE]}
     verdicts, errors = run_validation(queue_payload=payload, limit=12, batch_size=4, call_fn=None)

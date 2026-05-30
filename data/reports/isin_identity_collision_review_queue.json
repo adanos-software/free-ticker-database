@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-05-30T04:29:29Z",
+    "generated_at": "2026-05-30T05:11:18Z",
     "policy": "ISIN identity collisions are reported for review only. No ISIN, country, name, or scope change is authorized without official listing-keyed evidence.",
     "source_files": {
       "listings_csv": "data/listings.csv"
@@ -2313,53 +2313,6 @@
       "member_exchanges": "HKEX | LSE | OTC",
       "member_names": "CKI HOLDINGS | Ck Infra Holdings Ltd",
       "member_tickers": "01038 | CKI | CKISF",
-      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
-      "registered_country": "Bermuda",
-      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
-      "review_queue": "manual_isin_identity_review",
-      "shared_tickers": ""
-    },
-    {
-      "_members": [
-        {
-          "asset_type": "Stock",
-          "country": "Bermuda",
-          "country_code": "BM",
-          "exchange": "LSE",
-          "listing_key": "LSE::HKLB",
-          "name": "Hong Kong Land Holdings Ltd",
-          "ticker": "HKLB"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Bermuda",
-          "country_code": "BM",
-          "exchange": "OTC",
-          "listing_key": "OTC::HKHGF",
-          "name": "Hongkong Land Holdings Limited",
-          "ticker": "HKHGF"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Bermuda",
-          "country_code": "BM",
-          "exchange": "SGX",
-          "listing_key": "SGX::H78",
-          "name": "HongkongLand USD",
-          "ticker": "H78"
-        }
-      ],
-      "closure_status": "open_needs_official_identifier_evidence",
-      "cluster_count": "2",
-      "collision_signals": "name_clusters_disjoint;registered_country_known",
-      "decision_candidate": "isin_shared_by_distinct_issuers",
-      "isin": "BMG4587L1090",
-      "isin_valid": "true",
-      "listing_count": "3",
-      "listing_keys": "LSE::HKLB|OTC::HKHGF|SGX::H78",
-      "member_exchanges": "LSE | OTC | SGX",
-      "member_names": "Hongkong Land Holdings Limited | HongkongLand USD",
-      "member_tickers": "H78 | HKHGF | HKLB",
       "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
       "registered_country": "Bermuda",
       "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
@@ -17748,14 +17701,14 @@
   ],
   "summary": {
     "closed_groups": 0,
-    "collision_groups": 427,
+    "collision_groups": 426,
     "decision_candidate_totals": {
-      "isin_shared_by_distinct_issuers": 426,
+      "isin_shared_by_distinct_issuers": 425,
       "ticker_collision_isin_misassignment_suspected": 1
     },
     "direct_identifier_apply_allowed_rows": 0,
-    "generated_at": "2026-05-30T04:29:29Z",
-    "listings_involved": 1022,
+    "generated_at": "2026-05-30T05:11:18Z",
+    "listings_involved": 1019,
     "next_review_batches": [
       {
         "collision_groups": 107,
@@ -17860,17 +17813,17 @@
       {
         "collision_groups": 3,
         "decision_candidate": "isin_shared_by_distinct_issuers",
-        "registered_country": "Bermuda"
-      },
-      {
-        "collision_groups": 3,
-        "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "Finland"
       },
       {
         "collision_groups": 3,
         "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "Norway"
+      },
+      {
+        "collision_groups": 2,
+        "decision_candidate": "isin_shared_by_distinct_issuers",
+        "registered_country": "Bermuda"
       },
       {
         "collision_groups": 2,
@@ -17948,13 +17901,13 @@
         "registered_country": "Canada"
       }
     ],
-    "open_groups": 427,
+    "open_groups": 426,
     "policy": "An ISIN identifies exactly one issuer; an ISIN shared by distinct issuer names is a provable anomaly. This queue reports and gates the collisions and applies no ISIN, country, or name change without official listing-keyed evidence.",
     "registered_country_totals": {
       "Australia": 35,
       "Austria": 6,
       "Belgium": 4,
-      "Bermuda": 3,
+      "Bermuda": 2,
       "Canada": 108,
       "Cayman Islands": 8,
       "China": 5,
