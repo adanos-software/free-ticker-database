@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+### Added
+
+- Added an ISIN identity-collision review campaign (`scripts/build_isin_identity_collision_review_queue.py`, report `data/reports/isin_identity_collision_review_queue.*`) that flags ISINs shared by two or more distinct issuer-name clusters — a provable anomaly, since an ISIN identifies exactly one issuer. The current dataset surfaces 427 collision groups across 1,022 listings (for example a US-listed fund inheriting a foreign issuer's ISIN through a shared ticker). Name clustering reconciles share-class, depositary, spacing/punctuation, and unicode/transliteration variants (Nordic diacritic-drop and German umlaut conventions) so only genuinely distinct issuers are reported.
+- Added a DeepSeek v4 Pro triage cross-check (`scripts/validate_isin_collisions_with_deepseek.py`, report `data/reports/deepseek_isin_collision_validation.*`) that independently classifies the highest-risk collision groups and attributes the likely-misassigned listing. The first run confirmed all 12 top groups as distinct issuers (100% agreement with the detector).
+
+### Changed
+
+- Kept the campaign report-and-gate only: no ISIN, country, name, or scope value is changed. Each group is gated as `open_needs_official_identifier_evidence` until a national numbering agency, issuer, or exchange security master keyed to the exact listing confirms the holder. DeepSeek output is advisory triage and authorizes no data change.
+
 ## [3.24.0] - 2026-05-16
 
 ### Added

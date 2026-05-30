@@ -78,6 +78,8 @@ Reference and audit files:
 | [`data/reports/override_debt_report.md`](data/reports/override_debt_report.md) | Open reviewed metadata/alias override debt after canonical normalization |
 | [`data/reports/ohlcv_plausibility.md`](data/reports/ohlcv_plausibility.md) | Kronos-inspired market-data plausibility queue |
 | [`data/reports/masterfile_collision_report.json`](data/reports/masterfile_collision_report.json) | Official-symbol gaps blocked by ticker collisions |
+| [`data/reports/isin_identity_collision_review_queue.md`](data/reports/isin_identity_collision_review_queue.md) | ISINs shared by distinct issuer names (identity-collision review, gated for official evidence) |
+| [`data/reports/deepseek_isin_collision_validation.md`](data/reports/deepseek_isin_collision_validation.md) | DeepSeek triage cross-check of the highest-risk ISIN identity collisions |
 | [`docs/quality_improvement_plan.md`](docs/quality_improvement_plan.md) | Structured quality roadmap from the latest full-dataset audit |
 
 ## Data Model

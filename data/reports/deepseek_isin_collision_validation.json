@@ -1,0 +1,167 @@
+{
+  "_meta": {
+    "dry_run": false,
+    "generated_at": "2026-05-30T04:34:19Z",
+    "model": "deepseek-v4-pro",
+    "policy": "DeepSeek triage is advisory only. It authorizes no ISIN, country, name, or scope change without official listing-keyed evidence.",
+    "queue_json": "data/reports/isin_identity_collision_review_queue.json"
+  },
+  "errors": [],
+  "items": [
+    {
+      "agrees_with_detector": "true",
+      "deepseek_classification": "distinct_issuers",
+      "deepseek_confidence": 0.95,
+      "evidence_needed": "Official documentation confirming ISIN assignment for both ETFs.",
+      "isin": "CA08663L1040",
+      "likely_correct_listing_keys": "TSX::SPXU",
+      "likely_misassigned_listing_keys": "NYSE ARCA::SPXU",
+      "rationale": "The TSX listing is a Canadian-domiciled Global X ETF matching the ISIN's country code (CA). The NYSE ARCA listing is a US-domiciled ProShares ETF, a different issuer and product.",
+      "registered_country": "Canada",
+      "review_gate": "Triage only. Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence confirms the holder."
+    },
+    {
+      "agrees_with_detector": "true",
+      "deepseek_classification": "distinct_issuers",
+      "deepseek_confidence": 0.98,
+      "evidence_needed": "Confirm correct ISINs for all OTC-listed Malaysian/other companies and verify Weyerhaeuser's ISIN.",
+      "isin": "US9621661043",
+      "likely_correct_listing_keys": "LSE::0LWG|NYSE::WY",
+      "likely_misassigned_listing_keys": "OTC::AIABF|OTC::CIMDF|OTC::DYNDF|OTC::GEBHF|OTC::GMALF|OTC::KLKBY|OTC::MLYNF|OTC::PNAGF|OTC::RMGNF|OTC::RNMBF|OTC::SDPNF|OTC::SIMEF|OTC::TNABF",
+      "rationale": "Weyerhaeuser is a US company consistent with ISIN country code. All OTC listings are unrelated Malaysian (and other) companies, clearly misassigned.",
+      "registered_country": "United States",
+      "review_gate": "Triage only. Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence confirms the holder."
+    },
+    {
+      "agrees_with_detector": "true",
+      "deepseek_classification": "distinct_issuers",
+      "deepseek_confidence": 0.95,
+      "evidence_needed": "Verify HelloFresh SE ISIN assignment and correct ISIN for Hilton Food Group plc.",
+      "isin": "DE000A161408",
+      "likely_correct_listing_keys": "LSE::0RVI|OTC::HELFY|OTC::HLFFF",
+      "likely_misassigned_listing_keys": "OTC::HLFGY|OTC::HLTFF",
+      "rationale": "HelloFresh SE is a German company matching the ISIN country. Hilton Food Group is a UK-based firm, distinct from HelloFresh.",
+      "registered_country": "Germany",
+      "review_gate": "Triage only. Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence confirms the holder."
+    },
+    {
+      "agrees_with_detector": "true",
+      "deepseek_classification": "distinct_issuers",
+      "deepseek_confidence": 0.97,
+      "evidence_needed": "Confirm ISIN assignment for iShares MSCI ACWI UCITS ETF and correct ISIN for SPACSphere Acquisition Corp.",
+      "isin": "IE00B6R52259",
+      "likely_correct_listing_keys": "LSE::ISAC|TASE::IS-FF505|TASE::ISFF505|XETRA::IUSQ",
+      "likely_misassigned_listing_keys": "NASDAQ::SSAC",
+      "rationale": "The iShares ETF is an Irish-domiciled UCITS ETF matching the ISIN country code. The NASDAQ listing is a SPAC, clearly a different issuer.",
+      "registered_country": "Ireland",
+      "review_gate": "Triage only. Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence confirms the holder."
+    },
+    {
+      "agrees_with_detector": "true",
+      "deepseek_classification": "distinct_issuers",
+      "deepseek_confidence": 0.9,
+      "evidence_needed": "Official ISIN registration details to confirm the correct fund name and index tracked; current mismatch between 'Ibovespa' and 'MSCI Brazil' suggests different securities.",
+      "isin": "LU1900066207",
+      "likely_correct_listing_keys": "LSE::RIOL|LSE::RIOU",
+      "likely_misassigned_listing_keys": "OTC::BRANF|SIX::LYRIO|XETRA::LBRA",
+      "rationale": "The ISIN is linked to a Lyxor Brazil ETF. LSE listings match typical name 'Lyxor UCITS Brazil (Ibovespa) C-EUR'. SIX/XETRA listings reference 'MSCI Brazil', a different index, likely a separate ETF. OTC::BRANF is an unrelated company. Hence, distinct issuers.",
+      "registered_country": "Luxembourg",
+      "review_gate": "Triage only. Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence confirms the holder."
+    },
+    {
+      "agrees_with_detector": "true",
+      "deepseek_classification": "distinct_issuers",
+      "deepseek_confidence": 0.95,
+      "evidence_needed": "Confirm ISIN registration for Universal Music Group N.V. versus New Zealand Coastal Seafoods.",
+      "isin": "NL0015000IY2",
+      "likely_correct_listing_keys": "LSE::0UMG|OTC::UMGNF|OTC::UNVGY|XETRA::0VD",
+      "likely_misassigned_listing_keys": "OTC::NZSCF",
+      "rationale": "All but OTC::NZSCF correspond to Universal Music Group, a Dutch music company. OTC::NZSCF is a seafood company, clearly unrelated.",
+      "registered_country": "Netherlands",
+      "review_gate": "Triage only. Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence confirms the holder."
+    },
+    {
+      "agrees_with_detector": "true",
+      "deepseek_classification": "distinct_issuers",
+      "deepseek_confidence": 0.95,
+      "evidence_needed": "Official ISIN data for Mastercard Inc; confirm ASX:MA1 and LSE:MAST are unrelated trusts/companies.",
+      "isin": "US57636Q1040",
+      "likely_correct_listing_keys": "LSE::0R2Z|NYSE::MA|XETRA::M4I",
+      "likely_misassigned_listing_keys": "ASX::MA1|LSE::MAST",
+      "rationale": "ISIN US57636Q1040 is widely known as Mastercard Inc. ASX::MA1 is a credit income trust, and LSE::MAST is an energy developments company, both unrelated.",
+      "registered_country": "United States",
+      "review_gate": "Triage only. Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence confirms the holder."
+    },
+    {
+      "agrees_with_detector": "true",
+      "deepseek_classification": "distinct_issuers",
+      "deepseek_confidence": 0.95,
+      "evidence_needed": "Verify ISIN assignment for Liberty Gold Corp vs PGG Wrightson.",
+      "isin": "CA53056H1047",
+      "likely_correct_listing_keys": "LSE::0V46|OTC::LGDTF|TSX::LGD",
+      "likely_misassigned_listing_keys": "OTC::PGWFF",
+      "rationale": "The ISIN is for Liberty Gold Corp, a Canadian mining company. OTC::PGWFF corresponds to PGG Wrightson, a New Zealand agricultural firm, unrelated.",
+      "registered_country": "Canada",
+      "review_gate": "Triage only. Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence confirms the holder."
+    },
+    {
+      "agrees_with_detector": "true",
+      "deepseek_classification": "distinct_issuers",
+      "deepseek_confidence": 1.0,
+      "evidence_needed": "Official ISIN assignment records for CA8119161054.",
+      "isin": "CA8119161054",
+      "likely_correct_listing_keys": "LSE::0VGV|NYSE::SA",
+      "likely_misassigned_listing_keys": "OTC::BCDRF|OTC::SARDF",
+      "rationale": "Seabridge Gold Inc. is a Canadian gold mining company. Banco Santander is a Spanish bank, and Sanford Limited is a New Zealand seafood company. The ISIN is Canadian, so likely belongs to Seabridge Gold.",
+      "registered_country": "Canada",
+      "review_gate": "Triage only. Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence confirms the holder."
+    },
+    {
+      "agrees_with_detector": "true",
+      "deepseek_classification": "distinct_issuers",
+      "deepseek_confidence": 1.0,
+      "evidence_needed": "Official ISIN assignment records for CH0012142631.",
+      "isin": "CH0012142631",
+      "likely_correct_listing_keys": "LSE::0QJS|SIX::CLN",
+      "likely_misassigned_listing_keys": "OTC::CNHHY|OTC::CRRNF",
+      "rationale": "Clariant AG is a Swiss specialty chemicals company. Cairn Homes plc is an Irish homebuilder. The ISIN is Swiss, so likely belongs to Clariant.",
+      "registered_country": "Switzerland",
+      "review_gate": "Triage only. Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence confirms the holder."
+    },
+    {
+      "agrees_with_detector": "true",
+      "deepseek_classification": "distinct_issuers",
+      "deepseek_confidence": 1.0,
+      "evidence_needed": "Official ISIN assignment records for CH0024638212.",
+      "isin": "CH0024638212",
+      "likely_correct_listing_keys": "LSE::0QOT|OTC::SHLRF|SIX::SCHN",
+      "likely_misassigned_listing_keys": "SET::SHR",
+      "rationale": "Schindler Holding AG is a Swiss elevator manufacturer. S Hotels and Resorts is a Thai hospitality company. The ISIN is Swiss, so likely belongs to Schindler.",
+      "registered_country": "Switzerland",
+      "review_gate": "Triage only. Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence confirms the holder."
+    },
+    {
+      "agrees_with_detector": "true",
+      "deepseek_classification": "distinct_issuers",
+      "deepseek_confidence": 1.0,
+      "evidence_needed": "Official ISIN assignment records for CH0445689208.",
+      "isin": "CH0445689208",
+      "likely_correct_listing_keys": "SIX::HODL-EUR|SIX::HODL-USD|XETRA::21XH",
+      "likely_misassigned_listing_keys": "BATS::HODL",
+      "rationale": "21Shares Crypto Basket Index ETP is a Swiss exchange-traded product. VanEck Bitcoin Trust is a US ETF managed by VanEck. They are distinct issuers. The ISIN is Swiss, so likely belongs to 21Shares.",
+      "registered_country": "Switzerland",
+      "review_gate": "Triage only. Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence confirms the holder."
+    }
+  ],
+  "summary": {
+    "agrees_with_detector": 12,
+    "classification_totals": {
+      "distinct_issuers": 12
+    },
+    "disagrees_with_detector": 0,
+    "errors": 0,
+    "generated_at": "2026-05-30T04:34:19Z",
+    "policy": "DeepSeek triage is advisory only and authorizes no ISIN, country, or name change. Official listing-keyed identifier evidence remains required.",
+    "validated_groups": 12
+  }
+}
