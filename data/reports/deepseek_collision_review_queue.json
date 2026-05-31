@@ -1,12 +1,12 @@
 {
   "_meta": {
-    "generated_at": "2026-05-31T10:12:10Z",
+    "generated_at": "2026-05-31T10:18:48Z",
     "deepseek_summary_json": "data/reports/deepseek_review_summary.json",
     "masterfile_collision_review_csv": "data/reports/masterfile_collision_review.csv",
     "policy": "DeepSeek collision reviews are triage only. They do not authorize automatic merge, dedupe, alias, identifier, or cross-listing changes."
   },
   "summary": {
-    "rows": 386,
+    "rows": 387,
     "unmatched_deepseek_rows": 0,
     "target_exchange_totals": {
       "ADX": 3,
@@ -20,7 +20,8 @@
       "ISE": 1,
       "KRX": 1,
       "LSE": 20,
-      "NSE_IN": 15
+      "NSE_IN": 15,
+      "NZX": 1
     },
     "official_source_key_totals": {
       "adx_market_watch": 3,
@@ -33,7 +34,8 @@
       "hnx_listed_securities": 26,
       "krx_listed_companies": 1,
       "lse_price_explorer": 20,
-      "nse_india_securities_available": 15
+      "nse_india_securities_available": 15,
+      "nzx_instruments": 1
     }
   },
   "items": [
@@ -9683,6 +9685,31 @@
       "deepseek_evidence_needed": "None",
       "deepseek_rationale": "Different ISINs (INE00NI01015 vs UG0000000014) indicate distinct issuers despite same ticker.",
       "deepseek_do_not_apply_reason": "No merge or block needed; distinct issuers.",
+      "review_queue": "manual_cross_listing_identity_review",
+      "review_gate": "Do not merge, alias, or dedupe automatically. Confirm listing status, ISIN fungibility, exchange/MIC, instrument type, and local trading attributes before any data change.",
+      "recommended_next_action": "Review as possible cross-listing using official source rows and existing listing keys; keep as source-gap/collision queue item until reviewer records listing-keyed evidence."
+    },
+    {
+      "target_listing_key": "NZX::DGL",
+      "ticker": "DGL",
+      "target_exchange": "NZX",
+      "official_name": "Delegat Group Limited Ordinary Shares",
+      "official_asset_type": "Stock",
+      "official_isin": "NZDGLE0001S3",
+      "official_source_key": "nzx_instruments",
+      "existing_listing_keys": "ASX::DGL",
+      "existing_exchanges": "ASX",
+      "existing_names": "DGL GROUP LIMITED",
+      "existing_asset_types": "Stock",
+      "existing_isins": "AU0000149338",
+      "same_isin_listing_keys": "",
+      "identity_evidence": "official_isin|asset_type_consistent",
+      "collision_risk_flags": "ticker_reused_on_other_exchange|existing_isin_conflict|no_exact_name_match",
+      "deepseek_decision_candidate": "possible_duplicate_or_cross_listing",
+      "deepseek_confidence": 0.5,
+      "deepseek_evidence_needed": "Official source confirming both ISINs refer to same corporate entity, such as a dual listing announcement, common LEI, or exchange confirmation.",
+      "deepseek_rationale": "Name similarity ('Delegat Group Limited' vs 'DGL GROUP LIMITED') and both ASX/NZX listings suggest possible dual listing; different ISINs require verification of cross-listing linkage.",
+      "deepseek_do_not_apply_reason": "Without confirmed cross-listing evidence, merging or linking could incorrectly associate distinct companies.",
       "review_queue": "manual_cross_listing_identity_review",
       "review_gate": "Do not merge, alias, or dedupe automatically. Confirm listing status, ISIN fungibility, exchange/MIC, instrument type, and local trading attributes before any data change.",
       "recommended_next_action": "Review as possible cross-listing using official source rows and existing listing keys; keep as source-gap/collision queue item until reviewer records listing-keyed evidence."
