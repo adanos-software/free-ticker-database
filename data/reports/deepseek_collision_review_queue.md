@@ -1,6 +1,6 @@
 # DeepSeek Collision Review Queue
 
-Generated: `2026-05-31T14:48:39Z`
+Generated: `2026-05-31T14:56:50Z`
 
 Policy: DeepSeek collision reviews are triage only and do not authorize automatic data changes.
 
@@ -8,7 +8,7 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 
 | Metric | Value |
 | --- | ---: |
-| Queue rows | 527 |
+| Queue rows | 532 |
 | Unmatched DeepSeek rows | 0 |
 
 ## Target Exchanges
@@ -34,7 +34,7 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | TADAWUL | 25 |
 | TWSE | 8 |
 | UPCOM | 72 |
-| XETRA | 5 |
+| XETRA | 10 |
 
 ## Official Evidence Sources
 
@@ -45,7 +45,7 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | bse_india_scrips | 35 |
 | bvb_shares_directory | 4 |
 | cse_ma_listed_companies | 2 |
-| deutsche_boerse_xetra_all_tradable_equities | 5 |
+| deutsche_boerse_xetra_all_tradable_equities | 10 |
 | euronext_equities | 36 |
 | euronext_etfs | 246 |
 | hnx_listed_securities | 26 |
