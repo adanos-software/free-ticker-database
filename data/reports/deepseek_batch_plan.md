@@ -1,6 +1,6 @@
 # DeepSeek Batch Plan
 
-Generated: `2026-05-31T15:03:42Z`
+Generated: `2026-05-31T15:12:20Z`
 
 Policy: DeepSeek output is advisory triage only and cannot authorize direct data application.
 
@@ -8,7 +8,7 @@ Policy: DeepSeek output is advisory triage only and cannot authorize direct data
 
 | Queue | Rows | Already Reviewed | Unreviewed | Priority |
 | --- | ---: | ---: | ---: | ---: |
-| masterfile_collision | 11107 | 2515 | 8592 | 1 |
+| masterfile_collision | 11107 | 2540 | 8567 | 1 |
 | otc_scope | 11056 | 25 | 11031 | 2 |
 | weak_sector | 646 | 50 | 596 | 3 |
 
