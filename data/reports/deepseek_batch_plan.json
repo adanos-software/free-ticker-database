@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-05-31T17:19:10Z",
+    "generated_at": "2026-05-31T17:23:58Z",
     "review_summary_csv": "data/reports/deepseek_review_summary.csv",
     "policy": "This plan prepares DeepSeek advisory triage only. DeepSeek output must not authorize inferred identifiers, sectors, categories, names, symbol changes, scope changes, or direct data application."
   },
@@ -13,8 +13,8 @@
       "priority": 1,
       "reason": "Largest official-masterfile identity queue; DeepSeek can triage likely cross-listing vs. still-needs-evidence cases without applying data.",
       "rows": 11107,
-      "already_deepseek_reviewed": 2965,
-      "unreviewed_rows": 8142
+      "already_deepseek_reviewed": 3015,
+      "unreviewed_rows": 8092
     },
     {
       "queue": "otc_scope",
@@ -45,7 +45,7 @@
     "source_csv": "data/reports/masterfile_collision_review.csv",
     "batch_csv": "data/deepseek_review_jobs/next_masterfile_collision_batch.csv",
     "rows": 100,
-    "batch_size": 5,
+    "batch_size": 10,
     "reason": "Largest official-masterfile identity queue; DeepSeek can triage likely cross-listing vs. still-needs-evidence cases without applying data.",
     "run_command": [
       "python",
@@ -57,7 +57,7 @@
       "--limit",
       "100",
       "--batch-size",
-      "5",
+      "10",
       "--raw-responses-jsonl",
       "data/deepseek_review_jobs/raw_responses.jsonl",
       "--normalized-json",
@@ -77,7 +77,7 @@
       "--limit",
       "100",
       "--batch-size",
-      "5",
+      "10",
       "--raw-responses-jsonl",
       "data/deepseek_review_jobs/raw_responses.jsonl",
       "--normalized-json",
