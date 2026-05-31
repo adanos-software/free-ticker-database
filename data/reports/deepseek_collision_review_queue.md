@@ -1,6 +1,6 @@
 # DeepSeek Collision Review Queue
 
-Generated: `2026-05-31T11:14:33Z`
+Generated: `2026-05-31T11:20:58Z`
 
 Policy: DeepSeek collision reviews are triage only and do not authorize automatic data changes.
 
@@ -8,7 +8,7 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 
 | Metric | Value |
 | --- | ---: |
-| Queue rows | 412 |
+| Queue rows | 417 |
 | Unmatched DeepSeek rows | 0 |
 
 ## Target Exchanges
@@ -29,7 +29,8 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | NSE_IN | 15 |
 | NZX | 1 |
 | OSL | 3 |
-| PSE | 22 |
+| PSE | 26 |
+| SGX | 1 |
 
 ## Official Evidence Sources
 
@@ -47,7 +48,8 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | lse_price_explorer | 20 |
 | nse_india_securities_available | 15 |
 | nzx_instruments | 1 |
-| pse_listed_company_directory | 22 |
+| pse_listed_company_directory | 26 |
+| sgx_securities_prices | 1 |
 
 ## Review Gate
 
