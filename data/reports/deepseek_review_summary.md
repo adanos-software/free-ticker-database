@@ -1,6 +1,6 @@
 # DeepSeek Review Summary
 
-Generated: `2026-05-31T23:04:51Z`
+Generated: `2026-05-31T23:19:55Z`
 
 Policy: DeepSeek output is triage only and does not authorize data application.
 
@@ -8,19 +8,19 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 
 | Metric | Value |
 | --- | ---: |
-| Raw batches | 872 |
-| Review rows | 5840 |
+| Raw batches | 882 |
+| Review rows | 5940 |
 | Errors | 0 |
 
 ## Decisions By Queue
 
 | Review kind | Decision | Rows |
 | --- | --- | ---: |
-| masterfile_collision | candidate_apply_blocked | 1086 |
-| masterfile_collision | keep_source_gap | 787 |
-| masterfile_collision | needs_official_evidence | 1233 |
-| masterfile_collision | out_of_scope_candidate | 430 |
-| masterfile_collision | possible_duplicate_or_cross_listing | 1593 |
+| masterfile_collision | candidate_apply_blocked | 1111 |
+| masterfile_collision | keep_source_gap | 803 |
+| masterfile_collision | needs_official_evidence | 1245 |
+| masterfile_collision | out_of_scope_candidate | 432 |
+| masterfile_collision | possible_duplicate_or_cross_listing | 1638 |
 | masterfile_collision | uncertain | 636 |
 | otc_scope | needs_official_evidence | 25 |
 | weak_sector | keep_source_gap | 7 |
@@ -31,11 +31,11 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 
 | Review kind | Safe action | Rows |
 | --- | --- | ---: |
-| masterfile_collision | candidate_for_official_followup | 1516 |
+| masterfile_collision | candidate_for_official_followup | 1543 |
 | masterfile_collision | likely_distinct_issuer_review | 306 |
-| masterfile_collision | likely_same_issuer_review | 1287 |
-| masterfile_collision | needs_official_evidence | 1869 |
-| masterfile_collision | source_gap_accept | 787 |
+| masterfile_collision | likely_same_issuer_review | 1332 |
+| masterfile_collision | needs_official_evidence | 1881 |
+| masterfile_collision | source_gap_accept | 803 |
 | otc_scope | needs_official_evidence | 25 |
 | weak_sector | candidate_for_official_followup | 1 |
 | weak_sector | needs_official_evidence | 42 |
