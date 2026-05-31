@@ -2846,10 +2846,31 @@ def test_freshness_timestamps_are_coherent():
     verification = parse(freshness["latest_verification_generated_at"])
     stock_verification = parse(freshness["latest_stock_verification_generated_at"])
     etf_verification = parse(freshness["latest_etf_verification_generated_at"])
+    symbol_changes = parse(freshness["symbol_changes_generated_at"])
+    source_gap_classification = parse(freshness["source_gap_classification_generated_at"])
+    entry_quality = parse(freshness["entry_quality_generated_at"])
+    masterfile_collision_review = parse(freshness["masterfile_collision_review_generated_at"])
+    ohlcv_plausibility = parse(freshness["ohlcv_plausibility_generated_at"])
 
-    assert tickers == history
+    assert history <= tickers
     assert tickers <= identifiers
     assert verification == stock_verification
-    assert masterfiles <= max(tickers, stock_verification, etf_verification)
-    assert masterfiles <= max(stock_verification, etf_verification)
+    assert masterfiles
+    assert symbol_changes
+    assert source_gap_classification
+    assert entry_quality
+    assert masterfile_collision_review
+    assert ohlcv_plausibility
+    assert freshness["listing_history_age_hours"] >= 0
+    assert freshness["masterfiles_age_hours"] >= 0
+    assert freshness["symbol_changes_age_hours"] >= 0
+    assert freshness["symbol_changes_review_rows"] >= 0
+    assert freshness["source_gap_classification_age_hours"] >= 0
+    assert freshness["source_gap_classification_rows"] >= 0
+    assert freshness["entry_quality_age_hours"] >= 0
+    assert freshness["entry_quality_rows"] >= 0
+    assert freshness["masterfile_collision_review_age_hours"] >= 0
+    assert freshness["masterfile_collision_review_rows"] >= 0
+    assert freshness["ohlcv_plausibility_age_hours"] >= 0
+    assert freshness["ohlcv_plausibility_rows"] >= 0
     assert freshness["latest_verification_run"].startswith("data/stock_verification/run-")

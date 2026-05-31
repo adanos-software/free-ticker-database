@@ -57,6 +57,7 @@ OPENFIGI_EXCHANGE_HINTS = {
     "NYSE ARCA": {"US"},
     "NYSE CHICAGO": {"US"},
     "NYSE MKT": {"US"},
+    "NEO": {"CN"},
     "TSX": {"CN"},
     "TSXV": {"CN"},
 }

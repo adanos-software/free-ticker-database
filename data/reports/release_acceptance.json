@@ -1,0 +1,1802 @@
+{
+  "_meta": {
+    "generated_at": "2026-05-30T16:24:58Z",
+    "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
+    "source_reports": {
+      "validation_report": "data/reports/validation_report.json",
+      "entry_quality_gate": "data/reports/entry_quality_gate.json",
+      "improvement_baseline": "data/reports/improvement_baseline.json",
+      "improvement_deltas": "data/reports/improvement_deltas.json",
+      "improvement_campaigns": "data/reports/improvement_campaigns.json",
+      "symbol_changes_review": "data/reports/symbol_changes_review.json",
+      "ohlcv_plausibility": "data/reports/ohlcv_plausibility.json",
+      "ohlcv_warning_review": "data/reports/ohlcv_warning_review.json",
+      "masterfile_collision_review": "data/reports/masterfile_collision_review.json",
+      "otc_scope_review": "data/reports/otc_scope_review.json",
+      "canada_residual_review": "data/reports/canada_residual_review.json",
+      "canada_figi_queue": "data/reports/canada_figi_queue.json",
+      "canada_figi_apply_report": "data/reports/canada_figi_apply_report.json",
+      "b3_residual_isin_review": "data/reports/b3_residual_isin_review.json",
+      "b3_residual_sector_review": "data/reports/b3_residual_sector_review.json",
+      "asx_residual_review": "data/reports/asx_residual_review.json",
+      "weak_sector_residual_review": "data/reports/weak_sector_residual_review.json",
+      "adanos_alias_audit": "data/reports/adanos_alias_audit.json",
+      "adanos_detection_simulation": "data/reports/adanos_detection_simulation.json"
+    }
+  },
+  "passed": true,
+  "summary": {
+    "criteria": 41,
+    "passed_criteria": 41,
+    "failed_criteria": 0,
+    "validation_failed_error_gates": 0
+  },
+  "summary_context": "passed=true;criteria=41;passed_criteria=41;failed_criteria=0;validation_failed_error_gates=0",
+  "criteria": {
+    "no_invalid_isins": {
+      "passed": true,
+      "gates": [
+        {
+          "name": "invalid_isin_rows",
+          "severity": "error",
+          "passed": true,
+          "actual": 0,
+          "limit": 0
+        }
+      ]
+    },
+    "no_duplicate_primary_tickers": {
+      "passed": true,
+      "gates": [
+        {
+          "name": "duplicate_primary_ticker_count",
+          "severity": "error",
+          "passed": true,
+          "actual": 0,
+          "limit": 0
+        }
+      ]
+    },
+    "no_duplicate_listing_keys": {
+      "passed": true,
+      "gates": [
+        {
+          "name": "duplicate_listing_key_count",
+          "severity": "error",
+          "passed": true,
+          "actual": 0,
+          "limit": 0
+        }
+      ]
+    },
+    "no_duplicate_public_aliases": {
+      "passed": true,
+      "gates": [
+        {
+          "name": "duplicate_public_alias_count",
+          "severity": "error",
+          "passed": true,
+          "actual": 0,
+          "limit": 0
+        }
+      ]
+    },
+    "no_mojibake_names": {
+      "passed": true,
+      "gates": [
+        {
+          "name": "rows_with_mojibake_names",
+          "severity": "error",
+          "passed": true,
+          "actual": 0,
+          "limit": 0
+        }
+      ]
+    },
+    "no_unreviewed_country_isin_conflicts": {
+      "passed": true,
+      "gates": [
+        {
+          "name": "country_isin_prefix_mismatch_without_review",
+          "severity": "error",
+          "passed": true,
+          "actual": 0,
+          "limit": 0
+        }
+      ]
+    },
+    "adanos_alias_safety": {
+      "passed": true,
+      "gates": [
+        {
+          "name": "adanos_alias_findings",
+          "severity": "error",
+          "passed": true,
+          "actual": 0,
+          "limit": 0
+        },
+        {
+          "name": "adanos_alias_parse_errors",
+          "severity": "error",
+          "passed": true,
+          "actual": 0,
+          "limit": 0
+        },
+        {
+          "name": "adanos_alias_common_word_count",
+          "severity": "error",
+          "passed": true,
+          "actual": 0,
+          "limit": 0
+        },
+        {
+          "name": "review_alias_removals_open_count",
+          "severity": "error",
+          "passed": true,
+          "actual": 0,
+          "limit": 0
+        }
+      ]
+    },
+    "source_gap_review_integrity": {
+      "passed": true,
+      "gates": [
+        {
+          "name": "source_gap_classification_invalid_rows",
+          "severity": "error",
+          "passed": true,
+          "actual": 0,
+          "limit": 0
+        },
+        {
+          "name": "source_gap_classification_current_gap_mismatch",
+          "severity": "error",
+          "passed": true,
+          "actual": 0,
+          "limit": 0
+        },
+        {
+          "name": "source_of_truth_decision_invalid_rows",
+          "severity": "error",
+          "passed": true,
+          "actual": 0,
+          "limit": 0
+        },
+        {
+          "name": "source_of_truth_decision_duplicate_keys",
+          "severity": "error",
+          "passed": true,
+          "actual": 0,
+          "limit": 0
+        },
+        {
+          "name": "source_of_truth_decision_gap_mismatch",
+          "severity": "error",
+          "passed": true,
+          "actual": 0,
+          "limit": 0
+        },
+        {
+          "name": "source_of_truth_decision_class_mismatch",
+          "severity": "error",
+          "passed": true,
+          "actual": 0,
+          "limit": 0
+        }
+      ]
+    },
+    "entry_quality_release_gate": {
+      "passed": true,
+      "gates": [
+        {
+          "name": "entry_quality_quarantine_count",
+          "severity": "error",
+          "passed": true,
+          "actual": 0,
+          "limit": 0
+        },
+        {
+          "name": "entry_quality_unexpected_warn_count",
+          "severity": "error",
+          "passed": true,
+          "actual": 0,
+          "limit": 0
+        }
+      ]
+    },
+    "release_source_report_integrity": {
+      "passed": true,
+      "release_generated_at": "2026-05-30T16:24:58Z",
+      "release_generated_at_invalid": false,
+      "checked": {
+        "validation_report": {
+          "path": "data/reports/validation_report.json",
+          "exists": true,
+          "generated_at": "2026-05-30T16:24:55Z"
+        },
+        "entry_quality_gate": {
+          "path": "data/reports/entry_quality_gate.json",
+          "exists": true,
+          "generated_at": "2026-05-30T16:24:54Z"
+        },
+        "improvement_baseline": {
+          "path": "data/reports/improvement_baseline.json",
+          "exists": true,
+          "generated_at": "2026-05-25T12:54:49Z"
+        },
+        "improvement_deltas": {
+          "path": "data/reports/improvement_deltas.json",
+          "exists": true,
+          "generated_at": "2026-05-25T12:54:49Z"
+        },
+        "improvement_campaigns": {
+          "path": "data/reports/improvement_campaigns.json",
+          "exists": true,
+          "generated_at": "2026-05-30T16:24:41Z"
+        },
+        "symbol_changes_review": {
+          "path": "data/reports/symbol_changes_review.json",
+          "exists": true,
+          "generated_at": "2026-05-30T16:24:00Z"
+        },
+        "ohlcv_plausibility": {
+          "path": "data/reports/ohlcv_plausibility.json",
+          "exists": true,
+          "generated_at": "2026-05-25T11:11:55Z"
+        },
+        "ohlcv_warning_review": {
+          "path": "data/reports/ohlcv_warning_review.json",
+          "exists": true,
+          "generated_at": "2026-05-25T11:11:55Z"
+        },
+        "masterfile_collision_review": {
+          "path": "data/reports/masterfile_collision_review.json",
+          "exists": true,
+          "generated_at": "2026-05-25T12:53:29Z"
+        },
+        "otc_scope_review": {
+          "path": "data/reports/otc_scope_review.json",
+          "exists": true,
+          "generated_at": "2026-05-25T12:54:46Z"
+        },
+        "canada_residual_review": {
+          "path": "data/reports/canada_residual_review.json",
+          "exists": true,
+          "generated_at": "2026-05-25T12:54:47Z"
+        },
+        "canada_figi_queue": {
+          "path": "data/reports/canada_figi_queue.json",
+          "exists": true,
+          "generated_at": "2026-05-25T12:54:47Z"
+        },
+        "canada_figi_apply_report": {
+          "path": "data/reports/canada_figi_apply_report.json",
+          "exists": true,
+          "generated_at": "2026-05-25T05:46:48Z"
+        },
+        "b3_residual_isin_review": {
+          "path": "data/reports/b3_residual_isin_review.json",
+          "exists": true,
+          "generated_at": "2026-05-25T12:54:45Z"
+        },
+        "b3_residual_sector_review": {
+          "path": "data/reports/b3_residual_sector_review.json",
+          "exists": true,
+          "generated_at": "2026-05-25T12:54:45Z"
+        },
+        "asx_residual_review": {
+          "path": "data/reports/asx_residual_review.json",
+          "exists": true,
+          "generated_at": "2026-05-25T12:54:48Z"
+        },
+        "weak_sector_residual_review": {
+          "path": "data/reports/weak_sector_residual_review.json",
+          "exists": true,
+          "generated_at": "2026-05-25T12:54:48Z"
+        },
+        "adanos_alias_audit": {
+          "path": "data/reports/adanos_alias_audit.json",
+          "exists": true,
+          "generated_at": "2026-05-25T02:04:26Z"
+        },
+        "adanos_detection_simulation": {
+          "path": "data/reports/adanos_detection_simulation.json",
+          "exists": true,
+          "generated_at": "2026-05-25T02:04:26Z"
+        }
+      },
+      "missing_files": [],
+      "missing_generated_at": [],
+      "invalid_generated_at": {},
+      "generated_after_release": {}
+    },
+    "progress_markdown_traceability": {
+      "passed": true,
+      "checked_reports": [
+        "improvement_baseline",
+        "improvement_deltas",
+        "improvement_campaigns"
+      ],
+      "checked_count": 3,
+      "missing_files": {},
+      "missing_source_sections": [],
+      "missing_generated_at": [],
+      "generated_at_mismatches": {},
+      "missing_source_paths": {},
+      "missing_source_keys": {}
+    },
+    "adanos_detection_simulation": {
+      "passed": true,
+      "generated_at": "2026-05-25T02:04:26Z",
+      "source_files": {
+        "adanos_reference_csv": "data/adanos/ticker_reference.csv"
+      },
+      "missing_meta_keys": [],
+      "invalid_generated_at": "",
+      "source_file_mismatch": false,
+      "missing_summary_keys": [],
+      "invalid_summary_counts": [],
+      "invalid_containers": [],
+      "count_mismatches": {},
+      "invalid_positive_probes": [],
+      "invalid_negative_probes": [],
+      "nonzero_detection_failures": {},
+      "minimum_probe_gaps": {},
+      "summary": {
+        "reference_rows": 61465,
+        "alias_entries": 56463,
+        "tickers_with_aliases": 50576,
+        "positive_probes": 5,
+        "positive_misses": 0,
+        "negative_probes": 5,
+        "negative_hits": 0
+      }
+    },
+    "entry_quality_command_report": {
+      "passed": true,
+      "generated_at": "2026-05-30T16:24:54Z",
+      "missing_meta_keys": [],
+      "missing_keys": [],
+      "mismatched_counts": {},
+      "command_report": {
+        "allowed_warn_count": 1066,
+        "passed": true,
+        "quarantine_count": 0,
+        "unexpected_warn_count": 0,
+        "warn_count": 217
+      },
+      "expected_counts_from_validation": {
+        "quarantine_count": 0,
+        "unexpected_warn_count": 0
+      }
+    },
+    "coverage_freshness_visibility": {
+      "passed": true,
+      "missing_meta_keys": [],
+      "invalid_meta_generated_at": "",
+      "source_file_mismatches": {},
+      "unexpected_source_files": [],
+      "policy_missing_markers": [],
+      "freshness_keys": [
+        "entry_quality_age_hours",
+        "entry_quality_generated_at",
+        "entry_quality_rows",
+        "identifiers_age_hours",
+        "identifiers_generated_at",
+        "latest_etf_verification_age_hours",
+        "latest_etf_verification_generated_at",
+        "latest_etf_verification_run",
+        "latest_stock_verification_age_hours",
+        "latest_stock_verification_generated_at",
+        "latest_stock_verification_run",
+        "latest_verification_age_hours",
+        "latest_verification_generated_at",
+        "latest_verification_run",
+        "listing_history_age_hours",
+        "listing_history_observed_at",
+        "masterfile_collision_review_age_hours",
+        "masterfile_collision_review_generated_at",
+        "masterfile_collision_review_rows",
+        "masterfiles_age_hours",
+        "masterfiles_generated_at",
+        "ohlcv_plausibility_age_hours",
+        "ohlcv_plausibility_generated_at",
+        "ohlcv_plausibility_rows",
+        "source_gap_classification_age_hours",
+        "source_gap_classification_generated_at",
+        "source_gap_classification_rows",
+        "symbol_changes_age_hours",
+        "symbol_changes_generated_at",
+        "symbol_changes_review_rows",
+        "tickers_age_hours",
+        "tickers_built_at"
+      ],
+      "source_rows": 136,
+      "missing_freshness_keys": [],
+      "invalid_timestamps": [],
+      "invalid_age_fields": [],
+      "invalid_count_fields": [],
+      "missing_source_summary_keys": [],
+      "source_count_mismatch": {},
+      "source_row_gaps": [],
+      "summary_mismatches": {},
+      "refresh_queue_scope_mismatches": {},
+      "refresh_queue_mode_mismatches": {},
+      "refresh_queue_priority_mismatches": {},
+      "refresh_queue_age_bucket_mismatches": {},
+      "refresh_queue_strategy_mismatches": {},
+      "refresh_queue_evidence_mismatches": {},
+      "top_refresh_batch_gaps": [],
+      "missing_b3_diagnostic_keys": [],
+      "b3_diagnostic_gaps": [],
+      "b3_masterfile_diagnostics": {
+        "dataset_rows": 1584,
+        "active_exchange_directory_rows": 1941,
+        "matched_dataset_rows": 1544,
+        "missing_dataset_rows": 40,
+        "dataset_match_rate": 97.47,
+        "official_any_source_matched_dataset_rows": 1561,
+        "official_any_source_missing_dataset_rows": 23,
+        "official_any_source_match_rate": 98.55,
+        "missing_category_totals": {
+          "bdr_or_foreign_receipt": 2,
+          "local_share_line": 16,
+          "other": 2,
+          "unit_or_fund_line": 20
+        },
+        "missing_source_presence_totals": {
+          "absent_from_all_b3_masterfile_sources": 23,
+          "present_only_in_non_exchange_directory_source": 17
+        }
+      },
+      "source_freshness_status_totals": {
+        "fresh": 43,
+        "old": 93
+      },
+      "source_age_bucket_totals": {
+        "age_0_48h": 43,
+        "age_168_336h": 93
+      },
+      "source_refresh_priority_totals": {
+        "P4": 43,
+        "P2": 92,
+        "P1": 1
+      },
+      "source_refresh_queue_totals": {
+        "fresh_no_refresh_needed": 43,
+        "refresh_official_subset_before_gap_enrichment": 85,
+        "restore_or_replace_unavailable_source_before_data_fill": 8
+      },
+      "source_refresh_queue_scope_totals": {
+        "fresh_no_refresh_needed": {
+          "exchange_directory": 40,
+          "listed_companies_subset": 3
+        },
+        "refresh_official_subset_before_gap_enrichment": {
+          "listed_companies_subset": 77,
+          "security_lookup_subset": 6,
+          "interlisted_subset": 1,
+          "security_identifier_registry_subset": 1
+        },
+        "restore_or_replace_unavailable_source_before_data_fill": {
+          "listed_companies_subset": 7,
+          "exchange_directory": 1
+        }
+      },
+      "source_refresh_queue_mode_totals": {
+        "fresh_no_refresh_needed": {
+          "network": 43
+        },
+        "refresh_official_subset_before_gap_enrichment": {
+          "cache": 21,
+          "network": 64
+        },
+        "restore_or_replace_unavailable_source_before_data_fill": {
+          "unavailable": 8
+        }
+      },
+      "source_refresh_queue_priority_totals": {
+        "fresh_no_refresh_needed": {
+          "P4": 43
+        },
+        "refresh_official_subset_before_gap_enrichment": {
+          "P2": 85
+        },
+        "restore_or_replace_unavailable_source_before_data_fill": {
+          "P2": 7,
+          "P1": 1
+        }
+      },
+      "source_refresh_queue_age_bucket_totals": {
+        "fresh_no_refresh_needed": {
+          "age_0_48h": 43
+        },
+        "refresh_official_subset_before_gap_enrichment": {
+          "age_168_336h": 85
+        },
+        "restore_or_replace_unavailable_source_before_data_fill": {
+          "age_168_336h": 8
+        }
+      },
+      "source_refresh_queue_review_strategy_totals": {
+        "fresh_no_refresh_needed": {
+          "no_refresh_required": 43
+        },
+        "refresh_official_subset_before_gap_enrichment": {
+          "refresh_official_subset_before_gap_enrichment": 85
+        },
+        "restore_or_replace_unavailable_source_before_data_fill": {
+          "restore_or_replace_unavailable_source_before_data_fill": 8
+        }
+      },
+      "source_refresh_queue_evidence_required_totals": {
+        "fresh_no_refresh_needed": {
+          "fresh_source_generated_at_with_age_under_48h": 43
+        },
+        "refresh_official_subset_before_gap_enrichment": {
+          "official_subset_refresh_artifact_with_generated_at_scope_and_row_count": 85
+        },
+        "restore_or_replace_unavailable_source_before_data_fill": {
+          "source_restored_or_replaced_with_official_or_documented_unavailable_decision": 8
+        }
+      }
+    },
+    "source_gap_traceability": {
+      "passed": true,
+      "rows": 3548,
+      "missing_summary_keys": [],
+      "row_count_mismatch": {},
+      "row_gaps": [],
+      "summary_mismatches": {},
+      "missing_policy_keys": [],
+      "top_exchange_gaps": [],
+      "top_review_batch_gaps": [],
+      "required_review_batch_keys": [
+        "field",
+        "gap_class",
+        "exchange",
+        "rows",
+        "recommended_next_source",
+        "source_gate"
+      ],
+      "required_row_keys": [
+        "listing_key",
+        "ticker",
+        "exchange",
+        "field",
+        "target_field",
+        "gap_class",
+        "review_needed",
+        "confidence_policy",
+        "recommended_next_source",
+        "source_gate",
+        "source_gap_context",
+        "classification_context",
+        "evidence_gate_context"
+      ],
+      "accepted_fields": [
+        "missing_etf_category",
+        "missing_isin_primary",
+        "missing_sector_stock"
+      ]
+    },
+    "symbol_change_review_gate": {
+      "passed": true,
+      "missing_meta_keys": [],
+      "invalid_generated_at": "",
+      "source_url_mismatch": {},
+      "source_policy_mismatch": {},
+      "source_file_mismatches": {},
+      "unexpected_source_files": [],
+      "policy_missing_markers": [],
+      "rows": 271,
+      "missing_summary_keys": [],
+      "row_count_mismatch": {},
+      "row_gaps": [],
+      "summary_mismatches": {},
+      "symbol_change_backlog_gaps": [],
+      "missing_bucket_priorities": {},
+      "missing_distinctions": [],
+      "missing_workflow_queues": [],
+      "top_workflow_batch_gaps": [],
+      "required_row_keys": [
+        "change_id",
+        "effective_date",
+        "old_symbol",
+        "new_symbol",
+        "source",
+        "source_confidence",
+        "review_needed",
+        "match_status",
+        "symbol_change_workflow_queue",
+        "review_bucket",
+        "review_priority",
+        "review_strategy",
+        "recency_bucket",
+        "apply_eligibility",
+        "verification_evidence_required",
+        "recommended_next_source",
+        "source_gate",
+        "recommended_action",
+        "exchange_scope_status",
+        "listing_key_review_status",
+        "issuer_name_review_status",
+        "source_review_context",
+        "scope_match_context",
+        "workflow_review_context"
+      ],
+      "accepted_match_statuses": [
+        "informational_no_old_symbol",
+        "new_symbol_present_old_symbol_missing",
+        "no_matching_listing",
+        "old_and_new_symbols_present",
+        "old_symbol_present_new_symbol_missing",
+        "symbol_present_only_outside_source_scope"
+      ],
+      "accepted_review_buckets": [
+        "action_required_duplicate_or_cross_listing",
+        "action_required_possible_rename_or_delisting",
+        "already_reflected_in_scope_with_global_symbol_collision",
+        "already_reflected_in_source_scope",
+        "hold_out_of_scope_symbol_collision",
+        "manual_review_due_to_out_of_scope_collision",
+        "manual_review_required",
+        "manual_scope_mapping_required",
+        "no_dataset_match_for_source_scope"
+      ],
+      "accepted_apply_eligibilities": [
+        "audit_only_no_apply",
+        "blocked_until_exchange_scope_resolved",
+        "manual_review_required",
+        "no_dataset_action_without_scope_mapping",
+        "requires_official_venue_confirmation"
+      ]
+    },
+    "ohlcv_plausibility_gate": {
+      "passed": true,
+      "missing_meta_keys": [],
+      "invalid_generated_at": "",
+      "source_file_mismatches": {},
+      "unexpected_source_files": [],
+      "rows": 345,
+      "flagged_rows": 24,
+      "missing_summary_keys": [],
+      "row_count_mismatch": {},
+      "row_gaps": [],
+      "forbidden_action_rows": [],
+      "summary_mismatches": {},
+      "selection_bucket_exchange_mismatches": {},
+      "selection_bucket_status_mismatches": {},
+      "review_bucket_selection_bucket_mismatches": {},
+      "review_bucket_exchange_mismatches": {},
+      "review_bucket_sampling_strategy_mismatches": {},
+      "review_bucket_sampling_readiness_mismatches": {},
+      "sampling_coverage_gaps": [],
+      "ohlcv_sampling_backlog_gaps": [],
+      "missing_policy_markers": [],
+      "missing_sampling_buckets": [],
+      "invalid_top_flagged_exchanges": false,
+      "top_sampling_batch_gaps": [],
+      "required_row_keys": [
+        "listing_key",
+        "ticker",
+        "exchange",
+        "name",
+        "isin",
+        "entry_quality_status",
+        "selection_bucket",
+        "plausibility_status",
+        "plausibility_score",
+        "review_bucket",
+        "review_priority",
+        "sampling_strategy",
+        "plausibility_use",
+        "verification_evidence_required",
+        "recommended_next_source",
+        "source_gate",
+        "selection_context",
+        "ohlcv_sample_context",
+        "plausibility_review_context",
+        "ohlcv_symbol",
+        "recommended_action",
+        "issues"
+      ],
+      "accepted_plausibility_statuses": [
+        "fail",
+        "not_checked",
+        "notice",
+        "pass",
+        "source_gap",
+        "warn"
+      ]
+    },
+    "masterfile_collision_gate": {
+      "passed": true,
+      "missing_meta_keys": [],
+      "invalid_generated_at": "",
+      "source_file_mismatches": {},
+      "unexpected_source_files": [],
+      "meta_policy_mismatch": false,
+      "rows": 11107,
+      "missing_summary_keys": [],
+      "row_count_mismatch": {},
+      "row_gaps": [],
+      "unsafe_symbol_only_rows": [],
+      "summary_mismatches": {},
+      "identity_resolution_exchange_mismatches": {},
+      "identity_resolution_asset_type_mismatches": {},
+      "identity_resolution_risk_flag_mismatches": {},
+      "identity_resolution_official_source_mismatches": {},
+      "identity_resolution_existing_exchange_pair_mismatches": {},
+      "identity_resolution_pair_review_strategy_mismatches": {},
+      "identity_resolution_review_strategy_mismatches": {},
+      "identity_resolution_evidence_required_mismatches": {},
+      "identity_resolution_identity_evidence_mismatches": {},
+      "top_pair_review_batch_gaps": [],
+      "same_isin_exact_name_scope_review_rows_mismatch": {},
+      "top_same_isin_exact_name_scope_batch_gaps": [],
+      "missing_policy_keys": [],
+      "missing_required_buckets": [],
+      "required_row_keys": [
+        "target_listing_key",
+        "ticker",
+        "target_exchange",
+        "official_name",
+        "official_asset_type",
+        "official_source_key",
+        "official_source_context",
+        "existing_listing_keys",
+        "existing_exchanges",
+        "existing_dataset_context",
+        "identity_evidence",
+        "identity_resolution_context",
+        "collision_risk_flags",
+        "identity_resolution_queue",
+        "review_bucket",
+        "review_priority",
+        "review_strategy",
+        "verification_evidence_required",
+        "recommended_next_source",
+        "source_gate",
+        "review_decision",
+        "clearance_evidence_required",
+        "recommended_next_action"
+      ],
+      "accepted_review_decisions": [
+        "new_listing_candidate_requires_official_listing_add_review",
+        "same_isin_cross_listing_candidate_requires_exchange_scope_review",
+        "symbol_collision_requires_non_symbol_identity_source"
+      ],
+      "accepted_review_buckets": [
+        "distinct_official_isin_new_listing_candidate",
+        "hold_symbol_only_collision_needs_non_symbol_identity",
+        "resolve_asset_type_conflict_before_identity_review",
+        "same_isin_cross_listing_needs_name_or_scope_review",
+        "same_isin_exact_name_cross_listing_candidate"
+      ]
+    },
+    "otc_scope_gate": {
+      "passed": true,
+      "rows": 11056,
+      "missing_summary_keys": [],
+      "row_count_mismatch": {},
+      "row_gaps": [],
+      "unsafe_enrichment_rows": [],
+      "summary_mismatches": {},
+      "review_bucket_asset_type_mismatches": {},
+      "review_bucket_metadata_gate_mismatches": {},
+      "top_scope_batch_gaps": [],
+      "missing_policy_keys": [],
+      "drop_override_rows_still_present": 0,
+      "review_decision_balance": {},
+      "stale_review_decision_example_gaps": [],
+      "core_exclusion_summary_gaps": [],
+      "missing_required_buckets": [],
+      "scope_completion_gaps": [],
+      "required_row_keys": [
+        "listing_key",
+        "ticker",
+        "exchange",
+        "asset_type",
+        "instrument_scope",
+        "scope_reason",
+        "quality_status",
+        "source_gap_context",
+        "scope_decision",
+        "otc_review_decision_status",
+        "otc_review_decision_context",
+        "review_bucket",
+        "review_priority",
+        "scope_apply_eligibility",
+        "metadata_enrichment_gate",
+        "scope_review_context",
+        "review_strategy",
+        "verification_evidence_required",
+        "recommended_next_source",
+        "source_gate",
+        "recommended_action"
+      ],
+      "accepted_scope_decisions": [
+        "already_extended_otc_listing",
+        "core_exclusion_candidate_requires_review",
+        "unexpected_otc_core_scope_review_required"
+      ],
+      "accepted_review_buckets": [
+        "clean_extended_otc_listing",
+        "core_exclusion_candidate_scope_review",
+        "documented_otc_category_source_gap",
+        "documented_otc_sector_source_gap",
+        "documented_otc_source_gap",
+        "official_name_mismatch_review_first",
+        "otc_quality_source_gap_review",
+        "otc_quality_warn_review",
+        "unexpected_core_scope_requires_review"
+      ]
+    },
+    "canada_figi_gate": {
+      "passed": true,
+      "residual_rows": 457,
+      "queue_rows": 0,
+      "apply_rows": 68,
+      "residual_missing_meta_keys": [],
+      "residual_invalid_generated_at": "",
+      "residual_source_file_mismatches": {},
+      "residual_unexpected_source_files": [],
+      "missing_summary_keys": {
+        "residual": [],
+        "queue": [],
+        "apply": []
+      },
+      "row_count_mismatches": {},
+      "residual_row_gaps": [],
+      "queue_row_gaps": [],
+      "apply_row_gaps": [],
+      "residual_summary_mismatches": {},
+      "top_canada_batch_gaps": [],
+      "residual_count_mismatches": {},
+      "queue_summary_mismatches": {},
+      "apply_summary_mismatches": {},
+      "applied_rows_mismatch": {},
+      "written_rows_mismatch": {},
+      "missing_policy_keys": {
+        "residual": [],
+        "queue": [],
+        "apply": []
+      },
+      "queue_exclusion_mismatch": {},
+      "queue_candidate_mismatch": {},
+      "reviewed_openfigi_gap_rows": 151,
+      "openfigi_candidate_rows": 0
+    },
+    "b3_residual_gate": {
+      "passed": true,
+      "isin": {
+        "passed": true,
+        "rows": 12,
+        "missing_meta_keys": [],
+        "invalid_generated_at": "",
+        "source_file_mismatches": {},
+        "unexpected_source_files": [],
+        "missing_summary_keys": [],
+        "row_count_mismatch": {},
+        "row_gaps": [],
+        "unsafe_apply_rows": [],
+        "summary_mismatches": {},
+        "top_batch_gaps": [],
+        "missing_policy_keys": [],
+        "accepted_review_buckets": [
+          "active_listing_evidence_required_source_gap",
+          "fund_or_registry_identifier_source_gap",
+          "identifier_source_gap",
+          "not_in_current_b3_directory_source_gap",
+          "official_isin_candidate_requires_apply_gate",
+          "scope_review_before_identifier_fill"
+        ]
+      },
+      "sector": {
+        "passed": true,
+        "rows": 194,
+        "missing_meta_keys": [],
+        "invalid_generated_at": "",
+        "source_file_mismatches": {},
+        "unexpected_source_files": [],
+        "missing_summary_keys": [],
+        "row_count_mismatch": {},
+        "row_gaps": [],
+        "unsafe_apply_rows": [],
+        "summary_mismatches": {},
+        "top_batch_gaps": [],
+        "missing_policy_keys": [],
+        "accepted_review_buckets": [
+          "ambiguous_b3_code_requires_manual_review",
+          "missing_probe_row_requires_parser_or_source_review",
+          "no_b3_classification_code_match_source_gap",
+          "official_sector_candidate_requires_apply_gate",
+          "requires_stronger_official_taxonomy_source_gap",
+          "scope_review_before_sector_fill"
+        ]
+      },
+      "rows": {
+        "isin": 12,
+        "sector": 194,
+        "total": 206
+      }
+    },
+    "asx_residual_gate": {
+      "passed": true,
+      "rows": 114,
+      "missing_meta_keys": [],
+      "invalid_generated_at": "",
+      "source_file_mismatches": {},
+      "unexpected_source_files": [],
+      "missing_summary_keys": [],
+      "row_count_mismatch": {},
+      "row_gaps": [],
+      "unsafe_apply_rows": [],
+      "summary_mismatches": {},
+      "top_asx_batch_gaps": [],
+      "core_exclusion_row_mismatch": {},
+      "missing_policy_keys": [],
+      "missing_required_buckets": [],
+      "required_row_keys": [
+        "listing_key",
+        "ticker",
+        "exchange",
+        "asset_type",
+        "field",
+        "target_field",
+        "gap_class",
+        "source_of_truth_outcome",
+        "review_needed",
+        "recommended_next_source",
+        "source_gate",
+        "official_source_context",
+        "official_capability",
+        "asx_resolution_queue",
+        "residual_decision",
+        "review_bucket",
+        "review_priority",
+        "review_strategy",
+        "apply_eligibility",
+        "verification_evidence_required",
+        "recommended_next_action"
+      ],
+      "accepted_fields": [
+        "missing_etf_category",
+        "missing_isin_primary"
+      ],
+      "accepted_review_buckets": [
+        "identifier_source_gap",
+        "identity_mismatch_requires_manual_review",
+        "official_isin_candidate_requires_apply_gate",
+        "product_taxonomy_source_gap",
+        "scope_review_before_any_data_fill"
+      ]
+    },
+    "weak_sector_residual_gate": {
+      "passed": true,
+      "rows": 646,
+      "missing_meta_keys": [],
+      "invalid_generated_at": "",
+      "source_file_mismatches": {},
+      "unexpected_source_files": [],
+      "meta_exchange_mismatch": {},
+      "missing_summary_keys": [],
+      "row_count_mismatch": {},
+      "row_gaps": [],
+      "unsafe_sector_apply_rows": [],
+      "summary_mismatches": {},
+      "top_weak_sector_batch_gaps": [],
+      "queue_count_mismatches": {},
+      "missing_policy_keys": [],
+      "reported_exchange_mismatch": {},
+      "missing_required_buckets": [],
+      "required_row_keys": [
+        "listing_key",
+        "ticker",
+        "exchange",
+        "asset_type",
+        "gap_class",
+        "source_of_truth_outcome",
+        "review_needed",
+        "recommended_next_source",
+        "source_gate",
+        "official_source_context",
+        "official_capability",
+        "official_masterfile_match",
+        "official_masterfile_sources",
+        "official_masterfile_exposes_sector",
+        "weak_sector_resolution_queue",
+        "residual_decision",
+        "review_bucket",
+        "review_priority",
+        "apply_eligibility",
+        "verification_evidence_required",
+        "review_strategy",
+        "recommended_next_action"
+      ],
+      "accepted_exchanges": [
+        "BK",
+        "CSE_LK",
+        "CSE_MA",
+        "Euronext",
+        "NGX",
+        "OSL",
+        "PSE",
+        "SEM"
+      ],
+      "accepted_review_buckets": [
+        "official_masterfile_without_sector_source_gap",
+        "official_sector_candidate_requires_normalization_gate",
+        "scope_review_before_sector_fill",
+        "venue_official_taxonomy_unavailable_source_gap",
+        "venue_specific_sector_source_gap"
+      ]
+    },
+    "before_after_delta_matrix": {
+      "passed": true,
+      "missing_meta_keys": [],
+      "invalid_generated_at": "",
+      "invalid_baseline_generated_at": "",
+      "invalid_current_generated_at": "",
+      "baseline_path_mismatch": false,
+      "source_file_mismatches": {},
+      "unexpected_source_files": [],
+      "policy_missing_markers": [],
+      "acceptance_delta_matrix": {
+        "isin_delta": {
+          "baseline": 59847,
+          "current": 59847,
+          "delta": 0,
+          "delta_context": "scope=global;metric=isin_delta;baseline=59847;current=59847;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        },
+        "sector_delta": {
+          "baseline": 43310,
+          "current": 43310,
+          "delta": 0,
+          "delta_context": "scope=global;metric=sector_delta;baseline=43310;current=43310;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        },
+        "category_delta": {
+          "baseline": 15453,
+          "current": 15453,
+          "delta": 0,
+          "delta_context": "scope=global;metric=category_delta;baseline=15453;current=15453;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        },
+        "source_gap_delta": {
+          "baseline": 3548,
+          "current": 3548,
+          "delta": 0,
+          "delta_context": "scope=global;metric=source_gap_delta;baseline=3548;current=3548;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        },
+        "warn_delta": {
+          "baseline": 217,
+          "current": 217,
+          "delta": 0,
+          "delta_context": "scope=global;metric=warn_delta;baseline=217;current=217;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        },
+        "quarantine_delta": {
+          "baseline": 0,
+          "current": 0,
+          "delta": 0,
+          "delta_context": "scope=global;metric=quarantine_delta;baseline=0;current=0;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        }
+      },
+      "missing_keys": [],
+      "missing_delta_contexts": [],
+      "invalid_delta_contexts": {},
+      "missing_exchange_delta_contexts": {},
+      "invalid_exchange_delta_contexts": {},
+      "non_zero_deltas": [],
+      "changed_exchange_rows": 0,
+      "changed_numeric_delta_rows": 0,
+      "changed_rows_policy": "Allowed when critical acceptance deltas remain zero; review/freshness/masterfile deltas are documented in improvement_deltas."
+    },
+    "improvement_baseline_integrity": {
+      "passed": true,
+      "missing_meta_keys": [],
+      "invalid_generated_at": "",
+      "source_file_mismatches": {},
+      "unexpected_source_files": [],
+      "source_report_mismatches": {},
+      "unexpected_source_reports": [],
+      "purpose_missing_markers": [],
+      "missing_global_keys": [],
+      "nonnumeric_global_keys": [],
+      "freshness_totals_missing": false,
+      "exchange_rows_checked": 80,
+      "exchange_key_gaps": {},
+      "malformed_exchange_rows": [],
+      "baseline_summary_mismatches": {},
+      "top_summary_mismatches": {},
+      "baseline_context_gaps": {}
+    },
+    "campaign_reviewability": {
+      "passed": true,
+      "campaigns": 10,
+      "expected_campaigns": 10,
+      "summary_context_missing": false,
+      "summary_context_mismatch": {},
+      "expected_campaign_keys_by_priority": {
+        "1": "b3",
+        "2": "otc",
+        "3": "canada",
+        "4": "asx",
+        "5": "weak_sector",
+        "6": "masterfile_collisions",
+        "7": "symbol_changes",
+        "8": "ohlcv",
+        "9": "freshness",
+        "10": "baseline"
+      },
+      "observed_campaign_keys_by_priority": {
+        "1": "b3",
+        "2": "otc",
+        "3": "canada",
+        "4": "asx",
+        "5": "weak_sector",
+        "6": "masterfile_collisions",
+        "7": "symbol_changes",
+        "8": "ohlcv",
+        "9": "freshness",
+        "10": "baseline"
+      },
+      "duplicate_priorities": [],
+      "invalid_priorities": [],
+      "missing_priorities": [],
+      "unexpected_priorities": [],
+      "key_mismatches": {},
+      "missing_next_actions": [],
+      "missing_statuses": [],
+      "missing_context_fields": {},
+      "invalid_context_fields": {}
+    },
+    "next_review_batch_visibility": {
+      "passed": true,
+      "batches": 10,
+      "summary_next_review_batches": 10,
+      "summary_next_review_batch_rows": 28749,
+      "computed_next_review_batch_rows": 28749,
+      "observed_campaign_keys_by_priority": {
+        "1": "b3",
+        "2": "otc",
+        "3": "canada",
+        "4": "asx",
+        "5": "weak_sector",
+        "6": "masterfile_collisions",
+        "7": "symbol_changes",
+        "8": "ohlcv",
+        "9": "freshness",
+        "10": "baseline"
+      },
+      "duplicate_priorities": [],
+      "invalid_priorities": [],
+      "missing_priorities": [],
+      "key_mismatches": {},
+      "missing_fields": {},
+      "invalid_context_fields": {},
+      "invalid_artifact_rows": [],
+      "invalid_primary_artifacts": [],
+      "workload_mismatches": {},
+      "missing_workload_policy_markers": [],
+      "execution_plan_gaps": [],
+      "execution_plan_context_mismatches": {},
+      "execution_plan_ranking_mismatches": {},
+      "execution_plan_command_gaps": {},
+      "execution_summary_mismatches": {},
+      "missing_execution_summary_policy_markers": [],
+      "command_safety_summary_mismatches": {},
+      "missing_command_safety_summary_policy_markers": []
+    },
+    "next_review_command_safety_gate": {
+      "passed": true,
+      "execution_plan_rows": 10,
+      "manual_review_campaign_keys": [
+        "b3"
+      ],
+      "preflight_gap_campaign_keys": [],
+      "data_change_authorized_campaign_keys": [],
+      "execution_ready_without_manual_review": false,
+      "execution_blocking_gate": "manual_review_required_before_execution",
+      "execution_blocking_campaign_keys": [
+        "b3"
+      ],
+      "missing_summary_keys": [],
+      "mismatches": {},
+      "missing_policy_markers": [],
+      "policy": "Next-review execution is blocked when any command requires manual review, and no execution plan row may authorize data changes."
+    },
+    "campaign_closure_readiness_visibility": {
+      "passed": true,
+      "missing_keys": [],
+      "mismatches": {},
+      "missing_policy_markers": [],
+      "computed": {
+        "ready_campaigns": 9,
+        "blocked_campaigns": 1,
+        "closure_gate_counts": {
+          "future_campaign_delta_comparison_required_before_release_closure": 1,
+          "review_artifact_rows_must_be_processed_before_campaign_closure": 9
+        },
+        "ready_campaign_keys": [
+          "b3",
+          "otc",
+          "canada",
+          "asx",
+          "weak_sector",
+          "masterfile_collisions",
+          "symbol_changes",
+          "ohlcv",
+          "freshness"
+        ],
+        "blocked_campaign_keys": [
+          "baseline"
+        ]
+      }
+    },
+    "campaign_closure_blocker_visibility": {
+      "passed": true,
+      "blockers": 1,
+      "expected_blocker_keys": [
+        "baseline"
+      ],
+      "observed_blocker_keys": [
+        "baseline"
+      ],
+      "missing_fields": {},
+      "invalid_context_fields": {},
+      "invalid_rows": [],
+      "mismatches": {}
+    },
+    "campaign_review_policies": {
+      "passed": true,
+      "checked_campaigns": [
+        "b3",
+        "otc",
+        "canada",
+        "asx",
+        "weak_sector",
+        "masterfile_collisions",
+        "symbol_changes",
+        "ohlcv",
+        "freshness",
+        "baseline"
+      ],
+      "checked_count": 10,
+      "missing_policy": [],
+      "missing_policy_keys": {},
+      "weak_policy": {},
+      "required_policy_keys": [
+        "campaign_scope",
+        "no_guessing",
+        "source_authority",
+        "uncertain_gap_handling",
+        "traceability"
+      ],
+      "required_marker_groups": {
+        "no_guessing": [
+          "no inferred",
+          "no guessing",
+          "not inferred",
+          "not guessed"
+        ],
+        "source_authority": [
+          "official",
+          "exchange",
+          "registry",
+          "issuer",
+          "source"
+        ],
+        "uncertain_gap_handling": [
+          "blank",
+          "source gap",
+          "source-gap",
+          "unverified"
+        ],
+        "traceability": [
+          "listing-keyed",
+          "listing_key",
+          "review status",
+          "source evidence"
+        ]
+      }
+    },
+    "campaign_baseline_alignment": {
+      "passed": true,
+      "expected_campaign_keys": [
+        "b3",
+        "otc",
+        "canada",
+        "asx",
+        "weak_sector",
+        "masterfile_collisions",
+        "symbol_changes",
+        "ohlcv",
+        "freshness",
+        "baseline"
+      ],
+      "baseline_campaign_keys": [
+        "b3",
+        "otc",
+        "canada",
+        "asx",
+        "weak_sector",
+        "masterfile_collisions",
+        "symbol_changes",
+        "ohlcv",
+        "freshness",
+        "baseline"
+      ],
+      "delta_campaign_keys": [
+        "asx",
+        "b3",
+        "baseline",
+        "canada",
+        "freshness",
+        "masterfile_collisions",
+        "ohlcv",
+        "otc",
+        "symbol_changes",
+        "weak_sector"
+      ],
+      "baseline_order_matches": true,
+      "delta_key_set_matches": true,
+      "missing_baseline_keys": [],
+      "missing_delta_keys": [],
+      "unexpected_baseline_keys": [],
+      "unexpected_delta_keys": []
+    },
+    "campaign_acceptance_matrices": {
+      "passed": true,
+      "campaigns": 10,
+      "expected_campaigns": 10,
+      "missing_matrices": [],
+      "missing_required_metrics": {},
+      "missing_exchange_scopes": [],
+      "missing_affected_rows": [],
+      "missing_campaign_metric_deltas": [],
+      "missing_global_acceptance_deltas": {},
+      "missing_exchange_scope_delta_fields": {},
+      "missing_exchange_scope_delta_totals": {},
+      "missing_before_after_summaries": [],
+      "missing_before_after_fields": {},
+      "before_after_mismatches": [],
+      "exchange_scope_delta_consistency_gaps": [],
+      "b3_campaign_evidence_gaps": [],
+      "otc_campaign_evidence_gaps": [],
+      "canada_campaign_evidence_gaps": [],
+      "asx_campaign_evidence_gaps": [],
+      "weak_sector_campaign_evidence_gaps": [],
+      "masterfile_collision_campaign_evidence_gaps": [],
+      "symbol_change_campaign_evidence_gaps": [],
+      "ohlcv_campaign_evidence_gaps": [],
+      "freshness_campaign_evidence_gaps": [],
+      "baseline_campaign_evidence_gaps": []
+    },
+    "campaign_artifact_integrity": {
+      "passed": true,
+      "missing_meta_keys": [],
+      "invalid_generated_at": "",
+      "campaign_row_count_mismatch": {},
+      "source_file_mismatches": {},
+      "unexpected_source_files": [],
+      "policy_missing_markers": [],
+      "checked_artifacts": [
+        "data/reports/b3_masterfile_gap_review.json",
+        "data/reports/b3_etf_category_apply_report.json",
+        "data/reports/b3_residual_isin_review.json",
+        "data/reports/b3_residual_sector_review.json",
+        "data/reports/otc_scope_review.json",
+        "data/reports/otc_name_mismatch_review.json",
+        "data/reports/canada_residual_review.json",
+        "data/reports/canada_figi_queue.json",
+        "data/reports/canada_figi_apply_report.json",
+        "data/reports/asx_residual_review.json",
+        "data/reports/weak_sector_residual_review.json",
+        "data/reports/ngx_official_sector_apply_report.json",
+        "data/reports/masterfile_collision_review.json",
+        "data/reports/symbol_changes_review.json",
+        "data/reports/ohlcv_plausibility.json",
+        "data/reports/ohlcv_warning_review.json",
+        "data/reports/coverage_report.json",
+        "data/reports/source_gap_classification.json",
+        "data/reports/financialdata_isin_supplements_review.json",
+        "data/reports/improvement_baseline.json",
+        "data/reports/improvement_deltas.json"
+      ],
+      "checked_count": 21,
+      "missing_files": [],
+      "row_count_mismatches": [],
+      "missing_generated_at": [],
+      "generated_at_mismatches": []
+    },
+    "review_artifact_siblings": {
+      "passed": true,
+      "checked_artifacts": [
+        "data/reports/b3_masterfile_gap_review.json",
+        "data/reports/b3_residual_isin_review.json",
+        "data/reports/b3_residual_sector_review.json",
+        "data/reports/otc_scope_review.json",
+        "data/reports/otc_name_mismatch_review.json",
+        "data/reports/canada_residual_review.json",
+        "data/reports/canada_figi_queue.json",
+        "data/reports/asx_residual_review.json",
+        "data/reports/weak_sector_residual_review.json",
+        "data/reports/masterfile_collision_review.json",
+        "data/reports/symbol_changes_review.json",
+        "data/reports/ohlcv_plausibility.json",
+        "data/reports/ohlcv_warning_review.json",
+        "data/reports/financialdata_isin_supplements_review.json"
+      ],
+      "checked_count": 14,
+      "missing_files": [],
+      "missing_siblings": [],
+      "csv_row_count_mismatches": [],
+      "empty_markdown_summaries": [],
+      "stale_siblings": [],
+      "sibling_paths": {
+        "data/reports/b3_masterfile_gap_review.json": {
+          "csv": "data/reports/b3_masterfile_gap_review.csv",
+          "md": "data/reports/b3_masterfile_gap_review.md"
+        },
+        "data/reports/b3_residual_isin_review.json": {
+          "csv": "data/reports/b3_residual_isin_review.csv",
+          "md": "data/reports/b3_residual_isin_review.md"
+        },
+        "data/reports/b3_residual_sector_review.json": {
+          "csv": "data/reports/b3_residual_sector_review.csv",
+          "md": "data/reports/b3_residual_sector_review.md"
+        },
+        "data/reports/otc_scope_review.json": {
+          "csv": "data/reports/otc_scope_review.csv",
+          "md": "data/reports/otc_scope_review.md"
+        },
+        "data/reports/otc_name_mismatch_review.json": {
+          "csv": "data/reports/otc_name_mismatch_review.csv",
+          "md": "data/reports/otc_name_mismatch_review.md"
+        },
+        "data/reports/canada_residual_review.json": {
+          "csv": "data/reports/canada_residual_review.csv",
+          "md": "data/reports/canada_residual_review.md"
+        },
+        "data/reports/canada_figi_queue.json": {
+          "csv": "data/reports/canada_figi_queue.csv",
+          "md": "data/reports/canada_figi_queue.md"
+        },
+        "data/reports/asx_residual_review.json": {
+          "csv": "data/reports/asx_residual_review.csv",
+          "md": "data/reports/asx_residual_review.md"
+        },
+        "data/reports/weak_sector_residual_review.json": {
+          "csv": "data/reports/weak_sector_residual_review.csv",
+          "md": "data/reports/weak_sector_residual_review.md"
+        },
+        "data/reports/masterfile_collision_review.json": {
+          "csv": "data/reports/masterfile_collision_review.csv",
+          "md": "data/reports/masterfile_collision_review.md"
+        },
+        "data/reports/symbol_changes_review.json": {
+          "csv": "data/reports/symbol_changes_review.csv",
+          "md": "data/reports/symbol_changes_review.md"
+        },
+        "data/reports/ohlcv_plausibility.json": {
+          "csv": "data/reports/ohlcv_plausibility.csv",
+          "md": "data/reports/ohlcv_plausibility.md"
+        },
+        "data/reports/ohlcv_warning_review.json": {
+          "csv": "data/reports/ohlcv_warning_review.csv",
+          "md": "data/reports/ohlcv_warning_review.md"
+        },
+        "data/reports/financialdata_isin_supplements_review.json": {
+          "csv": "data/reports/financialdata_isin_supplements_review.csv",
+          "md": "data/reports/financialdata_isin_supplements_review.md"
+        }
+      }
+    },
+    "review_artifact_gates": {
+      "passed": true,
+      "checked_artifacts": [
+        "data/reports/b3_masterfile_gap_review.json",
+        "data/reports/b3_residual_isin_review.json",
+        "data/reports/b3_residual_sector_review.json",
+        "data/reports/otc_scope_review.json",
+        "data/reports/otc_name_mismatch_review.json",
+        "data/reports/canada_residual_review.json",
+        "data/reports/canada_figi_queue.json",
+        "data/reports/asx_residual_review.json",
+        "data/reports/weak_sector_residual_review.json",
+        "data/reports/masterfile_collision_review.json",
+        "data/reports/symbol_changes_review.json",
+        "data/reports/ohlcv_plausibility.json",
+        "data/reports/ohlcv_warning_review.json",
+        "data/reports/financialdata_isin_supplements_review.json"
+      ],
+      "checked_count": 14,
+      "missing_files": [],
+      "missing_gate_summaries": [],
+      "required_gate_key_markers": [
+        "eligibility",
+        "evidence",
+        "gate",
+        "clearance"
+      ]
+    },
+    "review_artifact_policy": {
+      "passed": true,
+      "checked_artifacts": [
+        "data/reports/b3_masterfile_gap_review.json",
+        "data/reports/b3_residual_isin_review.json",
+        "data/reports/b3_residual_sector_review.json",
+        "data/reports/otc_scope_review.json",
+        "data/reports/otc_name_mismatch_review.json",
+        "data/reports/canada_residual_review.json",
+        "data/reports/canada_figi_queue.json",
+        "data/reports/asx_residual_review.json",
+        "data/reports/weak_sector_residual_review.json",
+        "data/reports/masterfile_collision_review.json",
+        "data/reports/symbol_changes_review.json",
+        "data/reports/ohlcv_plausibility.json",
+        "data/reports/ohlcv_warning_review.json",
+        "data/reports/financialdata_isin_supplements_review.json"
+      ],
+      "checked_count": 14,
+      "missing_files": [],
+      "missing_policy": [],
+      "weak_policy": {},
+      "required_marker_groups": {
+        "review_or_no_guessing_gate": [
+          "review",
+          "no_guess",
+          "no guessing",
+          "not changed",
+          "never authorize",
+          "remain blank",
+          "source gaps remain blank",
+          "not automatically",
+          "excluded until",
+          "discovery signals only",
+          "collision evidence"
+        ],
+        "authority_or_evidence_gate": [
+          "official",
+          "listing_key",
+          "source",
+          "evidence",
+          "gate",
+          "valid",
+          "stronger"
+        ]
+      },
+      "policies": {
+        "data/reports/b3_masterfile_gap_review.json": "This review does not authorize inferred identifiers, sectors, categories, names, scope changes, or symbol changes. Every row is keyed by listing_key and tied to the B3 dataset row plus official B3 masterfile source presence. Rows absent from all current B3 masterfile sources remain source gaps until stronger official evidence exists.",
+        "data/reports/b3_residual_isin_review.json": "Rows in this report remain blank in the dataset unless an official B3/CSD/fund source provides a direct valid ISIN. Every row is keyed by listing_key and tied back to source_gap_classification/source_of_truth_decisions. Official B3 sources without exposed ISIN values are review evidence only; they do not authorize inferred identifiers.",
+        "data/reports/b3_residual_sector_review.json": "Rows in this report remain blank unless an official B3 taxonomy or reviewed issuer source maps the exact listing to a canonical stock_sector. Every row is keyed by listing_key and tied back to source_gap_classification/source_of_truth_decisions. Alphanumeric B3 issuer-code roots are preserved for probe diagnostics; no sector is inferred from the code shape.",
+        "data/reports/otc_scope_review.json": "OTC listings are extended scope unless a reviewed future scope change explicitly says otherwise. OTC source gaps remain blank; sector/category fills require reviewed issuer or product evidence.",
+        "data/reports/otc_name_mismatch_review.json": "Review queue only. OTC names are not changed unless an official or reviewed issuer-history source matches the listing_key and required identity evidence.",
+        "data/reports/canada_residual_review.json": "TMX/Cboe Canada official masterfiles are used as listing evidence, but current Canada official feeds do not expose ISIN or sector values. FIGI enrichment is OpenFIGI-by-ISIN only; rows without ISIN must resolve the ISIN/source gate first. Accepted OpenFIGI no-match and cross-ISIN collision reviews are retained as source gaps, not queued again as candidates. No Canadian ISIN, FIGI, sector, or category is inferred from symbol or name shape.",
+        "data/reports/canada_figi_queue.json": "Only canada_residual_review rows with valid ISIN, missing FIGI, and figi_decision=missing_figi_openfigi_candidate are queued. Rows with an accepted OpenFIGI no-match or FIGI-collision review are excluded until a stronger source is available. Rows without ISIN are excluded; OpenFIGI candidate selection must still prefer the Canada exchange hint and ticker.",
+        "data/reports/asx_residual_review.json": "ASXListedCompanies.csv, ASX investment-products workbook, and ASX ISIN.xls probe context are review evidence, but only direct valid identifiers may be applied. No ASX ISIN or ETF category is inferred from ticker, name shape, issuer family, or peer instruments. Core-exclusion candidates remain blank until scope is explicitly reviewed.",
+        "data/reports/weak_sector_residual_review.json": "Rows are reviewed only for the configured weak-sector venues; no global symbol or name mapping is used. Official masterfile sector values are treated as review candidates, not automatically written. No stock sector is inferred from ticker, issuer name, ISIN prefix, or peer instruments.",
+        "data/reports/masterfile_collision_review.json": "Rows in this report are review queues only. Ticker equality across exchanges is collision evidence, not listing identity evidence. A listing addition requires official target-exchange evidence for listing key, name, instrument type, listing status, and an identifier such as ISIN when available. If a non-symbol identity source is unavailable or conflicts with existing rows, keep the target listing absent and preserve the gap for manual review.",
+        "data/reports/symbol_changes_review.json": "Secondary symbol-change feed for review only. No ticker, name, listing, or corporate-action data is applied without listing-keyed official exchange or issuer evidence.",
+        "data/reports/ohlcv_plausibility.json": "Plausibility sampling only. OHLCV signals never authorize identifier, sector, category, name, listing, or symbol-change updates without official listing-keyed review evidence.",
+        "data/reports/ohlcv_warning_review.json": "OHLCV warnings are review signals only. Canonical identifiers, names, sectors, categories, listings, and symbols remain blocked until official listing-keyed evidence is reviewed.",
+        "data/reports/financialdata_isin_supplements_review.json": "FinancialData rows are discovery signals only; supplement rows are sourced from official active masterfile rows. A supplement requires a valid official ISIN, issuer-name gate, and no existing or selected ticker/ISIN collision. Rejected and skipped rows remain absent; FinancialData symbol or name shape is never used as an identifier source."
+      }
+    },
+    "review_row_traceability": {
+      "passed": true,
+      "checked_artifacts": [
+        "data/reports/b3_masterfile_gap_review.json",
+        "data/reports/b3_residual_isin_review.json",
+        "data/reports/b3_residual_sector_review.json",
+        "data/reports/otc_scope_review.json",
+        "data/reports/otc_name_mismatch_review.json",
+        "data/reports/canada_residual_review.json",
+        "data/reports/canada_figi_queue.json",
+        "data/reports/asx_residual_review.json",
+        "data/reports/weak_sector_residual_review.json",
+        "data/reports/masterfile_collision_review.json",
+        "data/reports/symbol_changes_review.json",
+        "data/reports/ohlcv_plausibility.json",
+        "data/reports/ohlcv_warning_review.json",
+        "data/reports/financialdata_isin_supplements_review.json"
+      ],
+      "checked_count": 14,
+      "missing_files": [],
+      "identity_gap_rows": {},
+      "required_identity_keys": [
+        "listing_key",
+        "review_key",
+        "change_id"
+      ],
+      "accepted_listing_key_collections": [
+        "existing_listing_keys",
+        "old_listing_keys",
+        "new_listing_keys",
+        "old_scoped_listing_keys",
+        "new_scoped_listing_keys"
+      ],
+      "accepted_candidate_identity_key_groups": [
+        [
+          "official_source_key",
+          "official_ticker"
+        ],
+        [
+          "financialdata_exchange",
+          "financialdata_ticker"
+        ]
+      ]
+    },
+    "review_row_evidence": {
+      "passed": true,
+      "checked_artifacts": [
+        "data/reports/b3_masterfile_gap_review.json",
+        "data/reports/b3_residual_isin_review.json",
+        "data/reports/b3_residual_sector_review.json",
+        "data/reports/otc_scope_review.json",
+        "data/reports/otc_name_mismatch_review.json",
+        "data/reports/canada_residual_review.json",
+        "data/reports/canada_figi_queue.json",
+        "data/reports/asx_residual_review.json",
+        "data/reports/weak_sector_residual_review.json",
+        "data/reports/masterfile_collision_review.json",
+        "data/reports/symbol_changes_review.json",
+        "data/reports/ohlcv_plausibility.json",
+        "data/reports/ohlcv_warning_review.json",
+        "data/reports/financialdata_isin_supplements_review.json"
+      ],
+      "checked_count": 14,
+      "missing_files": [],
+      "evidence_gap_rows": {},
+      "required_evidence_key_markers": [
+        "source",
+        "review",
+        "decision",
+        "gap",
+        "eligibility",
+        "evidence",
+        "gate",
+        "official",
+        "reason",
+        "scope"
+      ]
+    },
+    "apply_artifact_traceability": {
+      "passed": true,
+      "checked_artifacts": [
+        "data/reports/b3_etf_category_apply_report.json",
+        "data/reports/canada_figi_apply_report.json",
+        "data/reports/ngx_official_sector_apply_report.json"
+      ],
+      "checked_count": 3,
+      "missing_files": [],
+      "missing_policy": [],
+      "traceability_gap_rows": {},
+      "required_row_keys": [
+        "listing_key",
+        "decision",
+        "reason"
+      ],
+      "required_evidence_keys": [
+        "isin",
+        "figi",
+        "official_sector",
+        "sector_update",
+        "source",
+        "official_source_key",
+        "verification_evidence_required",
+        "openfigi_probe_context",
+        "existing_identifier_context",
+        "apply_gate_context",
+        "official_source_context",
+        "category_review_context",
+        "mapping_review_context"
+      ]
+    },
+    "supplement_artifact_traceability": {
+      "passed": true,
+      "checked_artifacts": [
+        "data/reports/financialdata_isin_supplements_review.json"
+      ],
+      "checked_count": 1,
+      "missing_from_campaigns": false,
+      "missing_files": [],
+      "missing_policy": [],
+      "traceability_gap_rows": {},
+      "required_row_keys": [
+        "financialdata_ticker",
+        "financialdata_exchange",
+        "decision",
+        "reason",
+        "financialdata_review_queue",
+        "review_priority",
+        "review_strategy",
+        "apply_eligibility",
+        "verification_evidence_required",
+        "recommended_next_source",
+        "source_gate",
+        "financialdata_discovery_context",
+        "official_identity_context",
+        "supplement_review_context"
+      ],
+      "required_official_evidence_for_accept_or_preserve": [
+        "official_ticker",
+        "official_exchange",
+        "official_isin",
+        "official_source_key"
+      ]
+    }
+  },
+  "campaign_status_rows": [
+    {
+      "priority": 1,
+      "campaign_key": "b3",
+      "status": "partially_improved_with_residual_source_gaps",
+      "delta_status": "partial",
+      "next_action": "refresh official B3 sources and only apply residual ISIN/sector values with exact official identifier or taxonomy evidence"
+    },
+    {
+      "priority": 2,
+      "campaign_key": "otc",
+      "status": "scoped_as_extended_with_source_gaps_documented",
+      "delta_status": "partial",
+      "next_action": "keep OTC enrichment gated by issuer/product evidence; do not sector-fill extended OTC rows from symbol or name shape"
+    },
+    {
+      "priority": 3,
+      "campaign_key": "canada",
+      "status": "figi_queue_drained_remaining_isin_first_gaps",
+      "delta_status": "present_for_figi_apply",
+      "next_action": "resolve remaining Canada identifiers through official ISIN-capable sources before any additional FIGI probing"
+    },
+    {
+      "priority": 4,
+      "campaign_key": "asx",
+      "status": "official_probe_reviewed_residuals_documented",
+      "delta_status": "review_only_no_data_apply",
+      "next_action": "only apply ASX identifiers or categories after exact ASX workbook/listing/name gates pass"
+    },
+    {
+      "priority": 5,
+      "campaign_key": "weak_sector",
+      "status": "venue_specific_review_queue_with_safe_ngx_apply",
+      "delta_status": "partial",
+      "next_action": "continue venue-specific official taxonomy work; skip broad NGX labels unless they map cleanly to canonical sectors"
+    },
+    {
+      "priority": 6,
+      "campaign_key": "masterfile_collisions",
+      "status": "listing_keyed_review_queue_ready_no_symbol_only_additions",
+      "delta_status": "review_queue_only_no_data_apply",
+      "next_action": "process same-ISIN cross-listing candidates first, with exchange/MIC/name/instrument-type review gates"
+    },
+    {
+      "priority": 7,
+      "campaign_key": "symbol_changes",
+      "status": "source_scope_aware_review_queue",
+      "delta_status": "review_queue_only_no_symbol_changes_applied",
+      "next_action": "review scoped rename candidates against official exchange notices before changing any canonical symbol"
+    },
+    {
+      "priority": 8,
+      "campaign_key": "ohlcv",
+      "status": "sampling_queue_enabled_plausibility_only",
+      "delta_status": "sampling_queue_only_no_data_apply",
+      "next_action": "run bounded Yahoo/local samples for selected buckets and use results only as review signals"
+    },
+    {
+      "priority": 9,
+      "campaign_key": "freshness",
+      "status": "global_and_source_freshness_visible",
+      "delta_status": "present_for_report_visibility",
+      "next_action": "refresh old official masterfile sources and rerun verification reports"
+    },
+    {
+      "priority": 10,
+      "campaign_key": "baseline",
+      "status": "baseline_snapshot_available_for_future_campaign_deltas",
+      "delta_status": "baseline_only",
+      "next_action": "compare future campaign reports against this baseline before applying or closing a PR"
+    }
+  ]
+}

@@ -72,6 +72,9 @@ CSV_FIELDNAMES = [
     "confidence_policy",
     "recommended_next_source",
     "source_gate",
+    "source_gap_context",
+    "classification_context",
+    "evidence_gate_context",
 ]
 
 
@@ -89,6 +92,9 @@ class SourceGapClassificationRow:
     confidence_policy: str
     recommended_next_source: str
     source_gate: str
+    source_gap_context: str
+    classification_context: str
+    evidence_gate_context: str
 
 
 def utc_now() -> str:
@@ -298,6 +304,35 @@ def classify_missing_etf_category(row: dict[str, str]) -> tuple[str, str, str]:
     )
 
 
+def source_gap_context_for(row: dict[str, str]) -> str:
+    return (
+        f"listing_key={row.get('listing_key', '') or 'none'};"
+        f"exchange={row.get('exchange', '') or 'none'};"
+        f"ticker={row.get('ticker', '') or 'none'};"
+        f"asset_type={row.get('asset_type', '') or 'none'};"
+        f"field={row.get('field', '') or 'none'};"
+        f"target_field={row.get('target_field', '') or 'none'}"
+    )
+
+
+def classification_context_for(row: dict[str, str]) -> str:
+    return (
+        f"gap_class={row.get('gap_class', '') or 'none'};"
+        f"review_needed={row.get('review_needed', '') or 'none'};"
+        f"confidence_policy_present={'true' if row.get('confidence_policy') else 'false'};"
+        f"name_present={'true' if row.get('name') else 'false'}"
+    )
+
+
+def evidence_gate_context_for(row: dict[str, str]) -> str:
+    return (
+        f"recommended_next_source_present={'true' if row.get('recommended_next_source') else 'false'};"
+        f"source_gate_present={'true' if row.get('source_gate') else 'false'};"
+        f"target_field={row.get('target_field', '') or 'none'};"
+        f"gap_class={row.get('gap_class', '') or 'none'}"
+    )
+
+
 def make_row(field: str, row: dict[str, str]) -> SourceGapClassificationRow:
     if field == FIELD_MISSING_ISIN:
         gap_class, next_source, source_gate = classify_missing_isin(row)
@@ -307,19 +342,26 @@ def make_row(field: str, row: dict[str, str]) -> SourceGapClassificationRow:
         gap_class, next_source, source_gate = classify_missing_etf_category(row)
     else:
         raise ValueError(f"Unsupported field: {field}")
+    item = {
+        "field": field,
+        "target_field": target_field_for(field),
+        "listing_key": row.get("listing_key") or f"{row.get('exchange', '')}::{row.get('ticker', '')}",
+        "ticker": row.get("ticker", ""),
+        "exchange": row.get("exchange", ""),
+        "asset_type": row.get("asset_type", ""),
+        "name": clean_text(row.get("name", "")),
+        "gap_class": gap_class,
+        "confidence_policy": GAP_CLASS_POLICIES[gap_class],
+        "recommended_next_source": next_source,
+        "source_gate": source_gate,
+    }
+    context_item = {**item, "review_needed": "true"}
     return SourceGapClassificationRow(
-        field=field,
-        target_field=target_field_for(field),
-        listing_key=row.get("listing_key") or f"{row.get('exchange', '')}::{row.get('ticker', '')}",
-        ticker=row.get("ticker", ""),
-        exchange=row.get("exchange", ""),
-        asset_type=row.get("asset_type", ""),
-        name=clean_text(row.get("name", "")),
-        gap_class=gap_class,
+        **item,
         review_needed=True,
-        confidence_policy=GAP_CLASS_POLICIES[gap_class],
-        recommended_next_source=next_source,
-        source_gate=source_gate,
+        source_gap_context=source_gap_context_for(context_item),
+        classification_context=classification_context_for(context_item),
+        evidence_gate_context=evidence_gate_context_for(context_item),
     )
 
 
@@ -444,6 +486,16 @@ def summarize(rows: list[SourceGapClassificationRow], generated_at: str) -> dict
     class_counts = Counter(row.gap_class for row in rows)
     class_by_field = Counter((row.field, row.gap_class) for row in rows)
     exchange_by_field = Counter((row.field, row.exchange) for row in rows)
+    review_batches = Counter(
+        (
+            row.field,
+            row.gap_class,
+            row.exchange,
+            row.recommended_next_source,
+            row.source_gate,
+        )
+        for row in rows
+    )
     return {
         "generated_at": generated_at,
         "rows": len(rows),
@@ -460,6 +512,23 @@ def summarize(rows: list[SourceGapClassificationRow], generated_at: str) -> dict
             ][:10]
             for field in sorted(field_counts)
         },
+        "top_source_gap_review_batches": [
+            {
+                "field": field,
+                "gap_class": gap_class,
+                "exchange": exchange,
+                "rows": count,
+                "recommended_next_source": recommended_next_source,
+                "source_gate": source_gate,
+            }
+            for (
+                field,
+                gap_class,
+                exchange,
+                recommended_next_source,
+                source_gate,
+            ), count in review_batches.most_common(20)
+        ],
         "policy": {
             "no_unreviewed_heuristics": "This report classifies residual gaps only; it does not fill metadata values.",
             "release_gate": "Every current residual source gap must have one deterministic class and a source gate.",
@@ -510,13 +579,30 @@ def write_markdown(path: Path, rows: list[SourceGapClassificationRow], summary: 
         "",
         format_top_classes(summary),
         "",
+        "## Top Review Batches",
+        "",
+        "| Field | Gap Class | Exchange | Rows | Recommended Next Source | Source Gate |",
+        "|---|---|---|---:|---|---|",
+    ]
+    for batch in summary.get("top_source_gap_review_batches", []):
+        lines.append(
+            "| "
+            f"{batch.get('field', '')} | "
+            f"{batch.get('gap_class', '')} | "
+            f"{batch.get('exchange', '')} | "
+            f"{batch.get('rows', 0)} | "
+            f"{batch.get('recommended_next_source', '')} | "
+            f"{batch.get('source_gate', '')} |"
+        )
+    lines.extend([
+        "",
         "## Release Policy",
         "",
         "- No value in this report is an inferred metadata fill.",
         "- Future fills must pass the row-level source gate and the normal reviewed override path.",
         "- The database validator fails if current gaps are missing from this classification report or if stale classifications remain.",
         "",
-    ]
+    ])
     path.write_text("\n".join(lines), encoding="utf-8")
 
 

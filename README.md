@@ -9,23 +9,23 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 
 | Metric | Value | Meaning |
 |---|---:|---|
-| Core listings | 54,002 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
-| Primary tickers | 61,439 | Rows in `data/tickers.csv`; one primary row per security. |
+| Core listings | 54,028 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
+| Primary tickers | 61,465 | Rows in `data/tickers.csv`; one primary row per security. |
 | Full listing rows | 71,043 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
-| Stocks | 45,885 | Primary ticker rows where `asset_type=Stock`. |
-| ETFs | 15,554 | Primary ticker rows where `asset_type=ETF`. |
+| Stocks | 45,910 | Primary ticker rows where `asset_type=Stock`. |
+| ETFs | 15,555 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 80 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 86 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 121,431 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
-| ISIN coverage | 59,608 (97.0%) | Primary ticker rows with a non-empty `isin`. |
-| FIGI coverage | 63,434 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
-| Sector/category coverage | 58,736 (95.6%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 43,287 | Primary ticker rows with a non-empty `stock_sector`. |
-| ETF category coverage | 15,449 | Primary ticker rows with a non-empty `etf_category`. |
-| Core listing-scope rows | 54,002 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
-| Core primary rows with ISIN | 52,943 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
-| Core primary rows missing ISIN | 1,059 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
-| Extended listing-scope rows | 17,041 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
+| Aliases | 121,651 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
+| ISIN coverage | 59,847 (97.4%) | Primary ticker rows with a non-empty `isin`. |
+| FIGI coverage | 64,353 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
+| Sector/category coverage | 58,763 (95.6%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Stock sector coverage | 43,308 | Primary ticker rows with a non-empty `stock_sector`. |
+| ETF category coverage | 15,453 | Primary ticker rows with a non-empty `etf_category`. |
+| Core listing-scope rows | 54,028 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
+| Core primary rows with ISIN | 53,182 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
+| Core primary rows missing ISIN | 846 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
+| Extended listing-scope rows | 17,015 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
 
 ## Core Files
 
@@ -57,10 +57,20 @@ Reference and audit files:
 | [`data/masterfiles/financialdata_isin_supplemental_listings.csv`](data/masterfiles/financialdata_isin_supplemental_listings.csv) | FinancialData-discovered rows accepted only after official ISIN-bearing masterfile match |
 | [`data/history/latest_snapshot.csv`](data/history/latest_snapshot.csv) | Current listing-status baseline |
 | [`data/reports/coverage_report.json`](data/reports/coverage_report.json) | Machine-readable coverage report |
+| [`data/reports/pr_review_summary.md`](data/reports/pr_review_summary.md) | Compact PR review entry point for scope, safety policy, acceptance status, and remaining risks |
+| [`data/reports/release_acceptance.md`](data/reports/release_acceptance.md) | Release acceptance matrix covering data invariants, review traceability, campaign evidence, and gates |
+| [`data/reports/improvement_campaigns.md`](data/reports/improvement_campaigns.md) | Campaign status, next review batches, source gates, and closure blockers |
 | [`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md) | Missing/partial/global official-source backlog |
 | [`data/reports/completion_backlog.md`](data/reports/completion_backlog.md) | Prioritized missing ISIN/sector/category backlog |
 | [`data/reports/source_gap_classification.md`](data/reports/source_gap_classification.md) | Deterministic residual source-gap classes and row-level source gates |
 | [`data/reports/source_of_truth_decisions.md`](data/reports/source_of_truth_decisions.md) | Source-of-truth outcomes for each residual gap: fill, accepted source gap, or core-exclusion candidate |
+| [`data/reports/b3_residual_isin_review.md`](data/reports/b3_residual_isin_review.md) | Listing-keyed review of the final B3 ISIN residuals after official B3 refreshes |
+| [`data/reports/b3_residual_sector_review.md`](data/reports/b3_residual_sector_review.md) | Listing-keyed review of B3 stock-sector residuals after the official B3 taxonomy probe |
+| [`data/reports/otc_scope_review.md`](data/reports/otc_scope_review.md) | Listing-keyed OTC scope guard before OTC metadata enrichment |
+| [`data/reports/canada_residual_review.md`](data/reports/canada_residual_review.md) | Listing-keyed TSX/TSXV/NEO ISIN, FIGI, and source-gap review with TMX/Cboe context |
+| [`data/reports/canada_figi_queue.md`](data/reports/canada_figi_queue.md) | ISIN-gated TSX/TSXV/NEO OpenFIGI batch queue |
+| [`data/reports/canada_figi_batch_probe.md`](data/reports/canada_figi_batch_probe.md) | Read-only OpenFIGI probe for one Canada FIGI queue slice |
+| [`data/reports/canada_figi_apply_report.md`](data/reports/canada_figi_apply_report.md) | Strict-gated apply report for accepted Canada OpenFIGI probe rows |
 | [`data/reports/alias_quality.md`](data/reports/alias_quality.md) | Alias safety report for natural-language mention detection |
 | [`data/reports/adanos_detection_simulation.md`](data/reports/adanos_detection_simulation.md) | Mention-detection smoke test for Adanos natural-language aliases |
 | [`data/reports/entry_quality.md`](data/reports/entry_quality.md) | Per-listing deterministic quality scan summary |
@@ -68,6 +78,8 @@ Reference and audit files:
 | [`data/reports/override_debt_report.md`](data/reports/override_debt_report.md) | Open reviewed metadata/alias override debt after canonical normalization |
 | [`data/reports/ohlcv_plausibility.md`](data/reports/ohlcv_plausibility.md) | Kronos-inspired market-data plausibility queue |
 | [`data/reports/masterfile_collision_report.json`](data/reports/masterfile_collision_report.json) | Official-symbol gaps blocked by ticker collisions |
+| [`data/reports/isin_identity_collision_review_queue.md`](data/reports/isin_identity_collision_review_queue.md) | ISINs shared by distinct issuer names (identity-collision review, gated for official evidence) |
+| [`data/reports/deepseek_isin_collision_validation.md`](data/reports/deepseek_isin_collision_validation.md) | DeepSeek triage cross-check of the highest-risk ISIN identity collisions |
 | [`docs/quality_improvement_plan.md`](docs/quality_improvement_plan.md) | Structured quality roadmap from the latest full-dataset audit |
 
 ## Data Model
@@ -111,8 +123,8 @@ JSON metadata:
 {
   "_meta": {
     "version": "3.24.0",
-    "built_at": "2026-05-16T17:21:31Z",
-    "total_tickers": 61439
+    "built_at": "2026-05-24T13:46:38Z",
+    "total_tickers": 61465
   },
   "tickers": []
 }
@@ -158,7 +170,7 @@ Top exchanges by primary ticker count:
 | KRX | 1,796 |
 | TSX | 1,632 |
 | KOSDAQ | 1,583 |
-| B3 | 1,555 |
+| B3 | 1,581 |
 | ASX | 1,291 |
 
 For full exchange, country, source, and verification coverage, use:
@@ -167,6 +179,12 @@ For full exchange, country, source, and verification coverage, use:
 python3 scripts/build_coverage_report.py
 python3 scripts/build_source_inventory.py
 python3 scripts/build_completion_backlog.py
+python3 scripts/build_b3_residual_isin_review.py
+python3 scripts/build_b3_residual_sector_review.py
+python3 scripts/build_otc_scope_review.py
+python3 scripts/build_canada_residual_review.py
+python3 scripts/build_canada_figi_queue.py
+python3 scripts/probe_canada_figi_batch.py --batch-id canada-figi-0001 --limit 10
 python3 scripts/build_alias_quality_report.py
 python3 scripts/build_adanos_ticker_reference.py
 python3 scripts/simulate_adanos_detection.py
@@ -193,6 +211,12 @@ python3 scripts/build_listing_history.py
 python3 scripts/build_coverage_report.py
 python3 scripts/build_source_inventory.py
 python3 scripts/build_completion_backlog.py
+python3 scripts/build_b3_residual_isin_review.py
+python3 scripts/build_b3_residual_sector_review.py
+python3 scripts/build_otc_scope_review.py
+python3 scripts/build_canada_residual_review.py
+python3 scripts/build_canada_figi_queue.py
+python3 scripts/probe_canada_figi_batch.py --batch-id canada-figi-0001 --limit 10
 python3 scripts/build_alias_quality_report.py
 python3 scripts/build_adanos_ticker_reference.py
 python3 scripts/simulate_adanos_detection.py
@@ -236,6 +260,12 @@ Review queue:
 
 ```bash
 python3 scripts/build_entry_quality_report.py
+python3 scripts/build_b3_residual_isin_review.py
+python3 scripts/build_b3_residual_sector_review.py
+python3 scripts/build_otc_scope_review.py
+python3 scripts/build_canada_residual_review.py
+python3 scripts/build_canada_figi_queue.py
+python3 scripts/probe_canada_figi_batch.py --batch-id canada-figi-0001 --limit 10
 python3 scripts/build_ohlcv_plausibility_report.py
 python3 scripts/audit_dataset.py --write-defaults
 python3 scripts/run_claude_review_queue.py --model sonnet --skip-existing

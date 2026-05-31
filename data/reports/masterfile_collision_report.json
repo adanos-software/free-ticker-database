@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 77262,
-    "matched": 49725,
-    "collisions": 11096,
-    "missing": 16441
+    "official_symbols": 79377,
+    "matched": 51282,
+    "collisions": 11146,
+    "missing": 16949
   },
   "exchanges": [
     {
@@ -260,25 +260,70 @@
     },
     {
       "exchange": "B3",
-      "official_symbols": 9,
-      "matched": 8,
+      "official_symbols": 1941,
+      "matched": 1544,
       "collisions": 0,
-      "missing": 1,
+      "missing": 397,
       "collision_examples": [],
       "missing_examples": [
         {
+          "ticker": "003H11",
+          "name": "KINEA CO-INVESTIMENTO FDO INV IMOB",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "0FEA11",
+          "name": "SPIM FUNDO DE INVESTIMENTO IMOBILI\u00c1RIO",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "AATH11",
+          "name": "ATHON ENERGIA ESG I FDO INV PART EM INFRAESTRUTURA",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "AFCF11",
+          "name": "AFRICA FILMES S/C LTDA.",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "AFCV12",
+          "name": "A F CINEMA E VIDEO LTDA",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "AGBK11",
+          "name": "BANCO AGIBANK S.A.",
+          "exchange": "B3"
+        },
+        {
           "ticker": "ALUP11",
           "name": "ALUPAR INVESTIMENTO S/A",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "AMAZ11",
+          "name": "BLOXS AMAZON GREEN LEG FDO INV NAS CAD PROD AGRO",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "AMZG11",
+          "name": "AMAZONAS DISTRIBUIDORA DE ENERGIA S.A.",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "ANGC11",
+          "name": "FDO INV IMOB RENDA CORPORATIVA ANGICO - FII",
           "exchange": "B3"
         }
       ]
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1316,
+      "official_symbols": 1326,
       "matched": 1180,
-      "collisions": 19,
-      "missing": 117,
+      "collisions": 20,
+      "missing": 126,
       "collision_examples": [
         {
           "ticker": "ARKI",
@@ -514,10 +559,10 @@
     },
     {
       "exchange": "BIST",
-      "official_symbols": 636,
+      "official_symbols": 637,
       "matched": 614,
       "collisions": 20,
-      "missing": 2,
+      "missing": 3,
       "collision_examples": [
         {
           "ticker": "ALCAR",
@@ -604,6 +649,11 @@
         {
           "ticker": "AAGYO",
           "name": "A\u011eAO\u011eLU AVRASYA GAYR\u0130MENKUL YATIRIM ORTAKLI\u011eI A.\u015e.",
+          "exchange": "BIST"
+        },
+        {
+          "ticker": "LXGYO",
+          "name": "LUXERA GAYR\u0130MENKUL YATIRIM ORTAKLI\u011eI A.\u015e.",
           "exchange": "BIST"
         },
         {
@@ -751,10 +801,10 @@
     },
     {
       "exchange": "BSE_IN",
-      "official_symbols": 4847,
-      "matched": 2464,
-      "collisions": 752,
-      "missing": 1631,
+      "official_symbols": 5019,
+      "matched": 2611,
+      "collisions": 765,
+      "missing": 1643,
       "collision_examples": [
         {
           "ticker": "63MOONS",
@@ -892,10 +942,10 @@
     },
     {
       "exchange": "BVB",
-      "official_symbols": 347,
+      "official_symbols": 348,
       "matched": 75,
       "collisions": 121,
-      "missing": 151,
+      "missing": 152,
       "collision_examples": [
         {
           "ticker": "AAB",
@@ -1360,10 +1410,10 @@
     },
     {
       "exchange": "Euronext",
-      "official_symbols": 4393,
-      "matched": 936,
-      "collisions": 2252,
-      "missing": 1205,
+      "official_symbols": 4392,
+      "matched": 935,
+      "collisions": 2251,
+      "missing": 1206,
       "collision_examples": [
         {
           "ticker": "0EMU",
@@ -1502,9 +1552,9 @@
     {
       "exchange": "HKEX",
       "official_symbols": 3154,
-      "matched": 3040,
+      "matched": 3038,
       "collisions": 82,
-      "missing": 32,
+      "missing": 34,
       "collision_examples": [
         {
           "ticker": "00636",
@@ -1604,6 +1654,11 @@
           "exchange": "HKEX"
         },
         {
+          "ticker": "01511",
+          "name": "UISEE TECH",
+          "exchange": "HKEX"
+        },
+        {
           "ticker": "01609",
           "name": "STAR SPORTS MED",
           "exchange": "HKEX"
@@ -1632,19 +1687,14 @@
           "ticker": "02940",
           "name": "WELLCELL H-OLD",
           "exchange": "HKEX"
-        },
-        {
-          "ticker": "02944",
-          "name": "ZHONGKE GP-OLD",
-          "exchange": "HKEX"
         }
       ]
     },
     {
       "exchange": "HNX",
-      "official_symbols": 301,
+      "official_symbols": 300,
       "matched": 105,
-      "collisions": 157,
+      "collisions": 156,
       "missing": 39,
       "collision_examples": [
         {
@@ -2004,9 +2054,9 @@
     {
       "exchange": "KOSDAQ",
       "official_symbols": 1819,
-      "matched": 1575,
+      "matched": 1574,
       "collisions": 0,
-      "missing": 244,
+      "missing": 245,
       "collision_examples": [],
       "missing_examples": [
         {
@@ -2063,10 +2113,10 @@
     },
     {
       "exchange": "KRX",
-      "official_symbols": 2054,
-      "matched": 1784,
+      "official_symbols": 2061,
+      "matched": 1783,
       "collisions": 3,
-      "missing": 267,
+      "missing": 275,
       "collision_examples": [
         {
           "ticker": "002210",
@@ -2148,9 +2198,9 @@
     },
     {
       "exchange": "LSE",
-      "official_symbols": 11015,
-      "matched": 6321,
-      "collisions": 1184,
+      "official_symbols": 11013,
+      "matched": 6317,
+      "collisions": 1186,
       "missing": 3510,
       "collision_examples": [
         {
@@ -2395,10 +2445,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5510,
-      "matched": 4528,
-      "collisions": 70,
-      "missing": 912,
+      "official_symbols": 5491,
+      "matched": 4488,
+      "collisions": 75,
+      "missing": 928,
       "collision_examples": [
         {
           "ticker": "ACAA",
@@ -2441,6 +2491,14 @@
           ]
         },
         {
+          "ticker": "AMAN",
+          "name": "Amanat Acquisition Corp - Class A Ordinary Shares",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "IDX"
+          ]
+        },
+        {
           "ticker": "ANL",
           "name": "Adlai Nortye Ltd. - American Depositary Shares",
           "target_exchange": "NASDAQ",
@@ -2467,14 +2525,6 @@
         {
           "ticker": "ARCI",
           "name": "Archimedes Tech SPAC Partners III Co. - Ordinary Share",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "LSE"
-          ]
-        },
-        {
-          "ticker": "ARMY",
-          "name": "Tema International Defense ETF",
           "target_exchange": "NASDAQ",
           "existing_exchanges": [
             "LSE"
@@ -2536,10 +2586,10 @@
     },
     {
       "exchange": "NEO",
-      "official_symbols": 448,
-      "matched": 196,
-      "collisions": 87,
-      "missing": 165,
+      "official_symbols": 438,
+      "matched": 190,
+      "collisions": 85,
+      "missing": 163,
       "collision_examples": [
         {
           "ticker": "ABB",
@@ -2686,14 +2736,22 @@
     },
     {
       "exchange": "NSE_IN",
-      "official_symbols": 2974,
-      "matched": 1211,
-      "collisions": 290,
-      "missing": 1473,
+      "official_symbols": 3016,
+      "matched": 1212,
+      "collisions": 314,
+      "missing": 1490,
       "collision_examples": [
         {
           "ticker": "3BBLACKBIO",
           "name": "3B Blackbio Dx Limited",
+          "target_exchange": "NSE_IN",
+          "existing_exchanges": [
+            "BSE_IN"
+          ]
+        },
+        {
+          "ticker": "A2ZINFRA",
+          "name": "A2Z Infra Engineering Limited",
           "target_exchange": "NSE_IN",
           "existing_exchanges": [
             "BSE_IN"
@@ -2761,14 +2819,6 @@
           "target_exchange": "NSE_IN",
           "existing_exchanges": [
             "BSE_IN"
-          ]
-        },
-        {
-          "ticker": "AGI",
-          "name": "AGI Greenpac Limited",
-          "target_exchange": "NSE_IN",
-          "existing_exchanges": [
-            "NYSE"
           ]
         }
       ],
@@ -2968,10 +3018,10 @@
     },
     {
       "exchange": "NYSE",
-      "official_symbols": 3856,
-      "matched": 2052,
-      "collisions": 528,
-      "missing": 1276,
+      "official_symbols": 3867,
+      "matched": 2041,
+      "collisions": 533,
+      "missing": 1293,
       "collision_examples": [
         {
           "ticker": "ABX",
@@ -3109,10 +3159,10 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2645,
-      "matched": 2576,
+      "official_symbols": 2640,
+      "matched": 2567,
       "collisions": 24,
-      "missing": 45,
+      "missing": 49,
       "collision_examples": [
         {
           "ticker": "BAR",
@@ -3227,6 +3277,16 @@
           "exchange": "NYSE ARCA"
         },
         {
+          "ticker": "CVGD",
+          "name": "CresAlta Global Dividend ETF",
+          "exchange": "NYSE ARCA"
+        },
+        {
+          "ticker": "CVSM",
+          "name": "CresAlta Small and Mid-Cap ETF",
+          "exchange": "NYSE ARCA"
+        },
+        {
           "ticker": "DLUX",
           "name": "DoubleLine Ultrashort Income ETF",
           "exchange": "NYSE ARCA"
@@ -3235,23 +3295,13 @@
           "ticker": "DPRE",
           "name": "Virtus Duff & Phelps Real Estate Income ETF",
           "exchange": "NYSE ARCA"
-        },
-        {
-          "ticker": "DSCO",
-          "name": "DoubleLine Securitized Credit ETF",
-          "exchange": "NYSE ARCA"
-        },
-        {
-          "ticker": "DUTY",
-          "name": "U.S. Defense ETF",
-          "exchange": "NYSE ARCA"
         }
       ]
     },
     {
       "exchange": "NYSE MKT",
-      "official_symbols": 314,
-      "matched": 232,
+      "official_symbols": 313,
+      "matched": 231,
       "collisions": 23,
       "missing": 59,
       "collision_examples": [
@@ -3582,10 +3632,10 @@
     },
     {
       "exchange": "OTC",
-      "official_symbols": 11957,
-      "matched": 7679,
-      "collisions": 35,
-      "missing": 4243,
+      "official_symbols": 11925,
+      "matched": 7640,
+      "collisions": 36,
+      "missing": 4249,
       "collision_examples": [
         {
           "ticker": "AEAE",
@@ -3660,15 +3710,25 @@
           ]
         },
         {
-          "ticker": "EMUS",
-          "name": "ELECTRIC METALS USA LTD",
+          "ticker": "DELX",
+          "name": "DELEX HEALTHCARE GRP INC",
           "target_exchange": "OTC",
           "existing_exchanges": [
-            "LSE"
+            "TSXV"
           ]
         }
       ],
       "missing_examples": [
+        {
+          "ticker": "AACEY",
+          "name": "ASIA CMNT HLDGS UNSP/ADR",
+          "exchange": "OTC"
+        },
+        {
+          "ticker": "AACLF",
+          "name": "A C L CONSTR LTD",
+          "exchange": "OTC"
+        },
         {
           "ticker": "AAGIY",
           "name": "AIA GROUP LTD S/ADR",
@@ -3707,16 +3767,6 @@
         {
           "ticker": "AAXBF",
           "name": "AIRASIA X BHD",
-          "exchange": "OTC"
-        },
-        {
-          "ticker": "ABAKF",
-          "name": "ABRDN ASIA-PAC INCOME FD",
-          "exchange": "OTC"
-        },
-        {
-          "ticker": "ABBAF",
-          "name": "ABRDN ASIAN INCOME FUND",
           "exchange": "OTC"
         }
       ]
@@ -3864,10 +3914,10 @@
     },
     {
       "exchange": "PSX",
-      "official_symbols": 714,
+      "official_symbols": 716,
       "matched": 371,
-      "collisions": 151,
-      "missing": 192,
+      "collisions": 152,
+      "missing": 193,
       "collision_examples": [
         {
           "ticker": "AAL",
@@ -4046,9 +4096,9 @@
     },
     {
       "exchange": "SET",
-      "official_symbols": 945,
+      "official_symbols": 944,
       "matched": 545,
-      "collisions": 350,
+      "collisions": 349,
       "missing": 50,
       "collision_examples": [
         {
@@ -4188,9 +4238,9 @@
     {
       "exchange": "SGX",
       "official_symbols": 738,
-      "matched": 592,
+      "matched": 589,
       "collisions": 142,
-      "missing": 4,
+      "missing": 7,
       "collision_examples": [
         {
           "ticker": "500",
@@ -4280,26 +4330,41 @@
           "exchange": "SGX"
         },
         {
-          "ticker": "NXNR",
-          "name": "MDR Limited R",
+          "ticker": "JCO",
+          "name": "JustCo",
           "exchange": "SGX"
         },
         {
-          "ticker": "V2OR",
-          "name": "MDR Limited R1",
+          "ticker": "JFQ",
+          "name": "AnnicaHoldings",
+          "exchange": "SGX"
+        },
+        {
+          "ticker": "QBPR",
+          "name": "SAM Holdings R",
+          "exchange": "SGX"
+        },
+        {
+          "ticker": "UGS",
+          "name": "ULTRAGREEN AI SGD",
           "exchange": "SGX"
         },
         {
           "ticker": "WNH",
           "name": "Autagco Ltd",
           "exchange": "SGX"
+        },
+        {
+          "ticker": "Y5DR",
+          "name": "SAM Holdings R1",
+          "exchange": "SGX"
         }
       ]
     },
     {
       "exchange": "SSE_CL",
-      "official_symbols": 112,
-      "matched": 112,
+      "official_symbols": 111,
+      "matched": 111,
       "collisions": 0,
       "missing": 0,
       "collision_examples": [],
@@ -4307,10 +4372,10 @@
     },
     {
       "exchange": "TADAWUL",
-      "official_symbols": 411,
+      "official_symbols": 412,
       "matched": 191,
       "collisions": 217,
-      "missing": 3,
+      "missing": 4,
       "collision_examples": [
         {
           "ticker": "1201",
@@ -4407,6 +4472,11 @@
         {
           "ticker": "4190",
           "name": "JARIR",
+          "exchange": "TADAWUL"
+        },
+        {
+          "ticker": "7205",
+          "name": "DBS",
           "exchange": "TADAWUL"
         }
       ]
@@ -4746,9 +4816,9 @@
     },
     {
       "exchange": "TWSE",
-      "official_symbols": 1086,
+      "official_symbols": 1088,
       "matched": 973,
-      "collisions": 34,
+      "collisions": 36,
       "missing": 79,
       "collision_examples": [
         {
@@ -4887,10 +4957,10 @@
     },
     {
       "exchange": "UPCOM",
-      "official_symbols": 832,
+      "official_symbols": 830,
       "matched": 2,
       "collisions": 468,
-      "missing": 362,
+      "missing": 360,
       "collision_examples": [
         {
           "ticker": "AAS",
@@ -5028,10 +5098,10 @@
     },
     {
       "exchange": "XETRA",
-      "official_symbols": 4519,
-      "matched": 3658,
-      "collisions": 795,
-      "missing": 66,
+      "official_symbols": 4528,
+      "matched": 3650,
+      "collisions": 796,
+      "missing": 82,
       "collision_examples": [
         {
           "ticker": "0GZK",
@@ -5116,6 +5186,11 @@
       ],
       "missing_examples": [
         {
+          "ticker": "36IB",
+          "name": "IS.IBD D36 T.EO EOD",
+          "exchange": "XETRA"
+        },
+        {
           "ticker": "AAVD",
           "name": "ACATIS ALTERSVORSORGE.ETF",
           "exchange": "XETRA"
@@ -5136,6 +5211,11 @@
           "exchange": "XETRA"
         },
         {
+          "ticker": "BTNA",
+          "name": "DIG.ASS. OPEN END ETP",
+          "exchange": "XETRA"
+        },
+        {
           "ticker": "CAKD",
           "name": "WEI-CAIE DLD",
           "exchange": "XETRA"
@@ -5153,16 +5233,6 @@
         {
           "ticker": "DOTM",
           "name": "WITR MU.AS.I. ETP 2062",
-          "exchange": "XETRA"
-        },
-        {
-          "ticker": "EMGD",
-          "name": "FT-FTSE EM CLDLD",
-          "exchange": "XETRA"
-        },
-        {
-          "ticker": "EMH1",
-          "name": "PFERDEWETTEN.DE NA JGE",
           "exchange": "XETRA"
         }
       ]

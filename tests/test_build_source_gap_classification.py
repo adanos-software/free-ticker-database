@@ -5,7 +5,14 @@ from scripts.build_completion_backlog import (
     FIELD_MISSING_ISIN,
     FIELD_MISSING_STOCK_SECTOR,
 )
-from scripts.build_source_gap_classification import build_source_gap_classifications, summarize
+from scripts.build_source_gap_classification import (
+    build_source_gap_classifications,
+    classification_context_for,
+    evidence_gate_context_for,
+    source_gap_context_for,
+    summarize,
+    write_markdown,
+)
 
 
 def test_build_source_gap_classifications_covers_all_gap_types() -> None:
@@ -46,6 +53,9 @@ def test_build_source_gap_classifications_covers_all_gap_types() -> None:
     assert by_field[FIELD_MISSING_ETF_CATEGORY].gap_class == "digital_asset_etf_category_gap"
     assert all(row.review_needed for row in rows)
     assert all(row.source_gate for row in rows)
+    assert all(row.source_gap_context for row in rows)
+    assert all(row.classification_context for row in rows)
+    assert all(row.evidence_gate_context for row in rows)
 
 
 def test_summarize_reports_field_and_class_totals() -> None:
@@ -68,7 +78,42 @@ def test_summarize_reports_field_and_class_totals() -> None:
     assert summary["rows"] == 1
     assert summary["field_totals"] == {FIELD_MISSING_ISIN: 1}
     assert summary["class_totals"] == {"capital_pool_or_halted_identifier_gap": 1}
+    assert summary["top_source_gap_review_batches"] == [
+        {
+            "field": FIELD_MISSING_ISIN,
+            "gap_class": "capital_pool_or_halted_identifier_gap",
+            "exchange": "TSXV",
+            "rows": 1,
+            "recommended_next_source": "Current exchange issuer/status file or CPC/shell prospectus.",
+            "source_gate": "Exact halted/CPC symbol and direct current identifier evidence.",
+        }
+    ]
     assert summary["policy"]["release_gate"]
+
+
+def test_write_markdown_surfaces_top_review_batches(tmp_path) -> None:
+    rows = build_source_gap_classifications(
+        core_listings=[
+            {
+                "listing_key": "TSXV::ABC-H",
+                "ticker": "ABC-H",
+                "exchange": "TSXV",
+                "asset_type": "Stock",
+                "name": "ABC Holdings",
+                "scope_reason": "primary_listing_missing_isin",
+            }
+        ],
+        tickers=[],
+    )
+    summary = summarize(rows, "2026-05-11T00:00:00Z")
+    path = tmp_path / "source_gap_classification.md"
+
+    write_markdown(path, rows, summary)
+
+    markdown = path.read_text(encoding="utf-8")
+    assert "## Top Review Batches" in markdown
+    assert "| missing_isin_primary | capital_pool_or_halted_identifier_gap | TSXV | 1 |" in markdown
+    assert "Exact halted/CPC symbol and direct current identifier evidence." in markdown
 
 
 def test_tmx_cpc_sector_evidence_classifies_as_core_exclusion_candidate() -> None:
@@ -337,3 +382,36 @@ def test_rhodium_etcs_are_classified_as_commodity_category_gaps() -> None:
 
     assert len(rows) == 1
     assert rows[0].gap_class == "commodity_etf_category_gap"
+
+
+def test_source_gap_contexts_are_derived_from_row_fields() -> None:
+    row = {
+        "listing_key": "TSX::ABC",
+        "exchange": "TSX",
+        "ticker": "ABC",
+        "asset_type": "Stock",
+        "field": "missing_isin_primary",
+        "target_field": "isin",
+        "name": "ABC Inc.",
+        "gap_class": "official_identifier_source_gap",
+        "review_needed": "true",
+        "confidence_policy": "Require official source.",
+        "recommended_next_source": "Official exchange detail feed.",
+        "source_gate": "Exact exchange/symbol/name and checksum.",
+    }
+
+    assert (
+        source_gap_context_for(row)
+        == "listing_key=TSX::ABC;exchange=TSX;ticker=ABC;asset_type=Stock;"
+        "field=missing_isin_primary;target_field=isin"
+    )
+    assert (
+        classification_context_for(row)
+        == "gap_class=official_identifier_source_gap;review_needed=true;"
+        "confidence_policy_present=true;name_present=true"
+    )
+    assert (
+        evidence_gate_context_for(row)
+        == "recommended_next_source_present=true;source_gate_present=true;"
+        "target_field=isin;gap_class=official_identifier_source_gap"
+    )

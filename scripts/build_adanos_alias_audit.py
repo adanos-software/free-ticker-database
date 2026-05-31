@@ -27,6 +27,12 @@ REPORTS_DIR = DATA_DIR / "reports"
 DEFAULT_CSV_OUT = REPORTS_DIR / "adanos_alias_audit.csv"
 DEFAULT_JSON_OUT = REPORTS_DIR / "adanos_alias_audit.json"
 DEFAULT_MD_OUT = REPORTS_DIR / "adanos_alias_audit.md"
+ALIAS_AUDIT_POLICY = (
+    "Adanos natural-language aliases must be normalized, ASCII-safe, non-common-word, "
+    "and issuer-compatible before they can support mention detection. Findings are "
+    "blocking evidence for data cleanup or matcher tightening; do not infer aliases from "
+    "unverified names."
+)
 
 FIELDNAMES = [
     "row_index",
@@ -49,6 +55,13 @@ ETF_LONG_ALIAS_RE = re.compile(
 
 def utc_now() -> str:
     return datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
+def display_path(path: Path) -> str:
+    try:
+        return str(path.relative_to(ROOT))
+    except ValueError:
+        return str(path)
 
 
 def load_rows(path: Path) -> list[dict[str, str]]:
@@ -197,14 +210,23 @@ def write_csv(path: Path, findings: list[dict[str, str]]) -> None:
         writer.writerows(findings)
 
 
-def write_json(path: Path, findings: list[dict[str, str]], generated_at: str) -> None:
+def write_json(path: Path, findings: list[dict[str, str]], generated_at: str, input_path: Path = DEFAULT_INPUT) -> None:
     issue_counts = Counter(finding["issue_type"] for finding in findings)
     severity_counts = Counter(finding["severity"] for finding in findings)
     payload = {
-        "generated_at": generated_at,
-        "rows": len(findings),
-        "issue_counts": dict(issue_counts.most_common()),
-        "severity_counts": dict(severity_counts.most_common()),
+        "_meta": {
+            "generated_at": generated_at,
+            "source_files": {"adanos_reference_csv": display_path(input_path)},
+            "policy": ALIAS_AUDIT_POLICY,
+        },
+        "summary": {
+            "rows": len(findings),
+            "issue_counts": dict(issue_counts.most_common()),
+            "severity_counts": dict(severity_counts.most_common()),
+            "blocking_issue_count": sum(1 for finding in findings if finding["severity"] == "high"),
+        },
+        "policy": ALIAS_AUDIT_POLICY,
+        "findings": findings,
         "examples": findings[:100],
     }
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -252,7 +274,7 @@ def main(argv: list[str] | None = None) -> int:
     findings = build_report(load_rows(args.input))
     generated_at = utc_now()
     write_csv(args.csv_out, findings)
-    write_json(args.json_out, findings, generated_at)
+    write_json(args.json_out, findings, generated_at, args.input)
     write_markdown(args.md_out, findings, generated_at)
     print(
         json.dumps(

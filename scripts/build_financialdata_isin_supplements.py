@@ -56,6 +56,16 @@ REVIEW_FIELDNAMES = [
     "official_reference_scope",
     "decision",
     "reason",
+    "financialdata_review_queue",
+    "review_priority",
+    "review_strategy",
+    "apply_eligibility",
+    "verification_evidence_required",
+    "recommended_next_source",
+    "source_gate",
+    "financialdata_discovery_context",
+    "official_identity_context",
+    "supplement_review_context",
 ]
 
 EXCHANGE_COUNTRY = {
@@ -98,6 +108,16 @@ class ReviewRow:
     official_reference_scope: str
     decision: str
     reason: str
+    financialdata_review_queue: str
+    review_priority: str
+    review_strategy: str
+    apply_eligibility: str
+    verification_evidence_required: str
+    recommended_next_source: str
+    source_gate: str
+    financialdata_discovery_context: str
+    official_identity_context: str
+    supplement_review_context: str
 
 
 def utc_now() -> str:
@@ -196,18 +216,196 @@ def review_base(financialdata_row: dict[str, str]) -> dict[str, str]:
     }
 
 
+def apply_eligibility_for(decision: str, reason: str) -> str:
+    if decision == "accept":
+        return "eligible_for_supplement_only_after_official_active_isin_name_gate_and_duplicate_checks"
+    if decision == "preserve":
+        return "preserve_existing_reviewed_supplement_no_new_apply"
+    if reason == "ambiguous_official_isin_candidates":
+        return "blocked_until_unique_official_isin_candidate_resolved"
+    if reason == "exchange_not_allowed_for_isin_supplement":
+        return "blocked_until_exchange_scope_explicitly_allowed"
+    if reason == "no_name_gated_official_isin_match":
+        return "keep_absent_until_name_gated_official_isin_match"
+    if reason in {
+        "official_listing_key_already_exists",
+        "ticker_already_exists_globally",
+        "isin_already_exists_in_database",
+        "ticker_already_selected",
+        "isin_already_selected",
+    }:
+        return "no_supplement_apply_existing_identifier_or_collision_guard"
+    return "manual_review_required"
+
+
+def verification_evidence_for(decision: str, reason: str) -> str:
+    if decision == "accept":
+        return "official_active_masterfile_valid_isin_name_gate_no_existing_ticker_or_isin_collision"
+    if decision == "preserve":
+        return "existing_reviewed_supplement_retained_with_original_official_source"
+    if reason == "ambiguous_official_isin_candidates":
+        return "single_official_active_listing_with_valid_isin_and_name_gate"
+    if reason == "exchange_not_allowed_for_isin_supplement":
+        return "explicit_exchange_scope_decision_before_financialdata_discovery_use"
+    if reason == "no_name_gated_official_isin_match":
+        return "official_active_masterfile_or_registry_row_matching_financialdata_name_and_listing"
+    if reason == "official_listing_key_already_exists":
+        return "existing_listing_key_confirms_no_supplement_needed"
+    if reason == "ticker_already_exists_globally":
+        return "identity_resolution_before_any_global_ticker_reuse"
+    if reason == "isin_already_exists_in_database":
+        return "existing_database_isin_confirms_no_supplement_needed_or_cross_listing_review"
+    if reason in {"ticker_already_selected", "isin_already_selected"}:
+        return "batch_collision_guard_confirms_duplicate_supplement_not_written"
+    return "manual_review_required"
+
+
+def financialdata_review_queue_for(decision: str, reason: str) -> str:
+    if decision == "accept":
+        return "official_name_gated_supplement_candidate"
+    if decision == "preserve":
+        return "preserve_existing_reviewed_supplement"
+    if reason == "ambiguous_official_isin_candidates":
+        return "resolve_ambiguous_official_isin_candidates"
+    if reason == "exchange_not_allowed_for_isin_supplement":
+        return "review_exchange_scope_before_financialdata_use"
+    if reason == "no_name_gated_official_isin_match":
+        return "keep_absent_until_official_name_gated_match"
+    if reason in {
+        "official_listing_key_already_exists",
+        "ticker_already_exists_globally",
+        "isin_already_exists_in_database",
+        "ticker_already_selected",
+        "isin_already_selected",
+    }:
+        return "collision_guard_no_supplement_apply"
+    return "manual_financialdata_review"
+
+
+def review_priority_for_queue(queue: str) -> str:
+    priorities = {
+        "official_name_gated_supplement_candidate": "P1",
+        "resolve_ambiguous_official_isin_candidates": "P2",
+        "review_exchange_scope_before_financialdata_use": "P2",
+        "keep_absent_until_official_name_gated_match": "P2",
+        "collision_guard_no_supplement_apply": "P3",
+        "preserve_existing_reviewed_supplement": "P4",
+    }
+    return priorities.get(queue, "P3")
+
+
+def review_strategy_for_queue(queue: str) -> str:
+    strategies = {
+        "official_name_gated_supplement_candidate": "apply_only_after_official_active_isin_name_gate_and_collision_checks",
+        "resolve_ambiguous_official_isin_candidates": "resolve_to_single_official_active_isin_candidate_before_apply",
+        "review_exchange_scope_before_financialdata_use": "decide_exchange_scope_before_any_financialdata_discovery_apply",
+        "keep_absent_until_official_name_gated_match": "keep_absent_until_official_name_gated_identifier_evidence_exists",
+        "collision_guard_no_supplement_apply": "hold_existing_identifier_collision_until_identity_review_resolves",
+        "preserve_existing_reviewed_supplement": "preserve_existing_reviewed_supplement_no_new_apply",
+    }
+    return strategies.get(queue, "manual_financialdata_review_required")
+
+
+def recommended_next_source_for(decision: str, reason: str) -> str:
+    if decision == "accept":
+        return "Official active masterfile or registry row already matched by ticker/name with valid ISIN."
+    if decision == "preserve":
+        return "Existing reviewed FinancialData supplement source; re-check only if the original official source changes."
+    if reason == "ambiguous_official_isin_candidates":
+        return "Single official active listing or registry row resolving the ambiguous candidates with exact name and ISIN."
+    if reason == "exchange_not_allowed_for_isin_supplement":
+        return "Reviewed exchange-scope decision plus official exchange or registry source before using FinancialData discovery."
+    if reason == "no_name_gated_official_isin_match":
+        return "Official active masterfile, registry, or issuer source matching FinancialData name and listing identity."
+    if reason == "official_listing_key_already_exists":
+        return "Existing database listing-key evidence; no supplemental source is needed unless identity review reopens the row."
+    if reason == "ticker_already_exists_globally":
+        return "Listing-keyed identity-resolution evidence before considering any global ticker reuse."
+    if reason == "isin_already_exists_in_database":
+        return "Existing database ISIN evidence plus cross-listing review before any supplemental listing."
+    if reason in {"ticker_already_selected", "isin_already_selected"}:
+        return "Batch collision review proving which single official supplement row should be retained."
+    return "Manual reviewed official source matching FinancialData discovery, listing identity, and valid ISIN."
+
+
+def source_gate_for(decision: str, reason: str) -> str:
+    if decision == "accept":
+        return "Write supplement only after official active listing, valid ISIN, name gate, and duplicate checks pass."
+    if decision == "preserve":
+        return "Preserve existing reviewed supplement; do not create a new row from FinancialData alone."
+    if reason == "ambiguous_official_isin_candidates":
+        return "Do not write supplement until exactly one official valid-ISIN candidate remains after name/listing review."
+    if reason == "exchange_not_allowed_for_isin_supplement":
+        return "Do not use FinancialData discovery for this exchange until scope is explicitly reviewed and allowed."
+    if reason == "no_name_gated_official_isin_match":
+        return "Keep absent until an official active source satisfies exact name/listing identity and ISIN gates."
+    if reason == "official_listing_key_already_exists":
+        return "Do not create duplicate listing-key supplement rows."
+    if reason == "ticker_already_exists_globally":
+        return "Do not reuse a global ticker without listing-keyed identity resolution."
+    if reason == "isin_already_exists_in_database":
+        return "Do not duplicate an existing database ISIN without explicit cross-listing review."
+    if reason in {"ticker_already_selected", "isin_already_selected"}:
+        return "Do not write duplicate supplement rows from the same batch collision."
+    return "Manual review required before any FinancialData-derived supplement change."
+
+
+def financialdata_discovery_context_for(row: dict[str, str]) -> str:
+    return (
+        f"financialdata_exchange={row.get('financialdata_exchange', '') or 'none'};"
+        f"financialdata_ticker={row.get('financialdata_ticker', '') or 'none'};"
+        f"financialdata_review_scope={row.get('financialdata_review_scope', '') or 'none'};"
+        f"financialdata_name_present={'true' if row.get('financialdata_name') else 'false'}"
+    )
+
+
+def official_identity_context_for(row: dict[str, str]) -> str:
+    return (
+        f"official_exchange={row.get('official_exchange', '') or 'none'};"
+        f"official_ticker={row.get('official_ticker', '') or 'none'};"
+        f"official_source_key={row.get('official_source_key', '') or 'none'};"
+        f"official_reference_scope={row.get('official_reference_scope', '') or 'none'};"
+        f"official_isin_present={'true' if row.get('official_isin') else 'false'};"
+        f"official_name_present={'true' if row.get('official_name') else 'false'}"
+    )
+
+
+def supplement_review_context_for(row: dict[str, str]) -> str:
+    return (
+        f"decision={row.get('decision', '') or 'none'};"
+        f"reason={row.get('reason', '') or 'none'};"
+        f"financialdata_review_queue={row.get('financialdata_review_queue', '') or 'none'};"
+        f"apply_eligibility={row.get('apply_eligibility', '') or 'none'};"
+        f"verification_evidence_required={row.get('verification_evidence_required', '') or 'none'}"
+    )
+
+
 def review_row(financialdata_row: dict[str, str], official_row: dict[str, str] | None, decision: str, reason: str) -> ReviewRow:
     official_row = official_row or {}
-    return ReviewRow(
+    review_queue = financialdata_review_queue_for(decision, reason)
+    row = {
         **review_base(financialdata_row),
-        official_ticker=official_row.get("ticker", ""),
-        official_exchange=official_row.get("exchange", ""),
-        official_name=official_row.get("name", ""),
-        official_isin=official_row.get("isin", ""),
-        official_source_key=official_row.get("source_key", ""),
-        official_reference_scope=official_row.get("reference_scope", ""),
-        decision=decision,
-        reason=reason,
+        "official_ticker": official_row.get("ticker", ""),
+        "official_exchange": official_row.get("exchange", ""),
+        "official_name": official_row.get("name", ""),
+        "official_isin": official_row.get("isin", ""),
+        "official_source_key": official_row.get("source_key", ""),
+        "official_reference_scope": official_row.get("reference_scope", ""),
+        "decision": decision,
+        "reason": reason,
+        "financialdata_review_queue": review_queue,
+        "review_priority": review_priority_for_queue(review_queue),
+        "review_strategy": review_strategy_for_queue(review_queue),
+        "apply_eligibility": apply_eligibility_for(decision, reason),
+        "verification_evidence_required": verification_evidence_for(decision, reason),
+        "recommended_next_source": recommended_next_source_for(decision, reason),
+        "source_gate": source_gate_for(decision, reason),
+    }
+    return ReviewRow(
+        **row,
+        financialdata_discovery_context=financialdata_discovery_context_for(row),
+        official_identity_context=official_identity_context_for(row),
+        supplement_review_context=supplement_review_context_for(row),
     )
 
 
@@ -324,6 +522,25 @@ def build_financialdata_isin_supplements(
     supplements = list(supplements_by_key.values())
     decision_counts = Counter(row.decision for row in reviews)
     reason_counts = Counter(row.reason for row in reviews)
+    apply_eligibility_counts = Counter(row.apply_eligibility for row in reviews)
+    verification_evidence_required_counts = Counter(row.verification_evidence_required for row in reviews)
+    top_batch_counter = Counter(
+        (
+            row.financialdata_review_queue,
+            row.decision,
+            row.reason,
+            row.financialdata_exchange,
+            row.financialdata_review_scope,
+            row.official_source_key or "missing_official_source",
+            row.review_priority,
+            row.review_strategy,
+            row.apply_eligibility,
+            row.verification_evidence_required,
+            row.recommended_next_source,
+            row.source_gate,
+        )
+        for row in reviews
+    )
     exchange_counts = Counter(row["exchange"] for row in supplements)
     summary = {
         "generated_at": utc_now(),
@@ -332,7 +549,56 @@ def build_financialdata_isin_supplements(
         "supplement_rows": len(supplements),
         "decision_counts": dict(sorted(decision_counts.items())),
         "reason_counts": dict(sorted(reason_counts.items())),
+        "apply_eligibility_counts": dict(sorted(apply_eligibility_counts.items())),
+        "verification_evidence_required_counts": dict(sorted(verification_evidence_required_counts.items())),
+        "top_financialdata_supplement_review_batches": [
+            {
+                "review_priority": review_priority,
+                "financialdata_review_queue": queue,
+                "decision": decision,
+                "reason": reason,
+                "financialdata_exchange": exchange,
+                "financialdata_review_scope": review_scope,
+                "official_source_key": official_source_key,
+                "review_strategy": review_strategy,
+                "apply_eligibility": apply_eligibility,
+                "verification_evidence_required": verification_evidence,
+                "rows": count,
+                "recommended_next_source": recommended_next_source,
+                "source_gate": source_gate,
+            }
+            for (
+                queue,
+                decision,
+                reason,
+                exchange,
+                review_scope,
+                official_source_key,
+                review_priority,
+                review_strategy,
+                apply_eligibility,
+                verification_evidence,
+                recommended_next_source,
+                source_gate,
+            ), count in sorted(
+                top_batch_counter.items(),
+                key=lambda item: (
+                    -item[1],
+                    item[0][6],
+                    item[0][0],
+                    item[0][3],
+                    item[0][2],
+                    item[0][4],
+                    item[0][5],
+                ),
+            )[:10]
+        ],
         "supplement_rows_by_exchange": dict(exchange_counts.most_common()),
+        "policy": {
+            "financialdata_role": "FinancialData rows are discovery signals only; supplement rows are sourced from official active masterfile rows.",
+            "identifier_gate": "A supplement requires a valid official ISIN, issuer-name gate, and no existing or selected ticker/ISIN collision.",
+            "no_guessing": "Rejected and skipped rows remain absent; FinancialData symbol or name shape is never used as an identifier source.",
+        },
     }
     return sorted(supplements, key=lambda row: (row["exchange"], row["ticker"])), reviews, summary
 
@@ -365,6 +631,29 @@ def write_markdown(path: Path, summary: dict[str, Any]) -> None:
     lines.extend(["", "## Reasons", "", "| Reason | Rows |", "|---|---:|"])
     for reason, count in summary["reason_counts"].items():
         lines.append(f"| {reason} | {count} |")
+    lines.extend(["", "## Apply Eligibility", "", "| Eligibility | Rows |", "|---|---:|"])
+    for eligibility, count in summary["apply_eligibility_counts"].items():
+        lines.append(f"| {eligibility} | {count} |")
+    lines.extend(["", "## Verification Evidence", "", "| Evidence Required | Rows |", "|---|---:|"])
+    for evidence, count in summary["verification_evidence_required_counts"].items():
+        lines.append(f"| {evidence} | {count} |")
+    lines.extend(
+        [
+            "",
+            "## Top Review Batches",
+            "",
+            "| Priority | Queue | Decision | Reason | Exchange | Scope | Official Source | Rows | Strategy | Eligibility | Evidence Required | Recommended Next Source | Source Gate |",
+            "|---|---|---|---|---|---|---|---:|---|---|---|---|---|",
+        ]
+    )
+    for batch in summary["top_financialdata_supplement_review_batches"]:
+        lines.append(
+            f"| {batch['review_priority']} | {batch['financialdata_review_queue']} | {batch['decision']} | "
+            f"{batch['reason']} | {batch['financialdata_exchange']} | "
+            f"{batch['financialdata_review_scope']} | {batch['official_source_key']} | {batch['rows']} | "
+            f"{batch['review_strategy']} | {batch['apply_eligibility']} | "
+            f"{batch['verification_evidence_required']} | {batch['recommended_next_source']} | {batch['source_gate']} |"
+        )
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 

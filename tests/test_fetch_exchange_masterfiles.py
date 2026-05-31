@@ -8,6 +8,7 @@ from base64 import b64decode, b64encode
 from datetime import datetime, timezone
 
 import pandas as pd
+import pytest
 import requests
 import scripts.fetch_exchange_masterfiles as fetch_exchange_masterfiles
 
@@ -201,6 +202,7 @@ from scripts.fetch_exchange_masterfiles import (
     load_set_stock_search_rows,
     load_szse_b_share_list_rows,
     load_szse_etf_list_rows,
+    merge_summary_errors,
     merge_reference_rows,
     dedupe_rows,
     NASDAQ_NORDIC_STOCKHOLM_ETFS_CACHE,
@@ -2437,11 +2439,42 @@ def test_fetch_lse_price_explorer_rows_paginates_equity_and_etfs():
     ]
 
 
-def test_load_lse_price_explorer_rows_prefers_cache(tmp_path, monkeypatch):
+def test_load_lse_price_explorer_rows_prefers_network_and_updates_cache(tmp_path, monkeypatch):
+    cache_path = tmp_path / "lse_price_explorer.json"
+    cache_path.write_text('[{"ticker":"OLD","name":"Old LSE Row"}]', encoding="utf-8")
+    fresh_rows = [{"ticker": "SPA", "name": "1SPATIAL PLC"}]
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LSE_PRICE_EXPLORER_CACHE", cache_path)
+    monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_LSE_PRICE_EXPLORER_CACHE", tmp_path / "legacy.json")
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.fetch_lse_price_explorer_rows",
+        lambda source, session=None: fresh_rows,
+    )
+
+    source = MasterfileSource(
+        key="lse_price_explorer",
+        provider="LSE",
+        description="LSE price explorer",
+        source_url="https://example.com/price-explorer",
+        format="lse_price_explorer_json",
+        reference_scope="exchange_directory",
+    )
+
+    rows, mode = load_lse_price_explorer_rows(source)
+
+    assert rows == fresh_rows
+    assert mode == "network"
+    assert json.loads(cache_path.read_text(encoding="utf-8")) == fresh_rows
+
+
+def test_load_lse_price_explorer_rows_falls_back_to_cache(tmp_path, monkeypatch):
     cache_path = tmp_path / "lse_price_explorer.json"
     cache_path.write_text('[{"ticker":"SPA","name":"1SPATIAL PLC"}]', encoding="utf-8")
     monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LSE_PRICE_EXPLORER_CACHE", cache_path)
     monkeypatch.setattr("scripts.fetch_exchange_masterfiles.LEGACY_LSE_PRICE_EXPLORER_CACHE", tmp_path / "legacy.json")
+    monkeypatch.setattr(
+        "scripts.fetch_exchange_masterfiles.fetch_lse_price_explorer_rows",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("offline")),
+    )
 
     source = MasterfileSource(
         key="lse_price_explorer",
@@ -5712,7 +5745,69 @@ def test_fetch_b3_instruments_equities_reads_tail_pages_for_large_tables():
 
     assert [row["ticker"] for row in rows] == ["ROW111", "ROW110", "ROW109", "ROW108"]
     post_pages = [int(url.rstrip("/").split("/")[-2]) for method, url in session.calls if method == "POST"]
-    assert post_pages == [1, 111, 110, 109, 108, 107]
+    assert post_pages == [1, 111, 110, 109, 108, 107, 106, 105]
+
+
+def test_fetch_b3_instruments_equities_tolerates_sparse_empty_tail_pages():
+    class FakeResponse:
+        def __init__(self, payload, status_code=200):
+            self._payload = payload
+            self.status_code = status_code
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    class FakeSession:
+        def __init__(self):
+            self.calls = []
+
+        def get(self, url, headers=None, timeout=None):
+            self.calls.append(("GET", url))
+            return FakeResponse("2026-04-02T00:00:00")
+
+        def post(self, url, headers=None, json=None, timeout=None):
+            self.calls.append(("POST", url))
+            page = int(url.rstrip("/").split("/")[-2])
+            values_by_page = {
+                115: [["ROW115", "ROW 115", "CASH", "EQUITY-CASH", "SHARES", "BRROW115", "Issuer 115"]],
+                113: [["ROW113", "ROW 113", "CASH", "EQUITY-CASH", "SHARES", "BRROW113", "Issuer 113"]],
+                112: [["ROW112", "ROW 112", "CASH", "EQUITY-CASH", "SHARES", "BRROW112", "Issuer 112"]],
+            }
+            payload = {
+                "table": {
+                    "pageCount": 115,
+                    "columns": [
+                        {"name": "TckrSymb"},
+                        {"name": "AsstDesc"},
+                        {"name": "SgmtNm"},
+                        {"name": "MktNm"},
+                        {"name": "SctyCtgyNm"},
+                        {"name": "ISIN"},
+                        {"name": "CrpnNm"},
+                    ],
+                    "values": values_by_page.get(page, [["ROWX", "ROW X", "EQUITY FORWARD", "EQUITY-DERIVATE", "COMMON EQUITIES FORWARD", "BRROWX", "Issuer X"]]),
+                }
+            }
+            return FakeResponse(payload)
+
+    session = FakeSession()
+    rows = fetch_b3_instruments_equities(
+        MasterfileSource(
+            key="b3",
+            provider="B3",
+            description="Official B3 instruments consolidated cash-equities table",
+            source_url="https://arquivos.b3.com.br/bdi/table/InstrumentsEquities",
+            format="b3_instruments_equities_api",
+        ),
+        session=session,
+    )
+
+    assert [row["ticker"] for row in rows] == ["ROW115", "ROW113", "ROW112"]
+    post_pages = [int(url.rstrip("/").split("/")[-2]) for method, url in session.calls if method == "POST"]
+    assert post_pages == [1, 115, 114, 113, 112, 111, 110, 109]
 
 
 def test_fetch_b3_listed_funds_reads_all_etf_types_and_pages():
@@ -9325,6 +9420,57 @@ def test_fetch_bme_security_prices_rows_maps_mixed_trading_systems() -> None:
     ]
 
 
+def test_fetch_bme_security_prices_rows_fails_fast_when_detail_endpoint_forbidden() -> None:
+    source = MasterfileSource(
+        key="bme_security_prices_directory",
+        provider="BME",
+        description="Official BME security prices directory",
+        source_url=fetch_exchange_masterfiles.BME_LISTED_COMPANIES_API_URL,
+        format="bme_security_prices_json",
+        reference_scope="exchange_directory",
+    )
+
+    class FakeResponse:
+        def __init__(self, payload=None, status_code=200):
+            self._payload = payload or {}
+            self.status_code = status_code
+
+        def raise_for_status(self):
+            if self.status_code >= 400:
+                raise requests.HTTPError(response=self)
+
+        def json(self):
+            return self._payload
+
+    class FakeSession(requests.Session):
+        def __init__(self):
+            super().__init__()
+            self.detail_calls = 0
+
+        def get(self, url, params=None, headers=None, timeout=None):
+            if url == fetch_exchange_masterfiles.BME_LISTED_COMPANIES_API_URL:
+                return FakeResponse(
+                    {
+                        "hasMoreResults": False,
+                        "data": [
+                            {"isin": "ES0105687000", "shareName": "ENERGY SOLAR TECH", "tradingSystem": "MTF"},
+                            {"isin": "ES0113900J37", "shareName": "BANCO SANTANDER", "tradingSystem": "SIBE"},
+                        ],
+                    }
+                )
+            if url == fetch_exchange_masterfiles.BME_SHARE_DETAILS_INFO_API_URL:
+                self.detail_calls += 1
+                return FakeResponse(status_code=403)
+            raise AssertionError(url)
+
+    session = FakeSession()
+
+    with pytest.raises(requests.HTTPError):
+        fetch_exchange_masterfiles.fetch_bme_security_prices_rows(source, session=session)
+
+    assert session.detail_calls == 1
+
+
 def test_load_bme_reference_rows_falls_back_to_cache(tmp_path, monkeypatch) -> None:
     cache_path = tmp_path / "bme_listed_companies.json"
     cache_path.write_text(
@@ -12779,7 +12925,97 @@ def test_fetch_hnx_issuer_rows_posts_official_search_params(monkeypatch) -> None
     assert session.post_calls[0]["headers"]["Referer"] == "https://www.hnx.vn/vi-vn/cophieu-etfs/chung-khoan-uc.html"
 
 
-def test_load_hnx_issuer_rows_prefers_cache(tmp_path, monkeypatch) -> None:
+def test_fetch_hnx_issuer_rows_reuses_cached_isin_for_same_name(tmp_path, monkeypatch) -> None:
+    source = MasterfileSource(
+        key="upcom_registered_securities",
+        provider="HNX",
+        description="Official Hanoi Stock Exchange UPCoM registered securities directory",
+        source_url="https://www.hnx.vn/cophieu-etfs/chung-khoan-uc.html",
+        format="upcom_registered_securities_json",
+        reference_scope="exchange_directory",
+    )
+    cache_path = tmp_path / "upcom_registered_securities.json"
+    cache_path.write_text(
+        '[{"ticker":"VNI","name":"Viet Nam Land Investment Corporation","exchange":"UPCOM","asset_type":"Stock","listing_status":"active","isin":"VN000000VNI6"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "UPCOM_REGISTERED_SECURITIES_CACHE", cache_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "LEGACY_UPCOM_REGISTERED_SECURITIES_CACHE", tmp_path / "missing.json")
+    content = """
+    <table>
+      <tr><th>STT</th><th>M&#227; CK</th><th>T&#234;n t&#7893; ch&#7913;c ph&#225;t h&#224;nh</th></tr>
+      <tr><td>1</td><td>VNI</td><td>Viet Nam Land Investment Corporation</td></tr>
+      <tr><td>2</td><td>NEW</td><td>New UPCOM Issuer</td></tr>
+    </table>
+    """
+
+    class DummyResponse:
+        def __init__(self, *, payload: dict[str, object] | None = None, url: str = ""):
+            self._payload = payload or {}
+            self.url = url
+
+        def raise_for_status(self) -> None:
+            return None
+
+        def json(self) -> dict[str, object]:
+            return self._payload
+
+    class DummySession:
+        def get(self, url: str, **kwargs) -> DummyResponse:
+            return DummyResponse(url="https://www.hnx.vn/vi-vn/cophieu-etfs/chung-khoan-uc.html")
+
+        def post(self, url: str, **kwargs) -> DummyResponse:
+            return DummyResponse(payload={"Content": content})
+
+    looked_up: list[str] = []
+
+    def fake_vsdc_lookup(tickers, session=None):
+        looked_up.extend(list(tickers))
+        return {"NEW": "VN000000NEW1"}
+
+    monkeypatch.setattr(fetch_exchange_masterfiles, "fetch_vsdc_isin_lookup", fake_vsdc_lookup)
+
+    rows = fetch_hnx_issuer_rows(source, session=DummySession())
+
+    assert {row["ticker"]: row["isin"] for row in rows} == {
+        "VNI": "VN000000VNI6",
+        "NEW": "VN000000NEW1",
+    }
+    assert looked_up == ["NEW"]
+
+
+def test_load_hnx_issuer_rows_prefers_network_and_updates_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "hnx_listed_securities.json"
+    cache_path.write_text(
+        '[{"ticker":"OLD","name":"Old HNX Row","exchange":"HNX","asset_type":"Stock","listing_status":"active"}]',
+        encoding="utf-8",
+    )
+    fresh_rows = [
+        {
+            "ticker": "NEW",
+            "name": "Fresh HNX Row",
+            "exchange": "HNX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+        }
+    ]
+    monkeypatch.setattr(fetch_exchange_masterfiles, "HNX_LISTED_SECURITIES_CACHE", cache_path)
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "LEGACY_HNX_LISTED_SECURITIES_CACHE",
+        tmp_path / "missing.json",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "fetch_hnx_issuer_rows", lambda source, session=None: fresh_rows)
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "hnx_listed_securities")
+    rows, mode = load_hnx_issuer_rows(source)
+
+    assert mode == "network"
+    assert rows == fresh_rows
+    assert json.loads(cache_path.read_text(encoding="utf-8")) == fresh_rows
+
+
+def test_load_hnx_issuer_rows_falls_back_to_cache(tmp_path, monkeypatch) -> None:
     cache_path = tmp_path / "hnx_listed_securities.json"
     cache_path.write_text(
         '[{"ticker":"DVM","name":"Vietnam Medicinal Materials Joint Stock Company","exchange":"HNX","asset_type":"Stock","listing_status":"active","isin":"VN000000DVM9"}]',
@@ -14472,6 +14708,7 @@ def test_fetch_all_sources_collects_source_errors(monkeypatch):
     assert summary["source_details"]["nasdaq_listed"]["rows"] == 1
     assert summary["source_details"]["nasdaq_listed"]["generated_at"] == summary["generated_at"]
     assert summary["errors"]
+    assert summary["source_details"]["nasdaq_other_listed"]["last_error"] == "boom"
 
 
 def test_normalize_source_keys_supports_repeated_and_comma_delimited_values() -> None:
@@ -14480,6 +14717,18 @@ def test_normalize_source_keys_supports_repeated_and_comma_delimited_values() ->
         "nasdaq_other_listed",
         "krx_etf_finder",
     ]
+
+
+def test_write_csv_uses_lf_line_endings(tmp_path) -> None:
+    path = tmp_path / "reference.csv"
+
+    fetch_exchange_masterfiles.write_csv(
+        path,
+        ["source_key", "ticker", "sector"],
+        [{"source_key": "test", "ticker": "ABC", "sector": ""}],
+    )
+
+    assert path.read_bytes() == b"source_key,ticker,sector\ntest,ABC,\n"
 
 
 def test_select_official_sources_rejects_unknown_keys() -> None:
@@ -14567,6 +14816,177 @@ def test_merge_reference_rows_replaces_only_selected_sources() -> None:
             "reference_scope": "exchange_directory",
         },
     ]
+
+
+def test_merge_reference_rows_preserves_unavailable_selected_sources() -> None:
+    merged = merge_reference_rows(
+        [
+            {
+                "source_key": "tadawul_main_market_watch",
+                "ticker": "2222",
+                "exchange": "TADAWUL",
+                "listing_status": "active",
+                "reference_scope": "exchange_directory",
+            },
+            {
+                "source_key": "krx_etf_finder",
+                "ticker": "091220",
+                "exchange": "KRX",
+                "listing_status": "active",
+                "reference_scope": "listed_companies_subset",
+            },
+        ],
+        [
+            {
+                "source_key": "krx_etf_finder",
+                "ticker": "104530",
+                "exchange": "KRX",
+                "listing_status": "active",
+                "reference_scope": "listed_companies_subset",
+            }
+        ],
+        source_keys={"krx_etf_finder", "tadawul_main_market_watch"},
+        preserve_source_keys={"tadawul_main_market_watch"},
+    )
+
+    assert merged == [
+        {
+            "source_key": "krx_etf_finder",
+            "ticker": "104530",
+            "exchange": "KRX",
+            "listing_status": "active",
+            "reference_scope": "listed_companies_subset",
+        },
+        {
+            "source_key": "tadawul_main_market_watch",
+            "ticker": "2222",
+            "exchange": "TADAWUL",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+        },
+    ]
+
+
+def test_merge_summary_errors_preserves_unrefreshed_source_errors() -> None:
+    merged = merge_summary_errors(
+        existing_errors=[
+            {"source_key": "mse_mw_listed_companies", "error": "MSE Malawi mainboard unavailable"},
+            {"source_key": "b3_instruments_equities", "error": "old B3 error"},
+        ],
+        refreshed_errors=[],
+        refreshed_source_keys={"b3_instruments_equities"},
+    )
+
+    assert merged == [
+        {"source_key": "mse_mw_listed_companies", "error": "MSE Malawi mainboard unavailable"}
+    ]
+
+
+def test_merge_summary_errors_replaces_refreshed_source_errors() -> None:
+    merged = merge_summary_errors(
+        existing_errors=[
+            {"source_key": "mse_mw_listed_companies", "error": "MSE Malawi mainboard unavailable"},
+            {"source_key": "b3_instruments_equities", "error": "old B3 error"},
+        ],
+        refreshed_errors=[{"source_key": "b3_instruments_equities", "error": "new B3 error"}],
+        refreshed_source_keys={"b3_instruments_equities"},
+    )
+
+    assert merged == [
+        {"source_key": "b3_instruments_equities", "error": "new B3 error"},
+        {"source_key": "mse_mw_listed_companies", "error": "MSE Malawi mainboard unavailable"},
+    ]
+
+
+def test_build_summary_preserves_cache_fallback_generated_at_for_selected_refresh() -> None:
+    summary = fetch_exchange_masterfiles.build_summary(
+        [
+            {
+                "source_key": "sec_company_tickers_exchange",
+                "provider": "SEC",
+                "source_url": "https://www.sec.gov/files/company_tickers_exchange.json",
+                "ticker": "AAPL",
+                "name": "Apple Inc.",
+                "exchange": "NASDAQ",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": "exchange_directory",
+                "official": "true",
+            }
+        ],
+        source_modes={"sec_company_tickers_exchange": "cache"},
+        generated_at="2026-05-25T10:00:00Z",
+        source_metadata_overrides={
+            "sec_company_tickers_exchange": {
+                "mode": "cache",
+                "generated_at": "2026-05-16T10:00:00Z",
+            }
+        },
+        refreshed_source_keys={"sec_company_tickers_exchange"},
+    )
+
+    assert summary["source_details"]["sec_company_tickers_exchange"]["generated_at"] == "2026-05-16T10:00:00Z"
+
+
+def test_build_summary_preserves_unavailable_generated_at_for_selected_refresh() -> None:
+    summary = fetch_exchange_masterfiles.build_summary(
+        [],
+        source_modes={"mse_mw_listed_companies": "unavailable"},
+        generated_at="2026-05-25T10:00:00Z",
+        source_metadata_overrides={
+            "mse_mw_listed_companies": {
+                "mode": "unavailable",
+                "generated_at": "2026-05-16T10:00:00Z",
+            }
+        },
+        refreshed_source_keys={"mse_mw_listed_companies"},
+    )
+
+    assert summary["source_details"]["mse_mw_listed_companies"]["generated_at"] == "2026-05-16T10:00:00Z"
+
+
+def test_build_summary_updates_generated_at_for_selected_network_refresh() -> None:
+    summary = fetch_exchange_masterfiles.build_summary(
+        [
+            {
+                "source_key": "nasdaq_listed",
+                "provider": "Nasdaq Trader",
+                "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+                "ticker": "AAPL",
+                "name": "Apple Inc.",
+                "exchange": "NASDAQ",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": "exchange_directory",
+                "official": "true",
+            }
+        ],
+        source_modes={"nasdaq_listed": "network"},
+        generated_at="2026-05-25T10:00:00Z",
+        source_metadata_overrides={"nasdaq_listed": {"generated_at": "2026-05-16T10:00:00Z"}},
+        refreshed_source_keys={"nasdaq_listed"},
+    )
+
+    assert summary["source_details"]["nasdaq_listed"]["generated_at"] == "2026-05-25T10:00:00Z"
+
+
+def test_build_summary_carries_source_last_error_into_source_details() -> None:
+    summary = fetch_exchange_masterfiles.build_summary(
+        [],
+        source_modes={"bme_security_prices_directory": "unavailable"},
+        generated_at="2026-05-25T10:00:00Z",
+        source_errors=[
+            {
+                "source_key": "bme_security_prices_directory",
+                "error": "BME security prices rows unavailable; partial caches are ignored",
+            }
+        ],
+    )
+
+    assert (
+        summary["source_details"]["bme_security_prices_directory"]["last_error"]
+        == "BME security prices rows unavailable; partial caches are ignored"
+    )
 
 
 def test_parse_ngx_company_profile_detail_html_extracts_official_name_and_sector() -> None:
@@ -14786,6 +15206,68 @@ def test_nse_india_source_is_modeled_as_official_exchange_directory() -> None:
     assert source.format == "nse_india_securities_available_csv"
 
 
+def test_load_nse_india_securities_available_rows_prefers_network_and_updates_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "nse_in_securities_available.json"
+    cache_path.write_text(
+        '[{"ticker":"OLD","name":"Old NSE Row","exchange":"NSE_IN","asset_type":"Stock","listing_status":"active","isin":"INE000000000"}]',
+        encoding="utf-8",
+    )
+    fresh_rows = [
+        {
+            "ticker": "NEW",
+            "name": "Fresh NSE Row",
+            "exchange": "NSE_IN",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "isin": "INE111111111",
+        }
+    ]
+    monkeypatch.setattr(fetch_exchange_masterfiles, "NSE_IN_SECURITIES_AVAILABLE_CACHE", cache_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "LEGACY_NSE_IN_SECURITIES_AVAILABLE_CACHE", tmp_path / "missing.json")
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_nse_india_securities_available_rows",
+        lambda source, session=None: fresh_rows,
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "nse_india_securities_available")
+    rows, mode = fetch_exchange_masterfiles.load_nse_india_securities_available_rows(source)
+
+    assert mode == "network"
+    assert rows == fresh_rows
+    assert json.loads(cache_path.read_text(encoding="utf-8")) == fresh_rows
+
+
+def test_load_nse_india_securities_available_rows_falls_back_to_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "nse_in_securities_available.json"
+    cache_path.write_text(
+        '[{"ticker":"OLD","name":"Old NSE Row","exchange":"NSE_IN","asset_type":"Stock","listing_status":"active","isin":"INE000000000"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "NSE_IN_SECURITIES_AVAILABLE_CACHE", cache_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "LEGACY_NSE_IN_SECURITIES_AVAILABLE_CACHE", tmp_path / "missing.json")
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_nse_india_securities_available_rows",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("offline")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "nse_india_securities_available")
+    rows, mode = fetch_exchange_masterfiles.load_nse_india_securities_available_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "OLD",
+            "name": "Old NSE Row",
+            "exchange": "NSE_IN",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "isin": "INE000000000",
+        }
+    ]
+
+
 def test_parse_bse_india_scrips_payload_keeps_active_isin_rows_and_etfs() -> None:
     source = MasterfileSource(
         key="bse_india_scrips",
@@ -14868,6 +15350,64 @@ def test_bse_india_source_is_modelled_as_official_exchange_directory() -> None:
     assert source.format == "bse_india_scrips_json"
 
 
+def test_load_bse_india_scrips_rows_prefers_network_and_updates_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "bse_in_scrips.json"
+    cache_path.write_text(
+        '[{"ticker":"OLD","name":"Old BSE Row","exchange":"BSE_IN","asset_type":"Stock","listing_status":"active","isin":"INE000000000"}]',
+        encoding="utf-8",
+    )
+    fresh_rows = [
+        {
+            "ticker": "NEW",
+            "name": "Fresh BSE Row",
+            "exchange": "BSE_IN",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "isin": "INE111111111",
+        }
+    ]
+    monkeypatch.setattr(fetch_exchange_masterfiles, "BSE_IN_SCRIPS_CACHE", cache_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "LEGACY_BSE_IN_SCRIPS_CACHE", tmp_path / "missing.json")
+    monkeypatch.setattr(fetch_exchange_masterfiles, "fetch_bse_india_scrips_rows", lambda source, session=None: fresh_rows)
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "bse_india_scrips")
+    rows, mode = fetch_exchange_masterfiles.load_bse_india_scrips_rows(source)
+
+    assert mode == "network"
+    assert rows == fresh_rows
+    assert json.loads(cache_path.read_text(encoding="utf-8")) == fresh_rows
+
+
+def test_load_bse_india_scrips_rows_falls_back_to_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "bse_in_scrips.json"
+    cache_path.write_text(
+        '[{"ticker":"OLD","name":"Old BSE Row","exchange":"BSE_IN","asset_type":"Stock","listing_status":"active","isin":"INE000000000"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "BSE_IN_SCRIPS_CACHE", cache_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "LEGACY_BSE_IN_SCRIPS_CACHE", tmp_path / "missing.json")
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_bse_india_scrips_rows",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("offline")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "bse_india_scrips")
+    rows, mode = fetch_exchange_masterfiles.load_bse_india_scrips_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "OLD",
+            "name": "Old BSE Row",
+            "exchange": "BSE_IN",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "isin": "INE000000000",
+        }
+    ]
+
+
 def test_parse_hkex_securities_list_workbook_keeps_equity_reit_and_etfs() -> None:
     source = MasterfileSource(
         key="hkex_securities_list",
@@ -14942,6 +15482,64 @@ def test_hkex_securities_list_source_is_modeled_as_official_exchange_directory()
     assert source.provider == "HKEX"
     assert source.reference_scope == "exchange_directory"
     assert source.format == "hkex_securities_list_xlsx"
+
+
+def test_load_hkex_securities_list_rows_prefers_network_and_updates_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "hkex_securities_list.json"
+    cache_path.write_text(
+        '[{"ticker":"00005","name":"Old HKEX Row","exchange":"HKEX","asset_type":"Stock","listing_status":"active","isin":"GB0005405286"}]',
+        encoding="utf-8",
+    )
+    fresh_rows = [
+        {
+            "ticker": "00001",
+            "name": "Fresh HKEX Row",
+            "exchange": "HKEX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "isin": "HK0000000001",
+        }
+    ]
+    monkeypatch.setattr(fetch_exchange_masterfiles, "HKEX_SECURITIES_LIST_CACHE", cache_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "LEGACY_HKEX_SECURITIES_LIST_CACHE", tmp_path / "missing.json")
+    monkeypatch.setattr(fetch_exchange_masterfiles, "fetch_hkex_securities_list_rows", lambda source, session=None: fresh_rows)
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "hkex_securities_list")
+    rows, mode = fetch_exchange_masterfiles.load_hkex_securities_list_rows(source)
+
+    assert mode == "network"
+    assert rows == fresh_rows
+    assert json.loads(cache_path.read_text(encoding="utf-8")) == fresh_rows
+
+
+def test_load_hkex_securities_list_rows_falls_back_to_cache(tmp_path, monkeypatch) -> None:
+    cache_path = tmp_path / "hkex_securities_list.json"
+    cache_path.write_text(
+        '[{"ticker":"00005","name":"Old HKEX Row","exchange":"HKEX","asset_type":"Stock","listing_status":"active","isin":"GB0005405286"}]',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "HKEX_SECURITIES_LIST_CACHE", cache_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "LEGACY_HKEX_SECURITIES_LIST_CACHE", tmp_path / "missing.json")
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "fetch_hkex_securities_list_rows",
+        lambda source, session=None: (_ for _ in ()).throw(requests.RequestException("offline")),
+    )
+
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "hkex_securities_list")
+    rows, mode = fetch_exchange_masterfiles.load_hkex_securities_list_rows(source)
+
+    assert mode == "cache"
+    assert rows == [
+        {
+            "ticker": "00005",
+            "name": "Old HKEX Row",
+            "exchange": "HKEX",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "isin": "GB0005405286",
+        }
+    ]
 
 
 def test_parse_sgx_securities_prices_payload_keeps_stock_reit_adr_and_etfs() -> None:

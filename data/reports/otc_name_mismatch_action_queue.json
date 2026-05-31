@@ -1,0 +1,214 @@
+{
+  "_meta": {
+    "generated_at": "2026-05-29T12:33:13Z",
+    "source_files": {
+      "deepseek_otc_csv": "data/reports/deepseek_otc_review_queue.csv",
+      "name_mismatch_csv": "data/reports/otc_name_mismatch_review.csv"
+    }
+  },
+  "items": [
+    {
+      "action_queue": "resolve_or_quarantine_before_trusting_otc_symbol",
+      "apply_eligibility": "blocked_until_official_issuer_identity_source_or_quarantine_decision",
+      "deepseek_triage": "not_triaged_by_deepseek",
+      "example_listing_keys": "OTC::ISRMF|OTC::ITGMF|OTC::OLOXF|OTC::PPZRF|OTC::SDSDF",
+      "isin_presence": "without_isin",
+      "official_sources": "otc_markets_security_profile",
+      "recommended_next_source": "Official OTC profile, registry, exchange notice, or issuer-history source matching the listing key.",
+      "review_class": "stale_or_symbol_reuse_without_isin",
+      "review_priority": "critical",
+      "review_strategy": "resolve_or_quarantine_with_official_otc_profile_or_issuer_history",
+      "rows": "5",
+      "source_gate": "Do not rename or trust reused OTC symbol without listing-keyed official identity or quarantine evidence.",
+      "verification_evidence_required": "official_otc_profile_registry_or_issuer_history_source_matching_listing_key_before_name_or_quarantine_action"
+    },
+    {
+      "action_queue": "resolve_or_quarantine_before_trusting_otc_symbol",
+      "apply_eligibility": "blocked_until_official_issuer_identity_source_or_quarantine_decision",
+      "deepseek_triage": "not_triaged_by_deepseek",
+      "example_listing_keys": "OTC::KAIFF|OTC::VTEPF",
+      "isin_presence": "without_isin",
+      "official_sources": "otc_markets_security_profile|otc_markets_stock_screener",
+      "recommended_next_source": "Official OTC profile, registry, exchange notice, or issuer-history source matching the listing key.",
+      "review_class": "stale_or_symbol_reuse_without_isin",
+      "review_priority": "critical",
+      "review_strategy": "resolve_or_quarantine_with_official_otc_profile_or_issuer_history",
+      "rows": "2",
+      "source_gate": "Do not rename or trust reused OTC symbol without listing-keyed official identity or quarantine evidence.",
+      "verification_evidence_required": "official_otc_profile_registry_or_issuer_history_source_matching_listing_key_before_name_or_quarantine_action"
+    },
+    {
+      "action_queue": "verify_isin_anchored_issuer_history_before_name_change",
+      "apply_eligibility": "blocked_until_isin_anchored_issuer_history_review",
+      "deepseek_triage": "deepseek_needs_official_evidence",
+      "example_listing_keys": "OTC::AECX|OTC::ANGCF|OTC::APCOF|OTC::APETF|OTC::ARXRF|OTC::ATOXF|OTC::AUHIF|OTC::AXXA|OTC::BADEF",
+      "isin_presence": "with_isin",
+      "official_sources": "otc_markets_stock_screener",
+      "recommended_next_source": "Official or reviewed ISIN-bearing issuer-history source matching current issuer, listing key, and name.",
+      "review_class": "probable_otc_rename_or_symbol_reuse",
+      "review_priority": "high",
+      "review_strategy": "verify_isin_anchored_issuer_history_before_name_change",
+      "rows": "9",
+      "source_gate": "Do not change the name until ISIN-anchored evidence proves the same current issuer.",
+      "verification_evidence_required": "official_or_reviewed_isin_bearing_source_matching_current_issuer_listing_key_and_name"
+    },
+    {
+      "action_queue": "verify_isin_anchored_issuer_history_before_name_change",
+      "apply_eligibility": "blocked_until_isin_anchored_issuer_history_review",
+      "deepseek_triage": "not_triaged_by_deepseek",
+      "example_listing_keys": "OTC::BCII|OTC::CDTAF|OTC::CMCXF|OTC::CNMTF|OTC::CRSTF|OTC::CRTTF|OTC::CRYBF|OTC::CUIRF|OTC::CVPUF|OTC::CWBK",
+      "isin_presence": "with_isin",
+      "official_sources": "otc_markets_stock_screener",
+      "recommended_next_source": "Official or reviewed ISIN-bearing issuer-history source matching current issuer, listing key, and name.",
+      "review_class": "probable_otc_rename_or_symbol_reuse",
+      "review_priority": "high",
+      "review_strategy": "verify_isin_anchored_issuer_history_before_name_change",
+      "rows": "53",
+      "source_gate": "Do not change the name until ISIN-anchored evidence proves the same current issuer.",
+      "verification_evidence_required": "official_or_reviewed_isin_bearing_source_matching_current_issuer_listing_key_and_name"
+    },
+    {
+      "action_queue": "verify_isin_anchored_issuer_history_before_name_change",
+      "apply_eligibility": "blocked_until_isin_anchored_issuer_history_review",
+      "deepseek_triage": "not_triaged_by_deepseek",
+      "example_listing_keys": "OTC::CPPKF|OTC::CYDVF",
+      "isin_presence": "with_isin",
+      "official_sources": "otc_markets_stock_screener|sec_company_tickers_exchange",
+      "recommended_next_source": "Official or reviewed ISIN-bearing issuer-history source matching current issuer, listing key, and name.",
+      "review_class": "probable_otc_rename_or_symbol_reuse",
+      "review_priority": "high",
+      "review_strategy": "verify_isin_anchored_issuer_history_before_name_change",
+      "rows": "2",
+      "source_gate": "Do not change the name until ISIN-anchored evidence proves the same current issuer.",
+      "verification_evidence_required": "official_or_reviewed_isin_bearing_source_matching_current_issuer_listing_key_and_name"
+    },
+    {
+      "action_queue": "verify_isin_anchored_issuer_history_before_name_change",
+      "apply_eligibility": "blocked_until_isin_anchored_issuer_history_review",
+      "deepseek_triage": "deepseek_needs_official_evidence",
+      "example_listing_keys": "OTC::AKOM",
+      "isin_presence": "with_isin",
+      "official_sources": "sec_company_tickers_exchange",
+      "recommended_next_source": "Official or reviewed ISIN-bearing issuer-history source matching current issuer, listing key, and name.",
+      "review_class": "probable_otc_rename_or_symbol_reuse",
+      "review_priority": "high",
+      "review_strategy": "verify_isin_anchored_issuer_history_before_name_change",
+      "rows": "1",
+      "source_gate": "Do not change the name until ISIN-anchored evidence proves the same current issuer.",
+      "verification_evidence_required": "official_or_reviewed_isin_bearing_source_matching_current_issuer_listing_key_and_name"
+    },
+    {
+      "action_queue": "review_official_alias_before_matcher_tuning",
+      "apply_eligibility": "matcher_tuning_only_no_metadata_apply_until_exact_identity_review",
+      "deepseek_triage": "not_triaged_by_deepseek",
+      "example_listing_keys": "OTC::FSLUF",
+      "isin_presence": "without_isin",
+      "official_sources": "otc_markets_security_profile",
+      "recommended_next_source": "Official alias, abbreviation, issuer, OTC profile, or registry evidence matching the exact listing identity.",
+      "review_class": "weak_abbreviation_or_truncation_review",
+      "review_priority": "medium",
+      "review_strategy": "review_official_alias_or_abbreviation_before_matcher_tuning",
+      "rows": "1",
+      "source_gate": "Tune matcher only after official alias evidence; do not change metadata from abbreviation alone.",
+      "verification_evidence_required": "official_alias_or_abbreviation_evidence_with_exact_listing_identity_match"
+    },
+    {
+      "action_queue": "review_official_alias_before_matcher_tuning",
+      "apply_eligibility": "matcher_tuning_only_no_metadata_apply_until_exact_identity_review",
+      "deepseek_triage": "deepseek_needs_official_evidence",
+      "example_listing_keys": "OTC::ABNAF|OTC::ACGBY|OTC::AKBTY|OTC::APELY|OTC::ARAFF|OTC::ARGGY|OTC::ARGYF|OTC::ARLSF|OTC::ASBFY|OTC::ASEKY",
+      "isin_presence": "with_isin",
+      "official_sources": "otc_markets_stock_screener",
+      "recommended_next_source": "Official alias, abbreviation, issuer, OTC profile, or registry evidence matching the exact listing identity.",
+      "review_class": "weak_abbreviation_or_truncation_review",
+      "review_priority": "medium",
+      "review_strategy": "review_official_alias_or_abbreviation_before_matcher_tuning",
+      "rows": "15",
+      "source_gate": "Tune matcher only after official alias evidence; do not change metadata from abbreviation alone.",
+      "verification_evidence_required": "official_alias_or_abbreviation_evidence_with_exact_listing_identity_match"
+    },
+    {
+      "action_queue": "review_official_alias_before_matcher_tuning",
+      "apply_eligibility": "matcher_tuning_only_no_metadata_apply_until_exact_identity_review",
+      "deepseek_triage": "not_triaged_by_deepseek",
+      "example_listing_keys": "OTC::BEPTF|OTC::BGTTF|OTC::BICEY|OTC::BKTPF|OTC::BSENF|OTC::CAPTF|OTC::CFRUY|OTC::CLGCF|OTC::CNPRF|OTC::CPKOF",
+      "isin_presence": "with_isin",
+      "official_sources": "otc_markets_stock_screener",
+      "recommended_next_source": "Official alias, abbreviation, issuer, OTC profile, or registry evidence matching the exact listing identity.",
+      "review_class": "weak_abbreviation_or_truncation_review",
+      "review_priority": "medium",
+      "review_strategy": "review_official_alias_or_abbreviation_before_matcher_tuning",
+      "rows": "54",
+      "source_gate": "Tune matcher only after official alias evidence; do not change metadata from abbreviation alone.",
+      "verification_evidence_required": "official_alias_or_abbreviation_evidence_with_exact_listing_identity_match"
+    },
+    {
+      "action_queue": "review_official_alias_before_matcher_tuning",
+      "apply_eligibility": "matcher_tuning_only_no_metadata_apply_until_exact_identity_review",
+      "deepseek_triage": "not_triaged_by_deepseek",
+      "example_listing_keys": "OTC::FMCKI|OTC::RKWBF",
+      "isin_presence": "with_isin",
+      "official_sources": "otc_markets_stock_screener|sec_company_tickers_exchange",
+      "recommended_next_source": "Official alias, abbreviation, issuer, OTC profile, or registry evidence matching the exact listing identity.",
+      "review_class": "weak_abbreviation_or_truncation_review",
+      "review_priority": "medium",
+      "review_strategy": "review_official_alias_or_abbreviation_before_matcher_tuning",
+      "rows": "2",
+      "source_gate": "Tune matcher only after official alias evidence; do not change metadata from abbreviation alone.",
+      "verification_evidence_required": "official_alias_or_abbreviation_evidence_with_exact_listing_identity_match"
+    },
+    {
+      "action_queue": "review_official_alias_before_matcher_tuning",
+      "apply_eligibility": "matcher_tuning_only_no_metadata_apply_until_exact_identity_review",
+      "deepseek_triage": "not_triaged_by_deepseek",
+      "example_listing_keys": "OTC::DOWAY|OTC::GPUSF",
+      "isin_presence": "with_isin",
+      "official_sources": "sec_company_tickers_exchange",
+      "recommended_next_source": "Official alias, abbreviation, issuer, OTC profile, or registry evidence matching the exact listing identity.",
+      "review_class": "weak_abbreviation_or_truncation_review",
+      "review_priority": "medium",
+      "review_strategy": "review_official_alias_or_abbreviation_before_matcher_tuning",
+      "rows": "2",
+      "source_gate": "Tune matcher only after official alias evidence; do not change metadata from abbreviation alone.",
+      "verification_evidence_required": "official_alias_or_abbreviation_evidence_with_exact_listing_identity_match"
+    }
+  ],
+  "summary": {
+    "action_queue_totals": {
+      "resolve_or_quarantine_before_trusting_otc_symbol": 7,
+      "review_official_alias_before_matcher_tuning": 74,
+      "verify_isin_anchored_issuer_history_before_name_change": 65
+    },
+    "batches": 11,
+    "deepseek_triage_totals": {
+      "deepseek_needs_official_evidence": 25,
+      "not_triaged_by_deepseek": 121
+    },
+    "direct_name_changes_authorized": false,
+    "generated_at": "2026-05-29T12:33:13Z",
+    "metadata_enrichment_authorized": false,
+    "official_source_totals": {
+      "otc_markets_security_profile": 6,
+      "otc_markets_security_profile|otc_markets_stock_screener": 2,
+      "otc_markets_stock_screener": 131,
+      "otc_markets_stock_screener|sec_company_tickers_exchange": 4,
+      "sec_company_tickers_exchange": 3
+    },
+    "policy": {
+      "deepseek_triage_only": "DeepSeek output is only a triage signal and never authorizes OTC names, aliases, sectors, identifiers, or scope changes.",
+      "no_symbol_only_resolution": "No OTC symbol is trusted or renamed from ticker-only, name-shape, or broad issuer-family evidence.",
+      "official_identity_first": "Name changes require listing-keyed OTC Markets, SEC, issuer, registry, or ISIN-anchored issuer-history evidence."
+    },
+    "review_class_totals": {
+      "probable_otc_rename_or_symbol_reuse": 65,
+      "stale_or_symbol_reuse_without_isin": 7,
+      "weak_abbreviation_or_truncation_review": 74
+    },
+    "review_priority_totals": {
+      "critical": 7,
+      "high": 65,
+      "medium": 74
+    },
+    "rows": 146
+  }
+}

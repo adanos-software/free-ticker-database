@@ -143,6 +143,16 @@ def test_select_openfigi_candidate_prefers_exchange_hint_and_ticker():
     assert select_openfigi_candidate(row, candidates) == "CNFIGI"
 
 
+def test_select_openfigi_candidate_uses_canada_hint_for_neo():
+    row = {"ticker": "AEMX", "exchange": "NEO"}
+    candidates = [
+        {"ticker": "AEMX", "exchCode": "US", "figi": "USFIGI"},
+        {"ticker": "AEMX", "exchCode": "CN", "figi": "CNFIGI"},
+    ]
+
+    assert select_openfigi_candidate(row, candidates) == "CNFIGI"
+
+
 def test_select_openfigi_candidate_rejects_unmatched_fallback():
     row = {"ticker": "0MJK", "exchange": "LSE"}
     candidates = [{"ticker": "EBS", "exchCode": "US", "figi": "BBG000BMTW42"}]
