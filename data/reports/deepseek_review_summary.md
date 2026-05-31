@@ -1,6 +1,6 @@
 # DeepSeek Review Summary
 
-Generated: `2026-05-31T13:58:49Z`
+Generated: `2026-05-31T14:05:23Z`
 
 Policy: DeepSeek output is triage only and does not authorize data application.
 
@@ -8,8 +8,8 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 
 | Metric | Value |
 | --- | ---: |
-| Raw batches | 457 |
-| Review rows | 2365 |
+| Raw batches | 462 |
+| Review rows | 2390 |
 | Errors | 0 |
 
 ## Decisions By Queue
@@ -17,10 +17,10 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 | Review kind | Decision | Rows |
 | --- | --- | ---: |
 | masterfile_collision | candidate_apply_blocked | 503 |
-| masterfile_collision | keep_source_gap | 489 |
+| masterfile_collision | keep_source_gap | 494 |
 | masterfile_collision | needs_official_evidence | 345 |
-| masterfile_collision | out_of_scope_candidate | 193 |
-| masterfile_collision | possible_duplicate_or_cross_listing | 492 |
+| masterfile_collision | out_of_scope_candidate | 198 |
+| masterfile_collision | possible_duplicate_or_cross_listing | 507 |
 | masterfile_collision | uncertain | 268 |
 | otc_scope | needs_official_evidence | 25 |
 | weak_sector | keep_source_gap | 7 |
@@ -31,11 +31,11 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 
 | Review kind | Safe action | Rows |
 | --- | --- | ---: |
-| masterfile_collision | candidate_for_official_followup | 696 |
-| masterfile_collision | likely_distinct_issuer_review | 223 |
-| masterfile_collision | likely_same_issuer_review | 269 |
+| masterfile_collision | candidate_for_official_followup | 701 |
+| masterfile_collision | likely_distinct_issuer_review | 233 |
+| masterfile_collision | likely_same_issuer_review | 274 |
 | masterfile_collision | needs_official_evidence | 613 |
-| masterfile_collision | source_gap_accept | 489 |
+| masterfile_collision | source_gap_accept | 494 |
 | otc_scope | needs_official_evidence | 25 |
 | weak_sector | candidate_for_official_followup | 1 |
 | weak_sector | needs_official_evidence | 42 |
