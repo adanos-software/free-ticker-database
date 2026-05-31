@@ -1,6 +1,6 @@
 # DeepSeek Collision Review Queue
 
-Generated: `2026-05-31T18:31:13Z`
+Generated: `2026-05-31T18:44:48Z`
 
 Policy: DeepSeek collision reviews are triage only and do not authorize automatic data changes.
 
@@ -8,7 +8,7 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 
 | Metric | Value |
 | --- | ---: |
-| Queue rows | 594 |
+| Queue rows | 604 |
 | Unmatched DeepSeek rows | 0 |
 
 ## Target Exchanges
@@ -28,9 +28,9 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | LSE | 46 |
 | NSE_IN | 15 |
 | NYSE | 10 |
-| NZX | 1 |
+| NZX | 2 |
 | OSL | 3 |
-| PSE | 26 |
+| PSE | 35 |
 | SGX | 1 |
 | TADAWUL | 25 |
 | TWSE | 8 |
@@ -54,8 +54,8 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | lse_price_explorer | 46 |
 | nasdaq_other_listed | 1 |
 | nse_india_securities_available | 15 |
-| nzx_instruments | 1 |
-| pse_listed_company_directory | 26 |
+| nzx_instruments | 2 |
+| pse_listed_company_directory | 35 |
 | sec_company_tickers_exchange | 9 |
 | sgx_securities_prices | 1 |
 | tadawul_main_market_watch | 25 |
