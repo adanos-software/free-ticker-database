@@ -1165,7 +1165,7 @@
       "etf_missing_count": 0,
       "exchange": "NGX",
       "field": "missing_sector_stock",
-      "missing_count": 26,
+      "missing_count": 24,
       "notes": "Source research needed before applying.",
       "official_source_count": 2,
       "priority_bucket": "ranked_by_missing_count",
@@ -1174,7 +1174,7 @@
       "reference_scopes": "exchange_directory|listed_companies_subset",
       "review_needed": true,
       "script": "scripts/fetch_exchange_masterfiles.py; scripts/backfill_financedatabase_metadata.py",
-      "stock_missing_count": 26,
+      "stock_missing_count": 24,
       "target_field": "stock_sector",
       "venue_status": "official_full"
     },
@@ -2404,9 +2404,9 @@
     "field_totals": {
       "missing_etf_category": 102,
       "missing_isin_primary": 846,
-      "missing_sector_stock": 2602
+      "missing_sector_stock": 2600
     },
-    "generated_at": "2026-05-24T13:46:42Z",
+    "generated_at": "2026-05-31T04:00:46Z",
     "legacy_primary_ticker_collision_rows": 1,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
@@ -2420,7 +2420,7 @@
         "Missing venues"
       ]
     },
-    "official_masterfile_collisions": 11096,
+    "official_masterfile_collisions": 11144,
     "rows": 126
   }
 }

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-05-30T16:24:41Z",
+    "generated_at": "2026-05-31T04:01:25Z",
     "rows": 10,
     "source_files": {
       "coverage_report": "data/reports/coverage_report.json",
@@ -32,13 +32,13 @@
     "campaigns": 10,
     "complete_campaigns": 0,
     "next_review_batches": 10,
-    "next_review_batch_rows": 28749,
+    "next_review_batch_rows": 28754,
     "closure_ready_campaigns": 9,
     "closure_blocked_campaigns": 1,
     "closure_blockers": 1,
     "validation_failed_error_gates": 0
   },
-  "summary_context": "campaigns=10;complete_campaigns=0;next_review_batches=10;next_review_batch_rows=28749;closure_ready_campaigns=9;closure_blocked_campaigns=1;closure_blockers=1;validation_failed_error_gates=0",
+  "summary_context": "campaigns=10;complete_campaigns=0;next_review_batches=10;next_review_batch_rows=28754;closure_ready_campaigns=9;closure_blocked_campaigns=1;closure_blockers=1;validation_failed_error_gates=0",
   "campaigns": [
     {
       "priority": 1,
@@ -7584,36 +7584,28 @@
       "campaign_key": "ohlcv",
       "status": "sampling_queue_enabled_plausibility_only",
       "evidence": {
-        "ohlcv_rows": 345,
-        "selected_sample_rows": 345,
-        "checked_sample_rows": 25,
-        "not_checked_sample_rows": 320,
+        "ohlcv_rows": 350,
+        "selected_sample_rows": 350,
+        "checked_sample_rows": 0,
+        "not_checked_sample_rows": 350,
         "sampling_coverage": {
-          "selected_rows": 345,
-          "report_rows": 345,
-          "checked_rows": 25,
-          "not_checked_rows": 320,
+          "selected_rows": 350,
+          "report_rows": 350,
+          "checked_rows": 0,
+          "not_checked_rows": 350,
           "skipped_not_checked_rows": 0,
           "local_sample_rows": 0,
-          "yahoo_sample_rows": 25,
-          "warn_or_source_gap_signal_rows": 24
+          "yahoo_sample_rows": 0,
+          "warn_or_source_gap_signal_rows": 0
         },
         "status_counts": {
-          "not_checked": 320,
-          "notice": 8,
-          "pass": 1,
-          "warn": 16
+          "not_checked": 350
         },
         "issue_counts": {
-          "no_ohlcv_sample": 320,
-          "invalid_ohlcv_bar": 16,
-          "long_zero_volume_streak": 10,
-          "long_stagnant_close_streak": 4,
-          "short_history": 2,
-          "large_price_jump": 1
+          "no_ohlcv_sample": 350
         },
         "selection_bucket_counts": {
-          "entry_quality_warn": 217,
+          "entry_quality_warn": 222,
           "large_exchange:HKEX": 5,
           "large_exchange:LSE": 5,
           "large_exchange:NASDAQ": 5,
@@ -7649,9 +7641,9 @@
             "BSE_HU": 1,
             "IDX": 2,
             "LSE": 60,
-            "NASDAQ": 5,
-            "NYSE": 1,
-            "OTC": 146,
+            "NASDAQ": 7,
+            "NYSE": 2,
+            "OTC": 148,
             "SZSE": 1
           },
           "large_exchange:HKEX": {
@@ -7758,10 +7750,7 @@
         },
         "selection_bucket_status_counts": {
           "entry_quality_warn": {
-            "not_checked": 192,
-            "notice": 8,
-            "pass": 1,
-            "warn": 16
+            "not_checked": 222
           },
           "large_exchange:HKEX": {
             "not_checked": 5
@@ -7849,25 +7838,13 @@
           }
         },
         "review_bucket_counts": {
-          "checked_low_severity_market_data_notice": 8,
-          "checked_ohlcv_anomaly_requires_listing_review": 16,
-          "checked_plausible_sample": 1,
-          "not_checked_entry_quality_warn_sample": 192,
+          "not_checked_entry_quality_warn_sample": 222,
           "not_checked_large_exchange_baseline_sample": 45,
           "not_checked_source_gap_cluster_sample": 83
         },
         "review_bucket_selection_bucket_counts": {
-          "checked_low_severity_market_data_notice": {
-            "entry_quality_warn": 8
-          },
-          "checked_ohlcv_anomaly_requires_listing_review": {
-            "entry_quality_warn": 16
-          },
-          "checked_plausible_sample": {
-            "entry_quality_warn": 1
-          },
           "not_checked_entry_quality_warn_sample": {
-            "entry_quality_warn": 192
+            "entry_quality_warn": 222
           },
           "not_checked_large_exchange_baseline_sample": {
             "large_exchange:HKEX": 5,
@@ -7903,24 +7880,15 @@
           }
         },
         "review_bucket_exchange_counts": {
-          "checked_low_severity_market_data_notice": {
-            "LSE": 8
-          },
-          "checked_ohlcv_anomaly_requires_listing_review": {
-            "LSE": 15,
-            "SZSE": 1
-          },
-          "checked_plausible_sample": {
-            "LSE": 1
-          },
           "not_checked_entry_quality_warn_sample": {
             "ASX": 1,
             "BSE_HU": 1,
             "IDX": 2,
-            "LSE": 36,
-            "NASDAQ": 5,
-            "NYSE": 1,
-            "OTC": 146
+            "LSE": 60,
+            "NASDAQ": 7,
+            "NYSE": 2,
+            "OTC": 148,
+            "SZSE": 1
           },
           "not_checked_large_exchange_baseline_sample": {
             "HKEX": 5,
@@ -7957,17 +7925,8 @@
           }
         },
         "review_bucket_sampling_strategy_counts": {
-          "checked_low_severity_market_data_notice": {
-            "review_low_severity_market_data_notice_only_if_prioritized": 8
-          },
-          "checked_ohlcv_anomaly_requires_listing_review": {
-            "review_checked_ohlcv_anomaly_against_listing_status_and_corporate_actions": 16
-          },
-          "checked_plausible_sample": {
-            "retain_as_plausibility_baseline_no_data_change": 1
-          },
           "not_checked_entry_quality_warn_sample": {
-            "collect_ohlcv_sample_then_existing_entry_quality_review": 192
+            "collect_ohlcv_sample_then_existing_entry_quality_review": 222
           },
           "not_checked_large_exchange_baseline_sample": {
             "collect_ohlcv_sample_for_large_exchange_baseline": 45
@@ -7977,17 +7936,8 @@
           }
         },
         "review_bucket_sampling_readiness_counts": {
-          "checked_low_severity_market_data_notice": {
-            "checked_yahoo_sample": 8
-          },
-          "checked_ohlcv_anomaly_requires_listing_review": {
-            "checked_yahoo_sample": 16
-          },
-          "checked_plausible_sample": {
-            "checked_yahoo_sample": 1
-          },
           "not_checked_entry_quality_warn_sample": {
-            "needs_ohlcv_sample": 192
+            "needs_ohlcv_sample": 222
           },
           "not_checked_large_exchange_baseline_sample": {
             "needs_ohlcv_sample": 45
@@ -7998,35 +7948,11 @@
         },
         "top_ohlcv_sampling_batches": [
           {
-            "review_bucket": "checked_ohlcv_anomaly_requires_listing_review",
-            "selection_bucket": "entry_quality_warn",
-            "exchange": "LSE",
-            "plausibility_status": "warn",
-            "rows": 15,
-            "review_priority": "P1",
-            "sampling_strategy": "review_checked_ohlcv_anomaly_against_listing_status_and_corporate_actions",
-            "evidence_required": "official_listing_status_corporate_action_and_market_data_source_review_before_any_listing_change",
-            "recommended_next_source": "Official listing status, corporate-action evidence, and independent market-data sample for LSE.",
-            "source_gate": "Do not change listing data until official listing status and corporate-action evidence explain the anomaly."
-          },
-          {
-            "review_bucket": "checked_ohlcv_anomaly_requires_listing_review",
-            "selection_bucket": "entry_quality_warn",
-            "exchange": "SZSE",
-            "plausibility_status": "warn",
-            "rows": 1,
-            "review_priority": "P1",
-            "sampling_strategy": "review_checked_ohlcv_anomaly_against_listing_status_and_corporate_actions",
-            "evidence_required": "official_listing_status_corporate_action_and_market_data_source_review_before_any_listing_change",
-            "recommended_next_source": "Official listing status, corporate-action evidence, and independent market-data sample for SZSE.",
-            "source_gate": "Do not change listing data until official listing status and corporate-action evidence explain the anomaly."
-          },
-          {
             "review_bucket": "not_checked_entry_quality_warn_sample",
             "selection_bucket": "entry_quality_warn",
             "exchange": "OTC",
             "plausibility_status": "not_checked",
-            "rows": 146,
+            "rows": 148,
             "review_priority": "P2",
             "sampling_strategy": "collect_ohlcv_sample_then_existing_entry_quality_review",
             "evidence_required": "local_or_bounded_network_ohlcv_sample_then_existing_entry_quality_review",
@@ -8038,7 +7964,7 @@
             "selection_bucket": "entry_quality_warn",
             "exchange": "LSE",
             "plausibility_status": "not_checked",
-            "rows": 36,
+            "rows": 60,
             "review_priority": "P2",
             "sampling_strategy": "collect_ohlcv_sample_then_existing_entry_quality_review",
             "evidence_required": "local_or_bounded_network_ohlcv_sample_then_existing_entry_quality_review",
@@ -8050,7 +7976,7 @@
             "selection_bucket": "entry_quality_warn",
             "exchange": "NASDAQ",
             "plausibility_status": "not_checked",
-            "rows": 5,
+            "rows": 7,
             "review_priority": "P2",
             "sampling_strategy": "collect_ohlcv_sample_then_existing_entry_quality_review",
             "evidence_required": "local_or_bounded_network_ohlcv_sample_then_existing_entry_quality_review",
@@ -8067,6 +7993,18 @@
             "sampling_strategy": "collect_ohlcv_sample_then_existing_entry_quality_review",
             "evidence_required": "local_or_bounded_network_ohlcv_sample_then_existing_entry_quality_review",
             "recommended_next_source": "Collect a local or bounded-network OHLCV sample for IDX, then review the existing entry-quality warning.",
+            "source_gate": "Sampling can prioritize review, but entry-quality changes still require the existing official evidence gates."
+          },
+          {
+            "review_bucket": "not_checked_entry_quality_warn_sample",
+            "selection_bucket": "entry_quality_warn",
+            "exchange": "NYSE",
+            "plausibility_status": "not_checked",
+            "rows": 2,
+            "review_priority": "P2",
+            "sampling_strategy": "collect_ohlcv_sample_then_existing_entry_quality_review",
+            "evidence_required": "local_or_bounded_network_ohlcv_sample_then_existing_entry_quality_review",
+            "recommended_next_source": "Collect a local or bounded-network OHLCV sample for NYSE, then review the existing entry-quality warning.",
             "source_gate": "Sampling can prioritize review, but entry-quality changes still require the existing official evidence gates."
           },
           {
@@ -8096,26 +8034,14 @@
           {
             "review_bucket": "not_checked_entry_quality_warn_sample",
             "selection_bucket": "entry_quality_warn",
-            "exchange": "NYSE",
+            "exchange": "SZSE",
             "plausibility_status": "not_checked",
             "rows": 1,
             "review_priority": "P2",
             "sampling_strategy": "collect_ohlcv_sample_then_existing_entry_quality_review",
             "evidence_required": "local_or_bounded_network_ohlcv_sample_then_existing_entry_quality_review",
-            "recommended_next_source": "Collect a local or bounded-network OHLCV sample for NYSE, then review the existing entry-quality warning.",
+            "recommended_next_source": "Collect a local or bounded-network OHLCV sample for SZSE, then review the existing entry-quality warning.",
             "source_gate": "Sampling can prioritize review, but entry-quality changes still require the existing official evidence gates."
-          },
-          {
-            "review_bucket": "checked_low_severity_market_data_notice",
-            "selection_bucket": "entry_quality_warn",
-            "exchange": "LSE",
-            "plausibility_status": "notice",
-            "rows": 8,
-            "review_priority": "P3",
-            "sampling_strategy": "review_low_severity_market_data_notice_only_if_prioritized",
-            "evidence_required": "market_data_provider_review_if_prioritizing_quality_cleanup",
-            "recommended_next_source": "Reviewed market-data provider sample for LSE if this quality issue is prioritized.",
-            "source_gate": "Treat as market-data quality context only; no canonical data change is authorized."
           },
           {
             "review_bucket": "not_checked_source_gap_cluster_sample",
@@ -8296,47 +8222,63 @@
             "evidence_required": "local_or_bounded_network_ohlcv_sample_then_source_gap_review",
             "recommended_next_source": "Collect a local or bounded-network OHLCV sample for TSXV, then use it only as source-gap review context.",
             "source_gate": "Sampling can prioritize source-gap review, but cannot fill identifiers, sectors, categories, names, or symbols."
+          },
+          {
+            "review_bucket": "not_checked_source_gap_cluster_sample",
+            "selection_bucket": "source_gap:official_product_reference_unmatched_category_gap",
+            "exchange": "KRX",
+            "plausibility_status": "not_checked",
+            "rows": 2,
+            "review_priority": "P3",
+            "sampling_strategy": "collect_ohlcv_sample_then_source_gap_review",
+            "evidence_required": "local_or_bounded_network_ohlcv_sample_then_source_gap_review",
+            "recommended_next_source": "Collect a local or bounded-network OHLCV sample for KRX, then use it only as source-gap review context.",
+            "source_gate": "Sampling can prioritize source-gap review, but cannot fill identifiers, sectors, categories, names, or symbols."
+          },
+          {
+            "review_bucket": "not_checked_source_gap_cluster_sample",
+            "selection_bucket": "source_gap:official_product_reference_unmatched_category_gap",
+            "exchange": "SSE_CL",
+            "plausibility_status": "not_checked",
+            "rows": 2,
+            "review_priority": "P3",
+            "sampling_strategy": "collect_ohlcv_sample_then_source_gap_review",
+            "evidence_required": "local_or_bounded_network_ohlcv_sample_then_source_gap_review",
+            "recommended_next_source": "Collect a local or bounded-network OHLCV sample for SSE_CL, then use it only as source-gap review context.",
+            "source_gate": "Sampling can prioritize source-gap review, but cannot fill identifiers, sectors, categories, names, or symbols."
           }
         ],
         "ohlcv_sampling_backlog": {
           "status": "sampling_queue_enabled_plausibility_only",
-          "selected_rows": 345,
-          "report_rows": 345,
-          "checked_rows": 25,
-          "not_checked_rows": 320,
+          "selected_rows": 350,
+          "report_rows": 350,
+          "checked_rows": 0,
+          "not_checked_rows": 350,
           "source_gap_cluster_sample_rows": 83,
-          "entry_quality_warn_sample_rows": 217,
+          "entry_quality_warn_sample_rows": 222,
           "large_exchange_baseline_sample_rows": 45,
-          "warn_or_source_gap_signal_rows": 24,
+          "warn_or_source_gap_signal_rows": 0,
           "direct_canonical_data_change_allowed_rows": 0,
           "plausibility_signal_only": true,
           "source_gate": "OHLCV sampling is plausibility evidence only; identifiers, sectors, categories, names, listings, and symbols remain blocked until official listing-keyed review evidence is available."
         },
         "review_priority_counts": {
-          "P1": 16,
-          "P2": 192,
-          "P3": 91,
-          "P4": 46
+          "P2": 222,
+          "P3": 83,
+          "P4": 45
         },
         "plausibility_use_counts": {
           "baseline_market_data_sampling_queue": 45,
-          "low_severity_market_data_notice_only": 8,
-          "market_data_plausibility_evidence_only": 1,
-          "review_signal_only_possible_listing_or_corporate_action_issue": 16,
-          "sampling_queue_for_existing_entry_quality_warn": 192,
+          "sampling_queue_for_existing_entry_quality_warn": 222,
           "sampling_queue_for_existing_source_gap": 83
         },
         "canonical_data_change_authorization_counts": {
-          "no_canonical_data_change_authorized": 329,
-          "official_listing_review_required_before_any_canonical_change": 16
+          "no_canonical_data_change_authorized": 350
         },
         "verification_evidence_required_counts": {
           "local_or_bounded_network_ohlcv_sample_for_baseline_only": 45,
-          "local_or_bounded_network_ohlcv_sample_then_existing_entry_quality_review": 192,
-          "local_or_bounded_network_ohlcv_sample_then_source_gap_review": 83,
-          "market_data_provider_review_if_prioritizing_quality_cleanup": 8,
-          "none_no_database_change_authorized": 1,
-          "official_listing_status_corporate_action_and_market_data_source_review_before_any_listing_change": 16
+          "local_or_bounded_network_ohlcv_sample_then_existing_entry_quality_review": 222,
+          "local_or_bounded_network_ohlcv_sample_then_source_gap_review": 83
         },
         "source_gap_class_counts": {
           "debt_or_securitized_identifier_gap": 5,
@@ -8369,19 +8311,15 @@
         "top_flagged_exchanges": [
           {
             "exchange": "OTC",
-            "not_checked": 160
+            "not_checked": 162
           },
           {
             "exchange": "LSE",
-            "pass": 1,
-            "notice": 8,
-            "warn": 15,
-            "not_checked": 44
+            "not_checked": 68
           },
           {
             "exchange": "SZSE",
-            "warn": 1,
-            "not_checked": 15
+            "not_checked": 16
           },
           {
             "exchange": "TSE",
@@ -8389,7 +8327,7 @@
           },
           {
             "exchange": "NASDAQ",
-            "not_checked": 11
+            "not_checked": 13
           },
           {
             "exchange": "ASX",
@@ -8424,6 +8362,10 @@
             "not_checked": 5
           },
           {
+            "exchange": "NYSE",
+            "not_checked": 2
+          },
+          {
             "exchange": "IDX",
             "not_checked": 2
           },
@@ -8445,10 +8387,6 @@
           },
           {
             "exchange": "BSE_HU",
-            "not_checked": 1
-          },
-          {
-            "exchange": "NYSE",
             "not_checked": 1
           }
         ],
@@ -8476,8 +8414,8 @@
       "artifacts": [
         {
           "path": "data/reports/ohlcv_plausibility.json",
-          "generated_at": "2026-05-25T11:11:55Z",
-          "rows": 345
+          "generated_at": "2026-05-31T04:01:17Z",
+          "rows": 350
         },
         {
           "path": "data/reports/ohlcv_warning_review.json",
@@ -8488,7 +8426,7 @@
       "acceptance_matrix": {
         "campaign_key": "ohlcv",
         "exchange_scope": "all",
-        "affected_artifact_rows": 361,
+        "affected_artifact_rows": 366,
         "campaign_metric_deltas": {
           "sample_rows": {
             "baseline": 345,
@@ -8597,9 +8535,9 @@
       "delta_evidence": {
         "status": "sampling_queue_only_no_data_apply",
         "known_deltas": {
-          "selected_sample_rows": 345,
-          "checked_sample_rows": 25,
-          "warn_or_source_gap_signal_rows": 24
+          "selected_sample_rows": 350,
+          "checked_sample_rows": 0,
+          "warn_or_source_gap_signal_rows": 0
         },
         "missing_deltas": []
       },
@@ -8613,7 +8551,7 @@
       },
       "before_after_summary": {
         "exchange_scope": "all",
-        "affected_artifact_rows": 361,
+        "affected_artifact_rows": 366,
         "global_before_after": {
           "isin_delta": {
             "before": 59847,
@@ -8667,12 +8605,12 @@
           }
         },
         "policy": "Before/after values are release evidence only; any non-zero delta still requires listing-keyed source review.",
-        "before_after_context": "exchange_scope=all;affected_artifact_rows=361;global_delta_count=6;nonzero_global_delta_count=0;nonzero_exchange_scope_delta_count=0;warn_delta=0;quarantine_delta=0"
+        "before_after_context": "exchange_scope=all;affected_artifact_rows=366;global_delta_count=6;nonzero_global_delta_count=0;nonzero_exchange_scope_delta_count=0;warn_delta=0;quarantine_delta=0"
       },
       "campaign_context": "priority=8;campaign_key=ohlcv;status=sampling_queue_enabled_plausibility_only;exchange_scope=all",
-      "artifact_context": "artifact_count=2;affected_artifact_rows=361;primary_artifact=data/reports/ohlcv_plausibility.json;primary_artifact_rows=345",
+      "artifact_context": "artifact_count=2;affected_artifact_rows=366;primary_artifact=data/reports/ohlcv_plausibility.json;primary_artifact_rows=350",
       "delta_review_context": "delta_status=sampling_queue_only_no_data_apply;missing_delta_count=0;before_after_present=true;next_action_present=true",
-      "closure_context": "closure_gate=review_artifact_rows_must_be_processed_before_campaign_closure;artifact_rows=361;missing_delta_count=0;closure_status=ready_after_review_artifact_processing"
+      "closure_context": "closure_gate=review_artifact_rows_must_be_processed_before_campaign_closure;artifact_rows=366;missing_delta_count=0;closure_status=ready_after_review_artifact_processing"
     },
     {
       "priority": 9,
@@ -8686,28 +8624,28 @@
           {
             "key": "identifiers",
             "source_type": "dataset",
-            "generated_at": "2026-05-25T02:16:29Z",
-            "age_hours": 11.51,
+            "generated_at": "2026-05-31T04:00:35Z",
+            "age_hours": 0.0,
             "age_bucket": "age_0_48h",
-            "rows": 59847,
+            "rows": 59848,
             "recommended_next_source": "Fresh generated_at and row-count evidence for identifiers.",
             "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
           },
           {
             "key": "tickers",
             "source_type": "dataset",
-            "generated_at": "2026-05-24T20:35:24Z",
-            "age_hours": 17.19,
+            "generated_at": "2026-05-31T03:58:05Z",
+            "age_hours": 0.04,
             "age_bucket": "age_0_48h",
-            "rows": 61465,
+            "rows": 61466,
             "recommended_next_source": "Fresh generated_at and row-count evidence for tickers.",
             "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
           },
           {
             "key": "entry_quality",
             "source_type": "quality_gate",
-            "generated_at": "2026-05-24T20:35:32Z",
-            "age_hours": 17.19,
+            "generated_at": "2026-05-31T03:58:47Z",
+            "age_hours": 0.03,
             "age_bucket": "age_0_48h",
             "rows": 71043,
             "recommended_next_source": "Fresh generated_at and row-count evidence for entry_quality.",
@@ -8717,8 +8655,8 @@
             "key": "masterfile_collision_review",
             "source_type": "review_report",
             "generated_at": "2026-05-25T12:53:29Z",
-            "age_hours": 0.89,
-            "age_bucket": "age_0_48h",
+            "age_hours": 135.12,
+            "age_bucket": "age_48_168h",
             "rows": 11107,
             "recommended_next_source": "Fresh generated_at and row-count evidence for masterfile_collision_review.",
             "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
@@ -8726,8 +8664,8 @@
           {
             "key": "source_gap_classification",
             "source_type": "review_report",
-            "generated_at": "2026-05-25T12:53:30Z",
-            "age_hours": 0.89,
+            "generated_at": "2026-05-31T04:00:17Z",
+            "age_hours": 0.01,
             "age_bucket": "age_0_48h",
             "rows": 3548,
             "recommended_next_source": "Fresh generated_at and row-count evidence for source_gap_classification.",
@@ -8736,10 +8674,10 @@
           {
             "key": "ohlcv_plausibility",
             "source_type": "sampling_report",
-            "generated_at": "2026-05-25T11:11:55Z",
-            "age_hours": 2.58,
+            "generated_at": "2026-05-31T04:00:15Z",
+            "age_hours": 0.01,
             "age_bucket": "age_0_48h",
-            "rows": 345,
+            "rows": 0,
             "recommended_next_source": "Fresh generated_at and row-count evidence for ohlcv_plausibility.",
             "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
           },
@@ -8747,8 +8685,8 @@
             "key": "masterfiles",
             "source_type": "source_inventory",
             "generated_at": "2026-05-25T13:46:37Z",
-            "age_hours": 0.0,
-            "age_bucket": "age_0_48h",
+            "age_hours": 134.23,
+            "age_bucket": "age_48_168h",
             "rows": 79377,
             "recommended_next_source": "Fresh generated_at and row-count evidence for masterfiles.",
             "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
@@ -8756,125 +8694,121 @@
           {
             "key": "symbol_changes",
             "source_type": "workflow_report",
-            "generated_at": "2026-05-25T11:07:48Z",
-            "age_hours": 2.65,
+            "generated_at": "2026-05-30T16:24:00Z",
+            "age_hours": 11.61,
             "age_bucket": "age_0_48h",
-            "rows": 263,
+            "rows": 271,
             "recommended_next_source": "Fresh generated_at and row-count evidence for symbol_changes.",
             "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
           }
         ],
         "freshness_snapshot_age_bucket_totals": {
-          "age_0_48h": 8
+          "age_0_48h": 6,
+          "age_48_168h": 2
         },
         "top_freshness_snapshot_ages": [
-          {
-            "key": "tickers",
-            "source_type": "dataset",
-            "generated_at": "2026-05-24T20:35:24Z",
-            "age_hours": 17.19,
-            "age_bucket": "age_0_48h",
-            "rows": 61465,
-            "recommended_next_source": "Fresh generated_at and row-count evidence for tickers.",
-            "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
-          },
-          {
-            "key": "entry_quality",
-            "source_type": "quality_gate",
-            "generated_at": "2026-05-24T20:35:32Z",
-            "age_hours": 17.19,
-            "age_bucket": "age_0_48h",
-            "rows": 71043,
-            "recommended_next_source": "Fresh generated_at and row-count evidence for entry_quality.",
-            "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
-          },
-          {
-            "key": "identifiers",
-            "source_type": "dataset",
-            "generated_at": "2026-05-25T02:16:29Z",
-            "age_hours": 11.51,
-            "age_bucket": "age_0_48h",
-            "rows": 59847,
-            "recommended_next_source": "Fresh generated_at and row-count evidence for identifiers.",
-            "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
-          },
-          {
-            "key": "symbol_changes",
-            "source_type": "workflow_report",
-            "generated_at": "2026-05-25T11:07:48Z",
-            "age_hours": 2.65,
-            "age_bucket": "age_0_48h",
-            "rows": 263,
-            "recommended_next_source": "Fresh generated_at and row-count evidence for symbol_changes.",
-            "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
-          },
-          {
-            "key": "ohlcv_plausibility",
-            "source_type": "sampling_report",
-            "generated_at": "2026-05-25T11:11:55Z",
-            "age_hours": 2.58,
-            "age_bucket": "age_0_48h",
-            "rows": 345,
-            "recommended_next_source": "Fresh generated_at and row-count evidence for ohlcv_plausibility.",
-            "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
-          },
           {
             "key": "masterfile_collision_review",
             "source_type": "review_report",
             "generated_at": "2026-05-25T12:53:29Z",
-            "age_hours": 0.89,
-            "age_bucket": "age_0_48h",
+            "age_hours": 135.12,
+            "age_bucket": "age_48_168h",
             "rows": 11107,
             "recommended_next_source": "Fresh generated_at and row-count evidence for masterfile_collision_review.",
-            "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
-          },
-          {
-            "key": "source_gap_classification",
-            "source_type": "review_report",
-            "generated_at": "2026-05-25T12:53:30Z",
-            "age_hours": 0.89,
-            "age_bucket": "age_0_48h",
-            "rows": 3548,
-            "recommended_next_source": "Fresh generated_at and row-count evidence for source_gap_classification.",
             "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
           },
           {
             "key": "masterfiles",
             "source_type": "source_inventory",
             "generated_at": "2026-05-25T13:46:37Z",
-            "age_hours": 0.0,
-            "age_bucket": "age_0_48h",
+            "age_hours": 134.23,
+            "age_bucket": "age_48_168h",
             "rows": 79377,
             "recommended_next_source": "Fresh generated_at and row-count evidence for masterfiles.",
+            "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
+          },
+          {
+            "key": "symbol_changes",
+            "source_type": "workflow_report",
+            "generated_at": "2026-05-30T16:24:00Z",
+            "age_hours": 11.61,
+            "age_bucket": "age_0_48h",
+            "rows": 271,
+            "recommended_next_source": "Fresh generated_at and row-count evidence for symbol_changes.",
+            "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
+          },
+          {
+            "key": "tickers",
+            "source_type": "dataset",
+            "generated_at": "2026-05-31T03:58:05Z",
+            "age_hours": 0.04,
+            "age_bucket": "age_0_48h",
+            "rows": 61466,
+            "recommended_next_source": "Fresh generated_at and row-count evidence for tickers.",
+            "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
+          },
+          {
+            "key": "entry_quality",
+            "source_type": "quality_gate",
+            "generated_at": "2026-05-31T03:58:47Z",
+            "age_hours": 0.03,
+            "age_bucket": "age_0_48h",
+            "rows": 71043,
+            "recommended_next_source": "Fresh generated_at and row-count evidence for entry_quality.",
+            "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
+          },
+          {
+            "key": "source_gap_classification",
+            "source_type": "review_report",
+            "generated_at": "2026-05-31T04:00:17Z",
+            "age_hours": 0.01,
+            "age_bucket": "age_0_48h",
+            "rows": 3548,
+            "recommended_next_source": "Fresh generated_at and row-count evidence for source_gap_classification.",
+            "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
+          },
+          {
+            "key": "ohlcv_plausibility",
+            "source_type": "sampling_report",
+            "generated_at": "2026-05-31T04:00:15Z",
+            "age_hours": 0.01,
+            "age_bucket": "age_0_48h",
+            "rows": 0,
+            "recommended_next_source": "Fresh generated_at and row-count evidence for ohlcv_plausibility.",
+            "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
+          },
+          {
+            "key": "identifiers",
+            "source_type": "dataset",
+            "generated_at": "2026-05-31T04:00:35Z",
+            "age_hours": 0.0,
+            "age_bucket": "age_0_48h",
+            "rows": 59848,
+            "recommended_next_source": "Fresh generated_at and row-count evidence for identifiers.",
             "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
           }
         ],
         "source_freshness_status_totals": {
           "old": 93,
-          "fresh": 43
+          "stale": 43
         },
         "source_age_bucket_totals": {
-          "age_0_48h": 43,
-          "age_168_336h": 93
+          "age_48_168h": 43,
+          "age_over_336h": 93
         },
         "source_refresh_priority_totals": {
           "P1": 1,
-          "P2": 92,
-          "P4": 43
+          "P2": 135
         },
         "source_refresh_queue_totals": {
-          "fresh_no_refresh_needed": 43,
-          "refresh_official_subset_before_gap_enrichment": 85,
+          "refresh_official_subset_before_gap_enrichment": 128,
           "restore_or_replace_unavailable_source_before_data_fill": 8
         },
         "source_refresh_queue_scope_totals": {
-          "fresh_no_refresh_needed": {
-            "exchange_directory": 40,
-            "listed_companies_subset": 3
-          },
           "refresh_official_subset_before_gap_enrichment": {
+            "exchange_directory": 40,
             "interlisted_subset": 1,
-            "listed_companies_subset": 77,
+            "listed_companies_subset": 80,
             "security_identifier_registry_subset": 1,
             "security_lookup_subset": 6
           },
@@ -8884,23 +8818,17 @@
           }
         },
         "source_refresh_queue_mode_totals": {
-          "fresh_no_refresh_needed": {
-            "network": 43
-          },
           "refresh_official_subset_before_gap_enrichment": {
             "cache": 21,
-            "network": 64
+            "network": 107
           },
           "restore_or_replace_unavailable_source_before_data_fill": {
             "unavailable": 8
           }
         },
         "source_refresh_queue_priority_totals": {
-          "fresh_no_refresh_needed": {
-            "P4": 43
-          },
           "refresh_official_subset_before_gap_enrichment": {
-            "P2": 85
+            "P2": 128
           },
           "restore_or_replace_unavailable_source_before_data_fill": {
             "P1": 1,
@@ -8908,38 +8836,29 @@
           }
         },
         "source_refresh_queue_age_bucket_totals": {
-          "fresh_no_refresh_needed": {
-            "age_0_48h": 43
-          },
           "refresh_official_subset_before_gap_enrichment": {
-            "age_168_336h": 85
+            "age_48_168h": 43,
+            "age_over_336h": 85
           },
           "restore_or_replace_unavailable_source_before_data_fill": {
-            "age_168_336h": 8
+            "age_over_336h": 8
           }
         },
         "source_refresh_action_totals": {
-          "no_refresh_needed": 43,
-          "refresh_official_subset_before_gap_enrichment": 85,
+          "refresh_official_subset_before_gap_enrichment": 128,
           "restore_or_replace_unavailable_source_before_data_fill": 8
         },
         "source_refresh_queue_review_strategy_totals": {
-          "fresh_no_refresh_needed": {
-            "no_refresh_required": 43
-          },
           "refresh_official_subset_before_gap_enrichment": {
-            "refresh_official_subset_before_gap_enrichment": 85
+            "refresh_official_subset_before_gap_enrichment": 128
           },
           "restore_or_replace_unavailable_source_before_data_fill": {
             "restore_or_replace_unavailable_source_before_data_fill": 8
           }
         },
         "source_refresh_queue_evidence_required_totals": {
-          "fresh_no_refresh_needed": {
-            "fresh_source_generated_at_with_age_under_48h": 43
-          },
           "refresh_official_subset_before_gap_enrichment": {
-            "official_subset_refresh_artifact_with_generated_at_scope_and_row_count": 85
+            "official_subset_refresh_artifact_with_generated_at_scope_and_row_count": 128
           },
           "restore_or_replace_unavailable_source_before_data_fill": {
             "source_restored_or_replaced_with_official_or_documented_unavailable_decision": 8
@@ -8953,7 +8872,7 @@
             "refresh_priority": "P1",
             "source_count": 1,
             "total_rows": 0,
-            "max_age_hours": 213.78,
+            "max_age_hours": 348.01,
             "review_strategy": "restore_or_replace_unavailable_source_before_data_fill",
             "evidence_required": "source_restored_or_replaced_with_official_or_documented_unavailable_decision",
             "recommended_next_source": "Restore the unavailable official source for scope exchange_directory, or document an official replacement/unavailable decision.",
@@ -8964,12 +8883,25 @@
             "reference_scope": "listed_companies_subset",
             "mode": "network",
             "refresh_priority": "P2",
-            "source_count": 60,
-            "total_rows": 36930,
-            "max_age_hours": 213.8,
+            "source_count": 63,
+            "total_rows": 37425,
+            "max_age_hours": 348.03,
             "review_strategy": "refresh_official_subset_before_gap_enrichment",
             "evidence_required": "official_subset_refresh_artifact_with_generated_at_scope_and_row_count",
             "recommended_next_source": "Refresh the official subset source for scope listed_companies_subset before identifier or metadata gap work.",
+            "source_gate": "Do not fill identifiers, sectors, or categories from stale subset data until a fresh scoped artifact exists."
+          },
+          {
+            "refresh_queue": "refresh_official_subset_before_gap_enrichment",
+            "reference_scope": "exchange_directory",
+            "mode": "network",
+            "refresh_priority": "P2",
+            "source_count": 40,
+            "total_rows": 85123,
+            "max_age_hours": 156.12,
+            "review_strategy": "refresh_official_subset_before_gap_enrichment",
+            "evidence_required": "official_subset_refresh_artifact_with_generated_at_scope_and_row_count",
+            "recommended_next_source": "Refresh the official subset source for scope exchange_directory before identifier or metadata gap work.",
             "source_gate": "Do not fill identifiers, sectors, or categories from stale subset data until a fresh scoped artifact exists."
           },
           {
@@ -8979,7 +8911,7 @@
             "refresh_priority": "P2",
             "source_count": 17,
             "total_rows": 18897,
-            "max_age_hours": 213.81,
+            "max_age_hours": 348.04,
             "review_strategy": "refresh_official_subset_before_gap_enrichment",
             "evidence_required": "official_subset_refresh_artifact_with_generated_at_scope_and_row_count",
             "recommended_next_source": "Refresh the official subset source for scope listed_companies_subset before identifier or metadata gap work.",
@@ -8992,7 +8924,7 @@
             "refresh_priority": "P2",
             "source_count": 7,
             "total_rows": 0,
-            "max_age_hours": 213.79,
+            "max_age_hours": 348.02,
             "review_strategy": "restore_or_replace_unavailable_source_before_data_fill",
             "evidence_required": "source_restored_or_replaced_with_official_or_documented_unavailable_decision",
             "recommended_next_source": "Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision.",
@@ -9005,7 +8937,7 @@
             "refresh_priority": "P2",
             "source_count": 4,
             "total_rows": 165,
-            "max_age_hours": 213.8,
+            "max_age_hours": 348.03,
             "review_strategy": "refresh_official_subset_before_gap_enrichment",
             "evidence_required": "official_subset_refresh_artifact_with_generated_at_scope_and_row_count",
             "recommended_next_source": "Refresh the official subset source for scope security_lookup_subset before identifier or metadata gap work.",
@@ -9018,7 +8950,7 @@
             "refresh_priority": "P2",
             "source_count": 2,
             "total_rows": 746,
-            "max_age_hours": 213.8,
+            "max_age_hours": 348.04,
             "review_strategy": "refresh_official_subset_before_gap_enrichment",
             "evidence_required": "official_subset_refresh_artifact_with_generated_at_scope_and_row_count",
             "recommended_next_source": "Refresh the official subset source for scope security_lookup_subset before identifier or metadata gap work.",
@@ -9031,7 +8963,7 @@
             "refresh_priority": "P2",
             "source_count": 1,
             "total_rows": 3205,
-            "max_age_hours": 213.79,
+            "max_age_hours": 348.02,
             "review_strategy": "refresh_official_subset_before_gap_enrichment",
             "evidence_required": "official_subset_refresh_artifact_with_generated_at_scope_and_row_count",
             "recommended_next_source": "Refresh the official subset source for scope security_identifier_registry_subset before identifier or metadata gap work.",
@@ -9044,37 +8976,11 @@
             "refresh_priority": "P2",
             "source_count": 1,
             "total_rows": 268,
-            "max_age_hours": 213.79,
+            "max_age_hours": 348.03,
             "review_strategy": "refresh_official_subset_before_gap_enrichment",
             "evidence_required": "official_subset_refresh_artifact_with_generated_at_scope_and_row_count",
             "recommended_next_source": "Refresh the official subset source for scope interlisted_subset before identifier or metadata gap work.",
             "source_gate": "Do not fill identifiers, sectors, or categories from stale subset data until a fresh scoped artifact exists."
-          },
-          {
-            "refresh_queue": "fresh_no_refresh_needed",
-            "reference_scope": "exchange_directory",
-            "mode": "network",
-            "refresh_priority": "P4",
-            "source_count": 40,
-            "total_rows": 85123,
-            "max_age_hours": 21.89,
-            "review_strategy": "no_refresh_required",
-            "evidence_required": "fresh_source_generated_at_with_age_under_48h",
-            "recommended_next_source": "No refresh needed; retain current fresh source evidence for scope exchange_directory.",
-            "source_gate": "Freshness evidence is present; no data change is authorized by freshness alone."
-          },
-          {
-            "refresh_queue": "fresh_no_refresh_needed",
-            "reference_scope": "listed_companies_subset",
-            "mode": "network",
-            "refresh_priority": "P4",
-            "source_count": 3,
-            "total_rows": 495,
-            "max_age_hours": 5.96,
-            "review_strategy": "no_refresh_required",
-            "evidence_required": "fresh_source_generated_at_with_age_under_48h",
-            "recommended_next_source": "No refresh needed; retain current fresh source evidence for scope listed_companies_subset.",
-            "source_gate": "Freshness evidence is present; no data change is authorized by freshness alone."
           }
         ],
         "old_official_exchange_directory_count": 1,
@@ -9084,7 +8990,7 @@
             "provider": "BME",
             "mode": "unavailable",
             "rows": 0,
-            "age_hours": 213.78
+            "age_hours": 348.01
           }
         ],
         "source_gap_class_totals": {
@@ -9443,12 +9349,12 @@
       "artifacts": [
         {
           "path": "data/reports/coverage_report.json",
-          "generated_at": "2026-05-25T13:46:48Z",
+          "generated_at": "2026-05-31T04:00:41Z",
           "rows": 0
         },
         {
           "path": "data/reports/source_gap_classification.json",
-          "generated_at": "2026-05-25T12:53:30Z",
+          "generated_at": "2026-05-31T04:00:47Z",
           "rows": 3548
         },
         {
@@ -9830,28 +9736,28 @@
             {
               "key": "identifiers",
               "source_type": "dataset",
-              "generated_at": "2026-05-25T02:16:29Z",
-              "age_hours": 11.51,
+              "generated_at": "2026-05-31T04:00:35Z",
+              "age_hours": 0.0,
               "age_bucket": "age_0_48h",
-              "rows": 59847,
+              "rows": 59848,
               "recommended_next_source": "Fresh generated_at and row-count evidence for identifiers.",
               "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
             },
             {
               "key": "tickers",
               "source_type": "dataset",
-              "generated_at": "2026-05-24T20:35:24Z",
-              "age_hours": 17.19,
+              "generated_at": "2026-05-31T03:58:05Z",
+              "age_hours": 0.04,
               "age_bucket": "age_0_48h",
-              "rows": 61465,
+              "rows": 61466,
               "recommended_next_source": "Fresh generated_at and row-count evidence for tickers.",
               "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
             },
             {
               "key": "entry_quality",
               "source_type": "quality_gate",
-              "generated_at": "2026-05-24T20:35:32Z",
-              "age_hours": 17.19,
+              "generated_at": "2026-05-31T03:58:47Z",
+              "age_hours": 0.03,
               "age_bucket": "age_0_48h",
               "rows": 71043,
               "recommended_next_source": "Fresh generated_at and row-count evidence for entry_quality.",
@@ -9861,8 +9767,8 @@
               "key": "masterfile_collision_review",
               "source_type": "review_report",
               "generated_at": "2026-05-25T12:53:29Z",
-              "age_hours": 0.89,
-              "age_bucket": "age_0_48h",
+              "age_hours": 135.12,
+              "age_bucket": "age_48_168h",
               "rows": 11107,
               "recommended_next_source": "Fresh generated_at and row-count evidence for masterfile_collision_review.",
               "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
@@ -9870,8 +9776,8 @@
             {
               "key": "source_gap_classification",
               "source_type": "review_report",
-              "generated_at": "2026-05-25T12:53:30Z",
-              "age_hours": 0.89,
+              "generated_at": "2026-05-31T04:00:17Z",
+              "age_hours": 0.01,
               "age_bucket": "age_0_48h",
               "rows": 3548,
               "recommended_next_source": "Fresh generated_at and row-count evidence for source_gap_classification.",
@@ -9880,10 +9786,10 @@
             {
               "key": "ohlcv_plausibility",
               "source_type": "sampling_report",
-              "generated_at": "2026-05-25T11:11:55Z",
-              "age_hours": 2.58,
+              "generated_at": "2026-05-31T04:00:15Z",
+              "age_hours": 0.01,
               "age_bucket": "age_0_48h",
-              "rows": 345,
+              "rows": 0,
               "recommended_next_source": "Fresh generated_at and row-count evidence for ohlcv_plausibility.",
               "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
             },
@@ -9891,8 +9797,8 @@
               "key": "masterfiles",
               "source_type": "source_inventory",
               "generated_at": "2026-05-25T13:46:37Z",
-              "age_hours": 0.0,
-              "age_bucket": "age_0_48h",
+              "age_hours": 134.23,
+              "age_bucket": "age_48_168h",
               "rows": 79377,
               "recommended_next_source": "Fresh generated_at and row-count evidence for masterfiles.",
               "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
@@ -9900,125 +9806,121 @@
             {
               "key": "symbol_changes",
               "source_type": "workflow_report",
-              "generated_at": "2026-05-25T11:07:48Z",
-              "age_hours": 2.65,
+              "generated_at": "2026-05-30T16:24:00Z",
+              "age_hours": 11.61,
               "age_bucket": "age_0_48h",
-              "rows": 263,
+              "rows": 271,
               "recommended_next_source": "Fresh generated_at and row-count evidence for symbol_changes.",
               "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
             }
           ],
           "freshness_snapshot_age_bucket_totals": {
-            "age_0_48h": 8
+            "age_0_48h": 6,
+            "age_48_168h": 2
           },
           "top_freshness_snapshot_ages": [
-            {
-              "key": "tickers",
-              "source_type": "dataset",
-              "generated_at": "2026-05-24T20:35:24Z",
-              "age_hours": 17.19,
-              "age_bucket": "age_0_48h",
-              "rows": 61465,
-              "recommended_next_source": "Fresh generated_at and row-count evidence for tickers.",
-              "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
-            },
-            {
-              "key": "entry_quality",
-              "source_type": "quality_gate",
-              "generated_at": "2026-05-24T20:35:32Z",
-              "age_hours": 17.19,
-              "age_bucket": "age_0_48h",
-              "rows": 71043,
-              "recommended_next_source": "Fresh generated_at and row-count evidence for entry_quality.",
-              "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
-            },
-            {
-              "key": "identifiers",
-              "source_type": "dataset",
-              "generated_at": "2026-05-25T02:16:29Z",
-              "age_hours": 11.51,
-              "age_bucket": "age_0_48h",
-              "rows": 59847,
-              "recommended_next_source": "Fresh generated_at and row-count evidence for identifiers.",
-              "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
-            },
-            {
-              "key": "symbol_changes",
-              "source_type": "workflow_report",
-              "generated_at": "2026-05-25T11:07:48Z",
-              "age_hours": 2.65,
-              "age_bucket": "age_0_48h",
-              "rows": 263,
-              "recommended_next_source": "Fresh generated_at and row-count evidence for symbol_changes.",
-              "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
-            },
-            {
-              "key": "ohlcv_plausibility",
-              "source_type": "sampling_report",
-              "generated_at": "2026-05-25T11:11:55Z",
-              "age_hours": 2.58,
-              "age_bucket": "age_0_48h",
-              "rows": 345,
-              "recommended_next_source": "Fresh generated_at and row-count evidence for ohlcv_plausibility.",
-              "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
-            },
             {
               "key": "masterfile_collision_review",
               "source_type": "review_report",
               "generated_at": "2026-05-25T12:53:29Z",
-              "age_hours": 0.89,
-              "age_bucket": "age_0_48h",
+              "age_hours": 135.12,
+              "age_bucket": "age_48_168h",
               "rows": 11107,
               "recommended_next_source": "Fresh generated_at and row-count evidence for masterfile_collision_review.",
-              "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
-            },
-            {
-              "key": "source_gap_classification",
-              "source_type": "review_report",
-              "generated_at": "2026-05-25T12:53:30Z",
-              "age_hours": 0.89,
-              "age_bucket": "age_0_48h",
-              "rows": 3548,
-              "recommended_next_source": "Fresh generated_at and row-count evidence for source_gap_classification.",
               "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
             },
             {
               "key": "masterfiles",
               "source_type": "source_inventory",
               "generated_at": "2026-05-25T13:46:37Z",
-              "age_hours": 0.0,
-              "age_bucket": "age_0_48h",
+              "age_hours": 134.23,
+              "age_bucket": "age_48_168h",
               "rows": 79377,
               "recommended_next_source": "Fresh generated_at and row-count evidence for masterfiles.",
+              "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
+            },
+            {
+              "key": "symbol_changes",
+              "source_type": "workflow_report",
+              "generated_at": "2026-05-30T16:24:00Z",
+              "age_hours": 11.61,
+              "age_bucket": "age_0_48h",
+              "rows": 271,
+              "recommended_next_source": "Fresh generated_at and row-count evidence for symbol_changes.",
+              "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
+            },
+            {
+              "key": "tickers",
+              "source_type": "dataset",
+              "generated_at": "2026-05-31T03:58:05Z",
+              "age_hours": 0.04,
+              "age_bucket": "age_0_48h",
+              "rows": 61466,
+              "recommended_next_source": "Fresh generated_at and row-count evidence for tickers.",
+              "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
+            },
+            {
+              "key": "entry_quality",
+              "source_type": "quality_gate",
+              "generated_at": "2026-05-31T03:58:47Z",
+              "age_hours": 0.03,
+              "age_bucket": "age_0_48h",
+              "rows": 71043,
+              "recommended_next_source": "Fresh generated_at and row-count evidence for entry_quality.",
+              "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
+            },
+            {
+              "key": "source_gap_classification",
+              "source_type": "review_report",
+              "generated_at": "2026-05-31T04:00:17Z",
+              "age_hours": 0.01,
+              "age_bucket": "age_0_48h",
+              "rows": 3548,
+              "recommended_next_source": "Fresh generated_at and row-count evidence for source_gap_classification.",
+              "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
+            },
+            {
+              "key": "ohlcv_plausibility",
+              "source_type": "sampling_report",
+              "generated_at": "2026-05-31T04:00:15Z",
+              "age_hours": 0.01,
+              "age_bucket": "age_0_48h",
+              "rows": 0,
+              "recommended_next_source": "Fresh generated_at and row-count evidence for ohlcv_plausibility.",
+              "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
+            },
+            {
+              "key": "identifiers",
+              "source_type": "dataset",
+              "generated_at": "2026-05-31T04:00:35Z",
+              "age_hours": 0.0,
+              "age_bucket": "age_0_48h",
+              "rows": 59848,
+              "recommended_next_source": "Fresh generated_at and row-count evidence for identifiers.",
               "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
             }
           ],
           "source_freshness_status_totals": {
             "old": 93,
-            "fresh": 43
+            "stale": 43
           },
           "source_age_bucket_totals": {
-            "age_0_48h": 43,
-            "age_168_336h": 93
+            "age_48_168h": 43,
+            "age_over_336h": 93
           },
           "source_refresh_priority_totals": {
             "P1": 1,
-            "P2": 92,
-            "P4": 43
+            "P2": 135
           },
           "source_refresh_queue_totals": {
-            "fresh_no_refresh_needed": 43,
-            "refresh_official_subset_before_gap_enrichment": 85,
+            "refresh_official_subset_before_gap_enrichment": 128,
             "restore_or_replace_unavailable_source_before_data_fill": 8
           },
           "source_refresh_queue_scope_totals": {
-            "fresh_no_refresh_needed": {
-              "exchange_directory": 40,
-              "listed_companies_subset": 3
-            },
             "refresh_official_subset_before_gap_enrichment": {
+              "exchange_directory": 40,
               "interlisted_subset": 1,
-              "listed_companies_subset": 77,
+              "listed_companies_subset": 80,
               "security_identifier_registry_subset": 1,
               "security_lookup_subset": 6
             },
@@ -10028,23 +9930,17 @@
             }
           },
           "source_refresh_queue_mode_totals": {
-            "fresh_no_refresh_needed": {
-              "network": 43
-            },
             "refresh_official_subset_before_gap_enrichment": {
               "cache": 21,
-              "network": 64
+              "network": 107
             },
             "restore_or_replace_unavailable_source_before_data_fill": {
               "unavailable": 8
             }
           },
           "source_refresh_queue_priority_totals": {
-            "fresh_no_refresh_needed": {
-              "P4": 43
-            },
             "refresh_official_subset_before_gap_enrichment": {
-              "P2": 85
+              "P2": 128
             },
             "restore_or_replace_unavailable_source_before_data_fill": {
               "P1": 1,
@@ -10052,41 +9948,32 @@
             }
           },
           "source_refresh_queue_age_bucket_totals": {
-            "fresh_no_refresh_needed": {
-              "age_0_48h": 43
-            },
             "refresh_official_subset_before_gap_enrichment": {
-              "age_168_336h": 85
+              "age_48_168h": 43,
+              "age_over_336h": 85
             },
             "restore_or_replace_unavailable_source_before_data_fill": {
-              "age_168_336h": 8
+              "age_over_336h": 8
             }
           },
           "source_refresh_queue_review_strategy_totals": {
-            "fresh_no_refresh_needed": {
-              "no_refresh_required": 43
-            },
             "refresh_official_subset_before_gap_enrichment": {
-              "refresh_official_subset_before_gap_enrichment": 85
+              "refresh_official_subset_before_gap_enrichment": 128
             },
             "restore_or_replace_unavailable_source_before_data_fill": {
               "restore_or_replace_unavailable_source_before_data_fill": 8
             }
           },
           "source_refresh_queue_evidence_required_totals": {
-            "fresh_no_refresh_needed": {
-              "fresh_source_generated_at_with_age_under_48h": 43
-            },
             "refresh_official_subset_before_gap_enrichment": {
-              "official_subset_refresh_artifact_with_generated_at_scope_and_row_count": 85
+              "official_subset_refresh_artifact_with_generated_at_scope_and_row_count": 128
             },
             "restore_or_replace_unavailable_source_before_data_fill": {
               "source_restored_or_replaced_with_official_or_documented_unavailable_decision": 8
             }
           },
           "source_refresh_action_totals": {
-            "no_refresh_needed": 43,
-            "refresh_official_subset_before_gap_enrichment": 85,
+            "refresh_official_subset_before_gap_enrichment": 128,
             "restore_or_replace_unavailable_source_before_data_fill": 8
           },
           "old_official_exchange_directory_count": 1,
@@ -10786,15 +10673,15 @@
       "campaign_key": "ohlcv",
       "status": "sampling_queue_enabled_plausibility_only",
       "delta_status": "sampling_queue_only_no_data_apply",
-      "artifact_rows": 361,
+      "artifact_rows": 366,
       "primary_artifact": "data/reports/ohlcv_plausibility.json",
-      "primary_artifact_rows": 345,
+      "primary_artifact_rows": 350,
       "missing_delta_evidence": [],
       "closure_gate": "review_artifact_rows_must_be_processed_before_campaign_closure",
       "next_action": "run bounded Yahoo/local samples for selected buckets and use results only as review signals",
       "recommended_next_source": "Local or bounded-network OHLCV sample paired with existing official source-gap or entry-quality evidence.",
       "source_gate": "Use OHLCV only as plausibility evidence; never authorize identifier, sector, category, name, or symbol changes from price data.",
-      "closure_context": "closure_gate=review_artifact_rows_must_be_processed_before_campaign_closure;artifact_rows=361;missing_delta_count=0;closure_status=ready_after_review_artifact_processing"
+      "closure_context": "closure_gate=review_artifact_rows_must_be_processed_before_campaign_closure;artifact_rows=366;missing_delta_count=0;closure_status=ready_after_review_artifact_processing"
     },
     {
       "priority": 9,
@@ -10831,7 +10718,7 @@
   ],
   "next_review_workload": {
     "total_batches": 10,
-    "total_rows": 28749,
+    "total_rows": 28754,
     "blocked_batches": 1,
     "rows_by_campaign_key": {
       "asx": 114,
@@ -10840,14 +10727,14 @@
       "canada": 525,
       "freshness": 4213,
       "masterfile_collisions": 11107,
-      "ohlcv": 361,
+      "ohlcv": 366,
       "otc": 11202,
       "symbol_changes": 271,
       "weak_sector": 670
     },
     "rows_by_closure_gate": {
       "future_campaign_delta_comparison_required_before_release_closure": 0,
-      "review_artifact_rows_must_be_processed_before_campaign_closure": 28749
+      "review_artifact_rows_must_be_processed_before_campaign_closure": 28754
     },
     "largest_batch": {
       "priority": 2,
@@ -10857,7 +10744,7 @@
       "closure_gate": "review_artifact_rows_must_be_processed_before_campaign_closure"
     },
     "policy": "Workload rows are review workload only. They do not authorize data changes or closure without processing the listing-keyed artifacts.",
-    "workload_context": "batches=10;rows=28749;blocked_batches=1;top_campaign=otc;top_rows=11202;top_gate=review_artifact_rows_must_be_processed_before_campaign_closure"
+    "workload_context": "batches=10;rows=28754;blocked_batches=1;top_campaign=otc;top_rows=11202;top_gate=review_artifact_rows_must_be_processed_before_campaign_closure"
   },
   "next_review_execution_plan": [
     {
@@ -11102,7 +10989,7 @@
       "execution_order": 8,
       "priority": 8,
       "campaign_key": "ohlcv",
-      "artifact_rows": 361,
+      "artifact_rows": 366,
       "primary_artifact": "data/reports/ohlcv_plausibility.json",
       "closure_gate": "review_artifact_rows_must_be_processed_before_campaign_closure",
       "evidence_command": "python scripts/build_ohlcv_plausibility_report.py --fetch-yahoo --max-fetch 250 --focus-status source_gap && python scripts/build_improvement_delta_report.py",
@@ -11127,8 +11014,8 @@
       "review_required_preflight_checks": [],
       "review_required_preflight_context": "campaign_key=ohlcv;preflight_check_count=0;manual_review_required_before_run=false;data_change_authorized=false",
       "ranking_reason": "objective_priority_order_with_external_source_refresh_required",
-      "ranking_context": "execution_order=8;priority=8;campaign_key=ohlcv;artifact_rows=361;network_required=true;ranking_reason=objective_priority_order_with_external_source_refresh_required",
-      "execution_context": "priority=8;campaign_key=ohlcv;artifact_rows=361;command_mode=network_evidence_refresh;network_required=true;data_change_authorized=false"
+      "ranking_context": "execution_order=8;priority=8;campaign_key=ohlcv;artifact_rows=366;network_required=true;ranking_reason=objective_priority_order_with_external_source_refresh_required",
+      "execution_context": "priority=8;campaign_key=ohlcv;artifact_rows=366;command_mode=network_evidence_refresh;network_required=true;data_change_authorized=false"
     },
     {
       "execution_order": 9,
@@ -11199,11 +11086,11 @@
     "total_actions": 10,
     "local_report_rebuild_actions": 7,
     "network_evidence_refresh_actions": 3,
-    "network_required_rows": 4845,
+    "network_required_rows": 4850,
     "local_report_rebuild_rows": 23904,
     "rows_by_command_mode": {
       "local_report_rebuild": 23904,
-      "network_evidence_refresh": 4845
+      "network_evidence_refresh": 4850
     },
     "network_campaign_keys": [
       "symbol_changes",
@@ -11221,7 +11108,7 @@
     ],
     "data_change_authorized_actions": 0,
     "policy": "Execution summary is planning evidence only. Network refreshes collect source evidence, and no row authorizes data changes.",
-    "execution_summary_context": "actions=10;local_actions=7;network_actions=3;network_rows=4845;data_change_authorized_actions=0"
+    "execution_summary_context": "actions=10;local_actions=7;network_actions=3;network_rows=4850;data_change_authorized_actions=0"
   },
   "next_review_command_safety_summary": {
     "total_actions": 10,

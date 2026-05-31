@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-05-30T16:24:58Z",
+    "generated_at": "2026-05-31T04:04:55Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -206,18 +206,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-05-30T16:24:58Z",
+      "release_generated_at": "2026-05-31T04:04:55Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-05-30T16:24:55Z"
+          "generated_at": "2026-05-31T04:04:53Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-05-30T16:24:54Z"
+          "generated_at": "2026-05-31T04:04:52Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -232,7 +232,7 @@
         "improvement_campaigns": {
           "path": "data/reports/improvement_campaigns.json",
           "exists": true,
-          "generated_at": "2026-05-30T16:24:41Z"
+          "generated_at": "2026-05-31T04:01:25Z"
         },
         "symbol_changes_review": {
           "path": "data/reports/symbol_changes_review.json",
@@ -242,7 +242,7 @@
         "ohlcv_plausibility": {
           "path": "data/reports/ohlcv_plausibility.json",
           "exists": true,
-          "generated_at": "2026-05-25T11:11:55Z"
+          "generated_at": "2026-05-31T04:01:17Z"
         },
         "ohlcv_warning_review": {
           "path": "data/reports/ohlcv_warning_review.json",
@@ -302,7 +302,7 @@
         "adanos_detection_simulation": {
           "path": "data/reports/adanos_detection_simulation.json",
           "exists": true,
-          "generated_at": "2026-05-25T02:04:26Z"
+          "generated_at": "2026-05-31T04:00:03Z"
         }
       },
       "missing_files": [],
@@ -327,7 +327,7 @@
     },
     "adanos_detection_simulation": {
       "passed": true,
-      "generated_at": "2026-05-25T02:04:26Z",
+      "generated_at": "2026-05-31T04:00:03Z",
       "source_files": {
         "adanos_reference_csv": "data/adanos/ticker_reference.csv"
       },
@@ -343,7 +343,7 @@
       "nonzero_detection_failures": {},
       "minimum_probe_gaps": {},
       "summary": {
-        "reference_rows": 61465,
+        "reference_rows": 61466,
         "alias_entries": 56463,
         "tickers_with_aliases": 50576,
         "positive_probes": 5,
@@ -354,16 +354,16 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-05-30T16:24:54Z",
+      "generated_at": "2026-05-31T04:04:52Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
       "command_report": {
-        "allowed_warn_count": 1066,
+        "allowed_warn_count": 1076,
         "passed": true,
         "quarantine_count": 0,
         "unexpected_warn_count": 0,
-        "warn_count": 217
+        "warn_count": 222
       },
       "expected_counts_from_validation": {
         "quarantine_count": 0,
@@ -450,30 +450,25 @@
         }
       },
       "source_freshness_status_totals": {
-        "fresh": 43,
+        "stale": 43,
         "old": 93
       },
       "source_age_bucket_totals": {
-        "age_0_48h": 43,
-        "age_168_336h": 93
+        "age_48_168h": 43,
+        "age_over_336h": 93
       },
       "source_refresh_priority_totals": {
-        "P4": 43,
-        "P2": 92,
+        "P2": 135,
         "P1": 1
       },
       "source_refresh_queue_totals": {
-        "fresh_no_refresh_needed": 43,
-        "refresh_official_subset_before_gap_enrichment": 85,
+        "refresh_official_subset_before_gap_enrichment": 128,
         "restore_or_replace_unavailable_source_before_data_fill": 8
       },
       "source_refresh_queue_scope_totals": {
-        "fresh_no_refresh_needed": {
-          "exchange_directory": 40,
-          "listed_companies_subset": 3
-        },
         "refresh_official_subset_before_gap_enrichment": {
-          "listed_companies_subset": 77,
+          "exchange_directory": 40,
+          "listed_companies_subset": 80,
           "security_lookup_subset": 6,
           "interlisted_subset": 1,
           "security_identifier_registry_subset": 1
@@ -484,23 +479,17 @@
         }
       },
       "source_refresh_queue_mode_totals": {
-        "fresh_no_refresh_needed": {
-          "network": 43
-        },
         "refresh_official_subset_before_gap_enrichment": {
-          "cache": 21,
-          "network": 64
+          "network": 107,
+          "cache": 21
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
           "unavailable": 8
         }
       },
       "source_refresh_queue_priority_totals": {
-        "fresh_no_refresh_needed": {
-          "P4": 43
-        },
         "refresh_official_subset_before_gap_enrichment": {
-          "P2": 85
+          "P2": 128
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
           "P2": 7,
@@ -508,33 +497,25 @@
         }
       },
       "source_refresh_queue_age_bucket_totals": {
-        "fresh_no_refresh_needed": {
-          "age_0_48h": 43
-        },
         "refresh_official_subset_before_gap_enrichment": {
-          "age_168_336h": 85
+          "age_48_168h": 43,
+          "age_over_336h": 85
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
-          "age_168_336h": 8
+          "age_over_336h": 8
         }
       },
       "source_refresh_queue_review_strategy_totals": {
-        "fresh_no_refresh_needed": {
-          "no_refresh_required": 43
-        },
         "refresh_official_subset_before_gap_enrichment": {
-          "refresh_official_subset_before_gap_enrichment": 85
+          "refresh_official_subset_before_gap_enrichment": 128
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
           "restore_or_replace_unavailable_source_before_data_fill": 8
         }
       },
       "source_refresh_queue_evidence_required_totals": {
-        "fresh_no_refresh_needed": {
-          "fresh_source_generated_at_with_age_under_48h": 43
-        },
         "refresh_official_subset_before_gap_enrichment": {
-          "official_subset_refresh_artifact_with_generated_at_scope_and_row_count": 85
+          "official_subset_refresh_artifact_with_generated_at_scope_and_row_count": 128
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
           "source_restored_or_replaced_with_official_or_documented_unavailable_decision": 8
@@ -658,8 +639,8 @@
       "invalid_generated_at": "",
       "source_file_mismatches": {},
       "unexpected_source_files": [],
-      "rows": 345,
-      "flagged_rows": 24,
+      "rows": 350,
+      "flagged_rows": 0,
       "missing_summary_keys": [],
       "row_count_mismatch": {},
       "row_gaps": [],
@@ -1154,8 +1135,8 @@
       "passed": true,
       "batches": 10,
       "summary_next_review_batches": 10,
-      "summary_next_review_batch_rows": 28749,
-      "computed_next_review_batch_rows": 28749,
+      "summary_next_review_batch_rows": 28754,
+      "computed_next_review_batch_rows": 28754,
       "observed_campaign_keys_by_priority": {
         "1": "b3",
         "2": "otc",

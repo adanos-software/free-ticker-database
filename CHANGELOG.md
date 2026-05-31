@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [3.25.0] - 2026-05-31
+
 ### Added
 
 - Added an ISIN identity-collision review campaign (`scripts/build_isin_identity_collision_review_queue.py`, report `data/reports/isin_identity_collision_review_queue.*`) that flags ISINs shared by two or more distinct issuer-name clusters — a provable anomaly, since an ISIN identifies exactly one issuer. The current dataset surfaces 426 collision groups across 1,019 listings (for example a US-listed fund inheriting a foreign issuer's ISIN through a shared ticker). Name clustering reconciles share-class, depositary, spacing/punctuation, trailing trading-currency, and unicode/transliteration variants (Nordic diacritic-drop and German umlaut conventions) so only genuinely distinct issuers are reported.
