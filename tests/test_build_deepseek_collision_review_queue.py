@@ -1,6 +1,6 @@
 import json
 
-from scripts.build_deepseek_collision_review_queue import build_payload, select_deepseek_collision_reviews
+from scripts.build_deepseek_collision_review_queue import build_payload, render_markdown, select_deepseek_collision_reviews
 
 
 def test_select_deepseek_collision_reviews_keeps_only_possible_cross_listings() -> None:
@@ -102,3 +102,21 @@ def test_build_payload_reports_unmatched_deepseek_rows(tmp_path) -> None:
     assert payload["unmatched_deepseek_rows"] == [
         {"listing_key": "MISSING::ABC", "reason": "missing_masterfile_collision_review_row"}
     ]
+
+
+def test_render_markdown_includes_official_evidence_sources() -> None:
+    markdown = render_markdown(
+        {
+            "_meta": {"generated_at": "2026-05-31T00:00:00Z"},
+            "summary": {
+                "rows": 1,
+                "unmatched_deepseek_rows": 0,
+                "target_exchange_totals": {"ADX": 1},
+                "official_source_key_totals": {"adx_market_watch": 1},
+            },
+        }
+    )
+
+    assert "Official Evidence Sources" in markdown
+    assert "| adx_market_watch | 1 |" in markdown
+    assert "Next evidence source" in markdown
