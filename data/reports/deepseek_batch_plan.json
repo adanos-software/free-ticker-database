@@ -1,0 +1,94 @@
+{
+  "_meta": {
+    "generated_at": "2026-05-31T04:16:08Z",
+    "review_summary_csv": "data/reports/deepseek_review_summary.csv",
+    "policy": "This plan prepares DeepSeek advisory triage only. DeepSeek output must not authorize inferred identifiers, sectors, categories, names, symbol changes, scope changes, or direct data application."
+  },
+  "queues": [
+    {
+      "queue": "masterfile_collision",
+      "review_kind": "masterfile_collision",
+      "source_csv": "data/reports/masterfile_collision_review.csv",
+      "key_field": "target_listing_key",
+      "priority": 1,
+      "reason": "Largest official-masterfile identity queue; DeepSeek can triage likely cross-listing vs. still-needs-evidence cases without applying data.",
+      "rows": 11107,
+      "already_deepseek_reviewed": 50,
+      "unreviewed_rows": 11057
+    },
+    {
+      "queue": "otc_scope",
+      "review_kind": "otc_scope",
+      "source_csv": "data/reports/otc_scope_review.csv",
+      "key_field": "listing_key",
+      "priority": 2,
+      "reason": "Large OTC warning/source-gap queue; DeepSeek can summarize evidence gaps while OTC names and metadata remain blocked.",
+      "rows": 11056,
+      "already_deepseek_reviewed": 25,
+      "unreviewed_rows": 11031
+    },
+    {
+      "queue": "weak_sector",
+      "review_kind": "weak_sector",
+      "source_csv": "data/reports/weak_sector_residual_review.csv",
+      "key_field": "listing_key",
+      "priority": 3,
+      "reason": "Official-sector candidate queue; DeepSeek can prioritize normalization review, not sector application.",
+      "rows": 646,
+      "already_deepseek_reviewed": 50,
+      "unreviewed_rows": 596
+    }
+  ],
+  "selected_batch": {
+    "queue": "masterfile_collision",
+    "review_kind": "masterfile_collision",
+    "source_csv": "data/reports/masterfile_collision_review.csv",
+    "batch_csv": "data/deepseek_review_jobs/next_masterfile_collision_batch.csv",
+    "rows": 50,
+    "batch_size": 5,
+    "reason": "Largest official-masterfile identity queue; DeepSeek can triage likely cross-listing vs. still-needs-evidence cases without applying data.",
+    "run_command": [
+      "python",
+      "scripts/run_deepseek_review_queue.py",
+      "--input-csv",
+      "data/deepseek_review_jobs/next_masterfile_collision_batch.csv",
+      "--review-kind",
+      "masterfile_collision",
+      "--limit",
+      "50",
+      "--batch-size",
+      "5",
+      "--raw-responses-jsonl",
+      "data/deepseek_review_jobs/masterfile_collision_next_raw_responses.jsonl",
+      "--normalized-json",
+      "data/deepseek_review_jobs/masterfile_collision_next_normalized_reviews.json",
+      "--normalized-csv",
+      "data/deepseek_review_jobs/masterfile_collision_next_normalized_reviews.csv",
+      "--errors-json",
+      "data/deepseek_review_jobs/masterfile_collision_next_errors.json"
+    ],
+    "dry_run_command": [
+      "python",
+      "scripts/run_deepseek_review_queue.py",
+      "--input-csv",
+      "data/deepseek_review_jobs/next_masterfile_collision_batch.csv",
+      "--review-kind",
+      "masterfile_collision",
+      "--limit",
+      "50",
+      "--batch-size",
+      "5",
+      "--raw-responses-jsonl",
+      "data/deepseek_review_jobs/masterfile_collision_next_raw_responses.jsonl",
+      "--normalized-json",
+      "data/deepseek_review_jobs/masterfile_collision_next_normalized_reviews.json",
+      "--normalized-csv",
+      "data/deepseek_review_jobs/masterfile_collision_next_normalized_reviews.csv",
+      "--errors-json",
+      "data/deepseek_review_jobs/masterfile_collision_next_errors.json",
+      "--dry-run"
+    ],
+    "required_env": "DEEPSEEK_API_KEY",
+    "secret_policy": "Read the API key only from DEEPSEEK_API_KEY. Never write it to files, reports, logs, commits, or prompts."
+  }
+}
