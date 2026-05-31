@@ -1,6 +1,6 @@
 # DeepSeek Collision Review Queue
 
-Generated: `2026-05-31T08:05:35Z`
+Generated: `2026-05-31T08:17:27Z`
 
 Policy: DeepSeek collision reviews are triage only and do not authorize automatic data changes.
 
@@ -8,7 +8,7 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 
 | Metric | Value |
 | --- | ---: |
-| Queue rows | 316 |
+| Queue rows | 336 |
 | Unmatched DeepSeek rows | 0 |
 
 ## Target Exchanges
@@ -21,7 +21,8 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | BSE_IN | 35 |
 | BVB | 4 |
 | CSE_MA | 2 |
-| Euronext | 225 |
+| Euronext | 237 |
+| HNX | 8 |
 | LSE | 5 |
 
 ## Official Evidence Sources
@@ -33,8 +34,9 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | bse_india_scrips | 35 |
 | bvb_shares_directory | 4 |
 | cse_ma_listed_companies | 2 |
-| euronext_equities | 22 |
-| euronext_etfs | 244 |
+| euronext_equities | 32 |
+| euronext_etfs | 246 |
+| hnx_listed_securities | 8 |
 | lse_price_explorer | 5 |
 
 ## Review Gate
