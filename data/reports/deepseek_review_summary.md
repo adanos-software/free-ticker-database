@@ -1,6 +1,6 @@
 # DeepSeek Review Summary
 
-Generated: `2026-05-31T15:50:45Z`
+Generated: `2026-05-31T16:00:21Z`
 
 Policy: DeepSeek output is triage only and does not authorize data application.
 
@@ -8,19 +8,19 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 
 | Metric | Value |
 | --- | ---: |
-| Raw batches | 532 |
-| Review rows | 2740 |
+| Raw batches | 537 |
+| Review rows | 2765 |
 | Errors | 0 |
 
 ## Decisions By Queue
 
 | Review kind | Decision | Rows |
 | --- | --- | ---: |
-| masterfile_collision | candidate_apply_blocked | 597 |
-| masterfile_collision | keep_source_gap | 537 |
-| masterfile_collision | needs_official_evidence | 406 |
-| masterfile_collision | out_of_scope_candidate | 266 |
-| masterfile_collision | possible_duplicate_or_cross_listing | 540 |
+| masterfile_collision | candidate_apply_blocked | 611 |
+| masterfile_collision | keep_source_gap | 541 |
+| masterfile_collision | needs_official_evidence | 407 |
+| masterfile_collision | out_of_scope_candidate | 269 |
+| masterfile_collision | possible_duplicate_or_cross_listing | 543 |
 | masterfile_collision | uncertain | 319 |
 | otc_scope | needs_official_evidence | 25 |
 | weak_sector | keep_source_gap | 7 |
@@ -31,11 +31,11 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 
 | Review kind | Safe action | Rows |
 | --- | --- | ---: |
-| masterfile_collision | candidate_for_official_followup | 863 |
+| masterfile_collision | candidate_for_official_followup | 880 |
 | masterfile_collision | likely_distinct_issuer_review | 263 |
-| masterfile_collision | likely_same_issuer_review | 277 |
-| masterfile_collision | needs_official_evidence | 725 |
-| masterfile_collision | source_gap_accept | 537 |
+| masterfile_collision | likely_same_issuer_review | 280 |
+| masterfile_collision | needs_official_evidence | 726 |
+| masterfile_collision | source_gap_accept | 541 |
 | otc_scope | needs_official_evidence | 25 |
 | weak_sector | candidate_for_official_followup | 1 |
 | weak_sector | needs_official_evidence | 42 |
