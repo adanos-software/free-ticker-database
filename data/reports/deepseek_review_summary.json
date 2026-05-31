@@ -1,40 +1,40 @@
 {
   "_meta": {
-    "generated_at": "2026-05-31T10:38:16Z",
+    "generated_at": "2026-05-31T10:46:22Z",
     "raw_responses_jsonl": "data/deepseek_review_jobs/raw_responses.jsonl",
-    "raw_batches": 319,
+    "raw_batches": 322,
     "policy": "DeepSeek review suggestions are triage only. They do not authorize inferred identifiers, sectors, categories, names, symbol changes, scope changes, or data application."
   },
   "summary": {
-    "rows": 1675,
+    "rows": 1690,
     "errors": 0,
     "review_kind_totals": {
-      "masterfile_collision": 1600,
+      "masterfile_collision": 1615,
       "otc_scope": 25,
       "weak_sector": 50
     },
     "decision_totals": {
       "candidate_apply_blocked": 359,
-      "keep_source_gap": 319,
+      "keep_source_gap": 329,
       "needs_official_evidence": 318,
       "out_of_scope_candidate": 115,
-      "possible_duplicate_or_cross_listing": 397,
+      "possible_duplicate_or_cross_listing": 402,
       "uncertain": 167
     },
     "safe_action_totals": {
       "candidate_for_official_followup": 474,
-      "likely_distinct_issuer_review": 128,
+      "likely_distinct_issuer_review": 133,
       "likely_same_issuer_review": 269,
       "needs_official_evidence": 485,
-      "source_gap_accept": 319
+      "source_gap_accept": 329
     },
     "review_kind_decision_totals": {
       "masterfile_collision": {
         "candidate_apply_blocked": 359,
-        "keep_source_gap": 312,
+        "keep_source_gap": 322,
         "needs_official_evidence": 251,
         "out_of_scope_candidate": 114,
-        "possible_duplicate_or_cross_listing": 397,
+        "possible_duplicate_or_cross_listing": 402,
         "uncertain": 167
       },
       "otc_scope": {
@@ -49,10 +49,10 @@
     "review_kind_safe_action_totals": {
       "masterfile_collision": {
         "candidate_for_official_followup": 473,
-        "likely_distinct_issuer_review": 128,
+        "likely_distinct_issuer_review": 133,
         "likely_same_issuer_review": 269,
         "needs_official_evidence": 418,
-        "source_gap_accept": 312
+        "source_gap_accept": 322
       },
       "otc_scope": {
         "needs_official_evidence": 25
@@ -23514,6 +23514,216 @@
       "evidence_needed": "None; official ISINs differ and names are distinct.",
       "rationale": "Target ISIN PHY078321353 (Benguet Corporation \"A\") vs existing ISIN US1170431092 (Brunswick Corporation). No ISIN commonality; clearly separate companies.",
       "do_not_apply_reason": "Distinct official ISINs and names confirm separate issuers; automatic merging should be blocked."
+    },
+    {
+      "batch_index": 1,
+      "listing_key": "PSE::BCB",
+      "ticker": "BCB",
+      "exchange": "PSE",
+      "review_kind": "masterfile_collision",
+      "classification": "distinct_issuer_ticker_collision",
+      "decision_candidate": "keep_source_gap",
+      "safe_action": "source_gap_accept",
+      "confidence": 0.95,
+      "evidence_needed": "Official ISINs already differ; no further evidence needed.",
+      "rationale": "Different ISINs (PHY078321437 vs AU000000BCB5) confirm distinct securities. Both sourced from official directories (PSE and ASX). Ticker collision is not a duplicate.",
+      "do_not_apply_reason": "No change required; listing is distinct and valid."
+    },
+    {
+      "batch_index": 1,
+      "listing_key": "PSE::BCP",
+      "ticker": "BCP",
+      "exchange": "PSE",
+      "review_kind": "masterfile_collision",
+      "classification": "distinct_issuer_ticker_collision",
+      "decision_candidate": "keep_source_gap",
+      "safe_action": "source_gap_accept",
+      "confidence": 0.95,
+      "evidence_needed": "Official ISINs already differ; no further evidence needed.",
+      "rationale": "Different ISINs (PHY078321197 vs PTBCP0AM0015) confirm distinct securities. Both sourced from official directories (PSE and Euronext).",
+      "do_not_apply_reason": "No change required; listing is distinct and valid."
+    },
+    {
+      "batch_index": 1,
+      "listing_key": "PSE::BH",
+      "ticker": "BH",
+      "exchange": "PSE",
+      "review_kind": "masterfile_collision",
+      "classification": "distinct_issuer_ticker_collision",
+      "decision_candidate": "keep_source_gap",
+      "safe_action": "source_gap_accept",
+      "confidence": 0.95,
+      "evidence_needed": "Official ISINs already differ; no further evidence needed.",
+      "rationale": "Different ISINs (PHY0885Q1059 vs TH0168A10Z01) confirm distinct securities. Both sourced from official directories (PSE and NYSE).",
+      "do_not_apply_reason": "No change required; listing is distinct and valid."
+    },
+    {
+      "batch_index": 1,
+      "listing_key": "PSE::BMM",
+      "ticker": "BMM",
+      "exchange": "PSE",
+      "review_kind": "masterfile_collision",
+      "classification": "distinct_issuer_ticker_collision",
+      "decision_candidate": "keep_source_gap",
+      "safe_action": "source_gap_accept",
+      "confidence": 0.95,
+      "evidence_needed": "Official ISINs already differ; no further evidence needed.",
+      "rationale": "Different ISINs (PH0972211058 vs CA09215W1014) confirm distinct securities. Both sourced from official directories (PSE and TSXV).",
+      "do_not_apply_reason": "No change required; listing is distinct and valid."
+    },
+    {
+      "batch_index": 1,
+      "listing_key": "PSE::BRN",
+      "ticker": "BRN",
+      "exchange": "PSE",
+      "review_kind": "masterfile_collision",
+      "classification": "distinct_issuer_ticker_collision",
+      "decision_candidate": "keep_source_gap",
+      "safe_action": "source_gap_accept",
+      "confidence": 0.95,
+      "evidence_needed": "Official ISINs already differ; no further evidence needed.",
+      "rationale": "Different ISINs (PHY000221069 vs US0682211000) confirm distinct securities. Both sourced from official directories (PSE and NYSE MKT).",
+      "do_not_apply_reason": "No change required; listing is distinct and valid."
+    },
+    {
+      "batch_index": 2,
+      "listing_key": "PSE::BSC",
+      "ticker": "BSC",
+      "exchange": "PSE",
+      "review_kind": "masterfile_collision",
+      "classification": "distinct_security",
+      "decision_candidate": "possible_duplicate_or_cross_listing",
+      "safe_action": "likely_distinct_issuer_review",
+      "confidence": 0.95,
+      "evidence_needed": "none, official ISINs differ",
+      "rationale": "Different official ISINs (PHY0718K1017 vs GB0005001796) and different company names indicate distinct entities.",
+      "do_not_apply_reason": "Different ISINs, not a duplicate or cross-listing."
+    },
+    {
+      "batch_index": 2,
+      "listing_key": "PSE::C",
+      "ticker": "C",
+      "exchange": "PSE",
+      "review_kind": "masterfile_collision",
+      "classification": "distinct_security",
+      "decision_candidate": "possible_duplicate_or_cross_listing",
+      "safe_action": "likely_distinct_issuer_review",
+      "confidence": 0.95,
+      "evidence_needed": "none, official ISINs differ",
+      "rationale": "Different official ISINs (PHY1R12R1084 vs US1729674242) and different company names indicate distinct entities.",
+      "do_not_apply_reason": "Different ISINs, not a duplicate or cross-listing."
+    },
+    {
+      "batch_index": 2,
+      "listing_key": "PSE::CAT",
+      "ticker": "CAT",
+      "exchange": "PSE",
+      "review_kind": "masterfile_collision",
+      "classification": "distinct_security",
+      "decision_candidate": "possible_duplicate_or_cross_listing",
+      "safe_action": "likely_distinct_issuer_review",
+      "confidence": 0.95,
+      "evidence_needed": "none, official ISINs differ",
+      "rationale": "Different official ISINs (PHY124141193 vs US1491231015) and different company names indicate distinct entities.",
+      "do_not_apply_reason": "Different ISINs, not a duplicate or cross-listing."
+    },
+    {
+      "batch_index": 2,
+      "listing_key": "PSE::CBC",
+      "ticker": "CBC",
+      "exchange": "PSE",
+      "review_kind": "masterfile_collision",
+      "classification": "distinct_security",
+      "decision_candidate": "possible_duplicate_or_cross_listing",
+      "safe_action": "likely_distinct_issuer_review",
+      "confidence": 0.95,
+      "evidence_needed": "none, official ISINs differ",
+      "rationale": "Different official ISINs (PHY138161229 vs US1524131000) and different company names indicate distinct entities.",
+      "do_not_apply_reason": "Different ISINs, not a duplicate or cross-listing."
+    },
+    {
+      "batch_index": 2,
+      "listing_key": "PSE::CEI",
+      "ticker": "CEI",
+      "exchange": "PSE",
+      "review_kind": "masterfile_collision",
+      "classification": "distinct_security",
+      "decision_candidate": "possible_duplicate_or_cross_listing",
+      "safe_action": "likely_distinct_issuer_review",
+      "confidence": 0.95,
+      "evidence_needed": "none, official ISINs differ",
+      "rationale": "Different official ISINs (PHY1808T1199 vs CA1920771054) and different company names indicate distinct entities.",
+      "do_not_apply_reason": "Different ISINs, not a duplicate or cross-listing."
+    },
+    {
+      "batch_index": 3,
+      "listing_key": "PSE::CHP",
+      "ticker": "CHP",
+      "exchange": "PSE",
+      "review_kind": "masterfile_collision",
+      "classification": "keep_source_gap",
+      "decision_candidate": "keep_source_gap",
+      "safe_action": "source_gap_accept",
+      "confidence": 0.9,
+      "evidence_needed": "None; ISINs are distinct.",
+      "rationale": "Target ISIN PH0000060550 (Concreat Holdings Philippines, Inc.) differs from existing ISIN GB00BW9JXM40 (Caledonian Holdings PLC). Different company names and exchanges confirm they are distinct securities.",
+      "do_not_apply_reason": "Distinct issuers with different ISINs; no merge or link should be applied."
+    },
+    {
+      "batch_index": 3,
+      "listing_key": "PSE::CIC",
+      "ticker": "CIC",
+      "exchange": "PSE",
+      "review_kind": "masterfile_collision",
+      "classification": "keep_source_gap",
+      "decision_candidate": "keep_source_gap",
+      "safe_action": "source_gap_accept",
+      "confidence": 0.9,
+      "evidence_needed": "None; ISINs are distinct.",
+      "rationale": "Target ISIN PHY1694P1067 (Concepcion Industrial Corporation) differs from existing ISIN GB0033698720 (Conygar Investment Co PLC). Different company names and exchanges confirm they are distinct securities.",
+      "do_not_apply_reason": "Distinct issuers with different ISINs; no merge or link should be applied."
+    },
+    {
+      "batch_index": 3,
+      "listing_key": "PSE::CLI",
+      "ticker": "CLI",
+      "exchange": "PSE",
+      "review_kind": "masterfile_collision",
+      "classification": "keep_source_gap",
+      "decision_candidate": "keep_source_gap",
+      "safe_action": "source_gap_accept",
+      "confidence": 0.9,
+      "evidence_needed": "None; ISINs are distinct.",
+      "rationale": "Target ISIN PHY1313P1076 (Cebu Landmasters, Inc.) differs from existing ISIN GB00BF044593 (CLS Holdings plc). Different company names and exchanges confirm they are distinct securities.",
+      "do_not_apply_reason": "Distinct issuers with different ISINs; no merge or link should be applied."
+    },
+    {
+      "batch_index": 3,
+      "listing_key": "PSE::COL",
+      "ticker": "COL",
+      "exchange": "PSE",
+      "review_kind": "masterfile_collision",
+      "classification": "keep_source_gap",
+      "decision_candidate": "keep_source_gap",
+      "safe_action": "source_gap_accept",
+      "confidence": 0.9,
+      "evidence_needed": "None; ISINs are distinct.",
+      "rationale": "Target ISIN PHY167381177 (COL Financial Group, Inc.) differs from existing ISIN ES0139140174 (Inmobiliaria Colonial SA). Different company names and exchanges confirm they are distinct securities.",
+      "do_not_apply_reason": "Distinct issuers with different ISINs; no merge or link should be applied."
+    },
+    {
+      "batch_index": 3,
+      "listing_key": "PSE::CPG",
+      "ticker": "CPG",
+      "exchange": "PSE",
+      "review_kind": "masterfile_collision",
+      "classification": "keep_source_gap",
+      "decision_candidate": "keep_source_gap",
+      "safe_action": "source_gap_accept",
+      "confidence": 0.9,
+      "evidence_needed": "None; ISINs are distinct.",
+      "rationale": "Target ISIN PHY1275E1083 (Century Properties Group Inc.) differs from existing ISIN GB00BD6K4575 (Compass Group PLC). Different company names and exchanges confirm they are distinct securities.",
+      "do_not_apply_reason": "Distinct issuers with different ISINs; no merge or link should be applied."
     }
   ],
   "errors": []
