@@ -154,7 +154,7 @@ def runner_command(config: QueueConfig, batch_csv: Path, *, limit: int, batch_si
         "--batch-size",
         str(batch_size),
         "--raw-responses-jsonl",
-        display_path(JOBS_DIR / f"{stem}_raw_responses.jsonl"),
+        display_path(JOBS_DIR / "raw_responses.jsonl"),
         "--normalized-json",
         display_path(JOBS_DIR / f"{stem}_normalized_reviews.json"),
         "--normalized-csv",

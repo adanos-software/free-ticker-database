@@ -1,6 +1,6 @@
 # DeepSeek Collision Review Queue
 
-Generated: `2026-05-29T12:00:03Z`
+Generated: `2026-05-31T04:39:29Z`
 
 Policy: DeepSeek collision reviews are triage only and do not authorize automatic data changes.
 
@@ -8,7 +8,7 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 
 | Metric | Value |
 | --- | ---: |
-| Queue rows | 50 |
+| Queue rows | 85 |
 | Unmatched DeepSeek rows | 0 |
 
 ## Target Exchanges
@@ -17,7 +17,9 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | --- | ---: |
 | ADX | 1 |
 | AMS | 41 |
-| BSE_IN | 8 |
+| BSE_IN | 10 |
+| CSE_MA | 1 |
+| Euronext | 32 |
 
 ## Review Gate
 

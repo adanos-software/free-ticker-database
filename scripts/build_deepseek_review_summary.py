@@ -41,6 +41,15 @@ SAFE_ACTION_BY_DECISION = {
     "uncertain": "needs_official_evidence",
 }
 
+SAFE_ACTIONS_BY_DECISION = {
+    decision: {safe_action}
+    for decision, safe_action in SAFE_ACTION_BY_DECISION.items()
+}
+SAFE_ACTIONS_BY_DECISION["possible_duplicate_or_cross_listing"] = {
+    "likely_same_issuer_review",
+    "likely_distinct_issuer_review",
+}
+
 
 def utc_now_iso() -> str:
     return datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
@@ -81,7 +90,7 @@ def normalize_review(review: dict[str, Any], *, batch_index: int, review_kind: s
     if decision not in VALID_DECISIONS:
         decision = "uncertain"
     safe_action = str(review.get("safe_action") or SAFE_ACTION_BY_DECISION[decision])
-    if safe_action not in VALID_SAFE_ACTIONS:
+    if safe_action not in VALID_SAFE_ACTIONS or safe_action not in SAFE_ACTIONS_BY_DECISION[decision]:
         safe_action = SAFE_ACTION_BY_DECISION[decision]
     confidence = review.get("confidence", 0)
     if not isinstance(confidence, (int, float)) or isinstance(confidence, bool):

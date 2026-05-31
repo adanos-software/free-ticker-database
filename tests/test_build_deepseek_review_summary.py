@@ -74,6 +74,38 @@ def test_build_payload_summarizes_raw_deepseek_batches(tmp_path) -> None:
     assert payload["errors"] == []
 
 
+def test_build_payload_clamps_incompatible_safe_actions(tmp_path) -> None:
+    raw = tmp_path / "raw.jsonl"
+    raw.write_text(
+        json.dumps(
+            {
+                "batch_index": 1,
+                "review_kind": "weak_sector",
+                "response": {
+                    "reviews": [
+                        {
+                            "listing_key": "NGX::ABCD",
+                            "ticker": "ABCD",
+                            "exchange": "NGX",
+                            "review_kind": "weak_sector",
+                            "decision_candidate": "keep_source_gap",
+                            "safe_action": "likely_same_issuer_review",
+                            "confidence": 0.4,
+                        }
+                    ]
+                },
+            }
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    payload = build_payload(raw)
+
+    assert payload["items"][0]["safe_action"] == "source_gap_accept"
+    assert payload["summary"]["safe_action_totals"] == {"source_gap_accept": 1}
+
+
 def test_render_markdown_marks_deepseek_as_triage_only(tmp_path) -> None:
     raw = tmp_path / "raw.jsonl"
     raw.write_text(
