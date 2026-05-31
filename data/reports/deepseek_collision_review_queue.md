@@ -1,6 +1,6 @@
 # DeepSeek Collision Review Queue
 
-Generated: `2026-05-31T05:35:22Z`
+Generated: `2026-05-31T05:46:48Z`
 
 Policy: DeepSeek collision reviews are triage only and do not authorize automatic data changes.
 
@@ -8,7 +8,7 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 
 | Metric | Value |
 | --- | ---: |
-| Queue rows | 260 |
+| Queue rows | 261 |
 | Unmatched DeepSeek rows | 0 |
 
 ## Target Exchanges
@@ -17,6 +17,7 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | --- | ---: |
 | ADX | 3 |
 | AMS | 41 |
+| BHB | 1 |
 | BSE_IN | 10 |
 | CSE_MA | 1 |
 | Euronext | 200 |
@@ -27,6 +28,7 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | Official source key | Rows |
 | --- | ---: |
 | adx_market_watch | 3 |
+| bahrain_bourse_listed_companies | 1 |
 | bse_india_scrips | 10 |
 | cse_ma_listed_companies | 1 |
 | euronext_equities | 3 |

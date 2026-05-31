@@ -1,16 +1,17 @@
 {
   "_meta": {
-    "generated_at": "2026-05-31T05:35:22Z",
+    "generated_at": "2026-05-31T05:46:48Z",
     "deepseek_summary_json": "data/reports/deepseek_review_summary.json",
     "masterfile_collision_review_csv": "data/reports/masterfile_collision_review.csv",
     "policy": "DeepSeek collision reviews are triage only. They do not authorize automatic merge, dedupe, alias, identifier, or cross-listing changes."
   },
   "summary": {
-    "rows": 260,
+    "rows": 261,
     "unmatched_deepseek_rows": 0,
     "target_exchange_totals": {
       "ADX": 3,
       "AMS": 41,
+      "BHB": 1,
       "BSE_IN": 10,
       "CSE_MA": 1,
       "Euronext": 200,
@@ -18,6 +19,7 @@
     },
     "official_source_key_totals": {
       "adx_market_watch": 3,
+      "bahrain_bourse_listed_companies": 1,
       "bse_india_scrips": 10,
       "cse_ma_listed_companies": 1,
       "euronext_equities": 3,
@@ -6522,6 +6524,31 @@
       "deepseek_evidence_needed": "Official confirmation of cross-listing between ADX and EGX for Orascom Construction.",
       "deepseek_rationale": "Exact name match (Orascom Construction Plc vs Orascom Construction PLC) and same asset type strongly indicate same issuer. ISINs differ (AEE01702O253 vs EGS95001C011), as is common for dual listings, but official cross-reference is missing.",
       "deepseek_do_not_apply_reason": "Pending official cross-listing verification despite high name similarity.",
+      "review_queue": "manual_cross_listing_identity_review",
+      "review_gate": "Do not merge, alias, or dedupe automatically. Confirm listing status, ISIN fungibility, exchange/MIC, instrument type, and local trading attributes before any data change.",
+      "recommended_next_action": "Review as possible cross-listing using official source rows and existing listing keys; keep as source-gap/collision queue item until reviewer records listing-keyed evidence."
+    },
+    {
+      "target_listing_key": "BHB::ALBH",
+      "ticker": "ALBH",
+      "target_exchange": "BHB",
+      "official_name": "Aluminum Bahrain B.S.C.",
+      "official_asset_type": "Stock",
+      "official_isin": "BH0006000044",
+      "official_source_key": "bahrain_bourse_listed_companies",
+      "existing_listing_keys": "LSE::ALBH",
+      "existing_exchanges": "LSE",
+      "existing_names": "ALUMINIUM BAHRAIN B.S.C. GDR (EACH REPR 1/5 ORD) (REG S)",
+      "existing_asset_types": "Stock",
+      "existing_isins": "US0222082010",
+      "same_isin_listing_keys": "",
+      "identity_evidence": "official_isin|asset_type_consistent",
+      "collision_risk_flags": "ticker_reused_on_other_exchange|existing_isin_conflict|no_exact_name_match",
+      "deepseek_decision_candidate": "possible_duplicate_or_cross_listing",
+      "deepseek_confidence": 0.7,
+      "deepseek_evidence_needed": "Official confirmation of relationship between ordinary shares (BH0006000044) and GDR (US0222082010) representing 1/5th ordinary. Determination required whether database should keep both as distinct listings or consolidate.",
+      "deepseek_rationale": "Target is Aluminum Bahrain B.S.C. ordinary shares on Bahrain Bourse (BH0006000044). Existing is Aluminium Bahrain B.S.C. GDR on LSE (US0222082010, each representing 1/5 ordinary). Same underlying company, but different security types and ISINs. May be considered a cross-listing or distinct instruments depending on database scope rules.",
+      "deepseek_do_not_apply_reason": "Ambiguity over cross-listing treatment; further review needed before any electronic action.",
       "review_queue": "manual_cross_listing_identity_review",
       "review_gate": "Do not merge, alias, or dedupe automatically. Confirm listing status, ISIN fungibility, exchange/MIC, instrument type, and local trading attributes before any data change.",
       "recommended_next_action": "Review as possible cross-listing using official source rows and existing listing keys; keep as source-gap/collision queue item until reviewer records listing-keyed evidence."

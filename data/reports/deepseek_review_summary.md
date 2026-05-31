@@ -1,6 +1,6 @@
 # DeepSeek Review Summary
 
-Generated: `2026-05-31T05:35:22Z`
+Generated: `2026-05-31T05:46:48Z`
 
 Policy: DeepSeek output is triage only and does not authorize data application.
 
@@ -8,19 +8,20 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 
 | Metric | Value |
 | --- | ---: |
-| Raw batches | 85 |
-| Review rows | 425 |
+| Raw batches | 95 |
+| Review rows | 475 |
 | Errors | 0 |
 
 ## Decisions By Queue
 
 | Review kind | Decision | Rows |
 | --- | --- | ---: |
-| masterfile_collision | candidate_apply_blocked | 37 |
-| masterfile_collision | keep_source_gap | 20 |
-| masterfile_collision | needs_official_evidence | 31 |
-| masterfile_collision | possible_duplicate_or_cross_listing | 260 |
-| masterfile_collision | uncertain | 2 |
+| masterfile_collision | candidate_apply_blocked | 52 |
+| masterfile_collision | keep_source_gap | 25 |
+| masterfile_collision | needs_official_evidence | 36 |
+| masterfile_collision | out_of_scope_candidate | 5 |
+| masterfile_collision | possible_duplicate_or_cross_listing | 261 |
+| masterfile_collision | uncertain | 21 |
 | otc_scope | needs_official_evidence | 25 |
 | weak_sector | keep_source_gap | 7 |
 | weak_sector | needs_official_evidence | 42 |
@@ -30,10 +31,10 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 
 | Review kind | Safe action | Rows |
 | --- | --- | ---: |
-| masterfile_collision | candidate_for_official_followup | 37 |
-| masterfile_collision | likely_same_issuer_review | 260 |
-| masterfile_collision | needs_official_evidence | 33 |
-| masterfile_collision | source_gap_accept | 20 |
+| masterfile_collision | candidate_for_official_followup | 57 |
+| masterfile_collision | likely_same_issuer_review | 261 |
+| masterfile_collision | needs_official_evidence | 57 |
+| masterfile_collision | source_gap_accept | 25 |
 | otc_scope | needs_official_evidence | 25 |
 | weak_sector | candidate_for_official_followup | 1 |
 | weak_sector | needs_official_evidence | 42 |
