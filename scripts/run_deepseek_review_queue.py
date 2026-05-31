@@ -4,6 +4,7 @@ import argparse
 import csv
 import json
 import os
+import socket
 import time
 import urllib.error
 import urllib.request
@@ -398,8 +399,17 @@ def run(args: argparse.Namespace) -> int:
                     )
                     + "\n"
                 )
+                raw_handle.flush()
                 normalized_reviews.extend(normalize_payload(payload, batch, args.review_kind))
-            except (RuntimeError, ValueError, KeyError, json.JSONDecodeError, urllib.error.URLError) as exc:
+            except (
+                RuntimeError,
+                ValueError,
+                KeyError,
+                json.JSONDecodeError,
+                urllib.error.URLError,
+                TimeoutError,
+                socket.timeout,
+            ) as exc:
                 errors.append({"batch_index": batch_index, "error": str(exc)})
 
     write_outputs(
