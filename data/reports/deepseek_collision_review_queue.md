@@ -1,6 +1,6 @@
 # DeepSeek Collision Review Queue
 
-Generated: `2026-05-31T20:49:22Z`
+Generated: `2026-05-31T21:00:43Z`
 
 Policy: DeepSeek collision reviews are triage only and do not authorize automatic data changes.
 
@@ -8,7 +8,7 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 
 | Metric | Value |
 | --- | ---: |
-| Queue rows | 1039 |
+| Queue rows | 1104 |
 | Unmatched DeepSeek rows | 0 |
 
 ## Target Exchanges
@@ -18,10 +18,11 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | ADX | 4 |
 | AMS | 152 |
 | BHB | 1 |
-| BSE_IN | 360 |
-| BVB | 4 |
-| CSE_MA | 2 |
-| Euronext | 252 |
+| BSE_IN | 402 |
+| BVB | 14 |
+| CSE_MA | 12 |
+| DFM | 1 |
+| Euronext | 254 |
 | HNX | 31 |
 | ISE | 1 |
 | KRX | 1 |
@@ -43,12 +44,13 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | --- | ---: |
 | adx_market_watch | 4 |
 | bahrain_bourse_listed_companies | 1 |
-| bse_india_scrips | 360 |
-| bvb_shares_directory | 4 |
-| cse_ma_listed_companies | 2 |
+| bse_india_scrips | 402 |
+| bvb_shares_directory | 14 |
+| cse_ma_listed_companies | 12 |
 | deutsche_boerse_xetra_all_tradable_equities | 14 |
+| dfm_listed_securities | 1 |
 | euronext_equities | 41 |
-| euronext_etfs | 367 |
+| euronext_etfs | 369 |
 | hnx_listed_securities | 31 |
 | krx_listed_companies | 1 |
 | lse_price_explorer | 46 |
