@@ -1,6 +1,6 @@
 # DeepSeek Review Summary
 
-Generated: `2026-05-31T12:25:02Z`
+Generated: `2026-05-31T12:32:39Z`
 
 Policy: DeepSeek output is triage only and does not authorize data application.
 
@@ -8,20 +8,20 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 
 | Metric | Value |
 | --- | ---: |
-| Raw batches | 382 |
-| Review rows | 1990 |
+| Raw batches | 387 |
+| Review rows | 2015 |
 | Errors | 0 |
 
 ## Decisions By Queue
 
 | Review kind | Decision | Rows |
 | --- | --- | ---: |
-| masterfile_collision | candidate_apply_blocked | 413 |
-| masterfile_collision | keep_source_gap | 410 |
+| masterfile_collision | candidate_apply_blocked | 418 |
+| masterfile_collision | keep_source_gap | 420 |
 | masterfile_collision | needs_official_evidence | 293 |
 | masterfile_collision | out_of_scope_candidate | 149 |
-| masterfile_collision | possible_duplicate_or_cross_listing | 437 |
-| masterfile_collision | uncertain | 213 |
+| masterfile_collision | possible_duplicate_or_cross_listing | 442 |
+| masterfile_collision | uncertain | 218 |
 | otc_scope | needs_official_evidence | 25 |
 | weak_sector | keep_source_gap | 7 |
 | weak_sector | needs_official_evidence | 42 |
@@ -31,11 +31,11 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 
 | Review kind | Safe action | Rows |
 | --- | --- | ---: |
-| masterfile_collision | candidate_for_official_followup | 562 |
-| masterfile_collision | likely_distinct_issuer_review | 168 |
+| masterfile_collision | candidate_for_official_followup | 567 |
+| masterfile_collision | likely_distinct_issuer_review | 173 |
 | masterfile_collision | likely_same_issuer_review | 269 |
-| masterfile_collision | needs_official_evidence | 506 |
-| masterfile_collision | source_gap_accept | 410 |
+| masterfile_collision | needs_official_evidence | 511 |
+| masterfile_collision | source_gap_accept | 420 |
 | otc_scope | needs_official_evidence | 25 |
 | weak_sector | candidate_for_official_followup | 1 |
 | weak_sector | needs_official_evidence | 42 |

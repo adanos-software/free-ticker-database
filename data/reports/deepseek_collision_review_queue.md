@@ -1,6 +1,6 @@
 # DeepSeek Collision Review Queue
 
-Generated: `2026-05-31T12:25:02Z`
+Generated: `2026-05-31T12:32:40Z`
 
 Policy: DeepSeek collision reviews are triage only and do not authorize automatic data changes.
 
@@ -8,7 +8,7 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 
 | Metric | Value |
 | --- | ---: |
-| Queue rows | 437 |
+| Queue rows | 442 |
 | Unmatched DeepSeek rows | 0 |
 
 ## Target Exchanges
@@ -31,7 +31,7 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | OSL | 3 |
 | PSE | 26 |
 | SGX | 1 |
-| TADAWUL | 20 |
+| TADAWUL | 25 |
 
 ## Official Evidence Sources
 
@@ -51,7 +51,7 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | nzx_instruments | 1 |
 | pse_listed_company_directory | 26 |
 | sgx_securities_prices | 1 |
-| tadawul_main_market_watch | 20 |
+| tadawul_main_market_watch | 25 |
 
 ## Review Gate
 
