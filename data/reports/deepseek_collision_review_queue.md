@@ -1,6 +1,6 @@
 # DeepSeek Collision Review Queue
 
-Generated: `2026-05-31T09:41:21Z`
+Generated: `2026-05-31T09:46:53Z`
 
 Policy: DeepSeek collision reviews are triage only and do not authorize automatic data changes.
 
@@ -8,7 +8,7 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 
 | Metric | Value |
 | --- | ---: |
-| Queue rows | 371 |
+| Queue rows | 376 |
 | Unmatched DeepSeek rows | 0 |
 
 ## Target Exchanges
@@ -26,6 +26,7 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | ISE | 1 |
 | KRX | 1 |
 | LSE | 20 |
+| NSE_IN | 5 |
 
 ## Official Evidence Sources
 
@@ -41,6 +42,7 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | hnx_listed_securities | 26 |
 | krx_listed_companies | 1 |
 | lse_price_explorer | 20 |
+| nse_india_securities_available | 5 |
 
 ## Review Gate
 
