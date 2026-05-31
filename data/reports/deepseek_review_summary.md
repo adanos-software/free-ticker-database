@@ -1,6 +1,6 @@
 # DeepSeek Review Summary
 
-Generated: `2026-05-31T21:26:30Z`
+Generated: `2026-05-31T21:42:12Z`
 
 Policy: DeepSeek output is triage only and does not authorize data application.
 
@@ -8,20 +8,20 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 
 | Metric | Value |
 | --- | ---: |
-| Raw batches | 802 |
-| Review rows | 5140 |
+| Raw batches | 812 |
+| Review rows | 5240 |
 | Errors | 0 |
 
 ## Decisions By Queue
 
 | Review kind | Decision | Rows |
 | --- | --- | ---: |
-| masterfile_collision | candidate_apply_blocked | 1016 |
-| masterfile_collision | keep_source_gap | 749 |
-| masterfile_collision | needs_official_evidence | 1138 |
-| masterfile_collision | out_of_scope_candidate | 398 |
-| masterfile_collision | possible_duplicate_or_cross_listing | 1214 |
-| masterfile_collision | uncertain | 550 |
+| masterfile_collision | candidate_apply_blocked | 1018 |
+| masterfile_collision | keep_source_gap | 759 |
+| masterfile_collision | needs_official_evidence | 1156 |
+| masterfile_collision | out_of_scope_candidate | 399 |
+| masterfile_collision | possible_duplicate_or_cross_listing | 1271 |
+| masterfile_collision | uncertain | 562 |
 | otc_scope | needs_official_evidence | 25 |
 | weak_sector | keep_source_gap | 7 |
 | weak_sector | needs_official_evidence | 42 |
@@ -31,11 +31,11 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 
 | Review kind | Safe action | Rows |
 | --- | --- | ---: |
-| masterfile_collision | candidate_for_official_followup | 1414 |
+| masterfile_collision | candidate_for_official_followup | 1417 |
 | masterfile_collision | likely_distinct_issuer_review | 306 |
-| masterfile_collision | likely_same_issuer_review | 908 |
-| masterfile_collision | needs_official_evidence | 1688 |
-| masterfile_collision | source_gap_accept | 749 |
+| masterfile_collision | likely_same_issuer_review | 965 |
+| masterfile_collision | needs_official_evidence | 1718 |
+| masterfile_collision | source_gap_accept | 759 |
 | otc_scope | needs_official_evidence | 25 |
 | weak_sector | candidate_for_official_followup | 1 |
 | weak_sector | needs_official_evidence | 42 |
