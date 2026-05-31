@@ -46,6 +46,7 @@ def test_build_prompt_forbids_invented_data_and_requires_exact_count() -> None:
 
     assert "do not invent ISINs" in prompt
     assert "Never output a value that should be applied to the database" in prompt
+    assert "safe_action" in prompt
     assert "Return exactly 1 review objects" in prompt
 
 
@@ -63,6 +64,7 @@ def test_normalize_payload_blocks_invalid_decisions() -> None:
                     "exchange": "OTC",
                     "review_kind": "otc_scope",
                     "decision_candidate": "apply_sector",
+                    "safe_action": "apply_sector",
                     "confidence": 7,
                     "evidence_needed": "Official filing",
                     "rationale": "Looks likely",
@@ -75,6 +77,7 @@ def test_normalize_payload_blocks_invalid_decisions() -> None:
     )
 
     assert normalized[0]["decision_candidate"] == "uncertain"
+    assert normalized[0]["safe_action"] == "needs_official_evidence"
     assert normalized[0]["confidence"] == 1.0
 
 
@@ -111,3 +114,4 @@ def test_run_dry_run_writes_normalized_outputs(tmp_path) -> None:
 
     assert payload["_meta"]["dry_run"] is True
     assert payload["items"][0]["decision_candidate"] == "needs_official_evidence"
+    assert payload["items"][0]["safe_action"] == "needs_official_evidence"

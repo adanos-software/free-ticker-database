@@ -1,6 +1,6 @@
 # DeepSeek Review Summary
 
-Generated: `2026-05-25T16:11:50Z`
+Generated: `2026-05-31T04:22:29Z`
 
 Policy: DeepSeek output is triage only and does not authorize data application.
 
@@ -21,6 +21,16 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 | weak_sector | keep_source_gap | 7 |
 | weak_sector | needs_official_evidence | 42 |
 | weak_sector | out_of_scope_candidate | 1 |
+
+## Safe Actions By Queue
+
+| Review kind | Safe action | Rows |
+| --- | --- | ---: |
+| masterfile_collision | likely_same_issuer_review | 50 |
+| otc_scope | needs_official_evidence | 25 |
+| weak_sector | candidate_for_official_followup | 1 |
+| weak_sector | needs_official_evidence | 42 |
+| weak_sector | source_gap_accept | 7 |
 
 ## Next Review
 
