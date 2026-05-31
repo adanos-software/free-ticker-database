@@ -1,6 +1,6 @@
 # DeepSeek Review Summary
 
-Generated: `2026-05-31T07:00:26Z`
+Generated: `2026-05-31T07:14:52Z`
 
 Policy: DeepSeek output is triage only and does not authorize data application.
 
@@ -8,20 +8,20 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 
 | Metric | Value |
 | --- | ---: |
-| Raw batches | 155 |
-| Review rows | 775 |
+| Raw batches | 165 |
+| Review rows | 825 |
 | Errors | 0 |
 
 ## Decisions By Queue
 
 | Review kind | Decision | Rows |
 | --- | --- | ---: |
-| masterfile_collision | candidate_apply_blocked | 141 |
-| masterfile_collision | keep_source_gap | 99 |
-| masterfile_collision | needs_official_evidence | 93 |
+| masterfile_collision | candidate_apply_blocked | 156 |
+| masterfile_collision | keep_source_gap | 114 |
+| masterfile_collision | needs_official_evidence | 103 |
 | masterfile_collision | out_of_scope_candidate | 30 |
-| masterfile_collision | possible_duplicate_or_cross_listing | 286 |
-| masterfile_collision | uncertain | 51 |
+| masterfile_collision | possible_duplicate_or_cross_listing | 291 |
+| masterfile_collision | uncertain | 56 |
 | otc_scope | needs_official_evidence | 25 |
 | weak_sector | keep_source_gap | 7 |
 | weak_sector | needs_official_evidence | 42 |
@@ -31,11 +31,11 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 
 | Review kind | Safe action | Rows |
 | --- | --- | ---: |
-| masterfile_collision | candidate_for_official_followup | 171 |
-| masterfile_collision | likely_distinct_issuer_review | 25 |
+| masterfile_collision | candidate_for_official_followup | 186 |
+| masterfile_collision | likely_distinct_issuer_review | 30 |
 | masterfile_collision | likely_same_issuer_review | 261 |
-| masterfile_collision | needs_official_evidence | 144 |
-| masterfile_collision | source_gap_accept | 99 |
+| masterfile_collision | needs_official_evidence | 159 |
+| masterfile_collision | source_gap_accept | 114 |
 | otc_scope | needs_official_evidence | 25 |
 | weak_sector | candidate_for_official_followup | 1 |
 | weak_sector | needs_official_evidence | 42 |
