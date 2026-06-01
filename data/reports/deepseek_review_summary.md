@@ -1,6 +1,6 @@
 # DeepSeek Review Summary
 
-Generated: `2026-06-01T00:00:29Z`
+Generated: `2026-06-01T00:10:21Z`
 
 Policy: DeepSeek output is triage only and does not authorize data application.
 
@@ -8,8 +8,8 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 
 | Metric | Value |
 | --- | ---: |
-| Raw batches | 912 |
-| Review rows | 6240 |
+| Raw batches | 922 |
+| Review rows | 6340 |
 | Errors | 0 |
 
 ## Decisions By Queue
@@ -17,11 +17,11 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 | Review kind | Decision | Rows |
 | --- | --- | ---: |
 | masterfile_collision | candidate_apply_blocked | 1164 |
-| masterfile_collision | keep_source_gap | 825 |
-| masterfile_collision | needs_official_evidence | 1259 |
+| masterfile_collision | keep_source_gap | 835 |
+| masterfile_collision | needs_official_evidence | 1269 |
 | masterfile_collision | out_of_scope_candidate | 432 |
-| masterfile_collision | possible_duplicate_or_cross_listing | 1830 |
-| masterfile_collision | uncertain | 655 |
+| masterfile_collision | possible_duplicate_or_cross_listing | 1909 |
+| masterfile_collision | uncertain | 656 |
 | otc_scope | needs_official_evidence | 25 |
 | weak_sector | keep_source_gap | 7 |
 | weak_sector | needs_official_evidence | 42 |
@@ -33,9 +33,9 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 | --- | --- | ---: |
 | masterfile_collision | candidate_for_official_followup | 1596 |
 | masterfile_collision | likely_distinct_issuer_review | 306 |
-| masterfile_collision | likely_same_issuer_review | 1524 |
-| masterfile_collision | needs_official_evidence | 1914 |
-| masterfile_collision | source_gap_accept | 825 |
+| masterfile_collision | likely_same_issuer_review | 1603 |
+| masterfile_collision | needs_official_evidence | 1925 |
+| masterfile_collision | source_gap_accept | 835 |
 | otc_scope | needs_official_evidence | 25 |
 | weak_sector | candidate_for_official_followup | 1 |
 | weak_sector | needs_official_evidence | 42 |
