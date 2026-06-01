@@ -1,6 +1,6 @@
 # DeepSeek Collision Review Queue
 
-Generated: `2026-06-01T05:42:11Z`
+Generated: `2026-06-01T05:57:36Z`
 
 Policy: DeepSeek collision reviews are triage only and do not authorize automatic data changes.
 
@@ -8,7 +8,7 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 
 | Metric | Value |
 | --- | ---: |
-| Queue rows | 2781 |
+| Queue rows | 2819 |
 | Unmatched DeepSeek rows | 0 |
 
 ## Target Exchanges
@@ -31,7 +31,7 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | NEO | 9 |
 | NSE_IN | 85 |
 | NSE_KE | 8 |
-| NYSE | 41 |
+| NYSE | 79 |
 | NZX | 22 |
 | OSL | 10 |
 | PSE | 41 |
@@ -59,12 +59,12 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | krx_listed_companies | 1 |
 | lse_price_explorer | 376 |
 | nasdaq_listed | 3 |
-| nasdaq_other_listed | 1 |
+| nasdaq_other_listed | 2 |
 | nse_india_securities_available | 85 |
 | nse_ke_listed_companies | 8 |
 | nzx_instruments | 22 |
 | pse_listed_company_directory | 41 |
-| sec_company_tickers_exchange | 40 |
+| sec_company_tickers_exchange | 77 |
 | sgx_securities_prices | 2 |
 | tadawul_main_market_watch | 25 |
 | twse_listed_companies | 8 |
