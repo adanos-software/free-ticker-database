@@ -1,6 +1,6 @@
 # DeepSeek Collision Review Queue
 
-Generated: `2026-06-01T00:18:57Z`
+Generated: `2026-06-01T00:34:07Z`
 
 Policy: DeepSeek collision reviews are triage only and do not authorize automatic data changes.
 
@@ -8,7 +8,7 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 
 | Metric | Value |
 | --- | ---: |
-| Queue rows | 1979 |
+| Queue rows | 2056 |
 | Unmatched DeepSeek rows | 0 |
 
 ## Target Exchanges
@@ -22,11 +22,11 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | BVB | 14 |
 | CSE_MA | 12 |
 | DFM | 1 |
-| Euronext | 1129 |
+| Euronext | 1157 |
 | HNX | 31 |
-| ISE | 1 |
+| ISE | 5 |
 | KRX | 1 |
-| LSE | 46 |
+| LSE | 91 |
 | NSE_IN | 15 |
 | NYSE | 10 |
 | NZX | 2 |
@@ -49,11 +49,11 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | cse_ma_listed_companies | 12 |
 | deutsche_boerse_xetra_all_tradable_equities | 14 |
 | dfm_listed_securities | 1 |
-| euronext_equities | 60 |
-| euronext_etfs | 1225 |
+| euronext_equities | 64 |
+| euronext_etfs | 1253 |
 | hnx_listed_securities | 31 |
 | krx_listed_companies | 1 |
-| lse_price_explorer | 46 |
+| lse_price_explorer | 91 |
 | nasdaq_other_listed | 1 |
 | nse_india_securities_available | 15 |
 | nzx_instruments | 2 |
