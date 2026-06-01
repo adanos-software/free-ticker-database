@@ -1,6 +1,6 @@
 # DeepSeek Review Summary
 
-Generated: `2026-06-01T02:32:52Z`
+Generated: `2026-06-01T02:43:25Z`
 
 Policy: DeepSeek output is triage only and does not authorize data application.
 
@@ -8,19 +8,19 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 
 | Metric | Value |
 | --- | ---: |
-| Raw batches | 1002 |
-| Review rows | 7140 |
+| Raw batches | 1012 |
+| Review rows | 7240 |
 | Errors | 0 |
 
 ## Decisions By Queue
 
 | Review kind | Decision | Rows |
 | --- | --- | ---: |
-| masterfile_collision | candidate_apply_blocked | 1276 |
-| masterfile_collision | keep_source_gap | 860 |
-| masterfile_collision | needs_official_evidence | 1407 |
+| masterfile_collision | candidate_apply_blocked | 1279 |
+| masterfile_collision | keep_source_gap | 870 |
+| masterfile_collision | needs_official_evidence | 1417 |
 | masterfile_collision | out_of_scope_candidate | 452 |
-| masterfile_collision | possible_duplicate_or_cross_listing | 2314 |
+| masterfile_collision | possible_duplicate_or_cross_listing | 2391 |
 | masterfile_collision | uncertain | 756 |
 | otc_scope | needs_official_evidence | 25 |
 | weak_sector | keep_source_gap | 7 |
@@ -31,11 +31,11 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 
 | Review kind | Safe action | Rows |
 | --- | --- | ---: |
-| masterfile_collision | candidate_for_official_followup | 1728 |
+| masterfile_collision | candidate_for_official_followup | 1731 |
 | masterfile_collision | likely_distinct_issuer_review | 316 |
-| masterfile_collision | likely_same_issuer_review | 1998 |
-| masterfile_collision | needs_official_evidence | 2163 |
-| masterfile_collision | source_gap_accept | 860 |
+| masterfile_collision | likely_same_issuer_review | 2075 |
+| masterfile_collision | needs_official_evidence | 2173 |
+| masterfile_collision | source_gap_accept | 870 |
 | otc_scope | needs_official_evidence | 25 |
 | weak_sector | candidate_for_official_followup | 1 |
 | weak_sector | needs_official_evidence | 42 |
