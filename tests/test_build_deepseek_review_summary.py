@@ -19,7 +19,9 @@ def test_build_payload_summarizes_raw_deepseek_batches(tmp_path) -> None:
                                     "ticker": "ABCD",
                                     "exchange": "OTC",
                                     "review_kind": "otc_scope",
+                                    "classification": "missing_official_source",
                                     "decision_candidate": "needs_official_evidence",
+                                    "safe_action": "needs_official_evidence",
                                     "confidence": 0.3,
                                     "evidence_needed": "Official source",
                                     "rationale": "No official source attached",
@@ -40,7 +42,9 @@ def test_build_payload_summarizes_raw_deepseek_batches(tmp_path) -> None:
                                     "ticker": "AGIX",
                                     "exchange": "ADX",
                                     "review_kind": "masterfile_collision",
+                                    "classification": "same_isin_cross_listing_candidate",
                                     "decision_candidate": "possible_duplicate_or_cross_listing",
+                                    "safe_action": "likely_same_issuer_review",
                                     "confidence": 0.8,
                                     "evidence_needed": "Listing status",
                                     "rationale": "Same ISIN",
@@ -63,7 +67,43 @@ def test_build_payload_summarizes_raw_deepseek_batches(tmp_path) -> None:
         "needs_official_evidence": 1,
         "possible_duplicate_or_cross_listing": 1,
     }
+    assert payload["summary"]["safe_action_totals"] == {
+        "likely_same_issuer_review": 1,
+        "needs_official_evidence": 1,
+    }
     assert payload["errors"] == []
+
+
+def test_build_payload_clamps_incompatible_safe_actions(tmp_path) -> None:
+    raw = tmp_path / "raw.jsonl"
+    raw.write_text(
+        json.dumps(
+            {
+                "batch_index": 1,
+                "review_kind": "weak_sector",
+                "response": {
+                    "reviews": [
+                        {
+                            "listing_key": "NGX::ABCD",
+                            "ticker": "ABCD",
+                            "exchange": "NGX",
+                            "review_kind": "weak_sector",
+                            "decision_candidate": "keep_source_gap",
+                            "safe_action": "likely_same_issuer_review",
+                            "confidence": 0.4,
+                        }
+                    ]
+                },
+            }
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    payload = build_payload(raw)
+
+    assert payload["items"][0]["safe_action"] == "source_gap_accept"
+    assert payload["summary"]["safe_action_totals"] == {"source_gap_accept": 1}
 
 
 def test_render_markdown_marks_deepseek_as_triage_only(tmp_path) -> None:
@@ -81,6 +121,7 @@ def test_render_markdown_marks_deepseek_as_triage_only(tmp_path) -> None:
                             "exchange": "NGX",
                             "review_kind": "weak_sector",
                             "decision_candidate": "keep_source_gap",
+                            "safe_action": "source_gap_accept",
                             "confidence": 0.2,
                         }
                     ]
@@ -93,4 +134,5 @@ def test_render_markdown_marks_deepseek_as_triage_only(tmp_path) -> None:
 
     assert "triage only" in markdown
     assert "| weak_sector | keep_source_gap | 1 |" in markdown
+    assert "| weak_sector | source_gap_accept | 1 |" in markdown
     assert "does not authorize data application" in markdown

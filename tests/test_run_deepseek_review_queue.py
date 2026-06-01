@@ -1,8 +1,10 @@
 import json
+import os
 
 from scripts.run_deepseek_review_queue import (
     build_prompt,
     compact_row,
+    load_env_file,
     normalize_payload,
     parse_json_object,
     run,
@@ -46,11 +48,28 @@ def test_build_prompt_forbids_invented_data_and_requires_exact_count() -> None:
 
     assert "do not invent ISINs" in prompt
     assert "Never output a value that should be applied to the database" in prompt
+    assert "safe_action" in prompt
     assert "Return exactly 1 review objects" in prompt
 
 
 def test_parse_json_object_accepts_fenced_json() -> None:
     assert parse_json_object('```json\n{"reviews":[]}\n```') == {"reviews": []}
+
+
+def test_load_env_file_reads_deepseek_key_without_overriding_existing_env(tmp_path, monkeypatch) -> None:
+    env_file = tmp_path / ".env"
+    env_file.write_text(
+        "IGNORED=value\nDEEPSEEK_API_KEY=file-key\n",
+        encoding="utf-8",
+    )
+
+    monkeypatch.delenv("DEEPSEEK_API_KEY", raising=False)
+    load_env_file(env_file)
+    assert os.environ["DEEPSEEK_API_KEY"] == "file-key"
+
+    monkeypatch.setenv("DEEPSEEK_API_KEY", "existing-key")
+    load_env_file(env_file)
+    assert os.environ["DEEPSEEK_API_KEY"] == "existing-key"
 
 
 def test_normalize_payload_blocks_invalid_decisions() -> None:
@@ -63,6 +82,7 @@ def test_normalize_payload_blocks_invalid_decisions() -> None:
                     "exchange": "OTC",
                     "review_kind": "otc_scope",
                     "decision_candidate": "apply_sector",
+                    "safe_action": "apply_sector",
                     "confidence": 7,
                     "evidence_needed": "Official filing",
                     "rationale": "Looks likely",
@@ -75,7 +95,31 @@ def test_normalize_payload_blocks_invalid_decisions() -> None:
     )
 
     assert normalized[0]["decision_candidate"] == "uncertain"
+    assert normalized[0]["safe_action"] == "needs_official_evidence"
     assert normalized[0]["confidence"] == 1.0
+
+
+def test_normalize_payload_clamps_incompatible_safe_actions() -> None:
+    normalized = normalize_payload(
+        {
+            "reviews": [
+                {
+                    "listing_key": "OTC::ABCD",
+                    "ticker": "ABCD",
+                    "exchange": "OTC",
+                    "review_kind": "otc_scope",
+                    "decision_candidate": "keep_source_gap",
+                    "safe_action": "likely_same_issuer_review",
+                    "confidence": 0.8,
+                }
+            ]
+        },
+        [{"listing_key": "OTC::ABCD", "ticker": "ABCD", "exchange": "OTC"}],
+        "otc_scope",
+    )
+
+    assert normalized[0]["decision_candidate"] == "keep_source_gap"
+    assert normalized[0]["safe_action"] == "source_gap_accept"
 
 
 def test_run_dry_run_writes_normalized_outputs(tmp_path) -> None:
@@ -111,3 +155,4 @@ def test_run_dry_run_writes_normalized_outputs(tmp_path) -> None:
 
     assert payload["_meta"]["dry_run"] is True
     assert payload["items"][0]["decision_candidate"] == "needs_official_evidence"
+    assert payload["items"][0]["safe_action"] == "needs_official_evidence"

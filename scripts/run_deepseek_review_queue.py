@@ -4,6 +4,7 @@ import argparse
 import csv
 import json
 import os
+import socket
 import time
 import urllib.error
 import urllib.request
@@ -23,6 +24,7 @@ DEFAULT_MODEL = "deepseek-v4-pro"
 DEFAULT_BASE_URL = "https://api.deepseek.com"
 DEFAULT_BATCH_SIZE = 5
 DEFAULT_ROW_LIMIT = 25
+DEFAULT_ENV_FILE = ROOT / ".env"
 
 REVIEW_FIELDS_BY_KIND = {
     "otc_scope": [
@@ -88,6 +90,32 @@ VALID_DECISIONS = {
     "uncertain",
 }
 
+VALID_SAFE_ACTIONS = {
+    "needs_official_evidence",
+    "likely_same_issuer_review",
+    "likely_distinct_issuer_review",
+    "source_gap_accept",
+    "candidate_for_official_followup",
+}
+
+SAFE_ACTION_BY_DECISION = {
+    "keep_source_gap": "source_gap_accept",
+    "needs_official_evidence": "needs_official_evidence",
+    "candidate_apply_blocked": "candidate_for_official_followup",
+    "possible_duplicate_or_cross_listing": "likely_same_issuer_review",
+    "out_of_scope_candidate": "candidate_for_official_followup",
+    "uncertain": "needs_official_evidence",
+}
+
+SAFE_ACTIONS_BY_DECISION = {
+    decision: {safe_action}
+    for decision, safe_action in SAFE_ACTION_BY_DECISION.items()
+}
+SAFE_ACTIONS_BY_DECISION["possible_duplicate_or_cross_listing"] = {
+    "likely_same_issuer_review",
+    "likely_distinct_issuer_review",
+}
+
 
 def utc_now_iso() -> str:
     return datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
@@ -105,6 +133,20 @@ def trim(value: object, max_length: int = 240) -> str:
     if len(text) <= max_length:
         return text
     return f"{text[: max_length - 3]}..."
+
+
+def load_env_file(path: Path) -> None:
+    if not path.exists():
+        return
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        key = key.strip()
+        if key != "DEEPSEEK_API_KEY" or os.environ.get(key):
+            continue
+        os.environ[key] = value.strip().strip("'\"")
 
 
 def read_csv_rows(path: Path, *, offset: int = 0, limit: int | None = None) -> list[dict[str, str]]:
@@ -142,8 +184,11 @@ def build_prompt(rows: list[dict[str, str]], *, review_kind: str) -> str:
         "Never output a value that should be applied to the database. If official evidence is missing, say so.\n"
         "Return JSON only with this exact top-level shape:\n"
         '{"reviews":[{"listing_key":"...","ticker":"...","exchange":"...","review_kind":"...",'
+        '"classification":"...",'
         '"decision_candidate":"keep_source_gap|needs_official_evidence|candidate_apply_blocked|'
         'possible_duplicate_or_cross_listing|out_of_scope_candidate|uncertain",'
+        '"safe_action":"needs_official_evidence|likely_same_issuer_review|likely_distinct_issuer_review|'
+        'source_gap_accept|candidate_for_official_followup",'
         '"confidence":0.0,"evidence_needed":"...","rationale":"...",'
         '"do_not_apply_reason":"..."}]}\n'
         f"Return exactly {len(compacted_rows)} review objects in the same order as the rows.\n"
@@ -176,6 +221,9 @@ def normalize_review(raw: dict[str, Any], source_row: dict[str, str], review_kin
     decision = str(raw.get("decision_candidate") or "uncertain")
     if decision not in VALID_DECISIONS:
         decision = "uncertain"
+    safe_action = str(raw.get("safe_action") or SAFE_ACTION_BY_DECISION[decision])
+    if safe_action not in VALID_SAFE_ACTIONS or safe_action not in SAFE_ACTIONS_BY_DECISION[decision]:
+        safe_action = SAFE_ACTION_BY_DECISION[decision]
     confidence = raw.get("confidence", 0)
     if not isinstance(confidence, (int, float)) or isinstance(confidence, bool):
         confidence = 0
@@ -185,7 +233,9 @@ def normalize_review(raw: dict[str, Any], source_row: dict[str, str], review_kin
         "ticker": str(raw.get("ticker") or source_row.get("ticker", "")),
         "exchange": str(raw.get("exchange") or source_row.get("exchange") or source_row.get("target_exchange", "")),
         "review_kind": str(raw.get("review_kind") or review_kind),
+        "classification": trim(raw.get("classification") or decision, 120),
         "decision_candidate": decision,
+        "safe_action": safe_action,
         "confidence": confidence,
         "evidence_needed": trim(raw.get("evidence_needed", ""), 500),
         "rationale": trim(raw.get("rationale", ""), 500),
@@ -281,7 +331,9 @@ def write_outputs(
                 "ticker",
                 "exchange",
                 "review_kind",
+                "classification",
                 "decision_candidate",
+                "safe_action",
                 "confidence",
                 "evidence_needed",
                 "rationale",
@@ -294,6 +346,7 @@ def write_outputs(
 
 
 def run(args: argparse.Namespace) -> int:
+    load_env_file(args.env_file)
     rows = read_csv_rows(args.input_csv, offset=args.offset, limit=args.limit)
     batches = chunk_rows(rows, args.batch_size)
     normalized_reviews: list[dict[str, Any]] = []
@@ -312,7 +365,9 @@ def run(args: argparse.Namespace) -> int:
                                 "ticker": row.get("ticker", ""),
                                 "exchange": row.get("exchange") or row.get("target_exchange", ""),
                                 "review_kind": args.review_kind,
+                                "classification": "dry_run_schema_validation",
                                 "decision_candidate": "needs_official_evidence",
+                                "safe_action": "needs_official_evidence",
                                 "confidence": 0.1,
                                 "evidence_needed": "Dry run; no DeepSeek API request was made.",
                                 "rationale": "Dry run validates batching and output schema only.",
@@ -344,8 +399,17 @@ def run(args: argparse.Namespace) -> int:
                     )
                     + "\n"
                 )
+                raw_handle.flush()
                 normalized_reviews.extend(normalize_payload(payload, batch, args.review_kind))
-            except (RuntimeError, ValueError, KeyError, json.JSONDecodeError, urllib.error.URLError) as exc:
+            except (
+                RuntimeError,
+                ValueError,
+                KeyError,
+                json.JSONDecodeError,
+                urllib.error.URLError,
+                TimeoutError,
+                socket.timeout,
+            ) as exc:
                 errors.append({"batch_index": batch_index, "error": str(exc)})
 
     write_outputs(
@@ -390,6 +454,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--offset", type=int, default=0)
     parser.add_argument("--timeout", type=float, default=90.0)
     parser.add_argument("--sleep-seconds", type=float, default=0.5)
+    parser.add_argument(
+        "--env-file",
+        type=Path,
+        default=DEFAULT_ENV_FILE,
+        help="Local env file for DEEPSEEK_API_KEY. Defaults to .env, which is git-ignored.",
+    )
     parser.add_argument("--dry-run", action="store_true")
     return parser.parse_args(argv)
 

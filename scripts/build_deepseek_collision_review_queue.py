@@ -205,10 +205,24 @@ def render_markdown(payload: dict[str, Any]) -> str:
     lines.extend(
         [
             "",
+            "## Official Evidence Sources",
+            "",
+            "| Official source key | Rows |",
+            "| --- | ---: |",
+        ]
+    )
+    for source_key, count in summary["official_source_key_totals"].items():
+        lines.append(f"| {source_key or 'missing'} | {count} |")
+    lines.extend(
+        [
+            "",
             "## Review Gate",
             "",
             "Do not merge, alias, or dedupe automatically. Each row needs listing-keyed reviewer evidence covering "
             "official listing status, ISIN fungibility, exchange/MIC, instrument type, and local trading attributes.",
+            "",
+            "Next evidence source: use the row's `official_source_key` first, then verify the existing listing keys "
+            "against their official exchange or issuer pages before recording any gated data change.",
         ]
     )
     return "\n".join(lines) + "\n"
