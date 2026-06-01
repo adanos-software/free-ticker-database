@@ -1,6 +1,6 @@
 # DeepSeek Review Summary
 
-Generated: `2026-06-01T09:47:10Z`
+Generated: `2026-06-01T10:38:52Z`
 
 Policy: DeepSeek output is triage only and does not authorize data application.
 
@@ -8,20 +8,20 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 
 | Metric | Value |
 | --- | ---: |
-| Raw batches | 1352 |
-| Review rows | 10640 |
+| Raw batches | 1402 |
+| Review rows | 11140 |
 | Errors | 0 |
 
 ## Decisions By Queue
 
 | Review kind | Decision | Rows |
 | --- | --- | ---: |
-| masterfile_collision | candidate_apply_blocked | 1449 |
+| masterfile_collision | candidate_apply_blocked | 1460 |
 | masterfile_collision | keep_source_gap | 998 |
-| masterfile_collision | needs_official_evidence | 3572 |
-| masterfile_collision | out_of_scope_candidate | 536 |
-| masterfile_collision | possible_duplicate_or_cross_listing | 2932 |
-| masterfile_collision | uncertain | 1078 |
+| masterfile_collision | needs_official_evidence | 3966 |
+| masterfile_collision | out_of_scope_candidate | 554 |
+| masterfile_collision | possible_duplicate_or_cross_listing | 2939 |
+| masterfile_collision | uncertain | 1148 |
 | otc_scope | needs_official_evidence | 25 |
 | weak_sector | keep_source_gap | 7 |
 | weak_sector | needs_official_evidence | 42 |
@@ -31,10 +31,10 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 
 | Review kind | Safe action | Rows |
 | --- | --- | ---: |
-| masterfile_collision | candidate_for_official_followup | 1985 |
+| masterfile_collision | candidate_for_official_followup | 2014 |
 | masterfile_collision | likely_distinct_issuer_review | 326 |
-| masterfile_collision | likely_same_issuer_review | 2606 |
-| masterfile_collision | needs_official_evidence | 4650 |
+| masterfile_collision | likely_same_issuer_review | 2613 |
+| masterfile_collision | needs_official_evidence | 5114 |
 | masterfile_collision | source_gap_accept | 998 |
 | otc_scope | needs_official_evidence | 25 |
 | weak_sector | candidate_for_official_followup | 1 |
