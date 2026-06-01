@@ -1,6 +1,6 @@
 # DeepSeek Review Summary
 
-Generated: `2026-06-01T05:57:35Z`
+Generated: `2026-06-01T06:12:32Z`
 
 Policy: DeepSeek output is triage only and does not authorize data application.
 
@@ -8,8 +8,8 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 
 | Metric | Value |
 | --- | ---: |
-| Raw batches | 1142 |
-| Review rows | 8540 |
+| Raw batches | 1152 |
+| Review rows | 8640 |
 | Errors | 0 |
 
 ## Decisions By Queue
@@ -18,10 +18,10 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 | --- | --- | ---: |
 | masterfile_collision | candidate_apply_blocked | 1417 |
 | masterfile_collision | keep_source_gap | 952 |
-| masterfile_collision | needs_official_evidence | 1922 |
-| masterfile_collision | out_of_scope_candidate | 499 |
-| masterfile_collision | possible_duplicate_or_cross_listing | 2819 |
-| masterfile_collision | uncertain | 856 |
+| masterfile_collision | needs_official_evidence | 1955 |
+| masterfile_collision | out_of_scope_candidate | 504 |
+| masterfile_collision | possible_duplicate_or_cross_listing | 2849 |
+| masterfile_collision | uncertain | 888 |
 | otc_scope | needs_official_evidence | 25 |
 | weak_sector | keep_source_gap | 7 |
 | weak_sector | needs_official_evidence | 42 |
@@ -31,10 +31,10 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 
 | Review kind | Safe action | Rows |
 | --- | --- | ---: |
-| masterfile_collision | candidate_for_official_followup | 1916 |
+| masterfile_collision | candidate_for_official_followup | 1921 |
 | masterfile_collision | likely_distinct_issuer_review | 326 |
-| masterfile_collision | likely_same_issuer_review | 2493 |
-| masterfile_collision | needs_official_evidence | 2778 |
+| masterfile_collision | likely_same_issuer_review | 2523 |
+| masterfile_collision | needs_official_evidence | 2843 |
 | masterfile_collision | source_gap_accept | 952 |
 | otc_scope | needs_official_evidence | 25 |
 | weak_sector | candidate_for_official_followup | 1 |
