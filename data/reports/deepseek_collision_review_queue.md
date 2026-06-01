@@ -1,6 +1,6 @@
 # DeepSeek Collision Review Queue
 
-Generated: `2026-06-01T02:56:28Z`
+Generated: `2026-06-01T03:17:34Z`
 
 Policy: DeepSeek collision reviews are triage only and do not authorize automatic data changes.
 
@@ -8,7 +8,7 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 
 | Metric | Value |
 | --- | ---: |
-| Queue rows | 2439 |
+| Queue rows | 2457 |
 | Unmatched DeepSeek rows | 0 |
 
 ## Target Exchanges
@@ -31,13 +31,13 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | NSE_KE | 8 |
 | NYSE | 10 |
 | NZX | 22 |
-| OSL | 3 |
-| PSE | 35 |
-| SGX | 1 |
+| OSL | 10 |
+| PSE | 41 |
+| SGX | 2 |
 | TADAWUL | 25 |
 | TWSE | 8 |
 | UPCOM | 72 |
-| XETRA | 14 |
+| XETRA | 18 |
 
 ## Official Evidence Sources
 
@@ -48,9 +48,9 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | bse_india_scrips | 402 |
 | bvb_shares_directory | 14 |
 | cse_ma_listed_companies | 12 |
-| deutsche_boerse_xetra_all_tradable_equities | 14 |
+| deutsche_boerse_xetra_all_tradable_equities | 18 |
 | dfm_listed_securities | 1 |
-| euronext_equities | 64 |
+| euronext_equities | 71 |
 | euronext_etfs | 1253 |
 | hnx_listed_securities | 31 |
 | krx_listed_companies | 1 |
@@ -59,9 +59,9 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | nse_india_securities_available | 85 |
 | nse_ke_listed_companies | 8 |
 | nzx_instruments | 22 |
-| pse_listed_company_directory | 35 |
+| pse_listed_company_directory | 41 |
 | sec_company_tickers_exchange | 9 |
-| sgx_securities_prices | 1 |
+| sgx_securities_prices | 2 |
 | tadawul_main_market_watch | 25 |
 | twse_listed_companies | 8 |
 | upcom_registered_securities | 72 |
