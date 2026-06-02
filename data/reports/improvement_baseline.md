@@ -1,6 +1,6 @@
 # Improvement Baseline
 
-Generated: `2026-06-02T02:42:16Z`
+Generated: `2026-06-02T02:45:54Z`
 
 Baseline snapshot for future before/after deltas. It does not authorize inferred metadata changes.
 
@@ -27,15 +27,15 @@ Global context: `metric_count=16;tickers=61466;listing_keys=71043;source_gap_row
 | stock_sector_coverage | `43311` |
 | etf_category_coverage | `15453` |
 | figi_coverage | `64316` |
-| official_masterfile_matches | `51285` |
+| official_masterfile_matches | `50986` |
 | official_masterfile_collisions | `11152` |
-| official_masterfile_missing | `17004` |
+| official_masterfile_missing | `16677` |
 | source_gap_rows | `3548` |
 | entry_quality_warn_rows | `222` |
 | entry_quality_source_gap_rows | `7436` |
 | entry_quality_quarantine_rows | `0` |
 | validation_failed_error_gates | `0` |
-| source_freshness_status_totals | `{"fresh": 3, "old": 133}` |
+| source_freshness_status_totals | `{"fresh": 4, "old": 132}` |
 
 ## Campaign Baseline
 
@@ -116,13 +116,13 @@ Global context: `metric_count=16;tickers=61466;listing_keys=71043;source_gap_row
 
 | Metric | Value |
 |---|---:|
-| baseline_context | `campaign_key=freshness;metric_count=14;nested_metric_count=8;numeric_row_total=4900` |
+| baseline_context | `campaign_key=freshness;metric_count=14;nested_metric_count=8;numeric_row_total=4899` |
 | source_count | `136` |
-| source_freshness_status_totals | `{"fresh": 3, "old": 133}` |
-| source_refresh_priority_totals | `{"P1": 38, "P2": 95, "P4": 3}` |
-| source_refresh_queue_priority_totals | `{"fresh_no_refresh_needed": {"P4": 3}, "refresh_official_exchange_directory_before_identity_or_collision_work": {"P1": 38}, "refresh_official_subset_before_gap_enrichment": {"P2": 88}, "restore_or_replace_unavailable_source_before_data_fill": {"P2": 7}}` |
-| source_refresh_action_totals | `{"no_refresh_needed": 3, "refresh_official_exchange_directory_before_identity_or_collision_work": 38, "refresh_official_subset_before_gap_enrichment": 88, "restore_or_replace_unavailable_source_before_data_fill": 7}` |
-| old_official_exchange_directory_count | `38` |
+| source_freshness_status_totals | `{"fresh": 4, "old": 132}` |
+| source_refresh_priority_totals | `{"P1": 37, "P2": 95, "P4": 4}` |
+| source_refresh_queue_priority_totals | `{"fresh_no_refresh_needed": {"P4": 4}, "refresh_official_exchange_directory_before_identity_or_collision_work": {"P1": 37}, "refresh_official_subset_before_gap_enrichment": {"P2": 88}, "restore_or_replace_unavailable_source_before_data_fill": {"P2": 7}}` |
+| source_refresh_action_totals | `{"no_refresh_needed": 4, "refresh_official_exchange_directory_before_identity_or_collision_work": 37, "refresh_official_subset_before_gap_enrichment": 88, "restore_or_replace_unavailable_source_before_data_fill": 7}` |
+| old_official_exchange_directory_count | `37` |
 | source_gap_rows | `3548` |
 | source_gap_class_totals | `{"adr_cdr_or_depositary_identifier_gap": 45, "adr_cdr_or_depositary_sector_gap": 39, "capital_pool_or_halted_identifier_gap": 35, "commodity_etf_category_gap": 3, "debt_or_securitized_identifier_gap": 83, "digital_asset_etf_category_gap": 2, "equity_etf_category_gap": 2, "fixed_income_etf_category_gap": 2, "fund_or_trust_identifier_gap": 274, "fundlike_stock_sector_gap": 73, "inactive_or_legacy_identifier_gap": 17, "official_current_directory_absent_identifier_gap": 12, "official_identifier_not_exposed_source_gap": 314, "official_identifier_reference_unmatched_gap": 66, "official_industry_taxonomy_unavailable_gap": 1581, "official_product_reference_unmatched_category_gap": 21, "official_product_taxonomy_unavailable_gap": 72, "otc_sector_source_gap": 817, "shell_or_cpc_sector_gap": 90}` |
 | top_source_gap_review_batches | `20` ranked batches |

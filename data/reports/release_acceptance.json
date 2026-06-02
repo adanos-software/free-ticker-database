@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T02:42:42Z",
+    "generated_at": "2026-06-02T02:46:11Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -207,38 +207,38 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-02T02:42:42Z",
+      "release_generated_at": "2026-06-02T02:46:11Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-02T02:42:39Z"
+          "generated_at": "2026-06-02T02:46:08Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-02T02:42:38Z"
+          "generated_at": "2026-06-02T02:46:07Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
           "exists": true,
-          "generated_at": "2026-06-02T02:42:16Z"
+          "generated_at": "2026-06-02T02:45:54Z"
         },
         "improvement_deltas": {
           "path": "data/reports/improvement_deltas.json",
           "exists": true,
-          "generated_at": "2026-06-02T02:42:16Z"
+          "generated_at": "2026-06-02T02:45:54Z"
         },
         "improvement_campaigns": {
           "path": "data/reports/improvement_campaigns.json",
           "exists": true,
-          "generated_at": "2026-06-02T02:42:16Z"
+          "generated_at": "2026-06-02T02:45:54Z"
         },
         "source_refresh_queue": {
           "path": "data/reports/source_refresh_queue.json",
           "exists": true,
-          "generated_at": "2026-06-02T02:42:16Z"
+          "generated_at": "2026-06-02T02:44:57Z"
         },
         "symbol_changes_review": {
           "path": "data/reports/symbol_changes_review.json",
@@ -283,12 +283,12 @@
         "b3_residual_isin_review": {
           "path": "data/reports/b3_residual_isin_review.json",
           "exists": true,
-          "generated_at": "2026-05-25T12:54:45Z"
+          "generated_at": "2026-06-02T02:45:53Z"
         },
         "b3_residual_sector_review": {
           "path": "data/reports/b3_residual_sector_review.json",
           "exists": true,
-          "generated_at": "2026-05-25T12:54:45Z"
+          "generated_at": "2026-06-02T02:45:53Z"
         },
         "asx_residual_review": {
           "path": "data/reports/asx_residual_review.json",
@@ -360,7 +360,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-02T02:42:38Z",
+      "generated_at": "2026-06-02T02:46:07Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -437,47 +437,47 @@
       "b3_diagnostic_gaps": [],
       "b3_masterfile_diagnostics": {
         "dataset_rows": 1584,
-        "active_exchange_directory_rows": 1941,
-        "matched_dataset_rows": 1544,
-        "missing_dataset_rows": 40,
-        "dataset_match_rate": 97.47,
-        "official_any_source_matched_dataset_rows": 1561,
-        "official_any_source_missing_dataset_rows": 23,
-        "official_any_source_match_rate": 98.55,
+        "active_exchange_directory_rows": 1315,
+        "matched_dataset_rows": 1245,
+        "missing_dataset_rows": 339,
+        "dataset_match_rate": 78.6,
+        "official_any_source_matched_dataset_rows": 1262,
+        "official_any_source_missing_dataset_rows": 322,
+        "official_any_source_match_rate": 79.67,
         "missing_category_totals": {
           "bdr_or_foreign_receipt": 2,
-          "local_share_line": 16,
-          "other": 2,
-          "unit_or_fund_line": 20
+          "local_share_line": 268,
+          "other": 18,
+          "unit_or_fund_line": 51
         },
         "missing_source_presence_totals": {
-          "absent_from_all_b3_masterfile_sources": 23,
+          "absent_from_all_b3_masterfile_sources": 322,
           "present_only_in_non_exchange_directory_source": 17
         }
       },
       "source_freshness_status_totals": {
-        "fresh": 3,
-        "old": 133
+        "fresh": 4,
+        "old": 132
       },
       "source_age_bucket_totals": {
-        "age_0_48h": 3,
+        "age_0_48h": 4,
         "age_over_336h": 92,
-        "age_168_336h": 41
+        "age_168_336h": 40
       },
       "source_refresh_priority_totals": {
-        "P4": 3,
+        "P4": 4,
         "P2": 95,
-        "P1": 38
+        "P1": 37
       },
       "source_refresh_queue_totals": {
-        "fresh_no_refresh_needed": 3,
+        "fresh_no_refresh_needed": 4,
         "refresh_official_subset_before_gap_enrichment": 88,
-        "refresh_official_exchange_directory_before_identity_or_collision_work": 38,
+        "refresh_official_exchange_directory_before_identity_or_collision_work": 37,
         "restore_or_replace_unavailable_source_before_data_fill": 7
       },
       "source_refresh_queue_scope_totals": {
         "fresh_no_refresh_needed": {
-          "exchange_directory": 3
+          "exchange_directory": 4
         },
         "refresh_official_subset_before_gap_enrichment": {
           "listed_companies_subset": 80,
@@ -486,7 +486,7 @@
           "security_identifier_registry_subset": 1
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "exchange_directory": 38
+          "exchange_directory": 37
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
           "listed_companies_subset": 7
@@ -494,14 +494,14 @@
       },
       "source_refresh_queue_mode_totals": {
         "fresh_no_refresh_needed": {
-          "network": 3
+          "network": 4
         },
         "refresh_official_subset_before_gap_enrichment": {
           "cache": 21,
           "network": 67
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "network": 38
+          "network": 37
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
           "unavailable": 7
@@ -509,13 +509,13 @@
       },
       "source_refresh_queue_priority_totals": {
         "fresh_no_refresh_needed": {
-          "P4": 3
+          "P4": 4
         },
         "refresh_official_subset_before_gap_enrichment": {
           "P2": 88
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "P1": 38
+          "P1": 37
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
           "P2": 7
@@ -523,14 +523,14 @@
       },
       "source_refresh_queue_age_bucket_totals": {
         "fresh_no_refresh_needed": {
-          "age_0_48h": 3
+          "age_0_48h": 4
         },
         "refresh_official_subset_before_gap_enrichment": {
           "age_over_336h": 85,
           "age_168_336h": 3
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "age_168_336h": 38
+          "age_168_336h": 37
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
           "age_over_336h": 7
@@ -538,13 +538,13 @@
       },
       "source_refresh_queue_review_strategy_totals": {
         "fresh_no_refresh_needed": {
-          "no_refresh_required": 3
+          "no_refresh_required": 4
         },
         "refresh_official_subset_before_gap_enrichment": {
           "refresh_official_subset_before_gap_enrichment": 88
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "refresh_official_exchange_directory_before_identity_or_collision_work": 38
+          "refresh_official_exchange_directory_before_identity_or_collision_work": 37
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
           "restore_or_replace_unavailable_source_before_data_fill": 7
@@ -552,13 +552,13 @@
       },
       "source_refresh_queue_evidence_required_totals": {
         "fresh_no_refresh_needed": {
-          "fresh_source_generated_at_with_age_under_48h": 3
+          "fresh_source_generated_at_with_age_under_48h": 4
         },
         "refresh_official_subset_before_gap_enrichment": {
           "official_subset_refresh_artifact_with_generated_at_scope_and_row_count": 88
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count": 38
+          "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count": 37
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
           "source_restored_or_replaced_with_official_or_documented_unavailable_decision": 7
@@ -1178,8 +1178,8 @@
       "passed": true,
       "batches": 10,
       "summary_next_review_batches": 10,
-      "summary_next_review_batch_rows": 28754,
-      "computed_next_review_batch_rows": 28754,
+      "summary_next_review_batch_rows": 29053,
+      "computed_next_review_batch_rows": 29053,
       "observed_campaign_keys_by_priority": {
         "1": "b3",
         "2": "otc",
