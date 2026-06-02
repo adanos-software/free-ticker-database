@@ -83,7 +83,7 @@ def test_normalize_verdict_strips_classification_and_listing_keys():
     raw = {
         "classification": " distinct_issuers ",
         "likely_correct_listing_keys": [" TSX::SPXU ", "TSX::SPXU", " "],
-        "likely_misassigned_listing_keys": [" NYSE ARCA::SPXU ", "NYSE ARCA::SPXU", " BOGUS::KEY "],
+        "likely_misassigned_listing_keys": " NYSE ARCA::SPXU | NYSE ARCA::SPXU | BOGUS::KEY ",
         "confidence": 0.75,
     }
 

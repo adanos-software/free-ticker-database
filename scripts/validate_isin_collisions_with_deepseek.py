@@ -143,7 +143,7 @@ def _as_key_list(value: Any) -> list[str]:
     if isinstance(value, list):
         candidates = [str(item).strip() for item in value]
     elif isinstance(value, str):
-        candidates = [value.strip()]
+        candidates = [item.strip() for item in value.split("|")]
     else:
         candidates = []
     for key in candidates:
