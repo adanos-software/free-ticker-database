@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T18:20:52Z",
+    "generated_at": "2026-06-02T18:30:57Z",
     "review_summary_csv": "data/reports/deepseek_review_summary.csv",
     "policy": "This plan prepares DeepSeek advisory triage only. DeepSeek output must not authorize inferred identifiers, sectors, categories, names, symbol changes, scope changes, or direct data application."
   },
@@ -50,8 +50,8 @@
       "reason": "Residual source-gap queue; DeepSeek can prioritize evidence follow-up for missing ISIN, stock sector, and ETF category gaps without suggesting direct fills.",
       "rows": 3548,
       "duplicate_key_rows": 184,
-      "already_deepseek_reviewed": 3300,
-      "unreviewed_rows": 64
+      "already_deepseek_reviewed": 3350,
+      "unreviewed_rows": 14
     },
     {
       "queue": "weak_sector",
@@ -71,7 +71,7 @@
     "review_kind": "source_gap",
     "source_csv": "data/reports/source_gap_classification.csv",
     "batch_csv": "data/deepseek_review_jobs/next_source_gap_batch.csv",
-    "rows": 50,
+    "rows": 14,
     "batch_size": 5,
     "reason": "Residual source-gap queue; DeepSeek can prioritize evidence follow-up for missing ISIN, stock sector, and ETF category gaps without suggesting direct fills.",
     "run_command": [
@@ -82,7 +82,7 @@
       "--review-kind",
       "source_gap",
       "--limit",
-      "50",
+      "14",
       "--batch-size",
       "5",
       "--raw-responses-jsonl",
@@ -102,7 +102,7 @@
       "--review-kind",
       "source_gap",
       "--limit",
-      "50",
+      "14",
       "--batch-size",
       "5",
       "--raw-responses-jsonl",
