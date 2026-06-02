@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T04:12:59Z",
+    "generated_at": "2026-06-02T04:15:44Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -207,38 +207,38 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-02T04:12:59Z",
+      "release_generated_at": "2026-06-02T04:15:44Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-02T04:12:56Z"
+          "generated_at": "2026-06-02T04:15:42Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-02T04:12:55Z"
+          "generated_at": "2026-06-02T04:15:41Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
           "exists": true,
-          "generated_at": "2026-06-02T04:12:34Z"
+          "generated_at": "2026-06-02T04:15:16Z"
         },
         "improvement_deltas": {
           "path": "data/reports/improvement_deltas.json",
           "exists": true,
-          "generated_at": "2026-06-02T04:12:34Z"
+          "generated_at": "2026-06-02T04:15:17Z"
         },
         "improvement_campaigns": {
           "path": "data/reports/improvement_campaigns.json",
           "exists": true,
-          "generated_at": "2026-06-02T04:12:34Z"
+          "generated_at": "2026-06-02T04:15:17Z"
         },
         "source_refresh_queue": {
           "path": "data/reports/source_refresh_queue.json",
           "exists": true,
-          "generated_at": "2026-06-02T04:12:30Z"
+          "generated_at": "2026-06-02T04:15:13Z"
         },
         "symbol_changes_review": {
           "path": "data/reports/symbol_changes_review.json",
@@ -360,7 +360,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-02T04:12:55Z",
+      "generated_at": "2026-06-02T04:15:41Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -456,34 +456,34 @@
         }
       },
       "source_freshness_status_totals": {
-        "fresh": 36,
-        "old": 100
+        "fresh": 37,
+        "old": 99
       },
       "source_age_bucket_totals": {
-        "age_0_48h": 36,
-        "age_over_336h": 72,
+        "age_0_48h": 37,
+        "age_over_336h": 71,
         "age_168_336h": 28
       },
       "source_refresh_priority_totals": {
-        "P4": 36,
-        "P2": 75,
+        "P4": 37,
+        "P2": 74,
         "P1": 25
       },
       "source_refresh_queue_totals": {
-        "fresh_no_refresh_needed": 36,
-        "refresh_official_subset_before_gap_enrichment": 68,
+        "fresh_no_refresh_needed": 37,
+        "refresh_official_subset_before_gap_enrichment": 67,
         "refresh_official_exchange_directory_before_identity_or_collision_work": 25,
         "restore_or_replace_unavailable_source_before_data_fill": 7
       },
       "source_refresh_queue_scope_totals": {
         "fresh_no_refresh_needed": {
           "exchange_directory": 16,
-          "listed_companies_subset": 18,
+          "listed_companies_subset": 19,
           "interlisted_subset": 1,
           "security_identifier_registry_subset": 1
         },
         "refresh_official_subset_before_gap_enrichment": {
-          "listed_companies_subset": 62,
+          "listed_companies_subset": 61,
           "security_lookup_subset": 6
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
@@ -495,11 +495,11 @@
       },
       "source_refresh_queue_mode_totals": {
         "fresh_no_refresh_needed": {
-          "network": 36
+          "network": 37
         },
         "refresh_official_subset_before_gap_enrichment": {
           "cache": 21,
-          "network": 47
+          "network": 46
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
           "network": 23,
@@ -511,10 +511,10 @@
       },
       "source_refresh_queue_priority_totals": {
         "fresh_no_refresh_needed": {
-          "P4": 36
+          "P4": 37
         },
         "refresh_official_subset_before_gap_enrichment": {
-          "P2": 68
+          "P2": 67
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
           "P1": 25
@@ -525,10 +525,10 @@
       },
       "source_refresh_queue_age_bucket_totals": {
         "fresh_no_refresh_needed": {
-          "age_0_48h": 36
+          "age_0_48h": 37
         },
         "refresh_official_subset_before_gap_enrichment": {
-          "age_over_336h": 65,
+          "age_over_336h": 64,
           "age_168_336h": 3
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
@@ -540,10 +540,10 @@
       },
       "source_refresh_queue_review_strategy_totals": {
         "fresh_no_refresh_needed": {
-          "no_refresh_required": 36
+          "no_refresh_required": 37
         },
         "refresh_official_subset_before_gap_enrichment": {
-          "refresh_official_subset_before_gap_enrichment": 68
+          "refresh_official_subset_before_gap_enrichment": 67
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
           "refresh_official_exchange_directory_before_identity_or_collision_work": 25
@@ -554,10 +554,10 @@
       },
       "source_refresh_queue_evidence_required_totals": {
         "fresh_no_refresh_needed": {
-          "fresh_source_generated_at_with_age_under_48h": 36
+          "fresh_source_generated_at_with_age_under_48h": 37
         },
         "refresh_official_subset_before_gap_enrichment": {
-          "official_subset_refresh_artifact_with_generated_at_scope_and_row_count": 68
+          "official_subset_refresh_artifact_with_generated_at_scope_and_row_count": 67
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
           "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count": 25
