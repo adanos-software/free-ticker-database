@@ -24,6 +24,7 @@ RELEASE_SOURCE_REPORTS = {
     "improvement_baseline": "data/reports/improvement_baseline.json",
     "improvement_deltas": "data/reports/improvement_deltas.json",
     "improvement_campaigns": "data/reports/improvement_campaigns.json",
+    "source_refresh_queue": "data/reports/source_refresh_queue.json",
     "symbol_changes_review": "data/reports/symbol_changes_review.json",
     "ohlcv_plausibility": "data/reports/ohlcv_plausibility.json",
     "ohlcv_warning_review": "data/reports/ohlcv_warning_review.json",

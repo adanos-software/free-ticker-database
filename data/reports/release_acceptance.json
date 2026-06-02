@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T02:23:51Z",
+    "generated_at": "2026-06-02T02:30:04Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -8,6 +8,7 @@
       "improvement_baseline": "data/reports/improvement_baseline.json",
       "improvement_deltas": "data/reports/improvement_deltas.json",
       "improvement_campaigns": "data/reports/improvement_campaigns.json",
+      "source_refresh_queue": "data/reports/source_refresh_queue.json",
       "symbol_changes_review": "data/reports/symbol_changes_review.json",
       "ohlcv_plausibility": "data/reports/ohlcv_plausibility.json",
       "ohlcv_warning_review": "data/reports/ohlcv_warning_review.json",
@@ -206,18 +207,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-02T02:23:51Z",
+      "release_generated_at": "2026-06-02T02:30:04Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-02T02:23:48Z"
+          "generated_at": "2026-06-02T02:30:02Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-02T02:23:47Z"
+          "generated_at": "2026-06-02T02:30:01Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -233,6 +234,11 @@
           "path": "data/reports/improvement_campaigns.json",
           "exists": true,
           "generated_at": "2026-05-31T04:01:25Z"
+        },
+        "source_refresh_queue": {
+          "path": "data/reports/source_refresh_queue.json",
+          "exists": true,
+          "generated_at": "2026-06-02T02:29:57Z"
         },
         "symbol_changes_review": {
           "path": "data/reports/symbol_changes_review.json",
@@ -354,7 +360,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-02T02:23:47Z",
+      "generated_at": "2026-06-02T02:30:01Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
