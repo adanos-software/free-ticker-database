@@ -144,18 +144,32 @@ def summarize_reviews(reviews: list[dict[str, Any]], errors: list[dict[str, Any]
     by_kind = Counter(str(review.get("review_kind", "")) for review in reviews)
     by_decision = Counter(str(review.get("decision_candidate", "")) for review in reviews)
     by_safe_action = Counter(str(review.get("safe_action", "")) for review in reviews)
+    key_counts = Counter(
+        (str(review.get("review_kind", "")), str(review.get("listing_key", "")))
+        for review in reviews
+        if review.get("listing_key")
+    )
+    duplicate_review_key_rows = sum(count - 1 for count in key_counts.values() if count > 1)
+    blank_listing_key_rows = sum(1 for review in reviews if not review.get("listing_key"))
     by_kind_decision: dict[str, Counter[str]] = {}
     by_kind_safe_action: dict[str, Counter[str]] = {}
+    by_kind_duplicate_key: dict[str, int] = {}
     for review in reviews:
         kind = str(review.get("review_kind", "unknown") or "unknown")
         by_kind_decision.setdefault(kind, Counter())[str(review.get("decision_candidate", "unknown") or "unknown")] += 1
         by_kind_safe_action.setdefault(kind, Counter())[str(review.get("safe_action", "unknown") or "unknown")] += 1
+    for (kind, _listing_key), count in key_counts.items():
+        if count > 1:
+            by_kind_duplicate_key[kind] = by_kind_duplicate_key.get(kind, 0) + count - 1
     return {
         "rows": len(reviews),
         "errors": len(errors),
+        "duplicate_review_key_rows": duplicate_review_key_rows,
+        "blank_listing_key_rows": blank_listing_key_rows,
         "review_kind_totals": dict(sorted(by_kind.items())),
         "decision_totals": dict(sorted(by_decision.items())),
         "safe_action_totals": dict(sorted(by_safe_action.items())),
+        "review_kind_duplicate_key_rows": dict(sorted(by_kind_duplicate_key.items())),
         "review_kind_decision_totals": {
             kind: dict(sorted(counter.items()))
             for kind, counter in sorted(by_kind_decision.items())
@@ -228,6 +242,8 @@ def render_markdown(payload: dict[str, Any]) -> str:
         f"| Raw batches | {meta['raw_batches']} |",
         f"| Review rows | {summary['rows']} |",
         f"| Errors | {summary['errors']} |",
+        f"| Duplicate review keys | {summary.get('duplicate_review_key_rows', 0)} |",
+        f"| Blank listing keys | {summary.get('blank_listing_key_rows', 0)} |",
         "",
         "## Decisions By Queue",
         "",

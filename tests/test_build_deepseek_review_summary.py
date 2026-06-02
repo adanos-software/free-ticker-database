@@ -159,6 +159,49 @@ def test_build_payload_records_bad_jsonl_lines_without_dropping_valid_batches(tm
     assert "invalid JSONL" in payload["errors"][0]["error"]
 
 
+def test_build_payload_counts_duplicate_review_keys_and_blank_listing_keys(tmp_path) -> None:
+    raw = tmp_path / "raw.jsonl"
+    raw.write_text(
+        json.dumps(
+            {
+                "batch_index": 1,
+                "review_kind": "otc_scope",
+                "response": {
+                    "reviews": [
+                        {
+                            "listing_key": "OTC::ABCD",
+                            "ticker": "ABCD",
+                            "exchange": "OTC",
+                            "decision_candidate": "needs_official_evidence",
+                        },
+                        {
+                            "listing_key": "OTC::ABCD",
+                            "ticker": "ABCD",
+                            "exchange": "OTC",
+                            "decision_candidate": "needs_official_evidence",
+                        },
+                        {
+                            "listing_key": "",
+                            "ticker": "MISS",
+                            "exchange": "OTC",
+                            "decision_candidate": "needs_official_evidence",
+                        },
+                    ]
+                },
+            }
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    payload = build_payload(raw)
+
+    assert payload["summary"]["rows"] == 3
+    assert payload["summary"]["duplicate_review_key_rows"] == 1
+    assert payload["summary"]["blank_listing_key_rows"] == 1
+    assert payload["summary"]["review_kind_duplicate_key_rows"] == {"otc_scope": 1}
+
+
 def test_render_markdown_marks_deepseek_as_triage_only(tmp_path) -> None:
     raw = tmp_path / "raw.jsonl"
     raw.write_text(
@@ -186,6 +229,8 @@ def test_render_markdown_marks_deepseek_as_triage_only(tmp_path) -> None:
     markdown = render_markdown(build_payload(raw))
 
     assert "triage only" in markdown
+    assert "| Duplicate review keys | 0 |" in markdown
+    assert "| Blank listing keys | 0 |" in markdown
     assert "| weak_sector | keep_source_gap | 1 |" in markdown
     assert "| weak_sector | source_gap_accept | 1 |" in markdown
     assert "does not authorize data application" in markdown

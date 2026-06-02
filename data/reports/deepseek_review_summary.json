@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T02:21:07Z",
+    "generated_at": "2026-06-02T06:02:36Z",
     "raw_responses_jsonl": "data/deepseek_review_jobs/raw_responses.jsonl",
     "raw_batches": 2572,
     "policy": "DeepSeek review suggestions are triage only. They do not authorize inferred identifiers, sectors, categories, names, symbol changes, scope changes, or data application."
@@ -8,6 +8,8 @@
   "summary": {
     "rows": 22809,
     "errors": 0,
+    "duplicate_review_key_rows": 0,
+    "blank_listing_key_rows": 0,
     "review_kind_totals": {
       "masterfile_collision": 11107,
       "otc_scope": 11056,
@@ -28,6 +30,7 @@
       "needs_official_evidence": 14857,
       "source_gap_accept": 2960
     },
+    "review_kind_duplicate_key_rows": {},
     "review_kind_decision_totals": {
       "masterfile_collision": {
         "candidate_apply_blocked": 1460,
