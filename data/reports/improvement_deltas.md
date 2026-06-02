@@ -1,7 +1,7 @@
 # Improvement Deltas
 
-Generated: `2026-06-02T19:37:45Z`
-Baseline: `2026-06-02T19:37:44Z`
+Generated: `2026-06-02T20:06:21Z`
+Baseline: `2026-06-02T20:06:21Z`
 
 This report compares current campaign metrics against `data/reports/improvement_baseline.json`.
 
@@ -9,7 +9,7 @@ This report compares current campaign metrics against `data/reports/improvement_
 
 | Metric | Value |
 |---|---:|
-| numeric_delta_rows | 926 |
+| numeric_delta_rows | 921 |
 | changed_numeric_delta_rows | 0 |
 | global_changed_numeric_delta_rows | 0 |
 | campaign_changed_numeric_delta_rows | 0 |

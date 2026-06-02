@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 78741,
-    "matched": 50816,
-    "collisions": 11176,
-    "missing": 16749
+    "official_symbols": 78844,
+    "matched": 50898,
+    "collisions": 11182,
+    "missing": 16764
   },
   "exchanges": [
     {
@@ -320,10 +320,10 @@
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1336,
+      "official_symbols": 1349,
       "matched": 1180,
       "collisions": 20,
-      "missing": 136,
+      "missing": 149,
       "collision_examples": [
         {
           "ticker": "ARKI",
@@ -800,51 +800,6 @@
       ]
     },
     {
-      "exchange": "BME",
-      "official_symbols": 10,
-      "matched": 3,
-      "collisions": 0,
-      "missing": 7,
-      "collision_examples": [],
-      "missing_examples": [
-        {
-          "ticker": "IKM",
-          "name": "1NKEMIA IUCT GROUP",
-          "exchange": "BME"
-        },
-        {
-          "ticker": "S0009",
-          "name": "1955 INVERSIONES",
-          "exchange": "BME"
-        },
-        {
-          "ticker": "S0025",
-          "name": "ACE GLOBAL",
-          "exchange": "BME"
-        },
-        {
-          "ticker": "S0203",
-          "name": "1948 INVERSIONS",
-          "exchange": "BME"
-        },
-        {
-          "ticker": "S1893",
-          "name": "ABRIL 28 INVESTMENT",
-          "exchange": "BME"
-        },
-        {
-          "ticker": "S3185",
-          "name": "ABPURA INVERSIONS",
-          "exchange": "BME"
-        },
-        {
-          "ticker": "S4190",
-          "name": "A GLOBAL FLEXIBLE P",
-          "exchange": "BME"
-        }
-      ]
-    },
-    {
       "exchange": "BSE_IN",
       "official_symbols": 4866,
       "matched": 2459,
@@ -909,7 +864,7 @@
         },
         {
           "ticker": "ACGL",
-          "name": "Automobile Corporation of Goa Ltd",
+          "name": "Automobile Corporation of Goa Ltd-$",
           "target_exchange": "BSE_IN",
           "existing_exchanges": [
             "NASDAQ"
@@ -1455,10 +1410,10 @@
     },
     {
       "exchange": "Euronext",
-      "official_symbols": 4421,
+      "official_symbols": 4426,
       "matched": 935,
       "collisions": 2263,
-      "missing": 1223,
+      "missing": 1228,
       "collision_examples": [
         {
           "ticker": "0EMU",
@@ -1596,10 +1551,10 @@
     },
     {
       "exchange": "HKEX",
-      "official_symbols": 3163,
+      "official_symbols": 3164,
       "matched": 3037,
       "collisions": 83,
-      "missing": 43,
+      "missing": 44,
       "collision_examples": [
         {
           "ticker": "00636",
@@ -1729,8 +1684,8 @@
           "exchange": "HKEX"
         },
         {
-          "ticker": "02723",
-          "name": "DEEPZERO",
+          "ticker": "02553",
+          "name": "SHOUGANG LANZA",
           "exchange": "HKEX"
         }
       ]
@@ -2243,10 +2198,10 @@
     },
     {
       "exchange": "LSE",
-      "official_symbols": 11017,
+      "official_symbols": 11021,
       "matched": 6311,
-      "collisions": 1194,
-      "missing": 3512,
+      "collisions": 1197,
+      "missing": 3513,
       "collision_examples": [
         {
           "ticker": "0GZJ",
@@ -3204,11 +3159,19 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2646,
+      "official_symbols": 2651,
       "matched": 2567,
-      "collisions": 25,
-      "missing": 54,
+      "collisions": 28,
+      "missing": 56,
       "collision_examples": [
+        {
+          "ticker": "AIQU",
+          "name": "MicroSectors 3? Long Artificial Intelligence (AI) ETNs",
+          "target_exchange": "NYSE ARCA",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
         {
           "ticker": "BAR",
           "name": "GraniteShares Gold Trust Shares of Beneficial Interest",
@@ -3280,17 +3243,14 @@
           "existing_exchanges": [
             "NYSE"
           ]
-        },
-        {
-          "ticker": "ETHE",
-          "name": "Grayscale Ethereum Staking ETF Shares",
-          "target_exchange": "NYSE ARCA",
-          "existing_exchanges": [
-            "NYSE"
-          ]
         }
       ],
       "missing_examples": [
+        {
+          "ticker": "AAAD",
+          "name": "PGIM AAA CLO Aggregate Duration ETF",
+          "exchange": "NYSE ARCA"
+        },
         {
           "ticker": "ACTS",
           "name": "FIS Tactical Equity ETF",
@@ -3304,6 +3264,11 @@
         {
           "ticker": "ADDS",
           "name": "Hedgeye Index Adds ETF",
+          "exchange": "NYSE ARCA"
+        },
+        {
+          "ticker": "AIQD",
+          "name": "MicroSectors -3? Short Artificial Intelligence (AI) ETNs",
           "exchange": "NYSE ARCA"
         },
         {
@@ -3329,16 +3294,6 @@
         {
           "ticker": "COPY",
           "name": "Tweedy, Browne Insider + Value ETF",
-          "exchange": "NYSE ARCA"
-        },
-        {
-          "ticker": "CVGD",
-          "name": "CresAlta Global Dividend ETF",
-          "exchange": "NYSE ARCA"
-        },
-        {
-          "ticker": "CVSM",
-          "name": "CresAlta Small and Mid-Cap ETF",
           "exchange": "NYSE ARCA"
         }
       ]
@@ -4675,8 +4630,8 @@
     },
     {
       "exchange": "TSX",
-      "official_symbols": 785,
-      "matched": 324,
+      "official_symbols": 788,
+      "matched": 327,
       "collisions": 460,
       "missing": 1,
       "collision_examples": [
@@ -4771,8 +4726,8 @@
     },
     {
       "exchange": "TSXV",
-      "official_symbols": 1518,
-      "matched": 961,
+      "official_symbols": 1600,
+      "matched": 1043,
       "collisions": 556,
       "missing": 1,
       "collision_examples": [
