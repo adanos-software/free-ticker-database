@@ -1,6 +1,6 @@
 # B3 Core Scope Review Queue
 
-Generated at: `2026-05-29T12:10:58Z`
+Generated at: `2026-06-02T20:18:31Z`
 
 This queue isolates B3 `core_exclusion_candidate` rows that must be decided as core, extended, or exclude before identifier or category work. It does not apply data changes.
 

@@ -1,6 +1,6 @@
 # Canada Improvement Action Queue
 
-Generated: `2026-05-29T12:37:04Z`
+Generated: `2026-06-02T20:18:32Z`
 
 Policy: this report does not apply ISIN, FIGI, sector, category, name, or scope changes. It groups TSX/TSXV/NEO residuals into official-evidence batches.
 
