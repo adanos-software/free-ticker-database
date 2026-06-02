@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T03:11:18Z",
+    "generated_at": "2026-06-02T03:13:37Z",
     "purpose": "Baseline snapshot for future campaign before/after deltas. It is not a data-fill source.",
     "source_files": {
       "coverage_report": "data/reports/coverage_report.json",
@@ -67,8 +67,8 @@
     "entry_quality_quarantine_rows": 0,
     "validation_failed_error_gates": 0,
     "source_freshness_status_totals": {
-      "fresh": 14,
-      "old": 122
+      "fresh": 15,
+      "old": 121
     }
   },
   "campaign_baseline": {
@@ -159,20 +159,20 @@
     "freshness": {
       "source_count": 136,
       "source_freshness_status_totals": {
-        "fresh": 14,
-        "old": 122
+        "fresh": 15,
+        "old": 121
       },
       "source_refresh_priority_totals": {
-        "P1": 27,
+        "P1": 26,
         "P2": 95,
-        "P4": 14
+        "P4": 15
       },
       "source_refresh_queue_priority_totals": {
         "fresh_no_refresh_needed": {
-          "P4": 14
+          "P4": 15
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "P1": 27
+          "P1": 26
         },
         "refresh_official_subset_before_gap_enrichment": {
           "P2": 88
@@ -182,12 +182,12 @@
         }
       },
       "source_refresh_action_totals": {
-        "no_refresh_needed": 14,
-        "refresh_official_exchange_directory_before_identity_or_collision_work": 27,
+        "no_refresh_needed": 15,
+        "refresh_official_exchange_directory_before_identity_or_collision_work": 26,
         "refresh_official_subset_before_gap_enrichment": 88,
         "restore_or_replace_unavailable_source_before_data_fill": 7
       },
-      "old_official_exchange_directory_count": 27,
+      "old_official_exchange_directory_count": 26,
       "source_gap_rows": 3548,
       "source_gap_class_totals": {
         "adr_cdr_or_depositary_identifier_gap": 45,
@@ -1373,7 +1373,7 @@
       "masterfile_collisions": "campaign_key=masterfile_collisions;metric_count=4;nested_metric_count=3;numeric_row_total=11107",
       "symbol_changes": "campaign_key=symbol_changes;metric_count=3;nested_metric_count=2;numeric_row_total=271",
       "ohlcv": "campaign_key=ohlcv;metric_count=4;nested_metric_count=2;numeric_row_total=366",
-      "freshness": "campaign_key=freshness;metric_count=14;nested_metric_count=8;numeric_row_total=4889",
+      "freshness": "campaign_key=freshness;metric_count=14;nested_metric_count=8;numeric_row_total=4888",
       "baseline": "campaign_key=baseline;metric_count=5;nested_metric_count=0;numeric_row_total=97"
     },
     "exchanges": {
