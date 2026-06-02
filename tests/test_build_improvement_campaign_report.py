@@ -650,8 +650,6 @@ def test_next_review_command_safety_summary_counts_review_required_actions() -> 
 def test_evidence_command_for_blocker_uses_review_or_report_scripts() -> None:
     assert evidence_command_for_blocker("b3", "source_gap_delta") == (
         "python scripts/build_b3_masterfile_gap_review.py && "
-        "python scripts/apply_b3_etf_category_review.py && "
-        "python scripts/backfill_b3_sector_classification.py && "
         "python scripts/build_b3_residual_isin_review.py && "
         "python scripts/build_b3_residual_sector_review.py && "
         "python scripts/build_coverage_report.py && "
@@ -825,106 +823,79 @@ def test_render_markdown_includes_next_review_batches() -> None:
                 "artifact_rows": 2,
                 "primary_artifact": "data/reports/b3_residual_isin_review.json",
                 "closure_gate": "missing_delta_evidence_must_be_resolved_or_documented_before_campaign_closure",
-                "evidence_command": "python scripts/build_b3_masterfile_gap_review.py && python scripts/apply_b3_etf_category_review.py && python scripts/backfill_b3_sector_classification.py && python scripts/build_b3_residual_isin_review.py && python scripts/build_b3_residual_sector_review.py && python scripts/build_coverage_report.py && python scripts/build_improvement_delta_report.py",
-                "command_mode": "network_evidence_refresh",
-                "network_required": True,
+                "evidence_command": "python scripts/build_b3_masterfile_gap_review.py && python scripts/build_b3_residual_isin_review.py && python scripts/build_b3_residual_sector_review.py && python scripts/build_coverage_report.py && python scripts/build_improvement_delta_report.py",
+                "command_mode": "local_report_rebuild",
+                "network_required": False,
                 "data_change_authorized": False,
                 "recommended_next_source": "Official taxonomy source.",
                 "source_gate": "Exact listing-keyed taxonomy evidence.",
                 "next_action": "review official B3 source",
-                "ranking_reason": "objective_priority_order_with_external_source_refresh_required",
+                "ranking_reason": "objective_priority_order_with_local_review_artifact_processing",
                 "ranking_context": (
                     "execution_order=1;priority=1;campaign_key=b3;artifact_rows=2;"
-                    "network_required=true;ranking_reason=objective_priority_order_with_external_source_refresh_required"
+                    "network_required=false;ranking_reason=objective_priority_order_with_local_review_artifact_processing"
                 ),
                 "command_scripts": [
                     "scripts/build_b3_masterfile_gap_review.py",
-                    "scripts/apply_b3_etf_category_review.py",
+                    "scripts/build_b3_residual_isin_review.py",
+                    "scripts/build_b3_residual_sector_review.py",
+                    "scripts/build_coverage_report.py",
+                    "scripts/build_improvement_delta_report.py",
                 ],
                 "missing_command_scripts": [],
                 "command_readiness_context": (
-                    "campaign_key=b3;script_count=2;missing_script_count=0;all_scripts_exist=true"
+                    "campaign_key=b3;script_count=5;missing_script_count=0;all_scripts_exist=true"
                 ),
-                "command_mutation_risk": "review_required",
-                "risky_command_scripts": ["scripts/apply_b3_etf_category_review.py"],
-                "manual_review_required_before_run": True,
+                "command_mutation_risk": "report_or_fetch_only",
+                "risky_command_scripts": [],
+                "manual_review_required_before_run": False,
                 "command_safety_context": (
-                    "campaign_key=b3;command_mutation_risk=review_required;"
-                    "manual_review_required_before_run=true;data_change_authorized=false"
+                    "campaign_key=b3;command_mutation_risk=report_or_fetch_only;"
+                    "manual_review_required_before_run=false;data_change_authorized=false"
                 ),
-                "review_required_command_context": (
-                    "campaign_key=b3;risky_script_count=1;"
-                    "manual_review_required_before_run=true;data_change_authorized=false"
-                ),
-                "review_required_preflight_checks": [
-                    "inspect_risky_scripts_before_execution",
-                    "confirm_listing_keyed_source_review_for_any_write",
-                    "rerun_quality_validation_and_release_acceptance_after_execution",
-                ],
-                "review_required_preflight_context": (
-                    "campaign_key=b3;preflight_check_count=3;"
-                    "manual_review_required_before_run=true;data_change_authorized=false"
-                ),
+                "review_required_command_context": "campaign_key=b3;risky_script_count=0;manual_review_required_before_run=false;data_change_authorized=false",
+                "review_required_preflight_checks": [],
+                "review_required_preflight_context": "campaign_key=b3;preflight_check_count=0;manual_review_required_before_run=false;data_change_authorized=false",
                 "execution_context": (
                     "priority=1;campaign_key=b3;artifact_rows=2;"
-                    "command_mode=network_evidence_refresh;network_required=true;data_change_authorized=false"
+                    "command_mode=local_report_rebuild;network_required=false;data_change_authorized=false"
                 ),
             }
         ],
         "next_review_execution_summary": {
             "total_actions": 1,
-            "local_report_rebuild_actions": 0,
-            "network_evidence_refresh_actions": 1,
-            "network_required_rows": 2,
-            "local_report_rebuild_rows": 0,
-            "rows_by_command_mode": {"network_evidence_refresh": 2},
-            "network_campaign_keys": ["b3"],
-            "local_campaign_keys": [],
+            "local_report_rebuild_actions": 1,
+            "network_evidence_refresh_actions": 0,
+            "network_required_rows": 0,
+            "local_report_rebuild_rows": 2,
+            "rows_by_command_mode": {"local_report_rebuild": 2},
+            "network_campaign_keys": [],
+            "local_campaign_keys": ["b3"],
             "data_change_authorized_actions": 0,
             "execution_summary_context": (
-                "actions=1;local_actions=0;network_actions=1;"
-                "network_rows=2;data_change_authorized_actions=0"
+                "actions=1;local_actions=1;network_actions=0;"
+                "network_rows=0;data_change_authorized_actions=0"
             ),
         },
         "next_review_command_safety_summary": {
             "total_actions": 1,
-            "risk_counts": {"review_required": 1},
-            "review_required_actions": 1,
-            "report_or_fetch_only_actions": 0,
-            "manual_review_required_actions": 1,
-            "review_required_campaign_keys": ["b3"],
-            "preflight_complete_actions": 1,
+            "risk_counts": {"report_or_fetch_only": 1},
+            "review_required_actions": 0,
+            "report_or_fetch_only_actions": 1,
+            "manual_review_required_actions": 0,
+            "review_required_campaign_keys": [],
+            "preflight_complete_actions": 0,
             "preflight_gap_campaign_keys": [],
-            "review_required_command_rows": [
-                {
-                    "campaign_key": "b3",
-                    "risky_command_scripts": ["scripts/apply_b3_etf_category_review.py"],
-                    "manual_review_required_before_run": True,
-                    "data_change_authorized": False,
-                    "review_required_command_context": (
-                        "campaign_key=b3;risky_script_count=1;"
-                        "manual_review_required_before_run=true;data_change_authorized=false"
-                    ),
-                    "review_required_preflight_checks": [
-                        "inspect_risky_scripts_before_execution",
-                        "confirm_listing_keyed_source_review_for_any_write",
-                        "rerun_quality_validation_and_release_acceptance_after_execution",
-                    ],
-                    "review_required_preflight_context": (
-                        "campaign_key=b3;preflight_check_count=3;"
-                        "manual_review_required_before_run=true;data_change_authorized=false"
-                    ),
-                }
-            ],
+            "review_required_command_rows": [],
             "data_change_authorized_actions": 0,
-            "execution_ready_without_manual_review": False,
-            "execution_blocking_gate": "manual_review_required_before_execution",
-            "execution_blocking_campaign_keys": ["b3"],
+            "execution_ready_without_manual_review": True,
+            "execution_blocking_gate": "none",
+            "execution_blocking_campaign_keys": [],
             "command_safety_summary_context": (
-                "actions=1;review_required_actions=1;report_or_fetch_only_actions=0;"
-                "manual_review_required_actions=1;preflight_complete_actions=1;data_change_authorized_actions=0;"
-                "execution_ready_without_manual_review=false;"
-                "execution_blocking_gate=manual_review_required_before_execution"
+                "actions=1;review_required_actions=0;report_or_fetch_only_actions=1;"
+                "manual_review_required_actions=0;preflight_complete_actions=0;data_change_authorized_actions=0;"
+                "execution_ready_without_manual_review=true;"
+                "execution_blocking_gate=none"
             ),
         },
         "closure_readiness": {
@@ -944,9 +915,9 @@ def test_render_markdown_includes_next_review_batches() -> None:
                 "artifact_rows": 2,
                 "primary_artifact": "data/reports/b3_residual_isin_review.json",
                 "first_missing_delta": "source_gap_delta",
-                "evidence_command": "python scripts/build_b3_masterfile_gap_review.py && python scripts/apply_b3_etf_category_review.py && python scripts/backfill_b3_sector_classification.py && python scripts/build_b3_residual_isin_review.py && python scripts/build_b3_residual_sector_review.py && python scripts/build_coverage_report.py && python scripts/build_improvement_delta_report.py",
-                "command_mode": "network_evidence_refresh",
-                "network_required": True,
+                "evidence_command": "python scripts/build_b3_masterfile_gap_review.py && python scripts/build_b3_residual_isin_review.py && python scripts/build_b3_residual_sector_review.py && python scripts/build_coverage_report.py && python scripts/build_improvement_delta_report.py",
+                "command_mode": "local_report_rebuild",
+                "network_required": False,
                 "data_change_authorized": False,
                 "next_action": "review official B3 source",
                 "recommended_next_source": "Official taxonomy source.",
@@ -955,7 +926,7 @@ def test_render_markdown_includes_next_review_batches() -> None:
                 "blocker_context": (
                     "campaign_key=b3;blocker_type=missing_delta_evidence;"
                     "closure_gate=missing_delta_evidence_must_be_resolved_or_documented_before_campaign_closure;"
-                    "command_mode=network_evidence_refresh;network_required=true;data_change_authorized=false"
+                    "command_mode=local_report_rebuild;network_required=false;data_change_authorized=false"
                 ),
             }
         ],
@@ -979,55 +950,47 @@ def test_render_markdown_includes_next_review_batches() -> None:
     assert "| `largest_campaign` | `b3` |" in markdown
     assert "| `b3` | 2 |" in markdown
     assert "## Next Review Execution Plan" in markdown
-    assert "| 1 | `b3` | 2 | `network_evidence_refresh` | True | False |" in markdown
-    assert "priority=1;campaign_key=b3;artifact_rows=2;command_mode=network_evidence_refresh" in markdown
+    assert "| 1 | `b3` | 2 | `local_report_rebuild` | False | False |" in markdown
+    assert "priority=1;campaign_key=b3;artifact_rows=2;command_mode=local_report_rebuild" in markdown
     assert "| Order | Campaign | Ranking Reason | Ranking Context |" in markdown
     assert (
-        "| 1 | `b3` | `objective_priority_order_with_external_source_refresh_required` | "
+        "| 1 | `b3` | `objective_priority_order_with_local_review_artifact_processing` | "
         "`execution_order=1;priority=1;campaign_key=b3;artifact_rows=2;"
-        "network_required=true;ranking_reason=objective_priority_order_with_external_source_refresh_required` |"
+        "network_required=false;ranking_reason=objective_priority_order_with_local_review_artifact_processing` |"
     ) in markdown
     assert "| Campaign | Scripts | Missing Scripts | Command Readiness Context |" in markdown
-    assert "| `b3` | 2 | 0 | `campaign_key=b3;script_count=2;missing_script_count=0;all_scripts_exist=true` |" in markdown
+    assert "| `b3` | 5 | 0 | `campaign_key=b3;script_count=5;missing_script_count=0;all_scripts_exist=true` |" in markdown
     assert "| Campaign | Mutation Risk | Manual Review Before Run | Command Safety Context |" in markdown
     assert (
-        "| `b3` | `review_required` | True | `campaign_key=b3;command_mutation_risk=review_required;"
-        "manual_review_required_before_run=true;data_change_authorized=false` |"
+        "| `b3` | `report_or_fetch_only` | False | `campaign_key=b3;command_mutation_risk=report_or_fetch_only;"
+        "manual_review_required_before_run=false;data_change_authorized=false` |"
     ) in markdown
     assert "## Next Review Command Safety Summary" in markdown
     assert (
-        "Command safety summary context: `actions=1;review_required_actions=1;report_or_fetch_only_actions=0;"
-        "manual_review_required_actions=1;preflight_complete_actions=1;data_change_authorized_actions=0;"
-        "execution_ready_without_manual_review=false;"
-        "execution_blocking_gate=manual_review_required_before_execution`"
+        "Command safety summary context: `actions=1;review_required_actions=0;report_or_fetch_only_actions=1;"
+        "manual_review_required_actions=0;preflight_complete_actions=0;data_change_authorized_actions=0;"
+        "execution_ready_without_manual_review=true;"
+        "execution_blocking_gate=none`"
     ) in markdown
-    assert "| `preflight_complete_actions` | `1` |" in markdown
+    assert "| `preflight_complete_actions` | `0` |" in markdown
     assert "| `preflight_gap_campaign_keys` | `[]` |" in markdown
-    assert "| `execution_ready_without_manual_review` | `False` |" in markdown
-    assert "| `execution_blocking_gate` | `manual_review_required_before_execution` |" in markdown
-    assert "| `execution_blocking_campaign_keys` | `[\"b3\"]` |" in markdown
-    assert "| `review_required_campaign_keys` | `[\"b3\"]` |" in markdown
-    assert "| Campaign | Risky Scripts | Manual Review | Data Change Authorized | Preflight Checks | Review-Required Context | Preflight Context |" in markdown
-    assert (
-        "| `b3` | `[\"scripts/apply_b3_etf_category_review.py\"]` | True | False | "
-        "`[\"inspect_risky_scripts_before_execution\", \"confirm_listing_keyed_source_review_for_any_write\", "
-        "\"rerun_quality_validation_and_release_acceptance_after_execution\"]` | "
-        "`campaign_key=b3;risky_script_count=1;manual_review_required_before_run=true;data_change_authorized=false` | "
-        "`campaign_key=b3;preflight_check_count=3;manual_review_required_before_run=true;data_change_authorized=false` |"
-    ) in markdown
+    assert "| `execution_ready_without_manual_review` | `True` |" in markdown
+    assert "| `execution_blocking_gate` | `none` |" in markdown
+    assert "| `execution_blocking_campaign_keys` | `[]` |" in markdown
+    assert "| `review_required_campaign_keys` | `[]` |" in markdown
     assert "## Next Review Execution Summary" in markdown
     assert (
-        "Execution summary context: `actions=1;local_actions=0;network_actions=1;"
-        "network_rows=2;data_change_authorized_actions=0`"
+        "Execution summary context: `actions=1;local_actions=1;network_actions=0;"
+        "network_rows=0;data_change_authorized_actions=0`"
     ) in markdown
-    assert "| `network_campaign_keys` | `[\"b3\"]` |" in markdown
+    assert "| `local_campaign_keys` | `[\"b3\"]` |" in markdown
     assert "data_change_authorized=false" in markdown
     assert "## Closure Readiness" in markdown
     assert "| `blocked_campaigns` | `1` |" in markdown
     assert "## Closure Blockers" in markdown
     assert "| 1 | `b3` | `missing_delta_evidence` | 2 | `data/reports/b3_residual_isin_review.json` | `source_gap_delta` |" in markdown
-    assert "| `b3` | `network_evidence_refresh` | True | False | `campaign_key=b3;blocker_type=missing_delta_evidence;" in markdown
-    assert "`python scripts/build_b3_masterfile_gap_review.py && python scripts/apply_b3_etf_category_review.py && python scripts/backfill_b3_sector_classification.py && python scripts/build_b3_residual_isin_review.py && python scripts/build_b3_residual_sector_review.py && python scripts/build_coverage_report.py && python scripts/build_improvement_delta_report.py` |" in markdown
+    assert "| `b3` | `local_report_rebuild` | False | False | `campaign_key=b3;blocker_type=missing_delta_evidence;" in markdown
+    assert "`python scripts/build_b3_masterfile_gap_review.py && python scripts/build_b3_residual_isin_review.py && python scripts/build_b3_residual_sector_review.py && python scripts/build_coverage_report.py && python scripts/build_improvement_delta_report.py` |" in markdown
     assert "| Batch | Priority | Rows | Strategy | Evidence | Recommended Next Source | Source Gate |" in markdown
     assert (
         "| `field=missing_sector_stock` | `` | 2 |  |  | Official taxonomy source. | Exact listing-keyed taxonomy evidence. |"

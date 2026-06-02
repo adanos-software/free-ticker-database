@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T05:10:33Z",
+    "generated_at": "2026-06-02T18:50:49Z",
     "rows": 10,
     "source_files": {
       "coverage_report": "data/reports/coverage_report.json",
@@ -11116,7 +11116,7 @@
       "artifact_rows": 585,
       "primary_artifact": "data/reports/b3_masterfile_gap_review.json",
       "closure_gate": "review_artifact_rows_must_be_processed_before_campaign_closure",
-      "evidence_command": "python scripts/build_b3_masterfile_gap_review.py && python scripts/apply_b3_etf_category_review.py && python scripts/backfill_b3_sector_classification.py && python scripts/build_b3_residual_isin_review.py && python scripts/build_b3_residual_sector_review.py && python scripts/build_coverage_report.py && python scripts/build_improvement_delta_report.py",
+      "evidence_command": "python scripts/build_b3_masterfile_gap_review.py && python scripts/build_b3_residual_isin_review.py && python scripts/build_b3_residual_sector_review.py && python scripts/build_coverage_report.py && python scripts/build_improvement_delta_report.py",
       "command_mode": "local_report_rebuild",
       "network_required": false,
       "data_change_authorized": false,
@@ -11126,29 +11126,20 @@
       "next_action": "refresh official B3 sources and only apply residual ISIN/sector values with exact official identifier or taxonomy evidence",
       "command_scripts": [
         "scripts/build_b3_masterfile_gap_review.py",
-        "scripts/apply_b3_etf_category_review.py",
-        "scripts/backfill_b3_sector_classification.py",
         "scripts/build_b3_residual_isin_review.py",
         "scripts/build_b3_residual_sector_review.py",
         "scripts/build_coverage_report.py",
         "scripts/build_improvement_delta_report.py"
       ],
       "missing_command_scripts": [],
-      "command_readiness_context": "campaign_key=b3;script_count=7;missing_script_count=0;all_scripts_exist=true",
-      "command_mutation_risk": "review_required",
-      "risky_command_scripts": [
-        "scripts/apply_b3_etf_category_review.py",
-        "scripts/backfill_b3_sector_classification.py"
-      ],
-      "manual_review_required_before_run": true,
-      "command_safety_context": "campaign_key=b3;command_mutation_risk=review_required;manual_review_required_before_run=true;data_change_authorized=false",
-      "review_required_command_context": "campaign_key=b3;risky_script_count=2;manual_review_required_before_run=true;data_change_authorized=false",
-      "review_required_preflight_checks": [
-        "inspect_risky_scripts_before_execution",
-        "confirm_listing_keyed_source_review_for_any_write",
-        "rerun_quality_validation_and_release_acceptance_after_execution"
-      ],
-      "review_required_preflight_context": "campaign_key=b3;preflight_check_count=3;manual_review_required_before_run=true;data_change_authorized=false",
+      "command_readiness_context": "campaign_key=b3;script_count=5;missing_script_count=0;all_scripts_exist=true",
+      "command_mutation_risk": "report_or_fetch_only",
+      "risky_command_scripts": [],
+      "manual_review_required_before_run": false,
+      "command_safety_context": "campaign_key=b3;command_mutation_risk=report_or_fetch_only;manual_review_required_before_run=false;data_change_authorized=false",
+      "review_required_command_context": "campaign_key=b3;risky_script_count=0;manual_review_required_before_run=false;data_change_authorized=false",
+      "review_required_preflight_checks": [],
+      "review_required_preflight_context": "campaign_key=b3;preflight_check_count=0;manual_review_required_before_run=false;data_change_authorized=false",
       "ranking_reason": "objective_priority_order_with_local_review_artifact_processing",
       "ranking_context": "execution_order=1;priority=1;campaign_key=b3;artifact_rows=585;network_required=false;ranking_reason=objective_priority_order_with_local_review_artifact_processing",
       "execution_context": "priority=1;campaign_key=b3;artifact_rows=585;command_mode=local_report_rebuild;network_required=false;data_change_authorized=false"
@@ -11475,43 +11466,21 @@
   "next_review_command_safety_summary": {
     "total_actions": 10,
     "risk_counts": {
-      "report_or_fetch_only": 9,
-      "review_required": 1
+      "report_or_fetch_only": 10
     },
-    "review_required_actions": 1,
-    "report_or_fetch_only_actions": 9,
-    "manual_review_required_actions": 1,
-    "review_required_campaign_keys": [
-      "b3"
-    ],
-    "review_required_command_rows": [
-      {
-        "campaign_key": "b3",
-        "risky_command_scripts": [
-          "scripts/apply_b3_etf_category_review.py",
-          "scripts/backfill_b3_sector_classification.py"
-        ],
-        "manual_review_required_before_run": true,
-        "data_change_authorized": false,
-        "review_required_command_context": "campaign_key=b3;risky_script_count=2;manual_review_required_before_run=true;data_change_authorized=false",
-        "review_required_preflight_checks": [
-          "inspect_risky_scripts_before_execution",
-          "confirm_listing_keyed_source_review_for_any_write",
-          "rerun_quality_validation_and_release_acceptance_after_execution"
-        ],
-        "review_required_preflight_context": "campaign_key=b3;preflight_check_count=3;manual_review_required_before_run=true;data_change_authorized=false"
-      }
-    ],
-    "preflight_complete_actions": 1,
+    "review_required_actions": 0,
+    "report_or_fetch_only_actions": 10,
+    "manual_review_required_actions": 0,
+    "review_required_campaign_keys": [],
+    "review_required_command_rows": [],
+    "preflight_complete_actions": 0,
     "preflight_gap_campaign_keys": [],
     "data_change_authorized_actions": 0,
-    "execution_ready_without_manual_review": false,
-    "execution_blocking_gate": "manual_review_required_before_execution",
-    "execution_blocking_campaign_keys": [
-      "b3"
-    ],
+    "execution_ready_without_manual_review": true,
+    "execution_blocking_gate": "no_manual_command_blockers_detected",
+    "execution_blocking_campaign_keys": [],
     "policy": "Command safety summary is a planning guard. Review-required commands must be inspected before execution and still do not authorize data changes.",
-    "command_safety_summary_context": "actions=10;review_required_actions=1;report_or_fetch_only_actions=9;manual_review_required_actions=1;preflight_complete_actions=1;data_change_authorized_actions=0;execution_ready_without_manual_review=false;execution_blocking_gate=manual_review_required_before_execution"
+    "command_safety_summary_context": "actions=10;review_required_actions=0;report_or_fetch_only_actions=10;manual_review_required_actions=0;preflight_complete_actions=0;data_change_authorized_actions=0;execution_ready_without_manual_review=true;execution_blocking_gate=no_manual_command_blockers_detected"
   },
   "closure_readiness": {
     "ready_campaigns": 9,

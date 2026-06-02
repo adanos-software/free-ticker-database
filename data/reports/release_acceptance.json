@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T18:44:38Z",
+    "generated_at": "2026-06-02T18:51:39Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -207,18 +207,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-02T18:44:38Z",
+      "release_generated_at": "2026-06-02T18:51:39Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-02T18:44:35Z"
+          "generated_at": "2026-06-02T18:51:37Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-02T18:44:34Z"
+          "generated_at": "2026-06-02T18:51:36Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -233,7 +233,7 @@
         "improvement_campaigns": {
           "path": "data/reports/improvement_campaigns.json",
           "exists": true,
-          "generated_at": "2026-06-02T05:10:33Z"
+          "generated_at": "2026-06-02T18:50:49Z"
         },
         "source_refresh_queue": {
           "path": "data/reports/source_refresh_queue.json",
@@ -360,7 +360,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-02T18:44:34Z",
+      "generated_at": "2026-06-02T18:51:36Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -1217,16 +1217,12 @@
     "next_review_command_safety_gate": {
       "passed": true,
       "execution_plan_rows": 10,
-      "manual_review_campaign_keys": [
-        "b3"
-      ],
+      "manual_review_campaign_keys": [],
       "preflight_gap_campaign_keys": [],
       "data_change_authorized_campaign_keys": [],
-      "execution_ready_without_manual_review": false,
-      "execution_blocking_gate": "manual_review_required_before_execution",
-      "execution_blocking_campaign_keys": [
-        "b3"
-      ],
+      "execution_ready_without_manual_review": true,
+      "execution_blocking_gate": "no_manual_command_blockers_detected",
+      "execution_blocking_campaign_keys": [],
       "missing_summary_keys": [],
       "mismatches": {},
       "missing_policy_markers": [],

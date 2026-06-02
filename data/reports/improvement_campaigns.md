@@ -1,6 +1,6 @@
 # Improvement Campaigns
 
-Generated: `2026-06-02T05:10:33Z`
+Generated: `2026-06-02T18:50:49Z`
 
 This report summarizes review evidence only. It does not authorize guessed identifiers, sectors, categories, names, or symbol changes.
 
@@ -95,7 +95,7 @@ Workload context: `batches=10;rows=29053;blocked_batches=1;top_campaign=otc;top_
 
 | Priority | Campaign | Rows | Mode | Network | Data Change Authorized | Context | Evidence Command | Source Gate |
 |---:|---|---:|---|---:|---:|---|---|---|
-| 1 | `b3` | 585 | `local_report_rebuild` | False | False | `priority=1;campaign_key=b3;artifact_rows=585;command_mode=local_report_rebuild;network_required=false;data_change_authorized=false` | `python scripts/build_b3_masterfile_gap_review.py && python scripts/apply_b3_etf_category_review.py && python scripts/backfill_b3_sector_classification.py && python scripts/build_b3_residual_isin_review.py && python scripts/build_b3_residual_sector_review.py && python scripts/build_coverage_report.py && python scripts/build_improvement_delta_report.py` | Do not fill B3 ISIN, sector, category, or scope values until exact official evidence and row-level gates pass. |
+| 1 | `b3` | 585 | `local_report_rebuild` | False | False | `priority=1;campaign_key=b3;artifact_rows=585;command_mode=local_report_rebuild;network_required=false;data_change_authorized=false` | `python scripts/build_b3_masterfile_gap_review.py && python scripts/build_b3_residual_isin_review.py && python scripts/build_b3_residual_sector_review.py && python scripts/build_coverage_report.py && python scripts/build_improvement_delta_report.py` | Do not fill B3 ISIN, sector, category, or scope values until exact official evidence and row-level gates pass. |
 | 2 | `otc` | 11202 | `local_report_rebuild` | False | False | `priority=2;campaign_key=otc;artifact_rows=11202;command_mode=local_report_rebuild;network_required=false;data_change_authorized=false` | `python scripts/build_otc_scope_review.py && python scripts/build_otc_name_mismatch_review.py && python scripts/build_improvement_delta_report.py` | Do not enrich OTC rows from symbol/name shape; decide scope and require issuer/product evidence before metadata changes. |
 | 3 | `canada` | 525 | `local_report_rebuild` | False | False | `priority=3;campaign_key=canada;artifact_rows=525;command_mode=local_report_rebuild;network_required=false;data_change_authorized=false` | `python scripts/build_canada_residual_review.py && python scripts/build_canada_figi_queue.py && python scripts/build_improvement_delta_report.py` | Do not add Canada ISIN/FIGI from symbol/name alone; require official identifier evidence or reviewed stronger FIGI source. |
 | 4 | `asx` | 114 | `local_report_rebuild` | False | False | `priority=4;campaign_key=asx;artifact_rows=114;command_mode=local_report_rebuild;network_required=false;data_change_authorized=false` | `python scripts/build_asx_residual_review.py && python scripts/build_improvement_delta_report.py` | Do not apply ASX identifiers or categories until exact ASX listing/name/product gates pass. |
@@ -121,7 +121,7 @@ Workload context: `batches=10;rows=29053;blocked_batches=1;top_campaign=otc;top_
 
 | Campaign | Scripts | Missing Scripts | Command Readiness Context |
 |---|---:|---:|---|
-| `b3` | 7 | 0 | `campaign_key=b3;script_count=7;missing_script_count=0;all_scripts_exist=true` |
+| `b3` | 5 | 0 | `campaign_key=b3;script_count=5;missing_script_count=0;all_scripts_exist=true` |
 | `otc` | 3 | 0 | `campaign_key=otc;script_count=3;missing_script_count=0;all_scripts_exist=true` |
 | `canada` | 3 | 0 | `campaign_key=canada;script_count=3;missing_script_count=0;all_scripts_exist=true` |
 | `asx` | 2 | 0 | `campaign_key=asx;script_count=2;missing_script_count=0;all_scripts_exist=true` |
@@ -134,7 +134,7 @@ Workload context: `batches=10;rows=29053;blocked_batches=1;top_campaign=otc;top_
 
 | Campaign | Mutation Risk | Manual Review Before Run | Command Safety Context |
 |---|---|---:|---|
-| `b3` | `review_required` | True | `campaign_key=b3;command_mutation_risk=review_required;manual_review_required_before_run=true;data_change_authorized=false` |
+| `b3` | `report_or_fetch_only` | False | `campaign_key=b3;command_mutation_risk=report_or_fetch_only;manual_review_required_before_run=false;data_change_authorized=false` |
 | `otc` | `report_or_fetch_only` | False | `campaign_key=otc;command_mutation_risk=report_or_fetch_only;manual_review_required_before_run=false;data_change_authorized=false` |
 | `canada` | `report_or_fetch_only` | False | `campaign_key=canada;command_mutation_risk=report_or_fetch_only;manual_review_required_before_run=false;data_change_authorized=false` |
 | `asx` | `report_or_fetch_only` | False | `campaign_key=asx;command_mutation_risk=report_or_fetch_only;manual_review_required_before_run=false;data_change_authorized=false` |
@@ -147,25 +147,21 @@ Workload context: `batches=10;rows=29053;blocked_batches=1;top_campaign=otc;top_
 
 ## Next Review Command Safety Summary
 
-Command safety summary context: `actions=10;review_required_actions=1;report_or_fetch_only_actions=9;manual_review_required_actions=1;preflight_complete_actions=1;data_change_authorized_actions=0;execution_ready_without_manual_review=false;execution_blocking_gate=manual_review_required_before_execution`
+Command safety summary context: `actions=10;review_required_actions=0;report_or_fetch_only_actions=10;manual_review_required_actions=0;preflight_complete_actions=0;data_change_authorized_actions=0;execution_ready_without_manual_review=true;execution_blocking_gate=no_manual_command_blockers_detected`
 
 | Metric | Value |
 |---|---:|
 | `total_actions` | `10` |
-| `review_required_actions` | `1` |
-| `report_or_fetch_only_actions` | `9` |
-| `manual_review_required_actions` | `1` |
-| `preflight_complete_actions` | `1` |
+| `review_required_actions` | `0` |
+| `report_or_fetch_only_actions` | `10` |
+| `manual_review_required_actions` | `0` |
+| `preflight_complete_actions` | `0` |
 | `preflight_gap_campaign_keys` | `[]` |
 | `data_change_authorized_actions` | `0` |
-| `execution_ready_without_manual_review` | `False` |
-| `execution_blocking_gate` | `manual_review_required_before_execution` |
-| `execution_blocking_campaign_keys` | `["b3"]` |
-| `review_required_campaign_keys` | `["b3"]` |
-
-| Campaign | Risky Scripts | Manual Review | Data Change Authorized | Preflight Checks | Review-Required Context | Preflight Context |
-|---|---|---:|---:|---|---|---|
-| `b3` | `["scripts/apply_b3_etf_category_review.py", "scripts/backfill_b3_sector_classification.py"]` | True | False | `["inspect_risky_scripts_before_execution", "confirm_listing_keyed_source_review_for_any_write", "rerun_quality_validation_and_release_acceptance_after_execution"]` | `campaign_key=b3;risky_script_count=2;manual_review_required_before_run=true;data_change_authorized=false` | `campaign_key=b3;preflight_check_count=3;manual_review_required_before_run=true;data_change_authorized=false` |
+| `execution_ready_without_manual_review` | `True` |
+| `execution_blocking_gate` | `no_manual_command_blockers_detected` |
+| `execution_blocking_campaign_keys` | `[]` |
+| `review_required_campaign_keys` | `[]` |
 
 ## Next Review Execution Summary
 
@@ -179,6 +175,7 @@ Execution summary context: `actions=10;local_actions=7;network_actions=3;network
 | `network_required_rows` | `4850` |
 | `local_report_rebuild_rows` | `24203` |
 | `data_change_authorized_actions` | `0` |
+| `local_campaign_keys` | `["b3", "otc", "canada", "asx", "weak_sector", "masterfile_collisions", "baseline"]` |
 | `network_campaign_keys` | `["symbol_changes", "ohlcv", "freshness"]` |
 
 ## Closure Readiness
