@@ -148,6 +148,40 @@ def test_run_dry_run_writes_normalized_outputs(tmp_path) -> None:
     assert payload["items"][0]["safe_action"] == "needs_official_evidence"
 
 
+def test_run_creates_parent_dirs_for_custom_output_paths(tmp_path) -> None:
+    input_csv = tmp_path / "queue.csv"
+    input_csv.write_text(
+        "listing_key,ticker,exchange,asset_type,name,instrument_scope,scope_reason\n"
+        "OTC::ABCD,ABCD,OTC,Stock,Example Corp,extended,otc_listing\n",
+        encoding="utf-8",
+    )
+    args = parse_args(
+        [
+            "--input-csv",
+            str(input_csv),
+            "--output-dir",
+            str(tmp_path / "base-out"),
+            "--raw-responses-jsonl",
+            str(tmp_path / "custom" / "raw" / "raw.jsonl"),
+            "--normalized-json",
+            str(tmp_path / "custom" / "json" / "normalized.json"),
+            "--normalized-csv",
+            str(tmp_path / "custom" / "csv" / "normalized.csv"),
+            "--errors-json",
+            str(tmp_path / "custom" / "errors" / "errors.json"),
+            "--limit",
+            "1",
+            "--dry-run",
+        ]
+    )
+
+    assert run(args) == 0
+    assert (tmp_path / "custom" / "raw" / "raw.jsonl").exists()
+    assert (tmp_path / "custom" / "json" / "normalized.json").exists()
+    assert (tmp_path / "custom" / "csv" / "normalized.csv").exists()
+    assert (tmp_path / "custom" / "errors" / "errors.json").exists()
+
+
 def test_dry_run_overwrite_guard_detects_existing_live_output(tmp_path) -> None:
     output_json = tmp_path / "normalized.json"
     output_json.write_text('{"_meta":{"dry_run":false},"items":[]}', encoding="utf-8")

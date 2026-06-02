@@ -291,6 +291,8 @@ def write_outputs(
     dry_run: bool,
 ) -> None:
     output_json.parent.mkdir(parents=True, exist_ok=True)
+    output_csv.parent.mkdir(parents=True, exist_ok=True)
+    errors_json.parent.mkdir(parents=True, exist_ok=True)
     payload = {
         "_meta": {
             "generated_at": utc_now_iso(),
@@ -364,6 +366,7 @@ def run(args: argparse.Namespace) -> int:
     errors: list[dict[str, Any]] = []
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
+    args.raw_responses_jsonl.parent.mkdir(parents=True, exist_ok=True)
     with args.raw_responses_jsonl.open("a", encoding="utf-8") as raw_handle:
         for batch_index, batch in enumerate(batches, start=1):
             prompt = build_prompt(batch, review_kind=args.review_kind)
