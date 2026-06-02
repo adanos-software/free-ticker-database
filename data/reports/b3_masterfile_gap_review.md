@@ -1,6 +1,6 @@
 # B3 Masterfile Gap Review
 
-Generated at: `2026-06-02T02:45:53Z`
+Generated at: `2026-06-02T18:54:27Z`
 
 This report tracks B3 listings absent from the active B3 exchange-directory source. It does not fill or delete data.
 
@@ -14,7 +14,7 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 |---|---:|
 | dataset_rows | 1584 |
 | active_exchange_directory_rows | 1315 |
-| all_b3_masterfile_rows | 1808 |
+| all_b3_masterfile_rows | 1809 |
 | active_directory_matched_dataset_rows | 1245 |
 | active_directory_missing_dataset_rows | 339 |
 | active_directory_match_rate | 78.6 |
