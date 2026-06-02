@@ -1,10 +1,10 @@
 import json
-import os
+
+import pytest
 
 from scripts.run_deepseek_review_queue import (
     build_prompt,
     compact_row,
-    load_env_file,
     normalize_payload,
     parse_json_object,
     run,
@@ -56,20 +56,9 @@ def test_parse_json_object_accepts_fenced_json() -> None:
     assert parse_json_object('```json\n{"reviews":[]}\n```') == {"reviews": []}
 
 
-def test_load_env_file_reads_deepseek_key_without_overriding_existing_env(tmp_path, monkeypatch) -> None:
-    env_file = tmp_path / ".env"
-    env_file.write_text(
-        "IGNORED=value\nDEEPSEEK_API_KEY=file-key\n",
-        encoding="utf-8",
-    )
-
-    monkeypatch.delenv("DEEPSEEK_API_KEY", raising=False)
-    load_env_file(env_file)
-    assert os.environ["DEEPSEEK_API_KEY"] == "file-key"
-
-    monkeypatch.setenv("DEEPSEEK_API_KEY", "existing-key")
-    load_env_file(env_file)
-    assert os.environ["DEEPSEEK_API_KEY"] == "existing-key"
+def test_parse_args_rejects_env_file_secret_source() -> None:
+    with pytest.raises(SystemExit):
+        parse_args(["--env-file", ".env"])
 
 
 def test_normalize_payload_blocks_invalid_decisions() -> None:

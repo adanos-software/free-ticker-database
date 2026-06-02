@@ -24,7 +24,6 @@ DEFAULT_MODEL = "deepseek-v4-pro"
 DEFAULT_BASE_URL = "https://api.deepseek.com"
 DEFAULT_BATCH_SIZE = 5
 DEFAULT_ROW_LIMIT = 25
-DEFAULT_ENV_FILE = ROOT / ".env"
 
 REVIEW_FIELDS_BY_KIND = {
     "otc_scope": [
@@ -133,20 +132,6 @@ def trim(value: object, max_length: int = 240) -> str:
     if len(text) <= max_length:
         return text
     return f"{text[: max_length - 3]}..."
-
-
-def load_env_file(path: Path) -> None:
-    if not path.exists():
-        return
-    for raw_line in path.read_text(encoding="utf-8").splitlines():
-        line = raw_line.strip()
-        if not line or line.startswith("#") or "=" not in line:
-            continue
-        key, value = line.split("=", 1)
-        key = key.strip()
-        if key != "DEEPSEEK_API_KEY" or os.environ.get(key):
-            continue
-        os.environ[key] = value.strip().strip("'\"")
 
 
 def read_csv_rows(path: Path, *, offset: int = 0, limit: int | None = None) -> list[dict[str, str]]:
@@ -346,7 +331,6 @@ def write_outputs(
 
 
 def run(args: argparse.Namespace) -> int:
-    load_env_file(args.env_file)
     rows = read_csv_rows(args.input_csv, offset=args.offset, limit=args.limit)
     batches = chunk_rows(rows, args.batch_size)
     normalized_reviews: list[dict[str, Any]] = []
@@ -454,12 +438,6 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--offset", type=int, default=0)
     parser.add_argument("--timeout", type=float, default=90.0)
     parser.add_argument("--sleep-seconds", type=float, default=0.5)
-    parser.add_argument(
-        "--env-file",
-        type=Path,
-        default=DEFAULT_ENV_FILE,
-        help="Local env file for DEEPSEEK_API_KEY. Defaults to .env, which is git-ignored.",
-    )
     parser.add_argument("--dry-run", action="store_true")
     return parser.parse_args(argv)
 
