@@ -84,7 +84,12 @@ def test_render_markdown_includes_model_and_source_block_notes():
 
     markdown = render_markdown(rows, summary)
 
+    assert summary["next_actions"]
+    assert summary["next_actions"][0]["safe_action"] == "candidate_for_official_followup"
+    assert "direct" not in summary["next_actions"][0]["safe_action"]
     assert "Missing primary ISIN rows" in markdown
+    assert "Next Safe Batches" in markdown
+    assert "orchestration candidates only" in markdown
     assert "`stock_sector`" in markdown
     assert "`etf_category`" in markdown
     assert "listing_key" in markdown

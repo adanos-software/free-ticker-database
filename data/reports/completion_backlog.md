@@ -1,6 +1,6 @@
 # Completion Backlog
 
-Generated at: `2026-06-02T22:48:42Z`
+Generated at: `2026-06-02T23:31:36Z`
 
 ## Summary
 
@@ -9,6 +9,21 @@ Generated at: `2026-06-02T22:48:42Z`
 - Missing ETF categories: `102`
 - Official symbol collisions tracked in exchange references: `11182`
 - Core rows hidden only by the legacy global-ticker compatibility export: `1`
+
+## Next Safe Batches
+
+| Rank | Exchange | Field | Missing | Safe action | Evidence path | Review |
+|---|---|---|---:|---|---|---|
+| 1 | ASX | missing_isin_primary | 105 | candidate_for_official_followup | Official ASX ISIN workbook. | no |
+| 2 | OTC | missing_sector_stock | 817 | candidate_for_official_followup | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
+| 3 | TSX | missing_isin_primary | 102 | candidate_for_official_followup | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
+| 4 | TSE | missing_sector_stock | 21 | candidate_for_official_followup | Official JPX listed-issues sector mapping. | no |
+| 5 | B3 | missing_sector_stock | 194 | candidate_for_official_followup | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
+| 6 | CSE_LK | missing_sector_stock | 143 | candidate_for_official_followup | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 7 | Euronext | missing_sector_stock | 132 | candidate_for_official_followup | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
+| 8 | LSE | missing_sector_stock | 128 | candidate_for_official_followup | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
+
+These are orchestration candidates only. They do not authorize direct data changes without the listed official or review-gated evidence.
 
 ## Top Missing Primary ISINs
 

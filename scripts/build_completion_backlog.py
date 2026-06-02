@@ -397,7 +397,50 @@ def summarize(rows: list[CompletionBacklogRow], coverage_report: dict[str, Any],
                 "Missing venues",
             ],
         },
+        "next_actions": build_next_actions(rows),
     }
+
+
+def build_next_actions(rows: list[CompletionBacklogRow], limit: int = 8) -> list[dict[str, Any]]:
+    ranked = sorted(
+        rows,
+        key=lambda row: (
+            row.priority_bucket != "top_impact",
+            row.review_needed,
+            -row.missing_count,
+            source_order_for(row.field, row.exchange),
+            row.field,
+            row.exchange,
+        ),
+    )
+    actions: list[dict[str, Any]] = []
+    for row in ranked[:limit]:
+        actions.append(
+            {
+                "action_rank": len(actions) + 1,
+                "safe_action": "candidate_for_official_followup",
+                "exchange": row.exchange,
+                "field": row.field,
+                "target_field": row.target_field,
+                "missing_count": row.missing_count,
+                "stock_missing_count": row.stock_missing_count,
+                "etf_missing_count": row.etf_missing_count,
+                "venue_status": row.venue_status,
+                "official_source_count": row.official_source_count,
+                "recommended_source": row.recommended_source,
+                "script": row.script,
+                "review_needed": row.review_needed,
+                "confidence_policy": row.confidence_policy,
+                "why_next": (
+                    "top_impact official workflow"
+                    if row.priority_bucket == "top_impact" and not row.review_needed
+                    else "top_impact review-gated workflow"
+                    if row.priority_bucket == "top_impact"
+                    else "highest remaining missing-count workflow"
+                ),
+            }
+        )
+    return actions
 
 
 def rows_to_dicts(rows: list[CompletionBacklogRow]) -> list[dict[str, Any]]:
@@ -465,6 +508,7 @@ def format_combined_sector_table(rows: list[CompletionBacklogRow], limit: int = 
 
 def render_markdown(rows: list[CompletionBacklogRow], summary: dict[str, Any]) -> str:
     field_totals = summary["field_totals"]
+    next_actions = summary.get("next_actions", [])
     return "\n".join(
         [
             "# Completion Backlog",
@@ -478,6 +522,11 @@ def render_markdown(rows: list[CompletionBacklogRow], summary: dict[str, Any]) -
             f"- Missing ETF categories: `{field_totals.get(FIELD_MISSING_ETF_CATEGORY, 0)}`",
             f"- Official symbol collisions tracked in exchange references: `{summary['official_masterfile_collisions']}`",
             f"- Core rows hidden only by the legacy global-ticker compatibility export: `{summary['legacy_primary_ticker_collision_rows']}`",
+            "",
+            "## Next Safe Batches",
+            "",
+            format_next_actions_table(next_actions),
+            "These are orchestration candidates only. They do not authorize direct data changes without the listed official or review-gated evidence.",
             "",
             "## Top Missing Primary ISINs",
             "",
@@ -510,6 +559,23 @@ def render_markdown(rows: list[CompletionBacklogRow], summary: dict[str, Any]) -
             "",
         ]
     )
+
+
+def format_next_actions_table(actions: list[dict[str, Any]]) -> str:
+    if not actions:
+        return "_No actions._\n"
+    lines = [
+        "| Rank | Exchange | Field | Missing | Safe action | Evidence path | Review |",
+        "|---|---|---|---:|---|---|---|",
+    ]
+    for action in actions:
+        review = "yes" if action["review_needed"] else "no"
+        lines.append(
+            f"| {action['action_rank']} | {action['exchange']} | {action['field']} | "
+            f"{action['missing_count']} | {action['safe_action']} | "
+            f"{action['recommended_source']} | {review} |"
+        )
+    return "\n".join(lines) + "\n"
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
