@@ -1,6 +1,6 @@
 import json
 
-from scripts.build_deepseek_otc_review_queue import build_payload, select_deepseek_otc_reviews
+from scripts.build_deepseek_otc_review_queue import build_payload, render_markdown, select_deepseek_otc_reviews
 
 
 def test_select_deepseek_otc_reviews_keeps_needs_official_evidence_only() -> None:
@@ -127,3 +127,21 @@ def test_build_payload_reports_unmatched_otc_reviews(tmp_path) -> None:
     assert payload["unmatched_deepseek_rows"] == [
         {"listing_key": "OTC::MISSING", "reason": "missing_otc_scope_review_row"}
     ]
+
+
+def test_render_markdown_includes_unmatched_otc_reviews() -> None:
+    markdown = render_markdown(
+        {
+            "_meta": {"generated_at": "2026-06-02T00:00:00Z"},
+            "summary": {
+                "rows": 0,
+                "unmatched_deepseek_rows": 1,
+                "review_queue_totals": {},
+                "issue_type_totals": {},
+            },
+            "unmatched_deepseek_rows": [{"listing_key": "OTC::MISSING", "reason": "missing_otc_scope_review_row"}],
+        }
+    )
+
+    assert "Unmatched DeepSeek Rows" in markdown
+    assert "| OTC::MISSING | missing_otc_scope_review_row |" in markdown

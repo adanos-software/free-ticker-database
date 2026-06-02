@@ -218,6 +218,21 @@ def render_markdown(payload: dict[str, Any]) -> str:
     lines.extend(["", "## Official Sector Values", "", "| Official raw value | Rows |", "| --- | ---: |"])
     for value, count in summary["official_sector_value_totals"].items():
         lines.append(f"| {value or 'missing'} | {count} |")
+    unmatched_rows = payload.get("unmatched_deepseek_rows", [])
+    if unmatched_rows:
+        lines.extend(
+            [
+                "",
+                "## Unmatched DeepSeek Rows",
+                "",
+                "These advisory rows no longer match the current weak-sector residual review and are excluded from the active queue.",
+                "",
+                "| Listing key | Reason |",
+                "| --- | --- |",
+            ]
+        )
+        for row in unmatched_rows[:25]:
+            lines.append(f"| {row.get('listing_key', 'missing')} | {row.get('reason', 'missing')} |")
     lines.extend(
         [
             "",

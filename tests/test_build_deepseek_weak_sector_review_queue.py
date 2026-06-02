@@ -1,6 +1,10 @@
 import json
 
-from scripts.build_deepseek_weak_sector_review_queue import build_payload, select_deepseek_weak_sector_reviews
+from scripts.build_deepseek_weak_sector_review_queue import (
+    build_payload,
+    render_markdown,
+    select_deepseek_weak_sector_reviews,
+)
 
 
 def test_select_deepseek_weak_sector_reviews_keeps_supported_decisions() -> None:
@@ -123,3 +127,23 @@ def test_build_payload_reports_unmatched_weak_sector_rows(tmp_path) -> None:
     assert payload["unmatched_deepseek_rows"] == [
         {"listing_key": "NGX::MISSING", "reason": "missing_weak_sector_residual_review_row"}
     ]
+
+
+def test_render_markdown_includes_unmatched_weak_sector_reviews() -> None:
+    markdown = render_markdown(
+        {
+            "_meta": {"generated_at": "2026-06-02T00:00:00Z"},
+            "summary": {
+                "rows": 0,
+                "unmatched_deepseek_rows": 1,
+                "review_queue_totals": {},
+                "official_sector_value_totals": {},
+            },
+            "unmatched_deepseek_rows": [
+                {"listing_key": "NGX::MISSING", "reason": "missing_weak_sector_residual_review_row"}
+            ],
+        }
+    )
+
+    assert "Unmatched DeepSeek Rows" in markdown
+    assert "| NGX::MISSING | missing_weak_sector_residual_review_row |" in markdown
