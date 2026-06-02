@@ -1,6 +1,6 @@
 # Weak Sector Residual Review
 
-Generated at: `2026-05-25T12:54:48Z`
+Generated at: `2026-06-02T19:13:29Z`
 
 This report tracks stock-sector gaps for weak-coverage venues using venue-specific official masterfile context. It does not fill sectors.
 
