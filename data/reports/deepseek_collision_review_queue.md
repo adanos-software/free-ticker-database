@@ -1,6 +1,6 @@
 # DeepSeek Collision Review Queue
 
-Generated: `2026-06-02T21:05:21Z`
+Generated: `2026-06-02T21:16:08Z`
 
 Policy: DeepSeek collision reviews are triage only and do not authorize automatic data changes.
 
@@ -8,7 +8,7 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 
 | Metric | Value |
 | --- | ---: |
-| Queue rows | 2943 |
+| Queue rows | 2969 |
 | Unmatched DeepSeek rows | 6 |
 
 ## Target Exchanges
@@ -27,9 +27,9 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | ISE | 5 |
 | KRX | 1 |
 | LSE | 380 |
-| NASDAQ | 2 |
+| NASDAQ | 3 |
 | NEO | 9 |
-| NSE_IN | 83 |
+| NSE_IN | 107 |
 | NSE_KE | 8 |
 | NYSE | 129 |
 | NYSE MKT | 5 |
@@ -44,7 +44,7 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | TSXV | 4 |
 | TWSE | 8 |
 | UPCOM | 72 |
-| XETRA | 299 |
+| XETRA | 300 |
 
 ## Official Evidence Sources
 
@@ -56,7 +56,7 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | bvb_shares_directory | 14 |
 | cboe_canada_listing_directory | 9 |
 | cse_ma_listed_companies | 12 |
-| deutsche_boerse_xetra_all_tradable_equities | 299 |
+| deutsche_boerse_xetra_all_tradable_equities | 300 |
 | dfm_listed_securities | 1 |
 | euronext_equities | 71 |
 | euronext_etfs | 1252 |
@@ -64,9 +64,9 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | jpx_listed_issues | 20 |
 | krx_listed_companies | 1 |
 | lse_price_explorer | 380 |
-| nasdaq_listed | 2 |
+| nasdaq_listed | 3 |
 | nasdaq_other_listed | 8 |
-| nse_india_securities_available | 83 |
+| nse_india_securities_available | 107 |
 | nse_ke_listed_companies | 8 |
 | nzx_instruments | 22 |
 | otc_markets_stock_screener | 6 |

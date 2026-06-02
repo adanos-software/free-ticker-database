@@ -1,6 +1,6 @@
 # DeepSeek Review Summary
 
-Generated: `2026-06-02T21:03:50Z`
+Generated: `2026-06-02T21:15:57Z`
 
 Policy: DeepSeek output is triage only and does not authorize data application.
 
@@ -8,8 +8,8 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 
 | Metric | Value |
 | --- | ---: |
-| Raw batches | 3285 |
-| Review rows | 26369 |
+| Raw batches | 3293 |
+| Review rows | 26408 |
 | Errors | 0 |
 | Duplicate review keys | 0 |
 | Blank listing keys | 0 |
@@ -20,12 +20,12 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 | --- | --- | ---: |
 | masterfile_collision | candidate_apply_blocked | 1475 |
 | masterfile_collision | keep_source_gap | 1003 |
-| masterfile_collision | needs_official_evidence | 4010 |
+| masterfile_collision | needs_official_evidence | 4017 |
 | masterfile_collision | out_of_scope_candidate | 557 |
-| masterfile_collision | possible_duplicate_or_cross_listing | 2949 |
+| masterfile_collision | possible_duplicate_or_cross_listing | 2975 |
 | masterfile_collision | uncertain | 1163 |
-| otc_name_mismatch | candidate_apply_blocked | 22 |
-| otc_name_mismatch | needs_official_evidence | 119 |
+| otc_name_mismatch | candidate_apply_blocked | 26 |
+| otc_name_mismatch | needs_official_evidence | 121 |
 | otc_name_mismatch | uncertain | 5 |
 | otc_scope | candidate_apply_blocked | 11 |
 | otc_scope | keep_source_gap | 1475 |
@@ -48,12 +48,12 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 | Review kind | Safe action | Rows |
 | --- | --- | ---: |
 | masterfile_collision | candidate_for_official_followup | 2032 |
-| masterfile_collision | likely_distinct_issuer_review | 327 |
-| masterfile_collision | likely_same_issuer_review | 2622 |
-| masterfile_collision | needs_official_evidence | 5173 |
+| masterfile_collision | likely_distinct_issuer_review | 328 |
+| masterfile_collision | likely_same_issuer_review | 2647 |
+| masterfile_collision | needs_official_evidence | 5180 |
 | masterfile_collision | source_gap_accept | 1003 |
-| otc_name_mismatch | candidate_for_official_followup | 22 |
-| otc_name_mismatch | needs_official_evidence | 124 |
+| otc_name_mismatch | candidate_for_official_followup | 26 |
+| otc_name_mismatch | needs_official_evidence | 126 |
 | otc_scope | candidate_for_official_followup | 22 |
 | otc_scope | likely_same_issuer_review | 16 |
 | otc_scope | needs_official_evidence | 9543 |
