@@ -1,6 +1,6 @@
 # DeepSeek Review Summary
 
-Generated: `2026-06-02T17:19:30Z`
+Generated: `2026-06-02T17:28:53Z`
 
 Policy: DeepSeek output is triage only and does not authorize data application.
 
@@ -8,8 +8,8 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 
 | Metric | Value |
 | --- | ---: |
-| Raw batches | 3202 |
-| Review rows | 25955 |
+| Raw batches | 3212 |
+| Review rows | 26005 |
 | Errors | 0 |
 | Duplicate review keys | 0 |
 | Blank listing keys | 0 |
@@ -34,9 +34,9 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 | otc_scope | possible_duplicate_or_cross_listing | 16 |
 | otc_scope | uncertain | 545 |
 | source_gap | candidate_apply_blocked | 10 |
-| source_gap | keep_source_gap | 958 |
-| source_gap | needs_official_evidence | 1981 |
-| source_gap | uncertain | 51 |
+| source_gap | keep_source_gap | 998 |
+| source_gap | needs_official_evidence | 1986 |
+| source_gap | uncertain | 56 |
 | weak_sector | keep_source_gap | 487 |
 | weak_sector | needs_official_evidence | 148 |
 | weak_sector | out_of_scope_candidate | 1 |
@@ -58,8 +58,8 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 | otc_scope | needs_official_evidence | 9543 |
 | otc_scope | source_gap_accept | 1475 |
 | source_gap | candidate_for_official_followup | 10 |
-| source_gap | needs_official_evidence | 2032 |
-| source_gap | source_gap_accept | 958 |
+| source_gap | needs_official_evidence | 2042 |
+| source_gap | source_gap_accept | 998 |
 | weak_sector | candidate_for_official_followup | 1 |
 | weak_sector | needs_official_evidence | 158 |
 | weak_sector | source_gap_accept | 487 |
