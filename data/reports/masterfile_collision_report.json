@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 78831,
+    "official_symbols": 78832,
     "matched": 50984,
     "collisions": 11157,
-    "missing": 16690
+    "missing": 16691
   },
   "exchanges": [
     {
@@ -3587,10 +3587,10 @@
     },
     {
       "exchange": "OSL",
-      "official_symbols": 296,
+      "official_symbols": 297,
       "matched": 230,
       "collisions": 66,
-      "missing": 0,
+      "missing": 1,
       "collision_examples": [
         {
           "ticker": "ABG",
@@ -3673,7 +3673,13 @@
           ]
         }
       ],
-      "missing_examples": []
+      "missing_examples": [
+        {
+          "ticker": "NEXTT",
+          "name": "NEXT BIOMETRICS GR",
+          "exchange": "OSL"
+        }
+      ]
     },
     {
       "exchange": "OTC",
