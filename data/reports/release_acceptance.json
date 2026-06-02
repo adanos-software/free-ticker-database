@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T22:01:22Z",
+    "generated_at": "2026-06-02T22:04:42Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -207,18 +207,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-02T22:01:22Z",
+      "release_generated_at": "2026-06-02T22:04:42Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-02T22:01:19Z"
+          "generated_at": "2026-06-02T22:04:40Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-02T22:01:18Z"
+          "generated_at": "2026-06-02T22:04:39Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -360,12 +360,12 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-02T22:01:18Z",
+      "generated_at": "2026-06-02T22:04:39Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
       "command_report": {
-        "allowed_warn_count": 643,
+        "allowed_warn_count": 593,
         "passed": true,
         "quarantine_count": 0,
         "unexpected_warn_count": 0,
