@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T04:25:40Z",
+    "generated_at": "2026-06-02T04:29:09Z",
     "rows": 10,
     "source_files": {
       "coverage_report": "data/reports/coverage_report.json",
@@ -46,7 +46,7 @@
       "campaign_key": "b3",
       "status": "partially_improved_with_residual_source_gaps",
       "evidence": {
-        "official_masterfile_symbols": 78887,
+        "official_masterfile_symbols": 78891,
         "b3_dataset_rows": 1584,
         "b3_active_exchange_directory_rows": 1315,
         "b3_all_masterfile_rows": 1808,
@@ -8734,7 +8734,7 @@
             "key": "identifiers",
             "source_type": "dataset",
             "generated_at": "2026-05-31T04:05:20Z",
-            "age_hours": 48.34,
+            "age_hours": 48.4,
             "age_bucket": "age_48_168h",
             "rows": 59848,
             "recommended_next_source": "Fresh generated_at and row-count evidence for identifiers.",
@@ -8744,7 +8744,7 @@
             "key": "tickers",
             "source_type": "dataset",
             "generated_at": "2026-05-31T03:58:05Z",
-            "age_hours": 48.46,
+            "age_hours": 48.52,
             "age_bucket": "age_48_168h",
             "rows": 61466,
             "recommended_next_source": "Fresh generated_at and row-count evidence for tickers.",
@@ -8754,7 +8754,7 @@
             "key": "entry_quality",
             "source_type": "quality_gate",
             "generated_at": "2026-05-31T04:00:45Z",
-            "age_hours": 48.41,
+            "age_hours": 48.47,
             "age_bucket": "age_48_168h",
             "rows": 71043,
             "recommended_next_source": "Fresh generated_at and row-count evidence for entry_quality.",
@@ -8764,7 +8764,7 @@
             "key": "masterfile_collision_review",
             "source_type": "review_report",
             "generated_at": "2026-05-25T12:53:29Z",
-            "age_hours": 183.54,
+            "age_hours": 183.59,
             "age_bucket": "age_168_336h",
             "rows": 11107,
             "recommended_next_source": "Fresh generated_at and row-count evidence for masterfile_collision_review.",
@@ -8774,7 +8774,7 @@
             "key": "source_gap_classification",
             "source_type": "review_report",
             "generated_at": "2026-05-31T04:00:47Z",
-            "age_hours": 48.41,
+            "age_hours": 48.47,
             "age_bucket": "age_48_168h",
             "rows": 3548,
             "recommended_next_source": "Fresh generated_at and row-count evidence for source_gap_classification.",
@@ -8784,7 +8784,7 @@
             "key": "ohlcv_plausibility",
             "source_type": "sampling_report",
             "generated_at": "2026-05-31T04:01:17Z",
-            "age_hours": 48.41,
+            "age_hours": 48.46,
             "age_bucket": "age_48_168h",
             "rows": 350,
             "recommended_next_source": "Fresh generated_at and row-count evidence for ohlcv_plausibility.",
@@ -8793,10 +8793,10 @@
           {
             "key": "masterfiles",
             "source_type": "source_inventory",
-            "generated_at": "2026-06-02T04:23:10Z",
-            "age_hours": 0.04,
+            "generated_at": "2026-06-02T04:28:46Z",
+            "age_hours": 0.01,
             "age_bucket": "age_0_48h",
-            "rows": 78887,
+            "rows": 78891,
             "recommended_next_source": "Fresh generated_at and row-count evidence for masterfiles.",
             "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
           },
@@ -8804,7 +8804,7 @@
             "key": "symbol_changes",
             "source_type": "workflow_report",
             "generated_at": "2026-05-30T16:24:00Z",
-            "age_hours": 60.03,
+            "age_hours": 60.08,
             "age_bucket": "age_48_168h",
             "rows": 271,
             "recommended_next_source": "Fresh generated_at and row-count evidence for symbol_changes.",
@@ -8821,7 +8821,7 @@
             "key": "masterfile_collision_review",
             "source_type": "review_report",
             "generated_at": "2026-05-25T12:53:29Z",
-            "age_hours": 183.54,
+            "age_hours": 183.59,
             "age_bucket": "age_168_336h",
             "rows": 11107,
             "recommended_next_source": "Fresh generated_at and row-count evidence for masterfile_collision_review.",
@@ -8831,7 +8831,7 @@
             "key": "symbol_changes",
             "source_type": "workflow_report",
             "generated_at": "2026-05-30T16:24:00Z",
-            "age_hours": 60.03,
+            "age_hours": 60.08,
             "age_bucket": "age_48_168h",
             "rows": 271,
             "recommended_next_source": "Fresh generated_at and row-count evidence for symbol_changes.",
@@ -8841,7 +8841,7 @@
             "key": "tickers",
             "source_type": "dataset",
             "generated_at": "2026-05-31T03:58:05Z",
-            "age_hours": 48.46,
+            "age_hours": 48.52,
             "age_bucket": "age_48_168h",
             "rows": 61466,
             "recommended_next_source": "Fresh generated_at and row-count evidence for tickers.",
@@ -8851,7 +8851,7 @@
             "key": "entry_quality",
             "source_type": "quality_gate",
             "generated_at": "2026-05-31T04:00:45Z",
-            "age_hours": 48.41,
+            "age_hours": 48.47,
             "age_bucket": "age_48_168h",
             "rows": 71043,
             "recommended_next_source": "Fresh generated_at and row-count evidence for entry_quality.",
@@ -8861,7 +8861,7 @@
             "key": "source_gap_classification",
             "source_type": "review_report",
             "generated_at": "2026-05-31T04:00:47Z",
-            "age_hours": 48.41,
+            "age_hours": 48.47,
             "age_bucket": "age_48_168h",
             "rows": 3548,
             "recommended_next_source": "Fresh generated_at and row-count evidence for source_gap_classification.",
@@ -8871,7 +8871,7 @@
             "key": "ohlcv_plausibility",
             "source_type": "sampling_report",
             "generated_at": "2026-05-31T04:01:17Z",
-            "age_hours": 48.41,
+            "age_hours": 48.46,
             "age_bucket": "age_48_168h",
             "rows": 350,
             "recommended_next_source": "Fresh generated_at and row-count evidence for ohlcv_plausibility.",
@@ -8881,7 +8881,7 @@
             "key": "identifiers",
             "source_type": "dataset",
             "generated_at": "2026-05-31T04:05:20Z",
-            "age_hours": 48.34,
+            "age_hours": 48.4,
             "age_bucket": "age_48_168h",
             "rows": 59848,
             "recommended_next_source": "Fresh generated_at and row-count evidence for identifiers.",
@@ -8890,43 +8890,43 @@
           {
             "key": "masterfiles",
             "source_type": "source_inventory",
-            "generated_at": "2026-06-02T04:23:10Z",
-            "age_hours": 0.04,
+            "generated_at": "2026-06-02T04:28:46Z",
+            "age_hours": 0.01,
             "age_bucket": "age_0_48h",
-            "rows": 78887,
+            "rows": 78891,
             "recommended_next_source": "Fresh generated_at and row-count evidence for masterfiles.",
             "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
           }
         ],
         "source_freshness_status_totals": {
-          "old": 96,
-          "fresh": 40
+          "old": 95,
+          "fresh": 41
         },
         "source_age_bucket_totals": {
-          "age_0_48h": 40,
-          "age_168_336h": 28,
+          "age_0_48h": 41,
+          "age_168_336h": 27,
           "age_over_336h": 68
         },
         "source_refresh_priority_totals": {
-          "P1": 25,
+          "P1": 24,
           "P2": 71,
-          "P4": 40
+          "P4": 41
         },
         "source_refresh_queue_totals": {
-          "fresh_no_refresh_needed": 40,
-          "refresh_official_exchange_directory_before_identity_or_collision_work": 25,
+          "fresh_no_refresh_needed": 41,
+          "refresh_official_exchange_directory_before_identity_or_collision_work": 24,
           "refresh_official_subset_before_gap_enrichment": 64,
           "restore_or_replace_unavailable_source_before_data_fill": 7
         },
         "source_refresh_queue_scope_totals": {
           "fresh_no_refresh_needed": {
-            "exchange_directory": 16,
+            "exchange_directory": 17,
             "interlisted_subset": 1,
             "listed_companies_subset": 22,
             "security_identifier_registry_subset": 1
           },
           "refresh_official_exchange_directory_before_identity_or_collision_work": {
-            "exchange_directory": 25
+            "exchange_directory": 24
           },
           "refresh_official_subset_before_gap_enrichment": {
             "listed_companies_subset": 58,
@@ -8938,11 +8938,11 @@
         },
         "source_refresh_queue_mode_totals": {
           "fresh_no_refresh_needed": {
-            "network": 40
+            "network": 41
           },
           "refresh_official_exchange_directory_before_identity_or_collision_work": {
             "cache": 2,
-            "network": 23
+            "network": 22
           },
           "refresh_official_subset_before_gap_enrichment": {
             "cache": 21,
@@ -8954,10 +8954,10 @@
         },
         "source_refresh_queue_priority_totals": {
           "fresh_no_refresh_needed": {
-            "P4": 40
+            "P4": 41
           },
           "refresh_official_exchange_directory_before_identity_or_collision_work": {
-            "P1": 25
+            "P1": 24
           },
           "refresh_official_subset_before_gap_enrichment": {
             "P2": 64
@@ -8968,10 +8968,10 @@
         },
         "source_refresh_queue_age_bucket_totals": {
           "fresh_no_refresh_needed": {
-            "age_0_48h": 40
+            "age_0_48h": 41
           },
           "refresh_official_exchange_directory_before_identity_or_collision_work": {
-            "age_168_336h": 25
+            "age_168_336h": 24
           },
           "refresh_official_subset_before_gap_enrichment": {
             "age_168_336h": 3,
@@ -8982,17 +8982,17 @@
           }
         },
         "source_refresh_action_totals": {
-          "no_refresh_needed": 40,
-          "refresh_official_exchange_directory_before_identity_or_collision_work": 25,
+          "no_refresh_needed": 41,
+          "refresh_official_exchange_directory_before_identity_or_collision_work": 24,
           "refresh_official_subset_before_gap_enrichment": 64,
           "restore_or_replace_unavailable_source_before_data_fill": 7
         },
         "source_refresh_queue_review_strategy_totals": {
           "fresh_no_refresh_needed": {
-            "no_refresh_required": 40
+            "no_refresh_required": 41
           },
           "refresh_official_exchange_directory_before_identity_or_collision_work": {
-            "refresh_official_exchange_directory_before_identity_or_collision_work": 25
+            "refresh_official_exchange_directory_before_identity_or_collision_work": 24
           },
           "refresh_official_subset_before_gap_enrichment": {
             "refresh_official_subset_before_gap_enrichment": 64
@@ -9003,10 +9003,10 @@
         },
         "source_refresh_queue_evidence_required_totals": {
           "fresh_no_refresh_needed": {
-            "fresh_source_generated_at_with_age_under_48h": 40
+            "fresh_source_generated_at_with_age_under_48h": 41
           },
           "refresh_official_exchange_directory_before_identity_or_collision_work": {
-            "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count": 25
+            "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count": 24
           },
           "refresh_official_subset_before_gap_enrichment": {
             "official_subset_refresh_artifact_with_generated_at_scope_and_row_count": 64
@@ -9021,9 +9021,9 @@
             "reference_scope": "exchange_directory",
             "mode": "network",
             "refresh_priority": "P1",
-            "source_count": 23,
-            "total_rows": 26908,
-            "max_age_hours": 184.48,
+            "source_count": 22,
+            "total_rows": 15895,
+            "max_age_hours": 184.54,
             "review_strategy": "refresh_official_exchange_directory_before_identity_or_collision_work",
             "evidence_required": "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count",
             "recommended_next_source": "Refresh the official exchange-directory source for scope exchange_directory using mode network.",
@@ -9036,7 +9036,7 @@
             "refresh_priority": "P1",
             "source_count": 2,
             "total_rows": 22047,
-            "max_age_hours": 185.12,
+            "max_age_hours": 185.18,
             "review_strategy": "refresh_official_exchange_directory_before_identity_or_collision_work",
             "evidence_required": "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count",
             "recommended_next_source": "Refresh the official exchange-directory source for scope exchange_directory using mode cache.",
@@ -9049,7 +9049,7 @@
             "refresh_priority": "P2",
             "source_count": 41,
             "total_rows": 6899,
-            "max_age_hours": 396.44,
+            "max_age_hours": 396.49,
             "review_strategy": "refresh_official_subset_before_gap_enrichment",
             "evidence_required": "official_subset_refresh_artifact_with_generated_at_scope_and_row_count",
             "recommended_next_source": "Refresh the official subset source for scope listed_companies_subset before identifier or metadata gap work.",
@@ -9062,7 +9062,7 @@
             "refresh_priority": "P2",
             "source_count": 17,
             "total_rows": 18897,
-            "max_age_hours": 396.45,
+            "max_age_hours": 396.51,
             "review_strategy": "refresh_official_subset_before_gap_enrichment",
             "evidence_required": "official_subset_refresh_artifact_with_generated_at_scope_and_row_count",
             "recommended_next_source": "Refresh the official subset source for scope listed_companies_subset before identifier or metadata gap work.",
@@ -9075,7 +9075,7 @@
             "refresh_priority": "P2",
             "source_count": 7,
             "total_rows": 0,
-            "max_age_hours": 396.43,
+            "max_age_hours": 396.49,
             "review_strategy": "restore_or_replace_unavailable_source_before_data_fill",
             "evidence_required": "source_restored_or_replaced_with_official_or_documented_unavailable_decision",
             "recommended_next_source": "Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision.",
@@ -9088,7 +9088,7 @@
             "refresh_priority": "P2",
             "source_count": 4,
             "total_rows": 165,
-            "max_age_hours": 396.45,
+            "max_age_hours": 396.51,
             "review_strategy": "refresh_official_subset_before_gap_enrichment",
             "evidence_required": "official_subset_refresh_artifact_with_generated_at_scope_and_row_count",
             "recommended_next_source": "Refresh the official subset source for scope security_lookup_subset before identifier or metadata gap work.",
@@ -9101,7 +9101,7 @@
             "refresh_priority": "P2",
             "source_count": 2,
             "total_rows": 746,
-            "max_age_hours": 396.45,
+            "max_age_hours": 396.51,
             "review_strategy": "refresh_official_subset_before_gap_enrichment",
             "evidence_required": "official_subset_refresh_artifact_with_generated_at_scope_and_row_count",
             "recommended_next_source": "Refresh the official subset source for scope security_lookup_subset before identifier or metadata gap work.",
@@ -9114,7 +9114,7 @@
             "refresh_priority": "P4",
             "source_count": 22,
             "total_rows": 30651,
-            "max_age_hours": 1.07,
+            "max_age_hours": 1.12,
             "review_strategy": "no_refresh_required",
             "evidence_required": "fresh_source_generated_at_with_age_under_48h",
             "recommended_next_source": "No refresh needed; retain current fresh source evidence for scope listed_companies_subset.",
@@ -9125,9 +9125,9 @@
             "reference_scope": "exchange_directory",
             "mode": "network",
             "refresh_priority": "P4",
-            "source_count": 16,
-            "total_rows": 35624,
-            "max_age_hours": 1.89,
+            "source_count": 17,
+            "total_rows": 46641,
+            "max_age_hours": 1.95,
             "review_strategy": "no_refresh_required",
             "evidence_required": "fresh_source_generated_at_with_age_under_48h",
             "recommended_next_source": "No refresh needed; retain current fresh source evidence for scope exchange_directory.",
@@ -9140,7 +9140,7 @@
             "refresh_priority": "P4",
             "source_count": 1,
             "total_rows": 3205,
-            "max_age_hours": 0.85,
+            "max_age_hours": 0.91,
             "review_strategy": "no_refresh_required",
             "evidence_required": "fresh_source_generated_at_with_age_under_48h",
             "recommended_next_source": "No refresh needed; retain current fresh source evidence for scope security_identifier_registry_subset.",
@@ -9153,189 +9153,182 @@
             "refresh_priority": "P4",
             "source_count": 1,
             "total_rows": 268,
-            "max_age_hours": 0.27,
+            "max_age_hours": 0.33,
             "review_strategy": "no_refresh_required",
             "evidence_required": "fresh_source_generated_at_with_age_under_48h",
             "recommended_next_source": "No refresh needed; retain current fresh source evidence for scope interlisted_subset.",
             "source_gate": "Freshness evidence is present; no data change is authorized by freshness alone."
           }
         ],
-        "old_official_exchange_directory_count": 25,
+        "old_official_exchange_directory_count": 24,
         "top_old_official_exchange_directories": [
           {
             "key": "otc_markets_stock_screener",
             "provider": "OTC Markets",
             "mode": "cache",
             "rows": 11925,
-            "age_hours": 185.12
-          },
-          {
-            "key": "lse_price_explorer",
-            "provider": "LSE",
-            "mode": "network",
-            "rows": 11013,
-            "age_hours": 182.71
+            "age_hours": 185.18
           },
           {
             "key": "sec_company_tickers_exchange",
             "provider": "SEC",
             "mode": "cache",
             "rows": 10122,
-            "age_hours": 185.09
+            "age_hours": 185.15
           },
           {
             "key": "bse_india_scrips",
             "provider": "BSE India",
             "mode": "network",
             "rows": 5019,
-            "age_hours": 182.87
+            "age_hours": 182.93
           },
           {
             "key": "hkex_securities_list",
             "provider": "HKEX",
             "mode": "network",
             "rows": 3154,
-            "age_hours": 182.83
+            "age_hours": 182.88
           },
           {
             "key": "nse_india_securities_available",
             "provider": "NSE India",
             "mode": "network",
             "rows": 3016,
-            "age_hours": 182.76
+            "age_hours": 182.82
           },
           {
             "key": "upcom_registered_securities",
             "provider": "HNX",
             "mode": "network",
             "rows": 830,
-            "age_hours": 182.92
+            "age_hours": 182.98
           },
           {
             "key": "sgx_securities_prices",
             "provider": "SGX",
             "mode": "network",
             "rows": 738,
-            "age_hours": 183.54
+            "age_hours": 183.6
           },
           {
             "key": "bist_kap_mkk_listed_securities",
             "provider": "KAP/MKK",
             "mode": "network",
             "rows": 637,
-            "age_hours": 183.58
+            "age_hours": 183.64
           },
           {
             "key": "tadawul_main_market_watch",
             "provider": "Saudi Exchange",
             "mode": "network",
             "rows": 412,
-            "age_hours": 183.64
+            "age_hours": 183.69
           },
           {
             "key": "bvb_shares_directory",
             "provider": "BVB",
             "mode": "network",
             "rows": 348,
-            "age_hours": 183.84
+            "age_hours": 183.9
           },
           {
             "key": "cse_lk_company_info_summary",
             "provider": "CSE Sri Lanka",
             "mode": "network",
             "rows": 315,
-            "age_hours": 183.8
+            "age_hours": 183.85
           },
           {
             "key": "cse_lk_all_security_code",
             "provider": "CSE Sri Lanka",
             "mode": "network",
             "rows": 307,
-            "age_hours": 183.8
+            "age_hours": 183.86
           },
           {
             "key": "nzx_instruments",
             "provider": "NZX",
             "mode": "network",
             "rows": 173,
-            "age_hours": 183.93
+            "age_hours": 183.99
           },
           {
             "key": "boursa_kuwait_stocks",
             "provider": "Boursa Kuwait",
             "mode": "network",
             "rows": 140,
-            "age_hours": 183.99
+            "age_hours": 184.05
           },
           {
             "key": "ngx_company_profile_directory",
             "provider": "NGX",
             "mode": "network",
             "rows": 133,
-            "age_hours": 184.42
+            "age_hours": 184.48
           },
           {
             "key": "adx_market_watch",
             "provider": "ADX",
             "mode": "network",
             "rows": 122,
-            "age_hours": 184.03
+            "age_hours": 184.09
           },
           {
             "key": "bolsa_santiago_instruments",
             "provider": "Bolsa de Santiago",
             "mode": "network",
             "rows": 111,
-            "age_hours": 183.89
+            "age_hours": 183.95
           },
           {
             "key": "muscat_securities_companies",
             "provider": "MSX",
             "mode": "network",
             "rows": 108,
-            "age_hours": 183.97
+            "age_hours": 184.03
           },
           {
             "key": "dfm_listed_securities",
             "provider": "DFM",
             "mode": "network",
             "rows": 71,
-            "age_hours": 184.05
+            "age_hours": 184.11
           },
           {
             "key": "nse_ke_listed_companies",
             "provider": "NSE Kenya",
             "mode": "network",
             "rows": 66,
-            "age_hours": 184.31
+            "age_hours": 184.36
           },
           {
             "key": "qse_market_watch",
             "provider": "QSE",
             "mode": "network",
             "rows": 57,
-            "age_hours": 184.21
+            "age_hours": 184.27
           },
           {
             "key": "cse_ma_listed_companies",
             "provider": "Casablanca Stock Exchange",
             "mode": "network",
             "rows": 50,
-            "age_hours": 184.48
+            "age_hours": 184.54
           },
           {
             "key": "sem_isin",
             "provider": "SEM",
             "mode": "network",
             "rows": 47,
-            "age_hours": 184.26
+            "age_hours": 184.31
           },
           {
             "key": "bahrain_bourse_listed_companies",
             "provider": "Bahrain Bourse",
             "mode": "network",
             "rows": 41,
-            "age_hours": 184.16
+            "age_hours": 184.22
           }
         ],
         "source_gap_class_totals": {
@@ -9694,7 +9687,7 @@
       "artifacts": [
         {
           "path": "data/reports/coverage_report.json",
-          "generated_at": "2026-06-02T04:25:33Z",
+          "generated_at": "2026-06-02T04:29:03Z",
           "rows": 0
         },
         {
@@ -9792,8 +9785,8 @@
             "delta": 0
           },
           "old_official_exchange_directory_count": {
-            "baseline": 25,
-            "current": 25,
+            "baseline": 24,
+            "current": 24,
             "delta": 0
           },
           "source_count": {
@@ -9804,13 +9797,13 @@
           "source_freshness_status_totals": {
             "children": {
               "fresh": {
-                "baseline": 40,
-                "current": 40,
+                "baseline": 41,
+                "current": 41,
                 "delta": 0
               },
               "old": {
-                "baseline": 96,
-                "current": 96,
+                "baseline": 95,
+                "current": 95,
                 "delta": 0
               }
             }
@@ -9922,13 +9915,13 @@
           "source_refresh_action_totals": {
             "children": {
               "no_refresh_needed": {
-                "baseline": 40,
-                "current": 40,
+                "baseline": 41,
+                "current": 41,
                 "delta": 0
               },
               "refresh_official_exchange_directory_before_identity_or_collision_work": {
-                "baseline": 25,
-                "current": 25,
+                "baseline": 24,
+                "current": 24,
                 "delta": 0
               },
               "refresh_official_subset_before_gap_enrichment": {
@@ -9946,8 +9939,8 @@
           "source_refresh_priority_totals": {
             "children": {
               "P1": {
-                "baseline": 25,
-                "current": 25,
+                "baseline": 24,
+                "current": 24,
                 "delta": 0
               },
               "P2": {
@@ -9956,8 +9949,8 @@
                 "delta": 0
               },
               "P4": {
-                "baseline": 40,
-                "current": 40,
+                "baseline": 41,
+                "current": 41,
                 "delta": 0
               }
             }
@@ -9967,8 +9960,8 @@
               "fresh_no_refresh_needed": {
                 "children": {
                   "P4": {
-                    "baseline": 40,
-                    "current": 40,
+                    "baseline": 41,
+                    "current": 41,
                     "delta": 0
                   }
                 }
@@ -9976,8 +9969,8 @@
               "refresh_official_exchange_directory_before_identity_or_collision_work": {
                 "children": {
                   "P1": {
-                    "baseline": 25,
-                    "current": 25,
+                    "baseline": 24,
+                    "current": 24,
                     "delta": 0
                   }
                 }
@@ -10077,7 +10070,7 @@
               "key": "identifiers",
               "source_type": "dataset",
               "generated_at": "2026-05-31T04:05:20Z",
-              "age_hours": 48.34,
+              "age_hours": 48.4,
               "age_bucket": "age_48_168h",
               "rows": 59848,
               "recommended_next_source": "Fresh generated_at and row-count evidence for identifiers.",
@@ -10087,7 +10080,7 @@
               "key": "tickers",
               "source_type": "dataset",
               "generated_at": "2026-05-31T03:58:05Z",
-              "age_hours": 48.46,
+              "age_hours": 48.52,
               "age_bucket": "age_48_168h",
               "rows": 61466,
               "recommended_next_source": "Fresh generated_at and row-count evidence for tickers.",
@@ -10097,7 +10090,7 @@
               "key": "entry_quality",
               "source_type": "quality_gate",
               "generated_at": "2026-05-31T04:00:45Z",
-              "age_hours": 48.41,
+              "age_hours": 48.47,
               "age_bucket": "age_48_168h",
               "rows": 71043,
               "recommended_next_source": "Fresh generated_at and row-count evidence for entry_quality.",
@@ -10107,7 +10100,7 @@
               "key": "masterfile_collision_review",
               "source_type": "review_report",
               "generated_at": "2026-05-25T12:53:29Z",
-              "age_hours": 183.54,
+              "age_hours": 183.59,
               "age_bucket": "age_168_336h",
               "rows": 11107,
               "recommended_next_source": "Fresh generated_at and row-count evidence for masterfile_collision_review.",
@@ -10117,7 +10110,7 @@
               "key": "source_gap_classification",
               "source_type": "review_report",
               "generated_at": "2026-05-31T04:00:47Z",
-              "age_hours": 48.41,
+              "age_hours": 48.47,
               "age_bucket": "age_48_168h",
               "rows": 3548,
               "recommended_next_source": "Fresh generated_at and row-count evidence for source_gap_classification.",
@@ -10127,7 +10120,7 @@
               "key": "ohlcv_plausibility",
               "source_type": "sampling_report",
               "generated_at": "2026-05-31T04:01:17Z",
-              "age_hours": 48.41,
+              "age_hours": 48.46,
               "age_bucket": "age_48_168h",
               "rows": 350,
               "recommended_next_source": "Fresh generated_at and row-count evidence for ohlcv_plausibility.",
@@ -10136,10 +10129,10 @@
             {
               "key": "masterfiles",
               "source_type": "source_inventory",
-              "generated_at": "2026-06-02T04:23:10Z",
-              "age_hours": 0.04,
+              "generated_at": "2026-06-02T04:28:46Z",
+              "age_hours": 0.01,
               "age_bucket": "age_0_48h",
-              "rows": 78887,
+              "rows": 78891,
               "recommended_next_source": "Fresh generated_at and row-count evidence for masterfiles.",
               "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
             },
@@ -10147,7 +10140,7 @@
               "key": "symbol_changes",
               "source_type": "workflow_report",
               "generated_at": "2026-05-30T16:24:00Z",
-              "age_hours": 60.03,
+              "age_hours": 60.08,
               "age_bucket": "age_48_168h",
               "rows": 271,
               "recommended_next_source": "Fresh generated_at and row-count evidence for symbol_changes.",
@@ -10164,7 +10157,7 @@
               "key": "masterfile_collision_review",
               "source_type": "review_report",
               "generated_at": "2026-05-25T12:53:29Z",
-              "age_hours": 183.54,
+              "age_hours": 183.59,
               "age_bucket": "age_168_336h",
               "rows": 11107,
               "recommended_next_source": "Fresh generated_at and row-count evidence for masterfile_collision_review.",
@@ -10174,7 +10167,7 @@
               "key": "symbol_changes",
               "source_type": "workflow_report",
               "generated_at": "2026-05-30T16:24:00Z",
-              "age_hours": 60.03,
+              "age_hours": 60.08,
               "age_bucket": "age_48_168h",
               "rows": 271,
               "recommended_next_source": "Fresh generated_at and row-count evidence for symbol_changes.",
@@ -10184,7 +10177,7 @@
               "key": "tickers",
               "source_type": "dataset",
               "generated_at": "2026-05-31T03:58:05Z",
-              "age_hours": 48.46,
+              "age_hours": 48.52,
               "age_bucket": "age_48_168h",
               "rows": 61466,
               "recommended_next_source": "Fresh generated_at and row-count evidence for tickers.",
@@ -10194,7 +10187,7 @@
               "key": "entry_quality",
               "source_type": "quality_gate",
               "generated_at": "2026-05-31T04:00:45Z",
-              "age_hours": 48.41,
+              "age_hours": 48.47,
               "age_bucket": "age_48_168h",
               "rows": 71043,
               "recommended_next_source": "Fresh generated_at and row-count evidence for entry_quality.",
@@ -10204,7 +10197,7 @@
               "key": "source_gap_classification",
               "source_type": "review_report",
               "generated_at": "2026-05-31T04:00:47Z",
-              "age_hours": 48.41,
+              "age_hours": 48.47,
               "age_bucket": "age_48_168h",
               "rows": 3548,
               "recommended_next_source": "Fresh generated_at and row-count evidence for source_gap_classification.",
@@ -10214,7 +10207,7 @@
               "key": "ohlcv_plausibility",
               "source_type": "sampling_report",
               "generated_at": "2026-05-31T04:01:17Z",
-              "age_hours": 48.41,
+              "age_hours": 48.46,
               "age_bucket": "age_48_168h",
               "rows": 350,
               "recommended_next_source": "Fresh generated_at and row-count evidence for ohlcv_plausibility.",
@@ -10224,7 +10217,7 @@
               "key": "identifiers",
               "source_type": "dataset",
               "generated_at": "2026-05-31T04:05:20Z",
-              "age_hours": 48.34,
+              "age_hours": 48.4,
               "age_bucket": "age_48_168h",
               "rows": 59848,
               "recommended_next_source": "Fresh generated_at and row-count evidence for identifiers.",
@@ -10233,43 +10226,43 @@
             {
               "key": "masterfiles",
               "source_type": "source_inventory",
-              "generated_at": "2026-06-02T04:23:10Z",
-              "age_hours": 0.04,
+              "generated_at": "2026-06-02T04:28:46Z",
+              "age_hours": 0.01,
               "age_bucket": "age_0_48h",
-              "rows": 78887,
+              "rows": 78891,
               "recommended_next_source": "Fresh generated_at and row-count evidence for masterfiles.",
               "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
             }
           ],
           "source_freshness_status_totals": {
-            "old": 96,
-            "fresh": 40
+            "old": 95,
+            "fresh": 41
           },
           "source_age_bucket_totals": {
-            "age_0_48h": 40,
-            "age_168_336h": 28,
+            "age_0_48h": 41,
+            "age_168_336h": 27,
             "age_over_336h": 68
           },
           "source_refresh_priority_totals": {
-            "P1": 25,
+            "P1": 24,
             "P2": 71,
-            "P4": 40
+            "P4": 41
           },
           "source_refresh_queue_totals": {
-            "fresh_no_refresh_needed": 40,
-            "refresh_official_exchange_directory_before_identity_or_collision_work": 25,
+            "fresh_no_refresh_needed": 41,
+            "refresh_official_exchange_directory_before_identity_or_collision_work": 24,
             "refresh_official_subset_before_gap_enrichment": 64,
             "restore_or_replace_unavailable_source_before_data_fill": 7
           },
           "source_refresh_queue_scope_totals": {
             "fresh_no_refresh_needed": {
-              "exchange_directory": 16,
+              "exchange_directory": 17,
               "interlisted_subset": 1,
               "listed_companies_subset": 22,
               "security_identifier_registry_subset": 1
             },
             "refresh_official_exchange_directory_before_identity_or_collision_work": {
-              "exchange_directory": 25
+              "exchange_directory": 24
             },
             "refresh_official_subset_before_gap_enrichment": {
               "listed_companies_subset": 58,
@@ -10281,11 +10274,11 @@
           },
           "source_refresh_queue_mode_totals": {
             "fresh_no_refresh_needed": {
-              "network": 40
+              "network": 41
             },
             "refresh_official_exchange_directory_before_identity_or_collision_work": {
               "cache": 2,
-              "network": 23
+              "network": 22
             },
             "refresh_official_subset_before_gap_enrichment": {
               "cache": 21,
@@ -10297,10 +10290,10 @@
           },
           "source_refresh_queue_priority_totals": {
             "fresh_no_refresh_needed": {
-              "P4": 40
+              "P4": 41
             },
             "refresh_official_exchange_directory_before_identity_or_collision_work": {
-              "P1": 25
+              "P1": 24
             },
             "refresh_official_subset_before_gap_enrichment": {
               "P2": 64
@@ -10311,10 +10304,10 @@
           },
           "source_refresh_queue_age_bucket_totals": {
             "fresh_no_refresh_needed": {
-              "age_0_48h": 40
+              "age_0_48h": 41
             },
             "refresh_official_exchange_directory_before_identity_or_collision_work": {
-              "age_168_336h": 25
+              "age_168_336h": 24
             },
             "refresh_official_subset_before_gap_enrichment": {
               "age_168_336h": 3,
@@ -10326,10 +10319,10 @@
           },
           "source_refresh_queue_review_strategy_totals": {
             "fresh_no_refresh_needed": {
-              "no_refresh_required": 40
+              "no_refresh_required": 41
             },
             "refresh_official_exchange_directory_before_identity_or_collision_work": {
-              "refresh_official_exchange_directory_before_identity_or_collision_work": 25
+              "refresh_official_exchange_directory_before_identity_or_collision_work": 24
             },
             "refresh_official_subset_before_gap_enrichment": {
               "refresh_official_subset_before_gap_enrichment": 64
@@ -10340,10 +10333,10 @@
           },
           "source_refresh_queue_evidence_required_totals": {
             "fresh_no_refresh_needed": {
-              "fresh_source_generated_at_with_age_under_48h": 40
+              "fresh_source_generated_at_with_age_under_48h": 41
             },
             "refresh_official_exchange_directory_before_identity_or_collision_work": {
-              "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count": 25
+              "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count": 24
             },
             "refresh_official_subset_before_gap_enrichment": {
               "official_subset_refresh_artifact_with_generated_at_scope_and_row_count": 64
@@ -10353,12 +10346,12 @@
             }
           },
           "source_refresh_action_totals": {
-            "no_refresh_needed": 40,
-            "refresh_official_exchange_directory_before_identity_or_collision_work": 25,
+            "no_refresh_needed": 41,
+            "refresh_official_exchange_directory_before_identity_or_collision_work": 24,
             "refresh_official_subset_before_gap_enrichment": 64,
             "restore_or_replace_unavailable_source_before_data_fill": 7
           },
-          "old_official_exchange_directory_count": 25,
+          "old_official_exchange_directory_count": 24,
           "top_source_gap_review_batches": [
             {
               "field": "missing_sector_stock",
@@ -10761,12 +10754,12 @@
       "artifacts": [
         {
           "path": "data/reports/improvement_baseline.json",
-          "generated_at": "2026-06-02T04:25:40Z",
+          "generated_at": "2026-06-02T04:29:09Z",
           "rows": 0
         },
         {
           "path": "data/reports/improvement_deltas.json",
-          "generated_at": "2026-06-02T04:25:40Z",
+          "generated_at": "2026-06-02T04:29:09Z",
           "rows": 0
         }
       ],
@@ -10864,7 +10857,7 @@
       "delta_evidence": {
         "status": "baseline_only",
         "known_deltas": {
-          "baseline_generated_at": "2026-06-02T04:25:40Z",
+          "baseline_generated_at": "2026-06-02T04:29:09Z",
           "future_delta_reference": "data/reports/improvement_baseline.json",
           "current_delta_report": "data/reports/improvement_deltas.json"
         },
