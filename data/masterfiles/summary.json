@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-02T02:44:04Z",
-  "rows": 145244,
+  "generated_at": "2026-06-02T02:48:38Z",
+  "rows": 145260,
   "exchanges": [
     "ADX",
     "AMS",
@@ -201,7 +201,7 @@
     "newconnect_listed_companies": 364,
     "wse_etf_list": 27,
     "deutsche_boerse_etfs_etps": 3532,
-    "deutsche_boerse_xetra_all_tradable_equities": 4528,
+    "deutsche_boerse_xetra_all_tradable_equities": 4544,
     "deutsche_boerse_listed_companies": 472,
     "zagreb_securities_directory": 74,
     "zse_zw_listed_companies": 27
@@ -388,8 +388,8 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 4528,
-      "generated_at": "2026-05-25T11:23:09Z"
+      "rows": 4544,
+      "generated_at": "2026-06-02T02:48:38Z"
     },
     "six_equity_issuers": {
       "provider": "SIX",
@@ -1277,7 +1277,7 @@
       "provider": "SEC",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "network",
+      "mode": "cache",
       "rows": 10122,
       "generated_at": "2026-05-25T11:20:18Z"
     },
@@ -1293,7 +1293,7 @@
       "provider": "OTC Markets",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "network",
+      "mode": "cache",
       "rows": 11925,
       "generated_at": "2026-05-25T11:18:18Z"
     }
@@ -1380,7 +1380,7 @@
     "hose_fund_certificate_list": "network",
     "hnx_listed_securities": "network",
     "upcom_registered_securities": "network",
-    "sec_company_tickers_exchange": "network",
+    "sec_company_tickers_exchange": "cache",
     "bme_listed_values": "unavailable",
     "otc_markets_security_profile": "network",
     "nasdaq_nordic_iceland_shares": "network",
@@ -1410,7 +1410,7 @@
     "gse_listed_companies": "network",
     "luse_listed_companies": "cache",
     "bolsa_santiago_instruments": "network",
-    "otc_markets_stock_screener": "network",
+    "otc_markets_stock_screener": "cache",
     "set_stock_search": "network",
     "psx_dps_symbols": "network",
     "idx_company_profiles": "network",
