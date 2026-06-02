@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T23:05:57Z",
+    "generated_at": "2026-06-02T23:10:04Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -9,6 +9,8 @@
       "improvement_deltas": "data/reports/improvement_deltas.json",
       "improvement_campaigns": "data/reports/improvement_campaigns.json",
       "source_gap_classification": "data/reports/source_gap_classification.json",
+      "deepseek_review_summary": "data/reports/deepseek_review_summary.json",
+      "deepseek_batch_plan": "data/reports/deepseek_batch_plan.json",
       "source_refresh_queue": "data/reports/source_refresh_queue.json",
       "symbol_changes_review": "data/reports/symbol_changes_review.json",
       "ohlcv_plausibility": "data/reports/ohlcv_plausibility.json",
@@ -208,18 +210,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-02T23:05:57Z",
+      "release_generated_at": "2026-06-02T23:10:04Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-02T23:05:55Z"
+          "generated_at": "2026-06-02T23:10:02Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-02T23:05:54Z"
+          "generated_at": "2026-06-02T23:10:01Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -240,6 +242,16 @@
           "path": "data/reports/source_gap_classification.json",
           "exists": true,
           "generated_at": "2026-05-31T04:00:47Z"
+        },
+        "deepseek_review_summary": {
+          "path": "data/reports/deepseek_review_summary.json",
+          "exists": true,
+          "generated_at": "2026-06-02T21:15:57Z"
+        },
+        "deepseek_batch_plan": {
+          "path": "data/reports/deepseek_batch_plan.json",
+          "exists": true,
+          "generated_at": "2026-06-02T23:05:27Z"
         },
         "source_refresh_queue": {
           "path": "data/reports/source_refresh_queue.json",
@@ -366,7 +378,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-02T23:05:54Z",
+      "generated_at": "2026-06-02T23:10:01Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},

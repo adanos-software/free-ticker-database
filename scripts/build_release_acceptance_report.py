@@ -25,6 +25,8 @@ RELEASE_SOURCE_REPORTS = {
     "improvement_deltas": "data/reports/improvement_deltas.json",
     "improvement_campaigns": "data/reports/improvement_campaigns.json",
     "source_gap_classification": "data/reports/source_gap_classification.json",
+    "deepseek_review_summary": "data/reports/deepseek_review_summary.json",
+    "deepseek_batch_plan": "data/reports/deepseek_batch_plan.json",
     "source_refresh_queue": "data/reports/source_refresh_queue.json",
     "symbol_changes_review": "data/reports/symbol_changes_review.json",
     "ohlcv_plausibility": "data/reports/ohlcv_plausibility.json",
