@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T19:05:24Z",
+    "generated_at": "2026-06-02T19:09:21Z",
     "rows": 10,
     "source_files": {
       "coverage_report": "data/reports/coverage_report.json",
@@ -3138,14 +3138,14 @@
           "core_exclusion_candidate_identifier_scope_review": 94
         },
         "asx_core_exclusion_candidate_official_source_totals": {
-          "asx_listed_companies": 92,
-          "none": 2
+          "asx_listed_companies": 91,
+          "none": 3
         },
         "asx_core_exclusion_candidate_official_capability_totals": {
           "masterfile_exposes_isin=false": 94,
           "masterfile_exposes_sector=false": 94,
-          "masterfile_match=false": 2,
-          "masterfile_match=true": 92
+          "masterfile_match=false": 3,
+          "masterfile_match=true": 91
         },
         "gap_class_totals": {
           "debt_or_securitized_identifier_gap": 59,
@@ -3224,8 +3224,8 @@
             "none": 1
           },
           "core_exclusion_candidate_identifier_scope_review": {
-            "asx_listed_companies": 92,
-            "none": 2
+            "asx_listed_companies": 91,
+            "none": 3
           },
           "missing_etf_category_requires_official_product_taxonomy": {
             "asx_listed_companies": 9
@@ -3271,8 +3271,8 @@
           "core_exclusion_candidate_identifier_scope_review": {
             "masterfile_exposes_isin=false": 94,
             "masterfile_exposes_sector=false": 94,
-            "masterfile_match=false": 2,
-            "masterfile_match=true": 92
+            "masterfile_match=false": 3,
+            "masterfile_match=true": 91
           },
           "missing_etf_category_requires_official_product_taxonomy": {
             "masterfile_exposes_isin=false": 9,
@@ -3290,7 +3290,7 @@
             "asx_resolution_queue": "core_exclusion_candidate_identifier_scope_review",
             "field": "missing_isin_primary",
             "official_source": "asx_listed_companies",
-            "rows": 92,
+            "rows": 91,
             "review_strategy": "scope_review_before_asx_identifier_enrichment",
             "evidence_required": "scope_decision_for_core_extended_or_exclude_before_identifier_or_category_fill",
             "recommended_next_source": "asx_listed_companies plus reviewed scope decision for core, extended, or exclude before identifier work.",
@@ -3320,7 +3320,7 @@
             "asx_resolution_queue": "core_exclusion_candidate_identifier_scope_review",
             "field": "missing_isin_primary",
             "official_source": "none",
-            "rows": 2,
+            "rows": 3,
             "review_strategy": "scope_review_before_asx_identifier_enrichment",
             "evidence_required": "scope_decision_for_core_extended_or_exclude_before_identifier_or_category_fill",
             "recommended_next_source": "current official ASX, registry, or issuer source plus reviewed scope decision for core, extended, or exclude before identifier work.",
@@ -3371,8 +3371,8 @@
           "no_asx_match": 103
         },
         "official_masterfile_match_totals": {
-          "false": 3,
-          "true": 111
+          "false": 4,
+          "true": 110
         },
         "official_masterfile_exposes_isin_totals": {
           "false": 114
@@ -3381,13 +3381,13 @@
           "false": 114
         },
         "official_masterfile_source_totals": {
-          "asx_listed_companies": 111
+          "asx_listed_companies": 110
         }
       },
       "artifacts": [
         {
           "path": "data/reports/asx_residual_review.json",
-          "generated_at": "2026-05-25T12:54:48Z",
+          "generated_at": "2026-06-02T19:09:19Z",
           "rows": 114
         }
       ],
@@ -10730,12 +10730,12 @@
       "artifacts": [
         {
           "path": "data/reports/improvement_baseline.json",
-          "generated_at": "2026-06-02T19:05:23Z",
+          "generated_at": "2026-06-02T19:09:20Z",
           "rows": 0
         },
         {
           "path": "data/reports/improvement_deltas.json",
-          "generated_at": "2026-06-02T19:05:24Z",
+          "generated_at": "2026-06-02T19:09:21Z",
           "rows": 0
         }
       ],
@@ -10833,7 +10833,7 @@
       "delta_evidence": {
         "status": "baseline_only",
         "known_deltas": {
-          "baseline_generated_at": "2026-06-02T19:05:23Z",
+          "baseline_generated_at": "2026-06-02T19:09:20Z",
           "future_delta_reference": "data/reports/improvement_baseline.json",
           "current_delta_report": "data/reports/improvement_deltas.json"
         },

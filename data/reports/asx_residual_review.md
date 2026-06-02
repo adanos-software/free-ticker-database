@@ -1,6 +1,6 @@
 # ASX Residual Review
 
-Generated at: `2026-05-25T12:54:48Z`
+Generated at: `2026-06-02T19:09:19Z`
 
 This report tracks ASX residual ISIN and ETF-category gaps after current official ASX masterfile and ASX ISIN workbook checks. It does not fill values.
 
@@ -76,8 +76,8 @@ This report tracks ASX residual ISIN and ETF-category gaps after current officia
 | Queue | Official source | Rows |
 |---|---|---:|
 | asx_isin_workbook_name_mismatch_manual_review | none | 1 |
-| core_exclusion_candidate_identifier_scope_review | asx_listed_companies | 92 |
-| core_exclusion_candidate_identifier_scope_review | none | 2 |
+| core_exclusion_candidate_identifier_scope_review | asx_listed_companies | 91 |
+| core_exclusion_candidate_identifier_scope_review | none | 3 |
 | missing_etf_category_requires_official_product_taxonomy | asx_listed_companies | 9 |
 | missing_isin_not_in_current_asx_isin_workbook | asx_listed_companies | 10 |
 
@@ -90,8 +90,8 @@ This report tracks ASX residual ISIN and ETF-category gaps after current officia
 | asx_isin_workbook_name_mismatch_manual_review | masterfile_match=false | 1 |
 | core_exclusion_candidate_identifier_scope_review | masterfile_exposes_isin=false | 94 |
 | core_exclusion_candidate_identifier_scope_review | masterfile_exposes_sector=false | 94 |
-| core_exclusion_candidate_identifier_scope_review | masterfile_match=false | 2 |
-| core_exclusion_candidate_identifier_scope_review | masterfile_match=true | 92 |
+| core_exclusion_candidate_identifier_scope_review | masterfile_match=false | 3 |
+| core_exclusion_candidate_identifier_scope_review | masterfile_match=true | 91 |
 | missing_etf_category_requires_official_product_taxonomy | masterfile_exposes_isin=false | 9 |
 | missing_etf_category_requires_official_product_taxonomy | masterfile_exposes_sector=false | 9 |
 | missing_etf_category_requires_official_product_taxonomy | masterfile_match=true | 9 |
@@ -121,10 +121,10 @@ This report tracks ASX residual ISIN and ETF-category gaps after current officia
 
 | Queue | Field | Official source | Strategy | Evidence required | Recommended next source | Source gate | Rows |
 |---|---|---|---|---|---|---|---:|
-| core_exclusion_candidate_identifier_scope_review | missing_isin_primary | asx_listed_companies | scope_review_before_asx_identifier_enrichment | scope_decision_for_core_extended_or_exclude_before_identifier_or_category_fill | asx_listed_companies plus reviewed scope decision for core, extended, or exclude before identifier work. | No ISIN or category enrichment until the listing is reviewed as core, extended, or excluded. | 92 |
+| core_exclusion_candidate_identifier_scope_review | missing_isin_primary | asx_listed_companies | scope_review_before_asx_identifier_enrichment | scope_decision_for_core_extended_or_exclude_before_identifier_or_category_fill | asx_listed_companies plus reviewed scope decision for core, extended, or exclude before identifier work. | No ISIN or category enrichment until the listing is reviewed as core, extended, or excluded. | 91 |
 | missing_isin_not_in_current_asx_isin_workbook | missing_isin_primary | asx_listed_companies | keep_isin_blank_until_current_asx_or_registry_source | direct_registry_issuer_or_official_asx_identifier_source_with_exact_listing_match | Current ASX ISIN workbook, registry, issuer, trustee, or prospectus source with exact listing match. | Keep ISIN blank until current ASX, registry, issuer, or trustee evidence proves the identifier. | 10 |
 | missing_etf_category_requires_official_product_taxonomy | missing_etf_category | asx_listed_companies | seek_official_or_reviewed_asx_product_taxonomy | official_or_reviewed_product_taxonomy_with_exact_listing_match | Official ASX product taxonomy, issuer/sponsor product page, PDS, or reviewed product taxonomy source. | Keep ETF category blank until exact product taxonomy evidence exists. | 9 |
-| core_exclusion_candidate_identifier_scope_review | missing_isin_primary | none | scope_review_before_asx_identifier_enrichment | scope_decision_for_core_extended_or_exclude_before_identifier_or_category_fill | current official ASX, registry, or issuer source plus reviewed scope decision for core, extended, or exclude before identifier work. | No ISIN or category enrichment until the listing is reviewed as core, extended, or excluded. | 2 |
+| core_exclusion_candidate_identifier_scope_review | missing_isin_primary | none | scope_review_before_asx_identifier_enrichment | scope_decision_for_core_extended_or_exclude_before_identifier_or_category_fill | current official ASX, registry, or issuer source plus reviewed scope decision for core, extended, or exclude before identifier work. | No ISIN or category enrichment until the listing is reviewed as core, extended, or excluded. | 3 |
 | asx_isin_workbook_name_mismatch_manual_review | missing_isin_primary | none | manual_identity_review_before_asx_isin_apply | manual_exact_name_or_alias_resolution_before_isin_apply | Manual exact-name or reviewed-alias resolution against ASX workbook, issuer, or registry evidence. | Do not apply workbook ISIN until the name mismatch is manually resolved with exact listing evidence. | 1 |
 
 ## Review Priorities
@@ -176,15 +176,15 @@ This report tracks ASX residual ISIN and ETF-category gaps after current officia
 
 | Official source | Rows |
 |---|---:|
-| asx_listed_companies | 92 |
-| none | 2 |
+| asx_listed_companies | 91 |
+| none | 3 |
 
 | Official capability | Rows |
 |---|---:|
 | masterfile_exposes_isin=false | 94 |
 | masterfile_exposes_sector=false | 94 |
-| masterfile_match=false | 2 |
-| masterfile_match=true | 92 |
+| masterfile_match=false | 3 |
+| masterfile_match=true | 91 |
 
 ## Verification Evidence
 
