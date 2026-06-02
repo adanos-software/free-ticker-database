@@ -4,6 +4,7 @@ from scripts.build_deepseek_batch_plan import (
     QueueConfig,
     build_plan,
     render_markdown,
+    runner_command,
     write_batch_csv,
 )
 
@@ -125,3 +126,23 @@ def test_write_batch_and_markdown_include_policy(tmp_path) -> None:
     assert "advisory triage only" in markdown
     assert "DEEPSEEK_API_KEY" in markdown
     assert "--dry-run" in markdown
+
+
+def test_runner_dry_run_command_uses_separate_output_paths(tmp_path) -> None:
+    config = QueueConfig(
+        "masterfile_collision",
+        "masterfile_collision",
+        tmp_path / "source.csv",
+        "target_listing_key",
+        1,
+        "Review first.",
+    )
+
+    live = runner_command(config, tmp_path / "batch.csv", limit=5, batch_size=5)
+    dry = runner_command(config, tmp_path / "batch.csv", limit=5, batch_size=5, dry_run=True)
+
+    assert "data/deepseek_review_jobs/raw_responses.jsonl" in live
+    assert "data/deepseek_review_jobs/raw_responses.jsonl" not in dry
+    assert "data/deepseek_review_jobs/dry_run_masterfile_collision_next_raw_responses.jsonl" in dry
+    assert "data/deepseek_review_jobs/dry_run_masterfile_collision_next_normalized_reviews.json" in dry
+    assert "--dry-run" in dry

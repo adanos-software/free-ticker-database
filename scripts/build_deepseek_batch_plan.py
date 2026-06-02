@@ -142,6 +142,15 @@ def write_batch_csv(path: Path, rows: list[dict[str, str]], fieldnames: list[str
 
 def runner_command(config: QueueConfig, batch_csv: Path, *, limit: int, batch_size: int, dry_run: bool = False) -> list[str]:
     stem = f"{config.queue}_next"
+    raw_responses_jsonl = JOBS_DIR / "raw_responses.jsonl"
+    normalized_json = JOBS_DIR / f"{stem}_normalized_reviews.json"
+    normalized_csv = JOBS_DIR / f"{stem}_normalized_reviews.csv"
+    errors_json = JOBS_DIR / f"{stem}_errors.json"
+    if dry_run:
+        raw_responses_jsonl = JOBS_DIR / f"dry_run_{stem}_raw_responses.jsonl"
+        normalized_json = JOBS_DIR / f"dry_run_{stem}_normalized_reviews.json"
+        normalized_csv = JOBS_DIR / f"dry_run_{stem}_normalized_reviews.csv"
+        errors_json = JOBS_DIR / f"dry_run_{stem}_errors.json"
     command = [
         "python",
         "scripts/run_deepseek_review_queue.py",
@@ -154,13 +163,13 @@ def runner_command(config: QueueConfig, batch_csv: Path, *, limit: int, batch_si
         "--batch-size",
         str(batch_size),
         "--raw-responses-jsonl",
-        display_path(JOBS_DIR / "raw_responses.jsonl"),
+        display_path(raw_responses_jsonl),
         "--normalized-json",
-        display_path(JOBS_DIR / f"{stem}_normalized_reviews.json"),
+        display_path(normalized_json),
         "--normalized-csv",
-        display_path(JOBS_DIR / f"{stem}_normalized_reviews.csv"),
+        display_path(normalized_csv),
         "--errors-json",
-        display_path(JOBS_DIR / f"{stem}_errors.json"),
+        display_path(errors_json),
     ]
     if dry_run:
         command.append("--dry-run")
