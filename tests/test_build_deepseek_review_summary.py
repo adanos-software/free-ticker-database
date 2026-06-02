@@ -106,6 +106,59 @@ def test_build_payload_clamps_incompatible_safe_actions(tmp_path) -> None:
     assert payload["summary"]["safe_action_totals"] == {"source_gap_accept": 1}
 
 
+def test_build_payload_records_bad_jsonl_lines_without_dropping_valid_batches(tmp_path) -> None:
+    raw = tmp_path / "raw.jsonl"
+    raw.write_text(
+        "\n".join(
+            [
+                json.dumps(
+                    {
+                        "batch_index": 1,
+                        "review_kind": "otc_scope",
+                        "response": {
+                            "reviews": [
+                                {
+                                    "listing_key": "OTC::ABCD",
+                                    "ticker": "ABCD",
+                                    "exchange": "OTC",
+                                    "decision_candidate": "needs_official_evidence",
+                                    "safe_action": "needs_official_evidence",
+                                }
+                            ]
+                        },
+                    }
+                ),
+                "{not-json",
+                json.dumps(
+                    {
+                        "batch_index": 2,
+                        "review_kind": "weak_sector",
+                        "response": {
+                            "reviews": [
+                                {
+                                    "listing_key": "NGX::ABC",
+                                    "ticker": "ABC",
+                                    "exchange": "NGX",
+                                    "decision_candidate": "keep_source_gap",
+                                    "safe_action": "source_gap_accept",
+                                }
+                            ]
+                        },
+                    }
+                ),
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    payload = build_payload(raw)
+
+    assert payload["summary"]["rows"] == 2
+    assert payload["summary"]["errors"] == 1
+    assert payload["errors"][0]["line_number"] == 2
+    assert "invalid JSONL" in payload["errors"][0]["error"]
+
+
 def test_render_markdown_marks_deepseek_as_triage_only(tmp_path) -> None:
     raw = tmp_path / "raw.jsonl"
     raw.write_text(

@@ -69,20 +69,26 @@ def trim(value: object, max_length: int = 500) -> str:
     return f"{text[: max_length - 3]}..."
 
 
-def iter_raw_batches(path: Path) -> list[dict[str, Any]]:
+def iter_raw_batches(path: Path) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     batches: list[dict[str, Any]] = []
+    errors: list[dict[str, Any]] = []
     if not path.exists():
-        return batches
+        return batches, errors
     with path.open(encoding="utf-8") as handle:
         for line_number, line in enumerate(handle, start=1):
             line = line.strip()
             if not line:
                 continue
-            payload = json.loads(line)
+            try:
+                payload = json.loads(line)
+            except json.JSONDecodeError as exc:
+                errors.append({"line_number": line_number, "error": f"invalid JSONL: {exc}"})
+                continue
             if not isinstance(payload, dict):
-                raise ValueError(f"Raw response line {line_number} is not a JSON object.")
+                errors.append({"line_number": line_number, "error": "raw response line is not a JSON object"})
+                continue
             batches.append(payload)
-    return batches
+    return batches, errors
 
 
 def normalize_review(review: dict[str, Any], *, batch_index: int, review_kind: str) -> dict[str, Any]:
@@ -162,8 +168,9 @@ def summarize_reviews(reviews: list[dict[str, Any]], errors: list[dict[str, Any]
 
 
 def build_payload(raw_path: Path) -> dict[str, Any]:
-    batches = iter_raw_batches(raw_path)
+    batches, parse_errors = iter_raw_batches(raw_path)
     reviews, errors = normalize_batches(batches)
+    errors = parse_errors + errors
     return {
         "_meta": {
             "generated_at": utc_now_iso(),
