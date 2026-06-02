@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T20:33:12Z",
+    "generated_at": "2026-06-02T20:40:07Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -207,38 +207,38 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-02T20:33:12Z",
+      "release_generated_at": "2026-06-02T20:40:07Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-02T20:33:10Z"
+          "generated_at": "2026-06-02T20:40:04Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-02T20:33:09Z"
+          "generated_at": "2026-06-02T20:40:03Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
           "exists": true,
-          "generated_at": "2026-06-02T20:32:51Z"
+          "generated_at": "2026-06-02T20:39:46Z"
         },
         "improvement_deltas": {
           "path": "data/reports/improvement_deltas.json",
           "exists": true,
-          "generated_at": "2026-06-02T20:32:51Z"
+          "generated_at": "2026-06-02T20:39:47Z"
         },
         "improvement_campaigns": {
           "path": "data/reports/improvement_campaigns.json",
           "exists": true,
-          "generated_at": "2026-06-02T20:32:51Z"
+          "generated_at": "2026-06-02T20:39:47Z"
         },
         "source_refresh_queue": {
           "path": "data/reports/source_refresh_queue.json",
           "exists": true,
-          "generated_at": "2026-06-02T20:22:56Z"
+          "generated_at": "2026-06-02T20:39:46Z"
         },
         "symbol_changes_review": {
           "path": "data/reports/symbol_changes_review.json",
@@ -248,12 +248,12 @@
         "ohlcv_plausibility": {
           "path": "data/reports/ohlcv_plausibility.json",
           "exists": true,
-          "generated_at": "2026-06-02T19:37:44Z"
+          "generated_at": "2026-06-02T20:39:44Z"
         },
         "ohlcv_warning_review": {
           "path": "data/reports/ohlcv_warning_review.json",
           "exists": true,
-          "generated_at": "2026-05-25T11:11:55Z"
+          "generated_at": "2026-06-02T20:39:44Z"
         },
         "masterfile_collision_review": {
           "path": "data/reports/masterfile_collision_review.json",
@@ -263,7 +263,7 @@
         "otc_scope_review": {
           "path": "data/reports/otc_scope_review.json",
           "exists": true,
-          "generated_at": "2026-06-02T18:59:53Z"
+          "generated_at": "2026-06-02T20:38:58Z"
         },
         "canada_residual_review": {
           "path": "data/reports/canada_residual_review.json",
@@ -303,12 +303,12 @@
         "adanos_alias_audit": {
           "path": "data/reports/adanos_alias_audit.json",
           "exists": true,
-          "generated_at": "2026-05-25T02:04:26Z"
+          "generated_at": "2026-06-02T20:36:35Z"
         },
         "adanos_detection_simulation": {
           "path": "data/reports/adanos_detection_simulation.json",
           "exists": true,
-          "generated_at": "2026-05-31T04:00:03Z"
+          "generated_at": "2026-06-02T20:36:36Z"
         }
       },
       "missing_files": [],
@@ -333,7 +333,7 @@
     },
     "adanos_detection_simulation": {
       "passed": true,
-      "generated_at": "2026-05-31T04:00:03Z",
+      "generated_at": "2026-06-02T20:36:36Z",
       "source_files": {
         "adanos_reference_csv": "data/adanos/ticker_reference.csv"
       },
@@ -360,16 +360,16 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-02T20:33:09Z",
+      "generated_at": "2026-06-02T20:40:03Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
       "command_report": {
-        "allowed_warn_count": 1076,
+        "allowed_warn_count": 1093,
         "passed": true,
         "quarantine_count": 0,
         "unexpected_warn_count": 0,
-        "warn_count": 222
+        "warn_count": 115
       },
       "expected_counts_from_validation": {
         "quarantine_count": 0,
@@ -643,8 +643,8 @@
       "invalid_generated_at": "",
       "source_file_mismatches": {},
       "unexpected_source_files": [],
-      "rows": 350,
-      "flagged_rows": 202,
+      "rows": 240,
+      "flagged_rows": 183,
       "missing_summary_keys": [],
       "row_count_mismatch": {},
       "row_gaps": [],
@@ -1054,10 +1054,10 @@
           "delta_context": "scope=global;metric=source_gap_delta;baseline=3548;current=3548;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
         },
         "warn_delta": {
-          "baseline": 222,
-          "current": 222,
+          "baseline": 115,
+          "current": 115,
           "delta": 0,
-          "delta_context": "scope=global;metric=warn_delta;baseline=222;current=222;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+          "delta_context": "scope=global;metric=warn_delta;baseline=115;current=115;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
         },
         "quarantine_delta": {
           "baseline": 0,
@@ -1139,8 +1139,8 @@
       "passed": true,
       "batches": 10,
       "summary_next_review_batches": 10,
-      "summary_next_review_batch_rows": 29122,
-      "computed_next_review_batch_rows": 29122,
+      "summary_next_review_batch_rows": 28992,
+      "computed_next_review_batch_rows": 28992,
       "observed_campaign_keys_by_priority": {
         "1": "b3",
         "2": "otc",

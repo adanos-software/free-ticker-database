@@ -1,6 +1,6 @@
 # Improvement Baseline
 
-Generated: `2026-06-02T20:32:51Z`
+Generated: `2026-06-02T20:39:46Z`
 
 Baseline snapshot for future before/after deltas. It does not authorize inferred metadata changes.
 
@@ -12,9 +12,9 @@ Baseline snapshot for future before/after deltas. It does not authorize inferred
 | campaign_count | `10` |
 | exchange_count | `80` |
 | source_file_count | `18` |
-| baseline_context | `"metric_count=16;tickers=61466;listing_keys=71043;source_gap_rows=3548;warn_rows=222;quarantine_rows=0;validation_failed_error_gates=0"` |
+| baseline_context | `"metric_count=16;tickers=61466;listing_keys=71043;source_gap_rows=3548;warn_rows=115;quarantine_rows=0;validation_failed_error_gates=0"` |
 
-Global context: `metric_count=16;tickers=61466;listing_keys=71043;source_gap_rows=3548;warn_rows=222;quarantine_rows=0;validation_failed_error_gates=0`
+Global context: `metric_count=16;tickers=61466;listing_keys=71043;source_gap_rows=3548;warn_rows=115;quarantine_rows=0;validation_failed_error_gates=0`
 
 ## Global
 
@@ -31,8 +31,8 @@ Global context: `metric_count=16;tickers=61466;listing_keys=71043;source_gap_row
 | official_masterfile_collisions | `11182` |
 | official_masterfile_missing | `16764` |
 | source_gap_rows | `3548` |
-| entry_quality_warn_rows | `222` |
-| entry_quality_source_gap_rows | `7436` |
+| entry_quality_warn_rows | `115` |
+| entry_quality_source_gap_rows | `7267` |
 | entry_quality_quarantine_rows | `0` |
 | validation_failed_error_gates | `0` |
 | source_freshness_status_totals | `{"fresh": 136}` |
@@ -106,17 +106,17 @@ Global context: `metric_count=16;tickers=61466;listing_keys=71043;source_gap_row
 
 | Metric | Value |
 |---|---:|
-| baseline_context | `campaign_key=ohlcv;metric_count=4;nested_metric_count=2;numeric_row_total=366` |
-| sample_rows | `350` |
-| status_counts | `{"not_checked": 100, "notice": 24, "pass": 48, "source_gap": 8, "warn": 170}` |
-| warning_review_rows | `16` |
-| warning_review_authorization_counts | `{"blocked_until_official_listing_keyed_review": 16}` |
+| baseline_context | `campaign_key=ohlcv;metric_count=4;nested_metric_count=2;numeric_row_total=360` |
+| sample_rows | `240` |
+| status_counts | `{"not_checked": 12, "notice": 24, "pass": 45, "source_gap": 39, "warn": 120}` |
+| warning_review_rows | `120` |
+| warning_review_authorization_counts | `{"blocked_until_official_listing_keyed_review": 120}` |
 
 ### freshness
 
 | Metric | Value |
 |---|---:|
-| baseline_context | `campaign_key=freshness;metric_count=14;nested_metric_count=8;numeric_row_total=4862` |
+| baseline_context | `campaign_key=freshness;metric_count=14;nested_metric_count=8;numeric_row_total=4752` |
 | source_count | `136` |
 | source_freshness_status_totals | `{"fresh": 136}` |
 | source_refresh_priority_totals | `{"P1": 1, "P2": 4, "P4": 131}` |
@@ -153,7 +153,7 @@ Global context: `metric_count=16;tickers=61466;listing_keys=71043;source_gap_row
 | Metric | Value |
 |---|---:|
 | symbol_changes_review_rows | `271` |
-| ohlcv_plausibility_rows | `350` |
+| ohlcv_plausibility_rows | `240` |
 | financialdata_supplement_rows | `557` |
 | financialdata_apply_eligibility_counts | `{"blocked_until_exchange_scope_explicitly_allowed": 91, "blocked_until_unique_official_isin_candidate_resolved": 163, "keep_absent_until_name_gated_official_isin_match": 169, "no_supplement_apply_existing_identifier_or_collision_guard": 199, "preserve_existing_reviewed_supplement_no_new_apply": 43}` |
 | financialdata_verification_evidence_required_counts | `{"existing_database_isin_confirms_no_supplement_needed_or_cross_listing_review": 16, "existing_listing_key_confirms_no_supplement_needed": 33, "existing_reviewed_supplement_retained_with_original_official_source": 43, "explicit_exchange_scope_decision_before_financialdata_discovery_use": 91, "identity_resolution_before_any_global_ticker_reuse": 150, "official_active_masterfile_or_registry_row_matching_financialdata_name_and_listing": 169, "single_official_active_listing_with_valid_isin_and_name_gate": 163}` |
@@ -175,20 +175,20 @@ Global context: `metric_count=16;tickers=61466;listing_keys=71043;source_gap_row
 | Exchange | Tickers | ISIN | Sector | Source Gaps | Warns | Quality Source Gaps | Quarantine | Review Context |
 |---|---:|---:|---:|---:|---:|---:|---:|---|
 | ADX | 86 | 86 | 86 | 0 | 0 | 1 | 0 | `exchange=ADX;tickers=86;isin_coverage=86;sector_coverage=86;source_gap_rows=0;warn_rows=0;quality_source_gap_rows=1;quarantine_rows=0` |
-| AMS | 314 | 310 | 226 | 26 | 0 | 96 | 0 | `exchange=AMS;tickers=314;isin_coverage=310;sector_coverage=226;source_gap_rows=26;warn_rows=0;quality_source_gap_rows=96;quarantine_rows=0` |
-| ASX | 1298 | 1193 | 1253 | 146 | 1 | 141 | 0 | `exchange=ASX;tickers=1298;isin_coverage=1193;sector_coverage=1253;source_gap_rows=146;warn_rows=1;quality_source_gap_rows=141;quarantine_rows=0` |
+| AMS | 314 | 310 | 226 | 26 | 0 | 97 | 0 | `exchange=AMS;tickers=314;isin_coverage=310;sector_coverage=226;source_gap_rows=26;warn_rows=0;quality_source_gap_rows=97;quarantine_rows=0` |
+| ASX | 1298 | 1193 | 1253 | 146 | 3 | 143 | 0 | `exchange=ASX;tickers=1298;isin_coverage=1193;sector_coverage=1253;source_gap_rows=146;warn_rows=3;quality_source_gap_rows=143;quarantine_rows=0` |
 | ATHEX | 117 | 109 | 117 | 8 | 0 | 26 | 0 | `exchange=ATHEX;tickers=117;isin_coverage=109;sector_coverage=117;source_gap_rows=8;warn_rows=0;quality_source_gap_rows=26;quarantine_rows=0` |
-| B3 | 1584 | 1572 | 1389 | 206 | 0 | 212 | 0 | `exchange=B3;tickers=1584;isin_coverage=1572;sector_coverage=1389;source_gap_rows=206;warn_rows=0;quality_source_gap_rows=212;quarantine_rows=0` |
+| B3 | 1584 | 1572 | 1389 | 206 | 0 | 325 | 0 | `exchange=B3;tickers=1584;isin_coverage=1572;sector_coverage=1389;source_gap_rows=206;warn_rows=0;quality_source_gap_rows=325;quarantine_rows=0` |
 | BATS | 1241 | 1219 | 1220 | 27 | 0 | 83 | 0 | `exchange=BATS;tickers=1241;isin_coverage=1219;sector_coverage=1220;source_gap_rows=27;warn_rows=0;quality_source_gap_rows=83;quarantine_rows=0` |
 | BCBA | 64 | 61 | 50 | 17 | 0 | 14 | 0 | `exchange=BCBA;tickers=64;isin_coverage=61;sector_coverage=50;source_gap_rows=17;warn_rows=0;quality_source_gap_rows=14;quarantine_rows=0` |
 | BHB | 29 | 29 | 2 | 27 | 0 | 27 | 0 | `exchange=BHB;tickers=29;isin_coverage=29;sector_coverage=2;source_gap_rows=27;warn_rows=0;quality_source_gap_rows=27;quarantine_rows=0` |
 | BIST | 614 | 614 | 608 | 6 | 0 | 6 | 0 | `exchange=BIST;tickers=614;isin_coverage=614;sector_coverage=608;source_gap_rows=6;warn_rows=0;quality_source_gap_rows=6;quarantine_rows=0` |
 | BK | 104 | 104 | 1 | 102 | 0 | 102 | 0 | `exchange=BK;tickers=104;isin_coverage=104;sector_coverage=1;source_gap_rows=102;warn_rows=0;quality_source_gap_rows=102;quarantine_rows=0` |
-| BME | 169 | 169 | 160 | 9 | 0 | 102 | 0 | `exchange=BME;tickers=169;isin_coverage=169;sector_coverage=160;source_gap_rows=9;warn_rows=0;quality_source_gap_rows=102;quarantine_rows=0` |
-| BMV | 179 | 160 | 174 | 23 | 0 | 29 | 0 | `exchange=BMV;tickers=179;isin_coverage=160;sector_coverage=174;source_gap_rows=23;warn_rows=0;quality_source_gap_rows=29;quarantine_rows=0` |
+| BME | 169 | 169 | 160 | 9 | 0 | 97 | 0 | `exchange=BME;tickers=169;isin_coverage=169;sector_coverage=160;source_gap_rows=9;warn_rows=0;quality_source_gap_rows=97;quarantine_rows=0` |
+| BMV | 179 | 160 | 174 | 23 | 0 | 171 | 0 | `exchange=BMV;tickers=179;isin_coverage=160;sector_coverage=174;source_gap_rows=23;warn_rows=0;quality_source_gap_rows=171;quarantine_rows=0` |
 | BSE_BW | 39 | 39 | 28 | 8 | 0 | 13 | 0 | `exchange=BSE_BW;tickers=39;isin_coverage=39;sector_coverage=28;source_gap_rows=8;warn_rows=0;quality_source_gap_rows=13;quarantine_rows=0` |
 | BSE_HU | 31 | 23 | 13 | 23 | 1 | 28 | 0 | `exchange=BSE_HU;tickers=31;isin_coverage=23;sector_coverage=13;source_gap_rows=23;warn_rows=1;quality_source_gap_rows=28;quarantine_rows=0` |
-| BSE_IN | 2642 | 2642 | 2599 | 42 | 0 | 64 | 0 | `exchange=BSE_IN;tickers=2642;isin_coverage=2642;sector_coverage=2599;source_gap_rows=42;warn_rows=0;quality_source_gap_rows=64;quarantine_rows=0` |
+| BSE_IN | 2642 | 2642 | 2599 | 42 | 3 | 209 | 0 | `exchange=BSE_IN;tickers=2642;isin_coverage=2642;sector_coverage=2599;source_gap_rows=42;warn_rows=3;quality_source_gap_rows=209;quarantine_rows=0` |
 | BVB | 80 | 80 | 76 | 4 | 0 | 4 | 0 | `exchange=BVB;tickers=80;isin_coverage=80;sector_coverage=76;source_gap_rows=4;warn_rows=0;quality_source_gap_rows=4;quarantine_rows=0` |
 | BVC | 3 | 0 | 3 | 3 | 0 | 3 | 0 | `exchange=BVC;tickers=3;isin_coverage=0;sector_coverage=3;source_gap_rows=3;warn_rows=0;quality_source_gap_rows=3;quarantine_rows=0` |
 | BVL | 33 | 31 | 3 | 32 | 0 | 30 | 0 | `exchange=BVL;tickers=33;isin_coverage=31;sector_coverage=3;source_gap_rows=32;warn_rows=0;quality_source_gap_rows=30;quarantine_rows=0` |
@@ -202,7 +202,7 @@ Global context: `metric_count=16;tickers=61466;listing_keys=71043;source_gap_row
 | Euronext | 975 | 972 | 755 | 136 | 0 | 150 | 0 | `exchange=Euronext;tickers=975;isin_coverage=972;sector_coverage=755;source_gap_rows=136;warn_rows=0;quality_source_gap_rows=150;quarantine_rows=0` |
 | GSE | 19 | 18 | 2 | 17 | 0 | 16 | 0 | `exchange=GSE;tickers=19;isin_coverage=18;sector_coverage=2;source_gap_rows=17;warn_rows=0;quality_source_gap_rows=16;quarantine_rows=0` |
 | HEL | 188 | 188 | 185 | 3 | 0 | 9 | 0 | `exchange=HEL;tickers=188;isin_coverage=188;sector_coverage=185;source_gap_rows=3;warn_rows=0;quality_source_gap_rows=9;quarantine_rows=0` |
-| HKEX | 3044 | 3044 | 3005 | 8 | 0 | 11 | 0 | `exchange=HKEX;tickers=3044;isin_coverage=3044;sector_coverage=3005;source_gap_rows=8;warn_rows=0;quality_source_gap_rows=11;quarantine_rows=0` |
+| HKEX | 3044 | 3044 | 3005 | 8 | 4 | 12 | 0 | `exchange=HKEX;tickers=3044;isin_coverage=3044;sector_coverage=3005;source_gap_rows=8;warn_rows=4;quality_source_gap_rows=12;quarantine_rows=0` |
 | HNX | 105 | 105 | 105 | 0 | 0 | 0 | 0 | `exchange=HNX;tickers=105;isin_coverage=105;sector_coverage=105;source_gap_rows=0;warn_rows=0;quality_source_gap_rows=0;quarantine_rows=0` |
 | HOSE | 153 | 153 | 153 | 0 | 0 | 0 | 0 | `exchange=HOSE;tickers=153;isin_coverage=153;sector_coverage=153;source_gap_rows=0;warn_rows=0;quality_source_gap_rows=0;quarantine_rows=0` |
 | ICE_IS | 18 | 18 | 16 | 2 | 0 | 2 | 0 | `exchange=ICE_IS;tickers=18;isin_coverage=18;sector_coverage=16;source_gap_rows=2;warn_rows=0;quality_source_gap_rows=2;quarantine_rows=0` |
@@ -210,23 +210,23 @@ Global context: `metric_count=16;tickers=61466;listing_keys=71043;source_gap_row
 | ISE | 14 | 14 | 13 | 1 | 0 | 5 | 0 | `exchange=ISE;tickers=14;isin_coverage=14;sector_coverage=13;source_gap_rows=1;warn_rows=0;quality_source_gap_rows=5;quarantine_rows=0` |
 | JSE | 212 | 204 | 210 | 10 | 0 | 88 | 0 | `exchange=JSE;tickers=212;isin_coverage=204;sector_coverage=210;source_gap_rows=10;warn_rows=0;quality_source_gap_rows=88;quarantine_rows=0` |
 | KOSDAQ | 1583 | 1578 | 1580 | 8 | 0 | 9 | 0 | `exchange=KOSDAQ;tickers=1583;isin_coverage=1578;sector_coverage=1580;source_gap_rows=8;warn_rows=0;quality_source_gap_rows=9;quarantine_rows=0` |
-| KRX | 1796 | 1794 | 1794 | 4 | 0 | 14 | 0 | `exchange=KRX;tickers=1796;isin_coverage=1794;sector_coverage=1794;source_gap_rows=4;warn_rows=0;quality_source_gap_rows=14;quarantine_rows=0` |
-| LSE | 6415 | 6404 | 5701 | 141 | 60 | 207 | 0 | `exchange=LSE;tickers=6415;isin_coverage=6404;sector_coverage=5701;source_gap_rows=141;warn_rows=60;quality_source_gap_rows=207;quarantine_rows=0` |
+| KRX | 1796 | 1794 | 1794 | 4 | 0 | 16 | 0 | `exchange=KRX;tickers=1796;isin_coverage=1794;sector_coverage=1794;source_gap_rows=4;warn_rows=0;quality_source_gap_rows=16;quarantine_rows=0` |
+| LSE | 6415 | 6404 | 5701 | 141 | 64 | 207 | 0 | `exchange=LSE;tickers=6415;isin_coverage=6404;sector_coverage=5701;source_gap_rows=141;warn_rows=64;quality_source_gap_rows=207;quarantine_rows=0` |
 | LUSE | 22 | 22 | 2 | 20 | 0 | 21 | 0 | `exchange=LUSE;tickers=22;isin_coverage=22;sector_coverage=2;source_gap_rows=20;warn_rows=0;quality_source_gap_rows=21;quarantine_rows=0` |
 | MSE_MW | 8 | 8 | 0 | 8 | 0 | 8 | 0 | `exchange=MSE_MW;tickers=8;isin_coverage=8;sector_coverage=0;source_gap_rows=8;warn_rows=0;quality_source_gap_rows=8;quarantine_rows=0` |
 | MSX | 91 | 1 | 91 | 90 | 0 | 90 | 0 | `exchange=MSX;tickers=91;isin_coverage=1;sector_coverage=91;source_gap_rows=90;warn_rows=0;quality_source_gap_rows=90;quarantine_rows=0` |
-| NASDAQ | 4637 | 4597 | 4614 | 51 | 7 | 184 | 0 | `exchange=NASDAQ;tickers=4637;isin_coverage=4597;sector_coverage=4614;source_gap_rows=51;warn_rows=7;quality_source_gap_rows=184;quarantine_rows=0` |
+| NASDAQ | 4637 | 4597 | 4614 | 51 | 8 | 184 | 0 | `exchange=NASDAQ;tickers=4637;isin_coverage=4597;sector_coverage=4614;source_gap_rows=51;warn_rows=8;quality_source_gap_rows=184;quarantine_rows=0` |
 | NEO | 197 | 152 | 164 | 72 | 0 | 51 | 0 | `exchange=NEO;tickers=197;isin_coverage=152;sector_coverage=164;source_gap_rows=72;warn_rows=0;quality_source_gap_rows=51;quarantine_rows=0` |
 | NGX | 145 | 143 | 114 | 32 | 0 | 38 | 0 | `exchange=NGX;tickers=145;isin_coverage=143;sector_coverage=114;source_gap_rows=32;warn_rows=0;quality_source_gap_rows=38;quarantine_rows=0` |
 | NMFQS | 7 | 7 | 6 | 1 | 0 | 1 | 0 | `exchange=NMFQS;tickers=7;isin_coverage=7;sector_coverage=6;source_gap_rows=1;warn_rows=0;quality_source_gap_rows=1;quarantine_rows=0` |
-| NSE_IN | 1234 | 1234 | 1228 | 6 | 0 | 27 | 0 | `exchange=NSE_IN;tickers=1234;isin_coverage=1234;sector_coverage=1228;source_gap_rows=6;warn_rows=0;quality_source_gap_rows=27;quarantine_rows=0` |
+| NSE_IN | 1234 | 1234 | 1228 | 6 | 1 | 32 | 0 | `exchange=NSE_IN;tickers=1234;isin_coverage=1234;sector_coverage=1228;source_gap_rows=6;warn_rows=1;quality_source_gap_rows=32;quarantine_rows=0` |
 | NSE_KE | 46 | 46 | 13 | 32 | 0 | 40 | 0 | `exchange=NSE_KE;tickers=46;isin_coverage=46;sector_coverage=13;source_gap_rows=32;warn_rows=0;quality_source_gap_rows=40;quarantine_rows=0` |
 | NYSE | 2082 | 2043 | 2069 | 49 | 2 | 84 | 0 | `exchange=NYSE;tickers=2082;isin_coverage=2043;sector_coverage=2069;source_gap_rows=49;warn_rows=2;quality_source_gap_rows=84;quarantine_rows=0` |
 | NYSE ARCA | 2653 | 2601 | 2600 | 58 | 0 | 145 | 0 | `exchange=NYSE ARCA;tickers=2653;isin_coverage=2601;sector_coverage=2600;source_gap_rows=58;warn_rows=0;quality_source_gap_rows=145;quarantine_rows=0` |
-| NYSE MKT | 236 | 235 | 236 | 1 | 0 | 5 | 0 | `exchange=NYSE MKT;tickers=236;isin_coverage=235;sector_coverage=236;source_gap_rows=1;warn_rows=0;quality_source_gap_rows=5;quarantine_rows=0` |
+| NYSE MKT | 236 | 235 | 236 | 1 | 0 | 7 | 0 | `exchange=NYSE MKT;tickers=236;isin_coverage=235;sector_coverage=236;source_gap_rows=1;warn_rows=0;quality_source_gap_rows=7;quarantine_rows=0` |
 | NZX | 45 | 45 | 23 | 19 | 0 | 19 | 0 | `exchange=NZX;tickers=45;isin_coverage=45;sector_coverage=23;source_gap_rows=19;warn_rows=0;quality_source_gap_rows=19;quarantine_rows=0` |
 | OSL | 241 | 237 | 178 | 63 | 0 | 65 | 0 | `exchange=OSL;tickers=241;isin_coverage=237;sector_coverage=178;source_gap_rows=63;warn_rows=0;quality_source_gap_rows=65;quarantine_rows=0` |
-| OTC | 11054 | 10282 | 9909 | 846 | 148 | 3149 | 0 | `exchange=OTC;tickers=11054;isin_coverage=10282;sector_coverage=9909;source_gap_rows=846;warn_rows=148;quality_source_gap_rows=3149;quarantine_rows=0` |
+| OTC | 11054 | 10282 | 9909 | 846 | 24 | 3183 | 0 | `exchange=OTC;tickers=11054;isin_coverage=10282;sector_coverage=9909;source_gap_rows=846;warn_rows=24;quality_source_gap_rows=3183;quarantine_rows=0` |
 | PSE | 90 | 90 | 13 | 76 | 0 | 76 | 0 | `exchange=PSE;tickers=90;isin_coverage=90;sector_coverage=13;source_gap_rows=76;warn_rows=0;quality_source_gap_rows=76;quarantine_rows=0` |
 | PSE_CZ | 24 | 23 | 12 | 13 | 0 | 14 | 0 | `exchange=PSE_CZ;tickers=24;isin_coverage=23;sector_coverage=12;source_gap_rows=13;warn_rows=0;quality_source_gap_rows=14;quarantine_rows=0` |
 | PSX | 373 | 338 | 373 | 35 | 0 | 35 | 0 | `exchange=PSX;tickers=373;isin_coverage=338;sector_coverage=373;source_gap_rows=35;warn_rows=0;quality_source_gap_rows=35;quarantine_rows=0` |
@@ -235,23 +235,23 @@ Global context: `metric_count=16;tickers=61466;listing_keys=71043;source_gap_row
 | SEM | 53 | 53 | 4 | 47 | 0 | 50 | 0 | `exchange=SEM;tickers=53;isin_coverage=53;sector_coverage=4;source_gap_rows=47;warn_rows=0;quality_source_gap_rows=50;quarantine_rows=0` |
 | SET | 547 | 541 | 547 | 6 | 0 | 8 | 0 | `exchange=SET;tickers=547;isin_coverage=541;sector_coverage=547;source_gap_rows=6;warn_rows=0;quality_source_gap_rows=8;quarantine_rows=0` |
 | SGX | 594 | 591 | 515 | 43 | 0 | 43 | 0 | `exchange=SGX;tickers=594;isin_coverage=591;sector_coverage=515;source_gap_rows=43;warn_rows=0;quality_source_gap_rows=43;quarantine_rows=0` |
-| SIX | 743 | 743 | 743 | 0 | 0 | 9 | 0 | `exchange=SIX;tickers=743;isin_coverage=743;sector_coverage=743;source_gap_rows=0;warn_rows=0;quality_source_gap_rows=9;quarantine_rows=0` |
-| SSE | 2789 | 2747 | 2789 | 42 | 0 | 560 | 0 | `exchange=SSE;tickers=2789;isin_coverage=2747;sector_coverage=2789;source_gap_rows=42;warn_rows=0;quality_source_gap_rows=560;quarantine_rows=0` |
+| SIX | 743 | 743 | 743 | 0 | 1 | 9 | 0 | `exchange=SIX;tickers=743;isin_coverage=743;sector_coverage=743;source_gap_rows=0;warn_rows=1;quality_source_gap_rows=9;quarantine_rows=0` |
+| SSE | 2789 | 2747 | 2789 | 42 | 0 | 44 | 0 | `exchange=SSE;tickers=2789;isin_coverage=2747;sector_coverage=2789;source_gap_rows=42;warn_rows=0;quality_source_gap_rows=44;quarantine_rows=0` |
 | SSE_CL | 116 | 87 | 101 | 43 | 0 | 36 | 0 | `exchange=SSE_CL;tickers=116;isin_coverage=87;sector_coverage=101;source_gap_rows=43;warn_rows=0;quality_source_gap_rows=36;quarantine_rows=0` |
 | STO | 725 | 725 | 669 | 55 | 0 | 64 | 0 | `exchange=STO;tickers=725;isin_coverage=725;sector_coverage=669;source_gap_rows=55;warn_rows=0;quality_source_gap_rows=64;quarantine_rows=0` |
 | SZSE | 3083 | 3069 | 3083 | 14 | 1 | 16 | 0 | `exchange=SZSE;tickers=3083;isin_coverage=3069;sector_coverage=3083;source_gap_rows=14;warn_rows=1;quality_source_gap_rows=16;quarantine_rows=0` |
 | TADAWUL | 191 | 191 | 188 | 3 | 0 | 3 | 0 | `exchange=TADAWUL;tickers=191;isin_coverage=191;sector_coverage=188;source_gap_rows=3;warn_rows=0;quality_source_gap_rows=3;quarantine_rows=0` |
-| TASE | 673 | 673 | 647 | 13 | 0 | 109 | 0 | `exchange=TASE;tickers=673;isin_coverage=673;sector_coverage=647;source_gap_rows=13;warn_rows=0;quality_source_gap_rows=109;quarantine_rows=0` |
+| TASE | 673 | 673 | 647 | 13 | 0 | 80 | 0 | `exchange=TASE;tickers=673;isin_coverage=673;sector_coverage=647;source_gap_rows=13;warn_rows=0;quality_source_gap_rows=80;quarantine_rows=0` |
 | TPEX | 1118 | 1118 | 1118 | 0 | 0 | 5 | 0 | `exchange=TPEX;tickers=1118;isin_coverage=1118;sector_coverage=1118;source_gap_rows=0;warn_rows=0;quality_source_gap_rows=5;quarantine_rows=0` |
 | TSE | 3216 | 3212 | 3178 | 30 | 0 | 36 | 0 | `exchange=TSE;tickers=3216;isin_coverage=3212;sector_coverage=3178;source_gap_rows=30;warn_rows=0;quality_source_gap_rows=36;quarantine_rows=0` |
-| TSX | 1904 | 1802 | 1663 | 136 | 0 | 213 | 0 | `exchange=TSX;tickers=1904;isin_coverage=1802;sector_coverage=1663;source_gap_rows=136;warn_rows=0;quality_source_gap_rows=213;quarantine_rows=0` |
-| TSXV | 1066 | 984 | 964 | 182 | 0 | 230 | 0 | `exchange=TSXV;tickers=1066;isin_coverage=984;sector_coverage=964;source_gap_rows=182;warn_rows=0;quality_source_gap_rows=230;quarantine_rows=0` |
+| TSX | 1904 | 1802 | 1663 | 136 | 0 | 210 | 0 | `exchange=TSX;tickers=1904;isin_coverage=1802;sector_coverage=1663;source_gap_rows=136;warn_rows=0;quality_source_gap_rows=210;quarantine_rows=0` |
+| TSXV | 1066 | 984 | 964 | 182 | 0 | 165 | 0 | `exchange=TSXV;tickers=1066;isin_coverage=984;sector_coverage=964;source_gap_rows=182;warn_rows=0;quality_source_gap_rows=165;quarantine_rows=0` |
 | TWSE | 1191 | 1191 | 1190 | 1 | 0 | 17 | 0 | `exchange=TWSE;tickers=1191;isin_coverage=1191;sector_coverage=1190;source_gap_rows=1;warn_rows=0;quality_source_gap_rows=17;quarantine_rows=0` |
 | UPCOM | 2 | 2 | 2 | 0 | 0 | 0 | 0 | `exchange=UPCOM;tickers=2;isin_coverage=2;sector_coverage=2;source_gap_rows=0;warn_rows=0;quality_source_gap_rows=0;quarantine_rows=0` |
 | USE_UG | 7 | 7 | 0 | 7 | 0 | 7 | 0 | `exchange=USE_UG;tickers=7;isin_coverage=7;sector_coverage=0;source_gap_rows=7;warn_rows=0;quality_source_gap_rows=7;quarantine_rows=0` |
 | VSE | 36 | 34 | 32 | 6 | 0 | 15 | 0 | `exchange=VSE;tickers=36;isin_coverage=34;sector_coverage=32;source_gap_rows=6;warn_rows=0;quality_source_gap_rows=15;quarantine_rows=0` |
 | WSE | 348 | 348 | 322 | 25 | 0 | 27 | 0 | `exchange=WSE;tickers=348;isin_coverage=348;sector_coverage=322;source_gap_rows=25;warn_rows=0;quality_source_gap_rows=27;quarantine_rows=0` |
-| XETRA | 3779 | 3776 | 3109 | 46 | 0 | 104 | 0 | `exchange=XETRA;tickers=3779;isin_coverage=3776;sector_coverage=3109;source_gap_rows=46;warn_rows=0;quality_source_gap_rows=104;quarantine_rows=0` |
+| XETRA | 3779 | 3776 | 3109 | 46 | 1 | 106 | 0 | `exchange=XETRA;tickers=3779;isin_coverage=3776;sector_coverage=3109;source_gap_rows=46;warn_rows=1;quality_source_gap_rows=106;quarantine_rows=0` |
 | ZSE | 23 | 23 | 1 | 22 | 0 | 22 | 0 | `exchange=ZSE;tickers=23;isin_coverage=23;sector_coverage=1;source_gap_rows=22;warn_rows=0;quality_source_gap_rows=22;quarantine_rows=0` |
 | ZSE_ZW | 27 | 27 | 6 | 21 | 0 | 21 | 0 | `exchange=ZSE_ZW;tickers=27;isin_coverage=27;sector_coverage=6;source_gap_rows=21;warn_rows=0;quality_source_gap_rows=21;quarantine_rows=0` |
 

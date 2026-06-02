@@ -1,7 +1,7 @@
 # Improvement Deltas
 
-Generated: `2026-06-02T20:32:51Z`
-Baseline: `2026-06-02T20:32:51Z`
+Generated: `2026-06-02T20:39:47Z`
+Baseline: `2026-06-02T20:39:46Z`
 
 This report compares current campaign metrics against `data/reports/improvement_baseline.json`.
 
@@ -24,7 +24,7 @@ This report compares current campaign metrics against `data/reports/improvement_
 | `sector_delta` | 43311 | 43311 | 0 | `scope=global;metric=sector_delta;baseline=43311;current=43311;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
 | `category_delta` | 15453 | 15453 | 0 | `scope=global;metric=category_delta;baseline=15453;current=15453;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
 | `source_gap_delta` | 3548 | 3548 | 0 | `scope=global;metric=source_gap_delta;baseline=3548;current=3548;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
-| `warn_delta` | 222 | 222 | 0 | `scope=global;metric=warn_delta;baseline=222;current=222;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
+| `warn_delta` | 115 | 115 | 0 | `scope=global;metric=warn_delta;baseline=115;current=115;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
 | `quarantine_delta` | 0 | 0 | 0 | `scope=global;metric=quarantine_delta;baseline=0;current=0;delta=0;direction=unchanged;review_policy=no_data_change_inferred` |
 
 ## Changed Exchange Acceptance Deltas
