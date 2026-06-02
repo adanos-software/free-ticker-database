@@ -1,6 +1,6 @@
 # Improvement Baseline
 
-Generated: `2026-06-02T19:18:20Z`
+Generated: `2026-06-02T19:22:49Z`
 
 Baseline snapshot for future before/after deltas. It does not authorize inferred metadata changes.
 
@@ -99,8 +99,8 @@ Global context: `metric_count=16;tickers=61466;listing_keys=71043;source_gap_row
 |---|---:|
 | baseline_context | `campaign_key=symbol_changes;metric_count=3;nested_metric_count=2;numeric_row_total=271` |
 | review_rows | `271` |
-| exchange_scope_status_counts | `{"global_symbol_collision_outside_source_scope": 61, "matches_within_source_scope": 205, "unscoped_source_hint": 5}` |
-| review_bucket_counts | `{"action_required_duplicate_or_cross_listing": 18, "action_required_possible_rename_or_delisting": 30, "already_reflected_in_scope_with_global_symbol_collision": 33, "already_reflected_in_source_scope": 139, "hold_out_of_scope_symbol_collision": 21, "manual_review_due_to_out_of_scope_collision": 7, "manual_scope_mapping_required": 5, "no_dataset_match_for_source_scope": 18}` |
+| exchange_scope_status_counts | `{"global_symbol_collision_outside_source_scope": 61, "matches_within_source_scope": 207, "unscoped_source_hint": 3}` |
+| review_bucket_counts | `{"action_required_duplicate_or_cross_listing": 18, "action_required_possible_rename_or_delisting": 31, "already_reflected_in_scope_with_global_symbol_collision": 33, "already_reflected_in_source_scope": 140, "hold_out_of_scope_symbol_collision": 21, "manual_review_due_to_out_of_scope_collision": 7, "manual_scope_mapping_required": 3, "no_dataset_match_for_source_scope": 18}` |
 
 ### ohlcv
 
