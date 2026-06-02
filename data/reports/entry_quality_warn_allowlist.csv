@@ -88,34 +88,6 @@ OTC::SSPLF,SSPLF,OTC,official_name_mismatch,Reviewed during v3.24.0 official sou
 OTC::VTEPF,VTEPF,OTC,official_name_mismatch,Reviewed during v3.24.0 official source refresh: exact exchange/symbol official reference produced a name mismatch; retained as explicit review-gated warning pending issuer rename/backfill decision.
 OTC::WCHS,WCHS,OTC,official_name_mismatch,Reviewed during v3.24.0 official source refresh: exact exchange/symbol official reference produced a name mismatch; retained as explicit review-gated warning pending issuer rename/backfill decision.
 SZSE::001289,001289,SZSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
-TSX::TKN,TKN,TSX,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-TSX::TVK,TVK,TSX,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-TSXV::AVN,AVN,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-TSXV::BIGG,BIGG,TSXV,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
-TSXV::CVW,CVW,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-TSXV::DTEA,DTEA,TSXV,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
-TSXV::FWZ,FWZ,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-TSXV::GRB,GRB,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-TSXV::IFOS,IFOS,TSXV,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
-TSXV::JEV,JEV,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-TSXV::KEEK,KEEK,TSXV,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
-TSXV::LLG,LLG,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-TSXV::LQWD,LQWD,TSXV,official_name_mismatch|missing_stock_sector,Known v3.12.0 official-name mismatch plus stock-sector source gap review queue.
-TSXV::LVX,LVX,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-TSXV::MCF,MCF,TSXV,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
-TSXV::OPHR,OPHR,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-TSXV::PNPN,PNPN,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-TSXV::RBX,RBX,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-TSXV::SAGE,SAGE,TSXV,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
-TSXV::ULT,ULT,TSXV,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
-TSXV::URZ,URZ,TSXV,official_name_mismatch|expected_missing_primary_isin|missing_stock_sector,Known v3.12.0 official-name mismatch plus stock-sector and primary-ISIN source gap review queue.
-TSXV::VIZ,VIZ,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-TSXV::WAM,WAM,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-TSXV::WHN,WHN,TSXV,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
-TSXV::ZMA,ZMA,TSXV,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-WSE::HUG,HUG,WSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
-WSE::SVRS,SVRS,WSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
-XETRA::AHLA,AHLA,XETRA,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
 NASDAQ::QUCY,QUCY,NASDAQ,official_name_mismatch|expected_missing_primary_isin,Reviewed during v3.25.0 post-merge release refresh: exact NASDAQ official reference and symbol-change review show a current-name mismatch; retained as explicit review-gated warning pending official name backfill.
 NASDAQ::SKIN,SKIN,NASDAQ,official_name_mismatch,Reviewed during v3.25.0 post-merge release refresh: exact NASDAQ official reference shows a current-name mismatch; retained as explicit review-gated warning pending official name backfill.
 NYSE::FIHL,FIHL,NYSE,official_name_mismatch,Reviewed during v3.25.0 post-merge release refresh: exact NYSE official reference shows a current-name mismatch; retained as explicit review-gated warning pending official name backfill.
