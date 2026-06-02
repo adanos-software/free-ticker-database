@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T19:24:18Z",
+    "generated_at": "2026-06-02T19:38:13Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -207,33 +207,33 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-02T19:24:18Z",
+      "release_generated_at": "2026-06-02T19:38:13Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-02T19:24:15Z"
+          "generated_at": "2026-06-02T19:38:11Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-02T19:24:15Z"
+          "generated_at": "2026-06-02T19:38:10Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
           "exists": true,
-          "generated_at": "2026-06-02T19:22:49Z"
+          "generated_at": "2026-06-02T19:37:44Z"
         },
         "improvement_deltas": {
           "path": "data/reports/improvement_deltas.json",
           "exists": true,
-          "generated_at": "2026-06-02T19:22:49Z"
+          "generated_at": "2026-06-02T19:37:45Z"
         },
         "improvement_campaigns": {
           "path": "data/reports/improvement_campaigns.json",
           "exists": true,
-          "generated_at": "2026-06-02T19:22:49Z"
+          "generated_at": "2026-06-02T19:37:45Z"
         },
         "source_refresh_queue": {
           "path": "data/reports/source_refresh_queue.json",
@@ -248,7 +248,7 @@
         "ohlcv_plausibility": {
           "path": "data/reports/ohlcv_plausibility.json",
           "exists": true,
-          "generated_at": "2026-05-31T04:01:17Z"
+          "generated_at": "2026-06-02T19:37:44Z"
         },
         "ohlcv_warning_review": {
           "path": "data/reports/ohlcv_warning_review.json",
@@ -360,7 +360,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-02T19:24:15Z",
+      "generated_at": "2026-06-02T19:38:10Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -686,7 +686,7 @@
       "source_file_mismatches": {},
       "unexpected_source_files": [],
       "rows": 350,
-      "flagged_rows": 0,
+      "flagged_rows": 202,
       "missing_summary_keys": [],
       "row_count_mismatch": {},
       "row_gaps": [],

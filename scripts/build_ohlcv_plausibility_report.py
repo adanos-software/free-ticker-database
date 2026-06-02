@@ -994,6 +994,14 @@ def iter_assessed_rows(
                     issues=issues,
                     plausibility_status=status,
                     plausibility_score=score_for_issues(issues, checked=True),
+                    ohlcv_sample_context=ohlcv_sample_context_for(
+                        ohlcv_source=error_row.ohlcv_source,
+                        ohlcv_symbol=error_row.ohlcv_symbol,
+                        bar_count=error_row.bar_count,
+                        first_bar_date=error_row.first_bar_date,
+                        last_bar_date=error_row.last_bar_date,
+                        issue_count=len(issues),
+                    ),
                     recommended_action=action_for_status(status),
                 )
             if delay_seconds > 0:
@@ -1237,7 +1245,14 @@ def summarize(
                 ),
             },
             "top_flagged_exchanges": [
-                {"exchange": exchange, **dict(counts)}
+                {
+                    "exchange": exchange,
+                    "warn": counts["warn"],
+                    "source_gap": counts["source_gap"],
+                    "notice": counts["notice"],
+                    "not_checked": counts["not_checked"],
+                    "pass": counts["pass"],
+                }
                 for exchange, counts in sorted(
                     exchange_status_counts.items(),
                     key=lambda item: -(item[1]["warn"] + item[1]["source_gap"] + item[1]["notice"] + item[1]["not_checked"]),
@@ -1610,7 +1625,7 @@ def write_markdown(path: Path, payload: dict[str, Any]) -> None:
             "- Default runs omit `not_checked` rows to avoid a large queue-only CSV; use `--include-not-checked` to write them.",
             "- `source_gap` means a market-data lookup was attempted but no usable bars were found.",
             "- `warn` is a market-data anomaly signal, not authoritative proof that the listing row is wrong.",
-            "- For network sampling, run `python3 scripts/build_ohlcv_plausibility_report.py --fetch-yahoo --max-fetch 250 --focus-status source_gap`.",
+            "- For network sampling, run `python3 scripts/build_ohlcv_plausibility_report.py --sample-profile quality_clusters --fetch-yahoo --max-fetch 250 --include-not-checked`.",
         ]
     )
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")

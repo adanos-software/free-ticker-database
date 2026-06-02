@@ -1,6 +1,6 @@
 # Improvement Baseline
 
-Generated: `2026-06-02T19:22:49Z`
+Generated: `2026-06-02T19:37:44Z`
 
 Baseline snapshot for future before/after deltas. It does not authorize inferred metadata changes.
 
@@ -108,7 +108,7 @@ Global context: `metric_count=16;tickers=61466;listing_keys=71043;source_gap_row
 |---|---:|
 | baseline_context | `campaign_key=ohlcv;metric_count=4;nested_metric_count=2;numeric_row_total=366` |
 | sample_rows | `350` |
-| status_counts | `{"not_checked": 350}` |
+| status_counts | `{"not_checked": 100, "notice": 24, "pass": 48, "source_gap": 8, "warn": 170}` |
 | warning_review_rows | `16` |
 | warning_review_authorization_counts | `{"blocked_until_official_listing_keyed_review": 16}` |
 

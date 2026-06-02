@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T19:22:49Z",
+    "generated_at": "2026-06-02T19:37:44Z",
     "purpose": "Baseline snapshot for future campaign before/after deltas. It is not a data-fill source.",
     "source_files": {
       "coverage_report": "data/reports/coverage_report.json",
@@ -149,7 +149,11 @@
     "ohlcv": {
       "sample_rows": 350,
       "status_counts": {
-        "not_checked": 350
+        "not_checked": 100,
+        "notice": 24,
+        "pass": 48,
+        "source_gap": 8,
+        "warn": 170
       },
       "warning_review_rows": 16,
       "warning_review_authorization_counts": {

@@ -355,7 +355,9 @@ def test_ohlcv_report_writes_csv_and_markdown(tmp_path):
                 "issue_counts": {"no_ohlcv_sample": 1},
                 "canonical_data_change_authorization_counts": {"no_canonical_data_change_authorized": 1},
                 "sampling_coverage": {"selected_rows": 1, "report_rows": 1, "checked_rows": 0, "not_checked_rows": 1},
-                "top_flagged_exchanges": [{"exchange": "NASDAQ", "not_checked": 1}],
+                "top_flagged_exchanges": [
+                    {"exchange": "NASDAQ", "warn": 0, "source_gap": 0, "notice": 0, "not_checked": 1, "pass": 0}
+                ],
             },
         },
     )

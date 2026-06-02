@@ -2080,7 +2080,9 @@ def test_build_campaigns_summarizes_all_priorities() -> None:
                     "canonical_data_change_authorization_counts": {"no_canonical_data_change_authorized": 10},
                     "verification_evidence_required_counts": {"local_or_bounded_network_ohlcv_sample_then_existing_entry_quality_review": 10},
                     "source_gap_class_counts": {},
-                    "top_flagged_exchanges": [{"exchange": "OTC", "not_checked": 10}],
+                    "top_flagged_exchanges": [
+                        {"exchange": "OTC", "warn": 0, "source_gap": 0, "notice": 0, "not_checked": 10, "pass": 0}
+                    ],
                 },
             },
             "ohlcv_warning_review": {
@@ -3075,7 +3077,9 @@ def test_build_campaigns_summarizes_all_priorities() -> None:
     }
     assert campaigns[7]["evidence"]["verification_evidence_required_counts"] == {"local_or_bounded_network_ohlcv_sample_then_existing_entry_quality_review": 10}
     assert campaigns[7]["evidence"]["source_gap_class_counts"] == {}
-    assert campaigns[7]["evidence"]["top_flagged_exchanges"] == [{"exchange": "OTC", "not_checked": 10}]
+    assert campaigns[7]["evidence"]["top_flagged_exchanges"] == [
+        {"exchange": "OTC", "warn": 0, "source_gap": 0, "notice": 0, "not_checked": 10, "pass": 0}
+    ]
     assert campaigns[7]["evidence"]["ohlcv_warning_review_rows"] == 2
     assert campaigns[7]["evidence"]["ohlcv_warning_review_bucket_counts"] == {
         "official_listing_status_and_market_data_cross_check": 2

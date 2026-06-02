@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T19:22:49Z",
-    "baseline_generated_at": "2026-06-02T19:22:49Z",
-    "current_generated_at": "2026-06-02T19:22:49Z",
+    "generated_at": "2026-06-02T19:37:45Z",
+    "baseline_generated_at": "2026-06-02T19:37:44Z",
+    "current_generated_at": "2026-06-02T19:37:45Z",
     "baseline_path": "data/reports/improvement_baseline.json",
     "source_files": {
       "baseline_snapshot": "data/reports/improvement_baseline.json",
@@ -28,7 +28,7 @@
     "policy": "Delta report only. Positive or negative deltas require source-level review before any data change is inferred."
   },
   "summary": {
-    "numeric_delta_rows": 922,
+    "numeric_delta_rows": 926,
     "changed_numeric_delta_rows": 0,
     "global_changed_numeric_delta_rows": 0,
     "campaign_changed_numeric_delta_rows": 0,
@@ -606,8 +606,28 @@
         "status_counts": {
           "children": {
             "not_checked": {
-              "baseline": 350,
-              "current": 350,
+              "baseline": 100,
+              "current": 100,
+              "delta": 0
+            },
+            "notice": {
+              "baseline": 24,
+              "current": 24,
+              "delta": 0
+            },
+            "pass": {
+              "baseline": 48,
+              "current": 48,
+              "delta": 0
+            },
+            "source_gap": {
+              "baseline": 8,
+              "current": 8,
+              "delta": 0
+            },
+            "warn": {
+              "baseline": 170,
+              "current": 170,
               "delta": 0
             }
           }

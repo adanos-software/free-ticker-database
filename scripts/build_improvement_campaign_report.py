@@ -1063,7 +1063,7 @@ def evidence_command_for_blocker(campaign_key: str, first_missing_delta: str) ->
         "weak_sector": "python scripts/build_weak_sector_residual_review.py && python scripts/build_improvement_delta_report.py",
         "masterfile_collisions": "python scripts/build_masterfile_collision_review.py && python scripts/build_improvement_delta_report.py",
         "symbol_changes": "python scripts/fetch_symbol_changes.py && python scripts/build_improvement_delta_report.py",
-        "ohlcv": "python scripts/build_ohlcv_plausibility_report.py --fetch-yahoo --max-fetch 250 --focus-status source_gap && python scripts/build_improvement_delta_report.py",
+        "ohlcv": "python scripts/build_ohlcv_plausibility_report.py --sample-profile quality_clusters --fetch-yahoo --max-fetch 250 --include-not-checked && python scripts/build_improvement_delta_report.py",
         "freshness": "python scripts/fetch_exchange_masterfiles.py && python scripts/build_coverage_report.py && python scripts/build_improvement_delta_report.py",
         "baseline": "python scripts/build_improvement_delta_report.py",
     }

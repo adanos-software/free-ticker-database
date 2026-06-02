@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T19:22:49Z",
+    "generated_at": "2026-06-02T19:37:45Z",
     "rows": 10,
     "source_files": {
       "coverage_report": "data/reports/coverage_report.json",
@@ -7702,23 +7702,34 @@
       "evidence": {
         "ohlcv_rows": 350,
         "selected_sample_rows": 350,
-        "checked_sample_rows": 0,
-        "not_checked_sample_rows": 350,
+        "checked_sample_rows": 250,
+        "not_checked_sample_rows": 100,
         "sampling_coverage": {
           "selected_rows": 350,
           "report_rows": 350,
-          "checked_rows": 0,
-          "not_checked_rows": 350,
+          "checked_rows": 250,
+          "not_checked_rows": 100,
           "skipped_not_checked_rows": 0,
           "local_sample_rows": 0,
-          "yahoo_sample_rows": 0,
-          "warn_or_source_gap_signal_rows": 0
+          "yahoo_sample_rows": 250,
+          "warn_or_source_gap_signal_rows": 202
         },
         "status_counts": {
-          "not_checked": 350
+          "not_checked": 100,
+          "notice": 24,
+          "pass": 48,
+          "source_gap": 8,
+          "warn": 170
         },
         "issue_counts": {
-          "no_ohlcv_sample": 350
+          "invalid_ohlcv_bar": 154,
+          "long_zero_volume_streak": 120,
+          "long_stagnant_close_streak": 103,
+          "no_ohlcv_sample": 100,
+          "large_price_jump": 78,
+          "short_history": 19,
+          "no_ohlcv_bars": 8,
+          "ohlcv_fetch_error": 8
         },
         "selection_bucket_counts": {
           "entry_quality_warn": 222,
@@ -7866,7 +7877,11 @@
         },
         "selection_bucket_status_counts": {
           "entry_quality_warn": {
-            "not_checked": 222
+            "not_checked": 1,
+            "notice": 19,
+            "pass": 40,
+            "source_gap": 1,
+            "warn": 161
           },
           "large_exchange:HKEX": {
             "not_checked": 5
@@ -7896,31 +7911,40 @@
             "not_checked": 5
           },
           "source_gap:adr_cdr_or_depositary_identifier_gap": {
-            "not_checked": 5
+            "not_checked": 1,
+            "notice": 3,
+            "pass": 1
           },
           "source_gap:adr_cdr_or_depositary_sector_gap": {
-            "not_checked": 3
+            "not_checked": 1,
+            "notice": 1,
+            "warn": 1
           },
           "source_gap:capital_pool_or_halted_identifier_gap": {
-            "not_checked": 5
+            "source_gap": 1,
+            "warn": 4
           },
           "source_gap:commodity_etf_category_gap": {
-            "not_checked": 3
+            "source_gap": 2,
+            "warn": 1
           },
           "source_gap:debt_or_securitized_identifier_gap": {
-            "not_checked": 5
+            "pass": 1,
+            "source_gap": 4
           },
           "source_gap:digital_asset_etf_category_gap": {
-            "not_checked": 1
+            "warn": 1
           },
           "source_gap:equity_etf_category_gap": {
-            "not_checked": 2
+            "warn": 2
           },
           "source_gap:fund_or_trust_identifier_gap": {
-            "not_checked": 5
+            "notice": 1,
+            "pass": 4
           },
           "source_gap:fundlike_stock_sector_gap": {
-            "not_checked": 5
+            "not_checked": 3,
+            "pass": 2
           },
           "source_gap:inactive_or_legacy_identifier_gap": {
             "not_checked": 5
@@ -7954,13 +7978,44 @@
           }
         },
         "review_bucket_counts": {
-          "not_checked_entry_quality_warn_sample": 222,
+          "checked_low_severity_market_data_notice": 24,
+          "checked_market_data_source_gap": 8,
+          "checked_ohlcv_anomaly_requires_listing_review": 170,
+          "checked_plausible_sample": 48,
+          "not_checked_entry_quality_warn_sample": 1,
           "not_checked_large_exchange_baseline_sample": 45,
-          "not_checked_source_gap_cluster_sample": 83
+          "not_checked_source_gap_cluster_sample": 54
         },
         "review_bucket_selection_bucket_counts": {
+          "checked_low_severity_market_data_notice": {
+            "entry_quality_warn": 19,
+            "source_gap:adr_cdr_or_depositary_identifier_gap": 3,
+            "source_gap:adr_cdr_or_depositary_sector_gap": 1,
+            "source_gap:fund_or_trust_identifier_gap": 1
+          },
+          "checked_market_data_source_gap": {
+            "entry_quality_warn": 1,
+            "source_gap:capital_pool_or_halted_identifier_gap": 1,
+            "source_gap:commodity_etf_category_gap": 2,
+            "source_gap:debt_or_securitized_identifier_gap": 4
+          },
+          "checked_ohlcv_anomaly_requires_listing_review": {
+            "entry_quality_warn": 161,
+            "source_gap:adr_cdr_or_depositary_sector_gap": 1,
+            "source_gap:capital_pool_or_halted_identifier_gap": 4,
+            "source_gap:commodity_etf_category_gap": 1,
+            "source_gap:digital_asset_etf_category_gap": 1,
+            "source_gap:equity_etf_category_gap": 2
+          },
+          "checked_plausible_sample": {
+            "entry_quality_warn": 40,
+            "source_gap:adr_cdr_or_depositary_identifier_gap": 1,
+            "source_gap:debt_or_securitized_identifier_gap": 1,
+            "source_gap:fund_or_trust_identifier_gap": 4,
+            "source_gap:fundlike_stock_sector_gap": 2
+          },
           "not_checked_entry_quality_warn_sample": {
-            "entry_quality_warn": 222
+            "entry_quality_warn": 1
           },
           "not_checked_large_exchange_baseline_sample": {
             "large_exchange:HKEX": 5,
@@ -7974,15 +8029,9 @@
             "large_exchange:XETRA": 5
           },
           "not_checked_source_gap_cluster_sample": {
-            "source_gap:adr_cdr_or_depositary_identifier_gap": 5,
-            "source_gap:adr_cdr_or_depositary_sector_gap": 3,
-            "source_gap:capital_pool_or_halted_identifier_gap": 5,
-            "source_gap:commodity_etf_category_gap": 3,
-            "source_gap:debt_or_securitized_identifier_gap": 5,
-            "source_gap:digital_asset_etf_category_gap": 1,
-            "source_gap:equity_etf_category_gap": 2,
-            "source_gap:fund_or_trust_identifier_gap": 5,
-            "source_gap:fundlike_stock_sector_gap": 5,
+            "source_gap:adr_cdr_or_depositary_identifier_gap": 1,
+            "source_gap:adr_cdr_or_depositary_sector_gap": 1,
+            "source_gap:fundlike_stock_sector_gap": 3,
             "source_gap:inactive_or_legacy_identifier_gap": 5,
             "source_gap:official_current_directory_absent_identifier_gap": 5,
             "source_gap:official_identifier_not_exposed_source_gap": 5,
@@ -7996,15 +8045,42 @@
           }
         },
         "review_bucket_exchange_counts": {
-          "not_checked_entry_quality_warn_sample": {
-            "ASX": 1,
-            "BSE_HU": 1,
+          "checked_low_severity_market_data_notice": {
+            "LSE": 12,
+            "NASDAQ": 1,
+            "OTC": 6,
+            "SZSE": 1,
+            "TSX": 4
+          },
+          "checked_market_data_source_gap": {
+            "ASX": 4,
+            "OTC": 2,
+            "TSXV": 1,
+            "XETRA": 1
+          },
+          "checked_ohlcv_anomaly_requires_listing_review": {
+            "BATS": 1,
             "IDX": 2,
-            "LSE": 60,
-            "NASDAQ": 7,
-            "NYSE": 2,
-            "OTC": 148,
-            "SZSE": 1
+            "LSE": 47,
+            "NASDAQ": 2,
+            "NYSE": 1,
+            "OTC": 111,
+            "TSE": 1,
+            "TSX": 1,
+            "TSXV": 4
+          },
+          "checked_plausible_sample": {
+            "ASX": 1,
+            "LSE": 1,
+            "NASDAQ": 5,
+            "NYSE": 1,
+            "OTC": 32,
+            "SZSE": 5,
+            "TSE": 2,
+            "TSX": 1
+          },
+          "not_checked_entry_quality_warn_sample": {
+            "BSE_HU": 1
           },
           "not_checked_large_exchange_baseline_sample": {
             "HKEX": 5,
@@ -8019,121 +8095,262 @@
           },
           "not_checked_source_gap_cluster_sample": {
             "AMS": 1,
-            "ASX": 10,
+            "ASX": 6,
             "B3": 2,
-            "BATS": 1,
             "Euronext": 1,
             "HKEX": 4,
             "KRX": 5,
             "LSE": 3,
-            "NASDAQ": 1,
             "NEO": 1,
-            "OTC": 9,
+            "OTC": 6,
             "PSE": 2,
             "SSE_CL": 2,
-            "SZSE": 10,
-            "TSE": 11,
-            "TSX": 6,
-            "TSXV": 9,
+            "SZSE": 5,
+            "TSE": 8,
+            "TSXV": 4,
             "TWSE": 2,
-            "XETRA": 2,
+            "XETRA": 1,
             "ZSE": 1
           }
         },
         "review_bucket_sampling_strategy_counts": {
+          "checked_low_severity_market_data_notice": {
+            "review_low_severity_market_data_notice_only_if_prioritized": 24
+          },
+          "checked_market_data_source_gap": {
+            "resolve_market_data_source_gap_before_interpreting_listing": 8
+          },
+          "checked_ohlcv_anomaly_requires_listing_review": {
+            "review_checked_ohlcv_anomaly_against_listing_status_and_corporate_actions": 170
+          },
+          "checked_plausible_sample": {
+            "retain_as_plausibility_baseline_no_data_change": 48
+          },
           "not_checked_entry_quality_warn_sample": {
-            "collect_ohlcv_sample_then_existing_entry_quality_review": 222
+            "collect_ohlcv_sample_then_existing_entry_quality_review": 1
           },
           "not_checked_large_exchange_baseline_sample": {
             "collect_ohlcv_sample_for_large_exchange_baseline": 45
           },
           "not_checked_source_gap_cluster_sample": {
-            "collect_ohlcv_sample_then_source_gap_review": 83
+            "collect_ohlcv_sample_then_source_gap_review": 54
           }
         },
         "review_bucket_sampling_readiness_counts": {
+          "checked_low_severity_market_data_notice": {
+            "checked_yahoo_sample": 24
+          },
+          "checked_market_data_source_gap": {
+            "checked_yahoo_sample": 8
+          },
+          "checked_ohlcv_anomaly_requires_listing_review": {
+            "checked_yahoo_sample": 170
+          },
+          "checked_plausible_sample": {
+            "checked_yahoo_sample": 48
+          },
           "not_checked_entry_quality_warn_sample": {
-            "needs_ohlcv_sample": 222
+            "needs_ohlcv_sample": 1
           },
           "not_checked_large_exchange_baseline_sample": {
             "needs_ohlcv_sample": 45
           },
           "not_checked_source_gap_cluster_sample": {
-            "needs_ohlcv_sample": 83
+            "needs_ohlcv_sample": 54
           }
         },
         "top_ohlcv_sampling_batches": [
           {
-            "review_bucket": "not_checked_entry_quality_warn_sample",
+            "review_bucket": "checked_ohlcv_anomaly_requires_listing_review",
             "selection_bucket": "entry_quality_warn",
             "exchange": "OTC",
-            "plausibility_status": "not_checked",
-            "rows": 148,
-            "review_priority": "P2",
-            "sampling_strategy": "collect_ohlcv_sample_then_existing_entry_quality_review",
-            "evidence_required": "local_or_bounded_network_ohlcv_sample_then_existing_entry_quality_review",
-            "recommended_next_source": "Collect a local or bounded-network OHLCV sample for OTC, then review the existing entry-quality warning.",
-            "source_gate": "Sampling can prioritize review, but entry-quality changes still require the existing official evidence gates."
+            "plausibility_status": "warn",
+            "rows": 109,
+            "review_priority": "P1",
+            "sampling_strategy": "review_checked_ohlcv_anomaly_against_listing_status_and_corporate_actions",
+            "evidence_required": "official_listing_status_corporate_action_and_market_data_source_review_before_any_listing_change",
+            "recommended_next_source": "Official listing status, corporate-action evidence, and independent market-data sample for OTC.",
+            "source_gate": "Do not change listing data until official listing status and corporate-action evidence explain the anomaly."
           },
           {
-            "review_bucket": "not_checked_entry_quality_warn_sample",
+            "review_bucket": "checked_ohlcv_anomaly_requires_listing_review",
             "selection_bucket": "entry_quality_warn",
             "exchange": "LSE",
-            "plausibility_status": "not_checked",
-            "rows": 60,
-            "review_priority": "P2",
-            "sampling_strategy": "collect_ohlcv_sample_then_existing_entry_quality_review",
-            "evidence_required": "local_or_bounded_network_ohlcv_sample_then_existing_entry_quality_review",
-            "recommended_next_source": "Collect a local or bounded-network OHLCV sample for LSE, then review the existing entry-quality warning.",
-            "source_gate": "Sampling can prioritize review, but entry-quality changes still require the existing official evidence gates."
+            "plausibility_status": "warn",
+            "rows": 47,
+            "review_priority": "P1",
+            "sampling_strategy": "review_checked_ohlcv_anomaly_against_listing_status_and_corporate_actions",
+            "evidence_required": "official_listing_status_corporate_action_and_market_data_source_review_before_any_listing_change",
+            "recommended_next_source": "Official listing status, corporate-action evidence, and independent market-data sample for LSE.",
+            "source_gate": "Do not change listing data until official listing status and corporate-action evidence explain the anomaly."
           },
           {
-            "review_bucket": "not_checked_entry_quality_warn_sample",
-            "selection_bucket": "entry_quality_warn",
-            "exchange": "NASDAQ",
-            "plausibility_status": "not_checked",
-            "rows": 7,
-            "review_priority": "P2",
-            "sampling_strategy": "collect_ohlcv_sample_then_existing_entry_quality_review",
-            "evidence_required": "local_or_bounded_network_ohlcv_sample_then_existing_entry_quality_review",
-            "recommended_next_source": "Collect a local or bounded-network OHLCV sample for NASDAQ, then review the existing entry-quality warning.",
-            "source_gate": "Sampling can prioritize review, but entry-quality changes still require the existing official evidence gates."
+            "review_bucket": "checked_ohlcv_anomaly_requires_listing_review",
+            "selection_bucket": "source_gap:capital_pool_or_halted_identifier_gap",
+            "exchange": "TSXV",
+            "plausibility_status": "warn",
+            "rows": 4,
+            "review_priority": "P1",
+            "sampling_strategy": "review_checked_ohlcv_anomaly_against_listing_status_and_corporate_actions",
+            "evidence_required": "official_listing_status_corporate_action_and_market_data_source_review_before_any_listing_change",
+            "recommended_next_source": "Official listing status, corporate-action evidence, and independent market-data sample for TSXV.",
+            "source_gate": "Do not change listing data until official listing status and corporate-action evidence explain the anomaly."
           },
           {
-            "review_bucket": "not_checked_entry_quality_warn_sample",
+            "review_bucket": "checked_ohlcv_anomaly_requires_listing_review",
             "selection_bucket": "entry_quality_warn",
             "exchange": "IDX",
-            "plausibility_status": "not_checked",
+            "plausibility_status": "warn",
             "rows": 2,
-            "review_priority": "P2",
-            "sampling_strategy": "collect_ohlcv_sample_then_existing_entry_quality_review",
-            "evidence_required": "local_or_bounded_network_ohlcv_sample_then_existing_entry_quality_review",
-            "recommended_next_source": "Collect a local or bounded-network OHLCV sample for IDX, then review the existing entry-quality warning.",
-            "source_gate": "Sampling can prioritize review, but entry-quality changes still require the existing official evidence gates."
+            "review_priority": "P1",
+            "sampling_strategy": "review_checked_ohlcv_anomaly_against_listing_status_and_corporate_actions",
+            "evidence_required": "official_listing_status_corporate_action_and_market_data_source_review_before_any_listing_change",
+            "recommended_next_source": "Official listing status, corporate-action evidence, and independent market-data sample for IDX.",
+            "source_gate": "Do not change listing data until official listing status and corporate-action evidence explain the anomaly."
           },
           {
-            "review_bucket": "not_checked_entry_quality_warn_sample",
+            "review_bucket": "checked_ohlcv_anomaly_requires_listing_review",
+            "selection_bucket": "entry_quality_warn",
+            "exchange": "NASDAQ",
+            "plausibility_status": "warn",
+            "rows": 2,
+            "review_priority": "P1",
+            "sampling_strategy": "review_checked_ohlcv_anomaly_against_listing_status_and_corporate_actions",
+            "evidence_required": "official_listing_status_corporate_action_and_market_data_source_review_before_any_listing_change",
+            "recommended_next_source": "Official listing status, corporate-action evidence, and independent market-data sample for NASDAQ.",
+            "source_gate": "Do not change listing data until official listing status and corporate-action evidence explain the anomaly."
+          },
+          {
+            "review_bucket": "checked_ohlcv_anomaly_requires_listing_review",
             "selection_bucket": "entry_quality_warn",
             "exchange": "NYSE",
-            "plausibility_status": "not_checked",
-            "rows": 2,
-            "review_priority": "P2",
-            "sampling_strategy": "collect_ohlcv_sample_then_existing_entry_quality_review",
-            "evidence_required": "local_or_bounded_network_ohlcv_sample_then_existing_entry_quality_review",
-            "recommended_next_source": "Collect a local or bounded-network OHLCV sample for NYSE, then review the existing entry-quality warning.",
-            "source_gate": "Sampling can prioritize review, but entry-quality changes still require the existing official evidence gates."
+            "plausibility_status": "warn",
+            "rows": 1,
+            "review_priority": "P1",
+            "sampling_strategy": "review_checked_ohlcv_anomaly_against_listing_status_and_corporate_actions",
+            "evidence_required": "official_listing_status_corporate_action_and_market_data_source_review_before_any_listing_change",
+            "recommended_next_source": "Official listing status, corporate-action evidence, and independent market-data sample for NYSE.",
+            "source_gate": "Do not change listing data until official listing status and corporate-action evidence explain the anomaly."
           },
           {
-            "review_bucket": "not_checked_entry_quality_warn_sample",
-            "selection_bucket": "entry_quality_warn",
+            "review_bucket": "checked_ohlcv_anomaly_requires_listing_review",
+            "selection_bucket": "source_gap:adr_cdr_or_depositary_sector_gap",
+            "exchange": "TSX",
+            "plausibility_status": "warn",
+            "rows": 1,
+            "review_priority": "P1",
+            "sampling_strategy": "review_checked_ohlcv_anomaly_against_listing_status_and_corporate_actions",
+            "evidence_required": "official_listing_status_corporate_action_and_market_data_source_review_before_any_listing_change",
+            "recommended_next_source": "Official listing status, corporate-action evidence, and independent market-data sample for TSX.",
+            "source_gate": "Do not change listing data until official listing status and corporate-action evidence explain the anomaly."
+          },
+          {
+            "review_bucket": "checked_ohlcv_anomaly_requires_listing_review",
+            "selection_bucket": "source_gap:commodity_etf_category_gap",
+            "exchange": "BATS",
+            "plausibility_status": "warn",
+            "rows": 1,
+            "review_priority": "P1",
+            "sampling_strategy": "review_checked_ohlcv_anomaly_against_listing_status_and_corporate_actions",
+            "evidence_required": "official_listing_status_corporate_action_and_market_data_source_review_before_any_listing_change",
+            "recommended_next_source": "Official listing status, corporate-action evidence, and independent market-data sample for BATS.",
+            "source_gate": "Do not change listing data until official listing status and corporate-action evidence explain the anomaly."
+          },
+          {
+            "review_bucket": "checked_ohlcv_anomaly_requires_listing_review",
+            "selection_bucket": "source_gap:digital_asset_etf_category_gap",
+            "exchange": "OTC",
+            "plausibility_status": "warn",
+            "rows": 1,
+            "review_priority": "P1",
+            "sampling_strategy": "review_checked_ohlcv_anomaly_against_listing_status_and_corporate_actions",
+            "evidence_required": "official_listing_status_corporate_action_and_market_data_source_review_before_any_listing_change",
+            "recommended_next_source": "Official listing status, corporate-action evidence, and independent market-data sample for OTC.",
+            "source_gate": "Do not change listing data until official listing status and corporate-action evidence explain the anomaly."
+          },
+          {
+            "review_bucket": "checked_ohlcv_anomaly_requires_listing_review",
+            "selection_bucket": "source_gap:equity_etf_category_gap",
+            "exchange": "OTC",
+            "plausibility_status": "warn",
+            "rows": 1,
+            "review_priority": "P1",
+            "sampling_strategy": "review_checked_ohlcv_anomaly_against_listing_status_and_corporate_actions",
+            "evidence_required": "official_listing_status_corporate_action_and_market_data_source_review_before_any_listing_change",
+            "recommended_next_source": "Official listing status, corporate-action evidence, and independent market-data sample for OTC.",
+            "source_gate": "Do not change listing data until official listing status and corporate-action evidence explain the anomaly."
+          },
+          {
+            "review_bucket": "checked_ohlcv_anomaly_requires_listing_review",
+            "selection_bucket": "source_gap:equity_etf_category_gap",
+            "exchange": "TSE",
+            "plausibility_status": "warn",
+            "rows": 1,
+            "review_priority": "P1",
+            "sampling_strategy": "review_checked_ohlcv_anomaly_against_listing_status_and_corporate_actions",
+            "evidence_required": "official_listing_status_corporate_action_and_market_data_source_review_before_any_listing_change",
+            "recommended_next_source": "Official listing status, corporate-action evidence, and independent market-data sample for TSE.",
+            "source_gate": "Do not change listing data until official listing status and corporate-action evidence explain the anomaly."
+          },
+          {
+            "review_bucket": "checked_market_data_source_gap",
+            "selection_bucket": "source_gap:debt_or_securitized_identifier_gap",
             "exchange": "ASX",
-            "plausibility_status": "not_checked",
+            "plausibility_status": "source_gap",
+            "rows": 4,
+            "review_priority": "P2",
+            "sampling_strategy": "resolve_market_data_source_gap_before_interpreting_listing",
+            "evidence_required": "alternate_market_data_source_or_official_listing_status_before_interpreting_gap",
+            "recommended_next_source": "Alternate market-data source or official listing-status evidence for ASX.",
+            "source_gate": "Do not interpret a market-data gap as a listing problem without an alternate source or official status check."
+          },
+          {
+            "review_bucket": "checked_market_data_source_gap",
+            "selection_bucket": "entry_quality_warn",
+            "exchange": "OTC",
+            "plausibility_status": "source_gap",
             "rows": 1,
             "review_priority": "P2",
-            "sampling_strategy": "collect_ohlcv_sample_then_existing_entry_quality_review",
-            "evidence_required": "local_or_bounded_network_ohlcv_sample_then_existing_entry_quality_review",
-            "recommended_next_source": "Collect a local or bounded-network OHLCV sample for ASX, then review the existing entry-quality warning.",
-            "source_gate": "Sampling can prioritize review, but entry-quality changes still require the existing official evidence gates."
+            "sampling_strategy": "resolve_market_data_source_gap_before_interpreting_listing",
+            "evidence_required": "alternate_market_data_source_or_official_listing_status_before_interpreting_gap",
+            "recommended_next_source": "Alternate market-data source or official listing-status evidence for OTC.",
+            "source_gate": "Do not interpret a market-data gap as a listing problem without an alternate source or official status check."
+          },
+          {
+            "review_bucket": "checked_market_data_source_gap",
+            "selection_bucket": "source_gap:capital_pool_or_halted_identifier_gap",
+            "exchange": "TSXV",
+            "plausibility_status": "source_gap",
+            "rows": 1,
+            "review_priority": "P2",
+            "sampling_strategy": "resolve_market_data_source_gap_before_interpreting_listing",
+            "evidence_required": "alternate_market_data_source_or_official_listing_status_before_interpreting_gap",
+            "recommended_next_source": "Alternate market-data source or official listing-status evidence for TSXV.",
+            "source_gate": "Do not interpret a market-data gap as a listing problem without an alternate source or official status check."
+          },
+          {
+            "review_bucket": "checked_market_data_source_gap",
+            "selection_bucket": "source_gap:commodity_etf_category_gap",
+            "exchange": "OTC",
+            "plausibility_status": "source_gap",
+            "rows": 1,
+            "review_priority": "P2",
+            "sampling_strategy": "resolve_market_data_source_gap_before_interpreting_listing",
+            "evidence_required": "alternate_market_data_source_or_official_listing_status_before_interpreting_gap",
+            "recommended_next_source": "Alternate market-data source or official listing-status evidence for OTC.",
+            "source_gate": "Do not interpret a market-data gap as a listing problem without an alternate source or official status check."
+          },
+          {
+            "review_bucket": "checked_market_data_source_gap",
+            "selection_bucket": "source_gap:commodity_etf_category_gap",
+            "exchange": "XETRA",
+            "plausibility_status": "source_gap",
+            "rows": 1,
+            "review_priority": "P2",
+            "sampling_strategy": "resolve_market_data_source_gap_before_interpreting_listing",
+            "evidence_required": "alternate_market_data_source_or_official_listing_status_before_interpreting_gap",
+            "recommended_next_source": "Alternate market-data source or official listing-status evidence for XETRA.",
+            "source_gate": "Do not interpret a market-data gap as a listing problem without an alternate source or official status check."
           },
           {
             "review_bucket": "not_checked_entry_quality_warn_sample",
@@ -8148,52 +8365,28 @@
             "source_gate": "Sampling can prioritize review, but entry-quality changes still require the existing official evidence gates."
           },
           {
-            "review_bucket": "not_checked_entry_quality_warn_sample",
+            "review_bucket": "checked_low_severity_market_data_notice",
             "selection_bucket": "entry_quality_warn",
-            "exchange": "SZSE",
-            "plausibility_status": "not_checked",
-            "rows": 1,
-            "review_priority": "P2",
-            "sampling_strategy": "collect_ohlcv_sample_then_existing_entry_quality_review",
-            "evidence_required": "local_or_bounded_network_ohlcv_sample_then_existing_entry_quality_review",
-            "recommended_next_source": "Collect a local or bounded-network OHLCV sample for SZSE, then review the existing entry-quality warning.",
-            "source_gate": "Sampling can prioritize review, but entry-quality changes still require the existing official evidence gates."
+            "exchange": "LSE",
+            "plausibility_status": "notice",
+            "rows": 12,
+            "review_priority": "P3",
+            "sampling_strategy": "review_low_severity_market_data_notice_only_if_prioritized",
+            "evidence_required": "market_data_provider_review_if_prioritizing_quality_cleanup",
+            "recommended_next_source": "Reviewed market-data provider sample for LSE if this quality issue is prioritized.",
+            "source_gate": "Treat as market-data quality context only; no canonical data change is authorized."
           },
           {
-            "review_bucket": "not_checked_source_gap_cluster_sample",
-            "selection_bucket": "source_gap:capital_pool_or_halted_identifier_gap",
-            "exchange": "TSXV",
-            "plausibility_status": "not_checked",
-            "rows": 5,
+            "review_bucket": "checked_low_severity_market_data_notice",
+            "selection_bucket": "entry_quality_warn",
+            "exchange": "OTC",
+            "plausibility_status": "notice",
+            "rows": 6,
             "review_priority": "P3",
-            "sampling_strategy": "collect_ohlcv_sample_then_source_gap_review",
-            "evidence_required": "local_or_bounded_network_ohlcv_sample_then_source_gap_review",
-            "recommended_next_source": "Collect a local or bounded-network OHLCV sample for TSXV, then use it only as source-gap review context.",
-            "source_gate": "Sampling can prioritize source-gap review, but cannot fill identifiers, sectors, categories, names, or symbols."
-          },
-          {
-            "review_bucket": "not_checked_source_gap_cluster_sample",
-            "selection_bucket": "source_gap:fund_or_trust_identifier_gap",
-            "exchange": "SZSE",
-            "plausibility_status": "not_checked",
-            "rows": 5,
-            "review_priority": "P3",
-            "sampling_strategy": "collect_ohlcv_sample_then_source_gap_review",
-            "evidence_required": "local_or_bounded_network_ohlcv_sample_then_source_gap_review",
-            "recommended_next_source": "Collect a local or bounded-network OHLCV sample for SZSE, then use it only as source-gap review context.",
-            "source_gate": "Sampling can prioritize source-gap review, but cannot fill identifiers, sectors, categories, names, or symbols."
-          },
-          {
-            "review_bucket": "not_checked_source_gap_cluster_sample",
-            "selection_bucket": "source_gap:fundlike_stock_sector_gap",
-            "exchange": "TSE",
-            "plausibility_status": "not_checked",
-            "rows": 5,
-            "review_priority": "P3",
-            "sampling_strategy": "collect_ohlcv_sample_then_source_gap_review",
-            "evidence_required": "local_or_bounded_network_ohlcv_sample_then_source_gap_review",
-            "recommended_next_source": "Collect a local or bounded-network OHLCV sample for TSE, then use it only as source-gap review context.",
-            "source_gate": "Sampling can prioritize source-gap review, but cannot fill identifiers, sectors, categories, names, or symbols."
+            "sampling_strategy": "review_low_severity_market_data_notice_only_if_prioritized",
+            "evidence_required": "market_data_provider_review_if_prioritizing_quality_cleanup",
+            "recommended_next_source": "Reviewed market-data provider sample for OTC if this quality issue is prioritized.",
+            "source_gate": "Treat as market-data quality context only; no canonical data change is authorized."
           },
           {
             "review_bucket": "not_checked_source_gap_cluster_sample",
@@ -8217,30 +8410,6 @@
             "sampling_strategy": "collect_ohlcv_sample_then_source_gap_review",
             "evidence_required": "local_or_bounded_network_ohlcv_sample_then_source_gap_review",
             "recommended_next_source": "Collect a local or bounded-network OHLCV sample for OTC, then use it only as source-gap review context.",
-            "source_gate": "Sampling can prioritize source-gap review, but cannot fill identifiers, sectors, categories, names, or symbols."
-          },
-          {
-            "review_bucket": "not_checked_source_gap_cluster_sample",
-            "selection_bucket": "source_gap:adr_cdr_or_depositary_identifier_gap",
-            "exchange": "TSX",
-            "plausibility_status": "not_checked",
-            "rows": 4,
-            "review_priority": "P3",
-            "sampling_strategy": "collect_ohlcv_sample_then_source_gap_review",
-            "evidence_required": "local_or_bounded_network_ohlcv_sample_then_source_gap_review",
-            "recommended_next_source": "Collect a local or bounded-network OHLCV sample for TSX, then use it only as source-gap review context.",
-            "source_gate": "Sampling can prioritize source-gap review, but cannot fill identifiers, sectors, categories, names, or symbols."
-          },
-          {
-            "review_bucket": "not_checked_source_gap_cluster_sample",
-            "selection_bucket": "source_gap:debt_or_securitized_identifier_gap",
-            "exchange": "ASX",
-            "plausibility_status": "not_checked",
-            "rows": 4,
-            "review_priority": "P3",
-            "sampling_strategy": "collect_ohlcv_sample_then_source_gap_review",
-            "evidence_required": "local_or_bounded_network_ohlcv_sample_then_source_gap_review",
-            "recommended_next_source": "Collect a local or bounded-network OHLCV sample for ASX, then use it only as source-gap review context.",
             "source_gate": "Sampling can prioritize source-gap review, but cannot fill identifiers, sectors, categories, names, or symbols."
           },
           {
@@ -8280,121 +8449,59 @@
             "source_gate": "Sampling can prioritize source-gap review, but cannot fill identifiers, sectors, categories, names, or symbols."
           },
           {
-            "review_bucket": "not_checked_source_gap_cluster_sample",
-            "selection_bucket": "source_gap:official_identifier_reference_unmatched_gap",
-            "exchange": "LSE",
-            "plausibility_status": "not_checked",
-            "rows": 3,
-            "review_priority": "P3",
-            "sampling_strategy": "collect_ohlcv_sample_then_source_gap_review",
-            "evidence_required": "local_or_bounded_network_ohlcv_sample_then_source_gap_review",
-            "recommended_next_source": "Collect a local or bounded-network OHLCV sample for LSE, then use it only as source-gap review context.",
-            "source_gate": "Sampling can prioritize source-gap review, but cannot fill identifiers, sectors, categories, names, or symbols."
-          },
-          {
-            "review_bucket": "not_checked_source_gap_cluster_sample",
-            "selection_bucket": "source_gap:unclassified_source_gap",
-            "exchange": "KRX",
-            "plausibility_status": "not_checked",
-            "rows": 3,
-            "review_priority": "P3",
-            "sampling_strategy": "collect_ohlcv_sample_then_source_gap_review",
-            "evidence_required": "local_or_bounded_network_ohlcv_sample_then_source_gap_review",
-            "recommended_next_source": "Collect a local or bounded-network OHLCV sample for KRX, then use it only as source-gap review context.",
-            "source_gate": "Sampling can prioritize source-gap review, but cannot fill identifiers, sectors, categories, names, or symbols."
-          },
-          {
-            "review_bucket": "not_checked_source_gap_cluster_sample",
-            "selection_bucket": "source_gap:adr_cdr_or_depositary_sector_gap",
+            "review_bucket": "checked_low_severity_market_data_notice",
+            "selection_bucket": "source_gap:adr_cdr_or_depositary_identifier_gap",
             "exchange": "TSX",
-            "plausibility_status": "not_checked",
-            "rows": 2,
+            "plausibility_status": "notice",
+            "rows": 3,
             "review_priority": "P3",
-            "sampling_strategy": "collect_ohlcv_sample_then_source_gap_review",
-            "evidence_required": "local_or_bounded_network_ohlcv_sample_then_source_gap_review",
-            "recommended_next_source": "Collect a local or bounded-network OHLCV sample for TSX, then use it only as source-gap review context.",
-            "source_gate": "Sampling can prioritize source-gap review, but cannot fill identifiers, sectors, categories, names, or symbols."
-          },
-          {
-            "review_bucket": "not_checked_source_gap_cluster_sample",
-            "selection_bucket": "source_gap:inactive_or_legacy_identifier_gap",
-            "exchange": "ASX",
-            "plausibility_status": "not_checked",
-            "rows": 2,
-            "review_priority": "P3",
-            "sampling_strategy": "collect_ohlcv_sample_then_source_gap_review",
-            "evidence_required": "local_or_bounded_network_ohlcv_sample_then_source_gap_review",
-            "recommended_next_source": "Collect a local or bounded-network OHLCV sample for ASX, then use it only as source-gap review context.",
-            "source_gate": "Sampling can prioritize source-gap review, but cannot fill identifiers, sectors, categories, names, or symbols."
-          },
-          {
-            "review_bucket": "not_checked_source_gap_cluster_sample",
-            "selection_bucket": "source_gap:inactive_or_legacy_identifier_gap",
-            "exchange": "TSXV",
-            "plausibility_status": "not_checked",
-            "rows": 2,
-            "review_priority": "P3",
-            "sampling_strategy": "collect_ohlcv_sample_then_source_gap_review",
-            "evidence_required": "local_or_bounded_network_ohlcv_sample_then_source_gap_review",
-            "recommended_next_source": "Collect a local or bounded-network OHLCV sample for TSXV, then use it only as source-gap review context.",
-            "source_gate": "Sampling can prioritize source-gap review, but cannot fill identifiers, sectors, categories, names, or symbols."
-          },
-          {
-            "review_bucket": "not_checked_source_gap_cluster_sample",
-            "selection_bucket": "source_gap:official_product_reference_unmatched_category_gap",
-            "exchange": "KRX",
-            "plausibility_status": "not_checked",
-            "rows": 2,
-            "review_priority": "P3",
-            "sampling_strategy": "collect_ohlcv_sample_then_source_gap_review",
-            "evidence_required": "local_or_bounded_network_ohlcv_sample_then_source_gap_review",
-            "recommended_next_source": "Collect a local or bounded-network OHLCV sample for KRX, then use it only as source-gap review context.",
-            "source_gate": "Sampling can prioritize source-gap review, but cannot fill identifiers, sectors, categories, names, or symbols."
-          },
-          {
-            "review_bucket": "not_checked_source_gap_cluster_sample",
-            "selection_bucket": "source_gap:official_product_reference_unmatched_category_gap",
-            "exchange": "SSE_CL",
-            "plausibility_status": "not_checked",
-            "rows": 2,
-            "review_priority": "P3",
-            "sampling_strategy": "collect_ohlcv_sample_then_source_gap_review",
-            "evidence_required": "local_or_bounded_network_ohlcv_sample_then_source_gap_review",
-            "recommended_next_source": "Collect a local or bounded-network OHLCV sample for SSE_CL, then use it only as source-gap review context.",
-            "source_gate": "Sampling can prioritize source-gap review, but cannot fill identifiers, sectors, categories, names, or symbols."
+            "sampling_strategy": "review_low_severity_market_data_notice_only_if_prioritized",
+            "evidence_required": "market_data_provider_review_if_prioritizing_quality_cleanup",
+            "recommended_next_source": "Reviewed market-data provider sample for TSX if this quality issue is prioritized.",
+            "source_gate": "Treat as market-data quality context only; no canonical data change is authorized."
           }
         ],
         "ohlcv_sampling_backlog": {
           "status": "sampling_queue_enabled_plausibility_only",
           "selected_rows": 350,
           "report_rows": 350,
-          "checked_rows": 0,
-          "not_checked_rows": 350,
+          "checked_rows": 250,
+          "not_checked_rows": 100,
           "source_gap_cluster_sample_rows": 83,
           "entry_quality_warn_sample_rows": 222,
           "large_exchange_baseline_sample_rows": 45,
-          "warn_or_source_gap_signal_rows": 0,
+          "warn_or_source_gap_signal_rows": 202,
           "direct_canonical_data_change_allowed_rows": 0,
           "plausibility_signal_only": true,
           "source_gate": "OHLCV sampling is plausibility evidence only; identifiers, sectors, categories, names, listings, and symbols remain blocked until official listing-keyed review evidence is available."
         },
         "review_priority_counts": {
-          "P2": 222,
-          "P3": 83,
-          "P4": 45
+          "P1": 170,
+          "P2": 9,
+          "P3": 78,
+          "P4": 93
         },
         "plausibility_use_counts": {
           "baseline_market_data_sampling_queue": 45,
-          "sampling_queue_for_existing_entry_quality_warn": 222,
-          "sampling_queue_for_existing_source_gap": 83
+          "low_severity_market_data_notice_only": 24,
+          "market_data_plausibility_evidence_only": 48,
+          "market_data_source_gap_only_no_listing_data_change": 8,
+          "review_signal_only_possible_listing_or_corporate_action_issue": 170,
+          "sampling_queue_for_existing_entry_quality_warn": 1,
+          "sampling_queue_for_existing_source_gap": 54
         },
         "canonical_data_change_authorization_counts": {
-          "no_canonical_data_change_authorized": 350
+          "no_canonical_data_change_authorized": 180,
+          "official_listing_review_required_before_any_canonical_change": 170
         },
         "verification_evidence_required_counts": {
+          "alternate_market_data_source_or_official_listing_status_before_interpreting_gap": 8,
           "local_or_bounded_network_ohlcv_sample_for_baseline_only": 45,
-          "local_or_bounded_network_ohlcv_sample_then_existing_entry_quality_review": 222,
-          "local_or_bounded_network_ohlcv_sample_then_source_gap_review": 83
+          "local_or_bounded_network_ohlcv_sample_then_existing_entry_quality_review": 1,
+          "local_or_bounded_network_ohlcv_sample_then_source_gap_review": 54,
+          "market_data_provider_review_if_prioritizing_quality_cleanup": 24,
+          "none_no_database_change_authorized": 48,
+          "official_listing_status_corporate_action_and_market_data_source_review_before_any_listing_change": 170
         },
         "source_gap_class_counts": {
           "debt_or_securitized_identifier_gap": 5,
@@ -8427,83 +8534,163 @@
         "top_flagged_exchanges": [
           {
             "exchange": "OTC",
-            "not_checked": 162
+            "warn": 111,
+            "source_gap": 2,
+            "notice": 6,
+            "not_checked": 11,
+            "pass": 32
           },
           {
             "exchange": "LSE",
-            "not_checked": 68
-          },
-          {
-            "exchange": "SZSE",
-            "not_checked": 16
+            "warn": 47,
+            "source_gap": 0,
+            "notice": 12,
+            "not_checked": 8,
+            "pass": 1
           },
           {
             "exchange": "TSE",
-            "not_checked": 16
+            "warn": 1,
+            "source_gap": 0,
+            "notice": 0,
+            "not_checked": 13,
+            "pass": 2
           },
           {
-            "exchange": "NASDAQ",
-            "not_checked": 13
+            "exchange": "SZSE",
+            "warn": 0,
+            "source_gap": 0,
+            "notice": 1,
+            "not_checked": 10,
+            "pass": 5
           },
           {
             "exchange": "ASX",
-            "not_checked": 11
+            "warn": 0,
+            "source_gap": 4,
+            "notice": 0,
+            "not_checked": 6,
+            "pass": 1
           },
           {
             "exchange": "TSXV",
-            "not_checked": 9
+            "warn": 4,
+            "source_gap": 1,
+            "notice": 0,
+            "not_checked": 4,
+            "pass": 0
           },
           {
             "exchange": "HKEX",
-            "not_checked": 9
+            "warn": 0,
+            "source_gap": 0,
+            "notice": 0,
+            "not_checked": 9,
+            "pass": 0
+          },
+          {
+            "exchange": "NASDAQ",
+            "warn": 2,
+            "source_gap": 0,
+            "notice": 1,
+            "not_checked": 5,
+            "pass": 5
           },
           {
             "exchange": "XETRA",
-            "not_checked": 7
+            "warn": 0,
+            "source_gap": 1,
+            "notice": 0,
+            "not_checked": 6,
+            "pass": 0
           },
           {
             "exchange": "TSX",
-            "not_checked": 6
+            "warn": 1,
+            "source_gap": 0,
+            "notice": 4,
+            "not_checked": 0,
+            "pass": 1
           },
           {
             "exchange": "KRX",
-            "not_checked": 5
+            "warn": 0,
+            "source_gap": 0,
+            "notice": 0,
+            "not_checked": 5,
+            "pass": 0
           },
           {
             "exchange": "SSE",
-            "not_checked": 5
+            "warn": 0,
+            "source_gap": 0,
+            "notice": 0,
+            "not_checked": 5,
+            "pass": 0
           },
           {
             "exchange": "NYSE ARCA",
-            "not_checked": 5
-          },
-          {
-            "exchange": "NYSE",
-            "not_checked": 2
+            "warn": 0,
+            "source_gap": 0,
+            "notice": 0,
+            "not_checked": 5,
+            "pass": 0
           },
           {
             "exchange": "IDX",
-            "not_checked": 2
+            "warn": 2,
+            "source_gap": 0,
+            "notice": 0,
+            "not_checked": 0,
+            "pass": 0
           },
           {
             "exchange": "B3",
-            "not_checked": 2
+            "warn": 0,
+            "source_gap": 0,
+            "notice": 0,
+            "not_checked": 2,
+            "pass": 0
           },
           {
             "exchange": "SSE_CL",
-            "not_checked": 2
+            "warn": 0,
+            "source_gap": 0,
+            "notice": 0,
+            "not_checked": 2,
+            "pass": 0
           },
           {
             "exchange": "PSE",
-            "not_checked": 2
+            "warn": 0,
+            "source_gap": 0,
+            "notice": 0,
+            "not_checked": 2,
+            "pass": 0
           },
           {
             "exchange": "TWSE",
-            "not_checked": 2
+            "warn": 0,
+            "source_gap": 0,
+            "notice": 0,
+            "not_checked": 2,
+            "pass": 0
           },
           {
             "exchange": "BSE_HU",
-            "not_checked": 1
+            "warn": 0,
+            "source_gap": 0,
+            "notice": 0,
+            "not_checked": 1,
+            "pass": 0
+          },
+          {
+            "exchange": "NYSE",
+            "warn": 1,
+            "source_gap": 0,
+            "notice": 0,
+            "not_checked": 0,
+            "pass": 1
           }
         ],
         "ohlcv_warning_review_rows": 16,
@@ -8530,7 +8717,7 @@
       "artifacts": [
         {
           "path": "data/reports/ohlcv_plausibility.json",
-          "generated_at": "2026-05-31T04:01:17Z",
+          "generated_at": "2026-06-02T19:37:44Z",
           "rows": 350
         },
         {
@@ -8552,8 +8739,28 @@
           "status_counts": {
             "children": {
               "not_checked": {
-                "baseline": 350,
-                "current": 350,
+                "baseline": 100,
+                "current": 100,
+                "delta": 0
+              },
+              "notice": {
+                "baseline": 24,
+                "current": 24,
+                "delta": 0
+              },
+              "pass": {
+                "baseline": 48,
+                "current": 48,
+                "delta": 0
+              },
+              "source_gap": {
+                "baseline": 8,
+                "current": 8,
+                "delta": 0
+              },
+              "warn": {
+                "baseline": 170,
+                "current": 170,
                 "delta": 0
               }
             }
@@ -8637,8 +8844,8 @@
         "status": "sampling_queue_only_no_data_apply",
         "known_deltas": {
           "selected_sample_rows": 350,
-          "checked_sample_rows": 0,
-          "warn_or_source_gap_signal_rows": 0
+          "checked_sample_rows": 250,
+          "warn_or_source_gap_signal_rows": 202
         },
         "missing_deltas": []
       },
@@ -10733,12 +10940,12 @@
       "artifacts": [
         {
           "path": "data/reports/improvement_baseline.json",
-          "generated_at": "2026-06-02T19:22:49Z",
+          "generated_at": "2026-06-02T19:37:44Z",
           "rows": 0
         },
         {
           "path": "data/reports/improvement_deltas.json",
-          "generated_at": "2026-06-02T19:22:49Z",
+          "generated_at": "2026-06-02T19:37:45Z",
           "rows": 0
         }
       ],
@@ -10836,7 +11043,7 @@
       "delta_evidence": {
         "status": "baseline_only",
         "known_deltas": {
-          "baseline_generated_at": "2026-06-02T19:22:49Z",
+          "baseline_generated_at": "2026-06-02T19:37:44Z",
           "future_delta_reference": "data/reports/improvement_baseline.json",
           "current_delta_report": "data/reports/improvement_deltas.json"
         },
@@ -11337,7 +11544,7 @@
       "artifact_rows": 366,
       "primary_artifact": "data/reports/ohlcv_plausibility.json",
       "closure_gate": "review_artifact_rows_must_be_processed_before_campaign_closure",
-      "evidence_command": "python scripts/build_ohlcv_plausibility_report.py --fetch-yahoo --max-fetch 250 --focus-status source_gap && python scripts/build_improvement_delta_report.py",
+      "evidence_command": "python scripts/build_ohlcv_plausibility_report.py --sample-profile quality_clusters --fetch-yahoo --max-fetch 250 --include-not-checked && python scripts/build_improvement_delta_report.py",
       "command_mode": "network_evidence_refresh",
       "network_required": true,
       "data_change_authorized": false,
