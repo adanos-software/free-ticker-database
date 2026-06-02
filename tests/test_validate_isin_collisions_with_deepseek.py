@@ -1,5 +1,9 @@
+import pytest
+
 from scripts.validate_isin_collisions_with_deepseek import (
     build_prompt,
+    dry_run_would_overwrite_non_dry_run_report,
+    main,
     normalize_verdict,
     run_validation,
     select_top_groups,
@@ -182,3 +186,37 @@ def test_dry_run_path_produces_uncertain_verdicts():
     verdicts, errors = run_validation(queue_payload=payload, limit=12, batch_size=4, call_fn=None)
     assert errors == []
     assert verdicts[0]["deepseek_classification"] == "uncertain"
+
+
+def test_dry_run_overwrite_guard_detects_existing_live_report(tmp_path):
+    report = tmp_path / "validation.json"
+    report.write_text('{"_meta":{"dry_run":false},"items":[]}', encoding="utf-8")
+
+    assert dry_run_would_overwrite_non_dry_run_report(report) is True
+
+    report.write_text('{"_meta":{"dry_run":true},"items":[]}', encoding="utf-8")
+    assert dry_run_would_overwrite_non_dry_run_report(report) is False
+
+
+def test_dry_run_refuses_to_clobber_live_report(tmp_path):
+    queue_json = tmp_path / "queue.json"
+    queue_json.write_text('{"items":[]}', encoding="utf-8")
+    json_out = tmp_path / "validation.json"
+    json_out.write_text('{"_meta":{"dry_run":false},"items":[]}', encoding="utf-8")
+
+    with pytest.raises(SystemExit) as excinfo:
+        main(
+            [
+                "--dry-run",
+                "--queue-json",
+                str(queue_json),
+                "--json-out",
+                str(json_out),
+                "--csv-out",
+                str(tmp_path / "validation.csv"),
+                "--md-out",
+                str(tmp_path / "validation.md"),
+            ]
+        )
+
+    assert "would overwrite an existing non-dry-run" in str(excinfo.value)

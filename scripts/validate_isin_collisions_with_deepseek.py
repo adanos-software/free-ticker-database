@@ -344,6 +344,19 @@ def write_outputs(payload: dict[str, Any], csv_out: Path, json_out: Path, md_out
     md_out.write_text(render_markdown(payload), encoding="utf-8")
 
 
+def dry_run_would_overwrite_non_dry_run_report(json_out: Path) -> bool:
+    if not json_out.exists():
+        return False
+    try:
+        payload = load_json(json_out)
+    except (OSError, json.JSONDecodeError):
+        return True
+    meta = payload.get("_meta", {})
+    if not isinstance(meta, dict):
+        return True
+    return meta.get("dry_run") is not True
+
+
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Validate ISIN identity collisions with DeepSeek (triage only).")
     parser.add_argument("--queue-json", type=Path, default=DEFAULT_QUEUE_JSON)
@@ -360,6 +373,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--max-attempts", type=int, default=2, help="Attempts per batch before recording an error.")
     parser.add_argument("--retry-backoff-seconds", type=float, default=2.0)
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument(
+        "--allow-dry-run-overwrite",
+        action="store_true",
+        help="Allow --dry-run to overwrite an existing non-dry-run validation report.",
+    )
     return parser.parse_args(argv)
 
 
@@ -370,6 +388,14 @@ def main(argv: list[str] | None = None) -> int:
     call_fn: Callable[[str], dict[str, Any]] | None
     if args.dry_run:
         call_fn = None
+        if (
+            not args.allow_dry_run_overwrite
+            and dry_run_would_overwrite_non_dry_run_report(args.json_out)
+        ):
+            raise SystemExit(
+                "--dry-run would overwrite an existing non-dry-run DeepSeek validation report; "
+                "use custom output paths or pass --allow-dry-run-overwrite."
+            )
     else:
         api_key = os.environ.get("DEEPSEEK_API_KEY", "")
         if not api_key:
