@@ -49,7 +49,7 @@ def select_deepseek_collision_reviews(payload: dict[str, Any]) -> list[dict[str,
     items = payload.get("items", [])
     if not isinstance(items, list):
         return []
-    selected: list[dict[str, Any]] = []
+    selected_by_key: dict[str, dict[str, Any]] = {}
     for item in items:
         if not isinstance(item, dict):
             continue
@@ -57,8 +57,8 @@ def select_deepseek_collision_reviews(payload: dict[str, Any]) -> list[dict[str,
             continue
         if item.get("decision_candidate") != "possible_duplicate_or_cross_listing":
             continue
-        selected.append(item)
-    return selected
+        selected_by_key[str(item.get("listing_key", ""))] = item
+    return list(selected_by_key.values())
 
 
 def build_queue_rows(
