@@ -330,7 +330,34 @@ def write_outputs(
     errors_json.write_text(json.dumps({"errors": errors}, indent=2), encoding="utf-8")
 
 
+def dry_run_would_overwrite_non_dry_run_output(output_json: Path) -> bool:
+    if not output_json.exists():
+        return False
+    try:
+        payload = json.loads(output_json.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return True
+    if not isinstance(payload, dict):
+        return True
+    meta = payload.get("_meta", {})
+    if not isinstance(meta, dict):
+        return True
+    return meta.get("dry_run") is not True
+
+
 def run(args: argparse.Namespace) -> int:
+    if (
+        args.dry_run
+        and not args.allow_dry_run_overwrite
+        and (
+            dry_run_would_overwrite_non_dry_run_output(args.normalized_json)
+            or args.raw_responses_jsonl.exists()
+        )
+    ):
+        raise SystemExit(
+            "--dry-run would overwrite or append to existing DeepSeek review outputs; "
+            "use custom output paths or pass --allow-dry-run-overwrite."
+        )
     rows = read_csv_rows(args.input_csv, offset=args.offset, limit=args.limit)
     batches = chunk_rows(rows, args.batch_size)
     normalized_reviews: list[dict[str, Any]] = []
@@ -439,6 +466,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--timeout", type=float, default=90.0)
     parser.add_argument("--sleep-seconds", type=float, default=0.5)
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument(
+        "--allow-dry-run-overwrite",
+        action="store_true",
+        help="Allow --dry-run to overwrite or append to existing DeepSeek review outputs.",
+    )
     return parser.parse_args(argv)
 
 

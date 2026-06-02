@@ -5,6 +5,7 @@ import pytest
 from scripts.run_deepseek_review_queue import (
     build_prompt,
     compact_row,
+    dry_run_would_overwrite_non_dry_run_output,
     normalize_payload,
     parse_json_object,
     run,
@@ -145,3 +146,87 @@ def test_run_dry_run_writes_normalized_outputs(tmp_path) -> None:
     assert payload["_meta"]["dry_run"] is True
     assert payload["items"][0]["decision_candidate"] == "needs_official_evidence"
     assert payload["items"][0]["safe_action"] == "needs_official_evidence"
+
+
+def test_dry_run_overwrite_guard_detects_existing_live_output(tmp_path) -> None:
+    output_json = tmp_path / "normalized.json"
+    output_json.write_text('{"_meta":{"dry_run":false},"items":[]}', encoding="utf-8")
+
+    assert dry_run_would_overwrite_non_dry_run_output(output_json) is True
+
+    output_json.write_text('{"_meta":{"dry_run":true},"items":[]}', encoding="utf-8")
+    assert dry_run_would_overwrite_non_dry_run_output(output_json) is False
+
+
+def test_run_dry_run_refuses_to_clobber_live_output(tmp_path) -> None:
+    input_csv = tmp_path / "queue.csv"
+    input_csv.write_text(
+        "listing_key,ticker,exchange,asset_type,name,instrument_scope,scope_reason\n"
+        "OTC::ABCD,ABCD,OTC,Stock,Example Corp,extended,otc_listing\n",
+        encoding="utf-8",
+    )
+    output_dir = tmp_path / "out"
+    output_dir.mkdir()
+    normalized_json = output_dir / "normalized.json"
+    normalized_json.write_text('{"_meta":{"dry_run":false},"items":[]}', encoding="utf-8")
+    args = parse_args(
+        [
+            "--input-csv",
+            str(input_csv),
+            "--output-dir",
+            str(output_dir),
+            "--raw-responses-jsonl",
+            str(output_dir / "raw.jsonl"),
+            "--normalized-json",
+            str(normalized_json),
+            "--normalized-csv",
+            str(output_dir / "normalized.csv"),
+            "--errors-json",
+            str(output_dir / "errors.json"),
+            "--limit",
+            "1",
+            "--dry-run",
+        ]
+    )
+
+    with pytest.raises(SystemExit) as excinfo:
+        run(args)
+
+    assert "would overwrite or append to existing DeepSeek review outputs" in str(excinfo.value)
+
+
+def test_run_dry_run_refuses_to_append_existing_raw_responses(tmp_path) -> None:
+    input_csv = tmp_path / "queue.csv"
+    input_csv.write_text(
+        "listing_key,ticker,exchange,asset_type,name,instrument_scope,scope_reason\n"
+        "OTC::ABCD,ABCD,OTC,Stock,Example Corp,extended,otc_listing\n",
+        encoding="utf-8",
+    )
+    output_dir = tmp_path / "out"
+    output_dir.mkdir()
+    raw_jsonl = output_dir / "raw.jsonl"
+    raw_jsonl.write_text('{"batch_index":1}\n', encoding="utf-8")
+    args = parse_args(
+        [
+            "--input-csv",
+            str(input_csv),
+            "--output-dir",
+            str(output_dir),
+            "--raw-responses-jsonl",
+            str(raw_jsonl),
+            "--normalized-json",
+            str(output_dir / "normalized.json"),
+            "--normalized-csv",
+            str(output_dir / "normalized.csv"),
+            "--errors-json",
+            str(output_dir / "errors.json"),
+            "--limit",
+            "1",
+            "--dry-run",
+        ]
+    )
+
+    with pytest.raises(SystemExit) as excinfo:
+        run(args)
+
+    assert "would overwrite or append to existing DeepSeek review outputs" in str(excinfo.value)
