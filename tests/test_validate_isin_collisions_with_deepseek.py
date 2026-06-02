@@ -79,6 +79,22 @@ def test_normalize_verdict_filters_unknown_keys_and_marks_agreement():
     assert verdict["deepseek_confidence"] == 0.95
 
 
+def test_normalize_verdict_strips_classification_and_listing_keys():
+    raw = {
+        "classification": " distinct_issuers ",
+        "likely_correct_listing_keys": [" TSX::SPXU ", " "],
+        "likely_misassigned_listing_keys": [" NYSE ARCA::SPXU ", " BOGUS::KEY "],
+        "confidence": 0.75,
+    }
+
+    verdict = normalize_verdict(raw, SAMPLE)
+
+    assert verdict["deepseek_classification"] == "distinct_issuers"
+    assert verdict["likely_correct_listing_keys"] == "TSX::SPXU"
+    assert verdict["likely_misassigned_listing_keys"] == "NYSE ARCA::SPXU"
+    assert verdict["agrees_with_detector"] == "true"
+
+
 def test_normalize_verdict_clamps_bad_confidence_and_defaults_classification():
     verdict = normalize_verdict({"classification": "nonsense", "confidence": "high"}, SAMPLE)
     assert verdict["deepseek_classification"] == "uncertain"

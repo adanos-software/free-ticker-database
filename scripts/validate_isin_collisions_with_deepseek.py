@@ -139,14 +139,14 @@ def build_prompt(groups: list[dict[str, Any]]) -> str:
 
 def _as_key_list(value: Any) -> list[str]:
     if isinstance(value, list):
-        return [str(item) for item in value if str(item)]
-    if isinstance(value, str) and value:
-        return [value]
+        return [str(item).strip() for item in value if str(item).strip()]
+    if isinstance(value, str) and value.strip():
+        return [value.strip()]
     return []
 
 
 def normalize_verdict(raw: dict[str, Any], group: dict[str, Any]) -> dict[str, Any]:
-    classification = str(raw.get("classification") or "uncertain")
+    classification = str(raw.get("classification") or "uncertain").strip()
     if classification not in VALID_CLASSIFICATIONS:
         classification = "uncertain"
     confidence = raw.get("confidence", 0)
