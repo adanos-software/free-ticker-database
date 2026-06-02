@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T07:52:35Z",
+    "generated_at": "2026-06-02T08:01:54Z",
     "review_summary_csv": "data/reports/deepseek_review_summary.csv",
     "policy": "This plan prepares DeepSeek advisory triage only. DeepSeek output must not authorize inferred identifiers, sectors, categories, names, symbol changes, scope changes, or direct data application."
   },
@@ -50,8 +50,8 @@
       "reason": "Residual source-gap queue; DeepSeek can prioritize evidence follow-up for missing ISIN, stock sector, and ETF category gaps without suggesting direct fills.",
       "rows": 3548,
       "duplicate_key_rows": 184,
-      "already_deepseek_reviewed": 250,
-      "unreviewed_rows": 3114
+      "already_deepseek_reviewed": 300,
+      "unreviewed_rows": 3064
     },
     {
       "queue": "weak_sector",
