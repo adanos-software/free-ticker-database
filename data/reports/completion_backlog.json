@@ -2406,7 +2406,7 @@
       "missing_isin_primary": 846,
       "missing_sector_stock": 2600
     },
-    "generated_at": "2026-06-02T23:31:36Z",
+    "generated_at": "2026-06-02T23:43:50Z",
     "legacy_primary_ticker_collision_rows": 1,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
@@ -2423,20 +2423,24 @@
     "next_actions": [
       {
         "action_rank": 1,
-        "confidence_policy": "Accept only after official ASX code, issuer-name, numeric-token, and checksum gates match.",
+        "confidence_policy": "ASX residual work remains blocked unless exact ASX workbook, registry, issuer, trustee, prospectus, or reviewed product-taxonomy evidence proves the value; no ticker/name or peer-instrument inference.",
+        "direct_data_apply_allowed_rows": 0,
         "etf_missing_count": 82,
         "exchange": "ASX",
         "field": "missing_isin_primary",
         "missing_count": 105,
+        "official_isin_apply_candidate_rows": 0,
         "official_source_count": 2,
-        "recommended_source": "Official ASX ISIN workbook.",
-        "review_needed": false,
+        "recommended_source": "asx_listed_companies plus reviewed scope decision for core, extended, or exclude before identifier work.",
+        "residual_gate": "asx_residual_review_blocks_direct_apply",
+        "residual_rows": 114,
+        "review_needed": true,
         "safe_action": "candidate_for_official_followup",
         "script": "scripts/backfill_asx_isins.py",
         "stock_missing_count": 23,
         "target_field": "isin",
         "venue_status": "official_partial",
-        "why_next": "top_impact official workflow"
+        "why_next": "top_impact residual review-gated workflow"
       },
       {
         "action_rank": 2,

@@ -96,6 +96,45 @@ def test_render_markdown_includes_model_and_source_block_notes():
     assert "High-count primary ISIN residuals" in markdown
 
 
+def test_asx_next_action_uses_residual_review_gate_when_no_apply_candidates():
+    rows = build_completion_backlog(
+        [],
+        [
+            {"exchange": "ASX", "asset_type": "Stock", "scope_reason": "primary_listing_missing_isin"},
+            {"exchange": "ASX", "asset_type": "ETF", "scope_reason": "primary_listing_missing_isin"},
+        ],
+        {"by_exchange": [{"exchange": "ASX", "venue_status": "official_partial", "official_source_count": 2}]},
+    )
+    summary = summarize(
+        rows,
+        {"global": {}, "by_exchange": []},
+        "2026-04-12T00:00:00Z",
+        asx_residual_review={
+            "summary": {
+                "asx_residual_backlog": {
+                    "rows": 2,
+                    "official_isin_apply_candidate_rows": 0,
+                    "direct_data_apply_allowed_rows": 0,
+                    "source_gate": "ASX residual work remains blocked without exact official evidence.",
+                },
+                "top_asx_resolution_review_batches": [
+                    {
+                        "recommended_next_source": "Reviewed ASX scope decision before identifier work.",
+                    }
+                ],
+            }
+        },
+    )
+
+    action = summary["next_actions"][0]
+    assert action["exchange"] == "ASX"
+    assert action["review_needed"] is True
+    assert action["residual_gate"] == "asx_residual_review_blocks_direct_apply"
+    assert action["direct_data_apply_allowed_rows"] == 0
+    assert action["official_isin_apply_candidate_rows"] == 0
+    assert "Reviewed ASX scope decision" in action["recommended_source"]
+
+
 def test_completion_backlog_ranks_by_missing_count_before_static_source_order():
     rows = build_completion_backlog(
         [],

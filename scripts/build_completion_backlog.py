@@ -15,6 +15,7 @@ REPORTS_DIR = DATA_DIR / "reports"
 TICKERS_CSV = DATA_DIR / "tickers.csv"
 INSTRUMENT_SCOPES_CSV = DATA_DIR / "instrument_scopes.csv"
 COVERAGE_REPORT_JSON = REPORTS_DIR / "coverage_report.json"
+ASX_RESIDUAL_REVIEW_JSON = REPORTS_DIR / "asx_residual_review.json"
 DEFAULT_CSV_OUT = REPORTS_DIR / "completion_backlog.csv"
 DEFAULT_JSON_OUT = REPORTS_DIR / "completion_backlog.json"
 DEFAULT_MD_OUT = REPORTS_DIR / "completion_backlog.md"
@@ -371,7 +372,13 @@ def rank_backlog_rows(rows: list[CompletionBacklogRow]) -> list[CompletionBacklo
     return ranked_rows
 
 
-def summarize(rows: list[CompletionBacklogRow], coverage_report: dict[str, Any], generated_at: str) -> dict[str, Any]:
+def summarize(
+    rows: list[CompletionBacklogRow],
+    coverage_report: dict[str, Any],
+    generated_at: str,
+    *,
+    asx_residual_review: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     field_totals = Counter()
     exchanges_by_field: dict[str, set[str]] = defaultdict(set)
     for row in rows:
@@ -397,11 +404,56 @@ def summarize(rows: list[CompletionBacklogRow], coverage_report: dict[str, Any],
                 "Missing venues",
             ],
         },
-        "next_actions": build_next_actions(rows),
+        "next_actions": build_next_actions(rows, asx_residual_review=asx_residual_review or {}),
     }
 
 
-def build_next_actions(rows: list[CompletionBacklogRow], limit: int = 8) -> list[dict[str, Any]]:
+def asx_residual_summary(asx_residual_review: dict[str, Any]) -> dict[str, Any]:
+    summary = asx_residual_review.get("summary", {})
+    return summary if isinstance(summary, dict) else {}
+
+
+def asx_residual_blocks_direct_apply(asx_residual_review: dict[str, Any]) -> bool:
+    summary = asx_residual_summary(asx_residual_review)
+    backlog = summary.get("asx_residual_backlog", {})
+    if not isinstance(backlog, dict):
+        return False
+    return (
+        int(backlog.get("official_isin_apply_candidate_rows") or 0) == 0
+        and int(backlog.get("direct_data_apply_allowed_rows") or 0) == 0
+    )
+
+
+def apply_asx_residual_context(action: dict[str, Any], asx_residual_review: dict[str, Any]) -> dict[str, Any]:
+    if action["exchange"] != "ASX" or action["field"] != FIELD_MISSING_ISIN:
+        return action
+    if not asx_residual_blocks_direct_apply(asx_residual_review):
+        return action
+    summary = asx_residual_summary(asx_residual_review)
+    backlog = summary.get("asx_residual_backlog", {})
+    if not isinstance(backlog, dict):
+        backlog = {}
+    batches = summary.get("top_asx_resolution_review_batches", [])
+    first_batch = batches[0] if isinstance(batches, list) and batches and isinstance(batches[0], dict) else {}
+    return {
+        **action,
+        "review_needed": True,
+        "recommended_source": first_batch.get("recommended_next_source") or backlog.get("source_gate") or action["recommended_source"],
+        "confidence_policy": backlog.get("source_gate") or action["confidence_policy"],
+        "why_next": "top_impact residual review-gated workflow",
+        "residual_gate": "asx_residual_review_blocks_direct_apply",
+        "residual_rows": int(backlog.get("rows") or 0),
+        "direct_data_apply_allowed_rows": int(backlog.get("direct_data_apply_allowed_rows") or 0),
+        "official_isin_apply_candidate_rows": int(backlog.get("official_isin_apply_candidate_rows") or 0),
+    }
+
+
+def build_next_actions(
+    rows: list[CompletionBacklogRow],
+    limit: int = 8,
+    *,
+    asx_residual_review: dict[str, Any] | None = None,
+) -> list[dict[str, Any]]:
     ranked = sorted(
         rows,
         key=lambda row: (
@@ -415,31 +467,30 @@ def build_next_actions(rows: list[CompletionBacklogRow], limit: int = 8) -> list
     )
     actions: list[dict[str, Any]] = []
     for row in ranked[:limit]:
-        actions.append(
-            {
-                "action_rank": len(actions) + 1,
-                "safe_action": "candidate_for_official_followup",
-                "exchange": row.exchange,
-                "field": row.field,
-                "target_field": row.target_field,
-                "missing_count": row.missing_count,
-                "stock_missing_count": row.stock_missing_count,
-                "etf_missing_count": row.etf_missing_count,
-                "venue_status": row.venue_status,
-                "official_source_count": row.official_source_count,
-                "recommended_source": row.recommended_source,
-                "script": row.script,
-                "review_needed": row.review_needed,
-                "confidence_policy": row.confidence_policy,
-                "why_next": (
-                    "top_impact official workflow"
-                    if row.priority_bucket == "top_impact" and not row.review_needed
-                    else "top_impact review-gated workflow"
-                    if row.priority_bucket == "top_impact"
-                    else "highest remaining missing-count workflow"
-                ),
-            }
-        )
+        action = {
+            "action_rank": len(actions) + 1,
+            "safe_action": "candidate_for_official_followup",
+            "exchange": row.exchange,
+            "field": row.field,
+            "target_field": row.target_field,
+            "missing_count": row.missing_count,
+            "stock_missing_count": row.stock_missing_count,
+            "etf_missing_count": row.etf_missing_count,
+            "venue_status": row.venue_status,
+            "official_source_count": row.official_source_count,
+            "recommended_source": row.recommended_source,
+            "script": row.script,
+            "review_needed": row.review_needed,
+            "confidence_policy": row.confidence_policy,
+            "why_next": (
+                "top_impact official workflow"
+                if row.priority_bucket == "top_impact" and not row.review_needed
+                else "top_impact review-gated workflow"
+                if row.priority_bucket == "top_impact"
+                else "highest remaining missing-count workflow"
+            ),
+        }
+        actions.append(apply_asx_residual_context(action, asx_residual_review or {}))
     return actions
 
 
@@ -583,6 +634,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--tickers-csv", type=Path, default=TICKERS_CSV)
     parser.add_argument("--instrument-scopes-csv", type=Path, default=INSTRUMENT_SCOPES_CSV)
     parser.add_argument("--coverage-report-json", type=Path, default=COVERAGE_REPORT_JSON)
+    parser.add_argument("--asx-residual-review-json", type=Path, default=ASX_RESIDUAL_REVIEW_JSON)
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_CSV_OUT)
     parser.add_argument("--json-out", type=Path, default=DEFAULT_JSON_OUT)
     parser.add_argument("--md-out", type=Path, default=DEFAULT_MD_OUT)
@@ -598,7 +650,12 @@ def main(argv: list[str] | None = None) -> None:
         load_csv(args.instrument_scopes_csv),
         coverage_report,
     )
-    summary = summarize(rows, coverage_report, generated_at)
+    summary = summarize(
+        rows,
+        coverage_report,
+        generated_at,
+        asx_residual_review=load_json(args.asx_residual_review_json),
+    )
 
     write_csv(args.csv_out, rows)
     args.json_out.parent.mkdir(parents=True, exist_ok=True)

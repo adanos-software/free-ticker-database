@@ -1,6 +1,6 @@
 # Completion Backlog
 
-Generated at: `2026-06-02T23:31:36Z`
+Generated at: `2026-06-02T23:43:50Z`
 
 ## Summary
 
@@ -14,7 +14,7 @@ Generated at: `2026-06-02T23:31:36Z`
 
 | Rank | Exchange | Field | Missing | Safe action | Evidence path | Review |
 |---|---|---|---:|---|---|---|
-| 1 | ASX | missing_isin_primary | 105 | candidate_for_official_followup | Official ASX ISIN workbook. | no |
+| 1 | ASX | missing_isin_primary | 105 | candidate_for_official_followup | asx_listed_companies plus reviewed scope decision for core, extended, or exclude before identifier work. | yes |
 | 2 | OTC | missing_sector_stock | 817 | candidate_for_official_followup | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
 | 3 | TSX | missing_isin_primary | 102 | candidate_for_official_followup | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
 | 4 | TSE | missing_sector_stock | 21 | candidate_for_official_followup | Official JPX listed-issues sector mapping. | no |
