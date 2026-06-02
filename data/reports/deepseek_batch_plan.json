@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T01:34:46Z",
+    "generated_at": "2026-06-02T02:13:21Z",
     "review_summary_csv": "data/reports/deepseek_review_summary.csv",
     "policy": "This plan prepares DeepSeek advisory triage only. DeepSeek output must not authorize inferred identifiers, sectors, categories, names, symbol changes, scope changes, or direct data application."
   },
@@ -35,8 +35,8 @@
       "priority": 3,
       "reason": "Official-sector candidate queue; DeepSeek can prioritize normalization review, not sector application.",
       "rows": 646,
-      "already_deepseek_reviewed": 50,
-      "unreviewed_rows": 596
+      "already_deepseek_reviewed": 550,
+      "unreviewed_rows": 96
     }
   ],
   "selected_batch": {
@@ -44,7 +44,7 @@
     "review_kind": "weak_sector",
     "source_csv": "data/reports/weak_sector_residual_review.csv",
     "batch_csv": "data/deepseek_review_jobs/next_weak_sector_batch.csv",
-    "rows": 500,
+    "rows": 96,
     "batch_size": 10,
     "reason": "Official-sector candidate queue; DeepSeek can prioritize normalization review, not sector application.",
     "run_command": [
@@ -55,7 +55,7 @@
       "--review-kind",
       "weak_sector",
       "--limit",
-      "500",
+      "96",
       "--batch-size",
       "10",
       "--raw-responses-jsonl",
@@ -75,7 +75,7 @@
       "--review-kind",
       "weak_sector",
       "--limit",
-      "500",
+      "96",
       "--batch-size",
       "10",
       "--raw-responses-jsonl",
