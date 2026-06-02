@@ -68,57 +68,7 @@ NASDAQ::NRC,NRC,NASDAQ,official_name_mismatch,Reviewed during v3.24.0 official s
 NASDAQ::OIO,OIO,NASDAQ,official_name_mismatch|expected_missing_primary_isin,Reviewed during v3.24.0 official source refresh: exact exchange/symbol official reference produced a name mismatch; retained as explicit review-gated warning pending issuer rename/backfill decision.
 NASDAQ::OIOWW,OIOWW,NASDAQ,official_name_mismatch|expected_missing_primary_isin,Reviewed during v3.24.0 official source refresh: exact exchange/symbol official reference produced a name mismatch; retained as explicit review-gated warning pending issuer rename/backfill decision.
 NASDAQ::PLUR,PLUR,NASDAQ,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
-NYSE::BRIE,BRIE,NYSE,official_name_mismatch|expected_missing_primary_isin|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category and primary-ISIN source gap review queue.
-NYSE::BRT,BRT,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::CAG,CAG,NYSE,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
 NYSE::CTGO,CTGO,NYSE,official_name_mismatch,Reviewed during v3.24.0 official source refresh: exact exchange/symbol official reference produced a name mismatch; retained as explicit review-gated warning pending issuer rename/backfill decision.
-NYSE::EARN,EARN,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::EDU,EDU,NYSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
-NYSE::FHI,FHI,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::FLG,FLG,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::FMS,FMS,NYSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
-NYSE::GGT,GGT,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::GTN,GTN,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::GTN-A,GTN-A,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::HIG,HIG,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::LBRT,LBRT,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::NXDT,NXDT,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::ONL,ONL,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::PBH,PBH,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::RRX,RRX,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::RVT,RVT,NYSE,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
-NYSE::SSL,SSL,NYSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
-NYSE::TBLU,TBLU,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::TCAI,TCAI,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::TIMB,TIMB,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::TNGY,TNGY,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::TPYP,TPYP,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::WLTG,WLTG,NYSE,official_name_mismatch|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category source gap review queue.
-NYSE::WOR,WOR,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::WTTR,WTTR,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::AACAY,AACAY,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::AAVMY,AAVMY,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::ABNAF,ABNAF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::ACEHF,ACEHF,OTC,official_name_mismatch,Reviewed OTC official-name mismatch queue surfaced by expanded OTC Markets security-profile workflow; keep tracked as expected warning until issuer-level rename review resolves it.
-OTC::ACGBY,ACGBY,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::ACLLY,ACLLY,OTC,official_name_mismatch,Reviewed OTC official-name mismatch queue surfaced by expanded OTC Markets security-profile workflow; keep tracked as expected warning until issuer-level rename review resolves it.
-OTC::ADDHY,ADDHY,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::ADHLF,ADHLF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::AECX,AECX,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::AGFMF,AGFMF,OTC,official_name_mismatch,Reviewed OTC official-name mismatch queue surfaced by expanded OTC Markets security-profile workflow; keep tracked as expected warning until issuer-level rename review resolves it.
-OTC::AGNPF,AGNPF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::AGPPF,AGPPF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::AGREF,AGREF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::AHKSF,AHKSF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::AIABF,AIABF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::AKBTY,AKBTY,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::AKOM,AKOM,OTC,official_name_mismatch,Reviewed during v3.24.0 official source refresh: exact exchange/symbol official reference produced a name mismatch; retained as explicit review-gated warning pending issuer rename/backfill decision.
-OTC::ALBY,ALBY,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::ALEEF,ALEEF,OTC,official_name_mismatch,Reviewed OTC official-name mismatch queue surfaced by expanded OTC Markets security-profile workflow; keep tracked as expected warning until issuer-level rename review resolves it.
-OTC::ALFFF,ALFFF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::ALGGY,ALGGY,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::ALITF,ALITF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::ALLIF,ALLIF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 OTC::ALSMY,ALSMY,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 OTC::ALTAF,ALTAF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 OTC::ALTHF,ALTHF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
