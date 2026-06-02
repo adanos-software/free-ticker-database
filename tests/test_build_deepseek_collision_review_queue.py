@@ -171,9 +171,12 @@ def test_render_markdown_includes_official_evidence_sources() -> None:
                 "target_exchange_totals": {"ADX": 1},
                 "official_source_key_totals": {"adx_market_watch": 1},
             },
+            "unmatched_deepseek_rows": [{"listing_key": "MISSING::ABC", "reason": "missing_masterfile_collision_review_row"}],
         }
     )
 
     assert "Official Evidence Sources" in markdown
     assert "| adx_market_watch | 1 |" in markdown
+    assert "Unmatched DeepSeek Rows" in markdown
+    assert "| MISSING::ABC | missing_masterfile_collision_review_row |" in markdown
     assert "Next evidence source" in markdown

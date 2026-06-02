@@ -1,6 +1,6 @@
 # DeepSeek Collision Review Queue
 
-Generated: `2026-06-02T05:15:49Z`
+Generated: `2026-06-02T20:11:27Z`
 
 Policy: DeepSeek collision reviews are triage only and do not authorize automatic data changes.
 
@@ -8,8 +8,8 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 
 | Metric | Value |
 | --- | ---: |
-| Queue rows | 2939 |
-| Unmatched DeepSeek rows | 0 |
+| Queue rows | 2933 |
+| Unmatched DeepSeek rows | 6 |
 
 ## Target Exchanges
 
@@ -22,14 +22,14 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | BVB | 14 |
 | CSE_MA | 12 |
 | DFM | 1 |
-| Euronext | 1157 |
+| Euronext | 1155 |
 | HNX | 31 |
 | ISE | 5 |
 | KRX | 1 |
 | LSE | 376 |
-| NASDAQ | 3 |
+| NASDAQ | 2 |
 | NEO | 9 |
-| NSE_IN | 85 |
+| NSE_IN | 82 |
 | NSE_KE | 8 |
 | NYSE | 129 |
 | NYSE MKT | 5 |
@@ -59,14 +59,14 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | deutsche_boerse_xetra_all_tradable_equities | 299 |
 | dfm_listed_securities | 1 |
 | euronext_equities | 71 |
-| euronext_etfs | 1253 |
+| euronext_etfs | 1251 |
 | hnx_listed_securities | 31 |
 | jpx_listed_issues | 20 |
 | krx_listed_companies | 1 |
 | lse_price_explorer | 376 |
-| nasdaq_listed | 3 |
+| nasdaq_listed | 2 |
 | nasdaq_other_listed | 8 |
-| nse_india_securities_available | 85 |
+| nse_india_securities_available | 82 |
 | nse_ke_listed_companies | 8 |
 | nzx_instruments | 22 |
 | otc_markets_stock_screener | 6 |
@@ -77,6 +77,19 @@ Policy: DeepSeek collision reviews are triage only and do not authorize automati
 | tmx_listed_issuers | 39 |
 | twse_listed_companies | 8 |
 | upcom_registered_securities | 72 |
+
+## Unmatched DeepSeek Rows
+
+These advisory rows no longer match the current masterfile collision review and are excluded from the active queue.
+
+| Listing key | Reason |
+| --- | --- |
+| Euronext::EAGG | missing_masterfile_collision_review_row |
+| Euronext::JGRN | missing_masterfile_collision_review_row |
+| NSE_IN::AUSOMENT | missing_masterfile_collision_review_row |
+| NSE_IN::BNAGROCHEM | missing_masterfile_collision_review_row |
+| NSE_IN::MMWL | missing_masterfile_collision_review_row |
+| NASDAQ::DUKR | missing_masterfile_collision_review_row |
 
 ## Review Gate
 

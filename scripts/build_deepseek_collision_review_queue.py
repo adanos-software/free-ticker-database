@@ -216,6 +216,21 @@ def render_markdown(payload: dict[str, Any]) -> str:
     )
     for source_key, count in summary["official_source_key_totals"].items():
         lines.append(f"| {source_key or 'missing'} | {count} |")
+    unmatched_rows = payload.get("unmatched_deepseek_rows", [])
+    if unmatched_rows:
+        lines.extend(
+            [
+                "",
+                "## Unmatched DeepSeek Rows",
+                "",
+                "These advisory rows no longer match the current masterfile collision review and are excluded from the active queue.",
+                "",
+                "| Listing key | Reason |",
+                "| --- | --- |",
+            ]
+        )
+        for row in unmatched_rows[:25]:
+            lines.append(f"| {row.get('listing_key', 'missing')} | {row.get('reason', 'missing')} |")
     lines.extend(
         [
             "",
