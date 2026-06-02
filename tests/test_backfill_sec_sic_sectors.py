@@ -5,6 +5,7 @@ import csv
 from scripts.backfill_sec_sic_sectors import (
     SecTicker,
     build_metadata_updates,
+    build_report_payload,
     evaluate_sec_sic_row,
     find_sec_candidates,
     index_sec_tickers,
@@ -109,6 +110,30 @@ def test_build_metadata_updates_emits_sector_override():
             "reason": "SEC submissions data lists SIC 3674 (Semiconductors & Related Devices) for the exact ticker/exchange CIK match; SIC was conservatively mapped to a canonical stock sector.",
         }
     ]
+
+
+def test_build_report_payload_summarizes_sec_residual_decisions():
+    results = [
+        {"decision": "no_sec_match", "ticker": "A", "exchange": "OTC"},
+        {"decision": "missing_sic", "ticker": "B", "exchange": "OTC"},
+    ]
+
+    payload = build_report_payload(
+        results,
+        [],
+        applied=False,
+        exchanges={"OTC"},
+        requests_made=0,
+        generated_at="2026-04-12T00:00:00Z",
+    )
+
+    assert payload["generated_at"] == "2026-04-12T00:00:00Z"
+    assert payload["summary"]["candidates"] == 2
+    assert payload["summary"]["accepted_sector_updates"] == 0
+    assert payload["summary"]["decision_counts"] == {"no_sec_match": 1, "missing_sic": 1}
+    assert payload["summary"]["exchanges"] == ["OTC"]
+    assert payload["summary"]["requests_made"] == 0
+    assert payload["accepted_results"] == []
 
 
 def test_ticker_normalization_matches_class_separator_style():

@@ -26,6 +26,7 @@ RELEASE_SOURCE_REPORTS = {
     "improvement_campaigns": "data/reports/improvement_campaigns.json",
     "completion_backlog": "data/reports/completion_backlog.json",
     "tse_sector_backfill": "data/reports/tse_sector_backfill.json",
+    "sec_sic_sector_backfill": "data/reports/sec_sic_sector_backfill.json",
     "source_gap_classification": "data/reports/source_gap_classification.json",
     "deepseek_review_summary": "data/reports/deepseek_review_summary.json",
     "deepseek_batch_plan": "data/reports/deepseek_batch_plan.json",

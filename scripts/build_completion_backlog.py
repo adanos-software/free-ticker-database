@@ -17,6 +17,7 @@ INSTRUMENT_SCOPES_CSV = DATA_DIR / "instrument_scopes.csv"
 COVERAGE_REPORT_JSON = REPORTS_DIR / "coverage_report.json"
 ASX_RESIDUAL_REVIEW_JSON = REPORTS_DIR / "asx_residual_review.json"
 JPX_TSE_SECTOR_BACKFILL_JSON = REPORTS_DIR / "tse_sector_backfill.json"
+SEC_SIC_SECTOR_BACKFILL_JSON = REPORTS_DIR / "sec_sic_sector_backfill.json"
 DEFAULT_CSV_OUT = REPORTS_DIR / "completion_backlog.csv"
 DEFAULT_JSON_OUT = REPORTS_DIR / "completion_backlog.json"
 DEFAULT_MD_OUT = REPORTS_DIR / "completion_backlog.md"
@@ -380,6 +381,7 @@ def summarize(
     *,
     asx_residual_review: dict[str, Any] | None = None,
     jpx_tse_sector_backfill: dict[str, Any] | None = None,
+    sec_sic_sector_backfill: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     field_totals = Counter()
     exchanges_by_field: dict[str, set[str]] = defaultdict(set)
@@ -410,6 +412,7 @@ def summarize(
             rows,
             asx_residual_review=asx_residual_review or {},
             jpx_tse_sector_backfill=jpx_tse_sector_backfill or {},
+            sec_sic_sector_backfill=sec_sic_sector_backfill or {},
         ),
     }
 
@@ -497,12 +500,59 @@ def apply_jpx_tse_sector_context(action: dict[str, Any], jpx_tse_sector_backfill
     }
 
 
+def sec_sic_sector_summary(sec_sic_sector_backfill: dict[str, Any]) -> dict[str, Any]:
+    summary = sec_sic_sector_backfill.get("summary", {})
+    return summary if isinstance(summary, dict) else {}
+
+
+def sec_sic_otc_has_no_apply_candidates(sec_sic_sector_backfill: dict[str, Any]) -> bool:
+    summary = sec_sic_sector_summary(sec_sic_sector_backfill)
+    exchanges = summary.get("exchanges", [])
+    if not isinstance(exchanges, list) or "OTC" not in exchanges:
+        return False
+    candidates = int(summary.get("candidates") or 0)
+    accepted_updates = int(summary.get("accepted_sector_updates") or 0)
+    return candidates > 0 and accepted_updates == 0
+
+
+def apply_sec_sic_otc_context(action: dict[str, Any], sec_sic_sector_backfill: dict[str, Any]) -> dict[str, Any]:
+    if action["exchange"] != "OTC" or action["field"] != FIELD_MISSING_STOCK_SECTOR:
+        return action
+    if not sec_sic_otc_has_no_apply_candidates(sec_sic_sector_backfill):
+        return action
+    summary = sec_sic_sector_summary(sec_sic_sector_backfill)
+    decision_counts = summary.get("decision_counts", {})
+    if not isinstance(decision_counts, dict):
+        decision_counts = {}
+    return {
+        **action,
+        "review_needed": True,
+        "recommended_source": (
+            "Current SEC SIC residual dry-run has no accepted OTC sector candidates; prioritize OTC Markets issuer "
+            "evidence, reviewed Alpha Vantage/FinanceDatabase signals, or keep source-gap status."
+        ),
+        "confidence_policy": (
+            "Do not fill OTC stock_sector from SEC ticker presence alone; require exact CIK/ticker/exchange, issuer-name, "
+            "numeric-token, SIC, and canonical-sector gates, or a separate reviewed source."
+        ),
+        "why_next": "top_impact residual review-gated workflow",
+        "residual_gate": "sec_sic_otc_no_apply_candidates",
+        "sec_sic_candidates": int(summary.get("candidates") or 0),
+        "accepted_sector_updates": int(summary.get("accepted_sector_updates") or 0),
+        "sec_no_match_rows": int(decision_counts.get("no_sec_match") or 0),
+        "sec_missing_sic_rows": int(decision_counts.get("missing_sic") or 0),
+        "sec_name_mismatch_rows": int(decision_counts.get("name_mismatch") or 0),
+        "sec_requests_made": int(summary.get("requests_made") or 0),
+    }
+
+
 def build_next_actions(
     rows: list[CompletionBacklogRow],
     limit: int = 8,
     *,
     asx_residual_review: dict[str, Any] | None = None,
     jpx_tse_sector_backfill: dict[str, Any] | None = None,
+    sec_sic_sector_backfill: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     ranked = sorted(
         rows,
@@ -542,6 +592,7 @@ def build_next_actions(
         }
         action = apply_asx_residual_context(action, asx_residual_review or {})
         action = apply_jpx_tse_sector_context(action, jpx_tse_sector_backfill or {})
+        action = apply_sec_sic_otc_context(action, sec_sic_sector_backfill or {})
         actions.append(action)
     return actions
 
@@ -688,6 +739,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--coverage-report-json", type=Path, default=COVERAGE_REPORT_JSON)
     parser.add_argument("--asx-residual-review-json", type=Path, default=ASX_RESIDUAL_REVIEW_JSON)
     parser.add_argument("--jpx-tse-sector-backfill-json", type=Path, default=JPX_TSE_SECTOR_BACKFILL_JSON)
+    parser.add_argument("--sec-sic-sector-backfill-json", type=Path, default=SEC_SIC_SECTOR_BACKFILL_JSON)
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_CSV_OUT)
     parser.add_argument("--json-out", type=Path, default=DEFAULT_JSON_OUT)
     parser.add_argument("--md-out", type=Path, default=DEFAULT_MD_OUT)
@@ -709,6 +761,7 @@ def main(argv: list[str] | None = None) -> None:
         generated_at,
         asx_residual_review=load_json(args.asx_residual_review_json),
         jpx_tse_sector_backfill=load_json(args.jpx_tse_sector_backfill_json),
+        sec_sic_sector_backfill=load_json(args.sec_sic_sector_backfill_json),
     )
 
     write_csv(args.csv_out, rows)

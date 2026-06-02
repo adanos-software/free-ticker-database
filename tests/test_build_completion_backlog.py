@@ -164,6 +164,38 @@ def test_tse_sector_next_action_uses_jpx_report_gate_when_no_apply_candidates():
     assert "no JPX 33-industry values" in action["recommended_source"]
 
 
+def test_otc_sector_next_action_uses_sec_sic_residual_gate_when_no_apply_candidates():
+    rows = build_completion_backlog(
+        [{"ticker": "A", "exchange": "OTC", "asset_type": "Stock", "sector": ""}],
+        [],
+        {"by_exchange": [{"exchange": "OTC", "venue_status": "official_full", "official_source_count": 3}]},
+    )
+    summary = summarize(
+        rows,
+        {"global": {}, "by_exchange": []},
+        "2026-04-12T00:00:00Z",
+        sec_sic_sector_backfill={
+            "summary": {
+                "candidates": 1,
+                "accepted_sector_updates": 0,
+                "exchanges": ["OTC"],
+                "requests_made": 0,
+                "decision_counts": {"no_sec_match": 1},
+            }
+        },
+    )
+
+    action = summary["next_actions"][0]
+    assert action["exchange"] == "OTC"
+    assert action["field"] == FIELD_MISSING_STOCK_SECTOR
+    assert action["review_needed"] is True
+    assert action["residual_gate"] == "sec_sic_otc_no_apply_candidates"
+    assert action["sec_sic_candidates"] == 1
+    assert action["accepted_sector_updates"] == 0
+    assert action["sec_no_match_rows"] == 1
+    assert "no accepted OTC sector candidates" in action["recommended_source"]
+
+
 def test_completion_backlog_ranks_by_missing_count_before_static_source_order():
     rows = build_completion_backlog(
         [],

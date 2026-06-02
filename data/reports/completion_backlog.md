@@ -1,6 +1,6 @@
 # Completion Backlog
 
-Generated at: `2026-06-02T23:50:41Z`
+Generated at: `2026-06-02T23:56:56Z`
 
 ## Summary
 
@@ -15,7 +15,7 @@ Generated at: `2026-06-02T23:50:41Z`
 | Rank | Exchange | Field | Missing | Safe action | Evidence path | Review |
 |---|---|---|---:|---|---|---|
 | 1 | ASX | missing_isin_primary | 105 | candidate_for_official_followup | asx_listed_companies plus reviewed scope decision for core, extended, or exclude before identifier work. | yes |
-| 2 | OTC | missing_sector_stock | 817 | candidate_for_official_followup | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
+| 2 | OTC | missing_sector_stock | 817 | candidate_for_official_followup | Current SEC SIC residual dry-run has no accepted OTC sector candidates; prioritize OTC Markets issuer evidence, reviewed Alpha Vantage/FinanceDatabase signals, or keep source-gap status. | yes |
 | 3 | TSX | missing_isin_primary | 102 | candidate_for_official_followup | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
 | 4 | TSE | missing_sector_stock | 21 | candidate_for_official_followup | Official JPX listed-issues verification shows exact TSE matches but no JPX 33-industry values; use official REIT/infrastructure-fund taxonomy evidence before any stock_sector update. | yes |
 | 5 | B3 | missing_sector_stock | 194 | candidate_for_official_followup | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |

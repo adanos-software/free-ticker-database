@@ -157,6 +157,7 @@ DELTA_META_FIXTURE = {
 def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> None:
     assert RELEASE_SOURCE_REPORTS["completion_backlog"] == "data/reports/completion_backlog.json"
     assert RELEASE_SOURCE_REPORTS["tse_sector_backfill"] == "data/reports/tse_sector_backfill.json"
+    assert RELEASE_SOURCE_REPORTS["sec_sic_sector_backfill"] == "data/reports/sec_sic_sector_backfill.json"
     assert RELEASE_SOURCE_REPORTS["source_gap_classification"] == "data/reports/source_gap_classification.json"
     assert RELEASE_SOURCE_REPORTS["deepseek_review_summary"] == "data/reports/deepseek_review_summary.json"
     assert RELEASE_SOURCE_REPORTS["deepseek_batch_plan"] == "data/reports/deepseek_batch_plan.json"
