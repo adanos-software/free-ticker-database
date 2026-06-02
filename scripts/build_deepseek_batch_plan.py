@@ -178,7 +178,36 @@ def build_plan(
 ) -> tuple[dict[str, Any], list[dict[str, str]], list[str]]:
     reviewed = reviewed_keys_by_kind(review_summary_csv)
     statuses = [queue_status(config, reviewed) for config in configs]
-    selected_config = select_queue(configs, reviewed, requested_queue)
+    try:
+        selected_config = select_queue(configs, reviewed, requested_queue)
+    except ValueError as exc:
+        if requested_queue != "auto" or "No unreviewed DeepSeek-supported queue rows remain." not in str(exc):
+            raise
+        payload = {
+            "_meta": {
+                "generated_at": utc_now_iso(),
+                "review_summary_csv": display_path(review_summary_csv),
+                "policy": (
+                    "This plan prepares DeepSeek advisory triage only. DeepSeek output must not authorize inferred "
+                    "identifiers, sectors, categories, names, symbol changes, scope changes, or direct data application."
+                ),
+            },
+            "queues": statuses,
+            "selected_batch": {
+                "queue": None,
+                "review_kind": None,
+                "source_csv": None,
+                "batch_csv": None,
+                "rows": 0,
+                "batch_size": batch_size,
+                "reason": "No unreviewed DeepSeek-supported queue rows remain.",
+                "run_command": [],
+                "dry_run_command": [],
+                "required_env": "DEEPSEEK_API_KEY",
+                "secret_policy": "Read the API key only from DEEPSEEK_API_KEY. Never write it to files, reports, logs, commits, or prompts.",
+            },
+        }
+        return payload, [], []
     selected_rows, fieldnames = select_rows(selected_config, reviewed, limit)
     selected_batch_csv = batch_csv or JOBS_DIR / f"next_{selected_config.queue}_batch.csv"
     payload = {
@@ -242,24 +271,29 @@ def render_markdown(payload: dict[str, Any]) -> str:
             f"- Queue: `{selected['queue']}`",
             f"- Review kind: `{selected['review_kind']}`",
             f"- Rows: `{selected['rows']}`",
-            f"- Batch CSV: `{selected['batch_csv']}`",
             f"- Reason: {selected['reason']}",
-            "",
-            "Run when `DEEPSEEK_API_KEY` is set:",
-            "",
-            "```bash",
-            " ".join(selected["run_command"]),
-            "```",
-            "",
-            "Schema-only dry run:",
-            "",
-            "```bash",
-            " ".join(selected["dry_run_command"]),
-            "```",
-            "",
-            "Secret policy: read the API key only from `DEEPSEEK_API_KEY`; never write it to files, reports, logs, commits, or prompts.",
         ]
     )
+    if selected["batch_csv"]:
+        lines.extend(
+            [
+                f"- Batch CSV: `{selected['batch_csv']}`",
+                "",
+                "Run when `DEEPSEEK_API_KEY` is set:",
+                "",
+                "```bash",
+                " ".join(selected["run_command"]),
+                "```",
+                "",
+                "Schema-only dry run:",
+                "",
+                "```bash",
+                " ".join(selected["dry_run_command"]),
+                "```",
+                "",
+            ]
+        )
+    lines.append("Secret policy: read the API key only from `DEEPSEEK_API_KEY`; never write it to files, reports, logs, commits, or prompts.")
     return "\n".join(lines) + "\n"
 
 
@@ -282,8 +316,10 @@ def main(argv: list[str] | None = None) -> None:
         batch_size=args.batch_size,
         batch_csv=args.batch_csv,
     )
-    batch_csv = ROOT / payload["selected_batch"]["batch_csv"]
-    write_batch_csv(batch_csv, rows, fieldnames)
+    selected_batch_csv = payload["selected_batch"]["batch_csv"]
+    if selected_batch_csv:
+        batch_csv = ROOT / selected_batch_csv
+        write_batch_csv(batch_csv, rows, fieldnames)
     args.json_out.parent.mkdir(parents=True, exist_ok=True)
     args.json_out.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
     args.md_out.write_text(render_markdown(payload), encoding="utf-8")

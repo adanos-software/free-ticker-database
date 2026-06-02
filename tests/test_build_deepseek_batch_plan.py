@@ -56,6 +56,40 @@ def test_build_plan_selects_highest_priority_unreviewed_queue(tmp_path) -> None:
     assert "DEEPSEEK_API_KEY" in payload["selected_batch"]["required_env"]
 
 
+def test_build_plan_all_reviewed_returns_empty_selected_batch(tmp_path) -> None:
+    summary = tmp_path / "deepseek_review_summary.csv"
+    write_csv(
+        summary,
+        ["listing_key", "review_kind"],
+        [{"listing_key": "A::1", "review_kind": "masterfile_collision"}],
+    )
+    masterfile = tmp_path / "masterfile.csv"
+    write_csv(
+        masterfile,
+        ["target_listing_key", "ticker", "target_exchange"],
+        [{"target_listing_key": "A::1", "ticker": "A", "target_exchange": "X"}],
+    )
+    configs = [
+        QueueConfig("masterfile_collision", "masterfile_collision", masterfile, "target_listing_key", 1, "Masterfile first."),
+    ]
+
+    payload, rows, fieldnames = build_plan(
+        configs=configs,
+        review_summary_csv=summary,
+        requested_queue="auto",
+        limit=10,
+        batch_size=5,
+        batch_csv=tmp_path / "batch.csv",
+    )
+
+    assert payload["queues"][0]["unreviewed_rows"] == 0
+    assert payload["selected_batch"]["queue"] is None
+    assert payload["selected_batch"]["rows"] == 0
+    assert payload["selected_batch"]["run_command"] == []
+    assert rows == []
+    assert fieldnames == []
+
+
 def test_write_batch_and_markdown_include_policy(tmp_path) -> None:
     batch = tmp_path / "batch.csv"
     write_batch_csv(batch, [{"listing_key": "OTC::A", "ticker": "A"}], ["listing_key", "ticker"])
