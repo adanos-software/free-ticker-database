@@ -1,22 +1,22 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T00:06:15Z",
+    "generated_at": "2026-06-02T00:38:53Z",
     "raw_responses_jsonl": "data/deepseek_review_jobs/raw_responses.jsonl",
-    "raw_batches": 2457,
+    "raw_batches": 2458,
     "policy": "DeepSeek review suggestions are triage only. They do not authorize inferred identifiers, sectors, categories, names, symbol changes, scope changes, or data application."
   },
   "summary": {
-    "rows": 21682,
+    "rows": 21692,
     "errors": 0,
     "review_kind_totals": {
       "masterfile_collision": 11107,
-      "otc_scope": 10525,
+      "otc_scope": 10535,
       "weak_sector": 50
     },
     "decision_totals": {
       "candidate_apply_blocked": 1471,
       "keep_source_gap": 2438,
-      "needs_official_evidence": 12587,
+      "needs_official_evidence": 12597,
       "out_of_scope_candidate": 566,
       "possible_duplicate_or_cross_listing": 2953,
       "uncertain": 1667
@@ -25,7 +25,7 @@
       "candidate_for_official_followup": 2037,
       "likely_distinct_issuer_review": 326,
       "likely_same_issuer_review": 2627,
-      "needs_official_evidence": 14254,
+      "needs_official_evidence": 14264,
       "source_gap_accept": 2438
     },
     "review_kind_decision_totals": {
@@ -40,7 +40,7 @@
       "otc_scope": {
         "candidate_apply_blocked": 11,
         "keep_source_gap": 1433,
-        "needs_official_evidence": 8547,
+        "needs_official_evidence": 8557,
         "out_of_scope_candidate": 11,
         "possible_duplicate_or_cross_listing": 14,
         "uncertain": 509
@@ -62,7 +62,7 @@
       "otc_scope": {
         "candidate_for_official_followup": 22,
         "likely_same_issuer_review": 14,
-        "needs_official_evidence": 9056,
+        "needs_official_evidence": 9066,
         "source_gap_accept": 1433
       },
       "weak_sector": {
@@ -303620,6 +303620,146 @@
       "evidence_needed": "Official OTC listing confirmation or cross-reference with a primary exchange listing.",
       "rationale": "The instrument is currently in extended scope but lacks official evidence to verify its OTC listing and subject entity.",
       "do_not_apply_reason": "Insufficient official documentation to confirm listing eligibility."
+    },
+    {
+      "batch_index": 1,
+      "listing_key": "OTC::UTGN",
+      "ticker": "UTGN",
+      "exchange": "OTC",
+      "review_kind": "otc_scope",
+      "classification": "needs_official_evidence",
+      "decision_candidate": "needs_official_evidence",
+      "safe_action": "needs_official_evidence",
+      "confidence": 0.4,
+      "evidence_needed": "Official exchange listing confirmation or SEC filing verifying UTGN ticker and UTG Inc issuer",
+      "rationale": "Ticker exists in OTC but not verified against authoritative source; issuer name provided but not officially confirmed",
+      "do_not_apply_reason": "Cannot apply scope change until official evidence confirms listing validity"
+    },
+    {
+      "batch_index": 1,
+      "listing_key": "OTC::UTGPF",
+      "ticker": "UTGPF",
+      "exchange": "OTC",
+      "review_kind": "otc_scope",
+      "classification": "needs_official_evidence",
+      "decision_candidate": "needs_official_evidence",
+      "safe_action": "needs_official_evidence",
+      "confidence": 0.3,
+      "evidence_needed": "Issuer name and official listing confirmation for UTGPF",
+      "rationale": "Missing issuer name; OTC listing not verified against any authoritative source",
+      "do_not_apply_reason": "Cannot apply scope change until official evidence confirms listing validity"
+    },
+    {
+      "batch_index": 1,
+      "listing_key": "OTC::UTKN",
+      "ticker": "UTKN",
+      "exchange": "OTC",
+      "review_kind": "otc_scope",
+      "classification": "needs_official_evidence",
+      "decision_candidate": "needs_official_evidence",
+      "safe_action": "needs_official_evidence",
+      "confidence": 0.4,
+      "evidence_needed": "Official exchange listing confirmation or SEC filing verifying UTKN ticker and Universal Token, Inc. issuer",
+      "rationale": "Ticker exists in OTC but not verified against authoritative source; issuer name provided but not officially confirmed",
+      "do_not_apply_reason": "Cannot apply scope change until official evidence confirms listing validity"
+    },
+    {
+      "batch_index": 1,
+      "listing_key": "OTC::UTRX",
+      "ticker": "UTRX",
+      "exchange": "OTC",
+      "review_kind": "otc_scope",
+      "classification": "needs_official_evidence",
+      "decision_candidate": "needs_official_evidence",
+      "safe_action": "needs_official_evidence",
+      "confidence": 0.4,
+      "evidence_needed": "Official exchange listing confirmation or SEC filing verifying UTRX ticker and Unitronix Corporation issuer",
+      "rationale": "Ticker exists in OTC but not verified against authoritative source; issuer name provided but not officially confirmed",
+      "do_not_apply_reason": "Cannot apply scope change until official evidence confirms listing validity"
+    },
+    {
+      "batch_index": 1,
+      "listing_key": "OTC::UUGWF",
+      "ticker": "UUGWF",
+      "exchange": "OTC",
+      "review_kind": "otc_scope",
+      "classification": "needs_official_evidence",
+      "decision_candidate": "needs_official_evidence",
+      "safe_action": "needs_official_evidence",
+      "confidence": 0.3,
+      "evidence_needed": "Issuer name and official listing confirmation for UUGWF",
+      "rationale": "Missing issuer name; OTC listing not verified against any authoritative source",
+      "do_not_apply_reason": "Cannot apply scope change until official evidence confirms listing validity"
+    },
+    {
+      "batch_index": 1,
+      "listing_key": "OTC::UURAF",
+      "ticker": "UURAF",
+      "exchange": "OTC",
+      "review_kind": "otc_scope",
+      "classification": "needs_official_evidence",
+      "decision_candidate": "needs_official_evidence",
+      "safe_action": "needs_official_evidence",
+      "confidence": 0.3,
+      "evidence_needed": "Issuer name and official listing confirmation for UURAF",
+      "rationale": "Missing issuer name; OTC listing not verified against any authoritative source",
+      "do_not_apply_reason": "Cannot apply scope change until official evidence confirms listing validity"
+    },
+    {
+      "batch_index": 1,
+      "listing_key": "OTC::UVRBF",
+      "ticker": "UVRBF",
+      "exchange": "OTC",
+      "review_kind": "otc_scope",
+      "classification": "needs_official_evidence",
+      "decision_candidate": "needs_official_evidence",
+      "safe_action": "needs_official_evidence",
+      "confidence": 0.4,
+      "evidence_needed": "Official exchange listing confirmation or SEC filing verifying UVRBF ticker and Universal Robina Corporation issuer",
+      "rationale": "Ticker exists in OTC but not verified against authoritative source; issuer name provided but not officially confirmed",
+      "do_not_apply_reason": "Cannot apply scope change until official evidence confirms listing validity"
+    },
+    {
+      "batch_index": 1,
+      "listing_key": "OTC::UWHR",
+      "ticker": "UWHR",
+      "exchange": "OTC",
+      "review_kind": "otc_scope",
+      "classification": "needs_official_evidence",
+      "decision_candidate": "needs_official_evidence",
+      "safe_action": "needs_official_evidence",
+      "confidence": 0.4,
+      "evidence_needed": "Official exchange listing confirmation or SEC filing verifying UWHR ticker and Uwharrie Capital Corp issuer",
+      "rationale": "Ticker exists in OTC but not verified against authoritative source; issuer name provided but not officially confirmed",
+      "do_not_apply_reason": "Cannot apply scope change until official evidence confirms listing validity"
+    },
+    {
+      "batch_index": 1,
+      "listing_key": "OTC::UZAPF",
+      "ticker": "UZAPF",
+      "exchange": "OTC",
+      "review_kind": "otc_scope",
+      "classification": "needs_official_evidence",
+      "decision_candidate": "needs_official_evidence",
+      "safe_action": "needs_official_evidence",
+      "confidence": 0.3,
+      "evidence_needed": "Issuer name and official listing confirmation for UZAPF",
+      "rationale": "Missing issuer name; OTC listing not verified against any authoritative source",
+      "do_not_apply_reason": "Cannot apply scope change until official evidence confirms listing validity"
+    },
+    {
+      "batch_index": 1,
+      "listing_key": "OTC::VACBF",
+      "ticker": "VACBF",
+      "exchange": "OTC",
+      "review_kind": "otc_scope",
+      "classification": "needs_official_evidence",
+      "decision_candidate": "needs_official_evidence",
+      "safe_action": "needs_official_evidence",
+      "confidence": 0.4,
+      "evidence_needed": "Official exchange listing confirmation or SEC filing verifying VACBF ticker and Nykode Therapeutics AS issuer",
+      "rationale": "Ticker exists in OTC but not verified against authoritative source; issuer name provided but not officially confirmed",
+      "do_not_apply_reason": "Cannot apply scope change until official evidence confirms listing validity"
     }
   ],
   "errors": []
