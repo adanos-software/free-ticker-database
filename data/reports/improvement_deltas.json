@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T04:32:59Z",
-    "baseline_generated_at": "2026-06-02T04:32:58Z",
-    "current_generated_at": "2026-06-02T04:32:58Z",
+    "generated_at": "2026-06-02T04:35:33Z",
+    "baseline_generated_at": "2026-06-02T04:35:33Z",
+    "current_generated_at": "2026-06-02T04:35:33Z",
     "baseline_path": "data/reports/improvement_baseline.json",
     "source_files": {
       "baseline_snapshot": "data/reports/improvement_baseline.json",
@@ -72,18 +72,18 @@
       "delta": 0
     },
     "official_masterfile_collisions": {
-      "baseline": 11182,
-      "current": 11182,
+      "baseline": 11176,
+      "current": 11176,
       "delta": 0
     },
     "official_masterfile_matches": {
-      "baseline": 50968,
-      "current": 50968,
+      "baseline": 50816,
+      "current": 50816,
       "delta": 0
     },
     "official_masterfile_missing": {
-      "baseline": 16744,
-      "current": 16744,
+      "baseline": 16749,
+      "current": 16749,
       "delta": 0
     },
     "sector_coverage": {
@@ -94,13 +94,13 @@
     "source_freshness_status_totals": {
       "children": {
         "fresh": {
-          "baseline": 43,
-          "current": 43,
+          "baseline": 44,
+          "current": 44,
           "delta": 0
         },
         "old": {
-          "baseline": 93,
-          "current": 93,
+          "baseline": 92,
+          "current": 92,
           "delta": 0
         }
       }
@@ -303,8 +303,8 @@
           "delta": 0
         },
         "old_official_exchange_directory_count": {
-          "baseline": 22,
-          "current": 22,
+          "baseline": 21,
+          "current": 21,
           "delta": 0
         },
         "source_count": {
@@ -315,13 +315,13 @@
         "source_freshness_status_totals": {
           "children": {
             "fresh": {
-              "baseline": 43,
-              "current": 43,
+              "baseline": 44,
+              "current": 44,
               "delta": 0
             },
             "old": {
-              "baseline": 93,
-              "current": 93,
+              "baseline": 92,
+              "current": 92,
               "delta": 0
             }
           }
@@ -433,13 +433,13 @@
         "source_refresh_action_totals": {
           "children": {
             "no_refresh_needed": {
-              "baseline": 43,
-              "current": 43,
+              "baseline": 44,
+              "current": 44,
               "delta": 0
             },
             "refresh_official_exchange_directory_before_identity_or_collision_work": {
-              "baseline": 22,
-              "current": 22,
+              "baseline": 21,
+              "current": 21,
               "delta": 0
             },
             "refresh_official_subset_before_gap_enrichment": {
@@ -457,8 +457,8 @@
         "source_refresh_priority_totals": {
           "children": {
             "P1": {
-              "baseline": 22,
-              "current": 22,
+              "baseline": 21,
+              "current": 21,
               "delta": 0
             },
             "P2": {
@@ -467,8 +467,8 @@
               "delta": 0
             },
             "P4": {
-              "baseline": 43,
-              "current": 43,
+              "baseline": 44,
+              "current": 44,
               "delta": 0
             }
           }
@@ -478,8 +478,8 @@
             "fresh_no_refresh_needed": {
               "children": {
                 "P4": {
-                  "baseline": 43,
-                  "current": 43,
+                  "baseline": 44,
+                  "current": 44,
                   "delta": 0
                 }
               }
@@ -487,8 +487,8 @@
             "refresh_official_exchange_directory_before_identity_or_collision_work": {
               "children": {
                 "P1": {
-                  "baseline": 22,
-                  "current": 22,
+                  "baseline": 21,
+                  "current": 21,
                   "delta": 0
                 }
               }
@@ -1553,18 +1553,18 @@
           "delta": 0
         },
         "masterfile_collisions": {
-          "baseline": 765,
-          "current": 765,
+          "baseline": 759,
+          "current": 759,
           "delta": 0
         },
         "masterfile_matches": {
-          "baseline": 2611,
-          "current": 2611,
+          "baseline": 2459,
+          "current": 2459,
           "delta": 0
         },
         "masterfile_missing": {
-          "baseline": 1643,
-          "current": 1643,
+          "baseline": 1648,
+          "current": 1648,
           "delta": 0
         },
         "sector_coverage": {
@@ -5872,16 +5872,16 @@
         "delta_context": "scope=BSE_IN;metric=quality_source_gap_delta;baseline=64;current=64;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "masterfile_collision_delta": {
-        "baseline": 765,
-        "current": 765,
+        "baseline": 759,
+        "current": 759,
         "delta": 0,
-        "delta_context": "scope=BSE_IN;metric=masterfile_collision_delta;baseline=765;current=765;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=BSE_IN;metric=masterfile_collision_delta;baseline=759;current=759;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "masterfile_missing_delta": {
-        "baseline": 1643,
-        "current": 1643,
+        "baseline": 1648,
+        "current": 1648,
         "delta": 0,
-        "delta_context": "scope=BSE_IN;metric=masterfile_missing_delta;baseline=1643;current=1643;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=BSE_IN;metric=masterfile_missing_delta;baseline=1648;current=1648;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       }
     },
     "BVB": {
