@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T04:31:22Z",
+    "generated_at": "2026-06-02T04:32:58Z",
     "purpose": "Baseline snapshot for future campaign before/after deltas. It is not a data-fill source.",
     "source_files": {
       "coverage_report": "data/reports/coverage_report.json",
@@ -58,17 +58,17 @@
     "stock_sector_coverage": 43311,
     "etf_category_coverage": 15453,
     "figi_coverage": 64316,
-    "official_masterfile_matches": 50974,
-    "official_masterfile_collisions": 11179,
-    "official_masterfile_missing": 16747,
+    "official_masterfile_matches": 50968,
+    "official_masterfile_collisions": 11182,
+    "official_masterfile_missing": 16744,
     "source_gap_rows": 3548,
     "entry_quality_warn_rows": 222,
     "entry_quality_source_gap_rows": 7436,
     "entry_quality_quarantine_rows": 0,
     "validation_failed_error_gates": 0,
     "source_freshness_status_totals": {
-      "fresh": 42,
-      "old": 94
+      "fresh": 43,
+      "old": 93
     }
   },
   "campaign_baseline": {
@@ -159,20 +159,20 @@
     "freshness": {
       "source_count": 136,
       "source_freshness_status_totals": {
-        "fresh": 42,
-        "old": 94
+        "fresh": 43,
+        "old": 93
       },
       "source_refresh_priority_totals": {
-        "P1": 23,
+        "P1": 22,
         "P2": 71,
-        "P4": 42
+        "P4": 43
       },
       "source_refresh_queue_priority_totals": {
         "fresh_no_refresh_needed": {
-          "P4": 42
+          "P4": 43
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "P1": 23
+          "P1": 22
         },
         "refresh_official_subset_before_gap_enrichment": {
           "P2": 64
@@ -182,12 +182,12 @@
         }
       },
       "source_refresh_action_totals": {
-        "no_refresh_needed": 42,
-        "refresh_official_exchange_directory_before_identity_or_collision_work": 23,
+        "no_refresh_needed": 43,
+        "refresh_official_exchange_directory_before_identity_or_collision_work": 22,
         "refresh_official_subset_before_gap_enrichment": 64,
         "restore_or_replace_unavailable_source_before_data_fill": 7
       },
-      "old_official_exchange_directory_count": 23,
+      "old_official_exchange_directory_count": 22,
       "source_gap_rows": 3548,
       "source_gap_class_totals": {
         "adr_cdr_or_depositary_identifier_gap": 45,
@@ -945,9 +945,9 @@
       "tickers": 1234,
       "isin_coverage": 1234,
       "sector_coverage": 1228,
-      "masterfile_matches": 1212,
-      "masterfile_collisions": 314,
-      "masterfile_missing": 1490,
+      "masterfile_matches": 1206,
+      "masterfile_collisions": 317,
+      "masterfile_missing": 1487,
       "source_gap_rows": 6,
       "entry_quality_warn_rows": 0,
       "entry_quality_source_gap_rows": 27,
@@ -1373,7 +1373,7 @@
       "masterfile_collisions": "campaign_key=masterfile_collisions;metric_count=4;nested_metric_count=3;numeric_row_total=11107",
       "symbol_changes": "campaign_key=symbol_changes;metric_count=3;nested_metric_count=2;numeric_row_total=271",
       "ohlcv": "campaign_key=ohlcv;metric_count=4;nested_metric_count=2;numeric_row_total=366",
-      "freshness": "campaign_key=freshness;metric_count=14;nested_metric_count=8;numeric_row_total=4885",
+      "freshness": "campaign_key=freshness;metric_count=14;nested_metric_count=8;numeric_row_total=4884",
       "baseline": "campaign_key=baseline;metric_count=5;nested_metric_count=0;numeric_row_total=97"
     },
     "exchanges": {
