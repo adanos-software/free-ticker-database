@@ -68,11 +68,6 @@ NASDAQ::NRC,NRC,NASDAQ,official_name_mismatch,Reviewed during v3.24.0 official s
 NASDAQ::OIO,OIO,NASDAQ,official_name_mismatch|expected_missing_primary_isin,Reviewed during v3.24.0 official source refresh: exact exchange/symbol official reference produced a name mismatch; retained as explicit review-gated warning pending issuer rename/backfill decision.
 NASDAQ::OIOWW,OIOWW,NASDAQ,official_name_mismatch|expected_missing_primary_isin,Reviewed during v3.24.0 official source refresh: exact exchange/symbol official reference produced a name mismatch; retained as explicit review-gated warning pending issuer rename/backfill decision.
 NASDAQ::PLUR,PLUR,NASDAQ,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
-NYSE::AKO-A,AKO-A,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::AKO-B,AKO-B,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::ASC,ASC,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE::BCH,BCH,NYSE,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
-NYSE::BRCE,BRCE,NYSE,official_name_mismatch|expected_missing_primary_isin|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category and primary-ISIN source gap review queue.
 NYSE::BRIE,BRIE,NYSE,official_name_mismatch|expected_missing_primary_isin|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category and primary-ISIN source gap review queue.
 NYSE::BRT,BRT,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 NYSE::CAG,CAG,NYSE,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
@@ -101,51 +96,6 @@ NYSE::TPYP,TPYP,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch
 NYSE::WLTG,WLTG,NYSE,official_name_mismatch|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category source gap review queue.
 NYSE::WOR,WOR,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 NYSE::WTTR,WTTR,NYSE,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE ARCA::NSCI,NSCI,NYSE ARCA,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE ARCA::NTSD,NTSD,NYSE ARCA,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE ARCA::NTSX,NTSX,NYSE ARCA,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE ARCA::NUMI,NUMI,NYSE ARCA,official_name_mismatch|expected_missing_primary_isin,Known v3.12.0 official-name mismatch plus primary-ISIN source gap review queue.
-NYSE ARCA::NXUS,NXUS,NYSE ARCA,official_name_mismatch|expected_missing_primary_isin|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category and primary-ISIN source gap review queue.
-NYSE ARCA::PEVC,PEVC,NYSE ARCA,official_name_mismatch|expected_missing_primary_isin|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category and primary-ISIN source gap review queue.
-NYSE ARCA::PRAY,PRAY,NYSE ARCA,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE ARCA::PWER,PWER,NYSE ARCA,official_name_mismatch|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category source gap review queue.
-NYSE ARCA::PYLD,PYLD,NYSE ARCA,official_name_mismatch|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category source gap review queue.
-NYSE ARCA::RFFC,RFFC,NYSE ARCA,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE ARCA::RSPA,RSPA,NYSE ARCA,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE ARCA::RSPE,RSPE,NYSE ARCA,official_name_mismatch|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category source gap review queue.
-NYSE ARCA::SAEF,SAEF,NYSE ARCA,official_name_mismatch|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category source gap review queue.
-NYSE ARCA::SCUS,SCUS,NYSE ARCA,official_name_mismatch|expected_missing_primary_isin|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category and primary-ISIN source gap review queue.
-NYSE ARCA::SCYB,SCYB,NYSE ARCA,official_name_mismatch|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category source gap review queue.
-NYSE ARCA::SECR,SECR,NYSE ARCA,official_name_mismatch|expected_missing_primary_isin|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category and primary-ISIN source gap review queue.
-NYSE ARCA::SFTX,SFTX,NYSE ARCA,official_name_mismatch|expected_missing_primary_isin|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category and primary-ISIN source gap review queue.
-NYSE ARCA::SGVT,SGVT,NYSE ARCA,official_name_mismatch|expected_missing_primary_isin|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category and primary-ISIN source gap review queue.
-NYSE ARCA::SHPP,SHPP,NYSE ARCA,official_name_mismatch|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category source gap review queue.
-NYSE ARCA::SMOX,SMOX,NYSE ARCA,official_name_mismatch|expected_missing_primary_isin|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category and primary-ISIN source gap review queue.
-NYSE ARCA::SPDG,SPDG,NYSE ARCA,official_name_mismatch|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category source gap review queue.
-NYSE ARCA::SPTB,SPTB,NYSE ARCA,official_name_mismatch|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category source gap review queue.
-NYSE ARCA::SPTU,SPTU,NYSE ARCA,official_name_mismatch|expected_missing_primary_isin|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category and primary-ISIN source gap review queue.
-NYSE ARCA::STAX,STAX,NYSE ARCA,official_name_mismatch|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category source gap review queue.
-NYSE ARCA::TMLP,TMLP,NYSE ARCA,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE ARCA::TNUK,TNUK,NYSE ARCA,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE ARCA::TRFK,TRFK,NYSE ARCA,official_name_mismatch|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category source gap review queue.
-NYSE ARCA::UDI,UDI,NYSE ARCA,official_name_mismatch|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category source gap review queue.
-NYSE ARCA::USE,USE,NYSE ARCA,official_name_mismatch|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category source gap review queue.
-NYSE ARCA::VEXC,VEXC,NYSE ARCA,official_name_mismatch|expected_missing_primary_isin|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category and primary-ISIN source gap review queue.
-NYSE ARCA::VGVT,VGVT,NYSE ARCA,official_name_mismatch|expected_missing_primary_isin|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category and primary-ISIN source gap review queue.
-NYSE ARCA::VTG,VTG,NYSE ARCA,official_name_mismatch|expected_missing_primary_isin|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category and primary-ISIN source gap review queue.
-NYSE ARCA::VTP,VTP,NYSE ARCA,official_name_mismatch|expected_missing_primary_isin|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category and primary-ISIN source gap review queue.
-NYSE ARCA::WDEF,WDEF,NYSE ARCA,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE ARCA::WTIB,WTIB,NYSE ARCA,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE ARCA::WTIU,WTIU,NYSE ARCA,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE ARCA::XFLX,XFLX,NYSE ARCA,official_name_mismatch|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category source gap review queue.
-NYSE ARCA::XRLX,XRLX,NYSE ARCA,official_name_mismatch|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category source gap review queue.
-NYSE ARCA::ZSC,ZSC,NYSE ARCA,official_name_mismatch|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category source gap review queue.
-NYSE ARCA::ZTAX,ZTAX,NYSE ARCA,official_name_mismatch|missing_etf_category,Known v3.12.0 official-name mismatch plus ETF category source gap review queue.
-NYSE MKT::FCO,FCO,NYSE MKT,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE MKT::NBH,NBH,NYSE MKT,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE MKT::UUU,UUU,NYSE MKT,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE MKT::VZLA,VZLA,NYSE MKT,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-NYSE MKT::XPL,XPL,NYSE MKT,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 OTC::AACAY,AACAY,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 OTC::AAVMY,AAVMY,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 OTC::ABNAF,ABNAF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
