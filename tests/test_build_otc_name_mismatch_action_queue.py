@@ -57,6 +57,31 @@ def test_build_action_rows_groups_by_review_class_source_isin_and_deepseek_triag
     assert rows[2]["example_listing_keys"] == "OTC::AKOM"
 
 
+def test_build_action_rows_prefers_specific_name_mismatch_deepseek_triage() -> None:
+    rows = build_action_rows(
+        name_mismatch_rows=[
+            name_row("OTC::AECX", "probable_otc_rename_or_symbol_reuse", isin="US92855W2017"),
+        ],
+        deepseek_rows=[
+            {
+                "listing_key": "OTC::AECX",
+                "review_kind": "otc_scope",
+                "deepseek_decision_candidate": "needs_official_evidence",
+            }
+        ],
+        deepseek_summary_rows=[
+            {
+                "listing_key": "OTC::AECX",
+                "review_kind": "otc_name_mismatch",
+                "decision_candidate": "candidate_apply_blocked",
+            }
+        ],
+    )
+
+    assert len(rows) == 1
+    assert rows[0]["deepseek_triage"] == "deepseek_candidate_apply_blocked"
+
+
 def test_build_action_rows_keeps_abbreviation_reviews_matcher_only() -> None:
     rows = build_action_rows(
         name_mismatch_rows=[

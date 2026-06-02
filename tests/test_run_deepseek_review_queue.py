@@ -33,6 +33,31 @@ def test_compact_row_keeps_review_kind_fields_without_apply_values() -> None:
     assert "irrelevant" not in compacted
 
 
+def test_compact_row_supports_otc_name_mismatch_review_fields() -> None:
+    row = {
+        "listing_key": "OTC::ABCD",
+        "ticker": "ABCD",
+        "exchange": "OTC",
+        "asset_type": "Stock",
+        "current_name": "Old Name Corp",
+        "official_name": "Official Name Inc",
+        "isin": "US0000000000",
+        "review_class": "probable_otc_rename_or_symbol_reuse",
+        "review_priority": "high",
+        "recommended_next_source": "Official issuer-history source.",
+        "source_gate": "Do not change the name until identity evidence is reviewed.",
+        "suggested_name": "Must Not Be Included",
+    }
+
+    compacted = compact_row(row, "otc_name_mismatch")
+
+    assert compacted["listing_key"] == "OTC::ABCD"
+    assert compacted["current_name"] == "Old Name Corp"
+    assert compacted["official_name"] == "Official Name Inc"
+    assert compacted["review_class"] == "probable_otc_rename_or_symbol_reuse"
+    assert "suggested_name" not in compacted
+
+
 def test_build_prompt_forbids_invented_data_and_requires_exact_count() -> None:
     prompt = build_prompt(
         [

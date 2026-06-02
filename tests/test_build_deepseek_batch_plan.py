@@ -1,6 +1,7 @@
 import csv
 
 from scripts.build_deepseek_batch_plan import (
+    DEFAULT_QUEUES,
     QueueConfig,
     build_plan,
     render_markdown,
@@ -122,6 +123,15 @@ def test_build_plan_deduplicates_source_queue_keys_before_batching(tmp_path) -> 
     assert payload["queues"][0]["unreviewed_rows"] == 2
     assert [row["target_listing_key"] for row in rows] == ["A::1", "B::2"]
     assert [row["ticker"] for row in rows] == ["A", "B"]
+
+
+def test_default_queues_include_otc_name_mismatch_after_otc_scope() -> None:
+    queues = {config.queue: config for config in DEFAULT_QUEUES}
+
+    assert queues["otc_name_mismatch"].review_kind == "otc_name_mismatch"
+    assert queues["otc_name_mismatch"].source_csv.name == "otc_name_mismatch_review.csv"
+    assert queues["otc_name_mismatch"].key_field == "listing_key"
+    assert queues["otc_scope"].priority < queues["otc_name_mismatch"].priority < queues["weak_sector"].priority
 
 
 def test_write_batch_and_markdown_include_policy(tmp_path) -> None:

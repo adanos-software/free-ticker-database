@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T05:58:08Z",
+    "generated_at": "2026-06-02T06:56:43Z",
     "review_summary_csv": "data/reports/deepseek_review_summary.csv",
     "policy": "This plan prepares DeepSeek advisory triage only. DeepSeek output must not authorize inferred identifiers, sectors, categories, names, symbol changes, scope changes, or direct data application."
   },
@@ -30,11 +30,23 @@
       "unreviewed_rows": 0
     },
     {
+      "queue": "otc_name_mismatch",
+      "review_kind": "otc_name_mismatch",
+      "source_csv": "data/reports/otc_name_mismatch_review.csv",
+      "key_field": "listing_key",
+      "priority": 3,
+      "reason": "OTC official-name mismatch queue; DeepSeek can triage identity evidence needs, but names and metadata stay blocked until listing-keyed official evidence is reviewed locally.",
+      "rows": 146,
+      "duplicate_key_rows": 0,
+      "already_deepseek_reviewed": 146,
+      "unreviewed_rows": 0
+    },
+    {
       "queue": "weak_sector",
       "review_kind": "weak_sector",
       "source_csv": "data/reports/weak_sector_residual_review.csv",
       "key_field": "listing_key",
-      "priority": 3,
+      "priority": 4,
       "reason": "Official-sector candidate queue; DeepSeek can prioritize normalization review, not sector application.",
       "rows": 646,
       "duplicate_key_rows": 0,

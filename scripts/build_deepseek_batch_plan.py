@@ -48,11 +48,19 @@ DEFAULT_QUEUES = [
         reason="Large OTC warning/source-gap queue; DeepSeek can summarize evidence gaps while OTC names and metadata remain blocked.",
     ),
     QueueConfig(
+        queue="otc_name_mismatch",
+        review_kind="otc_name_mismatch",
+        source_csv=REPORTS_DIR / "otc_name_mismatch_review.csv",
+        key_field="listing_key",
+        priority=3,
+        reason="OTC official-name mismatch queue; DeepSeek can triage identity evidence needs, but names and metadata stay blocked until listing-keyed official evidence is reviewed locally.",
+    ),
+    QueueConfig(
         queue="weak_sector",
         review_kind="weak_sector",
         source_csv=REPORTS_DIR / "weak_sector_residual_review.csv",
         key_field="listing_key",
-        priority=3,
+        priority=4,
         reason="Official-sector candidate queue; DeepSeek can prioritize normalization review, not sector application.",
     ),
 ]
