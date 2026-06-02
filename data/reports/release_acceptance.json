@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T02:55:33Z",
+    "generated_at": "2026-06-02T02:58:16Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -207,38 +207,38 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-02T02:55:33Z",
+      "release_generated_at": "2026-06-02T02:58:16Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-02T02:55:31Z"
+          "generated_at": "2026-06-02T02:58:13Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-02T02:55:30Z"
+          "generated_at": "2026-06-02T02:58:12Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
           "exists": true,
-          "generated_at": "2026-06-02T02:55:12Z"
+          "generated_at": "2026-06-02T02:57:44Z"
         },
         "improvement_deltas": {
           "path": "data/reports/improvement_deltas.json",
           "exists": true,
-          "generated_at": "2026-06-02T02:55:12Z"
+          "generated_at": "2026-06-02T02:57:44Z"
         },
         "improvement_campaigns": {
           "path": "data/reports/improvement_campaigns.json",
           "exists": true,
-          "generated_at": "2026-06-02T02:55:13Z"
+          "generated_at": "2026-06-02T02:57:45Z"
         },
         "source_refresh_queue": {
           "path": "data/reports/source_refresh_queue.json",
           "exists": true,
-          "generated_at": "2026-06-02T02:55:12Z"
+          "generated_at": "2026-06-02T02:57:44Z"
         },
         "symbol_changes_review": {
           "path": "data/reports/symbol_changes_review.json",
@@ -360,7 +360,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-02T02:55:30Z",
+      "generated_at": "2026-06-02T02:58:12Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -456,28 +456,28 @@
         }
       },
       "source_freshness_status_totals": {
-        "fresh": 8,
-        "old": 128
+        "fresh": 9,
+        "old": 127
       },
       "source_age_bucket_totals": {
-        "age_0_48h": 8,
+        "age_0_48h": 9,
         "age_over_336h": 92,
-        "age_168_336h": 36
+        "age_168_336h": 35
       },
       "source_refresh_priority_totals": {
-        "P4": 8,
+        "P4": 9,
         "P2": 95,
-        "P1": 33
+        "P1": 32
       },
       "source_refresh_queue_totals": {
-        "fresh_no_refresh_needed": 8,
+        "fresh_no_refresh_needed": 9,
         "refresh_official_subset_before_gap_enrichment": 88,
-        "refresh_official_exchange_directory_before_identity_or_collision_work": 33,
+        "refresh_official_exchange_directory_before_identity_or_collision_work": 32,
         "restore_or_replace_unavailable_source_before_data_fill": 7
       },
       "source_refresh_queue_scope_totals": {
         "fresh_no_refresh_needed": {
-          "exchange_directory": 8
+          "exchange_directory": 9
         },
         "refresh_official_subset_before_gap_enrichment": {
           "listed_companies_subset": 80,
@@ -486,7 +486,7 @@
           "security_identifier_registry_subset": 1
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "exchange_directory": 33
+          "exchange_directory": 32
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
           "listed_companies_subset": 7
@@ -494,14 +494,14 @@
       },
       "source_refresh_queue_mode_totals": {
         "fresh_no_refresh_needed": {
-          "network": 8
+          "network": 9
         },
         "refresh_official_subset_before_gap_enrichment": {
           "cache": 21,
           "network": 67
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "network": 31,
+          "network": 30,
           "cache": 2
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
@@ -510,13 +510,13 @@
       },
       "source_refresh_queue_priority_totals": {
         "fresh_no_refresh_needed": {
-          "P4": 8
+          "P4": 9
         },
         "refresh_official_subset_before_gap_enrichment": {
           "P2": 88
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "P1": 33
+          "P1": 32
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
           "P2": 7
@@ -524,14 +524,14 @@
       },
       "source_refresh_queue_age_bucket_totals": {
         "fresh_no_refresh_needed": {
-          "age_0_48h": 8
+          "age_0_48h": 9
         },
         "refresh_official_subset_before_gap_enrichment": {
           "age_over_336h": 85,
           "age_168_336h": 3
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "age_168_336h": 33
+          "age_168_336h": 32
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
           "age_over_336h": 7
@@ -539,13 +539,13 @@
       },
       "source_refresh_queue_review_strategy_totals": {
         "fresh_no_refresh_needed": {
-          "no_refresh_required": 8
+          "no_refresh_required": 9
         },
         "refresh_official_subset_before_gap_enrichment": {
           "refresh_official_subset_before_gap_enrichment": 88
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "refresh_official_exchange_directory_before_identity_or_collision_work": 33
+          "refresh_official_exchange_directory_before_identity_or_collision_work": 32
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
           "restore_or_replace_unavailable_source_before_data_fill": 7
@@ -553,13 +553,13 @@
       },
       "source_refresh_queue_evidence_required_totals": {
         "fresh_no_refresh_needed": {
-          "fresh_source_generated_at_with_age_under_48h": 8
+          "fresh_source_generated_at_with_age_under_48h": 9
         },
         "refresh_official_subset_before_gap_enrichment": {
           "official_subset_refresh_artifact_with_generated_at_scope_and_row_count": 88
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count": 33
+          "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count": 32
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
           "source_restored_or_replaced_with_official_or_documented_unavailable_decision": 7
