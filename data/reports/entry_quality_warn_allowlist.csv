@@ -70,56 +70,6 @@ NASDAQ::OIOWW,OIOWW,NASDAQ,official_name_mismatch|expected_missing_primary_isin,
 NASDAQ::PLUR,PLUR,NASDAQ,country_isin_mismatch,"Reviewed foreign/depository-style listing where issuer country differs from ISIN prefix country; tracked as expected warning, not a release regression."
 NYSE::CTGO,CTGO,NYSE,official_name_mismatch,Reviewed during v3.24.0 official source refresh: exact exchange/symbol official reference produced a name mismatch; retained as explicit review-gated warning pending issuer rename/backfill decision.
 OTC::ARAFF,ARAFF,OTC,official_name_mismatch,Reviewed during v3.24.0 official source refresh: exact exchange/symbol official reference produced a name mismatch; retained as explicit review-gated warning pending issuer rename/backfill decision.
-OTC::BICEF,BICEF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::BICEY,BICEY,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::BKAMF,BKAMF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::BKFPF,BKFPF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::BKGFF,BKGFF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::BKTPF,BKTPF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::BLIS,BLIS,OTC,official_name_mismatch,Reviewed OTC official-name mismatch queue surfaced by expanded OTC Markets security-profile workflow; keep tracked as expected warning until issuer-level rename review resolves it.
-OTC::BLRDF,BLRDF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::BNNLF,BNNLF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::BQSSF,BQSSF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::BRCTF,BRCTF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::BROXF,BROXF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::BRYAF,BRYAF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::BSENF,BSENF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::BTSNY,BTSNY,OTC,official_name_mismatch,Reviewed OTC official-name mismatch queue surfaced by expanded OTC Markets security-profile workflow; keep tracked as expected warning until issuer-level rename review resolves it.
-OTC::BTZI,BTZI,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::BXDIF,BXDIF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::BYDIY,BYDIY,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CABPF,CABPF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CANSF,CANSF,OTC,official_name_mismatch,Reviewed OTC official-name mismatch queue surfaced by expanded OTC Markets security-profile workflow; keep tracked as expected warning until issuer-level rename review resolves it.
-OTC::CAPTF,CAPTF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CBAUF,CBAUF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CBSC,CBSC,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CCOOF,CCOOF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CCPUF,CCPUF,OTC,official_name_mismatch,Reviewed OTC official-name mismatch queue surfaced by expanded OTC Markets security-profile workflow; keep tracked as expected warning until issuer-level rename review resolves it.
-OTC::CCWOF,CCWOF,OTC,official_name_mismatch,Reviewed OTC official-name mismatch queue surfaced by expanded OTC Markets security-profile workflow; keep tracked as expected warning until issuer-level rename review resolves it.
-OTC::CDNMF,CDNMF,OTC,official_name_mismatch,Reviewed OTC official-name mismatch queue surfaced by expanded OTC Markets security-profile workflow; keep tracked as expected warning until issuer-level rename review resolves it.
-OTC::CDTAF,CDTAF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CEGHF,CEGHF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CFRUY,CFRUY,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CGPVF,CGPVF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CHBOF,CHBOF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CHFHF,CHFHF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CHMJF,CHMJF,OTC,official_name_mismatch,Reviewed OTC official-name mismatch queue surfaced by expanded OTC Markets security-profile workflow; keep tracked as expected warning until issuer-level rename review resolves it.
-OTC::CHNTF,CHNTF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CICHY,CICHY,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CIHKY,CIHKY,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CIMDF,CIMDF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CITAY,CITAY,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CLDHF,CLDHF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CLGCF,CLGCF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CLLKF,CLLKF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CLOEF,CLOEF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CMCXF,CMCXF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CMWAY,CMWAY,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CNGKY,CNGKY,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CNMTF,CNMTF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::CNPRF,CNPRF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::COBJF,COBJF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
-OTC::COPJF,COPJF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 OTC::CPEFF,CPEFF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 OTC::CPKOF,CPKOF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
 OTC::CPPKF,CPPKF,OTC,official_name_mismatch,Known v3.12.0 official-name mismatch review queue; new warnings must be explicitly reviewed before release.
