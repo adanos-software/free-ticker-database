@@ -5,6 +5,7 @@ from scripts.build_release_acceptance_report import (
     EXPECTED_BASELINE_SOURCE_FILES,
     EXPECTED_CAMPAIGN_SOURCE_FILES,
     EXPECTED_DELTA_SOURCE_FILES,
+    RELEASE_SOURCE_REPORTS,
     REQUIRED_DELTA_KEYS,
     b3_etf_apply_category_review_context,
     b3_etf_apply_gate_context,
@@ -149,6 +150,11 @@ DELTA_META_FIXTURE = {
     "source_files": EXPECTED_DELTA_SOURCE_FILES,
     "policy": "Delta report only. Positive or negative deltas require source-level review before any data change is inferred.",
 }
+
+
+def test_release_source_reports_include_source_gap_classification() -> None:
+    assert RELEASE_SOURCE_REPORTS["source_gap_classification"] == "data/reports/source_gap_classification.json"
+
 
 BASELINE_META_FIXTURE = {
     "generated_at": "2026-05-24T00:00:00Z",

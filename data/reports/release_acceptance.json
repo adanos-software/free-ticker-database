@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T22:55:47Z",
+    "generated_at": "2026-06-02T23:01:29Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -8,6 +8,7 @@
       "improvement_baseline": "data/reports/improvement_baseline.json",
       "improvement_deltas": "data/reports/improvement_deltas.json",
       "improvement_campaigns": "data/reports/improvement_campaigns.json",
+      "source_gap_classification": "data/reports/source_gap_classification.json",
       "source_refresh_queue": "data/reports/source_refresh_queue.json",
       "symbol_changes_review": "data/reports/symbol_changes_review.json",
       "ohlcv_plausibility": "data/reports/ohlcv_plausibility.json",
@@ -207,18 +208,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-02T22:55:47Z",
+      "release_generated_at": "2026-06-02T23:01:29Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-02T22:55:45Z"
+          "generated_at": "2026-06-02T23:01:26Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-02T22:55:44Z"
+          "generated_at": "2026-06-02T23:01:25Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -234,6 +235,11 @@
           "path": "data/reports/improvement_campaigns.json",
           "exists": true,
           "generated_at": "2026-06-02T20:39:47Z"
+        },
+        "source_gap_classification": {
+          "path": "data/reports/source_gap_classification.json",
+          "exists": true,
+          "generated_at": "2026-05-31T04:00:47Z"
         },
         "source_refresh_queue": {
           "path": "data/reports/source_refresh_queue.json",
@@ -360,7 +366,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-02T22:55:44Z",
+      "generated_at": "2026-06-02T23:01:25Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
