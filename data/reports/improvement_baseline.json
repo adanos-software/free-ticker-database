@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T03:48:38Z",
+    "generated_at": "2026-06-02T03:50:28Z",
     "purpose": "Baseline snapshot for future campaign before/after deltas. It is not a data-fill source.",
     "source_files": {
       "coverage_report": "data/reports/coverage_report.json",
@@ -67,8 +67,8 @@
     "entry_quality_quarantine_rows": 0,
     "validation_failed_error_gates": 0,
     "source_freshness_status_totals": {
-      "fresh": 26,
-      "old": 110
+      "fresh": 27,
+      "old": 109
     }
   },
   "campaign_baseline": {
@@ -159,32 +159,32 @@
     "freshness": {
       "source_count": 136,
       "source_freshness_status_totals": {
-        "fresh": 26,
-        "old": 110
+        "fresh": 27,
+        "old": 109
       },
       "source_refresh_priority_totals": {
         "P1": 25,
-        "P2": 85,
-        "P4": 26
+        "P2": 84,
+        "P4": 27
       },
       "source_refresh_queue_priority_totals": {
         "fresh_no_refresh_needed": {
-          "P4": 26
+          "P4": 27
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
           "P1": 25
         },
         "refresh_official_subset_before_gap_enrichment": {
-          "P2": 78
+          "P2": 77
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
           "P2": 7
         }
       },
       "source_refresh_action_totals": {
-        "no_refresh_needed": 26,
+        "no_refresh_needed": 27,
         "refresh_official_exchange_directory_before_identity_or_collision_work": 25,
-        "refresh_official_subset_before_gap_enrichment": 78,
+        "refresh_official_subset_before_gap_enrichment": 77,
         "restore_or_replace_unavailable_source_before_data_fill": 7
       },
       "old_official_exchange_directory_count": 25,
