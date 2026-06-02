@@ -45,6 +45,20 @@ def test_select_deepseek_otc_reviews_deduplicates_listing_keys_with_latest_revie
     ]
 
 
+def test_select_deepseek_otc_reviews_skips_blank_listing_keys() -> None:
+    payload = {
+        "items": [
+            {"listing_key": "", "review_kind": "otc_scope", "decision_candidate": "needs_official_evidence"},
+            {"review_kind": "otc_scope", "decision_candidate": "needs_official_evidence"},
+            {"listing_key": "OTC::A", "review_kind": "otc_scope", "decision_candidate": "needs_official_evidence"},
+        ]
+    }
+
+    assert select_deepseek_otc_reviews(payload) == [
+        {"listing_key": "OTC::A", "review_kind": "otc_scope", "decision_candidate": "needs_official_evidence"}
+    ]
+
+
 def test_build_payload_joins_otc_reviews_to_scope_queue(tmp_path) -> None:
     deepseek_json = tmp_path / "deepseek.json"
     deepseek_json.write_text(

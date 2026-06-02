@@ -49,7 +49,10 @@ def select_deepseek_otc_reviews(payload: dict[str, Any]) -> list[dict[str, Any]]
             continue
         if item.get("decision_candidate") != "needs_official_evidence":
             continue
-        selected_by_key[str(item.get("listing_key", ""))] = item
+        listing_key = str(item.get("listing_key", ""))
+        if not listing_key:
+            continue
+        selected_by_key[listing_key] = item
     return list(selected_by_key.values())
 
 

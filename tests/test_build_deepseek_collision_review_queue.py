@@ -61,6 +61,35 @@ def test_select_deepseek_collision_reviews_deduplicates_listing_keys_with_latest
     ]
 
 
+def test_select_deepseek_collision_reviews_skips_blank_listing_keys() -> None:
+    payload = {
+        "items": [
+            {
+                "listing_key": "",
+                "review_kind": "masterfile_collision",
+                "decision_candidate": "possible_duplicate_or_cross_listing",
+            },
+            {
+                "review_kind": "masterfile_collision",
+                "decision_candidate": "possible_duplicate_or_cross_listing",
+            },
+            {
+                "listing_key": "ADX::AGIX",
+                "review_kind": "masterfile_collision",
+                "decision_candidate": "possible_duplicate_or_cross_listing",
+            },
+        ]
+    }
+
+    assert select_deepseek_collision_reviews(payload) == [
+        {
+            "listing_key": "ADX::AGIX",
+            "review_kind": "masterfile_collision",
+            "decision_candidate": "possible_duplicate_or_cross_listing",
+        }
+    ]
+
+
 def test_build_payload_joins_deepseek_collision_reviews_to_masterfile_queue(tmp_path) -> None:
     deepseek_json = tmp_path / "deepseek.json"
     deepseek_json.write_text(

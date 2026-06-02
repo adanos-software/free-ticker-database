@@ -57,7 +57,10 @@ def select_deepseek_collision_reviews(payload: dict[str, Any]) -> list[dict[str,
             continue
         if item.get("decision_candidate") != "possible_duplicate_or_cross_listing":
             continue
-        selected_by_key[str(item.get("listing_key", ""))] = item
+        listing_key = str(item.get("listing_key", ""))
+        if not listing_key:
+            continue
+        selected_by_key[listing_key] = item
     return list(selected_by_key.values())
 
 

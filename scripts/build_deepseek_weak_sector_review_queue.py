@@ -49,7 +49,10 @@ def select_deepseek_weak_sector_reviews(payload: dict[str, Any]) -> list[dict[st
             continue
         if item.get("decision_candidate") not in {"needs_official_evidence", "keep_source_gap", "out_of_scope_candidate"}:
             continue
-        selected_by_key[str(item.get("listing_key", ""))] = item
+        listing_key = str(item.get("listing_key", ""))
+        if not listing_key:
+            continue
+        selected_by_key[listing_key] = item
     return list(selected_by_key.values())
 
 

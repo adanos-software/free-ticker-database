@@ -42,6 +42,20 @@ def test_select_deepseek_weak_sector_reviews_deduplicates_listing_keys_with_late
     ]
 
 
+def test_select_deepseek_weak_sector_reviews_skips_blank_listing_keys() -> None:
+    payload = {
+        "items": [
+            {"listing_key": "", "review_kind": "weak_sector", "decision_candidate": "keep_source_gap"},
+            {"review_kind": "weak_sector", "decision_candidate": "needs_official_evidence"},
+            {"listing_key": "NGX::A", "review_kind": "weak_sector", "decision_candidate": "keep_source_gap"},
+        ]
+    }
+
+    assert select_deepseek_weak_sector_reviews(payload) == [
+        {"listing_key": "NGX::A", "review_kind": "weak_sector", "decision_candidate": "keep_source_gap"}
+    ]
+
+
 def test_build_payload_joins_weak_sector_reviews_to_residual_queue(tmp_path) -> None:
     deepseek_json = tmp_path / "deepseek.json"
     deepseek_json.write_text(
