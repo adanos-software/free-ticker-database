@@ -221,6 +221,49 @@ def summarize(verdicts: list[dict[str, Any]], errors: list[dict[str, Any]], *, g
     }
 
 
+def queue_generated_at(queue_payload: dict[str, Any]) -> str:
+    meta = queue_payload.get("_meta", {})
+    if isinstance(meta, dict) and isinstance(meta.get("generated_at"), str):
+        return meta["generated_at"]
+    summary = queue_payload.get("summary", {})
+    if isinstance(summary, dict) and isinstance(summary.get("generated_at"), str):
+        return summary["generated_at"]
+    return ""
+
+
+def compute_queue_coverage(
+    queue_payload: dict[str, Any], verdicts: list[dict[str, Any]]
+) -> dict[str, Any]:
+    queue_isins = [
+        str(group.get("isin", "")).strip()
+        for group in queue_payload.get("items", [])
+        if isinstance(group, dict) and str(group.get("isin", "")).strip()
+    ]
+    verdict_isins = [
+        str(verdict.get("isin", "")).strip()
+        for verdict in verdicts
+        if str(verdict.get("isin", "")).strip()
+    ]
+    queue_unique = set(queue_isins)
+    verdict_unique = set(verdict_isins)
+    duplicate_validation_isins = len(verdict_isins) - len(verdict_unique)
+    missing = sorted(queue_unique - verdict_unique)
+    stale = sorted(verdict_unique - queue_unique)
+    full_coverage = not missing and not stale and duplicate_validation_isins == 0
+    return {
+        "queue_generated_at": queue_generated_at(queue_payload),
+        "queue_groups": len(queue_isins),
+        "queue_unique_isins": len(queue_unique),
+        "validation_rows": len(verdicts),
+        "validated_unique_isins": len(verdict_unique),
+        "duplicate_validation_isins": duplicate_validation_isins,
+        "missing_queue_isins": missing,
+        "stale_validation_isins": stale,
+        "full_current_queue_coverage": full_coverage,
+        "coverage_status": "full_current_queue_coverage" if full_coverage else "coverage_gap",
+    }
+
+
 def dry_run_payload(groups: list[dict[str, Any]]) -> dict[str, Any]:
     return {
         "verdicts": [
@@ -305,6 +348,7 @@ def markdown_escape(value: str) -> str:
 
 def render_markdown(payload: dict[str, Any]) -> str:
     summary = payload["summary"]
+    coverage = payload.get("coverage", {})
     lines = [
         "# DeepSeek ISIN Identity Collision Validation",
         "",
@@ -320,6 +364,10 @@ def render_markdown(payload: dict[str, Any]) -> str:
         f"| Agrees with detector | {summary['agrees_with_detector']} |",
         f"| Disagrees with detector | {summary['disagrees_with_detector']} |",
         f"| Errors | {summary['errors']} |",
+        f"| Queue groups | {coverage.get('queue_groups', '-')} |",
+        f"| Missing queue ISINs | {len(coverage.get('missing_queue_isins', []))} |",
+        f"| Stale validation ISINs | {len(coverage.get('stale_validation_isins', []))} |",
+        f"| Coverage status | {coverage.get('coverage_status', 'unknown')} |",
         "",
         "## Verdicts",
         "",
@@ -383,6 +431,14 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--retry-backoff-seconds", type=float, default=2.0)
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument(
+        "--refresh-coverage-only",
+        action="store_true",
+        help=(
+            "Refresh queue-coverage metadata in an existing validation report "
+            "without making a DeepSeek API request or changing verdict rows."
+        ),
+    )
+    parser.add_argument(
         "--allow-dry-run-overwrite",
         action="store_true",
         help="Allow --dry-run to overwrite an existing non-dry-run validation report.",
@@ -393,6 +449,40 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     queue_payload = load_json(args.queue_json)
+    generated_at = utc_now_iso()
+
+    if args.refresh_coverage_only:
+        if not args.json_out.exists():
+            raise SystemExit("--refresh-coverage-only requires an existing validation JSON report.")
+        payload = load_json(args.json_out)
+        verdicts = payload.get("items", [])
+        errors = payload.get("errors", [])
+        if not isinstance(verdicts, list) or not all(isinstance(item, dict) for item in verdicts):
+            raise SystemExit("Existing validation JSON has invalid items.")
+        if not isinstance(errors, list):
+            errors = []
+        payload["coverage"] = compute_queue_coverage(queue_payload, verdicts)
+        meta = payload.setdefault("_meta", {})
+        if isinstance(meta, dict):
+            meta["coverage_refreshed_at"] = generated_at
+            meta["queue_generated_at"] = payload["coverage"]["queue_generated_at"]
+            meta["queue_coverage_status"] = payload["coverage"]["coverage_status"]
+        summary = payload.setdefault("summary", {})
+        if isinstance(summary, dict):
+            summary["queue_generated_at"] = payload["coverage"]["queue_generated_at"]
+            summary["queue_groups"] = payload["coverage"]["queue_groups"]
+            summary["coverage_status"] = payload["coverage"]["coverage_status"]
+            summary["missing_queue_isins"] = len(payload["coverage"]["missing_queue_isins"])
+            summary["stale_validation_isins"] = len(payload["coverage"]["stale_validation_isins"])
+            summary["duplicate_validation_isins"] = payload["coverage"]["duplicate_validation_isins"]
+        write_outputs(payload, args.csv_out, args.json_out, args.md_out)
+        print(
+            json.dumps(
+                {"coverage": payload["coverage"], "json_out": display_path(args.json_out)},
+                indent=2,
+            )
+        )
+        return 0 if payload["coverage"]["full_current_queue_coverage"] else 1
 
     call_fn: Callable[[str], dict[str, Any]] | None
     if args.dry_run:
@@ -431,8 +521,9 @@ def main(argv: list[str] | None = None) -> int:
     )
     payload = {
         "_meta": {
-            "generated_at": utc_now_iso(),
+            "generated_at": generated_at,
             "queue_json": display_path(args.queue_json),
+            "queue_generated_at": queue_generated_at(queue_payload),
             "model": args.model,
             "dry_run": args.dry_run,
             "policy": (
@@ -440,10 +531,21 @@ def main(argv: list[str] | None = None) -> int:
                 "scope change without official listing-keyed evidence."
             ),
         },
-        "summary": summarize(verdicts, errors, generated_at=utc_now_iso()),
+        "summary": summarize(verdicts, errors, generated_at=generated_at),
         "items": verdicts,
         "errors": errors,
     }
+    payload["coverage"] = compute_queue_coverage(queue_payload, verdicts)
+    payload["summary"].update(
+        {
+            "queue_generated_at": payload["coverage"]["queue_generated_at"],
+            "queue_groups": payload["coverage"]["queue_groups"],
+            "coverage_status": payload["coverage"]["coverage_status"],
+            "missing_queue_isins": len(payload["coverage"]["missing_queue_isins"]),
+            "stale_validation_isins": len(payload["coverage"]["stale_validation_isins"]),
+            "duplicate_validation_isins": payload["coverage"]["duplicate_validation_isins"],
+        }
+    )
     write_outputs(payload, args.csv_out, args.json_out, args.md_out)
     print(
         json.dumps(

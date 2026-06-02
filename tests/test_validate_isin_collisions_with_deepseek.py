@@ -2,6 +2,7 @@ import pytest
 
 from scripts.validate_isin_collisions_with_deepseek import (
     build_prompt,
+    compute_queue_coverage,
     dry_run_would_overwrite_non_dry_run_report,
     main,
     normalize_verdict,
@@ -132,6 +133,34 @@ def test_run_validation_with_injected_caller_collects_verdicts():
     assert summary["validated_groups"] == 1
     assert summary["agrees_with_detector"] == 1
     assert summary["classification_totals"] == {"distinct_issuers": 1}
+
+
+def test_compute_queue_coverage_detects_full_current_queue_coverage():
+    payload = {"_meta": {"generated_at": "2026-06-02T00:00:00Z"}, "items": [SAMPLE]}
+    verdicts = [{"isin": "CA08663L1040"}]
+
+    coverage = compute_queue_coverage(payload, verdicts)
+
+    assert coverage["queue_generated_at"] == "2026-06-02T00:00:00Z"
+    assert coverage["queue_groups"] == 1
+    assert coverage["validation_rows"] == 1
+    assert coverage["missing_queue_isins"] == []
+    assert coverage["stale_validation_isins"] == []
+    assert coverage["full_current_queue_coverage"] is True
+    assert coverage["coverage_status"] == "full_current_queue_coverage"
+
+
+def test_compute_queue_coverage_reports_missing_stale_and_duplicates():
+    payload = {"items": [SAMPLE, group("US123", "isin_shared_by_distinct_issuers", [("A::1", "A", "A", "A Inc")])]}
+    verdicts = [{"isin": "CA08663L1040"}, {"isin": "CA08663L1040"}, {"isin": "STALE"}]
+
+    coverage = compute_queue_coverage(payload, verdicts)
+
+    assert coverage["missing_queue_isins"] == ["US123"]
+    assert coverage["stale_validation_isins"] == ["STALE"]
+    assert coverage["duplicate_validation_isins"] == 1
+    assert coverage["full_current_queue_coverage"] is False
+    assert coverage["coverage_status"] == "coverage_gap"
 
 
 def test_run_validation_records_batch_errors_without_raising():

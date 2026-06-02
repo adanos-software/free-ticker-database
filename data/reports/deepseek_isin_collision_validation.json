@@ -5,11 +5,26 @@
       "offset_213_limit_213"
     ],
     "coverage": "full_sweep_all_collision_groups",
+    "coverage_refreshed_at": "2026-06-02T21:22:48Z",
     "dry_run": false,
     "generated_at": "2026-05-30T07:30:59Z",
     "model": "deepseek-v4-pro",
     "policy": "DeepSeek triage is advisory only. It authorizes no ISIN, country, name, or scope change without official listing-keyed evidence.",
+    "queue_coverage_status": "full_current_queue_coverage",
+    "queue_generated_at": "2026-06-02T20:26:27Z",
     "queue_json": "data/reports/isin_identity_collision_review_queue.json"
+  },
+  "coverage": {
+    "coverage_status": "full_current_queue_coverage",
+    "duplicate_validation_isins": 0,
+    "full_current_queue_coverage": true,
+    "missing_queue_isins": [],
+    "queue_generated_at": "2026-06-02T20:26:27Z",
+    "queue_groups": 426,
+    "queue_unique_isins": 426,
+    "stale_validation_isins": [],
+    "validated_unique_isins": 426,
+    "validation_rows": 426
   },
   "errors": [],
   "items": [
@@ -5133,10 +5148,16 @@
       "same_issuer": 63,
       "uncertain": 8
     },
+    "coverage_status": "full_current_queue_coverage",
     "disagrees_with_detector": 71,
+    "duplicate_validation_isins": 0,
     "errors": 0,
     "generated_at": "2026-05-30T07:30:59Z",
+    "missing_queue_isins": 0,
     "policy": "DeepSeek triage is advisory only and authorizes no ISIN, country, or name change. Official listing-keyed identifier evidence remains required.",
+    "queue_generated_at": "2026-06-02T20:26:27Z",
+    "queue_groups": 426,
+    "stale_validation_isins": 0,
     "validated_groups": 426
   }
 }

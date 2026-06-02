@@ -12,6 +12,10 @@ Policy: DeepSeek triage is advisory only and authorizes no ISIN, country, or nam
 | Agrees with detector | 355 |
 | Disagrees with detector | 71 |
 | Errors | 0 |
+| Queue groups | 426 |
+| Missing queue ISINs | 0 |
+| Stale validation ISINs | 0 |
+| Coverage status | full_current_queue_coverage |
 
 ## Verdicts
 
