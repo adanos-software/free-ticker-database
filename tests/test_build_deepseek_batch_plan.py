@@ -91,6 +91,39 @@ def test_build_plan_all_reviewed_returns_empty_selected_batch(tmp_path) -> None:
     assert fieldnames == []
 
 
+def test_build_plan_deduplicates_source_queue_keys_before_batching(tmp_path) -> None:
+    summary = tmp_path / "deepseek_review_summary.csv"
+    write_csv(summary, ["listing_key", "review_kind"], [])
+    masterfile = tmp_path / "masterfile.csv"
+    write_csv(
+        masterfile,
+        ["target_listing_key", "ticker", "target_exchange"],
+        [
+            {"target_listing_key": "A::1", "ticker": "A", "target_exchange": "X"},
+            {"target_listing_key": "A::1", "ticker": "A-DUP", "target_exchange": "X"},
+            {"target_listing_key": "B::2", "ticker": "B", "target_exchange": "Y"},
+        ],
+    )
+    configs = [
+        QueueConfig("masterfile_collision", "masterfile_collision", masterfile, "target_listing_key", 1, "Masterfile first."),
+    ]
+
+    payload, rows, _ = build_plan(
+        configs=configs,
+        review_summary_csv=summary,
+        requested_queue="auto",
+        limit=10,
+        batch_size=5,
+        batch_csv=tmp_path / "batch.csv",
+    )
+
+    assert payload["queues"][0]["rows"] == 3
+    assert payload["queues"][0]["duplicate_key_rows"] == 1
+    assert payload["queues"][0]["unreviewed_rows"] == 2
+    assert [row["target_listing_key"] for row in rows] == ["A::1", "B::2"]
+    assert [row["ticker"] for row in rows] == ["A", "B"]
+
+
 def test_write_batch_and_markdown_include_policy(tmp_path) -> None:
     batch = tmp_path / "batch.csv"
     write_batch_csv(batch, [{"listing_key": "OTC::A", "ticker": "A"}], ["listing_key", "ticker"])
@@ -106,6 +139,7 @@ def test_write_batch_and_markdown_include_policy(tmp_path) -> None:
                 {
                     "queue": "otc_scope",
                     "rows": 1,
+                    "duplicate_key_rows": 0,
                     "already_deepseek_reviewed": 0,
                     "unreviewed_rows": 1,
                     "priority": 1,
@@ -124,6 +158,7 @@ def test_write_batch_and_markdown_include_policy(tmp_path) -> None:
     )
 
     assert "advisory triage only" in markdown
+    assert "Duplicate Keys" in markdown
     assert "DEEPSEEK_API_KEY" in markdown
     assert "--dry-run" in markdown
 

@@ -88,11 +88,30 @@ def reviewed_keys_by_kind(path: Path) -> dict[str, set[str]]:
     return result
 
 
+def select_unreviewed_unique_rows(
+    rows: list[dict[str, str]],
+    *,
+    key_field: str,
+    reviewed: set[str],
+) -> list[dict[str, str]]:
+    selected: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for row in rows:
+        key = row.get(key_field, "")
+        if not key or key in reviewed or key in seen:
+            continue
+        selected.append(row)
+        seen.add(key)
+    return selected
+
+
 def queue_status(config: QueueConfig, reviewed_by_kind: dict[str, set[str]]) -> dict[str, Any]:
     rows, _ = read_csv(config.source_csv)
     reviewed = reviewed_by_kind.get(config.review_kind, set())
     keys = [row.get(config.key_field, "") for row in rows]
-    unreviewed = [key for key in keys if key and key not in reviewed]
+    nonblank_keys = [key for key in keys if key]
+    unique_keys = set(nonblank_keys)
+    unreviewed = select_unreviewed_unique_rows(rows, key_field=config.key_field, reviewed=reviewed)
     return {
         "queue": config.queue,
         "review_kind": config.review_kind,
@@ -101,7 +120,8 @@ def queue_status(config: QueueConfig, reviewed_by_kind: dict[str, set[str]]) -> 
         "priority": config.priority,
         "reason": config.reason,
         "rows": len(rows),
-        "already_deepseek_reviewed": len([key for key in keys if key in reviewed]),
+        "duplicate_key_rows": len(nonblank_keys) - len(unique_keys),
+        "already_deepseek_reviewed": len(unique_keys & reviewed),
         "unreviewed_rows": len(unreviewed),
     }
 
@@ -128,7 +148,7 @@ def select_queue(
 def select_rows(config: QueueConfig, reviewed_by_kind: dict[str, set[str]], limit: int) -> tuple[list[dict[str, str]], list[str]]:
     rows, fieldnames = read_csv(config.source_csv)
     reviewed = reviewed_by_kind.get(config.review_kind, set())
-    selected = [row for row in rows if row.get(config.key_field, "") and row.get(config.key_field, "") not in reviewed]
+    selected = select_unreviewed_unique_rows(rows, key_field=config.key_field, reviewed=reviewed)
     return selected[:limit], fieldnames
 
 
@@ -264,12 +284,12 @@ def render_markdown(payload: dict[str, Any]) -> str:
         "",
         "## Queue Backlog",
         "",
-        "| Queue | Rows | Already Reviewed | Unreviewed | Priority |",
-        "| --- | ---: | ---: | ---: | ---: |",
+        "| Queue | Rows | Duplicate Keys | Already Reviewed | Unreviewed | Priority |",
+        "| --- | ---: | ---: | ---: | ---: | ---: |",
     ]
     for queue in payload["queues"]:
         lines.append(
-            f"| {queue['queue']} | {queue['rows']} | {queue['already_deepseek_reviewed']} | "
+            f"| {queue['queue']} | {queue['rows']} | {queue.get('duplicate_key_rows', 0)} | {queue['already_deepseek_reviewed']} | "
             f"{queue['unreviewed_rows']} | {queue['priority']} |"
         )
     lines.extend(

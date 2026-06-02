@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T05:15:48Z",
+    "generated_at": "2026-06-02T05:58:08Z",
     "review_summary_csv": "data/reports/deepseek_review_summary.csv",
     "policy": "This plan prepares DeepSeek advisory triage only. DeepSeek output must not authorize inferred identifiers, sectors, categories, names, symbol changes, scope changes, or direct data application."
   },
@@ -13,6 +13,7 @@
       "priority": 1,
       "reason": "Largest official-masterfile identity queue; DeepSeek can triage likely cross-listing vs. still-needs-evidence cases without applying data.",
       "rows": 11107,
+      "duplicate_key_rows": 0,
       "already_deepseek_reviewed": 11107,
       "unreviewed_rows": 0
     },
@@ -24,6 +25,7 @@
       "priority": 2,
       "reason": "Large OTC warning/source-gap queue; DeepSeek can summarize evidence gaps while OTC names and metadata remain blocked.",
       "rows": 11056,
+      "duplicate_key_rows": 0,
       "already_deepseek_reviewed": 11056,
       "unreviewed_rows": 0
     },
@@ -35,6 +37,7 @@
       "priority": 3,
       "reason": "Official-sector candidate queue; DeepSeek can prioritize normalization review, not sector application.",
       "rows": 646,
+      "duplicate_key_rows": 0,
       "already_deepseek_reviewed": 646,
       "unreviewed_rows": 0
     }
