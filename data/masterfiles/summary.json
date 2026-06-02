@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-25T13:46:37Z",
-  "rows": 145829,
+  "generated_at": "2026-06-02T02:31:56Z",
+  "rows": 145839,
   "exchanges": [
     "ADX",
     "AMS",
@@ -100,6 +100,7 @@
     "bist_kap_mkk_listed_securities": 637,
     "boursa_kuwait_stocks": 140,
     "bme_listed_companies": 78,
+    "bme_security_prices_directory": 10,
     "bmv_issuer_directory": 76,
     "bmv_market_data_securities": 125,
     "bmv_stock_search": 148,
@@ -498,9 +499,9 @@
       "provider": "BME",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "unavailable",
-      "rows": 0,
-      "generated_at": "2026-05-16T15:59:51Z",
+      "mode": "network",
+      "rows": 10,
+      "generated_at": "2026-06-02T02:31:56Z",
       "last_error": "BME security prices rows unavailable; official detail fetch failed and no complete cache (>=500 rows) is available; partial caches are ignored"
     },
     "bme_growth_prices": {
@@ -1415,7 +1416,7 @@
     "idx_company_profiles": "network",
     "egx_listed_stocks": "cache",
     "lse_price_explorer": "network",
-    "bme_security_prices_directory": "unavailable",
+    "bme_security_prices_directory": "network",
     "bursa_closing_prices": "network",
     "nzx_instruments": "network",
     "nse_india_securities_available": "network",
@@ -1436,10 +1437,6 @@
     "cse_lk_company_info_summary": "network"
   },
   "errors": [
-    {
-      "source_key": "bme_security_prices_directory",
-      "error": "BME security prices rows unavailable; official detail fetch failed and no complete cache (>=500 rows) is available; partial caches are ignored"
-    },
     {
       "source_key": "mse_mw_listed_companies",
       "error": "MSE Malawi mainboard unavailable"

@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "generated_at": "2026-05-25T12:54:49Z",
-    "baseline_generated_at": "2026-05-25T12:54:49Z",
-    "current_generated_at": "2026-05-25T12:54:49Z",
+    "generated_at": "2026-06-02T02:39:48Z",
+    "baseline_generated_at": "2026-06-02T02:39:47Z",
+    "current_generated_at": "2026-06-02T02:39:48Z",
     "baseline_path": "data/reports/improvement_baseline.json",
     "source_files": {
       "baseline_snapshot": "data/reports/improvement_baseline.json",
@@ -28,7 +28,7 @@
     "policy": "Delta report only. Positive or negative deltas require source-level review before any data change is inferred."
   },
   "summary": {
-    "numeric_delta_rows": 926,
+    "numeric_delta_rows": 922,
     "changed_numeric_delta_rows": 0,
     "global_changed_numeric_delta_rows": 0,
     "campaign_changed_numeric_delta_rows": 0,
@@ -42,13 +42,13 @@
       "delta": 0
     },
     "entry_quality_source_gap_rows": {
-      "baseline": 7454,
-      "current": 7454,
+      "baseline": 7436,
+      "current": 7436,
       "delta": 0
     },
     "entry_quality_warn_rows": {
-      "baseline": 217,
-      "current": 217,
+      "baseline": 222,
+      "current": 222,
       "delta": 0
     },
     "etf_category_coverage": {
@@ -57,13 +57,13 @@
       "delta": 0
     },
     "figi_coverage": {
-      "baseline": 64353,
-      "current": 64353,
+      "baseline": 64316,
+      "current": 64316,
       "delta": 0
     },
     "isin_coverage": {
-      "baseline": 59847,
-      "current": 59847,
+      "baseline": 59848,
+      "current": 59848,
       "delta": 0
     },
     "listing_keys": {
@@ -72,35 +72,35 @@
       "delta": 0
     },
     "official_masterfile_collisions": {
-      "baseline": 11107,
-      "current": 11107,
+      "baseline": 11144,
+      "current": 11144,
       "delta": 0
     },
     "official_masterfile_matches": {
-      "baseline": 51140,
-      "current": 51140,
+      "baseline": 51287,
+      "current": 51287,
       "delta": 0
     },
     "official_masterfile_missing": {
-      "baseline": 16920,
-      "current": 16920,
+      "baseline": 16956,
+      "current": 16956,
       "delta": 0
     },
     "sector_coverage": {
-      "baseline": 58763,
-      "current": 58763,
+      "baseline": 58764,
+      "current": 58764,
       "delta": 0
     },
     "source_freshness_status_totals": {
       "children": {
         "fresh": {
-          "baseline": 38,
-          "current": 38,
+          "baseline": 1,
+          "current": 1,
           "delta": 0
         },
         "old": {
-          "baseline": 98,
-          "current": 98,
+          "baseline": 135,
+          "current": 135,
           "delta": 0
         }
       }
@@ -111,18 +111,18 @@
       "delta": 0
     },
     "stock_sector_coverage": {
-      "baseline": 43310,
-      "current": 43310,
+      "baseline": 43311,
+      "current": 43311,
       "delta": 0
     },
     "tickers": {
-      "baseline": 61465,
-      "current": 61465,
+      "baseline": 61466,
+      "current": 61466,
       "delta": 0
     },
     "validation_failed_error_gates": {
-      "baseline": 1,
-      "current": 1,
+      "baseline": 0,
+      "current": 0,
       "delta": 0
     }
   },
@@ -298,13 +298,13 @@
           }
         },
         "ohlcv_plausibility_rows": {
-          "baseline": 345,
-          "current": 345,
+          "baseline": 350,
+          "current": 350,
           "delta": 0
         },
         "old_official_exchange_directory_count": {
-          "baseline": 6,
-          "current": 6,
+          "baseline": 40,
+          "current": 40,
           "delta": 0
         },
         "source_count": {
@@ -315,13 +315,13 @@
         "source_freshness_status_totals": {
           "children": {
             "fresh": {
-              "baseline": 38,
-              "current": 38,
+              "baseline": 1,
+              "current": 1,
               "delta": 0
             },
             "old": {
-              "baseline": 98,
-              "current": 98,
+              "baseline": 135,
+              "current": 135,
               "delta": 0
             }
           }
@@ -433,23 +433,23 @@
         "source_refresh_action_totals": {
           "children": {
             "no_refresh_needed": {
-              "baseline": 38,
-              "current": 38,
+              "baseline": 1,
+              "current": 1,
               "delta": 0
             },
             "refresh_official_exchange_directory_before_identity_or_collision_work": {
-              "baseline": 5,
-              "current": 5,
+              "baseline": 40,
+              "current": 40,
               "delta": 0
             },
             "refresh_official_subset_before_gap_enrichment": {
-              "baseline": 85,
-              "current": 85,
+              "baseline": 88,
+              "current": 88,
               "delta": 0
             },
             "restore_or_replace_unavailable_source_before_data_fill": {
-              "baseline": 8,
-              "current": 8,
+              "baseline": 7,
+              "current": 7,
               "delta": 0
             }
           }
@@ -457,18 +457,18 @@
         "source_refresh_priority_totals": {
           "children": {
             "P1": {
-              "baseline": 6,
-              "current": 6,
+              "baseline": 40,
+              "current": 40,
               "delta": 0
             },
             "P2": {
-              "baseline": 92,
-              "current": 92,
+              "baseline": 95,
+              "current": 95,
               "delta": 0
             },
             "P4": {
-              "baseline": 38,
-              "current": 38,
+              "baseline": 1,
+              "current": 1,
               "delta": 0
             }
           }
@@ -478,8 +478,8 @@
             "fresh_no_refresh_needed": {
               "children": {
                 "P4": {
-                  "baseline": 38,
-                  "current": 38,
+                  "baseline": 1,
+                  "current": 1,
                   "delta": 0
                 }
               }
@@ -487,8 +487,8 @@
             "refresh_official_exchange_directory_before_identity_or_collision_work": {
               "children": {
                 "P1": {
-                  "baseline": 5,
-                  "current": 5,
+                  "baseline": 40,
+                  "current": 40,
                   "delta": 0
                 }
               }
@@ -496,19 +496,14 @@
             "refresh_official_subset_before_gap_enrichment": {
               "children": {
                 "P2": {
-                  "baseline": 85,
-                  "current": 85,
+                  "baseline": 88,
+                  "current": 88,
                   "delta": 0
                 }
               }
             },
             "restore_or_replace_unavailable_source_before_data_fill": {
               "children": {
-                "P1": {
-                  "baseline": 1,
-                  "current": 1,
-                  "delta": 0
-                },
                 "P2": {
                   "baseline": 7,
                   "current": 7,
@@ -519,8 +514,8 @@
           }
         },
         "symbol_changes_review_rows": {
-          "baseline": 263,
-          "current": 263,
+          "baseline": 271,
+          "current": 271,
           "delta": 0
         }
       }
@@ -604,30 +599,15 @@
     "ohlcv": {
       "children": {
         "sample_rows": {
-          "baseline": 345,
-          "current": 345,
+          "baseline": 350,
+          "current": 350,
           "delta": 0
         },
         "status_counts": {
           "children": {
             "not_checked": {
-              "baseline": 320,
-              "current": 320,
-              "delta": 0
-            },
-            "notice": {
-              "baseline": 8,
-              "current": 8,
-              "delta": 0
-            },
-            "pass": {
-              "baseline": 1,
-              "current": 1,
-              "delta": 0
-            },
-            "warn": {
-              "baseline": 16,
-              "current": 16,
+              "baseline": 350,
+              "current": 350,
               "delta": 0
             }
           }
@@ -677,13 +657,13 @@
               "delta": 0
             },
             "matches_within_source_scope": {
-              "baseline": 200,
-              "current": 200,
+              "baseline": 205,
+              "current": 205,
               "delta": 0
             },
             "unscoped_source_hint": {
-              "baseline": 2,
-              "current": 2,
+              "baseline": 5,
+              "current": 5,
               "delta": 0
             }
           }
@@ -696,8 +676,8 @@
               "delta": 0
             },
             "action_required_possible_rename_or_delisting": {
-              "baseline": 25,
-              "current": 25,
+              "baseline": 30,
+              "current": 30,
               "delta": 0
             },
             "already_reflected_in_scope_with_global_symbol_collision": {
@@ -721,8 +701,8 @@
               "delta": 0
             },
             "manual_scope_mapping_required": {
-              "baseline": 2,
-              "current": 2,
+              "baseline": 5,
+              "current": 5,
               "delta": 0
             },
             "no_dataset_match_for_source_scope": {
@@ -733,8 +713,8 @@
           }
         },
         "review_rows": {
-          "baseline": 263,
-          "current": 263,
+          "baseline": 271,
+          "current": 271,
           "delta": 0
         }
       }
@@ -1362,13 +1342,13 @@
           "delta": 0
         },
         "masterfile_matches": {
-          "baseline": 0,
-          "current": 0,
+          "baseline": 3,
+          "current": 3,
           "delta": 0
         },
         "masterfile_missing": {
-          "baseline": 0,
-          "current": 0,
+          "baseline": 7,
+          "current": 7,
           "delta": 0
         },
         "sector_coverage": {
@@ -1558,8 +1538,8 @@
           "delta": 0
         },
         "entry_quality_source_gap_rows": {
-          "baseline": 204,
-          "current": 204,
+          "baseline": 64,
+          "current": 64,
           "delta": 0
         },
         "entry_quality_warn_rows": {
@@ -1573,18 +1553,18 @@
           "delta": 0
         },
         "masterfile_collisions": {
-          "baseline": 752,
-          "current": 752,
+          "baseline": 765,
+          "current": 765,
           "delta": 0
         },
         "masterfile_matches": {
-          "baseline": 2464,
-          "current": 2464,
+          "baseline": 2611,
+          "current": 2611,
           "delta": 0
         },
         "masterfile_missing": {
-          "baseline": 1631,
-          "current": 1631,
+          "baseline": 1643,
+          "current": 1643,
           "delta": 0
         },
         "sector_coverage": {
@@ -2152,8 +2132,8 @@
           "delta": 0
         },
         "entry_quality_source_gap_rows": {
-          "baseline": 149,
-          "current": 149,
+          "baseline": 150,
+          "current": 150,
           "delta": 0
         },
         "entry_quality_warn_rows": {
@@ -2314,8 +2294,8 @@
           "delta": 0
         },
         "entry_quality_source_gap_rows": {
-          "baseline": 9,
-          "current": 9,
+          "baseline": 11,
+          "current": 11,
           "delta": 0
         },
         "entry_quality_warn_rows": {
@@ -2334,13 +2314,13 @@
           "delta": 0
         },
         "masterfile_matches": {
-          "baseline": 3040,
-          "current": 3040,
+          "baseline": 3038,
+          "current": 3038,
           "delta": 0
         },
         "masterfile_missing": {
-          "baseline": 32,
-          "current": 32,
+          "baseline": 34,
+          "current": 34,
           "delta": 0
         },
         "sector_coverage": {
@@ -2692,8 +2672,8 @@
           "delta": 0
         },
         "entry_quality_source_gap_rows": {
-          "baseline": 8,
-          "current": 8,
+          "baseline": 9,
+          "current": 9,
           "delta": 0
         },
         "entry_quality_warn_rows": {
@@ -2746,8 +2726,8 @@
           "delta": 0
         },
         "entry_quality_source_gap_rows": {
-          "baseline": 13,
-          "current": 13,
+          "baseline": 14,
+          "current": 14,
           "delta": 0
         },
         "entry_quality_warn_rows": {
@@ -2800,8 +2780,8 @@
           "delta": 0
         },
         "entry_quality_source_gap_rows": {
-          "baseline": 206,
-          "current": 206,
+          "baseline": 207,
+          "current": 207,
           "delta": 0
         },
         "entry_quality_warn_rows": {
@@ -2815,13 +2795,13 @@
           "delta": 0
         },
         "masterfile_collisions": {
-          "baseline": 1184,
-          "current": 1184,
+          "baseline": 1186,
+          "current": 1186,
           "delta": 0
         },
         "masterfile_matches": {
-          "baseline": 6321,
-          "current": 6321,
+          "baseline": 6317,
+          "current": 6317,
           "delta": 0
         },
         "masterfile_missing": {
@@ -3016,28 +2996,28 @@
           "delta": 0
         },
         "entry_quality_source_gap_rows": {
-          "baseline": 145,
-          "current": 145,
+          "baseline": 184,
+          "current": 184,
           "delta": 0
         },
         "entry_quality_warn_rows": {
-          "baseline": 5,
-          "current": 5,
+          "baseline": 7,
+          "current": 7,
           "delta": 0
         },
         "isin_coverage": {
-          "baseline": 4595,
-          "current": 4595,
+          "baseline": 4597,
+          "current": 4597,
           "delta": 0
         },
         "masterfile_collisions": {
-          "baseline": 75,
-          "current": 75,
+          "baseline": 73,
+          "current": 73,
           "delta": 0
         },
         "masterfile_matches": {
-          "baseline": 4488,
-          "current": 4488,
+          "baseline": 4490,
+          "current": 4490,
           "delta": 0
         },
         "masterfile_missing": {
@@ -3046,8 +3026,8 @@
           "delta": 0
         },
         "sector_coverage": {
-          "baseline": 4612,
-          "current": 4612,
+          "baseline": 4614,
+          "current": 4614,
           "delta": 0
         },
         "source_gap_rows": {
@@ -3056,8 +3036,8 @@
           "delta": 0
         },
         "tickers": {
-          "baseline": 4635,
-          "current": 4635,
+          "baseline": 4637,
+          "current": 4637,
           "delta": 0
         }
       }
@@ -3070,8 +3050,8 @@
           "delta": 0
         },
         "entry_quality_source_gap_rows": {
-          "baseline": 46,
-          "current": 46,
+          "baseline": 51,
+          "current": 51,
           "delta": 0
         },
         "entry_quality_warn_rows": {
@@ -3247,18 +3227,18 @@
           "delta": 0
         },
         "masterfile_collisions": {
-          "baseline": 290,
-          "current": 290,
+          "baseline": 314,
+          "current": 314,
           "delta": 0
         },
         "masterfile_matches": {
-          "baseline": 1211,
-          "current": 1211,
+          "baseline": 1212,
+          "current": 1212,
           "delta": 0
         },
         "masterfile_missing": {
-          "baseline": 1473,
-          "current": 1473,
+          "baseline": 1490,
+          "current": 1490,
           "delta": 0
         },
         "sector_coverage": {
@@ -3340,13 +3320,13 @@
           "delta": 0
         },
         "entry_quality_source_gap_rows": {
-          "baseline": 74,
-          "current": 74,
+          "baseline": 84,
+          "current": 84,
           "delta": 0
         },
         "entry_quality_warn_rows": {
-          "baseline": 1,
-          "current": 1,
+          "baseline": 2,
+          "current": 2,
           "delta": 0
         },
         "isin_coverage": {
@@ -3610,18 +3590,18 @@
           "delta": 0
         },
         "entry_quality_source_gap_rows": {
-          "baseline": 3097,
-          "current": 3097,
+          "baseline": 3149,
+          "current": 3149,
           "delta": 0
         },
         "entry_quality_warn_rows": {
-          "baseline": 146,
-          "current": 146,
+          "baseline": 148,
+          "current": 148,
           "delta": 0
         },
         "isin_coverage": {
-          "baseline": 10284,
-          "current": 10284,
+          "baseline": 10282,
+          "current": 10282,
           "delta": 0
         },
         "masterfile_collisions": {
@@ -3640,8 +3620,8 @@
           "delta": 0
         },
         "sector_coverage": {
-          "baseline": 9911,
-          "current": 9911,
+          "baseline": 9909,
+          "current": 9909,
           "delta": 0
         },
         "source_gap_rows": {
@@ -3650,8 +3630,8 @@
           "delta": 0
         },
         "tickers": {
-          "baseline": 11056,
-          "current": 11056,
+          "baseline": 11054,
+          "current": 11054,
           "delta": 0
         }
       }
@@ -4042,8 +4022,8 @@
           "delta": 0
         },
         "entry_quality_source_gap_rows": {
-          "baseline": 41,
-          "current": 41,
+          "baseline": 43,
+          "current": 43,
           "delta": 0
         },
         "entry_quality_warn_rows": {
@@ -4204,8 +4184,8 @@
           "delta": 0
         },
         "entry_quality_source_gap_rows": {
-          "baseline": 35,
-          "current": 35,
+          "baseline": 36,
+          "current": 36,
           "delta": 0
         },
         "entry_quality_warn_rows": {
@@ -4769,8 +4749,8 @@
           "delta": 0
         },
         "masterfile_missing": {
-          "baseline": 362,
-          "current": 362,
+          "baseline": 360,
+          "current": 360,
           "delta": 0
         },
         "sector_coverage": {
@@ -4960,8 +4940,8 @@
           "delta": 0
         },
         "entry_quality_source_gap_rows": {
-          "baseline": 97,
-          "current": 97,
+          "baseline": 104,
+          "current": 104,
           "delta": 0
         },
         "entry_quality_warn_rows": {
@@ -5117,16 +5097,16 @@
   },
   "acceptance_delta_matrix": {
     "isin_delta": {
-      "baseline": 59847,
-      "current": 59847,
+      "baseline": 59848,
+      "current": 59848,
       "delta": 0,
-      "delta_context": "scope=global;metric=isin_delta;baseline=59847;current=59847;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+      "delta_context": "scope=global;metric=isin_delta;baseline=59848;current=59848;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
     },
     "sector_delta": {
-      "baseline": 43310,
-      "current": 43310,
+      "baseline": 43311,
+      "current": 43311,
       "delta": 0,
-      "delta_context": "scope=global;metric=sector_delta;baseline=43310;current=43310;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+      "delta_context": "scope=global;metric=sector_delta;baseline=43311;current=43311;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
     },
     "category_delta": {
       "baseline": 15453,
@@ -5141,10 +5121,10 @@
       "delta_context": "scope=global;metric=source_gap_delta;baseline=3548;current=3548;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
     },
     "warn_delta": {
-      "baseline": 217,
-      "current": 217,
+      "baseline": 222,
+      "current": 222,
       "delta": 0,
-      "delta_context": "scope=global;metric=warn_delta;baseline=217;current=217;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+      "delta_context": "scope=global;metric=warn_delta;baseline=222;current=222;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
     },
     "quarantine_delta": {
       "baseline": 0,
@@ -5698,10 +5678,10 @@
         "delta_context": "scope=BME;metric=masterfile_collision_delta;baseline=0;current=0;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "masterfile_missing_delta": {
-        "baseline": 0,
-        "current": 0,
+        "baseline": 7,
+        "current": 7,
         "delta": 0,
-        "delta_context": "scope=BME;metric=masterfile_missing_delta;baseline=0;current=0;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=BME;metric=masterfile_missing_delta;baseline=7;current=7;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       }
     },
     "BMV": {
@@ -5886,22 +5866,22 @@
         "delta_context": "scope=BSE_IN;metric=quarantine_delta;baseline=0;current=0;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "quality_source_gap_delta": {
-        "baseline": 204,
-        "current": 204,
+        "baseline": 64,
+        "current": 64,
         "delta": 0,
-        "delta_context": "scope=BSE_IN;metric=quality_source_gap_delta;baseline=204;current=204;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=BSE_IN;metric=quality_source_gap_delta;baseline=64;current=64;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "masterfile_collision_delta": {
-        "baseline": 752,
-        "current": 752,
+        "baseline": 765,
+        "current": 765,
         "delta": 0,
-        "delta_context": "scope=BSE_IN;metric=masterfile_collision_delta;baseline=752;current=752;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=BSE_IN;metric=masterfile_collision_delta;baseline=765;current=765;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "masterfile_missing_delta": {
-        "baseline": 1631,
-        "current": 1631,
+        "baseline": 1643,
+        "current": 1643,
         "delta": 0,
-        "delta_context": "scope=BSE_IN;metric=masterfile_missing_delta;baseline=1631;current=1631;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=BSE_IN;metric=masterfile_missing_delta;baseline=1643;current=1643;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       }
     },
     "BVB": {
@@ -6436,10 +6416,10 @@
         "delta_context": "scope=Euronext;metric=quarantine_delta;baseline=0;current=0;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "quality_source_gap_delta": {
-        "baseline": 149,
-        "current": 149,
+        "baseline": 150,
+        "current": 150,
         "delta": 0,
-        "delta_context": "scope=Euronext;metric=quality_source_gap_delta;baseline=149;current=149;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=Euronext;metric=quality_source_gap_delta;baseline=150;current=150;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "masterfile_collision_delta": {
         "baseline": 2251,
@@ -6586,10 +6566,10 @@
         "delta_context": "scope=HKEX;metric=quarantine_delta;baseline=0;current=0;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "quality_source_gap_delta": {
-        "baseline": 9,
-        "current": 9,
+        "baseline": 11,
+        "current": 11,
         "delta": 0,
-        "delta_context": "scope=HKEX;metric=quality_source_gap_delta;baseline=9;current=9;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=HKEX;metric=quality_source_gap_delta;baseline=11;current=11;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "masterfile_collision_delta": {
         "baseline": 82,
@@ -6598,10 +6578,10 @@
         "delta_context": "scope=HKEX;metric=masterfile_collision_delta;baseline=82;current=82;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "masterfile_missing_delta": {
-        "baseline": 32,
-        "current": 32,
+        "baseline": 34,
+        "current": 34,
         "delta": 0,
-        "delta_context": "scope=HKEX;metric=masterfile_missing_delta;baseline=32;current=32;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=HKEX;metric=masterfile_missing_delta;baseline=34;current=34;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       }
     },
     "HNX": {
@@ -6936,10 +6916,10 @@
         "delta_context": "scope=KOSDAQ;metric=quarantine_delta;baseline=0;current=0;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "quality_source_gap_delta": {
-        "baseline": 8,
-        "current": 8,
+        "baseline": 9,
+        "current": 9,
         "delta": 0,
-        "delta_context": "scope=KOSDAQ;metric=quality_source_gap_delta;baseline=8;current=8;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=KOSDAQ;metric=quality_source_gap_delta;baseline=9;current=9;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "masterfile_collision_delta": {
         "baseline": 0,
@@ -6986,10 +6966,10 @@
         "delta_context": "scope=KRX;metric=quarantine_delta;baseline=0;current=0;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "quality_source_gap_delta": {
-        "baseline": 13,
-        "current": 13,
+        "baseline": 14,
+        "current": 14,
         "delta": 0,
-        "delta_context": "scope=KRX;metric=quality_source_gap_delta;baseline=13;current=13;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=KRX;metric=quality_source_gap_delta;baseline=14;current=14;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "masterfile_collision_delta": {
         "baseline": 3,
@@ -7036,16 +7016,16 @@
         "delta_context": "scope=LSE;metric=quarantine_delta;baseline=0;current=0;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "quality_source_gap_delta": {
-        "baseline": 206,
-        "current": 206,
+        "baseline": 207,
+        "current": 207,
         "delta": 0,
-        "delta_context": "scope=LSE;metric=quality_source_gap_delta;baseline=206;current=206;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=LSE;metric=quality_source_gap_delta;baseline=207;current=207;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "masterfile_collision_delta": {
-        "baseline": 1184,
-        "current": 1184,
+        "baseline": 1186,
+        "current": 1186,
         "delta": 0,
-        "delta_context": "scope=LSE;metric=masterfile_collision_delta;baseline=1184;current=1184;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=LSE;metric=masterfile_collision_delta;baseline=1186;current=1186;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "masterfile_missing_delta": {
         "baseline": 3510,
@@ -7206,16 +7186,16 @@
     },
     "NASDAQ": {
       "isin_delta": {
-        "baseline": 4595,
-        "current": 4595,
+        "baseline": 4597,
+        "current": 4597,
         "delta": 0,
-        "delta_context": "scope=NASDAQ;metric=isin_delta;baseline=4595;current=4595;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=NASDAQ;metric=isin_delta;baseline=4597;current=4597;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "sector_delta": {
-        "baseline": 4612,
-        "current": 4612,
+        "baseline": 4614,
+        "current": 4614,
         "delta": 0,
-        "delta_context": "scope=NASDAQ;metric=sector_delta;baseline=4612;current=4612;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=NASDAQ;metric=sector_delta;baseline=4614;current=4614;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "source_gap_delta": {
         "baseline": 51,
@@ -7224,10 +7204,10 @@
         "delta_context": "scope=NASDAQ;metric=source_gap_delta;baseline=51;current=51;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "warn_delta": {
-        "baseline": 5,
-        "current": 5,
+        "baseline": 7,
+        "current": 7,
         "delta": 0,
-        "delta_context": "scope=NASDAQ;metric=warn_delta;baseline=5;current=5;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=NASDAQ;metric=warn_delta;baseline=7;current=7;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "quarantine_delta": {
         "baseline": 0,
@@ -7236,16 +7216,16 @@
         "delta_context": "scope=NASDAQ;metric=quarantine_delta;baseline=0;current=0;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "quality_source_gap_delta": {
-        "baseline": 145,
-        "current": 145,
+        "baseline": 184,
+        "current": 184,
         "delta": 0,
-        "delta_context": "scope=NASDAQ;metric=quality_source_gap_delta;baseline=145;current=145;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=NASDAQ;metric=quality_source_gap_delta;baseline=184;current=184;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "masterfile_collision_delta": {
-        "baseline": 75,
-        "current": 75,
+        "baseline": 73,
+        "current": 73,
         "delta": 0,
-        "delta_context": "scope=NASDAQ;metric=masterfile_collision_delta;baseline=75;current=75;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=NASDAQ;metric=masterfile_collision_delta;baseline=73;current=73;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "masterfile_missing_delta": {
         "baseline": 928,
@@ -7286,10 +7266,10 @@
         "delta_context": "scope=NEO;metric=quarantine_delta;baseline=0;current=0;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "quality_source_gap_delta": {
-        "baseline": 46,
-        "current": 46,
+        "baseline": 51,
+        "current": 51,
         "delta": 0,
-        "delta_context": "scope=NEO;metric=quality_source_gap_delta;baseline=46;current=46;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=NEO;metric=quality_source_gap_delta;baseline=51;current=51;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "masterfile_collision_delta": {
         "baseline": 85,
@@ -7442,16 +7422,16 @@
         "delta_context": "scope=NSE_IN;metric=quality_source_gap_delta;baseline=27;current=27;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "masterfile_collision_delta": {
-        "baseline": 290,
-        "current": 290,
+        "baseline": 314,
+        "current": 314,
         "delta": 0,
-        "delta_context": "scope=NSE_IN;metric=masterfile_collision_delta;baseline=290;current=290;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=NSE_IN;metric=masterfile_collision_delta;baseline=314;current=314;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "masterfile_missing_delta": {
-        "baseline": 1473,
-        "current": 1473,
+        "baseline": 1490,
+        "current": 1490,
         "delta": 0,
-        "delta_context": "scope=NSE_IN;metric=masterfile_missing_delta;baseline=1473;current=1473;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=NSE_IN;metric=masterfile_missing_delta;baseline=1490;current=1490;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       }
     },
     "NSE_KE": {
@@ -7524,10 +7504,10 @@
         "delta_context": "scope=NYSE;metric=source_gap_delta;baseline=49;current=49;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "warn_delta": {
-        "baseline": 1,
-        "current": 1,
+        "baseline": 2,
+        "current": 2,
         "delta": 0,
-        "delta_context": "scope=NYSE;metric=warn_delta;baseline=1;current=1;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=NYSE;metric=warn_delta;baseline=2;current=2;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "quarantine_delta": {
         "baseline": 0,
@@ -7536,10 +7516,10 @@
         "delta_context": "scope=NYSE;metric=quarantine_delta;baseline=0;current=0;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "quality_source_gap_delta": {
-        "baseline": 74,
-        "current": 74,
+        "baseline": 84,
+        "current": 84,
         "delta": 0,
-        "delta_context": "scope=NYSE;metric=quality_source_gap_delta;baseline=74;current=74;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=NYSE;metric=quality_source_gap_delta;baseline=84;current=84;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "masterfile_collision_delta": {
         "baseline": 533,
@@ -7756,16 +7736,16 @@
     },
     "OTC": {
       "isin_delta": {
-        "baseline": 10284,
-        "current": 10284,
+        "baseline": 10282,
+        "current": 10282,
         "delta": 0,
-        "delta_context": "scope=OTC;metric=isin_delta;baseline=10284;current=10284;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=OTC;metric=isin_delta;baseline=10282;current=10282;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "sector_delta": {
-        "baseline": 9911,
-        "current": 9911,
+        "baseline": 9909,
+        "current": 9909,
         "delta": 0,
-        "delta_context": "scope=OTC;metric=sector_delta;baseline=9911;current=9911;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=OTC;metric=sector_delta;baseline=9909;current=9909;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "source_gap_delta": {
         "baseline": 846,
@@ -7774,10 +7754,10 @@
         "delta_context": "scope=OTC;metric=source_gap_delta;baseline=846;current=846;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "warn_delta": {
-        "baseline": 146,
-        "current": 146,
+        "baseline": 148,
+        "current": 148,
         "delta": 0,
-        "delta_context": "scope=OTC;metric=warn_delta;baseline=146;current=146;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=OTC;metric=warn_delta;baseline=148;current=148;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "quarantine_delta": {
         "baseline": 0,
@@ -7786,10 +7766,10 @@
         "delta_context": "scope=OTC;metric=quarantine_delta;baseline=0;current=0;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "quality_source_gap_delta": {
-        "baseline": 3097,
-        "current": 3097,
+        "baseline": 3149,
+        "current": 3149,
         "delta": 0,
-        "delta_context": "scope=OTC;metric=quality_source_gap_delta;baseline=3097;current=3097;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=OTC;metric=quality_source_gap_delta;baseline=3149;current=3149;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "masterfile_collision_delta": {
         "baseline": 36,
@@ -8186,10 +8166,10 @@
         "delta_context": "scope=SGX;metric=quarantine_delta;baseline=0;current=0;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "quality_source_gap_delta": {
-        "baseline": 41,
-        "current": 41,
+        "baseline": 43,
+        "current": 43,
         "delta": 0,
-        "delta_context": "scope=SGX;metric=quality_source_gap_delta;baseline=41;current=41;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=SGX;metric=quality_source_gap_delta;baseline=43;current=43;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "masterfile_collision_delta": {
         "baseline": 142,
@@ -8336,10 +8316,10 @@
         "delta_context": "scope=SSE_CL;metric=quarantine_delta;baseline=0;current=0;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "quality_source_gap_delta": {
-        "baseline": 35,
-        "current": 35,
+        "baseline": 36,
+        "current": 36,
         "delta": 0,
-        "delta_context": "scope=SSE_CL;metric=quality_source_gap_delta;baseline=35;current=35;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=SSE_CL;metric=quality_source_gap_delta;baseline=36;current=36;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "masterfile_collision_delta": {
         "baseline": 0,
@@ -8848,10 +8828,10 @@
         "delta_context": "scope=UPCOM;metric=masterfile_collision_delta;baseline=468;current=468;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "masterfile_missing_delta": {
-        "baseline": 362,
-        "current": 362,
+        "baseline": 360,
+        "current": 360,
         "delta": 0,
-        "delta_context": "scope=UPCOM;metric=masterfile_missing_delta;baseline=362;current=362;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=UPCOM;metric=masterfile_missing_delta;baseline=360;current=360;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       }
     },
     "USE_UG": {
@@ -9036,10 +9016,10 @@
         "delta_context": "scope=XETRA;metric=quarantine_delta;baseline=0;current=0;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "quality_source_gap_delta": {
-        "baseline": 97,
-        "current": 97,
+        "baseline": 104,
+        "current": 104,
         "delta": 0,
-        "delta_context": "scope=XETRA;metric=quality_source_gap_delta;baseline=97;current=97;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+        "delta_context": "scope=XETRA;metric=quality_source_gap_delta;baseline=104;current=104;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
       },
       "masterfile_collision_delta": {
         "baseline": 796,

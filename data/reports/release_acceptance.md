@@ -1,6 +1,6 @@
 # Release Acceptance
 
-Generated: `2026-06-02T02:30:04Z`
+Generated: `2026-06-02T02:40:07Z`
 
 Overall passed: `True`
 
@@ -63,11 +63,11 @@ Summary context: `passed=true;criteria=41;passed_criteria=41;failed_criteria=0;v
 
 | Metric | Baseline | Current | Delta |
 |---|---:|---:|---:|
-| `isin_delta` | 59847 | 59847 | 0 |
-| `sector_delta` | 43310 | 43310 | 0 |
+| `isin_delta` | 59848 | 59848 | 0 |
+| `sector_delta` | 43311 | 43311 | 0 |
 | `category_delta` | 15453 | 15453 | 0 |
 | `source_gap_delta` | 3548 | 3548 | 0 |
-| `warn_delta` | 217 | 217 | 0 |
+| `warn_delta` | 222 | 222 | 0 |
 | `quarantine_delta` | 0 | 0 | 0 |
 
 ## Campaign Status

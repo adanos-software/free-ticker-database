@@ -1,57 +1,57 @@
 # Source Refresh Queue
 
-Generated: `2026-06-02T02:29:57Z`
+Generated: `2026-06-02T02:39:05Z`
 
 Policy: freshness and availability signals are review gates only; they do not authorize direct data application.
 
 ## Summary
 
-- Rows: `136`
-- Priority totals: `{'P1': 1, 'P2': 135}`
-- Queue totals: `{'refresh_official_subset_before_gap_enrichment': 128, 'restore_or_replace_unavailable_source_before_data_fill': 8}`
-- Mode totals: `{'cache': 21, 'network': 107, 'unavailable': 8}`
-- Reference scope totals: `{'exchange_directory': 41, 'interlisted_subset': 1, 'listed_companies_subset': 87, 'security_identifier_registry_subset': 1, 'security_lookup_subset': 6}`
+- Rows: `135`
+- Priority totals: `{'P1': 40, 'P2': 95}`
+- Queue totals: `{'refresh_official_exchange_directory_before_identity_or_collision_work': 40, 'refresh_official_subset_before_gap_enrichment': 88, 'restore_or_replace_unavailable_source_before_data_fill': 7}`
+- Mode totals: `{'cache': 21, 'network': 107, 'unavailable': 7}`
+- Reference scope totals: `{'exchange_directory': 40, 'interlisted_subset': 1, 'listed_companies_subset': 87, 'security_identifier_registry_subset': 1, 'security_lookup_subset': 6}`
 
 ## Top Refresh Batches
 
 | Queue | Scope | Mode | Priority | Sources | Rows | Max Age Hours | Evidence Required |
 | --- | --- | --- | --- | ---: | ---: | ---: | --- |
-| restore_or_replace_unavailable_source_before_data_fill | exchange_directory | unavailable | P1 | 1 | 0 | 348.01 | source_restored_or_replaced_with_official_or_documented_unavailable_decision |
-| refresh_official_subset_before_gap_enrichment | listed_companies_subset | network | P2 | 63 | 37425 | 348.03 | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| refresh_official_subset_before_gap_enrichment | exchange_directory | network | P2 | 40 | 85123 | 156.12 | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| refresh_official_subset_before_gap_enrichment | listed_companies_subset | cache | P2 | 17 | 18897 | 348.04 | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| restore_or_replace_unavailable_source_before_data_fill | listed_companies_subset | unavailable | P2 | 7 | 0 | 348.02 | source_restored_or_replaced_with_official_or_documented_unavailable_decision |
-| refresh_official_subset_before_gap_enrichment | security_lookup_subset | cache | P2 | 4 | 165 | 348.03 | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| refresh_official_subset_before_gap_enrichment | security_lookup_subset | network | P2 | 2 | 746 | 348.04 | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| refresh_official_subset_before_gap_enrichment | security_identifier_registry_subset | network | P2 | 1 | 3205 | 348.02 | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| refresh_official_subset_before_gap_enrichment | interlisted_subset | network | P2 | 1 | 268 | 348.03 | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
+| refresh_official_exchange_directory_before_identity_or_collision_work | exchange_directory | network | P1 | 40 | 85123 | 202.75 | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| refresh_official_subset_before_gap_enrichment | listed_companies_subset | network | P2 | 63 | 37425 | 394.67 | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
+| refresh_official_subset_before_gap_enrichment | listed_companies_subset | cache | P2 | 17 | 18897 | 394.67 | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
+| restore_or_replace_unavailable_source_before_data_fill | listed_companies_subset | unavailable | P2 | 7 | 0 | 394.65 | source_restored_or_replaced_with_official_or_documented_unavailable_decision |
+| refresh_official_subset_before_gap_enrichment | security_lookup_subset | cache | P2 | 4 | 165 | 394.67 | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
+| refresh_official_subset_before_gap_enrichment | security_lookup_subset | network | P2 | 2 | 746 | 394.67 | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
+| refresh_official_subset_before_gap_enrichment | security_identifier_registry_subset | network | P2 | 1 | 3205 | 394.66 | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
+| refresh_official_subset_before_gap_enrichment | interlisted_subset | network | P2 | 1 | 268 | 394.66 | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
+| fresh_no_refresh_needed | exchange_directory | network | P4 | 1 | 10 | 0.12 | fresh_source_generated_at_with_age_under_48h |
 
 ## Top Sources
 
 | Priority | Source | Provider | Scope | Mode | Rows | Age Hours | Queue | Evidence Required |
 | --- | --- | --- | --- | --- | ---: | ---: | --- | --- |
-| P1 | bme_security_prices_directory | BME | exchange_directory | unavailable | 0 | 348.01 | restore_or_replace_unavailable_source_before_data_fill | source_restored_or_replaced_with_official_or_documented_unavailable_decision |
-| P2 | lse_company_reports | LSE | listed_companies_subset | cache | 12707 | 348.04 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| P2 | lse_instrument_search | LSE | security_lookup_subset | network | 0 | 348.04 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| P2 | asx_investment_products | ASX | listed_companies_subset | network | 446 | 348.03 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| P2 | asx_listed_companies | ASX | listed_companies_subset | network | 1976 | 348.03 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| P2 | lse_instrument_directory | LSE | security_lookup_subset | cache | 64 | 348.03 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| P2 | set_dr_search | SET | listed_companies_subset | network | 378 | 348.03 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| P2 | set_etf_search | SET | listed_companies_subset | network | 13 | 348.03 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| P2 | set_listed_companies | SET | listed_companies_subset | network | 932 | 348.03 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| P2 | tmx_etf_screener | TMX | listed_companies_subset | cache | 1746 | 348.03 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| P2 | tmx_interlisted_companies | TMX | interlisted_subset | network | 268 | 348.03 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| P2 | tmx_listed_issuers | TMX | listed_companies_subset | cache | 3619 | 348.03 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| P2 | bme_listed_companies | BME | listed_companies_subset | cache | 78 | 348.02 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| P2 | deutsche_boerse_etfs_etps | Deutsche Boerse | listed_companies_subset | network | 3532 | 348.02 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| P2 | deutsche_boerse_listed_companies | Deutsche Boerse | listed_companies_subset | network | 472 | 348.02 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| P2 | euronext_etfs | Euronext | listed_companies_subset | network | 3535 | 348.02 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| P2 | jpx_tse_stock_detail | JPX | security_identifier_registry_subset | network | 3205 | 348.02 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| P2 | jse_etf_list | JSE | listed_companies_subset | cache | 134 | 348.02 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| P2 | jse_etn_list | JSE | listed_companies_subset | cache | 94 | 348.02 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| P2 | six_equity_issuers | SIX | listed_companies_subset | network | 240 | 348.02 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| P2 | six_etf_products | SIX | listed_companies_subset | network | 8662 | 348.02 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| P2 | six_etp_products | SIX | listed_companies_subset | network | 821 | 348.02 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| P2 | six_shares_explorer_full | SIX | listed_companies_subset | network | 0 | 348.02 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| P2 | athex_sector_classification | ATHEX | listed_companies_subset | cache | 91 | 348.0 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
-| P2 | bursa_closing_prices | Bursa Malaysia | listed_companies_subset | network | 1281 | 348.0 | refresh_official_subset_before_gap_enrichment | official_subset_refresh_artifact_with_generated_at_scope_and_row_count |
+| P1 | nasdaq_listed | Nasdaq Trader | exchange_directory | network | 5471 | 202.75 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| P1 | nasdaq_other_listed | Nasdaq Trader | exchange_directory | network | 7211 | 202.75 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| P1 | b3_instruments_equities | B3 | exchange_directory | network | 1941 | 186.84 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| P1 | otc_markets_stock_screener | OTC Markets | exchange_directory | network | 11925 | 183.34 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| P1 | sec_company_tickers_exchange | SEC | exchange_directory | network | 10122 | 183.31 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| P1 | deutsche_boerse_xetra_all_tradable_equities | Deutsche Boerse | exchange_directory | network | 4528 | 183.26 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| P1 | jpx_listed_issues | JPX | exchange_directory | network | 4449 | 183.23 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| P1 | euronext_equities | Euronext | exchange_directory | network | 3863 | 183.2 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| P1 | krx_listed_companies | KRX | exchange_directory | network | 2765 | 183.14 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| P1 | krx_etf_finder | KRX | exchange_directory | network | 1115 | 183.11 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| P1 | twse_listed_companies | TWSE | exchange_directory | network | 1088 | 183.08 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| P1 | idx_company_profiles | IDX | exchange_directory | network | 958 | 183.04 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| P1 | set_stock_search | SET | exchange_directory | network | 944 | 183.0 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| P1 | psx_dps_symbols | PSX | exchange_directory | network | 716 | 182.85 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| P1 | cboe_canada_listing_directory | Cboe Canada | exchange_directory | network | 438 | 182.81 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| P1 | pse_listed_company_directory | PSE | exchange_directory | network | 381 | 182.74 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| P1 | cse_ma_listed_companies | Casablanca Stock Exchange | exchange_directory | network | 50 | 182.7 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| P1 | ngx_company_profile_directory | NGX | exchange_directory | network | 133 | 182.64 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| P1 | hnx_listed_securities | HNX | exchange_directory | network | 300 | 182.59 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| P1 | nse_ke_listed_companies | NSE Kenya | exchange_directory | network | 66 | 182.53 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| P1 | sem_isin | SEM | exchange_directory | network | 47 | 182.48 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| P1 | qse_market_watch | QSE | exchange_directory | network | 57 | 182.43 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| P1 | bahrain_bourse_listed_companies | Bahrain Bourse | exchange_directory | network | 41 | 182.38 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| P1 | dfm_listed_securities | DFM | exchange_directory | network | 71 | 182.28 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
+| P1 | adx_market_watch | ADX | exchange_directory | network | 122 | 182.25 | refresh_official_exchange_directory_before_identity_or_collision_work | official_exchange_directory_refresh_artifact_with_generated_at_and_row_count |
