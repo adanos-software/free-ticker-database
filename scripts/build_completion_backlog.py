@@ -16,6 +16,7 @@ TICKERS_CSV = DATA_DIR / "tickers.csv"
 INSTRUMENT_SCOPES_CSV = DATA_DIR / "instrument_scopes.csv"
 COVERAGE_REPORT_JSON = REPORTS_DIR / "coverage_report.json"
 ASX_RESIDUAL_REVIEW_JSON = REPORTS_DIR / "asx_residual_review.json"
+JPX_TSE_SECTOR_BACKFILL_JSON = REPORTS_DIR / "tse_sector_backfill.json"
 DEFAULT_CSV_OUT = REPORTS_DIR / "completion_backlog.csv"
 DEFAULT_JSON_OUT = REPORTS_DIR / "completion_backlog.json"
 DEFAULT_MD_OUT = REPORTS_DIR / "completion_backlog.md"
@@ -378,6 +379,7 @@ def summarize(
     generated_at: str,
     *,
     asx_residual_review: dict[str, Any] | None = None,
+    jpx_tse_sector_backfill: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     field_totals = Counter()
     exchanges_by_field: dict[str, set[str]] = defaultdict(set)
@@ -404,7 +406,11 @@ def summarize(
                 "Missing venues",
             ],
         },
-        "next_actions": build_next_actions(rows, asx_residual_review=asx_residual_review or {}),
+        "next_actions": build_next_actions(
+            rows,
+            asx_residual_review=asx_residual_review or {},
+            jpx_tse_sector_backfill=jpx_tse_sector_backfill or {},
+        ),
     }
 
 
@@ -448,11 +454,55 @@ def apply_asx_residual_context(action: dict[str, Any], asx_residual_review: dict
     }
 
 
+def jpx_tse_sector_summary(jpx_tse_sector_backfill: dict[str, Any]) -> dict[str, Any]:
+    summary = jpx_tse_sector_backfill.get("summary", {})
+    return summary if isinstance(summary, dict) else {}
+
+
+def jpx_tse_sector_blocks_direct_apply(jpx_tse_sector_backfill: dict[str, Any]) -> bool:
+    summary = jpx_tse_sector_summary(jpx_tse_sector_backfill)
+    decision_counts = summary.get("decision_counts", {})
+    if not isinstance(decision_counts, dict):
+        decision_counts = {}
+    candidates = int(summary.get("candidates") or 0)
+    accepted_updates = int(summary.get("accepted_sector_updates") or 0)
+    return candidates > 0 and accepted_updates == 0 and int(decision_counts.get("missing_jpx_industry") or 0) == candidates
+
+
+def apply_jpx_tse_sector_context(action: dict[str, Any], jpx_tse_sector_backfill: dict[str, Any]) -> dict[str, Any]:
+    if action["exchange"] != "TSE" or action["field"] != FIELD_MISSING_STOCK_SECTOR:
+        return action
+    if not jpx_tse_sector_blocks_direct_apply(jpx_tse_sector_backfill):
+        return action
+    summary = jpx_tse_sector_summary(jpx_tse_sector_backfill)
+    decision_counts = summary.get("decision_counts", {})
+    if not isinstance(decision_counts, dict):
+        decision_counts = {}
+    return {
+        **action,
+        "review_needed": True,
+        "recommended_source": (
+            "Official JPX listed-issues verification shows exact TSE matches but no JPX 33-industry values; "
+            "use official REIT/infrastructure-fund taxonomy evidence before any stock_sector update."
+        ),
+        "confidence_policy": (
+            "Do not infer stock_sector from REIT/fund names or market segment alone; apply only after official "
+            "industry or product-taxonomy evidence maps to a canonical stock sector."
+        ),
+        "why_next": "official source gap review-gated workflow",
+        "residual_gate": "jpx_tse_sector_backfill_blocks_direct_apply",
+        "jpx_candidates": int(summary.get("candidates") or 0),
+        "accepted_sector_updates": int(summary.get("accepted_sector_updates") or 0),
+        "jpx_missing_industry_rows": int(decision_counts.get("missing_jpx_industry") or 0),
+    }
+
+
 def build_next_actions(
     rows: list[CompletionBacklogRow],
     limit: int = 8,
     *,
     asx_residual_review: dict[str, Any] | None = None,
+    jpx_tse_sector_backfill: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     ranked = sorted(
         rows,
@@ -490,7 +540,9 @@ def build_next_actions(
                 else "highest remaining missing-count workflow"
             ),
         }
-        actions.append(apply_asx_residual_context(action, asx_residual_review or {}))
+        action = apply_asx_residual_context(action, asx_residual_review or {})
+        action = apply_jpx_tse_sector_context(action, jpx_tse_sector_backfill or {})
+        actions.append(action)
     return actions
 
 
@@ -635,6 +687,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--instrument-scopes-csv", type=Path, default=INSTRUMENT_SCOPES_CSV)
     parser.add_argument("--coverage-report-json", type=Path, default=COVERAGE_REPORT_JSON)
     parser.add_argument("--asx-residual-review-json", type=Path, default=ASX_RESIDUAL_REVIEW_JSON)
+    parser.add_argument("--jpx-tse-sector-backfill-json", type=Path, default=JPX_TSE_SECTOR_BACKFILL_JSON)
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_CSV_OUT)
     parser.add_argument("--json-out", type=Path, default=DEFAULT_JSON_OUT)
     parser.add_argument("--md-out", type=Path, default=DEFAULT_MD_OUT)
@@ -655,6 +708,7 @@ def main(argv: list[str] | None = None) -> None:
         coverage_report,
         generated_at,
         asx_residual_review=load_json(args.asx_residual_review_json),
+        jpx_tse_sector_backfill=load_json(args.jpx_tse_sector_backfill_json),
     )
 
     write_csv(args.csv_out, rows)

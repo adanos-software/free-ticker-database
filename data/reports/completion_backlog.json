@@ -2406,7 +2406,7 @@
       "missing_isin_primary": 846,
       "missing_sector_stock": 2600
     },
-    "generated_at": "2026-06-02T23:43:50Z",
+    "generated_at": "2026-06-02T23:50:41Z",
     "legacy_primary_ticker_collision_rows": 1,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
@@ -2477,21 +2477,25 @@
         "why_next": "top_impact review-gated workflow"
       },
       {
+        "accepted_sector_updates": 0,
         "action_rank": 4,
-        "confidence_policy": "Accept after exact TSE code and official JPX sector normalization to canonical stock sectors.",
+        "confidence_policy": "Do not infer stock_sector from REIT/fund names or market segment alone; apply only after official industry or product-taxonomy evidence maps to a canonical stock sector.",
         "etf_missing_count": 0,
         "exchange": "TSE",
         "field": "missing_sector_stock",
+        "jpx_candidates": 21,
+        "jpx_missing_industry_rows": 21,
         "missing_count": 21,
         "official_source_count": 2,
-        "recommended_source": "Official JPX listed-issues sector mapping.",
-        "review_needed": false,
+        "recommended_source": "Official JPX listed-issues verification shows exact TSE matches but no JPX 33-industry values; use official REIT/infrastructure-fund taxonomy evidence before any stock_sector update.",
+        "residual_gate": "jpx_tse_sector_backfill_blocks_direct_apply",
+        "review_needed": true,
         "safe_action": "candidate_for_official_followup",
         "script": "scripts/backfill_jpx_tse_sectors.py",
         "stock_missing_count": 21,
         "target_field": "stock_sector",
         "venue_status": "official_full",
-        "why_next": "highest remaining missing-count workflow"
+        "why_next": "official source gap review-gated workflow"
       },
       {
         "action_rank": 5,

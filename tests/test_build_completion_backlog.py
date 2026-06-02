@@ -135,6 +135,35 @@ def test_asx_next_action_uses_residual_review_gate_when_no_apply_candidates():
     assert "Reviewed ASX scope decision" in action["recommended_source"]
 
 
+def test_tse_sector_next_action_uses_jpx_report_gate_when_no_apply_candidates():
+    rows = build_completion_backlog(
+        [{"ticker": "2989", "exchange": "TSE", "asset_type": "Stock", "sector": ""}],
+        [],
+        {"by_exchange": [{"exchange": "TSE", "venue_status": "official_full", "official_source_count": 2}]},
+    )
+    summary = summarize(
+        rows,
+        {"global": {}, "by_exchange": []},
+        "2026-04-12T00:00:00Z",
+        jpx_tse_sector_backfill={
+            "summary": {
+                "candidates": 1,
+                "accepted_sector_updates": 0,
+                "decision_counts": {"missing_jpx_industry": 1},
+            }
+        },
+    )
+
+    action = summary["next_actions"][0]
+    assert action["exchange"] == "TSE"
+    assert action["field"] == FIELD_MISSING_STOCK_SECTOR
+    assert action["review_needed"] is True
+    assert action["residual_gate"] == "jpx_tse_sector_backfill_blocks_direct_apply"
+    assert action["accepted_sector_updates"] == 0
+    assert action["jpx_missing_industry_rows"] == 1
+    assert "no JPX 33-industry values" in action["recommended_source"]
+
+
 def test_completion_backlog_ranks_by_missing_count_before_static_source_order():
     rows = build_completion_backlog(
         [],

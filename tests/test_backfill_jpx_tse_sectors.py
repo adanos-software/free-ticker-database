@@ -5,6 +5,7 @@ import csv
 from scripts.backfill_jpx_tse_sectors import (
     JpxListedIssue,
     build_metadata_updates,
+    build_report_payload,
     evaluate_jpx_sector_row,
     load_missing_tse_sector_rows,
     normalize_jpx_code,
@@ -99,3 +100,19 @@ def test_build_metadata_updates_emits_sector_override():
             "reason": "Official JPX listed-issues file maps TSE code 1301 to JPX 33-industry '水産・農林業', which was normalized to a canonical stock sector.",
         }
     ]
+
+
+def test_build_report_payload_summarizes_decisions_without_direct_apply():
+    results = [
+        {"decision": "missing_jpx_industry", "ticker": "2989", "exchange": "TSE"},
+        {"decision": "missing_jpx_industry", "ticker": "3281", "exchange": "TSE"},
+    ]
+
+    payload = build_report_payload(results, [], applied=False, generated_at="2026-04-12T00:00:00Z")
+
+    assert payload["generated_at"] == "2026-04-12T00:00:00Z"
+    assert payload["summary"]["candidates"] == 2
+    assert payload["summary"]["accepted_sector_updates"] == 0
+    assert payload["summary"]["decision_counts"] == {"missing_jpx_industry": 2}
+    assert payload["summary"]["applied"] is False
+    assert payload["accepted_results"] == []
