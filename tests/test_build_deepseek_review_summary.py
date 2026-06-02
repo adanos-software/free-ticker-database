@@ -106,6 +106,48 @@ def test_build_payload_clamps_incompatible_safe_actions(tmp_path) -> None:
     assert payload["summary"]["safe_action_totals"] == {"source_gap_accept": 1}
 
 
+def test_build_payload_strips_review_key_fields_before_counting(tmp_path) -> None:
+    raw = tmp_path / "raw.jsonl"
+    raw.write_text(
+        json.dumps(
+            {
+                "batch_index": 1,
+                "review_kind": "otc_scope",
+                "response": {
+                    "reviews": [
+                        {
+                            "listing_key": " OTC::ABCD ",
+                            "ticker": " ABCD ",
+                            "exchange": " OTC ",
+                            "review_kind": " otc_scope ",
+                            "decision_candidate": " needs_official_evidence ",
+                            "safe_action": " needs_official_evidence ",
+                        },
+                        {
+                            "listing_key": "OTC::ABCD",
+                            "ticker": "ABCD",
+                            "exchange": "OTC",
+                            "review_kind": "otc_scope",
+                            "decision_candidate": "needs_official_evidence",
+                            "safe_action": "needs_official_evidence",
+                        },
+                    ]
+                },
+            }
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    payload = build_payload(raw)
+
+    assert payload["items"][0]["listing_key"] == "OTC::ABCD"
+    assert payload["items"][0]["ticker"] == "ABCD"
+    assert payload["items"][0]["exchange"] == "OTC"
+    assert payload["items"][0]["review_kind"] == "otc_scope"
+    assert payload["summary"]["duplicate_review_key_rows"] == 1
+
+
 def test_build_payload_records_bad_jsonl_lines_without_dropping_valid_batches(tmp_path) -> None:
     raw = tmp_path / "raw.jsonl"
     raw.write_text(

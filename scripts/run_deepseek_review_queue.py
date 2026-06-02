@@ -203,21 +203,23 @@ def parse_json_object(text: str) -> dict[str, Any]:
 
 
 def normalize_review(raw: dict[str, Any], source_row: dict[str, str], review_kind: str) -> dict[str, Any]:
-    decision = str(raw.get("decision_candidate") or "uncertain")
+    decision = str(raw.get("decision_candidate") or "uncertain").strip()
     if decision not in VALID_DECISIONS:
         decision = "uncertain"
-    safe_action = str(raw.get("safe_action") or SAFE_ACTION_BY_DECISION[decision])
+    safe_action = str(raw.get("safe_action") or SAFE_ACTION_BY_DECISION[decision]).strip()
     if safe_action not in VALID_SAFE_ACTIONS or safe_action not in SAFE_ACTIONS_BY_DECISION[decision]:
         safe_action = SAFE_ACTION_BY_DECISION[decision]
     confidence = raw.get("confidence", 0)
     if not isinstance(confidence, (int, float)) or isinstance(confidence, bool):
         confidence = 0
     confidence = max(0.0, min(1.0, float(confidence)))
+    listing_key = trim(raw.get("listing_key")) or trim(source_row.get("listing_key")) or trim(source_row.get("target_listing_key"))
+    exchange = trim(raw.get("exchange")) or trim(source_row.get("exchange")) or trim(source_row.get("target_exchange"))
     return {
-        "listing_key": str(raw.get("listing_key") or source_row.get("listing_key") or source_row.get("target_listing_key", "")),
-        "ticker": str(raw.get("ticker") or source_row.get("ticker", "")),
-        "exchange": str(raw.get("exchange") or source_row.get("exchange") or source_row.get("target_exchange", "")),
-        "review_kind": str(raw.get("review_kind") or review_kind),
+        "listing_key": listing_key,
+        "ticker": trim(raw.get("ticker")) or trim(source_row.get("ticker")),
+        "exchange": exchange,
+        "review_kind": trim(raw.get("review_kind")) or trim(review_kind),
         "classification": trim(raw.get("classification") or decision, 120),
         "decision_candidate": decision,
         "safe_action": safe_action,

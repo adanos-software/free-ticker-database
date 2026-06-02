@@ -112,6 +112,32 @@ def test_normalize_payload_clamps_incompatible_safe_actions() -> None:
     assert normalized[0]["safe_action"] == "source_gap_accept"
 
 
+def test_normalize_payload_strips_key_fields_and_falls_back_to_source_row() -> None:
+    normalized = normalize_payload(
+        {
+            "reviews": [
+                {
+                    "listing_key": "   ",
+                    "ticker": " ABCD ",
+                    "exchange": "   ",
+                    "review_kind": " otc_scope ",
+                    "decision_candidate": " needs_official_evidence ",
+                    "safe_action": " needs_official_evidence ",
+                }
+            ]
+        },
+        [{"listing_key": " OTC::ABCD ", "ticker": "SRC", "exchange": " OTC "}],
+        "otc_scope",
+    )
+
+    assert normalized[0]["listing_key"] == "OTC::ABCD"
+    assert normalized[0]["ticker"] == "ABCD"
+    assert normalized[0]["exchange"] == "OTC"
+    assert normalized[0]["review_kind"] == "otc_scope"
+    assert normalized[0]["decision_candidate"] == "needs_official_evidence"
+    assert normalized[0]["safe_action"] == "needs_official_evidence"
+
+
 def test_run_dry_run_writes_normalized_outputs(tmp_path) -> None:
     input_csv = tmp_path / "queue.csv"
     input_csv.write_text(

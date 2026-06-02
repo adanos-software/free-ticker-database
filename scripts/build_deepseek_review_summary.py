@@ -92,10 +92,10 @@ def iter_raw_batches(path: Path) -> tuple[list[dict[str, Any]], list[dict[str, A
 
 
 def normalize_review(review: dict[str, Any], *, batch_index: int, review_kind: str) -> dict[str, Any]:
-    decision = str(review.get("decision_candidate") or "uncertain")
+    decision = str(review.get("decision_candidate") or "uncertain").strip()
     if decision not in VALID_DECISIONS:
         decision = "uncertain"
-    safe_action = str(review.get("safe_action") or SAFE_ACTION_BY_DECISION[decision])
+    safe_action = str(review.get("safe_action") or SAFE_ACTION_BY_DECISION[decision]).strip()
     if safe_action not in VALID_SAFE_ACTIONS or safe_action not in SAFE_ACTIONS_BY_DECISION[decision]:
         safe_action = SAFE_ACTION_BY_DECISION[decision]
     confidence = review.get("confidence", 0)
@@ -104,10 +104,10 @@ def normalize_review(review: dict[str, Any], *, batch_index: int, review_kind: s
     confidence = max(0.0, min(1.0, float(confidence)))
     return {
         "batch_index": batch_index,
-        "listing_key": str(review.get("listing_key", "")),
-        "ticker": str(review.get("ticker", "")),
-        "exchange": str(review.get("exchange", "")),
-        "review_kind": str(review.get("review_kind") or review_kind),
+        "listing_key": str(review.get("listing_key", "")).strip(),
+        "ticker": str(review.get("ticker", "")).strip(),
+        "exchange": str(review.get("exchange", "")).strip(),
+        "review_kind": str(review.get("review_kind") or review_kind).strip(),
         "classification": trim(review.get("classification") or decision, 120),
         "decision_candidate": decision,
         "safe_action": safe_action,
