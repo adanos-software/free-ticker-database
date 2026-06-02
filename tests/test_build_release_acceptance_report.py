@@ -55,6 +55,7 @@ from scripts.build_release_acceptance_report import (
     evaluate_adanos_detection_simulation,
     evaluate_campaign_review_policies,
     evaluate_campaign_reviewability,
+    evaluate_completion_backlog_next_actions,
     evaluate_deepseek_advisory_integrity,
     campaign_status_rows,
     evaluate_next_review_batch_visibility,
@@ -237,6 +238,64 @@ def test_evaluate_deepseek_advisory_integrity_rejects_direct_or_open_batches() -
     assert result["queue_status_gaps"] == ["source_gap"]
     assert result["queue_unreviewed_gaps"] == {"source_gap": 3}
     assert result["secret_policy_missing"] is True
+
+
+def test_evaluate_completion_backlog_next_actions_accepts_advisory_actions() -> None:
+    result = evaluate_completion_backlog_next_actions(
+        {
+            "summary": {
+                "next_actions": [
+                    {
+                        "safe_action": "candidate_for_official_followup",
+                        "exchange": "ASX",
+                        "field": "missing_isin_primary",
+                        "target_field": "isin",
+                        "missing_count": 10,
+                        "recommended_source": "Official ASX ISIN workbook.",
+                        "script": "scripts/backfill_asx_isins.py",
+                        "review_needed": False,
+                        "confidence_policy": "Accept only after official gates match.",
+                        "why_next": "top_impact official workflow",
+                    }
+                ]
+            }
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["next_actions"] == 1
+    assert result["invalid_safe_actions"] == []
+
+
+def test_evaluate_completion_backlog_next_actions_rejects_direct_or_invalid_actions() -> None:
+    result = evaluate_completion_backlog_next_actions(
+        {
+            "summary": {
+                "next_actions": [
+                    {
+                        "safe_action": "direct_apply",
+                        "exchange": "ASX",
+                        "field": "missing_isin_primary",
+                        "target_field": "stock_sector",
+                        "missing_count": 0,
+                        "recommended_source": "direct apply from model",
+                        "script": "python direct.py",
+                        "review_needed": "no",
+                        "confidence_policy": "direct_apply",
+                        "why_next": "direct apply",
+                    }
+                ]
+            }
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["invalid_safe_actions"] == ["ASX"]
+    assert result["invalid_counts"] == ["ASX"]
+    assert result["invalid_review_flags"] == ["ASX"]
+    assert result["invalid_scripts"] == ["ASX"]
+    assert result["invalid_target_fields"] == {"ASX": "stock_sector"}
+    assert result["direct_apply_markers"] == ["ASX"]
 
 
 BASELINE_META_FIXTURE = {

@@ -3026,6 +3026,98 @@ def evaluate_deepseek_advisory_integrity(
     }
 
 
+COMPLETION_BACKLOG_ALLOWED_SAFE_ACTIONS = {
+    "candidate_for_official_followup",
+    "needs_official_evidence",
+}
+
+
+def evaluate_completion_backlog_next_actions(completion_backlog: dict[str, Any]) -> dict[str, Any]:
+    summary = completion_backlog.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    next_actions = summary.get("next_actions", [])
+    if not isinstance(next_actions, list):
+        next_actions = []
+    invalid_safe_actions: list[str] = []
+    missing_fields: dict[str, list[str]] = {}
+    invalid_counts: list[str] = []
+    invalid_review_flags: list[str] = []
+    invalid_scripts: list[str] = []
+    invalid_target_fields: dict[str, str] = {}
+    direct_apply_markers: list[str] = []
+    expected_targets = {
+        "missing_isin_primary": "isin",
+        "missing_sector_stock": "stock_sector",
+        "missing_etf_category": "etf_category",
+    }
+    for index, action in enumerate(next_actions, start=1):
+        if not isinstance(action, dict):
+            missing_fields[f"row_{index}"] = ["action"]
+            continue
+        key = str(action.get("exchange") or f"row_{index}")
+        safe_action = str(action.get("safe_action") or "")
+        if safe_action not in COMPLETION_BACKLOG_ALLOWED_SAFE_ACTIONS:
+            invalid_safe_actions.append(key)
+        haystack = " ".join(
+            str(action.get(field) or "")
+            for field in ("safe_action", "why_next", "recommended_source", "confidence_policy", "script")
+        ).lower()
+        if "direct_apply" in haystack or "direct apply" in haystack:
+            direct_apply_markers.append(key)
+        missing = [
+            field
+            for field in (
+                "safe_action",
+                "exchange",
+                "field",
+                "target_field",
+                "missing_count",
+                "recommended_source",
+                "script",
+                "review_needed",
+                "confidence_policy",
+                "why_next",
+            )
+            if field not in action
+        ]
+        if missing:
+            missing_fields[key] = missing
+        missing_count = action.get("missing_count")
+        if not isinstance(missing_count, int) or isinstance(missing_count, bool) or missing_count <= 0:
+            invalid_counts.append(key)
+        if not isinstance(action.get("review_needed"), bool):
+            invalid_review_flags.append(key)
+        script = str(action.get("script") or "")
+        if not script.startswith("scripts/"):
+            invalid_scripts.append(key)
+        field = str(action.get("field") or "")
+        expected_target = expected_targets.get(field)
+        if expected_target and action.get("target_field") != expected_target:
+            invalid_target_fields[key] = str(action.get("target_field") or "")
+    return {
+        "passed": (
+            bool(next_actions)
+            and not invalid_safe_actions
+            and not missing_fields
+            and not invalid_counts
+            and not invalid_review_flags
+            and not invalid_scripts
+            and not invalid_target_fields
+            and not direct_apply_markers
+        ),
+        "next_actions": len(next_actions),
+        "allowed_safe_actions": sorted(COMPLETION_BACKLOG_ALLOWED_SAFE_ACTIONS),
+        "invalid_safe_actions": invalid_safe_actions,
+        "missing_fields": missing_fields,
+        "invalid_counts": invalid_counts,
+        "invalid_review_flags": invalid_review_flags,
+        "invalid_scripts": invalid_scripts,
+        "invalid_target_fields": invalid_target_fields,
+        "direct_apply_markers": direct_apply_markers,
+    }
+
+
 def evaluate_progress_markdown_traceability(
     reports: dict[str, dict[str, Any]] = PROGRESS_MARKDOWN_TRACEABILITY_REPORTS,
     *,
@@ -15784,6 +15876,7 @@ def build_payload() -> dict[str, Any]:
     baseline = load_json(REPORTS_DIR / "improvement_baseline.json")
     deltas = load_json(REPORTS_DIR / "improvement_deltas.json")
     campaigns = load_json(REPORTS_DIR / "improvement_campaigns.json")
+    completion_backlog = load_json(REPORTS_DIR / "completion_backlog.json")
     deepseek_review_summary = load_json(REPORTS_DIR / "deepseek_review_summary.json")
     deepseek_batch_plan = load_json(REPORTS_DIR / "deepseek_batch_plan.json")
     gates = gate_lookup(validation)
@@ -15799,6 +15892,7 @@ def build_payload() -> dict[str, Any]:
         deepseek_review_summary,
         deepseek_batch_plan,
     )
+    criteria["completion_backlog_next_actions"] = evaluate_completion_backlog_next_actions(completion_backlog)
     criteria["progress_markdown_traceability"] = evaluate_progress_markdown_traceability()
     criteria["adanos_detection_simulation"] = evaluate_adanos_detection_simulation(adanos_detection_simulation)
     criteria["entry_quality_command_report"] = evaluate_entry_quality_command_report(entry_quality_gate, gates)
