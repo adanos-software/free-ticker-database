@@ -1,12 +1,12 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T18:30:57Z",
+    "generated_at": "2026-06-02T18:38:14Z",
     "raw_responses_jsonl": "data/deepseek_review_jobs/raw_responses.jsonl",
-    "raw_batches": 3272,
+    "raw_batches": 3275,
     "policy": "DeepSeek review suggestions are triage only. They do not authorize inferred identifiers, sectors, categories, names, symbol changes, scope changes, or data application."
   },
   "summary": {
-    "rows": 26305,
+    "rows": 26319,
     "errors": 0,
     "duplicate_review_key_rows": 0,
     "blank_listing_key_rows": 0,
@@ -14,22 +14,22 @@
       "masterfile_collision": 11107,
       "otc_name_mismatch": 146,
       "otc_scope": 11056,
-      "source_gap": 3350,
+      "source_gap": 3364,
       "weak_sector": 646
     },
     "decision_totals": {
       "candidate_apply_blocked": 1507,
       "keep_source_gap": 4120,
-      "needs_official_evidence": 15365,
+      "needs_official_evidence": 15375,
       "out_of_scope_candidate": 584,
       "possible_duplicate_or_cross_listing": 2955,
-      "uncertain": 1774
+      "uncertain": 1778
     },
     "safe_action_totals": {
       "candidate_for_official_followup": 2091,
       "likely_distinct_issuer_review": 326,
       "likely_same_issuer_review": 2629,
-      "needs_official_evidence": 17139,
+      "needs_official_evidence": 17153,
       "source_gap_accept": 4120
     },
     "review_kind_duplicate_key_rows": {},
@@ -58,9 +58,9 @@
       "source_gap": {
         "candidate_apply_blocked": 14,
         "keep_source_gap": 1160,
-        "needs_official_evidence": 2102,
+        "needs_official_evidence": 2112,
         "out_of_scope_candidate": 18,
-        "uncertain": 56
+        "uncertain": 60
       },
       "weak_sector": {
         "keep_source_gap": 487,
@@ -89,7 +89,7 @@
       },
       "source_gap": {
         "candidate_for_official_followup": 32,
-        "needs_official_evidence": 2158,
+        "needs_official_evidence": 2172,
         "source_gap_accept": 1160
       },
       "weak_sector": {
@@ -368369,6 +368369,202 @@
       "evidence_needed": "Official industry taxonomy source for ZSE_ZW listings, such as an exchange-provided sector classification or a regulatory filing that maps to a canonical taxonomy.",
       "rationale": "The stock is listed on ZSE_ZW and covered by the implemented venue source, but no canonical stock_sector value is exposed or safely mappable. The confidence policy requires an official taxonomy source; until one is available, the field must remain blank.",
       "do_not_apply_reason": "No official stock_sector value available from the implemented source; applying a sector would violate the confidence policy that mandates an official taxonomy source."
+    },
+    {
+      "batch_index": 1,
+      "listing_key": "ZSE_ZW::MEIK",
+      "ticker": "MEIK",
+      "exchange": "ZSE_ZW",
+      "review_kind": "source_gap",
+      "classification": "source_gap",
+      "decision_candidate": "needs_official_evidence",
+      "safe_action": "needs_official_evidence",
+      "confidence": 0.1,
+      "evidence_needed": "Official industry sector classification from the Zimbabwe Stock Exchange or other authoritative source for MEIKLES LIMITED.",
+      "rationale": "The listing is covered by an implemented official venue source, but no canonical stock sector value is exposed or safely mappable. Per the confidence policy, keep blank until a stronger official taxonomy source appears.",
+      "do_not_apply_reason": "Applying any sector value without official evidence would be speculative and violate data integrity policies."
+    },
+    {
+      "batch_index": 1,
+      "listing_key": "ZSE_ZW::MSHL",
+      "ticker": "MSHL",
+      "exchange": "ZSE_ZW",
+      "review_kind": "source_gap",
+      "classification": "source_gap",
+      "decision_candidate": "needs_official_evidence",
+      "safe_action": "needs_official_evidence",
+      "confidence": 0.1,
+      "evidence_needed": "Official industry sector classification from the Zimbabwe Stock Exchange or other authoritative source for MASIMBA HOLDINGS LIMITED.",
+      "rationale": "The listing is covered by an implemented official venue source, but no canonical stock sector value is exposed or safely mappable. Per the confidence policy, keep blank until a stronger official taxonomy source appears.",
+      "do_not_apply_reason": "Applying any sector value without official evidence would be speculative and violate data integrity policies."
+    },
+    {
+      "batch_index": 1,
+      "listing_key": "ZSE_ZW::NPKZ",
+      "ticker": "NPKZ",
+      "exchange": "ZSE_ZW",
+      "review_kind": "source_gap",
+      "classification": "source_gap",
+      "decision_candidate": "needs_official_evidence",
+      "safe_action": "needs_official_evidence",
+      "confidence": 0.1,
+      "evidence_needed": "Official industry sector classification from the Zimbabwe Stock Exchange or other authoritative source for NAMPAK ZIMBABWE LIMITED.",
+      "rationale": "The listing is covered by an implemented official venue source, but no canonical stock sector value is exposed or safely mappable. Per the confidence policy, keep blank until a stronger official taxonomy source appears.",
+      "do_not_apply_reason": "Applying any sector value without official evidence would be speculative and violate data integrity policies."
+    },
+    {
+      "batch_index": 1,
+      "listing_key": "ZSE_ZW::OKZ",
+      "ticker": "OKZ",
+      "exchange": "ZSE_ZW",
+      "review_kind": "source_gap",
+      "classification": "source_gap",
+      "decision_candidate": "needs_official_evidence",
+      "safe_action": "needs_official_evidence",
+      "confidence": 0.1,
+      "evidence_needed": "Official industry sector classification from the Zimbabwe Stock Exchange or other authoritative source for OK ZIMBABWE LIMITED.",
+      "rationale": "The listing is covered by an implemented official venue source, but no canonical stock sector value is exposed or safely mappable. Per the confidence policy, keep blank until a stronger official taxonomy source appears.",
+      "do_not_apply_reason": "Applying any sector value without official evidence would be speculative and violate data integrity policies."
+    },
+    {
+      "batch_index": 1,
+      "listing_key": "ZSE_ZW::PROL",
+      "ticker": "PROL",
+      "exchange": "ZSE_ZW",
+      "review_kind": "source_gap",
+      "classification": "source_gap",
+      "decision_candidate": "needs_official_evidence",
+      "safe_action": "needs_official_evidence",
+      "confidence": 0.1,
+      "evidence_needed": "Official industry sector classification from the Zimbabwe Stock Exchange or other authoritative source for PROPLASTICS LIMITED.",
+      "rationale": "The listing is covered by an implemented official venue source, but no canonical stock sector value is exposed or safely mappable. Per the confidence policy, keep blank until a stronger official taxonomy source appears.",
+      "do_not_apply_reason": "Applying any sector value without official evidence would be speculative and violate data integrity policies."
+    },
+    {
+      "batch_index": 2,
+      "listing_key": "ZSE_ZW::RIOZ",
+      "ticker": "RIOZ",
+      "exchange": "ZSE_ZW",
+      "review_kind": "source_gap",
+      "classification": "source_gap",
+      "decision_candidate": "needs_official_evidence",
+      "safe_action": "needs_official_evidence",
+      "confidence": 0.2,
+      "evidence_needed": "Official stock sector classification for RIO ZIM LIMITED from Zimbabwe Stock Exchange or a regulatory body that maps sectors for listed companies.",
+      "rationale": "The listing is covered by the implemented venue source, but the venue source does not expose a canonical sector value. A stronger official taxonomy source is required to provide a mappable industry sector. Until then, stock_sector must remain blank per source gate policy.",
+      "do_not_apply_reason": "No official sector taxonomy value available; applying any sector would be speculative and violate the source gate 'Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.'"
+    },
+    {
+      "batch_index": 2,
+      "listing_key": "ZSE_ZW::SACL",
+      "ticker": "SACL",
+      "exchange": "ZSE_ZW",
+      "review_kind": "source_gap",
+      "classification": "source_gap",
+      "decision_candidate": "needs_official_evidence",
+      "safe_action": "needs_official_evidence",
+      "confidence": 0.2,
+      "evidence_needed": "Official stock sector classification for STAR AFRICA CORPORATION LIMITED from Zimbabwe Stock Exchange or a regulatory body that maps sectors for listed companies.",
+      "rationale": "The listing is covered by the implemented venue source, but the venue source does not expose a canonical sector value. A stronger official taxonomy source is required to provide a mappable industry sector. Until then, stock_sector must remain blank per source gate policy.",
+      "do_not_apply_reason": "No official sector taxonomy value available; applying any sector would be speculative and violate the source gate 'Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.'"
+    },
+    {
+      "batch_index": 2,
+      "listing_key": "ZSE_ZW::TANG",
+      "ticker": "TANG",
+      "exchange": "ZSE_ZW",
+      "review_kind": "source_gap",
+      "classification": "source_gap",
+      "decision_candidate": "needs_official_evidence",
+      "safe_action": "needs_official_evidence",
+      "confidence": 0.2,
+      "evidence_needed": "Official stock sector classification for TANGANDA TEA COMPANY LIMITED from Zimbabwe Stock Exchange or a regulatory body that maps sectors for listed companies.",
+      "rationale": "The listing is covered by the implemented venue source, but the venue source does not expose a canonical sector value. A stronger official taxonomy source is required to provide a mappable industry sector. Until then, stock_sector must remain blank per source gate policy.",
+      "do_not_apply_reason": "No official sector taxonomy value available; applying any sector would be speculative and violate the source gate 'Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.'"
+    },
+    {
+      "batch_index": 2,
+      "listing_key": "ZSE_ZW::TNCI",
+      "ticker": "TNCI",
+      "exchange": "ZSE_ZW",
+      "review_kind": "source_gap",
+      "classification": "source_gap",
+      "decision_candidate": "needs_official_evidence",
+      "safe_action": "needs_official_evidence",
+      "confidence": 0.2,
+      "evidence_needed": "Official stock sector classification for TN CYBERTECH INVESTMENTS HOLDINGS LIMITED from Zimbabwe Stock Exchange or a regulatory body that maps sectors for listed companies.",
+      "rationale": "The listing is covered by the implemented venue source, but the venue source does not expose a canonical sector value. A stronger official taxonomy source is required to provide a mappable industry sector. Until then, stock_sector must remain blank per source gate policy.",
+      "do_not_apply_reason": "No official sector taxonomy value available; applying any sector would be speculative and violate the source gate 'Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.'"
+    },
+    {
+      "batch_index": 2,
+      "listing_key": "ZSE_ZW::ZBFH",
+      "ticker": "ZBFH",
+      "exchange": "ZSE_ZW",
+      "review_kind": "source_gap",
+      "classification": "source_gap",
+      "decision_candidate": "needs_official_evidence",
+      "safe_action": "needs_official_evidence",
+      "confidence": 0.2,
+      "evidence_needed": "Official stock sector classification for ZB FINANCIAL HOLDINGS LIMITED from Zimbabwe Stock Exchange or a regulatory body that maps sectors for listed companies.",
+      "rationale": "The listing is covered by the implemented venue source, but the venue source does not expose a canonical sector value. A stronger official taxonomy source is required to provide a mappable industry sector. Until then, stock_sector must remain blank per source gate policy.",
+      "do_not_apply_reason": "No official sector taxonomy value available; applying any sector would be speculative and violate the source gate 'Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.'"
+    },
+    {
+      "batch_index": 3,
+      "listing_key": "ZSE_ZW::ZECO",
+      "ticker": "ZECO",
+      "exchange": "ZSE_ZW",
+      "review_kind": "source_gap",
+      "classification": "keep_source_gap",
+      "decision_candidate": "uncertain",
+      "safe_action": "needs_official_evidence",
+      "confidence": 0.1,
+      "evidence_needed": "Official industry taxonomy or sector classification from ZSE or an authoritative data provider for ZECO HOLDINGS LIMITED.",
+      "rationale": "The implemented official venue source does not expose a canonical stock_sector for ZECO. No mappable industry taxonomy is available. The field remains blank per the source gate policy.",
+      "do_not_apply_reason": "No applicable sector value; keep blank until stronger official taxonomy source appears."
+    },
+    {
+      "batch_index": 3,
+      "listing_key": "ZSE_ZW::ZIMP",
+      "ticker": "ZIMP",
+      "exchange": "ZSE_ZW",
+      "review_kind": "source_gap",
+      "classification": "keep_source_gap",
+      "decision_candidate": "uncertain",
+      "safe_action": "needs_official_evidence",
+      "confidence": 0.1,
+      "evidence_needed": "Official industry taxonomy or sector classification from ZSE or an authoritative data provider for ZIMBABWE NEWSPAPERS (1980) LIMITED.",
+      "rationale": "The implemented official venue source does not expose a canonical stock_sector for ZIMP. No mappable industry taxonomy is available. The field remains blank per the source gate policy.",
+      "do_not_apply_reason": "No applicable sector value; keep blank until stronger official taxonomy source appears."
+    },
+    {
+      "batch_index": 3,
+      "listing_key": "ZSE_ZW::ZIMR",
+      "ticker": "ZIMR",
+      "exchange": "ZSE_ZW",
+      "review_kind": "source_gap",
+      "classification": "keep_source_gap",
+      "decision_candidate": "uncertain",
+      "safe_action": "needs_official_evidence",
+      "confidence": 0.1,
+      "evidence_needed": "Official industry taxonomy or sector classification from ZSE or an authoritative data provider for ZIMRE HOLDINGS LIMITED.",
+      "rationale": "The implemented official venue source does not expose a canonical stock_sector for ZIMR. No mappable industry taxonomy is available. The field remains blank per the source gate policy.",
+      "do_not_apply_reason": "No applicable sector value; keep blank until stronger official taxonomy source appears."
+    },
+    {
+      "batch_index": 3,
+      "listing_key": "ZSE_ZW::ZSEH",
+      "ticker": "ZSEH",
+      "exchange": "ZSE_ZW",
+      "review_kind": "source_gap",
+      "classification": "keep_source_gap",
+      "decision_candidate": "uncertain",
+      "safe_action": "needs_official_evidence",
+      "confidence": 0.1,
+      "evidence_needed": "Official industry taxonomy or sector classification from ZSE or an authoritative data provider for ZIMBABWE STOCK EXCHANGE HOLDINGS LIMITED.",
+      "rationale": "The implemented official venue source does not expose a canonical stock_sector for ZSEH. No mappable industry taxonomy is available. The field remains blank per the source gate policy.",
+      "do_not_apply_reason": "No applicable sector value; keep blank until stronger official taxonomy source appears."
     }
   ],
   "errors": []
