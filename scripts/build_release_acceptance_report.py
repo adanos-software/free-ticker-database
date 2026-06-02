@@ -2937,6 +2937,86 @@ def evaluate_release_source_report_integrity(
     }
 
 
+DEEPSEEK_ALLOWED_SAFE_ACTIONS = {
+    "candidate_for_official_followup",
+    "likely_distinct_issuer_review",
+    "likely_same_issuer_review",
+    "needs_official_evidence",
+    "source_gap_accept",
+}
+
+
+def evaluate_deepseek_advisory_integrity(
+    review_summary: dict[str, Any],
+    batch_plan: dict[str, Any],
+) -> dict[str, Any]:
+    summary = review_summary.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    review_policy = str(review_summary.get("_meta", {}).get("policy", ""))
+    plan_policy = str(batch_plan.get("_meta", {}).get("policy", ""))
+    selected_batch = batch_plan.get("selected_batch", {})
+    if not isinstance(selected_batch, dict):
+        selected_batch = {}
+    queues = batch_plan.get("queues", [])
+    if not isinstance(queues, list):
+        queues = []
+    safe_actions = summary.get("safe_action_totals", {})
+    if not isinstance(safe_actions, dict):
+        safe_actions = {}
+
+    policy_missing_markers = [
+        marker
+        for marker in ("triage", "authorize", "data application")
+        if marker not in review_policy.lower() or marker not in plan_policy.lower()
+    ]
+    secret_policy = str(selected_batch.get("secret_policy", ""))
+    secret_policy_missing = not (
+        selected_batch.get("required_env") == "DEEPSEEK_API_KEY"
+        and "DEEPSEEK_API_KEY" in secret_policy
+        and "Never write" in secret_policy
+    )
+    invalid_safe_actions = sorted(set(safe_actions) - DEEPSEEK_ALLOWED_SAFE_ACTIONS)
+    queue_status_gaps = [
+        row.get("queue", "")
+        for row in queues
+        if row.get("review_coverage_status") != "complete"
+    ]
+    queue_unreviewed_gaps = {
+        row.get("queue", ""): row.get("unreviewed_unique_keys")
+        for row in queues
+        if int(row.get("unreviewed_unique_keys") or 0) != 0
+    }
+    selected_batch_open = bool(selected_batch.get("queue")) or int(selected_batch.get("rows") or 0) != 0
+    return {
+        "passed": (
+            not policy_missing_markers
+            and not secret_policy_missing
+            and int(summary.get("errors") or 0) == 0
+            and int(summary.get("duplicate_review_key_rows") or 0) == 0
+            and int(summary.get("blank_listing_key_rows") or 0) == 0
+            and not invalid_safe_actions
+            and not queue_status_gaps
+            and not queue_unreviewed_gaps
+            and not selected_batch_open
+        ),
+        "review_rows": int(summary.get("rows") or 0),
+        "errors": int(summary.get("errors") or 0),
+        "duplicate_review_key_rows": int(summary.get("duplicate_review_key_rows") or 0),
+        "blank_listing_key_rows": int(summary.get("blank_listing_key_rows") or 0),
+        "invalid_safe_actions": invalid_safe_actions,
+        "policy_missing_markers": policy_missing_markers,
+        "secret_policy_missing": secret_policy_missing,
+        "selected_batch": {
+            "queue": selected_batch.get("queue"),
+            "rows": int(selected_batch.get("rows") or 0),
+        },
+        "queue_status_gaps": queue_status_gaps,
+        "queue_unreviewed_gaps": queue_unreviewed_gaps,
+        "allowed_safe_actions": sorted(DEEPSEEK_ALLOWED_SAFE_ACTIONS),
+    }
+
+
 def evaluate_progress_markdown_traceability(
     reports: dict[str, dict[str, Any]] = PROGRESS_MARKDOWN_TRACEABILITY_REPORTS,
     *,
@@ -15695,6 +15775,8 @@ def build_payload() -> dict[str, Any]:
     baseline = load_json(REPORTS_DIR / "improvement_baseline.json")
     deltas = load_json(REPORTS_DIR / "improvement_deltas.json")
     campaigns = load_json(REPORTS_DIR / "improvement_campaigns.json")
+    deepseek_review_summary = load_json(REPORTS_DIR / "deepseek_review_summary.json")
+    deepseek_batch_plan = load_json(REPORTS_DIR / "deepseek_batch_plan.json")
     gates = gate_lookup(validation)
     criteria = {
         key: evaluate_gate_group(gates, names)
@@ -15703,6 +15785,10 @@ def build_payload() -> dict[str, Any]:
     criteria["release_source_report_integrity"] = evaluate_release_source_report_integrity(
         RELEASE_SOURCE_REPORTS,
         release_generated_at=generated_at,
+    )
+    criteria["deepseek_advisory_integrity"] = evaluate_deepseek_advisory_integrity(
+        deepseek_review_summary,
+        deepseek_batch_plan,
     )
     criteria["progress_markdown_traceability"] = evaluate_progress_markdown_traceability()
     criteria["adanos_detection_simulation"] = evaluate_adanos_detection_simulation(adanos_detection_simulation)

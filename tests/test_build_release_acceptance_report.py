@@ -55,6 +55,7 @@ from scripts.build_release_acceptance_report import (
     evaluate_adanos_detection_simulation,
     evaluate_campaign_review_policies,
     evaluate_campaign_reviewability,
+    evaluate_deepseek_advisory_integrity,
     campaign_status_rows,
     evaluate_next_review_batch_visibility,
     evaluate_next_review_command_safety_gate,
@@ -156,6 +157,81 @@ def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> N
     assert RELEASE_SOURCE_REPORTS["source_gap_classification"] == "data/reports/source_gap_classification.json"
     assert RELEASE_SOURCE_REPORTS["deepseek_review_summary"] == "data/reports/deepseek_review_summary.json"
     assert RELEASE_SOURCE_REPORTS["deepseek_batch_plan"] == "data/reports/deepseek_batch_plan.json"
+
+
+def test_evaluate_deepseek_advisory_integrity_accepts_drained_advisory_reports() -> None:
+    result = evaluate_deepseek_advisory_integrity(
+        {
+            "_meta": {
+                "policy": "DeepSeek review suggestions are triage only. They do not authorize data application.",
+            },
+            "summary": {
+                "rows": 2,
+                "errors": 0,
+                "duplicate_review_key_rows": 0,
+                "blank_listing_key_rows": 0,
+                "safe_action_totals": {"needs_official_evidence": 1, "source_gap_accept": 1},
+            },
+        },
+        {
+            "_meta": {
+                "policy": "This plan prepares DeepSeek advisory triage only. DeepSeek output must not authorize direct data application.",
+            },
+            "queues": [
+                {
+                    "queue": "source_gap",
+                    "review_coverage_status": "complete",
+                    "unreviewed_unique_keys": 0,
+                }
+            ],
+            "selected_batch": {
+                "queue": None,
+                "rows": 0,
+                "required_env": "DEEPSEEK_API_KEY",
+                "secret_policy": "Read the API key only from DEEPSEEK_API_KEY. Never write it to files.",
+            },
+        },
+    )
+
+    assert result["passed"] is True
+    assert result["review_rows"] == 2
+
+
+def test_evaluate_deepseek_advisory_integrity_rejects_direct_or_open_batches() -> None:
+    result = evaluate_deepseek_advisory_integrity(
+        {
+            "_meta": {"policy": "DeepSeek output."},
+            "summary": {
+                "rows": 2,
+                "errors": 1,
+                "duplicate_review_key_rows": 1,
+                "blank_listing_key_rows": 1,
+                "safe_action_totals": {"direct_apply": 1},
+            },
+        },
+        {
+            "_meta": {"policy": "DeepSeek output."},
+            "queues": [
+                {
+                    "queue": "source_gap",
+                    "review_coverage_status": "needs_deepseek_batch",
+                    "unreviewed_unique_keys": 3,
+                }
+            ],
+            "selected_batch": {
+                "queue": "source_gap",
+                "rows": 3,
+                "required_env": "DEEPSEEK_API_KEY",
+                "secret_policy": "",
+            },
+        },
+    )
+
+    assert result["passed"] is False
+    assert result["invalid_safe_actions"] == ["direct_apply"]
+    assert result["queue_status_gaps"] == ["source_gap"]
+    assert result["queue_unreviewed_gaps"] == {"source_gap": 3}
+    assert result["secret_policy_missing"] is True
 
 
 BASELINE_META_FIXTURE = {

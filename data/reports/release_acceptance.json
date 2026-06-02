@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T23:10:04Z",
+    "generated_at": "2026-06-02T23:15:38Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -30,12 +30,12 @@
   },
   "passed": true,
   "summary": {
-    "criteria": 41,
-    "passed_criteria": 41,
+    "criteria": 42,
+    "passed_criteria": 42,
     "failed_criteria": 0,
     "validation_failed_error_gates": 0
   },
-  "summary_context": "passed=true;criteria=41;passed_criteria=41;failed_criteria=0;validation_failed_error_gates=0",
+  "summary_context": "passed=true;criteria=42;passed_criteria=42;failed_criteria=0;validation_failed_error_gates=0",
   "criteria": {
     "no_invalid_isins": {
       "passed": true,
@@ -210,18 +210,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-02T23:10:04Z",
+      "release_generated_at": "2026-06-02T23:15:38Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-02T23:10:02Z"
+          "generated_at": "2026-06-02T23:15:36Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-02T23:10:01Z"
+          "generated_at": "2026-06-02T23:15:35Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -334,6 +334,29 @@
       "invalid_generated_at": {},
       "generated_after_release": {}
     },
+    "deepseek_advisory_integrity": {
+      "passed": true,
+      "review_rows": 26408,
+      "errors": 0,
+      "duplicate_review_key_rows": 0,
+      "blank_listing_key_rows": 0,
+      "invalid_safe_actions": [],
+      "policy_missing_markers": [],
+      "secret_policy_missing": false,
+      "selected_batch": {
+        "queue": null,
+        "rows": 0
+      },
+      "queue_status_gaps": [],
+      "queue_unreviewed_gaps": {},
+      "allowed_safe_actions": [
+        "candidate_for_official_followup",
+        "likely_distinct_issuer_review",
+        "likely_same_issuer_review",
+        "needs_official_evidence",
+        "source_gap_accept"
+      ]
+    },
     "progress_markdown_traceability": {
       "passed": true,
       "checked_reports": [
@@ -378,7 +401,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-02T23:10:01Z",
+      "generated_at": "2026-06-02T23:15:35Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
