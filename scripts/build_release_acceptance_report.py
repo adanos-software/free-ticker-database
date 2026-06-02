@@ -2953,7 +2953,10 @@ def evaluate_deepseek_advisory_integrity(
     summary = review_summary.get("summary", {})
     if not isinstance(summary, dict):
         summary = {}
-    review_policy = str(review_summary.get("_meta", {}).get("policy", ""))
+    review_meta = review_summary.get("_meta", {})
+    if not isinstance(review_meta, dict):
+        review_meta = {}
+    review_policy = str(review_meta.get("policy", ""))
     plan_policy = str(batch_plan.get("_meta", {}).get("policy", ""))
     selected_batch = batch_plan.get("selected_batch", {})
     if not isinstance(selected_batch, dict):
@@ -2992,6 +2995,9 @@ def evaluate_deepseek_advisory_integrity(
         "passed": (
             not policy_missing_markers
             and not secret_policy_missing
+            and int(summary.get("rows") or 0) > 0
+            and int(review_meta.get("raw_batches") or 0) > 0
+            and bool(review_meta.get("raw_responses_jsonl"))
             and int(summary.get("errors") or 0) == 0
             and int(summary.get("duplicate_review_key_rows") or 0) == 0
             and int(summary.get("blank_listing_key_rows") or 0) == 0
@@ -3001,6 +3007,8 @@ def evaluate_deepseek_advisory_integrity(
             and not selected_batch_open
         ),
         "review_rows": int(summary.get("rows") or 0),
+        "raw_batches": int(review_meta.get("raw_batches") or 0),
+        "raw_responses_jsonl": str(review_meta.get("raw_responses_jsonl", "")),
         "errors": int(summary.get("errors") or 0),
         "duplicate_review_key_rows": int(summary.get("duplicate_review_key_rows") or 0),
         "blank_listing_key_rows": int(summary.get("blank_listing_key_rows") or 0),

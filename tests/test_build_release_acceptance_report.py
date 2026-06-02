@@ -164,6 +164,8 @@ def test_evaluate_deepseek_advisory_integrity_accepts_drained_advisory_reports()
         {
             "_meta": {
                 "policy": "DeepSeek review suggestions are triage only. They do not authorize data application.",
+                "raw_batches": 1,
+                "raw_responses_jsonl": "data/deepseek_review_jobs/raw_responses.jsonl",
             },
             "summary": {
                 "rows": 2,
@@ -195,12 +197,14 @@ def test_evaluate_deepseek_advisory_integrity_accepts_drained_advisory_reports()
 
     assert result["passed"] is True
     assert result["review_rows"] == 2
+    assert result["raw_batches"] == 1
+    assert result["raw_responses_jsonl"] == "data/deepseek_review_jobs/raw_responses.jsonl"
 
 
 def test_evaluate_deepseek_advisory_integrity_rejects_direct_or_open_batches() -> None:
     result = evaluate_deepseek_advisory_integrity(
         {
-            "_meta": {"policy": "DeepSeek output."},
+            "_meta": {"policy": "DeepSeek output.", "raw_batches": 0},
             "summary": {
                 "rows": 2,
                 "errors": 1,

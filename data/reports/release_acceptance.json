@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T23:15:38Z",
+    "generated_at": "2026-06-02T23:21:00Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -210,18 +210,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-02T23:15:38Z",
+      "release_generated_at": "2026-06-02T23:21:00Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-02T23:15:36Z"
+          "generated_at": "2026-06-02T23:20:58Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-02T23:15:35Z"
+          "generated_at": "2026-06-02T23:20:57Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -337,6 +337,8 @@
     "deepseek_advisory_integrity": {
       "passed": true,
       "review_rows": 26408,
+      "raw_batches": 3293,
+      "raw_responses_jsonl": "data/deepseek_review_jobs/raw_responses.jsonl",
       "errors": 0,
       "duplicate_review_key_rows": 0,
       "blank_listing_key_rows": 0,
@@ -401,7 +403,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-02T23:15:35Z",
+      "generated_at": "2026-06-02T23:20:57Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
