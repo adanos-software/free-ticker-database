@@ -1,6 +1,6 @@
 # Improvement Baseline
 
-Generated: `2026-06-02T20:18:57Z`
+Generated: `2026-06-02T20:32:51Z`
 
 Baseline snapshot for future before/after deltas. It does not authorize inferred metadata changes.
 
@@ -155,8 +155,8 @@ Global context: `metric_count=16;tickers=61466;listing_keys=71043;source_gap_row
 | symbol_changes_review_rows | `271` |
 | ohlcv_plausibility_rows | `350` |
 | financialdata_supplement_rows | `557` |
-| financialdata_apply_eligibility_counts | `{"blocked_until_exchange_scope_explicitly_allowed": 91, "blocked_until_unique_official_isin_candidate_resolved": 163, "keep_absent_until_name_gated_official_isin_match": 172, "no_supplement_apply_existing_identifier_or_collision_guard": 196, "preserve_existing_reviewed_supplement_no_new_apply": 43}` |
-| financialdata_verification_evidence_required_counts | `{"existing_database_isin_confirms_no_supplement_needed_or_cross_listing_review": 16, "existing_listing_key_confirms_no_supplement_needed": 33, "existing_reviewed_supplement_retained_with_original_official_source": 43, "explicit_exchange_scope_decision_before_financialdata_discovery_use": 91, "identity_resolution_before_any_global_ticker_reuse": 147, "official_active_masterfile_or_registry_row_matching_financialdata_name_and_listing": 172, "single_official_active_listing_with_valid_isin_and_name_gate": 163}` |
+| financialdata_apply_eligibility_counts | `{"blocked_until_exchange_scope_explicitly_allowed": 91, "blocked_until_unique_official_isin_candidate_resolved": 163, "keep_absent_until_name_gated_official_isin_match": 169, "no_supplement_apply_existing_identifier_or_collision_guard": 199, "preserve_existing_reviewed_supplement_no_new_apply": 43}` |
+| financialdata_verification_evidence_required_counts | `{"existing_database_isin_confirms_no_supplement_needed_or_cross_listing_review": 16, "existing_listing_key_confirms_no_supplement_needed": 33, "existing_reviewed_supplement_retained_with_original_official_source": 43, "explicit_exchange_scope_decision_before_financialdata_discovery_use": 91, "identity_resolution_before_any_global_ticker_reuse": 150, "official_active_masterfile_or_registry_row_matching_financialdata_name_and_listing": 169, "single_official_active_listing_with_valid_isin_and_name_gate": 163}` |
 
 ### baseline
 

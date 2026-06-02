@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T20:18:58Z",
+    "generated_at": "2026-06-02T20:32:51Z",
     "rows": 10,
     "source_files": {
       "coverage_report": "data/reports/coverage_report.json",
@@ -9491,8 +9491,8 @@
         "financialdata_apply_eligibility_counts": {
           "blocked_until_exchange_scope_explicitly_allowed": 91,
           "blocked_until_unique_official_isin_candidate_resolved": 163,
-          "keep_absent_until_name_gated_official_isin_match": 172,
-          "no_supplement_apply_existing_identifier_or_collision_guard": 196,
+          "keep_absent_until_name_gated_official_isin_match": 169,
+          "no_supplement_apply_existing_identifier_or_collision_guard": 199,
           "preserve_existing_reviewed_supplement_no_new_apply": 43
         },
         "financialdata_verification_evidence_required_counts": {
@@ -9500,8 +9500,8 @@
           "existing_listing_key_confirms_no_supplement_needed": 33,
           "existing_reviewed_supplement_retained_with_original_official_source": 43,
           "explicit_exchange_scope_decision_before_financialdata_discovery_use": 91,
-          "identity_resolution_before_any_global_ticker_reuse": 147,
-          "official_active_masterfile_or_registry_row_matching_financialdata_name_and_listing": 172,
+          "identity_resolution_before_any_global_ticker_reuse": 150,
+          "official_active_masterfile_or_registry_row_matching_financialdata_name_and_listing": 169,
           "single_official_active_listing_with_valid_isin_and_name_gate": 163
         },
         "top_financialdata_supplement_review_batches": [
@@ -9561,7 +9561,7 @@
             "review_strategy": "keep_absent_until_official_name_gated_identifier_evidence_exists",
             "apply_eligibility": "keep_absent_until_name_gated_official_isin_match",
             "verification_evidence_required": "official_active_masterfile_or_registry_row_matching_financialdata_name_and_listing",
-            "rows": 49,
+            "rows": 46,
             "recommended_next_source": "Official active masterfile, registry, or issuer source matching FinancialData name and listing identity.",
             "source_gate": "Keep absent until an official active source satisfies exact name/listing identity and ISIN gates."
           },
@@ -9670,7 +9670,7 @@
         },
         {
           "path": "data/reports/financialdata_isin_supplements_review.json",
-          "generated_at": "2026-05-25T06:00:12Z",
+          "generated_at": "2026-06-02T20:31:19Z",
           "rows": 665
         }
       ],
@@ -9692,13 +9692,13 @@
                 "delta": 0
               },
               "keep_absent_until_name_gated_official_isin_match": {
-                "baseline": 172,
-                "current": 172,
+                "baseline": 169,
+                "current": 169,
                 "delta": 0
               },
               "no_supplement_apply_existing_identifier_or_collision_guard": {
-                "baseline": 196,
-                "current": 196,
+                "baseline": 199,
+                "current": 199,
                 "delta": 0
               },
               "preserve_existing_reviewed_supplement_no_new_apply": {
@@ -9736,13 +9736,13 @@
                 "delta": 0
               },
               "identity_resolution_before_any_global_ticker_reuse": {
-                "baseline": 147,
-                "current": 147,
+                "baseline": 150,
+                "current": 150,
                 "delta": 0
               },
               "official_active_masterfile_or_registry_row_matching_financialdata_name_and_listing": {
-                "baseline": 172,
-                "current": 172,
+                "baseline": 169,
+                "current": 169,
                 "delta": 0
               },
               "single_official_active_listing_with_valid_isin_and_name_gate": {
@@ -10473,7 +10473,7 @@
               "review_strategy": "keep_absent_until_official_name_gated_identifier_evidence_exists",
               "apply_eligibility": "keep_absent_until_name_gated_official_isin_match",
               "verification_evidence_required": "official_active_masterfile_or_registry_row_matching_financialdata_name_and_listing",
-              "rows": 49,
+              "rows": 46,
               "recommended_next_source": "Official active masterfile, registry, or issuer source matching FinancialData name and listing identity.",
               "source_gate": "Keep absent until an official active source satisfies exact name/listing identity and ISIN gates."
             },
@@ -10655,12 +10655,12 @@
       "artifacts": [
         {
           "path": "data/reports/improvement_baseline.json",
-          "generated_at": "2026-06-02T20:18:57Z",
+          "generated_at": "2026-06-02T20:32:51Z",
           "rows": 0
         },
         {
           "path": "data/reports/improvement_deltas.json",
-          "generated_at": "2026-06-02T20:18:58Z",
+          "generated_at": "2026-06-02T20:32:51Z",
           "rows": 0
         }
       ],
@@ -10758,7 +10758,7 @@
       "delta_evidence": {
         "status": "baseline_only",
         "known_deltas": {
-          "baseline_generated_at": "2026-06-02T20:18:57Z",
+          "baseline_generated_at": "2026-06-02T20:32:51Z",
           "future_delta_reference": "data/reports/improvement_baseline.json",
           "current_delta_report": "data/reports/improvement_deltas.json"
         },
