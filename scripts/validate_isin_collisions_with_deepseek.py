@@ -138,11 +138,20 @@ def build_prompt(groups: list[dict[str, Any]]) -> str:
 
 
 def _as_key_list(value: Any) -> list[str]:
+    keys: list[str] = []
+    seen: set[str] = set()
     if isinstance(value, list):
-        return [str(item).strip() for item in value if str(item).strip()]
-    if isinstance(value, str) and value.strip():
-        return [value.strip()]
-    return []
+        candidates = [str(item).strip() for item in value]
+    elif isinstance(value, str):
+        candidates = [value.strip()]
+    else:
+        candidates = []
+    for key in candidates:
+        if not key or key in seen:
+            continue
+        keys.append(key)
+        seen.add(key)
+    return keys
 
 
 def normalize_verdict(raw: dict[str, Any], group: dict[str, Any]) -> dict[str, Any]:
