@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T02:40:07Z",
+    "generated_at": "2026-06-02T02:42:42Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -207,38 +207,38 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-02T02:40:07Z",
+      "release_generated_at": "2026-06-02T02:42:42Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-02T02:40:05Z"
+          "generated_at": "2026-06-02T02:42:39Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-02T02:40:04Z"
+          "generated_at": "2026-06-02T02:42:38Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
           "exists": true,
-          "generated_at": "2026-06-02T02:39:47Z"
+          "generated_at": "2026-06-02T02:42:16Z"
         },
         "improvement_deltas": {
           "path": "data/reports/improvement_deltas.json",
           "exists": true,
-          "generated_at": "2026-06-02T02:39:48Z"
+          "generated_at": "2026-06-02T02:42:16Z"
         },
         "improvement_campaigns": {
           "path": "data/reports/improvement_campaigns.json",
           "exists": true,
-          "generated_at": "2026-06-02T02:39:48Z"
+          "generated_at": "2026-06-02T02:42:16Z"
         },
         "source_refresh_queue": {
           "path": "data/reports/source_refresh_queue.json",
           "exists": true,
-          "generated_at": "2026-06-02T02:39:05Z"
+          "generated_at": "2026-06-02T02:42:16Z"
         },
         "symbol_changes_review": {
           "path": "data/reports/symbol_changes_review.json",
@@ -360,7 +360,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-02T02:40:04Z",
+      "generated_at": "2026-06-02T02:42:38Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -456,28 +456,28 @@
         }
       },
       "source_freshness_status_totals": {
-        "old": 135,
-        "fresh": 1
+        "fresh": 3,
+        "old": 133
       },
       "source_age_bucket_totals": {
-        "age_168_336h": 43,
+        "age_0_48h": 3,
         "age_over_336h": 92,
-        "age_0_48h": 1
+        "age_168_336h": 41
       },
       "source_refresh_priority_totals": {
-        "P1": 40,
+        "P4": 3,
         "P2": 95,
-        "P4": 1
+        "P1": 38
       },
       "source_refresh_queue_totals": {
-        "refresh_official_exchange_directory_before_identity_or_collision_work": 40,
+        "fresh_no_refresh_needed": 3,
         "refresh_official_subset_before_gap_enrichment": 88,
-        "restore_or_replace_unavailable_source_before_data_fill": 7,
-        "fresh_no_refresh_needed": 1
+        "refresh_official_exchange_directory_before_identity_or_collision_work": 38,
+        "restore_or_replace_unavailable_source_before_data_fill": 7
       },
       "source_refresh_queue_scope_totals": {
-        "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "exchange_directory": 40
+        "fresh_no_refresh_needed": {
+          "exchange_directory": 3
         },
         "refresh_official_subset_before_gap_enrichment": {
           "listed_companies_subset": 80,
@@ -485,83 +485,83 @@
           "interlisted_subset": 1,
           "security_identifier_registry_subset": 1
         },
+        "refresh_official_exchange_directory_before_identity_or_collision_work": {
+          "exchange_directory": 38
+        },
         "restore_or_replace_unavailable_source_before_data_fill": {
           "listed_companies_subset": 7
-        },
-        "fresh_no_refresh_needed": {
-          "exchange_directory": 1
         }
       },
       "source_refresh_queue_mode_totals": {
-        "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "network": 40
+        "fresh_no_refresh_needed": {
+          "network": 3
         },
         "refresh_official_subset_before_gap_enrichment": {
           "cache": 21,
           "network": 67
         },
+        "refresh_official_exchange_directory_before_identity_or_collision_work": {
+          "network": 38
+        },
         "restore_or_replace_unavailable_source_before_data_fill": {
           "unavailable": 7
-        },
-        "fresh_no_refresh_needed": {
-          "network": 1
         }
       },
       "source_refresh_queue_priority_totals": {
-        "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "P1": 40
+        "fresh_no_refresh_needed": {
+          "P4": 3
         },
         "refresh_official_subset_before_gap_enrichment": {
           "P2": 88
         },
+        "refresh_official_exchange_directory_before_identity_or_collision_work": {
+          "P1": 38
+        },
         "restore_or_replace_unavailable_source_before_data_fill": {
           "P2": 7
-        },
-        "fresh_no_refresh_needed": {
-          "P4": 1
         }
       },
       "source_refresh_queue_age_bucket_totals": {
-        "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "age_168_336h": 40
+        "fresh_no_refresh_needed": {
+          "age_0_48h": 3
         },
         "refresh_official_subset_before_gap_enrichment": {
           "age_over_336h": 85,
           "age_168_336h": 3
         },
+        "refresh_official_exchange_directory_before_identity_or_collision_work": {
+          "age_168_336h": 38
+        },
         "restore_or_replace_unavailable_source_before_data_fill": {
           "age_over_336h": 7
-        },
-        "fresh_no_refresh_needed": {
-          "age_0_48h": 1
         }
       },
       "source_refresh_queue_review_strategy_totals": {
-        "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "refresh_official_exchange_directory_before_identity_or_collision_work": 40
+        "fresh_no_refresh_needed": {
+          "no_refresh_required": 3
         },
         "refresh_official_subset_before_gap_enrichment": {
           "refresh_official_subset_before_gap_enrichment": 88
         },
+        "refresh_official_exchange_directory_before_identity_or_collision_work": {
+          "refresh_official_exchange_directory_before_identity_or_collision_work": 38
+        },
         "restore_or_replace_unavailable_source_before_data_fill": {
           "restore_or_replace_unavailable_source_before_data_fill": 7
-        },
-        "fresh_no_refresh_needed": {
-          "no_refresh_required": 1
         }
       },
       "source_refresh_queue_evidence_required_totals": {
-        "refresh_official_exchange_directory_before_identity_or_collision_work": {
-          "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count": 40
+        "fresh_no_refresh_needed": {
+          "fresh_source_generated_at_with_age_under_48h": 3
         },
         "refresh_official_subset_before_gap_enrichment": {
           "official_subset_refresh_artifact_with_generated_at_scope_and_row_count": 88
         },
+        "refresh_official_exchange_directory_before_identity_or_collision_work": {
+          "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count": 38
+        },
         "restore_or_replace_unavailable_source_before_data_fill": {
           "source_restored_or_replaced_with_official_or_documented_unavailable_decision": 7
-        },
-        "fresh_no_refresh_needed": {
-          "fresh_source_generated_at_with_age_under_48h": 1
         }
       }
     },

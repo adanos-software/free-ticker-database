@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 79387,
-    "matched": 51287,
-    "collisions": 11144,
-    "missing": 16956
+    "official_symbols": 79441,
+    "matched": 51285,
+    "collisions": 11152,
+    "missing": 17004
   },
   "exchanges": [
     {
@@ -320,10 +320,10 @@
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1326,
+      "official_symbols": 1336,
       "matched": 1180,
       "collisions": 20,
-      "missing": 126,
+      "missing": 136,
       "collision_examples": [
         {
           "ticker": "ARKI",
@@ -2490,10 +2490,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5491,
+      "official_symbols": 5524,
       "matched": 4490,
-      "collisions": 73,
-      "missing": 928,
+      "collisions": 80,
+      "missing": 954,
       "collision_examples": [
         {
           "ticker": "ACAA",
@@ -2501,6 +2501,14 @@
           "target_exchange": "NASDAQ",
           "existing_exchanges": [
             "TSX"
+          ]
+        },
+        {
+          "ticker": "ACGC",
+          "name": "ACP Holdings Acquisition Corp. - Class A Ordinary Shares",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "EGX"
           ]
         },
         {
@@ -2566,14 +2574,6 @@
           "existing_exchanges": [
             "XETRA"
           ]
-        },
-        {
-          "ticker": "ARCI",
-          "name": "Archimedes Tech SPAC Partners III Co. - Ordinary Share",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "LSE"
-          ]
         }
       ],
       "missing_examples": [
@@ -2618,13 +2618,13 @@
           "exchange": "NASDAQ"
         },
         {
-          "ticker": "AACPU",
-          "name": "Apogee Acquisition Corp - Units",
+          "ticker": "AACP",
+          "name": "Apogee Acquisition Corp - Class A Ordinary Shares",
           "exchange": "NASDAQ"
         },
         {
-          "ticker": "ABLVW",
-          "name": "Able View Global Inc. - Warrant",
+          "ticker": "AACPR",
+          "name": "Apogee Acquisition Corp - Rights",
           "exchange": "NASDAQ"
         }
       ]
@@ -3063,10 +3063,10 @@
     },
     {
       "exchange": "NYSE",
-      "official_symbols": 3867,
+      "official_symbols": 3872,
       "matched": 2041,
       "collisions": 533,
-      "missing": 1293,
+      "missing": 1298,
       "collision_examples": [
         {
           "ticker": "ABX",
@@ -3204,10 +3204,10 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2640,
+      "official_symbols": 2646,
       "matched": 2567,
-      "collisions": 24,
-      "missing": 49,
+      "collisions": 25,
+      "missing": 54,
       "collision_examples": [
         {
           "ticker": "BAR",
@@ -3302,8 +3302,18 @@
           "exchange": "NYSE ARCA"
         },
         {
+          "ticker": "ADDS",
+          "name": "Hedgeye Index Adds ETF",
+          "exchange": "NYSE ARCA"
+        },
+        {
           "ticker": "BITW",
           "name": "Common Shares of Beneficial Interest",
+          "exchange": "NYSE ARCA"
+        },
+        {
+          "ticker": "BTCU",
+          "name": "Direxion Daily Bitcoin Bull 2X ETF",
           "exchange": "NYSE ARCA"
         },
         {
@@ -3330,25 +3340,15 @@
           "ticker": "CVSM",
           "name": "CresAlta Small and Mid-Cap ETF",
           "exchange": "NYSE ARCA"
-        },
-        {
-          "ticker": "DLUX",
-          "name": "DoubleLine Ultrashort Income ETF",
-          "exchange": "NYSE ARCA"
-        },
-        {
-          "ticker": "DPRE",
-          "name": "Virtus Duff & Phelps Real Estate Income ETF",
-          "exchange": "NYSE ARCA"
         }
       ]
     },
     {
       "exchange": "NYSE MKT",
       "official_symbols": 313,
-      "matched": 231,
+      "matched": 229,
       "collisions": 23,
-      "missing": 59,
+      "missing": 61,
       "collision_examples": [
         {
           "ticker": "AEF",
@@ -3443,6 +3443,11 @@
           "exchange": "NYSE MKT"
         },
         {
+          "ticker": "AZUL",
+          "name": "Azul S.A. American Depositary Shares, each representing two (2) Common Shares",
+          "exchange": "NYSE MKT"
+        },
+        {
           "ticker": "BCV$A",
           "name": "Bancroft Fund Limited 5.375% Series A Cumulative Preferred Shares",
           "exchange": "NYSE MKT"
@@ -3475,11 +3480,6 @@
         {
           "ticker": "EAD",
           "name": "Allspring Income Opportunities Fund Common Shares",
-          "exchange": "NYSE MKT"
-        },
-        {
-          "ticker": "ECF$A",
-          "name": "Ellsworth Growth and Income Fund Ltd. 5.25% Series A Cumulative Preferred Shares (Liquidation Preference $25.00 per share)",
           "exchange": "NYSE MKT"
         }
       ]
