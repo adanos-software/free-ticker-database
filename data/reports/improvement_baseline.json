@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T03:24:19Z",
+    "generated_at": "2026-06-02T03:26:39Z",
     "purpose": "Baseline snapshot for future campaign before/after deltas. It is not a data-fill source.",
     "source_files": {
       "coverage_report": "data/reports/coverage_report.json",
@@ -58,17 +58,17 @@
     "stock_sector_coverage": 43311,
     "etf_category_coverage": 15453,
     "figi_coverage": 64316,
-    "official_masterfile_matches": 50982,
-    "official_masterfile_collisions": 11159,
-    "official_masterfile_missing": 16715,
+    "official_masterfile_matches": 50981,
+    "official_masterfile_collisions": 11170,
+    "official_masterfile_missing": 16736,
     "source_gap_rows": 3548,
     "entry_quality_warn_rows": 222,
     "entry_quality_source_gap_rows": 7436,
     "entry_quality_quarantine_rows": 0,
     "validation_failed_error_gates": 0,
     "source_freshness_status_totals": {
-      "fresh": 18,
-      "old": 118
+      "fresh": 19,
+      "old": 117
     }
   },
   "campaign_baseline": {
@@ -159,32 +159,32 @@
     "freshness": {
       "source_count": 136,
       "source_freshness_status_totals": {
-        "fresh": 18,
-        "old": 118
+        "fresh": 19,
+        "old": 117
       },
       "source_refresh_priority_totals": {
         "P1": 25,
-        "P2": 93,
-        "P4": 18
+        "P2": 92,
+        "P4": 19
       },
       "source_refresh_queue_priority_totals": {
         "fresh_no_refresh_needed": {
-          "P4": 18
+          "P4": 19
         },
         "refresh_official_exchange_directory_before_identity_or_collision_work": {
           "P1": 25
         },
         "refresh_official_subset_before_gap_enrichment": {
-          "P2": 86
+          "P2": 85
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
           "P2": 7
         }
       },
       "source_refresh_action_totals": {
-        "no_refresh_needed": 18,
+        "no_refresh_needed": 19,
         "refresh_official_exchange_directory_before_identity_or_collision_work": 25,
-        "refresh_official_subset_before_gap_enrichment": 86,
+        "refresh_official_subset_before_gap_enrichment": 85,
         "restore_or_replace_unavailable_source_before_data_fill": 7
       },
       "old_official_exchange_directory_count": 25,
@@ -417,9 +417,9 @@
       "tickers": 314,
       "isin_coverage": 310,
       "sector_coverage": 226,
-      "masterfile_matches": 239,
-      "masterfile_collisions": 301,
-      "masterfile_missing": 41,
+      "masterfile_matches": 238,
+      "masterfile_collisions": 300,
+      "masterfile_missing": 45,
       "source_gap_rows": 26,
       "entry_quality_warn_rows": 0,
       "entry_quality_source_gap_rows": 96,
@@ -706,8 +706,8 @@
       "isin_coverage": 972,
       "sector_coverage": 755,
       "masterfile_matches": 935,
-      "masterfile_collisions": 2251,
-      "masterfile_missing": 1206,
+      "masterfile_collisions": 2263,
+      "masterfile_missing": 1223,
       "source_gap_rows": 136,
       "entry_quality_warn_rows": 0,
       "entry_quality_source_gap_rows": 150,
