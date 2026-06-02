@@ -1,6 +1,6 @@
 # Improvement Baseline
 
-Generated: `2026-06-02T05:10:33Z`
+Generated: `2026-06-02T19:01:34Z`
 
 Baseline snapshot for future before/after deltas. It does not authorize inferred metadata changes.
 
@@ -51,8 +51,8 @@ Global context: `metric_count=16;tickers=61466;listing_keys=71043;source_gap_row
 
 | Metric | Value |
 |---|---:|
-| baseline_context | `campaign_key=otc;metric_count=3;nested_metric_count=0;numeric_row_total=11902` |
-| scope_review_rows | `11056` |
+| baseline_context | `campaign_key=otc;metric_count=3;nested_metric_count=0;numeric_row_total=11900` |
+| scope_review_rows | `11054` |
 | accepted_source_gap_rows | `846` |
 | drop_override_rows_still_present | `0` |
 

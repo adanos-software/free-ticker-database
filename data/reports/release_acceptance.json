@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T18:55:38Z",
+    "generated_at": "2026-06-02T19:01:55Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -207,33 +207,33 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-02T18:55:38Z",
+      "release_generated_at": "2026-06-02T19:01:55Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-02T18:55:36Z"
+          "generated_at": "2026-06-02T19:01:52Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-02T18:55:35Z"
+          "generated_at": "2026-06-02T19:01:52Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
           "exists": true,
-          "generated_at": "2026-06-02T05:10:33Z"
+          "generated_at": "2026-06-02T19:01:34Z"
         },
         "improvement_deltas": {
           "path": "data/reports/improvement_deltas.json",
           "exists": true,
-          "generated_at": "2026-06-02T18:54:30Z"
+          "generated_at": "2026-06-02T19:01:34Z"
         },
         "improvement_campaigns": {
           "path": "data/reports/improvement_campaigns.json",
           "exists": true,
-          "generated_at": "2026-06-02T18:54:46Z"
+          "generated_at": "2026-06-02T19:01:34Z"
         },
         "source_refresh_queue": {
           "path": "data/reports/source_refresh_queue.json",
@@ -263,7 +263,7 @@
         "otc_scope_review": {
           "path": "data/reports/otc_scope_review.json",
           "exists": true,
-          "generated_at": "2026-05-25T12:54:46Z"
+          "generated_at": "2026-06-02T18:59:53Z"
         },
         "canada_residual_review": {
           "path": "data/reports/canada_residual_review.json",
@@ -360,7 +360,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-02T18:55:35Z",
+      "generated_at": "2026-06-02T19:01:52Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -804,7 +804,7 @@
     },
     "otc_scope_gate": {
       "passed": true,
-      "rows": 11056,
+      "rows": 11054,
       "missing_summary_keys": [],
       "row_count_mismatch": {},
       "row_gaps": [],

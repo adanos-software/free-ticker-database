@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T18:54:46Z",
+    "generated_at": "2026-06-02T19:01:34Z",
     "rows": 10,
     "source_files": {
       "coverage_report": "data/reports/coverage_report.json",
@@ -1374,80 +1374,80 @@
       "campaign_key": "otc",
       "status": "scoped_as_extended_with_source_gaps_documented",
       "evidence": {
-        "otc_review_rows": 11056,
+        "otc_review_rows": 11054,
         "source_gap_rows": 846,
         "drop_override_rows_still_present": 0,
         "otc_review_decision_active_name_mismatch_rows": 0,
-        "otc_name_mismatch_unreviewed_active_rows": 146,
+        "otc_name_mismatch_unreviewed_active_rows": 148,
         "otc_review_decision_resolution_totals": {
-          "pending_active_name_mismatch_review": 146,
+          "pending_active_name_mismatch_review": 148,
           "reviewed_decision_suppresses_current_listing_warning": 26
         },
         "otc_review_decision_current_listing_suppressed_rows": 26,
         "otc_review_decision_not_current_scope_rows": 0,
         "otc_review_decision_stale_rows": 26,
         "review_bucket_totals": {
-          "clean_extended_otc_listing": 7324,
+          "clean_extended_otc_listing": 7271,
           "documented_otc_category_source_gap": 29,
-          "documented_otc_sector_source_gap": 792,
-          "official_name_mismatch_review_first": 146,
-          "otc_quality_source_gap_review": 2765
+          "documented_otc_sector_source_gap": 794,
+          "official_name_mismatch_review_first": 148,
+          "otc_quality_source_gap_review": 2812
         },
         "review_bucket_asset_type_totals": {
           "clean_extended_otc_listing": {
             "ETF": 142,
-            "Stock": 7182
+            "Stock": 7129
           },
           "documented_otc_category_source_gap": {
             "ETF": 29
           },
           "documented_otc_sector_source_gap": {
-            "Stock": 792
+            "Stock": 794
           },
           "official_name_mismatch_review_first": {
             "ETF": 2,
-            "Stock": 144
+            "Stock": 146
           },
           "otc_quality_source_gap_review": {
             "ETF": 49,
-            "Stock": 2716
+            "Stock": 2763
           }
         },
         "review_bucket_metadata_gate_totals": {
           "clean_extended_otc_listing": {
-            "no_metadata_enrichment_needed": 7324
+            "no_metadata_enrichment_needed": 7271
           },
           "documented_otc_category_source_gap": {
             "reviewed_product_category_source_required_keep_blank": 29
           },
           "documented_otc_sector_source_gap": {
-            "reviewed_issuer_sector_source_required_keep_blank": 792
+            "reviewed_issuer_sector_source_required_keep_blank": 794
           },
           "official_name_mismatch_review_first": {
-            "otc_name_mismatch_review_required_before_name_or_metadata_changes": 146
+            "otc_name_mismatch_review_required_before_name_or_metadata_changes": 148
           },
           "otc_quality_source_gap_review": {
-            "source_gap_review_required_before_enrichment": 2765
+            "source_gap_review_required_before_enrichment": 2812
           }
         },
         "review_priority_totals": {
-          "P2": 146,
-          "P3": 3586,
-          "P4": 7324
+          "P2": 148,
+          "P3": 3635,
+          "P4": 7271
         },
         "scope_review_strategy_totals": {
           "keep_category_blank_until_reviewed_product_taxonomy_source": 29,
-          "keep_sector_blank_until_reviewed_issuer_sector_source": 792,
-          "no_scope_or_metadata_action_required": 7324,
-          "resolve_listing_keyed_name_mismatch_before_metadata_work": 146,
-          "review_quality_source_gap_before_metadata_work": 2765
+          "keep_sector_blank_until_reviewed_issuer_sector_source": 794,
+          "no_scope_or_metadata_action_required": 7271,
+          "resolve_listing_keyed_name_mismatch_before_metadata_work": 148,
+          "review_quality_source_gap_before_metadata_work": 2812
         },
         "scope_verification_evidence_required_totals": {
-          "current_pass_status_and_extended_scope_policy_no_metadata_action": 7324,
-          "reviewed_issuer_sector_source_with_exact_listing_or_keep_blank_decision": 792,
-          "reviewed_otc_name_mismatch_decision_before_name_or_metadata_change": 146,
+          "current_pass_status_and_extended_scope_policy_no_metadata_action": 7271,
+          "reviewed_issuer_sector_source_with_exact_listing_or_keep_blank_decision": 794,
+          "reviewed_otc_name_mismatch_decision_before_name_or_metadata_change": 148,
           "reviewed_product_taxonomy_source_with_exact_listing_or_keep_blank_decision": 29,
-          "source_gap_review_or_reviewed_source_before_metadata_change": 2765
+          "source_gap_review_or_reviewed_source_before_metadata_change": 2812
         },
         "top_otc_scope_review_batches": [
           {
@@ -1456,7 +1456,7 @@
             "asset_type": "Stock",
             "quality_status": "pass",
             "metadata_enrichment_gate": "no_metadata_enrichment_needed",
-            "rows": 7182,
+            "rows": 7129,
             "review_strategy": "no_scope_or_metadata_action_required",
             "verification_evidence_required": "current_pass_status_and_extended_scope_policy_no_metadata_action",
             "recommended_next_source": "No additional source required unless a future metadata change is proposed.",
@@ -1468,7 +1468,7 @@
             "asset_type": "Stock",
             "quality_status": "source_gap",
             "metadata_enrichment_gate": "source_gap_review_required_before_enrichment",
-            "rows": 2716,
+            "rows": 2763,
             "review_strategy": "review_quality_source_gap_before_metadata_work",
             "verification_evidence_required": "source_gap_review_or_reviewed_source_before_metadata_change",
             "recommended_next_source": "Entry-quality source-gap artifact and stronger OTC Markets, issuer, SEC, or registry evidence.",
@@ -1480,7 +1480,7 @@
             "asset_type": "Stock",
             "quality_status": "pass",
             "metadata_enrichment_gate": "reviewed_issuer_sector_source_required_keep_blank",
-            "rows": 473,
+            "rows": 470,
             "review_strategy": "keep_sector_blank_until_reviewed_issuer_sector_source",
             "verification_evidence_required": "reviewed_issuer_sector_source_with_exact_listing_or_keep_blank_decision",
             "recommended_next_source": "SEC SIC, issuer filings, OTC Markets profile, or reviewed secondary company profile.",
@@ -1492,7 +1492,7 @@
             "asset_type": "Stock",
             "quality_status": "source_gap",
             "metadata_enrichment_gate": "reviewed_issuer_sector_source_required_keep_blank",
-            "rows": 319,
+            "rows": 324,
             "review_strategy": "keep_sector_blank_until_reviewed_issuer_sector_source",
             "verification_evidence_required": "reviewed_issuer_sector_source_with_exact_listing_or_keep_blank_decision",
             "recommended_next_source": "SEC SIC, issuer filings, OTC Markets profile, or reviewed secondary company profile.",
@@ -1504,7 +1504,7 @@
             "asset_type": "Stock",
             "quality_status": "warn",
             "metadata_enrichment_gate": "otc_name_mismatch_review_required_before_name_or_metadata_changes",
-            "rows": 144,
+            "rows": 146,
             "review_strategy": "resolve_listing_keyed_name_mismatch_before_metadata_work",
             "verification_evidence_required": "reviewed_otc_name_mismatch_decision_before_name_or_metadata_change",
             "recommended_next_source": "OTC name mismatch review, OTC Markets profile, SEC/issuer filing, or ISIN-anchored issuer history.",
@@ -1576,14 +1576,14 @@
         "otc_core_exclusion_candidate_metadata_gate_totals": {},
         "otc_core_exclusion_candidate_review_examples": [],
         "scope_apply_eligibility_totals": {
-          "already_extended_no_scope_change_required": 11056
+          "already_extended_no_scope_change_required": 11054
         },
         "otc_scope_completion": {
           "status": "complete_extended_scope_no_core_candidates",
-          "rows": 11056,
-          "extended_otc_rows": 11056,
-          "otc_listing_scope_reason_rows": 11056,
-          "already_extended_scope_decision_rows": 11056,
+          "rows": 11054,
+          "extended_otc_rows": 11054,
+          "otc_listing_scope_reason_rows": 11054,
+          "already_extended_scope_decision_rows": 11054,
           "core_exclusion_candidate_rows": 0,
           "unexpected_core_scope_rows": 0,
           "blocked_scope_decision_rows": 0,
@@ -1593,22 +1593,22 @@
         },
         "post_scope_metadata_backlog": {
           "status": "metadata_review_backlog_open",
-          "rows": 3732,
+          "rows": 3783,
           "metadata_enrichment_authorized": false,
           "scope_blocked_rows": 0,
           "source_gate": "Post-scope OTC metadata work remains blocked unless each row has listing-keyed OTC Markets, issuer, SEC, registry, or reviewed fallback evidence; no ticker-only enrichment is allowed."
         },
         "post_scope_metadata_backlog_bucket_totals": {
           "documented_otc_category_source_gap": 29,
-          "documented_otc_sector_source_gap": 792,
-          "official_name_mismatch_review_first": 146,
-          "otc_quality_source_gap_review": 2765
+          "documented_otc_sector_source_gap": 794,
+          "official_name_mismatch_review_first": 148,
+          "otc_quality_source_gap_review": 2812
         },
         "post_scope_metadata_backlog_gate_totals": {
-          "otc_name_mismatch_review_required_before_name_or_metadata_changes": 146,
-          "reviewed_issuer_sector_source_required_keep_blank": 792,
+          "otc_name_mismatch_review_required_before_name_or_metadata_changes": 148,
+          "reviewed_issuer_sector_source_required_keep_blank": 794,
           "reviewed_product_category_source_required_keep_blank": 29,
-          "source_gap_review_required_before_enrichment": 2765
+          "source_gap_review_required_before_enrichment": 2812
         },
         "post_scope_metadata_backlog_examples": [
           {
@@ -1664,10 +1664,10 @@
             "source_gate": "No canonical name or metadata change until the name mismatch has a reviewed listing-keyed decision."
           },
           {
-            "listing_key": "OTC::AKOM",
-            "ticker": "AKOM",
+            "listing_key": "OTC::AMFN",
+            "ticker": "AMFN",
             "asset_type": "Stock",
-            "name": "Aerkomm Inc",
+            "name": "Renewal Fuels, Inc.",
             "review_bucket": "official_name_mismatch_review_first",
             "quality_status": "warn",
             "metadata_enrichment_gate": "otc_name_mismatch_review_required_before_name_or_metadata_changes",
@@ -1872,19 +1872,6 @@
             "source_gate": "No canonical name or metadata change until the name mismatch has a reviewed listing-keyed decision."
           },
           {
-            "listing_key": "OTC::AWSL",
-            "ticker": "AWSL",
-            "asset_type": "Stock",
-            "name": "Atlantic Wind & Solar Inc",
-            "review_bucket": "official_name_mismatch_review_first",
-            "quality_status": "warn",
-            "metadata_enrichment_gate": "otc_name_mismatch_review_required_before_name_or_metadata_changes",
-            "review_strategy": "resolve_listing_keyed_name_mismatch_before_metadata_work",
-            "verification_evidence_required": "reviewed_otc_name_mismatch_decision_before_name_or_metadata_change",
-            "recommended_next_source": "OTC name mismatch review, OTC Markets profile, SEC/issuer filing, or ISIN-anchored issuer history.",
-            "source_gate": "No canonical name or metadata change until the name mismatch has a reviewed listing-keyed decision."
-          },
-          {
             "listing_key": "OTC::AXXA",
             "ticker": "AXXA",
             "asset_type": "Stock",
@@ -1935,14 +1922,27 @@
             "verification_evidence_required": "reviewed_otc_name_mismatch_decision_before_name_or_metadata_change",
             "recommended_next_source": "OTC name mismatch review, OTC Markets profile, SEC/issuer filing, or ISIN-anchored issuer history.",
             "source_gate": "No canonical name or metadata change until the name mismatch has a reviewed listing-keyed decision."
+          },
+          {
+            "listing_key": "OTC::BCII",
+            "ticker": "BCII",
+            "asset_type": "Stock",
+            "name": "Blockchain Industries Inc",
+            "review_bucket": "official_name_mismatch_review_first",
+            "quality_status": "warn",
+            "metadata_enrichment_gate": "otc_name_mismatch_review_required_before_name_or_metadata_changes",
+            "review_strategy": "resolve_listing_keyed_name_mismatch_before_metadata_work",
+            "verification_evidence_required": "reviewed_otc_name_mismatch_decision_before_name_or_metadata_change",
+            "recommended_next_source": "OTC name mismatch review, OTC Markets profile, SEC/issuer filing, or ISIN-anchored issuer history.",
+            "source_gate": "No canonical name or metadata change until the name mismatch has a reviewed listing-keyed decision."
           }
         ],
         "metadata_enrichment_gate_totals": {
-          "no_metadata_enrichment_needed": 7324,
-          "otc_name_mismatch_review_required_before_name_or_metadata_changes": 146,
-          "reviewed_issuer_sector_source_required_keep_blank": 792,
+          "no_metadata_enrichment_needed": 7271,
+          "otc_name_mismatch_review_required_before_name_or_metadata_changes": 148,
+          "reviewed_issuer_sector_source_required_keep_blank": 794,
           "reviewed_product_category_source_required_keep_blank": 29,
-          "source_gap_review_required_before_enrichment": 2765
+          "source_gap_review_required_before_enrichment": 2812
         },
         "source_gap_field_totals": {
           "missing_etf_category": 29,
@@ -1959,21 +1959,21 @@
         "source_of_truth_outcome_totals": {
           "accepted_source_gap": 846
         },
-        "name_mismatch_review_rows": 146,
+        "name_mismatch_review_rows": 148,
         "name_mismatch_class_counts": {
-          "weak_abbreviation_or_truncation_review": 74,
-          "probable_otc_rename_or_symbol_reuse": 65,
-          "stale_or_symbol_reuse_without_isin": 7
+          "weak_abbreviation_or_truncation_review": 73,
+          "probable_otc_rename_or_symbol_reuse": 67,
+          "stale_or_symbol_reuse_without_isin": 8
         },
         "name_mismatch_priority_counts": {
-          "medium": 74,
-          "high": 65,
-          "critical": 7
+          "medium": 73,
+          "high": 67,
+          "critical": 8
         },
         "name_mismatch_review_strategy_counts": {
-          "review_official_alias_or_abbreviation_before_matcher_tuning": 74,
-          "verify_isin_anchored_issuer_history_before_name_change": 65,
-          "resolve_or_quarantine_with_official_otc_profile_or_issuer_history": 7
+          "review_official_alias_or_abbreviation_before_matcher_tuning": 73,
+          "verify_isin_anchored_issuer_history_before_name_change": 67,
+          "resolve_or_quarantine_with_official_otc_profile_or_issuer_history": 8
         },
         "top_otc_name_mismatch_review_batches": [
           {
@@ -1992,7 +1992,7 @@
             "review_class": "probable_otc_rename_or_symbol_reuse",
             "isin_presence": "with_isin",
             "official_sources": "otc_markets_stock_screener",
-            "rows": 62,
+            "rows": 63,
             "review_strategy": "verify_isin_anchored_issuer_history_before_name_change",
             "verification_evidence_required": "official_or_reviewed_isin_bearing_source_matching_current_issuer_listing_key_and_name",
             "recommended_next_source": "Official or reviewed ISIN-bearing issuer-history source matching current issuer, listing key, and name.",
@@ -2010,6 +2010,28 @@
             "source_gate": "Do not rename or trust reused OTC symbol without listing-keyed official identity or quarantine evidence."
           },
           {
+            "review_priority": "high",
+            "review_class": "probable_otc_rename_or_symbol_reuse",
+            "isin_presence": "with_isin",
+            "official_sources": "otc_markets_stock_screener|sec_company_tickers_exchange",
+            "rows": 4,
+            "review_strategy": "verify_isin_anchored_issuer_history_before_name_change",
+            "verification_evidence_required": "official_or_reviewed_isin_bearing_source_matching_current_issuer_listing_key_and_name",
+            "recommended_next_source": "Official or reviewed ISIN-bearing issuer-history source matching current issuer, listing key, and name.",
+            "source_gate": "Do not change the name until ISIN-anchored evidence proves the same current issuer."
+          },
+          {
+            "review_priority": "medium",
+            "review_class": "weak_abbreviation_or_truncation_review",
+            "isin_presence": "with_isin",
+            "official_sources": "otc_markets_stock_screener|sec_company_tickers_exchange",
+            "rows": 3,
+            "review_strategy": "review_official_alias_or_abbreviation_before_matcher_tuning",
+            "verification_evidence_required": "official_alias_or_abbreviation_evidence_with_exact_listing_identity_match",
+            "recommended_next_source": "Official alias, abbreviation, issuer, OTC profile, or registry evidence matching the exact listing identity.",
+            "source_gate": "Tune matcher only after official alias evidence; do not change metadata from abbreviation alone."
+          },
+          {
             "review_priority": "critical",
             "review_class": "stale_or_symbol_reuse_without_isin",
             "isin_presence": "without_isin",
@@ -2021,48 +2043,15 @@
             "source_gate": "Do not rename or trust reused OTC symbol without listing-keyed official identity or quarantine evidence."
           },
           {
-            "review_priority": "high",
-            "review_class": "probable_otc_rename_or_symbol_reuse",
-            "isin_presence": "with_isin",
+            "review_priority": "critical",
+            "review_class": "stale_or_symbol_reuse_without_isin",
+            "isin_presence": "without_isin",
             "official_sources": "otc_markets_stock_screener|sec_company_tickers_exchange",
-            "rows": 2,
-            "review_strategy": "verify_isin_anchored_issuer_history_before_name_change",
-            "verification_evidence_required": "official_or_reviewed_isin_bearing_source_matching_current_issuer_listing_key_and_name",
-            "recommended_next_source": "Official or reviewed ISIN-bearing issuer-history source matching current issuer, listing key, and name.",
-            "source_gate": "Do not change the name until ISIN-anchored evidence proves the same current issuer."
-          },
-          {
-            "review_priority": "medium",
-            "review_class": "weak_abbreviation_or_truncation_review",
-            "isin_presence": "with_isin",
-            "official_sources": "otc_markets_stock_screener|sec_company_tickers_exchange",
-            "rows": 2,
-            "review_strategy": "review_official_alias_or_abbreviation_before_matcher_tuning",
-            "verification_evidence_required": "official_alias_or_abbreviation_evidence_with_exact_listing_identity_match",
-            "recommended_next_source": "Official alias, abbreviation, issuer, OTC profile, or registry evidence matching the exact listing identity.",
-            "source_gate": "Tune matcher only after official alias evidence; do not change metadata from abbreviation alone."
-          },
-          {
-            "review_priority": "medium",
-            "review_class": "weak_abbreviation_or_truncation_review",
-            "isin_presence": "with_isin",
-            "official_sources": "sec_company_tickers_exchange",
-            "rows": 2,
-            "review_strategy": "review_official_alias_or_abbreviation_before_matcher_tuning",
-            "verification_evidence_required": "official_alias_or_abbreviation_evidence_with_exact_listing_identity_match",
-            "recommended_next_source": "Official alias, abbreviation, issuer, OTC profile, or registry evidence matching the exact listing identity.",
-            "source_gate": "Tune matcher only after official alias evidence; do not change metadata from abbreviation alone."
-          },
-          {
-            "review_priority": "high",
-            "review_class": "probable_otc_rename_or_symbol_reuse",
-            "isin_presence": "with_isin",
-            "official_sources": "sec_company_tickers_exchange",
             "rows": 1,
-            "review_strategy": "verify_isin_anchored_issuer_history_before_name_change",
-            "verification_evidence_required": "official_or_reviewed_isin_bearing_source_matching_current_issuer_listing_key_and_name",
-            "recommended_next_source": "Official or reviewed ISIN-bearing issuer-history source matching current issuer, listing key, and name.",
-            "source_gate": "Do not change the name until ISIN-anchored evidence proves the same current issuer."
+            "review_strategy": "resolve_or_quarantine_with_official_otc_profile_or_issuer_history",
+            "verification_evidence_required": "official_otc_profile_registry_or_issuer_history_source_matching_listing_key_before_name_or_quarantine_action",
+            "recommended_next_source": "Official OTC profile, registry, exchange notice, or issuer-history source matching the listing key.",
+            "source_gate": "Do not rename or trust reused OTC symbol without listing-keyed official identity or quarantine evidence."
           },
           {
             "review_priority": "medium",
@@ -2077,26 +2066,26 @@
           }
         ],
         "name_mismatch_apply_eligibility_counts": {
-          "matcher_tuning_only_no_metadata_apply_until_exact_identity_review": 74,
-          "blocked_until_isin_anchored_issuer_history_review": 65,
-          "blocked_until_official_issuer_identity_source_or_quarantine_decision": 7
+          "matcher_tuning_only_no_metadata_apply_until_exact_identity_review": 73,
+          "blocked_until_isin_anchored_issuer_history_review": 67,
+          "blocked_until_official_issuer_identity_source_or_quarantine_decision": 8
         },
         "name_mismatch_verification_evidence_required_counts": {
-          "official_alias_or_abbreviation_evidence_with_exact_listing_identity_match": 74,
-          "official_or_reviewed_isin_bearing_source_matching_current_issuer_listing_key_and_name": 65,
-          "official_otc_profile_registry_or_issuer_history_source_matching_listing_key_before_name_or_quarantine_action": 7
+          "official_alias_or_abbreviation_evidence_with_exact_listing_identity_match": 73,
+          "official_or_reviewed_isin_bearing_source_matching_current_issuer_listing_key_and_name": 67,
+          "official_otc_profile_registry_or_issuer_history_source_matching_listing_key_before_name_or_quarantine_action": 8
         }
       },
       "artifacts": [
         {
           "path": "data/reports/otc_scope_review.json",
-          "generated_at": "2026-05-25T12:54:46Z",
-          "rows": 11056
+          "generated_at": "2026-06-02T18:59:53Z",
+          "rows": 11054
         },
         {
           "path": "data/reports/otc_name_mismatch_review.json",
-          "generated_at": "2026-05-25T05:42:32Z",
-          "rows": 146
+          "generated_at": "2026-06-02T18:59:54Z",
+          "rows": 148
         }
       ],
       "acceptance_matrix": {
@@ -2117,8 +2106,8 @@
             "delta": 0
           },
           "scope_review_rows": {
-            "baseline": 11056,
-            "current": 11056,
+            "baseline": 11054,
+            "current": 11054,
             "delta": 0
           }
         },
@@ -2190,10 +2179,10 @@
           "otc_core_exclusion_candidate_rows": 0,
           "otc_scope_completion": {
             "status": "complete_extended_scope_no_core_candidates",
-            "rows": 11056,
-            "extended_otc_rows": 11056,
-            "otc_listing_scope_reason_rows": 11056,
-            "already_extended_scope_decision_rows": 11056,
+            "rows": 11054,
+            "extended_otc_rows": 11054,
+            "otc_listing_scope_reason_rows": 11054,
+            "already_extended_scope_decision_rows": 11054,
             "core_exclusion_candidate_rows": 0,
             "unexpected_core_scope_rows": 0,
             "blocked_scope_decision_rows": 0,
@@ -2201,8 +2190,8 @@
             "metadata_enrichment_authorized": false,
             "source_gate": "OTC scope is complete only when every current OTC row is extended/otc_listing and no core or core-exclusion scope decision remains open; metadata still requires listing-keyed evidence."
           },
-          "active_name_mismatch_review_rows": 146,
-          "otc_name_mismatch_unreviewed_active_rows": 146,
+          "active_name_mismatch_review_rows": 148,
+          "otc_name_mismatch_unreviewed_active_rows": 148,
           "otc_review_decision_current_listing_suppressed_rows": 26,
           "otc_review_decision_not_current_scope_rows": 0,
           "otc_review_decision_stale_rows": 26,
@@ -2218,8 +2207,8 @@
               "delta": 0
             },
             "scope_review_rows": {
-              "baseline": 11056,
-              "current": 11056,
+              "baseline": 11054,
+              "current": 11054,
               "delta": 0
             }
           },
@@ -2299,7 +2288,7 @@
         "before_after_context": "exchange_scope=OTC;affected_artifact_rows=11202;global_delta_count=6;nonzero_global_delta_count=0;nonzero_exchange_scope_delta_count=0;warn_delta=0;quarantine_delta=0"
       },
       "campaign_context": "priority=2;campaign_key=otc;status=scoped_as_extended_with_source_gaps_documented;exchange_scope=OTC",
-      "artifact_context": "artifact_count=2;affected_artifact_rows=11202;primary_artifact=data/reports/otc_scope_review.json;primary_artifact_rows=11056",
+      "artifact_context": "artifact_count=2;affected_artifact_rows=11202;primary_artifact=data/reports/otc_scope_review.json;primary_artifact_rows=11054",
       "delta_review_context": "delta_status=partial;missing_delta_count=0;before_after_present=true;next_action_present=true",
       "closure_context": "closure_gate=review_artifact_rows_must_be_processed_before_campaign_closure;artifact_rows=11202;missing_delta_count=0;closure_status=ready_after_review_artifact_processing"
     },
@@ -10741,12 +10730,12 @@
       "artifacts": [
         {
           "path": "data/reports/improvement_baseline.json",
-          "generated_at": "2026-06-02T05:10:33Z",
+          "generated_at": "2026-06-02T19:01:34Z",
           "rows": 0
         },
         {
           "path": "data/reports/improvement_deltas.json",
-          "generated_at": "2026-06-02T18:54:30Z",
+          "generated_at": "2026-06-02T19:01:34Z",
           "rows": 0
         }
       ],
@@ -10844,7 +10833,7 @@
       "delta_evidence": {
         "status": "baseline_only",
         "known_deltas": {
-          "baseline_generated_at": "2026-06-02T05:10:33Z",
+          "baseline_generated_at": "2026-06-02T19:01:34Z",
           "future_delta_reference": "data/reports/improvement_baseline.json",
           "current_delta_report": "data/reports/improvement_deltas.json"
         },
@@ -10947,7 +10936,7 @@
       "delta_status": "partial",
       "artifact_rows": 11202,
       "primary_artifact": "data/reports/otc_scope_review.json",
-      "primary_artifact_rows": 11056,
+      "primary_artifact_rows": 11054,
       "missing_delta_evidence": [],
       "closure_gate": "review_artifact_rows_must_be_processed_before_campaign_closure",
       "next_action": "keep OTC enrichment gated by issuer/product evidence; do not sector-fill extended OTC rows from symbol or name shape",

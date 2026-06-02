@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T05:10:33Z",
+    "generated_at": "2026-06-02T19:01:34Z",
     "purpose": "Baseline snapshot for future campaign before/after deltas. It is not a data-fill source.",
     "source_files": {
       "coverage_report": "data/reports/coverage_report.json",
@@ -77,7 +77,7 @@
       "missing_sector_residual_rows": 194
     },
     "otc": {
-      "scope_review_rows": 11056,
+      "scope_review_rows": 11054,
       "accepted_source_gap_rows": 846,
       "drop_override_rows_still_present": 0
     },
@@ -1366,7 +1366,7 @@
     "global": "metric_count=16;tickers=61466;listing_keys=71043;source_gap_rows=3548;warn_rows=222;quarantine_rows=0;validation_failed_error_gates=0",
     "campaigns": {
       "b3": "campaign_key=b3;metric_count=2;nested_metric_count=0;numeric_row_total=206",
-      "otc": "campaign_key=otc;metric_count=3;nested_metric_count=0;numeric_row_total=11902",
+      "otc": "campaign_key=otc;metric_count=3;nested_metric_count=0;numeric_row_total=11900",
       "canada": "campaign_key=canada;metric_count=5;nested_metric_count=0;numeric_row_total=1217",
       "asx": "campaign_key=asx;metric_count=2;nested_metric_count=1;numeric_row_total=114",
       "weak_sector": "campaign_key=weak_sector;metric_count=2;nested_metric_count=1;numeric_row_total=646",
