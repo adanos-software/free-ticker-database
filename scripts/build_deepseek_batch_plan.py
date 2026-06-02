@@ -176,6 +176,20 @@ def write_batch_csv(path: Path, rows: list[dict[str, str]], fieldnames: list[str
         writer.writerows(rows)
 
 
+def default_batch_csv_paths(configs: list[QueueConfig]) -> list[Path]:
+    return [JOBS_DIR / f"next_{config.queue}_batch.csv" for config in configs]
+
+
+def remove_stale_batch_csvs(paths: list[Path]) -> list[Path]:
+    removed: list[Path] = []
+    for path in paths:
+        if not path.exists():
+            continue
+        path.unlink()
+        removed.append(path)
+    return removed
+
+
 def runner_command(config: QueueConfig, batch_csv: Path, *, limit: int, batch_size: int, dry_run: bool = False) -> list[str]:
     stem = f"{config.queue}_next"
     raw_responses_jsonl = JOBS_DIR / "raw_responses.jsonl"
@@ -362,9 +376,12 @@ def main(argv: list[str] | None = None) -> None:
         batch_csv=args.batch_csv,
     )
     selected_batch_csv = payload["selected_batch"]["batch_csv"]
+    removed_batch_csvs: list[Path] = []
     if selected_batch_csv:
         batch_csv = ROOT / selected_batch_csv
         write_batch_csv(batch_csv, rows, fieldnames)
+    else:
+        removed_batch_csvs = remove_stale_batch_csvs(default_batch_csv_paths(DEFAULT_QUEUES))
     args.json_out.parent.mkdir(parents=True, exist_ok=True)
     args.json_out.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
     args.md_out.write_text(render_markdown(payload), encoding="utf-8")
@@ -374,6 +391,7 @@ def main(argv: list[str] | None = None) -> None:
                 "selected_queue": payload["selected_batch"]["queue"],
                 "rows": payload["selected_batch"]["rows"],
                 "batch_csv": payload["selected_batch"]["batch_csv"],
+                "removed_stale_batch_csvs": [display_path(path) for path in removed_batch_csvs],
                 "json_out": display_path(args.json_out),
                 "md_out": display_path(args.md_out),
             },

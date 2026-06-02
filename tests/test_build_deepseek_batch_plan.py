@@ -4,6 +4,7 @@ from scripts.build_deepseek_batch_plan import (
     DEFAULT_QUEUES,
     QueueConfig,
     build_plan,
+    remove_stale_batch_csvs,
     render_markdown,
     runner_command,
     write_batch_csv,
@@ -180,6 +181,23 @@ def test_write_batch_and_markdown_include_policy(tmp_path) -> None:
     assert "Duplicate Keys" in markdown
     assert "DEEPSEEK_API_KEY" in markdown
     assert "--dry-run" in markdown
+
+
+def test_remove_stale_batch_csvs_only_removes_existing_batch_paths(tmp_path) -> None:
+    stale_masterfile = tmp_path / "next_masterfile_collision_batch.csv"
+    stale_source_gap = tmp_path / "next_source_gap_batch.csv"
+    missing = tmp_path / "next_otc_scope_batch.csv"
+    unrelated = tmp_path / "raw_responses.jsonl"
+    stale_masterfile.write_text("listing_key\nA::1\n", encoding="utf-8")
+    stale_source_gap.write_text("listing_key\nB::2\n", encoding="utf-8")
+    unrelated.write_text("{}", encoding="utf-8")
+
+    removed = remove_stale_batch_csvs([stale_masterfile, missing, stale_source_gap])
+
+    assert removed == [stale_masterfile, stale_source_gap]
+    assert not stale_masterfile.exists()
+    assert not stale_source_gap.exists()
+    assert unrelated.exists()
 
 
 def test_runner_dry_run_command_uses_separate_output_paths(tmp_path) -> None:
