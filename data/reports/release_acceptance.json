@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T19:14:19Z",
+    "generated_at": "2026-06-02T19:19:21Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -207,33 +207,33 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-02T19:14:19Z",
+      "release_generated_at": "2026-06-02T19:19:21Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-02T19:14:17Z"
+          "generated_at": "2026-06-02T19:19:19Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-02T19:14:16Z"
+          "generated_at": "2026-06-02T19:19:18Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
           "exists": true,
-          "generated_at": "2026-06-02T19:13:29Z"
+          "generated_at": "2026-06-02T19:18:20Z"
         },
         "improvement_deltas": {
           "path": "data/reports/improvement_deltas.json",
           "exists": true,
-          "generated_at": "2026-06-02T19:13:30Z"
+          "generated_at": "2026-06-02T19:18:20Z"
         },
         "improvement_campaigns": {
           "path": "data/reports/improvement_campaigns.json",
           "exists": true,
-          "generated_at": "2026-06-02T19:13:30Z"
+          "generated_at": "2026-06-02T19:18:21Z"
         },
         "source_refresh_queue": {
           "path": "data/reports/source_refresh_queue.json",
@@ -258,7 +258,7 @@
         "masterfile_collision_review": {
           "path": "data/reports/masterfile_collision_review.json",
           "exists": true,
-          "generated_at": "2026-05-25T12:53:29Z"
+          "generated_at": "2026-06-02T19:18:19Z"
         },
         "otc_scope_review": {
           "path": "data/reports/otc_scope_review.json",
@@ -360,7 +360,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-02T19:14:16Z",
+      "generated_at": "2026-06-02T19:19:18Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -744,7 +744,7 @@
       "source_file_mismatches": {},
       "unexpected_source_files": [],
       "meta_policy_mismatch": false,
-      "rows": 11107,
+      "rows": 11176,
       "missing_summary_keys": [],
       "row_count_mismatch": {},
       "row_gaps": [],
@@ -1181,8 +1181,8 @@
       "passed": true,
       "batches": 10,
       "summary_next_review_batches": 10,
-      "summary_next_review_batch_rows": 29053,
-      "computed_next_review_batch_rows": 29053,
+      "summary_next_review_batch_rows": 29122,
+      "computed_next_review_batch_rows": 29122,
       "observed_campaign_keys_by_priority": {
         "1": "b3",
         "2": "otc",

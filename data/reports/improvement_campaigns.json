@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T19:13:30Z",
+    "generated_at": "2026-06-02T19:18:21Z",
     "rows": 10,
     "source_files": {
       "coverage_report": "data/reports/coverage_report.json",
@@ -32,13 +32,13 @@
     "campaigns": 10,
     "complete_campaigns": 0,
     "next_review_batches": 10,
-    "next_review_batch_rows": 29053,
+    "next_review_batch_rows": 29122,
     "closure_ready_campaigns": 9,
     "closure_blocked_campaigns": 1,
     "closure_blockers": 1,
     "validation_failed_error_gates": 0
   },
-  "summary_context": "campaigns=10;complete_campaigns=0;next_review_batches=10;next_review_batch_rows=29053;closure_ready_campaigns=9;closure_blocked_campaigns=1;closure_blockers=1;validation_failed_error_gates=0",
+  "summary_context": "campaigns=10;complete_campaigns=0;next_review_batches=10;next_review_batch_rows=29122;closure_ready_campaigns=9;closure_blocked_campaigns=1;closure_blockers=1;validation_failed_error_gates=0",
   "campaigns": [
     {
       "priority": 1,
@@ -4507,88 +4507,88 @@
       "campaign_key": "masterfile_collisions",
       "status": "listing_keyed_review_queue_ready_no_symbol_only_additions",
       "evidence": {
-        "collision_review_rows": 11107,
+        "collision_review_rows": 11176,
         "decision_totals": {
-          "new_listing_candidate_requires_official_listing_add_review": 2762,
-          "same_isin_cross_listing_candidate_requires_exchange_scope_review": 4578,
-          "symbol_collision_requires_non_symbol_identity_source": 3767
+          "new_listing_candidate_requires_official_listing_add_review": 2789,
+          "same_isin_cross_listing_candidate_requires_exchange_scope_review": 4613,
+          "symbol_collision_requires_non_symbol_identity_source": 3774
         },
         "review_bucket_totals": {
-          "distinct_official_isin_new_listing_candidate": 2177,
-          "hold_symbol_only_collision_needs_non_symbol_identity": 3184,
-          "resolve_asset_type_conflict_before_identity_review": 1612,
-          "same_isin_cross_listing_needs_name_or_scope_review": 3805,
-          "same_isin_exact_name_cross_listing_candidate": 329
+          "distinct_official_isin_new_listing_candidate": 2196,
+          "hold_symbol_only_collision_needs_non_symbol_identity": 3190,
+          "resolve_asset_type_conflict_before_identity_review": 1620,
+          "same_isin_cross_listing_needs_name_or_scope_review": 3839,
+          "same_isin_exact_name_cross_listing_candidate": 331
         },
         "review_priority_totals": {
-          "P1": 329,
-          "P2": 7594,
-          "P3": 3184
+          "P1": 331,
+          "P2": 7655,
+          "P3": 3190
         },
         "collision_risk_flag_totals": {
-          "asset_type_mismatch": 1612,
-          "exact_name_match": 502,
-          "existing_isin_conflict": 3774,
-          "missing_official_isin": 3767,
+          "asset_type_mismatch": 1620,
+          "exact_name_match": 504,
+          "existing_isin_conflict": 3803,
+          "missing_official_isin": 3774,
           "multiple_existing_symbol_rows": 2,
-          "no_exact_name_match": 10605,
-          "same_isin_existing_listing": 4578,
-          "ticker_reused_on_other_exchange": 11107
+          "no_exact_name_match": 10672,
+          "same_isin_existing_listing": 4613,
+          "ticker_reused_on_other_exchange": 11176
         },
         "identity_resolution_queue_totals": {
-          "blocked_asset_type_conflict": 1612,
-          "blocked_symbol_only_missing_non_symbol_identity": 3184,
-          "review_cross_listing_same_isin_exact_name": 329,
-          "review_cross_listing_same_isin_name_or_scope_gap": 3805,
-          "review_distinct_official_isin_new_listing": 2177
+          "blocked_asset_type_conflict": 1620,
+          "blocked_symbol_only_missing_non_symbol_identity": 3190,
+          "review_cross_listing_same_isin_exact_name": 331,
+          "review_cross_listing_same_isin_name_or_scope_gap": 3839,
+          "review_distinct_official_isin_new_listing": 2196
         },
         "identity_resolution_backlog": {
           "status": "identity_resolution_review_queue_open",
-          "rows": 11107,
-          "same_isin_exact_name_scope_review_rows": 329,
-          "same_isin_name_or_scope_reconciliation_rows": 3805,
-          "distinct_official_isin_listing_add_review_rows": 2177,
-          "asset_type_conflict_blocked_rows": 1612,
-          "symbol_only_non_symbol_identity_required_rows": 3184,
+          "rows": 11176,
+          "same_isin_exact_name_scope_review_rows": 331,
+          "same_isin_name_or_scope_reconciliation_rows": 3839,
+          "distinct_official_isin_listing_add_review_rows": 2196,
+          "asset_type_conflict_blocked_rows": 1620,
+          "symbol_only_non_symbol_identity_required_rows": 3190,
           "direct_listing_add_allowed_rows": 0,
           "symbol_only_resolution_authorized": false,
           "source_gate": "Masterfile collision rows remain review queues only; listing additions, merges, renames, or enrichments require official non-symbol identity evidence for the target listing."
         },
         "identity_resolution_risk_flag_totals": {
           "blocked_asset_type_conflict": {
-            "asset_type_mismatch": 1612,
+            "asset_type_mismatch": 1620,
             "exact_name_match": 4,
-            "existing_isin_conflict": 863,
-            "missing_official_isin": 583,
-            "no_exact_name_match": 1608,
-            "same_isin_existing_listing": 444,
-            "ticker_reused_on_other_exchange": 1612
+            "existing_isin_conflict": 871,
+            "missing_official_isin": 584,
+            "no_exact_name_match": 1616,
+            "same_isin_existing_listing": 443,
+            "ticker_reused_on_other_exchange": 1620
           },
           "blocked_symbol_only_missing_non_symbol_identity": {
             "exact_name_match": 166,
-            "missing_official_isin": 3184,
+            "missing_official_isin": 3190,
             "multiple_existing_symbol_rows": 1,
-            "no_exact_name_match": 3018,
-            "ticker_reused_on_other_exchange": 3184
+            "no_exact_name_match": 3024,
+            "ticker_reused_on_other_exchange": 3190
           },
           "review_cross_listing_same_isin_exact_name": {
-            "exact_name_match": 329,
+            "exact_name_match": 331,
             "existing_isin_conflict": 2,
-            "same_isin_existing_listing": 329,
-            "ticker_reused_on_other_exchange": 329
+            "same_isin_existing_listing": 331,
+            "ticker_reused_on_other_exchange": 331
           },
           "review_cross_listing_same_isin_name_or_scope_gap": {
-            "existing_isin_conflict": 757,
+            "existing_isin_conflict": 759,
             "multiple_existing_symbol_rows": 1,
-            "no_exact_name_match": 3805,
-            "same_isin_existing_listing": 3805,
-            "ticker_reused_on_other_exchange": 3805
+            "no_exact_name_match": 3839,
+            "same_isin_existing_listing": 3839,
+            "ticker_reused_on_other_exchange": 3839
           },
           "review_distinct_official_isin_new_listing": {
             "exact_name_match": 3,
-            "existing_isin_conflict": 2152,
-            "no_exact_name_match": 2174,
-            "ticker_reused_on_other_exchange": 2177
+            "existing_isin_conflict": 2171,
+            "no_exact_name_match": 2193,
+            "ticker_reused_on_other_exchange": 2196
           }
         },
         "identity_resolution_exchange_totals": {
@@ -4603,13 +4603,13 @@
             "BVB": 22,
             "CSE_MA": 1,
             "DFM": 1,
-            "Euronext": 223,
-            "HKEX": 82,
+            "Euronext": 225,
+            "HKEX": 83,
             "HNX": 29,
             "IDX": 77,
-            "LSE": 235,
+            "LSE": 236,
             "MSX": 2,
-            "NASDAQ": 29,
+            "NASDAQ": 30,
             "NEO": 23,
             "NSE_IN": 28,
             "NSE_KE": 5,
@@ -4629,16 +4629,16 @@
             "TSXV": 99,
             "TWSE": 3,
             "UPCOM": 79,
-            "XETRA": 110
+            "XETRA": 113
           },
           "blocked_symbol_only_missing_non_symbol_identity": {
             "BATS": 9,
             "IDX": 166,
             "MSX": 12,
-            "NASDAQ": 46,
+            "NASDAQ": 50,
             "NEO": 62,
             "NYSE": 436,
-            "NYSE ARCA": 14,
+            "NYSE ARCA": 15,
             "NYSE MKT": 21,
             "OTC": 27,
             "PSX": 128,
@@ -4647,36 +4647,36 @@
             "TSE": 1087,
             "TSX": 411,
             "TSXV": 457,
-            "TWSE": 8
+            "TWSE": 9
           },
           "review_cross_listing_same_isin_exact_name": {
             "ADX": 1,
             "AMS": 41,
-            "BSE_IN": 10,
+            "BSE_IN": 11,
             "CSE_MA": 1,
-            "Euronext": 262,
+            "Euronext": 263,
             "ISE": 1,
             "LSE": 12,
             "PSE": 1
           },
           "review_cross_listing_same_isin_name_or_scope_gap": {
             "ADX": 1,
-            "AMS": 224,
-            "BSE_IN": 474,
+            "AMS": 223,
+            "BSE_IN": 478,
             "BVB": 18,
             "CSE_MA": 27,
             "DFM": 1,
-            "Euronext": 1530,
+            "Euronext": 1533,
             "HNX": 1,
             "ISE": 4,
-            "LSE": 704,
-            "NSE_IN": 112,
+            "LSE": 709,
+            "NSE_IN": 134,
             "NSE_KE": 10,
             "NZX": 38,
             "OSL": 33,
             "PSE": 20,
             "SGX": 16,
-            "XETRA": 592
+            "XETRA": 593
           },
           "review_distinct_official_isin_new_listing": {
             "ADX": 24,
@@ -4684,47 +4684,47 @@
             "BHB": 8,
             "BIST": 18,
             "BK": 24,
-            "BSE_IN": 225,
+            "BSE_IN": 227,
             "BVB": 81,
             "CSE_MA": 8,
             "DFM": 14,
-            "Euronext": 236,
+            "Euronext": 242,
             "HNX": 126,
             "ISE": 1,
             "KRX": 3,
-            "LSE": 233,
-            "NSE_IN": 150,
+            "LSE": 237,
+            "NSE_IN": 155,
             "NSE_KE": 9,
             "NZX": 62,
             "OSL": 17,
             "PSE": 136,
             "SGX": 81,
             "TADAWUL": 198,
-            "TWSE": 25,
+            "TWSE": 26,
             "UPCOM": 389,
-            "XETRA": 94
+            "XETRA": 95
           }
         },
         "identity_resolution_asset_type_totals": {
           "blocked_asset_type_conflict": {
-            "ETF": 639,
-            "Stock": 973
+            "ETF": 646,
+            "Stock": 974
           },
           "blocked_symbol_only_missing_non_symbol_identity": {
-            "ETF": 154,
-            "Stock": 3030
+            "ETF": 158,
+            "Stock": 3032
           },
           "review_cross_listing_same_isin_exact_name": {
-            "ETF": 300,
-            "Stock": 29
+            "ETF": 301,
+            "Stock": 30
           },
           "review_cross_listing_same_isin_name_or_scope_gap": {
-            "ETF": 2627,
-            "Stock": 1178
+            "ETF": 2636,
+            "Stock": 1203
           },
           "review_distinct_official_isin_new_listing": {
-            "ETF": 240,
-            "Stock": 1937
+            "ETF": 251,
+            "Stock": 1945
           }
         },
         "identity_resolution_official_source_totals": {
@@ -4737,17 +4737,17 @@
             "bvb_shares_directory": 22,
             "cboe_canada_listing_directory": 23,
             "cse_ma_listed_companies": 1,
-            "deutsche_boerse_xetra_all_tradable_equities": 110,
+            "deutsche_boerse_xetra_all_tradable_equities": 113,
             "dfm_listed_securities": 1,
             "euronext_equities": 84,
-            "euronext_etfs": 176,
-            "hkex_securities_list": 82,
+            "euronext_etfs": 178,
+            "hkex_securities_list": 83,
             "hnx_listed_securities": 29,
             "idx_company_profiles": 77,
             "jpx_listed_issues": 100,
-            "lse_price_explorer": 235,
+            "lse_price_explorer": 236,
             "muscat_securities_companies": 2,
-            "nasdaq_listed": 29,
+            "nasdaq_listed": 30,
             "nasdaq_other_listed": 45,
             "nse_india_securities_available": 28,
             "nse_ke_listed_companies": 5,
@@ -4768,37 +4768,37 @@
             "idx_company_profiles": 166,
             "jpx_listed_issues": 1087,
             "muscat_securities_companies": 12,
-            "nasdaq_listed": 46,
-            "nasdaq_other_listed": 171,
+            "nasdaq_listed": 50,
+            "nasdaq_other_listed": 172,
             "otc_markets_stock_screener": 27,
             "psx_dps_symbols": 128,
             "qse_market_watch": 2,
             "sec_company_tickers_exchange": 309,
             "set_stock_search": 298,
             "tmx_listed_issuers": 868,
-            "twse_listed_companies": 8
+            "twse_listed_companies": 9
           },
           "review_cross_listing_same_isin_exact_name": {
             "adx_market_watch": 1,
-            "bse_india_scrips": 10,
+            "bse_india_scrips": 11,
             "cse_ma_listed_companies": 1,
             "euronext_equities": 5,
-            "euronext_etfs": 299,
+            "euronext_etfs": 300,
             "lse_price_explorer": 12,
             "pse_listed_company_directory": 1
           },
           "review_cross_listing_same_isin_name_or_scope_gap": {
             "adx_market_watch": 1,
-            "bse_india_scrips": 474,
+            "bse_india_scrips": 478,
             "bvb_shares_directory": 18,
             "cse_ma_listed_companies": 27,
-            "deutsche_boerse_xetra_all_tradable_equities": 592,
+            "deutsche_boerse_xetra_all_tradable_equities": 593,
             "dfm_listed_securities": 1,
             "euronext_equities": 200,
-            "euronext_etfs": 1591,
+            "euronext_etfs": 1593,
             "hnx_listed_securities": 1,
-            "lse_price_explorer": 704,
-            "nse_india_securities_available": 112,
+            "lse_price_explorer": 709,
+            "nse_india_securities_available": 134,
             "nse_ke_listed_companies": 10,
             "nzx_instruments": 38,
             "pse_listed_company_directory": 20,
@@ -4809,23 +4809,23 @@
             "bahrain_bourse_listed_companies": 8,
             "bist_kap_mkk_listed_securities": 18,
             "boursa_kuwait_stocks": 24,
-            "bse_india_scrips": 225,
+            "bse_india_scrips": 227,
             "bvb_shares_directory": 81,
             "cse_ma_listed_companies": 8,
-            "deutsche_boerse_xetra_all_tradable_equities": 94,
+            "deutsche_boerse_xetra_all_tradable_equities": 95,
             "dfm_listed_securities": 14,
             "euronext_equities": 209,
-            "euronext_etfs": 60,
+            "euronext_etfs": 66,
             "hnx_listed_securities": 126,
             "krx_listed_companies": 3,
-            "lse_price_explorer": 233,
-            "nse_india_securities_available": 150,
+            "lse_price_explorer": 237,
+            "nse_india_securities_available": 155,
             "nse_ke_listed_companies": 9,
             "nzx_instruments": 62,
             "pse_listed_company_directory": 136,
             "sgx_securities_prices": 81,
             "tadawul_main_market_watch": 198,
-            "twse_listed_companies": 25,
+            "twse_listed_companies": 26,
             "upcom_registered_securities": 389
           }
         },
@@ -4876,13 +4876,14 @@
             "DFM::NYSE ARCA": 1,
             "Euronext::ASX": 5,
             "Euronext::BATS": 11,
+            "Euronext::BCBA": 1,
             "Euronext::BIST": 1,
             "Euronext::BME": 1,
             "Euronext::EGX": 1,
             "Euronext::IDX": 5,
             "Euronext::JSE": 1,
             "Euronext::LSE": 12,
-            "Euronext::NASDAQ": 56,
+            "Euronext::NASDAQ": 57,
             "Euronext::NSE_IN": 1,
             "Euronext::NYSE": 39,
             "Euronext::NYSE ARCA": 31,
@@ -4900,7 +4901,7 @@
             "Euronext::XETRA": 8,
             "HKEX::Bursa": 1,
             "HKEX::TPEX": 4,
-            "HKEX::TWSE": 77,
+            "HKEX::TWSE": 78,
             "HNX::AMS": 1,
             "HNX::ASX": 4,
             "HNX::BATS": 2,
@@ -4926,7 +4927,7 @@
             "LSE::Euronext": 2,
             "LSE::HOSE": 1,
             "LSE::IDX": 4,
-            "LSE::NASDAQ": 82,
+            "LSE::NASDAQ": 83,
             "LSE::NYSE": 16,
             "LSE::NYSE ARCA": 61,
             "LSE::NYSE MKT": 4,
@@ -4947,7 +4948,7 @@
             "NASDAQ::HOSE": 1,
             "NASDAQ::IDX": 1,
             "NASDAQ::JSE": 1,
-            "NASDAQ::LSE": 9,
+            "NASDAQ::LSE": 10,
             "NASDAQ::NZX": 1,
             "NASDAQ::TSX": 4,
             "NASDAQ::TSXV": 1,
@@ -5100,12 +5101,12 @@
             "XETRA::BCBA": 1,
             "XETRA::Euronext": 2,
             "XETRA::LSE": 9,
-            "XETRA::NASDAQ": 40,
+            "XETRA::NASDAQ": 42,
             "XETRA::NYSE": 7,
             "XETRA::NYSE ARCA": 13,
             "XETRA::NYSE MKT": 3,
             "XETRA::OSL": 1,
-            "XETRA::OTC": 27,
+            "XETRA::OTC": 28,
             "XETRA::PSE": 1,
             "XETRA::STO": 1,
             "XETRA::TSXV": 1,
@@ -5141,22 +5142,24 @@
             "MSX::OTC": 3,
             "MSX::PSX": 1,
             "NASDAQ::AMS": 1,
-            "NASDAQ::ASX": 9,
-            "NASDAQ::EGX": 1,
+            "NASDAQ::ASX": 10,
+            "NASDAQ::BSE_IN": 1,
+            "NASDAQ::EGX": 2,
             "NASDAQ::HNX": 1,
             "NASDAQ::IDX": 2,
             "NASDAQ::LSE": 4,
             "NASDAQ::MSX": 1,
             "NASDAQ::NSE_IN": 1,
             "NASDAQ::NSE_KE": 1,
-            "NASDAQ::OTC": 2,
+            "NASDAQ::NYSE MKT": 1,
+            "NASDAQ::NZX": 1,
             "NASDAQ::PSE": 1,
             "NASDAQ::SET": 1,
             "NASDAQ::STO": 1,
             "NASDAQ::TASE": 2,
             "NASDAQ::TSX": 6,
             "NASDAQ::TSXV": 7,
-            "NASDAQ::XETRA": 5,
+            "NASDAQ::XETRA": 6,
             "NEO::AMS": 1,
             "NEO::ASX": 1,
             "NEO::BATS": 11,
@@ -5172,7 +5175,7 @@
             "NEO::TASE": 1,
             "NEO::TSX": 2,
             "NEO::XETRA": 8,
-            "NYSE ARCA::LSE": 5,
+            "NYSE ARCA::LSE": 6,
             "NYSE ARCA::NYSE": 3,
             "NYSE ARCA::NZX": 1,
             "NYSE ARCA::TSX": 4,
@@ -5315,13 +5318,13 @@
             "TSXV::VSE": 1,
             "TSXV::WSE": 25,
             "TSXV::XETRA": 25,
-            "TWSE::TSE": 8
+            "TWSE::TSE": 9
           },
           "review_cross_listing_same_isin_exact_name": {
             "ADX::NASDAQ": 1,
             "AMS::LSE": 36,
             "AMS::XETRA": 5,
-            "BSE_IN::NSE_IN": 10,
+            "BSE_IN::NSE_IN": 11,
             "CSE_MA::Euronext": 1,
             "Euronext::AMS": 42,
             "Euronext::ISE": 1,
@@ -5330,7 +5333,7 @@
             "Euronext::OSL": 1,
             "Euronext::OTC": 1,
             "Euronext::SIX": 10,
-            "Euronext::XETRA": 70,
+            "Euronext::XETRA": 71,
             "ISE::LSE": 1,
             "LSE::NASDAQ": 2,
             "LSE::NYSE": 9,
@@ -5344,13 +5347,13 @@
             "AMS::LSE": 118,
             "AMS::NASDAQ": 14,
             "AMS::NYSE": 4,
-            "AMS::NYSE ARCA": 23,
+            "AMS::NYSE ARCA": 22,
             "AMS::NYSE MKT": 1,
             "AMS::OTC": 1,
             "AMS::TSX": 2,
             "AMS::XETRA": 54,
             "BSE_IN::HNX": 1,
-            "BSE_IN::NSE_IN": 473,
+            "BSE_IN::NSE_IN": 477,
             "BVB::ASX": 1,
             "BVB::Euronext": 1,
             "BVB::LSE": 1,
@@ -5367,7 +5370,7 @@
             "CSE_MA::TSXV": 1,
             "CSE_MA::WSE": 1,
             "DFM::EGX": 1,
-            "Euronext::AMS": 59,
+            "Euronext::AMS": 58,
             "Euronext::ASX": 10,
             "Euronext::BATS": 34,
             "Euronext::BME": 3,
@@ -5375,7 +5378,7 @@
             "Euronext::HOSE": 2,
             "Euronext::ISE": 3,
             "Euronext::JSE": 1,
-            "Euronext::LSE": 661,
+            "Euronext::LSE": 660,
             "Euronext::NASDAQ": 88,
             "Euronext::NYSE": 64,
             "Euronext::NYSE ARCA": 91,
@@ -5389,25 +5392,25 @@
             "Euronext::TSX": 11,
             "Euronext::TSXV": 5,
             "Euronext::WSE": 5,
-            "Euronext::XETRA": 379,
+            "Euronext::XETRA": 384,
             "HNX::ASX": 1,
             "ISE::LSE": 4,
             "LSE::AMS": 59,
             "LSE::ASX": 6,
             "LSE::BATS": 57,
-            "LSE::Euronext": 6,
+            "LSE::Euronext": 9,
             "LSE::NASDAQ": 136,
             "LSE::NEO": 1,
             "LSE::NYSE": 58,
             "LSE::NYSE ARCA": 130,
-            "LSE::NYSE MKT": 7,
+            "LSE::NYSE MKT": 8,
             "LSE::OTC": 9,
             "LSE::SET": 1,
             "LSE::SIX": 7,
-            "LSE::TSX": 14,
+            "LSE::TSX": 15,
             "LSE::TSXV": 1,
             "LSE::XETRA": 212,
-            "NSE_IN::BSE_IN": 112,
+            "NSE_IN::BSE_IN": 134,
             "NSE_KE::DSE_TZ": 1,
             "NSE_KE::LSE": 1,
             "NSE_KE::NASDAQ": 1,
@@ -5452,7 +5455,7 @@
             "SGX::TSXV": 1,
             "SGX::XETRA": 2,
             "XETRA::AMS": 3,
-            "XETRA::ASX": 14,
+            "XETRA::ASX": 15,
             "XETRA::BATS": 16,
             "XETRA::BME": 1,
             "XETRA::CPH": 1,
@@ -5541,10 +5544,11 @@
             "BSE_IN::HEL": 2,
             "BSE_IN::HNX": 2,
             "BSE_IN::HOSE": 4,
+            "BSE_IN::IDX": 1,
             "BSE_IN::JSE": 4,
             "BSE_IN::LSE": 19,
             "BSE_IN::LUSE": 1,
-            "BSE_IN::NASDAQ": 19,
+            "BSE_IN::NASDAQ": 20,
             "BSE_IN::NGX": 1,
             "BSE_IN::NSE_KE": 2,
             "BSE_IN::NYSE": 36,
@@ -5596,8 +5600,8 @@
             "DFM::TSXV": 1,
             "DFM::WSE": 2,
             "Euronext::AMS": 4,
-            "Euronext::ASX": 19,
-            "Euronext::BATS": 11,
+            "Euronext::ASX": 20,
+            "Euronext::BATS": 12,
             "Euronext::BIST": 1,
             "Euronext::BME": 3,
             "Euronext::BSE_IN": 1,
@@ -5608,10 +5612,10 @@
             "Euronext::ISE": 1,
             "Euronext::JSE": 2,
             "Euronext::LSE": 26,
-            "Euronext::NASDAQ": 40,
+            "Euronext::NASDAQ": 42,
             "Euronext::NSE_IN": 1,
             "Euronext::NYSE": 42,
-            "Euronext::NYSE ARCA": 13,
+            "Euronext::NYSE ARCA": 15,
             "Euronext::NYSE MKT": 5,
             "Euronext::OTC": 6,
             "Euronext::PSX": 3,
@@ -5653,7 +5657,7 @@
             "LSE::NEO": 2,
             "LSE::NSE_IN": 1,
             "LSE::NYSE": 57,
-            "LSE::NYSE ARCA": 28,
+            "LSE::NYSE ARCA": 32,
             "LSE::NYSE MKT": 3,
             "LSE::OTC": 7,
             "LSE::SIX": 1,
@@ -5662,7 +5666,7 @@
             "LSE::TSXV": 3,
             "LSE::WSE": 3,
             "LSE::XETRA": 6,
-            "NSE_IN::ASX": 17,
+            "NSE_IN::ASX": 18,
             "NSE_IN::ATHEX": 2,
             "NSE_IN::BATS": 1,
             "NSE_IN::BME": 1,
@@ -5672,14 +5676,14 @@
             "NSE_IN::EGX": 4,
             "NSE_IN::Euronext": 1,
             "NSE_IN::HEL": 2,
-            "NSE_IN::HNX": 1,
+            "NSE_IN::HNX": 2,
             "NSE_IN::HOSE": 3,
             "NSE_IN::JSE": 3,
             "NSE_IN::LSE": 9,
-            "NSE_IN::NASDAQ": 18,
+            "NSE_IN::NASDAQ": 20,
             "NSE_IN::NGX": 2,
             "NSE_IN::NSE_KE": 2,
-            "NSE_IN::NYSE": 25,
+            "NSE_IN::NYSE": 27,
             "NSE_IN::NYSE MKT": 1,
             "NSE_IN::OSL": 1,
             "NSE_IN::OTC": 5,
@@ -5691,7 +5695,7 @@
             "NSE_IN::TSX": 6,
             "NSE_IN::TSXV": 8,
             "NSE_IN::WSE": 6,
-            "NSE_IN::XETRA": 8,
+            "NSE_IN::XETRA": 7,
             "NSE_KE::AMS": 1,
             "NSE_KE::ASX": 1,
             "NSE_KE::HNX": 1,
@@ -5769,7 +5773,7 @@
             "TADAWUL::TWSE": 34,
             "TWSE::Bursa": 1,
             "TWSE::OSL": 1,
-            "TWSE::TPEX": 2,
+            "TWSE::TPEX": 3,
             "TWSE::TSE": 21,
             "UPCOM::ASX": 58,
             "UPCOM::ATHEX": 1,
@@ -5783,9 +5787,9 @@
             "UPCOM::ISE": 1,
             "UPCOM::JSE": 7,
             "UPCOM::LSE": 51,
-            "UPCOM::NASDAQ": 16,
+            "UPCOM::NASDAQ": 17,
             "UPCOM::NSE_KE": 1,
-            "UPCOM::NYSE": 86,
+            "UPCOM::NYSE": 84,
             "UPCOM::NYSE MKT": 10,
             "UPCOM::NZX": 1,
             "UPCOM::OSL": 3,
@@ -5795,7 +5799,7 @@
             "UPCOM::SGX": 5,
             "UPCOM::SSE_CL": 1,
             "UPCOM::STO": 4,
-            "UPCOM::TSX": 16,
+            "UPCOM::TSX": 17,
             "UPCOM::TSXV": 23,
             "UPCOM::WSE": 29,
             "UPCOM::XETRA": 24,
@@ -5807,7 +5811,7 @@
             "XETRA::LSE": 15,
             "XETRA::NASDAQ": 19,
             "XETRA::NYSE": 7,
-            "XETRA::NYSE ARCA": 27,
+            "XETRA::NYSE ARCA": 28,
             "XETRA::NYSE MKT": 1,
             "XETRA::OTC": 1,
             "XETRA::TSX": 1,
@@ -5816,112 +5820,112 @@
         },
         "identity_resolution_pair_review_strategy_totals": {
           "blocked_asset_type_conflict": {
-            "batch_block_instrument_type_conflict_until_official_resolution": 1612
+            "batch_block_instrument_type_conflict_until_official_resolution": 1620
           },
           "blocked_symbol_only_missing_non_symbol_identity": {
-            "batch_hold_symbol_reuse_until_non_symbol_identity_source": 3185
+            "batch_hold_symbol_reuse_until_non_symbol_identity_source": 3191
           },
           "review_cross_listing_same_isin_exact_name": {
-            "batch_review_same_isin_exact_name_cross_listing_scope": 329
+            "batch_review_same_isin_exact_name_cross_listing_scope": 331
           },
           "review_cross_listing_same_isin_name_or_scope_gap": {
-            "batch_review_same_isin_name_or_scope_reconciliation": 3806
+            "batch_review_same_isin_name_or_scope_reconciliation": 3840
           },
           "review_distinct_official_isin_new_listing": {
-            "batch_review_distinct_isin_new_listing_candidates": 2177
+            "batch_review_distinct_isin_new_listing_candidates": 2196
           }
         },
         "identity_resolution_review_strategy_totals": {
           "blocked_asset_type_conflict": {
-            "batch_block_instrument_type_conflict_until_official_resolution": 1612
+            "batch_block_instrument_type_conflict_until_official_resolution": 1620
           },
           "blocked_symbol_only_missing_non_symbol_identity": {
-            "batch_hold_symbol_reuse_until_non_symbol_identity_source": 3184
+            "batch_hold_symbol_reuse_until_non_symbol_identity_source": 3190
           },
           "review_cross_listing_same_isin_exact_name": {
-            "batch_review_same_isin_exact_name_cross_listing_scope": 329
+            "batch_review_same_isin_exact_name_cross_listing_scope": 331
           },
           "review_cross_listing_same_isin_name_or_scope_gap": {
-            "batch_review_same_isin_name_or_scope_reconciliation": 3805
+            "batch_review_same_isin_name_or_scope_reconciliation": 3839
           },
           "review_distinct_official_isin_new_listing": {
-            "batch_review_distinct_isin_new_listing_candidates": 2177
+            "batch_review_distinct_isin_new_listing_candidates": 2196
           }
         },
         "identity_resolution_evidence_required_totals": {
           "blocked_asset_type_conflict": {
-            "official_instrument_type_resolution_before_listing_identity_review": 1612
+            "official_instrument_type_resolution_before_listing_identity_review": 1620
           },
           "blocked_symbol_only_missing_non_symbol_identity": {
-            "official_non_symbol_identifier_or_keep_absent": 3184
+            "official_non_symbol_identifier_or_keep_absent": 3190
           },
           "review_cross_listing_same_isin_exact_name": {
-            "official_target_and_existing_exchange_directories_confirm_active_same_instrument": 329
+            "official_target_and_existing_exchange_directories_confirm_active_same_instrument": 331
           },
           "review_cross_listing_same_isin_name_or_scope_gap": {
-            "official_target_exchange_status_plus_issuer_or_name_scope_reconciliation": 3805
+            "official_target_exchange_status_plus_issuer_or_name_scope_reconciliation": 3839
           },
           "review_distinct_official_isin_new_listing": {
-            "official_target_exchange_listing_key_isin_name_instrument_type_listing_status": 2177
+            "official_target_exchange_listing_key_isin_name_instrument_type_listing_status": 2196
           }
         },
         "identity_resolution_identity_evidence_totals": {
           "blocked_asset_type_conflict": {
-            "asset_type_conflict": 1612,
+            "asset_type_conflict": 1620,
             "exact_name_match": 4,
-            "official_isin": 1029,
-            "same_isin_existing_listing": 444
+            "official_isin": 1036,
+            "same_isin_existing_listing": 443
           },
           "blocked_symbol_only_missing_non_symbol_identity": {
-            "asset_type_consistent": 3184,
+            "asset_type_consistent": 3190,
             "exact_name_match": 166
           },
           "review_cross_listing_same_isin_exact_name": {
-            "asset_type_consistent": 329,
-            "exact_name_match": 329,
-            "official_isin": 329,
-            "same_isin_existing_listing": 329
+            "asset_type_consistent": 331,
+            "exact_name_match": 331,
+            "official_isin": 331,
+            "same_isin_existing_listing": 331
           },
           "review_cross_listing_same_isin_name_or_scope_gap": {
-            "asset_type_consistent": 3805,
-            "official_isin": 3805,
-            "same_isin_existing_listing": 3805
+            "asset_type_consistent": 3839,
+            "official_isin": 3839,
+            "same_isin_existing_listing": 3839
           },
           "review_distinct_official_isin_new_listing": {
-            "asset_type_consistent": 2177,
+            "asset_type_consistent": 2196,
             "exact_name_match": 3,
-            "official_isin": 2177
+            "official_isin": 2196
           }
         },
         "identity_resolution_clearance_readiness_totals": {
-          "blocked_symbol_only_non_symbol_identity_required": 3184,
-          "blocked_until_asset_type_conflict_resolved": 1612,
-          "needs_official_listing_add_review": 2177,
-          "needs_official_name_or_scope_reconciliation": 3805,
-          "review_ready_same_isin_exact_name_scope_check": 329
+          "blocked_symbol_only_non_symbol_identity_required": 3190,
+          "blocked_until_asset_type_conflict_resolved": 1620,
+          "needs_official_listing_add_review": 2196,
+          "needs_official_name_or_scope_reconciliation": 3839,
+          "review_ready_same_isin_exact_name_scope_check": 331
         },
         "identity_resolution_queue_clearance_readiness_totals": {
           "blocked_asset_type_conflict": {
-            "blocked_until_asset_type_conflict_resolved": 1612
+            "blocked_until_asset_type_conflict_resolved": 1620
           },
           "blocked_symbol_only_missing_non_symbol_identity": {
-            "blocked_symbol_only_non_symbol_identity_required": 3184
+            "blocked_symbol_only_non_symbol_identity_required": 3190
           },
           "review_cross_listing_same_isin_exact_name": {
-            "review_ready_same_isin_exact_name_scope_check": 329
+            "review_ready_same_isin_exact_name_scope_check": 331
           },
           "review_cross_listing_same_isin_name_or_scope_gap": {
-            "needs_official_name_or_scope_reconciliation": 3805
+            "needs_official_name_or_scope_reconciliation": 3839
           },
           "review_distinct_official_isin_new_listing": {
-            "needs_official_listing_add_review": 2177
+            "needs_official_listing_add_review": 2196
           }
         },
         "top_identity_resolution_clearance_batches": [
           {
             "identity_resolution_queue": "review_cross_listing_same_isin_name_or_scope_gap",
             "clearance_readiness": "needs_official_name_or_scope_reconciliation",
-            "rows": 3805,
+            "rows": 3839,
             "review_strategy": "batch_review_same_isin_name_or_scope_reconciliation",
             "evidence_required": "official_target_exchange_status_plus_issuer_or_name_scope_reconciliation",
             "recommended_next_source": "Official target-exchange status plus issuer/name or scope reconciliation for target::existing.",
@@ -5930,7 +5934,7 @@
           {
             "identity_resolution_queue": "blocked_symbol_only_missing_non_symbol_identity",
             "clearance_readiness": "blocked_symbol_only_non_symbol_identity_required",
-            "rows": 3184,
+            "rows": 3190,
             "review_strategy": "batch_hold_symbol_reuse_until_non_symbol_identity_source",
             "evidence_required": "official_non_symbol_identifier_or_keep_absent",
             "recommended_next_source": "Official non-symbol identifier evidence for target::existing, or keep the target listing absent.",
@@ -5939,7 +5943,7 @@
           {
             "identity_resolution_queue": "review_distinct_official_isin_new_listing",
             "clearance_readiness": "needs_official_listing_add_review",
-            "rows": 2177,
+            "rows": 2196,
             "review_strategy": "batch_review_distinct_isin_new_listing_candidates",
             "evidence_required": "official_target_exchange_listing_key_isin_name_instrument_type_listing_status",
             "recommended_next_source": "Official target-exchange listing record for target::existing with listing key, ISIN, name, type, and status.",
@@ -5948,7 +5952,7 @@
           {
             "identity_resolution_queue": "blocked_asset_type_conflict",
             "clearance_readiness": "blocked_until_asset_type_conflict_resolved",
-            "rows": 1612,
+            "rows": 1620,
             "review_strategy": "batch_block_instrument_type_conflict_until_official_resolution",
             "evidence_required": "official_instrument_type_resolution_before_listing_identity_review",
             "recommended_next_source": "Official instrument-type evidence resolving the asset-type conflict for target::existing.",
@@ -5957,7 +5961,7 @@
           {
             "identity_resolution_queue": "review_cross_listing_same_isin_exact_name",
             "clearance_readiness": "review_ready_same_isin_exact_name_scope_check",
-            "rows": 329,
+            "rows": 331,
             "review_strategy": "batch_review_same_isin_exact_name_cross_listing_scope",
             "evidence_required": "official_target_and_existing_exchange_directories_confirm_active_same_instrument",
             "recommended_next_source": "Official active-listing directories for both exchanges in target::existing.",
@@ -5968,7 +5972,7 @@
           {
             "identity_resolution_queue": "blocked_asset_type_conflict",
             "exchange_pair": "LSE::NASDAQ",
-            "rows": 82,
+            "rows": 83,
             "review_strategy": "batch_block_instrument_type_conflict_until_official_resolution",
             "evidence_required": "official_instrument_type_resolution_before_listing_identity_review",
             "recommended_next_source": "Official instrument-type evidence resolving the asset-type conflict for LSE::NASDAQ.",
@@ -5977,7 +5981,7 @@
           {
             "identity_resolution_queue": "blocked_asset_type_conflict",
             "exchange_pair": "HKEX::TWSE",
-            "rows": 77,
+            "rows": 78,
             "review_strategy": "batch_block_instrument_type_conflict_until_official_resolution",
             "evidence_required": "official_instrument_type_resolution_before_listing_identity_review",
             "recommended_next_source": "Official instrument-type evidence resolving the asset-type conflict for HKEX::TWSE.",
@@ -6004,7 +6008,7 @@
           {
             "identity_resolution_queue": "blocked_asset_type_conflict",
             "exchange_pair": "Euronext::NASDAQ",
-            "rows": 56,
+            "rows": 57,
             "review_strategy": "batch_block_instrument_type_conflict_until_official_resolution",
             "evidence_required": "official_instrument_type_resolution_before_listing_identity_review",
             "recommended_next_source": "Official instrument-type evidence resolving the asset-type conflict for Euronext::NASDAQ.",
@@ -6031,7 +6035,7 @@
           {
             "identity_resolution_queue": "blocked_asset_type_conflict",
             "exchange_pair": "XETRA::NASDAQ",
-            "rows": 40,
+            "rows": 42,
             "review_strategy": "batch_block_instrument_type_conflict_until_official_resolution",
             "evidence_required": "official_instrument_type_resolution_before_listing_identity_review",
             "recommended_next_source": "Official instrument-type evidence resolving the asset-type conflict for XETRA::NASDAQ.",
@@ -6157,7 +6161,7 @@
           {
             "identity_resolution_queue": "review_cross_listing_same_isin_exact_name",
             "exchange_pair": "Euronext::XETRA",
-            "rows": 70,
+            "rows": 71,
             "review_strategy": "batch_review_same_isin_exact_name_cross_listing_scope",
             "evidence_required": "official_target_and_existing_exchange_directories_confirm_active_same_instrument",
             "recommended_next_source": "Official active-listing directories for both exchanges in Euronext::XETRA.",
@@ -6184,7 +6188,7 @@
           {
             "identity_resolution_queue": "review_cross_listing_same_isin_exact_name",
             "exchange_pair": "BSE_IN::NSE_IN",
-            "rows": 10,
+            "rows": 11,
             "review_strategy": "batch_review_same_isin_exact_name_cross_listing_scope",
             "evidence_required": "official_target_and_existing_exchange_directories_confirm_active_same_instrument",
             "recommended_next_source": "Official active-listing directories for both exchanges in BSE_IN::NSE_IN.",
@@ -6238,7 +6242,7 @@
           {
             "identity_resolution_queue": "review_cross_listing_same_isin_name_or_scope_gap",
             "exchange_pair": "Euronext::LSE",
-            "rows": 661,
+            "rows": 660,
             "review_strategy": "batch_review_same_isin_name_or_scope_reconciliation",
             "evidence_required": "official_target_exchange_status_plus_issuer_or_name_scope_reconciliation",
             "recommended_next_source": "Official target-exchange status plus issuer/name or scope reconciliation for Euronext::LSE.",
@@ -6247,7 +6251,7 @@
           {
             "identity_resolution_queue": "review_cross_listing_same_isin_name_or_scope_gap",
             "exchange_pair": "BSE_IN::NSE_IN",
-            "rows": 473,
+            "rows": 477,
             "review_strategy": "batch_review_same_isin_name_or_scope_reconciliation",
             "evidence_required": "official_target_exchange_status_plus_issuer_or_name_scope_reconciliation",
             "recommended_next_source": "Official target-exchange status plus issuer/name or scope reconciliation for BSE_IN::NSE_IN.",
@@ -6256,7 +6260,7 @@
           {
             "identity_resolution_queue": "review_cross_listing_same_isin_name_or_scope_gap",
             "exchange_pair": "Euronext::XETRA",
-            "rows": 379,
+            "rows": 384,
             "review_strategy": "batch_review_same_isin_name_or_scope_reconciliation",
             "evidence_required": "official_target_exchange_status_plus_issuer_or_name_scope_reconciliation",
             "recommended_next_source": "Official target-exchange status plus issuer/name or scope reconciliation for Euronext::XETRA.",
@@ -6291,6 +6295,15 @@
           },
           {
             "identity_resolution_queue": "review_cross_listing_same_isin_name_or_scope_gap",
+            "exchange_pair": "NSE_IN::BSE_IN",
+            "rows": 134,
+            "review_strategy": "batch_review_same_isin_name_or_scope_reconciliation",
+            "evidence_required": "official_target_exchange_status_plus_issuer_or_name_scope_reconciliation",
+            "recommended_next_source": "Official target-exchange status plus issuer/name or scope reconciliation for NSE_IN::BSE_IN.",
+            "source_gate": "Do not resolve identity until official listing status and issuer/name or scope differences are reconciled."
+          },
+          {
+            "identity_resolution_queue": "review_cross_listing_same_isin_name_or_scope_gap",
             "exchange_pair": "LSE::NYSE ARCA",
             "rows": 130,
             "review_strategy": "batch_review_same_isin_name_or_scope_reconciliation",
@@ -6305,15 +6318,6 @@
             "review_strategy": "batch_review_same_isin_name_or_scope_reconciliation",
             "evidence_required": "official_target_exchange_status_plus_issuer_or_name_scope_reconciliation",
             "recommended_next_source": "Official target-exchange status plus issuer/name or scope reconciliation for AMS::LSE.",
-            "source_gate": "Do not resolve identity until official listing status and issuer/name or scope differences are reconciled."
-          },
-          {
-            "identity_resolution_queue": "review_cross_listing_same_isin_name_or_scope_gap",
-            "exchange_pair": "NSE_IN::BSE_IN",
-            "rows": 112,
-            "review_strategy": "batch_review_same_isin_name_or_scope_reconciliation",
-            "evidence_required": "official_target_exchange_status_plus_issuer_or_name_scope_reconciliation",
-            "recommended_next_source": "Official target-exchange status plus issuer/name or scope reconciliation for NSE_IN::BSE_IN.",
             "source_gate": "Do not resolve identity until official listing status and issuer/name or scope differences are reconciled."
           },
           {
@@ -6337,7 +6341,7 @@
           {
             "identity_resolution_queue": "review_distinct_official_isin_new_listing",
             "exchange_pair": "UPCOM::NYSE",
-            "rows": 86,
+            "rows": 84,
             "review_strategy": "batch_review_distinct_isin_new_listing_candidates",
             "evidence_required": "official_target_exchange_listing_key_isin_name_instrument_type_listing_status",
             "recommended_next_source": "Official target-exchange listing record for UPCOM::NYSE with listing key, ISIN, name, type, and status.",
@@ -6381,6 +6385,15 @@
           },
           {
             "identity_resolution_queue": "review_distinct_official_isin_new_listing",
+            "exchange_pair": "Euronext::NASDAQ",
+            "rows": 42,
+            "review_strategy": "batch_review_distinct_isin_new_listing_candidates",
+            "evidence_required": "official_target_exchange_listing_key_isin_name_instrument_type_listing_status",
+            "recommended_next_source": "Official target-exchange listing record for Euronext::NASDAQ with listing key, ISIN, name, type, and status.",
+            "source_gate": "Do not add the listing until official target-exchange evidence proves key, ISIN, name, type, and active status."
+          },
+          {
+            "identity_resolution_queue": "review_distinct_official_isin_new_listing",
             "exchange_pair": "Euronext::NYSE",
             "rows": 42,
             "review_strategy": "batch_review_distinct_isin_new_listing_candidates",
@@ -6399,15 +6412,6 @@
           },
           {
             "identity_resolution_queue": "review_distinct_official_isin_new_listing",
-            "exchange_pair": "Euronext::NASDAQ",
-            "rows": 40,
-            "review_strategy": "batch_review_distinct_isin_new_listing_candidates",
-            "evidence_required": "official_target_exchange_listing_key_isin_name_instrument_type_listing_status",
-            "recommended_next_source": "Official target-exchange listing record for Euronext::NASDAQ with listing key, ISIN, name, type, and status.",
-            "source_gate": "Do not add the listing until official target-exchange evidence proves key, ISIN, name, type, and active status."
-          },
-          {
-            "identity_resolution_queue": "review_distinct_official_isin_new_listing",
             "exchange_pair": "BSE_IN::NYSE",
             "rows": 36,
             "review_strategy": "batch_review_distinct_isin_new_listing_candidates",
@@ -6416,7 +6420,7 @@
             "source_gate": "Do not add the listing until official target-exchange evidence proves key, ISIN, name, type, and active status."
           }
         ],
-        "same_isin_exact_name_scope_review_rows": 329,
+        "same_isin_exact_name_scope_review_rows": 331,
         "top_same_isin_exact_name_scope_review_batches": [
           {
             "exchange_pair": "Euronext::LSE",
@@ -6434,7 +6438,7 @@
             "official_source_key": "euronext_etfs",
             "official_asset_type": "ETF",
             "clearance_evidence_required": "official_target_exchange_listing_status_mic_name_instrument_type",
-            "rows": 70,
+            "rows": 71,
             "review_strategy": "batch_review_same_isin_exact_name_cross_listing_scope",
             "evidence_required": "official_target_and_existing_exchange_directories_confirm_active_same_instrument",
             "recommended_next_source": "Official active-listing directories for both exchanges in Euronext::XETRA.",
@@ -6467,7 +6471,7 @@
             "official_source_key": "bse_india_scrips",
             "official_asset_type": "Stock",
             "clearance_evidence_required": "official_target_exchange_listing_status_mic_name_instrument_type",
-            "rows": 10,
+            "rows": 11,
             "review_strategy": "batch_review_same_isin_exact_name_cross_listing_scope",
             "evidence_required": "official_target_and_existing_exchange_directories_confirm_active_same_instrument",
             "recommended_next_source": "Official active-listing directories for both exchanges in BSE_IN::NSE_IN.",
@@ -6629,37 +6633,37 @@
           }
         ],
         "clearance_evidence_totals": {
-          "official_instrument_type_resolution_before_listing_identity_review": 1612,
-          "official_non_symbol_identifier_or_keep_absent": 3184,
-          "official_target_exchange_listing_key_isin_name_instrument_type_listing_status": 2177,
-          "official_target_exchange_listing_status_mic_name_instrument_type": 329,
-          "official_target_exchange_listing_status_plus_name_or_scope_reconciliation": 3805
+          "official_instrument_type_resolution_before_listing_identity_review": 1620,
+          "official_non_symbol_identifier_or_keep_absent": 3190,
+          "official_target_exchange_listing_key_isin_name_instrument_type_listing_status": 2196,
+          "official_target_exchange_listing_status_mic_name_instrument_type": 331,
+          "official_target_exchange_listing_status_plus_name_or_scope_reconciliation": 3839
         },
         "exchange_totals": {
           "ADX": 33,
-          "AMS": 301,
+          "AMS": 300,
           "BATS": 20,
           "BHB": 9,
           "BIST": 20,
           "BK": 27,
-          "BSE_IN": 752,
+          "BSE_IN": 759,
           "BVB": 121,
           "CSE_MA": 37,
           "DFM": 16,
-          "Euronext": 2251,
-          "HKEX": 82,
+          "Euronext": 2263,
+          "HKEX": 83,
           "HNX": 156,
           "IDX": 243,
           "ISE": 6,
           "KRX": 3,
-          "LSE": 1184,
+          "LSE": 1194,
           "MSX": 14,
-          "NASDAQ": 75,
+          "NASDAQ": 80,
           "NEO": 85,
-          "NSE_IN": 290,
+          "NSE_IN": 317,
           "NSE_KE": 24,
           "NYSE": 533,
-          "NYSE ARCA": 24,
+          "NYSE ARCA": 25,
           "NYSE MKT": 23,
           "NZX": 126,
           "OSL": 66,
@@ -6673,41 +6677,41 @@
           "TSE": 1187,
           "TSX": 460,
           "TSXV": 556,
-          "TWSE": 36,
+          "TWSE": 38,
           "UPCOM": 468,
-          "XETRA": 796
+          "XETRA": 801
         },
         "official_asset_type_totals": {
-          "ETF": 3960,
-          "Stock": 7147
+          "ETF": 3992,
+          "Stock": 7184
         },
         "asset_type_mismatch_totals": {
-          "false": 9495,
-          "true": 1612
+          "false": 9556,
+          "true": 1620
         },
         "official_source_totals": {
           "adx_market_watch": 33,
           "bahrain_bourse_listed_companies": 9,
           "bist_kap_mkk_listed_securities": 20,
           "boursa_kuwait_stocks": 27,
-          "bse_india_scrips": 752,
+          "bse_india_scrips": 759,
           "bvb_shares_directory": 121,
           "cboe_canada_listing_directory": 85,
           "cse_ma_listed_companies": 37,
-          "deutsche_boerse_xetra_all_tradable_equities": 796,
+          "deutsche_boerse_xetra_all_tradable_equities": 801,
           "dfm_listed_securities": 16,
           "euronext_equities": 498,
-          "euronext_etfs": 2126,
-          "hkex_securities_list": 82,
+          "euronext_etfs": 2137,
+          "hkex_securities_list": 83,
           "hnx_listed_securities": 156,
           "idx_company_profiles": 243,
           "jpx_listed_issues": 1187,
           "krx_listed_companies": 3,
-          "lse_price_explorer": 1184,
+          "lse_price_explorer": 1194,
           "muscat_securities_companies": 14,
-          "nasdaq_listed": 75,
-          "nasdaq_other_listed": 216,
-          "nse_india_securities_available": 290,
+          "nasdaq_listed": 80,
+          "nasdaq_other_listed": 217,
+          "nse_india_securities_available": 317,
           "nse_ke_listed_companies": 24,
           "nzx_instruments": 126,
           "otc_markets_stock_screener": 36,
@@ -6719,38 +6723,38 @@
           "sgx_securities_prices": 142,
           "tadawul_main_market_watch": 217,
           "tmx_listed_issuers": 1016,
-          "twse_listed_companies": 36,
+          "twse_listed_companies": 38,
           "upcom_registered_securities": 468
         },
-        "asset_type_mismatches": 1612
+        "asset_type_mismatches": 1620
       },
       "artifacts": [
         {
           "path": "data/reports/masterfile_collision_review.json",
-          "generated_at": "2026-05-25T12:53:29Z",
-          "rows": 11107
+          "generated_at": "2026-06-02T19:18:19Z",
+          "rows": 11176
         }
       ],
       "acceptance_matrix": {
         "campaign_key": "masterfile_collisions",
         "exchange_scope": "all",
-        "affected_artifact_rows": 11107,
+        "affected_artifact_rows": 11176,
         "campaign_metric_deltas": {
           "decision_totals": {
             "children": {
               "new_listing_candidate_requires_official_listing_add_review": {
-                "baseline": 2762,
-                "current": 2762,
+                "baseline": 2789,
+                "current": 2789,
                 "delta": 0
               },
               "same_isin_cross_listing_candidate_requires_exchange_scope_review": {
-                "baseline": 4578,
-                "current": 4578,
+                "baseline": 4613,
+                "current": 4613,
                 "delta": 0
               },
               "symbol_collision_requires_non_symbol_identity_source": {
-                "baseline": 3767,
-                "current": 3767,
+                "baseline": 3774,
+                "current": 3774,
                 "delta": 0
               }
             }
@@ -6758,28 +6762,28 @@
           "review_bucket_totals": {
             "children": {
               "distinct_official_isin_new_listing_candidate": {
-                "baseline": 2177,
-                "current": 2177,
+                "baseline": 2196,
+                "current": 2196,
                 "delta": 0
               },
               "hold_symbol_only_collision_needs_non_symbol_identity": {
-                "baseline": 3184,
-                "current": 3184,
+                "baseline": 3190,
+                "current": 3190,
                 "delta": 0
               },
               "resolve_asset_type_conflict_before_identity_review": {
-                "baseline": 1612,
-                "current": 1612,
+                "baseline": 1620,
+                "current": 1620,
                 "delta": 0
               },
               "same_isin_cross_listing_needs_name_or_scope_review": {
-                "baseline": 3805,
-                "current": 3805,
+                "baseline": 3839,
+                "current": 3839,
                 "delta": 0
               },
               "same_isin_exact_name_cross_listing_candidate": {
-                "baseline": 329,
-                "current": 329,
+                "baseline": 331,
+                "current": 331,
                 "delta": 0
               }
             }
@@ -6787,25 +6791,25 @@
           "review_priority_totals": {
             "children": {
               "P1": {
-                "baseline": 329,
-                "current": 329,
+                "baseline": 331,
+                "current": 331,
                 "delta": 0
               },
               "P2": {
-                "baseline": 7594,
-                "current": 7594,
+                "baseline": 7655,
+                "current": 7655,
                 "delta": 0
               },
               "P3": {
-                "baseline": 3184,
-                "current": 3184,
+                "baseline": 3190,
+                "current": 3190,
                 "delta": 0
               }
             }
           },
           "review_rows": {
-            "baseline": 11107,
-            "current": 11107,
+            "baseline": 11176,
+            "current": 11176,
             "delta": 0
           }
         },
@@ -6872,7 +6876,7 @@
       "delta_evidence": {
         "status": "review_queue_only_no_data_apply",
         "known_deltas": {
-          "current_collision_review_rows": 11107,
+          "current_collision_review_rows": 11176,
           "collision_resolution_delta": 0,
           "listing_addition_delta": 0,
           "warn_quarantine_delta": {
@@ -6892,7 +6896,7 @@
       },
       "before_after_summary": {
         "exchange_scope": "all",
-        "affected_artifact_rows": 11107,
+        "affected_artifact_rows": 11176,
         "global_before_after": {
           "isin_delta": {
             "before": 59848,
@@ -6946,12 +6950,12 @@
           }
         },
         "policy": "Before/after values are release evidence only; any non-zero delta still requires listing-keyed source review.",
-        "before_after_context": "exchange_scope=all;affected_artifact_rows=11107;global_delta_count=6;nonzero_global_delta_count=0;nonzero_exchange_scope_delta_count=0;warn_delta=0;quarantine_delta=0"
+        "before_after_context": "exchange_scope=all;affected_artifact_rows=11176;global_delta_count=6;nonzero_global_delta_count=0;nonzero_exchange_scope_delta_count=0;warn_delta=0;quarantine_delta=0"
       },
       "campaign_context": "priority=6;campaign_key=masterfile_collisions;status=listing_keyed_review_queue_ready_no_symbol_only_additions;exchange_scope=all",
-      "artifact_context": "artifact_count=1;affected_artifact_rows=11107;primary_artifact=data/reports/masterfile_collision_review.json;primary_artifact_rows=11107",
+      "artifact_context": "artifact_count=1;affected_artifact_rows=11176;primary_artifact=data/reports/masterfile_collision_review.json;primary_artifact_rows=11176",
       "delta_review_context": "delta_status=review_queue_only_no_data_apply;missing_delta_count=0;before_after_present=true;next_action_present=true",
-      "closure_context": "closure_gate=review_artifact_rows_must_be_processed_before_campaign_closure;artifact_rows=11107;missing_delta_count=0;closure_status=ready_after_review_artifact_processing"
+      "closure_context": "closure_gate=review_artifact_rows_must_be_processed_before_campaign_closure;artifact_rows=11176;missing_delta_count=0;closure_status=ready_after_review_artifact_processing"
     },
     {
       "priority": 7,
@@ -10730,12 +10734,12 @@
       "artifacts": [
         {
           "path": "data/reports/improvement_baseline.json",
-          "generated_at": "2026-06-02T19:13:29Z",
+          "generated_at": "2026-06-02T19:18:20Z",
           "rows": 0
         },
         {
           "path": "data/reports/improvement_deltas.json",
-          "generated_at": "2026-06-02T19:13:30Z",
+          "generated_at": "2026-06-02T19:18:20Z",
           "rows": 0
         }
       ],
@@ -10833,7 +10837,7 @@
       "delta_evidence": {
         "status": "baseline_only",
         "known_deltas": {
-          "baseline_generated_at": "2026-06-02T19:13:29Z",
+          "baseline_generated_at": "2026-06-02T19:18:20Z",
           "future_delta_reference": "data/reports/improvement_baseline.json",
           "current_delta_report": "data/reports/improvement_deltas.json"
         },
@@ -10994,15 +10998,15 @@
       "campaign_key": "masterfile_collisions",
       "status": "listing_keyed_review_queue_ready_no_symbol_only_additions",
       "delta_status": "review_queue_only_no_data_apply",
-      "artifact_rows": 11107,
+      "artifact_rows": 11176,
       "primary_artifact": "data/reports/masterfile_collision_review.json",
-      "primary_artifact_rows": 11107,
+      "primary_artifact_rows": 11176,
       "missing_delta_evidence": [],
       "closure_gate": "review_artifact_rows_must_be_processed_before_campaign_closure",
       "next_action": "process same-ISIN cross-listing candidates first, with exchange/MIC/name/instrument-type review gates",
       "recommended_next_source": "Official exchange directories, MIC/listing-key evidence, ISIN, instrument type, and issuer-name evidence for both sides of the pair.",
       "source_gate": "Do not resolve collisions with symbol-only matches; require listing-key, exchange/MIC, ISIN, name, and instrument-type review.",
-      "closure_context": "closure_gate=review_artifact_rows_must_be_processed_before_campaign_closure;artifact_rows=11107;missing_delta_count=0;closure_status=ready_after_review_artifact_processing"
+      "closure_context": "closure_gate=review_artifact_rows_must_be_processed_before_campaign_closure;artifact_rows=11176;missing_delta_count=0;closure_status=ready_after_review_artifact_processing"
     },
     {
       "priority": 7,
@@ -11069,7 +11073,7 @@
   ],
   "next_review_workload": {
     "total_batches": 10,
-    "total_rows": 29053,
+    "total_rows": 29122,
     "blocked_batches": 1,
     "rows_by_campaign_key": {
       "asx": 114,
@@ -11077,7 +11081,7 @@
       "baseline": 0,
       "canada": 525,
       "freshness": 4213,
-      "masterfile_collisions": 11107,
+      "masterfile_collisions": 11176,
       "ohlcv": 366,
       "otc": 11202,
       "symbol_changes": 271,
@@ -11085,7 +11089,7 @@
     },
     "rows_by_closure_gate": {
       "future_campaign_delta_comparison_required_before_release_closure": 0,
-      "review_artifact_rows_must_be_processed_before_campaign_closure": 29053
+      "review_artifact_rows_must_be_processed_before_campaign_closure": 29122
     },
     "largest_batch": {
       "priority": 2,
@@ -11095,7 +11099,7 @@
       "closure_gate": "review_artifact_rows_must_be_processed_before_campaign_closure"
     },
     "policy": "Workload rows are review workload only. They do not authorize data changes or closure without processing the listing-keyed artifacts.",
-    "workload_context": "batches=10;rows=29053;blocked_batches=1;top_campaign=otc;top_rows=11202;top_gate=review_artifact_rows_must_be_processed_before_campaign_closure"
+    "workload_context": "batches=10;rows=29122;blocked_batches=1;top_campaign=otc;top_rows=11202;top_gate=review_artifact_rows_must_be_processed_before_campaign_closure"
   },
   "next_review_execution_plan": [
     {
@@ -11267,7 +11271,7 @@
       "execution_order": 6,
       "priority": 6,
       "campaign_key": "masterfile_collisions",
-      "artifact_rows": 11107,
+      "artifact_rows": 11176,
       "primary_artifact": "data/reports/masterfile_collision_review.json",
       "closure_gate": "review_artifact_rows_must_be_processed_before_campaign_closure",
       "evidence_command": "python scripts/build_masterfile_collision_review.py && python scripts/build_improvement_delta_report.py",
@@ -11292,8 +11296,8 @@
       "review_required_preflight_checks": [],
       "review_required_preflight_context": "campaign_key=masterfile_collisions;preflight_check_count=0;manual_review_required_before_run=false;data_change_authorized=false",
       "ranking_reason": "objective_priority_order_with_local_review_artifact_processing",
-      "ranking_context": "execution_order=6;priority=6;campaign_key=masterfile_collisions;artifact_rows=11107;network_required=false;ranking_reason=objective_priority_order_with_local_review_artifact_processing",
-      "execution_context": "priority=6;campaign_key=masterfile_collisions;artifact_rows=11107;command_mode=local_report_rebuild;network_required=false;data_change_authorized=false"
+      "ranking_context": "execution_order=6;priority=6;campaign_key=masterfile_collisions;artifact_rows=11176;network_required=false;ranking_reason=objective_priority_order_with_local_review_artifact_processing",
+      "execution_context": "priority=6;campaign_key=masterfile_collisions;artifact_rows=11176;command_mode=local_report_rebuild;network_required=false;data_change_authorized=false"
     },
     {
       "execution_order": 7,
@@ -11429,9 +11433,9 @@
     "local_report_rebuild_actions": 7,
     "network_evidence_refresh_actions": 3,
     "network_required_rows": 4850,
-    "local_report_rebuild_rows": 24203,
+    "local_report_rebuild_rows": 24272,
     "rows_by_command_mode": {
-      "local_report_rebuild": 24203,
+      "local_report_rebuild": 24272,
       "network_evidence_refresh": 4850
     },
     "network_campaign_keys": [

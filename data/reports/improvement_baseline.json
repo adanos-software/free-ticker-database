@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T19:13:29Z",
+    "generated_at": "2026-06-02T19:18:20Z",
     "purpose": "Baseline snapshot for future campaign before/after deltas. It is not a data-fill source.",
     "source_files": {
       "coverage_report": "data/reports/coverage_report.json",
@@ -109,23 +109,23 @@
       }
     },
     "masterfile_collisions": {
-      "review_rows": 11107,
+      "review_rows": 11176,
       "decision_totals": {
-        "new_listing_candidate_requires_official_listing_add_review": 2762,
-        "same_isin_cross_listing_candidate_requires_exchange_scope_review": 4578,
-        "symbol_collision_requires_non_symbol_identity_source": 3767
+        "new_listing_candidate_requires_official_listing_add_review": 2789,
+        "same_isin_cross_listing_candidate_requires_exchange_scope_review": 4613,
+        "symbol_collision_requires_non_symbol_identity_source": 3774
       },
       "review_bucket_totals": {
-        "distinct_official_isin_new_listing_candidate": 2177,
-        "hold_symbol_only_collision_needs_non_symbol_identity": 3184,
-        "resolve_asset_type_conflict_before_identity_review": 1612,
-        "same_isin_cross_listing_needs_name_or_scope_review": 3805,
-        "same_isin_exact_name_cross_listing_candidate": 329
+        "distinct_official_isin_new_listing_candidate": 2196,
+        "hold_symbol_only_collision_needs_non_symbol_identity": 3190,
+        "resolve_asset_type_conflict_before_identity_review": 1620,
+        "same_isin_cross_listing_needs_name_or_scope_review": 3839,
+        "same_isin_exact_name_cross_listing_candidate": 331
       },
       "review_priority_totals": {
-        "P1": 329,
-        "P2": 7594,
-        "P3": 3184
+        "P1": 331,
+        "P2": 7655,
+        "P3": 3190
       }
     },
     "symbol_changes": {
@@ -1370,7 +1370,7 @@
       "canada": "campaign_key=canada;metric_count=5;nested_metric_count=0;numeric_row_total=1217",
       "asx": "campaign_key=asx;metric_count=2;nested_metric_count=1;numeric_row_total=114",
       "weak_sector": "campaign_key=weak_sector;metric_count=2;nested_metric_count=1;numeric_row_total=646",
-      "masterfile_collisions": "campaign_key=masterfile_collisions;metric_count=4;nested_metric_count=3;numeric_row_total=11107",
+      "masterfile_collisions": "campaign_key=masterfile_collisions;metric_count=4;nested_metric_count=3;numeric_row_total=11176",
       "symbol_changes": "campaign_key=symbol_changes;metric_count=3;nested_metric_count=2;numeric_row_total=271",
       "ohlcv": "campaign_key=ohlcv;metric_count=4;nested_metric_count=2;numeric_row_total=366",
       "freshness": "campaign_key=freshness;metric_count=14;nested_metric_count=8;numeric_row_total=4882",

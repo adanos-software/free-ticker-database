@@ -1,6 +1,6 @@
 # Improvement Baseline
 
-Generated: `2026-06-02T19:13:29Z`
+Generated: `2026-06-02T19:18:20Z`
 
 Baseline snapshot for future before/after deltas. It does not authorize inferred metadata changes.
 
@@ -87,11 +87,11 @@ Global context: `metric_count=16;tickers=61466;listing_keys=71043;source_gap_row
 
 | Metric | Value |
 |---|---:|
-| baseline_context | `campaign_key=masterfile_collisions;metric_count=4;nested_metric_count=3;numeric_row_total=11107` |
-| review_rows | `11107` |
-| decision_totals | `{"new_listing_candidate_requires_official_listing_add_review": 2762, "same_isin_cross_listing_candidate_requires_exchange_scope_review": 4578, "symbol_collision_requires_non_symbol_identity_source": 3767}` |
-| review_bucket_totals | `{"distinct_official_isin_new_listing_candidate": 2177, "hold_symbol_only_collision_needs_non_symbol_identity": 3184, "resolve_asset_type_conflict_before_identity_review": 1612, "same_isin_cross_listing_needs_name_or_scope_review": 3805, "same_isin_exact_name_cross_listing_candidate": 329}` |
-| review_priority_totals | `{"P1": 329, "P2": 7594, "P3": 3184}` |
+| baseline_context | `campaign_key=masterfile_collisions;metric_count=4;nested_metric_count=3;numeric_row_total=11176` |
+| review_rows | `11176` |
+| decision_totals | `{"new_listing_candidate_requires_official_listing_add_review": 2789, "same_isin_cross_listing_candidate_requires_exchange_scope_review": 4613, "symbol_collision_requires_non_symbol_identity_source": 3774}` |
+| review_bucket_totals | `{"distinct_official_isin_new_listing_candidate": 2196, "hold_symbol_only_collision_needs_non_symbol_identity": 3190, "resolve_asset_type_conflict_before_identity_review": 1620, "same_isin_cross_listing_needs_name_or_scope_review": 3839, "same_isin_exact_name_cross_listing_candidate": 331}` |
+| review_priority_totals | `{"P1": 331, "P2": 7655, "P3": 3190}` |
 
 ### symbol_changes
 
