@@ -58,6 +58,31 @@ def test_compact_row_supports_otc_name_mismatch_review_fields() -> None:
     assert "suggested_name" not in compacted
 
 
+def test_compact_row_supports_source_gap_review_fields() -> None:
+    row = {
+        "field": "missing_isin_primary",
+        "target_field": "isin",
+        "listing_key": "ASX::ABCD",
+        "ticker": "ABCD",
+        "exchange": "ASX",
+        "asset_type": "Stock",
+        "name": "Example Ltd",
+        "gap_class": "official_identifier_not_exposed_source_gap",
+        "recommended_next_source": "Official CSD/security registry.",
+        "source_gate": "Do not infer from issuer name.",
+        "source_gap_context": "listing_key=ASX::ABCD;field=missing_isin_primary",
+        "inferred_isin": "Must Not Be Included",
+    }
+
+    compacted = compact_row(row, "source_gap")
+
+    assert compacted["listing_key"] == "ASX::ABCD"
+    assert compacted["target_field"] == "isin"
+    assert compacted["gap_class"] == "official_identifier_not_exposed_source_gap"
+    assert compacted["source_gap_context"] == "listing_key=ASX::ABCD;field=missing_isin_primary"
+    assert "inferred_isin" not in compacted
+
+
 def test_build_prompt_forbids_invented_data_and_requires_exact_count() -> None:
     prompt = build_prompt(
         [

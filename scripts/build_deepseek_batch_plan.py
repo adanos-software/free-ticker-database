@@ -56,11 +56,19 @@ DEFAULT_QUEUES = [
         reason="OTC official-name mismatch queue; DeepSeek can triage identity evidence needs, but names and metadata stay blocked until listing-keyed official evidence is reviewed locally.",
     ),
     QueueConfig(
+        queue="source_gap",
+        review_kind="source_gap",
+        source_csv=REPORTS_DIR / "source_gap_classification.csv",
+        key_field="listing_key",
+        priority=4,
+        reason="Residual source-gap queue; DeepSeek can prioritize evidence follow-up for missing ISIN, stock sector, and ETF category gaps without suggesting direct fills.",
+    ),
+    QueueConfig(
         queue="weak_sector",
         review_kind="weak_sector",
         source_csv=REPORTS_DIR / "weak_sector_residual_review.csv",
         key_field="listing_key",
-        priority=4,
+        priority=5,
         reason="Official-sector candidate queue; DeepSeek can prioritize normalization review, not sector application.",
     ),
 ]

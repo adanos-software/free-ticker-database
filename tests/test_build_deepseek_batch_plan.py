@@ -131,7 +131,16 @@ def test_default_queues_include_otc_name_mismatch_after_otc_scope() -> None:
     assert queues["otc_name_mismatch"].review_kind == "otc_name_mismatch"
     assert queues["otc_name_mismatch"].source_csv.name == "otc_name_mismatch_review.csv"
     assert queues["otc_name_mismatch"].key_field == "listing_key"
-    assert queues["otc_scope"].priority < queues["otc_name_mismatch"].priority < queues["weak_sector"].priority
+    assert queues["otc_scope"].priority < queues["otc_name_mismatch"].priority < queues["source_gap"].priority
+
+
+def test_default_queues_include_source_gap_before_weak_sector() -> None:
+    queues = {config.queue: config for config in DEFAULT_QUEUES}
+
+    assert queues["source_gap"].review_kind == "source_gap"
+    assert queues["source_gap"].source_csv.name == "source_gap_classification.csv"
+    assert queues["source_gap"].key_field == "listing_key"
+    assert queues["source_gap"].priority < queues["weak_sector"].priority
 
 
 def test_write_batch_and_markdown_include_policy(tmp_path) -> None:
