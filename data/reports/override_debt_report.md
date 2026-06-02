@@ -1,14 +1,14 @@
 # Override Debt Report
 
-Generated at: `2026-04-22T09:47:03Z`
+Generated at: `2026-06-02T20:43:07Z`
 
 ## Summary
 
 | Metric | Value |
 |---|---:|
-| metadata_present_rows | 3,901 |
-| metadata_resolved_exact | 3,488 |
-| metadata_resolved_canonical | 410 |
+| metadata_present_rows | 19,732 |
+| metadata_resolved_exact | 19,729 |
+| metadata_resolved_canonical | 0 |
 | metadata_partial_canonical | 0 |
 | metadata_resolved_policy | 3 |
 | metadata_partial_policy | 0 |
