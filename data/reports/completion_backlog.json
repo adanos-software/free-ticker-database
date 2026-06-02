@@ -122,7 +122,7 @@
       "field": "missing_isin_primary",
       "missing_count": 42,
       "notes": "China gaps are mixed stocks and ETFs; handle asset types separately.",
-      "official_source_count": 1,
+      "official_source_count": 2,
       "priority_bucket": "ranked_by_missing_count",
       "priority_rank": 7,
       "recommended_source": "Official SSE/SZSE share and ETF feeds first; reviewed EODHD/XTB fallback only for unresolved rows.",
@@ -1395,7 +1395,7 @@
       "field": "missing_sector_stock",
       "missing_count": 13,
       "notes": "Good candidate for deterministic local review batches.",
-      "official_source_count": 2,
+      "official_source_count": 4,
       "priority_bucket": "ranked_by_missing_count",
       "priority_rank": 35,
       "recommended_source": "FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available.",
@@ -1452,7 +1452,7 @@
       "field": "missing_sector_stock",
       "missing_count": 9,
       "notes": "Source research needed before applying.",
-      "official_source_count": 1,
+      "official_source_count": 2,
       "priority_bucket": "ranked_by_missing_count",
       "priority_rank": 38,
       "recommended_source": "Official industry classification or reviewed FinanceDatabase sector fallback.",
@@ -2406,7 +2406,7 @@
       "missing_isin_primary": 846,
       "missing_sector_stock": 2600
     },
-    "generated_at": "2026-05-31T04:00:46Z",
+    "generated_at": "2026-06-02T22:48:42Z",
     "legacy_primary_ticker_collision_rows": 1,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
@@ -2420,7 +2420,7 @@
         "Missing venues"
       ]
     },
-    "official_masterfile_collisions": 11144,
+    "official_masterfile_collisions": 11182,
     "rows": 126
   }
 }
