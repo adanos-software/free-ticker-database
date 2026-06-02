@@ -1,18 +1,18 @@
 # DeepSeek Batch Plan
 
-Generated: `2026-06-02T21:16:13Z`
+Generated: `2026-06-02T23:05:27Z`
 
 Policy: DeepSeek output is advisory triage only and cannot authorize direct data application.
 
 ## Queue Backlog
 
-| Queue | Rows | Duplicate Keys | Already Reviewed | Unreviewed | Priority |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| masterfile_collision | 11176 | 0 | 11176 | 0 | 1 |
-| otc_scope | 11054 | 0 | 11054 | 0 | 2 |
-| otc_name_mismatch | 24 | 0 | 24 | 0 | 3 |
-| source_gap | 3548 | 184 | 3364 | 0 | 4 |
-| weak_sector | 646 | 0 | 646 | 0 | 5 |
+| Queue | Rows | Unique Keys | Duplicate Keys | Reviewed Keys | Unreviewed Keys | Status | Priority |
+| --- | ---: | ---: | ---: | ---: | ---: | --- | ---: |
+| masterfile_collision | 11176 | 11176 | 0 | 11176 | 0 | complete | 1 |
+| otc_scope | 11054 | 11054 | 0 | 11054 | 0 | complete | 2 |
+| otc_name_mismatch | 24 | 24 | 0 | 24 | 0 | complete | 3 |
+| source_gap | 3548 | 3364 | 184 | 3364 | 0 | complete | 4 |
+| weak_sector | 646 | 646 | 0 | 646 | 0 | complete | 5 |
 
 ## Selected Batch
 

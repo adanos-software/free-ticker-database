@@ -127,7 +127,9 @@ def queue_status(config: QueueConfig, reviewed_by_kind: dict[str, set[str]]) -> 
     keys = [row.get(config.key_field, "") for row in rows]
     nonblank_keys = [key for key in keys if key]
     unique_keys = set(nonblank_keys)
+    reviewed_unique_keys = unique_keys & reviewed
     unreviewed = select_unreviewed_unique_rows(rows, key_field=config.key_field, reviewed=reviewed)
+    unreviewed_unique_keys = {row.get(config.key_field, "") for row in unreviewed if row.get(config.key_field, "")}
     return {
         "queue": config.queue,
         "review_kind": config.review_kind,
@@ -136,9 +138,13 @@ def queue_status(config: QueueConfig, reviewed_by_kind: dict[str, set[str]]) -> 
         "priority": config.priority,
         "reason": config.reason,
         "rows": len(rows),
+        "unique_review_keys": len(unique_keys),
         "duplicate_key_rows": len(nonblank_keys) - len(unique_keys),
-        "already_deepseek_reviewed": len(unique_keys & reviewed),
+        "already_deepseek_reviewed": len(reviewed_unique_keys),
+        "reviewed_unique_keys": len(reviewed_unique_keys),
         "unreviewed_rows": len(unreviewed),
+        "unreviewed_unique_keys": len(unreviewed_unique_keys),
+        "review_coverage_status": "complete" if not unreviewed_unique_keys else "needs_deepseek_batch",
     }
 
 
@@ -314,13 +320,15 @@ def render_markdown(payload: dict[str, Any]) -> str:
         "",
         "## Queue Backlog",
         "",
-        "| Queue | Rows | Duplicate Keys | Already Reviewed | Unreviewed | Priority |",
-        "| --- | ---: | ---: | ---: | ---: | ---: |",
+        "| Queue | Rows | Unique Keys | Duplicate Keys | Reviewed Keys | Unreviewed Keys | Status | Priority |",
+        "| --- | ---: | ---: | ---: | ---: | ---: | --- | ---: |",
     ]
     for queue in payload["queues"]:
         lines.append(
-            f"| {queue['queue']} | {queue['rows']} | {queue.get('duplicate_key_rows', 0)} | {queue['already_deepseek_reviewed']} | "
-            f"{queue['unreviewed_rows']} | {queue['priority']} |"
+            f"| {queue['queue']} | {queue['rows']} | {queue.get('unique_review_keys', 0)} | "
+            f"{queue.get('duplicate_key_rows', 0)} | {queue.get('reviewed_unique_keys', queue['already_deepseek_reviewed'])} | "
+            f"{queue.get('unreviewed_unique_keys', queue['unreviewed_rows'])} | "
+            f"{queue.get('review_coverage_status', '')} | {queue['priority']} |"
         )
     lines.extend(
         [

@@ -120,10 +120,50 @@ def test_build_plan_deduplicates_source_queue_keys_before_batching(tmp_path) -> 
     )
 
     assert payload["queues"][0]["rows"] == 3
+    assert payload["queues"][0]["unique_review_keys"] == 2
     assert payload["queues"][0]["duplicate_key_rows"] == 1
+    assert payload["queues"][0]["reviewed_unique_keys"] == 0
     assert payload["queues"][0]["unreviewed_rows"] == 2
+    assert payload["queues"][0]["unreviewed_unique_keys"] == 2
+    assert payload["queues"][0]["review_coverage_status"] == "needs_deepseek_batch"
     assert [row["target_listing_key"] for row in rows] == ["A::1", "B::2"]
     assert [row["ticker"] for row in rows] == ["A", "B"]
+
+
+def test_build_plan_reports_complete_key_coverage_for_reviewed_duplicate_rows(tmp_path) -> None:
+    summary = tmp_path / "deepseek_review_summary.csv"
+    write_csv(summary, ["listing_key", "review_kind"], [{"listing_key": "A::1", "review_kind": "source_gap"}])
+    source_gap = tmp_path / "source_gap.csv"
+    write_csv(
+        source_gap,
+        ["listing_key", "ticker", "field"],
+        [
+            {"listing_key": "A::1", "ticker": "A", "field": "missing_isin_primary"},
+            {"listing_key": "A::1", "ticker": "A", "field": "missing_sector_stock"},
+        ],
+    )
+    configs = [QueueConfig("source_gap", "source_gap", source_gap, "listing_key", 1, "Source gaps.")]
+
+    payload, rows, fieldnames = build_plan(
+        configs=configs,
+        review_summary_csv=summary,
+        requested_queue="auto",
+        limit=10,
+        batch_size=5,
+        batch_csv=tmp_path / "batch.csv",
+    )
+
+    assert payload["queues"][0]["rows"] == 2
+    assert payload["queues"][0]["unique_review_keys"] == 1
+    assert payload["queues"][0]["duplicate_key_rows"] == 1
+    assert payload["queues"][0]["already_deepseek_reviewed"] == 1
+    assert payload["queues"][0]["reviewed_unique_keys"] == 1
+    assert payload["queues"][0]["unreviewed_rows"] == 0
+    assert payload["queues"][0]["unreviewed_unique_keys"] == 0
+    assert payload["queues"][0]["review_coverage_status"] == "complete"
+    assert payload["selected_batch"]["queue"] is None
+    assert rows == []
+    assert fieldnames == []
 
 
 def test_default_queues_include_otc_name_mismatch_after_otc_scope() -> None:
@@ -159,9 +199,13 @@ def test_write_batch_and_markdown_include_policy(tmp_path) -> None:
                 {
                     "queue": "otc_scope",
                     "rows": 1,
+                    "unique_review_keys": 1,
                     "duplicate_key_rows": 0,
                     "already_deepseek_reviewed": 0,
+                    "reviewed_unique_keys": 0,
                     "unreviewed_rows": 1,
+                    "unreviewed_unique_keys": 1,
+                    "review_coverage_status": "needs_deepseek_batch",
                     "priority": 1,
                 }
             ],
@@ -179,6 +223,8 @@ def test_write_batch_and_markdown_include_policy(tmp_path) -> None:
 
     assert "advisory triage only" in markdown
     assert "Duplicate Keys" in markdown
+    assert "Unique Keys" in markdown
+    assert "Unreviewed Keys" in markdown
     assert "DEEPSEEK_API_KEY" in markdown
     assert "--dry-run" in markdown
 

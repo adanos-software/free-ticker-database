@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T21:16:13Z",
+    "generated_at": "2026-06-02T23:05:27Z",
     "review_summary_csv": "data/reports/deepseek_review_summary.csv",
     "policy": "This plan prepares DeepSeek advisory triage only. DeepSeek output must not authorize inferred identifiers, sectors, categories, names, symbol changes, scope changes, or direct data application."
   },
@@ -13,9 +13,13 @@
       "priority": 1,
       "reason": "Largest official-masterfile identity queue; DeepSeek can triage likely cross-listing vs. still-needs-evidence cases without applying data.",
       "rows": 11176,
+      "unique_review_keys": 11176,
       "duplicate_key_rows": 0,
       "already_deepseek_reviewed": 11176,
-      "unreviewed_rows": 0
+      "reviewed_unique_keys": 11176,
+      "unreviewed_rows": 0,
+      "unreviewed_unique_keys": 0,
+      "review_coverage_status": "complete"
     },
     {
       "queue": "otc_scope",
@@ -25,9 +29,13 @@
       "priority": 2,
       "reason": "Large OTC warning/source-gap queue; DeepSeek can summarize evidence gaps while OTC names and metadata remain blocked.",
       "rows": 11054,
+      "unique_review_keys": 11054,
       "duplicate_key_rows": 0,
       "already_deepseek_reviewed": 11054,
-      "unreviewed_rows": 0
+      "reviewed_unique_keys": 11054,
+      "unreviewed_rows": 0,
+      "unreviewed_unique_keys": 0,
+      "review_coverage_status": "complete"
     },
     {
       "queue": "otc_name_mismatch",
@@ -37,9 +45,13 @@
       "priority": 3,
       "reason": "OTC official-name mismatch queue; DeepSeek can triage identity evidence needs, but names and metadata stay blocked until listing-keyed official evidence is reviewed locally.",
       "rows": 24,
+      "unique_review_keys": 24,
       "duplicate_key_rows": 0,
       "already_deepseek_reviewed": 24,
-      "unreviewed_rows": 0
+      "reviewed_unique_keys": 24,
+      "unreviewed_rows": 0,
+      "unreviewed_unique_keys": 0,
+      "review_coverage_status": "complete"
     },
     {
       "queue": "source_gap",
@@ -49,9 +61,13 @@
       "priority": 4,
       "reason": "Residual source-gap queue; DeepSeek can prioritize evidence follow-up for missing ISIN, stock sector, and ETF category gaps without suggesting direct fills.",
       "rows": 3548,
+      "unique_review_keys": 3364,
       "duplicate_key_rows": 184,
       "already_deepseek_reviewed": 3364,
-      "unreviewed_rows": 0
+      "reviewed_unique_keys": 3364,
+      "unreviewed_rows": 0,
+      "unreviewed_unique_keys": 0,
+      "review_coverage_status": "complete"
     },
     {
       "queue": "weak_sector",
@@ -61,9 +77,13 @@
       "priority": 5,
       "reason": "Official-sector candidate queue; DeepSeek can prioritize normalization review, not sector application.",
       "rows": 646,
+      "unique_review_keys": 646,
       "duplicate_key_rows": 0,
       "already_deepseek_reviewed": 646,
-      "unreviewed_rows": 0
+      "reviewed_unique_keys": 646,
+      "unreviewed_rows": 0,
+      "unreviewed_unique_keys": 0,
+      "review_coverage_status": "complete"
     }
   ],
   "selected_batch": {
