@@ -98,6 +98,17 @@ def count_by(rows: list[dict[str, Any]], key: str) -> dict[str, int]:
     return dict(sorted(Counter(str(row.get(key, "") or "missing") for row in rows).items()))
 
 
+def build_top_refresh_batches(coverage: dict[str, Any], rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    queued_refreshes = {str(row.get("refresh_queue", "")) for row in rows}
+    if not queued_refreshes:
+        return []
+    return [
+        batch
+        for batch in coverage.get("source_freshness_summary", {}).get("top_source_refresh_batches", [])
+        if str(batch.get("refresh_queue", "")) in queued_refreshes
+    ]
+
+
 def build_payload(*, coverage: dict[str, Any], coverage_json: Path) -> dict[str, Any]:
     rows = build_rows(coverage)
     return {
@@ -117,7 +128,7 @@ def build_payload(*, coverage: dict[str, Any], coverage_json: Path) -> dict[str,
             "reference_scope_totals": count_by(rows, "reference_scope"),
             "freshness_status_totals": count_by(rows, "freshness_status"),
             "evidence_required_totals": count_by(rows, "evidence_required"),
-            "top_source_refresh_batches": coverage.get("source_freshness_summary", {}).get("top_source_refresh_batches", []),
+            "top_source_refresh_batches": build_top_refresh_batches(coverage, rows),
         },
         "items": rows,
     }

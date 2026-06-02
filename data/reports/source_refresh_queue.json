@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T20:39:46Z",
+    "generated_at": "2026-06-02T22:55:14Z",
     "source_report": "data/reports/coverage_report.json",
     "policy": "Source refresh queue only. Freshness and availability signals do not authorize inferred identifiers, sectors, categories, names, symbols, scope changes, or direct data application."
   },
@@ -52,110 +52,6 @@
         "evidence_required": "source_restored_or_replaced_with_official_or_documented_unavailable_decision",
         "recommended_next_source": "Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision.",
         "source_gate": "Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists."
-      },
-      {
-        "refresh_queue": "fresh_no_refresh_needed",
-        "reference_scope": "listed_companies_subset",
-        "mode": "cache",
-        "refresh_priority": "P4",
-        "source_count": 44,
-        "total_rows": 17568,
-        "max_age_hours": 1.01,
-        "review_strategy": "no_refresh_required",
-        "evidence_required": "fresh_source_generated_at_with_age_under_48h",
-        "recommended_next_source": "No refresh needed; retain current fresh source evidence for scope listed_companies_subset.",
-        "source_gate": "Freshness evidence is present; no data change is authorized by freshness alone."
-      },
-      {
-        "refresh_queue": "fresh_no_refresh_needed",
-        "reference_scope": "listed_companies_subset",
-        "mode": "network",
-        "refresh_priority": "P4",
-        "source_count": 39,
-        "total_rows": 40531,
-        "max_age_hours": 1.01,
-        "review_strategy": "no_refresh_required",
-        "evidence_required": "fresh_source_generated_at_with_age_under_48h",
-        "recommended_next_source": "No refresh needed; retain current fresh source evidence for scope listed_companies_subset.",
-        "source_gate": "Freshness evidence is present; no data change is authorized by freshness alone."
-      },
-      {
-        "refresh_queue": "fresh_no_refresh_needed",
-        "reference_scope": "exchange_directory",
-        "mode": "cache",
-        "refresh_priority": "P4",
-        "source_count": 21,
-        "total_rows": 27238,
-        "max_age_hours": 1.01,
-        "review_strategy": "no_refresh_required",
-        "evidence_required": "fresh_source_generated_at_with_age_under_48h",
-        "recommended_next_source": "No refresh needed; retain current fresh source evidence for scope exchange_directory.",
-        "source_gate": "Freshness evidence is present; no data change is authorized by freshness alone."
-      },
-      {
-        "refresh_queue": "fresh_no_refresh_needed",
-        "reference_scope": "exchange_directory",
-        "mode": "network",
-        "refresh_priority": "P4",
-        "source_count": 19,
-        "total_rows": 57207,
-        "max_age_hours": 1.01,
-        "review_strategy": "no_refresh_required",
-        "evidence_required": "fresh_source_generated_at_with_age_under_48h",
-        "recommended_next_source": "No refresh needed; retain current fresh source evidence for scope exchange_directory.",
-        "source_gate": "Freshness evidence is present; no data change is authorized by freshness alone."
-      },
-      {
-        "refresh_queue": "fresh_no_refresh_needed",
-        "reference_scope": "security_lookup_subset",
-        "mode": "cache",
-        "refresh_priority": "P4",
-        "source_count": 4,
-        "total_rows": 165,
-        "max_age_hours": 1.01,
-        "review_strategy": "no_refresh_required",
-        "evidence_required": "fresh_source_generated_at_with_age_under_48h",
-        "recommended_next_source": "No refresh needed; retain current fresh source evidence for scope security_lookup_subset.",
-        "source_gate": "Freshness evidence is present; no data change is authorized by freshness alone."
-      },
-      {
-        "refresh_queue": "fresh_no_refresh_needed",
-        "reference_scope": "security_lookup_subset",
-        "mode": "network",
-        "refresh_priority": "P4",
-        "source_count": 2,
-        "total_rows": 745,
-        "max_age_hours": 1.01,
-        "review_strategy": "no_refresh_required",
-        "evidence_required": "fresh_source_generated_at_with_age_under_48h",
-        "recommended_next_source": "No refresh needed; retain current fresh source evidence for scope security_lookup_subset.",
-        "source_gate": "Freshness evidence is present; no data change is authorized by freshness alone."
-      },
-      {
-        "refresh_queue": "fresh_no_refresh_needed",
-        "reference_scope": "security_identifier_registry_subset",
-        "mode": "network",
-        "refresh_priority": "P4",
-        "source_count": 1,
-        "total_rows": 3205,
-        "max_age_hours": 1.01,
-        "review_strategy": "no_refresh_required",
-        "evidence_required": "fresh_source_generated_at_with_age_under_48h",
-        "recommended_next_source": "No refresh needed; retain current fresh source evidence for scope security_identifier_registry_subset.",
-        "source_gate": "Freshness evidence is present; no data change is authorized by freshness alone."
-      },
-      {
-        "refresh_queue": "fresh_no_refresh_needed",
-        "reference_scope": "interlisted_subset",
-        "mode": "network",
-        "refresh_priority": "P4",
-        "source_count": 1,
-        "total_rows": 268,
-        "max_age_hours": 1.01,
-        "review_strategy": "no_refresh_required",
-        "evidence_required": "fresh_source_generated_at_with_age_under_48h",
-        "recommended_next_source": "No refresh needed; retain current fresh source evidence for scope interlisted_subset.",
-        "source_gate": "Freshness evidence is present; no data change is authorized by freshness alone."
       }
     ]
   },

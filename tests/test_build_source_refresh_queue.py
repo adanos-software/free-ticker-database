@@ -54,7 +54,17 @@ def test_build_payload_prioritizes_restore_queue(tmp_path) -> None:
                     "total_rows": 0,
                     "max_age_hours": 340,
                     "evidence_required": "source_restored_or_replaced_with_official_or_documented_unavailable_decision",
-                }
+                },
+                {
+                    "refresh_queue": "fresh_no_refresh_needed",
+                    "reference_scope": "listed_companies_subset",
+                    "mode": "cache",
+                    "refresh_priority": "P4",
+                    "source_count": 10,
+                    "total_rows": 1000,
+                    "max_age_hours": 1,
+                    "evidence_required": "fresh_source_generated_at_with_age_under_48h",
+                },
             ]
         },
     }
@@ -65,7 +75,11 @@ def test_build_payload_prioritizes_restore_queue(tmp_path) -> None:
     assert payload["summary"]["priority_totals"] == {"P1": 1, "P2": 1}
     assert payload["items"][0]["source_key"] == "unavailable_directory"
     assert "do not authorize inferred identifiers" in payload["_meta"]["policy"]
+    assert [batch["refresh_queue"] for batch in payload["summary"]["top_source_refresh_batches"]] == [
+        "restore_or_replace_unavailable_source_before_data_fill"
+    ]
 
     markdown = render_markdown(payload)
     assert "Source Refresh Queue" in markdown
     assert "restore_or_replace_unavailable_source_before_data_fill" in markdown
+    assert "fresh_no_refresh_needed" not in markdown
