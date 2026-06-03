@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-03T01:56:46Z",
+    "generated_at": "2026-06-03T02:03:20Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -34,6 +34,7 @@
       "canada_improvement_action_queue": "data/reports/canada_improvement_action_queue.json",
       "canada_figi_queue": "data/reports/canada_figi_queue.json",
       "canada_figi_apply_report": "data/reports/canada_figi_apply_report.json",
+      "b3_core_scope_review_queue": "data/reports/b3_core_scope_review_queue.json",
       "b3_improvement_action_queue": "data/reports/b3_improvement_action_queue.json",
       "b3_residual_isin_review": "data/reports/b3_residual_isin_review.json",
       "b3_residual_sector_review": "data/reports/b3_residual_sector_review.json",
@@ -46,12 +47,12 @@
   },
   "passed": true,
   "summary": {
-    "criteria": 54,
-    "passed_criteria": 54,
+    "criteria": 55,
+    "passed_criteria": 55,
     "failed_criteria": 0,
     "validation_failed_error_gates": 0
   },
-  "summary_context": "passed=true;criteria=54;passed_criteria=54;failed_criteria=0;validation_failed_error_gates=0",
+  "summary_context": "passed=true;criteria=55;passed_criteria=55;failed_criteria=0;validation_failed_error_gates=0",
   "criteria": {
     "no_invalid_isins": {
       "passed": true,
@@ -226,18 +227,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-03T01:56:46Z",
+      "release_generated_at": "2026-06-03T02:03:20Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-03T01:56:35Z"
+          "generated_at": "2026-06-03T02:03:09Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-03T01:56:34Z"
+          "generated_at": "2026-06-03T02:03:09Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -383,6 +384,11 @@
           "path": "data/reports/canada_figi_apply_report.json",
           "exists": true,
           "generated_at": "2026-05-25T05:46:48Z"
+        },
+        "b3_core_scope_review_queue": {
+          "path": "data/reports/b3_core_scope_review_queue.json",
+          "exists": true,
+          "generated_at": "2026-06-02T20:18:31Z"
         },
         "b3_improvement_action_queue": {
           "path": "data/reports/b3_improvement_action_queue.json",
@@ -550,7 +556,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-03T01:56:34Z",
+      "generated_at": "2026-06-03T02:03:09Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -1217,6 +1223,36 @@
         "recommended_next_source",
         "source_gate",
         "example_listing_keys"
+      ]
+    },
+    "b3_core_scope_review_queue_gate": {
+      "passed": true,
+      "rows": 10,
+      "row_count": 10,
+      "policy_missing_marker_groups": [],
+      "row_gap_count": 0,
+      "row_gaps": [],
+      "count_gaps": [],
+      "required_row_fields": [
+        "listing_key",
+        "ticker",
+        "exchange",
+        "asset_type",
+        "name",
+        "gap_class",
+        "current_instrument_scope",
+        "source_of_truth_outcome",
+        "residual_decision",
+        "masterfile_source_presence",
+        "b3_resolution_queue",
+        "listing_history_status",
+        "scope_review_queue",
+        "scope_decision_gate",
+        "recommended_scope_action",
+        "verification_evidence_required",
+        "recommended_next_source",
+        "source_gate",
+        "review_context"
       ]
     },
     "b3_improvement_action_queue_gate": {

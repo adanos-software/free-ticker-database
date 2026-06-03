@@ -50,6 +50,7 @@ RELEASE_SOURCE_REPORTS = {
     "canada_improvement_action_queue": "data/reports/canada_improvement_action_queue.json",
     "canada_figi_queue": "data/reports/canada_figi_queue.json",
     "canada_figi_apply_report": "data/reports/canada_figi_apply_report.json",
+    "b3_core_scope_review_queue": "data/reports/b3_core_scope_review_queue.json",
     "b3_improvement_action_queue": "data/reports/b3_improvement_action_queue.json",
     "b3_residual_isin_review": "data/reports/b3_residual_isin_review.json",
     "b3_residual_sector_review": "data/reports/b3_residual_sector_review.json",
@@ -1791,6 +1792,32 @@ B3_ACTION_POLICY_MARKER_GROUPS = {
     "official_first": ("official", "b3", "issuer", "registry", "prospectus"),
     "no_guessing": ("no isin", "no_guessing", "ticker shape", "issuer name"),
     "campaign_delta": ("current b3 residual backlog", "future b3 data campaigns", "before and after"),
+}
+B3_CORE_SCOPE_REQUIRED_ROW_FIELDS = (
+    "listing_key",
+    "ticker",
+    "exchange",
+    "asset_type",
+    "name",
+    "gap_class",
+    "current_instrument_scope",
+    "source_of_truth_outcome",
+    "residual_decision",
+    "masterfile_source_presence",
+    "b3_resolution_queue",
+    "listing_history_status",
+    "scope_review_queue",
+    "scope_decision_gate",
+    "recommended_scope_action",
+    "verification_evidence_required",
+    "recommended_next_source",
+    "source_gate",
+    "review_context",
+)
+B3_CORE_SCOPE_POLICY_MARKER_GROUPS = {
+    "scope_first": ("core", "extended", "exclude", "before b3 identifier"),
+    "no_data_apply": ("does not authorize", "isin", "category", "scope changes"),
+    "source_gate": ("exact listing-keyed", "official b3", "registry", "prospectus"),
 }
 
 
@@ -3750,6 +3777,100 @@ def evaluate_b3_improvement_action_queue_gate(action_queue: dict[str, Any]) -> d
         "count_gaps": count_gaps,
         "gating_gaps": gating_gaps,
         "required_item_fields": list(B3_ACTION_REQUIRED_ITEM_FIELDS),
+    }
+
+
+def evaluate_b3_core_scope_review_queue_gate(review_queue: dict[str, Any]) -> dict[str, Any]:
+    summary = review_queue.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    rows = review_queue.get("rows", [])
+    if not isinstance(rows, list):
+        rows = []
+    policy = summary.get("policy", {})
+    if not isinstance(policy, dict):
+        policy = {}
+    policy_text = " ".join(str(value) for value in policy.values()).lower()
+    policy_missing_marker_groups = [
+        group
+        for group, markers in B3_CORE_SCOPE_POLICY_MARKER_GROUPS.items()
+        if not any(marker in policy_text for marker in markers)
+    ]
+
+    counters: dict[str, Counter[str]] = {
+        "scope_review_queue_totals": Counter(),
+        "gap_class_totals": Counter(),
+        "asset_type_totals": Counter(),
+        "masterfile_source_presence_totals": Counter(),
+        "listing_history_status_totals": Counter(),
+        "ohlcv_plausibility_status_totals": Counter(),
+        "verification_evidence_required_totals": Counter(),
+    }
+    row_gaps: list[dict[str, Any]] = []
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            row_gaps.append({"row_index": index, "reason": "row_is_not_object"})
+            continue
+        missing_fields = [field for field in B3_CORE_SCOPE_REQUIRED_ROW_FIELDS if not row.get(field)]
+        invalid_fields: list[str] = []
+        if row.get("exchange") != "B3":
+            invalid_fields.append("exchange")
+        if row.get("current_instrument_scope") != "core":
+            invalid_fields.append("current_instrument_scope")
+        if row.get("residual_decision") != "core_exclusion_candidate_requires_scope_review":
+            invalid_fields.append("residual_decision")
+        if row.get("scope_decision_gate") not in {
+            "decide_core_extended_or_exclude_before_identifier_or_category_work",
+            "decide_core_extended_or_exclude_before_identifier_or_listing_status_work",
+        }:
+            invalid_fields.append("scope_decision_gate")
+        evidence_required = str(row.get("verification_evidence_required", "")).lower()
+        if not any(marker in evidence_required for marker in ("official", "current_b3")) or "scope_decision" not in evidence_required:
+            invalid_fields.append("verification_evidence_required")
+        source_gate = str(row.get("source_gate", "")).lower()
+        if not source_gate.startswith(("no ", "do not ", "keep ")) or "official evidence" not in source_gate:
+            invalid_fields.append("source_gate")
+        review_context = str(row.get("review_context", ""))
+        if "scope_decision_gate=" not in review_context or "gap_class=" not in review_context:
+            invalid_fields.append("review_context")
+
+        counters["scope_review_queue_totals"][str(row.get("scope_review_queue", ""))] += 1
+        counters["gap_class_totals"][str(row.get("gap_class", ""))] += 1
+        counters["asset_type_totals"][str(row.get("asset_type", ""))] += 1
+        counters["masterfile_source_presence_totals"][str(row.get("masterfile_source_presence", ""))] += 1
+        counters["listing_history_status_totals"][str(row.get("listing_history_status", ""))] += 1
+        counters["ohlcv_plausibility_status_totals"][str(row.get("ohlcv_plausibility_status") or "not_sampled")] += 1
+        counters["verification_evidence_required_totals"][
+            str(row.get("verification_evidence_required", ""))
+        ] += 1
+
+        if missing_fields or invalid_fields:
+            row_gaps.append(
+                {
+                    "row_index": index,
+                    "listing_key": row.get("listing_key"),
+                    "reason": "missing_or_invalid_b3_core_scope_fields",
+                    "missing_fields": missing_fields,
+                    "invalid_fields": sorted(set(invalid_fields)),
+                }
+            )
+
+    count_gaps = []
+    expected_summary_fields: dict[str, Any] = {"rows": len(rows)}
+    expected_summary_fields.update({field: dict(sorted(counter.items())) for field, counter in counters.items()})
+    for field, expected in expected_summary_fields.items():
+        if summary.get(field) != expected:
+            count_gaps.append({"field": field, "expected": expected, "actual": summary.get(field)})
+
+    return {
+        "passed": bool(rows) and not policy_missing_marker_groups and not row_gaps and not count_gaps,
+        "rows": summary.get("rows"),
+        "row_count": len(rows),
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "count_gaps": count_gaps,
+        "required_row_fields": list(B3_CORE_SCOPE_REQUIRED_ROW_FIELDS),
     }
 
 
@@ -17069,6 +17190,7 @@ def build_payload() -> dict[str, Any]:
     canada_improvement_action_queue = load_json(REPORTS_DIR / "canada_improvement_action_queue.json")
     canada_figi_queue = load_json(REPORTS_DIR / "canada_figi_queue.json")
     canada_figi_apply = load_json(REPORTS_DIR / "canada_figi_apply_report.json")
+    b3_core_scope_review_queue = load_json(REPORTS_DIR / "b3_core_scope_review_queue.json")
     b3_improvement_action_queue = load_json(REPORTS_DIR / "b3_improvement_action_queue.json")
     b3_residual_isin = load_json(REPORTS_DIR / "b3_residual_isin_review.json")
     b3_residual_sector = load_json(REPORTS_DIR / "b3_residual_sector_review.json")
@@ -17138,6 +17260,9 @@ def build_payload() -> dict[str, Any]:
     )
     criteria["canada_improvement_action_queue_gate"] = evaluate_canada_improvement_action_queue_gate(
         canada_improvement_action_queue
+    )
+    criteria["b3_core_scope_review_queue_gate"] = evaluate_b3_core_scope_review_queue_gate(
+        b3_core_scope_review_queue
     )
     criteria["b3_improvement_action_queue_gate"] = evaluate_b3_improvement_action_queue_gate(
         b3_improvement_action_queue

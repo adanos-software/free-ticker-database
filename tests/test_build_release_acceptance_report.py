@@ -81,6 +81,7 @@ from scripts.build_release_acceptance_report import (
     evaluate_coverage_freshness_visibility,
     evaluate_apply_artifact_traceability,
     evaluate_asx_residual_gate,
+    evaluate_b3_core_scope_review_queue_gate,
     evaluate_b3_improvement_action_queue_gate,
     evaluate_b3_residual_gate,
     evaluate_entry_quality_command_report,
@@ -192,6 +193,7 @@ def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> N
     assert RELEASE_SOURCE_REPORTS["otc_name_mismatch_review"] == "data/reports/otc_name_mismatch_review.json"
     assert RELEASE_SOURCE_REPORTS["otc_name_mismatch_action_queue"] == "data/reports/otc_name_mismatch_action_queue.json"
     assert RELEASE_SOURCE_REPORTS["canada_improvement_action_queue"] == "data/reports/canada_improvement_action_queue.json"
+    assert RELEASE_SOURCE_REPORTS["b3_core_scope_review_queue"] == "data/reports/b3_core_scope_review_queue.json"
     assert RELEASE_SOURCE_REPORTS["b3_improvement_action_queue"] == "data/reports/b3_improvement_action_queue.json"
     assert RELEASE_SOURCE_REPORTS["weak_sector_venue_action_queue"] == "data/reports/weak_sector_venue_action_queue.json"
 
@@ -11856,6 +11858,113 @@ def test_evaluate_canada_improvement_action_queue_gate_rejects_apply_or_stale_co
         {"field": "direct_identifier_apply_allowed_rows", "expected": 0, "actual": 1},
         {"field": "metadata_enrichment_authorized", "expected": False, "actual": True},
     ]
+
+
+def test_evaluate_b3_core_scope_review_queue_gate_accepts_review_only_rows() -> None:
+    result = evaluate_b3_core_scope_review_queue_gate(
+        {
+            "summary": {
+                "rows": 1,
+                "scope_review_queue_totals": {"b3_fund_or_trust_core_scope_review": 1},
+                "gap_class_totals": {"fund_or_trust_identifier_gap": 1},
+                "asset_type_totals": {"ETF": 1},
+                "masterfile_source_presence_totals": {"absent_from_all_b3_masterfile_sources": 1},
+                "listing_history_status_totals": {"active": 1},
+                "ohlcv_plausibility_status_totals": {"not_sampled": 1},
+                "verification_evidence_required_totals": {
+                    "current_b3_fund_product_or_issuer_registry_evidence_plus_core_extended_or_exclude_scope_decision": 1
+                },
+                "policy": {
+                    "scope_first": "Core exclusion candidates must be resolved as core, extended, or exclude before B3 identifier work.",
+                    "no_data_apply": "This queue does not authorize ISIN, category, name, symbol, listing-status, or scope changes.",
+                    "source_gate": "Only exact listing-keyed official B3, CVM, issuer, registry, or prospectus evidence can close a row.",
+                },
+            },
+            "rows": [
+                {
+                    "listing_key": "B3::AFOF11",
+                    "ticker": "AFOF11",
+                    "exchange": "B3",
+                    "asset_type": "ETF",
+                    "name": "Alianza Fofii Fundo De Investimento Imobiliario",
+                    "gap_class": "fund_or_trust_identifier_gap",
+                    "current_instrument_scope": "core",
+                    "source_of_truth_outcome": "core_exclusion_candidate",
+                    "residual_decision": "core_exclusion_candidate_requires_scope_review",
+                    "masterfile_source_presence": "absent_from_all_b3_masterfile_sources",
+                    "b3_resolution_queue": "absent_from_all_b3_sources_fund_or_receipt_source_gap",
+                    "listing_history_status": "active",
+                    "ohlcv_plausibility_status": "not_sampled",
+                    "scope_review_queue": "b3_fund_or_trust_core_scope_review",
+                    "scope_decision_gate": "decide_core_extended_or_exclude_before_identifier_or_category_work",
+                    "recommended_scope_action": "review_product_currentness_then_choose_core_extended_or_exclude_keep_identifier_blank_until_official_isin",
+                    "verification_evidence_required": (
+                        "current_b3_fund_product_or_issuer_registry_evidence_plus_core_extended_or_exclude_scope_decision"
+                    ),
+                    "recommended_next_source": "Current B3 fund/ETF/FII source, issuer page, CVM fund registry, or prospectus.",
+                    "source_gate": (
+                        "No ISIN, category, name, or scope change until the exact product is proven current or "
+                        "excluded by official evidence."
+                    ),
+                    "review_context": (
+                        "gap_class=fund_or_trust_identifier_gap;masterfile_source_presence=absent_from_all_b3_masterfile_sources;"
+                        "scope_decision_gate=decide_core_extended_or_exclude_before_identifier_or_category_work"
+                    ),
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["row_count"] == 1
+    assert result["row_gap_count"] == 0
+
+
+def test_evaluate_b3_core_scope_review_queue_gate_rejects_apply_or_stale_counts() -> None:
+    result = evaluate_b3_core_scope_review_queue_gate(
+        {
+            "summary": {
+                "rows": 2,
+                "scope_review_queue_totals": {},
+                "gap_class_totals": {},
+                "asset_type_totals": {},
+                "masterfile_source_presence_totals": {},
+                "listing_history_status_totals": {},
+                "ohlcv_plausibility_status_totals": {},
+                "verification_evidence_required_totals": {},
+                "policy": {"scope_first": "review later"},
+            },
+            "rows": [
+                {
+                    "listing_key": "B3::AFOF11",
+                    "ticker": "AFOF11",
+                    "exchange": "B3",
+                    "asset_type": "ETF",
+                    "name": "Alianza Fofii Fundo De Investimento Imobiliario",
+                    "gap_class": "fund_or_trust_identifier_gap",
+                    "current_instrument_scope": "core",
+                    "source_of_truth_outcome": "core_exclusion_candidate",
+                    "residual_decision": "direct_apply",
+                    "masterfile_source_presence": "absent_from_all_b3_masterfile_sources",
+                    "b3_resolution_queue": "absent_from_all_b3_sources_fund_or_receipt_source_gap",
+                    "listing_history_status": "active",
+                    "ohlcv_plausibility_status": "not_sampled",
+                    "scope_review_queue": "b3_fund_or_trust_core_scope_review",
+                    "scope_decision_gate": "apply_identifier",
+                    "recommended_scope_action": "apply",
+                    "verification_evidence_required": "ticker_match",
+                    "recommended_next_source": "none",
+                    "source_gate": "Apply B3 identifier.",
+                    "review_context": "gap_class=fund_or_trust_identifier_gap",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["policy_missing_marker_groups"]
+    assert result["row_gap_count"] == 1
+    assert result["count_gaps"]
 
 
 def test_evaluate_b3_improvement_action_queue_gate_accepts_blocked_batches() -> None:
