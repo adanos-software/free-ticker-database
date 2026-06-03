@@ -18,6 +18,7 @@ COVERAGE_REPORT_JSON = REPORTS_DIR / "coverage_report.json"
 ASX_RESIDUAL_REVIEW_JSON = REPORTS_DIR / "asx_residual_review.json"
 JPX_TSE_SECTOR_BACKFILL_JSON = REPORTS_DIR / "tse_sector_backfill.json"
 SEC_SIC_SECTOR_BACKFILL_JSON = REPORTS_DIR / "sec_sic_sector_backfill.json"
+CANADA_RESIDUAL_REVIEW_JSON = REPORTS_DIR / "canada_residual_review.json"
 DEFAULT_CSV_OUT = REPORTS_DIR / "completion_backlog.csv"
 DEFAULT_JSON_OUT = REPORTS_DIR / "completion_backlog.json"
 DEFAULT_MD_OUT = REPORTS_DIR / "completion_backlog.md"
@@ -382,6 +383,7 @@ def summarize(
     asx_residual_review: dict[str, Any] | None = None,
     jpx_tse_sector_backfill: dict[str, Any] | None = None,
     sec_sic_sector_backfill: dict[str, Any] | None = None,
+    canada_residual_review: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     field_totals = Counter()
     exchanges_by_field: dict[str, set[str]] = defaultdict(set)
@@ -413,6 +415,7 @@ def summarize(
             asx_residual_review=asx_residual_review or {},
             jpx_tse_sector_backfill=jpx_tse_sector_backfill or {},
             sec_sic_sector_backfill=sec_sic_sector_backfill or {},
+            canada_residual_review=canada_residual_review or {},
         ),
     }
 
@@ -546,6 +549,73 @@ def apply_sec_sic_otc_context(action: dict[str, Any], sec_sic_sector_backfill: d
     }
 
 
+def canada_residual_summary(canada_residual_review: dict[str, Any]) -> dict[str, Any]:
+    summary = canada_residual_review.get("summary", {})
+    return summary if isinstance(summary, dict) else {}
+
+
+def canada_residual_blocks_direct_identifier_apply(canada_residual_review: dict[str, Any]) -> bool:
+    summary = canada_residual_summary(canada_residual_review)
+    backlog = summary.get("canada_identifier_backlog", {})
+    if not isinstance(backlog, dict):
+        return False
+    return (
+        int(backlog.get("rows") or 0) > 0
+        and int(backlog.get("direct_identifier_apply_allowed_rows") or 0) == 0
+    )
+
+
+def apply_canada_residual_context(action: dict[str, Any], canada_residual_review: dict[str, Any]) -> dict[str, Any]:
+    if action["exchange"] not in {"TSX", "TSXV", "NEO"} or action["field"] != FIELD_MISSING_ISIN:
+        return action
+    if not canada_residual_blocks_direct_identifier_apply(canada_residual_review):
+        return action
+    summary = canada_residual_summary(canada_residual_review)
+    backlog = summary.get("canada_identifier_backlog", {})
+    if not isinstance(backlog, dict):
+        backlog = {}
+    queue_totals = summary.get("canada_resolution_queue_exchange_totals", {})
+    if not isinstance(queue_totals, dict):
+        queue_totals = {}
+    top_batches = summary.get("top_canada_resolution_review_batches", [])
+    matching_batches = [
+        batch
+        for batch in top_batches
+        if isinstance(batch, dict)
+        and batch.get("exchange") == action["exchange"]
+        and str(batch.get("canada_resolution_queue", "")).startswith("missing_isin")
+    ]
+    first_batch = matching_batches[0] if matching_batches else {}
+    direct_allowed = int(backlog.get("direct_identifier_apply_allowed_rows") or 0)
+    official_required = int(backlog.get("official_isin_source_required_rows") or 0)
+    scope_required = int(backlog.get("scope_decision_required_rows") or 0)
+    reviewed_gap_rows = int(backlog.get("reviewed_openfigi_source_gap_rows") or 0)
+    missing_isin_official = queue_totals.get("missing_isin_official_canada_masterfiles_do_not_expose_isin", {})
+    missing_isin_reviewed = queue_totals.get("missing_isin_reviewed_source_gap", {})
+    if not isinstance(missing_isin_official, dict):
+        missing_isin_official = {}
+    if not isinstance(missing_isin_reviewed, dict):
+        missing_isin_reviewed = {}
+    return {
+        **action,
+        "review_needed": True,
+        "recommended_source": (
+            first_batch.get("recommended_next_source")
+            or "Official CSD, issuer, prospectus, transfer-agent, or reviewed Canada identifier source exposing a valid ISIN."
+        ),
+        "confidence_policy": backlog.get("source_gate") or action["confidence_policy"],
+        "why_next": "top_impact Canada residual review-gated workflow",
+        "residual_gate": "canada_residual_review_blocks_direct_identifier_apply",
+        "canada_identifier_backlog_rows": int(backlog.get("rows") or 0),
+        "direct_identifier_apply_allowed_rows": direct_allowed,
+        "official_isin_source_required_rows": official_required,
+        "scope_decision_required_rows": scope_required,
+        "reviewed_openfigi_source_gap_rows": reviewed_gap_rows,
+        "exchange_missing_isin_official_source_rows": int(missing_isin_official.get(action["exchange"]) or 0),
+        "exchange_missing_isin_reviewed_source_gap_rows": int(missing_isin_reviewed.get(action["exchange"]) or 0),
+    }
+
+
 def build_next_actions(
     rows: list[CompletionBacklogRow],
     limit: int = 8,
@@ -553,6 +623,7 @@ def build_next_actions(
     asx_residual_review: dict[str, Any] | None = None,
     jpx_tse_sector_backfill: dict[str, Any] | None = None,
     sec_sic_sector_backfill: dict[str, Any] | None = None,
+    canada_residual_review: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     ranked = sorted(
         rows,
@@ -593,6 +664,7 @@ def build_next_actions(
         action = apply_asx_residual_context(action, asx_residual_review or {})
         action = apply_jpx_tse_sector_context(action, jpx_tse_sector_backfill or {})
         action = apply_sec_sic_otc_context(action, sec_sic_sector_backfill or {})
+        action = apply_canada_residual_context(action, canada_residual_review or {})
         actions.append(action)
     return actions
 
@@ -740,6 +812,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--asx-residual-review-json", type=Path, default=ASX_RESIDUAL_REVIEW_JSON)
     parser.add_argument("--jpx-tse-sector-backfill-json", type=Path, default=JPX_TSE_SECTOR_BACKFILL_JSON)
     parser.add_argument("--sec-sic-sector-backfill-json", type=Path, default=SEC_SIC_SECTOR_BACKFILL_JSON)
+    parser.add_argument("--canada-residual-review-json", type=Path, default=CANADA_RESIDUAL_REVIEW_JSON)
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_CSV_OUT)
     parser.add_argument("--json-out", type=Path, default=DEFAULT_JSON_OUT)
     parser.add_argument("--md-out", type=Path, default=DEFAULT_MD_OUT)
@@ -762,6 +835,7 @@ def main(argv: list[str] | None = None) -> None:
         asx_residual_review=load_json(args.asx_residual_review_json),
         jpx_tse_sector_backfill=load_json(args.jpx_tse_sector_backfill_json),
         sec_sic_sector_backfill=load_json(args.sec_sic_sector_backfill_json),
+        canada_residual_review=load_json(args.canada_residual_review_json),
     )
 
     write_csv(args.csv_out, rows)

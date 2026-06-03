@@ -2406,7 +2406,7 @@
       "missing_isin_primary": 846,
       "missing_sector_stock": 2600
     },
-    "generated_at": "2026-06-02T23:56:56Z",
+    "generated_at": "2026-06-03T00:02:42Z",
     "legacy_primary_ticker_collision_rows": 1,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
@@ -2468,20 +2468,28 @@
       },
       {
         "action_rank": 3,
-        "confidence_policy": "Secondary EODHD/Yahoo candidates must remain review-gated with venue, asset-type, name, expected CA prefix, numeric-token, and checksum checks.",
+        "canada_identifier_backlog_rows": 380,
+        "confidence_policy": "Canadian identifier work remains blocked unless a listing-keyed official CSD, issuer, prospectus, transfer-agent, OpenFIGI-by-ISIN, or reviewed stronger source proves the value; no symbol/name inference.",
+        "direct_identifier_apply_allowed_rows": 0,
         "etf_missing_count": 49,
         "exchange": "TSX",
+        "exchange_missing_isin_official_source_rows": 18,
+        "exchange_missing_isin_reviewed_source_gap_rows": 6,
         "field": "missing_isin_primary",
         "missing_count": 102,
+        "official_isin_source_required_rows": 61,
         "official_source_count": 3,
-        "recommended_source": "TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks.",
+        "recommended_source": "Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN.",
+        "residual_gate": "canada_residual_review_blocks_direct_identifier_apply",
         "review_needed": true,
+        "reviewed_openfigi_source_gap_rows": 151,
         "safe_action": "candidate_for_official_followup",
+        "scope_decision_required_rows": 168,
         "script": "scripts/fetch_exchange_masterfiles.py --source <tmx_feed>; scripts/backfill_eodhd_metadata.py; scripts/backfill_yahoo_missing_isins.py",
         "stock_missing_count": 53,
         "target_field": "isin",
         "venue_status": "official_full",
-        "why_next": "top_impact review-gated workflow"
+        "why_next": "top_impact Canada residual review-gated workflow"
       },
       {
         "accepted_sector_updates": 0,

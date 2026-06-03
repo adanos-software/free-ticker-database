@@ -196,6 +196,56 @@ def test_otc_sector_next_action_uses_sec_sic_residual_gate_when_no_apply_candida
     assert "no accepted OTC sector candidates" in action["recommended_source"]
 
 
+def test_canada_isin_next_action_uses_residual_gate_when_no_direct_identifier_apply():
+    rows = build_completion_backlog(
+        [],
+        [
+            {"exchange": "TSX", "asset_type": "Stock", "scope_reason": "primary_listing_missing_isin"},
+            {"exchange": "TSX", "asset_type": "ETF", "scope_reason": "primary_listing_missing_isin"},
+        ],
+        {"by_exchange": [{"exchange": "TSX", "venue_status": "official_full", "official_source_count": 3}]},
+    )
+    summary = summarize(
+        rows,
+        {"global": {}, "by_exchange": []},
+        "2026-04-12T00:00:00Z",
+        canada_residual_review={
+            "summary": {
+                "canada_identifier_backlog": {
+                    "rows": 4,
+                    "direct_identifier_apply_allowed_rows": 0,
+                    "official_isin_source_required_rows": 3,
+                    "scope_decision_required_rows": 1,
+                    "reviewed_openfigi_source_gap_rows": 2,
+                    "source_gate": "Canadian identifier work remains blocked without listing-keyed official evidence.",
+                },
+                "canada_resolution_queue_exchange_totals": {
+                    "missing_isin_official_canada_masterfiles_do_not_expose_isin": {"TSX": 2},
+                    "missing_isin_reviewed_source_gap": {"TSX": 1},
+                },
+                "top_canada_resolution_review_batches": [
+                    {
+                        "canada_resolution_queue": "missing_isin_official_canada_masterfiles_do_not_expose_isin",
+                        "exchange": "TSX",
+                        "recommended_next_source": "Official Canada identifier source exposing a valid ISIN.",
+                    }
+                ],
+            }
+        },
+    )
+
+    action = summary["next_actions"][0]
+    assert action["exchange"] == "TSX"
+    assert action["field"] == FIELD_MISSING_ISIN
+    assert action["review_needed"] is True
+    assert action["residual_gate"] == "canada_residual_review_blocks_direct_identifier_apply"
+    assert action["direct_identifier_apply_allowed_rows"] == 0
+    assert action["official_isin_source_required_rows"] == 3
+    assert action["scope_decision_required_rows"] == 1
+    assert action["exchange_missing_isin_official_source_rows"] == 2
+    assert "Official Canada identifier source" in action["recommended_source"]
+
+
 def test_completion_backlog_ranks_by_missing_count_before_static_source_order():
     rows = build_completion_backlog(
         [],
