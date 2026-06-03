@@ -12278,6 +12278,58 @@ def test_evaluate_source_inventory_gap_gate_rejects_unknown_status_or_scope() ->
     assert result["row_gaps"][0]["invalid_fields"] == ["current_status", "candidate_scope"]
 
 
+def test_evaluate_source_inventory_gap_gate_rejects_non_boolean_review_needed() -> None:
+    result = evaluate_source_inventory_gap_gate(
+        {
+            "summary": {
+                "generated_at": "2026-06-03T00:00:00Z",
+                "policy": {
+                    "inventory_only": "This report is a source inventory and parser backlog only; it does not authorize data fills.",
+                    "official_source_gate": "Official source parsers must write reference.csv before data evidence exists.",
+                    "no_guessing": "Missing fields remain blank until sourced.",
+                    "review_gate": "Rows marked review_needed require source review before scope changes.",
+                },
+                "rows": 1,
+                "current_status_counts": {"missing": 1},
+                "candidate_scope_counts": {"exchange_directory_candidate": 1},
+                "todo_rows": 0,
+                "current_scope_candidates": 1,
+                "global_expansion_candidates": 0,
+                "high_priority_rows": 1,
+            },
+            "rows": [
+                {
+                    "priority_rank": 1,
+                    "exchange": "EGX",
+                    "current_status": "missing",
+                    "tickers": 225,
+                    "missing_isin": 25,
+                    "missing_sector_or_category": 125,
+                    "unresolved_findings": 225,
+                    "official_source_count": 0,
+                    "candidate_key": "egx_listed_securities",
+                    "candidate_scope": "exchange_directory_candidate",
+                    "provider": "EGX",
+                    "expected_format": "html_or_api",
+                    "source_url": "https://www.egx.com.eg/en/ListedStocks.aspx",
+                    "implementation_status": "implemented",
+                    "source_mode": "network",
+                    "source_refresh_queue": "fresh_no_refresh_needed",
+                    "source_last_error": "",
+                    "priority": "high",
+                    "review_needed": "true",
+                    "blocker": "needs endpoint discovery",
+                    "notes": "Current-scope source gap.",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["row_gap_count"] == 1
+    assert result["row_gaps"][0]["invalid_fields"] == ["review_needed"]
+
+
 def test_evaluate_weak_sector_venue_action_queue_gate_accepts_blocked_batches() -> None:
     result = evaluate_weak_sector_venue_action_queue_gate(
         {
