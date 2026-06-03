@@ -2406,7 +2406,7 @@
       "missing_isin_primary": 846,
       "missing_sector_stock": 2600
     },
-    "generated_at": "2026-06-03T00:24:30Z",
+    "generated_at": "2026-06-03T00:29:00Z",
     "legacy_primary_ticker_collision_rows": 1,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
@@ -2420,6 +2420,21 @@
         "Missing venues"
       ]
     },
+    "next_action_gate_totals": {
+      "asx_residual_review_blocks_direct_apply": 1,
+      "b3_residual_sector_review_blocks_direct_apply": 1,
+      "canada_residual_review_blocks_direct_identifier_apply": 2,
+      "jpx_tse_sector_backfill_blocks_direct_apply": 1,
+      "sec_sic_otc_no_apply_candidates": 1,
+      "source_gap_classification_blocks_direct_apply": 3,
+      "weak_sector_residual_review_blocks_direct_apply": 3
+    },
+    "next_action_source_gap_class_totals": {
+      "official_identifier_not_exposed_source_gap": 1,
+      "official_industry_taxonomy_unavailable_gap": 1,
+      "shell_or_cpc_sector_gap": 1
+    },
+    "next_action_without_residual_gate_count": 0,
     "next_actions": [
       {
         "action_rank": 1,

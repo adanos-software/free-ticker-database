@@ -362,6 +362,9 @@ def test_source_gap_classification_context_gates_uncovered_next_action():
     assert action["source_gap_class"] == "official_industry_taxonomy_unavailable_gap"
     assert action["source_gap_rows"] == 1
     assert "stronger taxonomy source" in action["recommended_source"]
+    assert summary["next_action_gate_totals"] == {"source_gap_classification_blocks_direct_apply": 1}
+    assert summary["next_action_source_gap_class_totals"] == {"official_industry_taxonomy_unavailable_gap": 1}
+    assert summary["next_action_without_residual_gate_count"] == 0
 
 
 def test_default_next_actions_include_source_gap_candidates_beyond_top_eight():

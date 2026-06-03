@@ -398,6 +398,17 @@ def summarize(
     for row in rows:
         field_totals[row.field] += row.missing_count
         exchanges_by_field[row.field].add(row.exchange)
+    next_actions = build_next_actions(
+        rows,
+        limit=next_action_limit,
+        asx_residual_review=asx_residual_review or {},
+        jpx_tse_sector_backfill=jpx_tse_sector_backfill or {},
+        sec_sic_sector_backfill=sec_sic_sector_backfill or {},
+        canada_residual_review=canada_residual_review or {},
+        b3_residual_sector_review=b3_residual_sector_review or {},
+        weak_sector_residual_review=weak_sector_residual_review or {},
+        source_gap_classification=source_gap_classification or {},
+    )
 
     return {
         "generated_at": generated_at,
@@ -418,18 +429,21 @@ def summarize(
                 "Missing venues",
             ],
         },
-        "next_actions": build_next_actions(
-            rows,
-            limit=next_action_limit,
-            asx_residual_review=asx_residual_review or {},
-            jpx_tse_sector_backfill=jpx_tse_sector_backfill or {},
-            sec_sic_sector_backfill=sec_sic_sector_backfill or {},
-            canada_residual_review=canada_residual_review or {},
-            b3_residual_sector_review=b3_residual_sector_review or {},
-            weak_sector_residual_review=weak_sector_residual_review or {},
-            source_gap_classification=source_gap_classification or {},
-        ),
+        "next_action_gate_totals": next_action_gate_totals(next_actions),
+        "next_action_source_gap_class_totals": next_action_source_gap_class_totals(next_actions),
+        "next_action_without_residual_gate_count": sum(1 for action in next_actions if not action.get("residual_gate")),
+        "next_actions": next_actions,
     }
+
+
+def next_action_gate_totals(actions: list[dict[str, Any]]) -> dict[str, int]:
+    totals = Counter(str(action.get("residual_gate") or "ungated_review_policy") for action in actions)
+    return dict(sorted(totals.items()))
+
+
+def next_action_source_gap_class_totals(actions: list[dict[str, Any]]) -> dict[str, int]:
+    totals = Counter(str(action["source_gap_class"]) for action in actions if action.get("source_gap_class"))
+    return dict(sorted(totals.items()))
 
 
 def asx_residual_summary(asx_residual_review: dict[str, Any]) -> dict[str, Any]:
