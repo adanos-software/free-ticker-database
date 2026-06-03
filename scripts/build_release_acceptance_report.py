@@ -336,6 +336,7 @@ SOURCE_REFRESH_QUEUE_POLICY_MARKER_GROUPS = {
     "no_data_apply": ("authorize", "direct data application"),
     "no_inference": ("inferred identifiers", "sectors", "categories", "symbols"),
 }
+SOURCE_REFRESH_QUEUE_ALLOWED_MODES = {"cache", "network", "unavailable"}
 
 
 def source_refresh_strategy_for(queue: str) -> tuple[str, str]:
@@ -5816,6 +5817,8 @@ def evaluate_source_refresh_queue_gate(report: dict[str, Any]) -> dict[str, Any]
             invalid_fields.append("age_hours")
         if item.get("freshness_status") not in {"fresh", "old", "stale", "unknown"}:
             invalid_fields.append("freshness_status")
+        if item.get("mode") not in SOURCE_REFRESH_QUEUE_ALLOWED_MODES:
+            invalid_fields.append("mode")
         if item.get("mode") == "unavailable" and not item.get("last_error"):
             invalid_fields.append("last_error")
         if item.get("refresh_priority") not in {"P1", "P2", "P3", "P4"}:

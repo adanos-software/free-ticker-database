@@ -1937,6 +1937,65 @@ def test_evaluate_source_refresh_queue_gate_rejects_direct_apply_or_stale_counts
     assert result["batch_gaps"]
 
 
+def test_evaluate_source_refresh_queue_gate_rejects_unknown_mode() -> None:
+    result = evaluate_source_refresh_queue_gate(
+        {
+            "_meta": {
+                "generated_at": "2026-06-02T22:55:14Z",
+                "source_report": "data/reports/coverage_report.json",
+                "policy": (
+                    "Source refresh queue only. Freshness and availability signals do not authorize inferred "
+                    "identifiers, sectors, categories, names, symbols, scope changes, or direct data application."
+                ),
+            },
+            "summary": {
+                "rows": 1,
+                "priority_totals": {"P4": 1},
+                "queue_totals": {"fresh_no_refresh_needed": 1},
+                "mode_totals": {"manual": 1},
+                "reference_scope_totals": {"exchange_directory": 1},
+                "freshness_status_totals": {"fresh": 1},
+                "evidence_required_totals": {"fresh_source_generated_at_with_age_under_48h": 1},
+                "top_source_refresh_batches": [],
+            },
+            "items": [
+                {
+                    "source_key": "egx_listed_securities",
+                    "provider": "EGX",
+                    "reference_scope": "exchange_directory",
+                    "mode": "manual",
+                    "last_error": "not applicable",
+                    "rows": 225,
+                    "generated_at": "2026-06-02T19:38:59Z",
+                    "age_hours": 1.01,
+                    "freshness_status": "fresh",
+                    "refresh_priority": "P4",
+                    "refresh_queue": "fresh_no_refresh_needed",
+                    "recommended_refresh_action": "no_refresh_needed",
+                    "recommended_next_source": "No refresh needed for fresh source.",
+                    "source_gate": "Keep official evidence unchanged; no documented refresh need exists.",
+                    "review_strategy": "no_refresh_required",
+                    "evidence_required": "fresh_source_generated_at_with_age_under_48h",
+                    "freshness_review_context": (
+                        "generated_at=2026-06-02T19:38:59Z;age_bucket=age_0_48h;"
+                        "freshness_status=fresh;refresh_priority=P4"
+                    ),
+                    "refresh_gate_context": (
+                        "refresh_queue=fresh_no_refresh_needed;"
+                        "recommended_refresh_action=no_refresh_needed;"
+                        "review_strategy=no_refresh_required;"
+                        "evidence_required=fresh_source_generated_at_with_age_under_48h"
+                    ),
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["row_gap_count"] == 1
+    assert result["row_gaps"][0]["invalid_fields"] == ["mode"]
+
+
 def test_b3_masterfile_gap_contexts_are_exact_field_summaries() -> None:
     row = {
         "listing_key": "B3::AFOF11",
