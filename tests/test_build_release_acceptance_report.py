@@ -114,6 +114,7 @@ from scripts.build_release_acceptance_report import (
     evaluate_review_row_evidence,
     evaluate_review_row_traceability,
     evaluate_release_source_report_integrity,
+    evaluate_source_inventory_gap_gate,
     evaluate_source_gap_traceability,
     evaluate_symbol_change_review_gate,
     evaluate_weak_sector_residual_gate,
@@ -163,6 +164,7 @@ DELTA_META_FIXTURE = {
 
 def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> None:
     assert RELEASE_SOURCE_REPORTS["completion_backlog"] == "data/reports/completion_backlog.json"
+    assert RELEASE_SOURCE_REPORTS["source_inventory_gap"] == "data/reports/source_inventory_gap.json"
     assert RELEASE_SOURCE_REPORTS["tse_sector_backfill"] == "data/reports/tse_sector_backfill.json"
     assert RELEASE_SOURCE_REPORTS["sec_sic_sector_backfill"] == "data/reports/sec_sic_sector_backfill.json"
     assert RELEASE_SOURCE_REPORTS["official_name_mismatch_backfill"] == "data/reports/official_name_mismatch_backfill.json"
@@ -11527,6 +11529,118 @@ def test_evaluate_official_name_mismatch_backfill_gate_rejects_unguarded_or_stal
         {"field": "updates_emitted", "expected": 1, "actual": 2},
         {"field": "accepted_by_exchange", "expected": {"NASDAQ": 1}, "actual": {"NASDAQ": 2}},
     ]
+
+
+def test_evaluate_source_inventory_gap_gate_accepts_inventory_backlog() -> None:
+    result = evaluate_source_inventory_gap_gate(
+        {
+            "summary": {
+                "generated_at": "2026-06-03T00:00:00Z",
+                "policy": {
+                    "inventory_only": "This report is a source inventory and parser backlog only; it does not authorize data fills.",
+                    "official_source_gate": "Official source parsers must write reference.csv before data evidence exists.",
+                    "no_guessing": "Missing fields remain blank until sourced.",
+                    "review_gate": "Rows marked review_needed require source review before scope changes.",
+                },
+                "rows": 2,
+                "current_status_counts": {"missing": 1, "official_partial": 1},
+                "candidate_scope_counts": {"exchange_directory_candidate": 1, "needs_source_research": 1},
+                "todo_rows": 1,
+                "current_scope_candidates": 2,
+                "global_expansion_candidates": 0,
+                "high_priority_rows": 1,
+            },
+            "rows": [
+                {
+                    "priority_rank": 1,
+                    "exchange": "EGX",
+                    "current_status": "missing",
+                    "tickers": 225,
+                    "missing_isin": 25,
+                    "missing_sector_or_category": 125,
+                    "unresolved_findings": 225,
+                    "official_source_count": 0,
+                    "candidate_key": "egx_listed_securities",
+                    "candidate_scope": "exchange_directory_candidate",
+                    "provider": "EGX",
+                    "expected_format": "html_or_api",
+                    "source_url": "https://www.egx.com.eg/en/ListedStocks.aspx",
+                    "implementation_status": "todo",
+                    "priority": "high",
+                    "review_needed": True,
+                    "blocker": "needs endpoint discovery",
+                    "notes": "Current-scope source gap.",
+                },
+                {
+                    "priority_rank": 2,
+                    "exchange": "LSE",
+                    "current_status": "official_partial",
+                    "tickers": 6408,
+                    "missing_isin": 47,
+                    "missing_sector_or_category": 1302,
+                    "unresolved_findings": 52,
+                    "official_source_count": 3,
+                    "candidate_key": "",
+                    "candidate_scope": "needs_source_research",
+                    "provider": "",
+                    "expected_format": "unknown",
+                    "source_url": "",
+                    "implementation_status": "implemented",
+                    "priority": "medium",
+                    "review_needed": False,
+                    "blocker": "candidate source not curated yet",
+                    "notes": "Needs stronger official source candidate.",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["items"] == 2
+    assert result["todo_rows"] == 1
+
+
+def test_evaluate_source_inventory_gap_gate_rejects_missing_policy_or_stale_counts() -> None:
+    result = evaluate_source_inventory_gap_gate(
+        {
+            "summary": {
+                "policy": {"inventory_only": "source list"},
+                "rows": 2,
+                "current_status_counts": {"missing": 2},
+                "candidate_scope_counts": {},
+                "todo_rows": 0,
+                "current_scope_candidates": 0,
+                "high_priority_rows": 0,
+            },
+            "rows": [
+                {
+                    "priority_rank": 2,
+                    "exchange": "EGX",
+                    "current_status": "missing",
+                    "tickers": -1,
+                    "missing_isin": 1,
+                    "missing_sector_or_category": 1,
+                    "unresolved_findings": 1,
+                    "official_source_count": 0,
+                    "candidate_key": "",
+                    "candidate_scope": "",
+                    "provider": "EGX",
+                    "expected_format": "html",
+                    "source_url": "",
+                    "implementation_status": "apply",
+                    "priority": "urgent",
+                    "review_needed": True,
+                    "blocker": "",
+                    "notes": "",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["policy_missing_marker_groups"]
+    assert result["row_gap_count"] == 1
+    assert result["count_gaps"][0] == {"field": "rows", "expected": 1, "actual": 2}
 
 
 def test_financialdata_supplement_contexts_are_exact_field_summaries() -> None:

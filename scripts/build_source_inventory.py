@@ -237,6 +237,15 @@ def summarize(rows: list[SourceInventoryRow], generated_at: str) -> dict[str, An
     global_expansion_rows = [row for row in rows if is_global_expansion_candidate(row)]
     return {
         "generated_at": generated_at,
+        "policy": {
+            "inventory_only": "This report is a source inventory and parser backlog only; it does not authorize data fills.",
+            "official_source_gate": (
+                "Candidate rows require implemented official source parsers before reference.csv rows can become "
+                "data evidence."
+            ),
+            "no_guessing": "Missing ISIN, sector, category, name, symbol, country, and scope values remain blank until sourced.",
+            "review_gate": "Rows marked review_needed require source review before parser or scope changes.",
+        },
         "rows": len(rows),
         "current_status_counts": dict(sorted(status_counts.items())),
         "candidate_scope_counts": dict(sorted(scope_counts.items())),

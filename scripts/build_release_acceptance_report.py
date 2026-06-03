@@ -25,6 +25,7 @@ RELEASE_SOURCE_REPORTS = {
     "improvement_deltas": "data/reports/improvement_deltas.json",
     "improvement_campaigns": "data/reports/improvement_campaigns.json",
     "completion_backlog": "data/reports/completion_backlog.json",
+    "source_inventory_gap": "data/reports/source_inventory_gap.json",
     "tse_sector_backfill": "data/reports/tse_sector_backfill.json",
     "sec_sic_sector_backfill": "data/reports/sec_sic_sector_backfill.json",
     "official_name_mismatch_backfill": "data/reports/official_name_mismatch_backfill.json",
@@ -2839,6 +2840,32 @@ OFFICIAL_NAME_MISMATCH_POLICY_MARKER_GROUPS = {
     "no_guessing": ("not inferred", "no_guessing", "ticker shape", "secondary-only"),
     "apply_gate": ("--apply", "override workflow", "review evidence"),
     "otc_exclusion": ("otc", "otc name-mismatch review"),
+}
+SOURCE_INVENTORY_REQUIRED_ROW_FIELDS = (
+    "priority_rank",
+    "exchange",
+    "current_status",
+    "tickers",
+    "missing_isin",
+    "missing_sector_or_category",
+    "unresolved_findings",
+    "official_source_count",
+    "candidate_key",
+    "candidate_scope",
+    "provider",
+    "expected_format",
+    "source_url",
+    "implementation_status",
+    "priority",
+    "review_needed",
+    "blocker",
+    "notes",
+)
+SOURCE_INVENTORY_POLICY_MARKER_GROUPS = {
+    "inventory_only": ("source inventory", "parser backlog", "does not authorize data fills"),
+    "official_source_gate": ("official source parsers", "reference.csv", "data evidence"),
+    "no_guessing": ("remain blank", "until sourced", "no_guessing"),
+    "review_gate": ("review_needed", "source review", "scope changes"),
 }
 REVIEW_POLICY_REQUIRED_MARKER_GROUPS = {
     "review_or_no_guessing_gate": (
@@ -16518,12 +16545,127 @@ def evaluate_official_name_mismatch_backfill_gate(report: dict[str, Any]) -> dic
     }
 
 
+def evaluate_source_inventory_gap_gate(report: dict[str, Any]) -> dict[str, Any]:
+    summary = report.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    rows = report.get("rows", [])
+    if not isinstance(rows, list):
+        rows = []
+    policy = summary.get("policy", {})
+    if not isinstance(policy, dict):
+        policy = {}
+    policy_text = " ".join(str(value) for value in policy.values()).lower()
+    policy_missing_marker_groups = [
+        group
+        for group, markers in SOURCE_INVENTORY_POLICY_MARKER_GROUPS.items()
+        if not any(marker in policy_text for marker in markers)
+    ]
+
+    current_status_counts = Counter()
+    candidate_scope_counts = Counter()
+    row_gaps: list[dict[str, Any]] = []
+    seen_priority_ranks: set[int] = set()
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            row_gaps.append({"row_index": index, "reason": "row_is_not_object"})
+            continue
+        missing_fields = [field for field in SOURCE_INVENTORY_REQUIRED_ROW_FIELDS if field not in row]
+        invalid_fields: list[str] = []
+        rank = row.get("priority_rank")
+        try:
+            rank_int = int(rank)
+            seen_priority_ranks.add(rank_int)
+        except (TypeError, ValueError):
+            invalid_fields.append("priority_rank")
+        for field in ("tickers", "missing_isin", "missing_sector_or_category", "unresolved_findings", "official_source_count"):
+            try:
+                if int(row.get(field, 0)) < 0:
+                    invalid_fields.append(field)
+            except (TypeError, ValueError):
+                invalid_fields.append(field)
+        if row.get("implementation_status") not in {"implemented", "todo", "blocked", "review"}:
+            invalid_fields.append("implementation_status")
+        if row.get("priority") not in {"high", "medium", "low"}:
+            invalid_fields.append("priority")
+        if str(row.get("current_status", "")) in {"missing", "official_partial", "manual_only"}:
+            if not row.get("candidate_scope"):
+                invalid_fields.append("candidate_scope")
+        if str(row.get("review_needed", "")).lower() in {"true", "1"} and not row.get("blocker"):
+            invalid_fields.append("blocker")
+        current_status_counts[str(row.get("current_status", ""))] += 1
+        candidate_scope_counts[str(row.get("candidate_scope", ""))] += 1
+        if missing_fields or invalid_fields:
+            row_gaps.append(
+                {
+                    "row_index": index,
+                    "reason": "missing_or_invalid_source_inventory_fields",
+                    "missing_fields": missing_fields,
+                    "invalid_fields": invalid_fields,
+                    "available_keys": sorted(row)[:20],
+                }
+            )
+
+    expected_priority_ranks = set(range(1, len(rows) + 1))
+    count_gaps = []
+    expected_summary_counts = {
+        "rows": len(rows),
+        "todo_rows": sum(1 for row in rows if isinstance(row, dict) and row.get("implementation_status") != "implemented"),
+        "current_scope_candidates": sum(
+            1 for row in rows if isinstance(row, dict) and row.get("current_status") != "not_in_current_universe"
+        ),
+        "high_priority_rows": sum(1 for row in rows if isinstance(row, dict) and row.get("priority") == "high"),
+    }
+    for field, expected in expected_summary_counts.items():
+        if summary.get(field) != expected:
+            count_gaps.append({"field": field, "expected": expected, "actual": summary.get(field)})
+    if summary.get("current_status_counts") != dict(sorted(current_status_counts.items())):
+        count_gaps.append(
+            {
+                "field": "current_status_counts",
+                "expected": dict(sorted(current_status_counts.items())),
+                "actual": summary.get("current_status_counts"),
+            }
+        )
+    if summary.get("candidate_scope_counts") != dict(sorted(candidate_scope_counts.items())):
+        count_gaps.append(
+            {
+                "field": "candidate_scope_counts",
+                "expected": dict(sorted(candidate_scope_counts.items())),
+                "actual": summary.get("candidate_scope_counts"),
+            }
+        )
+    if seen_priority_ranks != expected_priority_ranks:
+        count_gaps.append(
+            {
+                "field": "priority_rank",
+                "expected": [1, len(rows)],
+                "actual_missing": sorted(expected_priority_ranks - seen_priority_ranks)[:20],
+                "actual_extra": sorted(seen_priority_ranks - expected_priority_ranks)[:20],
+            }
+        )
+    return {
+        "passed": bool(rows) and not policy_missing_marker_groups and not row_gaps and not count_gaps,
+        "rows": summary.get("rows"),
+        "items": len(rows),
+        "todo_rows": summary.get("todo_rows"),
+        "current_scope_candidates": summary.get("current_scope_candidates"),
+        "high_priority_rows": summary.get("high_priority_rows"),
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "count_gaps": count_gaps,
+        "required_row_fields": list(SOURCE_INVENTORY_REQUIRED_ROW_FIELDS),
+    }
+
+
 def build_payload() -> dict[str, Any]:
     generated_at = utc_now_iso()
     validation = load_json(REPORTS_DIR / "validation_report.json")
     entry_quality_gate = load_json(REPORTS_DIR / "entry_quality_gate.json")
     coverage = load_json(REPORTS_DIR / "coverage_report.json")
     official_name_mismatch_backfill = load_json(REPORTS_DIR / "official_name_mismatch_backfill.json")
+    source_inventory_gap = load_json(REPORTS_DIR / "source_inventory_gap.json")
     source_gap = load_json(REPORTS_DIR / "source_gap_classification.json")
     symbol_changes_review = load_json(REPORTS_DIR / "symbol_changes_review.json")
     otc_name_mismatch_review = load_json(REPORTS_DIR / "otc_name_mismatch_review.json")
@@ -16582,6 +16724,7 @@ def build_payload() -> dict[str, Any]:
     criteria["official_name_mismatch_backfill_gate"] = evaluate_official_name_mismatch_backfill_gate(
         official_name_mismatch_backfill
     )
+    criteria["source_inventory_gap_gate"] = evaluate_source_inventory_gap_gate(source_inventory_gap)
     criteria["source_gap_traceability"] = evaluate_source_gap_traceability(source_gap)
     criteria["symbol_change_review_gate"] = evaluate_symbol_change_review_gate(symbol_changes_review)
     criteria["otc_name_mismatch_review_gate"] = evaluate_otc_name_mismatch_review_gate(otc_name_mismatch_review)

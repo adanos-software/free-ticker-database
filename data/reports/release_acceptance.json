@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-03T01:32:19Z",
+    "generated_at": "2026-06-03T01:37:34Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -9,6 +9,7 @@
       "improvement_deltas": "data/reports/improvement_deltas.json",
       "improvement_campaigns": "data/reports/improvement_campaigns.json",
       "completion_backlog": "data/reports/completion_backlog.json",
+      "source_inventory_gap": "data/reports/source_inventory_gap.json",
       "tse_sector_backfill": "data/reports/tse_sector_backfill.json",
       "sec_sic_sector_backfill": "data/reports/sec_sic_sector_backfill.json",
       "official_name_mismatch_backfill": "data/reports/official_name_mismatch_backfill.json",
@@ -42,12 +43,12 @@
   },
   "passed": true,
   "summary": {
-    "criteria": 50,
-    "passed_criteria": 50,
+    "criteria": 51,
+    "passed_criteria": 51,
     "failed_criteria": 0,
     "validation_failed_error_gates": 0
   },
-  "summary_context": "passed=true;criteria=50;passed_criteria=50;failed_criteria=0;validation_failed_error_gates=0",
+  "summary_context": "passed=true;criteria=51;passed_criteria=51;failed_criteria=0;validation_failed_error_gates=0",
   "criteria": {
     "no_invalid_isins": {
       "passed": true,
@@ -222,18 +223,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-03T01:32:19Z",
+      "release_generated_at": "2026-06-03T01:37:34Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-03T01:32:12Z"
+          "generated_at": "2026-06-03T01:37:25Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-03T01:32:11Z"
+          "generated_at": "2026-06-03T01:37:24Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -254,6 +255,11 @@
           "path": "data/reports/completion_backlog.json",
           "exists": true,
           "generated_at": "2026-06-03T00:33:24Z"
+        },
+        "source_inventory_gap": {
+          "path": "data/reports/source_inventory_gap.json",
+          "exists": true,
+          "generated_at": "2026-06-03T01:36:59Z"
         },
         "tse_sector_backfill": {
           "path": "data/reports/tse_sector_backfill.json",
@@ -526,7 +532,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-03T01:32:11Z",
+      "generated_at": "2026-06-03T01:37:24Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -713,6 +719,38 @@
         "decision",
         "official_sources",
         "supporting_sources"
+      ]
+    },
+    "source_inventory_gap_gate": {
+      "passed": true,
+      "rows": 65,
+      "items": 65,
+      "todo_rows": 0,
+      "current_scope_candidates": 64,
+      "high_priority_rows": 22,
+      "policy_missing_marker_groups": [],
+      "row_gap_count": 0,
+      "row_gaps": [],
+      "count_gaps": [],
+      "required_row_fields": [
+        "priority_rank",
+        "exchange",
+        "current_status",
+        "tickers",
+        "missing_isin",
+        "missing_sector_or_category",
+        "unresolved_findings",
+        "official_source_count",
+        "candidate_key",
+        "candidate_scope",
+        "provider",
+        "expected_format",
+        "source_url",
+        "implementation_status",
+        "priority",
+        "review_needed",
+        "blocker",
+        "notes"
       ]
     },
     "source_gap_traceability": {
