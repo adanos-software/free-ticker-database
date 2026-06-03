@@ -2,6 +2,26 @@
 
 ## [Unreleased]
 
+## [3.27.0] - 2026-06-03
+
+### Summary
+
+Large data-correctness release: the committed exports were stale relative to the refreshed official masterfile reference. Every disputed company name and identifier was re-validated against authoritative external sources (SEC EDGAR, exchange announcements, company IR/press releases, stockanalysis.com) before any change. Net effect: `official_isin_mismatch` 23 → 0, `official_name_mismatch` 39 → 3, total entry-quality warnings 115 → 66, with `validate_database.py` passing all 82 error gates and the full test suite (1419) green.
+
+### Fixed
+
+- Synced the canonical dataset to the refreshed official masterfile reference, absorbing externally validated 2025–2026 corporate renames, stock splits, and identifier changes the committed exports had not yet picked up — e.g. AMC Networks→AMC Global Media, Nextracker→Nextpower, Beauty Health→SkinHealth Systems, Fidelis→Pelagos, SolarBank→PowerBank (SUUN), Matahari→MDS Retailing, Premier1→PLC Resources, GreenHy2→H2G, Mora Telematika→Ekamas Mora Republik, plus the Swissquote 1:10 split (ISIN CH1548235246) and the Scynexis 1:8 reverse split (ISIN US8112923094).
+- Resolved nine OTC reassignments so name and ISIN stay consistent (RPX Gold/RDEXF, Safi Silver/PNTZF, Aurbis Resources/QNICF, Eureka Metals/UREKF, Lion Critical Minerals/GBBGF, Osiris One Metals/IONGF, NorthPalm Capital/SCYRF, Altrova Health/SSPLF, plus the Dai-ichi Life ADR/DLICY) via reviewed name overrides rather than an ISIN-only update.
+- Applied 417 additional externally validated company-name renames discovered by a systematic multi-source validation sweep of all 984 Latin-script dataset-vs-reference name divergences (e.g. Eletrobras→Axia Energia, Opcom→Hextar Capital, GD Express→GDEX, Speqta→BrightBid, Salini Impregilo→Webuild, plus many KOSDAQ/KRX/OTC issuers). 442 divergences were confirmed as benign romanization/abbreviation variants and left unchanged; 0 were left unresolved.
+- Cleaned 49 stale or defective official-reference name entries where the dataset was already correct (outdated pre-rename names such as Essilor International→EssilorLuxottica, Schlumberger→SLB, JX Holdings→ENEOS, LiveChat Software→Text S.A., Specialty Holdco Belgium→Syensqo; ticker codes and venue abbreviations used as names). The dataset itself was unchanged by this cleanup.
+- Corrected an erroneous official reference entry: ASX:LEL was mislabeled "Le Minerals Limited"; restored the externally verified current name "Lithium Energy Limited".
+- Fixed post-corporate-action cross-listing ISIN mappings so split securities stay grouped: NASDAQ:SCYX now carries the post-reverse-split ISIN US8112923094 (shared with LSE:0L49), and OTC:SWQGF carries Swissquote's post-split ISIN CH1548235246 (shared with SIX:SQN and LSE:0QLD).
+- Refreshed README snapshot metrics and all coverage, entry-quality, completion-backlog, source-gap, source-of-truth, alias-quality, and override-debt reports to the corrected dataset.
+
+### Notes
+
+- The 63 remaining country/ISIN-prefix divergences are by design — ADR/foreign lines where the issuer country is correct and the ISIN is a US ADR ISIN (e.g. Anheuser-Busch InBev, SAP, Sanofi) — and are not data bugs.
+
 ## [3.26.0] - 2026-06-03
 
 ### Added

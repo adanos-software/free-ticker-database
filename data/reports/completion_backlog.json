@@ -747,7 +747,7 @@
       "etf_missing_count": 0,
       "exchange": "OTC",
       "field": "missing_sector_stock",
-      "missing_count": 817,
+      "missing_count": 818,
       "notes": "OTC is noisy; do not apply thin-name sector guesses without issuer evidence.",
       "official_source_count": 3,
       "priority_bucket": "top_impact",
@@ -756,7 +756,7 @@
       "reference_scopes": "exchange_directory|listed_companies_subset|security_lookup_subset",
       "review_needed": true,
       "script": "scripts/backfill_sec_sic_sectors.py; scripts/backfill_alphavantage_sectors.py; scripts/backfill_financedatabase_metadata.py",
-      "stock_missing_count": 817,
+      "stock_missing_count": 818,
       "target_field": "stock_sector",
       "venue_status": "official_full"
     },
@@ -2404,9 +2404,9 @@
     "field_totals": {
       "missing_etf_category": 102,
       "missing_isin_primary": 846,
-      "missing_sector_stock": 2600
+      "missing_sector_stock": 2601
     },
-    "generated_at": "2026-06-03T03:10:31Z",
+    "generated_at": "2026-06-03T18:04:31Z",
     "legacy_primary_ticker_collision_rows": 1,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
@@ -2470,7 +2470,7 @@
         "etf_missing_count": 0,
         "exchange": "OTC",
         "field": "missing_sector_stock",
-        "missing_count": 817,
+        "missing_count": 818,
         "official_source_count": 3,
         "recommended_source": "Current SEC SIC residual dry-run has no accepted OTC sector candidates; prioritize OTC Markets issuer evidence, reviewed Alpha Vantage/FinanceDatabase signals, or keep source-gap status.",
         "residual_gate": "sec_sic_otc_no_apply_candidates",
@@ -2483,8 +2483,8 @@
         "sec_requests_made": 0,
         "sec_sic_candidates": 817,
         "source_gap_class": "otc_sector_source_gap",
-        "source_gap_rows": 817,
-        "stock_missing_count": 817,
+        "source_gap_rows": 818,
+        "stock_missing_count": 818,
         "target_field": "stock_sector",
         "venue_status": "official_full",
         "why_next": "top_impact residual review-gated workflow"
@@ -2740,7 +2740,7 @@
         "why_next": "top_impact Canada residual review-gated workflow"
       }
     ],
-    "official_masterfile_collisions": 11182,
+    "official_masterfile_collisions": 11181,
     "rows": 126
   }
 }
