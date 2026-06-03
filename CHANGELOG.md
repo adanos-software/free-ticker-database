@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- Synced the canonical dataset to the refreshed official masterfile reference, absorbing externally validated 2025–2026 corporate renames and identifier changes that the committed exports had not yet picked up. Cleared all `official_isin_mismatch` entry-quality warnings (23 → 0) and reduced `official_name_mismatch` warnings (39 → 10); total entry-quality warnings dropped from 115 to 73.
+- Applied SEC/press-validated renames and corporate actions, e.g. AMC Networks→AMC Global Media, Nextracker→Nextpower, Beauty Health→SkinHealth Systems, Fidelis→Pelagos, SolarBank→PowerBank (SUUN), Matahari→MDS Retailing, Premier1→PLC Resources, GreenHy2→H2G, Mora Telematika→Ekamas Mora Republik, Swissquote 1:10 split (ISIN CH1548235246), and Scynexis 1:8 reverse split (ISIN US8112923094).
+- Resolved nine OTC reassignments so name and ISIN stay consistent (RPX Gold/RDEXF, Safi Silver/PNTZF, Aurbis Resources/QNICF, Eureka Metals/UREKF, Lion Critical Minerals/GBBGF, Osiris One Metals/IONGF, NorthPalm Capital/SCYRF, Altrova Health/SSPLF, plus the Dai-ichi Life ADR/DLICY), via reviewed name overrides instead of an ISIN-only update.
+- Corrected an erroneous official reference entry: ASX:LEL was mislabeled "Le Minerals Limited"; restored the externally verified current name "Lithium Energy Limited" in both the masterfile reference and the reviewed override.
+- Refreshed README snapshot metrics to the resynced dataset (primary tickers 61,468; aliases 121,656).
+
 ## [3.26.0] - 2026-06-03
 
 ### Added

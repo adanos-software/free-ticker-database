@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-05-31T04:00:47Z",
-    "rows": 3548,
+    "generated_at": "2026-06-03T14:38:15Z",
+    "rows": 3549,
     "field_totals": {
       "missing_etf_category": 102,
       "missing_isin_primary": 846,
-      "missing_sector_stock": 2600
+      "missing_sector_stock": 2601
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 45,
@@ -25,7 +25,7 @@
       "official_industry_taxonomy_unavailable_gap": 1581,
       "official_product_reference_unmatched_category_gap": 21,
       "official_product_taxonomy_unavailable_gap": 72,
-      "otc_sector_source_gap": 817,
+      "otc_sector_source_gap": 818,
       "shell_or_cpc_sector_gap": 90
     },
     "class_by_field": {
@@ -46,7 +46,7 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 39,
       "missing_sector_stock:fundlike_stock_sector_gap": 73,
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 1581,
-      "missing_sector_stock:otc_sector_source_gap": 817,
+      "missing_sector_stock:otc_sector_source_gap": 818,
       "missing_sector_stock:shell_or_cpc_sector_gap": 90
     },
     "top_exchanges_by_field": {
@@ -137,7 +137,7 @@
       "missing_sector_stock": [
         {
           "exchange": "OTC",
-          "rows": 817
+          "rows": 818
         },
         {
           "exchange": "B3",
@@ -182,7 +182,7 @@
         "field": "missing_sector_stock",
         "gap_class": "otc_sector_source_gap",
         "exchange": "OTC",
-        "rows": 817,
+        "rows": 818,
         "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
         "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
       },
@@ -5418,7 +5418,7 @@
       "ticker": "MORA",
       "exchange": "IDX",
       "asset_type": "Stock",
-      "name": "Mora Telematika Indonesia",
+      "name": "Ekamas Mora Republik Tbk.",
       "gap_class": "official_identifier_not_exposed_source_gap",
       "review_needed": "true",
       "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
@@ -7951,7 +7951,7 @@
       "ticker": "OIO",
       "exchange": "NASDAQ",
       "asset_type": "Stock",
-      "name": "ESGL Holdings Limited",
+      "name": "OIO Group",
       "gap_class": "official_identifier_not_exposed_source_gap",
       "review_needed": "true",
       "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
@@ -7968,7 +7968,7 @@
       "ticker": "OIOWW",
       "exchange": "NASDAQ",
       "asset_type": "Stock",
-      "name": "ESGL Holdings Limited",
+      "name": "OIO Group",
       "gap_class": "official_identifier_not_exposed_source_gap",
       "review_needed": "true",
       "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
@@ -7985,7 +7985,7 @@
       "ticker": "QUCY",
       "exchange": "NASDAQ",
       "asset_type": "Stock",
-      "name": "Mainz Biomed N.V.",
+      "name": "Quantum Cyber N.V.",
       "gap_class": "official_identifier_not_exposed_source_gap",
       "review_needed": "true",
       "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
@@ -40859,6 +40859,23 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
+      "listing_key": "OTC::DLICY",
+      "ticker": "DLICY",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "name": "Dai-ichi Life Holdings Inc",
+      "gap_class": "otc_sector_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require SEC SIC, issuer filing, OTCMarkets profile, or reviewed secondary profile data; no name-only sector guesses.",
+      "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
+      "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
+      "source_gap_context": "listing_key=OTC::DLICY;exchange=OTC;ticker=DLICY;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
       "listing_key": "OTC::DMNB",
       "ticker": "DMNB",
       "exchange": "OTC",
@@ -47629,7 +47646,7 @@
       "ticker": "QNICF",
       "exchange": "OTC",
       "asset_type": "Stock",
-      "name": "Québec Nickel Corp",
+      "name": "Aurbis Resources Corp.",
       "gap_class": "otc_sector_source_gap",
       "review_needed": "true",
       "confidence_policy": "Require SEC SIC, issuer filing, OTCMarkets profile, or reviewed secondary profile data; no name-only sector guesses.",
@@ -48190,7 +48207,7 @@
       "ticker": "SCYRF",
       "exchange": "OTC",
       "asset_type": "Stock",
-      "name": "Scryb Inc",
+      "name": "NorthPalm Capital Corp.",
       "gap_class": "otc_sector_source_gap",
       "review_needed": "true",
       "confidence_policy": "Require SEC SIC, issuer filing, OTCMarkets profile, or reviewed secondary profile data; no name-only sector guesses.",
@@ -49040,7 +49057,7 @@
       "ticker": "SSPLF",
       "exchange": "OTC",
       "asset_type": "Stock",
-      "name": "Safe Supply Streaming Co Ltd.",
+      "name": "Altrova Health Inc.",
       "gap_class": "otc_sector_source_gap",
       "review_needed": "true",
       "confidence_policy": "Require SEC SIC, issuer filing, OTCMarkets profile, or reviewed secondary profile data; no name-only sector guesses.",

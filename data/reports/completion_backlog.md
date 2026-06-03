@@ -1,13 +1,13 @@
 # Completion Backlog
 
-Generated at: `2026-06-03T03:10:31Z`
+Generated at: `2026-06-03T14:33:25Z`
 
 ## Summary
 
 - Missing primary ISIN rows: `846`
-- Missing stock sectors: `2600`
+- Missing stock sectors: `2601`
 - Missing ETF categories: `102`
-- Official symbol collisions tracked in exchange references: `11182`
+- Official symbol collisions tracked in exchange references: `11181`
 - Core rows hidden only by the legacy global-ticker compatibility export: `1`
 
 ## Next Safe Batches
@@ -15,7 +15,7 @@ Generated at: `2026-06-03T03:10:31Z`
 | Rank | Exchange | Field | Missing | Safe action | Evidence path | Review |
 |---|---|---|---:|---|---|---|
 | 1 | ASX | missing_isin_primary | 105 | candidate_for_official_followup | asx_listed_companies plus reviewed scope decision for core, extended, or exclude before identifier work. | yes |
-| 2 | OTC | missing_sector_stock | 817 | candidate_for_official_followup | Current SEC SIC residual dry-run has no accepted OTC sector candidates; prioritize OTC Markets issuer evidence, reviewed Alpha Vantage/FinanceDatabase signals, or keep source-gap status. | yes |
+| 2 | OTC | missing_sector_stock | 818 | candidate_for_official_followup | Current SEC SIC residual dry-run has no accepted OTC sector candidates; prioritize OTC Markets issuer evidence, reviewed Alpha Vantage/FinanceDatabase signals, or keep source-gap status. | yes |
 | 3 | TSX | missing_isin_primary | 102 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
 | 4 | TSE | missing_sector_stock | 21 | candidate_for_official_followup | Official JPX listed-issues verification shows exact TSE matches but no JPX 33-industry values; use official REIT/infrastructure-fund taxonomy evidence before any stock_sector update. | yes |
 | 5 | B3 | missing_sector_stock | 194 | candidate_for_official_followup | Stronger official B3 or issuer taxonomy source exposing sector for the exact listing. | yes |
@@ -50,7 +50,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 
 | Rank | Exchange | Asset type | Missing | Venue | Source | Review |
 |---|---|---|---:|---|---|---|
-| 1 | OTC | Stock | 817 | official_full | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
+| 1 | OTC | Stock | 818 | official_full | SEC SIC, Alpha Vantage OVERVIEW, and FinanceDatabase as reviewed stock-sector signals. | yes |
 | 2 | B3 | Stock | 194 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
 | 3 | CSE_LK | Stock | 143 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 4 | Euronext | Stock | 132 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
@@ -84,7 +84,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 
 | Rank | Exchange | Missing total | Missing stock_sector | Missing etf_category | Venue |
 |---|---|---:|---:|---:|---|
-| 1 | OTC | 846 | 817 | 29 | official_full |
+| 1 | OTC | 847 | 818 | 29 | official_full |
 | 2 | B3 | 194 | 194 | 0 | official_full |
 | 3 | CSE_LK | 143 | 143 | 0 | official_full |
 | 4 | Euronext | 133 | 132 | 1 | official_full |
