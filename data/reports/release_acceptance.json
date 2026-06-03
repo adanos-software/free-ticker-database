@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-03T03:22:57Z",
+    "generated_at": "2026-06-03T03:27:15Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -230,18 +230,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-03T03:22:57Z",
+      "release_generated_at": "2026-06-03T03:27:15Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-03T03:22:54Z"
+          "generated_at": "2026-06-03T03:27:13Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-03T03:22:54Z"
+          "generated_at": "2026-06-03T03:27:12Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -586,7 +586,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-03T03:22:54Z",
+      "generated_at": "2026-06-03T03:27:12Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -824,6 +824,7 @@
         "provider",
         "reference_scope",
         "mode",
+        "last_error",
         "generated_at",
         "age_hours",
         "freshness_status",

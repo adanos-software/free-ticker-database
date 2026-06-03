@@ -317,6 +317,7 @@ SOURCE_REFRESH_QUEUE_REQUIRED_ITEM_FIELDS = (
     "provider",
     "reference_scope",
     "mode",
+    "last_error",
     "generated_at",
     "age_hours",
     "freshness_status",
@@ -5814,6 +5815,8 @@ def evaluate_source_refresh_queue_gate(report: dict[str, Any]) -> dict[str, Any]
             invalid_fields.append("age_hours")
         if item.get("freshness_status") not in {"fresh", "old", "stale", "unknown"}:
             invalid_fields.append("freshness_status")
+        if item.get("mode") == "unavailable" and not item.get("last_error"):
+            invalid_fields.append("last_error")
         if item.get("refresh_priority") not in {"P1", "P2", "P3", "P4"}:
             invalid_fields.append("refresh_priority")
         refresh_queue = str(item.get("refresh_queue", ""))

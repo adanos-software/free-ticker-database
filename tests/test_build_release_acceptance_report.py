@@ -1809,6 +1809,7 @@ def test_evaluate_source_refresh_queue_gate_accepts_review_only_refresh_items() 
                     "provider": "BME",
                     "reference_scope": "exchange_directory",
                     "mode": "unavailable",
+                    "last_error": "BME security prices rows unavailable",
                     "rows": 0,
                     "generated_at": "2026-06-02T19:38:59Z",
                     "age_hours": 1.01,
@@ -1840,6 +1841,7 @@ def test_evaluate_source_refresh_queue_gate_accepts_review_only_refresh_items() 
                     "provider": "BME",
                     "reference_scope": "listed_companies_subset",
                     "mode": "unavailable",
+                    "last_error": "BME listed values rows unavailable",
                     "rows": 0,
                     "generated_at": "2026-06-02T19:38:59Z",
                     "age_hours": 1.01,
@@ -1929,6 +1931,8 @@ def test_evaluate_source_refresh_queue_gate_rejects_direct_apply_or_stale_counts
     assert result["passed"] is False
     assert result["policy_missing_marker_groups"]
     assert result["row_gap_count"] == 1
+    assert "last_error" in result["row_gaps"][0]["missing_fields"]
+    assert "last_error" in result["row_gaps"][0]["invalid_fields"]
     assert result["count_gaps"]
     assert result["batch_gaps"]
 
