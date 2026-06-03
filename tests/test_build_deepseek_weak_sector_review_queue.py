@@ -1,6 +1,10 @@
 import json
 
-from scripts.build_deepseek_weak_sector_review_queue import build_payload, select_deepseek_weak_sector_reviews
+from scripts.build_deepseek_weak_sector_review_queue import (
+    build_payload,
+    render_markdown,
+    select_deepseek_weak_sector_reviews,
+)
 
 
 def test_select_deepseek_weak_sector_reviews_keeps_supported_decisions() -> None:
@@ -18,6 +22,41 @@ def test_select_deepseek_weak_sector_reviews_keeps_supported_decisions() -> None
         "NGX::A",
         "NGX::B",
         "NGX::C",
+    ]
+
+
+def test_select_deepseek_weak_sector_reviews_deduplicates_listing_keys_with_latest_review() -> None:
+    payload = {
+        "items": [
+            {
+                "listing_key": "NGX::A",
+                "review_kind": "weak_sector",
+                "decision_candidate": "needs_official_evidence",
+            },
+            {
+                "listing_key": "NGX::A",
+                "review_kind": "weak_sector",
+                "decision_candidate": "keep_source_gap",
+            },
+        ]
+    }
+
+    assert select_deepseek_weak_sector_reviews(payload) == [
+        {"listing_key": "NGX::A", "review_kind": "weak_sector", "decision_candidate": "keep_source_gap"}
+    ]
+
+
+def test_select_deepseek_weak_sector_reviews_skips_blank_listing_keys() -> None:
+    payload = {
+        "items": [
+            {"listing_key": "", "review_kind": "weak_sector", "decision_candidate": "keep_source_gap"},
+            {"review_kind": "weak_sector", "decision_candidate": "needs_official_evidence"},
+            {"listing_key": "NGX::A", "review_kind": "weak_sector", "decision_candidate": "keep_source_gap"},
+        ]
+    }
+
+    assert select_deepseek_weak_sector_reviews(payload) == [
+        {"listing_key": "NGX::A", "review_kind": "weak_sector", "decision_candidate": "keep_source_gap"}
     ]
 
 
@@ -58,6 +97,9 @@ def test_build_payload_joins_weak_sector_reviews_to_residual_queue(tmp_path) -> 
     assert payload["summary"]["rows"] == 1
     assert payload["summary"]["official_sector_value_totals"] == {"SERVICES": 1}
     assert payload["summary"]["review_queue_totals"] == {"official_sector_value_mapping_review": 1}
+    assert payload["summary"]["advisory_policy"]["direct_apply_allowed_rows"] == 0
+    assert payload["summary"]["advisory_policy"]["metadata_enrichment_authorized"] is False
+    assert payload["summary"]["advisory_policy"]["review_required_rows"] == 1
     assert payload["items"][0]["review_queue"] == "official_sector_value_mapping_review"
     assert "Do not apply" in payload["items"][0]["review_gate"]
 
@@ -88,3 +130,23 @@ def test_build_payload_reports_unmatched_weak_sector_rows(tmp_path) -> None:
     assert payload["unmatched_deepseek_rows"] == [
         {"listing_key": "NGX::MISSING", "reason": "missing_weak_sector_residual_review_row"}
     ]
+
+
+def test_render_markdown_includes_unmatched_weak_sector_reviews() -> None:
+    markdown = render_markdown(
+        {
+            "_meta": {"generated_at": "2026-06-02T00:00:00Z"},
+            "summary": {
+                "rows": 0,
+                "unmatched_deepseek_rows": 1,
+                "review_queue_totals": {},
+                "official_sector_value_totals": {},
+            },
+            "unmatched_deepseek_rows": [
+                {"listing_key": "NGX::MISSING", "reason": "missing_weak_sector_residual_review_row"}
+            ],
+        }
+    )
+
+    assert "Unmatched DeepSeek Rows" in markdown
+    assert "| NGX::MISSING | missing_weak_sector_residual_review_row |" in markdown

@@ -1,5 +1,10 @@
+import pytest
+
 from scripts.validate_isin_collisions_with_deepseek import (
     build_prompt,
+    compute_queue_coverage,
+    dry_run_would_overwrite_non_dry_run_report,
+    main,
     normalize_verdict,
     run_validation,
     select_top_groups,
@@ -75,6 +80,22 @@ def test_normalize_verdict_filters_unknown_keys_and_marks_agreement():
     assert verdict["deepseek_confidence"] == 0.95
 
 
+def test_normalize_verdict_strips_classification_and_listing_keys():
+    raw = {
+        "classification": " distinct_issuers ",
+        "likely_correct_listing_keys": [" TSX::SPXU ", "TSX::SPXU", " "],
+        "likely_misassigned_listing_keys": " NYSE ARCA::SPXU | NYSE ARCA::SPXU | BOGUS::KEY ",
+        "confidence": 0.75,
+    }
+
+    verdict = normalize_verdict(raw, SAMPLE)
+
+    assert verdict["deepseek_classification"] == "distinct_issuers"
+    assert verdict["likely_correct_listing_keys"] == "TSX::SPXU"
+    assert verdict["likely_misassigned_listing_keys"] == "NYSE ARCA::SPXU"
+    assert verdict["agrees_with_detector"] == "true"
+
+
 def test_normalize_verdict_clamps_bad_confidence_and_defaults_classification():
     verdict = normalize_verdict({"classification": "nonsense", "confidence": "high"}, SAMPLE)
     assert verdict["deepseek_classification"] == "uncertain"
@@ -112,6 +133,34 @@ def test_run_validation_with_injected_caller_collects_verdicts():
     assert summary["validated_groups"] == 1
     assert summary["agrees_with_detector"] == 1
     assert summary["classification_totals"] == {"distinct_issuers": 1}
+
+
+def test_compute_queue_coverage_detects_full_current_queue_coverage():
+    payload = {"_meta": {"generated_at": "2026-06-02T00:00:00Z"}, "items": [SAMPLE]}
+    verdicts = [{"isin": "CA08663L1040"}]
+
+    coverage = compute_queue_coverage(payload, verdicts)
+
+    assert coverage["queue_generated_at"] == "2026-06-02T00:00:00Z"
+    assert coverage["queue_groups"] == 1
+    assert coverage["validation_rows"] == 1
+    assert coverage["missing_queue_isins"] == []
+    assert coverage["stale_validation_isins"] == []
+    assert coverage["full_current_queue_coverage"] is True
+    assert coverage["coverage_status"] == "full_current_queue_coverage"
+
+
+def test_compute_queue_coverage_reports_missing_stale_and_duplicates():
+    payload = {"items": [SAMPLE, group("US123", "isin_shared_by_distinct_issuers", [("A::1", "A", "A", "A Inc")])]}
+    verdicts = [{"isin": "CA08663L1040"}, {"isin": "CA08663L1040"}, {"isin": "STALE"}]
+
+    coverage = compute_queue_coverage(payload, verdicts)
+
+    assert coverage["missing_queue_isins"] == ["US123"]
+    assert coverage["stale_validation_isins"] == ["STALE"]
+    assert coverage["duplicate_validation_isins"] == 1
+    assert coverage["full_current_queue_coverage"] is False
+    assert coverage["coverage_status"] == "coverage_gap"
 
 
 def test_run_validation_records_batch_errors_without_raising():
@@ -182,3 +231,37 @@ def test_dry_run_path_produces_uncertain_verdicts():
     verdicts, errors = run_validation(queue_payload=payload, limit=12, batch_size=4, call_fn=None)
     assert errors == []
     assert verdicts[0]["deepseek_classification"] == "uncertain"
+
+
+def test_dry_run_overwrite_guard_detects_existing_live_report(tmp_path):
+    report = tmp_path / "validation.json"
+    report.write_text('{"_meta":{"dry_run":false},"items":[]}', encoding="utf-8")
+
+    assert dry_run_would_overwrite_non_dry_run_report(report) is True
+
+    report.write_text('{"_meta":{"dry_run":true},"items":[]}', encoding="utf-8")
+    assert dry_run_would_overwrite_non_dry_run_report(report) is False
+
+
+def test_dry_run_refuses_to_clobber_live_report(tmp_path):
+    queue_json = tmp_path / "queue.json"
+    queue_json.write_text('{"items":[]}', encoding="utf-8")
+    json_out = tmp_path / "validation.json"
+    json_out.write_text('{"_meta":{"dry_run":false},"items":[]}', encoding="utf-8")
+
+    with pytest.raises(SystemExit) as excinfo:
+        main(
+            [
+                "--dry-run",
+                "--queue-json",
+                str(queue_json),
+                "--json-out",
+                str(json_out),
+                "--csv-out",
+                str(tmp_path / "validation.csv"),
+                "--md-out",
+                str(tmp_path / "validation.md"),
+            ]
+        )
+
+    assert "would overwrite an existing non-dry-run" in str(excinfo.value)

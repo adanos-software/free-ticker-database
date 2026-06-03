@@ -1,6 +1,6 @@
 # B3 Residual ISIN Review
 
-Generated at: `2026-05-25T12:54:45Z`
+Generated at: `2026-06-02T18:54:28Z`
 
 This report tracks the remaining B3 primary-listing ISIN gaps after the official B3 InstrumentsEquities refresh and dataset rebuild. It does not fill values.
 
@@ -81,8 +81,8 @@ This report tracks the remaining B3 primary-listing ISIN gaps after the official
 | Source | Rows | ISIN present | ISIN missing |
 |---|---:|---:|---:|
 | b3_bdr_etfs | 305 | 0 | 305 |
-| b3_instruments_equities | 1941 | 1941 | 0 |
-| b3_listed_etfs | 188 | 0 | 188 |
+| b3_instruments_equities | 1315 | 1315 | 0 |
+| b3_listed_etfs | 189 | 0 | 189 |
 
 ## Rows
 

@@ -1,6 +1,6 @@
 import json
 
-from scripts.build_deepseek_collision_review_queue import build_payload, select_deepseek_collision_reviews
+from scripts.build_deepseek_collision_review_queue import build_payload, render_markdown, select_deepseek_collision_reviews
 
 
 def test_select_deepseek_collision_reviews_keeps_only_possible_cross_listings() -> None:
@@ -20,6 +20,63 @@ def test_select_deepseek_collision_reviews_keeps_only_possible_cross_listings() 
                 "listing_key": "AMS::MISS",
                 "review_kind": "masterfile_collision",
                 "decision_candidate": "uncertain",
+            },
+        ]
+    }
+
+    assert select_deepseek_collision_reviews(payload) == [
+        {
+            "listing_key": "ADX::AGIX",
+            "review_kind": "masterfile_collision",
+            "decision_candidate": "possible_duplicate_or_cross_listing",
+        }
+    ]
+
+
+def test_select_deepseek_collision_reviews_deduplicates_listing_keys_with_latest_review() -> None:
+    payload = {
+        "items": [
+            {
+                "listing_key": "ADX::AGIX",
+                "review_kind": "masterfile_collision",
+                "decision_candidate": "possible_duplicate_or_cross_listing",
+                "confidence": 0.2,
+            },
+            {
+                "listing_key": "ADX::AGIX",
+                "review_kind": "masterfile_collision",
+                "decision_candidate": "possible_duplicate_or_cross_listing",
+                "confidence": 0.8,
+            },
+        ]
+    }
+
+    assert select_deepseek_collision_reviews(payload) == [
+        {
+            "listing_key": "ADX::AGIX",
+            "review_kind": "masterfile_collision",
+            "decision_candidate": "possible_duplicate_or_cross_listing",
+            "confidence": 0.8,
+        }
+    ]
+
+
+def test_select_deepseek_collision_reviews_skips_blank_listing_keys() -> None:
+    payload = {
+        "items": [
+            {
+                "listing_key": "",
+                "review_kind": "masterfile_collision",
+                "decision_candidate": "possible_duplicate_or_cross_listing",
+            },
+            {
+                "review_kind": "masterfile_collision",
+                "decision_candidate": "possible_duplicate_or_cross_listing",
+            },
+            {
+                "listing_key": "ADX::AGIX",
+                "review_kind": "masterfile_collision",
+                "decision_candidate": "possible_duplicate_or_cross_listing",
             },
         ]
     }
@@ -71,6 +128,9 @@ def test_build_payload_joins_deepseek_collision_reviews_to_masterfile_queue(tmp_
     assert payload["summary"]["rows"] == 1
     assert payload["summary"]["target_exchange_totals"] == {"ADX": 1}
     assert payload["summary"]["official_source_key_totals"] == {"adx_market_watch": 1}
+    assert payload["summary"]["advisory_policy"]["direct_apply_allowed_rows"] == 0
+    assert payload["summary"]["advisory_policy"]["merge_or_dedupe_authorized"] is False
+    assert payload["summary"]["advisory_policy"]["review_required_rows"] == 1
     assert payload["items"][0]["review_queue"] == "manual_cross_listing_identity_review"
     assert "Do not merge" in payload["items"][0]["review_gate"]
     assert payload["unmatched_deepseek_rows"] == []
@@ -102,3 +162,24 @@ def test_build_payload_reports_unmatched_deepseek_rows(tmp_path) -> None:
     assert payload["unmatched_deepseek_rows"] == [
         {"listing_key": "MISSING::ABC", "reason": "missing_masterfile_collision_review_row"}
     ]
+
+
+def test_render_markdown_includes_official_evidence_sources() -> None:
+    markdown = render_markdown(
+        {
+            "_meta": {"generated_at": "2026-05-31T00:00:00Z"},
+            "summary": {
+                "rows": 1,
+                "unmatched_deepseek_rows": 0,
+                "target_exchange_totals": {"ADX": 1},
+                "official_source_key_totals": {"adx_market_watch": 1},
+            },
+            "unmatched_deepseek_rows": [{"listing_key": "MISSING::ABC", "reason": "missing_masterfile_collision_review_row"}],
+        }
+    )
+
+    assert "Official Evidence Sources" in markdown
+    assert "| adx_market_watch | 1 |" in markdown
+    assert "Unmatched DeepSeek Rows" in markdown
+    assert "| MISSING::ABC | missing_masterfile_collision_review_row |" in markdown
+    assert "Next evidence source" in markdown

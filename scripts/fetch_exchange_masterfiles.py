@@ -20,7 +20,7 @@ from html import unescape
 from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any, Iterable
-from urllib.parse import quote, urljoin
+from urllib.parse import quote, urljoin, urlparse
 from urllib.request import Request, urlopen
 
 import pandas as pd
@@ -4434,6 +4434,29 @@ def load_mse_mw_mainboard_rows(
     ensure_output_dirs()
     MSE_MW_MAINBOARD_CACHE.write_text(json.dumps(rows), encoding="utf-8")
     return rows, "network"
+
+
+def describe_mse_mw_mainboard_unavailable(
+    source: MasterfileSource,
+    *,
+    session: requests.Session | None = None,
+) -> str:
+    try:
+        fetch_mse_mw_mainboard_rows(source, session=session)
+    except requests.HTTPError as exc:
+        response = exc.response
+        status_code = response.status_code if response is not None else ""
+        host = urlparse(source.source_url).netloc
+        if status_code and host:
+            return f"HTTP {status_code} from official host {host}"
+        if status_code:
+            return f"HTTP {status_code}"
+        return "HTTP error from official source"
+    except requests.RequestException as exc:
+        return str(exc) or "request error from official source"
+    except ValueError as exc:
+        return str(exc) or "parse error from official source"
+    return "official source returned no current listing rows"
 
 
 def find_current_listing_by_name(
@@ -18270,7 +18293,8 @@ def fetch_source_rows_with_mode(
     if source.format == "mse_mw_mainboard_html":
         rows, mode = load_mse_mw_mainboard_rows(source, session=session)
         if rows is None:
-            raise requests.RequestException("MSE Malawi mainboard unavailable")
+            detail = describe_mse_mw_mainboard_unavailable(source, session=session)
+            raise requests.RequestException(f"MSE Malawi mainboard unavailable ({detail})")
         return rows, mode
     if source.format == "nse_ke_listed_companies_html":
         rows, mode = load_nse_ke_listed_companies_rows(source, session=session)

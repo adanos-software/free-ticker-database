@@ -1,6 +1,6 @@
 # Source Inventory Gap
 
-Generated at: `2026-05-31T03:58:44Z`
+Generated at: `2026-06-03T03:17:45Z`
 
 ## Summary
 
@@ -14,44 +14,44 @@ Generated at: `2026-05-31T03:58:44Z`
 
 ## Missing Current-Scope Sources
 
-| Rank | Exchange | Status | Tickers | ISIN gap | Metadata gap | Candidate | Provider | Blocker |
-|---|---|---|---:|---:|---:|---|---|---|
-| 1 | MSE_MW | missing | 8 | 0 | 8 | mse_mw_listed_companies | MSE Malawi | implemented via official mainboard table and company links |
+| Rank | Exchange | Status | Tickers | ISIN gap | Metadata gap | Candidate | Provider | Source Mode | Last Error | Blocker |
+|---|---|---|---:|---:|---:|---|---|---|---|---|
+| 1 | MSE_MW | missing | 8 | 0 | 8 | mse_mw_listed_companies | MSE Malawi | unavailable | MSE Malawi mainboard unavailable (HTTP 403 from official host mse.co.mw) | implemented via official mainboard table and company links |
 
 ## Partial Current-Scope Sources
 
-| Rank | Exchange | Status | Tickers | ISIN gap | Metadata gap | Candidate | Provider | Blocker |
-|---|---|---|---:|---:|---:|---|---|---|
-| 2 | SSE | official_partial | 2789 | 42 | 0 | sse_industry_classification | SSE | implemented via existing official SSE stock-list CSRC_CODE fields |
-| 3 | EGX | official_partial | 225 | 0 | 29 | egx_listed_securities | EGX | implemented via browser-captured official ASP.NET ViewState; raw non-browser requests still hit the EGX/TSPD challenge |
-| 4 | ASX | official_partial | 1298 | 105 | 45 | asx_cash_market_directory | ASX | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
-| 5 | ATHEX | official_partial | 117 | 8 | 0 | athex_sector_classification | ATHEX | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
-| 6 | STO | official_partial | 725 | 0 | 56 | nasdaq_nordic_stockholm_full_search | Nasdaq Nordic | reconciled through existing official Nasdaq Nordic Stockholm shares, share-search, ETF, tracker, Spotlight, and NGM feeds |
-| 7 | SZSE | official_partial | 3083 | 14 | 0 | szse_industry_classification | SZSE | implemented via existing official SZSE report-list industry fields |
-| 8 | HOSE | official_partial | 153 | 0 | 0 | stockanalysis_hose_company_profiles | StockAnalysis | resolved by scripts/backfill_stockanalysis_metadata.py as a reviewed secondary company-profile source after official HOSE/VSDC feeds did not expose the single LCG stock-sector residual |
-| 9 | BME | official_partial | 169 | 0 | 9 | bme_security_prices_directory | BME | parser implemented via official BME ListedCompanies API with SIBE, Floor, Latibex, MTF, and ETF trading-system parameters; live refresh is currently host-blocked/403 from this environment, and partial caches are ignored |
-| 10 | JSE | official_partial | 212 | 8 | 2 | jse_listed_companies_directory | JSE | implemented by extending existing official JSE instrument profile parser to read Sector/Industry fields; reachable instrument pages still do not expose ISIN values, so residual ISIN gaps need a separate official registry or reviewed issuer filings |
-| 11 | TASE | official_partial | 673 | 0 | 26 | tase_company_profiles | TASE | stock-sector taxonomy still not exposed by the reachable marketdata endpoint |
-| 12 | BSE_HU | official_partial | 31 | 8 | 18 | bse_hu_listed_companies | Budapest Stock Exchange | implemented via official embedded market-data feed; residual local shortcut tickers need explicit symbol alias review |
-| 13 | ZSE | official_partial | 23 | 0 | 22 | zagreb_securities_directory | ZSE Croatia | implemented via official listed-securities table |
-| 14 | VSE | official_partial | 36 | 2 | 4 | vienna_listed_companies | Wiener Boerse | implemented as ISIN join against current VSE listings |
-| 15 | BSE_BW | official_partial | 39 | 0 | 11 | bse_bw_listed_companies | BSE Botswana | implemented via official companies page with conservative local listing-name matching |
-| 16 | BMV | official_partial | 179 | 19 | 5 | bmv_market_data_securities | BMV | implemented via official BMV issuer market-data/profile pages; some local trust/equity rows still omit ISIN in the reachable BMV instrument table |
-| 17 | HEL | official_partial | 188 | 0 | 3 | nasdaq_nordic_helsinki_full_search | Nasdaq Nordic | reconciled through existing official Nasdaq Nordic Helsinki shares, share-search, and ETF feeds |
-| 18 | TPEX | official_partial | 1118 | 0 | 0 | stockanalysis_tpex_company_profiles | StockAnalysis | resolved by scripts/backfill_stockanalysis_metadata.py as a reviewed secondary company-profile source because official TPEX/MOPS feeds identify the KY issuers but do not expose their foreign ISINs |
-| 19 | BVC | official_partial | 3 | 3 | 0 | bvc_colombia_issuers | BVC | implemented via official BVC local-equity issuer API using the site handshake token; rows only enter through reviewed current BVC listings |
-| 20 | Bursa | official_partial | 936 | 0 | 2 | bursa_equities_prices_directory | Bursa Malaysia | implemented via official Bursa year-end closing-price PDF captured through browser download; live equities-prices API still Cloudflare-blocked for repeatable direct refreshes |
-| 21 | WSE | official_partial | 348 | 0 | 26 | gpw_instrument_cards | GPW | implemented by extending existing official GPW/NewConnect list parsers to read the sector label from result rows; residual gaps are mostly unclassified official labels or ETF category tail |
-| 22 | CPH | official_partial | 131 | 0 | 1 | nasdaq_nordic_copenhagen_full_search | Nasdaq Nordic | reconciled through existing official Nasdaq Nordic Copenhagen shares, share-search, ETF, and ETF-search feeds |
-| 23 | BVL | official_partial | 33 | 2 | 30 | bvl_issuers_directory | CAVALI | implemented via official CAVALI issuer securities registry; BVL Angular issuer page still needs endpoint discovery for a pure exchange directory |
-| 24 | PSE_CZ | official_partial | 24 | 1 | 12 | pse_cz_shares_directory | Prague Stock Exchange | implemented via official market pages plus detail-page ticker extraction |
-| 25 | ICE_IS | official_partial | 18 | 0 | 2 | nasdaq_iceland_shares | Nasdaq Nordic | parser implemented; residual gaps need ticker-level review |
-| 26 | SIX | official_partial | 743 | 0 | 0 | six_shares_explorer_full | SIX | implemented via the official SIX FQS ref.json detail endpoint; residual gaps are now data-level taxonomy mapping only |
-| 27 | BCBA | official_partial | 64 | 3 | 14 | byma_equity_details | BYMA | implemented via official Open BYMADATA equity-detail endpoint; some legacy BCBA symbols remain unmatched without manual ticker normalization |
-| 28 | ZSE_ZW | official_partial | 27 | 0 | 21 | zse_zw_listed_companies | ZSE Zimbabwe | implemented via official ZSE front-end API and price-sheet API |
-| 29 | LUSE | official_partial | 22 | 0 | 20 | luse_listed_companies | LuSE | implemented via official listed-company page captured through the reader fallback because direct requests hit a Cloudflare challenge |
-| 30 | USE_UG | official_partial | 7 | 0 | 7 | use_ug_listed_companies | USE Uganda | implemented via official market-snapshot table |
-| 31 | DSE_TZ | official_partial | 17 | 2 | 15 | dse_tz_listed_companies | DSE Tanzania | implemented via official listed-company table; profile pages still need a richer ISIN/sector endpoint |
+| Rank | Exchange | Status | Tickers | ISIN gap | Metadata gap | Candidate | Provider | Source Mode | Last Error | Blocker |
+|---|---|---|---:|---:|---:|---|---|---|---|---|
+| 2 | SSE | official_partial | 2789 | 42 | 0 | sse_industry_classification | SSE |  |  | implemented via existing official SSE stock-list CSRC_CODE fields |
+| 3 | EGX | official_partial | 225 | 0 | 29 | egx_listed_securities | EGX |  |  | implemented via browser-captured official ASP.NET ViewState; raw non-browser requests still hit the EGX/TSPD challenge |
+| 4 | ASX | official_partial | 1298 | 105 | 45 | asx_cash_market_directory | ASX |  |  | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
+| 5 | ATHEX | official_partial | 117 | 8 | 0 | athex_sector_classification | ATHEX | cache |  | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
+| 6 | STO | official_partial | 725 | 0 | 56 | nasdaq_nordic_stockholm_full_search | Nasdaq Nordic |  |  | reconciled through existing official Nasdaq Nordic Stockholm shares, share-search, ETF, tracker, Spotlight, and NGM feeds |
+| 7 | SZSE | official_partial | 3083 | 14 | 0 | szse_industry_classification | SZSE |  |  | implemented via existing official SZSE report-list industry fields |
+| 8 | HOSE | official_partial | 153 | 0 | 0 | stockanalysis_hose_company_profiles | StockAnalysis |  |  | resolved by scripts/backfill_stockanalysis_metadata.py as a reviewed secondary company-profile source after official HOSE/VSDC feeds did not expose the single LCG stock-sector residual |
+| 9 | BME | official_partial | 169 | 0 | 9 | bme_security_prices_directory | BME | unavailable | BME security prices rows unavailable; official detail fetch failed and no complete cache (>=500 rows) is available; partial caches are ignored | parser implemented via official BME ListedCompanies API with SIBE, Floor, Latibex, MTF, and ETF trading-system parameters; live refresh is currently host-blocked/403 from this environment, and partial caches are ignored |
+| 10 | JSE | official_partial | 212 | 8 | 2 | jse_listed_companies_directory | JSE |  |  | implemented by extending existing official JSE instrument profile parser to read Sector/Industry fields; reachable instrument pages still do not expose ISIN values, so residual ISIN gaps need a separate official registry or reviewed issuer filings |
+| 11 | TASE | official_partial | 673 | 0 | 26 | tase_company_profiles | TASE |  |  | stock-sector taxonomy still not exposed by the reachable marketdata endpoint |
+| 12 | BSE_HU | official_partial | 31 | 8 | 18 | bse_hu_listed_companies | Budapest Stock Exchange | cache |  | implemented via official embedded market-data feed; residual local shortcut tickers need explicit symbol alias review |
+| 13 | ZSE | official_partial | 23 | 0 | 22 | zagreb_securities_directory | ZSE Croatia | cache |  | implemented via official listed-securities table |
+| 14 | VSE | official_partial | 36 | 2 | 4 | vienna_listed_companies | Wiener Boerse | cache |  | implemented as ISIN join against current VSE listings |
+| 15 | BSE_BW | official_partial | 39 | 0 | 11 | bse_bw_listed_companies | BSE Botswana | cache |  | implemented via official companies page with conservative local listing-name matching |
+| 16 | BMV | official_partial | 179 | 19 | 5 | bmv_market_data_securities | BMV | network |  | implemented via official BMV issuer market-data/profile pages; some local trust/equity rows still omit ISIN in the reachable BMV instrument table |
+| 17 | HEL | official_partial | 188 | 0 | 3 | nasdaq_nordic_helsinki_full_search | Nasdaq Nordic |  |  | reconciled through existing official Nasdaq Nordic Helsinki shares, share-search, and ETF feeds |
+| 18 | TPEX | official_partial | 1118 | 0 | 0 | stockanalysis_tpex_company_profiles | StockAnalysis |  |  | resolved by scripts/backfill_stockanalysis_metadata.py as a reviewed secondary company-profile source because official TPEX/MOPS feeds identify the KY issuers but do not expose their foreign ISINs |
+| 19 | BVC | official_partial | 3 | 3 | 0 | bvc_colombia_issuers | BVC | cache |  | implemented via official BVC local-equity issuer API using the site handshake token; rows only enter through reviewed current BVC listings |
+| 20 | Bursa | official_partial | 936 | 0 | 2 | bursa_equities_prices_directory | Bursa Malaysia |  |  | implemented via official Bursa year-end closing-price PDF captured through browser download; live equities-prices API still Cloudflare-blocked for repeatable direct refreshes |
+| 21 | WSE | official_partial | 348 | 0 | 26 | gpw_instrument_cards | GPW |  |  | implemented by extending existing official GPW/NewConnect list parsers to read the sector label from result rows; residual gaps are mostly unclassified official labels or ETF category tail |
+| 22 | CPH | official_partial | 131 | 0 | 1 | nasdaq_nordic_copenhagen_full_search | Nasdaq Nordic |  |  | reconciled through existing official Nasdaq Nordic Copenhagen shares, share-search, ETF, and ETF-search feeds |
+| 23 | BVL | official_partial | 33 | 2 | 30 | bvl_issuers_directory | CAVALI | cache |  | implemented via official CAVALI issuer securities registry; BVL Angular issuer page still needs endpoint discovery for a pure exchange directory |
+| 24 | PSE_CZ | official_partial | 24 | 1 | 12 | pse_cz_shares_directory | Prague Stock Exchange | cache |  | implemented via official market pages plus detail-page ticker extraction |
+| 25 | ICE_IS | official_partial | 18 | 0 | 2 | nasdaq_iceland_shares | Nasdaq Nordic |  |  | parser implemented; residual gaps need ticker-level review |
+| 26 | SIX | official_partial | 743 | 0 | 0 | six_shares_explorer_full | SIX | network |  | implemented via the official SIX FQS ref.json detail endpoint; residual gaps are now data-level taxonomy mapping only |
+| 27 | BCBA | official_partial | 64 | 3 | 14 | byma_equity_details | BYMA | cache |  | implemented via official Open BYMADATA equity-detail endpoint; some legacy BCBA symbols remain unmatched without manual ticker normalization |
+| 28 | ZSE_ZW | official_partial | 27 | 0 | 21 | zse_zw_listed_companies | ZSE Zimbabwe | cache |  | implemented via official ZSE front-end API and price-sheet API |
+| 29 | LUSE | official_partial | 22 | 0 | 20 | luse_listed_companies | LuSE | cache |  | implemented via official listed-company page captured through the reader fallback because direct requests hit a Cloudflare challenge |
+| 30 | USE_UG | official_partial | 7 | 0 | 7 | use_ug_listed_companies | USE Uganda | cache |  | implemented via official market-snapshot table |
+| 31 | DSE_TZ | official_partial | 17 | 2 | 15 | dse_tz_listed_companies | DSE Tanzania | cache |  | implemented via official listed-company table; profile pages still need a richer ISIN/sector endpoint |
 
 ## Global Expansion Candidates
 
@@ -59,38 +59,38 @@ _No rows._
 
 ## Completed Or Reconciled Candidates
 
-| Rank | Exchange | Status | Tickers | ISIN gap | Metadata gap | Candidate | Provider | Blocker |
-|---|---|---|---:|---:|---:|---|---|---|
-| 1 | MSE_MW | missing | 8 | 0 | 8 | mse_mw_listed_companies | MSE Malawi | implemented via official mainboard table and company links |
-| 2 | SSE | official_partial | 2789 | 42 | 0 | sse_industry_classification | SSE | implemented via existing official SSE stock-list CSRC_CODE fields |
-| 3 | EGX | official_partial | 225 | 0 | 29 | egx_listed_securities | EGX | implemented via browser-captured official ASP.NET ViewState; raw non-browser requests still hit the EGX/TSPD challenge |
-| 4 | ASX | official_partial | 1298 | 105 | 45 | asx_cash_market_directory | ASX | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
-| 5 | ATHEX | official_partial | 117 | 8 | 0 | athex_sector_classification | ATHEX | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
-| 6 | STO | official_partial | 725 | 0 | 56 | nasdaq_nordic_stockholm_full_search | Nasdaq Nordic | reconciled through existing official Nasdaq Nordic Stockholm shares, share-search, ETF, tracker, Spotlight, and NGM feeds |
-| 7 | SZSE | official_partial | 3083 | 14 | 0 | szse_industry_classification | SZSE | implemented via existing official SZSE report-list industry fields |
-| 8 | HOSE | official_partial | 153 | 0 | 0 | stockanalysis_hose_company_profiles | StockAnalysis | resolved by scripts/backfill_stockanalysis_metadata.py as a reviewed secondary company-profile source after official HOSE/VSDC feeds did not expose the single LCG stock-sector residual |
-| 9 | BME | official_partial | 169 | 0 | 9 | bme_security_prices_directory | BME | parser implemented via official BME ListedCompanies API with SIBE, Floor, Latibex, MTF, and ETF trading-system parameters; live refresh is currently host-blocked/403 from this environment, and partial caches are ignored |
-| 10 | JSE | official_partial | 212 | 8 | 2 | jse_listed_companies_directory | JSE | implemented by extending existing official JSE instrument profile parser to read Sector/Industry fields; reachable instrument pages still do not expose ISIN values, so residual ISIN gaps need a separate official registry or reviewed issuer filings |
-| 11 | TASE | official_partial | 673 | 0 | 26 | tase_company_profiles | TASE | stock-sector taxonomy still not exposed by the reachable marketdata endpoint |
-| 12 | BSE_HU | official_partial | 31 | 8 | 18 | bse_hu_listed_companies | Budapest Stock Exchange | implemented via official embedded market-data feed; residual local shortcut tickers need explicit symbol alias review |
-| 13 | ZSE | official_partial | 23 | 0 | 22 | zagreb_securities_directory | ZSE Croatia | implemented via official listed-securities table |
-| 14 | VSE | official_partial | 36 | 2 | 4 | vienna_listed_companies | Wiener Boerse | implemented as ISIN join against current VSE listings |
-| 15 | BSE_BW | official_partial | 39 | 0 | 11 | bse_bw_listed_companies | BSE Botswana | implemented via official companies page with conservative local listing-name matching |
-| 16 | BMV | official_partial | 179 | 19 | 5 | bmv_market_data_securities | BMV | implemented via official BMV issuer market-data/profile pages; some local trust/equity rows still omit ISIN in the reachable BMV instrument table |
-| 17 | HEL | official_partial | 188 | 0 | 3 | nasdaq_nordic_helsinki_full_search | Nasdaq Nordic | reconciled through existing official Nasdaq Nordic Helsinki shares, share-search, and ETF feeds |
-| 18 | TPEX | official_partial | 1118 | 0 | 0 | stockanalysis_tpex_company_profiles | StockAnalysis | resolved by scripts/backfill_stockanalysis_metadata.py as a reviewed secondary company-profile source because official TPEX/MOPS feeds identify the KY issuers but do not expose their foreign ISINs |
-| 19 | BVC | official_partial | 3 | 3 | 0 | bvc_colombia_issuers | BVC | implemented via official BVC local-equity issuer API using the site handshake token; rows only enter through reviewed current BVC listings |
-| 20 | Bursa | official_partial | 936 | 0 | 2 | bursa_equities_prices_directory | Bursa Malaysia | implemented via official Bursa year-end closing-price PDF captured through browser download; live equities-prices API still Cloudflare-blocked for repeatable direct refreshes |
-| 21 | WSE | official_partial | 348 | 0 | 26 | gpw_instrument_cards | GPW | implemented by extending existing official GPW/NewConnect list parsers to read the sector label from result rows; residual gaps are mostly unclassified official labels or ETF category tail |
-| 22 | CPH | official_partial | 131 | 0 | 1 | nasdaq_nordic_copenhagen_full_search | Nasdaq Nordic | reconciled through existing official Nasdaq Nordic Copenhagen shares, share-search, ETF, and ETF-search feeds |
-| 23 | BVL | official_partial | 33 | 2 | 30 | bvl_issuers_directory | CAVALI | implemented via official CAVALI issuer securities registry; BVL Angular issuer page still needs endpoint discovery for a pure exchange directory |
-| 24 | PSE_CZ | official_partial | 24 | 1 | 12 | pse_cz_shares_directory | Prague Stock Exchange | implemented via official market pages plus detail-page ticker extraction |
-| 25 | ICE_IS | official_partial | 18 | 0 | 2 | nasdaq_iceland_shares | Nasdaq Nordic | parser implemented; residual gaps need ticker-level review |
-| 26 | SIX | official_partial | 743 | 0 | 0 | six_shares_explorer_full | SIX | implemented via the official SIX FQS ref.json detail endpoint; residual gaps are now data-level taxonomy mapping only |
-| 27 | BCBA | official_partial | 64 | 3 | 14 | byma_equity_details | BYMA | implemented via official Open BYMADATA equity-detail endpoint; some legacy BCBA symbols remain unmatched without manual ticker normalization |
-| 28 | ZSE_ZW | official_partial | 27 | 0 | 21 | zse_zw_listed_companies | ZSE Zimbabwe | implemented via official ZSE front-end API and price-sheet API |
-| 29 | LUSE | official_partial | 22 | 0 | 20 | luse_listed_companies | LuSE | implemented via official listed-company page captured through the reader fallback because direct requests hit a Cloudflare challenge |
-| 30 | USE_UG | official_partial | 7 | 0 | 7 | use_ug_listed_companies | USE Uganda | implemented via official market-snapshot table |
+| Rank | Exchange | Status | Tickers | ISIN gap | Metadata gap | Candidate | Provider | Source Mode | Last Error | Blocker |
+|---|---|---|---:|---:|---:|---|---|---|---|---|
+| 1 | MSE_MW | missing | 8 | 0 | 8 | mse_mw_listed_companies | MSE Malawi | unavailable | MSE Malawi mainboard unavailable (HTTP 403 from official host mse.co.mw) | implemented via official mainboard table and company links |
+| 2 | SSE | official_partial | 2789 | 42 | 0 | sse_industry_classification | SSE |  |  | implemented via existing official SSE stock-list CSRC_CODE fields |
+| 3 | EGX | official_partial | 225 | 0 | 29 | egx_listed_securities | EGX |  |  | implemented via browser-captured official ASP.NET ViewState; raw non-browser requests still hit the EGX/TSPD challenge |
+| 4 | ASX | official_partial | 1298 | 105 | 45 | asx_cash_market_directory | ASX |  |  | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
+| 5 | ATHEX | official_partial | 117 | 8 | 0 | athex_sector_classification | ATHEX | cache |  | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
+| 6 | STO | official_partial | 725 | 0 | 56 | nasdaq_nordic_stockholm_full_search | Nasdaq Nordic |  |  | reconciled through existing official Nasdaq Nordic Stockholm shares, share-search, ETF, tracker, Spotlight, and NGM feeds |
+| 7 | SZSE | official_partial | 3083 | 14 | 0 | szse_industry_classification | SZSE |  |  | implemented via existing official SZSE report-list industry fields |
+| 8 | HOSE | official_partial | 153 | 0 | 0 | stockanalysis_hose_company_profiles | StockAnalysis |  |  | resolved by scripts/backfill_stockanalysis_metadata.py as a reviewed secondary company-profile source after official HOSE/VSDC feeds did not expose the single LCG stock-sector residual |
+| 9 | BME | official_partial | 169 | 0 | 9 | bme_security_prices_directory | BME | unavailable | BME security prices rows unavailable; official detail fetch failed and no complete cache (>=500 rows) is available; partial caches are ignored | parser implemented via official BME ListedCompanies API with SIBE, Floor, Latibex, MTF, and ETF trading-system parameters; live refresh is currently host-blocked/403 from this environment, and partial caches are ignored |
+| 10 | JSE | official_partial | 212 | 8 | 2 | jse_listed_companies_directory | JSE |  |  | implemented by extending existing official JSE instrument profile parser to read Sector/Industry fields; reachable instrument pages still do not expose ISIN values, so residual ISIN gaps need a separate official registry or reviewed issuer filings |
+| 11 | TASE | official_partial | 673 | 0 | 26 | tase_company_profiles | TASE |  |  | stock-sector taxonomy still not exposed by the reachable marketdata endpoint |
+| 12 | BSE_HU | official_partial | 31 | 8 | 18 | bse_hu_listed_companies | Budapest Stock Exchange | cache |  | implemented via official embedded market-data feed; residual local shortcut tickers need explicit symbol alias review |
+| 13 | ZSE | official_partial | 23 | 0 | 22 | zagreb_securities_directory | ZSE Croatia | cache |  | implemented via official listed-securities table |
+| 14 | VSE | official_partial | 36 | 2 | 4 | vienna_listed_companies | Wiener Boerse | cache |  | implemented as ISIN join against current VSE listings |
+| 15 | BSE_BW | official_partial | 39 | 0 | 11 | bse_bw_listed_companies | BSE Botswana | cache |  | implemented via official companies page with conservative local listing-name matching |
+| 16 | BMV | official_partial | 179 | 19 | 5 | bmv_market_data_securities | BMV | network |  | implemented via official BMV issuer market-data/profile pages; some local trust/equity rows still omit ISIN in the reachable BMV instrument table |
+| 17 | HEL | official_partial | 188 | 0 | 3 | nasdaq_nordic_helsinki_full_search | Nasdaq Nordic |  |  | reconciled through existing official Nasdaq Nordic Helsinki shares, share-search, and ETF feeds |
+| 18 | TPEX | official_partial | 1118 | 0 | 0 | stockanalysis_tpex_company_profiles | StockAnalysis |  |  | resolved by scripts/backfill_stockanalysis_metadata.py as a reviewed secondary company-profile source because official TPEX/MOPS feeds identify the KY issuers but do not expose their foreign ISINs |
+| 19 | BVC | official_partial | 3 | 3 | 0 | bvc_colombia_issuers | BVC | cache |  | implemented via official BVC local-equity issuer API using the site handshake token; rows only enter through reviewed current BVC listings |
+| 20 | Bursa | official_partial | 936 | 0 | 2 | bursa_equities_prices_directory | Bursa Malaysia |  |  | implemented via official Bursa year-end closing-price PDF captured through browser download; live equities-prices API still Cloudflare-blocked for repeatable direct refreshes |
+| 21 | WSE | official_partial | 348 | 0 | 26 | gpw_instrument_cards | GPW |  |  | implemented by extending existing official GPW/NewConnect list parsers to read the sector label from result rows; residual gaps are mostly unclassified official labels or ETF category tail |
+| 22 | CPH | official_partial | 131 | 0 | 1 | nasdaq_nordic_copenhagen_full_search | Nasdaq Nordic |  |  | reconciled through existing official Nasdaq Nordic Copenhagen shares, share-search, ETF, and ETF-search feeds |
+| 23 | BVL | official_partial | 33 | 2 | 30 | bvl_issuers_directory | CAVALI | cache |  | implemented via official CAVALI issuer securities registry; BVL Angular issuer page still needs endpoint discovery for a pure exchange directory |
+| 24 | PSE_CZ | official_partial | 24 | 1 | 12 | pse_cz_shares_directory | Prague Stock Exchange | cache |  | implemented via official market pages plus detail-page ticker extraction |
+| 25 | ICE_IS | official_partial | 18 | 0 | 2 | nasdaq_iceland_shares | Nasdaq Nordic |  |  | parser implemented; residual gaps need ticker-level review |
+| 26 | SIX | official_partial | 743 | 0 | 0 | six_shares_explorer_full | SIX | network |  | implemented via the official SIX FQS ref.json detail endpoint; residual gaps are now data-level taxonomy mapping only |
+| 27 | BCBA | official_partial | 64 | 3 | 14 | byma_equity_details | BYMA | cache |  | implemented via official Open BYMADATA equity-detail endpoint; some legacy BCBA symbols remain unmatched without manual ticker normalization |
+| 28 | ZSE_ZW | official_partial | 27 | 0 | 21 | zse_zw_listed_companies | ZSE Zimbabwe | cache |  | implemented via official ZSE front-end API and price-sheet API |
+| 29 | LUSE | official_partial | 22 | 0 | 20 | luse_listed_companies | LuSE | cache |  | implemented via official listed-company page captured through the reader fallback because direct requests hit a Cloudflare challenge |
+| 30 | USE_UG | official_partial | 7 | 0 | 7 | use_ug_listed_companies | USE Uganda | cache |  | implemented via official market-snapshot table |
 
 ## Policy
 

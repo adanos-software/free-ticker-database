@@ -129,3 +129,50 @@ def test_build_updates_emits_non_otc_name_updates() -> None:
         "NASDAQ::BRRR",
         "NYSE ARCA::BILD",
     }
+
+
+def test_build_updates_skips_excluded_security_line_names() -> None:
+    entry_quality_rows = [
+        {
+            "listing_key": "NASDAQ::OIOWW",
+            "ticker": "OIOWW",
+            "exchange": "NASDAQ",
+            "asset_type": "Stock",
+            "name": "ESGL Holdings Limited",
+            "quality_status": "warn",
+            "issue_types": "official_name_mismatch",
+        }
+    ]
+    masterfile_rows = [
+        {
+            "ticker": "OIOWW",
+            "exchange": "NASDAQ",
+            "asset_type": "Stock",
+            "provider": "Nasdaq Trader",
+            "source_key": "nasdaq_listed",
+            "name": "OIO Group - Warrants",
+            "official": "true",
+            "listing_status": "active",
+        }
+    ]
+
+    updates, report_rows = build_updates(
+        entry_quality_rows,
+        masterfile_rows,
+        exchanges={"NASDAQ"},
+    )
+
+    assert updates == []
+    assert report_rows == [
+        {
+            "listing_key": "NASDAQ::OIOWW",
+            "ticker": "OIOWW",
+            "exchange": "NASDAQ",
+            "asset_type": "Stock",
+            "current_name": "ESGL Holdings Limited",
+            "proposed_name": "",
+            "decision": "skip",
+            "official_sources": "nasdaq_listed",
+            "supporting_sources": "",
+        }
+    ]

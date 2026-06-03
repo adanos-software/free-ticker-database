@@ -49,7 +49,7 @@ def select_deepseek_collision_reviews(payload: dict[str, Any]) -> list[dict[str,
     items = payload.get("items", [])
     if not isinstance(items, list):
         return []
-    selected: list[dict[str, Any]] = []
+    selected_by_key: dict[str, dict[str, Any]] = {}
     for item in items:
         if not isinstance(item, dict):
             continue
@@ -57,8 +57,11 @@ def select_deepseek_collision_reviews(payload: dict[str, Any]) -> list[dict[str,
             continue
         if item.get("decision_candidate") != "possible_duplicate_or_cross_listing":
             continue
-        selected.append(item)
-    return selected
+        listing_key = str(item.get("listing_key", ""))
+        if not listing_key:
+            continue
+        selected_by_key[listing_key] = item
+    return list(selected_by_key.values())
 
 
 def build_queue_rows(
@@ -118,6 +121,15 @@ def summarize(queue_rows: list[dict[str, Any]], unmatched: list[dict[str, Any]])
         "unmatched_deepseek_rows": len(unmatched),
         "target_exchange_totals": dict(sorted(by_exchange.items())),
         "official_source_key_totals": dict(sorted(by_source.items())),
+        "advisory_policy": {
+            "direct_apply_allowed_rows": 0,
+            "merge_or_dedupe_authorized": False,
+            "review_required_rows": len(queue_rows),
+            "source_gate": (
+                "DeepSeek collision rows are advisory only; apply no merge, dedupe, alias, identifier, "
+                "or cross-listing changes without listing-keyed official identity evidence and reviewer approval."
+            ),
+        },
     }
 
 
@@ -205,10 +217,39 @@ def render_markdown(payload: dict[str, Any]) -> str:
     lines.extend(
         [
             "",
+            "## Official Evidence Sources",
+            "",
+            "| Official source key | Rows |",
+            "| --- | ---: |",
+        ]
+    )
+    for source_key, count in summary["official_source_key_totals"].items():
+        lines.append(f"| {source_key or 'missing'} | {count} |")
+    unmatched_rows = payload.get("unmatched_deepseek_rows", [])
+    if unmatched_rows:
+        lines.extend(
+            [
+                "",
+                "## Unmatched DeepSeek Rows",
+                "",
+                "These advisory rows no longer match the current masterfile collision review and are excluded from the active queue.",
+                "",
+                "| Listing key | Reason |",
+                "| --- | --- |",
+            ]
+        )
+        for row in unmatched_rows[:25]:
+            lines.append(f"| {row.get('listing_key', 'missing')} | {row.get('reason', 'missing')} |")
+    lines.extend(
+        [
+            "",
             "## Review Gate",
             "",
             "Do not merge, alias, or dedupe automatically. Each row needs listing-keyed reviewer evidence covering "
             "official listing status, ISIN fungibility, exchange/MIC, instrument type, and local trading attributes.",
+            "",
+            "Next evidence source: use the row's `official_source_key` first, then verify the existing listing keys "
+            "against their official exchange or issuer pages before recording any gated data change.",
         ]
     )
     return "\n".join(lines) + "\n"

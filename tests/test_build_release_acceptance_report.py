@@ -5,6 +5,7 @@ from scripts.build_release_acceptance_report import (
     EXPECTED_BASELINE_SOURCE_FILES,
     EXPECTED_CAMPAIGN_SOURCE_FILES,
     EXPECTED_DELTA_SOURCE_FILES,
+    RELEASE_SOURCE_REPORTS,
     REQUIRED_DELTA_KEYS,
     b3_etf_apply_category_review_context,
     b3_etf_apply_gate_context,
@@ -36,6 +37,7 @@ from scripts.build_release_acceptance_report import (
     evaluate_campaign_artifact_integrity,
     evaluate_campaign_acceptance_matrices,
     evaluate_canada_figi_gate,
+    evaluate_canada_improvement_action_queue_gate,
     canada_identifier_review_context,
     canada_figi_apply_existing_identifier_context,
     canada_figi_apply_gate_context,
@@ -54,6 +56,11 @@ from scripts.build_release_acceptance_report import (
     evaluate_adanos_detection_simulation,
     evaluate_campaign_review_policies,
     evaluate_campaign_reviewability,
+    evaluate_completion_backlog_next_actions,
+    evaluate_deepseek_advisory_integrity,
+    evaluate_deepseek_isin_collision_validation_gate,
+    evaluate_deepseek_queue_advisory_policies,
+    evaluate_canada_scope_review_queue_gate,
     campaign_status_rows,
     evaluate_next_review_batch_visibility,
     evaluate_next_review_command_safety_gate,
@@ -74,16 +81,26 @@ from scripts.build_release_acceptance_report import (
     evaluate_campaign_closure_blocker_visibility,
     evaluate_coverage_freshness_visibility,
     evaluate_apply_artifact_traceability,
+    evaluate_asx_scope_review_queue_gate,
     evaluate_asx_residual_gate,
+    evaluate_b3_masterfile_gap_review_gate,
+    evaluate_b3_core_scope_review_queue_gate,
+    evaluate_b3_improvement_action_queue_gate,
     evaluate_b3_residual_gate,
     evaluate_entry_quality_command_report,
+    evaluate_financialdata_supplement_review_gate,
     evaluate_supplement_artifact_traceability,
     financialdata_discovery_context,
     financialdata_official_identity_context,
     financialdata_supplement_review_context,
     evaluate_gate_group,
+    evaluate_isin_identity_collision_gate,
     evaluate_masterfile_collision_gate,
+    evaluate_official_name_mismatch_backfill_gate,
     evaluate_ohlcv_plausibility_gate,
+    evaluate_ohlcv_warning_review_gate,
+    evaluate_otc_name_mismatch_action_queue_gate,
+    evaluate_otc_name_mismatch_review_gate,
     evaluate_otc_scope_gate,
     otc_scope_review_context,
     otc_scope_review_decision_context,
@@ -104,8 +121,11 @@ from scripts.build_release_acceptance_report import (
     evaluate_review_row_evidence,
     evaluate_review_row_traceability,
     evaluate_release_source_report_integrity,
+    evaluate_source_inventory_gap_gate,
+    evaluate_source_refresh_queue_gate,
     evaluate_source_gap_traceability,
     evaluate_symbol_change_review_gate,
+    evaluate_weak_sector_venue_action_queue_gate,
     evaluate_weak_sector_residual_gate,
     gate_lookup,
     is_valid_iso_utc_timestamp,
@@ -149,6 +169,715 @@ DELTA_META_FIXTURE = {
     "source_files": EXPECTED_DELTA_SOURCE_FILES,
     "policy": "Delta report only. Positive or negative deltas require source-level review before any data change is inferred.",
 }
+
+
+def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> None:
+    assert RELEASE_SOURCE_REPORTS["completion_backlog"] == "data/reports/completion_backlog.json"
+    assert RELEASE_SOURCE_REPORTS["source_inventory_gap"] == "data/reports/source_inventory_gap.json"
+    assert RELEASE_SOURCE_REPORTS["tse_sector_backfill"] == "data/reports/tse_sector_backfill.json"
+    assert RELEASE_SOURCE_REPORTS["sec_sic_sector_backfill"] == "data/reports/sec_sic_sector_backfill.json"
+    assert RELEASE_SOURCE_REPORTS["official_name_mismatch_backfill"] == "data/reports/official_name_mismatch_backfill.json"
+    assert RELEASE_SOURCE_REPORTS["source_gap_classification"] == "data/reports/source_gap_classification.json"
+    assert RELEASE_SOURCE_REPORTS["deepseek_review_summary"] == "data/reports/deepseek_review_summary.json"
+    assert RELEASE_SOURCE_REPORTS["deepseek_batch_plan"] == "data/reports/deepseek_batch_plan.json"
+    assert RELEASE_SOURCE_REPORTS["deepseek_collision_review_queue"] == "data/reports/deepseek_collision_review_queue.json"
+    assert RELEASE_SOURCE_REPORTS["deepseek_otc_review_queue"] == "data/reports/deepseek_otc_review_queue.json"
+    assert RELEASE_SOURCE_REPORTS["deepseek_weak_sector_review_queue"] == "data/reports/deepseek_weak_sector_review_queue.json"
+    assert (
+        RELEASE_SOURCE_REPORTS["deepseek_isin_collision_validation"]
+        == "data/reports/deepseek_isin_collision_validation.json"
+    )
+    assert (
+        RELEASE_SOURCE_REPORTS["isin_identity_collision_review_queue"]
+        == "data/reports/isin_identity_collision_review_queue.json"
+    )
+    assert (
+        RELEASE_SOURCE_REPORTS["financialdata_isin_supplements_review"]
+        == "data/reports/financialdata_isin_supplements_review.json"
+    )
+    assert RELEASE_SOURCE_REPORTS["otc_name_mismatch_review"] == "data/reports/otc_name_mismatch_review.json"
+    assert RELEASE_SOURCE_REPORTS["otc_name_mismatch_action_queue"] == "data/reports/otc_name_mismatch_action_queue.json"
+    assert RELEASE_SOURCE_REPORTS["canada_scope_review_queue"] == "data/reports/canada_scope_review_queue.json"
+    assert RELEASE_SOURCE_REPORTS["canada_improvement_action_queue"] == "data/reports/canada_improvement_action_queue.json"
+    assert RELEASE_SOURCE_REPORTS["b3_masterfile_gap_review"] == "data/reports/b3_masterfile_gap_review.json"
+    assert RELEASE_SOURCE_REPORTS["b3_core_scope_review_queue"] == "data/reports/b3_core_scope_review_queue.json"
+    assert RELEASE_SOURCE_REPORTS["b3_improvement_action_queue"] == "data/reports/b3_improvement_action_queue.json"
+    assert RELEASE_SOURCE_REPORTS["asx_scope_review_queue"] == "data/reports/asx_scope_review_queue.json"
+    assert RELEASE_SOURCE_REPORTS["weak_sector_venue_action_queue"] == "data/reports/weak_sector_venue_action_queue.json"
+
+
+def test_evaluate_deepseek_advisory_integrity_accepts_drained_advisory_reports(tmp_path) -> None:
+    raw_path = tmp_path / "data" / "deepseek_review_jobs" / "raw_responses.jsonl"
+    raw_path.parent.mkdir(parents=True)
+    raw_path.write_text(json.dumps({"batch": 1, "response": "reviewed"}) + "\n", encoding="utf-8")
+
+    result = evaluate_deepseek_advisory_integrity(
+        {
+            "_meta": {
+                "policy": "DeepSeek review suggestions are triage only. They do not authorize data application.",
+                "raw_batches": 1,
+                "raw_responses_jsonl": "data/deepseek_review_jobs/raw_responses.jsonl",
+            },
+            "summary": {
+                "rows": 2,
+                "errors": 0,
+                "duplicate_review_key_rows": 0,
+                "blank_listing_key_rows": 0,
+                "safe_action_totals": {"needs_official_evidence": 1, "source_gap_accept": 1},
+            },
+        },
+        {
+            "_meta": {
+                "policy": "This plan prepares DeepSeek advisory triage only. DeepSeek output must not authorize direct data application.",
+            },
+            "queues": [
+                {
+                    "queue": "source_gap",
+                    "review_coverage_status": "complete",
+                    "unreviewed_unique_keys": 0,
+                }
+            ],
+            "selected_batch": {
+                "queue": None,
+                "rows": 0,
+                "required_env": "DEEPSEEK_API_KEY",
+                "secret_policy": "Read the API key only from DEEPSEEK_API_KEY. Never write it to files.",
+            },
+        },
+        root=tmp_path,
+    )
+
+    assert result["passed"] is True
+    assert result["review_rows"] == 2
+    assert result["raw_batches"] == 1
+    assert result["raw_responses_jsonl"] == "data/deepseek_review_jobs/raw_responses.jsonl"
+    assert result["raw_missing"] is False
+    assert result["raw_line_count"] == 1
+    assert result["raw_batch_count_mismatch"] == {}
+    assert result["raw_parse_error_lines"] == []
+    assert result["raw_secret_pattern_lines"] == []
+
+
+def test_evaluate_deepseek_advisory_integrity_rejects_direct_or_open_batches() -> None:
+    result = evaluate_deepseek_advisory_integrity(
+        {
+            "_meta": {"policy": "DeepSeek output.", "raw_batches": 0},
+            "summary": {
+                "rows": 2,
+                "errors": 1,
+                "duplicate_review_key_rows": 1,
+                "blank_listing_key_rows": 1,
+                "safe_action_totals": {"direct_apply": 1},
+            },
+        },
+        {
+            "_meta": {"policy": "DeepSeek output."},
+            "queues": [
+                {
+                    "queue": "source_gap",
+                    "review_coverage_status": "needs_deepseek_batch",
+                    "unreviewed_unique_keys": 3,
+                }
+            ],
+            "selected_batch": {
+                "queue": "source_gap",
+                "rows": 3,
+                "required_env": "DEEPSEEK_API_KEY",
+                "secret_policy": "",
+            },
+        },
+    )
+
+    assert result["passed"] is False
+    assert result["invalid_safe_actions"] == ["direct_apply"]
+    assert result["queue_status_gaps"] == ["source_gap"]
+    assert result["queue_unreviewed_gaps"] == {"source_gap": 3}
+    assert result["secret_policy_missing"] is True
+    assert result["raw_missing"] is True
+
+
+def test_evaluate_deepseek_advisory_integrity_rejects_raw_artifact_gaps(tmp_path) -> None:
+    raw_path = tmp_path / "data" / "deepseek_review_jobs" / "raw_responses.jsonl"
+    raw_path.parent.mkdir(parents=True)
+    fake_secret = "sk-" + ("X" * 20)
+    raw_path.write_text(
+        json.dumps({"batch": 1, "response": fake_secret}) + "\n" + "{not-json}\n",
+        encoding="utf-8",
+    )
+
+    result = evaluate_deepseek_advisory_integrity(
+        {
+            "_meta": {
+                "policy": "DeepSeek review suggestions are triage only. They do not authorize data application.",
+                "raw_batches": 3,
+                "raw_responses_jsonl": "data/deepseek_review_jobs/raw_responses.jsonl",
+            },
+            "summary": {
+                "rows": 2,
+                "errors": 0,
+                "duplicate_review_key_rows": 0,
+                "blank_listing_key_rows": 0,
+                "safe_action_totals": {"needs_official_evidence": 1, "source_gap_accept": 1},
+            },
+        },
+        {
+            "_meta": {
+                "policy": "This plan prepares DeepSeek advisory triage only. DeepSeek output must not authorize direct data application.",
+            },
+            "queues": [
+                {
+                    "queue": "source_gap",
+                    "review_coverage_status": "complete",
+                    "unreviewed_unique_keys": 0,
+                }
+            ],
+            "selected_batch": {
+                "queue": None,
+                "rows": 0,
+                "required_env": "DEEPSEEK_API_KEY",
+                "secret_policy": "Read the API key only from DEEPSEEK_API_KEY. Never write it to files.",
+            },
+        },
+        root=tmp_path,
+    )
+
+    assert result["passed"] is False
+    assert result["raw_missing"] is False
+    assert result["raw_line_count"] == 2
+    assert result["raw_batch_count_mismatch"] == {"reported": 3, "actual": 2}
+    assert result["raw_parse_error_lines"] == [2]
+    assert result["raw_secret_pattern_lines"] == [1]
+
+
+def test_evaluate_deepseek_queue_advisory_policies_accepts_gated_queues() -> None:
+    result = evaluate_deepseek_queue_advisory_policies(
+        {
+            "collision": {
+                "summary": {
+                    "rows": 2,
+                    "advisory_policy": {
+                        "direct_apply_allowed_rows": 0,
+                        "merge_or_dedupe_authorized": False,
+                        "review_required_rows": 2,
+                        "source_gate": (
+                            "DeepSeek collision rows are advisory only; apply no merge without "
+                            "listing-keyed official identity evidence and reviewer approval."
+                        ),
+                    },
+                },
+                "items": [{}, {}],
+            },
+            "otc": {
+                "summary": {
+                    "rows": 1,
+                    "advisory_policy": {
+                        "direct_apply_allowed_rows": 0,
+                        "metadata_enrichment_authorized": False,
+                        "review_required_rows": 1,
+                        "source_gate": (
+                            "DeepSeek OTC rows are advisory only; apply no changes without "
+                            "listing-keyed official OTC, SEC, issuer, or registry evidence."
+                        ),
+                    },
+                },
+                "items": [{}],
+            },
+            "weak_sector": {
+                "summary": {
+                    "rows": 1,
+                    "advisory_policy": {
+                        "direct_apply_allowed_rows": 0,
+                        "metadata_enrichment_authorized": False,
+                        "review_required_rows": 1,
+                        "source_gate": (
+                            "DeepSeek weak-sector rows are advisory only; apply no sector without "
+                            "listing-keyed official taxonomy evidence and a reviewed canonical mapping."
+                        ),
+                    },
+                },
+                "items": [{}],
+            },
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["checked"]["collision"]["review_required_rows"] == 2
+    assert result["queue_gaps"] == {}
+
+
+def test_evaluate_deepseek_queue_advisory_policies_rejects_direct_or_missing_queue() -> None:
+    result = evaluate_deepseek_queue_advisory_policies(
+        {
+            "collision": {
+                "summary": {
+                    "rows": 1,
+                    "advisory_policy": {
+                        "direct_apply_allowed_rows": 1,
+                        "merge_or_dedupe_authorized": True,
+                        "review_required_rows": 0,
+                        "source_gate": "Apply after review.",
+                    },
+                },
+                "items": [],
+            },
+            "otc": {
+                "summary": {
+                    "rows": 1,
+                    "advisory_policy": {
+                        "direct_apply_allowed_rows": 0,
+                        "metadata_enrichment_authorized": False,
+                        "review_required_rows": 1,
+                        "source_gate": (
+                            "DeepSeek OTC rows are advisory only; apply no changes without "
+                            "listing-keyed official OTC, SEC, issuer, or registry evidence."
+                        ),
+                    },
+                },
+                "items": [{}],
+            },
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["missing_queues"] == ["weak_sector"]
+    assert {
+        "field": "advisory_policy.direct_apply_allowed_rows",
+        "reported": 1,
+        "expected": 0,
+    } in result["queue_gaps"]["collision"]
+    assert {
+        "field": "advisory_policy.merge_or_dedupe_authorized",
+        "reported": True,
+        "expected": False,
+    } in result["queue_gaps"]["collision"]
+
+
+def test_evaluate_deepseek_isin_collision_validation_gate_accepts_full_advisory_coverage() -> None:
+    result = evaluate_deepseek_isin_collision_validation_gate(
+        {
+            "_meta": {
+                "policy": (
+                    "DeepSeek triage is advisory only. It authorizes no ISIN, country, name, "
+                    "or scope change without official listing-keyed evidence."
+                )
+            },
+            "summary": {
+                "queue_groups": 2,
+                "validated_groups": 2,
+                "errors": 0,
+                "coverage_status": "full_current_queue_coverage",
+                "missing_queue_isins": 0,
+                "stale_validation_isins": 0,
+                "duplicate_validation_isins": 0,
+                "policy": (
+                    "DeepSeek triage is advisory only and authorizes no ISIN, country, or name "
+                    "change. Official listing-keyed evidence remains required."
+                ),
+            },
+            "coverage": {
+                "full_current_queue_coverage": True,
+                "queue_groups": 2,
+                "validation_rows": 2,
+                "missing_queue_isins": [],
+                "stale_validation_isins": [],
+                "duplicate_validation_isins": 0,
+            },
+            "items": [
+                {
+                    "isin": "CA08663L1040",
+                    "review_gate": (
+                        "Triage only. Do not change, blank, or reassign any ISIN, country, or name "
+                        "until official listing-keyed identifier evidence confirms the holder."
+                    ),
+                },
+                {
+                    "isin": "US1234567890",
+                    "review_gate": (
+                        "Triage only. Do not change, blank, or reassign any ISIN, country, or name "
+                        "until official listing-keyed identifier evidence confirms the holder."
+                    ),
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["queue_groups"] == 2
+    assert result["coverage_gaps"] == []
+
+
+def test_evaluate_deepseek_isin_collision_validation_gate_rejects_gaps_or_apply_policy() -> None:
+    result = evaluate_deepseek_isin_collision_validation_gate(
+        {
+            "_meta": {"policy": "DeepSeek can apply."},
+            "summary": {
+                "queue_groups": 2,
+                "validated_groups": 1,
+                "errors": 1,
+                "coverage_status": "coverage_gap",
+                "missing_queue_isins": 1,
+                "stale_validation_isins": 1,
+                "duplicate_validation_isins": 1,
+                "policy": "Apply if confident.",
+            },
+            "coverage": {
+                "full_current_queue_coverage": False,
+                "queue_groups": 2,
+                "validation_rows": 1,
+                "missing_queue_isins": ["US1234567890"],
+                "stale_validation_isins": ["STALE"],
+                "duplicate_validation_isins": 1,
+            },
+            "items": [{"isin": "CA08663L1040", "review_gate": "Apply after review."}],
+        }
+    )
+
+    assert result["passed"] is False
+    assert {
+        "field": "summary.coverage_status",
+        "reported": "coverage_gap",
+        "expected": "full_current_queue_coverage",
+    } in result["coverage_gaps"]
+    assert {
+        "field": "summary.errors",
+        "reported": 1,
+        "expected": 0,
+    } in result["coverage_gaps"]
+    assert result["missing_row_gate_count"] == 1
+    assert "advisory" in result["policy_missing_markers"]
+
+
+def test_evaluate_otc_name_mismatch_review_gate_accepts_review_gated_rows() -> None:
+    result = evaluate_otc_name_mismatch_review_gate(
+        {
+            "_meta": {
+                "rows": 2,
+                "policy": (
+                    "Review queue only. OTC names are not changed unless an official or reviewed "
+                    "issuer-history source matches the listing_key and required identity evidence."
+                ),
+            },
+            "summary": {
+                "review_class_counts": {"probable_otc_rename_or_symbol_reuse": 2},
+                "review_priority_counts": {"high": 2},
+                "apply_eligibility_counts": {"blocked_until_isin_anchored_issuer_history_review": 2},
+                "verification_evidence_required_counts": {
+                    "official_or_reviewed_isin_bearing_source_matching_current_issuer_listing_key_and_name": 2
+                },
+                "review_strategy_counts": {"verify_isin_anchored_issuer_history_before_name_change": 2},
+            },
+            "items": [
+                {
+                    "listing_key": "OTC::AECX",
+                    "review_class": "probable_otc_rename_or_symbol_reuse",
+                    "review_priority": "high",
+                    "apply_eligibility": "blocked_until_isin_anchored_issuer_history_review",
+                    "verification_evidence_required": (
+                        "official_or_reviewed_isin_bearing_source_matching_current_issuer_listing_key_and_name"
+                    ),
+                    "review_strategy": "verify_isin_anchored_issuer_history_before_name_change",
+                    "recommended_next_source": "Official or reviewed ISIN-bearing issuer-history source.",
+                    "source_gate": "Do not change the name until ISIN-anchored evidence proves the same current issuer.",
+                    "official_source_context": "official_sources=otc_markets_stock_screener;official_name_present=true",
+                    "identity_review_context": "token_overlap=0;isin_presence=with_isin",
+                    "decision_review_context": "review_class=probable_otc_rename_or_symbol_reuse;review_decision=none",
+                    "recommended_action": "review_or_backfill",
+                },
+                {
+                    "listing_key": "OTC::AMFN",
+                    "review_class": "stale_or_symbol_reuse_without_isin",
+                    "review_priority": "critical",
+                    "apply_eligibility": "blocked_until_official_issuer_identity_source_or_quarantine_decision",
+                    "verification_evidence_required": (
+                        "official_otc_profile_registry_or_issuer_history_source_matching_listing_key_before_name_or_quarantine_action"
+                    ),
+                    "review_strategy": "resolve_or_quarantine_with_official_otc_profile_or_issuer_history",
+                    "recommended_next_source": "Official OTC profile or issuer-history source.",
+                    "source_gate": "Do not rename or trust reused OTC symbol without listing-keyed official identity.",
+                    "official_source_context": "official_sources=otc_markets_stock_screener;official_name_present=true",
+                    "identity_review_context": "token_overlap=0;isin_presence=without_isin",
+                    "decision_review_context": "review_class=stale_or_symbol_reuse_without_isin;review_decision=none",
+                    "recommended_action": "verify_or_quarantine_before_trusting_listing",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["rows"] == 2
+    assert result["row_gap_count"] == 0
+
+
+def test_evaluate_otc_name_mismatch_review_gate_rejects_apply_or_missing_context() -> None:
+    result = evaluate_otc_name_mismatch_review_gate(
+        {
+            "_meta": {"rows": 1, "policy": "Apply direct name changes."},
+            "summary": {
+                "review_class_counts": {"probable_otc_rename_or_symbol_reuse": 2},
+                "review_priority_counts": {},
+                "apply_eligibility_counts": {},
+                "verification_evidence_required_counts": {},
+                "review_strategy_counts": {},
+            },
+            "items": [
+                {
+                    "listing_key": "OTC::AECX",
+                    "review_class": "probable_otc_rename_or_symbol_reuse",
+                    "review_priority": "high",
+                    "apply_eligibility": "direct_apply",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert "review queue only" in result["policy_missing_markers"]
+    assert result["row_gap_count"] == 1
+    assert result["count_gaps"]
+
+
+def test_evaluate_otc_name_mismatch_action_queue_gate_accepts_review_only_queue() -> None:
+    result = evaluate_otc_name_mismatch_action_queue_gate(
+        {
+            "summary": {
+                "rows": 3,
+                "batches": 2,
+                "direct_name_changes_authorized": False,
+                "metadata_enrichment_authorized": False,
+                "policy": {
+                    "deepseek_triage_only": (
+                        "DeepSeek output is only a triage signal and never authorizes OTC names, "
+                        "aliases, sectors, identifiers, or scope changes."
+                    ),
+                    "official_identity_first": (
+                        "Name changes require listing-keyed OTC Markets, SEC, issuer, registry, "
+                        "or ISIN-anchored issuer-history evidence."
+                    ),
+                    "no_symbol_only_resolution": (
+                        "No OTC symbol is trusted or renamed from ticker-only, name-shape, "
+                        "or broad issuer-family evidence."
+                    ),
+                },
+            },
+            "items": [
+                {
+                    "rows": "2",
+                    "action_queue": "verify_isin_anchored_issuer_history_before_name_change",
+                    "apply_eligibility": "blocked_until_isin_anchored_issuer_history_review",
+                    "verification_evidence_required": (
+                        "official_or_reviewed_isin_bearing_source_matching_current_issuer_listing_key_and_name"
+                    ),
+                    "review_strategy": "verify_isin_anchored_issuer_history_before_name_change",
+                    "recommended_next_source": "Official or reviewed ISIN-bearing issuer-history source.",
+                    "source_gate": "Do not change the name until ISIN-anchored evidence proves the same current issuer.",
+                },
+                {
+                    "rows": "1",
+                    "action_queue": "review_official_alias_before_matcher_tuning",
+                    "apply_eligibility": "matcher_tuning_only_no_metadata_apply_until_exact_identity_review",
+                    "verification_evidence_required": "official_alias_or_abbreviation_evidence_with_exact_listing_identity_match",
+                    "review_strategy": "review_official_alias_or_abbreviation_before_matcher_tuning",
+                    "recommended_next_source": "Official alias evidence matching the exact listing identity.",
+                    "source_gate": "Tune matcher only after official alias evidence; do not change metadata.",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["item_row_total"] == 3
+    assert result["gating_gaps"] == []
+
+
+def test_evaluate_otc_name_mismatch_action_queue_gate_rejects_apply_or_ungated_rows() -> None:
+    result = evaluate_otc_name_mismatch_action_queue_gate(
+        {
+            "summary": {
+                "rows": 2,
+                "batches": 1,
+                "direct_name_changes_authorized": True,
+                "metadata_enrichment_authorized": True,
+                "policy": {"weak": "Apply from symbol shape."},
+            },
+            "items": [
+                {
+                    "rows": "1",
+                    "action_queue": "direct_name_change",
+                    "apply_eligibility": "",
+                    "verification_evidence_required": "",
+                    "review_strategy": "",
+                    "recommended_next_source": "",
+                    "source_gate": "",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert {
+        "field": "summary.direct_name_changes_authorized",
+        "reported": True,
+        "expected": False,
+    } in result["gating_gaps"]
+    assert {
+        "field": "summary.metadata_enrichment_authorized",
+        "reported": True,
+        "expected": False,
+    } in result["gating_gaps"]
+    assert "direct_name_change" in result["invalid_actions"]
+    assert result["missing_item_gate_count"] == 1
+
+
+def test_evaluate_isin_identity_collision_gate_accepts_advisory_queue() -> None:
+    result = evaluate_isin_identity_collision_gate(
+        {
+            "_meta": {
+                "policy": (
+                    "ISIN identity collisions are reported for review only. No ISIN, country, "
+                    "name, or scope change is authorized without official listing-keyed evidence."
+                )
+            },
+            "summary": {
+                "collision_groups": 2,
+                "open_groups": 2,
+                "closed_groups": 0,
+                "direct_identifier_apply_allowed_rows": 0,
+                "policy": (
+                    "This queue reports and gates the collisions and applies no ISIN, country, "
+                    "or name change without official listing-keyed evidence."
+                ),
+                "advisory_policy": {
+                    "direct_identifier_apply_allowed_rows": 0,
+                    "identity_change_authorized": False,
+                    "review_required_groups": 2,
+                    "source_gate": (
+                        "ISIN identity collision rows are advisory only; apply no ISIN, country, "
+                        "name, scope, merge, or dedupe change without listing-keyed official "
+                        "identifier evidence and reviewer approval."
+                    ),
+                },
+            },
+            "items": [
+                {
+                    "isin": "AU000000AMP6",
+                    "review_queue": "manual_isin_identity_review",
+                    "closure_status": "open_needs_official_identifier_evidence",
+                    "review_gate": "Require official listing-keyed identifier evidence before changes.",
+                },
+                {
+                    "isin": "CA08663L1040",
+                    "review_queue": "manual_isin_identity_review",
+                    "closure_status": "open_needs_official_identifier_evidence",
+                    "review_gate": "Require official listing-keyed identifier evidence before changes.",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["collision_groups"] == 2
+    assert result["advisory_gaps"] == []
+
+
+def test_evaluate_isin_identity_collision_gate_rejects_direct_apply_or_missing_policy() -> None:
+    result = evaluate_isin_identity_collision_gate(
+        {
+            "_meta": {"policy": "ISIN queue."},
+            "summary": {
+                "collision_groups": 1,
+                "open_groups": 0,
+                "closed_groups": 1,
+                "direct_identifier_apply_allowed_rows": 1,
+                "policy": "ISIN queue.",
+                "advisory_policy": {
+                    "direct_identifier_apply_allowed_rows": 1,
+                    "identity_change_authorized": True,
+                    "review_required_groups": 0,
+                    "source_gate": "Apply after review.",
+                },
+            },
+            "items": [
+                {
+                    "isin": "AU000000AMP6",
+                    "review_queue": "direct_apply",
+                    "closure_status": "closed",
+                    "review_gate": "",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert {
+        "field": "summary.direct_identifier_apply_allowed_rows",
+        "reported": 1,
+        "expected": 0,
+    } in result["advisory_gaps"]
+    assert {
+        "field": "advisory_policy.identity_change_authorized",
+        "reported": True,
+        "expected": False,
+    } in result["advisory_gaps"]
+    assert result["row_policy_gap_count"] == 1
+
+
+def test_evaluate_completion_backlog_next_actions_accepts_advisory_actions() -> None:
+    result = evaluate_completion_backlog_next_actions(
+        {
+            "summary": {
+                "next_actions": [
+                    {
+                        "safe_action": "candidate_for_official_followup",
+                        "exchange": "ASX",
+                        "field": "missing_isin_primary",
+                        "target_field": "isin",
+                        "missing_count": 10,
+                        "recommended_source": "Official ASX ISIN workbook.",
+                        "script": "scripts/backfill_asx_isins.py",
+                        "review_needed": False,
+                        "confidence_policy": "Accept only after official gates match.",
+                        "why_next": "top_impact official workflow",
+                    }
+                ]
+            }
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["next_actions"] == 1
+    assert result["invalid_safe_actions"] == []
+
+
+def test_evaluate_completion_backlog_next_actions_rejects_direct_or_invalid_actions() -> None:
+    result = evaluate_completion_backlog_next_actions(
+        {
+            "summary": {
+                "next_actions": [
+                    {
+                        "safe_action": "direct_apply",
+                        "exchange": "ASX",
+                        "field": "missing_isin_primary",
+                        "target_field": "stock_sector",
+                        "missing_count": 0,
+                        "recommended_source": "direct apply from model",
+                        "script": "python direct.py",
+                        "review_needed": "no",
+                        "confidence_policy": "direct_apply",
+                        "why_next": "direct apply",
+                    }
+                ]
+            }
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["invalid_safe_actions"] == ["ASX"]
+    assert result["invalid_counts"] == ["ASX"]
+    assert result["invalid_review_flags"] == ["ASX"]
+    assert result["invalid_scripts"] == ["ASX"]
+    assert result["invalid_target_fields"] == {"ASX": "stock_sector"}
+    assert result["direct_apply_markers"] == ["ASX"]
+
 
 BASELINE_META_FIXTURE = {
     "generated_at": "2026-05-24T00:00:00Z",
@@ -228,6 +957,7 @@ def test_evaluate_release_source_report_integrity_requires_files_and_generated_a
     assert result["checked"]["validation_report"]["generated_at"] == "2026-05-24T00:00:00Z"
     assert result["invalid_generated_at"] == {}
     assert result["generated_after_release"] == {}
+    assert result["unlisted_review_reports"] == []
 
 
 def test_evaluate_release_source_report_integrity_fails_for_missing_file_or_timestamp(tmp_path) -> None:
@@ -263,6 +993,29 @@ def test_evaluate_release_source_report_integrity_fails_for_invalid_timestamp(tm
 
     assert result["passed"] is False
     assert result["invalid_generated_at"] == {"validation_report": "not-a-timestamp"}
+
+
+def test_evaluate_release_source_report_integrity_fails_for_unlisted_review_report(tmp_path) -> None:
+    reports_dir = tmp_path / "data" / "reports"
+    reports_dir.mkdir(parents=True)
+    (reports_dir / "validation_report.json").write_text(
+        '{"_meta":{"generated_at":"2026-05-24T00:00:00Z"}}',
+        encoding="utf-8",
+    )
+    (reports_dir / "future_review_queue.json").write_text(
+        '{"_meta":{"generated_at":"2026-05-24T00:00:01Z"},"rows":[]}',
+        encoding="utf-8",
+    )
+
+    result = evaluate_release_source_report_integrity(
+        {"validation_report": "data/reports/validation_report.json"},
+        root=tmp_path,
+        release_generated_at="2026-05-24T00:00:02Z",
+    )
+
+    assert result["passed"] is False
+    assert result["unlisted_review_reports"] == ["data/reports/future_review_queue.json"]
+    assert result["review_source_report_name_markers"] == ["queue", "review", "gap", "backlog"]
 
 
 def test_evaluate_release_source_report_integrity_fails_for_future_source_report(tmp_path) -> None:
@@ -990,6 +1743,257 @@ def test_evaluate_source_gap_traceability_requires_listing_key_source_gate_and_m
 
     assert result["passed"] is True
     assert result["rows"] == 1
+
+
+def test_evaluate_source_refresh_queue_gate_accepts_review_only_refresh_items() -> None:
+    result = evaluate_source_refresh_queue_gate(
+        {
+            "_meta": {
+                "generated_at": "2026-06-02T22:55:14Z",
+                "source_report": "data/reports/coverage_report.json",
+                "policy": (
+                    "Source refresh queue only. Freshness and availability signals do not authorize inferred "
+                    "identifiers, sectors, categories, names, symbols, scope changes, or direct data application."
+                ),
+            },
+            "summary": {
+                "rows": 2,
+                "priority_totals": {"P1": 1, "P2": 1},
+                "queue_totals": {"restore_or_replace_unavailable_source_before_data_fill": 2},
+                "mode_totals": {"unavailable": 2},
+                "reference_scope_totals": {"exchange_directory": 1, "listed_companies_subset": 1},
+                "freshness_status_totals": {"fresh": 2},
+                "evidence_required_totals": {
+                    "source_restored_or_replaced_with_official_or_documented_unavailable_decision": 2
+                },
+                "top_source_refresh_batches": [
+                    {
+                        "refresh_queue": "restore_or_replace_unavailable_source_before_data_fill",
+                        "reference_scope": "exchange_directory",
+                        "mode": "unavailable",
+                        "refresh_priority": "P1",
+                        "source_count": 1,
+                        "total_rows": 0,
+                        "max_age_hours": 1.01,
+                        "review_strategy": "restore_or_replace_unavailable_source_before_data_fill",
+                        "evidence_required": "source_restored_or_replaced_with_official_or_documented_unavailable_decision",
+                        "recommended_next_source": (
+                            "Restore the unavailable official source for scope exchange_directory, or document an official replacement/unavailable decision."
+                        ),
+                        "source_gate": (
+                            "Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists."
+                        ),
+                    },
+                    {
+                        "refresh_queue": "restore_or_replace_unavailable_source_before_data_fill",
+                        "reference_scope": "listed_companies_subset",
+                        "mode": "unavailable",
+                        "refresh_priority": "P2",
+                        "source_count": 1,
+                        "total_rows": 0,
+                        "max_age_hours": 1.01,
+                        "review_strategy": "restore_or_replace_unavailable_source_before_data_fill",
+                        "evidence_required": "source_restored_or_replaced_with_official_or_documented_unavailable_decision",
+                        "recommended_next_source": (
+                            "Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision."
+                        ),
+                        "source_gate": (
+                            "Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists."
+                        ),
+                    },
+                ],
+            },
+            "items": [
+                {
+                    "source_key": "bme_security_prices_directory",
+                    "provider": "BME",
+                    "reference_scope": "exchange_directory",
+                    "mode": "unavailable",
+                    "last_error": "BME security prices rows unavailable",
+                    "rows": 0,
+                    "generated_at": "2026-06-02T19:38:59Z",
+                    "age_hours": 1.01,
+                    "freshness_status": "fresh",
+                    "refresh_priority": "P1",
+                    "refresh_queue": "restore_or_replace_unavailable_source_before_data_fill",
+                    "recommended_refresh_action": "restore_or_replace_unavailable_source_before_data_fill",
+                    "recommended_next_source": (
+                        "Restore the unavailable official source for scope exchange_directory, or document an official replacement/unavailable decision."
+                    ),
+                    "source_gate": (
+                        "Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists."
+                    ),
+                    "review_strategy": "restore_or_replace_unavailable_source_before_data_fill",
+                    "evidence_required": "source_restored_or_replaced_with_official_or_documented_unavailable_decision",
+                    "freshness_review_context": (
+                        "generated_at=2026-06-02T19:38:59Z;age_bucket=age_0_48h;"
+                        "freshness_status=fresh;refresh_priority=P1"
+                    ),
+                    "refresh_gate_context": (
+                        "refresh_queue=restore_or_replace_unavailable_source_before_data_fill;"
+                        "recommended_refresh_action=restore_or_replace_unavailable_source_before_data_fill;"
+                        "review_strategy=restore_or_replace_unavailable_source_before_data_fill;"
+                        "evidence_required=source_restored_or_replaced_with_official_or_documented_unavailable_decision"
+                    ),
+                },
+                {
+                    "source_key": "bme_listed_values",
+                    "provider": "BME",
+                    "reference_scope": "listed_companies_subset",
+                    "mode": "unavailable",
+                    "last_error": "BME listed values rows unavailable",
+                    "rows": 0,
+                    "generated_at": "2026-06-02T19:38:59Z",
+                    "age_hours": 1.01,
+                    "freshness_status": "fresh",
+                    "refresh_priority": "P2",
+                    "refresh_queue": "restore_or_replace_unavailable_source_before_data_fill",
+                    "recommended_refresh_action": "restore_or_replace_unavailable_source_before_data_fill",
+                    "recommended_next_source": (
+                        "Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision."
+                    ),
+                    "source_gate": (
+                        "Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists."
+                    ),
+                    "review_strategy": "restore_or_replace_unavailable_source_before_data_fill",
+                    "evidence_required": "source_restored_or_replaced_with_official_or_documented_unavailable_decision",
+                    "freshness_review_context": (
+                        "generated_at=2026-06-02T19:38:59Z;age_bucket=age_0_48h;"
+                        "freshness_status=fresh;refresh_priority=P2"
+                    ),
+                    "refresh_gate_context": (
+                        "refresh_queue=restore_or_replace_unavailable_source_before_data_fill;"
+                        "recommended_refresh_action=restore_or_replace_unavailable_source_before_data_fill;"
+                        "review_strategy=restore_or_replace_unavailable_source_before_data_fill;"
+                        "evidence_required=source_restored_or_replaced_with_official_or_documented_unavailable_decision"
+                    ),
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["item_count"] == 2
+    assert result["row_gap_count"] == 0
+
+
+def test_evaluate_source_refresh_queue_gate_rejects_direct_apply_or_stale_counts() -> None:
+    result = evaluate_source_refresh_queue_gate(
+        {
+            "_meta": {"generated_at": "2026-06-02T22:55:14Z", "policy": "refresh later"},
+            "summary": {
+                "rows": 2,
+                "priority_totals": {},
+                "queue_totals": {},
+                "mode_totals": {},
+                "reference_scope_totals": {},
+                "freshness_status_totals": {},
+                "evidence_required_totals": {},
+                "top_source_refresh_batches": [
+                    {
+                        "refresh_queue": "direct_apply",
+                        "reference_scope": "exchange_directory",
+                        "mode": "unavailable",
+                        "refresh_priority": "P5",
+                        "source_count": 3,
+                        "total_rows": -1,
+                        "max_age_hours": -1,
+                        "review_strategy": "apply",
+                        "evidence_required": "ticker_match",
+                        "recommended_next_source": "none",
+                        "source_gate": "Apply values.",
+                    }
+                ],
+            },
+            "items": [
+                {
+                    "source_key": "bme_security_prices_directory",
+                    "provider": "BME",
+                    "reference_scope": "exchange_directory",
+                    "mode": "unavailable",
+                    "generated_at": "bad-time",
+                    "age_hours": -1,
+                    "freshness_status": "fresh",
+                    "refresh_priority": "P1",
+                    "refresh_queue": "direct_apply",
+                    "recommended_refresh_action": "apply",
+                    "recommended_next_source": "none",
+                    "source_gate": "Apply values.",
+                    "review_strategy": "apply",
+                    "evidence_required": "ticker_match",
+                    "freshness_review_context": "generated_at=bad-time",
+                    "refresh_gate_context": "refresh_queue=direct_apply",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["policy_missing_marker_groups"]
+    assert result["row_gap_count"] == 1
+    assert "last_error" in result["row_gaps"][0]["missing_fields"]
+    assert "last_error" in result["row_gaps"][0]["invalid_fields"]
+    assert result["count_gaps"]
+    assert result["batch_gaps"]
+
+
+def test_evaluate_source_refresh_queue_gate_rejects_unknown_mode() -> None:
+    result = evaluate_source_refresh_queue_gate(
+        {
+            "_meta": {
+                "generated_at": "2026-06-02T22:55:14Z",
+                "source_report": "data/reports/coverage_report.json",
+                "policy": (
+                    "Source refresh queue only. Freshness and availability signals do not authorize inferred "
+                    "identifiers, sectors, categories, names, symbols, scope changes, or direct data application."
+                ),
+            },
+            "summary": {
+                "rows": 1,
+                "priority_totals": {"P4": 1},
+                "queue_totals": {"fresh_no_refresh_needed": 1},
+                "mode_totals": {"manual": 1},
+                "reference_scope_totals": {"exchange_directory": 1},
+                "freshness_status_totals": {"fresh": 1},
+                "evidence_required_totals": {"fresh_source_generated_at_with_age_under_48h": 1},
+                "top_source_refresh_batches": [],
+            },
+            "items": [
+                {
+                    "source_key": "egx_listed_securities",
+                    "provider": "EGX",
+                    "reference_scope": "exchange_directory",
+                    "mode": "manual",
+                    "last_error": "not applicable",
+                    "rows": 225,
+                    "generated_at": "2026-06-02T19:38:59Z",
+                    "age_hours": 1.01,
+                    "freshness_status": "fresh",
+                    "refresh_priority": "P4",
+                    "refresh_queue": "fresh_no_refresh_needed",
+                    "recommended_refresh_action": "no_refresh_needed",
+                    "recommended_next_source": "No refresh needed for fresh source.",
+                    "source_gate": "Keep official evidence unchanged; no documented refresh need exists.",
+                    "review_strategy": "no_refresh_required",
+                    "evidence_required": "fresh_source_generated_at_with_age_under_48h",
+                    "freshness_review_context": (
+                        "generated_at=2026-06-02T19:38:59Z;age_bucket=age_0_48h;"
+                        "freshness_status=fresh;refresh_priority=P4"
+                    ),
+                    "refresh_gate_context": (
+                        "refresh_queue=fresh_no_refresh_needed;"
+                        "recommended_refresh_action=no_refresh_needed;"
+                        "review_strategy=no_refresh_required;"
+                        "evidence_required=fresh_source_generated_at_with_age_under_48h"
+                    ),
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["row_gap_count"] == 1
+    assert result["row_gaps"][0]["invalid_fields"] == ["mode"]
 
 
 def test_b3_masterfile_gap_contexts_are_exact_field_summaries() -> None:
@@ -1962,6 +2966,171 @@ def test_evaluate_ohlcv_plausibility_gate_fails_for_auto_change_action_or_stale_
     assert result["missing_policy_markers"] == ["plausibility", "never authorize", "official", "listing-keyed"]
     assert result["missing_sampling_buckets"] == ["source_gap:", "large_exchange:"]
     assert result["invalid_top_flagged_exchanges"] is True
+
+
+def test_evaluate_ohlcv_warning_review_gate_accepts_official_review_only_rows() -> None:
+    result = evaluate_ohlcv_warning_review_gate(
+        {
+            "_meta": {
+                "generated_at": "2026-06-02T22:40:00Z",
+                "rows": 1,
+                "source_files": {"ohlcv_plausibility": "data/reports/ohlcv_plausibility.json"},
+                "policy": (
+                    "OHLCV warnings are review signals only. Canonical identifiers, names, sectors, categories, "
+                    "listings, and symbols remain blocked until official listing-keyed evidence is reviewed."
+                ),
+            },
+            "summary": {
+                "review_rows": 1,
+                "exchange_counts": {"BATS": 1},
+                "ohlcv_review_bucket_counts": {"official_listing_status_and_market_data_cross_check": 1},
+                "official_review_priority_counts": {"P1": 1},
+                "canonical_data_change_authorization_counts": {
+                    "blocked_until_official_listing_keyed_review": 1
+                },
+                "official_listing_review_status_counts": {"pending_official_listing_status_review": 1},
+                "official_corporate_action_review_status_counts": {
+                    "pending_official_corporate_action_review": 1
+                },
+                "official_source_locator_status_counts": {
+                    "pending_official_exchange_page_or_notice_lookup": 1
+                },
+                "issue_type_counts": {
+                    "invalid_ohlcv_bar": 1,
+                    "long_stagnant_close_streak": 1,
+                    "long_zero_volume_streak": 1,
+                },
+                "top_official_review_batches": [
+                    {
+                        "exchange": "BATS",
+                        "ohlcv_review_bucket": "official_listing_status_and_market_data_cross_check",
+                        "official_review_priority": "P1",
+                        "rows": 1,
+                        "recommended_next_source": (
+                            "Official BATS listing-status page, exchange notices, and issuer corporate-action announcements."
+                        ),
+                    }
+                ],
+            },
+            "review_items": [
+                {
+                    "listing_key": "BATS::GBXA",
+                    "ticker": "GBXA",
+                    "exchange": "BATS",
+                    "asset_type": "ETF",
+                    "name": "Goldman Sachs ETF Trust Goldman",
+                    "isin": "",
+                    "entry_quality_status": "source_gap",
+                    "ohlcv_source": "yahoo_chart",
+                    "ohlcv_symbol": "GBXA",
+                    "plausibility_status": "warn",
+                    "plausibility_score": 35,
+                    "issue_count": 3,
+                    "issue_types": "invalid_ohlcv_bar|long_stagnant_close_streak|long_zero_volume_streak",
+                    "ohlcv_review_bucket": "official_listing_status_and_market_data_cross_check",
+                    "official_review_priority": "P1",
+                    "official_listing_review_status": "pending_official_listing_status_review",
+                    "official_corporate_action_review_status": "pending_official_corporate_action_review",
+                    "canonical_data_change_authorization": "blocked_until_official_listing_keyed_review",
+                    "verification_evidence_required": (
+                        "official_listing_status_corporate_action_and_independent_market_data_review"
+                    ),
+                    "official_source_locator_status": "pending_official_exchange_page_or_notice_lookup",
+                    "recommended_next_source": (
+                        "Official BATS listing-status page, exchange notices, and issuer corporate-action announcements."
+                    ),
+                    "source_gate": (
+                        "OHLCV anomaly is a review signal only; do not change identifiers, names, sectors, "
+                        "categories, listings, or symbols without official listing-keyed evidence."
+                    ),
+                    "review_context": (
+                        "listing_key=BATS::GBXA;ohlcv_symbol=GBXA;"
+                        "review_bucket=official_listing_status_and_market_data_cross_check;priority=P1;"
+                        "plausibility_status=warn;issue_types=invalid_ohlcv_bar|long_stagnant_close_streak|long_zero_volume_streak;"
+                        "official_source_locator_status=pending_official_exchange_page_or_notice_lookup"
+                    ),
+                    "recommended_action": "perform_official_listing_keyed_review_before_any_canonical_change",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["rows"] == 1
+    assert result["row_gap_count"] == 0
+
+
+def test_evaluate_ohlcv_warning_review_gate_rejects_auto_change_or_stale_counts() -> None:
+    result = evaluate_ohlcv_warning_review_gate(
+        {
+            "_meta": {
+                "generated_at": "bad-time",
+                "rows": 2,
+                "source_files": {},
+                "policy": "OHLCV can apply values.",
+            },
+            "summary": {
+                "review_rows": 2,
+                "exchange_counts": {},
+                "ohlcv_review_bucket_counts": {},
+                "official_review_priority_counts": {},
+                "canonical_data_change_authorization_counts": {"apply_from_ohlcv": 1},
+                "official_listing_review_status_counts": {},
+                "official_corporate_action_review_status_counts": {},
+                "official_source_locator_status_counts": {},
+                "issue_type_counts": {},
+                "top_official_review_batches": [
+                    {
+                        "exchange": "BATS",
+                        "ohlcv_review_bucket": "official_listing_status_and_market_data_cross_check",
+                        "official_review_priority": "P1",
+                        "rows": 2,
+                        "recommended_next_source": "none",
+                    }
+                ],
+            },
+            "review_items": [
+                {
+                    "listing_key": "BATS::GBXA",
+                    "ticker": "GBXA",
+                    "exchange": "BATS",
+                    "entry_quality_status": "source_gap",
+                    "ohlcv_source": "yahoo_chart",
+                    "ohlcv_symbol": "GBXA",
+                    "plausibility_status": "warn",
+                    "plausibility_score": 35,
+                    "issue_count": 1,
+                    "issue_types": "invalid_ohlcv_bar",
+                    "ohlcv_review_bucket": "official_listing_status_and_market_data_cross_check",
+                    "official_review_priority": "P1",
+                    "official_listing_review_status": "apply_status",
+                    "official_corporate_action_review_status": "apply_action",
+                    "canonical_data_change_authorization": "apply_from_ohlcv",
+                    "verification_evidence_required": "ticker_match",
+                    "official_source_locator_status": "pending_official_exchange_page_or_notice_lookup",
+                    "recommended_next_source": "none",
+                    "source_gate": "Apply from OHLCV.",
+                    "review_context": "listing_key=BATS::GBXA",
+                    "recommended_action": "fill_isin_from_ohlcv_sample",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["policy_missing_marker_groups"]
+    assert result["invalid_generated_at"] == "bad-time"
+    assert result["row_count_mismatch"] == {"reported": 2, "actual": 1}
+    assert result["row_gap_count"] == 1
+    assert result["forbidden_action_rows"] == [
+        {
+            "row_index": 0,
+            "listing_key": "BATS::GBXA",
+            "recommended_action": "fill_isin_from_ohlcv_sample",
+        }
+    ]
+    assert result["summary_mismatches"]
+    assert result["top_batch_gaps"]
 
 
 def test_evaluate_masterfile_collision_gate_requires_non_symbol_identity_review() -> None:
@@ -10648,6 +11817,1708 @@ def test_evaluate_supplement_artifact_traceability_requires_policy_identity_and_
 
     assert result["passed"] is True
     assert result["checked_count"] == 1
+
+
+def test_evaluate_financialdata_supplement_review_gate_accepts_source_gated_rows() -> None:
+    review = {
+        "summary": {
+            "rows": 2,
+            "input_rows": 2,
+            "preserved_supplement_rows": 1,
+            "supplement_rows": 1,
+            "decision_counts": {"preserve": 1, "reject": 1},
+            "reason_counts": {
+                "already_in_financialdata_supplement": 1,
+                "no_name_gated_official_isin_match": 1,
+            },
+            "apply_eligibility_counts": {
+                "preserve_existing_reviewed_supplement_no_new_apply": 1,
+                "keep_absent_until_name_gated_official_isin_match": 1,
+            },
+            "verification_evidence_required_counts": {
+                "existing_reviewed_supplement_retained_with_original_official_source": 1,
+                "official_active_masterfile_or_registry_row_matching_financialdata_name_and_listing": 1,
+            },
+            "supplement_rows_by_exchange": {"NSE_IN": 1},
+            "policy": {
+                "financialdata_role": "FinancialData rows are discovery signals only.",
+                "identifier_gate": (
+                    "A supplement requires a valid official ISIN, issuer-name gate, "
+                    "and duplicate checks."
+                ),
+                "no_guessing": (
+                    "FinancialData symbol or name shape is never used as an identifier source."
+                ),
+            },
+        },
+        "review_items": [
+            {
+                "financialdata_ticker": "RELIANCE",
+                "financialdata_exchange": "NSE_IN",
+                "financialdata_name": "Reliance Industries Limited",
+                "financialdata_review_scope": "current_exchange_gap",
+                "decision": "preserve",
+                "reason": "already_in_financialdata_supplement",
+                "financialdata_review_queue": "preserve_existing_reviewed_supplement",
+                "review_priority": "P4",
+                "review_strategy": "preserve_existing_reviewed_supplement_no_new_apply",
+                "apply_eligibility": "preserve_existing_reviewed_supplement_no_new_apply",
+                "verification_evidence_required": "existing_reviewed_supplement_retained_with_original_official_source",
+                "recommended_next_source": "Existing reviewed FinancialData supplement source.",
+                "source_gate": "Preserve existing reviewed supplement; do not create a new row from FinancialData alone.",
+                "official_ticker": "RELIANCE",
+                "official_exchange": "NSE_IN",
+                "official_name": "Reliance Industries Limited",
+                "official_isin": "INE002A01018",
+                "official_source_key": "nse_india_securities_available",
+                "official_reference_scope": "exchange_directory",
+                "financialdata_discovery_context": (
+                    "financialdata_exchange=NSE_IN;financialdata_ticker=RELIANCE;"
+                    "financialdata_review_scope=current_exchange_gap;financialdata_name_present=true"
+                ),
+                "official_identity_context": (
+                    "official_exchange=NSE_IN;official_ticker=RELIANCE;"
+                    "official_source_key=nse_india_securities_available;official_reference_scope=exchange_directory;"
+                    "official_isin_present=true;official_name_present=true"
+                ),
+                "supplement_review_context": (
+                    "decision=preserve;reason=already_in_financialdata_supplement;"
+                    "financialdata_review_queue=preserve_existing_reviewed_supplement;"
+                    "apply_eligibility=preserve_existing_reviewed_supplement_no_new_apply;"
+                    "verification_evidence_required=existing_reviewed_supplement_retained_with_original_official_source"
+                ),
+            },
+            {
+                "financialdata_ticker": "MISS",
+                "financialdata_exchange": "KRX",
+                "financialdata_review_scope": "global_expansion_candidate",
+                "decision": "reject",
+                "reason": "no_name_gated_official_isin_match",
+                "financialdata_review_queue": "keep_absent_until_official_name_gated_match",
+                "review_priority": "P2",
+                "review_strategy": "keep_absent_until_official_name_gated_identifier_evidence_exists",
+                "apply_eligibility": "keep_absent_until_name_gated_official_isin_match",
+                "verification_evidence_required": "official_active_masterfile_or_registry_row_matching_financialdata_name_and_listing",
+                "recommended_next_source": "Official active masterfile, registry, or issuer source matching FinancialData name and listing identity.",
+                "source_gate": "Keep absent until an official active source satisfies exact name/listing identity and ISIN gates.",
+                "financialdata_discovery_context": (
+                    "financialdata_exchange=KRX;financialdata_ticker=MISS;"
+                    "financialdata_review_scope=global_expansion_candidate;financialdata_name_present=false"
+                ),
+                "official_identity_context": (
+                    "official_exchange=none;official_ticker=none;official_source_key=none;"
+                    "official_reference_scope=none;official_isin_present=false;official_name_present=false"
+                ),
+                "supplement_review_context": (
+                    "decision=reject;reason=no_name_gated_official_isin_match;"
+                    "financialdata_review_queue=keep_absent_until_official_name_gated_match;"
+                    "apply_eligibility=keep_absent_until_name_gated_official_isin_match;"
+                    "verification_evidence_required=official_active_masterfile_or_registry_row_matching_financialdata_name_and_listing"
+                ),
+            },
+        ],
+    }
+
+    result = evaluate_financialdata_supplement_review_gate(review)
+
+    assert result["passed"] is True
+    assert result["review_items"] == 2
+    assert result["supplement_rows_by_exchange_total"] == 1
+
+
+def test_evaluate_financialdata_supplement_review_gate_rejects_direct_apply_or_weak_policy() -> None:
+    review = {
+        "summary": {
+            "rows": 1,
+            "input_rows": 2,
+            "preserved_supplement_rows": 1,
+            "supplement_rows": 2,
+            "decision_counts": {"accept": 1},
+            "reason_counts": {"accepted": 2},
+            "apply_eligibility_counts": {"apply_from_global_ticker_reuse": 1},
+            "verification_evidence_required_counts": {"ticker_match_only": 1},
+            "supplement_rows_by_exchange": {"NSE_IN": 1},
+            "policy": {"financialdata_role": "FinancialData can fill identifiers."},
+        },
+        "review_items": [
+            {
+                "financialdata_ticker": "RELIANCE",
+                "financialdata_exchange": "NSE_IN",
+                "decision": "accept",
+                "reason": "accepted",
+                "financialdata_review_queue": "official_name_gated_supplement_candidate",
+                "review_priority": "P1",
+                "review_strategy": "apply",
+                "apply_eligibility": "apply_from_global_ticker_reuse",
+                "verification_evidence_required": "ticker_match_only",
+                "recommended_next_source": "FinancialData",
+                "source_gate": "Apply from ticker.",
+            }
+        ],
+    }
+
+    result = evaluate_financialdata_supplement_review_gate(review)
+
+    assert result["passed"] is False
+    assert result["policy_missing_marker_groups"]
+    assert result["count_gaps"] == [{"field": "reason_counts", "expected": 1, "actual": 2}]
+    assert result["supplement_row_count_gaps"] == [{"field": "supplement_rows", "expected": 1, "actual": 2}]
+    assert result["traceability_gap_count"] == 1
+
+
+def test_evaluate_official_name_mismatch_backfill_gate_accepts_official_source_rows() -> None:
+    result = evaluate_official_name_mismatch_backfill_gate(
+        {
+            "summary": {
+                "policy": {
+                    "source_authority": "Name candidates require active official masterfile references for the exact ticker and exchange.",
+                    "no_guessing": "Names are not inferred from ticker shape or secondary-only sources.",
+                    "apply_gate": "Report rows are review evidence; updates require --apply through the override workflow.",
+                    "otc_exclusion": "OTC rows use the OTC name-mismatch review workflow.",
+                },
+                "supported_exchanges": ["NASDAQ", "NYSE"],
+                "rows_reviewed": 2,
+                "updates_emitted": 1,
+                "accepted_by_exchange": {"NASDAQ": 1},
+                "skipped_by_exchange": {"NYSE": 1},
+            },
+            "items": [
+                {
+                    "listing_key": "NASDAQ::ADAM",
+                    "ticker": "ADAM",
+                    "exchange": "NASDAQ",
+                    "asset_type": "Stock",
+                    "current_name": "New York Mortgage Trust, Inc.",
+                    "proposed_name": "Adamas Trust, Inc.",
+                    "decision": "accept",
+                    "official_sources": "nasdaq_listed|sec_company_tickers_exchange",
+                    "supporting_sources": "nasdaq_listed|sec_company_tickers_exchange",
+                },
+                {
+                    "listing_key": "NYSE::FLG",
+                    "ticker": "FLG",
+                    "exchange": "NYSE",
+                    "asset_type": "Stock",
+                    "current_name": "Flagstar Financial, Inc.",
+                    "proposed_name": "",
+                    "decision": "skip",
+                    "official_sources": "nasdaq_other_listed|sec_company_tickers_exchange",
+                    "supporting_sources": "nasdaq_other_listed",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["updates_emitted"] == 1
+    assert result["accepted_rows"] == 1
+
+
+def test_evaluate_official_name_mismatch_backfill_gate_rejects_unguarded_or_stale_counts() -> None:
+    result = evaluate_official_name_mismatch_backfill_gate(
+        {
+            "summary": {
+                "policy": {"source_authority": "Use names."},
+                "supported_exchanges": ["NASDAQ", "OTC"],
+                "rows_reviewed": 3,
+                "updates_emitted": 2,
+                "accepted_by_exchange": {"NASDAQ": 2},
+                "skipped_by_exchange": {},
+            },
+            "items": [
+                {
+                    "listing_key": "NASDAQ::ADAM",
+                    "ticker": "ADAM",
+                    "exchange": "NASDAQ",
+                    "asset_type": "Stock",
+                    "current_name": "Adamas Trust, Inc.",
+                    "proposed_name": "Adamas Trust, Inc.",
+                    "decision": "accept",
+                    "official_sources": "",
+                    "supporting_sources": "",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["policy_missing_marker_groups"]
+    assert result["row_gap_count"] == 1
+    assert result["count_gaps"] == [
+        {"field": "rows_reviewed", "expected": 1, "actual": 3},
+        {"field": "updates_emitted", "expected": 1, "actual": 2},
+        {"field": "accepted_by_exchange", "expected": {"NASDAQ": 1}, "actual": {"NASDAQ": 2}},
+    ]
+
+
+def test_evaluate_source_inventory_gap_gate_accepts_inventory_backlog() -> None:
+    result = evaluate_source_inventory_gap_gate(
+        {
+            "summary": {
+                "generated_at": "2026-06-03T00:00:00Z",
+                "policy": {
+                    "inventory_only": "This report is a source inventory and parser backlog only; it does not authorize data fills.",
+                    "official_source_gate": "Official source parsers must write reference.csv before data evidence exists.",
+                    "no_guessing": "Missing fields remain blank until sourced.",
+                    "review_gate": "Rows marked review_needed require source review before scope changes.",
+                },
+                "rows": 2,
+                "current_status_counts": {"missing": 1, "official_partial": 1},
+                "candidate_scope_counts": {"exchange_directory_candidate": 1, "source_expansion_candidate": 1},
+                "todo_rows": 1,
+                "current_scope_candidates": 2,
+                "global_expansion_candidates": 0,
+                "high_priority_rows": 1,
+            },
+            "rows": [
+                {
+                    "priority_rank": 1,
+                    "exchange": "EGX",
+                    "current_status": "missing",
+                    "tickers": 225,
+                    "missing_isin": 25,
+                    "missing_sector_or_category": 125,
+                    "unresolved_findings": 225,
+                    "official_source_count": 0,
+                    "candidate_key": "egx_listed_securities",
+                    "candidate_scope": "exchange_directory_candidate",
+                    "provider": "EGX",
+                    "expected_format": "html_or_api",
+                    "source_url": "https://www.egx.com.eg/en/ListedStocks.aspx",
+                    "implementation_status": "todo",
+                    "source_mode": "unavailable",
+                    "source_refresh_queue": "restore_or_replace_unavailable_source_before_data_fill",
+                    "source_last_error": "HTTP 403 from official host egx.example",
+                    "priority": "high",
+                    "review_needed": True,
+                    "blocker": "needs endpoint discovery",
+                    "notes": "Current-scope source gap.",
+                },
+                {
+                    "priority_rank": 2,
+                    "exchange": "LSE",
+                    "current_status": "official_partial",
+                    "tickers": 6408,
+                    "missing_isin": 47,
+                    "missing_sector_or_category": 1302,
+                    "unresolved_findings": 52,
+                    "official_source_count": 3,
+                    "candidate_key": "lse_price_explorer",
+                    "candidate_scope": "source_expansion_candidate",
+                    "provider": "LSE",
+                    "expected_format": "lse_price_explorer_json",
+                    "source_url": "https://www.londonstockexchange.com/market-stock/0",
+                    "implementation_status": "implemented",
+                    "source_mode": "",
+                    "source_refresh_queue": "",
+                    "source_last_error": "",
+                    "priority": "medium",
+                    "review_needed": False,
+                    "blocker": "candidate source not curated yet",
+                    "notes": "Needs stronger official source candidate.",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["items"] == 2
+    assert result["todo_rows"] == 1
+
+
+def test_evaluate_source_inventory_gap_gate_rejects_missing_policy_or_stale_counts() -> None:
+    result = evaluate_source_inventory_gap_gate(
+        {
+            "summary": {
+                "policy": {"inventory_only": "source list"},
+                "rows": 2,
+                "current_status_counts": {"missing": 2},
+                "candidate_scope_counts": {},
+                "todo_rows": 0,
+                "current_scope_candidates": 0,
+                "high_priority_rows": 0,
+            },
+            "rows": [
+                {
+                    "priority_rank": 2,
+                    "exchange": "EGX",
+                    "current_status": "missing",
+                    "tickers": -1,
+                    "missing_isin": 1,
+                    "missing_sector_or_category": 1,
+                    "unresolved_findings": 1,
+                    "official_source_count": 0,
+                    "candidate_key": "egx_listed_securities",
+                    "candidate_scope": "",
+                    "provider": "EGX",
+                    "expected_format": "html",
+                    "source_url": "",
+                    "implementation_status": "apply",
+                    "source_mode": "unavailable",
+                    "source_refresh_queue": "direct_apply",
+                    "source_last_error": "",
+                    "priority": "urgent",
+                    "review_needed": True,
+                    "blocker": "",
+                    "notes": "",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["policy_missing_marker_groups"]
+    assert result["row_gap_count"] == 1
+    assert "source_refresh_queue" in result["row_gaps"][0]["invalid_fields"]
+    assert "source_last_error" in result["row_gaps"][0]["invalid_fields"]
+    assert result["count_gaps"][0] == {"field": "rows", "expected": 1, "actual": 2}
+
+
+def test_evaluate_source_inventory_gap_gate_rejects_unknown_source_mode() -> None:
+    result = evaluate_source_inventory_gap_gate(
+        {
+            "summary": {
+                "generated_at": "2026-06-03T00:00:00Z",
+                "policy": {
+                    "inventory_only": "This report is a source inventory and parser backlog only; it does not authorize data fills.",
+                    "official_source_gate": "Official source parsers must write reference.csv before data evidence exists.",
+                    "no_guessing": "Missing fields remain blank until sourced.",
+                    "review_gate": "Rows marked review_needed require source review before scope changes.",
+                },
+                "rows": 1,
+                "current_status_counts": {"missing": 1},
+                "candidate_scope_counts": {"exchange_directory_candidate": 1},
+                "todo_rows": 1,
+                "current_scope_candidates": 1,
+                "global_expansion_candidates": 0,
+                "high_priority_rows": 1,
+            },
+            "rows": [
+                {
+                    "priority_rank": 1,
+                    "exchange": "EGX",
+                    "current_status": "missing",
+                    "tickers": 225,
+                    "missing_isin": 25,
+                    "missing_sector_or_category": 125,
+                    "unresolved_findings": 225,
+                    "official_source_count": 0,
+                    "candidate_key": "egx_listed_securities",
+                    "candidate_scope": "exchange_directory_candidate",
+                    "provider": "EGX",
+                    "expected_format": "html_or_api",
+                    "source_url": "https://www.egx.com.eg/en/ListedStocks.aspx",
+                    "implementation_status": "todo",
+                    "source_mode": "manual",
+                    "source_refresh_queue": "",
+                    "source_last_error": "",
+                    "priority": "high",
+                    "review_needed": True,
+                    "blocker": "needs endpoint discovery",
+                    "notes": "Current-scope source gap.",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["row_gap_count"] == 1
+    assert result["row_gaps"][0]["invalid_fields"] == ["source_mode"]
+
+
+def test_evaluate_source_inventory_gap_gate_rejects_unknown_status_or_scope() -> None:
+    result = evaluate_source_inventory_gap_gate(
+        {
+            "summary": {
+                "generated_at": "2026-06-03T00:00:00Z",
+                "policy": {
+                    "inventory_only": "This report is a source inventory and parser backlog only; it does not authorize data fills.",
+                    "official_source_gate": "Official source parsers must write reference.csv before data evidence exists.",
+                    "no_guessing": "Missing fields remain blank until sourced.",
+                    "review_gate": "Rows marked review_needed require source review before scope changes.",
+                },
+                "rows": 1,
+                "current_status_counts": {"unknown": 1},
+                "candidate_scope_counts": {"needs_source_research": 1},
+                "todo_rows": 0,
+                "current_scope_candidates": 1,
+                "global_expansion_candidates": 0,
+                "high_priority_rows": 0,
+            },
+            "rows": [
+                {
+                    "priority_rank": 1,
+                    "exchange": "LSE",
+                    "current_status": "unknown",
+                    "tickers": 6408,
+                    "missing_isin": 47,
+                    "missing_sector_or_category": 1302,
+                    "unresolved_findings": 52,
+                    "official_source_count": 3,
+                    "candidate_key": "lse_price_explorer",
+                    "candidate_scope": "needs_source_research",
+                    "provider": "LSE",
+                    "expected_format": "lse_price_explorer_json",
+                    "source_url": "https://www.londonstockexchange.com/market-stock/0",
+                    "implementation_status": "implemented",
+                    "source_mode": "",
+                    "source_refresh_queue": "",
+                    "source_last_error": "",
+                    "priority": "medium",
+                    "review_needed": False,
+                    "blocker": "",
+                    "notes": "Needs stronger official source candidate.",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["row_gap_count"] == 1
+    assert result["row_gaps"][0]["invalid_fields"] == ["current_status", "candidate_scope"]
+
+
+def test_evaluate_source_inventory_gap_gate_rejects_non_boolean_review_needed() -> None:
+    result = evaluate_source_inventory_gap_gate(
+        {
+            "summary": {
+                "generated_at": "2026-06-03T00:00:00Z",
+                "policy": {
+                    "inventory_only": "This report is a source inventory and parser backlog only; it does not authorize data fills.",
+                    "official_source_gate": "Official source parsers must write reference.csv before data evidence exists.",
+                    "no_guessing": "Missing fields remain blank until sourced.",
+                    "review_gate": "Rows marked review_needed require source review before scope changes.",
+                },
+                "rows": 1,
+                "current_status_counts": {"missing": 1},
+                "candidate_scope_counts": {"exchange_directory_candidate": 1},
+                "todo_rows": 0,
+                "current_scope_candidates": 1,
+                "global_expansion_candidates": 0,
+                "high_priority_rows": 1,
+            },
+            "rows": [
+                {
+                    "priority_rank": 1,
+                    "exchange": "EGX",
+                    "current_status": "missing",
+                    "tickers": 225,
+                    "missing_isin": 25,
+                    "missing_sector_or_category": 125,
+                    "unresolved_findings": 225,
+                    "official_source_count": 0,
+                    "candidate_key": "egx_listed_securities",
+                    "candidate_scope": "exchange_directory_candidate",
+                    "provider": "EGX",
+                    "expected_format": "html_or_api",
+                    "source_url": "https://www.egx.com.eg/en/ListedStocks.aspx",
+                    "implementation_status": "implemented",
+                    "source_mode": "network",
+                    "source_refresh_queue": "fresh_no_refresh_needed",
+                    "source_last_error": "",
+                    "priority": "high",
+                    "review_needed": "true",
+                    "blocker": "needs endpoint discovery",
+                    "notes": "Current-scope source gap.",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["row_gap_count"] == 1
+    assert result["row_gaps"][0]["invalid_fields"] == ["review_needed"]
+
+
+def test_evaluate_source_inventory_gap_gate_rejects_missing_source_evidence() -> None:
+    result = evaluate_source_inventory_gap_gate(
+        {
+            "summary": {
+                "generated_at": "2026-06-03T00:00:00Z",
+                "policy": {
+                    "inventory_only": "This report is a source inventory and parser backlog only; it does not authorize data fills.",
+                    "official_source_gate": "Official source parsers must write reference.csv before data evidence exists.",
+                    "no_guessing": "Missing fields remain blank until sourced.",
+                    "review_gate": "Rows marked review_needed require source review before scope changes.",
+                },
+                "rows": 1,
+                "current_status_counts": {"official_partial": 1},
+                "candidate_scope_counts": {"source_expansion_candidate": 1},
+                "todo_rows": 0,
+                "current_scope_candidates": 1,
+                "global_expansion_candidates": 0,
+                "high_priority_rows": 0,
+            },
+            "rows": [
+                {
+                    "priority_rank": 1,
+                    "exchange": "LSE",
+                    "current_status": "official_partial",
+                    "tickers": 6408,
+                    "missing_isin": 47,
+                    "missing_sector_or_category": 1302,
+                    "unresolved_findings": 52,
+                    "official_source_count": 3,
+                    "candidate_key": "lse_price_explorer",
+                    "candidate_scope": "source_expansion_candidate",
+                    "provider": "LSE",
+                    "expected_format": "unknown",
+                    "source_url": "",
+                    "implementation_status": "implemented",
+                    "source_mode": "",
+                    "source_refresh_queue": "",
+                    "source_last_error": "",
+                    "priority": "medium",
+                    "review_needed": False,
+                    "blocker": "",
+                    "notes": "Needs stronger official source candidate.",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["row_gap_count"] == 1
+    assert result["row_gaps"][0]["invalid_fields"] == ["expected_format", "source_url"]
+
+
+def test_evaluate_source_inventory_gap_gate_rejects_missing_or_duplicate_candidate_keys() -> None:
+    result = evaluate_source_inventory_gap_gate(
+        {
+            "summary": {
+                "generated_at": "2026-06-03T00:00:00Z",
+                "policy": {
+                    "inventory_only": "This report is a source inventory and parser backlog only; it does not authorize data fills.",
+                    "official_source_gate": "Official source parsers must write reference.csv before data evidence exists.",
+                    "no_guessing": "Missing fields remain blank until sourced.",
+                    "review_gate": "Rows marked review_needed require source review before scope changes.",
+                },
+                "rows": 3,
+                "current_status_counts": {"missing": 3},
+                "candidate_scope_counts": {"exchange_directory_candidate": 3},
+                "todo_rows": 3,
+                "current_scope_candidates": 3,
+                "global_expansion_candidates": 0,
+                "high_priority_rows": 3,
+            },
+            "rows": [
+                {
+                    "priority_rank": 1,
+                    "exchange": "EGX",
+                    "current_status": "missing",
+                    "tickers": 225,
+                    "missing_isin": 25,
+                    "missing_sector_or_category": 125,
+                    "unresolved_findings": 225,
+                    "official_source_count": 0,
+                    "candidate_key": "egx_listed_securities",
+                    "candidate_scope": "exchange_directory_candidate",
+                    "provider": "EGX",
+                    "expected_format": "html_or_api",
+                    "source_url": "https://www.egx.com.eg/en/ListedStocks.aspx",
+                    "implementation_status": "todo",
+                    "source_mode": "network",
+                    "source_refresh_queue": "fresh_no_refresh_needed",
+                    "source_last_error": "",
+                    "priority": "high",
+                    "review_needed": True,
+                    "blocker": "needs endpoint discovery",
+                    "notes": "Current-scope source gap.",
+                },
+                {
+                    "priority_rank": 2,
+                    "exchange": "EGX",
+                    "current_status": "missing",
+                    "tickers": 225,
+                    "missing_isin": 25,
+                    "missing_sector_or_category": 125,
+                    "unresolved_findings": 225,
+                    "official_source_count": 0,
+                    "candidate_key": "egx_listed_securities",
+                    "candidate_scope": "exchange_directory_candidate",
+                    "provider": "EGX",
+                    "expected_format": "html_or_api",
+                    "source_url": "https://www.egx.com.eg/en/ListedStocks.aspx",
+                    "implementation_status": "todo",
+                    "source_mode": "network",
+                    "source_refresh_queue": "fresh_no_refresh_needed",
+                    "source_last_error": "",
+                    "priority": "high",
+                    "review_needed": True,
+                    "blocker": "needs endpoint discovery",
+                    "notes": "Duplicate candidate key.",
+                },
+                {
+                    "priority_rank": 3,
+                    "exchange": "LSE",
+                    "current_status": "missing",
+                    "tickers": 6408,
+                    "missing_isin": 47,
+                    "missing_sector_or_category": 1302,
+                    "unresolved_findings": 52,
+                    "official_source_count": 3,
+                    "candidate_key": "",
+                    "candidate_scope": "exchange_directory_candidate",
+                    "provider": "LSE",
+                    "expected_format": "lse_price_explorer_json",
+                    "source_url": "https://www.londonstockexchange.com/market-stock/0",
+                    "implementation_status": "todo",
+                    "source_mode": "network",
+                    "source_refresh_queue": "fresh_no_refresh_needed",
+                    "source_last_error": "",
+                    "priority": "high",
+                    "review_needed": True,
+                    "blocker": "needs endpoint discovery",
+                    "notes": "Missing candidate key.",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["row_gap_count"] == 1
+    assert result["row_gaps"][0]["invalid_fields"] == ["candidate_key"]
+    assert result["count_gaps"] == [
+        {"field": "candidate_key", "reason": "duplicate_candidate_keys", "actual": ["egx_listed_securities"]}
+    ]
+
+
+def test_evaluate_source_inventory_gap_gate_counts_global_expansion_rows() -> None:
+    result = evaluate_source_inventory_gap_gate(
+        {
+            "summary": {
+                "generated_at": "2026-06-03T00:00:00Z",
+                "policy": {
+                    "inventory_only": "This report is a source inventory and parser backlog only; it does not authorize data fills.",
+                    "official_source_gate": "Official source parsers must write reference.csv before data evidence exists.",
+                    "no_guessing": "Missing fields remain blank until sourced.",
+                    "review_gate": "Rows marked review_needed require source review before scope changes.",
+                },
+                "rows": 1,
+                "current_status_counts": {"not_in_current_universe": 1},
+                "candidate_scope_counts": {"global_expansion_candidate": 1},
+                "todo_rows": 1,
+                "current_scope_candidates": 0,
+                "global_expansion_candidates": 0,
+                "high_priority_rows": 1,
+            },
+            "rows": [
+                {
+                    "priority_rank": 1,
+                    "exchange": "NSE_IN",
+                    "current_status": "not_in_current_universe",
+                    "tickers": 0,
+                    "missing_isin": 0,
+                    "missing_sector_or_category": 0,
+                    "unresolved_findings": 0,
+                    "official_source_count": 0,
+                    "candidate_key": "nse_india_securities_available",
+                    "candidate_scope": "global_expansion_candidate",
+                    "provider": "NSE India",
+                    "expected_format": "nse_india_securities_available_csv",
+                    "source_url": "https://www.nseindia.com/market-data/securities-available-for-trading",
+                    "implementation_status": "todo",
+                    "source_mode": "",
+                    "source_refresh_queue": "",
+                    "source_last_error": "",
+                    "priority": "high",
+                    "review_needed": True,
+                    "blocker": "not yet in current exchange bucket list",
+                    "notes": "Expansion candidate.",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["row_gap_count"] == 0
+    assert result["count_gaps"] == [{"field": "global_expansion_candidates", "expected": 1, "actual": 0}]
+
+
+def test_evaluate_source_inventory_gap_gate_rejects_missing_provider() -> None:
+    result = evaluate_source_inventory_gap_gate(
+        {
+            "summary": {
+                "generated_at": "2026-06-03T00:00:00Z",
+                "policy": {
+                    "inventory_only": "This report is a source inventory and parser backlog only; it does not authorize data fills.",
+                    "official_source_gate": "Official source parsers must write reference.csv before data evidence exists.",
+                    "no_guessing": "Missing fields remain blank until sourced.",
+                    "review_gate": "Rows marked review_needed require source review before scope changes.",
+                },
+                "rows": 1,
+                "current_status_counts": {"missing": 1},
+                "candidate_scope_counts": {"exchange_directory_candidate": 1},
+                "todo_rows": 1,
+                "current_scope_candidates": 1,
+                "global_expansion_candidates": 0,
+                "high_priority_rows": 1,
+            },
+            "rows": [
+                {
+                    "priority_rank": 1,
+                    "exchange": "EGX",
+                    "current_status": "missing",
+                    "tickers": 225,
+                    "missing_isin": 25,
+                    "missing_sector_or_category": 125,
+                    "unresolved_findings": 225,
+                    "official_source_count": 0,
+                    "candidate_key": "egx_listed_securities",
+                    "candidate_scope": "exchange_directory_candidate",
+                    "provider": "",
+                    "expected_format": "html_or_api",
+                    "source_url": "https://www.egx.com.eg/en/ListedStocks.aspx",
+                    "implementation_status": "todo",
+                    "source_mode": "network",
+                    "source_refresh_queue": "fresh_no_refresh_needed",
+                    "source_last_error": "",
+                    "priority": "high",
+                    "review_needed": True,
+                    "blocker": "needs endpoint discovery",
+                    "notes": "Current-scope source gap.",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["row_gap_count"] == 1
+    assert result["row_gaps"][0]["invalid_fields"] == ["provider"]
+
+
+def test_evaluate_weak_sector_venue_action_queue_gate_accepts_blocked_batches() -> None:
+    result = evaluate_weak_sector_venue_action_queue_gate(
+        {
+            "summary": {
+                "generated_at": "2026-06-03T00:00:00Z",
+                "batches": 2,
+                "rows": 5,
+                "exchange_totals": {"CSE_MA": 3, "NGX": 2},
+                "action_queue_totals": {
+                    "restore_or_add_venue_official_taxonomy_parser": 3,
+                    "review_official_sector_value_to_canonical_mapping": 2,
+                },
+                "weak_sector_resolution_queue_totals": {
+                    "official_sector_candidate_normalization_review": 2,
+                    "venue_official_taxonomy_unavailable_source_gap": 3,
+                },
+                "evidence_required_totals": {
+                    "new_or_restored_official_venue_industry_taxonomy_source": 3,
+                    "official_venue_sector_value_with_canonical_mapping_and_exact_listing_key_match": 2,
+                },
+                "direct_sector_apply_allowed_rows": 0,
+                "metadata_enrichment_authorized": False,
+                "policy": {
+                    "official_first": "Every batch remains blocked until official venue, issuer, or taxonomy evidence exists for the exact listing.",
+                    "no_inference": "No sector is inferred from ticker, issuer name, ISIN prefix, peers, or broad exchange labels.",
+                    "reviewable_batches": "Rows are grouped by exchange, residual queue, official source, and reviewed venue by venue.",
+                },
+            },
+            "items": [
+                {
+                    "exchange": "NGX",
+                    "weak_sector_resolution_queue": "official_sector_candidate_normalization_review",
+                    "official_masterfile_sources": "ngx_company_profile_directory|ngx_equities_price_list",
+                    "official_masterfile_sector_values": "SERVICES",
+                    "rows": "2",
+                    "review_priority": "P1",
+                    "action_queue": "review_official_sector_value_to_canonical_mapping",
+                    "review_strategy": "normalize_official_sector_candidate_before_apply",
+                    "evidence_required": "official_venue_sector_value_with_canonical_mapping_and_exact_listing_key_match",
+                    "source_gate": "Do not map broad official labels without an explicit canonical-sector rule and exact listing-key evidence.",
+                    "recommended_next_action": "Review whether the official raw sector value can be mapped to a canonical sector.",
+                    "gap_class_totals": "official_industry_taxonomy_unavailable_gap:2",
+                    "source_of_truth_outcome_totals": "accepted_source_gap:2",
+                    "example_listing_keys": "NGX::ABCTRANS|NGX::AIRTELAFRI",
+                },
+                {
+                    "exchange": "CSE_MA",
+                    "weak_sector_resolution_queue": "venue_official_taxonomy_unavailable_source_gap",
+                    "official_masterfile_sources": "none",
+                    "official_masterfile_sector_values": "",
+                    "rows": "3",
+                    "review_priority": "P2",
+                    "action_queue": "restore_or_add_venue_official_taxonomy_parser",
+                    "review_strategy": "restore_or_add_venue_official_taxonomy_parser",
+                    "evidence_required": "new_or_restored_official_venue_industry_taxonomy_source",
+                    "source_gate": "Keep sector blank until a venue-official taxonomy parser or source exists.",
+                    "recommended_next_action": "Add or restore a parser for an official venue taxonomy source.",
+                    "gap_class_totals": "official_industry_taxonomy_unavailable_gap:3",
+                    "source_of_truth_outcome_totals": "accepted_source_gap:3",
+                    "example_listing_keys": "CSE_MA::ABC",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["item_row_total"] == 5
+    assert result["direct_sector_apply_allowed_rows"] == 0
+
+
+def test_evaluate_weak_sector_venue_action_queue_gate_rejects_apply_or_stale_counts() -> None:
+    result = evaluate_weak_sector_venue_action_queue_gate(
+        {
+            "summary": {
+                "batches": 2,
+                "rows": 9,
+                "exchange_totals": {"NGX": 9},
+                "action_queue_totals": {},
+                "weak_sector_resolution_queue_totals": {},
+                "evidence_required_totals": {},
+                "direct_sector_apply_allowed_rows": 1,
+                "metadata_enrichment_authorized": True,
+                "policy": {"official_first": "official"},
+            },
+            "items": [
+                {
+                    "exchange": "NGX",
+                    "weak_sector_resolution_queue": "official_sector_candidate_normalization_review",
+                    "official_masterfile_sources": "ngx_company_profile_directory",
+                    "rows": "2",
+                    "review_priority": "P1",
+                    "action_queue": "direct_sector_apply",
+                    "review_strategy": "apply",
+                    "evidence_required": "ticker_match",
+                    "source_gate": "Apply sector.",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["policy_missing_marker_groups"]
+    assert result["row_gap_count"] == 1
+    assert result["gating_gaps"] == [
+        {"field": "direct_sector_apply_allowed_rows", "expected": 0, "actual": 1},
+        {"field": "metadata_enrichment_authorized", "expected": False, "actual": True},
+    ]
+
+
+def test_evaluate_canada_improvement_action_queue_gate_accepts_blocked_batches() -> None:
+    result = evaluate_canada_improvement_action_queue_gate(
+        {
+            "summary": {
+                "generated_at": "2026-06-03T00:00:00Z",
+                "batches": 2,
+                "underlying_review_rows": 15,
+                "campaign_totals": {"canada_figi_reviewed_source_gap": 5, "canada_scope_blocker": 10},
+                "exchange_totals": {"TSX": 5, "TSXV": 10},
+                "action_queue_totals": {
+                    "decide_scope_before_identifier_or_metadata_enrichment": 10,
+                    "keep_figi_blank_until_stronger_reviewed_figi_source": 5,
+                },
+                "scope_queue_rows": 10,
+                "figi_queue_rows": 0,
+                "figi_excluded_reviewed_source_gaps": 151,
+                "direct_identifier_apply_allowed_rows": 0,
+                "metadata_enrichment_authorized": False,
+                "policy": {
+                    "tmx_first": "TMX/Cboe Canada official listing context is first; issuer and reviewed identifier sources are required.",
+                    "figi_no_repeat_probe": "Reviewed OpenFIGI rows stay excluded until stronger reviewed FIGI evidence exists.",
+                    "scope_before_fill": "Core-exclusion candidates must be decided as core, extended, or excluded before ISIN work.",
+                },
+            },
+            "items": [
+                {
+                    "campaign": "canada_scope_blocker",
+                    "exchange": "TSXV",
+                    "review_queue": "core_exclusion_candidate_identifier_scope_review",
+                    "official_sources": "tmx_listed_issuers",
+                    "rows": "10",
+                    "action_queue": "decide_scope_before_identifier_or_metadata_enrichment",
+                    "evidence_required": "official_listing_scope_decision_for_core_extended_or_exclude",
+                    "review_strategy": "scope_review_before_canada_identifier_enrichment",
+                    "recommended_next_source": "tmx_listed_issuers plus reviewed scope decision.",
+                    "source_gate": "No ISIN or FIGI enrichment until the listing is reviewed as core, extended, or excluded.",
+                    "example_listing_keys": "TSXV::AAA|TSXV::BBB",
+                },
+                {
+                    "campaign": "canada_figi_reviewed_source_gap",
+                    "exchange": "TSX",
+                    "review_queue": "reviewed_openfigi_no_match_source_gap",
+                    "official_sources": "tmx_etf_screener",
+                    "rows": "5",
+                    "action_queue": "keep_figi_blank_until_stronger_reviewed_figi_source",
+                    "evidence_required": "stronger_figi_source_required_openfigi_no_match_reviewed",
+                    "review_strategy": "keep_blank_until_stronger_reviewed_figi_source",
+                    "recommended_next_source": "Reviewed stronger FIGI source.",
+                    "source_gate": "Keep FIGI blank until stronger reviewed FIGI evidence exists.",
+                    "example_listing_keys": "TSX::DDD",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["item_row_total"] == 15
+    assert result["direct_identifier_apply_allowed_rows"] == 0
+
+
+def test_evaluate_canada_improvement_action_queue_gate_rejects_apply_or_stale_counts() -> None:
+    result = evaluate_canada_improvement_action_queue_gate(
+        {
+            "summary": {
+                "batches": 2,
+                "underlying_review_rows": 99,
+                "campaign_totals": {},
+                "exchange_totals": {},
+                "action_queue_totals": {},
+                "direct_identifier_apply_allowed_rows": 1,
+                "metadata_enrichment_authorized": True,
+                "policy": {"tmx_first": "official"},
+            },
+            "items": [
+                {
+                    "campaign": "canada_scope_blocker",
+                    "exchange": "TSXV",
+                    "review_queue": "core_exclusion_candidate_identifier_scope_review",
+                    "official_sources": "tmx_listed_issuers",
+                    "rows": "10",
+                    "action_queue": "direct_identifier_apply",
+                    "evidence_required": "ticker_match",
+                    "review_strategy": "apply",
+                    "recommended_next_source": "none",
+                    "source_gate": "Apply ISIN.",
+                    "example_listing_keys": "TSXV::AAA",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["policy_missing_marker_groups"]
+    assert result["row_gap_count"] == 1
+    assert result["gating_gaps"] == [
+        {"field": "direct_identifier_apply_allowed_rows", "expected": 0, "actual": 1},
+        {"field": "metadata_enrichment_authorized", "expected": False, "actual": True},
+    ]
+
+
+def test_evaluate_b3_core_scope_review_queue_gate_accepts_review_only_rows() -> None:
+    result = evaluate_b3_core_scope_review_queue_gate(
+        {
+            "summary": {
+                "rows": 1,
+                "scope_review_queue_totals": {"b3_fund_or_trust_core_scope_review": 1},
+                "gap_class_totals": {"fund_or_trust_identifier_gap": 1},
+                "asset_type_totals": {"ETF": 1},
+                "masterfile_source_presence_totals": {"absent_from_all_b3_masterfile_sources": 1},
+                "listing_history_status_totals": {"active": 1},
+                "ohlcv_plausibility_status_totals": {"not_sampled": 1},
+                "verification_evidence_required_totals": {
+                    "current_b3_fund_product_or_issuer_registry_evidence_plus_core_extended_or_exclude_scope_decision": 1
+                },
+                "policy": {
+                    "scope_first": "Core exclusion candidates must be resolved as core, extended, or exclude before B3 identifier work.",
+                    "no_data_apply": "This queue does not authorize ISIN, category, name, symbol, listing-status, or scope changes.",
+                    "source_gate": "Only exact listing-keyed official B3, CVM, issuer, registry, or prospectus evidence can close a row.",
+                },
+            },
+            "rows": [
+                {
+                    "listing_key": "B3::AFOF11",
+                    "ticker": "AFOF11",
+                    "exchange": "B3",
+                    "asset_type": "ETF",
+                    "name": "Alianza Fofii Fundo De Investimento Imobiliario",
+                    "gap_class": "fund_or_trust_identifier_gap",
+                    "current_instrument_scope": "core",
+                    "source_of_truth_outcome": "core_exclusion_candidate",
+                    "residual_decision": "core_exclusion_candidate_requires_scope_review",
+                    "masterfile_source_presence": "absent_from_all_b3_masterfile_sources",
+                    "b3_resolution_queue": "absent_from_all_b3_sources_fund_or_receipt_source_gap",
+                    "listing_history_status": "active",
+                    "ohlcv_plausibility_status": "not_sampled",
+                    "scope_review_queue": "b3_fund_or_trust_core_scope_review",
+                    "scope_decision_gate": "decide_core_extended_or_exclude_before_identifier_or_category_work",
+                    "recommended_scope_action": "review_product_currentness_then_choose_core_extended_or_exclude_keep_identifier_blank_until_official_isin",
+                    "verification_evidence_required": (
+                        "current_b3_fund_product_or_issuer_registry_evidence_plus_core_extended_or_exclude_scope_decision"
+                    ),
+                    "recommended_next_source": "Current B3 fund/ETF/FII source, issuer page, CVM fund registry, or prospectus.",
+                    "source_gate": (
+                        "No ISIN, category, name, or scope change until the exact product is proven current or "
+                        "excluded by official evidence."
+                    ),
+                    "review_context": (
+                        "gap_class=fund_or_trust_identifier_gap;masterfile_source_presence=absent_from_all_b3_masterfile_sources;"
+                        "scope_decision_gate=decide_core_extended_or_exclude_before_identifier_or_category_work"
+                    ),
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["row_count"] == 1
+    assert result["row_gap_count"] == 0
+
+
+def test_evaluate_b3_core_scope_review_queue_gate_rejects_apply_or_stale_counts() -> None:
+    result = evaluate_b3_core_scope_review_queue_gate(
+        {
+            "summary": {
+                "rows": 2,
+                "scope_review_queue_totals": {},
+                "gap_class_totals": {},
+                "asset_type_totals": {},
+                "masterfile_source_presence_totals": {},
+                "listing_history_status_totals": {},
+                "ohlcv_plausibility_status_totals": {},
+                "verification_evidence_required_totals": {},
+                "policy": {"scope_first": "review later"},
+            },
+            "rows": [
+                {
+                    "listing_key": "B3::AFOF11",
+                    "ticker": "AFOF11",
+                    "exchange": "B3",
+                    "asset_type": "ETF",
+                    "name": "Alianza Fofii Fundo De Investimento Imobiliario",
+                    "gap_class": "fund_or_trust_identifier_gap",
+                    "current_instrument_scope": "core",
+                    "source_of_truth_outcome": "core_exclusion_candidate",
+                    "residual_decision": "direct_apply",
+                    "masterfile_source_presence": "absent_from_all_b3_masterfile_sources",
+                    "b3_resolution_queue": "absent_from_all_b3_sources_fund_or_receipt_source_gap",
+                    "listing_history_status": "active",
+                    "ohlcv_plausibility_status": "not_sampled",
+                    "scope_review_queue": "b3_fund_or_trust_core_scope_review",
+                    "scope_decision_gate": "apply_identifier",
+                    "recommended_scope_action": "apply",
+                    "verification_evidence_required": "ticker_match",
+                    "recommended_next_source": "none",
+                    "source_gate": "Apply B3 identifier.",
+                    "review_context": "gap_class=fund_or_trust_identifier_gap",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["policy_missing_marker_groups"]
+    assert result["row_gap_count"] == 1
+    assert result["count_gaps"]
+
+
+def test_evaluate_b3_masterfile_gap_review_gate_accepts_review_only_rows() -> None:
+    result = evaluate_b3_masterfile_gap_review_gate(
+        {
+            "summary": {
+                "rows": 2,
+                "open_review_rows": 1,
+                "closed_no_data_change_rows": 1,
+                "source_presence_totals": {
+                    "absent_from_all_b3_masterfile_sources": 1,
+                    "present_only_in_non_exchange_directory_source": 1,
+                },
+                "open_review_source_presence_totals": {"absent_from_all_b3_masterfile_sources": 1},
+                "review_bucket_totals": {
+                    "missing_from_all_b3_masterfile_sources_source_gap": 1,
+                    "official_b3_non_directory_source_review": 1,
+                },
+                "b3_resolution_queue_totals": {
+                    "absent_from_all_b3_sources_local_share_source_gap": 1,
+                    "official_bdr_subset_without_category_source_gap_closed": 1,
+                },
+                "open_review_resolution_queue_totals": {"absent_from_all_b3_sources_local_share_source_gap": 1},
+                "open_review_next_source_totals": {
+                    "Current B3 exchange directory, B3 issuer page, CVM filing, or issuer investor-relations listing evidence.": 1
+                },
+                "open_review_evidence_path_totals": {
+                    "current_b3_exchange_directory_or_cvm_issuer_listing_evidence": 1
+                },
+                "source_gap_resolution_gate_totals": {
+                    "close_directory_gap_only_keep_identifier_and_category_unchanged": 1,
+                    "do_not_delete_or_rename_until_current_b3_cvm_or_issuer_listing_evidence_is_reviewed": 1,
+                },
+                "review_strategy_totals": {
+                    "close_bdr_subset_gap_without_data_change_keep_category_source_gap": 1,
+                    "keep_local_share_gap_until_current_official_b3_or_issuer_evidence": 1,
+                },
+                "apply_eligibility_totals": {
+                    "review_scope_or_parser_before_any_data_change": 1,
+                    "source_gap_keep_existing_dataset_row_until_official_active_source_evidence": 1,
+                },
+                "verification_evidence_required_totals": {
+                    "new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key": 1,
+                    "official_b3_source_row_plus_scope_decision_or_parser_fix_before_reclassifying_gap": 1,
+                },
+                "coverage_diagnosis": {
+                    "data_change_authorized": False,
+                    "source_gate": (
+                        "No B3 ISIN, sector, category, name, symbol, or scope change is authorized until the exact "
+                        "listing-keyed official source evidence and apply gate are reviewed."
+                    ),
+                },
+                "policy": {
+                    "no_guessing": (
+                        "This review does not authorize inferred identifiers, sectors, categories, names, scope "
+                        "changes, or symbol changes."
+                    ),
+                    "listing_keyed_review": (
+                        "Every row is keyed by listing_key and tied to the B3 dataset row plus official B3 "
+                        "masterfile source presence."
+                    ),
+                    "source_gap_handling": (
+                        "Rows absent from all current B3 masterfile sources remain source gaps until stronger "
+                        "official evidence exists."
+                    ),
+                },
+            },
+            "rows": [
+                {
+                    "listing_key": "B3::ABCD3",
+                    "ticker": "ABCD3",
+                    "exchange": "B3",
+                    "asset_type": "Stock",
+                    "name": "ABCD SA",
+                    "current_etf_category": "",
+                    "b3_gap_category": "local_share_line",
+                    "source_presence": "absent_from_all_b3_masterfile_sources",
+                    "active_exchange_directory_match": "false",
+                    "any_official_b3_source_match": "false",
+                    "b3_resolution_queue": "absent_from_all_b3_sources_local_share_source_gap",
+                    "residual_decision": "accepted_source_gap_not_in_any_current_b3_masterfile_source",
+                    "review_bucket": "missing_from_all_b3_masterfile_sources_source_gap",
+                    "review_priority": "P3",
+                    "review_strategy": "keep_local_share_gap_until_current_official_b3_or_issuer_evidence",
+                    "apply_eligibility": "source_gap_keep_existing_dataset_row_until_official_active_source_evidence",
+                    "verification_evidence_required": (
+                        "new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key"
+                    ),
+                    "b3_source_gap_evidence_path": "current_b3_exchange_directory_or_cvm_issuer_listing_evidence",
+                    "source_gap_resolution_gate": (
+                        "do_not_delete_or_rename_until_current_b3_cvm_or_issuer_listing_evidence_is_reviewed"
+                    ),
+                    "recommended_next_source": (
+                        "Current B3 exchange directory, B3 issuer page, CVM filing, or issuer investor-relations listing evidence."
+                    ),
+                    "source_gate": (
+                        "Keep row as source gap until current official B3 or issuer evidence proves the active local-share listing."
+                    ),
+                    "b3_listing_context": "listing_key=B3::ABCD3;ticker=ABCD3;asset_type=Stock;b3_gap_category=local_share_line;current_etf_category=none",
+                    "official_candidate_context": "source_presence=absent_from_all_b3_masterfile_sources;candidate_sources=none;candidate_isins_present=false;candidate_sectors_present=false;active_exchange_directory_match=false;any_official_b3_source_match=false",
+                    "review_gate_context": "b3_resolution_queue=absent_from_all_b3_sources_local_share_source_gap;residual_decision=accepted_source_gap_not_in_any_current_b3_masterfile_source;review_bucket=missing_from_all_b3_masterfile_sources_source_gap;official_subset_review_decision=none;official_subset_closure_eligibility=none;apply_eligibility=source_gap_keep_existing_dataset_row_until_official_active_source_evidence;verification_evidence_required=new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key",
+                },
+                {
+                    "listing_key": "B3::BIAU39",
+                    "ticker": "BIAU39",
+                    "exchange": "B3",
+                    "asset_type": "ETF",
+                    "name": "Ishares Gold Trust",
+                    "current_etf_category": "Equity",
+                    "b3_gap_category": "bdr_or_foreign_receipt",
+                    "source_presence": "present_only_in_non_exchange_directory_source",
+                    "active_exchange_directory_match": "false",
+                    "any_official_b3_source_match": "true",
+                    "b3_resolution_queue": "official_bdr_subset_without_category_source_gap_closed",
+                    "residual_decision": "official_b3_non_directory_source_requires_scope_or_parser_review",
+                    "review_bucket": "official_b3_non_directory_source_review",
+                    "review_priority": "P2",
+                    "review_strategy": "close_bdr_subset_gap_without_data_change_keep_category_source_gap",
+                    "apply_eligibility": "review_scope_or_parser_before_any_data_change",
+                    "verification_evidence_required": (
+                        "official_b3_source_row_plus_scope_decision_or_parser_fix_before_reclassifying_gap"
+                    ),
+                    "b3_source_gap_evidence_path": "official_b3_bdr_subset_listing_evidence_category_source_gap",
+                    "source_gap_resolution_gate": "close_directory_gap_only_keep_identifier_and_category_unchanged",
+                    "recommended_next_source": (
+                        "Official B3 BDR/ETF subset confirms the listing; keep category/ISIN unchanged until stronger B3 or issuer evidence exposes them."
+                    ),
+                    "source_gate": (
+                        "No B3 category, ISIN, name, symbol, or scope change is authorized; the official BDR subset evidence only closes the active-directory gap."
+                    ),
+                    "b3_listing_context": "listing_key=B3::BIAU39;ticker=BIAU39;asset_type=ETF;b3_gap_category=bdr_or_foreign_receipt;current_etf_category=Equity",
+                    "official_candidate_context": "source_presence=present_only_in_non_exchange_directory_source;candidate_sources=none;candidate_isins_present=false;candidate_sectors_present=false;active_exchange_directory_match=false;any_official_b3_source_match=true",
+                    "review_gate_context": "b3_resolution_queue=official_bdr_subset_without_category_source_gap_closed;residual_decision=official_b3_non_directory_source_requires_scope_or_parser_review;review_bucket=official_b3_non_directory_source_review;official_subset_review_decision=none;official_subset_closure_eligibility=none;apply_eligibility=review_scope_or_parser_before_any_data_change;verification_evidence_required=official_b3_source_row_plus_scope_decision_or_parser_fix_before_reclassifying_gap",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["row_count"] == 2
+    assert result["open_review_row_count"] == 1
+    assert result["closed_no_data_change_row_count"] == 1
+    assert result["coverage_data_change_authorized"] is False
+
+
+def test_evaluate_b3_masterfile_gap_review_gate_rejects_apply_or_stale_counts() -> None:
+    result = evaluate_b3_masterfile_gap_review_gate(
+        {
+            "summary": {
+                "rows": 99,
+                "open_review_rows": 0,
+                "closed_no_data_change_rows": 0,
+                "source_presence_totals": {},
+                "open_review_source_presence_totals": {},
+                "review_bucket_totals": {},
+                "b3_resolution_queue_totals": {},
+                "open_review_resolution_queue_totals": {},
+                "review_strategy_totals": {},
+                "apply_eligibility_totals": {},
+                "verification_evidence_required_totals": {},
+                "source_gap_resolution_gate_totals": {},
+                "open_review_next_source_totals": {},
+                "open_review_evidence_path_totals": {},
+                "coverage_diagnosis": {
+                    "data_change_authorized": True,
+                    "source_gate": "Apply B3 values.",
+                },
+                "policy": {"no_guessing": "review later"},
+            },
+            "rows": [
+                {
+                    "listing_key": "B3::ABCD3",
+                    "ticker": "ABCD3",
+                    "exchange": "B3",
+                    "asset_type": "Stock",
+                    "name": "ABCD SA",
+                    "b3_gap_category": "local_share_line",
+                    "source_presence": "absent_from_all_b3_masterfile_sources",
+                    "active_exchange_directory_match": "false",
+                    "any_official_b3_source_match": "false",
+                    "b3_resolution_queue": "direct_apply",
+                    "residual_decision": "accepted_source_gap_not_in_any_current_b3_masterfile_source",
+                    "review_bucket": "missing_from_all_b3_masterfile_sources_source_gap",
+                    "review_priority": "P3",
+                    "review_strategy": "apply",
+                    "apply_eligibility": "direct_data_change",
+                    "verification_evidence_required": "ticker_match",
+                    "b3_source_gap_evidence_path": "manual",
+                    "source_gap_resolution_gate": "apply_now",
+                    "recommended_next_source": "none",
+                    "source_gate": "Apply B3 metadata.",
+                    "b3_listing_context": "listing_key=B3::ABCD3",
+                    "official_candidate_context": "source_presence=absent_from_all_b3_masterfile_sources",
+                    "review_gate_context": "b3_resolution_queue=direct_apply",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["policy_missing_marker_groups"]
+    assert result["row_gap_count"] == 1
+    assert result["count_gaps"]
+    assert result["gating_gaps"] == [
+        {"field": "coverage_diagnosis.data_change_authorized", "expected": False, "actual": True},
+        {
+            "field": "coverage_diagnosis.source_gate",
+            "reason": "missing_no_apply_official_source_gate",
+        },
+    ]
+
+
+def test_evaluate_asx_scope_review_queue_gate_accepts_review_only_rows() -> None:
+    result = evaluate_asx_scope_review_queue_gate(
+        {
+            "summary": {
+                "rows": 1,
+                "scope_review_queue_totals": {"asx_debt_or_securitized_scope_review": 1},
+                "asset_type_totals": {"ETF": 1},
+                "gap_class_totals": {"debt_or_securitized_identifier_gap": 1},
+                "official_source_totals": {"asx_listed_companies": 1},
+                "current_scope_reason_totals": {"primary_listing_missing_isin": 1},
+                "listing_history_status_totals": {"active": 1},
+                "ohlcv_plausibility_status_totals": {"source_gap": 1},
+                "verification_evidence_required_totals": {
+                    "official_asx_registry_issuer_trustee_or_prospectus_evidence_plus_scope_decision": 1
+                },
+                "top_scope_review_batches": [
+                    {
+                        "scope_review_queue": "asx_debt_or_securitized_scope_review",
+                        "official_source": "asx_listed_companies",
+                        "rows": 1,
+                        "verification_evidence_required": "official_asx_registry_issuer_trustee_or_prospectus_evidence_plus_scope_decision",
+                        "recommended_next_source": "asx_listed_companies, trustee page, prospectus, registry, or official product evidence for the exact listing.",
+                        "source_gate": "No ISIN, category, name, symbol, or scope change until exact debt/securitized product evidence is reviewed.",
+                    }
+                ],
+                "policy": {
+                    "scope_first": "ASX core_exclusion_candidate rows must be resolved as core, extended, or exclude before identifier work.",
+                    "no_data_apply": "This queue does not authorize ISIN, ETF-category, sector, name, symbol, listing-status, or scope changes.",
+                    "source_gate": "Only exact listing-keyed official ASX, registry, issuer, trustee, prospectus, or reviewed stronger evidence can close a row.",
+                },
+            },
+            "rows": [
+                {
+                    "listing_key": "ASX::AC2",
+                    "ticker": "AC2",
+                    "exchange": "ASX",
+                    "asset_type": "ETF",
+                    "name": "ALLIED CREDIT ABS TRUST 2025-1P",
+                    "field": "missing_isin_primary",
+                    "gap_class": "debt_or_securitized_identifier_gap",
+                    "official_masterfile_sources": "asx_listed_companies",
+                    "official_masterfile_match": "true",
+                    "official_masterfile_exposes_isin": "false",
+                    "official_masterfile_exposes_sector": "false",
+                    "asx_isin_probe_decision": "no_asx_match",
+                    "current_instrument_scope": "core",
+                    "current_scope_reason": "primary_listing_missing_isin",
+                    "listing_history_status": "active",
+                    "ohlcv_plausibility_status": "source_gap",
+                    "asx_resolution_queue": "core_exclusion_candidate_identifier_scope_review",
+                    "scope_review_queue": "asx_debt_or_securitized_scope_review",
+                    "scope_decision_gate": "decide_core_extended_or_exclude_before_asx_identifier_or_category_enrichment",
+                    "recommended_scope_action": "review_debt_or_securitized_product_then_choose_core_extended_or_exclude",
+                    "verification_evidence_required": "official_asx_registry_issuer_trustee_or_prospectus_evidence_plus_scope_decision",
+                    "recommended_next_source": "asx_listed_companies, trustee page, prospectus, registry, or official product evidence for the exact listing.",
+                    "source_gate": "No ISIN, category, name, symbol, or scope change until exact debt/securitized product evidence is reviewed.",
+                    "review_context": (
+                        "gap_class=debt_or_securitized_identifier_gap;official_masterfile_sources=asx_listed_companies;"
+                        "scope_decision_gate=decide_core_extended_or_exclude_before_asx_identifier_or_category_enrichment"
+                    ),
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["row_count"] == 1
+    assert result["row_gap_count"] == 0
+
+
+def test_evaluate_asx_scope_review_queue_gate_rejects_apply_or_stale_counts() -> None:
+    result = evaluate_asx_scope_review_queue_gate(
+        {
+            "summary": {
+                "rows": 2,
+                "scope_review_queue_totals": {},
+                "asset_type_totals": {},
+                "gap_class_totals": {},
+                "official_source_totals": {},
+                "current_scope_reason_totals": {},
+                "listing_history_status_totals": {},
+                "ohlcv_plausibility_status_totals": {},
+                "verification_evidence_required_totals": {},
+                "top_scope_review_batches": [
+                    {
+                        "scope_review_queue": "asx_debt_or_securitized_scope_review",
+                        "official_source": "asx_listed_companies",
+                        "rows": 2,
+                        "verification_evidence_required": "ticker_match",
+                        "recommended_next_source": "none",
+                        "source_gate": "Apply ASX ISIN.",
+                    }
+                ],
+                "policy": {"scope_first": "review later"},
+            },
+            "rows": [
+                {
+                    "listing_key": "ASX::AC2",
+                    "ticker": "AC2",
+                    "exchange": "ASX",
+                    "asset_type": "ETF",
+                    "name": "ALLIED CREDIT ABS TRUST 2025-1P",
+                    "field": "missing_isin_primary",
+                    "gap_class": "debt_or_securitized_identifier_gap",
+                    "official_masterfile_sources": "asx_listed_companies",
+                    "official_masterfile_match": "true",
+                    "official_masterfile_exposes_isin": "false",
+                    "official_masterfile_exposes_sector": "false",
+                    "asx_isin_probe_decision": "no_asx_match",
+                    "current_instrument_scope": "core",
+                    "current_scope_reason": "primary_listing_missing_isin",
+                    "listing_history_status": "active",
+                    "ohlcv_plausibility_status": "source_gap",
+                    "asx_resolution_queue": "direct_identifier_apply",
+                    "scope_review_queue": "asx_debt_or_securitized_scope_review",
+                    "scope_decision_gate": "apply_identifier",
+                    "recommended_scope_action": "apply",
+                    "verification_evidence_required": "ticker_match",
+                    "recommended_next_source": "none",
+                    "source_gate": "Apply ASX ISIN.",
+                    "review_context": "gap_class=debt_or_securitized_identifier_gap",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["policy_missing_marker_groups"]
+    assert result["row_gap_count"] == 1
+    assert result["count_gaps"]
+    assert result["batch_gaps"]
+
+
+def test_evaluate_canada_scope_review_queue_gate_accepts_review_only_rows() -> None:
+    result = evaluate_canada_scope_review_queue_gate(
+        {
+            "summary": {
+                "rows": 1,
+                "scope_review_queue_totals": {"canada_depositary_or_cdr_scope_review": 1},
+                "exchange_totals": {"NEO": 1},
+                "asset_type_totals": {"Stock": 1},
+                "source_gap_class_totals": {
+                    "adr_cdr_or_depositary_identifier_gap": 1,
+                    "adr_cdr_or_depositary_sector_gap": 1,
+                },
+                "official_source_totals": {"cboe_canada_listing_directory": 1},
+                "current_scope_reason_totals": {"primary_listing_missing_isin": 1},
+                "listing_history_status_totals": {"active": 1},
+                "ohlcv_plausibility_status_totals": {"not_checked": 1},
+                "verification_evidence_required_totals": {
+                    "official_cdr_depositary_or_exchange_listing_evidence_plus_core_extended_or_exclude_scope_decision": 1
+                },
+                "top_scope_review_batches": [
+                    {
+                        "scope_review_queue": "canada_depositary_or_cdr_scope_review",
+                        "exchange": "NEO",
+                        "official_source": "cboe_canada_listing_directory",
+                        "rows": 1,
+                        "verification_evidence_required": (
+                            "official_cdr_depositary_or_exchange_listing_evidence_plus_core_extended_or_exclude_scope_decision"
+                        ),
+                        "recommended_next_source": (
+                            "cboe_canada_listing_directory, CDR/depositary sponsor page, issuer page, or "
+                            "prospectus evidence for the exact listing."
+                        ),
+                        "source_gate": (
+                            "No ISIN, FIGI, sector, or scope change until the exact CDR/depositary listing is proven "
+                            "by official evidence."
+                        ),
+                    }
+                ],
+                "policy": {
+                    "scope_first": "Canada core_exclusion_candidate rows must be resolved as core, extended, or exclude before identifier work.",
+                    "no_data_apply": "This queue does not authorize ISIN, FIGI, sector, ETF-category, name, symbol, listing-status, or scope changes.",
+                    "source_gate": "Only exact listing-keyed official TMX/Cboe Canada, issuer, CSD, prospectus, registry, or reviewed stronger evidence can close a row.",
+                },
+            },
+            "rows": [
+                {
+                    "listing_key": "NEO::HNDA",
+                    "ticker": "HNDA",
+                    "exchange": "NEO",
+                    "asset_type": "Stock",
+                    "name": "HONDA MOTOR CO LTD CDR (CAD Hedged)",
+                    "isin": "",
+                    "figi": "",
+                    "source_gap_fields": "missing_isin_primary|missing_sector_stock",
+                    "source_gap_classes": "adr_cdr_or_depositary_identifier_gap|adr_cdr_or_depositary_sector_gap",
+                    "official_masterfile_sources": "cboe_canada_listing_directory",
+                    "official_masterfile_match": "true",
+                    "official_masterfile_exposes_isin": "false",
+                    "official_masterfile_exposes_sector": "false",
+                    "current_instrument_scope": "core",
+                    "current_scope_reason": "primary_listing_missing_isin",
+                    "listing_history_status": "active",
+                    "ohlcv_plausibility_status": "not_checked",
+                    "canada_resolution_queue": "core_exclusion_candidate_identifier_scope_review",
+                    "scope_review_queue": "canada_depositary_or_cdr_scope_review",
+                    "scope_decision_gate": "decide_core_extended_or_exclude_before_canada_identifier_or_metadata_enrichment",
+                    "recommended_scope_action": "review_cdr_or_depositary_scope_then_choose_core_extended_or_exclude",
+                    "verification_evidence_required": (
+                        "official_cdr_depositary_or_exchange_listing_evidence_plus_core_extended_or_exclude_scope_decision"
+                    ),
+                    "recommended_next_source": (
+                        "cboe_canada_listing_directory, CDR/depositary sponsor page, issuer page, or prospectus "
+                        "evidence for the exact listing."
+                    ),
+                    "source_gate": (
+                        "No ISIN, FIGI, sector, or scope change until the exact CDR/depositary listing is proven by "
+                        "official evidence."
+                    ),
+                    "review_context": (
+                        "source_gap_classes=adr_cdr_or_depositary_identifier_gap|adr_cdr_or_depositary_sector_gap;"
+                        "official_masterfile_sources=cboe_canada_listing_directory;"
+                        "scope_decision_gate=decide_core_extended_or_exclude_before_canada_identifier_or_metadata_enrichment"
+                    ),
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["row_count"] == 1
+    assert result["row_gap_count"] == 0
+
+
+def test_evaluate_canada_scope_review_queue_gate_rejects_apply_or_stale_counts() -> None:
+    result = evaluate_canada_scope_review_queue_gate(
+        {
+            "summary": {
+                "rows": 2,
+                "scope_review_queue_totals": {},
+                "exchange_totals": {},
+                "asset_type_totals": {},
+                "source_gap_class_totals": {},
+                "official_source_totals": {},
+                "current_scope_reason_totals": {},
+                "listing_history_status_totals": {},
+                "ohlcv_plausibility_status_totals": {},
+                "verification_evidence_required_totals": {},
+                "top_scope_review_batches": [
+                    {
+                        "scope_review_queue": "canada_depositary_or_cdr_scope_review",
+                        "exchange": "NEO",
+                        "official_source": "cboe_canada_listing_directory",
+                        "rows": 2,
+                        "verification_evidence_required": "ticker_match",
+                        "recommended_next_source": "none",
+                        "source_gate": "Apply Canada ISIN.",
+                    }
+                ],
+                "policy": {"scope_first": "review later"},
+            },
+            "rows": [
+                {
+                    "listing_key": "NEO::HNDA",
+                    "ticker": "HNDA",
+                    "exchange": "NEO",
+                    "asset_type": "Stock",
+                    "name": "HONDA MOTOR CO LTD CDR (CAD Hedged)",
+                    "source_gap_fields": "missing_isin_primary",
+                    "source_gap_classes": "adr_cdr_or_depositary_identifier_gap",
+                    "official_masterfile_match": "true",
+                    "official_masterfile_exposes_isin": "false",
+                    "official_masterfile_exposes_sector": "false",
+                    "current_instrument_scope": "core",
+                    "current_scope_reason": "primary_listing_missing_isin",
+                    "listing_history_status": "active",
+                    "ohlcv_plausibility_status": "not_checked",
+                    "canada_resolution_queue": "direct_identifier_apply",
+                    "scope_review_queue": "canada_depositary_or_cdr_scope_review",
+                    "scope_decision_gate": "apply_identifier",
+                    "recommended_scope_action": "apply",
+                    "verification_evidence_required": "ticker_match",
+                    "recommended_next_source": "none",
+                    "source_gate": "Apply Canada ISIN.",
+                    "review_context": "source_gap_classes=adr_cdr_or_depositary_identifier_gap",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["policy_missing_marker_groups"]
+    assert result["row_gap_count"] == 1
+    assert result["count_gaps"]
+    assert result["batch_gaps"]
+
+
+def test_evaluate_b3_improvement_action_queue_gate_accepts_blocked_batches() -> None:
+    result = evaluate_b3_improvement_action_queue_gate(
+        {
+            "summary": {
+                "generated_at": "2026-06-03T00:00:00Z",
+                "batches": 2,
+                "underlying_review_rows": 17,
+                "campaign_totals": {"b3_masterfile_gap": 10, "b3_residual_sector": 7},
+                "priority_totals": {"P2": 10, "P3": 7},
+                "action_queue_totals": {
+                    "document_official_subset_closure_without_data_change": 10,
+                    "seek_stronger_official_b3_or_issuer_taxonomy": 7,
+                },
+                "review_queue_totals": {
+                    "no_b3_classification_code_match_source_gap": 7,
+                    "official_subset_category_already_reflected_scope_review_no_data_change_closure": 10,
+                },
+                "b3_coverage_diagnosis": {
+                    "data_change_authorized": False,
+                    "source_gate": (
+                        "No B3 ISIN, sector, category, name, symbol, or scope change is authorized until the exact "
+                        "listing-keyed official source evidence and apply gate are reviewed."
+                    ),
+                },
+                "direct_data_change_authorized": False,
+                "policy": {
+                    "official_first": "B3 changes require exact listing-keyed B3, CVM, issuer, registry, or prospectus evidence.",
+                    "no_guessing": "No ISIN is inferred from ticker shape or issuer name.",
+                    "campaign_delta": "Records the current B3 residual backlog for future B3 data campaigns before and after review.",
+                },
+            },
+            "items": [
+                {
+                    "campaign": "b3_masterfile_gap",
+                    "priority": "P2",
+                    "review_queue": "official_subset_category_already_reflected_scope_review_no_data_change_closure",
+                    "asset_type": "ETF",
+                    "gap_class": "bdr_or_foreign_receipt",
+                    "rows": "10",
+                    "action_queue": "document_official_subset_closure_without_data_change",
+                    "review_strategy": "close_bdr_subset_gap_without_data_change_keep_category_source_gap",
+                    "evidence_required": "official_b3_source_row_plus_scope_decision_or_parser_fix_before_reclassifying_gap",
+                    "recommended_next_source": "Official B3 subset plus reviewed parser or scope decision.",
+                    "source_gate": "No B3 category, ISIN, name, symbol, or scope change is authorized.",
+                    "example_listing_keys": "B3::AAA|B3::BBB",
+                },
+                {
+                    "campaign": "b3_residual_sector",
+                    "priority": "P3",
+                    "review_queue": "no_b3_classification_code_match_source_gap",
+                    "asset_type": "Stock",
+                    "gap_class": "official_industry_taxonomy_unavailable_gap",
+                    "rows": "7",
+                    "action_queue": "seek_stronger_official_b3_or_issuer_taxonomy",
+                    "review_strategy": "keep_blank_until_stronger_official_b3_or_issuer_taxonomy",
+                    "evidence_required": "stronger_official_b3_or_issuer_taxonomy_source_with_exact_listing_match",
+                    "recommended_next_source": "Stronger official B3 or issuer taxonomy source.",
+                    "source_gate": "Keep stock_sector blank until official B3 or issuer taxonomy evidence matches the exact listing.",
+                    "example_listing_keys": "B3::CCC",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["item_row_total"] == 17
+    assert result["direct_data_change_authorized"] is False
+    assert result["coverage_data_change_authorized"] is False
+
+
+def test_evaluate_b3_improvement_action_queue_gate_rejects_apply_or_stale_counts() -> None:
+    result = evaluate_b3_improvement_action_queue_gate(
+        {
+            "summary": {
+                "batches": 2,
+                "underlying_review_rows": 99,
+                "campaign_totals": {},
+                "priority_totals": {},
+                "action_queue_totals": {},
+                "review_queue_totals": {},
+                "b3_coverage_diagnosis": {
+                    "data_change_authorized": True,
+                    "source_gate": "Apply B3 values.",
+                },
+                "direct_data_change_authorized": True,
+                "policy": {"official_first": "official"},
+            },
+            "items": [
+                {
+                    "campaign": "b3_residual_sector",
+                    "priority": "P3",
+                    "review_queue": "no_b3_classification_code_match_source_gap",
+                    "asset_type": "Stock",
+                    "gap_class": "official_industry_taxonomy_unavailable_gap",
+                    "rows": "7",
+                    "action_queue": "direct_sector_apply",
+                    "review_strategy": "apply",
+                    "evidence_required": "ticker_match",
+                    "recommended_next_source": "none",
+                    "source_gate": "Apply sector.",
+                    "example_listing_keys": "B3::CCC",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["policy_missing_marker_groups"]
+    assert result["row_gap_count"] == 1
+    assert result["gating_gaps"] == [
+        {"field": "direct_data_change_authorized", "expected": False, "actual": True},
+        {"field": "b3_coverage_diagnosis.data_change_authorized", "expected": False, "actual": True},
+        {
+            "field": "b3_coverage_diagnosis.source_gate",
+            "reason": "missing_no_apply_official_source_gate",
+        },
+    ]
 
 
 def test_financialdata_supplement_contexts_are_exact_field_summaries() -> None:

@@ -1,6 +1,6 @@
 # ASX Scope Review Queue
 
-Generated at: `2026-05-29T12:20:12Z`
+Generated at: `2026-06-02T20:18:32Z`
 
 This queue isolates ASX `core_exclusion_candidate` rows that must be decided as core, extended, or exclude before ASX ISIN or ETF-category work. It does not apply data changes.
 
@@ -22,17 +22,18 @@ This queue isolates ASX `core_exclusion_candidate` rows that must be decided as 
 |---|---|---:|
 | listing_history_status | active | 94 |
 | current_scope_reason | primary_listing_missing_isin | 94 |
-| ohlcv_plausibility_status | not_checked | 6 |
+| ohlcv_plausibility_status | not_checked | 2 |
 | ohlcv_plausibility_status | not_sampled | 88 |
+| ohlcv_plausibility_status | source_gap | 4 |
 
 ## Top Scope Review Batches
 
 | Queue | Official source | Rows | Evidence required | Recommended next source | Source gate |
 |---|---|---:|---|---|---|
-| asx_debt_or_securitized_scope_review | asx_listed_companies | 58 | official_asx_registry_issuer_trustee_or_prospectus_evidence_plus_scope_decision | asx_listed_companies, trustee page, prospectus, registry, or official product evidence for the exact listing. | No ISIN, category, name, symbol, or scope change until exact debt/securitized product evidence is reviewed. |
+| asx_debt_or_securitized_scope_review | asx_listed_companies | 57 | official_asx_registry_issuer_trustee_or_prospectus_evidence_plus_scope_decision | asx_listed_companies, trustee page, prospectus, registry, or official product evidence for the exact listing. | No ISIN, category, name, symbol, or scope change until exact debt/securitized product evidence is reviewed. |
 | asx_fund_or_trust_scope_review | asx_listed_companies | 25 | official_asx_investment_product_issuer_pds_or_registry_evidence_plus_scope_decision | asx_listed_companies, issuer/sponsor product page, PDS, or registry evidence for the exact listing. | No ISIN, category, name, symbol, or scope change until exact fund/trust product evidence is reviewed. |
 | asx_inactive_or_legacy_scope_review | asx_listed_companies | 9 | current_active_or_inactive_official_asx_listing_evidence_plus_scope_decision | asx_listed_companies, issuer notice, ASX announcement, or official inactive/delisting evidence. | Do not delete, rename, extend, or exclude until current active or inactive status is proven by official evidence. |
-| asx_debt_or_securitized_scope_review | none | 1 | official_asx_registry_issuer_trustee_or_prospectus_evidence_plus_scope_decision | current official ASX, registry, or issuer source, trustee page, prospectus, registry, or official product evidence for the exact listing. | No ISIN, category, name, symbol, or scope change until exact debt/securitized product evidence is reviewed. |
+| asx_debt_or_securitized_scope_review | none | 2 | official_asx_registry_issuer_trustee_or_prospectus_evidence_plus_scope_decision | current official ASX, registry, or issuer source, trustee page, prospectus, registry, or official product evidence for the exact listing. | No ISIN, category, name, symbol, or scope change until exact debt/securitized product evidence is reviewed. |
 | asx_fund_or_trust_scope_review | none | 1 | official_asx_investment_product_issuer_pds_or_registry_evidence_plus_scope_decision | current official ASX, registry, or issuer source, issuer/sponsor product page, PDS, or registry evidence for the exact listing. | No ISIN, category, name, symbol, or scope change until exact fund/trust product evidence is reviewed. |
 
 ## Rows

@@ -6,6 +6,7 @@ import json
 import re
 import sys
 from collections import Counter, defaultdict
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -59,6 +60,10 @@ SOURCE_KEY_PRIORITY = {
     "lse_instrument_search": 20,
     "lse_company_reports": 10,
 }
+EXCLUDED_SECURITY_NAME_PATTERN = re.compile(
+    r"\b(?:warrants?|units?|preferred|notes?\s+due|depositary\s+shares?)\b",
+    re.IGNORECASE,
+)
 
 DISPLAY_ACRONYMS = {
     "ads",
@@ -176,6 +181,10 @@ def candidate_score(ref: dict[str, str], candidate: str) -> tuple[int, int, int,
     return (provider_score + source_score, mixed_case_bonus, -len(candidate), -len(ref.get("name", "")))
 
 
+def is_excluded_security_name(name: str) -> bool:
+    return bool(EXCLUDED_SECURITY_NAME_PATTERN.search(name))
+
+
 def choose_candidate_name(
     row: dict[str, str],
     refs: list[dict[str, str]],
@@ -235,6 +244,10 @@ def build_updates(
         reason = ""
         confidence = ""
 
+        if proposed_name and is_excluded_security_name(proposed_name):
+            proposed_name = ""
+            supporting_refs = []
+
         if proposed_name:
             decision = "accept"
             confidence_value = 0.96 if len(supporting_refs) >= 2 else 0.93
@@ -279,6 +292,19 @@ def build_summary(report_rows: list[dict[str, Any]], updates: list[dict[str, str
     accepted = [row for row in report_rows if row["decision"] == "accept"]
     return {
         "summary": {
+            "generated_at": datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+            "policy": {
+                "source_authority": (
+                    "Name backfill candidates require active official masterfile references for the exact "
+                    "ticker and exchange."
+                ),
+                "no_guessing": "Names are not inferred from ticker shape, issuer peers, or secondary-only sources.",
+                "apply_gate": (
+                    "Report rows are review evidence; metadata updates are written only when --apply is used "
+                    "through the existing override workflow."
+                ),
+                "otc_exclusion": "OTC rows are excluded and must use the OTC name-mismatch review workflow.",
+            },
             "supported_exchanges": sorted(exchanges),
             "rows_reviewed": len(report_rows),
             "updates_emitted": len(updates),

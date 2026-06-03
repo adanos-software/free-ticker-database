@@ -24,6 +24,32 @@ VALID_DECISIONS = {
     "uncertain",
 }
 
+VALID_SAFE_ACTIONS = {
+    "needs_official_evidence",
+    "likely_same_issuer_review",
+    "likely_distinct_issuer_review",
+    "source_gap_accept",
+    "candidate_for_official_followup",
+}
+
+SAFE_ACTION_BY_DECISION = {
+    "keep_source_gap": "source_gap_accept",
+    "needs_official_evidence": "needs_official_evidence",
+    "candidate_apply_blocked": "candidate_for_official_followup",
+    "possible_duplicate_or_cross_listing": "likely_same_issuer_review",
+    "out_of_scope_candidate": "candidate_for_official_followup",
+    "uncertain": "needs_official_evidence",
+}
+
+SAFE_ACTIONS_BY_DECISION = {
+    decision: {safe_action}
+    for decision, safe_action in SAFE_ACTION_BY_DECISION.items()
+}
+SAFE_ACTIONS_BY_DECISION["possible_duplicate_or_cross_listing"] = {
+    "likely_same_issuer_review",
+    "likely_distinct_issuer_review",
+}
+
 
 def utc_now_iso() -> str:
     return datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
@@ -43,37 +69,48 @@ def trim(value: object, max_length: int = 500) -> str:
     return f"{text[: max_length - 3]}..."
 
 
-def iter_raw_batches(path: Path) -> list[dict[str, Any]]:
+def iter_raw_batches(path: Path) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     batches: list[dict[str, Any]] = []
+    errors: list[dict[str, Any]] = []
     if not path.exists():
-        return batches
+        return batches, errors
     with path.open(encoding="utf-8") as handle:
         for line_number, line in enumerate(handle, start=1):
             line = line.strip()
             if not line:
                 continue
-            payload = json.loads(line)
+            try:
+                payload = json.loads(line)
+            except json.JSONDecodeError as exc:
+                errors.append({"line_number": line_number, "error": f"invalid JSONL: {exc}"})
+                continue
             if not isinstance(payload, dict):
-                raise ValueError(f"Raw response line {line_number} is not a JSON object.")
+                errors.append({"line_number": line_number, "error": "raw response line is not a JSON object"})
+                continue
             batches.append(payload)
-    return batches
+    return batches, errors
 
 
 def normalize_review(review: dict[str, Any], *, batch_index: int, review_kind: str) -> dict[str, Any]:
-    decision = str(review.get("decision_candidate") or "uncertain")
+    decision = str(review.get("decision_candidate") or "uncertain").strip()
     if decision not in VALID_DECISIONS:
         decision = "uncertain"
+    safe_action = str(review.get("safe_action") or SAFE_ACTION_BY_DECISION[decision]).strip()
+    if safe_action not in VALID_SAFE_ACTIONS or safe_action not in SAFE_ACTIONS_BY_DECISION[decision]:
+        safe_action = SAFE_ACTION_BY_DECISION[decision]
     confidence = review.get("confidence", 0)
     if not isinstance(confidence, (int, float)) or isinstance(confidence, bool):
         confidence = 0
     confidence = max(0.0, min(1.0, float(confidence)))
     return {
         "batch_index": batch_index,
-        "listing_key": str(review.get("listing_key", "")),
-        "ticker": str(review.get("ticker", "")),
-        "exchange": str(review.get("exchange", "")),
-        "review_kind": str(review.get("review_kind") or review_kind),
+        "listing_key": str(review.get("listing_key", "")).strip(),
+        "ticker": str(review.get("ticker", "")).strip(),
+        "exchange": str(review.get("exchange", "")).strip(),
+        "review_kind": str(review.get("review_kind") or review_kind).strip(),
+        "classification": trim(review.get("classification") or decision, 120),
         "decision_candidate": decision,
+        "safe_action": safe_action,
         "confidence": confidence,
         "evidence_needed": trim(review.get("evidence_needed", "")),
         "rationale": trim(review.get("rationale", "")),
@@ -106,25 +143,48 @@ def normalize_batches(batches: list[dict[str, Any]]) -> tuple[list[dict[str, Any
 def summarize_reviews(reviews: list[dict[str, Any]], errors: list[dict[str, Any]]) -> dict[str, Any]:
     by_kind = Counter(str(review.get("review_kind", "")) for review in reviews)
     by_decision = Counter(str(review.get("decision_candidate", "")) for review in reviews)
+    by_safe_action = Counter(str(review.get("safe_action", "")) for review in reviews)
+    key_counts = Counter(
+        (str(review.get("review_kind", "")), str(review.get("listing_key", "")))
+        for review in reviews
+        if review.get("listing_key")
+    )
+    duplicate_review_key_rows = sum(count - 1 for count in key_counts.values() if count > 1)
+    blank_listing_key_rows = sum(1 for review in reviews if not review.get("listing_key"))
     by_kind_decision: dict[str, Counter[str]] = {}
+    by_kind_safe_action: dict[str, Counter[str]] = {}
+    by_kind_duplicate_key: dict[str, int] = {}
     for review in reviews:
         kind = str(review.get("review_kind", "unknown") or "unknown")
         by_kind_decision.setdefault(kind, Counter())[str(review.get("decision_candidate", "unknown") or "unknown")] += 1
+        by_kind_safe_action.setdefault(kind, Counter())[str(review.get("safe_action", "unknown") or "unknown")] += 1
+    for (kind, _listing_key), count in key_counts.items():
+        if count > 1:
+            by_kind_duplicate_key[kind] = by_kind_duplicate_key.get(kind, 0) + count - 1
     return {
         "rows": len(reviews),
         "errors": len(errors),
+        "duplicate_review_key_rows": duplicate_review_key_rows,
+        "blank_listing_key_rows": blank_listing_key_rows,
         "review_kind_totals": dict(sorted(by_kind.items())),
         "decision_totals": dict(sorted(by_decision.items())),
+        "safe_action_totals": dict(sorted(by_safe_action.items())),
+        "review_kind_duplicate_key_rows": dict(sorted(by_kind_duplicate_key.items())),
         "review_kind_decision_totals": {
             kind: dict(sorted(counter.items()))
             for kind, counter in sorted(by_kind_decision.items())
+        },
+        "review_kind_safe_action_totals": {
+            kind: dict(sorted(counter.items()))
+            for kind, counter in sorted(by_kind_safe_action.items())
         },
     }
 
 
 def build_payload(raw_path: Path) -> dict[str, Any]:
-    batches = iter_raw_batches(raw_path)
+    batches, parse_errors = iter_raw_batches(raw_path)
     reviews, errors = normalize_batches(batches)
+    errors = parse_errors + errors
     return {
         "_meta": {
             "generated_at": utc_now_iso(),
@@ -152,7 +212,9 @@ def write_csv(path: Path, items: list[dict[str, Any]]) -> None:
                 "ticker",
                 "exchange",
                 "review_kind",
+                "classification",
                 "decision_candidate",
+                "safe_action",
                 "confidence",
                 "evidence_needed",
                 "rationale",
@@ -180,6 +242,8 @@ def render_markdown(payload: dict[str, Any]) -> str:
         f"| Raw batches | {meta['raw_batches']} |",
         f"| Review rows | {summary['rows']} |",
         f"| Errors | {summary['errors']} |",
+        f"| Duplicate review keys | {summary.get('duplicate_review_key_rows', 0)} |",
+        f"| Blank listing keys | {summary.get('blank_listing_key_rows', 0)} |",
         "",
         "## Decisions By Queue",
         "",
@@ -189,6 +253,18 @@ def render_markdown(payload: dict[str, Any]) -> str:
     for kind, decision_totals in summary["review_kind_decision_totals"].items():
         for decision, count in decision_totals.items():
             lines.append(f"| {kind} | {decision} | {count} |")
+    lines.extend(
+        [
+            "",
+            "## Safe Actions By Queue",
+            "",
+            "| Review kind | Safe action | Rows |",
+            "| --- | --- | ---: |",
+        ]
+    )
+    for kind, safe_action_totals in summary["review_kind_safe_action_totals"].items():
+        for safe_action, count in safe_action_totals.items():
+            lines.append(f"| {kind} | {safe_action} | {count} |")
     lines.extend(
         [
             "",

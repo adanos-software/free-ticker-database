@@ -15,9 +15,17 @@ REPORTS_DIR = DATA_DIR / "reports"
 TICKERS_CSV = DATA_DIR / "tickers.csv"
 INSTRUMENT_SCOPES_CSV = DATA_DIR / "instrument_scopes.csv"
 COVERAGE_REPORT_JSON = REPORTS_DIR / "coverage_report.json"
+ASX_RESIDUAL_REVIEW_JSON = REPORTS_DIR / "asx_residual_review.json"
+JPX_TSE_SECTOR_BACKFILL_JSON = REPORTS_DIR / "tse_sector_backfill.json"
+SEC_SIC_SECTOR_BACKFILL_JSON = REPORTS_DIR / "sec_sic_sector_backfill.json"
+CANADA_RESIDUAL_REVIEW_JSON = REPORTS_DIR / "canada_residual_review.json"
+B3_RESIDUAL_SECTOR_REVIEW_JSON = REPORTS_DIR / "b3_residual_sector_review.json"
+WEAK_SECTOR_RESIDUAL_REVIEW_JSON = REPORTS_DIR / "weak_sector_residual_review.json"
+SOURCE_GAP_CLASSIFICATION_JSON = REPORTS_DIR / "source_gap_classification.json"
 DEFAULT_CSV_OUT = REPORTS_DIR / "completion_backlog.csv"
 DEFAULT_JSON_OUT = REPORTS_DIR / "completion_backlog.json"
 DEFAULT_MD_OUT = REPORTS_DIR / "completion_backlog.md"
+DEFAULT_NEXT_ACTION_LIMIT = 12
 
 FIELD_MISSING_ISIN = "missing_isin_primary"
 FIELD_MISSING_STOCK_SECTOR = "missing_sector_stock"
@@ -371,12 +379,36 @@ def rank_backlog_rows(rows: list[CompletionBacklogRow]) -> list[CompletionBacklo
     return ranked_rows
 
 
-def summarize(rows: list[CompletionBacklogRow], coverage_report: dict[str, Any], generated_at: str) -> dict[str, Any]:
+def summarize(
+    rows: list[CompletionBacklogRow],
+    coverage_report: dict[str, Any],
+    generated_at: str,
+    *,
+    asx_residual_review: dict[str, Any] | None = None,
+    jpx_tse_sector_backfill: dict[str, Any] | None = None,
+    sec_sic_sector_backfill: dict[str, Any] | None = None,
+    canada_residual_review: dict[str, Any] | None = None,
+    b3_residual_sector_review: dict[str, Any] | None = None,
+    weak_sector_residual_review: dict[str, Any] | None = None,
+    source_gap_classification: dict[str, Any] | None = None,
+    next_action_limit: int = DEFAULT_NEXT_ACTION_LIMIT,
+) -> dict[str, Any]:
     field_totals = Counter()
     exchanges_by_field: dict[str, set[str]] = defaultdict(set)
     for row in rows:
         field_totals[row.field] += row.missing_count
         exchanges_by_field[row.field].add(row.exchange)
+    next_actions = build_next_actions(
+        rows,
+        limit=next_action_limit,
+        asx_residual_review=asx_residual_review or {},
+        jpx_tse_sector_backfill=jpx_tse_sector_backfill or {},
+        sec_sic_sector_backfill=sec_sic_sector_backfill or {},
+        canada_residual_review=canada_residual_review or {},
+        b3_residual_sector_review=b3_residual_sector_review or {},
+        weak_sector_residual_review=weak_sector_residual_review or {},
+        source_gap_classification=source_gap_classification or {},
+    )
 
     return {
         "generated_at": generated_at,
@@ -397,7 +429,436 @@ def summarize(rows: list[CompletionBacklogRow], coverage_report: dict[str, Any],
                 "Missing venues",
             ],
         },
+        "next_action_gate_totals": next_action_gate_totals(next_actions),
+        "next_action_source_gap_class_totals": next_action_source_gap_class_totals(next_actions),
+        "next_action_without_residual_gate_count": sum(1 for action in next_actions if not action.get("residual_gate")),
+        "next_actions": next_actions,
     }
+
+
+def next_action_gate_totals(actions: list[dict[str, Any]]) -> dict[str, int]:
+    totals = Counter(str(action.get("residual_gate") or "ungated_review_policy") for action in actions)
+    return dict(sorted(totals.items()))
+
+
+def next_action_source_gap_class_totals(actions: list[dict[str, Any]]) -> dict[str, int]:
+    totals = Counter(str(action["source_gap_class"]) for action in actions if action.get("source_gap_class"))
+    return dict(sorted(totals.items()))
+
+
+def asx_residual_summary(asx_residual_review: dict[str, Any]) -> dict[str, Any]:
+    summary = asx_residual_review.get("summary", {})
+    return summary if isinstance(summary, dict) else {}
+
+
+def asx_residual_blocks_direct_apply(asx_residual_review: dict[str, Any]) -> bool:
+    summary = asx_residual_summary(asx_residual_review)
+    backlog = summary.get("asx_residual_backlog", {})
+    if not isinstance(backlog, dict):
+        return False
+    return (
+        int(backlog.get("official_isin_apply_candidate_rows") or 0) == 0
+        and int(backlog.get("direct_data_apply_allowed_rows") or 0) == 0
+    )
+
+
+def apply_asx_residual_context(action: dict[str, Any], asx_residual_review: dict[str, Any]) -> dict[str, Any]:
+    if action["exchange"] != "ASX" or action["field"] != FIELD_MISSING_ISIN:
+        return action
+    if not asx_residual_blocks_direct_apply(asx_residual_review):
+        return action
+    summary = asx_residual_summary(asx_residual_review)
+    backlog = summary.get("asx_residual_backlog", {})
+    if not isinstance(backlog, dict):
+        backlog = {}
+    batches = summary.get("top_asx_resolution_review_batches", [])
+    first_batch = batches[0] if isinstance(batches, list) and batches and isinstance(batches[0], dict) else {}
+    return {
+        **action,
+        "review_needed": True,
+        "recommended_source": first_batch.get("recommended_next_source") or backlog.get("source_gate") or action["recommended_source"],
+        "confidence_policy": backlog.get("source_gate") or action["confidence_policy"],
+        "why_next": "top_impact residual review-gated workflow",
+        "residual_gate": "asx_residual_review_blocks_direct_apply",
+        "residual_rows": int(backlog.get("rows") or 0),
+        "direct_data_apply_allowed_rows": int(backlog.get("direct_data_apply_allowed_rows") or 0),
+        "official_isin_apply_candidate_rows": int(backlog.get("official_isin_apply_candidate_rows") or 0),
+    }
+
+
+def jpx_tse_sector_summary(jpx_tse_sector_backfill: dict[str, Any]) -> dict[str, Any]:
+    summary = jpx_tse_sector_backfill.get("summary", {})
+    return summary if isinstance(summary, dict) else {}
+
+
+def jpx_tse_sector_blocks_direct_apply(jpx_tse_sector_backfill: dict[str, Any]) -> bool:
+    summary = jpx_tse_sector_summary(jpx_tse_sector_backfill)
+    decision_counts = summary.get("decision_counts", {})
+    if not isinstance(decision_counts, dict):
+        decision_counts = {}
+    candidates = int(summary.get("candidates") or 0)
+    accepted_updates = int(summary.get("accepted_sector_updates") or 0)
+    return candidates > 0 and accepted_updates == 0 and int(decision_counts.get("missing_jpx_industry") or 0) == candidates
+
+
+def apply_jpx_tse_sector_context(action: dict[str, Any], jpx_tse_sector_backfill: dict[str, Any]) -> dict[str, Any]:
+    if action["exchange"] != "TSE" or action["field"] != FIELD_MISSING_STOCK_SECTOR:
+        return action
+    if not jpx_tse_sector_blocks_direct_apply(jpx_tse_sector_backfill):
+        return action
+    summary = jpx_tse_sector_summary(jpx_tse_sector_backfill)
+    decision_counts = summary.get("decision_counts", {})
+    if not isinstance(decision_counts, dict):
+        decision_counts = {}
+    return {
+        **action,
+        "review_needed": True,
+        "recommended_source": (
+            "Official JPX listed-issues verification shows exact TSE matches but no JPX 33-industry values; "
+            "use official REIT/infrastructure-fund taxonomy evidence before any stock_sector update."
+        ),
+        "confidence_policy": (
+            "Do not infer stock_sector from REIT/fund names or market segment alone; apply only after official "
+            "industry or product-taxonomy evidence maps to a canonical stock sector."
+        ),
+        "why_next": "official source gap review-gated workflow",
+        "residual_gate": "jpx_tse_sector_backfill_blocks_direct_apply",
+        "jpx_candidates": int(summary.get("candidates") or 0),
+        "accepted_sector_updates": int(summary.get("accepted_sector_updates") or 0),
+        "jpx_missing_industry_rows": int(decision_counts.get("missing_jpx_industry") or 0),
+    }
+
+
+def sec_sic_sector_summary(sec_sic_sector_backfill: dict[str, Any]) -> dict[str, Any]:
+    summary = sec_sic_sector_backfill.get("summary", {})
+    return summary if isinstance(summary, dict) else {}
+
+
+def sec_sic_otc_has_no_apply_candidates(sec_sic_sector_backfill: dict[str, Any]) -> bool:
+    summary = sec_sic_sector_summary(sec_sic_sector_backfill)
+    exchanges = summary.get("exchanges", [])
+    if not isinstance(exchanges, list) or "OTC" not in exchanges:
+        return False
+    candidates = int(summary.get("candidates") or 0)
+    accepted_updates = int(summary.get("accepted_sector_updates") or 0)
+    return candidates > 0 and accepted_updates == 0
+
+
+def apply_sec_sic_otc_context(action: dict[str, Any], sec_sic_sector_backfill: dict[str, Any]) -> dict[str, Any]:
+    if action["exchange"] != "OTC" or action["field"] != FIELD_MISSING_STOCK_SECTOR:
+        return action
+    if not sec_sic_otc_has_no_apply_candidates(sec_sic_sector_backfill):
+        return action
+    summary = sec_sic_sector_summary(sec_sic_sector_backfill)
+    decision_counts = summary.get("decision_counts", {})
+    if not isinstance(decision_counts, dict):
+        decision_counts = {}
+    return {
+        **action,
+        "review_needed": True,
+        "recommended_source": (
+            "Current SEC SIC residual dry-run has no accepted OTC sector candidates; prioritize OTC Markets issuer "
+            "evidence, reviewed Alpha Vantage/FinanceDatabase signals, or keep source-gap status."
+        ),
+        "confidence_policy": (
+            "Do not fill OTC stock_sector from SEC ticker presence alone; require exact CIK/ticker/exchange, issuer-name, "
+            "numeric-token, SIC, and canonical-sector gates, or a separate reviewed source."
+        ),
+        "why_next": "top_impact residual review-gated workflow",
+        "residual_gate": "sec_sic_otc_no_apply_candidates",
+        "sec_sic_candidates": int(summary.get("candidates") or 0),
+        "accepted_sector_updates": int(summary.get("accepted_sector_updates") or 0),
+        "sec_no_match_rows": int(decision_counts.get("no_sec_match") or 0),
+        "sec_missing_sic_rows": int(decision_counts.get("missing_sic") or 0),
+        "sec_name_mismatch_rows": int(decision_counts.get("name_mismatch") or 0),
+        "sec_requests_made": int(summary.get("requests_made") or 0),
+    }
+
+
+def canada_residual_summary(canada_residual_review: dict[str, Any]) -> dict[str, Any]:
+    summary = canada_residual_review.get("summary", {})
+    return summary if isinstance(summary, dict) else {}
+
+
+def canada_residual_blocks_direct_identifier_apply(canada_residual_review: dict[str, Any]) -> bool:
+    summary = canada_residual_summary(canada_residual_review)
+    backlog = summary.get("canada_identifier_backlog", {})
+    if not isinstance(backlog, dict):
+        return False
+    return (
+        int(backlog.get("rows") or 0) > 0
+        and int(backlog.get("direct_identifier_apply_allowed_rows") or 0) == 0
+    )
+
+
+def apply_canada_residual_context(action: dict[str, Any], canada_residual_review: dict[str, Any]) -> dict[str, Any]:
+    if action["exchange"] not in {"TSX", "TSXV", "NEO"} or action["field"] != FIELD_MISSING_ISIN:
+        return action
+    if not canada_residual_blocks_direct_identifier_apply(canada_residual_review):
+        return action
+    summary = canada_residual_summary(canada_residual_review)
+    backlog = summary.get("canada_identifier_backlog", {})
+    if not isinstance(backlog, dict):
+        backlog = {}
+    queue_totals = summary.get("canada_resolution_queue_exchange_totals", {})
+    if not isinstance(queue_totals, dict):
+        queue_totals = {}
+    top_batches = summary.get("top_canada_resolution_review_batches", [])
+    matching_batches = [
+        batch
+        for batch in top_batches
+        if isinstance(batch, dict)
+        and batch.get("exchange") == action["exchange"]
+        and str(batch.get("canada_resolution_queue", "")).startswith("missing_isin")
+    ]
+    first_batch = matching_batches[0] if matching_batches else {}
+    direct_allowed = int(backlog.get("direct_identifier_apply_allowed_rows") or 0)
+    official_required = int(backlog.get("official_isin_source_required_rows") or 0)
+    scope_required = int(backlog.get("scope_decision_required_rows") or 0)
+    reviewed_gap_rows = int(backlog.get("reviewed_openfigi_source_gap_rows") or 0)
+    missing_isin_official = queue_totals.get("missing_isin_official_canada_masterfiles_do_not_expose_isin", {})
+    missing_isin_reviewed = queue_totals.get("missing_isin_reviewed_source_gap", {})
+    if not isinstance(missing_isin_official, dict):
+        missing_isin_official = {}
+    if not isinstance(missing_isin_reviewed, dict):
+        missing_isin_reviewed = {}
+    return {
+        **action,
+        "review_needed": True,
+        "recommended_source": (
+            first_batch.get("recommended_next_source")
+            or "Official CSD, issuer, prospectus, transfer-agent, or reviewed Canada identifier source exposing a valid ISIN."
+        ),
+        "confidence_policy": backlog.get("source_gate") or action["confidence_policy"],
+        "why_next": "top_impact Canada residual review-gated workflow",
+        "residual_gate": "canada_residual_review_blocks_direct_identifier_apply",
+        "canada_identifier_backlog_rows": int(backlog.get("rows") or 0),
+        "direct_identifier_apply_allowed_rows": direct_allowed,
+        "official_isin_source_required_rows": official_required,
+        "scope_decision_required_rows": scope_required,
+        "reviewed_openfigi_source_gap_rows": reviewed_gap_rows,
+        "exchange_missing_isin_official_source_rows": int(missing_isin_official.get(action["exchange"]) or 0),
+        "exchange_missing_isin_reviewed_source_gap_rows": int(missing_isin_reviewed.get(action["exchange"]) or 0),
+    }
+
+
+def b3_residual_sector_summary(b3_residual_sector_review: dict[str, Any]) -> dict[str, Any]:
+    summary = b3_residual_sector_review.get("summary", {})
+    return summary if isinstance(summary, dict) else {}
+
+
+def b3_residual_sector_blocks_direct_apply(b3_residual_sector_review: dict[str, Any]) -> bool:
+    summary = b3_residual_sector_summary(b3_residual_sector_review)
+    eligibility = summary.get("apply_eligibility_totals", {})
+    if not isinstance(eligibility, dict):
+        return False
+    rows = int(summary.get("rows") or 0)
+    source_gap_rows = int(eligibility.get("source_gap_keep_blank_until_official_taxonomy_evidence") or 0)
+    return rows > 0 and source_gap_rows == rows
+
+
+def apply_b3_residual_sector_context(action: dict[str, Any], b3_residual_sector_review: dict[str, Any]) -> dict[str, Any]:
+    if action["exchange"] != "B3" or action["field"] != FIELD_MISSING_STOCK_SECTOR:
+        return action
+    if not b3_residual_sector_blocks_direct_apply(b3_residual_sector_review):
+        return action
+    summary = b3_residual_sector_summary(b3_residual_sector_review)
+    top_batches = summary.get("top_b3_sector_review_batches", [])
+    first_batch = top_batches[0] if isinstance(top_batches, list) and top_batches and isinstance(top_batches[0], dict) else {}
+    probe_decisions = summary.get("b3_probe_decision_totals", {})
+    code_shapes = summary.get("b3_code_shape_totals", {})
+    if not isinstance(probe_decisions, dict):
+        probe_decisions = {}
+    if not isinstance(code_shapes, dict):
+        code_shapes = {}
+    return {
+        **action,
+        "review_needed": True,
+        "recommended_source": first_batch.get("recommended_next_source")
+        or "Stronger official B3 or issuer taxonomy source exposing sector for the exact listing.",
+        "confidence_policy": first_batch.get("source_gate")
+        or "Keep stock_sector blank until official B3 or issuer taxonomy evidence matches the exact listing.",
+        "why_next": "B3 residual source-gap review-gated workflow",
+        "residual_gate": "b3_residual_sector_review_blocks_direct_apply",
+        "b3_residual_sector_rows": int(summary.get("rows") or 0),
+        "b3_source_gap_keep_blank_rows": int(
+            summary.get("apply_eligibility_totals", {}).get("source_gap_keep_blank_until_official_taxonomy_evidence") or 0
+        )
+        if isinstance(summary.get("apply_eligibility_totals", {}), dict)
+        else 0,
+        "b3_no_code_match_rows": int(probe_decisions.get("no_b3_code_match") or 0),
+        "b3_alpha_code_rows": int(code_shapes.get("alpha_b3_code") or 0),
+        "b3_alphanumeric_code_rows": int(code_shapes.get("alphanumeric_b3_code") or 0),
+    }
+
+
+def weak_sector_residual_summary(weak_sector_residual_review: dict[str, Any]) -> dict[str, Any]:
+    summary = weak_sector_residual_review.get("summary", {})
+    return summary if isinstance(summary, dict) else {}
+
+
+def weak_sector_blocks_direct_apply(weak_sector_residual_review: dict[str, Any]) -> bool:
+    summary = weak_sector_residual_summary(weak_sector_residual_review)
+    backlog = summary.get("weak_sector_backlog", {})
+    if not isinstance(backlog, dict):
+        return False
+    return int(backlog.get("rows") or 0) > 0 and int(backlog.get("direct_sector_apply_allowed_rows") or 0) == 0
+
+
+def apply_weak_sector_residual_context(
+    action: dict[str, Any],
+    weak_sector_residual_review: dict[str, Any],
+) -> dict[str, Any]:
+    if action["field"] != FIELD_MISSING_STOCK_SECTOR:
+        return action
+    if not weak_sector_blocks_direct_apply(weak_sector_residual_review):
+        return action
+
+    summary = weak_sector_residual_summary(weak_sector_residual_review)
+    exchange = action["exchange"]
+    exchange_totals = summary.get("venue_backlog_exchange_queue_totals", {})
+    if not isinstance(exchange_totals, dict) or exchange not in exchange_totals:
+        return action
+    exchange_queue_totals = exchange_totals.get(exchange, {})
+    if not isinstance(exchange_queue_totals, dict):
+        exchange_queue_totals = {}
+
+    backlog = summary.get("weak_sector_backlog", {})
+    if not isinstance(backlog, dict):
+        backlog = {}
+    batches = summary.get("top_weak_sector_resolution_review_batches", [])
+    if not isinstance(batches, list):
+        batches = []
+    matching_batches = [batch for batch in batches if isinstance(batch, dict) and batch.get("exchange") == exchange]
+    first_batch = matching_batches[0] if matching_batches else {}
+
+    return {
+        **action,
+        "review_needed": True,
+        "recommended_source": first_batch.get("recommended_next_source")
+        or "Updated official masterfile, issuer record, or venue-official taxonomy exposing sector for the exact listing.",
+        "confidence_policy": first_batch.get("source_gate") or backlog.get("source_gate") or action["confidence_policy"],
+        "why_next": "weak-sector residual review-gated workflow",
+        "residual_gate": "weak_sector_residual_review_blocks_direct_apply",
+        "weak_sector_rows": int(backlog.get("rows") or 0),
+        "direct_sector_apply_allowed_rows": int(backlog.get("direct_sector_apply_allowed_rows") or 0),
+        "official_sector_candidate_rows": int(backlog.get("official_sector_candidate_rows") or 0),
+        "scope_decision_required_rows": int(backlog.get("scope_decision_required_rows") or 0),
+        "masterfile_without_sector_rows": int(backlog.get("masterfile_without_sector_rows") or 0),
+        "venue_taxonomy_source_required_rows": int(backlog.get("venue_taxonomy_source_required_rows") or 0),
+        "exchange_official_masterfile_without_sector_rows": int(
+            exchange_queue_totals.get("official_masterfile_without_sector_source_gap") or 0
+        ),
+        "exchange_venue_taxonomy_source_required_rows": int(
+            exchange_queue_totals.get("venue_official_taxonomy_unavailable_source_gap") or 0
+        ),
+        "exchange_scope_decision_required_rows": int(
+            exchange_queue_totals.get("core_exclusion_candidate_scope_review_before_sector_fill") or 0
+        ),
+        "exchange_official_sector_candidate_rows": int(
+            exchange_queue_totals.get("official_sector_value_requires_canonical_mapping_review") or 0
+        ),
+    }
+
+
+def source_gap_classification_summary(source_gap_classification: dict[str, Any]) -> dict[str, Any]:
+    summary = source_gap_classification.get("summary", {})
+    return summary if isinstance(summary, dict) else {}
+
+
+def apply_source_gap_classification_context(
+    action: dict[str, Any],
+    source_gap_classification: dict[str, Any],
+) -> dict[str, Any]:
+    summary = source_gap_classification_summary(source_gap_classification)
+    top_batches = summary.get("top_source_gap_review_batches", [])
+    if not isinstance(top_batches, list):
+        return action
+    matching_batches = [
+        batch
+        for batch in top_batches
+        if isinstance(batch, dict)
+        and batch.get("exchange") == action["exchange"]
+        and batch.get("field") == action["field"]
+    ]
+    if not matching_batches:
+        return action
+    first_batch = matching_batches[0]
+    gap_class = str(first_batch.get("gap_class") or "")
+    source_gap_context = {
+        "source_gap_class": gap_class,
+        "source_gap_rows": int(first_batch.get("rows") or 0),
+    }
+    if action.get("residual_gate"):
+        return {**action, **source_gap_context}
+    return {
+        **action,
+        "review_needed": True,
+        "recommended_source": first_batch.get("recommended_next_source") or action["recommended_source"],
+        "confidence_policy": first_batch.get("source_gate") or action["confidence_policy"],
+        "why_next": "source-gap classification review-gated workflow",
+        "residual_gate": "source_gap_classification_blocks_direct_apply",
+        **source_gap_context,
+    }
+
+
+def build_next_actions(
+    rows: list[CompletionBacklogRow],
+    limit: int = DEFAULT_NEXT_ACTION_LIMIT,
+    *,
+    asx_residual_review: dict[str, Any] | None = None,
+    jpx_tse_sector_backfill: dict[str, Any] | None = None,
+    sec_sic_sector_backfill: dict[str, Any] | None = None,
+    canada_residual_review: dict[str, Any] | None = None,
+    b3_residual_sector_review: dict[str, Any] | None = None,
+    weak_sector_residual_review: dict[str, Any] | None = None,
+    source_gap_classification: dict[str, Any] | None = None,
+) -> list[dict[str, Any]]:
+    ranked = sorted(
+        rows,
+        key=lambda row: (
+            row.priority_bucket != "top_impact",
+            row.review_needed,
+            -row.missing_count,
+            source_order_for(row.field, row.exchange),
+            row.field,
+            row.exchange,
+        ),
+    )
+    actions: list[dict[str, Any]] = []
+    for row in ranked[:limit]:
+        action = {
+            "action_rank": len(actions) + 1,
+            "safe_action": "candidate_for_official_followup",
+            "exchange": row.exchange,
+            "field": row.field,
+            "target_field": row.target_field,
+            "missing_count": row.missing_count,
+            "stock_missing_count": row.stock_missing_count,
+            "etf_missing_count": row.etf_missing_count,
+            "venue_status": row.venue_status,
+            "official_source_count": row.official_source_count,
+            "recommended_source": row.recommended_source,
+            "script": row.script,
+            "review_needed": row.review_needed,
+            "confidence_policy": row.confidence_policy,
+            "why_next": (
+                "top_impact official workflow"
+                if row.priority_bucket == "top_impact" and not row.review_needed
+                else "top_impact review-gated workflow"
+                if row.priority_bucket == "top_impact"
+                else "highest remaining missing-count workflow"
+            ),
+        }
+        action = apply_asx_residual_context(action, asx_residual_review or {})
+        action = apply_jpx_tse_sector_context(action, jpx_tse_sector_backfill or {})
+        action = apply_sec_sic_otc_context(action, sec_sic_sector_backfill or {})
+        action = apply_canada_residual_context(action, canada_residual_review or {})
+        action = apply_b3_residual_sector_context(action, b3_residual_sector_review or {})
+        action = apply_weak_sector_residual_context(action, weak_sector_residual_review or {})
+        action = apply_source_gap_classification_context(action, source_gap_classification or {})
+        actions.append(action)
+    return actions
 
 
 def rows_to_dicts(rows: list[CompletionBacklogRow]) -> list[dict[str, Any]]:
@@ -465,6 +926,7 @@ def format_combined_sector_table(rows: list[CompletionBacklogRow], limit: int = 
 
 def render_markdown(rows: list[CompletionBacklogRow], summary: dict[str, Any]) -> str:
     field_totals = summary["field_totals"]
+    next_actions = summary.get("next_actions", [])
     return "\n".join(
         [
             "# Completion Backlog",
@@ -478,6 +940,11 @@ def render_markdown(rows: list[CompletionBacklogRow], summary: dict[str, Any]) -
             f"- Missing ETF categories: `{field_totals.get(FIELD_MISSING_ETF_CATEGORY, 0)}`",
             f"- Official symbol collisions tracked in exchange references: `{summary['official_masterfile_collisions']}`",
             f"- Core rows hidden only by the legacy global-ticker compatibility export: `{summary['legacy_primary_ticker_collision_rows']}`",
+            "",
+            "## Next Safe Batches",
+            "",
+            format_next_actions_table(next_actions),
+            "These are orchestration candidates only. They do not authorize direct data changes without the listed official or review-gated evidence.",
             "",
             "## Top Missing Primary ISINs",
             "",
@@ -512,11 +979,36 @@ def render_markdown(rows: list[CompletionBacklogRow], summary: dict[str, Any]) -
     )
 
 
+def format_next_actions_table(actions: list[dict[str, Any]]) -> str:
+    if not actions:
+        return "_No actions._\n"
+    lines = [
+        "| Rank | Exchange | Field | Missing | Safe action | Evidence path | Review |",
+        "|---|---|---|---:|---|---|---|",
+    ]
+    for action in actions:
+        review = "yes" if action["review_needed"] else "no"
+        lines.append(
+            f"| {action['action_rank']} | {action['exchange']} | {action['field']} | "
+            f"{action['missing_count']} | {action['safe_action']} | "
+            f"{action['recommended_source']} | {review} |"
+        )
+    return "\n".join(lines) + "\n"
+
+
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build the field-level ticker database completion backlog.")
     parser.add_argument("--tickers-csv", type=Path, default=TICKERS_CSV)
     parser.add_argument("--instrument-scopes-csv", type=Path, default=INSTRUMENT_SCOPES_CSV)
     parser.add_argument("--coverage-report-json", type=Path, default=COVERAGE_REPORT_JSON)
+    parser.add_argument("--asx-residual-review-json", type=Path, default=ASX_RESIDUAL_REVIEW_JSON)
+    parser.add_argument("--jpx-tse-sector-backfill-json", type=Path, default=JPX_TSE_SECTOR_BACKFILL_JSON)
+    parser.add_argument("--sec-sic-sector-backfill-json", type=Path, default=SEC_SIC_SECTOR_BACKFILL_JSON)
+    parser.add_argument("--canada-residual-review-json", type=Path, default=CANADA_RESIDUAL_REVIEW_JSON)
+    parser.add_argument("--b3-residual-sector-review-json", type=Path, default=B3_RESIDUAL_SECTOR_REVIEW_JSON)
+    parser.add_argument("--weak-sector-residual-review-json", type=Path, default=WEAK_SECTOR_RESIDUAL_REVIEW_JSON)
+    parser.add_argument("--source-gap-classification-json", type=Path, default=SOURCE_GAP_CLASSIFICATION_JSON)
+    parser.add_argument("--next-action-limit", type=int, default=DEFAULT_NEXT_ACTION_LIMIT)
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_CSV_OUT)
     parser.add_argument("--json-out", type=Path, default=DEFAULT_JSON_OUT)
     parser.add_argument("--md-out", type=Path, default=DEFAULT_MD_OUT)
@@ -532,7 +1024,19 @@ def main(argv: list[str] | None = None) -> None:
         load_csv(args.instrument_scopes_csv),
         coverage_report,
     )
-    summary = summarize(rows, coverage_report, generated_at)
+    summary = summarize(
+        rows,
+        coverage_report,
+        generated_at,
+        asx_residual_review=load_json(args.asx_residual_review_json),
+        jpx_tse_sector_backfill=load_json(args.jpx_tse_sector_backfill_json),
+        sec_sic_sector_backfill=load_json(args.sec_sic_sector_backfill_json),
+        canada_residual_review=load_json(args.canada_residual_review_json),
+        b3_residual_sector_review=load_json(args.b3_residual_sector_review_json),
+        weak_sector_residual_review=load_json(args.weak_sector_residual_review_json),
+        source_gap_classification=load_json(args.source_gap_classification_json),
+        next_action_limit=args.next_action_limit,
+    )
 
     write_csv(args.csv_out, rows)
     args.json_out.parent.mkdir(parents=True, exist_ok=True)

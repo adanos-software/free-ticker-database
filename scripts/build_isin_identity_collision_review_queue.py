@@ -429,6 +429,16 @@ def summarize(queue_rows: list[dict[str, Any]], *, generated_at: str) -> dict[st
         "open_groups": sum(1 for row in queue_rows if row["closure_status"] == CLOSURE_STATUS_OPEN),
         "closed_groups": sum(1 for row in queue_rows if row["closure_status"] != CLOSURE_STATUS_OPEN),
         "direct_identifier_apply_allowed_rows": 0,
+        "advisory_policy": {
+            "direct_identifier_apply_allowed_rows": 0,
+            "identity_change_authorized": False,
+            "review_required_groups": len(queue_rows),
+            "source_gate": (
+                "ISIN identity collision rows are advisory only; apply no ISIN, country, "
+                "name, scope, merge, or dedupe change without listing-keyed official "
+                "identifier evidence and reviewer approval."
+            ),
+        },
         "next_review_batches": next_review_batches(queue_rows),
         "policy": (
             "An ISIN identifies exactly one issuer; an ISIN shared by distinct issuer "

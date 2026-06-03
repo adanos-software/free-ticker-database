@@ -17,6 +17,8 @@ DEFAULT_JSON_OUT = REPORTS_DIR / "release_acceptance.json"
 DEFAULT_MD_OUT = REPORTS_DIR / "release_acceptance.md"
 REVIEW_ARTIFACT_SIBLING_STALE_GRACE_SECONDS = 60
 COMMAND_SCRIPT_PATTERN = re.compile(r"\bpython\s+(scripts/[\w./-]+\.py)")
+REVIEW_SOURCE_REPORT_NAME_MARKERS = ("queue", "review", "gap", "backlog")
+SECRET_TOKEN_PATTERN = re.compile(r"sk-[A-Za-z0-9_-]{16,}")
 
 RELEASE_SOURCE_REPORTS = {
     "validation_report": "data/reports/validation_report.json",
@@ -24,18 +26,42 @@ RELEASE_SOURCE_REPORTS = {
     "improvement_baseline": "data/reports/improvement_baseline.json",
     "improvement_deltas": "data/reports/improvement_deltas.json",
     "improvement_campaigns": "data/reports/improvement_campaigns.json",
+    "completion_backlog": "data/reports/completion_backlog.json",
+    "source_inventory_gap": "data/reports/source_inventory_gap.json",
+    "tse_sector_backfill": "data/reports/tse_sector_backfill.json",
+    "sec_sic_sector_backfill": "data/reports/sec_sic_sector_backfill.json",
+    "official_name_mismatch_backfill": "data/reports/official_name_mismatch_backfill.json",
+    "source_gap_classification": "data/reports/source_gap_classification.json",
+    "deepseek_review_summary": "data/reports/deepseek_review_summary.json",
+    "deepseek_batch_plan": "data/reports/deepseek_batch_plan.json",
+    "deepseek_collision_review_queue": "data/reports/deepseek_collision_review_queue.json",
+    "deepseek_otc_review_queue": "data/reports/deepseek_otc_review_queue.json",
+    "deepseek_weak_sector_review_queue": "data/reports/deepseek_weak_sector_review_queue.json",
+    "deepseek_isin_collision_validation": "data/reports/deepseek_isin_collision_validation.json",
+    "source_refresh_queue": "data/reports/source_refresh_queue.json",
     "symbol_changes_review": "data/reports/symbol_changes_review.json",
+    "otc_name_mismatch_review": "data/reports/otc_name_mismatch_review.json",
+    "otc_name_mismatch_action_queue": "data/reports/otc_name_mismatch_action_queue.json",
     "ohlcv_plausibility": "data/reports/ohlcv_plausibility.json",
     "ohlcv_warning_review": "data/reports/ohlcv_warning_review.json",
     "masterfile_collision_review": "data/reports/masterfile_collision_review.json",
+    "isin_identity_collision_review_queue": "data/reports/isin_identity_collision_review_queue.json",
+    "financialdata_isin_supplements_review": "data/reports/financialdata_isin_supplements_review.json",
     "otc_scope_review": "data/reports/otc_scope_review.json",
     "canada_residual_review": "data/reports/canada_residual_review.json",
+    "canada_scope_review_queue": "data/reports/canada_scope_review_queue.json",
+    "canada_improvement_action_queue": "data/reports/canada_improvement_action_queue.json",
     "canada_figi_queue": "data/reports/canada_figi_queue.json",
     "canada_figi_apply_report": "data/reports/canada_figi_apply_report.json",
+    "b3_masterfile_gap_review": "data/reports/b3_masterfile_gap_review.json",
+    "b3_core_scope_review_queue": "data/reports/b3_core_scope_review_queue.json",
+    "b3_improvement_action_queue": "data/reports/b3_improvement_action_queue.json",
     "b3_residual_isin_review": "data/reports/b3_residual_isin_review.json",
     "b3_residual_sector_review": "data/reports/b3_residual_sector_review.json",
+    "asx_scope_review_queue": "data/reports/asx_scope_review_queue.json",
     "asx_residual_review": "data/reports/asx_residual_review.json",
     "weak_sector_residual_review": "data/reports/weak_sector_residual_review.json",
+    "weak_sector_venue_action_queue": "data/reports/weak_sector_venue_action_queue.json",
     "adanos_alias_audit": "data/reports/adanos_alias_audit.json",
     "adanos_detection_simulation": "data/reports/adanos_detection_simulation.json",
 }
@@ -286,6 +312,31 @@ SOURCE_REFRESH_REVIEW_STRATEGIES = {
     "restore_or_replace_unavailable_source_before_data_fill",
     "review_secondary_source_freshness_or_replace",
 }
+SOURCE_REFRESH_QUEUE_REQUIRED_ITEM_FIELDS = (
+    "source_key",
+    "provider",
+    "reference_scope",
+    "mode",
+    "last_error",
+    "generated_at",
+    "age_hours",
+    "freshness_status",
+    "refresh_priority",
+    "refresh_queue",
+    "recommended_refresh_action",
+    "recommended_next_source",
+    "source_gate",
+    "review_strategy",
+    "evidence_required",
+    "freshness_review_context",
+    "refresh_gate_context",
+)
+SOURCE_REFRESH_QUEUE_POLICY_MARKER_GROUPS = {
+    "queue_only": ("source refresh queue only", "freshness and availability signals"),
+    "no_data_apply": ("authorize", "direct data application"),
+    "no_inference": ("inferred identifiers", "sectors", "categories", "symbols"),
+}
+SOURCE_REFRESH_QUEUE_ALLOWED_MODES = {"cache", "network", "unavailable"}
 
 
 def source_refresh_strategy_for(queue: str) -> tuple[str, str]:
@@ -766,6 +817,42 @@ OHLCV_FORBIDDEN_AUTOMATIC_ACTION_MARKERS = (
     "rename",
     "update_name",
 )
+OHLCV_WARNING_REQUIRED_ROW_KEYS = (
+    "listing_key",
+    "ticker",
+    "exchange",
+    "entry_quality_status",
+    "ohlcv_source",
+    "ohlcv_symbol",
+    "plausibility_status",
+    "plausibility_score",
+    "issue_count",
+    "issue_types",
+    "ohlcv_review_bucket",
+    "official_review_priority",
+    "official_listing_review_status",
+    "official_corporate_action_review_status",
+    "canonical_data_change_authorization",
+    "verification_evidence_required",
+    "official_source_locator_status",
+    "recommended_next_source",
+    "source_gate",
+    "review_context",
+    "recommended_action",
+)
+OHLCV_WARNING_SUMMARY_COUNTER_FIELDS = (
+    "exchange_counts",
+    "ohlcv_review_bucket_counts",
+    "official_review_priority_counts",
+    "canonical_data_change_authorization_counts",
+    "official_listing_review_status_counts",
+    "official_corporate_action_review_status_counts",
+    "official_source_locator_status_counts",
+)
+OHLCV_WARNING_POLICY_MARKER_GROUPS = {
+    "review_signal_only": ("review signals only", "canonical identifiers", "official listing-keyed evidence"),
+    "canonical_fields_blocked": ("canonical identifiers", "symbols remain blocked", "evidence is reviewed"),
+}
 EXPECTED_OHLCV_SOURCE_FILES = {
     "listings_csv": "data/listings.csv",
     "entry_quality_csv": "data/reports/entry_quality.csv",
@@ -1753,6 +1840,138 @@ CANADA_REVIEW_STRATEGIES = {
     "scope_review_before_canada_metadata_enrichment",
     "seek_official_canada_isin_source",
 }
+B3_ACTION_REQUIRED_ITEM_FIELDS = (
+    "campaign",
+    "priority",
+    "review_queue",
+    "asset_type",
+    "gap_class",
+    "rows",
+    "action_queue",
+    "review_strategy",
+    "evidence_required",
+    "recommended_next_source",
+    "source_gate",
+    "example_listing_keys",
+)
+B3_ACTION_POLICY_MARKER_GROUPS = {
+    "official_first": ("official", "b3", "issuer", "registry", "prospectus"),
+    "no_guessing": ("no isin", "no_guessing", "ticker shape", "issuer name"),
+    "campaign_delta": ("current b3 residual backlog", "future b3 data campaigns", "before and after"),
+}
+B3_MASTERFILE_GAP_REQUIRED_ROW_FIELDS = (
+    "listing_key",
+    "ticker",
+    "exchange",
+    "asset_type",
+    "name",
+    "b3_gap_category",
+    "source_presence",
+    "active_exchange_directory_match",
+    "any_official_b3_source_match",
+    "b3_resolution_queue",
+    "residual_decision",
+    "review_bucket",
+    "review_priority",
+    "review_strategy",
+    "apply_eligibility",
+    "verification_evidence_required",
+    "b3_source_gap_evidence_path",
+    "source_gap_resolution_gate",
+    "recommended_next_source",
+    "source_gate",
+    "b3_listing_context",
+    "official_candidate_context",
+    "review_gate_context",
+)
+B3_MASTERFILE_GAP_POLICY_MARKER_GROUPS = {
+    "no_guessing": ("does not authorize", "inferred identifiers", "sectors", "categories"),
+    "listing_keyed_review": ("every row is keyed by listing_key", "b3 dataset row", "official b3 masterfile"),
+    "source_gap_handling": ("absent from all current b3 masterfile sources", "source gaps", "stronger official evidence"),
+}
+B3_CORE_SCOPE_REQUIRED_ROW_FIELDS = (
+    "listing_key",
+    "ticker",
+    "exchange",
+    "asset_type",
+    "name",
+    "gap_class",
+    "current_instrument_scope",
+    "source_of_truth_outcome",
+    "residual_decision",
+    "masterfile_source_presence",
+    "b3_resolution_queue",
+    "listing_history_status",
+    "scope_review_queue",
+    "scope_decision_gate",
+    "recommended_scope_action",
+    "verification_evidence_required",
+    "recommended_next_source",
+    "source_gate",
+    "review_context",
+)
+B3_CORE_SCOPE_POLICY_MARKER_GROUPS = {
+    "scope_first": ("core", "extended", "exclude", "before b3 identifier"),
+    "no_data_apply": ("does not authorize", "isin", "category", "scope changes"),
+    "source_gate": ("exact listing-keyed", "official b3", "registry", "prospectus"),
+}
+ASX_SCOPE_REQUIRED_ROW_FIELDS = (
+    "listing_key",
+    "ticker",
+    "exchange",
+    "asset_type",
+    "name",
+    "field",
+    "gap_class",
+    "official_masterfile_match",
+    "official_masterfile_exposes_isin",
+    "official_masterfile_exposes_sector",
+    "asx_isin_probe_decision",
+    "current_instrument_scope",
+    "current_scope_reason",
+    "listing_history_status",
+    "scope_review_queue",
+    "scope_decision_gate",
+    "recommended_scope_action",
+    "verification_evidence_required",
+    "recommended_next_source",
+    "source_gate",
+    "review_context",
+)
+ASX_SCOPE_POLICY_MARKER_GROUPS = {
+    "scope_first": ("core", "extended", "exclude", "before identifier"),
+    "no_data_apply": ("does not authorize", "isin", "etf-category", "scope changes"),
+    "source_gate": ("exact listing-keyed", "official asx", "registry", "prospectus"),
+}
+CANADA_SCOPE_REQUIRED_ROW_FIELDS = (
+    "listing_key",
+    "ticker",
+    "exchange",
+    "asset_type",
+    "name",
+    "source_gap_fields",
+    "source_gap_classes",
+    "official_masterfile_match",
+    "official_masterfile_exposes_isin",
+    "official_masterfile_exposes_sector",
+    "current_instrument_scope",
+    "current_scope_reason",
+    "listing_history_status",
+    "canada_resolution_queue",
+    "scope_review_queue",
+    "scope_decision_gate",
+    "recommended_scope_action",
+    "verification_evidence_required",
+    "recommended_next_source",
+    "source_gate",
+    "review_context",
+)
+CANADA_SCOPE_POLICY_MARKER_GROUPS = {
+    "scope_first": ("core", "extended", "exclude", "before identifier"),
+    "no_data_apply": ("does not authorize", "isin", "figi", "scope changes"),
+    "source_gate": ("exact listing-keyed", "official tmx", "cboe canada", "prospectus"),
+}
+CANADA_SCOPE_EXCHANGES = {"NEO", "TSX", "TSXV"}
 
 
 def canada_recommended_next_source_for_queue(queue: str, official_source: str) -> str:
@@ -2795,6 +3014,118 @@ SUPPLEMENT_OFFICIAL_EVIDENCE_KEYS = (
     "official_isin",
     "official_source_key",
 )
+FINANCIALDATA_SUPPLEMENT_POLICY_MARKER_GROUPS = {
+    "discovery_only": ("discovery signal", "discovery signals"),
+    "official_source": ("official", "active masterfile", "registry"),
+    "identifier_gate": ("valid official isin", "issuer-name gate", "duplicate"),
+    "no_guessing": ("no_guessing", "never used as an identifier source", "symbol or name shape"),
+}
+FINANCIALDATA_SUPPLEMENT_SUMMARY_COUNT_FIELDS = (
+    "decision_counts",
+    "reason_counts",
+    "apply_eligibility_counts",
+    "verification_evidence_required_counts",
+)
+OFFICIAL_NAME_MISMATCH_REQUIRED_ROW_FIELDS = (
+    "listing_key",
+    "ticker",
+    "exchange",
+    "asset_type",
+    "current_name",
+    "proposed_name",
+    "decision",
+    "official_sources",
+    "supporting_sources",
+)
+OFFICIAL_NAME_MISMATCH_POLICY_MARKER_GROUPS = {
+    "official_active_source": ("active official", "official masterfile", "exact ticker and exchange"),
+    "no_guessing": ("not inferred", "no_guessing", "ticker shape", "secondary-only"),
+    "apply_gate": ("--apply", "override workflow", "review evidence"),
+    "otc_exclusion": ("otc", "otc name-mismatch review"),
+}
+SOURCE_INVENTORY_REQUIRED_ROW_FIELDS = (
+    "priority_rank",
+    "exchange",
+    "current_status",
+    "tickers",
+    "missing_isin",
+    "missing_sector_or_category",
+    "unresolved_findings",
+    "official_source_count",
+    "candidate_key",
+    "candidate_scope",
+    "provider",
+    "expected_format",
+    "source_url",
+    "implementation_status",
+    "source_mode",
+    "source_refresh_queue",
+    "source_last_error",
+    "priority",
+    "review_needed",
+    "blocker",
+    "notes",
+)
+SOURCE_INVENTORY_POLICY_MARKER_GROUPS = {
+    "inventory_only": ("source inventory", "parser backlog", "does not authorize data fills"),
+    "official_source_gate": ("official source parsers", "reference.csv", "data evidence"),
+    "no_guessing": ("remain blank", "until sourced", "no_guessing"),
+    "review_gate": ("review_needed", "source review", "scope changes"),
+}
+SOURCE_INVENTORY_ALLOWED_CURRENT_STATUSES = {
+    "missing",
+    "not_in_current_universe",
+    "official_full",
+    "official_partial",
+}
+SOURCE_INVENTORY_ALLOWED_CANDIDATE_SCOPES = {
+    "exchange_directory_candidate",
+    "global_expansion_candidate",
+    "listed_companies_candidate",
+    "normalization_alias",
+    "security_identifier_registry_candidate",
+    "security_lookup_subset",
+    "source_expansion_candidate",
+}
+SOURCE_INVENTORY_ALLOWED_SOURCE_MODES = {"", "cache", "network", "unavailable"}
+WEAK_SECTOR_ACTION_REQUIRED_ITEM_FIELDS = (
+    "exchange",
+    "weak_sector_resolution_queue",
+    "official_masterfile_sources",
+    "rows",
+    "review_priority",
+    "action_queue",
+    "review_strategy",
+    "evidence_required",
+    "source_gate",
+    "recommended_next_action",
+    "gap_class_totals",
+    "source_of_truth_outcome_totals",
+    "example_listing_keys",
+)
+WEAK_SECTOR_ACTION_POLICY_MARKER_GROUPS = {
+    "official_first": ("official venue", "issuer", "taxonomy evidence", "exact listing"),
+    "no_inference": ("no sector is inferred", "ticker", "issuer name", "peers"),
+    "reviewable_batches": ("grouped by exchange", "residual queue", "reviewed venue by venue"),
+}
+CANADA_ACTION_REQUIRED_ITEM_FIELDS = (
+    "campaign",
+    "exchange",
+    "review_queue",
+    "official_sources",
+    "rows",
+    "action_queue",
+    "evidence_required",
+    "review_strategy",
+    "recommended_next_source",
+    "source_gate",
+    "example_listing_keys",
+)
+CANADA_ACTION_POLICY_MARKER_GROUPS = {
+    "official_first": ("tmx", "cboe canada", "issuer", "reviewed identifier sources"),
+    "figi_no_repeat": ("openfigi", "excluded", "stronger reviewed figi evidence"),
+    "scope_before_fill": ("core-exclusion", "core, extended, or excluded", "before isin"),
+}
 REVIEW_POLICY_REQUIRED_MARKER_GROUPS = {
     "review_or_no_guessing_gate": (
         "review",
@@ -2853,6 +3184,13 @@ def load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def display_path(path: Path, *, root: Path = ROOT) -> str:
+    try:
+        return str(path.relative_to(root))
+    except ValueError:
+        return str(path)
+
+
 def is_valid_iso_utc_timestamp(value: str) -> bool:
     if not value.endswith("Z"):
         return False
@@ -2892,6 +3230,14 @@ def evaluate_release_source_report_integrity(
     missing_generated_at: list[str] = []
     invalid_generated_at: dict[str, str] = {}
     generated_after_release: dict[str, dict[str, str]] = {}
+    listed_paths = set(source_reports.values())
+    reports_dir = root / "data" / "reports"
+    unlisted_review_reports = [
+        display_path(path, root=root)
+        for path in sorted(reports_dir.glob("*.json"))
+        if any(marker in path.name for marker in REVIEW_SOURCE_REPORT_NAME_MARKERS)
+        and display_path(path, root=root) not in listed_paths
+    ]
     release_generated_at_invalid = bool(release_generated_at) and not is_valid_iso_utc_timestamp(release_generated_at)
     release_generated_at_dt = parse_iso_utc_timestamp(release_generated_at) if release_generated_at else None
     for key, relative_path in source_reports.items():
@@ -2922,6 +3268,7 @@ def evaluate_release_source_report_integrity(
             and not missing_generated_at
             and not invalid_generated_at
             and not generated_after_release
+            and not unlisted_review_reports
         ),
         "release_generated_at": release_generated_at,
         "release_generated_at_invalid": release_generated_at_invalid,
@@ -2930,6 +3277,1538 @@ def evaluate_release_source_report_integrity(
         "missing_generated_at": missing_generated_at,
         "invalid_generated_at": invalid_generated_at,
         "generated_after_release": generated_after_release,
+        "unlisted_review_reports": unlisted_review_reports,
+        "review_source_report_name_markers": list(REVIEW_SOURCE_REPORT_NAME_MARKERS),
+    }
+
+
+DEEPSEEK_ALLOWED_SAFE_ACTIONS = {
+    "candidate_for_official_followup",
+    "likely_distinct_issuer_review",
+    "likely_same_issuer_review",
+    "needs_official_evidence",
+    "source_gap_accept",
+}
+
+
+def evaluate_deepseek_advisory_integrity(
+    review_summary: dict[str, Any],
+    batch_plan: dict[str, Any],
+    *,
+    root: Path = ROOT,
+) -> dict[str, Any]:
+    summary = review_summary.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    review_meta = review_summary.get("_meta", {})
+    if not isinstance(review_meta, dict):
+        review_meta = {}
+    review_policy = str(review_meta.get("policy", ""))
+    plan_policy = str(batch_plan.get("_meta", {}).get("policy", ""))
+    selected_batch = batch_plan.get("selected_batch", {})
+    if not isinstance(selected_batch, dict):
+        selected_batch = {}
+    queues = batch_plan.get("queues", [])
+    if not isinstance(queues, list):
+        queues = []
+    safe_actions = summary.get("safe_action_totals", {})
+    if not isinstance(safe_actions, dict):
+        safe_actions = {}
+
+    policy_missing_markers = [
+        marker
+        for marker in ("triage", "authorize", "data application")
+        if marker not in review_policy.lower() or marker not in plan_policy.lower()
+    ]
+    secret_policy = str(selected_batch.get("secret_policy", ""))
+    secret_policy_missing = not (
+        selected_batch.get("required_env") == "DEEPSEEK_API_KEY"
+        and "DEEPSEEK_API_KEY" in secret_policy
+        and "Never write" in secret_policy
+    )
+    invalid_safe_actions = sorted(set(safe_actions) - DEEPSEEK_ALLOWED_SAFE_ACTIONS)
+    queue_status_gaps = [
+        row.get("queue", "")
+        for row in queues
+        if row.get("review_coverage_status") != "complete"
+    ]
+    queue_unreviewed_gaps = {
+        row.get("queue", ""): row.get("unreviewed_unique_keys")
+        for row in queues
+        if int(row.get("unreviewed_unique_keys") or 0) != 0
+    }
+    selected_batch_open = bool(selected_batch.get("queue")) or int(selected_batch.get("rows") or 0) != 0
+    raw_responses_jsonl = str(review_meta.get("raw_responses_jsonl", ""))
+    raw_path = root / raw_responses_jsonl if raw_responses_jsonl else None
+    raw_line_count = 0
+    raw_parse_error_lines: list[int] = []
+    raw_secret_pattern_lines: list[int] = []
+    raw_missing = raw_path is None or not raw_path.exists()
+    if raw_path and raw_path.exists():
+        with raw_path.open(encoding="utf-8") as handle:
+            for line_number, line in enumerate(handle, start=1):
+                raw_line_count += 1
+                if SECRET_TOKEN_PATTERN.search(line):
+                    raw_secret_pattern_lines.append(line_number)
+                try:
+                    json.loads(line)
+                except json.JSONDecodeError:
+                    raw_parse_error_lines.append(line_number)
+    raw_batch_count_mismatch = (
+        {"reported": int(review_meta.get("raw_batches") or 0), "actual": raw_line_count}
+        if not raw_missing and int(review_meta.get("raw_batches") or 0) != raw_line_count
+        else {}
+    )
+    return {
+        "passed": (
+            not policy_missing_markers
+            and not secret_policy_missing
+            and int(summary.get("rows") or 0) > 0
+            and int(review_meta.get("raw_batches") or 0) > 0
+            and bool(review_meta.get("raw_responses_jsonl"))
+            and int(summary.get("errors") or 0) == 0
+            and int(summary.get("duplicate_review_key_rows") or 0) == 0
+            and int(summary.get("blank_listing_key_rows") or 0) == 0
+            and not invalid_safe_actions
+            and not queue_status_gaps
+            and not queue_unreviewed_gaps
+            and not selected_batch_open
+            and not raw_missing
+            and not raw_batch_count_mismatch
+            and not raw_parse_error_lines
+            and not raw_secret_pattern_lines
+        ),
+        "review_rows": int(summary.get("rows") or 0),
+        "raw_batches": int(review_meta.get("raw_batches") or 0),
+        "raw_responses_jsonl": raw_responses_jsonl,
+        "raw_missing": raw_missing,
+        "raw_line_count": raw_line_count,
+        "raw_batch_count_mismatch": raw_batch_count_mismatch,
+        "raw_parse_error_lines": raw_parse_error_lines[:20],
+        "raw_secret_pattern_lines": raw_secret_pattern_lines[:20],
+        "errors": int(summary.get("errors") or 0),
+        "duplicate_review_key_rows": int(summary.get("duplicate_review_key_rows") or 0),
+        "blank_listing_key_rows": int(summary.get("blank_listing_key_rows") or 0),
+        "invalid_safe_actions": invalid_safe_actions,
+        "policy_missing_markers": policy_missing_markers,
+        "secret_policy_missing": secret_policy_missing,
+        "selected_batch": {
+            "queue": selected_batch.get("queue"),
+            "rows": int(selected_batch.get("rows") or 0),
+        },
+        "queue_status_gaps": queue_status_gaps,
+        "queue_unreviewed_gaps": queue_unreviewed_gaps,
+        "allowed_safe_actions": sorted(DEEPSEEK_ALLOWED_SAFE_ACTIONS),
+    }
+
+
+DEEPSEEK_QUEUE_ADVISORY_EXPECTATIONS = {
+    "collision": {
+        "required_false_fields": ("merge_or_dedupe_authorized",),
+        "source_gate_markers": ("advisory only", "listing-keyed official identity evidence", "reviewer approval"),
+    },
+    "otc": {
+        "required_false_fields": ("metadata_enrichment_authorized",),
+        "source_gate_markers": ("advisory only", "listing-keyed official otc", "registry evidence"),
+    },
+    "weak_sector": {
+        "required_false_fields": ("metadata_enrichment_authorized",),
+        "source_gate_markers": ("advisory only", "listing-keyed official taxonomy evidence", "reviewed canonical mapping"),
+    },
+}
+
+
+def evaluate_deepseek_queue_advisory_policies(review_queues: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    checked: dict[str, dict[str, Any]] = {}
+    queue_gaps: dict[str, list[dict[str, Any]]] = {}
+    missing_queues = sorted(set(DEEPSEEK_QUEUE_ADVISORY_EXPECTATIONS) - set(review_queues))
+    for queue_name, expectation in DEEPSEEK_QUEUE_ADVISORY_EXPECTATIONS.items():
+        payload = review_queues.get(queue_name, {})
+        if not isinstance(payload, dict):
+            payload = {}
+        summary = payload.get("summary", {})
+        if not isinstance(summary, dict):
+            summary = {}
+        items = payload.get("items", [])
+        if not isinstance(items, list):
+            items = []
+        advisory_policy = summary.get("advisory_policy", {})
+        if not isinstance(advisory_policy, dict):
+            advisory_policy = {}
+        rows = int(summary.get("rows") or 0)
+        review_required_rows = int(advisory_policy.get("review_required_rows") or 0)
+        source_gate = str(advisory_policy.get("source_gate", ""))
+        gaps: list[dict[str, Any]] = []
+        if rows <= 0:
+            gaps.append({"field": "summary.rows", "reported": rows, "expected": ">0"})
+        if len(items) != rows:
+            gaps.append({"field": "items", "reported": len(items), "expected": rows})
+        if int(advisory_policy.get("direct_apply_allowed_rows") or 0) != 0:
+            gaps.append(
+                {
+                    "field": "advisory_policy.direct_apply_allowed_rows",
+                    "reported": advisory_policy.get("direct_apply_allowed_rows"),
+                    "expected": 0,
+                }
+            )
+        if review_required_rows != rows:
+            gaps.append(
+                {
+                    "field": "advisory_policy.review_required_rows",
+                    "reported": review_required_rows,
+                    "expected": rows,
+                }
+            )
+        for field in expectation["required_false_fields"]:
+            if advisory_policy.get(field) is not False:
+                gaps.append(
+                    {
+                        "field": f"advisory_policy.{field}",
+                        "reported": advisory_policy.get(field),
+                        "expected": False,
+                    }
+                )
+        missing_source_gate_markers = [
+            marker for marker in expectation["source_gate_markers"] if marker not in source_gate.lower()
+        ]
+        if missing_source_gate_markers:
+            gaps.append(
+                {
+                    "field": "advisory_policy.source_gate",
+                    "missing_markers": missing_source_gate_markers,
+                }
+            )
+        checked[queue_name] = {
+            "rows": rows,
+            "items": len(items),
+            "review_required_rows": review_required_rows,
+            "direct_apply_allowed_rows": int(advisory_policy.get("direct_apply_allowed_rows") or 0),
+        }
+        if gaps:
+            queue_gaps[queue_name] = gaps
+    return {
+        "passed": not missing_queues and not queue_gaps,
+        "checked": checked,
+        "missing_queues": missing_queues,
+        "queue_gaps": queue_gaps,
+    }
+
+
+OTC_NAME_MISMATCH_ALLOWED_ACTION_QUEUES = {
+    "resolve_or_quarantine_before_trusting_otc_symbol",
+    "review_official_alias_before_matcher_tuning",
+    "verify_isin_anchored_issuer_history_before_name_change",
+    "tighten_matcher_without_dataset_metadata_change",
+    "keep_current_until_stronger_issuer_history_source",
+    "manual_otc_name_mismatch_review",
+}
+
+
+OTC_NAME_MISMATCH_REQUIRED_ROW_FIELDS = (
+    "listing_key",
+    "review_class",
+    "review_priority",
+    "apply_eligibility",
+    "verification_evidence_required",
+    "review_strategy",
+    "recommended_next_source",
+    "source_gate",
+    "official_source_context",
+    "identity_review_context",
+    "decision_review_context",
+    "recommended_action",
+)
+
+
+OTC_NAME_MISMATCH_BLOCKING_APPLY_ELIGIBILITY_PREFIXES = (
+    "blocked_until_",
+    "matcher_tuning_only_",
+    "keep_current_until_",
+    "no_metadata_change_authorized_",
+    "manual_review_required",
+)
+
+
+def evaluate_otc_name_mismatch_review_gate(review: dict[str, Any]) -> dict[str, Any]:
+    meta = review.get("_meta", {})
+    if not isinstance(meta, dict):
+        meta = {}
+    summary = review.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    items = review.get("items", [])
+    if not isinstance(items, list):
+        items = []
+    rows = int(meta.get("rows") or 0)
+    policy_text = str(meta.get("policy", "")).lower()
+    policy_missing_markers = [
+        marker
+        for marker in ("review queue only", "official", "listing_key", "required identity evidence")
+        if marker not in policy_text
+    ]
+    row_gaps: list[dict[str, Any]] = []
+    for row in items:
+        if not isinstance(row, dict):
+            row_gaps.append({"listing_key": "", "missing_fields": list(OTC_NAME_MISMATCH_REQUIRED_ROW_FIELDS)})
+            continue
+        missing = [field for field in OTC_NAME_MISMATCH_REQUIRED_ROW_FIELDS if not str(row.get(field, ""))]
+        apply_eligibility = str(row.get("apply_eligibility", ""))
+        if apply_eligibility and not apply_eligibility.startswith(OTC_NAME_MISMATCH_BLOCKING_APPLY_ELIGIBILITY_PREFIXES):
+            missing.append("safe_apply_eligibility")
+        if missing:
+            row_gaps.append({"listing_key": row.get("listing_key", ""), "missing_fields": missing})
+    count_gaps: list[dict[str, Any]] = []
+    if rows <= 0:
+        count_gaps.append({"field": "_meta.rows", "reported": rows, "expected": ">0"})
+    if rows != len(items):
+        count_gaps.append({"field": "items", "reported": len(items), "expected": rows})
+    summary_count_fields = (
+        "review_class_counts",
+        "review_priority_counts",
+        "apply_eligibility_counts",
+        "verification_evidence_required_counts",
+        "review_strategy_counts",
+    )
+    for field in summary_count_fields:
+        counts = summary.get(field, {})
+        if not isinstance(counts, dict) or sum(int(value or 0) for value in counts.values()) != rows:
+            count_gaps.append(
+                {
+                    "field": f"summary.{field}",
+                    "reported": counts,
+                    "expected_total": rows,
+                }
+            )
+    return {
+        "passed": not policy_missing_markers and not row_gaps and not count_gaps,
+        "rows": rows,
+        "items": len(items),
+        "policy_missing_markers": policy_missing_markers,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "count_gaps": count_gaps,
+        "required_row_fields": list(OTC_NAME_MISMATCH_REQUIRED_ROW_FIELDS),
+    }
+
+
+def evaluate_otc_name_mismatch_action_queue_gate(action_queue: dict[str, Any]) -> dict[str, Any]:
+    summary = action_queue.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    items = action_queue.get("items", [])
+    if not isinstance(items, list):
+        items = []
+    policy = summary.get("policy", {})
+    if not isinstance(policy, dict):
+        policy = {}
+    rows = int(summary.get("rows") or 0)
+    batches = int(summary.get("batches") or 0)
+    item_row_total = sum(int(row.get("rows") or 0) for row in items if isinstance(row, dict))
+    invalid_actions = sorted(
+        {
+            str(row.get("action_queue", ""))
+            for row in items
+            if isinstance(row, dict) and row.get("action_queue") not in OTC_NAME_MISMATCH_ALLOWED_ACTION_QUEUES
+        }
+    )
+    missing_item_gates = [
+        str(row.get("action_queue", ""))
+        for row in items
+        if isinstance(row, dict)
+        and (
+            not str(row.get("apply_eligibility", ""))
+            or not str(row.get("verification_evidence_required", ""))
+            or not str(row.get("review_strategy", ""))
+            or not str(row.get("recommended_next_source", ""))
+            or not str(row.get("source_gate", ""))
+        )
+    ]
+    policy_text = " ".join(str(value) for value in policy.values()).lower()
+    policy_missing_markers = [
+        marker
+        for marker in ("triage", "listing-keyed", "no otc symbol", "never authorizes")
+        if marker not in policy_text
+    ]
+    gating_gaps: list[dict[str, Any]] = []
+    if summary.get("direct_name_changes_authorized") is not False:
+        gating_gaps.append(
+            {
+                "field": "summary.direct_name_changes_authorized",
+                "reported": summary.get("direct_name_changes_authorized"),
+                "expected": False,
+            }
+        )
+    if summary.get("metadata_enrichment_authorized") is not False:
+        gating_gaps.append(
+            {
+                "field": "summary.metadata_enrichment_authorized",
+                "reported": summary.get("metadata_enrichment_authorized"),
+                "expected": False,
+            }
+        )
+    if rows <= 0:
+        gating_gaps.append({"field": "summary.rows", "reported": rows, "expected": ">0"})
+    if batches != len(items):
+        gating_gaps.append({"field": "summary.batches", "reported": batches, "expected": len(items)})
+    if item_row_total != rows:
+        gating_gaps.append({"field": "items.rows_total", "reported": item_row_total, "expected": rows})
+    return {
+        "passed": (
+            not gating_gaps
+            and not invalid_actions
+            and not missing_item_gates
+            and not policy_missing_markers
+        ),
+        "rows": rows,
+        "batches": batches,
+        "items": len(items),
+        "item_row_total": item_row_total,
+        "gating_gaps": gating_gaps,
+        "invalid_actions": invalid_actions,
+        "missing_item_gate_actions": missing_item_gates[:20],
+        "missing_item_gate_count": len(missing_item_gates),
+        "policy_missing_markers": policy_missing_markers,
+        "allowed_action_queues": sorted(OTC_NAME_MISMATCH_ALLOWED_ACTION_QUEUES),
+    }
+
+
+def evaluate_weak_sector_venue_action_queue_gate(action_queue: dict[str, Any]) -> dict[str, Any]:
+    summary = action_queue.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    items = action_queue.get("items", [])
+    if not isinstance(items, list):
+        items = []
+    policy = summary.get("policy", {})
+    if not isinstance(policy, dict):
+        policy = {}
+    policy_text = " ".join(str(value) for value in policy.values()).lower()
+    policy_missing_marker_groups = [
+        group
+        for group, markers in WEAK_SECTOR_ACTION_POLICY_MARKER_GROUPS.items()
+        if not any(marker in policy_text for marker in markers)
+    ]
+
+    item_row_total = 0
+    exchange_totals: Counter[str] = Counter()
+    action_queue_totals: Counter[str] = Counter()
+    resolution_queue_totals: Counter[str] = Counter()
+    evidence_required_totals: Counter[str] = Counter()
+    row_gaps: list[dict[str, Any]] = []
+    for index, item in enumerate(items):
+        if not isinstance(item, dict):
+            row_gaps.append({"row_index": index, "reason": "row_is_not_object"})
+            continue
+        missing_fields = [field for field in WEAK_SECTOR_ACTION_REQUIRED_ITEM_FIELDS if not item.get(field)]
+        invalid_fields: list[str] = []
+        try:
+            rows = int(item.get("rows") or 0)
+        except (TypeError, ValueError):
+            rows = 0
+            invalid_fields.append("rows")
+        if rows <= 0:
+            invalid_fields.append("rows")
+        source_gate = str(item.get("source_gate", "")).lower()
+        if not source_gate.startswith(("no sector", "keep sector", "do not map")):
+            invalid_fields.append("source_gate")
+        evidence_required = str(item.get("evidence_required", "")).lower()
+        if "official" not in evidence_required and "scope_decision" not in evidence_required:
+            invalid_fields.append("evidence_required")
+        item_row_total += rows
+        exchange_totals[str(item.get("exchange", ""))] += rows
+        action_queue_totals[str(item.get("action_queue", ""))] += rows
+        resolution_queue_totals[str(item.get("weak_sector_resolution_queue", ""))] += rows
+        evidence_required_totals[str(item.get("evidence_required", ""))] += rows
+        if missing_fields or invalid_fields:
+            row_gaps.append(
+                {
+                    "row_index": index,
+                    "reason": "missing_or_invalid_weak_sector_action_fields",
+                    "missing_fields": missing_fields,
+                    "invalid_fields": sorted(set(invalid_fields)),
+                    "available_keys": sorted(item)[:20],
+                }
+            )
+
+    count_gaps = []
+    expected_summary_fields = {
+        "rows": item_row_total,
+        "batches": len(items),
+        "exchange_totals": dict(sorted(exchange_totals.items())),
+        "action_queue_totals": dict(sorted(action_queue_totals.items())),
+        "weak_sector_resolution_queue_totals": dict(sorted(resolution_queue_totals.items())),
+        "evidence_required_totals": dict(sorted(evidence_required_totals.items())),
+    }
+    for field, expected in expected_summary_fields.items():
+        if summary.get(field) != expected:
+            count_gaps.append({"field": field, "expected": expected, "actual": summary.get(field)})
+    gating_gaps = []
+    if summary.get("direct_sector_apply_allowed_rows") != 0:
+        gating_gaps.append(
+            {
+                "field": "direct_sector_apply_allowed_rows",
+                "expected": 0,
+                "actual": summary.get("direct_sector_apply_allowed_rows"),
+            }
+        )
+    if summary.get("metadata_enrichment_authorized") is not False:
+        gating_gaps.append(
+            {
+                "field": "metadata_enrichment_authorized",
+                "expected": False,
+                "actual": summary.get("metadata_enrichment_authorized"),
+            }
+        )
+    return {
+        "passed": bool(items) and not policy_missing_marker_groups and not row_gaps and not count_gaps and not gating_gaps,
+        "rows": summary.get("rows"),
+        "item_row_total": item_row_total,
+        "batches": summary.get("batches"),
+        "items": len(items),
+        "direct_sector_apply_allowed_rows": summary.get("direct_sector_apply_allowed_rows"),
+        "metadata_enrichment_authorized": summary.get("metadata_enrichment_authorized"),
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "count_gaps": count_gaps,
+        "gating_gaps": gating_gaps,
+        "required_item_fields": list(WEAK_SECTOR_ACTION_REQUIRED_ITEM_FIELDS),
+    }
+
+
+def evaluate_canada_improvement_action_queue_gate(action_queue: dict[str, Any]) -> dict[str, Any]:
+    summary = action_queue.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    items = action_queue.get("items", [])
+    if not isinstance(items, list):
+        items = []
+    policy = summary.get("policy", {})
+    if not isinstance(policy, dict):
+        policy = {}
+    policy_text = " ".join(str(value) for value in policy.values()).lower()
+    policy_missing_marker_groups = [
+        group
+        for group, markers in CANADA_ACTION_POLICY_MARKER_GROUPS.items()
+        if not any(marker in policy_text for marker in markers)
+    ]
+
+    item_row_total = 0
+    campaign_totals: Counter[str] = Counter()
+    exchange_totals: Counter[str] = Counter()
+    action_queue_totals: Counter[str] = Counter()
+    row_gaps: list[dict[str, Any]] = []
+    for index, item in enumerate(items):
+        if not isinstance(item, dict):
+            row_gaps.append({"row_index": index, "reason": "row_is_not_object"})
+            continue
+        missing_fields = [field for field in CANADA_ACTION_REQUIRED_ITEM_FIELDS if not item.get(field)]
+        invalid_fields: list[str] = []
+        try:
+            rows = int(item.get("rows") or 0)
+        except (TypeError, ValueError):
+            rows = 0
+            invalid_fields.append("rows")
+        if rows <= 0:
+            invalid_fields.append("rows")
+        source_gate = str(item.get("source_gate", "")).lower()
+        if not source_gate.startswith(
+            ("no isin", "no sector", "keep isin", "keep figi", "keep metadata", "do not re-probe", "do not apply")
+        ):
+            invalid_fields.append("source_gate")
+        evidence_required = str(item.get("evidence_required", "")).lower()
+        if not any(
+            marker in evidence_required
+            for marker in ("official", "scope_decision", "stronger_figi", "reviewed_issuer_or_product_metadata_source")
+        ):
+            invalid_fields.append("evidence_required")
+        item_row_total += rows
+        campaign_totals[str(item.get("campaign", ""))] += rows
+        exchange_totals[str(item.get("exchange", ""))] += rows
+        action_queue_totals[str(item.get("action_queue", ""))] += rows
+        if missing_fields or invalid_fields:
+            row_gaps.append(
+                {
+                    "row_index": index,
+                    "reason": "missing_or_invalid_canada_action_fields",
+                    "missing_fields": missing_fields,
+                    "invalid_fields": sorted(set(invalid_fields)),
+                    "available_keys": sorted(item)[:20],
+                }
+            )
+
+    count_gaps = []
+    expected_summary_fields = {
+        "underlying_review_rows": item_row_total,
+        "batches": len(items),
+        "campaign_totals": dict(sorted(campaign_totals.items())),
+        "exchange_totals": dict(sorted(exchange_totals.items())),
+        "action_queue_totals": dict(sorted(action_queue_totals.items())),
+    }
+    for field, expected in expected_summary_fields.items():
+        if summary.get(field) != expected:
+            count_gaps.append({"field": field, "expected": expected, "actual": summary.get(field)})
+    gating_gaps = []
+    if summary.get("direct_identifier_apply_allowed_rows") != 0:
+        gating_gaps.append(
+            {
+                "field": "direct_identifier_apply_allowed_rows",
+                "expected": 0,
+                "actual": summary.get("direct_identifier_apply_allowed_rows"),
+            }
+        )
+    if summary.get("metadata_enrichment_authorized") is not False:
+        gating_gaps.append(
+            {
+                "field": "metadata_enrichment_authorized",
+                "expected": False,
+                "actual": summary.get("metadata_enrichment_authorized"),
+            }
+        )
+    return {
+        "passed": bool(items) and not policy_missing_marker_groups and not row_gaps and not count_gaps and not gating_gaps,
+        "underlying_review_rows": summary.get("underlying_review_rows"),
+        "item_row_total": item_row_total,
+        "batches": summary.get("batches"),
+        "items": len(items),
+        "scope_queue_rows": summary.get("scope_queue_rows"),
+        "figi_queue_rows": summary.get("figi_queue_rows"),
+        "figi_excluded_reviewed_source_gaps": summary.get("figi_excluded_reviewed_source_gaps"),
+        "direct_identifier_apply_allowed_rows": summary.get("direct_identifier_apply_allowed_rows"),
+        "metadata_enrichment_authorized": summary.get("metadata_enrichment_authorized"),
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "count_gaps": count_gaps,
+        "gating_gaps": gating_gaps,
+        "required_item_fields": list(CANADA_ACTION_REQUIRED_ITEM_FIELDS),
+    }
+
+
+def evaluate_b3_improvement_action_queue_gate(action_queue: dict[str, Any]) -> dict[str, Any]:
+    summary = action_queue.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    items = action_queue.get("items", [])
+    if not isinstance(items, list):
+        items = []
+    policy = summary.get("policy", {})
+    if not isinstance(policy, dict):
+        policy = {}
+    policy_text = " ".join(str(value) for value in policy.values()).lower()
+    policy_missing_marker_groups = [
+        group
+        for group, markers in B3_ACTION_POLICY_MARKER_GROUPS.items()
+        if not any(marker in policy_text for marker in markers)
+    ]
+
+    item_row_total = 0
+    campaign_totals: Counter[str] = Counter()
+    priority_totals: Counter[str] = Counter()
+    action_queue_totals: Counter[str] = Counter()
+    review_queue_totals: Counter[str] = Counter()
+    row_gaps: list[dict[str, Any]] = []
+    for index, item in enumerate(items):
+        if not isinstance(item, dict):
+            row_gaps.append({"row_index": index, "reason": "row_is_not_object"})
+            continue
+        missing_fields = [field for field in B3_ACTION_REQUIRED_ITEM_FIELDS if not item.get(field)]
+        invalid_fields: list[str] = []
+        try:
+            rows = int(item.get("rows") or 0)
+        except (TypeError, ValueError):
+            rows = 0
+            invalid_fields.append("rows")
+        if rows <= 0:
+            invalid_fields.append("rows")
+        source_gate = str(item.get("source_gate", "")).lower()
+        if not source_gate.startswith(("no ", "keep ", "close ")):
+            invalid_fields.append("source_gate")
+        evidence_required = str(item.get("evidence_required", "")).lower()
+        if not any(marker in evidence_required for marker in ("official", "scope_decision", "stronger_official")):
+            invalid_fields.append("evidence_required")
+        item_row_total += rows
+        campaign_totals[str(item.get("campaign", ""))] += rows
+        priority_totals[str(item.get("priority", ""))] += rows
+        action_queue_totals[str(item.get("action_queue", ""))] += rows
+        review_queue_totals[str(item.get("review_queue", ""))] += rows
+        if missing_fields or invalid_fields:
+            row_gaps.append(
+                {
+                    "row_index": index,
+                    "reason": "missing_or_invalid_b3_action_fields",
+                    "missing_fields": missing_fields,
+                    "invalid_fields": sorted(set(invalid_fields)),
+                    "available_keys": sorted(item)[:20],
+                }
+            )
+
+    count_gaps = []
+    expected_summary_fields = {
+        "underlying_review_rows": item_row_total,
+        "batches": len(items),
+        "campaign_totals": dict(sorted(campaign_totals.items())),
+        "priority_totals": dict(sorted(priority_totals.items())),
+        "action_queue_totals": dict(sorted(action_queue_totals.items())),
+        "review_queue_totals": dict(sorted(review_queue_totals.items())),
+    }
+    for field, expected in expected_summary_fields.items():
+        if summary.get(field) != expected:
+            count_gaps.append({"field": field, "expected": expected, "actual": summary.get(field)})
+
+    gating_gaps = []
+    if summary.get("direct_data_change_authorized") is not False:
+        gating_gaps.append(
+            {
+                "field": "direct_data_change_authorized",
+                "expected": False,
+                "actual": summary.get("direct_data_change_authorized"),
+            }
+        )
+    coverage_diagnosis = summary.get("b3_coverage_diagnosis", {})
+    if not isinstance(coverage_diagnosis, dict):
+        coverage_diagnosis = {}
+    if coverage_diagnosis.get("data_change_authorized") is not False:
+        gating_gaps.append(
+            {
+                "field": "b3_coverage_diagnosis.data_change_authorized",
+                "expected": False,
+                "actual": coverage_diagnosis.get("data_change_authorized"),
+            }
+        )
+    source_gate = str(coverage_diagnosis.get("source_gate", "")).lower()
+    if not source_gate or "no b3 isin" not in source_gate or "official source evidence" not in source_gate:
+        gating_gaps.append(
+            {
+                "field": "b3_coverage_diagnosis.source_gate",
+                "reason": "missing_no_apply_official_source_gate",
+            }
+        )
+
+    return {
+        "passed": bool(items) and not policy_missing_marker_groups and not row_gaps and not count_gaps and not gating_gaps,
+        "underlying_review_rows": summary.get("underlying_review_rows"),
+        "item_row_total": item_row_total,
+        "batches": summary.get("batches"),
+        "items": len(items),
+        "direct_data_change_authorized": summary.get("direct_data_change_authorized"),
+        "coverage_data_change_authorized": coverage_diagnosis.get("data_change_authorized"),
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "count_gaps": count_gaps,
+        "gating_gaps": gating_gaps,
+        "required_item_fields": list(B3_ACTION_REQUIRED_ITEM_FIELDS),
+    }
+
+
+def evaluate_b3_masterfile_gap_review_gate(review_report: dict[str, Any]) -> dict[str, Any]:
+    summary = review_report.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    rows = review_report.get("rows", [])
+    if not isinstance(rows, list):
+        rows = []
+    policy = summary.get("policy", {})
+    if not isinstance(policy, dict):
+        policy = {}
+    policy_text = " ".join(str(value) for value in policy.values()).lower()
+    policy_missing_marker_groups = [
+        group
+        for group, markers in B3_MASTERFILE_GAP_POLICY_MARKER_GROUPS.items()
+        if not all(marker in policy_text for marker in markers)
+    ]
+
+    counters: dict[str, Counter[str]] = {
+        "source_presence_totals": Counter(),
+        "open_review_source_presence_totals": Counter(),
+        "review_bucket_totals": Counter(),
+        "b3_resolution_queue_totals": Counter(),
+        "open_review_resolution_queue_totals": Counter(),
+        "review_strategy_totals": Counter(),
+        "apply_eligibility_totals": Counter(),
+        "verification_evidence_required_totals": Counter(),
+        "source_gap_resolution_gate_totals": Counter(),
+        "open_review_next_source_totals": Counter(),
+        "open_review_evidence_path_totals": Counter(),
+    }
+    row_gaps: list[dict[str, Any]] = []
+    open_review_rows = 0
+    closed_no_data_change_rows = 0
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            row_gaps.append({"row_index": index, "reason": "row_is_not_object"})
+            continue
+        missing_fields = [
+            field
+            for field in B3_MASTERFILE_GAP_REQUIRED_ROW_FIELDS
+            if field not in row or row.get(field) is None or row.get(field) == ""
+        ]
+        invalid_fields: list[str] = []
+        if not str(row.get("listing_key", "")).startswith("B3::"):
+            invalid_fields.append("listing_key")
+        if row.get("exchange") != "B3":
+            invalid_fields.append("exchange")
+        if row.get("active_exchange_directory_match") != "false":
+            invalid_fields.append("active_exchange_directory_match")
+        source_presence = str(row.get("source_presence", ""))
+        if source_presence == "absent_from_all_b3_masterfile_sources":
+            open_review_rows += 1
+        elif source_presence == "present_only_in_non_exchange_directory_source":
+            closed_no_data_change_rows += 1
+        else:
+            invalid_fields.append("source_presence")
+        queue = str(row.get("b3_resolution_queue", ""))
+        if row.get("review_strategy") != b3_masterfile_gap_review_strategy(queue):
+            invalid_fields.append("review_strategy")
+        if row.get("recommended_next_source") != b3_masterfile_gap_recommended_next_source(queue):
+            invalid_fields.append("recommended_next_source")
+        if row.get("source_gate") != b3_masterfile_gap_source_gate(queue):
+            invalid_fields.append("source_gate")
+        if row.get("b3_listing_context") != b3_masterfile_gap_listing_context(row):
+            invalid_fields.append("b3_listing_context")
+        if row.get("official_candidate_context") != b3_masterfile_gap_official_candidate_context(row):
+            invalid_fields.append("official_candidate_context")
+        if row.get("review_gate_context") != b3_masterfile_gap_review_gate_context(row):
+            invalid_fields.append("review_gate_context")
+        if row.get("review_priority") not in B3_REVIEW_PRIORITIES:
+            invalid_fields.append("review_priority")
+        if row.get("apply_eligibility") not in {
+            "review_scope_or_parser_before_any_data_change",
+            "source_gap_keep_existing_dataset_row_until_official_active_source_evidence",
+        }:
+            invalid_fields.append("apply_eligibility")
+        evidence_required = str(row.get("verification_evidence_required", "")).lower()
+        if "official" not in evidence_required or not any(
+            marker in evidence_required for marker in ("listing_key", "scope_decision")
+        ):
+            invalid_fields.append("verification_evidence_required")
+        resolution_gate = str(row.get("source_gap_resolution_gate", "")).lower()
+        if not resolution_gate.startswith(("do_not_", "close_directory_gap_only_", "keep_", "apply_only_after_")):
+            invalid_fields.append("source_gap_resolution_gate")
+
+        counters["source_presence_totals"][source_presence] += 1
+        counters["review_bucket_totals"][str(row.get("review_bucket", ""))] += 1
+        counters["b3_resolution_queue_totals"][queue] += 1
+        counters["review_strategy_totals"][str(row.get("review_strategy", ""))] += 1
+        counters["apply_eligibility_totals"][str(row.get("apply_eligibility", ""))] += 1
+        counters["verification_evidence_required_totals"][str(row.get("verification_evidence_required", ""))] += 1
+        counters["source_gap_resolution_gate_totals"][str(row.get("source_gap_resolution_gate", ""))] += 1
+        if source_presence == "absent_from_all_b3_masterfile_sources":
+            counters["open_review_source_presence_totals"][source_presence] += 1
+            counters["open_review_resolution_queue_totals"][queue] += 1
+            counters["open_review_next_source_totals"][str(row.get("recommended_next_source", ""))] += 1
+            counters["open_review_evidence_path_totals"][str(row.get("b3_source_gap_evidence_path", ""))] += 1
+
+        if missing_fields or invalid_fields:
+            row_gaps.append(
+                {
+                    "row_index": index,
+                    "listing_key": row.get("listing_key"),
+                    "reason": "missing_or_invalid_b3_masterfile_gap_fields",
+                    "missing_fields": missing_fields,
+                    "invalid_fields": sorted(set(invalid_fields)),
+                }
+            )
+
+    count_gaps = []
+    expected_summary_fields: dict[str, Any] = {
+        "rows": len(rows),
+        "open_review_rows": open_review_rows,
+        "closed_no_data_change_rows": closed_no_data_change_rows,
+    }
+    expected_summary_fields.update({field: dict(sorted(counter.items())) for field, counter in counters.items()})
+    for field, expected in expected_summary_fields.items():
+        if summary.get(field) != expected:
+            count_gaps.append({"field": field, "expected": expected, "actual": summary.get(field)})
+
+    gating_gaps = []
+    coverage_diagnosis = summary.get("coverage_diagnosis", {})
+    if not isinstance(coverage_diagnosis, dict):
+        coverage_diagnosis = {}
+    if coverage_diagnosis.get("data_change_authorized") is not False:
+        gating_gaps.append(
+            {
+                "field": "coverage_diagnosis.data_change_authorized",
+                "expected": False,
+                "actual": coverage_diagnosis.get("data_change_authorized"),
+            }
+        )
+    coverage_source_gate = str(coverage_diagnosis.get("source_gate", "")).lower()
+    if (
+        "no b3 isin" not in coverage_source_gate
+        or "scope change" not in coverage_source_gate
+        or "official source evidence" not in coverage_source_gate
+    ):
+        gating_gaps.append(
+            {
+                "field": "coverage_diagnosis.source_gate",
+                "reason": "missing_no_apply_official_source_gate",
+            }
+        )
+
+    return {
+        "passed": bool(rows) and not policy_missing_marker_groups and not row_gaps and not count_gaps and not gating_gaps,
+        "rows": summary.get("rows"),
+        "row_count": len(rows),
+        "open_review_rows": summary.get("open_review_rows"),
+        "open_review_row_count": open_review_rows,
+        "closed_no_data_change_rows": summary.get("closed_no_data_change_rows"),
+        "closed_no_data_change_row_count": closed_no_data_change_rows,
+        "coverage_data_change_authorized": coverage_diagnosis.get("data_change_authorized"),
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "count_gaps": count_gaps,
+        "gating_gaps": gating_gaps,
+        "required_row_fields": list(B3_MASTERFILE_GAP_REQUIRED_ROW_FIELDS),
+    }
+
+
+def evaluate_b3_core_scope_review_queue_gate(review_queue: dict[str, Any]) -> dict[str, Any]:
+    summary = review_queue.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    rows = review_queue.get("rows", [])
+    if not isinstance(rows, list):
+        rows = []
+    policy = summary.get("policy", {})
+    if not isinstance(policy, dict):
+        policy = {}
+    policy_text = " ".join(str(value) for value in policy.values()).lower()
+    policy_missing_marker_groups = [
+        group
+        for group, markers in B3_CORE_SCOPE_POLICY_MARKER_GROUPS.items()
+        if not any(marker in policy_text for marker in markers)
+    ]
+
+    counters: dict[str, Counter[str]] = {
+        "scope_review_queue_totals": Counter(),
+        "gap_class_totals": Counter(),
+        "asset_type_totals": Counter(),
+        "masterfile_source_presence_totals": Counter(),
+        "listing_history_status_totals": Counter(),
+        "ohlcv_plausibility_status_totals": Counter(),
+        "verification_evidence_required_totals": Counter(),
+    }
+    row_gaps: list[dict[str, Any]] = []
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            row_gaps.append({"row_index": index, "reason": "row_is_not_object"})
+            continue
+        missing_fields = [field for field in B3_CORE_SCOPE_REQUIRED_ROW_FIELDS if not row.get(field)]
+        invalid_fields: list[str] = []
+        if row.get("exchange") != "B3":
+            invalid_fields.append("exchange")
+        if row.get("current_instrument_scope") != "core":
+            invalid_fields.append("current_instrument_scope")
+        if row.get("residual_decision") != "core_exclusion_candidate_requires_scope_review":
+            invalid_fields.append("residual_decision")
+        if row.get("scope_decision_gate") not in {
+            "decide_core_extended_or_exclude_before_identifier_or_category_work",
+            "decide_core_extended_or_exclude_before_identifier_or_listing_status_work",
+        }:
+            invalid_fields.append("scope_decision_gate")
+        evidence_required = str(row.get("verification_evidence_required", "")).lower()
+        if not any(marker in evidence_required for marker in ("official", "current_b3")) or "scope_decision" not in evidence_required:
+            invalid_fields.append("verification_evidence_required")
+        source_gate = str(row.get("source_gate", "")).lower()
+        if not source_gate.startswith(("no ", "do not ", "keep ")) or "official evidence" not in source_gate:
+            invalid_fields.append("source_gate")
+        review_context = str(row.get("review_context", ""))
+        if "scope_decision_gate=" not in review_context or "gap_class=" not in review_context:
+            invalid_fields.append("review_context")
+
+        counters["scope_review_queue_totals"][str(row.get("scope_review_queue", ""))] += 1
+        counters["gap_class_totals"][str(row.get("gap_class", ""))] += 1
+        counters["asset_type_totals"][str(row.get("asset_type", ""))] += 1
+        counters["masterfile_source_presence_totals"][str(row.get("masterfile_source_presence", ""))] += 1
+        counters["listing_history_status_totals"][str(row.get("listing_history_status", ""))] += 1
+        counters["ohlcv_plausibility_status_totals"][str(row.get("ohlcv_plausibility_status") or "not_sampled")] += 1
+        counters["verification_evidence_required_totals"][
+            str(row.get("verification_evidence_required", ""))
+        ] += 1
+
+        if missing_fields or invalid_fields:
+            row_gaps.append(
+                {
+                    "row_index": index,
+                    "listing_key": row.get("listing_key"),
+                    "reason": "missing_or_invalid_b3_core_scope_fields",
+                    "missing_fields": missing_fields,
+                    "invalid_fields": sorted(set(invalid_fields)),
+                }
+            )
+
+    count_gaps = []
+    expected_summary_fields: dict[str, Any] = {"rows": len(rows)}
+    expected_summary_fields.update({field: dict(sorted(counter.items())) for field, counter in counters.items()})
+    for field, expected in expected_summary_fields.items():
+        if summary.get(field) != expected:
+            count_gaps.append({"field": field, "expected": expected, "actual": summary.get(field)})
+
+    return {
+        "passed": bool(rows) and not policy_missing_marker_groups and not row_gaps and not count_gaps,
+        "rows": summary.get("rows"),
+        "row_count": len(rows),
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "count_gaps": count_gaps,
+        "required_row_fields": list(B3_CORE_SCOPE_REQUIRED_ROW_FIELDS),
+    }
+
+
+def evaluate_asx_scope_review_queue_gate(review_queue: dict[str, Any]) -> dict[str, Any]:
+    summary = review_queue.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    rows = review_queue.get("rows", [])
+    if not isinstance(rows, list):
+        rows = []
+    policy = summary.get("policy", {})
+    if not isinstance(policy, dict):
+        policy = {}
+    policy_text = " ".join(str(value) for value in policy.values()).lower()
+    policy_missing_marker_groups = [
+        group
+        for group, markers in ASX_SCOPE_POLICY_MARKER_GROUPS.items()
+        if not any(marker in policy_text for marker in markers)
+    ]
+
+    counters: dict[str, Counter[str]] = {
+        "scope_review_queue_totals": Counter(),
+        "asset_type_totals": Counter(),
+        "gap_class_totals": Counter(),
+        "official_source_totals": Counter(),
+        "current_scope_reason_totals": Counter(),
+        "listing_history_status_totals": Counter(),
+        "ohlcv_plausibility_status_totals": Counter(),
+        "verification_evidence_required_totals": Counter(),
+    }
+    batch_counter: Counter[tuple[str, str]] = Counter()
+    row_gaps: list[dict[str, Any]] = []
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            row_gaps.append({"row_index": index, "reason": "row_is_not_object"})
+            continue
+        missing_fields = [field for field in ASX_SCOPE_REQUIRED_ROW_FIELDS if not row.get(field)]
+        invalid_fields: list[str] = []
+        if row.get("exchange") != "ASX":
+            invalid_fields.append("exchange")
+        if row.get("current_instrument_scope") != "core":
+            invalid_fields.append("current_instrument_scope")
+        if row.get("asx_resolution_queue") != "core_exclusion_candidate_identifier_scope_review":
+            invalid_fields.append("asx_resolution_queue")
+        if row.get("scope_decision_gate") != "decide_core_extended_or_exclude_before_asx_identifier_or_category_enrichment":
+            invalid_fields.append("scope_decision_gate")
+        evidence_required = str(row.get("verification_evidence_required", "")).lower()
+        if not any(marker in evidence_required for marker in ("official_asx", "current_active_or_inactive_official_asx")):
+            invalid_fields.append("verification_evidence_required")
+        if "scope_decision" not in evidence_required:
+            invalid_fields.append("verification_evidence_required")
+        source_gate = str(row.get("source_gate", "")).lower()
+        if not source_gate.startswith(("no ", "do not ")) or "evidence" not in source_gate:
+            invalid_fields.append("source_gate")
+        review_context = str(row.get("review_context", ""))
+        if "scope_decision_gate=" not in review_context or "gap_class=" not in review_context:
+            invalid_fields.append("review_context")
+
+        scope_queue = str(row.get("scope_review_queue", ""))
+        official_sources = str(row.get("official_masterfile_sources", ""))
+        official_source_values = official_sources.split("|") if official_sources else ["none"]
+        counters["scope_review_queue_totals"][scope_queue] += 1
+        counters["asset_type_totals"][str(row.get("asset_type", ""))] += 1
+        counters["gap_class_totals"][str(row.get("gap_class", ""))] += 1
+        for source in official_source_values:
+            counters["official_source_totals"][source] += 1
+            batch_counter[(scope_queue, source)] += 1
+        counters["current_scope_reason_totals"][str(row.get("current_scope_reason") or "missing_scope_reason")] += 1
+        counters["listing_history_status_totals"][str(row.get("listing_history_status") or "missing_listing_history_row")] += 1
+        counters["ohlcv_plausibility_status_totals"][str(row.get("ohlcv_plausibility_status") or "not_sampled")] += 1
+        counters["verification_evidence_required_totals"][
+            str(row.get("verification_evidence_required", ""))
+        ] += 1
+
+        if missing_fields or invalid_fields:
+            row_gaps.append(
+                {
+                    "row_index": index,
+                    "listing_key": row.get("listing_key"),
+                    "reason": "missing_or_invalid_asx_scope_fields",
+                    "missing_fields": missing_fields,
+                    "invalid_fields": sorted(set(invalid_fields)),
+                }
+            )
+
+    count_gaps = []
+    expected_summary_fields: dict[str, Any] = {"rows": len(rows)}
+    expected_summary_fields.update({field: dict(sorted(counter.items())) for field, counter in counters.items()})
+    for field, expected in expected_summary_fields.items():
+        if summary.get(field) != expected:
+            count_gaps.append({"field": field, "expected": expected, "actual": summary.get(field)})
+
+    batch_gaps = []
+    top_batches = summary.get("top_scope_review_batches", [])
+    if not isinstance(top_batches, list):
+        top_batches = []
+    expected_batches = {
+        (queue, source): count
+        for (queue, source), count in sorted(batch_counter.items(), key=lambda item: (-item[1], item[0][0], item[0][1]))[
+            :20
+        ]
+    }
+    actual_batches = {
+        (str(batch.get("scope_review_queue", "")), str(batch.get("official_source", ""))): batch.get("rows")
+        for batch in top_batches
+        if isinstance(batch, dict)
+    }
+    if actual_batches != expected_batches:
+        batch_gaps.append({"field": "top_scope_review_batches", "expected": expected_batches, "actual": actual_batches})
+    for index, batch in enumerate(top_batches):
+        if not isinstance(batch, dict):
+            batch_gaps.append({"row_index": index, "reason": "batch_is_not_object"})
+            continue
+        missing_fields = [
+            field
+            for field in ("scope_review_queue", "official_source", "rows", "verification_evidence_required", "recommended_next_source", "source_gate")
+            if not batch.get(field)
+        ]
+        source_gate = str(batch.get("source_gate", "")).lower()
+        if not source_gate.startswith(("no ", "do not ")) or "evidence" not in source_gate:
+            missing_fields.append("source_gate")
+        if missing_fields:
+            batch_gaps.append({"row_index": index, "missing_or_invalid_fields": sorted(set(missing_fields))})
+
+    return {
+        "passed": bool(rows) and not policy_missing_marker_groups and not row_gaps and not count_gaps and not batch_gaps,
+        "rows": summary.get("rows"),
+        "row_count": len(rows),
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "count_gaps": count_gaps,
+        "batch_gaps": batch_gaps[:20],
+        "required_row_fields": list(ASX_SCOPE_REQUIRED_ROW_FIELDS),
+    }
+
+
+def evaluate_canada_scope_review_queue_gate(review_queue: dict[str, Any]) -> dict[str, Any]:
+    summary = review_queue.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    rows = review_queue.get("rows", [])
+    if not isinstance(rows, list):
+        rows = []
+    policy = summary.get("policy", {})
+    if not isinstance(policy, dict):
+        policy = {}
+    policy_text = " ".join(str(value) for value in policy.values()).lower()
+    policy_missing_marker_groups = [
+        group
+        for group, markers in CANADA_SCOPE_POLICY_MARKER_GROUPS.items()
+        if not any(marker in policy_text for marker in markers)
+    ]
+
+    counters: dict[str, Counter[str]] = {
+        "scope_review_queue_totals": Counter(),
+        "exchange_totals": Counter(),
+        "asset_type_totals": Counter(),
+        "source_gap_class_totals": Counter(),
+        "official_source_totals": Counter(),
+        "current_scope_reason_totals": Counter(),
+        "listing_history_status_totals": Counter(),
+        "ohlcv_plausibility_status_totals": Counter(),
+        "verification_evidence_required_totals": Counter(),
+    }
+    batch_counter: Counter[tuple[str, str, str]] = Counter()
+    row_gaps: list[dict[str, Any]] = []
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            row_gaps.append({"row_index": index, "reason": "row_is_not_object"})
+            continue
+        missing_fields = [field for field in CANADA_SCOPE_REQUIRED_ROW_FIELDS if not row.get(field)]
+        invalid_fields: list[str] = []
+        exchange = str(row.get("exchange", ""))
+        if exchange not in CANADA_SCOPE_EXCHANGES:
+            invalid_fields.append("exchange")
+        if row.get("current_instrument_scope") != "core":
+            invalid_fields.append("current_instrument_scope")
+        if str(row.get("canada_resolution_queue", "")) not in {
+            "core_exclusion_candidate_identifier_scope_review",
+            "core_exclusion_candidate_metadata_scope_review",
+            "core_exclusion_candidate_scope_review",
+        }:
+            invalid_fields.append("canada_resolution_queue")
+        if row.get("scope_decision_gate") != "decide_core_extended_or_exclude_before_canada_identifier_or_metadata_enrichment":
+            invalid_fields.append("scope_decision_gate")
+        evidence_required = str(row.get("verification_evidence_required", "")).lower()
+        if "official" not in evidence_required or "scope_decision" not in evidence_required:
+            invalid_fields.append("verification_evidence_required")
+        source_gate = str(row.get("source_gate", "")).lower()
+        if not source_gate.startswith(("no ", "do not ")) or "evidence" not in source_gate and "proven" not in source_gate:
+            invalid_fields.append("source_gate")
+        review_context = str(row.get("review_context", ""))
+        if "scope_decision_gate=" not in review_context or "source_gap_classes=" not in review_context:
+            invalid_fields.append("review_context")
+
+        scope_queue = str(row.get("scope_review_queue", ""))
+        official_sources = str(row.get("official_masterfile_sources", ""))
+        official_source_values = official_sources.split("|") if official_sources else ["none"]
+        source_gap_classes = str(row.get("source_gap_classes", ""))
+        source_gap_values = source_gap_classes.split("|") if source_gap_classes else ["none"]
+        counters["scope_review_queue_totals"][scope_queue] += 1
+        counters["exchange_totals"][exchange] += 1
+        counters["asset_type_totals"][str(row.get("asset_type", ""))] += 1
+        for gap_class in source_gap_values:
+            counters["source_gap_class_totals"][gap_class] += 1
+        for source in official_source_values:
+            counters["official_source_totals"][source] += 1
+            batch_counter[(scope_queue, exchange, source)] += 1
+        counters["current_scope_reason_totals"][str(row.get("current_scope_reason") or "missing_scope_reason")] += 1
+        counters["listing_history_status_totals"][str(row.get("listing_history_status") or "missing_listing_history_row")] += 1
+        counters["ohlcv_plausibility_status_totals"][str(row.get("ohlcv_plausibility_status") or "not_sampled")] += 1
+        counters["verification_evidence_required_totals"][
+            str(row.get("verification_evidence_required", ""))
+        ] += 1
+
+        if missing_fields or invalid_fields:
+            row_gaps.append(
+                {
+                    "row_index": index,
+                    "listing_key": row.get("listing_key"),
+                    "reason": "missing_or_invalid_canada_scope_fields",
+                    "missing_fields": missing_fields,
+                    "invalid_fields": sorted(set(invalid_fields)),
+                }
+            )
+
+    count_gaps = []
+    expected_summary_fields: dict[str, Any] = {"rows": len(rows)}
+    expected_summary_fields.update({field: dict(sorted(counter.items())) for field, counter in counters.items()})
+    for field, expected in expected_summary_fields.items():
+        if summary.get(field) != expected:
+            count_gaps.append({"field": field, "expected": expected, "actual": summary.get(field)})
+
+    batch_gaps = []
+    top_batches = summary.get("top_scope_review_batches", [])
+    if not isinstance(top_batches, list):
+        top_batches = []
+    expected_batches = {
+        (queue, exchange, source): count
+        for (queue, exchange, source), count in sorted(
+            batch_counter.items(), key=lambda item: (-item[1], item[0][0], item[0][1], item[0][2])
+        )[:20]
+    }
+    actual_batches = {
+        (
+            str(batch.get("scope_review_queue", "")),
+            str(batch.get("exchange", "")),
+            str(batch.get("official_source", "")),
+        ): batch.get("rows")
+        for batch in top_batches
+        if isinstance(batch, dict)
+    }
+    if actual_batches != expected_batches:
+        batch_gaps.append({"field": "top_scope_review_batches", "expected": expected_batches, "actual": actual_batches})
+    for index, batch in enumerate(top_batches):
+        if not isinstance(batch, dict):
+            batch_gaps.append({"row_index": index, "reason": "batch_is_not_object"})
+            continue
+        missing_fields = [
+            field
+            for field in (
+                "scope_review_queue",
+                "exchange",
+                "official_source",
+                "rows",
+                "verification_evidence_required",
+                "recommended_next_source",
+                "source_gate",
+            )
+            if not batch.get(field)
+        ]
+        source_gate = str(batch.get("source_gate", "")).lower()
+        if not source_gate.startswith(("no ", "do not ")) or ("evidence" not in source_gate and "proven" not in source_gate):
+            missing_fields.append("source_gate")
+        if missing_fields:
+            batch_gaps.append({"row_index": index, "missing_or_invalid_fields": sorted(set(missing_fields))})
+
+    return {
+        "passed": bool(rows) and not policy_missing_marker_groups and not row_gaps and not count_gaps and not batch_gaps,
+        "rows": summary.get("rows"),
+        "row_count": len(rows),
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "count_gaps": count_gaps,
+        "batch_gaps": batch_gaps[:20],
+        "required_row_fields": list(CANADA_SCOPE_REQUIRED_ROW_FIELDS),
+    }
+
+
+def evaluate_deepseek_isin_collision_validation_gate(validation: dict[str, Any]) -> dict[str, Any]:
+    summary = validation.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    meta = validation.get("_meta", {})
+    if not isinstance(meta, dict):
+        meta = {}
+    coverage = validation.get("coverage", {})
+    if not isinstance(coverage, dict):
+        coverage = {}
+    items = validation.get("items", [])
+    if not isinstance(items, list):
+        items = []
+    policy_text = f"{meta.get('policy', '')} {summary.get('policy', '')}".lower()
+    policy_missing_markers = [
+        marker
+        for marker in ("advisory", "authorizes no", "official listing-keyed evidence")
+        if marker not in policy_text
+    ]
+    coverage_gaps: list[dict[str, Any]] = []
+    queue_groups = int(summary.get("queue_groups") or coverage.get("queue_groups") or 0)
+    validated_groups = int(summary.get("validated_groups") or coverage.get("validation_rows") or 0)
+    validation_rows = int(coverage.get("validation_rows") or 0)
+    if summary.get("coverage_status") != "full_current_queue_coverage":
+        coverage_gaps.append(
+            {
+                "field": "summary.coverage_status",
+                "reported": summary.get("coverage_status"),
+                "expected": "full_current_queue_coverage",
+            }
+        )
+    if coverage.get("full_current_queue_coverage") is not True:
+        coverage_gaps.append(
+            {
+                "field": "coverage.full_current_queue_coverage",
+                "reported": coverage.get("full_current_queue_coverage"),
+                "expected": True,
+            }
+        )
+    if int(summary.get("errors") or 0) != 0:
+        coverage_gaps.append({"field": "summary.errors", "reported": summary.get("errors"), "expected": 0})
+    for field in ("missing_queue_isins", "stale_validation_isins", "duplicate_validation_isins"):
+        if int(summary.get(field) or coverage.get(field) or 0) != 0:
+            coverage_gaps.append(
+                {
+                    "field": field,
+                    "reported": summary.get(field, coverage.get(field)),
+                    "expected": 0,
+                }
+            )
+    if queue_groups <= 0:
+        coverage_gaps.append({"field": "queue_groups", "reported": queue_groups, "expected": ">0"})
+    if validated_groups != queue_groups:
+        coverage_gaps.append({"field": "validated_groups", "reported": validated_groups, "expected": queue_groups})
+    if validation_rows and validation_rows != queue_groups:
+        coverage_gaps.append({"field": "coverage.validation_rows", "reported": validation_rows, "expected": queue_groups})
+    if len(items) != queue_groups:
+        coverage_gaps.append({"field": "items", "reported": len(items), "expected": queue_groups})
+    missing_row_gates = [
+        str(row.get("isin", ""))
+        for row in items
+        if isinstance(row, dict)
+        and (
+            "triage only" not in str(row.get("review_gate", "")).lower()
+            or "official listing-keyed identifier evidence" not in str(row.get("review_gate", "")).lower()
+        )
+    ]
+    return {
+        "passed": not coverage_gaps and not policy_missing_markers and not missing_row_gates,
+        "queue_groups": queue_groups,
+        "validated_groups": validated_groups,
+        "items": len(items),
+        "coverage_status": summary.get("coverage_status"),
+        "coverage_gaps": coverage_gaps,
+        "policy_missing_markers": policy_missing_markers,
+        "missing_row_gate_isins": missing_row_gates[:20],
+        "missing_row_gate_count": len(missing_row_gates),
+    }
+
+
+def evaluate_isin_identity_collision_gate(review_queue: dict[str, Any]) -> dict[str, Any]:
+    summary = review_queue.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    meta = review_queue.get("_meta", {})
+    if not isinstance(meta, dict):
+        meta = {}
+    items = review_queue.get("items", [])
+    if not isinstance(items, list):
+        items = []
+    advisory_policy = summary.get("advisory_policy", {})
+    if not isinstance(advisory_policy, dict):
+        advisory_policy = {}
+
+    collision_groups = int(summary.get("collision_groups") or 0)
+    review_required_groups = int(advisory_policy.get("review_required_groups") or 0)
+    source_gate = str(advisory_policy.get("source_gate", ""))
+    meta_policy = str(meta.get("policy", ""))
+    summary_policy = str(summary.get("policy", ""))
+    combined_policy = f"{meta_policy} {summary_policy}".lower()
+    row_policy_gaps = [
+        row.get("isin", "")
+        for row in items
+        if row.get("review_queue") != "manual_isin_identity_review"
+        or row.get("closure_status") != "open_needs_official_identifier_evidence"
+        or "official listing-keyed identifier evidence" not in str(row.get("review_gate", ""))
+    ]
+    policy_missing_markers = [
+        marker
+        for marker in ("review", "official", "listing-keyed")
+        if marker not in combined_policy
+    ]
+    advisory_gaps: list[dict[str, Any]] = []
+    if int(summary.get("direct_identifier_apply_allowed_rows") or 0) != 0:
+        advisory_gaps.append(
+            {
+                "field": "summary.direct_identifier_apply_allowed_rows",
+                "reported": summary.get("direct_identifier_apply_allowed_rows"),
+                "expected": 0,
+            }
+        )
+    if int(advisory_policy.get("direct_identifier_apply_allowed_rows") or 0) != 0:
+        advisory_gaps.append(
+            {
+                "field": "advisory_policy.direct_identifier_apply_allowed_rows",
+                "reported": advisory_policy.get("direct_identifier_apply_allowed_rows"),
+                "expected": 0,
+            }
+        )
+    if advisory_policy.get("identity_change_authorized") is not False:
+        advisory_gaps.append(
+            {
+                "field": "advisory_policy.identity_change_authorized",
+                "reported": advisory_policy.get("identity_change_authorized"),
+                "expected": False,
+            }
+        )
+    if review_required_groups != collision_groups:
+        advisory_gaps.append(
+            {
+                "field": "advisory_policy.review_required_groups",
+                "reported": review_required_groups,
+                "expected": collision_groups,
+            }
+        )
+    source_gate_missing_markers = [
+        marker
+        for marker in ("advisory only", "official identifier evidence", "reviewer approval")
+        if marker not in source_gate.lower()
+    ]
+    return {
+        "passed": (
+            collision_groups > 0
+            and len(items) == collision_groups
+            and int(summary.get("open_groups") or 0) == collision_groups
+            and int(summary.get("closed_groups") or 0) == 0
+            and not advisory_gaps
+            and not policy_missing_markers
+            and not source_gate_missing_markers
+            and not row_policy_gaps
+        ),
+        "collision_groups": collision_groups,
+        "items": len(items),
+        "open_groups": int(summary.get("open_groups") or 0),
+        "closed_groups": int(summary.get("closed_groups") or 0),
+        "advisory_gaps": advisory_gaps,
+        "policy_missing_markers": policy_missing_markers,
+        "source_gate_missing_markers": source_gate_missing_markers,
+        "row_policy_gap_isins": row_policy_gaps[:20],
+        "row_policy_gap_count": len(row_policy_gaps),
+    }
+
+
+COMPLETION_BACKLOG_ALLOWED_SAFE_ACTIONS = {
+    "candidate_for_official_followup",
+    "needs_official_evidence",
+}
+
+
+def evaluate_completion_backlog_next_actions(completion_backlog: dict[str, Any]) -> dict[str, Any]:
+    summary = completion_backlog.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    next_actions = summary.get("next_actions", [])
+    if not isinstance(next_actions, list):
+        next_actions = []
+    invalid_safe_actions: list[str] = []
+    missing_fields: dict[str, list[str]] = {}
+    invalid_counts: list[str] = []
+    invalid_review_flags: list[str] = []
+    invalid_scripts: list[str] = []
+    invalid_target_fields: dict[str, str] = {}
+    direct_apply_markers: list[str] = []
+    expected_targets = {
+        "missing_isin_primary": "isin",
+        "missing_sector_stock": "stock_sector",
+        "missing_etf_category": "etf_category",
+    }
+    for index, action in enumerate(next_actions, start=1):
+        if not isinstance(action, dict):
+            missing_fields[f"row_{index}"] = ["action"]
+            continue
+        key = str(action.get("exchange") or f"row_{index}")
+        safe_action = str(action.get("safe_action") or "")
+        if safe_action not in COMPLETION_BACKLOG_ALLOWED_SAFE_ACTIONS:
+            invalid_safe_actions.append(key)
+        haystack = " ".join(
+            str(action.get(field) or "")
+            for field in ("safe_action", "why_next", "recommended_source", "confidence_policy", "script")
+        ).lower()
+        if "direct_apply" in haystack or "direct apply" in haystack:
+            direct_apply_markers.append(key)
+        missing = [
+            field
+            for field in (
+                "safe_action",
+                "exchange",
+                "field",
+                "target_field",
+                "missing_count",
+                "recommended_source",
+                "script",
+                "review_needed",
+                "confidence_policy",
+                "why_next",
+            )
+            if field not in action
+        ]
+        if missing:
+            missing_fields[key] = missing
+        missing_count = action.get("missing_count")
+        if not isinstance(missing_count, int) or isinstance(missing_count, bool) or missing_count <= 0:
+            invalid_counts.append(key)
+        if not isinstance(action.get("review_needed"), bool):
+            invalid_review_flags.append(key)
+        script = str(action.get("script") or "")
+        if not script.startswith("scripts/"):
+            invalid_scripts.append(key)
+        field = str(action.get("field") or "")
+        expected_target = expected_targets.get(field)
+        if expected_target and action.get("target_field") != expected_target:
+            invalid_target_fields[key] = str(action.get("target_field") or "")
+    return {
+        "passed": (
+            bool(next_actions)
+            and not invalid_safe_actions
+            and not missing_fields
+            and not invalid_counts
+            and not invalid_review_flags
+            and not invalid_scripts
+            and not invalid_target_fields
+            and not direct_apply_markers
+        ),
+        "next_actions": len(next_actions),
+        "allowed_safe_actions": sorted(COMPLETION_BACKLOG_ALLOWED_SAFE_ACTIONS),
+        "invalid_safe_actions": invalid_safe_actions,
+        "missing_fields": missing_fields,
+        "invalid_counts": invalid_counts,
+        "invalid_review_flags": invalid_review_flags,
+        "invalid_scripts": invalid_scripts,
+        "invalid_target_fields": invalid_target_fields,
+        "direct_apply_markers": direct_apply_markers,
     }
 
 
@@ -3911,6 +5790,181 @@ def evaluate_source_gap_traceability(source_gap_report: dict[str, Any]) -> dict[
     }
 
 
+def evaluate_source_refresh_queue_gate(report: dict[str, Any]) -> dict[str, Any]:
+    meta = report.get("_meta", {})
+    if not isinstance(meta, dict):
+        meta = {}
+    summary = report.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    items = report.get("items", [])
+    if not isinstance(items, list):
+        items = []
+    policy_text = str(meta.get("policy", "")).lower()
+    policy_missing_marker_groups = [
+        group
+        for group, markers in SOURCE_REFRESH_QUEUE_POLICY_MARKER_GROUPS.items()
+        if not all(marker in policy_text for marker in markers)
+    ]
+
+    counters: dict[str, Counter[str]] = {
+        "priority_totals": Counter(),
+        "queue_totals": Counter(),
+        "mode_totals": Counter(),
+        "reference_scope_totals": Counter(),
+        "freshness_status_totals": Counter(),
+        "evidence_required_totals": Counter(),
+    }
+    row_gaps: list[dict[str, Any]] = []
+    for index, item in enumerate(items):
+        if not isinstance(item, dict):
+            row_gaps.append({"row_index": index, "reason": "row_is_not_object"})
+            continue
+        missing_fields = [
+            field
+            for field in SOURCE_REFRESH_QUEUE_REQUIRED_ITEM_FIELDS
+            if field not in item or item.get(field) is None or item.get(field) == ""
+        ]
+        invalid_fields: list[str] = []
+        if not is_valid_iso_utc_timestamp(str(item.get("generated_at", ""))):
+            invalid_fields.append("generated_at")
+        if not is_nonnegative_number(item.get("age_hours")):
+            invalid_fields.append("age_hours")
+        if item.get("freshness_status") not in {"fresh", "old", "stale", "unknown"}:
+            invalid_fields.append("freshness_status")
+        if item.get("mode") not in SOURCE_REFRESH_QUEUE_ALLOWED_MODES:
+            invalid_fields.append("mode")
+        if item.get("mode") == "unavailable" and not item.get("last_error"):
+            invalid_fields.append("last_error")
+        if item.get("refresh_priority") not in {"P1", "P2", "P3", "P4"}:
+            invalid_fields.append("refresh_priority")
+        refresh_queue = str(item.get("refresh_queue", ""))
+        expected_strategy, expected_evidence = source_refresh_strategy_for(refresh_queue)
+        if expected_strategy == "manual_source_refresh_review_required":
+            invalid_fields.append("refresh_queue")
+        if item.get("review_strategy") != expected_strategy:
+            invalid_fields.append("review_strategy")
+        if item.get("evidence_required") != expected_evidence:
+            invalid_fields.append("evidence_required")
+        expected_action = "no_refresh_needed" if refresh_queue == "fresh_no_refresh_needed" else refresh_queue
+        if item.get("recommended_refresh_action") != expected_action:
+            invalid_fields.append("recommended_refresh_action")
+        source_gate = str(item.get("source_gate", "")).lower()
+        if not source_gate.startswith(("keep ", "do not ", "no ")) or not any(
+            marker in source_gate for marker in ("official", "evidence", "documented")
+        ):
+            invalid_fields.append("source_gate")
+        freshness_context = str(item.get("freshness_review_context", ""))
+        for marker in (
+            f"generated_at={item.get('generated_at', '')}",
+            "age_bucket=",
+            f"freshness_status={item.get('freshness_status', '')}",
+            f"refresh_priority={item.get('refresh_priority', '')}",
+        ):
+            if marker not in freshness_context:
+                invalid_fields.append("freshness_review_context")
+                break
+        if item.get("refresh_gate_context") != source_refresh_gate_context(item):
+            invalid_fields.append("refresh_gate_context")
+
+        counters["priority_totals"][str(item.get("refresh_priority", ""))] += 1
+        counters["queue_totals"][refresh_queue] += 1
+        counters["mode_totals"][str(item.get("mode", ""))] += 1
+        counters["reference_scope_totals"][str(item.get("reference_scope", ""))] += 1
+        counters["freshness_status_totals"][str(item.get("freshness_status", ""))] += 1
+        counters["evidence_required_totals"][str(item.get("evidence_required", ""))] += 1
+        if missing_fields or invalid_fields:
+            row_gaps.append(
+                {
+                    "row_index": index,
+                    "source_key": item.get("source_key"),
+                    "reason": "missing_or_invalid_source_refresh_queue_fields",
+                    "missing_fields": missing_fields,
+                    "invalid_fields": sorted(set(invalid_fields)),
+                }
+            )
+
+    count_gaps = []
+    expected_summary_fields: dict[str, Any] = {"rows": len(items)}
+    expected_summary_fields.update({field: dict(sorted(counter.items())) for field, counter in counters.items()})
+    for field, expected in expected_summary_fields.items():
+        if summary.get(field) != expected:
+            count_gaps.append({"field": field, "expected": expected, "actual": summary.get(field)})
+
+    batch_gaps = []
+    top_batches = summary.get("top_source_refresh_batches", [])
+    if not isinstance(top_batches, list) or not top_batches:
+        batch_gaps.append({"field": "top_source_refresh_batches", "reason": "expected_ranked_refresh_batches"})
+        top_batches = []
+    batch_source_total = 0
+    for index, batch in enumerate(top_batches):
+        if not isinstance(batch, dict):
+            batch_gaps.append({"row_index": index, "reason": "batch_is_not_object"})
+            continue
+        missing_fields = [
+            field
+            for field in (
+                "refresh_queue",
+                "reference_scope",
+                "mode",
+                "refresh_priority",
+                "source_count",
+                "total_rows",
+                "max_age_hours",
+                "review_strategy",
+                "evidence_required",
+                "recommended_next_source",
+                "source_gate",
+            )
+            if field not in batch or batch.get(field) is None or batch.get(field) == ""
+        ]
+        invalid_fields: list[str] = []
+        queue = str(batch.get("refresh_queue", ""))
+        expected_strategy, expected_evidence = source_refresh_strategy_for(queue)
+        if queue not in counters["queue_totals"]:
+            invalid_fields.append("refresh_queue")
+        if batch.get("review_strategy") != expected_strategy:
+            invalid_fields.append("review_strategy")
+        if batch.get("evidence_required") != expected_evidence:
+            invalid_fields.append("evidence_required")
+        if not isinstance(batch.get("source_count"), int) or batch.get("source_count", 0) <= 0:
+            invalid_fields.append("source_count")
+        else:
+            batch_source_total += int(batch.get("source_count") or 0)
+        if not isinstance(batch.get("total_rows"), int) or batch.get("total_rows", -1) < 0:
+            invalid_fields.append("total_rows")
+        if not is_nonnegative_number(batch.get("max_age_hours")):
+            invalid_fields.append("max_age_hours")
+        source_gate = str(batch.get("source_gate", "")).lower()
+        if not source_gate.startswith(("keep ", "do not ", "no ")) or not any(
+            marker in source_gate for marker in ("official", "evidence", "documented")
+        ):
+            invalid_fields.append("source_gate")
+        if missing_fields or invalid_fields:
+            batch_gaps.append(
+                {
+                    "row_index": index,
+                    "reason": "missing_or_invalid_source_refresh_batch_fields",
+                    "missing_fields": missing_fields,
+                    "invalid_fields": sorted(set(invalid_fields)),
+                }
+            )
+    if top_batches and batch_source_total != len(items):
+        batch_gaps.append({"field": "top_source_refresh_batches.source_count", "expected": len(items), "actual": batch_source_total})
+
+    return {
+        "passed": bool(items) and not policy_missing_marker_groups and not row_gaps and not count_gaps and not batch_gaps,
+        "rows": summary.get("rows"),
+        "item_count": len(items),
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "count_gaps": count_gaps,
+        "batch_gaps": batch_gaps[:20],
+        "required_item_fields": list(SOURCE_REFRESH_QUEUE_REQUIRED_ITEM_FIELDS),
+    }
+
+
 def evaluate_symbol_change_review_gate(symbol_changes_review: dict[str, Any]) -> dict[str, Any]:
     meta = symbol_changes_review.get("_meta", {})
     summary = symbol_changes_review.get("summary", {})
@@ -4870,6 +6924,190 @@ def evaluate_ohlcv_plausibility_gate(ohlcv_report: dict[str, Any]) -> dict[str, 
         "top_sampling_batch_gaps": top_sampling_batch_gaps,
         "required_row_keys": list(REQUIRED_OHLCV_ROW_KEYS),
         "accepted_plausibility_statuses": sorted(OHLCV_PLAUSIBILITY_STATUSES),
+    }
+
+
+def evaluate_ohlcv_warning_review_gate(warning_report: dict[str, Any]) -> dict[str, Any]:
+    meta = warning_report.get("_meta", {})
+    summary = warning_report.get("summary", {})
+    rows = warning_report.get("review_items", [])
+    if not isinstance(meta, dict):
+        meta = {}
+    if not isinstance(summary, dict):
+        summary = {}
+    if not isinstance(rows, list):
+        rows = []
+    policy_text = str(meta.get("policy", "")).lower()
+    policy_missing_marker_groups = [
+        group
+        for group, markers in OHLCV_WARNING_POLICY_MARKER_GROUPS.items()
+        if not all(marker in policy_text for marker in markers)
+    ]
+    missing_meta_keys = [
+        key
+        for key in ("generated_at", "rows", "source_files", "policy")
+        if key not in meta or meta.get(key) in ("", None, {}, [])
+    ]
+    invalid_generated_at = (
+        str(meta.get("generated_at", ""))
+        if meta.get("generated_at") and not is_valid_iso_utc_timestamp(str(meta.get("generated_at")))
+        else ""
+    )
+    row_count_mismatch = {"reported": meta.get("rows"), "actual": len(rows)} if meta.get("rows") != len(rows) else {}
+    missing_summary_keys = [
+        field
+        for field in ("review_rows", *OHLCV_WARNING_SUMMARY_COUNTER_FIELDS, "issue_type_counts", "top_official_review_batches")
+        if field not in summary
+    ]
+
+    counters: dict[str, Counter[str]] = {field: Counter() for field in OHLCV_WARNING_SUMMARY_COUNTER_FIELDS}
+    issue_counter: Counter[str] = Counter()
+    batch_counter: Counter[tuple[str, str, str]] = Counter()
+    row_gaps: list[dict[str, Any]] = []
+    forbidden_action_rows: list[dict[str, Any]] = []
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            row_gaps.append({"row_index": index, "reason": "row_is_not_object"})
+            continue
+        missing_keys = [key for key in OHLCV_WARNING_REQUIRED_ROW_KEYS if key not in row or row.get(key) in ("", None)]
+        invalid_fields: list[str] = []
+        if not str(row.get("listing_key", "")).startswith(f"{row.get('exchange', '')}::"):
+            invalid_fields.append("listing_key")
+        if row.get("plausibility_status") not in {"warn", "fail", "notice", "source_gap"}:
+            invalid_fields.append("plausibility_status")
+        score = row.get("plausibility_score")
+        if not isinstance(score, int) or isinstance(score, bool) or not 0 <= score <= 100:
+            invalid_fields.append("plausibility_score")
+        if row.get("official_review_priority") not in {"P1", "P2", "P3", "P4"}:
+            invalid_fields.append("official_review_priority")
+        if row.get("canonical_data_change_authorization") != "blocked_until_official_listing_keyed_review":
+            invalid_fields.append("canonical_data_change_authorization")
+        if row.get("official_listing_review_status") != "pending_official_listing_status_review":
+            invalid_fields.append("official_listing_review_status")
+        if row.get("official_corporate_action_review_status") != "pending_official_corporate_action_review":
+            invalid_fields.append("official_corporate_action_review_status")
+        evidence_required = str(row.get("verification_evidence_required", "")).lower()
+        if "official" not in evidence_required or "market_data" not in evidence_required:
+            invalid_fields.append("verification_evidence_required")
+        source_gate = str(row.get("source_gate", "")).lower()
+        if "review signal only" not in source_gate or "official listing-keyed evidence" not in source_gate:
+            invalid_fields.append("source_gate")
+        action = str(row.get("recommended_action", "")).lower()
+        if action != "perform_official_listing_keyed_review_before_any_canonical_change":
+            invalid_fields.append("recommended_action")
+        if any(marker in action for marker in OHLCV_FORBIDDEN_AUTOMATIC_ACTION_MARKERS):
+            forbidden_action_rows.append(
+                {
+                    "row_index": index,
+                    "listing_key": row.get("listing_key", ""),
+                    "recommended_action": row.get("recommended_action", ""),
+                }
+            )
+        review_context = str(row.get("review_context", ""))
+        for marker in (
+            f"listing_key={row.get('listing_key', '')}",
+            f"ohlcv_symbol={row.get('ohlcv_symbol', '')}",
+            f"review_bucket={row.get('ohlcv_review_bucket', '')}",
+            f"priority={row.get('official_review_priority', '')}",
+        ):
+            if marker not in review_context:
+                invalid_fields.append("review_context")
+                break
+        if missing_keys or invalid_fields:
+            row_gaps.append(
+                {
+                    "row_index": index,
+                    "listing_key": row.get("listing_key", ""),
+                    "missing_keys": missing_keys,
+                    "invalid_fields": sorted(set(invalid_fields)),
+                }
+            )
+        counters["exchange_counts"][str(row.get("exchange", ""))] += 1
+        counters["ohlcv_review_bucket_counts"][str(row.get("ohlcv_review_bucket", ""))] += 1
+        counters["official_review_priority_counts"][str(row.get("official_review_priority", ""))] += 1
+        counters["canonical_data_change_authorization_counts"][str(row.get("canonical_data_change_authorization", ""))] += 1
+        counters["official_listing_review_status_counts"][str(row.get("official_listing_review_status", ""))] += 1
+        counters["official_corporate_action_review_status_counts"][str(row.get("official_corporate_action_review_status", ""))] += 1
+        counters["official_source_locator_status_counts"][str(row.get("official_source_locator_status", ""))] += 1
+        batch_counter[
+            (
+                str(row.get("exchange", "")),
+                str(row.get("ohlcv_review_bucket", "")),
+                str(row.get("official_review_priority", "")),
+            )
+        ] += 1
+        for issue_type in str(row.get("issue_types", "")).split("|"):
+            if issue_type:
+                issue_counter[issue_type] += 1
+
+    summary_mismatches = {
+        field: compare_counter_to_reported(counter, summary.get(field))
+        for field, counter in counters.items()
+    }
+    summary_mismatches["issue_type_counts"] = compare_counter_to_reported(issue_counter, summary.get("issue_type_counts"))
+    summary_mismatches = {field: mismatch for field, mismatch in summary_mismatches.items() if mismatch}
+    if summary.get("review_rows") != len(rows):
+        summary_mismatches["review_rows"] = {"reported": summary.get("review_rows"), "actual": len(rows)}
+
+    top_batch_gaps = []
+    top_batches = summary.get("top_official_review_batches", [])
+    if not isinstance(top_batches, list) or not top_batches:
+        top_batch_gaps.append({"field": "top_official_review_batches", "reason": "expected_ranked_official_review_batches"})
+        top_batches = []
+    expected_batches = {
+        key: count
+        for key, count in sorted(batch_counter.items(), key=lambda item: (-item[1], item[0][0], item[0][1], item[0][2]))[:25]
+    }
+    actual_batches = {
+        (
+            str(batch.get("exchange", "")),
+            str(batch.get("ohlcv_review_bucket", "")),
+            str(batch.get("official_review_priority", "")),
+        ): batch.get("rows")
+        for batch in top_batches
+        if isinstance(batch, dict)
+    }
+    if actual_batches != expected_batches:
+        top_batch_gaps.append({"field": "top_official_review_batches", "expected": expected_batches, "actual": actual_batches})
+    for index, batch in enumerate(top_batches):
+        if not isinstance(batch, dict):
+            top_batch_gaps.append({"row_index": index, "reason": "batch_is_not_object"})
+            continue
+        missing_keys = [
+            key
+            for key in ("exchange", "ohlcv_review_bucket", "official_review_priority", "rows", "recommended_next_source")
+            if key not in batch or batch.get(key) in ("", None)
+        ]
+        if not isinstance(batch.get("rows"), int) or batch.get("rows", 0) <= 0:
+            missing_keys.append("rows")
+        if missing_keys:
+            top_batch_gaps.append({"row_index": index, "missing_or_invalid_keys": sorted(set(missing_keys))})
+
+    return {
+        "passed": (
+            bool(rows)
+            and not policy_missing_marker_groups
+            and not missing_meta_keys
+            and not invalid_generated_at
+            and not row_count_mismatch
+            and not missing_summary_keys
+            and not row_gaps
+            and not forbidden_action_rows
+            and not summary_mismatches
+            and not top_batch_gaps
+        ),
+        "rows": len(rows),
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+        "missing_meta_keys": missing_meta_keys,
+        "invalid_generated_at": invalid_generated_at,
+        "row_count_mismatch": row_count_mismatch,
+        "missing_summary_keys": missing_summary_keys,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "forbidden_action_rows": forbidden_action_rows[:20],
+        "summary_mismatches": summary_mismatches,
+        "top_batch_gaps": top_batch_gaps[:20],
+        "required_row_keys": list(OHLCV_WARNING_REQUIRED_ROW_KEYS),
     }
 
 
@@ -15038,8 +17276,7 @@ def report_apply_traceability_gaps(path: Path) -> list[dict[str, Any]]:
     return gaps
 
 
-def report_supplement_traceability_gaps(path: Path) -> list[dict[str, Any]]:
-    payload = load_json(path)
+def supplement_traceability_gaps(payload: dict[str, Any]) -> list[dict[str, Any]]:
     rows = first_review_row_container(payload)
     reported_count = report_row_count(payload)
     gaps: list[dict[str, Any]] = []
@@ -15090,6 +17327,10 @@ def report_supplement_traceability_gaps(path: Path) -> list[dict[str, Any]]:
                 }
             )
     return gaps
+
+
+def report_supplement_traceability_gaps(path: Path) -> list[dict[str, Any]]:
+    return supplement_traceability_gaps(load_json(path))
 
 
 def report_review_identity_gaps(path: Path) -> list[dict[str, Any]]:
@@ -15670,27 +17911,376 @@ def evaluate_supplement_artifact_traceability(campaigns: dict[str, Any], reports
     }
 
 
+def evaluate_financialdata_supplement_review_gate(review: dict[str, Any]) -> dict[str, Any]:
+    summary = review.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    rows = first_review_row_container(review)
+    policy = summary.get("policy", {})
+    if not isinstance(policy, dict):
+        policy = {}
+
+    policy_text = " ".join(str(value) for value in policy.values()).lower()
+    policy_missing_marker_groups = [
+        group
+        for group, markers in FINANCIALDATA_SUPPLEMENT_POLICY_MARKER_GROUPS.items()
+        if not any(marker in policy_text for marker in markers)
+    ]
+    count_gaps: list[dict[str, Any]] = []
+    for field in FINANCIALDATA_SUPPLEMENT_SUMMARY_COUNT_FIELDS:
+        counts = summary.get(field, {})
+        if not isinstance(counts, dict) or sum(int(value) for value in counts.values()) != len(rows):
+            count_gaps.append(
+                {
+                    "field": field,
+                    "expected": len(rows),
+                    "actual": sum(int(value) for value in counts.values()) if isinstance(counts, dict) else None,
+                }
+            )
+    supplement_rows_by_exchange = summary.get("supplement_rows_by_exchange", {})
+    supplement_rows_by_exchange_total = (
+        sum(int(value) for value in supplement_rows_by_exchange.values())
+        if isinstance(supplement_rows_by_exchange, dict)
+        else None
+    )
+    reported_review_rows = summary.get("rows", summary.get("input_rows"))
+    supplement_row_count_gaps = []
+    for field in ("preserved_supplement_rows", "supplement_rows"):
+        if summary.get(field) != supplement_rows_by_exchange_total:
+            supplement_row_count_gaps.append(
+                {
+                    "field": field,
+                    "expected": supplement_rows_by_exchange_total,
+                    "actual": summary.get(field),
+                }
+            )
+
+    row_gaps = supplement_traceability_gaps(review)
+    return {
+        "passed": (
+            bool(rows)
+            and reported_review_rows == len(rows)
+            and summary.get("input_rows") == len(rows)
+            and not policy_missing_marker_groups
+            and not count_gaps
+            and not supplement_row_count_gaps
+            and not row_gaps
+        ),
+        "rows": reported_review_rows,
+        "input_rows": summary.get("input_rows"),
+        "review_items": len(rows),
+        "preserved_supplement_rows": summary.get("preserved_supplement_rows"),
+        "supplement_rows": summary.get("supplement_rows"),
+        "supplement_rows_by_exchange_total": supplement_rows_by_exchange_total,
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+        "count_gaps": count_gaps,
+        "supplement_row_count_gaps": supplement_row_count_gaps,
+        "traceability_gap_count": len(row_gaps),
+        "traceability_gaps": row_gaps[:20],
+        "required_row_keys": list(SUPPLEMENT_ROW_REQUIRED_KEYS),
+        "required_official_evidence_for_accept_or_preserve": list(SUPPLEMENT_OFFICIAL_EVIDENCE_KEYS),
+    }
+
+
+def evaluate_official_name_mismatch_backfill_gate(report: dict[str, Any]) -> dict[str, Any]:
+    summary = report.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    rows = report.get("items", [])
+    if not isinstance(rows, list):
+        rows = []
+    policy = summary.get("policy", {})
+    if not isinstance(policy, dict):
+        policy = {}
+    policy_text = " ".join(str(value) for value in policy.values()).lower()
+    policy_missing_marker_groups = [
+        group
+        for group, markers in OFFICIAL_NAME_MISMATCH_POLICY_MARKER_GROUPS.items()
+        if not any(marker in policy_text for marker in markers)
+    ]
+    supported_exchanges = set(summary.get("supported_exchanges", []))
+    accepted_by_exchange = summary.get("accepted_by_exchange", {})
+    skipped_by_exchange = summary.get("skipped_by_exchange", {})
+    if not isinstance(accepted_by_exchange, dict):
+        accepted_by_exchange = {}
+    if not isinstance(skipped_by_exchange, dict):
+        skipped_by_exchange = {}
+
+    accepted_counter: Counter[str] = Counter()
+    skipped_counter: Counter[str] = Counter()
+    row_gaps: list[dict[str, Any]] = []
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            row_gaps.append({"row_index": index, "reason": "row_is_not_object"})
+            continue
+        missing_fields = [field for field in OFFICIAL_NAME_MISMATCH_REQUIRED_ROW_FIELDS if field not in row]
+        invalid_fields: list[str] = []
+        decision = str(row.get("decision", ""))
+        exchange = str(row.get("exchange", ""))
+        ticker = str(row.get("ticker", ""))
+        listing_key = str(row.get("listing_key", ""))
+        proposed_name = str(row.get("proposed_name", ""))
+        if decision not in {"accept", "skip"}:
+            invalid_fields.append("decision")
+        if exchange == "OTC" or exchange not in supported_exchanges:
+            invalid_fields.append("exchange")
+        if listing_key != f"{exchange}::{ticker}":
+            invalid_fields.append("listing_key")
+        if decision == "accept":
+            accepted_counter[exchange] += 1
+            if not proposed_name:
+                invalid_fields.append("proposed_name")
+            if not row.get("official_sources"):
+                invalid_fields.append("official_sources")
+            if not row.get("supporting_sources"):
+                invalid_fields.append("supporting_sources")
+            if proposed_name == row.get("current_name"):
+                invalid_fields.append("proposed_name")
+        else:
+            skipped_counter[exchange] += 1
+            if proposed_name:
+                invalid_fields.append("proposed_name")
+        if missing_fields or invalid_fields:
+            row_gaps.append(
+                {
+                    "row_index": index,
+                    "reason": "missing_or_invalid_name_mismatch_review_fields",
+                    "missing_fields": missing_fields,
+                    "invalid_fields": invalid_fields,
+                    "available_keys": sorted(row)[:20],
+                }
+            )
+
+    expected_updates = sum(accepted_counter.values())
+    count_gaps = []
+    if summary.get("rows_reviewed") != len(rows):
+        count_gaps.append({"field": "rows_reviewed", "expected": len(rows), "actual": summary.get("rows_reviewed")})
+    if summary.get("updates_emitted") != expected_updates:
+        count_gaps.append(
+            {"field": "updates_emitted", "expected": expected_updates, "actual": summary.get("updates_emitted")}
+        )
+    if dict(accepted_counter) != accepted_by_exchange:
+        count_gaps.append(
+            {"field": "accepted_by_exchange", "expected": dict(accepted_counter), "actual": accepted_by_exchange}
+        )
+    if dict(skipped_counter) != skipped_by_exchange:
+        count_gaps.append(
+            {"field": "skipped_by_exchange", "expected": dict(skipped_counter), "actual": skipped_by_exchange}
+        )
+    return {
+        "passed": (
+            bool(rows)
+            and "OTC" not in supported_exchanges
+            and not policy_missing_marker_groups
+            and not row_gaps
+            and not count_gaps
+        ),
+        "rows_reviewed": summary.get("rows_reviewed"),
+        "items": len(rows),
+        "updates_emitted": summary.get("updates_emitted"),
+        "accepted_rows": expected_updates,
+        "supported_exchange_count": len(supported_exchanges),
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "count_gaps": count_gaps,
+        "required_row_fields": list(OFFICIAL_NAME_MISMATCH_REQUIRED_ROW_FIELDS),
+    }
+
+
+def evaluate_source_inventory_gap_gate(report: dict[str, Any]) -> dict[str, Any]:
+    summary = report.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    rows = report.get("rows", [])
+    if not isinstance(rows, list):
+        rows = []
+    policy = summary.get("policy", {})
+    if not isinstance(policy, dict):
+        policy = {}
+    policy_text = " ".join(str(value) for value in policy.values()).lower()
+    policy_missing_marker_groups = [
+        group
+        for group, markers in SOURCE_INVENTORY_POLICY_MARKER_GROUPS.items()
+        if not any(marker in policy_text for marker in markers)
+    ]
+
+    current_status_counts = Counter()
+    candidate_scope_counts = Counter()
+    candidate_key_counts = Counter()
+    row_gaps: list[dict[str, Any]] = []
+    seen_priority_ranks: set[int] = set()
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            row_gaps.append({"row_index": index, "reason": "row_is_not_object"})
+            continue
+        missing_fields = [field for field in SOURCE_INVENTORY_REQUIRED_ROW_FIELDS if field not in row]
+        invalid_fields: list[str] = []
+        rank = row.get("priority_rank")
+        try:
+            rank_int = int(rank)
+            seen_priority_ranks.add(rank_int)
+        except (TypeError, ValueError):
+            invalid_fields.append("priority_rank")
+        for field in ("tickers", "missing_isin", "missing_sector_or_category", "unresolved_findings", "official_source_count"):
+            try:
+                if int(row.get(field, 0)) < 0:
+                    invalid_fields.append(field)
+            except (TypeError, ValueError):
+                invalid_fields.append(field)
+        if row.get("implementation_status") not in {"implemented", "todo", "blocked", "review"}:
+            invalid_fields.append("implementation_status")
+        if row.get("priority") not in {"high", "medium", "low"}:
+            invalid_fields.append("priority")
+        if row.get("current_status") not in SOURCE_INVENTORY_ALLOWED_CURRENT_STATUSES:
+            invalid_fields.append("current_status")
+        if row.get("candidate_scope") not in SOURCE_INVENTORY_ALLOWED_CANDIDATE_SCOPES:
+            invalid_fields.append("candidate_scope")
+        if not row.get("candidate_key"):
+            invalid_fields.append("candidate_key")
+        if not row.get("provider"):
+            invalid_fields.append("provider")
+        if row.get("source_mode", "") not in SOURCE_INVENTORY_ALLOWED_SOURCE_MODES:
+            invalid_fields.append("source_mode")
+        if not isinstance(row.get("review_needed"), bool):
+            invalid_fields.append("review_needed")
+        if str(row.get("expected_format", "")) in {"", "unknown"}:
+            invalid_fields.append("expected_format")
+        if not str(row.get("source_url", "")).startswith("https://"):
+            invalid_fields.append("source_url")
+        if str(row.get("current_status", "")) in {"missing", "official_partial", "manual_only"}:
+            if not row.get("candidate_scope"):
+                invalid_fields.append("candidate_scope")
+        if row.get("source_mode") == "unavailable":
+            source_refresh_queue = row.get("source_refresh_queue")
+            if source_refresh_queue != "restore_or_replace_unavailable_source_before_data_fill":
+                invalid_fields.append("source_refresh_queue")
+            if not row.get("source_last_error"):
+                invalid_fields.append("source_last_error")
+        if str(row.get("review_needed", "")).lower() in {"true", "1"} and not row.get("blocker"):
+            invalid_fields.append("blocker")
+        current_status_counts[str(row.get("current_status", ""))] += 1
+        candidate_scope_counts[str(row.get("candidate_scope", ""))] += 1
+        candidate_key_counts[str(row.get("candidate_key", ""))] += 1
+        if missing_fields or invalid_fields:
+            row_gaps.append(
+                {
+                    "row_index": index,
+                    "reason": "missing_or_invalid_source_inventory_fields",
+                    "missing_fields": missing_fields,
+                    "invalid_fields": invalid_fields,
+                    "available_keys": sorted(row)[:20],
+                }
+            )
+
+    expected_priority_ranks = set(range(1, len(rows) + 1))
+    count_gaps = []
+    expected_summary_counts = {
+        "rows": len(rows),
+        "todo_rows": sum(1 for row in rows if isinstance(row, dict) and row.get("implementation_status") != "implemented"),
+        "current_scope_candidates": sum(
+            1 for row in rows if isinstance(row, dict) and row.get("current_status") != "not_in_current_universe"
+        ),
+        "global_expansion_candidates": sum(
+            1
+            for row in rows
+            if isinstance(row, dict)
+            and row.get("current_status") == "not_in_current_universe"
+            and row.get("candidate_scope") != "normalization_alias"
+        ),
+        "high_priority_rows": sum(1 for row in rows if isinstance(row, dict) and row.get("priority") == "high"),
+    }
+    for field, expected in expected_summary_counts.items():
+        if summary.get(field) != expected:
+            count_gaps.append({"field": field, "expected": expected, "actual": summary.get(field)})
+    if summary.get("current_status_counts") != dict(sorted(current_status_counts.items())):
+        count_gaps.append(
+            {
+                "field": "current_status_counts",
+                "expected": dict(sorted(current_status_counts.items())),
+                "actual": summary.get("current_status_counts"),
+            }
+        )
+    if summary.get("candidate_scope_counts") != dict(sorted(candidate_scope_counts.items())):
+        count_gaps.append(
+            {
+                "field": "candidate_scope_counts",
+                "expected": dict(sorted(candidate_scope_counts.items())),
+                "actual": summary.get("candidate_scope_counts"),
+            }
+        )
+    duplicate_candidate_keys = sorted(key for key, count in candidate_key_counts.items() if key and count > 1)
+    if duplicate_candidate_keys:
+        count_gaps.append(
+            {"field": "candidate_key", "reason": "duplicate_candidate_keys", "actual": duplicate_candidate_keys[:20]}
+        )
+    if seen_priority_ranks != expected_priority_ranks:
+        count_gaps.append(
+            {
+                "field": "priority_rank",
+                "expected": [1, len(rows)],
+                "actual_missing": sorted(expected_priority_ranks - seen_priority_ranks)[:20],
+                "actual_extra": sorted(seen_priority_ranks - expected_priority_ranks)[:20],
+            }
+        )
+    return {
+        "passed": bool(rows) and not policy_missing_marker_groups and not row_gaps and not count_gaps,
+        "rows": summary.get("rows"),
+        "items": len(rows),
+        "todo_rows": summary.get("todo_rows"),
+        "current_scope_candidates": summary.get("current_scope_candidates"),
+        "high_priority_rows": summary.get("high_priority_rows"),
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "count_gaps": count_gaps,
+        "required_row_fields": list(SOURCE_INVENTORY_REQUIRED_ROW_FIELDS),
+    }
+
+
 def build_payload() -> dict[str, Any]:
     generated_at = utc_now_iso()
     validation = load_json(REPORTS_DIR / "validation_report.json")
     entry_quality_gate = load_json(REPORTS_DIR / "entry_quality_gate.json")
     coverage = load_json(REPORTS_DIR / "coverage_report.json")
+    official_name_mismatch_backfill = load_json(REPORTS_DIR / "official_name_mismatch_backfill.json")
+    source_inventory_gap = load_json(REPORTS_DIR / "source_inventory_gap.json")
+    source_refresh_queue = load_json(REPORTS_DIR / "source_refresh_queue.json")
     source_gap = load_json(REPORTS_DIR / "source_gap_classification.json")
     symbol_changes_review = load_json(REPORTS_DIR / "symbol_changes_review.json")
+    otc_name_mismatch_review = load_json(REPORTS_DIR / "otc_name_mismatch_review.json")
+    otc_name_mismatch_action_queue = load_json(REPORTS_DIR / "otc_name_mismatch_action_queue.json")
     ohlcv = load_json(REPORTS_DIR / "ohlcv_plausibility.json")
+    ohlcv_warning_review = load_json(REPORTS_DIR / "ohlcv_warning_review.json")
     masterfile_collision = load_json(REPORTS_DIR / "masterfile_collision_review.json")
+    isin_identity_collision = load_json(REPORTS_DIR / "isin_identity_collision_review_queue.json")
+    financialdata_supplement_review = load_json(REPORTS_DIR / "financialdata_isin_supplements_review.json")
     otc_scope = load_json(REPORTS_DIR / "otc_scope_review.json")
     canada_residual = load_json(REPORTS_DIR / "canada_residual_review.json")
+    canada_scope_review_queue = load_json(REPORTS_DIR / "canada_scope_review_queue.json")
+    canada_improvement_action_queue = load_json(REPORTS_DIR / "canada_improvement_action_queue.json")
     canada_figi_queue = load_json(REPORTS_DIR / "canada_figi_queue.json")
     canada_figi_apply = load_json(REPORTS_DIR / "canada_figi_apply_report.json")
+    b3_masterfile_gap_review = load_json(REPORTS_DIR / "b3_masterfile_gap_review.json")
+    b3_core_scope_review_queue = load_json(REPORTS_DIR / "b3_core_scope_review_queue.json")
+    b3_improvement_action_queue = load_json(REPORTS_DIR / "b3_improvement_action_queue.json")
     b3_residual_isin = load_json(REPORTS_DIR / "b3_residual_isin_review.json")
     b3_residual_sector = load_json(REPORTS_DIR / "b3_residual_sector_review.json")
+    asx_scope_review_queue = load_json(REPORTS_DIR / "asx_scope_review_queue.json")
     asx_residual = load_json(REPORTS_DIR / "asx_residual_review.json")
     weak_sector = load_json(REPORTS_DIR / "weak_sector_residual_review.json")
+    weak_sector_venue_action_queue = load_json(REPORTS_DIR / "weak_sector_venue_action_queue.json")
     adanos_detection_simulation = load_json(REPORTS_DIR / "adanos_detection_simulation.json")
     baseline = load_json(REPORTS_DIR / "improvement_baseline.json")
     deltas = load_json(REPORTS_DIR / "improvement_deltas.json")
     campaigns = load_json(REPORTS_DIR / "improvement_campaigns.json")
+    completion_backlog = load_json(REPORTS_DIR / "completion_backlog.json")
+    deepseek_review_summary = load_json(REPORTS_DIR / "deepseek_review_summary.json")
+    deepseek_batch_plan = load_json(REPORTS_DIR / "deepseek_batch_plan.json")
+    deepseek_collision_queue = load_json(REPORTS_DIR / "deepseek_collision_review_queue.json")
+    deepseek_otc_queue = load_json(REPORTS_DIR / "deepseek_otc_review_queue.json")
+    deepseek_weak_sector_queue = load_json(REPORTS_DIR / "deepseek_weak_sector_review_queue.json")
+    deepseek_isin_collision_validation = load_json(REPORTS_DIR / "deepseek_isin_collision_validation.json")
     gates = gate_lookup(validation)
     criteria = {
         key: evaluate_gate_group(gates, names)
@@ -15700,23 +18290,67 @@ def build_payload() -> dict[str, Any]:
         RELEASE_SOURCE_REPORTS,
         release_generated_at=generated_at,
     )
+    criteria["deepseek_advisory_integrity"] = evaluate_deepseek_advisory_integrity(
+        deepseek_review_summary,
+        deepseek_batch_plan,
+    )
+    criteria["deepseek_queue_advisory_policies"] = evaluate_deepseek_queue_advisory_policies(
+        {
+            "collision": deepseek_collision_queue,
+            "otc": deepseek_otc_queue,
+            "weak_sector": deepseek_weak_sector_queue,
+        }
+    )
+    criteria["deepseek_isin_collision_validation_gate"] = evaluate_deepseek_isin_collision_validation_gate(
+        deepseek_isin_collision_validation
+    )
+    criteria["completion_backlog_next_actions"] = evaluate_completion_backlog_next_actions(completion_backlog)
     criteria["progress_markdown_traceability"] = evaluate_progress_markdown_traceability()
     criteria["adanos_detection_simulation"] = evaluate_adanos_detection_simulation(adanos_detection_simulation)
     criteria["entry_quality_command_report"] = evaluate_entry_quality_command_report(entry_quality_gate, gates)
     criteria["coverage_freshness_visibility"] = evaluate_coverage_freshness_visibility(coverage)
+    criteria["official_name_mismatch_backfill_gate"] = evaluate_official_name_mismatch_backfill_gate(
+        official_name_mismatch_backfill
+    )
+    criteria["source_inventory_gap_gate"] = evaluate_source_inventory_gap_gate(source_inventory_gap)
+    criteria["source_refresh_queue_gate"] = evaluate_source_refresh_queue_gate(source_refresh_queue)
     criteria["source_gap_traceability"] = evaluate_source_gap_traceability(source_gap)
     criteria["symbol_change_review_gate"] = evaluate_symbol_change_review_gate(symbol_changes_review)
+    criteria["otc_name_mismatch_review_gate"] = evaluate_otc_name_mismatch_review_gate(otc_name_mismatch_review)
+    criteria["otc_name_mismatch_action_queue_gate"] = evaluate_otc_name_mismatch_action_queue_gate(
+        otc_name_mismatch_action_queue
+    )
     criteria["ohlcv_plausibility_gate"] = evaluate_ohlcv_plausibility_gate(ohlcv)
+    criteria["ohlcv_warning_review_gate"] = evaluate_ohlcv_warning_review_gate(ohlcv_warning_review)
     criteria["masterfile_collision_gate"] = evaluate_masterfile_collision_gate(masterfile_collision)
+    criteria["isin_identity_collision_gate"] = evaluate_isin_identity_collision_gate(isin_identity_collision)
+    criteria["financialdata_supplement_review_gate"] = evaluate_financialdata_supplement_review_gate(
+        financialdata_supplement_review
+    )
     criteria["otc_scope_gate"] = evaluate_otc_scope_gate(otc_scope)
     criteria["canada_figi_gate"] = evaluate_canada_figi_gate(
         canada_residual,
         canada_figi_queue,
         canada_figi_apply,
     )
+    criteria["canada_scope_review_queue_gate"] = evaluate_canada_scope_review_queue_gate(canada_scope_review_queue)
+    criteria["canada_improvement_action_queue_gate"] = evaluate_canada_improvement_action_queue_gate(
+        canada_improvement_action_queue
+    )
+    criteria["b3_masterfile_gap_review_gate"] = evaluate_b3_masterfile_gap_review_gate(b3_masterfile_gap_review)
+    criteria["b3_core_scope_review_queue_gate"] = evaluate_b3_core_scope_review_queue_gate(
+        b3_core_scope_review_queue
+    )
+    criteria["b3_improvement_action_queue_gate"] = evaluate_b3_improvement_action_queue_gate(
+        b3_improvement_action_queue
+    )
     criteria["b3_residual_gate"] = evaluate_b3_residual_gate(b3_residual_isin, b3_residual_sector)
+    criteria["asx_scope_review_queue_gate"] = evaluate_asx_scope_review_queue_gate(asx_scope_review_queue)
     criteria["asx_residual_gate"] = evaluate_asx_residual_gate(asx_residual)
     criteria["weak_sector_residual_gate"] = evaluate_weak_sector_residual_gate(weak_sector)
+    criteria["weak_sector_venue_action_queue_gate"] = evaluate_weak_sector_venue_action_queue_gate(
+        weak_sector_venue_action_queue
+    )
     criteria["before_after_delta_matrix"] = evaluate_before_after_delta_matrix(deltas)
     criteria["improvement_baseline_integrity"] = evaluate_improvement_baseline_integrity(baseline)
     criteria["campaign_reviewability"] = evaluate_campaign_reviewability(campaigns)

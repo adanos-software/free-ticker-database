@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-05-31T04:04:55Z",
+    "generated_at": "2026-06-03T04:09:37Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -8,30 +8,54 @@
       "improvement_baseline": "data/reports/improvement_baseline.json",
       "improvement_deltas": "data/reports/improvement_deltas.json",
       "improvement_campaigns": "data/reports/improvement_campaigns.json",
+      "completion_backlog": "data/reports/completion_backlog.json",
+      "source_inventory_gap": "data/reports/source_inventory_gap.json",
+      "tse_sector_backfill": "data/reports/tse_sector_backfill.json",
+      "sec_sic_sector_backfill": "data/reports/sec_sic_sector_backfill.json",
+      "official_name_mismatch_backfill": "data/reports/official_name_mismatch_backfill.json",
+      "source_gap_classification": "data/reports/source_gap_classification.json",
+      "deepseek_review_summary": "data/reports/deepseek_review_summary.json",
+      "deepseek_batch_plan": "data/reports/deepseek_batch_plan.json",
+      "deepseek_collision_review_queue": "data/reports/deepseek_collision_review_queue.json",
+      "deepseek_otc_review_queue": "data/reports/deepseek_otc_review_queue.json",
+      "deepseek_weak_sector_review_queue": "data/reports/deepseek_weak_sector_review_queue.json",
+      "deepseek_isin_collision_validation": "data/reports/deepseek_isin_collision_validation.json",
+      "source_refresh_queue": "data/reports/source_refresh_queue.json",
       "symbol_changes_review": "data/reports/symbol_changes_review.json",
+      "otc_name_mismatch_review": "data/reports/otc_name_mismatch_review.json",
+      "otc_name_mismatch_action_queue": "data/reports/otc_name_mismatch_action_queue.json",
       "ohlcv_plausibility": "data/reports/ohlcv_plausibility.json",
       "ohlcv_warning_review": "data/reports/ohlcv_warning_review.json",
       "masterfile_collision_review": "data/reports/masterfile_collision_review.json",
+      "isin_identity_collision_review_queue": "data/reports/isin_identity_collision_review_queue.json",
+      "financialdata_isin_supplements_review": "data/reports/financialdata_isin_supplements_review.json",
       "otc_scope_review": "data/reports/otc_scope_review.json",
       "canada_residual_review": "data/reports/canada_residual_review.json",
+      "canada_scope_review_queue": "data/reports/canada_scope_review_queue.json",
+      "canada_improvement_action_queue": "data/reports/canada_improvement_action_queue.json",
       "canada_figi_queue": "data/reports/canada_figi_queue.json",
       "canada_figi_apply_report": "data/reports/canada_figi_apply_report.json",
+      "b3_masterfile_gap_review": "data/reports/b3_masterfile_gap_review.json",
+      "b3_core_scope_review_queue": "data/reports/b3_core_scope_review_queue.json",
+      "b3_improvement_action_queue": "data/reports/b3_improvement_action_queue.json",
       "b3_residual_isin_review": "data/reports/b3_residual_isin_review.json",
       "b3_residual_sector_review": "data/reports/b3_residual_sector_review.json",
+      "asx_scope_review_queue": "data/reports/asx_scope_review_queue.json",
       "asx_residual_review": "data/reports/asx_residual_review.json",
       "weak_sector_residual_review": "data/reports/weak_sector_residual_review.json",
+      "weak_sector_venue_action_queue": "data/reports/weak_sector_venue_action_queue.json",
       "adanos_alias_audit": "data/reports/adanos_alias_audit.json",
       "adanos_detection_simulation": "data/reports/adanos_detection_simulation.json"
     }
   },
   "passed": true,
   "summary": {
-    "criteria": 41,
-    "passed_criteria": 41,
+    "criteria": 60,
+    "passed_criteria": 60,
     "failed_criteria": 0,
     "validation_failed_error_gates": 0
   },
-  "summary_context": "passed=true;criteria=41;passed_criteria=41;failed_criteria=0;validation_failed_error_gates=0",
+  "summary_context": "passed=true;criteria=60;passed_criteria=60;failed_criteria=0;validation_failed_error_gates=0",
   "criteria": {
     "no_invalid_isins": {
       "passed": true,
@@ -206,109 +230,317 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-05-31T04:04:55Z",
+      "release_generated_at": "2026-06-03T04:09:37Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-05-31T04:04:53Z"
+          "generated_at": "2026-06-03T04:09:21Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-05-31T04:04:52Z"
+          "generated_at": "2026-06-03T04:09:21Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
           "exists": true,
-          "generated_at": "2026-05-25T12:54:49Z"
+          "generated_at": "2026-06-03T03:18:11Z"
         },
         "improvement_deltas": {
           "path": "data/reports/improvement_deltas.json",
           "exists": true,
-          "generated_at": "2026-05-25T12:54:49Z"
+          "generated_at": "2026-06-03T03:18:11Z"
         },
         "improvement_campaigns": {
           "path": "data/reports/improvement_campaigns.json",
           "exists": true,
-          "generated_at": "2026-05-31T04:01:25Z"
+          "generated_at": "2026-06-03T03:18:12Z"
+        },
+        "completion_backlog": {
+          "path": "data/reports/completion_backlog.json",
+          "exists": true,
+          "generated_at": "2026-06-03T03:10:31Z"
+        },
+        "source_inventory_gap": {
+          "path": "data/reports/source_inventory_gap.json",
+          "exists": true,
+          "generated_at": "2026-06-03T03:17:45Z"
+        },
+        "tse_sector_backfill": {
+          "path": "data/reports/tse_sector_backfill.json",
+          "exists": true,
+          "generated_at": "2026-06-02T23:50:41Z"
+        },
+        "sec_sic_sector_backfill": {
+          "path": "data/reports/sec_sic_sector_backfill.json",
+          "exists": true,
+          "generated_at": "2026-06-02T23:56:56Z"
+        },
+        "official_name_mismatch_backfill": {
+          "path": "data/reports/official_name_mismatch_backfill.json",
+          "exists": true,
+          "generated_at": "2026-06-03T03:01:19Z"
+        },
+        "source_gap_classification": {
+          "path": "data/reports/source_gap_classification.json",
+          "exists": true,
+          "generated_at": "2026-05-31T04:00:47Z"
+        },
+        "deepseek_review_summary": {
+          "path": "data/reports/deepseek_review_summary.json",
+          "exists": true,
+          "generated_at": "2026-06-02T21:15:57Z"
+        },
+        "deepseek_batch_plan": {
+          "path": "data/reports/deepseek_batch_plan.json",
+          "exists": true,
+          "generated_at": "2026-06-02T23:05:27Z"
+        },
+        "deepseek_collision_review_queue": {
+          "path": "data/reports/deepseek_collision_review_queue.json",
+          "exists": true,
+          "generated_at": "2026-06-03T00:48:32Z"
+        },
+        "deepseek_otc_review_queue": {
+          "path": "data/reports/deepseek_otc_review_queue.json",
+          "exists": true,
+          "generated_at": "2026-06-03T00:42:25Z"
+        },
+        "deepseek_weak_sector_review_queue": {
+          "path": "data/reports/deepseek_weak_sector_review_queue.json",
+          "exists": true,
+          "generated_at": "2026-06-03T00:37:41Z"
+        },
+        "deepseek_isin_collision_validation": {
+          "path": "data/reports/deepseek_isin_collision_validation.json",
+          "exists": true,
+          "generated_at": "2026-05-30T07:30:59Z"
+        },
+        "source_refresh_queue": {
+          "path": "data/reports/source_refresh_queue.json",
+          "exists": true,
+          "generated_at": "2026-06-03T03:12:31Z"
         },
         "symbol_changes_review": {
           "path": "data/reports/symbol_changes_review.json",
           "exists": true,
-          "generated_at": "2026-05-30T16:24:00Z"
+          "generated_at": "2026-06-02T19:22:47Z"
+        },
+        "otc_name_mismatch_review": {
+          "path": "data/reports/otc_name_mismatch_review.json",
+          "exists": true,
+          "generated_at": "2026-06-02T20:38:59Z"
+        },
+        "otc_name_mismatch_action_queue": {
+          "path": "data/reports/otc_name_mismatch_action_queue.json",
+          "exists": true,
+          "generated_at": "2026-06-02T20:38:59Z"
         },
         "ohlcv_plausibility": {
           "path": "data/reports/ohlcv_plausibility.json",
           "exists": true,
-          "generated_at": "2026-05-31T04:01:17Z"
+          "generated_at": "2026-06-02T20:39:44Z"
         },
         "ohlcv_warning_review": {
           "path": "data/reports/ohlcv_warning_review.json",
           "exists": true,
-          "generated_at": "2026-05-25T11:11:55Z"
+          "generated_at": "2026-06-02T20:39:44Z"
         },
         "masterfile_collision_review": {
           "path": "data/reports/masterfile_collision_review.json",
           "exists": true,
-          "generated_at": "2026-05-25T12:53:29Z"
+          "generated_at": "2026-06-02T19:18:19Z"
+        },
+        "isin_identity_collision_review_queue": {
+          "path": "data/reports/isin_identity_collision_review_queue.json",
+          "exists": true,
+          "generated_at": "2026-06-03T00:52:19Z"
+        },
+        "financialdata_isin_supplements_review": {
+          "path": "data/reports/financialdata_isin_supplements_review.json",
+          "exists": true,
+          "generated_at": "2026-06-02T20:31:19Z"
         },
         "otc_scope_review": {
           "path": "data/reports/otc_scope_review.json",
           "exists": true,
-          "generated_at": "2026-05-25T12:54:46Z"
+          "generated_at": "2026-06-02T20:38:58Z"
         },
         "canada_residual_review": {
           "path": "data/reports/canada_residual_review.json",
           "exists": true,
-          "generated_at": "2026-05-25T12:54:47Z"
+          "generated_at": "2026-06-02T19:05:23Z"
+        },
+        "canada_scope_review_queue": {
+          "path": "data/reports/canada_scope_review_queue.json",
+          "exists": true,
+          "generated_at": "2026-06-02T20:18:32Z"
+        },
+        "canada_improvement_action_queue": {
+          "path": "data/reports/canada_improvement_action_queue.json",
+          "exists": true,
+          "generated_at": "2026-06-02T20:18:32Z"
         },
         "canada_figi_queue": {
           "path": "data/reports/canada_figi_queue.json",
           "exists": true,
-          "generated_at": "2026-05-25T12:54:47Z"
+          "generated_at": "2026-06-02T19:05:23Z"
         },
         "canada_figi_apply_report": {
           "path": "data/reports/canada_figi_apply_report.json",
           "exists": true,
           "generated_at": "2026-05-25T05:46:48Z"
         },
+        "b3_masterfile_gap_review": {
+          "path": "data/reports/b3_masterfile_gap_review.json",
+          "exists": true,
+          "generated_at": "2026-06-02T18:54:27Z"
+        },
+        "b3_core_scope_review_queue": {
+          "path": "data/reports/b3_core_scope_review_queue.json",
+          "exists": true,
+          "generated_at": "2026-06-02T20:18:31Z"
+        },
+        "b3_improvement_action_queue": {
+          "path": "data/reports/b3_improvement_action_queue.json",
+          "exists": true,
+          "generated_at": "2026-06-02T20:18:32Z"
+        },
         "b3_residual_isin_review": {
           "path": "data/reports/b3_residual_isin_review.json",
           "exists": true,
-          "generated_at": "2026-05-25T12:54:45Z"
+          "generated_at": "2026-06-02T18:54:28Z"
         },
         "b3_residual_sector_review": {
           "path": "data/reports/b3_residual_sector_review.json",
           "exists": true,
-          "generated_at": "2026-05-25T12:54:45Z"
+          "generated_at": "2026-06-02T18:54:28Z"
+        },
+        "asx_scope_review_queue": {
+          "path": "data/reports/asx_scope_review_queue.json",
+          "exists": true,
+          "generated_at": "2026-06-02T20:18:32Z"
         },
         "asx_residual_review": {
           "path": "data/reports/asx_residual_review.json",
           "exists": true,
-          "generated_at": "2026-05-25T12:54:48Z"
+          "generated_at": "2026-06-02T19:09:19Z"
         },
         "weak_sector_residual_review": {
           "path": "data/reports/weak_sector_residual_review.json",
           "exists": true,
-          "generated_at": "2026-05-25T12:54:48Z"
+          "generated_at": "2026-06-02T19:13:29Z"
+        },
+        "weak_sector_venue_action_queue": {
+          "path": "data/reports/weak_sector_venue_action_queue.json",
+          "exists": true,
+          "generated_at": "2026-06-02T20:27:12Z"
         },
         "adanos_alias_audit": {
           "path": "data/reports/adanos_alias_audit.json",
           "exists": true,
-          "generated_at": "2026-05-25T02:04:26Z"
+          "generated_at": "2026-06-02T20:36:35Z"
         },
         "adanos_detection_simulation": {
           "path": "data/reports/adanos_detection_simulation.json",
           "exists": true,
-          "generated_at": "2026-05-31T04:00:03Z"
+          "generated_at": "2026-06-02T20:36:36Z"
         }
       },
       "missing_files": [],
       "missing_generated_at": [],
       "invalid_generated_at": {},
-      "generated_after_release": {}
+      "generated_after_release": {},
+      "unlisted_review_reports": [],
+      "review_source_report_name_markers": [
+        "queue",
+        "review",
+        "gap",
+        "backlog"
+      ]
+    },
+    "deepseek_advisory_integrity": {
+      "passed": true,
+      "review_rows": 26408,
+      "raw_batches": 3293,
+      "raw_responses_jsonl": "data/deepseek_review_jobs/raw_responses.jsonl",
+      "raw_missing": false,
+      "raw_line_count": 3293,
+      "raw_batch_count_mismatch": {},
+      "raw_parse_error_lines": [],
+      "raw_secret_pattern_lines": [],
+      "errors": 0,
+      "duplicate_review_key_rows": 0,
+      "blank_listing_key_rows": 0,
+      "invalid_safe_actions": [],
+      "policy_missing_markers": [],
+      "secret_policy_missing": false,
+      "selected_batch": {
+        "queue": null,
+        "rows": 0
+      },
+      "queue_status_gaps": [],
+      "queue_unreviewed_gaps": {},
+      "allowed_safe_actions": [
+        "candidate_for_official_followup",
+        "likely_distinct_issuer_review",
+        "likely_same_issuer_review",
+        "needs_official_evidence",
+        "source_gap_accept"
+      ]
+    },
+    "deepseek_queue_advisory_policies": {
+      "passed": true,
+      "checked": {
+        "collision": {
+          "rows": 2969,
+          "items": 2969,
+          "review_required_rows": 2969,
+          "direct_apply_allowed_rows": 0
+        },
+        "otc": {
+          "rows": 8996,
+          "items": 8996,
+          "review_required_rows": 8996,
+          "direct_apply_allowed_rows": 0
+        },
+        "weak_sector": {
+          "rows": 636,
+          "items": 636,
+          "review_required_rows": 636,
+          "direct_apply_allowed_rows": 0
+        }
+      },
+      "missing_queues": [],
+      "queue_gaps": {}
+    },
+    "deepseek_isin_collision_validation_gate": {
+      "passed": true,
+      "queue_groups": 426,
+      "validated_groups": 426,
+      "items": 426,
+      "coverage_status": "full_current_queue_coverage",
+      "coverage_gaps": [],
+      "policy_missing_markers": [],
+      "missing_row_gate_isins": [],
+      "missing_row_gate_count": 0
+    },
+    "completion_backlog_next_actions": {
+      "passed": true,
+      "next_actions": 12,
+      "allowed_safe_actions": [
+        "candidate_for_official_followup",
+        "needs_official_evidence"
+      ],
+      "invalid_safe_actions": [],
+      "missing_fields": {},
+      "invalid_counts": [],
+      "invalid_review_flags": [],
+      "invalid_scripts": [],
+      "invalid_target_fields": {},
+      "direct_apply_markers": []
     },
     "progress_markdown_traceability": {
       "passed": true,
@@ -327,7 +559,7 @@
     },
     "adanos_detection_simulation": {
       "passed": true,
-      "generated_at": "2026-05-31T04:00:03Z",
+      "generated_at": "2026-06-02T20:36:36Z",
       "source_files": {
         "adanos_reference_csv": "data/adanos/ticker_reference.csv"
       },
@@ -354,16 +586,16 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-05-31T04:04:52Z",
+      "generated_at": "2026-06-03T04:09:21Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
       "command_report": {
-        "allowed_warn_count": 1076,
+        "allowed_warn_count": 115,
         "passed": true,
         "quarantine_count": 0,
         "unexpected_warn_count": 0,
-        "warn_count": 222
+        "warn_count": 115
       },
       "expected_counts_from_validation": {
         "quarantine_count": 0,
@@ -431,96 +663,181 @@
       "b3_diagnostic_gaps": [],
       "b3_masterfile_diagnostics": {
         "dataset_rows": 1584,
-        "active_exchange_directory_rows": 1941,
-        "matched_dataset_rows": 1544,
-        "missing_dataset_rows": 40,
-        "dataset_match_rate": 97.47,
-        "official_any_source_matched_dataset_rows": 1561,
-        "official_any_source_missing_dataset_rows": 23,
-        "official_any_source_match_rate": 98.55,
+        "active_exchange_directory_rows": 1315,
+        "matched_dataset_rows": 1245,
+        "missing_dataset_rows": 339,
+        "dataset_match_rate": 78.6,
+        "official_any_source_matched_dataset_rows": 1262,
+        "official_any_source_missing_dataset_rows": 322,
+        "official_any_source_match_rate": 79.67,
         "missing_category_totals": {
           "bdr_or_foreign_receipt": 2,
-          "local_share_line": 16,
-          "other": 2,
-          "unit_or_fund_line": 20
+          "local_share_line": 268,
+          "other": 18,
+          "unit_or_fund_line": 51
         },
         "missing_source_presence_totals": {
-          "absent_from_all_b3_masterfile_sources": 23,
+          "absent_from_all_b3_masterfile_sources": 322,
           "present_only_in_non_exchange_directory_source": 17
         }
       },
       "source_freshness_status_totals": {
-        "stale": 43,
-        "old": 93
+        "fresh": 136
       },
       "source_age_bucket_totals": {
-        "age_48_168h": 43,
-        "age_over_336h": 93
+        "age_0_48h": 136
       },
       "source_refresh_priority_totals": {
-        "P2": 135,
+        "P4": 131,
+        "P2": 4,
         "P1": 1
       },
       "source_refresh_queue_totals": {
-        "refresh_official_subset_before_gap_enrichment": 128,
-        "restore_or_replace_unavailable_source_before_data_fill": 8
+        "fresh_no_refresh_needed": 131,
+        "restore_or_replace_unavailable_source_before_data_fill": 5
       },
       "source_refresh_queue_scope_totals": {
-        "refresh_official_subset_before_gap_enrichment": {
+        "fresh_no_refresh_needed": {
           "exchange_directory": 40,
-          "listed_companies_subset": 80,
+          "listed_companies_subset": 83,
           "security_lookup_subset": 6,
           "interlisted_subset": 1,
           "security_identifier_registry_subset": 1
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
-          "listed_companies_subset": 7,
+          "listed_companies_subset": 4,
           "exchange_directory": 1
         }
       },
       "source_refresh_queue_mode_totals": {
-        "refresh_official_subset_before_gap_enrichment": {
-          "network": 107,
-          "cache": 21
+        "fresh_no_refresh_needed": {
+          "network": 62,
+          "cache": 69
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
-          "unavailable": 8
+          "unavailable": 5
         }
       },
       "source_refresh_queue_priority_totals": {
-        "refresh_official_subset_before_gap_enrichment": {
-          "P2": 128
+        "fresh_no_refresh_needed": {
+          "P4": 131
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
-          "P2": 7,
+          "P2": 4,
           "P1": 1
         }
       },
       "source_refresh_queue_age_bucket_totals": {
-        "refresh_official_subset_before_gap_enrichment": {
-          "age_48_168h": 43,
-          "age_over_336h": 85
+        "fresh_no_refresh_needed": {
+          "age_0_48h": 131
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
-          "age_over_336h": 8
+          "age_0_48h": 5
         }
       },
       "source_refresh_queue_review_strategy_totals": {
-        "refresh_official_subset_before_gap_enrichment": {
-          "refresh_official_subset_before_gap_enrichment": 128
+        "fresh_no_refresh_needed": {
+          "no_refresh_required": 131
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
-          "restore_or_replace_unavailable_source_before_data_fill": 8
+          "restore_or_replace_unavailable_source_before_data_fill": 5
         }
       },
       "source_refresh_queue_evidence_required_totals": {
-        "refresh_official_subset_before_gap_enrichment": {
-          "official_subset_refresh_artifact_with_generated_at_scope_and_row_count": 128
+        "fresh_no_refresh_needed": {
+          "fresh_source_generated_at_with_age_under_48h": 131
         },
         "restore_or_replace_unavailable_source_before_data_fill": {
-          "source_restored_or_replaced_with_official_or_documented_unavailable_decision": 8
+          "source_restored_or_replaced_with_official_or_documented_unavailable_decision": 5
         }
       }
+    },
+    "official_name_mismatch_backfill_gate": {
+      "passed": true,
+      "rows_reviewed": 14,
+      "items": 14,
+      "updates_emitted": 13,
+      "accepted_rows": 13,
+      "supported_exchange_count": 15,
+      "policy_missing_marker_groups": [],
+      "row_gap_count": 0,
+      "row_gaps": [],
+      "count_gaps": [],
+      "required_row_fields": [
+        "listing_key",
+        "ticker",
+        "exchange",
+        "asset_type",
+        "current_name",
+        "proposed_name",
+        "decision",
+        "official_sources",
+        "supporting_sources"
+      ]
+    },
+    "source_inventory_gap_gate": {
+      "passed": true,
+      "rows": 65,
+      "items": 65,
+      "todo_rows": 0,
+      "current_scope_candidates": 64,
+      "high_priority_rows": 22,
+      "policy_missing_marker_groups": [],
+      "row_gap_count": 0,
+      "row_gaps": [],
+      "count_gaps": [],
+      "required_row_fields": [
+        "priority_rank",
+        "exchange",
+        "current_status",
+        "tickers",
+        "missing_isin",
+        "missing_sector_or_category",
+        "unresolved_findings",
+        "official_source_count",
+        "candidate_key",
+        "candidate_scope",
+        "provider",
+        "expected_format",
+        "source_url",
+        "implementation_status",
+        "source_mode",
+        "source_refresh_queue",
+        "source_last_error",
+        "priority",
+        "review_needed",
+        "blocker",
+        "notes"
+      ]
+    },
+    "source_refresh_queue_gate": {
+      "passed": true,
+      "rows": 5,
+      "item_count": 5,
+      "policy_missing_marker_groups": [],
+      "row_gap_count": 0,
+      "row_gaps": [],
+      "count_gaps": [],
+      "batch_gaps": [],
+      "required_item_fields": [
+        "source_key",
+        "provider",
+        "reference_scope",
+        "mode",
+        "last_error",
+        "generated_at",
+        "age_hours",
+        "freshness_status",
+        "refresh_priority",
+        "refresh_queue",
+        "recommended_refresh_action",
+        "recommended_next_source",
+        "source_gate",
+        "review_strategy",
+        "evidence_required",
+        "freshness_review_context",
+        "refresh_gate_context"
+      ]
     },
     "source_gap_traceability": {
       "passed": true,
@@ -633,14 +950,57 @@
         "requires_official_venue_confirmation"
       ]
     },
+    "otc_name_mismatch_review_gate": {
+      "passed": true,
+      "rows": 24,
+      "items": 24,
+      "policy_missing_markers": [],
+      "row_gap_count": 0,
+      "row_gaps": [],
+      "count_gaps": [],
+      "required_row_fields": [
+        "listing_key",
+        "review_class",
+        "review_priority",
+        "apply_eligibility",
+        "verification_evidence_required",
+        "review_strategy",
+        "recommended_next_source",
+        "source_gate",
+        "official_source_context",
+        "identity_review_context",
+        "decision_review_context",
+        "recommended_action"
+      ]
+    },
+    "otc_name_mismatch_action_queue_gate": {
+      "passed": true,
+      "rows": 24,
+      "batches": 14,
+      "items": 14,
+      "item_row_total": 24,
+      "gating_gaps": [],
+      "invalid_actions": [],
+      "missing_item_gate_actions": [],
+      "missing_item_gate_count": 0,
+      "policy_missing_markers": [],
+      "allowed_action_queues": [
+        "keep_current_until_stronger_issuer_history_source",
+        "manual_otc_name_mismatch_review",
+        "resolve_or_quarantine_before_trusting_otc_symbol",
+        "review_official_alias_before_matcher_tuning",
+        "tighten_matcher_without_dataset_metadata_change",
+        "verify_isin_anchored_issuer_history_before_name_change"
+      ]
+    },
     "ohlcv_plausibility_gate": {
       "passed": true,
       "missing_meta_keys": [],
       "invalid_generated_at": "",
       "source_file_mismatches": {},
       "unexpected_source_files": [],
-      "rows": 350,
-      "flagged_rows": 0,
+      "rows": 240,
+      "flagged_rows": 183,
       "missing_summary_keys": [],
       "row_count_mismatch": {},
       "row_gaps": [],
@@ -691,6 +1051,43 @@
         "warn"
       ]
     },
+    "ohlcv_warning_review_gate": {
+      "passed": true,
+      "rows": 120,
+      "policy_missing_marker_groups": [],
+      "missing_meta_keys": [],
+      "invalid_generated_at": "",
+      "row_count_mismatch": {},
+      "missing_summary_keys": [],
+      "row_gap_count": 0,
+      "row_gaps": [],
+      "forbidden_action_rows": [],
+      "summary_mismatches": {},
+      "top_batch_gaps": [],
+      "required_row_keys": [
+        "listing_key",
+        "ticker",
+        "exchange",
+        "entry_quality_status",
+        "ohlcv_source",
+        "ohlcv_symbol",
+        "plausibility_status",
+        "plausibility_score",
+        "issue_count",
+        "issue_types",
+        "ohlcv_review_bucket",
+        "official_review_priority",
+        "official_listing_review_status",
+        "official_corporate_action_review_status",
+        "canonical_data_change_authorization",
+        "verification_evidence_required",
+        "official_source_locator_status",
+        "recommended_next_source",
+        "source_gate",
+        "review_context",
+        "recommended_action"
+      ]
+    },
     "masterfile_collision_gate": {
       "passed": true,
       "missing_meta_keys": [],
@@ -698,7 +1095,7 @@
       "source_file_mismatches": {},
       "unexpected_source_files": [],
       "meta_policy_mismatch": false,
-      "rows": 11107,
+      "rows": 11176,
       "missing_summary_keys": [],
       "row_count_mismatch": {},
       "row_gaps": [],
@@ -756,9 +1153,57 @@
         "same_isin_exact_name_cross_listing_candidate"
       ]
     },
+    "isin_identity_collision_gate": {
+      "passed": true,
+      "collision_groups": 426,
+      "items": 426,
+      "open_groups": 426,
+      "closed_groups": 0,
+      "advisory_gaps": [],
+      "policy_missing_markers": [],
+      "source_gate_missing_markers": [],
+      "row_policy_gap_isins": [],
+      "row_policy_gap_count": 0
+    },
+    "financialdata_supplement_review_gate": {
+      "passed": true,
+      "rows": 665,
+      "input_rows": 665,
+      "review_items": 665,
+      "preserved_supplement_rows": 557,
+      "supplement_rows": 557,
+      "supplement_rows_by_exchange_total": 557,
+      "policy_missing_marker_groups": [],
+      "count_gaps": [],
+      "supplement_row_count_gaps": [],
+      "traceability_gap_count": 0,
+      "traceability_gaps": [],
+      "required_row_keys": [
+        "financialdata_ticker",
+        "financialdata_exchange",
+        "decision",
+        "reason",
+        "financialdata_review_queue",
+        "review_priority",
+        "review_strategy",
+        "apply_eligibility",
+        "verification_evidence_required",
+        "recommended_next_source",
+        "source_gate",
+        "financialdata_discovery_context",
+        "official_identity_context",
+        "supplement_review_context"
+      ],
+      "required_official_evidence_for_accept_or_preserve": [
+        "official_ticker",
+        "official_exchange",
+        "official_isin",
+        "official_source_key"
+      ]
+    },
     "otc_scope_gate": {
       "passed": true,
-      "rows": 11056,
+      "rows": 11054,
       "missing_summary_keys": [],
       "row_count_mismatch": {},
       "row_gaps": [],
@@ -849,6 +1294,167 @@
       "reviewed_openfigi_gap_rows": 151,
       "openfigi_candidate_rows": 0
     },
+    "canada_scope_review_queue_gate": {
+      "passed": true,
+      "rows": 242,
+      "row_count": 242,
+      "policy_missing_marker_groups": [],
+      "row_gap_count": 0,
+      "row_gaps": [],
+      "count_gaps": [],
+      "batch_gaps": [],
+      "required_row_fields": [
+        "listing_key",
+        "ticker",
+        "exchange",
+        "asset_type",
+        "name",
+        "source_gap_fields",
+        "source_gap_classes",
+        "official_masterfile_match",
+        "official_masterfile_exposes_isin",
+        "official_masterfile_exposes_sector",
+        "current_instrument_scope",
+        "current_scope_reason",
+        "listing_history_status",
+        "canada_resolution_queue",
+        "scope_review_queue",
+        "scope_decision_gate",
+        "recommended_scope_action",
+        "verification_evidence_required",
+        "recommended_next_source",
+        "source_gate",
+        "review_context"
+      ]
+    },
+    "canada_improvement_action_queue_gate": {
+      "passed": true,
+      "underlying_review_rows": 457,
+      "item_row_total": 457,
+      "batches": 29,
+      "items": 29,
+      "scope_queue_rows": 242,
+      "figi_queue_rows": 0,
+      "figi_excluded_reviewed_source_gaps": 151,
+      "direct_identifier_apply_allowed_rows": 0,
+      "metadata_enrichment_authorized": false,
+      "policy_missing_marker_groups": [],
+      "row_gap_count": 0,
+      "row_gaps": [],
+      "count_gaps": [],
+      "gating_gaps": [],
+      "required_item_fields": [
+        "campaign",
+        "exchange",
+        "review_queue",
+        "official_sources",
+        "rows",
+        "action_queue",
+        "evidence_required",
+        "review_strategy",
+        "recommended_next_source",
+        "source_gate",
+        "example_listing_keys"
+      ]
+    },
+    "b3_masterfile_gap_review_gate": {
+      "passed": true,
+      "rows": 339,
+      "row_count": 339,
+      "open_review_rows": 322,
+      "open_review_row_count": 322,
+      "closed_no_data_change_rows": 17,
+      "closed_no_data_change_row_count": 17,
+      "coverage_data_change_authorized": false,
+      "policy_missing_marker_groups": [],
+      "row_gap_count": 0,
+      "row_gaps": [],
+      "count_gaps": [],
+      "gating_gaps": [],
+      "required_row_fields": [
+        "listing_key",
+        "ticker",
+        "exchange",
+        "asset_type",
+        "name",
+        "b3_gap_category",
+        "source_presence",
+        "active_exchange_directory_match",
+        "any_official_b3_source_match",
+        "b3_resolution_queue",
+        "residual_decision",
+        "review_bucket",
+        "review_priority",
+        "review_strategy",
+        "apply_eligibility",
+        "verification_evidence_required",
+        "b3_source_gap_evidence_path",
+        "source_gap_resolution_gate",
+        "recommended_next_source",
+        "source_gate",
+        "b3_listing_context",
+        "official_candidate_context",
+        "review_gate_context"
+      ]
+    },
+    "b3_core_scope_review_queue_gate": {
+      "passed": true,
+      "rows": 10,
+      "row_count": 10,
+      "policy_missing_marker_groups": [],
+      "row_gap_count": 0,
+      "row_gaps": [],
+      "count_gaps": [],
+      "required_row_fields": [
+        "listing_key",
+        "ticker",
+        "exchange",
+        "asset_type",
+        "name",
+        "gap_class",
+        "current_instrument_scope",
+        "source_of_truth_outcome",
+        "residual_decision",
+        "masterfile_source_presence",
+        "b3_resolution_queue",
+        "listing_history_status",
+        "scope_review_queue",
+        "scope_decision_gate",
+        "recommended_scope_action",
+        "verification_evidence_required",
+        "recommended_next_source",
+        "source_gate",
+        "review_context"
+      ]
+    },
+    "b3_improvement_action_queue_gate": {
+      "passed": true,
+      "underlying_review_rows": 545,
+      "item_row_total": 545,
+      "batches": 9,
+      "items": 9,
+      "direct_data_change_authorized": false,
+      "coverage_data_change_authorized": false,
+      "policy_missing_marker_groups": [],
+      "row_gap_count": 0,
+      "row_gaps": [],
+      "count_gaps": [],
+      "gating_gaps": [],
+      "required_item_fields": [
+        "campaign",
+        "priority",
+        "review_queue",
+        "asset_type",
+        "gap_class",
+        "rows",
+        "action_queue",
+        "review_strategy",
+        "evidence_required",
+        "recommended_next_source",
+        "source_gate",
+        "example_listing_keys"
+      ]
+    },
     "b3_residual_gate": {
       "passed": true,
       "isin": {
@@ -902,6 +1508,39 @@
         "sector": 194,
         "total": 206
       }
+    },
+    "asx_scope_review_queue_gate": {
+      "passed": true,
+      "rows": 94,
+      "row_count": 94,
+      "policy_missing_marker_groups": [],
+      "row_gap_count": 0,
+      "row_gaps": [],
+      "count_gaps": [],
+      "batch_gaps": [],
+      "required_row_fields": [
+        "listing_key",
+        "ticker",
+        "exchange",
+        "asset_type",
+        "name",
+        "field",
+        "gap_class",
+        "official_masterfile_match",
+        "official_masterfile_exposes_isin",
+        "official_masterfile_exposes_sector",
+        "asx_isin_probe_decision",
+        "current_instrument_scope",
+        "current_scope_reason",
+        "listing_history_status",
+        "scope_review_queue",
+        "scope_decision_gate",
+        "recommended_scope_action",
+        "verification_evidence_required",
+        "recommended_next_source",
+        "source_gate",
+        "review_context"
+      ]
     },
     "asx_residual_gate": {
       "passed": true,
@@ -1014,6 +1653,35 @@
         "venue_specific_sector_source_gap"
       ]
     },
+    "weak_sector_venue_action_queue_gate": {
+      "passed": true,
+      "rows": 646,
+      "item_row_total": 646,
+      "batches": 17,
+      "items": 17,
+      "direct_sector_apply_allowed_rows": 0,
+      "metadata_enrichment_authorized": false,
+      "policy_missing_marker_groups": [],
+      "row_gap_count": 0,
+      "row_gaps": [],
+      "count_gaps": [],
+      "gating_gaps": [],
+      "required_item_fields": [
+        "exchange",
+        "weak_sector_resolution_queue",
+        "official_masterfile_sources",
+        "rows",
+        "review_priority",
+        "action_queue",
+        "review_strategy",
+        "evidence_required",
+        "source_gate",
+        "recommended_next_action",
+        "gap_class_totals",
+        "source_of_truth_outcome_totals",
+        "example_listing_keys"
+      ]
+    },
     "before_after_delta_matrix": {
       "passed": true,
       "missing_meta_keys": [],
@@ -1026,16 +1694,16 @@
       "policy_missing_markers": [],
       "acceptance_delta_matrix": {
         "isin_delta": {
-          "baseline": 59847,
-          "current": 59847,
+          "baseline": 59848,
+          "current": 59848,
           "delta": 0,
-          "delta_context": "scope=global;metric=isin_delta;baseline=59847;current=59847;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+          "delta_context": "scope=global;metric=isin_delta;baseline=59848;current=59848;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
         },
         "sector_delta": {
-          "baseline": 43310,
-          "current": 43310,
+          "baseline": 43311,
+          "current": 43311,
           "delta": 0,
-          "delta_context": "scope=global;metric=sector_delta;baseline=43310;current=43310;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+          "delta_context": "scope=global;metric=sector_delta;baseline=43311;current=43311;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
         },
         "category_delta": {
           "baseline": 15453,
@@ -1050,10 +1718,10 @@
           "delta_context": "scope=global;metric=source_gap_delta;baseline=3548;current=3548;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
         },
         "warn_delta": {
-          "baseline": 217,
-          "current": 217,
+          "baseline": 115,
+          "current": 115,
           "delta": 0,
-          "delta_context": "scope=global;metric=warn_delta;baseline=217;current=217;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
+          "delta_context": "scope=global;metric=warn_delta;baseline=115;current=115;delta=0;direction=unchanged;review_policy=no_data_change_inferred"
         },
         "quarantine_delta": {
           "baseline": 0,
@@ -1135,8 +1803,8 @@
       "passed": true,
       "batches": 10,
       "summary_next_review_batches": 10,
-      "summary_next_review_batch_rows": 28754,
-      "computed_next_review_batch_rows": 28754,
+      "summary_next_review_batch_rows": 28992,
+      "computed_next_review_batch_rows": 28992,
       "observed_campaign_keys_by_priority": {
         "1": "b3",
         "2": "otc",
@@ -1171,16 +1839,12 @@
     "next_review_command_safety_gate": {
       "passed": true,
       "execution_plan_rows": 10,
-      "manual_review_campaign_keys": [
-        "b3"
-      ],
+      "manual_review_campaign_keys": [],
       "preflight_gap_campaign_keys": [],
       "data_change_authorized_campaign_keys": [],
-      "execution_ready_without_manual_review": false,
-      "execution_blocking_gate": "manual_review_required_before_execution",
-      "execution_blocking_campaign_keys": [
-        "b3"
-      ],
+      "execution_ready_without_manual_review": true,
+      "execution_blocking_gate": "no_manual_command_blockers_detected",
+      "execution_blocking_campaign_keys": [],
       "missing_summary_keys": [],
       "mismatches": {},
       "missing_policy_markers": [],

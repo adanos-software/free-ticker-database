@@ -67,6 +67,14 @@ def test_build_source_inventory_joins_candidates_to_current_coverage():
                 "reference_scopes": ["listed_companies_subset", "security_lookup_subset"],
             },
         ],
+        "source_coverage": [
+            {
+                "key": "egx_listed_securities",
+                "mode": "unavailable",
+                "last_error": "HTTP 403 from official host egx.example",
+                "refresh_queue": "restore_or_replace_unavailable_source_before_data_fill",
+            }
+        ],
     }
 
     rows = build_source_inventory(sources, candidates, coverage_report)
@@ -78,6 +86,9 @@ def test_build_source_inventory_joins_candidates_to_current_coverage():
     assert egx.unresolved_findings == 225
     assert egx.review_needed is True
     assert egx.asset_types == "Stock|ETF"
+    assert egx.source_mode == "unavailable"
+    assert egx.source_last_error == "HTTP 403 from official host egx.example"
+    assert egx.source_refresh_queue == "restore_or_replace_unavailable_source_before_data_fill"
 
     lse = row_for(rows, "LSE")
     assert lse.current_status == "official_partial"
@@ -119,4 +130,5 @@ def test_render_markdown_splits_missing_partial_and_global_candidates():
     assert "Source Inventory Gap" in markdown
     assert "Global Expansion Candidates" in markdown
     assert "source_candidates.json" in markdown
+    assert "Last Error" in markdown
     assert "EGX" in markdown

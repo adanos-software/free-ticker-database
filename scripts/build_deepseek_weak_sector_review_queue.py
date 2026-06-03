@@ -41,7 +41,7 @@ def select_deepseek_weak_sector_reviews(payload: dict[str, Any]) -> list[dict[st
     items = payload.get("items", [])
     if not isinstance(items, list):
         return []
-    selected: list[dict[str, Any]] = []
+    selected_by_key: dict[str, dict[str, Any]] = {}
     for item in items:
         if not isinstance(item, dict):
             continue
@@ -49,8 +49,11 @@ def select_deepseek_weak_sector_reviews(payload: dict[str, Any]) -> list[dict[st
             continue
         if item.get("decision_candidate") not in {"needs_official_evidence", "keep_source_gap", "out_of_scope_candidate"}:
             continue
-        selected.append(item)
-    return selected
+        listing_key = str(item.get("listing_key", ""))
+        if not listing_key:
+            continue
+        selected_by_key[listing_key] = item
+    return list(selected_by_key.values())
 
 
 def build_weak_sector_lookup(rows: list[dict[str, str]]) -> dict[str, dict[str, str]]:
@@ -132,6 +135,15 @@ def summarize(queue_rows: list[dict[str, Any]], unmatched: list[dict[str, Any]])
         "deepseek_decision_totals": dict(sorted(by_decision.items())),
         "review_queue_totals": dict(sorted(by_queue.items())),
         "official_sector_value_totals": dict(sorted(by_official_value.items())),
+        "advisory_policy": {
+            "direct_apply_allowed_rows": 0,
+            "metadata_enrichment_authorized": False,
+            "review_required_rows": len(queue_rows),
+            "source_gate": (
+                "DeepSeek weak-sector rows are advisory only; apply no sector without listing-keyed official "
+                "taxonomy evidence and a reviewed canonical mapping."
+            ),
+        },
     }
 
 
@@ -215,6 +227,21 @@ def render_markdown(payload: dict[str, Any]) -> str:
     lines.extend(["", "## Official Sector Values", "", "| Official raw value | Rows |", "| --- | ---: |"])
     for value, count in summary["official_sector_value_totals"].items():
         lines.append(f"| {value or 'missing'} | {count} |")
+    unmatched_rows = payload.get("unmatched_deepseek_rows", [])
+    if unmatched_rows:
+        lines.extend(
+            [
+                "",
+                "## Unmatched DeepSeek Rows",
+                "",
+                "These advisory rows no longer match the current weak-sector residual review and are excluded from the active queue.",
+                "",
+                "| Listing key | Reason |",
+                "| --- | --- |",
+            ]
+        )
+        for row in unmatched_rows[:25]:
+            lines.append(f"| {row.get('listing_key', 'missing')} | {row.get('reason', 'missing')} |")
     lines.extend(
         [
             "",

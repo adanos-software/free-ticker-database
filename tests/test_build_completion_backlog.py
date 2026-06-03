@@ -84,11 +84,369 @@ def test_render_markdown_includes_model_and_source_block_notes():
 
     markdown = render_markdown(rows, summary)
 
+    assert summary["next_actions"]
+    assert summary["next_actions"][0]["safe_action"] == "candidate_for_official_followup"
+    assert "direct" not in summary["next_actions"][0]["safe_action"]
     assert "Missing primary ISIN rows" in markdown
+    assert "Next Safe Batches" in markdown
+    assert "orchestration candidates only" in markdown
     assert "`stock_sector`" in markdown
     assert "`etf_category`" in markdown
     assert "listing_key" in markdown
     assert "High-count primary ISIN residuals" in markdown
+
+
+def test_asx_next_action_uses_residual_review_gate_when_no_apply_candidates():
+    rows = build_completion_backlog(
+        [],
+        [
+            {"exchange": "ASX", "asset_type": "Stock", "scope_reason": "primary_listing_missing_isin"},
+            {"exchange": "ASX", "asset_type": "ETF", "scope_reason": "primary_listing_missing_isin"},
+        ],
+        {"by_exchange": [{"exchange": "ASX", "venue_status": "official_partial", "official_source_count": 2}]},
+    )
+    summary = summarize(
+        rows,
+        {"global": {}, "by_exchange": []},
+        "2026-04-12T00:00:00Z",
+        asx_residual_review={
+            "summary": {
+                "asx_residual_backlog": {
+                    "rows": 2,
+                    "official_isin_apply_candidate_rows": 0,
+                    "direct_data_apply_allowed_rows": 0,
+                    "source_gate": "ASX residual work remains blocked without exact official evidence.",
+                },
+                "top_asx_resolution_review_batches": [
+                    {
+                        "recommended_next_source": "Reviewed ASX scope decision before identifier work.",
+                    }
+                ],
+            }
+        },
+    )
+
+    action = summary["next_actions"][0]
+    assert action["exchange"] == "ASX"
+    assert action["review_needed"] is True
+    assert action["residual_gate"] == "asx_residual_review_blocks_direct_apply"
+    assert action["direct_data_apply_allowed_rows"] == 0
+    assert action["official_isin_apply_candidate_rows"] == 0
+    assert "Reviewed ASX scope decision" in action["recommended_source"]
+
+
+def test_tse_sector_next_action_uses_jpx_report_gate_when_no_apply_candidates():
+    rows = build_completion_backlog(
+        [{"ticker": "2989", "exchange": "TSE", "asset_type": "Stock", "sector": ""}],
+        [],
+        {"by_exchange": [{"exchange": "TSE", "venue_status": "official_full", "official_source_count": 2}]},
+    )
+    summary = summarize(
+        rows,
+        {"global": {}, "by_exchange": []},
+        "2026-04-12T00:00:00Z",
+        jpx_tse_sector_backfill={
+            "summary": {
+                "candidates": 1,
+                "accepted_sector_updates": 0,
+                "decision_counts": {"missing_jpx_industry": 1},
+            }
+        },
+    )
+
+    action = summary["next_actions"][0]
+    assert action["exchange"] == "TSE"
+    assert action["field"] == FIELD_MISSING_STOCK_SECTOR
+    assert action["review_needed"] is True
+    assert action["residual_gate"] == "jpx_tse_sector_backfill_blocks_direct_apply"
+    assert action["accepted_sector_updates"] == 0
+    assert action["jpx_missing_industry_rows"] == 1
+    assert "no JPX 33-industry values" in action["recommended_source"]
+
+
+def test_otc_sector_next_action_uses_sec_sic_residual_gate_when_no_apply_candidates():
+    rows = build_completion_backlog(
+        [{"ticker": "A", "exchange": "OTC", "asset_type": "Stock", "sector": ""}],
+        [],
+        {"by_exchange": [{"exchange": "OTC", "venue_status": "official_full", "official_source_count": 3}]},
+    )
+    summary = summarize(
+        rows,
+        {"global": {}, "by_exchange": []},
+        "2026-04-12T00:00:00Z",
+        sec_sic_sector_backfill={
+            "summary": {
+                "candidates": 1,
+                "accepted_sector_updates": 0,
+                "exchanges": ["OTC"],
+                "requests_made": 0,
+                "decision_counts": {"no_sec_match": 1},
+            }
+        },
+    )
+
+    action = summary["next_actions"][0]
+    assert action["exchange"] == "OTC"
+    assert action["field"] == FIELD_MISSING_STOCK_SECTOR
+    assert action["review_needed"] is True
+    assert action["residual_gate"] == "sec_sic_otc_no_apply_candidates"
+    assert action["sec_sic_candidates"] == 1
+    assert action["accepted_sector_updates"] == 0
+    assert action["sec_no_match_rows"] == 1
+    assert "no accepted OTC sector candidates" in action["recommended_source"]
+
+
+def test_canada_isin_next_action_uses_residual_gate_when_no_direct_identifier_apply():
+    rows = build_completion_backlog(
+        [],
+        [
+            {"exchange": "TSX", "asset_type": "Stock", "scope_reason": "primary_listing_missing_isin"},
+            {"exchange": "TSX", "asset_type": "ETF", "scope_reason": "primary_listing_missing_isin"},
+        ],
+        {"by_exchange": [{"exchange": "TSX", "venue_status": "official_full", "official_source_count": 3}]},
+    )
+    summary = summarize(
+        rows,
+        {"global": {}, "by_exchange": []},
+        "2026-04-12T00:00:00Z",
+        canada_residual_review={
+            "summary": {
+                "canada_identifier_backlog": {
+                    "rows": 4,
+                    "direct_identifier_apply_allowed_rows": 0,
+                    "official_isin_source_required_rows": 3,
+                    "scope_decision_required_rows": 1,
+                    "reviewed_openfigi_source_gap_rows": 2,
+                    "source_gate": "Canadian identifier work remains blocked without listing-keyed official evidence.",
+                },
+                "canada_resolution_queue_exchange_totals": {
+                    "missing_isin_official_canada_masterfiles_do_not_expose_isin": {"TSX": 2},
+                    "missing_isin_reviewed_source_gap": {"TSX": 1},
+                },
+                "top_canada_resolution_review_batches": [
+                    {
+                        "canada_resolution_queue": "missing_isin_official_canada_masterfiles_do_not_expose_isin",
+                        "exchange": "TSX",
+                        "recommended_next_source": "Official Canada identifier source exposing a valid ISIN.",
+                    }
+                ],
+            }
+        },
+    )
+
+    action = summary["next_actions"][0]
+    assert action["exchange"] == "TSX"
+    assert action["field"] == FIELD_MISSING_ISIN
+    assert action["review_needed"] is True
+    assert action["residual_gate"] == "canada_residual_review_blocks_direct_identifier_apply"
+    assert action["direct_identifier_apply_allowed_rows"] == 0
+    assert action["official_isin_source_required_rows"] == 3
+    assert action["scope_decision_required_rows"] == 1
+    assert action["exchange_missing_isin_official_source_rows"] == 2
+    assert "Official Canada identifier source" in action["recommended_source"]
+
+
+def test_b3_sector_next_action_uses_residual_gate_when_no_taxonomy_match():
+    rows = build_completion_backlog(
+        [{"ticker": "B3SA3", "exchange": "B3", "asset_type": "Stock", "sector": ""}],
+        [],
+        {"by_exchange": [{"exchange": "B3", "venue_status": "official_full", "official_source_count": 3}]},
+    )
+    summary = summarize(
+        rows,
+        {"global": {}, "by_exchange": []},
+        "2026-04-12T00:00:00Z",
+        b3_residual_sector_review={
+            "summary": {
+                "rows": 1,
+                "apply_eligibility_totals": {"source_gap_keep_blank_until_official_taxonomy_evidence": 1},
+                "b3_probe_decision_totals": {"no_b3_code_match": 1},
+                "b3_code_shape_totals": {"alpha_b3_code": 1},
+                "top_b3_sector_review_batches": [
+                    {
+                        "recommended_next_source": "Stronger official B3 taxonomy source.",
+                        "source_gate": "Keep stock_sector blank until official B3 evidence matches.",
+                    }
+                ],
+            }
+        },
+    )
+
+    action = summary["next_actions"][0]
+    assert action["exchange"] == "B3"
+    assert action["field"] == FIELD_MISSING_STOCK_SECTOR
+    assert action["review_needed"] is True
+    assert action["residual_gate"] == "b3_residual_sector_review_blocks_direct_apply"
+    assert action["b3_residual_sector_rows"] == 1
+    assert action["b3_source_gap_keep_blank_rows"] == 1
+    assert action["b3_no_code_match_rows"] == 1
+    assert "Stronger official B3 taxonomy source" in action["recommended_source"]
+
+
+def test_source_gap_context_preserves_stronger_residual_gate():
+    rows = build_completion_backlog(
+        [{"ticker": "B3SA3", "exchange": "B3", "asset_type": "Stock", "sector": ""}],
+        [],
+        {"by_exchange": [{"exchange": "B3", "venue_status": "official_full", "official_source_count": 3}]},
+    )
+    summary = summarize(
+        rows,
+        {"global": {}, "by_exchange": []},
+        "2026-04-12T00:00:00Z",
+        b3_residual_sector_review={
+            "summary": {
+                "rows": 1,
+                "apply_eligibility_totals": {"source_gap_keep_blank_until_official_taxonomy_evidence": 1},
+            }
+        },
+        source_gap_classification={
+            "summary": {
+                "top_source_gap_review_batches": [
+                    {
+                        "field": "missing_sector_stock",
+                        "gap_class": "official_industry_taxonomy_unavailable_gap",
+                        "exchange": "B3",
+                        "rows": 1,
+                        "recommended_next_source": "Generic source gap.",
+                        "source_gate": "Generic source gate.",
+                    }
+                ]
+            }
+        },
+    )
+
+    action = summary["next_actions"][0]
+    assert action["residual_gate"] == "b3_residual_sector_review_blocks_direct_apply"
+    assert action["source_gap_class"] == "official_industry_taxonomy_unavailable_gap"
+    assert action["source_gap_rows"] == 1
+    assert "B3 or issuer taxonomy" in action["recommended_source"]
+
+
+def test_weak_sector_next_action_uses_residual_gate_when_no_direct_sector_apply():
+    rows = build_completion_backlog(
+        [{"ticker": "A", "exchange": "CSE_LK", "asset_type": "Stock", "sector": ""}],
+        [],
+        {"by_exchange": [{"exchange": "CSE_LK", "venue_status": "official_partial", "official_source_count": 2}]},
+    )
+    summary = summarize(
+        rows,
+        {"global": {}, "by_exchange": []},
+        "2026-04-12T00:00:00Z",
+        weak_sector_residual_review={
+            "summary": {
+                "weak_sector_backlog": {
+                    "rows": 1,
+                    "direct_sector_apply_allowed_rows": 0,
+                    "official_sector_candidate_rows": 0,
+                    "scope_decision_required_rows": 0,
+                    "masterfile_without_sector_rows": 1,
+                    "venue_taxonomy_source_required_rows": 0,
+                    "source_gate": "Weak-sector enrichment remains blocked without listing-keyed official evidence.",
+                },
+                "venue_backlog_exchange_queue_totals": {
+                    "CSE_LK": {"official_masterfile_without_sector_source_gap": 1}
+                },
+                "top_weak_sector_resolution_review_batches": [
+                    {
+                        "exchange": "CSE_LK",
+                        "recommended_next_source": "Updated official masterfile or issuer taxonomy exposing sector.",
+                        "source_gate": "Keep sector blank until an official masterfile exposes sector.",
+                    }
+                ],
+            }
+        },
+    )
+
+    action = summary["next_actions"][0]
+    assert action["exchange"] == "CSE_LK"
+    assert action["field"] == FIELD_MISSING_STOCK_SECTOR
+    assert action["review_needed"] is True
+    assert action["residual_gate"] == "weak_sector_residual_review_blocks_direct_apply"
+    assert action["direct_sector_apply_allowed_rows"] == 0
+    assert action["exchange_official_masterfile_without_sector_rows"] == 1
+    assert "Updated official masterfile" in action["recommended_source"]
+
+
+def test_source_gap_classification_context_gates_uncovered_next_action():
+    rows = build_completion_backlog(
+        [{"ticker": "A", "exchange": "LSE", "asset_type": "Stock", "sector": ""}],
+        [],
+        {"by_exchange": [{"exchange": "LSE", "venue_status": "official_full", "official_source_count": 3}]},
+    )
+    summary = summarize(
+        rows,
+        {"global": {}, "by_exchange": []},
+        "2026-04-12T00:00:00Z",
+        source_gap_classification={
+            "summary": {
+                "top_source_gap_review_batches": [
+                    {
+                        "field": "missing_sector_stock",
+                        "gap_class": "official_industry_taxonomy_unavailable_gap",
+                        "exchange": "LSE",
+                        "rows": 1,
+                        "recommended_next_source": "Implemented official venue source layer; residual needs a stronger taxonomy source.",
+                        "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a mappable industry value.",
+                    }
+                ]
+            }
+        },
+    )
+
+    action = summary["next_actions"][0]
+    assert action["exchange"] == "LSE"
+    assert action["field"] == FIELD_MISSING_STOCK_SECTOR
+    assert action["review_needed"] is True
+    assert action["residual_gate"] == "source_gap_classification_blocks_direct_apply"
+    assert action["source_gap_class"] == "official_industry_taxonomy_unavailable_gap"
+    assert action["source_gap_rows"] == 1
+    assert "stronger taxonomy source" in action["recommended_source"]
+    assert summary["next_action_gate_totals"] == {"source_gap_classification_blocks_direct_apply": 1}
+    assert summary["next_action_source_gap_class_totals"] == {"official_industry_taxonomy_unavailable_gap": 1}
+    assert summary["next_action_without_residual_gate_count"] == 0
+
+
+def test_default_next_actions_include_source_gap_candidates_beyond_top_eight():
+    tickers = []
+    for index, exchange in enumerate(
+        ["OTC", "B3", "CSE_LK", "Euronext", "LSE", "BK", "TSXV", "PSE", "CSE_MA"],
+        start=1,
+    ):
+        count = 20 - index
+        tickers.extend(
+            {
+                "ticker": f"{exchange}{row_index}",
+                "exchange": exchange,
+                "asset_type": "Stock",
+                "sector": "",
+            }
+            for row_index in range(count)
+        )
+    rows = build_completion_backlog(tickers, [], {"by_exchange": []})
+    summary = summarize(
+        rows,
+        {"global": {}, "by_exchange": []},
+        "2026-04-12T00:00:00Z",
+        source_gap_classification={
+            "summary": {
+                "top_source_gap_review_batches": [
+                    {
+                        "field": "missing_sector_stock",
+                        "gap_class": "official_industry_taxonomy_unavailable_gap",
+                        "exchange": "CSE_MA",
+                        "rows": 11,
+                        "recommended_next_source": "Official venue taxonomy source.",
+                        "source_gate": "Keep stock_sector blank until official taxonomy evidence exists.",
+                    }
+                ]
+            }
+        },
+    )
+
+    assert len(summary["next_actions"]) == 9
+    cse_ma_action = next(action for action in summary["next_actions"] if action["exchange"] == "CSE_MA")
+    assert cse_ma_action["residual_gate"] == "source_gap_classification_blocks_direct_apply"
+    assert cse_ma_action["source_gap_rows"] == 11
 
 
 def test_completion_backlog_ranks_by_missing_count_before_static_source_order():

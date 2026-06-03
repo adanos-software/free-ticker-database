@@ -152,6 +152,9 @@ def test_summarize_reports_closure_and_next_batches():
     assert summary["open_groups"] == 2
     assert summary["closed_groups"] == 0
     assert summary["direct_identifier_apply_allowed_rows"] == 0
+    assert summary["advisory_policy"]["direct_identifier_apply_allowed_rows"] == 0
+    assert summary["advisory_policy"]["identity_change_authorized"] is False
+    assert summary["advisory_policy"]["review_required_groups"] == 2
     assert summary["decision_candidate_totals"] == {
         "isin_shared_by_distinct_issuers": 1,
         "ticker_collision_isin_misassignment_suspected": 1,

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-05-29T12:29:37Z",
+    "generated_at": "2026-06-02T20:18:32Z",
     "source_files": {
       "masterfile_gap_csv": "data/reports/b3_masterfile_gap_review.csv",
       "masterfile_gap_json": "data/reports/b3_masterfile_gap_review.json",
@@ -70,13 +70,13 @@
       "asset_type": "ETF",
       "campaign": "b3_masterfile_gap",
       "evidence_required": "new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key",
-      "example_listing_keys": "B3::AFOF11|B3::AGCX11|B3::AQLL11|B3::CPTS11B|B3::HCRA16|B3::MBRF11|B3::OULG11B|B3::SPGM11",
+      "example_listing_keys": "B3::AFOF11|B3::AGCX11|B3::AGPL11|B3::AQLL11|B3::AURB11|B3::BTCE11|B3::BVAR11|B3::CPTS11B|B3::DOVL11|B3::EBRK11",
       "gap_class": "unit_or_fund_line",
       "priority": "P3",
       "recommended_next_source": "Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry.",
       "review_queue": "absent_from_all_b3_sources_fund_or_receipt_source_gap",
       "review_strategy": "keep_fund_or_receipt_gap_until_current_official_b3_or_issuer_evidence",
-      "rows": "8",
+      "rows": "43",
       "source_gate": "Keep row as source gap until current official product evidence proves active fund, ETF, BDR, or receipt listing."
     },
     {
@@ -84,13 +84,27 @@
       "asset_type": "Stock",
       "campaign": "b3_masterfile_gap",
       "evidence_required": "new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key",
-      "example_listing_keys": "B3::ADMF3|B3::AZUL53|B3::C3RP3|B3::GUAR3|B3::ICBR3|B3::MERC4|B3::NEOE3|B3::ODPV3|B3::P5RD3|B3::PASS5",
+      "example_listing_keys": "B3::DNEN3B|B3::EQMA5B|B3::EQMA6B|B3::IVLG3B|B3::IVPR3B|B3::IVPR4B|B3::LTEL3B|B3::LTLA3B|B3::MCRJ11B|B3::MRSA5B",
+      "gap_class": "other",
+      "priority": "P3",
+      "recommended_next_source": "Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry.",
+      "review_queue": "absent_from_all_b3_sources_fund_or_receipt_source_gap",
+      "review_strategy": "keep_fund_or_receipt_gap_until_current_official_b3_or_issuer_evidence",
+      "rows": "16",
+      "source_gate": "Keep row as source gap until current official product evidence proves active fund, ETF, BDR, or receipt listing."
+    },
+    {
+      "action_queue": "seek_current_b3_or_issuer_listing_evidence",
+      "asset_type": "Stock",
+      "campaign": "b3_masterfile_gap",
+      "evidence_required": "new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key",
+      "example_listing_keys": "B3::2WAV3|B3::A6OP3|B3::AALR12|B3::AALR13|B3::ABCB3|B3::ADMF3|B3::AESO3|B3::AGBK4|B3::AGRA4|B3::AMZG3",
       "gap_class": "local_share_line",
       "priority": "P3",
       "recommended_next_source": "Current B3 exchange directory, B3 issuer page, CVM filing, or issuer investor-relations listing evidence.",
       "review_queue": "absent_from_all_b3_sources_local_share_source_gap",
       "review_strategy": "keep_local_share_gap_until_current_official_b3_or_issuer_evidence",
-      "rows": "15",
+      "rows": "263",
       "source_gate": "Keep row as source gap until current official B3 or issuer evidence proves the active local-share listing."
     },
     {
@@ -126,57 +140,57 @@
     "action_queue_totals": {
       "decide_scope_before_identifier_enrichment": 10,
       "document_official_subset_closure_without_data_change": 17,
-      "seek_current_b3_or_issuer_listing_evidence": 23,
+      "seek_current_b3_or_issuer_listing_evidence": 322,
       "seek_official_identifier_source": 2,
       "seek_stronger_official_b3_or_issuer_taxonomy": 194
     },
     "b3_coverage_diagnosis": {
-      "absent_from_all_b3_source_gap_rows": 23,
-      "active_directory_match_rate": 97.47,
-      "active_directory_missing_dataset_rows": 40,
+      "absent_from_all_b3_source_gap_rows": 322,
+      "active_directory_match_rate": 78.6,
+      "active_directory_missing_dataset_rows": 339,
       "closed_no_data_change_rows": 17,
       "data_change_authorized": false,
       "dataset_rows": 1584,
       "official_non_directory_gap_rows": 17,
       "official_subset_candidate_isin_rows": 0,
       "official_subset_candidate_sector_rows": 15,
-      "open_review_rows": 23,
+      "open_review_rows": 322,
       "root_cause": "Residual B3 coverage gaps split between official B3 subset rows outside the active exchange-directory parser scope and listings absent from all current B3 masterfile sources.",
-      "rows_requiring_external_active_evidence": 23,
+      "rows_requiring_external_active_evidence": 322,
       "rows_requiring_parser_or_scope_review": 0,
       "source_gate": "No B3 ISIN, sector, category, name, symbol, or scope change is authorized until the exact listing-keyed official source evidence and apply gate are reviewed.",
-      "status": "active_directory_coverage_high_with_reviewable_residuals"
+      "status": "active_directory_coverage_has_official_subset_parser_or_scope_gap"
     },
     "b3_coverage_snapshot": {
-      "absent_from_all_b3_source_gap_rows": 23,
-      "active_directory_gap_rows": 40,
-      "active_directory_match_rate": 97.47,
-      "active_directory_matched_dataset_rows": 1544,
-      "active_directory_missing_dataset_rows": 40,
-      "active_exchange_directory_rows": 1941,
+      "absent_from_all_b3_source_gap_rows": 322,
+      "active_directory_gap_rows": 339,
+      "active_directory_match_rate": 78.6,
+      "active_directory_matched_dataset_rows": 1245,
+      "active_directory_missing_dataset_rows": 339,
+      "active_exchange_directory_rows": 1315,
       "active_exchange_directory_source_keys": [
         "b3_instruments_equities"
       ],
-      "all_b3_masterfile_rows": 2434,
+      "all_b3_masterfile_rows": 1809,
       "dataset_rows": 1584,
       "diagnosis": "Active B3 exchange-directory coverage is measured against b3_instruments_equities; rows found only in official ETF/BDR subset sources remain parser/scope review cases, and rows absent from all B3 sources remain source gaps.",
-      "official_any_source_match_rate": 98.55,
-      "official_any_source_matched_dataset_rows": 1561,
-      "official_any_source_missing_dataset_rows": 23,
+      "official_any_source_match_rate": 79.67,
+      "official_any_source_matched_dataset_rows": 1262,
+      "official_any_source_missing_dataset_rows": 322,
       "official_non_directory_gap_rows": 17,
       "official_non_directory_source_keys": [
         "b3_bdr_etfs",
         "b3_listed_etfs"
       ]
     },
-    "batches": 8,
+    "batches": 9,
     "campaign_totals": {
-      "b3_masterfile_gap": 40,
+      "b3_masterfile_gap": 339,
       "b3_residual_isin": 12,
       "b3_residual_sector": 194
     },
     "direct_data_change_authorized": false,
-    "generated_at": "2026-05-29T12:29:37Z",
+    "generated_at": "2026-06-02T20:18:32Z",
     "policy": {
       "campaign_delta": "This queue records the current B3 residual backlog. Future B3 data campaigns should compare against these counts before and after apply-gated changes.",
       "no_guessing": "No ISIN, sector, category, name, symbol, or scope change is inferred from ticker shape or issuer name.",
@@ -185,17 +199,17 @@
     "priority_totals": {
       "P1": 10,
       "P2": 17,
-      "P3": 219
+      "P3": 518
     },
     "review_queue_totals": {
-      "absent_from_all_b3_sources_fund_or_receipt_source_gap": 8,
-      "absent_from_all_b3_sources_local_share_source_gap": 15,
+      "absent_from_all_b3_sources_fund_or_receipt_source_gap": 59,
+      "absent_from_all_b3_sources_local_share_source_gap": 263,
       "no_b3_classification_code_match_source_gap": 194,
       "not_in_current_b3_directory_source_gap": 2,
       "official_bdr_subset_without_category_source_gap_closed_no_data_change_closure": 2,
       "official_subset_category_already_reflected_scope_review_no_data_change_closure": 15,
       "scope_review_before_identifier_fill": 10
     },
-    "underlying_review_rows": 246
+    "underlying_review_rows": 545
   }
 }

@@ -1,6 +1,6 @@
 # Canada Residual Review
 
-Generated at: `2026-05-25T12:54:47Z`
+Generated at: `2026-06-02T19:05:23Z`
 
 This report tracks residual TSX/TSXV/NEO ISIN, FIGI, and metadata gaps with TMX/Cboe official-source context. It does not fill values.
 

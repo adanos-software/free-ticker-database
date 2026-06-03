@@ -14,6 +14,7 @@ REPORTS_DIR = ROOT / "data" / "reports"
 
 DEFAULT_NAME_MISMATCH_CSV = REPORTS_DIR / "otc_name_mismatch_review.csv"
 DEFAULT_DEEPSEEK_OTC_CSV = REPORTS_DIR / "deepseek_otc_review_queue.csv"
+DEFAULT_DEEPSEEK_SUMMARY_CSV = REPORTS_DIR / "deepseek_review_summary.csv"
 DEFAULT_CSV_OUT = REPORTS_DIR / "otc_name_mismatch_action_queue.csv"
 DEFAULT_JSON_OUT = REPORTS_DIR / "otc_name_mismatch_action_queue.json"
 DEFAULT_MD_OUT = REPORTS_DIR / "otc_name_mismatch_action_queue.md"
@@ -57,6 +58,10 @@ def deepseek_lookup(rows: list[dict[str, str]]) -> dict[str, dict[str, str]]:
     return {row["listing_key"]: row for row in rows if row.get("listing_key")}
 
 
+def select_name_mismatch_deepseek_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    return [row for row in rows if row.get("review_kind") == "otc_name_mismatch" and row.get("listing_key")]
+
+
 def isin_presence(row: dict[str, str]) -> str:
     return "with_isin" if row.get("isin") else "without_isin"
 
@@ -65,7 +70,8 @@ def deepseek_triage_for(row: dict[str, str], deepseek_rows: dict[str, dict[str, 
     review = deepseek_rows.get(row.get("listing_key", ""))
     if review is None:
         return "not_triaged_by_deepseek"
-    return f"deepseek_{review.get('deepseek_decision_candidate') or 'manual_review'}"
+    decision = review.get("decision_candidate") or review.get("deepseek_decision_candidate") or "manual_review"
+    return f"deepseek_{decision}"
 
 
 def action_for(review_class: str) -> str:
@@ -90,8 +96,11 @@ def build_action_rows(
     *,
     name_mismatch_rows: list[dict[str, str]],
     deepseek_rows: list[dict[str, str]],
+    deepseek_summary_rows: list[dict[str, str]] | None = None,
 ) -> list[dict[str, str]]:
-    deepseek_by_key = deepseek_lookup(deepseek_rows)
+    # Specific otc_name_mismatch reviews supersede older generic otc_scope triage for the same listing key.
+    combined_deepseek_rows = deepseek_rows + select_name_mismatch_deepseek_rows(deepseek_summary_rows or [])
+    deepseek_by_key = deepseek_lookup(combined_deepseek_rows)
     grouped: dict[tuple[str, str, str, str, str], list[dict[str, str]]] = defaultdict(list)
     for row in name_mismatch_rows:
         key = (
@@ -172,11 +181,12 @@ def summarize(action_rows: list[dict[str, str]], generated_at: str) -> dict[str,
     }
 
 
-def build_payload(name_mismatch_csv: Path, deepseek_otc_csv: Path) -> dict[str, Any]:
+def build_payload(name_mismatch_csv: Path, deepseek_otc_csv: Path, deepseek_summary_csv: Path) -> dict[str, Any]:
     generated_at = utc_now_iso()
     action_rows = build_action_rows(
         name_mismatch_rows=load_csv(name_mismatch_csv),
         deepseek_rows=load_csv(deepseek_otc_csv),
+        deepseek_summary_rows=load_csv(deepseek_summary_csv),
     )
     return {
         "_meta": {
@@ -184,6 +194,7 @@ def build_payload(name_mismatch_csv: Path, deepseek_otc_csv: Path) -> dict[str, 
             "source_files": {
                 "name_mismatch_csv": display_path(name_mismatch_csv),
                 "deepseek_otc_csv": display_path(deepseek_otc_csv),
+                "deepseek_summary_csv": display_path(deepseek_summary_csv),
             },
         },
         "summary": summarize(action_rows, generated_at),
@@ -284,6 +295,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build OTC name-mismatch action batches.")
     parser.add_argument("--name-mismatch-csv", type=Path, default=DEFAULT_NAME_MISMATCH_CSV)
     parser.add_argument("--deepseek-otc-csv", type=Path, default=DEFAULT_DEEPSEEK_OTC_CSV)
+    parser.add_argument("--deepseek-summary-csv", type=Path, default=DEFAULT_DEEPSEEK_SUMMARY_CSV)
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_CSV_OUT)
     parser.add_argument("--json-out", type=Path, default=DEFAULT_JSON_OUT)
     parser.add_argument("--md-out", type=Path, default=DEFAULT_MD_OUT)
@@ -292,7 +304,7 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    payload = build_payload(args.name_mismatch_csv, args.deepseek_otc_csv)
+    payload = build_payload(args.name_mismatch_csv, args.deepseek_otc_csv, args.deepseek_summary_csv)
     write_outputs(payload, args.csv_out, args.json_out, args.md_out)
     print(
         f"Wrote {len(payload['items'])} OTC name-mismatch action batches "

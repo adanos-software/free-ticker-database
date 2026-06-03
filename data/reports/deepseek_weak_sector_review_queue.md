@@ -1,6 +1,6 @@
 # DeepSeek Weak-Sector Review Queue
 
-Generated: `2026-05-29T12:03:10Z`
+Generated: `2026-06-03T00:37:41Z`
 
 Policy: DeepSeek weak-sector reviews are triage only and do not authorize sector fills.
 
@@ -8,14 +8,14 @@ Policy: DeepSeek weak-sector reviews are triage only and do not authorize sector
 
 | Metric | Value |
 | --- | ---: |
-| Queue rows | 50 |
+| Queue rows | 636 |
 | Unmatched DeepSeek rows | 0 |
 
 ## Review Queues
 
 | Queue | Rows |
 | --- | ---: |
-| keep_source_gap_until_official_taxonomy | 25 |
+| keep_source_gap_until_official_taxonomy | 611 |
 | official_sector_value_mapping_review | 24 |
 | scope_review_before_sector_fill | 1 |
 
@@ -23,7 +23,7 @@ Policy: DeepSeek weak-sector reviews are triage only and do not authorize sector
 
 | Official raw value | Rows |
 | --- | ---: |
-| missing | 26 |
+| missing | 612 |
 | CONGLOMERATES | 5 |
 | INVESTMENT | 1 |
 | SERVICES | 18 |

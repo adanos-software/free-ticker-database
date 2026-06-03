@@ -1,6 +1,6 @@
 # Canada Scope Review Queue
 
-Generated at: `2026-05-29T12:15:53Z`
+Generated at: `2026-06-02T20:18:32Z`
 
 This queue isolates TSX/TSXV/NEO `core_exclusion_candidate` rows that must be decided as core, extended, or exclude before Canada ISIN, FIGI, sector, or ETF-category work. It does not apply data changes.
 
@@ -34,8 +34,12 @@ This queue isolates TSX/TSXV/NEO `core_exclusion_candidate` rows that must be de
 | listing_history_status | active | 242 |
 | current_scope_reason | primary_listing | 76 |
 | current_scope_reason | primary_listing_missing_isin | 166 |
-| ohlcv_plausibility_status | not_checked | 16 |
+| ohlcv_plausibility_status | not_checked | 5 |
 | ohlcv_plausibility_status | not_sampled | 226 |
+| ohlcv_plausibility_status | notice | 4 |
+| ohlcv_plausibility_status | pass | 1 |
+| ohlcv_plausibility_status | source_gap | 1 |
+| ohlcv_plausibility_status | warn | 5 |
 
 ## Top Scope Review Batches
 

@@ -1,6 +1,6 @@
 # Weak-Sector Venue Action Queue
 
-Generated: `2026-05-29T12:26:45Z`
+Generated: `2026-06-02T20:27:12Z`
 Source: `data/reports/weak_sector_residual_review.csv`
 
 Policy: no sector values are applied from this report. It only groups blocked weak-sector gaps into venue-specific review and parser batches.

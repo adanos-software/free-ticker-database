@@ -1056,14 +1056,14 @@ def next_review_command_safety_summary(plan: list[dict[str, Any]]) -> dict[str, 
 
 def evidence_command_for_blocker(campaign_key: str, first_missing_delta: str) -> str:
     commands = {
-        "b3": "python scripts/build_b3_masterfile_gap_review.py && python scripts/apply_b3_etf_category_review.py && python scripts/backfill_b3_sector_classification.py && python scripts/build_b3_residual_isin_review.py && python scripts/build_b3_residual_sector_review.py && python scripts/build_coverage_report.py && python scripts/build_improvement_delta_report.py",
+        "b3": "python scripts/build_b3_masterfile_gap_review.py && python scripts/build_b3_residual_isin_review.py && python scripts/build_b3_residual_sector_review.py && python scripts/build_coverage_report.py && python scripts/build_improvement_delta_report.py",
         "otc": "python scripts/build_otc_scope_review.py && python scripts/build_otc_name_mismatch_review.py && python scripts/build_improvement_delta_report.py",
         "canada": "python scripts/build_canada_residual_review.py && python scripts/build_canada_figi_queue.py && python scripts/build_improvement_delta_report.py",
         "asx": "python scripts/build_asx_residual_review.py && python scripts/build_improvement_delta_report.py",
         "weak_sector": "python scripts/build_weak_sector_residual_review.py && python scripts/build_improvement_delta_report.py",
         "masterfile_collisions": "python scripts/build_masterfile_collision_review.py && python scripts/build_improvement_delta_report.py",
         "symbol_changes": "python scripts/fetch_symbol_changes.py && python scripts/build_improvement_delta_report.py",
-        "ohlcv": "python scripts/build_ohlcv_plausibility_report.py --fetch-yahoo --max-fetch 250 --focus-status source_gap && python scripts/build_improvement_delta_report.py",
+        "ohlcv": "python scripts/build_ohlcv_plausibility_report.py --sample-profile quality_clusters --fetch-yahoo --max-fetch 250 --include-not-checked && python scripts/build_improvement_delta_report.py",
         "freshness": "python scripts/fetch_exchange_masterfiles.py && python scripts/build_coverage_report.py && python scripts/build_improvement_delta_report.py",
         "baseline": "python scripts/build_improvement_delta_report.py",
     }
@@ -2546,6 +2546,7 @@ def render_markdown(payload: dict[str, Any]) -> str:
                 f"| `network_required_rows` | `{markdown_cell(execution_summary.get('network_required_rows'))}` |",
                 f"| `local_report_rebuild_rows` | `{markdown_cell(execution_summary.get('local_report_rebuild_rows'))}` |",
                 f"| `data_change_authorized_actions` | `{markdown_cell(execution_summary.get('data_change_authorized_actions'))}` |",
+                f"| `local_campaign_keys` | `{markdown_cell(json.dumps(execution_summary.get('local_campaign_keys', []), ensure_ascii=False))}` |",
                 f"| `network_campaign_keys` | `{markdown_cell(json.dumps(execution_summary.get('network_campaign_keys', []), ensure_ascii=False))}` |",
             ]
         )

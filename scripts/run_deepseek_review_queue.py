@@ -4,6 +4,7 @@ import argparse
 import csv
 import json
 import os
+import socket
 import time
 import urllib.error
 import urllib.request
@@ -41,6 +42,46 @@ REVIEW_FIELDS_BY_KIND = {
         "review_bucket",
         "review_priority",
         "metadata_enrichment_gate",
+    ],
+    "otc_name_mismatch": [
+        "listing_key",
+        "ticker",
+        "exchange",
+        "asset_type",
+        "current_name",
+        "official_name",
+        "isin",
+        "country",
+        "official_sources",
+        "token_overlap",
+        "review_class",
+        "review_priority",
+        "apply_eligibility",
+        "verification_evidence_required",
+        "review_strategy",
+        "recommended_next_source",
+        "source_gate",
+        "official_source_context",
+        "identity_review_context",
+        "decision_review_context",
+        "recommended_action",
+    ],
+    "source_gap": [
+        "field",
+        "target_field",
+        "listing_key",
+        "ticker",
+        "exchange",
+        "asset_type",
+        "name",
+        "gap_class",
+        "review_needed",
+        "confidence_policy",
+        "recommended_next_source",
+        "source_gate",
+        "source_gap_context",
+        "classification_context",
+        "evidence_gate_context",
     ],
     "weak_sector": [
         "listing_key",
@@ -86,6 +127,32 @@ VALID_DECISIONS = {
     "possible_duplicate_or_cross_listing",
     "out_of_scope_candidate",
     "uncertain",
+}
+
+VALID_SAFE_ACTIONS = {
+    "needs_official_evidence",
+    "likely_same_issuer_review",
+    "likely_distinct_issuer_review",
+    "source_gap_accept",
+    "candidate_for_official_followup",
+}
+
+SAFE_ACTION_BY_DECISION = {
+    "keep_source_gap": "source_gap_accept",
+    "needs_official_evidence": "needs_official_evidence",
+    "candidate_apply_blocked": "candidate_for_official_followup",
+    "possible_duplicate_or_cross_listing": "likely_same_issuer_review",
+    "out_of_scope_candidate": "candidate_for_official_followup",
+    "uncertain": "needs_official_evidence",
+}
+
+SAFE_ACTIONS_BY_DECISION = {
+    decision: {safe_action}
+    for decision, safe_action in SAFE_ACTION_BY_DECISION.items()
+}
+SAFE_ACTIONS_BY_DECISION["possible_duplicate_or_cross_listing"] = {
+    "likely_same_issuer_review",
+    "likely_distinct_issuer_review",
 }
 
 
@@ -142,8 +209,11 @@ def build_prompt(rows: list[dict[str, str]], *, review_kind: str) -> str:
         "Never output a value that should be applied to the database. If official evidence is missing, say so.\n"
         "Return JSON only with this exact top-level shape:\n"
         '{"reviews":[{"listing_key":"...","ticker":"...","exchange":"...","review_kind":"...",'
+        '"classification":"...",'
         '"decision_candidate":"keep_source_gap|needs_official_evidence|candidate_apply_blocked|'
         'possible_duplicate_or_cross_listing|out_of_scope_candidate|uncertain",'
+        '"safe_action":"needs_official_evidence|likely_same_issuer_review|likely_distinct_issuer_review|'
+        'source_gap_accept|candidate_for_official_followup",'
         '"confidence":0.0,"evidence_needed":"...","rationale":"...",'
         '"do_not_apply_reason":"..."}]}\n'
         f"Return exactly {len(compacted_rows)} review objects in the same order as the rows.\n"
@@ -173,19 +243,26 @@ def parse_json_object(text: str) -> dict[str, Any]:
 
 
 def normalize_review(raw: dict[str, Any], source_row: dict[str, str], review_kind: str) -> dict[str, Any]:
-    decision = str(raw.get("decision_candidate") or "uncertain")
+    decision = str(raw.get("decision_candidate") or "uncertain").strip()
     if decision not in VALID_DECISIONS:
         decision = "uncertain"
+    safe_action = str(raw.get("safe_action") or SAFE_ACTION_BY_DECISION[decision]).strip()
+    if safe_action not in VALID_SAFE_ACTIONS or safe_action not in SAFE_ACTIONS_BY_DECISION[decision]:
+        safe_action = SAFE_ACTION_BY_DECISION[decision]
     confidence = raw.get("confidence", 0)
     if not isinstance(confidence, (int, float)) or isinstance(confidence, bool):
         confidence = 0
     confidence = max(0.0, min(1.0, float(confidence)))
+    listing_key = trim(raw.get("listing_key")) or trim(source_row.get("listing_key")) or trim(source_row.get("target_listing_key"))
+    exchange = trim(raw.get("exchange")) or trim(source_row.get("exchange")) or trim(source_row.get("target_exchange"))
     return {
-        "listing_key": str(raw.get("listing_key") or source_row.get("listing_key") or source_row.get("target_listing_key", "")),
-        "ticker": str(raw.get("ticker") or source_row.get("ticker", "")),
-        "exchange": str(raw.get("exchange") or source_row.get("exchange") or source_row.get("target_exchange", "")),
-        "review_kind": str(raw.get("review_kind") or review_kind),
+        "listing_key": listing_key,
+        "ticker": trim(raw.get("ticker")) or trim(source_row.get("ticker")),
+        "exchange": exchange,
+        "review_kind": trim(raw.get("review_kind")) or trim(review_kind),
+        "classification": trim(raw.get("classification") or decision, 120),
         "decision_candidate": decision,
+        "safe_action": safe_action,
         "confidence": confidence,
         "evidence_needed": trim(raw.get("evidence_needed", ""), 500),
         "rationale": trim(raw.get("rationale", ""), 500),
@@ -256,6 +333,8 @@ def write_outputs(
     dry_run: bool,
 ) -> None:
     output_json.parent.mkdir(parents=True, exist_ok=True)
+    output_csv.parent.mkdir(parents=True, exist_ok=True)
+    errors_json.parent.mkdir(parents=True, exist_ok=True)
     payload = {
         "_meta": {
             "generated_at": utc_now_iso(),
@@ -281,7 +360,9 @@ def write_outputs(
                 "ticker",
                 "exchange",
                 "review_kind",
+                "classification",
                 "decision_candidate",
+                "safe_action",
                 "confidence",
                 "evidence_needed",
                 "rationale",
@@ -293,13 +374,41 @@ def write_outputs(
     errors_json.write_text(json.dumps({"errors": errors}, indent=2), encoding="utf-8")
 
 
+def dry_run_would_overwrite_non_dry_run_output(output_json: Path) -> bool:
+    if not output_json.exists():
+        return False
+    try:
+        payload = json.loads(output_json.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return True
+    if not isinstance(payload, dict):
+        return True
+    meta = payload.get("_meta", {})
+    if not isinstance(meta, dict):
+        return True
+    return meta.get("dry_run") is not True
+
+
 def run(args: argparse.Namespace) -> int:
+    if (
+        args.dry_run
+        and not args.allow_dry_run_overwrite
+        and (
+            dry_run_would_overwrite_non_dry_run_output(args.normalized_json)
+            or args.raw_responses_jsonl.exists()
+        )
+    ):
+        raise SystemExit(
+            "--dry-run would overwrite or append to existing DeepSeek review outputs; "
+            "use custom output paths or pass --allow-dry-run-overwrite."
+        )
     rows = read_csv_rows(args.input_csv, offset=args.offset, limit=args.limit)
     batches = chunk_rows(rows, args.batch_size)
     normalized_reviews: list[dict[str, Any]] = []
     errors: list[dict[str, Any]] = []
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
+    args.raw_responses_jsonl.parent.mkdir(parents=True, exist_ok=True)
     with args.raw_responses_jsonl.open("a", encoding="utf-8") as raw_handle:
         for batch_index, batch in enumerate(batches, start=1):
             prompt = build_prompt(batch, review_kind=args.review_kind)
@@ -312,7 +421,9 @@ def run(args: argparse.Namespace) -> int:
                                 "ticker": row.get("ticker", ""),
                                 "exchange": row.get("exchange") or row.get("target_exchange", ""),
                                 "review_kind": args.review_kind,
+                                "classification": "dry_run_schema_validation",
                                 "decision_candidate": "needs_official_evidence",
+                                "safe_action": "needs_official_evidence",
                                 "confidence": 0.1,
                                 "evidence_needed": "Dry run; no DeepSeek API request was made.",
                                 "rationale": "Dry run validates batching and output schema only.",
@@ -344,8 +455,17 @@ def run(args: argparse.Namespace) -> int:
                     )
                     + "\n"
                 )
+                raw_handle.flush()
                 normalized_reviews.extend(normalize_payload(payload, batch, args.review_kind))
-            except (RuntimeError, ValueError, KeyError, json.JSONDecodeError, urllib.error.URLError) as exc:
+            except (
+                RuntimeError,
+                ValueError,
+                KeyError,
+                json.JSONDecodeError,
+                urllib.error.URLError,
+                TimeoutError,
+                socket.timeout,
+            ) as exc:
                 errors.append({"batch_index": batch_index, "error": str(exc)})
 
     write_outputs(
@@ -391,6 +511,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--timeout", type=float, default=90.0)
     parser.add_argument("--sleep-seconds", type=float, default=0.5)
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument(
+        "--allow-dry-run-overwrite",
+        action="store_true",
+        help="Allow --dry-run to overwrite or append to existing DeepSeek review outputs.",
+    )
     return parser.parse_args(argv)
 
 

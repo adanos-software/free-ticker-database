@@ -1,6 +1,6 @@
 # DeepSeek OTC Review Queue
 
-Generated: `2026-05-29T12:07:14Z`
+Generated: `2026-06-03T00:42:25Z`
 
 Policy: DeepSeek OTC reviews are triage only and do not authorize names, sectors, aliases, or scope changes.
 
@@ -8,20 +8,34 @@ Policy: DeepSeek OTC reviews are triage only and do not authorize names, sectors
 
 | Metric | Value |
 | --- | ---: |
-| Queue rows | 25 |
-| Unmatched DeepSeek rows | 0 |
+| Queue rows | 8996 |
+| Unmatched DeepSeek rows | 2 |
 
 ## Review Queues
 
 | Queue | Rows |
 | --- | ---: |
-| official_name_mismatch_evidence_review | 25 |
+| official_name_mismatch_evidence_review | 21 |
+| otc_scope_evidence_review | 8804 |
+| otc_source_gap_evidence_review | 171 |
 
 ## Issue Types
 
 | Issue type | Rows |
 | --- | ---: |
-| official_name_mismatch | 25 |
+| missing | 6217 |
+| official_isin_mismatch|official_name_mismatch | 9 |
+| official_name_mismatch | 12 |
+| official_reference_gap | 2758 |
+
+## Unmatched DeepSeek Rows
+
+These advisory rows no longer match the current OTC scope review and are excluded from the active queue.
+
+| Listing key | Reason |
+| --- | --- |
+| OTC::DUKR | missing_otc_scope_review_row |
+| OTC::FNRN | missing_otc_scope_review_row |
 
 ## Review Gate
 

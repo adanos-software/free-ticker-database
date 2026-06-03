@@ -1,6 +1,6 @@
 # DeepSeek Review Summary
 
-Generated: `2026-05-25T16:11:50Z`
+Generated: `2026-06-02T21:15:57Z`
 
 Policy: DeepSeek output is triage only and does not authorize data application.
 
@@ -8,19 +8,62 @@ Policy: DeepSeek output is triage only and does not authorize data application.
 
 | Metric | Value |
 | --- | ---: |
-| Raw batches | 25 |
-| Review rows | 125 |
+| Raw batches | 3293 |
+| Review rows | 26408 |
 | Errors | 0 |
+| Duplicate review keys | 0 |
+| Blank listing keys | 0 |
 
 ## Decisions By Queue
 
 | Review kind | Decision | Rows |
 | --- | --- | ---: |
-| masterfile_collision | possible_duplicate_or_cross_listing | 50 |
-| otc_scope | needs_official_evidence | 25 |
-| weak_sector | keep_source_gap | 7 |
-| weak_sector | needs_official_evidence | 42 |
+| masterfile_collision | candidate_apply_blocked | 1475 |
+| masterfile_collision | keep_source_gap | 1003 |
+| masterfile_collision | needs_official_evidence | 4017 |
+| masterfile_collision | out_of_scope_candidate | 557 |
+| masterfile_collision | possible_duplicate_or_cross_listing | 2975 |
+| masterfile_collision | uncertain | 1163 |
+| otc_name_mismatch | candidate_apply_blocked | 26 |
+| otc_name_mismatch | needs_official_evidence | 121 |
+| otc_name_mismatch | uncertain | 5 |
+| otc_scope | candidate_apply_blocked | 11 |
+| otc_scope | keep_source_gap | 1475 |
+| otc_scope | needs_official_evidence | 8998 |
+| otc_scope | out_of_scope_candidate | 11 |
+| otc_scope | possible_duplicate_or_cross_listing | 16 |
+| otc_scope | uncertain | 545 |
+| source_gap | candidate_apply_blocked | 14 |
+| source_gap | keep_source_gap | 1160 |
+| source_gap | needs_official_evidence | 2112 |
+| source_gap | out_of_scope_candidate | 18 |
+| source_gap | uncertain | 60 |
+| weak_sector | keep_source_gap | 487 |
+| weak_sector | needs_official_evidence | 148 |
 | weak_sector | out_of_scope_candidate | 1 |
+| weak_sector | uncertain | 10 |
+
+## Safe Actions By Queue
+
+| Review kind | Safe action | Rows |
+| --- | --- | ---: |
+| masterfile_collision | candidate_for_official_followup | 2032 |
+| masterfile_collision | likely_distinct_issuer_review | 328 |
+| masterfile_collision | likely_same_issuer_review | 2647 |
+| masterfile_collision | needs_official_evidence | 5180 |
+| masterfile_collision | source_gap_accept | 1003 |
+| otc_name_mismatch | candidate_for_official_followup | 26 |
+| otc_name_mismatch | needs_official_evidence | 126 |
+| otc_scope | candidate_for_official_followup | 22 |
+| otc_scope | likely_same_issuer_review | 16 |
+| otc_scope | needs_official_evidence | 9543 |
+| otc_scope | source_gap_accept | 1475 |
+| source_gap | candidate_for_official_followup | 32 |
+| source_gap | needs_official_evidence | 2172 |
+| source_gap | source_gap_accept | 1160 |
+| weak_sector | candidate_for_official_followup | 1 |
+| weak_sector | needs_official_evidence | 158 |
+| weak_sector | source_gap_accept | 487 |
 
 ## Next Review
 

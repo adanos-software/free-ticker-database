@@ -7,6 +7,7 @@ import sys
 import urllib.request
 from collections import Counter
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -19,7 +20,7 @@ from scripts.rebuild_dataset import TICKERS_CSV, normalize_sector
 
 
 DEFAULT_JPX_LISTED_ISSUES_URL = "https://www.jpx.co.jp/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_j.xls"
-DEFAULT_OUTPUT_DIR = ROOT / "data" / "jpx_verification"
+DEFAULT_OUTPUT_DIR = ROOT / "data" / "reports"
 DEFAULT_REPORT_JSON = DEFAULT_OUTPUT_DIR / "tse_sector_backfill.json"
 DEFAULT_REPORT_CSV = DEFAULT_OUTPUT_DIR / "tse_sector_backfill.csv"
 DEFAULT_METADATA_UPDATES_CSV = ROOT / "data" / "review_overrides" / "metadata_updates.csv"
@@ -89,6 +90,10 @@ def display_path(path: Path) -> str:
         return str(path.relative_to(ROOT))
     except ValueError:
         return str(path)
+
+
+def utc_now_iso() -> str:
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
 def download_jpx_listed_issues(url: str, *, timeout_seconds: float) -> bytes:
@@ -212,6 +217,30 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
     return updates
 
 
+def build_report_payload(
+    results: list[dict[str, Any]],
+    updates: list[dict[str, str]],
+    *,
+    applied: bool,
+    generated_at: str | None = None,
+) -> dict[str, Any]:
+    decision_counts = dict(Counter(result["decision"] for result in results))
+    return {
+        "generated_at": generated_at or utc_now_iso(),
+        "summary": {
+            "candidates": len(results),
+            "decision_counts": decision_counts,
+            "accepted_sector_updates": len(updates),
+            "applied": applied,
+            "source_policy": (
+                "Official JPX listed-issues rows may support stock_sector only after exact TSE code match, "
+                "JPX 33-industry value, and canonical sector normalization."
+            ),
+        },
+        "accepted_results": [result for result in results if result["decision"] == "accept"],
+    }
+
+
 def write_report_csv(path: Path, rows: list[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
@@ -249,7 +278,12 @@ def main(argv: list[str] | None = None) -> None:
 
     args.json_out.parent.mkdir(parents=True, exist_ok=True)
     args.json_out.write_text(
-        json.dumps([result for result in results if result["decision"] == "accept"], indent=2, sort_keys=True, ensure_ascii=False),
+        json.dumps(
+            build_report_payload(results, updates, applied=args.apply),
+            indent=2,
+            sort_keys=True,
+            ensure_ascii=False,
+        ),
         encoding="utf-8",
     )
     write_report_csv(args.csv_out, results)

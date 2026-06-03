@@ -1,17 +1,17 @@
 # Release Acceptance
 
-Generated: `2026-05-31T04:04:55Z`
+Generated: `2026-06-03T04:09:37Z`
 
 Overall passed: `True`
 
-Summary context: `passed=true;criteria=41;passed_criteria=41;failed_criteria=0;validation_failed_error_gates=0`
+Summary context: `passed=true;criteria=60;passed_criteria=60;failed_criteria=0;validation_failed_error_gates=0`
 
 ## Summary
 
 | Metric | Value |
 |---|---:|
-| `criteria` | `41` |
-| `passed_criteria` | `41` |
+| `criteria` | `60` |
+| `passed_criteria` | `60` |
 | `failed_criteria` | `0` |
 | `validation_failed_error_gates` | `0` |
 
@@ -27,19 +27,38 @@ Summary context: `passed=true;criteria=41;passed_criteria=41;failed_criteria=0;v
 | `source_gap_review_integrity` | True |
 | `entry_quality_release_gate` | True |
 | `release_source_report_integrity` | True |
+| `deepseek_advisory_integrity` | True |
+| `deepseek_queue_advisory_policies` | True |
+| `deepseek_isin_collision_validation_gate` | True |
+| `completion_backlog_next_actions` | True |
 | `progress_markdown_traceability` | True |
 | `adanos_detection_simulation` | True |
 | `entry_quality_command_report` | True |
 | `coverage_freshness_visibility` | True |
+| `official_name_mismatch_backfill_gate` | True |
+| `source_inventory_gap_gate` | True |
+| `source_refresh_queue_gate` | True |
 | `source_gap_traceability` | True |
 | `symbol_change_review_gate` | True |
+| `otc_name_mismatch_review_gate` | True |
+| `otc_name_mismatch_action_queue_gate` | True |
 | `ohlcv_plausibility_gate` | True |
+| `ohlcv_warning_review_gate` | True |
 | `masterfile_collision_gate` | True |
+| `isin_identity_collision_gate` | True |
+| `financialdata_supplement_review_gate` | True |
 | `otc_scope_gate` | True |
 | `canada_figi_gate` | True |
+| `canada_scope_review_queue_gate` | True |
+| `canada_improvement_action_queue_gate` | True |
+| `b3_masterfile_gap_review_gate` | True |
+| `b3_core_scope_review_queue_gate` | True |
+| `b3_improvement_action_queue_gate` | True |
 | `b3_residual_gate` | True |
+| `asx_scope_review_queue_gate` | True |
 | `asx_residual_gate` | True |
 | `weak_sector_residual_gate` | True |
+| `weak_sector_venue_action_queue_gate` | True |
 | `before_after_delta_matrix` | True |
 | `improvement_baseline_integrity` | True |
 | `campaign_reviewability` | True |
@@ -63,11 +82,11 @@ Summary context: `passed=true;criteria=41;passed_criteria=41;failed_criteria=0;v
 
 | Metric | Baseline | Current | Delta |
 |---|---:|---:|---:|
-| `isin_delta` | 59847 | 59847 | 0 |
-| `sector_delta` | 43310 | 43310 | 0 |
+| `isin_delta` | 59848 | 59848 | 0 |
+| `sector_delta` | 43311 | 43311 | 0 |
 | `category_delta` | 15453 | 15453 | 0 |
 | `source_gap_delta` | 3548 | 3548 | 0 |
-| `warn_delta` | 217 | 217 | 0 |
+| `warn_delta` | 115 | 115 | 0 |
 | `quarantine_delta` | 0 | 0 | 0 |
 
 ## Campaign Status

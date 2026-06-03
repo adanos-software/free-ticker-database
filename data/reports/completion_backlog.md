@@ -1,14 +1,33 @@
 # Completion Backlog
 
-Generated at: `2026-05-31T04:00:46Z`
+Generated at: `2026-06-03T03:10:31Z`
 
 ## Summary
 
 - Missing primary ISIN rows: `846`
 - Missing stock sectors: `2600`
 - Missing ETF categories: `102`
-- Official symbol collisions tracked in exchange references: `11144`
+- Official symbol collisions tracked in exchange references: `11182`
 - Core rows hidden only by the legacy global-ticker compatibility export: `1`
+
+## Next Safe Batches
+
+| Rank | Exchange | Field | Missing | Safe action | Evidence path | Review |
+|---|---|---|---:|---|---|---|
+| 1 | ASX | missing_isin_primary | 105 | candidate_for_official_followup | asx_listed_companies plus reviewed scope decision for core, extended, or exclude before identifier work. | yes |
+| 2 | OTC | missing_sector_stock | 817 | candidate_for_official_followup | Current SEC SIC residual dry-run has no accepted OTC sector candidates; prioritize OTC Markets issuer evidence, reviewed Alpha Vantage/FinanceDatabase signals, or keep source-gap status. | yes |
+| 3 | TSX | missing_isin_primary | 102 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
+| 4 | TSE | missing_sector_stock | 21 | candidate_for_official_followup | Official JPX listed-issues verification shows exact TSE matches but no JPX 33-industry values; use official REIT/infrastructure-fund taxonomy evidence before any stock_sector update. | yes |
+| 5 | B3 | missing_sector_stock | 194 | candidate_for_official_followup | Stronger official B3 or issuer taxonomy source exposing sector for the exact listing. | yes |
+| 6 | CSE_LK | missing_sector_stock | 143 | candidate_for_official_followup | Updated official masterfile or issuer taxonomy exposing sector for the exact listing; current source: cse_lk_all_security_code. | yes |
+| 7 | Euronext | missing_sector_stock | 132 | candidate_for_official_followup | Updated official masterfile or issuer taxonomy exposing sector for the exact listing; current source: euronext_equities. | yes |
+| 8 | LSE | missing_sector_stock | 128 | candidate_for_official_followup | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | yes |
+| 9 | BK | missing_sector_stock | 102 | candidate_for_official_followup | Updated official masterfile or issuer taxonomy exposing sector for the exact listing; current source: boursa_kuwait_stocks. | yes |
+| 10 | TSXV | missing_sector_stock | 97 | candidate_for_official_followup | Official TMX issuer workbook classifies this row as CPC. | yes |
+| 11 | MSX | missing_isin_primary | 90 | candidate_for_official_followup | Separate official CSD/security registry or exchange detail feed with ISIN. | yes |
+| 12 | TSXV | missing_isin_primary | 82 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
+
+These are orchestration candidates only. They do not authorize direct data changes without the listed official or review-gated evidence.
 
 ## Top Missing Primary ISINs
 

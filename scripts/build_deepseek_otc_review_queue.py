@@ -41,7 +41,7 @@ def select_deepseek_otc_reviews(payload: dict[str, Any]) -> list[dict[str, Any]]
     items = payload.get("items", [])
     if not isinstance(items, list):
         return []
-    selected: list[dict[str, Any]] = []
+    selected_by_key: dict[str, dict[str, Any]] = {}
     for item in items:
         if not isinstance(item, dict):
             continue
@@ -49,8 +49,11 @@ def select_deepseek_otc_reviews(payload: dict[str, Any]) -> list[dict[str, Any]]
             continue
         if item.get("decision_candidate") != "needs_official_evidence":
             continue
-        selected.append(item)
-    return selected
+        listing_key = str(item.get("listing_key", ""))
+        if not listing_key:
+            continue
+        selected_by_key[listing_key] = item
+    return list(selected_by_key.values())
 
 
 def build_otc_lookup(rows: list[dict[str, str]]) -> dict[str, dict[str, str]]:
@@ -137,6 +140,15 @@ def summarize(queue_rows: list[dict[str, Any]], unmatched: list[dict[str, Any]])
         "issue_type_totals": dict(sorted(by_issue.items())),
         "scope_decision_totals": dict(sorted(by_scope.items())),
         "source_gap_class_totals": dict(sorted(by_gap.items())),
+        "advisory_policy": {
+            "direct_apply_allowed_rows": 0,
+            "metadata_enrichment_authorized": False,
+            "review_required_rows": len(queue_rows),
+            "source_gate": (
+                "DeepSeek OTC rows are advisory only; apply no name, alias, scope, sector, identifier, "
+                "or symbol changes without listing-keyed official OTC, SEC, issuer, or registry evidence."
+            ),
+        },
     }
 
 
@@ -221,6 +233,21 @@ def render_markdown(payload: dict[str, Any]) -> str:
     lines.extend(["", "## Issue Types", "", "| Issue type | Rows |", "| --- | ---: |"])
     for issue_type, count in summary["issue_type_totals"].items():
         lines.append(f"| {issue_type or 'missing'} | {count} |")
+    unmatched_rows = payload.get("unmatched_deepseek_rows", [])
+    if unmatched_rows:
+        lines.extend(
+            [
+                "",
+                "## Unmatched DeepSeek Rows",
+                "",
+                "These advisory rows no longer match the current OTC scope review and are excluded from the active queue.",
+                "",
+                "| Listing key | Reason |",
+                "| --- | --- |",
+            ]
+        )
+        for row in unmatched_rows[:25]:
+            lines.append(f"| {row.get('listing_key', 'missing')} | {row.get('reason', 'missing')} |")
     lines.extend(
         [
             "",

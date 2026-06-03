@@ -1,6 +1,6 @@
 # Canada FIGI Queue
 
-Generated at: `2026-05-25T12:54:47Z`
+Generated at: `2026-06-02T19:05:23Z`
 
 This report batches TSX/TSXV/NEO rows that can be sent to OpenFIGI because they already have valid ISINs and no FIGI. It does not call OpenFIGI and does not fill values.
 
