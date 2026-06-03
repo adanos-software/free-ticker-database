@@ -770,8 +770,6 @@ def apply_source_gap_classification_context(
     action: dict[str, Any],
     source_gap_classification: dict[str, Any],
 ) -> dict[str, Any]:
-    if action.get("residual_gate"):
-        return action
     summary = source_gap_classification_summary(source_gap_classification)
     top_batches = summary.get("top_source_gap_review_batches", [])
     if not isinstance(top_batches, list):
@@ -787,6 +785,12 @@ def apply_source_gap_classification_context(
         return action
     first_batch = matching_batches[0]
     gap_class = str(first_batch.get("gap_class") or "")
+    source_gap_context = {
+        "source_gap_class": gap_class,
+        "source_gap_rows": int(first_batch.get("rows") or 0),
+    }
+    if action.get("residual_gate"):
+        return {**action, **source_gap_context}
     return {
         **action,
         "review_needed": True,
@@ -794,8 +798,7 @@ def apply_source_gap_classification_context(
         "confidence_policy": first_batch.get("source_gate") or action["confidence_policy"],
         "why_next": "source-gap classification review-gated workflow",
         "residual_gate": "source_gap_classification_blocks_direct_apply",
-        "source_gap_class": gap_class,
-        "source_gap_rows": int(first_batch.get("rows") or 0),
+        **source_gap_context,
     }
 
 

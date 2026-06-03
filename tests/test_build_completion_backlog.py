@@ -283,6 +283,45 @@ def test_b3_sector_next_action_uses_residual_gate_when_no_taxonomy_match():
     assert "Stronger official B3 taxonomy source" in action["recommended_source"]
 
 
+def test_source_gap_context_preserves_stronger_residual_gate():
+    rows = build_completion_backlog(
+        [{"ticker": "B3SA3", "exchange": "B3", "asset_type": "Stock", "sector": ""}],
+        [],
+        {"by_exchange": [{"exchange": "B3", "venue_status": "official_full", "official_source_count": 3}]},
+    )
+    summary = summarize(
+        rows,
+        {"global": {}, "by_exchange": []},
+        "2026-04-12T00:00:00Z",
+        b3_residual_sector_review={
+            "summary": {
+                "rows": 1,
+                "apply_eligibility_totals": {"source_gap_keep_blank_until_official_taxonomy_evidence": 1},
+            }
+        },
+        source_gap_classification={
+            "summary": {
+                "top_source_gap_review_batches": [
+                    {
+                        "field": "missing_sector_stock",
+                        "gap_class": "official_industry_taxonomy_unavailable_gap",
+                        "exchange": "B3",
+                        "rows": 1,
+                        "recommended_next_source": "Generic source gap.",
+                        "source_gate": "Generic source gate.",
+                    }
+                ]
+            }
+        },
+    )
+
+    action = summary["next_actions"][0]
+    assert action["residual_gate"] == "b3_residual_sector_review_blocks_direct_apply"
+    assert action["source_gap_class"] == "official_industry_taxonomy_unavailable_gap"
+    assert action["source_gap_rows"] == 1
+    assert "B3 or issuer taxonomy" in action["recommended_source"]
+
+
 def test_weak_sector_next_action_uses_residual_gate_when_no_direct_sector_apply():
     rows = build_completion_backlog(
         [{"ticker": "A", "exchange": "CSE_LK", "asset_type": "Stock", "sector": ""}],
