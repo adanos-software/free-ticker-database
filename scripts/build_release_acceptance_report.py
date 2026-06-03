@@ -17,6 +17,7 @@ DEFAULT_JSON_OUT = REPORTS_DIR / "release_acceptance.json"
 DEFAULT_MD_OUT = REPORTS_DIR / "release_acceptance.md"
 REVIEW_ARTIFACT_SIBLING_STALE_GRACE_SECONDS = 60
 COMMAND_SCRIPT_PATTERN = re.compile(r"\bpython\s+(scripts/[\w./-]+\.py)")
+REVIEW_SOURCE_REPORT_NAME_MARKERS = ("queue", "review", "gap", "backlog")
 
 RELEASE_SOURCE_REPORTS = {
     "validation_report": "data/reports/validation_report.json",
@@ -3102,6 +3103,13 @@ def load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def display_path(path: Path, *, root: Path = ROOT) -> str:
+    try:
+        return str(path.relative_to(root))
+    except ValueError:
+        return str(path)
+
+
 def is_valid_iso_utc_timestamp(value: str) -> bool:
     if not value.endswith("Z"):
         return False
@@ -3141,6 +3149,14 @@ def evaluate_release_source_report_integrity(
     missing_generated_at: list[str] = []
     invalid_generated_at: dict[str, str] = {}
     generated_after_release: dict[str, dict[str, str]] = {}
+    listed_paths = set(source_reports.values())
+    reports_dir = root / "data" / "reports"
+    unlisted_review_reports = [
+        display_path(path, root=root)
+        for path in sorted(reports_dir.glob("*.json"))
+        if any(marker in path.name for marker in REVIEW_SOURCE_REPORT_NAME_MARKERS)
+        and display_path(path, root=root) not in listed_paths
+    ]
     release_generated_at_invalid = bool(release_generated_at) and not is_valid_iso_utc_timestamp(release_generated_at)
     release_generated_at_dt = parse_iso_utc_timestamp(release_generated_at) if release_generated_at else None
     for key, relative_path in source_reports.items():
@@ -3171,6 +3187,7 @@ def evaluate_release_source_report_integrity(
             and not missing_generated_at
             and not invalid_generated_at
             and not generated_after_release
+            and not unlisted_review_reports
         ),
         "release_generated_at": release_generated_at,
         "release_generated_at_invalid": release_generated_at_invalid,
@@ -3179,6 +3196,8 @@ def evaluate_release_source_report_integrity(
         "missing_generated_at": missing_generated_at,
         "invalid_generated_at": invalid_generated_at,
         "generated_after_release": generated_after_release,
+        "unlisted_review_reports": unlisted_review_reports,
+        "review_source_report_name_markers": list(REVIEW_SOURCE_REPORT_NAME_MARKERS),
     }
 
 

@@ -891,6 +891,7 @@ def test_evaluate_release_source_report_integrity_requires_files_and_generated_a
     assert result["checked"]["validation_report"]["generated_at"] == "2026-05-24T00:00:00Z"
     assert result["invalid_generated_at"] == {}
     assert result["generated_after_release"] == {}
+    assert result["unlisted_review_reports"] == []
 
 
 def test_evaluate_release_source_report_integrity_fails_for_missing_file_or_timestamp(tmp_path) -> None:
@@ -926,6 +927,29 @@ def test_evaluate_release_source_report_integrity_fails_for_invalid_timestamp(tm
 
     assert result["passed"] is False
     assert result["invalid_generated_at"] == {"validation_report": "not-a-timestamp"}
+
+
+def test_evaluate_release_source_report_integrity_fails_for_unlisted_review_report(tmp_path) -> None:
+    reports_dir = tmp_path / "data" / "reports"
+    reports_dir.mkdir(parents=True)
+    (reports_dir / "validation_report.json").write_text(
+        '{"_meta":{"generated_at":"2026-05-24T00:00:00Z"}}',
+        encoding="utf-8",
+    )
+    (reports_dir / "future_review_queue.json").write_text(
+        '{"_meta":{"generated_at":"2026-05-24T00:00:01Z"},"rows":[]}',
+        encoding="utf-8",
+    )
+
+    result = evaluate_release_source_report_integrity(
+        {"validation_report": "data/reports/validation_report.json"},
+        root=tmp_path,
+        release_generated_at="2026-05-24T00:00:02Z",
+    )
+
+    assert result["passed"] is False
+    assert result["unlisted_review_reports"] == ["data/reports/future_review_queue.json"]
+    assert result["review_source_report_name_markers"] == ["queue", "review", "gap", "backlog"]
 
 
 def test_evaluate_release_source_report_integrity_fails_for_future_source_report(tmp_path) -> None:
