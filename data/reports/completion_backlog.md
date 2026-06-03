@@ -1,6 +1,6 @@
 # Completion Backlog
 
-Generated at: `2026-06-03T00:20:10Z`
+Generated at: `2026-06-03T00:24:30Z`
 
 ## Summary
 
@@ -22,6 +22,10 @@ Generated at: `2026-06-03T00:20:10Z`
 | 6 | CSE_LK | missing_sector_stock | 143 | candidate_for_official_followup | Updated official masterfile or issuer taxonomy exposing sector for the exact listing; current source: cse_lk_all_security_code. | yes |
 | 7 | Euronext | missing_sector_stock | 132 | candidate_for_official_followup | Updated official masterfile or issuer taxonomy exposing sector for the exact listing; current source: euronext_equities. | yes |
 | 8 | LSE | missing_sector_stock | 128 | candidate_for_official_followup | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | yes |
+| 9 | BK | missing_sector_stock | 102 | candidate_for_official_followup | Updated official masterfile or issuer taxonomy exposing sector for the exact listing; current source: boursa_kuwait_stocks. | yes |
+| 10 | TSXV | missing_sector_stock | 97 | candidate_for_official_followup | Official TMX issuer workbook classifies this row as CPC. | yes |
+| 11 | MSX | missing_isin_primary | 90 | candidate_for_official_followup | Separate official CSD/security registry or exchange detail feed with ISIN. | yes |
+| 12 | TSXV | missing_isin_primary | 82 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
 
 These are orchestration candidates only. They do not authorize direct data changes without the listed official or review-gated evidence.
 

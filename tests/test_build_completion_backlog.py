@@ -364,6 +364,49 @@ def test_source_gap_classification_context_gates_uncovered_next_action():
     assert "stronger taxonomy source" in action["recommended_source"]
 
 
+def test_default_next_actions_include_source_gap_candidates_beyond_top_eight():
+    tickers = []
+    for index, exchange in enumerate(
+        ["OTC", "B3", "CSE_LK", "Euronext", "LSE", "BK", "TSXV", "PSE", "CSE_MA"],
+        start=1,
+    ):
+        count = 20 - index
+        tickers.extend(
+            {
+                "ticker": f"{exchange}{row_index}",
+                "exchange": exchange,
+                "asset_type": "Stock",
+                "sector": "",
+            }
+            for row_index in range(count)
+        )
+    rows = build_completion_backlog(tickers, [], {"by_exchange": []})
+    summary = summarize(
+        rows,
+        {"global": {}, "by_exchange": []},
+        "2026-04-12T00:00:00Z",
+        source_gap_classification={
+            "summary": {
+                "top_source_gap_review_batches": [
+                    {
+                        "field": "missing_sector_stock",
+                        "gap_class": "official_industry_taxonomy_unavailable_gap",
+                        "exchange": "CSE_MA",
+                        "rows": 11,
+                        "recommended_next_source": "Official venue taxonomy source.",
+                        "source_gate": "Keep stock_sector blank until official taxonomy evidence exists.",
+                    }
+                ]
+            }
+        },
+    )
+
+    assert len(summary["next_actions"]) == 9
+    cse_ma_action = next(action for action in summary["next_actions"] if action["exchange"] == "CSE_MA")
+    assert cse_ma_action["residual_gate"] == "source_gap_classification_blocks_direct_apply"
+    assert cse_ma_action["source_gap_rows"] == 11
+
+
 def test_completion_backlog_ranks_by_missing_count_before_static_source_order():
     rows = build_completion_backlog(
         [],

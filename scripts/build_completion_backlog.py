@@ -25,6 +25,7 @@ SOURCE_GAP_CLASSIFICATION_JSON = REPORTS_DIR / "source_gap_classification.json"
 DEFAULT_CSV_OUT = REPORTS_DIR / "completion_backlog.csv"
 DEFAULT_JSON_OUT = REPORTS_DIR / "completion_backlog.json"
 DEFAULT_MD_OUT = REPORTS_DIR / "completion_backlog.md"
+DEFAULT_NEXT_ACTION_LIMIT = 12
 
 FIELD_MISSING_ISIN = "missing_isin_primary"
 FIELD_MISSING_STOCK_SECTOR = "missing_sector_stock"
@@ -390,6 +391,7 @@ def summarize(
     b3_residual_sector_review: dict[str, Any] | None = None,
     weak_sector_residual_review: dict[str, Any] | None = None,
     source_gap_classification: dict[str, Any] | None = None,
+    next_action_limit: int = DEFAULT_NEXT_ACTION_LIMIT,
 ) -> dict[str, Any]:
     field_totals = Counter()
     exchanges_by_field: dict[str, set[str]] = defaultdict(set)
@@ -418,6 +420,7 @@ def summarize(
         },
         "next_actions": build_next_actions(
             rows,
+            limit=next_action_limit,
             asx_residual_review=asx_residual_review or {},
             jpx_tse_sector_backfill=jpx_tse_sector_backfill or {},
             sec_sic_sector_backfill=sec_sic_sector_backfill or {},
@@ -784,7 +787,7 @@ def apply_source_gap_classification_context(
 
 def build_next_actions(
     rows: list[CompletionBacklogRow],
-    limit: int = 8,
+    limit: int = DEFAULT_NEXT_ACTION_LIMIT,
     *,
     asx_residual_review: dict[str, Any] | None = None,
     jpx_tse_sector_backfill: dict[str, Any] | None = None,
@@ -988,6 +991,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--b3-residual-sector-review-json", type=Path, default=B3_RESIDUAL_SECTOR_REVIEW_JSON)
     parser.add_argument("--weak-sector-residual-review-json", type=Path, default=WEAK_SECTOR_RESIDUAL_REVIEW_JSON)
     parser.add_argument("--source-gap-classification-json", type=Path, default=SOURCE_GAP_CLASSIFICATION_JSON)
+    parser.add_argument("--next-action-limit", type=int, default=DEFAULT_NEXT_ACTION_LIMIT)
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_CSV_OUT)
     parser.add_argument("--json-out", type=Path, default=DEFAULT_JSON_OUT)
     parser.add_argument("--md-out", type=Path, default=DEFAULT_MD_OUT)
@@ -1014,6 +1018,7 @@ def main(argv: list[str] | None = None) -> None:
         b3_residual_sector_review=load_json(args.b3_residual_sector_review_json),
         weak_sector_residual_review=load_json(args.weak_sector_residual_review_json),
         source_gap_classification=load_json(args.source_gap_classification_json),
+        next_action_limit=args.next_action_limit,
     )
 
     write_csv(args.csv_out, rows)
