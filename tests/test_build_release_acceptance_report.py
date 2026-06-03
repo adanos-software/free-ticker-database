@@ -57,6 +57,7 @@ from scripts.build_release_acceptance_report import (
     evaluate_campaign_reviewability,
     evaluate_completion_backlog_next_actions,
     evaluate_deepseek_advisory_integrity,
+    evaluate_deepseek_isin_collision_validation_gate,
     evaluate_deepseek_queue_advisory_policies,
     campaign_status_rows,
     evaluate_next_review_batch_visibility,
@@ -167,6 +168,10 @@ def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> N
     assert RELEASE_SOURCE_REPORTS["deepseek_collision_review_queue"] == "data/reports/deepseek_collision_review_queue.json"
     assert RELEASE_SOURCE_REPORTS["deepseek_otc_review_queue"] == "data/reports/deepseek_otc_review_queue.json"
     assert RELEASE_SOURCE_REPORTS["deepseek_weak_sector_review_queue"] == "data/reports/deepseek_weak_sector_review_queue.json"
+    assert (
+        RELEASE_SOURCE_REPORTS["deepseek_isin_collision_validation"]
+        == "data/reports/deepseek_isin_collision_validation.json"
+    )
     assert (
         RELEASE_SOURCE_REPORTS["isin_identity_collision_review_queue"]
         == "data/reports/isin_identity_collision_review_queue.json"
@@ -354,6 +359,101 @@ def test_evaluate_deepseek_queue_advisory_policies_rejects_direct_or_missing_que
         "reported": True,
         "expected": False,
     } in result["queue_gaps"]["collision"]
+
+
+def test_evaluate_deepseek_isin_collision_validation_gate_accepts_full_advisory_coverage() -> None:
+    result = evaluate_deepseek_isin_collision_validation_gate(
+        {
+            "_meta": {
+                "policy": (
+                    "DeepSeek triage is advisory only. It authorizes no ISIN, country, name, "
+                    "or scope change without official listing-keyed evidence."
+                )
+            },
+            "summary": {
+                "queue_groups": 2,
+                "validated_groups": 2,
+                "errors": 0,
+                "coverage_status": "full_current_queue_coverage",
+                "missing_queue_isins": 0,
+                "stale_validation_isins": 0,
+                "duplicate_validation_isins": 0,
+                "policy": (
+                    "DeepSeek triage is advisory only and authorizes no ISIN, country, or name "
+                    "change. Official listing-keyed evidence remains required."
+                ),
+            },
+            "coverage": {
+                "full_current_queue_coverage": True,
+                "queue_groups": 2,
+                "validation_rows": 2,
+                "missing_queue_isins": [],
+                "stale_validation_isins": [],
+                "duplicate_validation_isins": 0,
+            },
+            "items": [
+                {
+                    "isin": "CA08663L1040",
+                    "review_gate": (
+                        "Triage only. Do not change, blank, or reassign any ISIN, country, or name "
+                        "until official listing-keyed identifier evidence confirms the holder."
+                    ),
+                },
+                {
+                    "isin": "US1234567890",
+                    "review_gate": (
+                        "Triage only. Do not change, blank, or reassign any ISIN, country, or name "
+                        "until official listing-keyed identifier evidence confirms the holder."
+                    ),
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["queue_groups"] == 2
+    assert result["coverage_gaps"] == []
+
+
+def test_evaluate_deepseek_isin_collision_validation_gate_rejects_gaps_or_apply_policy() -> None:
+    result = evaluate_deepseek_isin_collision_validation_gate(
+        {
+            "_meta": {"policy": "DeepSeek can apply."},
+            "summary": {
+                "queue_groups": 2,
+                "validated_groups": 1,
+                "errors": 1,
+                "coverage_status": "coverage_gap",
+                "missing_queue_isins": 1,
+                "stale_validation_isins": 1,
+                "duplicate_validation_isins": 1,
+                "policy": "Apply if confident.",
+            },
+            "coverage": {
+                "full_current_queue_coverage": False,
+                "queue_groups": 2,
+                "validation_rows": 1,
+                "missing_queue_isins": ["US1234567890"],
+                "stale_validation_isins": ["STALE"],
+                "duplicate_validation_isins": 1,
+            },
+            "items": [{"isin": "CA08663L1040", "review_gate": "Apply after review."}],
+        }
+    )
+
+    assert result["passed"] is False
+    assert {
+        "field": "summary.coverage_status",
+        "reported": "coverage_gap",
+        "expected": "full_current_queue_coverage",
+    } in result["coverage_gaps"]
+    assert {
+        "field": "summary.errors",
+        "reported": 1,
+        "expected": 0,
+    } in result["coverage_gaps"]
+    assert result["missing_row_gate_count"] == 1
+    assert "advisory" in result["policy_missing_markers"]
 
 
 def test_evaluate_otc_name_mismatch_action_queue_gate_accepts_review_only_queue() -> None:

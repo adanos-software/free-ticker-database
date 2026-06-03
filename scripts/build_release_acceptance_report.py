@@ -33,6 +33,7 @@ RELEASE_SOURCE_REPORTS = {
     "deepseek_collision_review_queue": "data/reports/deepseek_collision_review_queue.json",
     "deepseek_otc_review_queue": "data/reports/deepseek_otc_review_queue.json",
     "deepseek_weak_sector_review_queue": "data/reports/deepseek_weak_sector_review_queue.json",
+    "deepseek_isin_collision_validation": "data/reports/deepseek_isin_collision_validation.json",
     "source_refresh_queue": "data/reports/source_refresh_queue.json",
     "symbol_changes_review": "data/reports/symbol_changes_review.json",
     "otc_name_mismatch_action_queue": "data/reports/otc_name_mismatch_action_queue.json",
@@ -3213,6 +3214,86 @@ def evaluate_otc_name_mismatch_action_queue_gate(action_queue: dict[str, Any]) -
         "missing_item_gate_count": len(missing_item_gates),
         "policy_missing_markers": policy_missing_markers,
         "allowed_action_queues": sorted(OTC_NAME_MISMATCH_ALLOWED_ACTION_QUEUES),
+    }
+
+
+def evaluate_deepseek_isin_collision_validation_gate(validation: dict[str, Any]) -> dict[str, Any]:
+    summary = validation.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    meta = validation.get("_meta", {})
+    if not isinstance(meta, dict):
+        meta = {}
+    coverage = validation.get("coverage", {})
+    if not isinstance(coverage, dict):
+        coverage = {}
+    items = validation.get("items", [])
+    if not isinstance(items, list):
+        items = []
+    policy_text = f"{meta.get('policy', '')} {summary.get('policy', '')}".lower()
+    policy_missing_markers = [
+        marker
+        for marker in ("advisory", "authorizes no", "official listing-keyed evidence")
+        if marker not in policy_text
+    ]
+    coverage_gaps: list[dict[str, Any]] = []
+    queue_groups = int(summary.get("queue_groups") or coverage.get("queue_groups") or 0)
+    validated_groups = int(summary.get("validated_groups") or coverage.get("validation_rows") or 0)
+    validation_rows = int(coverage.get("validation_rows") or 0)
+    if summary.get("coverage_status") != "full_current_queue_coverage":
+        coverage_gaps.append(
+            {
+                "field": "summary.coverage_status",
+                "reported": summary.get("coverage_status"),
+                "expected": "full_current_queue_coverage",
+            }
+        )
+    if coverage.get("full_current_queue_coverage") is not True:
+        coverage_gaps.append(
+            {
+                "field": "coverage.full_current_queue_coverage",
+                "reported": coverage.get("full_current_queue_coverage"),
+                "expected": True,
+            }
+        )
+    if int(summary.get("errors") or 0) != 0:
+        coverage_gaps.append({"field": "summary.errors", "reported": summary.get("errors"), "expected": 0})
+    for field in ("missing_queue_isins", "stale_validation_isins", "duplicate_validation_isins"):
+        if int(summary.get(field) or coverage.get(field) or 0) != 0:
+            coverage_gaps.append(
+                {
+                    "field": field,
+                    "reported": summary.get(field, coverage.get(field)),
+                    "expected": 0,
+                }
+            )
+    if queue_groups <= 0:
+        coverage_gaps.append({"field": "queue_groups", "reported": queue_groups, "expected": ">0"})
+    if validated_groups != queue_groups:
+        coverage_gaps.append({"field": "validated_groups", "reported": validated_groups, "expected": queue_groups})
+    if validation_rows and validation_rows != queue_groups:
+        coverage_gaps.append({"field": "coverage.validation_rows", "reported": validation_rows, "expected": queue_groups})
+    if len(items) != queue_groups:
+        coverage_gaps.append({"field": "items", "reported": len(items), "expected": queue_groups})
+    missing_row_gates = [
+        str(row.get("isin", ""))
+        for row in items
+        if isinstance(row, dict)
+        and (
+            "triage only" not in str(row.get("review_gate", "")).lower()
+            or "official listing-keyed identifier evidence" not in str(row.get("review_gate", "")).lower()
+        )
+    ]
+    return {
+        "passed": not coverage_gaps and not policy_missing_markers and not missing_row_gates,
+        "queue_groups": queue_groups,
+        "validated_groups": validated_groups,
+        "items": len(items),
+        "coverage_status": summary.get("coverage_status"),
+        "coverage_gaps": coverage_gaps,
+        "policy_missing_markers": policy_missing_markers,
+        "missing_row_gate_isins": missing_row_gates[:20],
+        "missing_row_gate_count": len(missing_row_gates),
     }
 
 
@@ -16167,6 +16248,7 @@ def build_payload() -> dict[str, Any]:
     deepseek_collision_queue = load_json(REPORTS_DIR / "deepseek_collision_review_queue.json")
     deepseek_otc_queue = load_json(REPORTS_DIR / "deepseek_otc_review_queue.json")
     deepseek_weak_sector_queue = load_json(REPORTS_DIR / "deepseek_weak_sector_review_queue.json")
+    deepseek_isin_collision_validation = load_json(REPORTS_DIR / "deepseek_isin_collision_validation.json")
     gates = gate_lookup(validation)
     criteria = {
         key: evaluate_gate_group(gates, names)
@@ -16186,6 +16268,9 @@ def build_payload() -> dict[str, Any]:
             "otc": deepseek_otc_queue,
             "weak_sector": deepseek_weak_sector_queue,
         }
+    )
+    criteria["deepseek_isin_collision_validation_gate"] = evaluate_deepseek_isin_collision_validation_gate(
+        deepseek_isin_collision_validation
     )
     criteria["completion_backlog_next_actions"] = evaluate_completion_backlog_next_actions(completion_backlog)
     criteria["progress_markdown_traceability"] = evaluate_progress_markdown_traceability()
