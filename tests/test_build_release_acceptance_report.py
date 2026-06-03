@@ -37,6 +37,7 @@ from scripts.build_release_acceptance_report import (
     evaluate_campaign_artifact_integrity,
     evaluate_campaign_acceptance_matrices,
     evaluate_canada_figi_gate,
+    evaluate_canada_improvement_action_queue_gate,
     canada_identifier_review_context,
     canada_figi_apply_existing_identifier_context,
     canada_figi_apply_gate_context,
@@ -189,6 +190,7 @@ def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> N
     )
     assert RELEASE_SOURCE_REPORTS["otc_name_mismatch_review"] == "data/reports/otc_name_mismatch_review.json"
     assert RELEASE_SOURCE_REPORTS["otc_name_mismatch_action_queue"] == "data/reports/otc_name_mismatch_action_queue.json"
+    assert RELEASE_SOURCE_REPORTS["canada_improvement_action_queue"] == "data/reports/canada_improvement_action_queue.json"
     assert RELEASE_SOURCE_REPORTS["weak_sector_venue_action_queue"] == "data/reports/weak_sector_venue_action_queue.json"
 
 
@@ -11750,6 +11752,106 @@ def test_evaluate_weak_sector_venue_action_queue_gate_rejects_apply_or_stale_cou
     assert result["row_gap_count"] == 1
     assert result["gating_gaps"] == [
         {"field": "direct_sector_apply_allowed_rows", "expected": 0, "actual": 1},
+        {"field": "metadata_enrichment_authorized", "expected": False, "actual": True},
+    ]
+
+
+def test_evaluate_canada_improvement_action_queue_gate_accepts_blocked_batches() -> None:
+    result = evaluate_canada_improvement_action_queue_gate(
+        {
+            "summary": {
+                "generated_at": "2026-06-03T00:00:00Z",
+                "batches": 2,
+                "underlying_review_rows": 15,
+                "campaign_totals": {"canada_figi_reviewed_source_gap": 5, "canada_scope_blocker": 10},
+                "exchange_totals": {"TSX": 5, "TSXV": 10},
+                "action_queue_totals": {
+                    "decide_scope_before_identifier_or_metadata_enrichment": 10,
+                    "keep_figi_blank_until_stronger_reviewed_figi_source": 5,
+                },
+                "scope_queue_rows": 10,
+                "figi_queue_rows": 0,
+                "figi_excluded_reviewed_source_gaps": 151,
+                "direct_identifier_apply_allowed_rows": 0,
+                "metadata_enrichment_authorized": False,
+                "policy": {
+                    "tmx_first": "TMX/Cboe Canada official listing context is first; issuer and reviewed identifier sources are required.",
+                    "figi_no_repeat_probe": "Reviewed OpenFIGI rows stay excluded until stronger reviewed FIGI evidence exists.",
+                    "scope_before_fill": "Core-exclusion candidates must be decided as core, extended, or excluded before ISIN work.",
+                },
+            },
+            "items": [
+                {
+                    "campaign": "canada_scope_blocker",
+                    "exchange": "TSXV",
+                    "review_queue": "core_exclusion_candidate_identifier_scope_review",
+                    "official_sources": "tmx_listed_issuers",
+                    "rows": "10",
+                    "action_queue": "decide_scope_before_identifier_or_metadata_enrichment",
+                    "evidence_required": "official_listing_scope_decision_for_core_extended_or_exclude",
+                    "review_strategy": "scope_review_before_canada_identifier_enrichment",
+                    "recommended_next_source": "tmx_listed_issuers plus reviewed scope decision.",
+                    "source_gate": "No ISIN or FIGI enrichment until the listing is reviewed as core, extended, or excluded.",
+                    "example_listing_keys": "TSXV::AAA|TSXV::BBB",
+                },
+                {
+                    "campaign": "canada_figi_reviewed_source_gap",
+                    "exchange": "TSX",
+                    "review_queue": "reviewed_openfigi_no_match_source_gap",
+                    "official_sources": "tmx_etf_screener",
+                    "rows": "5",
+                    "action_queue": "keep_figi_blank_until_stronger_reviewed_figi_source",
+                    "evidence_required": "stronger_figi_source_required_openfigi_no_match_reviewed",
+                    "review_strategy": "keep_blank_until_stronger_reviewed_figi_source",
+                    "recommended_next_source": "Reviewed stronger FIGI source.",
+                    "source_gate": "Keep FIGI blank until stronger reviewed FIGI evidence exists.",
+                    "example_listing_keys": "TSX::DDD",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["item_row_total"] == 15
+    assert result["direct_identifier_apply_allowed_rows"] == 0
+
+
+def test_evaluate_canada_improvement_action_queue_gate_rejects_apply_or_stale_counts() -> None:
+    result = evaluate_canada_improvement_action_queue_gate(
+        {
+            "summary": {
+                "batches": 2,
+                "underlying_review_rows": 99,
+                "campaign_totals": {},
+                "exchange_totals": {},
+                "action_queue_totals": {},
+                "direct_identifier_apply_allowed_rows": 1,
+                "metadata_enrichment_authorized": True,
+                "policy": {"tmx_first": "official"},
+            },
+            "items": [
+                {
+                    "campaign": "canada_scope_blocker",
+                    "exchange": "TSXV",
+                    "review_queue": "core_exclusion_candidate_identifier_scope_review",
+                    "official_sources": "tmx_listed_issuers",
+                    "rows": "10",
+                    "action_queue": "direct_identifier_apply",
+                    "evidence_required": "ticker_match",
+                    "review_strategy": "apply",
+                    "recommended_next_source": "none",
+                    "source_gate": "Apply ISIN.",
+                    "example_listing_keys": "TSXV::AAA",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["policy_missing_marker_groups"]
+    assert result["row_gap_count"] == 1
+    assert result["gating_gaps"] == [
+        {"field": "direct_identifier_apply_allowed_rows", "expected": 0, "actual": 1},
         {"field": "metadata_enrichment_authorized", "expected": False, "actual": True},
     ]
 

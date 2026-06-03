@@ -47,6 +47,7 @@ RELEASE_SOURCE_REPORTS = {
     "financialdata_isin_supplements_review": "data/reports/financialdata_isin_supplements_review.json",
     "otc_scope_review": "data/reports/otc_scope_review.json",
     "canada_residual_review": "data/reports/canada_residual_review.json",
+    "canada_improvement_action_queue": "data/reports/canada_improvement_action_queue.json",
     "canada_figi_queue": "data/reports/canada_figi_queue.json",
     "canada_figi_apply_report": "data/reports/canada_figi_apply_report.json",
     "b3_residual_isin_review": "data/reports/b3_residual_isin_review.json",
@@ -2888,6 +2889,24 @@ WEAK_SECTOR_ACTION_POLICY_MARKER_GROUPS = {
     "no_inference": ("no sector is inferred", "ticker", "issuer name", "peers"),
     "reviewable_batches": ("grouped by exchange", "residual queue", "reviewed venue by venue"),
 }
+CANADA_ACTION_REQUIRED_ITEM_FIELDS = (
+    "campaign",
+    "exchange",
+    "review_queue",
+    "official_sources",
+    "rows",
+    "action_queue",
+    "evidence_required",
+    "review_strategy",
+    "recommended_next_source",
+    "source_gate",
+    "example_listing_keys",
+)
+CANADA_ACTION_POLICY_MARKER_GROUPS = {
+    "official_first": ("tmx", "cboe canada", "issuer", "reviewed identifier sources"),
+    "figi_no_repeat": ("openfigi", "excluded", "stronger reviewed figi evidence"),
+    "scope_before_fill": ("core-exclusion", "core, extended, or excluded", "before isin"),
+}
 REVIEW_POLICY_REQUIRED_MARKER_GROUPS = {
     "review_or_no_guessing_gate": (
         "review",
@@ -3485,6 +3504,115 @@ def evaluate_weak_sector_venue_action_queue_gate(action_queue: dict[str, Any]) -
         "count_gaps": count_gaps,
         "gating_gaps": gating_gaps,
         "required_item_fields": list(WEAK_SECTOR_ACTION_REQUIRED_ITEM_FIELDS),
+    }
+
+
+def evaluate_canada_improvement_action_queue_gate(action_queue: dict[str, Any]) -> dict[str, Any]:
+    summary = action_queue.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    items = action_queue.get("items", [])
+    if not isinstance(items, list):
+        items = []
+    policy = summary.get("policy", {})
+    if not isinstance(policy, dict):
+        policy = {}
+    policy_text = " ".join(str(value) for value in policy.values()).lower()
+    policy_missing_marker_groups = [
+        group
+        for group, markers in CANADA_ACTION_POLICY_MARKER_GROUPS.items()
+        if not any(marker in policy_text for marker in markers)
+    ]
+
+    item_row_total = 0
+    campaign_totals: Counter[str] = Counter()
+    exchange_totals: Counter[str] = Counter()
+    action_queue_totals: Counter[str] = Counter()
+    row_gaps: list[dict[str, Any]] = []
+    for index, item in enumerate(items):
+        if not isinstance(item, dict):
+            row_gaps.append({"row_index": index, "reason": "row_is_not_object"})
+            continue
+        missing_fields = [field for field in CANADA_ACTION_REQUIRED_ITEM_FIELDS if not item.get(field)]
+        invalid_fields: list[str] = []
+        try:
+            rows = int(item.get("rows") or 0)
+        except (TypeError, ValueError):
+            rows = 0
+            invalid_fields.append("rows")
+        if rows <= 0:
+            invalid_fields.append("rows")
+        source_gate = str(item.get("source_gate", "")).lower()
+        if not source_gate.startswith(
+            ("no isin", "no sector", "keep isin", "keep figi", "keep metadata", "do not re-probe", "do not apply")
+        ):
+            invalid_fields.append("source_gate")
+        evidence_required = str(item.get("evidence_required", "")).lower()
+        if not any(
+            marker in evidence_required
+            for marker in ("official", "scope_decision", "stronger_figi", "reviewed_issuer_or_product_metadata_source")
+        ):
+            invalid_fields.append("evidence_required")
+        item_row_total += rows
+        campaign_totals[str(item.get("campaign", ""))] += rows
+        exchange_totals[str(item.get("exchange", ""))] += rows
+        action_queue_totals[str(item.get("action_queue", ""))] += rows
+        if missing_fields or invalid_fields:
+            row_gaps.append(
+                {
+                    "row_index": index,
+                    "reason": "missing_or_invalid_canada_action_fields",
+                    "missing_fields": missing_fields,
+                    "invalid_fields": sorted(set(invalid_fields)),
+                    "available_keys": sorted(item)[:20],
+                }
+            )
+
+    count_gaps = []
+    expected_summary_fields = {
+        "underlying_review_rows": item_row_total,
+        "batches": len(items),
+        "campaign_totals": dict(sorted(campaign_totals.items())),
+        "exchange_totals": dict(sorted(exchange_totals.items())),
+        "action_queue_totals": dict(sorted(action_queue_totals.items())),
+    }
+    for field, expected in expected_summary_fields.items():
+        if summary.get(field) != expected:
+            count_gaps.append({"field": field, "expected": expected, "actual": summary.get(field)})
+    gating_gaps = []
+    if summary.get("direct_identifier_apply_allowed_rows") != 0:
+        gating_gaps.append(
+            {
+                "field": "direct_identifier_apply_allowed_rows",
+                "expected": 0,
+                "actual": summary.get("direct_identifier_apply_allowed_rows"),
+            }
+        )
+    if summary.get("metadata_enrichment_authorized") is not False:
+        gating_gaps.append(
+            {
+                "field": "metadata_enrichment_authorized",
+                "expected": False,
+                "actual": summary.get("metadata_enrichment_authorized"),
+            }
+        )
+    return {
+        "passed": bool(items) and not policy_missing_marker_groups and not row_gaps and not count_gaps and not gating_gaps,
+        "underlying_review_rows": summary.get("underlying_review_rows"),
+        "item_row_total": item_row_total,
+        "batches": summary.get("batches"),
+        "items": len(items),
+        "scope_queue_rows": summary.get("scope_queue_rows"),
+        "figi_queue_rows": summary.get("figi_queue_rows"),
+        "figi_excluded_reviewed_source_gaps": summary.get("figi_excluded_reviewed_source_gaps"),
+        "direct_identifier_apply_allowed_rows": summary.get("direct_identifier_apply_allowed_rows"),
+        "metadata_enrichment_authorized": summary.get("metadata_enrichment_authorized"),
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "count_gaps": count_gaps,
+        "gating_gaps": gating_gaps,
+        "required_item_fields": list(CANADA_ACTION_REQUIRED_ITEM_FIELDS),
     }
 
 
@@ -16801,6 +16929,7 @@ def build_payload() -> dict[str, Any]:
     financialdata_supplement_review = load_json(REPORTS_DIR / "financialdata_isin_supplements_review.json")
     otc_scope = load_json(REPORTS_DIR / "otc_scope_review.json")
     canada_residual = load_json(REPORTS_DIR / "canada_residual_review.json")
+    canada_improvement_action_queue = load_json(REPORTS_DIR / "canada_improvement_action_queue.json")
     canada_figi_queue = load_json(REPORTS_DIR / "canada_figi_queue.json")
     canada_figi_apply = load_json(REPORTS_DIR / "canada_figi_apply_report.json")
     b3_residual_isin = load_json(REPORTS_DIR / "b3_residual_isin_review.json")
@@ -16868,6 +16997,9 @@ def build_payload() -> dict[str, Any]:
         canada_residual,
         canada_figi_queue,
         canada_figi_apply,
+    )
+    criteria["canada_improvement_action_queue_gate"] = evaluate_canada_improvement_action_queue_gate(
+        canada_improvement_action_queue
     )
     criteria["b3_residual_gate"] = evaluate_b3_residual_gate(b3_residual_isin, b3_residual_sector)
     criteria["asx_residual_gate"] = evaluate_asx_residual_gate(asx_residual)
