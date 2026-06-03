@@ -1,17 +1,17 @@
 # Release Acceptance
 
-Generated: `2026-06-03T02:38:13Z`
+Generated: `2026-06-03T02:47:23Z`
 
 Overall passed: `True`
 
-Summary context: `passed=true;criteria=59;passed_criteria=59;failed_criteria=0;validation_failed_error_gates=0`
+Summary context: `passed=true;criteria=60;passed_criteria=60;failed_criteria=0;validation_failed_error_gates=0`
 
 ## Summary
 
 | Metric | Value |
 |---|---:|
-| `criteria` | `59` |
-| `passed_criteria` | `59` |
+| `criteria` | `60` |
+| `passed_criteria` | `60` |
 | `failed_criteria` | `0` |
 | `validation_failed_error_gates` | `0` |
 
@@ -43,6 +43,7 @@ Summary context: `passed=true;criteria=59;passed_criteria=59;failed_criteria=0;v
 | `otc_name_mismatch_review_gate` | True |
 | `otc_name_mismatch_action_queue_gate` | True |
 | `ohlcv_plausibility_gate` | True |
+| `ohlcv_warning_review_gate` | True |
 | `masterfile_collision_gate` | True |
 | `isin_identity_collision_gate` | True |
 | `financialdata_supplement_review_gate` | True |

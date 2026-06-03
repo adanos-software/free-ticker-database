@@ -814,6 +814,42 @@ OHLCV_FORBIDDEN_AUTOMATIC_ACTION_MARKERS = (
     "rename",
     "update_name",
 )
+OHLCV_WARNING_REQUIRED_ROW_KEYS = (
+    "listing_key",
+    "ticker",
+    "exchange",
+    "entry_quality_status",
+    "ohlcv_source",
+    "ohlcv_symbol",
+    "plausibility_status",
+    "plausibility_score",
+    "issue_count",
+    "issue_types",
+    "ohlcv_review_bucket",
+    "official_review_priority",
+    "official_listing_review_status",
+    "official_corporate_action_review_status",
+    "canonical_data_change_authorization",
+    "verification_evidence_required",
+    "official_source_locator_status",
+    "recommended_next_source",
+    "source_gate",
+    "review_context",
+    "recommended_action",
+)
+OHLCV_WARNING_SUMMARY_COUNTER_FIELDS = (
+    "exchange_counts",
+    "ohlcv_review_bucket_counts",
+    "official_review_priority_counts",
+    "canonical_data_change_authorization_counts",
+    "official_listing_review_status_counts",
+    "official_corporate_action_review_status_counts",
+    "official_source_locator_status_counts",
+)
+OHLCV_WARNING_POLICY_MARKER_GROUPS = {
+    "review_signal_only": ("review signals only", "canonical identifiers", "official listing-keyed evidence"),
+    "canonical_fields_blocked": ("canonical identifiers", "symbols remain blocked", "evidence is reviewed"),
+}
 EXPECTED_OHLCV_SOURCE_FILES = {
     "listings_csv": "data/listings.csv",
     "entry_quality_csv": "data/reports/entry_quality.csv",
@@ -6830,6 +6866,190 @@ def evaluate_ohlcv_plausibility_gate(ohlcv_report: dict[str, Any]) -> dict[str, 
         "top_sampling_batch_gaps": top_sampling_batch_gaps,
         "required_row_keys": list(REQUIRED_OHLCV_ROW_KEYS),
         "accepted_plausibility_statuses": sorted(OHLCV_PLAUSIBILITY_STATUSES),
+    }
+
+
+def evaluate_ohlcv_warning_review_gate(warning_report: dict[str, Any]) -> dict[str, Any]:
+    meta = warning_report.get("_meta", {})
+    summary = warning_report.get("summary", {})
+    rows = warning_report.get("review_items", [])
+    if not isinstance(meta, dict):
+        meta = {}
+    if not isinstance(summary, dict):
+        summary = {}
+    if not isinstance(rows, list):
+        rows = []
+    policy_text = str(meta.get("policy", "")).lower()
+    policy_missing_marker_groups = [
+        group
+        for group, markers in OHLCV_WARNING_POLICY_MARKER_GROUPS.items()
+        if not all(marker in policy_text for marker in markers)
+    ]
+    missing_meta_keys = [
+        key
+        for key in ("generated_at", "rows", "source_files", "policy")
+        if key not in meta or meta.get(key) in ("", None, {}, [])
+    ]
+    invalid_generated_at = (
+        str(meta.get("generated_at", ""))
+        if meta.get("generated_at") and not is_valid_iso_utc_timestamp(str(meta.get("generated_at")))
+        else ""
+    )
+    row_count_mismatch = {"reported": meta.get("rows"), "actual": len(rows)} if meta.get("rows") != len(rows) else {}
+    missing_summary_keys = [
+        field
+        for field in ("review_rows", *OHLCV_WARNING_SUMMARY_COUNTER_FIELDS, "issue_type_counts", "top_official_review_batches")
+        if field not in summary
+    ]
+
+    counters: dict[str, Counter[str]] = {field: Counter() for field in OHLCV_WARNING_SUMMARY_COUNTER_FIELDS}
+    issue_counter: Counter[str] = Counter()
+    batch_counter: Counter[tuple[str, str, str]] = Counter()
+    row_gaps: list[dict[str, Any]] = []
+    forbidden_action_rows: list[dict[str, Any]] = []
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            row_gaps.append({"row_index": index, "reason": "row_is_not_object"})
+            continue
+        missing_keys = [key for key in OHLCV_WARNING_REQUIRED_ROW_KEYS if key not in row or row.get(key) in ("", None)]
+        invalid_fields: list[str] = []
+        if not str(row.get("listing_key", "")).startswith(f"{row.get('exchange', '')}::"):
+            invalid_fields.append("listing_key")
+        if row.get("plausibility_status") not in {"warn", "fail", "notice", "source_gap"}:
+            invalid_fields.append("plausibility_status")
+        score = row.get("plausibility_score")
+        if not isinstance(score, int) or isinstance(score, bool) or not 0 <= score <= 100:
+            invalid_fields.append("plausibility_score")
+        if row.get("official_review_priority") not in {"P1", "P2", "P3", "P4"}:
+            invalid_fields.append("official_review_priority")
+        if row.get("canonical_data_change_authorization") != "blocked_until_official_listing_keyed_review":
+            invalid_fields.append("canonical_data_change_authorization")
+        if row.get("official_listing_review_status") != "pending_official_listing_status_review":
+            invalid_fields.append("official_listing_review_status")
+        if row.get("official_corporate_action_review_status") != "pending_official_corporate_action_review":
+            invalid_fields.append("official_corporate_action_review_status")
+        evidence_required = str(row.get("verification_evidence_required", "")).lower()
+        if "official" not in evidence_required or "market_data" not in evidence_required:
+            invalid_fields.append("verification_evidence_required")
+        source_gate = str(row.get("source_gate", "")).lower()
+        if "review signal only" not in source_gate or "official listing-keyed evidence" not in source_gate:
+            invalid_fields.append("source_gate")
+        action = str(row.get("recommended_action", "")).lower()
+        if action != "perform_official_listing_keyed_review_before_any_canonical_change":
+            invalid_fields.append("recommended_action")
+        if any(marker in action for marker in OHLCV_FORBIDDEN_AUTOMATIC_ACTION_MARKERS):
+            forbidden_action_rows.append(
+                {
+                    "row_index": index,
+                    "listing_key": row.get("listing_key", ""),
+                    "recommended_action": row.get("recommended_action", ""),
+                }
+            )
+        review_context = str(row.get("review_context", ""))
+        for marker in (
+            f"listing_key={row.get('listing_key', '')}",
+            f"ohlcv_symbol={row.get('ohlcv_symbol', '')}",
+            f"review_bucket={row.get('ohlcv_review_bucket', '')}",
+            f"priority={row.get('official_review_priority', '')}",
+        ):
+            if marker not in review_context:
+                invalid_fields.append("review_context")
+                break
+        if missing_keys or invalid_fields:
+            row_gaps.append(
+                {
+                    "row_index": index,
+                    "listing_key": row.get("listing_key", ""),
+                    "missing_keys": missing_keys,
+                    "invalid_fields": sorted(set(invalid_fields)),
+                }
+            )
+        counters["exchange_counts"][str(row.get("exchange", ""))] += 1
+        counters["ohlcv_review_bucket_counts"][str(row.get("ohlcv_review_bucket", ""))] += 1
+        counters["official_review_priority_counts"][str(row.get("official_review_priority", ""))] += 1
+        counters["canonical_data_change_authorization_counts"][str(row.get("canonical_data_change_authorization", ""))] += 1
+        counters["official_listing_review_status_counts"][str(row.get("official_listing_review_status", ""))] += 1
+        counters["official_corporate_action_review_status_counts"][str(row.get("official_corporate_action_review_status", ""))] += 1
+        counters["official_source_locator_status_counts"][str(row.get("official_source_locator_status", ""))] += 1
+        batch_counter[
+            (
+                str(row.get("exchange", "")),
+                str(row.get("ohlcv_review_bucket", "")),
+                str(row.get("official_review_priority", "")),
+            )
+        ] += 1
+        for issue_type in str(row.get("issue_types", "")).split("|"):
+            if issue_type:
+                issue_counter[issue_type] += 1
+
+    summary_mismatches = {
+        field: compare_counter_to_reported(counter, summary.get(field))
+        for field, counter in counters.items()
+    }
+    summary_mismatches["issue_type_counts"] = compare_counter_to_reported(issue_counter, summary.get("issue_type_counts"))
+    summary_mismatches = {field: mismatch for field, mismatch in summary_mismatches.items() if mismatch}
+    if summary.get("review_rows") != len(rows):
+        summary_mismatches["review_rows"] = {"reported": summary.get("review_rows"), "actual": len(rows)}
+
+    top_batch_gaps = []
+    top_batches = summary.get("top_official_review_batches", [])
+    if not isinstance(top_batches, list) or not top_batches:
+        top_batch_gaps.append({"field": "top_official_review_batches", "reason": "expected_ranked_official_review_batches"})
+        top_batches = []
+    expected_batches = {
+        key: count
+        for key, count in sorted(batch_counter.items(), key=lambda item: (-item[1], item[0][0], item[0][1], item[0][2]))[:25]
+    }
+    actual_batches = {
+        (
+            str(batch.get("exchange", "")),
+            str(batch.get("ohlcv_review_bucket", "")),
+            str(batch.get("official_review_priority", "")),
+        ): batch.get("rows")
+        for batch in top_batches
+        if isinstance(batch, dict)
+    }
+    if actual_batches != expected_batches:
+        top_batch_gaps.append({"field": "top_official_review_batches", "expected": expected_batches, "actual": actual_batches})
+    for index, batch in enumerate(top_batches):
+        if not isinstance(batch, dict):
+            top_batch_gaps.append({"row_index": index, "reason": "batch_is_not_object"})
+            continue
+        missing_keys = [
+            key
+            for key in ("exchange", "ohlcv_review_bucket", "official_review_priority", "rows", "recommended_next_source")
+            if key not in batch or batch.get(key) in ("", None)
+        ]
+        if not isinstance(batch.get("rows"), int) or batch.get("rows", 0) <= 0:
+            missing_keys.append("rows")
+        if missing_keys:
+            top_batch_gaps.append({"row_index": index, "missing_or_invalid_keys": sorted(set(missing_keys))})
+
+    return {
+        "passed": (
+            bool(rows)
+            and not policy_missing_marker_groups
+            and not missing_meta_keys
+            and not invalid_generated_at
+            and not row_count_mismatch
+            and not missing_summary_keys
+            and not row_gaps
+            and not forbidden_action_rows
+            and not summary_mismatches
+            and not top_batch_gaps
+        ),
+        "rows": len(rows),
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+        "missing_meta_keys": missing_meta_keys,
+        "invalid_generated_at": invalid_generated_at,
+        "row_count_mismatch": row_count_mismatch,
+        "missing_summary_keys": missing_summary_keys,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "forbidden_action_rows": forbidden_action_rows[:20],
+        "summary_mismatches": summary_mismatches,
+        "top_batch_gaps": top_batch_gaps[:20],
+        "required_row_keys": list(OHLCV_WARNING_REQUIRED_ROW_KEYS),
     }
 
 
@@ -17937,6 +18157,7 @@ def build_payload() -> dict[str, Any]:
     otc_name_mismatch_review = load_json(REPORTS_DIR / "otc_name_mismatch_review.json")
     otc_name_mismatch_action_queue = load_json(REPORTS_DIR / "otc_name_mismatch_action_queue.json")
     ohlcv = load_json(REPORTS_DIR / "ohlcv_plausibility.json")
+    ohlcv_warning_review = load_json(REPORTS_DIR / "ohlcv_warning_review.json")
     masterfile_collision = load_json(REPORTS_DIR / "masterfile_collision_review.json")
     isin_identity_collision = load_json(REPORTS_DIR / "isin_identity_collision_review_queue.json")
     financialdata_supplement_review = load_json(REPORTS_DIR / "financialdata_isin_supplements_review.json")
@@ -18006,6 +18227,7 @@ def build_payload() -> dict[str, Any]:
         otc_name_mismatch_action_queue
     )
     criteria["ohlcv_plausibility_gate"] = evaluate_ohlcv_plausibility_gate(ohlcv)
+    criteria["ohlcv_warning_review_gate"] = evaluate_ohlcv_warning_review_gate(ohlcv_warning_review)
     criteria["masterfile_collision_gate"] = evaluate_masterfile_collision_gate(masterfile_collision)
     criteria["isin_identity_collision_gate"] = evaluate_isin_identity_collision_gate(isin_identity_collision)
     criteria["financialdata_supplement_review_gate"] = evaluate_financialdata_supplement_review_gate(

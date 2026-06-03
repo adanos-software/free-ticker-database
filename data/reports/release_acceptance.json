@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-03T02:38:13Z",
+    "generated_at": "2026-06-03T02:47:23Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -50,12 +50,12 @@
   },
   "passed": true,
   "summary": {
-    "criteria": 59,
-    "passed_criteria": 59,
+    "criteria": 60,
+    "passed_criteria": 60,
     "failed_criteria": 0,
     "validation_failed_error_gates": 0
   },
-  "summary_context": "passed=true;criteria=59;passed_criteria=59;failed_criteria=0;validation_failed_error_gates=0",
+  "summary_context": "passed=true;criteria=60;passed_criteria=60;failed_criteria=0;validation_failed_error_gates=0",
   "criteria": {
     "no_invalid_isins": {
       "passed": true,
@@ -230,18 +230,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-03T02:38:13Z",
+      "release_generated_at": "2026-06-03T02:47:23Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-03T02:37:24Z"
+          "generated_at": "2026-06-03T02:47:06Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-03T02:37:23Z"
+          "generated_at": "2026-06-03T02:47:05Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -581,7 +581,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-03T02:37:23Z",
+      "generated_at": "2026-06-03T02:47:05Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -1040,6 +1040,43 @@
         "pass",
         "source_gap",
         "warn"
+      ]
+    },
+    "ohlcv_warning_review_gate": {
+      "passed": true,
+      "rows": 120,
+      "policy_missing_marker_groups": [],
+      "missing_meta_keys": [],
+      "invalid_generated_at": "",
+      "row_count_mismatch": {},
+      "missing_summary_keys": [],
+      "row_gap_count": 0,
+      "row_gaps": [],
+      "forbidden_action_rows": [],
+      "summary_mismatches": {},
+      "top_batch_gaps": [],
+      "required_row_keys": [
+        "listing_key",
+        "ticker",
+        "exchange",
+        "entry_quality_status",
+        "ohlcv_source",
+        "ohlcv_symbol",
+        "plausibility_status",
+        "plausibility_score",
+        "issue_count",
+        "issue_types",
+        "ohlcv_review_bucket",
+        "official_review_priority",
+        "official_listing_review_status",
+        "official_corporate_action_review_status",
+        "canonical_data_change_authorization",
+        "verification_evidence_required",
+        "official_source_locator_status",
+        "recommended_next_source",
+        "source_gate",
+        "review_context",
+        "recommended_action"
       ]
     },
     "masterfile_collision_gate": {

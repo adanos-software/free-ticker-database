@@ -98,6 +98,7 @@ from scripts.build_release_acceptance_report import (
     evaluate_masterfile_collision_gate,
     evaluate_official_name_mismatch_backfill_gate,
     evaluate_ohlcv_plausibility_gate,
+    evaluate_ohlcv_warning_review_gate,
     evaluate_otc_name_mismatch_action_queue_gate,
     evaluate_otc_name_mismatch_review_gate,
     evaluate_otc_scope_gate,
@@ -2838,6 +2839,171 @@ def test_evaluate_ohlcv_plausibility_gate_fails_for_auto_change_action_or_stale_
     assert result["missing_policy_markers"] == ["plausibility", "never authorize", "official", "listing-keyed"]
     assert result["missing_sampling_buckets"] == ["source_gap:", "large_exchange:"]
     assert result["invalid_top_flagged_exchanges"] is True
+
+
+def test_evaluate_ohlcv_warning_review_gate_accepts_official_review_only_rows() -> None:
+    result = evaluate_ohlcv_warning_review_gate(
+        {
+            "_meta": {
+                "generated_at": "2026-06-02T22:40:00Z",
+                "rows": 1,
+                "source_files": {"ohlcv_plausibility": "data/reports/ohlcv_plausibility.json"},
+                "policy": (
+                    "OHLCV warnings are review signals only. Canonical identifiers, names, sectors, categories, "
+                    "listings, and symbols remain blocked until official listing-keyed evidence is reviewed."
+                ),
+            },
+            "summary": {
+                "review_rows": 1,
+                "exchange_counts": {"BATS": 1},
+                "ohlcv_review_bucket_counts": {"official_listing_status_and_market_data_cross_check": 1},
+                "official_review_priority_counts": {"P1": 1},
+                "canonical_data_change_authorization_counts": {
+                    "blocked_until_official_listing_keyed_review": 1
+                },
+                "official_listing_review_status_counts": {"pending_official_listing_status_review": 1},
+                "official_corporate_action_review_status_counts": {
+                    "pending_official_corporate_action_review": 1
+                },
+                "official_source_locator_status_counts": {
+                    "pending_official_exchange_page_or_notice_lookup": 1
+                },
+                "issue_type_counts": {
+                    "invalid_ohlcv_bar": 1,
+                    "long_stagnant_close_streak": 1,
+                    "long_zero_volume_streak": 1,
+                },
+                "top_official_review_batches": [
+                    {
+                        "exchange": "BATS",
+                        "ohlcv_review_bucket": "official_listing_status_and_market_data_cross_check",
+                        "official_review_priority": "P1",
+                        "rows": 1,
+                        "recommended_next_source": (
+                            "Official BATS listing-status page, exchange notices, and issuer corporate-action announcements."
+                        ),
+                    }
+                ],
+            },
+            "review_items": [
+                {
+                    "listing_key": "BATS::GBXA",
+                    "ticker": "GBXA",
+                    "exchange": "BATS",
+                    "asset_type": "ETF",
+                    "name": "Goldman Sachs ETF Trust Goldman",
+                    "isin": "",
+                    "entry_quality_status": "source_gap",
+                    "ohlcv_source": "yahoo_chart",
+                    "ohlcv_symbol": "GBXA",
+                    "plausibility_status": "warn",
+                    "plausibility_score": 35,
+                    "issue_count": 3,
+                    "issue_types": "invalid_ohlcv_bar|long_stagnant_close_streak|long_zero_volume_streak",
+                    "ohlcv_review_bucket": "official_listing_status_and_market_data_cross_check",
+                    "official_review_priority": "P1",
+                    "official_listing_review_status": "pending_official_listing_status_review",
+                    "official_corporate_action_review_status": "pending_official_corporate_action_review",
+                    "canonical_data_change_authorization": "blocked_until_official_listing_keyed_review",
+                    "verification_evidence_required": (
+                        "official_listing_status_corporate_action_and_independent_market_data_review"
+                    ),
+                    "official_source_locator_status": "pending_official_exchange_page_or_notice_lookup",
+                    "recommended_next_source": (
+                        "Official BATS listing-status page, exchange notices, and issuer corporate-action announcements."
+                    ),
+                    "source_gate": (
+                        "OHLCV anomaly is a review signal only; do not change identifiers, names, sectors, "
+                        "categories, listings, or symbols without official listing-keyed evidence."
+                    ),
+                    "review_context": (
+                        "listing_key=BATS::GBXA;ohlcv_symbol=GBXA;"
+                        "review_bucket=official_listing_status_and_market_data_cross_check;priority=P1;"
+                        "plausibility_status=warn;issue_types=invalid_ohlcv_bar|long_stagnant_close_streak|long_zero_volume_streak;"
+                        "official_source_locator_status=pending_official_exchange_page_or_notice_lookup"
+                    ),
+                    "recommended_action": "perform_official_listing_keyed_review_before_any_canonical_change",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["rows"] == 1
+    assert result["row_gap_count"] == 0
+
+
+def test_evaluate_ohlcv_warning_review_gate_rejects_auto_change_or_stale_counts() -> None:
+    result = evaluate_ohlcv_warning_review_gate(
+        {
+            "_meta": {
+                "generated_at": "bad-time",
+                "rows": 2,
+                "source_files": {},
+                "policy": "OHLCV can apply values.",
+            },
+            "summary": {
+                "review_rows": 2,
+                "exchange_counts": {},
+                "ohlcv_review_bucket_counts": {},
+                "official_review_priority_counts": {},
+                "canonical_data_change_authorization_counts": {"apply_from_ohlcv": 1},
+                "official_listing_review_status_counts": {},
+                "official_corporate_action_review_status_counts": {},
+                "official_source_locator_status_counts": {},
+                "issue_type_counts": {},
+                "top_official_review_batches": [
+                    {
+                        "exchange": "BATS",
+                        "ohlcv_review_bucket": "official_listing_status_and_market_data_cross_check",
+                        "official_review_priority": "P1",
+                        "rows": 2,
+                        "recommended_next_source": "none",
+                    }
+                ],
+            },
+            "review_items": [
+                {
+                    "listing_key": "BATS::GBXA",
+                    "ticker": "GBXA",
+                    "exchange": "BATS",
+                    "entry_quality_status": "source_gap",
+                    "ohlcv_source": "yahoo_chart",
+                    "ohlcv_symbol": "GBXA",
+                    "plausibility_status": "warn",
+                    "plausibility_score": 35,
+                    "issue_count": 1,
+                    "issue_types": "invalid_ohlcv_bar",
+                    "ohlcv_review_bucket": "official_listing_status_and_market_data_cross_check",
+                    "official_review_priority": "P1",
+                    "official_listing_review_status": "apply_status",
+                    "official_corporate_action_review_status": "apply_action",
+                    "canonical_data_change_authorization": "apply_from_ohlcv",
+                    "verification_evidence_required": "ticker_match",
+                    "official_source_locator_status": "pending_official_exchange_page_or_notice_lookup",
+                    "recommended_next_source": "none",
+                    "source_gate": "Apply from OHLCV.",
+                    "review_context": "listing_key=BATS::GBXA",
+                    "recommended_action": "fill_isin_from_ohlcv_sample",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["policy_missing_marker_groups"]
+    assert result["invalid_generated_at"] == "bad-time"
+    assert result["row_count_mismatch"] == {"reported": 2, "actual": 1}
+    assert result["row_gap_count"] == 1
+    assert result["forbidden_action_rows"] == [
+        {
+            "row_index": 0,
+            "listing_key": "BATS::GBXA",
+            "recommended_action": "fill_isin_from_ohlcv_sample",
+        }
+    ]
+    assert result["summary_mismatches"]
+    assert result["top_batch_gaps"]
 
 
 def test_evaluate_masterfile_collision_gate_requires_non_symbol_identity_review() -> None:
