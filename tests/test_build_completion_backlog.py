@@ -328,6 +328,42 @@ def test_weak_sector_next_action_uses_residual_gate_when_no_direct_sector_apply(
     assert "Updated official masterfile" in action["recommended_source"]
 
 
+def test_source_gap_classification_context_gates_uncovered_next_action():
+    rows = build_completion_backlog(
+        [{"ticker": "A", "exchange": "LSE", "asset_type": "Stock", "sector": ""}],
+        [],
+        {"by_exchange": [{"exchange": "LSE", "venue_status": "official_full", "official_source_count": 3}]},
+    )
+    summary = summarize(
+        rows,
+        {"global": {}, "by_exchange": []},
+        "2026-04-12T00:00:00Z",
+        source_gap_classification={
+            "summary": {
+                "top_source_gap_review_batches": [
+                    {
+                        "field": "missing_sector_stock",
+                        "gap_class": "official_industry_taxonomy_unavailable_gap",
+                        "exchange": "LSE",
+                        "rows": 1,
+                        "recommended_next_source": "Implemented official venue source layer; residual needs a stronger taxonomy source.",
+                        "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a mappable industry value.",
+                    }
+                ]
+            }
+        },
+    )
+
+    action = summary["next_actions"][0]
+    assert action["exchange"] == "LSE"
+    assert action["field"] == FIELD_MISSING_STOCK_SECTOR
+    assert action["review_needed"] is True
+    assert action["residual_gate"] == "source_gap_classification_blocks_direct_apply"
+    assert action["source_gap_class"] == "official_industry_taxonomy_unavailable_gap"
+    assert action["source_gap_rows"] == 1
+    assert "stronger taxonomy source" in action["recommended_source"]
+
+
 def test_completion_backlog_ranks_by_missing_count_before_static_source_order():
     rows = build_completion_backlog(
         [],

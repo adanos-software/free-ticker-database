@@ -21,6 +21,7 @@ SEC_SIC_SECTOR_BACKFILL_JSON = REPORTS_DIR / "sec_sic_sector_backfill.json"
 CANADA_RESIDUAL_REVIEW_JSON = REPORTS_DIR / "canada_residual_review.json"
 B3_RESIDUAL_SECTOR_REVIEW_JSON = REPORTS_DIR / "b3_residual_sector_review.json"
 WEAK_SECTOR_RESIDUAL_REVIEW_JSON = REPORTS_DIR / "weak_sector_residual_review.json"
+SOURCE_GAP_CLASSIFICATION_JSON = REPORTS_DIR / "source_gap_classification.json"
 DEFAULT_CSV_OUT = REPORTS_DIR / "completion_backlog.csv"
 DEFAULT_JSON_OUT = REPORTS_DIR / "completion_backlog.json"
 DEFAULT_MD_OUT = REPORTS_DIR / "completion_backlog.md"
@@ -388,6 +389,7 @@ def summarize(
     canada_residual_review: dict[str, Any] | None = None,
     b3_residual_sector_review: dict[str, Any] | None = None,
     weak_sector_residual_review: dict[str, Any] | None = None,
+    source_gap_classification: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     field_totals = Counter()
     exchanges_by_field: dict[str, set[str]] = defaultdict(set)
@@ -422,6 +424,7 @@ def summarize(
             canada_residual_review=canada_residual_review or {},
             b3_residual_sector_review=b3_residual_sector_review or {},
             weak_sector_residual_review=weak_sector_residual_review or {},
+            source_gap_classification=source_gap_classification or {},
         ),
     }
 
@@ -741,6 +744,44 @@ def apply_weak_sector_residual_context(
     }
 
 
+def source_gap_classification_summary(source_gap_classification: dict[str, Any]) -> dict[str, Any]:
+    summary = source_gap_classification.get("summary", {})
+    return summary if isinstance(summary, dict) else {}
+
+
+def apply_source_gap_classification_context(
+    action: dict[str, Any],
+    source_gap_classification: dict[str, Any],
+) -> dict[str, Any]:
+    if action.get("residual_gate"):
+        return action
+    summary = source_gap_classification_summary(source_gap_classification)
+    top_batches = summary.get("top_source_gap_review_batches", [])
+    if not isinstance(top_batches, list):
+        return action
+    matching_batches = [
+        batch
+        for batch in top_batches
+        if isinstance(batch, dict)
+        and batch.get("exchange") == action["exchange"]
+        and batch.get("field") == action["field"]
+    ]
+    if not matching_batches:
+        return action
+    first_batch = matching_batches[0]
+    gap_class = str(first_batch.get("gap_class") or "")
+    return {
+        **action,
+        "review_needed": True,
+        "recommended_source": first_batch.get("recommended_next_source") or action["recommended_source"],
+        "confidence_policy": first_batch.get("source_gate") or action["confidence_policy"],
+        "why_next": "source-gap classification review-gated workflow",
+        "residual_gate": "source_gap_classification_blocks_direct_apply",
+        "source_gap_class": gap_class,
+        "source_gap_rows": int(first_batch.get("rows") or 0),
+    }
+
+
 def build_next_actions(
     rows: list[CompletionBacklogRow],
     limit: int = 8,
@@ -751,6 +792,7 @@ def build_next_actions(
     canada_residual_review: dict[str, Any] | None = None,
     b3_residual_sector_review: dict[str, Any] | None = None,
     weak_sector_residual_review: dict[str, Any] | None = None,
+    source_gap_classification: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     ranked = sorted(
         rows,
@@ -794,6 +836,7 @@ def build_next_actions(
         action = apply_canada_residual_context(action, canada_residual_review or {})
         action = apply_b3_residual_sector_context(action, b3_residual_sector_review or {})
         action = apply_weak_sector_residual_context(action, weak_sector_residual_review or {})
+        action = apply_source_gap_classification_context(action, source_gap_classification or {})
         actions.append(action)
     return actions
 
@@ -944,6 +987,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--canada-residual-review-json", type=Path, default=CANADA_RESIDUAL_REVIEW_JSON)
     parser.add_argument("--b3-residual-sector-review-json", type=Path, default=B3_RESIDUAL_SECTOR_REVIEW_JSON)
     parser.add_argument("--weak-sector-residual-review-json", type=Path, default=WEAK_SECTOR_RESIDUAL_REVIEW_JSON)
+    parser.add_argument("--source-gap-classification-json", type=Path, default=SOURCE_GAP_CLASSIFICATION_JSON)
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_CSV_OUT)
     parser.add_argument("--json-out", type=Path, default=DEFAULT_JSON_OUT)
     parser.add_argument("--md-out", type=Path, default=DEFAULT_MD_OUT)
@@ -969,6 +1013,7 @@ def main(argv: list[str] | None = None) -> None:
         canada_residual_review=load_json(args.canada_residual_review_json),
         b3_residual_sector_review=load_json(args.b3_residual_sector_review_json),
         weak_sector_residual_review=load_json(args.weak_sector_residual_review_json),
+        source_gap_classification=load_json(args.source_gap_classification_json),
     )
 
     write_csv(args.csv_out, rows)

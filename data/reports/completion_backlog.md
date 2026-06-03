@@ -1,6 +1,6 @@
 # Completion Backlog
 
-Generated at: `2026-06-03T00:14:54Z`
+Generated at: `2026-06-03T00:20:10Z`
 
 ## Summary
 
@@ -21,7 +21,7 @@ Generated at: `2026-06-03T00:14:54Z`
 | 5 | B3 | missing_sector_stock | 194 | candidate_for_official_followup | Stronger official B3 or issuer taxonomy source exposing sector for the exact listing. | yes |
 | 6 | CSE_LK | missing_sector_stock | 143 | candidate_for_official_followup | Updated official masterfile or issuer taxonomy exposing sector for the exact listing; current source: cse_lk_all_security_code. | yes |
 | 7 | Euronext | missing_sector_stock | 132 | candidate_for_official_followup | Updated official masterfile or issuer taxonomy exposing sector for the exact listing; current source: euronext_equities. | yes |
-| 8 | LSE | missing_sector_stock | 128 | candidate_for_official_followup | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
+| 8 | LSE | missing_sector_stock | 128 | candidate_for_official_followup | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | yes |
 
 These are orchestration candidates only. They do not authorize direct data changes without the listed official or review-gated evidence.
 

@@ -2406,7 +2406,7 @@
       "missing_isin_primary": 846,
       "missing_sector_stock": 2600
     },
-    "generated_at": "2026-06-03T00:14:54Z",
+    "generated_at": "2026-06-03T00:20:10Z",
     "legacy_primary_ticker_collision_rows": 1,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
@@ -2593,20 +2593,23 @@
       },
       {
         "action_rank": 8,
-        "confidence_policy": "Accept only canonical stock sectors; FinanceDatabase requires exchange/name gates, same-ISIN peers require unanimous same-asset sector.",
+        "confidence_policy": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
         "etf_missing_count": 0,
         "exchange": "LSE",
         "field": "missing_sector_stock",
         "missing_count": 128,
         "official_source_count": 3,
-        "recommended_source": "FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available.",
+        "recommended_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+        "residual_gate": "source_gap_classification_blocks_direct_apply",
         "review_needed": true,
         "safe_action": "candidate_for_official_followup",
         "script": "scripts/backfill_financedatabase_metadata.py; scripts/backfill_sector_from_isin_peers.py",
+        "source_gap_class": "official_industry_taxonomy_unavailable_gap",
+        "source_gap_rows": 102,
         "stock_missing_count": 128,
         "target_field": "stock_sector",
         "venue_status": "official_full",
-        "why_next": "highest remaining missing-count workflow"
+        "why_next": "source-gap classification review-gated workflow"
       }
     ],
     "official_masterfile_collisions": 11182,
