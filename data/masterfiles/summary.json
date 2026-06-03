@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-02T19:38:59Z",
+  "generated_at": "2026-06-03T03:09:57Z",
   "rows": 146927,
   "exchanges": [
     "ADX",
@@ -630,7 +630,7 @@
       "mode": "unavailable",
       "rows": 0,
       "generated_at": "2026-06-02T19:38:59Z",
-      "last_error": "MSE Malawi mainboard unavailable"
+      "last_error": "MSE Malawi mainboard unavailable (HTTP 403 from official host mse.co.mw)"
     },
     "nse_ke_listed_companies": {
       "provider": "NSE Kenya",
@@ -1445,8 +1445,8 @@
   },
   "errors": [
     {
-      "source_key": "jse_instrument_search",
-      "error": "JSE instrument search unavailable"
+      "source_key": "bme_growth_prices",
+      "error": "BME Growth reference rows unavailable"
     },
     {
       "source_key": "bme_listed_values",
@@ -1457,12 +1457,12 @@
       "error": "BME security prices rows unavailable; official detail fetch failed and no complete cache (>=500 rows) is available; partial caches are ignored"
     },
     {
-      "source_key": "bme_growth_prices",
-      "error": "BME Growth reference rows unavailable"
+      "source_key": "jse_instrument_search",
+      "error": "JSE instrument search unavailable"
     },
     {
       "source_key": "mse_mw_listed_companies",
-      "error": "MSE Malawi mainboard unavailable"
+      "error": "MSE Malawi mainboard unavailable (HTTP 403 from official host mse.co.mw)"
     }
   ]
 }

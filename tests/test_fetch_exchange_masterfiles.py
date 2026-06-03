@@ -14898,6 +14898,38 @@ def test_merge_summary_errors_replaces_refreshed_source_errors() -> None:
     ]
 
 
+def test_fetch_mse_mw_unavailable_error_includes_official_http_status(monkeypatch) -> None:
+    source = MasterfileSource(
+        key="mse_mw_listed_companies",
+        provider="MSE Malawi",
+        description="Official MSE mainboard",
+        source_url="https://mse.co.mw/market/mainboard",
+        format="mse_mw_mainboard_html",
+        reference_scope="listed_companies_subset",
+    )
+    response = requests.Response()
+    response.status_code = 403
+    response.url = source.source_url
+
+    def blocked_fetch(*args, **kwargs):
+        raise requests.HTTPError("403 Client Error: Forbidden", response=response)
+
+    monkeypatch.setattr(fetch_exchange_masterfiles, "fetch_mse_mw_mainboard_rows", blocked_fetch)
+    rows, summary = fetch_exchange_masterfiles.fetch_all_sources(include_manual=False, sources=[source])
+
+    assert rows == []
+    assert summary["source_modes"]["mse_mw_listed_companies"] == "unavailable"
+    assert summary["errors"] == [
+        {
+            "source_key": "mse_mw_listed_companies",
+            "error": "MSE Malawi mainboard unavailable (HTTP 403 from official host mse.co.mw)",
+        }
+    ]
+    assert summary["source_details"]["mse_mw_listed_companies"]["last_error"] == (
+        "MSE Malawi mainboard unavailable (HTTP 403 from official host mse.co.mw)"
+    )
+
+
 def test_build_summary_preserves_cache_fallback_generated_at_for_selected_refresh() -> None:
     summary = fetch_exchange_masterfiles.build_summary(
         [

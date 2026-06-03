@@ -40,6 +40,7 @@ def test_build_payload_prioritizes_restore_queue(tmp_path) -> None:
                 "freshness_status": "old",
                 "refresh_priority": "P1",
                 "refresh_queue": "restore_or_replace_unavailable_source_before_data_fill",
+                "last_error": "HTTP 403 from official host example.test",
                 "evidence_required": "source_restored_or_replaced_with_official_or_documented_unavailable_decision",
             },
         ],
@@ -74,6 +75,7 @@ def test_build_payload_prioritizes_restore_queue(tmp_path) -> None:
     assert payload["summary"]["rows"] == 2
     assert payload["summary"]["priority_totals"] == {"P1": 1, "P2": 1}
     assert payload["items"][0]["source_key"] == "unavailable_directory"
+    assert payload["items"][0]["last_error"] == "HTTP 403 from official host example.test"
     assert "do not authorize inferred identifiers" in payload["_meta"]["policy"]
     assert [batch["refresh_queue"] for batch in payload["summary"]["top_source_refresh_batches"]] == [
         "restore_or_replace_unavailable_source_before_data_fill"
@@ -82,4 +84,5 @@ def test_build_payload_prioritizes_restore_queue(tmp_path) -> None:
     markdown = render_markdown(payload)
     assert "Source Refresh Queue" in markdown
     assert "restore_or_replace_unavailable_source_before_data_fill" in markdown
+    assert "HTTP 403 from official host example.test" in markdown
     assert "fresh_no_refresh_needed" not in markdown

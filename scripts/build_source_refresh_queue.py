@@ -24,6 +24,7 @@ FIELDNAMES = [
     "mode",
     "rows",
     "generated_at",
+    "last_error",
     "age_hours",
     "freshness_status",
     "refresh_priority",
@@ -69,6 +70,7 @@ def build_rows(coverage: dict[str, Any]) -> list[dict[str, Any]]:
                 "mode": source.get("mode", ""),
                 "rows": source.get("rows", 0),
                 "generated_at": source.get("generated_at", ""),
+                "last_error": source.get("last_error", ""),
                 "age_hours": source.get("age_hours"),
                 "freshness_status": source.get("freshness_status", ""),
                 "refresh_priority": source.get("refresh_priority", ""),
@@ -167,15 +169,16 @@ def render_markdown(payload: dict[str, Any]) -> str:
             "",
             "## Top Sources",
             "",
-            "| Priority | Source | Provider | Scope | Mode | Rows | Age Hours | Queue | Evidence Required |",
-            "| --- | --- | --- | --- | --- | ---: | ---: | --- | --- |",
+            "| Priority | Source | Provider | Scope | Mode | Rows | Age Hours | Queue | Last Error | Evidence Required |",
+            "| --- | --- | --- | --- | --- | ---: | ---: | --- | --- | --- |",
         ]
     )
     for row in payload["items"][:25]:
         lines.append(
             f"| {row.get('refresh_priority', '')} | {row.get('source_key', '')} | {row.get('provider', '')} | "
             f"{row.get('reference_scope', '')} | {row.get('mode', '')} | {row.get('rows', 0)} | "
-            f"{row.get('age_hours', '')} | {row.get('refresh_queue', '')} | {row.get('evidence_required', '')} |"
+            f"{row.get('age_hours', '')} | {row.get('refresh_queue', '')} | {row.get('last_error', '')} | "
+            f"{row.get('evidence_required', '')} |"
         )
     return "\n".join(lines) + "\n"
 
@@ -183,7 +186,7 @@ def render_markdown(payload: dict[str, Any]) -> str:
 def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=FIELDNAMES)
+        writer = csv.DictWriter(handle, fieldnames=FIELDNAMES, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
