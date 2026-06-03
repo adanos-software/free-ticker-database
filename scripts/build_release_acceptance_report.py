@@ -30,6 +30,9 @@ RELEASE_SOURCE_REPORTS = {
     "source_gap_classification": "data/reports/source_gap_classification.json",
     "deepseek_review_summary": "data/reports/deepseek_review_summary.json",
     "deepseek_batch_plan": "data/reports/deepseek_batch_plan.json",
+    "deepseek_collision_review_queue": "data/reports/deepseek_collision_review_queue.json",
+    "deepseek_otc_review_queue": "data/reports/deepseek_otc_review_queue.json",
+    "deepseek_weak_sector_review_queue": "data/reports/deepseek_weak_sector_review_queue.json",
     "source_refresh_queue": "data/reports/source_refresh_queue.json",
     "symbol_changes_review": "data/reports/symbol_changes_review.json",
     "ohlcv_plausibility": "data/reports/ohlcv_plausibility.json",
@@ -3026,6 +3029,98 @@ def evaluate_deepseek_advisory_integrity(
         "queue_status_gaps": queue_status_gaps,
         "queue_unreviewed_gaps": queue_unreviewed_gaps,
         "allowed_safe_actions": sorted(DEEPSEEK_ALLOWED_SAFE_ACTIONS),
+    }
+
+
+DEEPSEEK_QUEUE_ADVISORY_EXPECTATIONS = {
+    "collision": {
+        "required_false_fields": ("merge_or_dedupe_authorized",),
+        "source_gate_markers": ("advisory only", "listing-keyed official identity evidence", "reviewer approval"),
+    },
+    "otc": {
+        "required_false_fields": ("metadata_enrichment_authorized",),
+        "source_gate_markers": ("advisory only", "listing-keyed official otc", "registry evidence"),
+    },
+    "weak_sector": {
+        "required_false_fields": ("metadata_enrichment_authorized",),
+        "source_gate_markers": ("advisory only", "listing-keyed official taxonomy evidence", "reviewed canonical mapping"),
+    },
+}
+
+
+def evaluate_deepseek_queue_advisory_policies(review_queues: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    checked: dict[str, dict[str, Any]] = {}
+    queue_gaps: dict[str, list[dict[str, Any]]] = {}
+    missing_queues = sorted(set(DEEPSEEK_QUEUE_ADVISORY_EXPECTATIONS) - set(review_queues))
+    for queue_name, expectation in DEEPSEEK_QUEUE_ADVISORY_EXPECTATIONS.items():
+        payload = review_queues.get(queue_name, {})
+        if not isinstance(payload, dict):
+            payload = {}
+        summary = payload.get("summary", {})
+        if not isinstance(summary, dict):
+            summary = {}
+        items = payload.get("items", [])
+        if not isinstance(items, list):
+            items = []
+        advisory_policy = summary.get("advisory_policy", {})
+        if not isinstance(advisory_policy, dict):
+            advisory_policy = {}
+        rows = int(summary.get("rows") or 0)
+        review_required_rows = int(advisory_policy.get("review_required_rows") or 0)
+        source_gate = str(advisory_policy.get("source_gate", ""))
+        gaps: list[dict[str, Any]] = []
+        if rows <= 0:
+            gaps.append({"field": "summary.rows", "reported": rows, "expected": ">0"})
+        if len(items) != rows:
+            gaps.append({"field": "items", "reported": len(items), "expected": rows})
+        if int(advisory_policy.get("direct_apply_allowed_rows") or 0) != 0:
+            gaps.append(
+                {
+                    "field": "advisory_policy.direct_apply_allowed_rows",
+                    "reported": advisory_policy.get("direct_apply_allowed_rows"),
+                    "expected": 0,
+                }
+            )
+        if review_required_rows != rows:
+            gaps.append(
+                {
+                    "field": "advisory_policy.review_required_rows",
+                    "reported": review_required_rows,
+                    "expected": rows,
+                }
+            )
+        for field in expectation["required_false_fields"]:
+            if advisory_policy.get(field) is not False:
+                gaps.append(
+                    {
+                        "field": f"advisory_policy.{field}",
+                        "reported": advisory_policy.get(field),
+                        "expected": False,
+                    }
+                )
+        missing_source_gate_markers = [
+            marker for marker in expectation["source_gate_markers"] if marker not in source_gate.lower()
+        ]
+        if missing_source_gate_markers:
+            gaps.append(
+                {
+                    "field": "advisory_policy.source_gate",
+                    "missing_markers": missing_source_gate_markers,
+                }
+            )
+        checked[queue_name] = {
+            "rows": rows,
+            "items": len(items),
+            "review_required_rows": review_required_rows,
+            "direct_apply_allowed_rows": int(advisory_policy.get("direct_apply_allowed_rows") or 0),
+        }
+        if gaps:
+            queue_gaps[queue_name] = gaps
+    return {
+        "passed": not missing_queues and not queue_gaps,
+        "checked": checked,
+        "missing_queues": missing_queues,
+        "queue_gaps": queue_gaps,
     }
 
 
@@ -15976,6 +16071,9 @@ def build_payload() -> dict[str, Any]:
     completion_backlog = load_json(REPORTS_DIR / "completion_backlog.json")
     deepseek_review_summary = load_json(REPORTS_DIR / "deepseek_review_summary.json")
     deepseek_batch_plan = load_json(REPORTS_DIR / "deepseek_batch_plan.json")
+    deepseek_collision_queue = load_json(REPORTS_DIR / "deepseek_collision_review_queue.json")
+    deepseek_otc_queue = load_json(REPORTS_DIR / "deepseek_otc_review_queue.json")
+    deepseek_weak_sector_queue = load_json(REPORTS_DIR / "deepseek_weak_sector_review_queue.json")
     gates = gate_lookup(validation)
     criteria = {
         key: evaluate_gate_group(gates, names)
@@ -15988,6 +16086,13 @@ def build_payload() -> dict[str, Any]:
     criteria["deepseek_advisory_integrity"] = evaluate_deepseek_advisory_integrity(
         deepseek_review_summary,
         deepseek_batch_plan,
+    )
+    criteria["deepseek_queue_advisory_policies"] = evaluate_deepseek_queue_advisory_policies(
+        {
+            "collision": deepseek_collision_queue,
+            "otc": deepseek_otc_queue,
+            "weak_sector": deepseek_weak_sector_queue,
+        }
     )
     criteria["completion_backlog_next_actions"] = evaluate_completion_backlog_next_actions(completion_backlog)
     criteria["progress_markdown_traceability"] = evaluate_progress_markdown_traceability()

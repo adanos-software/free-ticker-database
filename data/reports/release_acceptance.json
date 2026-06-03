@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-03T00:58:48Z",
+    "generated_at": "2026-06-03T01:03:29Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -14,6 +14,9 @@
       "source_gap_classification": "data/reports/source_gap_classification.json",
       "deepseek_review_summary": "data/reports/deepseek_review_summary.json",
       "deepseek_batch_plan": "data/reports/deepseek_batch_plan.json",
+      "deepseek_collision_review_queue": "data/reports/deepseek_collision_review_queue.json",
+      "deepseek_otc_review_queue": "data/reports/deepseek_otc_review_queue.json",
+      "deepseek_weak_sector_review_queue": "data/reports/deepseek_weak_sector_review_queue.json",
       "source_refresh_queue": "data/reports/source_refresh_queue.json",
       "symbol_changes_review": "data/reports/symbol_changes_review.json",
       "ohlcv_plausibility": "data/reports/ohlcv_plausibility.json",
@@ -34,12 +37,12 @@
   },
   "passed": true,
   "summary": {
-    "criteria": 44,
-    "passed_criteria": 44,
+    "criteria": 45,
+    "passed_criteria": 45,
     "failed_criteria": 0,
     "validation_failed_error_gates": 0
   },
-  "summary_context": "passed=true;criteria=44;passed_criteria=44;failed_criteria=0;validation_failed_error_gates=0",
+  "summary_context": "passed=true;criteria=45;passed_criteria=45;failed_criteria=0;validation_failed_error_gates=0",
   "criteria": {
     "no_invalid_isins": {
       "passed": true,
@@ -214,18 +217,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-03T00:58:48Z",
+      "release_generated_at": "2026-06-03T01:03:29Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-03T00:58:35Z"
+          "generated_at": "2026-06-03T01:03:13Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-03T00:58:34Z"
+          "generated_at": "2026-06-03T01:03:13Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -271,6 +274,21 @@
           "path": "data/reports/deepseek_batch_plan.json",
           "exists": true,
           "generated_at": "2026-06-02T23:05:27Z"
+        },
+        "deepseek_collision_review_queue": {
+          "path": "data/reports/deepseek_collision_review_queue.json",
+          "exists": true,
+          "generated_at": "2026-06-03T00:48:32Z"
+        },
+        "deepseek_otc_review_queue": {
+          "path": "data/reports/deepseek_otc_review_queue.json",
+          "exists": true,
+          "generated_at": "2026-06-03T00:42:25Z"
+        },
+        "deepseek_weak_sector_review_queue": {
+          "path": "data/reports/deepseek_weak_sector_review_queue.json",
+          "exists": true,
+          "generated_at": "2026-06-03T00:37:41Z"
         },
         "source_refresh_queue": {
           "path": "data/reports/source_refresh_queue.json",
@@ -383,6 +401,31 @@
         "source_gap_accept"
       ]
     },
+    "deepseek_queue_advisory_policies": {
+      "passed": true,
+      "checked": {
+        "collision": {
+          "rows": 2969,
+          "items": 2969,
+          "review_required_rows": 2969,
+          "direct_apply_allowed_rows": 0
+        },
+        "otc": {
+          "rows": 8996,
+          "items": 8996,
+          "review_required_rows": 8996,
+          "direct_apply_allowed_rows": 0
+        },
+        "weak_sector": {
+          "rows": 636,
+          "items": 636,
+          "review_required_rows": 636,
+          "direct_apply_allowed_rows": 0
+        }
+      },
+      "missing_queues": [],
+      "queue_gaps": {}
+    },
     "completion_backlog_next_actions": {
       "passed": true,
       "next_actions": 12,
@@ -442,7 +485,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-03T00:58:34Z",
+      "generated_at": "2026-06-03T01:03:13Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},

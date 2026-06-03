@@ -57,6 +57,7 @@ from scripts.build_release_acceptance_report import (
     evaluate_campaign_reviewability,
     evaluate_completion_backlog_next_actions,
     evaluate_deepseek_advisory_integrity,
+    evaluate_deepseek_queue_advisory_policies,
     campaign_status_rows,
     evaluate_next_review_batch_visibility,
     evaluate_next_review_command_safety_gate,
@@ -162,6 +163,9 @@ def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> N
     assert RELEASE_SOURCE_REPORTS["source_gap_classification"] == "data/reports/source_gap_classification.json"
     assert RELEASE_SOURCE_REPORTS["deepseek_review_summary"] == "data/reports/deepseek_review_summary.json"
     assert RELEASE_SOURCE_REPORTS["deepseek_batch_plan"] == "data/reports/deepseek_batch_plan.json"
+    assert RELEASE_SOURCE_REPORTS["deepseek_collision_review_queue"] == "data/reports/deepseek_collision_review_queue.json"
+    assert RELEASE_SOURCE_REPORTS["deepseek_otc_review_queue"] == "data/reports/deepseek_otc_review_queue.json"
+    assert RELEASE_SOURCE_REPORTS["deepseek_weak_sector_review_queue"] == "data/reports/deepseek_weak_sector_review_queue.json"
     assert (
         RELEASE_SOURCE_REPORTS["isin_identity_collision_review_queue"]
         == "data/reports/isin_identity_collision_review_queue.json"
@@ -245,6 +249,109 @@ def test_evaluate_deepseek_advisory_integrity_rejects_direct_or_open_batches() -
     assert result["queue_status_gaps"] == ["source_gap"]
     assert result["queue_unreviewed_gaps"] == {"source_gap": 3}
     assert result["secret_policy_missing"] is True
+
+
+def test_evaluate_deepseek_queue_advisory_policies_accepts_gated_queues() -> None:
+    result = evaluate_deepseek_queue_advisory_policies(
+        {
+            "collision": {
+                "summary": {
+                    "rows": 2,
+                    "advisory_policy": {
+                        "direct_apply_allowed_rows": 0,
+                        "merge_or_dedupe_authorized": False,
+                        "review_required_rows": 2,
+                        "source_gate": (
+                            "DeepSeek collision rows are advisory only; apply no merge without "
+                            "listing-keyed official identity evidence and reviewer approval."
+                        ),
+                    },
+                },
+                "items": [{}, {}],
+            },
+            "otc": {
+                "summary": {
+                    "rows": 1,
+                    "advisory_policy": {
+                        "direct_apply_allowed_rows": 0,
+                        "metadata_enrichment_authorized": False,
+                        "review_required_rows": 1,
+                        "source_gate": (
+                            "DeepSeek OTC rows are advisory only; apply no changes without "
+                            "listing-keyed official OTC, SEC, issuer, or registry evidence."
+                        ),
+                    },
+                },
+                "items": [{}],
+            },
+            "weak_sector": {
+                "summary": {
+                    "rows": 1,
+                    "advisory_policy": {
+                        "direct_apply_allowed_rows": 0,
+                        "metadata_enrichment_authorized": False,
+                        "review_required_rows": 1,
+                        "source_gate": (
+                            "DeepSeek weak-sector rows are advisory only; apply no sector without "
+                            "listing-keyed official taxonomy evidence and a reviewed canonical mapping."
+                        ),
+                    },
+                },
+                "items": [{}],
+            },
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["checked"]["collision"]["review_required_rows"] == 2
+    assert result["queue_gaps"] == {}
+
+
+def test_evaluate_deepseek_queue_advisory_policies_rejects_direct_or_missing_queue() -> None:
+    result = evaluate_deepseek_queue_advisory_policies(
+        {
+            "collision": {
+                "summary": {
+                    "rows": 1,
+                    "advisory_policy": {
+                        "direct_apply_allowed_rows": 1,
+                        "merge_or_dedupe_authorized": True,
+                        "review_required_rows": 0,
+                        "source_gate": "Apply after review.",
+                    },
+                },
+                "items": [],
+            },
+            "otc": {
+                "summary": {
+                    "rows": 1,
+                    "advisory_policy": {
+                        "direct_apply_allowed_rows": 0,
+                        "metadata_enrichment_authorized": False,
+                        "review_required_rows": 1,
+                        "source_gate": (
+                            "DeepSeek OTC rows are advisory only; apply no changes without "
+                            "listing-keyed official OTC, SEC, issuer, or registry evidence."
+                        ),
+                    },
+                },
+                "items": [{}],
+            },
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["missing_queues"] == ["weak_sector"]
+    assert {
+        "field": "advisory_policy.direct_apply_allowed_rows",
+        "reported": 1,
+        "expected": 0,
+    } in result["queue_gaps"]["collision"]
+    assert {
+        "field": "advisory_policy.merge_or_dedupe_authorized",
+        "reported": True,
+        "expected": False,
+    } in result["queue_gaps"]["collision"]
 
 
 def test_evaluate_isin_identity_collision_gate_accepts_advisory_queue() -> None:
