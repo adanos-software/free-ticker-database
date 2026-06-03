@@ -35,6 +35,7 @@ RELEASE_SOURCE_REPORTS = {
     "ohlcv_plausibility": "data/reports/ohlcv_plausibility.json",
     "ohlcv_warning_review": "data/reports/ohlcv_warning_review.json",
     "masterfile_collision_review": "data/reports/masterfile_collision_review.json",
+    "isin_identity_collision_review_queue": "data/reports/isin_identity_collision_review_queue.json",
     "otc_scope_review": "data/reports/otc_scope_review.json",
     "canada_residual_review": "data/reports/canada_residual_review.json",
     "canada_figi_queue": "data/reports/canada_figi_queue.json",
@@ -3025,6 +3026,99 @@ def evaluate_deepseek_advisory_integrity(
         "queue_status_gaps": queue_status_gaps,
         "queue_unreviewed_gaps": queue_unreviewed_gaps,
         "allowed_safe_actions": sorted(DEEPSEEK_ALLOWED_SAFE_ACTIONS),
+    }
+
+
+def evaluate_isin_identity_collision_gate(review_queue: dict[str, Any]) -> dict[str, Any]:
+    summary = review_queue.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    meta = review_queue.get("_meta", {})
+    if not isinstance(meta, dict):
+        meta = {}
+    items = review_queue.get("items", [])
+    if not isinstance(items, list):
+        items = []
+    advisory_policy = summary.get("advisory_policy", {})
+    if not isinstance(advisory_policy, dict):
+        advisory_policy = {}
+
+    collision_groups = int(summary.get("collision_groups") or 0)
+    review_required_groups = int(advisory_policy.get("review_required_groups") or 0)
+    source_gate = str(advisory_policy.get("source_gate", ""))
+    meta_policy = str(meta.get("policy", ""))
+    summary_policy = str(summary.get("policy", ""))
+    combined_policy = f"{meta_policy} {summary_policy}".lower()
+    row_policy_gaps = [
+        row.get("isin", "")
+        for row in items
+        if row.get("review_queue") != "manual_isin_identity_review"
+        or row.get("closure_status") != "open_needs_official_identifier_evidence"
+        or "official listing-keyed identifier evidence" not in str(row.get("review_gate", ""))
+    ]
+    policy_missing_markers = [
+        marker
+        for marker in ("review", "official", "listing-keyed")
+        if marker not in combined_policy
+    ]
+    advisory_gaps: list[dict[str, Any]] = []
+    if int(summary.get("direct_identifier_apply_allowed_rows") or 0) != 0:
+        advisory_gaps.append(
+            {
+                "field": "summary.direct_identifier_apply_allowed_rows",
+                "reported": summary.get("direct_identifier_apply_allowed_rows"),
+                "expected": 0,
+            }
+        )
+    if int(advisory_policy.get("direct_identifier_apply_allowed_rows") or 0) != 0:
+        advisory_gaps.append(
+            {
+                "field": "advisory_policy.direct_identifier_apply_allowed_rows",
+                "reported": advisory_policy.get("direct_identifier_apply_allowed_rows"),
+                "expected": 0,
+            }
+        )
+    if advisory_policy.get("identity_change_authorized") is not False:
+        advisory_gaps.append(
+            {
+                "field": "advisory_policy.identity_change_authorized",
+                "reported": advisory_policy.get("identity_change_authorized"),
+                "expected": False,
+            }
+        )
+    if review_required_groups != collision_groups:
+        advisory_gaps.append(
+            {
+                "field": "advisory_policy.review_required_groups",
+                "reported": review_required_groups,
+                "expected": collision_groups,
+            }
+        )
+    source_gate_missing_markers = [
+        marker
+        for marker in ("advisory only", "official identifier evidence", "reviewer approval")
+        if marker not in source_gate.lower()
+    ]
+    return {
+        "passed": (
+            collision_groups > 0
+            and len(items) == collision_groups
+            and int(summary.get("open_groups") or 0) == collision_groups
+            and int(summary.get("closed_groups") or 0) == 0
+            and not advisory_gaps
+            and not policy_missing_markers
+            and not source_gate_missing_markers
+            and not row_policy_gaps
+        ),
+        "collision_groups": collision_groups,
+        "items": len(items),
+        "open_groups": int(summary.get("open_groups") or 0),
+        "closed_groups": int(summary.get("closed_groups") or 0),
+        "advisory_gaps": advisory_gaps,
+        "policy_missing_markers": policy_missing_markers,
+        "source_gate_missing_markers": source_gate_missing_markers,
+        "row_policy_gap_isins": row_policy_gaps[:20],
+        "row_policy_gap_count": len(row_policy_gaps),
     }
 
 
@@ -15866,6 +15960,7 @@ def build_payload() -> dict[str, Any]:
     symbol_changes_review = load_json(REPORTS_DIR / "symbol_changes_review.json")
     ohlcv = load_json(REPORTS_DIR / "ohlcv_plausibility.json")
     masterfile_collision = load_json(REPORTS_DIR / "masterfile_collision_review.json")
+    isin_identity_collision = load_json(REPORTS_DIR / "isin_identity_collision_review_queue.json")
     otc_scope = load_json(REPORTS_DIR / "otc_scope_review.json")
     canada_residual = load_json(REPORTS_DIR / "canada_residual_review.json")
     canada_figi_queue = load_json(REPORTS_DIR / "canada_figi_queue.json")
@@ -15903,6 +15998,7 @@ def build_payload() -> dict[str, Any]:
     criteria["symbol_change_review_gate"] = evaluate_symbol_change_review_gate(symbol_changes_review)
     criteria["ohlcv_plausibility_gate"] = evaluate_ohlcv_plausibility_gate(ohlcv)
     criteria["masterfile_collision_gate"] = evaluate_masterfile_collision_gate(masterfile_collision)
+    criteria["isin_identity_collision_gate"] = evaluate_isin_identity_collision_gate(isin_identity_collision)
     criteria["otc_scope_gate"] = evaluate_otc_scope_gate(otc_scope)
     criteria["canada_figi_gate"] = evaluate_canada_figi_gate(
         canada_residual,

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-03T00:52:46Z",
+    "generated_at": "2026-06-03T00:58:48Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -19,6 +19,7 @@
       "ohlcv_plausibility": "data/reports/ohlcv_plausibility.json",
       "ohlcv_warning_review": "data/reports/ohlcv_warning_review.json",
       "masterfile_collision_review": "data/reports/masterfile_collision_review.json",
+      "isin_identity_collision_review_queue": "data/reports/isin_identity_collision_review_queue.json",
       "otc_scope_review": "data/reports/otc_scope_review.json",
       "canada_residual_review": "data/reports/canada_residual_review.json",
       "canada_figi_queue": "data/reports/canada_figi_queue.json",
@@ -33,12 +34,12 @@
   },
   "passed": true,
   "summary": {
-    "criteria": 43,
-    "passed_criteria": 43,
+    "criteria": 44,
+    "passed_criteria": 44,
     "failed_criteria": 0,
     "validation_failed_error_gates": 0
   },
-  "summary_context": "passed=true;criteria=43;passed_criteria=43;failed_criteria=0;validation_failed_error_gates=0",
+  "summary_context": "passed=true;criteria=44;passed_criteria=44;failed_criteria=0;validation_failed_error_gates=0",
   "criteria": {
     "no_invalid_isins": {
       "passed": true,
@@ -213,18 +214,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-03T00:52:46Z",
+      "release_generated_at": "2026-06-03T00:58:48Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-03T00:52:31Z"
+          "generated_at": "2026-06-03T00:58:35Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-03T00:52:30Z"
+          "generated_at": "2026-06-03T00:58:34Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -295,6 +296,11 @@
           "path": "data/reports/masterfile_collision_review.json",
           "exists": true,
           "generated_at": "2026-06-02T19:18:19Z"
+        },
+        "isin_identity_collision_review_queue": {
+          "path": "data/reports/isin_identity_collision_review_queue.json",
+          "exists": true,
+          "generated_at": "2026-06-03T00:52:19Z"
         },
         "otc_scope_review": {
           "path": "data/reports/otc_scope_review.json",
@@ -436,7 +442,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-03T00:52:30Z",
+      "generated_at": "2026-06-03T00:58:34Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -835,6 +841,18 @@
         "same_isin_cross_listing_needs_name_or_scope_review",
         "same_isin_exact_name_cross_listing_candidate"
       ]
+    },
+    "isin_identity_collision_gate": {
+      "passed": true,
+      "collision_groups": 426,
+      "items": 426,
+      "open_groups": 426,
+      "closed_groups": 0,
+      "advisory_gaps": [],
+      "policy_missing_markers": [],
+      "source_gate_missing_markers": [],
+      "row_policy_gap_isins": [],
+      "row_policy_gap_count": 0
     },
     "otc_scope_gate": {
       "passed": true,

@@ -85,6 +85,7 @@ from scripts.build_release_acceptance_report import (
     financialdata_official_identity_context,
     financialdata_supplement_review_context,
     evaluate_gate_group,
+    evaluate_isin_identity_collision_gate,
     evaluate_masterfile_collision_gate,
     evaluate_ohlcv_plausibility_gate,
     evaluate_otc_scope_gate,
@@ -161,6 +162,10 @@ def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> N
     assert RELEASE_SOURCE_REPORTS["source_gap_classification"] == "data/reports/source_gap_classification.json"
     assert RELEASE_SOURCE_REPORTS["deepseek_review_summary"] == "data/reports/deepseek_review_summary.json"
     assert RELEASE_SOURCE_REPORTS["deepseek_batch_plan"] == "data/reports/deepseek_batch_plan.json"
+    assert (
+        RELEASE_SOURCE_REPORTS["isin_identity_collision_review_queue"]
+        == "data/reports/isin_identity_collision_review_queue.json"
+    )
 
 
 def test_evaluate_deepseek_advisory_integrity_accepts_drained_advisory_reports() -> None:
@@ -240,6 +245,99 @@ def test_evaluate_deepseek_advisory_integrity_rejects_direct_or_open_batches() -
     assert result["queue_status_gaps"] == ["source_gap"]
     assert result["queue_unreviewed_gaps"] == {"source_gap": 3}
     assert result["secret_policy_missing"] is True
+
+
+def test_evaluate_isin_identity_collision_gate_accepts_advisory_queue() -> None:
+    result = evaluate_isin_identity_collision_gate(
+        {
+            "_meta": {
+                "policy": (
+                    "ISIN identity collisions are reported for review only. No ISIN, country, "
+                    "name, or scope change is authorized without official listing-keyed evidence."
+                )
+            },
+            "summary": {
+                "collision_groups": 2,
+                "open_groups": 2,
+                "closed_groups": 0,
+                "direct_identifier_apply_allowed_rows": 0,
+                "policy": (
+                    "This queue reports and gates the collisions and applies no ISIN, country, "
+                    "or name change without official listing-keyed evidence."
+                ),
+                "advisory_policy": {
+                    "direct_identifier_apply_allowed_rows": 0,
+                    "identity_change_authorized": False,
+                    "review_required_groups": 2,
+                    "source_gate": (
+                        "ISIN identity collision rows are advisory only; apply no ISIN, country, "
+                        "name, scope, merge, or dedupe change without listing-keyed official "
+                        "identifier evidence and reviewer approval."
+                    ),
+                },
+            },
+            "items": [
+                {
+                    "isin": "AU000000AMP6",
+                    "review_queue": "manual_isin_identity_review",
+                    "closure_status": "open_needs_official_identifier_evidence",
+                    "review_gate": "Require official listing-keyed identifier evidence before changes.",
+                },
+                {
+                    "isin": "CA08663L1040",
+                    "review_queue": "manual_isin_identity_review",
+                    "closure_status": "open_needs_official_identifier_evidence",
+                    "review_gate": "Require official listing-keyed identifier evidence before changes.",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["collision_groups"] == 2
+    assert result["advisory_gaps"] == []
+
+
+def test_evaluate_isin_identity_collision_gate_rejects_direct_apply_or_missing_policy() -> None:
+    result = evaluate_isin_identity_collision_gate(
+        {
+            "_meta": {"policy": "ISIN queue."},
+            "summary": {
+                "collision_groups": 1,
+                "open_groups": 0,
+                "closed_groups": 1,
+                "direct_identifier_apply_allowed_rows": 1,
+                "policy": "ISIN queue.",
+                "advisory_policy": {
+                    "direct_identifier_apply_allowed_rows": 1,
+                    "identity_change_authorized": True,
+                    "review_required_groups": 0,
+                    "source_gate": "Apply after review.",
+                },
+            },
+            "items": [
+                {
+                    "isin": "AU000000AMP6",
+                    "review_queue": "direct_apply",
+                    "closure_status": "closed",
+                    "review_gate": "",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert {
+        "field": "summary.direct_identifier_apply_allowed_rows",
+        "reported": 1,
+        "expected": 0,
+    } in result["advisory_gaps"]
+    assert {
+        "field": "advisory_policy.identity_change_authorized",
+        "reported": True,
+        "expected": False,
+    } in result["advisory_gaps"]
+    assert result["row_policy_gap_count"] == 1
 
 
 def test_evaluate_completion_backlog_next_actions_accepts_advisory_actions() -> None:
