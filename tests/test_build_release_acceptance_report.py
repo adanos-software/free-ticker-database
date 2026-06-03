@@ -91,6 +91,7 @@ from scripts.build_release_acceptance_report import (
     evaluate_masterfile_collision_gate,
     evaluate_ohlcv_plausibility_gate,
     evaluate_otc_name_mismatch_action_queue_gate,
+    evaluate_otc_name_mismatch_review_gate,
     evaluate_otc_scope_gate,
     otc_scope_review_context,
     otc_scope_review_decision_context,
@@ -176,6 +177,7 @@ def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> N
         RELEASE_SOURCE_REPORTS["isin_identity_collision_review_queue"]
         == "data/reports/isin_identity_collision_review_queue.json"
     )
+    assert RELEASE_SOURCE_REPORTS["otc_name_mismatch_review"] == "data/reports/otc_name_mismatch_review.json"
     assert RELEASE_SOURCE_REPORTS["otc_name_mismatch_action_queue"] == "data/reports/otc_name_mismatch_action_queue.json"
 
 
@@ -454,6 +456,95 @@ def test_evaluate_deepseek_isin_collision_validation_gate_rejects_gaps_or_apply_
     } in result["coverage_gaps"]
     assert result["missing_row_gate_count"] == 1
     assert "advisory" in result["policy_missing_markers"]
+
+
+def test_evaluate_otc_name_mismatch_review_gate_accepts_review_gated_rows() -> None:
+    result = evaluate_otc_name_mismatch_review_gate(
+        {
+            "_meta": {
+                "rows": 2,
+                "policy": (
+                    "Review queue only. OTC names are not changed unless an official or reviewed "
+                    "issuer-history source matches the listing_key and required identity evidence."
+                ),
+            },
+            "summary": {
+                "review_class_counts": {"probable_otc_rename_or_symbol_reuse": 2},
+                "review_priority_counts": {"high": 2},
+                "apply_eligibility_counts": {"blocked_until_isin_anchored_issuer_history_review": 2},
+                "verification_evidence_required_counts": {
+                    "official_or_reviewed_isin_bearing_source_matching_current_issuer_listing_key_and_name": 2
+                },
+                "review_strategy_counts": {"verify_isin_anchored_issuer_history_before_name_change": 2},
+            },
+            "items": [
+                {
+                    "listing_key": "OTC::AECX",
+                    "review_class": "probable_otc_rename_or_symbol_reuse",
+                    "review_priority": "high",
+                    "apply_eligibility": "blocked_until_isin_anchored_issuer_history_review",
+                    "verification_evidence_required": (
+                        "official_or_reviewed_isin_bearing_source_matching_current_issuer_listing_key_and_name"
+                    ),
+                    "review_strategy": "verify_isin_anchored_issuer_history_before_name_change",
+                    "recommended_next_source": "Official or reviewed ISIN-bearing issuer-history source.",
+                    "source_gate": "Do not change the name until ISIN-anchored evidence proves the same current issuer.",
+                    "official_source_context": "official_sources=otc_markets_stock_screener;official_name_present=true",
+                    "identity_review_context": "token_overlap=0;isin_presence=with_isin",
+                    "decision_review_context": "review_class=probable_otc_rename_or_symbol_reuse;review_decision=none",
+                    "recommended_action": "review_or_backfill",
+                },
+                {
+                    "listing_key": "OTC::AMFN",
+                    "review_class": "stale_or_symbol_reuse_without_isin",
+                    "review_priority": "critical",
+                    "apply_eligibility": "blocked_until_official_issuer_identity_source_or_quarantine_decision",
+                    "verification_evidence_required": (
+                        "official_otc_profile_registry_or_issuer_history_source_matching_listing_key_before_name_or_quarantine_action"
+                    ),
+                    "review_strategy": "resolve_or_quarantine_with_official_otc_profile_or_issuer_history",
+                    "recommended_next_source": "Official OTC profile or issuer-history source.",
+                    "source_gate": "Do not rename or trust reused OTC symbol without listing-keyed official identity.",
+                    "official_source_context": "official_sources=otc_markets_stock_screener;official_name_present=true",
+                    "identity_review_context": "token_overlap=0;isin_presence=without_isin",
+                    "decision_review_context": "review_class=stale_or_symbol_reuse_without_isin;review_decision=none",
+                    "recommended_action": "verify_or_quarantine_before_trusting_listing",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["rows"] == 2
+    assert result["row_gap_count"] == 0
+
+
+def test_evaluate_otc_name_mismatch_review_gate_rejects_apply_or_missing_context() -> None:
+    result = evaluate_otc_name_mismatch_review_gate(
+        {
+            "_meta": {"rows": 1, "policy": "Apply direct name changes."},
+            "summary": {
+                "review_class_counts": {"probable_otc_rename_or_symbol_reuse": 2},
+                "review_priority_counts": {},
+                "apply_eligibility_counts": {},
+                "verification_evidence_required_counts": {},
+                "review_strategy_counts": {},
+            },
+            "items": [
+                {
+                    "listing_key": "OTC::AECX",
+                    "review_class": "probable_otc_rename_or_symbol_reuse",
+                    "review_priority": "high",
+                    "apply_eligibility": "direct_apply",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert "review queue only" in result["policy_missing_markers"]
+    assert result["row_gap_count"] == 1
+    assert result["count_gaps"]
 
 
 def test_evaluate_otc_name_mismatch_action_queue_gate_accepts_review_only_queue() -> None:
