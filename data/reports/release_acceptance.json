@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-03T01:18:52Z",
+    "generated_at": "2026-06-03T01:26:12Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -26,6 +26,7 @@
       "ohlcv_warning_review": "data/reports/ohlcv_warning_review.json",
       "masterfile_collision_review": "data/reports/masterfile_collision_review.json",
       "isin_identity_collision_review_queue": "data/reports/isin_identity_collision_review_queue.json",
+      "financialdata_isin_supplements_review": "data/reports/financialdata_isin_supplements_review.json",
       "otc_scope_review": "data/reports/otc_scope_review.json",
       "canada_residual_review": "data/reports/canada_residual_review.json",
       "canada_figi_queue": "data/reports/canada_figi_queue.json",
@@ -40,12 +41,12 @@
   },
   "passed": true,
   "summary": {
-    "criteria": 48,
-    "passed_criteria": 48,
+    "criteria": 49,
+    "passed_criteria": 49,
     "failed_criteria": 0,
     "validation_failed_error_gates": 0
   },
-  "summary_context": "passed=true;criteria=48;passed_criteria=48;failed_criteria=0;validation_failed_error_gates=0",
+  "summary_context": "passed=true;criteria=49;passed_criteria=49;failed_criteria=0;validation_failed_error_gates=0",
   "criteria": {
     "no_invalid_isins": {
       "passed": true,
@@ -220,18 +221,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-03T01:18:52Z",
+      "release_generated_at": "2026-06-03T01:26:12Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-03T01:18:32Z"
+          "generated_at": "2026-06-03T01:26:04Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-03T01:18:32Z"
+          "generated_at": "2026-06-03T01:26:03Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -337,6 +338,11 @@
           "path": "data/reports/isin_identity_collision_review_queue.json",
           "exists": true,
           "generated_at": "2026-06-03T00:52:19Z"
+        },
+        "financialdata_isin_supplements_review": {
+          "path": "data/reports/financialdata_isin_supplements_review.json",
+          "exists": true,
+          "generated_at": "2026-06-02T20:31:19Z"
         },
         "otc_scope_review": {
           "path": "data/reports/otc_scope_review.json",
@@ -514,7 +520,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-03T01:18:32Z",
+      "generated_at": "2026-06-03T01:26:03Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -968,6 +974,42 @@
       "source_gate_missing_markers": [],
       "row_policy_gap_isins": [],
       "row_policy_gap_count": 0
+    },
+    "financialdata_supplement_review_gate": {
+      "passed": true,
+      "rows": 665,
+      "input_rows": 665,
+      "review_items": 665,
+      "preserved_supplement_rows": 557,
+      "supplement_rows": 557,
+      "supplement_rows_by_exchange_total": 557,
+      "policy_missing_marker_groups": [],
+      "count_gaps": [],
+      "supplement_row_count_gaps": [],
+      "traceability_gap_count": 0,
+      "traceability_gaps": [],
+      "required_row_keys": [
+        "financialdata_ticker",
+        "financialdata_exchange",
+        "decision",
+        "reason",
+        "financialdata_review_queue",
+        "review_priority",
+        "review_strategy",
+        "apply_eligibility",
+        "verification_evidence_required",
+        "recommended_next_source",
+        "source_gate",
+        "financialdata_discovery_context",
+        "official_identity_context",
+        "supplement_review_context"
+      ],
+      "required_official_evidence_for_accept_or_preserve": [
+        "official_ticker",
+        "official_exchange",
+        "official_isin",
+        "official_source_key"
+      ]
     },
     "otc_scope_gate": {
       "passed": true,

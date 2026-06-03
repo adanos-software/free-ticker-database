@@ -42,6 +42,7 @@ RELEASE_SOURCE_REPORTS = {
     "ohlcv_warning_review": "data/reports/ohlcv_warning_review.json",
     "masterfile_collision_review": "data/reports/masterfile_collision_review.json",
     "isin_identity_collision_review_queue": "data/reports/isin_identity_collision_review_queue.json",
+    "financialdata_isin_supplements_review": "data/reports/financialdata_isin_supplements_review.json",
     "otc_scope_review": "data/reports/otc_scope_review.json",
     "canada_residual_review": "data/reports/canada_residual_review.json",
     "canada_figi_queue": "data/reports/canada_figi_queue.json",
@@ -2808,6 +2809,18 @@ SUPPLEMENT_OFFICIAL_EVIDENCE_KEYS = (
     "official_exchange",
     "official_isin",
     "official_source_key",
+)
+FINANCIALDATA_SUPPLEMENT_POLICY_MARKER_GROUPS = {
+    "discovery_only": ("discovery signal", "discovery signals"),
+    "official_source": ("official", "active masterfile", "registry"),
+    "identifier_gate": ("valid official isin", "issuer-name gate", "duplicate"),
+    "no_guessing": ("no_guessing", "never used as an identifier source", "symbol or name shape"),
+}
+FINANCIALDATA_SUPPLEMENT_SUMMARY_COUNT_FIELDS = (
+    "decision_counts",
+    "reason_counts",
+    "apply_eligibility_counts",
+    "verification_evidence_required_counts",
 )
 REVIEW_POLICY_REQUIRED_MARKER_GROUPS = {
     "review_or_no_guessing_gate": (
@@ -15675,8 +15688,7 @@ def report_apply_traceability_gaps(path: Path) -> list[dict[str, Any]]:
     return gaps
 
 
-def report_supplement_traceability_gaps(path: Path) -> list[dict[str, Any]]:
-    payload = load_json(path)
+def supplement_traceability_gaps(payload: dict[str, Any]) -> list[dict[str, Any]]:
     rows = first_review_row_container(payload)
     reported_count = report_row_count(payload)
     gaps: list[dict[str, Any]] = []
@@ -15727,6 +15739,10 @@ def report_supplement_traceability_gaps(path: Path) -> list[dict[str, Any]]:
                 }
             )
     return gaps
+
+
+def report_supplement_traceability_gaps(path: Path) -> list[dict[str, Any]]:
+    return supplement_traceability_gaps(load_json(path))
 
 
 def report_review_identity_gaps(path: Path) -> list[dict[str, Any]]:
@@ -16307,6 +16323,77 @@ def evaluate_supplement_artifact_traceability(campaigns: dict[str, Any], reports
     }
 
 
+def evaluate_financialdata_supplement_review_gate(review: dict[str, Any]) -> dict[str, Any]:
+    summary = review.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    rows = first_review_row_container(review)
+    policy = summary.get("policy", {})
+    if not isinstance(policy, dict):
+        policy = {}
+
+    policy_text = " ".join(str(value) for value in policy.values()).lower()
+    policy_missing_marker_groups = [
+        group
+        for group, markers in FINANCIALDATA_SUPPLEMENT_POLICY_MARKER_GROUPS.items()
+        if not any(marker in policy_text for marker in markers)
+    ]
+    count_gaps: list[dict[str, Any]] = []
+    for field in FINANCIALDATA_SUPPLEMENT_SUMMARY_COUNT_FIELDS:
+        counts = summary.get(field, {})
+        if not isinstance(counts, dict) or sum(int(value) for value in counts.values()) != len(rows):
+            count_gaps.append(
+                {
+                    "field": field,
+                    "expected": len(rows),
+                    "actual": sum(int(value) for value in counts.values()) if isinstance(counts, dict) else None,
+                }
+            )
+    supplement_rows_by_exchange = summary.get("supplement_rows_by_exchange", {})
+    supplement_rows_by_exchange_total = (
+        sum(int(value) for value in supplement_rows_by_exchange.values())
+        if isinstance(supplement_rows_by_exchange, dict)
+        else None
+    )
+    reported_review_rows = summary.get("rows", summary.get("input_rows"))
+    supplement_row_count_gaps = []
+    for field in ("preserved_supplement_rows", "supplement_rows"):
+        if summary.get(field) != supplement_rows_by_exchange_total:
+            supplement_row_count_gaps.append(
+                {
+                    "field": field,
+                    "expected": supplement_rows_by_exchange_total,
+                    "actual": summary.get(field),
+                }
+            )
+
+    row_gaps = supplement_traceability_gaps(review)
+    return {
+        "passed": (
+            bool(rows)
+            and reported_review_rows == len(rows)
+            and summary.get("input_rows") == len(rows)
+            and not policy_missing_marker_groups
+            and not count_gaps
+            and not supplement_row_count_gaps
+            and not row_gaps
+        ),
+        "rows": reported_review_rows,
+        "input_rows": summary.get("input_rows"),
+        "review_items": len(rows),
+        "preserved_supplement_rows": summary.get("preserved_supplement_rows"),
+        "supplement_rows": summary.get("supplement_rows"),
+        "supplement_rows_by_exchange_total": supplement_rows_by_exchange_total,
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+        "count_gaps": count_gaps,
+        "supplement_row_count_gaps": supplement_row_count_gaps,
+        "traceability_gap_count": len(row_gaps),
+        "traceability_gaps": row_gaps[:20],
+        "required_row_keys": list(SUPPLEMENT_ROW_REQUIRED_KEYS),
+        "required_official_evidence_for_accept_or_preserve": list(SUPPLEMENT_OFFICIAL_EVIDENCE_KEYS),
+    }
+
+
 def build_payload() -> dict[str, Any]:
     generated_at = utc_now_iso()
     validation = load_json(REPORTS_DIR / "validation_report.json")
@@ -16319,6 +16406,7 @@ def build_payload() -> dict[str, Any]:
     ohlcv = load_json(REPORTS_DIR / "ohlcv_plausibility.json")
     masterfile_collision = load_json(REPORTS_DIR / "masterfile_collision_review.json")
     isin_identity_collision = load_json(REPORTS_DIR / "isin_identity_collision_review_queue.json")
+    financialdata_supplement_review = load_json(REPORTS_DIR / "financialdata_isin_supplements_review.json")
     otc_scope = load_json(REPORTS_DIR / "otc_scope_review.json")
     canada_residual = load_json(REPORTS_DIR / "canada_residual_review.json")
     canada_figi_queue = load_json(REPORTS_DIR / "canada_figi_queue.json")
@@ -16375,6 +16463,9 @@ def build_payload() -> dict[str, Any]:
     criteria["ohlcv_plausibility_gate"] = evaluate_ohlcv_plausibility_gate(ohlcv)
     criteria["masterfile_collision_gate"] = evaluate_masterfile_collision_gate(masterfile_collision)
     criteria["isin_identity_collision_gate"] = evaluate_isin_identity_collision_gate(isin_identity_collision)
+    criteria["financialdata_supplement_review_gate"] = evaluate_financialdata_supplement_review_gate(
+        financialdata_supplement_review
+    )
     criteria["otc_scope_gate"] = evaluate_otc_scope_gate(otc_scope)
     criteria["canada_figi_gate"] = evaluate_canada_figi_gate(
         canada_residual,

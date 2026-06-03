@@ -82,6 +82,7 @@ from scripts.build_release_acceptance_report import (
     evaluate_asx_residual_gate,
     evaluate_b3_residual_gate,
     evaluate_entry_quality_command_report,
+    evaluate_financialdata_supplement_review_gate,
     evaluate_supplement_artifact_traceability,
     financialdata_discovery_context,
     financialdata_official_identity_context,
@@ -176,6 +177,10 @@ def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> N
     assert (
         RELEASE_SOURCE_REPORTS["isin_identity_collision_review_queue"]
         == "data/reports/isin_identity_collision_review_queue.json"
+    )
+    assert (
+        RELEASE_SOURCE_REPORTS["financialdata_isin_supplements_review"]
+        == "data/reports/financialdata_isin_supplements_review.json"
     )
     assert RELEASE_SOURCE_REPORTS["otc_name_mismatch_review"] == "data/reports/otc_name_mismatch_review.json"
     assert RELEASE_SOURCE_REPORTS["otc_name_mismatch_action_queue"] == "data/reports/otc_name_mismatch_action_queue.json"
@@ -11288,6 +11293,153 @@ def test_evaluate_supplement_artifact_traceability_requires_policy_identity_and_
 
     assert result["passed"] is True
     assert result["checked_count"] == 1
+
+
+def test_evaluate_financialdata_supplement_review_gate_accepts_source_gated_rows() -> None:
+    review = {
+        "summary": {
+            "rows": 2,
+            "input_rows": 2,
+            "preserved_supplement_rows": 1,
+            "supplement_rows": 1,
+            "decision_counts": {"preserve": 1, "reject": 1},
+            "reason_counts": {
+                "already_in_financialdata_supplement": 1,
+                "no_name_gated_official_isin_match": 1,
+            },
+            "apply_eligibility_counts": {
+                "preserve_existing_reviewed_supplement_no_new_apply": 1,
+                "keep_absent_until_name_gated_official_isin_match": 1,
+            },
+            "verification_evidence_required_counts": {
+                "existing_reviewed_supplement_retained_with_original_official_source": 1,
+                "official_active_masterfile_or_registry_row_matching_financialdata_name_and_listing": 1,
+            },
+            "supplement_rows_by_exchange": {"NSE_IN": 1},
+            "policy": {
+                "financialdata_role": "FinancialData rows are discovery signals only.",
+                "identifier_gate": (
+                    "A supplement requires a valid official ISIN, issuer-name gate, "
+                    "and duplicate checks."
+                ),
+                "no_guessing": (
+                    "FinancialData symbol or name shape is never used as an identifier source."
+                ),
+            },
+        },
+        "review_items": [
+            {
+                "financialdata_ticker": "RELIANCE",
+                "financialdata_exchange": "NSE_IN",
+                "financialdata_name": "Reliance Industries Limited",
+                "financialdata_review_scope": "current_exchange_gap",
+                "decision": "preserve",
+                "reason": "already_in_financialdata_supplement",
+                "financialdata_review_queue": "preserve_existing_reviewed_supplement",
+                "review_priority": "P4",
+                "review_strategy": "preserve_existing_reviewed_supplement_no_new_apply",
+                "apply_eligibility": "preserve_existing_reviewed_supplement_no_new_apply",
+                "verification_evidence_required": "existing_reviewed_supplement_retained_with_original_official_source",
+                "recommended_next_source": "Existing reviewed FinancialData supplement source.",
+                "source_gate": "Preserve existing reviewed supplement; do not create a new row from FinancialData alone.",
+                "official_ticker": "RELIANCE",
+                "official_exchange": "NSE_IN",
+                "official_name": "Reliance Industries Limited",
+                "official_isin": "INE002A01018",
+                "official_source_key": "nse_india_securities_available",
+                "official_reference_scope": "exchange_directory",
+                "financialdata_discovery_context": (
+                    "financialdata_exchange=NSE_IN;financialdata_ticker=RELIANCE;"
+                    "financialdata_review_scope=current_exchange_gap;financialdata_name_present=true"
+                ),
+                "official_identity_context": (
+                    "official_exchange=NSE_IN;official_ticker=RELIANCE;"
+                    "official_source_key=nse_india_securities_available;official_reference_scope=exchange_directory;"
+                    "official_isin_present=true;official_name_present=true"
+                ),
+                "supplement_review_context": (
+                    "decision=preserve;reason=already_in_financialdata_supplement;"
+                    "financialdata_review_queue=preserve_existing_reviewed_supplement;"
+                    "apply_eligibility=preserve_existing_reviewed_supplement_no_new_apply;"
+                    "verification_evidence_required=existing_reviewed_supplement_retained_with_original_official_source"
+                ),
+            },
+            {
+                "financialdata_ticker": "MISS",
+                "financialdata_exchange": "KRX",
+                "financialdata_review_scope": "global_expansion_candidate",
+                "decision": "reject",
+                "reason": "no_name_gated_official_isin_match",
+                "financialdata_review_queue": "keep_absent_until_official_name_gated_match",
+                "review_priority": "P2",
+                "review_strategy": "keep_absent_until_official_name_gated_identifier_evidence_exists",
+                "apply_eligibility": "keep_absent_until_name_gated_official_isin_match",
+                "verification_evidence_required": "official_active_masterfile_or_registry_row_matching_financialdata_name_and_listing",
+                "recommended_next_source": "Official active masterfile, registry, or issuer source matching FinancialData name and listing identity.",
+                "source_gate": "Keep absent until an official active source satisfies exact name/listing identity and ISIN gates.",
+                "financialdata_discovery_context": (
+                    "financialdata_exchange=KRX;financialdata_ticker=MISS;"
+                    "financialdata_review_scope=global_expansion_candidate;financialdata_name_present=false"
+                ),
+                "official_identity_context": (
+                    "official_exchange=none;official_ticker=none;official_source_key=none;"
+                    "official_reference_scope=none;official_isin_present=false;official_name_present=false"
+                ),
+                "supplement_review_context": (
+                    "decision=reject;reason=no_name_gated_official_isin_match;"
+                    "financialdata_review_queue=keep_absent_until_official_name_gated_match;"
+                    "apply_eligibility=keep_absent_until_name_gated_official_isin_match;"
+                    "verification_evidence_required=official_active_masterfile_or_registry_row_matching_financialdata_name_and_listing"
+                ),
+            },
+        ],
+    }
+
+    result = evaluate_financialdata_supplement_review_gate(review)
+
+    assert result["passed"] is True
+    assert result["review_items"] == 2
+    assert result["supplement_rows_by_exchange_total"] == 1
+
+
+def test_evaluate_financialdata_supplement_review_gate_rejects_direct_apply_or_weak_policy() -> None:
+    review = {
+        "summary": {
+            "rows": 1,
+            "input_rows": 2,
+            "preserved_supplement_rows": 1,
+            "supplement_rows": 2,
+            "decision_counts": {"accept": 1},
+            "reason_counts": {"accepted": 2},
+            "apply_eligibility_counts": {"apply_from_global_ticker_reuse": 1},
+            "verification_evidence_required_counts": {"ticker_match_only": 1},
+            "supplement_rows_by_exchange": {"NSE_IN": 1},
+            "policy": {"financialdata_role": "FinancialData can fill identifiers."},
+        },
+        "review_items": [
+            {
+                "financialdata_ticker": "RELIANCE",
+                "financialdata_exchange": "NSE_IN",
+                "decision": "accept",
+                "reason": "accepted",
+                "financialdata_review_queue": "official_name_gated_supplement_candidate",
+                "review_priority": "P1",
+                "review_strategy": "apply",
+                "apply_eligibility": "apply_from_global_ticker_reuse",
+                "verification_evidence_required": "ticker_match_only",
+                "recommended_next_source": "FinancialData",
+                "source_gate": "Apply from ticker.",
+            }
+        ],
+    }
+
+    result = evaluate_financialdata_supplement_review_gate(review)
+
+    assert result["passed"] is False
+    assert result["policy_missing_marker_groups"]
+    assert result["count_gaps"] == [{"field": "reason_counts", "expected": 1, "actual": 2}]
+    assert result["supplement_row_count_gaps"] == [{"field": "supplement_rows", "expected": 1, "actual": 2}]
+    assert result["traceability_gap_count"] == 1
 
 
 def test_financialdata_supplement_contexts_are_exact_field_summaries() -> None:
