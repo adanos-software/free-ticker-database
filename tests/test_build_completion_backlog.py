@@ -283,6 +283,51 @@ def test_b3_sector_next_action_uses_residual_gate_when_no_taxonomy_match():
     assert "Stronger official B3 taxonomy source" in action["recommended_source"]
 
 
+def test_weak_sector_next_action_uses_residual_gate_when_no_direct_sector_apply():
+    rows = build_completion_backlog(
+        [{"ticker": "A", "exchange": "CSE_LK", "asset_type": "Stock", "sector": ""}],
+        [],
+        {"by_exchange": [{"exchange": "CSE_LK", "venue_status": "official_partial", "official_source_count": 2}]},
+    )
+    summary = summarize(
+        rows,
+        {"global": {}, "by_exchange": []},
+        "2026-04-12T00:00:00Z",
+        weak_sector_residual_review={
+            "summary": {
+                "weak_sector_backlog": {
+                    "rows": 1,
+                    "direct_sector_apply_allowed_rows": 0,
+                    "official_sector_candidate_rows": 0,
+                    "scope_decision_required_rows": 0,
+                    "masterfile_without_sector_rows": 1,
+                    "venue_taxonomy_source_required_rows": 0,
+                    "source_gate": "Weak-sector enrichment remains blocked without listing-keyed official evidence.",
+                },
+                "venue_backlog_exchange_queue_totals": {
+                    "CSE_LK": {"official_masterfile_without_sector_source_gap": 1}
+                },
+                "top_weak_sector_resolution_review_batches": [
+                    {
+                        "exchange": "CSE_LK",
+                        "recommended_next_source": "Updated official masterfile or issuer taxonomy exposing sector.",
+                        "source_gate": "Keep sector blank until an official masterfile exposes sector.",
+                    }
+                ],
+            }
+        },
+    )
+
+    action = summary["next_actions"][0]
+    assert action["exchange"] == "CSE_LK"
+    assert action["field"] == FIELD_MISSING_STOCK_SECTOR
+    assert action["review_needed"] is True
+    assert action["residual_gate"] == "weak_sector_residual_review_blocks_direct_apply"
+    assert action["direct_sector_apply_allowed_rows"] == 0
+    assert action["exchange_official_masterfile_without_sector_rows"] == 1
+    assert "Updated official masterfile" in action["recommended_source"]
+
+
 def test_completion_backlog_ranks_by_missing_count_before_static_source_order():
     rows = build_completion_backlog(
         [],

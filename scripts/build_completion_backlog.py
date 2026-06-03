@@ -20,6 +20,7 @@ JPX_TSE_SECTOR_BACKFILL_JSON = REPORTS_DIR / "tse_sector_backfill.json"
 SEC_SIC_SECTOR_BACKFILL_JSON = REPORTS_DIR / "sec_sic_sector_backfill.json"
 CANADA_RESIDUAL_REVIEW_JSON = REPORTS_DIR / "canada_residual_review.json"
 B3_RESIDUAL_SECTOR_REVIEW_JSON = REPORTS_DIR / "b3_residual_sector_review.json"
+WEAK_SECTOR_RESIDUAL_REVIEW_JSON = REPORTS_DIR / "weak_sector_residual_review.json"
 DEFAULT_CSV_OUT = REPORTS_DIR / "completion_backlog.csv"
 DEFAULT_JSON_OUT = REPORTS_DIR / "completion_backlog.json"
 DEFAULT_MD_OUT = REPORTS_DIR / "completion_backlog.md"
@@ -386,6 +387,7 @@ def summarize(
     sec_sic_sector_backfill: dict[str, Any] | None = None,
     canada_residual_review: dict[str, Any] | None = None,
     b3_residual_sector_review: dict[str, Any] | None = None,
+    weak_sector_residual_review: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     field_totals = Counter()
     exchanges_by_field: dict[str, set[str]] = defaultdict(set)
@@ -419,6 +421,7 @@ def summarize(
             sec_sic_sector_backfill=sec_sic_sector_backfill or {},
             canada_residual_review=canada_residual_review or {},
             b3_residual_sector_review=b3_residual_sector_review or {},
+            weak_sector_residual_review=weak_sector_residual_review or {},
         ),
     }
 
@@ -669,6 +672,75 @@ def apply_b3_residual_sector_context(action: dict[str, Any], b3_residual_sector_
     }
 
 
+def weak_sector_residual_summary(weak_sector_residual_review: dict[str, Any]) -> dict[str, Any]:
+    summary = weak_sector_residual_review.get("summary", {})
+    return summary if isinstance(summary, dict) else {}
+
+
+def weak_sector_blocks_direct_apply(weak_sector_residual_review: dict[str, Any]) -> bool:
+    summary = weak_sector_residual_summary(weak_sector_residual_review)
+    backlog = summary.get("weak_sector_backlog", {})
+    if not isinstance(backlog, dict):
+        return False
+    return int(backlog.get("rows") or 0) > 0 and int(backlog.get("direct_sector_apply_allowed_rows") or 0) == 0
+
+
+def apply_weak_sector_residual_context(
+    action: dict[str, Any],
+    weak_sector_residual_review: dict[str, Any],
+) -> dict[str, Any]:
+    if action["field"] != FIELD_MISSING_STOCK_SECTOR:
+        return action
+    if not weak_sector_blocks_direct_apply(weak_sector_residual_review):
+        return action
+
+    summary = weak_sector_residual_summary(weak_sector_residual_review)
+    exchange = action["exchange"]
+    exchange_totals = summary.get("venue_backlog_exchange_queue_totals", {})
+    if not isinstance(exchange_totals, dict) or exchange not in exchange_totals:
+        return action
+    exchange_queue_totals = exchange_totals.get(exchange, {})
+    if not isinstance(exchange_queue_totals, dict):
+        exchange_queue_totals = {}
+
+    backlog = summary.get("weak_sector_backlog", {})
+    if not isinstance(backlog, dict):
+        backlog = {}
+    batches = summary.get("top_weak_sector_resolution_review_batches", [])
+    if not isinstance(batches, list):
+        batches = []
+    matching_batches = [batch for batch in batches if isinstance(batch, dict) and batch.get("exchange") == exchange]
+    first_batch = matching_batches[0] if matching_batches else {}
+
+    return {
+        **action,
+        "review_needed": True,
+        "recommended_source": first_batch.get("recommended_next_source")
+        or "Updated official masterfile, issuer record, or venue-official taxonomy exposing sector for the exact listing.",
+        "confidence_policy": first_batch.get("source_gate") or backlog.get("source_gate") or action["confidence_policy"],
+        "why_next": "weak-sector residual review-gated workflow",
+        "residual_gate": "weak_sector_residual_review_blocks_direct_apply",
+        "weak_sector_rows": int(backlog.get("rows") or 0),
+        "direct_sector_apply_allowed_rows": int(backlog.get("direct_sector_apply_allowed_rows") or 0),
+        "official_sector_candidate_rows": int(backlog.get("official_sector_candidate_rows") or 0),
+        "scope_decision_required_rows": int(backlog.get("scope_decision_required_rows") or 0),
+        "masterfile_without_sector_rows": int(backlog.get("masterfile_without_sector_rows") or 0),
+        "venue_taxonomy_source_required_rows": int(backlog.get("venue_taxonomy_source_required_rows") or 0),
+        "exchange_official_masterfile_without_sector_rows": int(
+            exchange_queue_totals.get("official_masterfile_without_sector_source_gap") or 0
+        ),
+        "exchange_venue_taxonomy_source_required_rows": int(
+            exchange_queue_totals.get("venue_official_taxonomy_unavailable_source_gap") or 0
+        ),
+        "exchange_scope_decision_required_rows": int(
+            exchange_queue_totals.get("core_exclusion_candidate_scope_review_before_sector_fill") or 0
+        ),
+        "exchange_official_sector_candidate_rows": int(
+            exchange_queue_totals.get("official_sector_value_requires_canonical_mapping_review") or 0
+        ),
+    }
+
+
 def build_next_actions(
     rows: list[CompletionBacklogRow],
     limit: int = 8,
@@ -678,6 +750,7 @@ def build_next_actions(
     sec_sic_sector_backfill: dict[str, Any] | None = None,
     canada_residual_review: dict[str, Any] | None = None,
     b3_residual_sector_review: dict[str, Any] | None = None,
+    weak_sector_residual_review: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     ranked = sorted(
         rows,
@@ -720,6 +793,7 @@ def build_next_actions(
         action = apply_sec_sic_otc_context(action, sec_sic_sector_backfill or {})
         action = apply_canada_residual_context(action, canada_residual_review or {})
         action = apply_b3_residual_sector_context(action, b3_residual_sector_review or {})
+        action = apply_weak_sector_residual_context(action, weak_sector_residual_review or {})
         actions.append(action)
     return actions
 
@@ -869,6 +943,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--sec-sic-sector-backfill-json", type=Path, default=SEC_SIC_SECTOR_BACKFILL_JSON)
     parser.add_argument("--canada-residual-review-json", type=Path, default=CANADA_RESIDUAL_REVIEW_JSON)
     parser.add_argument("--b3-residual-sector-review-json", type=Path, default=B3_RESIDUAL_SECTOR_REVIEW_JSON)
+    parser.add_argument("--weak-sector-residual-review-json", type=Path, default=WEAK_SECTOR_RESIDUAL_REVIEW_JSON)
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_CSV_OUT)
     parser.add_argument("--json-out", type=Path, default=DEFAULT_JSON_OUT)
     parser.add_argument("--md-out", type=Path, default=DEFAULT_MD_OUT)
@@ -893,6 +968,7 @@ def main(argv: list[str] | None = None) -> None:
         sec_sic_sector_backfill=load_json(args.sec_sic_sector_backfill_json),
         canada_residual_review=load_json(args.canada_residual_review_json),
         b3_residual_sector_review=load_json(args.b3_residual_sector_review_json),
+        weak_sector_residual_review=load_json(args.weak_sector_residual_review_json),
     )
 
     write_csv(args.csv_out, rows)
