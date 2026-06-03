@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T20:26:27Z",
+    "generated_at": "2026-06-03T00:52:19Z",
     "policy": "ISIN identity collisions are reported for review only. No ISIN, country, name, or scope change is authorized without official listing-keyed evidence.",
     "source_files": {
       "listings_csv": "data/listings.csv"
@@ -17700,6 +17700,12 @@
     }
   ],
   "summary": {
+    "advisory_policy": {
+      "direct_identifier_apply_allowed_rows": 0,
+      "identity_change_authorized": false,
+      "review_required_groups": 426,
+      "source_gate": "ISIN identity collision rows are advisory only; apply no ISIN, country, name, scope, merge, or dedupe change without listing-keyed official identifier evidence and reviewer approval."
+    },
     "closed_groups": 0,
     "collision_groups": 426,
     "decision_candidate_totals": {
@@ -17707,7 +17713,7 @@
       "ticker_collision_isin_misassignment_suspected": 1
     },
     "direct_identifier_apply_allowed_rows": 0,
-    "generated_at": "2026-06-02T20:26:27Z",
+    "generated_at": "2026-06-03T00:52:19Z",
     "listings_involved": 1019,
     "next_review_batches": [
       {
