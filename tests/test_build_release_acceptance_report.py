@@ -60,6 +60,7 @@ from scripts.build_release_acceptance_report import (
     evaluate_deepseek_advisory_integrity,
     evaluate_deepseek_isin_collision_validation_gate,
     evaluate_deepseek_queue_advisory_policies,
+    evaluate_canada_scope_review_queue_gate,
     campaign_status_rows,
     evaluate_next_review_batch_visibility,
     evaluate_next_review_command_safety_gate,
@@ -193,6 +194,7 @@ def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> N
     )
     assert RELEASE_SOURCE_REPORTS["otc_name_mismatch_review"] == "data/reports/otc_name_mismatch_review.json"
     assert RELEASE_SOURCE_REPORTS["otc_name_mismatch_action_queue"] == "data/reports/otc_name_mismatch_action_queue.json"
+    assert RELEASE_SOURCE_REPORTS["canada_scope_review_queue"] == "data/reports/canada_scope_review_queue.json"
     assert RELEASE_SOURCE_REPORTS["canada_improvement_action_queue"] == "data/reports/canada_improvement_action_queue.json"
     assert RELEASE_SOURCE_REPORTS["b3_core_scope_review_queue"] == "data/reports/b3_core_scope_review_queue.json"
     assert RELEASE_SOURCE_REPORTS["b3_improvement_action_queue"] == "data/reports/b3_improvement_action_queue.json"
@@ -12090,6 +12092,162 @@ def test_evaluate_asx_scope_review_queue_gate_rejects_apply_or_stale_counts() ->
                     "recommended_next_source": "none",
                     "source_gate": "Apply ASX ISIN.",
                     "review_context": "gap_class=debt_or_securitized_identifier_gap",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["policy_missing_marker_groups"]
+    assert result["row_gap_count"] == 1
+    assert result["count_gaps"]
+    assert result["batch_gaps"]
+
+
+def test_evaluate_canada_scope_review_queue_gate_accepts_review_only_rows() -> None:
+    result = evaluate_canada_scope_review_queue_gate(
+        {
+            "summary": {
+                "rows": 1,
+                "scope_review_queue_totals": {"canada_depositary_or_cdr_scope_review": 1},
+                "exchange_totals": {"NEO": 1},
+                "asset_type_totals": {"Stock": 1},
+                "source_gap_class_totals": {
+                    "adr_cdr_or_depositary_identifier_gap": 1,
+                    "adr_cdr_or_depositary_sector_gap": 1,
+                },
+                "official_source_totals": {"cboe_canada_listing_directory": 1},
+                "current_scope_reason_totals": {"primary_listing_missing_isin": 1},
+                "listing_history_status_totals": {"active": 1},
+                "ohlcv_plausibility_status_totals": {"not_checked": 1},
+                "verification_evidence_required_totals": {
+                    "official_cdr_depositary_or_exchange_listing_evidence_plus_core_extended_or_exclude_scope_decision": 1
+                },
+                "top_scope_review_batches": [
+                    {
+                        "scope_review_queue": "canada_depositary_or_cdr_scope_review",
+                        "exchange": "NEO",
+                        "official_source": "cboe_canada_listing_directory",
+                        "rows": 1,
+                        "verification_evidence_required": (
+                            "official_cdr_depositary_or_exchange_listing_evidence_plus_core_extended_or_exclude_scope_decision"
+                        ),
+                        "recommended_next_source": (
+                            "cboe_canada_listing_directory, CDR/depositary sponsor page, issuer page, or "
+                            "prospectus evidence for the exact listing."
+                        ),
+                        "source_gate": (
+                            "No ISIN, FIGI, sector, or scope change until the exact CDR/depositary listing is proven "
+                            "by official evidence."
+                        ),
+                    }
+                ],
+                "policy": {
+                    "scope_first": "Canada core_exclusion_candidate rows must be resolved as core, extended, or exclude before identifier work.",
+                    "no_data_apply": "This queue does not authorize ISIN, FIGI, sector, ETF-category, name, symbol, listing-status, or scope changes.",
+                    "source_gate": "Only exact listing-keyed official TMX/Cboe Canada, issuer, CSD, prospectus, registry, or reviewed stronger evidence can close a row.",
+                },
+            },
+            "rows": [
+                {
+                    "listing_key": "NEO::HNDA",
+                    "ticker": "HNDA",
+                    "exchange": "NEO",
+                    "asset_type": "Stock",
+                    "name": "HONDA MOTOR CO LTD CDR (CAD Hedged)",
+                    "isin": "",
+                    "figi": "",
+                    "source_gap_fields": "missing_isin_primary|missing_sector_stock",
+                    "source_gap_classes": "adr_cdr_or_depositary_identifier_gap|adr_cdr_or_depositary_sector_gap",
+                    "official_masterfile_sources": "cboe_canada_listing_directory",
+                    "official_masterfile_match": "true",
+                    "official_masterfile_exposes_isin": "false",
+                    "official_masterfile_exposes_sector": "false",
+                    "current_instrument_scope": "core",
+                    "current_scope_reason": "primary_listing_missing_isin",
+                    "listing_history_status": "active",
+                    "ohlcv_plausibility_status": "not_checked",
+                    "canada_resolution_queue": "core_exclusion_candidate_identifier_scope_review",
+                    "scope_review_queue": "canada_depositary_or_cdr_scope_review",
+                    "scope_decision_gate": "decide_core_extended_or_exclude_before_canada_identifier_or_metadata_enrichment",
+                    "recommended_scope_action": "review_cdr_or_depositary_scope_then_choose_core_extended_or_exclude",
+                    "verification_evidence_required": (
+                        "official_cdr_depositary_or_exchange_listing_evidence_plus_core_extended_or_exclude_scope_decision"
+                    ),
+                    "recommended_next_source": (
+                        "cboe_canada_listing_directory, CDR/depositary sponsor page, issuer page, or prospectus "
+                        "evidence for the exact listing."
+                    ),
+                    "source_gate": (
+                        "No ISIN, FIGI, sector, or scope change until the exact CDR/depositary listing is proven by "
+                        "official evidence."
+                    ),
+                    "review_context": (
+                        "source_gap_classes=adr_cdr_or_depositary_identifier_gap|adr_cdr_or_depositary_sector_gap;"
+                        "official_masterfile_sources=cboe_canada_listing_directory;"
+                        "scope_decision_gate=decide_core_extended_or_exclude_before_canada_identifier_or_metadata_enrichment"
+                    ),
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["row_count"] == 1
+    assert result["row_gap_count"] == 0
+
+
+def test_evaluate_canada_scope_review_queue_gate_rejects_apply_or_stale_counts() -> None:
+    result = evaluate_canada_scope_review_queue_gate(
+        {
+            "summary": {
+                "rows": 2,
+                "scope_review_queue_totals": {},
+                "exchange_totals": {},
+                "asset_type_totals": {},
+                "source_gap_class_totals": {},
+                "official_source_totals": {},
+                "current_scope_reason_totals": {},
+                "listing_history_status_totals": {},
+                "ohlcv_plausibility_status_totals": {},
+                "verification_evidence_required_totals": {},
+                "top_scope_review_batches": [
+                    {
+                        "scope_review_queue": "canada_depositary_or_cdr_scope_review",
+                        "exchange": "NEO",
+                        "official_source": "cboe_canada_listing_directory",
+                        "rows": 2,
+                        "verification_evidence_required": "ticker_match",
+                        "recommended_next_source": "none",
+                        "source_gate": "Apply Canada ISIN.",
+                    }
+                ],
+                "policy": {"scope_first": "review later"},
+            },
+            "rows": [
+                {
+                    "listing_key": "NEO::HNDA",
+                    "ticker": "HNDA",
+                    "exchange": "NEO",
+                    "asset_type": "Stock",
+                    "name": "HONDA MOTOR CO LTD CDR (CAD Hedged)",
+                    "source_gap_fields": "missing_isin_primary",
+                    "source_gap_classes": "adr_cdr_or_depositary_identifier_gap",
+                    "official_masterfile_match": "true",
+                    "official_masterfile_exposes_isin": "false",
+                    "official_masterfile_exposes_sector": "false",
+                    "current_instrument_scope": "core",
+                    "current_scope_reason": "primary_listing_missing_isin",
+                    "listing_history_status": "active",
+                    "ohlcv_plausibility_status": "not_checked",
+                    "canada_resolution_queue": "direct_identifier_apply",
+                    "scope_review_queue": "canada_depositary_or_cdr_scope_review",
+                    "scope_decision_gate": "apply_identifier",
+                    "recommended_scope_action": "apply",
+                    "verification_evidence_required": "ticker_match",
+                    "recommended_next_source": "none",
+                    "source_gate": "Apply Canada ISIN.",
+                    "review_context": "source_gap_classes=adr_cdr_or_depositary_identifier_gap",
                 }
             ],
         }
