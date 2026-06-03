@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T21:16:08Z",
+    "generated_at": "2026-06-03T00:48:32Z",
     "deepseek_summary_json": "data/reports/deepseek_review_summary.json",
     "masterfile_collision_review_csv": "data/reports/masterfile_collision_review.csv",
     "policy": "DeepSeek collision reviews are triage only. They do not authorize automatic merge, dedupe, alias, identifier, or cross-listing changes."
@@ -68,6 +68,12 @@
       "tmx_listed_issuers": 39,
       "twse_listed_companies": 8,
       "upcom_registered_securities": 72
+    },
+    "advisory_policy": {
+      "direct_apply_allowed_rows": 0,
+      "merge_or_dedupe_authorized": false,
+      "review_required_rows": 2969,
+      "source_gate": "DeepSeek collision rows are advisory only; apply no merge, dedupe, alias, identifier, or cross-listing changes without listing-keyed official identity evidence and reviewer approval."
     }
   },
   "items": [

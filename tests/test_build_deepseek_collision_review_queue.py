@@ -128,6 +128,9 @@ def test_build_payload_joins_deepseek_collision_reviews_to_masterfile_queue(tmp_
     assert payload["summary"]["rows"] == 1
     assert payload["summary"]["target_exchange_totals"] == {"ADX": 1}
     assert payload["summary"]["official_source_key_totals"] == {"adx_market_watch": 1}
+    assert payload["summary"]["advisory_policy"]["direct_apply_allowed_rows"] == 0
+    assert payload["summary"]["advisory_policy"]["merge_or_dedupe_authorized"] is False
+    assert payload["summary"]["advisory_policy"]["review_required_rows"] == 1
     assert payload["items"][0]["review_queue"] == "manual_cross_listing_identity_review"
     assert "Do not merge" in payload["items"][0]["review_gate"]
     assert payload["unmatched_deepseek_rows"] == []

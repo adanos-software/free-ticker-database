@@ -121,6 +121,15 @@ def summarize(queue_rows: list[dict[str, Any]], unmatched: list[dict[str, Any]])
         "unmatched_deepseek_rows": len(unmatched),
         "target_exchange_totals": dict(sorted(by_exchange.items())),
         "official_source_key_totals": dict(sorted(by_source.items())),
+        "advisory_policy": {
+            "direct_apply_allowed_rows": 0,
+            "merge_or_dedupe_authorized": False,
+            "review_required_rows": len(queue_rows),
+            "source_gate": (
+                "DeepSeek collision rows are advisory only; apply no merge, dedupe, alias, identifier, "
+                "or cross-listing changes without listing-keyed official identity evidence and reviewer approval."
+            ),
+        },
     }
 
 
