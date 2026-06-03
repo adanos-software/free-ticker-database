@@ -89,6 +89,7 @@ from scripts.build_release_acceptance_report import (
     evaluate_isin_identity_collision_gate,
     evaluate_masterfile_collision_gate,
     evaluate_ohlcv_plausibility_gate,
+    evaluate_otc_name_mismatch_action_queue_gate,
     evaluate_otc_scope_gate,
     otc_scope_review_context,
     otc_scope_review_decision_context,
@@ -170,6 +171,7 @@ def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> N
         RELEASE_SOURCE_REPORTS["isin_identity_collision_review_queue"]
         == "data/reports/isin_identity_collision_review_queue.json"
     )
+    assert RELEASE_SOURCE_REPORTS["otc_name_mismatch_action_queue"] == "data/reports/otc_name_mismatch_action_queue.json"
 
 
 def test_evaluate_deepseek_advisory_integrity_accepts_drained_advisory_reports() -> None:
@@ -352,6 +354,98 @@ def test_evaluate_deepseek_queue_advisory_policies_rejects_direct_or_missing_que
         "reported": True,
         "expected": False,
     } in result["queue_gaps"]["collision"]
+
+
+def test_evaluate_otc_name_mismatch_action_queue_gate_accepts_review_only_queue() -> None:
+    result = evaluate_otc_name_mismatch_action_queue_gate(
+        {
+            "summary": {
+                "rows": 3,
+                "batches": 2,
+                "direct_name_changes_authorized": False,
+                "metadata_enrichment_authorized": False,
+                "policy": {
+                    "deepseek_triage_only": (
+                        "DeepSeek output is only a triage signal and never authorizes OTC names, "
+                        "aliases, sectors, identifiers, or scope changes."
+                    ),
+                    "official_identity_first": (
+                        "Name changes require listing-keyed OTC Markets, SEC, issuer, registry, "
+                        "or ISIN-anchored issuer-history evidence."
+                    ),
+                    "no_symbol_only_resolution": (
+                        "No OTC symbol is trusted or renamed from ticker-only, name-shape, "
+                        "or broad issuer-family evidence."
+                    ),
+                },
+            },
+            "items": [
+                {
+                    "rows": "2",
+                    "action_queue": "verify_isin_anchored_issuer_history_before_name_change",
+                    "apply_eligibility": "blocked_until_isin_anchored_issuer_history_review",
+                    "verification_evidence_required": (
+                        "official_or_reviewed_isin_bearing_source_matching_current_issuer_listing_key_and_name"
+                    ),
+                    "review_strategy": "verify_isin_anchored_issuer_history_before_name_change",
+                    "recommended_next_source": "Official or reviewed ISIN-bearing issuer-history source.",
+                    "source_gate": "Do not change the name until ISIN-anchored evidence proves the same current issuer.",
+                },
+                {
+                    "rows": "1",
+                    "action_queue": "review_official_alias_before_matcher_tuning",
+                    "apply_eligibility": "matcher_tuning_only_no_metadata_apply_until_exact_identity_review",
+                    "verification_evidence_required": "official_alias_or_abbreviation_evidence_with_exact_listing_identity_match",
+                    "review_strategy": "review_official_alias_or_abbreviation_before_matcher_tuning",
+                    "recommended_next_source": "Official alias evidence matching the exact listing identity.",
+                    "source_gate": "Tune matcher only after official alias evidence; do not change metadata.",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["item_row_total"] == 3
+    assert result["gating_gaps"] == []
+
+
+def test_evaluate_otc_name_mismatch_action_queue_gate_rejects_apply_or_ungated_rows() -> None:
+    result = evaluate_otc_name_mismatch_action_queue_gate(
+        {
+            "summary": {
+                "rows": 2,
+                "batches": 1,
+                "direct_name_changes_authorized": True,
+                "metadata_enrichment_authorized": True,
+                "policy": {"weak": "Apply from symbol shape."},
+            },
+            "items": [
+                {
+                    "rows": "1",
+                    "action_queue": "direct_name_change",
+                    "apply_eligibility": "",
+                    "verification_evidence_required": "",
+                    "review_strategy": "",
+                    "recommended_next_source": "",
+                    "source_gate": "",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert {
+        "field": "summary.direct_name_changes_authorized",
+        "reported": True,
+        "expected": False,
+    } in result["gating_gaps"]
+    assert {
+        "field": "summary.metadata_enrichment_authorized",
+        "reported": True,
+        "expected": False,
+    } in result["gating_gaps"]
+    assert "direct_name_change" in result["invalid_actions"]
+    assert result["missing_item_gate_count"] == 1
 
 
 def test_evaluate_isin_identity_collision_gate_accepts_advisory_queue() -> None:

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-03T01:03:29Z",
+    "generated_at": "2026-06-03T01:08:15Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -19,6 +19,7 @@
       "deepseek_weak_sector_review_queue": "data/reports/deepseek_weak_sector_review_queue.json",
       "source_refresh_queue": "data/reports/source_refresh_queue.json",
       "symbol_changes_review": "data/reports/symbol_changes_review.json",
+      "otc_name_mismatch_action_queue": "data/reports/otc_name_mismatch_action_queue.json",
       "ohlcv_plausibility": "data/reports/ohlcv_plausibility.json",
       "ohlcv_warning_review": "data/reports/ohlcv_warning_review.json",
       "masterfile_collision_review": "data/reports/masterfile_collision_review.json",
@@ -37,12 +38,12 @@
   },
   "passed": true,
   "summary": {
-    "criteria": 45,
-    "passed_criteria": 45,
+    "criteria": 46,
+    "passed_criteria": 46,
     "failed_criteria": 0,
     "validation_failed_error_gates": 0
   },
-  "summary_context": "passed=true;criteria=45;passed_criteria=45;failed_criteria=0;validation_failed_error_gates=0",
+  "summary_context": "passed=true;criteria=46;passed_criteria=46;failed_criteria=0;validation_failed_error_gates=0",
   "criteria": {
     "no_invalid_isins": {
       "passed": true,
@@ -217,18 +218,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-03T01:03:29Z",
+      "release_generated_at": "2026-06-03T01:08:15Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-03T01:03:13Z"
+          "generated_at": "2026-06-03T01:07:59Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-03T01:03:13Z"
+          "generated_at": "2026-06-03T01:07:58Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -299,6 +300,11 @@
           "path": "data/reports/symbol_changes_review.json",
           "exists": true,
           "generated_at": "2026-06-02T19:22:47Z"
+        },
+        "otc_name_mismatch_action_queue": {
+          "path": "data/reports/otc_name_mismatch_action_queue.json",
+          "exists": true,
+          "generated_at": "2026-06-02T20:38:59Z"
         },
         "ohlcv_plausibility": {
           "path": "data/reports/ohlcv_plausibility.json",
@@ -485,7 +491,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-03T01:03:13Z",
+      "generated_at": "2026-06-03T01:07:58Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -760,6 +766,26 @@
         "manual_review_required",
         "no_dataset_action_without_scope_mapping",
         "requires_official_venue_confirmation"
+      ]
+    },
+    "otc_name_mismatch_action_queue_gate": {
+      "passed": true,
+      "rows": 24,
+      "batches": 14,
+      "items": 14,
+      "item_row_total": 24,
+      "gating_gaps": [],
+      "invalid_actions": [],
+      "missing_item_gate_actions": [],
+      "missing_item_gate_count": 0,
+      "policy_missing_markers": [],
+      "allowed_action_queues": [
+        "keep_current_until_stronger_issuer_history_source",
+        "manual_otc_name_mismatch_review",
+        "resolve_or_quarantine_before_trusting_otc_symbol",
+        "review_official_alias_before_matcher_tuning",
+        "tighten_matcher_without_dataset_metadata_change",
+        "verify_isin_anchored_issuer_history_before_name_change"
       ]
     },
     "ohlcv_plausibility_gate": {

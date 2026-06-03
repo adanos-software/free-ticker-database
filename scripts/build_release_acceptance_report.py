@@ -35,6 +35,7 @@ RELEASE_SOURCE_REPORTS = {
     "deepseek_weak_sector_review_queue": "data/reports/deepseek_weak_sector_review_queue.json",
     "source_refresh_queue": "data/reports/source_refresh_queue.json",
     "symbol_changes_review": "data/reports/symbol_changes_review.json",
+    "otc_name_mismatch_action_queue": "data/reports/otc_name_mismatch_action_queue.json",
     "ohlcv_plausibility": "data/reports/ohlcv_plausibility.json",
     "ohlcv_warning_review": "data/reports/ohlcv_warning_review.json",
     "masterfile_collision_review": "data/reports/masterfile_collision_review.json",
@@ -3121,6 +3122,97 @@ def evaluate_deepseek_queue_advisory_policies(review_queues: dict[str, dict[str,
         "checked": checked,
         "missing_queues": missing_queues,
         "queue_gaps": queue_gaps,
+    }
+
+
+OTC_NAME_MISMATCH_ALLOWED_ACTION_QUEUES = {
+    "resolve_or_quarantine_before_trusting_otc_symbol",
+    "review_official_alias_before_matcher_tuning",
+    "verify_isin_anchored_issuer_history_before_name_change",
+    "tighten_matcher_without_dataset_metadata_change",
+    "keep_current_until_stronger_issuer_history_source",
+    "manual_otc_name_mismatch_review",
+}
+
+
+def evaluate_otc_name_mismatch_action_queue_gate(action_queue: dict[str, Any]) -> dict[str, Any]:
+    summary = action_queue.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    items = action_queue.get("items", [])
+    if not isinstance(items, list):
+        items = []
+    policy = summary.get("policy", {})
+    if not isinstance(policy, dict):
+        policy = {}
+    rows = int(summary.get("rows") or 0)
+    batches = int(summary.get("batches") or 0)
+    item_row_total = sum(int(row.get("rows") or 0) for row in items if isinstance(row, dict))
+    invalid_actions = sorted(
+        {
+            str(row.get("action_queue", ""))
+            for row in items
+            if isinstance(row, dict) and row.get("action_queue") not in OTC_NAME_MISMATCH_ALLOWED_ACTION_QUEUES
+        }
+    )
+    missing_item_gates = [
+        str(row.get("action_queue", ""))
+        for row in items
+        if isinstance(row, dict)
+        and (
+            not str(row.get("apply_eligibility", ""))
+            or not str(row.get("verification_evidence_required", ""))
+            or not str(row.get("review_strategy", ""))
+            or not str(row.get("recommended_next_source", ""))
+            or not str(row.get("source_gate", ""))
+        )
+    ]
+    policy_text = " ".join(str(value) for value in policy.values()).lower()
+    policy_missing_markers = [
+        marker
+        for marker in ("triage", "listing-keyed", "no otc symbol", "never authorizes")
+        if marker not in policy_text
+    ]
+    gating_gaps: list[dict[str, Any]] = []
+    if summary.get("direct_name_changes_authorized") is not False:
+        gating_gaps.append(
+            {
+                "field": "summary.direct_name_changes_authorized",
+                "reported": summary.get("direct_name_changes_authorized"),
+                "expected": False,
+            }
+        )
+    if summary.get("metadata_enrichment_authorized") is not False:
+        gating_gaps.append(
+            {
+                "field": "summary.metadata_enrichment_authorized",
+                "reported": summary.get("metadata_enrichment_authorized"),
+                "expected": False,
+            }
+        )
+    if rows <= 0:
+        gating_gaps.append({"field": "summary.rows", "reported": rows, "expected": ">0"})
+    if batches != len(items):
+        gating_gaps.append({"field": "summary.batches", "reported": batches, "expected": len(items)})
+    if item_row_total != rows:
+        gating_gaps.append({"field": "items.rows_total", "reported": item_row_total, "expected": rows})
+    return {
+        "passed": (
+            not gating_gaps
+            and not invalid_actions
+            and not missing_item_gates
+            and not policy_missing_markers
+        ),
+        "rows": rows,
+        "batches": batches,
+        "items": len(items),
+        "item_row_total": item_row_total,
+        "gating_gaps": gating_gaps,
+        "invalid_actions": invalid_actions,
+        "missing_item_gate_actions": missing_item_gates[:20],
+        "missing_item_gate_count": len(missing_item_gates),
+        "policy_missing_markers": policy_missing_markers,
+        "allowed_action_queues": sorted(OTC_NAME_MISMATCH_ALLOWED_ACTION_QUEUES),
     }
 
 
@@ -16053,6 +16145,7 @@ def build_payload() -> dict[str, Any]:
     coverage = load_json(REPORTS_DIR / "coverage_report.json")
     source_gap = load_json(REPORTS_DIR / "source_gap_classification.json")
     symbol_changes_review = load_json(REPORTS_DIR / "symbol_changes_review.json")
+    otc_name_mismatch_action_queue = load_json(REPORTS_DIR / "otc_name_mismatch_action_queue.json")
     ohlcv = load_json(REPORTS_DIR / "ohlcv_plausibility.json")
     masterfile_collision = load_json(REPORTS_DIR / "masterfile_collision_review.json")
     isin_identity_collision = load_json(REPORTS_DIR / "isin_identity_collision_review_queue.json")
@@ -16101,6 +16194,9 @@ def build_payload() -> dict[str, Any]:
     criteria["coverage_freshness_visibility"] = evaluate_coverage_freshness_visibility(coverage)
     criteria["source_gap_traceability"] = evaluate_source_gap_traceability(source_gap)
     criteria["symbol_change_review_gate"] = evaluate_symbol_change_review_gate(symbol_changes_review)
+    criteria["otc_name_mismatch_action_queue_gate"] = evaluate_otc_name_mismatch_action_queue_gate(
+        otc_name_mismatch_action_queue
+    )
     criteria["ohlcv_plausibility_gate"] = evaluate_ohlcv_plausibility_gate(ohlcv)
     criteria["masterfile_collision_gate"] = evaluate_masterfile_collision_gate(masterfile_collision)
     criteria["isin_identity_collision_gate"] = evaluate_isin_identity_collision_gate(isin_identity_collision)
