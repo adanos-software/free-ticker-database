@@ -12064,7 +12064,7 @@ def test_evaluate_source_inventory_gap_gate_accepts_inventory_backlog() -> None:
                 },
                 "rows": 2,
                 "current_status_counts": {"missing": 1, "official_partial": 1},
-                "candidate_scope_counts": {"exchange_directory_candidate": 1, "needs_source_research": 1},
+                "candidate_scope_counts": {"exchange_directory_candidate": 1, "source_expansion_candidate": 1},
                 "todo_rows": 1,
                 "current_scope_candidates": 2,
                 "global_expansion_candidates": 0,
@@ -12104,7 +12104,7 @@ def test_evaluate_source_inventory_gap_gate_accepts_inventory_backlog() -> None:
                     "unresolved_findings": 52,
                     "official_source_count": 3,
                     "candidate_key": "",
-                    "candidate_scope": "needs_source_research",
+                    "candidate_scope": "source_expansion_candidate",
                     "provider": "",
                     "expected_format": "unknown",
                     "source_url": "",
@@ -12224,6 +12224,58 @@ def test_evaluate_source_inventory_gap_gate_rejects_unknown_source_mode() -> Non
     assert result["passed"] is False
     assert result["row_gap_count"] == 1
     assert result["row_gaps"][0]["invalid_fields"] == ["source_mode"]
+
+
+def test_evaluate_source_inventory_gap_gate_rejects_unknown_status_or_scope() -> None:
+    result = evaluate_source_inventory_gap_gate(
+        {
+            "summary": {
+                "generated_at": "2026-06-03T00:00:00Z",
+                "policy": {
+                    "inventory_only": "This report is a source inventory and parser backlog only; it does not authorize data fills.",
+                    "official_source_gate": "Official source parsers must write reference.csv before data evidence exists.",
+                    "no_guessing": "Missing fields remain blank until sourced.",
+                    "review_gate": "Rows marked review_needed require source review before scope changes.",
+                },
+                "rows": 1,
+                "current_status_counts": {"unknown": 1},
+                "candidate_scope_counts": {"needs_source_research": 1},
+                "todo_rows": 0,
+                "current_scope_candidates": 1,
+                "global_expansion_candidates": 0,
+                "high_priority_rows": 0,
+            },
+            "rows": [
+                {
+                    "priority_rank": 1,
+                    "exchange": "LSE",
+                    "current_status": "unknown",
+                    "tickers": 6408,
+                    "missing_isin": 47,
+                    "missing_sector_or_category": 1302,
+                    "unresolved_findings": 52,
+                    "official_source_count": 3,
+                    "candidate_key": "",
+                    "candidate_scope": "needs_source_research",
+                    "provider": "",
+                    "expected_format": "unknown",
+                    "source_url": "",
+                    "implementation_status": "implemented",
+                    "source_mode": "",
+                    "source_refresh_queue": "",
+                    "source_last_error": "",
+                    "priority": "medium",
+                    "review_needed": False,
+                    "blocker": "",
+                    "notes": "Needs stronger official source candidate.",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["row_gap_count"] == 1
+    assert result["row_gaps"][0]["invalid_fields"] == ["current_status", "candidate_scope"]
 
 
 def test_evaluate_weak_sector_venue_action_queue_gate_accepts_blocked_batches() -> None:

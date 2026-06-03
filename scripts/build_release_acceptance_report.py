@@ -3072,6 +3072,21 @@ SOURCE_INVENTORY_POLICY_MARKER_GROUPS = {
     "no_guessing": ("remain blank", "until sourced", "no_guessing"),
     "review_gate": ("review_needed", "source review", "scope changes"),
 }
+SOURCE_INVENTORY_ALLOWED_CURRENT_STATUSES = {
+    "missing",
+    "not_in_current_universe",
+    "official_full",
+    "official_partial",
+}
+SOURCE_INVENTORY_ALLOWED_CANDIDATE_SCOPES = {
+    "exchange_directory_candidate",
+    "global_expansion_candidate",
+    "listed_companies_candidate",
+    "normalization_alias",
+    "security_identifier_registry_candidate",
+    "security_lookup_subset",
+    "source_expansion_candidate",
+}
 SOURCE_INVENTORY_ALLOWED_SOURCE_MODES = {"", "cache", "network", "unavailable"}
 WEAK_SECTOR_ACTION_REQUIRED_ITEM_FIELDS = (
     "exchange",
@@ -18116,6 +18131,10 @@ def evaluate_source_inventory_gap_gate(report: dict[str, Any]) -> dict[str, Any]
             invalid_fields.append("implementation_status")
         if row.get("priority") not in {"high", "medium", "low"}:
             invalid_fields.append("priority")
+        if row.get("current_status") not in SOURCE_INVENTORY_ALLOWED_CURRENT_STATUSES:
+            invalid_fields.append("current_status")
+        if row.get("candidate_scope") not in SOURCE_INVENTORY_ALLOWED_CANDIDATE_SCOPES:
+            invalid_fields.append("candidate_scope")
         if row.get("source_mode", "") not in SOURCE_INVENTORY_ALLOWED_SOURCE_MODES:
             invalid_fields.append("source_mode")
         if str(row.get("current_status", "")) in {"missing", "official_partial", "manual_only"}:
