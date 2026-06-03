@@ -18179,6 +18179,13 @@ def evaluate_source_inventory_gap_gate(report: dict[str, Any]) -> dict[str, Any]
         "current_scope_candidates": sum(
             1 for row in rows if isinstance(row, dict) and row.get("current_status") != "not_in_current_universe"
         ),
+        "global_expansion_candidates": sum(
+            1
+            for row in rows
+            if isinstance(row, dict)
+            and row.get("current_status") == "not_in_current_universe"
+            and row.get("candidate_scope") != "normalization_alias"
+        ),
         "high_priority_rows": sum(1 for row in rows if isinstance(row, dict) and row.get("priority") == "high"),
     }
     for field, expected in expected_summary_counts.items():

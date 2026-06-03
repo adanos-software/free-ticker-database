@@ -12483,6 +12483,58 @@ def test_evaluate_source_inventory_gap_gate_rejects_missing_or_duplicate_candida
     ]
 
 
+def test_evaluate_source_inventory_gap_gate_counts_global_expansion_rows() -> None:
+    result = evaluate_source_inventory_gap_gate(
+        {
+            "summary": {
+                "generated_at": "2026-06-03T00:00:00Z",
+                "policy": {
+                    "inventory_only": "This report is a source inventory and parser backlog only; it does not authorize data fills.",
+                    "official_source_gate": "Official source parsers must write reference.csv before data evidence exists.",
+                    "no_guessing": "Missing fields remain blank until sourced.",
+                    "review_gate": "Rows marked review_needed require source review before scope changes.",
+                },
+                "rows": 1,
+                "current_status_counts": {"not_in_current_universe": 1},
+                "candidate_scope_counts": {"global_expansion_candidate": 1},
+                "todo_rows": 1,
+                "current_scope_candidates": 0,
+                "global_expansion_candidates": 0,
+                "high_priority_rows": 1,
+            },
+            "rows": [
+                {
+                    "priority_rank": 1,
+                    "exchange": "NSE_IN",
+                    "current_status": "not_in_current_universe",
+                    "tickers": 0,
+                    "missing_isin": 0,
+                    "missing_sector_or_category": 0,
+                    "unresolved_findings": 0,
+                    "official_source_count": 0,
+                    "candidate_key": "nse_india_securities_available",
+                    "candidate_scope": "global_expansion_candidate",
+                    "provider": "NSE India",
+                    "expected_format": "nse_india_securities_available_csv",
+                    "source_url": "https://www.nseindia.com/market-data/securities-available-for-trading",
+                    "implementation_status": "todo",
+                    "source_mode": "",
+                    "source_refresh_queue": "",
+                    "source_last_error": "",
+                    "priority": "high",
+                    "review_needed": True,
+                    "blocker": "not yet in current exchange bucket list",
+                    "notes": "Expansion candidate.",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["row_gap_count"] == 0
+    assert result["count_gaps"] == [{"field": "global_expansion_candidates", "expected": 1, "actual": 0}]
+
+
 def test_evaluate_weak_sector_venue_action_queue_gate_accepts_blocked_batches() -> None:
     result = evaluate_weak_sector_venue_action_queue_gate(
         {
