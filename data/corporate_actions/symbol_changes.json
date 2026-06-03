@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T19:22:47Z",
+    "generated_at": "2026-06-03T11:22:05Z",
     "source_url": "https://stockanalysis.com/actions/changes/",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -10,14 +10,14 @@
     "policy": "Secondary symbol-change feed for review only. No ticker, name, listing, or corporate-action data is applied without listing-keyed official exchange or issuer evidence."
   },
   "summary": {
-    "fetched_rows": 239,
-    "merged_history_rows": 271,
-    "review_rows": 271,
+    "fetched_rows": 240,
+    "merged_history_rows": 272,
+    "review_rows": 272,
     "match_status_counts": {
       "new_symbol_present_old_symbol_missing": 174,
       "no_matching_listing": 18,
       "old_and_new_symbols_present": 18,
-      "old_symbol_present_new_symbol_missing": 40,
+      "old_symbol_present_new_symbol_missing": 41,
       "symbol_present_only_outside_source_scope": 21
     },
     "symbol_change_workflow_queue_counts": {
@@ -26,25 +26,25 @@
       "blocked_out_of_scope_symbol_collision": 28,
       "document_no_dataset_match": 18,
       "review_duplicate_or_cross_listing": 18,
-      "review_verified_rename_or_delisting": 31
+      "review_verified_rename_or_delisting": 32
     },
     "symbol_change_backlog": {
       "status": "listing_keyed_symbol_change_review_queue_open",
-      "rows": 271,
-      "verified_rename_or_delisting_review_rows": 31,
+      "rows": 272,
+      "verified_rename_or_delisting_review_rows": 32,
       "duplicate_or_cross_listing_review_rows": 18,
       "already_reflected_audit_rows": 173,
       "out_of_scope_collision_blocked_rows": 28,
       "missing_source_scope_mapping_rows": 3,
       "no_dataset_match_documentation_rows": 18,
-      "time_sensitive_review_rows": 16,
+      "time_sensitive_review_rows": 17,
       "direct_symbol_change_apply_allowed_rows": 0,
       "secondary_feed_apply_authorized": false,
       "source_gate": "Symbol-change feed rows are review signals only; ticker, name, listing, or alias changes require listing-keyed official venue or issuer evidence for old/new symbols and issuer identity."
     },
     "review_bucket_counts": {
       "action_required_duplicate_or_cross_listing": 18,
-      "action_required_possible_rename_or_delisting": 31,
+      "action_required_possible_rename_or_delisting": 32,
       "already_reflected_in_scope_with_global_symbol_collision": 33,
       "already_reflected_in_source_scope": 140,
       "hold_out_of_scope_symbol_collision": 21,
@@ -53,7 +53,7 @@
       "no_dataset_match_for_source_scope": 18
     },
     "review_priority_counts": {
-      "P1": 49,
+      "P1": 50,
       "P2": 31,
       "P3": 18,
       "P4": 173
@@ -70,13 +70,13 @@
     },
     "recency_bucket_counts": {
       "older_than_90d": 212,
-      "recent_30d": 17,
+      "recent_30d": 18,
       "recent_7d": 6,
       "recent_90d": 36
     },
     "review_priority_recency_counts": {
       "P1:older_than_90d": 12,
-      "P1:recent_30d": 11,
+      "P1:recent_30d": 12,
       "P1:recent_7d": 5,
       "P1:recent_90d": 21,
       "P2:older_than_90d": 18,
@@ -103,7 +103,7 @@
       "review_duplicate_or_cross_listing:older_than_90d": 11,
       "review_duplicate_or_cross_listing:recent_90d": 7,
       "review_verified_rename_or_delisting:older_than_90d": 1,
-      "review_verified_rename_or_delisting:recent_30d": 11,
+      "review_verified_rename_or_delisting:recent_30d": 12,
       "review_verified_rename_or_delisting:recent_7d": 5,
       "review_verified_rename_or_delisting:recent_90d": 14
     },
@@ -113,7 +113,7 @@
       "blocked_out_of_scope_symbol_collision:P2": 28,
       "document_no_dataset_match:P3": 18,
       "review_duplicate_or_cross_listing:P1": 18,
-      "review_verified_rename_or_delisting:P1": 31
+      "review_verified_rename_or_delisting:P1": 32
     },
     "workflow_queue_scope_counts": {
       "audit_already_reflected:global_symbol_collision_outside_source_scope": 33,
@@ -122,7 +122,7 @@
       "blocked_out_of_scope_symbol_collision:global_symbol_collision_outside_source_scope": 28,
       "document_no_dataset_match:matches_within_source_scope": 18,
       "review_duplicate_or_cross_listing:matches_within_source_scope": 18,
-      "review_verified_rename_or_delisting:matches_within_source_scope": 31
+      "review_verified_rename_or_delisting:matches_within_source_scope": 32
     },
     "workflow_queue_match_status_counts": {
       "audit_already_reflected:new_symbol_present_old_symbol_missing": 173,
@@ -132,7 +132,7 @@
       "blocked_out_of_scope_symbol_collision:symbol_present_only_outside_source_scope": 21,
       "document_no_dataset_match:no_matching_listing": 18,
       "review_duplicate_or_cross_listing:old_and_new_symbols_present": 18,
-      "review_verified_rename_or_delisting:old_symbol_present_new_symbol_missing": 31
+      "review_verified_rename_or_delisting:old_symbol_present_new_symbol_missing": 32
     },
     "workflow_queue_source_hint_counts": {
       "audit_already_reflected": {
@@ -154,7 +154,7 @@
         "US_LISTED": 18
       },
       "review_verified_rename_or_delisting": {
-        "US_LISTED": 31
+        "US_LISTED": 32
       }
     },
     "workflow_queue_source_confidence_counts": {
@@ -174,7 +174,7 @@
         "secondary_review": 18
       },
       "review_verified_rename_or_delisting": {
-        "secondary_review": 31
+        "secondary_review": 32
       }
     },
     "workflow_queue_issuer_name_review_counts": {
@@ -202,7 +202,7 @@
       },
       "review_verified_rename_or_delisting": {
         "feed_name_differs_from_scoped_listing_name": 24,
-        "feed_name_exactly_matches_scoped_listing_name": 2,
+        "feed_name_exactly_matches_scoped_listing_name": 3,
         "feed_name_partially_overlaps_scoped_listing_name": 5
       }
     },
@@ -225,7 +225,7 @@
         "old_and_new_scoped_listing_keys_present": 18
       },
       "review_verified_rename_or_delisting": {
-        "old_scoped_listing_key_only": 31
+        "old_scoped_listing_key_only": 32
       }
     },
     "workflow_queue_review_strategy_counts": {
@@ -245,7 +245,7 @@
         "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change": 18
       },
       "review_verified_rename_or_delisting": {
-        "verify_rename_or_delisting_with_official_venue_or_issuer_evidence": 31
+        "verify_rename_or_delisting_with_official_venue_or_issuer_evidence": 32
       }
     },
     "top_symbol_change_workflow_batches": [
@@ -265,7 +265,7 @@
         "review_priority": "P1",
         "recency_bucket": "recent_30d",
         "exchange_scope_status": "matches_within_source_scope",
-        "rows": 11,
+        "rows": 12,
         "review_strategy": "verify_rename_or_delisting_with_official_venue_or_issuer_evidence",
         "evidence_required": "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer",
         "recommended_next_source": "Official exchange notice, issuer notice, or current exchange directory proving old/new symbols for the same issuer.",
@@ -452,32 +452,32 @@
       "audit_only_no_apply": 173,
       "blocked_until_exchange_scope_resolved": 31,
       "no_dataset_action_without_scope_mapping": 18,
-      "requires_official_venue_confirmation": 49
+      "requires_official_venue_confirmation": 50
     },
     "symbol_change_apply_readiness_counts": {
       "audit_only_no_canonical_change": 173,
-      "blocked_until_listing_keyed_official_symbol_change_evidence": 49,
+      "blocked_until_listing_keyed_official_symbol_change_evidence": 50,
       "blocked_until_source_exchange_scope_and_non_symbol_identity_evidence": 31,
       "document_or_ignore_until_scoped_official_dataset_match": 18
     },
     "verification_evidence_required_counts": {
       "audit_only_confirm_no_canonical_change_needed": 173,
       "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition": 18,
-      "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer": 31,
+      "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer": 32,
       "official_exchange_scope_and_non_symbol_identity_evidence_before_apply": 28,
       "official_exchange_scope_mapping_or_ignore_as_external_non_dataset_event": 18,
       "source_exchange_mapping_before_any_symbol_change_review": 3
     },
-    "time_sensitive_review_rows": 16,
+    "time_sensitive_review_rows": 17,
     "time_sensitive_workflow_queue_counts": {
-      "review_verified_rename_or_delisting": 16
+      "review_verified_rename_or_delisting": 17
     },
     "time_sensitive_recency_counts": {
-      "recent_30d": 11,
+      "recent_30d": 12,
       "recent_7d": 5
     },
     "time_sensitive_apply_readiness_counts": {
-      "blocked_until_listing_keyed_official_symbol_change_evidence": 16
+      "blocked_until_listing_keyed_official_symbol_change_evidence": 17
     },
     "top_time_sensitive_symbol_change_batches": [
       {
@@ -498,7 +498,7 @@
         "exchange_scope_status": "matches_within_source_scope",
         "match_status": "old_symbol_present_new_symbol_missing",
         "listing_key_review_status": "old_scoped_listing_key_only",
-        "rows": 11,
+        "rows": 12,
         "review_strategy": "verify_rename_or_delisting_with_official_venue_or_issuer_evidence",
         "evidence_required": "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer",
         "recommended_next_source": "Official exchange notice, issuer notice, or current exchange directory proving old/new symbols for the same issuer.",
@@ -510,15 +510,29 @@
       "do_not_apply_from_symbol_match_review_exchange_scope_first": 21,
       "ignore_or_map_exchange_scope_before_applying": 18,
       "review_duplicate_or_cross_listing_state_in_source_scope": 18,
-      "review_possible_rename_or_delisting_in_source_scope": 40
+      "review_possible_rename_or_delisting_in_source_scope": 41
     },
     "exchange_scope_status_counts": {
       "global_symbol_collision_outside_source_scope": 61,
-      "matches_within_source_scope": 207,
+      "matches_within_source_scope": 208,
       "unscoped_source_hint": 3
     }
   },
   "symbol_changes": [
+    {
+      "change_id": "c0eb447fe874f923",
+      "effective_date": "2026-06-02",
+      "old_symbol": "VSCO",
+      "new_symbol": "VSXY",
+      "new_company_name": "Victoria's Secret & Co.",
+      "source": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "new_symbol_url": "/stocks/vsxy/",
+      "source_exchange_hint": "US_LISTED",
+      "source_confidence": "secondary_review",
+      "review_needed": "true",
+      "observed_at": "2026-06-03T11:22:05Z"
+    },
     {
       "change_id": "366eb6e029a23f1c",
       "effective_date": "2026-05-29",
@@ -531,7 +545,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "adf588be3360bd1d",
@@ -545,7 +559,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "4ca14268fc84203a",
@@ -559,7 +573,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "e2e27c5dc1ff2f93",
@@ -573,7 +587,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "cbd666455ed4b04b",
@@ -587,7 +601,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "064ee9235e10f3e2",
@@ -601,7 +615,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "60f0987926920aa1",
@@ -615,7 +629,7 @@
       "source_exchange_hint": "OTC",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "e00e427ba3fae50b",
@@ -629,7 +643,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "37c291acbe0f805f",
@@ -643,7 +657,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "d7f8f1f244c695a1",
@@ -657,7 +671,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "89f442b06e16deff",
@@ -671,7 +685,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "477634f200f5cd7c",
@@ -685,7 +699,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "feefb37a40fb3b3a",
@@ -699,7 +713,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "f8b51e267f3a9e12",
@@ -713,7 +727,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "4212b620ef741ce3",
@@ -727,7 +741,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "85e2496d89cff2f0",
@@ -741,7 +755,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "528a32c6dc85f177",
@@ -755,7 +769,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "a3fa4ed6d2046cf8",
@@ -769,7 +783,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "aa47db445ddf377a",
@@ -783,7 +797,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "6f660e7f6f4e411d",
@@ -797,7 +811,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "56c1c3c825cf5bdc",
@@ -811,7 +825,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "b335085e737a9f61",
@@ -825,7 +839,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "b5306923c1ddee49",
@@ -839,7 +853,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "9627b7ca9bf17e64",
@@ -853,7 +867,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "8dc027c774b5bd4d",
@@ -867,7 +881,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "83054a526c361dfa",
@@ -881,7 +895,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "525f87a03045648c",
@@ -895,7 +909,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "f210742723dfc2af",
@@ -909,7 +923,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "a62755f1a68360a8",
@@ -923,7 +937,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "ba93eb0fdcf40de3",
@@ -937,7 +951,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "c768dc40e7b1c864",
@@ -951,7 +965,7 @@
       "source_exchange_hint": "OTC",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "c869c1161fefbec7",
@@ -965,7 +979,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "00ffb50099e285ff",
@@ -979,7 +993,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "4113931f29233296",
@@ -993,7 +1007,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "0942e11fd5a6d220",
@@ -1007,7 +1021,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "f8b6b8562d0cdcbe",
@@ -1021,7 +1035,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "f86084cb75486e8c",
@@ -1035,7 +1049,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "1bdf02aa09bda8f8",
@@ -1049,7 +1063,7 @@
       "source_exchange_hint": "OTC",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "9c97b86a8b72a0ca",
@@ -1063,7 +1077,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "ff898f72a2580b0a",
@@ -1077,7 +1091,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "b672e01152a57370",
@@ -1091,7 +1105,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "6b7cc95f08836c75",
@@ -1119,7 +1133,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "ce7352846b5db9ff",
@@ -1133,7 +1147,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "6c48ab28f5241afc",
@@ -1147,7 +1161,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "5d378afc9bebb1c1",
@@ -1161,7 +1175,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "a459386391b0cc3d",
@@ -1175,7 +1189,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "b99445db47be0165",
@@ -1189,7 +1203,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "9f655af2f2bb7fbe",
@@ -1203,7 +1217,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "72df37c2bcd6b7d3",
@@ -1217,7 +1231,7 @@
       "source_exchange_hint": "OTC",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "63e555785bb11880",
@@ -1231,7 +1245,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "181abcb85243834a",
@@ -1245,7 +1259,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "f1d6cdb437106551",
@@ -1259,7 +1273,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "4350a41685bd85a8",
@@ -1273,7 +1287,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "cdd758c14f698ad9",
@@ -1287,7 +1301,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "1c081316ec1ee3bc",
@@ -1301,7 +1315,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "0e40ef295a57de10",
@@ -1315,7 +1329,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "eeccaf0529834225",
@@ -1329,7 +1343,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "bb6f2d344dc43c11",
@@ -1343,7 +1357,7 @@
       "source_exchange_hint": "OTC",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "386838babb947507",
@@ -1357,7 +1371,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "aa593b1d12e1820f",
@@ -1371,7 +1385,7 @@
       "source_exchange_hint": "",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "5cfd6ed0dad6c752",
@@ -1385,7 +1399,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "7b7083551b3aa67f",
@@ -1399,7 +1413,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "19dd36b70cd8c04e",
@@ -1413,7 +1427,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "45f49853ebcb918f",
@@ -1427,7 +1441,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "be79e6a5b58be0cf",
@@ -1441,7 +1455,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "7ecc8f36f8fb55dd",
@@ -1455,7 +1469,7 @@
       "source_exchange_hint": "OTC",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "58a956f12be1bbd2",
@@ -1469,7 +1483,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "95958004f129cab8",
@@ -1483,7 +1497,7 @@
       "source_exchange_hint": "OTC",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "aa0bd28291185d84",
@@ -1497,7 +1511,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "4e62af8679b053ae",
@@ -1511,7 +1525,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "22415501f1a80edf",
@@ -1525,7 +1539,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "96e2a7c075ba1837",
@@ -1539,7 +1553,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "2e1e6d281b7d6473",
@@ -1553,7 +1567,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "6319aaa27a59fbf8",
@@ -1567,7 +1581,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "c3e505e310666180",
@@ -1581,7 +1595,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "b20d25f337de5a48",
@@ -1595,7 +1609,7 @@
       "source_exchange_hint": "OTC",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "df02e17d8e20c86f",
@@ -1609,7 +1623,7 @@
       "source_exchange_hint": "OTC",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "db3a5e055edd6c1a",
@@ -1623,7 +1637,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "b8fd67dcb10f950a",
@@ -1637,7 +1651,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "bf36982f0cc45ef2",
@@ -1651,7 +1665,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "56fdea6394b89184",
@@ -1665,7 +1679,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "d4a13e27a8272dd3",
@@ -1679,7 +1693,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "485a0036a279d379",
@@ -1693,7 +1707,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "4828163de42b8aee",
@@ -1707,7 +1721,7 @@
       "source_exchange_hint": "OTC",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "eb2f4d78562fddfc",
@@ -1721,7 +1735,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "4bdf05ab9d6a0624",
@@ -1735,7 +1749,7 @@
       "source_exchange_hint": "OTC",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "d83142256840160c",
@@ -1749,7 +1763,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "68c93c29e608b7a4",
@@ -1763,7 +1777,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "2b1eab5158377b3e",
@@ -1777,7 +1791,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "abbed2d8a64b6241",
@@ -1791,7 +1805,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "8491f2aa1b64d72d",
@@ -1805,7 +1819,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "75fafd1f6fad161e",
@@ -1819,7 +1833,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "71f1f51044562eb3",
@@ -1833,7 +1847,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "1dd06df56ee7a23a",
@@ -1847,7 +1861,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "d02a7838f4335c89",
@@ -1861,7 +1875,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "f6fac8832280ead2",
@@ -1875,7 +1889,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "cfeae16f1d077f47",
@@ -1889,7 +1903,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "3853f08f6281f8eb",
@@ -1903,7 +1917,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "a51262c01d68543c",
@@ -1917,7 +1931,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "2217f6bdb1b83f1c",
@@ -1931,7 +1945,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "8bf6e4eed7375552",
@@ -1945,7 +1959,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "917feb120b52b5ba",
@@ -1959,7 +1973,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "ec4380547cc7cc30",
@@ -1973,7 +1987,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "9e3edd8ea48e1160",
@@ -1987,7 +2001,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "e32fd4851930b39a",
@@ -2001,7 +2015,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "a746bb3d24f4c8fb",
@@ -2015,7 +2029,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "490030b242e4aa82",
@@ -2029,7 +2043,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "b3177d174def6013",
@@ -2043,7 +2057,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "84b6bfa949b78b1d",
@@ -2057,7 +2071,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "ba94e0e8dc86d656",
@@ -2071,7 +2085,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "246604a0c6b78023",
@@ -2085,7 +2099,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "8f863292d42e6578",
@@ -2099,7 +2113,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "65c4c2331845a862",
@@ -2113,7 +2127,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "db080a1cf2384b5b",
@@ -2127,7 +2141,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "482cb0aefa1839c6",
@@ -2141,7 +2155,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "d1ed53256428539a",
@@ -2155,7 +2169,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "41a3d5d81c78af43",
@@ -2169,7 +2183,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "9d58a7b73a1ff069",
@@ -2183,7 +2197,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "ee5488dfe85f4bf6",
@@ -2197,7 +2211,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "8ed63c2b0b807e9e",
@@ -2211,7 +2225,7 @@
       "source_exchange_hint": "OTC",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "8b85e0857204ebcb",
@@ -2225,7 +2239,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "1e01036a57372717",
@@ -2239,7 +2253,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "e8420626d9f794d6",
@@ -2253,7 +2267,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "b28dd7017a1a0371",
@@ -2267,7 +2281,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "f82e6e967352328d",
@@ -2281,7 +2295,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "395af451d4c48d2c",
@@ -2295,7 +2309,7 @@
       "source_exchange_hint": "OTC",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "ce63692a068bae63",
@@ -2309,7 +2323,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "d57d24803d98d6c3",
@@ -2323,7 +2337,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "b4df6fdf19d388e9",
@@ -2337,7 +2351,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "17dd8fd7ed6d0487",
@@ -2351,7 +2365,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "e1a625884f35cbec",
@@ -2365,7 +2379,7 @@
       "source_exchange_hint": "OTC",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "16fc592c38796b45",
@@ -2379,7 +2393,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "9981f2196c668cd7",
@@ -2393,7 +2407,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "3d11884d9243c839",
@@ -2421,7 +2435,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "f8cdc8cc724911f5",
@@ -2435,7 +2449,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "0ed70881dec34b50",
@@ -2449,7 +2463,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "e533251a4cf89b1a",
@@ -2463,7 +2477,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "afb0ebca000b1308",
@@ -2477,7 +2491,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "9609e7233b95a8ab",
@@ -2491,7 +2505,7 @@
       "source_exchange_hint": "OTC",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "12fc14a2752da202",
@@ -2505,7 +2519,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "3ee6806c67f37e65",
@@ -2519,7 +2533,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "b01b5e02b1360f53",
@@ -2533,7 +2547,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "6db68260489efa46",
@@ -2547,7 +2561,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "ea8f067e3c8602b6",
@@ -2561,7 +2575,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "1336040e8a466209",
@@ -2575,7 +2589,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "4aa5131a61e5534e",
@@ -2589,7 +2603,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "699c9a9f41f8af70",
@@ -2603,7 +2617,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "3bc4508f5613d5bb",
@@ -2617,7 +2631,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "871f13bcd1afbc9b",
@@ -2631,7 +2645,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "2a4fa26289ab4b55",
@@ -2645,7 +2659,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "f1497547311020e6",
@@ -2659,7 +2673,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "7c4bd9d9e58ef5ec",
@@ -2673,7 +2687,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "86f90ba47e0496f3",
@@ -2687,7 +2701,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "33882c757ffbc225",
@@ -2701,7 +2715,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "79c59404a32a08c6",
@@ -2715,7 +2729,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "e9fc16fb9998f62e",
@@ -2729,7 +2743,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "b5ab94e83b5984a4",
@@ -2743,7 +2757,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "8bab357473cc4829",
@@ -2757,7 +2771,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "62daee00ed20da77",
@@ -2771,7 +2785,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "8d9c82fc78f8edd2",
@@ -2785,7 +2799,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "cb08fbb77ce383c8",
@@ -2799,7 +2813,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "beb8f29613ddc9e1",
@@ -2813,7 +2827,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "a44455620cf66da5",
@@ -2827,7 +2841,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "579f87153aaeeccb",
@@ -2841,7 +2855,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "f1b08a62ac868689",
@@ -2855,7 +2869,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "d1e7735f8e3f06c8",
@@ -2869,7 +2883,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "8edc969962c9bc22",
@@ -2883,7 +2897,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "c5b7367e1e199545",
@@ -2897,7 +2911,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "34c76691d1351fd6",
@@ -2911,7 +2925,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "0cae3cdc8f41802a",
@@ -2939,7 +2953,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "cf948b4f04e453ce",
@@ -2953,7 +2967,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "83324752d628322c",
@@ -2967,7 +2981,7 @@
       "source_exchange_hint": "OTC",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "6b088cb75e5801b9",
@@ -2981,7 +2995,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "64554ee9760ee2de",
@@ -2995,7 +3009,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "56a4a294a5b423f7",
@@ -3009,7 +3023,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "c9c81266b7939fb4",
@@ -3023,7 +3037,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "b7283faa955a9134",
@@ -3037,7 +3051,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "2220f65e52dc10ab",
@@ -3051,7 +3065,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "78fa0859edf3d0d8",
@@ -3065,7 +3079,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "ba10e3d7a399c964",
@@ -3079,7 +3093,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "f4cf7c493c19bccd",
@@ -3107,7 +3121,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "1843fc5826999127",
@@ -3121,7 +3135,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "508ad7f8e956f15e",
@@ -3135,7 +3149,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "396c74c712937a34",
@@ -3149,7 +3163,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "838d891145272be9",
@@ -3177,7 +3191,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "eb26ad7f18127a8b",
@@ -3191,7 +3205,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "529e048c4843ee18",
@@ -3205,7 +3219,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "c0d4763077a56fe9",
@@ -3219,7 +3233,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "e5eed1b3661215df",
@@ -3233,7 +3247,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "662c3f11c687c03d",
@@ -3247,7 +3261,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "7ae2fcce9d8b5db0",
@@ -3261,7 +3275,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "dbfa138d4b202359",
@@ -3275,7 +3289,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "31486f4deb45bf9b",
@@ -3289,7 +3303,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "ef9188a3269ec528",
@@ -3303,7 +3317,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "d7dd84f263953c80",
@@ -3317,7 +3331,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "b93b76afd77ccbc8",
@@ -3331,7 +3345,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "6fdc6b507aef037d",
@@ -3345,7 +3359,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "5f58f61f5d3bfd15",
@@ -3359,7 +3373,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "6222bd7b7cd213e4",
@@ -3373,7 +3387,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "3224bc89291973d9",
@@ -3387,7 +3401,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "a535fa5d1f3acad8",
@@ -3401,7 +3415,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "1abe7e1bd42ef299",
@@ -3415,7 +3429,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "04bfef4ab3b47a87",
@@ -3429,7 +3443,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "c932ae9de7aa92ae",
@@ -3443,7 +3457,7 @@
       "source_exchange_hint": "OTC",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "b7b840eaf16b1a02",
@@ -3457,7 +3471,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "44a0afa0ec731064",
@@ -3471,7 +3485,7 @@
       "source_exchange_hint": "OTC",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "ecdcd118904bc25d",
@@ -3485,7 +3499,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "102c0e8b9f62e268",
@@ -3499,7 +3513,7 @@
       "source_exchange_hint": "OTC",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "e37254fec723fe89",
@@ -3513,7 +3527,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "e47b0024cbc93405",
@@ -3527,7 +3541,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "3ed3897f464bca78",
@@ -3541,7 +3555,7 @@
       "source_exchange_hint": "OTC",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "6e2badcf3c0e535c",
@@ -3555,7 +3569,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "d331a099dad596c8",
@@ -3569,7 +3583,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "ae1339ad48acbd91",
@@ -3583,7 +3597,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "767fe94c12c57198",
@@ -3597,7 +3611,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "6fdfae2b06c8468e",
@@ -3611,7 +3625,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "77e2c152c06b6c20",
@@ -3625,7 +3639,7 @@
       "source_exchange_hint": "OTC",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "d64f6e6b6399fe7d",
@@ -3639,7 +3653,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "3baa373d54c91876",
@@ -3653,7 +3667,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "f9f44ed88a2b4b08",
@@ -3667,7 +3681,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "76538ddc94169a16",
@@ -3681,7 +3695,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "eddf63056e2d5b53",
@@ -3695,7 +3709,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "43b51c7f194411a3",
@@ -3709,7 +3723,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "c3db5091be35eb47",
@@ -3723,7 +3737,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "982df8bf01778926",
@@ -3737,7 +3751,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "5eb1211f8acda6d6",
@@ -3751,7 +3765,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "65bf61e673c4986a",
@@ -3765,7 +3779,7 @@
       "source_exchange_hint": "OTC",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "ccc2f86a0eedf4cf",
@@ -3779,7 +3793,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "2c66b98ae3a14709",
@@ -3793,7 +3807,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "3b92a1b3c41219ae",
@@ -3807,7 +3821,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "eac22682789042d4",
@@ -3821,7 +3835,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "a6fd43e07b0bfaec",
@@ -3835,7 +3849,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "da4156df1b28d9ad",
@@ -3849,7 +3863,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "088a4c03dcf58986",
@@ -3863,7 +3877,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "b5a4d5901aaa9060",
@@ -3877,7 +3891,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "d8057a99e030215e",
@@ -3891,7 +3905,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "d24f228a88e41f00",
@@ -3905,7 +3919,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "6c498ac34e060559",
@@ -3919,7 +3933,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "ae759bc9dc49f081",
@@ -3933,7 +3947,7 @@
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-02T19:22:47Z"
+      "observed_at": "2026-06-03T11:22:05Z"
     },
     {
       "change_id": "08bf72180428f799",
