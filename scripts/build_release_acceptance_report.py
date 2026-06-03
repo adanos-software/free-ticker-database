@@ -27,6 +27,7 @@ RELEASE_SOURCE_REPORTS = {
     "completion_backlog": "data/reports/completion_backlog.json",
     "tse_sector_backfill": "data/reports/tse_sector_backfill.json",
     "sec_sic_sector_backfill": "data/reports/sec_sic_sector_backfill.json",
+    "official_name_mismatch_backfill": "data/reports/official_name_mismatch_backfill.json",
     "source_gap_classification": "data/reports/source_gap_classification.json",
     "deepseek_review_summary": "data/reports/deepseek_review_summary.json",
     "deepseek_batch_plan": "data/reports/deepseek_batch_plan.json",
@@ -2822,6 +2823,23 @@ FINANCIALDATA_SUPPLEMENT_SUMMARY_COUNT_FIELDS = (
     "apply_eligibility_counts",
     "verification_evidence_required_counts",
 )
+OFFICIAL_NAME_MISMATCH_REQUIRED_ROW_FIELDS = (
+    "listing_key",
+    "ticker",
+    "exchange",
+    "asset_type",
+    "current_name",
+    "proposed_name",
+    "decision",
+    "official_sources",
+    "supporting_sources",
+)
+OFFICIAL_NAME_MISMATCH_POLICY_MARKER_GROUPS = {
+    "official_active_source": ("active official", "official masterfile", "exact ticker and exchange"),
+    "no_guessing": ("not inferred", "no_guessing", "ticker shape", "secondary-only"),
+    "apply_gate": ("--apply", "override workflow", "review evidence"),
+    "otc_exclusion": ("otc", "otc name-mismatch review"),
+}
 REVIEW_POLICY_REQUIRED_MARKER_GROUPS = {
     "review_or_no_guessing_gate": (
         "review",
@@ -16394,11 +16412,118 @@ def evaluate_financialdata_supplement_review_gate(review: dict[str, Any]) -> dic
     }
 
 
+def evaluate_official_name_mismatch_backfill_gate(report: dict[str, Any]) -> dict[str, Any]:
+    summary = report.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    rows = report.get("items", [])
+    if not isinstance(rows, list):
+        rows = []
+    policy = summary.get("policy", {})
+    if not isinstance(policy, dict):
+        policy = {}
+    policy_text = " ".join(str(value) for value in policy.values()).lower()
+    policy_missing_marker_groups = [
+        group
+        for group, markers in OFFICIAL_NAME_MISMATCH_POLICY_MARKER_GROUPS.items()
+        if not any(marker in policy_text for marker in markers)
+    ]
+    supported_exchanges = set(summary.get("supported_exchanges", []))
+    accepted_by_exchange = summary.get("accepted_by_exchange", {})
+    skipped_by_exchange = summary.get("skipped_by_exchange", {})
+    if not isinstance(accepted_by_exchange, dict):
+        accepted_by_exchange = {}
+    if not isinstance(skipped_by_exchange, dict):
+        skipped_by_exchange = {}
+
+    accepted_counter: Counter[str] = Counter()
+    skipped_counter: Counter[str] = Counter()
+    row_gaps: list[dict[str, Any]] = []
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            row_gaps.append({"row_index": index, "reason": "row_is_not_object"})
+            continue
+        missing_fields = [field for field in OFFICIAL_NAME_MISMATCH_REQUIRED_ROW_FIELDS if field not in row]
+        invalid_fields: list[str] = []
+        decision = str(row.get("decision", ""))
+        exchange = str(row.get("exchange", ""))
+        ticker = str(row.get("ticker", ""))
+        listing_key = str(row.get("listing_key", ""))
+        proposed_name = str(row.get("proposed_name", ""))
+        if decision not in {"accept", "skip"}:
+            invalid_fields.append("decision")
+        if exchange == "OTC" or exchange not in supported_exchanges:
+            invalid_fields.append("exchange")
+        if listing_key != f"{exchange}::{ticker}":
+            invalid_fields.append("listing_key")
+        if decision == "accept":
+            accepted_counter[exchange] += 1
+            if not proposed_name:
+                invalid_fields.append("proposed_name")
+            if not row.get("official_sources"):
+                invalid_fields.append("official_sources")
+            if not row.get("supporting_sources"):
+                invalid_fields.append("supporting_sources")
+            if proposed_name == row.get("current_name"):
+                invalid_fields.append("proposed_name")
+        else:
+            skipped_counter[exchange] += 1
+            if proposed_name:
+                invalid_fields.append("proposed_name")
+        if missing_fields or invalid_fields:
+            row_gaps.append(
+                {
+                    "row_index": index,
+                    "reason": "missing_or_invalid_name_mismatch_review_fields",
+                    "missing_fields": missing_fields,
+                    "invalid_fields": invalid_fields,
+                    "available_keys": sorted(row)[:20],
+                }
+            )
+
+    expected_updates = sum(accepted_counter.values())
+    count_gaps = []
+    if summary.get("rows_reviewed") != len(rows):
+        count_gaps.append({"field": "rows_reviewed", "expected": len(rows), "actual": summary.get("rows_reviewed")})
+    if summary.get("updates_emitted") != expected_updates:
+        count_gaps.append(
+            {"field": "updates_emitted", "expected": expected_updates, "actual": summary.get("updates_emitted")}
+        )
+    if dict(accepted_counter) != accepted_by_exchange:
+        count_gaps.append(
+            {"field": "accepted_by_exchange", "expected": dict(accepted_counter), "actual": accepted_by_exchange}
+        )
+    if dict(skipped_counter) != skipped_by_exchange:
+        count_gaps.append(
+            {"field": "skipped_by_exchange", "expected": dict(skipped_counter), "actual": skipped_by_exchange}
+        )
+    return {
+        "passed": (
+            bool(rows)
+            and "OTC" not in supported_exchanges
+            and not policy_missing_marker_groups
+            and not row_gaps
+            and not count_gaps
+        ),
+        "rows_reviewed": summary.get("rows_reviewed"),
+        "items": len(rows),
+        "updates_emitted": summary.get("updates_emitted"),
+        "accepted_rows": expected_updates,
+        "supported_exchange_count": len(supported_exchanges),
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "count_gaps": count_gaps,
+        "required_row_fields": list(OFFICIAL_NAME_MISMATCH_REQUIRED_ROW_FIELDS),
+    }
+
+
 def build_payload() -> dict[str, Any]:
     generated_at = utc_now_iso()
     validation = load_json(REPORTS_DIR / "validation_report.json")
     entry_quality_gate = load_json(REPORTS_DIR / "entry_quality_gate.json")
     coverage = load_json(REPORTS_DIR / "coverage_report.json")
+    official_name_mismatch_backfill = load_json(REPORTS_DIR / "official_name_mismatch_backfill.json")
     source_gap = load_json(REPORTS_DIR / "source_gap_classification.json")
     symbol_changes_review = load_json(REPORTS_DIR / "symbol_changes_review.json")
     otc_name_mismatch_review = load_json(REPORTS_DIR / "otc_name_mismatch_review.json")
@@ -16454,6 +16579,9 @@ def build_payload() -> dict[str, Any]:
     criteria["adanos_detection_simulation"] = evaluate_adanos_detection_simulation(adanos_detection_simulation)
     criteria["entry_quality_command_report"] = evaluate_entry_quality_command_report(entry_quality_gate, gates)
     criteria["coverage_freshness_visibility"] = evaluate_coverage_freshness_visibility(coverage)
+    criteria["official_name_mismatch_backfill_gate"] = evaluate_official_name_mismatch_backfill_gate(
+        official_name_mismatch_backfill
+    )
     criteria["source_gap_traceability"] = evaluate_source_gap_traceability(source_gap)
     criteria["symbol_change_review_gate"] = evaluate_symbol_change_review_gate(symbol_changes_review)
     criteria["otc_name_mismatch_review_gate"] = evaluate_otc_name_mismatch_review_gate(otc_name_mismatch_review)

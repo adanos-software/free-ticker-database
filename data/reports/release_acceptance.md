@@ -1,17 +1,17 @@
 # Release Acceptance
 
-Generated: `2026-06-03T01:26:12Z`
+Generated: `2026-06-03T01:32:19Z`
 
 Overall passed: `True`
 
-Summary context: `passed=true;criteria=49;passed_criteria=49;failed_criteria=0;validation_failed_error_gates=0`
+Summary context: `passed=true;criteria=50;passed_criteria=50;failed_criteria=0;validation_failed_error_gates=0`
 
 ## Summary
 
 | Metric | Value |
 |---|---:|
-| `criteria` | `49` |
-| `passed_criteria` | `49` |
+| `criteria` | `50` |
+| `passed_criteria` | `50` |
 | `failed_criteria` | `0` |
 | `validation_failed_error_gates` | `0` |
 
@@ -35,6 +35,7 @@ Summary context: `passed=true;criteria=49;passed_criteria=49;failed_criteria=0;v
 | `adanos_detection_simulation` | True |
 | `entry_quality_command_report` | True |
 | `coverage_freshness_visibility` | True |
+| `official_name_mismatch_backfill_gate` | True |
 | `source_gap_traceability` | True |
 | `symbol_change_review_gate` | True |
 | `otc_name_mismatch_review_gate` | True |

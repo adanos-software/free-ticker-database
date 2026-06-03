@@ -6,6 +6,7 @@ import json
 import re
 import sys
 from collections import Counter, defaultdict
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -279,6 +280,19 @@ def build_summary(report_rows: list[dict[str, Any]], updates: list[dict[str, str
     accepted = [row for row in report_rows if row["decision"] == "accept"]
     return {
         "summary": {
+            "generated_at": datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+            "policy": {
+                "source_authority": (
+                    "Name backfill candidates require active official masterfile references for the exact "
+                    "ticker and exchange."
+                ),
+                "no_guessing": "Names are not inferred from ticker shape, issuer peers, or secondary-only sources.",
+                "apply_gate": (
+                    "Report rows are review evidence; metadata updates are written only when --apply is used "
+                    "through the existing override workflow."
+                ),
+                "otc_exclusion": "OTC rows are excluded and must use the OTC name-mismatch review workflow.",
+            },
             "supported_exchanges": sorted(exchanges),
             "rows_reviewed": len(report_rows),
             "updates_emitted": len(updates),

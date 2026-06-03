@@ -90,6 +90,7 @@ from scripts.build_release_acceptance_report import (
     evaluate_gate_group,
     evaluate_isin_identity_collision_gate,
     evaluate_masterfile_collision_gate,
+    evaluate_official_name_mismatch_backfill_gate,
     evaluate_ohlcv_plausibility_gate,
     evaluate_otc_name_mismatch_action_queue_gate,
     evaluate_otc_name_mismatch_review_gate,
@@ -164,6 +165,7 @@ def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> N
     assert RELEASE_SOURCE_REPORTS["completion_backlog"] == "data/reports/completion_backlog.json"
     assert RELEASE_SOURCE_REPORTS["tse_sector_backfill"] == "data/reports/tse_sector_backfill.json"
     assert RELEASE_SOURCE_REPORTS["sec_sic_sector_backfill"] == "data/reports/sec_sic_sector_backfill.json"
+    assert RELEASE_SOURCE_REPORTS["official_name_mismatch_backfill"] == "data/reports/official_name_mismatch_backfill.json"
     assert RELEASE_SOURCE_REPORTS["source_gap_classification"] == "data/reports/source_gap_classification.json"
     assert RELEASE_SOURCE_REPORTS["deepseek_review_summary"] == "data/reports/deepseek_review_summary.json"
     assert RELEASE_SOURCE_REPORTS["deepseek_batch_plan"] == "data/reports/deepseek_batch_plan.json"
@@ -11440,6 +11442,91 @@ def test_evaluate_financialdata_supplement_review_gate_rejects_direct_apply_or_w
     assert result["count_gaps"] == [{"field": "reason_counts", "expected": 1, "actual": 2}]
     assert result["supplement_row_count_gaps"] == [{"field": "supplement_rows", "expected": 1, "actual": 2}]
     assert result["traceability_gap_count"] == 1
+
+
+def test_evaluate_official_name_mismatch_backfill_gate_accepts_official_source_rows() -> None:
+    result = evaluate_official_name_mismatch_backfill_gate(
+        {
+            "summary": {
+                "policy": {
+                    "source_authority": "Name candidates require active official masterfile references for the exact ticker and exchange.",
+                    "no_guessing": "Names are not inferred from ticker shape or secondary-only sources.",
+                    "apply_gate": "Report rows are review evidence; updates require --apply through the override workflow.",
+                    "otc_exclusion": "OTC rows use the OTC name-mismatch review workflow.",
+                },
+                "supported_exchanges": ["NASDAQ", "NYSE"],
+                "rows_reviewed": 2,
+                "updates_emitted": 1,
+                "accepted_by_exchange": {"NASDAQ": 1},
+                "skipped_by_exchange": {"NYSE": 1},
+            },
+            "items": [
+                {
+                    "listing_key": "NASDAQ::ADAM",
+                    "ticker": "ADAM",
+                    "exchange": "NASDAQ",
+                    "asset_type": "Stock",
+                    "current_name": "New York Mortgage Trust, Inc.",
+                    "proposed_name": "Adamas Trust, Inc.",
+                    "decision": "accept",
+                    "official_sources": "nasdaq_listed|sec_company_tickers_exchange",
+                    "supporting_sources": "nasdaq_listed|sec_company_tickers_exchange",
+                },
+                {
+                    "listing_key": "NYSE::FLG",
+                    "ticker": "FLG",
+                    "exchange": "NYSE",
+                    "asset_type": "Stock",
+                    "current_name": "Flagstar Financial, Inc.",
+                    "proposed_name": "",
+                    "decision": "skip",
+                    "official_sources": "nasdaq_other_listed|sec_company_tickers_exchange",
+                    "supporting_sources": "nasdaq_other_listed",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["updates_emitted"] == 1
+    assert result["accepted_rows"] == 1
+
+
+def test_evaluate_official_name_mismatch_backfill_gate_rejects_unguarded_or_stale_counts() -> None:
+    result = evaluate_official_name_mismatch_backfill_gate(
+        {
+            "summary": {
+                "policy": {"source_authority": "Use names."},
+                "supported_exchanges": ["NASDAQ", "OTC"],
+                "rows_reviewed": 3,
+                "updates_emitted": 2,
+                "accepted_by_exchange": {"NASDAQ": 2},
+                "skipped_by_exchange": {},
+            },
+            "items": [
+                {
+                    "listing_key": "NASDAQ::ADAM",
+                    "ticker": "ADAM",
+                    "exchange": "NASDAQ",
+                    "asset_type": "Stock",
+                    "current_name": "Adamas Trust, Inc.",
+                    "proposed_name": "Adamas Trust, Inc.",
+                    "decision": "accept",
+                    "official_sources": "",
+                    "supporting_sources": "",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["policy_missing_marker_groups"]
+    assert result["row_gap_count"] == 1
+    assert result["count_gaps"] == [
+        {"field": "rows_reviewed", "expected": 1, "actual": 3},
+        {"field": "updates_emitted", "expected": 1, "actual": 2},
+        {"field": "accepted_by_exchange", "expected": {"NASDAQ": 1}, "actual": {"NASDAQ": 2}},
+    ]
 
 
 def test_financialdata_supplement_contexts_are_exact_field_summaries() -> None:

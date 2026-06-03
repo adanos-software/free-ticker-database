@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-03T01:26:12Z",
+    "generated_at": "2026-06-03T01:32:19Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -11,6 +11,7 @@
       "completion_backlog": "data/reports/completion_backlog.json",
       "tse_sector_backfill": "data/reports/tse_sector_backfill.json",
       "sec_sic_sector_backfill": "data/reports/sec_sic_sector_backfill.json",
+      "official_name_mismatch_backfill": "data/reports/official_name_mismatch_backfill.json",
       "source_gap_classification": "data/reports/source_gap_classification.json",
       "deepseek_review_summary": "data/reports/deepseek_review_summary.json",
       "deepseek_batch_plan": "data/reports/deepseek_batch_plan.json",
@@ -41,12 +42,12 @@
   },
   "passed": true,
   "summary": {
-    "criteria": 49,
-    "passed_criteria": 49,
+    "criteria": 50,
+    "passed_criteria": 50,
     "failed_criteria": 0,
     "validation_failed_error_gates": 0
   },
-  "summary_context": "passed=true;criteria=49;passed_criteria=49;failed_criteria=0;validation_failed_error_gates=0",
+  "summary_context": "passed=true;criteria=50;passed_criteria=50;failed_criteria=0;validation_failed_error_gates=0",
   "criteria": {
     "no_invalid_isins": {
       "passed": true,
@@ -221,18 +222,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-03T01:26:12Z",
+      "release_generated_at": "2026-06-03T01:32:19Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-03T01:26:04Z"
+          "generated_at": "2026-06-03T01:32:12Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-03T01:26:03Z"
+          "generated_at": "2026-06-03T01:32:11Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -263,6 +264,11 @@
           "path": "data/reports/sec_sic_sector_backfill.json",
           "exists": true,
           "generated_at": "2026-06-02T23:56:56Z"
+        },
+        "official_name_mismatch_backfill": {
+          "path": "data/reports/official_name_mismatch_backfill.json",
+          "exists": true,
+          "generated_at": "2026-06-03T01:31:45Z"
         },
         "source_gap_classification": {
           "path": "data/reports/source_gap_classification.json",
@@ -520,7 +526,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-03T01:26:03Z",
+      "generated_at": "2026-06-03T01:32:11Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -685,6 +691,29 @@
           "source_restored_or_replaced_with_official_or_documented_unavailable_decision": 5
         }
       }
+    },
+    "official_name_mismatch_backfill_gate": {
+      "passed": true,
+      "rows_reviewed": 14,
+      "items": 14,
+      "updates_emitted": 14,
+      "accepted_rows": 14,
+      "supported_exchange_count": 15,
+      "policy_missing_marker_groups": [],
+      "row_gap_count": 0,
+      "row_gaps": [],
+      "count_gaps": [],
+      "required_row_fields": [
+        "listing_key",
+        "ticker",
+        "exchange",
+        "asset_type",
+        "current_name",
+        "proposed_name",
+        "decision",
+        "official_sources",
+        "supporting_sources"
+      ]
     },
     "source_gap_traceability": {
       "passed": true,
