@@ -18138,6 +18138,8 @@ def evaluate_source_inventory_gap_gate(report: dict[str, Any]) -> dict[str, Any]
             invalid_fields.append("candidate_scope")
         if not row.get("candidate_key"):
             invalid_fields.append("candidate_key")
+        if not row.get("provider"):
+            invalid_fields.append("provider")
         if row.get("source_mode", "") not in SOURCE_INVENTORY_ALLOWED_SOURCE_MODES:
             invalid_fields.append("source_mode")
         if not isinstance(row.get("review_needed"), bool):
