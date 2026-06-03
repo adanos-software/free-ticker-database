@@ -81,6 +81,7 @@ from scripts.build_release_acceptance_report import (
     evaluate_coverage_freshness_visibility,
     evaluate_apply_artifact_traceability,
     evaluate_asx_residual_gate,
+    evaluate_b3_improvement_action_queue_gate,
     evaluate_b3_residual_gate,
     evaluate_entry_quality_command_report,
     evaluate_financialdata_supplement_review_gate,
@@ -191,6 +192,7 @@ def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> N
     assert RELEASE_SOURCE_REPORTS["otc_name_mismatch_review"] == "data/reports/otc_name_mismatch_review.json"
     assert RELEASE_SOURCE_REPORTS["otc_name_mismatch_action_queue"] == "data/reports/otc_name_mismatch_action_queue.json"
     assert RELEASE_SOURCE_REPORTS["canada_improvement_action_queue"] == "data/reports/canada_improvement_action_queue.json"
+    assert RELEASE_SOURCE_REPORTS["b3_improvement_action_queue"] == "data/reports/b3_improvement_action_queue.json"
     assert RELEASE_SOURCE_REPORTS["weak_sector_venue_action_queue"] == "data/reports/weak_sector_venue_action_queue.json"
 
 
@@ -11853,6 +11855,125 @@ def test_evaluate_canada_improvement_action_queue_gate_rejects_apply_or_stale_co
     assert result["gating_gaps"] == [
         {"field": "direct_identifier_apply_allowed_rows", "expected": 0, "actual": 1},
         {"field": "metadata_enrichment_authorized", "expected": False, "actual": True},
+    ]
+
+
+def test_evaluate_b3_improvement_action_queue_gate_accepts_blocked_batches() -> None:
+    result = evaluate_b3_improvement_action_queue_gate(
+        {
+            "summary": {
+                "generated_at": "2026-06-03T00:00:00Z",
+                "batches": 2,
+                "underlying_review_rows": 17,
+                "campaign_totals": {"b3_masterfile_gap": 10, "b3_residual_sector": 7},
+                "priority_totals": {"P2": 10, "P3": 7},
+                "action_queue_totals": {
+                    "document_official_subset_closure_without_data_change": 10,
+                    "seek_stronger_official_b3_or_issuer_taxonomy": 7,
+                },
+                "review_queue_totals": {
+                    "no_b3_classification_code_match_source_gap": 7,
+                    "official_subset_category_already_reflected_scope_review_no_data_change_closure": 10,
+                },
+                "b3_coverage_diagnosis": {
+                    "data_change_authorized": False,
+                    "source_gate": (
+                        "No B3 ISIN, sector, category, name, symbol, or scope change is authorized until the exact "
+                        "listing-keyed official source evidence and apply gate are reviewed."
+                    ),
+                },
+                "direct_data_change_authorized": False,
+                "policy": {
+                    "official_first": "B3 changes require exact listing-keyed B3, CVM, issuer, registry, or prospectus evidence.",
+                    "no_guessing": "No ISIN is inferred from ticker shape or issuer name.",
+                    "campaign_delta": "Records the current B3 residual backlog for future B3 data campaigns before and after review.",
+                },
+            },
+            "items": [
+                {
+                    "campaign": "b3_masterfile_gap",
+                    "priority": "P2",
+                    "review_queue": "official_subset_category_already_reflected_scope_review_no_data_change_closure",
+                    "asset_type": "ETF",
+                    "gap_class": "bdr_or_foreign_receipt",
+                    "rows": "10",
+                    "action_queue": "document_official_subset_closure_without_data_change",
+                    "review_strategy": "close_bdr_subset_gap_without_data_change_keep_category_source_gap",
+                    "evidence_required": "official_b3_source_row_plus_scope_decision_or_parser_fix_before_reclassifying_gap",
+                    "recommended_next_source": "Official B3 subset plus reviewed parser or scope decision.",
+                    "source_gate": "No B3 category, ISIN, name, symbol, or scope change is authorized.",
+                    "example_listing_keys": "B3::AAA|B3::BBB",
+                },
+                {
+                    "campaign": "b3_residual_sector",
+                    "priority": "P3",
+                    "review_queue": "no_b3_classification_code_match_source_gap",
+                    "asset_type": "Stock",
+                    "gap_class": "official_industry_taxonomy_unavailable_gap",
+                    "rows": "7",
+                    "action_queue": "seek_stronger_official_b3_or_issuer_taxonomy",
+                    "review_strategy": "keep_blank_until_stronger_official_b3_or_issuer_taxonomy",
+                    "evidence_required": "stronger_official_b3_or_issuer_taxonomy_source_with_exact_listing_match",
+                    "recommended_next_source": "Stronger official B3 or issuer taxonomy source.",
+                    "source_gate": "Keep stock_sector blank until official B3 or issuer taxonomy evidence matches the exact listing.",
+                    "example_listing_keys": "B3::CCC",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["item_row_total"] == 17
+    assert result["direct_data_change_authorized"] is False
+    assert result["coverage_data_change_authorized"] is False
+
+
+def test_evaluate_b3_improvement_action_queue_gate_rejects_apply_or_stale_counts() -> None:
+    result = evaluate_b3_improvement_action_queue_gate(
+        {
+            "summary": {
+                "batches": 2,
+                "underlying_review_rows": 99,
+                "campaign_totals": {},
+                "priority_totals": {},
+                "action_queue_totals": {},
+                "review_queue_totals": {},
+                "b3_coverage_diagnosis": {
+                    "data_change_authorized": True,
+                    "source_gate": "Apply B3 values.",
+                },
+                "direct_data_change_authorized": True,
+                "policy": {"official_first": "official"},
+            },
+            "items": [
+                {
+                    "campaign": "b3_residual_sector",
+                    "priority": "P3",
+                    "review_queue": "no_b3_classification_code_match_source_gap",
+                    "asset_type": "Stock",
+                    "gap_class": "official_industry_taxonomy_unavailable_gap",
+                    "rows": "7",
+                    "action_queue": "direct_sector_apply",
+                    "review_strategy": "apply",
+                    "evidence_required": "ticker_match",
+                    "recommended_next_source": "none",
+                    "source_gate": "Apply sector.",
+                    "example_listing_keys": "B3::CCC",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["policy_missing_marker_groups"]
+    assert result["row_gap_count"] == 1
+    assert result["gating_gaps"] == [
+        {"field": "direct_data_change_authorized", "expected": False, "actual": True},
+        {"field": "b3_coverage_diagnosis.data_change_authorized", "expected": False, "actual": True},
+        {
+            "field": "b3_coverage_diagnosis.source_gate",
+            "reason": "missing_no_apply_official_source_gate",
+        },
     ]
 
 

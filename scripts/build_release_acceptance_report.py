@@ -50,6 +50,7 @@ RELEASE_SOURCE_REPORTS = {
     "canada_improvement_action_queue": "data/reports/canada_improvement_action_queue.json",
     "canada_figi_queue": "data/reports/canada_figi_queue.json",
     "canada_figi_apply_report": "data/reports/canada_figi_apply_report.json",
+    "b3_improvement_action_queue": "data/reports/b3_improvement_action_queue.json",
     "b3_residual_isin_review": "data/reports/b3_residual_isin_review.json",
     "b3_residual_sector_review": "data/reports/b3_residual_sector_review.json",
     "asx_residual_review": "data/reports/asx_residual_review.json",
@@ -1771,6 +1772,25 @@ CANADA_REVIEW_STRATEGIES = {
     "scope_review_before_canada_identifier_enrichment",
     "scope_review_before_canada_metadata_enrichment",
     "seek_official_canada_isin_source",
+}
+B3_ACTION_REQUIRED_ITEM_FIELDS = (
+    "campaign",
+    "priority",
+    "review_queue",
+    "asset_type",
+    "gap_class",
+    "rows",
+    "action_queue",
+    "review_strategy",
+    "evidence_required",
+    "recommended_next_source",
+    "source_gate",
+    "example_listing_keys",
+)
+B3_ACTION_POLICY_MARKER_GROUPS = {
+    "official_first": ("official", "b3", "issuer", "registry", "prospectus"),
+    "no_guessing": ("no isin", "no_guessing", "ticker shape", "issuer name"),
+    "campaign_delta": ("current b3 residual backlog", "future b3 data campaigns", "before and after"),
 }
 
 
@@ -3613,6 +3633,123 @@ def evaluate_canada_improvement_action_queue_gate(action_queue: dict[str, Any]) 
         "count_gaps": count_gaps,
         "gating_gaps": gating_gaps,
         "required_item_fields": list(CANADA_ACTION_REQUIRED_ITEM_FIELDS),
+    }
+
+
+def evaluate_b3_improvement_action_queue_gate(action_queue: dict[str, Any]) -> dict[str, Any]:
+    summary = action_queue.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    items = action_queue.get("items", [])
+    if not isinstance(items, list):
+        items = []
+    policy = summary.get("policy", {})
+    if not isinstance(policy, dict):
+        policy = {}
+    policy_text = " ".join(str(value) for value in policy.values()).lower()
+    policy_missing_marker_groups = [
+        group
+        for group, markers in B3_ACTION_POLICY_MARKER_GROUPS.items()
+        if not any(marker in policy_text for marker in markers)
+    ]
+
+    item_row_total = 0
+    campaign_totals: Counter[str] = Counter()
+    priority_totals: Counter[str] = Counter()
+    action_queue_totals: Counter[str] = Counter()
+    review_queue_totals: Counter[str] = Counter()
+    row_gaps: list[dict[str, Any]] = []
+    for index, item in enumerate(items):
+        if not isinstance(item, dict):
+            row_gaps.append({"row_index": index, "reason": "row_is_not_object"})
+            continue
+        missing_fields = [field for field in B3_ACTION_REQUIRED_ITEM_FIELDS if not item.get(field)]
+        invalid_fields: list[str] = []
+        try:
+            rows = int(item.get("rows") or 0)
+        except (TypeError, ValueError):
+            rows = 0
+            invalid_fields.append("rows")
+        if rows <= 0:
+            invalid_fields.append("rows")
+        source_gate = str(item.get("source_gate", "")).lower()
+        if not source_gate.startswith(("no ", "keep ", "close ")):
+            invalid_fields.append("source_gate")
+        evidence_required = str(item.get("evidence_required", "")).lower()
+        if not any(marker in evidence_required for marker in ("official", "scope_decision", "stronger_official")):
+            invalid_fields.append("evidence_required")
+        item_row_total += rows
+        campaign_totals[str(item.get("campaign", ""))] += rows
+        priority_totals[str(item.get("priority", ""))] += rows
+        action_queue_totals[str(item.get("action_queue", ""))] += rows
+        review_queue_totals[str(item.get("review_queue", ""))] += rows
+        if missing_fields or invalid_fields:
+            row_gaps.append(
+                {
+                    "row_index": index,
+                    "reason": "missing_or_invalid_b3_action_fields",
+                    "missing_fields": missing_fields,
+                    "invalid_fields": sorted(set(invalid_fields)),
+                    "available_keys": sorted(item)[:20],
+                }
+            )
+
+    count_gaps = []
+    expected_summary_fields = {
+        "underlying_review_rows": item_row_total,
+        "batches": len(items),
+        "campaign_totals": dict(sorted(campaign_totals.items())),
+        "priority_totals": dict(sorted(priority_totals.items())),
+        "action_queue_totals": dict(sorted(action_queue_totals.items())),
+        "review_queue_totals": dict(sorted(review_queue_totals.items())),
+    }
+    for field, expected in expected_summary_fields.items():
+        if summary.get(field) != expected:
+            count_gaps.append({"field": field, "expected": expected, "actual": summary.get(field)})
+
+    gating_gaps = []
+    if summary.get("direct_data_change_authorized") is not False:
+        gating_gaps.append(
+            {
+                "field": "direct_data_change_authorized",
+                "expected": False,
+                "actual": summary.get("direct_data_change_authorized"),
+            }
+        )
+    coverage_diagnosis = summary.get("b3_coverage_diagnosis", {})
+    if not isinstance(coverage_diagnosis, dict):
+        coverage_diagnosis = {}
+    if coverage_diagnosis.get("data_change_authorized") is not False:
+        gating_gaps.append(
+            {
+                "field": "b3_coverage_diagnosis.data_change_authorized",
+                "expected": False,
+                "actual": coverage_diagnosis.get("data_change_authorized"),
+            }
+        )
+    source_gate = str(coverage_diagnosis.get("source_gate", "")).lower()
+    if not source_gate or "no b3 isin" not in source_gate or "official source evidence" not in source_gate:
+        gating_gaps.append(
+            {
+                "field": "b3_coverage_diagnosis.source_gate",
+                "reason": "missing_no_apply_official_source_gate",
+            }
+        )
+
+    return {
+        "passed": bool(items) and not policy_missing_marker_groups and not row_gaps and not count_gaps and not gating_gaps,
+        "underlying_review_rows": summary.get("underlying_review_rows"),
+        "item_row_total": item_row_total,
+        "batches": summary.get("batches"),
+        "items": len(items),
+        "direct_data_change_authorized": summary.get("direct_data_change_authorized"),
+        "coverage_data_change_authorized": coverage_diagnosis.get("data_change_authorized"),
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "count_gaps": count_gaps,
+        "gating_gaps": gating_gaps,
+        "required_item_fields": list(B3_ACTION_REQUIRED_ITEM_FIELDS),
     }
 
 
@@ -16932,6 +17069,7 @@ def build_payload() -> dict[str, Any]:
     canada_improvement_action_queue = load_json(REPORTS_DIR / "canada_improvement_action_queue.json")
     canada_figi_queue = load_json(REPORTS_DIR / "canada_figi_queue.json")
     canada_figi_apply = load_json(REPORTS_DIR / "canada_figi_apply_report.json")
+    b3_improvement_action_queue = load_json(REPORTS_DIR / "b3_improvement_action_queue.json")
     b3_residual_isin = load_json(REPORTS_DIR / "b3_residual_isin_review.json")
     b3_residual_sector = load_json(REPORTS_DIR / "b3_residual_sector_review.json")
     asx_residual = load_json(REPORTS_DIR / "asx_residual_review.json")
@@ -17000,6 +17138,9 @@ def build_payload() -> dict[str, Any]:
     )
     criteria["canada_improvement_action_queue_gate"] = evaluate_canada_improvement_action_queue_gate(
         canada_improvement_action_queue
+    )
+    criteria["b3_improvement_action_queue_gate"] = evaluate_b3_improvement_action_queue_gate(
+        b3_improvement_action_queue
     )
     criteria["b3_residual_gate"] = evaluate_b3_residual_gate(b3_residual_isin, b3_residual_sector)
     criteria["asx_residual_gate"] = evaluate_asx_residual_gate(asx_residual)
