@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-03T03:18:12Z",
+    "generated_at": "2026-06-03T04:27:15Z",
     "rows": 10,
     "source_files": {
       "coverage_report": "data/reports/coverage_report.json",
@@ -1008,9 +1008,9 @@
         ],
         "b3_isin_official_source_identifier_exposure": {
           "b3_bdr_etfs": {
-            "rows": 305,
+            "rows": 306,
             "isin_present_rows": 0,
-            "isin_missing_rows": 305
+            "isin_missing_rows": 306
           },
           "b3_instruments_equities": {
             "rows": 1315,
@@ -1170,12 +1170,12 @@
         },
         {
           "path": "data/reports/b3_residual_isin_review.json",
-          "generated_at": "2026-06-02T18:54:28Z",
+          "generated_at": "2026-06-03T04:26:51Z",
           "rows": 12
         },
         {
           "path": "data/reports/b3_residual_sector_review.json",
-          "generated_at": "2026-06-02T18:54:28Z",
+          "generated_at": "2026-06-03T04:26:51Z",
           "rows": 194
         }
       ],
@@ -2368,10 +2368,10 @@
         },
         "canada_core_exclusion_candidate_official_source_totals": {
           "cboe_canada_listing_directory": 44,
-          "none": 34,
+          "none": 20,
           "tmx_etf_screener": 26,
           "tmx_interlisted_companies": 1,
-          "tmx_listed_issuers": 140
+          "tmx_listed_issuers": 154
         },
         "canada_core_exclusion_candidate_source_gap_class_totals": {
           "adr_cdr_or_depositary_identifier_gap": 45,
@@ -2394,7 +2394,7 @@
           "cboe_canada_listing_directory": 44,
           "tmx_etf_screener": 95,
           "tmx_interlisted_companies": 6,
-          "tmx_listed_issuers": 329
+          "tmx_listed_issuers": 348
         },
         "canada_resolution_queue_totals": {
           "core_exclusion_candidate_identifier_scope_review": 168,
@@ -2501,17 +2501,18 @@
         "canada_resolution_queue_official_source_totals": {
           "core_exclusion_candidate_identifier_scope_review": {
             "cboe_canada_listing_directory": 44,
-            "none": 29,
+            "none": 18,
             "tmx_etf_screener": 26,
             "tmx_interlisted_companies": 1,
-            "tmx_listed_issuers": 71
+            "tmx_listed_issuers": 82
           },
           "core_exclusion_candidate_metadata_scope_review": {
-            "none": 5,
-            "tmx_listed_issuers": 69
+            "none": 2,
+            "tmx_listed_issuers": 72
           },
           "metadata_source_gap_keep_blank_until_stronger_source": {
-            "none": 4
+            "none": 1,
+            "tmx_listed_issuers": 3
           },
           "missing_isin_official_canada_masterfiles_do_not_expose_isin": {
             "tmx_listed_issuers": 53
@@ -2524,10 +2525,10 @@
             "tmx_listed_issuers": 1
           },
           "reviewed_openfigi_no_match_source_gap": {
-            "none": 8,
+            "none": 6,
             "tmx_etf_screener": 69,
             "tmx_interlisted_companies": 4,
-            "tmx_listed_issuers": 135
+            "tmx_listed_issuers": 137
           }
         },
         "canada_resolution_queue_review_strategy_totals": {
@@ -2581,7 +2582,7 @@
             "canada_resolution_queue": "reviewed_openfigi_no_match_source_gap",
             "exchange": "TSX",
             "official_source": "tmx_listed_issuers",
-            "rows": 79,
+            "rows": 80,
             "review_strategy": "keep_figi_blank_after_reviewed_openfigi_no_match",
             "evidence_required": "stronger_figi_source_required_openfigi_no_match_reviewed",
             "recommended_next_source": "Stronger FIGI source or reviewed OpenFIGI re-check evidence; existing no-match remains a source gap.",
@@ -2601,7 +2602,7 @@
             "canada_resolution_queue": "core_exclusion_candidate_metadata_scope_review",
             "exchange": "TSXV",
             "official_source": "tmx_listed_issuers",
-            "rows": 64,
+            "rows": 67,
             "review_strategy": "scope_review_before_canada_metadata_enrichment",
             "evidence_required": "official_listing_scope_decision_before_sector_or_category_fill",
             "recommended_next_source": "tmx_listed_issuers plus reviewed scope decision before any sector or ETF-category work.",
@@ -2611,7 +2612,7 @@
             "canada_resolution_queue": "reviewed_openfigi_no_match_source_gap",
             "exchange": "TSXV",
             "official_source": "tmx_listed_issuers",
-            "rows": 56,
+            "rows": 57,
             "review_strategy": "keep_figi_blank_after_reviewed_openfigi_no_match",
             "evidence_required": "stronger_figi_source_required_openfigi_no_match_reviewed",
             "recommended_next_source": "Stronger FIGI source or reviewed OpenFIGI re-check evidence; existing no-match remains a source gap.",
@@ -2625,6 +2626,16 @@
             "review_strategy": "scope_review_before_canada_identifier_enrichment",
             "evidence_required": "official_listing_scope_decision_for_core_extended_or_exclude",
             "recommended_next_source": "cboe_canada_listing_directory plus reviewed scope decision for core, extended, or exclude before identifier work.",
+            "source_gate": "No ISIN or FIGI enrichment until the listing is reviewed as core, extended, or excluded."
+          },
+          {
+            "canada_resolution_queue": "core_exclusion_candidate_identifier_scope_review",
+            "exchange": "TSXV",
+            "official_source": "tmx_listed_issuers",
+            "rows": 42,
+            "review_strategy": "scope_review_before_canada_identifier_enrichment",
+            "evidence_required": "official_listing_scope_decision_for_core_extended_or_exclude",
+            "recommended_next_source": "tmx_listed_issuers plus reviewed scope decision for core, extended, or exclude before identifier work.",
             "source_gate": "No ISIN or FIGI enrichment until the listing is reviewed as core, extended, or excluded."
           },
           {
@@ -2646,16 +2657,6 @@
             "evidence_required": "official_csd_issuer_or_reviewed_identifier_source_with_exact_listing_match_and_valid_isin",
             "recommended_next_source": "Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN.",
             "source_gate": "Keep ISIN blank until a direct official or reviewed identifier source exposes a valid checksum ISIN."
-          },
-          {
-            "canada_resolution_queue": "core_exclusion_candidate_identifier_scope_review",
-            "exchange": "TSXV",
-            "official_source": "tmx_listed_issuers",
-            "rows": 31,
-            "review_strategy": "scope_review_before_canada_identifier_enrichment",
-            "evidence_required": "official_listing_scope_decision_for_core_extended_or_exclude",
-            "recommended_next_source": "tmx_listed_issuers plus reviewed scope decision for core, extended, or exclude before identifier work.",
-            "source_gate": "No ISIN or FIGI enrichment until the listing is reviewed as core, extended, or excluded."
           },
           {
             "canada_resolution_queue": "core_exclusion_candidate_identifier_scope_review",
@@ -2688,16 +2689,6 @@
             "source_gate": "No ISIN or FIGI enrichment until the listing is reviewed as core, extended, or excluded."
           },
           {
-            "canada_resolution_queue": "core_exclusion_candidate_identifier_scope_review",
-            "exchange": "TSXV",
-            "official_source": "none",
-            "rows": 14,
-            "review_strategy": "scope_review_before_canada_identifier_enrichment",
-            "evidence_required": "official_listing_scope_decision_for_core_extended_or_exclude",
-            "recommended_next_source": "current official exchange or issuer source plus reviewed scope decision for core, extended, or exclude before identifier work.",
-            "source_gate": "No ISIN or FIGI enrichment until the listing is reviewed as core, extended, or excluded."
-          },
-          {
             "canada_resolution_queue": "missing_isin_reviewed_source_gap",
             "exchange": "TSX",
             "official_source": "none",
@@ -2706,16 +2697,6 @@
             "evidence_required": "stronger_official_identifier_source_before_isin_fill",
             "recommended_next_source": "Stronger official Canada identifier source with exact listing-key, issuer/name, and valid ISIN evidence.",
             "source_gate": "Keep ISIN blank until stronger official evidence resolves the reviewed source gap."
-          },
-          {
-            "canada_resolution_queue": "reviewed_openfigi_no_match_source_gap",
-            "exchange": "TSX",
-            "official_source": "none",
-            "rows": 6,
-            "review_strategy": "keep_figi_blank_after_reviewed_openfigi_no_match",
-            "evidence_required": "stronger_figi_source_required_openfigi_no_match_reviewed",
-            "recommended_next_source": "Stronger FIGI source or reviewed OpenFIGI re-check evidence; existing no-match remains a source gap.",
-            "source_gate": "Do not re-probe or fill FIGI from symbol/name; keep blank until stronger reviewed FIGI evidence exists."
           },
           {
             "canada_resolution_queue": "core_exclusion_candidate_metadata_scope_review",
@@ -2728,19 +2709,29 @@
             "source_gate": "No sector or category fill until scope is decided with official listing evidence."
           },
           {
-            "canada_resolution_queue": "core_exclusion_candidate_metadata_scope_review",
+            "canada_resolution_queue": "reviewed_openfigi_no_match_source_gap",
+            "exchange": "TSX",
+            "official_source": "none",
+            "rows": 5,
+            "review_strategy": "keep_figi_blank_after_reviewed_openfigi_no_match",
+            "evidence_required": "stronger_figi_source_required_openfigi_no_match_reviewed",
+            "recommended_next_source": "Stronger FIGI source or reviewed OpenFIGI re-check evidence; existing no-match remains a source gap.",
+            "source_gate": "Do not re-probe or fill FIGI from symbol/name; keep blank until stronger reviewed FIGI evidence exists."
+          },
+          {
+            "canada_resolution_queue": "core_exclusion_candidate_identifier_scope_review",
             "exchange": "TSXV",
             "official_source": "none",
             "rows": 3,
-            "review_strategy": "scope_review_before_canada_metadata_enrichment",
-            "evidence_required": "official_listing_scope_decision_before_sector_or_category_fill",
-            "recommended_next_source": "current official exchange or issuer source plus reviewed scope decision before any sector or ETF-category work.",
-            "source_gate": "No sector or category fill until scope is decided with official listing evidence."
+            "review_strategy": "scope_review_before_canada_identifier_enrichment",
+            "evidence_required": "official_listing_scope_decision_for_core_extended_or_exclude",
+            "recommended_next_source": "current official exchange or issuer source plus reviewed scope decision for core, extended, or exclude before identifier work.",
+            "source_gate": "No ISIN or FIGI enrichment until the listing is reviewed as core, extended, or excluded."
           },
           {
             "canada_resolution_queue": "metadata_source_gap_keep_blank_until_stronger_source",
             "exchange": "TSXV",
-            "official_source": "none",
+            "official_source": "tmx_listed_issuers",
             "rows": 3,
             "review_strategy": "keep_metadata_blank_until_stronger_official_source",
             "evidence_required": "reviewed_issuer_or_product_metadata_source_with_exact_listing_match",
@@ -2826,6 +2817,16 @@
             "evidence_required": "stronger_figi_source_required_openfigi_cross_isin_collision_reviewed",
             "recommended_next_source": "Stronger FIGI source resolving the cross-ISIN collision with exact listing-key evidence.",
             "source_gate": "Do not apply cross-ISIN FIGI candidates; require stronger listing-keyed collision resolution."
+          },
+          {
+            "canada_resolution_queue": "reviewed_openfigi_no_match_source_gap",
+            "exchange": "NEO",
+            "official_source": "none",
+            "rows": 1,
+            "review_strategy": "keep_figi_blank_after_reviewed_openfigi_no_match",
+            "evidence_required": "stronger_figi_source_required_openfigi_no_match_reviewed",
+            "recommended_next_source": "Stronger FIGI source or reviewed OpenFIGI re-check evidence; existing no-match remains a source gap.",
+            "source_gate": "Do not re-probe or fill FIGI from symbol/name; keep blank until stronger reviewed FIGI evidence exists."
           }
         ],
         "source_gap_field_totals": {
@@ -2909,12 +2910,12 @@
       "artifacts": [
         {
           "path": "data/reports/canada_residual_review.json",
-          "generated_at": "2026-06-02T19:05:23Z",
+          "generated_at": "2026-06-03T04:26:51Z",
           "rows": 457
         },
         {
           "path": "data/reports/canada_figi_queue.json",
-          "generated_at": "2026-06-02T19:05:23Z",
+          "generated_at": "2026-06-03T04:26:51Z",
           "rows": 0
         },
         {
@@ -4283,7 +4284,7 @@
       "artifacts": [
         {
           "path": "data/reports/weak_sector_residual_review.json",
-          "generated_at": "2026-06-02T19:13:29Z",
+          "generated_at": "2026-06-03T04:26:52Z",
           "rows": 646
         },
         {

@@ -1,6 +1,6 @@
 # Canada Residual Review
 
-Generated at: `2026-06-02T19:05:23Z`
+Generated at: `2026-06-03T04:26:51Z`
 
 This report tracks residual TSX/TSXV/NEO ISIN, FIGI, and metadata gaps with TMX/Cboe official-source context. It does not fill values.
 
@@ -104,10 +104,10 @@ This report tracks residual TSX/TSXV/NEO ISIN, FIGI, and metadata gaps with TMX/
 | Official source | Rows |
 |---|---:|
 | cboe_canada_listing_directory | 44 |
-| none | 34 |
+| none | 20 |
 | tmx_etf_screener | 26 |
 | tmx_interlisted_companies | 1 |
-| tmx_listed_issuers | 140 |
+| tmx_listed_issuers | 154 |
 
 | Source gap class | Rows |
 |---|---:|
@@ -173,21 +173,22 @@ This report tracks residual TSX/TSXV/NEO ISIN, FIGI, and metadata gaps with TMX/
 | Queue | Official source | Rows |
 |---|---|---:|
 | core_exclusion_candidate_identifier_scope_review | cboe_canada_listing_directory | 44 |
-| core_exclusion_candidate_identifier_scope_review | none | 29 |
+| core_exclusion_candidate_identifier_scope_review | none | 18 |
 | core_exclusion_candidate_identifier_scope_review | tmx_etf_screener | 26 |
 | core_exclusion_candidate_identifier_scope_review | tmx_interlisted_companies | 1 |
-| core_exclusion_candidate_identifier_scope_review | tmx_listed_issuers | 71 |
-| core_exclusion_candidate_metadata_scope_review | none | 5 |
-| core_exclusion_candidate_metadata_scope_review | tmx_listed_issuers | 69 |
-| metadata_source_gap_keep_blank_until_stronger_source | none | 4 |
+| core_exclusion_candidate_identifier_scope_review | tmx_listed_issuers | 82 |
+| core_exclusion_candidate_metadata_scope_review | none | 2 |
+| core_exclusion_candidate_metadata_scope_review | tmx_listed_issuers | 72 |
+| metadata_source_gap_keep_blank_until_stronger_source | none | 1 |
+| metadata_source_gap_keep_blank_until_stronger_source | tmx_listed_issuers | 3 |
 | missing_isin_official_canada_masterfiles_do_not_expose_isin | tmx_listed_issuers | 53 |
 | missing_isin_reviewed_source_gap | none | 8 |
 | reviewed_openfigi_cross_isin_collision_source_gap | tmx_interlisted_companies | 1 |
 | reviewed_openfigi_cross_isin_collision_source_gap | tmx_listed_issuers | 1 |
-| reviewed_openfigi_no_match_source_gap | none | 8 |
+| reviewed_openfigi_no_match_source_gap | none | 6 |
 | reviewed_openfigi_no_match_source_gap | tmx_etf_screener | 69 |
 | reviewed_openfigi_no_match_source_gap | tmx_interlisted_companies | 4 |
-| reviewed_openfigi_no_match_source_gap | tmx_listed_issuers | 135 |
+| reviewed_openfigi_no_match_source_gap | tmx_listed_issuers | 137 |
 
 ## Canada Review Strategies
 
@@ -217,23 +218,22 @@ This report tracks residual TSX/TSXV/NEO ISIN, FIGI, and metadata gaps with TMX/
 
 | Queue | Exchange | Official source | Rows | Review strategy | Evidence required | Recommended next source | Source gate |
 |---|---|---|---:|---|---|---|---|
-| reviewed_openfigi_no_match_source_gap | TSX | tmx_listed_issuers | 79 | keep_figi_blank_after_reviewed_openfigi_no_match | stronger_figi_source_required_openfigi_no_match_reviewed | Stronger FIGI source or reviewed OpenFIGI re-check evidence; existing no-match remains a source gap. | Do not re-probe or fill FIGI from symbol/name; keep blank until stronger reviewed FIGI evidence exists. |
+| reviewed_openfigi_no_match_source_gap | TSX | tmx_listed_issuers | 80 | keep_figi_blank_after_reviewed_openfigi_no_match | stronger_figi_source_required_openfigi_no_match_reviewed | Stronger FIGI source or reviewed OpenFIGI re-check evidence; existing no-match remains a source gap. | Do not re-probe or fill FIGI from symbol/name; keep blank until stronger reviewed FIGI evidence exists. |
 | reviewed_openfigi_no_match_source_gap | TSX | tmx_etf_screener | 69 | keep_figi_blank_after_reviewed_openfigi_no_match | stronger_figi_source_required_openfigi_no_match_reviewed | Stronger FIGI source or reviewed OpenFIGI re-check evidence; existing no-match remains a source gap. | Do not re-probe or fill FIGI from symbol/name; keep blank until stronger reviewed FIGI evidence exists. |
-| core_exclusion_candidate_metadata_scope_review | TSXV | tmx_listed_issuers | 64 | scope_review_before_canada_metadata_enrichment | official_listing_scope_decision_before_sector_or_category_fill | tmx_listed_issuers plus reviewed scope decision before any sector or ETF-category work. | No sector or category fill until scope is decided with official listing evidence. |
-| reviewed_openfigi_no_match_source_gap | TSXV | tmx_listed_issuers | 56 | keep_figi_blank_after_reviewed_openfigi_no_match | stronger_figi_source_required_openfigi_no_match_reviewed | Stronger FIGI source or reviewed OpenFIGI re-check evidence; existing no-match remains a source gap. | Do not re-probe or fill FIGI from symbol/name; keep blank until stronger reviewed FIGI evidence exists. |
+| core_exclusion_candidate_metadata_scope_review | TSXV | tmx_listed_issuers | 67 | scope_review_before_canada_metadata_enrichment | official_listing_scope_decision_before_sector_or_category_fill | tmx_listed_issuers plus reviewed scope decision before any sector or ETF-category work. | No sector or category fill until scope is decided with official listing evidence. |
+| reviewed_openfigi_no_match_source_gap | TSXV | tmx_listed_issuers | 57 | keep_figi_blank_after_reviewed_openfigi_no_match | stronger_figi_source_required_openfigi_no_match_reviewed | Stronger FIGI source or reviewed OpenFIGI re-check evidence; existing no-match remains a source gap. | Do not re-probe or fill FIGI from symbol/name; keep blank until stronger reviewed FIGI evidence exists. |
 | core_exclusion_candidate_identifier_scope_review | NEO | cboe_canada_listing_directory | 44 | scope_review_before_canada_identifier_enrichment | official_listing_scope_decision_for_core_extended_or_exclude | cboe_canada_listing_directory plus reviewed scope decision for core, extended, or exclude before identifier work. | No ISIN or FIGI enrichment until the listing is reviewed as core, extended, or excluded. |
+| core_exclusion_candidate_identifier_scope_review | TSXV | tmx_listed_issuers | 42 | scope_review_before_canada_identifier_enrichment | official_listing_scope_decision_for_core_extended_or_exclude | tmx_listed_issuers plus reviewed scope decision for core, extended, or exclude before identifier work. | No ISIN or FIGI enrichment until the listing is reviewed as core, extended, or excluded. |
 | core_exclusion_candidate_identifier_scope_review | TSX | tmx_listed_issuers | 40 | scope_review_before_canada_identifier_enrichment | official_listing_scope_decision_for_core_extended_or_exclude | tmx_listed_issuers plus reviewed scope decision for core, extended, or exclude before identifier work. | No ISIN or FIGI enrichment until the listing is reviewed as core, extended, or excluded. |
 | missing_isin_official_canada_masterfiles_do_not_expose_isin | TSXV | tmx_listed_issuers | 35 | seek_official_canada_isin_source | official_csd_issuer_or_reviewed_identifier_source_with_exact_listing_match_and_valid_isin | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | Keep ISIN blank until a direct official or reviewed identifier source exposes a valid checksum ISIN. |
-| core_exclusion_candidate_identifier_scope_review | TSXV | tmx_listed_issuers | 31 | scope_review_before_canada_identifier_enrichment | official_listing_scope_decision_for_core_extended_or_exclude | tmx_listed_issuers plus reviewed scope decision for core, extended, or exclude before identifier work. | No ISIN or FIGI enrichment until the listing is reviewed as core, extended, or excluded. |
 | core_exclusion_candidate_identifier_scope_review | TSX | tmx_etf_screener | 26 | scope_review_before_canada_identifier_enrichment | official_listing_scope_decision_for_core_extended_or_exclude | tmx_etf_screener plus reviewed scope decision for core, extended, or exclude before identifier work. | No ISIN or FIGI enrichment until the listing is reviewed as core, extended, or excluded. |
 | missing_isin_official_canada_masterfiles_do_not_expose_isin | TSX | tmx_listed_issuers | 18 | seek_official_canada_isin_source | official_csd_issuer_or_reviewed_identifier_source_with_exact_listing_match_and_valid_isin | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | Keep ISIN blank until a direct official or reviewed identifier source exposes a valid checksum ISIN. |
 | core_exclusion_candidate_identifier_scope_review | TSX | none | 14 | scope_review_before_canada_identifier_enrichment | official_listing_scope_decision_for_core_extended_or_exclude | current official exchange or issuer source plus reviewed scope decision for core, extended, or exclude before identifier work. | No ISIN or FIGI enrichment until the listing is reviewed as core, extended, or excluded. |
-| core_exclusion_candidate_identifier_scope_review | TSXV | none | 14 | scope_review_before_canada_identifier_enrichment | official_listing_scope_decision_for_core_extended_or_exclude | current official exchange or issuer source plus reviewed scope decision for core, extended, or exclude before identifier work. | No ISIN or FIGI enrichment until the listing is reviewed as core, extended, or excluded. |
 | missing_isin_reviewed_source_gap | TSX | none | 6 | keep_isin_blank_until_stronger_official_source | stronger_official_identifier_source_before_isin_fill | Stronger official Canada identifier source with exact listing-key, issuer/name, and valid ISIN evidence. | Keep ISIN blank until stronger official evidence resolves the reviewed source gap. |
-| reviewed_openfigi_no_match_source_gap | TSX | none | 6 | keep_figi_blank_after_reviewed_openfigi_no_match | stronger_figi_source_required_openfigi_no_match_reviewed | Stronger FIGI source or reviewed OpenFIGI re-check evidence; existing no-match remains a source gap. | Do not re-probe or fill FIGI from symbol/name; keep blank until stronger reviewed FIGI evidence exists. |
 | core_exclusion_candidate_metadata_scope_review | TSX | tmx_listed_issuers | 5 | scope_review_before_canada_metadata_enrichment | official_listing_scope_decision_before_sector_or_category_fill | tmx_listed_issuers plus reviewed scope decision before any sector or ETF-category work. | No sector or category fill until scope is decided with official listing evidence. |
-| core_exclusion_candidate_metadata_scope_review | TSXV | none | 3 | scope_review_before_canada_metadata_enrichment | official_listing_scope_decision_before_sector_or_category_fill | current official exchange or issuer source plus reviewed scope decision before any sector or ETF-category work. | No sector or category fill until scope is decided with official listing evidence. |
-| metadata_source_gap_keep_blank_until_stronger_source | TSXV | none | 3 | keep_metadata_blank_until_stronger_official_source | reviewed_issuer_or_product_metadata_source_with_exact_listing_match | Official issuer, product, exchange, or reviewed registry metadata source with exact listing match. | Keep metadata blank until exact official or reviewed metadata evidence exists. |
+| reviewed_openfigi_no_match_source_gap | TSX | none | 5 | keep_figi_blank_after_reviewed_openfigi_no_match | stronger_figi_source_required_openfigi_no_match_reviewed | Stronger FIGI source or reviewed OpenFIGI re-check evidence; existing no-match remains a source gap. | Do not re-probe or fill FIGI from symbol/name; keep blank until stronger reviewed FIGI evidence exists. |
+| core_exclusion_candidate_identifier_scope_review | TSXV | none | 3 | scope_review_before_canada_identifier_enrichment | official_listing_scope_decision_for_core_extended_or_exclude | current official exchange or issuer source plus reviewed scope decision for core, extended, or exclude before identifier work. | No ISIN or FIGI enrichment until the listing is reviewed as core, extended, or excluded. |
+| metadata_source_gap_keep_blank_until_stronger_source | TSXV | tmx_listed_issuers | 3 | keep_metadata_blank_until_stronger_official_source | reviewed_issuer_or_product_metadata_source_with_exact_listing_match | Official issuer, product, exchange, or reviewed registry metadata source with exact listing match. | Keep metadata blank until exact official or reviewed metadata evidence exists. |
 | reviewed_openfigi_no_match_source_gap | TSX | tmx_interlisted_companies | 3 | keep_figi_blank_after_reviewed_openfigi_no_match | stronger_figi_source_required_openfigi_no_match_reviewed | Stronger FIGI source or reviewed OpenFIGI re-check evidence; existing no-match remains a source gap. | Do not re-probe or fill FIGI from symbol/name; keep blank until stronger reviewed FIGI evidence exists. |
 | core_exclusion_candidate_metadata_scope_review | TSX | none | 2 | scope_review_before_canada_metadata_enrichment | official_listing_scope_decision_before_sector_or_category_fill | current official exchange or issuer source plus reviewed scope decision before any sector or ETF-category work. | No sector or category fill until scope is decided with official listing evidence. |
 | missing_isin_reviewed_source_gap | TSXV | none | 2 | keep_isin_blank_until_stronger_official_source | stronger_official_identifier_source_before_isin_fill | Stronger official Canada identifier source with exact listing-key, issuer/name, and valid ISIN evidence. | Keep ISIN blank until stronger official evidence resolves the reviewed source gap. |
@@ -242,6 +242,7 @@ This report tracks residual TSX/TSXV/NEO ISIN, FIGI, and metadata gaps with TMX/
 | metadata_source_gap_keep_blank_until_stronger_source | TSX | none | 1 | keep_metadata_blank_until_stronger_official_source | reviewed_issuer_or_product_metadata_source_with_exact_listing_match | Official issuer, product, exchange, or reviewed registry metadata source with exact listing match. | Keep metadata blank until exact official or reviewed metadata evidence exists. |
 | reviewed_openfigi_cross_isin_collision_source_gap | TSXV | tmx_interlisted_companies | 1 | keep_figi_blank_after_reviewed_openfigi_cross_isin_collision | stronger_figi_source_required_openfigi_cross_isin_collision_reviewed | Stronger FIGI source resolving the cross-ISIN collision with exact listing-key evidence. | Do not apply cross-ISIN FIGI candidates; require stronger listing-keyed collision resolution. |
 | reviewed_openfigi_cross_isin_collision_source_gap | TSXV | tmx_listed_issuers | 1 | keep_figi_blank_after_reviewed_openfigi_cross_isin_collision | stronger_figi_source_required_openfigi_cross_isin_collision_reviewed | Stronger FIGI source resolving the cross-ISIN collision with exact listing-key evidence. | Do not apply cross-ISIN FIGI candidates; require stronger listing-keyed collision resolution. |
+| reviewed_openfigi_no_match_source_gap | NEO | none | 1 | keep_figi_blank_after_reviewed_openfigi_no_match | stronger_figi_source_required_openfigi_no_match_reviewed | Stronger FIGI source or reviewed OpenFIGI re-check evidence; existing no-match remains a source gap. | Do not re-probe or fill FIGI from symbol/name; keep blank until stronger reviewed FIGI evidence exists. |
 
 ## Verification Evidence
 

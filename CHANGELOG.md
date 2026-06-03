@@ -2,6 +2,30 @@
 
 ## [Unreleased]
 
+## [3.26.0] - 2026-06-03
+
+### Added
+
+- Added refreshed DeepSeek advisory batch planning and review evidence for collision, OTC/name-mismatch, and weak-sector triage. DeepSeek output remains advisory only and does not authorize direct data changes.
+- Added source-refresh queue reporting with provider, source-mode, review-gate, global expansion, and last-error context for unavailable official sources.
+- Added source-inventory context for blocker classes, source modes, refresh queues, and unavailable-source errors.
+
+### Changed
+
+- Refreshed data-quality reports and review queues across masterfile collisions, ISIN identity collisions, OTC/name mismatches, weak sectors, B3/Canada/ASX residuals, source freshness, OHLCV plausibility, FinancialData ISIN supplements, alias/detection quality, and override-debt tracking.
+- Refreshed the completion backlog to 846 missing primary ISIN rows, 2,600 missing stock-sector rows, 102 missing ETF-category rows, and 12 source-gated next actions.
+- Pruned the entry-quality allowlist to 115 expected warnings, 0 unexpected warnings, and 0 quarantined rows.
+
+### Fixed
+
+- Hardened release acceptance gates for source inventory and source-refresh queues, including candidate keys, providers, source evidence, review flags, classifications, source modes, unavailable-source last errors, and global expansion counts.
+- Documented the MSE Malawi official mainboard HTTP 403 block and kept it source-gated instead of applying unsupported fallback data.
+
+### Safety
+
+- No DeepSeek-provided values are applied directly to canonical ticker data; advisory output is retained only as review evidence.
+- Remaining metadata gaps stay review-gated or source-gated until official listing-keyed evidence is available.
+
 ## [3.25.0] - 2026-05-31
 
 ### Added
