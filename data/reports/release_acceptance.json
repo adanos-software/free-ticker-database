@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-03T01:37:34Z",
+    "generated_at": "2026-06-03T01:43:54Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -37,18 +37,19 @@
       "b3_residual_sector_review": "data/reports/b3_residual_sector_review.json",
       "asx_residual_review": "data/reports/asx_residual_review.json",
       "weak_sector_residual_review": "data/reports/weak_sector_residual_review.json",
+      "weak_sector_venue_action_queue": "data/reports/weak_sector_venue_action_queue.json",
       "adanos_alias_audit": "data/reports/adanos_alias_audit.json",
       "adanos_detection_simulation": "data/reports/adanos_detection_simulation.json"
     }
   },
   "passed": true,
   "summary": {
-    "criteria": 51,
-    "passed_criteria": 51,
+    "criteria": 52,
+    "passed_criteria": 52,
     "failed_criteria": 0,
     "validation_failed_error_gates": 0
   },
-  "summary_context": "passed=true;criteria=51;passed_criteria=51;failed_criteria=0;validation_failed_error_gates=0",
+  "summary_context": "passed=true;criteria=52;passed_criteria=52;failed_criteria=0;validation_failed_error_gates=0",
   "criteria": {
     "no_invalid_isins": {
       "passed": true,
@@ -223,18 +224,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-03T01:37:34Z",
+      "release_generated_at": "2026-06-03T01:43:54Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-03T01:37:25Z"
+          "generated_at": "2026-06-03T01:43:46Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-03T01:37:24Z"
+          "generated_at": "2026-06-03T01:43:45Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -396,6 +397,11 @@
           "exists": true,
           "generated_at": "2026-06-02T19:13:29Z"
         },
+        "weak_sector_venue_action_queue": {
+          "path": "data/reports/weak_sector_venue_action_queue.json",
+          "exists": true,
+          "generated_at": "2026-06-02T20:27:12Z"
+        },
         "adanos_alias_audit": {
           "path": "data/reports/adanos_alias_audit.json",
           "exists": true,
@@ -532,7 +538,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-03T01:37:24Z",
+      "generated_at": "2026-06-03T01:43:45Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -1334,6 +1340,35 @@
         "scope_review_before_sector_fill",
         "venue_official_taxonomy_unavailable_source_gap",
         "venue_specific_sector_source_gap"
+      ]
+    },
+    "weak_sector_venue_action_queue_gate": {
+      "passed": true,
+      "rows": 646,
+      "item_row_total": 646,
+      "batches": 17,
+      "items": 17,
+      "direct_sector_apply_allowed_rows": 0,
+      "metadata_enrichment_authorized": false,
+      "policy_missing_marker_groups": [],
+      "row_gap_count": 0,
+      "row_gaps": [],
+      "count_gaps": [],
+      "gating_gaps": [],
+      "required_item_fields": [
+        "exchange",
+        "weak_sector_resolution_queue",
+        "official_masterfile_sources",
+        "rows",
+        "review_priority",
+        "action_queue",
+        "review_strategy",
+        "evidence_required",
+        "source_gate",
+        "recommended_next_action",
+        "gap_class_totals",
+        "source_of_truth_outcome_totals",
+        "example_listing_keys"
       ]
     },
     "before_after_delta_matrix": {

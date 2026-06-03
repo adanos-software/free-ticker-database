@@ -117,6 +117,7 @@ from scripts.build_release_acceptance_report import (
     evaluate_source_inventory_gap_gate,
     evaluate_source_gap_traceability,
     evaluate_symbol_change_review_gate,
+    evaluate_weak_sector_venue_action_queue_gate,
     evaluate_weak_sector_residual_gate,
     gate_lookup,
     is_valid_iso_utc_timestamp,
@@ -188,6 +189,7 @@ def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> N
     )
     assert RELEASE_SOURCE_REPORTS["otc_name_mismatch_review"] == "data/reports/otc_name_mismatch_review.json"
     assert RELEASE_SOURCE_REPORTS["otc_name_mismatch_action_queue"] == "data/reports/otc_name_mismatch_action_queue.json"
+    assert RELEASE_SOURCE_REPORTS["weak_sector_venue_action_queue"] == "data/reports/weak_sector_venue_action_queue.json"
 
 
 def test_evaluate_deepseek_advisory_integrity_accepts_drained_advisory_reports() -> None:
@@ -11641,6 +11643,115 @@ def test_evaluate_source_inventory_gap_gate_rejects_missing_policy_or_stale_coun
     assert result["policy_missing_marker_groups"]
     assert result["row_gap_count"] == 1
     assert result["count_gaps"][0] == {"field": "rows", "expected": 1, "actual": 2}
+
+
+def test_evaluate_weak_sector_venue_action_queue_gate_accepts_blocked_batches() -> None:
+    result = evaluate_weak_sector_venue_action_queue_gate(
+        {
+            "summary": {
+                "generated_at": "2026-06-03T00:00:00Z",
+                "batches": 2,
+                "rows": 5,
+                "exchange_totals": {"CSE_MA": 3, "NGX": 2},
+                "action_queue_totals": {
+                    "restore_or_add_venue_official_taxonomy_parser": 3,
+                    "review_official_sector_value_to_canonical_mapping": 2,
+                },
+                "weak_sector_resolution_queue_totals": {
+                    "official_sector_candidate_normalization_review": 2,
+                    "venue_official_taxonomy_unavailable_source_gap": 3,
+                },
+                "evidence_required_totals": {
+                    "new_or_restored_official_venue_industry_taxonomy_source": 3,
+                    "official_venue_sector_value_with_canonical_mapping_and_exact_listing_key_match": 2,
+                },
+                "direct_sector_apply_allowed_rows": 0,
+                "metadata_enrichment_authorized": False,
+                "policy": {
+                    "official_first": "Every batch remains blocked until official venue, issuer, or taxonomy evidence exists for the exact listing.",
+                    "no_inference": "No sector is inferred from ticker, issuer name, ISIN prefix, peers, or broad exchange labels.",
+                    "reviewable_batches": "Rows are grouped by exchange, residual queue, official source, and reviewed venue by venue.",
+                },
+            },
+            "items": [
+                {
+                    "exchange": "NGX",
+                    "weak_sector_resolution_queue": "official_sector_candidate_normalization_review",
+                    "official_masterfile_sources": "ngx_company_profile_directory|ngx_equities_price_list",
+                    "official_masterfile_sector_values": "SERVICES",
+                    "rows": "2",
+                    "review_priority": "P1",
+                    "action_queue": "review_official_sector_value_to_canonical_mapping",
+                    "review_strategy": "normalize_official_sector_candidate_before_apply",
+                    "evidence_required": "official_venue_sector_value_with_canonical_mapping_and_exact_listing_key_match",
+                    "source_gate": "Do not map broad official labels without an explicit canonical-sector rule and exact listing-key evidence.",
+                    "recommended_next_action": "Review whether the official raw sector value can be mapped to a canonical sector.",
+                    "gap_class_totals": "official_industry_taxonomy_unavailable_gap:2",
+                    "source_of_truth_outcome_totals": "accepted_source_gap:2",
+                    "example_listing_keys": "NGX::ABCTRANS|NGX::AIRTELAFRI",
+                },
+                {
+                    "exchange": "CSE_MA",
+                    "weak_sector_resolution_queue": "venue_official_taxonomy_unavailable_source_gap",
+                    "official_masterfile_sources": "none",
+                    "official_masterfile_sector_values": "",
+                    "rows": "3",
+                    "review_priority": "P2",
+                    "action_queue": "restore_or_add_venue_official_taxonomy_parser",
+                    "review_strategy": "restore_or_add_venue_official_taxonomy_parser",
+                    "evidence_required": "new_or_restored_official_venue_industry_taxonomy_source",
+                    "source_gate": "Keep sector blank until a venue-official taxonomy parser or source exists.",
+                    "recommended_next_action": "Add or restore a parser for an official venue taxonomy source.",
+                    "gap_class_totals": "official_industry_taxonomy_unavailable_gap:3",
+                    "source_of_truth_outcome_totals": "accepted_source_gap:3",
+                    "example_listing_keys": "CSE_MA::ABC",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["item_row_total"] == 5
+    assert result["direct_sector_apply_allowed_rows"] == 0
+
+
+def test_evaluate_weak_sector_venue_action_queue_gate_rejects_apply_or_stale_counts() -> None:
+    result = evaluate_weak_sector_venue_action_queue_gate(
+        {
+            "summary": {
+                "batches": 2,
+                "rows": 9,
+                "exchange_totals": {"NGX": 9},
+                "action_queue_totals": {},
+                "weak_sector_resolution_queue_totals": {},
+                "evidence_required_totals": {},
+                "direct_sector_apply_allowed_rows": 1,
+                "metadata_enrichment_authorized": True,
+                "policy": {"official_first": "official"},
+            },
+            "items": [
+                {
+                    "exchange": "NGX",
+                    "weak_sector_resolution_queue": "official_sector_candidate_normalization_review",
+                    "official_masterfile_sources": "ngx_company_profile_directory",
+                    "rows": "2",
+                    "review_priority": "P1",
+                    "action_queue": "direct_sector_apply",
+                    "review_strategy": "apply",
+                    "evidence_required": "ticker_match",
+                    "source_gate": "Apply sector.",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["policy_missing_marker_groups"]
+    assert result["row_gap_count"] == 1
+    assert result["gating_gaps"] == [
+        {"field": "direct_sector_apply_allowed_rows", "expected": 0, "actual": 1},
+        {"field": "metadata_enrichment_authorized", "expected": False, "actual": True},
+    ]
 
 
 def test_financialdata_supplement_contexts_are_exact_field_summaries() -> None:

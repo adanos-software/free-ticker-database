@@ -53,6 +53,7 @@ RELEASE_SOURCE_REPORTS = {
     "b3_residual_sector_review": "data/reports/b3_residual_sector_review.json",
     "asx_residual_review": "data/reports/asx_residual_review.json",
     "weak_sector_residual_review": "data/reports/weak_sector_residual_review.json",
+    "weak_sector_venue_action_queue": "data/reports/weak_sector_venue_action_queue.json",
     "adanos_alias_audit": "data/reports/adanos_alias_audit.json",
     "adanos_detection_simulation": "data/reports/adanos_detection_simulation.json",
 }
@@ -2867,6 +2868,26 @@ SOURCE_INVENTORY_POLICY_MARKER_GROUPS = {
     "no_guessing": ("remain blank", "until sourced", "no_guessing"),
     "review_gate": ("review_needed", "source review", "scope changes"),
 }
+WEAK_SECTOR_ACTION_REQUIRED_ITEM_FIELDS = (
+    "exchange",
+    "weak_sector_resolution_queue",
+    "official_masterfile_sources",
+    "rows",
+    "review_priority",
+    "action_queue",
+    "review_strategy",
+    "evidence_required",
+    "source_gate",
+    "recommended_next_action",
+    "gap_class_totals",
+    "source_of_truth_outcome_totals",
+    "example_listing_keys",
+)
+WEAK_SECTOR_ACTION_POLICY_MARKER_GROUPS = {
+    "official_first": ("official venue", "issuer", "taxonomy evidence", "exact listing"),
+    "no_inference": ("no sector is inferred", "ticker", "issuer name", "peers"),
+    "reviewable_batches": ("grouped by exchange", "residual queue", "reviewed venue by venue"),
+}
 REVIEW_POLICY_REQUIRED_MARKER_GROUPS = {
     "review_or_no_guessing_gate": (
         "review",
@@ -3360,6 +3381,110 @@ def evaluate_otc_name_mismatch_action_queue_gate(action_queue: dict[str, Any]) -
         "missing_item_gate_count": len(missing_item_gates),
         "policy_missing_markers": policy_missing_markers,
         "allowed_action_queues": sorted(OTC_NAME_MISMATCH_ALLOWED_ACTION_QUEUES),
+    }
+
+
+def evaluate_weak_sector_venue_action_queue_gate(action_queue: dict[str, Any]) -> dict[str, Any]:
+    summary = action_queue.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    items = action_queue.get("items", [])
+    if not isinstance(items, list):
+        items = []
+    policy = summary.get("policy", {})
+    if not isinstance(policy, dict):
+        policy = {}
+    policy_text = " ".join(str(value) for value in policy.values()).lower()
+    policy_missing_marker_groups = [
+        group
+        for group, markers in WEAK_SECTOR_ACTION_POLICY_MARKER_GROUPS.items()
+        if not any(marker in policy_text for marker in markers)
+    ]
+
+    item_row_total = 0
+    exchange_totals: Counter[str] = Counter()
+    action_queue_totals: Counter[str] = Counter()
+    resolution_queue_totals: Counter[str] = Counter()
+    evidence_required_totals: Counter[str] = Counter()
+    row_gaps: list[dict[str, Any]] = []
+    for index, item in enumerate(items):
+        if not isinstance(item, dict):
+            row_gaps.append({"row_index": index, "reason": "row_is_not_object"})
+            continue
+        missing_fields = [field for field in WEAK_SECTOR_ACTION_REQUIRED_ITEM_FIELDS if not item.get(field)]
+        invalid_fields: list[str] = []
+        try:
+            rows = int(item.get("rows") or 0)
+        except (TypeError, ValueError):
+            rows = 0
+            invalid_fields.append("rows")
+        if rows <= 0:
+            invalid_fields.append("rows")
+        source_gate = str(item.get("source_gate", "")).lower()
+        if not source_gate.startswith(("no sector", "keep sector", "do not map")):
+            invalid_fields.append("source_gate")
+        evidence_required = str(item.get("evidence_required", "")).lower()
+        if "official" not in evidence_required and "scope_decision" not in evidence_required:
+            invalid_fields.append("evidence_required")
+        item_row_total += rows
+        exchange_totals[str(item.get("exchange", ""))] += rows
+        action_queue_totals[str(item.get("action_queue", ""))] += rows
+        resolution_queue_totals[str(item.get("weak_sector_resolution_queue", ""))] += rows
+        evidence_required_totals[str(item.get("evidence_required", ""))] += rows
+        if missing_fields or invalid_fields:
+            row_gaps.append(
+                {
+                    "row_index": index,
+                    "reason": "missing_or_invalid_weak_sector_action_fields",
+                    "missing_fields": missing_fields,
+                    "invalid_fields": sorted(set(invalid_fields)),
+                    "available_keys": sorted(item)[:20],
+                }
+            )
+
+    count_gaps = []
+    expected_summary_fields = {
+        "rows": item_row_total,
+        "batches": len(items),
+        "exchange_totals": dict(sorted(exchange_totals.items())),
+        "action_queue_totals": dict(sorted(action_queue_totals.items())),
+        "weak_sector_resolution_queue_totals": dict(sorted(resolution_queue_totals.items())),
+        "evidence_required_totals": dict(sorted(evidence_required_totals.items())),
+    }
+    for field, expected in expected_summary_fields.items():
+        if summary.get(field) != expected:
+            count_gaps.append({"field": field, "expected": expected, "actual": summary.get(field)})
+    gating_gaps = []
+    if summary.get("direct_sector_apply_allowed_rows") != 0:
+        gating_gaps.append(
+            {
+                "field": "direct_sector_apply_allowed_rows",
+                "expected": 0,
+                "actual": summary.get("direct_sector_apply_allowed_rows"),
+            }
+        )
+    if summary.get("metadata_enrichment_authorized") is not False:
+        gating_gaps.append(
+            {
+                "field": "metadata_enrichment_authorized",
+                "expected": False,
+                "actual": summary.get("metadata_enrichment_authorized"),
+            }
+        )
+    return {
+        "passed": bool(items) and not policy_missing_marker_groups and not row_gaps and not count_gaps and not gating_gaps,
+        "rows": summary.get("rows"),
+        "item_row_total": item_row_total,
+        "batches": summary.get("batches"),
+        "items": len(items),
+        "direct_sector_apply_allowed_rows": summary.get("direct_sector_apply_allowed_rows"),
+        "metadata_enrichment_authorized": summary.get("metadata_enrichment_authorized"),
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "count_gaps": count_gaps,
+        "gating_gaps": gating_gaps,
+        "required_item_fields": list(WEAK_SECTOR_ACTION_REQUIRED_ITEM_FIELDS),
     }
 
 
@@ -16682,6 +16807,7 @@ def build_payload() -> dict[str, Any]:
     b3_residual_sector = load_json(REPORTS_DIR / "b3_residual_sector_review.json")
     asx_residual = load_json(REPORTS_DIR / "asx_residual_review.json")
     weak_sector = load_json(REPORTS_DIR / "weak_sector_residual_review.json")
+    weak_sector_venue_action_queue = load_json(REPORTS_DIR / "weak_sector_venue_action_queue.json")
     adanos_detection_simulation = load_json(REPORTS_DIR / "adanos_detection_simulation.json")
     baseline = load_json(REPORTS_DIR / "improvement_baseline.json")
     deltas = load_json(REPORTS_DIR / "improvement_deltas.json")
@@ -16746,6 +16872,9 @@ def build_payload() -> dict[str, Any]:
     criteria["b3_residual_gate"] = evaluate_b3_residual_gate(b3_residual_isin, b3_residual_sector)
     criteria["asx_residual_gate"] = evaluate_asx_residual_gate(asx_residual)
     criteria["weak_sector_residual_gate"] = evaluate_weak_sector_residual_gate(weak_sector)
+    criteria["weak_sector_venue_action_queue_gate"] = evaluate_weak_sector_venue_action_queue_gate(
+        weak_sector_venue_action_queue
+    )
     criteria["before_after_delta_matrix"] = evaluate_before_after_delta_matrix(deltas)
     criteria["improvement_baseline_integrity"] = evaluate_improvement_baseline_integrity(baseline)
     criteria["campaign_reviewability"] = evaluate_campaign_reviewability(campaigns)

@@ -1,17 +1,17 @@
 # Release Acceptance
 
-Generated: `2026-06-03T01:37:34Z`
+Generated: `2026-06-03T01:43:54Z`
 
 Overall passed: `True`
 
-Summary context: `passed=true;criteria=51;passed_criteria=51;failed_criteria=0;validation_failed_error_gates=0`
+Summary context: `passed=true;criteria=52;passed_criteria=52;failed_criteria=0;validation_failed_error_gates=0`
 
 ## Summary
 
 | Metric | Value |
 |---|---:|
-| `criteria` | `51` |
-| `passed_criteria` | `51` |
+| `criteria` | `52` |
+| `passed_criteria` | `52` |
 | `failed_criteria` | `0` |
 | `validation_failed_error_gates` | `0` |
 
@@ -50,6 +50,7 @@ Summary context: `passed=true;criteria=51;passed_criteria=51;failed_criteria=0;v
 | `b3_residual_gate` | True |
 | `asx_residual_gate` | True |
 | `weak_sector_residual_gate` | True |
+| `weak_sector_venue_action_queue_gate` | True |
 | `before_after_delta_matrix` | True |
 | `improvement_baseline_integrity` | True |
 | `campaign_reviewability` | True |
