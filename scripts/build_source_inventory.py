@@ -48,6 +48,9 @@ CSV_FIELDNAMES = [
     "expected_format",
     "source_url",
     "implementation_status",
+    "source_mode",
+    "source_refresh_queue",
+    "source_last_error",
     "priority",
     "review_needed",
     "blocker",
@@ -75,6 +78,9 @@ class SourceInventoryRow:
     expected_format: str
     source_url: str
     implementation_status: str
+    source_mode: str
+    source_refresh_queue: str
+    source_last_error: str
     priority: str
     review_needed: bool
     blocker: str
@@ -108,6 +114,11 @@ def int_value(value: Any) -> int:
 def build_coverage_lookup(coverage_report: dict[str, Any]) -> dict[str, dict[str, Any]]:
     rows = coverage_report.get("by_exchange") or coverage_report.get("exchange_coverage") or []
     return {row["exchange"]: row for row in rows if row.get("exchange")}
+
+
+def build_source_coverage_lookup(coverage_report: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    rows = coverage_report.get("source_coverage") or []
+    return {row["key"]: row for row in rows if row.get("key")}
 
 
 def candidate_asset_types(candidate: dict[str, Any]) -> str:
@@ -151,6 +162,7 @@ def build_source_inventory(
 ) -> list[SourceInventoryRow]:
     source_keys = {source.get("key") for source in sources}
     coverage_lookup = build_coverage_lookup(coverage_report)
+    source_coverage_lookup = build_source_coverage_lookup(coverage_report)
     rows: list[SourceInventoryRow] = []
     candidate_exchanges: set[str] = set()
 
@@ -160,6 +172,7 @@ def build_source_inventory(
             continue
         candidate_exchanges.add(exchange)
         metrics = coverage_metrics(exchange, coverage_lookup)
+        source_coverage = source_coverage_lookup.get(candidate.get("key", ""), {})
         implemented = candidate.get("key") in source_keys
         implementation_status = "implemented" if implemented else candidate.get("implementation_status", "todo")
         review_needed = (
@@ -187,6 +200,9 @@ def build_source_inventory(
                 expected_format=candidate.get("expected_format", ""),
                 source_url=candidate.get("source_url", ""),
                 implementation_status=implementation_status,
+                source_mode=str(source_coverage.get("mode", "")),
+                source_refresh_queue=str(source_coverage.get("refresh_queue", "")),
+                source_last_error=str(source_coverage.get("last_error", "")),
                 priority=candidate.get("priority", "medium"),
                 review_needed=review_needed,
                 blocker=candidate.get("blocker", ""),
@@ -220,6 +236,9 @@ def build_source_inventory(
                 expected_format="unknown",
                 source_url="",
                 implementation_status="todo",
+                source_mode="",
+                source_refresh_queue="",
+                source_last_error="",
                 priority=priority,
                 review_needed=True,
                 blocker="candidate source not curated yet",
@@ -271,19 +290,24 @@ def write_csv(path: Path, rows: list[SourceInventoryRow]) -> None:
             writer.writerow(payload)
 
 
+def markdown_cell(value: Any) -> str:
+    return str(value).replace("|", "\\|")
+
+
 def format_table(rows: list[SourceInventoryRow], *, status: str | None = None, limit: int = 20) -> str:
     selected = [row for row in rows if status is None or row.current_status == status][:limit]
     if not selected:
         return "_No rows._\n"
     lines = [
-        "| Rank | Exchange | Status | Tickers | ISIN gap | Metadata gap | Candidate | Provider | Blocker |",
-        "|---|---|---|---:|---:|---:|---|---|---|",
+        "| Rank | Exchange | Status | Tickers | ISIN gap | Metadata gap | Candidate | Provider | Source Mode | Last Error | Blocker |",
+        "|---|---|---|---:|---:|---:|---|---|---|---|---|",
     ]
     for row in selected:
         candidate = row.candidate_key or row.candidate_scope
         lines.append(
             f"| {row.priority_rank} | {row.exchange} | {row.current_status} | {row.tickers} | "
-            f"{row.missing_isin} | {row.missing_sector_or_category} | {candidate} | {row.provider} | {row.blocker} |"
+            f"{row.missing_isin} | {row.missing_sector_or_category} | {candidate} | {row.provider} | "
+            f"{row.source_mode} | {markdown_cell(row.source_last_error)} | {markdown_cell(row.blocker)} |"
         )
     return "\n".join(lines) + "\n"
 
