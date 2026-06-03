@@ -97,6 +97,9 @@ def test_build_payload_joins_weak_sector_reviews_to_residual_queue(tmp_path) -> 
     assert payload["summary"]["rows"] == 1
     assert payload["summary"]["official_sector_value_totals"] == {"SERVICES": 1}
     assert payload["summary"]["review_queue_totals"] == {"official_sector_value_mapping_review": 1}
+    assert payload["summary"]["advisory_policy"]["direct_apply_allowed_rows"] == 0
+    assert payload["summary"]["advisory_policy"]["metadata_enrichment_authorized"] is False
+    assert payload["summary"]["advisory_policy"]["review_required_rows"] == 1
     assert payload["items"][0]["review_queue"] == "official_sector_value_mapping_review"
     assert "Do not apply" in payload["items"][0]["review_gate"]
 
