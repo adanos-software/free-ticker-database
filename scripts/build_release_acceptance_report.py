@@ -18139,6 +18139,10 @@ def evaluate_source_inventory_gap_gate(report: dict[str, Any]) -> dict[str, Any]
             invalid_fields.append("source_mode")
         if not isinstance(row.get("review_needed"), bool):
             invalid_fields.append("review_needed")
+        if str(row.get("expected_format", "")) in {"", "unknown"}:
+            invalid_fields.append("expected_format")
+        if not str(row.get("source_url", "")).startswith("https://"):
+            invalid_fields.append("source_url")
         if str(row.get("current_status", "")) in {"missing", "official_partial", "manual_only"}:
             if not row.get("candidate_scope"):
                 invalid_fields.append("candidate_scope")

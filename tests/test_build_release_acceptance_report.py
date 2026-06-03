@@ -12105,9 +12105,9 @@ def test_evaluate_source_inventory_gap_gate_accepts_inventory_backlog() -> None:
                     "official_source_count": 3,
                     "candidate_key": "",
                     "candidate_scope": "source_expansion_candidate",
-                    "provider": "",
-                    "expected_format": "unknown",
-                    "source_url": "",
+                    "provider": "LSE",
+                    "expected_format": "lse_price_explorer_json",
+                    "source_url": "https://www.londonstockexchange.com/market-stock/0",
                     "implementation_status": "implemented",
                     "source_mode": "",
                     "source_refresh_queue": "",
@@ -12257,9 +12257,9 @@ def test_evaluate_source_inventory_gap_gate_rejects_unknown_status_or_scope() ->
                     "official_source_count": 3,
                     "candidate_key": "",
                     "candidate_scope": "needs_source_research",
-                    "provider": "",
-                    "expected_format": "unknown",
-                    "source_url": "",
+                    "provider": "LSE",
+                    "expected_format": "lse_price_explorer_json",
+                    "source_url": "https://www.londonstockexchange.com/market-stock/0",
                     "implementation_status": "implemented",
                     "source_mode": "",
                     "source_refresh_queue": "",
@@ -12328,6 +12328,58 @@ def test_evaluate_source_inventory_gap_gate_rejects_non_boolean_review_needed() 
     assert result["passed"] is False
     assert result["row_gap_count"] == 1
     assert result["row_gaps"][0]["invalid_fields"] == ["review_needed"]
+
+
+def test_evaluate_source_inventory_gap_gate_rejects_missing_source_evidence() -> None:
+    result = evaluate_source_inventory_gap_gate(
+        {
+            "summary": {
+                "generated_at": "2026-06-03T00:00:00Z",
+                "policy": {
+                    "inventory_only": "This report is a source inventory and parser backlog only; it does not authorize data fills.",
+                    "official_source_gate": "Official source parsers must write reference.csv before data evidence exists.",
+                    "no_guessing": "Missing fields remain blank until sourced.",
+                    "review_gate": "Rows marked review_needed require source review before scope changes.",
+                },
+                "rows": 1,
+                "current_status_counts": {"official_partial": 1},
+                "candidate_scope_counts": {"source_expansion_candidate": 1},
+                "todo_rows": 0,
+                "current_scope_candidates": 1,
+                "global_expansion_candidates": 0,
+                "high_priority_rows": 0,
+            },
+            "rows": [
+                {
+                    "priority_rank": 1,
+                    "exchange": "LSE",
+                    "current_status": "official_partial",
+                    "tickers": 6408,
+                    "missing_isin": 47,
+                    "missing_sector_or_category": 1302,
+                    "unresolved_findings": 52,
+                    "official_source_count": 3,
+                    "candidate_key": "",
+                    "candidate_scope": "source_expansion_candidate",
+                    "provider": "LSE",
+                    "expected_format": "unknown",
+                    "source_url": "",
+                    "implementation_status": "implemented",
+                    "source_mode": "",
+                    "source_refresh_queue": "",
+                    "source_last_error": "",
+                    "priority": "medium",
+                    "review_needed": False,
+                    "blocker": "",
+                    "notes": "Needs stronger official source candidate.",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["row_gap_count"] == 1
+    assert result["row_gaps"][0]["invalid_fields"] == ["expected_format", "source_url"]
 
 
 def test_evaluate_weak_sector_venue_action_queue_gate_accepts_blocked_batches() -> None:
