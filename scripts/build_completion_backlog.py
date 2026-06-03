@@ -19,6 +19,7 @@ ASX_RESIDUAL_REVIEW_JSON = REPORTS_DIR / "asx_residual_review.json"
 JPX_TSE_SECTOR_BACKFILL_JSON = REPORTS_DIR / "tse_sector_backfill.json"
 SEC_SIC_SECTOR_BACKFILL_JSON = REPORTS_DIR / "sec_sic_sector_backfill.json"
 CANADA_RESIDUAL_REVIEW_JSON = REPORTS_DIR / "canada_residual_review.json"
+B3_RESIDUAL_SECTOR_REVIEW_JSON = REPORTS_DIR / "b3_residual_sector_review.json"
 DEFAULT_CSV_OUT = REPORTS_DIR / "completion_backlog.csv"
 DEFAULT_JSON_OUT = REPORTS_DIR / "completion_backlog.json"
 DEFAULT_MD_OUT = REPORTS_DIR / "completion_backlog.md"
@@ -384,6 +385,7 @@ def summarize(
     jpx_tse_sector_backfill: dict[str, Any] | None = None,
     sec_sic_sector_backfill: dict[str, Any] | None = None,
     canada_residual_review: dict[str, Any] | None = None,
+    b3_residual_sector_review: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     field_totals = Counter()
     exchanges_by_field: dict[str, set[str]] = defaultdict(set)
@@ -416,6 +418,7 @@ def summarize(
             jpx_tse_sector_backfill=jpx_tse_sector_backfill or {},
             sec_sic_sector_backfill=sec_sic_sector_backfill or {},
             canada_residual_review=canada_residual_review or {},
+            b3_residual_sector_review=b3_residual_sector_review or {},
         ),
     }
 
@@ -616,6 +619,56 @@ def apply_canada_residual_context(action: dict[str, Any], canada_residual_review
     }
 
 
+def b3_residual_sector_summary(b3_residual_sector_review: dict[str, Any]) -> dict[str, Any]:
+    summary = b3_residual_sector_review.get("summary", {})
+    return summary if isinstance(summary, dict) else {}
+
+
+def b3_residual_sector_blocks_direct_apply(b3_residual_sector_review: dict[str, Any]) -> bool:
+    summary = b3_residual_sector_summary(b3_residual_sector_review)
+    eligibility = summary.get("apply_eligibility_totals", {})
+    if not isinstance(eligibility, dict):
+        return False
+    rows = int(summary.get("rows") or 0)
+    source_gap_rows = int(eligibility.get("source_gap_keep_blank_until_official_taxonomy_evidence") or 0)
+    return rows > 0 and source_gap_rows == rows
+
+
+def apply_b3_residual_sector_context(action: dict[str, Any], b3_residual_sector_review: dict[str, Any]) -> dict[str, Any]:
+    if action["exchange"] != "B3" or action["field"] != FIELD_MISSING_STOCK_SECTOR:
+        return action
+    if not b3_residual_sector_blocks_direct_apply(b3_residual_sector_review):
+        return action
+    summary = b3_residual_sector_summary(b3_residual_sector_review)
+    top_batches = summary.get("top_b3_sector_review_batches", [])
+    first_batch = top_batches[0] if isinstance(top_batches, list) and top_batches and isinstance(top_batches[0], dict) else {}
+    probe_decisions = summary.get("b3_probe_decision_totals", {})
+    code_shapes = summary.get("b3_code_shape_totals", {})
+    if not isinstance(probe_decisions, dict):
+        probe_decisions = {}
+    if not isinstance(code_shapes, dict):
+        code_shapes = {}
+    return {
+        **action,
+        "review_needed": True,
+        "recommended_source": first_batch.get("recommended_next_source")
+        or "Stronger official B3 or issuer taxonomy source exposing sector for the exact listing.",
+        "confidence_policy": first_batch.get("source_gate")
+        or "Keep stock_sector blank until official B3 or issuer taxonomy evidence matches the exact listing.",
+        "why_next": "B3 residual source-gap review-gated workflow",
+        "residual_gate": "b3_residual_sector_review_blocks_direct_apply",
+        "b3_residual_sector_rows": int(summary.get("rows") or 0),
+        "b3_source_gap_keep_blank_rows": int(
+            summary.get("apply_eligibility_totals", {}).get("source_gap_keep_blank_until_official_taxonomy_evidence") or 0
+        )
+        if isinstance(summary.get("apply_eligibility_totals", {}), dict)
+        else 0,
+        "b3_no_code_match_rows": int(probe_decisions.get("no_b3_code_match") or 0),
+        "b3_alpha_code_rows": int(code_shapes.get("alpha_b3_code") or 0),
+        "b3_alphanumeric_code_rows": int(code_shapes.get("alphanumeric_b3_code") or 0),
+    }
+
+
 def build_next_actions(
     rows: list[CompletionBacklogRow],
     limit: int = 8,
@@ -624,6 +677,7 @@ def build_next_actions(
     jpx_tse_sector_backfill: dict[str, Any] | None = None,
     sec_sic_sector_backfill: dict[str, Any] | None = None,
     canada_residual_review: dict[str, Any] | None = None,
+    b3_residual_sector_review: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     ranked = sorted(
         rows,
@@ -665,6 +719,7 @@ def build_next_actions(
         action = apply_jpx_tse_sector_context(action, jpx_tse_sector_backfill or {})
         action = apply_sec_sic_otc_context(action, sec_sic_sector_backfill or {})
         action = apply_canada_residual_context(action, canada_residual_review or {})
+        action = apply_b3_residual_sector_context(action, b3_residual_sector_review or {})
         actions.append(action)
     return actions
 
@@ -813,6 +868,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--jpx-tse-sector-backfill-json", type=Path, default=JPX_TSE_SECTOR_BACKFILL_JSON)
     parser.add_argument("--sec-sic-sector-backfill-json", type=Path, default=SEC_SIC_SECTOR_BACKFILL_JSON)
     parser.add_argument("--canada-residual-review-json", type=Path, default=CANADA_RESIDUAL_REVIEW_JSON)
+    parser.add_argument("--b3-residual-sector-review-json", type=Path, default=B3_RESIDUAL_SECTOR_REVIEW_JSON)
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_CSV_OUT)
     parser.add_argument("--json-out", type=Path, default=DEFAULT_JSON_OUT)
     parser.add_argument("--md-out", type=Path, default=DEFAULT_MD_OUT)
@@ -836,6 +892,7 @@ def main(argv: list[str] | None = None) -> None:
         jpx_tse_sector_backfill=load_json(args.jpx_tse_sector_backfill_json),
         sec_sic_sector_backfill=load_json(args.sec_sic_sector_backfill_json),
         canada_residual_review=load_json(args.canada_residual_review_json),
+        b3_residual_sector_review=load_json(args.b3_residual_sector_review_json),
     )
 
     write_csv(args.csv_out, rows)

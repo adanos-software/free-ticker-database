@@ -1,6 +1,6 @@
 # Completion Backlog
 
-Generated at: `2026-06-03T00:02:42Z`
+Generated at: `2026-06-03T00:08:06Z`
 
 ## Summary
 
@@ -18,7 +18,7 @@ Generated at: `2026-06-03T00:02:42Z`
 | 2 | OTC | missing_sector_stock | 817 | candidate_for_official_followup | Current SEC SIC residual dry-run has no accepted OTC sector candidates; prioritize OTC Markets issuer evidence, reviewed Alpha Vantage/FinanceDatabase signals, or keep source-gap status. | yes |
 | 3 | TSX | missing_isin_primary | 102 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
 | 4 | TSE | missing_sector_stock | 21 | candidate_for_official_followup | Official JPX listed-issues verification shows exact TSE matches but no JPX 33-industry values; use official REIT/infrastructure-fund taxonomy evidence before any stock_sector update. | yes |
-| 5 | B3 | missing_sector_stock | 194 | candidate_for_official_followup | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
+| 5 | B3 | missing_sector_stock | 194 | candidate_for_official_followup | Stronger official B3 or issuer taxonomy source exposing sector for the exact listing. | yes |
 | 6 | CSE_LK | missing_sector_stock | 143 | candidate_for_official_followup | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 7 | Euronext | missing_sector_stock | 132 | candidate_for_official_followup | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 8 | LSE | missing_sector_stock | 128 | candidate_for_official_followup | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |

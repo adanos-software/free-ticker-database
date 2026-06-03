@@ -246,6 +246,43 @@ def test_canada_isin_next_action_uses_residual_gate_when_no_direct_identifier_ap
     assert "Official Canada identifier source" in action["recommended_source"]
 
 
+def test_b3_sector_next_action_uses_residual_gate_when_no_taxonomy_match():
+    rows = build_completion_backlog(
+        [{"ticker": "B3SA3", "exchange": "B3", "asset_type": "Stock", "sector": ""}],
+        [],
+        {"by_exchange": [{"exchange": "B3", "venue_status": "official_full", "official_source_count": 3}]},
+    )
+    summary = summarize(
+        rows,
+        {"global": {}, "by_exchange": []},
+        "2026-04-12T00:00:00Z",
+        b3_residual_sector_review={
+            "summary": {
+                "rows": 1,
+                "apply_eligibility_totals": {"source_gap_keep_blank_until_official_taxonomy_evidence": 1},
+                "b3_probe_decision_totals": {"no_b3_code_match": 1},
+                "b3_code_shape_totals": {"alpha_b3_code": 1},
+                "top_b3_sector_review_batches": [
+                    {
+                        "recommended_next_source": "Stronger official B3 taxonomy source.",
+                        "source_gate": "Keep stock_sector blank until official B3 evidence matches.",
+                    }
+                ],
+            }
+        },
+    )
+
+    action = summary["next_actions"][0]
+    assert action["exchange"] == "B3"
+    assert action["field"] == FIELD_MISSING_STOCK_SECTOR
+    assert action["review_needed"] is True
+    assert action["residual_gate"] == "b3_residual_sector_review_blocks_direct_apply"
+    assert action["b3_residual_sector_rows"] == 1
+    assert action["b3_source_gap_keep_blank_rows"] == 1
+    assert action["b3_no_code_match_rows"] == 1
+    assert "Stronger official B3 taxonomy source" in action["recommended_source"]
+
+
 def test_completion_backlog_ranks_by_missing_count_before_static_source_order():
     rows = build_completion_backlog(
         [],
