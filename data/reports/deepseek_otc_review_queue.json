@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-02T21:16:08Z",
+    "generated_at": "2026-06-03T00:42:25Z",
     "deepseek_summary_json": "data/reports/deepseek_review_summary.json",
     "otc_scope_review_csv": "data/reports/otc_scope_review.csv",
     "policy": "DeepSeek OTC reviews are triage only. They do not authorize inferred names, aliases, sectors, scope decisions, identifiers, or symbol changes."
@@ -28,6 +28,12 @@
       "fixed_income_etf_category_gap": 1,
       "official_product_taxonomy_unavailable_gap": 8,
       "otc_sector_source_gap": 165
+    },
+    "advisory_policy": {
+      "direct_apply_allowed_rows": 0,
+      "metadata_enrichment_authorized": false,
+      "review_required_rows": 8996,
+      "source_gate": "DeepSeek OTC rows are advisory only; apply no name, alias, scope, sector, identifier, or symbol changes without listing-keyed official OTC, SEC, issuer, or registry evidence."
     }
   },
   "items": [

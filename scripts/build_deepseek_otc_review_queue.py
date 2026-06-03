@@ -140,6 +140,15 @@ def summarize(queue_rows: list[dict[str, Any]], unmatched: list[dict[str, Any]])
         "issue_type_totals": dict(sorted(by_issue.items())),
         "scope_decision_totals": dict(sorted(by_scope.items())),
         "source_gap_class_totals": dict(sorted(by_gap.items())),
+        "advisory_policy": {
+            "direct_apply_allowed_rows": 0,
+            "metadata_enrichment_authorized": False,
+            "review_required_rows": len(queue_rows),
+            "source_gate": (
+                "DeepSeek OTC rows are advisory only; apply no name, alias, scope, sector, identifier, "
+                "or symbol changes without listing-keyed official OTC, SEC, issuer, or registry evidence."
+            ),
+        },
     }
 
 

@@ -97,6 +97,9 @@ def test_build_payload_joins_otc_reviews_to_scope_queue(tmp_path) -> None:
     assert payload["summary"]["rows"] == 1
     assert payload["summary"]["review_queue_totals"] == {"official_name_mismatch_evidence_review": 1}
     assert payload["summary"]["issue_type_totals"] == {"official_name_mismatch": 1}
+    assert payload["summary"]["advisory_policy"]["direct_apply_allowed_rows"] == 0
+    assert payload["summary"]["advisory_policy"]["metadata_enrichment_authorized"] is False
+    assert payload["summary"]["advisory_policy"]["review_required_rows"] == 1
     assert payload["items"][0]["review_queue"] == "official_name_mismatch_evidence_review"
     assert "Do not change name" in payload["items"][0]["review_gate"]
 
