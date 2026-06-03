@@ -3056,6 +3056,9 @@ SOURCE_INVENTORY_REQUIRED_ROW_FIELDS = (
     "expected_format",
     "source_url",
     "implementation_status",
+    "source_mode",
+    "source_refresh_queue",
+    "source_last_error",
     "priority",
     "review_needed",
     "blocker",
@@ -18109,6 +18112,11 @@ def evaluate_source_inventory_gap_gate(report: dict[str, Any]) -> dict[str, Any]
         if str(row.get("current_status", "")) in {"missing", "official_partial", "manual_only"}:
             if not row.get("candidate_scope"):
                 invalid_fields.append("candidate_scope")
+        if row.get("source_mode") == "unavailable":
+            if not row.get("source_refresh_queue"):
+                invalid_fields.append("source_refresh_queue")
+            if not row.get("source_last_error"):
+                invalid_fields.append("source_last_error")
         if str(row.get("review_needed", "")).lower() in {"true", "1"} and not row.get("blocker"):
             invalid_fields.append("blocker")
         current_status_counts[str(row.get("current_status", ""))] += 1

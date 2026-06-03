@@ -12023,6 +12023,9 @@ def test_evaluate_source_inventory_gap_gate_accepts_inventory_backlog() -> None:
                     "expected_format": "html_or_api",
                     "source_url": "https://www.egx.com.eg/en/ListedStocks.aspx",
                     "implementation_status": "todo",
+                    "source_mode": "unavailable",
+                    "source_refresh_queue": "restore_or_replace_unavailable_source_before_data_fill",
+                    "source_last_error": "HTTP 403 from official host egx.example",
                     "priority": "high",
                     "review_needed": True,
                     "blocker": "needs endpoint discovery",
@@ -12043,6 +12046,9 @@ def test_evaluate_source_inventory_gap_gate_accepts_inventory_backlog() -> None:
                     "expected_format": "unknown",
                     "source_url": "",
                     "implementation_status": "implemented",
+                    "source_mode": "",
+                    "source_refresh_queue": "",
+                    "source_last_error": "",
                     "priority": "medium",
                     "review_needed": False,
                     "blocker": "candidate source not curated yet",
@@ -12085,6 +12091,9 @@ def test_evaluate_source_inventory_gap_gate_rejects_missing_policy_or_stale_coun
                     "expected_format": "html",
                     "source_url": "",
                     "implementation_status": "apply",
+                    "source_mode": "unavailable",
+                    "source_refresh_queue": "",
+                    "source_last_error": "",
                     "priority": "urgent",
                     "review_needed": True,
                     "blocker": "",
@@ -12097,6 +12106,8 @@ def test_evaluate_source_inventory_gap_gate_rejects_missing_policy_or_stale_coun
     assert result["passed"] is False
     assert result["policy_missing_marker_groups"]
     assert result["row_gap_count"] == 1
+    assert "source_refresh_queue" in result["row_gaps"][0]["invalid_fields"]
+    assert "source_last_error" in result["row_gaps"][0]["invalid_fields"]
     assert result["count_gaps"][0] == {"field": "rows", "expected": 1, "actual": 2}
 
 
