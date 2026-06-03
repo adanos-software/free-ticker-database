@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-06-03T01:31:45Z",
+    "generated_at": "2026-06-03T03:01:19Z",
     "policy": {
       "source_authority": "Name backfill candidates require active official masterfile references for the exact ticker and exchange.",
       "no_guessing": "Names are not inferred from ticker shape, issuer peers, or secondary-only sources.",
@@ -25,14 +25,16 @@
       "TSXV"
     ],
     "rows_reviewed": 14,
-    "updates_emitted": 14,
+    "updates_emitted": 13,
     "accepted_by_exchange": {
-      "NASDAQ": 7,
+      "NASDAQ": 6,
       "ASX": 3,
       "NYSE": 2,
       "IDX": 2
     },
-    "skipped_by_exchange": {}
+    "skipped_by_exchange": {
+      "NASDAQ": 1
+    }
   },
   "items": [
     {
@@ -151,10 +153,10 @@
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "current_name": "ESGL Holdings Limited",
-      "proposed_name": "OIO Group - Warrants",
-      "decision": "accept",
+      "proposed_name": "",
+      "decision": "skip",
       "official_sources": "nasdaq_listed|sec_company_tickers_exchange",
-      "supporting_sources": "nasdaq_listed"
+      "supporting_sources": ""
     },
     {
       "listing_key": "ASX::PLC",

@@ -60,6 +60,10 @@ SOURCE_KEY_PRIORITY = {
     "lse_instrument_search": 20,
     "lse_company_reports": 10,
 }
+EXCLUDED_SECURITY_NAME_PATTERN = re.compile(
+    r"\b(?:warrants?|units?|preferred|notes?\s+due|depositary\s+shares?)\b",
+    re.IGNORECASE,
+)
 
 DISPLAY_ACRONYMS = {
     "ads",
@@ -177,6 +181,10 @@ def candidate_score(ref: dict[str, str], candidate: str) -> tuple[int, int, int,
     return (provider_score + source_score, mixed_case_bonus, -len(candidate), -len(ref.get("name", "")))
 
 
+def is_excluded_security_name(name: str) -> bool:
+    return bool(EXCLUDED_SECURITY_NAME_PATTERN.search(name))
+
+
 def choose_candidate_name(
     row: dict[str, str],
     refs: list[dict[str, str]],
@@ -235,6 +243,10 @@ def build_updates(
         decision = "skip"
         reason = ""
         confidence = ""
+
+        if proposed_name and is_excluded_security_name(proposed_name):
+            proposed_name = ""
+            supporting_refs = []
 
         if proposed_name:
             decision = "accept"

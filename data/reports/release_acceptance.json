@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-03T02:54:08Z",
+    "generated_at": "2026-06-03T03:01:54Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -230,18 +230,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-03T02:54:08Z",
+      "release_generated_at": "2026-06-03T03:01:54Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-03T02:54:02Z"
+          "generated_at": "2026-06-03T03:01:41Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-03T02:53:58Z"
+          "generated_at": "2026-06-03T03:01:40Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -281,7 +281,7 @@
         "official_name_mismatch_backfill": {
           "path": "data/reports/official_name_mismatch_backfill.json",
           "exists": true,
-          "generated_at": "2026-06-03T01:31:45Z"
+          "generated_at": "2026-06-03T03:01:19Z"
         },
         "source_gap_classification": {
           "path": "data/reports/source_gap_classification.json",
@@ -586,7 +586,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-03T02:53:58Z",
+      "generated_at": "2026-06-03T03:01:40Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -756,8 +756,8 @@
       "passed": true,
       "rows_reviewed": 14,
       "items": 14,
-      "updates_emitted": 14,
-      "accepted_rows": 14,
+      "updates_emitted": 13,
+      "accepted_rows": 13,
       "supported_exchange_count": 15,
       "policy_missing_marker_groups": [],
       "row_gap_count": 0,
