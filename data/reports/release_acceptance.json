@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-03T02:17:31Z",
+    "generated_at": "2026-06-03T02:25:03Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -35,6 +35,7 @@
       "canada_improvement_action_queue": "data/reports/canada_improvement_action_queue.json",
       "canada_figi_queue": "data/reports/canada_figi_queue.json",
       "canada_figi_apply_report": "data/reports/canada_figi_apply_report.json",
+      "b3_masterfile_gap_review": "data/reports/b3_masterfile_gap_review.json",
       "b3_core_scope_review_queue": "data/reports/b3_core_scope_review_queue.json",
       "b3_improvement_action_queue": "data/reports/b3_improvement_action_queue.json",
       "b3_residual_isin_review": "data/reports/b3_residual_isin_review.json",
@@ -49,12 +50,12 @@
   },
   "passed": true,
   "summary": {
-    "criteria": 57,
-    "passed_criteria": 57,
+    "criteria": 58,
+    "passed_criteria": 58,
     "failed_criteria": 0,
     "validation_failed_error_gates": 0
   },
-  "summary_context": "passed=true;criteria=57;passed_criteria=57;failed_criteria=0;validation_failed_error_gates=0",
+  "summary_context": "passed=true;criteria=58;passed_criteria=58;failed_criteria=0;validation_failed_error_gates=0",
   "criteria": {
     "no_invalid_isins": {
       "passed": true,
@@ -229,18 +230,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-03T02:17:31Z",
+      "release_generated_at": "2026-06-03T02:25:03Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-03T02:17:19Z"
+          "generated_at": "2026-06-03T02:24:49Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-03T02:17:18Z"
+          "generated_at": "2026-06-03T02:24:48Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -391,6 +392,11 @@
           "path": "data/reports/canada_figi_apply_report.json",
           "exists": true,
           "generated_at": "2026-05-25T05:46:48Z"
+        },
+        "b3_masterfile_gap_review": {
+          "path": "data/reports/b3_masterfile_gap_review.json",
+          "exists": true,
+          "generated_at": "2026-06-02T18:54:27Z"
         },
         "b3_core_scope_review_queue": {
           "path": "data/reports/b3_core_scope_review_queue.json",
@@ -568,7 +574,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-03T02:17:18Z",
+      "generated_at": "2026-06-03T02:24:48Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -1268,6 +1274,46 @@
         "recommended_next_source",
         "source_gate",
         "example_listing_keys"
+      ]
+    },
+    "b3_masterfile_gap_review_gate": {
+      "passed": true,
+      "rows": 339,
+      "row_count": 339,
+      "open_review_rows": 322,
+      "open_review_row_count": 322,
+      "closed_no_data_change_rows": 17,
+      "closed_no_data_change_row_count": 17,
+      "coverage_data_change_authorized": false,
+      "policy_missing_marker_groups": [],
+      "row_gap_count": 0,
+      "row_gaps": [],
+      "count_gaps": [],
+      "gating_gaps": [],
+      "required_row_fields": [
+        "listing_key",
+        "ticker",
+        "exchange",
+        "asset_type",
+        "name",
+        "b3_gap_category",
+        "source_presence",
+        "active_exchange_directory_match",
+        "any_official_b3_source_match",
+        "b3_resolution_queue",
+        "residual_decision",
+        "review_bucket",
+        "review_priority",
+        "review_strategy",
+        "apply_eligibility",
+        "verification_evidence_required",
+        "b3_source_gap_evidence_path",
+        "source_gap_resolution_gate",
+        "recommended_next_source",
+        "source_gate",
+        "b3_listing_context",
+        "official_candidate_context",
+        "review_gate_context"
       ]
     },
     "b3_core_scope_review_queue_gate": {

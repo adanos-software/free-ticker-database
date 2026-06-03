@@ -51,6 +51,7 @@ RELEASE_SOURCE_REPORTS = {
     "canada_improvement_action_queue": "data/reports/canada_improvement_action_queue.json",
     "canada_figi_queue": "data/reports/canada_figi_queue.json",
     "canada_figi_apply_report": "data/reports/canada_figi_apply_report.json",
+    "b3_masterfile_gap_review": "data/reports/b3_masterfile_gap_review.json",
     "b3_core_scope_review_queue": "data/reports/b3_core_scope_review_queue.json",
     "b3_improvement_action_queue": "data/reports/b3_improvement_action_queue.json",
     "b3_residual_isin_review": "data/reports/b3_residual_isin_review.json",
@@ -1794,6 +1795,36 @@ B3_ACTION_POLICY_MARKER_GROUPS = {
     "official_first": ("official", "b3", "issuer", "registry", "prospectus"),
     "no_guessing": ("no isin", "no_guessing", "ticker shape", "issuer name"),
     "campaign_delta": ("current b3 residual backlog", "future b3 data campaigns", "before and after"),
+}
+B3_MASTERFILE_GAP_REQUIRED_ROW_FIELDS = (
+    "listing_key",
+    "ticker",
+    "exchange",
+    "asset_type",
+    "name",
+    "b3_gap_category",
+    "source_presence",
+    "active_exchange_directory_match",
+    "any_official_b3_source_match",
+    "b3_resolution_queue",
+    "residual_decision",
+    "review_bucket",
+    "review_priority",
+    "review_strategy",
+    "apply_eligibility",
+    "verification_evidence_required",
+    "b3_source_gap_evidence_path",
+    "source_gap_resolution_gate",
+    "recommended_next_source",
+    "source_gate",
+    "b3_listing_context",
+    "official_candidate_context",
+    "review_gate_context",
+)
+B3_MASTERFILE_GAP_POLICY_MARKER_GROUPS = {
+    "no_guessing": ("does not authorize", "inferred identifiers", "sectors", "categories"),
+    "listing_keyed_review": ("every row is keyed by listing_key", "b3 dataset row", "official b3 masterfile"),
+    "source_gap_handling": ("absent from all current b3 masterfile sources", "source gaps", "stronger official evidence"),
 }
 B3_CORE_SCOPE_REQUIRED_ROW_FIELDS = (
     "listing_key",
@@ -3836,6 +3867,169 @@ def evaluate_b3_improvement_action_queue_gate(action_queue: dict[str, Any]) -> d
         "count_gaps": count_gaps,
         "gating_gaps": gating_gaps,
         "required_item_fields": list(B3_ACTION_REQUIRED_ITEM_FIELDS),
+    }
+
+
+def evaluate_b3_masterfile_gap_review_gate(review_report: dict[str, Any]) -> dict[str, Any]:
+    summary = review_report.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    rows = review_report.get("rows", [])
+    if not isinstance(rows, list):
+        rows = []
+    policy = summary.get("policy", {})
+    if not isinstance(policy, dict):
+        policy = {}
+    policy_text = " ".join(str(value) for value in policy.values()).lower()
+    policy_missing_marker_groups = [
+        group
+        for group, markers in B3_MASTERFILE_GAP_POLICY_MARKER_GROUPS.items()
+        if not all(marker in policy_text for marker in markers)
+    ]
+
+    counters: dict[str, Counter[str]] = {
+        "source_presence_totals": Counter(),
+        "open_review_source_presence_totals": Counter(),
+        "review_bucket_totals": Counter(),
+        "b3_resolution_queue_totals": Counter(),
+        "open_review_resolution_queue_totals": Counter(),
+        "review_strategy_totals": Counter(),
+        "apply_eligibility_totals": Counter(),
+        "verification_evidence_required_totals": Counter(),
+        "source_gap_resolution_gate_totals": Counter(),
+        "open_review_next_source_totals": Counter(),
+        "open_review_evidence_path_totals": Counter(),
+    }
+    row_gaps: list[dict[str, Any]] = []
+    open_review_rows = 0
+    closed_no_data_change_rows = 0
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            row_gaps.append({"row_index": index, "reason": "row_is_not_object"})
+            continue
+        missing_fields = [
+            field
+            for field in B3_MASTERFILE_GAP_REQUIRED_ROW_FIELDS
+            if field not in row or row.get(field) is None or row.get(field) == ""
+        ]
+        invalid_fields: list[str] = []
+        if not str(row.get("listing_key", "")).startswith("B3::"):
+            invalid_fields.append("listing_key")
+        if row.get("exchange") != "B3":
+            invalid_fields.append("exchange")
+        if row.get("active_exchange_directory_match") != "false":
+            invalid_fields.append("active_exchange_directory_match")
+        source_presence = str(row.get("source_presence", ""))
+        if source_presence == "absent_from_all_b3_masterfile_sources":
+            open_review_rows += 1
+        elif source_presence == "present_only_in_non_exchange_directory_source":
+            closed_no_data_change_rows += 1
+        else:
+            invalid_fields.append("source_presence")
+        queue = str(row.get("b3_resolution_queue", ""))
+        if row.get("review_strategy") != b3_masterfile_gap_review_strategy(queue):
+            invalid_fields.append("review_strategy")
+        if row.get("recommended_next_source") != b3_masterfile_gap_recommended_next_source(queue):
+            invalid_fields.append("recommended_next_source")
+        if row.get("source_gate") != b3_masterfile_gap_source_gate(queue):
+            invalid_fields.append("source_gate")
+        if row.get("b3_listing_context") != b3_masterfile_gap_listing_context(row):
+            invalid_fields.append("b3_listing_context")
+        if row.get("official_candidate_context") != b3_masterfile_gap_official_candidate_context(row):
+            invalid_fields.append("official_candidate_context")
+        if row.get("review_gate_context") != b3_masterfile_gap_review_gate_context(row):
+            invalid_fields.append("review_gate_context")
+        if row.get("review_priority") not in B3_REVIEW_PRIORITIES:
+            invalid_fields.append("review_priority")
+        if row.get("apply_eligibility") not in {
+            "review_scope_or_parser_before_any_data_change",
+            "source_gap_keep_existing_dataset_row_until_official_active_source_evidence",
+        }:
+            invalid_fields.append("apply_eligibility")
+        evidence_required = str(row.get("verification_evidence_required", "")).lower()
+        if "official" not in evidence_required or not any(
+            marker in evidence_required for marker in ("listing_key", "scope_decision")
+        ):
+            invalid_fields.append("verification_evidence_required")
+        resolution_gate = str(row.get("source_gap_resolution_gate", "")).lower()
+        if not resolution_gate.startswith(("do_not_", "close_directory_gap_only_", "keep_", "apply_only_after_")):
+            invalid_fields.append("source_gap_resolution_gate")
+
+        counters["source_presence_totals"][source_presence] += 1
+        counters["review_bucket_totals"][str(row.get("review_bucket", ""))] += 1
+        counters["b3_resolution_queue_totals"][queue] += 1
+        counters["review_strategy_totals"][str(row.get("review_strategy", ""))] += 1
+        counters["apply_eligibility_totals"][str(row.get("apply_eligibility", ""))] += 1
+        counters["verification_evidence_required_totals"][str(row.get("verification_evidence_required", ""))] += 1
+        counters["source_gap_resolution_gate_totals"][str(row.get("source_gap_resolution_gate", ""))] += 1
+        if source_presence == "absent_from_all_b3_masterfile_sources":
+            counters["open_review_source_presence_totals"][source_presence] += 1
+            counters["open_review_resolution_queue_totals"][queue] += 1
+            counters["open_review_next_source_totals"][str(row.get("recommended_next_source", ""))] += 1
+            counters["open_review_evidence_path_totals"][str(row.get("b3_source_gap_evidence_path", ""))] += 1
+
+        if missing_fields or invalid_fields:
+            row_gaps.append(
+                {
+                    "row_index": index,
+                    "listing_key": row.get("listing_key"),
+                    "reason": "missing_or_invalid_b3_masterfile_gap_fields",
+                    "missing_fields": missing_fields,
+                    "invalid_fields": sorted(set(invalid_fields)),
+                }
+            )
+
+    count_gaps = []
+    expected_summary_fields: dict[str, Any] = {
+        "rows": len(rows),
+        "open_review_rows": open_review_rows,
+        "closed_no_data_change_rows": closed_no_data_change_rows,
+    }
+    expected_summary_fields.update({field: dict(sorted(counter.items())) for field, counter in counters.items()})
+    for field, expected in expected_summary_fields.items():
+        if summary.get(field) != expected:
+            count_gaps.append({"field": field, "expected": expected, "actual": summary.get(field)})
+
+    gating_gaps = []
+    coverage_diagnosis = summary.get("coverage_diagnosis", {})
+    if not isinstance(coverage_diagnosis, dict):
+        coverage_diagnosis = {}
+    if coverage_diagnosis.get("data_change_authorized") is not False:
+        gating_gaps.append(
+            {
+                "field": "coverage_diagnosis.data_change_authorized",
+                "expected": False,
+                "actual": coverage_diagnosis.get("data_change_authorized"),
+            }
+        )
+    coverage_source_gate = str(coverage_diagnosis.get("source_gate", "")).lower()
+    if (
+        "no b3 isin" not in coverage_source_gate
+        or "scope change" not in coverage_source_gate
+        or "official source evidence" not in coverage_source_gate
+    ):
+        gating_gaps.append(
+            {
+                "field": "coverage_diagnosis.source_gate",
+                "reason": "missing_no_apply_official_source_gate",
+            }
+        )
+
+    return {
+        "passed": bool(rows) and not policy_missing_marker_groups and not row_gaps and not count_gaps and not gating_gaps,
+        "rows": summary.get("rows"),
+        "row_count": len(rows),
+        "open_review_rows": summary.get("open_review_rows"),
+        "open_review_row_count": open_review_rows,
+        "closed_no_data_change_rows": summary.get("closed_no_data_change_rows"),
+        "closed_no_data_change_row_count": closed_no_data_change_rows,
+        "coverage_data_change_authorized": coverage_diagnosis.get("data_change_authorized"),
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "count_gaps": count_gaps,
+        "gating_gaps": gating_gaps,
+        "required_row_fields": list(B3_MASTERFILE_GAP_REQUIRED_ROW_FIELDS),
     }
 
 
@@ -17538,6 +17732,7 @@ def build_payload() -> dict[str, Any]:
     canada_improvement_action_queue = load_json(REPORTS_DIR / "canada_improvement_action_queue.json")
     canada_figi_queue = load_json(REPORTS_DIR / "canada_figi_queue.json")
     canada_figi_apply = load_json(REPORTS_DIR / "canada_figi_apply_report.json")
+    b3_masterfile_gap_review = load_json(REPORTS_DIR / "b3_masterfile_gap_review.json")
     b3_core_scope_review_queue = load_json(REPORTS_DIR / "b3_core_scope_review_queue.json")
     b3_improvement_action_queue = load_json(REPORTS_DIR / "b3_improvement_action_queue.json")
     b3_residual_isin = load_json(REPORTS_DIR / "b3_residual_isin_review.json")
@@ -17611,6 +17806,7 @@ def build_payload() -> dict[str, Any]:
     criteria["canada_improvement_action_queue_gate"] = evaluate_canada_improvement_action_queue_gate(
         canada_improvement_action_queue
     )
+    criteria["b3_masterfile_gap_review_gate"] = evaluate_b3_masterfile_gap_review_gate(b3_masterfile_gap_review)
     criteria["b3_core_scope_review_queue_gate"] = evaluate_b3_core_scope_review_queue_gate(
         b3_core_scope_review_queue
     )

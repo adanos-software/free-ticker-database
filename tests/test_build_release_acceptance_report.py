@@ -83,6 +83,7 @@ from scripts.build_release_acceptance_report import (
     evaluate_apply_artifact_traceability,
     evaluate_asx_scope_review_queue_gate,
     evaluate_asx_residual_gate,
+    evaluate_b3_masterfile_gap_review_gate,
     evaluate_b3_core_scope_review_queue_gate,
     evaluate_b3_improvement_action_queue_gate,
     evaluate_b3_residual_gate,
@@ -196,6 +197,7 @@ def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> N
     assert RELEASE_SOURCE_REPORTS["otc_name_mismatch_action_queue"] == "data/reports/otc_name_mismatch_action_queue.json"
     assert RELEASE_SOURCE_REPORTS["canada_scope_review_queue"] == "data/reports/canada_scope_review_queue.json"
     assert RELEASE_SOURCE_REPORTS["canada_improvement_action_queue"] == "data/reports/canada_improvement_action_queue.json"
+    assert RELEASE_SOURCE_REPORTS["b3_masterfile_gap_review"] == "data/reports/b3_masterfile_gap_review.json"
     assert RELEASE_SOURCE_REPORTS["b3_core_scope_review_queue"] == "data/reports/b3_core_scope_review_queue.json"
     assert RELEASE_SOURCE_REPORTS["b3_improvement_action_queue"] == "data/reports/b3_improvement_action_queue.json"
     assert RELEASE_SOURCE_REPORTS["asx_scope_review_queue"] == "data/reports/asx_scope_review_queue.json"
@@ -11969,6 +11971,216 @@ def test_evaluate_b3_core_scope_review_queue_gate_rejects_apply_or_stale_counts(
     assert result["policy_missing_marker_groups"]
     assert result["row_gap_count"] == 1
     assert result["count_gaps"]
+
+
+def test_evaluate_b3_masterfile_gap_review_gate_accepts_review_only_rows() -> None:
+    result = evaluate_b3_masterfile_gap_review_gate(
+        {
+            "summary": {
+                "rows": 2,
+                "open_review_rows": 1,
+                "closed_no_data_change_rows": 1,
+                "source_presence_totals": {
+                    "absent_from_all_b3_masterfile_sources": 1,
+                    "present_only_in_non_exchange_directory_source": 1,
+                },
+                "open_review_source_presence_totals": {"absent_from_all_b3_masterfile_sources": 1},
+                "review_bucket_totals": {
+                    "missing_from_all_b3_masterfile_sources_source_gap": 1,
+                    "official_b3_non_directory_source_review": 1,
+                },
+                "b3_resolution_queue_totals": {
+                    "absent_from_all_b3_sources_local_share_source_gap": 1,
+                    "official_bdr_subset_without_category_source_gap_closed": 1,
+                },
+                "open_review_resolution_queue_totals": {"absent_from_all_b3_sources_local_share_source_gap": 1},
+                "open_review_next_source_totals": {
+                    "Current B3 exchange directory, B3 issuer page, CVM filing, or issuer investor-relations listing evidence.": 1
+                },
+                "open_review_evidence_path_totals": {
+                    "current_b3_exchange_directory_or_cvm_issuer_listing_evidence": 1
+                },
+                "source_gap_resolution_gate_totals": {
+                    "close_directory_gap_only_keep_identifier_and_category_unchanged": 1,
+                    "do_not_delete_or_rename_until_current_b3_cvm_or_issuer_listing_evidence_is_reviewed": 1,
+                },
+                "review_strategy_totals": {
+                    "close_bdr_subset_gap_without_data_change_keep_category_source_gap": 1,
+                    "keep_local_share_gap_until_current_official_b3_or_issuer_evidence": 1,
+                },
+                "apply_eligibility_totals": {
+                    "review_scope_or_parser_before_any_data_change": 1,
+                    "source_gap_keep_existing_dataset_row_until_official_active_source_evidence": 1,
+                },
+                "verification_evidence_required_totals": {
+                    "new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key": 1,
+                    "official_b3_source_row_plus_scope_decision_or_parser_fix_before_reclassifying_gap": 1,
+                },
+                "coverage_diagnosis": {
+                    "data_change_authorized": False,
+                    "source_gate": (
+                        "No B3 ISIN, sector, category, name, symbol, or scope change is authorized until the exact "
+                        "listing-keyed official source evidence and apply gate are reviewed."
+                    ),
+                },
+                "policy": {
+                    "no_guessing": (
+                        "This review does not authorize inferred identifiers, sectors, categories, names, scope "
+                        "changes, or symbol changes."
+                    ),
+                    "listing_keyed_review": (
+                        "Every row is keyed by listing_key and tied to the B3 dataset row plus official B3 "
+                        "masterfile source presence."
+                    ),
+                    "source_gap_handling": (
+                        "Rows absent from all current B3 masterfile sources remain source gaps until stronger "
+                        "official evidence exists."
+                    ),
+                },
+            },
+            "rows": [
+                {
+                    "listing_key": "B3::ABCD3",
+                    "ticker": "ABCD3",
+                    "exchange": "B3",
+                    "asset_type": "Stock",
+                    "name": "ABCD SA",
+                    "current_etf_category": "",
+                    "b3_gap_category": "local_share_line",
+                    "source_presence": "absent_from_all_b3_masterfile_sources",
+                    "active_exchange_directory_match": "false",
+                    "any_official_b3_source_match": "false",
+                    "b3_resolution_queue": "absent_from_all_b3_sources_local_share_source_gap",
+                    "residual_decision": "accepted_source_gap_not_in_any_current_b3_masterfile_source",
+                    "review_bucket": "missing_from_all_b3_masterfile_sources_source_gap",
+                    "review_priority": "P3",
+                    "review_strategy": "keep_local_share_gap_until_current_official_b3_or_issuer_evidence",
+                    "apply_eligibility": "source_gap_keep_existing_dataset_row_until_official_active_source_evidence",
+                    "verification_evidence_required": (
+                        "new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key"
+                    ),
+                    "b3_source_gap_evidence_path": "current_b3_exchange_directory_or_cvm_issuer_listing_evidence",
+                    "source_gap_resolution_gate": (
+                        "do_not_delete_or_rename_until_current_b3_cvm_or_issuer_listing_evidence_is_reviewed"
+                    ),
+                    "recommended_next_source": (
+                        "Current B3 exchange directory, B3 issuer page, CVM filing, or issuer investor-relations listing evidence."
+                    ),
+                    "source_gate": (
+                        "Keep row as source gap until current official B3 or issuer evidence proves the active local-share listing."
+                    ),
+                    "b3_listing_context": "listing_key=B3::ABCD3;ticker=ABCD3;asset_type=Stock;b3_gap_category=local_share_line;current_etf_category=none",
+                    "official_candidate_context": "source_presence=absent_from_all_b3_masterfile_sources;candidate_sources=none;candidate_isins_present=false;candidate_sectors_present=false;active_exchange_directory_match=false;any_official_b3_source_match=false",
+                    "review_gate_context": "b3_resolution_queue=absent_from_all_b3_sources_local_share_source_gap;residual_decision=accepted_source_gap_not_in_any_current_b3_masterfile_source;review_bucket=missing_from_all_b3_masterfile_sources_source_gap;official_subset_review_decision=none;official_subset_closure_eligibility=none;apply_eligibility=source_gap_keep_existing_dataset_row_until_official_active_source_evidence;verification_evidence_required=new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key",
+                },
+                {
+                    "listing_key": "B3::BIAU39",
+                    "ticker": "BIAU39",
+                    "exchange": "B3",
+                    "asset_type": "ETF",
+                    "name": "Ishares Gold Trust",
+                    "current_etf_category": "Equity",
+                    "b3_gap_category": "bdr_or_foreign_receipt",
+                    "source_presence": "present_only_in_non_exchange_directory_source",
+                    "active_exchange_directory_match": "false",
+                    "any_official_b3_source_match": "true",
+                    "b3_resolution_queue": "official_bdr_subset_without_category_source_gap_closed",
+                    "residual_decision": "official_b3_non_directory_source_requires_scope_or_parser_review",
+                    "review_bucket": "official_b3_non_directory_source_review",
+                    "review_priority": "P2",
+                    "review_strategy": "close_bdr_subset_gap_without_data_change_keep_category_source_gap",
+                    "apply_eligibility": "review_scope_or_parser_before_any_data_change",
+                    "verification_evidence_required": (
+                        "official_b3_source_row_plus_scope_decision_or_parser_fix_before_reclassifying_gap"
+                    ),
+                    "b3_source_gap_evidence_path": "official_b3_bdr_subset_listing_evidence_category_source_gap",
+                    "source_gap_resolution_gate": "close_directory_gap_only_keep_identifier_and_category_unchanged",
+                    "recommended_next_source": (
+                        "Official B3 BDR/ETF subset confirms the listing; keep category/ISIN unchanged until stronger B3 or issuer evidence exposes them."
+                    ),
+                    "source_gate": (
+                        "No B3 category, ISIN, name, symbol, or scope change is authorized; the official BDR subset evidence only closes the active-directory gap."
+                    ),
+                    "b3_listing_context": "listing_key=B3::BIAU39;ticker=BIAU39;asset_type=ETF;b3_gap_category=bdr_or_foreign_receipt;current_etf_category=Equity",
+                    "official_candidate_context": "source_presence=present_only_in_non_exchange_directory_source;candidate_sources=none;candidate_isins_present=false;candidate_sectors_present=false;active_exchange_directory_match=false;any_official_b3_source_match=true",
+                    "review_gate_context": "b3_resolution_queue=official_bdr_subset_without_category_source_gap_closed;residual_decision=official_b3_non_directory_source_requires_scope_or_parser_review;review_bucket=official_b3_non_directory_source_review;official_subset_review_decision=none;official_subset_closure_eligibility=none;apply_eligibility=review_scope_or_parser_before_any_data_change;verification_evidence_required=official_b3_source_row_plus_scope_decision_or_parser_fix_before_reclassifying_gap",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["row_count"] == 2
+    assert result["open_review_row_count"] == 1
+    assert result["closed_no_data_change_row_count"] == 1
+    assert result["coverage_data_change_authorized"] is False
+
+
+def test_evaluate_b3_masterfile_gap_review_gate_rejects_apply_or_stale_counts() -> None:
+    result = evaluate_b3_masterfile_gap_review_gate(
+        {
+            "summary": {
+                "rows": 99,
+                "open_review_rows": 0,
+                "closed_no_data_change_rows": 0,
+                "source_presence_totals": {},
+                "open_review_source_presence_totals": {},
+                "review_bucket_totals": {},
+                "b3_resolution_queue_totals": {},
+                "open_review_resolution_queue_totals": {},
+                "review_strategy_totals": {},
+                "apply_eligibility_totals": {},
+                "verification_evidence_required_totals": {},
+                "source_gap_resolution_gate_totals": {},
+                "open_review_next_source_totals": {},
+                "open_review_evidence_path_totals": {},
+                "coverage_diagnosis": {
+                    "data_change_authorized": True,
+                    "source_gate": "Apply B3 values.",
+                },
+                "policy": {"no_guessing": "review later"},
+            },
+            "rows": [
+                {
+                    "listing_key": "B3::ABCD3",
+                    "ticker": "ABCD3",
+                    "exchange": "B3",
+                    "asset_type": "Stock",
+                    "name": "ABCD SA",
+                    "b3_gap_category": "local_share_line",
+                    "source_presence": "absent_from_all_b3_masterfile_sources",
+                    "active_exchange_directory_match": "false",
+                    "any_official_b3_source_match": "false",
+                    "b3_resolution_queue": "direct_apply",
+                    "residual_decision": "accepted_source_gap_not_in_any_current_b3_masterfile_source",
+                    "review_bucket": "missing_from_all_b3_masterfile_sources_source_gap",
+                    "review_priority": "P3",
+                    "review_strategy": "apply",
+                    "apply_eligibility": "direct_data_change",
+                    "verification_evidence_required": "ticker_match",
+                    "b3_source_gap_evidence_path": "manual",
+                    "source_gap_resolution_gate": "apply_now",
+                    "recommended_next_source": "none",
+                    "source_gate": "Apply B3 metadata.",
+                    "b3_listing_context": "listing_key=B3::ABCD3",
+                    "official_candidate_context": "source_presence=absent_from_all_b3_masterfile_sources",
+                    "review_gate_context": "b3_resolution_queue=direct_apply",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["policy_missing_marker_groups"]
+    assert result["row_gap_count"] == 1
+    assert result["count_gaps"]
+    assert result["gating_gaps"] == [
+        {"field": "coverage_diagnosis.data_change_authorized", "expected": False, "actual": True},
+        {
+            "field": "coverage_diagnosis.source_gate",
+            "reason": "missing_no_apply_official_source_gate",
+        },
+    ]
 
 
 def test_evaluate_asx_scope_review_queue_gate_accepts_review_only_rows() -> None:
