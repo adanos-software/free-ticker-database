@@ -1,17 +1,17 @@
 # Release Acceptance
 
-Generated: `2026-06-03T02:30:38Z`
+Generated: `2026-06-03T02:38:13Z`
 
 Overall passed: `True`
 
-Summary context: `passed=true;criteria=58;passed_criteria=58;failed_criteria=0;validation_failed_error_gates=0`
+Summary context: `passed=true;criteria=59;passed_criteria=59;failed_criteria=0;validation_failed_error_gates=0`
 
 ## Summary
 
 | Metric | Value |
 |---|---:|
-| `criteria` | `58` |
-| `passed_criteria` | `58` |
+| `criteria` | `59` |
+| `passed_criteria` | `59` |
 | `failed_criteria` | `0` |
 | `validation_failed_error_gates` | `0` |
 
@@ -37,6 +37,7 @@ Summary context: `passed=true;criteria=58;passed_criteria=58;failed_criteria=0;v
 | `coverage_freshness_visibility` | True |
 | `official_name_mismatch_backfill_gate` | True |
 | `source_inventory_gap_gate` | True |
+| `source_refresh_queue_gate` | True |
 | `source_gap_traceability` | True |
 | `symbol_change_review_gate` | True |
 | `otc_name_mismatch_review_gate` | True |

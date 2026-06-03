@@ -121,6 +121,7 @@ from scripts.build_release_acceptance_report import (
     evaluate_review_row_traceability,
     evaluate_release_source_report_integrity,
     evaluate_source_inventory_gap_gate,
+    evaluate_source_refresh_queue_gate,
     evaluate_source_gap_traceability,
     evaluate_symbol_change_review_gate,
     evaluate_weak_sector_venue_action_queue_gate,
@@ -1677,6 +1678,194 @@ def test_evaluate_source_gap_traceability_requires_listing_key_source_gate_and_m
 
     assert result["passed"] is True
     assert result["rows"] == 1
+
+
+def test_evaluate_source_refresh_queue_gate_accepts_review_only_refresh_items() -> None:
+    result = evaluate_source_refresh_queue_gate(
+        {
+            "_meta": {
+                "generated_at": "2026-06-02T22:55:14Z",
+                "source_report": "data/reports/coverage_report.json",
+                "policy": (
+                    "Source refresh queue only. Freshness and availability signals do not authorize inferred "
+                    "identifiers, sectors, categories, names, symbols, scope changes, or direct data application."
+                ),
+            },
+            "summary": {
+                "rows": 2,
+                "priority_totals": {"P1": 1, "P2": 1},
+                "queue_totals": {"restore_or_replace_unavailable_source_before_data_fill": 2},
+                "mode_totals": {"unavailable": 2},
+                "reference_scope_totals": {"exchange_directory": 1, "listed_companies_subset": 1},
+                "freshness_status_totals": {"fresh": 2},
+                "evidence_required_totals": {
+                    "source_restored_or_replaced_with_official_or_documented_unavailable_decision": 2
+                },
+                "top_source_refresh_batches": [
+                    {
+                        "refresh_queue": "restore_or_replace_unavailable_source_before_data_fill",
+                        "reference_scope": "exchange_directory",
+                        "mode": "unavailable",
+                        "refresh_priority": "P1",
+                        "source_count": 1,
+                        "total_rows": 0,
+                        "max_age_hours": 1.01,
+                        "review_strategy": "restore_or_replace_unavailable_source_before_data_fill",
+                        "evidence_required": "source_restored_or_replaced_with_official_or_documented_unavailable_decision",
+                        "recommended_next_source": (
+                            "Restore the unavailable official source for scope exchange_directory, or document an official replacement/unavailable decision."
+                        ),
+                        "source_gate": (
+                            "Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists."
+                        ),
+                    },
+                    {
+                        "refresh_queue": "restore_or_replace_unavailable_source_before_data_fill",
+                        "reference_scope": "listed_companies_subset",
+                        "mode": "unavailable",
+                        "refresh_priority": "P2",
+                        "source_count": 1,
+                        "total_rows": 0,
+                        "max_age_hours": 1.01,
+                        "review_strategy": "restore_or_replace_unavailable_source_before_data_fill",
+                        "evidence_required": "source_restored_or_replaced_with_official_or_documented_unavailable_decision",
+                        "recommended_next_source": (
+                            "Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision."
+                        ),
+                        "source_gate": (
+                            "Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists."
+                        ),
+                    },
+                ],
+            },
+            "items": [
+                {
+                    "source_key": "bme_security_prices_directory",
+                    "provider": "BME",
+                    "reference_scope": "exchange_directory",
+                    "mode": "unavailable",
+                    "rows": 0,
+                    "generated_at": "2026-06-02T19:38:59Z",
+                    "age_hours": 1.01,
+                    "freshness_status": "fresh",
+                    "refresh_priority": "P1",
+                    "refresh_queue": "restore_or_replace_unavailable_source_before_data_fill",
+                    "recommended_refresh_action": "restore_or_replace_unavailable_source_before_data_fill",
+                    "recommended_next_source": (
+                        "Restore the unavailable official source for scope exchange_directory, or document an official replacement/unavailable decision."
+                    ),
+                    "source_gate": (
+                        "Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists."
+                    ),
+                    "review_strategy": "restore_or_replace_unavailable_source_before_data_fill",
+                    "evidence_required": "source_restored_or_replaced_with_official_or_documented_unavailable_decision",
+                    "freshness_review_context": (
+                        "generated_at=2026-06-02T19:38:59Z;age_bucket=age_0_48h;"
+                        "freshness_status=fresh;refresh_priority=P1"
+                    ),
+                    "refresh_gate_context": (
+                        "refresh_queue=restore_or_replace_unavailable_source_before_data_fill;"
+                        "recommended_refresh_action=restore_or_replace_unavailable_source_before_data_fill;"
+                        "review_strategy=restore_or_replace_unavailable_source_before_data_fill;"
+                        "evidence_required=source_restored_or_replaced_with_official_or_documented_unavailable_decision"
+                    ),
+                },
+                {
+                    "source_key": "bme_listed_values",
+                    "provider": "BME",
+                    "reference_scope": "listed_companies_subset",
+                    "mode": "unavailable",
+                    "rows": 0,
+                    "generated_at": "2026-06-02T19:38:59Z",
+                    "age_hours": 1.01,
+                    "freshness_status": "fresh",
+                    "refresh_priority": "P2",
+                    "refresh_queue": "restore_or_replace_unavailable_source_before_data_fill",
+                    "recommended_refresh_action": "restore_or_replace_unavailable_source_before_data_fill",
+                    "recommended_next_source": (
+                        "Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision."
+                    ),
+                    "source_gate": (
+                        "Keep fields blank until the official source is restored or a documented official replacement/unavailable decision exists."
+                    ),
+                    "review_strategy": "restore_or_replace_unavailable_source_before_data_fill",
+                    "evidence_required": "source_restored_or_replaced_with_official_or_documented_unavailable_decision",
+                    "freshness_review_context": (
+                        "generated_at=2026-06-02T19:38:59Z;age_bucket=age_0_48h;"
+                        "freshness_status=fresh;refresh_priority=P2"
+                    ),
+                    "refresh_gate_context": (
+                        "refresh_queue=restore_or_replace_unavailable_source_before_data_fill;"
+                        "recommended_refresh_action=restore_or_replace_unavailable_source_before_data_fill;"
+                        "review_strategy=restore_or_replace_unavailable_source_before_data_fill;"
+                        "evidence_required=source_restored_or_replaced_with_official_or_documented_unavailable_decision"
+                    ),
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["item_count"] == 2
+    assert result["row_gap_count"] == 0
+
+
+def test_evaluate_source_refresh_queue_gate_rejects_direct_apply_or_stale_counts() -> None:
+    result = evaluate_source_refresh_queue_gate(
+        {
+            "_meta": {"generated_at": "2026-06-02T22:55:14Z", "policy": "refresh later"},
+            "summary": {
+                "rows": 2,
+                "priority_totals": {},
+                "queue_totals": {},
+                "mode_totals": {},
+                "reference_scope_totals": {},
+                "freshness_status_totals": {},
+                "evidence_required_totals": {},
+                "top_source_refresh_batches": [
+                    {
+                        "refresh_queue": "direct_apply",
+                        "reference_scope": "exchange_directory",
+                        "mode": "unavailable",
+                        "refresh_priority": "P5",
+                        "source_count": 3,
+                        "total_rows": -1,
+                        "max_age_hours": -1,
+                        "review_strategy": "apply",
+                        "evidence_required": "ticker_match",
+                        "recommended_next_source": "none",
+                        "source_gate": "Apply values.",
+                    }
+                ],
+            },
+            "items": [
+                {
+                    "source_key": "bme_security_prices_directory",
+                    "provider": "BME",
+                    "reference_scope": "exchange_directory",
+                    "mode": "unavailable",
+                    "generated_at": "bad-time",
+                    "age_hours": -1,
+                    "freshness_status": "fresh",
+                    "refresh_priority": "P1",
+                    "refresh_queue": "direct_apply",
+                    "recommended_refresh_action": "apply",
+                    "recommended_next_source": "none",
+                    "source_gate": "Apply values.",
+                    "review_strategy": "apply",
+                    "evidence_required": "ticker_match",
+                    "freshness_review_context": "generated_at=bad-time",
+                    "refresh_gate_context": "refresh_queue=direct_apply",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["policy_missing_marker_groups"]
+    assert result["row_gap_count"] == 1
+    assert result["count_gaps"]
+    assert result["batch_gaps"]
 
 
 def test_b3_masterfile_gap_contexts_are_exact_field_summaries() -> None:

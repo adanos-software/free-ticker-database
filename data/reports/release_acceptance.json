@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-03T02:30:38Z",
+    "generated_at": "2026-06-03T02:38:13Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -50,12 +50,12 @@
   },
   "passed": true,
   "summary": {
-    "criteria": 58,
-    "passed_criteria": 58,
+    "criteria": 59,
+    "passed_criteria": 59,
     "failed_criteria": 0,
     "validation_failed_error_gates": 0
   },
-  "summary_context": "passed=true;criteria=58;passed_criteria=58;failed_criteria=0;validation_failed_error_gates=0",
+  "summary_context": "passed=true;criteria=59;passed_criteria=59;failed_criteria=0;validation_failed_error_gates=0",
   "criteria": {
     "no_invalid_isins": {
       "passed": true,
@@ -230,18 +230,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-03T02:30:38Z",
+      "release_generated_at": "2026-06-03T02:38:13Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-03T02:30:26Z"
+          "generated_at": "2026-06-03T02:37:24Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-03T02:30:25Z"
+          "generated_at": "2026-06-03T02:37:23Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -581,7 +581,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-03T02:30:25Z",
+      "generated_at": "2026-06-03T02:37:23Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -800,6 +800,34 @@
         "review_needed",
         "blocker",
         "notes"
+      ]
+    },
+    "source_refresh_queue_gate": {
+      "passed": true,
+      "rows": 5,
+      "item_count": 5,
+      "policy_missing_marker_groups": [],
+      "row_gap_count": 0,
+      "row_gaps": [],
+      "count_gaps": [],
+      "batch_gaps": [],
+      "required_item_fields": [
+        "source_key",
+        "provider",
+        "reference_scope",
+        "mode",
+        "generated_at",
+        "age_hours",
+        "freshness_status",
+        "refresh_priority",
+        "refresh_queue",
+        "recommended_refresh_action",
+        "recommended_next_source",
+        "source_gate",
+        "review_strategy",
+        "evidence_required",
+        "freshness_review_context",
+        "refresh_gate_context"
       ]
     },
     "source_gap_traceability": {

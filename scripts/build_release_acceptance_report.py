@@ -311,6 +311,29 @@ SOURCE_REFRESH_REVIEW_STRATEGIES = {
     "restore_or_replace_unavailable_source_before_data_fill",
     "review_secondary_source_freshness_or_replace",
 }
+SOURCE_REFRESH_QUEUE_REQUIRED_ITEM_FIELDS = (
+    "source_key",
+    "provider",
+    "reference_scope",
+    "mode",
+    "generated_at",
+    "age_hours",
+    "freshness_status",
+    "refresh_priority",
+    "refresh_queue",
+    "recommended_refresh_action",
+    "recommended_next_source",
+    "source_gate",
+    "review_strategy",
+    "evidence_required",
+    "freshness_review_context",
+    "refresh_gate_context",
+)
+SOURCE_REFRESH_QUEUE_POLICY_MARKER_GROUPS = {
+    "queue_only": ("source refresh queue only", "freshness and availability signals"),
+    "no_data_apply": ("authorize", "direct data application"),
+    "no_inference": ("inferred identifiers", "sectors", "categories", "symbols"),
+}
 
 
 def source_refresh_strategy_for(queue: str) -> tuple[str, str]:
@@ -5674,6 +5697,177 @@ def evaluate_source_gap_traceability(source_gap_report: dict[str, Any]) -> dict[
         "required_review_batch_keys": list(REQUIRED_SOURCE_GAP_REVIEW_BATCH_KEYS),
         "required_row_keys": list(REQUIRED_SOURCE_GAP_ROW_KEYS),
         "accepted_fields": sorted(SOURCE_GAP_FIELD_VALUES),
+    }
+
+
+def evaluate_source_refresh_queue_gate(report: dict[str, Any]) -> dict[str, Any]:
+    meta = report.get("_meta", {})
+    if not isinstance(meta, dict):
+        meta = {}
+    summary = report.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    items = report.get("items", [])
+    if not isinstance(items, list):
+        items = []
+    policy_text = str(meta.get("policy", "")).lower()
+    policy_missing_marker_groups = [
+        group
+        for group, markers in SOURCE_REFRESH_QUEUE_POLICY_MARKER_GROUPS.items()
+        if not all(marker in policy_text for marker in markers)
+    ]
+
+    counters: dict[str, Counter[str]] = {
+        "priority_totals": Counter(),
+        "queue_totals": Counter(),
+        "mode_totals": Counter(),
+        "reference_scope_totals": Counter(),
+        "freshness_status_totals": Counter(),
+        "evidence_required_totals": Counter(),
+    }
+    row_gaps: list[dict[str, Any]] = []
+    for index, item in enumerate(items):
+        if not isinstance(item, dict):
+            row_gaps.append({"row_index": index, "reason": "row_is_not_object"})
+            continue
+        missing_fields = [
+            field
+            for field in SOURCE_REFRESH_QUEUE_REQUIRED_ITEM_FIELDS
+            if field not in item or item.get(field) is None or item.get(field) == ""
+        ]
+        invalid_fields: list[str] = []
+        if not is_valid_iso_utc_timestamp(str(item.get("generated_at", ""))):
+            invalid_fields.append("generated_at")
+        if not is_nonnegative_number(item.get("age_hours")):
+            invalid_fields.append("age_hours")
+        if item.get("freshness_status") not in {"fresh", "old", "stale", "unknown"}:
+            invalid_fields.append("freshness_status")
+        if item.get("refresh_priority") not in {"P1", "P2", "P3", "P4"}:
+            invalid_fields.append("refresh_priority")
+        refresh_queue = str(item.get("refresh_queue", ""))
+        expected_strategy, expected_evidence = source_refresh_strategy_for(refresh_queue)
+        if expected_strategy == "manual_source_refresh_review_required":
+            invalid_fields.append("refresh_queue")
+        if item.get("review_strategy") != expected_strategy:
+            invalid_fields.append("review_strategy")
+        if item.get("evidence_required") != expected_evidence:
+            invalid_fields.append("evidence_required")
+        expected_action = "no_refresh_needed" if refresh_queue == "fresh_no_refresh_needed" else refresh_queue
+        if item.get("recommended_refresh_action") != expected_action:
+            invalid_fields.append("recommended_refresh_action")
+        source_gate = str(item.get("source_gate", "")).lower()
+        if not source_gate.startswith(("keep ", "do not ", "no ")) or not any(
+            marker in source_gate for marker in ("official", "evidence", "documented")
+        ):
+            invalid_fields.append("source_gate")
+        freshness_context = str(item.get("freshness_review_context", ""))
+        for marker in (
+            f"generated_at={item.get('generated_at', '')}",
+            "age_bucket=",
+            f"freshness_status={item.get('freshness_status', '')}",
+            f"refresh_priority={item.get('refresh_priority', '')}",
+        ):
+            if marker not in freshness_context:
+                invalid_fields.append("freshness_review_context")
+                break
+        if item.get("refresh_gate_context") != source_refresh_gate_context(item):
+            invalid_fields.append("refresh_gate_context")
+
+        counters["priority_totals"][str(item.get("refresh_priority", ""))] += 1
+        counters["queue_totals"][refresh_queue] += 1
+        counters["mode_totals"][str(item.get("mode", ""))] += 1
+        counters["reference_scope_totals"][str(item.get("reference_scope", ""))] += 1
+        counters["freshness_status_totals"][str(item.get("freshness_status", ""))] += 1
+        counters["evidence_required_totals"][str(item.get("evidence_required", ""))] += 1
+        if missing_fields or invalid_fields:
+            row_gaps.append(
+                {
+                    "row_index": index,
+                    "source_key": item.get("source_key"),
+                    "reason": "missing_or_invalid_source_refresh_queue_fields",
+                    "missing_fields": missing_fields,
+                    "invalid_fields": sorted(set(invalid_fields)),
+                }
+            )
+
+    count_gaps = []
+    expected_summary_fields: dict[str, Any] = {"rows": len(items)}
+    expected_summary_fields.update({field: dict(sorted(counter.items())) for field, counter in counters.items()})
+    for field, expected in expected_summary_fields.items():
+        if summary.get(field) != expected:
+            count_gaps.append({"field": field, "expected": expected, "actual": summary.get(field)})
+
+    batch_gaps = []
+    top_batches = summary.get("top_source_refresh_batches", [])
+    if not isinstance(top_batches, list) or not top_batches:
+        batch_gaps.append({"field": "top_source_refresh_batches", "reason": "expected_ranked_refresh_batches"})
+        top_batches = []
+    batch_source_total = 0
+    for index, batch in enumerate(top_batches):
+        if not isinstance(batch, dict):
+            batch_gaps.append({"row_index": index, "reason": "batch_is_not_object"})
+            continue
+        missing_fields = [
+            field
+            for field in (
+                "refresh_queue",
+                "reference_scope",
+                "mode",
+                "refresh_priority",
+                "source_count",
+                "total_rows",
+                "max_age_hours",
+                "review_strategy",
+                "evidence_required",
+                "recommended_next_source",
+                "source_gate",
+            )
+            if field not in batch or batch.get(field) is None or batch.get(field) == ""
+        ]
+        invalid_fields: list[str] = []
+        queue = str(batch.get("refresh_queue", ""))
+        expected_strategy, expected_evidence = source_refresh_strategy_for(queue)
+        if queue not in counters["queue_totals"]:
+            invalid_fields.append("refresh_queue")
+        if batch.get("review_strategy") != expected_strategy:
+            invalid_fields.append("review_strategy")
+        if batch.get("evidence_required") != expected_evidence:
+            invalid_fields.append("evidence_required")
+        if not isinstance(batch.get("source_count"), int) or batch.get("source_count", 0) <= 0:
+            invalid_fields.append("source_count")
+        else:
+            batch_source_total += int(batch.get("source_count") or 0)
+        if not isinstance(batch.get("total_rows"), int) or batch.get("total_rows", -1) < 0:
+            invalid_fields.append("total_rows")
+        if not is_nonnegative_number(batch.get("max_age_hours")):
+            invalid_fields.append("max_age_hours")
+        source_gate = str(batch.get("source_gate", "")).lower()
+        if not source_gate.startswith(("keep ", "do not ", "no ")) or not any(
+            marker in source_gate for marker in ("official", "evidence", "documented")
+        ):
+            invalid_fields.append("source_gate")
+        if missing_fields or invalid_fields:
+            batch_gaps.append(
+                {
+                    "row_index": index,
+                    "reason": "missing_or_invalid_source_refresh_batch_fields",
+                    "missing_fields": missing_fields,
+                    "invalid_fields": sorted(set(invalid_fields)),
+                }
+            )
+    if top_batches and batch_source_total != len(items):
+        batch_gaps.append({"field": "top_source_refresh_batches.source_count", "expected": len(items), "actual": batch_source_total})
+
+    return {
+        "passed": bool(items) and not policy_missing_marker_groups and not row_gaps and not count_gaps and not batch_gaps,
+        "rows": summary.get("rows"),
+        "item_count": len(items),
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "count_gaps": count_gaps,
+        "batch_gaps": batch_gaps[:20],
+        "required_item_fields": list(SOURCE_REFRESH_QUEUE_REQUIRED_ITEM_FIELDS),
     }
 
 
@@ -17737,6 +17931,7 @@ def build_payload() -> dict[str, Any]:
     coverage = load_json(REPORTS_DIR / "coverage_report.json")
     official_name_mismatch_backfill = load_json(REPORTS_DIR / "official_name_mismatch_backfill.json")
     source_inventory_gap = load_json(REPORTS_DIR / "source_inventory_gap.json")
+    source_refresh_queue = load_json(REPORTS_DIR / "source_refresh_queue.json")
     source_gap = load_json(REPORTS_DIR / "source_gap_classification.json")
     symbol_changes_review = load_json(REPORTS_DIR / "symbol_changes_review.json")
     otc_name_mismatch_review = load_json(REPORTS_DIR / "otc_name_mismatch_review.json")
@@ -17803,6 +17998,7 @@ def build_payload() -> dict[str, Any]:
         official_name_mismatch_backfill
     )
     criteria["source_inventory_gap_gate"] = evaluate_source_inventory_gap_gate(source_inventory_gap)
+    criteria["source_refresh_queue_gate"] = evaluate_source_refresh_queue_gate(source_refresh_queue)
     criteria["source_gap_traceability"] = evaluate_source_gap_traceability(source_gap)
     criteria["symbol_change_review_gate"] = evaluate_symbol_change_review_gate(symbol_changes_review)
     criteria["otc_name_mismatch_review_gate"] = evaluate_otc_name_mismatch_review_gate(otc_name_mismatch_review)
