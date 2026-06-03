@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-03T14:38:14Z",
+    "generated_at": "2026-06-03T17:06:55Z",
     "rows": 71043,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,9 +14,9 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 63700,
+      "pass": 63707,
       "source_gap": 7270,
-      "warn": 73
+      "warn": 66
     },
     "evidence_level_counts": {
       "identifier_enriched": 4209,
@@ -26,7 +26,7 @@
     },
     "severity_counts": {
       "high": 63,
-      "medium": 10,
+      "medium": 3,
       "source_gap": 8033
     },
     "issue_counts": {
@@ -35,15 +35,15 @@
       "expected_missing_primary_isin": 846,
       "missing_etf_category": 74,
       "country_isin_mismatch": 63,
-      "official_name_mismatch": 10,
-      "venue_missing_official_source": 8
+      "venue_missing_official_source": 8,
+      "official_name_mismatch": 3
     },
     "top_flagged_exchanges": [
       {
         "exchange": "OTC",
-        "pass": 7861,
+        "pass": 7868,
         "source_gap": 3183,
-        "warn": 10
+        "warn": 3
       },
       {
         "exchange": "B3",

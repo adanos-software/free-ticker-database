@@ -2163,8 +2163,13 @@ def test_sto_review_overrides_keep_current_hotel_and_remove_nosium_b():
     assert hotel["isin"] == "SE0011415710"
     assert hotel["aliases"] == "hotel fast sse"
 
+    # MAXENT-B (Maximum Entertainment AB) is now the sole owner of the
+    # "maximum entertainment" alias. Previously BRIGHT/STO was mislabeled
+    # "Maximum Entertainment AB" and won the alias via duplicate dedup; BRIGHT
+    # has since been corrected to its real name "BrightBid Group AB" (Speqta
+    # rebrand), so MAXENT-B correctly retains its own name-derived alias.
     maxent_b = by_key[("MAXENT-B", "STO")]
-    assert maxent_b["aliases"] == ""
+    assert maxent_b["aliases"] == "maximum entertainment"
 
 
 def test_sto_review_overrides_drop_m8g_and_int_and_enrich_ver():

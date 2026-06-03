@@ -10,16 +10,16 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 | Metric | Value | Meaning |
 |---|---:|---|
 | Core listings | 54,031 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
-| Primary tickers | 61,468 | Rows in `data/tickers.csv`; one primary row per security. |
+| Primary tickers | 61,467 | Rows in `data/tickers.csv`; one primary row per security. |
 | Full listing rows | 71,043 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
-| Stocks | 45,913 | Primary ticker rows where `asset_type=Stock`. |
+| Stocks | 45,912 | Primary ticker rows where `asset_type=Stock`. |
 | ETFs | 15,555 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 80 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 86 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 121,656 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
+| Aliases | 121,628 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
 | ISIN coverage | 59,853 (97.4%) | Primary ticker rows with a non-empty `isin`. |
 | FIGI coverage | 64,316 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
-| Sector/category coverage | 58,765 (95.6%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Sector/category coverage | 58,764 (95.6%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
 | Stock sector coverage | 43,313 | Primary ticker rows with a non-empty `stock_sector`. |
 | ETF category coverage | 15,453 | Primary ticker rows with a non-empty `etf_category`. |
 | Core listing-scope rows | 54,031 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
@@ -124,7 +124,7 @@ JSON metadata:
   "_meta": {
     "version": "3.26.0",
     "built_at": "2026-05-31T03:58:05Z",
-    "total_tickers": 61468
+    "total_tickers": 61467
   },
   "tickers": []
 }
