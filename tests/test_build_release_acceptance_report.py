@@ -206,7 +206,11 @@ def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> N
     assert RELEASE_SOURCE_REPORTS["weak_sector_venue_action_queue"] == "data/reports/weak_sector_venue_action_queue.json"
 
 
-def test_evaluate_deepseek_advisory_integrity_accepts_drained_advisory_reports() -> None:
+def test_evaluate_deepseek_advisory_integrity_accepts_drained_advisory_reports(tmp_path) -> None:
+    raw_path = tmp_path / "data" / "deepseek_review_jobs" / "raw_responses.jsonl"
+    raw_path.parent.mkdir(parents=True)
+    raw_path.write_text(json.dumps({"batch": 1, "response": "reviewed"}) + "\n", encoding="utf-8")
+
     result = evaluate_deepseek_advisory_integrity(
         {
             "_meta": {
@@ -240,12 +244,18 @@ def test_evaluate_deepseek_advisory_integrity_accepts_drained_advisory_reports()
                 "secret_policy": "Read the API key only from DEEPSEEK_API_KEY. Never write it to files.",
             },
         },
+        root=tmp_path,
     )
 
     assert result["passed"] is True
     assert result["review_rows"] == 2
     assert result["raw_batches"] == 1
     assert result["raw_responses_jsonl"] == "data/deepseek_review_jobs/raw_responses.jsonl"
+    assert result["raw_missing"] is False
+    assert result["raw_line_count"] == 1
+    assert result["raw_batch_count_mismatch"] == {}
+    assert result["raw_parse_error_lines"] == []
+    assert result["raw_secret_pattern_lines"] == []
 
 
 def test_evaluate_deepseek_advisory_integrity_rejects_direct_or_open_batches() -> None:
@@ -283,6 +293,60 @@ def test_evaluate_deepseek_advisory_integrity_rejects_direct_or_open_batches() -
     assert result["queue_status_gaps"] == ["source_gap"]
     assert result["queue_unreviewed_gaps"] == {"source_gap": 3}
     assert result["secret_policy_missing"] is True
+    assert result["raw_missing"] is True
+
+
+def test_evaluate_deepseek_advisory_integrity_rejects_raw_artifact_gaps(tmp_path) -> None:
+    raw_path = tmp_path / "data" / "deepseek_review_jobs" / "raw_responses.jsonl"
+    raw_path.parent.mkdir(parents=True)
+    fake_secret = "sk-" + ("X" * 20)
+    raw_path.write_text(
+        json.dumps({"batch": 1, "response": fake_secret}) + "\n" + "{not-json}\n",
+        encoding="utf-8",
+    )
+
+    result = evaluate_deepseek_advisory_integrity(
+        {
+            "_meta": {
+                "policy": "DeepSeek review suggestions are triage only. They do not authorize data application.",
+                "raw_batches": 3,
+                "raw_responses_jsonl": "data/deepseek_review_jobs/raw_responses.jsonl",
+            },
+            "summary": {
+                "rows": 2,
+                "errors": 0,
+                "duplicate_review_key_rows": 0,
+                "blank_listing_key_rows": 0,
+                "safe_action_totals": {"needs_official_evidence": 1, "source_gap_accept": 1},
+            },
+        },
+        {
+            "_meta": {
+                "policy": "This plan prepares DeepSeek advisory triage only. DeepSeek output must not authorize direct data application.",
+            },
+            "queues": [
+                {
+                    "queue": "source_gap",
+                    "review_coverage_status": "complete",
+                    "unreviewed_unique_keys": 0,
+                }
+            ],
+            "selected_batch": {
+                "queue": None,
+                "rows": 0,
+                "required_env": "DEEPSEEK_API_KEY",
+                "secret_policy": "Read the API key only from DEEPSEEK_API_KEY. Never write it to files.",
+            },
+        },
+        root=tmp_path,
+    )
+
+    assert result["passed"] is False
+    assert result["raw_missing"] is False
+    assert result["raw_line_count"] == 2
+    assert result["raw_batch_count_mismatch"] == {"reported": 3, "actual": 2}
+    assert result["raw_parse_error_lines"] == [2]
+    assert result["raw_secret_pattern_lines"] == [1]
 
 
 def test_evaluate_deepseek_queue_advisory_policies_accepts_gated_queues() -> None:

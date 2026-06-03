@@ -18,6 +18,7 @@ DEFAULT_MD_OUT = REPORTS_DIR / "release_acceptance.md"
 REVIEW_ARTIFACT_SIBLING_STALE_GRACE_SECONDS = 60
 COMMAND_SCRIPT_PATTERN = re.compile(r"\bpython\s+(scripts/[\w./-]+\.py)")
 REVIEW_SOURCE_REPORT_NAME_MARKERS = ("queue", "review", "gap", "backlog")
+SECRET_TOKEN_PATTERN = re.compile(r"sk-[A-Za-z0-9_-]{16,}")
 
 RELEASE_SOURCE_REPORTS = {
     "validation_report": "data/reports/validation_report.json",
@@ -3272,6 +3273,8 @@ DEEPSEEK_ALLOWED_SAFE_ACTIONS = {
 def evaluate_deepseek_advisory_integrity(
     review_summary: dict[str, Any],
     batch_plan: dict[str, Any],
+    *,
+    root: Path = ROOT,
 ) -> dict[str, Any]:
     summary = review_summary.get("summary", {})
     if not isinstance(summary, dict):
@@ -3314,6 +3317,27 @@ def evaluate_deepseek_advisory_integrity(
         if int(row.get("unreviewed_unique_keys") or 0) != 0
     }
     selected_batch_open = bool(selected_batch.get("queue")) or int(selected_batch.get("rows") or 0) != 0
+    raw_responses_jsonl = str(review_meta.get("raw_responses_jsonl", ""))
+    raw_path = root / raw_responses_jsonl if raw_responses_jsonl else None
+    raw_line_count = 0
+    raw_parse_error_lines: list[int] = []
+    raw_secret_pattern_lines: list[int] = []
+    raw_missing = raw_path is None or not raw_path.exists()
+    if raw_path and raw_path.exists():
+        with raw_path.open(encoding="utf-8") as handle:
+            for line_number, line in enumerate(handle, start=1):
+                raw_line_count += 1
+                if SECRET_TOKEN_PATTERN.search(line):
+                    raw_secret_pattern_lines.append(line_number)
+                try:
+                    json.loads(line)
+                except json.JSONDecodeError:
+                    raw_parse_error_lines.append(line_number)
+    raw_batch_count_mismatch = (
+        {"reported": int(review_meta.get("raw_batches") or 0), "actual": raw_line_count}
+        if not raw_missing and int(review_meta.get("raw_batches") or 0) != raw_line_count
+        else {}
+    )
     return {
         "passed": (
             not policy_missing_markers
@@ -3328,10 +3352,19 @@ def evaluate_deepseek_advisory_integrity(
             and not queue_status_gaps
             and not queue_unreviewed_gaps
             and not selected_batch_open
+            and not raw_missing
+            and not raw_batch_count_mismatch
+            and not raw_parse_error_lines
+            and not raw_secret_pattern_lines
         ),
         "review_rows": int(summary.get("rows") or 0),
         "raw_batches": int(review_meta.get("raw_batches") or 0),
-        "raw_responses_jsonl": str(review_meta.get("raw_responses_jsonl", "")),
+        "raw_responses_jsonl": raw_responses_jsonl,
+        "raw_missing": raw_missing,
+        "raw_line_count": raw_line_count,
+        "raw_batch_count_mismatch": raw_batch_count_mismatch,
+        "raw_parse_error_lines": raw_parse_error_lines[:20],
+        "raw_secret_pattern_lines": raw_secret_pattern_lines[:20],
         "errors": int(summary.get("errors") or 0),
         "duplicate_review_key_rows": int(summary.get("duplicate_review_key_rows") or 0),
         "blank_listing_key_rows": int(summary.get("blank_listing_key_rows") or 0),
