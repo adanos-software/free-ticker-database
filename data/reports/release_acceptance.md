@@ -1,17 +1,17 @@
 # Release Acceptance
 
-Generated: `2026-06-03T02:03:20Z`
+Generated: `2026-06-03T02:11:29Z`
 
 Overall passed: `True`
 
-Summary context: `passed=true;criteria=55;passed_criteria=55;failed_criteria=0;validation_failed_error_gates=0`
+Summary context: `passed=true;criteria=56;passed_criteria=56;failed_criteria=0;validation_failed_error_gates=0`
 
 ## Summary
 
 | Metric | Value |
 |---|---:|
-| `criteria` | `55` |
-| `passed_criteria` | `55` |
+| `criteria` | `56` |
+| `passed_criteria` | `56` |
 | `failed_criteria` | `0` |
 | `validation_failed_error_gates` | `0` |
 
@@ -51,6 +51,7 @@ Summary context: `passed=true;criteria=55;passed_criteria=55;failed_criteria=0;v
 | `b3_core_scope_review_queue_gate` | True |
 | `b3_improvement_action_queue_gate` | True |
 | `b3_residual_gate` | True |
+| `asx_scope_review_queue_gate` | True |
 | `asx_residual_gate` | True |
 | `weak_sector_residual_gate` | True |
 | `weak_sector_venue_action_queue_gate` | True |

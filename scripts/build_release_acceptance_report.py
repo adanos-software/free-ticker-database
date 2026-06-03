@@ -54,6 +54,7 @@ RELEASE_SOURCE_REPORTS = {
     "b3_improvement_action_queue": "data/reports/b3_improvement_action_queue.json",
     "b3_residual_isin_review": "data/reports/b3_residual_isin_review.json",
     "b3_residual_sector_review": "data/reports/b3_residual_sector_review.json",
+    "asx_scope_review_queue": "data/reports/asx_scope_review_queue.json",
     "asx_residual_review": "data/reports/asx_residual_review.json",
     "weak_sector_residual_review": "data/reports/weak_sector_residual_review.json",
     "weak_sector_venue_action_queue": "data/reports/weak_sector_venue_action_queue.json",
@@ -1818,6 +1819,34 @@ B3_CORE_SCOPE_POLICY_MARKER_GROUPS = {
     "scope_first": ("core", "extended", "exclude", "before b3 identifier"),
     "no_data_apply": ("does not authorize", "isin", "category", "scope changes"),
     "source_gate": ("exact listing-keyed", "official b3", "registry", "prospectus"),
+}
+ASX_SCOPE_REQUIRED_ROW_FIELDS = (
+    "listing_key",
+    "ticker",
+    "exchange",
+    "asset_type",
+    "name",
+    "field",
+    "gap_class",
+    "official_masterfile_match",
+    "official_masterfile_exposes_isin",
+    "official_masterfile_exposes_sector",
+    "asx_isin_probe_decision",
+    "current_instrument_scope",
+    "current_scope_reason",
+    "listing_history_status",
+    "scope_review_queue",
+    "scope_decision_gate",
+    "recommended_scope_action",
+    "verification_evidence_required",
+    "recommended_next_source",
+    "source_gate",
+    "review_context",
+)
+ASX_SCOPE_POLICY_MARKER_GROUPS = {
+    "scope_first": ("core", "extended", "exclude", "before identifier"),
+    "no_data_apply": ("does not authorize", "isin", "etf-category", "scope changes"),
+    "source_gate": ("exact listing-keyed", "official asx", "registry", "prospectus"),
 }
 
 
@@ -3871,6 +3900,140 @@ def evaluate_b3_core_scope_review_queue_gate(review_queue: dict[str, Any]) -> di
         "row_gaps": row_gaps[:20],
         "count_gaps": count_gaps,
         "required_row_fields": list(B3_CORE_SCOPE_REQUIRED_ROW_FIELDS),
+    }
+
+
+def evaluate_asx_scope_review_queue_gate(review_queue: dict[str, Any]) -> dict[str, Any]:
+    summary = review_queue.get("summary", {})
+    if not isinstance(summary, dict):
+        summary = {}
+    rows = review_queue.get("rows", [])
+    if not isinstance(rows, list):
+        rows = []
+    policy = summary.get("policy", {})
+    if not isinstance(policy, dict):
+        policy = {}
+    policy_text = " ".join(str(value) for value in policy.values()).lower()
+    policy_missing_marker_groups = [
+        group
+        for group, markers in ASX_SCOPE_POLICY_MARKER_GROUPS.items()
+        if not any(marker in policy_text for marker in markers)
+    ]
+
+    counters: dict[str, Counter[str]] = {
+        "scope_review_queue_totals": Counter(),
+        "asset_type_totals": Counter(),
+        "gap_class_totals": Counter(),
+        "official_source_totals": Counter(),
+        "current_scope_reason_totals": Counter(),
+        "listing_history_status_totals": Counter(),
+        "ohlcv_plausibility_status_totals": Counter(),
+        "verification_evidence_required_totals": Counter(),
+    }
+    batch_counter: Counter[tuple[str, str]] = Counter()
+    row_gaps: list[dict[str, Any]] = []
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            row_gaps.append({"row_index": index, "reason": "row_is_not_object"})
+            continue
+        missing_fields = [field for field in ASX_SCOPE_REQUIRED_ROW_FIELDS if not row.get(field)]
+        invalid_fields: list[str] = []
+        if row.get("exchange") != "ASX":
+            invalid_fields.append("exchange")
+        if row.get("current_instrument_scope") != "core":
+            invalid_fields.append("current_instrument_scope")
+        if row.get("asx_resolution_queue") != "core_exclusion_candidate_identifier_scope_review":
+            invalid_fields.append("asx_resolution_queue")
+        if row.get("scope_decision_gate") != "decide_core_extended_or_exclude_before_asx_identifier_or_category_enrichment":
+            invalid_fields.append("scope_decision_gate")
+        evidence_required = str(row.get("verification_evidence_required", "")).lower()
+        if not any(marker in evidence_required for marker in ("official_asx", "current_active_or_inactive_official_asx")):
+            invalid_fields.append("verification_evidence_required")
+        if "scope_decision" not in evidence_required:
+            invalid_fields.append("verification_evidence_required")
+        source_gate = str(row.get("source_gate", "")).lower()
+        if not source_gate.startswith(("no ", "do not ")) or "evidence" not in source_gate:
+            invalid_fields.append("source_gate")
+        review_context = str(row.get("review_context", ""))
+        if "scope_decision_gate=" not in review_context or "gap_class=" not in review_context:
+            invalid_fields.append("review_context")
+
+        scope_queue = str(row.get("scope_review_queue", ""))
+        official_sources = str(row.get("official_masterfile_sources", ""))
+        official_source_values = official_sources.split("|") if official_sources else ["none"]
+        counters["scope_review_queue_totals"][scope_queue] += 1
+        counters["asset_type_totals"][str(row.get("asset_type", ""))] += 1
+        counters["gap_class_totals"][str(row.get("gap_class", ""))] += 1
+        for source in official_source_values:
+            counters["official_source_totals"][source] += 1
+            batch_counter[(scope_queue, source)] += 1
+        counters["current_scope_reason_totals"][str(row.get("current_scope_reason") or "missing_scope_reason")] += 1
+        counters["listing_history_status_totals"][str(row.get("listing_history_status") or "missing_listing_history_row")] += 1
+        counters["ohlcv_plausibility_status_totals"][str(row.get("ohlcv_plausibility_status") or "not_sampled")] += 1
+        counters["verification_evidence_required_totals"][
+            str(row.get("verification_evidence_required", ""))
+        ] += 1
+
+        if missing_fields or invalid_fields:
+            row_gaps.append(
+                {
+                    "row_index": index,
+                    "listing_key": row.get("listing_key"),
+                    "reason": "missing_or_invalid_asx_scope_fields",
+                    "missing_fields": missing_fields,
+                    "invalid_fields": sorted(set(invalid_fields)),
+                }
+            )
+
+    count_gaps = []
+    expected_summary_fields: dict[str, Any] = {"rows": len(rows)}
+    expected_summary_fields.update({field: dict(sorted(counter.items())) for field, counter in counters.items()})
+    for field, expected in expected_summary_fields.items():
+        if summary.get(field) != expected:
+            count_gaps.append({"field": field, "expected": expected, "actual": summary.get(field)})
+
+    batch_gaps = []
+    top_batches = summary.get("top_scope_review_batches", [])
+    if not isinstance(top_batches, list):
+        top_batches = []
+    expected_batches = {
+        (queue, source): count
+        for (queue, source), count in sorted(batch_counter.items(), key=lambda item: (-item[1], item[0][0], item[0][1]))[
+            :20
+        ]
+    }
+    actual_batches = {
+        (str(batch.get("scope_review_queue", "")), str(batch.get("official_source", ""))): batch.get("rows")
+        for batch in top_batches
+        if isinstance(batch, dict)
+    }
+    if actual_batches != expected_batches:
+        batch_gaps.append({"field": "top_scope_review_batches", "expected": expected_batches, "actual": actual_batches})
+    for index, batch in enumerate(top_batches):
+        if not isinstance(batch, dict):
+            batch_gaps.append({"row_index": index, "reason": "batch_is_not_object"})
+            continue
+        missing_fields = [
+            field
+            for field in ("scope_review_queue", "official_source", "rows", "verification_evidence_required", "recommended_next_source", "source_gate")
+            if not batch.get(field)
+        ]
+        source_gate = str(batch.get("source_gate", "")).lower()
+        if not source_gate.startswith(("no ", "do not ")) or "evidence" not in source_gate:
+            missing_fields.append("source_gate")
+        if missing_fields:
+            batch_gaps.append({"row_index": index, "missing_or_invalid_fields": sorted(set(missing_fields))})
+
+    return {
+        "passed": bool(rows) and not policy_missing_marker_groups and not row_gaps and not count_gaps and not batch_gaps,
+        "rows": summary.get("rows"),
+        "row_count": len(rows),
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "count_gaps": count_gaps,
+        "batch_gaps": batch_gaps[:20],
+        "required_row_fields": list(ASX_SCOPE_REQUIRED_ROW_FIELDS),
     }
 
 
@@ -17194,6 +17357,7 @@ def build_payload() -> dict[str, Any]:
     b3_improvement_action_queue = load_json(REPORTS_DIR / "b3_improvement_action_queue.json")
     b3_residual_isin = load_json(REPORTS_DIR / "b3_residual_isin_review.json")
     b3_residual_sector = load_json(REPORTS_DIR / "b3_residual_sector_review.json")
+    asx_scope_review_queue = load_json(REPORTS_DIR / "asx_scope_review_queue.json")
     asx_residual = load_json(REPORTS_DIR / "asx_residual_review.json")
     weak_sector = load_json(REPORTS_DIR / "weak_sector_residual_review.json")
     weak_sector_venue_action_queue = load_json(REPORTS_DIR / "weak_sector_venue_action_queue.json")
@@ -17268,6 +17432,7 @@ def build_payload() -> dict[str, Any]:
         b3_improvement_action_queue
     )
     criteria["b3_residual_gate"] = evaluate_b3_residual_gate(b3_residual_isin, b3_residual_sector)
+    criteria["asx_scope_review_queue_gate"] = evaluate_asx_scope_review_queue_gate(asx_scope_review_queue)
     criteria["asx_residual_gate"] = evaluate_asx_residual_gate(asx_residual)
     criteria["weak_sector_residual_gate"] = evaluate_weak_sector_residual_gate(weak_sector)
     criteria["weak_sector_venue_action_queue_gate"] = evaluate_weak_sector_venue_action_queue_gate(

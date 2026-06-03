@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-03T02:03:20Z",
+    "generated_at": "2026-06-03T02:11:29Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -38,6 +38,7 @@
       "b3_improvement_action_queue": "data/reports/b3_improvement_action_queue.json",
       "b3_residual_isin_review": "data/reports/b3_residual_isin_review.json",
       "b3_residual_sector_review": "data/reports/b3_residual_sector_review.json",
+      "asx_scope_review_queue": "data/reports/asx_scope_review_queue.json",
       "asx_residual_review": "data/reports/asx_residual_review.json",
       "weak_sector_residual_review": "data/reports/weak_sector_residual_review.json",
       "weak_sector_venue_action_queue": "data/reports/weak_sector_venue_action_queue.json",
@@ -47,12 +48,12 @@
   },
   "passed": true,
   "summary": {
-    "criteria": 55,
-    "passed_criteria": 55,
+    "criteria": 56,
+    "passed_criteria": 56,
     "failed_criteria": 0,
     "validation_failed_error_gates": 0
   },
-  "summary_context": "passed=true;criteria=55;passed_criteria=55;failed_criteria=0;validation_failed_error_gates=0",
+  "summary_context": "passed=true;criteria=56;passed_criteria=56;failed_criteria=0;validation_failed_error_gates=0",
   "criteria": {
     "no_invalid_isins": {
       "passed": true,
@@ -227,18 +228,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-03T02:03:20Z",
+      "release_generated_at": "2026-06-03T02:11:29Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-03T02:03:09Z"
+          "generated_at": "2026-06-03T02:11:17Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-06-03T02:03:09Z"
+          "generated_at": "2026-06-03T02:11:16Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -405,6 +406,11 @@
           "exists": true,
           "generated_at": "2026-06-02T18:54:28Z"
         },
+        "asx_scope_review_queue": {
+          "path": "data/reports/asx_scope_review_queue.json",
+          "exists": true,
+          "generated_at": "2026-06-02T20:18:32Z"
+        },
         "asx_residual_review": {
           "path": "data/reports/asx_residual_review.json",
           "exists": true,
@@ -556,7 +562,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-06-03T02:03:09Z",
+      "generated_at": "2026-06-03T02:11:16Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -1336,6 +1342,39 @@
         "sector": 194,
         "total": 206
       }
+    },
+    "asx_scope_review_queue_gate": {
+      "passed": true,
+      "rows": 94,
+      "row_count": 94,
+      "policy_missing_marker_groups": [],
+      "row_gap_count": 0,
+      "row_gaps": [],
+      "count_gaps": [],
+      "batch_gaps": [],
+      "required_row_fields": [
+        "listing_key",
+        "ticker",
+        "exchange",
+        "asset_type",
+        "name",
+        "field",
+        "gap_class",
+        "official_masterfile_match",
+        "official_masterfile_exposes_isin",
+        "official_masterfile_exposes_sector",
+        "asx_isin_probe_decision",
+        "current_instrument_scope",
+        "current_scope_reason",
+        "listing_history_status",
+        "scope_review_queue",
+        "scope_decision_gate",
+        "recommended_scope_action",
+        "verification_evidence_required",
+        "recommended_next_source",
+        "source_gate",
+        "review_context"
+      ]
     },
     "asx_residual_gate": {
       "passed": true,
