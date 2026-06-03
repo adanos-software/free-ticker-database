@@ -12080,7 +12080,7 @@ def test_evaluate_source_inventory_gap_gate_accepts_inventory_backlog() -> None:
                     "missing_sector_or_category": 125,
                     "unresolved_findings": 225,
                     "official_source_count": 0,
-                    "candidate_key": "egx_listed_securities",
+                    "candidate_key": "lse_price_explorer",
                     "candidate_scope": "exchange_directory_candidate",
                     "provider": "EGX",
                     "expected_format": "html_or_api",
@@ -12103,7 +12103,7 @@ def test_evaluate_source_inventory_gap_gate_accepts_inventory_backlog() -> None:
                     "missing_sector_or_category": 1302,
                     "unresolved_findings": 52,
                     "official_source_count": 3,
-                    "candidate_key": "",
+                    "candidate_key": "egx_listed_securities",
                     "candidate_scope": "source_expansion_candidate",
                     "provider": "LSE",
                     "expected_format": "lse_price_explorer_json",
@@ -12148,7 +12148,7 @@ def test_evaluate_source_inventory_gap_gate_rejects_missing_policy_or_stale_coun
                     "missing_sector_or_category": 1,
                     "unresolved_findings": 1,
                     "official_source_count": 0,
-                    "candidate_key": "",
+                    "candidate_key": "egx_listed_securities",
                     "candidate_scope": "",
                     "provider": "EGX",
                     "expected_format": "html",
@@ -12255,7 +12255,7 @@ def test_evaluate_source_inventory_gap_gate_rejects_unknown_status_or_scope() ->
                     "missing_sector_or_category": 1302,
                     "unresolved_findings": 52,
                     "official_source_count": 3,
-                    "candidate_key": "",
+                    "candidate_key": "lse_price_explorer",
                     "candidate_scope": "needs_source_research",
                     "provider": "LSE",
                     "expected_format": "lse_price_explorer_json",
@@ -12359,7 +12359,7 @@ def test_evaluate_source_inventory_gap_gate_rejects_missing_source_evidence() ->
                     "missing_sector_or_category": 1302,
                     "unresolved_findings": 52,
                     "official_source_count": 3,
-                    "candidate_key": "",
+                    "candidate_key": "lse_price_explorer",
                     "candidate_scope": "source_expansion_candidate",
                     "provider": "LSE",
                     "expected_format": "unknown",
@@ -12380,6 +12380,107 @@ def test_evaluate_source_inventory_gap_gate_rejects_missing_source_evidence() ->
     assert result["passed"] is False
     assert result["row_gap_count"] == 1
     assert result["row_gaps"][0]["invalid_fields"] == ["expected_format", "source_url"]
+
+
+def test_evaluate_source_inventory_gap_gate_rejects_missing_or_duplicate_candidate_keys() -> None:
+    result = evaluate_source_inventory_gap_gate(
+        {
+            "summary": {
+                "generated_at": "2026-06-03T00:00:00Z",
+                "policy": {
+                    "inventory_only": "This report is a source inventory and parser backlog only; it does not authorize data fills.",
+                    "official_source_gate": "Official source parsers must write reference.csv before data evidence exists.",
+                    "no_guessing": "Missing fields remain blank until sourced.",
+                    "review_gate": "Rows marked review_needed require source review before scope changes.",
+                },
+                "rows": 3,
+                "current_status_counts": {"missing": 3},
+                "candidate_scope_counts": {"exchange_directory_candidate": 3},
+                "todo_rows": 3,
+                "current_scope_candidates": 3,
+                "global_expansion_candidates": 0,
+                "high_priority_rows": 3,
+            },
+            "rows": [
+                {
+                    "priority_rank": 1,
+                    "exchange": "EGX",
+                    "current_status": "missing",
+                    "tickers": 225,
+                    "missing_isin": 25,
+                    "missing_sector_or_category": 125,
+                    "unresolved_findings": 225,
+                    "official_source_count": 0,
+                    "candidate_key": "egx_listed_securities",
+                    "candidate_scope": "exchange_directory_candidate",
+                    "provider": "EGX",
+                    "expected_format": "html_or_api",
+                    "source_url": "https://www.egx.com.eg/en/ListedStocks.aspx",
+                    "implementation_status": "todo",
+                    "source_mode": "network",
+                    "source_refresh_queue": "fresh_no_refresh_needed",
+                    "source_last_error": "",
+                    "priority": "high",
+                    "review_needed": True,
+                    "blocker": "needs endpoint discovery",
+                    "notes": "Current-scope source gap.",
+                },
+                {
+                    "priority_rank": 2,
+                    "exchange": "EGX",
+                    "current_status": "missing",
+                    "tickers": 225,
+                    "missing_isin": 25,
+                    "missing_sector_or_category": 125,
+                    "unresolved_findings": 225,
+                    "official_source_count": 0,
+                    "candidate_key": "egx_listed_securities",
+                    "candidate_scope": "exchange_directory_candidate",
+                    "provider": "EGX",
+                    "expected_format": "html_or_api",
+                    "source_url": "https://www.egx.com.eg/en/ListedStocks.aspx",
+                    "implementation_status": "todo",
+                    "source_mode": "network",
+                    "source_refresh_queue": "fresh_no_refresh_needed",
+                    "source_last_error": "",
+                    "priority": "high",
+                    "review_needed": True,
+                    "blocker": "needs endpoint discovery",
+                    "notes": "Duplicate candidate key.",
+                },
+                {
+                    "priority_rank": 3,
+                    "exchange": "LSE",
+                    "current_status": "missing",
+                    "tickers": 6408,
+                    "missing_isin": 47,
+                    "missing_sector_or_category": 1302,
+                    "unresolved_findings": 52,
+                    "official_source_count": 3,
+                    "candidate_key": "",
+                    "candidate_scope": "exchange_directory_candidate",
+                    "provider": "LSE",
+                    "expected_format": "lse_price_explorer_json",
+                    "source_url": "https://www.londonstockexchange.com/market-stock/0",
+                    "implementation_status": "todo",
+                    "source_mode": "network",
+                    "source_refresh_queue": "fresh_no_refresh_needed",
+                    "source_last_error": "",
+                    "priority": "high",
+                    "review_needed": True,
+                    "blocker": "needs endpoint discovery",
+                    "notes": "Missing candidate key.",
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["row_gap_count"] == 1
+    assert result["row_gaps"][0]["invalid_fields"] == ["candidate_key"]
+    assert result["count_gaps"] == [
+        {"field": "candidate_key", "reason": "duplicate_candidate_keys", "actual": ["egx_listed_securities"]}
+    ]
 
 
 def test_evaluate_weak_sector_venue_action_queue_gate_accepts_blocked_batches() -> None:

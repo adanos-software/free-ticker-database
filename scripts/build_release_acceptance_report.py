@@ -18107,6 +18107,7 @@ def evaluate_source_inventory_gap_gate(report: dict[str, Any]) -> dict[str, Any]
 
     current_status_counts = Counter()
     candidate_scope_counts = Counter()
+    candidate_key_counts = Counter()
     row_gaps: list[dict[str, Any]] = []
     seen_priority_ranks: set[int] = set()
     for index, row in enumerate(rows):
@@ -18135,6 +18136,8 @@ def evaluate_source_inventory_gap_gate(report: dict[str, Any]) -> dict[str, Any]
             invalid_fields.append("current_status")
         if row.get("candidate_scope") not in SOURCE_INVENTORY_ALLOWED_CANDIDATE_SCOPES:
             invalid_fields.append("candidate_scope")
+        if not row.get("candidate_key"):
+            invalid_fields.append("candidate_key")
         if row.get("source_mode", "") not in SOURCE_INVENTORY_ALLOWED_SOURCE_MODES:
             invalid_fields.append("source_mode")
         if not isinstance(row.get("review_needed"), bool):
@@ -18156,6 +18159,7 @@ def evaluate_source_inventory_gap_gate(report: dict[str, Any]) -> dict[str, Any]
             invalid_fields.append("blocker")
         current_status_counts[str(row.get("current_status", ""))] += 1
         candidate_scope_counts[str(row.get("candidate_scope", ""))] += 1
+        candidate_key_counts[str(row.get("candidate_key", ""))] += 1
         if missing_fields or invalid_fields:
             row_gaps.append(
                 {
@@ -18195,6 +18199,11 @@ def evaluate_source_inventory_gap_gate(report: dict[str, Any]) -> dict[str, Any]
                 "expected": dict(sorted(candidate_scope_counts.items())),
                 "actual": summary.get("candidate_scope_counts"),
             }
+        )
+    duplicate_candidate_keys = sorted(key for key, count in candidate_key_counts.items() if key and count > 1)
+    if duplicate_candidate_keys:
+        count_gaps.append(
+            {"field": "candidate_key", "reason": "duplicate_candidate_keys", "actual": duplicate_candidate_keys[:20]}
         )
     if seen_priority_ranks != expected_priority_ranks:
         count_gaps.append(
