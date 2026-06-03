@@ -3071,6 +3071,7 @@ SOURCE_INVENTORY_POLICY_MARKER_GROUPS = {
     "no_guessing": ("remain blank", "until sourced", "no_guessing"),
     "review_gate": ("review_needed", "source review", "scope changes"),
 }
+SOURCE_INVENTORY_ALLOWED_SOURCE_MODES = {"", "cache", "network", "unavailable"}
 WEAK_SECTOR_ACTION_REQUIRED_ITEM_FIELDS = (
     "exchange",
     "weak_sector_resolution_queue",
@@ -18112,11 +18113,14 @@ def evaluate_source_inventory_gap_gate(report: dict[str, Any]) -> dict[str, Any]
             invalid_fields.append("implementation_status")
         if row.get("priority") not in {"high", "medium", "low"}:
             invalid_fields.append("priority")
+        if row.get("source_mode", "") not in SOURCE_INVENTORY_ALLOWED_SOURCE_MODES:
+            invalid_fields.append("source_mode")
         if str(row.get("current_status", "")) in {"missing", "official_partial", "manual_only"}:
             if not row.get("candidate_scope"):
                 invalid_fields.append("candidate_scope")
         if row.get("source_mode") == "unavailable":
-            if not row.get("source_refresh_queue"):
+            source_refresh_queue = row.get("source_refresh_queue")
+            if source_refresh_queue != "restore_or_replace_unavailable_source_before_data_fill":
                 invalid_fields.append("source_refresh_queue")
             if not row.get("source_last_error"):
                 invalid_fields.append("source_last_error")
