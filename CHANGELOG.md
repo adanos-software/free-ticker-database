@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [3.28.0] - 2026-06-04
+
+### Summary
+
+Correctness-hardening release built on top of v3.27.0. A 384-row statistical audit (validated against authoritative live sources) measured row-level correctness at 97.1% (95% Wilson CI [94.9%, 98.4%]) and surfaced three error classes; the two systematic ones are fixed wholesale here and the largest is now guarded by a deterministic release gate.
+
 ### Fixed
 
 - Fixed a systematic ticker-collision ISIN error class: 571 US-exchange listings carried the ISIN (and country) of a *different* same-ticker foreign company picked up by a ticker-only identifier match (e.g. Aflac holding an ASX ISIN, American Electric Power a Canadian ISIN, Assurant an Air New Zealand ISIN, Carnival the Carnival plc UK ISIN, IAMGOLD the Insurance Australia Group ISIN). These were internally consistent (country matched the wrong ISIN) and so evaded the existing gates. Each row was validated against authoritative sources (OpenFIGI/SEC/MarketScreener/issuer pages); 537 were corrected to the verified ISIN and 34 were cleared where the correct value could not be confirmed (missing > wrong).
