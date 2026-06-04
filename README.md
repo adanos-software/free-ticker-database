@@ -9,7 +9,7 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 
 | Metric | Value | Meaning |
 |---|---:|---|
-| Core listings | 54,031 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
+| Core listings | 53,961 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
 | Primary tickers | 61,484 | Rows in `data/tickers.csv`; one primary row per security. |
 | Full listing rows | 71,043 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
 | Stocks | 45,900 | Primary ticker rows where `asset_type=Stock`. |
@@ -20,8 +20,8 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 | ISIN coverage | 59,837 (97.3%) | Primary ticker rows with a non-empty `isin`. |
 | FIGI coverage | 64,316 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
 | Sector/category coverage | 58,770 (95.6%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 43,313 | Primary ticker rows with a non-empty `stock_sector`. |
-| ETF category coverage | 15,453 | Primary ticker rows with a non-empty `etf_category`. |
+| Stock sector coverage | 43,295 | Primary ticker rows with a non-empty `stock_sector`. |
+| ETF category coverage | 15,475 | Primary ticker rows with a non-empty `etf_category`. |
 | Core listing-scope rows | 53,961 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
 | Core primary rows with ISIN | 53,081 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
 | Core primary rows missing ISIN | 880 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
@@ -141,7 +141,7 @@ Additional collision-safe tables: `core_listings` and `core_aliases`.
 - Natural-language aliases are derived from current security names on every rebuild, then normalized to API-safe aliases.
 - Duplicate natural-language aliases are either assigned to a clear best owner or removed from public alias columns.
 - `data/reports/entry_quality.csv` stores one deterministic quality row per `listing_key`.
-- `data/reports/validation_report.json` is the release gate: duplicate keys, invalid ISINs, typed sector/category leakage, blank country metadata on ISIN-bearing rows, mojibake name corruption, Adanos alias findings, unexpected entry-quality warnings, stale coverage counts, stale/unclassified residual source gaps, and stale source-of-truth decisions must be clean.
+- `data/reports/validation_report.json` is the release gate: duplicate keys, invalid ISINs, typed sector/category leakage, blank country metadata on ISIN-bearing rows, mojibake name corruption, Adanos alias findings, unexpected entry-quality warnings, stale coverage counts, stale/unclassified residual source gaps, unreviewed US-primary foreign ISINs (ticker-collision suspects, allowlisted in `data/review_overrides/foreign_isin_reviewed.csv`), and stale source-of-truth decisions must be clean.
 - `data/reports/ohlcv_plausibility.csv` stores optional market-data hygiene checks; default runs are no-network and omit unchecked rows unless local OHLCV samples, `--fetch-yahoo`, or `--include-not-checked` are provided.
 - Obvious common-word, wrapper, celebrity, product, junk, short, and numeric aliases are filtered.
 - Rights, units, warrants, notes, preferreds, and depositary lines are filtered from the stock universe.
@@ -156,15 +156,15 @@ Top exchanges by primary ticker count:
 
 | Exchange | Tickers |
 |---|---:|
-| OTC | 7,437 |
+| OTC | 7,524 |
 | NASDAQ | 4,540 |
-| LSE | 3,763 |
+| LSE | 3,693 |
 | TSE | 3,190 |
 | SZSE | 3,083 |
 | HKEX | 2,841 |
 | SSE | 2,787 |
 | BSE_IN | 2,641 |
-| NYSE ARCA | 2,567 |
+| NYSE ARCA | 2,568 |
 | XETRA | 2,235 |
 | NYSE | 2,041 |
 | KRX | 1,796 |

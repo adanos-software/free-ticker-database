@@ -974,8 +974,8 @@ def build_validation_report(
             ),
             fail_gate(
                 "us_foreign_isin_unreviewed_count",
-                len(unreviewed_foreign_isin_rows(tickers, load_foreign_isin_allowlist())),
-                unreviewed_foreign_isin_rows(tickers, load_foreign_isin_allowlist()),
+                len(unreviewed_rows := unreviewed_foreign_isin_rows(tickers, load_foreign_isin_allowlist())),
+                unreviewed_rows,
             ),
             fail_gate("duplicate_identifier_ticker_count", len(duplicate_values(identifiers, "ticker"))),
             fail_gate("duplicate_identifier_listing_key_count", len(duplicate_values(identifiers_extended, "listing_key"))),
