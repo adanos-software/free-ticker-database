@@ -2882,11 +2882,12 @@ def test_freshness_timestamps_are_coherent():
 
 
 def test_us_primary_foreign_isin_rows_are_reviewed():
-    """Guards the ticker-collision-ISIN class: a US-primary Stock listing carrying a
-    non-US (non-offshore) ISIN must be a reviewed legitimate foreign-incorporated /
-    cross-listing, recorded in review_overrides/foreign_isin_reviewed.csv. A new
-    unreviewed one usually means a short US ticker picked up a same-ticker foreign
-    namesake's ISIN (e.g. Aflac with an ASX ISIN)."""
+    """Guards the ticker-collision-ISIN class: a US-primary Stock or ETF listing
+    carrying a non-US (non-offshore) ISIN must be a reviewed legitimate foreign-
+    incorporated / cross-listing, recorded in review_overrides/foreign_isin_reviewed.csv.
+    A new unreviewed one usually means a short US ticker or US-domiciled ETF picked up a
+    same-ticker foreign namesake's ISIN (e.g. Aflac with an ASX ISIN, or the iShares MSCI
+    Chile ETF with a Polish ISIN)."""
     us_primary = {"NYSE", "NASDAQ", "NYSE ARCA", "NYSE MKT", "AMEX", "BATS"}
     offshore = {"KY", "BM", "VG", "MH", "JE", "GG", "LR", "PA"}
     reviewed = {
@@ -2896,7 +2897,7 @@ def test_us_primary_foreign_isin_rows_are_reviewed():
         f"{r['exchange']}::{r['ticker']} {r['isin']}"
         for r in load_csv("tickers.csv")
         if r["exchange"] in us_primary
-        and r["asset_type"] == "Stock"
+        and r["asset_type"] in {"Stock", "ETF"}
         and r["isin"]
         and not r["isin"].startswith("US")
         and r["isin"][:2] not in offshore

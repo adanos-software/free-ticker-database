@@ -287,16 +287,16 @@ def load_foreign_isin_allowlist() -> set[tuple[str, str]]:
 def unreviewed_foreign_isin_rows(
     tickers: list[dict[str, str]], allowlist: set[tuple[str, str]]
 ) -> list[str]:
-    """US-primary Stock rows carrying a non-US, non-offshore ISIN that have not been
-    reviewed as a legitimate foreign-incorporated/cross-listing in the allowlist.
-    These are ticker-collision-ISIN suspects (e.g. a US company holding a same-ticker
-    foreign namesake's ISIN)."""
+    """US-primary Stock or ETF rows carrying a non-US, non-offshore ISIN that have not
+    been reviewed as a legitimate foreign-incorporated/cross-listing in the allowlist.
+    These are ticker-collision-ISIN suspects (e.g. a US company or US-domiciled ETF
+    holding a same-ticker foreign namesake's ISIN)."""
     flagged: list[str] = []
     for row in tickers:
         isin = row.get("isin", "").strip().upper()
         if (
             row.get("exchange") in US_PRIMARY_EXCHANGES_FOR_ISIN
-            and row.get("asset_type") == "Stock"
+            and row.get("asset_type") in {"Stock", "ETF"}
             and isin
             and not isin.startswith("US")
             and isin[:2] not in OFFSHORE_INCORP_ISIN_PREFIXES
