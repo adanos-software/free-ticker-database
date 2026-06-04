@@ -1,12 +1,12 @@
 # Completion Backlog
 
-Generated at: `2026-06-04T03:25:13Z`
+Generated at: `2026-06-04T03:56:11Z`
 
 ## Summary
 
 - Missing primary ISIN rows: `880`
 - Missing stock sectors: `2605`
-- Missing ETF categories: `109`
+- Missing ETF categories: `106`
 - Official symbol collisions tracked in exchange references: `11181`
 - Core rows hidden only by the legacy global-ticker compatibility export: `1`
 
@@ -67,7 +67,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 
 | Rank | Exchange | Asset type | Missing | Venue | Source | Review |
 |---|---|---|---:|---|---|---|
-| 1 | OTC | ETF | 29 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 1 | OTC | ETF | 26 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
 | 2 | ASX | ETF | 9 | official_partial | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
 | 3 | SSE_CL | ETF | 8 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
 | 4 | NYSE ARCA | ETF | 6 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
@@ -84,7 +84,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 
 | Rank | Exchange | Missing total | Missing stock_sector | Missing etf_category | Venue |
 |---|---|---:|---:|---:|---|
-| 1 | OTC | 850 | 821 | 29 | official_full |
+| 1 | OTC | 847 | 821 | 26 | official_full |
 | 2 | B3 | 194 | 194 | 0 | official_full |
 | 3 | CSE_LK | 143 | 143 | 0 | official_full |
 | 4 | Euronext | 133 | 132 | 1 | official_full |

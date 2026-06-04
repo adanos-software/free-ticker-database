@@ -1865,10 +1865,10 @@
     {
       "asset_type": "ETF",
       "confidence_policy": "ETF categories must be stored as etf_category after deterministic taxonomy mapping.",
-      "etf_missing_count": 29,
+      "etf_missing_count": 26,
       "exchange": "OTC",
       "field": "missing_etf_category",
-      "missing_count": 29,
+      "missing_count": 26,
       "notes": "ETF rows should target etf_category, not stock_sector.",
       "official_source_count": 3,
       "priority_bucket": "ranked_by_missing_count",
@@ -2421,11 +2421,11 @@
       "missing_sector_stock": 59
     },
     "field_totals": {
-      "missing_etf_category": 109,
+      "missing_etf_category": 106,
       "missing_isin_primary": 880,
       "missing_sector_stock": 2605
     },
-    "generated_at": "2026-06-04T03:25:13Z",
+    "generated_at": "2026-06-04T03:56:11Z",
     "legacy_primary_ticker_collision_rows": 1,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
