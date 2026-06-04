@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-03T18:04:31Z",
+    "generated_at": "2026-06-04T03:25:13Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "metadata_updates_csv": "data/review_overrides/metadata_updates.csv",
@@ -8,21 +8,45 @@
     }
   },
   "summary": {
-    "metadata_present_rows": 20176,
-    "metadata_resolved_exact": 20173,
+    "metadata_present_rows": 20753,
+    "metadata_resolved_exact": 20748,
     "metadata_resolved_canonical": 0,
     "metadata_partial_canonical": 0,
     "metadata_resolved_policy": 3,
     "metadata_partial_policy": 0,
     "metadata_superseded_by_isin_inference": 0,
-    "metadata_open": 0,
-    "alias_present_rows": 620,
-    "alias_resolved": 620,
+    "metadata_open": 2,
+    "alias_present_rows": 619,
+    "alias_resolved": 619,
     "alias_open": 0
   },
-  "open_metadata_by_field": {},
-  "open_metadata_by_exchange": {},
+  "open_metadata_by_field": {
+    "isin": 2
+  },
+  "open_metadata_by_exchange": {
+    "NYSE": 1,
+    "NASDAQ": 1
+  },
   "open_alias_by_exchange": {},
-  "open_metadata_samples": [],
+  "open_metadata_samples": [
+    {
+      "ticker": "ALX",
+      "exchange": "NYSE",
+      "field": "isin",
+      "decision": "update",
+      "target": "US0147521092",
+      "actual": "",
+      "status": "open"
+    },
+    {
+      "ticker": "AMAL",
+      "exchange": "NASDAQ",
+      "field": "isin",
+      "decision": "clear",
+      "target": "",
+      "actual": "US0226711010",
+      "status": "open"
+    }
+  ],
   "open_alias_samples": []
 }
