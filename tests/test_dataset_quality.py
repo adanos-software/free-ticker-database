@@ -2879,3 +2879,27 @@ def test_freshness_timestamps_are_coherent():
     assert freshness["ohlcv_plausibility_age_hours"] >= 0
     assert freshness["ohlcv_plausibility_rows"] >= 0
     assert freshness["latest_verification_run"].startswith("data/stock_verification/run-")
+
+
+def test_us_primary_foreign_isin_rows_are_reviewed():
+    """Guards the ticker-collision-ISIN class: a US-primary Stock listing carrying a
+    non-US (non-offshore) ISIN must be a reviewed legitimate foreign-incorporated /
+    cross-listing, recorded in review_overrides/foreign_isin_reviewed.csv. A new
+    unreviewed one usually means a short US ticker picked up a same-ticker foreign
+    namesake's ISIN (e.g. Aflac with an ASX ISIN)."""
+    us_primary = {"NYSE", "NASDAQ", "NYSE ARCA", "NYSE MKT", "AMEX", "BATS"}
+    offshore = {"KY", "BM", "VG", "MH", "JE", "GG", "LR", "PA"}
+    reviewed = {
+        (r["ticker"], r["exchange"]) for r in load_csv("review_overrides/foreign_isin_reviewed.csv")
+    }
+    unreviewed = [
+        f"{r['exchange']}::{r['ticker']} {r['isin']}"
+        for r in load_csv("tickers.csv")
+        if r["exchange"] in us_primary
+        and r["asset_type"] == "Stock"
+        and r["isin"]
+        and not r["isin"].startswith("US")
+        and r["isin"][:2] not in offshore
+        and (r["ticker"], r["exchange"]) not in reviewed
+    ]
+    assert not unreviewed, f"Unreviewed US-primary foreign ISINs (collision suspects): {unreviewed[:10]}"

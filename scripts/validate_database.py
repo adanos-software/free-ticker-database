@@ -37,6 +37,7 @@ DEFAULT_WARN_ALLOWLIST_CSV = REPORTS_DIR / "entry_quality_warn_allowlist.csv"
 DEFAULT_ADANOS_ALIAS_AUDIT_CSV = REPORTS_DIR / "adanos_alias_audit.csv"
 DEFAULT_REVIEW_REMOVE_ALIASES_CSV = DATA_DIR / "review_overrides" / "remove_aliases.csv"
 DEFAULT_REVIEW_METADATA_UPDATES_CSV = DATA_DIR / "review_overrides" / "metadata_updates.csv"
+DEFAULT_FOREIGN_ISIN_REVIEWED_CSV = DATA_DIR / "review_overrides" / "foreign_isin_reviewed.csv"
 DEFAULT_COVERAGE_REPORT_JSON = REPORTS_DIR / "coverage_report.json"
 DEFAULT_SOURCE_GAP_CLASSIFICATION_CSV = REPORTS_DIR / "source_gap_classification.csv"
 DEFAULT_SOURCE_OF_TRUTH_DECISIONS_CSV = REPORTS_DIR / "source_of_truth_decisions.csv"
@@ -264,6 +265,45 @@ def invalid_isin_rows(rows: list[dict[str, str]], id_field: str) -> list[str]:
         if isin and not is_valid_isin(isin):
             invalid.append(row.get(id_field, ""))
     return invalid
+
+
+# US primary listing venues where a non-US ISIN is a ticker-collision risk
+# (a short US ticker accidentally carrying a same-ticker foreign company's ISIN).
+US_PRIMARY_EXCHANGES_FOR_ISIN = {"NYSE", "NASDAQ", "NYSE ARCA", "NYSE MKT", "AMEX", "BATS"}
+# Offshore incorporation domiciles that are routinely legitimate for US listings
+# (SPACs and foreign-incorporated operating companies); excluded from the gate.
+OFFSHORE_INCORP_ISIN_PREFIXES = {"KY", "BM", "VG", "MH", "JE", "GG", "LR", "PA"}
+
+
+def load_foreign_isin_allowlist() -> set[tuple[str, str]]:
+    if not DEFAULT_FOREIGN_ISIN_REVIEWED_CSV.exists():
+        return set()
+    return {
+        (row.get("ticker", ""), row.get("exchange", ""))
+        for row in load_csv(DEFAULT_FOREIGN_ISIN_REVIEWED_CSV)
+    }
+
+
+def unreviewed_foreign_isin_rows(
+    tickers: list[dict[str, str]], allowlist: set[tuple[str, str]]
+) -> list[str]:
+    """US-primary Stock rows carrying a non-US, non-offshore ISIN that have not been
+    reviewed as a legitimate foreign-incorporated/cross-listing in the allowlist.
+    These are ticker-collision-ISIN suspects (e.g. a US company holding a same-ticker
+    foreign namesake's ISIN)."""
+    flagged: list[str] = []
+    for row in tickers:
+        isin = row.get("isin", "").strip().upper()
+        if (
+            row.get("exchange") in US_PRIMARY_EXCHANGES_FOR_ISIN
+            and row.get("asset_type") == "Stock"
+            and isin
+            and not isin.startswith("US")
+            and isin[:2] not in OFFSHORE_INCORP_ISIN_PREFIXES
+            and (row.get("ticker", ""), row.get("exchange", "")) not in allowlist
+        ):
+            flagged.append(f"{row.get('exchange')}::{row.get('ticker')} {isin}")
+    return flagged
 
 
 def identifier_summary_mismatches(
@@ -931,6 +971,11 @@ def build_validation_report(
                 + invalid_isin_rows(core_listings, "listing_key")
                 + invalid_isin_rows(identifiers, "ticker")
                 + invalid_isin_rows(identifiers_extended, "listing_key"),
+            ),
+            fail_gate(
+                "us_foreign_isin_unreviewed_count",
+                len(unreviewed_rows := unreviewed_foreign_isin_rows(tickers, load_foreign_isin_allowlist())),
+                unreviewed_rows,
             ),
             fail_gate("duplicate_identifier_ticker_count", len(duplicate_values(identifiers, "ticker"))),
             fail_gate("duplicate_identifier_listing_key_count", len(duplicate_values(identifiers_extended, "listing_key"))),

@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed a systematic ticker-collision ISIN error class: 571 US-exchange listings carried the ISIN (and country) of a *different* same-ticker foreign company picked up by a ticker-only identifier match (e.g. Aflac holding an ASX ISIN, American Electric Power a Canadian ISIN, Assurant an Air New Zealand ISIN, Carnival the Carnival plc UK ISIN, IAMGOLD the Insurance Australia Group ISIN). These were internally consistent (country matched the wrong ISIN) and so evaded the existing gates. Each row was validated against authoritative sources (OpenFIGI/SEC/MarketScreener/issuer pages); 537 were corrected to the verified ISIN and 34 were cleared where the correct value could not be confirmed (missing > wrong).
+- Fixed 11 row-level errors surfaced by a 384-row statistical correctness audit: wrong-issuer ISINs (BMY=Bristol-Myers had Bloomsbury's GB ISIN; AMP=Ameriprise had AMP Ltd's AU ISIN; BME, NXL, GREN), a stale post-spinoff ISIN (RNA/Atrium Therapeutics, cleared), stale names (Cloud Air→HMNEX, Sinosteel Anhui→Sinosteel New Materials, generic trust name on SMRF→ALPS Nautilus SMR ETF), and a wrong country (CKALF/Cokal→Australia).
+
+### Added
+
+- Added a release gate `us_foreign_isin_unreviewed_count` plus the reviewed allowlist `data/review_overrides/foreign_isin_reviewed.csv` (469 reviewed legitimate foreign-incorporated / cross-listing rows). Any US-primary Stock listing carrying a non-US, non-offshore ISIN must now be reviewed, preventing the ticker-collision-ISIN class from silently recurring. Covered by a regression test.
+
 ## [3.27.0] - 2026-06-03
 
 ### Summary
