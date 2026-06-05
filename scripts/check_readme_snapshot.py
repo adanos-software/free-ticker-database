@@ -36,7 +36,7 @@ SNAPSHOT_METRICS = {
     "Extended listing-scope rows": "instrument_scope_extended",
     "Official full exchanges": "official_full_exchanges",
     "Official partial exchanges": "official_partial_exchanges",
-    "Missing current-scope exchanges": "missing_exchanges",
+    "Missing current-scope exchanges": None,
     "Entry quality source-gap rows": None,
     "Entry quality warn rows": None,
 }
