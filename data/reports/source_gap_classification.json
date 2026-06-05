@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-06-04T16:35:11Z",
+    "generated_at": "2026-06-05T17:24:47Z",
     "rows": 3707,
     "field_totals": {
       "missing_etf_category": 171,
@@ -22,10 +22,10 @@
       "official_current_directory_absent_identifier_gap": 12,
       "official_identifier_not_exposed_source_gap": 344,
       "official_identifier_reference_unmatched_gap": 67,
-      "official_industry_taxonomy_unavailable_gap": 1584,
+      "official_industry_taxonomy_unavailable_gap": 1585,
       "official_product_reference_unmatched_category_gap": 22,
       "official_product_taxonomy_unavailable_gap": 114,
-      "otc_sector_source_gap": 821,
+      "otc_sector_source_gap": 820,
       "shell_or_cpc_sector_gap": 90
     },
     "class_by_field": {
@@ -45,8 +45,8 @@
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 67,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 39,
       "missing_sector_stock:fundlike_stock_sector_gap": 73,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 1584,
-      "missing_sector_stock:otc_sector_source_gap": 821,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 1585,
+      "missing_sector_stock:otc_sector_source_gap": 820,
       "missing_sector_stock:shell_or_cpc_sector_gap": 90
     },
     "top_exchanges_by_field": {
@@ -137,7 +137,7 @@
       "missing_sector_stock": [
         {
           "exchange": "OTC",
-          "rows": 821
+          "rows": 820
         },
         {
           "exchange": "B3",
@@ -182,7 +182,7 @@
         "field": "missing_sector_stock",
         "gap_class": "otc_sector_source_gap",
         "exchange": "OTC",
-        "rows": 821,
+        "rows": 820,
         "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
         "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
       },
@@ -326,7 +326,7 @@
         "field": "missing_sector_stock",
         "gap_class": "official_industry_taxonomy_unavailable_gap",
         "exchange": "SGX",
-        "rows": 39,
+        "rows": 40,
         "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
         "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
       },
@@ -43035,6 +43035,23 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
+      "listing_key": "OTC::CRSLF",
+      "ticker": "CRSLF",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "name": "CAR GROUP LTD",
+      "gap_class": "otc_sector_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require SEC SIC, issuer filing, OTCMarkets profile, or reviewed secondary profile data; no name-only sector guesses.",
+      "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
+      "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
+      "source_gap_context": "listing_key=OTC::CRSLF;exchange=OTC;ticker=CRSLF;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
       "listing_key": "OTC::CRSXQ",
       "ticker": "CRSXQ",
       "exchange": "OTC",
@@ -45619,23 +45636,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "OTC::HHEXF",
-      "ticker": "HHEXF",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "name": "HELIX EXPLORATION PLC",
-      "gap_class": "otc_sector_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require SEC SIC, issuer filing, OTCMarkets profile, or reviewed secondary profile data; no name-only sector guesses.",
-      "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
-      "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
-      "source_gap_context": "listing_key=OTC::HHEXF;exchange=OTC;ticker=HHEXF;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "OTC::HHIGF",
       "ticker": "HHIGF",
       "exchange": "OTC",
@@ -47058,23 +47058,6 @@
       "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
       "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
       "source_gap_context": "listing_key=OTC::KOBNF;exchange=OTC;ticker=KOBNF;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "OTC::KOGMF",
-      "ticker": "KOGMF",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "name": "KGL Resources Ltd",
-      "gap_class": "otc_sector_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require SEC SIC, issuer filing, OTCMarkets profile, or reviewed secondary profile data; no name-only sector guesses.",
-      "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
-      "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
-      "source_gap_context": "listing_key=OTC::KOGMF;exchange=OTC;ticker=KOGMF;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
     },
@@ -57292,6 +57275,23 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=SGX::KYB;exchange=SGX;ticker=KYB;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "SGX::P15",
+      "ticker": "P15",
+      "exchange": "SGX",
+      "asset_type": "Stock",
+      "name": "Pacific Century",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=SGX::P15;exchange=SGX;ticker=P15;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-04T16:35:10Z",
+    "generated_at": "2026-06-05T17:24:46Z",
     "rows": 71043,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,24 +14,24 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 63567,
-      "source_gap": 7410,
+      "pass": 63566,
+      "source_gap": 7411,
       "warn": 66
     },
     "evidence_level_counts": {
       "identifier_enriched": 4209,
       "official_reference": 65713,
-      "scoped_source_gap": 335,
-      "valid_isin": 786
+      "scoped_source_gap": 336,
+      "valid_isin": 785
     },
     "severity_counts": {
       "high": 63,
       "medium": 3,
-      "source_gap": 8191
+      "source_gap": 8192
     },
     "issue_counts": {
       "official_reference_gap": 5322,
-      "missing_stock_sector": 1786,
+      "missing_stock_sector": 1787,
       "expected_missing_primary_isin": 929,
       "missing_etf_category": 146,
       "country_isin_mismatch": 63,

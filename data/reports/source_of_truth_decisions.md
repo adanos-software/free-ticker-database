@@ -1,6 +1,6 @@
 # Source-of-Truth Decisions
 
-Generated at: `2026-06-04T16:35:11Z`
+Generated at: `2026-06-05T17:24:47Z`
 
 This report converts residual source-gap classes into release-trackable outcomes. It does not fill fields and does not drop rows automatically.
 
@@ -15,8 +15,8 @@ This report converts residual source-gap classes into release-trackable outcomes
 
 | Value | Rows |
 |---|---:|
-| official_industry_taxonomy_unavailable_gap | 1584 |
-| otc_sector_source_gap | 821 |
+| official_industry_taxonomy_unavailable_gap | 1585 |
+| otc_sector_source_gap | 820 |
 | official_identifier_not_exposed_source_gap | 344 |
 | fund_or_trust_identifier_gap | 325 |
 | official_product_taxonomy_unavailable_gap | 114 |

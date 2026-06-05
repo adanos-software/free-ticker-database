@@ -5,6 +5,7 @@
 ### Fixed
 
 - Extended the ticker-collision ISIN fix to **US-exchange ETFs**: a re-audit found the collision class was not limited to stocks (e.g. the iShares MSCI Chile ETF carried Echo Investment's Polish ISIN; iShares Bitcoin Trust an Australian ISIN). A two-pass multi-agent sweep of all 443 US-exchange ETFs with non-US ISINs found ~439 collisions (only Sprott PHYS/SPPP are genuinely foreign-domiciled). 409 were corrected to the verified US ISIN (checksum-validated) and the remainder cleared (missing > wrong). Correcting these *also recovered 184 real foreign listings* (LSE/XETRA UCITS ETFs and OTC foreign stocks) that had been suppressed because a US ticker had taken over their ISIN.
+- Swept the **OTC** foreign-ISIN pool (~2,360 rows, predominantly legitimate foreign grey-market listings) for the same collision class: 117 confirmed collisions where an OTC ticker carried a different same-ticker company's ISIN (e.g. Amundi SA with a Philippine AgriNurture ISIN, Euronext N.V. with an Australian Enegex ISIN, Exmar NV with a Canadian EXMceuticals ISIN). Corrected to the verified ISIN where available, otherwise cleared.
 
 ### Changed
 
