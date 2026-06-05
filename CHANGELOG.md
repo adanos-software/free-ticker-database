@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [3.29.0] - 2026-06-05
+
+### Summary
+
+Completes the ticker-collision ISIN cleanup across the remaining asset classes and venues (ETFs and OTC), after a re-audit showed the class was not limited to US-primary stocks. Together with v3.28.0 this resolves the systematic ticker-collision ISIN errors end to end and recovers real foreign listings that had been suppressed by them.
+
 ### Fixed
 
 - Extended the ticker-collision ISIN fix to **US-exchange ETFs**: a re-audit found the collision class was not limited to stocks (e.g. the iShares MSCI Chile ETF carried Echo Investment's Polish ISIN; iShares Bitcoin Trust an Australian ISIN). A two-pass multi-agent sweep of all 443 US-exchange ETFs with non-US ISINs found ~439 collisions (only Sprott PHYS/SPPP are genuinely foreign-domiciled). 409 were corrected to the verified US ISIN (checksum-validated) and the remainder cleared (missing > wrong). Correcting these *also recovered 184 real foreign listings* (LSE/XETRA UCITS ETFs and OTC foreign stocks) that had been suppressed because a US ticker had taken over their ISIN.
