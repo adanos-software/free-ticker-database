@@ -26,14 +26,21 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 | Core primary rows with ISIN | 53,169 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
 | Core primary rows missing ISIN | 929 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
 | Extended listing-scope rows | 16,945 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
+| Official full exchanges | 46 | Current-scope source inventory rows marked `official_full`. |
+| Official partial exchanges | 33 | Current-scope source inventory rows marked `official_partial`. |
+| Missing current-scope exchanges | 1 | Current-scope source inventory rows still marked `missing`; see `data/reports/source_inventory_gap.md`. |
+| Entry quality source-gap rows | 7,411 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
+| Entry quality warn rows | 66 | Listing-keyed rows with deterministic warnings requiring review/allowlist coverage. |
+
+Snapshot values are generated-report backed and intentionally human-formatted with comma separators and one-decimal coverage percentages. `data/reports/coverage_report.json`, `data/reports/source_inventory_gap.json`, and `data/reports/entry_quality.json` are the canonical machine-readable sources for these counts. `source_inventory_gap.md` is authoritative for current-scope source gaps; this snapshot must not claim zero missing current-scope sources while that report lists a missing source.
 
 ## Core Files
 
 | File | Use |
 |---|---|
-| [`data/core_listings.csv`](data/core_listings.csv) | Collision-safe canonical core export keyed by `listing_key` |
-| [`data/tickers.csv`](data/tickers.csv) | Canonical primary ticker export, one row per security |
-| [`data/listings.csv`](data/listings.csv) | Full listing-level export keyed by `listing_key` |
+| [`data/core_listings.csv`](data/core_listings.csv) | Collision-safe canonical security universe keyed by `listing_key` |
+| [`data/listings.csv`](data/listings.csv) | Venue-level source of truth keyed by `listing_key`, including cross/secondary listings |
+| [`data/tickers.csv`](data/tickers.csv) | Legacy/global-unique ticker compatibility export, one row per exported ticker |
 | [`data/instrument_scopes.csv`](data/instrument_scopes.csv) | Core vs. extended listing scope and primary-listing links |
 | [`data/core_aliases.csv`](data/core_aliases.csv) | Collision-safe alias/name/identifier lookup keyed by `listing_key` |
 | [`data/aliases.csv`](data/aliases.csv) | Alias/name/identifier lookup |
@@ -108,7 +115,8 @@ NASDAQ::AAPL,AAPL,NASDAQ,Apple Inc,Stock,Information Technology,,United States,U
 Important rules:
 
 - `core_listings.csv` is the canonical core security export; `listing_key` is the stable identity.
-- `tickers.csv` is a compatibility view that keeps one row per globally unique `ticker`.
+- `tickers.csv` is a compatibility export that keeps one row per globally unique `ticker`.
+- `listings.csv` and `listing_key` are the venue-level source of truth for exchange-specific listing identity.
 - `ticker` is globally unique only in `tickers.csv`; use `listing_key` for venue-level identity.
 - Stocks use `stock_sector`; ETFs use `etf_category`.
 - `instrument_scopes.csv` marks `core`, OTC `extended`, and secondary cross-listings.

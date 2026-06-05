@@ -30,5 +30,8 @@ jobs:
       - name: Check entry quality gate
         run: python scripts/check_entry_quality_gate.py
 
+      - name: Check README snapshot
+        run: python scripts/check_readme_snapshot.py
+
       - name: Validate database release gates
         run: python scripts/validate_database.py

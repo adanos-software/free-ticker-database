@@ -8,6 +8,8 @@ from datetime import datetime
 from functools import lru_cache
 from pathlib import Path
 
+import pandas
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
@@ -2126,6 +2128,7 @@ def test_cleaned_rows_respects_manual_isin_clear_over_official_fallback(monkeypa
 
 def test_artifact_counts_match():
     tickers_csv = load_csv("tickers.csv")
+    core_listings_csv = load_csv("core_listings.csv")
     aliases_csv = load_csv("aliases.csv")
     listings_csv = load_csv("listings.csv")
     listing_index_csv = load_csv("listing_index.csv")
@@ -2136,14 +2139,19 @@ def test_artifact_counts_match():
     # Support both envelope {"_meta": ..., "tickers": [...]} and flat [...] format
     compact_tickers = compact_json["tickers"] if isinstance(compact_json, dict) else compact_json
 
+    tickers_parquet = pandas.read_parquet(DATA_DIR / "tickers.parquet")
+    core_listings_parquet = pandas.read_parquet(DATA_DIR / "core_listings.parquet")
+
     conn = sqlite3.connect(DATA_DIR / "tickers.db")
     try:
         db_tickers = conn.execute("SELECT COUNT(*) FROM tickers").fetchone()[0]
         db_aliases = conn.execute("SELECT COUNT(*) FROM aliases").fetchone()[0]
+        db_core_listings = conn.execute("SELECT COUNT(*) FROM core_listings").fetchone()[0]
     finally:
         conn.close()
 
-    assert len(tickers_csv) == len(compact_tickers) == db_tickers
+    assert len(tickers_csv) == len(compact_tickers) == len(tickers_parquet) == db_tickers
+    assert len(core_listings_csv) == len(core_listings_parquet) == db_core_listings
     assert len(aliases_csv) == db_aliases
     assert len(listings_csv) == db_rows_for_table("listings")
     assert len(listing_index_csv) == len(listings_csv)
@@ -2416,6 +2424,10 @@ def db_rows_for_table(table: str) -> int:
 
 
 def test_readme_stats_and_claims_are_current():
+    from scripts.check_readme_snapshot import check_readme_snapshot
+
+    assert check_readme_snapshot() == []
+
     readme = (ROOT / "README.md").read_text()
     tickers_csv = load_csv("tickers.csv")
     listings_csv = load_csv("listings.csv")
