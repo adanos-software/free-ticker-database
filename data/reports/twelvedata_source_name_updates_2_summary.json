@@ -1,0 +1,77 @@
+{
+  "rows": 62,
+  "attempted_rows_before_validation_filter": 74,
+  "exchange_counts": [
+    [
+      "OTC",
+      59
+    ],
+    [
+      "NASDAQ",
+      1
+    ],
+    [
+      "NYSE",
+      1
+    ],
+    [
+      "TSXV",
+      1
+    ]
+  ],
+  "type_counts": [
+    [
+      "Common Stock",
+      58
+    ],
+    [
+      "REIT",
+      4
+    ]
+  ],
+  "figi_relation_counts": [
+    [
+      "openfigi_only",
+      62
+    ]
+  ],
+  "provider_support_counts": [
+    [
+      "OpenFIGI",
+      60
+    ],
+    [
+      "OpenFIGI|AlphaVantage",
+      2
+    ]
+  ],
+  "review_batch_counts": [
+    [
+      "batch_a_us_core",
+      61
+    ],
+    [
+      "batch_b_canada",
+      1
+    ]
+  ],
+  "excluded_after_validation": {
+    "count": 12,
+    "listing_keys": [
+      "OTC::FMTYF",
+      "OTC::IFUUF",
+      "OTC::KYDKF",
+      "OTC::MBGAF",
+      "OTC::NWHUF",
+      "OTC::OQLGF",
+      "OTC::PIERF",
+      "OTC::SHPPF",
+      "OTC::WDGNF",
+      "TSXV::AXO",
+      "TSXV::KLX",
+      "TSXV::MKT"
+    ],
+    "policy": "Excluded rows from the openfigi_only Common Stock/REIT package when clean rebuild simulation removed ticker/listing keys, introduced replacement primary keys, or produced unexpected validation warnings/stale source-gap classifications."
+  },
+  "policy": "Package 2 applies validation-safe openfigi_only Common Stock/REIT name updates after excluding ADR/depositary scope-sensitive rows, package 1 local_figi_match rows, and validation side effects."
+}

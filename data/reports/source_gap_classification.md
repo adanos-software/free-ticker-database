@@ -1,12 +1,12 @@
 # Source Gap Classification
 
-Generated at: `2026-06-05T17:28:17Z`
+Generated at: `2026-06-10T12:59:49Z`
 
 This report classifies residual metadata gaps after official and reviewed free-source backfills. It is a guardrail report: values remain empty unless a future source satisfies the listed source gate.
 
 ## Summary
 
-- Missing primary ISIN rows classified: `929`
+- Missing primary ISIN rows classified: `930`
 - Missing stock-sector rows classified: `2607`
 - Missing ETF-category rows classified: `171`
 
@@ -16,7 +16,7 @@ This report classifies residual metadata gaps after official and reviewed free-s
 |---|---:|
 | official_industry_taxonomy_unavailable_gap | 1585 |
 | otc_sector_source_gap | 820 |
-| official_identifier_not_exposed_source_gap | 344 |
+| official_identifier_not_exposed_source_gap | 345 |
 | fund_or_trust_identifier_gap | 325 |
 | official_product_taxonomy_unavailable_gap | 114 |
 | shell_or_cpc_sector_gap | 90 |
@@ -57,7 +57,7 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | missing_sector_stock | official_industry_taxonomy_unavailable_gap | SEM | 45 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
 | missing_sector_stock | official_industry_taxonomy_unavailable_gap | XETRA | 43 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
 | missing_sector_stock | official_industry_taxonomy_unavailable_gap | SGX | 40 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
-| missing_etf_category | official_product_taxonomy_unavailable_gap | LSE | 35 | Official fund taxonomy, asset-class feed, or reviewed product provider profile. | Keep etf_category blank until an official or reviewed source exposes a canonical mappable category. |
+| missing_isin_primary | official_identifier_not_exposed_source_gap | TSXV | 36 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
 
 ## Release Policy
 

@@ -1,0 +1,81 @@
+{
+  "rows": 177,
+  "exchange_counts": [
+    [
+      "OTC",
+      173
+    ],
+    [
+      "NASDAQ",
+      2
+    ],
+    [
+      "NYSE",
+      1
+    ],
+    [
+      "TSX",
+      1
+    ]
+  ],
+  "type_counts": [
+    [
+      "Common Stock",
+      173
+    ],
+    [
+      "Depositary Receipt",
+      2
+    ],
+    [
+      "REIT",
+      2
+    ]
+  ],
+  "figi_relation_counts": [
+    [
+      "local_figi_match",
+      177
+    ]
+  ],
+  "review_batch_counts": [
+    [
+      "batch_a_us_core",
+      176
+    ],
+    [
+      "batch_b_canada",
+      1
+    ]
+  ],
+  "excluded_after_validation": [
+    {
+      "listing_key": "OTC::GLVT",
+      "reason": "name update produced a new official_name_mismatch warning against OTC/SEC references"
+    }
+  ],
+  "excluded_for_primary_key_stability": {
+    "removed_primary_key_candidates": 70,
+    "new_primary_key_candidates_or_side_effects": 18,
+    "policy": "Excluded candidates that removed existing primary export keys or introduced new primary export keys during clean rebuild simulation."
+  },
+  "excluded_for_extended_listing_stability": {
+    "listing_keys": [
+      "OTC::ABBNY",
+      "OTC::BICEY",
+      "OTC::CLPBY",
+      "OTC::CLZNY",
+      "OTC::CSLLY",
+      "OTC::CSPKY",
+      "OTC::HPGLY",
+      "OTC::KNRRY",
+      "OTC::NRXXY",
+      "OTC::REPYY",
+      "OTC::RTMVY",
+      "OTC::WBRBY"
+    ],
+    "count": 12,
+    "policy": "Excluded ADR/depositary extended OTC listings whose proposed name triggers the existing depositary-row exclusion during rebuild and removes listing rows while identifier_extended still references them."
+  },
+  "policy": "Applied only source-adjudicated apply_ready Twelve Data name updates with local OpenFIGI/local FIGI agreement and no scope, primary-key, listing-key, or validation-warning side effects."
+}
