@@ -1,12 +1,12 @@
 # Entry Quality Report
 
-Generated at: `2026-06-10T12:59:48Z`
+Generated at: `2026-06-10T14:56:17Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 63,565 |
+| pass | 63,564 |
 | source_gap | 7,410 |
 | warn | 68 |
 
@@ -31,7 +31,7 @@ Generated at: `2026-06-10T12:59:48Z`
 | LSE | 6,099 | 0 | 256 | 60 | 0 |
 | TSX | 1,694 | 0 | 210 | 0 | 0 |
 | BSE_IN | 2,433 | 0 | 209 | 0 | 0 |
-| NASDAQ | 4,429 | 0 | 207 | 1 | 0 |
+| NASDAQ | 4,428 | 0 | 207 | 1 | 0 |
 | NYSE ARCA | 2,479 | 0 | 174 | 0 | 0 |
 | BMV | 8 | 0 | 171 | 0 | 0 |
 | TSXV | 900 | 0 | 164 | 2 | 0 |
