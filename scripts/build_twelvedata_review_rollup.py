@@ -11,6 +11,7 @@ from pathlib import Path
 
 DEFAULT_OUTPUT_JSON = Path("data/reports/twelvedata_all_batches_review_rollup.json")
 DEFAULT_OUTPUT_MD = Path("data/reports/twelvedata_all_batches_review_rollup.md")
+DEFAULT_ADJUDICATION_CSV = Path("data/reports/twelvedata_source_adjudication.csv")
 
 SEGMENTS = [
     {
@@ -102,6 +103,12 @@ def segment_summary(segment: dict[str, Path | str]) -> dict[str, object]:
 
 def build_summary() -> dict[str, object]:
     segments = [segment_summary(segment) for segment in SEGMENTS]
+    adjudication_rows = csv_count(DEFAULT_ADJUDICATION_CSV)
+    adjudication_apply_rows = sum(
+        count
+        for eligibility, count in csv_counter(DEFAULT_ADJUDICATION_CSV, "apply_eligibility")
+        if eligibility == "apply_ready"
+    )
     return {
         "segments": segments,
         "totals": {
@@ -111,10 +118,19 @@ def build_summary() -> dict[str, object]:
             "second_source_queue_rows": sum(int(segment["second_source_queue_rows"]) for segment in segments),
             "second_source_validation_rows": sum(int(segment["second_source_validation_rows"]) for segment in segments),
             "manual_apply_candidates": sum(int(segment["manual_apply_candidates"]) for segment in segments),
+            "source_adjudication_rows": adjudication_rows,
+            "source_adjudication_apply_ready_rows": adjudication_apply_rows,
+        },
+        "source_adjudication": {
+            "rows": adjudication_rows,
+            "apply_ready_rows": adjudication_apply_rows,
+            "decision_counts": csv_counter(DEFAULT_ADJUDICATION_CSV, "adjudication_decision"),
+            "apply_eligibility_counts": csv_counter(DEFAULT_ADJUDICATION_CSV, "apply_eligibility"),
         },
         "policy": (
-            "DeepSeek reviews and provider evidence are advisory. No database changes are applied by these reports; "
-            "manual candidates still require repo-standard metadata override review and dataset gates."
+            "Twelve Data is a challenger source. DeepSeek reviews are advisory; apply-ready rows come from the "
+            "source-adjudication report after provider, identifier, reviewed-override, and source-inventory gates. "
+            "No database changes are applied by these reports."
         ),
     }
 
@@ -136,8 +152,13 @@ def write_markdown(path: Path, summary: dict[str, object]) -> None:
         "second_source_queue_rows",
         "second_source_validation_rows",
         "manual_apply_candidates",
+        "source_adjudication_rows",
+        "source_adjudication_apply_ready_rows",
     ]:
         lines.append(f"- {key}: {totals[key]:,}")
+    adjudication = summary["source_adjudication"]
+    lines.extend(["", "## Source Adjudication", "", "| Decision | Rows |", "| --- | ---: |"])
+    lines.extend(f"| {decision} | {count:,} |" for decision, count in adjudication["decision_counts"])
     lines.extend(
         [
             "",
