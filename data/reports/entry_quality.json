@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-06-10T12:59:48Z",
-    "rows": 71043,
+    "generated_at": "2026-06-10T15:59:25Z",
+    "rows": 71041,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,25 +14,25 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 63565,
+      "pass": 63563,
       "source_gap": 7410,
       "warn": 68
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4209,
-      "official_reference": 65713,
-      "scoped_source_gap": 337,
-      "valid_isin": 784
+      "identifier_enriched": 4211,
+      "official_reference": 65711,
+      "scoped_source_gap": 336,
+      "valid_isin": 783
     },
     "severity_counts": {
       "high": 63,
       "medium": 5,
-      "source_gap": 8193
+      "source_gap": 8192
     },
     "issue_counts": {
       "official_reference_gap": 5322,
       "missing_stock_sector": 1787,
-      "expected_missing_primary_isin": 930,
+      "expected_missing_primary_isin": 929,
       "missing_etf_category": 146,
       "country_isin_mismatch": 63,
       "venue_missing_official_source": 8,
@@ -68,7 +68,7 @@
       },
       {
         "exchange": "NASDAQ",
-        "pass": 4429,
+        "pass": 4428,
         "source_gap": 207,
         "warn": 1
       },
@@ -12890,16 +12890,9 @@
       "exchange": "ATHEX",
       "asset_type": "Stock",
       "quality_status": "source_gap",
-      "quality_score": 80,
+      "quality_score": 90,
       "recommended_action": "find_source_or_keep_scoped_gap",
       "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        },
         {
           "issue_type": "official_reference_gap",
           "severity": "source_gap",

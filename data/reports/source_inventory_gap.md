@@ -1,6 +1,6 @@
 # Source Inventory Gap
 
-Generated at: `2026-06-10T12:59:45Z`
+Generated at: `2026-06-10T15:59:21Z`
 
 ## Summary
 
@@ -25,7 +25,7 @@ Generated at: `2026-06-10T12:59:45Z`
 | 2 | SSE | official_partial | 2789 | 42 | 0 | sse_industry_classification | SSE |  |  | implemented via existing official SSE stock-list CSRC_CODE fields |
 | 3 | EGX | official_partial | 225 | 0 | 29 | egx_listed_securities | EGX |  |  | implemented via browser-captured official ASP.NET ViewState; raw non-browser requests still hit the EGX/TSPD challenge |
 | 4 | ASX | official_partial | 1298 | 105 | 45 | asx_cash_market_directory | ASX |  |  | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
-| 5 | ATHEX | official_partial | 117 | 8 | 0 | athex_sector_classification | ATHEX | cache |  | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
+| 5 | ATHEX | official_partial | 116 | 7 | 0 | athex_sector_classification | ATHEX | cache |  | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
 | 6 | STO | official_partial | 725 | 0 | 56 | nasdaq_nordic_stockholm_full_search | Nasdaq Nordic |  |  | reconciled through existing official Nasdaq Nordic Stockholm shares, share-search, ETF, tracker, Spotlight, and NGM feeds |
 | 7 | SZSE | official_partial | 3083 | 14 | 0 | szse_industry_classification | SZSE |  |  | implemented via existing official SZSE report-list industry fields |
 | 8 | HOSE | official_partial | 153 | 0 | 0 | stockanalysis_hose_company_profiles | StockAnalysis |  |  | resolved by scripts/backfill_stockanalysis_metadata.py as a reviewed secondary company-profile source after official HOSE/VSDC feeds did not expose the single LCG stock-sector residual |
@@ -65,7 +65,7 @@ _No rows._
 | 2 | SSE | official_partial | 2789 | 42 | 0 | sse_industry_classification | SSE |  |  | implemented via existing official SSE stock-list CSRC_CODE fields |
 | 3 | EGX | official_partial | 225 | 0 | 29 | egx_listed_securities | EGX |  |  | implemented via browser-captured official ASP.NET ViewState; raw non-browser requests still hit the EGX/TSPD challenge |
 | 4 | ASX | official_partial | 1298 | 105 | 45 | asx_cash_market_directory | ASX |  |  | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
-| 5 | ATHEX | official_partial | 117 | 8 | 0 | athex_sector_classification | ATHEX | cache |  | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
+| 5 | ATHEX | official_partial | 116 | 7 | 0 | athex_sector_classification | ATHEX | cache |  | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
 | 6 | STO | official_partial | 725 | 0 | 56 | nasdaq_nordic_stockholm_full_search | Nasdaq Nordic |  |  | reconciled through existing official Nasdaq Nordic Stockholm shares, share-search, ETF, tracker, Spotlight, and NGM feeds |
 | 7 | SZSE | official_partial | 3083 | 14 | 0 | szse_industry_classification | SZSE |  |  | implemented via existing official SZSE report-list industry fields |
 | 8 | HOSE | official_partial | 153 | 0 | 0 | stockanalysis_hose_company_profiles | StockAnalysis |  |  | resolved by scripts/backfill_stockanalysis_metadata.py as a reviewed secondary company-profile source after official HOSE/VSDC feeds did not expose the single LCG stock-sector residual |

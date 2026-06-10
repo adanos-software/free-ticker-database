@@ -1,9 +1,9 @@
 {
   "summary": {
-    "generated_at": "2026-06-10T12:59:50Z",
-    "rows": 3708,
+    "generated_at": "2026-06-10T15:59:22Z",
+    "rows": 3707,
     "outcome_totals": {
-      "accepted_source_gap": 3000,
+      "accepted_source_gap": 2999,
       "core_exclusion_candidate": 708
     },
     "class_totals": {
@@ -20,7 +20,7 @@
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 12,
       "official_identifier_not_exposed_source_gap": 345,
-      "official_identifier_reference_unmatched_gap": 67,
+      "official_identifier_reference_unmatched_gap": 66,
       "official_industry_taxonomy_unavailable_gap": 1585,
       "official_product_reference_unmatched_category_gap": 22,
       "official_product_taxonomy_unavailable_gap": 114,
@@ -29,7 +29,7 @@
     },
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 171,
-      "missing_isin_primary:accepted_source_gap": 424,
+      "missing_isin_primary:accepted_source_gap": 423,
       "missing_isin_primary:core_exclusion_candidate": 506,
       "missing_sector_stock:accepted_source_gap": 2405,
       "missing_sector_stock:core_exclusion_candidate": 202
@@ -3142,23 +3142,6 @@
       "exchange": "ATHEX",
       "asset_type": "Stock",
       "name": "AKTR",
-      "gap_class": "official_identifier_reference_unmatched_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "leave_blank_until_source_available",
-      "review_needed": "true",
-      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
-      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "ATHEX::ALWN",
-      "ticker": "ALWN",
-      "exchange": "ATHEX",
-      "asset_type": "Stock",
-      "name": "Allwyn AG",
       "gap_class": "official_identifier_reference_unmatched_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
