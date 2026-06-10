@@ -955,7 +955,7 @@
       "exchange": "OTC",
       "expected_format": "otc_markets_stock_screener_csv",
       "implementation_status": "implemented",
-      "missing_isin": 793,
+      "missing_isin": 797,
       "missing_sector_or_category": 1145,
       "notes": "Largest partial source block. The screener validates OTC symbol/name/tier coverage for stock-like rows and ETFs, but it does not expose ISINs or GICS sectors. Grey and Expert Market access remain excluded intentionally so OTC stays an extended/listing-scope policy area rather than leaking into core primary completeness.",
       "official_source_count": 3,
@@ -1773,7 +1773,7 @@
       "official_full": 30,
       "official_partial": 33
     },
-    "generated_at": "2026-06-10T12:36:37Z",
+    "generated_at": "2026-06-10T12:59:45Z",
     "global_expansion_candidates": 0,
     "high_priority_rows": 22,
     "policy": {

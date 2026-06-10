@@ -1,10 +1,10 @@
 # Completion Backlog
 
-Generated at: `2026-06-10T12:36:37Z`
+Generated at: `2026-06-10T12:59:45Z`
 
 ## Summary
 
-- Missing primary ISIN rows: `929`
+- Missing primary ISIN rows: `930`
 - Missing stock sectors: `2607`
 - Missing ETF categories: `171`
 - Official symbol collisions tracked in exchange references: `11181`
@@ -25,7 +25,7 @@ Generated at: `2026-06-10T12:36:37Z`
 | 9 | BK | missing_sector_stock | 102 | candidate_for_official_followup | Updated official masterfile or issuer taxonomy exposing sector for the exact listing; current source: boursa_kuwait_stocks. | yes |
 | 10 | TSXV | missing_sector_stock | 97 | candidate_for_official_followup | Official TMX issuer workbook classifies this row as CPC. | yes |
 | 11 | MSX | missing_isin_primary | 90 | candidate_for_official_followup | Separate official CSD/security registry or exchange detail feed with ISIN. | yes |
-| 12 | TSXV | missing_isin_primary | 82 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
+| 12 | TSXV | missing_isin_primary | 83 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN. | yes |
 
 These are orchestration candidates only. They do not authorize direct data changes without the listed official or review-gated evidence.
 
@@ -36,7 +36,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 | 1 | ASX | All | 105 | official_partial | Official ASX ISIN workbook. | no |
 | 2 | TSX | All | 102 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
 | 3 | MSX | All | 90 | official_full | Official exchange masterfile or reviewed secondary identifier source. | yes |
-| 4 | TSXV | All | 82 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
+| 4 | TSXV | All | 83 | official_full | TMX official issuer/ETF feeds first; EODHD and strict Yahoo only as reviewed fallbacks. | yes |
 | 5 | NYSE ARCA | All | 82 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 6 | NYSE | All | 63 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 | 7 | NASDAQ | All | 62 | official_full | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
