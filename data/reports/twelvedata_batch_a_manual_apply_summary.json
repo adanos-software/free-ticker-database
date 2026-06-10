@@ -1,0 +1,43 @@
+{
+  "manual_apply_candidates": 39,
+  "rejected_or_followup_rows": 61,
+  "candidate_exchange_counts": [
+    [
+      "OTC",
+      39
+    ]
+  ],
+  "supporting_provider_counts": [
+    [
+      "OpenFIGI",
+      39
+    ],
+    [
+      "FMP",
+      6
+    ]
+  ],
+  "rejection_reason_counts": [
+    [
+      "second_source_supports_current_local_name",
+      28
+    ],
+    [
+      "provider_name_supports_neither_current_nor_twelvedata",
+      12
+    ],
+    [
+      "no_provider_supplied_usable_matching_name",
+      12
+    ],
+    [
+      "provider_evidence_conflicts_between_local_and_twelvedata",
+      6
+    ],
+    [
+      "provider_name_similarity_is_ambiguous",
+      3
+    ]
+  ],
+  "policy": "This is a manual apply-candidate queue only. It authorizes no automatic data changes; official or identifier evidence and dataset gates are still required before applying."
+}

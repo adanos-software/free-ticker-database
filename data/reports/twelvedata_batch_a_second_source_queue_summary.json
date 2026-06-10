@@ -1,0 +1,37 @@
+{
+  "rows": 100,
+  "provider_queue_counts": [
+    [
+      "openfigi|alphavantage|fmp",
+      100
+    ]
+  ],
+  "deepseek_decision_counts": [
+    [
+      "needs_official_evidence",
+      76
+    ],
+    [
+      "uncertain",
+      20
+    ],
+    [
+      "out_of_scope_candidate",
+      2
+    ],
+    [
+      "candidate_apply_blocked",
+      1
+    ],
+    [
+      "possible_duplicate_or_cross_listing",
+      1
+    ]
+  ],
+  "env_status": {
+    "OPENFIGI_API_KEY": "missing",
+    "ALPHAVANTAGE_API_KEY": "missing",
+    "FMP_API_KEY": "missing"
+  },
+  "policy": "Second-source validation is required before applying Twelve Data-driven name, identifier, alias, scope, or listing changes."
+}
