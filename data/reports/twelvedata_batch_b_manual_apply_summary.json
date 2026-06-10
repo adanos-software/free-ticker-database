@@ -1,0 +1,49 @@
+{
+  "manual_apply_candidates": 20,
+  "rejected_or_followup_rows": 36,
+  "candidate_exchange_counts": [
+    [
+      "TSXV",
+      8
+    ],
+    [
+      "TSX",
+      6
+    ],
+    [
+      "NEO",
+      6
+    ]
+  ],
+  "candidate_batch_counts": [
+    [
+      "batch_b_canada",
+      20
+    ]
+  ],
+  "supporting_provider_counts": [
+    [
+      "OpenFIGI",
+      20
+    ]
+  ],
+  "rejection_reason_counts": [
+    [
+      "provider_name_supports_neither_current_nor_twelvedata",
+      29
+    ],
+    [
+      "second_source_supports_current_local_name",
+      3
+    ],
+    [
+      "no_provider_supplied_usable_matching_name",
+      2
+    ],
+    [
+      "provider_name_similarity_is_ambiguous",
+      2
+    ]
+  ],
+  "policy": "This is a manual apply-candidate queue only. It authorizes no automatic data changes; official or identifier evidence and dataset gates are still required before applying."
+}

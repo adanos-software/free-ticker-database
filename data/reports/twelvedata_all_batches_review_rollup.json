@@ -1,0 +1,201 @@
+{
+  "segments": [
+    {
+      "segment": "batch_a_us_core",
+      "rename_candidates": 1175,
+      "deepseek_reviews": 1175,
+      "deepseek_errors": 0,
+      "deepseek_coverage_status": "complete",
+      "deepseek_decision_counts": [
+        [
+          "needs_official_evidence",
+          1175
+        ]
+      ],
+      "second_source_queue_rows": 1175,
+      "second_source_validation_rows": 1175,
+      "second_source_status": "validated",
+      "validation_status_counts": [
+        [
+          "second_source_supports_twelvedata_name",
+          409
+        ],
+        [
+          "second_source_supports_local_name",
+          286
+        ],
+        [
+          "conflicting_second_source_evidence",
+          216
+        ],
+        [
+          "no_second_source_name_match",
+          105
+        ],
+        [
+          "ambiguous_second_source_evidence",
+          87
+        ],
+        [
+          "provider_found_different_name",
+          72
+        ]
+      ],
+      "manual_apply_candidates": 409
+    },
+    {
+      "segment": "batch_b_canada",
+      "rename_candidates": 56,
+      "deepseek_reviews": 56,
+      "deepseek_errors": 0,
+      "deepseek_coverage_status": "complete",
+      "deepseek_decision_counts": [
+        [
+          "needs_official_evidence",
+          40
+        ],
+        [
+          "keep_source_gap",
+          16
+        ]
+      ],
+      "second_source_queue_rows": 56,
+      "second_source_validation_rows": 56,
+      "second_source_status": "validated",
+      "validation_status_counts": [
+        [
+          "provider_found_different_name",
+          29
+        ],
+        [
+          "second_source_supports_twelvedata_name",
+          20
+        ],
+        [
+          "second_source_supports_local_name",
+          3
+        ],
+        [
+          "no_second_source_name_match",
+          2
+        ],
+        [
+          "ambiguous_second_source_evidence",
+          2
+        ]
+      ],
+      "manual_apply_candidates": 20
+    },
+    {
+      "segment": "batch_c_high_value_international",
+      "rename_candidates": 1291,
+      "deepseek_reviews": 1291,
+      "deepseek_errors": 0,
+      "deepseek_coverage_status": "complete",
+      "deepseek_decision_counts": [
+        [
+          "needs_official_evidence",
+          1291
+        ]
+      ],
+      "second_source_queue_rows": 1291,
+      "second_source_validation_rows": 0,
+      "second_source_status": "queued_pending_provider_validation",
+      "validation_status_counts": [],
+      "manual_apply_candidates": 0
+    },
+    {
+      "segment": "later_global_review",
+      "rename_candidates": 2424,
+      "deepseek_reviews": 2424,
+      "deepseek_errors": 0,
+      "deepseek_coverage_status": "complete",
+      "deepseek_decision_counts": [
+        [
+          "needs_official_evidence",
+          2284
+        ],
+        [
+          "uncertain",
+          140
+        ]
+      ],
+      "second_source_queue_rows": 2424,
+      "second_source_validation_rows": 0,
+      "second_source_status": "queued_pending_provider_validation",
+      "validation_status_counts": [],
+      "manual_apply_candidates": 0
+    }
+  ],
+  "totals": {
+    "rename_candidates": 4946,
+    "deepseek_reviews": 4946,
+    "deepseek_errors": 0,
+    "second_source_queue_rows": 4946,
+    "second_source_validation_rows": 1231,
+    "manual_apply_candidates": 429,
+    "source_adjudication_rows": 4946,
+    "source_adjudication_apply_ready_rows": 344
+  },
+  "source_adjudication": {
+    "rows": 4946,
+    "apply_ready_rows": 344,
+    "decision_counts": [
+      [
+        "provider_validation_pending",
+        3622
+      ],
+      [
+        "apply_twelvedata_name_identifier_supported",
+        344
+      ],
+      [
+        "keep_local_name_provider_supported",
+        244
+      ],
+      [
+        "conflict_blocked_provider_disagreement",
+        182
+      ],
+      [
+        "conflict_blocked_figi_mismatch",
+        150
+      ],
+      [
+        "keep_local_name_reviewed_override",
+        125
+      ],
+      [
+        "source_gap_no_provider_match",
+        105
+      ],
+      [
+        "ambiguous_blocked",
+        68
+      ],
+      [
+        "conflict_blocked_provider_third_name",
+        65
+      ],
+      [
+        "scope_review_blocked",
+        38
+      ],
+      [
+        "candidate_needs_primary_source",
+        3
+      ]
+    ],
+    "apply_eligibility_counts": [
+      [
+        "blocked",
+        4602
+      ],
+      [
+        "apply_ready",
+        344
+      ]
+    ]
+  },
+  "policy": "Twelve Data is a challenger source. DeepSeek reviews are advisory; apply-ready rows come from the source-adjudication report after provider, identifier, reviewed-override, and source-inventory gates. No database changes are applied by these reports."
+}

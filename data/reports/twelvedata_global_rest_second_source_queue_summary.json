@@ -1,0 +1,31 @@
+{
+  "rows": 2424,
+  "provider_queue_counts": [
+    [
+      "openfigi|fmp",
+      2424
+    ]
+  ],
+  "review_batch_counts": [
+    [
+      "later_global_review",
+      2424
+    ]
+  ],
+  "deepseek_decision_counts": [
+    [
+      "needs_official_evidence",
+      2284
+    ],
+    [
+      "uncertain",
+      140
+    ]
+  ],
+  "env_status": {
+    "OPENFIGI_API_KEY": "set",
+    "ALPHAVANTAGE_API_KEY": "set",
+    "FMP_API_KEY": "set"
+  },
+  "policy": "Second-source validation is required before applying Twelve Data-driven name, identifier, alias, scope, or listing changes."
+}

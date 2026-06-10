@@ -118,6 +118,21 @@ REVIEW_FIELDS_BY_KIND = {
         "identity_evidence",
         "collision_decision",
     ],
+    "twelvedata_name_mismatch": [
+        "listing_key",
+        "ticker",
+        "exchange",
+        "mic_code",
+        "local_name",
+        "twelvedata_name",
+        "twelvedata_type",
+        "name_score",
+        "reason_code",
+        "candidate_action",
+        "validation_status",
+        "twelvedata_exchange",
+        "review_batch",
+    ],
 }
 
 VALID_DECISIONS = {

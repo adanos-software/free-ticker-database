@@ -1,0 +1,214 @@
+{
+  "total_rows": 4946,
+  "batches": [
+    {
+      "review_batch": "batch_a_us_core",
+      "csv": "data/deepseek_review_jobs/twelvedata_batch_a_rename_candidates.csv",
+      "rows": 1175,
+      "priority_counts": [
+        [
+          "P1",
+          509
+        ],
+        [
+          "P0",
+          385
+        ],
+        [
+          "P2",
+          281
+        ]
+      ],
+      "exchange_counts": [
+        [
+          "OTC",
+          690
+        ],
+        [
+          "NASDAQ",
+          369
+        ],
+        [
+          "NYSE",
+          104
+        ],
+        [
+          "BATS",
+          10
+        ],
+        [
+          "NYSE MKT",
+          2
+        ]
+      ],
+      "deepseek_status": "pending_segmented_review"
+    },
+    {
+      "review_batch": "batch_b_canada",
+      "csv": "data/deepseek_review_jobs/twelvedata_batch_b_rename_candidates.csv",
+      "rows": 56,
+      "priority_counts": [
+        [
+          "P1",
+          47
+        ],
+        [
+          "P2",
+          9
+        ]
+      ],
+      "exchange_counts": [
+        [
+          "NEO",
+          23
+        ],
+        [
+          "TSX",
+          19
+        ],
+        [
+          "TSXV",
+          14
+        ]
+      ],
+      "deepseek_status": "pending_segmented_review"
+    },
+    {
+      "review_batch": "batch_c_high_value_international",
+      "csv": "data/deepseek_review_jobs/twelvedata_batch_c_rename_candidates.csv",
+      "rows": 1291,
+      "priority_counts": [
+        [
+          "P2",
+          1291
+        ]
+      ],
+      "exchange_counts": [
+        [
+          "HKEX",
+          774
+        ],
+        [
+          "LSE",
+          210
+        ],
+        [
+          "B3",
+          155
+        ],
+        [
+          "TSE",
+          72
+        ],
+        [
+          "BSE_IN",
+          49
+        ],
+        [
+          "ASX",
+          22
+        ],
+        [
+          "NSE_IN",
+          9
+        ]
+      ],
+      "deepseek_status": "pending_segmented_review"
+    },
+    {
+      "review_batch": "later_global_review",
+      "csv": "data/deepseek_review_jobs/twelvedata_global_rest_rename_candidates.csv",
+      "rows": 2424,
+      "priority_counts": [
+        [
+          "P3",
+          2424
+        ]
+      ],
+      "exchange_counts": [
+        [
+          "TWSE",
+          899
+        ],
+        [
+          "SZSE",
+          239
+        ],
+        [
+          "SGX",
+          170
+        ],
+        [
+          "SSE",
+          163
+        ],
+        [
+          "KOSDAQ",
+          154
+        ],
+        [
+          "TADAWUL",
+          119
+        ],
+        [
+          "XETRA",
+          116
+        ],
+        [
+          "TPEX",
+          67
+        ],
+        [
+          "Euronext",
+          66
+        ],
+        [
+          "KRX",
+          60
+        ],
+        [
+          "WSE",
+          45
+        ],
+        [
+          "Bursa",
+          43
+        ],
+        [
+          "TASE",
+          39
+        ],
+        [
+          "BIST",
+          30
+        ],
+        [
+          "IDX",
+          26
+        ],
+        [
+          "BMV",
+          25
+        ],
+        [
+          "ATHEX",
+          21
+        ],
+        [
+          "SET",
+          19
+        ],
+        [
+          "AMS",
+          18
+        ],
+        [
+          "STO",
+          17
+        ]
+      ],
+      "deepseek_status": "pending_segmented_review"
+    }
+  ],
+  "policy": "Each CSV is a bounded DeepSeek review input. Run segment-by-segment; do not use one monolithic prompt for all global candidates."
+}
