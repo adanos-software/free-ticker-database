@@ -1,9 +1,9 @@
 {
   "summary": {
-    "generated_at": "2026-06-10T12:52:31Z",
-    "rows": 3706,
+    "generated_at": "2026-06-10T12:59:50Z",
+    "rows": 3708,
     "outcome_totals": {
-      "accepted_source_gap": 2998,
+      "accepted_source_gap": 3000,
       "core_exclusion_candidate": 708
     },
     "class_totals": {
@@ -19,19 +19,19 @@
       "fundlike_stock_sector_gap": 73,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 12,
-      "official_identifier_not_exposed_source_gap": 344,
+      "official_identifier_not_exposed_source_gap": 345,
       "official_identifier_reference_unmatched_gap": 67,
       "official_industry_taxonomy_unavailable_gap": 1585,
       "official_product_reference_unmatched_category_gap": 22,
       "official_product_taxonomy_unavailable_gap": 114,
-      "otc_sector_source_gap": 819,
+      "otc_sector_source_gap": 820,
       "shell_or_cpc_sector_gap": 90
     },
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 171,
-      "missing_isin_primary:accepted_source_gap": 423,
+      "missing_isin_primary:accepted_source_gap": 424,
       "missing_isin_primary:core_exclusion_candidate": 506,
-      "missing_sector_stock:accepted_source_gap": 2404,
+      "missing_sector_stock:accepted_source_gap": 2405,
       "missing_sector_stock:core_exclusion_candidate": 202
     },
     "policy": {
@@ -9550,7 +9550,7 @@
       "ticker": "AXO",
       "exchange": "TSXV",
       "asset_type": "Stock",
-      "name": "AXO Copper Corp.",
+      "name": "Axo Metals Corp.",
       "gap_class": "official_identifier_not_exposed_source_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
@@ -9823,6 +9823,23 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "LNG Energy Group Corp.",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "source_of_truth_outcome": "accepted_source_gap",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "leave_blank_until_source_available",
+      "review_needed": "true",
+      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
+      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "TSXV::MKT",
+      "ticker": "MKT",
+      "exchange": "TSXV",
+      "asset_type": "Stock",
+      "name": "Prospect Prediction Markets Inc.",
       "gap_class": "official_identifier_not_exposed_source_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
@@ -37907,6 +37924,23 @@
       "exchange": "OTC",
       "asset_type": "Stock",
       "name": "Meiko Electronics Co Ltd.",
+      "gap_class": "otc_sector_source_gap",
+      "source_of_truth_outcome": "accepted_source_gap",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "leave_blank_until_source_available",
+      "review_needed": "true",
+      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
+      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
+      "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "OTC::MKTDF",
+      "ticker": "MKTDF",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "name": "DeepMarkit Corp",
       "gap_class": "otc_sector_source_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
