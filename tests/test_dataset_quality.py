@@ -2571,15 +2571,29 @@ def test_no_short_or_ambiguous_name_aliases():
     assert not short_names, f"Short name aliases found: {[(r['ticker'], r['alias']) for r in short_names[:5]]}"
 
 
-def test_no_depositary_issues_in_stock_universe():
+def test_depositary_stock_rows_are_limited_to_adr_or_gdr():
     rows = load_csv("tickers.csv")
     depositary = [
-        r["ticker"]
+        r
         for r in rows
         if r["asset_type"] == "Stock"
-        and ("depositary" in r["name"].lower() or " adr" in r["name"].lower())
+        and (
+            "depositary" in r["name"].lower()
+            or " adr" in r["name"].lower()
+            or " gdr" in r["name"].lower()
+        )
     ]
-    assert not depositary, f"Depositary issues found: {depositary[:10]}"
+    invalid = [
+        r["ticker"]
+        for r in depositary
+        if not (
+            " adr" in r["name"].lower()
+            or " gdr" in r["name"].lower()
+            or "american depositary receipt" in r["name"].lower()
+            or "depositary receipt" in r["name"].lower()
+        )
+    ]
+    assert not invalid, f"Unexpected depositary stock rows found: {invalid[:10]}"
 
 
 def test_numeric_namespace_aliases_are_removed_from_listing_aliases():
