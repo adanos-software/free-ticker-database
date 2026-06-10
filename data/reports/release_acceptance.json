@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-10T13:34:37Z",
+    "generated_at": "2026-06-10T16:06:20Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -54,14 +54,14 @@
       "adanos_detection_simulation": "data/reports/adanos_detection_simulation.json"
     }
   },
-  "passed": true,
+  "passed": false,
   "summary": {
     "criteria": 60,
-    "passed_criteria": 60,
-    "failed_criteria": 0,
+    "passed_criteria": 59,
+    "failed_criteria": 1,
     "validation_failed_error_gates": 0
   },
-  "summary_context": "passed=true;criteria=60;passed_criteria=60;failed_criteria=0;validation_failed_error_gates=0",
+  "summary_context": "passed=false;criteria=60;passed_criteria=59;failed_criteria=1;validation_failed_error_gates=0",
   "criteria": {
     "no_invalid_isins": {
       "passed": true,
@@ -236,13 +236,13 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-10T13:34:37Z",
+      "release_generated_at": "2026-06-10T16:06:20Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-10T13:34:35Z"
+          "generated_at": "2026-06-10T15:59:30Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
@@ -272,7 +272,7 @@
         "source_inventory_gap": {
           "path": "data/reports/source_inventory_gap.json",
           "exists": true,
-          "generated_at": "2026-06-10T12:59:45Z"
+          "generated_at": "2026-06-10T16:06:12Z"
         },
         "tse_sector_backfill": {
           "path": "data/reports/tse_sector_backfill.json",
@@ -292,7 +292,7 @@
         "source_gap_classification": {
           "path": "data/reports/source_gap_classification.json",
           "exists": true,
-          "generated_at": "2026-06-10T12:59:49Z"
+          "generated_at": "2026-06-10T16:06:13Z"
         },
         "deepseek_review_summary": {
           "path": "data/reports/deepseek_review_summary.json",
@@ -895,7 +895,7 @@
     },
     "source_gap_traceability": {
       "passed": true,
-      "rows": 3708,
+      "rows": 3707,
       "missing_summary_keys": [],
       "row_count_mismatch": {},
       "row_gaps": [],
@@ -2072,7 +2072,7 @@
       "baseline_campaign_evidence_gaps": []
     },
     "campaign_artifact_integrity": {
-      "passed": true,
+      "passed": false,
       "missing_meta_keys": [],
       "invalid_generated_at": "",
       "campaign_row_count_mismatch": {},
@@ -2104,9 +2104,26 @@
       ],
       "checked_count": 21,
       "missing_files": [],
-      "row_count_mismatches": [],
+      "row_count_mismatches": [
+        {
+          "path": "data/reports/source_gap_classification.json",
+          "campaign_rows": 3708,
+          "actual_rows": 3707
+        }
+      ],
       "missing_generated_at": [],
-      "generated_at_mismatches": []
+      "generated_at_mismatches": [
+        {
+          "path": "data/reports/coverage_report.json",
+          "campaign_generated_at": "2026-06-10T12:59:44Z",
+          "actual_generated_at": "2026-06-10T16:06:10Z"
+        },
+        {
+          "path": "data/reports/source_gap_classification.json",
+          "campaign_generated_at": "2026-06-10T12:59:49Z",
+          "actual_generated_at": "2026-06-10T16:06:13Z"
+        }
+      ]
     },
     "review_artifact_siblings": {
       "passed": true,

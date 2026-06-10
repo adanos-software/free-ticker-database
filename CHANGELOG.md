@@ -2,6 +2,38 @@
 
 ## [Unreleased]
 
+## [3.30.1] - 2026-06-10
+
+### Summary
+
+Patch release correcting stale corporate actions, one erroneous source name, and missing country metadata surfaced by re-running the Twelve Data comparison against a refreshed stock dump. Every change was validated per-row against primary sources (SEC/EDGAR, official exchange references, company filings, Bloomberg) and applied through the override + clean-rebuild workflow; instrument identity (ISIN) was preserved wherever only a name or ticker changed.
+
+### Fixed
+
+- Corrected stale, ISIN-stable issuer renames:
+  - `NASDAQ:IAC` → `NASDAQ:PPLI` (IAC Inc. → People Incorporated), effective 2026-06-04; CUSIP/ISIN `US44891N2080` unchanged.
+  - `LSE:0QK3` Dufry AG → Avolta AG (same ISIN `CH0023405456`).
+  - `LSE:ALBA` Alba Mineral Resources → Arkadian Strategic Metals Plc (same ISIN `GB00B06KBB18`).
+- Dropped the stale `NASDAQ:LITM` row (Snow Lake Resources → Frontier Nuclear and Minerals `FNUC`, 2026-03-16; the `FNUC` row already exists).
+- Consolidated the OPAP → Allwyn AG transition: renamed `ATHEX:OPAP` → `ATHEX:ALWN` (Allwyn AG, ISIN `GRS419003009` retained, FIGI preserved) as the canonical Athens primary, merged the redundant ISIN-less `ALWN` placeholder, renamed the `LSE:0FI1` line, and linked the `OTC:GRKZF` line as a cross-listing; the `OTC:GOFPY` US ADR is unchanged.
+- Corrected an erroneous Twelve Data name on `OTC:AAYYY` (was "AACL Holdings Ltd.", a separate delisted entity) to Australian Agricultural Company Limited (OTC ADR of ASX:AAC, ISIN `AU000000AAC9`).
+
+### Changed
+
+- Filled missing `country`/`country_code` on 28 rows left blank by prior name-update sweeps, using incorporation domicile (e.g. `CHNVF` Youzan Technology → Bermuda, `ACCL` Acco Group Holdings → Cayman Islands).
+- Refreshed all canonical exports and reports; updated the public snapshot to 61,623 primary tickers, 71,041 listing rows, 45,911 stocks, 15,712 ETFs, and 122,004 aliases.
+
+### Safety
+
+- Left `NYSE:AERO` country blank by design — an existing reviewed override deliberately cleared a same-ticker ISIN collision with Montana Aerospace AG.
+- Kept country as Greece for the Allwyn AG `GRS419003009` lines (ISIN prefix + Athens listing); the May-2026 redomiciliation to Switzerland is noted but not forced against the Greek ISIN.
+
+### Verification
+
+- `scripts/check_readme_snapshot.py`: pass.
+- `scripts/validate_database.py`: pass with 0/83 failed error gates, 61,623 ticker rows, and 71,041 listing rows.
+- `pytest tests/ -q`: 1,445 passed.
+
 ## [3.30.0] - 2026-06-10
 
 ### Summary
