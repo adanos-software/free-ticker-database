@@ -1251,8 +1251,6 @@ def should_exclude_stock_row(
     if row.get("exchange") in US_EXCHANGES and US_SERIES_PREFERRED_TICKER_RE.fullmatch(ticker):
         if has_matching_base_listing(row, stock_base_name_index):
             return True
-    if is_depositary_row(row):
-        return True
     if PREFERRED_PATTERN.search(name):
         return True
     return any(pattern.search(name) for pattern in NON_COMMON_PATTERNS)
