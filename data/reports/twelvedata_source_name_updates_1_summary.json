@@ -1,0 +1,54 @@
+{
+  "rows": 122,
+  "exchange_counts": [
+    [
+      "OTC",
+      118
+    ],
+    [
+      "NASDAQ",
+      2
+    ],
+    [
+      "NYSE",
+      1
+    ],
+    [
+      "TSX",
+      1
+    ]
+  ],
+  "type_counts": [
+    [
+      "Common Stock",
+      120
+    ],
+    [
+      "Depositary Receipt",
+      2
+    ]
+  ],
+  "figi_relation_counts": [
+    [
+      "local_figi_match",
+      122
+    ]
+  ],
+  "review_batch_counts": [
+    [
+      "batch_a_us_core",
+      121
+    ],
+    [
+      "batch_b_canada",
+      1
+    ]
+  ],
+  "excluded_after_validation": [
+    {
+      "listing_key": "OTC::GLVT",
+      "reason": "name update produced a new official_name_mismatch warning against OTC/SEC references"
+    }
+  ],
+  "policy": "Applied only source-adjudicated apply_ready Twelve Data name updates with local OpenFIGI/local FIGI agreement and no scope, primary-key, or validation-warning side effects."
+}
