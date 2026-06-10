@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-06-10T12:52:31Z",
-    "rows": 3706,
+    "generated_at": "2026-06-10T12:59:49Z",
+    "rows": 3708,
     "field_totals": {
       "missing_etf_category": 171,
-      "missing_isin_primary": 929,
-      "missing_sector_stock": 2606
+      "missing_isin_primary": 930,
+      "missing_sector_stock": 2607
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 45,
@@ -20,12 +20,12 @@
       "fundlike_stock_sector_gap": 73,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 12,
-      "official_identifier_not_exposed_source_gap": 344,
+      "official_identifier_not_exposed_source_gap": 345,
       "official_identifier_reference_unmatched_gap": 67,
       "official_industry_taxonomy_unavailable_gap": 1585,
       "official_product_reference_unmatched_category_gap": 22,
       "official_product_taxonomy_unavailable_gap": 114,
-      "otc_sector_source_gap": 819,
+      "otc_sector_source_gap": 820,
       "shell_or_cpc_sector_gap": 90
     },
     "class_by_field": {
@@ -41,12 +41,12 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 325,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 12,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 344,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 345,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 67,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 39,
       "missing_sector_stock:fundlike_stock_sector_gap": 73,
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 1585,
-      "missing_sector_stock:otc_sector_source_gap": 819,
+      "missing_sector_stock:otc_sector_source_gap": 820,
       "missing_sector_stock:shell_or_cpc_sector_gap": 90
     },
     "top_exchanges_by_field": {
@@ -106,11 +106,11 @@
           "rows": 90
         },
         {
-          "exchange": "NYSE ARCA",
-          "rows": 82
+          "exchange": "TSXV",
+          "rows": 83
         },
         {
-          "exchange": "TSXV",
+          "exchange": "NYSE ARCA",
           "rows": 82
         },
         {
@@ -137,7 +137,7 @@
       "missing_sector_stock": [
         {
           "exchange": "OTC",
-          "rows": 819
+          "rows": 820
         },
         {
           "exchange": "B3",
@@ -182,7 +182,7 @@
         "field": "missing_sector_stock",
         "gap_class": "otc_sector_source_gap",
         "exchange": "OTC",
-        "rows": 819,
+        "rows": 820,
         "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
         "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
       },
@@ -331,12 +331,12 @@
         "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
       },
       {
-        "field": "missing_etf_category",
-        "gap_class": "official_product_taxonomy_unavailable_gap",
-        "exchange": "LSE",
-        "rows": 35,
-        "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
-        "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
+        "field": "missing_isin_primary",
+        "gap_class": "official_identifier_not_exposed_source_gap",
+        "exchange": "TSXV",
+        "rows": 36,
+        "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+        "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
       }
     ],
     "policy": {
@@ -17760,7 +17760,7 @@
       "ticker": "AXO",
       "exchange": "TSXV",
       "asset_type": "Stock",
-      "name": "AXO Copper Corp.",
+      "name": "Axo Metals Corp.",
       "gap_class": "official_identifier_not_exposed_source_gap",
       "review_needed": "true",
       "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
@@ -18313,6 +18313,23 @@
       "source_gap_context": "listing_key=TSXV::MAR-UN;exchange=TSXV;ticker=MAR-UN;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "TSXV::MKT",
+      "ticker": "MKT",
+      "exchange": "TSXV",
+      "asset_type": "Stock",
+      "name": "Prospect Prediction Markets Inc.",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=TSXV::MKT;exchange=TSXV;ticker=MKT;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -48146,6 +48163,23 @@
       "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
       "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
       "source_gap_context": "listing_key=OTC::MKOEF;exchange=OTC;ticker=MKOEF;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "OTC::MKTDF",
+      "ticker": "MKTDF",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "name": "DeepMarkit Corp",
+      "gap_class": "otc_sector_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require SEC SIC, issuer filing, OTCMarkets profile, or reviewed secondary profile data; no name-only sector guesses.",
+      "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
+      "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
+      "source_gap_context": "listing_key=OTC::MKTDF;exchange=OTC;ticker=MKTDF;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
     },

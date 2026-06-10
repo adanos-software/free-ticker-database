@@ -63,7 +63,7 @@
       "etf_missing_count": 4,
       "exchange": "TSXV",
       "field": "missing_isin_primary",
-      "missing_count": 82,
+      "missing_count": 83,
       "notes": "Run Canada as one package because TSX, TSXV, and NEO share products and suffix conventions.",
       "official_source_count": 2,
       "priority_bucket": "ranked_by_missing_count",
@@ -72,7 +72,7 @@
       "reference_scopes": "exchange_directory|interlisted_subset|listed_companies_subset",
       "review_needed": true,
       "script": "scripts/fetch_exchange_masterfiles.py --source <tmx_feed>; scripts/backfill_eodhd_metadata.py; scripts/backfill_yahoo_missing_isins.py",
-      "stock_missing_count": 78,
+      "stock_missing_count": 79,
       "target_field": "isin",
       "venue_status": "official_full"
     },
@@ -747,7 +747,7 @@
       "etf_missing_count": 0,
       "exchange": "OTC",
       "field": "missing_sector_stock",
-      "missing_count": 819,
+      "missing_count": 820,
       "notes": "OTC is noisy; do not apply thin-name sector guesses without issuer evidence.",
       "official_source_count": 3,
       "priority_bucket": "top_impact",
@@ -756,7 +756,7 @@
       "reference_scopes": "exchange_directory|listed_companies_subset|security_lookup_subset",
       "review_needed": true,
       "script": "scripts/backfill_sec_sic_sectors.py; scripts/backfill_alphavantage_sectors.py; scripts/backfill_financedatabase_metadata.py",
-      "stock_missing_count": 819,
+      "stock_missing_count": 820,
       "target_field": "stock_sector",
       "venue_status": "official_full"
     },
@@ -2422,10 +2422,10 @@
     },
     "field_totals": {
       "missing_etf_category": 171,
-      "missing_isin_primary": 929,
-      "missing_sector_stock": 2606
+      "missing_isin_primary": 930,
+      "missing_sector_stock": 2607
     },
-    "generated_at": "2026-06-10T12:52:27Z",
+    "generated_at": "2026-06-10T12:59:45Z",
     "legacy_primary_ticker_collision_rows": 1,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
@@ -2488,7 +2488,7 @@
         "etf_missing_count": 0,
         "exchange": "OTC",
         "field": "missing_sector_stock",
-        "missing_count": 819,
+        "missing_count": 820,
         "official_source_count": 3,
         "recommended_source": "Current SEC SIC residual dry-run has no accepted OTC sector candidates; prioritize OTC Markets issuer evidence, reviewed Alpha Vantage/FinanceDatabase signals, or keep source-gap status.",
         "residual_gate": "sec_sic_otc_no_apply_candidates",
@@ -2501,8 +2501,8 @@
         "sec_requests_made": 0,
         "sec_sic_candidates": 817,
         "source_gap_class": "otc_sector_source_gap",
-        "source_gap_rows": 820,
-        "stock_missing_count": 819,
+        "source_gap_rows": 819,
+        "stock_missing_count": 820,
         "target_field": "stock_sector",
         "venue_status": "official_full",
         "why_next": "top_impact residual review-gated workflow"
@@ -2740,7 +2740,7 @@
         "exchange_missing_isin_official_source_rows": 35,
         "exchange_missing_isin_reviewed_source_gap_rows": 2,
         "field": "missing_isin_primary",
-        "missing_count": 82,
+        "missing_count": 83,
         "official_isin_source_required_rows": 61,
         "official_source_count": 2,
         "recommended_source": "Official CSD, issuer, prospectus, transfer-agent, or reviewed identifier source exposing a valid ISIN.",
@@ -2750,7 +2750,7 @@
         "safe_action": "candidate_for_official_followup",
         "scope_decision_required_rows": 168,
         "script": "scripts/fetch_exchange_masterfiles.py --source <tmx_feed>; scripts/backfill_eodhd_metadata.py; scripts/backfill_yahoo_missing_isins.py",
-        "stock_missing_count": 78,
+        "stock_missing_count": 79,
         "target_field": "isin",
         "venue_status": "official_full",
         "why_next": "top_impact Canada residual review-gated workflow"

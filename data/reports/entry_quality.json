@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-10T12:52:30Z",
+    "generated_at": "2026-06-10T12:59:48Z",
     "rows": 71043,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,9 +14,9 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 63566,
-      "source_gap": 7411,
-      "warn": 66
+      "pass": 63565,
+      "source_gap": 7410,
+      "warn": 68
     },
     "evidence_level_counts": {
       "identifier_enriched": 4209,
@@ -26,17 +26,17 @@
     },
     "severity_counts": {
       "high": 63,
-      "medium": 3,
-      "source_gap": 8192
+      "medium": 5,
+      "source_gap": 8193
     },
     "issue_counts": {
       "official_reference_gap": 5322,
       "missing_stock_sector": 1787,
-      "expected_missing_primary_isin": 929,
+      "expected_missing_primary_isin": 930,
       "missing_etf_category": 146,
       "country_isin_mismatch": 63,
       "venue_missing_official_source": 8,
-      "official_name_mismatch": 3
+      "official_name_mismatch": 5
     },
     "top_flagged_exchanges": [
       {
@@ -84,8 +84,9 @@
       },
       {
         "exchange": "TSXV",
-        "pass": 901,
-        "source_gap": 165
+        "pass": 900,
+        "source_gap": 164,
+        "warn": 2
       },
       {
         "exchange": "Euronext",
@@ -18294,10 +18295,17 @@
       "ticker": "AXO",
       "exchange": "TSXV",
       "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
+      "quality_status": "warn",
+      "quality_score": 55,
+      "recommended_action": "review_or_backfill",
       "issues": [
+        {
+          "issue_type": "official_name_mismatch",
+          "severity": "medium",
+          "field": "name",
+          "value": "Axo Metals Corp.",
+          "message": "Listing name has weak overlap with official active reference name(s)."
+        },
         {
           "issue_type": "expected_missing_primary_isin",
           "severity": "source_gap",
