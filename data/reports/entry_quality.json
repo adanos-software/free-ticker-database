@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-10T16:06:16Z",
+    "generated_at": "2026-06-10T20:02:29Z",
     "rows": 71041,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,8 +14,8 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 63563,
-      "source_gap": 7410,
+      "pass": 63581,
+      "source_gap": 7392,
       "warn": 68
     },
     "evidence_level_counts": {
@@ -27,13 +27,13 @@
     "severity_counts": {
       "high": 63,
       "medium": 5,
-      "source_gap": 8192
+      "source_gap": 8172
     },
     "issue_counts": {
       "official_reference_gap": 5322,
-      "missing_stock_sector": 1787,
+      "missing_stock_sector": 1776,
       "expected_missing_primary_isin": 929,
-      "missing_etf_category": 146,
+      "missing_etf_category": 137,
       "country_isin_mismatch": 63,
       "venue_missing_official_source": 8,
       "official_name_mismatch": 5
@@ -52,9 +52,9 @@
       },
       {
         "exchange": "LSE",
-        "pass": 6099,
+        "pass": 6109,
         "warn": 60,
-        "source_gap": 256
+        "source_gap": 246
       },
       {
         "exchange": "TSX",
@@ -90,8 +90,8 @@
       },
       {
         "exchange": "Euronext",
-        "source_gap": 150,
-        "pass": 825
+        "source_gap": 148,
+        "pass": 827
       },
       {
         "exchange": "ASX",
@@ -269,24 +269,6 @@
           "field": "exchange",
           "value": "KRX",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "HKEX::00363",
-      "ticker": "00363",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
         }
       ]
     },
@@ -2568,44 +2550,8 @@
       ]
     },
     {
-      "listing_key": "LSE::0RA8",
-      "ticker": "0RA8",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
       "listing_key": "LSE::0RCY",
       "ticker": "0RCY",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0RDX",
-      "ticker": "0RDX",
       "exchange": "LSE",
       "asset_type": "Stock",
       "quality_status": "source_gap",
@@ -18773,6 +18719,74 @@
           "field": "exchange",
           "value": "WSE",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OSL::B2I",
+      "ticker": "B2I",
+      "exchange": "OSL",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "SGX::B69",
+      "ticker": "B69",
+      "exchange": "SGX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 70,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        },
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        },
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "SGX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "SGX::B73",
+      "ticker": "B73",
+      "exchange": "SGX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
         }
       ]
     }

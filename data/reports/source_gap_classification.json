@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-06-10T16:06:13Z",
-    "rows": 3707,
+    "generated_at": "2026-06-10T20:02:26Z",
+    "rows": 3687,
     "field_totals": {
-      "missing_etf_category": 171,
+      "missing_etf_category": 162,
       "missing_isin_primary": 929,
-      "missing_sector_stock": 2607
+      "missing_sector_stock": 2596
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 45,
@@ -14,7 +14,7 @@
       "commodity_etf_category_gap": 5,
       "debt_or_securitized_identifier_gap": 84,
       "digital_asset_etf_category_gap": 4,
-      "equity_etf_category_gap": 23,
+      "equity_etf_category_gap": 21,
       "fixed_income_etf_category_gap": 3,
       "fund_or_trust_identifier_gap": 325,
       "fundlike_stock_sector_gap": 73,
@@ -22,19 +22,19 @@
       "official_current_directory_absent_identifier_gap": 12,
       "official_identifier_not_exposed_source_gap": 345,
       "official_identifier_reference_unmatched_gap": 66,
-      "official_industry_taxonomy_unavailable_gap": 1585,
-      "official_product_reference_unmatched_category_gap": 22,
-      "official_product_taxonomy_unavailable_gap": 114,
+      "official_industry_taxonomy_unavailable_gap": 1574,
+      "official_product_reference_unmatched_category_gap": 21,
+      "official_product_taxonomy_unavailable_gap": 108,
       "otc_sector_source_gap": 820,
       "shell_or_cpc_sector_gap": 90
     },
     "class_by_field": {
       "missing_etf_category:commodity_etf_category_gap": 5,
       "missing_etf_category:digital_asset_etf_category_gap": 4,
-      "missing_etf_category:equity_etf_category_gap": 23,
+      "missing_etf_category:equity_etf_category_gap": 21,
       "missing_etf_category:fixed_income_etf_category_gap": 3,
-      "missing_etf_category:official_product_reference_unmatched_category_gap": 22,
-      "missing_etf_category:official_product_taxonomy_unavailable_gap": 114,
+      "missing_etf_category:official_product_reference_unmatched_category_gap": 21,
+      "missing_etf_category:official_product_taxonomy_unavailable_gap": 108,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 45,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 35,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 84,
@@ -45,7 +45,7 @@
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 66,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 39,
       "missing_sector_stock:fundlike_stock_sector_gap": 73,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 1585,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 1574,
       "missing_sector_stock:otc_sector_source_gap": 820,
       "missing_sector_stock:shell_or_cpc_sector_gap": 90
     },
@@ -53,7 +53,7 @@
       "missing_etf_category": [
         {
           "exchange": "LSE",
-          "rows": 50
+          "rows": 42
         },
         {
           "exchange": "OTC",
@@ -61,7 +61,7 @@
         },
         {
           "exchange": "NYSE ARCA",
-          "rows": 17
+          "rows": 16
         },
         {
           "exchange": "XETRA",
@@ -149,11 +149,11 @@
         },
         {
           "exchange": "Euronext",
-          "rows": 132
+          "rows": 130
         },
         {
           "exchange": "LSE",
-          "rows": 130
+          "rows": 128
         },
         {
           "exchange": "BK",
@@ -165,7 +165,7 @@
         },
         {
           "exchange": "PSE",
-          "rows": 76
+          "rows": 74
         },
         {
           "exchange": "CSE_MA",
@@ -173,7 +173,7 @@
         },
         {
           "exchange": "OSL",
-          "rows": 58
+          "rows": 57
         }
       ]
     },
@@ -206,15 +206,7 @@
         "field": "missing_sector_stock",
         "gap_class": "official_industry_taxonomy_unavailable_gap",
         "exchange": "Euronext",
-        "rows": 132,
-        "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-        "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
-      },
-      {
-        "field": "missing_sector_stock",
-        "gap_class": "official_industry_taxonomy_unavailable_gap",
-        "exchange": "LSE",
-        "rows": 104,
+        "rows": 130,
         "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
         "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
       },
@@ -222,6 +214,14 @@
         "field": "missing_sector_stock",
         "gap_class": "official_industry_taxonomy_unavailable_gap",
         "exchange": "BK",
+        "rows": 102,
+        "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+        "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
+      },
+      {
+        "field": "missing_sector_stock",
+        "gap_class": "official_industry_taxonomy_unavailable_gap",
+        "exchange": "LSE",
         "rows": 102,
         "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
         "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
@@ -254,7 +254,7 @@
         "field": "missing_sector_stock",
         "gap_class": "official_industry_taxonomy_unavailable_gap",
         "exchange": "PSE",
-        "rows": 67,
+        "rows": 65,
         "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
         "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
       },
@@ -278,7 +278,7 @@
         "field": "missing_sector_stock",
         "gap_class": "official_industry_taxonomy_unavailable_gap",
         "exchange": "OSL",
-        "rows": 58,
+        "rows": 57,
         "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
         "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
       },
@@ -318,7 +318,7 @@
         "field": "missing_sector_stock",
         "gap_class": "official_industry_taxonomy_unavailable_gap",
         "exchange": "XETRA",
-        "rows": 43,
+        "rows": 42,
         "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
         "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
       },
@@ -326,7 +326,7 @@
         "field": "missing_sector_stock",
         "gap_class": "official_industry_taxonomy_unavailable_gap",
         "exchange": "SGX",
-        "rows": 40,
+        "rows": 39,
         "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
         "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
       },
@@ -909,23 +909,6 @@
     {
       "field": "missing_etf_category",
       "target_field": "etf_category",
-      "listing_key": "LSE::BUGG",
-      "ticker": "BUGG",
-      "exchange": "LSE",
-      "asset_type": "ETF",
-      "name": "Global X Cybersecurity UCITS ETF USD Acc GBP",
-      "gap_class": "official_product_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
-      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
-      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
-      "source_gap_context": "listing_key=LSE::BUGG;exchange=LSE;ticker=BUGG;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
-      "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_etf_category",
-      "target_field": "etf_category",
       "listing_key": "LSE::COPG",
       "ticker": "COPG",
       "exchange": "LSE",
@@ -960,40 +943,6 @@
     {
       "field": "missing_etf_category",
       "target_field": "etf_category",
-      "listing_key": "LSE::DAXX",
-      "ticker": "DAXX",
-      "exchange": "LSE",
-      "asset_type": "ETF",
-      "name": "MULTI-UNITS LUXEMBOURG - Lyxor DAX (DR) UCITS ETF - Acc",
-      "gap_class": "official_product_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
-      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
-      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
-      "source_gap_context": "listing_key=LSE::DAXX;exchange=LSE;ticker=DAXX;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
-      "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_etf_category",
-      "target_field": "etf_category",
-      "listing_key": "LSE::DFNG",
-      "ticker": "DFNG",
-      "exchange": "LSE",
-      "asset_type": "ETF",
-      "name": "VanEck Defense ETF A USD Acc GBP",
-      "gap_class": "official_product_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
-      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
-      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
-      "source_gap_context": "listing_key=LSE::DFNG;exchange=LSE;ticker=DFNG;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
-      "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_etf_category",
-      "target_field": "etf_category",
       "listing_key": "LSE::EBIG",
       "ticker": "EBIG",
       "exchange": "LSE",
@@ -1024,23 +973,6 @@
       "source_gap_context": "listing_key=LSE::FDIU;exchange=LSE;ticker=FDIU;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
       "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_etf_category",
-      "target_field": "etf_category",
-      "listing_key": "LSE::FTEU",
-      "ticker": "FTEU",
-      "exchange": "LSE",
-      "asset_type": "ETF",
-      "name": "First Trust Eurozone AlphaDEX® UCITS ETF Class A Shares",
-      "gap_class": "equity_etf_category_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official fund asset class or deterministic equity-index product evidence.",
-      "recommended_next_source": "Official fund asset class or reviewed product profile.",
-      "source_gate": "Exact ETF symbol/name and deterministic equity exposure evidence.",
-      "source_gap_context": "listing_key=LSE::FTEU;exchange=LSE;ticker=FTEU;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
-      "classification_context": "gap_class=equity_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=equity_etf_category_gap"
     },
     {
       "field": "missing_etf_category",
@@ -1419,23 +1351,6 @@
     {
       "field": "missing_etf_category",
       "target_field": "etf_category",
-      "listing_key": "LSE::SMGB",
-      "ticker": "SMGB",
-      "exchange": "LSE",
-      "asset_type": "ETF",
-      "name": "VanEck Semiconductor UCITS ETF",
-      "gap_class": "official_product_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
-      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
-      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
-      "source_gap_context": "listing_key=LSE::SMGB;exchange=LSE;ticker=SMGB;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
-      "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_etf_category",
-      "target_field": "etf_category",
       "listing_key": "LSE::SNSG",
       "ticker": "SNSG",
       "exchange": "LSE",
@@ -1449,23 +1364,6 @@
       "source_gap_context": "listing_key=LSE::SNSG;exchange=LSE;ticker=SNSG;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
       "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_etf_category",
-      "target_field": "etf_category",
-      "listing_key": "LSE::SPYL",
-      "ticker": "SPYL",
-      "exchange": "LSE",
-      "asset_type": "ETF",
-      "name": "SPDR S&P 500 UCITS ETF USD Acc",
-      "gap_class": "equity_etf_category_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official fund asset class or deterministic equity-index product evidence.",
-      "recommended_next_source": "Official fund asset class or reviewed product profile.",
-      "source_gate": "Exact ETF symbol/name and deterministic equity exposure evidence.",
-      "source_gap_context": "listing_key=LSE::SPYL;exchange=LSE;ticker=SPYL;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
-      "classification_context": "gap_class=equity_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=equity_etf_category_gap"
     },
     {
       "field": "missing_etf_category",
@@ -1487,23 +1385,6 @@
     {
       "field": "missing_etf_category",
       "target_field": "etf_category",
-      "listing_key": "LSE::TDGB",
-      "ticker": "TDGB",
-      "exchange": "LSE",
-      "asset_type": "ETF",
-      "name": "VanEck Morningstar Developed Markets Dividend Leaders UCITS ETF GBP",
-      "gap_class": "official_product_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
-      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
-      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
-      "source_gap_context": "listing_key=LSE::TDGB;exchange=LSE;ticker=TDGB;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
-      "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_etf_category",
-      "target_field": "etf_category",
       "listing_key": "LSE::TRYP",
       "ticker": "TRYP",
       "exchange": "LSE",
@@ -1515,23 +1396,6 @@
       "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
       "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
       "source_gap_context": "listing_key=LSE::TRYP;exchange=LSE;ticker=TRYP;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
-      "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_etf_category",
-      "target_field": "etf_category",
-      "listing_key": "LSE::UDVD",
-      "ticker": "UDVD",
-      "exchange": "LSE",
-      "asset_type": "ETF",
-      "name": "SPDR® S&P US Dividend Aristocrats UCITS ETF Dis",
-      "gap_class": "official_product_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
-      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
-      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
-      "source_gap_context": "listing_key=LSE::UDVD;exchange=LSE;ticker=UDVD;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
       "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
     },
@@ -1959,23 +1823,6 @@
       "source_gap_context": "listing_key=NYSE ARCA::BKFI;exchange=NYSE ARCA;ticker=BKFI;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
       "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_etf_category",
-      "target_field": "etf_category",
-      "listing_key": "NYSE ARCA::FEU",
-      "ticker": "FEU",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "name": "SPDR STOXX Europe 50 ETF",
-      "gap_class": "official_product_reference_unmatched_category_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue/product source layer exists, but the residual ETF row has no exact official product reference; require alias/current-listing evidence or product taxonomy before filling.",
-      "recommended_next_source": "Official product directory, alias review, or reviewed product provider profile.",
-      "source_gate": "Require an exact official symbol/alias match before filling or mapping etf_category.",
-      "source_gap_context": "listing_key=NYSE ARCA::FEU;exchange=NYSE ARCA;ticker=FEU;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
-      "classification_context": "gap_class=official_product_reference_unmatched_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_reference_unmatched_category_gap"
     },
     {
       "field": "missing_etf_category",
@@ -33311,23 +33158,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "Euronext::EAPI",
-      "ticker": "EAPI",
-      "exchange": "Euronext",
-      "asset_type": "Stock",
-      "name": "Euroapi SAS",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=Euronext::EAPI;exchange=Euronext;ticker=EAPI;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "Euronext::ENRGY",
       "ticker": "ENRGY",
       "exchange": "Euronext",
@@ -33889,23 +33719,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "Euronext::OVH",
-      "ticker": "OVH",
-      "exchange": "Euronext",
-      "asset_type": "Stock",
-      "name": "OVH Groupe SAS",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=Euronext::OVH;exchange=Euronext;ticker=OVH;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "Euronext::PLNW",
       "ticker": "PLNW",
       "exchange": "Euronext",
@@ -34359,23 +34172,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=HKEX::00025;exchange=HKEX;ticker=00025;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "HKEX::00363",
-      "ticker": "00363",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "name": "SHANGHAI IND H",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=HKEX::00363;exchange=HKEX;ticker=00363;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -35198,23 +34994,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "LSE::0RA8",
-      "ticker": "0RA8",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "name": "Elis S.A.",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=LSE::0RA8;exchange=LSE;ticker=0RA8;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "LSE::0RCY",
       "ticker": "0RCY",
       "exchange": "LSE",
@@ -35226,23 +35005,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=LSE::0RCY;exchange=LSE;ticker=0RCY;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "LSE::0RDX",
-      "ticker": "0RDX",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "name": "Amundi S.A.",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=LSE::0RDX;exchange=LSE;ticker=0RDX;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -39193,23 +38955,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "NZX::KPG",
-      "ticker": "KPG",
-      "exchange": "NZX",
-      "asset_type": "Stock",
-      "name": "Kiwi Property Group Limited Ordinary Shares",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=NZX::KPG;exchange=NZX;ticker=KPG;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "NZX::LOC",
       "ticker": "LOC",
       "exchange": "NZX",
@@ -39748,23 +39493,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=OSL::FFSB;exchange=OSL;ticker=FFSB;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "OSL::HAUTO",
-      "ticker": "HAUTO",
-      "exchange": "OSL",
-      "asset_type": "Stock",
-      "name": "HÖEGH AUTOLINERS",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=OSL::HAUTO;exchange=OSL;ticker=HAUTO;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -54952,23 +54680,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "PSE::LCB",
-      "ticker": "LCB",
-      "exchange": "PSE",
-      "asset_type": "Stock",
-      "name": "Lepanto Consolidated Mining Co B",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=PSE::LCB;exchange=PSE;ticker=LCB;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "PSE::LFM",
       "ticker": "LFM",
       "exchange": "PSE",
@@ -55065,23 +54776,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=PSE::MM;exchange=PSE;ticker=MM;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "PSE::MONDE",
-      "ticker": "MONDE",
-      "exchange": "PSE",
-      "asset_type": "Stock",
-      "name": "Monde Nissin Corp",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=PSE::MONDE;exchange=PSE;ticker=MONDE;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -57275,23 +56969,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=SGX::KYB;exchange=SGX;ticker=KYB;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "SGX::P15",
-      "ticker": "P15",
-      "exchange": "SGX",
-      "asset_type": "Stock",
-      "name": "Pacific Century",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=SGX::P15;exchange=SGX;ticker=P15;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
@@ -62375,23 +62052,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=XETRA::PA8;exchange=XETRA;ticker=PA8;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "XETRA::POH1",
-      "ticker": "POH1",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "name": "CARNIVAL PLC DL 1,66",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=XETRA::POH1;exchange=XETRA;ticker=POH1;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
