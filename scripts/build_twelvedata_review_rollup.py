@@ -6,12 +6,17 @@ import argparse
 import csv
 import json
 from collections import Counter
+from datetime import UTC, datetime
 from pathlib import Path
 
 
 DEFAULT_OUTPUT_JSON = Path("data/reports/twelvedata_all_batches_review_rollup.json")
 DEFAULT_OUTPUT_MD = Path("data/reports/twelvedata_all_batches_review_rollup.md")
 DEFAULT_ADJUDICATION_CSV = Path("data/reports/twelvedata_source_adjudication.csv")
+
+def now_iso() -> str:
+    return datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
+
 
 SEGMENTS = [
     {
@@ -110,6 +115,7 @@ def build_summary() -> dict[str, object]:
         if eligibility == "apply_ready"
     )
     return {
+        "generated_at": now_iso(),
         "segments": segments,
         "totals": {
             "rename_candidates": sum(int(segment["rename_candidates"]) for segment in segments),

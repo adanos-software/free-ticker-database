@@ -6,10 +6,15 @@ import argparse
 import csv
 import json
 from collections import Counter
+from datetime import UTC, datetime
 from pathlib import Path
 
 
 REPORT_DIR = Path("data/reports")
+
+def now_iso() -> str:
+    return datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
+
 
 ALLOWED_TWELVE_TYPES = {
     "American Depositary Receipt",
@@ -284,6 +289,7 @@ def main() -> None:
     rename_priority, rename_batch = summarize(renames)
     stale_priority, stale_batch = summarize(stale)
     summary = {
+        "generated_at": now_iso(),
         "gap_total": len(gaps),
         "rename_total": len(renames),
         "stale_total": len(stale),

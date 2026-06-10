@@ -7,6 +7,7 @@ import csv
 import json
 import os
 from collections import Counter
+from datetime import UTC, datetime
 from pathlib import Path
 
 
@@ -33,6 +34,10 @@ FIELDNAMES = [
     "evidence_required",
     "review_batch",
 ]
+
+
+def now_iso() -> str:
+    return datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -95,6 +100,7 @@ def summarize(rows: list[dict[str, str]]) -> dict[str, object]:
         for key in ["OPENFIGI_API_KEY", "ALPHAVANTAGE_API_KEY", "FMP_API_KEY"]
     }
     return {
+        "generated_at": now_iso(),
         "rows": len(rows),
         "provider_queue_counts": Counter(row["provider_queue"] for row in rows).most_common(),
         "review_batch_counts": Counter(row["review_batch"] for row in rows).most_common(),

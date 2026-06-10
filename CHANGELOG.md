@@ -2,6 +2,54 @@
 
 ## [Unreleased]
 
+## [3.30.0] - 2026-06-10
+
+### Summary
+
+Twelve Data reconciliation release. The full local listing universe was compared against the supplied Twelve Data stock dump, all 4,946 supported stock-like name divergences were triaged with DeepSeek, and only source-adjudicated, provider/identifier-supported `apply_*` decisions were promoted into canonical data. Twelve Data remains a challenger source: conflicts, scope risks, source gaps, and pending provider validations stay blocked in machine-readable reports instead of being applied blindly.
+
+### Added
+
+- Added the Twelve Data comparison and adjudication workflow:
+  - `scripts/compare_twelvedata_stocks.py`
+  - `scripts/build_twelvedata_review_queues.py`
+  - `scripts/build_twelvedata_deepseek_batches.py`
+  - `scripts/run_deepseek_review_queue.py`
+  - `scripts/build_twelvedata_second_source_queue.py`
+  - `scripts/validate_twelvedata_second_sources.py`
+  - `scripts/build_twelvedata_source_adjudication.py`
+  - `scripts/build_twelvedata_manual_apply_queue.py`
+  - `scripts/build_twelvedata_review_rollup.py`
+- Added generated Twelve Data evidence reports covering the 190,193-row input dump, matched/unmatched local listings, name mismatches, stale-local candidates, provider validation queues, DeepSeek advisory output, source adjudication, and source-name update packages.
+- Added regression tests for the Twelve Data review, DeepSeek batch, second-source, source-adjudication, manual-apply, and rollup builders.
+
+### Changed
+
+- Applied 344 source-adjudicated Twelve Data name updates that passed provider/identifier gates and clean rebuild validation.
+- Expanded accepted stock-name update scope to include reviewed ADR/DR rows while preserving listing-key and identifier stability.
+- Refreshed all canonical exports and reports after the Twelve Data updates: `tickers.csv/json/parquet/db`, listing/core/cross-listing exports, alias exports, Adanos reference exports, coverage, entry-quality, completion backlog, source-gap, source-of-truth, validation, and README snapshot metrics.
+- Updated the public snapshot to 61,627 primary tickers, 71,043 listing rows, 45,915 stocks, 15,712 ETFs, and 122,012 aliases.
+- Refreshed daily symbol-change artifacts merged since v3.29.1.
+
+### Safety
+
+- Kept 4,602 Twelve Data name divergences blocked or pending when evidence was insufficient, providers disagreed, FIGI identity conflicted, scope was risky, or primary-source validation was still required.
+- Explicitly excluded stale or unsafe Twelve Data candidates such as `OTC::GLVT` and `TSXV::KLX` after source review and rebuild validation.
+- DeepSeek output is retained as advisory review evidence only; it does not directly authorize canonical data changes.
+
+### Verification
+
+- `scripts/check_readme_snapshot.py`: pass.
+- `scripts/validate_database.py`: pass with 0/83 failed error gates, 61,627 ticker rows, and 71,043 listing rows.
+- `pytest tests/ -q`: 1,445 passed.
+- GitHub CI on `main` after the merged stack: pass.
+
+## [3.29.1] - 2026-06-06
+
+### Changed
+
+- Removed stale generated artifacts from earlier verification runs, including `error.txt` and 200 verification run logs. No canonical ticker data changed.
+
 ## [3.29.0] - 2026-06-05
 
 ### Summary

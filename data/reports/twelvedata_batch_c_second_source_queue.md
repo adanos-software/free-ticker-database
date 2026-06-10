@@ -25,6 +25,6 @@ Second-source validation is required before applying Twelve Data-driven name, id
 ## Environment
 
 Provider API keys are read from environment variables only. No key values are stored in this report.
-- `OPENFIGI_API_KEY`: set
-- `ALPHAVANTAGE_API_KEY`: set
-- `FMP_API_KEY`: set
+- `OPENFIGI_API_KEY`: missing
+- `ALPHAVANTAGE_API_KEY`: missing
+- `FMP_API_KEY`: missing
