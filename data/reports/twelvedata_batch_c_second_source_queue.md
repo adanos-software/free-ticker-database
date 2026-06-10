@@ -2,25 +2,25 @@
 
 Second-source validation is required before applying Twelve Data-driven name, identifier, alias, scope, or listing changes.
 
-- Rows: 1,175
+- Rows: 1,291
 
 ## Provider Queues
 
 | Providers | Rows |
 | --- | ---: |
-| openfigi|alphavantage|fmp | 1,175 |
+| openfigi|fmp | 1,291 |
 
 ## Review Batches
 
 | Batch | Rows |
 | --- | ---: |
-| batch_a_us_core | 1,175 |
+| batch_c_high_value_international | 1,291 |
 
 ## DeepSeek Decisions
 
 | Decision | Rows |
 | --- | ---: |
-| needs_official_evidence | 1,175 |
+| needs_official_evidence | 1,291 |
 
 ## Environment
 

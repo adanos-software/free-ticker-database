@@ -21,6 +21,7 @@ def validation_row(**overrides: str) -> dict[str, str]:
         "fmp_match": "supports_twelvedata",
         "validation_status": "second_source_supports_twelvedata_name",
         "recommended_next_action": "build_manual_apply_candidate_for_name_update_after_official_or_identifier_gate",
+        "review_batch": "batch_a_us_core",
     }
     row.update(overrides)
     return row
@@ -51,9 +52,11 @@ def test_build_queues_keeps_only_twelvedata_supported_manual_candidates() -> Non
     assert apply_rows[0]["proposed_name"] == "New AAA Inc"
     assert apply_rows[0]["supporting_providers"] == "OpenFIGI|FMP"
     assert apply_rows[0]["apply_status"] == "manual_review_required"
+    assert apply_rows[0]["review_batch"] == "batch_a_us_core"
     assert "Do not apply automatically" in apply_rows[0]["apply_gate"]
     assert len(rejected_rows) == 1
     assert rejected_rows[0]["rejection_reason"] == "second_source_supports_current_local_name"
+    assert rejected_rows[0]["review_batch"] == "batch_a_us_core"
 
 
 def test_rejection_reason_describes_conflicting_evidence() -> None:

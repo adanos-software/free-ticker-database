@@ -18,6 +18,7 @@ def test_build_queue_joins_deepseek_reviews_to_source_candidates() -> None:
                 "twelvedata_name": "New AAA",
                 "twelvedata_type": "Common Stock",
                 "name_score": "0.2",
+                "review_batch": "batch_a_us_core",
             }
         ],
         [
@@ -40,4 +41,5 @@ def test_build_queue_joins_deepseek_reviews_to_source_candidates() -> None:
     assert rows[0]["listing_key"] == "NASDAQ::AAA"
     assert rows[0]["provider_queue"] == "openfigi|alphavantage|fmp"
     assert rows[0]["validation_status"] == "pending_provider_env"
+    assert rows[0]["review_batch"] == "batch_a_us_core"
     assert "DeepSeek triage alone is not apply evidence" in rows[0]["evidence_required"]

@@ -1,136 +1,116 @@
 {
-  "rows": 1175,
-  "limit": 1175,
+  "rows": 56,
+  "limit": 56,
   "dry_run": false,
   "validation_status_counts": [
     [
+      "provider_found_different_name",
+      29
+    ],
+    [
       "second_source_supports_twelvedata_name",
-      409
+      20
     ],
     [
       "second_source_supports_local_name",
-      286
-    ],
-    [
-      "conflicting_second_source_evidence",
-      216
+      3
     ],
     [
       "no_second_source_name_match",
-      105
+      2
     ],
     [
       "ambiguous_second_source_evidence",
-      87
-    ],
-    [
-      "provider_found_different_name",
-      72
+      2
     ]
   ],
   "recommended_next_action_counts": [
     [
+      "send_to_manual_or_deepseek_followup_with_additional_evidence",
+      31
+    ],
+    [
       "build_manual_apply_candidate_for_name_update_after_official_or_identifier_gate",
-      409
+      20
     ],
     [
       "keep_local_name_and_record_twelvedata_as_non_authoritative_mismatch",
-      286
-    ],
-    [
-      "manual_identity_review_required_before_any_apply",
-      216
-    ],
-    [
-      "send_to_manual_or_deepseek_followup_with_additional_evidence",
-      159
+      3
     ],
     [
       "needs_more_second_source_evidence",
-      105
+      2
     ]
   ],
   "review_batch_counts": [
     [
-      "batch_a_us_core",
-      1175
+      "batch_b_canada",
+      56
     ]
   ],
   "openfigi_status_counts": [
     [
       "ok",
-      988
+      53
     ],
     [
       "no_match",
-      187
+      3
     ]
   ],
   "alphavantage_status_counts": [
     [
       "no_match",
-      718
+      53
     ],
     [
       "ok",
-      457
+      3
     ]
   ],
   "fmp_status_counts": [
     [
       "rate_limited_or_unavailable",
-      1175
+      56
     ]
   ],
   "provider_match_counts": {
     "openfigi": [
       [
-        "supports_twelvedata",
-        604
+        "different_name",
+        28
       ],
       [
-        "no_name",
-        187
+        "supports_twelvedata",
+        20
       ],
       [
         "supports_local",
-        165
+        3
+      ],
+      [
+        "no_name",
+        3
       ],
       [
         "ambiguous_name_similarity",
-        127
-      ],
-      [
-        "different_name",
-        92
+        2
       ]
     ],
     "alphavantage": [
       [
         "no_name",
-        718
-      ],
-      [
-        "supports_local",
-        411
-      ],
-      [
-        "supports_twelvedata",
-        27
+        53
       ],
       [
         "different_name",
-        16
-      ],
-      [
-        "ambiguous_name_similarity",
         3
       ]
     ],
     "fmp": [
       [
         "no_name",
-        1175
+        56
       ]
     ]
   },

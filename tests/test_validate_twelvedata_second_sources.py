@@ -20,6 +20,7 @@ def candidate_row() -> dict[str, str]:
         "name_score": "0.2",
         "deepseek_decision_candidate": "needs_official_evidence",
         "deepseek_safe_action": "needs_official_evidence",
+        "review_batch": "batch_a_us_core",
     }
 
 
@@ -67,6 +68,7 @@ def test_validate_row_combines_provider_evidence(monkeypatch) -> None:
     assert row["openfigi_match"] == "supports_twelvedata"
     assert row["validation_status"] == "second_source_supports_twelvedata_name"
     assert row["openfigi_figi"] == "BBGTEST"
+    assert row["review_batch"] == "batch_a_us_core"
 
 
 def test_fetch_fmp_classifies_rate_limit() -> None:

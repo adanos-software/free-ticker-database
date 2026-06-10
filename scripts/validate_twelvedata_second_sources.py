@@ -21,10 +21,10 @@ from typing import Any
 import requests
 
 
-DEFAULT_INPUT_CSV = Path("data/reports/twelvedata_batch_a_second_source_queue.csv")
-DEFAULT_OUTPUT_CSV = Path("data/reports/twelvedata_batch_a_second_source_validation.csv")
-DEFAULT_SUMMARY_JSON = Path("data/reports/twelvedata_batch_a_second_source_validation_summary.json")
-DEFAULT_SUMMARY_MD = Path("data/reports/twelvedata_batch_a_second_source_validation.md")
+DEFAULT_INPUT_CSV = Path("data/reports/twelvedata_all_batches_second_source_queue.csv")
+DEFAULT_OUTPUT_CSV = Path("data/reports/twelvedata_all_batches_second_source_validation.csv")
+DEFAULT_SUMMARY_JSON = Path("data/reports/twelvedata_all_batches_second_source_validation_summary.json")
+DEFAULT_SUMMARY_MD = Path("data/reports/twelvedata_all_batches_second_source_validation.md")
 
 REQUEST_TIMEOUT_SECONDS = 20
 USER_AGENT = "free-ticker-database/2.0 second-source-validation"
@@ -39,7 +39,10 @@ OPENFIGI_EXCH_CODE_BY_EXCHANGE = {
     "NYSE": "US",
     "NYSE ARCA": "US",
     "NYSE MKT": "US",
+    "NEO": "CN",
     "OTC": "US",
+    "TSX": "CN",
+    "TSXV": "CN",
 }
 
 OUTPUT_FIELDS = [
@@ -67,6 +70,7 @@ OUTPUT_FIELDS = [
     "validation_status",
     "evidence_summary",
     "recommended_next_action",
+    "review_batch",
 ]
 
 
@@ -322,6 +326,7 @@ def validate_row(
         "validation_status": status,
         "evidence_summary": evidence_summary,
         "recommended_next_action": recommended_next_action(status, row["deepseek_safe_action"]),
+        "review_batch": row.get("review_batch", ""),
     }
 
 
@@ -332,6 +337,7 @@ def summarize(rows: list[dict[str, str]], *, dry_run: bool, limit: int | None) -
         "dry_run": dry_run,
         "validation_status_counts": Counter(row["validation_status"] for row in rows).most_common(),
         "recommended_next_action_counts": Counter(row["recommended_next_action"] for row in rows).most_common(),
+        "review_batch_counts": Counter(row["review_batch"] for row in rows).most_common(),
         "openfigi_status_counts": Counter(row["openfigi_status"] for row in rows).most_common(),
         "alphavantage_status_counts": Counter(row["alphavantage_status"] for row in rows).most_common(),
         "fmp_status_counts": Counter(row["fmp_status"] for row in rows).most_common(),
@@ -366,6 +372,8 @@ def write_markdown(path: Path, summary: dict[str, Any]) -> None:
         "| --- | ---: |",
     ]
     lines.extend(f"| {status} | {count:,} |" for status, count in summary["validation_status_counts"])
+    lines.extend(["", "## Review Batches", "", "| Batch | Rows |", "| --- | ---: |"])
+    lines.extend(f"| {batch} | {count:,} |" for batch, count in summary["review_batch_counts"])
     lines.extend(["", "## Recommended Next Actions", "", "| Action | Rows |", "| --- | ---: |"])
     lines.extend(f"| {action} | {count:,} |" for action, count in summary["recommended_next_action_counts"])
     for provider in ["openfigi", "alphavantage", "fmp"]:

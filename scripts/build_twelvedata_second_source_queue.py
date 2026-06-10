@@ -11,10 +11,10 @@ from pathlib import Path
 
 
 DEFAULT_RENAME_CSV = Path("data/reports/twelvedata_rename_candidates.csv")
-DEFAULT_DEEPSEEK_CSV = Path("data/deepseek_review_jobs/twelvedata_batch_a_normalized_reviews.csv")
-DEFAULT_OUTPUT_CSV = Path("data/reports/twelvedata_batch_a_second_source_queue.csv")
-DEFAULT_SUMMARY_JSON = Path("data/reports/twelvedata_batch_a_second_source_queue_summary.json")
-DEFAULT_SUMMARY_MD = Path("data/reports/twelvedata_batch_a_second_source_queue.md")
+DEFAULT_DEEPSEEK_CSV = Path("data/deepseek_review_jobs/twelvedata_all_batches_normalized_reviews.csv")
+DEFAULT_OUTPUT_CSV = Path("data/reports/twelvedata_all_batches_second_source_queue.csv")
+DEFAULT_SUMMARY_JSON = Path("data/reports/twelvedata_all_batches_second_source_queue_summary.json")
+DEFAULT_SUMMARY_MD = Path("data/reports/twelvedata_all_batches_second_source_queue.md")
 
 FIELDNAMES = [
     "listing_key",
@@ -31,6 +31,7 @@ FIELDNAMES = [
     "provider_queue",
     "validation_status",
     "evidence_required",
+    "review_batch",
 ]
 
 
@@ -82,6 +83,7 @@ def build_queue(rename_rows: list[dict[str, str]], deepseek_rows: list[dict[str,
                     "At least one second source matching ticker, venue, and issuer identity before any name or "
                     "metadata apply. DeepSeek triage alone is not apply evidence."
                 ),
+                "review_batch": source.get("review_batch", ""),
             }
         )
     return rows
@@ -95,6 +97,7 @@ def summarize(rows: list[dict[str, str]]) -> dict[str, object]:
     return {
         "rows": len(rows),
         "provider_queue_counts": Counter(row["provider_queue"] for row in rows).most_common(),
+        "review_batch_counts": Counter(row["review_batch"] for row in rows).most_common(),
         "deepseek_decision_counts": Counter(row["deepseek_decision_candidate"] for row in rows).most_common(),
         "env_status": env_status,
         "policy": (
@@ -118,6 +121,8 @@ def write_markdown(path: Path, summary: dict[str, object]) -> None:
         "| --- | ---: |",
     ]
     lines.extend(f"| {providers} | {count:,} |" for providers, count in summary["provider_queue_counts"])
+    lines.extend(["", "## Review Batches", "", "| Batch | Rows |", "| --- | ---: |"])
+    lines.extend(f"| {batch} | {count:,} |" for batch, count in summary["review_batch_counts"])
     lines.extend(
         [
             "",

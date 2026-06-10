@@ -9,11 +9,11 @@ from collections import Counter
 from pathlib import Path
 
 
-DEFAULT_VALIDATION_CSV = Path("data/reports/twelvedata_batch_a_second_source_validation.csv")
-DEFAULT_APPLY_CSV = Path("data/reports/twelvedata_batch_a_manual_apply_candidates.csv")
-DEFAULT_REJECTED_CSV = Path("data/reports/twelvedata_batch_a_manual_apply_rejected.csv")
-DEFAULT_SUMMARY_JSON = Path("data/reports/twelvedata_batch_a_manual_apply_summary.json")
-DEFAULT_SUMMARY_MD = Path("data/reports/twelvedata_batch_a_manual_apply.md")
+DEFAULT_VALIDATION_CSV = Path("data/reports/twelvedata_all_batches_second_source_validation.csv")
+DEFAULT_APPLY_CSV = Path("data/reports/twelvedata_all_batches_manual_apply_candidates.csv")
+DEFAULT_REJECTED_CSV = Path("data/reports/twelvedata_all_batches_manual_apply_rejected.csv")
+DEFAULT_SUMMARY_JSON = Path("data/reports/twelvedata_all_batches_manual_apply_summary.json")
+DEFAULT_SUMMARY_MD = Path("data/reports/twelvedata_all_batches_manual_apply.md")
 
 APPLY_FIELDS = [
     "listing_key",
@@ -31,6 +31,7 @@ APPLY_FIELDS = [
     "apply_status",
     "apply_gate",
     "recommended_operation",
+    "review_batch",
 ]
 
 REJECTED_FIELDS = [
@@ -42,6 +43,7 @@ REJECTED_FIELDS = [
     "validation_status",
     "recommended_next_action",
     "rejection_reason",
+    "review_batch",
 ]
 
 
@@ -115,6 +117,7 @@ def build_queues(rows: list[dict[str, str]]) -> tuple[list[dict[str, str]], list
                         "evidence, then apply in a small reviewed batch with rebuild and validation gates."
                     ),
                     "recommended_operation": "review_name_update",
+                    "review_batch": row.get("review_batch", ""),
                 }
             )
         else:
@@ -128,6 +131,7 @@ def build_queues(rows: list[dict[str, str]]) -> tuple[list[dict[str, str]], list
                     "validation_status": row.get("validation_status", ""),
                     "recommended_next_action": row.get("recommended_next_action", ""),
                     "rejection_reason": rejection_reason(row),
+                    "review_batch": row.get("review_batch", ""),
                 }
             )
     return apply_rows, rejected_rows
@@ -138,6 +142,7 @@ def summarize(apply_rows: list[dict[str, str]], rejected_rows: list[dict[str, st
         "manual_apply_candidates": len(apply_rows),
         "rejected_or_followup_rows": len(rejected_rows),
         "candidate_exchange_counts": Counter(row["exchange"] for row in apply_rows).most_common(),
+        "candidate_batch_counts": Counter(row["review_batch"] for row in apply_rows).most_common(),
         "supporting_provider_counts": Counter(
             provider
             for row in apply_rows
@@ -171,6 +176,8 @@ def write_markdown(path: Path, summary: dict[str, object]) -> None:
         "| --- | ---: |",
     ]
     lines.extend(f"| {exchange} | {count:,} |" for exchange, count in summary["candidate_exchange_counts"])
+    lines.extend(["", "## Candidate Batches", "", "| Batch | Rows |", "| --- | ---: |"])
+    lines.extend(f"| {batch} | {count:,} |" for batch, count in summary["candidate_batch_counts"])
     lines.extend(["", "## Supporting Providers", "", "| Provider | Rows |", "| --- | ---: |"])
     lines.extend(f"| {provider} | {count:,} |" for provider, count in summary["supporting_provider_counts"])
     lines.extend(["", "## Rejection Reasons", "", "| Reason | Rows |", "| --- | ---: |"])

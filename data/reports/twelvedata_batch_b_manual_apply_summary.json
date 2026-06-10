@@ -1,56 +1,48 @@
 {
-  "manual_apply_candidates": 409,
-  "rejected_or_followup_rows": 766,
+  "manual_apply_candidates": 20,
+  "rejected_or_followup_rows": 36,
   "candidate_exchange_counts": [
     [
-      "OTC",
-      399
+      "TSXV",
+      8
     ],
     [
-      "NYSE",
+      "TSX",
       6
     ],
     [
-      "NASDAQ",
-      4
+      "NEO",
+      6
     ]
   ],
   "candidate_batch_counts": [
     [
-      "batch_a_us_core",
-      409
+      "batch_b_canada",
+      20
     ]
   ],
   "supporting_provider_counts": [
     [
       "OpenFIGI",
-      406
-    ],
-    [
-      "AlphaVantage",
-      9
+      20
     ]
   ],
   "rejection_reason_counts": [
     [
-      "second_source_supports_current_local_name",
-      286
+      "provider_name_supports_neither_current_nor_twelvedata",
+      29
     ],
     [
-      "provider_evidence_conflicts_between_local_and_twelvedata",
-      216
+      "second_source_supports_current_local_name",
+      3
     ],
     [
       "no_provider_supplied_usable_matching_name",
-      105
+      2
     ],
     [
       "provider_name_similarity_is_ambiguous",
-      87
-    ],
-    [
-      "provider_name_supports_neither_current_nor_twelvedata",
-      72
+      2
     ]
   ],
   "policy": "This is a manual apply-candidate queue only. It authorizes no automatic data changes; official or identifier evidence and dataset gates are still required before applying."

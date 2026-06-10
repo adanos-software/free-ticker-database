@@ -1,0 +1,139 @@
+{
+  "segments": [
+    {
+      "segment": "batch_a_us_core",
+      "rename_candidates": 1175,
+      "deepseek_reviews": 1175,
+      "deepseek_errors": 0,
+      "deepseek_coverage_status": "complete",
+      "deepseek_decision_counts": [
+        [
+          "needs_official_evidence",
+          1175
+        ]
+      ],
+      "second_source_queue_rows": 1175,
+      "second_source_validation_rows": 1175,
+      "second_source_status": "validated",
+      "validation_status_counts": [
+        [
+          "second_source_supports_twelvedata_name",
+          409
+        ],
+        [
+          "second_source_supports_local_name",
+          286
+        ],
+        [
+          "conflicting_second_source_evidence",
+          216
+        ],
+        [
+          "no_second_source_name_match",
+          105
+        ],
+        [
+          "ambiguous_second_source_evidence",
+          87
+        ],
+        [
+          "provider_found_different_name",
+          72
+        ]
+      ],
+      "manual_apply_candidates": 409
+    },
+    {
+      "segment": "batch_b_canada",
+      "rename_candidates": 56,
+      "deepseek_reviews": 56,
+      "deepseek_errors": 0,
+      "deepseek_coverage_status": "complete",
+      "deepseek_decision_counts": [
+        [
+          "needs_official_evidence",
+          40
+        ],
+        [
+          "keep_source_gap",
+          16
+        ]
+      ],
+      "second_source_queue_rows": 56,
+      "second_source_validation_rows": 56,
+      "second_source_status": "validated",
+      "validation_status_counts": [
+        [
+          "provider_found_different_name",
+          29
+        ],
+        [
+          "second_source_supports_twelvedata_name",
+          20
+        ],
+        [
+          "second_source_supports_local_name",
+          3
+        ],
+        [
+          "no_second_source_name_match",
+          2
+        ],
+        [
+          "ambiguous_second_source_evidence",
+          2
+        ]
+      ],
+      "manual_apply_candidates": 20
+    },
+    {
+      "segment": "batch_c_high_value_international",
+      "rename_candidates": 1291,
+      "deepseek_reviews": 1291,
+      "deepseek_errors": 0,
+      "deepseek_coverage_status": "complete",
+      "deepseek_decision_counts": [
+        [
+          "needs_official_evidence",
+          1291
+        ]
+      ],
+      "second_source_queue_rows": 1291,
+      "second_source_validation_rows": 0,
+      "second_source_status": "queued_pending_provider_validation",
+      "validation_status_counts": [],
+      "manual_apply_candidates": 0
+    },
+    {
+      "segment": "later_global_review",
+      "rename_candidates": 2424,
+      "deepseek_reviews": 2424,
+      "deepseek_errors": 0,
+      "deepseek_coverage_status": "complete",
+      "deepseek_decision_counts": [
+        [
+          "needs_official_evidence",
+          2284
+        ],
+        [
+          "uncertain",
+          140
+        ]
+      ],
+      "second_source_queue_rows": 2424,
+      "second_source_validation_rows": 0,
+      "second_source_status": "queued_pending_provider_validation",
+      "validation_status_counts": [],
+      "manual_apply_candidates": 0
+    }
+  ],
+  "totals": {
+    "rename_candidates": 4946,
+    "deepseek_reviews": 4946,
+    "deepseek_errors": 0,
+    "second_source_queue_rows": 4946,
+    "second_source_validation_rows": 1231,
+    "manual_apply_candidates": 429
+  },
+  "policy": "DeepSeek reviews and provider evidence are advisory. No database changes are applied by these reports; manual candidates still require repo-standard metadata override review and dataset gates."
+}
