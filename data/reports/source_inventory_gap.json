@@ -118,7 +118,7 @@
       "exchange": "ATHEX",
       "expected_format": "pdf",
       "implementation_status": "implemented",
-      "missing_isin": 8,
+      "missing_isin": 7,
       "missing_sector_or_category": 0,
       "notes": "The official ATHEX sector-classification PDF exposes ISIN, symbol, company name, and sector classification for many current ATHEX stock rows. A true active exchange-directory endpoint is still needed for full ATHEX coverage.",
       "official_source_count": 1,
@@ -131,7 +131,7 @@
       "source_mode": "cache",
       "source_refresh_queue": "refresh_official_subset_before_gap_enrichment",
       "source_url": "https://www.athexgroup.gr/documents/10180/5517704/ATHEX%2BClassification%2BVer0.810%2B%28EN%29.pdf/5c49a27d-1078-4974-990b-5a5e1f278b73",
-      "tickers": 117,
+      "tickers": 116,
       "unresolved_findings": 26,
       "venue_name": "Athens Stock Exchange"
     },
@@ -955,7 +955,7 @@
       "exchange": "OTC",
       "expected_format": "otc_markets_stock_screener_csv",
       "implementation_status": "implemented",
-      "missing_isin": 796,
+      "missing_isin": 795,
       "missing_sector_or_category": 1145,
       "notes": "Largest partial source block. The screener validates OTC symbol/name/tier coverage for stock-like rows and ETFs, but it does not expose ISINs or GICS sectors. Grey and Expert Market access remain excluded intentionally so OTC stays an extended/listing-scope policy area rather than leaking into core primary completeness.",
       "official_source_count": 3,
@@ -1773,7 +1773,7 @@
       "official_full": 30,
       "official_partial": 33
     },
-    "generated_at": "2026-06-10T14:56:13Z",
+    "generated_at": "2026-06-10T15:49:11Z",
     "global_expansion_candidates": 0,
     "high_priority_rows": 22,
     "policy": {
