@@ -747,7 +747,7 @@
       "etf_missing_count": 0,
       "exchange": "OTC",
       "field": "missing_sector_stock",
-      "missing_count": 820,
+      "missing_count": 819,
       "notes": "OTC is noisy; do not apply thin-name sector guesses without issuer evidence.",
       "official_source_count": 3,
       "priority_bucket": "top_impact",
@@ -756,7 +756,7 @@
       "reference_scopes": "exchange_directory|listed_companies_subset|security_lookup_subset",
       "review_needed": true,
       "script": "scripts/backfill_sec_sic_sectors.py; scripts/backfill_alphavantage_sectors.py; scripts/backfill_financedatabase_metadata.py",
-      "stock_missing_count": 820,
+      "stock_missing_count": 819,
       "target_field": "stock_sector",
       "venue_status": "official_full"
     },
@@ -2423,9 +2423,9 @@
     "field_totals": {
       "missing_etf_category": 171,
       "missing_isin_primary": 929,
-      "missing_sector_stock": 2607
+      "missing_sector_stock": 2606
     },
-    "generated_at": "2026-06-10T12:45:40Z",
+    "generated_at": "2026-06-10T12:52:27Z",
     "legacy_primary_ticker_collision_rows": 1,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
@@ -2488,7 +2488,7 @@
         "etf_missing_count": 0,
         "exchange": "OTC",
         "field": "missing_sector_stock",
-        "missing_count": 820,
+        "missing_count": 819,
         "official_source_count": 3,
         "recommended_source": "Current SEC SIC residual dry-run has no accepted OTC sector candidates; prioritize OTC Markets issuer evidence, reviewed Alpha Vantage/FinanceDatabase signals, or keep source-gap status.",
         "residual_gate": "sec_sic_otc_no_apply_candidates",
@@ -2502,7 +2502,7 @@
         "sec_sic_candidates": 817,
         "source_gap_class": "otc_sector_source_gap",
         "source_gap_rows": 820,
-        "stock_missing_count": 820,
+        "stock_missing_count": 819,
         "target_field": "stock_sector",
         "venue_status": "official_full",
         "why_next": "top_impact residual review-gated workflow"
