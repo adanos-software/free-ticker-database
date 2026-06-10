@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-10T12:46:11Z",
+    "generated_at": "2026-06-10T13:00:22Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "listings_csv": "data/listings.csv",
@@ -23,9 +23,9 @@
   },
   "passed": true,
   "summary": {
-    "ticker_rows": 61631,
+    "ticker_rows": 61627,
     "listing_rows": 71043,
-    "adanos_reference_rows": 61631,
+    "adanos_reference_rows": 61627,
     "entry_quality_rows": 71043,
     "error_gates": 83,
     "failed_error_gates": 0,
@@ -519,7 +519,7 @@
       "name": "expected_missing_primary_isin",
       "severity": "info",
       "passed": true,
-      "actual": 929,
+      "actual": 930,
       "limit": null
     },
     {
@@ -540,14 +540,14 @@
       "name": "source_gap_rows",
       "severity": "info",
       "passed": true,
-      "actual": 7411,
+      "actual": 7410,
       "limit": null
     },
     {
       "name": "allowed_warn_rows",
       "severity": "info",
       "passed": true,
-      "actual": 115,
+      "actual": 117,
       "limit": null
     },
     {
