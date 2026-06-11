@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-10T20:02:29Z",
+    "generated_at": "2026-06-11T04:36:54Z",
     "rows": 71041,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,8 +14,8 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 63581,
-      "source_gap": 7392,
+      "pass": 63644,
+      "source_gap": 7329,
       "warn": 68
     },
     "evidence_level_counts": {
@@ -27,13 +27,13 @@
     "severity_counts": {
       "high": 63,
       "medium": 5,
-      "source_gap": 8172
+      "source_gap": 8096
     },
     "issue_counts": {
       "official_reference_gap": 5322,
-      "missing_stock_sector": 1776,
+      "missing_stock_sector": 1763,
       "expected_missing_primary_isin": 929,
-      "missing_etf_category": 137,
+      "missing_etf_category": 74,
       "country_isin_mismatch": 63,
       "venue_missing_official_source": 8,
       "official_name_mismatch": 5
@@ -52,9 +52,9 @@
       },
       {
         "exchange": "LSE",
-        "pass": 6109,
+        "pass": 6149,
         "warn": 60,
-        "source_gap": 246
+        "source_gap": 206
       },
       {
         "exchange": "TSX",
@@ -62,15 +62,15 @@
         "source_gap": 210
       },
       {
-        "exchange": "BSE_IN",
-        "pass": 2433,
-        "source_gap": 209
-      },
-      {
         "exchange": "NASDAQ",
         "pass": 4428,
         "source_gap": 207,
         "warn": 1
+      },
+      {
+        "exchange": "BSE_IN",
+        "pass": 2435,
+        "source_gap": 207
       },
       {
         "exchange": "NYSE ARCA",
@@ -84,8 +84,8 @@
       },
       {
         "exchange": "TSXV",
-        "pass": 900,
-        "source_gap": 164,
+        "pass": 908,
+        "source_gap": 156,
         "warn": 2
       },
       {
@@ -104,14 +104,14 @@
         "source_gap": 143
       },
       {
-        "exchange": "XETRA",
-        "pass": 3661,
-        "source_gap": 118
-      },
-      {
         "exchange": "NYSE",
         "pass": 1975,
         "source_gap": 108
+      },
+      {
+        "exchange": "XETRA",
+        "pass": 3673,
+        "source_gap": 106
       },
       {
         "exchange": "BK",
@@ -2164,24 +2164,6 @@
     {
       "listing_key": "LSE::0MFW",
       "ticker": "0MFW",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::0MO8",
-      "ticker": "0MO8",
       "exchange": "LSE",
       "asset_type": "Stock",
       "quality_status": "source_gap",
@@ -4547,24 +4529,6 @@
           "field": "exchange",
           "value": "KRX",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "XETRA::540J",
-      "ticker": "540J",
-      "exchange": "XETRA",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
         }
       ]
     },
@@ -14737,24 +14701,6 @@
       ]
     },
     {
-      "listing_key": "LSE::AQWG",
-      "ticker": "AQWG",
-      "exchange": "LSE",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
-        }
-      ]
-    },
-    {
       "listing_key": "BK::ARABREC",
       "ticker": "ARABREC",
       "exchange": "BK",
@@ -18776,6 +18722,60 @@
       "listing_key": "SGX::B73",
       "ticker": "B73",
       "exchange": "SGX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "BCBA::BA-C",
+      "ticker": "BA-C",
+      "exchange": "BCBA",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "ASX::BA2",
+      "ticker": "BA2",
+      "exchange": "ASX",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "LSE::BA69",
+      "ticker": "BA69",
+      "exchange": "LSE",
       "asset_type": "Stock",
       "quality_status": "source_gap",
       "quality_score": 90,

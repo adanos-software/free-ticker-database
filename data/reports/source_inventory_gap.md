@@ -1,6 +1,6 @@
 # Source Inventory Gap
 
-Generated at: `2026-06-10T20:02:25Z`
+Generated at: `2026-06-11T04:36:50Z`
 
 ## Summary
 
@@ -24,7 +24,7 @@ Generated at: `2026-06-10T20:02:25Z`
 |---|---|---|---:|---:|---:|---|---|---|---|---|
 | 2 | SSE | official_partial | 2789 | 42 | 0 | sse_industry_classification | SSE |  |  | implemented via existing official SSE stock-list CSRC_CODE fields |
 | 3 | EGX | official_partial | 225 | 0 | 29 | egx_listed_securities | EGX |  |  | implemented via browser-captured official ASP.NET ViewState; raw non-browser requests still hit the EGX/TSPD challenge |
-| 4 | ASX | official_partial | 1298 | 105 | 45 | asx_cash_market_directory | ASX |  |  | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
+| 4 | ASX | official_partial | 1298 | 105 | 44 | asx_cash_market_directory | ASX |  |  | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
 | 5 | ATHEX | official_partial | 116 | 7 | 0 | athex_sector_classification | ATHEX | cache |  | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
 | 6 | STO | official_partial | 725 | 0 | 56 | nasdaq_nordic_stockholm_full_search | Nasdaq Nordic |  |  | reconciled through existing official Nasdaq Nordic Stockholm shares, share-search, ETF, tracker, Spotlight, and NGM feeds |
 | 7 | SZSE | official_partial | 3083 | 14 | 0 | szse_industry_classification | SZSE |  |  | implemented via existing official SZSE report-list industry fields |
@@ -64,7 +64,7 @@ _No rows._
 | 1 | MSE_MW | missing | 8 | 0 | 8 | mse_mw_listed_companies | MSE Malawi | unavailable | MSE Malawi mainboard unavailable (HTTP 403 from official host mse.co.mw) | implemented via official mainboard table and company links |
 | 2 | SSE | official_partial | 2789 | 42 | 0 | sse_industry_classification | SSE |  |  | implemented via existing official SSE stock-list CSRC_CODE fields |
 | 3 | EGX | official_partial | 225 | 0 | 29 | egx_listed_securities | EGX |  |  | implemented via browser-captured official ASP.NET ViewState; raw non-browser requests still hit the EGX/TSPD challenge |
-| 4 | ASX | official_partial | 1298 | 105 | 45 | asx_cash_market_directory | ASX |  |  | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
+| 4 | ASX | official_partial | 1298 | 105 | 44 | asx_cash_market_directory | ASX |  |  | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
 | 5 | ATHEX | official_partial | 116 | 7 | 0 | athex_sector_classification | ATHEX | cache |  | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
 | 6 | STO | official_partial | 725 | 0 | 56 | nasdaq_nordic_stockholm_full_search | Nasdaq Nordic |  |  | reconciled through existing official Nasdaq Nordic Stockholm shares, share-search, ETF, tracker, Spotlight, and NGM feeds |
 | 7 | SZSE | official_partial | 3083 | 14 | 0 | szse_industry_classification | SZSE |  |  | implemented via existing official SZSE report-list industry fields |

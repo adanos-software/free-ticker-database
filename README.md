@@ -19,9 +19,9 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 | Aliases | 122,004 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
 | ISIN coverage | 59,899 (97.2%) | Primary ticker rows with a non-empty `isin`. |
 | FIGI coverage | 64,316 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
-| Sector/category coverage | 58,865 (95.5%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 43,315 | Primary ticker rows with a non-empty `stock_sector`. |
-| ETF category coverage | 15,550 | Primary ticker rows with a non-empty `etf_category`. |
+| Sector/category coverage | 59,027 (95.8%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Stock sector coverage | 43,397 | Primary ticker rows with a non-empty `stock_sector`. |
+| ETF category coverage | 15,630 | Primary ticker rows with a non-empty `etf_category`. |
 | Core listing-scope rows | 54,096 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
 | Core primary rows with ISIN | 53,167 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
 | Core primary rows missing ISIN | 929 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
@@ -29,7 +29,7 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 | Official full exchanges | 46 | Current-scope source inventory rows marked `official_full`. |
 | Official partial exchanges | 33 | Current-scope source inventory rows marked `official_partial`. |
 | Missing current-scope exchanges | 1 | Current-scope source inventory rows still marked `missing`; see `data/reports/source_inventory_gap.md`. |
-| Entry quality source-gap rows | 7,392 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
+| Entry quality source-gap rows | 7,329 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
 | Entry quality warn rows | 68 | Listing-keyed rows with deterministic warnings requiring review/allowlist coverage. |
 
 Snapshot values are generated-report backed and intentionally human-formatted with comma separators and one-decimal coverage percentages. `data/reports/coverage_report.json`, `data/reports/source_inventory_gap.json`, and `data/reports/entry_quality.json` are the canonical machine-readable sources for these counts. `source_inventory_gap.md` is authoritative for current-scope source gaps; this snapshot must not claim zero missing current-scope sources while that report lists a missing source.
@@ -131,7 +131,7 @@ JSON metadata:
 {
   "_meta": {
     "version": "3.30.1",
-    "built_at": "2026-06-10T20:02:06Z",
+    "built_at": "2026-06-11T04:36:36Z",
     "total_tickers": 61623
   },
   "tickers": []
