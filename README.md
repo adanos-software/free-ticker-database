@@ -130,8 +130,8 @@ JSON metadata:
 ```json
 {
   "_meta": {
-    "version": "3.30.1",
-    "built_at": "2026-06-11T04:36:36Z",
+    "version": "3.30.2",
+    "built_at": "2026-06-11T05:05:37Z",
     "total_tickers": 61623
   },
   "tickers": []

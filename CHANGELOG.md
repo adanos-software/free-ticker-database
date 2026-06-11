@@ -2,6 +2,30 @@
 
 ## [Unreleased]
 
+## [3.30.2] - 2026-06-11
+
+### Summary
+
+Coverage release. With outbound network access restored, the free-source sector/category backfills were run against the residual gaps and 616 reviewed, source-backed fills were applied. No values were fabricated; each was gated by symbol and issuer-name match. ISIN bulk-backfilling was deliberately excluded because it collapses OTC duplicate listings into cross-listings and trips entry-quality gates — it needs a dedicated per-row collision review, not a bulk fill.
+
+### Changed
+
+- Backfilled 616 missing sector/category values:
+  - 20 from same-ISIN listing peers (no network).
+  - 596 from StockAnalysis exchange lists and the TradingView scanner (497 ETF categories + 99 stock sectors), gated by symbol + issuer-name match and validated against the canonical taxonomy. ETF categories are correctly differentiated (Equity / Fixed Income / Commodity / Currency).
+- Updated the public snapshot: sector/category coverage 58,845 → 59,027 (95.8%), stock sector coverage → 43,397, ETF category coverage → 15,630, entry-quality source-gap rows 7,410 → 7,329. Primary ticker count unchanged at 61,623.
+
+### Safety
+
+- Did not bulk-apply free-source ISIN candidates: they collapsed 87 OTC duplicate listings into cross-listings and produced unexpected entry-quality warns (ADR country/ISIN conflicts, e.g. `VIVHY`/`WBRBY`). ISIN gap-closing is left to a dedicated collision-reviewed pass.
+- Remaining coverage gaps are left as-is rather than filled with fabricated values: the residual `missing_stock_sector` tail is uncovered by the free sources (StockAnalysis, TradingView, FinanceDatabase), `source_gap_rows` depend on partial or unavailable official sources, and `expected_missing_primary_isin` is tracked as expected-missing by design.
+
+### Verification
+
+- `scripts/check_readme_snapshot.py`: pass.
+- `scripts/validate_database.py`: pass with 0/83 failed error gates, 61,623 ticker rows, and 71,041 listing rows.
+- `pytest tests/ -q`: 1,445 passed.
+
 ## [3.30.1] - 2026-06-10
 
 ### Summary

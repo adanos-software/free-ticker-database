@@ -1,6 +1,6 @@
 # Release Acceptance
 
-Generated: `2026-06-10T16:06:20Z`
+Generated: `2026-06-11T05:05:50Z`
 
 Overall passed: `False`
 
@@ -82,7 +82,7 @@ Summary context: `passed=false;criteria=60;passed_criteria=59;failed_criteria=1;
 
 | Criterion | Details |
 |---|---|
-| `campaign_artifact_integrity` | `{"checked_artifacts": ["data/reports/b3_masterfile_gap_review.json", "data/reports/b3_etf_category_apply_report.json", "data/reports/b3_residual_isin_review.json", "data/reports/b3_residual_sector_review.json", "data/reports/otc_scope_review.json", "data/reports/otc_name_mismatch_review.json", "data/reports/canada_residual_review.json", "data/reports/canada_figi_queue.json", "data/reports/canada_figi_apply_report.json", "data/reports/asx_residual_review.json", "data/reports/weak_sector_residual_review.json", "data/reports/ngx_official_sector_apply_report.json", "data/reports/masterfile_collision_review.json", "data/reports/symbol_changes_review.json", "data/reports/ohlcv_plausibility.json", "data/reports/ohlcv_warning_review.json", "data/reports/coverage_report.json", "data/reports/source_gap_classification.json", "data/reports/financialdata_isin_supplements_review.json", "data/reports/improvement_baseline.json", "data/reports/improvement_deltas.json"], "checked_count": 21, "generated_at_mismatches": [{"actual_generated_at": "2026-06-10T16:06:10Z", "campaign_generated_at": "2026-06-10T12:59:44Z", "path": "data/reports/coverage_report.json"}, {"actual_generated_at": "2026-06-10T16:06:13Z", "campaign_generated_at": "2026-06-10T12:59:49Z", "path": "data/reports/source_gap_classification.json"}], "row_count_mismatches": [{"actual_rows": 3707, "campaign_rows": 3708, "path": "data/reports/source_gap_classification.json"}]}` |
+| `campaign_artifact_integrity` | `{"checked_artifacts": ["data/reports/b3_masterfile_gap_review.json", "data/reports/b3_etf_category_apply_report.json", "data/reports/b3_residual_isin_review.json", "data/reports/b3_residual_sector_review.json", "data/reports/otc_scope_review.json", "data/reports/otc_name_mismatch_review.json", "data/reports/canada_residual_review.json", "data/reports/canada_figi_queue.json", "data/reports/canada_figi_apply_report.json", "data/reports/asx_residual_review.json", "data/reports/weak_sector_residual_review.json", "data/reports/ngx_official_sector_apply_report.json", "data/reports/masterfile_collision_review.json", "data/reports/symbol_changes_review.json", "data/reports/ohlcv_plausibility.json", "data/reports/ohlcv_warning_review.json", "data/reports/coverage_report.json", "data/reports/source_gap_classification.json", "data/reports/financialdata_isin_supplements_review.json", "data/reports/improvement_baseline.json", "data/reports/improvement_deltas.json"], "checked_count": 21, "generated_at_mismatches": [{"actual_generated_at": "2026-06-11T05:05:39Z", "campaign_generated_at": "2026-06-10T12:59:44Z", "path": "data/reports/coverage_report.json"}, {"actual_generated_at": "2026-06-11T05:05:42Z", "campaign_generated_at": "2026-06-10T12:59:49Z", "path": "data/reports/source_gap_classification.json"}], "row_count_mismatches": [{"actual_rows": 3525, "campaign_rows": 3708, "path": "data/reports/source_gap_classification.json"}]}` |
 
 ## Acceptance Delta Matrix
 
