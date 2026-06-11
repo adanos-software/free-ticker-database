@@ -1,6 +1,6 @@
 # Database Validation Report
 
-Generated at: `2026-06-10T16:07:25Z`
+Generated at: `2026-06-11T04:37:01Z`
 
 Status: `PASS`
 
@@ -90,9 +90,9 @@ Status: `PASS`
 | adanos_alias_common_word_count | error | PASS | 0 | 0 |
 | review_alias_removals_open_count | error | PASS | 0 | 0 |
 | expected_missing_primary_isin | info | PASS | 929 |  |
-| missing_stock_sector | info | PASS | 1787 |  |
-| missing_etf_category | info | PASS | 146 |  |
-| source_gap_rows | info | PASS | 7410 |  |
+| missing_stock_sector | info | PASS | 1763 |  |
+| missing_etf_category | info | PASS | 74 |  |
+| source_gap_rows | info | PASS | 7329 |  |
 | allowed_warn_rows | info | PASS | 117 |  |
 | duplicate_core_listing_key_count | error | PASS | 0 | 0 |
 | core_listing_key_format_mismatch_count | error | PASS | 0 | 0 |
