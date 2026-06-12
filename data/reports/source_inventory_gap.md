@@ -1,6 +1,6 @@
 # Source Inventory Gap
 
-Generated at: `2026-06-11T05:05:41Z`
+Generated at: `2026-06-12T05:21:45Z`
 
 ## Summary
 
@@ -22,7 +22,7 @@ Generated at: `2026-06-11T05:05:41Z`
 
 | Rank | Exchange | Status | Tickers | ISIN gap | Metadata gap | Candidate | Provider | Source Mode | Last Error | Blocker |
 |---|---|---|---:|---:|---:|---|---|---|---|---|
-| 2 | SSE | official_partial | 2789 | 42 | 0 | sse_industry_classification | SSE |  |  | implemented via existing official SSE stock-list CSRC_CODE fields |
+| 2 | SSE | official_partial | 2789 | 39 | 0 | sse_industry_classification | SSE |  |  | implemented via existing official SSE stock-list CSRC_CODE fields |
 | 3 | EGX | official_partial | 225 | 0 | 29 | egx_listed_securities | EGX |  |  | implemented via browser-captured official ASP.NET ViewState; raw non-browser requests still hit the EGX/TSPD challenge |
 | 4 | ASX | official_partial | 1298 | 105 | 44 | asx_cash_market_directory | ASX |  |  | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
 | 5 | ATHEX | official_partial | 116 | 7 | 0 | athex_sector_classification | ATHEX | cache |  | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
@@ -62,7 +62,7 @@ _No rows._
 | Rank | Exchange | Status | Tickers | ISIN gap | Metadata gap | Candidate | Provider | Source Mode | Last Error | Blocker |
 |---|---|---|---:|---:|---:|---|---|---|---|---|
 | 1 | MSE_MW | missing | 8 | 0 | 8 | mse_mw_listed_companies | MSE Malawi | unavailable | MSE Malawi mainboard unavailable (HTTP 403 from official host mse.co.mw) | implemented via official mainboard table and company links |
-| 2 | SSE | official_partial | 2789 | 42 | 0 | sse_industry_classification | SSE |  |  | implemented via existing official SSE stock-list CSRC_CODE fields |
+| 2 | SSE | official_partial | 2789 | 39 | 0 | sse_industry_classification | SSE |  |  | implemented via existing official SSE stock-list CSRC_CODE fields |
 | 3 | EGX | official_partial | 225 | 0 | 29 | egx_listed_securities | EGX |  |  | implemented via browser-captured official ASP.NET ViewState; raw non-browser requests still hit the EGX/TSPD challenge |
 | 4 | ASX | official_partial | 1298 | 105 | 44 | asx_cash_market_directory | ASX |  |  | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
 | 5 | ATHEX | official_partial | 116 | 7 | 0 | athex_sector_classification | ATHEX | cache |  | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
