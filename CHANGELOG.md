@@ -2,6 +2,29 @@
 
 ## [Unreleased]
 
+## [3.30.3] - 2026-06-12
+
+### Summary
+
+ISIN-coverage release. A per-row, collision-reviewed pass over the free sources (TradingView scanner + StockAnalysis lists) added 54 missing ISINs to primary listings. Only "clean fill" candidates were applied — a previously-missing ISIN that is new to the dataset (no existing holder), so the row keeps its ISIN with no cross-listing collapse and a consistent ISIN prefix. No values were fabricated.
+
+### Changed
+
+- Backfilled 54 missing ISINs on primary listings (mostly non-OTC core primaries: US ETFs such as Baron and Capital Group, TSX/TSXV stocks, SSE), each gated by symbol + issuer-name match and validated against ISIN checksum and exchange-prefix consistency.
+- Updated the public snapshot: ISIN coverage 59,899 → 59,953 (97.3%), core primary rows missing ISIN 929 → 885, core primary rows with ISIN 53,167 → 53,211, entry-quality source-gap rows 7,329 → 7,288. Primary ticker count unchanged at 61,623.
+
+### Safety
+
+- Excluded 83 OTC "collapse" candidates whose proposed ISIN already belongs to an existing primary: they would link OTC grey-market shadows into cross-listings, but most carry generic issuer names that confirm only the issuer, not the specific fund, so the provider-mapped ISIN cannot be verified per-row. Left to a dedicated per-fund pass.
+- Caught and rejected one genuine wrong-ISIN match (`AMFN` was offered Renewal Fuels' ISIN); deferred two ADR country/ISIN warn cases (`VIVHY`/`WBRBY`).
+- OpenFIGI and the official ASX ISIN feed were run against the full residual and yielded 0; the remaining ~885 core gaps are delisted/obscure rows uncovered by free sources and are left as-is rather than filled with fabricated values.
+
+### Verification
+
+- `scripts/check_readme_snapshot.py`: pass.
+- `scripts/validate_database.py`: pass with 0/83 failed error gates (`us_foreign_isin_unreviewed_count` = 0), 61,623 ticker rows, and 71,041 listing rows.
+- `pytest tests/ -q`: 1,445 passed.
+
 ## [3.30.2] - 2026-06-11
 
 ### Summary
