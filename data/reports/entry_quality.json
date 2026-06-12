@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-11T05:05:45Z",
+    "generated_at": "2026-06-12T05:21:49Z",
     "rows": 71041,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,25 +14,25 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 63644,
-      "source_gap": 7329,
+      "pass": 63685,
+      "source_gap": 7288,
       "warn": 68
     },
     "evidence_level_counts": {
       "identifier_enriched": 4211,
       "official_reference": 65711,
-      "scoped_source_gap": 336,
-      "valid_isin": 783
+      "scoped_source_gap": 330,
+      "valid_isin": 789
     },
     "severity_counts": {
       "high": 63,
       "medium": 5,
-      "source_gap": 8096
+      "source_gap": 8052
     },
     "issue_counts": {
       "official_reference_gap": 5322,
       "missing_stock_sector": 1763,
-      "expected_missing_primary_isin": 929,
+      "expected_missing_primary_isin": 885,
       "missing_etf_category": 74,
       "country_isin_mismatch": 63,
       "venue_missing_official_source": 8,
@@ -47,8 +47,8 @@
       },
       {
         "exchange": "B3",
-        "source_gap": 325,
-        "pass": 1259
+        "source_gap": 324,
+        "pass": 1260
       },
       {
         "exchange": "LSE",
@@ -57,25 +57,20 @@
         "source_gap": 206
       },
       {
-        "exchange": "TSX",
-        "pass": 1694,
-        "source_gap": 210
-      },
-      {
-        "exchange": "NASDAQ",
-        "pass": 4428,
-        "source_gap": 207,
-        "warn": 1
-      },
-      {
         "exchange": "BSE_IN",
         "pass": 2435,
         "source_gap": 207
       },
       {
-        "exchange": "NYSE ARCA",
-        "pass": 2479,
-        "source_gap": 174
+        "exchange": "NASDAQ",
+        "pass": 4429,
+        "source_gap": 206,
+        "warn": 1
+      },
+      {
+        "exchange": "TSX",
+        "pass": 1698,
+        "source_gap": 206
       },
       {
         "exchange": "BMV",
@@ -94,6 +89,11 @@
         "pass": 827
       },
       {
+        "exchange": "NYSE ARCA",
+        "pass": 2506,
+        "source_gap": 147
+      },
+      {
         "exchange": "ASX",
         "pass": 1155,
         "source_gap": 143
@@ -104,14 +104,14 @@
         "source_gap": 143
       },
       {
-        "exchange": "NYSE",
-        "pass": 1975,
-        "source_gap": 108
-      },
-      {
         "exchange": "XETRA",
         "pass": 3673,
         "source_gap": 106
+      },
+      {
+        "exchange": "NYSE",
+        "pass": 1978,
+        "source_gap": 105
       },
       {
         "exchange": "BK",
@@ -4429,24 +4429,6 @@
       ]
     },
     {
-      "listing_key": "SSE::511980",
-      "ticker": "511980",
-      "exchange": "SSE",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
       "listing_key": "SSE::512070",
       "ticker": "512070",
       "exchange": "SSE",
@@ -4831,24 +4813,6 @@
       ]
     },
     {
-      "listing_key": "SSE::603296",
-      "ticker": "603296",
-      "exchange": "SSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
       "listing_key": "SSE::605068",
       "ticker": "605068",
       "exchange": "SSE",
@@ -4941,24 +4905,6 @@
     {
       "listing_key": "SSE::688221",
       "ticker": "688221",
-      "exchange": "SSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "SSE::688223",
-      "ticker": "688223",
       "exchange": "SSE",
       "asset_type": "Stock",
       "quality_status": "source_gap",
@@ -7329,16 +7275,9 @@
       "exchange": "TSX",
       "asset_type": "Stock",
       "quality_status": "source_gap",
-      "quality_score": 80,
+      "quality_score": 90,
       "recommended_action": "find_source_or_keep_scoped_gap",
       "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        },
         {
           "issue_type": "official_reference_gap",
           "severity": "source_gap",
@@ -18181,7 +18120,7 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "quality_status": "warn",
-      "quality_score": 55,
+      "quality_score": 65,
       "recommended_action": "review_or_backfill",
       "issues": [
         {
@@ -18190,13 +18129,6 @@
           "field": "name",
           "value": "Axo Metals Corp.",
           "message": "Listing name has weak overlap with official active reference name(s)."
-        },
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
         }
       ]
     },
@@ -18776,6 +18708,60 @@
       "listing_key": "LSE::BA69",
       "ticker": "BA69",
       "exchange": "LSE",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "missing_stock_sector",
+          "severity": "source_gap",
+          "field": "stock_sector",
+          "value": "",
+          "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "BMV::BABAN",
+      "ticker": "BABAN",
+      "exchange": "BMV",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "BMV",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BABYD",
+      "ticker": "BABYD",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "AMS::BACE",
+      "ticker": "BACE",
+      "exchange": "AMS",
       "asset_type": "Stock",
       "quality_status": "source_gap",
       "quality_score": 90,
