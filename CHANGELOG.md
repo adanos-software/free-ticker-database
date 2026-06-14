@@ -2,6 +2,29 @@
 
 ## [Unreleased]
 
+## [3.30.4] - 2026-06-14
+
+### Summary
+
+Identity-correctness release. Completed the deferred per-fund verification of the OTC "collapse" candidates: 64 OTC grey-market shadow listings were independently verified (Yahoo cross-check of the StockAnalysis-mapped ISIN) and linked to their primary securities as cross-listings. No values were fabricated and no candidate was applied on a single source alone.
+
+### Changed
+
+- Linked 64 per-fund-verified OTC shadows to their primaries as cross-listings by applying their ISINs: each was confirmed by an independent second source (Yahoo) returning the exact ISIN or a specific fund name matching the ISIN holder beyond the issuer (brand + specific-fund token match). Two same-company rescues applied on corporate-fact grounds (`SOTDF` Ströer=Stroeer; `AMVMF` AMG Advanced Metallurgical → AMG Critical Materials rename).
+- These OTC shadows leave the one-per-security `tickers.csv` export and are preserved as venue-level cross-listings in `listings.csv`/`cross_listings.csv`: primary tickers 61,623 → 61,559, ETFs 15,712 → 15,658, full listing rows unchanged at 71,041. This is collision-safe deduplication, not a coverage loss.
+- Added `VIVHY` (Vivendi, France) and `WBRBY` (Wienerberger, Austria) to `entry_quality_warn_allowlist.csv`: correct US ADR ISINs on foreign issuers, a reviewed country/ISIN-prefix mismatch.
+
+### Safety
+
+- Deferred ~18 candidates that no independent source could confirm to the specific fund (Yahoo delisted/no-data, or only the generic umbrella issuer name).
+- Rejected `AMFN` (offered Renewal Fuels' ISIN) and `IDOWF` (Yahoo ISIN conflict); caught and deferred `IAINF` (Yahoo "IA Global Infrastructure (Lazard)" vs holder "iShares AI Infrastructure" — generic-token false match).
+
+### Verification
+
+- `scripts/check_readme_snapshot.py`: pass.
+- `scripts/validate_database.py`: pass with 0/83 failed error gates, 61,559 ticker rows, and 71,041 listing rows.
+- `pytest tests/ -q`: 1,445 passed.
+
 ## [3.30.3] - 2026-06-12
 
 ### Summary
