@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-12T06:12:47Z",
+    "generated_at": "2026-06-14T08:07:34Z",
     "rows": 71041,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,9 +14,9 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 63685,
+      "pass": 63683,
       "source_gap": 7288,
-      "warn": 68
+      "warn": 70
     },
     "evidence_level_counts": {
       "identifier_enriched": 4211,
@@ -25,7 +25,7 @@
       "valid_isin": 789
     },
     "severity_counts": {
-      "high": 63,
+      "high": 65,
       "medium": 5,
       "source_gap": 8052
     },
@@ -34,16 +34,16 @@
       "missing_stock_sector": 1763,
       "expected_missing_primary_isin": 885,
       "missing_etf_category": 74,
-      "country_isin_mismatch": 63,
+      "country_isin_mismatch": 65,
       "venue_missing_official_source": 8,
       "official_name_mismatch": 5
     },
     "top_flagged_exchanges": [
       {
         "exchange": "OTC",
-        "pass": 7868,
+        "pass": 7866,
         "source_gap": 3183,
-        "warn": 3
+        "warn": 5
       },
       {
         "exchange": "B3",
