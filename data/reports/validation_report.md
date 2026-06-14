@@ -1,6 +1,6 @@
 # Database Validation Report
 
-Generated at: `2026-06-12T06:13:35Z`
+Generated at: `2026-06-14T08:10:35Z`
 
 Status: `PASS`
 
@@ -8,9 +8,9 @@ Status: `PASS`
 
 | Metric | Value |
 |---|---:|
-| ticker_rows | 61,623 |
+| ticker_rows | 61,559 |
 | listing_rows | 71,041 |
-| adanos_reference_rows | 61,623 |
+| adanos_reference_rows | 61,559 |
 | entry_quality_rows | 71,041 |
 | error_gates | 83 |
 | failed_error_gates | 0 |
@@ -93,7 +93,7 @@ Status: `PASS`
 | missing_stock_sector | info | PASS | 1763 |  |
 | missing_etf_category | info | PASS | 74 |  |
 | source_gap_rows | info | PASS | 7288 |  |
-| allowed_warn_rows | info | PASS | 117 |  |
+| allowed_warn_rows | info | PASS | 119 |  |
 | duplicate_core_listing_key_count | error | PASS | 0 | 0 |
 | core_listing_key_format_mismatch_count | error | PASS | 0 | 0 |
 | core_listing_rows_missing_listing | error | PASS | 0 | 0 |

@@ -1,14 +1,14 @@
 # Entry Quality Report
 
-Generated at: `2026-06-12T06:12:47Z`
+Generated at: `2026-06-14T08:07:34Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 63,685 |
+| pass | 63,683 |
 | source_gap | 7,288 |
-| warn | 68 |
+| warn | 70 |
 
 ## Issue Counts
 
@@ -18,7 +18,7 @@ Generated at: `2026-06-12T06:12:47Z`
 | missing_stock_sector | 1,763 |
 | expected_missing_primary_isin | 885 |
 | missing_etf_category | 74 |
-| country_isin_mismatch | 63 |
+| country_isin_mismatch | 65 |
 | venue_missing_official_source | 8 |
 | official_name_mismatch | 5 |
 
@@ -26,7 +26,7 @@ Generated at: `2026-06-12T06:12:47Z`
 
 | Exchange | Pass | Notice | Source Gap | Warn | Quarantine |
 |---|---:|---:|---:|---:|---:|
-| OTC | 7,868 | 0 | 3,183 | 3 | 0 |
+| OTC | 7,866 | 0 | 3,183 | 5 | 0 |
 | B3 | 1,260 | 0 | 324 | 0 | 0 |
 | LSE | 6,149 | 0 | 206 | 60 | 0 |
 | BSE_IN | 2,435 | 0 | 207 | 0 | 0 |
