@@ -18,7 +18,7 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 | Countries | 87 | Distinct non-empty `country` values in `data/tickers.csv`. |
 | Aliases | 122,156 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
 | ISIN coverage | 60,087 (97.6%) | Primary ticker rows with a non-empty `isin`. |
-| FIGI coverage | 64,316 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
+| FIGI coverage | 64,314 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
 | Sector/category coverage | 58,959 (95.8%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
 | Stock sector coverage | 43,383 | Primary ticker rows with a non-empty `stock_sector`. |
 | ETF category coverage | 15,576 | Primary ticker rows with a non-empty `etf_category`. |
@@ -130,9 +130,9 @@ JSON metadata:
 ```json
 {
   "_meta": {
-    "version": "3.30.7",
-    "built_at": "2026-06-15T06:31:20Z",
-    "total_tickers": 61558
+    "version": "3.30.8",
+    "built_at": "2026-06-15T11:24:36Z",
+    "total_tickers": 61556
   },
   "tickers": []
 }

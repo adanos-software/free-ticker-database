@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-15T06:31:33Z",
+    "generated_at": "2026-06-15T11:24:50Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -236,13 +236,13 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-06-15T06:31:33Z",
+      "release_generated_at": "2026-06-15T11:24:50Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-06-15T06:12:43Z"
+          "generated_at": "2026-06-15T11:11:59Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
@@ -272,7 +272,7 @@
         "source_inventory_gap": {
           "path": "data/reports/source_inventory_gap.json",
           "exists": true,
-          "generated_at": "2026-06-15T06:31:33Z"
+          "generated_at": "2026-06-15T11:24:50Z"
         },
         "tse_sector_backfill": {
           "path": "data/reports/tse_sector_backfill.json",
@@ -292,7 +292,7 @@
         "source_gap_classification": {
           "path": "data/reports/source_gap_classification.json",
           "exists": true,
-          "generated_at": "2026-06-15T06:31:33Z"
+          "generated_at": "2026-06-15T11:24:50Z"
         },
         "deepseek_review_summary": {
           "path": "data/reports/deepseek_review_summary.json",
@@ -895,7 +895,7 @@
     },
     "source_gap_traceability": {
       "passed": true,
-      "rows": 3361,
+      "rows": 3362,
       "missing_summary_keys": [],
       "row_count_mismatch": {},
       "row_gaps": [],
@@ -2108,7 +2108,7 @@
         {
           "path": "data/reports/source_gap_classification.json",
           "campaign_rows": 3708,
-          "actual_rows": 3361
+          "actual_rows": 3362
         }
       ],
       "missing_generated_at": [],
@@ -2116,12 +2116,12 @@
         {
           "path": "data/reports/coverage_report.json",
           "campaign_generated_at": "2026-06-10T12:59:44Z",
-          "actual_generated_at": "2026-06-15T06:31:25Z"
+          "actual_generated_at": "2026-06-15T11:24:41Z"
         },
         {
           "path": "data/reports/source_gap_classification.json",
           "campaign_generated_at": "2026-06-10T12:59:49Z",
-          "actual_generated_at": "2026-06-15T06:31:33Z"
+          "actual_generated_at": "2026-06-15T11:24:50Z"
         }
       ]
     },

@@ -2,6 +2,26 @@
 
 ## [Unreleased]
 
+## [3.30.8] - 2026-06-15
+
+### Summary
+
+Correctness release driven by a measured audit. A multi-agent statistical correctness audit (400-row reproducible sample; every row verified against ≥2 independent authoritative sources and every flagged error adversarially re-checked) put row-level correctness at **91.16% (Wilson-95% CI [87.96%, 93.58%])**, with identity fields (name/ISIN/country/asset_type) ~97% correct and sector/category classification as the dominant error class. This release fixes the 35 confirmed errors from that sample.
+
+### Changed
+
+- Corrected 23 sector/category misclassifications confirmed against the issuer's actual business + OpenFIGI/justETF: GICS `stock_sector` fixes (e.g. `GGM`/`WIA` gold → Materials, `UNO-H` uranium → Energy, `HNGE` → Health Care, `VVV` → Consumer Discretionary) and ETF `etf_category` fixes (`USCR`/`KNRG` bond ETFs → Fixed Income, `GLTR` → Commodity, `310970` → Equity, `00711B` → Fixed Income). `EGSE`'s clearly-wrong sector cleared.
+- Fixed 5 stale issuer names (`000782` Highsun, `3131` Grand Process Technology, `OLGERD` Bera hf, `232140` YC Corporation, `WEBI` Amundi Core MSCI USA).
+- Fixed identity errors: `SORT` ISIN cleared + domicile GB→US; `EGSE` ISIN → `US2999331018`; domicile fixes `AMIN` ID→US, `FHI` CA→US, `EVOK` JE→GI (matches its GI ISIN; adds Gibraltar as a country).
+- Dropped 2 SPAC warrants mislabeled `asset_type=Stock` (`ATCHW`, `CELUW`) and pruned their keys from `identifiers_extended.csv` + `listing_index.csv`.
+- Snapshot: primary tickers 61,558 → 61,556; stocks → 45,898; ISIN coverage 60,087 (97.6%); countries 86 → 87.
+
+### Verification
+
+- `scripts/check_readme_snapshot.py`: pass.
+- `scripts/validate_database.py`: pass with 0/83 failed error gates, 61,556 ticker rows, and 71,039 listing rows.
+- `pytest tests/ -q`: 1,445 passed.
+
 ## [3.30.7] - 2026-06-15
 
 ### Summary
