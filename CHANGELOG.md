@@ -2,6 +2,29 @@
 
 ## [Unreleased]
 
+## [3.30.5] - 2026-06-15
+
+### Summary
+
+ISIN-coverage release. Filled 47 missing ISINs on rows that the earlier ticker-collision sweeps had deliberately *cleared* (a foreign same-ticker namesake's ISIN was removed and the row left blank, pending a sourced correct ISIN). The values come from EODHD's `exchange-symbol-list` and were applied only after a per-row collision-safety check and confirmation by an independent second source. No values were fabricated and nothing was applied on a single source alone.
+
+### Changed
+
+- Backfilled 47 ISINs from EODHD onto previously-cleared collision rows, restoring each issuer's genuine home-domicile ISIN (e.g. Australian/Canadian/Swedish/Thai namesake ISINs replaced by the correct US ISIN; Cayman issuers `TOP`/`BHAT`/`WXM` → KY ISINs; Israeli issuers `BMR`/`WLDS` → IL ISINs). ISIN coverage 59,953 → 60,000 (97.5%); core primary rows missing ISIN 885 → 855; core primary rows with ISIN 53,210 → 53,240; entry-quality source-gap rows 7,288 → 7,261. Primary ticker count unchanged at 61,559.
+- Allowlisted `BMR` (Beamr Imaging, Israel) and `WLDS` (Wearable Devices, Israel) in `foreign_isin_reviewed.csv`: legitimate foreign-incorporated NASDAQ issuers carrying their home IL ISINs (reviewed `us_foreign_isin` rows).
+- `BMR`'s test invariant updated to its verified Israeli ISIN `IL0011832438`; the collision-cleanup assertions (country Israel, no Ballymore Resources aliases) are retained.
+
+### Safety
+
+- Each ISIN had to (1) pass the strict EODHD gate (ticker + EODHD subvenue + asset type + expected ISIN prefix + strict issuer/product name + numeric tokens + checksum), (2) differ from the foreign-namesake ISIN the row was previously cleared of, and (3) be confirmed by an independent second source — OpenFIGI ISIN→issuer (44/48) or, for the few absent from OpenFIGI, the web (`WXM`/`BMR` exact ISIN via TradingView/Nasdaq/MarketScreener/cbonds).
+- Rejected `RNA` (NASDAQ): EODHD still returns the stale Avidity Biosciences ISIN `US05370A1088` after the ticker was reassigned to Atrium Therapeutics — exactly the collision the strict name-match cannot catch. Deferred `CURN` (OTC): Canadian issuer with an unconfirmed US ISIN.
+
+### Verification
+
+- `scripts/check_readme_snapshot.py`: pass.
+- `scripts/validate_database.py`: pass with 0/83 failed error gates, 61,559 ticker rows, and 71,041 listing rows.
+- `pytest tests/ -q`: 1,445 passed.
+
 ## [3.30.4] - 2026-06-14
 
 ### Summary
