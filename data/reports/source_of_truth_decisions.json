@@ -1,9 +1,9 @@
 {
   "summary": {
-    "generated_at": "2026-06-15T06:31:33Z",
-    "rows": 3361,
+    "generated_at": "2026-06-15T11:07:08Z",
+    "rows": 3362,
     "outcome_totals": {
-      "accepted_source_gap": 2707,
+      "accepted_source_gap": 2708,
       "core_exclusion_candidate": 654
     },
     "class_totals": {
@@ -23,14 +23,14 @@
       "official_industry_taxonomy_unavailable_gap": 1569,
       "official_product_reference_unmatched_category_gap": 21,
       "official_product_taxonomy_unavailable_gap": 53,
-      "otc_sector_source_gap": 751,
+      "otc_sector_source_gap": 752,
       "shell_or_cpc_sector_gap": 82
     },
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 82,
       "missing_isin_primary:accepted_source_gap": 305,
       "missing_isin_primary:core_exclusion_candidate": 460,
-      "missing_sector_stock:accepted_source_gap": 2320,
+      "missing_sector_stock:accepted_source_gap": 2321,
       "missing_sector_stock:core_exclusion_candidate": 194
     },
     "policy": {
@@ -21568,7 +21568,7 @@
       "ticker": "OLGERD",
       "exchange": "ICE_IS",
       "asset_type": "Stock",
-      "name": "Ölgerðin Egill Skallagrímsson hf.",
+      "name": "Bera hf.",
       "gap_class": "official_industry_taxonomy_unavailable_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
@@ -29525,6 +29525,23 @@
       "exchange": "OTC",
       "asset_type": "Stock",
       "name": "BARYS RESOURCES LTD",
+      "gap_class": "otc_sector_source_gap",
+      "source_of_truth_outcome": "accepted_source_gap",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "leave_blank_until_source_available",
+      "review_needed": "true",
+      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
+      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
+      "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "OTC::EGSE",
+      "ticker": "EGSE",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "name": "Evergreen Sustainable Enterprises Inc.",
       "gap_class": "otc_sector_source_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",

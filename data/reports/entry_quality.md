@@ -1,12 +1,12 @@
 # Entry Quality Report
 
-Generated at: `2026-06-15T06:31:29Z`
+Generated at: `2026-06-15T11:07:05Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 63,799 |
+| pass | 63,797 |
 | source_gap | 7,172 |
 | warn | 70 |
 
@@ -26,12 +26,12 @@ Generated at: `2026-06-15T06:31:29Z`
 
 | Exchange | Pass | Notice | Source Gap | Warn | Quarantine |
 |---|---:|---:|---:|---:|---:|
-| OTC | 7,866 | 0 | 3,183 | 5 | 0 |
+| OTC | 7,865 | 0 | 3,183 | 5 | 0 |
 | B3 | 1,260 | 0 | 324 | 0 | 0 |
 | LSE | 6,149 | 0 | 206 | 60 | 0 |
 | BSE_IN | 2,435 | 0 | 207 | 0 | 0 |
 | TSX | 1,698 | 0 | 206 | 0 | 0 |
-| NASDAQ | 4,437 | 0 | 198 | 1 | 0 |
+| NASDAQ | 4,436 | 0 | 198 | 1 | 0 |
 | BMV | 8 | 0 | 171 | 0 | 0 |
 | TSXV | 908 | 0 | 156 | 2 | 0 |
 | Euronext | 827 | 0 | 148 | 0 | 0 |
