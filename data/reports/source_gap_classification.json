@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-06-15T05:33:47Z",
-    "rows": 3451,
+    "generated_at": "2026-06-15T05:45:23Z",
+    "rows": 3450,
     "field_totals": {
       "missing_etf_category": 82,
-      "missing_isin_primary": 855,
+      "missing_isin_primary": 854,
       "missing_sector_stock": 2514
     },
     "class_totals": {
@@ -12,7 +12,7 @@
       "adr_cdr_or_depositary_sector_gap": 39,
       "capital_pool_or_halted_identifier_gap": 35,
       "commodity_etf_category_gap": 3,
-      "debt_or_securitized_identifier_gap": 82,
+      "debt_or_securitized_identifier_gap": 81,
       "equity_etf_category_gap": 3,
       "fixed_income_etf_category_gap": 2,
       "fund_or_trust_identifier_gap": 282,
@@ -35,7 +35,7 @@
       "missing_etf_category:official_product_taxonomy_unavailable_gap": 53,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 45,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 35,
-      "missing_isin_primary:debt_or_securitized_identifier_gap": 82,
+      "missing_isin_primary:debt_or_securitized_identifier_gap": 81,
       "missing_isin_primary:fund_or_trust_identifier_gap": 282,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 12,
@@ -1785,23 +1785,6 @@
       "recommended_next_source": "Official debt/structured-product masterfile, trustee/prospectus, or reviewed identifier feed.",
       "source_gate": "Exact instrument code/name and ISIN checksum; never issuer-equity propagation.",
       "source_gap_context": "listing_key=AMS::HYCB;exchange=AMS;ticker=HYCB;asset_type=ETF;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=debt_or_securitized_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=debt_or_securitized_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "AMS::IGBG",
-      "ticker": "IGBG",
-      "exchange": "AMS",
-      "asset_type": "ETF",
-      "name": "iShares Broad Global Govt Bond UCITS ETF USD Distribution",
-      "gap_class": "debt_or_securitized_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official debt/structured-product terms, exchange instrument file, or trustee/prospectus identifier; do not fill from issuer equity ISINs.",
-      "recommended_next_source": "Official debt/structured-product masterfile, trustee/prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact instrument code/name and ISIN checksum; never issuer-equity propagation.",
-      "source_gap_context": "listing_key=AMS::IGBG;exchange=AMS;ticker=IGBG;asset_type=ETF;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=debt_or_securitized_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=debt_or_securitized_identifier_gap"
     },
