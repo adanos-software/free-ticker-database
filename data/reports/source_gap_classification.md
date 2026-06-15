@@ -1,12 +1,12 @@
 # Source Gap Classification
 
-Generated at: `2026-06-14T08:35:14Z`
+Generated at: `2026-06-15T05:23:20Z`
 
 This report classifies residual metadata gaps after official and reviewed free-source backfills. It is a guardrail report: values remain empty unless a future source satisfies the listed source gate.
 
 ## Summary
 
-- Missing primary ISIN rows classified: `885`
+- Missing primary ISIN rows classified: `855`
 - Missing stock-sector rows classified: `2514`
 - Missing ETF-category rows classified: `82`
 
@@ -16,12 +16,12 @@ This report classifies residual metadata gaps after official and reviewed free-s
 |---|---:|
 | official_industry_taxonomy_unavailable_gap | 1569 |
 | otc_sector_source_gap | 751 |
-| official_identifier_not_exposed_source_gap | 338 |
-| fund_or_trust_identifier_gap | 289 |
-| debt_or_securitized_identifier_gap | 83 |
+| official_identifier_not_exposed_source_gap | 317 |
+| fund_or_trust_identifier_gap | 282 |
+| debt_or_securitized_identifier_gap | 82 |
 | shell_or_cpc_sector_gap | 82 |
 | fundlike_stock_sector_gap | 73 |
-| official_identifier_reference_unmatched_gap | 66 |
+| official_identifier_reference_unmatched_gap | 65 |
 | official_product_taxonomy_unavailable_gap | 53 |
 | adr_cdr_or_depositary_identifier_gap | 45 |
 | adr_cdr_or_depositary_sector_gap | 39 |
@@ -52,11 +52,11 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | missing_sector_stock | official_industry_taxonomy_unavailable_gap | STO | 54 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
 | missing_isin_primary | fund_or_trust_identifier_gap | NYSE ARCA | 53 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
 | missing_isin_primary | fund_or_trust_identifier_gap | TSX | 49 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
-| missing_isin_primary | official_identifier_not_exposed_source_gap | NYSE | 46 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
 | missing_sector_stock | official_industry_taxonomy_unavailable_gap | SEM | 45 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
 | missing_sector_stock | official_industry_taxonomy_unavailable_gap | XETRA | 42 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
 | missing_sector_stock | official_industry_taxonomy_unavailable_gap | SGX | 39 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
 | missing_isin_primary | capital_pool_or_halted_identifier_gap | TSXV | 35 | Current exchange issuer/status file or CPC/shell prospectus. | Exact halted/CPC symbol and direct current identifier evidence. |
+| missing_isin_primary | official_identifier_not_exposed_source_gap | TSXV | 34 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
 
 ## Release Policy
 
