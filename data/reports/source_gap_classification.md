@@ -1,12 +1,12 @@
 # Source Gap Classification
 
-Generated at: `2026-06-15T05:52:35Z`
+Generated at: `2026-06-15T06:12:42Z`
 
 This report classifies residual metadata gaps after official and reviewed free-source backfills. It is a guardrail report: values remain empty unless a future source satisfies the listed source gate.
 
 ## Summary
 
-- Missing primary ISIN rows classified: `854`
+- Missing primary ISIN rows classified: `765`
 - Missing stock-sector rows classified: `2514`
 - Missing ETF-category rows classified: `82`
 
@@ -16,8 +16,8 @@ This report classifies residual metadata gaps after official and reviewed free-s
 |---|---:|
 | official_industry_taxonomy_unavailable_gap | 1569 |
 | otc_sector_source_gap | 751 |
-| official_identifier_not_exposed_source_gap | 317 |
 | fund_or_trust_identifier_gap | 282 |
+| official_identifier_not_exposed_source_gap | 228 |
 | shell_or_cpc_sector_gap | 82 |
 | debt_or_securitized_identifier_gap | 81 |
 | fundlike_stock_sector_gap | 73 |
@@ -43,7 +43,6 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | missing_sector_stock | official_industry_taxonomy_unavailable_gap | Euronext | 130 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
 | missing_sector_stock | official_industry_taxonomy_unavailable_gap | BK | 102 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
 | missing_sector_stock | official_industry_taxonomy_unavailable_gap | LSE | 101 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
-| missing_isin_primary | official_identifier_not_exposed_source_gap | MSX | 90 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
 | missing_sector_stock | shell_or_cpc_sector_gap | TSXV | 72 | Official TMX issuer workbook classifies this row as CPC. | Do not fill stock_sector; review for core exclusion as a capital-pool issuer. |
 | missing_sector_stock | official_industry_taxonomy_unavailable_gap | PSE | 65 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
 | missing_sector_stock | official_industry_taxonomy_unavailable_gap | CSE_MA | 64 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
@@ -57,6 +56,7 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | missing_sector_stock | official_industry_taxonomy_unavailable_gap | SGX | 39 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
 | missing_isin_primary | capital_pool_or_halted_identifier_gap | TSXV | 35 | Current exchange issuer/status file or CPC/shell prospectus. | Exact halted/CPC symbol and direct current identifier evidence. |
 | missing_isin_primary | official_identifier_not_exposed_source_gap | TSXV | 34 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
+| missing_isin_primary | official_identifier_not_exposed_source_gap | NYSE | 32 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
 
 ## Release Policy
 

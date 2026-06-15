@@ -1,13 +1,13 @@
 # Entry Quality Report
 
-Generated at: `2026-06-15T05:52:32Z`
+Generated at: `2026-06-15T06:12:38Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 63,710 |
-| source_gap | 7,261 |
+| pass | 63,799 |
+| source_gap | 7,172 |
 | warn | 70 |
 
 ## Issue Counts
@@ -16,7 +16,7 @@ Generated at: `2026-06-15T05:52:32Z`
 |---|---:|
 | official_reference_gap | 5,322 |
 | missing_stock_sector | 1,763 |
-| expected_missing_primary_isin | 854 |
+| expected_missing_primary_isin | 765 |
 | missing_etf_category | 74 |
 | country_isin_mismatch | 65 |
 | venue_missing_official_source | 8 |
@@ -42,10 +42,10 @@ Generated at: `2026-06-15T05:52:32Z`
 | BK | 2 | 0 | 102 | 0 | 0 |
 | AMS | 217 | 0 | 97 | 0 | 0 |
 | BME | 72 | 0 | 97 | 0 | 0 |
-| MSX | 1 | 0 | 90 | 0 | 0 |
 | JSE | 124 | 0 | 88 | 0 | 0 |
 | NYSE | 1,995 | 0 | 88 | 0 | 0 |
 | BATS | 1,156 | 0 | 85 | 0 | 0 |
+| TASE | 592 | 0 | 81 | 0 | 0 |
 
 ## Notes
 
