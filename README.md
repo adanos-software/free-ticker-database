@@ -9,23 +9,23 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 
 | Metric | Value | Meaning |
 |---|---:|---|
-| Core listings | 54,095 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
-| Primary tickers | 61,558 | Rows in `data/tickers.csv`; one primary row per security. |
-| Full listing rows | 71,041 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
-| Stocks | 45,900 | Primary ticker rows where `asset_type=Stock`. |
+| Core listings | 54,094 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
+| Primary tickers | 61,556 | Rows in `data/tickers.csv`; one primary row per security. |
+| Full listing rows | 71,039 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
+| Stocks | 45,898 | Primary ticker rows where `asset_type=Stock`. |
 | ETFs | 15,658 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 80 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
-| Countries | 86 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 122,157 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
-| ISIN coverage | 60,090 (97.6%) | Primary ticker rows with a non-empty `isin`. |
+| Countries | 87 | Distinct non-empty `country` values in `data/tickers.csv`. |
+| Aliases | 122,156 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
+| ISIN coverage | 60,087 (97.6%) | Primary ticker rows with a non-empty `isin`. |
 | FIGI coverage | 64,316 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
-| Sector/category coverage | 58,962 (95.8%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 43,386 | Primary ticker rows with a non-empty `stock_sector`. |
+| Sector/category coverage | 58,959 (95.8%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Stock sector coverage | 43,383 | Primary ticker rows with a non-empty `stock_sector`. |
 | ETF category coverage | 15,576 | Primary ticker rows with a non-empty `etf_category`. |
-| Core listing-scope rows | 54,095 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
-| Core primary rows with ISIN | 53,330 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
+| Core listing-scope rows | 54,094 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
+| Core primary rows with ISIN | 53,329 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
 | Core primary rows missing ISIN | 765 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
-| Extended listing-scope rows | 16,946 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
+| Extended listing-scope rows | 16,945 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
 | Official full exchanges | 46 | Current-scope source inventory rows marked `official_full`. |
 | Official partial exchanges | 33 | Current-scope source inventory rows marked `official_partial`. |
 | Missing current-scope exchanges | 1 | Current-scope source inventory rows still marked `missing`; see `data/reports/source_inventory_gap.md`. |
@@ -165,7 +165,7 @@ Top exchanges by primary ticker count:
 | Exchange | Tickers |
 |---|---:|
 | OTC | 7,522 |
-| NASDAQ | 4,535 |
+| NASDAQ | 4,534 |
 | LSE | 3,805 |
 | TSE | 3,191 |
 | SZSE | 3,083 |

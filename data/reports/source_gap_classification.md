@@ -1,13 +1,13 @@
 # Source Gap Classification
 
-Generated at: `2026-06-15T06:31:33Z`
+Generated at: `2026-06-15T11:07:08Z`
 
 This report classifies residual metadata gaps after official and reviewed free-source backfills. It is a guardrail report: values remain empty unless a future source satisfies the listed source gate.
 
 ## Summary
 
 - Missing primary ISIN rows classified: `765`
-- Missing stock-sector rows classified: `2514`
+- Missing stock-sector rows classified: `2515`
 - Missing ETF-category rows classified: `82`
 
 ## Top Classes
@@ -15,7 +15,7 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | Class | Rows |
 |---|---:|
 | official_industry_taxonomy_unavailable_gap | 1569 |
-| otc_sector_source_gap | 751 |
+| otc_sector_source_gap | 752 |
 | fund_or_trust_identifier_gap | 282 |
 | official_identifier_not_exposed_source_gap | 228 |
 | shell_or_cpc_sector_gap | 82 |
@@ -37,7 +37,7 @@ This report classifies residual metadata gaps after official and reviewed free-s
 
 | Field | Gap Class | Exchange | Rows | Recommended Next Source | Source Gate |
 |---|---|---|---:|---|---|
-| missing_sector_stock | otc_sector_source_gap | OTC | 751 | SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile. | Canonical stock sector only after exchange/name gate; no ticker/name-only inference. |
+| missing_sector_stock | otc_sector_source_gap | OTC | 752 | SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile. | Canonical stock sector only after exchange/name gate; no ticker/name-only inference. |
 | missing_sector_stock | official_industry_taxonomy_unavailable_gap | B3 | 193 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
 | missing_sector_stock | official_industry_taxonomy_unavailable_gap | CSE_LK | 140 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |
 | missing_sector_stock | official_industry_taxonomy_unavailable_gap | Euronext | 130 | Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source. | Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value. |

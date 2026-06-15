@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-06-15T06:31:33Z",
-    "rows": 3361,
+    "generated_at": "2026-06-15T11:07:08Z",
+    "rows": 3362,
     "field_totals": {
       "missing_etf_category": 82,
       "missing_isin_primary": 765,
-      "missing_sector_stock": 2514
+      "missing_sector_stock": 2515
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 45,
@@ -24,7 +24,7 @@
       "official_industry_taxonomy_unavailable_gap": 1569,
       "official_product_reference_unmatched_category_gap": 21,
       "official_product_taxonomy_unavailable_gap": 53,
-      "otc_sector_source_gap": 751,
+      "otc_sector_source_gap": 752,
       "shell_or_cpc_sector_gap": 82
     },
     "class_by_field": {
@@ -44,7 +44,7 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 39,
       "missing_sector_stock:fundlike_stock_sector_gap": 73,
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 1569,
-      "missing_sector_stock:otc_sector_source_gap": 751,
+      "missing_sector_stock:otc_sector_source_gap": 752,
       "missing_sector_stock:shell_or_cpc_sector_gap": 82
     },
     "top_exchanges_by_field": {
@@ -135,7 +135,7 @@
       "missing_sector_stock": [
         {
           "exchange": "OTC",
-          "rows": 751
+          "rows": 752
         },
         {
           "exchange": "B3",
@@ -180,7 +180,7 @@
         "field": "missing_sector_stock",
         "gap_class": "otc_sector_source_gap",
         "exchange": "OTC",
-        "rows": 751,
+        "rows": 752,
         "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
         "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
       },
@@ -30083,7 +30083,7 @@
       "ticker": "OLGERD",
       "exchange": "ICE_IS",
       "asset_type": "Stock",
-      "name": "Ölgerðin Egill Skallagrímsson hf.",
+      "name": "Bera hf.",
       "gap_class": "official_industry_taxonomy_unavailable_gap",
       "review_needed": "true",
       "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
@@ -38981,6 +38981,23 @@
       "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
       "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
       "source_gap_context": "listing_key=OTC::EELFF;exchange=OTC;ticker=EELFF;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "OTC::EGSE",
+      "ticker": "EGSE",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "name": "Evergreen Sustainable Enterprises Inc.",
+      "gap_class": "otc_sector_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require SEC SIC, issuer filing, OTCMarkets profile, or reviewed secondary profile data; no name-only sector guesses.",
+      "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
+      "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
+      "source_gap_context": "listing_key=OTC::EGSE;exchange=OTC;ticker=EGSE;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
     },
