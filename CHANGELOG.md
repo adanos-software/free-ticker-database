@@ -2,6 +2,29 @@
 
 ## [Unreleased]
 
+## [3.30.6] - 2026-06-15
+
+### Summary
+
+ISIN-tail release. Closed the two ISINs that the EODHD pass could still reach on the unsupported-exchange tail, and resolved the row deferred in v3.30.5. The deep tail (frontier/emerging exchanges with no ISIN in EODHD's bulk list on this plan) remains open and is documented as needing a Fundamentals-tier subscription or per-exchange official feeds. No values were fabricated and nothing was applied on a single source alone.
+
+### Changed
+
+- `IGBG` (Euronext Amsterdam) → `IE000J8Z5N74` (iShares Broad Global Govt Bond UCITS ETF): the one residual-tail row EODHD's bulk symbol list could fill, confirmed against the iShares/justETF/Cbonds public ETF profile. Euronext Amsterdam (`AMS`) was added to the EODHD backfill maps so the venue is covered going forward.
+- `CURN` (OTC) → `US23131B3078`: resolves the row deferred last release. EODHD's previously-proposed `US2312921032` is a non-existent identifier (OpenFIGI returns no match); the correct ISIN `US23131B3078` maps via OpenFIGI to Currency Exchange International (tickers `CURN`/`CXI`/`CXIUSD`). It is the same security as the `CXI`/TSX primary, so applying it links the OTC line as a cross-listing.
+- Public snapshot: ISIN coverage 60,000 → 60,001; core primary rows missing ISIN 855 → 854; primary tickers 61,559 → 61,558 (CURN collapses into CXI's cross-listing group — collision-safe deduplication, not a coverage loss).
+
+### Safety
+
+- Each ISIN was confirmed by an independent second source before inclusion (EODHD + iShares/justETF/Cbonds for IGBG; public profile + OpenFIGI ISIN→issuer for CURN).
+- The deep tail (`MSX`/Oman, `QSE`/Qatar, `PSX`, `SSE_CL`, `JSE`, `ATHEX`, …) is not closeable on the current EODHD plan: its bulk `exchange-symbol-list` carries no ISIN for these markets and the `fundamentals` endpoint (which does) is not entitled (HTTP 403). OpenFIGI returns FIGIs, not ISINs, so it cannot fill the gap. No values were fabricated.
+
+### Verification
+
+- `scripts/check_readme_snapshot.py`: pass.
+- `scripts/validate_database.py`: pass with 0/83 failed error gates, 61,558 ticker rows, and 71,041 listing rows.
+- `pytest tests/ -q`: 1,445 passed.
+
 ## [3.30.5] - 2026-06-15
 
 ### Summary
