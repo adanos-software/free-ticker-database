@@ -29,6 +29,7 @@ DEFAULT_METADATA_UPDATES_CSV = ROOT / "data" / "review_overrides" / "metadata_up
 
 EODHD_BASE_URL = "https://eodhd.com/api"
 EODHD_EXCHANGE_CODES: dict[str, str] = {
+    "AMS": "AS",
     "ASX": "AU",
     "B3": "SA",
     "BATS": "US",
@@ -60,6 +61,7 @@ EODHD_EXCHANGE_CODES: dict[str, str] = {
     "XETRA": "XETRA",
 }
 EODHD_MARKET_CODES: dict[str, set[str]] = {
+    "AMS": {"AS"},
     "ASX": {"AU"},
     "B3": {"SA"},
     "BATS": {"BATS"},
@@ -91,6 +93,7 @@ EODHD_MARKET_CODES: dict[str, set[str]] = {
     "XETRA": {"XETRA"},
 }
 EXPECTED_ISIN_PREFIXES: dict[str, tuple[str, ...]] = {
+    "AMS": ("NL", "IE", "LU", "DE", "FR", "GB"),
     "ASX": ("AU", "NZ"),
     "B3": ("BR",),
     "BATS": ("US", "IE", "LU"),

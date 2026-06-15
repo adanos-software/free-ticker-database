@@ -1,17 +1,17 @@
 {
   "summary": {
-    "generated_at": "2026-06-15T05:33:47Z",
-    "rows": 3451,
+    "generated_at": "2026-06-15T05:45:23Z",
+    "rows": 3450,
     "outcome_totals": {
       "accepted_source_gap": 2796,
-      "core_exclusion_candidate": 655
+      "core_exclusion_candidate": 654
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 45,
       "adr_cdr_or_depositary_sector_gap": 39,
       "capital_pool_or_halted_identifier_gap": 35,
       "commodity_etf_category_gap": 3,
-      "debt_or_securitized_identifier_gap": 82,
+      "debt_or_securitized_identifier_gap": 81,
       "equity_etf_category_gap": 3,
       "fixed_income_etf_category_gap": 2,
       "fund_or_trust_identifier_gap": 282,
@@ -29,7 +29,7 @@
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 82,
       "missing_isin_primary:accepted_source_gap": 394,
-      "missing_isin_primary:core_exclusion_candidate": 461,
+      "missing_isin_primary:core_exclusion_candidate": 460,
       "missing_sector_stock:accepted_source_gap": 2320,
       "missing_sector_stock:core_exclusion_candidate": 194
     },
@@ -47613,23 +47613,6 @@
       "exchange": "AMS",
       "asset_type": "ETF",
       "name": "iShares Broad $ High Yield Corp Bond UCITS ETF USD (Acc)",
-      "gap_class": "debt_or_securitized_identifier_gap",
-      "source_of_truth_outcome": "core_exclusion_candidate",
-      "core_action": "review_for_core_exclusion",
-      "fill_action": "do_not_fill_until_scope_review",
-      "review_needed": "true",
-      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
-      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
-      "source_gate": "Exact instrument code/name and ISIN checksum; never issuer-equity propagation."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "AMS::IGBG",
-      "ticker": "IGBG",
-      "exchange": "AMS",
-      "asset_type": "ETF",
-      "name": "iShares Broad Global Govt Bond UCITS ETF USD Distribution",
       "gap_class": "debt_or_securitized_identifier_gap",
       "source_of_truth_outcome": "core_exclusion_candidate",
       "core_action": "review_for_core_exclusion",
