@@ -2,6 +2,30 @@
 
 ## [Unreleased]
 
+## [3.30.7] - 2026-06-15
+
+### Summary
+
+ISIN-tail release sourced from a national CSD. Closed 89 of the 90 Muscat Securities Market (Oman) ISIN gaps using the authoritative numbering agency — Muscat Clearing & Depository (MCD) — rather than a third-party aggregator. No values were fabricated and nothing was applied on a single unverified source.
+
+### Changed
+
+- Backfilled 89 MSX (Oman) ISINs from MCD's `ListedInstrumentsInfo` instrument register, matched to our gaps by exact security symbol with issuer-name consistency confirmed for every row. The 6 abbreviation-heavy names were additionally cross-checked against OpenFIGI ISIN→issuer (exact ticker + name match). All are clean fills (new ISINs, OM prefix, valid ISO checksum, no collapse).
+- Added Euronext Amsterdam (`AMS`) handling to the EODHD backfill maps in v3.30.6 is now joined by the CSD-sourcing pattern; `scripts/backfill_eodhd_metadata.py` remains the EODHD path.
+- Public snapshot: ISIN coverage 60,001 → 60,090 (97.6%); core primary rows missing ISIN 854 → 765; MSX core gaps 90 → 1. Primary ticker count unchanged at 61,558.
+
+### Safety
+
+- MCD is Oman's authoritative CSD/numbering agency (the ISIN issuer), so the symbol+name match is a primary-source confirmation, not an aggregator guess.
+- Rejected `BWRQ` (MCD lists it as a BOND on the Third Market; our row is a Stock) to avoid attaching a debt ISIN to an equity line.
+- The remaining tail (Qatar, Pakistan, Chile, …) was investigated but is not freely accessible: Qatar's QSE renders ISINs inconsistently, Pakistan's CDC is behind bot protection, Chile's exchange API is auth-gated. Those need a credentialed source (e.g. an EODHD Fundamentals-tier subscription) and were not fabricated.
+
+### Verification
+
+- `scripts/check_readme_snapshot.py`: pass.
+- `scripts/validate_database.py`: pass with 0/83 failed error gates, 61,558 ticker rows, and 71,041 listing rows.
+- `pytest tests/ -q`: 1,445 passed.
+
 ## [3.30.6] - 2026-06-15
 
 ### Summary
