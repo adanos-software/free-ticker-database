@@ -154,7 +154,10 @@ def test_codex_worker_collision_findings_are_cleaned():
     rdn = ticker_exchange_row("RDN", "NYSE")
     klr = ticker_exchange_row("KLR", "LSE")
 
-    assert bmr["isin"] == ""
+    # Ballymore Resources (AU namesake) ISIN was cleared in the collision sweep; the
+    # genuine Beamr Imaging (Israel) ISIN was later sourced from EODHD and confirmed
+    # against OpenFIGI + MarketScreener/cbonds (IL0011832438).
+    assert bmr["isin"] == "IL0011832438"
     assert bmr["country"] == "Israel"
     assert "ballymore resources" not in bmr["aliases"]
     assert "A3DV8W" not in bmr["aliases"]
