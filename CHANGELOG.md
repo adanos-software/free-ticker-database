@@ -2,6 +2,28 @@
 
 ## [Unreleased]
 
+## [3.30.18] - 2026-06-16
+
+### Summary
+
+Coverage expansion — **rest of EU + the Japan/India/EU symbol-collision bucket**. Adds **331 new EU primary listings** and **1,423 collision-safe coverage-expansion rows** (Japan 834, EU 466, India 123) for verified-active securities whose ticker symbol is already the global primary for another security.
+
+### Added
+
+- **331 EU common stocks as new primary tickers** (LSE, Euronext, Nasdaq Stockholm/Copenhagen/Helsinki, SIX, BME, WSE, Oslo, ATHEX, Vienna, Prague, Budapest) — each verified currently trading on its home exchange by a 203-agent web pass that rejected **668 delisted/acquired** (CureVac, Steinhoff, Credit Suisse, Direct Line, CRH→NYSE-only, Just Eat Takeaway, Siemens Gamesa, …) + 52 non-stocks, with GICS sectors.
+- **1,423 collision-safe `coverage_expansion` rows** for verified-active securities whose symbol is taken globally: **Japan 834** (Kikkoman, Mitsui Chemicals, Mitsui Kinzoku, …), **EU 466**, **India 123** (TCS, Indian Oil, Power Finance, GSK Pharma India, Sanofi-collision-set, …). They enrich `core_listings.csv`/`listings.csv` but never displace a `tickers.csv` primary.
+
+### Changed
+
+- Primary tickers 62,843 → 63,159; core listings 55,347 → 57,073; ISIN coverage → 61,596; stock-sector coverage held at 99.8%. **Zero displacement** of existing tickers.
+- A self-correcting insert loop excluded same-company duplicates of existing OTC shadows (e.g. `TSE:8032` Japan Pulp & Paper = our `JPPPF`/OTC). Allowlisted 1 benign `official_name_mismatch` (`TSE:3184`).
+- Key-patched `identifiers_extended`/`listing_index`/`identifier_summary`; regenerated derived + entry-quality. Bumps VERSION to 3.30.18.
+
+### Verification
+
+- EU verification (203-agent web pass): 902 trades / 668 not_trading / 52 non-stock from 1,622 candidates.
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,451 passed.
+
 ## [3.30.17] - 2026-06-16
 
 ### Summary
