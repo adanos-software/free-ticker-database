@@ -408,3 +408,40 @@ def test_run_writes_merged_changes_and_review_outputs(tmp_path):
     assert review_rows[0]["scoped_listing_names"] == "Captivision Inc"
     assert review_rows[0]["issuer_name_review_status"] == "feed_name_exactly_matches_scoped_listing_name"
     assert "secondary-source symbol-change feed" in args.review_md.read_text()
+
+
+def test_merge_changes_preserves_observed_at_for_unchanged_entries():
+    from scripts.fetch_symbol_changes import CHANGE_FIELDS, SymbolChange, merge_changes
+
+    def make(observed_at, name="Example Inc"):
+        return SymbolChange(
+            change_id="cid1", effective_date="2026-06-01", old_symbol="AAA", new_symbol="BBB",
+            new_company_name=name, source="stockanalysis_symbol_changes",
+            source_url="https://example/changes", new_symbol_url="/stocks/bbb/",
+            source_exchange_hint="US_LISTED", source_confidence="secondary_review",
+            review_needed="true", observed_at=observed_at,
+        )
+
+    existing = [{f: getattr(make("2026-01-01T00:00:00Z"), f) for f in CHANGE_FIELDS}]
+
+    # 1) unchanged substantive content -> original observed_at preserved (no churn)
+    merged = merge_changes(existing, [make("2026-06-15T00:00:00Z")])
+    assert len(merged) == 1
+    assert merged[0].observed_at == "2026-01-01T00:00:00Z"
+
+    # 2) substantive content changed -> observed_at updates to the fetched value
+    merged = merge_changes(existing, [make("2026-06-15T00:00:00Z", name="Renamed Corp")])
+    assert merged[0].observed_at == "2026-06-15T00:00:00Z"
+    assert merged[0].new_company_name == "Renamed Corp"
+
+    # 3) a genuinely new change_id is added with its own observed_at
+    new = SymbolChange(
+        change_id="cid2", effective_date="2026-06-10", old_symbol="CCC", new_symbol="DDD",
+        new_company_name="New Co", source="stockanalysis_symbol_changes", source_url="u",
+        new_symbol_url="/stocks/ddd/", source_exchange_hint="US_LISTED",
+        source_confidence="secondary_review", review_needed="true", observed_at="2026-06-15T00:00:00Z",
+    )
+    merged = merge_changes(existing, [make("2026-06-15T00:00:00Z"), new])
+    ids = {c.change_id: c for c in merged}
+    assert ids["cid1"].observed_at == "2026-01-01T00:00:00Z"  # preserved
+    assert ids["cid2"].observed_at == "2026-06-15T00:00:00Z"  # new

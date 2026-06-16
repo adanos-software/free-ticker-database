@@ -282,7 +282,14 @@ def merge_changes(existing_rows: list[dict[str, str]], fetched_changes: list[Sym
         if not row.get("change_id"):
             continue
         merged[row["change_id"]] = SymbolChange(**{field: row.get(field, "") for field in CHANGE_FIELDS})
+    compare_fields = [field for field in CHANGE_FIELDS if field != "observed_at"]
     for change in fetched_changes:
+        prior = merged.get(change.change_id)
+        # Preserve the original observed_at (first-observed time) for entries whose
+        # substantive content is unchanged, so re-running the daily fetch does not
+        # churn observed_at on every row and produce no-op diffs/PRs.
+        if prior is not None and all(getattr(prior, field) == getattr(change, field) for field in compare_fields):
+            continue
         merged[change.change_id] = change
     return sorted(
         merged.values(),
