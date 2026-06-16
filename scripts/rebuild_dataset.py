@@ -51,6 +51,11 @@ CORE_LISTINGS_PARQUET = DATA_DIR / "core_listings.parquet"
 CROSS_LISTINGS_CSV = DATA_DIR / "cross_listings.csv"
 MASTERFILE_SUPPLEMENT_CSV = DATA_DIR / "masterfiles" / "supplemental_listings.csv"
 FINANCIALDATA_ISIN_SUPPLEMENT_CSV = DATA_DIR / "masterfiles" / "financialdata_isin_supplemental_listings.csv"
+# Coverage-expansion listings: real venue listings whose ticker symbol is already the
+# global primary for a different security. They enrich listings.csv / core_listings.csv
+# (collision-safe, keyed by listing_key) but must NEVER win a global ticker-symbol
+# collision in tickers.csv, so they never displace an existing primary.
+COVERAGE_EXPANSION_CSV = DATA_DIR / "coverage_expansion_listings.csv"
 MASTERFILE_REFERENCE_CSV = DATA_DIR / "masterfiles" / "reference.csv"
 REVIEW_OVERRIDES_DIR = DATA_DIR / "review_overrides"
 REVIEW_REMOVE_ALIASES_CSV = REVIEW_OVERRIDES_DIR / "remove_aliases.csv"
@@ -2021,6 +2026,14 @@ def load_data():
 
     ticker_rows = merge_supplemental_ticker_rows(ticker_rows)
 
+    # Coverage-expansion listings flow through the full pipeline (so they appear in
+    # listings.csv / core_listings.csv) but are demoted in the tickers.csv collision step.
+    existing_keys = {(row["ticker"], row["exchange"]) for row in ticker_rows}
+    for row in load_coverage_expansion_rows():
+        if (row["ticker"], row["exchange"]) not in existing_keys:
+            ticker_rows.append(row)
+            existing_keys.add((row["ticker"], row["exchange"]))
+
     return ticker_rows, alias_type_lookup, extra_aliases, identifier_lookup, core_row_keys
 
 
@@ -2032,6 +2045,22 @@ def load_supplemental_ticker_rows() -> list[dict[str, str]]:
         with path.open(newline="", encoding="utf-8") as handle:
             rows.extend(csv.DictReader(handle))
     return rows
+
+
+def load_coverage_expansion_rows() -> list[dict[str, str]]:
+    if not COVERAGE_EXPANSION_CSV.exists():
+        return []
+    with COVERAGE_EXPANSION_CSV.open(newline="", encoding="utf-8") as handle:
+        return list(csv.DictReader(handle))
+
+
+@lru_cache(maxsize=None)
+def load_non_primary_listing_keys() -> frozenset[str]:
+    """listing_keys (EXCHANGE::TICKER) of coverage-expansion rows that must never win a
+    global ticker-symbol collision in the tickers.csv export."""
+    return frozenset(
+        f"{row['exchange']}::{row['ticker']}" for row in load_coverage_expansion_rows()
+    )
 
 
 def merge_ticker_row(base_row: dict[str, str], supplement_row: dict[str, str]) -> dict[str, str]:
@@ -2956,8 +2985,15 @@ def build_primary_ticker_rows(rows: list[dict[str, str]]) -> list[dict[str, str]
     ticker_groups: dict[str, list[dict[str, str]]] = defaultdict(list)
     for row in primary_rows:
         ticker_groups[row["ticker"]].append(row)
+    non_primary_keys = load_non_primary_listing_keys()
     for ticker, group in ticker_groups.items():
-        preferred = sorted(group, key=primary_ticker_collision_sort_key)[0]
+        preferred = sorted(
+            group,
+            key=lambda candidate: (
+                1 if row_listing_key(candidate) in non_primary_keys else 0,
+                *primary_ticker_collision_sort_key(candidate),
+            ),
+        )[0]
         primary_listing_key_by_ticker[ticker] = row_listing_key(preferred)
     return [
         row
