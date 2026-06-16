@@ -35,7 +35,18 @@ jobs:
       - name: Validate symbol changes parser
         run: python -m pytest tests/test_fetch_symbol_changes.py -q
 
+      - name: Detect substantive changes
+        id: changes
+        run: |
+          if git diff --quiet -- data/corporate_actions/symbol_changes.csv; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No new/changed symbol changes; skipping PR (timestamp-only churn discarded)."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Open update pull request
+        if: steps.changes.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@v8.1.1
         with:
           branch: automation/symbol-changes
