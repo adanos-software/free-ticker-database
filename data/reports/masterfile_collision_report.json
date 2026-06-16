@@ -1,9 +1,9 @@
 {
   "global": {
     "official_symbols": 78844,
-    "matched": 50907,
-    "collisions": 11176,
-    "missing": 16761
+    "matched": 51954,
+    "collisions": 12306,
+    "missing": 14584
   },
   "exchanges": [
     {
@@ -803,9 +803,65 @@
       "exchange": "BSE_IN",
       "official_symbols": 4866,
       "matched": 2459,
-      "collisions": 759,
-      "missing": 1648,
+      "collisions": 1886,
+      "missing": 521,
       "collision_examples": [
+        {
+          "ticker": "20MICRONS",
+          "name": "20 Microns Ltd",
+          "target_exchange": "BSE_IN",
+          "existing_exchanges": [
+            "NSE_IN"
+          ]
+        },
+        {
+          "ticker": "21STCENMGM",
+          "name": "Twentyfirst Century Management Services Ltd",
+          "target_exchange": "BSE_IN",
+          "existing_exchanges": [
+            "NSE_IN"
+          ]
+        },
+        {
+          "ticker": "360ONE",
+          "name": "360 ONE WAM LTD",
+          "target_exchange": "BSE_IN",
+          "existing_exchanges": [
+            "NSE_IN"
+          ]
+        },
+        {
+          "ticker": "3IINFOLTD",
+          "name": "3i Infotech Ltd",
+          "target_exchange": "BSE_IN",
+          "existing_exchanges": [
+            "NSE_IN"
+          ]
+        },
+        {
+          "ticker": "3MINDIA",
+          "name": "3M India Ltd",
+          "target_exchange": "BSE_IN",
+          "existing_exchanges": [
+            "NSE_IN"
+          ]
+        },
+        {
+          "ticker": "3PLAND",
+          "name": "3P Land Holdings Ltd",
+          "target_exchange": "BSE_IN",
+          "existing_exchanges": [
+            "NSE_IN"
+          ]
+        },
+        {
+          "ticker": "5PAISA",
+          "name": "5paisa Capital Ltd",
+          "target_exchange": "BSE_IN",
+          "existing_exchanges": [
+            "NSE_IN"
+          ]
+        },
         {
           "ticker": "63MOONS",
           "name": "63 Moons Technologies Ltd",
@@ -815,75 +871,19 @@
           ]
         },
         {
-          "ticker": "AAVAS",
-          "name": "AAVAS Financiers Ltd",
+          "ticker": "AAATECH",
+          "name": "AAA Technologies Ltd",
           "target_exchange": "BSE_IN",
           "existing_exchanges": [
             "NSE_IN"
           ]
         },
         {
-          "ticker": "ABB",
-          "name": "ABB India Ltd",
-          "target_exchange": "BSE_IN",
-          "existing_exchanges": [
-            "STO"
-          ]
-        },
-        {
-          "ticker": "ABDL",
-          "name": "Allied Blenders and Distillers Ltd",
+          "ticker": "AADHARHFC",
+          "name": "Aadhar Housing Finance Ltd",
           "target_exchange": "BSE_IN",
           "existing_exchanges": [
             "NSE_IN"
-          ]
-        },
-        {
-          "ticker": "ABFRL",
-          "name": "Aditya Birla Fashion and Retail Ltd",
-          "target_exchange": "BSE_IN",
-          "existing_exchanges": [
-            "NSE_IN"
-          ]
-        },
-        {
-          "ticker": "ACC",
-          "name": "ACC Ltd",
-          "target_exchange": "BSE_IN",
-          "existing_exchanges": [
-            "SET"
-          ]
-        },
-        {
-          "ticker": "ACE",
-          "name": "Action Construction Equipment Ltd",
-          "target_exchange": "BSE_IN",
-          "existing_exchanges": [
-            "STO"
-          ]
-        },
-        {
-          "ticker": "ACGL",
-          "name": "Automobile Corporation of Goa Ltd-$",
-          "target_exchange": "BSE_IN",
-          "existing_exchanges": [
-            "NASDAQ"
-          ]
-        },
-        {
-          "ticker": "ACI",
-          "name": "Archean Chemical Industries Ltd",
-          "target_exchange": "BSE_IN",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
-        {
-          "ticker": "ACL",
-          "name": "Andhra Cements Ltd",
-          "target_exchange": "BSE_IN",
-          "existing_exchanges": [
-            "TSXV"
           ]
         }
       ],
@@ -1412,8 +1412,8 @@
       "exchange": "Euronext",
       "official_symbols": 4426,
       "matched": 935,
-      "collisions": 2262,
-      "missing": 1229,
+      "collisions": 2264,
+      "missing": 1227,
       "collision_examples": [
         {
           "ticker": "0EMU",
@@ -2200,8 +2200,8 @@
       "exchange": "LSE",
       "official_symbols": 11021,
       "matched": 6311,
-      "collisions": 1195,
-      "missing": 3515,
+      "collisions": 1198,
+      "missing": 3512,
       "collision_examples": [
         {
           "ticker": "0GZJ",
@@ -2596,6 +2596,7 @@
           "name": "ABB CDR (CAD HEDGED)",
           "target_exchange": "NEO",
           "existing_exchanges": [
+            "NSE_IN",
             "STO"
           ]
         },
@@ -2737,9 +2738,9 @@
     {
       "exchange": "NSE_IN",
       "official_symbols": 3010,
-      "matched": 1206,
-      "collisions": 317,
-      "missing": 1487,
+      "matched": 2253,
+      "collisions": 312,
+      "missing": 445,
       "collision_examples": [
         {
           "ticker": "3BBLACKBIO",
@@ -2755,14 +2756,6 @@
           "target_exchange": "NSE_IN",
           "existing_exchanges": [
             "BSE_IN"
-          ]
-        },
-        {
-          "ticker": "ABB",
-          "name": "ABB India Limited",
-          "target_exchange": "NSE_IN",
-          "existing_exchanges": [
-            "STO"
           ]
         },
         {
@@ -2820,57 +2813,65 @@
           "existing_exchanges": [
             "BSE_IN"
           ]
+        },
+        {
+          "ticker": "AGI",
+          "name": "AGI Greenpac Limited",
+          "target_exchange": "NSE_IN",
+          "existing_exchanges": [
+            "NYSE"
+          ]
         }
       ],
       "missing_examples": [
         {
-          "ticker": "20MICRONS",
-          "name": "20 Microns Limited",
+          "ticker": "ABCOTS",
+          "name": "A B Cotspin India Limited",
           "exchange": "NSE_IN"
         },
         {
-          "ticker": "21STCENMGM",
-          "name": "21st Century Management Services Limited",
+          "ticker": "ABINFRA",
+          "name": "A B Infrabuild Limited",
           "exchange": "NSE_IN"
         },
         {
-          "ticker": "360ONE",
-          "name": "360 ONE WAM LIMITED",
+          "ticker": "ABSL10BANK",
+          "name": "BIRLASLAMC - ABSL10BANK",
           "exchange": "NSE_IN"
         },
         {
-          "ticker": "3IINFOLTD",
-          "name": "3i Infotech Limited",
+          "ticker": "ABSLBANETF",
+          "name": "BIRLASLAMC-ABSLBANETF",
           "exchange": "NSE_IN"
         },
         {
-          "ticker": "3MINDIA",
-          "name": "3M India Limited",
+          "ticker": "ABSLMSCIN",
+          "name": "BIRLASLAMC - ABSLMSCIN",
           "exchange": "NSE_IN"
         },
         {
-          "ticker": "3PLAND",
-          "name": "3P Land Holdings Limited",
+          "ticker": "ABSLNN50ET",
+          "name": "BIRLASLAMC-ABSLNN50ET",
           "exchange": "NSE_IN"
         },
         {
-          "ticker": "5PAISA",
-          "name": "5Paisa Capital Limited",
+          "ticker": "ABSLPSE",
+          "name": "BIRLASLAMC-ABSLPSE",
           "exchange": "NSE_IN"
         },
         {
-          "ticker": "AAATECH",
-          "name": "AAA Technologies Limited",
+          "ticker": "ADISOFT",
+          "name": "Adisoft Technologies Limited",
           "exchange": "NSE_IN"
         },
         {
-          "ticker": "AADHARHFC",
-          "name": "Aadhar Housing Finance Limited",
+          "ticker": "ADVAIT",
+          "name": "Advait Energy Transitions Limited",
           "exchange": "NSE_IN"
         },
         {
-          "ticker": "AARNAV",
-          "name": "Aarnav Fashions Limited",
+          "ticker": "ADVANCE",
+          "name": "Advance Agrolife Limited",
           "exchange": "NSE_IN"
         }
       ]
@@ -3443,8 +3444,8 @@
       "exchange": "NZX",
       "official_symbols": 173,
       "matched": 45,
-      "collisions": 126,
-      "missing": 2,
+      "collisions": 127,
+      "missing": 1,
       "collision_examples": [
         {
           "ticker": "AFC",
@@ -3528,11 +3529,6 @@
         }
       ],
       "missing_examples": [
-        {
-          "ticker": "IPL",
-          "name": "Investore Property Limited (NS) Ordinary Shares",
-          "exchange": "NZX"
-        },
         {
           "ticker": "VHP",
           "name": "Vital Healthcare Property Trust Ordinary Units",
@@ -4109,8 +4105,8 @@
       "exchange": "SET",
       "official_symbols": 944,
       "matched": 545,
-      "collisions": 347,
-      "missing": 52,
+      "collisions": 348,
+      "missing": 51,
       "collision_examples": [
         {
           "ticker": "A",
@@ -4250,8 +4246,8 @@
       "exchange": "SGX",
       "official_symbols": 738,
       "matched": 589,
-      "collisions": 142,
-      "missing": 7,
+      "collisions": 143,
+      "missing": 6,
       "collision_examples": [
         {
           "ticker": "500",
@@ -4335,11 +4331,6 @@
         }
       ],
       "missing_examples": [
-        {
-          "ticker": "BLS",
-          "name": "Hotung Inv",
-          "exchange": "SGX"
-        },
         {
           "ticker": "JCO",
           "name": "JustCo",
@@ -5024,6 +5015,7 @@
           "name": "Ng\u00e2n h\u00e0ng TMCP An B\u00ecnh",
           "target_exchange": "UPCOM",
           "existing_exchanges": [
+            "NSE_IN",
             "STO"
           ]
         },
