@@ -2,6 +2,24 @@
 
 ## [Unreleased]
 
+## [3.30.11] - 2026-06-16
+
+### Summary
+
+Completeness + enrichment release. Closes the sector-coverage gap (the weakest axis), enriches LEI coverage from the official GLEIF mapping, and cleans up the residual non-sector errors from the post-campaign correctness re-audit.
+
+### Changed
+
+- **Sector completeness**: filled 2,462 missing `stock_sector` values across source-uncovered markets (US OTC, B3, frontier — Sri Lanka/Casablanca/Mauritius/Philippines/Thailand/Kenya — plus Euronext/LSE/XETRA/OSL/STO residual), each determined from the issuer's actual business via the multi-agent pipeline (accuracy sample 40: 36 correct + 4 defensible, 0 wrong). Plus 13 verified sector corrections in markets that aggregator sources don't cover (Japan TSE, Korea KOSDAQ, Taiwan TWSE, OTC). **stock_sector coverage 94.5% → 99.9%** (missing 2,515 → 53); sector/category coverage → 99.8%. 53 undeterminable shells left empty rather than guessed.
+- **LEI enrichment**: joined the free official GLEIF ISIN-to-LEI relationship file → LEI coverage 919 → 17,490 (~19×); listings with any identifier 65,229 → 65,497.
+- **Residual cleanup**: 3 stale-name fixes (Micronet→Jeen Technologies, Banganga Paper→Asgard Alcobev, Gansu Qilianshan→CCCC Design & Consulting), PHAG/LSE etf_category Equity→Commodity, and dropped WSE/ASX (an RMBS securitisation trust mislabeled as an ETF). Primary tickers 61,556 → 61,555.
+
+### Verification
+
+- `scripts/check_readme_snapshot.py`: pass.
+- `scripts/validate_database.py`: pass with 0/83 failed error gates, 61,555 ticker rows, and 71,038 listing rows.
+- `pytest tests/ -q`: 1,445 passed.
+
 ## [3.30.10] - 2026-06-16
 
 ### Summary
