@@ -1,9 +1,9 @@
 {
   "global": {
     "official_symbols": 78844,
-    "matched": 51954,
-    "collisions": 12306,
-    "missing": 14584
+    "matched": 51978,
+    "collisions": 12327,
+    "missing": 14539
   },
   "exchanges": [
     {
@@ -4486,9 +4486,9 @@
     {
       "exchange": "TSE",
       "official_symbols": 4449,
-      "matched": 3206,
+      "matched": 3230,
       "collisions": 1187,
-      "missing": 56,
+      "missing": 32,
       "collision_examples": [
         {
           "ticker": "1301",
@@ -4850,8 +4850,8 @@
       "exchange": "TWSE",
       "official_symbols": 1090,
       "matched": 973,
-      "collisions": 38,
-      "missing": 79,
+      "collisions": 59,
+      "missing": 58,
       "collision_examples": [
         {
           "ticker": "2020",
@@ -4902,6 +4902,14 @@
           ]
         },
         {
+          "ticker": "2762",
+          "name": "\u4e16\u754c\u5065\u8eab\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "target_exchange": "TWSE",
+          "existing_exchanges": [
+            "TSE"
+          ]
+        },
+        {
           "ticker": "2836",
           "name": "\u9ad8\u96c4\u9280\u884c\u80a1\u4efd\u6709\u9650\u516c\u53f8",
           "target_exchange": "TWSE",
@@ -4918,16 +4926,8 @@
           ]
         },
         {
-          "ticker": "3034",
-          "name": "\u806f\u8a60\u79d1\u6280\u80a1\u4efd\u6709\u9650\u516c\u53f8",
-          "target_exchange": "TWSE",
-          "existing_exchanges": [
-            "TSE"
-          ]
-        },
-        {
-          "ticker": "3042",
-          "name": "\u53f0\u7063\u6676\u6280\u80a1\u4efd\u6709\u9650\u516c\u53f8",
+          "ticker": "2923",
+          "name": "\u9f0e\u56fa\u63a7\u80a1\u6709\u9650\u516c\u53f8",
           "target_exchange": "TWSE",
           "existing_exchanges": [
             "TSE"
