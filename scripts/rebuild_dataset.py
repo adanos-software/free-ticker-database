@@ -2896,7 +2896,7 @@ def write_core_listings_parquet(rows: list[dict[str, str]]):
 # Exchange-to-ISIN-prefix mapping for detecting "home" exchange.
 EXCHANGE_ISIN_PREFIX: dict[str, str] = {
     "AMS": "NL", "ASX": "AU", "ATHEX": "GR", "B3": "BR", "BCBA": "AR",
-    "BME": "ES", "BMV": "MX", "BSE_BW": "BW", "BSE_HU": "HU", "BVB": "RO",
+    "BME": "ES", "BMV": "MX", "Borsa Italiana": "IT", "BSE_BW": "BW", "BSE_HU": "HU", "BVB": "RO",
     "BVC": "CO", "BVL": "PT", "Bursa": "MY", "CPH": "DK", "CSE_LK": "LK", "CSE_MA": "MA",
     "DSE_TZ": "TZ", "EGX": "EG", "Euronext": "FR", "GSE": "GH", "HEL": "FI",
     "HNX": "VN", "HOSE": "VN", "ICE_IS": "IS", "IDX": "ID", "ISE": "IE", "JSE": "ZA",

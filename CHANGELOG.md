@@ -2,6 +2,27 @@
 
 ## [Unreleased]
 
+## [3.30.19] - 2026-06-16
+
+### Summary
+
+Coverage expansion — **adds Italy as a new exchange** (`Borsa Italiana` / Euronext Milan), then populates it. 277 verified currently-trading Italian common stocks (99 new primaries + 178 collision-safe).
+
+### Added
+
+- New exchange **`Borsa Italiana`** (Euronext Milan), country Italy/IT — registered in `EXCHANGE_ISIN_PREFIX` (IT).
+- **277 verified-active Italian common stocks** via a 46-agent web pass (278 trade / 77 delisted / 7 non-stock from 362 candidates): **99 with globally-free tickers as new `Borsa Italiana` primaries** (Italian Sea Group/TISG, Sanlorenzo/SNL, Lottomatica/LTMC, SAES Getters/SG, NewPrinces/NWL, Equita/EQUI, Pharmanutra/PHN, Wiit/WIIT, S.S. Lazio/SSL, …) and **178 as collision-safe `coverage_expansion` rows**. Each with the correct Borsa Italiana ticker + GICS sector. Rejected delisted: Atlantia (→Mundys), Saras (→Vitol), UnipolSai, Autogrill, Tod's.
+
+### Changed
+
+- Primary tickers 63,159 → 63,258; core listings 57,073 → 57,350; ISIN coverage → 61,695; stock-sector coverage held at 99.8%. **Zero displacement** of existing tickers.
+- Key-patched `identifiers_extended`/`listing_index`/`identifier_summary`; regenerated derived + entry-quality. Bumps VERSION to 3.30.19.
+
+### Verification
+
+- Borsa Italiana verification (46-agent web pass): 278 trades / 77 not_trading / 7 non-stock from 362.
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,451 passed.
+
 ## [3.30.18] - 2026-06-16
 
 ### Summary
