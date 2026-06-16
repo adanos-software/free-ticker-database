@@ -2,6 +2,26 @@
 
 ## [Unreleased]
 
+## [3.30.17] - 2026-06-16
+
+### Summary
+
+Adds a **collision-safe coverage-expansion mechanism** and uses it for the 40 deferred German XETRA stocks. Real venue listings whose ticker symbol is already the global primary for a *different* security can now be added to `listings.csv` / `core_listings.csv` (collision-safe, keyed by `listing_key`) **without displacing** the existing `tickers.csv` primary.
+
+### Added
+
+- `scripts/rebuild_dataset.py`: new optional input `data/coverage_expansion_listings.csv`. Its rows flow through the full pipeline into `listings.csv` + `core_listings.csv`, but are demoted in the `tickers.csv` global ticker-symbol collision step (`primary_ticker_collision_sort_key`) so they can never win a symbol already owned by another security.
+- **40 German XETRA common stocks** — the v3.30.14 deferred symbol-collision set: **Fuchs SE, Berentzen-Gruppe, Baader Bank, Springer Nature, Gelsenwasser, Grammer, SYZYGY, ALBA, Daldrup & Söhne, …** — each verified actively trading on XETRA, with GICS sectors. They appear in `core_listings.csv` / `listings.csv` but not `tickers.csv` (whose symbols FPE/BEZ/SPG/etc. belong to other securities globally).
+
+### Changed
+
+- Core listings 55,307 → 55,347; full listing rows 72,231 → 72,271. **Primary tickers unchanged (62,843) — zero displacement.**
+- Key-patched `identifiers_extended`/`listing_index`/`identifier_summary`; regenerated derived + entry-quality reports. Bumps VERSION to 3.30.17.
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,451 passed.
+
 ## [3.30.16] - 2026-06-16
 
 ### Summary
