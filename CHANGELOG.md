@@ -2,6 +2,30 @@
 
 ## [Unreleased]
 
+## [3.30.15] - 2026-06-16
+
+### Summary
+
+Coverage expansion — **India**. Adds **1,147 currently-listed NSE common stocks** that were missing, resolved deterministically against the official NSE equity master (authoritative symbol + active-listing confirmation), each with a GICS sector.
+
+### Added
+
+- **1,147 new `NSE_IN` common-stock rows** — e.g. Colgate Palmolive (India), Siemens India, Bosch, BASF India, Sanofi India, CESC, APL Apollo Tubes, Hindustan Aeronautics, Tata Elxsi, InterGlobe Aviation (IndiGo), Shriram Finance, Power Finance, Indian Oil. Each confirmed currently listed via the official NSE `EQUITY_L` master (symbol + ISIN + active series), with a GICS sector assigned by a multi-agent classification pass.
+- Discovery funnel: divvydiary sitemap ISINs absent from our DB → 1,436 India candidates → matched against the **current NSE equity master** → 1,269 active → **1,147 with globally-free ticker symbols** (122 symbol-collisions deferred; 167 not in the current master → delisted/SME, skipped).
+
+### Changed
+
+- Primary tickers 61,672 → 62,819; `NSE_IN` roughly doubled; ISIN coverage 60,108 → 61,255; stock-sector coverage held at 99.9%.
+- Manually key-patched `identifiers_extended.csv` / `listing_index.csv` / `identifier_summary.json` for the new listing keys; regenerated all derived + entry-quality reports.
+- Bumps VERSION to 3.30.15 and refreshes data `_meta`, reports, README, and CHANGELOG.
+
+### Verification
+
+- The official NSE `EQUITY_L` master is authoritative for the symbol + current-listing status (no per-row guessing); zero displacement of existing tickers (free symbols only).
+- `scripts/validate_database.py`: pass with 0/83 failed error gates.
+- `scripts/check_readme_snapshot.py`: pass.
+- `pytest tests/ -q`: 1,451 passed.
+
 ## [3.30.14] - 2026-06-16
 
 ### Summary

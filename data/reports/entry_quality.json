@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-06-16T16:09:52Z",
-    "rows": 71060,
+    "generated_at": "2026-06-16T18:01:42Z",
+    "rows": 72207,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,23 +14,23 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 64948,
-      "source_gap": 6040,
+      "pass": 65995,
+      "source_gap": 6140,
       "warn": 72
     },
     "evidence_level_counts": {
       "identifier_enriched": 4232,
-      "official_reference": 65719,
+      "official_reference": 66766,
       "scoped_source_gap": 328,
-      "valid_isin": 781
+      "valid_isin": 881
     },
     "severity_counts": {
       "high": 65,
       "medium": 7,
-      "source_gap": 6236
+      "source_gap": 6336
     },
     "issue_counts": {
-      "official_reference_gap": 5333,
+      "official_reference_gap": 5433,
       "expected_missing_primary_isin": 792,
       "missing_etf_category": 79,
       "country_isin_mismatch": 65,
@@ -88,6 +88,11 @@
         "source_gap": 137
       },
       {
+        "exchange": "NSE_IN",
+        "pass": 2253,
+        "source_gap": 128
+      },
+      {
         "exchange": "BME",
         "pass": 72,
         "source_gap": 97
@@ -138,11 +143,6 @@
         "exchange": "NEO",
         "source_gap": 51,
         "pass": 146
-      },
-      {
-        "exchange": "SSE",
-        "pass": 2748,
-        "source_gap": 41
       }
     ]
   },
@@ -4439,6 +4439,24 @@
       ]
     },
     {
+      "listing_key": "NSE_IN::AAKASH",
+      "ticker": "AAKASH",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "NSE_IN",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "B3::AALR12",
       "ticker": "AALR12",
       "exchange": "B3",
@@ -4560,6 +4578,24 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "NSE_IN::AAREYDRUGS",
+      "ticker": "AAREYDRUGS",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "NSE_IN",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
@@ -7401,6 +7437,24 @@
       ]
     },
     {
+      "listing_key": "NSE_IN::AHLWEST",
+      "ticker": "AHLWEST",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "NSE_IN",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "OTC::AHOTF",
       "ticker": "AHOTF",
       "exchange": "OTC",
@@ -7941,6 +7995,24 @@
       ]
     },
     {
+      "listing_key": "NSE_IN::AKSHOPTFBR",
+      "ticker": "AKSHOPTFBR",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "NSE_IN",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "TSX::AKT-A",
       "ticker": "AKT-A",
       "exchange": "TSX",
@@ -8239,6 +8311,24 @@
           "field": "stock_sector",
           "value": "",
           "message": "Core stock listing has no stock_sector."
+        }
+      ]
+    },
+    {
+      "listing_key": "NSE_IN::ALKALI",
+      "ticker": "ALKALI",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "NSE_IN",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     },
@@ -9350,6 +9440,24 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "JSE",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "NSE_IN::ANIKINDS",
+      "ticker": "ANIKINDS",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "NSE_IN",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
@@ -11241,6 +11349,24 @@
       ]
     },
     {
+      "listing_key": "NSE_IN::ASTRON",
+      "ticker": "ASTRON",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "NSE_IN",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "AMS::ASUI",
       "ticker": "ASUI",
       "exchange": "AMS",
@@ -12105,6 +12231,24 @@
       ]
     },
     {
+      "listing_key": "NSE_IN::AUTOIND",
+      "ticker": "AUTOIND",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "NSE_IN",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "BSE_IN::AUTOPINS",
       "ticker": "AUTOPINS",
       "exchange": "BSE_IN",
@@ -12233,6 +12377,24 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "NSE_IN::AVADHSUGAR",
+      "ticker": "AVADHSUGAR",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "NSE_IN",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
@@ -15290,6 +15452,42 @@
       ]
     },
     {
+      "listing_key": "NSE_IN::BHAGYANGR",
+      "ticker": "BHAGYANGR",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "NSE_IN",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "NSE_IN::BHANDARI",
+      "ticker": "BHANDARI",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "NSE_IN",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "NASDAQ::BHAT",
       "ticker": "BHAT",
       "exchange": "NASDAQ",
@@ -15735,6 +15933,24 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "NSE_IN::BIRLACABLE",
+      "ticker": "BIRLACABLE",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "NSE_IN",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
@@ -16949,6 +17165,24 @@
       ]
     },
     {
+      "listing_key": "NSE_IN::BODALCHEM",
+      "ticker": "BODALCHEM",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "NSE_IN",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "NASDAQ::BOED",
       "ticker": "BOED",
       "exchange": "NASDAQ",
@@ -16981,6 +17215,24 @@
           "field": "isin",
           "value": "",
           "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "NSE_IN::BOHRAIND",
+      "ticker": "BOHRAIND",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "NSE_IN",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     },
@@ -17899,6 +18151,24 @@
       ]
     },
     {
+      "listing_key": "NSE_IN::BROOKS",
+      "ticker": "BROOKS",
+      "exchange": "NSE_IN",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "NSE_IN",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "B3::BRQB3",
       "ticker": "BRQB3",
       "exchange": "B3",
@@ -18146,276 +18416,6 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "NASDAQ::BSIN",
-      "ticker": "BSIN",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "NASDAQ",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BSKZF",
-      "ticker": "BSKZF",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "NASDAQ::BSLKW",
-      "ticker": "BSLKW",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "NASDAQ",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BSND",
-      "ticker": "BSND",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BSPM",
-      "ticker": "BSPM",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BSRTF",
-      "ticker": "BSRTF",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BSSC",
-      "ticker": "BSSC",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BSSP",
-      "ticker": "BSSP",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "LSE::BT-A",
-      "ticker": "BT-A",
-      "exchange": "LSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "LSE",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BTAEF",
-      "ticker": "BTAEF",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BTAX",
-      "ticker": "BTAX",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "TSX::BTB",
-      "ticker": "BTB",
-      "exchange": "TSX",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "TSX::BTB-UN",
-      "ticker": "BTB-UN",
-      "exchange": "TSX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "TSX",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BTBIF",
-      "ticker": "BTBIF",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "B3::BTCE11",
-      "ticker": "BTCE11",
-      "exchange": "B3",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "B3",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
