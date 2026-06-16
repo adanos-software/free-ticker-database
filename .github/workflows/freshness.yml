@@ -1,0 +1,54 @@
+name: Weekly Drift & Freshness
+
+on:
+  schedule:
+    - cron: "23 7 * * 1"   # Mondays 07:23 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  drift-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build drift report
+        id: drift
+        run: python scripts/build_drift_report.py
+
+      - name: Validate drift report parser
+        run: python -m pytest tests/test_build_drift_report.py -q
+
+      - name: Open drift-review pull request
+        if: steps.drift.outputs.drift_detected == 'true'
+        uses: peter-evans/create-pull-request@v8.1.1
+        with:
+          branch: automation/drift-report
+          delete-branch: true
+          commit-message: Update weekly drift & freshness report
+          title: "Weekly drift & freshness report"
+          body: |
+            Automated weekly anti-drift check. Surfaces dataset staleness,
+            feed-detected renames not yet applied, and the current data-quality
+            indicator counts. Detection only — triage renames via the
+            symbol-change feed and apply corrections through the verified
+            override/verify pipeline.
+
+            Report: `data/reports/drift_report.md` / `.json`
