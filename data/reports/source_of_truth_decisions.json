@@ -1,9 +1,9 @@
 {
   "summary": {
-    "generated_at": "2026-06-16T18:01:39Z",
-    "rows": 937,
+    "generated_at": "2026-06-16T18:28:39Z",
+    "rows": 941,
     "outcome_totals": {
-      "accepted_source_gap": 464,
+      "accepted_source_gap": 468,
       "core_exclusion_candidate": 473
     },
     "class_totals": {
@@ -21,7 +21,7 @@
       "official_current_directory_absent_identifier_gap": 12,
       "official_identifier_not_exposed_source_gap": 245,
       "official_identifier_reference_unmatched_gap": 65,
-      "official_industry_taxonomy_unavailable_gap": 21,
+      "official_industry_taxonomy_unavailable_gap": 25,
       "official_product_reference_unmatched_category_gap": 20,
       "official_product_taxonomy_unavailable_gap": 58,
       "otc_sector_source_gap": 34,
@@ -31,7 +31,7 @@
       "missing_etf_category:accepted_source_gap": 87,
       "missing_isin_primary:accepted_source_gap": 322,
       "missing_isin_primary:core_exclusion_candidate": 470,
-      "missing_sector_stock:accepted_source_gap": 55,
+      "missing_sector_stock:accepted_source_gap": 59,
       "missing_sector_stock:core_exclusion_candidate": 3
     },
     "policy": {
@@ -7910,6 +7910,74 @@
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
       "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "TSE::4439",
+      "ticker": "4439",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "name": "Toumei Co Ltd",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "source_of_truth_outcome": "accepted_source_gap",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "leave_blank_until_source_available",
+      "review_needed": "true",
+      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
+      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "TSE::543A",
+      "ticker": "543A",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "name": "Archion Corp",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "source_of_truth_outcome": "accepted_source_gap",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "leave_blank_until_source_available",
+      "review_needed": "true",
+      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
+      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "TSE::546A",
+      "ticker": "546A",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "name": "Miraini Holdings Co Ltd",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "source_of_truth_outcome": "accepted_source_gap",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "leave_blank_until_source_available",
+      "review_needed": "true",
+      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
+      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "TSE::547A",
+      "ticker": "547A",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "name": "Muninova Holdings Inc",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "source_of_truth_outcome": "accepted_source_gap",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "leave_blank_until_source_available",
+      "review_needed": "true",
+      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
+      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
     },
     {
       "field": "missing_sector_stock",

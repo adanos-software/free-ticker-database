@@ -2,6 +2,27 @@
 
 ## [Unreleased]
 
+## [3.30.16] - 2026-06-16
+
+### Summary
+
+Coverage expansion — **Japan**. Adds 24 currently-listed TSE common stocks with globally-free ticker codes. Most divvydiary Japanese candidates (835) have numeric/alphanumeric TSE codes that already exist as a global primary ticker on another exchange, so they are deferred to the collision-safe handling decision (same bucket as the DE-40).
+
+### Added
+
+- **24 new `TSE` common-stock rows** (e.g. Kokusai Electric, Alps Alpine, Pola Orbis Holdings, Iriso Electronics, Ferrotec, JCR Pharmaceuticals, T. Hasegawa, EneChange) — confirmed currently listed via the official JPX listed-issues master (`data_j.xls`, domestic-stock markets), with GICS sectors (20/24; 4 recent-IPO micro-caps left blank pending classification).
+- Discovery: divvydiary JP ISINs → OpenFIGI ISIN→TSE code → matched to the **current JPX master** (859 active) → 24 with globally-free codes (835 code-collisions deferred).
+
+### Changed
+
+- Primary tickers 62,819 → 62,843; `TSE` 3,191 → 3,215. Zero displacement (free codes only).
+- Key-patched `identifiers_extended`/`listing_index`/`identifier_summary`; regenerated derived + entry-quality reports. Bumps VERSION to 3.30.16.
+
+### Verification
+
+- JPX listed-issues master = authoritative for current-listing + code.
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,451 passed.
+
 ## [3.30.15] - 2026-06-16
 
 ### Summary

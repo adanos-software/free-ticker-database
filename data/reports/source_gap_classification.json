@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-06-16T18:01:39Z",
-    "rows": 937,
+    "generated_at": "2026-06-16T18:28:39Z",
+    "rows": 941,
     "field_totals": {
       "missing_etf_category": 87,
       "missing_isin_primary": 792,
-      "missing_sector_stock": 58
+      "missing_sector_stock": 62
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 45,
@@ -22,7 +22,7 @@
       "official_current_directory_absent_identifier_gap": 12,
       "official_identifier_not_exposed_source_gap": 245,
       "official_identifier_reference_unmatched_gap": 65,
-      "official_industry_taxonomy_unavailable_gap": 21,
+      "official_industry_taxonomy_unavailable_gap": 25,
       "official_product_reference_unmatched_category_gap": 20,
       "official_product_taxonomy_unavailable_gap": 58,
       "otc_sector_source_gap": 34,
@@ -45,7 +45,7 @@
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 65,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 1,
       "missing_sector_stock:fundlike_stock_sector_gap": 1,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 21,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 25,
       "missing_sector_stock:otc_sector_source_gap": 34,
       "missing_sector_stock:shell_or_cpc_sector_gap": 1
     },
@@ -144,6 +144,10 @@
           "rows": 5
         },
         {
+          "exchange": "TSE",
+          "rows": 4
+        },
+        {
           "exchange": "ASX",
           "rows": 3
         },
@@ -169,10 +173,6 @@
         },
         {
           "exchange": "CSE_MA",
-          "rows": 1
-        },
-        {
-          "exchange": "OSL",
           "rows": 1
         }
       ]
@@ -16222,6 +16222,74 @@
       "source_gap_context": "listing_key=OTC::XNJJY;exchange=OTC;ticker=XNJJY;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "TSE::4439",
+      "ticker": "4439",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "name": "Toumei Co Ltd",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=TSE::4439;exchange=TSE;ticker=4439;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "TSE::543A",
+      "ticker": "543A",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "name": "Archion Corp",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=TSE::543A;exchange=TSE;ticker=543A;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "TSE::546A",
+      "ticker": "546A",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "name": "Miraini Holdings Co Ltd",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=TSE::546A;exchange=TSE;ticker=546A;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "TSE::547A",
+      "ticker": "547A",
+      "exchange": "TSE",
+      "asset_type": "Stock",
+      "name": "Muninova Holdings Inc",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=TSE::547A;exchange=TSE;ticker=547A;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
     {
       "field": "missing_sector_stock",
