@@ -2753,7 +2753,9 @@ def test_instrument_scope_rows_do_not_self_link_symbol_collisions():
 
 
 def test_core_export_corrects_safe_official_exchange_collisions():
-    nby = ticker_row("NBY")
+    # NBY (NovaBay) was renamed to SDEV (Stablecoin Development Corporation) on NYSE,
+    # a verified 2026-06 ticker rename; the safe-collision invariant now tracks SDEV.
+    nby = ticker_row("SDEV")
     csci = ticker_row("CSCI")
     qipt = ticker_row("QIPT")
     phxep = ticker_row("PHXE-P")

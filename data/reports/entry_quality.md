@@ -1,21 +1,21 @@
 # Entry Quality Report
 
-Generated at: `2026-06-16T10:44:26Z`
+Generated at: `2026-06-16T11:25:10Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 64,971 |
-| source_gap | 5,997 |
+| pass | 64,982 |
+| source_gap | 5,983 |
 | warn | 70 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 5,322 |
-| expected_missing_primary_isin | 764 |
+| official_reference_gap | 5,309 |
+| expected_missing_primary_isin | 763 |
 | missing_etf_category | 74 |
 | country_isin_mismatch | 65 |
 | missing_stock_sector | 23 |
@@ -29,7 +29,7 @@ Generated at: `2026-06-16T10:44:26Z`
 | OTC | 7,865 | 0 | 3,183 | 5 | 0 |
 | B3 | 1,262 | 0 | 322 | 0 | 0 |
 | TSX | 1,704 | 0 | 200 | 0 | 0 |
-| NASDAQ | 4,442 | 0 | 192 | 1 | 0 |
+| NASDAQ | 4,451 | 0 | 183 | 1 | 0 |
 | BSE_IN | 2,459 | 0 | 183 | 0 | 0 |
 | BMV | 9 | 0 | 170 | 0 | 0 |
 | LSE | 6,257 | 0 | 98 | 60 | 0 |
@@ -39,7 +39,7 @@ Generated at: `2026-06-16T10:44:26Z`
 | TSXV | 970 | 0 | 94 | 2 | 0 |
 | JSE | 124 | 0 | 88 | 0 | 0 |
 | BATS | 1,156 | 0 | 85 | 0 | 0 |
-| NYSE | 2,000 | 0 | 83 | 0 | 0 |
+| NYSE | 2,002 | 0 | 78 | 0 | 0 |
 | AMS | 237 | 0 | 77 | 0 | 0 |
 | TASE | 596 | 0 | 77 | 0 | 0 |
 | XETRA | 3,712 | 0 | 67 | 0 | 0 |
