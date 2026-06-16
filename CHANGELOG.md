@@ -2,6 +2,34 @@
 
 ## [Unreleased]
 
+## [3.30.14] - 2026-06-16
+
+### Summary
+
+Coverage expansion (first slice). Using the divvydiary sitemap universe as a discovery source, adds 25 verified currently-trading German common stocks on XETRA that were missing from the database.
+
+### Added
+
+- **25 new XETRA common-stock rows** (e.g. STEMMER IMAGING, Funkwerk, Lechwerke, EUROKAI, DEAG, InVision, BAVARIA Industries, creditshelf, Halloren, ifa systems) — all confirmed actively trading on XETRA as of June 2026, each with a GICS sector. Verified via a 36-agent pass (web + OpenFIGI) that rejected take-privates/delisted/insolvent and non-XETRA (Freiverkehr-only) listings.
+- Discovery funnel: 50,945 divvydiary ISINs absent from our DB → after stripping crypto/funds/ADRs + OpenFIGI `securityType` filtering → 287 German common-stock candidates on a German venue → **68 confirmed actively trading on XETRA** (154 trade only on Frankfurt/Freiverkehr, 64 delisted/acquired, 1 non-stock) → 28 with globally-free ticker symbols → 25 promoted (3 filtered by the pipeline's entry-quality cleaning).
+
+### Changed
+
+- Primary tickers 61,647 → 61,672; XETRA 2,256 → 2,281; ISIN coverage 60,083 → 60,108.
+- Manually key-patched `identifiers_extended.csv` / `listing_index.csv` / `identifier_summary.json` for the new listing keys; regenerated the entry-quality report and all derived reports.
+- Allowlisted 2 benign `official_name_mismatch` warns surfaced from the v3.30.13 rebrands (`NYSE::OTH` NextBoat, `OTC::NMKCP` Niagara Mohawk Power) — verified current names; official SEC/OTC reference lags.
+- Bumps VERSION to 3.30.14 and refreshes data `_meta`, reports, README, and CHANGELOG.
+
+### Not added (deferred)
+
+- 40 verified-active XETRA stocks whose Xetra ticker symbol is already the global primary for a different security (e.g. Fuchs `FPE` = a US ETF, Berentzen `BEZ` = ASX, Springer Nature `SPG` = Simon Property Group) — the one-symbol-per-global-ticker design cannot add them as primary without displacing existing securities; deferred pending a collision-safe handling decision.
+
+### Verification
+
+- `scripts/check_readme_snapshot.py`: pass.
+- `scripts/validate_database.py`: pass with 0/83 failed error gates.
+- `pytest tests/ -q`: 1,451 passed.
+
 ## [3.30.13] - 2026-06-16
 
 ### Summary

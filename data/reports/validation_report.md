@@ -1,6 +1,6 @@
 # Database Validation Report
 
-Generated at: `2026-06-16T15:29:18Z`
+Generated at: `2026-06-16T16:09:54Z`
 
 Status: `PASS`
 
@@ -8,10 +8,10 @@ Status: `PASS`
 
 | Metric | Value |
 |---|---:|
-| ticker_rows | 61,647 |
-| listing_rows | 71,035 |
-| adanos_reference_rows | 61,647 |
-| entry_quality_rows | 71,035 |
+| ticker_rows | 61,672 |
+| listing_rows | 71,060 |
+| adanos_reference_rows | 61,672 |
+| entry_quality_rows | 71,060 |
 | error_gates | 83 |
 | failed_error_gates | 0 |
 | info_gates | 5 |
@@ -89,11 +89,11 @@ Status: `PASS`
 | adanos_alias_parse_errors | error | PASS | 0 | 0 |
 | adanos_alias_common_word_count | error | PASS | 0 | 0 |
 | review_alias_removals_open_count | error | PASS | 0 | 0 |
-| expected_missing_primary_isin | info | PASS | 763 |  |
-| missing_stock_sector | info | PASS | 23 |  |
-| missing_etf_category | info | PASS | 74 |  |
-| source_gap_rows | info | PASS | 5983 |  |
-| allowed_warn_rows | info | PASS | 119 |  |
+| expected_missing_primary_isin | info | PASS | 792 |  |
+| missing_stock_sector | info | PASS | 24 |  |
+| missing_etf_category | info | PASS | 79 |  |
+| source_gap_rows | info | PASS | 6040 |  |
+| allowed_warn_rows | info | PASS | 121 |  |
 | duplicate_core_listing_key_count | error | PASS | 0 | 0 |
 | core_listing_key_format_mismatch_count | error | PASS | 0 | 0 |
 | core_listing_rows_missing_listing | error | PASS | 0 | 0 |

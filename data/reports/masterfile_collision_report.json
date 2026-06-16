@@ -1,9 +1,9 @@
 {
   "global": {
     "official_symbols": 78844,
-    "matched": 50906,
-    "collisions": 11173,
-    "missing": 16765
+    "matched": 50907,
+    "collisions": 11176,
+    "missing": 16761
   },
   "exchanges": [
     {
@@ -1135,8 +1135,8 @@
       "exchange": "CSE_MA",
       "official_symbols": 50,
       "matched": 1,
-      "collisions": 37,
-      "missing": 12,
+      "collisions": 38,
+      "missing": 11,
       "collision_examples": [
         {
           "ticker": "ADH",
@@ -1211,11 +1211,11 @@
           ]
         },
         {
-          "ticker": "BCI",
-          "name": "BMCI",
+          "ticker": "ATW",
+          "name": "ATTIJARIWAFA BANK",
           "target_exchange": "CSE_MA",
           "existing_exchanges": [
-            "NYSE ARCA"
+            "XETRA"
           ]
         }
       ],
@@ -1223,11 +1223,6 @@
         {
           "ticker": "ATL",
           "name": "ATLANTASANAD",
-          "exchange": "CSE_MA"
-        },
-        {
-          "ticker": "ATW",
-          "name": "ATTIJARIWAFA BANK",
           "exchange": "CSE_MA"
         },
         {
@@ -1268,6 +1263,11 @@
         {
           "ticker": "LBV",
           "name": "LABEL VIE",
+          "exchange": "CSE_MA"
+        },
+        {
+          "ticker": "LHM",
+          "name": "LafargeHolcim Maroc",
           "exchange": "CSE_MA"
         }
       ]
@@ -3020,8 +3020,8 @@
       "exchange": "NYSE",
       "official_symbols": 3872,
       "matched": 2044,
-      "collisions": 532,
-      "missing": 1296,
+      "collisions": 533,
+      "missing": 1295,
       "collision_examples": [
         {
           "ticker": "ABX",
@@ -3302,8 +3302,8 @@
       "exchange": "NYSE MKT",
       "official_symbols": 313,
       "matched": 229,
-      "collisions": 24,
-      "missing": 60,
+      "collisions": 25,
+      "missing": 59,
       "collision_examples": [
         {
           "ticker": "AEF",
@@ -3362,6 +3362,14 @@
           ]
         },
         {
+          "ticker": "EAD",
+          "name": "Allspring Income Opportunities Fund Common Shares",
+          "target_exchange": "NYSE MKT",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
+        {
           "ticker": "EIM",
           "name": "Eaton Vance Municipal Bond Fund Common Shares of Beneficial Interest, $.01 par value",
           "target_exchange": "NYSE MKT",
@@ -3375,14 +3383,6 @@
           "target_exchange": "NYSE MKT",
           "existing_exchanges": [
             "LSE"
-          ]
-        },
-        {
-          "ticker": "GLO",
-          "name": "Clough Global Opportunities Fund Common Stock",
-          "target_exchange": "NYSE MKT",
-          "existing_exchanges": [
-            "Euronext"
           ]
         }
       ],
@@ -3433,8 +3433,8 @@
           "exchange": "NYSE MKT"
         },
         {
-          "ticker": "EAD",
-          "name": "Allspring Income Opportunities Fund Common Shares",
+          "ticker": "ECF$A",
+          "name": "Ellsworth Growth and Income Fund Ltd. 5.25% Series A Cumulative Preferred Shares (Liquidation Preference $25.00 per share)",
           "exchange": "NYSE MKT"
         }
       ]
@@ -5000,8 +5000,8 @@
       "exchange": "UPCOM",
       "official_symbols": 830,
       "matched": 2,
-      "collisions": 469,
-      "missing": 359,
+      "collisions": 470,
+      "missing": 358,
       "collision_examples": [
         {
           "ticker": "AAS",
@@ -5140,8 +5140,8 @@
     {
       "exchange": "XETRA",
       "official_symbols": 4544,
-      "matched": 3648,
-      "collisions": 800,
+      "matched": 3649,
+      "collisions": 799,
       "missing": 96,
       "collision_examples": [
         {
