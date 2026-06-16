@@ -2,6 +2,28 @@
 
 ## [Unreleased]
 
+## [3.30.9] - 2026-06-16
+
+### Summary
+
+Sector-correctness release. Following the measured correctness audit (which put row-level correctness at 91.16% with sector/category as the dominant error class), this ships **3,345 verified `stock_sector` corrections** across three merged waves. Every correction was candidate-proposed by a market-data source (stockanalysis and/or TradingView) and then **independently confirmed by an agent against the issuer's actual business** — only confirmed fixes were applied.
+
+### Changed
+
+- 3,345 GICS stock-sector corrections (PR #62: 726 two-source-agreed across 7 markets; PR #63: 618; PR #64: 2,001 across ~25 TradingView markets + OTC). Catch-all `Industrials`/`Financials` mislabels corrected to specific sectors (gold/lithium miners → Materials, software/IoT → Information Technology, homebuilders/auto/appliances → Consumer Discretionary, pharma/CRO/medtech → Health Care, oil/gas/coal/uranium → Energy, REITs/property → Real Estate, sugar/agri/personal-care → Consumer Staples).
+- Pure sector-value changes: no row-count change (primary tickers 61,556; stocks 45,898).
+
+### Safety
+
+- The verification step REJECTED a large share of single-source candidates where the stored value was actually right (~37–45% on the expansion set, e.g. fintech mislabeled IT that is really Financials), preventing thousands of regressions. Corrections were verified per row, never bulk-applied from a single feed.
+- A small remainder (~36 batches / rows 4561-4915 of the expansion set, ~150 candidates) is durably checkpointed for a follow-up.
+
+### Verification
+
+- `scripts/check_readme_snapshot.py`: pass.
+- `scripts/validate_database.py`: pass with 0/83 failed error gates, 61,556 ticker rows, and 71,039 listing rows.
+- `pytest tests/ -q`: 1,445 passed.
+
 ## [3.30.8] - 2026-06-15
 
 ### Summary
