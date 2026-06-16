@@ -2,6 +2,23 @@
 
 ## [Unreleased]
 
+## [3.30.10] - 2026-06-16
+
+### Summary
+
+Completes the sector-correctness campaign. Verified the final 36 expansion batches (rows 4561-4915), so all 492/492 single-source expansion candidates (4,915) have now been independently agent-checked. Ships the last **258 verified `stock_sector` corrections**, bringing the campaign total to **3,603 verified sector corrections** (PR #62/#63/#64/#65) against the dominant error class from the correctness audit.
+
+### Changed
+
+- 258 GICS stock-sector corrections (189 source-confirmed + 68 where the verifier found a third, truer sector). The verifier rejected ~26% of this final batch where the stored value was actually right.
+- Pure sector-value changes: no row-count change (primary tickers 61,556; stocks 45,898).
+
+### Verification
+
+- `scripts/check_readme_snapshot.py`: pass.
+- `scripts/validate_database.py`: pass with 0/83 failed error gates, 61,556 ticker rows, and 71,039 listing rows.
+- `pytest tests/ -q`: 1,445 passed.
+
 ## [3.30.9] - 2026-06-16
 
 ### Summary
