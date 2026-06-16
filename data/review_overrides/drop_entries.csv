@@ -706,3 +706,6 @@ LITM,NASDAQ,0.99,"Snow Lake Resources renamed to Frontier Nuclear and Minerals (
 ATCHW,OTC,0.95,Correctness audit 2026-06-15: row is a WARRANT (SPAC '...W' ticker) mislabeled asset_type=Stock; out of scope for a stock/ETF dataset (no Warrant asset_type). Verified via OpenFIGI/issuer.
 CELUW,NASDAQ,0.95,Correctness audit 2026-06-15: row is a WARRANT (SPAC '...W' ticker) mislabeled asset_type=Stock; out of scope for a stock/ETF dataset (no Warrant asset_type). Verified via OpenFIGI/issuer.
 WSE,ASX,0.95,"Correctness re-audit 2026-06-16: 'SERIES 2021-1 WST TRUST' is an RMBS securitisation trust, not an ETF or stock; out of scope for a stock/ETF dataset. Verified via issuer/ASX."
+RYI,NYSE,0.95,"Rename RYI->RYZ (Ryerson Holding Corporation): new ticker already present with same ISIN US7837541041; this stale old-ticker row is a duplicate. Source: stockanalysis symbol-changes feed, verified."
+PX,NYSE,0.95,"Rename PX->RPC (Ridgepost Capital, Inc.): new ticker already present with same ISIN US69376K1060; this stale old-ticker row is a duplicate. Source: stockanalysis symbol-changes feed, verified."
+AXL,NYSE,0.95,"Rename AXL->DCH (Dauch Corporation): new ticker already present with same ISIN US0240611030; this stale old-ticker row is a duplicate. Source: stockanalysis symbol-changes feed, verified."

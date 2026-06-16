@@ -1,9 +1,9 @@
 {
   "global": {
     "official_symbols": 78844,
-    "matched": 50897,
-    "collisions": 11179,
-    "missing": 16768
+    "matched": 50906,
+    "collisions": 11173,
+    "missing": 16765
   },
   "exchanges": [
     {
@@ -2200,8 +2200,8 @@
       "exchange": "LSE",
       "official_symbols": 11021,
       "matched": 6311,
-      "collisions": 1196,
-      "missing": 3514,
+      "collisions": 1195,
+      "missing": 3515,
       "collision_examples": [
         {
           "ticker": "0GZJ",
@@ -2446,9 +2446,9 @@
     {
       "exchange": "NASDAQ",
       "official_symbols": 5524,
-      "matched": 4488,
+      "matched": 4496,
       "collisions": 79,
-      "missing": 957,
+      "missing": 949,
       "collision_examples": [
         {
           "ticker": "ACAA",
@@ -3019,9 +3019,9 @@
     {
       "exchange": "NYSE",
       "official_symbols": 3872,
-      "matched": 2042,
+      "matched": 2044,
       "collisions": 532,
-      "missing": 1298,
+      "missing": 1296,
       "collision_examples": [
         {
           "ticker": "ABX",
@@ -3302,8 +3302,8 @@
       "exchange": "NYSE MKT",
       "official_symbols": 313,
       "matched": 229,
-      "collisions": 23,
-      "missing": 61,
+      "collisions": 24,
+      "missing": 60,
       "collision_examples": [
         {
           "ticker": "AEF",
@@ -3544,8 +3544,8 @@
       "exchange": "OSL",
       "official_symbols": 297,
       "matched": 230,
-      "collisions": 66,
-      "missing": 1,
+      "collisions": 65,
+      "missing": 2,
       "collision_examples": [
         {
           "ticker": "ABG",
@@ -3630,6 +3630,11 @@
       ],
       "missing_examples": [
         {
+          "ticker": "CAPT",
+          "name": "CAPITAL TANKERS",
+          "exchange": "OSL"
+        },
+        {
           "ticker": "NEXTT",
           "name": "NEXT BIOMETRICS GR",
           "exchange": "OSL"
@@ -3640,8 +3645,8 @@
       "exchange": "OTC",
       "official_symbols": 11925,
       "matched": 7640,
-      "collisions": 36,
-      "missing": 4249,
+      "collisions": 39,
+      "missing": 4246,
       "collision_examples": [
         {
           "ticker": "AEAE",
@@ -3781,8 +3786,8 @@
       "exchange": "PSE",
       "official_symbols": 381,
       "matched": 90,
-      "collisions": 185,
-      "missing": 106,
+      "collisions": 184,
+      "missing": 107,
       "collision_examples": [
         {
           "ticker": "AAA",
@@ -4104,8 +4109,8 @@
       "exchange": "SET",
       "official_symbols": 944,
       "matched": 545,
-      "collisions": 349,
-      "missing": 50,
+      "collisions": 347,
+      "missing": 52,
       "collision_examples": [
         {
           "ticker": "A",
@@ -4631,9 +4636,9 @@
     {
       "exchange": "TSX",
       "official_symbols": 788,
-      "matched": 327,
-      "collisions": 460,
-      "missing": 1,
+      "matched": 326,
+      "collisions": 459,
+      "missing": 3,
       "collision_examples": [
         {
           "ticker": "AAB",
@@ -4718,8 +4723,18 @@
       ],
       "missing_examples": [
         {
+          "ticker": "BITF",
+          "name": "Bitfarms Ltd.",
+          "exchange": "TSX"
+        },
+        {
           "ticker": "BPYP",
           "name": "Brookfield Property Preferred L.P.",
+          "exchange": "TSX"
+        },
+        {
+          "ticker": "IMG",
+          "name": "IAMGold Corporation",
           "exchange": "TSX"
         }
       ]
@@ -4728,8 +4743,8 @@
       "exchange": "TSXV",
       "official_symbols": 1600,
       "matched": 1043,
-      "collisions": 556,
-      "missing": 1,
+      "collisions": 552,
+      "missing": 5,
       "collision_examples": [
         {
           "ticker": "AAG",
@@ -4813,6 +4828,26 @@
         }
       ],
       "missing_examples": [
+        {
+          "ticker": "AXL",
+          "name": "Arrow Exploration Corp.",
+          "exchange": "TSXV"
+        },
+        {
+          "ticker": "CAPT",
+          "name": "Capitan Silver Corp.",
+          "exchange": "TSXV"
+        },
+        {
+          "ticker": "NBY",
+          "name": "Niobay Metals Inc.",
+          "exchange": "TSXV"
+        },
+        {
+          "ticker": "PX",
+          "name": "Pelangio Exploration Inc.",
+          "exchange": "TSXV"
+        },
         {
           "ticker": "SCD",
           "name": "Scandium Canada Ltd.",
@@ -4965,8 +5000,8 @@
       "exchange": "UPCOM",
       "official_symbols": 830,
       "matched": 2,
-      "collisions": 468,
-      "missing": 360,
+      "collisions": 469,
+      "missing": 359,
       "collision_examples": [
         {
           "ticker": "AAS",
@@ -5106,8 +5141,8 @@
       "exchange": "XETRA",
       "official_symbols": 4544,
       "matched": 3648,
-      "collisions": 801,
-      "missing": 95,
+      "collisions": 800,
+      "missing": 96,
       "collision_examples": [
         {
           "ticker": "0GZK",
@@ -5202,6 +5237,11 @@
           "exchange": "XETRA"
         },
         {
+          "ticker": "AGAE",
+          "name": "BNPEIIGLHYOP HEOA",
+          "exchange": "XETRA"
+        },
+        {
           "ticker": "ASPF",
           "name": "AM.SP 500 FNCLS DLA",
           "exchange": "XETRA"
@@ -5234,11 +5274,6 @@
         {
           "ticker": "CAKD",
           "name": "WEI-CAIE DLD",
-          "exchange": "XETRA"
-        },
-        {
-          "ticker": "CBK0",
-          "name": "COMMERZBANK AG Z. VERK.",
           "exchange": "XETRA"
         }
       ]

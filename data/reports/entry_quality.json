@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-06-16T10:44:26Z",
-    "rows": 71038,
+    "generated_at": "2026-06-16T11:25:10Z",
+    "rows": 71035,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,24 +14,24 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 64971,
-      "source_gap": 5997,
+      "pass": 64982,
+      "source_gap": 5983,
       "warn": 70
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4244,
-      "official_reference": 65708,
+      "identifier_enriched": 4232,
+      "official_reference": 65718,
       "scoped_source_gap": 328,
-      "valid_isin": 758
+      "valid_isin": 757
     },
     "severity_counts": {
       "high": 65,
       "medium": 5,
-      "source_gap": 6191
+      "source_gap": 6177
     },
     "issue_counts": {
-      "official_reference_gap": 5322,
-      "expected_missing_primary_isin": 764,
+      "official_reference_gap": 5309,
+      "expected_missing_primary_isin": 763,
       "missing_etf_category": 74,
       "country_isin_mismatch": 65,
       "missing_stock_sector": 23,
@@ -57,8 +57,8 @@
       },
       {
         "exchange": "NASDAQ",
-        "pass": 4442,
-        "source_gap": 192,
+        "pass": 4451,
+        "source_gap": 183,
         "warn": 1
       },
       {
@@ -110,8 +110,8 @@
       },
       {
         "exchange": "NYSE",
-        "pass": 2000,
-        "source_gap": 83
+        "pass": 2002,
+        "source_gap": 78
       },
       {
         "exchange": "AMS",
@@ -12680,24 +12680,6 @@
       ]
     },
     {
-      "listing_key": "NYSE::AXL",
-      "ticker": "AXL",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "NYSE",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
       "listing_key": "OTC::AXLX",
       "ticker": "AXLX",
       "exchange": "OTC",
@@ -17940,6 +17922,24 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "NASDAQ::BSIN",
+      "ticker": "BSIN",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "NASDAQ",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]

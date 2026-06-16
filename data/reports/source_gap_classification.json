@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-06-16T10:44:29Z",
-    "rows": 899,
+    "generated_at": "2026-06-16T11:25:14Z",
+    "rows": 898,
     "field_totals": {
       "missing_etf_category": 82,
-      "missing_isin_primary": 764,
+      "missing_isin_primary": 763,
       "missing_sector_stock": 53
     },
     "class_totals": {
@@ -19,7 +19,7 @@
       "fundlike_stock_sector_gap": 1,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 12,
-      "official_identifier_not_exposed_source_gap": 228,
+      "official_identifier_not_exposed_source_gap": 227,
       "official_identifier_reference_unmatched_gap": 65,
       "official_industry_taxonomy_unavailable_gap": 20,
       "official_product_reference_unmatched_category_gap": 21,
@@ -39,7 +39,7 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 282,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 12,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 228,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 227,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 65,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 1,
       "missing_sector_stock:fundlike_stock_sector_gap": 1,
@@ -109,7 +109,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 51
+          "rows": 50
         },
         {
           "exchange": "NEO",
@@ -298,14 +298,6 @@
       },
       {
         "field": "missing_isin_primary",
-        "gap_class": "official_identifier_not_exposed_source_gap",
-        "exchange": "NASDAQ",
-        "rows": 18,
-        "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-        "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
-      },
-      {
-        "field": "missing_isin_primary",
         "gap_class": "adr_cdr_or_depositary_identifier_gap",
         "exchange": "TSX",
         "rows": 18,
@@ -317,6 +309,14 @@
         "gap_class": "official_identifier_not_exposed_source_gap",
         "exchange": "TSX",
         "rows": 18,
+        "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+        "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
+      },
+      {
+        "field": "missing_isin_primary",
+        "gap_class": "official_identifier_not_exposed_source_gap",
+        "exchange": "NASDAQ",
+        "rows": 17,
         "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
         "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
       },
@@ -6103,23 +6103,6 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NASDAQ::CNTN;exchange=NASDAQ;ticker=CNTN;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NASDAQ::DFNSW",
-      "ticker": "DFNSW",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "T3 Defense Inc.",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NASDAQ::DFNSW;exchange=NASDAQ;ticker=DFNSW;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
