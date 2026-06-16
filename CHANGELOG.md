@@ -2,6 +2,28 @@
 
 ## [Unreleased]
 
+## [3.30.12] - 2026-06-16
+
+### Summary
+
+Anti-drift release. Adds a weekly freshness/drift workflow and acts on the drift it surfaces: applies verified ticker renames from the symbol-change feed.
+
+### Added
+
+- `scripts/build_drift_report.py` + `.github/workflows/freshness.yml`: a weekly check that reports dataset staleness, feed-detected renames not yet applied, and release-gate quality indicators — opening a review PR only when drift is detected. Complements the existing daily symbol-changes feed.
+
+### Changed
+
+- Applied 32 verified ticker renames (re-keyed across listings/listing_index/identifiers_extended, names updated): e.g. `USEG→BSIN`, `VSCO→VSXY`, `KFS→KWY`, `EDAP→FOCL`, `NBY→SDEV`, `IINN→QTEX`, `TSE→TSEOF`. Each was confirmed by multi-agent verification as a same-company ticker change; 11 feed entries were rejected as de-SPAC combinations / bankruptcy delistings (not renames), and 8 messy de-SPAC results were excluded for manual handling.
+- Dropped 3 stale-duplicate rows where the new ticker already existed with the same ISIN (`RYI→RYZ`, `PX→RPC`, `AXL→DCH`). Allowlisted 3 foreign-incorporated US-listed renames (QTEX/NEXR/TSEOF).
+- Primary tickers 61,555 → 61,554; full listing rows 71,038 → 71,035.
+
+### Verification
+
+- `scripts/check_readme_snapshot.py`: pass.
+- `scripts/validate_database.py`: pass with 0/83 failed error gates.
+- `pytest tests/ -q`: 1,450 passed.
+
 ## [3.30.11] - 2026-06-16
 
 ### Summary
