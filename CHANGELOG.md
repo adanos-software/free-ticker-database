@@ -2,6 +2,28 @@
 
 ## [Unreleased]
 
+## [3.30.13] - 2026-06-16
+
+### Summary
+
+Data-integrity release. A full cross-check of our ISIN↔name mappings against divvydiary's sitemap universe (97,613 ISIN→name pairs), verified with OpenFIGI (authoritative ISIN→issuer) and a multi-agent web-research pass, fixes 233 identity discrepancies — including a systematic source-join bug that the existing collision gate did not cover.
+
+### Changed
+
+- Cross-checked all ~46.7k covered ISINs against divvydiary; 90.9% already agreed. Fixed the verified residual:
+  - **192 wrong-ISIN collisions** (stored ISIN belonged to a different issuer; OpenFIGI + divvydiary agree): **91** replaced with the OpenFIGI-confirmed correct ISIN (e.g. `EOGSF` Emerald Resources → `AU000000EMR4`, `RGR` Sturm Ruger → `US8641591081`, `RCL` Royal Caribbean → `LR0008862868`), **101** cleared where no correct ISIN was confidently found (never fabricated).
+  - Surfaced a systematic source-join bug: Weyerhaeuser's `US9621661043` was attached to **13 unrelated foreign OTC tickers** (Capital A, CIMB, Genting, Tenaga, …). These are OTC rows, which the `us_foreign_isin` gate (US-primary only) does not cover.
+  - **40 stale company names** updated to current rebrands (web-confirmed): `Cassava Sciences→Filana Therapeutics`, `Montrose Environmental→Onterris`, `Mainz Biomed→Quantum Cyber`, `NL Industries→NLI Holdings`, `ASGN→Everforth`, `Sayona Mining→Elevra Lithium`, `Hypermarcas→Hypera`.
+  - +1 further verified wrong-ISIN clear (`TBLU` held Tortoise North American Pipeline's ISIN).
+- Clearing the wrongly-*shared* ISINs correctly un-merged 93 companies previously conflated into one global-ticker row by the bad join: primary tickers 61,554 → 61,647; full listing rows unchanged at 71,035.
+- Bumps VERSION to 3.30.13 and refreshes data `_meta`, reports, README, and CHANGELOG.
+
+### Verification
+
+- `scripts/check_readme_snapshot.py`: pass.
+- `scripts/validate_database.py`: pass with 0/83 failed error gates.
+- `pytest tests/ -q`: 1,451 passed.
+
 ## [3.30.12] - 2026-06-16
 
 ### Summary
