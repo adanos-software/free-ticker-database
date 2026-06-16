@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-06-16T04:52:05Z",
-    "rows": 3362,
+    "generated_at": "2026-06-16T08:21:42Z",
+    "rows": 3361,
     "field_totals": {
       "missing_etf_category": 82,
-      "missing_isin_primary": 765,
+      "missing_isin_primary": 764,
       "missing_sector_stock": 2515
     },
     "class_totals": {
@@ -12,7 +12,7 @@
       "adr_cdr_or_depositary_sector_gap": 39,
       "capital_pool_or_halted_identifier_gap": 35,
       "commodity_etf_category_gap": 3,
-      "debt_or_securitized_identifier_gap": 81,
+      "debt_or_securitized_identifier_gap": 80,
       "equity_etf_category_gap": 3,
       "fixed_income_etf_category_gap": 2,
       "fund_or_trust_identifier_gap": 282,
@@ -35,7 +35,7 @@
       "missing_etf_category:official_product_taxonomy_unavailable_gap": 53,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 45,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 35,
-      "missing_isin_primary:debt_or_securitized_identifier_gap": 81,
+      "missing_isin_primary:debt_or_securitized_identifier_gap": 80,
       "missing_isin_primary:fund_or_trust_identifier_gap": 282,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 12,
@@ -93,7 +93,7 @@
       "missing_isin_primary": [
         {
           "exchange": "ASX",
-          "rows": 105
+          "rows": 104
         },
         {
           "exchange": "TSX",
@@ -252,7 +252,7 @@
         "field": "missing_isin_primary",
         "gap_class": "debt_or_securitized_identifier_gap",
         "exchange": "ASX",
-        "rows": 59,
+        "rows": 58,
         "recommended_next_source": "Official debt/structured-product masterfile, trustee/prospectus, or reviewed identifier feed.",
         "source_gate": "Exact instrument code/name and ISIN checksum; never issuer-equity propagation."
       },
@@ -3162,23 +3162,6 @@
       "recommended_next_source": "Official debt/structured-product masterfile, trustee/prospectus, or reviewed identifier feed.",
       "source_gate": "Exact instrument code/name and ISIN checksum; never issuer-equity propagation.",
       "source_gap_context": "listing_key=ASX::WS2;exchange=ASX;ticker=WS2;asset_type=ETF;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=debt_or_securitized_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=debt_or_securitized_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "ASX::WSE",
-      "ticker": "WSE",
-      "exchange": "ASX",
-      "asset_type": "ETF",
-      "name": "SERIES 2021-1 WST TRUST",
-      "gap_class": "debt_or_securitized_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official debt/structured-product terms, exchange instrument file, or trustee/prospectus identifier; do not fill from issuer equity ISINs.",
-      "recommended_next_source": "Official debt/structured-product masterfile, trustee/prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact instrument code/name and ISIN checksum; never issuer-equity propagation.",
-      "source_gap_context": "listing_key=ASX::WSE;exchange=ASX;ticker=WSE;asset_type=ETF;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=debt_or_securitized_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=debt_or_securitized_identifier_gap"
     },
@@ -22110,7 +22093,7 @@
       "ticker": "BANGANGA",
       "exchange": "BSE_IN",
       "asset_type": "Stock",
-      "name": "Banganga Paper Industries Ltd",
+      "name": "Asgard Alcobev Limited",
       "gap_class": "official_industry_taxonomy_unavailable_gap",
       "review_needed": "true",
       "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
@@ -53016,7 +52999,7 @@
       "ticker": "MCRNL",
       "exchange": "TASE",
       "asset_type": "Stock",
-      "name": "Micronet Ltd",
+      "name": "Jeen Technologies AI Ltd",
       "gap_class": "official_industry_taxonomy_unavailable_gap",
       "review_needed": "true",
       "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",

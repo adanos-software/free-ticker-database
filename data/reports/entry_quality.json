@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-06-16T04:52:02Z",
-    "rows": 71039,
+    "generated_at": "2026-06-16T08:21:38Z",
+    "rows": 71038,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -15,24 +15,24 @@
   "summary": {
     "status_counts": {
       "pass": 63797,
-      "source_gap": 7172,
+      "source_gap": 7171,
       "warn": 70
     },
     "evidence_level_counts": {
       "identifier_enriched": 4211,
-      "official_reference": 65709,
+      "official_reference": 65708,
       "scoped_source_gap": 328,
       "valid_isin": 791
     },
     "severity_counts": {
       "high": 65,
       "medium": 5,
-      "source_gap": 7932
+      "source_gap": 7931
     },
     "issue_counts": {
       "official_reference_gap": 5322,
       "missing_stock_sector": 1763,
-      "expected_missing_primary_isin": 765,
+      "expected_missing_primary_isin": 764,
       "missing_etf_category": 74,
       "country_isin_mismatch": 65,
       "venue_missing_official_source": 8,
@@ -94,14 +94,14 @@
         "source_gap": 147
       },
       {
-        "exchange": "ASX",
-        "pass": 1155,
-        "source_gap": 143
-      },
-      {
         "exchange": "CSE_LK",
         "pass": 164,
         "source_gap": 143
+      },
+      {
+        "exchange": "ASX",
+        "pass": 1155,
+        "source_gap": 142
       },
       {
         "exchange": "XETRA",
