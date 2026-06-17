@@ -2,6 +2,27 @@
 
 ## [Unreleased]
 
+## [3.30.20] - 2026-06-17
+
+### Summary
+
+Identifier backfill for the coverage-expansion additions + verified identity corrections from the post-expansion re-audit.
+
+### Changed
+
+- **FIGI backfill** via OpenFIGI for **3,236 of 3,240** new listing rows → FIGI coverage **64,311 → 67,546**.
+- **LEI backfill** via GLEIF (ISIN→LEI) for **1,097** new rows → LEI coverage **17,489 → 18,586** (EU/Italy high, India low as expected — Indian issuers rarely have LEI).
+- **10 verified identity corrections** from the 2026-06-17 fresh-sample re-audit: 7 ISIN (`TPEX:6650`→TW0006650005, `NYSE:REX`→US7616241052, `NGX:TOTAL`→NGTOTAL00001, `OTC:BRBL`/`OTC:ESWW`/`JSE:STXGVI`/`TSX:IGB`) and 3 names (`OTC:BIEI`→Nova Graphene Ballistics, `KOSDAQ:450940`→Yuanta 14 SPAC, `Bursa:7099`→Mayu Global Group). REX/TOTAL country auto-re-inferred from the corrected ISIN.
+- Allowlisted 2 benign `official_name_mismatch` (TOTAL, 6650) after their ISIN corrections; cleared 1 cross-ISIN-collision FIGI (`XETRA:GTY`).
+
+### Note — re-audit measurement (2026-06-17)
+
+Fresh-sample re-audit (seed 20260617, 400 rows, 125-agent adversarial, 3.66M tokens): **overall 87.2 %** (Wilson 82.5–90.8 %); **new additions 95.3 %** — the coverage expansion is *cleaner* than the base DB and identity-clean. Sector is the dominant error class (concentrated in Asian markets) → next: Japan/Korea sector sweep.
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,451 passed. Bumps VERSION to 3.30.20.
+
 ## [3.30.19] - 2026-06-16
 
 ### Summary

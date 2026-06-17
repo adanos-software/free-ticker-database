@@ -1,9 +1,9 @@
 {
   "summary": {
-    "generated_at": "2026-06-16T20:09:26Z",
-    "rows": 940,
+    "generated_at": "2026-06-17T05:30:13Z",
+    "rows": 941,
     "outcome_totals": {
-      "accepted_source_gap": 467,
+      "accepted_source_gap": 468,
       "core_exclusion_candidate": 473
     },
     "class_totals": {
@@ -14,7 +14,7 @@
       "debt_or_securitized_identifier_gap": 81,
       "digital_asset_etf_category_gap": 1,
       "equity_etf_category_gap": 3,
-      "fixed_income_etf_category_gap": 2,
+      "fixed_income_etf_category_gap": 3,
       "fund_or_trust_identifier_gap": 292,
       "fundlike_stock_sector_gap": 1,
       "inactive_or_legacy_identifier_gap": 17,
@@ -28,7 +28,7 @@
       "shell_or_cpc_sector_gap": 1
     },
     "field_outcomes": {
-      "missing_etf_category:accepted_source_gap": 87,
+      "missing_etf_category:accepted_source_gap": 88,
       "missing_isin_primary:accepted_source_gap": 321,
       "missing_isin_primary:core_exclusion_candidate": 470,
       "missing_sector_stock:accepted_source_gap": 59,
@@ -1369,6 +1369,23 @@
     {
       "field": "missing_etf_category",
       "target_field": "etf_category",
+      "listing_key": "TSX::IGB.U",
+      "ticker": "IGB.U",
+      "exchange": "TSX",
+      "asset_type": "ETF",
+      "name": "Purpose Global Bond Class",
+      "gap_class": "fixed_income_etf_category_gap",
+      "source_of_truth_outcome": "accepted_source_gap",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "leave_blank_until_source_available",
+      "review_needed": "true",
+      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
+      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
+      "source_gate": "Exact ETF symbol/name and deterministic fixed-income exposure evidence."
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
       "listing_key": "TSX::JFS",
       "ticker": "JFS",
       "exchange": "TSX",
@@ -2682,7 +2699,7 @@
       "ticker": "450940",
       "exchange": "KOSDAQ",
       "asset_type": "Stock",
-      "name": "450940",
+      "name": "Yuanta 14 Special Purpose Acquisition Company Co Ltd",
       "gap_class": "official_identifier_reference_unmatched_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
