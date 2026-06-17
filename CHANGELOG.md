@@ -2,6 +2,21 @@
 
 ## [Unreleased]
 
+## [3.30.21] - 2026-06-17
+
+### Summary
+
+**Japan/Korea sector-correctness sweep** — the largest error class identified by the 2026-06-17 re-audit. **1,174 `stock_sector` corrections** on TSE/KRX/KOSDAQ.
+
+### Changed
+
+- **1,174 stock_sector corrections** (748 TSE, 130 KRX, 296 KOSDAQ): **82 deterministic** from the official JPX 33-industry classification (unambiguous 1:1 buckets — Banks/Insurance/Pharma/Utilities/Steel/Foods/Transport/Real Estate) + **1,092 multi-agent-verified** (correct GICS from each company's business; TSE used the JPX official industry as a strong hint, agents resolving the ambiguous sub-classifications, e.g. 建設業→Industrials/Consumer Discretionary/Real Estate, 電気機器→IT/Industrials, 化学 cosmetics→Consumer Staples). Conservative — only high/medium-confidence clear changes applied. Measured mixed-bucket error rate ~24% (TSE) / ~17% (Korea).
+- Bumps VERSION to 3.30.21.
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,451 passed.
+
 ## [3.30.20] - 2026-06-17
 
 ### Summary

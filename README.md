@@ -19,8 +19,8 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 | Aliases | 125,447 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
 | ISIN coverage | 61,696 (97.5%) | Primary ticker rows with a non-empty `isin`. |
 | FIGI coverage | 67,546 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
-| Sector/category coverage | 63,109 (99.8%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 47,528 | Primary ticker rows with a non-empty `stock_sector`. |
+| Sector/category coverage | 63,113 (99.8%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Stock sector coverage | 47,532 | Primary ticker rows with a non-empty `stock_sector`. |
 | ETF category coverage | 15,581 | Primary ticker rows with a non-empty `etf_category`. |
 | Core listing-scope rows | 57,351 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
 | Core primary rows with ISIN | 56,560 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
@@ -29,7 +29,7 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 | Official full exchanges | 46 | Current-scope source inventory rows marked `official_full`. |
 | Official partial exchanges | 33 | Current-scope source inventory rows marked `official_partial`. |
 | Missing current-scope exchanges | 1 | Current-scope source inventory rows still marked `missing`; see `data/reports/source_inventory_gap.md`. |
-| Entry quality source-gap rows | 6,740 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
+| Entry quality source-gap rows | 6,735 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
 | Entry quality warn rows | 75 | Listing-keyed rows with deterministic warnings requiring review/allowlist coverage. |
 
 Snapshot values are generated-report backed and intentionally human-formatted with comma separators and one-decimal coverage percentages. `data/reports/coverage_report.json`, `data/reports/source_inventory_gap.json`, and `data/reports/entry_quality.json` are the canonical machine-readable sources for these counts. `source_inventory_gap.md` is authoritative for current-scope source gaps; this snapshot must not claim zero missing current-scope sources while that report lists a missing source.
@@ -130,8 +130,8 @@ JSON metadata:
 ```json
 {
   "_meta": {
-    "version": "3.30.20",
-    "built_at": "2026-06-17T05:30:06Z",
+    "version": "3.30.21",
+    "built_at": "2026-06-17T05:52:36Z",
     "total_tickers": 63259
   },
   "tickers": []
