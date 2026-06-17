@@ -2,6 +2,28 @@
 
 ## [Unreleased]
 
+## [3.30.23] - 2026-06-17
+
+### Summary
+
+**US-stock data-quality sweep** acting on the US audit (which measured ~87% US-stock correctness). Fixes stale ISINs, mis-tagged warrants, and sector misclassifications across US-listed stocks.
+
+### Changed
+
+- **293 ISIN corrections**: detected via an OpenFIGI validity sweep of all 5,465 US-listed ISINs (510 unresolvable → agent-verified). **269 updated** to the current sourced ISIN (stale after 2026 reverse-splits / redomiciles / rebrands — e.g. `KNSA` Bermuda→UK, `HIVE` rebrand, `AZ`/`AKAN`/`GP` reverse-splits), **17 cleared** as delisted/defunct (`AHL` acquired, `BBU` simplified), **+9** from the audit. (The agent pass hit a session limit at ~312/510 suspects; ~198 remain durably resumable.)
+- **332 `stock_sector` corrections** (US-listed sector sweep — ~6% of 5,437 verified; +9 audit) — GICS verified from each company's business.
+- **46 warrants dropped** from the Stock scope (OpenFIGI `securityType=Warrant`; W-suffix tickers e.g. `BZFDW`/`AISPW`) — removed from listings + identifiers.
+- 4 country fixes (`UTL` Bermuda→US, `GNS` UK→Singapore, …) + 1 name. Allowlisted `ASND` (Ascendis, Danish-incorporated NASDAQ listing).
+- Primary tickers 63,277 → 63,245; NASDAQ 4,535 → 4,498.
+
+### Note
+
+Measured US-stock correctness was 87.1% (NYSE/NASDAQ-listed and OTC both ~87%); errors dominated by stale-reverse-split ISINs + sector + warrant/SPAC tagging — all addressed here. ~198 US ISIN suspects remain (session-limit cutoff), durably resumable.
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,451 passed. Bumps VERSION to 3.30.23.
+
 ## [3.30.22] - 2026-06-17
 
 ### Summary
