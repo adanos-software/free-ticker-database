@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-06-17T05:52:42Z",
-    "rows": 937,
+    "generated_at": "2026-06-17T05:59:00Z",
+    "rows": 938,
     "outcome_totals": {
       "accepted_source_gap": 464,
-      "core_exclusion_candidate": 473
+      "core_exclusion_candidate": 474
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 45,
@@ -17,7 +17,7 @@
       "fixed_income_etf_category_gap": 3,
       "fund_or_trust_identifier_gap": 292,
       "fundlike_stock_sector_gap": 1,
-      "inactive_or_legacy_identifier_gap": 17,
+      "inactive_or_legacy_identifier_gap": 18,
       "official_current_directory_absent_identifier_gap": 12,
       "official_identifier_not_exposed_source_gap": 245,
       "official_identifier_reference_unmatched_gap": 64,
@@ -30,7 +30,7 @@
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 88,
       "missing_isin_primary:accepted_source_gap": 321,
-      "missing_isin_primary:core_exclusion_candidate": 470,
+      "missing_isin_primary:core_exclusion_candidate": 471,
       "missing_sector_stock:accepted_source_gap": 55,
       "missing_sector_stock:core_exclusion_candidate": 3
     },
@@ -8165,6 +8165,23 @@
       "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
       "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
       "source_gate": "Exact instrument code/name and ISIN checksum; never issuer-equity propagation."
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "ASX::BMR",
+      "ticker": "BMR",
+      "exchange": "ASX",
+      "asset_type": "Stock",
+      "name": "Ballymore Resources Limited",
+      "gap_class": "inactive_or_legacy_identifier_gap",
+      "source_of_truth_outcome": "core_exclusion_candidate",
+      "core_action": "review_for_core_exclusion",
+      "fill_action": "do_not_fill_until_scope_review",
+      "review_needed": "true",
+      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
+      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
+      "source_gate": "Exact active listing evidence plus direct identifier source."
     },
     {
       "field": "missing_isin_primary",
