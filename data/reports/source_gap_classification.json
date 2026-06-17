@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-06-17T05:52:42Z",
-    "rows": 937,
+    "generated_at": "2026-06-17T05:59:00Z",
+    "rows": 938,
     "field_totals": {
       "missing_etf_category": 88,
-      "missing_isin_primary": 791,
+      "missing_isin_primary": 792,
       "missing_sector_stock": 58
     },
     "class_totals": {
@@ -18,7 +18,7 @@
       "fixed_income_etf_category_gap": 3,
       "fund_or_trust_identifier_gap": 292,
       "fundlike_stock_sector_gap": 1,
-      "inactive_or_legacy_identifier_gap": 17,
+      "inactive_or_legacy_identifier_gap": 18,
       "official_current_directory_absent_identifier_gap": 12,
       "official_identifier_not_exposed_source_gap": 245,
       "official_identifier_reference_unmatched_gap": 64,
@@ -39,7 +39,7 @@
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 35,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 81,
       "missing_isin_primary:fund_or_trust_identifier_gap": 292,
-      "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
+      "missing_isin_primary:inactive_or_legacy_identifier_gap": 18,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 12,
       "missing_isin_primary:official_identifier_not_exposed_source_gap": 245,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 64,
@@ -95,7 +95,7 @@
       "missing_isin_primary": [
         {
           "exchange": "ASX",
-          "rows": 104
+          "rows": 105
         },
         {
           "exchange": "TSX",
@@ -3283,6 +3283,23 @@
       "recommended_next_source": "Current exchange status/detail feed before any identifier fill.",
       "source_gate": "Exact active listing evidence plus direct identifier source.",
       "source_gap_context": "listing_key=ASX::AN3;exchange=ASX;ticker=AN3;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=inactive_or_legacy_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=inactive_or_legacy_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "ASX::BMR",
+      "ticker": "BMR",
+      "exchange": "ASX",
+      "asset_type": "Stock",
+      "name": "Ballymore Resources Limited",
+      "gap_class": "inactive_or_legacy_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require evidence that the listing is active/current and an official identifier source; otherwise keep classified as a source gap.",
+      "recommended_next_source": "Current exchange status/detail feed before any identifier fill.",
+      "source_gate": "Exact active listing evidence plus direct identifier source.",
+      "source_gap_context": "listing_key=ASX::BMR;exchange=ASX;ticker=BMR;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=inactive_or_legacy_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=inactive_or_legacy_identifier_gap"
     },

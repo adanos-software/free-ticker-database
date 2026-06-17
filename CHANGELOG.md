@@ -2,6 +2,29 @@
 
 ## [Unreleased]
 
+## [3.30.22] - 2026-06-17
+
+### Summary
+
+Coverage long-tail — **Australia (ASX)** via the official ASX listed-companies master. **389 new Australian securities.**
+
+### Added
+
+- **389 ASX securities** (43 new primaries + 346 collision-safe `coverage_expansion`) resolved **deterministically** from the official ASX `ListedCompanies` master: ISIN-embedded code (+ name fallback) → code/name, and **GICS sector from the master's GICS industry group**. Active-confirmed (present in the current master).
+- Bumps VERSION to 3.30.22.
+
+### Changed
+
+- Primary tickers 63,259 → 63,277; core listings 57,351 → 57,694; ASX 1,290 → 1,308. **Zero displacement.**
+
+### Note
+
+The remaining global long-tail (Canada/Brazil/Thailand/Taiwan/deep frontier, several thousand more) is continuable with the same pipeline (official exchange masters where available, multi-agent verify otherwise, + the collision-safe `coverage_expansion` mechanism). New ASX rows carry ISIN+sector+name; FIGI/LEI backfill for them is a future deterministic pass.
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,451 passed.
+
 ## [3.30.21] - 2026-06-17
 
 ### Summary
