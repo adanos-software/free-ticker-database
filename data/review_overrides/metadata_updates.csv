@@ -29975,3 +29975,13 @@ WINR,OTC,isin,update,US82887P2092,high,"wrong-ISIN collision; correct ISIN OpenF
 WINV,OTC,isin,update,US97655B1098,high,"wrong-ISIN collision; correct ISIN OpenFIGI-confirmed. ISIN GG00BHXH0C87 has Guernsey country prefix 'GG' and belongs to Worsley Investors Ltd (formerly AXA Property Trust Ltd), a Guernsey-domiciled closed-end fund listed on the London Stock Exchange, con"
 XESP,OTC,isin,clear,,high,"wrong-ISIN collision (divvydiary+OpenFIGI agree ISIN belongs to another issuer); cleared. OpenFIGI confirms ISIN LU0592216393 is the Xtrackers Spain UCITS ETF ('X SPAIN 1C'), a Luxembourg-domiciled fund (LU prefix). OTC:XESP is an entirely different entity — formerly CannAssist Internation"
 TBLU,NYSE,isin,clear,,high,"wrong-ISIN collision: US56167N7205 is Tortoise North American Pipeline (TPYP) per OpenFIGI+cbonds+NYSE; TBLU is Tortoise Global Water (correct ISIN US56167N7536, held by EBLU pre-rename). EBLU->TBLU rename is a separate follow-up."
+6650,TPEX,isin,update,TW0006650005,high,re-audit 2026-06-17 verified: OpenFIGI returns 'No identifier found' for TW0006650B17. MarketScreener (page URL ...TW000
+BRBL,OTC,isin,update,US10756B2097,high,re-audit 2026-06-17 verified: Stored ISIN US10756B1008 returns 'No identifier found' in OpenFIGI (no valid security maps
+BIEI,OTC,name,update,"Nova Graphene Ballistics, Inc.",high,re-audit 2026-06-17 verified: OpenFIGI ISIN US74048K2033 -> name 'NOVA GRAPHENE BALLISTICS INC' ticker BIEI (BBG001ZMDV0
+ESWW,OTC,isin,update,US29408K2015,high,re-audit 2026-06-17 verified: OpenFIGI returns 'No identifier found' for stored ISIN US29408K1025; it maps the ESWW comm
+STXGVI,JSE,isin,update,ZAE000318283,high,"re-audit 2026-06-17 verified: Stored ISIN ZAE000161949 is the OLD NFGOVI code, removed from the JSE trading system on 20"
+450940,KOSDAQ,name,update,Yuanta 14 Special Purpose Acquisition Company Co Ltd,high,re-audit 2026-06-17 verified: Stored name is merely the ticker number used as a placeholder. KOSDAQ ticker 450940 = Yuan
+7099,Bursa,name,update,Mayu Global Group Berhad,high,"re-audit 2026-06-17 verified: OpenFIGI maps ISIN MYL7099OO004 to 'MAYU GLOBAL GROUP BHD' (ticker MAYU, Bursa Malaysia co"
+REX,NYSE,isin,update,US7616241052,high,"re-audit 2026-06-17 verified: OpenFIGI maps ISIN CA68616X1006 to 'OREX MINERALS INC' (a Canadian junior miner, ticker RE"
+IGB,TSX,isin,update,CA74642H1010,high,"re-audit 2026-06-17 verified: OpenFIGI returns 'No identifier found' for CA74641V1013, and that ISIN appears in no sourc"
+TOTAL,NGX,isin,update,NGTOTAL00001,high,"re-audit 2026-06-17 verified: OpenFIGI maps GH0000000144 -> 'TOTAL PETROLEUM GHANA LTD' (exchCode GN, Ghana). MarketScre"

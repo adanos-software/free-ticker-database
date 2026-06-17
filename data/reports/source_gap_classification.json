@@ -1,9 +1,9 @@
 {
   "summary": {
-    "generated_at": "2026-06-16T20:09:26Z",
-    "rows": 940,
+    "generated_at": "2026-06-17T05:30:13Z",
+    "rows": 941,
     "field_totals": {
-      "missing_etf_category": 87,
+      "missing_etf_category": 88,
       "missing_isin_primary": 791,
       "missing_sector_stock": 62
     },
@@ -15,7 +15,7 @@
       "debt_or_securitized_identifier_gap": 81,
       "digital_asset_etf_category_gap": 1,
       "equity_etf_category_gap": 3,
-      "fixed_income_etf_category_gap": 2,
+      "fixed_income_etf_category_gap": 3,
       "fund_or_trust_identifier_gap": 292,
       "fundlike_stock_sector_gap": 1,
       "inactive_or_legacy_identifier_gap": 17,
@@ -32,7 +32,7 @@
       "missing_etf_category:commodity_etf_category_gap": 3,
       "missing_etf_category:digital_asset_etf_category_gap": 1,
       "missing_etf_category:equity_etf_category_gap": 3,
-      "missing_etf_category:fixed_income_etf_category_gap": 2,
+      "missing_etf_category:fixed_income_etf_category_gap": 3,
       "missing_etf_category:official_product_reference_unmatched_category_gap": 20,
       "missing_etf_category:official_product_taxonomy_unavailable_gap": 58,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 45,
@@ -84,11 +84,11 @@
           "rows": 4
         },
         {
-          "exchange": "LSE",
-          "rows": 3
+          "exchange": "TSX",
+          "rows": 4
         },
         {
-          "exchange": "NYSE",
+          "exchange": "LSE",
           "rows": 3
         }
       ],
@@ -1670,6 +1670,23 @@
       "source_gap_context": "listing_key=TSE::8747;exchange=TSE;ticker=8747;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
       "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
+      "listing_key": "TSX::IGB.U",
+      "ticker": "IGB.U",
+      "exchange": "TSX",
+      "asset_type": "ETF",
+      "name": "Purpose Global Bond Class",
+      "gap_class": "fixed_income_etf_category_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require official fund asset class or deterministic bond/treasury product evidence.",
+      "recommended_next_source": "Official fund asset class or reviewed product profile.",
+      "source_gate": "Exact ETF symbol/name and deterministic fixed-income exposure evidence.",
+      "source_gap_context": "listing_key=TSX::IGB.U;exchange=TSX;ticker=IGB.U;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=fixed_income_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=fixed_income_etf_category_gap"
     },
     {
       "field": "missing_etf_category",
@@ -5282,7 +5299,7 @@
       "ticker": "450940",
       "exchange": "KOSDAQ",
       "asset_type": "Stock",
-      "name": "450940",
+      "name": "Yuanta 14 Special Purpose Acquisition Company Co Ltd",
       "gap_class": "official_identifier_reference_unmatched_gap",
       "review_needed": "true",
       "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
