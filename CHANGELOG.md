@@ -2,6 +2,27 @@
 
 ## [Unreleased]
 
+## [3.30.27] - 2026-06-18
+
+### Summary
+
+**Closes the "invisible" ADR coverage gap** — US-listed American Depositary Receipts of foreign issuers that had no ISIN anywhere in the dataset (undetectable from our own data; the prior v3.30.26 sweep could only find ADR ISINs we already held). Sized against an **external US-exchange master** (the official NASDAQ Trader `nasdaqlisted.txt` + `otherlisted.txt` symbol directories): of 308 ADRs in the master we held 180, leaving **113 missing**. A 113-candidate multi-agent resolution (58 agents) returned name/country/GICS/US-ADR-ISIN per ADR, with two independent ISIN safeguards: an adversarial refute pass **and** a deterministic OpenFIGI `ID_ISIN` ticker-match cross-check.
+
+### Changed
+
+- **112 US-listed ADR listings added** (1 candidate dropped as already-present under symbol normalization, `CIG.C`=`CIG-C`): 99 as new primaries (free symbols), 13 collision-safe (symbol held by another primary → core-listing only). Blue-chips closed include **ARM** (Arm Holdings), **ERIC** (Ericsson), **GSK**, **VOD** (Vodafone), **UL** (Unilever), **SHEL** (Shell), **TAK** (Takeda), **JD** (JD.com), **TCOM** (Trip.com), **RYAAY** (Ryanair), **NICE**, **GRFS** (Grifols), **ARGX** (argenx), **RELX**, **WPP**, **IHG**, **GFI** (Gold Fields), **NMR** (Nomura), **INFY** (Infosys), **OTLY** (Oatly).
+- **90 of the added ISINs are triple-verified** (adversarial agent + checksum + OpenFIGI ticker match); **22 were left blank** rather than risk a wrong value (pending verified backfill). The OpenFIGI cross-check caught real errors the agent pass missed — e.g. `SHEL` was given the **defunct Royal Dutch Shell `RDS/A` ADR ISIN**, and `ASX` (ASE Technology) was given **ATN International's ISIN** — both correctly rejected.
+- Primary tickers 63,019 → 63,096; NASDAQ 4,417 → 4,479; NYSE 1,905 → 1,933.
+- Test invariant `test_depositary_and_cross_issuer_aliases_removed` updated: `ARM` is now a covered primary (Arm Holdings) with the safe alias `arm holdings` (the bare common-word `arm` remains filtered).
+
+### Note
+
+The broader 928 US-listed common stocks we don't hold are predominantly US-domestic small-caps/SPACs (a separate coverage-breadth question), not ADRs.
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,451 passed. Bumps VERSION to 3.30.27.
+
 ## [3.30.26] - 2026-06-18
 
 ### Summary

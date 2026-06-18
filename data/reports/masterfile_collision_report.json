@@ -1,9 +1,9 @@
 {
   "global": {
     "official_symbols": 78844,
-    "matched": 52865,
-    "collisions": 11284,
-    "missing": 14695
+    "matched": 52969,
+    "collisions": 11292,
+    "missing": 14583
   },
   "exchanges": [
     {
@@ -955,8 +955,8 @@
       "exchange": "BVB",
       "official_symbols": 348,
       "matched": 75,
-      "collisions": 122,
-      "missing": 151,
+      "collisions": 123,
+      "missing": 150,
       "collision_examples": [
         {
           "ticker": "AAB",
@@ -1431,8 +1431,8 @@
       "exchange": "Euronext",
       "official_symbols": 4426,
       "matched": 990,
-      "collisions": 2340,
-      "missing": 1096,
+      "collisions": 2345,
+      "missing": 1091,
       "collision_examples": [
         {
           "ticker": "0EMU",
@@ -1713,8 +1713,8 @@
       "exchange": "HNX",
       "official_symbols": 300,
       "matched": 105,
-      "collisions": 153,
-      "missing": 42,
+      "collisions": 155,
+      "missing": 40,
       "collision_examples": [
         {
           "ticker": "ADC",
@@ -1768,6 +1768,14 @@
           ]
         },
         {
+          "ticker": "ARM",
+          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n Xu\u1ea5t nh\u1eadp kh\u1ea9u H\u00e0ng kh\u00f4ng",
+          "target_exchange": "HNX",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
           "ticker": "ATS",
           "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n T\u1eadp \u0111o\u00e0n \u0111\u1ea7u t\u01b0 ATS",
           "target_exchange": "HNX",
@@ -1790,25 +1798,12 @@
           "existing_exchanges": [
             "NYSE"
           ]
-        },
-        {
-          "ticker": "BCC",
-          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n Xi m\u0103ng B\u1ec9m S\u01a1n",
-          "target_exchange": "HNX",
-          "existing_exchanges": [
-            "NYSE"
-          ]
         }
       ],
       "missing_examples": [
         {
           "ticker": "AMV",
           "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n SXKD D\u01b0\u1ee3c v\u00e0 trang thi\u1ebft b\u1ecb y t\u1ebf Vi\u1ec7t M\u1ef9",
-          "exchange": "HNX"
-        },
-        {
-          "ticker": "ARM",
-          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n Xu\u1ea5t nh\u1eadp kh\u1ea9u H\u00e0ng kh\u00f4ng",
           "exchange": "HNX"
         },
         {
@@ -1850,6 +1845,11 @@
           "ticker": "DNC",
           "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n \u0110i\u1ec7n n\u01b0\u1edbc l\u1eafp m\u00e1y H\u1ea3i Ph\u00f2ng",
           "exchange": "HNX"
+        },
+        {
+          "ticker": "DTK",
+          "name": "T\u1ed5ng c\u00f4ng ty \u0110i\u1ec7n l\u1ef1c TKV - CTCP",
+          "exchange": "HNX"
         }
       ]
     },
@@ -1857,8 +1857,8 @@
       "exchange": "IDX",
       "official_symbols": 958,
       "matched": 694,
-      "collisions": 242,
-      "missing": 22,
+      "collisions": 243,
+      "missing": 21,
       "collision_examples": [
         {
           "ticker": "ABBA",
@@ -2222,8 +2222,8 @@
       "exchange": "LSE",
       "official_symbols": 11021,
       "matched": 6419,
-      "collisions": 1097,
-      "missing": 3505,
+      "collisions": 1105,
+      "missing": 3497,
       "collision_examples": [
         {
           "ticker": "0GZJ",
@@ -2473,9 +2473,9 @@
     {
       "exchange": "NASDAQ",
       "official_symbols": 5524,
-      "matched": 4371,
-      "collisions": 81,
-      "missing": 1072,
+      "matched": 4437,
+      "collisions": 74,
+      "missing": 1013,
       "collision_examples": [
         {
           "ticker": "ACAA",
@@ -2534,14 +2534,6 @@
           ]
         },
         {
-          "ticker": "ANL",
-          "name": "Adlai Nortye Ltd. - American Depositary Shares",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "XETRA"
-          ]
-        },
-        {
           "ticker": "ANV",
           "name": "GraniteShares Autocallable NVDA ETF",
           "target_exchange": "NASDAQ",
@@ -2555,6 +2547,14 @@
           "target_exchange": "NASDAQ",
           "existing_exchanges": [
             "XETRA"
+          ]
+        },
+        {
+          "ticker": "ARCI",
+          "name": "Archimedes Tech SPAC Partners III Co. - Ordinary Share",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "LSE"
           ]
         }
       ],
@@ -2909,9 +2909,17 @@
       "exchange": "NSE_KE",
       "official_symbols": 66,
       "matched": 10,
-      "collisions": 23,
-      "missing": 33,
+      "collisions": 24,
+      "missing": 32,
       "collision_examples": [
+        {
+          "ticker": "ARM",
+          "name": "Athi River Mining Ord 5.00",
+          "target_exchange": "NSE_KE",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
         {
           "ticker": "BAMB",
           "name": "Bamburi Cement PLC Ord 5.00",
@@ -2983,25 +2991,12 @@
           "existing_exchanges": [
             "SET"
           ]
-        },
-        {
-          "ticker": "EABL",
-          "name": "East African Breweries Ltd Ord 2.00",
-          "target_exchange": "NSE_KE",
-          "existing_exchanges": [
-            "DSE_TZ"
-          ]
         }
       ],
       "missing_examples": [
         {
           "ticker": "ABSA",
           "name": "Absa Bank Kenya PLC",
-          "exchange": "NSE_KE"
-        },
-        {
-          "ticker": "ARM",
-          "name": "Athi River Mining Ord 5.00",
           "exchange": "NSE_KE"
         },
         {
@@ -3043,15 +3038,20 @@
           "ticker": "HAFR",
           "name": "Home Afrika Ltd Ord 1.00",
           "exchange": "NSE_KE"
+        },
+        {
+          "ticker": "JUB",
+          "name": "Jubilee Holdings Ltd Ord 5.00",
+          "exchange": "NSE_KE"
         }
       ]
     },
     {
       "exchange": "NYSE",
       "official_symbols": 3872,
-      "matched": 1910,
-      "collisions": 530,
-      "missing": 1432,
+      "matched": 1945,
+      "collisions": 524,
+      "missing": 1403,
       "collision_examples": [
         {
           "ticker": "ABX",
@@ -3334,9 +3334,9 @@
     {
       "exchange": "NYSE MKT",
       "official_symbols": 313,
-      "matched": 217,
-      "collisions": 26,
-      "missing": 70,
+      "matched": 220,
+      "collisions": 25,
+      "missing": 68,
       "collision_examples": [
         {
           "ticker": "AEF",
@@ -3435,11 +3435,6 @@
           "exchange": "NYSE MKT"
         },
         {
-          "ticker": "AZUL",
-          "name": "Azul S.A. American Depositary Shares, each representing two (2) Common Shares",
-          "exchange": "NYSE MKT"
-        },
-        {
           "ticker": "BCV",
           "name": "Bancroft Fund, Ltd.",
           "exchange": "NYSE MKT"
@@ -3455,11 +3450,6 @@
           "exchange": "NYSE MKT"
         },
         {
-          "ticker": "CANF",
-          "name": "Can-Fite Biopharma Ltd American Depositary Shares, each representing two (2) Ordinary Shares",
-          "exchange": "NYSE MKT"
-        },
-        {
           "ticker": "CET",
           "name": "Central Securities Corporation Common Stock",
           "exchange": "NYSE MKT"
@@ -3472,6 +3462,16 @@
         {
           "ticker": "CIK",
           "name": "Credit Suisse Asset Management Income Fund, Inc. Common Stock",
+          "exchange": "NYSE MKT"
+        },
+        {
+          "ticker": "CRF",
+          "name": "Cornerstone Total Return Fund, Inc. (The) Common Stock",
+          "exchange": "NYSE MKT"
+        },
+        {
+          "ticker": "DHY",
+          "name": "Credit Suisse High Yield Credit Fund Common Stock",
           "exchange": "NYSE MKT"
         }
       ]
@@ -3976,8 +3976,8 @@
       "exchange": "PSX",
       "official_symbols": 716,
       "matched": 371,
-      "collisions": 154,
-      "missing": 191,
+      "collisions": 156,
+      "missing": 189,
       "collision_examples": [
         {
           "ticker": "AAL",
@@ -4050,6 +4050,7 @@
           "name": "Azgard Nine Limited",
           "target_exchange": "PSX",
           "existing_exchanges": [
+            "NASDAQ",
             "XETRA"
           ]
         },
@@ -5114,8 +5115,8 @@
       "exchange": "UPCOM",
       "official_symbols": 830,
       "matched": 2,
-      "collisions": 473,
-      "missing": 355,
+      "collisions": 475,
+      "missing": 353,
       "collision_examples": [
         {
           "ticker": "AAS",

@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-06-18T11:19:36Z",
-    "rows": 74333,
+    "generated_at": "2026-06-18T11:46:45Z",
+    "rows": 74438,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,24 +14,24 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 67500,
-      "source_gap": 6757,
+      "pass": 67584,
+      "source_gap": 6778,
       "warn": 76
     },
     "evidence_level_counts": {
       "identifier_enriched": 4937,
-      "official_reference": 68308,
+      "official_reference": 68412,
       "scoped_source_gap": 327,
-      "valid_isin": 761
+      "valid_isin": 762
     },
     "severity_counts": {
       "high": 67,
       "medium": 9,
-      "source_gap": 6963
+      "source_gap": 6984
     },
     "issue_counts": {
-      "official_reference_gap": 5740,
-      "expected_missing_primary_isin": 810,
+      "official_reference_gap": 5741,
+      "expected_missing_primary_isin": 830,
       "venue_missing_official_source": 285,
       "missing_etf_category": 81,
       "country_isin_mismatch": 65,
@@ -56,6 +56,12 @@
         "source_gap": 277
       },
       {
+        "exchange": "NASDAQ",
+        "pass": 4358,
+        "source_gap": 209,
+        "warn": 1
+      },
+      {
         "exchange": "LSE",
         "pass": 6364,
         "warn": 60,
@@ -65,12 +71,6 @@
         "exchange": "TSX",
         "pass": 1703,
         "source_gap": 201
-      },
-      {
-        "exchange": "NASDAQ",
-        "pass": 4305,
-        "source_gap": 195,
-        "warn": 1
       },
       {
         "exchange": "BSE_IN",
@@ -115,6 +115,12 @@
         "warn": 2
       },
       {
+        "exchange": "NYSE",
+        "pass": 1884,
+        "source_gap": 93,
+        "warn": 1
+      },
+      {
         "exchange": "AMS",
         "pass": 240,
         "source_gap": 90
@@ -123,12 +129,6 @@
         "exchange": "JSE",
         "source_gap": 88,
         "pass": 124
-      },
-      {
-        "exchange": "NYSE",
-        "pass": 1855,
-        "source_gap": 87,
-        "warn": 1
       },
       {
         "exchange": "BATS",
@@ -8208,6 +8208,24 @@
       ]
     },
     {
+      "listing_key": "NASDAQ::AIXI",
+      "ticker": "AIXI",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
       "listing_key": "TSXV::AJA",
       "ticker": "AJA",
       "exchange": "TSXV",
@@ -12512,6 +12530,24 @@
       ]
     },
     {
+      "listing_key": "NYSE::ASX",
+      "ticker": "ASX",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
       "listing_key": "BSE_IN::ASYL",
       "ticker": "ASYL",
       "exchange": "BSE_IN",
@@ -14506,6 +14542,24 @@
           "field": "exchange",
           "value": "OTC",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "NYSE MKT::AZUL",
+      "ticker": "AZUL",
+      "exchange": "NYSE MKT",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
         }
       ]
     },
@@ -18377,60 +18431,6 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "ASX",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "B3::BMGB3",
-      "ticker": "BMGB3",
-      "exchange": "B3",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "B3",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BMGP",
-      "ticker": "BMGP",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BMOOF",
-      "ticker": "BMOOF",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
