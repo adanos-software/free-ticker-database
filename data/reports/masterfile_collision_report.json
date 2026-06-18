@@ -1,9 +1,9 @@
 {
   "global": {
     "official_symbols": 78844,
-    "matched": 52850,
-    "collisions": 11290,
-    "missing": 14704
+    "matched": 52865,
+    "collisions": 11284,
+    "missing": 14695
   },
   "exchanges": [
     {
@@ -2473,8 +2473,8 @@
     {
       "exchange": "NASDAQ",
       "official_symbols": 5524,
-      "matched": 4370,
-      "collisions": 82,
+      "matched": 4371,
+      "collisions": 81,
       "missing": 1072,
       "collision_examples": [
         {
@@ -2615,8 +2615,8 @@
       "exchange": "NEO",
       "official_symbols": 440,
       "matched": 190,
-      "collisions": 84,
-      "missing": 166,
+      "collisions": 85,
+      "missing": 165,
       "collision_examples": [
         {
           "ticker": "ABB",
@@ -3049,9 +3049,9 @@
     {
       "exchange": "NYSE",
       "official_symbols": 3872,
-      "matched": 1897,
-      "collisions": 535,
-      "missing": 1440,
+      "matched": 1910,
+      "collisions": 530,
+      "missing": 1432,
       "collision_examples": [
         {
           "ticker": "ABX",
@@ -3139,11 +3139,6 @@
       ],
       "missing_examples": [
         {
-          "ticker": "ABEV",
-          "name": "Ambev S.A. American Depositary Shares (Each representing 1 Common Share)",
-          "exchange": "NYSE"
-        },
-        {
           "ticker": "ABR$D",
           "name": "Arbor Realty Trust 6.375% Series D Cumulative Redeemable Preferred Stock, Liquidation Preference $25.00 per Share",
           "exchange": "NYSE"
@@ -3186,6 +3181,11 @@
         {
           "ticker": "ACHR.W",
           "name": "Archer Aviation Inc. Redeemable Warrants, each whole warrant exercisable for one Class A common stock at an exercise price of $11.50",
+          "exchange": "NYSE"
+        },
+        {
+          "ticker": "ACP$A",
+          "name": "abrdn Income Credit Strategies Fund 5.250% Series A Perpetual Preferred Stock",
           "exchange": "NYSE"
         }
       ]
@@ -3334,8 +3334,8 @@
     {
       "exchange": "NYSE MKT",
       "official_symbols": 313,
-      "matched": 216,
-      "collisions": 27,
+      "matched": 217,
+      "collisions": 26,
       "missing": 70,
       "collision_examples": [
         {
@@ -3346,14 +3346,6 @@
             "ASX",
             "Borsa Italiana",
             "TSXV"
-          ]
-        },
-        {
-          "ticker": "BCHT",
-          "name": "Birchtech Corp. Common Stock",
-          "target_exchange": "NYSE MKT",
-          "existing_exchanges": [
-            "TSX"
           ]
         },
         {
@@ -3420,6 +3412,14 @@
           "target_exchange": "NYSE MKT",
           "existing_exchanges": [
             "ICE_IS"
+          ]
+        },
+        {
+          "ticker": "ERC",
+          "name": "Allspring Multi-Sector Income Fund Common Stock",
+          "target_exchange": "NYSE MKT",
+          "existing_exchanges": [
+            "AMS"
           ]
         }
       ],

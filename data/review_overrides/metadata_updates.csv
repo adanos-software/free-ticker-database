@@ -31987,3 +31987,5 @@ CRTO,NASDAQ,isin,update,US2267181046,high,US re-audit verified ISIN (ticker-coll
 OTGLF,OTC,isin,update,PLOPTTC00011,high,US re-audit verified ISIN (ticker-collision fix)
 HGKGF,OTC,isin,update,US7391971014,high,US re-audit verified ISIN (ticker-collision fix)
 AGMH,NASDAQ,country_code,update,VG,high,BVI ISO code for VGG-prefix ISIN (country_from_isin lacks reverse map)
+KEYS,NYSE,isin,update,US49338L1035,high,NYSE::KEYS Keysight carried a Swiss crypto-ETP ISIN (CH0475986318 = 21Shares Bitwise on SIX); corrected to Keysight US ISIN (web-verified)
+BHP,NYSE,isin,update,US0886061086,high,"NYSE-listed BHP ADR carried the AU ordinary ISIN; set to US ADR ISIN per ADR convention (BABA/NVO/TSM), web-verified"

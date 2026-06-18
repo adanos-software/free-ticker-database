@@ -2,6 +2,23 @@
 
 ## [Unreleased]
 
+## [3.30.26] - 2026-06-18
+
+### Summary
+
+**US national-exchange listing-gap close.** A spot check of `SAP` revealed a class of securities held only on foreign venues / US-OTC whose actual US national-exchange listing was missing (e.g. the NYSE `SAP` ADR; `HWM` Howmet — an S&P 500 stock — had no US row at all). Detectable scope: 106 US-CUSIP (non-Reg-S) ISINs with no US-exchange listing. A 106-candidate multi-agent verification (44 agents, adversarial refute pass on every actionable verdict) classified each.
+
+### Changed
+
+- **15 US-exchange listings added** (all adversarially confirmed as currently trading on a US national exchange): `ABEV`, `DEO`, `HWM`, `MUFG`, `NOK`, `PBR`, `TEVA`, `VALE` as new primaries (globally free symbols, upgraded from London SETS placeholder codes like `0A2W`); `SAN`, `BCHT`, `NVS`, `RIO`, `SNY`, `SAP`, `TM` added collision-safe (symbol held by another primary → core-listing only, never displaces the incumbent).
+- **2 ISIN corrections**: `NYSE::KEYS` (Keysight) carried a Swiss crypto-ETP ISIN (`CH0475986318` = 21Shares Bitwise on SIX) → corrected to `US49338L1035`; `NYSE::BHP` carried the AU ordinary ISIN → set to the US ADR ISIN `US0886061086` (consistent with the BABA/NVO/TSM convention), which also retired its `foreign_isin_reviewed` allowlist entry.
+- 82 candidates confirmed correctly foreign-/OTC-only (e.g. ABB delisted its NYSE ADR in 2023; Adecco/Advantest/Aena/Aston Martin trade OTC Pink) and 7 confirmed delisted/defunct (e.g. Big Lots) — left unchanged.
+- Primary tickers 63,026 → 63,019 (the 7 collision-safe ADRs move to core-listing scope; net of the symbol upgrades). NYSE 1,896 → 1,905.
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,451 passed. Bumps VERSION to 3.30.26.
+
 ## [3.30.25] - 2026-06-18
 
 ### Summary
