@@ -2,6 +2,24 @@
 
 ## [Unreleased]
 
+## [3.30.28] - 2026-06-18
+
+### Summary
+
+**Closes the broader US-domestic common-stock coverage gap** surfaced by the v3.30.27 ADR work. Diffing the official NASDAQ Trader master (`nasdaqlisted.txt` + `otherlisted.txt`) against our US-exchange holdings left 576 currently-listed common stocks we did not carry (after excluding warrants/units/rights/preferreds/notes and — per the v3.30.25 scope policy — closed-end funds). Because every symbol comes from the **current** master, "is it trading" is guaranteed; the only resolution needed was GICS sector (a 20-agent name-based classification pass).
+
+### Changed
+
+- **576 US-listed common stocks added**: 469 operating companies + 107 SPAC/blank-check shells (SPACs are already in the dataset, so included for consistency). New primaries where the symbol was globally free; collision-safe (core-listing only) where the symbol was held by another primary. `country=United States` per the ADR/US-listing convention; GICS sector assigned per company.
+- **7 foreign ADR/registry stragglers** missed by v3.30.27 (different spelling "American Depos**i**tory" / "New York Registry Shares" / "ADRs representing") added with **triple-verified ISINs** (agent + checksum + OpenFIGI `ID_ISIN` ticker match): `ASML` (USN070592100, NY registry), `BZ` (Kanzhun), `AEG` (Aegon, post-redomicile ISIN), `NVX` (Novonix), `NCTY` (The9), `AGMB` (AgomAb), `QH` (Quhuo).
+- ISINs left **blank** for the US-domestic adds (no free authoritative US-CUSIP source; never fabricated — backfill later) — this lowers headline ISIN coverage from 97.5% to **97.0%** by design.
+- **11 name-merge-propagated ISINs cleared** (the rebuild propagates a same-name peer's ISIN onto a blank-ISIN add): 10 foreign (e.g. MAKO, EU) + `NHP` (had inherited the `NHPBP` preferred-series ISIN; cleared, and `NHPBP` restored intact — zero displacement).
+- Primary tickers 63,096 → 63,397; NASDAQ 4,479 → 4,620; NYSE 1,933 → 2,076.
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,451 passed. Bumps VERSION to 3.30.28.
+
 ## [3.30.27] - 2026-06-18
 
 ### Summary
