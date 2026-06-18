@@ -1,9 +1,9 @@
 {
   "global": {
     "official_symbols": 78844,
-    "matched": 53385,
-    "collisions": 11181,
-    "missing": 14278
+    "matched": 53226,
+    "collisions": 11243,
+    "missing": 14375
   },
   "exchanges": [
     {
@@ -535,8 +535,7 @@
           "name": "National Bank of Bahrain B.S.C.",
           "target_exchange": "BHB",
           "existing_exchanges": [
-            "LSE",
-            "NYSE"
+            "LSE"
           ]
         },
         {
@@ -1434,8 +1433,8 @@
       "exchange": "Euronext",
       "official_symbols": 4426,
       "matched": 990,
-      "collisions": 2347,
-      "missing": 1089,
+      "collisions": 2346,
+      "missing": 1090,
       "collision_examples": [
         {
           "ticker": "0EMU",
@@ -3051,9 +3050,9 @@
     {
       "exchange": "NYSE",
       "official_symbols": 3872,
-      "matched": 2176,
-      "collisions": 445,
-      "missing": 1251,
+      "matched": 2035,
+      "collisions": 502,
+      "missing": 1335,
       "collision_examples": [
         {
           "ticker": "ACCS",
@@ -3061,6 +3060,14 @@
           "target_exchange": "NYSE",
           "existing_exchanges": [
             "NYSE MKT"
+          ]
+        },
+        {
+          "ticker": "ACP",
+          "name": "abrdn Income Credit Strategies Fund Common Shares",
+          "target_exchange": "NYSE",
+          "existing_exchanges": [
+            "WSE"
           ]
         },
         {
@@ -3086,7 +3093,6 @@
           "existing_exchanges": [
             "ASX",
             "Borsa Italiana",
-            "NYSE MKT",
             "TSXV"
           ]
         },
@@ -3096,6 +3102,14 @@
           "target_exchange": "NYSE",
           "existing_exchanges": [
             "NYSE MKT"
+          ]
+        },
+        {
+          "ticker": "AGD",
+          "name": "abrdn Global Dynamic Dividend Fund Common Shares of Beneficial Interest",
+          "target_exchange": "NYSE",
+          "existing_exchanges": [
+            "ASX"
           ]
         },
         {
@@ -3117,22 +3131,6 @@
         {
           "ticker": "AIB",
           "name": "BlockchAIn Digital Infrastructure, Inc.",
-          "target_exchange": "NYSE",
-          "existing_exchanges": [
-            "NYSE MKT"
-          ]
-        },
-        {
-          "ticker": "AIM",
-          "name": "AIM ImmunoTech Inc.",
-          "target_exchange": "NYSE",
-          "existing_exchanges": [
-            "NYSE MKT"
-          ]
-        },
-        {
-          "ticker": "AIRI",
-          "name": "AIR INDUSTRIES GROUP",
           "target_exchange": "NYSE",
           "existing_exchanges": [
             "NYSE MKT"
@@ -3336,10 +3334,20 @@
     {
       "exchange": "NYSE MKT",
       "official_symbols": 313,
-      "matched": 250,
-      "collisions": 12,
-      "missing": 51,
+      "matched": 232,
+      "collisions": 22,
+      "missing": 59,
       "collision_examples": [
+        {
+          "ticker": "AEF",
+          "name": "abrdn Emerging Markets ex-China Fund, Inc. Common Stock",
+          "target_exchange": "NYSE MKT",
+          "existing_exchanges": [
+            "ASX",
+            "Borsa Italiana",
+            "TSXV"
+          ]
+        },
         {
           "ticker": "BESS",
           "name": "Bimergen Energy Corporation Common Stock",
@@ -3347,6 +3355,14 @@
           "existing_exchanges": [
             "NYSE",
             "STO"
+          ]
+        },
+        {
+          "ticker": "CLM",
+          "name": "Cornerstone Strategic Investment Fund, Inc. Common Shares",
+          "target_exchange": "NYSE MKT",
+          "existing_exchanges": [
+            "TSXV"
           ]
         },
         {
@@ -3375,6 +3391,14 @@
           ]
         },
         {
+          "ticker": "EAD",
+          "name": "Allspring Income Opportunities Fund Common Shares",
+          "target_exchange": "NYSE MKT",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
+        {
           "ticker": "ECF",
           "name": "Ellsworth Growth and Income Fund Ltd.",
           "target_exchange": "NYSE MKT",
@@ -3396,30 +3420,6 @@
           "target_exchange": "NYSE MKT",
           "existing_exchanges": [
             "AMS"
-          ]
-        },
-        {
-          "ticker": "GRO",
-          "name": "Brazil Potash Corp. Common Shares",
-          "target_exchange": "NYSE MKT",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
-        {
-          "ticker": "LODE",
-          "name": "Comstock Inc. Common Stock",
-          "target_exchange": "NYSE MKT",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
-        {
-          "ticker": "OZ",
-          "name": "Belpointe PREP, LLC Class A Units",
-          "target_exchange": "NYSE MKT",
-          "existing_exchanges": [
-            "TSXV"
           ]
         }
       ],
@@ -3450,6 +3450,21 @@
           "exchange": "NYSE MKT"
         },
         {
+          "ticker": "CIK",
+          "name": "Credit Suisse Asset Management Income Fund, Inc. Common Stock",
+          "exchange": "NYSE MKT"
+        },
+        {
+          "ticker": "CRF",
+          "name": "Cornerstone Total Return Fund, Inc. (The) Common Stock",
+          "exchange": "NYSE MKT"
+        },
+        {
+          "ticker": "DHY",
+          "name": "Credit Suisse High Yield Credit Fund Common Stock",
+          "exchange": "NYSE MKT"
+        },
+        {
           "ticker": "ECF$A",
           "name": "Ellsworth Growth and Income Fund Ltd. 5.25% Series A Cumulative Preferred Shares (Liquidation Preference $25.00 per share)",
           "exchange": "NYSE MKT"
@@ -3457,21 +3472,6 @@
         {
           "ticker": "EONR.W",
           "name": "EON Resources Inc. Warrants, each whole warrant exercisable for three quarters of one share of Class A Common Stock at an exercise price of $11.50 per whole share",
-          "exchange": "NYSE MKT"
-        },
-        {
-          "ticker": "FLYX.W",
-          "name": "flyExclusive, Inc. Redeemable warrants, each whole warrant exercisable for one Class A common stock at an exercise price of $11.50 per share",
-          "exchange": "NYSE MKT"
-        },
-        {
-          "ticker": "GGN",
-          "name": "GAMCO Global Gold, Natural Resources & Income Trust",
-          "exchange": "NYSE MKT"
-        },
-        {
-          "ticker": "GGN$B",
-          "name": "GAMCO Global Gold, Natural Reources & Income Trust 5.00% Series B Cumulative 25.00 Liquidation Preference",
           "exchange": "NYSE MKT"
         }
       ]
@@ -4830,8 +4830,8 @@
       "exchange": "TSXV",
       "official_symbols": 1600,
       "matched": 1043,
-      "collisions": 545,
-      "missing": 12,
+      "collisions": 544,
+      "missing": 13,
       "collision_examples": [
         {
           "ticker": "AAG",
@@ -5116,8 +5116,8 @@
       "exchange": "UPCOM",
       "official_symbols": 830,
       "matched": 2,
-      "collisions": 479,
-      "missing": 349,
+      "collisions": 476,
+      "missing": 352,
       "collision_examples": [
         {
           "ticker": "AAS",

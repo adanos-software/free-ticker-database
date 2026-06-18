@@ -2,6 +2,27 @@
 
 ## [Unreleased]
 
+## [3.30.29] - 2026-06-18
+
+### Summary
+
+**Scope fix + ISIN backfill for the v3.30.28 US-domestic adds.** Two corrections in one release: (1) removes closed-end funds that wrongly slipped into v3.30.28, and (2) backfills verified US ISINs onto the blank common-stock rows.
+
+### Fixed
+
+- **194 closed-end funds removed** from the v3.30.28 additions. They evaded the v3.30.28 filter because CEFs are named "… Fund … Common Stock" / "Common Shares of Beneficial Interest" (no literal "Closed-End"), so they matched the common-stock pattern. Per the v3.30.25 scope policy CEFs are out of the Stock universe (abrdn/BlackRock/Blackstone/Eaton Vance/Nuveen/Gabelli/DoubleLine/Cohen & Steers funds).
+
+### Changed
+
+- **130 US ISINs backfilled** onto the v3.30.28 blank common-stock rows, each **triple-verified** (agent lookup + ISIN checksum + OpenFIGI `ID_ISIN` ticker match). The remaining rows stay ISIN-blank (no fabrication).
+- The OpenFIGI/collision gate caught **5 wrong agent ISINs** that would have displaced real distinct companies — `BGDE`, `FABC`, `FLZH`, `SKYA`, and a Shoe Station/Shoe Carnival mixup — each had grabbed an existing security's ISIN (Mawson `MIGI`, StableX `SBLX`, Urban-gro `UGRO`, Sharps `STSS`, Shoe Carnival `SCVL`); blanked, and all five incumbents verified intact. 14 same-issuer collisions (BBVA/Barclays/HSBC/ING/Honda/Eni/Gerdau/Prudential/STMicro/etc.) correctly merged the new US line with the existing foreign pseudo-listing.
+- ISIN coverage 97.0% → **97.3%** (backfilled ISINs + removed blank-ISIN CEFs).
+- Primary tickers 63,397 → 63,295; NYSE 2,076 → 1,998 (CEFs were mostly NYSE).
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,451 passed. Bumps VERSION to 3.30.29.
+
 ## [3.30.28] - 2026-06-18
 
 ### Summary
