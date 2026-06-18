@@ -186,20 +186,22 @@ def build_base_identifier_rows() -> list[dict[str, str]]:
         exchange = listing_row["exchange"]
         isin = listing_row.get("isin", "")
         existing_row = existing_extended.get(listing_key, {})
-        figi = existing_row.get("figi", "") if isin else ""
+        existing_isin = existing_row.get("isin", "")
+        has_isin_conflict = bool(isin and existing_isin and existing_isin != isin)
+        figi = existing_row.get("figi", "") if isin and not has_isin_conflict else ""
         rows.append(
             {
                 "listing_key": listing_key,
                 "ticker": ticker,
                 "exchange": exchange,
                 "isin": isin,
-                "wkn": existing_row.get("wkn", ""),
+                "wkn": existing_row.get("wkn", "") if not has_isin_conflict else "",
                 "figi": figi,
-                "cik": existing_row.get("cik", ""),
-                "lei": existing_row.get("lei", ""),
+                "cik": existing_row.get("cik", "") if not has_isin_conflict else "",
+                "lei": existing_row.get("lei", "") if not has_isin_conflict else "",
                 "figi_source": existing_row.get("figi_source", "") if figi else "",
-                "cik_source": existing_row.get("cik_source", ""),
-                "lei_source": existing_row.get("lei_source", ""),
+                "cik_source": existing_row.get("cik_source", "") if not has_isin_conflict else "",
+                "lei_source": existing_row.get("lei_source", "") if not has_isin_conflict else "",
                 "name": listing_row["name"],
                 "country": listing_row["country"],
                 "country_code": listing_row.get("country_code", ""),
