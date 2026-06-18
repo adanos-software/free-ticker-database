@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-17T07:17:21Z",
+    "generated_at": "2026-06-17T10:47:10Z",
     "rows": 74572,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,28 +14,28 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 67730,
-      "source_gap": 6766,
+      "pass": 67727,
+      "source_gap": 6769,
       "warn": 76
     },
     "evidence_level_counts": {
       "identifier_enriched": 4946,
       "official_reference": 68537,
-      "scoped_source_gap": 329,
-      "valid_isin": 760
+      "scoped_source_gap": 330,
+      "valid_isin": 759
     },
     "severity_counts": {
       "high": 67,
       "medium": 9,
-      "source_gap": 6970
+      "source_gap": 6975
     },
     "issue_counts": {
       "official_reference_gap": 5750,
-      "expected_missing_primary_isin": 809,
+      "expected_missing_primary_isin": 813,
       "venue_missing_official_source": 285,
       "missing_etf_category": 80,
       "country_isin_mismatch": 65,
-      "missing_stock_sector": 46,
+      "missing_stock_sector": 47,
       "official_name_mismatch": 9,
       "official_isin_mismatch": 2
     },
@@ -56,16 +56,16 @@
         "source_gap": 277
       },
       {
+        "exchange": "NASDAQ",
+        "pass": 4386,
+        "source_gap": 203,
+        "warn": 1
+      },
+      {
         "exchange": "LSE",
         "pass": 6364,
         "warn": 60,
         "source_gap": 142
-      },
-      {
-        "exchange": "NASDAQ",
-        "pass": 4389,
-        "source_gap": 200,
-        "warn": 1
       },
       {
         "exchange": "TSX",
@@ -10786,9 +10786,16 @@
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "quality_status": "source_gap",
-      "quality_score": 90,
+      "quality_score": 80,
       "recommended_action": "find_source_or_keep_scoped_gap",
       "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        },
         {
           "issue_type": "official_reference_gap",
           "severity": "source_gap",

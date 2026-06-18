@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-06-17T07:17:18Z",
-    "rows": 959,
+    "generated_at": "2026-06-17T10:47:07Z",
+    "rows": 967,
     "field_totals": {
       "missing_etf_category": 88,
-      "missing_isin_primary": 809,
-      "missing_sector_stock": 62
+      "missing_isin_primary": 813,
+      "missing_sector_stock": 66
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 45,
@@ -20,12 +20,12 @@
       "fundlike_stock_sector_gap": 1,
       "inactive_or_legacy_identifier_gap": 18,
       "official_current_directory_absent_identifier_gap": 12,
-      "official_identifier_not_exposed_source_gap": 256,
-      "official_identifier_reference_unmatched_gap": 70,
-      "official_industry_taxonomy_unavailable_gap": 21,
+      "official_identifier_not_exposed_source_gap": 258,
+      "official_identifier_reference_unmatched_gap": 72,
+      "official_industry_taxonomy_unavailable_gap": 22,
       "official_product_reference_unmatched_category_gap": 20,
       "official_product_taxonomy_unavailable_gap": 58,
-      "otc_sector_source_gap": 38,
+      "otc_sector_source_gap": 41,
       "shell_or_cpc_sector_gap": 1
     },
     "class_by_field": {
@@ -41,12 +41,12 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 292,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 18,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 12,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 256,
-      "missing_isin_primary:official_identifier_reference_unmatched_gap": 70,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 258,
+      "missing_isin_primary:official_identifier_reference_unmatched_gap": 72,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 1,
       "missing_sector_stock:fundlike_stock_sector_gap": 1,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 21,
-      "missing_sector_stock:otc_sector_source_gap": 38,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 22,
+      "missing_sector_stock:otc_sector_source_gap": 41,
       "missing_sector_stock:shell_or_cpc_sector_gap": 1
     },
     "top_exchanges_by_field": {
@@ -107,7 +107,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 74
+          "rows": 78
         },
         {
           "exchange": "NYSE ARCA",
@@ -137,7 +137,7 @@
       "missing_sector_stock": [
         {
           "exchange": "OTC",
-          "rows": 38
+          "rows": 41
         },
         {
           "exchange": "B3",
@@ -172,7 +172,7 @@
           "rows": 1
         },
         {
-          "exchange": "OSL",
+          "exchange": "NASDAQ",
           "rows": 1
         }
       ]
@@ -203,6 +203,14 @@
         "source_gate": "Exact fund/trust symbol and product name with checksum."
       },
       {
+        "field": "missing_sector_stock",
+        "gap_class": "otc_sector_source_gap",
+        "exchange": "OTC",
+        "rows": 41,
+        "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
+        "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
+      },
+      {
         "field": "missing_isin_primary",
         "gap_class": "official_identifier_not_exposed_source_gap",
         "exchange": "NYSE",
@@ -211,18 +219,10 @@
         "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
       },
       {
-        "field": "missing_sector_stock",
-        "gap_class": "otc_sector_source_gap",
-        "exchange": "OTC",
-        "rows": 38,
-        "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
-        "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
-      },
-      {
         "field": "missing_isin_primary",
         "gap_class": "official_identifier_not_exposed_source_gap",
         "exchange": "NASDAQ",
-        "rows": 36,
+        "rows": 38,
         "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
         "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
       },
@@ -6247,6 +6247,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "NASDAQ::APAD",
+      "ticker": "APAD",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "A Paradise Acquisition Corp.",
+      "gap_class": "official_identifier_reference_unmatched_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN.",
+      "source_gap_context": "listing_key=NASDAQ::APAD;exchange=NASDAQ;ticker=APAD;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_reference_unmatched_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_reference_unmatched_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "NASDAQ::AUR",
       "ticker": "AUR",
       "exchange": "NASDAQ",
@@ -6536,6 +6553,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "NASDAQ::MCW",
+      "ticker": "MCW",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Mister Car Wash, Inc. Common Stock",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NASDAQ::MCW;exchange=NASDAQ;ticker=MCW;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "NASDAQ::MLAC",
       "ticker": "MLAC",
       "exchange": "NASDAQ",
@@ -6634,6 +6668,23 @@
       "source_gap_context": "listing_key=NASDAQ::OIOWW;exchange=NASDAQ;ticker=OIOWW;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "NASDAQ::RAPT",
+      "ticker": "RAPT",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "RAPT Therapeutics Inc",
+      "gap_class": "official_identifier_reference_unmatched_gap",
+      "review_needed": "true",
+      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
+      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN.",
+      "source_gap_context": "listing_key=NASDAQ::RAPT;exchange=NASDAQ;ticker=RAPT;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_reference_unmatched_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_reference_unmatched_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -6853,6 +6904,23 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NASDAQ::WFF;exchange=NASDAQ;ticker=WFF;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "NASDAQ::WGRX",
+      "ticker": "WGRX",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Wellgistics Health, Inc. Common Stock",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NASDAQ::WGRX;exchange=NASDAQ;ticker=WGRX;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -15937,6 +16005,23 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
+      "listing_key": "NASDAQ::EUDAW",
+      "ticker": "EUDAW",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "EUDA Health Holdings Limited",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=NASDAQ::EUDAW;exchange=NASDAQ;ticker=EUDAW;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
       "listing_key": "OSL::STECH",
       "ticker": "STECH",
       "exchange": "OSL",
@@ -15999,6 +16084,23 @@
       "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
       "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
       "source_gap_context": "listing_key=OTC::BREJY;exchange=OTC;ticker=BREJY;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "OTC::BURUW",
+      "ticker": "BURUW",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "name": "Nuburu Inc",
+      "gap_class": "otc_sector_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require SEC SIC, issuer filing, OTCMarkets profile, or reviewed secondary profile data; no name-only sector guesses.",
+      "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
+      "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
+      "source_gap_context": "listing_key=OTC::BURUW;exchange=OTC;ticker=BURUW;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
     },
@@ -16294,6 +16396,23 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
+      "listing_key": "OTC::OPADW",
+      "ticker": "OPADW",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "name": "Offerpad Solutions Inc.",
+      "gap_class": "otc_sector_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require SEC SIC, issuer filing, OTCMarkets profile, or reviewed secondary profile data; no name-only sector guesses.",
+      "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
+      "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
+      "source_gap_context": "listing_key=OTC::OPADW;exchange=OTC;ticker=OPADW;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
       "listing_key": "OTC::OPMNF",
       "ticker": "OPMNF",
       "exchange": "OTC",
@@ -16305,6 +16424,23 @@
       "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
       "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
       "source_gap_context": "listing_key=OTC::OPMNF;exchange=OTC;ticker=OPMNF;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "OTC::OWLTW",
+      "ticker": "OWLTW",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "name": "Owlet Inc.",
+      "gap_class": "otc_sector_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require SEC SIC, issuer filing, OTCMarkets profile, or reviewed secondary profile data; no name-only sector guesses.",
+      "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
+      "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
+      "source_gap_context": "listing_key=OTC::OWLTW;exchange=OTC;ticker=OWLTW;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
     },

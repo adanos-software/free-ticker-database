@@ -2,6 +2,22 @@
 
 ## [Unreleased]
 
+## [3.30.24] - 2026-06-17
+
+### Summary
+
+US ISIN-resolve **wave 2** — completes the US stale-ISIN sweep that hit a session limit in v3.30.23. The agent pass was resumed (full 510/510 suspects verified) and the remaining suspects applied.
+
+### Changed
+
+- **183 further US ISIN corrections** (179 updated to the current sourced ISIN — more 2026 reverse-splits/redomiciles; 4 cleared as delisted) — the deferred ~198 from v3.30.23, now resolved.
+- Allowlisted 3 Israeli-incorporated NASDAQ listings whose home IL ISIN was set (`RDCM` RADCOM, `SILC` Silicom, `TATT` TAT Technologies).
+- Primary tickers 63,245 → 63,257.
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,451 passed. Bumps VERSION to 3.30.24.
+
 ## [3.30.23] - 2026-06-17
 
 ### Summary
