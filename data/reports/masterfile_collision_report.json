@@ -1,17 +1,17 @@
 {
   "global": {
     "official_symbols": 78844,
-    "matched": 53094,
-    "collisions": 11342,
-    "missing": 14408
+    "matched": 52850,
+    "collisions": 11290,
+    "missing": 14704
   },
   "exchanges": [
     {
       "exchange": "ADX",
       "official_symbols": 122,
       "matched": 85,
-      "collisions": 33,
-      "missing": 4,
+      "collisions": 32,
+      "missing": 5,
       "collision_examples": [
         {
           "ticker": "ADIB",
@@ -98,6 +98,11 @@
       ],
       "missing_examples": [
         {
+          "ticker": "EIC",
+          "name": "Emirates Insurance Co",
+          "exchange": "ADX"
+        },
+        {
           "ticker": "EMOBILITY",
           "name": "Emirates Mobility Company",
           "exchange": "ADX"
@@ -123,8 +128,8 @@
       "exchange": "AMS",
       "official_symbols": 583,
       "matched": 241,
-      "collisions": 297,
-      "missing": 45,
+      "collisions": 295,
+      "missing": 47,
       "collision_examples": [
         {
           "ticker": "2AAP",
@@ -224,6 +229,11 @@
           "exchange": "AMS"
         },
         {
+          "ticker": "BNJ",
+          "name": "BANIJAY GROUP",
+          "exchange": "AMS"
+        },
+        {
           "ticker": "BSWE",
           "name": "BlueSphere World Equity UCITS ETF",
           "exchange": "AMS"
@@ -251,11 +261,6 @@
         {
           "ticker": "EURP",
           "name": "iShares Europe Domestic Focus UCITS ETF EUR (Acc)",
-          "exchange": "AMS"
-        },
-        {
-          "ticker": "GLMY",
-          "name": "IncomeShares Gold Miners+ Yield ETP",
           "exchange": "AMS"
         }
       ]
@@ -950,8 +955,8 @@
       "exchange": "BVB",
       "official_symbols": 348,
       "matched": 75,
-      "collisions": 123,
-      "missing": 150,
+      "collisions": 122,
+      "missing": 151,
       "collision_examples": [
         {
           "ticker": "AAB",
@@ -1426,8 +1431,8 @@
       "exchange": "Euronext",
       "official_symbols": 4426,
       "matched": 990,
-      "collisions": 2346,
-      "missing": 1090,
+      "collisions": 2340,
+      "missing": 1096,
       "collision_examples": [
         {
           "ticker": "0EMU",
@@ -1708,8 +1713,8 @@
       "exchange": "HNX",
       "official_symbols": 300,
       "matched": 105,
-      "collisions": 156,
-      "missing": 39,
+      "collisions": 153,
+      "missing": 42,
       "collision_examples": [
         {
           "ticker": "ADC",
@@ -1822,6 +1827,11 @@
           "exchange": "HNX"
         },
         {
+          "ticker": "CET",
+          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n HTC Holding",
+          "exchange": "HNX"
+        },
+        {
           "ticker": "CJC",
           "name": "CTCP C\u01a1 \u0111i\u1ec7n Mi\u1ec1n Trung",
           "exchange": "HNX"
@@ -1840,11 +1850,6 @@
           "ticker": "DNC",
           "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n \u0110i\u1ec7n n\u01b0\u1edbc l\u1eafp m\u00e1y H\u1ea3i Ph\u00f2ng",
           "exchange": "HNX"
-        },
-        {
-          "ticker": "ECI",
-          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n T\u1eadp \u0111o\u00e0n ECI",
-          "exchange": "HNX"
         }
       ]
     },
@@ -1852,8 +1857,8 @@
       "exchange": "IDX",
       "official_symbols": 958,
       "matched": 694,
-      "collisions": 243,
-      "missing": 21,
+      "collisions": 242,
+      "missing": 22,
       "collision_examples": [
         {
           "ticker": "ABBA",
@@ -1938,6 +1943,11 @@
       ],
       "missing_examples": [
         {
+          "ticker": "BIPI",
+          "name": "PT Astrindo Nusantara Infrastruktur Tbk.",
+          "exchange": "IDX"
+        },
+        {
           "ticker": "BLUE",
           "name": "PT Berkah Prima Perkasa Tbk",
           "exchange": "IDX"
@@ -1980,11 +1990,6 @@
         {
           "ticker": "LCGP",
           "name": "PT Eureka Prima Jakarta Tbk.",
-          "exchange": "IDX"
-        },
-        {
-          "ticker": "MTFN",
-          "name": "Capitalinc Investment Tbk",
           "exchange": "IDX"
         }
       ]
@@ -2217,8 +2222,8 @@
       "exchange": "LSE",
       "official_symbols": 11021,
       "matched": 6419,
-      "collisions": 1106,
-      "missing": 3496,
+      "collisions": 1097,
+      "missing": 3505,
       "collision_examples": [
         {
           "ticker": "0GZJ",
@@ -2358,8 +2363,8 @@
       "exchange": "MSX",
       "official_symbols": 108,
       "matched": 91,
-      "collisions": 14,
-      "missing": 3,
+      "collisions": 13,
+      "missing": 4,
       "collision_examples": [
         {
           "ticker": "AMAT",
@@ -2444,6 +2449,11 @@
       ],
       "missing_examples": [
         {
+          "ticker": "OCCI",
+          "name": "OMAN CHROMITE",
+          "exchange": "MSX"
+        },
+        {
           "ticker": "OOMP",
           "name": "OMAN OIL- PREF.",
           "exchange": "MSX"
@@ -2463,9 +2473,9 @@
     {
       "exchange": "NASDAQ",
       "official_symbols": 5524,
-      "matched": 4455,
-      "collisions": 80,
-      "missing": 989,
+      "matched": 4370,
+      "collisions": 82,
+      "missing": 1072,
       "collision_examples": [
         {
           "ticker": "ACAA",
@@ -2605,8 +2615,8 @@
       "exchange": "NEO",
       "official_symbols": 440,
       "matched": 190,
-      "collisions": 86,
-      "missing": 164,
+      "collisions": 84,
+      "missing": 166,
       "collision_examples": [
         {
           "ticker": "ABB",
@@ -2899,8 +2909,8 @@
       "exchange": "NSE_KE",
       "official_symbols": 66,
       "matched": 10,
-      "collisions": 24,
-      "missing": 32,
+      "collisions": 23,
+      "missing": 33,
       "collision_examples": [
         {
           "ticker": "BAMB",
@@ -2975,11 +2985,11 @@
           ]
         },
         {
-          "ticker": "DTK",
-          "name": "Diamond Trust Bank Kenya Ltd Ord 4.00",
+          "ticker": "EABL",
+          "name": "East African Breweries Ltd Ord 2.00",
           "target_exchange": "NSE_KE",
           "existing_exchanges": [
-            "NYSE"
+            "DSE_TZ"
           ]
         }
       ],
@@ -3015,6 +3025,11 @@
           "exchange": "NSE_KE"
         },
         {
+          "ticker": "DTK",
+          "name": "Diamond Trust Bank Kenya Ltd Ord 4.00",
+          "exchange": "NSE_KE"
+        },
+        {
           "ticker": "EGAD",
           "name": "Eaagads Ltd Ord 1.25 AIMS",
           "exchange": "NSE_KE"
@@ -3028,20 +3043,15 @@
           "ticker": "HAFR",
           "name": "Home Afrika Ltd Ord 1.00",
           "exchange": "NSE_KE"
-        },
-        {
-          "ticker": "JUB",
-          "name": "Jubilee Holdings Ltd Ord 5.00",
-          "exchange": "NSE_KE"
         }
       ]
     },
     {
       "exchange": "NYSE",
       "official_symbols": 3872,
-      "matched": 2043,
-      "collisions": 536,
-      "missing": 1293,
+      "matched": 1897,
+      "collisions": 535,
+      "missing": 1440,
       "collision_examples": [
         {
           "ticker": "ABX",
@@ -3324,9 +3334,9 @@
     {
       "exchange": "NYSE MKT",
       "official_symbols": 313,
-      "matched": 229,
-      "collisions": 25,
-      "missing": 59,
+      "matched": 216,
+      "collisions": 27,
+      "missing": 70,
       "collision_examples": [
         {
           "ticker": "AEF",
@@ -3397,19 +3407,19 @@
           ]
         },
         {
+          "ticker": "ECF",
+          "name": "Ellsworth Growth and Income Fund Ltd.",
+          "target_exchange": "NYSE MKT",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
+        {
           "ticker": "EIM",
           "name": "Eaton Vance Municipal Bond Fund Common Shares of Beneficial Interest, $.01 par value",
           "target_exchange": "NYSE MKT",
           "existing_exchanges": [
             "ICE_IS"
-          ]
-        },
-        {
-          "ticker": "FTF",
-          "name": "Franklin Limited Duration Income Trust Common Shares of Beneficial Interest",
-          "target_exchange": "NYSE MKT",
-          "existing_exchanges": [
-            "LSE"
           ]
         }
       ],
@@ -3430,6 +3440,11 @@
           "exchange": "NYSE MKT"
         },
         {
+          "ticker": "BCV",
+          "name": "Bancroft Fund, Ltd.",
+          "exchange": "NYSE MKT"
+        },
+        {
           "ticker": "BCV$A",
           "name": "Bancroft Fund Limited 5.375% Series A Cumulative Preferred Shares",
           "exchange": "NYSE MKT"
@@ -3445,23 +3460,18 @@
           "exchange": "NYSE MKT"
         },
         {
+          "ticker": "CET",
+          "name": "Central Securities Corporation Common Stock",
+          "exchange": "NYSE MKT"
+        },
+        {
+          "ticker": "CEV",
+          "name": "Eaton Vance California Municipal Income Trust Shares of Beneficial Interest",
+          "exchange": "NYSE MKT"
+        },
+        {
           "ticker": "CIK",
           "name": "Credit Suisse Asset Management Income Fund, Inc. Common Stock",
-          "exchange": "NYSE MKT"
-        },
-        {
-          "ticker": "CRF",
-          "name": "Cornerstone Total Return Fund, Inc. (The) Common Stock",
-          "exchange": "NYSE MKT"
-        },
-        {
-          "ticker": "DHY",
-          "name": "Credit Suisse High Yield Credit Fund Common Stock",
-          "exchange": "NYSE MKT"
-        },
-        {
-          "ticker": "ECF$A",
-          "name": "Ellsworth Growth and Income Fund Ltd. 5.25% Series A Cumulative Preferred Shares (Liquidation Preference $25.00 per share)",
           "exchange": "NYSE MKT"
         }
       ]
@@ -3470,8 +3480,8 @@
       "exchange": "NZX",
       "official_symbols": 173,
       "matched": 45,
-      "collisions": 127,
-      "missing": 1,
+      "collisions": 126,
+      "missing": 2,
       "collision_examples": [
         {
           "ticker": "AFC",
@@ -3557,6 +3567,11 @@
       ],
       "missing_examples": [
         {
+          "ticker": "BIT",
+          "name": "The Bankers Investment Trust Plc Ordinary Shares",
+          "exchange": "NZX"
+        },
+        {
           "ticker": "VHP",
           "name": "Vital Healthcare Property Trust Ordinary Units",
           "exchange": "NZX"
@@ -3567,8 +3582,8 @@
       "exchange": "OSL",
       "official_symbols": 297,
       "matched": 249,
-      "collisions": 46,
-      "missing": 2,
+      "collisions": 45,
+      "missing": 3,
       "collision_examples": [
         {
           "ticker": "ABG",
@@ -3620,14 +3635,6 @@
           ]
         },
         {
-          "ticker": "ASA",
-          "name": "ATLANTIC SAPPHIRE",
-          "target_exchange": "OSL",
-          "existing_exchanges": [
-            "NYSE"
-          ]
-        },
-        {
           "ticker": "AUTO",
           "name": "AUTOSTORE HOLDINGS",
           "target_exchange": "OSL",
@@ -3650,9 +3657,22 @@
           "existing_exchanges": [
             "NYSE ARCA"
           ]
+        },
+        {
+          "ticker": "BORR",
+          "name": "BORR DRILLING",
+          "target_exchange": "OSL",
+          "existing_exchanges": [
+            "NYSE"
+          ]
         }
       ],
       "missing_examples": [
+        {
+          "ticker": "ASA",
+          "name": "ATLANTIC SAPPHIRE",
+          "exchange": "OSL"
+        },
         {
           "ticker": "CAPT",
           "name": "CAPITAL TANKERS",
@@ -3669,8 +3689,8 @@
       "exchange": "OTC",
       "official_symbols": 11925,
       "matched": 7640,
-      "collisions": 41,
-      "missing": 4244,
+      "collisions": 40,
+      "missing": 4245,
       "collision_examples": [
         {
           "ticker": "AEAE",
@@ -3810,8 +3830,8 @@
       "exchange": "PSE",
       "official_symbols": 381,
       "matched": 90,
-      "collisions": 184,
-      "missing": 107,
+      "collisions": 183,
+      "missing": 108,
       "collision_examples": [
         {
           "ticker": "AAA",
@@ -4141,8 +4161,8 @@
       "exchange": "SET",
       "official_symbols": 944,
       "matched": 545,
-      "collisions": 349,
-      "missing": 50,
+      "collisions": 346,
+      "missing": 53,
       "collision_examples": [
         {
           "ticker": "A",
@@ -4272,13 +4292,13 @@
           "exchange": "SET"
         },
         {
-          "ticker": "CIMBT",
-          "name": "CIMB THAI BANK PUBLIC COMPANY LIMITED",
+          "ticker": "BUI",
+          "name": "BANGKOK UNION INSURANCE PUBLIC COMPANY LIMITED",
           "exchange": "SET"
         },
         {
-          "ticker": "CPN",
-          "name": "CENTRAL PATTANA PUBLIC COMPANY LIMITED",
+          "ticker": "CIMBT",
+          "name": "CIMB THAI BANK PUBLIC COMPANY LIMITED",
           "exchange": "SET"
         }
       ]
@@ -4287,8 +4307,8 @@
       "exchange": "SGX",
       "official_symbols": 738,
       "matched": 589,
-      "collisions": 143,
-      "missing": 6,
+      "collisions": 140,
+      "missing": 9,
       "collision_examples": [
         {
           "ticker": "500",
@@ -4373,6 +4393,16 @@
       ],
       "missing_examples": [
         {
+          "ticker": "BCV",
+          "name": "Qian Hu",
+          "exchange": "SGX"
+        },
+        {
+          "ticker": "GLU",
+          "name": "Lion SG Phy Gold US$",
+          "exchange": "SGX"
+        },
+        {
           "ticker": "JCO",
           "name": "JustCo",
           "exchange": "SGX"
@@ -4380,6 +4410,11 @@
         {
           "ticker": "JFQ",
           "name": "AnnicaHoldings",
+          "exchange": "SGX"
+        },
+        {
+          "ticker": "MMT",
+          "name": "PHILLIP MM US$D",
           "exchange": "SGX"
         },
         {
@@ -4670,8 +4705,8 @@
       "exchange": "TSX",
       "official_symbols": 788,
       "matched": 326,
-      "collisions": 460,
-      "missing": 2,
+      "collisions": 456,
+      "missing": 6,
       "collision_examples": [
         {
           "ticker": "AAB",
@@ -4766,6 +4801,26 @@
           "ticker": "BPYP",
           "name": "Brookfield Property Preferred L.P.",
           "exchange": "TSX"
+        },
+        {
+          "ticker": "EFR",
+          "name": "Energy Fuels Inc.",
+          "exchange": "TSX"
+        },
+        {
+          "ticker": "FT",
+          "name": "Fortune Minerals Limited",
+          "exchange": "TSX"
+        },
+        {
+          "ticker": "TVA",
+          "name": "TVA Group Inc.",
+          "exchange": "TSX"
+        },
+        {
+          "ticker": "TVE",
+          "name": "Tamarack Valley Energy Ltd.",
+          "exchange": "TSX"
         }
       ]
     },
@@ -4773,8 +4828,8 @@
       "exchange": "TSXV",
       "official_symbols": 1600,
       "matched": 1043,
-      "collisions": 552,
-      "missing": 5,
+      "collisions": 544,
+      "missing": 13,
       "collision_examples": [
         {
           "ticker": "AAG",
@@ -4868,8 +4923,33 @@
           "exchange": "TSXV"
         },
         {
+          "ticker": "BTT",
+          "name": "Bitterroot Resources Ltd.",
+          "exchange": "TSXV"
+        },
+        {
           "ticker": "CAPT",
           "name": "Capitan Silver Corp.",
+          "exchange": "TSXV"
+        },
+        {
+          "ticker": "CMU",
+          "name": "Comet Industries Ltd.",
+          "exchange": "TSXV"
+        },
+        {
+          "ticker": "GRF",
+          "name": "Green Rise Foods Inc.",
+          "exchange": "TSXV"
+        },
+        {
+          "ticker": "GUG",
+          "name": "Gungnir Resources Inc.",
+          "exchange": "TSXV"
+        },
+        {
+          "ticker": "MCI",
+          "name": "Minnova Corp.",
           "exchange": "TSXV"
         },
         {
@@ -4878,13 +4958,13 @@
           "exchange": "TSXV"
         },
         {
-          "ticker": "PX",
-          "name": "Pelangio Exploration Inc.",
+          "ticker": "PGZ",
+          "name": "Pan Global Resources Inc.",
           "exchange": "TSXV"
         },
         {
-          "ticker": "SCD",
-          "name": "Scandium Canada Ltd.",
+          "ticker": "PX",
+          "name": "Pelangio Exploration Inc.",
           "exchange": "TSXV"
         }
       ]
@@ -5034,8 +5114,8 @@
       "exchange": "UPCOM",
       "official_symbols": 830,
       "matched": 2,
-      "collisions": 477,
-      "missing": 351,
+      "collisions": 473,
+      "missing": 355,
       "collision_examples": [
         {
           "ticker": "AAS",
@@ -5167,13 +5247,13 @@
           "exchange": "UPCOM"
         },
         {
-          "ticker": "BDG",
-          "name": "C\u00f4ng ty C\u1ed5 ph\u1ea7n May m\u1eb7c B\u00ecnh D\u01b0\u01a1ng",
+          "ticker": "BCV",
+          "name": "CTCP Du l\u1ecbch v\u00e0 Th\u01b0\u01a1ng m\u1ea1i B\u1eb1ng Giang Cao B\u1eb1ng - Vimico",
           "exchange": "UPCOM"
         },
         {
-          "ticker": "BDW",
-          "name": "CTCP C\u1ea5p tho\u00e1t n\u01b0\u1edbc B\u00ecnh \u0110\u1ecbnh",
+          "ticker": "BDG",
+          "name": "C\u00f4ng ty C\u1ed5 ph\u1ea7n May m\u1eb7c B\u00ecnh D\u01b0\u01a1ng",
           "exchange": "UPCOM"
         }
       ]
@@ -5182,8 +5262,8 @@
       "exchange": "XETRA",
       "official_symbols": 4544,
       "matched": 3672,
-      "collisions": 777,
-      "missing": 95,
+      "collisions": 775,
+      "missing": 97,
       "collision_examples": [
         {
           "ticker": "0GZK",

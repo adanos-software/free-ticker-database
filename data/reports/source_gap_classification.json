@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-06-17T10:47:07Z",
-    "rows": 967,
+    "generated_at": "2026-06-18T10:35:21Z",
+    "rows": 966,
     "field_totals": {
-      "missing_etf_category": 88,
-      "missing_isin_primary": 813,
-      "missing_sector_stock": 66
+      "missing_etf_category": 89,
+      "missing_isin_primary": 810,
+      "missing_sector_stock": 67
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 45,
@@ -14,9 +14,9 @@
       "commodity_etf_category_gap": 3,
       "debt_or_securitized_identifier_gap": 81,
       "digital_asset_etf_category_gap": 1,
-      "equity_etf_category_gap": 3,
+      "equity_etf_category_gap": 4,
       "fixed_income_etf_category_gap": 3,
-      "fund_or_trust_identifier_gap": 292,
+      "fund_or_trust_identifier_gap": 289,
       "fundlike_stock_sector_gap": 1,
       "inactive_or_legacy_identifier_gap": 18,
       "official_current_directory_absent_identifier_gap": 12,
@@ -25,20 +25,20 @@
       "official_industry_taxonomy_unavailable_gap": 22,
       "official_product_reference_unmatched_category_gap": 20,
       "official_product_taxonomy_unavailable_gap": 58,
-      "otc_sector_source_gap": 41,
+      "otc_sector_source_gap": 42,
       "shell_or_cpc_sector_gap": 1
     },
     "class_by_field": {
       "missing_etf_category:commodity_etf_category_gap": 3,
       "missing_etf_category:digital_asset_etf_category_gap": 1,
-      "missing_etf_category:equity_etf_category_gap": 3,
+      "missing_etf_category:equity_etf_category_gap": 4,
       "missing_etf_category:fixed_income_etf_category_gap": 3,
       "missing_etf_category:official_product_reference_unmatched_category_gap": 20,
       "missing_etf_category:official_product_taxonomy_unavailable_gap": 58,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 45,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 35,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 81,
-      "missing_isin_primary:fund_or_trust_identifier_gap": 292,
+      "missing_isin_primary:fund_or_trust_identifier_gap": 289,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 18,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 12,
       "missing_isin_primary:official_identifier_not_exposed_source_gap": 258,
@@ -46,7 +46,7 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 1,
       "missing_sector_stock:fundlike_stock_sector_gap": 1,
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 22,
-      "missing_sector_stock:otc_sector_source_gap": 41,
+      "missing_sector_stock:otc_sector_source_gap": 42,
       "missing_sector_stock:shell_or_cpc_sector_gap": 1
     },
     "top_exchanges_by_field": {
@@ -107,7 +107,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 78
+          "rows": 75
         },
         {
           "exchange": "NYSE ARCA",
@@ -137,7 +137,7 @@
       "missing_sector_stock": [
         {
           "exchange": "OTC",
-          "rows": 41
+          "rows": 42
         },
         {
           "exchange": "B3",
@@ -206,7 +206,7 @@
         "field": "missing_sector_stock",
         "gap_class": "otc_sector_source_gap",
         "exchange": "OTC",
-        "rows": 41,
+        "rows": 42,
         "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
         "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
       },
@@ -246,7 +246,7 @@
         "field": "missing_isin_primary",
         "gap_class": "fund_or_trust_identifier_gap",
         "exchange": "NASDAQ",
-        "rows": 31,
+        "rows": 28,
         "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
         "source_gate": "Exact fund/trust symbol and product name with checksum."
       },
@@ -1823,6 +1823,23 @@
       "source_gap_context": "listing_key=WSE::ETFBW20LV;exchange=WSE;ticker=ETFBW20LV;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
       "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
+      "listing_key": "XETRA::FCRN",
+      "ticker": "FCRN",
+      "exchange": "XETRA",
+      "asset_type": "ETF",
+      "name": "iShares World Equity Factor Rotation Active UCITS ETF USD (Acc)",
+      "gap_class": "equity_etf_category_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require official fund asset class or deterministic equity-index product evidence.",
+      "recommended_next_source": "Official fund asset class or reviewed product profile.",
+      "source_gate": "Exact ETF symbol/name and deterministic equity exposure evidence.",
+      "source_gap_context": "listing_key=XETRA::FCRN;exchange=XETRA;ticker=FCRN;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=equity_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=equity_etf_category_gap"
     },
     {
       "field": "missing_etf_category",
@@ -6145,23 +6162,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "NASDAQ::ADAMG",
-      "ticker": "ADAMG",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Adamas Trust, Inc.",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
-      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum.",
-      "source_gap_context": "listing_key=NASDAQ::ADAMG;exchange=NASDAQ;ticker=ADAMG;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "NASDAQ::ADAMM",
       "ticker": "ADAMM",
       "exchange": "NASDAQ",
@@ -6175,40 +6175,6 @@
       "source_gap_context": "listing_key=NASDAQ::ADAMM;exchange=NASDAQ;ticker=ADAMM;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=debt_or_securitized_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=debt_or_securitized_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NASDAQ::ADAMN",
-      "ticker": "ADAMN",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Adamas Trust, Inc",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
-      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum.",
-      "source_gap_context": "listing_key=NASDAQ::ADAMN;exchange=NASDAQ;ticker=ADAMN;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NASDAQ::ADAMZ",
-      "ticker": "ADAMZ",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Adamas Trust, Inc",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
-      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum.",
-      "source_gap_context": "listing_key=NASDAQ::ADAMZ;exchange=NASDAQ;ticker=ADAMZ;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -16611,6 +16577,23 @@
       "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
       "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
       "source_gap_context": "listing_key=OTC::SHCC;exchange=OTC;ticker=SHCC;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "OTC::SPMCP",
+      "ticker": "SPMCP",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "name": "Sound Point Meridian Capital, Inc.",
+      "gap_class": "otc_sector_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require SEC SIC, issuer filing, OTCMarkets profile, or reviewed secondary profile data; no name-only sector guesses.",
+      "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
+      "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
+      "source_gap_context": "listing_key=OTC::SPMCP;exchange=OTC;ticker=SPMCP;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
     },

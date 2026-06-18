@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-06-17T10:47:10Z",
-    "rows": 74572,
+    "generated_at": "2026-06-18T10:38:50Z",
+    "rows": 74318,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,26 +14,26 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 67727,
-      "source_gap": 6769,
+      "pass": 67485,
+      "source_gap": 6757,
       "warn": 76
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4946,
-      "official_reference": 68537,
-      "scoped_source_gap": 330,
-      "valid_isin": 759
+      "identifier_enriched": 4937,
+      "official_reference": 68293,
+      "scoped_source_gap": 327,
+      "valid_isin": 761
     },
     "severity_counts": {
       "high": 67,
       "medium": 9,
-      "source_gap": 6975
+      "source_gap": 6963
     },
     "issue_counts": {
-      "official_reference_gap": 5750,
-      "expected_missing_primary_isin": 813,
+      "official_reference_gap": 5740,
+      "expected_missing_primary_isin": 810,
       "venue_missing_official_source": 285,
-      "missing_etf_category": 80,
+      "missing_etf_category": 81,
       "country_isin_mismatch": 65,
       "missing_stock_sector": 47,
       "official_name_mismatch": 9,
@@ -43,7 +43,7 @@
       {
         "exchange": "OTC",
         "pass": 7864,
-        "source_gap": 3183,
+        "source_gap": 3182,
         "warn": 6
       },
       {
@@ -56,12 +56,6 @@
         "source_gap": 277
       },
       {
-        "exchange": "NASDAQ",
-        "pass": 4386,
-        "source_gap": 203,
-        "warn": 1
-      },
-      {
         "exchange": "LSE",
         "pass": 6364,
         "warn": 60,
@@ -71,6 +65,12 @@
         "exchange": "TSX",
         "pass": 1703,
         "source_gap": 201
+      },
+      {
+        "exchange": "NASDAQ",
+        "pass": 4304,
+        "source_gap": 195,
+        "warn": 1
       },
       {
         "exchange": "BSE_IN",
@@ -105,20 +105,14 @@
       },
       {
         "exchange": "XETRA",
-        "pass": 3744,
-        "source_gap": 100
+        "pass": 3743,
+        "source_gap": 101
       },
       {
         "exchange": "TSXV",
         "pass": 970,
         "source_gap": 94,
         "warn": 2
-      },
-      {
-        "exchange": "NYSE",
-        "pass": 1988,
-        "source_gap": 90,
-        "warn": 1
       },
       {
         "exchange": "AMS",
@@ -129,6 +123,12 @@
         "exchange": "JSE",
         "source_gap": 88,
         "pass": 124
+      },
+      {
+        "exchange": "NYSE",
+        "pass": 1842,
+        "source_gap": 87,
+        "warn": 1
       },
       {
         "exchange": "BATS",
@@ -5718,62 +5718,8 @@
       ]
     },
     {
-      "listing_key": "NASDAQ::ADAMG",
-      "ticker": "ADAMG",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
       "listing_key": "NASDAQ::ADAMM",
       "ticker": "ADAMM",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "NASDAQ::ADAMN",
-      "ticker": "ADAMN",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "NASDAQ::ADAMZ",
-      "ticker": "ADAMZ",
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "quality_status": "source_gap",
@@ -18431,6 +18377,60 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "ASX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "B3::BMGB3",
+      "ticker": "BMGB3",
+      "exchange": "B3",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "B3",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BMGP",
+      "ticker": "BMGP",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BMOOF",
+      "ticker": "BMOOF",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
