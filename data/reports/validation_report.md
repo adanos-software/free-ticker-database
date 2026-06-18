@@ -1,6 +1,6 @@
 # Database Validation Report
 
-Generated at: `2026-06-18T17:08:55Z`
+Generated at: `2026-06-18T17:37:18Z`
 
 Status: `PASS`
 
@@ -8,10 +8,10 @@ Status: `PASS`
 
 | Metric | Value |
 |---|---:|
-| ticker_rows | 63,295 |
-| listing_rows | 74,727 |
-| adanos_reference_rows | 63,295 |
-| entry_quality_rows | 74,727 |
+| ticker_rows | 63,288 |
+| listing_rows | 74,720 |
+| adanos_reference_rows | 63,288 |
+| entry_quality_rows | 74,720 |
 | error_gates | 83 |
 | failed_error_gates | 0 |
 | info_gates | 5 |
