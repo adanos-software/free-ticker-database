@@ -1,9 +1,9 @@
 {
   "global": {
     "official_symbols": 78844,
-    "matched": 52969,
-    "collisions": 11292,
-    "missing": 14583
+    "matched": 53385,
+    "collisions": 11181,
+    "missing": 14278
   },
   "exchanges": [
     {
@@ -535,7 +535,8 @@
           "name": "National Bank of Bahrain B.S.C.",
           "target_exchange": "BHB",
           "existing_exchanges": [
-            "LSE"
+            "LSE",
+            "NYSE"
           ]
         },
         {
@@ -733,6 +734,7 @@
           "name": "Commercial Bank of Kuwait",
           "target_exchange": "BK",
           "existing_exchanges": [
+            "NASDAQ",
             "XETRA"
           ]
         },
@@ -1311,7 +1313,8 @@
           "name": "Dubai Islamic Insurance and Reinsurance Co. PJSC",
           "target_exchange": "DFM",
           "existing_exchanges": [
-            "IDX"
+            "IDX",
+            "NASDAQ"
           ]
         },
         {
@@ -1431,8 +1434,8 @@
       "exchange": "Euronext",
       "official_symbols": 4426,
       "matched": 990,
-      "collisions": 2345,
-      "missing": 1091,
+      "collisions": 2347,
+      "missing": 1089,
       "collision_examples": [
         {
           "ticker": "0EMU",
@@ -1713,8 +1716,8 @@
       "exchange": "HNX",
       "official_symbols": 300,
       "matched": 105,
-      "collisions": 155,
-      "missing": 40,
+      "collisions": 156,
+      "missing": 39,
       "collision_examples": [
         {
           "ticker": "ADC",
@@ -1857,8 +1860,8 @@
       "exchange": "IDX",
       "official_symbols": 958,
       "matched": 694,
-      "collisions": 243,
-      "missing": 21,
+      "collisions": 246,
+      "missing": 18,
       "collision_examples": [
         {
           "ticker": "ABBA",
@@ -2222,8 +2225,8 @@
       "exchange": "LSE",
       "official_symbols": 11021,
       "matched": 6419,
-      "collisions": 1105,
-      "missing": 3497,
+      "collisions": 1109,
+      "missing": 3493,
       "collision_examples": [
         {
           "ticker": "0GZJ",
@@ -2473,48 +2476,16 @@
     {
       "exchange": "NASDAQ",
       "official_symbols": 5524,
-      "matched": 4437,
-      "collisions": 74,
-      "missing": 1013,
+      "matched": 4592,
+      "collisions": 33,
+      "missing": 899,
       "collision_examples": [
-        {
-          "ticker": "ACAA",
-          "name": "Averin Capital Acquisition Corp. - Class A Ordinary Shares",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "TSX"
-          ]
-        },
-        {
-          "ticker": "ACGC",
-          "name": "ACP Holdings Acquisition Corp. - Class A Ordinary Shares",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "EGX"
-          ]
-        },
-        {
-          "ticker": "AIAI",
-          "name": "AIAI Holdings Corporation - Class A common stock",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "LSE"
-          ]
-        },
         {
           "ticker": "AIMS",
           "name": "Acuitas Small Cap Active ETF",
           "target_exchange": "NASDAQ",
           "existing_exchanges": [
             "IDX"
-          ]
-        },
-        {
-          "ticker": "ALP",
-          "name": "Alpha Compute Corp  - Common Stock",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "NSE_KE"
           ]
         },
         {
@@ -2526,14 +2497,6 @@
           ]
         },
         {
-          "ticker": "AMAN",
-          "name": "Amanat Acquisition Corp - Class A Ordinary Shares",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "IDX"
-          ]
-        },
-        {
           "ticker": "ANV",
           "name": "GraniteShares Autocallable NVDA ETF",
           "target_exchange": "NASDAQ",
@@ -2542,19 +2505,59 @@
           ]
         },
         {
-          "ticker": "APC",
-          "name": "ARKO Petroleum Corp. - Class A Common Stock",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "XETRA"
-          ]
-        },
-        {
-          "ticker": "ARCI",
-          "name": "Archimedes Tech SPAC Partners III Co. - Ordinary Share",
+          "ticker": "ARMY",
+          "name": "Tema International Defense ETF",
           "target_exchange": "NASDAQ",
           "existing_exchanges": [
             "LSE"
+          ]
+        },
+        {
+          "ticker": "ASD",
+          "name": "Defiance Autism Impact ETF",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "NZX"
+          ]
+        },
+        {
+          "ticker": "ATC",
+          "name": "GraniteShares Autocallable COIN ETF",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "WSE"
+          ]
+        },
+        {
+          "ticker": "AVL",
+          "name": "Direxion Daily AVGO Bull 2X ETF",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "ASX"
+          ]
+        },
+        {
+          "ticker": "BGCG",
+          "name": "Baillie Gifford International Concentrated Growth ETF",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
+        {
+          "ticker": "BRES",
+          "name": "Burney U.S. Equity Select ETF",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
+        {
+          "ticker": "CCD",
+          "name": "Calamos Dynamic Convertible & Income Fund - Closed End Fund",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "TSXV"
           ]
         }
       ],
@@ -2570,11 +2573,6 @@
           "exchange": "NASDAQ"
         },
         {
-          "ticker": "AACI",
-          "name": "Armada Acquisition Corp. III - Class A Ordinary Share",
-          "exchange": "NASDAQ"
-        },
-        {
           "ticker": "AACIU",
           "name": "Armada Acquisition Corp. III - Units",
           "exchange": "NASDAQ"
@@ -2582,11 +2580,6 @@
         {
           "ticker": "AACIW",
           "name": "Armada Acquisition Corp. III - Warrant",
-          "exchange": "NASDAQ"
-        },
-        {
-          "ticker": "AACO",
-          "name": "Abony Acquisition Corp. I - Class A Ordinary Share",
           "exchange": "NASDAQ"
         },
         {
@@ -2600,13 +2593,23 @@
           "exchange": "NASDAQ"
         },
         {
-          "ticker": "AACP",
-          "name": "Apogee Acquisition Corp - Class A Ordinary Shares",
+          "ticker": "AACPR",
+          "name": "Apogee Acquisition Corp - Rights",
           "exchange": "NASDAQ"
         },
         {
-          "ticker": "AACPR",
-          "name": "Apogee Acquisition Corp - Rights",
+          "ticker": "AACPU",
+          "name": "Apogee Acquisition Corp - Units",
+          "exchange": "NASDAQ"
+        },
+        {
+          "ticker": "AACPW",
+          "name": "Apogee Acquisition Corp - Warrant",
+          "exchange": "NASDAQ"
+        },
+        {
+          "ticker": "ABLVW",
+          "name": "Able View Global Inc. - Warrant",
           "exchange": "NASDAQ"
         }
       ]
@@ -2615,8 +2618,8 @@
       "exchange": "NEO",
       "official_symbols": 440,
       "matched": 190,
-      "collisions": 85,
-      "missing": 165,
+      "collisions": 88,
+      "missing": 162,
       "collision_examples": [
         {
           "ticker": "ABB",
@@ -2669,6 +2672,14 @@
           ]
         },
         {
+          "ticker": "BBVA",
+          "name": "BBVA CDR (CAD HEDGED)",
+          "target_exchange": "NEO",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
           "ticker": "BCCC",
           "name": "GLOBAL X BITCOIN COVERED CALL ETF",
           "target_exchange": "NEO",
@@ -2691,15 +2702,6 @@
           "existing_exchanges": [
             "NASDAQ"
           ]
-        },
-        {
-          "ticker": "BNP",
-          "name": "BNP PARIBAS CDR (CAD HEDGED)",
-          "target_exchange": "NEO",
-          "existing_exchanges": [
-            "WSE",
-            "XETRA"
-          ]
         }
       ],
       "missing_examples": [
@@ -2716,11 +2718,6 @@
         {
           "ticker": "ATRB",
           "name": "AGF TOTAL RETURN BOND FUND",
-          "exchange": "NEO"
-        },
-        {
-          "ticker": "BBVA",
-          "name": "BBVA CDR (CAD HEDGED)",
           "exchange": "NEO"
         },
         {
@@ -2751,6 +2748,11 @@
         {
           "ticker": "BYLD.B",
           "name": "MANULIFE SMART ENHANCED YIELD BOND ETF - UNHEDGED UNITS",
+          "exchange": "NEO"
+        },
+        {
+          "ticker": "CANO",
+          "name": "CANON CDR (CAD HEDGED)",
           "exchange": "NEO"
         }
       ]
@@ -3049,33 +3051,16 @@
     {
       "exchange": "NYSE",
       "official_symbols": 3872,
-      "matched": 1945,
-      "collisions": 524,
-      "missing": 1403,
+      "matched": 2176,
+      "collisions": 445,
+      "missing": 1251,
       "collision_examples": [
-        {
-          "ticker": "ABX",
-          "name": "Abacus Global Management, Inc. Class A Common Stock",
-          "target_exchange": "NYSE",
-          "existing_exchanges": [
-            "ASX",
-            "XETRA"
-          ]
-        },
         {
           "ticker": "ACCS",
           "name": "ACCESS Newswire Inc.",
           "target_exchange": "NYSE",
           "existing_exchanges": [
             "NYSE MKT"
-          ]
-        },
-        {
-          "ticker": "ACP",
-          "name": "abrdn Income Credit Strategies Fund Common Shares",
-          "target_exchange": "NYSE",
-          "existing_exchanges": [
-            "WSE"
           ]
         },
         {
@@ -3101,15 +3086,8 @@
           "existing_exchanges": [
             "ASX",
             "Borsa Italiana",
+            "NYSE MKT",
             "TSXV"
-          ]
-        },
-        {
-          "ticker": "AEG",
-          "name": "Aegon Ltd. New York Registry Shares",
-          "target_exchange": "NYSE",
-          "existing_exchanges": [
-            "ASX"
           ]
         },
         {
@@ -3121,16 +3099,40 @@
           ]
         },
         {
-          "ticker": "AGD",
-          "name": "abrdn Global Dynamic Dividend Fund Common Shares of Beneficial Interest",
+          "ticker": "AGIG",
+          "name": "ABUNDIA GLOBAL IMPACT GROUP, INC.",
           "target_exchange": "NYSE",
           "existing_exchanges": [
-            "ASX"
+            "NYSE MKT"
           ]
         },
         {
-          "ticker": "AGIG",
-          "name": "ABUNDIA GLOBAL IMPACT GROUP, INC.",
+          "ticker": "AGQ",
+          "name": "ProShares Trust II",
+          "target_exchange": "NYSE",
+          "existing_exchanges": [
+            "NYSE ARCA"
+          ]
+        },
+        {
+          "ticker": "AIB",
+          "name": "BlockchAIn Digital Infrastructure, Inc.",
+          "target_exchange": "NYSE",
+          "existing_exchanges": [
+            "NYSE MKT"
+          ]
+        },
+        {
+          "ticker": "AIM",
+          "name": "AIM ImmunoTech Inc.",
+          "target_exchange": "NYSE",
+          "existing_exchanges": [
+            "NYSE MKT"
+          ]
+        },
+        {
+          "ticker": "AIRI",
+          "name": "AIR INDUSTRIES GROUP",
           "target_exchange": "NYSE",
           "existing_exchanges": [
             "NYSE MKT"
@@ -3334,20 +3336,10 @@
     {
       "exchange": "NYSE MKT",
       "official_symbols": 313,
-      "matched": 220,
-      "collisions": 25,
-      "missing": 68,
+      "matched": 250,
+      "collisions": 12,
+      "missing": 51,
       "collision_examples": [
-        {
-          "ticker": "AEF",
-          "name": "abrdn Emerging Markets ex-China Fund, Inc. Common Stock",
-          "target_exchange": "NYSE MKT",
-          "existing_exchanges": [
-            "ASX",
-            "Borsa Italiana",
-            "TSXV"
-          ]
-        },
         {
           "ticker": "BESS",
           "name": "Bimergen Energy Corporation Common Stock",
@@ -3355,14 +3347,6 @@
           "existing_exchanges": [
             "NYSE",
             "STO"
-          ]
-        },
-        {
-          "ticker": "CLM",
-          "name": "Cornerstone Strategic Investment Fund, Inc. Common Shares",
-          "target_exchange": "NYSE MKT",
-          "existing_exchanges": [
-            "TSXV"
           ]
         },
         {
@@ -3391,14 +3375,6 @@
           ]
         },
         {
-          "ticker": "EAD",
-          "name": "Allspring Income Opportunities Fund Common Shares",
-          "target_exchange": "NYSE MKT",
-          "existing_exchanges": [
-            "XETRA"
-          ]
-        },
-        {
           "ticker": "ECF",
           "name": "Ellsworth Growth and Income Fund Ltd.",
           "target_exchange": "NYSE MKT",
@@ -3421,19 +3397,33 @@
           "existing_exchanges": [
             "AMS"
           ]
+        },
+        {
+          "ticker": "GRO",
+          "name": "Brazil Potash Corp. Common Shares",
+          "target_exchange": "NYSE MKT",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
+          "ticker": "LODE",
+          "name": "Comstock Inc. Common Stock",
+          "target_exchange": "NYSE MKT",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
+          "ticker": "OZ",
+          "name": "Belpointe PREP, LLC Class A Units",
+          "target_exchange": "NYSE MKT",
+          "existing_exchanges": [
+            "TSXV"
+          ]
         }
       ],
       "missing_examples": [
-        {
-          "ticker": "AIB",
-          "name": "BlockchAIn Digital Infrastructure, Inc Common Shares",
-          "exchange": "NYSE MKT"
-        },
-        {
-          "ticker": "AXIL",
-          "name": "AXIL Brands, Inc. Common Stock",
-          "exchange": "NYSE MKT"
-        },
         {
           "ticker": "BCV",
           "name": "Bancroft Fund, Ltd.",
@@ -3460,18 +3450,28 @@
           "exchange": "NYSE MKT"
         },
         {
-          "ticker": "CIK",
-          "name": "Credit Suisse Asset Management Income Fund, Inc. Common Stock",
+          "ticker": "ECF$A",
+          "name": "Ellsworth Growth and Income Fund Ltd. 5.25% Series A Cumulative Preferred Shares (Liquidation Preference $25.00 per share)",
           "exchange": "NYSE MKT"
         },
         {
-          "ticker": "CRF",
-          "name": "Cornerstone Total Return Fund, Inc. (The) Common Stock",
+          "ticker": "EONR.W",
+          "name": "EON Resources Inc. Warrants, each whole warrant exercisable for three quarters of one share of Class A Common Stock at an exercise price of $11.50 per whole share",
           "exchange": "NYSE MKT"
         },
         {
-          "ticker": "DHY",
-          "name": "Credit Suisse High Yield Credit Fund Common Stock",
+          "ticker": "FLYX.W",
+          "name": "flyExclusive, Inc. Redeemable warrants, each whole warrant exercisable for one Class A common stock at an exercise price of $11.50 per share",
+          "exchange": "NYSE MKT"
+        },
+        {
+          "ticker": "GGN",
+          "name": "GAMCO Global Gold, Natural Resources & Income Trust",
+          "exchange": "NYSE MKT"
+        },
+        {
+          "ticker": "GGN$B",
+          "name": "GAMCO Global Gold, Natural Reources & Income Trust 5.00% Series B Cumulative 25.00 Liquidation Preference",
           "exchange": "NYSE MKT"
         }
       ]
@@ -3830,8 +3830,8 @@
       "exchange": "PSE",
       "official_symbols": 381,
       "matched": 90,
-      "collisions": 183,
-      "missing": 108,
+      "collisions": 184,
+      "missing": 107,
       "collision_examples": [
         {
           "ticker": "AAA",
@@ -3976,8 +3976,8 @@
       "exchange": "PSX",
       "official_symbols": 716,
       "matched": 371,
-      "collisions": 156,
-      "missing": 189,
+      "collisions": 157,
+      "missing": 188,
       "collision_examples": [
         {
           "ticker": "AAL",
@@ -4162,8 +4162,8 @@
       "exchange": "SET",
       "official_symbols": 944,
       "matched": 545,
-      "collisions": 346,
-      "missing": 53,
+      "collisions": 348,
+      "missing": 51,
       "collision_examples": [
         {
           "ticker": "A",
@@ -4764,6 +4764,7 @@
           "target_exchange": "TSX",
           "existing_exchanges": [
             "ASX",
+            "NYSE",
             "XETRA"
           ]
         },
@@ -4829,8 +4830,8 @@
       "exchange": "TSXV",
       "official_symbols": 1600,
       "matched": 1043,
-      "collisions": 544,
-      "missing": 13,
+      "collisions": 545,
+      "missing": 12,
       "collision_examples": [
         {
           "ticker": "AAG",
@@ -5115,8 +5116,8 @@
       "exchange": "UPCOM",
       "official_symbols": 830,
       "matched": 2,
-      "collisions": 475,
-      "missing": 353,
+      "collisions": 479,
+      "missing": 349,
       "collision_examples": [
         {
           "ticker": "AAS",
