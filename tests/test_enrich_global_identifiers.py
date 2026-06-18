@@ -274,6 +274,35 @@ def test_build_base_identifier_rows_does_not_preserve_stale_isin(tmp_path, monke
     assert rows[0]["figi_source"] == ""
 
 
+def test_build_base_identifier_rows_drops_extended_values_when_core_isin_changes(
+    tmp_path,
+    monkeypatch,
+):
+    listings = tmp_path / "listings.csv"
+    listings.write_text(
+        "listing_key,ticker,exchange,name,asset_type,stock_sector,etf_category,country,country_code,isin,aliases\n"
+        "NYSE::NVO,NVO,NYSE,Novo Nordisk A/S,Stock,,,United States,US,US6701002056,\n",
+        encoding="utf-8",
+    )
+    identifiers_extended = tmp_path / "identifiers_extended.csv"
+    identifiers_extended.write_text(
+        "listing_key,ticker,exchange,isin,wkn,figi,cik,lei,figi_source,cik_source,lei_source\n"
+        "NYSE::NVO,NVO,NYSE,CA67010B1022,670100,BBG002PL62B8,0000353278,,OpenFIGI,SEC,\n",
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.enrich_global_identifiers.LISTINGS_CSV", listings)
+    monkeypatch.setattr("scripts.enrich_global_identifiers.IDENTIFIERS_EXTENDED_CSV", identifiers_extended)
+
+    rows = build_base_identifier_rows()
+
+    assert rows[0]["isin"] == "US6701002056"
+    assert rows[0]["wkn"] == ""
+    assert rows[0]["figi"] == ""
+    assert rows[0]["cik"] == ""
+    assert rows[0]["figi_source"] == ""
+    assert rows[0]["cik_source"] == ""
+
+
 def test_clear_cross_isin_figi_collisions_removes_ambiguous_figis():
     rows = [
         {"isin": "AT0000652011", "figi": "BBG000BMTW42", "figi_source": "OpenFIGI"},

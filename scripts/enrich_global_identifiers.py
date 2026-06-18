@@ -186,6 +186,12 @@ def build_base_identifier_rows() -> list[dict[str, str]]:
         exchange = listing_row["exchange"]
         isin = listing_row.get("isin", "")
         existing_row = existing_extended.get(listing_key, {})
+        existing_isin = existing_row.get("isin", "")
+        # Stale-guard: if the core listing's ISIN changed since enrichment, the
+        # preserved extended identifiers (figi/wkn/cik/lei) belong to the old
+        # ISIN and must be dropped, not carried onto the new security.
+        if isin and existing_isin and existing_isin != isin:
+            existing_row = {}
         figi = existing_row.get("figi", "") if isin else ""
         rows.append(
             {
