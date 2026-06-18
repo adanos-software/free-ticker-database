@@ -2,6 +2,27 @@
 
 ## [Unreleased]
 
+## [3.30.30] - 2026-06-18
+
+### Summary
+
+**Correctness audit + acted-on fixes.** A reproducible stratified 300-row sample (seed 20260618; 150 recent additions + 150 base) was audited field-by-field against ≥2 independent sources, with an adversarial refute pass on every flagged error. **Measured correctness: 89.7% overall (Wilson95 85.7–92.6%); new additions 90.0% vs base 89.3% — the gap-closing campaign did not degrade quality.** Error distribution confirmed sector as the recurring lever, plus a residual closed-end-fund leak.
+
+### Fixed
+
+- **7 closed-end funds removed** that leaked into the v3.30.28 adds (`ETO`, `GAB`, `GUT`, `MGF`, `PSUS`, `PWRL`, `VVR`) — found via an OpenFIGI `securityType` sweep over all new additions. They evaded the name filters because they are named "… Trust" or carry no fund keyword (e.g. Pershing Square USA).
+- **20 confirmed metadata corrections**: 7 `stock_sector` (e.g. `SLBT`→Health Care, `FRTT`→Materials, `YMT`→Information Technology), 3 ISIN (`QH`→US74841Q4073, `WZRD`, `SDIV` — each re-verified by checksum + OpenFIGI `ID_ISIN` ticker match), `BHST` country→Canada, 5 `etf_category` (bond/money-market ETFs mis-tagged Equity: `PZA`, `UTIP`, `FRXE`, `511850`, `CRPT11`), 3 stale names (`603337`→Jack Technology, `032300`→Korea Pharma, `000158`→Changshan Beiming).
+- Regenerated `identifiers_extended`/`listing_index` via `enrich_global_identifiers.py` (the post-#90 path).
+- Primary tickers 63,295 → 63,288.
+
+### Note
+
+A few audit flags were deferred as uncertain or involving exchange re-keys (`VGNT`/`AVLN` identity, `NGEN`/`ELOX`/`RMT` stale venue shadows). Many `country=US` flags on foreign ADRs are the ISIN-prefix/listing convention and were correctly not counted as errors.
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,452 passed. Bumps VERSION to 3.30.30.
+
 ## [3.30.29] - 2026-06-18
 
 ### Summary
