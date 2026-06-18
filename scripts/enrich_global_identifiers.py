@@ -187,21 +187,25 @@ def build_base_identifier_rows() -> list[dict[str, str]]:
         isin = listing_row.get("isin", "")
         existing_row = existing_extended.get(listing_key, {})
         existing_isin = existing_row.get("isin", "")
-        has_isin_conflict = bool(isin and existing_isin and existing_isin != isin)
-        figi = existing_row.get("figi", "") if isin and not has_isin_conflict else ""
+        # Stale-guard: if the core listing's ISIN changed since enrichment, the
+        # preserved extended identifiers (figi/wkn/cik/lei) belong to the old
+        # ISIN and must be dropped, not carried onto the new security.
+        if isin and existing_isin and existing_isin != isin:
+            existing_row = {}
+        figi = existing_row.get("figi", "") if isin else ""
         rows.append(
             {
                 "listing_key": listing_key,
                 "ticker": ticker,
                 "exchange": exchange,
                 "isin": isin,
-                "wkn": existing_row.get("wkn", "") if not has_isin_conflict else "",
+                "wkn": existing_row.get("wkn", ""),
                 "figi": figi,
-                "cik": existing_row.get("cik", "") if not has_isin_conflict else "",
-                "lei": existing_row.get("lei", "") if not has_isin_conflict else "",
+                "cik": existing_row.get("cik", ""),
+                "lei": existing_row.get("lei", ""),
                 "figi_source": existing_row.get("figi_source", "") if figi else "",
-                "cik_source": existing_row.get("cik_source", "") if not has_isin_conflict else "",
-                "lei_source": existing_row.get("lei_source", "") if not has_isin_conflict else "",
+                "cik_source": existing_row.get("cik_source", ""),
+                "lei_source": existing_row.get("lei_source", ""),
                 "name": listing_row["name"],
                 "country": listing_row["country"],
                 "country_code": listing_row.get("country_code", ""),
