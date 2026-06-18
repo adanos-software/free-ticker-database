@@ -2,6 +2,27 @@
 
 ## [Unreleased]
 
+## [3.30.25] - 2026-06-18
+
+### Summary
+
+**US non-equity scope sweep + re-audit corrections.** Removes non-common-stock instruments that were mis-scoped as `asset_type=Stock`, and applies the verified corrections from the fresh US re-audit (which measured ~89% US-stock correctness).
+
+### Changed
+
+- **254 non-common-stock instruments dropped** from the Stock scope (classified by OpenFIGI `securityType`): **110 closed-end / mutual funds**, **104 preferred stock / baby-bonds**, **34 units**, **2 rights**, and 4 further non-common lines. These are not common equity and do not belong in the Stock universe.
+- **15 re-audit corrections** (each verified high-confidence): 3 `stock_sector` (`PAYX`→Industrials, `MBLY`→Consumer Discretionary, `CHHL`→Financials), 5 name renames (`GLTO`→Damora Therapeutics, `OGI`→Organigram Global, `RVLV`, `IVZ`, `PRMLF`→NexMetals Mining), 3 country (`HIG`→US, `RHCCF`→Canada, `ICOSF`→Italy), 3 ISIN ticker-collision fixes (`CRTO`→US2267181046, `OTGLF`→PLOPTTC00011, `HGKGF`→US7391971014), and 1 country-code infra fix (`AGMH` BVI/`VG`).
+- Removed the 254 dropped listing_keys from `data/identifiers_extended.csv` + `data/listing_index.csv` (orphan-gate avoidance) and recomputed `data/identifier_summary.json`.
+- Primary tickers 63,257 → 63,026; NASDAQ 4,506 → 4,417; NYSE 2,043 → 1,896.
+
+### Note
+
+US-stock correctness was re-measured at ~89.0% (up from 87.1% in v3.30.23 after the stale-ISIN/warrant/sector sweeps). Dropping the CEF/preferred/unit/right class addresses the remaining "non-equity in Stock scope" error class; the small per-exchange count shifts elsewhere (OTC/LSE/XETRA/ASX/TSX) reflect cross-listings reassigned as primary after the US drops.
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,451 passed. Bumps VERSION to 3.30.25.
+
 ## [3.30.24] - 2026-06-17
 
 ### Summary

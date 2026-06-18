@@ -31972,3 +31972,18 @@ MCW,NASDAQ,isin,clear,,high,US ISIN resolve wave2: delisted/defunct
 RAPT,NASDAQ,isin,clear,,high,US ISIN resolve wave2: delisted/defunct
 WGRX,NASDAQ,isin,clear,,high,US ISIN resolve wave2: delisted/defunct
 APAD,NASDAQ,isin,clear,,high,US ISIN resolve wave2: delisted/defunct
+PAYX,NASDAQ,stock_sector,update,Industrials,high,US re-audit 2026-06-17 verified sector
+MBLY,NASDAQ,stock_sector,update,Consumer Discretionary,high,US re-audit 2026-06-17 verified sector
+CHHL,OTC,stock_sector,update,Financials,high,US re-audit 2026-06-17 verified sector
+GLTO,NASDAQ,name,update,"Damora Therapeutics, Inc.",high,US re-audit verified name (rename)
+OGI,NASDAQ,name,update,Organigram Global Inc,high,US re-audit verified name (rename)
+RVLV,NYSE,name,update,"Revolve Group, Inc.",high,US re-audit verified name (rename)
+IVZ,NYSE,name,update,Invesco Ltd.,high,US re-audit verified name (rename)
+PRMLF,OTC,name,update,NexMetals Mining Corp.,high,US re-audit verified name (rename)
+HIG,NYSE,country,update,United States,high,US re-audit verified country
+RHCCF,OTC,country,update,Canada,high,US re-audit verified country
+ICOSF,OTC,country,update,Italy,high,US re-audit verified country
+CRTO,NASDAQ,isin,update,US2267181046,high,US re-audit verified ISIN (ticker-collision fix)
+OTGLF,OTC,isin,update,PLOPTTC00011,high,US re-audit verified ISIN (ticker-collision fix)
+HGKGF,OTC,isin,update,US7391971014,high,US re-audit verified ISIN (ticker-collision fix)
+AGMH,NASDAQ,country_code,update,VG,high,BVI ISO code for VGG-prefix ISIN (country_from_isin lacks reverse map)
