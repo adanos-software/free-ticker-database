@@ -435,7 +435,11 @@ def test_depositary_and_cross_issuer_aliases_removed():
     ubs = listing_ticker_exchange_row("UBS", "NYSE")
     asml_ams = ticker_exchange_row("ASML", "AMS")
 
-    assert ticker_row("ARM") is None
+    # Arm Holdings plc (NASDAQ ADR) is now covered (added in the US listing-gap close);
+    # the bare common-word "arm" must never be an alias, only the safe "arm holdings".
+    arm = ticker_row("ARM")
+    assert arm is not None
+    assert arm["aliases"] == "arm holdings"
     assert ubs is not None
     assert asml_ams is not None
     assert asml_ams["country"] == "Netherlands"
