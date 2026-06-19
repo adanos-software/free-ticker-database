@@ -1,9 +1,9 @@
 {
   "summary": {
-    "generated_at": "2026-06-19T08:50:23Z",
-    "rows": 1067,
+    "generated_at": "2026-06-19T09:14:17Z",
+    "rows": 1065,
     "outcome_totals": {
-      "accepted_source_gap": 600,
+      "accepted_source_gap": 598,
       "core_exclusion_candidate": 467
     },
     "class_totals": {
@@ -20,7 +20,7 @@
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 12,
       "official_identifier_not_exposed_source_gap": 364,
-      "official_identifier_reference_unmatched_gap": 68,
+      "official_identifier_reference_unmatched_gap": 66,
       "official_industry_taxonomy_unavailable_gap": 24,
       "official_product_reference_unmatched_category_gap": 20,
       "official_product_taxonomy_unavailable_gap": 58,
@@ -29,7 +29,7 @@
     },
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 89,
-      "missing_isin_primary:accepted_source_gap": 444,
+      "missing_isin_primary:accepted_source_gap": 442,
       "missing_isin_primary:core_exclusion_candidate": 464,
       "missing_sector_stock:accepted_source_gap": 67,
       "missing_sector_stock:core_exclusion_candidate": 3
@@ -8046,40 +8046,6 @@
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "TSE::7056",
-      "ticker": "7056",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "name": "Maruc Co.,Ltd.",
-      "gap_class": "official_identifier_reference_unmatched_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "leave_blank_until_source_available",
-      "review_needed": "true",
-      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
-      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "TSE::7450",
-      "ticker": "7450",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "name": "SUNDAY CO.,LTD.",
-      "gap_class": "official_identifier_reference_unmatched_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "leave_blank_until_source_available",
-      "review_needed": "true",
-      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
-      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",
