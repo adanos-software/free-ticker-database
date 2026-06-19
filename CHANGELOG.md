@@ -2,6 +2,26 @@
 
 ## [Unreleased]
 
+## [3.30.35] - 2026-06-19
+
+### Summary
+
+**Non-US delistings (the third open item).** Confirmed recently-delisted non-US securities removed. A deterministic per-market master-diff (which worked for US via NASDAQ Trader) was found **not viable for non-US**: the free NSE India master (`EQUITY_L.csv`) covers only the main board and excludes the NSE EMERGE/SME platform, so a diff flagged 501 mostly-active SME companies (e.g. ALPEXSOLAR, AIMTRON — verified active) as false delistings. The SME master isn't freely accessible and most other markets have no free current-listing master. So non-US delistings were handled by **web-verifying the specific candidates already surfaced** (the v3.30.31 completeness "not found" set), not by mass master-diff.
+
+### Removed
+
+- **7 web-verified delistings dropped**: `444920` & `455910` (KOSDAQ SPACs liquidated/dissolved 2026-03/04), `202A` MAMEZO (TSE, EQT take-private), `5883` GT Holdings (TSE, JPX delisting decision 2026-03-12), `5BS` Sen Yue (SGX, compulsory acquisition, delisted 2026-04-30), `SCOIN` StandardCoin (Euronext Growth Oslo, liquidated late 2025), `DMYYU` dMY Squared (defunct SPAC unit).
+- Kept candidates that are **suspended/conditional/unconfirmed** (not delisted): `ELEKTRA` (Grupo Elektra, BMV-suspended), `L38` AF Global (SGX take-private only conditional), `LOKOS` (unconfirmed), `NESB3` (suspended).
+- Primary tickers 63,176 → 63,169.
+
+### Note
+
+A comprehensive non-US delisting sweep is not deterministically achievable without per-market SME-inclusive masters or a credentialed feed; the daily symbol-changes feed + periodic completeness re-audits remain the practical detector.
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,452 passed. Bumps VERSION to 3.30.35.
+
 ## [3.30.34] - 2026-06-19
 
 ### Summary
