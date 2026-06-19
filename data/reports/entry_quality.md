@@ -1,21 +1,21 @@
 # Entry Quality Report
 
-Generated at: `2026-06-19T08:42:55Z`
+Generated at: `2026-06-19T08:50:27Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
 | pass | 67,698 |
-| source_gap | 6,826 |
+| source_gap | 6,819 |
 | warn | 75 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 5,705 |
-| expected_missing_primary_isin | 914 |
+| official_reference_gap | 5,698 |
+| expected_missing_primary_isin | 908 |
 | venue_missing_official_source | 285 |
 | missing_etf_category | 81 |
 | country_isin_mismatch | 65 |
@@ -27,7 +27,7 @@ Generated at: `2026-06-19T08:42:55Z`
 
 | Exchange | Pass | Notice | Source Gap | Warn | Quarantine |
 |---|---:|---:|---:|---:|---:|
-| OTC | 7,864 | 0 | 3,182 | 6 | 0 |
+| OTC | 7,864 | 0 | 3,181 | 6 | 0 |
 | B3 | 1,262 | 0 | 322 | 0 | 0 |
 | Borsa Italiana | 0 | 0 | 277 | 0 | 0 |
 | NASDAQ | 4,399 | 0 | 268 | 1 | 0 |
