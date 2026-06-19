@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-06-19T09:14:20Z",
-    "rows": 74570,
+    "generated_at": "2026-06-19T09:34:18Z",
+    "rows": 74566,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -15,11 +15,11 @@
   "summary": {
     "status_counts": {
       "pass": 67693,
-      "source_gap": 6802,
+      "source_gap": 6798,
       "warn": 75
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4759,
+      "identifier_enriched": 4755,
       "official_reference": 68604,
       "scoped_source_gap": 343,
       "valid_isin": 864
@@ -27,10 +27,10 @@
     "severity_counts": {
       "high": 67,
       "medium": 8,
-      "source_gap": 7002
+      "source_gap": 6998
     },
     "issue_counts": {
-      "official_reference_gap": 5681,
+      "official_reference_gap": 5677,
       "expected_missing_primary_isin": 906,
       "venue_missing_official_source": 285,
       "missing_etf_category": 81,
@@ -75,7 +75,7 @@
       {
         "exchange": "BSE_IN",
         "pass": 2459,
-        "source_gap": 183
+        "source_gap": 179
       },
       {
         "exchange": "BMV",

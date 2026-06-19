@@ -2,6 +2,26 @@
 
 ## [Unreleased]
 
+## [3.30.37] - 2026-06-19
+
+### Summary
+
+**India delisting cleanup completed (NSE + BSE).** NSE came back clean once the SME EMERGE master was included (`EQUITY_L` + `SME_EQUITY_L` = full ~2,925-name universe → 0 delistings). BSE: the BSE `ListofScripData` API gives the full scrip list **with authoritative status** (Active / Suspended / Delisted), so candidates are classified by BSE's own status rather than guessed. Of our 2,634 BSE_IN stocks, 176 were absent from the Active list; BSE status splits them into **4 Delisted** + **172 Suspended**.
+
+### Removed
+
+- **4 BSE-confirmed delistings dropped** (official BSE `status=Delisted`): `KASHYAP`, `MAHAVEER`, `OSWALEA`, `QUINTEGRA`.
+- **172 BSE-suspended kept** (BSE `status=Suspended` — trading halted but not formally delisted; consistent with keeping other suspended names like Grupo Elektra, they can resume). Flagged as a separate policy decision; left in by choice.
+- Primary tickers 63,151 → 63,147.
+
+### Note
+
+This closes the deterministic non-US delisting work for the markets with obtainable board-complete masters (US, JP, AU, IN-NSE, IN-BSE). Remaining markets (no free complete master) stay on the symbol-changes feed + periodic completeness re-audits; durable automation (weekly CI master-diff) is the recommended next step.
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,452 passed. Bumps VERSION to 3.30.37.
+
 ## [3.30.36] - 2026-06-19
 
 ### Summary

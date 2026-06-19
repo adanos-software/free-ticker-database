@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-19T09:14:21Z",
+    "generated_at": "2026-06-19T09:34:19Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "listings_csv": "data/listings.csv",
@@ -23,10 +23,10 @@
   },
   "passed": true,
   "summary": {
-    "ticker_rows": 63151,
-    "listing_rows": 74570,
-    "adanos_reference_rows": 63151,
-    "entry_quality_rows": 74570,
+    "ticker_rows": 63147,
+    "listing_rows": 74566,
+    "adanos_reference_rows": 63147,
+    "entry_quality_rows": 74566,
     "error_gates": 83,
     "failed_error_gates": 0,
     "info_gates": 5
@@ -540,7 +540,7 @@
       "name": "source_gap_rows",
       "severity": "info",
       "passed": true,
-      "actual": 6802,
+      "actual": 6798,
       "limit": null
     },
     {
