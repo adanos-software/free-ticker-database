@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-06-19T07:15:46Z",
-    "rows": 1101,
+    "generated_at": "2026-06-19T07:45:19Z",
+    "rows": 1084,
     "field_totals": {
       "missing_etf_category": 89,
-      "missing_isin_primary": 945,
-      "missing_sector_stock": 67
+      "missing_isin_primary": 925,
+      "missing_sector_stock": 70
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 43,
@@ -20,12 +20,12 @@
       "fundlike_stock_sector_gap": 1,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 12,
-      "official_identifier_not_exposed_source_gap": 387,
-      "official_identifier_reference_unmatched_gap": 82,
-      "official_industry_taxonomy_unavailable_gap": 22,
+      "official_identifier_not_exposed_source_gap": 371,
+      "official_identifier_reference_unmatched_gap": 78,
+      "official_industry_taxonomy_unavailable_gap": 24,
       "official_product_reference_unmatched_category_gap": 20,
       "official_product_taxonomy_unavailable_gap": 58,
-      "otc_sector_source_gap": 42,
+      "otc_sector_source_gap": 43,
       "shell_or_cpc_sector_gap": 1
     },
     "class_by_field": {
@@ -41,12 +41,12 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 288,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 12,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 387,
-      "missing_isin_primary:official_identifier_reference_unmatched_gap": 82,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 371,
+      "missing_isin_primary:official_identifier_reference_unmatched_gap": 78,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 1,
       "missing_sector_stock:fundlike_stock_sector_gap": 1,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 22,
-      "missing_sector_stock:otc_sector_source_gap": 42,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 24,
+      "missing_sector_stock:otc_sector_source_gap": 43,
       "missing_sector_stock:shell_or_cpc_sector_gap": 1
     },
     "top_exchanges_by_field": {
@@ -95,19 +95,19 @@
       "missing_isin_primary": [
         {
           "exchange": "NASDAQ",
-          "rows": 195
+          "rows": 188
         },
         {
           "exchange": "ASX",
           "rows": 105
         },
         {
-          "exchange": "NYSE",
-          "rows": 100
-        },
-        {
           "exchange": "TSX",
           "rows": 97
+        },
+        {
+          "exchange": "NYSE",
+          "rows": 87
         },
         {
           "exchange": "TSXV",
@@ -137,7 +137,7 @@
       "missing_sector_stock": [
         {
           "exchange": "OTC",
-          "rows": 42
+          "rows": 43
         },
         {
           "exchange": "B3",
@@ -156,11 +156,15 @@
           "rows": 3
         },
         {
+          "exchange": "LSE",
+          "rows": 3
+        },
+        {
           "exchange": "CSE_LK",
           "rows": 2
         },
         {
-          "exchange": "LSE",
+          "exchange": "XETRA",
           "rows": 2
         },
         {
@@ -170,10 +174,6 @@
         {
           "exchange": "CSE_MA",
           "rows": 1
-        },
-        {
-          "exchange": "NASDAQ",
-          "rows": 1
         }
       ]
     },
@@ -182,7 +182,7 @@
         "field": "missing_isin_primary",
         "gap_class": "official_identifier_not_exposed_source_gap",
         "exchange": "NASDAQ",
-        "rows": 141,
+        "rows": 137,
         "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
         "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
       },
@@ -190,7 +190,7 @@
         "field": "missing_isin_primary",
         "gap_class": "official_identifier_not_exposed_source_gap",
         "exchange": "NYSE",
-        "rows": 81,
+        "rows": 69,
         "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
         "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
       },
@@ -222,7 +222,7 @@
         "field": "missing_sector_stock",
         "gap_class": "otc_sector_source_gap",
         "exchange": "OTC",
-        "rows": 42,
+        "rows": 43,
         "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
         "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
       },
@@ -268,14 +268,6 @@
       },
       {
         "field": "missing_isin_primary",
-        "gap_class": "official_identifier_reference_unmatched_gap",
-        "exchange": "NASDAQ",
-        "rows": 23,
-        "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
-        "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
-      },
-      {
-        "field": "missing_isin_primary",
         "gap_class": "official_identifier_not_exposed_source_gap",
         "exchange": "QSE",
         "rows": 23,
@@ -297,6 +289,14 @@
         "rows": 22,
         "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
         "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
+      },
+      {
+        "field": "missing_isin_primary",
+        "gap_class": "official_identifier_reference_unmatched_gap",
+        "exchange": "NASDAQ",
+        "rows": 20,
+        "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+        "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
       },
       {
         "field": "missing_isin_primary",
@@ -6621,23 +6621,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "NASDAQ::COEPW",
-      "ticker": "COEPW",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Coeptis Therapeutics Holdings Inc",
-      "gap_class": "official_identifier_reference_unmatched_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
-      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
-      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN.",
-      "source_gap_context": "listing_key=NASDAQ::COEPW;exchange=NASDAQ;ticker=COEPW;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_reference_unmatched_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_reference_unmatched_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "NASDAQ::CRAN",
       "ticker": "CRAN",
       "exchange": "NASDAQ",
@@ -6666,23 +6649,6 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NASDAQ::CRE;exchange=NASDAQ;ticker=CRE;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NASDAQ::CSGS",
-      "ticker": "CSGS",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "CSG Systems International Inc",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NASDAQ::CSGS;exchange=NASDAQ;ticker=CSGS;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -6785,23 +6751,6 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NASDAQ::DSAC;exchange=NASDAQ;ticker=DSAC;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NASDAQ::DTSTW",
-      "ticker": "DTSTW",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Data Storage Corporation",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NASDAQ::DTSTW;exchange=NASDAQ;ticker=DTSTW;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -7471,23 +7420,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "NASDAQ::MCW",
-      "ticker": "MCW",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Mister Car Wash, Inc. Common Stock",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NASDAQ::MCW;exchange=NASDAQ;ticker=MCW;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "NASDAQ::MDCX",
       "ticker": "MDCX",
       "exchange": "NASDAQ",
@@ -7686,23 +7618,6 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NASDAQ::NIPG;exchange=NASDAQ;ticker=NIPG;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NASDAQ::NRXPW",
-      "ticker": "NRXPW",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "NRx Pharmaceuticals Inc",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NASDAQ::NRXPW;exchange=NASDAQ;ticker=NRXPW;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -8032,23 +7947,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "NASDAQ::RAPT",
-      "ticker": "RAPT",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "RAPT Therapeutics Inc",
-      "gap_class": "official_identifier_reference_unmatched_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
-      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
-      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN.",
-      "source_gap_context": "listing_key=NASDAQ::RAPT;exchange=NASDAQ;ticker=RAPT;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_reference_unmatched_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_reference_unmatched_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "NASDAQ::RARE",
       "ticker": "RARE",
       "exchange": "NASDAQ",
@@ -8079,23 +7977,6 @@
       "source_gap_context": "listing_key=NASDAQ::RNA;exchange=NASDAQ;ticker=RNA;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NASDAQ::RNAM",
-      "ticker": "RNAM",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Avidity Biosciences, Inc",
-      "gap_class": "official_identifier_reference_unmatched_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
-      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
-      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN.",
-      "source_gap_context": "listing_key=NASDAQ::RNAM;exchange=NASDAQ;ticker=RNAM;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_reference_unmatched_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_reference_unmatched_gap"
     },
     {
       "field": "missing_isin_primary",
@@ -9613,23 +9494,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "NYSE::AHL",
-      "ticker": "AHL",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "name": "Aspen Insurance Holdings Limited",
-      "gap_class": "official_identifier_reference_unmatched_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
-      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
-      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN.",
-      "source_gap_context": "listing_key=NYSE::AHL;exchange=NYSE;ticker=AHL;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_reference_unmatched_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_reference_unmatched_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "NYSE::AIIA",
       "ticker": "AIIA",
       "exchange": "NYSE",
@@ -9675,23 +9539,6 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NYSE::ALUB;exchange=NYSE;ticker=ALUB;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NYSE::ALUB-UN",
-      "ticker": "ALUB-UN",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "name": "Alussa Energy Acquisition Corp. II",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NYSE::ALUB-UN;exchange=NYSE;ticker=ALUB-UN;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -9817,23 +9664,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "NYSE::BEBE-UN",
-      "ticker": "BEBE-UN",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "name": "TGE Value Creative Solutions Co",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NYSE::BEBE-UN;exchange=NYSE;ticker=BEBE-UN;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "NYSE::BIII",
       "ticker": "BIII",
       "exchange": "NYSE",
@@ -9845,23 +9675,6 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NYSE::BIII;exchange=NYSE;ticker=BIII;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NYSE::BIII-UN",
-      "ticker": "BIII-UN",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "name": "Black Spade Acquisition III Co",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NYSE::BIII-UN;exchange=NYSE;ticker=BIII-UN;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -10072,23 +9885,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "NYSE::FCRX",
-      "ticker": "FCRX",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "name": "First Eagle Alternative Capital BDC Inc",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NYSE::FCRX;exchange=NYSE;ticker=FCRX;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "NYSE::FHI",
       "ticker": "FHI",
       "exchange": "NYSE",
@@ -10225,23 +10021,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "NYSE::IRAB-UN",
-      "ticker": "IRAB-UN",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "name": "Iris Acquisition Corp II",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NYSE::IRAB-UN;exchange=NYSE;ticker=IRAB-UN;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "NYSE::JHX",
       "ticker": "JHX",
       "exchange": "NYSE",
@@ -10304,23 +10083,6 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NYSE::KRSP;exchange=NYSE;ticker=KRSP;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NYSE::KRSP-UN",
-      "ticker": "KRSP-UN",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "name": "Rice Acquisition Corporation 3",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NYSE::KRSP-UN;exchange=NYSE;ticker=KRSP-UN;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -10412,23 +10174,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "NYSE::MZYX-UN",
-      "ticker": "MZYX-UN",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "name": "MOZAYYX Acquisition Corp.",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NYSE::MZYX-UN;exchange=NYSE;ticker=MZYX-UN;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "NYSE::NWAX",
       "ticker": "NWAX",
       "exchange": "NYSE",
@@ -10440,23 +10185,6 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NYSE::NWAX;exchange=NYSE;ticker=NWAX;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NYSE::NWAX-UN",
-      "ticker": "NWAX-UN",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "name": "New America Acquisition I Corp.",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NYSE::NWAX-UN;exchange=NYSE;ticker=NWAX-UN;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -10599,23 +10327,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "NYSE::SAC-UN",
-      "ticker": "SAC-UN",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "name": "Safeguard Acquisition Corp.",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NYSE::SAC-UN;exchange=NYSE;ticker=SAC-UN;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "NYSE::SAGU",
       "ticker": "SAGU",
       "exchange": "NYSE",
@@ -10678,23 +10389,6 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NYSE::SBXE;exchange=NYSE;ticker=SBXE;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NYSE::SBXE-UN",
-      "ticker": "SBXE-UN",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "name": "SilverBox Corp V",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NYSE::SBXE-UN;exchange=NYSE;ticker=SBXE-UN;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -10871,23 +10565,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "NYSE::TRAD-UN",
-      "ticker": "TRAD-UN",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "name": "APEX Tech Acquisition Inc.",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NYSE::TRAD-UN;exchange=NYSE;ticker=TRAD-UN;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "NYSE::TTE",
       "ticker": "TTE",
       "exchange": "NYSE",
@@ -11018,23 +10695,6 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NYSE::WPAC;exchange=NYSE;ticker=WPAC;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NYSE::WPAC-UN",
-      "ticker": "WPAC-UN",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "name": "White Pearl Acquisition Corp.",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NYSE::WPAC-UN;exchange=NYSE;ticker=WPAC-UN;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -18232,6 +17892,23 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
+      "listing_key": "LSE::0HRZ",
+      "ticker": "0HRZ",
+      "exchange": "LSE",
+      "asset_type": "Stock",
+      "name": "Cabot Oil & Gas Corp.",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=LSE::0HRZ;exchange=LSE;ticker=0HRZ;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
       "listing_key": "LSE::0NHV",
       "ticker": "0NHV",
       "exchange": "LSE",
@@ -18946,6 +18623,23 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
+      "listing_key": "OTC::ULYX",
+      "ticker": "ULYX",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "name": "Urgent.ly Inc.",
+      "gap_class": "otc_sector_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require SEC SIC, issuer filing, OTCMarkets profile, or reviewed secondary profile data; no name-only sector guesses.",
+      "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
+      "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
+      "source_gap_context": "listing_key=OTC::ULYX;exchange=OTC;ticker=ULYX;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
       "listing_key": "OTC::UVCL",
       "ticker": "UVCL",
       "exchange": "OTC",
@@ -19044,6 +18738,23 @@
       "source_gap_context": "listing_key=TSXV::RENT.P;exchange=TSXV;ticker=RENT.P;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=shell_or_cpc_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=shell_or_cpc_sector_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "XETRA::0VQ",
+      "ticker": "0VQ",
+      "exchange": "XETRA",
+      "asset_type": "Stock",
+      "name": "PURETECH HEALTH PLC LS 1",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=XETRA::0VQ;exchange=XETRA;ticker=0VQ;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
     {
       "field": "missing_sector_stock",

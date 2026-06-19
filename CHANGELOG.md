@@ -2,6 +2,25 @@
 
 ## [Unreleased]
 
+## [3.30.32] - 2026-06-19
+
+### Summary
+
+**US delisting-staleness cleanup.** The completeness audit surfaced a staleness class (securities our data still marks active that are no longer listed). Detected deterministically by diffing our US-exchange stocks against the **current NASDAQ Trader master**: 179 were absent. Each was classified (delisted/acquired vs renamed vs mis-tagged non-common vs active) and **every removal adversarially confirmed**; the 18 that still trade (e.g. `ABVE`→OTC `ABVEF`, `SGMO`) were kept.
+
+### Removed
+
+- **101 stale US listings dropped**: **73 delisted/acquired** + **28 mis-tagged warrants/units** (e.g. `ABPWW`, `*-UN` lines tagged as common stock). The acquisitions are real 2026 M&A (post-knowledge-cutoff) — independently web-verified for the large names: **Exact Sciences→Abbott** ($21B, delisted 2026-03-23), **Hologic→Blackstone/TPG** ($18B, 2026-04-07), **Coterra→Devon** (2026-05-07, now `DVN`), **Arcellx→Gilead**, **Aspen Insurance→Sompo**, plus liquidated SPACs (`AAM`). Companies with a surviving non-US cross-listing keep their primary there.
+- Primary tickers 63,279 → 63,194.
+
+### Note
+
+The **renamed/re-ticker dedup was deliberately deferred**: 5 of the 38 auto-classified "renames" were actually the v3.30.29 ISIN-collision mixups of *distinct* companies (`SCVL`/Shoe Carnival↛`SHOE`, `UGRO`/Urban-gro↛`FLZH`, `STSS`/Sharps↛`SKYA`, `SBLX`/StableX↛`FABC`, `MIGI`/Mawson↛`BGDE`) — blindly dropping the "old" tickers would have deleted the very companies restored in v3.30.29. Rename dedup needs its own verification pass. Non-US delistings (outside the NASDAQ master's scope) also remain for a future pass.
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,452 passed. Bumps VERSION to 3.30.32.
+
 ## [3.30.31] - 2026-06-19
 
 ### Summary
