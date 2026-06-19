@@ -1,0 +1,60 @@
+name: Weekly Delisting Candidates
+
+on:
+  schedule:
+    - cron: "41 7 * * 1"   # Mondays 07:41 UTC (after the drift report)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  delisting-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build delisting-candidate report
+        id: delist
+        run: python scripts/build_delisting_report.py
+
+      - name: Validate delisting report logic
+        run: python -m pytest tests/test_build_delisting_report.py -q
+
+      - name: Open delisting-review pull request
+        if: steps.delist.outputs.delisting_detected == 'true'
+        uses: peter-evans/create-pull-request@v8.1.1
+        with:
+          branch: automation/delisting-report
+          delete-branch: true
+          commit-message: Update weekly delisting-candidate report
+          title: "Weekly delisting-candidate report"
+          body: |
+            Automated weekly delisting check. Diffs our primary stock holdings
+            against board-complete official exchange masters (US NASDAQ Trader,
+            JP JPX data_j, AU ASX, IN-NSE EQUITY_L+SME, IN-BSE ListofScripData
+            with authoritative status). A failed master fetch skips that market
+            (never emits false candidates).
+
+            **Detection only — nothing is auto-applied.** Triage each candidate:
+            - `delisted` (BSE authoritative status) → drop via the override pipeline
+            - `master_absent` → verify rename vs delisting before acting (renames
+              re-key/dedup; genuine delistings drop)
+            - `suspended` (BSE) → kept by policy (can resume)
+
+            Report: `data/reports/delisting_report.md` / `.json`

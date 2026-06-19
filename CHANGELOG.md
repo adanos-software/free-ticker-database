@@ -2,6 +2,33 @@
 
 ## [Unreleased]
 
+## [3.30.38] - 2026-06-19
+
+### Summary
+
+**Operationalizes delisting detection** so the staleness sweeps (done manually in v3.30.32–37) now run automatically. No dataset rows change — this is tooling + a baseline report.
+
+### Added
+
+- `scripts/build_delisting_report.py` — diffs our primary stock holdings against **board-complete** official exchange masters and writes `data/reports/delisting_report.{json,md}` (candidates classified `delisted` / `suspended` / `master_absent`; emits `delisting_detected` for CI):
+  - US — NASDAQ Trader `nasdaqlisted.txt` + `otherlisted.txt`
+  - JP — JPX `data_j.xls` (all TSE boards)
+  - AU — ASX `ListedCompanies.csv`
+  - IN-NSE — `EQUITY_L.csv` + `SME_EQUITY_L.csv` (main + EMERGE SME → complete)
+  - IN-BSE — `ListofScripData` API with authoritative Active/Suspended/Delisted status
+  - A failed master fetch **skips that market** (with a recorded reason) and never emits candidates — a network/session hiccup can't falsely flag an exchange. Masters below a plausibility floor are treated as failed.
+- `.github/workflows/delisting-report.yml` — weekly cron (Mondays 07:41 UTC) that runs the report and opens a **review-only** PR when the candidate set changes. Detection only; drops still go through the verified override/verify pipeline.
+- `tests/test_build_delisting_report.py` (7 tests).
+- Baseline `data/reports/delisting_report.{json,md}`: 5/5 markets reachable, **0 delisted**, 172 BSE-suspended (kept by policy), 82 `master_absent` (mostly kept renames + review items).
+
+### Note
+
+This deliberately does what the drift report avoids (a source-vs-dataset diff) but only where the master is **board-complete** and verified low-false-positive — the lesson from the India SME false-positive explosion (main-board-only masters are unsafe to diff).
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,459 passed (incl. 7 new). Bumps VERSION to 3.30.38.
+
 ## [3.30.37] - 2026-06-19
 
 ### Summary
