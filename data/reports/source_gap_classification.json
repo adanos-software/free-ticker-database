@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-06-19T08:50:23Z",
-    "rows": 1067,
+    "generated_at": "2026-06-19T09:14:17Z",
+    "rows": 1065,
     "field_totals": {
       "missing_etf_category": 89,
-      "missing_isin_primary": 908,
+      "missing_isin_primary": 906,
       "missing_sector_stock": 70
     },
     "class_totals": {
@@ -21,7 +21,7 @@
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 12,
       "official_identifier_not_exposed_source_gap": 364,
-      "official_identifier_reference_unmatched_gap": 68,
+      "official_identifier_reference_unmatched_gap": 66,
       "official_industry_taxonomy_unavailable_gap": 24,
       "official_product_reference_unmatched_category_gap": 20,
       "official_product_taxonomy_unavailable_gap": 58,
@@ -42,7 +42,7 @@
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 12,
       "missing_isin_primary:official_identifier_not_exposed_source_gap": 364,
-      "missing_isin_primary:official_identifier_reference_unmatched_gap": 68,
+      "missing_isin_primary:official_identifier_reference_unmatched_gap": 66,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 1,
       "missing_sector_stock:fundlike_stock_sector_gap": 1,
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 24,
@@ -14182,40 +14182,6 @@
       "source_gap_context": "listing_key=SZSE::301589;exchange=SZSE;ticker=301589;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "TSE::7056",
-      "ticker": "7056",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "name": "Maruc Co.,Ltd.",
-      "gap_class": "official_identifier_reference_unmatched_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
-      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
-      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN.",
-      "source_gap_context": "listing_key=TSE::7056;exchange=TSE;ticker=7056;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_reference_unmatched_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_reference_unmatched_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "TSE::7450",
-      "ticker": "7450",
-      "exchange": "TSE",
-      "asset_type": "Stock",
-      "name": "SUNDAY CO.,LTD.",
-      "gap_class": "official_identifier_reference_unmatched_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
-      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
-      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN.",
-      "source_gap_context": "listing_key=TSE::7450;exchange=TSE;ticker=7450;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_reference_unmatched_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_reference_unmatched_gap"
     },
     {
       "field": "missing_isin_primary",

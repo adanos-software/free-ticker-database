@@ -2,6 +2,26 @@
 
 ## [Unreleased]
 
+## [3.30.36] - 2026-06-19
+
+### Summary
+
+**Non-US delisting cleanup — Tier 1 (Japan + Australia), where the official masters ARE complete.** Unlike NSE India (main-board-only), JPX `data_j.xls` covers all TSE boards (Prime/Standard/Growth) and ASX `ListedCompanies.csv` is the full ASX list, so the US-style master-diff is reliable here. Diffing our holdings: 14/2,866 TSE + 29/954 ASX absent. Each verified (adversarial before drop); renames/active kept.
+
+### Removed
+
+- **22 web+adversarially-confirmed delistings dropped** (12 TSE + 10 ASX), almost all 2026 take-privates/MBOs (post-knowledge-cutoff). TSE: `ITOCHU-SHOKUHIN` (Itochu TOB), `Medical Data Vision` (Nippon Life), `RAKSUL` (Goldman-backed MBO), `CANON ELECTRONICS`, `MANDOM`, `TOHO TITANIUM`, `NIPPON PALLET POOL`, `Fast Fitness Japan`, `SUNDAY`, `Maruc`, `Friendly`, `Wellbin`. ASX: `IFL` Insignia Financial (CC Capital, delisted 2026-04-28), `NSR` National Storage REIT (Brookfield/GIC $4bn), `Apiam`, `Diversified United Investment`, `Winsome`, `Robex`, `African Gold`, `Audio Pixels`, `Icandy`, `Emu` (deferred-settlement line). The two large ASX names independently web-confirmed.
+- **Kept** the 16 renames (ASX re-tickers like `5EA`→`FEAM`, `ADG`→`AM3` — rename-dedup deferred) and 5 refuted (`6489`, ASX special-condition/`CA` lines).
+- Primary tickers 63,169 → 63,151 (a few delisted names with a surviving non-JP/AU cross-listing keep their primary there).
+
+### Note
+
+Tier 2 (India NSE+SME / BSE) needs the session-gated SME EMERGE master; Tier 3 (markets with no complete master) stays on the symbol-changes feed + periodic completeness re-audits. The reliable rule: master-diff only where the master is board-complete.
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,452 passed. Bumps VERSION to 3.30.36.
+
 ## [3.30.35] - 2026-06-19
 
 ### Summary
