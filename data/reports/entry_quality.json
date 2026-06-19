@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-06-19T08:07:12Z",
-    "rows": 74603,
+    "generated_at": "2026-06-19T08:42:55Z",
+    "rows": 74599,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -15,28 +15,28 @@
   "summary": {
     "status_counts": {
       "pass": 67698,
-      "source_gap": 6829,
-      "warn": 76
+      "source_gap": 6826,
+      "warn": 75
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4777,
-      "official_reference": 68610,
+      "identifier_enriched": 4774,
+      "official_reference": 68609,
       "scoped_source_gap": 352,
       "valid_isin": 864
     },
     "severity_counts": {
       "high": 67,
-      "medium": 9,
-      "source_gap": 7037
+      "medium": 8,
+      "source_gap": 7034
     },
     "issue_counts": {
-      "official_reference_gap": 5708,
+      "official_reference_gap": 5705,
       "expected_missing_primary_isin": 914,
       "venue_missing_official_source": 285,
       "missing_etf_category": 81,
       "country_isin_mismatch": 65,
       "missing_stock_sector": 49,
-      "official_name_mismatch": 9,
+      "official_name_mismatch": 8,
       "official_isin_mismatch": 2
     },
     "top_flagged_exchanges": [
@@ -57,8 +57,8 @@
       },
       {
         "exchange": "NASDAQ",
-        "pass": 4400,
-        "source_gap": 269,
+        "pass": 4399,
+        "source_gap": 268,
         "warn": 1
       },
       {
@@ -106,8 +106,7 @@
       {
         "exchange": "NYSE",
         "pass": 1926,
-        "source_gap": 104,
-        "warn": 1
+        "source_gap": 103
       },
       {
         "exchange": "XETRA",
@@ -7733,24 +7732,6 @@
       ]
     },
     {
-      "listing_key": "NYSE::AHH",
-      "ticker": "AHH",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "NYSE",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
       "listing_key": "OTC::AHLAS",
       "ticker": "AHLAS",
       "exchange": "OTC",
@@ -11960,24 +11941,6 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "NYSE MKT::ARMN",
-      "ticker": "ARMN",
-      "exchange": "NYSE MKT",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "NYSE MKT",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
@@ -18410,6 +18373,56 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "BATS::BLSX",
+      "ticker": "BLSX",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "BATS",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "AMS::BLTN",
+      "ticker": "BLTN",
+      "exchange": "AMS",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 70,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        },
+        {
+          "issue_type": "missing_etf_category",
+          "severity": "source_gap",
+          "field": "etf_category",
+          "value": "",
+          "message": "Core ETF listing has no etf_category."
+        },
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "AMS",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]

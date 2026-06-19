@@ -2,6 +2,22 @@
 
 ## [Unreleased]
 
+## [3.30.34] - 2026-06-19
+
+### Summary
+
+Cleanup of two items left open by v3.30.33: the 3 deferred rekeys and the contaminated-ISIN rows surfaced by the rename audit.
+
+### Changed
+
+- **Rekeys / leftover renames** (OpenFIGI `ID_ISIN`-verified): `OTH`→`NXB` (NextBoat Inc., re-keyed — new symbol wasn't in the data); `MYNZ` dropped as a stale duplicate of the already-present `QUCY` (Quantum Cyber N.V., same ISIN `NL0015000LC2`, now the primary; allowlisted as a Dutch-incorporated NASDAQ listing); `FITBP` dropped (Fifth Third Bancorp **preferred** — OpenFIGI `securityType=Preferred Stock`, out of Stock scope per v3.30.25, not a common-stock rename).
+- **Contaminated ISINs corrected** (and the now-safe v3.30.33 dedup completed): `AHRT` (AH Realty Trust / Armada Hoffler) re-pointed from a defunct American-Healthcare-REIT pre-listing ISIN to its real `US04208T1088`; `ARIS` (Aris Mining) re-pointed from the Aris Mining **Holdings** subsidiary ISIN to the parent `CA04040Y1097`. With the surviving rows now correct, the stale old tickers `AHH` and `ARMN` were dropped. American Healthcare REIT remains correctly represented under `AHR` (`US3981823038`).
+- Primary tickers 63,179 → 63,176.
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,452 passed. Bumps VERSION to 3.30.34.
+
 ## [3.30.33] - 2026-06-19
 
 ### Summary
