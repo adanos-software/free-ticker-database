@@ -2,6 +2,26 @@
 
 ## [Unreleased]
 
+## [3.30.33] - 2026-06-19
+
+### Summary
+
+**Rename dedup (the deferred half of v3.30.32) — and a correction of v3.30.29.** Each of the 44 alleged old→new ticker changes from the delisting pass was verified for *same-issuer* (vs SPAC recycling / ticker collisions), with an adversarial confirm. Only adversarially-confirmed true renames were acted on; the rest left untouched (e.g. `ARMN`/`ARIS`, `BBU`/`BBUC`, `CWEN-A`/`CWEN` refuted as distinct/contaminated; `SCVL`↛`SHOE`, `ASGN`↛Turkish `EFOR`, `ATON`↛Kenyan `ALP` left as collisions).
+
+### Fixed
+
+- **Corrects 4 v3.30.29 mistakes.** v3.30.29 treated four real reverse-merger/rebrand renames as wrong ISIN-collisions (blanked the new ticker's ISIN, kept the old). Verified via SEC-CIK + web that these are the **same legal entity renamed**: **urban-gro→Flash Sports & Media** (`UGRO`→`FLZH`, CIK 1706524), **Mawson Infrastructure→Big Digital Energy** (`MIGI`→`BGDE`), **Sharps Technology→SkyAI** (`STSS`→`SKYA`), **StableX→Fabric.AI** (`SBLX`→`FABC`). Restored the carried-through ISIN onto each new ticker (OpenFIGI `ID_ISIN`-confirmed) and dropped the stale old symbol.
+- **14 stale renamed-away tickers dropped** (`UGRO`,`MIGI`,`STSS`,`SBLX`,`GLTO`,`GMRE`,`BLBX`,`HSPT`,`HYAC`,`IPOD`,`KLTO`,`SKBL`,`TBMC`,`TIVC`), each a confirmed same-issuer rename whose current ticker we already carry. **7 new-ticker ISINs set/restored** (`FLZH`,`BGDE`,`SKYA`,`FABC`,`CCAQ`,`GRML`,`KAZR`), all OpenFIGI-verified.
+- Primary tickers 63,194 → 63,179.
+
+### Note
+
+3 rekeys whose new symbol isn't yet in our data (`FITBP`→`FITB.PRA`, `MYNZ`→`QUCY`, `OTH`→`NXB`) were deferred (ticker re-key, lower stakes). 3 proposed drops were adversarially **refuted and kept** (`ARMN`/`ARIS`, `BBU`/`BBUC`, `CWEN-A`/`CWEN` — distinct paired securities or identifier contamination on the surviving row, the latter a separate fixable issue).
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,452 passed. Bumps VERSION to 3.30.33.
+
 ## [3.30.32] - 2026-06-19
 
 ### Summary
