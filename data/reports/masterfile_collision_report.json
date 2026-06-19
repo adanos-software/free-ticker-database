@@ -1,9 +1,9 @@
 {
   "global": {
     "official_symbols": 78844,
-    "matched": 53219,
-    "collisions": 11243,
-    "missing": 14382
+    "matched": 53172,
+    "collisions": 11234,
+    "missing": 14438
   },
   "exchanges": [
     {
@@ -1433,8 +1433,8 @@
       "exchange": "Euronext",
       "official_symbols": 4426,
       "matched": 990,
-      "collisions": 2346,
-      "missing": 1090,
+      "collisions": 2345,
+      "missing": 1091,
       "collision_examples": [
         {
           "ticker": "0EMU",
@@ -1859,8 +1859,8 @@
       "exchange": "IDX",
       "official_symbols": 958,
       "matched": 694,
-      "collisions": 246,
-      "missing": 18,
+      "collisions": 244,
+      "missing": 20,
       "collision_examples": [
         {
           "ticker": "ABBA",
@@ -1945,6 +1945,11 @@
       ],
       "missing_examples": [
         {
+          "ticker": "BHAT",
+          "name": "PT Bhakti Multi Artha Tbk.",
+          "exchange": "IDX"
+        },
+        {
           "ticker": "BIPI",
           "name": "PT Astrindo Nusantara Infrastruktur Tbk.",
           "exchange": "IDX"
@@ -1970,6 +1975,11 @@
           "exchange": "IDX"
         },
         {
+          "ticker": "CTRA",
+          "name": "Ciputra Development Tbk",
+          "exchange": "IDX"
+        },
+        {
           "ticker": "FASW",
           "name": "Fajar Surya Wisesa Tbk",
           "exchange": "IDX"
@@ -1982,16 +1992,6 @@
         {
           "ticker": "GOLL",
           "name": "PT Golden Plantation Tbk",
-          "exchange": "IDX"
-        },
-        {
-          "ticker": "KBRI",
-          "name": "Kertas Basuki Rachmat Indonesia Tbk",
-          "exchange": "IDX"
-        },
-        {
-          "ticker": "LCGP",
-          "name": "PT Eureka Prima Jakarta Tbk.",
           "exchange": "IDX"
         }
       ]
@@ -2224,8 +2224,8 @@
       "exchange": "LSE",
       "official_symbols": 11021,
       "matched": 6419,
-      "collisions": 1109,
-      "missing": 3493,
+      "collisions": 1104,
+      "missing": 3498,
       "collision_examples": [
         {
           "ticker": "0GZJ",
@@ -2475,9 +2475,9 @@
     {
       "exchange": "NASDAQ",
       "official_symbols": 5524,
-      "matched": 4591,
-      "collisions": 33,
-      "missing": 900,
+      "matched": 4563,
+      "collisions": 35,
+      "missing": 926,
       "collision_examples": [
         {
           "ticker": "AIMS",
@@ -2552,11 +2552,11 @@
           ]
         },
         {
-          "ticker": "CCD",
-          "name": "Calamos Dynamic Convertible & Income Fund - Closed End Fund",
+          "ticker": "BTM",
+          "name": "Bitcoin Depot Inc.",
           "target_exchange": "NASDAQ",
           "existing_exchanges": [
-            "TSXV"
+            "ASX"
           ]
         }
       ],
@@ -3050,9 +3050,9 @@
     {
       "exchange": "NYSE",
       "official_symbols": 3872,
-      "matched": 2029,
+      "matched": 2010,
       "collisions": 503,
-      "missing": 1340,
+      "missing": 1359,
       "collision_examples": [
         {
           "ticker": "ACCS",
@@ -3976,8 +3976,8 @@
       "exchange": "PSX",
       "official_symbols": 716,
       "matched": 371,
-      "collisions": 157,
-      "missing": 188,
+      "collisions": 156,
+      "missing": 189,
       "collision_examples": [
         {
           "ticker": "AAL",
@@ -4033,8 +4033,7 @@
           "name": "Arif Habib Limited",
           "target_exchange": "PSX",
           "existing_exchanges": [
-            "ASX",
-            "NYSE"
+            "ASX"
           ]
         },
         {
@@ -4706,8 +4705,8 @@
       "exchange": "TSX",
       "official_symbols": 788,
       "matched": 326,
-      "collisions": 456,
-      "missing": 6,
+      "collisions": 455,
+      "missing": 7,
       "collision_examples": [
         {
           "ticker": "AAB",
@@ -4807,6 +4806,11 @@
         {
           "ticker": "EFR",
           "name": "Energy Fuels Inc.",
+          "exchange": "TSX"
+        },
+        {
+          "ticker": "FORA",
+          "name": "VerticalScope Holdings Inc.",
           "exchange": "TSX"
         },
         {
@@ -5264,8 +5268,8 @@
       "exchange": "XETRA",
       "official_symbols": 4544,
       "matched": 3672,
-      "collisions": 775,
-      "missing": 97,
+      "collisions": 774,
+      "missing": 98,
       "collision_examples": [
         {
           "ticker": "0GZK",
@@ -5370,6 +5374,11 @@
           "exchange": "XETRA"
         },
         {
+          "ticker": "ASRT",
+          "name": "BNPPE-EO C.BD S.P.UETFEOD",
+          "exchange": "XETRA"
+        },
+        {
           "ticker": "AW1V",
           "name": "UBSCOREMSCIEMU AAEO",
           "exchange": "XETRA"
@@ -5392,11 +5401,6 @@
         {
           "ticker": "BWCC",
           "name": "BITWISE EURO O.END ETP",
-          "exchange": "XETRA"
-        },
-        {
-          "ticker": "CAKD",
-          "name": "WEI-CAIE DLD",
           "exchange": "XETRA"
         }
       ]
