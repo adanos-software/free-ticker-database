@@ -2,6 +2,28 @@
 
 ## [Unreleased]
 
+## [3.30.31] - 2026-06-19
+
+### Summary
+
+**Per-market completeness audit + acted-on fixes.** A reproducible stratified sample of **≥5 stocks across all 79 markets** (385 stocks, seed 20260619) was verified field-by-field against ≥2 independent sources, with an adversarial refute pass. Finding: **name/country/sector are ~complete everywhere; the ISIN is the only systematic gap** (worst in Colombia/BVC, NEO, Qatar/QSE, Hungary, Mexico/BMV, TSX, Chile). 271/385 fully complete; the rest mostly missing-ISIN.
+
+### Changed
+
+- **45 verified ISINs filled/fixed** (37 previously-blank + 8 wrong), each gated by adversarial refute + checksum + OpenFIGI `ID_ISIN` ticker match. The gate rejected 18 agent-proposed ISINs (e.g. bond ISINs mis-mapped to `DTG`/`CPIP`/`1053P`, official-reference conflicts on `LEBEK`/`3595`/`6787`) — left blank rather than risk a wrong value.
+- **Confirmed sector/country/name corrections** applied (incl. the identity fix `SZSE::001316` = Lubair Aviation, not "Zhejiang XiaSha").
+- **2 stale-rename duplicates dropped**: `TV1`→`FVEN` (Foresight Ventures VCT) and `SLPE`→`PPET` (Patria Private Equity Trust) — the renamed successors already existed as primaries.
+- Regenerated `identifiers_extended`/`listing_index` via `enrich_global_identifiers.py`.
+- Primary tickers 63,288 → 63,279 (2 stale-rename drops + 7 same-company dedup merges from the ISIN fills, e.g. Mincon `MCON`/`MIO`).
+
+### Note
+
+The audit's 22 "not found" rows were re-verified rigorously: **none were phantoms** — the adversarial pass refuted every drop. They are renames (kept), genuinely active-but-obscure (kept), or **recently delisted/taken-private in 2026** (e.g. KOSDAQ SPACs `444920`/`455910`, `202A` MAMEZO buyout, Grupo Elektra suspension) — a *staleness* class deferred for a future delisting-status pass, not dropped here. Country flags conflicting with the ISIN-prefix convention were reverted (not real errors).
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,452 passed. Bumps VERSION to 3.30.31.
+
 ## [3.30.30] - 2026-06-18
 
 ### Summary

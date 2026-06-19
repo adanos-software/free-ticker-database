@@ -1,12 +1,12 @@
 # Source Gap Classification
 
-Generated at: `2026-06-18T17:37:13Z`
+Generated at: `2026-06-19T07:15:46Z`
 
 This report classifies residual metadata gaps after official and reviewed free-source backfills. It is a guardrail report: values remain empty unless a future source satisfies the listed source gate.
 
 ## Summary
 
-- Missing primary ISIN rows classified: `984`
+- Missing primary ISIN rows classified: `945`
 - Missing stock-sector rows classified: `67`
 - Missing ETF-category rows classified: `89`
 
@@ -14,17 +14,17 @@ This report classifies residual metadata gaps after official and reviewed free-s
 
 | Class | Rows |
 |---|---:|
-| official_identifier_not_exposed_source_gap | 413 |
-| fund_or_trust_identifier_gap | 289 |
-| official_identifier_reference_unmatched_gap | 91 |
+| official_identifier_not_exposed_source_gap | 387 |
+| fund_or_trust_identifier_gap | 288 |
+| official_identifier_reference_unmatched_gap | 82 |
 | debt_or_securitized_identifier_gap | 81 |
 | official_product_taxonomy_unavailable_gap | 58 |
-| adr_cdr_or_depositary_identifier_gap | 45 |
+| adr_cdr_or_depositary_identifier_gap | 43 |
 | otc_sector_source_gap | 42 |
 | capital_pool_or_halted_identifier_gap | 35 |
 | official_industry_taxonomy_unavailable_gap | 22 |
 | official_product_reference_unmatched_category_gap | 20 |
-| inactive_or_legacy_identifier_gap | 18 |
+| inactive_or_legacy_identifier_gap | 17 |
 | official_current_directory_absent_identifier_gap | 12 |
 | equity_etf_category_gap | 4 |
 | commodity_etf_category_gap | 3 |
@@ -38,8 +38,8 @@ This report classifies residual metadata gaps after official and reviewed free-s
 
 | Field | Gap Class | Exchange | Rows | Recommended Next Source | Source Gate |
 |---|---|---|---:|---|---|
-| missing_isin_primary | official_identifier_not_exposed_source_gap | NASDAQ | 143 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
-| missing_isin_primary | official_identifier_not_exposed_source_gap | NYSE | 82 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
+| missing_isin_primary | official_identifier_not_exposed_source_gap | NASDAQ | 141 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
+| missing_isin_primary | official_identifier_not_exposed_source_gap | NYSE | 81 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
 | missing_isin_primary | fund_or_trust_identifier_gap | NYSE ARCA | 59 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
 | missing_isin_primary | debt_or_securitized_identifier_gap | ASX | 58 | Official debt/structured-product masterfile, trustee/prospectus, or reviewed identifier feed. | Exact instrument code/name and ISIN checksum; never issuer-equity propagation. |
 | missing_isin_primary | fund_or_trust_identifier_gap | TSX | 49 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
@@ -47,17 +47,17 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | missing_isin_primary | capital_pool_or_halted_identifier_gap | TSXV | 35 | Current exchange issuer/status file or CPC/shell prospectus. | Exact halted/CPC symbol and direct current identifier evidence. |
 | missing_isin_primary | official_identifier_not_exposed_source_gap | TSXV | 34 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
 | missing_isin_primary | fund_or_trust_identifier_gap | NASDAQ | 28 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
-| missing_isin_primary | adr_cdr_or_depositary_identifier_gap | NEO | 27 | Depositary/CDR program identifier source, not underlying equity ISIN. | Exact program symbol, issuer/program name, expected country prefix, and ISIN checksum. |
 | missing_isin_primary | fund_or_trust_identifier_gap | ASX | 26 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
-| missing_isin_primary | official_identifier_not_exposed_source_gap | QSE | 25 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
-| missing_isin_primary | official_identifier_not_exposed_source_gap | SSE | 24 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
+| missing_isin_primary | adr_cdr_or_depositary_identifier_gap | NEO | 25 | Depositary/CDR program identifier source, not underlying equity ISIN. | Exact program symbol, issuer/program name, expected country prefix, and ISIN checksum. |
 | missing_isin_primary | official_identifier_reference_unmatched_gap | NASDAQ | 23 | Official exchange directory, alias review, or CSD/security registry detail. | Require an exact official symbol/alias match or direct registry record before filling ISIN. |
+| missing_isin_primary | official_identifier_not_exposed_source_gap | QSE | 23 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
 | missing_isin_primary | fund_or_trust_identifier_gap | BATS | 22 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
-| missing_isin_primary | official_identifier_not_exposed_source_gap | PSX | 22 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
-| missing_isin_primary | official_identifier_not_exposed_source_gap | BMV | 18 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
+| missing_isin_primary | official_identifier_not_exposed_source_gap | SSE | 22 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
+| missing_isin_primary | official_identifier_not_exposed_source_gap | PSX | 20 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
 | missing_isin_primary | adr_cdr_or_depositary_identifier_gap | TSX | 18 | Depositary/CDR program identifier source, not underlying equity ISIN. | Exact program symbol, issuer/program name, expected country prefix, and ISIN checksum. |
 | missing_isin_primary | official_identifier_not_exposed_source_gap | TSX | 18 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
 | missing_isin_primary | fund_or_trust_identifier_gap | SSE_CL | 17 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
+| missing_isin_primary | official_identifier_not_exposed_source_gap | BMV | 16 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
 
 ## Release Policy
 
