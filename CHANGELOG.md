@@ -2,6 +2,32 @@
 
 ## [Unreleased]
 
+## [3.30.39] - 2026-06-21
+
+### Summary
+
+**Full-DB error scan + DB-wide external-source validation.** Two passes: (1) a deterministic scan over **all 63,147 primary tickers** (every entry), and (2) a multi-agent external validation (field-by-field vs ≥2 independent sources, adversarially verified) of a **500-row stratified sample spanning all 81 markets**.
+
+- Deterministic scan: the dataset is **structurally clean** (0 ISIN-checksum / duplicate-symbol / cross-name-ISIN-collision / invalid-sector / invalid-asset_type) — the 83 gates hold. Only 8 real issues: 7 UTF-8-mojibake ETF names + 1 blank country.
+- External sample: **85.4% row-level correct** (Wilson95 82.0–88.2%; n=500) — lower than the prior 89.7% fixed-scope audit because this sample reaches every market incl. weak frontier exchanges and was stricter on name-currency/delisting. Error mix: name 29, sector 25, exists 11, isin 7, etf_category 4, asset_type 3, exchange 1.
+
+### Changed / Fixed
+
+- **7 mojibake ETF names** repaired (XETRA, mangled en-dash/ZWSP) + **AERO** (Grupo Aeroméxico) blank country → Mexico.
+- **~27 stale/wrong names** corrected (e.g. `DVRE`→WEBs Real Estate XLRE, `INLOT`→Bally's Intralot, `BTV`→BlueRush, `GCB`→GCB Bank, `FNTS`→Wilk Technologies, several CN/KR/ETF names).
+- **24 GICS `stock_sector`** + **4 `etf_category`** corrections (e.g. `EXITO`→Consumer Staples, `NEWSLV`→Commodity).
+- **3 ISINs** corrected (`HAD`, `SGH`, `TRAN` — OpenFIGI `ID_ISIN` ticker-match verified). 3 further proposed ISINs (`VFDGROUP`, `2760`, `6832`) reverted as they conflicted with the official masterfile reference; 1 (`MTNR`/Rwanda) left as unverifiable.
+- **9 dropped**: 3 non-equity mis-tags (`VRTVX` mutual fund, `FM1` RMBS note, `SKTPP` preferred) + 6 confirmed delisted/defunct (`IRAX`, `NBKE` EGX-delisted; `RDEMF`, `SANY6`, `FRDU`, `FGPRB`).
+- Primary tickers 63,147 → 63,135.
+
+### Note
+
+Exhaustive per-row external validation of all 63k is not feasible (would need a credentialed bulk feed, not agents); the full deterministic scan covers every entry, the agent pass measures the DB-wide rate on a representative sample. `stock_sector` remains the dominant correctable error class. A handful of re-ticker cases (`CPKL`→`CRWN`, `GDEP`→`GGEP.F`) were noted but deferred (rename-rekey, separate pass).
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,459 passed. Bumps VERSION to 3.30.39.
+
 ## [3.30.38] - 2026-06-19
 
 ### Summary

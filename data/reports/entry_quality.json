@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-06-19T10:06:45Z",
-    "rows": 74566,
+    "generated_at": "2026-06-21T16:39:51Z",
+    "rows": 74557,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,24 +14,24 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 67693,
-      "source_gap": 6798,
+      "pass": 67691,
+      "source_gap": 6791,
       "warn": 75
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4755,
-      "official_reference": 68604,
-      "scoped_source_gap": 343,
-      "valid_isin": 864
+      "identifier_enriched": 4752,
+      "official_reference": 68601,
+      "scoped_source_gap": 342,
+      "valid_isin": 862
     },
     "severity_counts": {
       "high": 67,
       "medium": 8,
-      "source_gap": 6998
+      "source_gap": 6990
     },
     "issue_counts": {
-      "official_reference_gap": 5677,
-      "expected_missing_primary_isin": 906,
+      "official_reference_gap": 5671,
+      "expected_missing_primary_isin": 904,
       "venue_missing_official_source": 285,
       "missing_etf_category": 81,
       "country_isin_mismatch": 65,
@@ -42,13 +42,13 @@
     "top_flagged_exchanges": [
       {
         "exchange": "OTC",
-        "pass": 7864,
-        "source_gap": 3181,
+        "pass": 7863,
+        "source_gap": 3179,
         "warn": 6
       },
       {
         "exchange": "B3",
-        "source_gap": 322,
+        "source_gap": 321,
         "pass": 1262
       },
       {
@@ -58,7 +58,7 @@
       {
         "exchange": "NASDAQ",
         "pass": 4399,
-        "source_gap": 268,
+        "source_gap": 267,
         "warn": 1
       },
       {
@@ -90,7 +90,7 @@
       {
         "exchange": "ASX",
         "pass": 1478,
-        "source_gap": 151,
+        "source_gap": 150,
         "warn": 1
       },
       {

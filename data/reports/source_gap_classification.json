@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-06-19T10:06:42Z",
-    "rows": 1065,
+    "generated_at": "2026-06-21T16:39:48Z",
+    "rows": 1063,
     "field_totals": {
       "missing_etf_category": 89,
-      "missing_isin_primary": 906,
+      "missing_isin_primary": 904,
       "missing_sector_stock": 70
     },
     "class_totals": {
@@ -12,7 +12,7 @@
       "adr_cdr_or_depositary_sector_gap": 1,
       "capital_pool_or_halted_identifier_gap": 35,
       "commodity_etf_category_gap": 3,
-      "debt_or_securitized_identifier_gap": 81,
+      "debt_or_securitized_identifier_gap": 80,
       "digital_asset_etf_category_gap": 1,
       "equity_etf_category_gap": 4,
       "fixed_income_etf_category_gap": 3,
@@ -21,7 +21,7 @@
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 12,
       "official_identifier_not_exposed_source_gap": 364,
-      "official_identifier_reference_unmatched_gap": 66,
+      "official_identifier_reference_unmatched_gap": 65,
       "official_industry_taxonomy_unavailable_gap": 24,
       "official_product_reference_unmatched_category_gap": 20,
       "official_product_taxonomy_unavailable_gap": 58,
@@ -37,12 +37,12 @@
       "missing_etf_category:official_product_taxonomy_unavailable_gap": 58,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 43,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 35,
-      "missing_isin_primary:debt_or_securitized_identifier_gap": 81,
+      "missing_isin_primary:debt_or_securitized_identifier_gap": 80,
       "missing_isin_primary:fund_or_trust_identifier_gap": 288,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 12,
       "missing_isin_primary:official_identifier_not_exposed_source_gap": 364,
-      "missing_isin_primary:official_identifier_reference_unmatched_gap": 66,
+      "missing_isin_primary:official_identifier_reference_unmatched_gap": 65,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 1,
       "missing_sector_stock:fundlike_stock_sector_gap": 1,
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 24,
@@ -99,7 +99,7 @@
         },
         {
           "exchange": "ASX",
-          "rows": 105
+          "rows": 104
         },
         {
           "exchange": "TSX",
@@ -206,7 +206,7 @@
         "field": "missing_isin_primary",
         "gap_class": "debt_or_securitized_identifier_gap",
         "exchange": "ASX",
-        "rows": 58,
+        "rows": 57,
         "recommended_next_source": "Official debt/structured-product masterfile, trustee/prospectus, or reviewed identifier feed.",
         "source_gate": "Exact instrument code/name and ISIN checksum; never issuer-equity propagation."
       },
@@ -2184,23 +2184,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "ASX::FM1",
-      "ticker": "FM1",
-      "exchange": "ASX",
-      "asset_type": "ETF",
-      "name": "FIRSTMAC MORTGAGE FUNDING TRUST NO.4 SERIES 4-2019",
-      "gap_class": "debt_or_securitized_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official debt/structured-product terms, exchange instrument file, or trustee/prospectus identifier; do not fill from issuer equity ISINs.",
-      "recommended_next_source": "Official debt/structured-product masterfile, trustee/prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact instrument code/name and ISIN checksum; never issuer-equity propagation.",
-      "source_gap_context": "listing_key=ASX::FM1;exchange=ASX;ticker=FM1;asset_type=ETF;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=debt_or_securitized_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=debt_or_securitized_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "ASX::FM2",
       "ticker": "FM2",
       "exchange": "ASX",
@@ -3725,23 +3708,6 @@
       "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
       "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN.",
       "source_gap_context": "listing_key=ATHEX::BOCHGR;exchange=ATHEX;ticker=BOCHGR;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_reference_unmatched_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_reference_unmatched_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "ATHEX::BYLOT",
-      "ticker": "BYLOT",
-      "exchange": "ATHEX",
-      "asset_type": "Stock",
-      "name": "Ballys Intralot S.A.",
-      "gap_class": "official_identifier_reference_unmatched_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
-      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
-      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN.",
-      "source_gap_context": "listing_key=ATHEX::BYLOT;exchange=ATHEX;ticker=BYLOT;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_reference_unmatched_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_reference_unmatched_gap"
     },
