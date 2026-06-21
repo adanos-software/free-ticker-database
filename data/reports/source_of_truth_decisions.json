@@ -1,9 +1,9 @@
 {
   "summary": {
-    "generated_at": "2026-06-21T16:39:48Z",
-    "rows": 1063,
+    "generated_at": "2026-06-21T21:15:56Z",
+    "rows": 1065,
     "outcome_totals": {
-      "accepted_source_gap": 597,
+      "accepted_source_gap": 599,
       "core_exclusion_candidate": 466
     },
     "class_totals": {
@@ -13,7 +13,7 @@
       "commodity_etf_category_gap": 3,
       "debt_or_securitized_identifier_gap": 80,
       "digital_asset_etf_category_gap": 1,
-      "equity_etf_category_gap": 4,
+      "equity_etf_category_gap": 5,
       "fixed_income_etf_category_gap": 3,
       "fund_or_trust_identifier_gap": 288,
       "fundlike_stock_sector_gap": 1,
@@ -21,17 +21,17 @@
       "official_current_directory_absent_identifier_gap": 12,
       "official_identifier_not_exposed_source_gap": 364,
       "official_identifier_reference_unmatched_gap": 65,
-      "official_industry_taxonomy_unavailable_gap": 24,
+      "official_industry_taxonomy_unavailable_gap": 25,
       "official_product_reference_unmatched_category_gap": 20,
       "official_product_taxonomy_unavailable_gap": 58,
       "otc_sector_source_gap": 43,
       "shell_or_cpc_sector_gap": 1
     },
     "field_outcomes": {
-      "missing_etf_category:accepted_source_gap": 89,
+      "missing_etf_category:accepted_source_gap": 90,
       "missing_isin_primary:accepted_source_gap": 441,
       "missing_isin_primary:core_exclusion_candidate": 463,
-      "missing_sector_stock:accepted_source_gap": 67,
+      "missing_sector_stock:accepted_source_gap": 68,
       "missing_sector_stock:core_exclusion_candidate": 3
     },
     "policy": {
@@ -1365,6 +1365,23 @@
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
       "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category."
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
+      "listing_key": "TSX::GGEP",
+      "ticker": "GGEP",
+      "exchange": "TSX",
+      "asset_type": "ETF",
+      "name": "Guardian Directed Equity Path Portfolio",
+      "gap_class": "equity_etf_category_gap",
+      "source_of_truth_outcome": "accepted_source_gap",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "leave_blank_until_source_available",
+      "review_needed": "true",
+      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
+      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
+      "source_gate": "Exact ETF symbol/name and deterministic equity exposure evidence."
     },
     {
       "field": "missing_etf_category",
@@ -10154,6 +10171,23 @@
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
       "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "TASE::WILK",
+      "ticker": "WILK",
+      "exchange": "TASE",
+      "asset_type": "Stock",
+      "name": "Wilk Technologies Ltd",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "source_of_truth_outcome": "accepted_source_gap",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "leave_blank_until_source_available",
+      "review_needed": "true",
+      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
+      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
     },
     {
       "field": "missing_sector_stock",

@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-06-21T16:39:48Z",
-    "rows": 1063,
+    "generated_at": "2026-06-21T21:15:56Z",
+    "rows": 1065,
     "field_totals": {
-      "missing_etf_category": 89,
+      "missing_etf_category": 90,
       "missing_isin_primary": 904,
-      "missing_sector_stock": 70
+      "missing_sector_stock": 71
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 43,
@@ -14,7 +14,7 @@
       "commodity_etf_category_gap": 3,
       "debt_or_securitized_identifier_gap": 80,
       "digital_asset_etf_category_gap": 1,
-      "equity_etf_category_gap": 4,
+      "equity_etf_category_gap": 5,
       "fixed_income_etf_category_gap": 3,
       "fund_or_trust_identifier_gap": 288,
       "fundlike_stock_sector_gap": 1,
@@ -22,7 +22,7 @@
       "official_current_directory_absent_identifier_gap": 12,
       "official_identifier_not_exposed_source_gap": 364,
       "official_identifier_reference_unmatched_gap": 65,
-      "official_industry_taxonomy_unavailable_gap": 24,
+      "official_industry_taxonomy_unavailable_gap": 25,
       "official_product_reference_unmatched_category_gap": 20,
       "official_product_taxonomy_unavailable_gap": 58,
       "otc_sector_source_gap": 43,
@@ -31,7 +31,7 @@
     "class_by_field": {
       "missing_etf_category:commodity_etf_category_gap": 3,
       "missing_etf_category:digital_asset_etf_category_gap": 1,
-      "missing_etf_category:equity_etf_category_gap": 4,
+      "missing_etf_category:equity_etf_category_gap": 5,
       "missing_etf_category:fixed_income_etf_category_gap": 3,
       "missing_etf_category:official_product_reference_unmatched_category_gap": 20,
       "missing_etf_category:official_product_taxonomy_unavailable_gap": 58,
@@ -45,7 +45,7 @@
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 65,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 1,
       "missing_sector_stock:fundlike_stock_sector_gap": 1,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 24,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 25,
       "missing_sector_stock:otc_sector_source_gap": 43,
       "missing_sector_stock:shell_or_cpc_sector_gap": 1
     },
@@ -80,11 +80,11 @@
           "rows": 5
         },
         {
-          "exchange": "BVB",
-          "rows": 4
+          "exchange": "TSX",
+          "rows": 5
         },
         {
-          "exchange": "TSX",
+          "exchange": "BVB",
           "rows": 4
         },
         {
@@ -1670,6 +1670,23 @@
       "source_gap_context": "listing_key=TSE::8747;exchange=TSE;ticker=8747;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
       "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
+    },
+    {
+      "field": "missing_etf_category",
+      "target_field": "etf_category",
+      "listing_key": "TSX::GGEP",
+      "ticker": "GGEP",
+      "exchange": "TSX",
+      "asset_type": "ETF",
+      "name": "Guardian Directed Equity Path Portfolio",
+      "gap_class": "equity_etf_category_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require official fund asset class or deterministic equity-index product evidence.",
+      "recommended_next_source": "Official fund asset class or reviewed product profile.",
+      "source_gate": "Exact ETF symbol/name and deterministic equity exposure evidence.",
+      "source_gap_context": "listing_key=TSX::GGEP;exchange=TSX;ticker=GGEP;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
+      "classification_context": "gap_class=equity_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=equity_etf_category_gap"
     },
     {
       "field": "missing_etf_category",
@@ -18347,6 +18364,23 @@
       "source_gap_context": "listing_key=OTC::XNJJY;exchange=OTC;ticker=XNJJY;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "TASE::WILK",
+      "ticker": "WILK",
+      "exchange": "TASE",
+      "asset_type": "Stock",
+      "name": "Wilk Technologies Ltd",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=TASE::WILK;exchange=TASE;ticker=WILK;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
     {
       "field": "missing_sector_stock",
