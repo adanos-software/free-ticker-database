@@ -2,6 +2,22 @@
 
 ## [Unreleased]
 
+## [3.30.40] - 2026-06-21
+
+### Summary
+
+Resolves the re-ticker cases deferred from the v3.30.39 audit — verified against the dataset's own ISINs + external sources.
+
+### Changed
+
+- **3 stale-duplicate old tickers dropped** (the renamed/re-tickered successor already exists with the SAME ISIN, so the old is redundant): `INLOT`→`BYLOT` (Intralot → Bally's Intralot, ATHEX, ISIN GRS343313003), `FNTS`→`WILK` (Fantasy Network → Wilk Technologies, TASE, IL0002780109), `GDEP`→`GGEP` (Guardian Directed Equity Path, TSX, CA40090B1022). The successors `BYLOT`/`WILK`/`GGEP` are now the primaries.
+- **`CPKL` re-keyed to `CRWN`** (NSE Kenya): the audit's "CPKL→CRWN" was correct — Crown Paints Kenya's actual NSE ticker is `CRWN` (ISIN KE0000000141), not the non-standard `CPKL`. This collides with the unrelated `CRWN` = Crown Place VCT (LSE); per the collision-safe rule the LSE listing keeps the `tickers.csv` primary and Crown Paints Kenya is retained in `core_listings` under its correct ticker. (My first reading mistook the suggestion for a hallucination because `CRWN` was already a different company in our data — it was not.)
+- Primary tickers 63,135 → 63,134.
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,459 passed. Bumps VERSION to 3.30.40.
+
 ## [3.30.39] - 2026-06-21
 
 ### Summary

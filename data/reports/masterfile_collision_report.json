@@ -1,8 +1,8 @@
 {
   "global": {
     "official_symbols": 78844,
-    "matched": 53160,
-    "collisions": 11229,
+    "matched": 53161,
+    "collisions": 11228,
     "missing": 14455
   },
   "exchanges": [
@@ -2909,8 +2909,8 @@
     {
       "exchange": "NSE_KE",
       "official_symbols": 66,
-      "matched": 10,
-      "collisions": 24,
+      "matched": 11,
+      "collisions": 23,
       "missing": 32,
       "collision_examples": [
         {
@@ -2978,19 +2978,19 @@
           ]
         },
         {
-          "ticker": "CRWN",
-          "name": "Crown Paints Kenya PLC. 0rd 5.00",
-          "target_exchange": "NSE_KE",
-          "existing_exchanges": [
-            "LSE"
-          ]
-        },
-        {
           "ticker": "DCON",
           "name": "Deacons (East Africa) Plc Ord 2.50",
           "target_exchange": "NSE_KE",
           "existing_exchanges": [
             "SET"
+          ]
+        },
+        {
+          "ticker": "EABL",
+          "name": "East African Breweries Ltd Ord 2.00",
+          "target_exchange": "NSE_KE",
+          "existing_exchanges": [
+            "DSE_TZ"
           ]
         }
       ],
