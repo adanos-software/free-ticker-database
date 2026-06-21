@@ -1,12 +1,12 @@
 # Source Gap Classification
 
-Generated at: `2026-06-19T10:06:42Z`
+Generated at: `2026-06-21T16:39:48Z`
 
 This report classifies residual metadata gaps after official and reviewed free-source backfills. It is a guardrail report: values remain empty unless a future source satisfies the listed source gate.
 
 ## Summary
 
-- Missing primary ISIN rows classified: `906`
+- Missing primary ISIN rows classified: `904`
 - Missing stock-sector rows classified: `70`
 - Missing ETF-category rows classified: `89`
 
@@ -16,8 +16,8 @@ This report classifies residual metadata gaps after official and reviewed free-s
 |---|---:|
 | official_identifier_not_exposed_source_gap | 364 |
 | fund_or_trust_identifier_gap | 288 |
-| debt_or_securitized_identifier_gap | 81 |
-| official_identifier_reference_unmatched_gap | 66 |
+| debt_or_securitized_identifier_gap | 80 |
+| official_identifier_reference_unmatched_gap | 65 |
 | official_product_taxonomy_unavailable_gap | 58 |
 | adr_cdr_or_depositary_identifier_gap | 43 |
 | otc_sector_source_gap | 43 |
@@ -41,7 +41,7 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | missing_isin_primary | official_identifier_not_exposed_source_gap | NASDAQ | 130 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
 | missing_isin_primary | official_identifier_not_exposed_source_gap | NYSE | 69 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
 | missing_isin_primary | fund_or_trust_identifier_gap | NYSE ARCA | 59 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
-| missing_isin_primary | debt_or_securitized_identifier_gap | ASX | 58 | Official debt/structured-product masterfile, trustee/prospectus, or reviewed identifier feed. | Exact instrument code/name and ISIN checksum; never issuer-equity propagation. |
+| missing_isin_primary | debt_or_securitized_identifier_gap | ASX | 57 | Official debt/structured-product masterfile, trustee/prospectus, or reviewed identifier feed. | Exact instrument code/name and ISIN checksum; never issuer-equity propagation. |
 | missing_isin_primary | fund_or_trust_identifier_gap | TSX | 49 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
 | missing_sector_stock | otc_sector_source_gap | OTC | 43 | SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile. | Canonical stock sector only after exchange/name gate; no ticker/name-only inference. |
 | missing_isin_primary | capital_pool_or_halted_identifier_gap | TSXV | 35 | Current exchange issuer/status file or CPC/shell prospectus. | Exact halted/CPC symbol and direct current identifier evidence. |

@@ -1,21 +1,21 @@
 # Entry Quality Report
 
-Generated at: `2026-06-19T10:06:45Z`
+Generated at: `2026-06-21T16:39:51Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 67,693 |
-| source_gap | 6,798 |
+| pass | 67,691 |
+| source_gap | 6,791 |
 | warn | 75 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 5,677 |
-| expected_missing_primary_isin | 906 |
+| official_reference_gap | 5,671 |
+| expected_missing_primary_isin | 904 |
 | venue_missing_official_source | 285 |
 | missing_etf_category | 81 |
 | country_isin_mismatch | 65 |
@@ -27,16 +27,16 @@ Generated at: `2026-06-19T10:06:45Z`
 
 | Exchange | Pass | Notice | Source Gap | Warn | Quarantine |
 |---|---:|---:|---:|---:|---:|
-| OTC | 7,864 | 0 | 3,181 | 6 | 0 |
-| B3 | 1,262 | 0 | 322 | 0 | 0 |
+| OTC | 7,863 | 0 | 3,179 | 6 | 0 |
+| B3 | 1,262 | 0 | 321 | 0 | 0 |
 | Borsa Italiana | 0 | 0 | 277 | 0 | 0 |
-| NASDAQ | 4,399 | 0 | 268 | 1 | 0 |
+| NASDAQ | 4,399 | 0 | 267 | 1 | 0 |
 | TSX | 1,703 | 0 | 201 | 0 | 0 |
 | LSE | 6,364 | 0 | 140 | 60 | 0 |
 | BSE_IN | 2,459 | 0 | 179 | 0 | 0 |
 | BMV | 11 | 0 | 168 | 0 | 0 |
 | NYSE ARCA | 2,499 | 0 | 154 | 0 | 0 |
-| ASX | 1,478 | 0 | 151 | 1 | 0 |
+| ASX | 1,478 | 0 | 150 | 1 | 0 |
 | BME | 78 | 0 | 143 | 0 | 0 |
 | NSE_IN | 2,369 | 0 | 134 | 0 | 0 |
 | NYSE | 1,926 | 0 | 103 | 0 | 0 |
