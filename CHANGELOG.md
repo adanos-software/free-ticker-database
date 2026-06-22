@@ -2,6 +2,23 @@
 
 ## [Unreleased]
 
+## [3.30.44] - 2026-06-22
+
+### Summary
+
+**Name-quality refresh from the OpenFIGI name-mismatch findings.** The 372 mismatches remaining after the ISIN-correctness triage (v3.30.42/43) were predominantly name-quality false positives (correct ISIN, abbreviated or stale name). This release fixes the two clear classes: **(1) ticker-abbreviation/code names → proper current legal names** (Saudi TADAWUL + Singapore SGX), and **(2) stale pre-rename names → current names** (Indian BSE_IN + Israeli TASE renames). 141 names updated, each agent-verified against authoritative sources (Saudi Exchange/argaam, SGX, BSE/screener.in, TASE/maya). **ISINs unchanged — these were correct-ISIN name issues.** DB-wide ISIN name-mismatch **372 → 234** (the remaining 234 are mostly Indian ETF scheme-code names, a separate class).
+
+### Changed
+
+- **TADAWUL (53) + SGX (38): ticker abbreviations/codes → proper company names** — e.g. `RIBL`→Riyad Bank, `MAADEN`→Saudi Arabian Mining Co. (Maaden), `EXTRA`→United Electronics Co., `BAHRI`→National Shipping Company of Saudi Arabia (Bahri), `SGX`→Singapore Exchange Limited, `UOB`→United Overseas Bank Limited, `OCBC Bank`→Oversea-Chinese Banking Corporation Limited.
+- **BSE_IN + TASE: stale pre-rename names → current names** — e.g. `GZT` Gazit Globe→G City Ltd, `NALA` Nala Digital Commerce→Sade Real Estate-Y.S. Ltd, `CLBV` Clal Industries→Carmel Corp, `ABHIJIT`→Malt Land Distilleries, `COVIDH`→iSERA Lifesciences, `LKPFIN`→Gyftr, `NIBEORD`→Global Defence Industries, plus ~30 more Indian/Israeli micro-cap renames. Two typo fixes (`MAXHEIGHTS`, `PMTELELIN`).
+- **6 left unchanged** (already correct, only spelling/spacing variants): `ALSL`, `ALUFLUOR`, `KGPETRO`, `UNIJOLL`, `ZBINTXPP`, `STCORP`.
+- Side effect of the name normalization: `FSLUF` (First Ship Lease Trust OTC) consolidated as a cross-listing of `D8DU` (SGX) once their names matched. Primary tickers 63,149 → 63,148.
+
+### Verification
+
+- All names agent-verified against authoritative sources; no ISIN changed. `scripts/validate_database.py`: 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,472 passed. `isin_validation_report` refreshed (234 mismatches). Bumps VERSION to 3.30.44.
+
 ## [3.30.43] - 2026-06-22
 
 ### Summary
