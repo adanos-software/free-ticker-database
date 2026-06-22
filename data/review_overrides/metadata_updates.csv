@@ -32202,3 +32202,31 @@ VHLUF,OTC,isin,clear,,high,OpenFIGI ISIN-validation triage 2026-06-22: stored IS
 PCFBF,OTC,isin,clear,,high,OpenFIGI ISIN-validation triage 2026-06-22: stored ISIN belonged to a different company (PB Issuer No 2 Ltd (XS bond SPV)); cleared (proposed equity replacement failed Luhn checksum).
 NXTG,TSX,isin,clear,,high,OpenFIGI ISIN-validation triage 2026-06-22: stored ISIN belonged to a different company (Frontier Energy Ltd (AU)); cleared (no authoritatively sourced replacement (First Trust ETF)).
 SLGC,TSX,isin,clear,,high,OpenFIGI ISIN-validation triage 2026-06-22: stored ISIN belonged to a different company (SomaLogic Inc (US)); cleared (no authoritatively sourced replacement (Sun Life ETF)).
+DIVY,NYSE,isin,update,US8863647934,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): stored ISIN belonged to Reality Shares DIVS ETF (defunct prior DIVY holder); replaced with verified issuer ISIN (OpenFIGI ID_ISIN-confirmed).
+JSP,SET,isin,update,THA520010002,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): stored ISIN belonged to SEN X PCL / J.S.P. Property (different co); replaced with verified issuer ISIN (OpenFIGI ID_ISIN-confirmed).
+LQPE,NYSE ARCA,isin,update,US45259A5552,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): stored ISIN belonged to VistaShares Target 15 Berkshire ETF (sibling fund); replaced with verified issuer ISIN (sourced (cbonds) + Luhn; ETF too new for OpenFIGI).
+IFN,ASX,isin,clear,,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): stored ISIN belonged to Infigen Energy (prior IFN holder; recycled ticker); cleared.
+WMX,ASX,isin,clear,,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): stored ISIN belonged to Wiluna Mining Corp (prior WMX holder; recycled ticker); cleared.
+SIXD,BATS,isin,clear,,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): stored ISIN belonged to 6D Global Technologies (defunct prior SIXD holder); cleared.
+TACO,NASDAQ,isin,clear,,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): stored ISIN belonged to Del Taco Restaurants (prior TACO holder; recycled ticker); cleared.
+TDI,NASDAQ,isin,clear,,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): stored ISIN belonged to Telephone & Data Systems (prior TDI holder); cleared.
+MNR,NYSE,isin,clear,,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): stored ISIN belonged to Monmouth Real Estate (prior MNR holder; recycled ticker); cleared.
+OSG,NYSE,isin,clear,,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): stored ISIN belonged to Overseas Shipholding Group (prior OSG holder; recycled ticker); cleared.
+GARA,NYSE ARCA,isin,clear,,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): stored ISIN belonged to GAIL India GDR (unrelated company); cleared.
+IRET,NYSE ARCA,isin,clear,,high,"OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): stored ISIN belonged to Investors Real Estate Trust (prior IRET, now Centerspace); cleared."
+JABS,NYSE ARCA,isin,clear,,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): stored ISIN belonged to JH Securitized Income ETF (different sibling fund); cleared.
+ELCM,PSX,isin,clear,,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): stored ISIN belonged to First Elite Capital Modaraba (unrelated company); cleared.
+ISC,TSX,isin,clear,,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): stored ISIN belonged to Sangoma Technologies (unrelated); correct ISC ISIN CA45676A1057 already on IRMTF/OTC; cleared.
+ELY,TSXV,isin,clear,,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): stored ISIN belonged to Ely Gold Royalties (defunct); correct Electrum ISIN CA28616D1087 already on ELDCF/OTC; cleared.
+SSEZF,OTC,isin,clear,,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): stored ISIN belonged to Silver Spruce Resources (unrelated); SSE plc ISIN GB0007908733 already on SSE/LSE; cleared.
+ENZN,OTC,isin,clear,,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): stored ISIN belonged to Enzon Pharmaceuticals (predecessor); post-merger Viskase CUSIP could not be checksum-verified; cleared.
+TROLB,OTC,isin,clear,,high,"OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): stored ISIN belonged to Troubadour Resources (unrelated); Tootsie Roll common ISIN sits on TR/NYSE, class-B ISIN unverified; cleared."
+UMB,BME,name,update,Umbrella Global Energy SA,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): ticker UMB + ISIN ES0105670006 both identify Umbrella Global Energy; name was 'Kaldvik AS'.
+LETS-EQO,BSE_BW,name,update,Letshego Holdings Limited,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): ticker LETS + ISIN BW0000000322 identify Letshego; name was swapped with Letlole.
+LETS-EQO,BSE_BW,stock_sector,update,Financials,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): Letshego is a microfinance group; sector was mis-set to Real Estate from the name-swap.
+LLR-EQU,BSE_BW,name,update,Letlole La Rona Limited,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): ticker LLR + ISIN BW0000001015 identify Letlole; name was swapped with Letshego.
+GAUD,NYSE ARCA,isin,clear,,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): US36268T2069=GAIL India Ltd GDR (unrelated); a sibling Guinness Atkinson fund wrongly shared it; cleared (correct ISIN unknown for this row).
+SOLR,NYSE ARCA,isin,clear,,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): US36268T2069=GAIL India Ltd GDR (unrelated); a sibling Guinness Atkinson fund wrongly shared it; cleared (correct ISIN unknown for this row).
+JEMB,NYSE ARCA,isin,clear,,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): US47103U7467 belongs to sibling fund JSI (JH Securitized Income ETF); this Janus Detroit Street Trust ETF wrongly shared it; cleared (correct ISIN unknown for this row).
+JIII,NYSE ARCA,isin,clear,,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): US47103U7467 belongs to sibling fund JSI (JH Securitized Income ETF); this Janus Detroit Street Trust ETF wrongly shared it; cleared (correct ISIN unknown for this row).
+SNTH,NYSE ARCA,isin,clear,,high,OpenFIGI ISIN-validation triage tranche 2 (2026-06-22): US45259A5149 belongs to OMAH (VistaShares Target 15 Berkshire ETF); MRP SynthEquity ETF wrongly shared it; cleared (correct ISIN unknown for this row).

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-22T13:07:52Z",
+    "generated_at": "2026-06-22T13:35:00Z",
     "rows": 74550,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,26 +14,26 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 67682,
-      "source_gap": 6793,
+      "pass": 67664,
+      "source_gap": 6811,
       "warn": 75
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4747,
+      "identifier_enriched": 4745,
       "official_reference": 68596,
-      "scoped_source_gap": 343,
-      "valid_isin": 864
+      "scoped_source_gap": 344,
+      "valid_isin": 865
     },
     "severity_counts": {
       "high": 67,
       "medium": 8,
-      "source_gap": 6993
+      "source_gap": 7017
     },
     "issue_counts": {
       "official_reference_gap": 5669,
-      "expected_missing_primary_isin": 907,
+      "expected_missing_primary_isin": 925,
       "venue_missing_official_source": 285,
-      "missing_etf_category": 82,
+      "missing_etf_category": 88,
       "country_isin_mismatch": 65,
       "missing_stock_sector": 50,
       "official_name_mismatch": 8,
@@ -57,14 +57,14 @@
       },
       {
         "exchange": "NASDAQ",
-        "pass": 4399,
-        "source_gap": 267,
+        "pass": 4397,
+        "source_gap": 269,
         "warn": 1
       },
       {
         "exchange": "TSX",
-        "pass": 1699,
-        "source_gap": 204
+        "pass": 1698,
+        "source_gap": 205
       },
       {
         "exchange": "LSE",
@@ -84,13 +84,13 @@
       },
       {
         "exchange": "NYSE ARCA",
-        "pass": 2499,
-        "source_gap": 154
+        "pass": 2491,
+        "source_gap": 162
       },
       {
         "exchange": "ASX",
-        "pass": 1478,
-        "source_gap": 150,
+        "pass": 1476,
+        "source_gap": 152,
         "warn": 1
       },
       {
@@ -105,8 +105,8 @@
       },
       {
         "exchange": "NYSE",
-        "pass": 1926,
-        "source_gap": 103
+        "pass": 1924,
+        "source_gap": 105
       },
       {
         "exchange": "XETRA",
@@ -115,8 +115,8 @@
       },
       {
         "exchange": "TSXV",
-        "pass": 970,
-        "source_gap": 94,
+        "pass": 969,
+        "source_gap": 95,
         "warn": 2
       },
       {
@@ -131,8 +131,8 @@
       },
       {
         "exchange": "BATS",
-        "pass": 1155,
-        "source_gap": 86
+        "pass": 1154,
+        "source_gap": 87
       },
       {
         "exchange": "Euronext",
