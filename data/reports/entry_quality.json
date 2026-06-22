@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-06-22T15:08:18Z",
-    "rows": 74550,
+    "generated_at": "2026-06-22T15:34:21Z",
+    "rows": 74543,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,23 +14,23 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 67664,
-      "source_gap": 6811,
+      "pass": 67662,
+      "source_gap": 6806,
       "warn": 75
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4744,
-      "official_reference": 68596,
+      "identifier_enriched": 4739,
+      "official_reference": 68594,
       "scoped_source_gap": 344,
       "valid_isin": 866
     },
     "severity_counts": {
       "high": 67,
       "medium": 8,
-      "source_gap": 7017
+      "source_gap": 7012
     },
     "issue_counts": {
-      "official_reference_gap": 5669,
+      "official_reference_gap": 5664,
       "expected_missing_primary_isin": 925,
       "venue_missing_official_source": 285,
       "missing_etf_category": 88,
@@ -42,8 +42,8 @@
     "top_flagged_exchanges": [
       {
         "exchange": "OTC",
-        "pass": 7859,
-        "source_gap": 3179,
+        "pass": 7858,
+        "source_gap": 3174,
         "warn": 6
       },
       {
@@ -68,7 +68,7 @@
       },
       {
         "exchange": "LSE",
-        "pass": 6364,
+        "pass": 6363,
         "warn": 60,
         "source_gap": 140
       },
@@ -5598,24 +5598,6 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "ASX",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::ADGL",
-      "ticker": "ADGL",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
@@ -18375,6 +18357,24 @@
           "field": "isin",
           "value": "",
           "message": "Core primary listing is explicitly scoped as missing ISIN."
+        }
+      ]
+    },
+    {
+      "listing_key": "OTC::BMOOF",
+      "ticker": "BMOOF",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     }
