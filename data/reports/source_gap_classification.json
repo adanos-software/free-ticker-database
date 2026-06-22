@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-06-21T21:15:56Z",
-    "rows": 1065,
+    "generated_at": "2026-06-22T13:07:49Z",
+    "rows": 1068,
     "field_totals": {
       "missing_etf_category": 90,
-      "missing_isin_primary": 904,
+      "missing_isin_primary": 907,
       "missing_sector_stock": 71
     },
     "class_totals": {
@@ -12,11 +12,11 @@
       "adr_cdr_or_depositary_sector_gap": 1,
       "capital_pool_or_halted_identifier_gap": 35,
       "commodity_etf_category_gap": 3,
-      "debt_or_securitized_identifier_gap": 80,
+      "debt_or_securitized_identifier_gap": 81,
       "digital_asset_etf_category_gap": 1,
       "equity_etf_category_gap": 5,
       "fixed_income_etf_category_gap": 3,
-      "fund_or_trust_identifier_gap": 288,
+      "fund_or_trust_identifier_gap": 290,
       "fundlike_stock_sector_gap": 1,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 12,
@@ -37,8 +37,8 @@
       "missing_etf_category:official_product_taxonomy_unavailable_gap": 58,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 43,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 35,
-      "missing_isin_primary:debt_or_securitized_identifier_gap": 80,
-      "missing_isin_primary:fund_or_trust_identifier_gap": 288,
+      "missing_isin_primary:debt_or_securitized_identifier_gap": 81,
+      "missing_isin_primary:fund_or_trust_identifier_gap": 290,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 12,
       "missing_isin_primary:official_identifier_not_exposed_source_gap": 364,
@@ -103,7 +103,7 @@
         },
         {
           "exchange": "TSX",
-          "rows": 97
+          "rows": 99
         },
         {
           "exchange": "NYSE",
@@ -214,7 +214,7 @@
         "field": "missing_isin_primary",
         "gap_class": "fund_or_trust_identifier_gap",
         "exchange": "TSX",
-        "rows": 49,
+        "rows": 50,
         "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
         "source_gate": "Exact fund/trust symbol and product name with checksum."
       },
@@ -1906,6 +1906,23 @@
       "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
       "source_gate": "Exact fund/trust symbol and product name with checksum.",
       "source_gap_context": "listing_key=AMS::BLTN;exchange=AMS;ticker=BLTN;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "AMS::CITY",
+      "ticker": "CITY",
+      "exchange": "AMS",
+      "asset_type": "ETF",
+      "name": "Ishares IV PLC - Ishares Smart City Infrastructure Ucits ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=AMS::CITY;exchange=AMS;ticker=CITY;asset_type=ETF;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
     },
@@ -14696,6 +14713,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "TSX::NXTG",
+      "ticker": "NXTG",
+      "exchange": "TSX",
+      "asset_type": "ETF",
+      "name": "First Trust Indxx NextG ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
+      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum.",
+      "source_gap_context": "listing_key=TSX::NXTG;exchange=TSX;ticker=NXTG;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "TSX::PBY",
       "ticker": "PBY",
       "exchange": "TSX",
@@ -14845,6 +14879,23 @@
       "source_gap_context": "listing_key=TSX::SIH;exchange=TSX;ticker=SIH;asset_type=ETF;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "TSX::SLGC",
+      "ticker": "SLGC",
+      "exchange": "TSX",
+      "asset_type": "ETF",
+      "name": "Sun Life MFS Global Core Plus Bond Fund",
+      "gap_class": "debt_or_securitized_identifier_gap",
+      "review_needed": "true",
+      "confidence_policy": "Require official debt/structured-product terms, exchange instrument file, or trustee/prospectus identifier; do not fill from issuer equity ISINs.",
+      "recommended_next_source": "Official debt/structured-product masterfile, trustee/prospectus, or reviewed identifier feed.",
+      "source_gate": "Exact instrument code/name and ISIN checksum; never issuer-equity propagation.",
+      "source_gap_context": "listing_key=TSX::SLGC;exchange=TSX;ticker=SLGC;asset_type=ETF;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=debt_or_securitized_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=debt_or_securitized_identifier_gap"
     },
     {
       "field": "missing_isin_primary",

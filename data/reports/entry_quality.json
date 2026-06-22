@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-06-21T21:16:00Z",
-    "rows": 74554,
+    "generated_at": "2026-06-22T13:07:52Z",
+    "rows": 74550,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,24 +14,24 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 67688,
-      "source_gap": 6791,
+      "pass": 67682,
+      "source_gap": 6793,
       "warn": 75
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4750,
-      "official_reference": 68600,
-      "scoped_source_gap": 342,
-      "valid_isin": 862
+      "identifier_enriched": 4747,
+      "official_reference": 68596,
+      "scoped_source_gap": 343,
+      "valid_isin": 864
     },
     "severity_counts": {
       "high": 67,
       "medium": 8,
-      "source_gap": 6990
+      "source_gap": 6993
     },
     "issue_counts": {
       "official_reference_gap": 5669,
-      "expected_missing_primary_isin": 904,
+      "expected_missing_primary_isin": 907,
       "venue_missing_official_source": 285,
       "missing_etf_category": 82,
       "country_isin_mismatch": 65,
@@ -42,7 +42,7 @@
     "top_flagged_exchanges": [
       {
         "exchange": "OTC",
-        "pass": 7863,
+        "pass": 7859,
         "source_gap": 3179,
         "warn": 6
       },
@@ -63,8 +63,8 @@
       },
       {
         "exchange": "TSX",
-        "pass": 1701,
-        "source_gap": 202
+        "pass": 1699,
+        "source_gap": 204
       },
       {
         "exchange": "LSE",

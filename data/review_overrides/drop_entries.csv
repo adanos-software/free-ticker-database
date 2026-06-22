@@ -1175,3 +1175,7 @@ FRDU,NASDAQ,0.95,db-wide audit 2026-06-21: delisted/liquidated ETF
 INLOT,ATHEX,0.97,rename-dedup 2026-06-21: stale old ticker; renamed Intralot to Ballys Intralot; current ATHEX ticker BYLOT (same ISIN GRS343313003) already present
 FNTS,TASE,0.97,rename-dedup 2026-06-21: stale old ticker; renamed Fantasy Network to Wilk Technologies; current TASE ticker WILK (same ISIN IL0002780109) already present
 GDEP,TSX,0.97,rename-dedup 2026-06-21: stale old ticker; re-tickered to GGEP (same ISIN CA40090B1022) already present
+SUNFF,OTC,high,"Redundant grey-market OTC shadow of Sun Life Financial (primary SLF/NYSE, correct ISIN CA8667961053); only appeared after a sibling shadow's wrong ISIN was corrected. OpenFIGI ISIN-validation triage 2026-06-22."
+TRPEF,OTC,high,"Redundant grey-market OTC shadow of TC Energy (primary TRP/NYSE, correct ISIN CA87807B1076); TC Energy keeps one OTC shadow (TCEYF). OpenFIGI ISIN-validation triage 2026-06-22."
+TRPPF,OTC,high,Redundant grey-market OTC shadow of TC Energy carrying a wrong ISIN (AU0000180887=Tissue Repair Ltd); primary TRP/NYSE. OpenFIGI ISIN-validation triage 2026-06-22.
+TRPRF,OTC,high,Redundant grey-market OTC shadow of TC Energy carrying a wrong ISIN (AU0000180887=Tissue Repair Ltd); primary TRP/NYSE. OpenFIGI ISIN-validation triage 2026-06-22.
