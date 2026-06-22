@@ -2,6 +2,29 @@
 
 ## [Unreleased]
 
+## [3.30.43] - 2026-06-22
+
+### Summary
+
+**Triage tranche 2 of the OpenFIGI ISIN-mismatch queue — the remaining 347 same-jurisdiction mismatches.** Bucketed them: ~203 are confirmable false positives (the ISIN is correct, our `name` is a short ticker-abbreviation/scheme-code — e.g. all 52 TADAWUL rows `BAHRI`=National Shipping/`RIBL`=Riyad Bank, all 36 SGX abbreviations, ~95 NSE_IN `<AMC>-<code>` ETF rows). The remaining 144 genuine candidates were each externally verified (12 parallel agents + authoritative sources). The verification confirmed bucket B is overwhelmingly **correct ISINs** — dozens of legitimate renames (BSE/TASE micro-caps, `FLG`=NYCB→Flagstar, `PENG`=SMART Global→Penguin, `CIB`=Bancolombia→Grupo Cibest), ADRs, GSE preferred series, and ETF name-abbreviations. DB-wide ISIN mismatch **394 → 372**.
+
+### Changed / Fixed
+
+- **19 genuine wrong ISINs corrected** (recycled tickers — our name matches the current ticker but the ISIN was the *previous* holder's): 3 replaced with a verified issuer ISIN (`DIVY`→US8863647934, `JSP`→THA520010002, `LQPE`→US45259A5552) and 16 cleared where no sourced replacement applied or the correct ISIN already sits on the primary listing (`IFN`, `WMX`, `SIXD`, `TACO`, `TDI`, `MNR`, `OSG`, `GARA`, `IRET`, `JABS`, `ELCM`, `ISC`, `ELY`, `SSEZF`, `ENZN`, `TROLB`).
+- **3 name errors fixed** where the ISIN was correct for the ticker but the name was wrong/swapped: `UMB`/BME (was "Kaldvik AS" → Umbrella Global Energy SA), `LETS-EQO`/`LLR-EQU` BSE_BW (Letshego/Letlole names were swapped; `LETS` sector also corrected to Financials).
+- **11 legitimately-suppressed securities restored** — they had been hidden because the wrong rows held *their* ISINs: `FECM`, `JSI`, `OMAH`, `SANG`, `SENX`, `TROUF` (with their correct ISINs) and `GAUD`/`SOLR`/`JEMB`/`JIII`/`SNTH` (distinct ETFs, wrong shared ISIN cleared).
+- **5 cascade duplicates cleared** — distinct ETFs that wrongly shared one ISIN with a sibling fund (`GAUD`/`SOLR`=GAIL GDR, `JEMB`/`JIII`=JSI's ISIN, `SNTH`=OMAH's ISIN).
+- `SANG`/NASDAQ (Sangoma Technologies, Canadian co dual-listed on Nasdaq) added to `foreign_isin_reviewed.csv` (legitimate CA ISIN on a US listing).
+- Primary tickers 63,138 → 63,149.
+
+### Verification
+
+- Every applied ISIN Luhn-valid, non-colliding, OpenFIGI `ID_ISIN`-confirmed (or authoritatively sourced where the security is too new for OpenFIGI). `scripts/validate_database.py`: 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,472 passed. `isin_validation_report` refreshed (372 mismatches). Bumps VERSION to 3.30.43.
+
+### Note
+
+The remaining 372 mismatches are predominantly **name-quality** false positives (correct ISIN, abbreviated/stale name) rather than wrong ISINs — a separate stale-name refresh, not an ISIN-correctness issue.
+
 ## [3.30.42] - 2026-06-22
 
 ### Summary
