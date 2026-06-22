@@ -2,6 +2,25 @@
 
 ## [Unreleased]
 
+## [3.30.41] - 2026-06-22
+
+### Summary
+
+**Free, complete, deterministic external identity check of the whole DB.** Adds an OpenFIGI `ID_ISIN` validator that maps every primary ticker's ISIN to OpenFIGI's view of that security and classifies identity consistency — the one per-row external validation that can cover all ISINs at zero cost. Detection only (review-only PR via weekly CI); nothing is auto-applied.
+
+Baseline over **all 61,503 non-blank ISINs**: **match 59,388 (96.6%)**, **no_data 1,694 (2.8%, OpenFIGI coverage gaps — not errors)**, **mismatch 421 (0.68%)**. The 421 mismatches are review candidates where OpenFIGI resolves the ISIN to a security whose ticker **and** name both differ from ours — e.g. an Indonesian brewery carrying MicroStrategy's US ISIN, Pakistani stocks carrying Israeli ISINs, and ASX tickers carrying recycled-predecessor ISINs (Infigen, Odin Metals).
+
+### Added
+
+- **`scripts/build_isin_validation_report.py`** — OpenFIGI `ID_ISIN` validator. Classifies each ISIN as `match` / `mismatch` / `no_data`. Uses **name-consistency, not naive ticker equality** (OpenFIGI's ticker convention differs from local formats outside the US, which would mass-false-positive), with leading-zero normalization for Asian zero-padded codes, LSE slash stripping, and diacritic folding (`Frøy`==`FROY`). Incremental + compact: caches `{isin: verdict}` so re-runs only query new ISINs, keeps full detail only for mismatches; checkpoints every 2,000; `OPENFIGI_API_KEY` support with 429 backoff and a `FAILED` sentinel that leaves unqueryable ISINs uncached for retry (never crashes the run, never miscaches). Writes `data/reports/isin_validation_report.{json,md}` and emits `isin_issues_detected` to `$GITHUB_OUTPUT`.
+- **`.github/workflows/isin-validation.yml`** — weekly cron (Mon 07:53 UTC) that runs the validator and opens a **review-only** PR when new mismatches appear. Uses the `OPENFIGI_API_KEY` secret if present (full DB in one run); keyless it caps per-run and converges over a few weeks, then stays incremental.
+- **`tests/test_build_isin_validation_report.py`** — 13 pure-logic tests (no network) covering ticker/name normalization, diacritics, zero-padding, and the three verdict classes.
+- Baseline report committed at `data/reports/isin_validation_report.{json,md}`.
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,472 passed. Bumps VERSION to 3.30.41. No dataset rows changed (tooling + report only).
+
 ## [3.30.40] - 2026-06-21
 
 ### Summary
