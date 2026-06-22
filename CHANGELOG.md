@@ -2,6 +2,28 @@
 
 ## [Unreleased]
 
+## [3.30.46] - 2026-06-22
+
+### Summary
+
+**External verification of the residual 118 ISIN name-mismatches.** Rather than assume the post-campaign residue was all false positives, each was checked against external sources (exchange sites, SEC EDGAR, marketscreener, stockanalysis). Result: **no data errors** (every flagged ISIN belongs to the correct entity), but **14 more name-quality fixes** were found in markets outside the earlier passes' scope, plus 7 renamed-and-reticker cases identified for a separate symbol-reconciliation pass. DB-wide ISIN name-mismatch **118 → 105**.
+
+### Changed
+
+- **9 abbreviation/stale names → current proper names** (markets outside the earlier scope): `00721`/HKEX (C FIN INT INV → China Financial International Investments Limited), `LAFARGEHOL`/CSE_MA (stale → Holcim Maroc), `BMCI`/`COSUMAR`/CSE_MA, Bursa ticker-codes `0260`/`0307`/`0368`/`0370` → full Berhad names, `VGE-ETF`/BSE_BW → Vunani Global Equity ETF.
+- **5 ticker-unchanged company renames → current names**: `PMMCF` (Pampa Metals → Andina Copper Corp), `MLYCF` (American CuMo Mining → Multi-Metal Development Ltd), `SPKSJF` (Sparekassen Sjaelland-Fyn → SJF Bank A/S), `BBS-EQO` (Botswana Building Society → BBS Bank Limited), `AIVCB` (Al Arafa Investment → Concrete Fashion Group).
+- `PRHI`/NASDAQ confirmed correct (Conifer Holdings rebranded to Presurance Holdings; our name already current — verified via SEC EDGAR).
+- No ISIN changed; no row-count change (63,148).
+
+### Note
+
+- **7 renamed-AND-reticker cases deferred** for a future symbol-reconciliation pass (the row carries the old OTC/LSE symbol, so a name-only fix would leave a stale ticker): `LRGR`→FRTU (Fortun Holdings), `NBRY`→DAJL, `ADGL`→CODV, `BRGC`→NALG, `TEAH`→BJBJ, `RTGC`→BQHG, `REDC`→VZLA (Apertura Energy). `MEPET`/BIST left as-is (its rename to Break Mola has a pending revert).
+- The residual ~105 mismatches are confirmed false positives: ADRs ("…UNSPON ADR"), GSE/utility preferred series (Freddie/Fannie, Connecticut Light & Power), confirmed renames where our name is already current, and ETFs whose clean names simply don't token-match OpenFIGI's cryptic abbreviation. **No data errors remain.**
+
+### Verification
+
+- No ISIN changed. `scripts/validate_database.py`: 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,472 passed. `isin_validation_report` refreshed (105 mismatches). Bumps VERSION to 3.30.46.
+
 ## [3.30.45] - 2026-06-22
 
 ### Summary

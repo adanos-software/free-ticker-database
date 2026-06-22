@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-06-22T14:27:49Z",
+    "generated_at": "2026-06-22T15:08:14Z",
     "rows": 1092,
     "outcome_totals": {
       "accepted_source_gap": 611,
@@ -13,7 +13,7 @@
       "commodity_etf_category_gap": 3,
       "debt_or_securitized_identifier_gap": 81,
       "digital_asset_etf_category_gap": 1,
-      "equity_etf_category_gap": 5,
+      "equity_etf_category_gap": 6,
       "fixed_income_etf_category_gap": 3,
       "fund_or_trust_identifier_gap": 300,
       "fundlike_stock_sector_gap": 1,
@@ -22,7 +22,7 @@
       "official_identifier_not_exposed_source_gap": 370,
       "official_identifier_reference_unmatched_gap": 65,
       "official_industry_taxonomy_unavailable_gap": 25,
-      "official_product_reference_unmatched_category_gap": 20,
+      "official_product_reference_unmatched_category_gap": 19,
       "official_product_taxonomy_unavailable_gap": 64,
       "otc_sector_source_gap": 43,
       "shell_or_cpc_sector_gap": 1
@@ -336,15 +336,15 @@
       "ticker": "VGE-ETF",
       "exchange": "BSE_BW",
       "asset_type": "ETF",
-      "name": "VGE-ETF",
-      "gap_class": "official_product_reference_unmatched_category_gap",
+      "name": "Vunani Global Equity ETF",
+      "gap_class": "equity_etf_category_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
       "fill_action": "leave_blank_until_source_available",
       "review_needed": "true",
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Require an exact official symbol/alias match before filling or mapping etf_category."
+      "source_gate": "Exact ETF symbol/name and deterministic equity exposure evidence."
     },
     {
       "field": "missing_etf_category",

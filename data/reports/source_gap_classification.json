@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-06-22T14:27:49Z",
+    "generated_at": "2026-06-22T15:08:14Z",
     "rows": 1092,
     "field_totals": {
       "missing_etf_category": 96,
@@ -14,7 +14,7 @@
       "commodity_etf_category_gap": 3,
       "debt_or_securitized_identifier_gap": 81,
       "digital_asset_etf_category_gap": 1,
-      "equity_etf_category_gap": 5,
+      "equity_etf_category_gap": 6,
       "fixed_income_etf_category_gap": 3,
       "fund_or_trust_identifier_gap": 300,
       "fundlike_stock_sector_gap": 1,
@@ -23,7 +23,7 @@
       "official_identifier_not_exposed_source_gap": 370,
       "official_identifier_reference_unmatched_gap": 65,
       "official_industry_taxonomy_unavailable_gap": 25,
-      "official_product_reference_unmatched_category_gap": 20,
+      "official_product_reference_unmatched_category_gap": 19,
       "official_product_taxonomy_unavailable_gap": 64,
       "otc_sector_source_gap": 43,
       "shell_or_cpc_sector_gap": 1
@@ -31,9 +31,9 @@
     "class_by_field": {
       "missing_etf_category:commodity_etf_category_gap": 3,
       "missing_etf_category:digital_asset_etf_category_gap": 1,
-      "missing_etf_category:equity_etf_category_gap": 5,
+      "missing_etf_category:equity_etf_category_gap": 6,
       "missing_etf_category:fixed_income_etf_category_gap": 3,
-      "missing_etf_category:official_product_reference_unmatched_category_gap": 20,
+      "missing_etf_category:official_product_reference_unmatched_category_gap": 19,
       "missing_etf_category:official_product_taxonomy_unavailable_gap": 64,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 43,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 35,
@@ -641,15 +641,15 @@
       "ticker": "VGE-ETF",
       "exchange": "BSE_BW",
       "asset_type": "ETF",
-      "name": "VGE-ETF",
-      "gap_class": "official_product_reference_unmatched_category_gap",
+      "name": "Vunani Global Equity ETF",
+      "gap_class": "equity_etf_category_gap",
       "review_needed": "true",
-      "confidence_policy": "An official venue/product source layer exists, but the residual ETF row has no exact official product reference; require alias/current-listing evidence or product taxonomy before filling.",
-      "recommended_next_source": "Official product directory, alias review, or reviewed product provider profile.",
-      "source_gate": "Require an exact official symbol/alias match before filling or mapping etf_category.",
+      "confidence_policy": "Require official fund asset class or deterministic equity-index product evidence.",
+      "recommended_next_source": "Official fund asset class or reviewed product profile.",
+      "source_gate": "Exact ETF symbol/name and deterministic equity exposure evidence.",
       "source_gap_context": "listing_key=BSE_BW::VGE-ETF;exchange=BSE_BW;ticker=VGE-ETF;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
-      "classification_context": "gap_class=official_product_reference_unmatched_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_reference_unmatched_category_gap"
+      "classification_context": "gap_class=equity_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=equity_etf_category_gap"
     },
     {
       "field": "missing_etf_category",
