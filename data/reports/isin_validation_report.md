@@ -4,7 +4,7 @@ Generated: 2026-06-22T00:00:00Z
 
 **isin_issues_detected: False**
 
-ISINs validated: 61487 | match=59687 mismatch=105 no_data=1695
+ISINs validated: 61480 | match=59687 mismatch=98 no_data=1695
 
 Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose ticker AND name differ from ours (likely wrong/stale ISIN) — verify before correcting via the override pipeline. `no_data` = OpenFIGI has no record (coverage gap, not an error).
 
@@ -53,7 +53,6 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | INF247L01FR8 | MOALPHA50 | MOTILALAMC - MOALPHA50 | MONA5RG | MOTI OSW NIF AI 50 ETF- RG |
 | INF247L01GJ3 | MOSERVICE | MOTILALAMC - MOSERVICE | MONSSRG | MTIL OSWL NFTY SRVC SCTR ETF |
 | INF754K01TF1 | EMULTIMQ | EDELAMC - EMULTIMQ | EDENM50 | EDEL NF500 MLT MOM QLT50 ETF |
-| JE00BLB56J12 | REDC | Red Capital PLC | REDCGBX,VZLA | APERTURA ENERGY PLC |
 | KE0000000547 | KENGEN | KENGEN CO. PLC | KEGC | KENYA ELECTRICITY GENERATING |
 | KYG2296A1094 | BRR | ProCap Financial, Inc. | CCCMEUR,CCCMUSD | COLUMBUS CIRCLE CAPITAL CO-A |
 | KYG8232Y1017 | PENG | Penguin Solutions, Inc. | SGH2EUR,SGH2GBP,SGH2USD | SMART GLOBAL HOLDINGS INC |
@@ -77,10 +76,8 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | TH0052B10Z09 | DV8 | DV8 Public Company Limited | ASTR,DVPCF | ASTRA ENTERPRISE PCL |
 | TREMEPT00012 | MEPET | MEPET METRO PETROL VE TESİSLER | MEPETTRY,MOLA,MOLAY | BREAK MOLA TURIZM YATIRIMLAR |
 | US00775Y7287 | RAYD | Rayliant Quantitative Develope | RWLC | RAYLN NXTGN MU US EQ ETF-USD |
-| US01677T1060 | ADGL | AllDigital Holdings Inc | CODV | COMPLIANCE ADVOCATES CORP |
 | US05968L1026 | CIB | Grupo Cibest S.A. | BXK,CIBEUR,CIBGBP | BANCOLOMBIA S.A.-SPONS ADR |
 | US06690B1153 | PNST | Pinstripes Holdings Inc | PNSWQ | BANYAN ACQUISITION CO -CW23 |
-| US1094761012 | BRGC | Brightrock Gold Corp | NALG | NORTH AMERICA LITHIUM AND GO |
 | US20731J1025 | PRHI | Presurance Holdings, Inc. | CNFREUR,CNFRUSD | CONIFER HOLDINGS INC |
 | US2075972040 | CNLTL | The Connecticut Light and Powe | ES 1.9 PERP 1947 | CONN LT & PWR |
 | US2075973030 | CNLTN | The Connecticut Light and Powe | ES 2 PERP 1947 | CONN LT & PWR |
@@ -105,13 +102,9 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | US44987J1034 | IOOFF | Insignia Financial Ltd | IOOFY | IOOF HOLDINGS LTD-SPON ADR |
 | US48135NTM82 | VYLD | Inverse VIX Short-Term Futures | JPM 5 08/28/28 MTn | JPMORGAN CHASE FINANCIAL |
 | US48837P1021 | KMGH | Kemiao Garment Holding Group | WGSK | WORLD GU SHAN KANG HOLDING G |
-| US5502632061 | LRGR | Luminar Media Group Inc | FRTU | FORTUN HOLDINGS CORP |
 | US6261881063 | MURGF | Münchener Rückversicherungs-Ge | MURGY,MURGYEUR,MURGYUSD | MUENCHENER RUECK-UNSPON ADR |
 | US6494451031 | FLG | Flagstar Bank, N.A. | NYCBEUR,NYCBGBP,NYCBUSD | NEW YORK COMMUNITY BANCORP |
-| US6507661089 | NBRY | Newberry Specialty Bakers Inc | DAJL | DAJIALAI DIGITAL TECHNOLOGY |
 | US67073S3076 | CIMG | CIMG Inc | NUZEEUR,NUZEGBP | NUZEE INC |
 | US69290X1019 | PDLB | Ponce Financial Group Inc | PDLBUSD | PDL COMMUNITY BANCORP |
 | US83548F2002 | SONM | DNA X, Inc. | SONMEUR,SONMGBP,SONMUSD | SONIM TECHNOLOGIES INC |
-| US9028972068 | RTGC | Ridder Titan Genesis Corp | BQHG | BO QI YI HAO HOLDING GROUP C |
-| US98163R2067 | TEAH | Worry Free Tea House Holdings  | BJBJ | BJ BIO-TECH DEVELOPMENT MANA |
 | ZAE000261392 | UMMIEA | Absa re Momentum International | UBS 0 08/22/28 @ | UBS AG LONDON |

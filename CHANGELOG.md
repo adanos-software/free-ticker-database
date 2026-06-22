@@ -2,6 +2,25 @@
 
 ## [Unreleased]
 
+## [3.30.47] - 2026-06-22
+
+### Summary
+
+**Symbol reconciliation of the 7 renamed-AND-reticker rows** flagged in v3.30.46. Each was verified to carry a defunct old symbol (the security now trades under a new ticker). All 7 stale-symbol rows are dropped. DB-wide ISIN name-mismatch **105 → 98**.
+
+### Removed
+
+- **7 defunct-symbol rows dropped** (renamed + retickered; old symbol no longer trades): `LRGR`→FRTU (Fortun Holdings), `NBRY`→DAJL (Dajialai Digital Technology), `ADGL`→CODV (Compliance Advocates), `BRGC`→NALG (North America Lithium and Gold), `TEAH`→BJBJ (BJ Bio-Tech), `RTGC`→BQHG (Bo Qi Yi Hao) — all OTC — and `REDC`→VZLA (Red Capital → Apertura Energy Plc) on LSE.
+- Primary tickers 63,148 → 63,141.
+
+### Rationale
+
+Re-adding the new symbols was investigated and deliberately deferred to the vetted coverage-expansion pipeline rather than hand-grafted, because: (1) **`REDC`→`VZLA` cannot be re-keyed** — `VZLA` is already held by Vizsla Silver (NYSE MKT), and the dataset enforces one symbol per global ticker; (2) the **six OTC cases are reverse-merger shells** whose name, sector, and domicile all changed (e.g. Newberry Specialty Bakers / US Consumer Staples → Dajialai Digital Technology / Chinese tech), so carrying the old fields onto a new symbol would inject stale/incorrect data. Dropping cleanly removes the confirmed-defunct symbols; the new listings can re-enter via the verify-active coverage-expansion process with correct current classification.
+
+### Verification
+
+- `scripts/validate_database.py`: 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,472 passed. `isin_validation_report` refreshed (98 mismatches, all confirmed false positives). Bumps VERSION to 3.30.47.
+
 ## [3.30.46] - 2026-06-22
 
 ### Summary
