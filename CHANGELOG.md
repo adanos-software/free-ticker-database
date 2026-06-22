@@ -2,6 +2,25 @@
 
 ## [Unreleased]
 
+## [3.30.42] - 2026-06-22
+
+### Summary
+
+**Triage tranche 1 of the OpenFIGI ISIN-mismatch queue (v3.30.41).** Of the 421 baseline mismatches, the 33 highest-confidence *cross-jurisdiction* cases (ISIN country-prefix foreign/implausible for the listing) were each externally verified (multi-agent + authoritative sources), applying the same-legal-entity test so legitimate renames are not mistaken for collisions. Result: 27 confirmed wrong ISINs corrected, 6 confirmed correct and kept. DB-wide ISIN mismatch count **421 → 394**.
+
+### Changed / Fixed
+
+- **17 wrong ISINs replaced** with the verified issuer ISIN (each Luhn-valid, collision-checked, and OpenFIGI `ID_ISIN` name-matched to our company): e.g. `STRK`/IDX (was MicroStrategy's US ISIN → `ID1000198708`), `EMCO`+`GLPL`/PSX (were Israeli ISINs → PK), the 6 Thai SET rows (were CA/IL/JP/KE/US ISINs → TH), `RCM`/ASX, `ZENA`+`GEOS`/NASDAQ, `RGT`/NYSE, `BNY`/NEO, `OPTI`/`OCEA`/`VTHPF`/OTC.
+- **10 wrong ISINs cleared** where no authoritatively-sourced replacement applied — either the correct ISIN already sits on the security's primary listing (OTC shadows `PHYOF`/IXI·LSE, `SLFIF`/SLF·NYSE, `TCEYF`/TRP·NYSE, `TCAPF`/TCAP·LSE), the proposed replacement failed checksum (`PCFBF`), or none was found (`CITY`, `SSTPW`, `VHLUF`, `NXTG`, `SLGC`).
+- **6 confirmed correct (kept) — rename traps, not collisions:** `REDC` (Red Capital → Apertura Energy), `ATAI` (atai Life Sciences → AtaiBeckley NV), `PTMGF` (Platinum Asset Mgmt → L1 Group), `CYJBY` (Cargotec → Hiab Oyj), and SGX `T14`/`VI2` (Chinese/Cayman dual-listings carrying their own home ISIN).
+- **4 legitimately-suppressed listings restored** — they had been hidden because the wrong rows held *their* ISINs: `AQUEF` (Veloryx), `FRHYF` (Frontier Energy), `SATLF` (Zozo), `SDCCQ` (SmileDirectClub), each OpenFIGI-confirmed against its own correct ISIN.
+- **4 redundant grey-market OTC shadows dropped** (`SUNFF`, `TRPEF`, `TRPPF`, `TRPRF`) — duplicate OTC tickers of Sun Life / TC Energy that only ever surfaced as separate rows because a wrong ISIN de-collided them; each company keeps one OTC shadow + its NYSE primary.
+- Primary tickers 63,134 → 63,138.
+
+### Verification
+
+- Every applied ISIN is Luhn-valid, non-colliding, and OpenFIGI `ID_ISIN`-confirmed to map to our company. `scripts/validate_database.py`: 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,472 passed. `data/reports/isin_validation_report.{json,md}` refreshed (mismatch 394). Bumps VERSION to 3.30.42.
+
 ## [3.30.41] - 2026-06-22
 
 ### Summary

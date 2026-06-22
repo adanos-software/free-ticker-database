@@ -1,21 +1,21 @@
 {
   "summary": {
-    "generated_at": "2026-06-21T21:15:56Z",
-    "rows": 1065,
+    "generated_at": "2026-06-22T13:07:49Z",
+    "rows": 1068,
     "outcome_totals": {
       "accepted_source_gap": 599,
-      "core_exclusion_candidate": 466
+      "core_exclusion_candidate": 469
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 43,
       "adr_cdr_or_depositary_sector_gap": 1,
       "capital_pool_or_halted_identifier_gap": 35,
       "commodity_etf_category_gap": 3,
-      "debt_or_securitized_identifier_gap": 80,
+      "debt_or_securitized_identifier_gap": 81,
       "digital_asset_etf_category_gap": 1,
       "equity_etf_category_gap": 5,
       "fixed_income_etf_category_gap": 3,
-      "fund_or_trust_identifier_gap": 288,
+      "fund_or_trust_identifier_gap": 290,
       "fundlike_stock_sector_gap": 1,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 12,
@@ -30,7 +30,7 @@
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 90,
       "missing_isin_primary:accepted_source_gap": 441,
-      "missing_isin_primary:core_exclusion_candidate": 463,
+      "missing_isin_primary:core_exclusion_candidate": 466,
       "missing_sector_stock:accepted_source_gap": 68,
       "missing_sector_stock:core_exclusion_candidate": 3
     },
@@ -10260,6 +10260,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "AMS::CITY",
+      "ticker": "CITY",
+      "exchange": "AMS",
+      "asset_type": "ETF",
+      "name": "Ishares IV PLC - Ishares Smart City Infrastructure Ucits ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "source_of_truth_outcome": "core_exclusion_candidate",
+      "core_action": "review_for_core_exclusion",
+      "fill_action": "do_not_fill_until_scope_review",
+      "review_needed": "true",
+      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
+      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum."
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "AMS::HYCB",
       "ticker": "HYCB",
       "exchange": "AMS",
@@ -16839,6 +16856,23 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
+      "listing_key": "TSX::NXTG",
+      "ticker": "NXTG",
+      "exchange": "TSX",
+      "asset_type": "ETF",
+      "name": "First Trust Indxx NextG ETF",
+      "gap_class": "fund_or_trust_identifier_gap",
+      "source_of_truth_outcome": "core_exclusion_candidate",
+      "core_action": "review_for_core_exclusion",
+      "fill_action": "do_not_fill_until_scope_review",
+      "review_needed": "true",
+      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
+      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
+      "source_gate": "Exact fund/trust symbol and product name with checksum."
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
       "listing_key": "TSX::ORAC",
       "ticker": "ORAC",
       "exchange": "TSX",
@@ -17073,6 +17107,23 @@
       "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
       "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
       "source_gate": "Exact fund/trust symbol and product name with checksum."
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "TSX::SLGC",
+      "ticker": "SLGC",
+      "exchange": "TSX",
+      "asset_type": "ETF",
+      "name": "Sun Life MFS Global Core Plus Bond Fund",
+      "gap_class": "debt_or_securitized_identifier_gap",
+      "source_of_truth_outcome": "core_exclusion_candidate",
+      "core_action": "review_for_core_exclusion",
+      "fill_action": "do_not_fill_until_scope_review",
+      "review_needed": "true",
+      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
+      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
+      "source_gate": "Exact instrument code/name and ISIN checksum; never issuer-equity propagation."
     },
     {
       "field": "missing_isin_primary",
