@@ -1,0 +1,72 @@
+name: Weekly ISIN Validation (OpenFIGI)
+
+on:
+  schedule:
+    - cron: "53 7 * * 1"   # Mondays 07:53 UTC (after the delisting report)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  isin-validation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # OpenFIGI is incremental + cached in the report JSON: each run only
+      # queries ISINs not yet validated. With an OPENFIGI_API_KEY secret the
+      # full DB is covered in one run; keyless we cap per-run and converge over
+      # a few weeks, then stay incremental.
+      - name: Validate ISINs against OpenFIGI
+        id: isin
+        env:
+          OPENFIGI_API_KEY: ${{ secrets.OPENFIGI_API_KEY }}
+        run: |
+          python scripts/build_isin_validation_report.py \
+            --limit ${{ secrets.OPENFIGI_API_KEY != '' && '70000' || '12000' }}
+
+      - name: Validate ISIN report logic
+        run: python -m pytest tests/test_build_isin_validation_report.py -q
+
+      - name: Open ISIN-review pull request
+        if: steps.isin.outputs.isin_issues_detected == 'true'
+        uses: peter-evans/create-pull-request@v8.1.1
+        with:
+          branch: automation/isin-validation
+          delete-branch: true
+          commit-message: Update OpenFIGI ISIN-validation report
+          title: "Weekly ISIN-validation report (OpenFIGI)"
+          body: |
+            Automated weekly ISIN identity check. Maps every primary ticker's
+            ISIN through OpenFIGI `ID_ISIN` and classifies identity consistency:
+
+            - `mismatch` → OpenFIGI resolves the ISIN to a security whose ticker
+              AND name both differ from ours (likely wrong/stale ISIN). **Verify
+              before acting** — a shared ISIN can be a legitimate rename, not a
+              collision (test same legal entity, e.g. SEC CIK, not name only).
+            - `no_data` → OpenFIGI has no record (coverage gap, common for
+              frontier markets) — not an error.
+
+            Name-token consistency is used instead of naive ticker equality so
+            non-US local-ticker formats don't produce false mismatches.
+
+            **Detection only — nothing is auto-applied.** Correct confirmed
+            wrong ISINs via the override pipeline (`metadata_updates.csv`).
+
+            Report: `data/reports/isin_validation_report.md` / `.json`
