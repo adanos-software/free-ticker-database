@@ -2,6 +2,26 @@
 
 ## [Unreleased]
 
+## [3.30.45] - 2026-06-22
+
+### Summary
+
+**Name-quality refresh, pass 3: Indian (NSE) ETF scheme-code names → official fund names.** The third name-quality class from the OpenFIGI name-mismatch findings: 124 NSE ETFs whose stored `name` was an AMC scheme-code (e.g. `ICICIPRAMC - CASHIETF`, `KOTAKMAMC - NIFTY100EW`, `GROWWAMC - GROWWGOLD`) replaced with the official fund name, agent-verified against NSE/AMC/AMFI. **No ISIN changed** (these were correct-ISIN name issues). DB-wide ISIN name-mismatch **234 → 118**.
+
+### Changed
+
+- **124 NSE ETF names** → official fund names — e.g. `CASHIETF`→ICICI Prudential BSE Liquid Rate ETF, `NIFTY100EW`→Kotak Nifty 100 Equal Weight ETF, `GOLDBEES`→Nippon India ETF Gold BeES, `MON100`→Motilal Oswal NASDAQ 100 ETF, `BBETF0432`→Bharat Bond ETF - April 2032, the full Groww/Motilal Oswal/SBI/Edelweiss/Angel One ETF families, etc. Abbreviations expanded and OpenFIGI plan-suffix noise (`-RG`/`-DG`/`-IDCWD`) dropped.
+- `AMBEY` and `FACT` left unchanged (`AMBEY`: conflicting rename-direction evidence, ticker matches stored name → kept; `FACT`: American-spelling variant of the same name).
+- No row-count change (63,148) — ETFs carry unique ISINs, so no dedup churn.
+
+### Verification
+
+- No ISIN changed. `scripts/validate_database.py`: 0/83 failed error gates. `check_readme_snapshot`: pass. `pytest -q`: 1,472 passed. `isin_validation_report` refreshed (118 mismatches). Bumps VERSION to 3.30.45.
+
+### Note
+
+The remaining 118 ISIN name-mismatches are OTC ADRs/preferred series, legitimate-rename cases already confirmed correct, and a handful of NSE ETFs whose now-clean names simply don't token-match OpenFIGI's cryptic abbreviation — i.e. residual false positives, not data errors. The OpenFIGI ISIN-validation campaign (identity correctness + name quality) is complete.
+
 ## [3.30.44] - 2026-06-22
 
 ### Summary
