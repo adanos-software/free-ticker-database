@@ -1,6 +1,6 @@
 # Source Gap Classification
 
-Generated at: `2026-06-22T14:27:49Z`
+Generated at: `2026-06-22T15:08:14Z`
 
 This report classifies residual metadata gaps after official and reviewed free-source backfills. It is a guardrail report: values remain empty unless a future source satisfies the listed source gate.
 
@@ -23,10 +23,10 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | otc_sector_source_gap | 43 |
 | capital_pool_or_halted_identifier_gap | 35 |
 | official_industry_taxonomy_unavailable_gap | 25 |
-| official_product_reference_unmatched_category_gap | 20 |
 | inactive_or_legacy_identifier_gap | 19 |
+| official_product_reference_unmatched_category_gap | 19 |
 | official_current_directory_absent_identifier_gap | 12 |
-| equity_etf_category_gap | 5 |
+| equity_etf_category_gap | 6 |
 | commodity_etf_category_gap | 3 |
 | fixed_income_etf_category_gap | 3 |
 | adr_cdr_or_depositary_sector_gap | 1 |
