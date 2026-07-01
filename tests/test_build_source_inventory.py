@@ -101,6 +101,32 @@ def test_build_source_inventory_joins_candidates_to_current_coverage():
     assert nse.candidate_scope == "global_expansion_candidate"
 
 
+def test_build_source_inventory_adds_known_metadata_for_uncurated_fallback_rows():
+    rows = build_source_inventory(
+        sources=[],
+        candidates=[],
+        coverage_report={
+            "by_exchange": [
+                {
+                    "exchange": "Borsa Italiana",
+                    "venue_status": "missing",
+                    "tickers": 277,
+                    "isin_coverage": 277,
+                    "sector_coverage": 277,
+                    "unresolved_count": 0,
+                    "official_source_count": 0,
+                    "reference_scopes": [],
+                }
+            ]
+        },
+    )
+
+    borsa = row_for(rows, "Borsa Italiana")
+    assert borsa.candidate_scope == "needs_source_research"
+    assert borsa.venue_name == "Borsa Italiana"
+    assert borsa.country == "Italy"
+
+
 def test_render_markdown_splits_missing_partial_and_global_candidates():
     rows = build_source_inventory(
         sources=[],
