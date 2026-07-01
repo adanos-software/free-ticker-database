@@ -1,9 +1,9 @@
 {
   "summary": {
-    "generated_at": "2026-06-22T15:34:18Z",
-    "rows": 1092,
+    "generated_at": "2026-07-01T05:03:07Z",
+    "rows": 1090,
     "outcome_totals": {
-      "accepted_source_gap": 611,
+      "accepted_source_gap": 609,
       "core_exclusion_candidate": 481
     },
     "class_totals": {
@@ -19,8 +19,8 @@
       "fundlike_stock_sector_gap": 1,
       "inactive_or_legacy_identifier_gap": 19,
       "official_current_directory_absent_identifier_gap": 12,
-      "official_identifier_not_exposed_source_gap": 370,
-      "official_identifier_reference_unmatched_gap": 65,
+      "official_identifier_not_exposed_source_gap": 369,
+      "official_identifier_reference_unmatched_gap": 64,
       "official_industry_taxonomy_unavailable_gap": 25,
       "official_product_reference_unmatched_category_gap": 19,
       "official_product_taxonomy_unavailable_gap": 64,
@@ -29,7 +29,7 @@
     },
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 96,
-      "missing_isin_primary:accepted_source_gap": 447,
+      "missing_isin_primary:accepted_source_gap": 445,
       "missing_isin_primary:core_exclusion_candidate": 478,
       "missing_sector_stock:accepted_source_gap": 68,
       "missing_sector_stock:core_exclusion_candidate": 3
@@ -3375,23 +3375,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "NASDAQ::CGCT",
-      "ticker": "CGCT",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Cartesian Growth Corporation III Class A Ordinary Shares",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "leave_blank_until_source_available",
-      "review_needed": "true",
-      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
-      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "NASDAQ::CGTL",
       "ticker": "CGTL",
       "exchange": "NASDAQ",
@@ -4748,23 +4731,6 @@
       "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
       "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NASDAQ::SHOE",
-      "ticker": "SHOE",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Shoe Station Group, Inc.",
-      "gap_class": "official_identifier_reference_unmatched_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "leave_blank_until_source_available",
-      "review_needed": "true",
-      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
-      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
     },
     {
       "field": "missing_isin_primary",

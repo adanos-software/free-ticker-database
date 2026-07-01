@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-06-22T15:34:18Z",
-    "rows": 1092,
+    "generated_at": "2026-07-01T05:02:56Z",
+    "rows": 1090,
     "field_totals": {
       "missing_etf_category": 96,
-      "missing_isin_primary": 925,
+      "missing_isin_primary": 923,
       "missing_sector_stock": 71
     },
     "class_totals": {
@@ -20,8 +20,8 @@
       "fundlike_stock_sector_gap": 1,
       "inactive_or_legacy_identifier_gap": 19,
       "official_current_directory_absent_identifier_gap": 12,
-      "official_identifier_not_exposed_source_gap": 370,
-      "official_identifier_reference_unmatched_gap": 65,
+      "official_identifier_not_exposed_source_gap": 369,
+      "official_identifier_reference_unmatched_gap": 64,
       "official_industry_taxonomy_unavailable_gap": 25,
       "official_product_reference_unmatched_category_gap": 19,
       "official_product_taxonomy_unavailable_gap": 64,
@@ -41,8 +41,8 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 300,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 19,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 12,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 370,
-      "missing_isin_primary:official_identifier_reference_unmatched_gap": 65,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 369,
+      "missing_isin_primary:official_identifier_reference_unmatched_gap": 64,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 1,
       "missing_sector_stock:fundlike_stock_sector_gap": 1,
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 25,
@@ -95,7 +95,7 @@
       "missing_isin_primary": [
         {
           "exchange": "NASDAQ",
-          "rows": 180
+          "rows": 178
         },
         {
           "exchange": "ASX",
@@ -182,7 +182,7 @@
         "field": "missing_isin_primary",
         "gap_class": "official_identifier_not_exposed_source_gap",
         "exchange": "NASDAQ",
-        "rows": 131,
+        "rows": 130,
         "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
         "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
       },
@@ -316,14 +316,6 @@
       },
       {
         "field": "missing_isin_primary",
-        "gap_class": "official_identifier_reference_unmatched_gap",
-        "exchange": "NASDAQ",
-        "rows": 17,
-        "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
-        "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
-      },
-      {
-        "field": "missing_isin_primary",
         "gap_class": "fund_or_trust_identifier_gap",
         "exchange": "SSE_CL",
         "rows": 17,
@@ -337,6 +329,14 @@
         "rows": 16,
         "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
         "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
+      },
+      {
+        "field": "missing_isin_primary",
+        "gap_class": "official_identifier_reference_unmatched_gap",
+        "exchange": "NASDAQ",
+        "rows": 16,
+        "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
+        "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN."
       }
     ],
     "policy": {
@@ -6638,23 +6638,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "NASDAQ::CGCT",
-      "ticker": "CGCT",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Cartesian Growth Corporation III Class A Ordinary Shares",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NASDAQ::CGCT;exchange=NASDAQ;ticker=CGCT;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "NASDAQ::CGTL",
       "ticker": "CGTL",
       "exchange": "NASDAQ",
@@ -8011,23 +7994,6 @@
       "source_gap_context": "listing_key=NASDAQ::SENS;exchange=NASDAQ;ticker=SENS;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NASDAQ::SHOE",
-      "ticker": "SHOE",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Shoe Station Group, Inc.",
-      "gap_class": "official_identifier_reference_unmatched_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source layer exists, but the residual row has no exact official symbol reference; require alias/current-listing evidence or registry detail before filling.",
-      "recommended_next_source": "Official exchange directory, alias review, or CSD/security registry detail.",
-      "source_gate": "Require an exact official symbol/alias match or direct registry record before filling ISIN.",
-      "source_gap_context": "listing_key=NASDAQ::SHOE;exchange=NASDAQ;ticker=SHOE;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_reference_unmatched_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_reference_unmatched_gap"
     },
     {
       "field": "missing_isin_primary",

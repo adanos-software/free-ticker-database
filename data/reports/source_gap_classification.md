@@ -1,12 +1,12 @@
 # Source Gap Classification
 
-Generated at: `2026-06-22T15:34:18Z`
+Generated at: `2026-07-01T05:02:56Z`
 
 This report classifies residual metadata gaps after official and reviewed free-source backfills. It is a guardrail report: values remain empty unless a future source satisfies the listed source gate.
 
 ## Summary
 
-- Missing primary ISIN rows classified: `925`
+- Missing primary ISIN rows classified: `923`
 - Missing stock-sector rows classified: `71`
 - Missing ETF-category rows classified: `96`
 
@@ -14,10 +14,10 @@ This report classifies residual metadata gaps after official and reviewed free-s
 
 | Class | Rows |
 |---|---:|
-| official_identifier_not_exposed_source_gap | 370 |
+| official_identifier_not_exposed_source_gap | 369 |
 | fund_or_trust_identifier_gap | 300 |
 | debt_or_securitized_identifier_gap | 81 |
-| official_identifier_reference_unmatched_gap | 65 |
+| official_identifier_reference_unmatched_gap | 64 |
 | official_product_taxonomy_unavailable_gap | 64 |
 | adr_cdr_or_depositary_identifier_gap | 43 |
 | otc_sector_source_gap | 43 |
@@ -38,7 +38,7 @@ This report classifies residual metadata gaps after official and reviewed free-s
 
 | Field | Gap Class | Exchange | Rows | Recommended Next Source | Source Gate |
 |---|---|---|---:|---|---|
-| missing_isin_primary | official_identifier_not_exposed_source_gap | NASDAQ | 131 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
+| missing_isin_primary | official_identifier_not_exposed_source_gap | NASDAQ | 130 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
 | missing_isin_primary | official_identifier_not_exposed_source_gap | NYSE | 71 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
 | missing_isin_primary | fund_or_trust_identifier_gap | NYSE ARCA | 67 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
 | missing_isin_primary | debt_or_securitized_identifier_gap | ASX | 57 | Official debt/structured-product masterfile, trustee/prospectus, or reviewed identifier feed. | Exact instrument code/name and ISIN checksum; never issuer-equity propagation. |
@@ -55,9 +55,9 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | missing_isin_primary | official_identifier_not_exposed_source_gap | PSX | 21 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
 | missing_isin_primary | official_identifier_not_exposed_source_gap | TSX | 19 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
 | missing_isin_primary | adr_cdr_or_depositary_identifier_gap | TSX | 18 | Depositary/CDR program identifier source, not underlying equity ISIN. | Exact program symbol, issuer/program name, expected country prefix, and ISIN checksum. |
-| missing_isin_primary | official_identifier_reference_unmatched_gap | NASDAQ | 17 | Official exchange directory, alias review, or CSD/security registry detail. | Require an exact official symbol/alias match or direct registry record before filling ISIN. |
 | missing_isin_primary | fund_or_trust_identifier_gap | SSE_CL | 17 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
 | missing_isin_primary | official_identifier_not_exposed_source_gap | BMV | 16 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
+| missing_isin_primary | official_identifier_reference_unmatched_gap | NASDAQ | 16 | Official exchange directory, alias review, or CSD/security registry detail. | Require an exact official symbol/alias match or direct registry record before filling ISIN. |
 
 ## Release Policy
 

@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-06-22T15:34:21Z",
-    "rows": 74543,
+    "generated_at": "2026-07-01T05:03:25Z",
+    "rows": 74533,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,24 +14,24 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 67662,
-      "source_gap": 6806,
+      "pass": 67656,
+      "source_gap": 6802,
       "warn": 75
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4739,
-      "official_reference": 68594,
-      "scoped_source_gap": 344,
-      "valid_isin": 866
+      "identifier_enriched": 4734,
+      "official_reference": 68587,
+      "scoped_source_gap": 343,
+      "valid_isin": 869
     },
     "severity_counts": {
       "high": 67,
       "medium": 8,
-      "source_gap": 7012
+      "source_gap": 7007
     },
     "issue_counts": {
-      "official_reference_gap": 5664,
-      "expected_missing_primary_isin": 925,
+      "official_reference_gap": 5661,
+      "expected_missing_primary_isin": 923,
       "venue_missing_official_source": 285,
       "missing_etf_category": 88,
       "country_isin_mismatch": 65,
@@ -57,8 +57,8 @@
       },
       {
         "exchange": "NASDAQ",
-        "pass": 4397,
-        "source_gap": 269,
+        "pass": 4394,
+        "source_gap": 266,
         "warn": 1
       },
       {
@@ -105,8 +105,8 @@
       },
       {
         "exchange": "NYSE",
-        "pass": 1924,
-        "source_gap": 105
+        "pass": 1921,
+        "source_gap": 104
       },
       {
         "exchange": "XETRA",
@@ -11958,24 +11958,6 @@
       ]
     },
     {
-      "listing_key": "NYSE::ASGN",
-      "ticker": "ASGN",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "NYSE",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
       "listing_key": "OTC::ASGXF",
       "ticker": "ASGXF",
       "exchange": "OTC",
@@ -18375,6 +18357,24 @@
           "field": "exchange",
           "value": "OTC",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "ASX::BMR",
+      "ticker": "BMR",
+      "exchange": "ASX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
         }
       ]
     }
