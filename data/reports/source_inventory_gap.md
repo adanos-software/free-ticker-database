@@ -1,6 +1,6 @@
 # Source Inventory Gap
 
-Generated at: `2026-07-01T05:14:01Z`
+Generated at: `2026-07-01T05:19:33Z`
 
 ## Summary
 
@@ -10,13 +10,13 @@ Generated at: `2026-07-01T05:14:01Z`
 - Todo rows: `1`
 - High-priority rows: `22`
 - Status counts: missing: `2`, not_in_current_universe: `1`, official_full: `30`, official_partial: `33`
-- Scope counts: exchange_directory_candidate: `7`, global_expansion_candidate: `13`, listed_companies_candidate: `17`, needs_source_research: `1`, normalization_alias: `1`, security_identifier_registry_candidate: `2`, security_lookup_subset: `1`, source_expansion_candidate: `24`
+- Scope counts: exchange_directory_candidate: `8`, global_expansion_candidate: `13`, listed_companies_candidate: `17`, normalization_alias: `1`, security_identifier_registry_candidate: `2`, security_lookup_subset: `1`, source_expansion_candidate: `24`
 
 ## Missing Current-Scope Sources
 
 | Rank | Exchange | Status | Tickers | ISIN gap | Metadata gap | Candidate | Provider | Source Mode | Last Error | Blocker |
 |---|---|---|---:|---:|---:|---|---|---|---|---|
-| 1 | Borsa Italiana | missing | 277 | 0 | 0 | needs_source_research |  |  |  | candidate source not curated yet |
+| 1 | Borsa Italiana | missing | 277 | 0 | 0 | borsa_italiana_listino_a_z | Borsa Italiana |  |  | needs endpoint discovery and parser coverage before this current-scope venue can be marked official |
 | 2 | MSE_MW | missing | 8 | 0 | 0 | mse_mw_listed_companies | MSE Malawi | unavailable | MSE Malawi mainboard unavailable (HTTP 403 from official host mse.co.mw) | implemented via official mainboard table and company links |
 
 ## Partial Current-Scope Sources

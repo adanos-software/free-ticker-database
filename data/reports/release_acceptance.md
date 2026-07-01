@@ -1,18 +1,18 @@
 # Release Acceptance
 
-Generated: `2026-06-16T11:29:56Z`
+Generated: `2026-07-01T05:21:09Z`
 
-Overall passed: `False`
+Overall passed: `True`
 
-Summary context: `passed=false;criteria=60;passed_criteria=59;failed_criteria=1;validation_failed_error_gates=0`
+Summary context: `passed=true;criteria=60;passed_criteria=60;failed_criteria=0;validation_failed_error_gates=0`
 
 ## Summary
 
 | Metric | Value |
 |---|---:|
 | `criteria` | `60` |
-| `passed_criteria` | `59` |
-| `failed_criteria` | `1` |
+| `passed_criteria` | `60` |
+| `failed_criteria` | `0` |
 | `validation_failed_error_gates` | `0` |
 
 | Criterion | Passed |
@@ -69,7 +69,7 @@ Summary context: `passed=false;criteria=60;passed_criteria=59;failed_criteria=1;
 | `campaign_review_policies` | True |
 | `campaign_baseline_alignment` | True |
 | `campaign_acceptance_matrices` | True |
-| `campaign_artifact_integrity` | False |
+| `campaign_artifact_integrity` | True |
 | `review_artifact_siblings` | True |
 | `review_artifact_gates` | True |
 | `review_artifact_policy` | True |
@@ -78,21 +78,15 @@ Summary context: `passed=false;criteria=60;passed_criteria=59;failed_criteria=1;
 | `apply_artifact_traceability` | True |
 | `supplement_artifact_traceability` | True |
 
-## Failed Criteria
-
-| Criterion | Details |
-|---|---|
-| `campaign_artifact_integrity` | `{"checked_artifacts": ["data/reports/b3_masterfile_gap_review.json", "data/reports/b3_etf_category_apply_report.json", "data/reports/b3_residual_isin_review.json", "data/reports/b3_residual_sector_review.json", "data/reports/otc_scope_review.json", "data/reports/otc_name_mismatch_review.json", "data/reports/canada_residual_review.json", "data/reports/canada_figi_queue.json", "data/reports/canada_figi_apply_report.json", "data/reports/asx_residual_review.json", "data/reports/weak_sector_residual_review.json", "data/reports/ngx_official_sector_apply_report.json", "data/reports/masterfile_collision_review.json", "data/reports/symbol_changes_review.json", "data/reports/ohlcv_plausibility.json", "data/reports/ohlcv_warning_review.json", "data/reports/coverage_report.json", "data/reports/source_gap_classification.json", "data/reports/financialdata_isin_supplements_review.json", "data/reports/improvement_baseline.json", "data/reports/improvement_deltas.json"], "checked_count": 21, "generated_at_mismatches": [{"actual_generated_at": "2026-06-16T11:29:47Z", "campaign_generated_at": "2026-06-10T12:59:44Z", "path": "data/reports/coverage_report.json"}, {"actual_generated_at": "2026-06-16T11:29:56Z", "campaign_generated_at": "2026-06-10T12:59:49Z", "path": "data/reports/source_gap_classification.json"}], "row_count_mismatches": [{"actual_rows": 898, "campaign_rows": 3708, "path": "data/reports/source_gap_classification.json"}]}` |
-
 ## Acceptance Delta Matrix
 
 | Metric | Baseline | Current | Delta |
 |---|---:|---:|---:|
-| `isin_delta` | 59848 | 59848 | 0 |
-| `sector_delta` | 43311 | 43311 | 0 |
-| `category_delta` | 15453 | 15453 | 0 |
-| `source_gap_delta` | 3548 | 3548 | 0 |
-| `warn_delta` | 115 | 115 | 0 |
+| `isin_delta` | 61477 | 61477 | 0 |
+| `sector_delta` | 47389 | 47389 | 0 |
+| `category_delta` | 15581 | 15581 | 0 |
+| `source_gap_delta` | 1090 | 1090 | 0 |
+| `warn_delta` | 75 | 75 | 0 |
 | `quarantine_delta` | 0 | 0 | 0 |
 
 ## Campaign Status

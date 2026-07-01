@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-03T04:26:51Z",
+    "generated_at": "2026-07-01T05:20:19Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -16,44 +16,44 @@
     }
   },
   "summary": {
-    "generated_at": "2026-06-03T04:26:51Z",
-    "rows": 12,
+    "generated_at": "2026-07-01T05:20:19Z",
+    "rows": 10,
     "gap_class_totals": {
-      "fund_or_trust_identifier_gap": 7,
-      "inactive_or_legacy_identifier_gap": 3,
+      "fund_or_trust_identifier_gap": 6,
+      "inactive_or_legacy_identifier_gap": 2,
       "official_current_directory_absent_identifier_gap": 2
     },
     "residual_decision_totals": {
       "accepted_source_gap_not_in_current_b3_directory": 2,
-      "core_exclusion_candidate_requires_scope_review": 10
+      "core_exclusion_candidate_requires_scope_review": 8
     },
     "current_instrument_scope_totals": {
-      "core": 12
+      "core": 10
     },
     "current_scope_reason_totals": {
-      "primary_listing_missing_isin": 12
+      "primary_listing_missing_isin": 10
     },
     "review_bucket_totals": {
       "not_in_current_b3_directory_source_gap": 2,
-      "scope_review_before_identifier_fill": 10
+      "scope_review_before_identifier_fill": 8
     },
     "review_priority_totals": {
-      "P1": 10,
+      "P1": 8,
       "P3": 2
     },
     "apply_eligibility_totals": {
-      "blocked_until_core_or_extended_scope_decision": 10,
+      "blocked_until_core_or_extended_scope_decision": 8,
       "source_gap_keep_blank_until_official_identifier_evidence": 2
     },
     "verification_evidence_required_totals": {
       "new_current_b3_directory_or_official_delisting_inactive_evidence": 2,
-      "scope_decision_for_core_extended_or_exclude_before_identifier_fill": 10
+      "scope_decision_for_core_extended_or_exclude_before_identifier_fill": 8
     },
     "cotahist_probe_decision_totals": {
-      "no_cotahist_match": 12
+      "no_cotahist_match": 10
     },
     "review_strategy_totals": {
-      "decide_b3_core_extended_or_exclude_before_identifier_work": 10,
+      "decide_b3_core_extended_or_exclude_before_identifier_work": 8,
       "keep_blank_until_current_b3_directory_or_registry_evidence": 2
     },
     "top_b3_isin_review_batches": [
@@ -62,7 +62,7 @@
         "review_bucket": "scope_review_before_identifier_fill",
         "gap_class": "fund_or_trust_identifier_gap",
         "asset_type": "ETF",
-        "rows": 7,
+        "rows": 6,
         "review_strategy": "decide_b3_core_extended_or_exclude_before_identifier_work",
         "verification_evidence_required": "scope_decision_for_core_extended_or_exclude_before_identifier_fill",
         "recommended_next_source": "Current B3 source plus reviewed core, extended, or exclude scope decision before identifier work.",
@@ -73,7 +73,7 @@
         "review_bucket": "scope_review_before_identifier_fill",
         "gap_class": "inactive_or_legacy_identifier_gap",
         "asset_type": "Stock",
-        "rows": 3,
+        "rows": 2,
         "review_strategy": "decide_b3_core_extended_or_exclude_before_identifier_work",
         "verification_evidence_required": "scope_decision_for_core_extended_or_exclude_before_identifier_fill",
         "recommended_next_source": "Current B3 source plus reviewed core, extended, or exclude scope decision before identifier work.",
@@ -256,34 +256,6 @@
       "residual_review_context": "residual_decision=core_exclusion_candidate_requires_scope_review;review_bucket=scope_review_before_identifier_fill;apply_eligibility=blocked_until_core_or_extended_scope_decision;verification_evidence_required=scope_decision_for_core_extended_or_exclude_before_identifier_fill"
     },
     {
-      "listing_key": "B3::NLFA11",
-      "ticker": "NLFA11",
-      "exchange": "B3",
-      "asset_type": "ETF",
-      "name": "Nu Letras Financeiras Anbima Classe De Índice - Responsabilidade Limitada",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "source_of_truth_outcome": "core_exclusion_candidate",
-      "source_gap_context": "gap_class=fund_or_trust_identifier_gap;source_of_truth_outcome=core_exclusion_candidate;review_needed=true",
-      "current_instrument_scope": "core",
-      "current_scope_reason": "primary_listing_missing_isin",
-      "scope_review_context": "current_instrument_scope=core;current_scope_reason=primary_listing_missing_isin;source_of_truth_outcome=core_exclusion_candidate",
-      "review_needed": "true",
-      "recommended_next_source": "Current B3 source plus reviewed core, extended, or exclude scope decision before identifier work.",
-      "source_gate": "No ISIN fill until the B3 listing is reviewed as core, extended, or excluded.",
-      "b3_instruments_equities_match": "false",
-      "b3_instruments_equities_isin": "",
-      "cotahist_probe_decision": "no_cotahist_match",
-      "cotahist_probe_isin": "",
-      "official_source_context": "b3_instruments_equities_match=false;b3_instruments_equities_isin=none;cotahist_probe_decision=no_cotahist_match;cotahist_probe_isin=none",
-      "residual_decision": "core_exclusion_candidate_requires_scope_review",
-      "review_bucket": "scope_review_before_identifier_fill",
-      "review_priority": "P1",
-      "review_strategy": "decide_b3_core_extended_or_exclude_before_identifier_work",
-      "apply_eligibility": "blocked_until_core_or_extended_scope_decision",
-      "verification_evidence_required": "scope_decision_for_core_extended_or_exclude_before_identifier_fill",
-      "residual_review_context": "residual_decision=core_exclusion_candidate_requires_scope_review;review_bucket=scope_review_before_identifier_fill;apply_eligibility=blocked_until_core_or_extended_scope_decision;verification_evidence_required=scope_decision_for_core_extended_or_exclude_before_identifier_fill"
-    },
-    {
       "listing_key": "B3::OULG11B",
       "ticker": "OULG11B",
       "exchange": "B3",
@@ -345,34 +317,6 @@
       "exchange": "B3",
       "asset_type": "Stock",
       "name": "INTERCEMENT BRASIL S.A.",
-      "gap_class": "inactive_or_legacy_identifier_gap",
-      "source_of_truth_outcome": "core_exclusion_candidate",
-      "source_gap_context": "gap_class=inactive_or_legacy_identifier_gap;source_of_truth_outcome=core_exclusion_candidate;review_needed=true",
-      "current_instrument_scope": "core",
-      "current_scope_reason": "primary_listing_missing_isin",
-      "scope_review_context": "current_instrument_scope=core;current_scope_reason=primary_listing_missing_isin;source_of_truth_outcome=core_exclusion_candidate",
-      "review_needed": "true",
-      "recommended_next_source": "Current B3 source plus reviewed core, extended, or exclude scope decision before identifier work.",
-      "source_gate": "No ISIN fill until the B3 listing is reviewed as core, extended, or excluded.",
-      "b3_instruments_equities_match": "false",
-      "b3_instruments_equities_isin": "",
-      "cotahist_probe_decision": "no_cotahist_match",
-      "cotahist_probe_isin": "",
-      "official_source_context": "b3_instruments_equities_match=false;b3_instruments_equities_isin=none;cotahist_probe_decision=no_cotahist_match;cotahist_probe_isin=none",
-      "residual_decision": "core_exclusion_candidate_requires_scope_review",
-      "review_bucket": "scope_review_before_identifier_fill",
-      "review_priority": "P1",
-      "review_strategy": "decide_b3_core_extended_or_exclude_before_identifier_work",
-      "apply_eligibility": "blocked_until_core_or_extended_scope_decision",
-      "verification_evidence_required": "scope_decision_for_core_extended_or_exclude_before_identifier_fill",
-      "residual_review_context": "residual_decision=core_exclusion_candidate_requires_scope_review;review_bucket=scope_review_before_identifier_fill;apply_eligibility=blocked_until_core_or_extended_scope_decision;verification_evidence_required=scope_decision_for_core_extended_or_exclude_before_identifier_fill"
-    },
-    {
-      "listing_key": "B3::PASS5",
-      "ticker": "PASS5",
-      "exchange": "B3",
-      "asset_type": "Stock",
-      "name": "COMPASS GAS E ENERGIA S.A.",
       "gap_class": "inactive_or_legacy_identifier_gap",
       "source_of_truth_outcome": "core_exclusion_candidate",
       "source_gap_context": "gap_class=inactive_or_legacy_identifier_gap;source_of_truth_outcome=core_exclusion_candidate;review_needed=true",
