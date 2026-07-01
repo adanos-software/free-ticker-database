@@ -544,6 +544,24 @@
     "notes": "The official BMV search feed exposes issuer IDs and the issuer estadisticas/perfil pages expose instrument ISIN rows plus stock-sector and ETF taxonomy labels. Parser uses search only as the page locator and gates output by current BMV listings."
   },
   {
+    "key": "borsa_italiana_listino_a_z",
+    "exchange": "Borsa Italiana",
+    "venue_name": "Borsa Italiana",
+    "country": "Italy",
+    "provider": "Borsa Italiana",
+    "source_url": "https://www.borsaitaliana.it/borsa/azioni/listino-a-z.html?lang=en",
+    "candidate_scope": "exchange_directory_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "html_or_api",
+    "implementation_status": "todo",
+    "priority": "medium",
+    "blocker": "needs endpoint discovery and parser coverage before this current-scope venue can be marked official",
+    "notes": "Official Borsa Italiana market pages expose A-Z listed instruments, but a complete repeatable equities and ETFPlus parser still needs endpoint discovery and listing-key reconciliation."
+  },
+  {
     "key": "bursa_equities_prices_directory",
     "exchange": "Bursa",
     "venue_name": "Bursa Malaysia",

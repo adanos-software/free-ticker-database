@@ -1,28 +1,28 @@
 # B3 Masterfile Gap Review
 
-Generated at: `2026-06-02T18:54:27Z`
+Generated at: `2026-07-01T05:20:18Z`
 
 This report tracks B3 listings absent from the active B3 exchange-directory source. It does not fill or delete data.
 
 ## Summary
 
-- Active-directory missing B3 listings: `339`
+- Active-directory missing B3 listings: `338`
 
 ## Coverage Snapshot
 
 | Metric | Value |
 |---|---:|
-| dataset_rows | 1584 |
+| dataset_rows | 1583 |
 | active_exchange_directory_rows | 1315 |
-| all_b3_masterfile_rows | 1809 |
+| all_b3_masterfile_rows | 1810 |
 | active_directory_matched_dataset_rows | 1245 |
-| active_directory_missing_dataset_rows | 339 |
-| active_directory_match_rate | 78.6 |
+| active_directory_missing_dataset_rows | 338 |
+| active_directory_match_rate | 78.65 |
 | official_any_source_matched_dataset_rows | 1262 |
-| official_any_source_missing_dataset_rows | 322 |
-| official_any_source_match_rate | 79.67 |
+| official_any_source_missing_dataset_rows | 321 |
+| official_any_source_match_rate | 79.72 |
 | official_non_directory_gap_rows | 17 |
-| absent_from_all_b3_source_gap_rows | 322 |
+| absent_from_all_b3_source_gap_rows | 321 |
 
 - Active directory sources: `b3_instruments_equities`
 - Official non-directory sources: `b3_bdr_etfs, b3_listed_etfs`
@@ -33,17 +33,17 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 | Metric | Value |
 |---|---:|
 | status | active_directory_coverage_has_official_subset_parser_or_scope_gap |
-| dataset_rows | 1584 |
-| active_directory_match_rate | 78.6 |
-| active_directory_missing_dataset_rows | 339 |
-| open_review_rows | 322 |
+| dataset_rows | 1583 |
+| active_directory_match_rate | 78.65 |
+| active_directory_missing_dataset_rows | 338 |
+| open_review_rows | 321 |
 | closed_no_data_change_rows | 17 |
 | official_non_directory_gap_rows | 17 |
-| absent_from_all_b3_source_gap_rows | 322 |
+| absent_from_all_b3_source_gap_rows | 321 |
 | official_subset_candidate_isin_rows | 0 |
 | official_subset_candidate_sector_rows | 15 |
 | rows_requiring_parser_or_scope_review | 0 |
-| rows_requiring_external_active_evidence | 322 |
+| rows_requiring_external_active_evidence | 321 |
 | data_change_authorized | False |
 
 - Root cause: Residual B3 coverage gaps split between official B3 subset rows outside the active exchange-directory parser scope and listings absent from all current B3 masterfile sources.
@@ -53,7 +53,7 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 
 | Source presence | Rows |
 |---|---:|
-| absent_from_all_b3_masterfile_sources | 322 |
+| absent_from_all_b3_masterfile_sources | 321 |
 | present_only_in_non_exchange_directory_source | 17 |
 
 ## B3 Resolution Queues
@@ -61,7 +61,7 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 | Queue | Rows |
 |---|---:|
 | absent_from_all_b3_sources_fund_or_receipt_source_gap | 59 |
-| absent_from_all_b3_sources_local_share_source_gap | 263 |
+| absent_from_all_b3_sources_local_share_source_gap | 262 |
 | official_bdr_subset_without_category_source_gap_closed | 2 |
 | official_subset_category_already_reflected_scope_review | 15 |
 
@@ -70,20 +70,20 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 | Queue | Rows |
 |---|---:|
 | absent_from_all_b3_sources_fund_or_receipt_source_gap | 59 |
-| absent_from_all_b3_sources_local_share_source_gap | 263 |
+| absent_from_all_b3_sources_local_share_source_gap | 262 |
 
 ## Open B3 Next Sources
 
 | Recommended next source | Rows |
 |---|---:|
-| Current B3 exchange directory, B3 issuer page, CVM filing, or issuer investor-relations listing evidence. | 263 |
+| Current B3 exchange directory, B3 issuer page, CVM filing, or issuer investor-relations listing evidence. | 262 |
 | Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | 59 |
 
 ## Open B3 Evidence Paths
 
 | Evidence path | Rows |
 |---|---:|
-| current_b3_exchange_directory_or_cvm_issuer_listing_evidence | 263 |
+| current_b3_exchange_directory_or_cvm_issuer_listing_evidence | 262 |
 | current_b3_product_registry_or_issuer_sponsor_evidence | 59 |
 
 ## Source Gap Resolution Gates
@@ -92,7 +92,7 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 |---|---:|
 | close_directory_gap_only_after_scope_or_parser_review | 15 |
 | close_directory_gap_only_keep_identifier_and_category_unchanged | 2 |
-| do_not_delete_or_rename_until_current_b3_cvm_or_issuer_listing_evidence_is_reviewed | 263 |
+| do_not_delete_or_rename_until_current_b3_cvm_or_issuer_listing_evidence_is_reviewed | 262 |
 | do_not_delete_or_rename_until_current_product_registry_or_issuer_sponsor_evidence_is_reviewed | 59 |
 
 ## B3 Resolution Queue By Asset Type
@@ -101,7 +101,7 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 |---|---|---:|
 | absent_from_all_b3_sources_fund_or_receipt_source_gap | ETF | 43 |
 | absent_from_all_b3_sources_fund_or_receipt_source_gap | Stock | 16 |
-| absent_from_all_b3_sources_local_share_source_gap | Stock | 263 |
+| absent_from_all_b3_sources_local_share_source_gap | Stock | 262 |
 | official_bdr_subset_without_category_source_gap_closed | ETF | 2 |
 | official_subset_category_already_reflected_scope_review | ETF | 15 |
 
@@ -111,7 +111,7 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 |---|---|---:|
 | absent_from_all_b3_sources_fund_or_receipt_source_gap | other | 16 |
 | absent_from_all_b3_sources_fund_or_receipt_source_gap | unit_or_fund_line | 43 |
-| absent_from_all_b3_sources_local_share_source_gap | local_share_line | 263 |
+| absent_from_all_b3_sources_local_share_source_gap | local_share_line | 262 |
 | official_bdr_subset_without_category_source_gap_closed | bdr_or_foreign_receipt | 2 |
 | official_subset_category_already_reflected_scope_review | unit_or_fund_line | 15 |
 
@@ -119,7 +119,7 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 
 | Bucket | Rows |
 |---|---:|
-| missing_from_all_b3_masterfile_sources_source_gap | 322 |
+| missing_from_all_b3_masterfile_sources_source_gap | 321 |
 | official_b3_non_directory_source_review | 17 |
 
 ## Review Strategies
@@ -129,7 +129,7 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 | close_bdr_subset_gap_without_data_change_keep_category_source_gap | 2 |
 | confirm_official_subset_scope_or_parser_gap_before_closing_directory_gap | 15 |
 | keep_fund_or_receipt_gap_until_current_official_b3_or_issuer_evidence | 59 |
-| keep_local_share_gap_until_current_official_b3_or_issuer_evidence | 263 |
+| keep_local_share_gap_until_current_official_b3_or_issuer_evidence | 262 |
 
 ## Candidate Evidence
 
@@ -143,14 +143,14 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 
 | Decision | Rows |
 |---|---:|
-| no_official_candidate_category | 324 |
+| no_official_candidate_category | 323 |
 | official_candidate_category_already_reflected | 15 |
 
 ## Official Subset Review Decisions
 
 | Decision | Rows |
 |---|---:|
-| not_official_subset_source_gap | 322 |
+| not_official_subset_source_gap | 321 |
 | official_subset_bdr_without_category_no_data_change | 2 |
 | official_subset_category_already_reflected_no_data_change | 15 |
 
@@ -158,7 +158,7 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 
 | Eligibility | Rows |
 |---|---:|
-| blocked_until_current_official_active_source_evidence | 322 |
+| blocked_until_current_official_active_source_evidence | 321 |
 | closure_ready_official_subset_bdr_without_category_source_gap | 2 |
 | closure_ready_official_subset_category_already_reflected | 15 |
 
@@ -173,7 +173,7 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 
 | Priority | Queue | Asset type | Gap category | Source presence | Rows | Strategy | Evidence required | Recommended next source | Source gate |
 |---|---|---|---|---|---:|---|---|---|---|
-| P3 | absent_from_all_b3_sources_local_share_source_gap | Stock | local_share_line | absent_from_all_b3_masterfile_sources | 263 | keep_local_share_gap_until_current_official_b3_or_issuer_evidence | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 exchange directory, B3 issuer page, CVM filing, or issuer investor-relations listing evidence. | Keep row as source gap until current official B3 or issuer evidence proves the active local-share listing. |
+| P3 | absent_from_all_b3_sources_local_share_source_gap | Stock | local_share_line | absent_from_all_b3_masterfile_sources | 262 | keep_local_share_gap_until_current_official_b3_or_issuer_evidence | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 exchange directory, B3 issuer page, CVM filing, or issuer investor-relations listing evidence. | Keep row as source gap until current official B3 or issuer evidence proves the active local-share listing. |
 | P3 | absent_from_all_b3_sources_fund_or_receipt_source_gap | ETF | unit_or_fund_line | absent_from_all_b3_masterfile_sources | 43 | keep_fund_or_receipt_gap_until_current_official_b3_or_issuer_evidence | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | Keep row as source gap until current official product evidence proves active fund, ETF, BDR, or receipt listing. |
 | P3 | absent_from_all_b3_sources_fund_or_receipt_source_gap | Stock | other | absent_from_all_b3_masterfile_sources | 16 | keep_fund_or_receipt_gap_until_current_official_b3_or_issuer_evidence | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | Keep row as source gap until current official product evidence proves active fund, ETF, BDR, or receipt listing. |
 | P2 | official_subset_category_already_reflected_scope_review | ETF | unit_or_fund_line | present_only_in_non_exchange_directory_source | 15 | confirm_official_subset_scope_or_parser_gap_before_closing_directory_gap | official_b3_source_row_plus_scope_decision_or_parser_fix_before_reclassifying_gap | Current active B3 exchange directory or reviewed parser/scope evidence for the listed ETF/fund subset. | Close the directory gap only after confirming the subset is intentionally outside the active directory or parser-scoped. |
@@ -183,7 +183,7 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 
 | Priority | Queue | Asset type | Gap category | Source presence | Rows | Strategy | Evidence required | Recommended next source | Source gate |
 |---|---|---|---|---|---:|---|---|---|---|
-| P3 | absent_from_all_b3_sources_local_share_source_gap | Stock | local_share_line | absent_from_all_b3_masterfile_sources | 263 | keep_local_share_gap_until_current_official_b3_or_issuer_evidence | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 exchange directory, B3 issuer page, CVM filing, or issuer investor-relations listing evidence. | Keep row as source gap until current official B3 or issuer evidence proves the active local-share listing. |
+| P3 | absent_from_all_b3_sources_local_share_source_gap | Stock | local_share_line | absent_from_all_b3_masterfile_sources | 262 | keep_local_share_gap_until_current_official_b3_or_issuer_evidence | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 exchange directory, B3 issuer page, CVM filing, or issuer investor-relations listing evidence. | Keep row as source gap until current official B3 or issuer evidence proves the active local-share listing. |
 | P3 | absent_from_all_b3_sources_fund_or_receipt_source_gap | ETF | unit_or_fund_line | absent_from_all_b3_masterfile_sources | 43 | keep_fund_or_receipt_gap_until_current_official_b3_or_issuer_evidence | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | Keep row as source gap until current official product evidence proves active fund, ETF, BDR, or receipt listing. |
 | P3 | absent_from_all_b3_sources_fund_or_receipt_source_gap | Stock | other | absent_from_all_b3_masterfile_sources | 16 | keep_fund_or_receipt_gap_until_current_official_b3_or_issuer_evidence | new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key | Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry. | Keep row as source gap until current official product evidence proves active fund, ETF, BDR, or receipt listing. |
 
@@ -467,7 +467,6 @@ This report tracks B3 listings absent from the active B3 exchange-directory sour
 | B3::SALT3 | P3 | local_share_line |  |  | no_official_candidate_category |  | GRUPO SALTA EDUCAÇÃO S.A. |
 | B3::SALT5 | P3 | local_share_line |  |  | no_official_candidate_category |  | GRUPO SALTA EDUCAÇÃO S.A. |
 | B3::SALT6 | P3 | local_share_line |  |  | no_official_candidate_category |  | GRUPO SALTA EDUCAÇÃO S.A. |
-| B3::SANY6 | P3 | local_share_line |  |  | no_official_candidate_category |  | SANYO DA AMAZONIA S.A. |
 | B3::SDRM3 | P3 | local_share_line |  |  | no_official_candidate_category |  | CIA SIDERURGICA DA AMAZONIA - SIDERAMA |
 | B3::SDRM6 | P3 | local_share_line |  |  | no_official_candidate_category |  | CIA SIDERURGICA DA AMAZONIA - SIDERAMA |
 | B3::SHUL3 | P3 | local_share_line |  |  | no_official_candidate_category |  | SCHULZ S.A. |

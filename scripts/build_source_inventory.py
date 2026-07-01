@@ -29,6 +29,10 @@ STATUS_RANK = {
 }
 PRIORITY_RANK = {"high": 0, "medium": 1, "low": 2}
 
+FALLBACK_VENUE_METADATA = {
+    "Borsa Italiana": {"venue_name": "Borsa Italiana", "country": "Italy"},
+}
+
 CSV_FIELDNAMES = [
     "priority_rank",
     "exchange",
@@ -144,6 +148,10 @@ def coverage_metrics(exchange: str, coverage_lookup: dict[str, dict[str, Any]]) 
     }
 
 
+def fallback_venue_metadata(exchange: str) -> dict[str, str]:
+    return FALLBACK_VENUE_METADATA.get(exchange, {"venue_name": "", "country": ""})
+
+
 def row_sort_key(row: SourceInventoryRow) -> tuple[int, int, int, int, str, str]:
     return (
         STATUS_RANK.get(row.current_status, 9),
@@ -215,13 +223,14 @@ def build_source_inventory(
         if status not in {"missing", "official_partial", "manual_only"} or exchange in candidate_exchanges:
             continue
         metrics = coverage_metrics(exchange, coverage_lookup)
+        venue_metadata = fallback_venue_metadata(exchange)
         priority = "high" if metrics["unresolved_findings"] >= 100 or metrics["tickers"] >= 1000 else "medium"
         rows.append(
             SourceInventoryRow(
                 priority_rank=0,
                 exchange=exchange,
-                venue_name="",
-                country="",
+                venue_name=venue_metadata["venue_name"],
+                country=venue_metadata["country"],
                 current_status=metrics["current_status"],
                 tickers=metrics["tickers"],
                 missing_isin=metrics["missing_isin"],

@@ -2,6 +2,24 @@
 
 ## [Unreleased]
 
+## [3.30.48] - 2026-07-01
+
+### Summary
+
+**Processed the merged automation findings from the daily symbol-change, weekly drift, and weekly delisting-candidate reports.** High-confidence corporate-action findings were applied through review overrides, then the database, Adanos reference exports, history, source inventory, and quality reports were rebuilt.
+
+### Changed
+
+- Re-keyed current US listings: `SATS`→`ECHO` (EchoStar, Nasdaq), `SKLZ`→`FIRY` (Firy, NYSE), and `LC`→`HAPN` with exchange transfer from NYSE to Nasdaq.
+- Dropped stale pre-change duplicate rows confirmed against official Nasdaq Trader and SEC evidence: `ASGN`, `BK`, `CGCT`, `MEG`, `QHUOY`, `SAVA`, `SCVL`, `SNSE`, `THAR`, and `VRAR`.
+- Carried forward the verified `SHOE` ISIN after the `SCVL`→`SHOE` evidence review.
+- Populated missing source-inventory metadata for the current-scope `Borsa Italiana` backlog row (`venue_name=Borsa Italiana`, `country=Italy`) and added a regression test for the generator fallback.
+- Refreshed dataset exports, listing history, identifier coverage, source-gap/source-of-truth reports, Adanos ticker reference exports, validation reports, and README snapshot counts.
+
+### Verification
+
+- `scripts/check_entry_quality_gate.py`: pass. `scripts/check_readme_snapshot.py`: pass. `scripts/validate_database.py`: 0/83 failed error gates. `pytest tests/ -q`: 1,473 passed. Bumps VERSION to 3.30.48.
+
 ## [3.30.47] - 2026-06-22
 
 ### Summary
