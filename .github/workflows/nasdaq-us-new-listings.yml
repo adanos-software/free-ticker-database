@@ -8,6 +8,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  statuses: write
 
 jobs:
   update-nasdaq-us-new-listings:
@@ -57,13 +58,13 @@ jobs:
           python scripts/build_entry_quality_report.py
           python scripts/update_readme_snapshot.py
 
-      - name: Validate focused workflow logic
+      - name: Validate release gates
+        if: steps.apply.outputs.new_listings_applied == 'true'
         run: |
-          python -m pytest \
-            tests/test_apply_nasdaq_us_new_listings.py \
-            tests/test_update_readme_snapshot.py \
-            tests/test_fetch_exchange_masterfiles.py \
-            -q
+          python -m pytest tests/ -q
+          python scripts/check_entry_quality_gate.py
+          python scripts/check_readme_snapshot.py
+          python scripts/validate_database.py
 
       - name: Detect substantive changes
         id: changes
@@ -109,6 +110,20 @@ jobs:
             - no Units, Rights, Warrants, Preferreds, Notes, or non-stock-like names
 
             Apply report: `data/reports/nasdaq_us_new_listings_apply.md`
+
+      - name: Publish validation status
+        if: steps.cpr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ secrets.AUTOMATION_PR_TOKEN || github.token }}
+        run: |
+          head_sha="$(gh pr view "${{ steps.cpr.outputs.pull-request-number }}" --json headRefOid --jq .headRefOid)"
+          gh api \
+            --method POST \
+            "repos/${GITHUB_REPOSITORY}/statuses/${head_sha}" \
+            -f state=success \
+            -f context=test \
+            -f description="Nasdaq automation validation passed" \
+            -f target_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
 
       - name: Enable automerge
         if: steps.cpr.outputs.pull-request-number != ''
