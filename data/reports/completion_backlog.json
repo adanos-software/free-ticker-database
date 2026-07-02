@@ -6,7 +6,7 @@
       "etf_missing_count": 31,
       "exchange": "NASDAQ",
       "field": "missing_isin_primary",
-      "missing_count": 193,
+      "missing_count": 194,
       "notes": "Residual US gaps are mostly ETF tails; keep in small batches.",
       "official_source_count": 2,
       "priority_bucket": "top_impact",
@@ -15,7 +15,7 @@
       "reference_scopes": "exchange_directory",
       "review_needed": true,
       "script": "scripts/backfill_eodhd_metadata.py; scripts/backfill_yahoo_missing_isins.py",
-      "stock_missing_count": 162,
+      "stock_missing_count": 163,
       "target_field": "isin",
       "venue_status": "official_full"
     },
@@ -671,7 +671,7 @@
       "etf_missing_count": 0,
       "exchange": "NASDAQ",
       "field": "missing_sector_stock",
-      "missing_count": 16,
+      "missing_count": 17,
       "notes": "Source research needed before applying.",
       "official_source_count": 2,
       "priority_bucket": "ranked_by_missing_count",
@@ -680,7 +680,7 @@
       "reference_scopes": "exchange_directory",
       "review_needed": true,
       "script": "scripts/fetch_exchange_masterfiles.py; scripts/backfill_financedatabase_metadata.py",
-      "stock_missing_count": 16,
+      "stock_missing_count": 17,
       "target_field": "stock_sector",
       "venue_status": "official_full"
     },
@@ -1510,10 +1510,10 @@
     },
     "field_totals": {
       "missing_etf_category": 96,
-      "missing_isin_primary": 945,
-      "missing_sector_stock": 93
+      "missing_isin_primary": 946,
+      "missing_sector_stock": 94
     },
-    "generated_at": "2026-07-02T11:41:04Z",
+    "generated_at": "2026-07-02T12:49:20Z",
     "legacy_primary_ticker_collision_rows": 2025,
     "model_notes": {
       "listing_key_first": "The core security model is now listing_key-first. Global ticker uniqueness only remains as a compatibility constraint in tickers.csv.",
@@ -1572,7 +1572,7 @@
         "etf_missing_count": 31,
         "exchange": "NASDAQ",
         "field": "missing_isin_primary",
-        "missing_count": 193,
+        "missing_count": 194,
         "official_source_count": 2,
         "recommended_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
         "residual_gate": "source_gap_classification_blocks_direct_apply",
@@ -1581,7 +1581,7 @@
         "script": "scripts/backfill_eodhd_metadata.py; scripts/backfill_yahoo_missing_isins.py",
         "source_gap_class": "official_identifier_not_exposed_source_gap",
         "source_gap_rows": 158,
-        "stock_missing_count": 162,
+        "stock_missing_count": 163,
         "target_field": "isin",
         "venue_status": "official_full",
         "why_next": "source-gap classification review-gated workflow"
