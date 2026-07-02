@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-06-16T11:29:55Z",
-    "rows": 122146,
+    "generated_at": "2026-07-02T11:41:07Z",
+    "rows": 124701,
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "aliases_csv": "data/aliases.csv"
@@ -9,30 +9,30 @@
   },
   "summary": {
     "status_counts": {
-      "reject": 64961,
-      "accept": 56761,
-      "review": 424
+      "reject": 65819,
+      "accept": 58400,
+      "review": 482
     },
     "detection_policy_counts": {
-      "identifier_only": 64961,
-      "safe_natural_language": 56761,
-      "symbol_alias_only": 424
+      "identifier_only": 65819,
+      "safe_natural_language": 58400,
+      "symbol_alias_only": 482
     },
     "reason_counts": {
-      "identifier_alias": 64961,
-      "accepted_name_alias": 56761,
-      "same_as_ticker": 424
+      "identifier_alias": 65819,
+      "accepted_name_alias": 58400,
+      "same_as_ticker": 482
     },
     "alias_type_status_counts": {
       "isin": {
-        "reject": 60087
+        "reject": 61477
       },
       "name": {
-        "accept": 56761,
-        "review": 424
+        "accept": 58400,
+        "review": 482
       },
       "wkn": {
-        "reject": 4874
+        "reject": 4342
       }
     }
   },
@@ -391,8 +391,28 @@
         "duplicate_ticker_count": "1"
       },
       {
+        "ticker": "AIRAN",
+        "alias": "airan",
+        "alias_type": "name",
+        "status": "review",
+        "detection_policy": "symbol_alias_only",
+        "confidence": "0.80",
+        "reason": "same_as_ticker",
+        "duplicate_ticker_count": "1"
+      },
+      {
         "ticker": "AKDITAL",
         "alias": "akdital",
+        "alias_type": "name",
+        "status": "review",
+        "detection_policy": "symbol_alias_only",
+        "confidence": "0.80",
+        "reason": "same_as_ticker",
+        "duplicate_ticker_count": "1"
+      },
+      {
+        "ticker": "ALANKIT",
+        "alias": "alankit",
         "alias_type": "name",
         "status": "review",
         "detection_policy": "symbol_alias_only",
@@ -511,28 +531,8 @@
         "duplicate_ticker_count": "1"
       },
       {
-        "ticker": "ANTVF",
-        "alias": "antvf",
-        "alias_type": "name",
-        "status": "review",
-        "detection_policy": "symbol_alias_only",
-        "confidence": "0.80",
-        "reason": "same_as_ticker",
-        "duplicate_ticker_count": "1"
-      },
-      {
         "ticker": "APETIT",
         "alias": "apetit",
-        "alias_type": "name",
-        "status": "review",
-        "detection_policy": "symbol_alias_only",
-        "confidence": "0.80",
-        "reason": "same_as_ticker",
-        "duplicate_ticker_count": "1"
-      },
-      {
-        "ticker": "APOTEA",
-        "alias": "apotea",
         "alias_type": "name",
         "status": "review",
         "detection_policy": "symbol_alias_only",

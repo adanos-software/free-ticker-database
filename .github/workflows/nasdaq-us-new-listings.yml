@@ -1,0 +1,117 @@
+name: Daily Nasdaq US New Listings
+
+on:
+  schedule:
+    - cron: "37 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-nasdaq-us-new-listings:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Snapshot current Nasdaq reference
+        run: cp data/masterfiles/reference.csv /tmp/reference-before-nasdaq-us.csv
+
+      - name: Refresh Nasdaq Trader symbol directories
+        run: |
+          python scripts/fetch_exchange_masterfiles.py \
+            --source nasdaq_listed \
+            --source nasdaq_other_listed
+
+      - name: Apply safe new US stock listings
+        id: apply
+        run: |
+          python scripts/apply_nasdaq_us_new_listings.py \
+            --previous-reference /tmp/reference-before-nasdaq-us.csv
+
+      - name: Rebuild derived exports and reports
+        if: steps.apply.outputs.new_listings_applied == 'true'
+        run: |
+          python scripts/rebuild_dataset.py
+          python scripts/enrich_global_identifiers.py
+          python scripts/build_coverage_report.py
+          python scripts/build_source_inventory.py
+          python scripts/build_completion_backlog.py
+          python scripts/build_source_gap_classification.py
+          python scripts/build_source_of_truth_decisions.py
+          python scripts/build_alias_quality_report.py
+          python scripts/build_adanos_ticker_reference.py
+          python scripts/build_entry_quality_report.py
+          python scripts/update_readme_snapshot.py
+
+      - name: Validate focused workflow logic
+        run: |
+          python -m pytest \
+            tests/test_apply_nasdaq_us_new_listings.py \
+            tests/test_update_readme_snapshot.py \
+            tests/test_fetch_exchange_masterfiles.py \
+            -q
+
+      - name: Detect substantive changes
+        id: changes
+        run: |
+          if [ "${{ steps.apply.outputs.new_listings_applied }}" != "true" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No accepted Nasdaq US listings; skipping PR."
+          elif git diff --quiet -- \
+            data/masterfiles/reference.csv \
+            data/masterfiles/summary.json \
+            data/masterfiles/sources.json \
+            data/masterfiles/supplemental_listings.csv \
+            data/reports/nasdaq_us_new_listings_apply.json \
+            data/reports/nasdaq_us_new_listings_apply.md \
+            data/ README.md; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No Nasdaq US listing changes; skipping PR."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Open update pull request
+        if: steps.changes.outputs.changed == 'true'
+        id: cpr
+        uses: peter-evans/create-pull-request@v8.1.1
+        with:
+          token: ${{ secrets.AUTOMATION_PR_TOKEN || github.token }}
+          branch: automation/nasdaq-us-new-listings
+          delete-branch: true
+          commit-message: Update Nasdaq US new listings
+          title: "Update Nasdaq US new listings"
+          body: |
+            Automated Nasdaq Trader US listing refresh.
+
+            This refresh:
+            - updates `nasdaq_listed` and `nasdaq_other_listed` in `data/masterfiles/reference.csv`
+            - applies only newly active, collision-free US `Stock` rows to `data/masterfiles/supplemental_listings.csv`
+            - rebuilds public exports and reports when rows are accepted
+
+            Guardrails:
+            - no backlog catch-up: only rows newly active versus the previous committed reference snapshot are eligible
+            - no ticker collisions with existing `data/listings.csv`
+            - no Units, Rights, Warrants, Preferreds, Notes, or non-stock-like names
+
+            Apply report: `data/reports/nasdaq_us_new_listings_apply.md`
+
+      - name: Enable automerge
+        if: steps.cpr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ secrets.AUTOMATION_PR_TOKEN || github.token }}
+        run: gh pr merge "${{ steps.cpr.outputs.pull-request-number }}" --auto --squash

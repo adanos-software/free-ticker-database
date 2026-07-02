@@ -1,0 +1,1265 @@
+{
+  "summary": {
+    "generated_at": "2026-07-02T11:40:26Z",
+    "previous_reference_csv": "/tmp/reference-before-nasdaq-us-local.csv",
+    "current_reference_csv": "data/masterfiles/reference.csv",
+    "supplement_csv": "data/masterfiles/supplemental_listings.csv",
+    "supported_asset_types": [
+      "Stock"
+    ],
+    "new_supported_rows": 138,
+    "accepted_rows": 22,
+    "skipped_rows": 116,
+    "accepted_by_exchange": {
+      "NASDAQ": 15,
+      "NYSE": 7
+    },
+    "skipped_by_reason": {
+      "already_in_listings": 38,
+      "excluded_non_common_stock": 11,
+      "not_stock_like_name": 56,
+      "temporary_when_issued_line": 2,
+      "ticker_collision": 9
+    }
+  },
+  "accepted": [
+    {
+      "ticker": "AESP",
+      "name": "Aeon Acquisition I Corp. - Class A Ordinary Shares",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "APMC",
+      "name": "AmperCap Acquisition Company - Ordinary Shares",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "CAII",
+      "name": "Collective Acquisition Corp. II - Class A Ordinary Shares",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "FISN",
+      "name": "Deep Fission, Inc. - Common Stock",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "FTHA",
+      "name": "Forefront Tech Holdings Acquisition Corp - Class A Ordinary Shares",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "FXHO",
+      "name": "UTime Limited - Class A Ordinary Shares",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "GCGR",
+      "name": "General Catalyst Global Resilience Merger Corp. - Class A Ordinary Shares",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "HODO",
+      "name": "House of Doge Inc. - Common Stock",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "HONA",
+      "name": "Honeywell Aerospace Inc. - Common Stock",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "IACQ",
+      "name": "Irenic Acquisition Corp. - Class A Ordinary Shares",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "ITG",
+      "name": "ITG, Inc. - Class A Common Stock",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "KARD",
+      "name": "Kardigan, Inc. - Common Stock",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "KEYY",
+      "name": "Keystone Acquisition Corp. - Class A Ordinary Shares",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "MCAH",
+      "name": "Mountain Crest Acquisition 6 Corp. - Ordinary Shares",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "USDE",
+      "name": "StablecoinX Inc. - Class A Common Stock",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "DPC",
+      "name": "DPC Holdings PLC Ordinary Shares",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "MBGL",
+      "name": "Mobility Global Inc. Common Stock",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "MTNE",
+      "name": "CH4 Natural Solutions Corporation Class A Ordinary Shares",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "OTAI",
+      "name": "Starlink AI Acquisition Corporation Ordinary Shares",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "QLEP",
+      "name": "Quantum Leap Acquisition Corp Class A Ordinary Shares",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "SECZ",
+      "name": "Securitize Corp. Common Stock",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "SIND",
+      "name": "Sinda Ltd. Common Stock",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    }
+  ],
+  "skipped": [
+    {
+      "ticker": "AESPR",
+      "exchange": "NASDAQ",
+      "name": "Aeon Acquisition I Corp. - Rights",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "AESPU",
+      "exchange": "NASDAQ",
+      "name": "Aeon Acquisition I Corp. - Units",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "AESPW",
+      "exchange": "NASDAQ",
+      "name": "Aeon Acquisition I Corp. - Warrants",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "AIBZ",
+      "exchange": "NASDAQ",
+      "name": "Bitzero Holdings Inc. - Common Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "ALPXU",
+      "exchange": "NASDAQ",
+      "name": "Alpex Acquisition Corporation - Units",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "APMCR",
+      "exchange": "NASDAQ",
+      "name": "AmperCap Acquisition Company - Right",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "APMCU",
+      "exchange": "NASDAQ",
+      "name": "AmperCap Acquisition Company - Unit",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "APUR",
+      "exchange": "NASDAQ",
+      "name": "Aperture AC - Class A Ordinary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "APURR",
+      "exchange": "NASDAQ",
+      "name": "Aperture AC - Rights",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "AVAT",
+      "exchange": "NASDAQ",
+      "name": "Avalanche Treasury Corporation - Class A Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "BREZ",
+      "exchange": "NASDAQ",
+      "name": "Breeze Acquisition Corp. II - Ordinary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "BREZR",
+      "exchange": "NASDAQ",
+      "name": "Breeze Acquisition Corp. II - Rights",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "BSIN",
+      "exchange": "NASDAQ",
+      "name": "Big Sky Industrial Inc. - Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "BSP",
+      "exchange": "NASDAQ",
+      "name": "Bending Spoons S.p.A. - Ordinary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "ticker_collision"
+    },
+    {
+      "ticker": "CAES",
+      "exchange": "NASDAQ",
+      "name": "Cantor Equity Partners VII, Inc. - Class A Ordinary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "CAIIW",
+      "exchange": "NASDAQ",
+      "name": "Collective Acquisition Corp. II - Warrants",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "CGCFU",
+      "exchange": "NASDAQ",
+      "name": "Cartesian Growth Corporation IV - Units",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "CIRC",
+      "exchange": "NASDAQ",
+      "name": "Circle8 Group, Inc. - Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "ticker_collision"
+    },
+    {
+      "ticker": "CXII",
+      "exchange": "NASDAQ",
+      "name": "Churchill Capital Corp XII - Class A Ordinary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "CXIIW",
+      "exchange": "NASDAQ",
+      "name": "Churchill Capital Corp XII - Warrants",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "DSC",
+      "exchange": "NASDAQ",
+      "name": "DSC Holdings Ltd. - American Depositary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "ECHO",
+      "exchange": "NASDAQ",
+      "name": "EchoStar Corporation - Common stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "ELOX",
+      "exchange": "NASDAQ",
+      "name": "Eloxx Pharmaceuticals, Inc. - Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "ENRD",
+      "exchange": "NASDAQ",
+      "name": "Einride AB - American Depositary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "ENRDW",
+      "exchange": "NASDAQ",
+      "name": "Einride AB - Warrants",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "FAC",
+      "exchange": "NASDAQ",
+      "name": "Factorial Energy Inc. - Class A Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "FACWW",
+      "exchange": "NASDAQ",
+      "name": "Factorial Energy Inc. - Warrant",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "FLZH",
+      "exchange": "NASDAQ",
+      "name": "Flash Sports & Media Holdings, Inc. - Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "FRBT",
+      "exchange": "NASDAQ",
+      "name": "Forbright, Inc. - Class A Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "FRTT",
+      "exchange": "NASDAQ",
+      "name": "Fort Technology Inc. - Common Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "FTH",
+      "exchange": "NASDAQ",
+      "name": "Faeth Therapeutics, Inc.  - Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "FTHAW",
+      "exchange": "NASDAQ",
+      "name": "Forefront Tech Holdings Acquisition Corp - Warrant",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "FWACU",
+      "exchange": "NASDAQ",
+      "name": "Futurewave Acquisition Corporation - Units",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "GCGRW",
+      "exchange": "NASDAQ",
+      "name": "General Catalyst Global Resilience Merger Corp. - Warrants",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "GHXIU",
+      "exchange": "NASDAQ",
+      "name": "Gores Holdings XI, Inc. - Units",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "GOOGM",
+      "exchange": "NASDAQ",
+      "name": "Alphabet Inc. - Depositary Shares representing a 1/20th Interest in a Share of Series A Mandatory Convertible Preferred Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "GOOGN",
+      "exchange": "NASDAQ",
+      "name": "Alphabet Inc. - Depositary Shares representing a 1/20th Interest in a Share of Series B Mandatory Convertible Preferred Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "HAPN",
+      "exchange": "NASDAQ",
+      "name": "Happen, Inc. - Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "IACQW",
+      "exchange": "NASDAQ",
+      "name": "Irenic Acquisition Corp. - Warrants",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "INIO",
+      "exchange": "NASDAQ",
+      "name": "INNIO N.V. - Ordinary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "IPVVU",
+      "exchange": "NASDAQ",
+      "name": "InterPrivate Investment Partners V, Inc. - Units",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "ISNRU",
+      "exchange": "NASDAQ",
+      "name": "Snow Rothschild Acquisition Corp. - Units",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "JABRU",
+      "exchange": "NASDAQ",
+      "name": "JAB Acquisition Corp I - Units",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "KAZR",
+      "exchange": "NASDAQ",
+      "name": "Skyline Builders Group Holding Limited - Class A Ordinary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "KEYYU",
+      "exchange": "NASDAQ",
+      "name": "Keystone Acquisition Corp. - Unit",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "KEYYW",
+      "exchange": "NASDAQ",
+      "name": "Keystone Acquisition Corp. - Warrants",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "LFTO",
+      "exchange": "NASDAQ",
+      "name": "Liftoff Mobile, Inc. - Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "LILAP",
+      "exchange": "NASDAQ",
+      "name": "Liberty Latin America Ltd. - 9.0% Fixed Rate Cumulative Perpetual Redeemable Series A Preference Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "LIME",
+      "exchange": "NASDAQ",
+      "name": "Neutron Holdings, Inc. - Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "ticker_collision"
+    },
+    {
+      "ticker": "LTGRU",
+      "exchange": "NASDAQ",
+      "name": "Long Table Growth Corp. - Units",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "MCAHR",
+      "exchange": "NASDAQ",
+      "name": "Mountain Crest Acquisition 6 Corp. - Rights",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "MFPVV",
+      "exchange": "NASDAQ",
+      "name": "Midera Food Processing, Inc. - Common Stock When Issued",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "temporary_when_issued_line"
+    },
+    {
+      "ticker": "MIDDV",
+      "exchange": "NASDAQ",
+      "name": "Middleby Corp. - Common Stock Ex-Distribution When Issued",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "temporary_when_issued_line"
+    },
+    {
+      "ticker": "NHIV",
+      "exchange": "NASDAQ",
+      "name": "NewHold Investment Corp IV - Class A Ordinary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "NHIVW",
+      "exchange": "NASDAQ",
+      "name": "NewHold Investment Corp IV - Warrants",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "NSLR",
+      "exchange": "NASDAQ",
+      "name": "Neostellar Capital Corp. - Closed End Fund",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "NSLRL",
+      "exchange": "NASDAQ",
+      "name": "Neostellar Capital Corp. - 6.00% Notes due 2026",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "OHAC",
+      "exchange": "NASDAQ",
+      "name": "Oceanhawk Acquisition Corp. - Class A Ordinary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "OHACR",
+      "exchange": "NASDAQ",
+      "name": "Oceanhawk Acquisition Corp. - Rights",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "OPI",
+      "exchange": "NASDAQ",
+      "name": "Office Properties Income Trust - Common shares of beneficial interest",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "ticker_collision"
+    },
+    {
+      "ticker": "OSPRU",
+      "exchange": "NASDAQ",
+      "name": "Osprey Acquisition Corp. III - Units",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "PBK",
+      "exchange": "NASDAQ",
+      "name": "PowerBank Corporation - Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "PBLS",
+      "exchange": "NASDAQ",
+      "name": "Parabilis Medicines, Inc. - Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "PECE",
+      "exchange": "NASDAQ",
+      "name": "Peace Acquisition Corp - Ordinary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "PECER",
+      "exchange": "NASDAQ",
+      "name": "Peace Acquisition Corp - Right",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "PECEW",
+      "exchange": "NASDAQ",
+      "name": "Peace Acquisition Corp - Warrant",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "PPLI",
+      "exchange": "NASDAQ",
+      "name": "People Incorporated - Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "QNT",
+      "exchange": "NASDAQ",
+      "name": "Quantinuum Inc. - Class A Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "SHOE",
+      "exchange": "NASDAQ",
+      "name": "Shoe Station Group, Inc. - Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "SHOTU",
+      "exchange": "NASDAQ",
+      "name": "RMG ML Sports Holdings - Unit",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "SLBT",
+      "exchange": "NASDAQ",
+      "name": "SL Science Holding Limited - Ordinary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "SMCIP",
+      "exchange": "NASDAQ",
+      "name": "Super Micro Computer, Inc. - Depositary Shares Each Representing a 1/20th Interest in a Share of 7% Series A Mandatory Convertible Preferred Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "SPCX",
+      "exchange": "NASDAQ",
+      "name": "Space Exploration Technologies Corp. - Class A Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "TMS",
+      "exchange": "NASDAQ",
+      "name": "Teamshares Inc. - Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "ticker_collision"
+    },
+    {
+      "ticker": "TMSWW",
+      "exchange": "NASDAQ",
+      "name": "Teamshares Inc. - Warrants",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "TVIVU",
+      "exchange": "NASDAQ",
+      "name": "Texas Ventures Acquisition IV Corp - Units",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "USDEW",
+      "exchange": "NASDAQ",
+      "name": "StablecoinX Inc. - Warrants",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "VRXA",
+      "exchange": "NASDAQ",
+      "name": "Veraxa Biotech AG - Ordinary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "VRXAW",
+      "exchange": "NASDAQ",
+      "name": "Veraxa Biotech AG - Warrants",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "WLCOU",
+      "exchange": "NASDAQ",
+      "name": "Wilco 63 Corporation - Units",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "YICCU",
+      "exchange": "NASDAQ",
+      "name": "Yorkville International Capital Corp. - Units",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "AAC.U",
+      "exchange": "NYSE",
+      "name": "Ares Acquisition Corporation III Units, each consisting of one Class A ordinary share and one-tenth of one redeemable warrant",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
+    {
+      "ticker": "AADX",
+      "exchange": "NYSE",
+      "name": "Applied Aerospace & Defense, Inc. Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "BMNP",
+      "exchange": "NYSE",
+      "name": "BitMine Immersion Technologies, Inc. 9.5% Series A Perpetual Preferred Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "CTGG",
+      "exchange": "NYSE",
+      "name": "Qwest Corporation 6.500% Senior Notes due 2051 (denominations of $25)",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "CTHH",
+      "exchange": "NYSE",
+      "name": "Qwest Corporation 6.750% Senior Notes due 2052 (denominations of $25)",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "DMC",
+      "exchange": "NYSE",
+      "name": "Del Monte Corporation Ordinary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "ticker_collision"
+    },
+    {
+      "ticker": "EROC",
+      "exchange": "NYSE",
+      "name": "ERock, Inc. Class A Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "ETSS",
+      "exchange": "NYSE",
+      "name": "Energy Transition Special Opportunities Class A Ordinary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "ETSS.W",
+      "exchange": "NYSE",
+      "name": "Energy Transition Special Opportunities Warrants, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
+    {
+      "ticker": "FCBM",
+      "exchange": "NYSE",
+      "name": "First Carolina Financial Services, Inc. Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "FIRY",
+      "exchange": "NYSE",
+      "name": "Firy Inc. Class A Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "FITB",
+      "exchange": "NYSE",
+      "name": "Fifth Third Bancorp Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "ticker_collision"
+    },
+    {
+      "ticker": "FITB$A",
+      "exchange": "NYSE",
+      "name": "Fifth Third Bancorp Depositary Shares each representing 1/40th share of Fifth Third 6.00% Non-Cumulative Perpetual Class B Preferred Stock, Series A",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "FITB$I",
+      "exchange": "NYSE",
+      "name": "Fifth Third Bancorp Depositary Share repstg 1/1000th Ownership Interest Perp Pfd Series I",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "FITB$K",
+      "exchange": "NYSE",
+      "name": "Fifth Third Bancorp Depositary Shares each representing a 1/1000th ownership interest in a share of Non-Cumulative Perpetual Preferred Stock, Series K",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "FITB$M",
+      "exchange": "NYSE",
+      "name": "Fifth Third Bancorp Depositary Shares Representing a 1/40th Ownership Interest in a Share of 6.875% Fixed-Rate Reset Non-Cumulative Perpetual Preferred Stock, Series M",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "FTRA.U",
+      "exchange": "NYSE",
+      "name": "FutureCorp Space Acquisition 1 Units, each consisting of one Class A ordinary share and one-half of one redeemable warrant",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
+    {
+      "ticker": "GLAS",
+      "exchange": "NYSE",
+      "name": "Glass House Brands Inc. Subordinate Voting Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "MTNE.W",
+      "exchange": "NYSE",
+      "name": "CH4 Natural Solutions Corporation Warrants, each whole warrant exercisable for one Class A Ordinary Share at an exercise price of $11.50 per share",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
+    {
+      "ticker": "OCAC.U",
+      "exchange": "NYSE",
+      "name": "Ocean Capital Acquisition Corporation Units, each consisting of one Class A Ordinary Share, one redeemable Warrant and one Right",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
+    {
+      "ticker": "OTAI.R",
+      "exchange": "NYSE",
+      "name": "Starlink AI Acquisition Corporation Rights, each entitling the holder to receive one-fourth (1/4) of one ordinary share",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
+    {
+      "ticker": "PFLA",
+      "exchange": "NYSE",
+      "name": "PennantPark Floating Rate Capital Ltd. 7.375% Notes Due 2031",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "PLUN",
+      "exchange": "NYSE",
+      "name": "Plutonian Acquisition Corp II Class A Ordinary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "PLUN.R",
+      "exchange": "NYSE",
+      "name": "Plutonian Acquisition Corp II Rights, each entitling the holder to receive one-fourth of one Class A Ordinary Share",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
+    {
+      "ticker": "QLEP.W",
+      "exchange": "NYSE",
+      "name": "Quantum Leap Acquisition Corp Warrants, each whole warrant exercisable for one Class A Ordinary Share at an exercise price of $11.50 per share",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
+    {
+      "ticker": "RQI.R",
+      "exchange": "NYSE",
+      "name": "Cohen & Steers Quality Income Realty Fund Inc. Rights (expiring July 15, 2026) Rights",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "SSMR",
+      "exchange": "NYSE",
+      "name": "Sunshine Silver Mining & Refining Company Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "TPTS",
+      "exchange": "NYSE",
+      "name": "Terra Property Trust, Inc. 7.00% Senior Secured Notes due 2029",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "TRLV",
+      "exchange": "NYSE",
+      "name": "Trulieve Cannabis Corp. Subordinate Voting Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "VII.U",
+      "exchange": "NYSE",
+      "name": "Viking Acquisition Corp. II Units, each consisting of one Class A ordinary share and one-third of one Warrant",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
+    {
+      "ticker": "WHK",
+      "exchange": "NYSE",
+      "name": "WhiteHawk Minerals Corp Class A Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "already_in_listings"
+    },
+    {
+      "ticker": "COPR",
+      "exchange": "NYSE MKT",
+      "name": "Idaho Copper Corporation Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "ticker_collision"
+    },
+    {
+      "ticker": "COPR.W",
+      "exchange": "NYSE MKT",
+      "name": "Idaho Copper Corporation Common Stock Purchase Warrant",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
+    {
+      "ticker": "NVA",
+      "exchange": "NYSE MKT",
+      "name": "Nova Minerals Corp Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "ticker_collision"
+    },
+    {
+      "ticker": "NVA.W",
+      "exchange": "NYSE MKT",
+      "name": "Nova Minerals Corp Warrants to Purchase Common Stock",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "excluded_non_common_stock"
+    }
+  ]
+}

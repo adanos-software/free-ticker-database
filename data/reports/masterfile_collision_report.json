@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 78844,
-    "matched": 53149,
-    "collisions": 11225,
-    "missing": 14470
+    "official_symbols": 79153,
+    "matched": 53161,
+    "collisions": 11262,
+    "missing": 14730
   },
   "exchanges": [
     {
@@ -327,11 +327,19 @@
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1349,
-      "matched": 1180,
-      "collisions": 20,
-      "missing": 149,
+      "official_symbols": 1490,
+      "matched": 1162,
+      "collisions": 39,
+      "missing": 289,
       "collision_examples": [
+        {
+          "ticker": "APPC",
+          "name": "Corgi APP 2x Daily ETF",
+          "target_exchange": "BATS",
+          "existing_exchanges": [
+            "EGX"
+          ]
+        },
         {
           "ticker": "ARKI",
           "name": "ARK DIET Q2 Buffer ETF",
@@ -349,11 +357,28 @@
           ]
         },
         {
+          "ticker": "AVGC",
+          "name": "Corgi AVGO 2x Daily ETF",
+          "target_exchange": "BATS",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
+        {
           "ticker": "BAY",
           "name": "Corgi Bay Area Based ETF",
           "target_exchange": "BATS",
           "existing_exchanges": [
             "LSE"
+          ]
+        },
+        {
+          "ticker": "BEC",
+          "name": "Corgi BE 2x Daily ETF",
+          "target_exchange": "BATS",
+          "existing_exchanges": [
+            "Borsa Italiana",
+            "SET"
           ]
         },
         {
@@ -374,43 +399,19 @@
           ]
         },
         {
+          "ticker": "CBIL",
+          "name": "Corgi 3-12 Month T-Bill ETF",
+          "target_exchange": "BATS",
+          "existing_exchanges": [
+            "TSX"
+          ]
+        },
+        {
           "ticker": "CBOT",
           "name": "Corgi Robots & Humanoids ETF",
           "target_exchange": "BATS",
           "existing_exchanges": [
             "Euronext"
-          ]
-        },
-        {
-          "ticker": "CBOX",
-          "name": "Calamos Tax-Aware Collateral ETF",
-          "target_exchange": "BATS",
-          "existing_exchanges": [
-            "LSE"
-          ]
-        },
-        {
-          "ticker": "CMAG",
-          "name": "Corgi Mag 7 ETF",
-          "target_exchange": "BATS",
-          "existing_exchanges": [
-            "TSX"
-          ]
-        },
-        {
-          "ticker": "CTMA",
-          "name": "Corgi U.S. Equities 30% Structured Buffer ETF - May Series",
-          "target_exchange": "BATS",
-          "existing_exchanges": [
-            "TSX"
-          ]
-        },
-        {
-          "ticker": "FLXI",
-          "name": "Invesco Flexible Income ETF",
-          "target_exchange": "BATS",
-          "existing_exchanges": [
-            "OTC"
           ]
         }
       ],
@@ -431,38 +432,38 @@
           "exchange": "BATS"
         },
         {
+          "ticker": "ACGO",
+          "name": "Hartford Alpha Capture Growth ETF",
+          "exchange": "BATS"
+        },
+        {
+          "ticker": "ACHX",
+          "name": "Corgi ACHR 2x Daily ETF",
+          "exchange": "BATS"
+        },
+        {
+          "ticker": "ACLZ",
+          "name": "Corgi ACLS 2x Daily ETF",
+          "exchange": "BATS"
+        },
+        {
+          "ticker": "ACMM",
+          "name": "Corgi ACMR 2x Daily ETF",
+          "exchange": "BATS"
+        },
+        {
           "ticker": "ACVU",
           "name": "Hartford Alpha Capture Value ETF",
           "exchange": "BATS"
         },
         {
-          "ticker": "ALDB",
-          "name": "Aptus Laddered Deep Buffer ETF",
+          "ticker": "ADIU",
+          "name": "Leverage Shares 2X Long ADI Daily ETF",
           "exchange": "BATS"
         },
         {
-          "ticker": "AMAU",
-          "name": "Leverage Shares 2X Long AMAT Daily ETF",
-          "exchange": "BATS"
-        },
-        {
-          "ticker": "AMKL",
-          "name": "Defiance Daily Target 2X Long AMKR ETF",
-          "exchange": "BATS"
-        },
-        {
-          "ticker": "AMPU",
-          "name": "Defiance Daily Target 2X Long AMPX ETF",
-          "exchange": "BATS"
-        },
-        {
-          "ticker": "APDB",
-          "name": "Aptus April Deep Buffer ETF",
-          "exchange": "BATS"
-        },
-        {
-          "ticker": "ARLI",
-          "name": "AllianzIM International Equity Buffer15 Uncapped Apr ETF",
+          "ticker": "AEHG",
+          "name": "Leverage Shares 2X Long AEHR Daily ETF",
           "exchange": "BATS"
         }
       ]
@@ -956,8 +957,8 @@
       "exchange": "BVB",
       "official_symbols": 348,
       "matched": 75,
-      "collisions": 123,
-      "missing": 150,
+      "collisions": 124,
+      "missing": 149,
       "collision_examples": [
         {
           "ticker": "AAB",
@@ -1433,8 +1434,8 @@
       "exchange": "Euronext",
       "official_symbols": 4426,
       "matched": 990,
-      "collisions": 2345,
-      "missing": 1091,
+      "collisions": 2346,
+      "missing": 1090,
       "collision_examples": [
         {
           "ticker": "0EMU",
@@ -2474,10 +2475,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5524,
-      "matched": 4553,
-      "collisions": 36,
-      "missing": 935,
+      "official_symbols": 5641,
+      "matched": 4589,
+      "collisions": 47,
+      "missing": 1005,
       "collision_examples": [
         {
           "ticker": "AIMS",
@@ -2488,11 +2489,43 @@
           ]
         },
         {
+          "ticker": "AIX",
+          "name": "Defiance US 100 Tech AI Moat ETF",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "OSL"
+          ]
+        },
+        {
           "ticker": "AMA",
           "name": "Defiance Daily Target 2X Long AMAT ETF",
           "target_exchange": "NASDAQ",
           "existing_exchanges": [
             "ASX"
+          ]
+        },
+        {
+          "ticker": "AMEI",
+          "name": "Amana Equity Income ETF",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
+        {
+          "ticker": "AMEM",
+          "name": "Amana Developing World ETF",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
+        {
+          "ticker": "AMGR",
+          "name": "Amana Growth ETF",
+          "target_exchange": "NASDAQ",
+          "existing_exchanges": [
+            "TSX"
           ]
         },
         {
@@ -2526,41 +2559,14 @@
           "existing_exchanges": [
             "WSE"
           ]
-        },
-        {
-          "ticker": "AVL",
-          "name": "Direxion Daily AVGO Bull 2X ETF",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "ASX"
-          ]
-        },
-        {
-          "ticker": "BGCG",
-          "name": "Baillie Gifford International Concentrated Growth ETF",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "LSE"
-          ]
-        },
-        {
-          "ticker": "BRES",
-          "name": "Burney U.S. Equity Select ETF",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "LSE"
-          ]
-        },
-        {
-          "ticker": "BTM",
-          "name": "Bitcoin Depot Inc.",
-          "target_exchange": "NASDAQ",
-          "existing_exchanges": [
-            "ASX"
-          ]
         }
       ],
       "missing_examples": [
+        {
+          "ticker": "AAAP",
+          "name": "Pacer Barings CLO Market Flex ETF",
+          "exchange": "NASDAQ"
+        },
         {
           "ticker": "AACBR",
           "name": "Artius II Acquisition Inc. - Rights",
@@ -2604,11 +2610,6 @@
         {
           "ticker": "AACPW",
           "name": "Apogee Acquisition Corp - Warrant",
-          "exchange": "NASDAQ"
-        },
-        {
-          "ticker": "ABLVW",
-          "name": "Able View Global Inc. - Warrant",
           "exchange": "NASDAQ"
         }
       ]
@@ -3049,10 +3050,10 @@
     },
     {
       "exchange": "NYSE",
-      "official_symbols": 3872,
-      "matched": 2006,
-      "collisions": 503,
-      "missing": 1363,
+      "official_symbols": 3904,
+      "matched": 2024,
+      "collisions": 500,
+      "missing": 1380,
       "collision_examples": [
         {
           "ticker": "ACCS",
@@ -3129,8 +3130,8 @@
           ]
         },
         {
-          "ticker": "AIB",
-          "name": "BlockchAIn Digital Infrastructure, Inc.",
+          "ticker": "AIM",
+          "name": "AIM ImmunoTech Inc.",
           "target_exchange": "NYSE",
           "existing_exchanges": [
             "NYSE MKT"
@@ -3138,6 +3139,11 @@
         }
       ],
       "missing_examples": [
+        {
+          "ticker": "AAC.U",
+          "name": "Ares Acquisition Corporation III Units, each consisting of one Class A ordinary share and one-tenth of one redeemable warrant",
+          "exchange": "NYSE"
+        },
         {
           "ticker": "ABR$D",
           "name": "Arbor Realty Trust 6.375% Series D Cumulative Redeemable Preferred Stock, Liquidation Preference $25.00 per Share",
@@ -3182,20 +3188,15 @@
           "ticker": "ACHR.W",
           "name": "Archer Aviation Inc. Redeemable Warrants, each whole warrant exercisable for one Class A common stock at an exercise price of $11.50",
           "exchange": "NYSE"
-        },
-        {
-          "ticker": "ACP$A",
-          "name": "abrdn Income Credit Strategies Fund 5.250% Series A Perpetual Preferred Stock",
-          "exchange": "NYSE"
         }
       ]
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2651,
-      "matched": 2567,
-      "collisions": 28,
-      "missing": 56,
+      "official_symbols": 2672,
+      "matched": 2548,
+      "collisions": 30,
+      "missing": 94,
       "collision_examples": [
         {
           "ticker": "AIQU",
@@ -3285,8 +3286,18 @@
           "exchange": "NYSE ARCA"
         },
         {
+          "ticker": "ACOM",
+          "name": "Harbor Active Commodity ETF",
+          "exchange": "NYSE ARCA"
+        },
+        {
           "ticker": "ACTS",
           "name": "FIS Tactical Equity ETF",
+          "exchange": "NYSE ARCA"
+        },
+        {
+          "ticker": "ACYQ",
+          "name": "FT Vest Autocallable Barrier & High Income ETF",
           "exchange": "NYSE ARCA"
         },
         {
@@ -3300,43 +3311,33 @@
           "exchange": "NYSE ARCA"
         },
         {
+          "ticker": "AFGR",
+          "name": "First Trust Multi-Manager Large Growth ETF",
+          "exchange": "NYSE ARCA"
+        },
+        {
           "ticker": "AIQD",
           "name": "MicroSectors -3? Short Artificial Intelligence (AI) ETNs",
           "exchange": "NYSE ARCA"
         },
         {
-          "ticker": "BITW",
-          "name": "Common Shares of Beneficial Interest",
+          "ticker": "AMHI",
+          "name": "American Beacon Aberdeen Municipal High Income ETF",
           "exchange": "NYSE ARCA"
         },
         {
-          "ticker": "BTCU",
-          "name": "Direxion Daily Bitcoin Bull 2X ETF",
-          "exchange": "NYSE ARCA"
-        },
-        {
-          "ticker": "CLOO",
-          "name": "NYLI Investment Grade CLO ETF",
-          "exchange": "NYSE ARCA"
-        },
-        {
-          "ticker": "CLUB",
-          "name": "Billionaires Club ETF",
-          "exchange": "NYSE ARCA"
-        },
-        {
-          "ticker": "COPY",
-          "name": "Tweedy, Browne Insider + Value ETF",
+          "ticker": "BD",
+          "name": "Russell Investments Core Plus Bond ETF",
           "exchange": "NYSE ARCA"
         }
       ]
     },
     {
       "exchange": "NYSE MKT",
-      "official_symbols": 313,
-      "matched": 233,
-      "collisions": 22,
-      "missing": 58,
+      "official_symbols": 311,
+      "matched": 228,
+      "collisions": 27,
+      "missing": 56,
       "collision_examples": [
         {
           "ticker": "AEF",
@@ -3346,6 +3347,14 @@
             "ASX",
             "Borsa Italiana",
             "TSXV"
+          ]
+        },
+        {
+          "ticker": "AIB",
+          "name": "AIB Data Centers Inc. Common Stock",
+          "target_exchange": "NYSE MKT",
+          "existing_exchanges": [
+            "NYSE"
           ]
         },
         {
@@ -3372,6 +3381,14 @@
           "existing_exchanges": [
             "NSE_IN",
             "NYSE"
+          ]
+        },
+        {
+          "ticker": "COPR",
+          "name": "Idaho Copper Corporation Common Stock",
+          "target_exchange": "NYSE MKT",
+          "existing_exchanges": [
+            "TSX"
           ]
         },
         {
@@ -3404,22 +3421,6 @@
           "target_exchange": "NYSE MKT",
           "existing_exchanges": [
             "XETRA"
-          ]
-        },
-        {
-          "ticker": "EIM",
-          "name": "Eaton Vance Municipal Bond Fund Common Shares of Beneficial Interest, $.01 par value",
-          "target_exchange": "NYSE MKT",
-          "existing_exchanges": [
-            "ICE_IS"
-          ]
-        },
-        {
-          "ticker": "ERC",
-          "name": "Allspring Multi-Sector Income Fund Common Stock",
-          "target_exchange": "NYSE MKT",
-          "existing_exchanges": [
-            "AMS"
           ]
         }
       ],
@@ -3455,6 +3456,11 @@
           "exchange": "NYSE MKT"
         },
         {
+          "ticker": "COPR.W",
+          "name": "Idaho Copper Corporation Common Stock Purchase Warrant",
+          "exchange": "NYSE MKT"
+        },
+        {
           "ticker": "CRF",
           "name": "Cornerstone Total Return Fund, Inc. (The) Common Stock",
           "exchange": "NYSE MKT"
@@ -3467,11 +3473,6 @@
         {
           "ticker": "ECF$A",
           "name": "Ellsworth Growth and Income Fund Ltd. 5.25% Series A Cumulative Preferred Shares (Liquidation Preference $25.00 per share)",
-          "exchange": "NYSE MKT"
-        },
-        {
-          "ticker": "EONR.W",
-          "name": "EON Resources Inc. Warrants, each whole warrant exercisable for three quarters of one share of Class A Common Stock at an exercise price of $11.50 per whole share",
           "exchange": "NYSE MKT"
         }
       ]
@@ -5125,8 +5126,8 @@
       "exchange": "UPCOM",
       "official_symbols": 830,
       "matched": 2,
-      "collisions": 474,
-      "missing": 354,
+      "collisions": 475,
+      "missing": 353,
       "collision_examples": [
         {
           "ticker": "AAS",
