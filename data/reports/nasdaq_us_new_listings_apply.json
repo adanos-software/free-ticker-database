@@ -1,26 +1,26 @@
 {
   "summary": {
-    "generated_at": "2026-07-02T12:48:09Z",
+    "generated_at": "2026-07-06T11:15:47Z",
     "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
     "supported_asset_types": [
       "Stock"
     ],
-    "new_supported_rows": 3,
+    "new_supported_rows": 4,
     "accepted_rows": 1,
-    "skipped_rows": 2,
+    "skipped_rows": 3,
     "accepted_by_exchange": {
       "NASDAQ": 1
     },
     "skipped_by_reason": {
-      "not_stock_like_name": 2
+      "not_stock_like_name": 3
     }
   },
   "accepted": [
     {
-      "ticker": "GSRV",
-      "name": "GSR V Acquisition Corp. - Class A ordinary shares",
+      "ticker": "NMAD",
+      "name": "Nomad Power Solutions, Inc. - Common Stock",
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "sector": "",
@@ -35,17 +35,25 @@
   ],
   "skipped": [
     {
-      "ticker": "GSRVR",
+      "ticker": "IQMX",
       "exchange": "NASDAQ",
-      "name": "GSR V Acquisition Corp. - Rights",
+      "name": "IQM Quantum Computers Oyj - American Depositary Shares",
       "asset_type": "Stock",
       "source_key": "nasdaq_listed",
       "skip_reason": "not_stock_like_name"
     },
     {
-      "ticker": "MIACU",
+      "ticker": "IQMXW",
       "exchange": "NASDAQ",
-      "name": "Meridian3 Industrials Acquisition Corp - Units",
+      "name": "IQM Quantum Computers Oyj - Warrants to purchase American Depositary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "not_stock_like_name"
+    },
+    {
+      "ticker": "VCRE",
+      "exchange": "NASDAQ",
+      "name": "Vicore Pharma Holding AB - American Depositary Shares",
       "asset_type": "Stock",
       "source_key": "nasdaq_listed",
       "skip_reason": "not_stock_like_name"
