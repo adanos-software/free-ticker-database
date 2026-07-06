@@ -1,9 +1,9 @@
 {
   "summary": {
-    "generated_at": "2026-07-02T12:49:23Z",
-    "rows": 1136,
+    "generated_at": "2026-07-06T11:17:03Z",
+    "rows": 1138,
     "outcome_totals": {
-      "accepted_source_gap": 645,
+      "accepted_source_gap": 647,
       "core_exclusion_candidate": 491
     },
     "class_totals": {
@@ -19,9 +19,9 @@
       "fundlike_stock_sector_gap": 1,
       "inactive_or_legacy_identifier_gap": 19,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 417,
+      "official_identifier_not_exposed_source_gap": 418,
       "official_identifier_reference_unmatched_gap": 49,
-      "official_industry_taxonomy_unavailable_gap": 38,
+      "official_industry_taxonomy_unavailable_gap": 39,
       "official_product_reference_unmatched_category_gap": 20,
       "official_product_taxonomy_unavailable_gap": 63,
       "otc_sector_source_gap": 43,
@@ -29,9 +29,9 @@
     },
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 96,
-      "missing_isin_primary:accepted_source_gap": 468,
+      "missing_isin_primary:accepted_source_gap": 469,
       "missing_isin_primary:core_exclusion_candidate": 478,
-      "missing_sector_stock:accepted_source_gap": 81,
+      "missing_sector_stock:accepted_source_gap": 82,
       "missing_sector_stock:core_exclusion_candidate": 13
     },
     "policy": {
@@ -4570,6 +4570,23 @@
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "name": "NIP Group Inc.",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "source_of_truth_outcome": "accepted_source_gap",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "leave_blank_until_source_available",
+      "review_needed": "true",
+      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
+      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "NASDAQ::NMAD",
+      "ticker": "NMAD",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Nomad Power Solutions, Inc. - Common Stock",
       "gap_class": "official_identifier_not_exposed_source_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
@@ -10095,6 +10112,23 @@
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "name": "Kardigan, Inc. - Common Stock",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "source_of_truth_outcome": "accepted_source_gap",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "leave_blank_until_source_available",
+      "review_needed": "true",
+      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
+      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "NASDAQ::NMAD",
+      "ticker": "NMAD",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Nomad Power Solutions, Inc. - Common Stock",
       "gap_class": "official_industry_taxonomy_unavailable_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",

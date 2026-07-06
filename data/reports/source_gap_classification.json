@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-07-02T12:49:22Z",
-    "rows": 1136,
+    "generated_at": "2026-07-06T11:17:02Z",
+    "rows": 1138,
     "field_totals": {
       "missing_etf_category": 96,
-      "missing_isin_primary": 946,
-      "missing_sector_stock": 94
+      "missing_isin_primary": 947,
+      "missing_sector_stock": 95
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 43,
@@ -20,9 +20,9 @@
       "fundlike_stock_sector_gap": 1,
       "inactive_or_legacy_identifier_gap": 19,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 417,
+      "official_identifier_not_exposed_source_gap": 418,
       "official_identifier_reference_unmatched_gap": 49,
-      "official_industry_taxonomy_unavailable_gap": 38,
+      "official_industry_taxonomy_unavailable_gap": 39,
       "official_product_reference_unmatched_category_gap": 20,
       "official_product_taxonomy_unavailable_gap": 63,
       "otc_sector_source_gap": 43,
@@ -41,11 +41,11 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 300,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 19,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 417,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 418,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 49,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 1,
       "missing_sector_stock:fundlike_stock_sector_gap": 1,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 38,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 39,
       "missing_sector_stock:otc_sector_source_gap": 43,
       "missing_sector_stock:shell_or_cpc_sector_gap": 11
     },
@@ -95,7 +95,7 @@
       "missing_isin_primary": [
         {
           "exchange": "NASDAQ",
-          "rows": 194
+          "rows": 195
         },
         {
           "exchange": "ASX",
@@ -141,7 +141,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 17
+          "rows": 18
         },
         {
           "exchange": "NYSE",
@@ -182,7 +182,7 @@
         "field": "missing_isin_primary",
         "gap_class": "official_identifier_not_exposed_source_gap",
         "exchange": "NASDAQ",
-        "rows": 159,
+        "rows": 160,
         "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
         "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
       },
@@ -7839,6 +7839,23 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NASDAQ::NIPG;exchange=NASDAQ;ticker=NIPG;asset_type=Stock;field=missing_isin_primary;target_field=isin",
+      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
+    },
+    {
+      "field": "missing_isin_primary",
+      "target_field": "isin",
+      "listing_key": "NASDAQ::NMAD",
+      "ticker": "NMAD",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Nomad Power Solutions, Inc. - Common Stock",
+      "gap_class": "official_identifier_not_exposed_source_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
+      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
+      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
+      "source_gap_context": "listing_key=NASDAQ::NMAD;exchange=NASDAQ;ticker=NMAD;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -18687,6 +18704,23 @@
       "source_gap_context": "listing_key=NASDAQ::MCAH;exchange=NASDAQ;ticker=MCAH;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=shell_or_cpc_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=shell_or_cpc_sector_gap"
+    },
+    {
+      "field": "missing_sector_stock",
+      "target_field": "stock_sector",
+      "listing_key": "NASDAQ::NMAD",
+      "ticker": "NMAD",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "name": "Nomad Power Solutions, Inc. - Common Stock",
+      "gap_class": "official_industry_taxonomy_unavailable_gap",
+      "review_needed": "true",
+      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
+      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
+      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
+      "source_gap_context": "listing_key=NASDAQ::NMAD;exchange=NASDAQ;ticker=NMAD;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
+      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
+      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
     {
       "field": "missing_sector_stock",

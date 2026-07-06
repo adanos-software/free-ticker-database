@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-07-02T12:49:46Z",
-    "rows": 74556,
+    "generated_at": "2026-07-06T11:17:27Z",
+    "rows": 74557,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,12 +14,12 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 67633,
-      "source_gap": 6848,
+      "pass": 67632,
+      "source_gap": 6850,
       "warn": 75
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4778,
+      "identifier_enriched": 4779,
       "official_reference": 68597,
       "scoped_source_gap": 328,
       "valid_isin": 853
@@ -27,14 +27,14 @@
     "severity_counts": {
       "high": 67,
       "medium": 8,
-      "source_gap": 7066
+      "source_gap": 7069
     },
     "issue_counts": {
-      "official_reference_gap": 5674,
-      "expected_missing_primary_isin": 946,
+      "official_reference_gap": 5675,
+      "expected_missing_primary_isin": 947,
       "venue_missing_official_source": 285,
       "missing_etf_category": 88,
-      "missing_stock_sector": 73,
+      "missing_stock_sector": 74,
       "country_isin_mismatch": 65,
       "official_name_mismatch": 8,
       "official_isin_mismatch": 2
@@ -52,14 +52,14 @@
         "pass": 1262
       },
       {
-        "exchange": "Borsa Italiana",
-        "source_gap": 277
-      },
-      {
         "exchange": "NASDAQ",
         "pass": 4401,
-        "source_gap": 275,
+        "source_gap": 276,
         "warn": 1
+      },
+      {
+        "exchange": "Borsa Italiana",
+        "source_gap": 277
       },
       {
         "exchange": "TSX",
@@ -110,8 +110,8 @@
       },
       {
         "exchange": "BATS",
-        "pass": 1137,
-        "source_gap": 104
+        "pass": 1136,
+        "source_gap": 105
       },
       {
         "exchange": "XETRA",
@@ -4428,6 +4428,24 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "BATS::AAUM",
+      "ticker": "AAUM",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "BATS",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
@@ -18357,24 +18375,6 @@
           "field": "isin",
           "value": "",
           "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BMOOF",
-      "ticker": "BMOOF",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     }
