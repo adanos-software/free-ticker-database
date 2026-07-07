@@ -1428,7 +1428,7 @@ def render_markdown(report: dict[str, Any]) -> str:
             "## Exchange Coverage",
             "",
             "| Exchange | Venue Status | Tickers | ISIN | Sector | CIK | FIGI | LEI | Masterfile Symbols | Matches | Collisions | Missing | Recall % | Recall Gap % | Collision-Adjusted Recall % | Collision-Adjusted Missing | Recall Exception | Verified on Covered |",
-            "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---:|---|---|",
+            "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---:|",
         ]
     )
     for row in report["exchange_coverage"]:

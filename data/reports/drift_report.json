@@ -1,12 +1,13 @@
 {
-  "built_at": "2026-07-07T12:34:38Z",
+  "built_at": "2026-07-07T13:28:28Z",
   "drift_detected": false,
-  "generated_at": "2026-07-07T12:34:47Z",
+  "generated_at": "2026-07-07T13:28:30Z",
   "manual_review_count": 10,
   "manual_review_report": "data/reports/pending_renames_manual_review.md",
   "manual_review_sample": [
     {
       "apply_status": "manual_isin_not_proven_unchanged",
+      "apply_status_source": "available",
       "blocker_reason": "manual: official active new-symbol evidence exists, but unchanged ISIN/identity is not proven and the old symbol is still present in an official source",
       "effective_date": "2026-07-02",
       "exchange_scope_status": "matches_within_source_scope",
@@ -18,10 +19,12 @@
       "old_symbol": "RAAQ",
       "source_exchange_hint": "US_LISTED",
       "symbol_change_workflow_queue": "review_verified_rename_or_delisting",
+      "triage_source": "symbol_changes_review",
       "triage_status": "blocked_or_manual"
     },
     {
       "apply_status": "manual_isin_not_proven_unchanged",
+      "apply_status_source": "available",
       "blocker_reason": "manual: official active new-symbol evidence exists, but unchanged ISIN/identity is not proven and the old symbol is still present in an official source",
       "effective_date": "2026-07-01",
       "exchange_scope_status": "matches_within_source_scope",
@@ -33,10 +36,12 @@
       "old_symbol": "SSSS",
       "source_exchange_hint": "US_LISTED",
       "symbol_change_workflow_queue": "review_verified_rename_or_delisting",
+      "triage_source": "symbol_changes_review",
       "triage_status": "blocked_or_manual"
     },
     {
       "apply_status": "manual_non_us_or_unscoped_source",
+      "apply_status_source": "available",
       "blocker_reason": "blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: ASX::BTM",
       "effective_date": "2026-05-22",
       "exchange_scope_status": "global_symbol_collision_outside_source_scope",
@@ -48,10 +53,12 @@
       "old_symbol": "BTM",
       "source_exchange_hint": "OTC",
       "symbol_change_workflow_queue": "blocked_out_of_scope_symbol_collision",
+      "triage_source": "symbol_changes_review",
       "triage_status": "blocked_or_manual"
     },
     {
       "apply_status": "manual_non_us_or_unscoped_source",
+      "apply_status_source": "available",
       "blocker_reason": "blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: NASDAQ::QH",
       "effective_date": "2026-04-02",
       "exchange_scope_status": "global_symbol_collision_outside_source_scope",
@@ -63,10 +70,12 @@
       "old_symbol": "QH",
       "source_exchange_hint": "OTC",
       "symbol_change_workflow_queue": "blocked_out_of_scope_symbol_collision",
+      "triage_source": "symbol_changes_review",
       "triage_status": "blocked_or_manual"
     },
     {
       "apply_status": "manual_non_us_or_unscoped_source",
+      "apply_status_source": "available",
       "blocker_reason": "blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: NYSE ARCA::KBFR",
       "effective_date": "2026-02-23",
       "exchange_scope_status": "global_symbol_collision_outside_source_scope",
@@ -78,10 +87,12 @@
       "old_symbol": "KBFR",
       "source_exchange_hint": "OTC",
       "symbol_change_workflow_queue": "blocked_out_of_scope_symbol_collision",
+      "triage_source": "symbol_changes_review",
       "triage_status": "blocked_or_manual"
     },
     {
       "apply_status": "manual_non_us_or_unscoped_source",
+      "apply_status_source": "available",
       "blocker_reason": "blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: Borsa Italiana::ABP",
       "effective_date": "2026-02-20",
       "exchange_scope_status": "global_symbol_collision_outside_source_scope",
@@ -93,10 +104,12 @@
       "old_symbol": "ABP",
       "source_exchange_hint": "OTC",
       "symbol_change_workflow_queue": "blocked_out_of_scope_symbol_collision",
+      "triage_source": "symbol_changes_review",
       "triage_status": "blocked_or_manual"
     },
     {
       "apply_status": "manual_non_us_or_unscoped_source",
+      "apply_status_source": "available",
       "blocker_reason": "blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: LSE::OPT",
       "effective_date": "2025-11-20",
       "exchange_scope_status": "global_symbol_collision_outside_source_scope",
@@ -108,10 +121,12 @@
       "old_symbol": "OPT",
       "source_exchange_hint": "OTC",
       "symbol_change_workflow_queue": "blocked_out_of_scope_symbol_collision",
+      "triage_source": "symbol_changes_review",
       "triage_status": "blocked_or_manual"
     },
     {
       "apply_status": "manual_non_us_or_unscoped_source",
+      "apply_status_source": "available",
       "blocker_reason": "blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: ASX::PET|LSE::PET",
       "effective_date": "2025-07-29",
       "exchange_scope_status": "global_symbol_collision_outside_source_scope",
@@ -123,10 +138,12 @@
       "old_symbol": "PET",
       "source_exchange_hint": "OTC",
       "symbol_change_workflow_queue": "blocked_out_of_scope_symbol_collision",
+      "triage_source": "symbol_changes_review",
       "triage_status": "blocked_or_manual"
     },
     {
       "apply_status": "manual_non_us_or_unscoped_source",
+      "apply_status_source": "available",
       "blocker_reason": "blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: LSE::SUP",
       "effective_date": "2025-06-25",
       "exchange_scope_status": "global_symbol_collision_outside_source_scope",
@@ -138,10 +155,12 @@
       "old_symbol": "SUP",
       "source_exchange_hint": "OTC",
       "symbol_change_workflow_queue": "blocked_out_of_scope_symbol_collision",
+      "triage_source": "symbol_changes_review",
       "triage_status": "blocked_or_manual"
     },
     {
       "apply_status": "manual_non_us_or_unscoped_source",
+      "apply_status_source": "available",
       "blocker_reason": "manual: source exchange scope is not mapped to a safe listing-keyed apply path",
       "effective_date": "2025-05-15",
       "exchange_scope_status": "unscoped_source_hint",
@@ -153,6 +172,7 @@
       "old_symbol": "WW",
       "source_exchange_hint": "",
       "symbol_change_workflow_queue": "blocked_missing_source_scope_mapping",
+      "triage_source": "symbol_changes_review",
       "triage_status": "blocked_or_manual"
     }
   ],
@@ -165,7 +185,14 @@
     "missing_stock_sector": 75,
     "source_gap_rows": 6625
   },
+  "rename_triage_apply_status_source_totals": {
+    "available": 10
+  },
   "rename_triage_count": 10,
+  "rename_triage_fallback": false,
+  "rename_triage_source_totals": {
+    "symbol_changes_review": 10
+  },
   "stale_threshold_days": 45.0,
   "staleness_days": 0.0
 }

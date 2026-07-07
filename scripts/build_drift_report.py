@@ -52,6 +52,7 @@ RENAME_REVIEW_QUEUES = {
     "review_duplicate_or_cross_listing",
 }
 APPLY_READY_STATUSES = {"apply"}
+PENDING_TRIAGE_STATUSES = {"apply_ready", "fallback_pending"}
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -83,13 +84,10 @@ def current_symbols() -> set[str]:
         return {r["ticker"].strip().upper() for r in csv.DictReader(handle)}
 
 
-def apply_status_lookup() -> dict[tuple[str, str, str], str]:
+def apply_status_lookup() -> tuple[dict[tuple[str, str, str], str], str]:
     if not SYMBOL_CHANGES_APPLY_JSON.exists():
-        return {}
-    try:
-        data = json.loads(SYMBOL_CHANGES_APPLY_JSON.read_text(encoding="utf-8"))
-    except json.JSONDecodeError:
-        return {}
+        return {}, "missing"
+    data = json.loads(SYMBOL_CHANGES_APPLY_JSON.read_text(encoding="utf-8"))
     lookup: dict[tuple[str, str, str], str] = {}
     for section in ("accepted", "blocked"):
         for row in data.get(section, []):
@@ -100,7 +98,7 @@ def apply_status_lookup() -> dict[tuple[str, str, str], str]:
             )
             if key[1] and key[2]:
                 lookup[key] = "apply" if section == "accepted" else row.get("status", "")
-    return lookup
+    return lookup, "available"
 
 
 def blocker_reason(row: dict[str, str], apply_status: str) -> str:
@@ -139,8 +137,6 @@ def blocker_reason(row: dict[str, str], apply_status: str) -> str:
         return "blocked: secondary feed event has no source exchange mapping"
     if queue == "review_duplicate_or_cross_listing":
         return "manual: both old and new symbols are present in source scope; duplicate/cross-listing state must be resolved first"
-    if queue == "audit_already_reflected":
-        return "resolved: new symbol is already reflected; no canonical change authorized"
     return row.get("source_gate", "") or "manual review required before any canonical symbol change"
 
 
@@ -154,9 +150,11 @@ def rename_triage_rows() -> list[dict[str, str]]:
     """
     symbols = current_symbols()
     review_rows = read_csv(SYMBOL_CHANGES_REVIEW_CSV)
+    triage_source = "symbol_changes_review"
     if not review_rows:
         review_rows = read_csv(SYMBOL_CHANGES_CSV)
-    statuses = apply_status_lookup()
+        triage_source = "symbol_changes_csv_fallback"
+    statuses, apply_status_source = apply_status_lookup()
     triage: list[dict[str, str]] = []
     for row in review_rows:
         old = (row.get("old_symbol") or "").strip().upper()
@@ -168,7 +166,12 @@ def rename_triage_rows() -> list[dict[str, str]]:
             continue
         key = ((row.get("effective_date") or "").strip(), old, new)
         apply_status = statuses.get(key, "")
-        triage_status = "apply_ready" if apply_status in APPLY_READY_STATUSES else "blocked_or_manual"
+        if apply_status in APPLY_READY_STATUSES:
+            triage_status = "apply_ready"
+        elif triage_source != "symbol_changes_review" or apply_status_source == "missing":
+            triage_status = "fallback_pending"
+        else:
+            triage_status = "blocked_or_manual"
         triage.append({
             "effective_date": row.get("effective_date", ""),
             "old_symbol": old,
@@ -181,13 +184,16 @@ def rename_triage_rows() -> list[dict[str, str]]:
             "old_listing_keys": row.get("old_listing_keys", ""),
             "new_listing_keys": row.get("new_listing_keys", ""),
             "apply_status": apply_status,
+            "apply_status_source": apply_status_source,
+            "triage_source": triage_source,
             "triage_status": triage_status,
             "blocker_reason": blocker_reason(row, apply_status),
         })
     return triage
 
 
-def pending_renames() -> list[dict[str, str]]:
+def pending_renames(rows: list[dict[str, str]] | None = None) -> list[dict[str, str]]:
+    rows = rename_triage_rows() if rows is None else rows
     return [
         {
             "old_symbol": row["old_symbol"],
@@ -196,8 +202,8 @@ def pending_renames() -> list[dict[str, str]]:
             "effective_date": row["effective_date"],
             "blocker_reason": row["blocker_reason"],
         }
-        for row in rename_triage_rows()
-        if row["triage_status"] == "apply_ready"
+        for row in rows
+        if row["triage_status"] in PENDING_TRIAGE_STATUSES
     ]
 
 
@@ -236,6 +242,10 @@ def build_markdown(s: dict) -> str:
         L.append(f"- {r['old_symbol']} -> {r['new_symbol']} ({r['new_company_name']}, {r['effective_date']})")
     if s["pending_renames_count"] > len(s["pending_renames_sample"]):
         L.append(f"- ... and {s['pending_renames_count'] - len(s['pending_renames_sample'])} more")
+    if s.get("rename_triage_fallback"):
+        L.append("- Rename triage fallback is active; raw feed or missing apply-artifact rows count as pending drift.")
+    if s.get("rename_triage_source_totals"):
+        L.append(f"- Triage sources: {s['rename_triage_source_totals']}")
     manual_review_count = s.get("manual_review_count", 0)
     L += ["", f"## Blocked/manual rename review rows: {manual_review_count}"]
     for r in s.get("manual_review_sample", []):
@@ -244,7 +254,7 @@ def build_markdown(s: dict) -> str:
             f"{r['effective_date']}): {r['blocker_reason']}"
         )
     if manual_review_count > len(s.get("manual_review_sample", [])):
-        L.append(f"- ... and {manual_review_count - len(s['manual_review_sample'])} more")
+        L.append(f"- ... and {manual_review_count - len(s.get('manual_review_sample', []))} more")
     L += ["", "## Quality indicators (release-gate info counts)"]
     for k, v in sorted(s["quality_indicators"].items()):
         L.append(f"- {k}: {v}")
@@ -266,10 +276,12 @@ def write_manual_review_artifacts(rows: list[dict[str, str]], *, generated_at: s
         "old_listing_keys",
         "new_listing_keys",
         "apply_status",
+        "apply_status_source",
+        "triage_source",
         "triage_status",
         "blocker_reason",
     ]
-    manual_rows = [row for row in rows if row["triage_status"] != "apply_ready"]
+    manual_rows = [row for row in rows if row["triage_status"] == "blocked_or_manual"]
     payload = {
         "generated_at": generated_at,
         "rows": len(manual_rows),
@@ -317,8 +329,8 @@ def main(argv: list[str] | None = None) -> None:
     built = dataset_built_at()
     stale = staleness_days(built, now=now)
     triage_rows = rename_triage_rows()
-    pend = pending_renames()
-    manual_rows = [row for row in triage_rows if row["triage_status"] != "apply_ready"]
+    pend = pending_renames(triage_rows)
+    manual_rows = [row for row in triage_rows if row["triage_status"] == "blocked_or_manual"]
     quality = quality_indicators()
 
     drift_detected = bool(pend) or (stale is not None and stale > args.stale_days)
@@ -332,6 +344,15 @@ def main(argv: list[str] | None = None) -> None:
         "pending_renames_count": len(pend),
         "pending_renames_sample": pend[:SAMPLE_CAP],
         "rename_triage_count": len(triage_rows),
+        "rename_triage_fallback": any(row["triage_status"] == "fallback_pending" for row in triage_rows),
+        "rename_triage_source_totals": {
+            key: sum(row.get("triage_source") == key for row in triage_rows)
+            for key in sorted({row.get("triage_source", "") for row in triage_rows})
+        },
+        "rename_triage_apply_status_source_totals": {
+            key: sum(row.get("apply_status_source") == key for row in triage_rows)
+            for key in sorted({row.get("apply_status_source", "") for row in triage_rows})
+        },
         "manual_review_count": len(manual_rows),
         "manual_review_sample": manual_rows[:SAMPLE_CAP],
         "manual_review_report": str(MANUAL_REVIEW_MD.relative_to(ROOT)),

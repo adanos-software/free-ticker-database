@@ -29,6 +29,7 @@ DEFAULT_MD_OUT = REPORTS_DIR / "source_of_truth_decisions.md"
 
 OFFICIAL_FILL_REQUIRED_CLASSES = {
     "official_identifier_source_gap",
+    "official_reference_unmatched_source_gap",
     "exchange_industry_source_gap",
     "generic_etf_category_source_gap",
 }
@@ -55,7 +56,6 @@ ACCEPTED_SOURCE_GAP_CLASSES = {
     "official_product_taxonomy_unavailable_gap",
     "official_reference_source_gap",
     "official_reference_symbol_collision_gap",
-    "official_reference_unmatched_source_gap",
     "otc_sector_source_gap",
 }
 

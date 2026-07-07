@@ -1,10 +1,11 @@
 # Drift / freshness report
 
-Generated: 2026-07-07T12:34:47Z
-Dataset built_at: 2026-07-07T12:34:38Z (0.0 days ago; threshold 45.0)
+Generated: 2026-07-07T13:28:30Z
+Dataset built_at: 2026-07-07T13:28:28Z (0.0 days ago; threshold 45.0)
 **drift_detected: False**
 
 ## Pending renames (feed-detected, not yet applied): 0
+- Triage sources: {'symbol_changes_review': 10}
 
 ## Blocked/manual rename review rows: 10
 - RAAQ -> IQMX (Iqm Quantum Computers Oyj, 2026-07-02): manual: official active new-symbol evidence exists, but unchanged ISIN/identity is not proven and the old symbol is still present in an official source

@@ -6,6 +6,7 @@ from pathlib import Path
 from scripts.validate_database import (
     build_validation_report,
     parse_adanos_aliases,
+    source_gap_expected_keys,
     write_json,
     write_markdown,
 )
@@ -219,6 +220,21 @@ def test_validation_report_gates_source_gap_classifications():
     assert gates["source_of_truth_decision_duplicate_keys"]["actual"] == 0
     assert gates["source_of_truth_decision_gap_mismatch"]["actual"] == 0
     assert gates["source_of_truth_decision_class_mismatch"]["actual"] == 0
+
+
+def test_source_gap_expected_keys_include_official_reference_gaps():
+    row = ticker("GAP")
+
+    assert source_gap_expected_keys(
+        tickers=[row],
+        core_listings=[core_listing(row)],
+        entry_quality=[
+            {
+                "listing_key": "NASDAQ::GAP",
+                "issue_types": "official_reference_gap",
+            }
+        ],
+    ) == {"official_reference_gap|NASDAQ::GAP"}
 
 
 def test_validation_report_fails_stale_or_missing_source_gap_classifications():
