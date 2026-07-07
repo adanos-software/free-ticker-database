@@ -17,6 +17,7 @@ from scripts.build_coverage_report import (
     build_source_report,
     freshness_review_context_for,
     freshness_review_signal_rows,
+    find_latest_verification_run,
     load_verification_report,
     render_markdown,
     refresh_gate_context_for,
@@ -994,3 +995,18 @@ def test_load_verification_report_synthesizes_summary_without_top_level_file(tmp
         "finding_examples": [],
     }
     assert report["generated_at"]
+
+
+def test_find_latest_verification_run_accepts_base_output_dir(tmp_path):
+    (tmp_path / "chunk-01-of-01.summary.json").write_text(
+        '{"items": 1, "status_counts": {"verified": 1}}',
+        encoding="utf-8",
+    )
+
+    assert find_latest_verification_run(tmp_path) == tmp_path
+
+
+def test_load_verification_report_without_run_has_generated_at():
+    report = load_verification_report(None)
+
+    assert report == {"summary": {}, "exchange_rows": [], "rows": [], "run_dir": "", "generated_at": ""}

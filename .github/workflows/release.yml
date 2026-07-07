@@ -30,6 +30,10 @@ jobs:
         run: |
           python scripts/rebuild_dataset.py
           python scripts/enrich_global_identifiers.py
+          for i in $(seq 1 8); do
+            python scripts/verify_stock_masterfiles.py --asset-type Stock --chunk-index "$i" --chunk-count 8 --output-dir data/stock_verification/release
+            python scripts/verify_stock_masterfiles.py --asset-type ETF --chunk-index "$i" --chunk-count 8 --output-dir data/etf_verification/release
+          done
           python scripts/build_coverage_report.py
           python scripts/build_source_inventory.py
           python scripts/build_completion_backlog.py

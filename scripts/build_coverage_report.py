@@ -565,6 +565,8 @@ def build_global_summary(
 def find_latest_verification_run(base_dir: Path = STOCK_VERIFICATION_DIR) -> Path | None:
     if not base_dir.exists():
         return None
+    if (base_dir / "summary.json").exists() or list(base_dir.glob("chunk-*-of-*.summary.json")):
+        return base_dir
     candidates = [
         path
         for path in base_dir.iterdir()
@@ -577,7 +579,7 @@ def find_latest_verification_run(base_dir: Path = STOCK_VERIFICATION_DIR) -> Pat
 
 def load_verification_report(run_dir: Path | None) -> dict[str, Any]:
     if run_dir is None:
-        return {"summary": {}, "exchange_rows": [], "rows": [], "run_dir": ""}
+        return {"summary": {}, "exchange_rows": [], "rows": [], "run_dir": "", "generated_at": ""}
 
     summary = load_json(run_dir / "summary.json")
     rows: list[dict[str, Any]] = []
