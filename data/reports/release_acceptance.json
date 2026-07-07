@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-07-07T08:05:23Z",
+    "generated_at": "2026-07-07T08:40:39Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -242,13 +242,13 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-07-07T08:05:23Z",
+      "release_generated_at": "2026-07-07T08:40:39Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-07-07T08:05:21Z"
+          "generated_at": "2026-07-07T08:40:16Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
@@ -493,32 +493,32 @@
         "m3_correctness_campaigns": {
           "path": "data/reports/m3_correctness_campaigns.json",
           "exists": true,
-          "generated_at": "2026-07-07T08:05:18Z"
+          "generated_at": "2026-07-07T08:40:38Z"
         },
         "m3_sector_category_campaign": {
           "path": "data/reports/m3_sector_category_campaign.json",
           "exists": true,
-          "generated_at": "2026-07-07T08:05:18Z"
+          "generated_at": "2026-07-07T08:40:38Z"
         },
         "m3_name_freshness_campaign": {
           "path": "data/reports/m3_name_freshness_campaign.json",
           "exists": true,
-          "generated_at": "2026-07-07T08:05:18Z"
+          "generated_at": "2026-07-07T08:40:38Z"
         },
         "m3_identity_residual_campaign": {
           "path": "data/reports/m3_identity_residual_campaign.json",
           "exists": true,
-          "generated_at": "2026-07-07T08:05:18Z"
+          "generated_at": "2026-07-07T08:40:38Z"
         },
         "m3_non_equity_leakage_guard": {
           "path": "data/reports/m3_non_equity_leakage_guard.json",
           "exists": true,
-          "generated_at": "2026-07-07T08:05:18Z"
+          "generated_at": "2026-07-07T08:40:38Z"
         },
         "m3_correctness_audit": {
           "path": "data/reports/m3_correctness_audit.json",
           "exists": true,
-          "generated_at": "2026-07-07T08:05:18Z"
+          "generated_at": "2026-07-07T08:40:38Z"
         }
       },
       "missing_files": [],
@@ -624,7 +624,7 @@
         "m3_sector_category_campaign": 6748,
         "m3_name_freshness_campaign": 300,
         "m3_identity_residual_campaign": 1261,
-        "m3_non_equity_leakage_guard": 222,
+        "m3_non_equity_leakage_guard": 227,
         "m3_correctness_audit": 4
       },
       "required_campaigns": [

@@ -29,6 +29,18 @@ def test_guard_blocks_known_non_common_stock_name_classes() -> None:
         )
 
 
+def test_guard_blocks_unit_names_even_when_name_mentions_ordinary_shares() -> None:
+    result = classify_non_equity_leakage(
+        stock_row(
+            ticker="SPACU",
+            name="Example Acquisition Corp Units, each consisting of one Class A ordinary share and one warrant",
+        )
+    )
+
+    assert result["guard_decision"] == "blocked_non_common_stock"
+    assert result["leakage_class"] == "unit_name_pattern"
+
+
 def test_guard_blocks_official_security_type_and_cfi_evidence() -> None:
     preferred = classify_non_equity_leakage(stock_row(securityType="Preferred Stock"))
     debt = classify_non_equity_leakage(stock_row(cfi="DBFUFR"))

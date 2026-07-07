@@ -9,6 +9,11 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+try:
+    from scripts.build_m3_correctness_campaigns import build_payloads as build_m3_correctness_campaign_payloads
+except ModuleNotFoundError:  # pragma: no cover - script execution path
+    from build_m3_correctness_campaigns import build_payloads as build_m3_correctness_campaign_payloads
+
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORTS_DIR = ROOT / "data" / "reports"
@@ -3308,6 +3313,10 @@ M3_REQUIRED_AUDIT_BLOCKS = {
     "after_c5_non_equity_guard",
 }
 M3_NO_99_CLAIM = "not_claimed_99_percent_without_external_stratified_audit"
+
+
+def refresh_m3_correctness_campaign_reports() -> dict[str, Any]:
+    return build_m3_correctness_campaign_payloads()
 
 
 def report_row_count(report: dict[str, Any]) -> int:
@@ -18356,6 +18365,7 @@ def evaluate_source_inventory_gap_gate(report: dict[str, Any]) -> dict[str, Any]
 
 
 def build_payload() -> dict[str, Any]:
+    refresh_m3_correctness_campaign_reports()
     generated_at = utc_now_iso()
     validation = load_json(REPORTS_DIR / "validation_report.json")
     entry_quality_gate = load_json(REPORTS_DIR / "entry_quality_gate.json")

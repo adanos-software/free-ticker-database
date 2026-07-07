@@ -1,6 +1,6 @@
 # PR Review Summary
 
-Generated: `2026-05-31T04:05:02Z`
+Generated: `2026-07-07T08:41:07Z`
 
 This PR improves the ticker database through source-gated review workflows, refreshed official masterfile evidence, and release acceptance checks. It does not authorize guessed ISINs, sectors, ETF categories, names, listings, or symbol changes.
 
@@ -22,14 +22,14 @@ This PR improves the ticker database through source-gated review workflows, refr
 
 | Metric | Value |
 |---|---:|
-| Tickers | 61,466 |
-| Listing keys | 71,043 |
-| Official masterfile symbols | 79,377 |
-| Official masterfile matches | 51,284 |
-| Official masterfile collisions queued | 11,144 |
-| Official masterfile missing queued | 16,949 |
-| Source gaps | 3,548 |
-| Entry-quality warnings | 222 |
+| Tickers | 63,161 |
+| Listing keys | 74,557 |
+| Official masterfile symbols | 79,160 |
+| Official masterfile matches | 53,162 |
+| Official masterfile collisions queued | 11,262 |
+| Official masterfile missing queued | 14,736 |
+| Source gaps | 1,138 |
+| Entry-quality warnings | 75 |
 | Quarantine rows | 0 |
 
 ## Acceptance
@@ -39,34 +39,58 @@ This PR improves the ticker database through source-gated review workflows, refr
 | `python -m pytest tests/ -q` | run before release; not captured by generated report JSON |
 | `python scripts/check_entry_quality_gate.py` | passed; `unexpected_warn_count=0`, `quarantine_count=0` |
 | `python scripts/validate_database.py` | passed; `failed_error_gates=0` |
-| `python scripts/build_release_acceptance_report.py` | passed; `41/41` |
+| `python scripts/build_release_acceptance_report.py` | passed; `61/61` |
 | CRLF-aware `git diff --check` | run before release; not captured by generated report JSON |
 
 ## Freshness
 
 | Metric | Value |
 |---|---:|
-| Fresh sources | 0 |
-| Old sources | 93 |
-| Remaining old P1 exchange-directory sources | 1 |
+| Fresh sources | 2 |
+| Old sources | 134 |
+| Remaining old P1 exchange-directory sources | 39 |
 
 Remaining P1 exchange-directory refresh work:
 
-- `bme_security_prices_directory`
+- `otc_markets_stock_screener`
+- `lse_price_explorer`
+- `sec_company_tickers_exchange`
+- `bse_india_scrips`
+- `deutsche_boerse_xetra_all_tradable_equities`
+- `jpx_listed_issues`
+- `euronext_equities`
+- `hkex_securities_list`
+- `nse_india_securities_available`
+- `krx_listed_companies`
+- `b3_instruments_equities`
+- `krx_etf_finder`
+- `twse_listed_companies`
+- `idx_company_profiles`
+- `set_stock_search`
+- `upcom_registered_securities`
+- `sgx_securities_prices`
+- `psx_dps_symbols`
+- `bist_kap_mkk_listed_securities`
+- `cboe_canada_listing_directory`
+- `tadawul_main_market_watch`
+- `pse_listed_company_directory`
+- `bvb_shares_directory`
+- `cse_lk_company_info_summary`
+- `cse_lk_all_security_code`
 
 ## Review Backlog
 
 | Campaign | Rows | Status |
 |---|---:|---|
-| B3 official coverage, ISIN and sector residuals | 286 | partially_improved_with_residual_source_gaps |
-| OTC scope review | 11,202 | scoped_as_extended_with_source_gaps_documented |
+| B3 official coverage, ISIN and sector residuals | 393 | partially_improved_with_residual_source_gaps |
+| OTC scope review | 11,078 | scoped_as_extended_with_source_gaps_documented |
 | Canada ISIN/FIGI review | 525 | figi_queue_drained_remaining_isin_first_gaps |
 | ASX ETF/ISIN residuals | 114 | official_probe_reviewed_residuals_documented |
 | Weak sector venue residuals | 670 | venue_specific_review_queue_with_safe_ngx_apply |
-| Masterfile collision identity review | 11,107 | listing_keyed_review_queue_ready_no_symbol_only_additions |
-| Symbol-change workflow | 271 | source_scope_aware_review_queue |
-| OHLCV plausibility sampling | 366 | sampling_queue_enabled_plausibility_only |
-| Freshness and reporting | 4,213 | global_and_source_freshness_visible |
+| Masterfile collision identity review | 11,176 | listing_keyed_review_queue_ready_no_symbol_only_additions |
+| Symbol-change workflow | 292 | source_scope_aware_review_queue |
+| OHLCV plausibility sampling | 360 | sampling_queue_enabled_plausibility_only |
+| Freshness and reporting | 1,803 | global_and_source_freshness_visible |
 | Before/after delta baseline | 0 | baseline_snapshot_available_for_future_campaign_deltas |
 
 ## Primary Review Files

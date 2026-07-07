@@ -1,6 +1,9 @@
 import json
 import os
 
+import pytest
+
+import scripts.build_release_acceptance_report as acceptance_report
 from scripts.build_release_acceptance_report import (
     EXPECTED_BASELINE_SOURCE_FILES,
     EXPECTED_CAMPAIGN_SOURCE_FILES,
@@ -253,6 +256,24 @@ def test_evaluate_m3_correctness_campaigns_gate_requires_campaigns_audits_and_no
     assert result["passed"] is True
     assert result["missing_campaigns"] == []
     assert result["missing_audit_blocks"] == []
+
+
+def test_build_payload_refreshes_m3_reports_before_loading_source_reports(monkeypatch) -> None:
+    calls = []
+
+    def fake_refresh() -> dict[str, object]:
+        calls.append("refresh_m3")
+        return {"summary": {}}
+
+    def fake_load_json(path) -> dict[str, object]:
+        assert calls == ["refresh_m3"]
+        raise RuntimeError(f"stopped after refresh before loading {path}")
+
+    monkeypatch.setattr(acceptance_report, "refresh_m3_correctness_campaign_reports", fake_refresh)
+    monkeypatch.setattr(acceptance_report, "load_json", fake_load_json)
+
+    with pytest.raises(RuntimeError, match="stopped after refresh"):
+        acceptance_report.build_payload()
 
 
 def test_evaluate_deepseek_advisory_integrity_accepts_drained_advisory_reports(tmp_path) -> None:

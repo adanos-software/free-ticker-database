@@ -244,8 +244,6 @@ def classify_non_equity_leakage(row: dict[str, Any]) -> dict[str, str]:
     ticker = str(row.get("ticker", "") or "").strip().upper()
     name = str(row.get("name", "") or "")
 
-    if DEPOSITARY_ALLOWED_RE.search(name) or COMMON_STOCK_RE.search(name):
-        return _blank_result()
     if any(pattern.fullmatch(ticker) for pattern in PREFERRED_TICKER_PATTERNS):
         return _blocked(
             leakage_class="preferred_ticker_pattern",
@@ -281,6 +279,13 @@ def classify_non_equity_leakage(row: dict[str, Any]) -> dict[str, str]:
             evidence_source="name",
             evidence_value=name,
         )
+    if UNIT_NAME_RE.search(name):
+        return _blocked(
+            leakage_class="unit_name_pattern",
+            confidence="deterministic",
+            evidence_source="name",
+            evidence_value=name,
+        )
     if WARRANT_NAME_RE.search(name):
         return _blocked(
             leakage_class="warrant_name_pattern",
@@ -291,13 +296,6 @@ def classify_non_equity_leakage(row: dict[str, Any]) -> dict[str, str]:
     if RIGHT_NAME_RE.search(name):
         return _blocked(
             leakage_class="right_name_pattern",
-            confidence="deterministic",
-            evidence_source="name",
-            evidence_value=name,
-        )
-    if UNIT_NAME_RE.search(name):
-        return _blocked(
-            leakage_class="unit_name_pattern",
             confidence="deterministic",
             evidence_source="name",
             evidence_value=name,
@@ -315,6 +313,8 @@ def classify_non_equity_leakage(row: dict[str, Any]) -> dict[str, str]:
             evidence_source="name",
             evidence_value=name,
         )
+    if DEPOSITARY_ALLOWED_RE.search(name) or COMMON_STOCK_RE.search(name):
+        return _blank_result()
     return _blank_result()
 
 

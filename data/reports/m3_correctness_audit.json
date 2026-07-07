@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-07-07T08:05:18Z",
+    "generated_at": "2026-07-07T08:40:38Z",
     "rows": 4,
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -68,16 +68,16 @@
     {
       "audit_block": "after_c5_non_equity_guard",
       "campaign": "C5_non_equity_leakage_guard",
-      "rows_reviewed": 222,
-      "manual_review_rows": 18,
-      "blocked_rows": 204,
+      "rows_reviewed": 227,
+      "manual_review_rows": 19,
+      "blocked_rows": 208,
       "applied_rows": 0,
       "changed_rows": 0,
       "adversarial_changed_rows_checked": 0,
       "two_source_possible_rows": 0,
-      "two_source_gap_rows": 222,
+      "two_source_gap_rows": 227,
       "full_row_correctness_claim": "not_claimed_from_campaign_report",
-      "metric_context": "rows=222;manual=18;blocked=204;applied=0;claim=not_99_percent_without_external_stratified_audit",
+      "metric_context": "rows=227;manual=19;blocked=208;applied=0;claim=not_99_percent_without_external_stratified_audit",
       "source_gate": "Audit rows are reproducible campaign checks. They do not claim >=99% correctness without a stratified external audit using independent sources."
     }
   ]
