@@ -1,9 +1,15 @@
 {
-  "built_at": "2026-06-22T15:34:10Z",
+  "built_at": "2026-07-06T11:16:48Z",
   "drift_detected": true,
-  "generated_at": "2026-06-29T12:14:40+00:00",
-  "pending_renames_count": 9,
+  "generated_at": "2026-07-06T11:46:26+00:00",
+  "pending_renames_count": 10,
   "pending_renames_sample": [
+    {
+      "effective_date": "2026-07-01",
+      "new_company_name": "Neostellar Capital Corp",
+      "new_symbol": "NSLR",
+      "old_symbol": "SSSS"
+    },
     {
       "effective_date": "2026-05-22",
       "new_company_name": "Bitcoin Depot Inc",
@@ -61,11 +67,11 @@
   ],
   "quality_indicators": {
     "allowed_warn_rows": 126,
-    "expected_missing_primary_isin": 925,
+    "expected_missing_primary_isin": 947,
     "missing_etf_category": 88,
-    "missing_stock_sector": 50,
-    "source_gap_rows": 6806
+    "missing_stock_sector": 74,
+    "source_gap_rows": 6850
   },
   "stale_threshold_days": 45.0,
-  "staleness_days": 6.9
+  "staleness_days": 0.0
 }
