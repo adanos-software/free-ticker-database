@@ -1,17 +1,17 @@
 # Release Acceptance
 
-Generated: `2026-07-07T08:40:39Z`
+Generated: `2026-07-07T10:10:58Z`
 
 Overall passed: `True`
 
-Summary context: `passed=true;criteria=61;passed_criteria=61;failed_criteria=0;validation_failed_error_gates=0`
+Summary context: `passed=true;criteria=64;passed_criteria=64;failed_criteria=0;validation_failed_error_gates=0`
 
 ## Summary
 
 | Metric | Value |
 |---|---:|
-| `criteria` | `61` |
-| `passed_criteria` | `61` |
+| `criteria` | `64` |
+| `passed_criteria` | `64` |
 | `failed_criteria` | `0` |
 | `validation_failed_error_gates` | `0` |
 
@@ -38,6 +38,9 @@ Summary context: `passed=true;criteria=61;passed_criteria=61;failed_criteria=0;v
 | `coverage_freshness_visibility` | True |
 | `official_name_mismatch_backfill_gate` | True |
 | `source_inventory_gap_gate` | True |
+| `primary_isin_completeness_gate` | True |
+| `etf_universe_completeness_gate` | True |
+| `cfi_code_review_gate` | True |
 | `source_refresh_queue_gate` | True |
 | `source_gap_traceability` | True |
 | `symbol_change_review_gate` | True |

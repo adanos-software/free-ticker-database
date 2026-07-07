@@ -311,6 +311,8 @@ from scripts.fetch_exchange_masterfiles import (
     parse_krx_listed_companies,
     parse_krx_product_finder_records,
     parse_krx_stock_finder_records,
+    parse_finra_orf_daily_list,
+    parse_finra_orf_equity_master,
     parse_nasdaq_nordic_shares,
     parse_nasdaq_nordic_stockholm_etfs,
     parse_nasdaq_nordic_stockholm_trackers,
@@ -318,6 +320,7 @@ from scripts.fetch_exchange_masterfiles import (
     parse_lse_price_explorer_rows,
     parse_nasdaq_nordic_stockholm_shares,
     parse_nasdaq_listed,
+    parse_nasdaq_trading_system_adds_deletes,
     parse_other_listed,
     parse_psx_listed_companies,
     parse_psx_dps_symbols_payload,
@@ -461,6 +464,70 @@ def test_parse_other_listed_maps_exchange_codes():
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+        },
+    ]
+
+
+def test_parse_nasdaq_trading_system_adds_deletes_maps_actions_and_markets():
+    text = "\n".join(
+        [
+            "Symbol|Company Name|NASDAQ Action|BX Action|PSX Action|Effective Date|Primary Listing Market",
+            "AAPE|Themes ETF Trust|Add|Add|Add|7/7/2026|Z",
+            "BAYA|Bayview Acquisition Corp|Delete|Delete|Delete|7/7/2026|S",
+            "ODD|Odd Corp Common Stock|Hold|Hold|Hold|7/8/2026|Q",
+            "File Creation Time: 0707202603:04|||||",
+        ]
+    )
+
+    source = MasterfileSource(
+        key="nasdaq_trading_system_adds_deletes",
+        provider="Nasdaq Trader",
+        description="Daily adds and deletes",
+        source_url="https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
+        format="nasdaq_trading_system_adds_deletes_pipe",
+        reference_scope="corporate_action_daily_list",
+    )
+    rows = parse_nasdaq_trading_system_adds_deletes(text, source)
+
+    assert rows == [
+        {
+            "source_key": "nasdaq_trading_system_adds_deletes",
+            "provider": "Nasdaq Trader",
+            "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
+            "ticker": "AAPE",
+            "name": "Themes ETF Trust",
+            "exchange": "BATS",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "corporate_action_daily_list",
+            "official": "true",
+            "effective_date": "7/7/2026",
+        },
+        {
+            "source_key": "nasdaq_trading_system_adds_deletes",
+            "provider": "Nasdaq Trader",
+            "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
+            "ticker": "BAYA",
+            "name": "Bayview Acquisition Corp",
+            "exchange": "NASDAQ",
+            "asset_type": "Stock",
+            "listing_status": "delisted",
+            "reference_scope": "corporate_action_daily_list",
+            "official": "true",
+            "effective_date": "7/7/2026",
+        },
+        {
+            "source_key": "nasdaq_trading_system_adds_deletes",
+            "provider": "Nasdaq Trader",
+            "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
+            "ticker": "ODD",
+            "name": "Odd Corp Common Stock",
+            "exchange": "NASDAQ",
+            "asset_type": "Stock",
+            "listing_status": "review",
+            "reference_scope": "corporate_action_daily_list",
+            "official": "true",
+            "effective_date": "7/8/2026",
         },
     ]
 
@@ -717,6 +784,83 @@ def test_parse_otc_markets_stock_screener_csv_maps_conservative_equity_rows():
             "official": "true",
         },
     ]
+
+
+def test_parse_finra_orf_equity_master_normalizes_active_otc_rows():
+    source = MasterfileSource(
+        key="finra_orf_equity_master_active",
+        provider="FINRA",
+        description="FINRA ORF Equity Master active issues",
+        source_url="https://apidownload.finratraqs.org/ORF?Action=DOWNLOAD&File=EQUITYMASTERAC&Facility=ORF",
+        format="finra_orf_equity_master_csv",
+        reference_scope="exchange_directory",
+    )
+    text = "\n".join(
+        [
+            "Issue Symbol|Issue Name|Market",
+            "AAMMF|Almadex Minerals Ltd Common Stock|Other OTC",
+            "VUSA|Example Treasury ETF|Other OTC",
+            "AAMMF|Duplicate Name|Other OTC",
+        ]
+    )
+
+    rows = parse_finra_orf_equity_master(text, source)
+
+    assert rows == [
+        {
+            "source_key": "finra_orf_equity_master_active",
+            "provider": "FINRA",
+            "source_url": "https://apidownload.finratraqs.org/ORF?Action=DOWNLOAD&File=EQUITYMASTERAC&Facility=ORF",
+            "ticker": "AAMMF",
+            "name": "Almadex Minerals Ltd Common Stock",
+            "exchange": "OTC",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "finra_orf_equity_master_active",
+            "provider": "FINRA",
+            "source_url": "https://apidownload.finratraqs.org/ORF?Action=DOWNLOAD&File=EQUITYMASTERAC&Facility=ORF",
+            "ticker": "VUSA",
+            "name": "Example Treasury ETF",
+            "exchange": "OTC",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+    ]
+
+
+def test_parse_finra_orf_daily_list_maps_statuses_and_effective_dates():
+    source = MasterfileSource(
+        key="finra_orf_daily_list",
+        provider="FINRA",
+        description="FINRA ORF Security Daily List",
+        source_url="https://apidownload.finratraqs.org/ORF?Action=DOWNLOAD&File=DAILYLIST&Facility=ORF",
+        format="finra_orf_daily_list_csv",
+        reference_scope="corporate_action_daily_list",
+    )
+    text = "\n".join(
+        [
+            "Symbol,Issue Name,Event,Eff/Ex-Date,Market",
+            "NEWO,New OTC Corp Common Stock,Addition,07/07/2026,Other OTC",
+            "OLDO,Old OTC Corp Ordinary Shares,Deletion,07/08/2026,Other OTC",
+            "CHGO,Changed OTC Corp Common Stock,Symbol/Name Change,07/09/2026,Other OTC",
+        ]
+    )
+
+    rows = parse_finra_orf_daily_list(text, source)
+
+    assert [(row["ticker"], row["listing_status"], row["effective_date"]) for row in rows] == [
+        ("NEWO", "active", "07/07/2026"),
+        ("OLDO", "delisted", "07/08/2026"),
+        ("CHGO", "review", "07/09/2026"),
+    ]
+    assert {row["exchange"] for row in rows} == {"OTC"}
+    assert {row["reference_scope"] for row in rows} == {"corporate_action_daily_list"}
 
 
 def test_load_otc_markets_stock_screener_rows_prefers_cache(tmp_path, monkeypatch) -> None:
@@ -4016,8 +4160,30 @@ def test_parse_jpx_listed_issues_excel_maps_tse_rows(tmp_path):
 
     pd.DataFrame(
         [
-            {"Local Code": 1301, "Name (English)": "KYOKUYO CO.,LTD.", "Section/Products": "Prime Market (Domestic)"},
-            {"Local Code": 1305, "Name (English)": "iFreeETF TOPIX (Yearly Dividend Type)", "Section/Products": "ETFs/ ETNs"},
+            {
+                "Local Code": 1301,
+                "Name (English)": "KYOKUYO CO.,LTD.",
+                "Section/Products": "Prime Market (Domestic)",
+                "33 Sector(name)": "Fishery, Agriculture and Forestry",
+            },
+            {
+                "Local Code": 1305,
+                "Name (English)": "iFreeETF TOPIX (Yearly Dividend Type)",
+                "Section/Products": "ETFs/ ETNs",
+                "33 Sector(name)": "-",
+            },
+            {
+                "Local Code": "462A",
+                "Name (English)": "FUNDINNO,INC.",
+                "Section/Products": "Growth Market (Domestic)",
+                "33 Sector(name)": "Other Financing Business",
+            },
+            {
+                "Local Code": 8747,
+                "Name (English)": "YUTAKA TRUSTY SECURITIES CO.,LTD.",
+                "Section/Products": "Standard Market (Domestic)",
+                "33 Sector(name)": "Securities and Commodities Futures",
+            },
         ]
     ).to_excel(dataframe_path, index=False)
 
@@ -4035,6 +4201,7 @@ def test_parse_jpx_listed_issues_excel_maps_tse_rows(tmp_path):
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+            "sector": "Consumer Staples",
         },
         {
             "source_key": "test",
@@ -4047,6 +4214,104 @@ def test_parse_jpx_listed_issues_excel_maps_tse_rows(tmp_path):
             "listing_status": "active",
             "reference_scope": "exchange_directory",
             "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "462A",
+            "name": "FUNDINNO,INC.",
+            "exchange": "TSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "sector": "Financials",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "8747",
+            "name": "YUTAKA TRUSTY SECURITIES CO.,LTD.",
+            "exchange": "TSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "sector": "Financials",
+        },
+    ]
+
+
+def test_parse_jpx_listed_issues_excel_maps_data_j_sector_column(tmp_path):
+    dataframe_path = tmp_path / "jpx-data-j.xlsx"
+
+    import pandas as pd
+
+    pd.DataFrame(
+        [
+            {
+                "コード": 7203,
+                "銘柄名": "トヨタ自動車",
+                "市場・商品区分": "プライム（内国株式）",
+                "33業種区分": "輸送用機器",
+            },
+            {
+                "コード": 1306,
+                "銘柄名": "ＮＥＸＴ　ＦＵＮＤＳ　ＴＯＰＩＸ連動型上場投信",
+                "市場・商品区分": "ETF・ETN",
+                "33業種区分": "-",
+            },
+            {
+                "コード": 8747,
+                "銘柄名": "ユタカフーズ",
+                "市場・商品区分": "スタンダード（内国株式）",
+                "33業種区分": "食料品",
+            },
+        ]
+    ).to_excel(dataframe_path, index=False)
+
+    rows = parse_jpx_listed_issues_excel(dataframe_path.read_bytes(), SOURCE)
+
+    assert rows == [
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "7203",
+            "name": "トヨタ自動車",
+            "exchange": "TSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "sector": "Consumer Discretionary",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "1306",
+            "name": "ＮＥＸＴ　ＦＵＮＤＳ　ＴＯＰＩＸ連動型上場投信",
+            "exchange": "TSE",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "8747",
+            "name": "ユタカフーズ",
+            "exchange": "TSE",
+            "asset_type": "Stock",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "sector": "Consumer Staples",
         },
     ]
 
@@ -4145,6 +4410,41 @@ def test_fetch_jpx_tse_stock_detail_rows_uses_official_detail_api(tmp_path) -> N
     assert rows[0]["isin"] == "JP3633400001"
     assert any("F=e_stock_search" in url for url in urls)
     assert any("F=ctl/stock_detail&qcode=7203" in url for url in urls)
+
+
+def test_fetch_jpx_tse_stock_detail_rows_reconciles_cached_asset_type(tmp_path, monkeypatch) -> None:
+    listings_path = tmp_path / "listings.csv"
+    listings_path.write_text("ticker,exchange,asset_type,name,isin\n462A,TSE,Stock,FUNDINNO,\n", encoding="utf-8")
+    cache_path = tmp_path / "jpx_tse_stock_detail.json"
+    cache_path.write_text(
+        json.dumps(
+            [
+                {
+                    "source_key": "test",
+                    "provider": "test",
+                    "source_url": "https://example.com462A",
+                    "ticker": "462A",
+                    "name": "FUNDINNO, INC.",
+                    "exchange": "TSE",
+                    "asset_type": "ETF",
+                    "listing_status": "active",
+                    "reference_scope": "security_identifier_registry_subset",
+                    "official": "true",
+                    "isin": "JP3802630008",
+                    "sector": "Equity",
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "JPX_TSE_STOCK_DETAIL_CACHE", cache_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "JPX_TSE_STOCK_DETAIL_PARTIAL_CACHE", tmp_path / "partial.json")
+    monkeypatch.setattr(fetch_exchange_masterfiles, "LEGACY_JPX_TSE_STOCK_DETAIL_CACHE", tmp_path / "legacy.json")
+
+    rows = fetch_jpx_tse_stock_detail_rows(SOURCE, listings_path=listings_path)
+
+    assert rows[0]["asset_type"] == "Stock"
+    assert rows[0]["sector"] == ""
 
 
 def test_extract_jse_exchange_traded_product_download_url_picks_latest_match() -> None:
@@ -5346,7 +5646,7 @@ def test_parse_euronext_equities_download_maps_markets():
             "source_url": "https://example.com",
             "ticker": "A2A",
             "name": "A2A",
-            "exchange": "Euronext",
+            "exchange": "Borsa Italiana",
             "asset_type": "Stock",
             "listing_status": "active",
             "reference_scope": "exchange_directory",
@@ -5417,6 +5717,7 @@ def test_parse_euronext_etfs_download_keeps_etf_asset_type():
             '"All datapoints provided as of end of last active trading day."',
             '"Leverage Shares -1x Short Disney ETP Securities";-;"-1X SHORT DIS";XS2337085422;SDIS;"Euronext Amsterdam";EUR;1;1;1;1;" 09:04";CET;-;-;1;',
             '"Amundi ETF BX4";-;"AMUNDI ETF BX4";FR0010411884;BX4;"Euronext Paris";EUR;1;1;1;1;" 17:35";CET;1;1;1;',
+            '"iShares Core MSCI World";-;"ISHARES MSCI WORLD";IE00B4L5Y983;SWDA;"ETF Plus";EUR;1;1;1;1;" 17:35";CET;1;1;1;',
         ]
     )
 
@@ -5448,6 +5749,19 @@ def test_parse_euronext_etfs_download_keeps_etf_asset_type():
             "reference_scope": "exchange_directory",
             "official": "true",
             "isin": "FR0010411884",
+        },
+        {
+            "source_key": "test",
+            "provider": "test",
+            "source_url": "https://example.com",
+            "ticker": "SWDA",
+            "name": "iShares Core MSCI World",
+            "exchange": "Borsa Italiana",
+            "asset_type": "ETF",
+            "listing_status": "active",
+            "reference_scope": "exchange_directory",
+            "official": "true",
+            "isin": "IE00B4L5Y983",
         },
     ]
 
@@ -7179,6 +7493,7 @@ def test_parse_ngm_market_data_equities_maps_symbols_and_isins() -> None:
             "reference_scope": "listed_companies_subset",
             "official": "true",
             "isin": "SE0012729937",
+            "cfi": "ESVUFR",
         }
     ]
 
@@ -10177,6 +10492,7 @@ def test_parse_sem_isin_workbook_gates_official_rows_by_current_listing_isin(tmp
             "reference_scope": "exchange_directory",
             "official": "true",
             "isin": "MU0607S00004",
+            "cfi": "CEOIBS",
             "sector": "Bond",
         },
         {
@@ -10191,6 +10507,7 @@ def test_parse_sem_isin_workbook_gates_official_rows_by_current_listing_isin(tmp
             "reference_scope": "exchange_directory",
             "official": "true",
             "isin": "MU0559N00040",
+            "cfi": "EDSNDR",
             "sector": "Financials",
         },
     ]
@@ -10446,7 +10763,7 @@ def test_parse_small_african_exchange_html_sources_gate_to_current_rows(tmp_path
         key="mse_mw_listed_companies",
         provider="MSE Malawi",
         description="Official MSE mainboard",
-        source_url="https://mse.co.mw/market/mainboard",
+        source_url="https://mse.co.mw/listing/mainboard/companies",
         format="mse_mw_mainboard_html",
         reference_scope="listed_companies_subset",
     )
@@ -10489,7 +10806,14 @@ def test_parse_small_african_exchange_html_sources_gate_to_current_rows(tmp_path
     <tr><td>2</td><td>TCPLC</td><td></td><td>View</td></tr>
     <tr><td>2</td><td>UNKNOWN</td><td></td><td>View</td></tr></table>
     """
-    mse_html = '<a href="https://mse.co.mw/company/MWFDHB001166">FDHB</a><a href="/company/MWXXXX010000">UNKNOWN</a>'
+    mse_html = """
+    <table>
+      <tr><th>Company Name</th><th>Symbol</th><th>ISIN</th><th>Listing Price</th><th>Date Listed</th></tr>
+      <tr><td>FDH Bank plc</td><td>FDHB</td><td>MWFDHB001166</td><td>10.00</td><td>2020-08-03</td></tr>
+      <tr><td>No Match plc</td><td>UNKNOWN</td><td>MWXXXX010000</td><td>10.00</td><td>2020-08-03</td></tr>
+    </table>
+    <a href="https://mse.co.mw/company/MWFDHB001166">FDHB</a>
+    """
     use_html = """
     <table><tr><th>Stock Code</th><th>Name</th></tr>
     <tr><td>AIRTEL UGANDA</td><td>AIRTEL UGANDA LIMITED</td></tr>
@@ -10524,7 +10848,10 @@ def test_parse_small_african_exchange_html_sources_gate_to_current_rows(tmp_path
         "CRDB",
         "TCCL",
     ]
-    assert parse_mse_mw_mainboard_html(mse_html, mse_source, listings_path=listings_path)[0]["isin"] == "MWFDHB001166"
+    mse_rows = parse_mse_mw_mainboard_html(mse_html, mse_source, listings_path=listings_path)
+    assert [(row["ticker"], row["name"], row["isin"]) for row in mse_rows] == [
+        ("FDHB", "FDH Bank plc", "MWFDHB001166")
+    ]
     assert [row["ticker"] for row in parse_use_ug_market_snapshot_html(use_html, use_source, listings_path=listings_path)] == [
         "AIRTELUGAN",
         "BOBU",
@@ -14916,12 +15243,12 @@ def test_merge_summary_errors_replaces_refreshed_source_errors() -> None:
     ]
 
 
-def test_fetch_mse_mw_unavailable_error_includes_official_http_status(monkeypatch) -> None:
+def test_fetch_mse_mw_unavailable_error_includes_official_http_status(monkeypatch, tmp_path) -> None:
     source = MasterfileSource(
         key="mse_mw_listed_companies",
         provider="MSE Malawi",
         description="Official MSE mainboard",
-        source_url="https://mse.co.mw/market/mainboard",
+        source_url="https://mse.co.mw/listing/mainboard/companies",
         format="mse_mw_mainboard_html",
         reference_scope="listed_companies_subset",
     )
@@ -14933,6 +15260,8 @@ def test_fetch_mse_mw_unavailable_error_includes_official_http_status(monkeypatc
         raise requests.HTTPError("403 Client Error: Forbidden", response=response)
 
     monkeypatch.setattr(fetch_exchange_masterfiles, "fetch_mse_mw_mainboard_rows", blocked_fetch)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "MSE_MW_MAINBOARD_CACHE", tmp_path / "mse_mw_mainboard.json")
+    monkeypatch.setattr(fetch_exchange_masterfiles, "LEGACY_MSE_MW_MAINBOARD_CACHE", tmp_path / "legacy.json")
     rows, summary = fetch_exchange_masterfiles.fetch_all_sources(include_manual=False, sources=[source])
 
     assert rows == []
@@ -15037,6 +15366,37 @@ def test_build_summary_carries_source_last_error_into_source_details() -> None:
         summary["source_details"]["bme_security_prices_directory"]["last_error"]
         == "BME security prices rows unavailable; partial caches are ignored"
     )
+
+
+def test_build_summary_clears_previous_last_error_after_successful_refresh() -> None:
+    summary = fetch_exchange_masterfiles.build_summary(
+        [
+            {
+                "source_key": "mse_mw_listed_companies",
+                "provider": "MSE Malawi",
+                "source_url": "https://mse.co.mw/listing/mainboard/companies",
+                "ticker": "FDHB",
+                "name": "FDH Bank plc",
+                "exchange": "MSE_MW",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": "listed_companies_subset",
+                "official": "true",
+            }
+        ],
+        source_modes={"mse_mw_listed_companies": "network"},
+        generated_at="2026-07-07T09:07:40Z",
+        source_metadata_overrides={
+            "mse_mw_listed_companies": {
+                "mode": "unavailable",
+                "generated_at": "2026-05-16T10:00:00Z",
+                "last_error": "MSE Malawi mainboard unavailable",
+            }
+        },
+        refreshed_source_keys={"mse_mw_listed_companies"},
+    )
+
+    assert "last_error" not in summary["source_details"]["mse_mw_listed_companies"]
 
 
 def test_parse_ngx_company_profile_detail_html_extracts_official_name_and_sector() -> None:
@@ -16023,6 +16383,7 @@ def test_parse_bahrain_bourse_isin_codes_html_keeps_local_equities_only() -> Non
             "reference_scope": "exchange_directory",
             "official": "true",
             "isin": "BH0008794115",
+            "cfi": "ESVUFR",
         },
         {
             "source_key": "bahrain_bourse_listed_companies",
@@ -16036,6 +16397,7 @@ def test_parse_bahrain_bourse_isin_codes_html_keeps_local_equities_only() -> Non
             "reference_scope": "exchange_directory",
             "official": "true",
             "isin": "BH0005158K14",
+            "cfi": "CBXIXX",
             "sector": "Real Estate",
         },
         {
@@ -16050,6 +16412,7 @@ def test_parse_bahrain_bourse_isin_codes_html_keeps_local_equities_only() -> Non
             "reference_scope": "exchange_directory",
             "official": "true",
             "isin": "BH0003538822",
+            "cfi": "ESVUFR",
         },
     ]
 

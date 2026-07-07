@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 79160,
-    "matched": 53162,
-    "collisions": 11262,
-    "missing": 14736
+    "official_symbols": 79612,
+    "matched": 53360,
+    "collisions": 11376,
+    "missing": 14876
   },
   "exchanges": [
     {
@@ -126,10 +126,10 @@
     },
     {
       "exchange": "AMS",
-      "official_symbols": 583,
-      "matched": 241,
+      "official_symbols": 592,
+      "matched": 240,
       "collisions": 295,
-      "missing": 47,
+      "missing": 57,
       "collision_examples": [
         {
           "ticker": "2AAP",
@@ -229,8 +229,28 @@
           "exchange": "AMS"
         },
         {
+          "ticker": "BLNT",
+          "name": "iSh Brzil LTN BRL Gvt Bnd UCTS ETF US Ac",
+          "exchange": "AMS"
+        },
+        {
           "ticker": "BNJ",
           "name": "BANIJAY GROUP",
+          "exchange": "AMS"
+        },
+        {
+          "ticker": "BSEU",
+          "name": "BlueSphere European Equity UCITS ETF",
+          "exchange": "AMS"
+        },
+        {
+          "ticker": "BSTE",
+          "name": "BlueSphere US Technology UCITS ETF",
+          "exchange": "AMS"
+        },
+        {
+          "ticker": "BSUE",
+          "name": "BlueSphere US Equity UCITS ETF",
           "exchange": "AMS"
         },
         {
@@ -241,26 +261,6 @@
         {
           "ticker": "COLT",
           "name": "COLT",
-          "exchange": "AMS"
-        },
-        {
-          "ticker": "ECLU",
-          "name": "iShares \u20ac AAA CLO Active UCITS ETF EUR (Dist)",
-          "exchange": "AMS"
-        },
-        {
-          "ticker": "ESXY",
-          "name": "IncomeShares Eurostoxx 50 Options ETP",
-          "exchange": "AMS"
-        },
-        {
-          "ticker": "EUFG",
-          "name": "iShares Europe Foreign Focus UCITS ETF EUR (Acc)",
-          "exchange": "AMS"
-        },
-        {
-          "ticker": "EURP",
-          "name": "iShares Europe Domestic Focus UCITS ETF EUR (Acc)",
           "exchange": "AMS"
         }
       ]
@@ -1101,6 +1101,147 @@
       ]
     },
     {
+      "exchange": "Borsa Italiana",
+      "official_symbols": 2877,
+      "matched": 252,
+      "collisions": 1800,
+      "missing": 825,
+      "collision_examples": [
+        {
+          "ticker": "1PAS",
+          "name": "WISDOMTREE PALLADIUM 1X DAILY SHORT",
+          "target_exchange": "Borsa Italiana",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
+        {
+          "ticker": "26TP",
+          "name": "iShares iBonds 26 \u20ac Italy Govt UCITS ETF",
+          "target_exchange": "Borsa Italiana",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
+        {
+          "ticker": "28IY",
+          "name": "iShares iBonds 28 \u20ac Italy Govt UCITS ETF",
+          "target_exchange": "Borsa Italiana",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
+        {
+          "ticker": "29GA",
+          "name": "iShares iBonds Dec 29 \u20ac Corp UCITS ETF A",
+          "target_exchange": "Borsa Italiana",
+          "existing_exchanges": [
+            "SIX"
+          ]
+        },
+        {
+          "ticker": "29GI",
+          "name": "iShares iBonds Dec 29 EUR Corp UCITS ETF",
+          "target_exchange": "Borsa Italiana",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
+        {
+          "ticker": "2CAR",
+          "name": "WISDOMTREE STOXX EUROPE AUTOMOBILES 2X",
+          "target_exchange": "Borsa Italiana",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
+        {
+          "ticker": "2OIG",
+          "name": "WISDOMTREE STOXX EUROPE OIL&GAS 2X SHORT",
+          "target_exchange": "Borsa Italiana",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
+        {
+          "ticker": "2PAL",
+          "name": "WISDOMTREE PALLADIUM 2X DAILY LEVERAGED",
+          "target_exchange": "Borsa Italiana",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
+        {
+          "ticker": "2STR",
+          "name": "WISDOMTREE STOXX EUROPE TRA&LEI 2X SHORT",
+          "target_exchange": "Borsa Italiana",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        },
+        {
+          "ticker": "2TRV",
+          "name": "WISDOMTREE STOXX EUROPE TRAVEL & LEIS 2X",
+          "target_exchange": "Borsa Italiana",
+          "existing_exchanges": [
+            "LSE"
+          ]
+        }
+      ],
+      "missing_examples": [
+        {
+          "ticker": "100EUA",
+          "name": "UBS FTSE 100 UCITS ETF GBP dis",
+          "exchange": "Borsa Italiana"
+        },
+        {
+          "ticker": "1PUT",
+          "name": "WisdomTree 1-Day Equity Put Premium",
+          "exchange": "Borsa Italiana"
+        },
+        {
+          "ticker": "26TA",
+          "name": "iShares iBnds 26 \u20ac Italy Gvt UCITS ETF A",
+          "exchange": "Borsa Italiana"
+        },
+        {
+          "ticker": "28IA",
+          "name": "iShares iBonds 28 Italy Govt UCITS ETF A",
+          "exchange": "Borsa Italiana"
+        },
+        {
+          "ticker": "3BTL",
+          "name": "WISDOMTREE BTP 10Y 3X DAILY LEVERAGED",
+          "exchange": "Borsa Italiana"
+        },
+        {
+          "ticker": "3BTS",
+          "name": "WISDOMTREE BTP 10Y 3X DAILY SHORT",
+          "exchange": "Borsa Italiana"
+        },
+        {
+          "ticker": "3BUL",
+          "name": "WISDOMTREE BUND 10Y 3X DAILY LEVERAGED",
+          "exchange": "Borsa Italiana"
+        },
+        {
+          "ticker": "3BUS",
+          "name": "WISDOMTREE BUND 10Y 3X DAILY SHORT",
+          "exchange": "Borsa Italiana"
+        },
+        {
+          "ticker": "3FNG",
+          "name": "GRANITESHARES 3X LONG FAANG DAILY ETP",
+          "exchange": "Borsa Italiana"
+        },
+        {
+          "ticker": "3ITL",
+          "name": "WISDOMTREE FTSE MIB 3X DAILY LEVERAGED",
+          "exchange": "Borsa Italiana"
+        }
+      ]
+    },
+    {
       "exchange": "CSE_LK",
       "official_symbols": 315,
       "matched": 307,
@@ -1432,10 +1573,10 @@
     },
     {
       "exchange": "Euronext",
-      "official_symbols": 4426,
-      "matched": 990,
-      "collisions": 2346,
-      "missing": 1090,
+      "official_symbols": 2003,
+      "matched": 964,
+      "collisions": 670,
+      "missing": 369,
       "collision_examples": [
         {
           "ticker": "0EMU",
@@ -1470,14 +1611,6 @@
           ]
         },
         {
-          "ticker": "1PAS",
-          "name": "WISDOMTREE PALLADIUM 1X DAILY SHORT",
-          "target_exchange": "Euronext",
-          "existing_exchanges": [
-            "LSE"
-          ]
-        },
-        {
           "ticker": "26TP",
           "name": "iShares iBonds Dec 2026 Term EUR Italy Govt Bond UCITS ETF EUR (Dist)",
           "target_exchange": "Euronext",
@@ -1502,19 +1635,27 @@
           ]
         },
         {
-          "ticker": "29GA",
-          "name": "iShares iBonds Dec 29 \u20ac Corp UCITS ETF A",
+          "ticker": "29GI",
+          "name": "iShares iBonds Dec 2029 Term EUR Corp UCITS ETF EUR (Dist)",
+          "target_exchange": "Euronext",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
+        {
+          "ticker": "29ID",
+          "name": "iShares iBonds Dec 2029 Term $ Corp UCITS ETF USD (Dist)",
           "target_exchange": "Euronext",
           "existing_exchanges": [
             "SIX"
           ]
         },
         {
-          "ticker": "29GI",
-          "name": "iShares iBonds Dec 2029 Term EUR Corp UCITS ETF EUR (Dist)",
+          "ticker": "29IT",
+          "name": "iShares iBonds Dec 2029 Term $ Treasury UCITS ETF USD (Dist)",
           "target_exchange": "Euronext",
           "existing_exchanges": [
-            "XETRA"
+            "SIX"
           ]
         }
       ],
@@ -1530,23 +1671,8 @@
           "exchange": "Euronext"
         },
         {
-          "ticker": "100EUA",
-          "name": "UBS FTSE 100 UCITS ETF GBP dis",
-          "exchange": "Euronext"
-        },
-        {
-          "ticker": "1PUT",
-          "name": "WisdomTree 1-Day Equity Put Premium",
-          "exchange": "Euronext"
-        },
-        {
-          "ticker": "26TA",
-          "name": "iShares iBnds 26 \u20ac Italy Gvt UCITS ETF A",
-          "exchange": "Euronext"
-        },
-        {
-          "ticker": "28IA",
-          "name": "iShares iBonds 28 Italy Govt UCITS ETF A",
+          "ticker": "0UCA",
+          "name": "OSSIAM MSCI CANADA - UCITS ETF 1C",
           "exchange": "Euronext"
         },
         {
@@ -1567,6 +1693,21 @@
         {
           "ticker": "36ID",
           "name": "iSh iBonds Dec 2036 Term $ Corp USD Dist",
+          "exchange": "Euronext"
+        },
+        {
+          "ticker": "37ID",
+          "name": "iSh iBonds Dec 2037 Term $ Corp USD Dist",
+          "exchange": "Euronext"
+        },
+        {
+          "ticker": "3CAC",
+          "name": "WisdomTree CAC 40 3x Daily Leveraged",
+          "exchange": "Euronext"
+        },
+        {
+          "ticker": "3CAS",
+          "name": "WisdomTree CAC 40 3x Daily Short",
           "exchange": "Euronext"
         }
       ]
@@ -3581,10 +3722,10 @@
     },
     {
       "exchange": "OSL",
-      "official_symbols": 297,
-      "matched": 249,
-      "collisions": 45,
-      "missing": 3,
+      "official_symbols": 298,
+      "matched": 245,
+      "collisions": 46,
+      "missing": 7,
       "collision_examples": [
         {
           "ticker": "ABG",
@@ -3636,6 +3777,14 @@
           ]
         },
         {
+          "ticker": "AQUA",
+          "name": "AQUALIS",
+          "target_exchange": "OSL",
+          "existing_exchanges": [
+            "SET"
+          ]
+        },
+        {
           "ticker": "AUTO",
           "name": "AUTOSTORE HOLDINGS",
           "target_exchange": "OSL",
@@ -3653,18 +3802,10 @@
         },
         {
           "ticker": "BINT",
-          "name": "BEWI INVEST",
+          "name": "BEVEST",
           "target_exchange": "OSL",
           "existing_exchanges": [
             "NYSE ARCA"
-          ]
-        },
-        {
-          "ticker": "BORR",
-          "name": "BORR DRILLING",
-          "target_exchange": "OSL",
-          "existing_exchanges": [
-            "NYSE"
           ]
         }
       ],
@@ -3675,13 +3816,33 @@
           "exchange": "OSL"
         },
         {
+          "ticker": "BOHUS",
+          "name": "BOHUS",
+          "exchange": "OSL"
+        },
+        {
           "ticker": "CAPT",
           "name": "CAPITAL TANKERS",
           "exchange": "OSL"
         },
         {
-          "ticker": "NEXTT",
-          "name": "NEXT BIOMETRICS GR",
+          "ticker": "GOLDR",
+          "name": "GOLD ROAD INTL",
+          "exchange": "OSL"
+        },
+        {
+          "ticker": "PLCAN",
+          "name": "PELICAN AQUA HLDNG",
+          "exchange": "OSL"
+        },
+        {
+          "ticker": "QGAS",
+          "name": "QUESTERRE EN PREF",
+          "exchange": "OSL"
+        },
+        {
+          "ticker": "VOIM",
+          "name": "VOIM",
           "exchange": "OSL"
         }
       ]
@@ -4563,10 +4724,10 @@
     },
     {
       "exchange": "TSE",
-      "official_symbols": 4449,
-      "matched": 4059,
-      "collisions": 353,
-      "missing": 37,
+      "official_symbols": 4437,
+      "matched": 4036,
+      "collisions": 342,
+      "missing": 59,
       "collision_examples": [
         {
           "ticker": "1305",

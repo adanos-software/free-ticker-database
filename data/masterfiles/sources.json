@@ -18,6 +18,15 @@
     "official": true
   },
   {
+    "key": "nasdaq_trading_system_adds_deletes",
+    "provider": "Nasdaq Trader",
+    "description": "Official Nasdaq Trader Trading System Adds and Deletes daily list",
+    "source_url": "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt",
+    "format": "nasdaq_trading_system_adds_deletes_pipe",
+    "reference_scope": "corporate_action_daily_list",
+    "official": true
+  },
+  {
     "key": "lse_company_reports",
     "provider": "LSE",
     "description": "Official London Stock Exchange company reports directory",
@@ -462,7 +471,7 @@
     "key": "mse_mw_listed_companies",
     "provider": "MSE Malawi",
     "description": "Official Malawi Stock Exchange mainboard table with company links",
-    "source_url": "https://mse.co.mw/market/mainboard",
+    "source_url": "https://mse.co.mw/listing/mainboard/companies",
     "format": "mse_mw_mainboard_html",
     "reference_scope": "listed_companies_subset",
     "official": true

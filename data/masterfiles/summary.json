@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-06T11:15:42Z",
-  "rows": 147156,
+  "generated_at": "2026-07-07T10:06:43Z",
+  "rows": 148500,
   "exchanges": [
     "ADX",
     "AMS",
@@ -20,6 +20,7 @@
     "BVB",
     "BVC",
     "BVL",
+    "Borsa Italiana",
     "Bursa",
     "CPH",
     "CSE_LK",
@@ -42,6 +43,7 @@
     "KRX",
     "LSE",
     "LUSE",
+    "MSE_MW",
     "MSX",
     "NASDAQ",
     "NEO",
@@ -86,8 +88,8 @@
   ],
   "source_counts": {
     "adx_market_watch": 122,
-    "euronext_etfs": 3569,
-    "euronext_equities": 3866,
+    "euronext_etfs": 4040,
+    "euronext_equities": 3856,
     "asx_listed_companies": 1979,
     "asx_investment_products": 446,
     "athex_sector_classification": 91,
@@ -95,6 +97,7 @@
     "b3_bdr_etfs": 306,
     "b3_instruments_equities": 1315,
     "nasdaq_other_listed": 7420,
+    "nasdaq_trading_system_adds_deletes": 36,
     "byma_equity_details": 63,
     "bahrain_bourse_listed_companies": 41,
     "bist_kap_mkk_listed_securities": 637,
@@ -142,6 +145,7 @@
     "lse_price_explorer": 11021,
     "lse_instrument_directory": 64,
     "luse_listed_companies": 15,
+    "mse_mw_listed_companies": 8,
     "muscat_securities_companies": 108,
     "nasdaq_listed": 5537,
     "sec_company_tickers_exchange": 10122,
@@ -191,8 +195,8 @@
     "tpex_mainboard_daily_quotes": 891,
     "tpex_mainboard_basic_info": 887,
     "tpex_emerging_basic_info": 349,
-    "jpx_listed_issues": 4449,
-    "jpx_tse_stock_detail": 3205,
+    "jpx_listed_issues": 4437,
+    "jpx_tse_stock_detail": 4056,
     "tmx_listed_issuers": 3704,
     "tmx_etf_screener": 1770,
     "tmx_interlisted_companies": 268,
@@ -226,6 +230,14 @@
       "mode": "network",
       "rows": 7420,
       "generated_at": "2026-07-06T11:15:42Z"
+    },
+    "nasdaq_trading_system_adds_deletes": {
+      "provider": "Nasdaq Trader",
+      "reference_scope": "corporate_action_daily_list",
+      "official": true,
+      "mode": "network",
+      "rows": 36,
+      "generated_at": "2026-07-07T09:34:57Z"
     },
     "lse_company_reports": {
       "provider": "LSE",
@@ -344,32 +356,32 @@
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 3866,
-      "generated_at": "2026-06-02T19:38:59Z"
+      "rows": 3856,
+      "generated_at": "2026-07-07T09:02:49Z"
     },
     "euronext_etfs": {
       "provider": "Euronext",
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 3569,
-      "generated_at": "2026-06-02T19:38:59Z"
+      "rows": 4040,
+      "generated_at": "2026-07-07T09:02:49Z"
     },
     "jpx_listed_issues": {
       "provider": "JPX",
       "reference_scope": "exchange_directory",
       "official": true,
       "mode": "network",
-      "rows": 4449,
-      "generated_at": "2026-06-02T19:38:59Z"
+      "rows": 4437,
+      "generated_at": "2026-07-07T10:02:31Z"
     },
     "jpx_tse_stock_detail": {
       "provider": "JPX",
       "reference_scope": "security_identifier_registry_subset",
       "official": true,
       "mode": "network",
-      "rows": 3205,
-      "generated_at": "2026-06-02T19:38:59Z"
+      "rows": 4056,
+      "generated_at": "2026-07-07T10:06:43Z"
     },
     "deutsche_boerse_listed_companies": {
       "provider": "Deutsche Boerse",
@@ -627,10 +639,9 @@
       "provider": "MSE Malawi",
       "reference_scope": "listed_companies_subset",
       "official": true,
-      "mode": "unavailable",
-      "rows": 0,
-      "generated_at": "2026-06-02T19:38:59Z",
-      "last_error": "MSE Malawi mainboard unavailable (HTTP 403 from official host mse.co.mw)"
+      "mode": "cache",
+      "rows": 8,
+      "generated_at": "2026-07-07T09:07:40Z"
     },
     "nse_ke_listed_companies": {
       "provider": "NSE Kenya",
@@ -1357,7 +1368,7 @@
     "dse_tz_listed_companies": "cache",
     "bvc_colombia_issuers": "cache",
     "byma_equity_details": "cache",
-    "mse_mw_listed_companies": "unavailable",
+    "mse_mw_listed_companies": "cache",
     "nse_ke_listed_companies": "cache",
     "nse_india_securities_available": "network",
     "bse_india_scrips": "network",
@@ -1441,7 +1452,8 @@
     "zagreb_securities_directory": "cache",
     "sec_company_tickers_exchange": "cache",
     "otc_markets_security_profile": "network",
-    "otc_markets_stock_screener": "cache"
+    "otc_markets_stock_screener": "cache",
+    "nasdaq_trading_system_adds_deletes": "network"
   },
   "errors": [
     {
@@ -1459,10 +1471,6 @@
     {
       "source_key": "jse_instrument_search",
       "error": "JSE instrument search unavailable"
-    },
-    {
-      "source_key": "mse_mw_listed_companies",
-      "error": "MSE Malawi mainboard unavailable (HTTP 403 from official host mse.co.mw)"
     }
   ]
 }

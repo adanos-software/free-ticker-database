@@ -4,8 +4,12 @@ from scripts.build_listing_history import (
     build_daily_summary,
     build_event_rows,
     build_snapshot,
+    build_status_evidence_event_rows,
     compact_legacy_status_history,
+    delisting_apply_status_rows,
+    listing_status_on_date,
     merge_status_history,
+    was_listing_active_on_date,
 )
 
 
@@ -78,6 +82,9 @@ def test_compact_legacy_status_history_merges_repeated_snapshots_into_intervals(
             "status": "active",
             "first_observed_at": "2026-04-01T00:00:00Z",
             "last_observed_at": "2026-04-02T00:00:00Z",
+            "effective_at": "",
+            "status_source": "snapshot",
+            "source_report": "",
         },
         {
             "listing_key": "NYSE::AAA",
@@ -86,6 +93,9 @@ def test_compact_legacy_status_history_merges_repeated_snapshots_into_intervals(
             "status": "delisted",
             "first_observed_at": "2026-04-03T00:00:00Z",
             "last_observed_at": "2026-04-04T00:00:00Z",
+            "effective_at": "",
+            "status_source": "snapshot",
+            "source_report": "",
         },
     ]
 
@@ -110,6 +120,9 @@ def test_merge_status_history_adds_active_and_delisted_intervals():
             "status": "active",
             "first_observed_at": "2026-04-02T00:00:00Z",
             "last_observed_at": "2026-04-02T00:00:00Z",
+            "effective_at": "",
+            "status_source": "snapshot",
+            "source_report": "",
         },
         {
             "listing_key": "NASDAQ::DEL",
@@ -118,6 +131,9 @@ def test_merge_status_history_adds_active_and_delisted_intervals():
             "status": "delisted",
             "first_observed_at": "2026-04-02T00:00:00Z",
             "last_observed_at": "2026-04-02T00:00:00Z",
+            "effective_at": "",
+            "status_source": "snapshot",
+            "source_report": "",
         },
         {
             "listing_key": "NASDAQ::NEW",
@@ -126,6 +142,9 @@ def test_merge_status_history_adds_active_and_delisted_intervals():
             "status": "active",
             "first_observed_at": "2026-04-02T00:00:00Z",
             "last_observed_at": "2026-04-02T00:00:00Z",
+            "effective_at": "",
+            "status_source": "snapshot",
+            "source_report": "",
         },
     ]
 
@@ -139,6 +158,9 @@ def test_merge_status_history_extends_existing_active_interval_without_duplicate
             "status": "active",
             "first_observed_at": "2026-04-01T00:00:00Z",
             "last_observed_at": "2026-04-02T00:00:00Z",
+            "effective_at": "",
+            "status_source": "snapshot",
+            "source_report": "",
         }
     ]
     previous_snapshot = [{"ticker": "AAA", "exchange": "NYSE", "name": "Alpha"}]
@@ -154,6 +176,9 @@ def test_merge_status_history_extends_existing_active_interval_without_duplicate
             "status": "active",
             "first_observed_at": "2026-04-01T00:00:00Z",
             "last_observed_at": "2026-04-03T00:00:00Z",
+            "effective_at": "",
+            "status_source": "snapshot",
+            "source_report": "",
         }
     ]
 
@@ -212,6 +237,7 @@ def test_build_daily_summary_counts_events_and_active_rows():
         "new_events": 3,
         "listed": 1,
         "renamed": 1,
+        "suspended": 0,
         "delisted": 1,
         "exchange_rows": 2,
     }
@@ -221,6 +247,7 @@ def test_build_daily_summary_counts_events_and_active_rows():
             "exchange": "NASDAQ",
             "listed": 1,
             "renamed": 0,
+            "suspended": 0,
             "delisted": 1,
             "active_snapshot_rows": 1,
         },
@@ -229,7 +256,133 @@ def test_build_daily_summary_counts_events_and_active_rows():
             "exchange": "NYSE",
             "listed": 0,
             "renamed": 1,
+            "suspended": 0,
             "delisted": 0,
             "active_snapshot_rows": 2,
         },
     ]
+
+
+def test_delisting_apply_status_rows_promotes_suspended_and_delisted_evidence():
+    payload = {
+        "summary": {
+            "generated_at": "2026-04-05T00:00:00Z",
+            "delisting_report_json": "data/reports/delisting_report.json",
+        },
+        "applied": [
+            {"exchange": "BSE_IN", "ticker": "DEAD", "classification": "delisted"},
+        ],
+        "blocked": [
+            {"exchange": "BSE_IN", "ticker": "WAIT", "classification": "suspended"},
+            {"exchange": "BSE_IN", "ticker": "MAN", "classification": "master_absent"},
+        ],
+    }
+
+    rows = delisting_apply_status_rows(payload)
+
+    assert rows == [
+        {
+            "listing_key": "BSE_IN::DEAD",
+            "ticker": "DEAD",
+            "exchange": "BSE_IN",
+            "status": "delisted",
+            "first_observed_at": "2026-04-05T00:00:00Z",
+            "last_observed_at": "2026-04-05T00:00:00Z",
+            "effective_at": "2026-04-05T00:00:00Z",
+            "status_source": "delisting_apply",
+            "source_report": "data/reports/delisting_report.json",
+        },
+        {
+            "listing_key": "BSE_IN::WAIT",
+            "ticker": "WAIT",
+            "exchange": "BSE_IN",
+            "status": "suspended",
+            "first_observed_at": "2026-04-05T00:00:00Z",
+            "last_observed_at": "2026-04-05T00:00:00Z",
+            "effective_at": "2026-04-05T00:00:00Z",
+            "status_source": "delisting_apply",
+            "source_report": "data/reports/delisting_report.json",
+        },
+    ]
+
+
+def test_merge_status_history_uses_status_evidence_and_answers_active_on_date():
+    evidence = [
+        {
+            "listing_key": "BSE_IN::WAIT",
+            "ticker": "WAIT",
+            "exchange": "BSE_IN",
+            "status": "suspended",
+            "first_observed_at": "2026-04-05T00:00:00Z",
+            "last_observed_at": "2026-04-05T00:00:00Z",
+            "effective_at": "2026-04-04T00:00:00Z",
+            "status_source": "delisting_apply",
+            "source_report": "data/reports/delisting_report.json",
+        }
+    ]
+
+    history = merge_status_history(
+        [],
+        [],
+        [{"ticker": "WAIT", "exchange": "BSE_IN", "name": "Wait Ltd"}],
+        "2026-04-03T00:00:00Z",
+        status_evidence_rows=evidence,
+    )
+
+    assert [row["status"] for row in history] == ["active", "suspended"]
+    assert was_listing_active_on_date(history, "BSE_IN::WAIT", "2026-04-03T00:00:00Z") is True
+    assert listing_status_on_date(history, "BSE_IN::WAIT", "2026-04-04T00:00:00Z") == "suspended"
+
+
+def test_listing_status_on_date_prefers_latest_effective_interval_when_overlapping():
+    history = [
+        {
+            "listing_key": "NYSE::AAA",
+            "ticker": "AAA",
+            "exchange": "NYSE",
+            "status": "active",
+            "first_observed_at": "2026-04-01T00:00:00Z",
+            "last_observed_at": "2026-04-10T00:00:00Z",
+            "effective_at": "",
+            "status_source": "snapshot",
+            "source_report": "",
+        },
+        {
+            "listing_key": "NYSE::AAA",
+            "ticker": "AAA",
+            "exchange": "NYSE",
+            "status": "suspended",
+            "first_observed_at": "2026-04-05T00:00:00Z",
+            "last_observed_at": "2026-04-08T00:00:00Z",
+            "effective_at": "2026-04-05T00:00:00Z",
+            "status_source": "delisting_apply",
+            "source_report": "data/reports/delisting_report.json",
+        },
+    ]
+
+    assert listing_status_on_date(history, "NYSE::AAA", "2026-04-06T00:00:00Z") == "suspended"
+
+
+def test_build_status_evidence_event_rows_dedupes_existing_events():
+    evidence = [
+        {
+            "listing_key": "BSE_IN::WAIT",
+            "ticker": "WAIT",
+            "exchange": "BSE_IN",
+            "status": "suspended",
+            "effective_at": "2026-04-04T00:00:00Z",
+        }
+    ]
+
+    assert build_status_evidence_event_rows(evidence, []) == [
+        {
+            "listing_key": "BSE_IN::WAIT",
+            "ticker": "WAIT",
+            "exchange": "BSE_IN",
+            "event_type": "suspended",
+            "old_value": "",
+            "new_value": "suspended",
+            "observed_at": "2026-04-04T00:00:00Z",
+        }
+    ]
+    assert build_status_evidence_event_rows(evidence, [{"listing_key": "BSE_IN::WAIT", "event_type": "suspended", "observed_at": "2026-04-04T00:00:00Z"}]) == []

@@ -45,7 +45,8 @@ Kaggle tags are restricted to platform-defined tags. The package uses validated 
 
 ## Included Files
 
-- `tickers.csv`: one canonical row per security
+- `core_listings.csv`: collision-safe canonical core security export keyed by `listing_key`
+- `tickers.csv`: legacy/global-unique compatibility export, one row per exported ticker
 - `listings.csv`: exchange-level listing rows keyed by `listing_key`
 - `aliases.csv`: alias, name, ISIN, WKN, and symbol lookup values
 - `identifiers.csv`: compact ISIN/WKN lookup

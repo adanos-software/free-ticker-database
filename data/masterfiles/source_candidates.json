@@ -251,7 +251,7 @@
     "venue_name": "Malawi Stock Exchange",
     "country": "Malawi",
     "provider": "MSE Malawi",
-    "source_url": "https://mse.co.mw/market/mainboard",
+    "source_url": "https://mse.co.mw/listing/mainboard/companies",
     "candidate_scope": "listed_companies_candidate",
     "asset_types": [
       "Stock"
@@ -259,8 +259,8 @@
     "expected_format": "html",
     "implementation_status": "implemented",
     "priority": "low",
-    "blocker": "implemented via official mainboard table and company links",
-    "notes": "The official MSE mainboard page exposes listed symbols and /company/{ISIN} links. Parser gates exact current MSE_MW symbols and uses valid ISINs from the official company links."
+    "blocker": "implemented via official mainboard listed-company table",
+    "notes": "The official MSE mainboard company table exposes listed symbols and ISINs. Parser gates exact current MSE_MW symbols and only accepts valid ISINs from the official table or legacy company links."
   },
   {
     "key": "ngx_equities_price_list",
@@ -544,22 +544,22 @@
     "notes": "The official BMV search feed exposes issuer IDs and the issuer estadisticas/perfil pages expose instrument ISIN rows plus stock-sector and ETF taxonomy labels. Parser uses search only as the page locator and gates output by current BMV listings."
   },
   {
-    "key": "borsa_italiana_listino_a_z",
+    "key": "euronext_equities",
     "exchange": "Borsa Italiana",
     "venue_name": "Borsa Italiana",
     "country": "Italy",
-    "provider": "Borsa Italiana",
-    "source_url": "https://www.borsaitaliana.it/borsa/azioni/listino-a-z.html?lang=en",
+    "provider": "Euronext",
+    "source_url": "https://live.euronext.com/pd_es/data/stocks/download?mics=dm_all_stock",
     "candidate_scope": "exchange_directory_candidate",
     "asset_types": [
       "Stock",
       "ETF"
     ],
-    "expected_format": "html_or_api",
-    "implementation_status": "todo",
+    "expected_format": "euronext_equities_semicolon_csv|euronext_etfs_semicolon_csv",
+    "implementation_status": "implemented",
     "priority": "medium",
-    "blocker": "needs endpoint discovery and parser coverage before this current-scope venue can be marked official",
-    "notes": "Official Borsa Italiana market pages expose A-Z listed instruments, but a complete repeatable equities and ETFPlus parser still needs endpoint discovery and listing-key reconciliation."
+    "blocker": "implemented via official Euronext Milan and ETF Plus directory exports; regenerate masterfiles to promote Borsa Italiana out of missing status",
+    "notes": "The existing official Euronext equities and ETF product exports expose Euronext Milan, Euronext Growth Milan, and ETF Plus markets. Parser maps those markets to Borsa Italiana exchange-directory rows."
   },
   {
     "key": "bursa_equities_prices_directory",
@@ -759,6 +759,42 @@
     "priority": "high",
     "blocker": "implemented via official OTC Markets stock-screener CSV export with Grey/Expert Market access disabled",
     "notes": "Largest partial source block. The screener validates OTC symbol/name/tier coverage for stock-like rows and ETFs, but it does not expose ISINs or GICS sectors. Grey and Expert Market access remain excluded intentionally so OTC stays an extended/listing-scope policy area rather than leaking into core primary completeness."
+  },
+  {
+    "key": "finra_orf_equity_master_active",
+    "exchange": "OTC",
+    "venue_name": "OTC Reporting Facility",
+    "country": "United States",
+    "provider": "FINRA",
+    "source_url": "https://apidownload.finratraqs.org/ORF?Action=DOWNLOAD&File=EQUITYMASTERAC&Facility=ORF",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "finra_orf_equity_master_csv",
+    "implementation_status": "implemented",
+    "priority": "high",
+    "blocker": "parser implemented for the documented FINRA ORF Equity Master active-issues file, but live download returns HTTP 401 Authorization required from this environment; use only as an explicit OTC Markets cross-check when authorized source evidence is available",
+    "notes": "Official FINRA ORF Equity Master is the intended cross-check for OTC Markets directory coverage. It is not in the live source list until credentials or an approved cached official file are available, so it cannot silently authorize OTC additions or metadata changes."
+  },
+  {
+    "key": "finra_orf_daily_list",
+    "exchange": "OTC",
+    "venue_name": "OTC Reporting Facility",
+    "country": "United States",
+    "provider": "FINRA",
+    "source_url": "https://apidownload.finratraqs.org/ORF?Action=DOWNLOAD&File=DAILYLIST&Facility=ORF",
+    "candidate_scope": "source_expansion_candidate",
+    "asset_types": [
+      "Stock",
+      "ETF"
+    ],
+    "expected_format": "finra_orf_daily_list_csv",
+    "implementation_status": "implemented",
+    "priority": "high",
+    "blocker": "parser implemented for the documented FINRA ORF Security Daily List, but live download returns HTTP 401 Authorization required from this environment; use only as review-gated OTC corporate-action evidence when an authorized official file is available",
+    "notes": "Official FINRA ORF Daily List can support OTC additions, deletions, symbol/name changes and effective-date history. It remains review-gated and non-applying unless authorized official rows are supplied."
   },
   {
     "key": "psx_dps_symbols_directory",

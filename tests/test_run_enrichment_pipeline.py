@@ -10,27 +10,34 @@ def test_pipeline_default_stages_are_safe_and_ordered():
     assert names[:3] == ["fetch_masterfiles", "fetch_symbol_changes", "completion_backlog_before"]
     assert "same_isin_sector_peer_backfill" in names
     assert "financedatabase_sector_backfill" in names
-    assert names[-11:] == [
+    assert names[-14:] == [
+        "build_etf_universe_completeness",
         "build_entry_quality_report",
+        "build_cfi_code_review",
         "check_entry_quality_gate",
         "build_ohlcv_plausibility_report",
         "audit_dataset",
         "completion_backlog_after",
         "build_source_gap_classification",
         "build_source_of_truth_decisions",
+        "build_primary_isin_completeness",
         "validate_database",
         "build_improvement_campaign_report",
         "build_release_acceptance_report",
         "build_pr_review_summary",
     ]
-    assert names[names.index("build_entry_quality_report") + 1] == "check_entry_quality_gate"
     assert names[names.index("completion_backlog_after") + 1] == "build_source_gap_classification"
     assert names[names.index("build_source_gap_classification") + 1] == "build_source_of_truth_decisions"
-    assert names[names.index("build_source_of_truth_decisions") + 1] == "validate_database"
+    assert names[names.index("build_source_of_truth_decisions") + 1] == "build_primary_isin_completeness"
+    assert names[names.index("build_primary_isin_completeness") + 1] == "validate_database"
     assert names[names.index("validate_database") + 1] == "build_improvement_campaign_report"
     assert names[names.index("build_improvement_campaign_report") + 1] == "build_release_acceptance_report"
     assert names[names.index("build_release_acceptance_report") + 1] == "build_pr_review_summary"
     assert names[names.index("build_coverage_report") + 1] == "build_source_inventory"
+    assert names[names.index("build_source_inventory") + 1] == "build_etf_universe_completeness"
+    assert names[names.index("build_etf_universe_completeness") + 1] == "build_entry_quality_report"
+    assert names[names.index("build_entry_quality_report") + 1] == "build_cfi_code_review"
+    assert names[names.index("build_cfi_code_review") + 1] == "check_entry_quality_gate"
     assert "eodhd_reviewed_isin_backfill" not in names
     assert all("--apply" not in stage.command for stage in stages)
 
@@ -63,8 +70,11 @@ def test_pipeline_only_stage_filters_commands():
             python="python3",
             only_stages=(
                 "check_entry_quality_gate",
+                "build_cfi_code_review",
                 "completion_backlog_after",
+                "build_etf_universe_completeness",
                 "build_source_of_truth_decisions",
+                "build_primary_isin_completeness",
                 "validate_database",
                 "build_pr_review_summary",
             ),
@@ -72,9 +82,12 @@ def test_pipeline_only_stage_filters_commands():
     )
 
     assert [stage.name for stage in stages] == [
+        "build_etf_universe_completeness",
+        "build_cfi_code_review",
         "check_entry_quality_gate",
         "completion_backlog_after",
         "build_source_of_truth_decisions",
+        "build_primary_isin_completeness",
         "validate_database",
         "build_pr_review_summary",
     ]

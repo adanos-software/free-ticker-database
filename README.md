@@ -9,28 +9,28 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 
 | Metric | Value | Meaning |
 |---|---:|---|
-| Core listings | 57,647 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
-| Primary tickers | 63,161 | Rows in `data/tickers.csv`; one primary row per security. |
+| Core listings | 57,648 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
+| Primary tickers | 63,162 | Rows in `data/tickers.csv`; one primary row per security. |
 | Full listing rows | 74,557 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
-| Stocks | 47,484 | Primary ticker rows where `asset_type=Stock`. |
-| ETFs | 15,677 | Primary ticker rows where `asset_type=ETF`. |
+| Stocks | 47,497 | Primary ticker rows where `asset_type=Stock`. |
+| ETFs | 15,665 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 81 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 88 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 124,703 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
-| ISIN coverage | 61,477 (97.3%) | Primary ticker rows with a non-empty `isin`. |
+| Aliases | 124,713 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
+| ISIN coverage | 61,478 (97.3%) | Primary ticker rows with a non-empty `isin`. |
 | FIGI coverage | 65,764 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
-| Sector/category coverage | 62,970 (99.7%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 47,389 | Primary ticker rows with a non-empty `stock_sector`. |
-| ETF category coverage | 15,581 | Primary ticker rows with a non-empty `etf_category`. |
-| Core listing-scope rows | 57,647 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
-| Core primary rows with ISIN | 56,700 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
+| Sector/category coverage | 62,972 (99.7%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Stock sector coverage | 47,401 | Primary ticker rows with a non-empty `stock_sector`. |
+| ETF category coverage | 15,571 | Primary ticker rows with a non-empty `etf_category`. |
+| Core listing-scope rows | 57,648 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
+| Core primary rows with ISIN | 56,701 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
 | Core primary rows missing ISIN | 947 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
-| Extended listing-scope rows | 16,910 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
-| Official full exchanges | 30 | Current-scope source inventory rows marked `official_full`. |
-| Official partial exchanges | 33 | Current-scope source inventory rows marked `official_partial`. |
-| Missing current-scope exchanges | 2 | Current-scope source inventory rows still marked `missing`; see `data/reports/source_inventory_gap.md`. |
-| Entry quality source-gap rows | 6,850 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
-| Entry quality warn rows | 75 | Listing-keyed rows with deterministic warnings requiring review/allowlist coverage. |
+| Extended listing-scope rows | 16,909 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
+| Official full exchanges | 33 | Current-scope source inventory rows marked `official_full`. |
+| Official partial exchanges | 34 | Current-scope source inventory rows marked `official_partial`. |
+| Missing current-scope exchanges | 0 | Current-scope source inventory rows still marked `missing`; see `data/reports/source_inventory_gap.md`. |
+| Entry quality source-gap rows | 6,625 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
+| Entry quality warn rows | 74 | Listing-keyed rows with deterministic warnings requiring review/allowlist coverage. |
 
 Snapshot values are generated-report backed and intentionally human-formatted with comma separators and one-decimal coverage percentages. `data/reports/coverage_report.json`, `data/reports/source_inventory_gap.json`, and `data/reports/entry_quality.json` are the canonical machine-readable sources for these counts. `source_inventory_gap.md` is authoritative for current-scope source gaps; this snapshot must not claim zero missing current-scope sources while that report lists a missing source.
 
@@ -78,7 +78,10 @@ Reference and audit files:
 | [`data/reports/m3_correctness_audit.md`](data/reports/m3_correctness_audit.md) | Re-audit artifact generated after each M3 correctness block; does not claim 99% correctness without external stratified audit evidence |
 | [`data/reports/m3_non_equity_leakage_guard.md`](data/reports/m3_non_equity_leakage_guard.md) | Scheduled guard report for preferreds, warrants, units, rights, notes, CEFs, and other non-common-stock leakage |
 | [`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md) | Missing/partial/global official-source backlog |
+| [`data/reports/etf_universe_completeness.md`](data/reports/etf_universe_completeness.md) | Official ETF-directory comparison against the DB ETF universe; missing rows are gated review candidates |
 | [`data/reports/completion_backlog.md`](data/reports/completion_backlog.md) | Prioritized missing ISIN/sector/category backlog |
+| [`data/reports/primary_isin_completeness.md`](data/reports/primary_isin_completeness.md) | D1 missing primary-ISIN source paths, priority venues, and apply gates |
+| [`data/reports/cfi_code_review.md`](data/reports/cfi_code_review.md) | Review-only CFI evidence surfaced from official masterfiles for product-class gates |
 | [`data/reports/source_gap_classification.md`](data/reports/source_gap_classification.md) | Deterministic residual source-gap classes and row-level source gates |
 | [`data/reports/source_of_truth_decisions.md`](data/reports/source_of_truth_decisions.md) | Source-of-truth outcomes for each residual gap: fill, accepted source gap, or core-exclusion candidate |
 | [`data/reports/b3_residual_isin_review.md`](data/reports/b3_residual_isin_review.md) | Listing-keyed review of the final B3 ISIN residuals after official B3 refreshes |
@@ -176,7 +179,7 @@ Top exchanges by primary ticker count:
 |---|---:|
 | OTC | 7,539 |
 | NASDAQ | 4,555 |
-| LSE | 3,818 |
+| LSE | 3,819 |
 | TSE | 3,201 |
 | SZSE | 3,083 |
 | HKEX | 2,840 |
@@ -197,7 +200,10 @@ For full exchange, country, source, and verification coverage, use:
 ```bash
 python3 scripts/build_coverage_report.py
 python3 scripts/build_source_inventory.py
+python3 scripts/build_etf_universe_completeness.py
 python3 scripts/build_completion_backlog.py
+python3 scripts/build_primary_isin_completeness.py
+python3 scripts/build_cfi_code_review.py
 python3 scripts/build_b3_residual_isin_review.py
 python3 scripts/build_b3_residual_sector_review.py
 python3 scripts/build_otc_scope_review.py
@@ -229,7 +235,10 @@ python3 scripts/rebuild_dataset.py
 python3 scripts/build_listing_history.py
 python3 scripts/build_coverage_report.py
 python3 scripts/build_source_inventory.py
+python3 scripts/build_etf_universe_completeness.py
 python3 scripts/build_completion_backlog.py
+python3 scripts/build_primary_isin_completeness.py
+python3 scripts/build_cfi_code_review.py
 python3 scripts/build_b3_residual_isin_review.py
 python3 scripts/build_b3_residual_sector_review.py
 python3 scripts/build_otc_scope_review.py
@@ -297,7 +306,7 @@ python3 scripts/rebuild_dataset.py
 
 Implemented primary exchange/reference inputs include Nasdaq Trader, Nasdaq Nordic, ASX, Deutsche Boerse, B3, TMX, Euronext, JPX/TSE, TWSE, TPEX, SSE/SZSE, Bursa Malaysia, BME, BMV, WSE/NewConnect, TASE, KRX, HOSE/HNX/UPCOM, CSE Sri Lanka, and SEC company tickers.
 
-Official source candidates and reconciled source gaps are tracked in [`data/masterfiles/source_candidates.json`](data/masterfiles/source_candidates.json) and summarized by [`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md). Current source inventory status: `2` missing current-scope sources, `1` parser todo rows, `0` real global-expansion candidates, `30` official-full rows, and `33` official-partial rows. Remaining work includes source-parser backlog plus field-completion and taxonomy coverage.
+Official source candidates and reconciled source gaps are tracked in [`data/masterfiles/source_candidates.json`](data/masterfiles/source_candidates.json) and summarized by [`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md). Current source inventory status: `0` missing current-scope sources, `0` parser todo rows, `0` real global-expansion candidates, `33` official-full rows, and `34` official-partial rows. Remaining work includes source-parser backlog plus field-completion and taxonomy coverage.
 
 Secondary/reviewed enrichment inputs include [EODHD](https://eodhd.com/financial-apis/), [FinanceDatabase](https://github.com/JerBouma/FinanceDatabase), official B3 COTAHIST files, NYSE Group Security Master sample files, TradingView free scanner metadata, XTB OMI specification data, Yahoo Finance review helpers, [FinancialData.net](https://financialdata.net/documentation) symbol-universe matching, OpenFIGI, GLEIF, and curated production aliases from [api.adanos.org](https://api.adanos.org).
 

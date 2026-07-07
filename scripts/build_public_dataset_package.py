@@ -43,7 +43,7 @@ FILES = [
     DatasetFile(
         ROOT / "data" / "tickers.csv",
         "tickers.csv",
-        "Canonical primary security export, one row per stock or ETF.",
+        "Legacy/global-unique compatibility export, one row per exported ticker.",
         {
             "ticker": "Primary ticker symbol in the dataset.",
             "name": "Current security or fund name.",
@@ -60,7 +60,7 @@ FILES = [
     DatasetFile(
         ROOT / "data" / "core_listings.csv",
         "core_listings.csv",
-        "Collision-safe canonical core export keyed by listing_key, one primary listing row per security.",
+        "Collision-safe canonical core security export keyed by listing_key, one primary listing row per security.",
         {
             "listing_key": "Stable venue-level key in EXCHANGE::TICKER format.",
             "ticker": "Primary listing ticker symbol for the security.",
@@ -268,8 +268,9 @@ def write_kaggle_metadata(target: Path, kaggle_id: str) -> None:
         "subtitle": "Global stocks and ETFs with listings, identifiers, aliases, and symbol changes",
         "description": (
             "Free stock and ETF ticker reference data maintained by Adanos Software GmbH. "
-            "The dataset includes primary ticker rows, venue-level listings, ISIN/WKN identifiers, "
-            "alias lookup rows, cross-listings, scope metadata, listing events, and reviewed symbol changes. "
+            "The dataset includes collision-safe canonical core listings, legacy primary ticker rows, "
+            "venue-level listings, ISIN/WKN identifiers, alias lookup rows, cross-listings, scope metadata, "
+            "listing events, and reviewed symbol changes. "
             "Source and project page: https://adanos.org. License: MIT."
         ),
         "id": kaggle_id,
@@ -418,12 +419,13 @@ Version: `{version}`
 ```python
 from datasets import load_dataset
 
+core = load_dataset("{repo_id}", "core_listings", split="train")
 tickers = load_dataset("{repo_id}", "tickers", split="train")
 listings = load_dataset("{repo_id}", "listings", split="train")
 aliases = load_dataset("{repo_id}", "aliases", split="train")
 ```
 
-Each file is exposed as its own config (`tickers`, `listings`, `aliases`, `identifiers`, `cross_listings`, `instrument_scopes`, `listing_events`, `symbol_changes`). Parquet variants are used by the loader; CSV variants remain available for direct download.
+Each file is exposed as its own config (`core_listings`, `tickers`, `listings`, `aliases`, `identifiers`, `cross_listings`, `instrument_scopes`, `listing_events`, `symbol_changes`). Parquet variants are used by the loader; CSV variants remain available for direct download.
 """
 
     body += f"""

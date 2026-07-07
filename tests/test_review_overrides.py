@@ -176,3 +176,91 @@ def test_apply_review_alias_removals_removes_name_derived_aliases_too():
     removals = {"alten", "legacy"}
 
     assert rebuild_dataset.apply_review_alias_removals(aliases, removals) == ["alten sa"]
+
+
+def test_apply_official_listing_asset_type_uses_jpx_listed_issues(tmp_path, monkeypatch):
+    reference = tmp_path / "reference.csv"
+    write_csv(
+        reference,
+        [
+            "source_key",
+            "ticker",
+            "exchange",
+            "asset_type",
+            "listing_status",
+            "reference_scope",
+            "official",
+        ],
+        [
+            {
+                "source_key": "jpx_listed_issues",
+                "ticker": "462A",
+                "exchange": "TSE",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": "exchange_directory",
+                "official": "true",
+            },
+            {
+                "source_key": "jpx_tse_stock_detail",
+                "ticker": "462A",
+                "exchange": "TSE",
+                "asset_type": "ETF",
+                "listing_status": "active",
+                "reference_scope": "security_identifier_registry_subset",
+                "official": "true",
+            },
+        ],
+    )
+    monkeypatch.setattr(rebuild_dataset, "MASTERFILE_REFERENCE_CSV", reference)
+    rebuild_dataset.load_active_jpx_listed_issue_asset_types.cache_clear()
+
+    corrected = rebuild_dataset.apply_official_listing_asset_type(
+        {
+            "ticker": "462A",
+            "exchange": "TSE",
+            "asset_type": "ETF",
+            "stock_sector": "",
+            "etf_category": "",
+        },
+        {},
+    )
+
+    assert corrected["asset_type"] == "Stock"
+    assert corrected["etf_category"] == ""
+
+
+def test_apply_official_listing_asset_type_keeps_review_override(tmp_path, monkeypatch):
+    reference = tmp_path / "reference.csv"
+    write_csv(
+        reference,
+        [
+            "source_key",
+            "ticker",
+            "exchange",
+            "asset_type",
+            "listing_status",
+            "reference_scope",
+            "official",
+        ],
+        [
+            {
+                "source_key": "jpx_listed_issues",
+                "ticker": "462A",
+                "exchange": "TSE",
+                "asset_type": "Stock",
+                "listing_status": "active",
+                "reference_scope": "exchange_directory",
+                "official": "true",
+            },
+        ],
+    )
+    monkeypatch.setattr(rebuild_dataset, "MASTERFILE_REFERENCE_CSV", reference)
+    rebuild_dataset.load_active_jpx_listed_issue_asset_types.cache_clear()
+
+    corrected = rebuild_dataset.apply_official_listing_asset_type(
+        {"ticker": "462A", "exchange": "TSE", "asset_type": "ETF"},
+        {"asset_type": {"decision": "update", "proposed_value": "ETF"}},
+    )
+
+    assert corrected["asset_type"] == "ETF"

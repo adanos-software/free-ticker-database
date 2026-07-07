@@ -1,13 +1,13 @@
 # Completion Backlog
 
-Generated at: `2026-07-06T11:17:00Z`
+Generated at: `2026-07-07T10:09:52Z`
 
 ## Summary
 
 - Missing primary ISIN rows: `947`
-- Missing stock sectors: `95`
-- Missing ETF categories: `96`
-- Official symbol collisions tracked in exchange references: `11262`
+- Missing stock sectors: `96`
+- Missing ETF categories: `94`
+- Official symbol collisions tracked in exchange references: `11376`
 - Core rows hidden only by the legacy global-ticker compatibility export: `2025`
 
 ## Next Safe Batches
@@ -54,7 +54,7 @@ These are orchestration candidates only. They do not authorize direct data chang
 | 2 | NASDAQ | Stock | 18 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 3 | NYSE | Stock | 7 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 4 | B3 | Stock | 5 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
-| 5 | LSE | Stock | 3 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
+| 5 | LSE | Stock | 4 | official_full | FinanceDatabase and same-ISIN peer propagation, with official industry feeds preferred when available. | yes |
 | 6 | ASX | Stock | 3 | official_partial | Official exchange industry classifications first; FinanceDatabase as reviewed fallback. | yes |
 | 7 | BK | Stock | 3 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
 | 8 | Euronext | Stock | 3 | official_full | Official industry classification or reviewed FinanceDatabase sector fallback. | yes |
@@ -74,10 +74,10 @@ These are orchestration candidates only. They do not authorize direct data chang
 | 5 | NGX | ETF | 6 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
 | 6 | TSX | ETF | 5 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
 | 7 | BATS | ETF | 5 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 8 | TSE | ETF | 5 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 9 | BVB | ETF | 4 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 10 | LSE | ETF | 3 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
-| 11 | NYSE | ETF | 3 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 8 | BVB | ETF | 4 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 9 | LSE | ETF | 3 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 10 | NYSE | ETF | 3 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
+| 11 | TSE | ETF | 3 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
 | 12 | TSXV | ETF | 3 | official_full | Same-ISIN peer propagation plus a reviewed ETF-name category classifier; official fund category feeds where available. | yes |
 
 ## Combined Sector/ETF Category Priority
@@ -90,12 +90,12 @@ These are orchestration candidates only. They do not authorize direct data chang
 | 4 | ASX | 12 | 3 | 9 | official_partial |
 | 5 | NYSE | 10 | 7 | 3 | official_full |
 | 6 | SSE_CL | 8 | 0 | 8 | official_full |
-| 7 | LSE | 6 | 3 | 3 | official_full |
+| 7 | LSE | 7 | 4 | 3 | official_full |
 | 8 | NGX | 6 | 0 | 6 | official_full |
 | 9 | TSX | 6 | 1 | 5 | official_full |
 | 10 | B3 | 5 | 5 | 0 | official_full |
 | 11 | BATS | 5 | 0 | 5 | official_full |
-| 12 | TSE | 5 | 0 | 5 | official_full |
+| 12 | BVB | 4 | 0 | 4 | official_full |
 
 ## Model Migration Prep
 

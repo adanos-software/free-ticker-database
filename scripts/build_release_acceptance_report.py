@@ -81,6 +81,9 @@ RELEASE_SOURCE_REPORTS = {
     "m3_identity_residual_campaign": "data/reports/m3_identity_residual_campaign.json",
     "m3_non_equity_leakage_guard": "data/reports/m3_non_equity_leakage_guard.json",
     "m3_correctness_audit": "data/reports/m3_correctness_audit.json",
+    "primary_isin_completeness": "data/reports/primary_isin_completeness.json",
+    "etf_universe_completeness": "data/reports/etf_universe_completeness.json",
+    "cfi_code_review": "data/reports/cfi_code_review.json",
 }
 
 REQUIRED_GATE_GROUPS = {
@@ -158,6 +161,20 @@ EXPECTED_DELTA_SOURCE_FILES = {
     "current_snapshot_ohlcv_plausibility": "data/reports/ohlcv_plausibility.json",
     "current_snapshot_ohlcv_warning_review": "data/reports/ohlcv_warning_review.json",
     "current_snapshot_financialdata_isin_supplements_review": "data/reports/financialdata_isin_supplements_review.json",
+}
+EXPECTED_PRIMARY_ISIN_COMPLETENESS_SOURCE_FILES = {
+    "core_listings_csv": "data/core_listings.csv",
+    "source_gap_classification_csv": "data/reports/source_gap_classification.csv",
+    "source_of_truth_decisions_csv": "data/reports/source_of_truth_decisions.csv",
+}
+EXPECTED_ETF_UNIVERSE_COMPLETENESS_SOURCE_FILES = {
+    "listings_csv": "data/listings.csv",
+    "masterfile_reference_csv": "data/masterfiles/reference.csv",
+    "masterfile_summary_json": "data/masterfiles/summary.json",
+}
+EXPECTED_CFI_CODE_REVIEW_SOURCE_FILES = {
+    "reference_csv": "data/masterfiles/reference.csv",
+    "non_equity_guard": "scripts/lib/non_equity_guard.py",
 }
 REQUIRED_COVERAGE_FRESHNESS_KEYS = (
     "tickers_built_at",
@@ -18364,6 +18381,339 @@ def evaluate_source_inventory_gap_gate(report: dict[str, Any]) -> dict[str, Any]
     }
 
 
+def expected_source_file_gaps(actual: dict[str, Any], expected: dict[str, str]) -> dict[str, Any]:
+    return {
+        "missing_or_mismatched": {
+            key: {"expected": value, "actual": actual.get(key)}
+            for key, value in expected.items()
+            if actual.get(key) != value
+        },
+        "unexpected": sorted(key for key in actual if key not in expected),
+    }
+
+
+def policy_text_from_report(report: dict[str, Any]) -> str:
+    def flatten(value: Any) -> str:
+        if isinstance(value, dict):
+            return " ".join(flatten(item) for item in value.values())
+        if isinstance(value, list):
+            return " ".join(flatten(item) for item in value)
+        return str(value)
+
+    meta = report.get("_meta", {})
+    summary = report.get("summary", {})
+    candidates = []
+    if isinstance(meta, dict):
+        candidates.append(meta.get("policy", ""))
+    if isinstance(summary, dict):
+        candidates.append(summary.get("policy", ""))
+    candidates.append(report.get("policy", ""))
+    return " ".join(flatten(candidate) for candidate in candidates).lower()
+
+
+def evaluate_primary_isin_completeness_gate(report: dict[str, Any]) -> dict[str, Any]:
+    meta = report.get("_meta", {})
+    summary = report.get("summary", {})
+    rows = report.get("rows", [])
+    if not isinstance(meta, dict):
+        meta = {}
+    if not isinstance(summary, dict):
+        summary = {}
+    if not isinstance(rows, list):
+        rows = []
+    source_files = meta.get("source_files", {})
+    if not isinstance(source_files, dict):
+        source_files = {}
+    source_file_gaps = expected_source_file_gaps(source_files, EXPECTED_PRIMARY_ISIN_COMPLETENESS_SOURCE_FILES)
+    generated_at = report_generated_at(report)
+    invalid_generated_at = generated_at if generated_at and not is_valid_iso_utc_timestamp(generated_at) else ""
+    priority_exchanges = set(summary.get("priority_exchanges", []))
+    blocked_values = {
+        "blocked_until_core_or_extended_scope_decision",
+        "blocked_until_instrument_specific_identity_source",
+    }
+    expected_counts = {
+        "missing_primary_isin_rows": len(rows),
+        "priority_exchange_rows": sum(
+            1 for row in rows if isinstance(row, dict) and row.get("exchange") in priority_exchanges
+        ),
+        "non_priority_exchange_rows": sum(
+            1 for row in rows if isinstance(row, dict) and row.get("exchange") not in priority_exchanges
+        ),
+        "blocked_rows": sum(
+            1 for row in rows if isinstance(row, dict) and row.get("apply_eligibility") in blocked_values
+        ),
+    }
+    expected_counts["eligible_after_allowed_source_gates"] = len(rows) - expected_counts["blocked_rows"]
+    count_gaps = {
+        key: {"expected": expected, "actual": summary.get(key)}
+        for key, expected in expected_counts.items()
+        if summary.get(key) != expected
+    }
+    required_row_fields = {
+        "listing_key",
+        "ticker",
+        "exchange",
+        "asset_type",
+        "gap_class",
+        "source_of_truth_outcome",
+        "allowed_source_path",
+        "apply_eligibility",
+        "source_gate",
+        "next_action",
+    }
+    row_gaps = []
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            row_gaps.append({"row_index": index, "reason": "row_is_not_object"})
+            continue
+        missing_fields = sorted(field for field in required_row_fields if not row.get(field))
+        source_gate = str(row.get("source_gate", "")).lower()
+        source_gate_missing = [
+            marker for marker in ("checksum", "identity", "collision") if marker not in source_gate
+        ]
+        if missing_fields or source_gate_missing:
+            row_gaps.append(
+                {
+                    "row_index": index,
+                    "listing_key": row.get("listing_key", ""),
+                    "missing_fields": missing_fields,
+                    "source_gate_missing": source_gate_missing,
+                }
+            )
+    policy_text = policy_text_from_report(report)
+    policy_missing_marker_groups = [
+        group
+        for group, markers in {
+            "no_auto_fill": ("does not fill", "no isin is inferred"),
+            "allowed_sources": ("gleif", "firds", "openfigi", "asx isin workbook", "tmx"),
+            "identity_collision_gate": ("checksum", "identity", "collision"),
+        }.items()
+        if not any(marker in policy_text for marker in markers)
+    ]
+    return {
+        "passed": (
+            bool(rows)
+            and bool(generated_at)
+            and not invalid_generated_at
+            and not source_file_gaps["missing_or_mismatched"]
+            and not source_file_gaps["unexpected"]
+            and not count_gaps
+            and not row_gaps
+            and not policy_missing_marker_groups
+        ),
+        "generated_at": generated_at,
+        "invalid_generated_at": invalid_generated_at,
+        "rows": len(rows),
+        "summary_counts": {key: summary.get(key) for key in expected_counts},
+        "source_file_gaps": source_file_gaps,
+        "count_gaps": count_gaps,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+    }
+
+
+def evaluate_etf_universe_completeness_gate(report: dict[str, Any]) -> dict[str, Any]:
+    meta = report.get("_meta", {})
+    summary = report.get("summary", {})
+    by_source = report.get("by_source", [])
+    by_exchange = report.get("by_exchange", [])
+    missing_rows = report.get("missing_rows", [])
+    if not isinstance(meta, dict):
+        meta = {}
+    if not isinstance(summary, dict):
+        summary = {}
+    if not isinstance(by_source, list):
+        by_source = []
+    if not isinstance(by_exchange, list):
+        by_exchange = []
+    if not isinstance(missing_rows, list):
+        missing_rows = []
+    source_files = meta.get("source_files", {})
+    if not isinstance(source_files, dict):
+        source_files = {}
+    source_file_gaps = expected_source_file_gaps(source_files, EXPECTED_ETF_UNIVERSE_COMPLETENESS_SOURCE_FILES)
+    generated_at = report_generated_at(report)
+    invalid_generated_at = generated_at if generated_at and not is_valid_iso_utc_timestamp(generated_at) else ""
+    count_gaps: dict[str, Any] = {}
+    official_rows = int(summary.get("official_etf_rows") or 0)
+    matched_rows = int(summary.get("matched_etf_listings") or 0)
+    missing_or_review_rows = int(summary.get("missing_or_review_rows") or 0)
+    if official_rows != matched_rows + missing_or_review_rows:
+        count_gaps["official_etf_rows"] = {
+            "expected": matched_rows + missing_or_review_rows,
+            "actual": official_rows,
+        }
+    missing_total = sum(
+        int(summary.get(key) or 0)
+        for key in ("missing_from_db", "collision_hidden_by_global_ticker", "local_listing_asset_type_mismatch")
+    )
+    if missing_or_review_rows != missing_total:
+        count_gaps["missing_or_review_rows"] = {"expected": missing_total, "actual": missing_or_review_rows}
+    if len(missing_rows) != missing_or_review_rows:
+        count_gaps["missing_rows"] = {"expected": missing_or_review_rows, "actual": len(missing_rows)}
+    if len(by_source) != int(summary.get("source_count") or 0):
+        count_gaps["source_count"] = {"expected": len(by_source), "actual": summary.get("source_count")}
+    if len(by_exchange) != int(summary.get("exchange_count") or 0):
+        count_gaps["exchange_count"] = {"expected": len(by_exchange), "actual": summary.get("exchange_count")}
+    expected_recall = round(matched_rows / official_rows * 100, 2) if official_rows else None
+    if summary.get("etf_recall_pct") != expected_recall:
+        count_gaps["etf_recall_pct"] = {"expected": expected_recall, "actual": summary.get("etf_recall_pct")}
+
+    required_missing_fields = {"source_key", "exchange", "ticker", "match_status", "candidate_action", "source_gate"}
+    row_gaps = []
+    for index, row in enumerate(missing_rows):
+        if not isinstance(row, dict):
+            row_gaps.append({"row_index": index, "reason": "row_is_not_object"})
+            continue
+        missing_fields = sorted(field for field in required_missing_fields if not row.get(field))
+        source_gate = str(row.get("source_gate", "")).lower()
+        source_gate_missing = [
+            marker for marker in ("identity", "checksum", "collision") if marker not in source_gate
+        ]
+        if missing_fields or source_gate_missing:
+            row_gaps.append(
+                {
+                    "row_index": index,
+                    "exchange": row.get("exchange", ""),
+                    "ticker": row.get("ticker", ""),
+                    "missing_fields": missing_fields,
+                    "source_gate_missing": source_gate_missing,
+                }
+            )
+    policy_text = policy_text_from_report(report)
+    policy_missing_marker_groups = [
+        group
+        for group, markers in {
+            "official_only": ("official",),
+            "no_auto_add": ("never adds", "no_auto_add", "review candidates"),
+            "identity_collision_gate": ("identity", "checksum", "collision"),
+        }.items()
+        if not any(marker in policy_text for marker in markers)
+    ]
+    return {
+        "passed": (
+            official_rows > 0
+            and bool(generated_at)
+            and not invalid_generated_at
+            and not source_file_gaps["missing_or_mismatched"]
+            and not source_file_gaps["unexpected"]
+            and not count_gaps
+            and not row_gaps
+            and not policy_missing_marker_groups
+        ),
+        "generated_at": generated_at,
+        "invalid_generated_at": invalid_generated_at,
+        "official_etf_rows": official_rows,
+        "matched_etf_listings": matched_rows,
+        "missing_or_review_rows": missing_or_review_rows,
+        "etf_recall_pct": summary.get("etf_recall_pct"),
+        "source_file_gaps": source_file_gaps,
+        "count_gaps": count_gaps,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+    }
+
+
+def evaluate_cfi_code_review_gate(report: dict[str, Any]) -> dict[str, Any]:
+    meta = report.get("_meta", {})
+    summary = report.get("summary", {})
+    rows = report.get("rows", [])
+    if not isinstance(meta, dict):
+        meta = {}
+    if not isinstance(summary, dict):
+        summary = {}
+    if not isinstance(rows, list):
+        rows = []
+    source_files = meta.get("source_files", {})
+    if not isinstance(source_files, dict):
+        source_files = {}
+    source_file_gaps = expected_source_file_gaps(source_files, EXPECTED_CFI_CODE_REVIEW_SOURCE_FILES)
+    generated_at = report_generated_at(report)
+    invalid_generated_at = generated_at if generated_at and not is_valid_iso_utc_timestamp(generated_at) else ""
+    expected_counts = {
+        "cfi_evidence_rows": len(rows),
+        "source_count": len(
+            {row.get("source_key", "") for row in rows if isinstance(row, dict) and row.get("source_key")}
+        ),
+        "exchange_count": len(
+            {row.get("exchange", "") for row in rows if isinstance(row, dict) and row.get("exchange")}
+        ),
+        "blocked_non_common_stock_review_rows": sum(
+            1
+            for row in rows
+            if isinstance(row, dict) and row.get("cfi_review_decision") == "blocked_non_common_stock_review"
+        ),
+    }
+    count_gaps = {
+        key: {"expected": expected, "actual": summary.get(key)}
+        for key, expected in expected_counts.items()
+        if summary.get(key) != expected
+    }
+    required_row_fields = {
+        "source_key",
+        "exchange",
+        "ticker",
+        "asset_type",
+        "cfi",
+        "cfi_review_decision",
+        "guard_decision",
+        "source_gate",
+        "recommended_action",
+    }
+    row_gaps = []
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            row_gaps.append({"row_index": index, "reason": "row_is_not_object"})
+            continue
+        missing_fields = sorted(field for field in required_row_fields if not row.get(field))
+        source_gate = str(row.get("source_gate", "")).lower()
+        source_gate_missing = [
+            marker for marker in ("identity", "checksum", "collision") if marker not in source_gate
+        ]
+        if missing_fields or source_gate_missing:
+            row_gaps.append(
+                {
+                    "row_index": index,
+                    "exchange": row.get("exchange", ""),
+                    "ticker": row.get("ticker", ""),
+                    "missing_fields": missing_fields,
+                    "source_gate_missing": source_gate_missing,
+                }
+            )
+    policy_text = policy_text_from_report(report)
+    policy_missing_marker_groups = [
+        group
+        for group, markers in {
+            "official_or_reviewed": ("official", "review"),
+            "no_auto_apply": ("never applies", "does not fill", "no_auto_apply"),
+            "identity_collision_gate": ("identity", "checksum", "collision"),
+        }.items()
+        if not any(marker in policy_text for marker in markers)
+    ]
+    return {
+        "passed": (
+            bool(generated_at)
+            and not invalid_generated_at
+            and not source_file_gaps["missing_or_mismatched"]
+            and not source_file_gaps["unexpected"]
+            and not count_gaps
+            and not row_gaps
+            and not policy_missing_marker_groups
+        ),
+        "generated_at": generated_at,
+        "invalid_generated_at": invalid_generated_at,
+        "cfi_evidence_rows": len(rows),
+        "source_file_gaps": source_file_gaps,
+        "count_gaps": count_gaps,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+        "policy_missing_marker_groups": policy_missing_marker_groups,
+    }
+
+
 def build_payload() -> dict[str, Any]:
     refresh_m3_correctness_campaign_reports()
     generated_at = utc_now_iso()
@@ -18414,6 +18764,9 @@ def build_payload() -> dict[str, Any]:
     m3_identity_residual = load_json(REPORTS_DIR / "m3_identity_residual_campaign.json")
     m3_non_equity_guard = load_json(REPORTS_DIR / "m3_non_equity_leakage_guard.json")
     m3_correctness_audit = load_json(REPORTS_DIR / "m3_correctness_audit.json")
+    primary_isin_completeness = load_json(REPORTS_DIR / "primary_isin_completeness.json")
+    etf_universe_completeness = load_json(REPORTS_DIR / "etf_universe_completeness.json")
+    cfi_code_review = load_json(REPORTS_DIR / "cfi_code_review.json")
     gates = gate_lookup(validation)
     criteria = {
         key: evaluate_gate_group(gates, names)
@@ -18454,6 +18807,9 @@ def build_payload() -> dict[str, Any]:
         official_name_mismatch_backfill
     )
     criteria["source_inventory_gap_gate"] = evaluate_source_inventory_gap_gate(source_inventory_gap)
+    criteria["primary_isin_completeness_gate"] = evaluate_primary_isin_completeness_gate(primary_isin_completeness)
+    criteria["etf_universe_completeness_gate"] = evaluate_etf_universe_completeness_gate(etf_universe_completeness)
+    criteria["cfi_code_review_gate"] = evaluate_cfi_code_review_gate(cfi_code_review)
     criteria["source_refresh_queue_gate"] = evaluate_source_refresh_queue_gate(source_refresh_queue)
     criteria["source_gap_traceability"] = evaluate_source_gap_traceability(source_gap)
     criteria["symbol_change_review_gate"] = evaluate_symbol_change_review_gate(symbol_changes_review)

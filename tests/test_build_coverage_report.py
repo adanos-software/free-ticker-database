@@ -9,6 +9,7 @@ from scripts.build_coverage_report import (
     build_country_report,
     build_exchange_reference_catalog,
     build_exchange_report,
+    build_exchange_report,
     build_freshness_report,
     build_gap_report,
     build_global_summary,
@@ -57,6 +58,53 @@ def test_build_exchange_reference_catalog_classifies_venue_statuses():
             "reference_scopes": ["interlisted_subset"],
         },
     }
+
+
+def test_build_exchange_report_publishes_inverse_recall_metrics():
+    masterfiles = [
+        {
+            "exchange": "NASDAQ",
+            "ticker": "AAA",
+            "source_key": "nasdaq_listed",
+            "official": "true",
+            "reference_scope": "exchange_directory",
+            "listing_status": "active",
+        },
+        {
+            "exchange": "NASDAQ",
+            "ticker": "MISS",
+            "source_key": "nasdaq_listed",
+            "official": "true",
+            "reference_scope": "exchange_directory",
+            "listing_status": "active",
+        },
+        {
+            "exchange": "NASDAQ",
+            "ticker": "HIDE",
+            "source_key": "nasdaq_listed",
+            "official": "true",
+            "reference_scope": "exchange_directory",
+            "listing_status": "active",
+        },
+    ]
+    tickers = [
+        {"ticker": "AAA", "exchange": "NASDAQ", "isin": "", "asset_type": "Stock", "sector": ""},
+        {"ticker": "HIDE", "exchange": "NYSE", "isin": "", "asset_type": "Stock", "sector": ""},
+    ]
+
+    rows = build_exchange_report(tickers, [], masterfiles)
+    nasdaq = next(row for row in rows if row["exchange"] == "NASDAQ")
+
+    assert nasdaq["official_recall_denominator"] == 3
+    assert nasdaq["official_recall_matches"] == 1
+    assert nasdaq["official_recall_missing"] == 2
+    assert nasdaq["official_recall_pct"] == 33.33
+    assert nasdaq["official_recall_gap_rate"] == 66.67
+    assert nasdaq["official_recall_target"] is True
+    assert nasdaq["official_recall_pass"] is False
+    assert nasdaq["official_recall_exception"] == (
+        "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=2;symbol_collisions=1"
+    )
 
 
 def test_build_source_report_adds_age_and_freshness_status(monkeypatch):
@@ -408,6 +456,19 @@ def test_build_exchange_report_includes_masterfile_and_verification_rates():
         stock_verification_exchange_rows=verification_rows,
         etf_verification_exchange_rows=etf_verification_rows,
     )
+    recall_keys = {
+        "official_recall_denominator",
+        "official_recall_matches",
+        "official_recall_missing",
+        "official_recall_pct",
+        "official_recall_gap_rate",
+        "official_recall_target",
+        "official_recall_pass",
+        "official_recall_exception",
+    }
+    assert rows[0]["official_recall_pct"] == 50.0
+    assert rows[0]["official_recall_missing"] == 1
+    rows = [{key: value for key, value in row.items() if key not in recall_keys} for row in rows]
 
     assert rows == [
         {
@@ -1004,6 +1065,21 @@ def test_find_latest_verification_run_accepts_base_output_dir(tmp_path):
     )
 
     assert find_latest_verification_run(tmp_path) == tmp_path
+
+
+def test_find_latest_verification_run_prefers_named_run_over_base_output_dir(tmp_path):
+    (tmp_path / "chunk-01-of-01.summary.json").write_text(
+        '{"items": 1, "status_counts": {"verified": 1}}',
+        encoding="utf-8",
+    )
+    run_dir = tmp_path / "run-20260707"
+    run_dir.mkdir()
+    (run_dir / "summary.json").write_text(
+        '{"items": 2, "status_counts": {"verified": 2}}',
+        encoding="utf-8",
+    )
+
+    assert find_latest_verification_run(tmp_path) == run_dir
 
 
 def test_load_verification_report_without_run_has_generated_at():
