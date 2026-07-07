@@ -2,6 +2,26 @@
 
 ## [Unreleased]
 
+## [3.31.01] - 2026-07-07
+
+### Summary
+
+**M3 correctness campaign fix release for issue #118.** Publishes the merged M3 correctness campaign reports from PR #121, including source-gated sector/category, name freshness, identity residual, non-equity leakage, and re-audit evidence.
+
+### Added
+
+- Added M3 correctness campaign artifacts and release-acceptance coverage for the C1, C2, C4, C5, and C6 campaign gates.
+- Added a shared non-equity guard used by M3 reporting and Nasdaq new-listing ingestion.
+
+### Fixed
+
+- Ensured Unit/Warrant/Right/Debt/Preferred evidence is evaluated before common-share allow-listing in the non-equity guard.
+- Ensured release acceptance regenerates M3 reports before evaluating them, preventing stale M3 artifacts from passing the release gate.
+
+### Verification
+
+- `pytest`: 1,512 passed. `scripts/validate_database.py`: 0/83 failed error gates. `scripts/build_release_acceptance_report.py`: 61/61 criteria passed. `scripts/check_readme_snapshot.py`: pass. Bumps VERSION to 3.31.01.
+
 ## [3.31.00] - 2026-07-07
 
 ### Summary
