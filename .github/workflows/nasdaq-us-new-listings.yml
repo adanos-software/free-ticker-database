@@ -8,7 +8,6 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  statuses: write
 
 jobs:
   update-nasdaq-us-new-listings:
@@ -17,6 +16,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Require automation PR token
+        env:
+          AUTOMATION_PR_TOKEN: ${{ secrets.AUTOMATION_PR_TOKEN }}
+        run: |
+          if [ -z "$AUTOMATION_PR_TOKEN" ]; then
+            echo "AUTOMATION_PR_TOKEN is required so automation PRs trigger pull_request CI." >&2
+            exit 1
+          fi
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -91,7 +101,7 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v8.1.1
         with:
-          token: ${{ secrets.AUTOMATION_PR_TOKEN || github.token }}
+          token: ${{ secrets.AUTOMATION_PR_TOKEN }}
           branch: automation/nasdaq-us-new-listings
           delete-branch: true
           commit-message: Update Nasdaq US new listings
@@ -111,22 +121,8 @@ jobs:
 
             Apply report: `data/reports/nasdaq_us_new_listings_apply.md`
 
-      - name: Publish validation status
-        if: steps.cpr.outputs.pull-request-number != ''
-        env:
-          GH_TOKEN: ${{ secrets.AUTOMATION_PR_TOKEN || github.token }}
-        run: |
-          head_sha="$(gh pr view "${{ steps.cpr.outputs.pull-request-number }}" --json headRefOid --jq .headRefOid)"
-          gh api \
-            --method POST \
-            "repos/${GITHUB_REPOSITORY}/statuses/${head_sha}" \
-            -f state=success \
-            -f context=test \
-            -f description="Nasdaq automation validation passed" \
-            -f target_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
-
       - name: Enable automerge
         if: steps.cpr.outputs.pull-request-number != ''
         env:
-          GH_TOKEN: ${{ secrets.AUTOMATION_PR_TOKEN || github.token }}
+          GH_TOKEN: ${{ secrets.AUTOMATION_PR_TOKEN }}
         run: gh pr merge "${{ steps.cpr.outputs.pull-request-number }}" --auto --squash

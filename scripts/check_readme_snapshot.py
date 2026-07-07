@@ -34,12 +34,22 @@ SNAPSHOT_METRICS = {
     "Core primary rows with ISIN": "instrument_scope_primary_listing",
     "Core primary rows missing ISIN": "instrument_scope_primary_listing_missing_isin",
     "Extended listing-scope rows": "instrument_scope_extended",
-    "Official full exchanges": "official_full_exchanges",
-    "Official partial exchanges": "official_partial_exchanges",
+    "Official full exchanges": None,
+    "Official partial exchanges": None,
     "Missing current-scope exchanges": None,
     "Entry quality source-gap rows": None,
     "Entry quality warn rows": None,
 }
+
+SOURCE_STATUS_PATTERN = re.compile(
+    r"Current source inventory status:\s*"
+    r"`?(?P<missing>\d[\d,]*)`?\s+missing current-scope sources,\s*"
+    r"`?(?P<todo>\d[\d,]*)`?\s+parser todo rows?,\s*"
+    r"`?(?P<global_expansion>\d[\d,]*)`?\s+real global-expansion candidates,\s*"
+    r"`?(?P<official_full>\d[\d,]*)`?\s+official-full rows?,\s+and\s+"
+    r"`?(?P<official_partial>\d[\d,]*)`?\s+official-partial rows?",
+    re.IGNORECASE,
+)
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -85,10 +95,34 @@ def expected_snapshot_values(
         for metric, key in SNAPSHOT_METRICS.items()
         if key is not None
     }
+    expected["Official full exchanges"] = int(source_counts.get("official_full", 0))
+    expected["Official partial exchanges"] = int(source_counts.get("official_partial", 0))
     expected["Missing current-scope exchanges"] = int(source_counts.get("missing", 0))
     expected["Entry quality source-gap rows"] = int(entry_status_counts.get("source_gap", 0))
     expected["Entry quality warn rows"] = int(entry_status_counts.get("warn", 0))
     return expected
+
+
+def expected_source_status_values(source_inventory: dict[str, Any]) -> dict[str, int]:
+    summary = source_inventory["summary"]
+    source_counts = summary["current_status_counts"]
+    return {
+        "missing": int(source_counts.get("missing", 0)),
+        "todo": int(summary.get("todo_rows", 0)),
+        "global_expansion": int(summary.get("global_expansion_candidates", 0)),
+        "official_full": int(source_counts.get("official_full", 0)),
+        "official_partial": int(source_counts.get("official_partial", 0)),
+    }
+
+
+def parse_source_status_values(readme: str) -> dict[str, int] | None:
+    match = SOURCE_STATUS_PATTERN.search(readme)
+    if not match:
+        return None
+    return {
+        key: int(value.replace(",", ""))
+        for key, value in match.groupdict().items()
+    }
 
 
 def check_readme_snapshot(
@@ -100,11 +134,13 @@ def check_readme_snapshot(
 ) -> list[str]:
     readme = readme_path.read_text(encoding="utf-8")
     snapshot = parse_snapshot_table(readme)
+    source_inventory = load_json(source_inventory_json)
     expected = expected_snapshot_values(
         load_json(coverage_report_json),
-        load_json(source_inventory_json),
+        source_inventory,
         load_json(entry_quality_json),
     )
+    expected_source_status = expected_source_status_values(source_inventory)
 
     errors: list[str] = []
     for metric, expected_value in expected.items():
@@ -126,6 +162,17 @@ def check_readme_snapshot(
     for claim in required_claims:
         if claim not in readme:
             errors.append(f"README is missing required claim: {claim}")
+    source_status = parse_source_status_values(readme)
+    if source_status is None:
+        errors.append("README Sources section is missing the generated current source inventory status paragraph.")
+    else:
+        for key, expected_value in expected_source_status.items():
+            actual_value = source_status[key]
+            if actual_value != expected_value:
+                errors.append(
+                    f"README Sources status {key!r} is stale: "
+                    f"README={actual_value:,}, expected={expected_value:,}"
+                )
     return errors
 
 

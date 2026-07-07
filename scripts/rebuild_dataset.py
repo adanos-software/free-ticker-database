@@ -10,9 +10,11 @@ from collections import defaultdict
 from datetime import datetime, timezone
 from functools import lru_cache
 from pathlib import Path
-from typing import Iterable
+from typing import Any, Iterable
 
 import pandas as pd
+import pyarrow as pa
+import pyarrow.parquet as pq
 
 try:
     from scripts.alias_policy import (
@@ -2574,12 +2576,27 @@ def get_version() -> str:
     return VERSION_FILE.read_text(encoding="utf-8").strip()
 
 
+def export_built_at(path: Path, payload_key: str, payload: list[dict[str, Any]], total_key: str, total: int) -> str:
+    fallback = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    if not path.exists():
+        return fallback
+    try:
+        existing = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return fallback
+
+    meta = existing.get("_meta", {})
+    if (
+        meta.get("version") == get_version()
+        and meta.get(total_key) == total
+        and existing.get(payload_key) == payload
+        and meta.get("built_at")
+    ):
+        return str(meta["built_at"])
+    return fallback
+
+
 def write_json(rows: list[dict[str, str]]):
-    meta = {
-        "version": get_version(),
-        "built_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "total_tickers": len(rows),
-    }
     payload = [
         {
             "ticker": row["ticker"],
@@ -2595,6 +2612,11 @@ def write_json(rows: list[dict[str, str]]):
         }
         for row in rows
     ]
+    meta = {
+        "version": get_version(),
+        "built_at": export_built_at(TICKERS_JSON, "tickers", payload, "total_tickers", len(rows)),
+        "total_tickers": len(rows),
+    }
     envelope = {"_meta": meta, "tickers": payload}
     TICKERS_JSON.write_text(
         json.dumps(envelope, separators=(",", ":")),
@@ -2605,7 +2627,7 @@ def write_json(rows: list[dict[str, str]]):
 def write_core_listings_json(rows: list[dict[str, str]]):
     meta = {
         "version": get_version(),
-        "built_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "built_at": export_built_at(CORE_LISTINGS_JSON, "core_listings", rows, "total_core_listings", len(rows)),
         "total_core_listings": len(rows),
     }
     envelope = {"_meta": meta, "core_listings": rows}
@@ -2882,12 +2904,45 @@ def write_parquet(rows: list[dict[str, str]]):
             for row in rows
         ]
     )
-    frame.to_parquet(TICKERS_PARQUET, index=False)
+    schema = pa.schema(
+        [
+            ("ticker", pa.large_string()),
+            ("name", pa.large_string()),
+            ("exchange", pa.large_string()),
+            ("asset_type", pa.large_string()),
+            ("stock_sector", pa.large_string()),
+            ("etf_category", pa.large_string()),
+            ("country", pa.large_string()),
+            ("country_code", pa.large_string()),
+            ("isin", pa.large_string()),
+            ("aliases", pa.list_(pa.string())),
+        ]
+    )
+    table = pa.Table.from_pandas(frame, schema=schema, preserve_index=False)
+    pq.write_table(table, TICKERS_PARQUET)
 
 
 def write_core_listings_parquet(rows: list[dict[str, str]]):
     frame = pd.DataFrame(rows)
-    frame.to_parquet(CORE_LISTINGS_PARQUET, index=False)
+    schema = pa.schema(
+        [
+            ("listing_key", pa.large_string()),
+            ("ticker", pa.large_string()),
+            ("exchange", pa.large_string()),
+            ("name", pa.large_string()),
+            ("asset_type", pa.large_string()),
+            ("stock_sector", pa.large_string()),
+            ("etf_category", pa.large_string()),
+            ("country", pa.large_string()),
+            ("country_code", pa.large_string()),
+            ("isin", pa.large_string()),
+            ("aliases", pa.large_string()),
+            ("instrument_group_key", pa.large_string()),
+            ("scope_reason", pa.large_string()),
+        ]
+    )
+    table = pa.Table.from_pandas(frame, schema=schema, preserve_index=False)
+    pq.write_table(table, CORE_LISTINGS_PARQUET)
 
 
 # ---------------------------------------------------------------------------

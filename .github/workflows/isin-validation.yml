@@ -19,6 +19,15 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Require automation PR token
+        env:
+          AUTOMATION_PR_TOKEN: ${{ secrets.AUTOMATION_PR_TOKEN }}
+        run: |
+          if [ -z "$AUTOMATION_PR_TOKEN" ]; then
+            echo "AUTOMATION_PR_TOKEN is required so automation PRs trigger pull_request CI." >&2
+            exit 1
+          fi
+
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
@@ -46,8 +55,10 @@ jobs:
 
       - name: Open ISIN-review pull request
         if: steps.isin.outputs.isin_issues_detected == 'true'
+        id: cpr
         uses: peter-evans/create-pull-request@v8.1.1
         with:
+          token: ${{ secrets.AUTOMATION_PR_TOKEN }}
           branch: automation/isin-validation
           delete-branch: true
           commit-message: Update OpenFIGI ISIN-validation report
@@ -70,3 +81,9 @@ jobs:
             wrong ISINs via the override pipeline (`metadata_updates.csv`).
 
             Report: `data/reports/isin_validation_report.md` / `.json`
+
+      - name: Enable automerge
+        if: steps.cpr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ secrets.AUTOMATION_PR_TOKEN }}
+        run: gh pr merge "${{ steps.cpr.outputs.pull-request-number }}" --auto --squash

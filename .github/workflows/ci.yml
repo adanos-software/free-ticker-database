@@ -35,3 +35,21 @@ jobs:
 
       - name: Validate database release gates
         run: python scripts/validate_database.py
+
+      - name: Check derived artifacts are current
+        run: |
+          python scripts/rebuild_dataset.py
+          git diff --exit-code -- \
+            data/tickers.csv \
+            data/listings.csv \
+            data/core_listings.csv \
+            data/aliases.csv \
+            data/core_aliases.csv \
+            data/tickers.json \
+            data/core_listings.json \
+            data/identifiers.csv \
+            data/cross_listings.csv \
+            data/instrument_scopes.csv \
+            data/tickers.db \
+            data/tickers.parquet \
+            data/core_listings.parquet
