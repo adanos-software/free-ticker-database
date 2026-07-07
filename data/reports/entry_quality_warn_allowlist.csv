@@ -125,3 +125,6 @@ NGX::TOTAL,TOTAL,NGX,official_name_mismatch,"ISIN corrected to NGTOTAL00001 (Tot
 TPEX::6650,6650,TPEX,official_name_mismatch,"ISIN corrected to TW0006650005 (Art Emperor Technology) per re-audit 2026-06-17; official reference name form differs -- reviewed."
 ASX::YAR,YAR,ASX,official_name_mismatch,"Coverage-expansion addition (v3.30.22) from official ASX ListedCompanies master; name form differs from secondary reference -- reviewed."
 HKEX::03451,03451,HKEX,official_name_mismatch,db-wide audit 2026-06-21: corrected garbled name to canonical Global X Nasdaq 100 Covered Call Active ETF
+Euronext::ALNEV,ALNEV,Euronext,official_isin_mismatch,Reviewed during current Euronext official-source refresh: exact Euronext official reference shows an ISIN mismatch; retained as explicit review-gated warning pending official identifier backfill.
+Euronext::WLN,WLN,Euronext,official_isin_mismatch,Reviewed during current Euronext official-source refresh: exact Euronext official reference shows an ISIN mismatch; retained as explicit review-gated warning pending official identifier backfill.
+OSL::DELIA,DELIA,OSL,official_isin_mismatch,Reviewed during current Euronext/Oslo official-source refresh: exact Oslo official reference shows an ISIN mismatch; retained as explicit review-gated warning pending official identifier backfill.

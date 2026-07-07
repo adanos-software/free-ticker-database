@@ -388,6 +388,11 @@ def build_exchange_report(
             if dataset_exchanges_by_ticker.get(ticker, set()) - {exchange}
         }
         missing = master_symbols - matched - collisions
+        recall_missing = master_symbols - matched
+        official_recall_pct = round(len(matched) / len(master_symbols) * 100, 2) if master_symbols else None
+        official_recall_gap_rate = (
+            round(len(recall_missing) / len(master_symbols) * 100, 2) if master_symbols else None
+        )
         stock_verification = stock_verification_lookup.get(exchange, {})
         etf_verification = etf_verification_lookup.get(exchange, {})
         catalog_entry = reference_catalog.get(
@@ -413,6 +418,20 @@ def build_exchange_report(
             + int(etf_verification.get("name_mismatch", 0))
             + int(etf_verification.get("cross_exchange_collision", 0))
         )
+        official_recall_target = catalog_entry["venue_status"] == "official_full" and bool(master_symbols)
+        official_recall_pass = (
+            official_recall_pct is not None and official_recall_pct >= 99.5
+            if official_recall_target
+            else None
+        )
+        official_recall_exception = ""
+        if official_recall_target and not official_recall_pass:
+            official_recall_exception = (
+                "below_99_5_active_official_masterfile_recall;"
+                f"missing_or_collision_hidden={len(recall_missing)};"
+                f"symbol_collisions={len(collisions)}"
+            )
+
         rows.append(
             {
                 "exchange": exchange,
@@ -432,6 +451,14 @@ def build_exchange_report(
                 "masterfile_missing": len(missing),
                 "masterfile_match_rate": round(len(matched) / len(master_symbols) * 100, 2) if master_symbols else None,
                 "masterfile_collision_rate": round(len(collisions) / len(master_symbols) * 100, 2) if master_symbols else None,
+                "official_recall_denominator": len(master_symbols),
+                "official_recall_matches": len(matched),
+                "official_recall_missing": len(recall_missing),
+                "official_recall_pct": official_recall_pct,
+                "official_recall_gap_rate": official_recall_gap_rate,
+                "official_recall_target": official_recall_target,
+                "official_recall_pass": official_recall_pass,
+                "official_recall_exception": official_recall_exception,
                 "verification_items": int(stock_verification.get("items", 0)),
                 "verification_verified": stock_verified_items,
                 "verification_reference_gap": int(stock_verification.get("reference_gap", 0)),
@@ -503,6 +530,13 @@ def build_global_summary(
     core_listings = core_listings or tickers
     legacy_primary_listing_keys = {listing_identity(row) for row in tickers}
     core_listing_keys = {row.get("listing_key") or row_listing_key(row) for row in core_listings}
+    official_recall_denominator = sum(row.get("official_recall_denominator", row["masterfile_symbols"]) for row in exchange_coverage)
+    official_recall_matches = sum(row.get("official_recall_matches", row["masterfile_matches"]) for row in exchange_coverage)
+    official_full_target_rows = [
+        row
+        for row in exchange_coverage
+        if row.get("official_recall_target", row.get("venue_status") == "official_full" and bool(row.get("masterfile_symbols")))
+    ]
     summary = {
         "tickers": len(tickers),
         "core_listings": len(core_listings),
@@ -532,6 +566,20 @@ def build_global_summary(
         "official_masterfile_matches": sum(row["masterfile_matches"] for row in exchange_coverage),
         "official_masterfile_collisions": sum(row["masterfile_collisions"] for row in exchange_coverage),
         "official_masterfile_missing": sum(row["masterfile_missing"] for row in exchange_coverage),
+        "official_recall_denominator": official_recall_denominator,
+        "official_recall_matches": official_recall_matches,
+        "official_recall_missing": sum(
+            row.get("official_recall_missing", row["masterfile_symbols"] - row["masterfile_matches"])
+            for row in exchange_coverage
+        ),
+        "official_recall_pct": (
+            round(official_recall_matches / official_recall_denominator * 100, 2)
+            if official_recall_denominator
+            else None
+        ),
+        "official_full_recall_target_exchanges": len(official_full_target_rows),
+        "official_full_recall_passing_exchanges": sum(row.get("official_recall_pass") is True for row in official_full_target_rows),
+        "official_full_recall_exception_exchanges": sum(row.get("official_recall_pass") is False for row in official_full_target_rows),
         "official_full_exchanges": venue_status_counts.get("official_full", 0),
         "official_partial_exchanges": venue_status_counts.get("official_partial", 0),
         "manual_only_exchanges": venue_status_counts.get("manual_only", 0),
@@ -565,16 +613,19 @@ def build_global_summary(
 def find_latest_verification_run(base_dir: Path = STOCK_VERIFICATION_DIR) -> Path | None:
     if not base_dir.exists():
         return None
-    if (base_dir / "summary.json").exists() or list(base_dir.glob("chunk-*-of-*.summary.json")):
-        return base_dir
     candidates = [
         path
         for path in base_dir.iterdir()
         if path.is_dir() and ((path / "summary.json").exists() or list(path.glob("chunk-*-of-*.summary.json")))
     ]
-    if not candidates:
-        return None
-    return max(candidates, key=latest_verification_marker_mtime)
+    run_candidates = [path for path in candidates if path.name.startswith("run-")]
+    if run_candidates:
+        return max(run_candidates, key=latest_verification_marker_mtime)
+    if candidates:
+        return max(candidates, key=latest_verification_marker_mtime)
+    if (base_dir / "summary.json").exists() or list(base_dir.glob("chunk-*-of-*.summary.json")):
+        return base_dir
+    return None
 
 
 def load_verification_report(run_dir: Path | None) -> dict[str, Any]:
@@ -1329,14 +1380,46 @@ def render_markdown(report: dict[str, Any]) -> str:
             "",
             "## Exchange Coverage",
             "",
-            "| Exchange | Venue Status | Tickers | ISIN | Sector | CIK | FIGI | LEI | Masterfile Symbols | Matches | Collisions | Missing | Match Rate | Verified on Covered |",
-            "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|",
+            "| Exchange | Venue Status | Tickers | ISIN | Sector | CIK | FIGI | LEI | Masterfile Symbols | Matches | Collisions | Missing | Recall % | Recall Gap % | Recall Exception | Verified on Covered |",
+            "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|",
         ]
     )
     for row in report["exchange_coverage"]:
-        lines.append(
-            f"| {row['exchange']} | {row['venue_status']} | {row['tickers']} | {row['isin_coverage']} | {row['sector_coverage']} | {row['cik_coverage']} | {row['figi_coverage']} | {row['lei_coverage']} | {row['masterfile_symbols']} | {row['masterfile_matches']} | {row['masterfile_collisions']} | {row['masterfile_missing']} | {row['masterfile_match_rate'] if row['masterfile_match_rate'] is not None else ''} | {row['verification_verified_rate_on_covered'] if row['verification_verified_rate_on_covered'] is not None else ''} |"
+        recall_denominator = row.get("official_recall_denominator", row["masterfile_symbols"])
+        recall_matches = row.get("official_recall_matches", row["masterfile_matches"])
+        recall_missing = row.get("official_recall_missing", recall_denominator - recall_matches)
+        recall_pct = row.get(
+            "official_recall_pct",
+            round(recall_matches / recall_denominator * 100, 2) if recall_denominator else None,
         )
+        recall_gap_rate = row.get(
+            "official_recall_gap_rate",
+            round(recall_missing / recall_denominator * 100, 2) if recall_denominator else None,
+        )
+        lines.append(
+            f"| {row['exchange']} | {row['venue_status']} | {row['tickers']} | {row['isin_coverage']} | {row['sector_coverage']} | {row['cik_coverage']} | {row['figi_coverage']} | {row['lei_coverage']} | {row['masterfile_symbols']} | {row['masterfile_matches']} | {row['masterfile_collisions']} | {row['masterfile_missing']} | {recall_pct if recall_pct is not None else ''} | {recall_gap_rate if recall_gap_rate is not None else ''} | {row.get('official_recall_exception', '')} | {row['verification_verified_rate_on_covered'] if row['verification_verified_rate_on_covered'] is not None else ''} |"
+        )
+
+    recall_exceptions = [
+        row for row in report["exchange_coverage"]
+        if row.get("official_recall_exception")
+    ]
+    lines.extend(
+        [
+            "",
+            "## Per-Exchange Recall Exceptions",
+            "",
+            "| Exchange | Recall % | Official Rows | Missing Or Collision-Hidden | Exception |",
+            "|---|---:|---:|---:|---|",
+        ]
+    )
+    if recall_exceptions:
+        for row in sorted(recall_exceptions, key=lambda value: (value["official_recall_pct"] or 0, value["exchange"])):
+            lines.append(
+                f"| {row['exchange']} | {row['official_recall_pct']} | {row['official_recall_denominator']} | {row['official_recall_missing']} | {row['official_recall_exception']} |"
+            )
+    else:
+        lines.append("|  |  |  |  |  |")
 
     lines.extend(["", "## Country Coverage", "", "| Country | Tickers | ISIN | Sector | CIK | FIGI | LEI |", "|---|---|---|---|---|---|---|"])
     for row in report["country_coverage"]:

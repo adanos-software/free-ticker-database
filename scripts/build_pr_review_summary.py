@@ -13,6 +13,9 @@ REPORTS_DIR = ROOT / "data" / "reports"
 DEFAULT_COVERAGE_JSON = REPORTS_DIR / "coverage_report.json"
 DEFAULT_ENTRY_QUALITY_GATE_JSON = REPORTS_DIR / "entry_quality_gate.json"
 DEFAULT_IMPROVEMENT_CAMPAIGNS_JSON = REPORTS_DIR / "improvement_campaigns.json"
+DEFAULT_PRIMARY_ISIN_COMPLETENESS_JSON = REPORTS_DIR / "primary_isin_completeness.json"
+DEFAULT_ETF_UNIVERSE_COMPLETENESS_JSON = REPORTS_DIR / "etf_universe_completeness.json"
+DEFAULT_CFI_CODE_REVIEW_JSON = REPORTS_DIR / "cfi_code_review.json"
 DEFAULT_RELEASE_ACCEPTANCE_JSON = REPORTS_DIR / "release_acceptance.json"
 DEFAULT_SOURCE_GAP_CLASSIFICATION_JSON = REPORTS_DIR / "source_gap_classification.json"
 DEFAULT_VALIDATION_JSON = REPORTS_DIR / "validation_report.json"
@@ -23,6 +26,9 @@ REVIEW_FILES = [
     "data/reports/improvement_campaigns.md",
     "data/reports/improvement_deltas.md",
     "data/reports/coverage_report.md",
+    "data/reports/primary_isin_completeness.md",
+    "data/reports/etf_universe_completeness.md",
+    "data/reports/cfi_code_review.md",
     "data/reports/source_gap_classification.md",
     "data/reports/source_of_truth_decisions.md",
     "data/reports/masterfile_collision_review.md",
@@ -104,9 +110,15 @@ def render_markdown(
     source_gap_classification: dict[str, Any],
     validation: dict[str, Any],
     generated_at: str,
+    primary_isin_completeness: dict[str, Any] | None = None,
+    etf_universe_completeness: dict[str, Any] | None = None,
+    cfi_code_review: dict[str, Any] | None = None,
 ) -> str:
     global_summary = coverage.get("global", {})
     freshness = coverage.get("source_freshness_summary", {})
+    primary_isin_summary = summary(primary_isin_completeness or {})
+    etf_universe_summary = summary(etf_universe_completeness or {})
+    cfi_code_summary = summary(cfi_code_review or {})
     release_summary = summary(release_acceptance)
     validation_summary = summary(validation)
     source_gap_summary = summary(source_gap_classification)
@@ -143,6 +155,12 @@ def render_markdown(
         f"| Official masterfile matches | {format_int(global_summary.get('official_masterfile_matches'))} |",
         f"| Official masterfile collisions queued | {format_int(global_summary.get('official_masterfile_collisions'))} |",
         f"| Official masterfile missing queued | {format_int(global_summary.get('official_masterfile_missing'))} |",
+        f"| Official recall | {global_summary.get('official_recall_pct', '')}% |",
+        f"| Missing primary ISIN rows | {format_int(primary_isin_summary.get('missing_primary_isin_rows'))} |",
+        f"| Priority missing primary ISIN rows | {format_int(primary_isin_summary.get('priority_exchange_rows'))} |",
+        f"| ETF universe recall | {etf_universe_summary.get('etf_recall_pct', '')}% |",
+        f"| ETF universe missing/review rows | {format_int(etf_universe_summary.get('missing_or_review_rows'))} |",
+        f"| CFI evidence rows | {format_int(cfi_code_summary.get('cfi_evidence_rows'))} |",
         f"| Source gaps | {format_int(source_gap_summary.get('rows'))} |",
         f"| Entry-quality warnings | {format_int(entry_quality_gate.get('warn_count'))} |",
         f"| Quarantine rows | {format_int(entry_quality_gate.get('quarantine_count'))} |",
@@ -204,6 +222,9 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--coverage-json", type=Path, default=DEFAULT_COVERAGE_JSON)
     parser.add_argument("--entry-quality-gate-json", type=Path, default=DEFAULT_ENTRY_QUALITY_GATE_JSON)
     parser.add_argument("--improvement-campaigns-json", type=Path, default=DEFAULT_IMPROVEMENT_CAMPAIGNS_JSON)
+    parser.add_argument("--primary-isin-completeness-json", type=Path, default=DEFAULT_PRIMARY_ISIN_COMPLETENESS_JSON)
+    parser.add_argument("--etf-universe-completeness-json", type=Path, default=DEFAULT_ETF_UNIVERSE_COMPLETENESS_JSON)
+    parser.add_argument("--cfi-code-review-json", type=Path, default=DEFAULT_CFI_CODE_REVIEW_JSON)
     parser.add_argument("--release-acceptance-json", type=Path, default=DEFAULT_RELEASE_ACCEPTANCE_JSON)
     parser.add_argument("--source-gap-classification-json", type=Path, default=DEFAULT_SOURCE_GAP_CLASSIFICATION_JSON)
     parser.add_argument("--validation-json", type=Path, default=DEFAULT_VALIDATION_JSON)
@@ -217,6 +238,9 @@ def main(argv: list[str] | None = None) -> None:
         coverage=load_json(args.coverage_json),
         campaigns=load_json(args.improvement_campaigns_json),
         entry_quality_gate=load_json(args.entry_quality_gate_json),
+        primary_isin_completeness=load_json(args.primary_isin_completeness_json),
+        etf_universe_completeness=load_json(args.etf_universe_completeness_json),
+        cfi_code_review=load_json(args.cfi_code_review_json),
         release_acceptance=load_json(args.release_acceptance_json),
         source_gap_classification=load_json(args.source_gap_classification_json),
         validation=load_json(args.validation_json),

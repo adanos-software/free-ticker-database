@@ -52,6 +52,7 @@ MASTERFILE_FIELDNAMES = [
     "reference_scope",
     "official",
     "isin",
+    "cfi",
     "sector",
 ]
 LISTINGS_CSV = DATA_DIR / "listings.csv"
@@ -295,8 +296,17 @@ OTC_MARKETS_STOCK_SCREENER_CSV_URL = (
     "https://www.otcmarkets.com/research/stock-screener/api/downloadCSV?"
     "greyAccess=false&expertAccess=false"
 )
+FINRA_ORF_EQUITY_MASTER_ACTIVE_URL = (
+    "https://apidownload.finratraqs.org/ORF?Action=DOWNLOAD&File=EQUITYMASTERAC&Facility=ORF"
+)
+FINRA_ORF_DAILY_LIST_URL = (
+    "https://apidownload.finratraqs.org/ORF?Action=DOWNLOAD&File=DAILYLIST&Facility=ORF"
+)
 NASDAQ_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt"
 NASDAQ_OTHER_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt"
+NASDAQ_TRADING_SYSTEM_ADDS_DELETES_URL = (
+    "https://www.nasdaqtrader.com/dynamic/SymDir/TradingSystemAddsDeletes.txt"
+)
 LSE_COMPANY_REPORTS_URL = (
     "https://www.londonstockexchange.com/exchange/instrument-result.html"
     "?filterBy=CompanyReports&filterClause=1&initial={initial}&page={page}"
@@ -570,7 +580,7 @@ BYMA_API_BASE_URL = "https://open.bymadata.com.ar/vanoms-be-core/rest/api"
 BYMA_EQUITY_DETAIL_URL = f"{BYMA_API_BASE_URL}/bymadata/free/bnown/fichatecnica/especies/general"
 BYMA_HEADER_SEARCH_URL = f"{BYMA_API_BASE_URL}/bymadata/free/instruments-for-header-search"
 BYMA_EQUITY_DETAILS_PAGE_URL = "https://open.bymadata.com.ar/#/issuers-negociable-securities-information"
-MSE_MW_MARKET_MAINBOARD_URL = "https://mse.co.mw/market/mainboard"
+MSE_MW_MARKET_MAINBOARD_URL = "https://mse.co.mw/listing/mainboard/companies"
 NSE_KE_LISTED_COMPANIES_URL = "https://www.nse.co.ke/listed-companies/"
 NSE_KE_LISTED_COMPANIES_API_URL = "https://www.nse.co.ke/wp-json/wp/v2/pages?slug=listed-companies"
 NSE_IN_SECURITIES_AVAILABLE_PAGE_URL = "https://www.nseindia.com/static/market-data/securities-available-for-trading"
@@ -1019,6 +1029,12 @@ OTHER_LISTED_EXCHANGE_MAP = {
     "V": "IEX",
     "Z": "BATS",
 }
+NASDAQ_TRADING_SYSTEM_PRIMARY_MARKET_MAP = {
+    **OTHER_LISTED_EXCHANGE_MAP,
+    "G": "NASDAQ",
+    "Q": "NASDAQ",
+    "S": "NASDAQ",
+}
 
 SEC_EXCHANGE_MAP = {
     "Nasdaq": "NASDAQ",
@@ -1178,6 +1194,9 @@ SIX_SHARE_MISC_SERVICE_STOCK_SECTOR_OVERRIDES = {
 EURONEXT_MARKET_MAP = {
     "Euronext Amsterdam": "AMS",
     "Euronext Dublin": "ISE",
+    "Euronext Growth Milan": "Borsa Italiana",
+    "Euronext Milan": "Borsa Italiana",
+    "ETF Plus": "Borsa Italiana",
     "Oslo Børs": "OSL",
     "Euronext Oslo Børs": "OSL",
     "Euronext Expand Oslo": "OSL",
@@ -1649,6 +1668,14 @@ OFFICIAL_SOURCES = [
         description="Official other-listed/CQS symbol directory",
         source_url=NASDAQ_OTHER_LISTED_URL,
         format="nasdaq_other_listed_pipe",
+    ),
+    MasterfileSource(
+        key="nasdaq_trading_system_adds_deletes",
+        provider="Nasdaq Trader",
+        description="Official Nasdaq Trader Trading System Adds and Deletes daily list",
+        source_url=NASDAQ_TRADING_SYSTEM_ADDS_DELETES_URL,
+        format="nasdaq_trading_system_adds_deletes_pipe",
+        reference_scope="corporate_action_daily_list",
     ),
     MasterfileSource(
         key="lse_company_reports",
@@ -3513,6 +3540,94 @@ def parse_otc_markets_stock_screener_csv(text: str, source: MasterfileSource) ->
     return rows
 
 
+def delimited_dict_reader(text: str) -> csv.DictReader:
+    first_line = next((line for line in text.splitlines() if line.strip()), "")
+    delimiter = "|" if first_line.count("|") > first_line.count(",") else ","
+    return csv.DictReader(io.StringIO(text), delimiter=delimiter)
+
+
+def first_field(record: dict[str, Any], *names: str) -> str:
+    normalized = {str(key).strip().lower(): value for key, value in record.items()}
+    for name in names:
+        value = normalized.get(name.strip().lower())
+        if value not in {None, ""}:
+            return str(value).strip()
+    return ""
+
+
+def parse_finra_orf_equity_master(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for record in delimited_dict_reader(text):
+        ticker = first_field(
+            record,
+            "Symbol",
+            "Issue Symbol",
+            "Issue Symbol Identifier",
+            "issueSymbolIdentifier",
+            "Security Symbol",
+        ).upper()
+        name = first_field(record, "Issue Name", "Security Name", "issueName", "Company Name")
+        if not ticker or not name or ticker in seen:
+            continue
+        seen.add(ticker)
+        rows.append(
+            {
+                "source_key": source.key,
+                "provider": source.provider,
+                "source_url": source.source_url,
+                "ticker": ticker,
+                "name": name,
+                "exchange": "OTC",
+                "asset_type": infer_asset_type(name),
+                "listing_status": "active",
+                "reference_scope": source.reference_scope,
+                "official": "true",
+            }
+        )
+    return rows
+
+
+def parse_finra_orf_daily_list(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for record in delimited_dict_reader(text):
+        ticker = first_field(
+            record,
+            "Symbol",
+            "Issue Symbol",
+            "Issue Symbol Identifier",
+            "issueSymbolIdentifier",
+            "Security Symbol",
+        ).upper()
+        name = first_field(record, "Issue Name", "Security Name", "issueName", "Company Name")
+        if not ticker or not name:
+            continue
+        event = first_field(record, "Event", "Event Type", "Daily List Event", "Action", "Change Type").lower()
+        if "delet" in event:
+            listing_status = "delisted"
+        elif "add" in event or "new" in event:
+            listing_status = "active"
+        else:
+            listing_status = "review"
+        output_row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "OTC",
+            "asset_type": infer_asset_type(name),
+            "listing_status": listing_status,
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        effective_date = first_field(record, "Eff/Ex-Date", "Effective Date", "effectiveDate", "Ex Date")
+        if effective_date:
+            output_row["effective_date"] = effective_date
+        rows.append(output_row)
+    return rows
+
+
 def fetch_otc_markets_stock_screener_rows(
     source: MasterfileSource,
     session: requests.Session | None = None,
@@ -4419,6 +4534,21 @@ def parse_mse_mw_mainboard_html(
     }
     rows: list[dict[str, str]] = []
     seen: set[str] = set()
+    for row_match in re.finditer(r"<tr\b[^>]*>(.*?)</tr>", text, re.IGNORECASE | re.DOTALL):
+        cells = [
+            re.sub(r"\s+", " ", unescape(re.sub(r"<[^>]+>", " ", cell_match.group(1)))).strip()
+            for cell_match in re.finditer(r"<td\b[^>]*>(.*?)</td>", row_match.group(1), re.IGNORECASE | re.DOTALL)
+        ]
+        if len(cells) < 3:
+            continue
+        name = cells[0]
+        ticker = cells[1].strip().upper()
+        isin = cells[2].strip().upper()
+        listing = current_by_ticker.get(ticker)
+        if not listing or ticker in seen or not is_valid_isin(isin):
+            continue
+        seen.add(ticker)
+        rows.append(build_current_listing_reference_row(source, listing, name=name, isin=isin))
     for match in re.finditer(
         r'<a[^>]+href=["\'](?:https://mse\.co\.mw)?/company/([A-Z0-9]{12})["\'][^>]*>(.*?)</a>',
         text,
@@ -6906,6 +7036,7 @@ def parse_bahrain_bourse_isin_codes_html(html: str, source: MasterfileSource) ->
         isin = cells[1].strip().upper()
         name = cells[2].strip()
         issue_description = cells[3].strip()
+        cfi = cells[4].strip().upper() if len(cells) > 4 else ""
         fisn = cells[6].strip() if len(cells) > 6 else ""
         asset_type, sector = classify_bahrain_bourse_security(name, issue_description, fisn)
         key = (ticker, asset_type)
@@ -6924,6 +7055,8 @@ def parse_bahrain_bourse_isin_codes_html(html: str, source: MasterfileSource) ->
             "official": "true",
             "isin": isin,
         }
+        if cfi:
+            row["cfi"] = cfi
         if sector:
             row["sector"] = sector
         rows.append(row)
@@ -7731,6 +7864,7 @@ def parse_sem_isin_workbook(
         header_index = sem_sheet_header_index(raw_df)
         header = [str(value).strip().upper() if pd.notna(value) else "" for value in raw_df.iloc[header_index].tolist()]
         isin_col = header.index("ISIN")
+        cfi_col = header.index("CFI") if "CFI" in header else -1
         for _, raw_row in raw_df.iloc[header_index + 1 :].iterrows():
             isin = str(raw_row.iloc[isin_col] if len(raw_row) > isin_col else "").strip().upper()
             if not is_valid_isin(isin):
@@ -7754,6 +7888,10 @@ def parse_sem_isin_workbook(
                 "official": "true",
                 "isin": isin,
             }
+            if cfi_col >= 0:
+                cfi = str(raw_row.iloc[cfi_col] if len(raw_row) > cfi_col else "").strip().upper()
+                if cfi:
+                    row["cfi"] = cfi
             sector = listing.get("stock_sector") or listing.get("etf_category") or listing.get("sector") or ""
             if sector:
                 row["sector"] = sector
@@ -10717,6 +10855,7 @@ def parse_ngm_market_data_equities(
                 "reference_scope": source.reference_scope,
                 "official": "true",
                 "isin": isin,
+                "cfi": cfi,
             }
         )
         seen.add(ticker)
@@ -14025,6 +14164,41 @@ def parse_other_listed(text: str, source: MasterfileSource) -> list[dict[str, st
     return rows
 
 
+def parse_nasdaq_trading_system_adds_deletes(text: str, source: MasterfileSource) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for row in parse_pipe_table(text):
+        symbol = row.get("Symbol", "")
+        primary_market_code = row.get("Primary Listing Market", "")
+        exchange = NASDAQ_TRADING_SYSTEM_PRIMARY_MARKET_MAP.get(primary_market_code, primary_market_code)
+        if not symbol or not exchange:
+            continue
+        nasdaq_action = row.get("NASDAQ Action", "")
+        if nasdaq_action == "Delete":
+            listing_status = "delisted"
+        elif nasdaq_action == "Add":
+            listing_status = "active"
+        else:
+            listing_status = "review"
+        name = row.get("Company Name", "")
+        output_row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": symbol,
+            "name": name,
+            "exchange": exchange,
+            "asset_type": infer_asset_type(name),
+            "listing_status": listing_status,
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        effective_date = row.get("Effective Date", "")
+        if effective_date:
+            output_row["effective_date"] = effective_date
+        rows.append(output_row)
+    return rows
+
+
 def parse_asx_listed_companies(text: str, source: MasterfileSource) -> list[dict[str, str]]:
     lines = text.splitlines()
     if lines and lines[0].startswith("ASX listed companies as at"):
@@ -14728,6 +14902,13 @@ def infer_jpx_asset_type(section: str, name: str) -> str:
     normalized = section.strip().lower()
     if "etf" in normalized or "etn" in normalized:
         return "ETF"
+    if (
+        "stock" in normalized
+        or "domestic" in normalized
+        or "foreign" in normalized
+        or "株式" in normalized
+    ):
+        return "Stock"
     return infer_asset_type(name)
 
 
@@ -14766,38 +14947,90 @@ JPX_33_INDUSTRY_TO_SECTOR_EN: dict[str, str] = {
     "Warehousing and Harbor Transportation Service": "Industrials",
     "Wholesale Trade": "Industrials",
 }
+JPX_33_INDUSTRY_TO_SECTOR_JA: dict[str, str] = {
+    "水産・農林業": "Consumer Staples",
+    "鉱業": "Materials",
+    "建設業": "Industrials",
+    "食料品": "Consumer Staples",
+    "繊維製品": "Consumer Discretionary",
+    "パルプ・紙": "Materials",
+    "化学": "Materials",
+    "医薬品": "Health Care",
+    "石油・石炭製品": "Energy",
+    "ゴム製品": "Materials",
+    "ガラス・土石製品": "Materials",
+    "鉄鋼": "Materials",
+    "非鉄金属": "Materials",
+    "金属製品": "Industrials",
+    "機械": "Industrials",
+    "電気機器": "Information Technology",
+    "輸送用機器": "Consumer Discretionary",
+    "精密機器": "Health Care",
+    "その他製品": "Consumer Discretionary",
+    "電気・ガス業": "Utilities",
+    "陸運業": "Industrials",
+    "海運業": "Industrials",
+    "空運業": "Industrials",
+    "倉庫・運輸関連業": "Industrials",
+    "情報・通信業": "Communication Services",
+    "卸売業": "Industrials",
+    "小売業": "Consumer Discretionary",
+    "銀行業": "Financials",
+    "証券、商品先物取引業": "Financials",
+    "保険業": "Financials",
+    "その他金融業": "Financials",
+    "不動産業": "Real Estate",
+    "サービス業": "Industrials",
+}
 
 
 def normalize_jpx_33_industry_sector(value: str, asset_type: str) -> str:
-    mapped = JPX_33_INDUSTRY_TO_SECTOR_EN.get(value.strip(), "")
+    normalized = value.strip()
+    if not normalized or normalized == "-":
+        return ""
+    mapped = JPX_33_INDUSTRY_TO_SECTOR_EN.get(normalized, "") or JPX_33_INDUSTRY_TO_SECTOR_JA.get(normalized, "")
     return mapped or normalize_sector(value, asset_type)
+
+
+def first_jpx_field(record: dict[str, Any], *field_names: str) -> str:
+    for field_name in field_names:
+        value = str(record.get(field_name, "")).strip()
+        if value and value.lower() != "nan" and value != "-":
+            return value
+    return ""
 
 
 def parse_jpx_listed_issues_excel(content: bytes, source: MasterfileSource) -> list[dict[str, str]]:
     dataframe = pd.read_excel(io.BytesIO(content))
     rows: list[dict[str, str]] = []
     for record in dataframe.to_dict(orient="records"):
-        ticker = str(record.get("Local Code", "")).strip()
-        if not ticker or ticker.lower() == "nan":
+        ticker = first_jpx_field(record, "Local Code", "コード")
+        if not ticker:
             continue
-        name = str(record.get("Name (English)", "")).strip()
-        section = str(record.get("Section/Products", "")).strip()
-        if not name or not section or name.lower() == "nan" or section.lower() == "nan":
+        name = first_jpx_field(record, "Name (English)", "銘柄名")
+        section = first_jpx_field(record, "Section/Products", "市場・商品区分")
+        if not name or not section:
             continue
-        rows.append(
-            {
-                "source_key": source.key,
-                "provider": source.provider,
-                "source_url": source.source_url,
-                "ticker": ticker,
-                "name": name,
-                "exchange": "TSE",
-                "asset_type": infer_jpx_asset_type(section, name),
-                "listing_status": "active",
-                "reference_scope": source.reference_scope,
-                "official": "true",
-            }
+        asset_type = infer_jpx_asset_type(section, name)
+        sector = normalize_jpx_33_industry_sector(
+            first_jpx_field(record, "33 Sector(name)", "33業種区分"),
+            asset_type,
         )
+        row = {
+            "source_key": source.key,
+            "provider": source.provider,
+            "source_url": source.source_url,
+            "ticker": ticker,
+            "name": name,
+            "exchange": "TSE",
+            "asset_type": asset_type,
+            "listing_status": "active",
+            "reference_scope": source.reference_scope,
+            "official": "true",
+        }
+        if sector:
+            row["sector"] = sector
+        rows.append(row)
     return rows
 
 
@@ -14929,6 +15162,7 @@ def fetch_jpx_tse_stock_detail_rows(
     if session is not None:
         session.get(JPX_STOCK_SEARCH_URL, headers=jpx_request_headers(), timeout=REQUEST_TIMEOUT).raise_for_status()
     targets = jpx_tse_stock_detail_target_rows(listings_path)
+    targets_by_ticker = {row["ticker"].strip(): row for row in targets}
     rows_by_ticker: dict[str, dict[str, str]] = {}
 
     if session is None:
@@ -14995,6 +15229,13 @@ def fetch_jpx_tse_stock_detail_rows(
             row = fetch_target(listing_row)
             if row is not None:
                 rows_by_ticker[row["ticker"]] = row
+
+    for ticker, listing_row in targets_by_ticker.items():
+        row = rows_by_ticker.get(ticker)
+        fallback_asset_type = listing_row.get("asset_type", "")
+        if row is not None and fallback_asset_type in {"Stock", "ETF"}:
+            row["asset_type"] = fallback_asset_type
+            row["sector"] = normalize_sector(row.get("sector", ""), fallback_asset_type)
 
     rows = [rows_by_ticker[ticker] for ticker in sorted(rows_by_ticker)]
     if targets and not rows:
@@ -17722,6 +17963,9 @@ def fetch_source_rows(source: MasterfileSource, session: requests.Session | None
     if source.format == "nasdaq_other_listed_pipe":
         text = fetch_text(source.source_url, session=session)
         return parse_other_listed(text, source)
+    if source.format == "nasdaq_trading_system_adds_deletes_pipe":
+        text = fetch_text(source.source_url, session=session)
+        return parse_nasdaq_trading_system_adds_deletes(text, source)
     if source.format == "lse_company_reports_html":
         return fetch_lse_company_reports(source, session=session)
     if source.format == "lse_instrument_directory_html":
@@ -18058,6 +18302,9 @@ def fetch_source_rows_with_mode(
         if payload is None:
             raise requests.RequestException("SEC company_tickers_exchange.json unavailable")
         return parse_sec_company_tickers_exchange(payload, source), mode
+    if source.format == "nasdaq_trading_system_adds_deletes_pipe":
+        text = fetch_text(source.source_url, session=session)
+        return parse_nasdaq_trading_system_adds_deletes(text, source), "network"
     if source.format == "otc_markets_security_profile_json":
         rows, mode = load_otc_markets_security_profile_rows(source, session=session)
         if rows is None:
@@ -18608,7 +18855,10 @@ def build_summary(
             "rows": source_counts.get(source.key, 0),
             "generated_at": source_generated_at(source.key),
         }
-        last_error = source_error_by_key.get(source.key, source_metadata_overrides.get(source.key, {}).get("last_error", ""))
+        previous_last_error = source_metadata_overrides.get(source.key, {}).get("last_error", "")
+        last_error = source_error_by_key.get(source.key, "")
+        if not last_error and (source.key not in refreshed or detail["mode"] == "unavailable"):
+            last_error = previous_last_error
         if last_error:
             detail["last_error"] = last_error
         source_details[source.key] = detail

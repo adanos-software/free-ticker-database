@@ -125,6 +125,9 @@ from scripts.build_release_acceptance_report import (
     evaluate_review_row_evidence,
     evaluate_review_row_traceability,
     evaluate_release_source_report_integrity,
+    evaluate_etf_universe_completeness_gate,
+    evaluate_cfi_code_review_gate,
+    evaluate_primary_isin_completeness_gate,
     evaluate_source_inventory_gap_gate,
     evaluate_source_refresh_queue_gate,
     evaluate_source_gap_traceability,
@@ -214,6 +217,178 @@ def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> N
     assert RELEASE_SOURCE_REPORTS["m3_identity_residual_campaign"] == "data/reports/m3_identity_residual_campaign.json"
     assert RELEASE_SOURCE_REPORTS["m3_non_equity_leakage_guard"] == "data/reports/m3_non_equity_leakage_guard.json"
     assert RELEASE_SOURCE_REPORTS["m3_correctness_audit"] == "data/reports/m3_correctness_audit.json"
+    assert RELEASE_SOURCE_REPORTS["primary_isin_completeness"] == "data/reports/primary_isin_completeness.json"
+    assert RELEASE_SOURCE_REPORTS["etf_universe_completeness"] == "data/reports/etf_universe_completeness.json"
+    assert RELEASE_SOURCE_REPORTS["cfi_code_review"] == "data/reports/cfi_code_review.json"
+
+
+def test_evaluate_primary_isin_completeness_gate_requires_source_gated_counts() -> None:
+    report = {
+        "_meta": {
+            "generated_at": "2026-07-07T00:00:00Z",
+            "source_files": {
+                "core_listings_csv": "data/core_listings.csv",
+                "source_gap_classification_csv": "data/reports/source_gap_classification.csv",
+                "source_of_truth_decisions_csv": "data/reports/source_of_truth_decisions.csv",
+            },
+            "policy": {
+                "no_auto_fill": "This report does not fill ISINs.",
+                "allowed_sources": "D1 fills require GLEIF, ESMA/FCA FIRDS, OpenFIGI, ASX ISIN workbook, and TMX.",
+                "identity_gate": "Every fill must pass checksum, identity, and collision gates.",
+            },
+        },
+        "summary": {
+            "missing_primary_isin_rows": 2,
+            "priority_exchange_rows": 1,
+            "non_priority_exchange_rows": 1,
+            "blocked_rows": 1,
+            "eligible_after_allowed_source_gates": 1,
+            "priority_exchanges": ["NASDAQ"],
+        },
+        "rows": [
+            {
+                "listing_key": "NASDAQ::ABC",
+                "ticker": "ABC",
+                "exchange": "NASDAQ",
+                "asset_type": "Stock",
+                "gap_class": "official_identifier_not_exposed_source_gap",
+                "source_of_truth_outcome": "accepted_source_gap",
+                "allowed_source_path": "OpenFIGI ticker→FIGI→ISIN",
+                "apply_eligibility": "eligible_only_after_allowed_source_identity_checksum_and_no_collision_gates",
+                "source_gate": "require_valid_isin_checksum_exact_listing_identity_match_and_no_existing_listing_or_identifier_collision",
+                "next_action": "probe OpenFIGI candidates",
+            },
+            {
+                "listing_key": "B3::FUND",
+                "ticker": "FUND",
+                "exchange": "B3",
+                "asset_type": "ETF",
+                "gap_class": "fund_or_trust_identifier_gap",
+                "source_of_truth_outcome": "core_exclusion_candidate",
+                "allowed_source_path": "official prospectus",
+                "apply_eligibility": "blocked_until_core_or_extended_scope_decision",
+                "source_gate": "scope_review_required_before_isin_work;require_valid_isin_checksum_exact_listing_identity_match_and_no_existing_listing_or_identifier_collision",
+                "next_action": "review scope",
+            },
+        ],
+    }
+
+    result = evaluate_primary_isin_completeness_gate(report)
+
+    assert result["passed"] is True
+    assert result["rows"] == 2
+    assert result["count_gaps"] == {}
+    assert result["source_file_gaps"] == {"missing_or_mismatched": {}, "unexpected": []}
+
+
+def test_evaluate_etf_universe_completeness_gate_reconciles_review_rows() -> None:
+    report = {
+        "_meta": {
+            "generated_at": "2026-07-07T00:00:00Z",
+            "source_files": {
+                "listings_csv": "data/listings.csv",
+                "masterfile_reference_csv": "data/masterfiles/reference.csv",
+                "masterfile_summary_json": "data/masterfiles/summary.json",
+            },
+            "policy": {
+                "official_only": "Only active official masterfile ETF rows are compared.",
+                "no_auto_add": "Missing ETF rows are review candidates only; this report never adds securities.",
+                "identity_gate": "Additions require identity evidence, ISIN checksum, and no-collision validation.",
+            },
+        },
+        "summary": {
+            "official_etf_rows": 3,
+            "matched_etf_listings": 1,
+            "missing_or_review_rows": 2,
+            "missing_from_db": 1,
+            "collision_hidden_by_global_ticker": 1,
+            "local_listing_asset_type_mismatch": 0,
+            "etf_recall_pct": 33.33,
+            "source_count": 1,
+            "exchange_count": 1,
+        },
+        "by_source": [{"source_key": "xetra_etfs"}],
+        "by_exchange": [{"exchange": "XETRA"}],
+        "missing_rows": [
+            {
+                "source_key": "xetra_etfs",
+                "exchange": "XETRA",
+                "ticker": "ETF1",
+                "match_status": "missing_from_db",
+                "candidate_action": "review_listing_add",
+                "source_gate": "add_only_after_listing_key_identity_isin_checksum_and_no_collision_review",
+            },
+            {
+                "source_key": "xetra_etfs",
+                "exchange": "XETRA",
+                "ticker": "ETF2",
+                "match_status": "collision_hidden_by_global_ticker",
+                "candidate_action": "review_collision_safe_listing_add",
+                "source_gate": "add_only_after_listing_key_identity_isin_checksum_and_no_collision_review",
+            },
+        ],
+    }
+
+    result = evaluate_etf_universe_completeness_gate(report)
+
+    assert result["passed"] is True
+    assert result["official_etf_rows"] == 3
+    assert result["missing_or_review_rows"] == 2
+    assert result["count_gaps"] == {}
+
+
+def test_evaluate_cfi_code_review_gate_accepts_review_only_evidence() -> None:
+    report = {
+        "_meta": {
+            "generated_at": "2026-07-07T00:00:00Z",
+            "source_files": {
+                "reference_csv": "data/masterfiles/reference.csv",
+                "non_equity_guard": "scripts/lib/non_equity_guard.py",
+            },
+            "policy": "CFI evidence is review-only and cannot authorize automatic data fills.",
+        },
+        "summary": {
+            "cfi_evidence_rows": 2,
+            "source_count": 1,
+            "exchange_count": 1,
+            "blocked_non_common_stock_review_rows": 1,
+            "policy": {
+                "official_or_reviewed_only": "Rows come from official masterfile reference rows that expose CFI codes.",
+                "no_auto_apply": "This report never applies data changes and never fills identifiers.",
+                "identity_gate": "Any use requires identity, checksum, and collision gates.",
+            },
+        },
+        "rows": [
+            {
+                "source_key": "bahrain",
+                "exchange": "BHB",
+                "ticker": "ABC",
+                "asset_type": "Stock",
+                "cfi": "ESVUFR",
+                "cfi_review_decision": "accepted_common_stock_cfi_evidence",
+                "guard_decision": "accepted_or_not_applicable",
+                "source_gate": "official cfi review gate with identity checksum collision checks",
+                "recommended_action": "keep_as_review_evidence",
+            },
+            {
+                "source_key": "bahrain",
+                "exchange": "BHB",
+                "ticker": "PREF",
+                "asset_type": "Stock",
+                "cfi": "EPXXXX",
+                "cfi_review_decision": "blocked_non_common_stock_review",
+                "guard_decision": "blocked_non_common_stock",
+                "source_gate": "official cfi review gate with identity checksum collision checks",
+                "recommended_action": "do_not_ingest_as_stock",
+            },
+        ],
+    }
+
+    result = evaluate_cfi_code_review_gate(report)
+
+    assert result["passed"] is True
+    assert result["cfi_evidence_rows"] == 2
+    assert result["count_gaps"] == {}
 
 
 def test_evaluate_m3_correctness_campaigns_gate_requires_campaigns_audits_and_no_99_claim() -> None:

@@ -89,11 +89,13 @@ def test_build_source_inventory_joins_candidates_to_current_coverage():
     assert egx.source_mode == "unavailable"
     assert egx.source_last_error == "HTTP 403 from official host egx.example"
     assert egx.source_refresh_queue == "restore_or_replace_unavailable_source_before_data_fill"
+    assert egx.official_full_upgrade_plan == "implement_curated_official_candidate_then_regenerate_reference_and_recall"
 
     lse = row_for(rows, "LSE")
     assert lse.current_status == "official_partial"
     assert lse.candidate_scope == "needs_source_research"
     assert lse.reference_scopes == "listed_companies_subset|security_lookup_subset"
+    assert lse.official_full_upgrade_plan == "add_or_replace_with_active_exchange_directory_before_recall_claim"
 
     nse = row_for(rows, "NSE_IN")
     assert nse.current_status == "not_in_current_universe"
@@ -157,4 +159,5 @@ def test_render_markdown_splits_missing_partial_and_global_candidates():
     assert "Global Expansion Candidates" in markdown
     assert "source_candidates.json" in markdown
     assert "Last Error" in markdown
+    assert "Upgrade Plan" in markdown
     assert "EGX" in markdown

@@ -1514,6 +1514,50 @@ def load_active_official_sector_fallbacks() -> dict[tuple[str, str, str], str]:
     }
 
 
+@lru_cache(maxsize=None)
+def load_active_jpx_listed_issue_asset_types() -> dict[tuple[str, str], str]:
+    grouped: dict[tuple[str, str], set[str]] = defaultdict(set)
+    if not MASTERFILE_REFERENCE_CSV.exists():
+        return {}
+
+    with MASTERFILE_REFERENCE_CSV.open(newline="", encoding="utf-8") as handle:
+        for row in csv.DictReader(handle):
+            if row.get("official") != "true":
+                continue
+            if row.get("listing_status") != "active":
+                continue
+            if row.get("source_key") != "jpx_listed_issues":
+                continue
+            asset_type = row.get("asset_type", "")
+            if asset_type not in {"Stock", "ETF"}:
+                continue
+            ticker = row.get("ticker", "").strip().upper()
+            exchange = row.get("exchange", "").strip()
+            if ticker and exchange:
+                grouped[(ticker, exchange)].add(asset_type)
+
+    return {key: next(iter(asset_types)) for key, asset_types in grouped.items() if len(asset_types) == 1}
+
+
+def apply_official_listing_asset_type(row: dict[str, str], metadata_overrides: dict[str, str]) -> dict[str, str]:
+    if "asset_type" in metadata_overrides:
+        return row
+
+    official_asset_type = load_active_jpx_listed_issue_asset_types().get(
+        (row.get("ticker", "").strip().upper(), row.get("exchange", "").strip())
+    )
+    if not official_asset_type or official_asset_type == row.get("asset_type"):
+        return row
+
+    corrected = dict(row)
+    corrected["asset_type"] = official_asset_type
+    if official_asset_type == "Stock":
+        corrected["etf_category"] = ""
+    elif official_asset_type == "ETF":
+        corrected["stock_sector"] = ""
+    return corrected
+
+
 def build_unique_name_isin_fallbacks(rows: list[dict[str, str]]) -> dict[tuple[str, str], str]:
     grouped: dict[tuple[str, str], set[str]] = defaultdict(set)
     for row in rows:
@@ -2230,8 +2274,10 @@ def cleaned_rows():
         row_key = (row["ticker"], row["exchange"])
         if row_key in review_drop_entries:
             continue
+        metadata_overrides = review_metadata_updates.get(row_key, {})
         merged = normalize_input_row(row)
-        merged = apply_input_metadata_overrides(merged, review_metadata_updates.get(row_key, {}))
+        merged = apply_input_metadata_overrides(merged, metadata_overrides)
+        merged = apply_official_listing_asset_type(merged, metadata_overrides)
         prepared_rows.append(merged)
 
     prepared_rows = apply_official_exchange_corrections(prepared_rows)

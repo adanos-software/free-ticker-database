@@ -55,6 +55,7 @@ CSV_FIELDNAMES = [
     "source_mode",
     "source_refresh_queue",
     "source_last_error",
+    "official_full_upgrade_plan",
     "priority",
     "review_needed",
     "blocker",
@@ -85,6 +86,7 @@ class SourceInventoryRow:
     source_mode: str
     source_refresh_queue: str
     source_last_error: str
+    official_full_upgrade_plan: str
     priority: str
     review_needed: bool
     blocker: str
@@ -152,6 +154,27 @@ def fallback_venue_metadata(exchange: str) -> dict[str, str]:
     return FALLBACK_VENUE_METADATA.get(exchange, {"venue_name": "", "country": ""})
 
 
+def official_full_upgrade_plan(metrics: dict[str, Any], candidate: dict[str, Any] | None = None) -> str:
+    status = metrics.get("current_status", "")
+    scopes = set(str(metrics.get("reference_scopes", "")).split("|")) if metrics.get("reference_scopes") else set()
+    candidate_scope = (candidate or {}).get("candidate_scope", "")
+    if status == "official_full":
+        return "complete_official_exchange_directory_present"
+    if status == "official_partial":
+        if "security_identifier_registry_subset" in scopes or "security_lookup_subset" in scopes:
+            return "add_or_replace_with_active_exchange_directory_before_recall_claim"
+        if "listed_companies_subset" in scopes or "interlisted_subset" in scopes:
+            return "expand_subset_to_active_exchange_directory_or_document_scope_exception"
+        return "promote_partial_official_source_to_exchange_directory_with_parser_tests"
+    if status in {"missing", "manual_only"}:
+        if candidate_scope:
+            return "implement_curated_official_candidate_then_regenerate_reference_and_recall"
+        return "research_curate_and_implement_official_exchange_directory_candidate"
+    if candidate_scope == "global_expansion_candidate":
+        return "out_of_current_universe_do_not_upgrade_without_scope_decision"
+    return ""
+
+
 def row_sort_key(row: SourceInventoryRow) -> tuple[int, int, int, int, str, str]:
     return (
         STATUS_RANK.get(row.current_status, 9),
@@ -211,6 +234,7 @@ def build_source_inventory(
                 source_mode=str(source_coverage.get("mode", "")),
                 source_refresh_queue=str(source_coverage.get("refresh_queue", "")),
                 source_last_error=str(source_coverage.get("last_error", "")),
+                official_full_upgrade_plan=official_full_upgrade_plan(metrics, candidate),
                 priority=candidate.get("priority", "medium"),
                 review_needed=review_needed,
                 blocker=candidate.get("blocker", ""),
@@ -248,6 +272,7 @@ def build_source_inventory(
                 source_mode="",
                 source_refresh_queue="",
                 source_last_error="",
+                official_full_upgrade_plan=official_full_upgrade_plan(metrics),
                 priority=priority,
                 review_needed=True,
                 blocker="candidate source not curated yet",
@@ -263,6 +288,7 @@ def summarize(rows: list[SourceInventoryRow], generated_at: str) -> dict[str, An
     status_counts = Counter(row.current_status for row in rows)
     scope_counts = Counter(row.candidate_scope for row in rows)
     global_expansion_rows = [row for row in rows if is_global_expansion_candidate(row)]
+    upgrade_plan_counts = Counter(row.official_full_upgrade_plan for row in rows if row.official_full_upgrade_plan)
     return {
         "generated_at": generated_at,
         "policy": {
@@ -281,6 +307,7 @@ def summarize(rows: list[SourceInventoryRow], generated_at: str) -> dict[str, An
         "current_scope_candidates": sum(row.current_status != "not_in_current_universe" for row in rows),
         "global_expansion_candidates": len(global_expansion_rows),
         "high_priority_rows": sum(row.priority == "high" for row in rows),
+        "official_full_upgrade_plan_counts": dict(sorted(upgrade_plan_counts.items())),
     }
 
 
@@ -308,15 +335,16 @@ def format_table(rows: list[SourceInventoryRow], *, status: str | None = None, l
     if not selected:
         return "_No rows._\n"
     lines = [
-        "| Rank | Exchange | Status | Tickers | ISIN gap | Metadata gap | Candidate | Provider | Source Mode | Last Error | Blocker |",
-        "|---|---|---|---:|---:|---:|---|---|---|---|---|",
+        "| Rank | Exchange | Status | Tickers | ISIN gap | Metadata gap | Candidate | Provider | Source Mode | Upgrade Plan | Last Error | Blocker |",
+        "|---|---|---|---:|---:|---:|---|---|---|---|---|---|",
     ]
     for row in selected:
         candidate = row.candidate_key or row.candidate_scope
         lines.append(
             f"| {row.priority_rank} | {row.exchange} | {row.current_status} | {row.tickers} | "
             f"{row.missing_isin} | {row.missing_sector_or_category} | {candidate} | {row.provider} | "
-            f"{row.source_mode} | {markdown_cell(row.source_last_error)} | {markdown_cell(row.blocker)} |"
+            f"{row.source_mode} | {markdown_cell(row.official_full_upgrade_plan)} | "
+            f"{markdown_cell(row.source_last_error)} | {markdown_cell(row.blocker)} |"
         )
     return "\n".join(lines) + "\n"
 
@@ -344,6 +372,7 @@ def render_markdown(rows: list[SourceInventoryRow], summary: dict[str, Any]) -> 
             f"- High-priority rows: `{summary['high_priority_rows']}`",
             f"- Status counts: {status_counts}",
             f"- Scope counts: {scope_counts}",
+            f"- Official-full upgrade plan counts: {json.dumps(summary['official_full_upgrade_plan_counts'], sort_keys=True)}",
             "",
             "## Missing Current-Scope Sources",
             "",

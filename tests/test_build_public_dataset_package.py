@@ -21,6 +21,7 @@ def configure_sample_dataset(monkeypatch, tmp_path):
     (source_root / "VERSION").write_text("9.9.9\n", encoding="utf-8")
 
     tickers = source_root / "data" / "tickers.csv"
+    core_listings = source_root / "data" / "core_listings.csv"
     listings = source_root / "data" / "listings.csv"
     aliases = source_root / "data" / "aliases.csv"
     write_csv(
@@ -29,6 +30,14 @@ def configure_sample_dataset(monkeypatch, tmp_path):
         [
             ["AAPL", "Apple Inc", "NASDAQ", "US0378331005"],
             ["MSFT", "Microsoft Corp", "NASDAQ", ""],
+        ],
+    )
+    write_csv(
+        core_listings,
+        ["listing_key", "ticker", "exchange", "isin"],
+        [
+            ["NASDAQ::AAPL", "AAPL", "NASDAQ", "US0378331005"],
+            ["NASDAQ::MSFT", "MSFT", "NASDAQ", ""],
         ],
     )
     write_csv(
@@ -48,9 +57,20 @@ def configure_sample_dataset(monkeypatch, tmp_path):
 
     files = [
         package.DatasetFile(
+            core_listings,
+            "core_listings.csv",
+            "Collision-safe canonical core security export.",
+            {
+                "listing_key": "Venue-level listing key.",
+                "ticker": "Ticker symbol.",
+                "exchange": "Exchange code.",
+                "isin": "International Securities Identification Number.",
+            },
+        ),
+        package.DatasetFile(
             tickers,
             "tickers.csv",
-            "Primary securities.",
+            "Legacy/global-unique compatibility export.",
             {
                 "ticker": "Ticker symbol.",
                 "name": "Security name.",
@@ -98,9 +118,11 @@ def test_build_package_writes_platform_specific_metadata(monkeypatch, tmp_path):
     huggingface = output / "huggingface"
 
     assert (kaggle / "tickers.csv").exists()
+    assert (kaggle / "core_listings.csv").exists()
     assert not (kaggle / "tickers.parquet").exists()
     assert (kaggle / "dataset-cover-image.png").exists()
     assert (huggingface / "tickers.csv").exists()
+    assert (huggingface / "core_listings.parquet").exists()
     assert (huggingface / "tickers.parquet").exists()
     assert (huggingface / "aliases.parquet").exists()
 
@@ -110,6 +132,7 @@ def test_build_package_writes_platform_specific_metadata(monkeypatch, tmp_path):
     assert metadata["id"] == "adanos/free-global-stock-ticker-database"
     assert metadata["licenses"] == [{"name": "other"}]
     assert "https://adanos.org" in metadata["description"]
+    assert "collision-safe canonical core listings" in metadata["description"]
     assert "License: MIT" in metadata["description"]
     assert metadata["image"] == "dataset-cover-image.png"
     assert "official exchange/reference inputs" in metadata["userSpecifiedSources"]
@@ -122,17 +145,20 @@ def test_build_package_writes_platform_specific_metadata(monkeypatch, tmp_path):
         "time series analysis",
     ]
     assert [resource["path"] for resource in metadata["resources"]] == [
+        "core_listings.csv",
         "tickers.csv",
         "listings.csv",
         "aliases.csv",
     ]
     assert [field["name"] for field in metadata["resources"][0]["schema"]["fields"]] == [
+        "listing_key",
         "ticker",
-        "name",
         "exchange",
         "isin",
     ]
-    assert metadata["resources"][0]["schema"]["fields"][0]["description"] == "Ticker symbol."
+    assert metadata["resources"][0]["description"] == "Collision-safe canonical core security export."
+    assert metadata["resources"][1]["description"] == "Legacy/global-unique compatibility export."
+    assert metadata["resources"][0]["schema"]["fields"][0]["description"] == "Venue-level listing key."
 
     kaggle_readme = (kaggle / "README.md").read_text(encoding="utf-8")
     hf_readme = (huggingface / "README.md").read_text(encoding="utf-8")
@@ -140,7 +166,9 @@ def test_build_package_writes_platform_specific_metadata(monkeypatch, tmp_path):
     assert "## Provenance" in kaggle_readme
     assert "Version: `9.9.9`" in hf_readme
     assert "`tickers.parquet`" not in kaggle_readme
+    assert "`core_listings.csv` for the collision-safe canonical security export" in kaggle_readme
     assert "`tickers.parquet`" in hf_readme
+    assert 'core = load_dataset("adanos/free-global-stock-ticker-database", "core_listings", split="train")' in hf_readme
     assert hf_readme.startswith("---\nlicense: mit")
 
 
@@ -168,6 +196,7 @@ def test_cover_metrics_use_current_dataset_counts(monkeypatch, tmp_path):
     metrics = package.cover_metrics(package.dataset_summary())
 
     assert metrics == [
+        ("2", "core listings"),
         ("2", "primary tickers"),
         ("3", "listing rows"),
         ("2", "aliases"),

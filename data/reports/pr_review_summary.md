@@ -1,6 +1,6 @@
 # PR Review Summary
 
-Generated: `2026-07-07T08:41:07Z`
+Generated: `2026-07-07T10:10:00Z`
 
 This PR improves the ticker database through source-gated review workflows, refreshed official masterfile evidence, and release acceptance checks. It does not authorize guessed ISINs, sectors, ETF categories, names, listings, or symbol changes.
 
@@ -22,14 +22,20 @@ This PR improves the ticker database through source-gated review workflows, refr
 
 | Metric | Value |
 |---|---:|
-| Tickers | 63,161 |
+| Tickers | 63,162 |
 | Listing keys | 74,557 |
-| Official masterfile symbols | 79,160 |
-| Official masterfile matches | 53,162 |
-| Official masterfile collisions queued | 11,262 |
-| Official masterfile missing queued | 14,736 |
-| Source gaps | 1,138 |
-| Entry-quality warnings | 75 |
+| Official masterfile symbols | 79,612 |
+| Official masterfile matches | 53,360 |
+| Official masterfile collisions queued | 11,376 |
+| Official masterfile missing queued | 14,876 |
+| Official recall | 67.03% |
+| Missing primary ISIN rows | 947 |
+| Priority missing primary ISIN rows | 727 |
+| ETF universe recall | 51.61% |
+| ETF universe missing/review rows | 23,396 |
+| CFI evidence rows | 30 |
+| Source gaps | 1,137 |
+| Entry-quality warnings | 74 |
 | Quarantine rows | 0 |
 
 ## Acceptance
@@ -39,16 +45,16 @@ This PR improves the ticker database through source-gated review workflows, refr
 | `python -m pytest tests/ -q` | run before release; not captured by generated report JSON |
 | `python scripts/check_entry_quality_gate.py` | passed; `unexpected_warn_count=0`, `quarantine_count=0` |
 | `python scripts/validate_database.py` | passed; `failed_error_gates=0` |
-| `python scripts/build_release_acceptance_report.py` | passed; `61/61` |
+| `python scripts/build_release_acceptance_report.py` | passed; `64/64` |
 | CRLF-aware `git diff --check` | run before release; not captured by generated report JSON |
 
 ## Freshness
 
 | Metric | Value |
 |---|---:|
-| Fresh sources | 2 |
-| Old sources | 134 |
-| Remaining old P1 exchange-directory sources | 39 |
+| Fresh sources | 8 |
+| Old sources | 129 |
+| Remaining old P1 exchange-directory sources | 37 |
 
 Remaining P1 exchange-directory refresh work:
 
@@ -57,8 +63,6 @@ Remaining P1 exchange-directory refresh work:
 - `sec_company_tickers_exchange`
 - `bse_india_scrips`
 - `deutsche_boerse_xetra_all_tradable_equities`
-- `jpx_listed_issues`
-- `euronext_equities`
 - `hkex_securities_list`
 - `nse_india_securities_available`
 - `krx_listed_companies`
@@ -77,6 +81,8 @@ Remaining P1 exchange-directory refresh work:
 - `bvb_shares_directory`
 - `cse_lk_company_info_summary`
 - `cse_lk_all_security_code`
+- `hnx_listed_securities`
+- `nzx_instruments`
 
 ## Review Backlog
 
@@ -90,7 +96,7 @@ Remaining P1 exchange-directory refresh work:
 | Masterfile collision identity review | 11,176 | listing_keyed_review_queue_ready_no_symbol_only_additions |
 | Symbol-change workflow | 292 | source_scope_aware_review_queue |
 | OHLCV plausibility sampling | 360 | sampling_queue_enabled_plausibility_only |
-| Freshness and reporting | 1,803 | global_and_source_freshness_visible |
+| Freshness and reporting | 1,802 | global_and_source_freshness_visible |
 | Before/after delta baseline | 0 | baseline_snapshot_available_for_future_campaign_deltas |
 
 ## Primary Review Files
@@ -99,6 +105,9 @@ Remaining P1 exchange-directory refresh work:
 - `data/reports/improvement_campaigns.md`
 - `data/reports/improvement_deltas.md`
 - `data/reports/coverage_report.md`
+- `data/reports/primary_isin_completeness.md`
+- `data/reports/etf_universe_completeness.md`
+- `data/reports/cfi_code_review.md`
 - `data/reports/source_gap_classification.md`
 - `data/reports/source_of_truth_decisions.md`
 - `data/reports/masterfile_collision_review.md`

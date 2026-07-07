@@ -208,10 +208,22 @@ def build_pipeline_commands(options: PipelineOptions) -> list[StageCommand]:
                 notes="Refresh official source-candidate inventory and missing-source priorities.",
             ),
             StageCommand(
+                name="build_etf_universe_completeness",
+                command=[py, "scripts/build_etf_universe_completeness.py"],
+                mutates_data=True,
+                notes="Compare active official ETF directory rows against the DB ETF universe without applying additions.",
+            ),
+            StageCommand(
                 name="build_entry_quality_report",
                 command=[py, "scripts/build_entry_quality_report.py"],
                 mutates_data=True,
                 notes="Refresh listing-keyed deterministic quality status for every row.",
+            ),
+            StageCommand(
+                name="build_cfi_code_review",
+                command=[py, "scripts/build_cfi_code_review.py"],
+                mutates_data=True,
+                notes="Publish review-only CFI evidence from official masterfile rows.",
             ),
             StageCommand(
                 name="check_entry_quality_gate",
@@ -248,6 +260,12 @@ def build_pipeline_commands(options: PipelineOptions) -> list[StageCommand]:
                 command=[py, "scripts/build_source_of_truth_decisions.py"],
                 mutates_data=True,
                 notes="Convert residual gap classes into fill, accepted source-gap, or core-exclusion outcomes.",
+            ),
+            StageCommand(
+                name="build_primary_isin_completeness",
+                command=[py, "scripts/build_primary_isin_completeness.py"],
+                mutates_data=True,
+                notes="Publish D1 missing primary-ISIN source paths and apply gates without filling values.",
             ),
             StageCommand(
                 name="validate_database",
