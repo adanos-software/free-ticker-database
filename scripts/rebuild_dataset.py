@@ -2609,7 +2609,7 @@ def build_identifier_rows(rows: list[dict[str, str]]):
 
 def write_csv(path: Path, fieldnames: list[str], rows: Iterable[dict[str, str]]):
     with path.open("w", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
