@@ -44,12 +44,48 @@ jobs:
       - name: Validate symbol changes parser
         run: python -m pytest tests/test_fetch_symbol_changes.py -q
 
+      - name: Apply officially verified symbol changes
+        id: apply
+        run: python scripts/apply_symbol_changes.py
+
+      - name: Rebuild derived exports and reports
+        if: steps.apply.outputs.symbol_changes_applied == 'true'
+        run: |
+          python scripts/rebuild_dataset.py
+          python scripts/enrich_global_identifiers.py
+          python scripts/build_coverage_report.py
+          python scripts/build_source_inventory.py
+          python scripts/build_completion_backlog.py
+          python scripts/build_source_gap_classification.py
+          python scripts/build_source_of_truth_decisions.py
+          python scripts/build_alias_quality_report.py
+          python scripts/build_adanos_ticker_reference.py
+          python scripts/build_entry_quality_report.py
+          python scripts/update_readme_snapshot.py
+
+      - name: Validate applied symbol changes
+        if: steps.apply.outputs.symbol_changes_applied == 'true'
+        run: |
+          python -m pytest tests/ -q
+          python scripts/check_entry_quality_gate.py
+          python scripts/check_readme_snapshot.py
+          python scripts/validate_database.py
+
       - name: Detect substantive changes
         id: changes
         run: |
-          if git diff --quiet -- data/corporate_actions/symbol_changes.csv; then
+          if git diff --quiet -- data/corporate_actions/symbol_changes.csv \
+            && [ "${{ steps.apply.outputs.symbol_changes_applied }}" != "true" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No new/changed symbol changes; skipping PR (timestamp-only churn discarded)."
+          elif [ "${{ steps.apply.outputs.symbol_changes_applied }}" = "true" ] && git diff --quiet -- \
+            data/listings.csv \
+            data/listing_index.csv \
+            data/identifiers_extended.csv \
+            data/masterfiles/supplemental_listings.csv \
+            data/ README.md; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Symbol-change apply reported no substantive data diff; skipping PR."
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
@@ -73,6 +109,11 @@ jobs:
             - data/reports/symbol_changes_review.csv
             - data/reports/symbol_changes_review.json
             - data/reports/symbol_changes_review.md
+            - data/reports/symbol_changes_apply.json / .md
+
+            High-confidence renames are applied only when the official masterfile
+            proves old inactive, new active, same exchange, unchanged ISIN, and
+            no ticker/listing-key collision. Ambiguous rows remain manual.
 
       - name: Enable automerge
         if: steps.cpr.outputs.pull-request-number != ''

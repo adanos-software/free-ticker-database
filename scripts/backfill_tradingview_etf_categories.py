@@ -21,8 +21,8 @@ from scripts.backfill_tradingview_missing_isins import (
     display_path,
     tradingview_symbols_for_row,
 )
-from scripts.backfill_yahoo_generic_etf_names import merge_metadata_updates
-from scripts.backfill_xtb_omi_isins import names_match
+from scripts.lib.dataio import merge_metadata_updates
+from scripts.lib.normalize import names_match
 from scripts.rebuild_dataset import GENERIC_FUND_WRAPPER_NAMES, TICKERS_CSV, is_valid_isin, normalized_compact, normalize_sector
 
 

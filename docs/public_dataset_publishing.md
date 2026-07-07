@@ -18,6 +18,8 @@ Do not describe this repository as historical sentiment data. It is a ticker, li
 
 ## Package Build
 
+Release tags run `.github/workflows/release.yml`, which rebuilds the dataset from source CSVs, validates gates, creates GitHub Release assets, and builds both upload folders. Manual local builds use the same package script:
+
 Build both upload folders:
 
 ```bash
@@ -32,6 +34,8 @@ Generated folders:
 - `output/public_dataset/huggingface`
 
 The output directory is intentionally ignored by git.
+
+Generated JSON, SQLite, and Parquet files are not normal git-maintained artifacts. They are rebuilt during CI/release runs and attached to GitHub Releases by `scripts/build_release_artifacts.py`.
 
 The build validates each exported CSV header against the publishing schema before writing upload folders. If a source export changes columns or order, update `scripts/build_public_dataset_package.py` and this document intentionally instead of uploading stale metadata.
 
@@ -83,6 +87,8 @@ For later versions:
 kaggle datasets version -p output/public_dataset/kaggle -m "Refresh ticker database"
 ```
 
+The release workflow can run this guarded publishing step automatically when `PUBLISH_KAGGLE=true` and `KAGGLE_USERNAME` / `KAGGLE_KEY` secrets are configured.
+
 ## Hugging Face Upload
 
 Create a public dataset repository, then upload the generated Hugging Face folder. The generated `README.md` includes YAML metadata for Hub discovery and a visible source link to `https://adanos.org`. The dataset is tagged as finance/tabular reference data, not as a supervised ML task.
@@ -100,6 +106,8 @@ git push origin main
 ```
 
 If the repository already exists, clone it and copy the generated files into the clone before committing.
+
+The release workflow can run this guarded publishing step automatically when `PUBLISH_HUGGINGFACE=true` and `HF_TOKEN` is configured.
 
 ## Backlink Text
 

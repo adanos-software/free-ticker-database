@@ -19,3 +19,11 @@ def test_symbol_changes_workflow_uses_node24_create_pull_request_action():
 
     assert "uses: peter-evans/create-pull-request@v8.1.1" in workflow
     assert "uses: peter-evans/create-pull-request@v6" not in workflow
+
+
+def test_symbol_changes_workflow_runs_gated_apply_and_real_validation():
+    workflow = WORKFLOW.read_text(encoding="utf-8")
+
+    assert "python scripts/apply_symbol_changes.py" in workflow
+    assert "python -m pytest tests/ -q" in workflow
+    assert "AUTOMATION_PR_TOKEN" in workflow

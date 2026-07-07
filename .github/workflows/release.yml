@@ -1,0 +1,83 @@
+name: Release Assets
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build source-derived outputs
+        run: |
+          python scripts/rebuild_dataset.py
+          python scripts/enrich_global_identifiers.py
+          python scripts/build_coverage_report.py
+          python scripts/build_source_inventory.py
+          python scripts/build_completion_backlog.py
+          python scripts/build_source_gap_classification.py
+          python scripts/build_source_of_truth_decisions.py
+          python scripts/build_alias_quality_report.py
+          python scripts/build_adanos_ticker_reference.py
+          python scripts/build_entry_quality_report.py
+          python scripts/build_release_acceptance_report.py
+          python scripts/update_readme_snapshot.py
+
+      - name: Run validation gates
+        run: |
+          python -m pytest tests/ -q
+          python scripts/check_entry_quality_gate.py
+          python scripts/check_readme_snapshot.py
+          python scripts/validate_database.py
+
+      - name: Build public dataset packages
+        run: python scripts/build_public_dataset_package.py
+
+      - name: Build GitHub Release assets
+        run: |
+          python scripts/build_release_artifacts.py
+          python scripts/build_evidence_archive.py
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            output/release/assets/*
+            output/release/manifest.json
+            output/evidence_archive/*
+          generate_release_notes: true
+
+      - name: Publish Kaggle package
+        if: ${{ vars.PUBLISH_KAGGLE == 'true' }}
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          python -m pip install kaggle
+          kaggle datasets version -p output/public_dataset/kaggle -m "Release ${GITHUB_REF_NAME}"
+
+      - name: Publish Hugging Face package
+        if: ${{ vars.PUBLISH_HUGGINGFACE == 'true' }}
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          python -m pip install "huggingface_hub[cli]"
+          huggingface-cli upload adanosorg/free-global-stock-ticker-database output/public_dataset/huggingface . --repo-type dataset --token "$HF_TOKEN"

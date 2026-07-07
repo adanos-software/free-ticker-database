@@ -1,0 +1,73 @@
+from __future__ import annotations
+
+import csv
+import json
+from pathlib import Path
+
+from scripts.apply_delistings import apply_delistings
+
+
+def read_drop_rows(path: Path) -> list[dict[str, str]]:
+    with path.open(newline="", encoding="utf-8") as handle:
+        return list(csv.DictReader(handle))
+
+
+def write_drop_rows(path: Path, rows: list[dict[str, str]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=["ticker", "exchange", "confidence", "reason"])
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def test_apply_delistings_writes_only_authoritative_bse_delisted(tmp_path: Path) -> None:
+    source = tmp_path / "delisting_report.json"
+    drops = tmp_path / "drop_entries.csv"
+    write_drop_rows(drops, [])
+    source.write_text(
+        json.dumps(
+            {
+                "candidates": [
+                    {"exchange": "BSE_IN", "ticker": "DEAD", "classification": "delisted", "name": "Dead Ltd", "isin": "INE1"},
+                    {"exchange": "BSE_IN", "ticker": "WAIT", "classification": "suspended", "name": "Wait Ltd", "isin": "INE2"},
+                    {"exchange": "NASDAQ", "ticker": "OLD", "classification": "master_absent", "name": "Old Inc", "isin": "US1"},
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    report = apply_delistings(
+        delisting_report_json=source,
+        drop_entries_csv=drops,
+        report_json=tmp_path / "apply.json",
+        report_md=tmp_path / "apply.md",
+        apply=True,
+    )
+
+    assert report["summary"]["applied_rows"] == 1
+    assert report["summary"]["blocked_rows"] == 1
+    assert report["summary"]["manual_rows"] == 1
+    assert read_drop_rows(drops)[0]["ticker"] == "DEAD"
+    assert report["manual"][0]["status"] == "manual_rename_vs_delisting_required"
+
+
+def test_apply_delistings_draft_mode_does_not_mutate_drop_entries(tmp_path: Path) -> None:
+    source = tmp_path / "delisting_report.json"
+    drops = tmp_path / "drop_entries.csv"
+    write_drop_rows(drops, [])
+    source.write_text(
+        json.dumps({"candidates": [{"exchange": "BSE_IN", "ticker": "DEAD", "classification": "delisted"}]}),
+        encoding="utf-8",
+    )
+
+    report = apply_delistings(
+        delisting_report_json=source,
+        drop_entries_csv=drops,
+        report_json=tmp_path / "apply.json",
+        report_md=tmp_path / "apply.md",
+        apply=False,
+    )
+
+    assert report["summary"]["drafted_rows"] == 1
+    assert read_drop_rows(drops) == []

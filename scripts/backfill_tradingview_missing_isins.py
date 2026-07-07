@@ -16,8 +16,8 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from scripts.backfill_yahoo_generic_etf_names import merge_metadata_updates
-from scripts.backfill_xtb_omi_isins import names_match
+from scripts.lib.dataio import merge_metadata_updates
+from scripts.lib.normalize import names_match
 from scripts.rebuild_dataset import TICKERS_CSV, is_valid_isin
 
 

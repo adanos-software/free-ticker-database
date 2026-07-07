@@ -154,6 +154,7 @@ from scripts.fetch_exchange_masterfiles import (
     fetch_szse_b_share_list,
     fetch_szse_etf_list,
     fetch_source_rows_with_mode,
+    select_rotation_sources,
     fetch_tmx_money_etfs,
     fetch_tmx_stock_quote_rows,
     fetch_tmx_etf_screener_quote_rows,
@@ -367,6 +368,23 @@ from scripts.fetch_exchange_masterfiles import (
     LEGACY_SET_STOCK_SEARCH_CACHE,
     build_six_share_details_rows,
 )
+
+
+def test_select_rotation_sources_uses_deterministic_date_batch() -> None:
+    sources = [
+        MasterfileSource(key="c", provider="P", description="C", source_url="https://c.example", format="x"),
+        MasterfileSource(key="a", provider="P", description="A", source_url="https://a.example", format="x"),
+        MasterfileSource(key="b", provider="P", description="B", source_url="https://b.example", format="x"),
+        MasterfileSource(key="d", provider="P", description="D", source_url="https://d.example", format="x"),
+        MasterfileSource(key="e", provider="P", description="E", source_url="https://e.example", format="x"),
+    ]
+
+    selected = select_rotation_sources(batch_size=2, rotation_date="2026-07-07", sources=sources)
+
+    ordered = sorted(sources, key=lambda source: source.key)
+    batch_count = 3
+    expected_index = datetime.fromisoformat("2026-07-07").date().toordinal() % batch_count
+    assert selected == ordered[expected_index * 2:expected_index * 2 + 2]
 
 
 SOURCE = MasterfileSource(

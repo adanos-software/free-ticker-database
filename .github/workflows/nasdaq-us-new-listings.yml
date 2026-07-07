@@ -47,11 +47,12 @@ jobs:
             --source nasdaq_listed \
             --source nasdaq_other_listed
 
-      - name: Apply safe new US stock listings
+      - name: Apply safe new US stock and ETF listings
         id: apply
         run: |
           python scripts/apply_nasdaq_us_new_listings.py \
-            --previous-reference /tmp/reference-before-nasdaq-us.csv
+            --previous-reference /tmp/reference-before-nasdaq-us.csv \
+            --asset-type Stock,ETF
 
       - name: Rebuild derived exports and reports
         if: steps.apply.outputs.new_listings_applied == 'true'
@@ -111,7 +112,7 @@ jobs:
 
             This refresh:
             - updates `nasdaq_listed` and `nasdaq_other_listed` in `data/masterfiles/reference.csv`
-            - applies only newly active, collision-free US `Stock` rows to `data/masterfiles/supplemental_listings.csv`
+            - applies only newly active, collision-free US `Stock` and `ETF` rows to `data/masterfiles/supplemental_listings.csv`
             - rebuilds public exports and reports when rows are accepted
 
             Guardrails:

@@ -2762,6 +2762,30 @@ def select_official_sources(source_keys: Iterable[str] | None = None) -> list[Ma
     return [available[key] for key in requested_keys]
 
 
+def select_rotation_sources(
+    *,
+    batch_size: int,
+    rotation_date: str | None = None,
+    sources: Iterable[MasterfileSource] | None = None,
+) -> list[MasterfileSource]:
+    if batch_size <= 0:
+        raise ValueError("--rotation-batch-size must be greater than zero")
+    ordered = sorted(list(sources or OFFICIAL_SOURCES), key=lambda source: source.key)
+    if not ordered:
+        return []
+    if rotation_date:
+        try:
+            selected_date = datetime.fromisoformat(rotation_date).date()
+        except ValueError as exc:
+            raise ValueError("--rotation-date must be YYYY-MM-DD") from exc
+    else:
+        selected_date = datetime.now(timezone.utc).date()
+    batch_count = (len(ordered) + batch_size - 1) // batch_size
+    batch_index = selected_date.toordinal() % batch_count
+    start = batch_index * batch_size
+    return ordered[start:start + batch_size]
+
+
 def merge_reference_rows(
     existing_rows: Iterable[dict[str, str]],
     refreshed_rows: Iterable[dict[str, str]],
@@ -18672,13 +18696,32 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         action="store_true",
         help="Skip loading manual supplement CSVs.",
     )
+    parser.add_argument(
+        "--rotation-batch-size",
+        type=int,
+        default=None,
+        help="Refresh a deterministic daily batch of official sources instead of all sources.",
+    )
+    parser.add_argument(
+        "--rotation-date",
+        default=None,
+        help="YYYY-MM-DD date used for deterministic rotation selection; defaults to today UTC.",
+    )
     return parser.parse_args(argv)
 
 
 def main(argv: list[str] | None = None) -> None:
     args = parse_args(argv)
     try:
-        selected_sources = select_official_sources(args.sources)
+        if args.sources and args.rotation_batch_size:
+            raise ValueError("--source cannot be combined with --rotation-batch-size")
+        if args.rotation_batch_size:
+            selected_sources = select_rotation_sources(
+                batch_size=args.rotation_batch_size,
+                rotation_date=args.rotation_date,
+            )
+        else:
+            selected_sources = select_official_sources(args.sources)
     except ValueError as exc:
         raise SystemExit(str(exc)) from exc
 
@@ -18688,7 +18731,8 @@ def main(argv: list[str] | None = None) -> None:
         sources=selected_sources,
     )
     selected_source_keys = {source.key for source in selected_sources}
-    if args.sources and MASTERFILE_REFERENCE_CSV.exists():
+    partial_refresh = bool(args.sources or args.rotation_batch_size)
+    if partial_refresh and MASTERFILE_REFERENCE_CSV.exists():
         existing_rows = load_csv(MASTERFILE_REFERENCE_CSV)
         unavailable_source_keys = {
             source_key

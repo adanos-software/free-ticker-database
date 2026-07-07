@@ -27,7 +27,7 @@ REPORT_MD = REPORTS_DIR / "nasdaq_us_new_listings_apply.md"
 
 NASDAQ_US_SOURCE_KEYS = {"nasdaq_listed", "nasdaq_other_listed"}
 US_LISTING_EXCHANGES = {"NASDAQ", "NYSE", "NYSE ARCA", "NYSE MKT", "BATS"}
-DEFAULT_ASSET_TYPES = {"Stock"}
+DEFAULT_ASSET_TYPES = {"Stock", "ETF"}
 US_SUPPLEMENT_COUNTRY = "United States"
 US_SUPPLEMENT_COUNTRY_CODE = "US"
 SUPPLEMENT_FIELDNAMES = [
@@ -317,7 +317,7 @@ def set_github_output(key: str, value: str) -> None:
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Apply newly active US stock listings discovered by Nasdaq Trader source refreshes."
+        description="Apply newly active US stock and ETF listings discovered by Nasdaq Trader source refreshes."
     )
     parser.add_argument("--previous-reference", type=Path, required=True)
     parser.add_argument("--current-reference", type=Path, default=MASTERFILE_REFERENCE_CSV)

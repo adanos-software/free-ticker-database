@@ -24,6 +24,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Rebuild source-derived artifacts
+        run: python scripts/rebuild_dataset.py
+
       - name: Run test suite
         run: python -m pytest tests/ -q
 
@@ -38,114 +41,56 @@ jobs:
 
       - name: Check derived artifacts are current
         run: |
-          python scripts/rebuild_dataset.py
           git diff --exit-code -- \
             data/tickers.csv \
             data/listings.csv \
             data/core_listings.csv \
             data/aliases.csv \
             data/core_aliases.csv \
-            data/tickers.json \
-            data/core_listings.json \
             data/identifiers.csv \
             data/cross_listings.csv \
             data/instrument_scopes.csv
           python - <<'PY'
           from __future__ import annotations
 
-          import hashlib
           import json
           import sqlite3
-          import subprocess
-          import tempfile
           from pathlib import Path
 
           import pyarrow.parquet as pq
 
 
-          def committed_file(path: str) -> Path:
-              handle = tempfile.NamedTemporaryFile(delete=False)
-              try:
-                  data = subprocess.check_output(["git", "show", f"HEAD:{path}"])
-                  handle.write(data)
-              finally:
-                  handle.close()
-              return Path(handle.name)
+          def validate_json(path: str) -> None:
+              payload = json.loads(Path(path).read_text(encoding="utf-8"))
+              if not payload:
+                  raise SystemExit(f"{path} is empty after rebuild")
 
 
-          def row_digest(rows) -> str:
-              digest = hashlib.sha256()
-              for row in rows:
-                  digest.update(json.dumps(row, ensure_ascii=False, separators=(",", ":"), default=str).encode("utf-8"))
-                  digest.update(b"\n")
-              return digest.hexdigest()
+          def validate_sqlite(path: str) -> None:
+              with sqlite3.connect(path) as conn:
+                  tables = [
+                      row[0]
+                      for row in conn.execute(
+                          "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name"
+                      )
+                  ]
+                  if not tables:
+                      raise SystemExit(f"{path} has no tables after rebuild")
+                  for table in tables:
+                      count = conn.execute(f'SELECT COUNT(*) FROM "{table}"').fetchone()[0]
+                      if count <= 0:
+                          raise SystemExit(f"{path} table {table} is empty after rebuild")
 
 
-          def sqlite_tables(conn: sqlite3.Connection) -> list[str]:
-              return [
-                  row[0]
-                  for row in conn.execute(
-                      "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name"
-                  )
-              ]
-
-
-          def sqlite_schema(conn: sqlite3.Connection) -> list[tuple[str, str, str]]:
-              return [
-                  tuple(row)
-                  for row in conn.execute(
-                      "SELECT type, name, sql FROM sqlite_master WHERE type IN ('table', 'index') ORDER BY type, name"
-                  )
-              ]
-
-
-          def sqlite_table_digest(conn: sqlite3.Connection, table: str) -> tuple[int, str]:
-              columns = [row[1] for row in conn.execute(f"PRAGMA table_info({table})")]
-              quoted_columns = ", ".join(f'"{column}"' for column in columns)
-              order_by = ", ".join(f'"{column}"' for column in columns)
-              query = f'SELECT {quoted_columns} FROM "{table}" ORDER BY {order_by}'
-              rows = conn.execute(query)
-              return conn.execute(f'SELECT COUNT(*) FROM "{table}"').fetchone()[0], row_digest(rows)
-
-
-          def compare_sqlite(path: str) -> None:
-              expected_path = committed_file(path)
-              try:
-                  with sqlite3.connect(expected_path) as expected, sqlite3.connect(path) as actual:
-                      if sqlite_tables(expected) != sqlite_tables(actual):
-                          raise SystemExit(f"{path} table list changed after rebuild")
-                      if sqlite_schema(expected) != sqlite_schema(actual):
-                          raise SystemExit(f"{path} schema changed after rebuild")
-                      for table in sqlite_tables(expected):
-                          expected_digest = sqlite_table_digest(expected, table)
-                          actual_digest = sqlite_table_digest(actual, table)
-                          if expected_digest != actual_digest:
-                              raise SystemExit(f"{path} table {table} content changed after rebuild")
-              finally:
-                  expected_path.unlink(missing_ok=True)
-
-
-          def parquet_digest(path: Path) -> tuple[object, int, int, str]:
+          def validate_parquet(path: str) -> None:
               table = pq.read_table(path)
-              schema = table.schema.remove_metadata()
-              columns = table.column_names
-              rows = (
-                  [record[column] for column in columns]
-                  for record in table.to_pylist()
-              )
-              return schema, table.num_rows, table.num_columns, row_digest(rows)
+              if table.num_rows <= 0 or table.num_columns <= 0:
+                  raise SystemExit(f"{path} is empty after rebuild")
 
 
-          def compare_parquet(path: str) -> None:
-              expected_path = committed_file(path)
-              try:
-                  if parquet_digest(expected_path) != parquet_digest(Path(path)):
-                      raise SystemExit(f"{path} schema, row count, or content changed after rebuild")
-              finally:
-                  expected_path.unlink(missing_ok=True)
-
-
-          compare_sqlite("data/tickers.db")
-          compare_parquet("data/tickers.parquet")
-          compare_parquet("data/core_listings.parquet")
+          validate_json("data/tickers.json")
+          validate_json("data/core_listings.json")
+          validate_sqlite("data/tickers.db")
+          validate_parquet("data/tickers.parquet")
+          validate_parquet("data/core_listings.parquet")
           PY

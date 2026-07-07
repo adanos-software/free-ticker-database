@@ -13,7 +13,8 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from scripts.backfill_yahoo_generic_etf_names import merge_metadata_updates, socket_timeout
+from scripts.lib.dataio import merge_metadata_updates
+from scripts.lib.http import socket_timeout
 from scripts.rebuild_dataset import TICKERS_CSV, alias_matches_company, is_valid_isin
 from scripts.verify_yahoo_listings import (
     choose_yahoo_name,

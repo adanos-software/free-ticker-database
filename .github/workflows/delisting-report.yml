@@ -45,8 +45,35 @@ jobs:
       - name: Validate delisting report logic
         run: python -m pytest tests/test_build_delisting_report.py -q
 
+      - name: Apply verified delisting classes
+        id: apply
+        run: python scripts/apply_delistings.py --apply
+
+      - name: Rebuild derived exports and reports
+        if: steps.apply.outputs.delistings_applied == 'true'
+        run: |
+          python scripts/rebuild_dataset.py
+          python scripts/enrich_global_identifiers.py
+          python scripts/build_coverage_report.py
+          python scripts/build_source_inventory.py
+          python scripts/build_completion_backlog.py
+          python scripts/build_source_gap_classification.py
+          python scripts/build_source_of_truth_decisions.py
+          python scripts/build_alias_quality_report.py
+          python scripts/build_adanos_ticker_reference.py
+          python scripts/build_entry_quality_report.py
+          python scripts/update_readme_snapshot.py
+
+      - name: Validate delisting apply
+        if: steps.apply.outputs.delistings_applied == 'true'
+        run: |
+          python -m pytest tests/ -q
+          python scripts/check_entry_quality_gate.py
+          python scripts/check_readme_snapshot.py
+          python scripts/validate_database.py
+
       - name: Open delisting-review pull request
-        if: steps.delist.outputs.delisting_detected == 'true'
+        if: steps.delist.outputs.delisting_detected == 'true' || steps.apply.outputs.delistings_applied == 'true'
         id: cpr
         uses: peter-evans/create-pull-request@v8.1.1
         with:
@@ -63,12 +90,13 @@ jobs:
             (never emits false candidates).
 
             **Detection only — nothing is auto-applied.** Triage each candidate:
-            - `delisted` (BSE authoritative status) → drop via the override pipeline
+            - `delisted` (BSE authoritative status) → applied as a gated drop override
             - `master_absent` → verify rename vs delisting before acting (renames
               re-key/dedup; genuine delistings drop)
             - `suspended` (BSE) → kept by policy (can resume)
 
             Report: `data/reports/delisting_report.md` / `.json`
+            Apply report: `data/reports/delisting_apply.md` / `.json`
 
       - name: Enable automerge
         if: steps.cpr.outputs.pull-request-number != ''
