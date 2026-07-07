@@ -2,6 +2,29 @@
 
 ## [Unreleased]
 
+## [3.32.00] - 2026-07-07
+
+### Summary
+
+**M4 completeness campaign for issue #118.** Publishes the completeness layer from PR #122, including per-exchange recall, explicit residual source decisions, ETF universe comparison, primary-ISIN backlog evidence, and listing-status history support.
+
+### Added
+
+- Added per-exchange official-masterfile recall reporting to the coverage and release-acceptance reports.
+- Added primary-ISIN completeness, ETF universe completeness, and CFI code review reports with explicit source gates.
+- Added Borsa Italiana, MSE Malawi, Nasdaq Trader Daily List, OTC/FINRA, JPX, and issuer/exchange ETF source coverage paths where available.
+- Added listing-status history output for active, suspended, and delisted listings with effective-date support.
+
+### Changed
+
+- Promoted `core_listings.csv` as the canonical collision-safe consumer export while keeping `tickers.csv` as the legacy compatibility export.
+- Reduced current-scope missing-source inventory to zero and moved remaining residual gaps into generated source-of-truth decisions.
+- Stabilized rebuilt CSV line endings so generated source artifacts are byte-stable across platforms.
+
+### Verification
+
+- `pytest`: 1,537 passed. `scripts/validate_database.py`: 0/83 failed error gates. `scripts/build_release_acceptance_report.py`: 64/64 criteria passed. `scripts/check_readme_snapshot.py`: pass. Bumps VERSION to 3.32.00.
+
 ## [3.31.01] - 2026-07-07
 
 ### Summary
