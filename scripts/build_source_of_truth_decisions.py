@@ -53,6 +53,9 @@ ACCEPTED_SOURCE_GAP_CLASSES = {
     "official_industry_taxonomy_unavailable_gap",
     "official_product_reference_unmatched_category_gap",
     "official_product_taxonomy_unavailable_gap",
+    "official_reference_source_gap",
+    "official_reference_symbol_collision_gap",
+    "official_reference_unmatched_source_gap",
     "otc_sector_source_gap",
 }
 

@@ -462,10 +462,15 @@ def test_build_exchange_report_includes_masterfile_and_verification_rates():
         "official_recall_missing",
         "official_recall_pct",
         "official_recall_gap_rate",
-        "official_recall_target",
-        "official_recall_pass",
-        "official_recall_exception",
-    }
+            "official_recall_target",
+            "official_recall_pass",
+            "official_recall_exception",
+            "collision_adjusted_recall_denominator",
+            "collision_adjusted_recall_missing",
+            "collision_adjusted_recall_pct",
+            "collision_adjusted_recall_gap_rate",
+            "collision_adjusted_recall_pass",
+        }
     assert rows[0]["official_recall_pct"] == 50.0
     assert rows[0]["official_recall_missing"] == 1
     rows = [{key: value for key, value in row.items() if key not in recall_keys} for row in rows]

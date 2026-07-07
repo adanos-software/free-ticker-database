@@ -37,6 +37,7 @@ RELEASE_SOURCE_REPORTS = {
     "sec_sic_sector_backfill": "data/reports/sec_sic_sector_backfill.json",
     "official_name_mismatch_backfill": "data/reports/official_name_mismatch_backfill.json",
     "source_gap_classification": "data/reports/source_gap_classification.json",
+    "pending_renames_manual_review": "data/reports/pending_renames_manual_review.json",
     "deepseek_review_summary": "data/reports/deepseek_review_summary.json",
     "deepseek_batch_plan": "data/reports/deepseek_batch_plan.json",
     "deepseek_collision_review_queue": "data/reports/deepseek_collision_review_queue.json",
@@ -484,7 +485,12 @@ REQUIRED_SOURCE_GAP_REVIEW_BATCH_KEYS = (
     "recommended_next_source",
     "source_gate",
 )
-SOURCE_GAP_FIELD_VALUES = {"missing_etf_category", "missing_isin_primary", "missing_sector_stock"}
+SOURCE_GAP_FIELD_VALUES = {
+    "missing_etf_category",
+    "missing_isin_primary",
+    "missing_sector_stock",
+    "official_reference_gap",
+}
 REQUIRED_SYMBOL_CHANGE_ROW_KEYS = (
     "change_id",
     "effective_date",

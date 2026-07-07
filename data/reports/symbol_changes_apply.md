@@ -1,0 +1,20 @@
+# Symbol Changes Apply
+
+- Generated at: `2026-07-07T12:19:45Z`
+- Dry run: `true`
+- Accepted rows: `0`
+- Blocked/manual rows: `295`
+
+## Accepted
+
+No rename rows satisfied the official-evidence apply gate.
+
+## Blocked / Manual
+
+| Status | Rows |
+|---|---:|
+| blocked_new_symbol_collision | 21 |
+| blocked_old_symbol_not_unique_in_us_scope | 238 |
+| manual_isin_not_proven_unchanged | 2 |
+| manual_non_us_or_unscoped_source | 33 |
+| manual_transition_or_shell_name | 1 |

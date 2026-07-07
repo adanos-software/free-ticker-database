@@ -28,13 +28,18 @@ DEFAULT_CORE_LISTINGS_CSV = DATA_DIR / "core_listings.csv"
 DEFAULT_TMX_STOCK_SECTOR_BACKFILL_CSV = DATA_DIR / "tmx_verification" / "stock_sector_backfill.csv"
 DEFAULT_SOURCE_INVENTORY_GAP_CSV = REPORTS_DIR / "source_inventory_gap.csv"
 DEFAULT_MASTERFILE_REFERENCE_CSV = DATA_DIR / "masterfiles" / "reference.csv"
+DEFAULT_ENTRY_QUALITY_CSV = REPORTS_DIR / "entry_quality.csv"
 DEFAULT_B3_COTAHIST_ISIN_PROBE_CSV = DATA_DIR / "b3_verification" / "cotahist_isin_probe_current.csv"
 DEFAULT_ASX_MISSING_ISIN_PROBE_CSV = DATA_DIR / "asx_verification" / "missing_isin_probe_current.csv"
 DEFAULT_CSV_OUT = REPORTS_DIR / "source_gap_classification.csv"
 DEFAULT_JSON_OUT = REPORTS_DIR / "source_gap_classification.json"
 DEFAULT_MD_OUT = REPORTS_DIR / "source_gap_classification.md"
+FIELD_OFFICIAL_REFERENCE_GAP = "official_reference_gap"
 
 GAP_CLASS_POLICIES = {
+    "official_reference_unmatched_source_gap": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
+    "official_reference_symbol_collision_gap": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
+    "official_reference_source_gap": "The row lacks active official reference coverage; require an official venue source, reviewed source mapping, or source-of-truth decision before promoting it out of source_gap.",
     "adr_cdr_or_depositary_identifier_gap": "Do not infer ISIN from the underlying issuer; require the depositary/CDR program ISIN from an official listing, prospectus, depository, or reviewed identifier feed.",
     "capital_pool_or_halted_identifier_gap": "Require current exchange status and a direct identifier source; keep unresolved if the symbol is halted, suspended, or a capital-pool shell without a current ISIN source.",
     "debt_or_securitized_identifier_gap": "Require official debt/structured-product terms, exchange instrument file, or trustee/prospectus identifier; do not fill from issuer equity ISINs.",
@@ -128,6 +133,8 @@ def has_any(value: str, terms: tuple[str, ...]) -> bool:
 
 
 def target_field_for(field: str) -> str:
+    if field == FIELD_OFFICIAL_REFERENCE_GAP:
+        return "official_reference"
     if field == FIELD_MISSING_ISIN:
         return "isin"
     if field == FIELD_MISSING_STOCK_SECTOR:
@@ -304,6 +311,26 @@ def classify_missing_etf_category(row: dict[str, str]) -> tuple[str, str, str]:
     )
 
 
+def classify_official_reference_gap(row: dict[str, str]) -> tuple[str, str, str]:
+    if row.get("_official_reference_symbol_collision") == "true":
+        return (
+            "official_reference_symbol_collision_gap",
+            "Official exchange directory plus listing-key review for the row's exchange/security.",
+            "Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence.",
+        )
+    if row.get("venue_status") == "official_full" or row.get("_official_source_implemented") == "true":
+        return (
+            "official_reference_unmatched_source_gap",
+            "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
+            "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
+        )
+    return (
+        "official_reference_source_gap",
+        "Official exchange source implementation or reviewed source mapping.",
+        "Keep source_gap until official/reference evidence covers the exact listing key.",
+    )
+
+
 def source_gap_context_for(row: dict[str, str]) -> str:
     return (
         f"listing_key={row.get('listing_key', '') or 'none'};"
@@ -334,7 +361,9 @@ def evidence_gate_context_for(row: dict[str, str]) -> str:
 
 
 def make_row(field: str, row: dict[str, str]) -> SourceGapClassificationRow:
-    if field == FIELD_MISSING_ISIN:
+    if field == FIELD_OFFICIAL_REFERENCE_GAP:
+        gap_class, next_source, source_gate = classify_official_reference_gap(row)
+    elif field == FIELD_MISSING_ISIN:
         gap_class, next_source, source_gate = classify_missing_isin(row)
     elif field == FIELD_MISSING_STOCK_SECTOR:
         gap_class, next_source, source_gate = classify_missing_stock_sector(row)
@@ -372,6 +401,7 @@ def build_source_gap_classifications(
     tmx_sector_results: list[dict[str, str]] | None = None,
     source_inventory_rows: list[dict[str, str]] | None = None,
     masterfile_reference_rows: list[dict[str, str]] | None = None,
+    entry_quality_rows: list[dict[str, str]] | None = None,
     b3_cotahist_isin_probe_rows: list[dict[str, str]] | None = None,
     asx_missing_isin_probe_rows: list[dict[str, str]] | None = None,
 ) -> list[SourceGapClassificationRow]:
@@ -407,12 +437,14 @@ def build_source_gap_classifications(
         if row.get("official", "").lower() == "true" and row.get("exchange", "")
     )
     official_reference_by_key: dict[tuple[str, str], list[dict[str, str]]] = {}
+    official_reference_exchanges_by_ticker: dict[str, set[str]] = {}
     for row in masterfile_reference_rows or []:
         if row.get("official", "").lower() != "true":
             continue
         key = (row.get("exchange", ""), row.get("ticker", ""))
         if key[0] and key[1]:
             official_reference_by_key.setdefault(key, []).append(row)
+            official_reference_exchanges_by_ticker.setdefault(key[1], set()).add(key[0])
     official_reference_without_isin_keys = {
         key for key, values in official_reference_by_key.items() if not any(row.get("isin", "").strip() for row in values)
     }
@@ -429,6 +461,24 @@ def build_source_gap_classifications(
         for row in asx_missing_isin_probe_rows or []
         if row.get("decision") == "no_asx_match"
     )
+    for row in entry_quality_rows or []:
+        if "official_reference_gap" not in row.get("issue_types", ""):
+            continue
+        exchange = row.get("exchange", "")
+        ticker = row.get("ticker", "")
+        reference_exchanges = official_reference_exchanges_by_ticker.get(ticker, set())
+        rows.append(
+            make_row(
+                FIELD_OFFICIAL_REFERENCE_GAP,
+                {
+                    **row,
+                    "_official_source_implemented": "true" if exchange in implemented_source_exchanges else "",
+                    "_official_reference_symbol_collision": (
+                        "true" if bool(reference_exchanges - {exchange}) else ""
+                    ),
+                },
+            )
+        )
     for row in core_listings:
         if row.get("scope_reason") == "primary_listing_missing_isin":
             exchange = row.get("exchange", "")
@@ -571,6 +621,7 @@ def write_markdown(path: Path, rows: list[SourceGapClassificationRow], summary: 
         "",
         "## Summary",
         "",
+        f"- Official reference-gap rows classified: `{field_totals.get(FIELD_OFFICIAL_REFERENCE_GAP, 0)}`",
         f"- Missing primary ISIN rows classified: `{field_totals.get(FIELD_MISSING_ISIN, 0)}`",
         f"- Missing stock-sector rows classified: `{field_totals.get(FIELD_MISSING_STOCK_SECTOR, 0)}`",
         f"- Missing ETF-category rows classified: `{field_totals.get(FIELD_MISSING_ETF_CATEGORY, 0)}`",
@@ -613,6 +664,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--tmx-stock-sector-backfill-csv", type=Path, default=DEFAULT_TMX_STOCK_SECTOR_BACKFILL_CSV)
     parser.add_argument("--source-inventory-gap-csv", type=Path, default=DEFAULT_SOURCE_INVENTORY_GAP_CSV)
     parser.add_argument("--masterfile-reference-csv", type=Path, default=DEFAULT_MASTERFILE_REFERENCE_CSV)
+    parser.add_argument("--entry-quality-csv", type=Path, default=DEFAULT_ENTRY_QUALITY_CSV)
     parser.add_argument("--b3-cotahist-isin-probe-csv", type=Path, default=DEFAULT_B3_COTAHIST_ISIN_PROBE_CSV)
     parser.add_argument("--asx-missing-isin-probe-csv", type=Path, default=DEFAULT_ASX_MISSING_ISIN_PROBE_CSV)
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_CSV_OUT)
@@ -629,6 +681,7 @@ def main(argv: list[str] | None = None) -> None:
         tmx_sector_results=load_csv(args.tmx_stock_sector_backfill_csv),
         source_inventory_rows=load_csv(args.source_inventory_gap_csv),
         masterfile_reference_rows=load_csv(args.masterfile_reference_csv),
+        entry_quality_rows=load_csv(args.entry_quality_csv),
         b3_cotahist_isin_probe_rows=load_csv(args.b3_cotahist_isin_probe_csv),
         asx_missing_isin_probe_rows=load_csv(args.asx_missing_isin_probe_csv),
     )

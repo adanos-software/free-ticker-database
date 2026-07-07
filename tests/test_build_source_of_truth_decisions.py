@@ -31,6 +31,7 @@ def test_build_decisions_maps_gap_classes_to_outcomes() -> None:
             classification("official_industry_taxonomy_unavailable_gap", listing_key="LSE::NOSECTOR"),
             classification("official_product_taxonomy_unavailable_gap", listing_key="XETRA::ETF"),
             classification("official_product_reference_unmatched_category_gap", listing_key="BATS::ETF"),
+            classification("official_reference_unmatched_source_gap", listing_key="ADX::DRIVE"),
             classification("otc_sector_source_gap", listing_key="OTC::BBB"),
             classification("debt_or_securitized_identifier_gap", listing_key="ASX::CCC"),
         ]
@@ -45,6 +46,7 @@ def test_build_decisions_maps_gap_classes_to_outcomes() -> None:
     assert by_key["LSE::NOSECTOR"].source_of_truth_outcome == "accepted_source_gap"
     assert by_key["XETRA::ETF"].source_of_truth_outcome == "accepted_source_gap"
     assert by_key["BATS::ETF"].source_of_truth_outcome == "accepted_source_gap"
+    assert by_key["ADX::DRIVE"].source_of_truth_outcome == "accepted_source_gap"
     assert by_key["OTC::BBB"].source_of_truth_outcome == "accepted_source_gap"
     assert by_key["OTC::BBB"].fill_action == "leave_blank_until_source_available"
     assert by_key["ASX::CCC"].source_of_truth_outcome == "core_exclusion_candidate"

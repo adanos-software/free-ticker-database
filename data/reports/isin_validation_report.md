@@ -1,10 +1,10 @@
 # ISIN identity validation (OpenFIGI)
 
-Generated: 2026-06-22T00:00:00Z
+Generated: 2026-07-07T12:30:00Z
 
 **isin_issues_detected: False**
 
-ISINs validated: 61480 | match=59687 mismatch=98 no_data=1695
+ISINs validated: 61478 | match=59686 mismatch=98 no_data=1694
 
 Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose ticker AND name differ from ours (likely wrong/stale ISIN) — verify before correcting via the override pipeline. `no_data` = OpenFIGI has no record (coverage gap, not an error).
 

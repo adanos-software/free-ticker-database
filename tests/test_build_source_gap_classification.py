@@ -6,6 +6,7 @@ from scripts.build_completion_backlog import (
     FIELD_MISSING_STOCK_SECTOR,
 )
 from scripts.build_source_gap_classification import (
+    FIELD_OFFICIAL_REFERENCE_GAP,
     build_source_gap_classifications,
     classification_context_for,
     evidence_gate_context_for,
@@ -89,6 +90,36 @@ def test_summarize_reports_field_and_class_totals() -> None:
         }
     ]
     assert summary["policy"]["release_gate"]
+
+
+def test_official_reference_gap_with_symbol_collision_is_documented() -> None:
+    rows = build_source_gap_classifications(
+        core_listings=[],
+        tickers=[],
+        entry_quality_rows=[
+            {
+                "listing_key": "ASX::ABC",
+                "ticker": "ABC",
+                "exchange": "ASX",
+                "asset_type": "Stock",
+                "name": "ABC Mining Limited",
+                "venue_status": "official_full",
+                "issue_types": "official_reference_gap",
+            }
+        ],
+        masterfile_reference_rows=[
+            {
+                "ticker": "ABC",
+                "exchange": "NASDAQ",
+                "official": "true",
+            }
+        ],
+    )
+
+    assert len(rows) == 1
+    assert rows[0].field == FIELD_OFFICIAL_REFERENCE_GAP
+    assert rows[0].gap_class == "official_reference_symbol_collision_gap"
+    assert "Do not close the gap from a same-symbol match" in rows[0].source_gate
 
 
 def test_write_markdown_surfaces_top_review_batches(tmp_path) -> None:
