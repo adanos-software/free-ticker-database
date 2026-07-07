@@ -31,15 +31,35 @@ from scripts.rebuild_dataset import TICKERS_CSV
 
 COVERAGE_REPORT_JSON = ROOT / "data" / "reports" / "coverage_report.json"
 SYMBOL_CHANGES_CSV = ROOT / "data" / "corporate_actions" / "symbol_changes.csv"
+SYMBOL_CHANGES_REVIEW_CSV = ROOT / "data" / "reports" / "symbol_changes_review.csv"
+SYMBOL_CHANGES_APPLY_JSON = ROOT / "data" / "reports" / "symbol_changes_apply.json"
 VALIDATION_JSON = ROOT / "data" / "reports" / "validation_report.json"
 REPORT_JSON = ROOT / "data" / "reports" / "drift_report.json"
 REPORT_MD = ROOT / "data" / "reports" / "drift_report.md"
+MANUAL_REVIEW_JSON = ROOT / "data" / "reports" / "pending_renames_manual_review.json"
+MANUAL_REVIEW_CSV = ROOT / "data" / "reports" / "pending_renames_manual_review.csv"
+MANUAL_REVIEW_MD = ROOT / "data" / "reports" / "pending_renames_manual_review.md"
 SAMPLE_CAP = 30
 QUALITY_KEYS = (
     "source_gap_rows", "missing_stock_sector", "missing_etf_category",
     "expected_missing_primary_isin", "country_isin_mismatch",
     "official_name_mismatch", "allowed_warn_rows",
 )
+RENAME_REVIEW_QUEUES = {
+    "review_verified_rename_or_delisting",
+    "blocked_out_of_scope_symbol_collision",
+    "blocked_missing_source_scope_mapping",
+    "review_duplicate_or_cross_listing",
+}
+APPLY_READY_STATUSES = {"apply"}
+PENDING_TRIAGE_STATUSES = {"apply_ready", "fallback_pending"}
+
+
+def read_csv(path: Path) -> list[dict[str, str]]:
+    if not path.exists():
+        return []
+    with path.open(newline="", encoding="utf-8") as handle:
+        return list(csv.DictReader(handle))
 
 
 def dataset_built_at() -> str | None:
@@ -59,25 +79,132 @@ def staleness_days(built_at: str | None, *, now: datetime) -> float | None:
     return round((now - ts).total_seconds() / 86400.0, 1)
 
 
-def pending_renames() -> list[dict[str, str]]:
-    """symbol_changes whose OLD symbol is still present in tickers.csv and whose
-    NEW symbol is absent — i.e., a rename the feed found but we have not applied."""
-    if not SYMBOL_CHANGES_CSV.exists():
-        return []
+def current_symbols() -> set[str]:
     with TICKERS_CSV.open(newline="", encoding="utf-8") as handle:
-        symbols = {r["ticker"].strip().upper() for r in csv.DictReader(handle)}
-    pending: list[dict[str, str]] = []
-    with SYMBOL_CHANGES_CSV.open(newline="", encoding="utf-8") as handle:
-        for ch in csv.DictReader(handle):
-            old = (ch.get("old_symbol") or "").strip().upper()
-            new = (ch.get("new_symbol") or "").strip().upper()
-            if old and old in symbols and new and new not in symbols:
-                pending.append({
-                    "old_symbol": old, "new_symbol": new,
-                    "new_company_name": ch.get("new_company_name", ""),
-                    "effective_date": ch.get("effective_date", ""),
-                })
-    return pending
+        return {r["ticker"].strip().upper() for r in csv.DictReader(handle)}
+
+
+def apply_status_lookup() -> tuple[dict[tuple[str, str, str], str], str]:
+    if not SYMBOL_CHANGES_APPLY_JSON.exists():
+        return {}, "missing"
+    data = json.loads(SYMBOL_CHANGES_APPLY_JSON.read_text(encoding="utf-8"))
+    lookup: dict[tuple[str, str, str], str] = {}
+    for section in ("accepted", "blocked"):
+        for row in data.get(section, []):
+            key = (
+                (row.get("effective_date") or "").strip(),
+                (row.get("old_symbol") or "").strip().upper(),
+                (row.get("new_symbol") or "").strip().upper(),
+            )
+            if key[1] and key[2]:
+                lookup[key] = "apply" if section == "accepted" else row.get("status", "")
+    return lookup, "available"
+
+
+def blocker_reason(row: dict[str, str], apply_status: str) -> str:
+    queue = row.get("symbol_change_workflow_queue", "")
+    scope = row.get("exchange_scope_status", "")
+    old_keys = row.get("old_listing_keys", "") or row.get("old_scoped_listing_keys", "")
+    new_keys = row.get("new_listing_keys", "") or row.get("new_scoped_listing_keys", "")
+    if apply_status == "manual_isin_not_proven_unchanged":
+        return (
+            "manual: official active new-symbol evidence exists, but unchanged ISIN/identity is not proven "
+            "and the old symbol is still present in an official source"
+        )
+    if apply_status == "manual_non_us_or_unscoped_source":
+        if scope == "global_symbol_collision_outside_source_scope":
+            return (
+                f"blocked: secondary feed scope is {row.get('source_exchange_hint') or 'unscoped'}, "
+                f"but old symbol matches dataset listing(s) outside that scope: {old_keys or 'none'}"
+            )
+        return "manual: source exchange scope is not mapped to a safe listing-keyed apply path"
+    if apply_status == "blocked_new_symbol_collision":
+        return f"blocked: new symbol already has dataset listing(s), requiring duplicate/cross-listing review: {new_keys or 'present'}"
+    if apply_status == "blocked_old_symbol_not_unique_in_us_scope":
+        return f"blocked: old symbol is not unique in the scoped US listing universe: {old_keys or 'multiple'}"
+    if apply_status == "manual_transition_or_shell_name":
+        return "manual: transition, shell, unit, right, warrant, or acquisition-like name requires issuer/listing review"
+    if apply_status == "manual_missing_isin":
+        return "manual: current dataset row has no ISIN, so unchanged identity cannot be proven"
+    if queue == "review_verified_rename_or_delisting":
+        return row.get("source_gate", "") or "manual: official old-inactive/new-active same-issuer evidence required"
+    if queue == "blocked_out_of_scope_symbol_collision":
+        return (
+            f"blocked: symbol collision outside source scope; old={old_keys or 'none'} "
+            f"new={new_keys or 'none'}"
+        )
+    if queue == "blocked_missing_source_scope_mapping":
+        return "blocked: secondary feed event has no source exchange mapping"
+    if queue == "review_duplicate_or_cross_listing":
+        return "manual: both old and new symbols are present in source scope; duplicate/cross-listing state must be resolved first"
+    return row.get("source_gate", "") or "manual review required before any canonical symbol change"
+
+
+def rename_triage_rows() -> list[dict[str, str]]:
+    """Classify feed-detected rename signals against scoped review/apply evidence.
+
+    The old drift metric intentionally used a broad symbol set as a smoke test,
+    but that over-counted symbol reuse across exchanges as real drift. This
+    triage keeps those rows visible while only counting rows as pending when a
+    listing-keyed apply gate says they are ready to apply.
+    """
+    symbols = current_symbols()
+    review_rows = read_csv(SYMBOL_CHANGES_REVIEW_CSV)
+    triage_source = "symbol_changes_review"
+    if not review_rows:
+        review_rows = read_csv(SYMBOL_CHANGES_CSV)
+        triage_source = "symbol_changes_csv_fallback"
+    statuses, apply_status_source = apply_status_lookup()
+    triage: list[dict[str, str]] = []
+    for row in review_rows:
+        old = (row.get("old_symbol") or "").strip().upper()
+        new = (row.get("new_symbol") or "").strip().upper()
+        if not old or old not in symbols or not new or new in symbols:
+            continue
+        queue = row.get("symbol_change_workflow_queue", "")
+        if queue and queue not in RENAME_REVIEW_QUEUES:
+            continue
+        key = ((row.get("effective_date") or "").strip(), old, new)
+        apply_status = statuses.get(key, "")
+        if apply_status in APPLY_READY_STATUSES:
+            triage_status = "apply_ready"
+        elif triage_source != "symbol_changes_review" or apply_status_source == "missing":
+            triage_status = "fallback_pending"
+        else:
+            triage_status = "blocked_or_manual"
+        triage.append({
+            "effective_date": row.get("effective_date", ""),
+            "old_symbol": old,
+            "new_symbol": new,
+            "new_company_name": row.get("new_company_name", ""),
+            "source_exchange_hint": row.get("source_exchange_hint", ""),
+            "match_status": row.get("match_status", ""),
+            "symbol_change_workflow_queue": queue,
+            "exchange_scope_status": row.get("exchange_scope_status", ""),
+            "old_listing_keys": row.get("old_listing_keys", ""),
+            "new_listing_keys": row.get("new_listing_keys", ""),
+            "apply_status": apply_status,
+            "apply_status_source": apply_status_source,
+            "triage_source": triage_source,
+            "triage_status": triage_status,
+            "blocker_reason": blocker_reason(row, apply_status),
+        })
+    return triage
+
+
+def pending_renames(rows: list[dict[str, str]] | None = None) -> list[dict[str, str]]:
+    rows = rename_triage_rows() if rows is None else rows
+    return [
+        {
+            "old_symbol": row["old_symbol"],
+            "new_symbol": row["new_symbol"],
+            "new_company_name": row["new_company_name"],
+            "effective_date": row["effective_date"],
+            "blocker_reason": row["blocker_reason"],
+        }
+        for row in rows
+        if row["triage_status"] in PENDING_TRIAGE_STATUSES
+    ]
 
 
 def quality_indicators() -> dict[str, int]:
@@ -115,12 +242,81 @@ def build_markdown(s: dict) -> str:
         L.append(f"- {r['old_symbol']} -> {r['new_symbol']} ({r['new_company_name']}, {r['effective_date']})")
     if s["pending_renames_count"] > len(s["pending_renames_sample"]):
         L.append(f"- ... and {s['pending_renames_count'] - len(s['pending_renames_sample'])} more")
+    if s.get("rename_triage_fallback"):
+        L.append("- Rename triage fallback is active; raw feed or missing apply-artifact rows count as pending drift.")
+    if s.get("rename_triage_source_totals"):
+        L.append(f"- Triage sources: {s['rename_triage_source_totals']}")
+    manual_review_count = s.get("manual_review_count", 0)
+    L += ["", f"## Blocked/manual rename review rows: {manual_review_count}"]
+    for r in s.get("manual_review_sample", []):
+        L.append(
+            f"- {r['old_symbol']} -> {r['new_symbol']} ({r['new_company_name']}, "
+            f"{r['effective_date']}): {r['blocker_reason']}"
+        )
+    if manual_review_count > len(s.get("manual_review_sample", [])):
+        L.append(f"- ... and {manual_review_count - len(s.get('manual_review_sample', []))} more")
     L += ["", "## Quality indicators (release-gate info counts)"]
     for k, v in sorted(s["quality_indicators"].items()):
         L.append(f"- {k}: {v}")
     L += ["", "_Detection only. Triage renames via the symbol-change review feed; "
           "apply corrections through the verified override/verify pipeline._"]
     return "\n".join(L) + "\n"
+
+
+def write_manual_review_artifacts(rows: list[dict[str, str]], *, generated_at: str) -> None:
+    fieldnames = [
+        "effective_date",
+        "old_symbol",
+        "new_symbol",
+        "new_company_name",
+        "source_exchange_hint",
+        "match_status",
+        "symbol_change_workflow_queue",
+        "exchange_scope_status",
+        "old_listing_keys",
+        "new_listing_keys",
+        "apply_status",
+        "apply_status_source",
+        "triage_source",
+        "triage_status",
+        "blocker_reason",
+    ]
+    manual_rows = [row for row in rows if row["triage_status"] == "blocked_or_manual"]
+    payload = {
+        "generated_at": generated_at,
+        "rows": len(manual_rows),
+        "policy": (
+            "Blocked/manual rename rows are not canonical ticker changes. Apply only after "
+            "listing-keyed official old-inactive/new-active same-issuer evidence, with no collision."
+        ),
+        "manual_review_items": manual_rows,
+    }
+    MANUAL_REVIEW_JSON.parent.mkdir(parents=True, exist_ok=True)
+    MANUAL_REVIEW_JSON.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    with MANUAL_REVIEW_CSV.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows({field: row.get(field, "") for field in fieldnames} for row in manual_rows)
+    lines = [
+        "# Pending Renames Manual Review",
+        "",
+        f"Generated: {generated_at}",
+        "",
+        "Rows here are explicitly blocked or manual-review only; no ticker change is authorized by this report.",
+        "",
+        "| Old | New | Effective | Queue | Apply status | Blocker |",
+        "|---|---|---|---|---|---|",
+    ]
+    if manual_rows:
+        for row in manual_rows:
+            lines.append(
+                f"| {row['old_symbol']} | {row['new_symbol']} | {row['effective_date']} | "
+                f"{row['symbol_change_workflow_queue'] or 'none'} | {row['apply_status'] or 'none'} | "
+                f"{row['blocker_reason']} |"
+            )
+    else:
+        lines.append("|  |  |  |  |  | No blocked/manual rows. |")
+    MANUAL_REVIEW_MD.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def main(argv: list[str] | None = None) -> None:
@@ -132,24 +328,41 @@ def main(argv: list[str] | None = None) -> None:
     now = datetime.now(timezone.utc)
     built = dataset_built_at()
     stale = staleness_days(built, now=now)
-    pend = pending_renames()
+    triage_rows = rename_triage_rows()
+    pend = pending_renames(triage_rows)
+    manual_rows = [row for row in triage_rows if row["triage_status"] == "blocked_or_manual"]
     quality = quality_indicators()
 
     drift_detected = bool(pend) or (stale is not None and stale > args.stale_days)
+    generated_at = now.isoformat(timespec="seconds").replace("+00:00", "Z")
 
     summary = {
-        "generated_at": now.isoformat(timespec="seconds"),
+        "generated_at": generated_at,
         "built_at": built,
         "staleness_days": stale,
         "stale_threshold_days": args.stale_days,
         "pending_renames_count": len(pend),
         "pending_renames_sample": pend[:SAMPLE_CAP],
+        "rename_triage_count": len(triage_rows),
+        "rename_triage_fallback": any(row["triage_status"] == "fallback_pending" for row in triage_rows),
+        "rename_triage_source_totals": {
+            key: sum(row.get("triage_source") == key for row in triage_rows)
+            for key in sorted({row.get("triage_source", "") for row in triage_rows})
+        },
+        "rename_triage_apply_status_source_totals": {
+            key: sum(row.get("apply_status_source") == key for row in triage_rows)
+            for key in sorted({row.get("apply_status_source", "") for row in triage_rows})
+        },
+        "manual_review_count": len(manual_rows),
+        "manual_review_sample": manual_rows[:SAMPLE_CAP],
+        "manual_review_report": str(MANUAL_REVIEW_MD.relative_to(ROOT)),
         "quality_indicators": quality,
         "drift_detected": drift_detected,
     }
     REPORT_JSON.parent.mkdir(parents=True, exist_ok=True)
     REPORT_JSON.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     REPORT_MD.write_text(build_markdown(summary), encoding="utf-8")
+    write_manual_review_artifacts(triage_rows, generated_at=generated_at)
 
     gh_out = os.environ.get("GITHUB_OUTPUT")
     if gh_out:

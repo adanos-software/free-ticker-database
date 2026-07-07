@@ -393,6 +393,17 @@ def build_exchange_report(
         official_recall_gap_rate = (
             round(len(recall_missing) / len(master_symbols) * 100, 2) if master_symbols else None
         )
+        collision_adjusted_denominator = len(master_symbols) - len(collisions)
+        collision_adjusted_recall_pct = (
+            round(len(matched) / collision_adjusted_denominator * 100, 2)
+            if collision_adjusted_denominator
+            else None
+        )
+        collision_adjusted_gap_rate = (
+            round(len(missing) / collision_adjusted_denominator * 100, 2)
+            if collision_adjusted_denominator
+            else None
+        )
         stock_verification = stock_verification_lookup.get(exchange, {})
         etf_verification = etf_verification_lookup.get(exchange, {})
         catalog_entry = reference_catalog.get(
@@ -421,6 +432,11 @@ def build_exchange_report(
         official_recall_target = catalog_entry["venue_status"] == "official_full" and bool(master_symbols)
         official_recall_pass = (
             official_recall_pct is not None and official_recall_pct >= 99.5
+            if official_recall_target
+            else None
+        )
+        collision_adjusted_recall_pass = (
+            collision_adjusted_recall_pct is not None and collision_adjusted_recall_pct >= 99.5
             if official_recall_target
             else None
         )
@@ -456,6 +472,11 @@ def build_exchange_report(
                 "official_recall_missing": len(recall_missing),
                 "official_recall_pct": official_recall_pct,
                 "official_recall_gap_rate": official_recall_gap_rate,
+                "collision_adjusted_recall_denominator": collision_adjusted_denominator,
+                "collision_adjusted_recall_missing": len(missing),
+                "collision_adjusted_recall_pct": collision_adjusted_recall_pct,
+                "collision_adjusted_recall_gap_rate": collision_adjusted_gap_rate,
+                "collision_adjusted_recall_pass": collision_adjusted_recall_pass,
                 "official_recall_target": official_recall_target,
                 "official_recall_pass": official_recall_pass,
                 "official_recall_exception": official_recall_exception,
@@ -532,6 +553,14 @@ def build_global_summary(
     core_listing_keys = {row.get("listing_key") or row_listing_key(row) for row in core_listings}
     official_recall_denominator = sum(row.get("official_recall_denominator", row["masterfile_symbols"]) for row in exchange_coverage)
     official_recall_matches = sum(row.get("official_recall_matches", row["masterfile_matches"]) for row in exchange_coverage)
+    collision_adjusted_recall_denominator = sum(
+        row.get("collision_adjusted_recall_denominator", row["masterfile_symbols"] - row["masterfile_collisions"])
+        for row in exchange_coverage
+    )
+    collision_adjusted_recall_missing = sum(
+        row.get("collision_adjusted_recall_missing", row["masterfile_missing"])
+        for row in exchange_coverage
+    )
     official_full_target_rows = [
         row
         for row in exchange_coverage
@@ -577,9 +606,27 @@ def build_global_summary(
             if official_recall_denominator
             else None
         ),
+        "collision_adjusted_recall_denominator": collision_adjusted_recall_denominator,
+        "collision_adjusted_recall_missing": collision_adjusted_recall_missing,
+        "collision_adjusted_recall_pct": (
+            round(official_recall_matches / collision_adjusted_recall_denominator * 100, 2)
+            if collision_adjusted_recall_denominator
+            else None
+        ),
+        "collision_adjusted_recall_gap_rate": (
+            round(collision_adjusted_recall_missing / collision_adjusted_recall_denominator * 100, 2)
+            if collision_adjusted_recall_denominator
+            else None
+        ),
         "official_full_recall_target_exchanges": len(official_full_target_rows),
         "official_full_recall_passing_exchanges": sum(row.get("official_recall_pass") is True for row in official_full_target_rows),
         "official_full_recall_exception_exchanges": sum(row.get("official_recall_pass") is False for row in official_full_target_rows),
+        "collision_adjusted_full_recall_passing_exchanges": sum(
+            row.get("collision_adjusted_recall_pass") is True for row in official_full_target_rows
+        ),
+        "collision_adjusted_full_recall_exception_exchanges": sum(
+            row.get("collision_adjusted_recall_pass") is False for row in official_full_target_rows
+        ),
         "official_full_exchanges": venue_status_counts.get("official_full", 0),
         "official_partial_exchanges": venue_status_counts.get("official_partial", 0),
         "manual_only_exchanges": venue_status_counts.get("manual_only", 0),
@@ -1380,8 +1427,8 @@ def render_markdown(report: dict[str, Any]) -> str:
             "",
             "## Exchange Coverage",
             "",
-            "| Exchange | Venue Status | Tickers | ISIN | Sector | CIK | FIGI | LEI | Masterfile Symbols | Matches | Collisions | Missing | Recall % | Recall Gap % | Recall Exception | Verified on Covered |",
-            "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|",
+            "| Exchange | Venue Status | Tickers | ISIN | Sector | CIK | FIGI | LEI | Masterfile Symbols | Matches | Collisions | Missing | Recall % | Recall Gap % | Collision-Adjusted Recall % | Collision-Adjusted Missing | Recall Exception | Verified on Covered |",
+            "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---:|",
         ]
     )
     for row in report["exchange_coverage"]:
@@ -1396,8 +1443,10 @@ def render_markdown(report: dict[str, Any]) -> str:
             "official_recall_gap_rate",
             round(recall_missing / recall_denominator * 100, 2) if recall_denominator else None,
         )
+        adjusted_recall_pct = row.get("collision_adjusted_recall_pct")
+        adjusted_missing = row.get("collision_adjusted_recall_missing", row["masterfile_missing"])
         lines.append(
-            f"| {row['exchange']} | {row['venue_status']} | {row['tickers']} | {row['isin_coverage']} | {row['sector_coverage']} | {row['cik_coverage']} | {row['figi_coverage']} | {row['lei_coverage']} | {row['masterfile_symbols']} | {row['masterfile_matches']} | {row['masterfile_collisions']} | {row['masterfile_missing']} | {recall_pct if recall_pct is not None else ''} | {recall_gap_rate if recall_gap_rate is not None else ''} | {row.get('official_recall_exception', '')} | {row['verification_verified_rate_on_covered'] if row['verification_verified_rate_on_covered'] is not None else ''} |"
+            f"| {row['exchange']} | {row['venue_status']} | {row['tickers']} | {row['isin_coverage']} | {row['sector_coverage']} | {row['cik_coverage']} | {row['figi_coverage']} | {row['lei_coverage']} | {row['masterfile_symbols']} | {row['masterfile_matches']} | {row['masterfile_collisions']} | {row['masterfile_missing']} | {recall_pct if recall_pct is not None else ''} | {recall_gap_rate if recall_gap_rate is not None else ''} | {adjusted_recall_pct if adjusted_recall_pct is not None else ''} | {adjusted_missing} | {row.get('official_recall_exception', '')} | {row['verification_verified_rate_on_covered'] if row['verification_verified_rate_on_covered'] is not None else ''} |"
         )
 
     recall_exceptions = [
@@ -1409,17 +1458,17 @@ def render_markdown(report: dict[str, Any]) -> str:
             "",
             "## Per-Exchange Recall Exceptions",
             "",
-            "| Exchange | Recall % | Official Rows | Missing Or Collision-Hidden | Exception |",
-            "|---|---:|---:|---:|---|",
+            "| Exchange | Recall % | Collision-Adjusted Recall % | Official Rows | Missing Or Collision-Hidden | True Missing Excluding Collisions | Exception |",
+            "|---|---:|---:|---:|---:|---:|---|",
         ]
     )
     if recall_exceptions:
         for row in sorted(recall_exceptions, key=lambda value: (value["official_recall_pct"] or 0, value["exchange"])):
             lines.append(
-                f"| {row['exchange']} | {row['official_recall_pct']} | {row['official_recall_denominator']} | {row['official_recall_missing']} | {row['official_recall_exception']} |"
+                f"| {row['exchange']} | {row['official_recall_pct']} | {row.get('collision_adjusted_recall_pct', '')} | {row['official_recall_denominator']} | {row['official_recall_missing']} | {row.get('collision_adjusted_recall_missing', row['masterfile_missing'])} | {row['official_recall_exception']} |"
             )
     else:
-        lines.append("|  |  |  |  |  |")
+        lines.append("|  |  |  |  |  |  |  |")
 
     lines.extend(["", "## Country Coverage", "", "| Country | Tickers | ISIN | Sector | CIK | FIGI | LEI |", "|---|---|---|---|---|---|---|"])
     for row in report["country_coverage"]:

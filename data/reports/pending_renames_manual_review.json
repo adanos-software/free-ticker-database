@@ -1,10 +1,6 @@
 {
-  "built_at": "2026-07-07T13:28:28Z",
-  "drift_detected": false,
   "generated_at": "2026-07-07T13:28:30Z",
-  "manual_review_count": 10,
-  "manual_review_report": "data/reports/pending_renames_manual_review.md",
-  "manual_review_sample": [
+  "manual_review_items": [
     {
       "apply_status": "manual_isin_not_proven_unchanged",
       "apply_status_source": "available",
@@ -176,23 +172,6 @@
       "triage_status": "blocked_or_manual"
     }
   ],
-  "pending_renames_count": 0,
-  "pending_renames_sample": [],
-  "quality_indicators": {
-    "allowed_warn_rows": 129,
-    "expected_missing_primary_isin": 947,
-    "missing_etf_category": 86,
-    "missing_stock_sector": 75,
-    "source_gap_rows": 6625
-  },
-  "rename_triage_apply_status_source_totals": {
-    "available": 10
-  },
-  "rename_triage_count": 10,
-  "rename_triage_fallback": false,
-  "rename_triage_source_totals": {
-    "symbol_changes_review": 10
-  },
-  "stale_threshold_days": 45.0,
-  "staleness_days": 0.0
+  "policy": "Blocked/manual rename rows are not canonical ticker changes. Apply only after listing-keyed official old-inactive/new-active same-issuer evidence, with no collision.",
+  "rows": 10
 }

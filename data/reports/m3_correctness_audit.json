@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-07-07T10:10:57Z",
+    "generated_at": "2026-07-07T13:29:40Z",
     "rows": 4,
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -38,16 +38,16 @@
     {
       "audit_block": "after_c2_name_freshness",
       "campaign": "C2_name_freshness",
-      "rows_reviewed": 299,
-      "manual_review_rows": 299,
+      "rows_reviewed": 302,
+      "manual_review_rows": 302,
       "blocked_rows": 0,
       "applied_rows": 0,
       "changed_rows": 0,
       "adversarial_changed_rows_checked": 0,
       "two_source_possible_rows": 0,
-      "two_source_gap_rows": 299,
+      "two_source_gap_rows": 302,
       "full_row_correctness_claim": "not_claimed_from_campaign_report",
-      "metric_context": "rows=299;manual=299;blocked=0;applied=0;claim=not_99_percent_without_external_stratified_audit",
+      "metric_context": "rows=302;manual=302;blocked=0;applied=0;claim=not_99_percent_without_external_stratified_audit",
       "source_gate": "Audit rows are reproducible campaign checks. They do not claim >=99% correctness without a stratified external audit using independent sources."
     },
     {

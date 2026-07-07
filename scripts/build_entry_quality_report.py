@@ -1230,7 +1230,7 @@ def write_csv(path: Path, rows: list[EntryQualityRow]) -> None:
         "recommended_action",
     ]
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
         for row in rows:
             writer.writerow(

@@ -155,7 +155,13 @@ SOURCE_OF_TRUTH_DECISION_COLUMNS = {
     "next_action",
     "source_gate",
 }
-SOURCE_GAP_FIELDS = {"missing_isin_primary", "missing_sector_stock", "missing_etf_category"}
+SOURCE_GAP_FIELDS = {
+    "missing_isin_primary",
+    "missing_sector_stock",
+    "missing_etf_category",
+    "official_reference_gap",
+}
+SOURCE_GAP_TARGET_FIELDS = {"isin", "stock_sector", "etf_category", "official_reference"}
 SOURCE_OF_TRUTH_OUTCOMES = {"official_fill_required", "accepted_source_gap", "core_exclusion_candidate"}
 MOJIBAKE_RE = re.compile(r"(?:Ã[\u0080-\u00BF]|Â[\u0080-\u00BF]|â[\u0080-\u00BF]{1,2}|�|\\x[0-9a-fA-F]{2})")
 
@@ -476,7 +482,11 @@ def metadata_updates_with_typed_leakage(
     return invalid
 
 
-def source_gap_expected_keys(tickers: list[dict[str, str]], core_listings: list[dict[str, str]]) -> set[str]:
+def source_gap_expected_keys(
+    tickers: list[dict[str, str]],
+    core_listings: list[dict[str, str]],
+    entry_quality: list[dict[str, str]] | None = None,
+) -> set[str]:
     keys: set[str] = set()
     for row in core_listings:
         if row.get("scope_reason") == "primary_listing_missing_isin" and row.get("listing_key"):
@@ -487,6 +497,9 @@ def source_gap_expected_keys(tickers: list[dict[str, str]], core_listings: list[
             keys.add(f"missing_sector_stock|{key}")
         elif row.get("asset_type") == "ETF" and not row.get("etf_category", "").strip():
             keys.add(f"missing_etf_category|{key}")
+    for row in entry_quality or []:
+        if "official_reference_gap" in row.get("issue_types", "") and row.get("listing_key"):
+            keys.add(f"official_reference_gap|{row['listing_key']}")
     return keys
 
 
@@ -507,7 +520,7 @@ def invalid_source_gap_classification_rows(rows: list[dict[str, str]]) -> list[s
         row_id = f"{field}|{listing_id}"
         if field not in SOURCE_GAP_FIELDS:
             invalid.append(f"{row_id}:invalid_field")
-        elif row.get("target_field", "") not in {"isin", "stock_sector", "etf_category"}:
+        elif row.get("target_field", "") not in SOURCE_GAP_TARGET_FIELDS:
             invalid.append(f"{row_id}:invalid_target_field")
         elif not listing_id or not gap_class or gap_class == "unclassified":
             invalid.append(f"{row_id}:unclassified")
@@ -522,8 +535,9 @@ def source_gap_classification_mismatches(
     rows: list[dict[str, str]],
     tickers: list[dict[str, str]],
     core_listings: list[dict[str, str]],
+    entry_quality: list[dict[str, str]] | None = None,
 ) -> list[str]:
-    expected = source_gap_expected_keys(tickers, core_listings)
+    expected = source_gap_expected_keys(tickers, core_listings, entry_quality)
     actual = source_gap_actual_keys(rows)
     missing = sorted(expected - actual)
     extra = sorted(actual - expected)
@@ -552,7 +566,7 @@ def invalid_source_of_truth_decision_rows(rows: list[dict[str, str]]) -> list[st
         outcome = row.get("source_of_truth_outcome", "")
         if field not in SOURCE_GAP_FIELDS:
             invalid.append(f"{row_id}:invalid_field")
-        elif row.get("target_field", "") not in {"isin", "stock_sector", "etf_category"}:
+        elif row.get("target_field", "") not in SOURCE_GAP_TARGET_FIELDS:
             invalid.append(f"{row_id}:invalid_target_field")
         elif outcome not in SOURCE_OF_TRUTH_OUTCOMES:
             invalid.append(f"{row_id}:invalid_outcome")
@@ -866,7 +880,7 @@ def build_validation_report(
         invalid_source_gap_classification_rows(source_gap_classifications) if source_gap_classifications else []
     )
     source_gap_mismatches = (
-        source_gap_classification_mismatches(source_gap_classifications, tickers, core_listings)
+        source_gap_classification_mismatches(source_gap_classifications, tickers, core_listings, entry_quality)
         if source_gap_classifications
         else []
     )

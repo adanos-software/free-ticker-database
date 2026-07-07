@@ -1,6 +1,6 @@
 # Completion Backlog
 
-Generated at: `2026-07-07T10:09:52Z`
+Generated at: `2026-07-07T12:33:45Z`
 
 ## Summary
 
@@ -22,10 +22,10 @@ Generated at: `2026-07-07T10:09:52Z`
 | 6 | NYSE ARCA | missing_isin_primary | 69 | candidate_for_official_followup | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | yes |
 | 7 | OTC | missing_sector_stock | 43 | candidate_for_official_followup | Current SEC SIC residual dry-run has no accepted OTC sector candidates; prioritize OTC Markets issuer evidence, reviewed Alpha Vantage/FinanceDatabase signals, or keep source-gap status. | yes |
 | 8 | NEO | missing_isin_primary | 43 | candidate_for_official_followup | Official CSD, issuer, prospectus, transfer-agent, or reviewed Canada identifier source exposing a valid ISIN. | yes |
-| 9 | SSE | missing_isin_primary | 37 | candidate_for_official_followup | Separate official CSD/security registry or exchange detail feed with ISIN. | yes |
-| 10 | PSX | missing_isin_primary | 33 | candidate_for_official_followup | Separate official CSD/security registry or exchange detail feed with ISIN. | yes |
-| 11 | SSE_CL | missing_isin_primary | 28 | candidate_for_official_followup | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | yes |
-| 12 | BATS | missing_isin_primary | 26 | candidate_for_official_followup | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | yes |
+| 9 | SSE | missing_isin_primary | 37 | candidate_for_official_followup | Official SSE/SZSE share and ETF feeds first; reviewed EODHD/XTB fallback only for unresolved rows. | yes |
+| 10 | PSX | missing_isin_primary | 33 | candidate_for_official_followup | Official exchange masterfile or reviewed secondary identifier source. | yes |
+| 11 | SSE_CL | missing_isin_primary | 28 | candidate_for_official_followup | Official exchange masterfile or reviewed secondary identifier source. | yes |
+| 12 | BATS | missing_isin_primary | 26 | candidate_for_official_followup | Official US exchange directories where available; EODHD or strict Yahoo for reviewed ETF residuals. | yes |
 
 These are orchestration candidates only. They do not authorize direct data changes without the listed official or review-gated evidence.
 

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-07-07T10:10:58Z",
+    "generated_at": "2026-07-07T13:29:41Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -14,6 +14,7 @@
       "sec_sic_sector_backfill": "data/reports/sec_sic_sector_backfill.json",
       "official_name_mismatch_backfill": "data/reports/official_name_mismatch_backfill.json",
       "source_gap_classification": "data/reports/source_gap_classification.json",
+      "pending_renames_manual_review": "data/reports/pending_renames_manual_review.json",
       "deepseek_review_summary": "data/reports/deepseek_review_summary.json",
       "deepseek_batch_plan": "data/reports/deepseek_batch_plan.json",
       "deepseek_collision_review_queue": "data/reports/deepseek_collision_review_queue.json",
@@ -245,18 +246,18 @@
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-07-07T10:10:58Z",
+      "release_generated_at": "2026-07-07T13:29:41Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-07-07T10:09:54Z"
+          "generated_at": "2026-07-07T13:29:37Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-07-07T10:09:52Z"
+          "generated_at": "2026-07-07T13:29:36Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
@@ -271,12 +272,12 @@
         "improvement_campaigns": {
           "path": "data/reports/improvement_campaigns.json",
           "exists": true,
-          "generated_at": "2026-07-07T10:09:57Z"
+          "generated_at": "2026-07-07T13:29:03Z"
         },
         "completion_backlog": {
           "path": "data/reports/completion_backlog.json",
           "exists": true,
-          "generated_at": "2026-07-07T10:09:52Z"
+          "generated_at": "2026-07-07T12:33:45Z"
         },
         "source_inventory_gap": {
           "path": "data/reports/source_inventory_gap.json",
@@ -301,7 +302,12 @@
         "source_gap_classification": {
           "path": "data/reports/source_gap_classification.json",
           "exists": true,
-          "generated_at": "2026-07-07T10:09:53Z"
+          "generated_at": "2026-07-07T12:34:37Z"
+        },
+        "pending_renames_manual_review": {
+          "path": "data/reports/pending_renames_manual_review.json",
+          "exists": true,
+          "generated_at": "2026-07-07T13:28:30Z"
         },
         "deepseek_review_summary": {
           "path": "data/reports/deepseek_review_summary.json",
@@ -371,7 +377,7 @@
         "symbol_changes_review": {
           "path": "data/reports/symbol_changes_review.json",
           "exists": true,
-          "generated_at": "2026-07-05T09:21:20Z"
+          "generated_at": "2026-07-07T12:19:38Z"
         },
         "otc_name_mismatch_review": {
           "path": "data/reports/otc_name_mismatch_review.json",
@@ -496,32 +502,32 @@
         "m3_correctness_campaigns": {
           "path": "data/reports/m3_correctness_campaigns.json",
           "exists": true,
-          "generated_at": "2026-07-07T10:10:57Z"
+          "generated_at": "2026-07-07T13:29:40Z"
         },
         "m3_sector_category_campaign": {
           "path": "data/reports/m3_sector_category_campaign.json",
           "exists": true,
-          "generated_at": "2026-07-07T10:10:57Z"
+          "generated_at": "2026-07-07T13:29:40Z"
         },
         "m3_name_freshness_campaign": {
           "path": "data/reports/m3_name_freshness_campaign.json",
           "exists": true,
-          "generated_at": "2026-07-07T10:10:57Z"
+          "generated_at": "2026-07-07T13:29:40Z"
         },
         "m3_identity_residual_campaign": {
           "path": "data/reports/m3_identity_residual_campaign.json",
           "exists": true,
-          "generated_at": "2026-07-07T10:10:57Z"
+          "generated_at": "2026-07-07T13:29:40Z"
         },
         "m3_non_equity_leakage_guard": {
           "path": "data/reports/m3_non_equity_leakage_guard.json",
           "exists": true,
-          "generated_at": "2026-07-07T10:10:57Z"
+          "generated_at": "2026-07-07T13:29:40Z"
         },
         "m3_correctness_audit": {
           "path": "data/reports/m3_correctness_audit.json",
           "exists": true,
-          "generated_at": "2026-07-07T10:10:57Z"
+          "generated_at": "2026-07-07T13:29:40Z"
         },
         "primary_isin_completeness": {
           "path": "data/reports/primary_isin_completeness.json",
@@ -640,7 +646,7 @@
       "report_row_counts": {
         "m3_correctness_campaigns": 5,
         "m3_sector_category_campaign": 7082,
-        "m3_name_freshness_campaign": 299,
+        "m3_name_freshness_campaign": 302,
         "m3_identity_residual_campaign": 1260,
         "m3_non_equity_leakage_guard": 227,
         "m3_correctness_audit": 4
@@ -719,7 +725,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-07-07T10:09:52Z",
+      "generated_at": "2026-07-07T13:29:36Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -1069,7 +1075,7 @@
     },
     "source_gap_traceability": {
       "passed": true,
-      "rows": 1137,
+      "rows": 6873,
       "missing_summary_keys": [],
       "row_count_mismatch": {},
       "row_gaps": [],
@@ -1103,7 +1109,8 @@
       "accepted_fields": [
         "missing_etf_category",
         "missing_isin_primary",
-        "missing_sector_stock"
+        "missing_sector_stock",
+        "official_reference_gap"
       ]
     },
     "symbol_change_review_gate": {
@@ -1115,7 +1122,7 @@
       "source_file_mismatches": {},
       "unexpected_source_files": [],
       "policy_missing_markers": [],
-      "rows": 292,
+      "rows": 295,
       "missing_summary_keys": [],
       "row_count_mismatch": {},
       "row_gaps": [],
@@ -2031,8 +2038,8 @@
       "passed": true,
       "batches": 10,
       "summary_next_review_batches": 10,
-      "summary_next_review_batch_rows": 26410,
-      "computed_next_review_batch_rows": 26410,
+      "summary_next_review_batch_rows": 32149,
+      "computed_next_review_batch_rows": 32149,
       "observed_campaign_keys_by_priority": {
         "1": "b3",
         "2": "otc",
