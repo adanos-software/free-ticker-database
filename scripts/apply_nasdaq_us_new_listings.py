@@ -11,8 +11,10 @@ from pathlib import Path
 from typing import Any, Iterable
 
 try:
+    from scripts.lib.non_equity_guard import is_blocked_non_common_stock
     from scripts.rebuild_dataset import should_exclude_stock_row
 except ModuleNotFoundError:  # pragma: no cover - script execution path
+    from lib.non_equity_guard import is_blocked_non_common_stock
     from rebuild_dataset import should_exclude_stock_row
 
 
@@ -152,6 +154,8 @@ def reason_for_skip(
         return "new_feed_ticker_collision"
     if row["asset_type"] == "Stock" and is_temporary_issuance_name(row["name"]):
         return "temporary_when_issued_line"
+    if row["asset_type"] == "Stock" and is_blocked_non_common_stock(row):
+        return "excluded_non_common_stock"
     if row["asset_type"] == "Stock" and not is_stock_like_name(row["name"]):
         return "not_stock_like_name"
     if row["asset_type"] == "Stock" and should_exclude_stock_row(row):

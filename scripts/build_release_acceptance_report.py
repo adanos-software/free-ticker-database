@@ -70,6 +70,12 @@ RELEASE_SOURCE_REPORTS = {
     "weak_sector_venue_action_queue": "data/reports/weak_sector_venue_action_queue.json",
     "adanos_alias_audit": "data/reports/adanos_alias_audit.json",
     "adanos_detection_simulation": "data/reports/adanos_detection_simulation.json",
+    "m3_correctness_campaigns": "data/reports/m3_correctness_campaigns.json",
+    "m3_sector_category_campaign": "data/reports/m3_sector_category_campaign.json",
+    "m3_name_freshness_campaign": "data/reports/m3_name_freshness_campaign.json",
+    "m3_identity_residual_campaign": "data/reports/m3_identity_residual_campaign.json",
+    "m3_non_equity_leakage_guard": "data/reports/m3_non_equity_leakage_guard.json",
+    "m3_correctness_audit": "data/reports/m3_correctness_audit.json",
 }
 
 REQUIRED_GATE_GROUPS = {
@@ -3285,6 +3291,111 @@ def evaluate_release_source_report_integrity(
         "generated_after_release": generated_after_release,
         "unlisted_review_reports": unlisted_review_reports,
         "review_source_report_name_markers": list(REVIEW_SOURCE_REPORT_NAME_MARKERS),
+    }
+
+
+M3_REQUIRED_CAMPAIGNS = {
+    "C1_sector_etf_category_truth",
+    "C2_name_freshness",
+    "C4_identity_residual_burn_down",
+    "C5_non_equity_leakage_guard",
+    "C6_reaudit_after_each_block",
+}
+M3_REQUIRED_AUDIT_BLOCKS = {
+    "after_c1_sector_category",
+    "after_c2_name_freshness",
+    "after_c4_identity_residual",
+    "after_c5_non_equity_guard",
+}
+M3_NO_99_CLAIM = "not_claimed_99_percent_without_external_stratified_audit"
+
+
+def report_row_count(report: dict[str, Any]) -> int:
+    for container in (report.get("summary", {}), report.get("_meta", {}), report):
+        if not isinstance(container, dict):
+            continue
+        value = container.get("rows")
+        if isinstance(value, list):
+            return len(value)
+        try:
+            return int(value)
+        except (TypeError, ValueError):
+            continue
+    rows = report.get("rows")
+    return len(rows) if isinstance(rows, list) else 0
+
+
+def evaluate_m3_correctness_campaigns_gate(
+    rollup: dict[str, Any],
+    sector: dict[str, Any],
+    name: dict[str, Any],
+    identity: dict[str, Any],
+    leakage: dict[str, Any],
+    audit: dict[str, Any],
+) -> dict[str, Any]:
+    reports = {
+        "m3_correctness_campaigns": rollup,
+        "m3_sector_category_campaign": sector,
+        "m3_name_freshness_campaign": name,
+        "m3_identity_residual_campaign": identity,
+        "m3_non_equity_leakage_guard": leakage,
+        "m3_correctness_audit": audit,
+    }
+    missing_generated_at = [
+        key
+        for key, report in reports.items()
+        if not report_generated_at(report)
+    ]
+    campaign_keys = {
+        str(row.get("campaign_key") or "")
+        for row in rollup.get("campaigns", [])
+        if isinstance(row, dict)
+    }
+    missing_campaigns = sorted(M3_REQUIRED_CAMPAIGNS - campaign_keys)
+    audit_blocks = {
+        str(row.get("audit_block") or "")
+        for row in audit.get("rows", [])
+        if isinstance(row, dict)
+    }
+    missing_audit_blocks = sorted(M3_REQUIRED_AUDIT_BLOCKS - audit_blocks)
+    summary = rollup.get("summary", {}) if isinstance(rollup.get("summary"), dict) else {}
+    audit_summary = audit.get("summary", {}) if isinstance(audit.get("summary"), dict) else {}
+    invalid_correctness_claims = {}
+    if summary.get("correctness_claim") != M3_NO_99_CLAIM:
+        invalid_correctness_claims["m3_correctness_campaigns.summary.correctness_claim"] = summary.get("correctness_claim")
+    if audit_summary.get("full_row_correctness_claim") != M3_NO_99_CLAIM:
+        invalid_correctness_claims["m3_correctness_audit.summary.full_row_correctness_claim"] = audit_summary.get(
+            "full_row_correctness_claim"
+        )
+    missing_source_files = [
+        key
+        for key, report in reports.items()
+        if not isinstance(report.get("_meta", {}).get("source_files"), dict)
+    ]
+    report_row_counts = {
+        key: report_row_count(report)
+        for key, report in reports.items()
+    }
+    return {
+        "passed": (
+            bool(campaign_keys)
+            and not missing_generated_at
+            and not missing_campaigns
+            and not missing_audit_blocks
+            and not invalid_correctness_claims
+            and not missing_source_files
+        ),
+        "campaign_keys": sorted(campaign_keys),
+        "missing_campaigns": missing_campaigns,
+        "audit_blocks": sorted(audit_blocks),
+        "missing_audit_blocks": missing_audit_blocks,
+        "missing_generated_at": missing_generated_at,
+        "missing_source_files": missing_source_files,
+        "invalid_correctness_claims": invalid_correctness_claims,
+        "report_row_counts": report_row_counts,
+        "required_campaigns": sorted(M3_REQUIRED_CAMPAIGNS),
+        "required_audit_blocks": sorted(M3_REQUIRED_AUDIT_BLOCKS),
+        "policy": "M3 reports must be generated and must not claim >=99% correctness without external stratified audit evidence.",
     }
 
 
@@ -18287,6 +18398,12 @@ def build_payload() -> dict[str, Any]:
     deepseek_otc_queue = load_json(REPORTS_DIR / "deepseek_otc_review_queue.json")
     deepseek_weak_sector_queue = load_json(REPORTS_DIR / "deepseek_weak_sector_review_queue.json")
     deepseek_isin_collision_validation = load_json(REPORTS_DIR / "deepseek_isin_collision_validation.json")
+    m3_correctness_campaigns = load_json(REPORTS_DIR / "m3_correctness_campaigns.json")
+    m3_sector_category = load_json(REPORTS_DIR / "m3_sector_category_campaign.json")
+    m3_name_freshness = load_json(REPORTS_DIR / "m3_name_freshness_campaign.json")
+    m3_identity_residual = load_json(REPORTS_DIR / "m3_identity_residual_campaign.json")
+    m3_non_equity_guard = load_json(REPORTS_DIR / "m3_non_equity_leakage_guard.json")
+    m3_correctness_audit = load_json(REPORTS_DIR / "m3_correctness_audit.json")
     gates = gate_lookup(validation)
     criteria = {
         key: evaluate_gate_group(gates, names)
@@ -18309,6 +18426,14 @@ def build_payload() -> dict[str, Any]:
     )
     criteria["deepseek_isin_collision_validation_gate"] = evaluate_deepseek_isin_collision_validation_gate(
         deepseek_isin_collision_validation
+    )
+    criteria["m3_correctness_campaigns_gate"] = evaluate_m3_correctness_campaigns_gate(
+        m3_correctness_campaigns,
+        m3_sector_category,
+        m3_name_freshness,
+        m3_identity_residual,
+        m3_non_equity_guard,
+        m3_correctness_audit,
     )
     criteria["completion_backlog_next_actions"] = evaluate_completion_backlog_next_actions(completion_backlog)
     criteria["progress_markdown_traceability"] = evaluate_progress_markdown_traceability()

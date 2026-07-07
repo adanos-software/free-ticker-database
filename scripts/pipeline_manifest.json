@@ -17,10 +17,12 @@
     "scripts/build_public_dataset_package.py",
     "scripts/build_release_artifacts.py",
     "scripts/build_evidence_archive.py",
+    "scripts/build_m3_correctness_campaigns.py",
     "scripts/lib/dataio.py",
     "scripts/lib/http.py",
     "scripts/lib/keys.py",
-    "scripts/lib/normalize.py"
+    "scripts/lib/normalize.py",
+    "scripts/lib/non_equity_guard.py"
   ],
   "archive_after_bundle": [
     "scripts/archive/backfill_yahoo_generic_etf_names.py",
@@ -41,7 +43,14 @@
     "data/reports/delisting_report.*",
     "data/reports/delisting_apply.*",
     "data/reports/masterfile_rotation_diff.*",
-    "data/reports/nasdaq_us_new_listings_apply.*"
+    "data/reports/nasdaq_us_new_listings_apply.*",
+    "data/reports/m3_correctness_campaigns.*",
+    "data/reports/m3_sector_category_campaign.*",
+    "data/reports/m3_sector_category_campaign_by_market.csv",
+    "data/reports/m3_name_freshness_campaign.*",
+    "data/reports/m3_identity_residual_campaign.*",
+    "data/reports/m3_non_equity_leakage_guard.*",
+    "data/reports/m3_correctness_audit.*"
   ],
   "policy": "Active workflows may import living_pipeline scripts and scripts/lib helpers only; historical campaign artifacts should be published as an evidence archive before removal from the working tree."
 }

@@ -96,6 +96,7 @@ from scripts.build_release_acceptance_report import (
     evaluate_gate_group,
     evaluate_isin_identity_collision_gate,
     evaluate_masterfile_collision_gate,
+    evaluate_m3_correctness_campaigns_gate,
     evaluate_official_name_mismatch_backfill_gate,
     evaluate_ohlcv_plausibility_gate,
     evaluate_ohlcv_warning_review_gate,
@@ -204,6 +205,54 @@ def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> N
     assert RELEASE_SOURCE_REPORTS["b3_improvement_action_queue"] == "data/reports/b3_improvement_action_queue.json"
     assert RELEASE_SOURCE_REPORTS["asx_scope_review_queue"] == "data/reports/asx_scope_review_queue.json"
     assert RELEASE_SOURCE_REPORTS["weak_sector_venue_action_queue"] == "data/reports/weak_sector_venue_action_queue.json"
+    assert RELEASE_SOURCE_REPORTS["m3_correctness_campaigns"] == "data/reports/m3_correctness_campaigns.json"
+    assert RELEASE_SOURCE_REPORTS["m3_sector_category_campaign"] == "data/reports/m3_sector_category_campaign.json"
+    assert RELEASE_SOURCE_REPORTS["m3_name_freshness_campaign"] == "data/reports/m3_name_freshness_campaign.json"
+    assert RELEASE_SOURCE_REPORTS["m3_identity_residual_campaign"] == "data/reports/m3_identity_residual_campaign.json"
+    assert RELEASE_SOURCE_REPORTS["m3_non_equity_leakage_guard"] == "data/reports/m3_non_equity_leakage_guard.json"
+    assert RELEASE_SOURCE_REPORTS["m3_correctness_audit"] == "data/reports/m3_correctness_audit.json"
+
+
+def test_evaluate_m3_correctness_campaigns_gate_requires_campaigns_audits_and_no_99_claim() -> None:
+    generated = "2026-07-07T00:00:00Z"
+    source_files = {"listings_csv": "data/listings.csv"}
+    report = {
+        "_meta": {"generated_at": generated, "rows": 1, "source_files": source_files},
+        "summary": {"rows": 1},
+        "rows": [{}],
+    }
+    rollup = {
+        "_meta": {"generated_at": generated, "rows": 5, "source_files": source_files},
+        "summary": {
+            "correctness_claim": "not_claimed_99_percent_without_external_stratified_audit",
+        },
+        "campaigns": [
+            {"campaign_key": "C1_sector_etf_category_truth"},
+            {"campaign_key": "C2_name_freshness"},
+            {"campaign_key": "C4_identity_residual_burn_down"},
+            {"campaign_key": "C5_non_equity_leakage_guard"},
+            {"campaign_key": "C6_reaudit_after_each_block"},
+        ],
+    }
+    audit = {
+        "_meta": {"generated_at": generated, "rows": 4, "source_files": source_files},
+        "summary": {
+            "rows": 4,
+            "full_row_correctness_claim": "not_claimed_99_percent_without_external_stratified_audit",
+        },
+        "rows": [
+            {"audit_block": "after_c1_sector_category"},
+            {"audit_block": "after_c2_name_freshness"},
+            {"audit_block": "after_c4_identity_residual"},
+            {"audit_block": "after_c5_non_equity_guard"},
+        ],
+    }
+
+    result = evaluate_m3_correctness_campaigns_gate(rollup, report, report, report, report, audit)
+
+    assert result["passed"] is True
+    assert result["missing_campaigns"] == []
+    assert result["missing_audit_blocks"] == []
 
 
 def test_evaluate_deepseek_advisory_integrity_accepts_drained_advisory_reports(tmp_path) -> None:

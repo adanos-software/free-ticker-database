@@ -1,0 +1,128 @@
+{
+  "_meta": {
+    "generated_at": "2026-07-07T08:05:18Z",
+    "rows": 5,
+    "source_files": {
+      "listings_csv": "data/listings.csv",
+      "masterfile_reference_csv": "data/masterfiles/reference.csv",
+      "entry_quality_csv": "data/reports/entry_quality.csv",
+      "symbol_changes_review_csv": "data/reports/symbol_changes_review.csv",
+      "isin_identity_collision_csv": "data/reports/isin_identity_collision_review_queue.csv",
+      "metadata_updates_csv": "data/review_overrides/metadata_updates.csv"
+    },
+    "policy": "M3 rollup for correctness campaigns C1, C2, C4, C5, and C6. It records evidence, blocked rows, and manual review queues; it does not make a >=99% claim."
+  },
+  "summary": {
+    "campaigns": 5,
+    "required_campaigns_present": true,
+    "applied_rows_total": 0,
+    "blocked_rows_total": 320,
+    "manual_review_rows_total": 7739,
+    "correctness_target": "move_measured_full_row_correctness_toward_99_percent",
+    "correctness_claim": "not_claimed_99_percent_without_external_stratified_audit"
+  },
+  "campaigns": [
+    {
+      "campaign_key": "C1_sector_etf_category_truth",
+      "artifact": "data/reports/m3_sector_category_campaign.json",
+      "rows": 6748,
+      "applied_rows": 0,
+      "blocked_rows": 116,
+      "manual_review_rows": 6160,
+      "generated_at": "2026-07-07T08:05:18Z",
+      "status": "generated_reviewable_evidence"
+    },
+    {
+      "campaign_key": "C2_name_freshness",
+      "artifact": "data/reports/m3_name_freshness_campaign.json",
+      "rows": 300,
+      "applied_rows": 0,
+      "blocked_rows": 0,
+      "manual_review_rows": 300,
+      "generated_at": "2026-07-07T08:05:18Z",
+      "status": "generated_reviewable_evidence"
+    },
+    {
+      "campaign_key": "C4_identity_residual_burn_down",
+      "artifact": "data/reports/m3_identity_residual_campaign.json",
+      "rows": 1261,
+      "applied_rows": 0,
+      "blocked_rows": 0,
+      "manual_review_rows": 1261,
+      "generated_at": "2026-07-07T08:05:18Z",
+      "status": "generated_reviewable_evidence"
+    },
+    {
+      "campaign_key": "C5_non_equity_leakage_guard",
+      "artifact": "data/reports/m3_non_equity_leakage_guard.json",
+      "rows": 222,
+      "applied_rows": 0,
+      "blocked_rows": 204,
+      "manual_review_rows": 18,
+      "generated_at": "2026-07-07T08:05:18Z",
+      "status": "generated_reviewable_evidence"
+    },
+    {
+      "campaign_key": "C6_reaudit_after_each_block",
+      "artifact": "data/reports/m3_correctness_audit.json",
+      "rows": 4,
+      "applied_rows": 0,
+      "blocked_rows": 0,
+      "manual_review_rows": 0,
+      "generated_at": "2026-07-07T08:05:18Z",
+      "status": "generated_reviewable_evidence"
+    }
+  ],
+  "rows": [
+    {
+      "campaign_key": "C1_sector_etf_category_truth",
+      "artifact": "data/reports/m3_sector_category_campaign.json",
+      "rows": 6748,
+      "applied_rows": 0,
+      "blocked_rows": 116,
+      "manual_review_rows": 6160,
+      "generated_at": "2026-07-07T08:05:18Z",
+      "status": "generated_reviewable_evidence"
+    },
+    {
+      "campaign_key": "C2_name_freshness",
+      "artifact": "data/reports/m3_name_freshness_campaign.json",
+      "rows": 300,
+      "applied_rows": 0,
+      "blocked_rows": 0,
+      "manual_review_rows": 300,
+      "generated_at": "2026-07-07T08:05:18Z",
+      "status": "generated_reviewable_evidence"
+    },
+    {
+      "campaign_key": "C4_identity_residual_burn_down",
+      "artifact": "data/reports/m3_identity_residual_campaign.json",
+      "rows": 1261,
+      "applied_rows": 0,
+      "blocked_rows": 0,
+      "manual_review_rows": 1261,
+      "generated_at": "2026-07-07T08:05:18Z",
+      "status": "generated_reviewable_evidence"
+    },
+    {
+      "campaign_key": "C5_non_equity_leakage_guard",
+      "artifact": "data/reports/m3_non_equity_leakage_guard.json",
+      "rows": 222,
+      "applied_rows": 0,
+      "blocked_rows": 204,
+      "manual_review_rows": 18,
+      "generated_at": "2026-07-07T08:05:18Z",
+      "status": "generated_reviewable_evidence"
+    },
+    {
+      "campaign_key": "C6_reaudit_after_each_block",
+      "artifact": "data/reports/m3_correctness_audit.json",
+      "rows": 4,
+      "applied_rows": 0,
+      "blocked_rows": 0,
+      "manual_review_rows": 0,
+      "generated_at": "2026-07-07T08:05:18Z",
+      "status": "generated_reviewable_evidence"
+    }
+  ]
+}
