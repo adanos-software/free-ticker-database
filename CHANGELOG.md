@@ -2,6 +2,23 @@
 
 ## [Unreleased]
 
+## [3.31.00] - 2026-07-07
+
+### Summary
+
+**M2 automation release for issue #118.** Promotes the new release pipeline and operational automation merged in PR #120, including tag-triggered release assets, generated binary/JSON/parquet outputs as release artifacts, high-confidence rename application, gated delisting application, scheduled masterfile rotation, campaign evidence archiving, and shared script helpers.
+
+### Added
+
+- Added tag-triggered GitHub Release automation that rebuilds public artifacts from source CSVs, runs validation gates, attaches release assets, and keeps Kaggle/Hugging Face publishing behind guarded repository configuration.
+- Added strict apply paths for verified symbol changes and delisting candidates, plus scheduled masterfile rotation and per-venue diff reporting.
+- Added release-asset and evidence-archive builders so generated exports are no longer normal git-maintained artifacts.
+- Split dormant campaign scripts into `scripts/archive/` and introduced `scripts/lib/` helpers for shared data I/O, HTTP, key, and normalization behavior.
+
+### Verification
+
+- `scripts/rebuild_dataset.py`: pass. `python -m pytest tests/ -q`: pass. Bumps VERSION to 3.31.00.
+
 ## [3.30.48] - 2026-07-01
 
 ### Summary
