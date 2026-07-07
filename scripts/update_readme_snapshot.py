@@ -9,9 +9,21 @@ from pathlib import Path
 from typing import Any
 
 try:
-    from scripts.check_readme_snapshot import expected_snapshot_values, load_json, parse_snapshot_table
+    from scripts.check_readme_snapshot import (
+        SOURCE_STATUS_PATTERN,
+        expected_snapshot_values,
+        expected_source_status_values,
+        load_json,
+        parse_snapshot_table,
+    )
 except ModuleNotFoundError:  # pragma: no cover - script execution path
-    from check_readme_snapshot import expected_snapshot_values, load_json, parse_snapshot_table
+    from check_readme_snapshot import (
+        SOURCE_STATUS_PATTERN,
+        expected_snapshot_values,
+        expected_source_status_values,
+        load_json,
+        parse_snapshot_table,
+    )
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -93,6 +105,51 @@ def update_top_exchange_table(readme: str, exchange_counts: Counter[str]) -> str
     return "\n".join(lines) + "\n"
 
 
+def source_status_sentence(source_inventory: dict[str, Any]) -> str:
+    values = expected_source_status_values(source_inventory)
+    return (
+        "Current source inventory status: "
+        f"`{format_count(values['missing'])}` missing current-scope sources, "
+        f"`{format_count(values['todo'])}` parser todo rows, "
+        f"`{format_count(values['global_expansion'])}` real global-expansion candidates, "
+        f"`{format_count(values['official_full'])}` official-full rows, and "
+        f"`{format_count(values['official_partial'])}` official-partial rows."
+    )
+
+
+def update_sources_status_paragraph(readme: str, source_inventory: dict[str, Any]) -> str:
+    replacement = (
+        "Official source candidates and reconciled source gaps are tracked in "
+        "[`data/masterfiles/source_candidates.json`](data/masterfiles/source_candidates.json) "
+        "and summarized by "
+        "[`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md). "
+        f"{source_status_sentence(source_inventory)} "
+        "Remaining work includes source-parser backlog plus field-completion and taxonomy coverage."
+    )
+    if SOURCE_STATUS_PATTERN.search(readme):
+        paragraph_pattern = re.compile(
+            r"Official source candidates and reconciled source gaps are tracked in .*?"
+            r"Remaining work .*?(?=\n\n)",
+            re.DOTALL,
+        )
+        updated, count = paragraph_pattern.subn(replacement, readme, count=1)
+        if count:
+            return updated
+        return SOURCE_STATUS_PATTERN.sub(source_status_sentence(source_inventory), readme, count=1)
+
+    marker = "## Sources"
+    marker_index = readme.find(marker)
+    if marker_index == -1:
+        return readme
+    next_paragraph_index = readme.find("\n\n", marker_index + len(marker))
+    if next_paragraph_index == -1:
+        return readme
+    insert_index = readme.find("\n\n", next_paragraph_index + 2)
+    if insert_index == -1:
+        return readme + "\n\n" + replacement + "\n"
+    return readme[:insert_index] + "\n\n" + replacement + readme[insert_index:]
+
+
 def expected_values(
     coverage_report_json: Path,
     source_inventory_json: Path,
@@ -113,10 +170,12 @@ def update_readme_snapshot(
     entry_quality_json: Path = ENTRY_QUALITY_JSON,
     tickers_csv: Path = TICKERS_CSV,
 ) -> dict[str, Any]:
+    source_inventory = load_json(source_inventory_json)
     expected = expected_values(coverage_report_json, source_inventory_json, entry_quality_json)
     original = readme_path.read_text(encoding="utf-8")
     updated = update_snapshot_table(original, expected)
     updated = update_top_exchange_table(updated, load_exchange_counts(tickers_csv))
+    updated = update_sources_status_paragraph(updated, source_inventory)
     readme_path.write_text(updated, encoding="utf-8")
     changed = original != updated
     summary = {"readme": str(readme_path.relative_to(ROOT)), "changed": changed, "metrics": expected}

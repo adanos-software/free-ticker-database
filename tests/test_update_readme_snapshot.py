@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from collections import Counter
 
-from scripts.update_readme_snapshot import update_snapshot_table, update_top_exchange_table
+from scripts.update_readme_snapshot import update_snapshot_table, update_sources_status_paragraph, update_top_exchange_table
 
 
 def test_update_snapshot_table_replaces_first_metric_number_only():
@@ -52,3 +52,39 @@ def test_update_top_exchange_table_replaces_existing_counts():
 
     assert "| NASDAQ | 4,553 |" in updated
     assert "| NYSE | 1,960 |" in updated
+
+
+def test_update_sources_status_paragraph_uses_source_inventory_summary():
+    readme = "\n".join(
+        [
+            "# Test",
+            "",
+            "## Sources",
+            "",
+            "Implemented sources.",
+            "",
+            "Official source candidates and reconciled source gaps are tracked in [`data/masterfiles/source_candidates.json`](data/masterfiles/source_candidates.json) and summarized by [`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md). Current source inventory status: `0` missing current-scope sources, `0` parser todo rows, `0` real global-expansion candidates, `30` official-full rows, and `34` official-partial rows. Remaining work is now field-completion and taxonomy coverage, not undiscovered exchange-source inventory.",
+            "",
+            "Secondary sources.",
+            "",
+        ]
+    )
+    source_inventory = {
+        "summary": {
+            "current_status_counts": {
+                "missing": 2,
+                "official_full": 30,
+                "official_partial": 33,
+            },
+            "global_expansion_candidates": 0,
+            "todo_rows": 1,
+        }
+    }
+
+    updated = update_sources_status_paragraph(readme, source_inventory)
+
+    assert "`2` missing current-scope sources" in updated
+    assert "`1` parser todo rows" in updated
+    assert "`30` official-full rows" in updated
+    assert "`33` official-partial rows" in updated
+    assert "not undiscovered exchange-source inventory" not in updated

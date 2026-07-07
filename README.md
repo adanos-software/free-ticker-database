@@ -26,7 +26,7 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 | Core primary rows with ISIN | 56,700 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
 | Core primary rows missing ISIN | 947 | Core primary listing rows still missing ISIN; tracked as `scope_reason=primary_listing_missing_isin`. |
 | Extended listing-scope rows | 16,910 | Rows in `data/instrument_scopes.csv` where `instrument_scope=extended`. |
-| Official full exchanges | 46 | Current-scope source inventory rows marked `official_full`. |
+| Official full exchanges | 30 | Current-scope source inventory rows marked `official_full`. |
 | Official partial exchanges | 33 | Current-scope source inventory rows marked `official_partial`. |
 | Missing current-scope exchanges | 2 | Current-scope source inventory rows still marked `missing`; see `data/reports/source_inventory_gap.md`. |
 | Entry quality source-gap rows | 6,850 | Listing-keyed rows that are structurally valid but retain explicit source or metadata gaps. |
@@ -287,7 +287,7 @@ python3 scripts/rebuild_dataset.py
 
 Implemented primary exchange/reference inputs include Nasdaq Trader, Nasdaq Nordic, ASX, Deutsche Boerse, B3, TMX, Euronext, JPX/TSE, TWSE, TPEX, SSE/SZSE, Bursa Malaysia, BME, BMV, WSE/NewConnect, TASE, KRX, HOSE/HNX/UPCOM, CSE Sri Lanka, and SEC company tickers.
 
-Official source candidates and reconciled source gaps are tracked in [`data/masterfiles/source_candidates.json`](data/masterfiles/source_candidates.json) and summarized by [`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md). Current source inventory status: `0` missing current-scope sources, `0` parser todo rows, `0` real global-expansion candidates, `30` official-full rows, and `34` official-partial rows. Remaining work is now field-completion and taxonomy coverage, not undiscovered exchange-source inventory.
+Official source candidates and reconciled source gaps are tracked in [`data/masterfiles/source_candidates.json`](data/masterfiles/source_candidates.json) and summarized by [`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md). Current source inventory status: `2` missing current-scope sources, `1` parser todo rows, `0` real global-expansion candidates, `30` official-full rows, and `33` official-partial rows. Remaining work includes source-parser backlog plus field-completion and taxonomy coverage.
 
 Secondary/reviewed enrichment inputs include [EODHD](https://eodhd.com/financial-apis/), [FinanceDatabase](https://github.com/JerBouma/FinanceDatabase), official B3 COTAHIST files, NYSE Group Security Master sample files, TradingView free scanner metadata, XTB OMI specification data, Yahoo Finance review helpers, [FinancialData.net](https://financialdata.net/documentation) symbol-universe matching, OpenFIGI, GLEIF, and curated production aliases from [api.adanos.org](https://api.adanos.org).
 

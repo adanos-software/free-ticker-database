@@ -19,6 +19,15 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Require automation PR token
+        env:
+          AUTOMATION_PR_TOKEN: ${{ secrets.AUTOMATION_PR_TOKEN }}
+        run: |
+          if [ -z "$AUTOMATION_PR_TOKEN" ]; then
+            echo "AUTOMATION_PR_TOKEN is required so automation PRs trigger pull_request CI." >&2
+            exit 1
+          fi
+
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
@@ -38,8 +47,10 @@ jobs:
 
       - name: Open delisting-review pull request
         if: steps.delist.outputs.delisting_detected == 'true'
+        id: cpr
         uses: peter-evans/create-pull-request@v8.1.1
         with:
+          token: ${{ secrets.AUTOMATION_PR_TOKEN }}
           branch: automation/delisting-report
           delete-branch: true
           commit-message: Update weekly delisting-candidate report
@@ -58,3 +69,9 @@ jobs:
             - `suspended` (BSE) → kept by policy (can resume)
 
             Report: `data/reports/delisting_report.md` / `.json`
+
+      - name: Enable automerge
+        if: steps.cpr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ secrets.AUTOMATION_PR_TOKEN }}
+        run: gh pr merge "${{ steps.cpr.outputs.pull-request-number }}" --auto --squash
