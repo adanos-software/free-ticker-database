@@ -74,6 +74,9 @@ Reference and audit files:
 | [`data/reports/pr_review_summary.md`](data/reports/pr_review_summary.md) | Compact PR review entry point for scope, safety policy, acceptance status, and remaining risks |
 | [`data/reports/release_acceptance.md`](data/reports/release_acceptance.md) | Release acceptance matrix covering data invariants, review traceability, campaign evidence, and gates |
 | [`data/reports/improvement_campaigns.md`](data/reports/improvement_campaigns.md) | Campaign status, next review batches, source gates, and closure blockers |
+| [`data/reports/m3_correctness_campaigns.md`](data/reports/m3_correctness_campaigns.md) | M3 correctness campaign rollup for sector/category, name freshness, identity residuals, non-equity leakage, and re-audit evidence |
+| [`data/reports/m3_correctness_audit.md`](data/reports/m3_correctness_audit.md) | Re-audit artifact generated after each M3 correctness block; does not claim 99% correctness without external stratified audit evidence |
+| [`data/reports/m3_non_equity_leakage_guard.md`](data/reports/m3_non_equity_leakage_guard.md) | Scheduled guard report for preferreds, warrants, units, rights, notes, CEFs, and other non-common-stock leakage |
 | [`data/reports/source_inventory_gap.md`](data/reports/source_inventory_gap.md) | Missing/partial/global official-source backlog |
 | [`data/reports/completion_backlog.md`](data/reports/completion_backlog.md) | Prioritized missing ISIN/sector/category backlog |
 | [`data/reports/source_gap_classification.md`](data/reports/source_gap_classification.md) | Deterministic residual source-gap classes and row-level source gates |

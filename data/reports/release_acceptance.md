@@ -1,17 +1,17 @@
 # Release Acceptance
 
-Generated: `2026-07-01T05:21:09Z`
+Generated: `2026-07-07T08:40:39Z`
 
 Overall passed: `True`
 
-Summary context: `passed=true;criteria=60;passed_criteria=60;failed_criteria=0;validation_failed_error_gates=0`
+Summary context: `passed=true;criteria=61;passed_criteria=61;failed_criteria=0;validation_failed_error_gates=0`
 
 ## Summary
 
 | Metric | Value |
 |---|---:|
-| `criteria` | `60` |
-| `passed_criteria` | `60` |
+| `criteria` | `61` |
+| `passed_criteria` | `61` |
 | `failed_criteria` | `0` |
 | `validation_failed_error_gates` | `0` |
 
@@ -30,6 +30,7 @@ Summary context: `passed=true;criteria=60;passed_criteria=60;failed_criteria=0;v
 | `deepseek_advisory_integrity` | True |
 | `deepseek_queue_advisory_policies` | True |
 | `deepseek_isin_collision_validation_gate` | True |
+| `m3_correctness_campaigns_gate` | True |
 | `completion_backlog_next_actions` | True |
 | `progress_markdown_traceability` | True |
 | `adanos_detection_simulation` | True |

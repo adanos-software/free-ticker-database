@@ -191,7 +191,8 @@ def test_apply_new_listings_skips_backlog_and_non_common_rows(tmp_path):
 
     assert [row["ticker"] for row in report["accepted"]] == ["NEW"]
     assert report["summary"]["skipped_by_reason"] == {
-        "not_stock_like_name": 2,
+        "excluded_non_common_stock": 1,
+        "not_stock_like_name": 1,
         "temporary_when_issued_line": 1,
     }
 
