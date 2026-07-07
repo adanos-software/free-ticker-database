@@ -29,7 +29,7 @@ if str(ROOT) not in sys.path:
 
 from scripts.rebuild_dataset import TICKERS_CSV
 
-CORE_LISTINGS_JSON = ROOT / "data" / "core_listings.json"
+COVERAGE_REPORT_JSON = ROOT / "data" / "reports" / "coverage_report.json"
 SYMBOL_CHANGES_CSV = ROOT / "data" / "corporate_actions" / "symbol_changes.csv"
 VALIDATION_JSON = ROOT / "data" / "reports" / "validation_report.json"
 REPORT_JSON = ROOT / "data" / "reports" / "drift_report.json"
@@ -44,7 +44,7 @@ QUALITY_KEYS = (
 
 def dataset_built_at() -> str | None:
     try:
-        return json.loads(CORE_LISTINGS_JSON.read_text(encoding="utf-8"))["_meta"]["built_at"]
+        return json.loads(COVERAGE_REPORT_JSON.read_text(encoding="utf-8"))["_meta"]["generated_at"]
     except Exception:
         return None
 

@@ -1,5 +1,7 @@
 from datetime import datetime, timezone
+import json
 
+import scripts.build_drift_report as drift
 from scripts.build_drift_report import (
     build_markdown,
     dataset_built_at,
@@ -19,6 +21,14 @@ def test_staleness_days_parses_iso_and_handles_missing():
 def test_dataset_built_at_is_iso_or_none():
     built = dataset_built_at()
     assert built is None or built.endswith("Z") or "+" in built
+
+
+def test_dataset_built_at_uses_committed_coverage_report(tmp_path, monkeypatch):
+    coverage = tmp_path / "coverage_report.json"
+    coverage.write_text(json.dumps({"_meta": {"generated_at": "2026-07-06T11:16:55Z"}}), encoding="utf-8")
+    monkeypatch.setattr(drift, "COVERAGE_REPORT_JSON", coverage)
+
+    assert dataset_built_at() == "2026-07-06T11:16:55Z"
 
 
 def test_pending_renames_shape():

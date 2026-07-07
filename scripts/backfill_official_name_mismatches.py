@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from scripts.backfill_yahoo_generic_etf_names import merge_metadata_updates
+from scripts.lib.dataio import merge_metadata_updates
 from scripts.build_entry_quality_report import (
     DEFAULT_CSV_OUT as ENTRY_QUALITY_CSV,
     MASTERFILE_REFERENCE_CSV,

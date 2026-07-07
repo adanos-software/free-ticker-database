@@ -218,3 +218,27 @@ def test_apply_new_listings_skips_ticker_collisions(tmp_path):
 
     assert report["accepted"] == []
     assert report["summary"]["skipped_by_reason"] == {"ticker_collision": 1}
+
+
+def test_apply_new_listings_accepts_new_us_etf_by_default(tmp_path):
+    previous_reference = tmp_path / "previous.csv"
+    current_reference = tmp_path / "current.csv"
+    listings = tmp_path / "listings.csv"
+    supplements = tmp_path / "supplements.csv"
+
+    write_rows(previous_reference, REFERENCE_FIELDS, [])
+    write_rows(current_reference, REFERENCE_FIELDS, [reference_row("ETFZ", "Example ETF", asset_type="ETF")])
+    write_rows(listings, LISTING_FIELDS, [])
+    write_rows(supplements, SUPPLEMENT_FIELDS, [])
+
+    report = apply_new_listings(
+        previous_reference_csv=previous_reference,
+        current_reference_csv=current_reference,
+        listings_csv=listings,
+        supplement_csv=supplements,
+        report_json=tmp_path / "report.json",
+        report_md=tmp_path / "report.md",
+    )
+
+    assert report["summary"]["supported_asset_types"] == ["ETF", "Stock"]
+    assert [row["ticker"] for row in report["accepted"]] == ["ETFZ"]

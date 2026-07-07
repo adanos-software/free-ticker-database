@@ -6,7 +6,7 @@
 ## Validation
 
 - [ ] `python -m pytest tests/ -q`
-- [ ] Rebuilt derived artifacts if source data or build logic changed
+- [ ] Rebuilt source CSVs if source data or build logic changed; generated JSON/SQLite/parquet outputs are release assets
 - [ ] Updated docs if behavior, counts, or workflow changed
 
 ## Notes

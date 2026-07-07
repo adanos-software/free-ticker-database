@@ -48,9 +48,16 @@ Snapshot values are generated-report backed and intentionally human-formatted wi
 | [`data/adanos/natural_language_aliases.csv`](data/adanos/natural_language_aliases.csv) | Natural-language alias candidates with detection policy and confidence |
 | [`data/identifiers.csv`](data/identifiers.csv) | Compact ISIN/WKN lookup |
 | [`data/cross_listings.csv`](data/cross_listings.csv) | Same-ISIN listings across exchanges |
-| [`data/tickers.json`](data/tickers.json) | JSON export for APIs and apps |
-| [`data/tickers.parquet`](data/tickers.parquet) | Analytics export |
-| [`data/tickers.db`](data/tickers.db) | SQLite export |
+
+Generated release assets:
+
+| Asset | Use |
+|---|---|
+| `data/tickers.json` | JSON export for APIs and apps, built by CI/release workflows |
+| `data/core_listings.json` | Collision-safe JSON export, built by CI/release workflows |
+| `data/tickers.parquet` | Analytics export, built by CI/release workflows |
+| `data/core_listings.parquet` | Collision-safe analytics export, built by CI/release workflows |
+| `data/tickers.db` | SQLite export, built by CI/release workflows |
 
 Reference and audit files:
 
@@ -156,7 +163,7 @@ Additional collision-safe tables: `core_listings` and `core_aliases`.
 - Foreign OTC country metadata is corrected from valid ISIN prefixes where possible.
 - Official masterfiles are kept separate from secondary sources.
 - Yahoo, EODHD, XTB, and FinanceDatabase are treated as reviewed candidate sources, not as exchange authority.
-- Local probe/test artifacts are ignored via `output/` and `test-results/`; committed artifacts live under `data/`.
+- Local probe/test artifacts are ignored via `output/` and `test-results/`. CSVs under `data/` are the diffable source of truth; generated JSON, SQLite, and Parquet files are release assets.
 
 ## Coverage
 
@@ -297,5 +304,6 @@ FinancialData.net output is intentionally review-only: the international-symbols
 
 - License: [MIT](LICENSE)
 - Changelog: [CHANGELOG.md](CHANGELOG.md)
+- M2 operations: [docs/m2_operations.md](docs/m2_operations.md)
 - Releases: [GitHub Releases](https://github.com/adanos-software/free-ticker-database/releases)
 - Contributing: [CONTRIBUTING.md](CONTRIBUTING.md)

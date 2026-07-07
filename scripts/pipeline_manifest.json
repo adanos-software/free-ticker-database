@@ -1,0 +1,47 @@
+{
+  "living_pipeline": [
+    ".github/workflows/ci.yml",
+    ".github/workflows/symbol-changes.yml",
+    ".github/workflows/delisting-report.yml",
+    ".github/workflows/masterfile-rotation.yml",
+    ".github/workflows/nasdaq-us-new-listings.yml",
+    ".github/workflows/release.yml",
+    "scripts/rebuild_dataset.py",
+    "scripts/fetch_symbol_changes.py",
+    "scripts/apply_symbol_changes.py",
+    "scripts/build_delisting_report.py",
+    "scripts/apply_delistings.py",
+    "scripts/fetch_exchange_masterfiles.py",
+    "scripts/build_masterfile_diff_report.py",
+    "scripts/apply_nasdaq_us_new_listings.py",
+    "scripts/build_public_dataset_package.py",
+    "scripts/build_release_artifacts.py",
+    "scripts/build_evidence_archive.py",
+    "scripts/lib/dataio.py",
+    "scripts/lib/http.py",
+    "scripts/lib/keys.py",
+    "scripts/lib/normalize.py"
+  ],
+  "archive_after_bundle": [
+    "scripts/archive/backfill_yahoo_generic_etf_names.py",
+    "scripts/archive/backfill_xtb_omi_isins.py",
+    "data/deepseek_review_jobs/*",
+    "data/reports/twelvedata_*",
+    "data/reports/deepseek_*"
+  ],
+  "kept_operational_reports": [
+    "data/reports/coverage_report.*",
+    "data/reports/validation_report.*",
+    "data/reports/release_acceptance.*",
+    "data/reports/source_inventory_gap.*",
+    "data/reports/source_gap_classification.*",
+    "data/reports/source_of_truth_decisions.*",
+    "data/reports/symbol_changes_review.*",
+    "data/reports/symbol_changes_apply.*",
+    "data/reports/delisting_report.*",
+    "data/reports/delisting_apply.*",
+    "data/reports/masterfile_rotation_diff.*",
+    "data/reports/nasdaq_us_new_listings_apply.*"
+  ],
+  "policy": "Active workflows may import living_pipeline scripts and scripts/lib helpers only; historical campaign artifacts should be published as an evidence archive before removal from the working tree."
+}

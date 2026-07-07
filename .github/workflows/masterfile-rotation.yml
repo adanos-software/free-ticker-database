@@ -1,0 +1,135 @@
+name: Daily Masterfile Rotation
+
+on:
+  schedule:
+    - cron: "07 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  rotate-masterfiles:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Require automation PR token
+        env:
+          AUTOMATION_PR_TOKEN: ${{ secrets.AUTOMATION_PR_TOKEN }}
+        run: |
+          if [ -z "$AUTOMATION_PR_TOKEN" ]; then
+            echo "AUTOMATION_PR_TOKEN is required so automation PRs trigger pull_request CI." >&2
+            exit 1
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Snapshot current masterfile reference
+        run: cp data/masterfiles/reference.csv /tmp/reference-before-masterfile-rotation.csv
+
+      - name: Refresh scheduled source batch
+        run: python scripts/fetch_exchange_masterfiles.py --rotation-batch-size 20
+
+      - name: Build masterfile rotation diff
+        run: |
+          python scripts/build_masterfile_diff_report.py \
+            --previous-reference /tmp/reference-before-masterfile-rotation.csv
+
+      - name: Apply safe new US stock and ETF listings
+        id: apply
+        run: |
+          python scripts/apply_nasdaq_us_new_listings.py \
+            --previous-reference /tmp/reference-before-masterfile-rotation.csv \
+            --asset-type Stock,ETF
+
+      - name: Rebuild derived exports and reports
+        if: steps.apply.outputs.new_listings_applied == 'true'
+        run: |
+          python scripts/rebuild_dataset.py
+          python scripts/enrich_global_identifiers.py
+          python scripts/build_coverage_report.py
+          python scripts/build_source_inventory.py
+          python scripts/build_completion_backlog.py
+          python scripts/build_source_gap_classification.py
+          python scripts/build_source_of_truth_decisions.py
+          python scripts/build_alias_quality_report.py
+          python scripts/build_adanos_ticker_reference.py
+          python scripts/build_entry_quality_report.py
+          python scripts/update_readme_snapshot.py
+
+      - name: Validate release gates
+        if: steps.apply.outputs.new_listings_applied == 'true'
+        run: |
+          python -m pytest tests/ -q
+          python scripts/check_entry_quality_gate.py
+          python scripts/check_readme_snapshot.py
+          python scripts/validate_database.py
+
+      - name: Detect substantive changes
+        id: changes
+        run: |
+          python - <<'PY' > /tmp/masterfile-diff-counts
+          import json
+          report = json.load(open("data/reports/masterfile_rotation_diff.json", encoding="utf-8"))
+          summary = report["summary"]
+          count = summary["new_rows"] + summary["vanished_rows"] + summary["changed_rows"]
+          print(count)
+          PY
+          diff_count=$(cat /tmp/masterfile-diff-counts)
+          if [ "$diff_count" = "0" ] && [ "${{ steps.apply.outputs.new_listings_applied }}" != "true" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No masterfile row diffs or accepted listings; skipping PR (timestamp-only churn discarded)."
+          elif git diff --quiet -- \
+            data/masterfiles/reference.csv \
+            data/masterfiles/sources.json \
+            data/masterfiles/supplemental_listings.csv \
+            data/ README.md; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Masterfile diff/apply reported no substantive data diff; skipping PR."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Open update pull request
+        if: steps.changes.outputs.changed == 'true'
+        id: cpr
+        uses: peter-evans/create-pull-request@v8.1.1
+        with:
+          token: ${{ secrets.AUTOMATION_PR_TOKEN }}
+          branch: automation/masterfile-rotation
+          delete-branch: true
+          commit-message: Rotate official masterfile batch
+          title: "Rotate official masterfile batch"
+          body: |
+            Automated official masterfile rotation.
+
+            This refresh:
+            - rotates a deterministic batch of 20 official source parsers
+            - emits new, vanished, name, ISIN, and field-change diffs
+            - applies only collision-free new US Stock/ETF listings
+
+            Vanished listings are reported for delisting classification and are
+            never directly deleted by this workflow.
+
+            Diff report: `data/reports/masterfile_rotation_diff.md`
+            Apply report: `data/reports/nasdaq_us_new_listings_apply.md`
+
+      - name: Enable automerge
+        if: steps.cpr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ secrets.AUTOMATION_PR_TOKEN }}
+        run: gh pr merge "${{ steps.cpr.outputs.pull-request-number }}" --auto --squash
