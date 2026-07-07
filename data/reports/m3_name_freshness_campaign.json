@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-07-07T13:29:40Z",
-    "rows": 302,
+    "generated_at": "2026-07-07T22:56:53Z",
+    "rows": 303,
     "source_files": {
       "listings_csv": "data/listings.csv",
       "masterfile_reference_csv": "data/masterfiles/reference.csv",
@@ -13,14 +13,14 @@
     "policy": "M3 correctness campaign evidence. Missing or manual-review data is preferred to wrong data; secondary evidence never authorizes direct application."
   },
   "summary": {
-    "rows": 302,
-    "candidate_rows": 302,
+    "rows": 303,
+    "candidate_rows": 303,
     "applied_rows": 0,
     "blocked_rows": 0,
-    "manual_review_rows": 302,
+    "manual_review_rows": 303,
     "metadata_override_pending_rows": 0,
     "decision_totals": {
-      "manual_review_name_update_or_matcher_false_positive": 7,
+      "manual_review_name_update_or_matcher_false_positive": 8,
       "manual_review_pending_official_rename_or_symbol_reuse_evidence": 295
     }
   },
@@ -69,6 +69,23 @@
       "official_or_feed_name": "FSL Trust Units Shipping Business Trust",
       "source_kind": "entry_quality_official_name_mismatch",
       "evidence_source": "OTC Markets:otc_markets_security_profile",
+      "decision": "manual_review_name_update_or_matcher_false_positive",
+      "review_priority": "P1",
+      "confidence_reason": "official_active_reference_name_has_weak_overlap_with_current_name",
+      "verification_evidence_required": "official_current_name_plus_same_listing_identity_or_matcher_regression_evidence",
+      "recommended_next_source": "Official exchange directory, issuer page, OpenFIGI mismatch evidence, or corporate-action notice.",
+      "source_gate": "Do not update names until official current-name evidence proves the same listing identity."
+    },
+    {
+      "campaign": "C2_name_freshness",
+      "listing_key": "OTC::GCWOF",
+      "ticker": "GCWOF",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "current_name": "GCC, S.A.B. de C.V.",
+      "official_or_feed_name": "GRUPO CEMENTOS DE CHIHUAH",
+      "source_kind": "entry_quality_official_name_mismatch",
+      "evidence_source": "OTC Markets:otc_markets_stock_screener",
       "decision": "manual_review_name_update_or_matcher_false_positive",
       "review_priority": "P1",
       "confidence_reason": "official_active_reference_name_has_weak_overlap_with_current_name",

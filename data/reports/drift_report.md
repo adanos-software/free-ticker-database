@@ -1,7 +1,7 @@
 # Drift / freshness report
 
-Generated: 2026-07-07T13:28:30Z
-Dataset built_at: 2026-07-07T13:28:28Z (0.0 days ago; threshold 45.0)
+Generated: 2026-07-07T22:56:56Z
+Dataset built_at: 2026-07-07T22:56:18Z (0.0 days ago; threshold 45.0)
 **drift_detected: False**
 
 ## Pending renames (feed-detected, not yet applied): 0
@@ -20,10 +20,14 @@ Dataset built_at: 2026-07-07T13:28:28Z (0.0 days ago; threshold 45.0)
 - WW -> WGHTQ (Ww International Inc, 2025-05-15): manual: source exchange scope is not mapped to a safe listing-keyed apply path
 
 ## Quality indicators (release-gate info counts)
-- allowed_warn_rows: 129
-- expected_missing_primary_isin: 947
-- missing_etf_category: 86
-- missing_stock_sector: 75
-- source_gap_rows: 6625
+- allowed_warn_rows: 75
+- expected_missing_primary_isin: 621
+- missing_etf_category: 0
+- missing_stock_sector: 1
+- source_gap_rows: 6272
+
+## Quality regressions: 0
+
+## Official recall regressions: 0
 
 _Detection only. Triage renames via the symbol-change review feed; apply corrections through the verified override/verify pipeline._

@@ -6,6 +6,7 @@ from scripts.backfill_stockanalysis_list_sectors import (
     evaluate_row,
     normalize_source_symbol,
     stockanalysis_screener_url,
+    write_report_csv,
 )
 
 
@@ -48,6 +49,32 @@ def test_evaluate_row_accepts_exact_symbol_name_gated_sector() -> None:
     assert result["sector_update"] == "Materials"
 
 
+def test_evaluate_row_maps_stockanalysis_industry_when_sector_missing() -> None:
+    result = evaluate_row(
+        {
+            "ticker": "GXPLF",
+            "exchange": "OTC",
+            "asset_type": "Stock",
+            "name": "Greenridge Exploration Inc",
+            "stock_sector": "",
+        },
+        StockAnalysisListRow(
+            exchange="OTC",
+            asset_type="Stock",
+            symbol="GXPLF",
+            name="Greenridge Exploration Inc.",
+            isin="",
+            sector="",
+            industry="Metal Mining",
+            category="",
+            source_url="https://stockanalysis.com/quote/otc/GXPLF/",
+        ),
+    )
+
+    assert result["decision"] == "accept"
+    assert result["sector_update"] == "Materials"
+
+
 def test_evaluate_row_rejects_name_mismatch() -> None:
     result = evaluate_row(
         {
@@ -71,6 +98,34 @@ def test_evaluate_row_rejects_name_mismatch() -> None:
     )
 
     assert result["decision"] == "name_mismatch"
+    assert result["sector_update"] == ""
+
+
+def test_evaluate_row_rejects_generic_legal_suffix_overlap() -> None:
+    result = evaluate_row(
+        {
+            "ticker": "CHKMF",
+            "exchange": "OTC",
+            "asset_type": "Stock",
+            "name": "Cohiba Minerals Limited",
+            "isin": "",
+            "stock_sector": "",
+        },
+        StockAnalysisListRow(
+            exchange="OTC",
+            asset_type="Stock",
+            symbol="CHKMF",
+            name="Altair Minerals Limited",
+            isin="AU0000333676",
+            sector="Basic Materials",
+            industry="Other Industrial Metals & Mining",
+            category="",
+            source_url="https://stockanalysis.com/quote/otc/CHKMF/",
+        ),
+    )
+
+    assert result["decision"] == "name_mismatch"
+    assert result["isin_update"] == ""
     assert result["sector_update"] == ""
 
 
@@ -98,9 +153,40 @@ def test_build_metadata_updates_labels_stockanalysis_list_as_secondary() -> None
             "proposed_value": "Materials",
             "confidence": "0.74",
             "reason": (
-                "StockAnalysis exchange list screener supplied sector metadata for a row missing stock_sector; "
+                "StockAnalysis exchange list screener supplied sector/industry metadata for a row missing stock_sector; "
                 "accepted as reviewed secondary metadata after exact exchange/symbol match and issuer-name gate. "
                 "Source: https://stockanalysis.com/quote/tsxv/ARTG/"
             ),
         }
     ]
+
+
+def test_write_report_csv_uses_lf_line_endings(tmp_path) -> None:
+    path = tmp_path / "stockanalysis_list_sector_backfill.csv"
+
+    write_report_csv(
+        path,
+        [
+            {
+                "ticker": "ARTG",
+                "exchange": "TSXV",
+                "asset_type": "Stock",
+                "name": "Artemis Gold Inc.",
+                "stockanalysis_symbol": "ARTG",
+                "stockanalysis_name": "Artemis Gold Inc.",
+                "stockanalysis_isin": "CA04302L1004",
+                "stockanalysis_sector": "Basic Materials",
+                "stockanalysis_industry": "Gold",
+                "stockanalysis_category": "",
+                "isin_update": "",
+                "sector_update": "Materials",
+                "category_update": "",
+                "decision": "accept",
+                "source_url": "https://stockanalysis.com/quote/tsxv/ARTG/",
+            }
+        ],
+    )
+
+    content = path.read_bytes()
+    assert b"\r\n" not in content
+    assert content.endswith(b"\n")

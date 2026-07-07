@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-07-07T13:29:40Z",
+    "generated_at": "2026-07-07T22:56:53Z",
     "rows": 5,
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -17,7 +17,7 @@
     "required_campaigns_present": true,
     "applied_rows_total": 0,
     "blocked_rows_total": 324,
-    "manual_review_rows_total": 8071,
+    "manual_review_rows_total": 8536,
     "correctness_target": "move_measured_full_row_correctness_toward_99_percent",
     "correctness_claim": "not_claimed_99_percent_without_external_stratified_audit"
   },
@@ -25,31 +25,31 @@
     {
       "campaign_key": "C1_sector_etf_category_truth",
       "artifact": "data/reports/m3_sector_category_campaign.json",
-      "rows": 7082,
+      "rows": 7079,
       "applied_rows": 0,
       "blocked_rows": 116,
-      "manual_review_rows": 6490,
-      "generated_at": "2026-07-07T13:29:40Z",
+      "manual_review_rows": 6963,
+      "generated_at": "2026-07-07T22:56:53Z",
       "status": "generated_reviewable_evidence"
     },
     {
       "campaign_key": "C2_name_freshness",
       "artifact": "data/reports/m3_name_freshness_campaign.json",
-      "rows": 302,
+      "rows": 303,
       "applied_rows": 0,
       "blocked_rows": 0,
-      "manual_review_rows": 302,
-      "generated_at": "2026-07-07T13:29:40Z",
+      "manual_review_rows": 303,
+      "generated_at": "2026-07-07T22:56:53Z",
       "status": "generated_reviewable_evidence"
     },
     {
       "campaign_key": "C4_identity_residual_burn_down",
       "artifact": "data/reports/m3_identity_residual_campaign.json",
-      "rows": 1260,
+      "rows": 1251,
       "applied_rows": 0,
       "blocked_rows": 0,
-      "manual_review_rows": 1260,
-      "generated_at": "2026-07-07T13:29:40Z",
+      "manual_review_rows": 1251,
+      "generated_at": "2026-07-07T22:56:53Z",
       "status": "generated_reviewable_evidence"
     },
     {
@@ -59,7 +59,7 @@
       "applied_rows": 0,
       "blocked_rows": 208,
       "manual_review_rows": 19,
-      "generated_at": "2026-07-07T13:29:40Z",
+      "generated_at": "2026-07-07T22:56:53Z",
       "status": "generated_reviewable_evidence"
     },
     {
@@ -69,7 +69,7 @@
       "applied_rows": 0,
       "blocked_rows": 0,
       "manual_review_rows": 0,
-      "generated_at": "2026-07-07T13:29:40Z",
+      "generated_at": "2026-07-07T22:56:53Z",
       "status": "generated_reviewable_evidence"
     }
   ],
@@ -77,31 +77,31 @@
     {
       "campaign_key": "C1_sector_etf_category_truth",
       "artifact": "data/reports/m3_sector_category_campaign.json",
-      "rows": 7082,
+      "rows": 7079,
       "applied_rows": 0,
       "blocked_rows": 116,
-      "manual_review_rows": 6490,
-      "generated_at": "2026-07-07T13:29:40Z",
+      "manual_review_rows": 6963,
+      "generated_at": "2026-07-07T22:56:53Z",
       "status": "generated_reviewable_evidence"
     },
     {
       "campaign_key": "C2_name_freshness",
       "artifact": "data/reports/m3_name_freshness_campaign.json",
-      "rows": 302,
+      "rows": 303,
       "applied_rows": 0,
       "blocked_rows": 0,
-      "manual_review_rows": 302,
-      "generated_at": "2026-07-07T13:29:40Z",
+      "manual_review_rows": 303,
+      "generated_at": "2026-07-07T22:56:53Z",
       "status": "generated_reviewable_evidence"
     },
     {
       "campaign_key": "C4_identity_residual_burn_down",
       "artifact": "data/reports/m3_identity_residual_campaign.json",
-      "rows": 1260,
+      "rows": 1251,
       "applied_rows": 0,
       "blocked_rows": 0,
-      "manual_review_rows": 1260,
-      "generated_at": "2026-07-07T13:29:40Z",
+      "manual_review_rows": 1251,
+      "generated_at": "2026-07-07T22:56:53Z",
       "status": "generated_reviewable_evidence"
     },
     {
@@ -111,7 +111,7 @@
       "applied_rows": 0,
       "blocked_rows": 208,
       "manual_review_rows": 19,
-      "generated_at": "2026-07-07T13:29:40Z",
+      "generated_at": "2026-07-07T22:56:53Z",
       "status": "generated_reviewable_evidence"
     },
     {
@@ -121,7 +121,7 @@
       "applied_rows": 0,
       "blocked_rows": 0,
       "manual_review_rows": 0,
-      "generated_at": "2026-07-07T13:29:40Z",
+      "generated_at": "2026-07-07T22:56:53Z",
       "status": "generated_reviewable_evidence"
     }
   ]

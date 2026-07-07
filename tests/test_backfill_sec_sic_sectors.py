@@ -12,6 +12,7 @@ from scripts.backfill_sec_sic_sectors import (
     load_missing_sector_rows,
     map_sec_sic_to_sector,
     normalized_ticker_key,
+    write_report_csv,
 )
 
 
@@ -134,6 +135,36 @@ def test_build_report_payload_summarizes_sec_residual_decisions():
     assert payload["summary"]["exchanges"] == ["OTC"]
     assert payload["summary"]["requests_made"] == 0
     assert payload["accepted_results"] == []
+
+
+def test_write_report_csv_uses_lf_line_endings(tmp_path):
+    path = tmp_path / "sec_sic_sector_backfill.csv"
+
+    write_report_csv(
+        path,
+        [
+            {
+                "ticker": "NVDA",
+                "exchange": "NASDAQ",
+                "asset_type": "Stock",
+                "name": "NVIDIA CORP",
+                "sec_cik": "1045810",
+                "sec_ticker": "NVDA",
+                "sec_exchange": "NASDAQ",
+                "sec_name": "NVIDIA CORP",
+                "sec_sic": "3674",
+                "sec_sic_description": "Semiconductors & Related Devices",
+                "sector_update": "Information Technology",
+                "number_tokens_match": True,
+                "name_match": True,
+                "decision": "accept",
+            }
+        ],
+    )
+
+    content = path.read_bytes()
+    assert b"\r\n" not in content
+    assert content.endswith(b"\n")
 
 
 def test_ticker_normalization_matches_class_separator_style():

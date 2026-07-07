@@ -2,6 +2,23 @@
 
 ## [Unreleased]
 
+## [3.32.01] - 2026-07-07
+
+### Summary
+
+**Quality-gate hardening for the v3.32.01 completeness backlog.** Adds release metadata consistency checks, stale warning allowlist enforcement, and drift regression snapshots for source-gap and official-recall metrics.
+
+### Changed
+
+- Added a release-acceptance criterion that requires `VERSION` to have a matching dated `CHANGELOG.md` release section.
+- Tightened entry-quality release acceptance so stale warning allowlist rows fail instead of silently lingering.
+- Extended the drift report with quality-count and per-exchange official-recall regression detection against the previous generated drift snapshot.
+- Pruned stale entry-quality warning allowlist rows that no longer correspond to current warning rows.
+
+### Verification
+
+- `scripts/rebuild_dataset.py`: pass. `scripts/validate_database.py`: 0/83 failed error gates. `scripts/check_entry_quality_gate.py`: pass with 0 stale allowlist rows. `scripts/check_readme_snapshot.py`: pass. `scripts/build_release_acceptance_report.py`: 65/65 criteria passed. `scripts/build_drift_report.py`: pass, `drift_detected=false`. Focused pytest suite: 290 passed.
+
 ## [3.32.00] - 2026-07-07
 
 ### Summary

@@ -9,6 +9,7 @@ from scripts.backfill_nyse_security_master_sample import (
     load_target_rows,
     parse_security_master_line,
     parse_security_master_text,
+    write_report_csv,
 )
 
 
@@ -139,3 +140,33 @@ def test_build_metadata_updates_emits_reviewed_fields():
     assert [update["field"] for update in updates] == ["isin", "etf_category"]
     assert updates[0]["proposed_value"] == "US46144X6105"
     assert updates[1]["proposed_value"] == "Fixed Income"
+
+
+def test_write_report_csv_uses_lf_line_endings(tmp_path):
+    path = tmp_path / "security_master_sample_backfill.csv"
+
+    write_report_csv(
+        path,
+        [
+            {
+                "ticker": "AAA",
+                "exchange": "NYSE ARCA",
+                "asset_type": "ETF",
+                "name": "Alternative Access First Priority CLO Bond ETF",
+                "nyse_symbol": "AAA",
+                "nyse_issuer_name": "Investment Managers Series Trust II",
+                "nyse_issue_name": "Alternative Access First Priority CLO Bond ETF",
+                "nyse_instrument_type": "ETF",
+                "nyse_isin": "US46144X6105",
+                "nyse_asset_class": "FIXED_INCOME",
+                "nyse_strategy": "ACTIVE",
+                "isin_update": "US46144X6105",
+                "category_update": "Fixed Income",
+                "decision": "accept_isin_etf_category",
+            }
+        ],
+    )
+
+    content = path.read_bytes()
+    assert b"\r\n" not in content
+    assert content.endswith(b"\n")

@@ -26,6 +26,7 @@ DEFAULT_OUTPUT_DIR = ROOT / "data" / "eodhd_verification"
 DEFAULT_REPORT_JSON = DEFAULT_OUTPUT_DIR / "metadata_backfill.json"
 DEFAULT_REPORT_CSV = DEFAULT_OUTPUT_DIR / "metadata_backfill.csv"
 DEFAULT_METADATA_UPDATES_CSV = ROOT / "data" / "review_overrides" / "metadata_updates.csv"
+DEFAULT_EXISTING_ISINS_CSV = ROOT / "data" / "listings.csv"
 
 EODHD_BASE_URL = "https://eodhd.com/api"
 EODHD_EXCHANGE_CODES: dict[str, str] = {
@@ -325,10 +326,72 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
     return updates
 
 
+def load_eodhd_report_accepts(path: Path) -> list[dict[str, str]]:
+    with path.open(newline="", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        return [row for row in reader if row.get("decision") == "accept"]
+
+
+def replay_eodhd_report_accepts(
+    *,
+    report_rows: list[dict[str, str]],
+    ticker_rows: list[dict[str, str]],
+    exchanges: set[str],
+    asset_types: set[str],
+    existing_isins: set[str],
+    allow_existing_isin: bool = False,
+) -> list[dict[str, Any]]:
+    current_by_key = {
+        (row["ticker"], row["exchange"], row["asset_type"]): row
+        for row in ticker_rows
+    }
+    results: list[dict[str, Any]] = []
+    for report_row in report_rows:
+        if report_row.get("exchange") not in exchanges or report_row.get("asset_type") not in asset_types:
+            continue
+        base = {
+            "ticker": report_row.get("ticker", ""),
+            "exchange": report_row.get("exchange", ""),
+            "asset_type": report_row.get("asset_type", ""),
+            "name": report_row.get("name", ""),
+            "eodhd_code": report_row.get("eodhd_code", ""),
+            "eodhd_exchange": report_row.get("eodhd_exchange", ""),
+            "eodhd_name": report_row.get("eodhd_name", ""),
+            "eodhd_type": report_row.get("eodhd_type", ""),
+            "eodhd_isin": report_row.get("eodhd_isin", ""),
+            "number_tokens_match": report_row.get("number_tokens_match") == "True",
+            "name_match": report_row.get("name_match") == "True",
+        }
+        current_row = current_by_key.get((base["ticker"], base["exchange"], base["asset_type"]))
+        if current_row is None:
+            results.append({**base, "decision": "current_row_missing"})
+            continue
+        if current_row.get("isin", "").strip() and not allow_existing_isin:
+            results.append({**base, "name": current_row["name"], "decision": "current_isin_present"})
+            continue
+
+        candidate = EodhdSymbol(
+            code=base["eodhd_code"],
+            name=base["eodhd_name"],
+            exchange=base["eodhd_exchange"],
+            asset_type=base["eodhd_type"],
+            isin=base["eodhd_isin"],
+        )
+        results.append(
+            evaluate_eodhd_row(
+                current_row,
+                [candidate],
+                existing_isins=existing_isins,
+                allow_existing_isin=allow_existing_isin,
+            )
+        )
+    return results
+
+
 def write_report_csv(path: Path, rows: list[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=REPORT_FIELDNAMES)
+        writer = csv.DictWriter(handle, fieldnames=REPORT_FIELDNAMES, lineterminator="\n")
         writer.writeheader()
         for row in rows:
             writer.writerow({field: row.get(field, "") for field in REPORT_FIELDNAMES})
@@ -345,6 +408,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--json-out", type=Path, default=DEFAULT_REPORT_JSON)
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_REPORT_CSV)
     parser.add_argument("--metadata-updates-csv", type=Path, default=DEFAULT_METADATA_UPDATES_CSV)
+    parser.add_argument(
+        "--existing-isins-csv",
+        type=Path,
+        default=DEFAULT_EXISTING_ISINS_CSV,
+        help="CSV used for duplicate-ISIN protection. Defaults to data/listings.csv so core-only scans still see extended listings.",
+    )
     parser.add_argument("--exchange", action="append", help="Restrict to one or more internal exchanges.")
     parser.add_argument("--asset-type", action="append", choices=["ETF", "Stock"], help="Restrict to one or more asset types.")
     parser.add_argument("--timeout-seconds", type=float, default=30.0)
@@ -352,6 +421,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "--allow-existing-isin",
         action="store_true",
         help="Allow ISINs already present in the primary export. Keep disabled by default to avoid collapsing primary rows into existing cross-listing groups.",
+    )
+    parser.add_argument(
+        "--replay-report-csv",
+        type=Path,
+        help="Revalidate accepted rows from an existing EODHD report CSV against the current ticker rows without fetching EODHD.",
     )
     parser.add_argument("--limit", type=int)
     parser.add_argument("--offset", type=int, default=0)
@@ -361,10 +435,6 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 def main(argv: list[str] | None = None) -> None:
     args = parse_args(argv)
-    api_token = os.environ.get("EODHD_API_TOKEN", "").strip()
-    if not api_token:
-        raise SystemExit("EODHD_API_TOKEN is required. Pass it as an environment variable; do not commit it.")
-
     exchanges = set(args.exchange or EODHD_EXCHANGE_CODES)
     unsupported = sorted(exchanges - set(EODHD_EXCHANGE_CODES))
     if unsupported:
@@ -373,32 +443,64 @@ def main(argv: list[str] | None = None) -> None:
     asset_types = set(args.asset_type or ["ETF", "Stock"])
     with args.tickers_csv.open(newline="", encoding="utf-8") as handle:
         ticker_rows = list(csv.DictReader(handle))
-    existing_isins = {row["isin"].strip().upper() for row in ticker_rows if row.get("isin", "").strip()}
-    rows = [
-        row
-        for row in ticker_rows
-        if row["exchange"] in exchanges
-        and row["asset_type"] in asset_types
-        and not row.get("isin", "").strip()
-    ]
-    if args.offset:
-        rows = rows[args.offset :]
-    if args.limit is not None:
-        rows = rows[: args.limit]
-
-    active_exchanges = {row["exchange"] for row in rows}
-    needed_exchange_codes = sorted({EODHD_EXCHANGE_CODES[exchange] for exchange in active_exchanges})
-    rows_by_exchange_code = {
-        exchange_code: fetch_eodhd_symbol_list(exchange_code, api_token, timeout_seconds=args.timeout_seconds)
-        for exchange_code in needed_exchange_codes
+    with args.existing_isins_csv.open(newline="", encoding="utf-8") as handle:
+        existing_isin_rows = list(csv.DictReader(handle))
+    existing_isins = {
+        row["isin"].strip().upper()
+        for row in [*ticker_rows, *existing_isin_rows]
+        if row.get("isin", "").strip()
     }
-    results = verify_eodhd_isins(
-        rows,
-        rows_by_exchange_code,
-        exchanges=active_exchanges,
-        existing_isins=existing_isins,
-        allow_existing_isin=args.allow_existing_isin,
-    )
+    needed_exchange_codes: list[str] = []
+    rows: list[dict[str, str]]
+    if args.replay_report_csv:
+        report_rows = load_eodhd_report_accepts(args.replay_report_csv)
+        if args.offset:
+            report_rows = report_rows[args.offset :]
+        if args.limit is not None:
+            report_rows = report_rows[: args.limit]
+        rows = report_rows
+        active_exchanges = {
+            row["exchange"]
+            for row in report_rows
+            if row.get("exchange") in exchanges and row.get("asset_type") in asset_types
+        }
+        results = replay_eodhd_report_accepts(
+            report_rows=report_rows,
+            ticker_rows=ticker_rows,
+            exchanges=exchanges,
+            asset_types=asset_types,
+            existing_isins=existing_isins,
+            allow_existing_isin=args.allow_existing_isin,
+        )
+    else:
+        api_token = os.environ.get("EODHD_API_TOKEN", "").strip()
+        if not api_token:
+            raise SystemExit("EODHD_API_TOKEN is required. Pass it as an environment variable; do not commit it.")
+        rows = [
+            row
+            for row in ticker_rows
+            if row["exchange"] in exchanges
+            and row["asset_type"] in asset_types
+            and not row.get("isin", "").strip()
+        ]
+        if args.offset:
+            rows = rows[args.offset :]
+        if args.limit is not None:
+            rows = rows[: args.limit]
+
+        active_exchanges = {row["exchange"] for row in rows}
+        needed_exchange_codes = sorted({EODHD_EXCHANGE_CODES[exchange] for exchange in active_exchanges})
+        rows_by_exchange_code = {
+            exchange_code: fetch_eodhd_symbol_list(exchange_code, api_token, timeout_seconds=args.timeout_seconds)
+            for exchange_code in needed_exchange_codes
+        }
+        results = verify_eodhd_isins(
+            rows,
+            rows_by_exchange_code,
+            exchanges=active_exchanges,
+            existing_isins=existing_isins,
+            allow_existing_isin=args.allow_existing_isin,
+        )
     updates = build_metadata_updates(results)
 
     args.json_out.parent.mkdir(parents=True, exist_ok=True)
@@ -423,6 +525,8 @@ def main(argv: list[str] | None = None) -> None:
                 "json_out": display_path(args.json_out),
                 "csv_out": display_path(args.csv_out),
                 "tickers_csv": display_path(args.tickers_csv),
+                "existing_isins_csv": display_path(args.existing_isins_csv),
+                "replay_report_csv": display_path(args.replay_report_csv) if args.replay_report_csv else "",
                 "applied": args.apply,
             },
             indent=2,

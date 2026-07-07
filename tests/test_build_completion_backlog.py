@@ -7,6 +7,7 @@ from scripts.build_completion_backlog import (
     build_completion_backlog,
     render_markdown,
     summarize,
+    summarize_openfigi_missing_isin_probe_csvs,
 )
 
 
@@ -404,6 +405,82 @@ def test_source_gap_classification_context_gates_uncovered_next_action():
     assert summary["next_action_gate_totals"] == {"source_gap_classification_blocks_direct_apply": 1}
     assert summary["next_action_source_gap_class_totals"] == {"official_industry_taxonomy_unavailable_gap": 1}
     assert summary["next_action_without_residual_gate_count"] == 0
+
+
+def test_openfigi_probe_context_classifies_unsupported_exchange_without_apply_candidates():
+    rows = build_completion_backlog(
+        [],
+        [{"exchange": "QSE", "asset_type": "Stock", "scope_reason": "primary_listing_missing_isin"}],
+        {"by_exchange": [{"exchange": "QSE", "venue_status": "official_full", "official_source_count": 1}]},
+    )
+    summary = summarize(
+        rows,
+        {"global": {}, "by_exchange": []},
+        "2026-04-12T00:00:00Z",
+        openfigi_missing_isin_probes={
+            "QSE": {
+                "candidates": 1,
+                "accepted_isin_updates": 0,
+                "decision_counts": {"unsupported_openfigi_exchange": 1},
+                "csv_out": "data/openfigi_verification/missing_isin_qse_probe.csv",
+            }
+        },
+    )
+
+    action = summary["next_actions"][0]
+    assert action["exchange"] == "QSE"
+    assert action["residual_gate"] == "openfigi_missing_isin_probe_unsupported_exchange"
+    assert action["openfigi_probe_candidates"] == 1
+    assert action["openfigi_probe_decision_counts"] == {"unsupported_openfigi_exchange": 1}
+    assert "cannot map this venue" in action["recommended_source"]
+
+
+def test_openfigi_probe_context_classifies_no_apply_candidates_for_supported_exchange():
+    rows = build_completion_backlog(
+        [],
+        [{"exchange": "BATS", "asset_type": "ETF", "scope_reason": "primary_listing_missing_isin"}],
+        {"by_exchange": [{"exchange": "BATS", "venue_status": "official_full", "official_source_count": 1}]},
+    )
+    summary = summarize(
+        rows,
+        {"global": {}, "by_exchange": []},
+        "2026-04-12T00:00:00Z",
+        openfigi_missing_isin_probes={
+            "BATS": {
+                "candidates": 2,
+                "accepted_isin_updates": 0,
+                "decision_counts": {"missing_isin": 1, "no_openfigi_match": 1},
+                "csv_out": "data/openfigi_verification/missing_isin_bats_probe.csv",
+            }
+        },
+    )
+
+    action = summary["next_actions"][0]
+    assert action["exchange"] == "BATS"
+    assert action["residual_gate"] == "openfigi_missing_isin_probe_no_apply_candidates"
+    assert action["openfigi_probe_candidates"] == 2
+    assert "found no accepted ISIN candidates" in action["recommended_source"]
+
+
+def test_summarize_openfigi_missing_isin_probe_csvs_groups_by_exchange(tmp_path):
+    path = tmp_path / "probe.csv"
+    path.write_text(
+        "\n".join(
+            [
+                "ticker,exchange,asset_type,name,figi_exch_code,openfigi_ticker,openfigi_name,openfigi_security_type,openfigi_isin,number_tokens_match,name_match,decision",
+                "ONE,QSE,Stock,One,,,,,,,,unsupported_openfigi_exchange",
+                "TWO,QSE,Stock,Two,,,,,,,,unsupported_openfigi_exchange",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    summaries = summarize_openfigi_missing_isin_probe_csvs([path])
+
+    assert summaries["QSE"]["candidates"] == 2
+    assert summaries["QSE"]["accepted_isin_updates"] == 0
+    assert summaries["QSE"]["decision_counts"] == {"unsupported_openfigi_exchange": 2}
 
 
 def test_default_next_actions_include_source_gap_candidates_beyond_top_eight():

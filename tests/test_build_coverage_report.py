@@ -22,6 +22,7 @@ from scripts.build_coverage_report import (
     load_verification_report,
     render_markdown,
     refresh_gate_context_for,
+    official_recall_decision_for,
     source_artifact_context_for,
 )
 
@@ -109,6 +110,62 @@ def test_build_exchange_report_publishes_inverse_recall_metrics():
     assert nasdaq["official_recall_exception"] == (
         "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=2;symbol_collisions=1"
     )
+    assert nasdaq["official_recall_decision"] == "still_actionable"
+    assert nasdaq["official_recall_true_missing_excluding_collisions"] == 1
+    assert nasdaq["official_recall_collision_hidden_missing"] == 1
+
+
+def test_official_recall_decision_marks_mostly_collision_hidden():
+    decision, reason, next_action = official_recall_decision_for(
+        venue_status="official_full",
+        official_recall_target=True,
+        official_recall_pass=False,
+        collision_adjusted_recall_pass=False,
+        collision_hidden_missing=25,
+        true_missing_excluding_collisions=3,
+        collision_adjusted_gap_rate=3.0,
+    )
+
+    assert decision == "mostly_collision_hidden"
+    assert "collision_hidden_missing=25" in reason
+    assert "prioritize the remaining true missing symbols" in next_action
+
+
+def test_official_recall_decision_marks_actionable_true_missing():
+    decision, reason, next_action = official_recall_decision_for(
+        venue_status="official_full",
+        official_recall_target=True,
+        official_recall_pass=False,
+        collision_adjusted_recall_pass=False,
+        collision_hidden_missing=1,
+        true_missing_excluding_collisions=25,
+        collision_adjusted_gap_rate=25.0,
+    )
+
+    assert decision == "still_actionable"
+    assert "true_missing_excluding_collisions=25" in reason
+    assert "repair parser/source coverage" in next_action
+
+
+def test_official_recall_decision_marks_non_targets_explicitly():
+    assert official_recall_decision_for(
+        venue_status="missing",
+        official_recall_target=False,
+        official_recall_pass=None,
+        collision_adjusted_recall_pass=None,
+        collision_hidden_missing=0,
+        true_missing_excluding_collisions=0,
+        collision_adjusted_gap_rate=None,
+    )[0] == "source_unavailable"
+    assert official_recall_decision_for(
+        venue_status="official_partial",
+        official_recall_target=False,
+        official_recall_pass=None,
+        collision_adjusted_recall_pass=None,
+        collision_hidden_missing=0,
+        true_missing_excluding_collisions=0,
+        collision_adjusted_gap_rate=None,
+    )[0] == "out_of_current_scope"
 
 
 def test_build_source_report_adds_age_and_freshness_status(monkeypatch):
@@ -469,6 +526,11 @@ def test_build_exchange_report_includes_masterfile_and_verification_rates():
         "official_recall_target",
         "official_recall_pass",
         "official_recall_exception",
+        "official_recall_decision",
+        "official_recall_decision_reason",
+        "official_recall_next_action",
+        "official_recall_true_missing_excluding_collisions",
+        "official_recall_collision_hidden_missing",
         "collision_adjusted_recall_denominator",
         "collision_adjusted_recall_missing",
         "collision_adjusted_recall_pct",

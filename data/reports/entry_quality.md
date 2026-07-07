@@ -1,51 +1,50 @@
 # Entry Quality Report
 
-Generated at: `2026-07-07T12:34:36Z`
+Generated at: `2026-07-07T22:56:23Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 67,858 |
-| source_gap | 6,625 |
-| warn | 74 |
+| pass | 68,170 |
+| source_gap | 6,272 |
+| warn | 75 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 5,736 |
-| expected_missing_primary_isin | 947 |
-| missing_etf_category | 86 |
-| missing_stock_sector | 75 |
+| official_reference_gap | 5,711 |
+| expected_missing_primary_isin | 621 |
 | country_isin_mismatch | 65 |
-| official_name_mismatch | 7 |
+| official_name_mismatch | 8 |
 | official_isin_mismatch | 2 |
+| missing_stock_sector | 1 |
 
 ## Top Flagged Exchanges
 
 | Exchange | Pass | Notice | Source Gap | Warn | Quarantine |
 |---|---:|---:|---:|---:|---:|
-| OTC | 7,858 | 0 | 3,174 | 6 | 0 |
-| B3 | 1,262 | 0 | 321 | 0 | 0 |
-| NASDAQ | 4,401 | 0 | 276 | 1 | 0 |
-| TSX | 1,698 | 0 | 205 | 0 | 0 |
-| LSE | 6,362 | 0 | 141 | 60 | 0 |
+| OTC | 7,857 | 0 | 3,160 | 7 | 0 |
+| B3 | 1,262 | 0 | 319 | 0 | 0 |
+| TSX | 1,704 | 0 | 199 | 0 | 0 |
+| LSE | 6,366 | 0 | 131 | 60 | 0 |
 | BSE_IN | 2,459 | 0 | 179 | 0 | 0 |
-| NYSE ARCA | 2,475 | 0 | 179 | 0 | 0 |
-| BMV | 11 | 0 | 168 | 0 | 0 |
-| ASX | 1,476 | 0 | 152 | 1 | 0 |
+| BMV | 12 | 0 | 167 | 0 | 0 |
+| NASDAQ | 4,514 | 0 | 160 | 1 | 0 |
+| NYSE ARCA | 2,499 | 0 | 155 | 0 | 0 |
 | BME | 78 | 0 | 143 | 0 | 0 |
 | NSE_IN | 2,369 | 0 | 134 | 0 | 0 |
-| NYSE | 1,929 | 0 | 107 | 0 | 0 |
-| BATS | 1,136 | 0 | 105 | 0 | 0 |
-| Euronext | 980 | 0 | 103 | 0 | 0 |
-| XETRA | 3,742 | 0 | 102 | 0 | 0 |
-| TSXV | 969 | 0 | 95 | 2 | 0 |
-| AMS | 239 | 0 | 91 | 0 | 0 |
-| JSE | 124 | 0 | 88 | 0 | 0 |
-| TASE | 595 | 0 | 77 | 0 | 0 |
+| ASX | 1,501 | 0 | 123 | 1 | 0 |
+| XETRA | 3,745 | 0 | 99 | 0 | 0 |
+| BATS | 1,142 | 0 | 99 | 0 | 0 |
+| Euronext | 983 | 0 | 98 | 0 | 0 |
+| TSXV | 970 | 0 | 94 | 2 | 0 |
+| AMS | 240 | 0 | 90 | 0 | 0 |
+| JSE | 125 | 0 | 87 | 0 | 0 |
+| TASE | 597 | 0 | 75 | 0 | 0 |
 | ATHEX | 89 | 0 | 66 | 0 | 0 |
+| CSE_MA | 1 | 0 | 65 | 0 | 0 |
 
 ## Notes
 

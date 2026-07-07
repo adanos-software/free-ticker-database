@@ -28,6 +28,8 @@ DEFAULT_OUTPUT_DIR = ROOT / "data" / "cboe_verification"
 DEFAULT_REPORT_JSON = DEFAULT_OUTPUT_DIR / "us_lmm_metadata_backfill.json"
 DEFAULT_REPORT_CSV = DEFAULT_OUTPUT_DIR / "us_lmm_metadata_backfill.csv"
 DEFAULT_METADATA_UPDATES_CSV = ROOT / "data" / "review_overrides" / "metadata_updates.csv"
+DEFAULT_ENTRY_QUALITY_CSV = ROOT / "data" / "reports" / "entry_quality.csv"
+DEFAULT_EXISTING_ISINS_CSV = ROOT / "data" / "listings.csv"
 
 ASSET_CLASS_CATEGORY_MAP = {
     "Fixed Income": "Fixed Income",
@@ -108,14 +110,62 @@ def load_target_rows(path: Path) -> list[dict[str, str]]:
         if row.get("exchange") == "BATS"
         and row.get("asset_type") == "ETF"
         and (not row.get("etf_category", "").strip() or not row.get("isin", "").strip())
+        ]
+
+
+def load_entry_quality_bats_etf_residual_rows(path: Path = DEFAULT_ENTRY_QUALITY_CSV) -> list[dict[str, str]]:
+    with path.open(newline="", encoding="utf-8") as handle:
+        rows = list(csv.DictReader(handle))
+    return [
+        row
+        for row in rows
+        if row.get("exchange") == "BATS"
+        and row.get("asset_type") == "ETF"
+        and (
+            "missing_etf_category" in row.get("issue_types", "").split("|")
+            or "expected_missing_primary_isin" in row.get("issue_types", "").split("|")
+        )
     ]
+
+
+def target_missing_category(target: dict[str, str]) -> bool:
+    issue_types = target.get("issue_types", "")
+    if issue_types:
+        return "missing_etf_category" in issue_types.split("|")
+    return not target.get("etf_category", "").strip()
+
+
+def target_missing_isin(target: dict[str, str]) -> bool:
+    issue_types = target.get("issue_types", "")
+    if issue_types:
+        return "expected_missing_primary_isin" in issue_types.split("|")
+    return not target.get("isin", "").strip()
+
+
+def normalize_cboe_product_name(value: str) -> str:
+    return " ".join(re.findall(r"[a-z0-9]+", value.lower()))
+
+
+def cboe_etf_names_match(source_name: str, target_name: str) -> bool:
+    if names_match(source_name, target_name):
+        return True
+    if " - " not in target_name:
+        return False
+    wrapper, product_name = target_name.rsplit(" - ", 1)
+    wrapper_tokens = normalize_cboe_product_name(wrapper).split()
+    if not any(token in {"trust", "series", "fund"} for token in wrapper_tokens):
+        return False
+    return normalize_cboe_product_name(source_name) == normalize_cboe_product_name(product_name)
 
 
 def evaluate_rows(
     targets: list[dict[str, str]],
     lmm_rows: dict[str, dict[str, str]],
     fund_listing_rows: dict[str, dict[str, str]],
+    *,
+    existing_isins: set[str] | None = None,
 ) -> list[dict[str, Any]]:
+    existing_isins = existing_isins or set()
     results: list[dict[str, Any]] = []
     for target in targets:
         ticker = target["ticker"].strip().upper()
@@ -137,10 +187,15 @@ def evaluate_rows(
             continue
 
         accepted_fields: list[str] = []
+        matched_name = False
+        rejected_duplicate_isin = False
+        lmm_name_match = False
         if lmm:
             base["cboe_name"] = lmm["name"]
             base["cboe_asset_class"] = lmm["asset_class"]
-            if not target.get("etf_category", "").strip() and names_match(lmm["name"], target["name"]):
+            lmm_name_match = cboe_etf_names_match(lmm["name"], target["name"])
+            matched_name = matched_name or lmm_name_match
+            if target_missing_category(target) and lmm_name_match:
                 base["category_update"] = ASSET_CLASS_CATEGORY_MAP[lmm["asset_class"]]
                 accepted_fields.append("etf_category")
 
@@ -148,12 +203,25 @@ def evaluate_rows(
             if not base["cboe_name"]:
                 base["cboe_name"] = fund["name"]
             base["cboe_isin"] = fund["isin"]
-            if not target.get("isin", "").strip() and names_match(fund["name"], target["name"]):
-                base["isin_update"] = fund["isin"]
-                accepted_fields.append("isin")
+            fund_name_match = cboe_etf_names_match(fund["name"], target["name"]) or (
+                lmm_name_match
+                and bool(lmm)
+                and normalize_cboe_product_name(fund["name"]).startswith(normalize_cboe_product_name(lmm["name"]))
+            )
+            matched_name = matched_name or fund_name_match
+            if target_missing_isin(target) and fund_name_match:
+                if fund["isin"] in existing_isins:
+                    rejected_duplicate_isin = True
+                else:
+                    base["isin_update"] = fund["isin"]
+                    accepted_fields.append("isin")
 
         if accepted_fields:
             results.append({**base, "decision": "accept_" + "_".join(accepted_fields)})
+        elif rejected_duplicate_isin:
+            results.append({**base, "decision": "isin_already_present"})
+        elif matched_name:
+            results.append({**base, "decision": "no_update"})
         else:
             results.append({**base, "decision": "name_mismatch"})
     return results
@@ -200,7 +268,7 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
 def write_report_csv(path: Path, rows: list[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=REPORT_FIELDNAMES)
+        writer = csv.DictWriter(handle, fieldnames=REPORT_FIELDNAMES, lineterminator="\n")
         writer.writeheader()
         for row in rows:
             writer.writerow({field: row.get(field, "") for field in REPORT_FIELDNAMES})
@@ -208,13 +276,24 @@ def write_report_csv(path: Path, rows: list[dict[str, Any]]) -> None:
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Backfill BATS ETF metadata from official Cboe U.S. listings files.")
-    parser.add_argument("--tickers-csv", type=Path, default=TICKERS_CSV)
+    parser.add_argument("--entry-quality-csv", type=Path, default=DEFAULT_ENTRY_QUALITY_CSV)
+    parser.add_argument(
+        "--tickers-csv",
+        type=Path,
+        help="Optional broader source CSV probe; defaults to entry_quality BATS ETF residual rows.",
+    )
     parser.add_argument("--lmm-csv", type=Path)
     parser.add_argument("--fund-listings-pdf", type=Path)
     parser.add_argument("--timeout-seconds", type=float, default=30.0)
     parser.add_argument("--json-out", type=Path, default=DEFAULT_REPORT_JSON)
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_REPORT_CSV)
     parser.add_argument("--metadata-updates-csv", type=Path, default=DEFAULT_METADATA_UPDATES_CSV)
+    parser.add_argument(
+        "--existing-isins-csv",
+        type=Path,
+        default=DEFAULT_EXISTING_ISINS_CSV,
+        help="CSV used for duplicate-ISIN protection before applying Cboe ISIN updates.",
+    )
     parser.add_argument("--apply", action="store_true")
     return parser.parse_args(argv)
 
@@ -227,7 +306,23 @@ def main(argv: list[str] | None = None) -> None:
         if args.fund_listings_pdf
         else fetch_bytes(CBOE_GLOBAL_FUND_LISTINGS_PDF_URL, args.timeout_seconds)
     )
-    results = evaluate_rows(load_target_rows(args.tickers_csv), parse_lmm_csv(lmm_text), parse_global_fund_listing_pdf(fund_pdf))
+    target_rows = (
+        load_target_rows(args.tickers_csv)
+        if args.tickers_csv is not None
+        else load_entry_quality_bats_etf_residual_rows(args.entry_quality_csv)
+    )
+    with args.existing_isins_csv.open(newline="", encoding="utf-8") as handle:
+        existing_isins = {
+            row["isin"].strip().upper()
+            for row in csv.DictReader(handle)
+            if row.get("isin", "").strip()
+        }
+    results = evaluate_rows(
+        target_rows,
+        parse_lmm_csv(lmm_text),
+        parse_global_fund_listing_pdf(fund_pdf),
+        existing_isins=existing_isins,
+    )
     updates = build_metadata_updates(results)
     if args.apply and updates:
         merge_metadata_updates(args.metadata_updates_csv, updates)

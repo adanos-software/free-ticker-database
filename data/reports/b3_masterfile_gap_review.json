@@ -1,28 +1,28 @@
 {
   "summary": {
-    "generated_at": "2026-07-01T05:20:18Z",
-    "rows": 338,
-    "open_review_rows": 321,
+    "generated_at": "2026-07-07T22:56:27Z",
+    "rows": 336,
+    "open_review_rows": 319,
     "closed_no_data_change_rows": 17,
     "open_review_source_presence_totals": {
-      "absent_from_all_b3_masterfile_sources": 321
+      "absent_from_all_b3_masterfile_sources": 319
     },
     "open_review_resolution_queue_totals": {
       "absent_from_all_b3_sources_fund_or_receipt_source_gap": 59,
-      "absent_from_all_b3_sources_local_share_source_gap": 262
+      "absent_from_all_b3_sources_local_share_source_gap": 260
     },
     "open_review_next_source_totals": {
-      "Current B3 exchange directory, B3 issuer page, CVM filing, or issuer investor-relations listing evidence.": 262,
+      "Current B3 exchange directory, B3 issuer page, CVM filing, or issuer investor-relations listing evidence.": 260,
       "Current B3 fund/ETF/BDR source, issuer/sponsor page, prospectus, or official product registry.": 59
     },
     "open_review_evidence_path_totals": {
-      "current_b3_exchange_directory_or_cvm_issuer_listing_evidence": 262,
+      "current_b3_exchange_directory_or_cvm_issuer_listing_evidence": 260,
       "current_b3_product_registry_or_issuer_sponsor_evidence": 59
     },
     "source_gap_resolution_gate_totals": {
       "close_directory_gap_only_after_scope_or_parser_review": 15,
       "close_directory_gap_only_keep_identifier_and_category_unchanged": 2,
-      "do_not_delete_or_rename_until_current_b3_cvm_or_issuer_listing_evidence_is_reviewed": 262,
+      "do_not_delete_or_rename_until_current_b3_cvm_or_issuer_listing_evidence_is_reviewed": 260,
       "do_not_delete_or_rename_until_current_product_registry_or_issuer_sponsor_evidence_is_reviewed": 59
     },
     "top_open_b3_masterfile_review_rows": [
@@ -403,18 +403,18 @@
       }
     ],
     "source_presence_totals": {
-      "absent_from_all_b3_masterfile_sources": 321,
+      "absent_from_all_b3_masterfile_sources": 319,
       "present_only_in_non_exchange_directory_source": 17
     },
     "b3_gap_category_totals": {
       "bdr_or_foreign_receipt": 2,
-      "local_share_line": 262,
+      "local_share_line": 260,
       "other": 16,
       "unit_or_fund_line": 58
     },
     "asset_type_totals": {
       "ETF": 60,
-      "Stock": 278
+      "Stock": 276
     },
     "candidate_source_totals": {
       "b3_bdr_etfs": 2,
@@ -423,23 +423,23 @@
     "candidate_sector_present_rows": 15,
     "candidate_isin_present_rows": 0,
     "candidate_category_review_decision_totals": {
-      "no_official_candidate_category": 323,
+      "no_official_candidate_category": 321,
       "official_candidate_category_already_reflected": 15
     },
     "official_subset_review_decision_totals": {
-      "not_official_subset_source_gap": 321,
+      "not_official_subset_source_gap": 319,
       "official_subset_bdr_without_category_no_data_change": 2,
       "official_subset_category_already_reflected_no_data_change": 15
     },
     "official_subset_closure_eligibility_totals": {
-      "blocked_until_current_official_active_source_evidence": 321,
+      "blocked_until_current_official_active_source_evidence": 319,
       "closure_ready_official_subset_bdr_without_category_source_gap": 2,
       "closure_ready_official_subset_category_already_reflected": 15
     },
     "official_subset_closure_ready_rows": 17,
     "b3_resolution_queue_totals": {
       "absent_from_all_b3_sources_fund_or_receipt_source_gap": 59,
-      "absent_from_all_b3_sources_local_share_source_gap": 262,
+      "absent_from_all_b3_sources_local_share_source_gap": 260,
       "official_bdr_subset_without_category_source_gap_closed": 2,
       "official_subset_category_already_reflected_scope_review": 15
     },
@@ -449,7 +449,7 @@
         "Stock": 16
       },
       "absent_from_all_b3_sources_local_share_source_gap": {
-        "Stock": 262
+        "Stock": 260
       },
       "official_bdr_subset_without_category_source_gap_closed": {
         "ETF": 2
@@ -464,7 +464,7 @@
         "unit_or_fund_line": 43
       },
       "absent_from_all_b3_sources_local_share_source_gap": {
-        "local_share_line": 262
+        "local_share_line": 260
       },
       "official_bdr_subset_without_category_source_gap_closed": {
         "bdr_or_foreign_receipt": 2
@@ -476,15 +476,15 @@
     "candidate_category_mismatch_rows": 0,
     "candidate_category_mismatch_examples": [],
     "coverage_snapshot": {
-      "dataset_rows": 1583,
+      "dataset_rows": 1581,
       "active_exchange_directory_rows": 1315,
       "all_b3_masterfile_rows": 1810,
       "active_directory_matched_dataset_rows": 1245,
-      "active_directory_missing_dataset_rows": 338,
-      "active_directory_match_rate": 78.65,
+      "active_directory_missing_dataset_rows": 336,
+      "active_directory_match_rate": 78.75,
       "official_any_source_matched_dataset_rows": 1262,
-      "official_any_source_missing_dataset_rows": 321,
-      "official_any_source_match_rate": 79.72,
+      "official_any_source_missing_dataset_rows": 319,
+      "official_any_source_match_rate": 79.82,
       "active_exchange_directory_source_keys": [
         "b3_instruments_equities"
       ],
@@ -492,52 +492,52 @@
         "b3_bdr_etfs",
         "b3_listed_etfs"
       ],
-      "active_directory_gap_rows": 338,
+      "active_directory_gap_rows": 336,
       "official_non_directory_gap_rows": 17,
-      "absent_from_all_b3_source_gap_rows": 321,
+      "absent_from_all_b3_source_gap_rows": 319,
       "diagnosis": "Active B3 exchange-directory coverage is measured against b3_instruments_equities; rows found only in official ETF/BDR subset sources remain parser/scope review cases, and rows absent from all B3 sources remain source gaps."
     },
     "coverage_diagnosis": {
       "status": "active_directory_coverage_has_official_subset_parser_or_scope_gap",
-      "dataset_rows": 1583,
-      "active_directory_match_rate": 78.65,
-      "active_directory_missing_dataset_rows": 338,
-      "open_review_rows": 321,
+      "dataset_rows": 1581,
+      "active_directory_match_rate": 78.75,
+      "active_directory_missing_dataset_rows": 336,
+      "open_review_rows": 319,
       "closed_no_data_change_rows": 17,
       "official_non_directory_gap_rows": 17,
-      "absent_from_all_b3_source_gap_rows": 321,
+      "absent_from_all_b3_source_gap_rows": 319,
       "official_subset_candidate_isin_rows": 0,
       "official_subset_candidate_sector_rows": 15,
       "rows_requiring_parser_or_scope_review": 0,
-      "rows_requiring_external_active_evidence": 321,
+      "rows_requiring_external_active_evidence": 319,
       "data_change_authorized": false,
       "root_cause": "Residual B3 coverage gaps split between official B3 subset rows outside the active exchange-directory parser scope and listings absent from all current B3 masterfile sources.",
       "source_gate": "No B3 ISIN, sector, category, name, symbol, or scope change is authorized until the exact listing-keyed official source evidence and apply gate are reviewed."
     },
     "residual_decision_totals": {
-      "accepted_source_gap_not_in_any_current_b3_masterfile_source": 321,
+      "accepted_source_gap_not_in_any_current_b3_masterfile_source": 319,
       "official_b3_non_directory_source_requires_scope_or_parser_review": 17
     },
     "review_bucket_totals": {
-      "missing_from_all_b3_masterfile_sources_source_gap": 321,
+      "missing_from_all_b3_masterfile_sources_source_gap": 319,
       "official_b3_non_directory_source_review": 17
     },
     "review_priority_totals": {
       "P2": 17,
-      "P3": 321
+      "P3": 319
     },
     "review_strategy_totals": {
       "close_bdr_subset_gap_without_data_change_keep_category_source_gap": 2,
       "confirm_official_subset_scope_or_parser_gap_before_closing_directory_gap": 15,
       "keep_fund_or_receipt_gap_until_current_official_b3_or_issuer_evidence": 59,
-      "keep_local_share_gap_until_current_official_b3_or_issuer_evidence": 262
+      "keep_local_share_gap_until_current_official_b3_or_issuer_evidence": 260
     },
     "apply_eligibility_totals": {
       "review_scope_or_parser_before_any_data_change": 17,
-      "source_gap_keep_existing_dataset_row_until_official_active_source_evidence": 321
+      "source_gap_keep_existing_dataset_row_until_official_active_source_evidence": 319
     },
     "verification_evidence_required_totals": {
-      "new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key": 321,
+      "new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key": 319,
       "official_b3_source_row_plus_scope_decision_or_parser_fix_before_reclassifying_gap": 17
     },
     "top_b3_masterfile_gap_review_batches": [
@@ -547,7 +547,7 @@
         "asset_type": "Stock",
         "b3_gap_category": "local_share_line",
         "source_presence": "absent_from_all_b3_masterfile_sources",
-        "rows": 262,
+        "rows": 260,
         "review_strategy": "keep_local_share_gap_until_current_official_b3_or_issuer_evidence",
         "verification_evidence_required": "new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key",
         "b3_source_gap_evidence_path": "current_b3_exchange_directory_or_cvm_issuer_listing_evidence",
@@ -619,7 +619,7 @@
         "asset_type": "Stock",
         "b3_gap_category": "local_share_line",
         "source_presence": "absent_from_all_b3_masterfile_sources",
-        "rows": 262,
+        "rows": 260,
         "review_strategy": "keep_local_share_gap_until_current_official_b3_or_issuer_evidence",
         "verification_evidence_required": "new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key",
         "b3_source_gap_evidence_path": "current_b3_exchange_directory_or_cvm_issuer_listing_evidence",
@@ -5774,41 +5774,6 @@
       "review_gate_context": "b3_resolution_queue=absent_from_all_b3_sources_local_share_source_gap;residual_decision=accepted_source_gap_not_in_any_current_b3_masterfile_source;review_bucket=missing_from_all_b3_masterfile_sources_source_gap;official_subset_review_decision=not_official_subset_source_gap;official_subset_closure_eligibility=blocked_until_current_official_active_source_evidence;apply_eligibility=source_gap_keep_existing_dataset_row_until_official_active_source_evidence;verification_evidence_required=new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key"
     },
     {
-      "listing_key": "B3::IPNN3",
-      "ticker": "IPNN3",
-      "exchange": "B3",
-      "asset_type": "Stock",
-      "name": "TESTE IPN VS SA",
-      "current_etf_category": "",
-      "b3_gap_category": "local_share_line",
-      "source_presence": "absent_from_all_b3_masterfile_sources",
-      "candidate_sources": "",
-      "candidate_source_urls": "",
-      "candidate_names": "",
-      "candidate_asset_types": "",
-      "candidate_isins": "",
-      "candidate_sectors": "",
-      "candidate_category_review_decision": "no_official_candidate_category",
-      "official_subset_review_decision": "not_official_subset_source_gap",
-      "official_subset_closure_eligibility": "blocked_until_current_official_active_source_evidence",
-      "active_exchange_directory_match": "false",
-      "any_official_b3_source_match": "false",
-      "b3_resolution_queue": "absent_from_all_b3_sources_local_share_source_gap",
-      "residual_decision": "accepted_source_gap_not_in_any_current_b3_masterfile_source",
-      "review_bucket": "missing_from_all_b3_masterfile_sources_source_gap",
-      "review_priority": "P3",
-      "review_strategy": "keep_local_share_gap_until_current_official_b3_or_issuer_evidence",
-      "apply_eligibility": "source_gap_keep_existing_dataset_row_until_official_active_source_evidence",
-      "verification_evidence_required": "new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key",
-      "b3_source_gap_evidence_path": "current_b3_exchange_directory_or_cvm_issuer_listing_evidence",
-      "source_gap_resolution_gate": "do_not_delete_or_rename_until_current_b3_cvm_or_issuer_listing_evidence_is_reviewed",
-      "recommended_next_source": "Current B3 exchange directory, B3 issuer page, CVM filing, or issuer investor-relations listing evidence.",
-      "source_gate": "Keep row as source gap until current official B3 or issuer evidence proves the active local-share listing.",
-      "b3_listing_context": "listing_key=B3::IPNN3;ticker=IPNN3;asset_type=Stock;b3_gap_category=local_share_line;current_etf_category=none",
-      "official_candidate_context": "source_presence=absent_from_all_b3_masterfile_sources;candidate_sources=none;candidate_isins_present=false;candidate_sectors_present=false;active_exchange_directory_match=false;any_official_b3_source_match=false",
-      "review_gate_context": "b3_resolution_queue=absent_from_all_b3_sources_local_share_source_gap;residual_decision=accepted_source_gap_not_in_any_current_b3_masterfile_source;review_bucket=missing_from_all_b3_masterfile_sources_source_gap;official_subset_review_decision=not_official_subset_source_gap;official_subset_closure_eligibility=blocked_until_current_official_active_source_evidence;apply_eligibility=source_gap_keep_existing_dataset_row_until_official_active_source_evidence;verification_evidence_required=new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key"
-    },
-    {
       "listing_key": "B3::JCBA6",
       "ticker": "JCBA6",
       "exchange": "B3",
@@ -8255,41 +8220,6 @@
       "recommended_next_source": "Current B3 exchange directory, B3 issuer page, CVM filing, or issuer investor-relations listing evidence.",
       "source_gate": "Keep row as source gap until current official B3 or issuer evidence proves the active local-share listing.",
       "b3_listing_context": "listing_key=B3::PLFS3;ticker=PLFS3;asset_type=Stock;b3_gap_category=local_share_line;current_etf_category=none",
-      "official_candidate_context": "source_presence=absent_from_all_b3_masterfile_sources;candidate_sources=none;candidate_isins_present=false;candidate_sectors_present=false;active_exchange_directory_match=false;any_official_b3_source_match=false",
-      "review_gate_context": "b3_resolution_queue=absent_from_all_b3_sources_local_share_source_gap;residual_decision=accepted_source_gap_not_in_any_current_b3_masterfile_source;review_bucket=missing_from_all_b3_masterfile_sources_source_gap;official_subset_review_decision=not_official_subset_source_gap;official_subset_closure_eligibility=blocked_until_current_official_active_source_evidence;apply_eligibility=source_gap_keep_existing_dataset_row_until_official_active_source_evidence;verification_evidence_required=new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key"
-    },
-    {
-      "listing_key": "B3::PLSP3",
-      "ticker": "PLSP3",
-      "exchange": "B3",
-      "asset_type": "Stock",
-      "name": "PLASCORP PARTICIPAÇÕES S.A.",
-      "current_etf_category": "",
-      "b3_gap_category": "local_share_line",
-      "source_presence": "absent_from_all_b3_masterfile_sources",
-      "candidate_sources": "",
-      "candidate_source_urls": "",
-      "candidate_names": "",
-      "candidate_asset_types": "",
-      "candidate_isins": "",
-      "candidate_sectors": "",
-      "candidate_category_review_decision": "no_official_candidate_category",
-      "official_subset_review_decision": "not_official_subset_source_gap",
-      "official_subset_closure_eligibility": "blocked_until_current_official_active_source_evidence",
-      "active_exchange_directory_match": "false",
-      "any_official_b3_source_match": "false",
-      "b3_resolution_queue": "absent_from_all_b3_sources_local_share_source_gap",
-      "residual_decision": "accepted_source_gap_not_in_any_current_b3_masterfile_source",
-      "review_bucket": "missing_from_all_b3_masterfile_sources_source_gap",
-      "review_priority": "P3",
-      "review_strategy": "keep_local_share_gap_until_current_official_b3_or_issuer_evidence",
-      "apply_eligibility": "source_gap_keep_existing_dataset_row_until_official_active_source_evidence",
-      "verification_evidence_required": "new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key",
-      "b3_source_gap_evidence_path": "current_b3_exchange_directory_or_cvm_issuer_listing_evidence",
-      "source_gap_resolution_gate": "do_not_delete_or_rename_until_current_b3_cvm_or_issuer_listing_evidence_is_reviewed",
-      "recommended_next_source": "Current B3 exchange directory, B3 issuer page, CVM filing, or issuer investor-relations listing evidence.",
-      "source_gate": "Keep row as source gap until current official B3 or issuer evidence proves the active local-share listing.",
-      "b3_listing_context": "listing_key=B3::PLSP3;ticker=PLSP3;asset_type=Stock;b3_gap_category=local_share_line;current_etf_category=none",
       "official_candidate_context": "source_presence=absent_from_all_b3_masterfile_sources;candidate_sources=none;candidate_isins_present=false;candidate_sectors_present=false;active_exchange_directory_match=false;any_official_b3_source_match=false",
       "review_gate_context": "b3_resolution_queue=absent_from_all_b3_sources_local_share_source_gap;residual_decision=accepted_source_gap_not_in_any_current_b3_masterfile_source;review_bucket=missing_from_all_b3_masterfile_sources_source_gap;official_subset_review_decision=not_official_subset_source_gap;official_subset_closure_eligibility=blocked_until_current_official_active_source_evidence;apply_eligibility=source_gap_keep_existing_dataset_row_until_official_active_source_evidence;verification_evidence_required=new_current_b3_directory_or_official_issuer_exchange_evidence_for_exact_listing_key"
     },

@@ -1,17 +1,17 @@
 # Release Acceptance
 
-Generated: `2026-07-07T13:29:41Z`
+Generated: `2026-07-07T22:56:54Z`
 
 Overall passed: `True`
 
-Summary context: `passed=true;criteria=64;passed_criteria=64;failed_criteria=0;validation_failed_error_gates=0`
+Summary context: `passed=true;criteria=67;passed_criteria=67;failed_criteria=0;validation_failed_error_gates=0`
 
 ## Summary
 
 | Metric | Value |
 |---|---:|
-| `criteria` | `64` |
-| `passed_criteria` | `64` |
+| `criteria` | `67` |
+| `passed_criteria` | `67` |
 | `failed_criteria` | `0` |
 | `validation_failed_error_gates` | `0` |
 
@@ -26,16 +26,19 @@ Summary context: `passed=true;criteria=64;passed_criteria=64;failed_criteria=0;v
 | `adanos_alias_safety` | True |
 | `source_gap_review_integrity` | True |
 | `entry_quality_release_gate` | True |
+| `release_metadata_consistency` | True |
 | `release_source_report_integrity` | True |
 | `deepseek_advisory_integrity` | True |
 | `deepseek_queue_advisory_policies` | True |
 | `deepseek_isin_collision_validation_gate` | True |
+| `isin_validation_residual_triage_gate` | True |
 | `m3_correctness_campaigns_gate` | True |
 | `completion_backlog_next_actions` | True |
 | `progress_markdown_traceability` | True |
 | `adanos_detection_simulation` | True |
 | `entry_quality_command_report` | True |
 | `coverage_freshness_visibility` | True |
+| `official_recall_exception_decisions` | True |
 | `official_name_mismatch_backfill_gate` | True |
 | `source_inventory_gap_gate` | True |
 | `primary_isin_completeness_gate` | True |
@@ -86,10 +89,10 @@ Summary context: `passed=true;criteria=64;passed_criteria=64;failed_criteria=0;v
 
 | Metric | Baseline | Current | Delta |
 |---|---:|---:|---:|
-| `isin_delta` | 61477 | 61477 | 0 |
-| `sector_delta` | 47389 | 47389 | 0 |
-| `category_delta` | 15581 | 15581 | 0 |
-| `source_gap_delta` | 1090 | 1090 | 0 |
+| `isin_delta` | 61764 | 61764 | 0 |
+| `sector_delta` | 47420 | 47420 | 0 |
+| `category_delta` | 15636 | 15636 | 0 |
+| `source_gap_delta` | 6333 | 6333 | 0 |
 | `warn_delta` | 75 | 75 | 0 |
 | `quarantine_delta` | 0 | 0 | 0 |
 

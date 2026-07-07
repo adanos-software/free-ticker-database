@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -23,13 +24,14 @@ from scripts.backfill_tradingview_missing_isins import (
 )
 from scripts.lib.dataio import merge_metadata_updates
 from scripts.lib.normalize import names_match
-from scripts.rebuild_dataset import GENERIC_FUND_WRAPPER_NAMES, TICKERS_CSV, is_valid_isin, normalized_compact, normalize_sector
+from scripts.rebuild_dataset import GENERIC_FUND_WRAPPER_NAMES, TICKERS_CSV, ascii_fold, is_valid_isin, normalized_compact, normalize_sector
 
 
 DEFAULT_OUTPUT_DIR = ROOT / "data" / "tradingview_verification"
 DEFAULT_REPORT_JSON = DEFAULT_OUTPUT_DIR / "etf_category_backfill.json"
 DEFAULT_REPORT_CSV = DEFAULT_OUTPUT_DIR / "etf_category_backfill.csv"
 DEFAULT_METADATA_UPDATES_CSV = ROOT / "data" / "review_overrides" / "metadata_updates.csv"
+DEFAULT_ENTRY_QUALITY_CSV = ROOT / "data" / "reports" / "entry_quality.csv"
 
 SCAN_COLUMNS = ["name", "description", "exchange", "type", "subtype", "isin", "asset_class"]
 
@@ -64,6 +66,7 @@ REPORT_FIELDNAMES = [
 
 
 GENERIC_WRAPPER_KEYS = {normalized_compact(value) for value in GENERIC_FUND_WRAPPER_NAMES}
+ETF_PRODUCT_NAME_NOISE = {"etf", "tm", "trust", "unit", "units"}
 
 
 def is_generic_wrapper_like(name: str) -> bool:
@@ -75,8 +78,20 @@ def is_generic_wrapper_like(name: str) -> bool:
     )
 
 
+def normalized_etf_product_name(value: str) -> str:
+    value = value.replace("™", " ").replace("®", " ")
+    tokens = [
+        token
+        for token in re.findall(r"[a-z0-9]+", ascii_fold(value).lower())
+        if token not in ETF_PRODUCT_NAME_NOISE
+    ]
+    return "".join(tokens)
+
+
 def names_compatible_for_category(target_name: str, source_name: str) -> bool:
     if names_match(source_name, target_name):
+        return True
+    if normalized_etf_product_name(target_name) == normalized_etf_product_name(source_name):
         return True
     source_lower = source_name.lower()
     return is_generic_wrapper_like(target_name) and (" etf" in source_lower or " fund" in source_lower)
@@ -108,6 +123,22 @@ def load_missing_etf_category_rows(
             and row.get("exchange") in EXCHANGE_TO_TRADINGVIEW
             and row.get("asset_type") == "ETF"
             and not row.get("etf_category", "").strip()
+        ]
+
+
+def load_entry_quality_missing_etf_category_rows(
+    *,
+    exchanges: set[str],
+    entry_quality_csv: Path = DEFAULT_ENTRY_QUALITY_CSV,
+) -> list[dict[str, str]]:
+    with entry_quality_csv.open(newline="", encoding="utf-8") as handle:
+        return [
+            row
+            for row in csv.DictReader(handle)
+            if row.get("exchange") in exchanges
+            and row.get("exchange") in EXCHANGE_TO_TRADINGVIEW
+            and row.get("asset_type") == "ETF"
+            and "missing_etf_category" in row.get("issue_types", "").split("|")
         ]
 
 
@@ -233,7 +264,7 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
 def write_report_csv(path: Path, rows: list[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=REPORT_FIELDNAMES)
+        writer = csv.DictWriter(handle, fieldnames=REPORT_FIELDNAMES, lineterminator="\n")
         writer.writeheader()
         for row in rows:
             writer.writerow({field: row.get(field, "") for field in REPORT_FIELDNAMES})
@@ -241,6 +272,12 @@ def write_report_csv(path: Path, rows: list[dict[str, Any]]) -> None:
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Backfill missing ETF categories from TradingView ETF asset classes.")
+    parser.add_argument("--entry-quality-csv", type=Path, default=DEFAULT_ENTRY_QUALITY_CSV)
+    parser.add_argument(
+        "--tickers-csv",
+        type=Path,
+        help="Optional broader source CSV probe; defaults to entry_quality missing_etf_category rows.",
+    )
     parser.add_argument("--json-out", type=Path, default=DEFAULT_REPORT_JSON)
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_REPORT_CSV)
     parser.add_argument("--metadata-updates-csv", type=Path, default=DEFAULT_METADATA_UPDATES_CSV)
@@ -257,7 +294,14 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 def main(argv: list[str] | None = None) -> None:
     args = parse_args(argv)
     exchanges = set(args.exchange or EXCHANGE_TO_TRADINGVIEW)
-    target_rows = load_missing_etf_category_rows(exchanges=exchanges)
+    target_rows = (
+        load_missing_etf_category_rows(exchanges=exchanges, tickers_csv=args.tickers_csv)
+        if args.tickers_csv is not None
+        else load_entry_quality_missing_etf_category_rows(
+            exchanges=exchanges,
+            entry_quality_csv=args.entry_quality_csv,
+        )
+    )
     if args.offset:
         target_rows = target_rows[args.offset :]
     if args.limit is not None:

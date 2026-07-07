@@ -15,13 +15,15 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.lib.dataio import merge_metadata_updates
-from scripts.rebuild_dataset import TICKERS_CSV, ascii_fold, normalize_sector
+from scripts.rebuild_dataset import LISTINGS_CSV, ascii_fold, normalize_sector
 
 
 DEFAULT_OUTPUT_DIR = ROOT / "data" / "etf_verification"
 DEFAULT_REPORT_JSON = DEFAULT_OUTPUT_DIR / "name_category_backfill.json"
 DEFAULT_REPORT_CSV = DEFAULT_OUTPUT_DIR / "name_category_backfill.csv"
 DEFAULT_METADATA_UPDATES_CSV = ROOT / "data" / "review_overrides" / "metadata_updates.csv"
+DEFAULT_ENTRY_QUALITY_CSV = ROOT / "data" / "reports" / "entry_quality.csv"
+DEFAULT_SOURCE_GAP_CLASSIFICATION_CSV = ROOT / "data" / "reports" / "source_gap_classification.csv"
 
 REPORT_FIELDNAMES = [
     "ticker",
@@ -80,6 +82,7 @@ ETF_CATEGORY_RULES: tuple[CategoryRule, ...] = (
         r"\blong [a-z0-9 .&()-]+ daily etf\b",
         r"\bgeared\b",
         r"\blev\b",
+        r"\bwig20lev\b",
         r"\bshort (?!term\b)",
         r"\bshortdax\b",
         r"\bwig20short\b",
@@ -110,6 +113,8 @@ ETF_CATEGORY_RULES: tuple[CategoryRule, ...] = (
         r"\btokeni[sz]ation\b",
         r"\bcrypto(?:currency)?\b",
         r"\bdigital assets?\b",
+        r"\b21shares render etp\b",
+        r"\betfbtcpl\b",
     ),
     rule(
         "Alternative",
@@ -205,6 +210,7 @@ ETF_CATEGORY_RULES: tuple[CategoryRule, ...] = (
         r"\bretirement etf\b",
     ),
     rule("Corporate Bonds", "corporate_bonds", r"\bcorporate bonds?\b", r"\bcorp(?:orate)?\b", r"\bcorp ?etf\b", "\ud68c\uc0ac\ucc44"),
+    rule("Corporate Bonds", "corporate_bonds_spanish", r"\betf singular chile corporativo\b"),
     rule("Treasury Bonds", "treasury_bonds", r"\btreasur(?:y|ies)\b", r"\bt-?bills?\b", r"\bktb\b", r"\bt-?note\b", "\uad6d\ucc44"),
     rule("High Yield Bonds", "high_yield_bonds", r"\bhigh yield\b", r"\bjunk bonds?\b"),
     rule("Inflation-Protected Securities", "inflation_protected", r"\btips\b", r"\binflation[- ]protected\b"),
@@ -245,6 +251,10 @@ ETF_CATEGORY_RULES: tuple[CategoryRule, ...] = (
         r"\bmortgage\b",
         r"\brmbs\b",
         r"\basset finance\b",
+        r"\bresidential securities trust\b",
+        r"\bsparkz trust\b",
+        r"\bdominion income trust 1\b",
+        r"\bspdr bb sb uscoreh\b",
         r"\bseries \d{4}-\d+\b",
         r"\b\d{4}-\d+(?:nc)? trust\b",
         r"\babs\b",
@@ -260,6 +270,9 @@ ETF_CATEGORY_RULES: tuple[CategoryRule, ...] = (
         r"\bhigh[- ]yield\b",
         r"\bsecuritized income\b",
         r"\bgovernment securities\b",
+        r"\bgov(?:ernment)? bonds?\b",
+        r"\bgovt bd\b",
+        r"\bgvt bnd\b",
         r"\bintermediate government\b",
         r"\bincome opportunities\b",
         r"\bdiversified income\b",
@@ -298,6 +311,8 @@ ETF_CATEGORY_RULES: tuple[CategoryRule, ...] = (
         r"\binfra\b",
         r"\brenta fija\b",
         r"\bcorta duracion\b",
+        r"\bdeuda\b",
+        r"\bsoberano\b",
         r"\bwgbi\b",
         r"\bmunicipal\b",
         r"\bmuni\b",
@@ -324,6 +339,7 @@ ETF_CATEGORY_RULES: tuple[CategoryRule, ...] = (
         r"\bsoybeans?\b",
         r"\bpalladium\b",
         r"\bplatinum\b",
+        r"\brhodium\b",
         r"\baluminium\b",
         r"\blead\b",
         r"\btin\b",
@@ -352,6 +368,10 @@ ETF_CATEGORY_RULES: tuple[CategoryRule, ...] = (
         r"\bfundo de investimento imob\b",
         r"\breceb[ií]veis imob\b",
         r"\brenda imob",
+        r"\brentas? inmobiliarias?\b",
+        r"\bscentre group trust\b",
+        r"\bvicinity centres trust\b",
+        r"\bstarlight u\.?s\.? residential fund\b",
         r"\bshopping fundo\b",
     ),
     rule("Small Cap", "small_cap", r"\bsmall[- ]?cap\b"),
@@ -389,7 +409,13 @@ ETF_CATEGORY_RULES: tuple[CategoryRule, ...] = (
         r"\bchina ?50\b",
         r"\bhang seng\b",
         r"\btai(?:ex|wan 50)\b",
-        r"\btop ?(?:10|20|30|50|100)\b",
+        r"\btop ?(?:10|20|30|40|50|100)\b",
+        r"\bipsa\b",
+        r"\bobx\b",
+        r"\bomx helsinki 25\b",
+        r"\bibtc etf 30\b",
+        r"\bgriffin 30\b",
+        r"\bbet tradeville\b",
         r"\bnyse fang\\+\b",
         r"\bfang\+",
         r"\bnyse us 50\b",
@@ -402,6 +428,7 @@ ETF_CATEGORY_RULES: tuple[CategoryRule, ...] = (
         r"\bfounders 100\b",
         r"\bglobal 100\b",
         r"\brussell 2000\b",
+        r"\brussell 1000\b",
         r"\bwig20\b",
         r"\bmwig40\b",
         r"\bswig80\b",
@@ -451,12 +478,12 @@ ETF_CATEGORY_RULES: tuple[CategoryRule, ...] = (
     rule("Developed Markets", "developed_markets", r"\bdeveloped markets?\b", r"\bmsci world\b", r"\bmsci eafe\b", r"\bdax\b", "\u6cd5\u56fd", "\u4e1c\u8bc1", "\u65e5\u7ecf"),
     rule("Health Care", "health_care", r"\bhealth ?care\b", r"\bmedical\b", r"\bmedical devices?\b", r"\bbiotech\b", r"\bpharma(?:ceuticals?)?\b", r"\bbio\b", r"\boncology\b", r"\bgenomic\b", r"\bgenomics\b", r"\bvaccine\b", "\uc758\ub8cc", "\ubc14\uc774\uc624", "\u533b\u7597", "\u521b\u65b0\u836f", "\u75ab\u82d7", "\u4e2d\u836f", "\u533b\u836f", "\u751f\u7269\u533b\u836f", "\u751f\u7269\u79d1\u6280"),
     rule("Information Technology", "information_technology", r"\btechnology\b", r"\btechnologies\b", r"\btechnical lead\b", r"\btchnlgy\b", r"\bdigital transformation\b", r"\bdigital innovation\b", r"\bdigital payment\b", r"\be-?commerce\b", r"\bdisruptive automation\b", r"\bdisruptive finance\b", r"\bdisruptors?\b", r"\btransform systems\b", r"\bwafer\b", r"\bsemiconductor\b", r"\bsemicon\b", r"\bsoftware\b", r"\bai\b", r"\bquantum computing\b", r"\bcloud(?: computing)?\b", r"\bcyber(?:security)?\b", r"\bcomputer\b", r"\b5g\b", r"\bfintech\b", r"\bcleantech\b", r"\bbig data\b", r"\bstreaming\b", r"\bgaming\b", r"\bvideo games?\b", r"\besports?\b", r"\bcritical technologies\b", r"\bblockchain\b", r"\bweb3\b", r"\brobot", r"\bdrone\b", r"\bdrones\b", r"\binformation security\b", r"\biot\b", "\ubc18\ub3c4\uccb4", "\ud14c\ud06c", "\uc591\uc790\ucef4\ud4e8\ud305", "\uc815\ubcf4\ubcf4\uc548", "\uc2e0\ucc3d", "\u79d1\u6280", "\u5927\u6570\u636e", "\u901a\u4fe1", "\u7269\u8054\u7f51", "\u4eba\u5de5\u667a\u80fd", "\u6570\u5b57\u7ecf\u6d4e", "\u534a\u5bfc\u4f53", "\u96c6\u6210\u7535\u8def", "\u82af\u7247", "\u4e91\u8ba1\u7b97", "\u4fe1\u521b", "\u7f51\u7edc\u5b89\u5168", "\u901a\u4fe1"),
-    rule("Financials", "financials", r"\bfinancials?\b", r"\bbanks?\b", r"\binsurance\b", "\uc740\ud589", "\ubcf4\ud5d8", "\uc99d\uad8c", "\u94f6\u884c", "\u91d1\u878d", "\u8bc1\u5238"),
-    rule("Energy", "energy", r"\benergy\b", r"\boil\b", r"\bgas\b", r"\buranium\b", r"\bmlp\b", r"\bcoal\b", "\u77f3\u6cb9", "\u77f3\u5316", "\u65b0\u80fd\u6e90\u8f66", "\u5149\u4f0f"),
+    rule("Financials", "financials", r"\bfinancials?\b", r"\bbanks?\b", r"\bbanking\b", r"\binsurance\b", "\uc740\ud589", "\ubcf4\ud5d8", "\uc99d\uad8c", "\u94f6\u884c", "\u91d1\u878d", "\u8bc1\u5238"),
+    rule("Energy", "energy", r"\benergy\b", r"\benergie\b", r"\boil\b", r"\bgas\b", r"\buranium\b", r"\bmlp\b", r"\bcoal\b", "\u77f3\u6cb9", "\u77f3\u5316", "\u65b0\u80fd\u6e90\u8f66", "\u5149\u4f0f"),
     rule("Real Estate", "real_estate", r"\breit\b", r"\breits\b", r"\breal estate\b", r"\brealty income\b", r"\bproperty trust\b", r"\bproperty fund\b", r"\bprop sec\b", r"\bproperties\b", r"\bbuilding fund\b", r"\bmetropolitan fund\b", r"\bimob(?:ili[áa]rio)?\b", r"\blog[ií]stic", r"\bshoppings?\b", r"\bresidenciais\b", r"\burbana\b", "\u5730\u4ea7", "\u623f\u5730\u4ea7"),
     rule("Utilities", "utilities", r"\butilities\b", r"\bpower\b", "\u7535\u529b", "\uc804\ub825"),
     rule("Materials", "materials", r"\bmaterials\b", r"\bmining\b", r"\bmetals?\b", r"\blithium\b", r"\bbattery tech\b", r"\bnatural resources\b", r"\bnon-ferrous\b", "\ud76c\uc18c\uae08\uc18d", "\u5316\u5de5", "\u5efa\u6750", "\u7a00\u571f", "\u7a00\u6709\u91d1\u5c5e", "\u65b0\u6750\u6599", "\u6709\u8272"),
-    rule("Consumer Staples", "consumer_staples", r"\bconsumer staples\b", r"\bfood\b", r"\bwine\b", r"\bagri\b", "\u519c\u4e1a", "\u519c\u7267", "\u98df\u54c1\u996e\u6599", "\u7cae\u98df", "\u517b\u6b96"),
+    rule("Consumer Staples", "consumer_staples", r"\bconsumer staples\b", r"\bconsumer goods\b", r"\bfood\b", r"\bwine\b", r"\bagri\b", "\u519c\u4e1a", "\u519c\u7267", "\u98df\u54c1\u996e\u6599", "\u7cae\u98df", "\u517b\u6b96"),
     rule("Consumer Discretionary", "consumer_discretionary", r"\bconsumer discretionary\b", r"\bdiscretionary spending\b", r"\bconsumer trends?\b", r"\bhome construction\b", r"\bcosmetics\b", r"\btour(?:ism)?\b", r"\bleisure\b", r"\bautos?\b", "\u5316\u5986\u54c1", "\u5bb6\u7535", "\u6559\u80b2", "\u65c5\u6e38", "\u6c7d\u8f66", "\u6d88\u8d39", "\uc18c\ube44"),
     rule("Communication Services", "communication_services", r"\bcommunication services\b", r"\bcommunications?\b", r"\btelecommunications?\b", r"\bmedia\b", r"\btelecom\b", r"\binternet\b", "\u4e2d\u6982\u4e92\u8054", "\u4e2d\u6982\u4e92\u8054\u7f51", "\u4e92\u8054\u7f51", "\u4f20\u5a92", "\u6e38\u620f", "\ud1b5\uc2e0"),
     rule("Industrials", "industrials", r"\bindustrials?\b", r"\baerospace\b", r"\bsatellite\b", r"\bshipping\b", r"\bmanufactur(?:ing|ers?)\b", r"\binfrastructure\b", r"\binfr\b", r"\bconstruction\b", r"\bheavy industry\b", r"\bdefense\b", r"\bmilitary\b", r"\bautonomous\b", r"\belectric vehicles?\b", r"\bhumanoid\b", r"\bmachinar(?:y|ies)\b", r"\bequipment\b", "\u4e00\u5e26\u4e00\u8def", "\u519b\u5de5", "\u519b\u5de5\u9f99\u5934", "\u4ea4\u8fd0", "\u4ea4\u901a\u8fd0\u8f93", "\u5de5\u4e1a\u6bcd\u673a", "\u673a\u5e8a", "\u673a\u5668\u4eba", "\u539f\u5b50\u529b", "\u56fd\u9632", "\u539f\u5b50\u529b", "\u6c7d\u8f66", "\u9ad8\u7aef\u88c5\u5907", "\ub85c\ubd07", "\ud734\uba38\ub178\uc774\ub4dc", "\uc6d0\uc790\ub825", "\uc81c\uc870", "\u57fa\u5efa", "\u5236\u9020"),
@@ -483,6 +510,7 @@ ETF_CATEGORY_RULES: tuple[CategoryRule, ...] = (
         r"\bsemiconductor\b",
         r"\bmsci\b",
         r"\bftse\b",
+        r"\bstoxx\b",
         r"\bsolactive\b",
         r"\bprime 150\b",
         r"\bbluechip\b",
@@ -513,6 +541,14 @@ ETF_CATEGORY_RULES: tuple[CategoryRule, ...] = (
         r"\bportfelowy\b",
         r"\bconcentrated international\b",
         r"\binternational\b",
+        r"\bpbr improvement over 1x etf\b",
+        r"\bstrategic shareholding disposal promotion etf\b",
+        r"\binvestor-management unite as one etf\b",
+        r"\bcadence opportunities fund\b",
+        r"\bophir high conviction fund\b",
+        r"\bgreenwich asset etf\b",
+        r"\bsiaml pension etf 40\b",
+        r"\bunusual whales subversive republican trading etf\b",
         r"\baustralian moat income\b",
         r"\baustralian high conviction\b",
         r"\basian opportunities\b",
@@ -532,6 +568,7 @@ ETF_CATEGORY_RULES: tuple[CategoryRule, ...] = (
         r"\bcanada etf\b",
         r"\bjapan etf\b",
         r"\beurope etf\b",
+        r"\bvan eck el dorado peru etf\b",
         r"\bwater etf\b",
         r"\bmillennial(?:s| consumer)?\b",
         r"\bcannabis\b",
@@ -550,6 +587,8 @@ ETF_CATEGORY_RULES: tuple[CategoryRule, ...] = (
         r"\bspace industry\b",
         r"\btransformative tech\b",
         r"\btexas etf\b",
+        r"\bcircular economy\b",
+        r"\bxact norden\b",
         r"\bwomen ceo\b",
         r"\bfuture security\b",
         r"\bintelligent structures\b",
@@ -606,6 +645,7 @@ ETF_CATEGORY_RULES: tuple[CategoryRule, ...] = (
         r"\b200esg\b",
         r"\bidiv\b",
         r"\bibov(?:espa)?\b",
+        r"\bnaftrac\b",
         r"\ba[cç]oes\b",
         r"\bfundo de [ií]ndice\b",
         r"\bfdo de [ií]ndice\b",
@@ -630,9 +670,41 @@ def display_path(path: Path) -> str:
         return str(path)
 
 
-def load_ticker_rows(tickers_csv: Path = TICKERS_CSV) -> list[dict[str, str]]:
+def load_ticker_rows(tickers_csv: Path = LISTINGS_CSV) -> list[dict[str, str]]:
     with tickers_csv.open(newline="", encoding="utf-8") as handle:
         return list(csv.DictReader(handle))
+
+
+def load_entry_quality_missing_category_rows(entry_quality_csv: Path = DEFAULT_ENTRY_QUALITY_CSV) -> list[dict[str, str]]:
+    with entry_quality_csv.open(newline="", encoding="utf-8") as handle:
+        rows = list(csv.DictReader(handle))
+    return [
+        row
+        for row in rows
+        if row.get("asset_type") == "ETF"
+        and "missing_etf_category" in row.get("issue_types", "").split("|")
+    ]
+
+
+def load_source_gap_missing_category_rows(
+    source_gap_classification_csv: Path = DEFAULT_SOURCE_GAP_CLASSIFICATION_CSV,
+) -> list[dict[str, str]]:
+    with source_gap_classification_csv.open(newline="", encoding="utf-8") as handle:
+        rows = list(csv.DictReader(handle))
+    return [
+        {
+            "ticker": row.get("ticker", ""),
+            "exchange": row.get("exchange", ""),
+            "asset_type": row.get("asset_type", ""),
+            "name": row.get("name", ""),
+            "sector": "",
+            "etf_category": "",
+        }
+        for row in rows
+        if row.get("field") == "missing_etf_category"
+        and row.get("asset_type") == "ETF"
+        and row.get("ticker", "").strip()
+    ]
 
 
 def load_existing_classifier_update_keys(path: Path) -> set[tuple[str, str]]:
@@ -643,7 +715,8 @@ def load_existing_classifier_update_keys(path: Path) -> set[tuple[str, str]]:
     return {
         (row["ticker"], row["exchange"])
         for row in rows
-        if row.get("field") in CLASSIFIER_METADATA_FIELDS and row.get("reason", "").startswith(CLASSIFIER_REASON_PREFIX)
+        if row.get("field") in CLASSIFIER_METADATA_FIELDS
+        and str(row.get("reason") or "").startswith(CLASSIFIER_REASON_PREFIX)
     }
 
 
@@ -738,7 +811,7 @@ def prune_stale_classifier_updates(
         for row in rows
         if not (
             row.get("field") in CLASSIFIER_METADATA_FIELDS
-            and row.get("reason", "").startswith(CLASSIFIER_REASON_PREFIX)
+            and str(row.get("reason") or "").startswith(CLASSIFIER_REASON_PREFIX)
             and (exchanges is None or row["exchange"] in exchanges)
             and ((row["ticker"], row["exchange"]) not in current_keys or row.get("field") != "etf_category")
         )
@@ -752,7 +825,7 @@ def prune_stale_classifier_updates(
 def write_report_csv(path: Path, rows: list[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=REPORT_FIELDNAMES)
+        writer = csv.DictWriter(handle, fieldnames=REPORT_FIELDNAMES, lineterminator="\n")
         writer.writeheader()
         for row in rows:
             writer.writerow({field: row.get(field, "") for field in REPORT_FIELDNAMES})
@@ -760,7 +833,17 @@ def write_report_csv(path: Path, rows: list[dict[str, Any]]) -> None:
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Backfill missing ETF categories from deterministic product-name rules.")
-    parser.add_argument("--tickers-csv", type=Path, default=TICKERS_CSV)
+    parser.add_argument("--entry-quality-csv", type=Path, default=DEFAULT_ENTRY_QUALITY_CSV)
+    parser.add_argument(
+        "--tickers-csv",
+        type=Path,
+        help="Optional broader source CSV probe; defaults to entry_quality missing_etf_category rows.",
+    )
+    parser.add_argument(
+        "--source-gap-classification-csv",
+        type=Path,
+        help="Optional source-gap classification CSV probe for explicit missing_etf_category rows.",
+    )
     parser.add_argument("--json-out", type=Path, default=DEFAULT_REPORT_JSON)
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_REPORT_CSV)
     parser.add_argument("--metadata-updates-csv", type=Path, default=DEFAULT_METADATA_UPDATES_CSV)
@@ -773,7 +856,17 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 def main(argv: list[str] | None = None) -> None:
     args = parse_args(argv)
-    rows = load_ticker_rows(args.tickers_csv)
+    if args.tickers_csv is not None and args.source_gap_classification_csv is not None:
+        raise ValueError("--tickers-csv and --source-gap-classification-csv are mutually exclusive")
+    if args.source_gap_classification_csv is not None:
+        rows = load_source_gap_missing_category_rows(args.source_gap_classification_csv)
+        prune_stale_updates = False
+    elif args.tickers_csv is not None:
+        rows = load_ticker_rows(args.tickers_csv)
+        prune_stale_updates = True
+    else:
+        rows = load_entry_quality_missing_category_rows(args.entry_quality_csv)
+        prune_stale_updates = True
     exchanges = set(args.exchange or {row["exchange"] for row in rows})
     existing_classifier_update_keys = (
         load_existing_classifier_update_keys(args.metadata_updates_csv) if args.apply else set()
@@ -796,7 +889,7 @@ def main(argv: list[str] | None = None) -> None:
     )
     write_report_csv(args.csv_out, results)
 
-    if args.apply:
+    if args.apply and prune_stale_updates:
         prune_stale_classifier_updates(args.metadata_updates_csv, updates, exchanges=exchanges)
     if args.apply and updates:
         merge_metadata_updates(args.metadata_updates_csv, updates)

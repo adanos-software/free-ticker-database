@@ -8,8 +8,11 @@ from scripts.backfill_eodhd_metadata import (
     evaluate_eodhd_row,
     index_eodhd_symbols,
     load_missing_isin_rows,
+    main,
     normalized_ticker_key,
+    replay_eodhd_report_accepts,
     strict_names_match,
+    write_report_csv,
 )
 
 
@@ -176,7 +179,202 @@ def test_build_metadata_updates_emits_isin_override():
     ]
 
 
+def test_replay_eodhd_report_accepts_revalidates_current_missing_row():
+    results = replay_eodhd_report_accepts(
+        report_rows=[
+            {
+                "ticker": "ACQ",
+                "exchange": "TSX",
+                "asset_type": "Stock",
+                "name": "AutoCanada Inc.",
+                "eodhd_code": "ACQ",
+                "eodhd_exchange": "TO",
+                "eodhd_name": "Autocanada Inc",
+                "eodhd_type": "Common Stock",
+                "eodhd_isin": "CA05277B2093",
+                "number_tokens_match": "True",
+                "name_match": "True",
+                "decision": "accept",
+            }
+        ],
+        ticker_rows=[
+            {"ticker": "ACQ", "exchange": "TSX", "asset_type": "Stock", "name": "AutoCanada Inc.", "isin": ""}
+        ],
+        exchanges={"TSX"},
+        asset_types={"Stock"},
+        existing_isins=set(),
+    )
+
+    assert results[0]["decision"] == "accept"
+    assert results[0]["eodhd_isin"] == "CA05277B2093"
+
+
+def test_replay_eodhd_report_rejects_isin_now_present_elsewhere():
+    results = replay_eodhd_report_accepts(
+        report_rows=[
+            {
+                "ticker": "BEBE",
+                "exchange": "NYSE",
+                "asset_type": "Stock",
+                "name": "TGE Value Creative Solutions Corp",
+                "eodhd_code": "BEBE",
+                "eodhd_exchange": "NYSE",
+                "eodhd_name": "TGE Value Creative Solutions Corp",
+                "eodhd_type": "Common Stock",
+                "eodhd_isin": "US0755712082",
+                "number_tokens_match": "True",
+                "name_match": "True",
+                "decision": "accept",
+            }
+        ],
+        ticker_rows=[
+            {
+                "ticker": "BEBE",
+                "exchange": "NYSE",
+                "asset_type": "Stock",
+                "name": "TGE Value Creative Solutions Corp",
+                "isin": "",
+            },
+            {
+                "ticker": "BDST",
+                "exchange": "OTC",
+                "asset_type": "Stock",
+                "name": "bebe stores, inc.",
+                "isin": "US0755712082",
+            },
+        ],
+        exchanges={"NYSE"},
+        asset_types={"Stock"},
+        existing_isins={"US0755712082"},
+    )
+
+    assert results[0]["decision"] == "isin_already_present"
+
+
+def test_replay_cli_uses_full_existing_isin_file_for_core_scan(tmp_path):
+    tickers_csv = tmp_path / "core_listings.csv"
+    existing_isins_csv = tmp_path / "listings.csv"
+    replay_csv = tmp_path / "eodhd_report.csv"
+    output_csv = tmp_path / "replay_out.csv"
+    output_json = tmp_path / "replay_out.json"
+
+    with tickers_csv.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=["ticker", "exchange", "asset_type", "name", "isin"])
+        writer.writeheader()
+        writer.writerow(
+            {
+                "ticker": "BEBE",
+                "exchange": "NYSE",
+                "asset_type": "Stock",
+                "name": "TGE Value Creative Solutions Corp",
+                "isin": "",
+            }
+        )
+
+    with existing_isins_csv.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=["ticker", "exchange", "asset_type", "name", "isin"])
+        writer.writeheader()
+        writer.writerow(
+            {
+                "ticker": "BDST",
+                "exchange": "OTC",
+                "asset_type": "Stock",
+                "name": "bebe stores, inc.",
+                "isin": "US0755712082",
+            }
+        )
+
+    with replay_csv.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=[
+                "ticker",
+                "exchange",
+                "asset_type",
+                "name",
+                "eodhd_code",
+                "eodhd_exchange",
+                "eodhd_name",
+                "eodhd_type",
+                "eodhd_isin",
+                "number_tokens_match",
+                "name_match",
+                "decision",
+            ],
+        )
+        writer.writeheader()
+        writer.writerow(
+            {
+                "ticker": "BEBE",
+                "exchange": "NYSE",
+                "asset_type": "Stock",
+                "name": "TGE Value Creative Solutions Corp",
+                "eodhd_code": "BEBE",
+                "eodhd_exchange": "NYSE",
+                "eodhd_name": "TGE Value Creative Solutions Corp",
+                "eodhd_type": "Common Stock",
+                "eodhd_isin": "US0755712082",
+                "number_tokens_match": "True",
+                "name_match": "True",
+                "decision": "accept",
+            }
+        )
+
+    main(
+        [
+            "--tickers-csv",
+            str(tickers_csv),
+            "--existing-isins-csv",
+            str(existing_isins_csv),
+            "--exchange",
+            "NYSE",
+            "--asset-type",
+            "Stock",
+            "--replay-report-csv",
+            str(replay_csv),
+            "--csv-out",
+            str(output_csv),
+            "--json-out",
+            str(output_json),
+        ]
+    )
+
+    with output_csv.open(newline="", encoding="utf-8") as handle:
+        rows = list(csv.DictReader(handle))
+
+    assert rows[0]["decision"] == "isin_already_present"
+    assert output_json.read_text(encoding="utf-8") == "[]"
+
+
 def test_name_and_ticker_normalization_are_strict_enough():
     assert normalized_ticker_key("BRK-B") == "BRK.B"
     assert strict_names_match("Example Bond ETF 2026", "Example Bond ETF 2026")
     assert not strict_names_match("Example Bond ETF 2028", "Example Bond ETF 2026")
+
+
+def test_write_report_csv_uses_lf_line_endings(tmp_path):
+    path = tmp_path / "metadata_backfill.csv"
+
+    write_report_csv(
+        path,
+        [
+            {
+                "ticker": "ACQ",
+                "exchange": "TSX",
+                "asset_type": "Stock",
+                "name": "AutoCanada Inc.",
+                "eodhd_code": "ACQ",
+                "eodhd_exchange": "TO",
+                "eodhd_name": "Autocanada Inc",
+                "eodhd_type": "Common Stock",
+                "eodhd_isin": "CA05277B2093",
+                "number_tokens_match": True,
+                "name_match": True,
+                "decision": "accept",
+            }
+        ],
+    )
+
+    content = path.read_bytes()
+    assert b"\r\n" not in content
+    assert content.endswith(b"\n")

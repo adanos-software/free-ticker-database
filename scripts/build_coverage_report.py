@@ -344,6 +344,59 @@ def build_exchange_reference_catalog(masterfiles: list[dict[str, str]]) -> dict[
     return normalized
 
 
+def official_recall_decision_for(
+    *,
+    venue_status: str,
+    official_recall_target: bool,
+    official_recall_pass: bool | None,
+    collision_adjusted_recall_pass: bool | None,
+    collision_hidden_missing: int,
+    true_missing_excluding_collisions: int,
+    collision_adjusted_gap_rate: float | None,
+) -> tuple[str, str, str]:
+    if official_recall_target:
+        if official_recall_pass is True:
+            return (
+                "fixed",
+                "official_full venue meets the 99.5% active official-masterfile recall threshold.",
+                "continue monitoring for recall regressions.",
+            )
+        if collision_adjusted_recall_pass is True or (
+            collision_hidden_missing > true_missing_excluding_collisions
+            and true_missing_excluding_collisions <= 10
+            and (collision_adjusted_gap_rate or 0) <= 5
+        ):
+            return (
+                "mostly_collision_hidden",
+                (
+                    "recall miss is dominated by symbols already present on another dataset exchange;"
+                    f"collision_hidden_missing={collision_hidden_missing};"
+                    f"true_missing_excluding_collisions={true_missing_excluding_collisions}"
+                ),
+                "review collision-hidden rows separately and prioritize the remaining true missing symbols.",
+            )
+        return (
+            "still_actionable",
+            (
+                "official_full venue remains below recall target after collision adjustment;"
+                f"true_missing_excluding_collisions={true_missing_excluding_collisions};"
+                f"collision_hidden_missing={collision_hidden_missing}"
+            ),
+            "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
+        )
+    if venue_status == "missing":
+        return (
+            "source_unavailable",
+            "no current official source is registered for this venue in the reference catalog.",
+            "add an official source before treating recall as measurable.",
+        )
+    return (
+        "out_of_current_scope",
+        f"venue_status={venue_status} is not an official_full recall target.",
+        "keep tracked in source inventory until promoted to official_full recall scope.",
+    )
+
+
 def build_exchange_report(
     tickers: list[dict[str, str]],
     identifiers_extended: list[dict[str, str]],
@@ -447,6 +500,17 @@ def build_exchange_report(
                 f"missing_or_collision_hidden={len(recall_missing)};"
                 f"symbol_collisions={len(collisions)}"
             )
+        official_recall_decision, official_recall_decision_reason, official_recall_next_action = (
+            official_recall_decision_for(
+                venue_status=catalog_entry["venue_status"],
+                official_recall_target=official_recall_target,
+                official_recall_pass=official_recall_pass,
+                collision_adjusted_recall_pass=collision_adjusted_recall_pass,
+                collision_hidden_missing=len(collisions),
+                true_missing_excluding_collisions=len(missing),
+                collision_adjusted_gap_rate=collision_adjusted_gap_rate,
+            )
+        )
 
         rows.append(
             {
@@ -480,6 +544,11 @@ def build_exchange_report(
                 "official_recall_target": official_recall_target,
                 "official_recall_pass": official_recall_pass,
                 "official_recall_exception": official_recall_exception,
+                "official_recall_decision": official_recall_decision,
+                "official_recall_decision_reason": official_recall_decision_reason,
+                "official_recall_next_action": official_recall_next_action,
+                "official_recall_true_missing_excluding_collisions": len(missing),
+                "official_recall_collision_hidden_missing": len(collisions),
                 "verification_items": int(stock_verification.get("items", 0)),
                 "verification_verified": stock_verified_items,
                 "verification_reference_gap": int(stock_verification.get("reference_gap", 0)),
@@ -566,6 +635,15 @@ def build_global_summary(
         for row in exchange_coverage
         if row.get("official_recall_target", row.get("venue_status") == "official_full" and bool(row.get("masterfile_symbols")))
     ]
+    official_recall_decision_counts = Counter(
+        row.get("official_recall_decision", "unclassified")
+        for row in exchange_coverage
+    )
+    official_recall_exception_decision_counts = Counter(
+        row.get("official_recall_decision", "unclassified")
+        for row in official_full_target_rows
+        if row.get("official_recall_pass") is False
+    )
     summary = {
         "tickers": len(tickers),
         "core_listings": len(core_listings),
@@ -626,6 +704,13 @@ def build_global_summary(
         ),
         "collision_adjusted_full_recall_exception_exchanges": sum(
             row.get("collision_adjusted_recall_pass") is False for row in official_full_target_rows
+        ),
+        "official_recall_decision_counts": dict(sorted(official_recall_decision_counts.items())),
+        "official_recall_exception_decision_counts": dict(
+            sorted(official_recall_exception_decision_counts.items())
+        ),
+        "official_recall_unclassified_exception_exchanges": official_recall_exception_decision_counts.get(
+            "unclassified", 0
         ),
         "official_full_exchanges": venue_status_counts.get("official_full", 0),
         "official_partial_exchanges": venue_status_counts.get("official_partial", 0),
@@ -1427,8 +1512,8 @@ def render_markdown(report: dict[str, Any]) -> str:
             "",
             "## Exchange Coverage",
             "",
-            "| Exchange | Venue Status | Tickers | ISIN | Sector | CIK | FIGI | LEI | Masterfile Symbols | Matches | Collisions | Missing | Recall % | Recall Gap % | Collision-Adjusted Recall % | Collision-Adjusted Missing | Recall Exception | Verified on Covered |",
-            "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---:|",
+            "| Exchange | Venue Status | Tickers | ISIN | Sector | CIK | FIGI | LEI | Masterfile Symbols | Matches | Collisions | Missing | Recall % | Recall Gap % | Collision-Adjusted Recall % | Collision-Adjusted Missing | Recall Decision | Recall Exception | Verified on Covered |",
+            "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---|---:|",
         ]
     )
     for row in report["exchange_coverage"]:
@@ -1446,7 +1531,7 @@ def render_markdown(report: dict[str, Any]) -> str:
         adjusted_recall_pct = row.get("collision_adjusted_recall_pct")
         adjusted_missing = row.get("collision_adjusted_recall_missing", row["masterfile_missing"])
         lines.append(
-            f"| {row['exchange']} | {row['venue_status']} | {row['tickers']} | {row['isin_coverage']} | {row['sector_coverage']} | {row['cik_coverage']} | {row['figi_coverage']} | {row['lei_coverage']} | {row['masterfile_symbols']} | {row['masterfile_matches']} | {row['masterfile_collisions']} | {row['masterfile_missing']} | {recall_pct if recall_pct is not None else ''} | {recall_gap_rate if recall_gap_rate is not None else ''} | {adjusted_recall_pct if adjusted_recall_pct is not None else ''} | {adjusted_missing} | {row.get('official_recall_exception', '')} | {row['verification_verified_rate_on_covered'] if row['verification_verified_rate_on_covered'] is not None else ''} |"
+            f"| {row['exchange']} | {row['venue_status']} | {row['tickers']} | {row['isin_coverage']} | {row['sector_coverage']} | {row['cik_coverage']} | {row['figi_coverage']} | {row['lei_coverage']} | {row['masterfile_symbols']} | {row['masterfile_matches']} | {row['masterfile_collisions']} | {row['masterfile_missing']} | {recall_pct if recall_pct is not None else ''} | {recall_gap_rate if recall_gap_rate is not None else ''} | {adjusted_recall_pct if adjusted_recall_pct is not None else ''} | {adjusted_missing} | {row.get('official_recall_decision', '')} | {row.get('official_recall_exception', '')} | {row['verification_verified_rate_on_covered'] if row['verification_verified_rate_on_covered'] is not None else ''} |"
         )
 
     recall_exceptions = [
@@ -1458,17 +1543,17 @@ def render_markdown(report: dict[str, Any]) -> str:
             "",
             "## Per-Exchange Recall Exceptions",
             "",
-            "| Exchange | Recall % | Collision-Adjusted Recall % | Official Rows | Missing Or Collision-Hidden | True Missing Excluding Collisions | Exception |",
-            "|---|---:|---:|---:|---:|---:|---|",
+            "| Exchange | Recall % | Collision-Adjusted Recall % | Official Rows | Missing Or Collision-Hidden | True Missing Excluding Collisions | Collision-Hidden | Decision | Next Action | Exception |",
+            "|---|---:|---:|---:|---:|---:|---:|---|---|---|",
         ]
     )
     if recall_exceptions:
         for row in sorted(recall_exceptions, key=lambda value: (value["official_recall_pct"] or 0, value["exchange"])):
             lines.append(
-                f"| {row['exchange']} | {row['official_recall_pct']} | {row.get('collision_adjusted_recall_pct', '')} | {row['official_recall_denominator']} | {row['official_recall_missing']} | {row.get('collision_adjusted_recall_missing', row['masterfile_missing'])} | {row['official_recall_exception']} |"
+                f"| {row['exchange']} | {row['official_recall_pct']} | {row.get('collision_adjusted_recall_pct', '')} | {row['official_recall_denominator']} | {row['official_recall_missing']} | {row.get('official_recall_true_missing_excluding_collisions', row.get('collision_adjusted_recall_missing', row['masterfile_missing']))} | {row.get('official_recall_collision_hidden_missing', row.get('masterfile_collisions', 0))} | {row.get('official_recall_decision', '')} | {row.get('official_recall_next_action', '')} | {row['official_recall_exception']} |"
             )
     else:
-        lines.append("|  |  |  |  |  |  |  |")
+        lines.append("|  |  |  |  |  |  |  |  |  |  |")
 
     lines.extend(["", "## Country Coverage", "", "| Country | Tickers | ISIN | Sector | CIK | FIGI | LEI |", "|---|---|---|---|---|---|---|"])
     for row in report["country_coverage"]:

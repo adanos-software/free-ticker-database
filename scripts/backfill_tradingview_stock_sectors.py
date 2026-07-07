@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -20,7 +21,7 @@ from scripts.backfill_tradingview_missing_isins import (
     fetch_tradingview_rows,
 )
 from scripts.lib.dataio import merge_metadata_updates
-from scripts.lib.normalize import names_match
+from scripts.lib.normalize import ascii_fold, names_match
 from scripts.rebuild_dataset import TICKERS_CSV, is_valid_isin, normalize_sector
 
 
@@ -28,6 +29,7 @@ DEFAULT_OUTPUT_DIR = ROOT / "data" / "tradingview_verification"
 DEFAULT_REPORT_JSON = DEFAULT_OUTPUT_DIR / "stock_sector_backfill.json"
 DEFAULT_REPORT_CSV = DEFAULT_OUTPUT_DIR / "stock_sector_backfill.csv"
 DEFAULT_METADATA_UPDATES_CSV = ROOT / "data" / "review_overrides" / "metadata_updates.csv"
+DEFAULT_ENTRY_QUALITY_CSV = ROOT / "data" / "reports" / "entry_quality.csv"
 
 TRADINGVIEW_STOCK_SECTOR_MAP = {
     "Communications": "Communication Services",
@@ -55,6 +57,14 @@ RETAIL_STAPLES_INDUSTRIES = {
     "Food Distributors",
     "Drugstore Chains",
 }
+
+SECURITY_NAME_NOISE_PATTERNS = (
+    re.compile(r"\bclass\s+[a-z0-9]+\b", re.IGNORECASE),
+    re.compile(r"\bcommon\s+stocks?\b", re.IGNORECASE),
+    re.compile(r"\bordinary\s+shares?\b", re.IGNORECASE),
+    re.compile(r"\bregistered\b", re.IGNORECASE),
+    re.compile(r"\breg\s+s\b", re.IGNORECASE),
+)
 
 COMMUNICATION_SERVICES_INDUSTRIES = {
     "Broadcasting",
@@ -99,6 +109,20 @@ def map_tradingview_sector(tv_sector: str, tv_industry: str) -> str:
     return normalize_sector(mapped, "Stock")
 
 
+def normalized_security_name(value: str) -> str:
+    normalized = ascii_fold(value).lower()
+    for pattern in SECURITY_NAME_NOISE_PATTERNS:
+        normalized = pattern.sub(" ", normalized)
+    normalized = re.sub(r"[^a-z0-9]+", " ", normalized)
+    return " ".join(normalized.split())
+
+
+def names_match_after_security_suffix_noise(source_name: str, target_name: str) -> bool:
+    source_normalized = normalized_security_name(source_name)
+    target_normalized = normalized_security_name(target_name)
+    return bool(source_normalized and target_normalized and source_normalized == target_normalized)
+
+
 def load_missing_stock_sector_rows(
     *,
     exchanges: set[str],
@@ -112,6 +136,22 @@ def load_missing_stock_sector_rows(
             and row.get("exchange") in EXCHANGE_TO_TRADINGVIEW
             and row.get("asset_type") == "Stock"
             and not row.get("stock_sector", "").strip()
+        ]
+
+
+def load_entry_quality_missing_stock_sector_rows(
+    *,
+    exchanges: set[str],
+    entry_quality_csv: Path = DEFAULT_ENTRY_QUALITY_CSV,
+) -> list[dict[str, str]]:
+    with entry_quality_csv.open(newline="", encoding="utf-8") as handle:
+        return [
+            row
+            for row in csv.DictReader(handle)
+            if row.get("exchange") in exchanges
+            and row.get("exchange") in EXCHANGE_TO_TRADINGVIEW
+            and row.get("asset_type") == "Stock"
+            and "missing_stock_sector" in row.get("issue_types", "").split("|")
         ]
 
 
@@ -153,7 +193,11 @@ def evaluate_row(row: dict[str, str], source: TradingViewRow | None) -> dict[str
         and is_valid_isin(source.isin)
         and row.get("isin", "").strip().upper() == source.isin
     )
-    if not names_match(source.name, row["name"]) and not same_isin:
+    name_match = names_match(source.name, row["name"]) or names_match_after_security_suffix_noise(
+        source.name,
+        row["name"],
+    )
+    if not name_match and not same_isin:
         return {**base, "decision": "name_mismatch"}
 
     sector = map_tradingview_sector(source.sector, source.industry)
@@ -191,7 +235,7 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
 def write_report_csv(path: Path, rows: list[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=REPORT_FIELDNAMES)
+        writer = csv.DictWriter(handle, fieldnames=REPORT_FIELDNAMES, lineterminator="\n")
         writer.writeheader()
         for row in rows:
             writer.writerow({field: row.get(field, "") for field in REPORT_FIELDNAMES})
@@ -199,6 +243,12 @@ def write_report_csv(path: Path, rows: list[dict[str, Any]]) -> None:
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Backfill missing stock sectors from the free TradingView scanner.")
+    parser.add_argument("--entry-quality-csv", type=Path, default=DEFAULT_ENTRY_QUALITY_CSV)
+    parser.add_argument(
+        "--tickers-csv",
+        type=Path,
+        help="Optional broader source CSV probe; defaults to entry_quality missing_stock_sector rows.",
+    )
     parser.add_argument("--json-out", type=Path, default=DEFAULT_REPORT_JSON)
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_REPORT_CSV)
     parser.add_argument("--metadata-updates-csv", type=Path, default=DEFAULT_METADATA_UPDATES_CSV)
@@ -216,7 +266,14 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 def main(argv: list[str] | None = None) -> None:
     args = parse_args(argv)
     exchanges = set(args.exchange or EXCHANGE_TO_TRADINGVIEW)
-    target_rows = load_missing_stock_sector_rows(exchanges=exchanges)
+    target_rows = (
+        load_missing_stock_sector_rows(exchanges=exchanges, tickers_csv=args.tickers_csv)
+        if args.tickers_csv is not None
+        else load_entry_quality_missing_stock_sector_rows(
+            exchanges=exchanges,
+            entry_quality_csv=args.entry_quality_csv,
+        )
+    )
     if args.offset:
         target_rows = target_rows[args.offset :]
     if args.limit is not None:

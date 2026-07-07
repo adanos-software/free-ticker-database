@@ -18,9 +18,10 @@ Name-token consistency is used instead of a naive ticker-equality check because
 OpenFIGI's ticker convention differs from local exchange tickers outside the US
 (that would produce thousands of false mismatches).
 
-Incremental: results are cached in the report JSON keyed by ISIN; a re-run only
-queries ISINs not already cached (or whose ticker/name changed), so the weekly
-CI is cheap after the first full pass. Checkpoints every CHECKPOINT_EVERY ISINs.
+Incremental: results are cached in the report JSON keyed by ISIN plus a
+ticker/name/exchange fingerprint; a re-run only queries ISINs not already cached
+(or whose ticker/name changed), so the weekly CI is cheap after the first full
+pass. Checkpoints every CHECKPOINT_EVERY ISINs.
 Set OPENFIGI_API_KEY for larger batches / higher rate.
 
 Detection only — nothing is auto-applied. Writes
@@ -38,6 +39,7 @@ import time
 import unicodedata
 import urllib.request
 import urllib.error
+from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -125,6 +127,69 @@ def compute_detected(mismatch_keys: set[str], prior_mismatch_keys: set[str] | No
     return bool(mismatch_keys - prior_mismatch_keys)  # only NEW mismatches trigger
 
 
+def mismatch_triage(entry: dict) -> dict[str, str]:
+    figi_tickers = ", ".join(entry.get("figi_tickers", [])[:3]) or "none"
+    figi_name = entry.get("figi_name", "") or "none"
+    return {
+        "triage_decision": "review_required_openfigi_resolves_different_security",
+        "triage_bucket": "possible_wrong_or_stale_isin",
+        "triage_rationale": (
+            "OpenFIGI has data for this ISIN, but neither the normalized ticker nor issuer-name tokens "
+            f"match the dataset row; OpenFIGI tickers={figi_tickers}; OpenFIGI name={figi_name}."
+        ),
+        "next_action": (
+            "Verify against official exchange, issuer, CSD, or regulator evidence before correcting via "
+            "metadata override; do not auto-apply from OpenFIGI mismatch alone."
+        ),
+    }
+
+
+def enrich_mismatch(entry: dict) -> dict:
+    enriched = dict(entry)
+    enriched.update(mismatch_triage(entry))
+    return enriched
+
+
+def build_residual_triage(
+    verdicts: dict[str, str],
+    mismatches: list[dict],
+    isin_rows: dict[str, dict],
+) -> dict:
+    mismatch_by_exchange = Counter(
+        isin_rows.get(entry["isin"], {}).get("exchange", entry.get("exchange", "unknown"))
+        for entry in mismatches
+    )
+    no_data_by_exchange = Counter(
+        isin_rows.get(isin, {}).get("exchange", "unknown")
+        for isin, verdict in verdicts.items()
+        if verdict == "no_data"
+    )
+    mismatch_decisions = Counter(entry["triage_decision"] for entry in mismatches)
+    no_data_count = sum(1 for verdict in verdicts.values() if verdict == "no_data")
+    return {
+        "policy": {
+            "mismatch": (
+                "OpenFIGI resolved the ISIN to a different ticker/name; keep as review-required until "
+                "official evidence proves a correction, stale listing, cross-listing ambiguity, or provider limitation."
+            ),
+            "no_data": (
+                "OpenFIGI returned no ID_ISIN mapping; classify as provider coverage gap, not a data error, "
+                "until a stronger source proves otherwise."
+            ),
+            "no_auto_apply": "This report is detection and triage only; data changes must go through reviewed overrides.",
+        },
+        "mismatch_rows": len(mismatches),
+        "no_data_rows": no_data_count,
+        "mismatch_by_exchange": dict(sorted(mismatch_by_exchange.items())),
+        "no_data_by_exchange": dict(sorted(no_data_by_exchange.items())),
+        "mismatch_triage_decision_totals": dict(sorted(mismatch_decisions.items())),
+        "no_data_triage_decision_totals": {
+            "provider_coverage_gap_openfigi_no_data": no_data_count,
+        },
+        "remaining_unclassified_residuals": 0,
+    }
+
+
 # --------------------------------------------------------------------------- #
 def load_isin_rows() -> dict[str, dict]:
     """Unique ISIN -> {ticker, exchange, name} (first primary row per ISIN)."""
@@ -137,14 +202,54 @@ def load_isin_rows() -> dict[str, dict]:
     return out
 
 
-def load_cache() -> tuple[dict[str, str], dict[str, dict]]:
-    """Return (verdict_cache {isin: verdict}, mismatch_detail {isin: entry})."""
+def row_cache_fingerprint(row: dict[str, str]) -> str:
+    """Stable row identity for cache invalidation when ticker/name/exchange moves."""
+    return "\0".join(
+        [
+            (row.get("ticker") or "").strip().upper(),
+            (row.get("exchange") or "").strip().upper(),
+            (row.get("name") or "").strip(),
+        ]
+    )
+
+
+def load_cache() -> tuple[dict[str, str], dict[str, dict], dict[str, str]]:
+    """Return cached verdicts, mismatch detail, and row fingerprints by ISIN."""
     try:
         prior = json.loads(REPORT_JSON.read_text(encoding="utf-8"))
     except Exception:
-        return {}, {}
+        return {}, {}, {}
     verdicts = dict(prior.get("verdict_cache", {}))
     detail = {m["isin"]: m for m in prior.get("mismatches", [])}
+    context = dict(prior.get("cache_row_fingerprints", {}))
+    return verdicts, detail, context
+
+
+def select_valid_cache(
+    isin_rows: dict[str, dict],
+    cache_verdicts: dict[str, str],
+    cache_detail: dict[str, dict],
+    cache_context: dict[str, str],
+) -> tuple[dict[str, str], dict[str, dict]]:
+    """Carry forward only cached verdicts whose row context still matches."""
+    verdicts: dict[str, str] = {}
+    detail: dict[str, dict] = {}
+    for isin, row in isin_rows.items():
+        if isin not in cache_verdicts:
+            continue
+        current_fingerprint = row_cache_fingerprint(row)
+        cached_fingerprint = cache_context.get(isin)
+        if cached_fingerprint is None:
+            # Legacy reports did not include fingerprints. Mismatch rows still
+            # embed the prior ticker/name/exchange, so they can be invalidated.
+            prior_detail = cache_detail.get(isin)
+            if prior_detail and row_cache_fingerprint(prior_detail) != current_fingerprint:
+                continue
+        elif cached_fingerprint != current_fingerprint:
+            continue
+        verdicts[isin] = cache_verdicts[isin]
+        if isin in cache_detail:
+            detail[isin] = cache_detail[isin]
     return verdicts, detail
 
 
@@ -177,12 +282,13 @@ def openfigi_batch(isins: list[str], api_key: str | None) -> list:
 
 
 def write_report(verdicts: dict[str, str], mism_detail: dict[str, dict], queried: int,
+                 isin_rows: dict[str, dict],
                  *, now: str, detected: bool, partial: bool) -> None:
-    from collections import Counter
     cls = Counter(verdicts.values())
     # keep mismatch detail only for ISINs still classified as mismatch
-    mism = [mism_detail[iz] for iz in sorted(mism_detail)
+    mism = [enrich_mismatch(mism_detail[iz]) for iz in sorted(mism_detail)
             if verdicts.get(iz) == "mismatch"]
+    residual_triage = build_residual_triage(verdicts, mism, isin_rows)
     summary = {
         "generated_at": now,
         "total_isins": len(verdicts),
@@ -191,8 +297,14 @@ def write_report(verdicts: dict[str, str], mism_detail: dict[str, dict], queried
         "by_verdict": dict(cls),
         "mismatch_count": len(mism),
         "isin_issues_detected": detected,
+        "residual_triage": residual_triage,
         "mismatches": mism,
         "verdict_cache": dict(sorted(verdicts.items())),
+        "cache_row_fingerprints": {
+            iz: row_cache_fingerprint(isin_rows[iz])
+            for iz in sorted(verdicts)
+            if iz in isin_rows
+        },
     }
     REPORT_JSON.write_text(json.dumps(summary, indent=1, sort_keys=True) + "\n", encoding="utf-8")
     lines = [
@@ -205,14 +317,42 @@ def write_report(verdicts: dict[str, str], mism_detail: dict[str, dict], queried
         "ticker AND name differ from ours (likely wrong/stale ISIN) — verify before "
         "correcting via the override pipeline. `no_data` = OpenFIGI has no record "
         "(coverage gap, not an error).", "",
-        "| ISIN | Our ticker | Our name | OpenFIGI ticker(s) | OpenFIGI name |",
-        "|---|---|---|---|---|",
+        "## Residual triage", "",
+        f"- Mismatch residuals: `{residual_triage['mismatch_rows']}` "
+        f"({', '.join(residual_triage['mismatch_triage_decision_totals'])})",
+        f"- OpenFIGI no-data residuals: `{residual_triage['no_data_rows']}` "
+        "(provider coverage gap)",
+        f"- Remaining unclassified residuals: `{residual_triage['remaining_unclassified_residuals']}`",
+        "",
+        "### Mismatch residuals by exchange",
+        "",
+        "| Exchange | Rows |",
+        "|---|---:|",
     ]
+    for exchange, count in sorted(residual_triage["mismatch_by_exchange"].items(), key=lambda item: (-item[1], item[0]))[:30]:
+        lines.append(f"| {exchange} | {count} |")
+    lines.extend([
+        "",
+        "### OpenFIGI no-data residuals by exchange",
+        "",
+        "| Exchange | Rows |",
+        "|---|---:|",
+    ])
+    for exchange, count in sorted(residual_triage["no_data_by_exchange"].items(), key=lambda item: (-item[1], item[0]))[:30]:
+        lines.append(f"| {exchange} | {count} |")
+    lines.extend([
+        "",
+        "## Mismatch review queue",
+        "",
+        "| ISIN | Our ticker | Our name | OpenFIGI ticker(s) | OpenFIGI name | Triage |",
+        "|---|---|---|---|---|---|",
+    ])
     for r in sorted(mism, key=lambda r: r["isin"])[:300]:
         lines.append(f"| {r['isin']} | {r['ticker']} | {r.get('name', '')[:30]} | "
-                     f"{','.join(r.get('figi_tickers', [])[:3])} | {r.get('figi_name', '')[:30]} |")
+                     f"{','.join(r.get('figi_tickers', [])[:3])} | {r.get('figi_name', '')[:30]} | "
+                     f"{r['triage_decision']} |")
     if len(mism) > 300:
-        lines.append(f"| … | | | (+{len(mism) - 300} more) | |")
+        lines.append(f"| … | | | (+{len(mism) - 300} more) | | |")
     REPORT_MD.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
@@ -228,12 +368,11 @@ def main(argv: list[str] | None = None) -> None:
     delay = 0.4 if api_key else args.delay
 
     rows = load_isin_rows()
-    cache_verdicts, cache_detail = load_cache()
+    cache_verdicts, cache_detail, cache_context = load_cache()
     prior_keys = ({iz for iz, v in cache_verdicts.items() if v == "mismatch"}
                   if cache_verdicts else None)
     # carry over cached verdicts/detail for ISINs still in the DB
-    verdicts: dict[str, str] = {iz: cache_verdicts[iz] for iz in rows if iz in cache_verdicts}
-    mism_detail: dict[str, dict] = {iz: cache_detail[iz] for iz in rows if iz in cache_detail}
+    verdicts, mism_detail = select_valid_cache(rows, cache_verdicts, cache_detail, cache_context)
     to_query = [iz for iz in rows if iz not in verdicts]
     if args.limit:
         to_query = to_query[:args.limit]
@@ -255,24 +394,25 @@ def main(argv: list[str] | None = None) -> None:
                     "figi_tickers": sorted({r.get("ticker", "") for r in recs if r.get("ticker")}),
                     "figi_name": recs[0].get("name", ""),
                 }
+            else:
+                mism_detail.pop(iz, None)
         queried += len(batch)
         if queried % CHECKPOINT_EVERY < batch_size:
             now = args.now or datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-            write_report(verdicts, mism_detail, queried, now=now, detected=False, partial=True)
+            write_report(verdicts, mism_detail, queried, rows, now=now, detected=False, partial=True)
         time.sleep(delay)
 
     mismatch_keys = {iz for iz, v in verdicts.items() if v == "mismatch"}
     detected = compute_detected(mismatch_keys, prior_keys)
     partial = any(iz not in verdicts for iz in rows)
     now = args.now or datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    write_report(verdicts, mism_detail, queried, now=now, detected=detected, partial=partial)
+    write_report(verdicts, mism_detail, queried, rows, now=now, detected=detected, partial=partial)
 
     gh_out = os.environ.get("GITHUB_OUTPUT")
     if gh_out:
         with open(gh_out, "a", encoding="utf-8") as handle:
             handle.write(f"isin_issues_detected={'true' if detected else 'false'}\n")
 
-    from collections import Counter
     print(json.dumps({
         "total_isins_in_db": len(rows), "validated": len(verdicts),
         "queried_this_run": queried, "partial": partial,

@@ -31,13 +31,14 @@ DEFAULT_OUTPUT_DIR = ROOT / "data" / "yahoo_verification"
 DEFAULT_REPORT_JSON = DEFAULT_OUTPUT_DIR / "missing_isin_backfill.json"
 DEFAULT_REPORT_CSV = DEFAULT_OUTPUT_DIR / "missing_isin_backfill.csv"
 DEFAULT_METADATA_UPDATES_CSV = ROOT / "data" / "review_overrides" / "metadata_updates.csv"
-DEFAULT_EXCHANGES = ("BATS", "NASDAQ", "NYSE", "NYSE ARCA", "NYSE MKT", "TSX", "TSXV")
+DEFAULT_EXCHANGES = ("BATS", "NASDAQ", "NYSE", "NYSE ARCA", "NYSE MKT", "NEO", "TSX", "TSXV")
 EXPECTED_ISIN_PREFIXES = {
-    "BATS": ("US",),
-    "NASDAQ": ("US",),
-    "NYSE": ("US",),
-    "NYSE ARCA": ("US",),
-    "NYSE MKT": ("US",),
+    "BATS": ("US", "IE", "LU"),
+    "NASDAQ": ("US", "KY", "VG", "NL", "IE", "LU", "GB", "CA", "IL", "BM", "MH", "BE", "CH", "GG", "JO"),
+    "NYSE": ("US", "KY", "VG", "NL", "IE", "LU", "GB", "CA", "IL", "BM", "MH", "BE", "CH", "GG", "JE", "AN"),
+    "NYSE ARCA": ("US", "IE", "LU", "GB", "CA"),
+    "NYSE MKT": ("US", "CA", "IL"),
+    "NEO": ("CA",),
     "TSX": ("CA",),
     "TSXV": ("CA",),
 }
@@ -256,10 +257,34 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
     return updates
 
 
+def load_reviewed_isin_overrides(path: Path) -> set[tuple[str, str]]:
+    if not path.exists():
+        return set()
+    with path.open(newline="", encoding="utf-8") as handle:
+        return {
+            (row.get("ticker", ""), row.get("exchange", ""))
+            for row in csv.DictReader(handle)
+            if row.get("field") == "isin" and row.get("decision") in {"clear", "update"}
+        }
+
+
+def apply_reviewed_isin_overrides(
+    results: list[dict[str, Any]],
+    reviewed_overrides: set[tuple[str, str]],
+) -> list[dict[str, Any]]:
+    cleared: list[dict[str, Any]] = []
+    for result in results:
+        if result.get("decision") == "accept" and (result.get("ticker", ""), result.get("exchange", "")) in reviewed_overrides:
+            cleared.append({**result, "decision": "reviewed_isin_override"})
+        else:
+            cleared.append(result)
+    return cleared
+
+
 def write_report_csv(path: Path, rows: list[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=REPORT_FIELDNAMES)
+        writer = csv.DictWriter(handle, fieldnames=REPORT_FIELDNAMES, lineterminator="\n")
         writer.writeheader()
         for row in rows:
             writer.writerow({field: row.get(field, "") for field in REPORT_FIELDNAMES})
@@ -297,6 +322,7 @@ def main(argv: list[str] | None = None) -> None:
         timeout_seconds=args.timeout_seconds,
         progress_every=args.progress_every,
     )
+    results = apply_reviewed_isin_overrides(results, load_reviewed_isin_overrides(args.metadata_updates_csv))
     updates = build_metadata_updates(results)
 
     args.json_out.parent.mkdir(parents=True, exist_ok=True)

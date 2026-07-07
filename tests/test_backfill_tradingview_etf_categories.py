@@ -1,8 +1,12 @@
+import csv
+
 from scripts.backfill_tradingview_etf_categories import (
     build_metadata_updates,
     category_from_source,
     evaluate_row,
+    load_entry_quality_missing_etf_category_rows,
     names_compatible_for_category,
+    write_report_csv,
 )
 
 
@@ -36,6 +40,62 @@ def test_evaluate_row_accepts_supported_asset_class():
     result = evaluate_row(target_row(), source_row())
     assert result["decision"] == "accept"
     assert result["category_update"] == "Alternative"
+
+
+def test_load_entry_quality_missing_etf_category_rows_filters_supported_etf_issues(tmp_path):
+    path = tmp_path / "entry_quality.csv"
+    with path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=["ticker", "exchange", "asset_type", "name", "issue_types"],
+        )
+        writer.writeheader()
+        writer.writerows(
+            [
+                {
+                    "ticker": "ACEI",
+                    "exchange": "NYSE ARCA",
+                    "asset_type": "ETF",
+                    "name": "Innovator Equity Autocallable Income Strategy ETF",
+                    "issue_types": "expected_missing_primary_isin|missing_etf_category",
+                },
+                {
+                    "ticker": "AAA",
+                    "exchange": "NYSE ARCA",
+                    "asset_type": "Stock",
+                    "name": "Example Inc.",
+                    "issue_types": "missing_stock_sector",
+                },
+                {
+                    "ticker": "UNSUP",
+                    "exchange": "AMS",
+                    "asset_type": "ETF",
+                    "name": "Unsupported Exchange ETF",
+                    "issue_types": "missing_etf_category",
+                },
+                {
+                    "ticker": "ICCROETF",
+                    "exchange": "BVB",
+                    "asset_type": "ETF",
+                    "name": "Intercapital ETF D.o.o.",
+                    "issue_types": "missing_etf_category",
+                },
+                {
+                    "ticker": "DONE",
+                    "exchange": "BATS",
+                    "asset_type": "ETF",
+                    "name": "Already Complete ETF",
+                    "issue_types": "",
+                },
+            ]
+        )
+
+    rows = load_entry_quality_missing_etf_category_rows(
+        exchanges={"BATS", "BVB", "NYSE ARCA"},
+        entry_quality_csv=path,
+    )
+
+    assert [(row["ticker"], row["exchange"]) for row in rows] == [("ACEI", "NYSE ARCA"), ("ICCROETF", "BVB")]
 
 
 def test_evaluate_row_rejects_unsupported_asset_class():
@@ -94,6 +154,42 @@ def test_evaluate_row_accepts_same_isin_name_variant():
     assert result["category_update"] == "Fixed Income"
 
 
+def test_evaluate_row_accepts_bvb_same_isin_generic_target_name():
+    result = evaluate_row(
+        target_row(
+            ticker="ICCROETF",
+            exchange="BVB",
+            name="Intercapital ETF D.o.o.",
+            isin="HRICAMFC10C4",
+        ),
+        source_row(
+            name="ICCROETF",
+            description="InterCapital CROBEX10tr UCITS ETF",
+            exchange="BVB",
+            isin="HRICAMFC10C4",
+            asset_class="c05f85d35d1cd0be6ebb2af4be16e06a",
+        ),
+    )
+
+    assert result["decision"] == "accept"
+    assert result["category_update"] == "Equity"
+
+
+def test_names_compatible_for_category_accepts_etf_suffix_and_spacing_noise_only():
+    assert names_compatible_for_category(
+        "Hamilton EnhancedTechnology DayMAX™ ETF",
+        "Hamilton Enhanced Technology DayMAX ETF Trust Units",
+    )
+    assert not names_compatible_for_category(
+        "GMO ETF Trust (Name to be changed from The 2023 ETF Series Trust II)",
+        "GMO Ultra-Short Income ETF",
+    )
+    assert not names_compatible_for_category(
+        "Manager Directed Portfolios",
+        "Twin Oak Short Horizon Absolute Return ETF",
+    )
+
+
 def test_category_from_source_prefers_real_estate_product_name():
     assert (
         category_from_source(
@@ -111,3 +207,12 @@ def test_build_metadata_updates_emits_category_update():
     assert updates[0]["field"] == "etf_category"
     assert updates[0]["proposed_value"] == "Alternative"
     assert updates[0]["confidence"] == "0.74"
+
+
+def test_write_report_csv_uses_lf_line_endings(tmp_path):
+    path = tmp_path / "report.csv"
+    write_report_csv(path, [evaluate_row(target_row(), source_row())])
+
+    content = path.read_bytes()
+    assert b"\r\n" not in content
+    assert b"\n" in content

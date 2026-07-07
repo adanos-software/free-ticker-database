@@ -22,6 +22,16 @@ CANADA_RESIDUAL_REVIEW_JSON = REPORTS_DIR / "canada_residual_review.json"
 B3_RESIDUAL_SECTOR_REVIEW_JSON = REPORTS_DIR / "b3_residual_sector_review.json"
 WEAK_SECTOR_RESIDUAL_REVIEW_JSON = REPORTS_DIR / "weak_sector_residual_review.json"
 SOURCE_GAP_CLASSIFICATION_JSON = REPORTS_DIR / "source_gap_classification.json"
+OPENFIGI_VERIFICATION_DIR = DATA_DIR / "openfigi_verification"
+DEFAULT_OPENFIGI_MISSING_ISIN_PROBE_CSVS = [
+    OPENFIGI_VERIFICATION_DIR / "missing_isin_bats_probe.csv",
+    OPENFIGI_VERIFICATION_DIR / "missing_isin_nyse_arca_probe.csv",
+    OPENFIGI_VERIFICATION_DIR / "missing_isin_psx_probe.csv",
+    OPENFIGI_VERIFICATION_DIR / "missing_isin_sse_probe.csv",
+    OPENFIGI_VERIFICATION_DIR / "missing_isin_sse_cl_probe.csv",
+    OPENFIGI_VERIFICATION_DIR / "missing_isin_qse_probe.csv",
+    OPENFIGI_VERIFICATION_DIR / "missing_isin_b3_probe.csv",
+]
 DEFAULT_CSV_OUT = REPORTS_DIR / "completion_backlog.csv"
 DEFAULT_JSON_OUT = REPORTS_DIR / "completion_backlog.json"
 DEFAULT_MD_OUT = REPORTS_DIR / "completion_backlog.md"
@@ -91,6 +101,43 @@ def load_json(path: Path) -> dict[str, Any]:
     if not path.exists():
         return {}
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def display_path(path: Path) -> str:
+    try:
+        return str(path.relative_to(ROOT))
+    except ValueError:
+        return str(path)
+
+
+def summarize_openfigi_missing_isin_probe_csvs(paths: list[Path]) -> dict[str, dict[str, Any]]:
+    summaries: dict[str, dict[str, Any]] = {}
+    for path in paths:
+        rows = load_csv(path)
+        if not rows:
+            continue
+        rows_by_exchange: dict[str, list[dict[str, str]]] = defaultdict(list)
+        for row in rows:
+            exchange = row.get("exchange", "")
+            if exchange:
+                rows_by_exchange[exchange].append(row)
+        for exchange, exchange_rows in rows_by_exchange.items():
+            decision_counts = Counter(row.get("decision", "") for row in exchange_rows)
+            summary = summaries.setdefault(
+                exchange,
+                {
+                    "candidates": 0,
+                    "accepted_isin_updates": 0,
+                    "decision_counts": {},
+                    "csv_out": display_path(path),
+                },
+            )
+            summary["candidates"] += len(exchange_rows)
+            summary["accepted_isin_updates"] += int(decision_counts.get("accept") or 0)
+            combined_counts = Counter(summary.get("decision_counts", {}))
+            combined_counts.update(decision_counts)
+            summary["decision_counts"] = dict(sorted(combined_counts.items()))
+    return summaries
 
 
 def build_venue_lookup(coverage_report: dict[str, Any]) -> dict[str, dict[str, Any]]:
@@ -391,6 +438,7 @@ def summarize(
     b3_residual_sector_review: dict[str, Any] | None = None,
     weak_sector_residual_review: dict[str, Any] | None = None,
     source_gap_classification: dict[str, Any] | None = None,
+    openfigi_missing_isin_probes: dict[str, dict[str, Any]] | None = None,
     next_action_limit: int = DEFAULT_NEXT_ACTION_LIMIT,
 ) -> dict[str, Any]:
     field_totals = Counter()
@@ -408,6 +456,7 @@ def summarize(
         b3_residual_sector_review=b3_residual_sector_review or {},
         weak_sector_residual_review=weak_sector_residual_review or {},
         source_gap_classification=source_gap_classification or {},
+        openfigi_missing_isin_probes=openfigi_missing_isin_probes or {},
     )
 
     return {
@@ -802,6 +851,66 @@ def apply_source_gap_classification_context(
     }
 
 
+def apply_openfigi_missing_isin_probe_context(
+    action: dict[str, Any],
+    openfigi_missing_isin_probes: dict[str, dict[str, Any]],
+) -> dict[str, Any]:
+    if action["field"] != FIELD_MISSING_ISIN:
+        return action
+    probe = openfigi_missing_isin_probes.get(action["exchange"])
+    if not isinstance(probe, dict):
+        return action
+
+    candidates = int(probe.get("candidates") or 0)
+    accepted_updates = int(probe.get("accepted_isin_updates") or 0)
+    decision_counts = probe.get("decision_counts", {})
+    if not isinstance(decision_counts, dict) or candidates <= 0 or accepted_updates > 0:
+        return action
+
+    context = {
+        "openfigi_probe_candidates": candidates,
+        "openfigi_probe_accepted_isin_updates": accepted_updates,
+        "openfigi_probe_decision_counts": decision_counts,
+        "openfigi_probe_csv": probe.get("csv_out", ""),
+    }
+    if action.get("residual_gate"):
+        return {**action, **context}
+
+    unsupported_rows = int(decision_counts.get("unsupported_openfigi_exchange") or 0)
+    if unsupported_rows == candidates:
+        return {
+            **action,
+            "review_needed": True,
+            "recommended_source": (
+                "Current OpenFIGI missing-ISIN probe cannot map this venue; use official exchange, CSD, issuer, "
+                "prospectus, or another reviewed identifier source before applying ISINs."
+            ),
+            "confidence_policy": (
+                "OpenFIGI unsupported-exchange evidence is a source-gap classification only; it never authorizes "
+                "identifier inference from ticker or issuer name."
+            ),
+            "why_next": "OpenFIGI unsupported-venue residual review-gated workflow",
+            "residual_gate": "openfigi_missing_isin_probe_unsupported_exchange",
+            **context,
+        }
+
+    return {
+        **action,
+        "review_needed": True,
+        "recommended_source": (
+            "Current OpenFIGI missing-ISIN probe found no accepted ISIN candidates; use official exchange, CSD, issuer, "
+            "prospectus, or another reviewed identifier source."
+        ),
+        "confidence_policy": (
+            "OpenFIGI no-apply probe evidence keeps the residual explicit; apply only future rows with valid ISIN, "
+            "ticker, exchange-code, expected-prefix, numeric-token, name, and checksum gates."
+        ),
+        "why_next": "OpenFIGI no-apply residual review-gated workflow",
+        "residual_gate": "openfigi_missing_isin_probe_no_apply_candidates",
+        **context,
+    }
+
+
 def build_next_actions(
     rows: list[CompletionBacklogRow],
     limit: int = DEFAULT_NEXT_ACTION_LIMIT,
@@ -813,6 +922,7 @@ def build_next_actions(
     b3_residual_sector_review: dict[str, Any] | None = None,
     weak_sector_residual_review: dict[str, Any] | None = None,
     source_gap_classification: dict[str, Any] | None = None,
+    openfigi_missing_isin_probes: dict[str, dict[str, Any]] | None = None,
 ) -> list[dict[str, Any]]:
     ranked = sorted(
         rows,
@@ -857,6 +967,7 @@ def build_next_actions(
         action = apply_b3_residual_sector_context(action, b3_residual_sector_review or {})
         action = apply_weak_sector_residual_context(action, weak_sector_residual_review or {})
         action = apply_source_gap_classification_context(action, source_gap_classification or {})
+        action = apply_openfigi_missing_isin_probe_context(action, openfigi_missing_isin_probes or {})
         actions.append(action)
     return actions
 
@@ -1008,6 +1119,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--b3-residual-sector-review-json", type=Path, default=B3_RESIDUAL_SECTOR_REVIEW_JSON)
     parser.add_argument("--weak-sector-residual-review-json", type=Path, default=WEAK_SECTOR_RESIDUAL_REVIEW_JSON)
     parser.add_argument("--source-gap-classification-json", type=Path, default=SOURCE_GAP_CLASSIFICATION_JSON)
+    parser.add_argument(
+        "--openfigi-missing-isin-probe-csv",
+        type=Path,
+        action="append",
+        help="OpenFIGI missing-ISIN probe CSV to summarize into next-action residual gates. Can be repeated.",
+    )
     parser.add_argument("--next-action-limit", type=int, default=DEFAULT_NEXT_ACTION_LIMIT)
     parser.add_argument("--csv-out", type=Path, default=DEFAULT_CSV_OUT)
     parser.add_argument("--json-out", type=Path, default=DEFAULT_JSON_OUT)
@@ -1035,6 +1152,9 @@ def main(argv: list[str] | None = None) -> None:
         b3_residual_sector_review=load_json(args.b3_residual_sector_review_json),
         weak_sector_residual_review=load_json(args.weak_sector_residual_review_json),
         source_gap_classification=load_json(args.source_gap_classification_json),
+        openfigi_missing_isin_probes=summarize_openfigi_missing_isin_probe_csvs(
+            args.openfigi_missing_isin_probe_csv or DEFAULT_OPENFIGI_MISSING_ISIN_PROBE_CSVS
+        ),
         next_action_limit=args.next_action_limit,
     )
 
