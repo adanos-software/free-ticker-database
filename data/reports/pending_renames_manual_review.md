@@ -1,6 +1,6 @@
 # Pending Renames Manual Review
 
-Generated: 2026-07-07T22:56:56Z
+Generated: 2026-07-08T04:36:28Z
 
 Rows here are explicitly blocked or manual-review only; no ticker change is authorized by this report.
 

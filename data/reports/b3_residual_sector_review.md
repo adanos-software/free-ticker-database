@@ -1,6 +1,6 @@
 # B3 Residual Sector Review
 
-Generated at: `2026-07-07T22:56:27Z`
+Generated at: `2026-07-08T04:36:06Z`
 
 This report tracks remaining B3 stock-sector gaps after the official B3 sector-classification probe. It does not fill values.
 

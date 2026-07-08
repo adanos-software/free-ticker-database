@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-07-07T22:56:54Z",
+    "generated_at": "2026-07-08T04:36:25Z",
     "policy": "Acceptance summary only. It does not replace pytest or command execution output.",
     "source_reports": {
       "validation_report": "data/reports/validation_report.json",
@@ -247,45 +247,45 @@
     },
     "release_metadata_consistency": {
       "passed": true,
-      "version": "3.32.01",
+      "version": "3.32.02",
       "version_valid": true,
       "changelog_has_version": true,
-      "changelog_section_pattern": "^##\\s+\\[3\\.32\\.01\\]\\s+-\\s+\\d{4}-\\d{2}-\\d{2}\\s*$"
+      "changelog_section_pattern": "^##\\s+\\[3\\.32\\.02\\]\\s+-\\s+\\d{4}-\\d{2}-\\d{2}\\s*$"
     },
     "release_source_report_integrity": {
       "passed": true,
-      "release_generated_at": "2026-07-07T22:56:54Z",
+      "release_generated_at": "2026-07-08T04:36:25Z",
       "release_generated_at_invalid": false,
       "checked": {
         "validation_report": {
           "path": "data/reports/validation_report.json",
           "exists": true,
-          "generated_at": "2026-07-07T22:56:49Z"
+          "generated_at": "2026-07-08T04:36:19Z"
         },
         "entry_quality_gate": {
           "path": "data/reports/entry_quality_gate.json",
           "exists": true,
-          "generated_at": "2026-07-07T22:56:51Z"
+          "generated_at": "2026-07-08T04:36:22Z"
         },
         "improvement_baseline": {
           "path": "data/reports/improvement_baseline.json",
           "exists": true,
-          "generated_at": "2026-07-07T22:56:52Z"
+          "generated_at": "2026-07-08T04:36:23Z"
         },
         "improvement_deltas": {
           "path": "data/reports/improvement_deltas.json",
           "exists": true,
-          "generated_at": "2026-07-07T22:56:52Z"
+          "generated_at": "2026-07-08T04:36:23Z"
         },
         "improvement_campaigns": {
           "path": "data/reports/improvement_campaigns.json",
           "exists": true,
-          "generated_at": "2026-07-07T22:56:53Z"
+          "generated_at": "2026-07-08T04:36:24Z"
         },
         "completion_backlog": {
           "path": "data/reports/completion_backlog.json",
           "exists": true,
-          "generated_at": "2026-07-07T22:56:27Z"
+          "generated_at": "2026-07-08T04:36:07Z"
         },
         "source_inventory_gap": {
           "path": "data/reports/source_inventory_gap.json",
@@ -310,12 +310,12 @@
         "source_gap_classification": {
           "path": "data/reports/source_gap_classification.json",
           "exists": true,
-          "generated_at": "2026-07-07T22:56:24Z"
+          "generated_at": "2026-07-08T04:36:03Z"
         },
         "pending_renames_manual_review": {
           "path": "data/reports/pending_renames_manual_review.json",
           "exists": true,
-          "generated_at": "2026-07-07T22:45:14Z"
+          "generated_at": "2026-07-07T22:56:56Z"
         },
         "deepseek_review_summary": {
           "path": "data/reports/deepseek_review_summary.json",
@@ -350,7 +350,7 @@
         "isin_validation_report": {
           "path": "data/reports/isin_validation_report.json",
           "exists": true,
-          "generated_at": "2026-07-07T22:56:48Z"
+          "generated_at": "2026-07-08T04:36:18Z"
         },
         "twelvedata_all_batches_review_rollup": {
           "path": "data/reports/twelvedata_all_batches_review_rollup.json",
@@ -460,7 +460,7 @@
         "b3_masterfile_gap_review": {
           "path": "data/reports/b3_masterfile_gap_review.json",
           "exists": true,
-          "generated_at": "2026-07-07T22:56:27Z"
+          "generated_at": "2026-07-08T04:36:06Z"
         },
         "b3_core_scope_review_queue": {
           "path": "data/reports/b3_core_scope_review_queue.json",
@@ -480,7 +480,7 @@
         "b3_residual_sector_review": {
           "path": "data/reports/b3_residual_sector_review.json",
           "exists": true,
-          "generated_at": "2026-07-07T22:56:27Z"
+          "generated_at": "2026-07-08T04:36:06Z"
         },
         "asx_scope_review_queue": {
           "path": "data/reports/asx_scope_review_queue.json",
@@ -505,47 +505,47 @@
         "adanos_alias_audit": {
           "path": "data/reports/adanos_alias_audit.json",
           "exists": true,
-          "generated_at": "2026-07-07T22:56:31Z"
+          "generated_at": "2026-07-08T04:36:11Z"
         },
         "adanos_detection_simulation": {
           "path": "data/reports/adanos_detection_simulation.json",
           "exists": true,
-          "generated_at": "2026-07-07T22:56:31Z"
+          "generated_at": "2026-07-08T04:36:11Z"
         },
         "m3_correctness_campaigns": {
           "path": "data/reports/m3_correctness_campaigns.json",
           "exists": true,
-          "generated_at": "2026-07-07T22:56:53Z"
+          "generated_at": "2026-07-08T04:36:24Z"
         },
         "m3_sector_category_campaign": {
           "path": "data/reports/m3_sector_category_campaign.json",
           "exists": true,
-          "generated_at": "2026-07-07T22:56:53Z"
+          "generated_at": "2026-07-08T04:36:24Z"
         },
         "m3_name_freshness_campaign": {
           "path": "data/reports/m3_name_freshness_campaign.json",
           "exists": true,
-          "generated_at": "2026-07-07T22:56:53Z"
+          "generated_at": "2026-07-08T04:36:24Z"
         },
         "m3_identity_residual_campaign": {
           "path": "data/reports/m3_identity_residual_campaign.json",
           "exists": true,
-          "generated_at": "2026-07-07T22:56:53Z"
+          "generated_at": "2026-07-08T04:36:24Z"
         },
         "m3_non_equity_leakage_guard": {
           "path": "data/reports/m3_non_equity_leakage_guard.json",
           "exists": true,
-          "generated_at": "2026-07-07T22:56:53Z"
+          "generated_at": "2026-07-08T04:36:24Z"
         },
         "m3_correctness_audit": {
           "path": "data/reports/m3_correctness_audit.json",
           "exists": true,
-          "generated_at": "2026-07-07T22:56:53Z"
+          "generated_at": "2026-07-08T04:36:24Z"
         },
         "primary_isin_completeness": {
           "path": "data/reports/primary_isin_completeness.json",
           "exists": true,
-          "generated_at": "2026-07-07T22:56:24Z"
+          "generated_at": "2026-07-08T04:36:03Z"
         },
         "etf_universe_completeness": {
           "path": "data/reports/etf_universe_completeness.json",
@@ -731,7 +731,7 @@
     },
     "adanos_detection_simulation": {
       "passed": true,
-      "generated_at": "2026-07-07T22:56:31Z",
+      "generated_at": "2026-07-08T04:36:11Z",
       "source_files": {
         "adanos_reference_csv": "data/adanos/ticker_reference.csv"
       },
@@ -758,7 +758,7 @@
     },
     "entry_quality_command_report": {
       "passed": true,
-      "generated_at": "2026-07-07T22:56:51Z",
+      "generated_at": "2026-07-08T04:36:22Z",
       "missing_meta_keys": [],
       "missing_keys": [],
       "mismatched_counts": {},
@@ -1044,7 +1044,7 @@
     },
     "primary_isin_completeness_gate": {
       "passed": true,
-      "generated_at": "2026-07-07T22:56:24Z",
+      "generated_at": "2026-07-08T04:36:03Z",
       "invalid_generated_at": "",
       "rows": 621,
       "summary_counts": {

@@ -2,6 +2,23 @@
 
 ## [Unreleased]
 
+## [3.32.02] - 2026-07-08
+
+### Summary
+
+**v3.32.01 quality-gap closure release.** Publishes the source-backed cleanup, regenerated quality reports, and release-gate hardening from PR #124.
+
+### Changed
+
+- Reduced residual source gaps and primary ISIN backlog through reviewed source evidence and strict Yahoo/TradingView/OpenFIGI-backed workflows.
+- Added and refreshed verification artifacts for reviewed-source, QFMA, MCD, OpenFIGI, TMX, and TradingView residual workflows.
+- Hardened source-gap, release-acceptance, drift, and ISIN-validation reporting so remaining residuals are classified instead of hidden.
+- Regenerated dataset exports, Adanos reference files, README snapshot, completion backlog, drift report, release acceptance matrix, and validation reports.
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0 failed error gates. `scripts/check_entry_quality_gate.py`: pass. `scripts/check_readme_snapshot.py`: pass. `scripts/build_release_acceptance_report.py`: 67/67 criteria passed. `scripts/build_drift_report.py`: pass, `pending_renames_count=0`, `drift_detected=false`. Focused pytest suite: 305 passed.
+
 ## [3.32.01] - 2026-07-07
 
 ### Summary

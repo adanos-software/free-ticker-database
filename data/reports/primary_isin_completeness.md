@@ -1,6 +1,6 @@
 # Primary ISIN Completeness
 
-Generated at: `2026-07-07T22:56:24Z`
+Generated at: `2026-07-08T04:36:03Z`
 
 This report scopes D1 primary-listing ISIN work. It does not fill values; it assigns allowed source paths and gates to every missing primary ISIN row.
 

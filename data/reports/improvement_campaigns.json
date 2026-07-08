@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-07-07T22:56:53Z",
+    "generated_at": "2026-07-08T04:36:24Z",
     "rows": 10,
     "source_files": {
       "coverage_report": "data/reports/coverage_report.json",
@@ -1092,7 +1092,7 @@
       "artifacts": [
         {
           "path": "data/reports/b3_masterfile_gap_review.json",
-          "generated_at": "2026-07-07T22:56:27Z",
+          "generated_at": "2026-07-08T04:36:06Z",
           "rows": 336
         },
         {
@@ -1107,7 +1107,7 @@
         },
         {
           "path": "data/reports/b3_residual_sector_review.json",
-          "generated_at": "2026-07-07T22:56:27Z",
+          "generated_at": "2026-07-08T04:36:06Z",
           "rows": 1
         }
       ],
@@ -8930,7 +8930,7 @@
           {
             "key": "identifiers",
             "source_type": "dataset",
-            "generated_at": "2026-07-07T22:56:18Z",
+            "generated_at": "2026-07-08T04:35:56Z",
             "age_hours": 0.0,
             "age_bucket": "age_0_48h",
             "rows": 61764,
@@ -8940,7 +8940,7 @@
           {
             "key": "tickers",
             "source_type": "dataset",
-            "generated_at": "2026-07-07T22:56:15Z",
+            "generated_at": "2026-07-08T04:35:53Z",
             "age_hours": 0.0,
             "age_bucket": "age_0_48h",
             "rows": 63057,
@@ -8950,8 +8950,8 @@
           {
             "key": "entry_quality",
             "source_type": "quality_gate",
-            "generated_at": "2026-07-07T22:44:51Z",
-            "age_hours": 0.19,
+            "generated_at": "2026-07-07T22:56:23Z",
+            "age_hours": 5.66,
             "age_bucket": "age_0_48h",
             "rows": 74517,
             "recommended_next_source": "Fresh generated_at and row-count evidence for entry_quality.",
@@ -8961,7 +8961,7 @@
             "key": "masterfile_collision_review",
             "source_type": "review_report",
             "generated_at": "2026-06-02T19:18:19Z",
-            "age_hours": 843.63,
+            "age_hours": 849.29,
             "age_bucket": "age_over_336h",
             "rows": 11176,
             "recommended_next_source": "Fresh generated_at and row-count evidence for masterfile_collision_review.",
@@ -8970,10 +8970,10 @@
           {
             "key": "source_gap_classification",
             "source_type": "review_report",
-            "generated_at": "2026-07-07T22:44:53Z",
-            "age_hours": 0.19,
+            "generated_at": "2026-07-07T22:56:24Z",
+            "age_hours": 5.66,
             "age_bucket": "age_0_48h",
-            "rows": 6361,
+            "rows": 6333,
             "recommended_next_source": "Fresh generated_at and row-count evidence for source_gap_classification.",
             "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
           },
@@ -8981,7 +8981,7 @@
             "key": "ohlcv_plausibility",
             "source_type": "sampling_report",
             "generated_at": "2026-06-02T20:39:44Z",
-            "age_hours": 842.28,
+            "age_hours": 847.94,
             "age_bucket": "age_over_336h",
             "rows": 240,
             "recommended_next_source": "Fresh generated_at and row-count evidence for ohlcv_plausibility.",
@@ -8991,7 +8991,7 @@
             "key": "masterfiles",
             "source_type": "source_inventory",
             "generated_at": "2026-07-07T19:39:54Z",
-            "age_hours": 3.27,
+            "age_hours": 8.93,
             "age_bucket": "age_0_48h",
             "rows": 79615,
             "recommended_next_source": "Fresh generated_at and row-count evidence for masterfiles.",
@@ -9001,7 +9001,7 @@
             "key": "symbol_changes",
             "source_type": "workflow_report",
             "generated_at": "2026-07-07T12:19:38Z",
-            "age_hours": 10.61,
+            "age_hours": 16.27,
             "age_bucket": "age_0_48h",
             "rows": 295,
             "recommended_next_source": "Fresh generated_at and row-count evidence for symbol_changes.",
@@ -9017,7 +9017,7 @@
             "key": "masterfile_collision_review",
             "source_type": "review_report",
             "generated_at": "2026-06-02T19:18:19Z",
-            "age_hours": 843.63,
+            "age_hours": 849.29,
             "age_bucket": "age_over_336h",
             "rows": 11176,
             "recommended_next_source": "Fresh generated_at and row-count evidence for masterfile_collision_review.",
@@ -9027,7 +9027,7 @@
             "key": "ohlcv_plausibility",
             "source_type": "sampling_report",
             "generated_at": "2026-06-02T20:39:44Z",
-            "age_hours": 842.28,
+            "age_hours": 847.94,
             "age_bucket": "age_over_336h",
             "rows": 240,
             "recommended_next_source": "Fresh generated_at and row-count evidence for ohlcv_plausibility.",
@@ -9037,7 +9037,7 @@
             "key": "symbol_changes",
             "source_type": "workflow_report",
             "generated_at": "2026-07-07T12:19:38Z",
-            "age_hours": 10.61,
+            "age_hours": 16.27,
             "age_bucket": "age_0_48h",
             "rows": 295,
             "recommended_next_source": "Fresh generated_at and row-count evidence for symbol_changes.",
@@ -9047,7 +9047,7 @@
             "key": "masterfiles",
             "source_type": "source_inventory",
             "generated_at": "2026-07-07T19:39:54Z",
-            "age_hours": 3.27,
+            "age_hours": 8.93,
             "age_bucket": "age_0_48h",
             "rows": 79615,
             "recommended_next_source": "Fresh generated_at and row-count evidence for masterfiles.",
@@ -9056,8 +9056,8 @@
           {
             "key": "entry_quality",
             "source_type": "quality_gate",
-            "generated_at": "2026-07-07T22:44:51Z",
-            "age_hours": 0.19,
+            "generated_at": "2026-07-07T22:56:23Z",
+            "age_hours": 5.66,
             "age_bucket": "age_0_48h",
             "rows": 74517,
             "recommended_next_source": "Fresh generated_at and row-count evidence for entry_quality.",
@@ -9066,17 +9066,17 @@
           {
             "key": "source_gap_classification",
             "source_type": "review_report",
-            "generated_at": "2026-07-07T22:44:53Z",
-            "age_hours": 0.19,
+            "generated_at": "2026-07-07T22:56:24Z",
+            "age_hours": 5.66,
             "age_bucket": "age_0_48h",
-            "rows": 6361,
+            "rows": 6333,
             "recommended_next_source": "Fresh generated_at and row-count evidence for source_gap_classification.",
             "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
           },
           {
             "key": "identifiers",
             "source_type": "dataset",
-            "generated_at": "2026-07-07T22:56:18Z",
+            "generated_at": "2026-07-08T04:35:56Z",
             "age_hours": 0.0,
             "age_bucket": "age_0_48h",
             "rows": 61764,
@@ -9086,7 +9086,7 @@
           {
             "key": "tickers",
             "source_type": "dataset",
-            "generated_at": "2026-07-07T22:56:15Z",
+            "generated_at": "2026-07-08T04:35:53Z",
             "age_hours": 0.0,
             "age_bucket": "age_0_48h",
             "rows": 63057,
@@ -9221,7 +9221,7 @@
             "refresh_priority": "P1",
             "source_count": 21,
             "total_rows": 27238,
-            "max_age_hours": 843.29,
+            "max_age_hours": 848.95,
             "review_strategy": "refresh_official_exchange_directory_before_identity_or_collision_work",
             "evidence_required": "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count",
             "recommended_next_source": "Refresh the official exchange-directory source for scope exchange_directory using mode cache.",
@@ -9234,7 +9234,7 @@
             "refresh_priority": "P1",
             "source_count": 13,
             "total_rows": 32264,
-            "max_age_hours": 843.29,
+            "max_age_hours": 848.95,
             "review_strategy": "refresh_official_exchange_directory_before_identity_or_collision_work",
             "evidence_required": "official_exchange_directory_refresh_artifact_with_generated_at_and_row_count",
             "recommended_next_source": "Refresh the official exchange-directory source for scope exchange_directory using mode network.",
@@ -9247,7 +9247,7 @@
             "refresh_priority": "P1",
             "source_count": 1,
             "total_rows": 0,
-            "max_age_hours": 843.29,
+            "max_age_hours": 848.95,
             "review_strategy": "restore_or_replace_unavailable_source_before_data_fill",
             "evidence_required": "source_restored_or_replaced_with_official_or_documented_unavailable_decision",
             "recommended_next_source": "Restore the unavailable official source for scope exchange_directory, or document an official replacement/unavailable decision.",
@@ -9260,7 +9260,7 @@
             "refresh_priority": "P2",
             "source_count": 44,
             "total_rows": 17568,
-            "max_age_hours": 843.29,
+            "max_age_hours": 848.95,
             "review_strategy": "refresh_official_subset_before_gap_enrichment",
             "evidence_required": "official_subset_refresh_artifact_with_generated_at_scope_and_row_count",
             "recommended_next_source": "Refresh the official subset source for scope listed_companies_subset before identifier or metadata gap work.",
@@ -9273,7 +9273,7 @@
             "refresh_priority": "P2",
             "source_count": 38,
             "total_rows": 36962,
-            "max_age_hours": 843.29,
+            "max_age_hours": 848.95,
             "review_strategy": "refresh_official_subset_before_gap_enrichment",
             "evidence_required": "official_subset_refresh_artifact_with_generated_at_scope_and_row_count",
             "recommended_next_source": "Refresh the official subset source for scope listed_companies_subset before identifier or metadata gap work.",
@@ -9286,7 +9286,7 @@
             "refresh_priority": "P2",
             "source_count": 4,
             "total_rows": 165,
-            "max_age_hours": 843.29,
+            "max_age_hours": 848.95,
             "review_strategy": "refresh_official_subset_before_gap_enrichment",
             "evidence_required": "official_subset_refresh_artifact_with_generated_at_scope_and_row_count",
             "recommended_next_source": "Refresh the official subset source for scope security_lookup_subset before identifier or metadata gap work.",
@@ -9299,7 +9299,7 @@
             "refresh_priority": "P2",
             "source_count": 3,
             "total_rows": 0,
-            "max_age_hours": 843.29,
+            "max_age_hours": 848.95,
             "review_strategy": "restore_or_replace_unavailable_source_before_data_fill",
             "evidence_required": "source_restored_or_replaced_with_official_or_documented_unavailable_decision",
             "recommended_next_source": "Restore the unavailable official source for scope listed_companies_subset, or document an official replacement/unavailable decision.",
@@ -9312,7 +9312,7 @@
             "refresh_priority": "P2",
             "source_count": 2,
             "total_rows": 745,
-            "max_age_hours": 843.29,
+            "max_age_hours": 848.95,
             "review_strategy": "refresh_official_subset_before_gap_enrichment",
             "evidence_required": "official_subset_refresh_artifact_with_generated_at_scope_and_row_count",
             "recommended_next_source": "Refresh the official subset source for scope security_lookup_subset before identifier or metadata gap work.",
@@ -9325,7 +9325,7 @@
             "refresh_priority": "P2",
             "source_count": 1,
             "total_rows": 268,
-            "max_age_hours": 843.29,
+            "max_age_hours": 848.95,
             "review_strategy": "refresh_official_subset_before_gap_enrichment",
             "evidence_required": "official_subset_refresh_artifact_with_generated_at_scope_and_row_count",
             "recommended_next_source": "Refresh the official subset source for scope interlisted_subset before identifier or metadata gap work.",
@@ -9338,7 +9338,7 @@
             "refresh_priority": "P4",
             "source_count": 6,
             "total_rows": 25153,
-            "max_age_hours": 35.68,
+            "max_age_hours": 41.34,
             "review_strategy": "no_refresh_required",
             "evidence_required": "fresh_source_generated_at_with_age_under_48h",
             "recommended_next_source": "No refresh needed; retain current fresh source evidence for scope exchange_directory.",
@@ -9351,7 +9351,7 @@
             "refresh_priority": "P4",
             "source_count": 1,
             "total_rows": 4056,
-            "max_age_hours": 12.83,
+            "max_age_hours": 18.49,
             "review_strategy": "no_refresh_required",
             "evidence_required": "fresh_source_generated_at_with_age_under_48h",
             "recommended_next_source": "No refresh needed; retain current fresh source evidence for scope security_identifier_registry_subset.",
@@ -9364,7 +9364,7 @@
             "refresh_priority": "P4",
             "source_count": 1,
             "total_rows": 4040,
-            "max_age_hours": 13.89,
+            "max_age_hours": 19.55,
             "review_strategy": "no_refresh_required",
             "evidence_required": "fresh_source_generated_at_with_age_under_48h",
             "recommended_next_source": "No refresh needed; retain current fresh source evidence for scope listed_companies_subset.",
@@ -9377,7 +9377,7 @@
             "refresh_priority": "P4",
             "source_count": 1,
             "total_rows": 36,
-            "max_age_hours": 13.36,
+            "max_age_hours": 19.02,
             "review_strategy": "no_refresh_required",
             "evidence_required": "fresh_source_generated_at_with_age_under_48h",
             "recommended_next_source": "No refresh needed; retain current fresh source evidence for scope corporate_action_daily_list.",
@@ -9390,7 +9390,7 @@
             "refresh_priority": "P4",
             "source_count": 1,
             "total_rows": 8,
-            "max_age_hours": 13.81,
+            "max_age_hours": 19.47,
             "review_strategy": "no_refresh_required",
             "evidence_required": "fresh_source_generated_at_with_age_under_48h",
             "recommended_next_source": "No refresh needed; retain current fresh source evidence for scope listed_companies_subset.",
@@ -9404,175 +9404,175 @@
             "provider": "OTC Markets",
             "mode": "cache",
             "rows": 11925,
-            "age_hours": 843.29
+            "age_hours": 848.95
           },
           {
             "key": "lse_price_explorer",
             "provider": "LSE",
             "mode": "network",
             "rows": 11021,
-            "age_hours": 843.29
+            "age_hours": 848.95
           },
           {
             "key": "sec_company_tickers_exchange",
             "provider": "SEC",
             "mode": "cache",
             "rows": 10122,
-            "age_hours": 843.29
+            "age_hours": 848.95
           },
           {
             "key": "bse_india_scrips",
             "provider": "BSE India",
             "mode": "network",
             "rows": 4866,
-            "age_hours": 843.29
+            "age_hours": 848.95
           },
           {
             "key": "deutsche_boerse_xetra_all_tradable_equities",
             "provider": "Deutsche Boerse",
             "mode": "network",
             "rows": 4544,
-            "age_hours": 843.29
+            "age_hours": 848.95
           },
           {
             "key": "hkex_securities_list",
             "provider": "HKEX",
             "mode": "network",
             "rows": 3164,
-            "age_hours": 843.29
+            "age_hours": 848.95
           },
           {
             "key": "nse_india_securities_available",
             "provider": "NSE India",
             "mode": "network",
             "rows": 3010,
-            "age_hours": 843.29
+            "age_hours": 848.95
           },
           {
             "key": "b3_instruments_equities",
             "provider": "B3",
             "mode": "cache",
             "rows": 1315,
-            "age_hours": 843.29
+            "age_hours": 848.95
           },
           {
             "key": "twse_listed_companies",
             "provider": "TWSE",
             "mode": "network",
             "rows": 1090,
-            "age_hours": 843.29
+            "age_hours": 848.95
           },
           {
             "key": "idx_company_profiles",
             "provider": "IDX",
             "mode": "network",
             "rows": 958,
-            "age_hours": 843.29
+            "age_hours": 848.95
           },
           {
             "key": "set_stock_search",
             "provider": "SET",
             "mode": "network",
             "rows": 944,
-            "age_hours": 843.29
+            "age_hours": 848.95
           },
           {
             "key": "upcom_registered_securities",
             "provider": "HNX",
             "mode": "network",
             "rows": 830,
-            "age_hours": 843.29
+            "age_hours": 848.95
           },
           {
             "key": "sgx_securities_prices",
             "provider": "SGX",
             "mode": "cache",
             "rows": 738,
-            "age_hours": 843.29
+            "age_hours": 848.95
           },
           {
             "key": "psx_dps_symbols",
             "provider": "PSX",
             "mode": "network",
             "rows": 716,
-            "age_hours": 843.29
+            "age_hours": 848.95
           },
           {
             "key": "bist_kap_mkk_listed_securities",
             "provider": "KAP/MKK",
             "mode": "cache",
             "rows": 637,
-            "age_hours": 843.29
+            "age_hours": 848.95
           },
           {
             "key": "cboe_canada_listing_directory",
             "provider": "Cboe Canada",
             "mode": "network",
             "rows": 440,
-            "age_hours": 843.29
+            "age_hours": 848.95
           },
           {
             "key": "tadawul_main_market_watch",
             "provider": "Saudi Exchange",
             "mode": "cache",
             "rows": 412,
-            "age_hours": 843.29
+            "age_hours": 848.95
           },
           {
             "key": "pse_listed_company_directory",
             "provider": "PSE",
             "mode": "network",
             "rows": 381,
-            "age_hours": 843.29
+            "age_hours": 848.95
           },
           {
             "key": "bvb_shares_directory",
             "provider": "BVB",
             "mode": "cache",
             "rows": 348,
-            "age_hours": 843.29
+            "age_hours": 848.95
           },
           {
             "key": "cse_lk_company_info_summary",
             "provider": "CSE Sri Lanka",
             "mode": "cache",
             "rows": 315,
-            "age_hours": 843.29
+            "age_hours": 848.95
           },
           {
             "key": "cse_lk_all_security_code",
             "provider": "CSE Sri Lanka",
             "mode": "cache",
             "rows": 307,
-            "age_hours": 843.29
+            "age_hours": 848.95
           },
           {
             "key": "hnx_listed_securities",
             "provider": "HNX",
             "mode": "network",
             "rows": 300,
-            "age_hours": 843.29
+            "age_hours": 848.95
           },
           {
             "key": "nzx_instruments",
             "provider": "NZX",
             "mode": "cache",
             "rows": 173,
-            "age_hours": 843.29
+            "age_hours": 848.95
           },
           {
             "key": "boursa_kuwait_stocks",
             "provider": "Boursa Kuwait",
             "mode": "cache",
             "rows": 140,
-            "age_hours": 843.29
+            "age_hours": 848.95
           },
           {
             "key": "ngx_company_profile_directory",
             "provider": "NGX",
             "mode": "cache",
             "rows": 133,
-            "age_hours": 843.29
+            "age_hours": 848.95
           }
         ],
         "source_gap_class_totals": {
@@ -9922,12 +9922,12 @@
       "artifacts": [
         {
           "path": "data/reports/coverage_report.json",
-          "generated_at": "2026-07-07T22:56:18Z",
+          "generated_at": "2026-07-08T04:35:56Z",
           "rows": 0
         },
         {
           "path": "data/reports/source_gap_classification.json",
-          "generated_at": "2026-07-07T22:56:24Z",
+          "generated_at": "2026-07-08T04:36:03Z",
           "rows": 6333
         },
         {
@@ -10264,7 +10264,7 @@
             {
               "key": "identifiers",
               "source_type": "dataset",
-              "generated_at": "2026-07-07T22:56:18Z",
+              "generated_at": "2026-07-08T04:35:56Z",
               "age_hours": 0.0,
               "age_bucket": "age_0_48h",
               "rows": 61764,
@@ -10274,7 +10274,7 @@
             {
               "key": "tickers",
               "source_type": "dataset",
-              "generated_at": "2026-07-07T22:56:15Z",
+              "generated_at": "2026-07-08T04:35:53Z",
               "age_hours": 0.0,
               "age_bucket": "age_0_48h",
               "rows": 63057,
@@ -10284,8 +10284,8 @@
             {
               "key": "entry_quality",
               "source_type": "quality_gate",
-              "generated_at": "2026-07-07T22:44:51Z",
-              "age_hours": 0.19,
+              "generated_at": "2026-07-07T22:56:23Z",
+              "age_hours": 5.66,
               "age_bucket": "age_0_48h",
               "rows": 74517,
               "recommended_next_source": "Fresh generated_at and row-count evidence for entry_quality.",
@@ -10295,7 +10295,7 @@
               "key": "masterfile_collision_review",
               "source_type": "review_report",
               "generated_at": "2026-06-02T19:18:19Z",
-              "age_hours": 843.63,
+              "age_hours": 849.29,
               "age_bucket": "age_over_336h",
               "rows": 11176,
               "recommended_next_source": "Fresh generated_at and row-count evidence for masterfile_collision_review.",
@@ -10304,10 +10304,10 @@
             {
               "key": "source_gap_classification",
               "source_type": "review_report",
-              "generated_at": "2026-07-07T22:44:53Z",
-              "age_hours": 0.19,
+              "generated_at": "2026-07-07T22:56:24Z",
+              "age_hours": 5.66,
               "age_bucket": "age_0_48h",
-              "rows": 6361,
+              "rows": 6333,
               "recommended_next_source": "Fresh generated_at and row-count evidence for source_gap_classification.",
               "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
             },
@@ -10315,7 +10315,7 @@
               "key": "ohlcv_plausibility",
               "source_type": "sampling_report",
               "generated_at": "2026-06-02T20:39:44Z",
-              "age_hours": 842.28,
+              "age_hours": 847.94,
               "age_bucket": "age_over_336h",
               "rows": 240,
               "recommended_next_source": "Fresh generated_at and row-count evidence for ohlcv_plausibility.",
@@ -10325,7 +10325,7 @@
               "key": "masterfiles",
               "source_type": "source_inventory",
               "generated_at": "2026-07-07T19:39:54Z",
-              "age_hours": 3.27,
+              "age_hours": 8.93,
               "age_bucket": "age_0_48h",
               "rows": 79615,
               "recommended_next_source": "Fresh generated_at and row-count evidence for masterfiles.",
@@ -10335,7 +10335,7 @@
               "key": "symbol_changes",
               "source_type": "workflow_report",
               "generated_at": "2026-07-07T12:19:38Z",
-              "age_hours": 10.61,
+              "age_hours": 16.27,
               "age_bucket": "age_0_48h",
               "rows": 295,
               "recommended_next_source": "Fresh generated_at and row-count evidence for symbol_changes.",
@@ -10351,7 +10351,7 @@
               "key": "masterfile_collision_review",
               "source_type": "review_report",
               "generated_at": "2026-06-02T19:18:19Z",
-              "age_hours": 843.63,
+              "age_hours": 849.29,
               "age_bucket": "age_over_336h",
               "rows": 11176,
               "recommended_next_source": "Fresh generated_at and row-count evidence for masterfile_collision_review.",
@@ -10361,7 +10361,7 @@
               "key": "ohlcv_plausibility",
               "source_type": "sampling_report",
               "generated_at": "2026-06-02T20:39:44Z",
-              "age_hours": 842.28,
+              "age_hours": 847.94,
               "age_bucket": "age_over_336h",
               "rows": 240,
               "recommended_next_source": "Fresh generated_at and row-count evidence for ohlcv_plausibility.",
@@ -10371,7 +10371,7 @@
               "key": "symbol_changes",
               "source_type": "workflow_report",
               "generated_at": "2026-07-07T12:19:38Z",
-              "age_hours": 10.61,
+              "age_hours": 16.27,
               "age_bucket": "age_0_48h",
               "rows": 295,
               "recommended_next_source": "Fresh generated_at and row-count evidence for symbol_changes.",
@@ -10381,7 +10381,7 @@
               "key": "masterfiles",
               "source_type": "source_inventory",
               "generated_at": "2026-07-07T19:39:54Z",
-              "age_hours": 3.27,
+              "age_hours": 8.93,
               "age_bucket": "age_0_48h",
               "rows": 79615,
               "recommended_next_source": "Fresh generated_at and row-count evidence for masterfiles.",
@@ -10390,8 +10390,8 @@
             {
               "key": "entry_quality",
               "source_type": "quality_gate",
-              "generated_at": "2026-07-07T22:44:51Z",
-              "age_hours": 0.19,
+              "generated_at": "2026-07-07T22:56:23Z",
+              "age_hours": 5.66,
               "age_bucket": "age_0_48h",
               "rows": 74517,
               "recommended_next_source": "Fresh generated_at and row-count evidence for entry_quality.",
@@ -10400,17 +10400,17 @@
             {
               "key": "source_gap_classification",
               "source_type": "review_report",
-              "generated_at": "2026-07-07T22:44:53Z",
-              "age_hours": 0.19,
+              "generated_at": "2026-07-07T22:56:24Z",
+              "age_hours": 5.66,
               "age_bucket": "age_0_48h",
-              "rows": 6361,
+              "rows": 6333,
               "recommended_next_source": "Fresh generated_at and row-count evidence for source_gap_classification.",
               "source_gate": "Freshness is visibility evidence only; it does not authorize canonical data changes without listing-keyed source review."
             },
             {
               "key": "identifiers",
               "source_type": "dataset",
-              "generated_at": "2026-07-07T22:56:18Z",
+              "generated_at": "2026-07-08T04:35:56Z",
               "age_hours": 0.0,
               "age_bucket": "age_0_48h",
               "rows": 61764,
@@ -10420,7 +10420,7 @@
             {
               "key": "tickers",
               "source_type": "dataset",
-              "generated_at": "2026-07-07T22:56:15Z",
+              "generated_at": "2026-07-08T04:35:53Z",
               "age_hours": 0.0,
               "age_bucket": "age_0_48h",
               "rows": 63057,
@@ -10950,12 +10950,12 @@
       "artifacts": [
         {
           "path": "data/reports/improvement_baseline.json",
-          "generated_at": "2026-07-07T22:56:52Z",
+          "generated_at": "2026-07-08T04:36:23Z",
           "rows": 0
         },
         {
           "path": "data/reports/improvement_deltas.json",
-          "generated_at": "2026-07-07T22:56:52Z",
+          "generated_at": "2026-07-08T04:36:23Z",
           "rows": 0
         }
       ],
@@ -11053,7 +11053,7 @@
       "delta_evidence": {
         "status": "baseline_only",
         "known_deltas": {
-          "baseline_generated_at": "2026-07-07T22:56:52Z",
+          "baseline_generated_at": "2026-07-08T04:36:23Z",
           "future_delta_reference": "data/reports/improvement_baseline.json",
           "current_delta_report": "data/reports/improvement_deltas.json"
         },
