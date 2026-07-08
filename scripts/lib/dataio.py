@@ -41,10 +41,35 @@ def display_path(path: Path, root: Path) -> str:
 
 
 METADATA_UPDATE_FIELDS = ["ticker", "exchange", "field", "decision", "proposed_value", "confidence", "reason"]
+METADATA_UPDATE_REQUIRED_FIELDS = ["ticker", "exchange", "field", "decision"]
+METADATA_UPDATE_ALLOWED_TARGET_FIELDS = {
+    "aliases",
+    "asset_type",
+    "country",
+    "country_code",
+    "etf_category",
+    "exchange",
+    "isin",
+    "name",
+    "stock_sector",
+    "ticker",
+}
+
+
+def is_well_formed_metadata_update(row: dict[Any, Any]) -> bool:
+    if row.get(None):
+        return False
+    if not all(row.get(field) for field in METADATA_UPDATE_REQUIRED_FIELDS):
+        return False
+    return row.get("field") in METADATA_UPDATE_ALLOWED_TARGET_FIELDS
 
 
 def merge_metadata_updates(path: Path, updates: list[dict[str, str]]) -> None:
-    rows = load_csv(path)
+    rows = [
+        {field: row.get(field, "") for field in METADATA_UPDATE_FIELDS}
+        for row in load_csv(path)
+        if is_well_formed_metadata_update(row)
+    ]
     by_key: dict[tuple[str, str, str], dict[str, str]] = {
         (row["ticker"], row["exchange"], row["field"]): row
         for row in rows

@@ -6,6 +6,7 @@ from scripts.backfill_tradingview_missing_isins import (
     has_cjk,
     names_compatible_for_isin,
     ticker_variants,
+    write_report_csv,
 )
 
 
@@ -43,6 +44,7 @@ def test_ticker_variants_uses_dots_for_canadian_classes():
     assert ticker_variants("AD-UN", "TSX") == ["AD-UN", "AD.UN"]
     assert ticker_variants("AAA.P", "TSXV") == ["AAA.P"]
     assert ticker_variants("VOLV-B", "STO") == ["VOLV-B", "VOLV_B"]
+    assert ticker_variants("ICCROETF", "BVB") == ["ICCROETF"]
     assert ticker_variants("PETR4", "B3") == ["PETR4"]
 
 
@@ -140,3 +142,12 @@ def test_build_metadata_updates_emits_review_gated_isin_update():
             ),
         }
     ]
+
+
+def test_write_report_csv_uses_lf_line_endings(tmp_path):
+    path = tmp_path / "report.csv"
+    write_report_csv(path, [evaluate_row(target_row(), tv_row(), {})])
+
+    content = path.read_bytes()
+    assert b"\r\n" not in content
+    assert b"\n" in content

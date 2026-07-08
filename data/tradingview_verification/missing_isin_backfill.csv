@@ -1,746 +1,104 @@
 ticker,exchange,asset_type,name,tv_symbol,tv_name,tv_exchange,tv_type,tv_subtype,tv_isin,tv_sector,tv_industry,tv_country,name_match,peer_name_match,decision
-001316,SZSE,Stock,Zhejiang XiaSha Precision,001316,"Lubair Aviation Technology Co., Ltd. Class A",SZSE,stock,common,CNE100005DM3,Distribution Services,Wholesale Distributors,China,False,True,name_mismatch
-001366,SZSE,Stock,Boen Group Co. Ltd. Cl A,001366,"Boen Group Co., Ltd. Class A",SZSE,stock,common,CNE1000061K1,Process Industries,Agricultural Commodities/Milling,China,False,True,name_mismatch
-0NYY,LSE,Stock,Banco Comercial Portugues S/A,,,,,,,,,,False,False,no_tradingview_match
-0P0001J2VW,LSE,Stock,Amundi Index Solutions - Amundi MSCI Europe SRI PAB ,,,,,,,,,,False,False,no_tradingview_match
-0Y5F,LSE,Stock,Endo International PLC,,,,,,,,,,False,False,no_tradingview_match
-159001,SZSE,ETF,货币ETF易方达,159001,E FUND MANAGEMENT CO LTD,SZSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
-159003,SZSE,ETF,招商快线ETF,159003,CHINA MERCHANTS FUND MANAGEMENT CO,SZSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
-159930,SZSE,ETF,China Universal Asset Management - CSI Energy Fund,159930,CHINA UNIVERSAL ASSET MANAGEMENT,SZSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,True,False,missing_isin
-159931,SZSE,ETF,金融地产ETF汇添富,159931,CHINA UNIVERSAL ASSET MANAGEMENT,SZSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
-159933,SZSE,ETF,金融地产ETF国投瑞银,159933,UBS SDIC FUND MANAGEMENT CO LTD,SZSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
-159934,SZSE,ETF,黄金ETF易方达,159934,E FUND MANAGEMENT CO LTD,SZSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
-159935,SZSE,ETF,中证500ETF景顺,159935,INVESCO GREAT WALL FUND MGMT CO LTD,SZSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
-159936,SZSE,ETF,可选消费ETF广发,159936,GF FUND MANAGEMENT CO LTD,SZSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
-301047,SZSE,Stock,Sino BiologicalInc.,301047,Sino Biological Inc. Class A,SZSE,stock,common,CNE100004Q23,Health Technology,Pharmaceuticals: Major,China,False,True,name_mismatch
-301177,SZSE,Stock,DR Corporation Limited,301177,DR Corporation Limited Class A,SZSE,stock,common,CNE100005501,Consumer Durables,Other Consumer Specialties,China,False,True,name_mismatch
-301539,SZSE,Stock,Hongxin Tech Co Ltd,301539,"ZheJiang HongXin Technology Co., Ltd. Class A",SZSE,stock,common,CNE100006HP5,Process Industries,Industrial Specialties,China,False,True,name_mismatch
-301589,SZSE,Stock,Novastar Co Ltd,301589,"Xi'an Novastar Tech Co., Ltd. Class A",SZSE,stock,common,CNE100006FM6,Distribution Services,Electronics Distributors,China,False,True,name_mismatch
-3SPP,LSE,ETF,GraniteShares 3x Short PayPal Daily ETP,,,,,,,,,,False,False,no_tradingview_match
-511600,SSE,ETF,华安日日鑫ETF,511600,Currency ETF,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
-511650,SSE,ETF,货币ETF华夏,511650,ChinaAMC Kuaixian,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
-511690,SSE,ETF,交易货币ETF大成,511690,Trading Currency,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
-511700,SSE,ETF,货币ETF平安,511700,Onfloor Currency,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
-511770,SSE,ETF,金鹰增益货币ETF,511770,Golden Eagle Gain,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
-511820,SSE,ETF,鹏华添利ETF,511820,Penghua Tianli,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
-511830,SSE,ETF,货币ETF华泰柏瑞,511830,Huatai Currency,SSE,fund,etf,,,,,False,False,missing_isin
-511850,SSE,ETF,招商财富宝ETF,511850,Caifubao E,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
-511860,SSE,ETF,货币ETF博时,511860,Bosera Currency,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
-511880,SSE,ETF,银华日利ETF,511880,XD Yinhua Rili,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
-511900,SSE,ETF,富国货币ETF,511900,Fullgoal Currency,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
-511930,SSE,ETF,货币ETF国联,511930,Zhongrong Riying,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
-511950,SSE,ETF,添利货币ETF广发,511950,GF Tianli,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
-511960,SSE,ETF,货币ETF嘉实,511960,Harvest Kuaixian,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
-511980,SSE,ETF,货币ETF汇添富,511980,China Universal Tian Fu Tong Money Market Fund Units Class E,SSE,fund,etf,CNE1000029K8,Miscellaneous,Investment Trusts/Mutual Funds,China,False,True,accept
-512070,SSE,ETF,证券保险ETF易方达,512070,Non-bank ETF,SSE,fund,etf,,Miscellaneous,Investment Trusts/Mutual Funds,China,False,False,missing_isin
-5BS,SGX,Stock,Sen Yue,,,,,,,,,,False,False,no_tradingview_match
-601956,SSE,Stock,Hubei Donper Electromechanical Group Co. Ltd.,601956,HUBEI DONPER ELECTROMECHANICAL GROU,SSE,stock,common,,Producer Manufacturing,Industrial Machinery,China,True,False,missing_isin
-603091,SSE,Stock,ZX PACKING ORD A (SHH) EQSW Exp:,603091,"Zhejiang Zhongxin Environmental Protection Technology Group Co., Ltd. Class A",SSE,stock,common,CNE1000078K5,Process Industries,Containers/Packaging,China,False,True,name_mismatch
-603150,SSE,Stock,Anhui Higasket Plastics Co.Ltd.,603150,"Higa Co., Ltd. Class A",SSE,stock,common,CNE100007812,Producer Manufacturing,Industrial Machinery,China,False,True,name_mismatch
-603207,SSE,Stock,XIAO FANG ORD A (SHH) EQSW Exp:,603207,"Shanghai Xiao Fang Pharmaceutical Co., Ltd. Class A",SSE,stock,common,CNE1000078H1,Health Technology,Pharmaceuticals: Major,China,False,True,name_mismatch
-603284,SSE,Stock,Anhui Linping Circular Dvlp Co,603284,ANHUI LINPING CIRCULAR DEV CO LTD,SSE,stock,common,,Process Industries,Pulp & Paper,China,True,False,missing_isin
-603296,SSE,Stock,HUAQIN TECHNOLOGY LTD A,603296,"Huaqin Co., Ltd. Class A",SSE,stock,common,CNE100006M82,Electronic Technology,Telecommunications Equipment,China,False,True,name_mismatch
-605068,SSE,Stock,Mingxin Automotive Leather Co. Ltd.,605068,"Mingxin New Material Co., Ltd. Class A",SSE,stock,common,CNE1000077F7,Producer Manufacturing,Auto Parts: OEM,China,False,True,name_mismatch
-688136,SSE,Stock,Shandong Kexing Bioproducts Co. Ltd. A,688136,"Kexing Biopharm Co., Ltd. Class A",SSE,stock,common,CNE100006ZG6,Health Technology,Pharmaceuticals: Major,China,False,True,name_mismatch
-688218,SSE,Stock,Jiangsu Beiren Robot System Co Ltd,688218,"Jiangsu Beiren Smart Manufacturing Technology Co., Ltd. Class A",SSE,stock,common,CNE1000076T0,Producer Manufacturing,Industrial Machinery,China,False,True,name_mismatch
-688221,SSE,Stock,Frontier Biopharmaceuticals (Nanjing) Co. Ltd. A,688221,Frontier Biotechnologies Inc. Class A,SSE,stock,common,CNE100005XF5,Health Technology,Biotechnology,China,False,True,name_mismatch
-688223,SSE,Stock,JinkoSolar Co. Ltd. A,688223,"Jinko Solar Co., Ltd. Class A",SSE,stock,common,CNE100005R96,Electronic Technology,Semiconductors,China,False,True,name_mismatch
-688235,SSE,Stock,BeiGene Ltd.,688235,BeOne Medicines Ltd. Class A,SSE,stock,common,CNE100005XT6,Health Technology,Pharmaceuticals: Major,Switzerland,False,True,name_mismatch
-688450,SSE,Stock,AGIOE ORD A (SHH) EQSW Exp:,688450,"Suzhou Agioe Technologies Co., Ltd. Class A",SSE,stock,common,CNE100007887,Electronic Technology,Electronic Equipment/Instruments,China,False,True,name_mismatch
-688573,SSE,Stock,XINYUREN ORD A (SHH) EQSW Exp:,688573,"Shenzhen Xinyuren Technology Co., Ltd. Class A",SSE,stock,common,CNE1000078F5,Producer Manufacturing,Industrial Machinery,China,False,True,name_mismatch
-688592,SSE,Stock,COMNAV ORD A (SHH) EQSW Exp:,688592,ComNav Technology Ltd. Class A,SSE,stock,common,CNE1000078D0,Electronic Technology,Electronic Components,China,False,True,name_mismatch
-688602,SSE,Stock,CHEMSPEC ORD A (SHH) EQSW Exp:,688602,Shanghai Chemspec Corporation Class A,SSE,stock,common,CNE100007879,Process Industries,Chemicals: Major Diversified,China,False,True,name_mismatch
-688603,SSE,Stock,Guangdong Skychem Technology Co. Ltd. A,688603,"Shanghai Skychem Technology Co., Ltd. Class A",SSE,stock,common,CNE100006ZL6,Process Industries,Chemicals: Specialty,China,False,True,name_mismatch
-688610,SSE,Stock,I-TEK ORD A (SHH) EQSW Exp:,688610,"Hefei I-TEK OptoElectronics Co., Ltd. Class A",SSE,stock,common,CNE100007861,Consumer Durables,Electronics/Appliances,China,False,True,name_mismatch
-688615,SSE,Stock,INTSIG ORD A (SHH) EQSW Exp:,688615,"Intsig Information Co., Ltd. Class A",SSE,stock,common,CNE1000078L3,Technology Services,Packaged Software,China,False,True,name_mismatch
-688638,SSE,Stock,UTIMES ORD A (SHH) EQSW Exp:,688638,"Shenzhen UTIMES Intelligent Equipment Co., Ltd. Class A",SSE,stock,common,CNE100007853,Producer Manufacturing,Industrial Machinery,China,False,True,name_mismatch
-688646,SSE,Stock,YIFILASER ORD A (SHH) EQSW Exp:,688646,Wuhan Yifi Laser Corporation Limited Class A,SSE,stock,common,CNE1000078B4,Producer Manufacturing,Industrial Machinery,China,False,True,name_mismatch
-688651,SSE,Stock,WEBRAY ORD A (SHH) EQSW Exp:,688651,WebRAY Tech Group Inc. Class A,SSE,stock,common,CNE100007895,Technology Services,Information Technology Services,China,False,True,name_mismatch
-688671,SSE,Stock,BESCIENT ORD A (SHH) EQSW Exp:,688671,"Bescient Technologies Co.,Ltd. Class A",SSE,stock,common,CNE1000078C2,Electronic Technology,Electronic Equipment/Instruments,China,False,True,name_mismatch
-688693,SSE,Stock,CONVERT ORD A (SHH) EQSW Exp:,688693,"Suzhou Convert Semiconductor Co., Ltd. Class A",SSE,stock,common,CNE1000078G3,Electronic Technology,Semiconductors,China,False,True,name_mismatch
-688710,SSE,Stock,INNOSTAR ORD A (SHH) EQSW Exp:,688710,Shanghai InnoStar Bio-tech Co. Ltd. Class A,SSE,stock,common,CNE1000078J7,Health Technology,Pharmaceuticals: Major,China,False,True,name_mismatch
-689009,SSE,Stock,Ninebot Ltd,689009,Ninebot Ltd. CDR Class A,SSE,dr,,CNE100007788,Utilities,Electric Utilities,China,False,True,name_mismatch
-786,PSX,Stock,786 Investment Limited,786,786 Investments Limited,PSX,stock,common,PK0061101017,Finance,Investment Managers,Pakistan,False,True,name_mismatch
-AB-H,TSXV,Stock,Asbestos Corporation Limited,,,,,,,,,,False,False,no_tradingview_match
-ABIG,NASDAQ,ETF,Argent Large Cap ETF,ABIG,Argent Large Cap ETF,NASDAQ,fund,etf,US02072Q7473,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
 AC2,ASX,ETF,ALLIED CREDIT ABS TRUST 2025-1P,,,,,,,,,,False,False,no_tradingview_match
 AC3,ASX,ETF,ALLIED CREDIT ABS TRUST 2025-2,,,,,,,,,,False,False,no_tradingview_match
-ACCL,NASDAQ,Stock,Acco Group Holdings Limited Ordinary Shares,ACCL,Acco Group Holdings Limited Class A,NASDAQ,stock,common,KYG0069D1108,Commercial Services,Miscellaneous Commercial Services,Hong Kong,False,True,name_mismatch
-ACIETF,PSX,ETF,Alfalah Consumer Index ETF,,,,,,,,,,False,False,no_tradingview_match
-AD-UN,TSX,Stock,Alaris Equity Partners Income Trust,AD.UN,Alaris Equity Partners Income Trust Trust Units Reg S 3c7,TSX,stock,common,CAC010971017,Finance,Investment Managers,Canada,True,True,accept
-ADAMG,NASDAQ,Stock,"Adamas Trust, Inc.",,,,,,,,,,False,False,no_tradingview_match
-ADAMM,NASDAQ,Stock,"Adamas Trust, Inc. - 7.875% Series E Fixed-to-Floating Rate Cumulative Redeemable",ADAMM,"Adamas Trust, Inc. Cum Conv Red Pfd Registered Shs Series E",NASDAQ,stock,preferred,US6496048736,Finance,Real Estate Investment Trusts,United States,False,True,name_mismatch
-ADAMN,NASDAQ,Stock,"Adamas Trust, Inc",ADAMN,"Adamas Trust, Inc. Cum Conv Perp Red Pfd Registered Shs Series D",NASDAQ,stock,preferred,US6496048819,Finance,Real Estate Investment Trusts,United States,False,True,name_mismatch
-ADAMZ,NASDAQ,Stock,"Adamas Trust, Inc",ADAMZ,"Adamas Trust, Inc. 7 % Cum Conv Perp Red Pfd Registered Shs Series G",NASDAQ,stock,preferred,US6496048579,Finance,Real Estate Investment Trusts,United States,False,True,name_mismatch
-AEI,NASDAQ,Stock,Alset Ehome International Inc,AEI,Alset Inc.,NASDAQ,stock,common,US02115D2080,Finance,Real Estate Development,United States,False,True,name_mismatch
-AER,NYSE,Stock,AerCap Holdings NV,AER,AerCap Holdings NV,NYSE,stock,common,NL0000687663,Finance,Finance/Rental/Leasing,Ireland,True,True,accept
-AERO,NYSE,Stock,"Grupo Aeroméxico, S.A.B. de C.V.",AERO,"Grupo Aeromexico, S.A.B. de C.V. Unsponsored ADR",NYSE,dr,,US40054J1097,Transportation,Airlines,Mexico,True,True,accept
 AF2,ASX,ETF,ANGLE ASSET FINANCE - RADIAN TRUST 2025-1,,,,,,,,,,False,False,no_tradingview_match
 AF4,ASX,ETF,AFG 2024-1 TRUST IN RESPECT OF SERIES 2024-1,,,,,,,,,,False,False,no_tradingview_match
 AF5,ASX,ETF,AFG 2025-1NC TRUST IN RESPECT OF SERIES 2025-1NC,,,,,,,,,,False,False,no_tradingview_match
 AF6,ASX,ETF,AFG 2025-1 TRUST IN RESPECT OF SERIES 2025-1,,,,,,,,,,False,False,no_tradingview_match
 AF7,ASX,ETF,ANGLE ASSET FINANCE - RADIAN TRUST 2025-2,,,,,,,,,,False,False,no_tradingview_match
-AFOF11,B3,ETF,Alianza Fofii Fundo De Investimento Imobiliario,,,,,,,,,,False,False,no_tradingview_match
-AFR,TSXV,Stock,AFR NuVenture Resources Inc.,,,,,,,,,,False,False,no_tradingview_match
-AFV.P,TSXV,Stock,Apolo V Acquisition Corp.,,,,,,,,,,False,False,no_tradingview_match
-AGCX11,B3,ETF,FDO INV IMOB RIO BRAVO RENDA VAREJO - FII,,,,,,,,,,False,False,no_tradingview_match
-AGF,TSX,Stock,AGF Management Limited,,,,,,,,,,False,False,no_tradingview_match
-AGMR,TSXV,Stock,Silver Mountain Resources Inc.,,,,,,,,,,False,False,no_tradingview_match
-AGRO,NYSE,Stock,Adecoagro SA,AGRO,Adecoagro S.A.,NYSE,stock,common,LU0584671464,Process Industries,Agricultural Commodities/Milling,Luxembourg,True,True,accept
-AIR,NYSE,Stock,AAR Corp,AIR,AAR CORP.,NYSE,stock,common,US0003611052,Electronic Technology,Aerospace & Defense,United States,False,True,name_mismatch
-AJA,TSXV,Stock,Aja Health and Wellness Inc.,,,,,,,,,,False,False,no_tradingview_match
-AKHI,QSE,Stock,Alkhaleej Takaful,AKHI,Al Khaleej Takaful Group,QSE,stock,common,QA0006929762,Finance,Property/Casualty Insurance,Qatar,False,True,name_mismatch
-AKTR,ATHEX,Stock,AKTR,AKTR,Aktor Societe Anonyme Holding Company Technical and Energy Projects,ATHEX,stock,common,GRS432003028,Communications,Specialty Telecommunications,Greece,False,False,name_mismatch
-ALUB-UN,NYSE,Stock,Alussa Energy Acquisition Corp. II,,,,,,,,,,False,False,no_tradingview_match
-ALX,NYSE,Stock,Alexanders Inc,ALX,"Alexander's, Inc.",NYSE,stock,common,US0147521092,Finance,Real Estate Investment Trusts,United States,False,True,name_mismatch
 AN3,ASX,Stock,AUSTRALIA AND NEW ZEALAND BANKING GROUP LIMITED.,,,,,,,,,,False,False,no_tradingview_match
 AO2,ASX,ETF,APOLLO SERIES 2017-2 TRUST,,,,,,,,,,False,False,no_tradingview_match
 AO3,ASX,ETF,APOLLO SERIES 2018-1 TRUST,,,,,,,,,,False,False,no_tradingview_match
-AOMD,NYSE,Stock,"Angel Oak Mortgage REIT, Inc",,,,,,,,,,False,False,no_tradingview_match
-AQLL11,B3,ETF,ÁQUILLA FDO INV IMOB - FII,,,,,,,,,,False,False,no_tradingview_match
-AQR.P,TSXV,Stock,Anquiro Ventures Ltd.,,,,,,,,,,False,False,no_tradingview_match
-ARGH,TSXV,Stock,Argo Corporation,ARGH,Argo Corporation,TSXV,stock,common,CA03990E1051,Technology Services,Internet Software/Services,Canada,False,True,name_mismatch
-ARKT,BATS,ETF,ARK ETF Trust - Ark Q4 Defined Innovation Etf,ARKT,ARK DIET Q4 Buffer ETF,CBOE,fund,etf,US00214Q8722,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-ARMU,NYSE MKT,ETF,T-Rex 2X Long ARM Daily Target ETF,,,,,,,,,,False,False,no_tradingview_match
-ARWG,BATS,ETF,Archer Investment Series Trust - Archer Growth ETF,ARWG,Archer Growth ETF,CBOE,fund,etf,US0394916003,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-ATCL,NYSE ARCA,ETF,REX ETF Trust,ATCL,REX Autocallable Income ETF,AMEX,fund,etf,US7615628598,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-ATI,NYSE,Stock,ATI Inc.,ATI,ATI Inc,NYSE,stock,common,US01741R1023,Non-Energy Minerals,Other Metals/Minerals,United States,False,True,name_mismatch
-ATOM,NASDAQ,Stock,Atomera Inc,ATOM,Atomera Incorporated,NASDAQ,stock,common,US04965B1008,Commercial Services,Miscellaneous Commercial Services,United States,True,True,accept
-ATR,NYSE,Stock,AptarGroup Inc,ATR,"AptarGroup, Inc.",NYSE,stock,common,US0383361039,Process Industries,Containers/Packaging,United States,True,True,accept
-AUB,NYSE,Stock,Atlantic Union Bankshares Corp,AUB,Atlantic Union Bankshares Corporation,NYSE,stock,common,US04911A1079,Finance,Regional Banks,United States,True,True,accept
-AUR,NASDAQ,Stock,Aurora Innovation Inc,AUR,"Aurora Innovation, Inc. Class A",NASDAQ,stock,common,US0517741072,Technology Services,Packaged Software,United States,True,True,accept
-AVD,NYSE,Stock,American Vanguard Corporation,AVD,American Vanguard Corporation,NYSE,stock,common,US0303711081,Process Industries,Chemicals: Agricultural,United States,True,True,accept
-AXO,TSXV,Stock,Axo Metals Corp.,AXO,Axo Metals Corp.,TSXV,stock,common,CA05465W1068,Non-Energy Minerals,Other Metals/Minerals,Canada,True,True,accept
-AXTRART,SET,Stock,AXTRART_AXTRA FUTURE CITY,AXTRART,Axtra Future City Freehold & Leasehold Real Estate Investment Trust,SET,stock,common,THC611010008,Finance,Real Estate Investment Trusts,Thailand,False,True,name_mismatch
-B-WORK,SET,Stock,Bualuang Office Leasehold REIT,B-WORK,Bualuang Office Leasehold Real Estate Investment Trust,SET,stock,common,TH8427010005,Finance,Real Estate Investment Trusts,Thailand,False,True,name_mismatch
-B69,SGX,Stock,Broadway Ind,,,,,,,,,,False,False,no_tradingview_match
 BA2,ASX,ETF,SERIES 2019-1 REDS TRUST,,,,,,,,,,False,False,no_tradingview_match
-BAL-H,TSXV,Stock,Balto Resources Ltd,,,,,,,,,,False,False,no_tradingview_match
-BAQ.P,TSXV,Stock,Bluewater Acquisition Corp.,,,,,,,,,,False,False,no_tradingview_match
-BBB,NASDAQ,ETF,CYBER HORNET S&P 500 and Bitcoin 75/25 Strategy ETF,BBB,CYBER HORNET S&P 500 and Bitcoin 75/25 Strategy ETF,NASDAQ,fund,etf,US45407J4094,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-BBD,TSX,Stock,Bombardier Inc.,,,,,,,,,,False,False,no_tradingview_match
-BCGD,NYSE,ETF,Baron Global Durable Advantage ETF,BCGD,Baron Global Durable Advantage ETF,NYSE,fund,etf,US06829D2062,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-BCPL,NYSE ARCA,ETF,BNY Mellon ETF Trust II,BCPL,BNY Mellon Core Plus ETF,AMEX,fund,etf,US05613H4074,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-BCSM,NYSE,ETF,Baron SMID Cap ETF,BCSM,Baron SMID Cap ETF,NYSE,fund,etf,US06829D3052,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-BDKR,IDX,Stock,PT Berdikari Foundation Perkas,BDKR,PT Berdikari Pondasi Perkasa Tbk,IDX,stock,common,ID1000187008,Industrial Services,Engineering & Construction,Indonesia,False,True,name_mismatch
-BEBE-UN,NYSE,Stock,TGE Value Creative Solutions Co,,,,,,,,,,False,False,no_tradingview_match
-BEK,TSX,Stock,Becker Milk Company Ltd. (The),,,,,,,,,,False,False,no_tradingview_match
-BEK-B,TSX,Stock,Becker Milk Co Ltd Cl B Nv Spec (BEK-B.TO,BEK.B,Becker Milk Company Limited Class B,TSX,stock,common,CA0756532044,Retail Trade,Food Retail,Canada,False,True,name_mismatch
-BEMA,QSE,Stock,Beema,BEMA,Damaan Islamic Insurance Company (Beema),QSE,stock,common,QA000LB5T4U2,Finance,Multi-Line Insurance,Qatar,False,True,name_mismatch
-BFOC,NYSE ARCA,ETF,FT Vest Bitcoin Strat Floor15 ETF - Oct,BFOC,FT Vest Bitcoin Strategy Floor15 ETF - October,AMEX,fund,etf,US33733E6749,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-BGI-UN,TSX,Stock,Brookfield Global Infrastructure Securities Income Fund,BGI.UN,Brookfield Global Infrastructure Securities Income Fund,TSX,fund,closedend,CA1127201079,Miscellaneous,Investment Trusts/Mutual Funds,Canada,True,True,asset_type_mismatch
-BHAT,NASDAQ,Stock,Blue Hat Interactive Entertainment ,,,,,,,,,,False,False,no_tradingview_match
-BIII-UN,NYSE,Stock,Black Spade Acquisition III Co,,,,,,,,,,False,False,no_tradingview_match
-BILD,NYSE ARCA,ETF,Nomura Global Listed Infrastructure ETF,BILD,Nomura Global Listed Infrastructure ETF,AMEX,fund,etf,US5559271029,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-BKCG,NYSE ARCA,ETF,BNY Mellon ETF Trust II,BKCG,BNY Mellon Concentrated Growth ETF,AMEX,fund,etf,US05613H2094,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-BKDV,NYSE ARCA,ETF,BNY Mellon ETF Trust II,BKDV,BNY Mellon Dynamic Value ETF,AMEX,fund,etf,US05613H1005,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-BKFI,NYSE ARCA,ETF,BNY Mellon ETF Trust II,BKFI,BNY Mellon Active Core Bond ETF,AMEX,fund,etf,US05613H5063,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-BLOK,NYSE ARCA,ETF,Amplify Transformational Data Sharing ETF,BLOK,Amplify Blockchain Technology ETF,AMEX,fund,etf,US0321086078,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-BLX,NYSE,Stock,Foreign Trade Bank of Latin America Inc,BLX,"Banco Latinoamericano de Comercio Exterior, S.A. Class E",NYSE,stock,common,PAP169941328,Finance,Major Banks,Panama,False,True,name_mismatch
-BMR,NASDAQ,Stock,Beamr Imaging Ltd. Ordinary Share,,,,,,,,,,False,False,blocked_known_collision
-BND.U,TSX,ETF,Purpose Global Bond Fund,BND.U,Purpose Global Bond Fund US Dollar Denominated ETF Non Currency Hedged Units Trust Units,TSX,fund,etf,CA74641B3039,,,,False,True,name_mismatch
-BNXA,TSXV,Stock,Banxa Holdings Inc.,,,,,,,,,,False,False,no_tradingview_match
-BOCHGR,ATHEX,Stock,BOCHGR,BOCHGR,Bank of Cyprus Holdings Plc,ATHEX,stock,common,IE00BD5B1Y92,Finance,Regional Banks,Cyprus,False,False,name_mismatch
-BOGO,TSXV,Stock,Borealis Mining Company Limited,BOGO,Borealis Mining Company Limited,TSXV,stock,common,CA09972D1069,Non-Energy Minerals,Precious Metals,Canada,True,False,isin_peer_name_mismatch
-BONE,TSXV,Stock,Boron One Holdings Inc.,BONE,Boron One Holdings Inc,TSXV,stock,common,CA10002E1060,Non-Energy Minerals,Precious Metals,Canada,True,True,accept
 BP1,ASX,Stock,BP CAPITAL MARKETS P.L.C.,,,,,,,,,,False,False,no_tradingview_match
-BPF,TSX,ETF,Boston Pizza Royalties Income Fund,,,,,,,,,,False,False,no_tradingview_match
-BPF-UN,TSX,Stock,Boston Pizza Royalties Income Fund,BPF.UN,Boston Pizza Royalties Income Fund,TSX,fund,closedend,CA1010841015,Miscellaneous,Investment Trusts/Mutual Funds,Canada,True,True,asset_type_mismatch
-BPO,TSX,Stock,Brookfield Office Properties Inc.,,,,,,,,,,False,False,no_tradingview_match
-BPRE,NYSE,ETF,Bluerock Private Real Estate Fund,BPRE,Bluerock Private Real Estate Fund,NYSE,fund,closedend,US09631P1021,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,asset_type_mismatch
-BRHY,NASDAQ,ETF,BlackRock High Yield ETF,BRHY,iShares High Yield Active ETF,NASDAQ,fund,etf,US0925288682,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-BRKD,NASDAQ,ETF,Direxion Daily BRKB Bear 1X Shares,,,,,,,,,,False,False,no_tradingview_match
 BS1,ASX,ETF,BLUESTONE PRIME 2024-1 TRUST,,,,,,,,,,False,False,no_tradingview_match
-BTB,TSX,ETF,BTB Real Estate Investment Trust,,,,,,,,,,False,False,no_tradingview_match
-BTFD,NYSE,ETF,Valkyrie Bitcoin Strategy ETF,,,,,,,,,,False,False,no_tradingview_match
 BW6,ASX,ETF,BLACKWATTLE SERIES RMBS TRUST NO.6,,,,,,,,,,False,False,no_tradingview_match
-BYLD-B,NEO,ETF,MANULIFE SMART ENHANCED YIELD BOND ETF - UNHEDGED UNITS,,,,,,,,,,False,False,no_tradingview_match
-BYLOT,ATHEX,Stock,Ballys Intralot S.A.,BYLOT,Ballys Intralot S.A.,ATHEX,stock,common,GRS343313003,Technology Services,Packaged Software,Greece,True,False,isin_peer_name_mismatch
-C3RP3,B3,Stock,COTRASA PARTICIPACOES S.A.,,,,,,,,,,False,False,no_tradingview_match
-CARD,NYSE ARCA,ETF,MAX™ Auto Industry -3X Inverse Leveraged ETNs,CARD,MAX Auto Industry -3x Inverse Leveraged ETN,AMEX,fund,etf,US0636794689,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-CATR,TSX,Stock,Caterpillar CDR (CAD Hedged),CATR,Caterpillar Inc. Shs,TSX,dr,,CA14913M1086,Producer Manufacturing,Trucks/Construction/Farm Machinery,United States,False,True,name_mismatch
-CBNK,NASDAQ,Stock,Capital Bancorp,CBNK,"Capital Bancorp, Inc.",NASDAQ,stock,common,US1397371006,Finance,Major Banks,United States,True,True,accept
-CBQK,QSE,Stock,Comm. Bank of Qatar,CBQK,Commercial Bank (Q.S.C.),QSE,stock,common,QA0007227752,Finance,Investment Banks/Brokers,Qatar,False,True,name_mismatch
-CBXJ,BATS,ETF,Calamos Bitcoin 90% Protection Strategy ETF - Month TBD 1,CBXJ,Calamos Bitcoin 90 Series Structured Alt Protection ETF - January,CBOE,fund,etf,US12811T7129,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-CCOM.B,TSX,ETF,CI Auspice Broad Commodity ETF - Unhedged Common Units Acc,,,,,,,,,,False,False,no_tradingview_match
-CEGS,TSX,Stock,Constellation Energy CDR (CAD Hedged),CEGS,Constellation Energy Corporation Shs Unsponsored Canadian Depository Receipt Hedged Reg S,TSX,dr,,CA2099571093,Utilities,Electric Utilities,United States,False,True,name_mismatch
-CESG-B,NEO,ETF,CI First Asset MSCI World ESG Impact ETF,,,,,,,,,,False,False,no_tradingview_match
-CFND,NYSE,ETF,C1 Fund Inc.,CFND,"C1 Fund, Inc.",NYSE,stock,common,US12673Q1031,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,asset_type_mismatch
-CGGG,NYSE ARCA,ETF,Capital Group U.S. Large Growth ETF,CGGG,Capital Group U.S. Large Growth ETF,AMEX,fund,etf,US14022A2015,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-CGMM,NYSE ARCA,ETF,Capital Group U.S. Small and Mid Cap ETF,CGMM,Capital Group U.S. Small and Mid Cap ETF,AMEX,fund,etf,US14022A1025,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-CGVV,NYSE ARCA,ETF,Capital Group U.S. Large Value ETF,CGVV,Capital Group U.S. Large Value ETF,AMEX,fund,etf,US14022A3005,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-CHCL-B,NEO,ETF,CI Global Healthcare Leaders Index ETF,,,,,,,,,,False,False,no_tradingview_match
-CHCL.B,TSX,ETF,CI Global Healthcare Leaders Index ETF,,,,,,,,,,False,False,no_tradingview_match
-CIU,TSX,Stock,CU Inc.,,,,,,,,,,False,False,no_tradingview_match
-CLCV,NYSE ARCA,ETF,Crossmark ETF Trust,CLCV,Crossmark Large Cap Value ETF,AMEX,fund,etf,US22767F2020,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-CLOB,NYSE ARCA,ETF,VanEck AA-BB CLO ETF,CLOB,VanEck AA-BB CLO ETF,AMEX,fund,etf,US92189H6568,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-CLU-C,NEO,ETF,iSHARES US FUNDAMENTAL INDEX ETF,,,,,,,,,,False,False,no_tradingview_match
-CLUP,TSX,ETF,SavvyLong Geared Crude Oil ETF,,,,,,,,,,False,False,no_tradingview_match
-CMGS,TSX,Stock,Chipotle CDR (CAD Hedged),CMGS,"Chipotle Mexican Grill, Inc. Shs Sponsored Canadian Depository Receipt Hedged Reg S",TSX,dr,,CA16965M1005,Consumer Services,Restaurants,United States,False,True,name_mismatch
-CNCO,TSXV,Stock,Core Nickel Corp.,,,,,,,,,,False,False,no_tradingview_match
-CNTN,NASDAQ,Stock,"Canton Strategic Holdings, Inc.",CNTN,"Canton Strategic Holdings, Inc.",NASDAQ,stock,common,US4327053090,Health Technology,Biotechnology,United States,True,False,isin_peer_name_mismatch
-COIW,BATS,ETF,COIN WeeklyPay™ ETF,COIW,Roundhill COIN WeeklyPay ETF,CBOE,fund,etf,US77926X7672,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-COP-U,TSX,Stock,Sprott Physical Copper Trust,COP.U,Sprott Physical Copper Trust Trust Units,TSX,fund,etf,CA85210C1005,Miscellaneous,Investment Trusts/Mutual Funds,Canada,True,True,asset_type_mismatch
-COP-UN,TSX,Stock,Sprott Physical Copper Trust,COP.UN,Sprott Physical Copper Trust Trust Units,TSX,fund,etf,CA85210C1005,Miscellaneous,Investment Trusts/Mutual Funds,Canada,True,True,asset_type_mismatch
-CPIP,JSE,Stock,Capitec Bank Holdings Limited,,,,,,,,,,False,False,no_tradingview_match
-CPTS11B,B3,ETF,Capitania Securities II Fundo Investimento Imobiliario FII,,,,,,,,,,False,False,no_tradingview_match
-CRD,TSXV,Stock,Copper Road Resources Inc.,CRD,Copper Road Resources Inc,TSXV,stock,common,CA2175731041,Non-Energy Minerals,Precious Metals,Canada,True,False,isin_peer_name_mismatch
-CSIO,NYSE ARCA,ETF,Cohen & Steers Infrastructure Opportunities Active ETF,CSIO,Cohen & Steers Infrastructure Opportunities Active ETF,AMEX,fund,etf,US19249U5002,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-CSPF,NYSE ARCA,ETF,Cohen & Steers Preferred and Income Opportunities Active ETF,CSPF,Cohen & Steers Preferred and Income Opportunities Active ETF,AMEX,fund,etf,US19249U2033,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-CSSD,NYSE ARCA,ETF,Cohen & Steers Short Duration Preferred and Income Active ETF,CSSD,Cohen & Steers Short Duration Preferred and Income Active ETF,AMEX,fund,etf,US19249U4013,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-CTWO,NYSE,ETF,COtwo Advisors Physical European Carbon Allowance Trust,,,,,,,,,,False,False,no_tradingview_match
-CVBP,LSE,Stock,Coventry Building Society,,,,,,,,,,False,False,no_tradingview_match
-CWT,NYSE,Stock,California Water Service Group,CWT,California Water Service Group,NYSE,stock,common,US1307881029,Utilities,Water Utilities,United States,True,True,accept
 D10,ASX,ETF,DRIVER AUSTRALIA TEN TRUST,,,,,,,,,,False,False,no_tradingview_match
 DA8,ASX,ETF,DRIVER AUSTRALIA EIGHT TRUST,,,,,,,,,,False,False,no_tradingview_match
 DA9,ASX,ETF,DRIVER AUSTRALIA NINE TRUST,,,,,,,,,,False,False,no_tradingview_match
-DAN,NYSE,Stock,Dana Inc,DAN,Dana Incorporated,NYSE,stock,common,US2358252052,Producer Manufacturing,Auto Parts: OEM,United States,False,True,name_mismatch
-DAQ.P,TSXV,Stock,Dominus Acquisition Corp.,DAQ.P,Dominus Acquisitions Corp.,TSXV,stock,common,CA25756D1042,Finance,Financial Conglomerates,Canada,False,True,name_mismatch
-DAR,NYSE,Stock,Darling Ingredients Inc,DAR,Darling Ingredients Inc,NYSE,stock,common,US2372661015,Consumer Non-Durables,Food: Specialty/Candy,United States,True,True,accept
-DAY,TSX,Stock,"Dayforce, Inc.",,,,,,,,,,False,False,no_tradingview_match
-DBIS,QSE,Stock,Dlala,DBIS,Dlala Brokerage and Investment Holding Company,QSE,stock,common,QA000A0KD6P2,Finance,Investment Banks/Brokers,Qatar,False,True,name_mismatch
-DCPE,NYSE ARCA,ETF,DoubleLine Shiller CAPE US Equities ETF,,,,,,,,,,False,False,no_tradingview_match
-DDX,BATS,ETF,Defined Duration 10 ETF,DDX,Defined Duration 10 ETF,CBOE,fund,etf,US02072L7486,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,False,isin_peer_name_mismatch
-DFNSW,NASDAQ,Stock,T3 Defense Inc.,,,,,,,,,,False,False,no_tradingview_match
-DGC,TSXV,Stock,Daura Gold Corp.,DGC,Daura Gold Corp.,TSXV,stock,common,CA23833F1018,Non-Energy Minerals,Precious Metals,Canada,True,False,isin_peer_name_mismatch
-DHLX,NYSE ARCA,ETF,Diamond Hill Funds,DHLX,Diamond Hill Large Cap Concentrated ETF,AMEX,fund,etf,US25264S3206,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-DHPL,PSX,Stock,DH Partners Ltd.,,,,,,,,,,False,False,no_tradingview_match
-DII-A,TSX,Stock,Dorel Industries Inc Cl.A Mv (DII-A.TO,DII.A,Dorel Industries Inc. Class A,TSX,stock,common,CA25822C3049,Consumer Durables,Home Furnishings,Canada,False,True,name_mismatch
-DIR,TSX,ETF,Dream Industrial Real Estate Investment Trust,,,,,,,,,,False,False,no_tradingview_match
-DLC,TSXV,Stock,DLC Holdings Corp.,DLC,DLC Holdings Corp,TSXV,stock,common,CA2558841086,Distribution Services,Food Distributors,Canada,False,True,name_mismatch
 DMN,ASX,Stock,DOMINION INVESTMENT GROUP LIMITED,,,,,,,,,,False,False,no_tradingview_match
-DMTX,PSX,Stock,D. M. Textile Mills Limited,,,,,,,,,,False,False,no_tradingview_match
-DNTL,TSX,Stock,dentalcorp Holdings Ltd.,,,,,,,,,,False,False,no_tradingview_match
-DSBP,JSE,Stock,Discovery Limited,,,,,,,,,,False,False,no_tradingview_match
-DTEC,NYSE ARCA,ETF,ALPS Disruptive Technologies ETF,DTEC,ALPS Disruptive Technologies ETF,AMEX,fund,etf,US00162Q4780,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-DTG,NYSE,Stock,DTE Energy Company 2021 Series E,,,,,,,,,,False,False,no_tradingview_match
-DX2J,XETRA,ETF,Xtrackers MSCI Europe Small Cap UCITS ETF,,,,,,,,,,False,False,no_tradingview_match
 DXA,ASX,Stock,CAISSE FRANCAISE DE FINANCEMENT LOCAL,,,,,,,,,,False,False,no_tradingview_match
-DXS7,XETRA,ETF,Xtrackers FTSE Vietnam Swap UCITS ETF 1C,,,,,,,,,,False,False,no_tradingview_match
 EBTC,ASX,ETF,Global X 21Shares Bitcoin ETF,,,,,,,,,,False,False,no_tradingview_match
-EIRE.P,TSXV,ETF,Monaghan Capital Fund Ltd.,EIRE.P,Monaghan Capital Fund Ltd,TSXV,stock,common,CA6090021008,Finance,Financial Conglomerates,Canada,True,True,asset_type_mismatch
-EIT,TSX,ETF,Canoe EIT Income Fund,,,,,,,,,,False,False,no_tradingview_match
-ELL,TSXV,Stock,Everybody Loves Languages Corp.,,,,,,,,,,False,False,no_tradingview_match
-ELS,NYSE,Stock,Equity Lifestyle Properties Inc,ELS,"Equity LifeStyle Properties, Inc.",NYSE,stock,common,US29472R1086,Finance,Real Estate Investment Trusts,United States,True,True,accept
-ENAV,BATS,ETF,Collaborative Investment Series Trust - Mohr Sector Navigator ETF,,,,,,,,,,False,False,no_tradingview_match
-ENGROH,PSX,Stock,Engro Holding LtdXSD,ENGROH,Engro Holdings Limited,PSX,stock,common,PK0017501013,Process Industries,Chemicals: Agricultural,Pakistan,False,True,name_mismatch
-EON,TSXV,Stock,EON Lithium Corp.,,,,,,,,,,False,False,no_tradingview_match
-ESK,BATS,ETF,ETF Opportunities Trust - REX-Osprey ETH + Staking ETF,ESK,REX-Osprey ETH + Staking ETF,CBOE,fund,etf,US26923N2642,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-ETHH.F,TSX,ETF,Purpose Ether ETF,,,,,,,,,,False,False,no_tradingview_match
-ETHH.V,TSX,ETF,Purpose Ether ETF,,,,,,,,,,False,False,no_tradingview_match
-EVN,NYSE,Stock,Eaton Vance Municipal Income Closed Fund,EVN,Eaton Vance Municipal Income Trust,NYSE,fund,closedend,US27826U1088,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,asset_type_mismatch
-EXUS,NASDAQ,ETF,Macquarie Focused International Core ETF,EXUS,Nomura ETF Trust Nomura Focused International Core ETF,NASDAQ,fund,etf,US5559276077,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-FALH,QSE,Stock,Faleh,FALH,Al Faleh Educational Holding Co.,QSE,stock,common,QA0006H60SJ0,Commercial Services,Miscellaneous Commercial Services,Qatar,False,True,name_mismatch
-FAP,TSX,ETF,abrdn Asia-Pacific Income Fund VCC,FAP,Abrdn Asia-Pacific Income Fund VCC,TSX,fund,closedend,SGXZ44536704,Miscellaneous,Investment Trusts/Mutual Funds,Singapore,True,True,asset_type_mismatch
-FBT.F,TSX,ETF,First Trust NYSE Arca Biotechnology ETF - Hedged Units,,,,,,,,,,False,False,no_tradingview_match
-FCA-U,TSXV,Stock,Firm Capital Apartment Real Estate Investment Trust,FCA.U,Firm Capital Apartment Real Estate Investment Trust Trust Units,TSXV,fund,reit,CA31833L1013,Finance,Real Estate Investment Trusts,Canada,True,True,asset_type_mismatch
-FCD,TSX,ETF,Firm Capital Property Trust,,,,,,,,,,False,False,no_tradingview_match
-FCEPL,PSX,Stock,Frieslandcampina,FCEPL,Frieslandcampina Engro Pakistan Limited,PSX,stock,common,PK0096501017,Consumer Non-Durables,Food: Meat/Fish/Dairy,Pakistan,False,True,name_mismatch
-FCMO,NEO,ETF,Fidelity US Momentum ETF,FCMO,Fidelity U.S. Momentum ETF Series L Trust Units,NEO,fund,etf,CA31649P1062,Miscellaneous,Investment Trusts/Mutual Funds,Canada,False,True,name_mismatch
-FCR,TSX,ETF,First Capital Real Estate Investment Trust,,,,,,,,,,False,False,no_tradingview_match
-FCUV.U,TSX,ETF,Fidelity U.S. Value ETF,FCUV.U,Fidelity U.S. Value ETF Series L Trust Units,TSX,fund,etf,CA31647E1034,Miscellaneous,Investment Trusts/Mutual Funds,Canada,False,True,name_mismatch
-FDPL,PSX,Stock,First Dawood Prop,FDPL,First Dawood Properties Limited,PSX,stock,common,PK0063401019,Finance,Investment Banks/Brokers,Pakistan,False,True,name_mismatch
-FEMD,NYSE ARCA,ETF,First Eagle ETF Trust,FEMD,First Eagle Mid Cap Equity ETF,AMEX,fund,etf,US32012B2034,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-FETH.U,TSX,ETF,Fidelity Advantage Ether ETF,FETH.U,Fidelity Advantage Ether ETF Series L Trust Units,TSX,fund,etf,CA31580Y7028,Miscellaneous,Investment Trusts/Mutual Funds,Canada,True,True,accept
-FFI-UN,TSX,ETF,Flaherty & Crumrine Investment Grade Fixed Income Fund,,,,,,,,,,False,False,no_tradingview_match
-FGCC.P,TSXV,Stock,First and Goal Capital Corp.,,,,,,,,,,False,False,no_tradingview_match
-FHI,NYSE,Stock,"Federated Hermes, Inc.",FHI,"Federated Hermes, Inc. Class B",NYSE,stock,common,US3142111034,Finance,Investment Managers,United States,True,True,accept
-FIG,NYSE,Stock,"Figma, Inc.",FIG,"Figma, Inc. Class A",NYSE,stock,common,US3168411052,Technology Services,Packaged Software,United States,True,True,accept
-FLD,NASDAQ,Stock,"Fold Holdings, Inc. Class A Common Stock",FLD,"Fold Holdings, Inc. Class A",NASDAQ,stock,common,US29103K1007,Technology Services,Packaged Software,United States,False,True,name_mismatch
-FLNA,NASDAQ,Stock,"Filana Therapeutics, Inc.",FLNA,"Filana Therapeutics, Inc.",NASDAQ,stock,common,US14817C1071,Health Technology,Biotechnology,United States,True,False,isin_peer_name_mismatch
-FLOT.B,TSX,ETF,Purpose Floating Rate Income Fund - ETF Non-currency hedged CAD,,,,,,,,,,False,False,no_tradingview_match
-FLT,TSXV,Stock,Volatus Aerospace Inc.,,,,,,,,,,False,False,no_tradingview_match
-FM1,ASX,ETF,FIRSTMAC MORTGAGE FUNDING TRUST NO.4 SERIES 4-2019,,,,,,,,,,False,False,no_tradingview_match
 FM2,ASX,ETF,FIRSTMAC MORTGAGE FUNDING TRUST NO.4 SERIES 2-2019,,,,,,,,,,False,False,no_tradingview_match
 FM3,ASX,ETF,FIRSTMAC MORTGAGE FUNDING TRUST NO. 4 SERIES 1-2020,,,,,,,,,,False,False,no_tradingview_match
 FM5,ASX,ETF,FIRSTMAC MORTGAGE FUNDING TRUST NO.4 SERIES 2-2020,,,,,,,,,,False,False,no_tradingview_match
-FNGB,NYSE ARCA,ETF,MicroSectors™ FANG+™ 3x Leveraged ETNs,,,,,,,,,,False,False,no_tradingview_match
-FORE,IDX,Stock,Fore Coffee Tbk,FORE,PT Fore Kopi Indonesia Tbk,IDX,stock,common,ID1000210008,Consumer Services,Restaurants,Indonesia,False,True,name_mismatch
-FPAG,BATS,ETF,Northern Lights Fund Trust III - FPA Global Equity ETF,FPAG,FPA Global Equity ETF,CBOE,fund,etf,US30254T5772,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-FPWR,NYSE ARCA,ETF,First Trust EIP Power Solutions ETF,FPWR,First Trust EIP Power Solutions ETF,AMEX,fund,etf,US33738D7057,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,False,isin_peer_name_mismatch
-FTREIT,SET,Stock,Ticon Freehold and Leasehold Real Estate Investment Trust,FTREIT,Frasers Property Thailand Industrial Freehold & Leasehold REIT,SET,stock,common,TH6172010006,Finance,Real Estate Investment Trusts,Thailand,False,True,name_mismatch
-GAP,NYSE,Stock,"The Gap, Inc.",GAP,"Gap, Inc.",NYSE,stock,common,US3647601083,Retail Trade,Apparel/Footwear Retail,United States,False,False,name_mismatch
-GAVA,NASDAQ,ETF,Grayscale Avalanche Trust ETF Common Units of Fractional Undivided Beneficial Interest,GAVA,Grayscale Avalanche Staking ETF,NASDAQ,fund,etf,US38963A1025,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-GBFC,NEO,ETF,GuardBondsTM 2026 Investment Grade Bond Fund ETF Units,GBFC,GuardBonds 2026 Investment Grade Bond Fund Trust Unit,NEO,fund,etf,CA40132H1091,,,,False,True,name_mismatch
-GBFD,NEO,ETF,GuardBondsTM 2027 Investment Grade Bond Fund ETF Units,GBFD,GuardBonds 2027 Investment Grade Bond Fund Trust Unit,NEO,fund,etf,CA40132E1060,,,,False,True,name_mismatch
-GBFE,NEO,ETF,GuardBonds 2028 Investment Grade Bd ETF,GBFE,GuardBonds 2028 Investment Grade Bond Fund Trust Unit,NEO,fund,etf,CA40130P1036,,,,False,True,name_mismatch
-GBX,NYSE,Stock,Greenbrier Companies Inc,GBX,"Greenbrier Companies, Inc.",NYSE,stock,common,US3936571013,Producer Manufacturing,Trucks/Construction/Farm Machinery,United States,True,True,accept
-GBXA,BATS,ETF,Goldman Sachs ETF Trust Goldman,,,,,,,,,,False,False,no_tradingview_match
-GCG,TSX,Stock,Guardian Capital Group Limited,,,,,,,,,,False,False,no_tradingview_match
-GDFN,NASDAQ,ETF,Tema International Defense Innovation ETF,,,,,,,,,,False,False,no_tradingview_match
-GEMPAPL,PSX,Stock,Pak Agro Pack(Gem),GEMPAPL,Pak Agro Packaging Limited,PSX,stock,common,PK0128801013,Commercial Services,Miscellaneous Commercial Services,Pakistan,False,True,name_mismatch
-GEMSPNL,PSX,Stock,Supernet Ltd.,,,,,,,,,,False,False,no_tradingview_match
-GFL,NYSE,Stock,Gfl Environmental Holdings Inc,GFL,GFL Environmental Inc,NYSE,stock,common,CA36168Q1046,Industrial Services,Environmental Services,United States,True,True,accept
-GGTL,NYSE ARCA,ETF,Gabelli Global Technology Leaders ETF,GGTL,Gabelli Global Technology Leaders ETF,AMEX,fund,etf,US36261K3014,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,False,isin_peer_name_mismatch
-GJS,NYSE,Stock,STRATSSM Certificates series supplement 2006-2 Trust IC,GJS,STRATS Trust for Allstate Corp Goldman Sachs Gro Strats Ctf 33,NYSE,stock,preferred,US86311R3012,Finance,Finance/Rental/Leasing,United States,False,True,name_mismatch
-GLIN.P,TSXV,Stock,Global Investments Capital Corp.,,,,,,,,,,False,False,no_tradingview_match
-GLIX,NYSE ARCA,ETF,Lazard Active ETF Trust,GLIX,Lazard Listed Infrastructure ETF,AMEX,fund,etf,US52110K6082,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-GMOC,NYSE ARCA,ETF,GMO ETF Trust (Name to be changed from The 2023 ETF Series Trust II),GMOC,GMO Ultra-Short Income ETF,AMEX,fund,etf,US90139K8861,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-GNDP,JSE,Stock,Grindrod Limited,GNDP,Grindrod Ltd Cum.Non-Red.Non-Ptg.Non-Cnv.Pref.Shs,JSE,stock,preferred,ZAE000071106,Transportation,Marine Shipping,South Africa,False,True,name_mismatch
-GOOW,BATS,ETF,Roundhill Etf Trust - Roundhill Google Weeklypay Etf,GOOW,Roundhill GOOGL WeeklyPay ETF,CBOE,fund,etf,US77926X7599,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-GOWC.P,TSXV,Stock,Can-Gow Capital Inc.,,,,,,,,,,False,False,no_tradingview_match
-GPGI,NYSE,Stock,"GPGI, Inc.",GPGI,"GPGI, Inc. Class A",NYSE,stock,common,US20459V1052,Commercial Services,Commercial Printing/Forms,United States,False,True,name_mismatch
-GPT,NASDAQ,ETF,Intelligent Alpha Atlas ETF,GPT,Intelligent Alpha Atlas ETF,NASDAQ,fund,etf,US02072L1935,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-GQ,TSXV,Stock,Great Quest Gold Ltd.,,,,,,,,,,False,False,no_tradingview_match
-GRML,NASDAQ,Stock,Greenland Mines Ltd,GRML,Greenland Mines Ltd.,NASDAQ,stock,common,US49876K1034,Commercial Services,Miscellaneous Commercial Services,United States,True,False,isin_peer_name_mismatch
-GRMLW,NASDAQ,Stock,Greenland Mines Ltd,,,,,,,,,,False,False,no_tradingview_match
-GSOL,NYSE ARCA,ETF,Grayscale Solana Trust ETF,GSOL,Grayscale Solana Staking ETF,AMEX,fund,etf,US38965D1046,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-GTM.P,TSXV,Stock,G2M Cap Corp.,,,,,,,,,,False,False,no_tradingview_match
-HAKY,NYSE ARCA,ETF,Amplify HACK Cybersecurity Covered Call ETF,HAKY,Amplify HACK Cybersecurity Covered Call ETF,AMEX,fund,etf,US0321083596,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-HBLTETF,PSX,ETF,HBL Total TreasuryXD,,,,,,,,,,False,False,no_tradingview_match
 HC1,ASX,ETF,HOUSEHOLD CAPITAL 2025-1 RMBS TRUST,,,,,,,,,,False,False,no_tradingview_match
-HDGE.U,TSX,ETF,Accelerate Absolute Return Fund,HDGE.U,Accelerate Absolute Return Fund Trust Units,TSX,fund,etf,CA00435W1041,Miscellaneous,Investment Trusts/Mutual Funds,Canada,True,True,accept
-HEDG,NYSE ARCA,ETF,Equable Shares Hedged Equity ETF,HEDG,Equable Shares Hedged Equity ETF,AMEX,fund,etf,US81752T4114,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-HERZ,NASDAQ,ETF,"Herzfeld Credit Income Fund, Inc",HERZ,"Herzfeld Credit Income Fund, Inc.",NASDAQ,fund,closedend,US42804T2050,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,asset_type_mismatch
-HFSI,BATS,ETF,Hartford Strategic Income ETF,HFSI,Hartford Strategic Income ETF,CBOE,fund,etf,US41653L8752,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,False,isin_peer_name_mismatch
-HIG,NYSE,Stock,"The Hartford Insurance Group, Inc.",HIG,"Hartford Insurance Group, Inc.",NYSE,stock,common,US4165151048,Finance,Property/Casualty Insurance,United States,True,False,isin_peer_name_mismatch
-HILL,IDX,Stock,Hillcon,HILL,PT Hillcon Tbk,IDX,stock,common,ID1000186901,Non-Energy Minerals,Precious Metals,Indonesia,False,True,name_mismatch
-HISU,TSX,ETF,US High Interest Savings Account Fund Unhedged ETF,,,,,,,,,,False,False,no_tradingview_match
-HNDA,NEO,Stock,HONDA MOTOR CO LTD CDR (CAD Hedged),HNDA,"Honda Motor Co., Ltd. Sponsored Canadian Depository Receipt Hedged Reg",NEO,dr,,CA4381261045,Consumer Durables,Motor Vehicles,Japan,False,True,name_mismatch
-HRPL,PSX,Stock,Habib Rice Prod,HRPL,Habib Rice Products Ltd.,PSX,stock,common,PK0026401015,Process Industries,Agricultural Commodities/Milling,Pakistan,False,True,name_mismatch
-HTTD,TSX,ETF,BetaPro US 30-Year T-Bond -3x Daily Bear ETF,,,,,,,,,,False,False,no_tradingview_match
-HTTU,TSX,ETF,BetaPro US 30-Year T-Bond 3x Daily Bull ETF,,,,,,,,,,False,False,no_tradingview_match
-HUS,TSX,ETF,Hamilton US Financials Dividend Index ETF - CDN$ Hedged Units,,,,,,,,,,False,False,no_tradingview_match
-HVAC,NYSE ARCA,ETF,AdvisorShares Trust,HVAC,AdvisorShares HVAC and Industrials ETF,AMEX,fund,etf,US00768Y2717,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-IBC-H,TSXV,Stock,International Bethlehem Mining Corp,,,,,,,,,,False,False,no_tradingview_match
-IBGM,NASDAQ,ETF,iShares iBonds Dec 2056 Term Treasury ETF,IBGM,iShares iBonds Dec 2056 Term Treasury ETF,NASDAQ,fund,etf,US46438G1334,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-IBIT-U,NEO,ETF,iShares Bitcoin ETF USD,,,,,,,,,,False,False,no_tradingview_match
-ICBB,TSX,ETF,Invesco Global Bond ETF,,,,,,,,,,False,False,no_tradingview_match
-ICBR3,B3,Stock,INTERCEMENT BRASIL S.A.,,,,,,,,,,False,False,no_tradingview_match
-ICGH,TSXV,Stock,IC Group Holdings Inc.,ICGH,IC Group Holdings Inc.,TSXV,stock,common,CA4492741091,Finance,Financial Conglomerates,Canada,False,True,name_mismatch
-ICI.P,TSXV,Stock,Inceptus Capital Ltd.,,,,,,,,,,False,False,no_tradingview_match
 IF1,ASX,Stock,"IBERDROLA FINANZAS, S.A.U.",,,,,,,,,,False,False,no_tradingview_match
-IFLN,NYSE ARCA,ETF,Invesco Bloomberg Enhanced Fallen Angels ETF,IFLN,Invesco Bloomberg Enhanced Fallen Angels ETF,AMEX,fund,etf,US46138E7195,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,False,isin_peer_name_mismatch
-IGBT,TSX,ETF,2028 Investment Grade Bond Trust,,,,,,,,,,False,False,no_tradingview_match
-IGBT-UN,TSX,Stock,2028 Investment Grade Bond Trust,IGBT.UN,2028 Investment Grade Bond Trust Trust Units F,TSX,fund,mutual,CA90215F2070,,,,True,True,asset_type_mismatch
-IGIHL,PSX,Stock,IGI Holdings,IGIHL,IGI Holdings Limited,PSX,stock,common,PK0032601012,Finance,Multi-Line Insurance,Pakistan,False,True,name_mismatch
-IHGS,QSE,Stock,Inma,IHGS,Inma Holding Company,QSE,stock,common,QA000A1C6VS5,Finance,Investment Banks/Brokers,Qatar,False,True,name_mismatch
-IIP,TSX,ETF,InterRent Real Estate Investment Trust,,,,,,,,,,False,False,no_tradingview_match
-IML,PSX,Stock,Imperial Limite,IML,Imperial Limited,PSX,stock,common,PK0093001011,Process Industries,Agricultural Commodities/Milling,Pakistan,False,True,name_mismatch
-INC-UN,TSX,Stock,Income Financial Trust,INC.UN,Income Financial Trust 1999-1.1.19 Trust Units,TSX,fund,closedend,CA4532991094,Miscellaneous,Investment Trusts/Mutual Funds,Canada,True,True,asset_type_mismatch
-INETREIT,SET,Stock,INET Leasehold REIT,INETREIT,INET FREEHOLD AND LEASEHOLD REAL ESTATE INVESTMENT TRUST,SET,stock,common,THA430010001,Finance,Real Estate Investment Trusts,Thailand,False,True,name_mismatch
-INGS,TSX,Stock,ING CDR (CAD Hedged),INGS,ING Groep N.V. CAD Hedged CIBC CDR,TSX,dr,,CA4569421015,Finance,Major Banks,Netherlands,False,True,name_mismatch
-INIK,TSXV,Stock,Ionik Corporation,INIK,Ionik Corporation,TSXV,stock,common,CA4622211023,Technology Services,Packaged Software,Canada,True,False,isin_peer_name_mismatch
-INRO,NASDAQ,ETF,BlackRock U.S. Industry Rotation ETF,INRO,iShares U.S. Industry Rotation Active ETF,NASDAQ,fund,etf,US09290C8304,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-INSG,NASDAQ,Stock,Inseego Corp,INSG,Inseego Corp.,NASDAQ,stock,common,US45782B3024,Electronic Technology,Telecommunications Equipment,United States,True,True,accept
-INSP,NYSE,Stock,Inspire Medical Systems Inc,INSP,"Inspire Medical Systems, Inc.",NYSE,stock,common,US4577301090,Health Technology,Medical Specialties,United States,True,True,accept
-IOC,JSE,Stock,iOCO Limited,IOC,iOCO Limited,JSE,stock,common,ZAE000071072,Technology Services,Information Technology Services,South Africa,False,True,name_mismatch
-IPAK,PSX,Stock,Int. Packaging Films,IPAK,International Packaging Films Ltd.,PSX,stock,common,PK0111801012,Process Industries,Containers/Packaging,Pakistan,False,True,name_mismatch
-IPB,NYSE,ETF,"Merrill Lynch & Co., Inc. 6.0518% Index Plus Trust Certificates Series 2003-1",IPB,Merrill Lynch Depositor Inc. 6.0518% Index Plus Trust Series 2003-1,NYSE,stock,preferred,US45408V2034,Finance,Finance/Rental/Leasing,United States,True,True,asset_type_mismatch
-IQGA1,LSE,ETF,INVESCO GLOBAL ENHANCED EQUITY UCITS ETF,,,,,,,,,,False,False,no_tradingview_match
-IRAB-UN,NYSE,Stock,Iris Acquisition Corp II,,,,,,,,,,False,False,no_tradingview_match
-IROC,BATS,ETF,Invesco Rochester High Yield Municipal ETF,IROC,Invesco Rochester High Yield Municipal ETF,CBOE,fund,etf,US46090A7476,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,False,isin_peer_name_mismatch
-IRSX,IDX,Stock,PT Aviana Sinar Abadi Tbk,IRSX,PT Folago Global Nusantara Tbk,IDX,stock,common,ID1000184401,Technology Services,Packaged Software,Indonesia,False,True,name_mismatch
-IZ,TSXV,Stock,International Zeolite Corp.,,,,,,,,,,False,False,no_tradingview_match
-JF,NASDAQ,Stock,J and Friends Holdings Limited,JF,J and Friends Holdings Limited Sponsored ADR Class A,NASDAQ,dr,,US72352G2066,Finance,Finance/Rental/Leasing,China,True,True,accept
-JFS,TSX,ETF,JFT Strategies Fund,,,,,,,,,,False,False,no_tradingview_match
-JHC,TSXV,Stock,Jinhua Capital Corporation,,,,,,,,,,False,False,no_tradingview_match
-JHCR,NYSE ARCA,ETF,JHancock Core Bond ETF,JHCR,John Hancock Core Bond ETF,AMEX,fund,etf,US47804J6938,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-JSGBETF,PSX,ETF,JS Global Banking,,,,,,,,,,False,False,no_tradingview_match
-JSMFETF,PSX,ETF,JS Momentum,,,,,,,,,,False,False,no_tradingview_match
-KAC.P,TSXV,Stock,Kalon Acquisition Corp.,,,,,,,,,,False,False,no_tradingview_match
 KFW,ASX,Stock,KFW,,,,,,,,,,False,False,no_tradingview_match
 KI1,ASX,ETF,KINGFISHER TRUST 2019-1,,,,,,,,,,False,False,no_tradingview_match
 KIG,ASX,ETF,KINGFISHER TRUST 2016-1,,,,,,,,,,False,False,no_tradingview_match
-KKRT,NYSE,Stock,KKR & Co. Inc. 6.875% Subordina,,,,,,,,,,False,False,no_tradingview_match
-KLX,TSXV,Stock,Klimat X Developments Inc.,,,,,,,,,,False,False,no_tradingview_match
-KRSP-UN,NYSE,Stock,Rice Acquisition Corporation 3,,,,,,,,,,False,False,no_tradingview_match
-L38,SGX,Stock,AF Global,,,,,,,,,,False,False,no_tradingview_match
-LAYS,NASDAQ,ETF,STKd 100% NVDA & 100% AMD ETF,,,,,,,,,,False,False,no_tradingview_match
-LCI,PSX,Stock,Lucky Core Ind. Ltd,LCI,Lucky Core Industries Limited,PSX,stock,common,PK0003101018,Process Industries,Chemicals: Specialty,Pakistan,False,True,name_mismatch
-LDDR,BATS,ETF,Stone Ridge 2035 Term Income ETF,LDDR,LifeX 2035 Income Bucket ETF,CBOE,fund,etf,US86172A2490,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-LFDR,BATS,ETF,Stone Ridge Durable Income ETF,LFDR,LifeX Durable Income ETF,CBOE,fund,etf,US86172B6193,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
 LI8,ASX,ETF,LION SERIES 2020-1 TRUST,,,,,,,,,,False,False,no_tradingview_match
-LIRC,TSX,Stock,Lithium Royalty Corp.,,,,,,,,,,False,False,no_tradingview_match
-LLG,TSXV,Stock,Mason Resources Inc.,,,,,,,,,,False,False,no_tradingview_match
-LN,TSX,Stock,Loncor Gold Inc.,,,,,,,,,,False,False,no_tradingview_match
 LN1,ASX,ETF,LION SERIES 2022-1 TRUST,,,,,,,,,,False,False,no_tradingview_match
 LN2,ASX,ETF,LION SERIES 2023-1 TRUST,,,,,,,,,,False,False,no_tradingview_match
 LN3,ASX,ETF,LION SERIES 2024-1 TRUST,,,,,,,,,,False,False,no_tradingview_match
-LNGE,TSXV,Stock,LNG Energy Group Corp.,,,,,,,,,,False,False,no_tradingview_match
 LO1,ASX,Stock,LLOYDS BANKING GROUP PLC,,,,,,,,,,False,False,no_tradingview_match
-LOADSR1,PSX,Stock,LOADS Limited,,,,,,,,,,False,False,no_tradingview_match
 LP1,ASX,Stock,LIBERTY PRIME SERIES 2021-1,,,,,,,,,,False,False,no_tradingview_match
 LR1,ASX,ETF,LA TROBE FINANCIAL CAPITAL MARKETS TRUST 2023-1,,,,,,,,,,False,False,no_tradingview_match
 LR3,ASX,ETF,LA TROBE FINANCIAL CAPITAL MARKETS TRUST 2024-1,,,,,,,,,,False,False,no_tradingview_match
 LR4,ASX,ETF,LA TROBE FINANCIAL CAPITAL MARKETS TRUST 2023-2,,,,,,,,,,False,False,no_tradingview_match
 LR5,ASX,ETF,LA TROBE FINANCIAL CAPITAL MARKETS TRUST 2024-2,,,,,,,,,,False,False,no_tradingview_match
 LR6,ASX,ETF,LA TROBE FINANCIAL CAPITAL MARKETS TRUST 2024-3,,,,,,,,,,False,False,no_tradingview_match
-LRC-H,TSXV,Stock,Lovitt Resources Inc,,,,,,,,,,False,False,no_tradingview_match
-LSC.P,TSXV,Stock,Lombard Street Capital Corp.,,,,,,,,,,False,False,no_tradingview_match
-LSEFSL,PSX,Stock,LSE Fin. Ser. Ld,LSEFSL,LSE Financial Services Limited,PSX,stock,common,PK0104901019,Finance,Finance/Rental/Leasing,Pakistan,False,True,name_mismatch
 LT9,ASX,ETF,LA TROBE FINANCIAL CAPITAL MARKETS TRUST 2022-2,,,,,,,,,,False,False,no_tradingview_match
-LTAX,NYSE ARCA,ETF,Nomura ETF Trust,LTAX,Nomura Tax-Free USA ETF,AMEX,fund,etf,US5559278883,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
 MA2,ASX,Stock,MA CREDIT PORTFOLIO HOLDINGS LIMITED,,,,,,,,,,False,False,no_tradingview_match
-MANI,NYSE ARCA,ETF,Man Active Income ETF,MANI,Man Active Income ETF,AMEX,fund,etf,US56164V1052,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-MAR-UN,TSXV,Stock,Marwest Apartment Real Estate Investment Trust,MAR.UN,Marwest Apartment REIT,TSXV,stock,common,CA57386R1047,Finance,Real Estate Investment Trusts,Canada,False,True,name_mismatch
 MBL,ASX,Stock,MACQUARIE BANK LIMITED,,,,,,,,,,False,False,no_tradingview_match
-MBRF11,B3,ETF,Fundo De Investimento Imobiliário Mercantil Do Brasil-fii -Inicio,,,,,,,,,,False,False,no_tradingview_match
-MBSP,LSE,Stock,Manchester Building Society 6.75% PIBS,,,,,,,,,,False,False,no_tradingview_match
-MCBIM,PSX,Stock,MCB Investment Manag,MCBIM,MCB Investment Management Limited,PSX,stock,common,PK0082101012,Finance,Investment Managers,Pakistan,False,True,name_mismatch
-MCGS,QSE,Stock,Medicare,MCGS,Medicare Group QSC,QSE,stock,common,QA0006929754,Health Services,Hospital/Nursing Management,Qatar,False,True,name_mismatch
-MCR,NYSE,Stock,MFS Charter Income Trust,MCR,MFS Charter Income Trust,NYSE,fund,closedend,US5527271093,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,asset_type_mismatch
-MDPL,BATS,ETF,Northern Lights Fund Trust IV - Monarch Dividend Plus Index ETF,MDPL,Monarch Dividend Plus ETF,CBOE,fund,etf,US66537J8466,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-MDS,TSX,ETF,Healthcare Special Opportunities Fund,,,,,,,,,,False,False,no_tradingview_match
-MEM,NYSE ARCA,ETF,MAYBANK EMERGING ETF,MEM,Matthews Emerging Markets Equity Active ETF,AMEX,fund,etf,US5771258184,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-MEME,NYSE ARCA,ETF,Roundhill Meme Stock ETF,MEME,Roundhill Meme Stock ETF,AMEX,fund,etf,US77926X8175,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-MERS,QSE,Stock,Al Meera,MERS,Almeera Consumer Goods Co. QSC,QSE,stock,common,QA000A0YDSW8,Retail Trade,Specialty Stores,Qatar,False,True,name_mismatch
 MF3,ASX,ETF,METRO FINANCE 2023-1 TRUST,,,,,,,,,,False,False,no_tradingview_match
 MF4,ASX,ETF,METRO FINANCE 2024-1 TRUST,,,,,,,,,,False,False,no_tradingview_match
 MF5,ASX,ETF,METRO FINANCE 2023-2 TRUST,,,,,,,,,,False,False,no_tradingview_match
 MF6,ASX,ETF,METRO FINANCE 2025-1 TRUST,,,,,,,,,,False,False,no_tradingview_match
-MFMS,QSE,Stock,Mosanada,MFMS,Mosanada Facilities Management Services Q.P.S.C.,QSE,stock,common,QA000YI47FK6,Commercial Services,Miscellaneous Commercial Services,Qatar,False,True,name_mismatch
-MHY,NYSE ARCA,ETF,Man Active High Yield ETF,MHY,Man Active High Yield ETF,AMEX,fund,etf,US56164V2043,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-MIC,TSX,Stock,Sagen MI Canada Inc.,,,,,,,,,,False,False,no_tradingview_match
-MID-UN,TSX,Stock,MINT Income Fund,MID.UN,MINT Income Fund Trust Units,TSX,fund,closedend,CA60446Q1081,Miscellaneous,Investment Trusts/Mutual Funds,Canada,True,True,asset_type_mismatch
-MIIETF,PSX,ETF,Mahanna Islamic Inde,,,,,,,,,,False,False,no_tradingview_match
-MKT,TSXV,Stock,Prospect Prediction Markets Inc.,MKT,Prospect Prediction Markets Inc.,TSXV,stock,common,CA74358V1040,Technology Services,Internet Software/Services,Canada,True,True,accept
 ML2,ASX,ETF,MA MONEY RESIDENTIAL SECURITISATION TRUST 2025-1,,,,,,,,,,False,False,no_tradingview_match
-MLO,TSXV,Stock,Metalero Mining Corp.,MLO,Metalero Mining Corp,TSXV,stock,common,CA59117L1094,Non-Energy Minerals,Other Metals/Minerals,Canada,True,True,accept
-MLY,TSXV,Stock,Multi-Metal Development Ltd.,,,,,,,,,,False,False,no_tradingview_match
 MM2,ASX,ETF,MME AUTOPAY ABS 2024-1 TRUST,,,,,,,,,,False,False,no_tradingview_match
 MM4,ASX,ETF,MME PL 2025-1 TRUST,,,,,,,,,,False,False,no_tradingview_match
-MMID,NYSE,ETF,MFS Active Exchange Traded Funds Trust,MMID,MFS Active Mid Cap ETF,NYSE,fund,etf,US55286W6030,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-MMM,NYSE,Stock,3M Company,MMM,3M Company,NYSE,stock,common,US88579Y1010,Producer Manufacturing,Industrial Conglomerates,United States,False,False,name_mismatch
-MMP-UN,TSX,Stock,Precious Metals And Mining Trust,MMP.UN,Precious Metals and Mining Trust Units,TSX,fund,closedend,CA7401731095,Miscellaneous,Investment Trusts/Mutual Funds,Canada,True,True,asset_type_mismatch
-MNS.U,TSX,ETF,Royal Canadian Mint - Canadian Silver Reserves Exchange-Traded Receipts,MNS.U,Canadian Silver Reserves ETR,TSX,fund,etf,CA7799211130,Miscellaneous,Investment Trusts/Mutual Funds,Canada,False,True,name_mismatch
-MOGO,TSX,Stock,Mogo Inc.,,,,,,,,,,False,False,no_tradingview_match
-MORA,IDX,Stock,Ekamas Mora Republik Tbk.,MORA,PT Ekamas Mora Republik Tbk,IDX,stock,common,ID1000170608,Communications,Specialty Telecommunications,Indonesia,True,True,accept
-MPCT,TSX,ETF,Dream Impact Trust,,,,,,,,,,False,False,no_tradingview_match
-MPHC,QSE,Stock,Mesaieed,MPHC,Mesaieed Petrochemical Holding Company Q.S.C.,QSE,stock,common,QA000VSUG130,Process Industries,Chemicals: Specialty,Qatar,False,True,name_mismatch
-MPRO,BATS,ETF,Northern Lights Fund Trust IV - Monarch ProCap ETF,MPRO,Monarch ProCap Index ETF,CBOE,fund,etf,US66538H2452,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-MRDS,QSE,Stock,Mazaya,MRDS,Mazaya Real Estate Development Company,QSE,stock,common,QA000A1C6VZ0,Finance,Real Estate Development,Qatar,False,True,name_mismatch
-MSC,NYSE,Stock,Studio City International Holdings Ltd,MSC,Studio City International Holdings Ltd. Sponsored ADR Class A,NYSE,dr,,US86389T1060,Consumer Services,Casinos/Gaming,Hong Kong,True,True,accept
-MSSS,BATS,ETF,Northern Lights Fund Trust IV - Monarch Select Subsector Index ETF,MSSS,Monarch Select Subsector ETF Fund,CBOE,fund,etf,US66537J8383,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-MSTY,NYSE ARCA,ETF,YieldMax™ MSTR Option Income Strategy ETF,MSTY,YieldMax MSTR Option Income Strategy ETF,AMEX,fund,etf,US88636X7324,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-MTB,NYSE,Stock,M&T Bank Corporation,MTB,M&T Bank Corporation,NYSE,stock,common,US55261F1049,Finance,Regional Banks,United States,False,False,name_mismatch
-MTSU,NEO,Stock,MITSUBISHI CORP CDR (CAD Hedged),MTSU,Mitsubishi Corporation Sponsored Canadian Depository Receipt Hedged Reg S,NEO,dr,,CA6067671017,Distribution Services,Wholesale Distributors,Japan,False,True,name_mismatch
-MUNX,NYSE ARCA,ETF,AMG ETF Trust,MUNX,AMG GW&K Muni Income ETF,AMEX,fund,etf,US03116L1089,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-MYCO,NASDAQ,ETF,SPDR SSGA My2035 Corporate Bond ETF,MYCO,State Street My2035 Corporate Bond ETF,NASDAQ,fund,etf,US78470P6144,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-MYE,NYSE,Stock,Myers Industries Inc,MYE,"Myers Industries, Inc.",NYSE,stock,common,US6284641098,Producer Manufacturing,Miscellaneous Manufacturing,United States,True,True,accept
-MYMK,NASDAQ,ETF,SPDR SSGA My2031 Municipal Bond ETF,MYMK,State Street My2031 Municipal Bond ETF,NASDAQ,fund,etf,US78470P5989,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
 MZ1,ASX,ETF,MEDALLION TRUST SERIES 2017-1,,,,,,,,,,False,False,no_tradingview_match
 MZ2,ASX,ETF,MEDALLION TRUST SERIES 2017-2,,,,,,,,,,False,False,no_tradingview_match
 MZF,ASX,ETF,MEDALLION TRUST SERIES 2016-1,,,,,,,,,,False,False,no_tradingview_match
-MZNPETF,PSX,ETF,Meezan Pakistan,,,,,,,,,,False,False,no_tradingview_match
 MZT,ASX,ETF,MEDALLION TRUST SERIES 2016-2,,,,,,,,,,False,False,no_tradingview_match
-MZYX-UN,NYSE,Stock,MOZAYYX Acquisition Corp.,,,,,,,,,,False,False,no_tradingview_match
-NACO,NEO,ETF,Ninepoint Alt Credit Opportunities ETF,NACO,Ninepoint Alternative Credit Opportunities Fund Series -ETF- Trust Units,NEO,fund,etf,CA65443Q1000,Miscellaneous,Investment Trusts/Mutual Funds,Canada,False,True,name_mismatch
-NBIE.F,TSX,ETF,NBI International Equity Fund,NBIE.F,NBI International Equity Fund ETFH Series Trust Units -Hedged-,TSX,fund,etf,CA62879U2002,Miscellaneous,Investment Trusts/Mutual Funds,Canada,False,True,name_mismatch
-NBPGETF,PSX,ETF,NBP Pakistan G ETFXD,,,,,,,,,,False,False,no_tradingview_match
-NBUE,TSX,ETF,NBI U.S. Equity Fund,NBUE,NBI U.S. Equity Fund ETF Series Units Trust Unit,TSX,fund,etf,CA62879T1049,Miscellaneous,Investment Trusts/Mutual Funds,Canada,False,True,name_mismatch
-NBUE.F,TSX,ETF,NBI U.S. Equity Fund,NBUE.F,NBI U.S. Equity Fund ETFH Series Units Trust Unit,TSX,fund,etf,CA62879T2039,Miscellaneous,Investment Trusts/Mutual Funds,Canada,False,True,name_mismatch
-NEST,NEO,Stock,NESTLE SA CDR (CAD Hedged),NEST,Nestle S.A. Shs Canadian Depositary Receipt Repr 1 Shs Reg S,NEO,dr,,CA6410701073,Consumer Non-Durables,Food: Major Diversified,Switzerland,False,True,name_mismatch
-NETX,BATS,ETF,Tradr 2X Long NET Daily ETF,,,,,,,,,,False,False,no_tradingview_match
-NFLP,BATS,ETF,Kurv Yield Prm Stgy Netflix (NFLX) ETF,NFLP,Kurv Yield Prem Stratgey Netflix ETF,CBOE,fund,etf,US5009488074,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-NGEN,TSXV,Stock,Nervgen Pharma Corp.,,,,,,,,,,False,False,no_tradingview_match
-NITGETF,PSX,ETF,NIT PakistanXD,,,,,,,,,,False,False,no_tradingview_match
-NLCS,QSE,Stock,National Leasing,NLCS,Alijarah Holding,QSE,stock,common,QA000A0KD6Q0,Finance,Real Estate Development,Qatar,False,True,name_mismatch
-NLFA11,B3,ETF,Nu Letras Financeiras Anbima Classe De Índice - Responsabilidade Limitada,NLFA11,Nu Letras Financeiras Anbima Classe de Indice Responsabilidade Limitada,BMFBOVESPA,fund,etf,BRNLFACTF007,Miscellaneous,Investment Trusts/Mutual Funds,Brazil,True,True,accept
-NMG-H,TSXV,Stock,Noble Metal Group Incorporated,,,,,,,,,,False,False,no_tradingview_match
-NOVO,TSX,Stock,Novo Nordisk CDR (CAD Hedged),NOVO,Novo Nordisk A/S Shs Unsponsored Canadian Depository Receipt Hedged,TSX,dr,,CA67010P1018,Health Technology,Pharmaceuticals: Major,Denmark,False,True,name_mismatch
-NOWS,TSX,Stock,ServiceNow CDR (CAD Hedged),NOWS,"ServiceNow, Inc.",TSX,dr,,CA81762A1057,Technology Services,Packaged Software,United States,False,True,name_mismatch
-NRR-UN,TSX,Stock,Northview Residential REIT,NRR.UN,Northview Residential REIT,TSX,fund,unit,CA66719E1025,Finance,Real Estate Investment Trusts,Canada,True,True,asset_type_mismatch
-NRZ-H,TSXV,Stock,Norzan Enterprises Ltd.,,,,,,,,,,False,False,no_tradingview_match
-NSTL,TSX,Stock,Nestlé CDR (CAD Hedged),NSTL,Nestle S.A CAD Hedged CIBC CDR,TSX,dr,,CA64108U1003,Consumer Non-Durables,Food: Major Diversified,Switzerland,False,True,name_mismatch
-NTCP,JSE,Stock,Netcare Limited,,,,,,,,,,False,False,no_tradingview_match
-NTDO,NEO,Stock,NINTENDO CO LTD CDR (CAD Hedged),NTDO,"Nintendo Co., Ltd. Sponsored Canadian Depository Receipt Hedged Reg",NEO,dr,,CA6539521014,Consumer Durables,Recreational Products,Japan,False,True,name_mismatch
-NTSD,NYSE ARCA,ETF,WisdomTree Efficient U.S. Plus International Equity Fund,NTSD,WisdomTree Efficient U.S. Plus International Equity Fund,AMEX,fund,etf,US97717Y2467,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-NVON,NEO,Stock,NOVO NORDISK A/S CDR (CAD Hedged),NVON,Novo Nordisk A/S Sponsored Canadian Depository Receipt Hedged Reg S,NEO,dr,,CA67010H1091,Health Technology,Pharmaceuticals: Major,Denmark,False,True,name_mismatch
-NVS,TSX,Stock,Novartis CDR (CAD Hedged),NVS,Novartis AG CAD Hedged CIBC CDR,TSX,dr,,CA66989X1033,Health Technology,Pharmaceuticals: Major,Switzerland,False,True,name_mismatch
 NW1,ASX,ETF,NOW TRUST 2024-1,,,,,,,,,,False,False,no_tradingview_match
-NWAX-UN,NYSE,Stock,New America Acquisition I Corp.,,,,,,,,,,False,False,no_tradingview_match
-OEFA,NYSE ARCA,ETF,ALPS O'Shares International Developed Quality Dividend ETF,OEFA,ALPS - O'Shares International Developed Quality Dividend ETF,AMEX,fund,etf,US00162Q3790,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-OFAL,NASDAQ,Stock,OFA Group,OFAL,OFA Group Class A,NASDAQ,stock,common,KYG6713S1066,Industrial Services,Engineering & Construction,Hong Kong,False,True,name_mismatch
-OIO,NASDAQ,Stock,OIO Group,OIO,OIO Group,NASDAQ,stock,common,KYG3R95P1244,Finance,Financial Conglomerates,Singapore,False,True,name_mismatch
-OIOWW,NASDAQ,Stock,OIO Group,,,,,,,,,,False,False,no_tradingview_match
-OKAI,TSXV,Stock,EvokAI Creative Labs Inc.,,,,,,,,,,False,False,no_tradingview_match
-ONYX,ATHEX,Stock,ONYX,ONYX,Onyx Touristiki S.A.,ATHEX,stock,common,GRS530003003,Consumer Non-Durables,Apparel/Footwear,Greece,False,True,name_mismatch
-OPA,JSE,Stock,CHANNEL VAS INV LTD,OPA,Channel VAS Investments Limited,JSE,stock,common,VGG2072E1016,Finance,Finance/Rental/Leasing,United Arab Emirates,False,True,name_mismatch
-OPEN.P,TSXV,Stock,OpenSesame Acquisition Corp.,,,,,,,,,,False,False,no_tradingview_match
 OR2,ASX,ETF,ORDE SERIES 2025-1 TRUST,,,,,,,,,,False,False,no_tradingview_match
-ORAC,TSX,Stock,Oracle CDR (CAD Hedged),ORAC,Oracle Corporation Shs Sponsored Canadian Depoitary Receipt Hedged Reg S,TSX,dr,,CA68390F1018,Technology Services,Packaged Software,United States,False,True,name_mismatch
-ORILINA,ATHEX,Stock,Orilina Properties REIC S.A.,ORILINA,Orilina Properties Real Estate Investment Company,ATHEX,stock,common,GRS535003008,Finance,Real Estate Investment Trusts,Greece,False,True,name_mismatch
-OULG11B,B3,ETF,Pedra Dourada Fundo De Investimento Imobiliário - FII,,,,,,,,,,False,False,no_tradingview_match
 OY1,ASX,ETF,OLYMPUS 2025-1 TRUST,,,,,,,,,,False,False,no_tradingview_match
 OYS,ASX,ETF,OLYMPUS 2024-2 TRUST,,,,,,,,,,False,False,no_tradingview_match
-P5RD3,B3,Stock,MATRIZ COMPANHIA METALURGICA PRADA,,,,,,,,,,False,False,no_tradingview_match
 PA1,ASX,ETF,PANORAMA AUTO TRUST 2023-1,,,,,,,,,,False,False,no_tradingview_match
 PA2,ASX,ETF,PANORAMA AUTO TRUST 2024-1,,,,,,,,,,False,False,no_tradingview_match
 PA3,ASX,ETF,PANORAMA AUTO TRUST 2023-3,,,,,,,,,,False,False,no_tradingview_match
 PA4,ASX,ETF,PANORAMA AUTO TRUST 2024-3,,,,,,,,,,False,False,no_tradingview_match
 PA5,ASX,ETF,PANORAMA AUTO TRUST 2025-1,,,,,,,,,,False,False,no_tradingview_match
 PA6,ASX,ETF,PANORAMA AUTO TRUST 2025-3,,,,,,,,,,False,False,no_tradingview_match
-PASS5,B3,Stock,COMPASS GAS E ENERGIA S.A.,,,,,,,,,,False,False,no_tradingview_match
-PBY,TSX,ETF,Canso Credit Income Fund,,,,,,,,,,False,False,no_tradingview_match
-PBY-UN,TSX,Stock,Canso Credit Trust - Canso Credit Income Fund,PBY.UN,Canso Credit Income Fund Trust Units A,TSX,fund,closedend,CA1380801060,Miscellaneous,Investment Trusts/Mutual Funds,Canada,True,True,asset_type_mismatch
-PCAA.P,TSXV,Stock,PC 1 Corp.,PCAA.P,PC 1 Corp,TSXV,stock,common,CA69323W1041,Finance,Financial Conglomerates,Canada,False,True,name_mismatch
-PCEM,NYSE ARCA,ETF,Litman Gregory Funds Trust,,,,,,,,,,False,False,no_tradingview_match
-PHXE-P,NYSE,Stock,"Phoenix Energy One, LLC",,,,,,,,,,False,False,no_tradingview_match
-PHYS-U,TSX,ETF,Sprott Physical Gold Trust,PHYS.U,Sprott Physical Gold Trust Units,TSX,fund,closedend,CA85207H1047,Miscellaneous,Investment Trusts/Mutual Funds,Canada,True,True,asset_type_mismatch
-PIAHCLA,PSX,Stock,PIA Holding Company,PIAHCLA,PIA Holding Company Limited Class A,PSX,stock,common,PK0146501017,Transportation,Airlines,Pakistan,False,True,name_mismatch
-PIAHCLB,PSX,Stock,PIA Holding CompanyB,PIAHCLB,PIA Holding Company Limited Class B,PSX,stock,common,PK0146501025,Transportation,Airlines,Pakistan,False,True,name_mismatch
-PLTW,BATS,ETF,PLTR WeeklyPay™ ETF,PLTW,Roundhill PLTR WeeklyPay ETF,CBOE,fund,etf,US77926X7268,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-PMEI,TSX,ETF,PIMCO Monthly Enhanced Income Fund,,,,,,,,,,False,False,no_tradingview_match
-PMIO,NYSE ARCA,ETF,PGIM Municipal Income Opportunities ETF,PMIO,PGIM Municipal Income Opportunities ETF,AMEX,fund,etf,US69344A7761,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-PMZ,TSX,ETF,Primaris Real Estate Investment Trust,,,,,,,,,,False,False,no_tradingview_match
 POB,ASX,ETF,PROGRESS 2021-1 TRUST,,,,,,,,,,False,False,no_tradingview_match
 POC,ASX,ETF,PROGRESS 2022-1 TRUST,,,,,,,,,,False,False,no_tradingview_match
-POC.P,TSXV,Stock,POCML 7 Inc.,,,,,,,,,,False,False,no_tradingview_match
 POE,ASX,ETF,PROGRESS 2023-1 TRUST,,,,,,,,,,False,False,no_tradingview_match
 POF,ASX,ETF,PROGRESS 2022-2 TRUST,,,,,,,,,,False,False,no_tradingview_match
 POG,ASX,ETF,PROGRESS 2024-1 TRUST,,,,,,,,,,False,False,no_tradingview_match
 POH,ASX,ETF,PROGRESS 2023-2 TRUST,,,,,,,,,,False,False,no_tradingview_match
 POI,ASX,ETF,PROGRESS 2025-1 TRUST,,,,,,,,,,False,False,no_tradingview_match
-POWR,NYSE ARCA,ETF,iShares US Power Infrastructure Fund,POWR,iShares U.S. Power Infrastructure ETF,AMEX,fund,etf,US4642863439,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,False,isin_peer_name_mismatch
 PR4,ASX,ETF,PEPPER RESIDENTIAL SECURITIES TRUST NO. 40,,,,,,,,,,False,False,no_tradingview_match
-PRB,TSX,Stock,Probe Gold Inc.,,,,,,,,,,False,False,no_tradingview_match
-PRG,NYSE,Stock,PROG Holdings Inc,PRG,"PROG Holdings, Inc.",NYSE,stock,common,US74319R1014,Finance,Finance/Rental/Leasing,United States,False,True,name_mismatch
-PRH,TSXV,Stock,Pearl River Holdings Limited,,,,,,,,,,False,False,no_tradingview_match
-PRVS,NYSE,ETF,Parnassus Income Funds,PRVS,Parnassus Value Select ETF,NYSE,fund,etf,US7017696060,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-PRXG,NYSE ARCA,ETF,Praxis Impact Large Cap Growth ETF,PRXG,Praxis Impact Large Cap Growth ETF,AMEX,fund,etf,US74006E7360,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-PRXV,NYSE ARCA,ETF,Praxis Impact Large Cap Value ETF,PRXV,Praxis Impact Large Cap Value ETF,AMEX,fund,etf,US74006E7444,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
 PS2,ASX,ETF,PUMA SERIES 2024-2 TRUST,,,,,,,,,,False,False,no_tradingview_match
-PSU,TSX,ETF,Purpose US Cash Fund ETF,,,,,,,,,,False,False,no_tradingview_match
-PTP-H,TSXV,Stock,Petrichor Energy Inc,,,,,,,,,,False,False,no_tradingview_match
 PU6,ASX,ETF,PEPPER SPARKZ TRUST NO.6,,,,,,,,,,False,False,no_tradingview_match
 PU8,ASX,ETF,PEPPER SPARKZ TRUST NO.8,,,,,,,,,,False,False,no_tradingview_match
 PU9,ASX,ETF,PEPPER SPARKZ TRUST NO.9,,,,,,,,,,False,False,no_tradingview_match
-PUSH,NYSE ARCA,ETF,PGIM Ultra Short Municipal Bond ETF,PUSH,PGIM Ultra Short Municipal Bond ETF,AMEX,fund,etf,US69344A7688,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
 PUT,ASX,ETF,PUMA SERIES 2023-1 TRUST,,,,,,,,,,False,False,no_tradingview_match
 PUU,ASX,ETF,PUMA SERIES 2024-1 TRUST,,,,,,,,,,False,False,no_tradingview_match
 PUV,ASX,ETF,PUMA SERIES 2025-1 TRUST,,,,,,,,,,False,False,no_tradingview_match
-PVF,TSXV,Stock,Partners Value Investments LP,,,,,,,,,,False,False,no_tradingview_match
-PVF-UN,TSXV,Stock,Partners Value Investments LP,PVF.UN,Partners Value Investments L.P. Unit,TSXV,fund,closedend,BMG6936M1001,Finance,Financial Conglomerates,Canada,True,True,asset_type_mismatch
-PWF,TSX,Stock,Power Financial Corporation,,,,,,,,,,False,False,no_tradingview_match
-QAMC,QSE,Stock,QAMCO,QAMC,Qatar Aluminium Manufacturing Company,QSE,stock,common,QA000M2522L9,Non-Energy Minerals,Aluminum,Qatar,False,True,name_mismatch
-QATR,QSE,ETF,Al Rayan Qatar ETF,,,,,,,,,,False,False,no_tradingview_match
-QBR,TSX,Stock,Quebecor Inc.,,,,,,,,,,False,False,no_tradingview_match
-QBTC,TSX,ETF,The Bitcoin Fund,QBTC,Bitcoin Fund Trust Units A,TSX,fund,closedend,CA09175G1046,Miscellaneous,Investment Trusts/Mutual Funds,Canada,True,True,asset_type_mismatch
-QBTC-U,TSX,Stock,The Bitcoin Fund Class A,QBTC.U,Bitcoin Fund Trust Units A,TSX,fund,closedend,CA09175G1046,Miscellaneous,Investment Trusts/Mutual Funds,Canada,True,True,asset_type_mismatch
-QBY,NASDAQ,ETF,GraniteShares YieldBoost QBTS ETF,QBY,GraniteShares YieldBoost QBTS ETF,NASDAQ,fund,etf,US38747R1656,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-QCFS,QSE,Stock,Cinema,QCFS,Qatar Cinema & Film Distribution Co.,QSE,stock,common,QA0006929796,Consumer Services,Movies/Entertainment,Qatar,False,True,name_mismatch
-QDAY,NEO,ETF,Hamilton EnhancedTechnology DayMAX™ ETF,QDAY,Hamilton Enhanced Technology DayMAX ETF Trust Units,NEO,fund,etf,CA40736A1049,,,,False,True,name_mismatch
-QETF,QSE,ETF,QE Index ETF,,,,,,,,,,False,False,no_tradingview_match
-QGMD,QSE,Stock,Qatar German Co. Med,QGMD,Qatar German For Medical Devices,QSE,stock,common,QA0001200763,Distribution Services,Medical Distributors,Qatar,False,True,name_mismatch
-QGTS,QSE,Stock,Nakilat,QGTS,Qatar Gas Transport Co.,QSE,stock,common,QA000A0KD6L1,Transportation,Marine Shipping,Qatar,False,True,name_mismatch
-QIGD,QSE,Stock,The Investors,QIGD,Qatari Investors Group,QSE,stock,common,QA000A0NA0T7,Non-Energy Minerals,Construction Materials,Qatar,False,True,name_mismatch
-QIIK,QSE,Stock,Intl. Islamic Bank,QIIK,Qatar International Islamic Bank,QSE,stock,common,QA0006929879,Finance,Regional Banks,Qatar,False,True,name_mismatch
-QIMD,QSE,Stock,Ind. Manf. Co.,QIMD,Qatar Industrial Manufacturing Co.,QSE,stock,common,QA0006929846,Producer Manufacturing,Industrial Conglomerates,Qatar,False,True,name_mismatch
-QLMI,QSE,Stock,QLM,QLMI,QLM Life & Medical Insurance Company QPSC,QSE,stock,common,QA000QLM0003,Finance,Multi-Line Insurance,Qatar,False,True,name_mismatch
 QNB,ASX,Stock,QNB FINANCE LTD,,,,,,,,,,False,False,no_tradingview_match
-QNBK,QSE,Stock,QNB,QNBK,Qatar National Bank QPSC,QSE,stock,common,QA0006929895,Finance,Regional Banks,Qatar,False,True,name_mismatch
-QUCY,NASDAQ,Stock,Quantum Cyber N.V.,QUCY,Quantum Cyber N.V.,NASDAQ,stock,common,NL0015000LC2,Health Technology,Biotechnology,United States,True,False,isin_peer_name_mismatch
-QVMT,NYSE ARCA,ETF,Invesco S&P S&P 500 Concentrated QVM ETF,QVMT,Invesco S&P 500 Concentrated QVM ETF,AMEX,fund,etf,US46138E3962,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,False,isin_peer_name_mismatch
 RA2,ASX,Stock,RESIMAC PREMIER SERIES 2020-1,,,,,,,,,,False,False,no_tradingview_match
 RA3,ASX,Stock,RESIMAC SERIES 2024-1NC,,,,,,,,,,False,False,no_tradingview_match
 RAMHA,ASX,Stock,RAMHA,,,,,,,,,,False,False,no_tradingview_match
-RARE,NASDAQ,Stock,Ultragenyx,RARE,"Ultragenyx Pharmaceutical, Inc.",NASDAQ,stock,common,US90400D1081,Health Technology,Pharmaceuticals: Major,United States,False,False,name_mismatch
-RAV,TSX,ETF,Ravensource Fund,,,,,,,,,,False,False,no_tradingview_match
-RBN-UN,TSX,Stock,Blue Ribbon Income Fund,RBN.UN,Blue Ribbon Income Fund Trust units,TSX,fund,closedend,CA0958191086,Miscellaneous,Investment Trusts/Mutual Funds,Canada,True,True,asset_type_mismatch
-RCHM,NEO,Stock,CIE FINANCIERE RICHEMONT AG CDR (CAD Hedged),RCHM,COMPAGNIE FINANCIERE RICHEMONT SA Sponsored Canadian Depository Receipt Hedged Reg S,NEO,dr,,CA12570Q1072,Consumer Durables,Other Consumer Specialties,Switzerland,False,True,name_mismatch
-RCR.P,TSXV,ETF,Canna 8 Investment Trust,RCR.P,Canna 8 Investment Trust,TSXV,stock,common,CA13766K1021,Finance,Financial Conglomerates,Canada,True,True,asset_type_mismatch
-REMG,NASDAQ,ETF,Emerging Markets Active ETF,REMG,Emerging Markets Equity ETF,NASDAQ,fund,etf,US78249U4076,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-RENT.P,TSXV,Stock,Shine Box Capital Corp.,,,,,,,,,,False,False,no_tradingview_match
-REVV,TSXV,Stock,ReVolve Renewable Power Corp.,,,,,,,,,,False,False,no_tradingview_match
-REVX,TSXV,Stock,Rev Exploration Corp.,REVX,REV Exploration Corp.,TSXV,stock,common,CA7613251098,Non-Energy Minerals,Precious Metals,Canada,True,False,isin_peer_name_mismatch
-RGIP.U,TSX,ETF,Purpose Canadian Preferred Share P2L T,,,,,,,,,,False,False,no_tradingview_match
-RGLO,NASDAQ,ETF,Global Equity Active ETF,RGLO,Russell Investments Global Equity ETF,NASDAQ,fund,etf,US78249U3086,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-RIFR,NASDAQ,ETF,Global Infrastructure Active ETF,RIFR,Russell Investments Global Infrastructure ETF,NASDAQ,fund,etf,US78249U5065,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
 RM1,ASX,ETF,NATIONAL RMBS TRUST 2024-1,,,,,,,,,,False,False,no_tradingview_match
-RME,TSXV,Stock,Roland Minerals Enterprises Corp.,RME,Roland Mineral Enterprises Corp.,TSXV,stock,common,CA77546D1006,Non-Energy Minerals,Other Metals/Minerals,Canada,False,True,name_mismatch
-RNA,NASDAQ,Stock,"Atrium Therapeutics, Inc. Common Stock",RNA,"Atrium Therapeutics, Inc.",NASDAQ,stock,common,US04965N1046,Health Technology,Biotechnology,United States,True,True,accept
-RNAM,NASDAQ,Stock,"Avidity Biosciences, Inc",,,,,,,,,,False,False,no_tradingview_match
-ROCH,NEO,Stock,ROCHE HOLDING AG CDR (CAD Hedged),ROCH,Roche Holding Ltd Sponsored Canadian Depository Receipt Hedged Reg S,NEO,dr,,CA77119N1050,Health Technology,Pharmaceuticals: Major,Switzerland,False,True,name_mismatch
-RONB,NYSE,ETF,Baron First Principles ETF,RONB,Baron First Principles ETF,NYSE,fund,etf,US06829D1072,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-RSCC-U,NEO,ETF,GLOBAL X RUSSELL 2000 COVERED C,,,,,,,,,,False,False,no_tradingview_match
-RSSX-U,NEO,ETF,GLOBAL X RUSSELL 2000 INDEX ETF,,,,,,,,,,False,False,no_tradingview_match
-RVC.P,TSXV,Stock,Ronin Ventures Corp.,RVC.P,Ronin Ventures Corp. Class A,TSXV,stock,common,CA7763311007,Finance,Financial Conglomerates,Canada,True,False,isin_peer_name_mismatch
-RWEM,NYSE ARCA,ETF,The Advisors' Inner Circle Fund III - Rayliant Wilshire NxtGen Emerging Markets Equity ETF,RWEM,Rayliant NxtGen Multifactor Emerging Markets Equity ETF,AMEX,fund,etf,US00775Y7105,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,False,name_mismatch
-RWLC,NYSE ARCA,ETF,The Advisors' Inner Circle Fund III - Rayliant Wilshire NxtGen US Large Cap Equity ETF,RWLC,Rayliant NxtGen Multifactor US Equity ETF,AMEX,fund,etf,US00775Y7287,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,False,name_mismatch
-SAC-UN,NYSE,Stock,Safeguard Acquisition Corp.,,,,,,,,,,False,False,no_tradingview_match
-SAPG,NEO,Stock,SAP SE CDR (CAD Hedged),SAPG,SAP SE Sponsored Canadian Depository Receipt Hedged Reg S,NEO,dr,,CA80305U1075,Technology Services,Packaged Software,Germany,False,True,name_mismatch
-SAPS,TSX,Stock,SAP CDR (CAD Hedged),SAPS,SAP SE CAD Hedged CIBC CDR,TSX,dr,,CA78437E1088,Technology Services,Packaged Software,Germany,False,True,name_mismatch
-SAT,NYSE,Stock,Saratoga Investment Corp 6.00%,,,,,,,,,,False,False,no_tradingview_match
-SAY,NYSE,Stock,Saratoga Investment Corp 8.125%,SAY,Saratoga Investment Corp. 8.125 % Notes 2022-31.12.27 Global,NYSE,stock,preferred,US80349A8779,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-SBEL.P,TSXV,Stock,Sanibel Ventures Corp.,,,,,,,,,,False,False,no_tradingview_match
-SBSA,LSE,Stock,Skipton Building Society 8.5% PIBS,,,,,,,,,,False,False,no_tradingview_match
-SBU,NASDAQ,ETF,Leverage Shares 2X Long SBUX Daily ETF,SBU,Leverage Shares 2X Long SBUX Daily ETF,NASDAQ,fund,etf,US88340C7763,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-SBXE-UN,NYSE,Stock,SilverBox Corp V,,,,,,,,,,False,False,no_tradingview_match
 SC1,ASX,Stock,"SHINHAN CARD CO., LTD.",,,,,,,,,,False,False,no_tradingview_match
 SCA,ASX,ETF,SCENTRE GROUP TRUST 1 AND SCENTRE GROUP TRUST 2,,,,,,,,,,False,False,no_tradingview_match
-SCHE,NYSE ARCA,ETF,Schwab Emerging Markets Equity ETF,SCHE,Schwab Emerging Markets Equity ETF,AMEX,fund,etf,US8085247067,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-SDAY,NEO,ETF,Hamilton EnhancedU.S. Equity DayMAX™ ETF,SDAY,Hamilton Enhanced US Equity DayMAX ETF Trust Units,NEO,fund,etf,CA40736T1030,,,,False,True,name_mismatch
-SDCI.P,TSXV,Stock,St. Davids Capital Inc.,,,,,,,,,,False,False,no_tradingview_match
-SE,NYSE,Stock,Sea Ltd,SE,Sea Limited Sponsored ADR Class A,NYSE,dr,,US81141R1005,Retail Trade,Internet Retail,Singapore,False,False,name_mismatch
-SECU,BATS,ETF,iShares Securitized Income Active ETF,SECU,iShares Securitized Income Active ETF,CBOE,fund,etf,US0925288195,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-SFTB,NEO,Stock,SOFTBANK GROUP CORP CDR (CAD Hedged),SFTB,SoftBank Group Corp. Sponsored Canadian Depository Receipt Hedged Reg S,NEO,dr,,CA83390C1077,Communications,Specialty Telecommunications,Japan,False,False,name_mismatch
 SFV,ASX,Stock,SANTOS FINANCE LIMITED,,,,,,,,,,False,False,no_tradingview_match
-SGQ,TSXV,Stock,SouthGobi Resources Ltd.,SGQ,SouthGobi Resources Ltd.,TSXV,stock,common,CA8443751059,Energy Minerals,Coal,Canada,True,False,isin_peer_name_mismatch
-SHO,NYSE,Stock,Sunstone Hotel Investors Inc,SHO,"Sunstone Hotel Investors, Inc.",NYSE,stock,common,US8678921011,Finance,Real Estate Investment Trusts,United States,True,True,accept
 SHZ,ASX,Stock,SHINHAN BANK.,,,,,,,,,,False,False,no_tradingview_match
-SIH,TSX,ETF,Sustainable Innovation & Health Dividend Fund,,,,,,,,,,False,False,no_tradingview_match
-SIO,NYSE ARCA,ETF,Touchstone Strategic Income Opportunities ETF,SIO,Touchstone Strategic Income ETF,AMEX,fund,etf,US89157W2026,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-SKK,NASDAQ,Stock,SKK Holdings Limited,SKK,SKK Holdings Limited Class A,NASDAQ,stock,common,KYG8292E1109,Industrial Services,Engineering & Construction,Singapore,False,True,name_mismatch
-SLB,NYSE,Stock,SLB Limited Common Shares,SLB,SLB Limited,NYSE,stock,common,AN8068571086,Industrial Services,Contract Drilling,United States,False,False,name_mismatch
-SLJY,NYSE ARCA,ETF,Amplify SILJ Junior Silver Miners Covered Call ETF,SLJY,Amplify SILJ Junior Silver Miners Covered Call ETF,AMEX,fund,etf,US0321084339,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-SLM,NASDAQ,Stock,SLM Corp,SLM,SLM Corp,NASDAQ,stock,common,US78442P1066,Finance,Finance/Rental/Leasing,United States,False,True,name_mismatch
-SLPE,LSE,Stock,SL Private Equity,,,,,,,,,,False,False,no_tradingview_match
-SMNS,TSX,Stock,Siemens CDR (CAD Hedged),SMNS,Siemens AG CAD Hedged CIBC CDR,TSX,dr,,CA82620L1013,Producer Manufacturing,Industrial Machinery,Germany,False,True,name_mismatch
-SMRF,NYSE ARCA,ETF,"ALPS Nautilus SMR, Nuclear & Technology ETF",SMRF,"ALPS Nautilus SMR, Nuclear & Technology ETF",AMEX,fund,etf,US00162Q3204,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-SNSR,NASDAQ,ETF,Global X Internet of Things ETF,SNSR,Global X Internet of Things ETF,NASDAQ,fund,etf,US37954Y7803,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-SNY,TSX,Stock,Sanofi CDR (CAD Hedged),SNY,Sanofi SA Shs Unsponsored Canadian Depository Receipt Hedged Reg S,TSX,dr,,CA8010MA1047,Health Technology,Pharmaceuticals: Major,France,False,True,name_mismatch
-SOF,NYSE,ETF,Amplify Samsung SOFR ETF ,,,,,,,,,,False,False,no_tradingview_match
-SOFTWEB,ATHEX,Stock,SOFTWEB,SOFTWEB,SoftWeb Adaptive IT Solutions,ATHEX,stock,common,GRS538003005,Technology Services,Packaged Software,Greece,False,True,name_mismatch
-SOLX.B,TSX,ETF,CI Galaxy Solana ETF,SOLX.B,CI Galaxy Solana Trust Unit ETF Unhedged Series Units,TSX,fund,etf,CA12574G2045,Miscellaneous,Investment Trusts/Mutual Funds,Canada,False,True,name_mismatch
-SOLX.U,TSX,ETF,CI Galaxy Solana ETF,SOLX.U,CI Galaxy Solana ETF Series Units Trust Unit,TSX,fund,etf,CA12574G1054,,,,False,True,name_mismatch
 SP4,ASX,ETF,SAPPHIRE XXIX SERIES 2024-1 TRUST,,,,,,,,,,False,False,no_tradingview_match
 SP6,ASX,ETF,SAPPHIRE XXXI SERIES 2024-3 TRUST,,,,,,,,,,False,False,no_tradingview_match
-SPAC,TSX,Stock,Mercer Park Opportunities Corp.,,,,,,,,,,False,False,no_tradingview_match
-SPMD,NYSE ARCA,ETF,SPDR Russell Small Cap Completeness,SPMD,State Street SPDR Portfolio S&P 400 Mid Cap ETF,AMEX,fund,etf,US78464A8475,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-SPME,NYSE,Stock,"Sound Point Meridian Capital, Inc.",SPME,"Sound Point Meridian Capital, Inc. 8.5 % Pfd Shs",NYSE,stock,preferred,US83617A3068,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-SPPP-U,TSX,Stock,Sprott Physical Platinum & Palladium Tr,SPPP.U,Sprott Physical Platinum and Palladium Trust Trust Units,TSX,fund,closedend,CA85207Q1046,Miscellaneous,Investment Trusts/Mutual Funds,Canada,True,True,asset_type_mismatch
-SPRO.P,TSXV,Stock,Sprock-It Acquisitions Ltd.,,,,,,,,,,False,False,no_tradingview_match
-SPRQ,TSXV,Stock,SPARQ Systems Inc.,SPRQ,SPARQ Systems Inc,TSXV,stock,common,CA84657W1095,Electronic Technology,Semiconductors,Canada,True,True,accept
-SPXD,NASDAQ,ETF,Xtrackers S&P 500 Diversified Sector Weight ETF,SPXD,Xtrackers S&P 500 Diversified Sector Weight ETF,NASDAQ,fund,etf,US23306X7957,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-SRQ,TSXV,Stock,Sonoma Resources Inc.,SRQ,SRQ Resources Inc.,TSXV,stock,common,CA85224M1023,Non-Energy Minerals,Other Metals/Minerals,Canada,False,False,name_mismatch
-SRU,TSX,ETF,SmartCentres Real Estate Investment Trust,,,,,,,,,,False,False,no_tradingview_match
-SRV-UN,TSX,Stock,SIR Royalty Income Fund,SRV.UN,SIR Royalty Income Fund,TSX,fund,closedend,CA8296361097,Miscellaneous,Investment Trusts/Mutual Funds,Canada,True,True,asset_type_mismatch
-SSS.P,TSXV,Stock,Samurai Capital Corp.,,,,,,,,,,False,False,no_tradingview_match
-STBQ,NYSE ARCA,ETF,Amplify Stablecoin Technology Leaders ETF,STBQ,Amplify Stablecoin Technology Leaders ETF,AMEX,fund,etf,US0321083836,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-STL,PSX,Stock,Supernet Technologie,STL,Supernet Technologies Limited,PSX,stock,common,PK0119101019,Finance,Property/Casualty Insurance,Pakistan,False,True,name_mismatch
-STRM,TSXV,Stock,Storm Exploration Inc.,STRM,Storm Exploration Inc,TSXV,stock,common,CA86218J3038,Non-Energy Minerals,Other Metals/Minerals,Canada,True,True,accept
-STYLERS,PSX,Stock,Stylers Int.,STYLERS,Stylers International Limited,PSX,stock,common,PK0143701016,Consumer Non-Durables,Apparel/Footwear,Pakistan,False,True,name_mismatch
-SULR,NYSE ARCA,ETF,Guinness Atkinson Funds - SmartETFs Sustainable Energy II ETF,,,,,,,,,,False,False,no_tradingview_match
-SURF,TSXV,ETF,Starlight U.S. Residential Fund (Multi-Family) Investment LP,,,,,,,,,,False,False,no_tradingview_match
-SURF-UN,TSXV,Stock,Starlight U.S. Residential Fund (Multi-Family) Investment LP,SURF.UN,Starlight U.S. Residential Fund (Multi-Family) Investment LP Class A,TSXV,fund,closedend,CA85555K2048,Miscellaneous,Investment Trusts/Mutual Funds,Canada,True,True,asset_type_mismatch
-SYZ,NASDAQ,ETF,Lazard US Systematic Small Cap Equity ETF,SYZ,Lazard US Systematic Small Cap Equity ETF,NASDAQ,fund,etf,US52110K7072,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
 TA1,ASX,Stock,TRANSURBAN FINANCE COMPANY PTY LTD,,,,,,,,,,False,False,no_tradingview_match
-TBRD,TSXV,Stock,Thunderbird Entertainment Group Inc.,,,,,,,,,,False,False,no_tradingview_match
-TDEX,SET,ETF,ThaiDex SET50 Exchange Traded Fund,TDEX,ThaiDex SET50 ETF,SET,fund,etf,THSE50070002,Miscellaneous,Investment Trusts/Mutual Funds,Thailand,False,True,name_mismatch
-TDOG,NASDAQ,ETF,21Shares Dogecoin ETF Common Shares of Beneficial Interest,TDOG,21Shares Dogecoin ETF,NASDAQ,fund,etf,US90137N1063,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-TGEX,TSX,ETF,TD Active Global Enhanced Dividend CAD Hedged ETF,,,,,,,,,,False,False,no_tradingview_match
-TIP-H,TSXV,Stock,Tyner Resources Ltd,,,,,,,,,,False,False,no_tradingview_match
-TJGC,NASDAQ,Stock,TJGC Group Limited,TJGC,TJGC Group Limited,NASDAQ,stock,common,VGG2588N1160,Electronic Technology,Electronic Equipment/Instruments,Hong Kong,False,True,name_mismatch
-TKNQ,NYSE ARCA,ETF,Amplify Tokenization Technology Leaders ETF,TKNQ,Amplify Tokenization Technology Leaders ETF,AMEX,fund,etf,US0321083679,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-TLCI,NYSE ARCA,ETF,Touchstone ETF Trust,TLCI,Touchstone International Equity ETF,AMEX,fund,etf,US89157W8718,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-TLTU,TSX,ETF,MegaLong (3X) 20+ Year US Treasury Daily Leveraged Alternative ETF,,,,,,,,,,False,False,no_tradingview_match
-TMET,NASDAQ,ETF,iShares Transition-Enabling Metals ETF,,,,,,,,,,False,False,no_tradingview_match
-TMVE,NYSE ARCA,ETF,Thrivent ETF Trust,TMVE,Thrivent Mid Cap Value ETF,AMEX,fund,etf,US88588G5053,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-TOAK,NYSE ARCA,ETF,Manager Directed Portfolios,TOAK,Twin Oak Short Horizon Absolute Return ETF,AMEX,fund,etf,US56170L6618,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-TOLL,BATS,ETF,Tema Monopolies and Oligopolies ETF,TOLL,Tema Durable Quality ETF,CBOE,fund,etf,US87975E1073,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-TOP,NASDAQ,Stock,Zhong Yang Financial Group Limited Ordinary Shares,TOP,TOP Financial Group Limited Class A,NASDAQ,stock,common,KYG989A61029,Finance,Investment Banks/Brokers,Singapore,False,True,name_mismatch
-TOPS,NYSE MKT,Stock,TOP Ships Inc.,TOPS,TOP Ships Inc.,AMEX,stock,common,MHY8897Y2307,Transportation,Marine Shipping,Greece,True,True,accept
-TOPW,BATS,ETF,Roundhill WeeklyPay Universe ETF,TOPW,Roundhill Top WeeklyPay ETF,CBOE,fund,etf,US77926X5858,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,False,name_mismatch
-TOYM,NEO,Stock,TOYOTA MOTOR CORP CDR (CAD Hedged),TOYM,Toyota Motor Corp. Sponsored Canadian Depository Receipt Hedged Reg,NEO,dr,,CA89238H1091,Consumer Durables,Motor Vehicles,Japan,False,True,name_mismatch
-TPLRF1,PSX,Stock,TPL Reit Fund 1,,,,,,,,,,False,False,no_tradingview_match
-TPTA,NYSE,Stock,"Terra Property Trust, Inc. 6.00%",,,,,,,,,,False,False,no_tradingview_match
-TQES,QSE,Stock,Techno Q,TQES,Qatar Electronic Systems Co. (Techno Q) QPSC,QSE,stock,common,QA0004J80UC0,Consumer Durables,Electronics/Appliances,Qatar,False,True,name_mismatch
-TRAD-UN,NYSE,Stock,APEX Tech Acquisition Inc.,,,,,,,,,,False,False,no_tradingview_match
-TRBR,TSXV,Stock,Trubar Inc.,,,,,,,,,,False,False,no_tradingview_match
-TRESTATES,ATHEX,Stock,TRESTATES,TRESTATES,Trade Estates Real Estate Investment Company,ATHEX,stock,common,GRS534003009,Finance,Real Estate Development,Greece,False,True,name_mismatch
-TRPA,BATS,ETF,HARTFORD AAA CLO ETF,TRPA,Hartford AAA CLO ETF,CBOE,fund,etf,US41653L6020,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,False,isin_peer_name_mismatch
-TSCV,NYSE ARCA,ETF,Thrivent ETF Trust,TSCV,Thrivent Small Cap Value ETF,AMEX,fund,etf,US88588G4064,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-TSEC,NYSE ARCA,ETF,Touchstone ETF Trust,TSEC,Touchstone Securitized Income ETF,AMEX,fund,etf,US89157W7074,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-TSES,NYSE ARCA,ETF,Truth Social American Energy Security ETF,TSES,Truth Social American Energy Security ETF,AMEX,fund,etf,US89844T4067,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-TSIC,NYSE ARCA,ETF,Truth Social American Icons ETF,TSIC,Truth Social American Icons ETF Amrn Icons ETF,AMEX,fund,etf,US89844T3077,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-TSLV,BATS,ETF,Azoria TSLA Convexity ETF,,,,,,,,,,False,False,no_tradingview_match
-TSNF,NYSE ARCA,ETF,Truth Social American Next Frontiers ETF,TSNF,Truth Social American Next Frontiers ETF,AMEX,fund,etf,US89844T2087,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-TSRS,NYSE ARCA,ETF,Truth Social American Red State REITs ETF,TSRS,Truth Social American Red State REITs ETF,AMEX,fund,etf,US89844T5056,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-TSSD,NYSE ARCA,ETF,Truth Social American Security & Defense ETF,TSSD,Truth Social American Security & Defense ETF,AMEX,fund,etf,US89844T1097,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-TSUI,NASDAQ,ETF,21shares Sui ETF Common Shares of Beneficial Interest Shares,TSUI,21Shares Sui ETF,NASDAQ,fund,etf,US90137U1007,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
 TT1,ASX,ETF,THINK TANK RESIDENTIAL SERIES 2024-1 TRUST,,,,,,,,,,False,False,no_tradingview_match
 TT2,ASX,ETF,THINK TANK RESIDENTIAL SERIES 2025-2 TRUST,,,,,,,,,,False,False,no_tradingview_match
 TT6,ASX,ETF,TRITON BOND TRUST 2021-1 IN RESPECT OF SERIES 1,,,,,,,,,,False,False,no_tradingview_match
-TTES,TSX,Stock,TotalEnergies CDR (CAD Hedged),TTES,TotalEnergies SE Shs Unsponsored Canadian Depository Receipt Hedged,TSX,dr,,CA89158C1068,Energy Minerals,Integrated Oil,France,False,True,name_mismatch
-TTNM,TSX,Stock,Titanium Transportation Group Inc.,,,,,,,,,,False,False,no_tradingview_match
-TUP.P,TSXV,Stock,Tup Capital Inc.,,,,,,,,,,False,False,no_tradingview_match
-TUSB,NYSE ARCA,ETF,Thrivent ETF Trust,TUSB,Thrivent Ultra Short Bond ETF,AMEX,fund,etf,US88588G3074,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-TV1,LSE,Stock,Thames Ventures VCT 1,,,,,,,,,,False,False,no_tradingview_match
-TVA-B,TSX,Stock,TVA Group Inc,TVA.B,"TVA Group, Inc. Class B",TSX,stock,common,CA8729482031,Consumer Services,Broadcasting,Canada,False,False,name_mismatch
-UBLPETF,PSX,ETF,UBLPakistanETF XD,,,,,,,,,,False,False,no_tradingview_match
-UBSS,TSX,Stock,UBS CDR (CAD Hedged),UBSS,UBS Group AG CAD Hedged CIBC CDR,TSX,dr,,CA90356F1071,Finance,Investment Managers,Switzerland,False,True,name_mismatch
-UDCD,QSE,Stock,United Dev. Company,UDCD,United Development Co.,QSE,stock,common,QA000A0KD6M9,Finance,Real Estate Development,Qatar,False,True,name_mismatch
-UPGD,NYSE ARCA,ETF,Invesco Exchange-Traded Fund Trust - Invesco Raymond James SB-1 Equity ETF,UPGD,Invesco Bloomberg Analyst Rating Improvers ETF,AMEX,fund,etf,US46137V5223,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,accept
-USFE,NYSE ARCA,ETF,First Eagle ETF Trust,USFE,First Eagle US Equity ETF,AMEX,fund,etf,US32012B1044,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-VARE,LSE,Stock,Various Eateries PLC,,,,,,,,,,False,False,no_tradingview_match
-VAVX,NASDAQ,ETF,VanEck Avalanche ETF Common Shares of Beneficial Interest,VAVX,Vaneck Avalanche Etf,NASDAQ,fund,etf,US92188R1014,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
 VCD,ASX,ETF,VICINITY CENTRES TRUST,,,,,,,,,,False,False,no_tradingview_match
-VIXI,NASDAQ,ETF,Defiance Enhanced Long Vol ETF,,,,,,,,,,False,False,no_tradingview_match
-VKG-H,TSXV,Stock,Norse Gold Corp,,,,,,,,,,False,False,no_tradingview_match
-VMY-H,TSXV,Stock,Voice Mobility International Inc,,,,,,,,,,False,False,no_tradingview_match
-VOXP,BATS,ETF,Vox Populi ETF,VOXP,Vox Populi ETF,CBOE,fund,etf,US00770X2532,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,False,isin_peer_name_mismatch
-VRGL3,B3,Stock,GOL LINHAS AEREAS S.A,,,,,,,,,,False,False,no_tradingview_match
-VTEN.P,TSXV,Stock,V Ten Capital Corp.,,,,,,,,,,False,False,no_tradingview_match
-VUS,NYSE ARCA,ETF,Virtus U.S. Dividend ETF,VUS,Virtus US Dividend ETF,AMEX,fund,etf,US92790A8273,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-VWA,NEO,Stock,VOLKSWAGEN CDR (CAD HEDGED),VWA,Volkswagen AG Shs Sponsored Canadian Depository Receipt Hedged Reg S,NEO,dr,,CA92866T1066,Consumer Durables,Motor Vehicles,Germany,False,True,name_mismatch
-WAFI,PSX,Stock,Wafi Energy Pak Ltd.,WAFI,Wafi Energy Pakistan Limited,PSX,stock,common,PK0016701010,Distribution Services,Wholesale Distributors,Pakistan,False,True,name_mismatch
-WASL,PSX,Stock,Wasi Mobility Mod,WASL,Wasl Mobility Modaraba,PSX,stock,common,PK0042801016,Finance,Finance/Rental/Leasing,Pakistan,False,True,name_mismatch
-WASLR,PSX,Stock,Wasl Mobility(R),,,,,,,,,,False,False,no_tradingview_match
-WAVESAPP,PSX,Stock,Waves Home App,WAVESAPP,Waves Home Appliances Ltd,PSX,stock,common,PK0068401014,Consumer Durables,Electronics/Appliances,Pakistan,False,True,name_mismatch
 WB1,ASX,ETF,SERIES 2020-1 WST TRUST,,,,,,,,,,False,False,no_tradingview_match
-WDAM,QSE,Stock,Widam,WDAM,Widam Food Company Q. S. C,QSE,stock,common,QA000A0KD6N7,Distribution Services,Food Distributors,Qatar,False,True,name_mismatch
-WDEF,NYSE ARCA,ETF,WisdomTree Europe Defense Fund,WDEF,WisdomTree Europe Defense Fund,AMEX,fund,etf,US97717Y3374,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-WDTE,NYSE ARCA,ETF,Defiance S&P 500 Enhanced Options 0DTE Income ETF,WDTE,Defiance S&P 500 Weekly Distribution ETF,AMEX,fund,etf,US88636J1473,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,accept
 WE1,ASX,ETF,SERIES 2019-1 WST TRUST,,,,,,,,,,False,False,no_tradingview_match
-WFCS,TSX,Stock,Wells Fargo CDR (CAD Hedged),WFCS,Wells Fargo & Company Shs Sponsored Canadian Depoitary Receipt Hedged Reg S,TSX,dr,,CA9499321078,Finance,Major Banks,United States,False,True,name_mismatch
-WHAIR,SET,Stock,WHA Industrial Leasehold REIT,WHAIR,WHA Industrial Leasehold Real Estate Investment Trust,SET,stock,common,TH7585010005,Finance,Real Estate Investment Trusts,Thailand,False,True,name_mismatch
-WLDS,NASDAQ,Stock,Wearable Devices Ltd.,WLDS,Wearable Devices Ltd.,NASDAQ,stock,common,IL0012118043,Electronic Technology,Electronic Equipment/Instruments,Israel,True,True,accept
-WOI-H,TSXV,Stock,WORLD ORGANICS INC,,,,,,,,,,False,False,no_tradingview_match
-WP,TSXV,ETF,Western Pacific Trust Company,WP,Western Pacific Trust Company,TSXV,stock,common,CA9591431080,Finance,Investment Managers,Canada,True,True,asset_type_mismatch
-WPAC-UN,NYSE,Stock,White Pearl Acquisition Corp.,,,,,,,,,,False,False,no_tradingview_match
 WS1,ASX,ETF,SERIES 2024-1 WST TRUST,,,,,,,,,,False,False,no_tradingview_match
 WS2,ASX,ETF,SERIES 2024-2 WST TRUST,,,,,,,,,,False,False,no_tradingview_match
-WSE,ASX,ETF,SERIES 2021-1 WST TRUST,,,,,,,,,,False,False,no_tradingview_match
-WTID,NYSE ARCA,ETF,UBS ETRACS - ProShares Daily 3x Inverse Crude ETN,WTID,MicroSectors Energy 3X Inverse Leveraged ETNs,AMEX,fund,etf,US06368L4032,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-WTOP20,JSE,ETF,10X Wealth Top20 Capped ETF,WTOP20,CoreShares Wealth Top 20 Capped ETF Units ZAR,JSE,fund,etf,ZAE000320792,Miscellaneous,Investment Trusts/Mutual Funds,South Africa,False,True,name_mismatch
-WXM,NASDAQ,Stock,WF International Limited Ordinary Shares,WXM,WF International Ltd.,NASDAQ,stock,common,KYG9627S1131,Distribution Services,Wholesale Distributors,China,True,True,accept
-XBJA,BATS,ETF,Innovator U.S. Equity Accelerated 9 Buffer ETF - January,XBJA,Innovator U.S. Equity Accelerated 9 Buffer ETF - January,CBOE,fund,etf,US45783Y7803,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
 XCL,ASX,Stock,AUSTRALIAN COMMONWEALTH GOVERNMENT LOANS,,,,,,,,,,False,False,no_tradingview_match
-XCYT,TSXV,Stock,Xcyte Digital Corp.,,,,,,,,,,False,False,no_tradingview_match
-XDEF,NASDAQ,ETF,Xtrackers Europe Defense Technologies ETF,XDEF,Xtrackers Europe Defense Technologies ETF,NASDAQ,fund,etf,US23306X7619,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-XFLX,NYSE ARCA,ETF,FundX Flexible ETF,XFLX,FundX Flexible ETF,AMEX,fund,etf,US3608768665,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-XFRD,XETRA,ETF,db Physical Rhodium ETC (EUR),,,,,,,,,,False,False,no_tradingview_match
-XKFS,NYSE ARCA,ETF,SPDR Kensho Future Security ETF,,,,,,,,,,False,False,no_tradingview_match
-XKII,NYSE ARCA,ETF,SPDR Kensho Intelligent Structures ETF,,,,,,,,,,False,False,no_tradingview_match
-XKST,NYSE ARCA,ETF,SPDR S&P Kensho Smart Mobility ETF,,,,,,,,,,False,False,no_tradingview_match
-XMF,TSX,Stock,M Split Corp.,,,,,,,,,,False,False,no_tradingview_match
-XMF-A,TSX,Stock,M Split Corp,XMF.A,M Split Corp,TSX,fund,closedend,CA55376A8757,Miscellaneous,Investment Trusts/Mutual Funds,Canada,True,True,asset_type_mismatch
 XNC,ASX,Stock,NEW SOUTH WALES TREASURY CORPORATION,,,,,,,,,,False,False,no_tradingview_match
-XPAY,NYSE ARCA,ETF,Roundhill S&P 500 Target 20 Managed Distribution ETF,XPAY,Roundhill S&P 500 Target 20 Managed Distribution ETF,AMEX,fund,etf,US77926X8589,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-XPM,NASDAQ,ETF,Defiance Daily Target 2X Long PM ETF,,,,,,,,,,False,False,no_tradingview_match
 XQL,ASX,Stock,QUEENSLAND TREASURY CORPORATION,,,,,,,,,,False,False,no_tradingview_match
-XRPI,NASDAQ,ETF,XRP ETF,XRPI,Volatility Shares Trust XRP ETF,NASDAQ,fund,etf,US92864M7801,Miscellaneous,Investment Trusts/Mutual Funds,United States,False,True,name_mismatch
-XTAO,TSXV,Stock,xTAO Inc.,,,,,,,,,,False,False,no_tradingview_match
-XTAO-U,TSXV,Stock,XTAO Inc.,XTAO.U,XTAO Inc.,TSXV,stock,common,KYG9T27M1036,Technology Services,Packaged Software,Cayman Islands,False,True,name_mismatch
 XVG,ASX,Stock,TREASURY CORPORATION OF VICTORIA,,,,,,,,,,False,False,no_tradingview_match
-YYYM,NYSE ARCA,ETF,Amplify Municipal CEF High Income ETF,YYYM,Amplify Municipal CEF High Income ETF,AMEX,fund,etf,US0321083422,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-ZAAA-F,NEO,ETF,BMO AAA CLO ETF (HEDGED UNITS),,,,,,,,,,False,False,no_tradingview_match
-ZAAP,NEO,Stock,APPLE (aapl) BMO CDR (CAD HEDGED),ZAAP,Apple Inc. Shs Unsponsored Canadian Depository Receipt,NEO,dr,,CA0379741022,Electronic Technology,Telecommunications Equipment,United States,False,True,name_mismatch
-ZAPO,NEO,Stock,APOLLO (APO) BMO CDR (CAD HEDGED),ZAPO,Apollo Global Management Inc Shs Canadian Depositary Receipt Repr Shs Reg S,NEO,dr,,CA03771W1005,Finance,Investment Managers,United States,False,True,name_mismatch
-ZBA,NEO,Stock,BOEING (BA) BMO CDR (CAD HEDGED),ZBA,Boeing Company Unsponsored Canadian Depository Receipt Hedged Reg S,NEO,dr,,CA09702C1059,Electronic Technology,Aerospace & Defense,United States,False,True,name_mismatch
-ZBBZ-F,NEO,ETF,BMO BBB CLO ETF – Hedged Units,,,,,,,,,,False,False,no_tradingview_match
-ZCOI,NEO,Stock,Coinbase (COIN) BMO CDR (CAD Hedged),ZCOI,"Coinbase Global, Inc. Shs Unsponsored Canadian Depository Receipt Hedged Reg S",NEO,dr,,CA19260W1041,Finance,Investment Banks/Brokers,United States,False,True,name_mismatch
-ZCOS,NEO,Stock,COSTCO )COST) BMO CDR (CAD HEDGED),ZCOS,Costco Wholesale Corporation Shs Unsponsored Canadian Depository Receipt Hedged Reg S,NEO,dr,,CA2216031039,Retail Trade,Specialty Stores,United States,False,True,name_mismatch
-ZHCD,QSE,Stock,Zad Holding Company,ZHCD,Zad Holding Co.,QSE,stock,common,QA0006929788,Consumer Non-Durables,Food: Specialty/Candy,Qatar,False,True,name_mismatch
-ZINT,NEO,Stock,INTEL (INTC) BMO CDR (CAD HEDGED),ZINT,Intel Corporation Shs Unsponsored Canadian Depository Receipt Hedged,NEO,dr,,CA45790N1087,Electronic Technology,Semiconductors,United States,False,True,name_mismatch
-ZIVB,BATS,ETF,Volatility Shares Trust -1x Short VIX Mid-Term Futures Strategy ETF,,,,,,,,,,False,False,no_tradingview_match
-ZLLY,NEO,Stock,ELI LILLY (LLY) BMO CDR (CAD HEDGED),ZLLY,Eli Lilly and Company Shs Unsponsored Canadian Depository Receipt Hedged,NEO,dr,,CA2869111021,Health Technology,Pharmaceuticals: Major,United States,False,True,name_mismatch
-ZMAS,NEO,Stock,MASTERCARD (MA) BMO CDR (CAD HEDGED),ZMAS,Mastercard Incorporated Shs Unsponsored Canadian Depository Receipt Hedged,NEO,dr,,CA5759771036,Finance,Finance/Rental/Leasing,United States,False,True,name_mismatch
-ZMCD,NEO,Stock,McDonalds (MCD) BMO CDR (CAD Hedged),ZMCD,McDonald's Corporation Shs Unsponsored Canadian Depository Receipt Hedged Reg S,NEO,dr,,CA5801091060,Consumer Services,Restaurants,United States,False,True,name_mismatch
-ZMIC,NEO,Stock,Micron Technology (MU) BMO CDR (CAD Hedged),ZMIC,"Micron Technology, Inc. Unsponsored Canadian Depository Receipt Hedged Reg S",NEO,dr,,CA59511H1001,Electronic Technology,Semiconductors,United States,False,True,name_mismatch
-ZMPU-F,NEO,ETF,BMO MARKET+ US EQUITY ETF - HEDGED UNITS,,,,,,,,,,False,False,no_tradingview_match
-ZMSF,NEO,Stock,MICROSOFT (MSFT) BMO CDR (CAD HEDGED),ZMSF,Microsoft Corporation Shs Unsponsored Canadian Depository Receipt Hedged,NEO,dr,,CA5949881075,Technology Services,Packaged Software,United States,False,True,name_mismatch
 ZOR,ASX,Stock,ORDINARY (UNLISTED/LISTED - COSACS),,,,,,,,,,False,False,no_tradingview_match
-ZPYP,NEO,Stock,PayPal (PYPL) BMO CDR (CAD Hedged),ZPYP,"PayPal Holdings, Inc. Unsponsored Canadian Depository Receipt Hedged Reg S",NEO,dr,,CA70452E1051,Commercial Services,Miscellaneous Commercial Services,United States,False,True,name_mismatch
-ZSB,NYSE ARCA,ETF,USCF Sustainable Battery Metals Strategy Fund,ZSB,USCF Sustainable Battery Metals Strategy Fund,AMEX,fund,etf,US90290T8412,Miscellaneous,Investment Trusts/Mutual Funds,United States,True,True,accept
-ZSMC,NEO,Stock,SUPER MICRO COMPUTER (SMCI) BMO XDR (CAD HEDGED),ZSMC,"Super Micro Computer, Inc. Shs Unsponsored Canadian Depository Receipt Hedged Reg S",NEO,dr,,CA86805G1000,Electronic Technology,Computer Processing Hardware,United States,False,True,name_mismatch
-ZTL.F,TSX,ETF,BMO Long-Term US Treasury Bond Index (Hedged Units),,,,,,,,,,False,False,no_tradingview_match
-ZTM-U,NEO,ETF,BMO MID-TERM US TREASURY BOND INDEX ETF,,,,,,,,,,False,False,no_tradingview_match
-ZUMA,PSX,Stock,Zuma Resources Ltd.,ZUMA,Zuma Resources Limited,PSX,stock,common,PK0045101018,Process Industries,Textiles,Pakistan,True,True,accept
-ZUS,TSX,ETF,BMO Ultra Short-Term US Bond ETF,,,,,,,,,,False,False,no_tradingview_match
-ZVST,NEO,Stock,VISTRA (VST) BMO CDR (CAD HEDGED),ZVST,Vistra Corp. Canadian Depositary Receipt Repr Shs Reg S (CAD Hedged),NEO,dr,,CA92842T1057,Utilities,Electric Utilities,United States,False,True,name_mismatch
-ZWMT,NEO,Stock,WALMART (WMT) BMO CDR (CAD HEDGED),ZWMT,Walmart Inc. Shs Unsponsored Canadian Depository Receipt Hedged Reg S,NEO,dr,,CA93267J1012,Retail Trade,Specialty Stores,United States,False,True,name_mismatch
-ZXOM,NEO,Stock,EXXON MOBIL (XOM) BMO CDR (CAD HEDGED),ZXOM,Exxon Mobil Corporation Shs Unsponsored Canadian Depository Receipt Hedged,NEO,dr,,CA30191G1000,Energy Minerals,Integrated Oil,United States,False,True,name_mismatch
-ZYNS,TSX,Stock,Philip Morris CDR (CAD Hedged),ZYNS,Philip Morris International Inc. Unsponsored Canadian Depository Receipt Hedged Reg S,TSX,dr,,CA7183911055,Consumer Non-Durables,Tobacco,United States,False,True,name_mismatch
-ZZD,JSE,Stock,Zeda Ltd.,ZZD,Zeda Limited,JSE,stock,common,ZAE000315768,Finance,Finance/Rental/Leasing,South Africa,False,True,name_mismatch

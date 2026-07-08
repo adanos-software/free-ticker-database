@@ -12,7 +12,11 @@ from scripts.build_isin_validation_report import (
     norm_ticker,
     name_tokens,
     classify,
+    build_residual_triage,
     compute_detected,
+    enrich_mismatch,
+    row_cache_fingerprint,
+    select_valid_cache,
 )
 
 
@@ -93,3 +97,120 @@ def test_compute_detected():
     assert compute_detected(set(), None) is False          # first run, none
     assert compute_detected(keys, keys) is False           # unchanged
     assert compute_detected(keys, {"US0378331005"}) is True  # new mismatch appeared
+
+
+def test_enrich_mismatch_adds_review_required_triage():
+    enriched = enrich_mismatch(
+        {
+            "isin": "IL0011410359",
+            "ticker": "EMCO",
+            "exchange": "PSX",
+            "name": "Emco Industries Ltd",
+            "figi_tickers": ["PEAX"],
+            "figi_name": "PEAX SOLUTIONS LTD",
+        }
+    )
+
+    assert enriched["triage_decision"] == "review_required_openfigi_resolves_different_security"
+    assert enriched["triage_bucket"] == "possible_wrong_or_stale_isin"
+    assert "PEAX" in enriched["triage_rationale"]
+    assert "metadata override" in enriched["next_action"]
+
+
+def test_build_residual_triage_counts_mismatch_and_no_data_by_exchange():
+    verdicts = {
+        "IL0011410359": "mismatch",
+        "US0378331005": "match",
+        "PK0000001012": "no_data",
+    }
+    mismatches = [
+        enrich_mismatch(
+            {
+                "isin": "IL0011410359",
+                "ticker": "EMCO",
+                "exchange": "PSX",
+                "name": "Emco Industries Ltd",
+                "figi_tickers": ["PEAX"],
+                "figi_name": "PEAX SOLUTIONS LTD",
+            }
+        )
+    ]
+    isin_rows = {
+        "IL0011410359": {"exchange": "PSX"},
+        "US0378331005": {"exchange": "NASDAQ"},
+        "PK0000001012": {"exchange": "PSX"},
+    }
+
+    triage = build_residual_triage(verdicts, mismatches, isin_rows)
+
+    assert triage["mismatch_rows"] == 1
+    assert triage["no_data_rows"] == 1
+    assert triage["mismatch_by_exchange"] == {"PSX": 1}
+    assert triage["no_data_by_exchange"] == {"PSX": 1}
+    assert triage["remaining_unclassified_residuals"] == 0
+
+
+def test_select_valid_cache_invalidates_when_cached_row_fingerprint_changes():
+    rows = {
+        "PK0087206139": {
+            "ticker": "UBLPETF",
+            "exchange": "PSX",
+            "name": "UBL Pakistan Enterprise ETF",
+        }
+    }
+    old_row = {"ticker": "UBLPETF", "exchange": "PSX", "name": "UBLPakistanETF XD"}
+
+    verdicts, detail = select_valid_cache(
+        rows,
+        {"PK0087206139": "mismatch"},
+        {},
+        {"PK0087206139": row_cache_fingerprint(old_row)},
+    )
+
+    assert verdicts == {}
+    assert detail == {}
+
+
+def test_select_valid_cache_invalidates_legacy_mismatch_when_detail_name_changes():
+    rows = {
+        "PK0087206139": {
+            "ticker": "UBLPETF",
+            "exchange": "PSX",
+            "name": "UBL Pakistan Enterprise ETF",
+        }
+    }
+    mismatch_detail = {
+        "PK0087206139": {
+            "isin": "PK0087206139",
+            "ticker": "UBLPETF",
+            "exchange": "PSX",
+            "name": "UBLPakistanETF XD",
+            "figi_tickers": ["UBLFETF"],
+            "figi_name": "UBL PAKISTAN ENTERPRISE-ETF",
+        }
+    }
+
+    verdicts, detail = select_valid_cache(rows, {"PK0087206139": "mismatch"}, mismatch_detail, {})
+
+    assert verdicts == {}
+    assert detail == {}
+
+
+def test_select_valid_cache_carries_matching_fingerprinted_row():
+    rows = {
+        "US0378331005": {
+            "ticker": "AAPL",
+            "exchange": "NASDAQ",
+            "name": "Apple Inc",
+        }
+    }
+
+    verdicts, detail = select_valid_cache(
+        rows,
+        {"US0378331005": "match"},
+        {},
+        {"US0378331005": row_cache_fingerprint(rows["US0378331005"])},
+    )
+
+    assert verdicts == {"US0378331005": "match"}
+    assert detail == {}

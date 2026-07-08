@@ -151,8 +151,24 @@ def load_missing_rows(path: Path, exchanges: set[str], asset_types: set[str]) ->
         if row.get("exchange") in exchanges
         and row.get("asset_type") in asset_types
         and not row.get("isin", "").strip()
-        and row.get("exchange") in EXCHANGE_TO_FIGI
     ]
+
+
+def unsupported_exchange_result(row: dict[str, str]) -> dict[str, Any]:
+    return {
+        "ticker": row["ticker"],
+        "exchange": row["exchange"],
+        "asset_type": row["asset_type"],
+        "name": row["name"],
+        "figi_exch_code": "",
+        "openfigi_ticker": "",
+        "openfigi_name": "",
+        "openfigi_security_type": "",
+        "openfigi_isin": "",
+        "number_tokens_match": False,
+        "name_match": False,
+        "decision": "unsupported_openfigi_exchange",
+    }
 
 
 def fetch_openfigi(jobs: list[dict[str, str]], api_key: str, timeout_seconds: float) -> list[dict[str, Any]]:
@@ -228,20 +244,28 @@ def verify_rows(
     delay_seconds: float,
     timeout_seconds: float,
 ) -> list[dict[str, Any]]:
-    results: list[dict[str, Any]] = []
-    for start in range(0, len(rows), batch_size):
-        batch = rows[start : start + batch_size]
+    results: list[dict[str, Any] | None] = [None] * len(rows)
+    supported_rows: list[tuple[int, dict[str, str]]] = []
+    for index, row in enumerate(rows):
+        if row["exchange"] not in EXCHANGE_TO_FIGI:
+            results[index] = unsupported_exchange_result(row)
+            continue
+        supported_rows.append((index, row))
+
+    for start in range(0, len(supported_rows), batch_size):
+        batch_pairs = supported_rows[start : start + batch_size]
+        batch = [row for _, row in batch_pairs]
         jobs = [
             {"idType": "TICKER", "idValue": row["ticker"], "exchCode": EXCHANGE_TO_FIGI[row["exchange"]]}
             for row in batch
         ]
         payload = fetch_openfigi(jobs, api_key, timeout_seconds)
-        for row, result in zip(batch, payload):
+        for (index, row), result in zip(batch_pairs, payload):
             candidates = result.get("data", []) if isinstance(result, dict) else []
-            results.append(evaluate_candidate(row, EXCHANGE_TO_FIGI[row["exchange"]], candidates))
+            results[index] = evaluate_candidate(row, EXCHANGE_TO_FIGI[row["exchange"]], candidates)
         if delay_seconds:
             time.sleep(delay_seconds)
-    return results
+    return [result for result in results if result is not None]
 
 
 def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]]:
@@ -263,7 +287,7 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
 def write_report_csv(path: Path, rows: list[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=REPORT_FIELDNAMES)
+        writer = csv.DictWriter(handle, fieldnames=REPORT_FIELDNAMES, lineterminator="\n")
         writer.writeheader()
         for row in rows:
             writer.writerow({field: row.get(field, "") for field in REPORT_FIELDNAMES})

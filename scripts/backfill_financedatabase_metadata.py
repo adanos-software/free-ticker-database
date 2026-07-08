@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import re
 import sys
 from collections import Counter, defaultdict
 from dataclasses import dataclass
@@ -180,6 +181,22 @@ def index_existing_isin_rows(rows: list[dict[str, str]]) -> dict[str, list[dict[
     return indexed
 
 
+def load_previously_cleared_isin_candidates(path: Path) -> dict[tuple[str, str], set[str]]:
+    if not path.exists():
+        return {}
+    with path.open(newline="", encoding="utf-8") as handle:
+        rows = list(csv.DictReader(handle))
+    cleared: dict[tuple[str, str], set[str]] = defaultdict(set)
+    for row in rows:
+        if row.get("field") != "isin" or row.get("decision") != "clear":
+            continue
+        key = (row.get("ticker", ""), row.get("exchange", ""))
+        for candidate in re.findall(r"\b[A-Z]{2}[A-Z0-9]{10}\b", row.get("reason", "").upper()):
+            if is_valid_isin(candidate):
+                cleared[key].add(candidate)
+    return dict(cleared)
+
+
 def load_financedatabase_rows() -> list[FinanceDatabaseRow]:
     try:
         import financedatabase as fd
@@ -270,6 +287,7 @@ def evaluate_financedatabase_row(
     include_sector: bool = True,
     include_isin: bool = True,
     existing_isin_rows_by_isin: dict[str, list[dict[str, str]]] | None = None,
+    previously_cleared_isin_candidates: dict[tuple[str, str], set[str]] | None = None,
 ) -> dict[str, Any]:
     base = {
         "ticker": row["ticker"],
@@ -319,6 +337,9 @@ def evaluate_financedatabase_row(
             return {**base, "decision": "invalid_isin"}
         if not expected_isin_prefix_match(row["exchange"], candidate.isin):
             return {**base, "decision": "isin_country_mismatch"}
+        cleared_isins = (previously_cleared_isin_candidates or {}).get((row["ticker"], row["exchange"]), set())
+        if candidate.isin in cleared_isins:
+            return {**base, "decision": "isin_candidate_previously_cleared"}
         existing_isin_peers = (existing_isin_rows_by_isin or {}).get(candidate.isin, [])
         if any(
             not (
@@ -348,6 +369,7 @@ def verify_financedatabase_metadata(
     include_sector: bool = True,
     include_isin: bool = True,
     existing_isin_rows_by_isin: dict[str, list[dict[str, str]]] | None = None,
+    previously_cleared_isin_candidates: dict[tuple[str, str], set[str]] | None = None,
 ) -> list[dict[str, Any]]:
     indexed_rows = index_financedatabase_rows(financedatabase_rows)
     return [
@@ -357,6 +379,7 @@ def verify_financedatabase_metadata(
             include_sector=include_sector,
             include_isin=include_isin,
             existing_isin_rows_by_isin=existing_isin_rows_by_isin,
+            previously_cleared_isin_candidates=previously_cleared_isin_candidates,
         )
         for row in rows
     ]
@@ -397,7 +420,7 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
 def write_report_csv(path: Path, rows: list[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=REPORT_FIELDNAMES)
+        writer = csv.DictWriter(handle, fieldnames=REPORT_FIELDNAMES, lineterminator="\n")
         writer.writeheader()
         for row in rows:
             writer.writerow({field: row.get(field, "") for field in REPORT_FIELDNAMES})
@@ -447,6 +470,7 @@ def main(argv: list[str] | None = None) -> None:
         include_sector=not args.disable_sector,
         include_isin=args.enable_isin,
         existing_isin_rows_by_isin=index_existing_isin_rows(load_ticker_rows(LISTINGS_CSV)),
+        previously_cleared_isin_candidates=load_previously_cleared_isin_candidates(args.metadata_updates_csv),
     )
     updates = build_metadata_updates(results)
 

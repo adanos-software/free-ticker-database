@@ -1,66 +1,66 @@
 # B3 Residual Sector Review
 
-Generated at: `2026-07-01T05:20:19Z`
+Generated at: `2026-07-08T04:36:06Z`
 
 This report tracks remaining B3 stock-sector gaps after the official B3 sector-classification probe. It does not fill values.
 
 ## Summary
 
-- Residual B3 stock-sector gaps: `5`
+- Residual B3 stock-sector gaps: `1`
 
 ## Residual Decisions
 
 | Decision | Rows |
 |---|---:|
-| accepted_source_gap_no_b3_classification_code_match | 5 |
+| accepted_source_gap_no_b3_classification_code_match | 1 |
 
 ## Review Priorities
 
 | Priority | Rows |
 |---|---:|
-| P3 | 5 |
+| P3 | 1 |
 
 ## Review Buckets
 
 | Bucket | Rows |
 |---|---:|
-| no_b3_classification_code_match_source_gap | 5 |
+| no_b3_classification_code_match_source_gap | 1 |
 
 ## Apply Eligibility
 
 | Eligibility | Rows |
 |---|---:|
-| source_gap_keep_blank_until_official_taxonomy_evidence | 5 |
+| source_gap_keep_blank_until_official_taxonomy_evidence | 1 |
 
 ## Verification Evidence
 
 | Evidence Gate | Rows |
 |---|---:|
-| stronger_official_b3_or_issuer_taxonomy_source_with_exact_listing_match | 5 |
+| stronger_official_b3_or_issuer_taxonomy_source_with_exact_listing_match | 1 |
 
 ## Review Strategies
 
 | Strategy | Rows |
 |---|---:|
-| keep_blank_until_stronger_official_b3_or_issuer_taxonomy | 5 |
+| keep_blank_until_stronger_official_b3_or_issuer_taxonomy | 1 |
 
 ## Top Review Batches
 
 | Priority | Bucket | Gap class | B3 code shape | Asset type | Rows | Strategy | Evidence gate | Recommended next source | Source gate |
 |---|---|---|---|---|---:|---|---|---|---|
-| P3 | no_b3_classification_code_match_source_gap | official_industry_taxonomy_unavailable_gap | alpha_b3_code | Stock | 5 | keep_blank_until_stronger_official_b3_or_issuer_taxonomy | stronger_official_b3_or_issuer_taxonomy_source_with_exact_listing_match | Stronger official B3 or issuer taxonomy source exposing sector for the exact listing. | Keep stock_sector blank until official B3 or issuer taxonomy evidence matches the exact listing. |
+| P3 | no_b3_classification_code_match_source_gap | official_industry_taxonomy_unavailable_gap | alpha_b3_code | Stock | 1 | keep_blank_until_stronger_official_b3_or_issuer_taxonomy | stronger_official_b3_or_issuer_taxonomy_source_with_exact_listing_match | Stronger official B3 or issuer taxonomy source exposing sector for the exact listing. | Keep stock_sector blank until official B3 or issuer taxonomy evidence matches the exact listing. |
 
 ## B3 Probe Decisions
 
 | Probe decision | Rows |
 |---|---:|
-| no_b3_code_match | 5 |
+| no_b3_code_match | 1 |
 
 ## B3 Code Shape Diagnostics
 
 | Shape | Rows |
 |---|---:|
-| alpha_b3_code | 5 |
+| alpha_b3_code | 1 |
 
 ### Alphanumeric B3 Code Examples
 
@@ -71,10 +71,6 @@ This report tracks remaining B3 stock-sector gaps after the official B3 sector-c
 
 | Listing key | Priority | Bucket | Name | B3 code | Probe | Decision |
 |---|---|---|---|---|---|---|
-| B3::CPIS12 | P3 | no_b3_classification_code_match_source_gap | EQUATORIAL PIAUI DISTRIBUIDORA DE ENERGIA S.A | CPIS | no_b3_code_match | accepted_source_gap_no_b3_classification_code_match |
-| B3::IPNN3 | P3 | no_b3_classification_code_match_source_gap | TESTE IPN VS SA | IPNN | no_b3_code_match | accepted_source_gap_no_b3_classification_code_match |
-| B3::OBIO3 | P3 | no_b3_classification_code_match_source_gap | OLEOPLAN S.A - ÓLEOS VEGETAIS PLANALTO | OBIO | no_b3_code_match | accepted_source_gap_no_b3_classification_code_match |
-| B3::PLSP3 | P3 | no_b3_classification_code_match_source_gap | PLASCORP PARTICIPAÇÕES S.A. | PLSP | no_b3_code_match | accepted_source_gap_no_b3_classification_code_match |
 | B3::RJSA3 | P3 | no_b3_classification_code_match_source_gap | RJS S.A. | RJSA | no_b3_code_match | accepted_source_gap_no_b3_classification_code_match |
 
 ## Policy

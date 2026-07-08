@@ -1,0 +1,75 @@
+{
+  "rows": [
+    {
+      "asset_type": "Stock",
+      "decision": "no_qfma_company_code_match",
+      "exchange": "QSE",
+      "identity_gate_context": "ticker_exact_match=false;valid_isin_checksum=false;qfma_active_source=false;name_match=false",
+      "name": "Mosanada",
+      "name_match": false,
+      "qfma_active": "",
+      "qfma_company_code": "",
+      "qfma_company_name": "",
+      "qfma_isin": "",
+      "qfma_sector": "",
+      "source_url": "https://www.qfma.org.qa/English/Securities/MainMarketShares/_vti_bin/QFMA/Service.svc/GetAllCompaniesMainMarket",
+      "ticker": "MFMS",
+      "verification_evidence_required": "official_qfma_market_row_with_exact_company_code_and_valid_isin_checksum"
+    },
+    {
+      "asset_type": "ETF",
+      "decision": "accept",
+      "exchange": "QSE",
+      "identity_gate_context": "ticker_exact_match=true;valid_isin_checksum=true;qfma_active_source=true;name_match=true",
+      "name": "Al Rayan Qatar ETF",
+      "name_match": true,
+      "qfma_active": "true",
+      "qfma_company_code": "QATR",
+      "qfma_company_name": "Al Rayan Qatar ETF",
+      "qfma_isin": "QA000F33F9Z8",
+      "qfma_sector": "",
+      "source_url": "https://www.qfma.org.qa/English/Securities/ETFs/_vti_bin/QFMA/Service.svc/GetAllListedETFS",
+      "ticker": "QATR",
+      "verification_evidence_required": "official_qfma_market_row_with_exact_company_code_and_valid_isin_checksum"
+    },
+    {
+      "asset_type": "ETF",
+      "decision": "accept",
+      "exchange": "QSE",
+      "identity_gate_context": "ticker_exact_match=true;valid_isin_checksum=true;qfma_active_source=true;name_match=true",
+      "name": "QE Index ETF",
+      "name_match": true,
+      "qfma_active": "true",
+      "qfma_company_code": "QETF",
+      "qfma_company_name": "QE Index ETF",
+      "qfma_isin": "QA0001W26QQ0",
+      "qfma_sector": "",
+      "source_url": "https://www.qfma.org.qa/English/Securities/ETFs/_vti_bin/QFMA/Service.svc/GetAllListedETFS",
+      "ticker": "QETF",
+      "verification_evidence_required": "official_qfma_market_row_with_exact_company_code_and_valid_isin_checksum"
+    }
+  ],
+  "summary": {
+    "accepted_isin_updates": 2,
+    "applied": true,
+    "candidates": 3,
+    "csv_out": "data/qfma_verification/qse_isin_backfill.csv",
+    "decision_counts": {
+      "accept": 2,
+      "no_qfma_company_code_match": 1
+    },
+    "generated_at": "2026-07-07T17:37:41Z",
+    "json_out": "data/qfma_verification/qse_isin_backfill.json",
+    "policy": {
+      "no_guessing": "ISIN updates require exact QSE ticker to QFMA CompanyCode match and a valid checksum.",
+      "official_source": "QFMA main-market, venture-market, and ETF service responses.",
+      "traceability": "Every target row is written to the probe CSV with source and identity gate context."
+    },
+    "qfma_rows": 56,
+    "source_urls": [
+      "https://www.qfma.org.qa/English/Securities/MainMarketShares/_vti_bin/QFMA/Service.svc/GetAllCompaniesMainMarket",
+      "https://www.qfma.org.qa/English/Securities/SecondMarketShares/_vti_bin/QFMA/Service.svc/GetAllCompaniesSecondMarket",
+      "https://www.qfma.org.qa/English/Securities/ETFs/_vti_bin/QFMA/Service.svc/GetAllListedETFS"
+    ]
+  }
+}

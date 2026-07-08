@@ -5,6 +5,7 @@ from scripts.backfill_sector_from_isin_peers import (
     evaluate_sector_peer_row,
     index_peer_sectors,
     verify_sector_peers,
+    write_report_csv,
 )
 
 
@@ -89,3 +90,26 @@ def test_build_metadata_updates_emits_sector_override():
             "reason": "Sector/category propagated from same-ISIN listing peers after requiring the primary row to be missing sector and all same-asset peer sectors to normalize to one value.",
         }
     ]
+
+
+def test_write_report_csv_uses_lf_line_endings(tmp_path):
+    path = tmp_path / "sector_backfill.csv"
+
+    write_report_csv(
+        path,
+        [
+            {
+                "ticker": "ABC",
+                "exchange": "LSE",
+                "asset_type": "Stock",
+                "name": "ABC PLC",
+                "isin": "DE000ABC1234",
+                "sector_update": "Industrials",
+                "decision": "accept",
+            }
+        ],
+    )
+
+    content = path.read_bytes()
+    assert b"\r\n" not in content
+    assert content.endswith(b"\n")

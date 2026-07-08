@@ -18,7 +18,8 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.lib.dataio import merge_metadata_updates
-from scripts.rebuild_dataset import LISTINGS_CSV, alias_matches_company, is_valid_isin, normalize_sector
+from scripts.lib.normalize import names_match
+from scripts.rebuild_dataset import LISTINGS_CSV, is_valid_isin, normalize_sector
 
 DEFAULT_OUTPUT_DIR = ROOT / "data" / "stockanalysis_verification"
 DEFAULT_CSV_OUT = DEFAULT_OUTPUT_DIR / "stockanalysis_list_sector_backfill.csv"
@@ -111,6 +112,15 @@ def normalize_source_symbol(value: str, prefix: str) -> str:
 
 def normalize_stockanalysis_sector(value: str) -> str:
     return normalize_sector(value.strip(), "Stock")
+
+
+STOCKANALYSIS_INDUSTRY_SECTOR_MAP = {
+    "metal mining": "Materials",
+}
+
+
+def normalize_stockanalysis_industry_sector(value: str) -> str:
+    return STOCKANALYSIS_INDUSTRY_SECTOR_MAP.get(" ".join(value.lower().split()), "")
 
 
 def normalize_stockanalysis_etf_category(value: str) -> str:
@@ -277,7 +287,7 @@ def evaluate_row(row: dict[str, str], source_row: StockAnalysisListRow | None) -
 
     name = row.get("name", "")
     source_name = source_row.name
-    name_match = alias_matches_company(name, source_name) or alias_matches_company(source_name, name)
+    name_match = names_match(name, source_name) or names_match(source_name, name)
     if not name_match:
         return {**base, "decision": "name_mismatch"}
 
@@ -286,6 +296,8 @@ def evaluate_row(row: dict[str, str], source_row: StockAnalysisListRow | None) -
     category_update = ""
     if row.get("asset_type") == "Stock":
         sector = normalize_stockanalysis_sector(source_row.sector)
+        if not sector:
+            sector = normalize_stockanalysis_industry_sector(source_row.industry)
         sector_update = sector if not row.get("stock_sector", "").strip() and sector else ""
     elif row.get("asset_type") == "ETF":
         category = normalize_stockanalysis_etf_category(source_row.category)
@@ -353,7 +365,7 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
                     "proposed_value": result["sector_update"],
                     "confidence": "0.74",
                     "reason": (
-                        "StockAnalysis exchange list screener supplied sector metadata for a row missing stock_sector; "
+                        "StockAnalysis exchange list screener supplied sector/industry metadata for a row missing stock_sector; "
                         "accepted as reviewed secondary metadata after exact exchange/symbol match and issuer-name gate. "
                         f"Source: {result['source_url']}"
                     ),
@@ -381,7 +393,7 @@ def build_metadata_updates(results: list[dict[str, Any]]) -> list[dict[str, str]
 def write_report_csv(path: Path, rows: list[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=REPORT_FIELDNAMES)
+        writer = csv.DictWriter(handle, fieldnames=REPORT_FIELDNAMES, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 

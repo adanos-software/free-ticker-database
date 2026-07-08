@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-07-01T05:20:19Z",
+    "generated_at": "2026-07-08T04:36:06Z",
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "source_gap_classification_csv": "data/reports/source_gap_classification.csv",
@@ -14,31 +14,31 @@
     }
   },
   "summary": {
-    "generated_at": "2026-07-01T05:20:19Z",
-    "rows": 5,
+    "generated_at": "2026-07-08T04:36:06Z",
+    "rows": 1,
     "gap_class_totals": {
-      "official_industry_taxonomy_unavailable_gap": 5
+      "official_industry_taxonomy_unavailable_gap": 1
     },
     "residual_decision_totals": {
-      "accepted_source_gap_no_b3_classification_code_match": 5
+      "accepted_source_gap_no_b3_classification_code_match": 1
     },
     "review_bucket_totals": {
-      "no_b3_classification_code_match_source_gap": 5
+      "no_b3_classification_code_match_source_gap": 1
     },
     "review_priority_totals": {
-      "P3": 5
+      "P3": 1
     },
     "apply_eligibility_totals": {
-      "source_gap_keep_blank_until_official_taxonomy_evidence": 5
+      "source_gap_keep_blank_until_official_taxonomy_evidence": 1
     },
     "verification_evidence_required_totals": {
-      "stronger_official_b3_or_issuer_taxonomy_source_with_exact_listing_match": 5
+      "stronger_official_b3_or_issuer_taxonomy_source_with_exact_listing_match": 1
     },
     "b3_probe_decision_totals": {
-      "no_b3_code_match": 5
+      "no_b3_code_match": 1
     },
     "review_strategy_totals": {
-      "keep_blank_until_stronger_official_b3_or_issuer_taxonomy": 5
+      "keep_blank_until_stronger_official_b3_or_issuer_taxonomy": 1
     },
     "top_b3_sector_review_batches": [
       {
@@ -47,7 +47,7 @@
         "gap_class": "official_industry_taxonomy_unavailable_gap",
         "b3_code_shape": "alpha_b3_code",
         "asset_type": "Stock",
-        "rows": 5,
+        "rows": 1,
         "review_strategy": "keep_blank_until_stronger_official_b3_or_issuer_taxonomy",
         "verification_evidence_required": "stronger_official_b3_or_issuer_taxonomy_source_with_exact_listing_match",
         "recommended_next_source": "Stronger official B3 or issuer taxonomy source exposing sector for the exact listing.",
@@ -55,7 +55,7 @@
       }
     ],
     "b3_code_shape_totals": {
-      "alpha_b3_code": 5
+      "alpha_b3_code": 1
     },
     "alphanumeric_b3_code_rows": 0,
     "alphanumeric_b3_code_examples": [],
@@ -66,122 +66,6 @@
     }
   },
   "rows": [
-    {
-      "listing_key": "B3::CPIS12",
-      "ticker": "CPIS12",
-      "exchange": "B3",
-      "asset_type": "Stock",
-      "name": "EQUATORIAL PIAUI DISTRIBUIDORA DE ENERGIA S.A",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "source_gap_context": "gap_class=official_industry_taxonomy_unavailable_gap;source_of_truth_outcome=accepted_source_gap;review_needed=true",
-      "review_needed": "true",
-      "recommended_next_source": "Stronger official B3 or issuer taxonomy source exposing sector for the exact listing.",
-      "source_gate": "Keep stock_sector blank until official B3 or issuer taxonomy evidence matches the exact listing.",
-      "b3_probe_decision": "no_b3_code_match",
-      "b3_code": "CPIS",
-      "b3_name": "",
-      "b3_sector_pt": "",
-      "b3_subsector": "",
-      "b3_segment": "",
-      "b3_sector_update": "",
-      "b3_source_url": "",
-      "official_source_context": "b3_probe_decision=no_b3_code_match;b3_code=CPIS;b3_sector_update=none;b3_source_url=none",
-      "residual_decision": "accepted_source_gap_no_b3_classification_code_match",
-      "review_bucket": "no_b3_classification_code_match_source_gap",
-      "review_priority": "P3",
-      "review_strategy": "keep_blank_until_stronger_official_b3_or_issuer_taxonomy",
-      "apply_eligibility": "source_gap_keep_blank_until_official_taxonomy_evidence",
-      "verification_evidence_required": "stronger_official_b3_or_issuer_taxonomy_source_with_exact_listing_match",
-      "residual_review_context": "residual_decision=accepted_source_gap_no_b3_classification_code_match;review_bucket=no_b3_classification_code_match_source_gap;apply_eligibility=source_gap_keep_blank_until_official_taxonomy_evidence;verification_evidence_required=stronger_official_b3_or_issuer_taxonomy_source_with_exact_listing_match"
-    },
-    {
-      "listing_key": "B3::IPNN3",
-      "ticker": "IPNN3",
-      "exchange": "B3",
-      "asset_type": "Stock",
-      "name": "TESTE IPN VS SA",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "source_gap_context": "gap_class=official_industry_taxonomy_unavailable_gap;source_of_truth_outcome=accepted_source_gap;review_needed=true",
-      "review_needed": "true",
-      "recommended_next_source": "Stronger official B3 or issuer taxonomy source exposing sector for the exact listing.",
-      "source_gate": "Keep stock_sector blank until official B3 or issuer taxonomy evidence matches the exact listing.",
-      "b3_probe_decision": "no_b3_code_match",
-      "b3_code": "IPNN",
-      "b3_name": "",
-      "b3_sector_pt": "",
-      "b3_subsector": "",
-      "b3_segment": "",
-      "b3_sector_update": "",
-      "b3_source_url": "",
-      "official_source_context": "b3_probe_decision=no_b3_code_match;b3_code=IPNN;b3_sector_update=none;b3_source_url=none",
-      "residual_decision": "accepted_source_gap_no_b3_classification_code_match",
-      "review_bucket": "no_b3_classification_code_match_source_gap",
-      "review_priority": "P3",
-      "review_strategy": "keep_blank_until_stronger_official_b3_or_issuer_taxonomy",
-      "apply_eligibility": "source_gap_keep_blank_until_official_taxonomy_evidence",
-      "verification_evidence_required": "stronger_official_b3_or_issuer_taxonomy_source_with_exact_listing_match",
-      "residual_review_context": "residual_decision=accepted_source_gap_no_b3_classification_code_match;review_bucket=no_b3_classification_code_match_source_gap;apply_eligibility=source_gap_keep_blank_until_official_taxonomy_evidence;verification_evidence_required=stronger_official_b3_or_issuer_taxonomy_source_with_exact_listing_match"
-    },
-    {
-      "listing_key": "B3::OBIO3",
-      "ticker": "OBIO3",
-      "exchange": "B3",
-      "asset_type": "Stock",
-      "name": "OLEOPLAN S.A - ÓLEOS VEGETAIS PLANALTO",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "source_gap_context": "gap_class=official_industry_taxonomy_unavailable_gap;source_of_truth_outcome=accepted_source_gap;review_needed=true",
-      "review_needed": "true",
-      "recommended_next_source": "Stronger official B3 or issuer taxonomy source exposing sector for the exact listing.",
-      "source_gate": "Keep stock_sector blank until official B3 or issuer taxonomy evidence matches the exact listing.",
-      "b3_probe_decision": "no_b3_code_match",
-      "b3_code": "OBIO",
-      "b3_name": "",
-      "b3_sector_pt": "",
-      "b3_subsector": "",
-      "b3_segment": "",
-      "b3_sector_update": "",
-      "b3_source_url": "",
-      "official_source_context": "b3_probe_decision=no_b3_code_match;b3_code=OBIO;b3_sector_update=none;b3_source_url=none",
-      "residual_decision": "accepted_source_gap_no_b3_classification_code_match",
-      "review_bucket": "no_b3_classification_code_match_source_gap",
-      "review_priority": "P3",
-      "review_strategy": "keep_blank_until_stronger_official_b3_or_issuer_taxonomy",
-      "apply_eligibility": "source_gap_keep_blank_until_official_taxonomy_evidence",
-      "verification_evidence_required": "stronger_official_b3_or_issuer_taxonomy_source_with_exact_listing_match",
-      "residual_review_context": "residual_decision=accepted_source_gap_no_b3_classification_code_match;review_bucket=no_b3_classification_code_match_source_gap;apply_eligibility=source_gap_keep_blank_until_official_taxonomy_evidence;verification_evidence_required=stronger_official_b3_or_issuer_taxonomy_source_with_exact_listing_match"
-    },
-    {
-      "listing_key": "B3::PLSP3",
-      "ticker": "PLSP3",
-      "exchange": "B3",
-      "asset_type": "Stock",
-      "name": "PLASCORP PARTICIPAÇÕES S.A.",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "source_gap_context": "gap_class=official_industry_taxonomy_unavailable_gap;source_of_truth_outcome=accepted_source_gap;review_needed=true",
-      "review_needed": "true",
-      "recommended_next_source": "Stronger official B3 or issuer taxonomy source exposing sector for the exact listing.",
-      "source_gate": "Keep stock_sector blank until official B3 or issuer taxonomy evidence matches the exact listing.",
-      "b3_probe_decision": "no_b3_code_match",
-      "b3_code": "PLSP",
-      "b3_name": "",
-      "b3_sector_pt": "",
-      "b3_subsector": "",
-      "b3_segment": "",
-      "b3_sector_update": "",
-      "b3_source_url": "",
-      "official_source_context": "b3_probe_decision=no_b3_code_match;b3_code=PLSP;b3_sector_update=none;b3_source_url=none",
-      "residual_decision": "accepted_source_gap_no_b3_classification_code_match",
-      "review_bucket": "no_b3_classification_code_match_source_gap",
-      "review_priority": "P3",
-      "review_strategy": "keep_blank_until_stronger_official_b3_or_issuer_taxonomy",
-      "apply_eligibility": "source_gap_keep_blank_until_official_taxonomy_evidence",
-      "verification_evidence_required": "stronger_official_b3_or_issuer_taxonomy_source_with_exact_listing_match",
-      "residual_review_context": "residual_decision=accepted_source_gap_no_b3_classification_code_match;review_bucket=no_b3_classification_code_match_source_gap;apply_eligibility=source_gap_keep_blank_until_official_taxonomy_evidence;verification_evidence_required=stronger_official_b3_or_issuer_taxonomy_source_with_exact_listing_match"
-    },
     {
       "listing_key": "B3::RJSA3",
       "ticker": "RJSA3",

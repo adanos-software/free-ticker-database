@@ -1,0 +1,44 @@
+{
+  "rows": [
+    {
+      "asset_type": "Stock",
+      "decision": "accept",
+      "exchange": "MSX",
+      "identity_gate_context": "symbol_exact_match=true;valid_isin_checksum=true;om_isin_prefix=true;issuer_registration_match=true;name_token_subset_match=true",
+      "issuer_registration_match": true,
+      "mcd_isin": "OM0000006755",
+      "mcd_issuer_name": "BAWAREQ NIZWA INTERNATIONAL FOR INVESTMENT SAOC",
+      "mcd_market_type": "Third Market",
+      "mcd_sector": "Services",
+      "mcd_security_name": "BAWAREQ NIZWA",
+      "mcd_security_symbol": "BWRQ",
+      "mcd_security_type": "BOND",
+      "name": "BAWAREQ NIZWA",
+      "name_token_subset_match": true,
+      "source_url": "https://www.mcd.om/en/Default/Statistic/ListedInstrumentsInfo",
+      "ticker": "BWRQ"
+    }
+  ],
+  "summary": {
+    "accepted_isin_updates": 1,
+    "applied": true,
+    "candidates": 1,
+    "csv_out": "data/mcd_verification/msx_isin_backfill.csv",
+    "decision_counts": {
+      "accept": 1
+    },
+    "generated_at": "2026-07-07T19:35:52Z",
+    "json_out": "data/mcd_verification/msx_isin_backfill.json",
+    "mcd_issuer_rows": 573,
+    "mcd_rows": 523,
+    "policy": {
+      "no_guessing": "ISIN updates require exact MSX symbol, instrument-name token subset, OM prefix, valid checksum, and issuer-registration confirmation when the MCD security type conflicts.",
+      "official_source": "Muscat Clearing & Depository ListedInstrumentsInfo instrument grid and IssuerRegistration selector.",
+      "traceability": "Every target row is written to the probe CSV with source and identity gate context."
+    },
+    "source_urls": [
+      "https://www.mcd.om/en/Default/Statistic/ListedInstrumentsInfo",
+      "https://www.mcd.om/en/Registration/Issuer/IssuerRegistration"
+    ]
+  }
+}

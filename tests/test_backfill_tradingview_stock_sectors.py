@@ -1,8 +1,13 @@
+import csv
+
 from scripts.backfill_tradingview_missing_isins import TradingViewRow
 from scripts.backfill_tradingview_stock_sectors import (
     build_metadata_updates,
     evaluate_row,
+    load_entry_quality_missing_stock_sector_rows,
     map_tradingview_sector,
+    names_match_after_security_suffix_noise,
+    write_report_csv,
 )
 
 
@@ -51,6 +56,58 @@ def test_map_tradingview_sector_to_canonical_stock_sector():
     assert map_tradingview_sector("Miscellaneous", "Investment Trusts/Mutual Funds") == ""
 
 
+def test_names_match_after_security_suffix_noise_handles_share_class_labels():
+    assert names_match_after_security_suffix_noise("DPC Holdings PLC", "DPC Holdings PLC Ordinary Shares")
+    assert names_match_after_security_suffix_noise("ITG Inc. Class A", "ITG, Inc. - Class A Common Stock")
+    assert not names_match_after_security_suffix_noise("ITG Energy Inc.", "ITG, Inc. - Class A Common Stock")
+
+
+def test_load_entry_quality_missing_stock_sector_rows_filters_supported_stock_issues(tmp_path):
+    path = tmp_path / "entry_quality.csv"
+    with path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=["ticker", "exchange", "asset_type", "name", "issue_types"],
+        )
+        writer.writeheader()
+        writer.writerows(
+            [
+                {
+                    "ticker": "BHP",
+                    "exchange": "ASX",
+                    "asset_type": "Stock",
+                    "name": "BHP Group Limited",
+                    "issue_types": "official_reference_gap|missing_stock_sector",
+                },
+                {
+                    "ticker": "ETF",
+                    "exchange": "ASX",
+                    "asset_type": "ETF",
+                    "name": "Example ETF",
+                    "issue_types": "missing_etf_category",
+                },
+                {
+                    "ticker": "AAA",
+                    "exchange": "BK",
+                    "asset_type": "Stock",
+                    "name": "Unsupported Exchange",
+                    "issue_types": "missing_stock_sector",
+                },
+                {
+                    "ticker": "OK",
+                    "exchange": "LSE",
+                    "asset_type": "Stock",
+                    "name": "Already Complete",
+                    "issue_types": "",
+                },
+            ]
+        )
+
+    rows = load_entry_quality_missing_stock_sector_rows(exchanges={"ASX", "BK", "LSE"}, entry_quality_csv=path)
+
+    assert [(row["ticker"], row["exchange"]) for row in rows] == [("BHP", "ASX")]
+
+
 def test_evaluate_row_accepts_clear_sector_match():
     result = evaluate_row(target_row(), tv_row())
     assert result["decision"] == "accept"
@@ -78,3 +135,12 @@ def test_build_metadata_updates_emits_stock_sector_update():
     assert updates[0]["field"] == "stock_sector"
     assert updates[0]["proposed_value"] == "Energy"
     assert updates[0]["confidence"] == "0.72"
+
+
+def test_write_report_csv_uses_lf_line_endings(tmp_path):
+    path = tmp_path / "report.csv"
+    write_report_csv(path, [evaluate_row(target_row(), tv_row())])
+
+    content = path.read_bytes()
+    assert b"\r\n" not in content
+    assert b"\n" in content

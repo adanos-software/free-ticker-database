@@ -12,6 +12,7 @@ from scripts.backfill_asx_isins import (
     load_asx_missing_isin_rows,
     parse_asx_isin_xls,
     strict_names_match,
+    write_report_csv,
 )
 
 
@@ -100,3 +101,28 @@ def test_build_metadata_updates_emits_isin_override():
             "reason": "Official ASX ISIN.xls lists this ASX code with a valid ISIN; accepted only after exact ASX code, issuer-name, numeric-token, and ISIN-checksum gates matched a current ASX row without ISIN.",
         }
     ]
+
+
+def test_write_report_csv_uses_lf_line_endings(tmp_path):
+    path = tmp_path / "missing_isin_backfill.csv"
+
+    write_report_csv(
+        path,
+        [
+            {
+                "ticker": "A2M",
+                "exchange": "ASX",
+                "asset_type": "Stock",
+                "target_name": "THE A2 MILK COMPANY LIMITED",
+                "asx_name": "THE A2 MILK COMPANY LIMITED",
+                "asx_security_type": "ORDINARY FULLY PAID",
+                "asx_isin": "NZATME0002S8",
+                "name_match": True,
+                "decision": "accept",
+            }
+        ],
+    )
+
+    content = path.read_bytes()
+    assert b"\r\n" not in content
+    assert content.endswith(b"\n")

@@ -1,0 +1,46 @@
+[
+  {
+    "confidence": "0.80",
+    "decision": "accept",
+    "evidence": "Issuer page describes a closed-end investment fund providing access to the private digital asset ecosystem.",
+    "exchange": "NYSE",
+    "field": "etf_category",
+    "proposed_value": "Alternative",
+    "source_name": "C1 Fund",
+    "source_url": "https://www.c1fund.com/",
+    "ticker": "CFND"
+  },
+  {
+    "confidence": "0.94",
+    "decision": "accept",
+    "evidence": "Official TotalEnergies investor page says NYSE-listed ordinary shares are transferable with the European ordinary-share line and identifies the European market shares by ISIN FR0000120271; Fidelity's NYSE TTE quote also reports ISIN FR0000120271.",
+    "exchange": "NYSE",
+    "field": "isin",
+    "proposed_value": "FR0000120271",
+    "source_name": "TotalEnergies",
+    "source_url": "https://totalenergies.com/investors/shares-and-dividends/totalenergies-shares/totalenergies-shares-listed-on-the-nyse",
+    "ticker": "TTE"
+  },
+  {
+    "confidence": "0.90",
+    "decision": "accept",
+    "evidence": "Issuer investor-relations page says WisdomTree common stock is listed on NYSE under symbol WT.",
+    "exchange": "NYSE",
+    "field": "asset_type",
+    "proposed_value": "Stock",
+    "source_name": "WisdomTree Investor Relations",
+    "source_url": "https://ir.wisdomtree.com/",
+    "ticker": "WT"
+  },
+  {
+    "confidence": "0.82",
+    "decision": "accept",
+    "evidence": "Issuer describes WisdomTree as a financial services and asset-management business.",
+    "exchange": "NYSE",
+    "field": "stock_sector",
+    "proposed_value": "Financials",
+    "source_name": "WisdomTree",
+    "source_url": "https://www.wisdomtree.com/",
+    "ticker": "WT"
+  }
+]

@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
 import json
+import subprocess
 
 import pytest
 
@@ -7,8 +8,11 @@ import scripts.build_drift_report as drift
 from scripts.build_drift_report import (
     build_markdown,
     dataset_built_at,
+    official_recall_regressions,
     pending_renames,
+    previous_drift_report,
     quality_indicators,
+    quality_regressions,
     rename_triage_rows,
     staleness_days,
 )
@@ -131,6 +135,83 @@ def test_quality_indicators_are_ints():
     assert isinstance(q, dict)
     for k, v in q.items():
         assert isinstance(v, int) and v >= 0
+
+
+def test_quality_regressions_compare_against_previous_report():
+    rows = quality_regressions(
+        {
+            "source_gap_rows": 11,
+            "expected_missing_primary_isin": 2,
+            "missing_stock_sector": 0,
+            "missing_etf_category": 1,
+        },
+        {
+            "quality_indicators": {
+                "source_gap_rows": 10,
+                "expected_missing_primary_isin": 2,
+                "missing_stock_sector": 1,
+                "missing_etf_category": 1,
+            }
+        },
+    )
+
+    assert rows == [{"metric": "source_gap_rows", "previous": 10, "current": 11, "delta": 1}]
+
+
+def test_previous_drift_report_prefers_git_head_baseline(tmp_path, monkeypatch):
+    report = tmp_path / "drift_report.json"
+    report.write_text(json.dumps({"quality_indicators": {"source_gap_rows": 99}}), encoding="utf-8")
+    monkeypatch.setattr(drift, "REPORT_JSON", report)
+
+    def fake_run(*args, **kwargs):
+        assert args[0][:2] == ["git", "show"]
+        return subprocess.CompletedProcess(
+            args=args[0],
+            returncode=0,
+            stdout=json.dumps({"quality_indicators": {"source_gap_rows": 10}}),
+            stderr="",
+        )
+
+    monkeypatch.setattr(drift.subprocess, "run", fake_run)
+
+    assert previous_drift_report()["quality_indicators"]["source_gap_rows"] == 10
+
+
+def test_official_recall_regressions_compare_missing_counts_by_exchange():
+    rows = official_recall_regressions(
+        {
+            "NYSE": {
+                "official_recall_missing": 3,
+                "collision_adjusted_recall_missing": 1,
+            },
+            "NASDAQ": {
+                "official_recall_missing": 1,
+                "collision_adjusted_recall_missing": 0,
+            },
+        },
+        {
+            "official_recall_indicators": {
+                "NYSE": {
+                    "official_recall_missing": 2,
+                    "collision_adjusted_recall_missing": 1,
+                },
+                "NASDAQ": {
+                    "official_recall_missing": 2,
+                    "collision_adjusted_recall_missing": 0,
+                },
+            }
+        },
+    )
+
+    assert rows == [
+        {
+            "exchange": "NYSE",
+            "metric": "official_recall_missing",
+            "previous": 2,
+            "current": 3,
+            "delta": 1,
+        }
+    ]
 
 
 def test_build_markdown_renders():

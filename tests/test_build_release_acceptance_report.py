@@ -63,6 +63,7 @@ from scripts.build_release_acceptance_report import (
     evaluate_deepseek_advisory_integrity,
     evaluate_deepseek_isin_collision_validation_gate,
     evaluate_deepseek_queue_advisory_policies,
+    evaluate_isin_validation_residual_triage_gate,
     evaluate_canada_scope_review_queue_gate,
     campaign_status_rows,
     evaluate_next_review_batch_visibility,
@@ -101,6 +102,7 @@ from scripts.build_release_acceptance_report import (
     evaluate_masterfile_collision_gate,
     evaluate_m3_correctness_campaigns_gate,
     evaluate_official_name_mismatch_backfill_gate,
+    evaluate_official_recall_exception_decisions,
     evaluate_ohlcv_plausibility_gate,
     evaluate_ohlcv_warning_review_gate,
     evaluate_otc_name_mismatch_action_queue_gate,
@@ -125,6 +127,7 @@ from scripts.build_release_acceptance_report import (
     evaluate_review_row_evidence,
     evaluate_review_row_traceability,
     evaluate_release_source_report_integrity,
+    evaluate_release_metadata,
     evaluate_etf_universe_completeness_gate,
     evaluate_cfi_code_review_gate,
     evaluate_primary_isin_completeness_gate,
@@ -194,6 +197,7 @@ def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> N
         RELEASE_SOURCE_REPORTS["deepseek_isin_collision_validation"]
         == "data/reports/deepseek_isin_collision_validation.json"
     )
+    assert RELEASE_SOURCE_REPORTS["isin_validation_report"] == "data/reports/isin_validation_report.json"
     assert (
         RELEASE_SOURCE_REPORTS["isin_identity_collision_review_queue"]
         == "data/reports/isin_identity_collision_review_queue.json"
@@ -220,6 +224,168 @@ def test_release_source_reports_include_source_gap_and_deepseek_artifacts() -> N
     assert RELEASE_SOURCE_REPORTS["primary_isin_completeness"] == "data/reports/primary_isin_completeness.json"
     assert RELEASE_SOURCE_REPORTS["etf_universe_completeness"] == "data/reports/etf_universe_completeness.json"
     assert RELEASE_SOURCE_REPORTS["cfi_code_review"] == "data/reports/cfi_code_review.json"
+
+
+def test_evaluate_release_metadata_requires_versioned_changelog_section() -> None:
+    result = evaluate_release_metadata(
+        version_text="3.32.01\n",
+        changelog_text="# Changelog\n\n## [3.32.01] - 2026-07-07\n",
+    )
+
+    assert result["passed"] is True
+    assert result["version"] == "3.32.01"
+
+
+def test_evaluate_release_metadata_fails_missing_changelog_section() -> None:
+    result = evaluate_release_metadata(
+        version_text="3.32.01\n",
+        changelog_text="# Changelog\n\n## [3.32.00] - 2026-07-07\n",
+    )
+
+    assert result["passed"] is False
+    assert result["changelog_has_version"] is False
+
+
+def test_evaluate_isin_validation_residual_triage_gate_accepts_classified_residuals() -> None:
+    result = evaluate_isin_validation_residual_triage_gate(
+        {
+            "partial": False,
+            "by_verdict": {"match": 10, "mismatch": 1, "no_data": 2},
+            "mismatch_count": 1,
+            "residual_triage": {
+                "policy": {
+                    "mismatch": "review required",
+                    "no_data": "provider coverage gap",
+                    "no_auto_apply": "no data changes",
+                },
+                "mismatch_rows": 1,
+                "no_data_rows": 2,
+                "mismatch_triage_decision_totals": {
+                    "review_required_openfigi_resolves_different_security": 1
+                },
+                "no_data_triage_decision_totals": {
+                    "provider_coverage_gap_openfigi_no_data": 2
+                },
+                "remaining_unclassified_residuals": 0,
+            },
+            "mismatches": [
+                {
+                    "isin": "IL0011410359",
+                    "ticker": "EMCO",
+                    "exchange": "PSX",
+                    "name": "Emco Industries Ltd",
+                    "figi_tickers": ["PEAX"],
+                    "figi_name": "PEAX SOLUTIONS LTD",
+                    "triage_decision": "review_required_openfigi_resolves_different_security",
+                    "triage_bucket": "possible_wrong_or_stale_isin",
+                    "triage_rationale": "OpenFIGI resolves to PEAX.",
+                    "next_action": "Verify official evidence.",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["mismatch_count"] == 1
+    assert result["no_data_count"] == 2
+
+
+def test_evaluate_isin_validation_residual_triage_gate_fails_unclassified_report() -> None:
+    result = evaluate_isin_validation_residual_triage_gate(
+        {
+            "partial": True,
+            "by_verdict": {"mismatch": 1, "no_data": 1},
+            "mismatch_count": 1,
+            "residual_triage": {
+                "mismatch_rows": 0,
+                "no_data_rows": 1,
+                "remaining_unclassified_residuals": 1,
+            },
+            "mismatches": [
+                {
+                    "isin": "IL0011410359",
+                    "ticker": "EMCO",
+                    "exchange": "PSX",
+                    "name": "Emco Industries Ltd",
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["evidence_gaps"]
+    assert result["row_gap_count"] == 1
+
+
+def test_evaluate_official_recall_exception_decisions_accepts_classified_exceptions() -> None:
+    result = evaluate_official_recall_exception_decisions(
+        {
+            "global": {
+                "official_full_recall_exception_exchanges": 2,
+                "official_recall_exception_decision_counts": {
+                    "mostly_collision_hidden": 1,
+                    "still_actionable": 1,
+                },
+                "official_recall_unclassified_exception_exchanges": 0,
+            },
+            "exchange_coverage": [
+                {
+                    "exchange": "TSX",
+                    "official_recall_target": True,
+                    "official_recall_pass": False,
+                    "official_recall_missing": 10,
+                    "official_recall_exception": "below_99_5",
+                    "official_recall_decision": "mostly_collision_hidden",
+                    "official_recall_decision_reason": "collision dominated",
+                    "official_recall_next_action": "review collisions",
+                    "official_recall_true_missing_excluding_collisions": 2,
+                    "official_recall_collision_hidden_missing": 8,
+                },
+                {
+                    "exchange": "NASDAQ",
+                    "official_recall_target": True,
+                    "official_recall_pass": False,
+                    "official_recall_missing": 7,
+                    "official_recall_exception": "below_99_5",
+                    "official_recall_decision": "still_actionable",
+                    "official_recall_decision_reason": "true missing remains",
+                    "official_recall_next_action": "repair parser",
+                    "official_recall_true_missing_excluding_collisions": 7,
+                    "official_recall_collision_hidden_missing": 0,
+                },
+            ],
+        }
+    )
+
+    assert result["passed"] is True
+    assert result["decision_counts"] == {"mostly_collision_hidden": 1, "still_actionable": 1}
+
+
+def test_evaluate_official_recall_exception_decisions_fails_unclassified_exception() -> None:
+    result = evaluate_official_recall_exception_decisions(
+        {
+            "global": {
+                "official_full_recall_exception_exchanges": 1,
+                "official_recall_exception_decision_counts": {"unclassified": 1},
+                "official_recall_unclassified_exception_exchanges": 1,
+            },
+            "exchange_coverage": [
+                {
+                    "exchange": "TSX",
+                    "official_recall_target": True,
+                    "official_recall_pass": False,
+                    "official_recall_missing": 10,
+                    "official_recall_exception": "below_99_5",
+                    "official_recall_true_missing_excluding_collisions": 1,
+                    "official_recall_collision_hidden_missing": 8,
+                }
+            ],
+        }
+    )
+
+    assert result["passed"] is False
+    assert result["evidence_gaps"]
+    assert result["row_gap_count"] == 1
 
 
 def test_evaluate_primary_isin_completeness_gate_requires_source_gated_counts() -> None:
@@ -1467,6 +1633,7 @@ def test_evaluate_entry_quality_command_report_requires_passed_report_matching_v
             "unexpected_warn_count": 0,
             "warn_count": 2,
             "allowed_warn_count": 3,
+            "stale_allowlist_count": 0,
         },
         {
             "entry_quality_quarantine_count": {"actual": 0},
@@ -1494,10 +1661,35 @@ def test_evaluate_entry_quality_command_report_fails_for_missing_or_mismatched_r
 
     assert result["passed"] is False
     assert result["missing_meta_keys"] == ["generated_at", "entry_quality_csv", "warn_allowlist_csv", "policy"]
-    assert result["missing_keys"] == ["unexpected_warn_count"]
+    assert result["missing_keys"] == ["stale_allowlist_count", "unexpected_warn_count"]
     assert result["mismatched_counts"] == {
         "quarantine_count": {"command_report": 1, "validation_gate": 0}
     }
+
+
+def test_evaluate_entry_quality_command_report_fails_stale_allowlist() -> None:
+    result = evaluate_entry_quality_command_report(
+        {
+            "_meta": {
+                "generated_at": "2026-05-24T00:00:00Z",
+                "entry_quality_csv": "data/reports/entry_quality.csv",
+                "warn_allowlist_csv": "data/reports/entry_quality_warn_allowlist.csv",
+                "policy": "Command evidence",
+            },
+            "passed": True,
+            "quarantine_count": 0,
+            "unexpected_warn_count": 0,
+            "warn_count": 2,
+            "allowed_warn_count": 3,
+            "stale_allowlist_count": 1,
+        },
+        {
+            "entry_quality_quarantine_count": {"actual": 0},
+            "entry_quality_unexpected_warn_count": {"actual": 0},
+        },
+    )
+
+    assert result["passed"] is False
 
 
 def test_evaluate_coverage_freshness_visibility_requires_dataset_source_and_symbol_change_ages() -> None:

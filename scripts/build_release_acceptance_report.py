@@ -44,6 +44,7 @@ RELEASE_SOURCE_REPORTS = {
     "deepseek_otc_review_queue": "data/reports/deepseek_otc_review_queue.json",
     "deepseek_weak_sector_review_queue": "data/reports/deepseek_weak_sector_review_queue.json",
     "deepseek_isin_collision_validation": "data/reports/deepseek_isin_collision_validation.json",
+    "isin_validation_report": "data/reports/isin_validation_report.json",
     "twelvedata_all_batches_review_rollup": "data/reports/twelvedata_all_batches_review_rollup.json",
     "twelvedata_review_queues": "data/reports/twelvedata_review_queues_summary.json",
     "twelvedata_batch_a_second_source_queue": "data/reports/twelvedata_batch_a_second_source_queue_summary.json",
@@ -3224,6 +3225,12 @@ def load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def load_text(path: Path) -> str:
+    if not path.exists():
+        return ""
+    return path.read_text(encoding="utf-8")
+
+
 def display_path(path: Path, *, root: Path = ROOT) -> str:
     try:
         return str(path.relative_to(root))
@@ -3256,6 +3263,20 @@ def evaluate_gate_group(gates: dict[str, dict[str, Any]], gate_names: list[str])
     return {
         "passed": all(bool(row.get("passed")) for row in gate_rows),
         "gates": gate_rows,
+    }
+
+
+def evaluate_release_metadata(*, version_text: str, changelog_text: str) -> dict[str, Any]:
+    version = version_text.strip()
+    changelog_section_pattern = rf"^##\s+\[{re.escape(version)}\]\s+-\s+\d{{4}}-\d{{2}}-\d{{2}}\s*$"
+    version_valid = bool(re.fullmatch(r"\d+\.\d+\.\d+", version))
+    changelog_has_version = bool(version and re.search(changelog_section_pattern, changelog_text, flags=re.MULTILINE))
+    return {
+        "passed": version_valid and changelog_has_version,
+        "version": version,
+        "version_valid": version_valid,
+        "changelog_has_version": changelog_has_version,
+        "changelog_section_pattern": changelog_section_pattern,
     }
 
 
@@ -5167,6 +5188,104 @@ def evaluate_adanos_detection_simulation(payload: dict[str, Any]) -> dict[str, A
     }
 
 
+def evaluate_isin_validation_residual_triage_gate(report: dict[str, Any]) -> dict[str, Any]:
+    by_verdict = report.get("by_verdict", {})
+    if not isinstance(by_verdict, dict):
+        by_verdict = {}
+    residual_triage = report.get("residual_triage", {})
+    if not isinstance(residual_triage, dict):
+        residual_triage = {}
+    mismatches = report.get("mismatches", [])
+    if not isinstance(mismatches, list):
+        mismatches = []
+
+    mismatch_count = int(report.get("mismatch_count") or 0)
+    mismatch_verdict_count = int(by_verdict.get("mismatch") or 0)
+    no_data_verdict_count = int(by_verdict.get("no_data") or 0)
+    evidence_gaps: list[dict[str, Any]] = []
+
+    if report.get("partial") is not False:
+        evidence_gaps.append({"field": "partial", "reported": report.get("partial"), "expected": False})
+    if mismatch_count != mismatch_verdict_count:
+        evidence_gaps.append(
+            {"field": "mismatch_count", "reported": mismatch_count, "expected": mismatch_verdict_count}
+        )
+    expected_triage_counts = {
+        "mismatch_rows": mismatch_verdict_count,
+        "no_data_rows": no_data_verdict_count,
+        "remaining_unclassified_residuals": 0,
+    }
+    for field, expected in expected_triage_counts.items():
+        reported = residual_triage.get(field)
+        if int(reported or 0) != expected:
+            evidence_gaps.append({"field": f"residual_triage.{field}", "reported": reported, "expected": expected})
+
+    required_policy_markers = ("no_auto_apply", "mismatch", "no_data")
+    policy = residual_triage.get("policy", {})
+    if not isinstance(policy, dict):
+        policy = {}
+    missing_policy_markers = [marker for marker in required_policy_markers if marker not in policy]
+    if missing_policy_markers:
+        evidence_gaps.append({"field": "residual_triage.policy", "missing": missing_policy_markers})
+
+    mismatch_decisions = residual_triage.get("mismatch_triage_decision_totals", {})
+    if not isinstance(mismatch_decisions, dict):
+        mismatch_decisions = {}
+    no_data_decisions = residual_triage.get("no_data_triage_decision_totals", {})
+    if not isinstance(no_data_decisions, dict):
+        no_data_decisions = {}
+    if mismatch_verdict_count and not mismatch_decisions:
+        evidence_gaps.append({"field": "residual_triage.mismatch_triage_decision_totals", "expected": "non_empty"})
+    if no_data_verdict_count and no_data_decisions.get("provider_coverage_gap_openfigi_no_data") != no_data_verdict_count:
+        evidence_gaps.append(
+            {
+                "field": "residual_triage.no_data_triage_decision_totals.provider_coverage_gap_openfigi_no_data",
+                "reported": no_data_decisions.get("provider_coverage_gap_openfigi_no_data"),
+                "expected": no_data_verdict_count,
+            }
+        )
+
+    row_gaps: list[dict[str, Any]] = []
+    required_mismatch_fields = (
+        "isin",
+        "ticker",
+        "exchange",
+        "name",
+        "figi_tickers",
+        "figi_name",
+        "triage_decision",
+        "triage_bucket",
+        "triage_rationale",
+        "next_action",
+    )
+    for index, row in enumerate(mismatches):
+        missing = [field for field in required_mismatch_fields if not row.get(field)]
+        if row.get("triage_decision") != "review_required_openfigi_resolves_different_security":
+            missing.append("triage_decision")
+        if missing:
+            row_gaps.append({"row_index": index, "missing_or_invalid_fields": sorted(set(missing))})
+
+    return {
+        "passed": not evidence_gaps and not row_gaps,
+        "partial": report.get("partial"),
+        "mismatch_count": mismatch_count,
+        "no_data_count": no_data_verdict_count,
+        "residual_triage": {
+            key: residual_triage.get(key)
+            for key in (
+                "mismatch_rows",
+                "no_data_rows",
+                "mismatch_triage_decision_totals",
+                "no_data_triage_decision_totals",
+                "remaining_unclassified_residuals",
+            )
+        },
+        "evidence_gaps": evidence_gaps,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+    }
+
+
 def evaluate_entry_quality_command_report(
     entry_quality_gate: dict[str, Any],
     validation_gates: dict[str, dict[str, Any]],
@@ -5178,6 +5297,7 @@ def evaluate_entry_quality_command_report(
         "unexpected_warn_count",
         "warn_count",
         "allowed_warn_count",
+        "stale_allowlist_count",
     }
     missing_meta_keys = [
         key
@@ -5197,6 +5317,7 @@ def evaluate_entry_quality_command_report(
     return {
         "passed": (
             bool(entry_quality_gate.get("passed"))
+            and int(entry_quality_gate.get("stale_allowlist_count") or 0) == 0
             and not missing_keys
             and not missing_meta_keys
             and not mismatched_counts
@@ -18131,6 +18252,92 @@ def evaluate_financialdata_supplement_review_gate(review: dict[str, Any]) -> dic
     }
 
 
+def evaluate_official_recall_exception_decisions(coverage_report: dict[str, Any]) -> dict[str, Any]:
+    global_summary = coverage_report.get("global", {})
+    exchange_rows = coverage_report.get("exchange_coverage", [])
+    if not isinstance(global_summary, dict):
+        global_summary = {}
+    if not isinstance(exchange_rows, list):
+        exchange_rows = []
+
+    exception_rows = [
+        row
+        for row in exchange_rows
+        if row.get("official_recall_target") is True and row.get("official_recall_pass") is False
+    ]
+    decision_counts = Counter(str(row.get("official_recall_decision") or "unclassified") for row in exception_rows)
+    reported_counts = global_summary.get("official_recall_exception_decision_counts", {})
+    reported_unclassified = int(global_summary.get("official_recall_unclassified_exception_exchanges") or 0)
+    count_mismatches = compare_counter_to_reported(decision_counts, reported_counts)
+    if reported_unclassified != decision_counts.get("unclassified", 0):
+        count_mismatches["official_recall_unclassified_exception_exchanges"] = {
+            "reported": reported_unclassified,
+            "actual": decision_counts.get("unclassified", 0),
+        }
+
+    allowed_decisions = {"mostly_collision_hidden", "still_actionable"}
+    row_gaps: list[dict[str, Any]] = []
+    for index, row in enumerate(exception_rows):
+        decision = str(row.get("official_recall_decision") or "")
+        missing_fields = [
+            field
+            for field in (
+                "official_recall_decision",
+                "official_recall_decision_reason",
+                "official_recall_next_action",
+                "official_recall_true_missing_excluding_collisions",
+                "official_recall_collision_hidden_missing",
+                "official_recall_exception",
+            )
+            if row.get(field) in ("", None)
+        ]
+        if decision not in allowed_decisions:
+            missing_fields.append("official_recall_decision")
+        true_missing = int(row.get("official_recall_true_missing_excluding_collisions") or 0)
+        collision_hidden = int(row.get("official_recall_collision_hidden_missing") or 0)
+        official_missing = int(row.get("official_recall_missing") or 0)
+        if true_missing + collision_hidden != official_missing:
+            missing_fields.append("true_missing_plus_collision_hidden_matches_official_missing")
+        if missing_fields:
+            row_gaps.append(
+                {
+                    "exchange": row.get("exchange"),
+                    "row_index": index,
+                    "missing_or_invalid_fields": sorted(set(missing_fields)),
+                }
+            )
+
+    expected_exception_count = int(global_summary.get("official_full_recall_exception_exchanges") or 0)
+    evidence_gaps: list[dict[str, Any]] = []
+    if len(exception_rows) != expected_exception_count:
+        evidence_gaps.append(
+            {
+                "field": "global.official_full_recall_exception_exchanges",
+                "reported": expected_exception_count,
+                "actual": len(exception_rows),
+            }
+        )
+    if decision_counts.get("unclassified", 0):
+        evidence_gaps.append(
+            {
+                "field": "official_recall_exception_decision_counts.unclassified",
+                "actual": decision_counts.get("unclassified", 0),
+                "expected": 0,
+            }
+        )
+
+    return {
+        "passed": not count_mismatches and not evidence_gaps and not row_gaps,
+        "exception_rows": len(exception_rows),
+        "decision_counts": dict(sorted(decision_counts.items())),
+        "reported_decision_counts": reported_counts,
+        "count_mismatches": count_mismatches,
+        "evidence_gaps": evidence_gaps,
+        "row_gap_count": len(row_gaps),
+        "row_gaps": row_gaps[:20],
+    }
+
+
 def evaluate_official_name_mismatch_backfill_gate(report: dict[str, Any]) -> dict[str, Any]:
     summary = report.get("summary", {})
     if not isinstance(summary, dict):
@@ -18764,6 +18971,7 @@ def build_payload() -> dict[str, Any]:
     deepseek_otc_queue = load_json(REPORTS_DIR / "deepseek_otc_review_queue.json")
     deepseek_weak_sector_queue = load_json(REPORTS_DIR / "deepseek_weak_sector_review_queue.json")
     deepseek_isin_collision_validation = load_json(REPORTS_DIR / "deepseek_isin_collision_validation.json")
+    isin_validation_report = load_json(REPORTS_DIR / "isin_validation_report.json")
     m3_correctness_campaigns = load_json(REPORTS_DIR / "m3_correctness_campaigns.json")
     m3_sector_category = load_json(REPORTS_DIR / "m3_sector_category_campaign.json")
     m3_name_freshness = load_json(REPORTS_DIR / "m3_name_freshness_campaign.json")
@@ -18778,6 +18986,10 @@ def build_payload() -> dict[str, Any]:
         key: evaluate_gate_group(gates, names)
         for key, names in REQUIRED_GATE_GROUPS.items()
     }
+    criteria["release_metadata_consistency"] = evaluate_release_metadata(
+        version_text=load_text(ROOT / "VERSION"),
+        changelog_text=load_text(ROOT / "CHANGELOG.md"),
+    )
     criteria["release_source_report_integrity"] = evaluate_release_source_report_integrity(
         RELEASE_SOURCE_REPORTS,
         release_generated_at=generated_at,
@@ -18796,6 +19008,9 @@ def build_payload() -> dict[str, Any]:
     criteria["deepseek_isin_collision_validation_gate"] = evaluate_deepseek_isin_collision_validation_gate(
         deepseek_isin_collision_validation
     )
+    criteria["isin_validation_residual_triage_gate"] = evaluate_isin_validation_residual_triage_gate(
+        isin_validation_report
+    )
     criteria["m3_correctness_campaigns_gate"] = evaluate_m3_correctness_campaigns_gate(
         m3_correctness_campaigns,
         m3_sector_category,
@@ -18809,6 +19024,7 @@ def build_payload() -> dict[str, Any]:
     criteria["adanos_detection_simulation"] = evaluate_adanos_detection_simulation(adanos_detection_simulation)
     criteria["entry_quality_command_report"] = evaluate_entry_quality_command_report(entry_quality_gate, gates)
     criteria["coverage_freshness_visibility"] = evaluate_coverage_freshness_visibility(coverage)
+    criteria["official_recall_exception_decisions"] = evaluate_official_recall_exception_decisions(coverage)
     criteria["official_name_mismatch_backfill_gate"] = evaluate_official_name_mismatch_backfill_gate(
         official_name_mismatch_backfill
     )

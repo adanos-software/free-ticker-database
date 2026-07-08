@@ -1,7 +1,7 @@
 {
-  "built_at": "2026-07-07T13:28:28Z",
+  "built_at": "2026-07-08T04:35:56Z",
   "drift_detected": false,
-  "generated_at": "2026-07-07T13:28:30Z",
+  "generated_at": "2026-07-08T04:36:28Z",
   "manual_review_count": 10,
   "manual_review_report": "data/reports/pending_renames_manual_review.md",
   "manual_review_sample": [
@@ -176,15 +176,829 @@
       "triage_status": "blocked_or_manual"
     }
   ],
+  "official_recall_indicators": {
+    "ADX": {
+      "collision_adjusted_recall_missing": 5,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 94.44,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=37;symbol_collisions=32",
+      "official_recall_missing": 37,
+      "official_recall_pass": false,
+      "official_recall_pct": 69.67,
+      "official_recall_target": true
+    },
+    "AMS": {
+      "collision_adjusted_recall_missing": 57,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 80.81,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=352;symbol_collisions=295",
+      "official_recall_missing": 352,
+      "official_recall_pass": false,
+      "official_recall_pct": 40.54,
+      "official_recall_target": true
+    },
+    "ASX": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "ATHEX": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "B3": {
+      "collision_adjusted_recall_missing": 70,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 94.68,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=70;symbol_collisions=0",
+      "official_recall_missing": 70,
+      "official_recall_pass": false,
+      "official_recall_pct": 94.68,
+      "official_recall_target": true
+    },
+    "BATS": {
+      "collision_adjusted_recall_missing": 290,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 80.01,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=329;symbol_collisions=39",
+      "official_recall_missing": 329,
+      "official_recall_pass": false,
+      "official_recall_pct": 77.92,
+      "official_recall_target": true
+    },
+    "BCBA": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "BHB": {
+      "collision_adjusted_recall_missing": 3,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 90.62,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=12;symbol_collisions=9",
+      "official_recall_missing": 12,
+      "official_recall_pass": false,
+      "official_recall_pct": 70.73,
+      "official_recall_target": true
+    },
+    "BIST": {
+      "collision_adjusted_recall_missing": 3,
+      "collision_adjusted_recall_pass": true,
+      "collision_adjusted_recall_pct": 99.51,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=23;symbol_collisions=20",
+      "official_recall_missing": 23,
+      "official_recall_pass": false,
+      "official_recall_pct": 96.39,
+      "official_recall_target": true
+    },
+    "BK": {
+      "collision_adjusted_recall_missing": 9,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 92.04,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=36;symbol_collisions=27",
+      "official_recall_missing": 36,
+      "official_recall_pass": false,
+      "official_recall_pct": 74.29,
+      "official_recall_target": true
+    },
+    "BME": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "BMV": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "BSE_BW": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "BSE_HU": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "BSE_IN": {
+      "collision_adjusted_recall_missing": 522,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 82.49,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=2407;symbol_collisions=1885",
+      "official_recall_missing": 2407,
+      "official_recall_pass": false,
+      "official_recall_pct": 50.53,
+      "official_recall_target": true
+    },
+    "BVB": {
+      "collision_adjusted_recall_missing": 149,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 33.48,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=273;symbol_collisions=124",
+      "official_recall_missing": 273,
+      "official_recall_pass": false,
+      "official_recall_pct": 21.55,
+      "official_recall_target": true
+    },
+    "BVC": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "BVL": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "Borsa Italiana": {
+      "collision_adjusted_recall_missing": 825,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 23.4,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=2625;symbol_collisions=1800",
+      "official_recall_missing": 2625,
+      "official_recall_pass": false,
+      "official_recall_pct": 8.76,
+      "official_recall_target": true
+    },
+    "Bursa": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "CPH": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "CSE_LK": {
+      "collision_adjusted_recall_missing": 8,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 97.46,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=8;symbol_collisions=0",
+      "official_recall_missing": 8,
+      "official_recall_pass": false,
+      "official_recall_pct": 97.46,
+      "official_recall_target": true
+    },
+    "CSE_MA": {
+      "collision_adjusted_recall_missing": 11,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 8.33,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=49;symbol_collisions=38",
+      "official_recall_missing": 49,
+      "official_recall_pass": false,
+      "official_recall_pct": 2.0,
+      "official_recall_target": true
+    },
+    "DFM": {
+      "collision_adjusted_recall_missing": 9,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 83.64,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=25;symbol_collisions=16",
+      "official_recall_missing": 25,
+      "official_recall_pass": false,
+      "official_recall_pct": 64.79,
+      "official_recall_target": true
+    },
+    "DSE_TZ": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "EGX": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "Euronext": {
+      "collision_adjusted_recall_missing": 369,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 72.32,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=1039;symbol_collisions=670",
+      "official_recall_missing": 1039,
+      "official_recall_pass": false,
+      "official_recall_pct": 48.13,
+      "official_recall_target": true
+    },
+    "GSE": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "HEL": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "HKEX": {
+      "collision_adjusted_recall_missing": 44,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 98.57,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=127;symbol_collisions=83",
+      "official_recall_missing": 127,
+      "official_recall_pass": false,
+      "official_recall_pct": 95.99,
+      "official_recall_target": true
+    },
+    "HNX": {
+      "collision_adjusted_recall_missing": 39,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 72.92,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=195;symbol_collisions=156",
+      "official_recall_missing": 195,
+      "official_recall_pass": false,
+      "official_recall_pct": 35.0,
+      "official_recall_target": true
+    },
+    "HOSE": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "ICE_IS": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "IDX": {
+      "collision_adjusted_recall_missing": 20,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 97.2,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=264;symbol_collisions=244",
+      "official_recall_missing": 264,
+      "official_recall_pass": false,
+      "official_recall_pct": 72.44,
+      "official_recall_target": true
+    },
+    "ISE": {
+      "collision_adjusted_recall_missing": 4,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 69.23,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=10;symbol_collisions=6",
+      "official_recall_missing": 10,
+      "official_recall_pass": false,
+      "official_recall_pct": 47.37,
+      "official_recall_target": true
+    },
+    "JSE": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "KOSDAQ": {
+      "collision_adjusted_recall_missing": 246,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 86.46,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=246;symbol_collisions=0",
+      "official_recall_missing": 246,
+      "official_recall_pass": false,
+      "official_recall_pct": 86.46,
+      "official_recall_target": true
+    },
+    "KRX": {
+      "collision_adjusted_recall_missing": 309,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 85.17,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=312;symbol_collisions=3",
+      "official_recall_missing": 312,
+      "official_recall_pass": false,
+      "official_recall_pct": 85.04,
+      "official_recall_target": true
+    },
+    "LSE": {
+      "collision_adjusted_recall_missing": 3498,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 64.73,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=4602;symbol_collisions=1104",
+      "official_recall_missing": 4602,
+      "official_recall_pass": false,
+      "official_recall_pct": 58.24,
+      "official_recall_target": true
+    },
+    "LUSE": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "MSE_MW": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "MSX": {
+      "collision_adjusted_recall_missing": 4,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 95.79,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=17;symbol_collisions=13",
+      "official_recall_missing": 17,
+      "official_recall_pass": false,
+      "official_recall_pct": 84.26,
+      "official_recall_target": true
+    },
+    "NASDAQ": {
+      "collision_adjusted_recall_missing": 1010,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 81.97,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=1057;symbol_collisions=47",
+      "official_recall_missing": 1057,
+      "official_recall_pass": false,
+      "official_recall_pct": 81.29,
+      "official_recall_target": true
+    },
+    "NEO": {
+      "collision_adjusted_recall_missing": 162,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 53.98,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=250;symbol_collisions=88",
+      "official_recall_missing": 250,
+      "official_recall_pass": false,
+      "official_recall_pct": 43.18,
+      "official_recall_target": true
+    },
+    "NGX": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": true,
+      "collision_adjusted_recall_pct": 100.0,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": true,
+      "official_recall_pct": 100.0,
+      "official_recall_target": true
+    },
+    "NMFQS": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "NSE_IN": {
+      "collision_adjusted_recall_missing": 445,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 84.19,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=641;symbol_collisions=196",
+      "official_recall_missing": 641,
+      "official_recall_pass": false,
+      "official_recall_pct": 78.7,
+      "official_recall_target": true
+    },
+    "NSE_KE": {
+      "collision_adjusted_recall_missing": 32,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 25.58,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=55;symbol_collisions=23",
+      "official_recall_missing": 55,
+      "official_recall_pass": false,
+      "official_recall_pct": 16.67,
+      "official_recall_target": true
+    },
+    "NYSE": {
+      "collision_adjusted_recall_missing": 1380,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 59.46,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=1880;symbol_collisions=500",
+      "official_recall_missing": 1880,
+      "official_recall_pass": false,
+      "official_recall_pct": 51.84,
+      "official_recall_target": true
+    },
+    "NYSE ARCA": {
+      "collision_adjusted_recall_missing": 94,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 96.44,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=124;symbol_collisions=30",
+      "official_recall_missing": 124,
+      "official_recall_pass": false,
+      "official_recall_pct": 95.36,
+      "official_recall_target": true
+    },
+    "NYSE MKT": {
+      "collision_adjusted_recall_missing": 56,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 80.28,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=83;symbol_collisions=27",
+      "official_recall_missing": 83,
+      "official_recall_pass": false,
+      "official_recall_pct": 73.31,
+      "official_recall_target": true
+    },
+    "NZX": {
+      "collision_adjusted_recall_missing": 2,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 95.74,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=128;symbol_collisions=126",
+      "official_recall_missing": 128,
+      "official_recall_pass": false,
+      "official_recall_pct": 26.01,
+      "official_recall_target": true
+    },
+    "OSL": {
+      "collision_adjusted_recall_missing": 7,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 97.22,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=53;symbol_collisions=46",
+      "official_recall_missing": 53,
+      "official_recall_pass": false,
+      "official_recall_pct": 82.21,
+      "official_recall_target": true
+    },
+    "OTC": {
+      "collision_adjusted_recall_missing": 4252,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 64.23,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=4291;symbol_collisions=39",
+      "official_recall_missing": 4291,
+      "official_recall_pass": false,
+      "official_recall_pct": 64.02,
+      "official_recall_target": true
+    },
+    "PSE": {
+      "collision_adjusted_recall_missing": 109,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 45.23,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=291;symbol_collisions=182",
+      "official_recall_missing": 291,
+      "official_recall_pass": false,
+      "official_recall_pct": 23.62,
+      "official_recall_target": true
+    },
+    "PSE_CZ": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "PSX": {
+      "collision_adjusted_recall_missing": 190,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 66.13,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=345;symbol_collisions=155",
+      "official_recall_missing": 345,
+      "official_recall_pass": false,
+      "official_recall_pct": 51.82,
+      "official_recall_target": true
+    },
+    "QSE": {
+      "collision_adjusted_recall_missing": 1,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 98.18,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=3;symbol_collisions=2",
+      "official_recall_missing": 3,
+      "official_recall_pass": false,
+      "official_recall_pct": 94.74,
+      "official_recall_target": true
+    },
+    "RSE": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "SEM": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": true,
+      "collision_adjusted_recall_pct": 100.0,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": true,
+      "official_recall_pct": 100.0,
+      "official_recall_target": true
+    },
+    "SET": {
+      "collision_adjusted_recall_missing": 52,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 91.29,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=399;symbol_collisions=347",
+      "official_recall_missing": 399,
+      "official_recall_pass": false,
+      "official_recall_pct": 57.73,
+      "official_recall_target": true
+    },
+    "SGX": {
+      "collision_adjusted_recall_missing": 9,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 98.49,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=149;symbol_collisions=140",
+      "official_recall_missing": 149,
+      "official_recall_pass": false,
+      "official_recall_pct": 79.81,
+      "official_recall_target": true
+    },
+    "SIX": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "SSE": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "SSE_CL": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": true,
+      "collision_adjusted_recall_pct": 100.0,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": true,
+      "official_recall_pct": 100.0,
+      "official_recall_target": true
+    },
+    "STO": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "SZSE": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "TADAWUL": {
+      "collision_adjusted_recall_missing": 4,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 97.95,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=221;symbol_collisions=217",
+      "official_recall_missing": 221,
+      "official_recall_pass": false,
+      "official_recall_pct": 46.36,
+      "official_recall_target": true
+    },
+    "TASE": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "TPEX": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "TSE": {
+      "collision_adjusted_recall_missing": 59,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 98.56,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=401;symbol_collisions=342",
+      "official_recall_missing": 401,
+      "official_recall_pass": false,
+      "official_recall_pct": 90.96,
+      "official_recall_target": true
+    },
+    "TSX": {
+      "collision_adjusted_recall_missing": 8,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 97.6,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=462;symbol_collisions=454",
+      "official_recall_missing": 462,
+      "official_recall_pass": false,
+      "official_recall_pct": 41.37,
+      "official_recall_target": true
+    },
+    "TSXV": {
+      "collision_adjusted_recall_missing": 13,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 98.77,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=557;symbol_collisions=544",
+      "official_recall_missing": 557,
+      "official_recall_pass": false,
+      "official_recall_pct": 65.19,
+      "official_recall_target": true
+    },
+    "TWSE": {
+      "collision_adjusted_recall_missing": 58,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 94.37,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=117;symbol_collisions=59",
+      "official_recall_missing": 117,
+      "official_recall_pass": false,
+      "official_recall_pct": 89.27,
+      "official_recall_target": true
+    },
+    "UPCOM": {
+      "collision_adjusted_recall_missing": 353,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 0.56,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=828;symbol_collisions=475",
+      "official_recall_missing": 828,
+      "official_recall_pass": false,
+      "official_recall_pct": 0.24,
+      "official_recall_target": true
+    },
+    "USE_UG": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "VSE": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "WSE": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "XETRA": {
+      "collision_adjusted_recall_missing": 99,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 97.37,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=872;symbol_collisions=773",
+      "official_recall_missing": 872,
+      "official_recall_pass": false,
+      "official_recall_pct": 80.81,
+      "official_recall_target": true
+    },
+    "ZSE": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    },
+    "ZSE_ZW": {
+      "collision_adjusted_recall_missing": 0,
+      "collision_adjusted_recall_pass": null,
+      "collision_adjusted_recall_pct": null,
+      "official_recall_exception": "",
+      "official_recall_missing": 0,
+      "official_recall_pass": null,
+      "official_recall_pct": null,
+      "official_recall_target": false
+    }
+  },
+  "official_recall_regressions": [],
   "pending_renames_count": 0,
   "pending_renames_sample": [],
   "quality_indicators": {
-    "allowed_warn_rows": 129,
-    "expected_missing_primary_isin": 947,
-    "missing_etf_category": 86,
-    "missing_stock_sector": 75,
-    "source_gap_rows": 6625
+    "allowed_warn_rows": 75,
+    "expected_missing_primary_isin": 621,
+    "missing_etf_category": 0,
+    "missing_stock_sector": 1,
+    "source_gap_rows": 6272
   },
+  "quality_regressions": [],
   "rename_triage_apply_status_source_totals": {
     "available": 10
   },

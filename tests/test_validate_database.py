@@ -633,6 +633,39 @@ def test_validation_report_checks_metadata_override_typing_and_canonical_values(
     assert gates["metadata_updates_noncanonical_typed_values"]["actual"] == 2
 
 
+def test_validation_report_checks_malformed_metadata_override_rows():
+    report = build_validation_report(
+        tickers=[ticker()],
+        listings=[listing(ticker())],
+        instrument_scopes=[scope(ticker())],
+        adanos_reference=[adanos_reference(ticker())],
+        entry_quality=[entry_quality(ticker())],
+        allowed_warns=set(),
+        adanos_alias_findings=[],
+        review_remove_aliases=[],
+        review_metadata_updates=[
+            {
+                "ticker": "BAD",
+                "exchange": "NASDAQ",
+                "field": "isin",
+                "decision": "update",
+                "proposed_value": "US0000000000",
+                "confidence": "0.8",
+                "reason": "bad",
+                None: ["EXTRA", "DATA"],
+            },
+            {"ticker": "BROKEN", "exchange": "", "field": "", "decision": ""},
+            {"ticker": "WEIRD", "exchange": "NASDAQ", "field": "not_a_field", "decision": "update"},
+        ],
+        coverage_report={"global": {"tickers": 1, "listing_keys": 1}},
+        generated_at="2026-04-22T00:00:00Z",
+    )
+
+    gates = {gate["name"]: gate for gate in report["gates"]}
+    assert report["passed"] is False
+    assert gates["metadata_updates_malformed_rows"]["actual"] == 3
+
+
 def test_validation_report_allows_review_gated_country_isin_prefix_mismatch():
     adr = ticker()
     adr["country"] = "Belgium"

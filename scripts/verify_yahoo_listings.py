@@ -31,6 +31,7 @@ YAHOO_SUFFIX_BY_EXCHANGE: dict[str, str] = {
     "HKEX": ".HK",
     "IDX": ".JK",
     "LSE": ".L",
+    "NEO": ".NE",
     "OSL": ".OL",
     "SET": ".BK",
     "SIX": ".SW",
@@ -49,6 +50,7 @@ EXPECTED_YAHOO_EXCHANGE_CODES: dict[str, set[str]] = {
     "NYSE MKT": {"ASE"},
     "OTC": {"PNK", "OQB", "OEM"},
     "LSE": {"LSE"},
+    "NEO": {"NEO"},
     "TSX": {"TOR"},
     "TSXV": {"VAN"},
 }
@@ -61,6 +63,7 @@ EXPECTED_YAHOO_FULL_EXCHANGES: dict[str, set[str]] = {
     "NYSE MKT": {"NYSEAmerican"},
     "OTC": {"OTC Markets OTCPK", "OTC Markets OTCQB", "OTC Markets OTCQX"},
     "LSE": {"LSE"},
+    "NEO": {"Cboe CA"},
     "TSX": {"Toronto"},
     "TSXV": {"TSXV"},
 }

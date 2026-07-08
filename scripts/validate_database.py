@@ -17,6 +17,7 @@ if str(ROOT) not in sys.path:
 
 from scripts.alias_policy import is_common_single_word_alias, normalize_alias_text
 from scripts.check_entry_quality_gate import allowed_warn_keys, check_entry_quality_gate
+from scripts.lib.dataio import is_well_formed_metadata_update
 from scripts.rebuild_dataset import COUNTRY_TO_ISO, country_from_isin, is_valid_isin, normalize_sector
 
 DATA_DIR = ROOT / "data"
@@ -462,6 +463,20 @@ def metadata_updates_with_noncanonical_typed_values(metadata_updates: list[dict[
     return invalid
 
 
+def malformed_metadata_update_rows(metadata_updates: list[dict[Any, Any]]) -> list[str]:
+    invalid: list[str] = []
+    for index, row in enumerate(metadata_updates, start=2):
+        if is_well_formed_metadata_update(row):
+            continue
+        ticker = row.get("ticker") or ""
+        exchange = row.get("exchange") or ""
+        field = row.get("field") or ""
+        extra_columns = row.get(None) or []
+        suffix = f" extra_columns={len(extra_columns)}" if extra_columns else ""
+        invalid.append(f"row {index}: {exchange}::{ticker}:{field}{suffix}")
+    return invalid
+
+
 def metadata_updates_with_typed_leakage(
     metadata_updates: list[dict[str, str]],
     rows: list[dict[str, str]],
@@ -875,6 +890,7 @@ def build_validation_report(
         + rows_with_country_code_mismatch(core_listings, "listing_key")
     )
     noncanonical_metadata_updates = metadata_updates_with_noncanonical_typed_values(review_metadata_updates)
+    malformed_metadata_updates = malformed_metadata_update_rows(review_metadata_updates)
     metadata_typed_leakage = metadata_updates_with_typed_leakage(review_metadata_updates, typed_rows)
     source_gap_invalid_rows = (
         invalid_source_gap_classification_rows(source_gap_classifications) if source_gap_classifications else []
@@ -1123,6 +1139,11 @@ def build_validation_report(
                 "noncanonical_etf_category_rows",
                 len(noncanonical_etf_category_rows),
                 noncanonical_etf_category_rows,
+            ),
+            fail_gate(
+                "metadata_updates_malformed_rows",
+                len(malformed_metadata_updates),
+                malformed_metadata_updates,
             ),
             fail_gate(
                 "metadata_updates_noncanonical_typed_values",

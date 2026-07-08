@@ -56,3 +56,32 @@ def test_merge_metadata_updates_and_socket_timeout(tmp_path: Path) -> None:
     with socket_timeout(3.0):
         assert socket.getdefaulttimeout() == 3.0
     assert socket.getdefaulttimeout() == previous
+
+
+def test_merge_metadata_updates_drops_malformed_existing_rows(tmp_path: Path) -> None:
+    path = tmp_path / "metadata_updates.csv"
+    path.write_text(
+        "\n".join(
+            [
+                "ticker,exchange,field,decision,proposed_value,confidence,reason",
+                "ABC,NYSE,isin,update,OLD,0.8,old",
+                "BAD,NASDAQ,isin,update,US0000000000,0.8,bad,EXTRA,DATA",
+                "WEIRD,NASDAQ,not_a_field,update,value,0.8,bad field",
+                "BROKEN",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    merge_metadata_updates(
+        path,
+        [{"ticker": "XYZ", "exchange": "NYSE", "field": "isin", "decision": "update", "proposed_value": "NEW", "confidence": "0.9", "reason": "new"}],
+    )
+
+    rows = load_csv(path)
+    assert [(row["ticker"], row["exchange"], row["field"]) for row in rows] == [
+        ("ABC", "NYSE", "isin"),
+        ("XYZ", "NYSE", "isin"),
+    ]
+    assert all(row.get(None) is None for row in rows)

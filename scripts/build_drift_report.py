@@ -19,6 +19,7 @@ import argparse
 import csv
 import json
 import os
+import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -44,6 +45,16 @@ QUALITY_KEYS = (
     "source_gap_rows", "missing_stock_sector", "missing_etf_category",
     "expected_missing_primary_isin", "country_isin_mismatch",
     "official_name_mismatch", "allowed_warn_rows",
+)
+QUALITY_REGRESSION_KEYS = (
+    "source_gap_rows",
+    "expected_missing_primary_isin",
+    "missing_stock_sector",
+    "missing_etf_category",
+)
+OFFICIAL_RECALL_REGRESSION_KEYS = (
+    "official_recall_missing",
+    "collision_adjusted_recall_missing",
 )
 RENAME_REVIEW_QUEUES = {
     "review_verified_rename_or_delisting",
@@ -231,6 +242,99 @@ def quality_indicators() -> dict[str, int]:
     return out
 
 
+def previous_drift_report() -> dict:
+    try:
+        relative_report = REPORT_JSON.relative_to(ROOT).as_posix()
+    except ValueError:
+        relative_report = str(REPORT_JSON)
+    try:
+        result = subprocess.run(
+            ["git", "show", f"HEAD:{relative_report}"],
+            cwd=ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+            timeout=5,
+        )
+    except (OSError, subprocess.TimeoutExpired):
+        result = None
+    if result is not None and result.returncode == 0 and result.stdout.strip():
+        return json.loads(result.stdout)
+    if not REPORT_JSON.exists():
+        return {}
+    return json.loads(REPORT_JSON.read_text(encoding="utf-8"))
+
+
+def quality_regressions(current: dict[str, int], previous: dict) -> list[dict[str, int | str]]:
+    baseline = previous.get("quality_indicators", {}) if isinstance(previous, dict) else {}
+    if not isinstance(baseline, dict):
+        return []
+    regressions: list[dict[str, int | str]] = []
+    for key in QUALITY_REGRESSION_KEYS:
+        current_value = current.get(key)
+        previous_value = baseline.get(key)
+        if isinstance(current_value, int) and isinstance(previous_value, int) and current_value > previous_value:
+            regressions.append(
+                {
+                    "metric": key,
+                    "previous": previous_value,
+                    "current": current_value,
+                    "delta": current_value - previous_value,
+                }
+            )
+    return regressions
+
+
+def official_recall_indicators() -> dict[str, dict[str, int | float | bool | str | None]]:
+    if not COVERAGE_REPORT_JSON.exists():
+        return {}
+    data = json.loads(COVERAGE_REPORT_JSON.read_text(encoding="utf-8"))
+    indicators: dict[str, dict[str, int | float | bool | str | None]] = {}
+    for row in data.get("by_exchange", []):
+        exchange = row.get("exchange")
+        if not exchange:
+            continue
+        indicators[exchange] = {
+            "official_recall_target": row.get("official_recall_target"),
+            "official_recall_pass": row.get("official_recall_pass"),
+            "official_recall_pct": row.get("official_recall_pct"),
+            "official_recall_missing": row.get("official_recall_missing"),
+            "official_recall_exception": row.get("official_recall_exception", ""),
+            "collision_adjusted_recall_missing": row.get("collision_adjusted_recall_missing"),
+            "collision_adjusted_recall_pct": row.get("collision_adjusted_recall_pct"),
+            "collision_adjusted_recall_pass": row.get("collision_adjusted_recall_pass"),
+        }
+    return indicators
+
+
+def official_recall_regressions(
+    current: dict[str, dict[str, int | float | bool | str | None]],
+    previous: dict,
+) -> list[dict[str, int | str]]:
+    baseline = previous.get("official_recall_indicators", {}) if isinstance(previous, dict) else {}
+    if not isinstance(baseline, dict):
+        return []
+    regressions: list[dict[str, int | str]] = []
+    for exchange, current_row in current.items():
+        previous_row = baseline.get(exchange, {})
+        if not isinstance(previous_row, dict):
+            continue
+        for key in OFFICIAL_RECALL_REGRESSION_KEYS:
+            current_value = current_row.get(key)
+            previous_value = previous_row.get(key)
+            if isinstance(current_value, int) and isinstance(previous_value, int) and current_value > previous_value:
+                regressions.append(
+                    {
+                        "exchange": exchange,
+                        "metric": key,
+                        "previous": previous_value,
+                        "current": current_value,
+                        "delta": current_value - previous_value,
+                    }
+                )
+    return regressions
+
+
 def build_markdown(s: dict) -> str:
     L = ["# Drift / freshness report", "",
          f"Generated: {s['generated_at']}",
@@ -258,6 +362,14 @@ def build_markdown(s: dict) -> str:
     L += ["", "## Quality indicators (release-gate info counts)"]
     for k, v in sorted(s["quality_indicators"].items()):
         L.append(f"- {k}: {v}")
+    L += ["", f"## Quality regressions: {len(s.get('quality_regressions', []))}"]
+    for row in s.get("quality_regressions", [])[:SAMPLE_CAP]:
+        L.append(f"- {row['metric']}: {row['previous']} -> {row['current']} (+{row['delta']})")
+    L += ["", f"## Official recall regressions: {len(s.get('official_recall_regressions', []))}"]
+    for row in s.get("official_recall_regressions", [])[:SAMPLE_CAP]:
+        L.append(
+            f"- {row['exchange']} {row['metric']}: {row['previous']} -> {row['current']} (+{row['delta']})"
+        )
     L += ["", "_Detection only. Triage renames via the symbol-change review feed; "
           "apply corrections through the verified override/verify pipeline._"]
     return "\n".join(L) + "\n"
@@ -332,8 +444,17 @@ def main(argv: list[str] | None = None) -> None:
     pend = pending_renames(triage_rows)
     manual_rows = [row for row in triage_rows if row["triage_status"] == "blocked_or_manual"]
     quality = quality_indicators()
+    previous = previous_drift_report()
+    quality_regression_rows = quality_regressions(quality, previous)
+    recall = official_recall_indicators()
+    recall_regression_rows = official_recall_regressions(recall, previous)
 
-    drift_detected = bool(pend) or (stale is not None and stale > args.stale_days)
+    drift_detected = (
+        bool(pend)
+        or (stale is not None and stale > args.stale_days)
+        or bool(quality_regression_rows)
+        or bool(recall_regression_rows)
+    )
     generated_at = now.isoformat(timespec="seconds").replace("+00:00", "Z")
 
     summary = {
@@ -357,6 +478,9 @@ def main(argv: list[str] | None = None) -> None:
         "manual_review_sample": manual_rows[:SAMPLE_CAP],
         "manual_review_report": str(MANUAL_REVIEW_MD.relative_to(ROOT)),
         "quality_indicators": quality,
+        "quality_regressions": quality_regression_rows,
+        "official_recall_indicators": recall,
+        "official_recall_regressions": recall_regression_rows,
         "drift_detected": drift_detected,
     }
     REPORT_JSON.parent.mkdir(parents=True, exist_ok=True)

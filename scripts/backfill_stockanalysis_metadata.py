@@ -18,7 +18,8 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.lib.dataio import merge_metadata_updates
-from scripts.rebuild_dataset import LISTINGS_CSV, alias_matches_company, is_valid_isin, normalize_sector
+from scripts.lib.normalize import names_match
+from scripts.rebuild_dataset import LISTINGS_CSV, is_valid_isin, normalize_sector
 
 DEFAULT_OUTPUT_DIR = ROOT / "data" / "stockanalysis_verification"
 DEFAULT_CSV_OUT = DEFAULT_OUTPUT_DIR / "stockanalysis_metadata_backfill.csv"
@@ -141,10 +142,7 @@ def load_targets(path: Path, exchanges: set[str]) -> list[dict[str, str]]:
 
 
 def evaluate_target(row: dict[str, str], profile: StockAnalysisProfile) -> dict[str, Any]:
-    name_match = alias_matches_company(row.get("name", ""), profile.name) or alias_matches_company(
-        profile.name,
-        row.get("name", ""),
-    )
+    name_match = names_match(row.get("name", ""), profile.name) or names_match(profile.name, row.get("name", ""))
     accepted_isin = profile.isin if not row.get("isin", "").strip() and is_valid_isin(profile.isin) and name_match else ""
     sector = stockanalysis_sector_to_canonical(profile)
     accepted_sector = sector if not row.get("stock_sector", "").strip() and sector and name_match else ""
@@ -227,7 +225,7 @@ def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
         "decision",
     ]
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 

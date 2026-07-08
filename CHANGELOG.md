@@ -2,6 +2,40 @@
 
 ## [Unreleased]
 
+## [3.32.02] - 2026-07-08
+
+### Summary
+
+**v3.32.01 quality-gap closure release.** Publishes the source-backed cleanup, regenerated quality reports, and release-gate hardening from PR #124.
+
+### Changed
+
+- Reduced residual source gaps and primary ISIN backlog through reviewed source evidence and strict Yahoo/TradingView/OpenFIGI-backed workflows.
+- Added and refreshed verification artifacts for reviewed-source, QFMA, MCD, OpenFIGI, TMX, and TradingView residual workflows.
+- Hardened source-gap, release-acceptance, drift, and ISIN-validation reporting so remaining residuals are classified instead of hidden.
+- Regenerated dataset exports, Adanos reference files, README snapshot, completion backlog, drift report, release acceptance matrix, and validation reports.
+
+### Verification
+
+- `scripts/validate_database.py`: pass with 0 failed error gates. `scripts/check_entry_quality_gate.py`: pass. `scripts/check_readme_snapshot.py`: pass. `scripts/build_release_acceptance_report.py`: 67/67 criteria passed. `scripts/build_drift_report.py`: pass, `pending_renames_count=0`, `drift_detected=false`. Focused pytest suite: 305 passed.
+
+## [3.32.01] - 2026-07-07
+
+### Summary
+
+**Quality-gate hardening for the v3.32.01 completeness backlog.** Adds release metadata consistency checks, stale warning allowlist enforcement, and drift regression snapshots for source-gap and official-recall metrics.
+
+### Changed
+
+- Added a release-acceptance criterion that requires `VERSION` to have a matching dated `CHANGELOG.md` release section.
+- Tightened entry-quality release acceptance so stale warning allowlist rows fail instead of silently lingering.
+- Extended the drift report with quality-count and per-exchange official-recall regression detection against the previous generated drift snapshot.
+- Pruned stale entry-quality warning allowlist rows that no longer correspond to current warning rows.
+
+### Verification
+
+- `scripts/rebuild_dataset.py`: pass. `scripts/validate_database.py`: 0/83 failed error gates. `scripts/check_entry_quality_gate.py`: pass with 0 stale allowlist rows. `scripts/check_readme_snapshot.py`: pass. `scripts/build_release_acceptance_report.py`: 65/65 criteria passed. `scripts/build_drift_report.py`: pass, `drift_detected=false`. Focused pytest suite: 290 passed.
+
 ## [3.32.00] - 2026-07-07
 
 ### Summary

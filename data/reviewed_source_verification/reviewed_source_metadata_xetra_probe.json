@@ -1,0 +1,46 @@
+[
+  {
+    "confidence": "0.80",
+    "decision": "accept",
+    "evidence": "Issuer page describes Beta Systems as a software company providing IT automation and software applications.",
+    "exchange": "XETRA",
+    "field": "stock_sector",
+    "proposed_value": "Information Technology",
+    "source_name": "Beta Systems",
+    "source_url": "https://www.betasystems.com/company/about-us",
+    "ticker": "SPT6"
+  },
+  {
+    "confidence": "0.88",
+    "decision": "accept",
+    "evidence": "Issuer product page identifies Xtrackers MSCI Europe Small Cap UCITS ETF 1C with ISIN LU0322253906; exchange references map the XETRA short code DX2J to the same share class.",
+    "exchange": "XETRA",
+    "field": "isin",
+    "proposed_value": "LU0322253906",
+    "source_name": "DWS Xtrackers",
+    "source_url": "https://etf.dws.com/en-gb/LU0322253906-msci-europe-small-cap-ucits-etf-1c/",
+    "ticker": "DX2J"
+  },
+  {
+    "confidence": "0.88",
+    "decision": "accept",
+    "evidence": "Issuer product page identifies Xtrackers Vietnam Swap UCITS ETF 1C with ISIN LU0322252924; exchange references map the XETRA short code DXS7 to the same share class.",
+    "exchange": "XETRA",
+    "field": "isin",
+    "proposed_value": "LU0322252924",
+    "source_name": "DWS Xtrackers",
+    "source_url": "https://etf.dws.com/en-gb/LU0322252924-vietnam-swap-ucits-etf-1c/",
+    "ticker": "DXS7"
+  },
+  {
+    "confidence": "0.90",
+    "decision": "accept",
+    "evidence": "Issuer product page identifies Xtrackers Physical Rhodium ETC (EUR) with ISIN DE000A1KJHG8 and exchange ticker XFRD GY; Deutsche Boerse page lists symbol XFRD with the same ISIN.",
+    "exchange": "XETRA",
+    "field": "isin",
+    "proposed_value": "DE000A1KJHG8",
+    "source_name": "DWS Xtrackers",
+    "source_url": "https://etf.dws.com/de-de/etc/DE000A1KJHG8-xtrackers-physical-rhodium-etc-eur/",
+    "ticker": "XFRD"
+  }
+]
