@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-07-06T11:17:09Z",
-    "rows": 124703,
+    "generated_at": "2026-07-13T11:40:58Z",
+    "rows": 125044,
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "aliases_csv": "data/aliases.csv"
@@ -9,30 +9,30 @@
   },
   "summary": {
     "status_counts": {
-      "reject": 65819,
-      "accept": 58402,
-      "review": 482
+      "reject": 66101,
+      "accept": 58479,
+      "review": 464
     },
     "detection_policy_counts": {
-      "identifier_only": 65819,
-      "safe_natural_language": 58402,
-      "symbol_alias_only": 482
+      "identifier_only": 66101,
+      "safe_natural_language": 58479,
+      "symbol_alias_only": 464
     },
     "reason_counts": {
-      "identifier_alias": 65819,
-      "accepted_name_alias": 58402,
-      "same_as_ticker": 482
+      "identifier_alias": 66101,
+      "accepted_name_alias": 58479,
+      "same_as_ticker": 464
     },
     "alias_type_status_counts": {
       "isin": {
-        "reject": 61477
+        "reject": 61766
       },
       "name": {
-        "accept": 58402,
-        "review": 482
+        "accept": 58479,
+        "review": 464
       },
       "wkn": {
-        "reject": 4342
+        "reject": 4335
       }
     }
   },
@@ -481,16 +481,6 @@
         "duplicate_ticker_count": "1"
       },
       {
-        "ticker": "AMNGV",
-        "alias": "amngv",
-        "alias_type": "name",
-        "status": "review",
-        "detection_policy": "symbol_alias_only",
-        "confidence": "0.80",
-        "reason": "same_as_ticker",
-        "duplicate_ticker_count": "1"
-      },
-      {
         "ticker": "AMPVOLTS",
         "alias": "ampvolts",
         "alias_type": "name",
@@ -533,6 +523,16 @@
       {
         "ticker": "APETIT",
         "alias": "apetit",
+        "alias_type": "name",
+        "status": "review",
+        "detection_policy": "symbol_alias_only",
+        "confidence": "0.80",
+        "reason": "same_as_ticker",
+        "duplicate_ticker_count": "1"
+      },
+      {
+        "ticker": "APOTEA",
+        "alias": "apotea",
         "alias_type": "name",
         "status": "review",
         "detection_policy": "symbol_alias_only",
