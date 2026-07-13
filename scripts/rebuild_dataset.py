@@ -63,6 +63,10 @@ REVIEW_OVERRIDES_DIR = DATA_DIR / "review_overrides"
 REVIEW_REMOVE_ALIASES_CSV = REVIEW_OVERRIDES_DIR / "remove_aliases.csv"
 REVIEW_METADATA_UPDATES_CSV = REVIEW_OVERRIDES_DIR / "metadata_updates.csv"
 REVIEW_DROP_ENTRIES_CSV = REVIEW_OVERRIDES_DIR / "drop_entries.csv"
+# (ticker, exchange) pairs that are exchange-listed preferreds/notes or common-stock
+# names that the non-common-stock name filters would otherwise drop as false positives
+# (e.g. "Preferred Bank"). Reviewed and admitted per the preferred/notes scope policy.
+PREFERRED_ALLOWLIST_CSV = REVIEW_OVERRIDES_DIR / "preferred_allowlist.csv"
 MANUAL_ISIN_CORRECTIONS = {
     "AAPL": "US0378331005",
     # Keep NASDAQ BMR ungrouped; same-ticker ASX/TSXV listings have caused recurring identifier collisions.
@@ -1326,6 +1330,21 @@ def has_matching_set_base_reference(row: dict[str, str]) -> bool:
     return alias_matches_company(current_name, base_name) or alias_matches_company(base_name, current_name)
 
 
+@lru_cache(maxsize=None)
+def load_preferred_allowlist() -> frozenset[tuple[str, str]]:
+    """(ticker, exchange) pairs admitted past the non-common-stock name filters."""
+    if not PREFERRED_ALLOWLIST_CSV.exists():
+        return frozenset()
+    pairs: set[tuple[str, str]] = set()
+    with PREFERRED_ALLOWLIST_CSV.open(newline="", encoding="utf-8") as handle:
+        for row in csv.DictReader(handle):
+            ticker = row.get("ticker", "").strip()
+            exchange = row.get("exchange", "").strip()
+            if ticker and exchange:
+                pairs.add((ticker, exchange))
+    return frozenset(pairs)
+
+
 def should_exclude_row(
     row: dict[str, str],
     stock_base_name_index: dict[str, set[str]] | None = None,
@@ -1335,6 +1354,9 @@ def should_exclude_row(
     ticker = row.get("ticker", "").strip().upper()
     asset_type = row.get("asset_type")
     name = row.get("name", "").lower()
+
+    if (row.get("ticker", "").strip(), row.get("exchange", "").strip()) in load_preferred_allowlist():
+        return False
 
     if exchange == "SET":
         if ticker.startswith("^"):
