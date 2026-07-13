@@ -49,7 +49,6 @@ jobs:
             --asset-type Stock,ETF
 
       - name: Rebuild derived exports and reports
-        if: steps.apply.outputs.new_listings_applied == 'true'
         run: |
           python scripts/rebuild_dataset.py
           python scripts/enrich_global_identifiers.py
@@ -64,7 +63,6 @@ jobs:
           python scripts/update_readme_snapshot.py
 
       - name: Validate release gates
-        if: steps.apply.outputs.new_listings_applied == 'true'
         run: |
           python -m pytest tests/ -q
           python scripts/check_entry_quality_gate.py
