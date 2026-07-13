@@ -13,6 +13,13 @@ AUTOMATION_BRANCHES = {
     "nasdaq-us-new-listings.yml": "automation/nasdaq-us-new-listings",
     "symbol-changes.yml": "automation/symbol-changes",
 }
+REPORT_REBUILD_WORKFLOWS = (
+    "delisting-report.yml",
+    "masterfile-rotation.yml",
+    "nasdaq-us-new-listings.yml",
+    "release.yml",
+    "symbol-changes.yml",
+)
 
 
 def test_ci_supports_explicit_dispatch() -> None:
@@ -41,3 +48,15 @@ def test_masterfile_html_parser_dependencies_are_declared() -> None:
 
     assert "html5lib>=" in requirements
     assert "beautifulsoup4>=" in requirements
+
+
+def test_report_rebuilds_follow_their_data_dependencies() -> None:
+    for filename in REPORT_REBUILD_WORKFLOWS:
+        workflow = (WORKFLOW_DIR / filename).read_text(encoding="utf-8")
+
+        entry_quality = workflow.index("python scripts/build_entry_quality_report.py")
+        source_gaps = workflow.index("python scripts/build_source_gap_classification.py")
+        source_decisions = workflow.index("python scripts/build_source_of_truth_decisions.py")
+        completion_backlog = workflow.index("python scripts/build_completion_backlog.py")
+
+        assert entry_quality < source_gaps < source_decisions < completion_backlog
