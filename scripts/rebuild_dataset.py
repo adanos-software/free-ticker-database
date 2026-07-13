@@ -1896,6 +1896,12 @@ def apply_official_exchange_corrections(rows: list[dict[str, str]]) -> list[dict
         old_listing_key = row_listing_key(row)
         new_listing_key = row_listing_key(corrected)
         if new_listing_key in occupied_listing_keys and new_listing_key != old_listing_key:
+            if row["asset_type"] == "Stock":
+                # The official stock listing is already present. Keeping the stale
+                # venue row would make a second rebuild reintroduce a duplicate for
+                # the same security (for example an OTC row corrected to NASDAQ).
+                occupied_listing_keys.discard(old_listing_key)
+                continue
             corrected_rows.append(row)
             continue
 
