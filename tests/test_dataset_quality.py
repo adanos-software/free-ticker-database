@@ -1432,6 +1432,45 @@ def test_apply_official_exchange_corrections_moves_generic_us_row_to_preferred_o
     assert corrected[0]["exchange"] == "NYSE MKT"
 
 
+def test_apply_official_exchange_corrections_drops_stale_row_when_official_listing_exists(monkeypatch):
+    from scripts import rebuild_dataset
+
+    official_row = {
+        "ticker": "MFP",
+        "name": "Midera Food Processing, Inc.",
+        "exchange": "NASDAQ",
+        "asset_type": "Stock",
+        "country": "United States",
+        "country_code": "US",
+        "sector": "Consumer Staples",
+        "isin": "",
+        "aliases": [],
+    }
+    stale_row = {**official_row, "exchange": "OTC"}
+
+    monkeypatch.setattr(
+        rebuild_dataset,
+        "load_active_official_reference_rows",
+        lambda: {
+            ("MFP", "Stock"): (
+                {
+                    "ticker": "MFP",
+                    "exchange": "NASDAQ",
+                    "asset_type": "Stock",
+                    "name": "Midera Food Processing, Inc. - Common Stock",
+                    "source_key": "nasdaq_listed",
+                    "reference_scope": "exchange_directory",
+                    "isin": "",
+                },
+            )
+        },
+    )
+
+    corrected = rebuild_dataset.apply_official_exchange_corrections([official_row, stale_row])
+
+    assert corrected == [official_row]
+
+
 def test_apply_official_exchange_corrections_replaces_contaminated_hose_isin_from_hnx(monkeypatch):
     from scripts import rebuild_dataset
 
