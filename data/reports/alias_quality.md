@@ -1,6 +1,6 @@
 # Alias Quality Report
 
-Generated at: `2026-07-06T11:17:09Z`
+Generated at: `2026-07-13T11:40:58Z`
 
 This report classifies `data/aliases.csv` for Natural-Language detection safety.
 Identifier aliases remain useful for lookup, but are rejected for mention detection.
@@ -9,22 +9,22 @@ Identifier aliases remain useful for lookup, but are rejected for mention detect
 
 | Status | Rows |
 |---|---:|
-| reject | 65,819 |
-| accept | 58,402 |
-| review | 482 |
+| reject | 66,101 |
+| accept | 58,479 |
+| review | 464 |
 
 ## Detection Policies
 
 | Policy | Rows |
 |---|---:|
-| identifier_only | 65,819 |
-| safe_natural_language | 58,402 |
-| symbol_alias_only | 482 |
+| identifier_only | 66,101 |
+| safe_natural_language | 58,479 |
+| symbol_alias_only | 464 |
 
 ## Top Reasons
 
 | Reason | Rows |
 |---|---:|
-| identifier_alias | 65,819 |
-| accepted_name_alias | 58,402 |
-| same_as_ticker | 482 |
+| identifier_alias | 66,101 |
+| accepted_name_alias | 58,479 |
+| same_as_ticker | 464 |

@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 79615,
-    "matched": 53406,
-    "collisions": 11380,
-    "missing": 14829
+    "official_symbols": 79686,
+    "matched": 53458,
+    "collisions": 11394,
+    "missing": 14834
   },
   "exchanges": [
     {
@@ -327,11 +327,29 @@
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1490,
-      "matched": 1162,
-      "collisions": 39,
-      "missing": 289,
+      "official_symbols": 1527,
+      "matched": 1194,
+      "collisions": 45,
+      "missing": 288,
       "collision_examples": [
+        {
+          "ticker": "ALA",
+          "name": "Corgi ALAB 2x Daily ETF",
+          "target_exchange": "BATS",
+          "existing_exchanges": [
+            "ASX",
+            "Borsa Italiana",
+            "TSX"
+          ]
+        },
+        {
+          "ticker": "APMI",
+          "name": "Corgi AMAT 2x Daily ETF",
+          "target_exchange": "BATS",
+          "existing_exchanges": [
+            "TSXV"
+          ]
+        },
         {
           "ticker": "APPC",
           "name": "Corgi APP 2x Daily ETF",
@@ -396,22 +414,6 @@
           "target_exchange": "BATS",
           "existing_exchanges": [
             "TSX"
-          ]
-        },
-        {
-          "ticker": "CBIL",
-          "name": "Corgi 3-12 Month T-Bill ETF",
-          "target_exchange": "BATS",
-          "existing_exchanges": [
-            "TSX"
-          ]
-        },
-        {
-          "ticker": "CBOT",
-          "name": "Corgi Robots & Humanoids ETF",
-          "target_exchange": "BATS",
-          "existing_exchanges": [
-            "Euronext"
           ]
         }
       ],
@@ -957,8 +959,8 @@
       "exchange": "BVB",
       "official_symbols": 348,
       "matched": 75,
-      "collisions": 124,
-      "missing": 149,
+      "collisions": 125,
+      "missing": 148,
       "collision_examples": [
         {
           "ticker": "AAB",
@@ -1104,8 +1106,8 @@
       "exchange": "Borsa Italiana",
       "official_symbols": 2877,
       "matched": 253,
-      "collisions": 1801,
-      "missing": 823,
+      "collisions": 1802,
+      "missing": 822,
       "collision_examples": [
         {
           "ticker": "1PAS",
@@ -1575,8 +1577,8 @@
       "exchange": "Euronext",
       "official_symbols": 2003,
       "matched": 964,
-      "collisions": 671,
-      "missing": 368,
+      "collisions": 672,
+      "missing": 367,
       "collision_examples": [
         {
           "ticker": "0EMU",
@@ -2366,8 +2368,8 @@
       "exchange": "LSE",
       "official_symbols": 11021,
       "matched": 6419,
-      "collisions": 1105,
-      "missing": 3497,
+      "collisions": 1106,
+      "missing": 3496,
       "collision_examples": [
         {
           "ticker": "0GZJ",
@@ -2616,10 +2618,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5648,
-      "matched": 4597,
-      "collisions": 47,
-      "missing": 1004,
+      "official_symbols": 5678,
+      "matched": 4612,
+      "collisions": 51,
+      "missing": 1015,
       "collision_examples": [
         {
           "ticker": "AIMS",
@@ -3191,8 +3193,8 @@
     },
     {
       "exchange": "NYSE",
-      "official_symbols": 3904,
-      "matched": 2026,
+      "official_symbols": 3905,
+      "matched": 2027,
       "collisions": 502,
       "missing": 1376,
       "collision_examples": [
@@ -3334,8 +3336,8 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2672,
-      "matched": 2551,
+      "official_symbols": 2677,
+      "matched": 2556,
       "collisions": 29,
       "missing": 92,
       "collision_examples": [
@@ -3475,10 +3477,10 @@
     },
     {
       "exchange": "NYSE MKT",
-      "official_symbols": 311,
-      "matched": 228,
+      "official_symbols": 309,
+      "matched": 227,
       "collisions": 27,
-      "missing": 56,
+      "missing": 55,
       "collision_examples": [
         {
           "ticker": "AEF",
