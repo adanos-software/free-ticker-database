@@ -1,14 +1,14 @@
 {
   "summary": {
-    "generated_at": "2026-07-07T12:19:45Z",
-    "dry_run": true,
+    "generated_at": "2026-07-13T11:45:40Z",
+    "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
-    "blocked_rows": 295,
+    "blocked_rows": 299,
     "blocked_by_status": {
-      "blocked_new_symbol_collision": 21,
-      "blocked_old_symbol_not_unique_in_us_scope": 238,
+      "blocked_new_symbol_collision": 22,
+      "blocked_old_symbol_not_unique_in_us_scope": 241,
       "manual_isin_not_proven_unchanged": 2,
       "manual_non_us_or_unscoped_source": 33,
       "manual_transition_or_shell_name": 1
@@ -16,6 +16,22 @@
   },
   "accepted": [],
   "blocked": [
+    {
+      "change_id": "38c26c187ad078c6",
+      "effective_date": "2026-07-07",
+      "old_symbol": "MFPVV",
+      "new_symbol": "MFP",
+      "new_company_name": "Midera Food Processing Inc",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
+    {
+      "change_id": "b21b826867ff65e1",
+      "effective_date": "2026-07-06",
+      "old_symbol": "LIXT",
+      "new_symbol": "NMAD",
+      "new_company_name": "Nomad Power Solutions Inc",
+      "status": "blocked_new_symbol_collision"
+    },
     {
       "change_id": "f8a3bebe760fa228",
       "effective_date": "2026-07-02",
@@ -37,7 +53,7 @@
       "effective_date": "2026-07-02",
       "old_symbol": "CEPT",
       "new_symbol": "SECZ",
-      "new_company_name": "Securitize Inc",
+      "new_company_name": "Securitize Corp",
       "status": "blocked_new_symbol_collision"
     },
     {
@@ -129,6 +145,14 @@
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
+      "change_id": "81bd78d4bc6c3d63",
+      "effective_date": "2026-06-15",
+      "old_symbol": "HSPT",
+      "new_symbol": "SLBT",
+      "new_company_name": "Sl Science Holding Ltd.",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
+    {
       "change_id": "b74a732fcef9d56b",
       "effective_date": "2026-06-12",
       "old_symbol": "SCVL",
@@ -142,6 +166,14 @@
       "old_symbol": "VACH",
       "new_symbol": "VRXA",
       "new_company_name": "Veraxa Biotech Holding Ag",
+      "status": "blocked_new_symbol_collision"
+    },
+    {
+      "change_id": "15b3f53c350bc012",
+      "effective_date": "2026-06-11",
+      "old_symbol": "MLAC",
+      "new_symbol": "AVAT",
+      "new_company_name": "Avalanche Treasury Corp",
       "status": "blocked_new_symbol_collision"
     },
     {
@@ -542,7 +574,7 @@
       "old_symbol": "VCIC",
       "new_symbol": "CSHR",
       "new_company_name": "Coinshares PLC",
-      "status": "blocked_new_symbol_collision"
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "ce7352846b5db9ff",
