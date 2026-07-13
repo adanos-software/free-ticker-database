@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-07-08T04:36:02Z",
-    "rows": 74517,
+    "generated_at": "2026-07-13T10:47:58Z",
+    "rows": 74592,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,24 +14,24 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 68170,
-      "source_gap": 6272,
+      "pass": 68215,
+      "source_gap": 6302,
       "warn": 75
     },
     "evidence_level_counts": {
       "identifier_enriched": 4561,
-      "official_reference": 68806,
-      "scoped_source_gap": 247,
-      "valid_isin": 903
+      "official_reference": 68863,
+      "scoped_source_gap": 264,
+      "valid_isin": 904
     },
     "severity_counts": {
       "high": 67,
       "medium": 8,
-      "source_gap": 6333
+      "source_gap": 6369
     },
     "issue_counts": {
-      "official_reference_gap": 5711,
-      "expected_missing_primary_isin": 621,
+      "official_reference_gap": 5729,
+      "expected_missing_primary_isin": 639,
       "country_isin_mismatch": 65,
       "official_name_mismatch": 8,
       "official_isin_mismatch": 2,
@@ -40,8 +40,8 @@
     "top_flagged_exchanges": [
       {
         "exchange": "OTC",
-        "pass": 7857,
-        "source_gap": 3160,
+        "pass": 7899,
+        "source_gap": 3171,
         "warn": 7
       },
       {
@@ -58,7 +58,7 @@
         "exchange": "LSE",
         "pass": 6366,
         "warn": 60,
-        "source_gap": 131
+        "source_gap": 132
       },
       {
         "exchange": "BSE_IN",
@@ -73,13 +73,13 @@
       {
         "exchange": "NASDAQ",
         "pass": 4514,
-        "source_gap": 160,
+        "source_gap": 166,
         "warn": 1
       },
       {
         "exchange": "NYSE ARCA",
         "pass": 2499,
-        "source_gap": 155
+        "source_gap": 160
       },
       {
         "exchange": "BME",
@@ -100,12 +100,18 @@
       {
         "exchange": "XETRA",
         "pass": 3745,
-        "source_gap": 99
+        "source_gap": 100
       },
       {
         "exchange": "BATS",
         "pass": 1142,
-        "source_gap": 99
+        "source_gap": 100
+      },
+      {
+        "exchange": "TSXV",
+        "pass": 970,
+        "source_gap": 97,
+        "warn": 2
       },
       {
         "exchange": "Euronext",
@@ -113,14 +119,8 @@
         "source_gap": 98
       },
       {
-        "exchange": "TSXV",
-        "pass": 970,
-        "source_gap": 94,
-        "warn": 2
-      },
-      {
         "exchange": "AMS",
-        "pass": 240,
+        "pass": 241,
         "source_gap": 90
       },
       {
@@ -14139,6 +14139,24 @@
       ]
     },
     {
+      "listing_key": "NYSE ARCA::BBAG",
+      "ticker": "BBAG",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "NYSE ARCA",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "BMV::BBAJIOO",
       "ticker": "BBAJIOO",
       "exchange": "BMV",
@@ -16558,6 +16576,24 @@
       ]
     },
     {
+      "listing_key": "OTC::BLDC",
+      "ticker": "BLDC",
+      "exchange": "OTC",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "OTC",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "OTC::BLDV",
       "ticker": "BLDV",
       "exchange": "OTC",
@@ -18163,42 +18199,6 @@
           "field": "isin",
           "value": "",
           "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
-      "listing_key": "WSE::BRG",
-      "ticker": "BRG",
-      "exchange": "WSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "WSE",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BRGO",
-      "ticker": "BRGO",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     }

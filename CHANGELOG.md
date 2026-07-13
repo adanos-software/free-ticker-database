@@ -2,6 +2,33 @@
 
 ## [Unreleased]
 
+## [3.32.03] - 2026-07-13
+
+### Summary
+
+**Issue #125 news-coverage gap closure.** Adds 71 news-observed securities that resolved to no instrument in the downstream Instrument Graph, and introduces a reviewed preferred/notes admission mechanism. Analysis of the reported 870-ticker gap found the large majority were already present in this database — 604 as primary-export rows (`data/adanos/ticker_reference.csv`) under the exact news symbol, and 29 as ISIN-linked venue/cross-listing rows of a company already carried under its primary symbol. This release adds the genuinely-missing common stocks, open-end ETFs, and exchange-listed preferreds/notes that were in scope.
+
+### Added
+
+- 71 primary listings via `data/coverage_expansion_listings.csv`: OTC/ADR variant symbols of listed companies (e.g. `DTEGY`, `VWAGY`, `SSUMY`, `CTATF`), foreign primaries (e.g. `ISP`), US small/mid caps (`PFBC`, `SATA`, `XOMAO`, `ALBC`), open-end ETFs (`DRAM`, `REXC`, `ETHE`, `BBAG`, `IRBO`, …), and 5 exchange-listed preferreds/notes (`SAJ`, `STRD`, `STRF`, `BRKRP`).
+- `data/review_overrides/preferred_allowlist.csv` and `load_preferred_allowlist()` in `scripts/rebuild_dataset.py`: a reviewed `(ticker, exchange)` allowlist that admits exchange-listed preferreds/notes and common-stock name false-positives (e.g. "Preferred Bank") past the non-common-stock name filters.
+
+### Changed
+
+- Un-dropped `SAJ` (Saratoga Investment Corp 8.00% Notes) from `data/review_overrides/drop_entries.csv` per the preferred/notes scope policy.
+- Two beneficial primary re-keyings driven by adding the news-observed symbols: Intesa Sanpaolo `0HBC` (LSE placeholder) → `ISP` (Borsa Italiana home), and JPMorgan BetaBuilders U.S. Aggregate Bond ETF `JAGG` → `BBAG` (current ticker). Security identity preserved in both.
+- Regenerated dataset exports, extended identifiers, Adanos reference, coverage/entry-quality/source-gap/validation reports, and the README snapshot.
+
+### Scope decisions (issue #125)
+
+- Closed-end funds (OpenFIGI `securityType=Mutual Fund`) and SPAC units/rights remain **out of scope** and stay recorded in `drop_entries.csv`; the news-requested CEFs (`ECC`, `RQI`, `HFRO`, `KYN`, `RCG`, …) are intentionally not reintroduced.
+- Same-security OTC/ADR variants (e.g. `ERIXF`, `CSLLY`, `STMEF`) are not added as duplicate primaries — the ISIN de-dup pipeline correctly folds them into the existing security; they remain resolvable through the ISIN-linked rows in `data/listings.csv` / `data/cross_listings.csv`.
+
+### Verification
+
+- `python -m pytest tests/ -q`: 1623 passed. `scripts/validate_database.py`: pass, 0 failed error gates. `scripts/check_entry_quality_gate.py`: pass, 0 unexpected warns. `scripts/check_readme_snapshot.py`: pass.
+- Ticker-set diff vs prior head: 71 added, 2 re-keyed (identity preserved), 0 securities lost.
+
 ## [3.32.02] - 2026-07-08
 
 ### Summary
