@@ -568,7 +568,7 @@ CASABLANCA_BOURSE_INSTRUMENTS_URL = "https://www.casablanca-bourse.com/en/marche
 CSE_LK_ALL_SECURITY_CODE_URL = "https://www.cse.lk/api/allSecurityCode"
 CSE_LK_COMPANY_INFO_SUMMARY_URL = "https://www.cse.lk/api/companyInfoSummery"
 CSE_LK_COMPANY_INFO_WORKERS = 8
-DSE_TZ_LISTED_COMPANIES_URL = "https://www.dse.co.tz/listed/company/list"
+DSE_TZ_LISTED_COMPANIES_URL = "https://dse.co.tz/listed/company/list"
 BVC_HANDSHAKE_URL = "https://www.bvc.com.co/api/handshake"
 BVC_RV_ISSUERS_URL = (
     "https://rest.bvc.com.co/market-information/rv/lvl-3/issuer?"

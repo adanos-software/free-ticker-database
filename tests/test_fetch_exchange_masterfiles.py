@@ -10727,6 +10727,12 @@ def test_parse_zse_zw_issuers_payload_maps_exact_ticker_and_isin_fallback(tmp_pa
     ]
 
 
+def test_dse_tanzania_source_avoids_www_auth_redirect() -> None:
+    assert fetch_exchange_masterfiles.DSE_TZ_LISTED_COMPANIES_URL == "https://dse.co.tz/listed/company/list"
+    source = next(item for item in OFFICIAL_SOURCES if item.key == "dse_tz_listed_companies")
+    assert source.source_url == "https://dse.co.tz/listed/company/list"
+
+
 def test_parse_small_african_exchange_html_sources_gate_to_current_rows(tmp_path) -> None:
     listings_path = tmp_path / "listings.csv"
     listings_path.write_text(
@@ -10755,7 +10761,7 @@ def test_parse_small_african_exchange_html_sources_gate_to_current_rows(tmp_path
         key="dse_tz_listed_companies",
         provider="DSE Tanzania",
         description="Official DSE table",
-        source_url="https://www.dse.co.tz/listed/company/list",
+        source_url="https://dse.co.tz/listed/company/list",
         format="dse_tz_listed_companies_html",
         reference_scope="listed_companies_subset",
     )
