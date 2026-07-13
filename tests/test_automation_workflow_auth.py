@@ -19,6 +19,10 @@ def test_ci_supports_explicit_dispatch() -> None:
     workflow = (WORKFLOW_DIR / "ci.yml").read_text(encoding="utf-8")
 
     assert "workflow_dispatch:" in workflow
+    assert "statuses: write" in workflow
+    assert "always() && github.event_name == 'workflow_dispatch'" in workflow
+    assert 'context="test"' in workflow
+    assert 'description="Full dispatched CI: $CI_STATE"' in workflow
 
 
 def test_automation_workflows_use_scoped_token_and_dispatch_real_ci() -> None:
@@ -30,3 +34,10 @@ def test_automation_workflows_use_scoped_token_and_dispatch_real_ci() -> None:
         assert "GH_TOKEN: ${{ github.token }}" in workflow
         assert f"gh workflow run ci.yml --ref {branch}" in workflow
         assert "AUTOMATION_PR_TOKEN" not in workflow
+
+
+def test_masterfile_html_parser_dependencies_are_declared() -> None:
+    requirements = (ROOT / "requirements.txt").read_text(encoding="utf-8")
+
+    assert "html5lib>=" in requirements
+    assert "beautifulsoup4>=" in requirements

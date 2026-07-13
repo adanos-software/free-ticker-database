@@ -818,6 +818,22 @@ def load_verification_report(run_dir: Path | None) -> dict[str, Any]:
     }
 
 
+def preserve_previous_verification_report(
+    current: dict[str, Any],
+    previous: dict[str, Any],
+) -> dict[str, Any]:
+    """Retain the last known verification evidence when archived runs are absent."""
+    if current.get("generated_at") or not previous.get("generated_at"):
+        return current
+    return {
+        "summary": current.get("summary") or previous.get("summary", {}),
+        "exchange_rows": current.get("exchange_rows") or previous.get("exchange_coverage", []),
+        "rows": current.get("rows", []),
+        "run_dir": current.get("run_dir") or previous.get("run_dir", ""),
+        "generated_at": previous["generated_at"],
+    }
+
+
 def classify_b3_gap(row: dict[str, Any]) -> str:
     ticker = row.get("ticker", "")
     if ticker.endswith(("31", "32", "33", "34", "35", "39")):
@@ -1679,6 +1695,7 @@ def build_masterfile_collision_report(
 
 def build_report() -> dict[str, Any]:
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+    previous_report = load_json(COVERAGE_REPORT_JSON)
     generated_at = utc_now().replace(microsecond=0).isoformat().replace("+00:00", "Z")
     tickers = load_csv(TICKERS_CSV)
     listings = load_csv(LISTINGS_CSV)
@@ -1702,6 +1719,14 @@ def build_report() -> dict[str, Any]:
     }
     stock_verification = load_verification_report(find_latest_verification_run(STOCK_VERIFICATION_DIR))
     etf_verification = load_verification_report(find_latest_verification_run(ETF_VERIFICATION_DIR))
+    stock_verification = preserve_previous_verification_report(
+        stock_verification,
+        previous_report.get("stock_verification", previous_report.get("verification", {})),
+    )
+    etf_verification = preserve_previous_verification_report(
+        etf_verification,
+        previous_report.get("etf_verification", {}),
+    )
 
     exchange_coverage = build_exchange_report(
         listings,
@@ -1767,7 +1792,11 @@ def build_report() -> dict[str, Any]:
             "exchange_coverage": etf_verification["exchange_rows"],
         },
         "gap_report": build_gap_report(exchange_coverage, stock_verification["exchange_rows"], etf_verification["exchange_rows"]),
-        "b3_gap_breakdown": build_b3_gap_breakdown(stock_verification["rows"]),
+        "b3_gap_breakdown": (
+            build_b3_gap_breakdown(stock_verification["rows"])
+            if stock_verification["rows"]
+            else previous_report.get("b3_gap_breakdown", {})
+        ),
         "b3_masterfile_diagnostics": build_b3_masterfile_diagnostics(listings, masterfiles),
     }
 

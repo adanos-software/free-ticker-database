@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import json
 import os
 from datetime import datetime, timezone
 
+from scripts import build_coverage_report as coverage_report_module
 from scripts.build_coverage_report import (
     build_b3_gap_breakdown,
     build_b3_masterfile_diagnostics,
@@ -23,6 +25,7 @@ from scripts.build_coverage_report import (
     render_markdown,
     refresh_gate_context_for,
     official_recall_decision_for,
+    preserve_previous_verification_report,
     source_artifact_context_for,
 )
 
@@ -888,6 +891,72 @@ def test_build_freshness_report_calculates_ages(tmp_path, monkeypatch):
     assert freshness["source_gap_classification_rows"] == 34
     assert freshness["ohlcv_plausibility_generated_at"] == "2026-04-06T17:00:00Z"
     assert freshness["ohlcv_plausibility_rows"] == 56
+
+
+def test_missing_archived_verification_run_preserves_last_known_evidence():
+    current = {
+        "summary": {},
+        "exchange_rows": [],
+        "rows": [],
+        "run_dir": "",
+        "generated_at": "",
+    }
+    previous = {
+        "summary": {"items": 10, "status_counts": {"verified": 8}},
+        "exchange_coverage": [{"exchange": "NASDAQ", "items": 10}],
+        "run_dir": "data/stock_verification/run-previous",
+        "generated_at": "2026-05-04T08:25:42Z",
+    }
+
+    report = preserve_previous_verification_report(current, previous)
+
+    assert report["summary"] == previous["summary"]
+    assert report["exchange_rows"] == previous["exchange_coverage"]
+    assert report["run_dir"] == previous["run_dir"]
+    assert report["generated_at"] == previous["generated_at"]
+    assert report["rows"] == []
+
+
+def test_current_verification_evidence_takes_precedence_over_previous_report():
+    current = {
+        "summary": {"items": 1},
+        "exchange_rows": [],
+        "rows": [{"ticker": "AAA"}],
+        "run_dir": "data/stock_verification/run-current",
+        "generated_at": "2026-07-13T11:00:00Z",
+    }
+
+    assert preserve_previous_verification_report(
+        current,
+        {"generated_at": "2026-05-04T08:25:42Z"},
+    ) is current
+
+
+def test_build_report_preserves_verification_after_archive_cutover(tmp_path, monkeypatch):
+    previous = json.loads(coverage_report_module.COVERAGE_REPORT_JSON.read_text(encoding="utf-8"))
+    output_dir = tmp_path / "reports"
+    output_dir.mkdir()
+    coverage_json = output_dir / "coverage_report.json"
+    coverage_json.write_text(json.dumps(previous), encoding="utf-8")
+
+    monkeypatch.setattr(coverage_report_module, "REPORTS_DIR", output_dir)
+    monkeypatch.setattr(coverage_report_module, "COVERAGE_REPORT_JSON", coverage_json)
+    monkeypatch.setattr(coverage_report_module, "COVERAGE_REPORT_MD", output_dir / "coverage_report.md")
+    monkeypatch.setattr(
+        coverage_report_module,
+        "MASTERFILE_COLLISION_REPORT_JSON",
+        output_dir / "masterfile_collision_report.json",
+    )
+    monkeypatch.setattr(coverage_report_module, "STOCK_VERIFICATION_DIR", tmp_path / "missing-stock")
+    monkeypatch.setattr(coverage_report_module, "ETF_VERIFICATION_DIR", tmp_path / "missing-etf")
+
+    report = coverage_report_module.build_report()
+
+    assert report["freshness"]["latest_stock_verification_generated_at"] == previous["stock_verification"]["generated_at"]
+    assert report["freshness"]["latest_etf_verification_generated_at"] == previous["etf_verification"]["generated_at"]
+    assert report["stock_verification"]["summary"] == previous["stock_verification"]["summary"]
+    assert report["etf_verification"]["summary"] == previous["etf_verification"]["summary"]
+    assert report["b3_gap_breakdown"] == previous["b3_gap_breakdown"]
 
 
 def test_build_freshness_report_uses_newer_identifier_artifact_timestamp(tmp_path, monkeypatch):

@@ -7,6 +7,10 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+  statuses: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -95,3 +99,16 @@ jobs:
           validate_parquet("data/tickers.parquet")
           validate_parquet("data/core_listings.parquet")
           PY
+
+      - name: Publish dispatched CI result for branch protection
+        if: ${{ always() && github.event_name == 'workflow_dispatch' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CI_STATE: ${{ job.status == 'success' && 'success' || 'failure' }}
+          CI_TARGET_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh api --method POST "repos/${GITHUB_REPOSITORY}/statuses/${GITHUB_SHA}" \
+            -f state="$CI_STATE" \
+            -f context="test" \
+            -f description="Full dispatched CI: $CI_STATE" \
+            -f target_url="$CI_TARGET_URL"
