@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 79686,
-    "matched": 53458,
-    "collisions": 11394,
-    "missing": 14834
+    "official_symbols": 80450,
+    "matched": 53556,
+    "collisions": 11511,
+    "missing": 15383
   },
   "exchanges": [
     {
@@ -677,9 +677,9 @@
     {
       "exchange": "BK",
       "official_symbols": 140,
-      "matched": 104,
+      "matched": 102,
       "collisions": 27,
-      "missing": 9,
+      "missing": 11,
       "collision_examples": [
         {
           "ticker": "ABK",
@@ -768,6 +768,11 @@
       ],
       "missing_examples": [
         {
+          "ticker": "ALENMA",
+          "name": "ALENMA' Real Estate Co. k.s.c.p",
+          "exchange": "BK"
+        },
+        {
           "ticker": "EKTTITAB",
           "name": "Ekttitab Holding",
           "exchange": "BK"
@@ -816,10 +821,10 @@
     },
     {
       "exchange": "BSE_IN",
-      "official_symbols": 4866,
-      "matched": 2459,
-      "collisions": 1885,
-      "missing": 522,
+      "official_symbols": 5068,
+      "matched": 2580,
+      "collisions": 1896,
+      "missing": 592,
       "collision_examples": [
         {
           "ticker": "20MICRONS",
@@ -957,9 +962,9 @@
     },
     {
       "exchange": "BVB",
-      "official_symbols": 348,
+      "official_symbols": 349,
       "matched": 75,
-      "collisions": 125,
+      "collisions": 126,
       "missing": 148,
       "collision_examples": [
         {
@@ -1245,10 +1250,10 @@
     },
     {
       "exchange": "CSE_LK",
-      "official_symbols": 315,
+      "official_symbols": 317,
       "matched": 307,
       "collisions": 0,
-      "missing": 8,
+      "missing": 10,
       "collision_examples": [],
       "missing_examples": [
         {
@@ -1272,8 +1277,18 @@
           "exchange": "CSE_LK"
         },
         {
+          "ticker": "HNBF.R0000",
+          "name": "HNB FINANCE PLC",
+          "exchange": "CSE_LK"
+        },
+        {
+          "ticker": "HNBF.R0001",
+          "name": "HNB FINANCE PLC",
+          "exchange": "CSE_LK"
+        },
+        {
           "ticker": "JXG.N0000",
-          "name": "JANASHAKTHI LIMITED",
+          "name": "JANASHAKTHI PLC",
           "exchange": "CSE_LK"
         },
         {
@@ -1295,14 +1310,14 @@
     },
     {
       "exchange": "CSE_MA",
-      "official_symbols": 50,
+      "official_symbols": 81,
       "matched": 1,
-      "collisions": 38,
-      "missing": 11,
+      "collisions": 61,
+      "missing": 19,
       "collision_examples": [
         {
           "ticker": "ADH",
-          "name": "DOUJA PROM ADDOHA",
+          "name": "DOUJA PROMOTION GROUPE ADDOHA SA",
           "target_exchange": "CSE_MA",
           "existing_exchanges": [
             "ASX"
@@ -1310,7 +1325,7 @@
         },
         {
           "ticker": "ADI",
-          "name": "ALLIANCES",
+          "name": "ALLIANCES DEVELOPPEMENT IMMOBILIER SA",
           "target_exchange": "CSE_MA",
           "existing_exchanges": [
             "NASDAQ"
@@ -1359,7 +1374,7 @@
         },
         {
           "ticker": "ARD",
-          "name": "ARADEI CAPITAL",
+          "name": "Aradei Capital SA",
           "target_exchange": "CSE_MA",
           "existing_exchanges": [
             "ASX"
@@ -1385,6 +1400,11 @@
       ],
       "missing_examples": [
         {
+          "ticker": "2SAHA",
+          "name": "SAHAM ASSURANCE",
+          "exchange": "CSE_MA"
+        },
+        {
           "ticker": "ATL",
           "name": "ATLANTASANAD",
           "exchange": "CSE_MA"
@@ -1396,7 +1416,7 @@
         },
         {
           "ticker": "DHO",
-          "name": "DELTA HOLDING",
+          "name": "DELTA HOLDING SA",
           "exchange": "CSE_MA"
         },
         {
@@ -1428,20 +1448,15 @@
           "ticker": "LBV",
           "name": "LABEL VIE",
           "exchange": "CSE_MA"
-        },
-        {
-          "ticker": "LHM",
-          "name": "LafargeHolcim Maroc",
-          "exchange": "CSE_MA"
         }
       ]
     },
     {
       "exchange": "DFM",
       "official_symbols": 71,
-      "matched": 46,
+      "matched": 45,
       "collisions": 16,
-      "missing": 9,
+      "missing": 10,
       "collision_examples": [
         {
           "ticker": "ALEC",
@@ -1534,6 +1549,11 @@
         {
           "ticker": "EMPOWER",
           "name": "Emirates Central Cooling Systems Corporation PJSC",
+          "exchange": "DFM"
+        },
+        {
+          "ticker": "ETIHADENERGY",
+          "name": "Etihad Energy Holding P.J.S.C",
           "exchange": "DFM"
         },
         {
@@ -2760,9 +2780,9 @@
     {
       "exchange": "NEO",
       "official_symbols": 440,
-      "matched": 190,
-      "collisions": 88,
-      "missing": 162,
+      "matched": 183,
+      "collisions": 86,
+      "missing": 171,
       "collision_examples": [
         {
           "ticker": "ABB",
@@ -2831,16 +2851,17 @@
           ]
         },
         {
-          "ticker": "BGDV",
-          "name": "BMO GLOBAL DIVIDEND OPPORTUNITIES FUND",
+          "ticker": "BNP",
+          "name": "BNP PARIBAS CDR (CAD HEDGED)",
           "target_exchange": "NEO",
           "existing_exchanges": [
-            "NYSE ARCA"
+            "WSE",
+            "XETRA"
           ]
         },
         {
-          "ticker": "BGIN",
-          "name": "BMO GLOBAL INNOVATORS FUND",
+          "ticker": "BTQ",
+          "name": "BTQ TECHNOLOGIES CORP.",
           "target_exchange": "NEO",
           "existing_exchanges": [
             "NASDAQ"
@@ -2879,6 +2900,11 @@
           "exchange": "NEO"
         },
         {
+          "ticker": "BDAY",
+          "name": "HAMILTON ENHANCED BITCOIN DAYMAX ETF",
+          "exchange": "NEO"
+        },
+        {
           "ticker": "BMWY",
           "name": "BMW CDR (CAD HEDGED)",
           "exchange": "NEO"
@@ -2891,11 +2917,6 @@
         {
           "ticker": "BYLD.B",
           "name": "MANULIFE SMART ENHANCED YIELD BOND ETF - UNHEDGED UNITS",
-          "exchange": "NEO"
-        },
-        {
-          "ticker": "CANO",
-          "name": "CANON CDR (CAD HEDGED)",
           "exchange": "NEO"
         }
       ]
@@ -5435,10 +5456,10 @@
     },
     {
       "exchange": "XETRA",
-      "official_symbols": 4544,
-      "matched": 3672,
-      "collisions": 773,
-      "missing": 99,
+      "official_symbols": 5072,
+      "matched": 3659,
+      "collisions": 857,
+      "missing": 556,
       "collision_examples": [
         {
           "ticker": "0GZK",
@@ -5523,53 +5544,53 @@
       ],
       "missing_examples": [
         {
-          "ticker": "36IB",
-          "name": "IS.IBD D36 T.EO EOD",
+          "ticker": "01P",
+          "name": "MEDPACE HOLDINGS   DL-,01",
           "exchange": "XETRA"
         },
         {
-          "ticker": "A1G",
-          "name": "AMERICAN AIRLINES GRP",
+          "ticker": "07G0",
+          "name": "CORPAY INC.",
           "exchange": "XETRA"
         },
         {
-          "ticker": "AAVD",
-          "name": "ACATIS ALTERSVORSORGE.ETF",
+          "ticker": "08D",
+          "name": "MIRUM PHARMAC.   DL-,0001",
           "exchange": "XETRA"
         },
         {
-          "ticker": "AGAE",
-          "name": "BNPEIIGLHYOP HEOA",
+          "ticker": "0AK",
+          "name": "ARAMARK           DL -,01",
           "exchange": "XETRA"
         },
         {
-          "ticker": "ASPF",
-          "name": "AM.SP 500 FNCLS DLA",
+          "ticker": "0EF",
+          "name": "E.L.F. BEAUTY INC  DL-,01",
           "exchange": "XETRA"
         },
         {
-          "ticker": "ASRT",
-          "name": "BNPPE-EO C.BD S.P.UETFEOD",
+          "ticker": "0GS",
+          "name": "GUIDEWIRE SOFTWA.DL-,0001",
           "exchange": "XETRA"
         },
         {
-          "ticker": "AW1V",
-          "name": "UBSCOREMSCIEMU AAEO",
+          "ticker": "0L5",
+          "name": "LAMB WESTON HLDGS    DL 1",
           "exchange": "XETRA"
         },
         {
-          "ticker": "AWEX",
-          "name": "X.IEX.A-WEXUS E 1CDLA",
+          "ticker": "0L8",
+          "name": "LANTHEUS HLDGS     DL-,01",
           "exchange": "XETRA"
         },
         {
-          "ticker": "BCKY",
-          "name": "LEVERAGE SHARES ETP 76",
+          "ticker": "0M5",
+          "name": "BILL HOLDINGS   DL-,00001",
           "exchange": "XETRA"
         },
         {
-          "ticker": "BTNA",
-          "name": "DIG.ASS. OPEN END ETP",
+          "ticker": "0NU",
+          "name": "NUTANIX INC. A",
           "exchange": "XETRA"
         }
       ]

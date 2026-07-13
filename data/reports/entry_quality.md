@@ -1,20 +1,20 @@
 # Entry Quality Report
 
-Generated at: `2026-07-13T11:40:47Z`
+Generated at: `2026-07-13T12:04:22Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 68,210 |
-| source_gap | 6,365 |
+| pass | 68,325 |
+| source_gap | 6,250 |
 | warn | 75 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 5,735 |
+| official_reference_gap | 5,620 |
 | expected_missing_primary_isin | 696 |
 | country_isin_mismatch | 65 |
 | missing_etf_category | 50 |
@@ -31,14 +31,13 @@ Generated at: `2026-07-13T11:40:47Z`
 | TSX | 1,704 | 0 | 199 | 0 | 0 |
 | LSE | 6,366 | 0 | 132 | 60 | 0 |
 | NASDAQ | 4,514 | 0 | 181 | 1 | 0 |
-| BSE_IN | 2,459 | 0 | 179 | 0 | 0 |
 | NYSE ARCA | 2,496 | 0 | 170 | 0 | 0 |
 | BMV | 12 | 0 | 167 | 0 | 0 |
 | BME | 78 | 0 | 143 | 0 | 0 |
 | BATS | 1,139 | 0 | 140 | 0 | 0 |
 | NSE_IN | 2,369 | 0 | 134 | 0 | 0 |
 | ASX | 1,501 | 0 | 123 | 1 | 0 |
-| XETRA | 3,745 | 0 | 100 | 0 | 0 |
+| XETRA | 3,731 | 0 | 114 | 0 | 0 |
 | TSXV | 970 | 0 | 97 | 2 | 0 |
 | Euronext | 983 | 0 | 98 | 0 | 0 |
 | AMS | 241 | 0 | 90 | 0 | 0 |
@@ -46,6 +45,7 @@ Generated at: `2026-07-13T11:40:47Z`
 | TASE | 597 | 0 | 75 | 0 | 0 |
 | ATHEX | 89 | 0 | 66 | 0 | 0 |
 | CSE_MA | 1 | 0 | 65 | 0 | 0 |
+| NYSE | 1,979 | 0 | 60 | 0 | 0 |
 
 ## Notes
 
