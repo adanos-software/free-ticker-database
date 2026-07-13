@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-07-13T12:04:26Z",
-    "rows": 6374,
+    "generated_at": "2026-07-13T12:11:02Z",
+    "rows": 6373,
     "field_totals": {
       "missing_etf_category": 50,
       "missing_isin_primary": 696,
       "missing_sector_stock": 8,
-      "official_reference_gap": 5620
+      "official_reference_gap": 5619
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 43,
@@ -21,7 +21,7 @@
       "official_industry_taxonomy_unavailable_gap": 4,
       "official_product_taxonomy_unavailable_gap": 43,
       "official_reference_symbol_collision_gap": 709,
-      "official_reference_unmatched_source_gap": 4911,
+      "official_reference_unmatched_source_gap": 4910,
       "shell_or_cpc_sector_gap": 4
     },
     "class_by_field": {
@@ -38,7 +38,7 @@
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 4,
       "missing_sector_stock:shell_or_cpc_sector_gap": 4,
       "official_reference_gap:official_reference_symbol_collision_gap": 709,
-      "official_reference_gap:official_reference_unmatched_source_gap": 4911
+      "official_reference_gap:official_reference_unmatched_source_gap": 4910
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
@@ -307,7 +307,7 @@
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
         "exchange": "BSE_IN",
-        "rows": 57,
+        "rows": 56,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       }
@@ -29793,23 +29793,6 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=BSE_IN::TRUSTWAVE;exchange=BSE_IN;ticker=TRUSTWAVE;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "BSE_IN::TULIVE",
-      "ticker": "TULIVE",
-      "exchange": "BSE_IN",
-      "asset_type": "Stock",
-      "name": "Tulive Developers Ltd",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
-      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
-      "source_gap_context": "listing_key=BSE_IN::TULIVE;exchange=BSE_IN;ticker=TULIVE;asset_type=Stock;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },

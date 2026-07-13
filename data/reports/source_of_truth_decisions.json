@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-07-13T12:04:26Z",
-    "rows": 6374,
+    "generated_at": "2026-07-13T12:11:02Z",
+    "rows": 6373,
     "outcome_totals": {
       "accepted_source_gap": 1000,
       "core_exclusion_candidate": 463,
-      "official_fill_required": 4911
+      "official_fill_required": 4910
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 43,
@@ -20,7 +20,7 @@
       "official_industry_taxonomy_unavailable_gap": 4,
       "official_product_taxonomy_unavailable_gap": 43,
       "official_reference_symbol_collision_gap": 709,
-      "official_reference_unmatched_source_gap": 4911,
+      "official_reference_unmatched_source_gap": 4910,
       "shell_or_cpc_sector_gap": 4
     },
     "field_outcomes": {
@@ -30,7 +30,7 @@
       "missing_sector_stock:accepted_source_gap": 4,
       "missing_sector_stock:core_exclusion_candidate": 4,
       "official_reference_gap:accepted_source_gap": 709,
-      "official_reference_gap:official_fill_required": 4911
+      "official_reference_gap:official_fill_required": 4910
     },
     "policy": {
       "source_of_truth_program": "Every residual gap must have exactly one outcome: official_fill_required, accepted_source_gap, or core_exclusion_candidate.",
@@ -38449,23 +38449,6 @@
       "exchange": "BSE_IN",
       "asset_type": "Stock",
       "name": "Trustwave Securities Ltd",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "source_of_truth_outcome": "official_fill_required",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "fill_from_source",
-      "review_needed": "true",
-      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
-      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "BSE_IN::TULIVE",
-      "ticker": "TULIVE",
-      "exchange": "BSE_IN",
-      "asset_type": "Stock",
-      "name": "Tulive Developers Ltd",
       "gap_class": "official_reference_unmatched_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",

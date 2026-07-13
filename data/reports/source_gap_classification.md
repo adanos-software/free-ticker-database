@@ -1,12 +1,12 @@
 # Source Gap Classification
 
-Generated at: `2026-07-13T12:04:26Z`
+Generated at: `2026-07-13T12:11:02Z`
 
 This report classifies residual metadata gaps after official and reviewed free-source backfills. It is a guardrail report: values remain empty unless a future source satisfies the listed source gate.
 
 ## Summary
 
-- Official reference-gap rows classified: `5620`
+- Official reference-gap rows classified: `5619`
 - Missing primary ISIN rows classified: `696`
 - Missing stock-sector rows classified: `8`
 - Missing ETF-category rows classified: `50`
@@ -15,7 +15,7 @@ This report classifies residual metadata gaps after official and reviewed free-s
 
 | Class | Rows |
 |---|---:|
-| official_reference_unmatched_source_gap | 4911 |
+| official_reference_unmatched_source_gap | 4910 |
 | official_reference_symbol_collision_gap | 709 |
 | fund_or_trust_identifier_gap | 287 |
 | official_identifier_not_exposed_source_gap | 230 |
@@ -53,7 +53,7 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | official_reference_gap | official_reference_unmatched_source_gap | JSE | 61 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | missing_isin_primary | debt_or_securitized_identifier_gap | ASX | 57 | Official debt/structured-product masterfile, trustee/prospectus, or reviewed identifier feed. | Exact instrument code/name and ISIN checksum; never issuer-equity propagation. |
 | missing_isin_primary | fund_or_trust_identifier_gap | NYSE ARCA | 57 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
-| official_reference_gap | official_reference_unmatched_source_gap | BSE_IN | 57 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
+| official_reference_gap | official_reference_unmatched_source_gap | BSE_IN | 56 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 
 ## Release Policy
 

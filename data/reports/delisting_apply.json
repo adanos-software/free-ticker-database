@@ -1,0 +1,1208 @@
+{
+  "summary": {
+    "generated_at": "2026-07-13T12:09:33Z",
+    "apply": true,
+    "delisting_report_json": "data/reports/delisting_report.json",
+    "drop_entries_csv": "data/review_overrides/drop_entries.csv",
+    "applied_rows": 1,
+    "drafted_rows": 0,
+    "blocked_rows": 23,
+    "manual_rows": 124,
+    "status_counts": {
+      "apply_drop_override": 1,
+      "blocked_suspended_kept_by_policy": 23,
+      "manual_rename_vs_delisting_required": 124
+    }
+  },
+  "applied": [
+    {
+      "exchange": "BSE_IN",
+      "ticker": "TULIVE",
+      "name": "Tulive Developers Ltd",
+      "isin": "INE637D01015",
+      "classification": "delisted",
+      "status": "apply_drop_override"
+    }
+  ],
+  "drafted": [],
+  "blocked": [
+    {
+      "exchange": "BSE_IN",
+      "ticker": "ALSTONE",
+      "name": "Alstone Textiles (India) Ltd",
+      "isin": "INE184S01024",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "ASHIS",
+      "name": "Ashiana Ispat Ltd",
+      "isin": "INE587D01012",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "BCCPP",
+      "name": "BCC Fuba India Ltd",
+      "isin": "IN9788D01014",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "CHARMS",
+      "name": "Charms Industries Ltd",
+      "isin": "INE442C01012",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "GGENG",
+      "name": "G G Engineering Ltd",
+      "isin": "INE694X01030",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "GOLKONDA",
+      "name": "Golkonda Aluminium Extrusions Ltd-$",
+      "isin": "INE327C01031",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "KEDIACN",
+      "name": "Kedia Construction Company Ltd",
+      "isin": "INE511J01027",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "KRISHPP",
+      "name": "KRISHIVAL FOODS Ltd",
+      "isin": "IN90GGO01013",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "OMKARCHEM",
+      "name": "Omkar Speciality Chemicals Ltd",
+      "isin": "INE474L01016",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "PRABHAPP",
+      "name": "Prabha Energy Ltd",
+      "isin": "IN90I0M01014",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "PRESSURS",
+      "name": "Pressure Sensitive Systems India Ltd",
+      "isin": "INE891E01024",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "PVVIPP",
+      "name": "PVV Infra Ltd",
+      "isin": "IN9428B01029",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "RAMASIGNS",
+      "name": "Ramasigns Industries Ltd",
+      "isin": "INE650D01026",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "SELLWIN",
+      "name": "Sellwin Traders Ltd",
+      "isin": "INE195F01027",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "SILVERLINE",
+      "name": "Silverline Technologies Ltd",
+      "isin": "INE368A01021",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "SIPTL",
+      "name": "Sharanam Infraproject and Trading Ltd",
+      "isin": "INE104S01022",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "SSLEL",
+      "name": "Sir Shadi Lal Enterprises Ltd",
+      "isin": "INE117H01019",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "SUUMAYA",
+      "name": "Suumaya Corporation Ltd",
+      "isin": "INE0EMB01015",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "TIAANC",
+      "name": "Tiaan Consumer Ltd",
+      "isin": "INE864T01011",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "TRUSTWAVE",
+      "name": "Trustwave Securities Ltd",
+      "isin": "INE668Y01016",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "VASUDHAGAM",
+      "name": "Vasudhagama Enterprises Ltd",
+      "isin": "INE583K01016",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "WIMPLAST",
+      "name": "Wim Plast Ltd-$",
+      "isin": "INE015B01018",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    },
+    {
+      "exchange": "BSE_IN",
+      "ticker": "YARNPP",
+      "name": "Yarn Syndicate Ltd",
+      "isin": "IN9564C01011",
+      "classification": "suspended",
+      "status": "blocked_suspended_kept_by_policy"
+    }
+  ],
+  "manual": [
+    {
+      "exchange": "ASX",
+      "ticker": "5EA",
+      "name": "5E ADVANCED MATERIALS INC.",
+      "isin": "AU0000186207",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "ADG",
+      "name": "ADELONG GOLD LIMITED",
+      "isin": "AU0000248288",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "ASK",
+      "name": "ABACUS STORAGE KING",
+      "isin": "AU0000286213",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "AUK",
+      "name": "Aumake Ltd",
+      "isin": "AU0000123432",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "BCB",
+      "name": "BOWEN COKING COAL LIMITED",
+      "isin": "AU000000BCB5",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "BMG",
+      "name": "BMG RESOURCES LIMITED",
+      "isin": "AU000000BMG3",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "BXN",
+      "name": "BIOXYNE LIMITED",
+      "isin": "AU000000BXN6",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "CR9",
+      "name": "CORELLA RESOURCES LTD",
+      "isin": "AU0000147811",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "EEL",
+      "name": "Enrg Elements Ltd",
+      "isin": "AU0000234676",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "EMS",
+      "name": "Eastern Metals Ltd",
+      "isin": "AU0000173304",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "ERM",
+      "name": "EMMERSON RESOURCES LIMITED",
+      "isin": "AU000000ERM4",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "HCD",
+      "name": "HYDROCARBON DYNAMICS LIMITED",
+      "isin": "AU0000074742",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "HHR",
+      "name": "HARTSHEAD RESOURCES NL",
+      "isin": "AU0000154148",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "HNG",
+      "name": "Hancock & Gore Ltd",
+      "isin": "AU000000HNG8",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "HRZ",
+      "name": "HORIZON MINERALS LIMITED",
+      "isin": "AU0000053373",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "IRX",
+      "name": "Inhalerx Ltd",
+      "isin": "AU0000179475",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "MAUCA",
+      "name": "Magnetic Resources NL",
+      "isin": "AU0000MAUCA0",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "MFGO",
+      "name": "Magellan Financial Group Ltd",
+      "isin": "AU0000215808",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "MRI",
+      "name": "My Rewards International Ltd",
+      "isin": "AU0000187940",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "NFNG",
+      "name": "Nufarm Finance (NZ) Ltd",
+      "isin": "NZFCND0004S9",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "PVW",
+      "name": "PVW Resources Ltd",
+      "isin": "AU0000135188",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "RA2",
+      "name": "RESIMAC PREMIER SERIES 2020-1",
+      "isin": "",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "SHP",
+      "name": "South HARZ Potash Ltd",
+      "isin": "AU0000151680",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "TI1",
+      "name": "Tombador Iron Ltd",
+      "isin": "AU0000107211",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "TOE",
+      "name": "TORO ENERGY LIMITED",
+      "isin": "AU000000TOE6",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "ASX",
+      "ticker": "WFE",
+      "name": "WOLFE ENERGY LIMITED",
+      "isin": "AU0000458358",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "ABVE",
+      "name": "Above Food Ingredients Inc. Common Stock",
+      "isin": "CA00373V1004",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "ADTX",
+      "name": "Aditxt Inc. ",
+      "isin": "US0070258696",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "ALCY",
+      "name": "Alchemy Investments Acquisition Corp 1 Class A Ordinary Shares",
+      "isin": "KYG0232F1090",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "AREB",
+      "name": "American Rebel Holdings Inc",
+      "isin": "US02919L8853",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "ASNS",
+      "name": "Actelis Networks Inc.",
+      "isin": "US00503R5081",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "ATLN",
+      "name": "Atlantic International Corp. Common Stock",
+      "isin": "US0485921094",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "ATON",
+      "name": "Alpha Compute Corp",
+      "isin": "VGG7185A1369",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "BAYA",
+      "name": "Bayview Acquisition Corp Class A Ordinary Shares",
+      "isin": "KY07323B1007",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "BCOW",
+      "name": "1895 of Wisconsin Inc Bancorp",
+      "isin": "US28253R1059",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "CAEP",
+      "name": "Cantor Equity Partners III, Inc. Class A Ordinary Shares",
+      "isin": "KYG1828A1085",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "CEPT",
+      "name": "Cantor Equity Partners II, Inc.",
+      "isin": "KYG1827K1076",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "CIMG",
+      "name": "CIMG Inc",
+      "isin": "US67073S3076",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "CIZN",
+      "name": "Citizens Holding Company",
+      "isin": "US1747151025",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "CNTA",
+      "name": "Centessa Pharmaceuticals plc",
+      "isin": "US1523091007",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "CPTAF",
+      "name": "Captivision Inc",
+      "isin": "KYG189321063",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "CULL",
+      "name": "Cullman Bancorp Inc.",
+      "isin": "US2301531081",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "DEVS",
+      "name": "DevvStream Corp. Common Stock",
+      "isin": "CA25189R1001",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "EVTV",
+      "name": "Envirotech Vehicles Inc",
+      "isin": "US29414V2097",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "FATBB",
+      "name": "FAT Brands Inc",
+      "isin": "US30258N6004",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "GBNY",
+      "name": "Generations Bancorp NY Inc",
+      "isin": "US37149G1085",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "GIG",
+      "name": "GigCapital7 Corp. Class A Ordinary Share",
+      "isin": "US37518P1012",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "GLBZ",
+      "name": "Glen Burnie Bancorp",
+      "isin": "US3774071019",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "GOCO",
+      "name": "GoHealth Inc.",
+      "isin": "US38046W2044",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "ISRL",
+      "name": "Israel Acquisitions Corp Class A",
+      "isin": "KYG496671010",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "ITRM",
+      "name": "Iterum Therapeutics PLC",
+      "isin": "IE000TTOOBX0",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "LIXT",
+      "name": "Lixte Biotechnology Holdings Inc",
+      "isin": "US5393192027",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "LOKV",
+      "name": "Live Oak Acquisition Corp. V Class A Ordinary Shares",
+      "isin": "KYG5509P1028",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "LYRA",
+      "name": "Lyra Therapeutics Inc",
+      "isin": "US55234L1052",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "MAPS",
+      "name": "WM Technology Inc",
+      "isin": "US92971A1097",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "MAXN",
+      "name": "Maxeon Solar Technologies Ltd",
+      "isin": "SGXZ57724486",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "MEHA",
+      "name": "Functional Brands, Inc. Common Stock",
+      "isin": "US3609481037",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "MLAC",
+      "name": "Mountain Lake Acquisition Corp. Class A Ordinary Shares",
+      "isin": "",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "MRAI",
+      "name": "Marpai Inc",
+      "isin": "US5713542083",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "MSW",
+      "name": "Ming Shing Group Holdings Limited Ordinary Shares",
+      "isin": "KYG614401068",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "OLPX",
+      "name": "Olaplex Holdings Inc",
+      "isin": "US6793691089",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "ORGN",
+      "name": "Origin Materials Inc",
+      "isin": "US68622D1063",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "ORIS",
+      "name": "Oriental Rise Holdings Limited Ordinary Shares",
+      "isin": "KYG6781A1105",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "PAIYY",
+      "name": "Aesthetic Medical International Holdings Group Limited",
+      "isin": "US00809M1045",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "PELI",
+      "name": "Pelican Acquisition Corporation Ordinary Shares",
+      "isin": "KYG6993G1038",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "PIRBF",
+      "name": "Piraeus Bank S.A.",
+      "isin": "GRS831003009",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "QVCAQ",
+      "name": "QVC Group Inc",
+      "isin": "US74915M6057",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "RAAQ",
+      "name": "Real Asset Acquisition Corp.",
+      "isin": "KYG739441031",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "REE",
+      "name": "Ree Automotive Holding Inc",
+      "isin": "IL0011786154",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "RVPH",
+      "name": "Reviva Pharmaceuticals Holdings Inc.",
+      "isin": "US76152G2093",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "SDM",
+      "name": "Smart Digital Group Limited Ordinary Shares",
+      "isin": "KYG5006S1049",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "SGMO",
+      "name": "Sangamo Therapeutics Inc",
+      "isin": "US8006771062",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "SNBR",
+      "name": "Sleep Number Corp",
+      "isin": "US83125X1037",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "SSSS",
+      "name": "SuRo Capital Corp",
+      "isin": "US86887Q1094",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "SUUN",
+      "name": "PowerBank Corporation Common Stock",
+      "isin": "CA73933V1004",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "SVAC",
+      "name": "Spring Valley Acquisition Corp. III",
+      "isin": "KYG8377R1011",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "TBRG",
+      "name": "TruBridge Inc.",
+      "isin": "US2053061030",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "TIRX",
+      "name": "Tian Ruixiang Holdings Ltd",
+      "isin": "KYG8884K1444",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "TWNP",
+      "name": "Twin Hospitality Group Inc.",
+      "isin": "US9016431069",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "UHGWW",
+      "name": "United Homes Group Inc.",
+      "isin": "US91060H1086",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "UOKA",
+      "name": "MDJM Ltd",
+      "isin": "KYG592901253",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "VACH",
+      "name": "Voyager Acquisition Corp",
+      "isin": "",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "VVPR",
+      "name": "VivoPower International PLC",
+      "isin": "GB00BD3VDH82",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "VXRT",
+      "name": "Vaxart Inc",
+      "isin": "US92243A2006",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "WORX",
+      "name": "Scworx Corp",
+      "isin": "US78396V3078",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "WTO",
+      "name": "UTime Limited",
+      "isin": "KYG9411M1400",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "ZBAI",
+      "name": "ATIF Holdings Limited",
+      "isin": "VGG0602B1186",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "ZENV",
+      "name": "Zenvia Inc",
+      "isin": "KYG9889V1014",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NASDAQ",
+      "ticker": "ZSPC",
+      "name": "zSpace, Inc. Common stock",
+      "isin": "US98980W1071",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NSE_IN",
+      "ticker": "AURIGROW",
+      "name": "Auri Grow India Limited",
+      "isin": "INE925Y01036",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "BBU",
+      "name": "Brookfield Business Partners LP",
+      "isin": "BMG162341090",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "BLD",
+      "name": "Topbuild Corp",
+      "isin": "US89055F1030",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "CWAN",
+      "name": "Clearwater Analytics Holdings Inc",
+      "isin": "US1851231068",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "CWEN-A",
+      "name": "Clearway Energy Inc",
+      "isin": "US18539C1053",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "FDP",
+      "name": "Fresh Del Monte Produce Inc",
+      "isin": "KYG367381053",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "JHG",
+      "name": "Janus Henderson Group PLC",
+      "isin": "JE00BYPZJM29",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "LEGT",
+      "name": "Legato Merger Corp. III",
+      "isin": "KYG5451A1031",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "NOTE",
+      "name": "FiscalNote Holdings Inc.",
+      "isin": "US3376551046",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "PHXE-P",
+      "name": "Phoenix Energy One, LLC",
+      "isin": "",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "PMNT",
+      "name": "Perfect Moment Ltd.",
+      "isin": "US7137151004",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "PRA",
+      "name": "ProAssurance Corporation",
+      "isin": "US74267C1062",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "SBDS",
+      "name": "Solo Brands, Inc. Class A",
+      "isin": "US83425V2034",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "SEM",
+      "name": "Select Medical Holdings",
+      "isin": "US81619Q1058",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "SILA",
+      "name": "Sila Realty Trust, Inc.",
+      "isin": "US1462805086",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "STEL",
+      "name": "Stellar Bancorp, Inc.",
+      "isin": "US8589271068",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "TPTA",
+      "name": "Terra Property Trust, Inc. 6.00%",
+      "isin": "",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE",
+      "ticker": "TSEOF",
+      "name": "Trinseo PLC",
+      "isin": "IE0000QBK8U7",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE MKT",
+      "ticker": "DLA",
+      "name": "Delta Apparel, Inc.",
+      "isin": "",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "NYSE MKT",
+      "ticker": "SGN",
+      "name": "Signing Day Sports, Inc.",
+      "isin": "US82670R3057",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "TSE",
+      "ticker": "136A",
+      "name": "Sankosyoji Co.,Ltd.",
+      "isin": "JP3331100002",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "TSE",
+      "ticker": "2686",
+      "name": "GFOOT CO.,LTD.",
+      "isin": "JP3536900008",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "TSE",
+      "ticker": "3198",
+      "name": "SFP Holdings Co.,Ltd.",
+      "isin": "JP3162250009",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "TSE",
+      "ticker": "4449",
+      "name": "giftee Inc.",
+      "isin": "JP3264870001",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "TSE",
+      "ticker": "4494",
+      "name": "Vario Secure Inc.",
+      "isin": "JP3778490007",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "TSE",
+      "ticker": "4659",
+      "name": "AJIS CO.,LTD.",
+      "isin": "JP3160720003",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "TSE",
+      "ticker": "5856",
+      "name": "Life Intelligent Enterprise Holdings Co.,Ltd.",
+      "isin": "JP3620800007",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "TSE",
+      "ticker": "6173",
+      "name": "Aqualine Ltd.",
+      "isin": "JP3107990008",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "TSE",
+      "ticker": "6403",
+      "name": "SUIDO KIKO KAISHA,LTD.",
+      "isin": "JP3395800000",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "TSE",
+      "ticker": "6489",
+      "name": "Maezawa Industries,Inc.",
+      "isin": "JP3860400005",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "TSE",
+      "ticker": "7922",
+      "name": "SANKO SANGYO CO.,LTD.",
+      "isin": "JP3331000004",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "TSE",
+      "ticker": "7925",
+      "name": "MAEZAWA KASEI INDUSTRIES CO.,LTD.",
+      "isin": "JP3860250004",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "TSE",
+      "ticker": "7999",
+      "name": "MUTOH HOLDINGS CO.,LTD.",
+      "isin": "JP3914000009",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "TSE",
+      "ticker": "9067",
+      "name": "MARUWN CORPORATION",
+      "isin": "JP3871600007",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    },
+    {
+      "exchange": "TSE",
+      "ticker": "9338",
+      "name": "INFORICH INC.",
+      "isin": "JP3153830009",
+      "classification": "master_absent",
+      "status": "manual_rename_vs_delisting_required"
+    }
+  ]
+}
