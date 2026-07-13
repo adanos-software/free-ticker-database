@@ -16,7 +16,8 @@ def test_masterfile_rotation_workflow_batches_and_reports_diffs() -> None:
     assert "--asset-type Stock,ETF" in workflow
     assert 'diff_count" = "0"' in workflow
     assert "timestamp-only churn discarded" in workflow
-    assert "AUTOMATION_PR_TOKEN" in workflow
+    assert "gh workflow run ci.yml --ref automation/masterfile-rotation" in workflow
+    assert "AUTOMATION_PR_TOKEN" not in workflow
 
 
 def test_release_workflow_builds_release_assets_and_guarded_publish_hooks() -> None:

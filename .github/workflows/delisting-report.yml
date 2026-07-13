@@ -6,6 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
+  actions: write
   contents: write
   pull-requests: write
 
@@ -18,15 +19,6 @@ jobs:
         uses: actions/checkout@v6
         with:
           persist-credentials: false
-
-      - name: Require automation PR token
-        env:
-          AUTOMATION_PR_TOKEN: ${{ secrets.AUTOMATION_PR_TOKEN }}
-        run: |
-          if [ -z "$AUTOMATION_PR_TOKEN" ]; then
-            echo "AUTOMATION_PR_TOKEN is required so automation PRs trigger pull_request CI." >&2
-            exit 1
-          fi
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -77,7 +69,7 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v8.1.1
         with:
-          token: ${{ secrets.AUTOMATION_PR_TOKEN }}
+          token: ${{ github.token }}
           branch: automation/delisting-report
           delete-branch: true
           commit-message: Update weekly delisting-candidate report
@@ -98,8 +90,14 @@ jobs:
             Report: `data/reports/delisting_report.md` / `.json`
             Apply report: `data/reports/delisting_apply.md` / `.json`
 
+      - name: Dispatch CI for automation pull request
+        if: steps.cpr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run ci.yml --ref automation/delisting-report
+
       - name: Enable automerge
         if: steps.cpr.outputs.pull-request-number != ''
         env:
-          GH_TOKEN: ${{ secrets.AUTOMATION_PR_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
         run: gh pr merge "${{ steps.cpr.outputs.pull-request-number }}" --auto --squash

@@ -26,4 +26,5 @@ def test_symbol_changes_workflow_runs_gated_apply_and_real_validation():
 
     assert "python scripts/apply_symbol_changes.py" in workflow
     assert "python -m pytest tests/ -q" in workflow
-    assert "AUTOMATION_PR_TOKEN" in workflow
+    assert "gh workflow run ci.yml --ref automation/symbol-changes" in workflow
+    assert "AUTOMATION_PR_TOKEN" not in workflow
