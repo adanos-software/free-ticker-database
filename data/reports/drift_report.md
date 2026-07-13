@@ -1,8 +1,8 @@
 # Drift / freshness report
 
-Generated: 2026-07-08T04:36:28Z
-Dataset built_at: 2026-07-08T04:35:56Z (0.0 days ago; threshold 45.0)
-**drift_detected: False**
+Generated: 2026-07-13T11:13:03Z
+Dataset built_at: 2026-07-13T10:47:58Z (0.0 days ago; threshold 45.0)
+**drift_detected: True**
 
 ## Pending renames (feed-detected, not yet applied): 0
 - Triage sources: {'symbol_changes_review': 10}
@@ -21,12 +21,14 @@ Dataset built_at: 2026-07-08T04:35:56Z (0.0 days ago; threshold 45.0)
 
 ## Quality indicators (release-gate info counts)
 - allowed_warn_rows: 75
-- expected_missing_primary_isin: 621
+- expected_missing_primary_isin: 639
 - missing_etf_category: 0
 - missing_stock_sector: 1
-- source_gap_rows: 6272
+- source_gap_rows: 6302
 
-## Quality regressions: 0
+## Quality regressions: 2
+- source_gap_rows: 6272 -> 6302 (+30)
+- expected_missing_primary_isin: 621 -> 639 (+18)
 
 ## Official recall regressions: 0
 
