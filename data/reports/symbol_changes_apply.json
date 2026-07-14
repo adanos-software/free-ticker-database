@@ -1,14 +1,14 @@
 {
   "summary": {
-    "generated_at": "2026-07-13T11:45:40Z",
+    "generated_at": "2026-07-14T08:26:52Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
-    "blocked_rows": 299,
+    "blocked_rows": 301,
     "blocked_by_status": {
-      "blocked_new_symbol_collision": 22,
-      "blocked_old_symbol_not_unique_in_us_scope": 241,
+      "blocked_new_symbol_collision": 23,
+      "blocked_old_symbol_not_unique_in_us_scope": 242,
       "manual_isin_not_proven_unchanged": 2,
       "manual_non_us_or_unscoped_source": 33,
       "manual_transition_or_shell_name": 1
@@ -16,6 +16,22 @@
   },
   "accepted": [],
   "blocked": [
+    {
+      "change_id": "c0c14691367e1689",
+      "effective_date": "2026-07-09",
+      "old_symbol": "MSW",
+      "new_symbol": "PMA",
+      "new_company_name": "Ming Shing Group Holdings Ltd.",
+      "status": "blocked_new_symbol_collision"
+    },
+    {
+      "change_id": "9d77096cca2a226b",
+      "effective_date": "2026-07-08",
+      "old_symbol": "CGEH",
+      "new_symbol": "CEPL",
+      "new_company_name": "Capstone Energy Plus Inc",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
     {
       "change_id": "38c26c187ad078c6",
       "effective_date": "2026-07-07",
