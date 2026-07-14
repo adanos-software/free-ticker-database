@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-07-13T12:10:58Z",
-    "rows": 74649,
+    "generated_at": "2026-07-14T08:41:15Z",
+    "rows": 74670,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,27 +14,27 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 68325,
-      "source_gap": 6249,
+      "pass": 68323,
+      "source_gap": 6272,
       "warn": 75
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4451,
-      "official_reference": 69030,
-      "scoped_source_gap": 263,
-      "valid_isin": 905
+      "identifier_enriched": 4455,
+      "official_reference": 69049,
+      "scoped_source_gap": 262,
+      "valid_isin": 904
     },
     "severity_counts": {
       "high": 67,
       "medium": 8,
-      "source_gap": 6373
+      "source_gap": 6417
     },
     "issue_counts": {
-      "official_reference_gap": 5619,
-      "expected_missing_primary_isin": 696,
+      "official_reference_gap": 5621,
+      "expected_missing_primary_isin": 717,
+      "missing_etf_category": 68,
       "country_isin_mismatch": 65,
-      "missing_etf_category": 50,
-      "missing_stock_sector": 8,
+      "missing_stock_sector": 11,
       "official_name_mismatch": 8,
       "official_isin_mismatch": 2
     },
@@ -63,14 +63,14 @@
       },
       {
         "exchange": "NASDAQ",
-        "pass": 4514,
-        "source_gap": 181,
+        "pass": 4513,
+        "source_gap": 186,
         "warn": 1
       },
       {
         "exchange": "NYSE ARCA",
         "pass": 2496,
-        "source_gap": 170
+        "source_gap": 173
       },
       {
         "exchange": "BMV",
@@ -78,14 +78,14 @@
         "pass": 12
       },
       {
+        "exchange": "BATS",
+        "pass": 1138,
+        "source_gap": 155
+      },
+      {
         "exchange": "BME",
         "pass": 78,
         "source_gap": 143
-      },
-      {
-        "exchange": "BATS",
-        "pass": 1139,
-        "source_gap": 140
       },
       {
         "exchange": "NSE_IN",
