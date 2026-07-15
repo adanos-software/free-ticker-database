@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-07-14T08:39:53Z",
+    "generated_at": "2026-07-15T08:57:26Z",
     "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
@@ -8,23 +8,22 @@
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 27,
-    "accepted_rows": 21,
-    "skipped_rows": 6,
+    "new_supported_rows": 19,
+    "accepted_rows": 17,
+    "skipped_rows": 2,
     "accepted_by_exchange": {
-      "BATS": 14,
-      "NASDAQ": 4,
-      "NYSE ARCA": 3
+      "BATS": 3,
+      "NASDAQ": 8,
+      "NYSE ARCA": 6
     },
     "skipped_by_reason": {
-      "excluded_non_common_stock": 2,
-      "ticker_collision": 4
+      "excluded_non_common_stock": 2
     }
   },
   "accepted": [
     {
-      "ticker": "CRWC",
-      "name": "Corgi CRWD 2x Daily ETF",
+      "ticker": "AAOZ",
+      "name": "Tradr 2X Short AAOI Daily ETF",
       "exchange": "BATS",
       "asset_type": "ETF",
       "sector": "",
@@ -37,8 +36,8 @@
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "HIMC",
-      "name": "Corgi HIMS 2x Daily ETF",
+      "ticker": "ORCZ",
+      "name": "Tradr 2X Short ORCL Daily ETF",
       "exchange": "BATS",
       "asset_type": "ETF",
       "sector": "",
@@ -51,8 +50,8 @@
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "IREC",
-      "name": "Corgi IREN 2x Daily ETF",
+      "ticker": "TMGN",
+      "name": "TappAlpha Cboe Magnificent 10 Growth & Daily Income ETF",
       "exchange": "BATS",
       "asset_type": "ETF",
       "sector": "",
@@ -65,176 +64,8 @@
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "MHX",
-      "name": "Corgi MARA 2x Daily ETF",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "MRVX",
-      "name": "Corgi MRVL 2x Daily ETF",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "NBIC",
-      "name": "Corgi NBIS 2x Daily ETF",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "NOWX",
-      "name": "Corgi NOW 2x Daily ETF",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "NVOC",
-      "name": "Corgi NVO 2x Daily ETF",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "OUSL",
-      "name": "Defiance Daily Target 2X Long OUST ETF",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "RDDC",
-      "name": "Corgi RDDT 2x Daily ETF",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "RGTC",
-      "name": "Corgi RGTI 2x Daily ETF",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "RIVC",
-      "name": "Corgi RIVN 2x Daily ETF",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "SKHX",
-      "name": "Leverage Shares 2X Long SK Hynix Daily ETF",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "SKHZ",
-      "name": "Leverage Shares 1X Short SK Hynix Daily ETF",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "LGDS",
-      "name": "JPMorgan Fundamental Data Science Large Growth ETF",
-      "exchange": "NASDAQ",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "RACD",
-      "name": "Research Alliance Corporation IV - Class A Ordinary Shares",
+      "ticker": "BRKH",
+      "name": "Burtech Acquisition Corp II - Class A Ordinary Shares",
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "sector": "",
@@ -247,10 +78,10 @@
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "TVIV",
-      "name": "Texas Ventures Acquisition IV Corp - Class A Ordinary Shares",
+      "ticker": "BTDL",
+      "name": "GraniteShares 2x Long BTDR Daily ETF",
       "exchange": "NASDAQ",
-      "asset_type": "Stock",
+      "asset_type": "ETF",
       "sector": "",
       "country": "United States",
       "country_code": "US",
@@ -261,10 +92,10 @@
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "YICC",
-      "name": "Yorkville International Capital Corp. - Class A Ordinary Shares",
+      "ticker": "NTAL",
+      "name": "GraniteShares 2x Long NTAP Daily ETF",
       "exchange": "NASDAQ",
-      "asset_type": "Stock",
+      "asset_type": "ETF",
       "sector": "",
       "country": "United States",
       "country_code": "US",
@@ -275,8 +106,78 @@
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "CDPI",
-      "name": "Columbia High Dividend Premium Income ETF",
+      "ticker": "QFF",
+      "name": "Qualivian Focus Fund ETF",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "SEUS",
+      "name": "SEI QiM U.S. Equity Factor Allocation Active ETF",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "SKDD",
+      "name": "GraniteShares 2x Short SK Hynix Daily ETF",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "SKUU",
+      "name": "GraniteShares 2x Long SK Hynix Daily ETF",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "TDCL",
+      "name": "GraniteShares 2x Long TDC Daily ETF",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "JLCO",
+      "name": "John Hancock Large Cap Opportunities ETF",
       "exchange": "NYSE ARCA",
       "asset_type": "ETF",
       "sector": "",
@@ -289,8 +190,8 @@
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "HYNX",
-      "name": "T-REX 2X Long SKHY Daily Target ETF",
+      "ticker": "KWH",
+      "name": "GMO Power Infrastructure ETF",
       "exchange": "NYSE ARCA",
       "asset_type": "ETF",
       "sector": "",
@@ -303,8 +204,50 @@
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "SKHU",
-      "name": "ProShares Ultra SK hynix",
+      "ticker": "LUMA",
+      "name": "KraneShares Photonic and Optical ETF",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "SKHL",
+      "name": "Direxion Daily SK Hynix Bull 2X ETF",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "VPFF",
+      "name": "Virtus InfraCap Preferred and Income Securities ETF",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "YSPC",
+      "name": "YieldMax SPCX Option Income Strategy ETF",
       "exchange": "NYSE ARCA",
       "asset_type": "ETF",
       "sector": "",
@@ -319,52 +262,20 @@
   ],
   "skipped": [
     {
-      "ticker": "CRD",
-      "exchange": "BATS",
-      "name": "Corgi CRDO 2x Daily ETF",
-      "asset_type": "ETF",
-      "source_key": "nasdaq_other_listed",
-      "skip_reason": "ticker_collision"
-    },
-    {
-      "ticker": "SK",
-      "exchange": "BATS",
-      "name": "Corgi SK hynix 2x Daily ETF",
-      "asset_type": "ETF",
-      "source_key": "nasdaq_other_listed",
-      "skip_reason": "ticker_collision"
-    },
-    {
-      "ticker": "VRC",
-      "exchange": "BATS",
-      "name": "Corgi VRT 2x Daily ETF",
-      "asset_type": "ETF",
-      "source_key": "nasdaq_other_listed",
-      "skip_reason": "ticker_collision"
-    },
-    {
-      "ticker": "TVIVW",
+      "ticker": "BRKHW",
       "exchange": "NASDAQ",
-      "name": "Texas Ventures Acquisition IV Corp - Warrant",
+      "name": "Burtech Acquisition Corp II - Warrants",
       "asset_type": "Stock",
       "source_key": "nasdaq_listed",
       "skip_reason": "excluded_non_common_stock"
     },
     {
-      "ticker": "YICCW",
+      "ticker": "JONEU",
       "exchange": "NASDAQ",
-      "name": "Yorkville International Capital Corp. - Warrants",
+      "name": "Jones Ventures INTL Acquisition1 Corp - Units",
       "asset_type": "Stock",
       "source_key": "nasdaq_listed",
       "skip_reason": "excluded_non_common_stock"
-    },
-    {
-      "ticker": "RECI",
-      "exchange": "NYSE ARCA",
-      "name": "Columbia Research Enhanced Core Premium Income ETF",
-      "asset_type": "ETF",
-      "source_key": "nasdaq_other_listed",
-      "skip_reason": "ticker_collision"
     }
   ]
 }

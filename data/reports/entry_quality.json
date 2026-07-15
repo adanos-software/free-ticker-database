@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-07-14T08:41:15Z",
-    "rows": 74670,
+    "generated_at": "2026-07-15T08:58:47Z",
+    "rows": 74687,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -14,27 +14,27 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 68323,
-      "source_gap": 6272,
+      "pass": 68321,
+      "source_gap": 6291,
       "warn": 75
     },
     "evidence_level_counts": {
-      "identifier_enriched": 4455,
-      "official_reference": 69049,
+      "identifier_enriched": 4456,
+      "official_reference": 69064,
       "scoped_source_gap": 262,
-      "valid_isin": 904
+      "valid_isin": 905
     },
     "severity_counts": {
       "high": 67,
       "medium": 8,
-      "source_gap": 6417
+      "source_gap": 6453
     },
     "issue_counts": {
-      "official_reference_gap": 5621,
-      "expected_missing_primary_isin": 717,
-      "missing_etf_category": 68,
+      "official_reference_gap": 5623,
+      "expected_missing_primary_isin": 734,
+      "missing_etf_category": 84,
       "country_isin_mismatch": 65,
-      "missing_stock_sector": 11,
+      "missing_stock_sector": 12,
       "official_name_mismatch": 8,
       "official_isin_mismatch": 2
     },
@@ -56,21 +56,21 @@
         "source_gap": 199
       },
       {
+        "exchange": "NASDAQ",
+        "pass": 4512,
+        "source_gap": 195,
+        "warn": 1
+      },
+      {
         "exchange": "LSE",
         "pass": 6366,
         "warn": 60,
         "source_gap": 132
       },
       {
-        "exchange": "NASDAQ",
-        "pass": 4513,
-        "source_gap": 186,
-        "warn": 1
-      },
-      {
         "exchange": "NYSE ARCA",
         "pass": 2496,
-        "source_gap": 173
+        "source_gap": 179
       },
       {
         "exchange": "BMV",
@@ -79,8 +79,8 @@
       },
       {
         "exchange": "BATS",
-        "pass": 1138,
-        "source_gap": 155
+        "pass": 1137,
+        "source_gap": 159
       },
       {
         "exchange": "BME",
@@ -4111,6 +4111,31 @@
           "field": "exchange",
           "value": "OTC",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
+      "listing_key": "BATS::AAOZ",
+      "ticker": "AAOZ",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 80,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "expected_missing_primary_isin",
+          "severity": "source_gap",
+          "field": "isin",
+          "value": "",
+          "message": "Core primary listing is explicitly scoped as missing ISIN."
+        },
+        {
+          "issue_type": "missing_etf_category",
+          "severity": "source_gap",
+          "field": "etf_category",
+          "value": "",
+          "message": "Core ETF listing has no etf_category."
         }
       ]
     },
@@ -16489,6 +16514,24 @@
       ]
     },
     {
+      "listing_key": "NASDAQ::BLCN",
+      "ticker": "BLCN",
+      "exchange": "NASDAQ",
+      "asset_type": "ETF",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "NASDAQ",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "OTC::BLDC",
       "ticker": "BLDC",
       "exchange": "OTC",
@@ -18234,49 +18277,6 @@
           "field": "exchange",
           "value": "NASDAQ",
           "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "OTC::BRKFF",
-      "ticker": "BRKFF",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "OTC",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
-        }
-      ]
-    },
-    {
-      "listing_key": "BATS::BRKL",
-      "ticker": "BRKL",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "quality_status": "source_gap",
-      "quality_score": 80,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        },
-        {
-          "issue_type": "missing_etf_category",
-          "severity": "source_gap",
-          "field": "etf_category",
-          "value": "",
-          "message": "Core ETF listing has no etf_category."
         }
       ]
     }
