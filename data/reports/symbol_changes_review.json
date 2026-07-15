@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-07-14T08:26:39Z",
+    "generated_at": "2026-07-15T08:34:25Z",
     "source_url": "https://stockanalysis.com/actions/changes/",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -10,7 +10,7 @@
     "policy": "Secondary symbol-change feed for review only. No ticker, name, listing, or corporate-action data is applied without listing-keyed official exchange or issuer evidence."
   },
   "summary": {
-    "fetched_rows": 243,
+    "fetched_rows": 242,
     "merged_history_rows": 301,
     "review_rows": 301,
     "match_status_counts": {
@@ -21,8 +21,8 @@
       "symbol_present_only_outside_source_scope": 12
     },
     "symbol_change_workflow_queue_counts": {
-      "audit_already_reflected": 248,
-      "blocked_missing_source_scope_mapping": 3,
+      "audit_already_reflected": 247,
+      "blocked_missing_source_scope_mapping": 4,
       "blocked_out_of_scope_symbol_collision": 16,
       "document_no_dataset_match": 13,
       "review_duplicate_or_cross_listing": 19,
@@ -33,9 +33,9 @@
       "rows": 301,
       "verified_rename_or_delisting_review_rows": 2,
       "duplicate_or_cross_listing_review_rows": 19,
-      "already_reflected_audit_rows": 248,
+      "already_reflected_audit_rows": 247,
       "out_of_scope_collision_blocked_rows": 16,
-      "missing_source_scope_mapping_rows": 3,
+      "missing_source_scope_mapping_rows": 4,
       "no_dataset_match_documentation_rows": 13,
       "time_sensitive_review_rows": 12,
       "direct_symbol_change_apply_allowed_rows": 0,
@@ -46,17 +46,17 @@
       "action_required_duplicate_or_cross_listing": 19,
       "action_required_possible_rename_or_delisting": 2,
       "already_reflected_in_scope_with_global_symbol_collision": 42,
-      "already_reflected_in_source_scope": 206,
+      "already_reflected_in_source_scope": 205,
       "hold_out_of_scope_symbol_collision": 12,
       "manual_review_due_to_out_of_scope_collision": 4,
-      "manual_scope_mapping_required": 3,
+      "manual_scope_mapping_required": 4,
       "no_dataset_match_for_source_scope": 13
     },
     "review_priority_counts": {
       "P1": 21,
-      "P2": 19,
+      "P2": 20,
       "P3": 13,
-      "P4": 248
+      "P4": 247
     },
     "review_bucket_priorities": {
       "action_required_duplicate_or_cross_listing": "P1",
@@ -79,23 +79,23 @@
       "P1:recent_30d": 6,
       "P1:recent_7d": 6,
       "P1:recent_90d": 5,
-      "P2:older_than_90d": 11,
+      "P2:older_than_90d": 12,
       "P2:recent_30d": 2,
       "P2:recent_7d": 3,
       "P2:recent_90d": 3,
       "P3:older_than_90d": 10,
       "P3:recent_90d": 3,
-      "P4:older_than_90d": 191,
+      "P4:older_than_90d": 190,
       "P4:recent_30d": 24,
       "P4:recent_7d": 6,
       "P4:recent_90d": 27
     },
     "workflow_queue_recency_counts": {
-      "audit_already_reflected:older_than_90d": 191,
+      "audit_already_reflected:older_than_90d": 190,
       "audit_already_reflected:recent_30d": 24,
       "audit_already_reflected:recent_7d": 6,
       "audit_already_reflected:recent_90d": 27,
-      "blocked_missing_source_scope_mapping:older_than_90d": 3,
+      "blocked_missing_source_scope_mapping:older_than_90d": 4,
       "blocked_out_of_scope_symbol_collision:older_than_90d": 8,
       "blocked_out_of_scope_symbol_collision:recent_30d": 2,
       "blocked_out_of_scope_symbol_collision:recent_7d": 3,
@@ -109,8 +109,8 @@
       "review_verified_rename_or_delisting:recent_7d": 2
     },
     "workflow_queue_priority_counts": {
-      "audit_already_reflected:P4": 248,
-      "blocked_missing_source_scope_mapping:P2": 3,
+      "audit_already_reflected:P4": 247,
+      "blocked_missing_source_scope_mapping:P2": 4,
       "blocked_out_of_scope_symbol_collision:P2": 16,
       "document_no_dataset_match:P3": 13,
       "review_duplicate_or_cross_listing:P1": 19,
@@ -118,16 +118,16 @@
     },
     "workflow_queue_scope_counts": {
       "audit_already_reflected:global_symbol_collision_outside_source_scope": 42,
-      "audit_already_reflected:matches_within_source_scope": 206,
-      "blocked_missing_source_scope_mapping:unscoped_source_hint": 3,
+      "audit_already_reflected:matches_within_source_scope": 205,
+      "blocked_missing_source_scope_mapping:unscoped_source_hint": 4,
       "blocked_out_of_scope_symbol_collision:global_symbol_collision_outside_source_scope": 16,
       "document_no_dataset_match:matches_within_source_scope": 13,
       "review_duplicate_or_cross_listing:matches_within_source_scope": 19,
       "review_verified_rename_or_delisting:matches_within_source_scope": 2
     },
     "workflow_queue_match_status_counts": {
-      "audit_already_reflected:new_symbol_present_old_symbol_missing": 248,
-      "blocked_missing_source_scope_mapping:new_symbol_present_old_symbol_missing": 1,
+      "audit_already_reflected:new_symbol_present_old_symbol_missing": 247,
+      "blocked_missing_source_scope_mapping:new_symbol_present_old_symbol_missing": 2,
       "blocked_missing_source_scope_mapping:no_matching_listing": 1,
       "blocked_missing_source_scope_mapping:old_symbol_present_new_symbol_missing": 1,
       "blocked_out_of_scope_symbol_collision:old_symbol_present_new_symbol_missing": 4,
@@ -139,10 +139,10 @@
     "workflow_queue_source_hint_counts": {
       "audit_already_reflected": {
         "OTC": 12,
-        "US_LISTED": 236
+        "US_LISTED": 235
       },
       "blocked_missing_source_scope_mapping": {
-        "missing": 3
+        "missing": 4
       },
       "blocked_out_of_scope_symbol_collision": {
         "OTC": 12,
@@ -161,10 +161,10 @@
     },
     "workflow_queue_source_confidence_counts": {
       "audit_already_reflected": {
-        "secondary_review": 248
+        "secondary_review": 247
       },
       "blocked_missing_source_scope_mapping": {
-        "secondary_review": 3
+        "secondary_review": 4
       },
       "blocked_out_of_scope_symbol_collision": {
         "secondary_review": 16
@@ -182,11 +182,11 @@
     "workflow_queue_issuer_name_review_counts": {
       "audit_already_reflected": {
         "feed_name_differs_from_scoped_listing_name": 22,
-        "feed_name_exactly_matches_scoped_listing_name": 169,
+        "feed_name_exactly_matches_scoped_listing_name": 168,
         "feed_name_partially_overlaps_scoped_listing_name": 57
       },
       "blocked_missing_source_scope_mapping": {
-        "feed_name_exactly_matches_scoped_listing_name": 1,
+        "feed_name_exactly_matches_scoped_listing_name": 2,
         "feed_name_partially_overlaps_scoped_listing_name": 1,
         "no_scoped_listing_name_available": 1
       },
@@ -210,10 +210,10 @@
     },
     "workflow_queue_listing_key_review_counts": {
       "audit_already_reflected": {
-        "new_scoped_listing_key_only": 248
+        "new_scoped_listing_key_only": 247
       },
       "blocked_missing_source_scope_mapping": {
-        "new_scoped_listing_key_only": 1,
+        "new_scoped_listing_key_only": 2,
         "no_scoped_listing_key_match": 1,
         "old_scoped_listing_key_only": 1
       },
@@ -233,10 +233,10 @@
     },
     "workflow_queue_review_strategy_counts": {
       "audit_already_reflected": {
-        "audit_already_reflected_no_canonical_change": 248
+        "audit_already_reflected_no_canonical_change": 247
       },
       "blocked_missing_source_scope_mapping": {
-        "map_source_exchange_scope_before_symbol_review": 3
+        "map_source_exchange_scope_before_symbol_review": 4
       },
       "blocked_out_of_scope_symbol_collision": {
         "block_until_source_scope_and_non_symbol_identity_resolved": 16
@@ -356,7 +356,7 @@
         "review_priority": "P2",
         "recency_bucket": "older_than_90d",
         "exchange_scope_status": "unscoped_source_hint",
-        "rows": 3,
+        "rows": 4,
         "review_strategy": "map_source_exchange_scope_before_symbol_review",
         "evidence_required": "source_exchange_mapping_before_any_symbol_change_review",
         "recommended_next_source": "Documented source-to-exchange scope mapping before symbol-change review.",
@@ -455,7 +455,7 @@
         "review_priority": "P4",
         "recency_bucket": "older_than_90d",
         "exchange_scope_status": "matches_within_source_scope",
-        "rows": 153,
+        "rows": 152,
         "review_strategy": "audit_already_reflected_no_canonical_change",
         "evidence_required": "audit_only_confirm_no_canonical_change_needed",
         "recommended_next_source": "Audit-only confirmation from scoped listing records; no canonical change.",
@@ -474,24 +474,24 @@
       }
     ],
     "apply_eligibility_counts": {
-      "audit_only_no_apply": 248,
-      "blocked_until_exchange_scope_resolved": 19,
+      "audit_only_no_apply": 247,
+      "blocked_until_exchange_scope_resolved": 20,
       "no_dataset_action_without_scope_mapping": 13,
       "requires_official_venue_confirmation": 21
     },
     "symbol_change_apply_readiness_counts": {
-      "audit_only_no_canonical_change": 248,
+      "audit_only_no_canonical_change": 247,
       "blocked_until_listing_keyed_official_symbol_change_evidence": 21,
-      "blocked_until_source_exchange_scope_and_non_symbol_identity_evidence": 19,
+      "blocked_until_source_exchange_scope_and_non_symbol_identity_evidence": 20,
       "document_or_ignore_until_scoped_official_dataset_match": 13
     },
     "verification_evidence_required_counts": {
-      "audit_only_confirm_no_canonical_change_needed": 248,
+      "audit_only_confirm_no_canonical_change_needed": 247,
       "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition": 19,
       "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer": 2,
       "official_exchange_scope_and_non_symbol_identity_evidence_before_apply": 16,
       "official_exchange_scope_mapping_or_ignore_as_external_non_dataset_event": 13,
-      "source_exchange_mapping_before_any_symbol_change_review": 3
+      "source_exchange_mapping_before_any_symbol_change_review": 4
     },
     "time_sensitive_review_rows": 12,
     "time_sensitive_workflow_queue_counts": {
@@ -552,8 +552,8 @@
     },
     "exchange_scope_status_counts": {
       "global_symbol_collision_outside_source_scope": 58,
-      "matches_within_source_scope": 240,
-      "unscoped_source_hint": 3
+      "matches_within_source_scope": 239,
+      "unscoped_source_hint": 4
     }
   },
   "review_items": [
@@ -2612,20 +2612,20 @@
       "effective_date": "2026-05-05",
       "old_symbol": "EKSO",
       "new_symbol": "CHRN",
-      "new_company_name": "Chronoscale Corp",
+      "new_company_name": "Chronoscale Holdings Corp",
       "source": "stockanalysis_symbol_changes",
       "source_url": "https://stockanalysis.com/actions/changes/",
       "new_symbol_url": "/stocks/chrn/",
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-10T10:22:05Z",
+      "observed_at": "2026-07-15T08:34:25Z",
       "match_status": "new_symbol_present_old_symbol_missing",
       "symbol_change_workflow_queue": "audit_already_reflected",
       "review_bucket": "already_reflected_in_source_scope",
       "review_priority": "P4",
       "review_strategy": "audit_already_reflected_no_canonical_change",
-      "effective_age_days": 36,
+      "effective_age_days": 71,
       "recency_bucket": "recent_90d",
       "apply_eligibility": "audit_only_no_apply",
       "verification_evidence_required": "audit_only_confirm_no_canonical_change_needed",
@@ -8068,24 +8068,24 @@
       "new_company_name": "Bnb Plus Corp",
       "source": "stockanalysis_symbol_changes",
       "source_url": "https://stockanalysis.com/actions/changes/",
-      "new_symbol_url": "/stocks/bnbx/",
-      "source_exchange_hint": "US_LISTED",
+      "new_symbol_url": "",
+      "source_exchange_hint": "",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-06-10T10:22:05Z",
+      "observed_at": "2026-07-15T08:34:25Z",
       "match_status": "new_symbol_present_old_symbol_missing",
-      "symbol_change_workflow_queue": "audit_already_reflected",
-      "review_bucket": "already_reflected_in_source_scope",
-      "review_priority": "P4",
-      "review_strategy": "audit_already_reflected_no_canonical_change",
-      "effective_age_days": 246,
+      "symbol_change_workflow_queue": "blocked_missing_source_scope_mapping",
+      "review_bucket": "manual_scope_mapping_required",
+      "review_priority": "P2",
+      "review_strategy": "map_source_exchange_scope_before_symbol_review",
+      "effective_age_days": 281,
       "recency_bucket": "older_than_90d",
-      "apply_eligibility": "audit_only_no_apply",
-      "verification_evidence_required": "audit_only_confirm_no_canonical_change_needed",
-      "recommended_next_source": "Audit-only confirmation from scoped listing records; no canonical change.",
-      "source_gate": "Audit only; no ticker, listing, or name change is authorized.",
+      "apply_eligibility": "blocked_until_exchange_scope_resolved",
+      "verification_evidence_required": "source_exchange_mapping_before_any_symbol_change_review",
+      "recommended_next_source": "Documented source-to-exchange scope mapping before symbol-change review.",
+      "source_gate": "Block review until the secondary feed event is mapped to an exchange scope.",
       "recommended_action": "already_reflected_or_new_symbol_added_in_source_scope",
-      "exchange_scope_status": "matches_within_source_scope",
+      "exchange_scope_status": "unscoped_source_hint",
       "old_listing_keys": "",
       "new_listing_keys": "NASDAQ::BNBX",
       "old_scoped_listing_keys": "",
@@ -8093,9 +8093,9 @@
       "listing_key_review_status": "new_scoped_listing_key_only",
       "scoped_listing_names": "BNB Plus Corp.",
       "issuer_name_review_status": "feed_name_exactly_matches_scoped_listing_name",
-      "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=US_LISTED;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
-      "scope_match_context": "exchange_scope_status=matches_within_source_scope;old_match_count=0;new_match_count=1;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NASDAQ::BNBX",
-      "workflow_review_context": "workflow_queue=audit_already_reflected;review_bucket=already_reflected_in_source_scope;apply_eligibility=audit_only_no_apply;verification_evidence_required=audit_only_confirm_no_canonical_change_needed",
+      "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=none;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
+      "scope_match_context": "exchange_scope_status=unscoped_source_hint;old_match_count=0;new_match_count=1;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NASDAQ::BNBX",
+      "workflow_review_context": "workflow_queue=blocked_missing_source_scope_mapping;review_bucket=manual_scope_mapping_required;apply_eligibility=blocked_until_exchange_scope_resolved;verification_evidence_required=source_exchange_mapping_before_any_symbol_change_review",
       "old_match_count": 0,
       "new_match_count": 1,
       "old_scoped_match_count": 0,
