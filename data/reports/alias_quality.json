@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-07-15T08:58:59Z",
-    "rows": 125075,
+    "generated_at": "2026-07-16T08:58:45Z",
+    "rows": 125083,
     "source_files": {
       "tickers_csv": "data/tickers.csv",
       "aliases_csv": "data/aliases.csv"
@@ -10,17 +10,17 @@
   "summary": {
     "status_counts": {
       "reject": 66098,
-      "accept": 58513,
+      "accept": 58521,
       "review": 464
     },
     "detection_policy_counts": {
       "identifier_only": 66098,
-      "safe_natural_language": 58513,
+      "safe_natural_language": 58521,
       "symbol_alias_only": 464
     },
     "reason_counts": {
       "identifier_alias": 66098,
-      "accepted_name_alias": 58513,
+      "accepted_name_alias": 58521,
       "same_as_ticker": 464
     },
     "alias_type_status_counts": {
@@ -28,7 +28,7 @@
         "reject": 61763
       },
       "name": {
-        "accept": 58513,
+        "accept": 58521,
         "review": 464
       },
       "wkn": {
