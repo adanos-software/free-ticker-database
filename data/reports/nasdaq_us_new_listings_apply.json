@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-07-15T08:57:26Z",
+    "generated_at": "2026-07-16T08:57:08Z",
     "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
@@ -8,64 +8,20 @@
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 19,
-    "accepted_rows": 17,
-    "skipped_rows": 2,
+    "new_supported_rows": 10,
+    "accepted_rows": 10,
+    "skipped_rows": 0,
     "accepted_by_exchange": {
-      "BATS": 3,
-      "NASDAQ": 8,
-      "NYSE ARCA": 6
+      "NASDAQ": 3,
+      "NYSE": 2,
+      "NYSE ARCA": 5
     },
-    "skipped_by_reason": {
-      "excluded_non_common_stock": 2
-    }
+    "skipped_by_reason": {}
   },
   "accepted": [
     {
-      "ticker": "AAOZ",
-      "name": "Tradr 2X Short AAOI Daily ETF",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "ORCZ",
-      "name": "Tradr 2X Short ORCL Daily ETF",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "TMGN",
-      "name": "TappAlpha Cboe Magnificent 10 Growth & Daily Income ETF",
-      "exchange": "BATS",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "BRKH",
-      "name": "Burtech Acquisition Corp II - Class A Ordinary Shares",
+      "ticker": "DPU",
+      "name": "Top KingWin Ltd - Class A Ordinary Shares",
       "exchange": "NASDAQ",
       "asset_type": "Stock",
       "sector": "",
@@ -78,8 +34,8 @@
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "BTDL",
-      "name": "GraniteShares 2x Long BTDR Daily ETF",
+      "ticker": "YSAG",
+      "name": "Y'all Street Physical Silver ETF",
       "exchange": "NASDAQ",
       "asset_type": "ETF",
       "sector": "",
@@ -92,8 +48,8 @@
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "NTAL",
-      "name": "GraniteShares 2x Long NTAP Daily ETF",
+      "ticker": "YSAU",
+      "name": "Y'all Street Physical Gold ETF",
       "exchange": "NASDAQ",
       "asset_type": "ETF",
       "sector": "",
@@ -106,78 +62,36 @@
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "QFF",
-      "name": "Qualivian Focus Fund ETF",
-      "exchange": "NASDAQ",
-      "asset_type": "ETF",
+      "ticker": "CSQR",
+      "name": "Csquare, Inc. Common Stock",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
       "sector": "",
       "country": "United States",
       "country_code": "US",
       "isin": "",
       "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "SEUS",
-      "name": "SEI QiM U.S. Equity Factor Allocation Active ETF",
-      "exchange": "NASDAQ",
-      "asset_type": "ETF",
+      "ticker": "STDN",
+      "name": "Standard Nuclear, Inc. Class A Common Stock",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
       "sector": "",
       "country": "United States",
       "country_code": "US",
       "isin": "",
       "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "SKDD",
-      "name": "GraniteShares 2x Short SK Hynix Daily ETF",
-      "exchange": "NASDAQ",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "SKUU",
-      "name": "GraniteShares 2x Long SK Hynix Daily ETF",
-      "exchange": "NASDAQ",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "TDCL",
-      "name": "GraniteShares 2x Long TDC Daily ETF",
-      "exchange": "NASDAQ",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "JLCO",
-      "name": "John Hancock Large Cap Opportunities ETF",
+      "ticker": "AMMO",
+      "name": "VistaShares Defense Supercycle ETF",
       "exchange": "NYSE ARCA",
       "asset_type": "ETF",
       "sector": "",
@@ -190,8 +104,8 @@
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "KWH",
-      "name": "GMO Power Infrastructure ETF",
+      "ticker": "DRMY",
+      "name": "XFUNDS Memory Income ETF",
       "exchange": "NYSE ARCA",
       "asset_type": "ETF",
       "sector": "",
@@ -204,8 +118,8 @@
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "LUMA",
-      "name": "KraneShares Photonic and Optical ETF",
+      "ticker": "GALX",
+      "name": "VistaShares Space Supercycle ETF",
       "exchange": "NYSE ARCA",
       "asset_type": "ETF",
       "sector": "",
@@ -218,8 +132,8 @@
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "SKHL",
-      "name": "Direxion Daily SK Hynix Bull 2X ETF",
+      "ticker": "RTOO",
+      "name": "VistaShares Robotics Supercycle ETF",
       "exchange": "NYSE ARCA",
       "asset_type": "ETF",
       "sector": "",
@@ -232,22 +146,8 @@
       "reference_scope": "exchange_directory"
     },
     {
-      "ticker": "VPFF",
-      "name": "Virtus InfraCap Preferred and Income Securities ETF",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "YSPC",
-      "name": "YieldMax SPCX Option Income Strategy ETF",
+      "ticker": "TKNZ",
+      "name": "T. Rowe Price Active Crypto ETF",
       "exchange": "NYSE ARCA",
       "asset_type": "ETF",
       "sector": "",
@@ -260,22 +160,5 @@
       "reference_scope": "exchange_directory"
     }
   ],
-  "skipped": [
-    {
-      "ticker": "BRKHW",
-      "exchange": "NASDAQ",
-      "name": "Burtech Acquisition Corp II - Warrants",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_listed",
-      "skip_reason": "excluded_non_common_stock"
-    },
-    {
-      "ticker": "JONEU",
-      "exchange": "NASDAQ",
-      "name": "Jones Ventures INTL Acquisition1 Corp - Units",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_listed",
-      "skip_reason": "excluded_non_common_stock"
-    }
-  ]
+  "skipped": []
 }
