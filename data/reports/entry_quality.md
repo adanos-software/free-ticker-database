@@ -1,13 +1,13 @@
 # Entry Quality Report
 
-Generated at: `2026-07-16T08:58:33Z`
+Generated at: `2026-07-17T08:40:03Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
 | pass | 68,320 |
-| source_gap | 6,302 |
+| source_gap | 6,304 |
 | warn | 75 |
 
 ## Issue Counts
@@ -15,10 +15,10 @@ Generated at: `2026-07-16T08:58:33Z`
 | Issue | Rows |
 |---|---:|
 | official_reference_gap | 5,624 |
-| expected_missing_primary_isin | 744 |
+| expected_missing_primary_isin | 746 |
 | missing_etf_category | 91 |
 | country_isin_mismatch | 65 |
-| missing_stock_sector | 15 |
+| missing_stock_sector | 17 |
 | official_name_mismatch | 8 |
 | official_isin_mismatch | 2 |
 
@@ -28,7 +28,7 @@ Generated at: `2026-07-16T08:58:33Z`
 |---|---:|---:|---:|---:|---:|
 | OTC | 7,899 | 0 | 3,170 | 7 | 0 |
 | B3 | 1,262 | 0 | 319 | 0 | 0 |
-| NASDAQ | 4,511 | 0 | 199 | 1 | 0 |
+| NASDAQ | 4,511 | 0 | 200 | 1 | 0 |
 | TSX | 1,704 | 0 | 199 | 0 | 0 |
 | LSE | 6,366 | 0 | 132 | 60 | 0 |
 | NYSE ARCA | 2,496 | 0 | 184 | 0 | 0 |
@@ -45,7 +45,7 @@ Generated at: `2026-07-16T08:58:33Z`
 | TASE | 597 | 0 | 75 | 0 | 0 |
 | ATHEX | 89 | 0 | 66 | 0 | 0 |
 | CSE_MA | 1 | 0 | 65 | 0 | 0 |
-| NYSE | 1,979 | 0 | 62 | 0 | 0 |
+| NYSE | 1,979 | 0 | 63 | 0 | 0 |
 
 ## Notes
 
