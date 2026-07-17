@@ -1,14 +1,14 @@
 # Source Gap Classification
 
-Generated at: `2026-07-16T08:58:37Z`
+Generated at: `2026-07-17T08:40:07Z`
 
 This report classifies residual metadata gaps after official and reviewed free-source backfills. It is a guardrail report: values remain empty unless a future source satisfies the listed source gate.
 
 ## Summary
 
 - Official reference-gap rows classified: `5624`
-- Missing primary ISIN rows classified: `744`
-- Missing stock-sector rows classified: `15`
+- Missing primary ISIN rows classified: `746`
+- Missing stock-sector rows classified: `17`
 - Missing ETF-category rows classified: `91`
 
 ## Top Classes
@@ -18,15 +18,15 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | official_reference_unmatched_source_gap | 4913 |
 | official_reference_symbol_collision_gap | 711 |
 | fund_or_trust_identifier_gap | 328 |
-| official_identifier_not_exposed_source_gap | 237 |
+| official_identifier_not_exposed_source_gap | 239 |
 | debt_or_securitized_identifier_gap | 79 |
 | official_product_taxonomy_unavailable_gap | 78 |
 | adr_cdr_or_depositary_identifier_gap | 43 |
 | capital_pool_or_halted_identifier_gap | 33 |
 | inactive_or_legacy_identifier_gap | 17 |
 | equity_etf_category_gap | 10 |
-| official_industry_taxonomy_unavailable_gap | 9 |
-| shell_or_cpc_sector_gap | 6 |
+| official_industry_taxonomy_unavailable_gap | 10 |
+| shell_or_cpc_sector_gap | 7 |
 | official_identifier_reference_unmatched_gap | 5 |
 | commodity_etf_category_gap | 2 |
 | official_current_directory_absent_identifier_gap | 2 |
@@ -47,7 +47,7 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | official_reference_gap | official_reference_unmatched_source_gap | BME | 92 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | official_reference_gap | official_reference_symbol_collision_gap | AMS | 85 | Official exchange directory plus listing-key review for the row's exchange/security. | Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence. |
 | official_reference_gap | official_reference_unmatched_source_gap | LSE | 85 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
-| missing_isin_primary | official_identifier_not_exposed_source_gap | NASDAQ | 76 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
+| missing_isin_primary | official_identifier_not_exposed_source_gap | NASDAQ | 77 | Separate official CSD/security registry or exchange detail feed with ISIN. | Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership. |
 | official_reference_gap | official_reference_unmatched_source_gap | BATS | 76 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | missing_isin_primary | fund_or_trust_identifier_gap | BATS | 71 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
 | missing_isin_primary | fund_or_trust_identifier_gap | NYSE ARCA | 71 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
