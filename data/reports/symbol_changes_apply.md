@@ -1,9 +1,9 @@
 # Symbol Changes Apply
 
-- Generated at: `2026-07-16T08:32:33Z`
+- Generated at: `2026-07-18T08:06:40Z`
 - Dry run: `false`
 - Accepted rows: `0`
-- Blocked/manual rows: `301`
+- Blocked/manual rows: `302`
 
 ## Accepted
 
@@ -13,7 +13,7 @@ No rename rows satisfied the official-evidence apply gate.
 
 | Status | Rows |
 |---|---:|
-| blocked_new_symbol_collision | 23 |
+| blocked_new_symbol_collision | 24 |
 | blocked_old_symbol_not_unique_in_us_scope | 241 |
 | manual_isin_not_proven_unchanged | 2 |
 | manual_non_us_or_unscoped_source | 34 |
