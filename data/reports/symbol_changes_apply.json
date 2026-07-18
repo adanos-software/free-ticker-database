@@ -1,13 +1,13 @@
 {
   "summary": {
-    "generated_at": "2026-07-16T08:32:33Z",
+    "generated_at": "2026-07-18T08:06:40Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
-    "blocked_rows": 301,
+    "blocked_rows": 302,
     "blocked_by_status": {
-      "blocked_new_symbol_collision": 23,
+      "blocked_new_symbol_collision": 24,
       "blocked_old_symbol_not_unique_in_us_scope": 241,
       "manual_isin_not_proven_unchanged": 2,
       "manual_non_us_or_unscoped_source": 34,
@@ -16,6 +16,14 @@
   },
   "accepted": [],
   "blocked": [
+    {
+      "change_id": "0894d3b6dd10fd29",
+      "effective_date": "2026-07-16",
+      "old_symbol": "WAI",
+      "new_symbol": "DPU",
+      "new_company_name": "Top Kingwin Ltd.",
+      "status": "blocked_new_symbol_collision"
+    },
     {
       "change_id": "c0c14691367e1689",
       "effective_date": "2026-07-09",

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-07-16T08:32:21Z",
+    "generated_at": "2026-07-18T08:06:27Z",
     "source_url": "https://stockanalysis.com/actions/changes/",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -11,12 +11,12 @@
   },
   "summary": {
     "fetched_rows": 241,
-    "merged_history_rows": 301,
-    "review_rows": 301,
+    "merged_history_rows": 302,
+    "review_rows": 302,
     "match_status_counts": {
       "new_symbol_present_old_symbol_missing": 248,
       "no_matching_listing": 14,
-      "old_and_new_symbols_present": 19,
+      "old_and_new_symbols_present": 20,
       "old_symbol_present_new_symbol_missing": 8,
       "symbol_present_only_outside_source_scope": 12
     },
@@ -25,25 +25,25 @@
       "blocked_missing_source_scope_mapping": 4,
       "blocked_out_of_scope_symbol_collision": 16,
       "document_no_dataset_match": 13,
-      "review_duplicate_or_cross_listing": 19,
+      "review_duplicate_or_cross_listing": 20,
       "review_verified_rename_or_delisting": 2
     },
     "symbol_change_backlog": {
       "status": "listing_keyed_symbol_change_review_queue_open",
-      "rows": 301,
+      "rows": 302,
       "verified_rename_or_delisting_review_rows": 2,
-      "duplicate_or_cross_listing_review_rows": 19,
+      "duplicate_or_cross_listing_review_rows": 20,
       "already_reflected_audit_rows": 247,
       "out_of_scope_collision_blocked_rows": 16,
       "missing_source_scope_mapping_rows": 4,
       "no_dataset_match_documentation_rows": 13,
-      "time_sensitive_review_rows": 12,
+      "time_sensitive_review_rows": 13,
       "direct_symbol_change_apply_allowed_rows": 0,
       "secondary_feed_apply_authorized": false,
       "source_gate": "Symbol-change feed rows are review signals only; ticker, name, listing, or alias changes require listing-keyed official venue or issuer evidence for old/new symbols and issuer identity."
     },
     "review_bucket_counts": {
-      "action_required_duplicate_or_cross_listing": 19,
+      "action_required_duplicate_or_cross_listing": 20,
       "action_required_possible_rename_or_delisting": 2,
       "already_reflected_in_scope_with_global_symbol_collision": 42,
       "already_reflected_in_source_scope": 205,
@@ -53,7 +53,7 @@
       "no_dataset_match_for_source_scope": 13
     },
     "review_priority_counts": {
-      "P1": 21,
+      "P1": 22,
       "P2": 20,
       "P3": 13,
       "P4": 247
@@ -71,13 +71,13 @@
     "recency_bucket_counts": {
       "older_than_90d": 216,
       "recent_30d": 32,
-      "recent_7d": 15,
+      "recent_7d": 16,
       "recent_90d": 38
     },
     "review_priority_recency_counts": {
       "P1:older_than_90d": 4,
       "P1:recent_30d": 6,
-      "P1:recent_7d": 6,
+      "P1:recent_7d": 7,
       "P1:recent_90d": 5,
       "P2:older_than_90d": 12,
       "P2:recent_30d": 2,
@@ -104,7 +104,7 @@
       "document_no_dataset_match:recent_90d": 3,
       "review_duplicate_or_cross_listing:older_than_90d": 4,
       "review_duplicate_or_cross_listing:recent_30d": 6,
-      "review_duplicate_or_cross_listing:recent_7d": 4,
+      "review_duplicate_or_cross_listing:recent_7d": 5,
       "review_duplicate_or_cross_listing:recent_90d": 5,
       "review_verified_rename_or_delisting:recent_7d": 2
     },
@@ -113,7 +113,7 @@
       "blocked_missing_source_scope_mapping:P2": 4,
       "blocked_out_of_scope_symbol_collision:P2": 16,
       "document_no_dataset_match:P3": 13,
-      "review_duplicate_or_cross_listing:P1": 19,
+      "review_duplicate_or_cross_listing:P1": 20,
       "review_verified_rename_or_delisting:P1": 2
     },
     "workflow_queue_scope_counts": {
@@ -122,7 +122,7 @@
       "blocked_missing_source_scope_mapping:unscoped_source_hint": 4,
       "blocked_out_of_scope_symbol_collision:global_symbol_collision_outside_source_scope": 16,
       "document_no_dataset_match:matches_within_source_scope": 13,
-      "review_duplicate_or_cross_listing:matches_within_source_scope": 19,
+      "review_duplicate_or_cross_listing:matches_within_source_scope": 20,
       "review_verified_rename_or_delisting:matches_within_source_scope": 2
     },
     "workflow_queue_match_status_counts": {
@@ -133,7 +133,7 @@
       "blocked_out_of_scope_symbol_collision:old_symbol_present_new_symbol_missing": 4,
       "blocked_out_of_scope_symbol_collision:symbol_present_only_outside_source_scope": 12,
       "document_no_dataset_match:no_matching_listing": 13,
-      "review_duplicate_or_cross_listing:old_and_new_symbols_present": 19,
+      "review_duplicate_or_cross_listing:old_and_new_symbols_present": 20,
       "review_verified_rename_or_delisting:old_symbol_present_new_symbol_missing": 2
     },
     "workflow_queue_source_hint_counts": {
@@ -153,7 +153,7 @@
         "US_LISTED": 7
       },
       "review_duplicate_or_cross_listing": {
-        "US_LISTED": 19
+        "US_LISTED": 20
       },
       "review_verified_rename_or_delisting": {
         "US_LISTED": 2
@@ -173,7 +173,7 @@
         "secondary_review": 13
       },
       "review_duplicate_or_cross_listing": {
-        "secondary_review": 19
+        "secondary_review": 20
       },
       "review_verified_rename_or_delisting": {
         "secondary_review": 2
@@ -201,7 +201,7 @@
       },
       "review_duplicate_or_cross_listing": {
         "feed_name_differs_from_scoped_listing_name": 2,
-        "feed_name_exactly_matches_scoped_listing_name": 7,
+        "feed_name_exactly_matches_scoped_listing_name": 8,
         "feed_name_partially_overlaps_scoped_listing_name": 10
       },
       "review_verified_rename_or_delisting": {
@@ -226,7 +226,7 @@
         "no_scoped_listing_key_match": 13
       },
       "review_duplicate_or_cross_listing": {
-        "old_and_new_scoped_listing_keys_present": 19
+        "old_and_new_scoped_listing_keys_present": 20
       },
       "review_verified_rename_or_delisting": {
         "old_scoped_listing_key_only": 2
@@ -246,7 +246,7 @@
         "document_no_dataset_match_without_canonical_action": 13
       },
       "review_duplicate_or_cross_listing": {
-        "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change": 19
+        "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change": 20
       },
       "review_verified_rename_or_delisting": {
         "verify_rename_or_delisting_with_official_venue_or_issuer_evidence": 2
@@ -258,7 +258,7 @@
         "review_priority": "P1",
         "recency_bucket": "recent_7d",
         "exchange_scope_status": "matches_within_source_scope",
-        "rows": 4,
+        "rows": 5,
         "review_strategy": "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change",
         "evidence_required": "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
         "recommended_next_source": "Official exchange directory records plus listing-key review for both symbols.",
@@ -478,33 +478,33 @@
       "audit_only_no_apply": 247,
       "blocked_until_exchange_scope_resolved": 20,
       "no_dataset_action_without_scope_mapping": 13,
-      "requires_official_venue_confirmation": 21
+      "requires_official_venue_confirmation": 22
     },
     "symbol_change_apply_readiness_counts": {
       "audit_only_no_canonical_change": 247,
-      "blocked_until_listing_keyed_official_symbol_change_evidence": 21,
+      "blocked_until_listing_keyed_official_symbol_change_evidence": 22,
       "blocked_until_source_exchange_scope_and_non_symbol_identity_evidence": 20,
       "document_or_ignore_until_scoped_official_dataset_match": 13
     },
     "verification_evidence_required_counts": {
       "audit_only_confirm_no_canonical_change_needed": 247,
-      "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition": 19,
+      "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition": 20,
       "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer": 2,
       "official_exchange_scope_and_non_symbol_identity_evidence_before_apply": 16,
       "official_exchange_scope_mapping_or_ignore_as_external_non_dataset_event": 13,
       "source_exchange_mapping_before_any_symbol_change_review": 4
     },
-    "time_sensitive_review_rows": 12,
+    "time_sensitive_review_rows": 13,
     "time_sensitive_workflow_queue_counts": {
-      "review_duplicate_or_cross_listing": 10,
+      "review_duplicate_or_cross_listing": 11,
       "review_verified_rename_or_delisting": 2
     },
     "time_sensitive_recency_counts": {
       "recent_30d": 6,
-      "recent_7d": 6
+      "recent_7d": 7
     },
     "time_sensitive_apply_readiness_counts": {
-      "blocked_until_listing_keyed_official_symbol_change_evidence": 12
+      "blocked_until_listing_keyed_official_symbol_change_evidence": 13
     },
     "top_time_sensitive_symbol_change_batches": [
       {
@@ -513,7 +513,7 @@
         "exchange_scope_status": "matches_within_source_scope",
         "match_status": "old_and_new_symbols_present",
         "listing_key_review_status": "old_and_new_scoped_listing_keys_present",
-        "rows": 4,
+        "rows": 5,
         "review_strategy": "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change",
         "evidence_required": "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
         "recommended_next_source": "Official exchange directory records plus listing-key review for both symbols.",
@@ -548,16 +548,57 @@
       "already_reflected_or_new_symbol_added_in_source_scope": 248,
       "do_not_apply_from_symbol_match_review_exchange_scope_first": 12,
       "ignore_or_map_exchange_scope_before_applying": 14,
-      "review_duplicate_or_cross_listing_state_in_source_scope": 19,
+      "review_duplicate_or_cross_listing_state_in_source_scope": 20,
       "review_possible_rename_or_delisting_in_source_scope": 8
     },
     "exchange_scope_status_counts": {
       "global_symbol_collision_outside_source_scope": 58,
-      "matches_within_source_scope": 239,
+      "matches_within_source_scope": 240,
       "unscoped_source_hint": 4
     }
   },
   "review_items": [
+    {
+      "change_id": "0894d3b6dd10fd29",
+      "effective_date": "2026-07-16",
+      "old_symbol": "WAI",
+      "new_symbol": "DPU",
+      "new_company_name": "Top Kingwin Ltd.",
+      "source": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "new_symbol_url": "/stocks/dpu/",
+      "source_exchange_hint": "US_LISTED",
+      "source_confidence": "secondary_review",
+      "review_needed": "true",
+      "observed_at": "2026-07-18T08:06:27Z",
+      "match_status": "old_and_new_symbols_present",
+      "symbol_change_workflow_queue": "review_duplicate_or_cross_listing",
+      "review_bucket": "action_required_duplicate_or_cross_listing",
+      "review_priority": "P1",
+      "review_strategy": "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change",
+      "effective_age_days": 2,
+      "recency_bucket": "recent_7d",
+      "apply_eligibility": "requires_official_venue_confirmation",
+      "verification_evidence_required": "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
+      "recommended_next_source": "Official exchange directory records plus listing-key review for both symbols.",
+      "source_gate": "Do not change symbols until duplicate, cross-listing, or transition state is resolved listing-key by listing-key.",
+      "recommended_action": "review_duplicate_or_cross_listing_state_in_source_scope",
+      "exchange_scope_status": "matches_within_source_scope",
+      "old_listing_keys": "NASDAQ::WAI",
+      "new_listing_keys": "NASDAQ::DPU",
+      "old_scoped_listing_keys": "NASDAQ::WAI",
+      "new_scoped_listing_keys": "NASDAQ::DPU",
+      "listing_key_review_status": "old_and_new_scoped_listing_keys_present",
+      "scoped_listing_names": "Top KingWin Ltd|Top KingWin Ltd - Class A Ordinary Shares",
+      "issuer_name_review_status": "feed_name_exactly_matches_scoped_listing_name",
+      "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=US_LISTED;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
+      "scope_match_context": "exchange_scope_status=matches_within_source_scope;old_match_count=1;new_match_count=1;old_scoped_match_count=1;new_scoped_match_count=1;old_scoped_listing_keys=NASDAQ::WAI;new_scoped_listing_keys=NASDAQ::DPU",
+      "workflow_review_context": "workflow_queue=review_duplicate_or_cross_listing;review_bucket=action_required_duplicate_or_cross_listing;apply_eligibility=requires_official_venue_confirmation;verification_evidence_required=official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
+      "old_match_count": 1,
+      "new_match_count": 1,
+      "old_scoped_match_count": 1,
+      "new_scoped_match_count": 1
+    },
     {
       "change_id": "c0c14691367e1689",
       "effective_date": "2026-07-09",
