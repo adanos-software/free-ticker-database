@@ -1,62 +1,19 @@
 {
   "summary": {
-    "generated_at": "2026-07-17T08:38:39Z",
-    "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
+    "generated_at": "2026-07-19T10:01:08Z",
+    "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
     "supported_asset_types": [
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 3,
-    "accepted_rows": 2,
-    "skipped_rows": 1,
-    "accepted_by_exchange": {
-      "NASDAQ": 1,
-      "NYSE": 1
-    },
-    "skipped_by_reason": {
-      "excluded_non_common_stock": 1
-    }
+    "new_supported_rows": 0,
+    "accepted_rows": 0,
+    "skipped_rows": 0,
+    "accepted_by_exchange": {},
+    "skipped_by_reason": {}
   },
-  "accepted": [
-    {
-      "ticker": "QMLS",
-      "name": "QumulusAI, Inc. - Common Stock",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "reference_scope": "exchange_directory"
-    },
-    {
-      "ticker": "DGAC",
-      "name": "Disciplined Growth Acquisition Corporation Class A Ordinary Shares",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "sector": "",
-      "country": "United States",
-      "country_code": "US",
-      "isin": "",
-      "aliases": "",
-      "source_key": "nasdaq_other_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
-      "reference_scope": "exchange_directory"
-    }
-  ],
-  "skipped": [
-    {
-      "ticker": "DGAC.R",
-      "exchange": "NYSE",
-      "name": "Disciplined Growth Acquisition Corporation Rights, each right entitling the holder to receive one-fourth (1/4) of one Class A ordinary share",
-      "asset_type": "Stock",
-      "source_key": "nasdaq_other_listed",
-      "skip_reason": "excluded_non_common_stock"
-    }
-  ]
+  "accepted": [],
+  "skipped": []
 }

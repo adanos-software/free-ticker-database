@@ -1,43 +1,48 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-07-13T12:02:51Z`
-- New rows: `934`
-- Vanished rows: `81`
-- Changed rows: `278`
+- Generated at: `2026-07-19T10:01:05Z`
+- New rows: `235`
+- Vanished rows: `969`
+- Changed rows: `44`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
 ## Changed By Type
 
 | Type | Rows |
 |---|---:|
-| field_change | 3 |
-| isin_change | 16 |
-| name_change | 263 |
+| field_change | 10 |
+| isin_change | 1 |
+| name_change | 33 |
 
 ## New By Source
 
 | Source | Rows |
 |---|---:|
-| boursa_kuwait_stocks | 2 |
-| bse_hu_listed_companies | 18 |
-| bse_india_scrips | 230 |
-| bvb_shares_directory | 1 |
-| cboe_canada_listing_directory | 14 |
-| cse_lk_company_info_summary | 2 |
-| cse_ma_listed_companies | 31 |
-| deutsche_boerse_etfs_etps | 83 |
-| deutsche_boerse_listed_companies | 2 |
-| deutsche_boerse_xetra_all_tradable_equities | 550 |
-| dfm_listed_securities | 1 |
+| adx_market_watch | 1 |
+| asx_investment_products | 15 |
+| asx_listed_companies | 27 |
+| athex_sector_classification | 29 |
+| b3_bdr_etfs | 8 |
+| b3_instruments_equities | 28 |
+| b3_listed_etfs | 17 |
+| bist_kap_mkk_listed_securities | 6 |
+| bme_listed_companies | 4 |
+| bme_security_prices_directory | 97 |
+| bmv_etf_search | 1 |
+| bmv_market_data_securities | 2 |
 
 ## Vanished By Source
 
 | Source | Rows |
 |---|---:|
-| boursa_kuwait_stocks | 2 |
-| bse_india_scrips | 28 |
-| cboe_canada_listing_directory | 14 |
-| deutsche_boerse_etfs_etps | 8 |
-| deutsche_boerse_listed_companies | 6 |
-| deutsche_boerse_xetra_all_tradable_equities | 22 |
-| dfm_listed_securities | 1 |
+| asx_investment_products | 3 |
+| asx_listed_companies | 19 |
+| athex_sector_classification | 2 |
+| b3_instruments_equities | 912 |
+| b3_listed_etfs | 1 |
+| bist_kap_mkk_listed_securities | 2 |
+| bmv_capital_trust_search | 2 |
+| bmv_etf_search | 6 |
+| bmv_issuer_directory | 7 |
+| bmv_market_data_securities | 10 |
+| bmv_stock_search | 5 |

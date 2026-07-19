@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-17T08:38:34Z",
-  "rows": 149453,
+  "generated_at": "2026-07-19T09:54:21Z",
+  "rows": 148719,
   "exchanges": [
     "ADX",
     "AMS",
@@ -87,28 +87,28 @@
     "ZSE_ZW"
   ],
   "source_counts": {
-    "adx_market_watch": 122,
+    "adx_market_watch": 123,
     "euronext_etfs": 4040,
     "euronext_equities": 3856,
-    "asx_listed_companies": 1979,
-    "asx_investment_products": 446,
-    "athex_sector_classification": 91,
-    "b3_listed_etfs": 189,
-    "b3_bdr_etfs": 306,
-    "b3_instruments_equities": 1315,
+    "asx_listed_companies": 1987,
+    "asx_investment_products": 458,
+    "athex_sector_classification": 118,
+    "b3_listed_etfs": 205,
+    "b3_bdr_etfs": 314,
+    "b3_instruments_equities": 431,
     "nasdaq_other_listed": 7492,
     "nasdaq_trading_system_adds_deletes": 36,
     "byma_equity_details": 63,
     "bahrain_bourse_listed_companies": 41,
-    "bist_kap_mkk_listed_securities": 637,
+    "bist_kap_mkk_listed_securities": 641,
     "boursa_kuwait_stocks": 140,
     "bme_etf_list": 5,
-    "bme_listed_companies": 119,
-    "bmv_stock_search": 15,
-    "bmv_market_data_securities": 17,
-    "bmv_etf_search": 7,
-    "bmv_issuer_directory": 7,
-    "bmv_capital_trust_search": 7,
+    "bme_security_prices_directory": 97,
+    "bme_listed_companies": 123,
+    "bmv_stock_search": 10,
+    "bmv_market_data_securities": 9,
+    "bmv_etf_search": 2,
+    "bmv_capital_trust_search": 5,
     "bse_bw_listed_companies": 26,
     "bse_hu_listed_companies": 20,
     "bse_india_scrips": 5068,
@@ -276,8 +276,8 @@
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 1979,
-      "generated_at": "2026-06-02T19:38:59Z"
+      "rows": 1987,
+      "generated_at": "2026-07-19T09:54:21Z"
     },
     "cboe_canada_listing_directory": {
       "provider": "Cboe Canada",
@@ -292,8 +292,8 @@
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 446,
-      "generated_at": "2026-06-02T19:38:59Z"
+      "rows": 458,
+      "generated_at": "2026-07-19T09:54:21Z"
     },
     "set_listed_companies": {
       "provider": "SET",
@@ -443,25 +443,25 @@
       "provider": "B3",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "cache",
-      "rows": 1315,
-      "generated_at": "2026-06-02T19:38:59Z"
+      "mode": "network",
+      "rows": 431,
+      "generated_at": "2026-07-19T09:54:21Z"
     },
     "b3_listed_etfs": {
       "provider": "B3",
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 189,
-      "generated_at": "2026-06-02T19:38:59Z"
+      "rows": 205,
+      "generated_at": "2026-07-19T09:54:21Z"
     },
     "b3_bdr_etfs": {
       "provider": "B3",
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 306,
-      "generated_at": "2026-06-02T19:38:59Z"
+      "rows": 314,
+      "generated_at": "2026-07-19T09:54:21Z"
     },
     "jse_etf_list": {
       "provider": "JSE",
@@ -493,8 +493,8 @@
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 119,
-      "generated_at": "2026-06-02T19:38:59Z"
+      "rows": 123,
+      "generated_at": "2026-07-19T09:54:21Z"
     },
     "bme_etf_list": {
       "provider": "BME",
@@ -502,7 +502,7 @@
       "official": true,
       "mode": "network",
       "rows": 5,
-      "generated_at": "2026-06-02T19:38:59Z"
+      "generated_at": "2026-07-19T09:54:21Z"
     },
     "bme_listed_values": {
       "provider": "BME",
@@ -517,27 +517,25 @@
       "provider": "BME",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "unavailable",
-      "rows": 0,
-      "generated_at": "2026-06-02T19:38:59Z",
-      "last_error": "BME security prices rows unavailable; official detail fetch failed and no complete cache (>=500 rows) is available; partial caches are ignored"
+      "mode": "network",
+      "rows": 97,
+      "generated_at": "2026-07-19T09:54:21Z"
     },
     "bme_growth_prices": {
       "provider": "BME Growth",
       "reference_scope": "listed_companies_subset",
       "official": true,
-      "mode": "unavailable",
+      "mode": "network",
       "rows": 0,
-      "generated_at": "2026-06-02T19:38:59Z",
-      "last_error": "BME Growth reference rows unavailable"
+      "generated_at": "2026-07-19T09:54:21Z"
     },
     "athex_sector_classification": {
       "provider": "ATHEX",
       "reference_scope": "listed_companies_subset",
       "official": true,
-      "mode": "cache",
-      "rows": 91,
-      "generated_at": "2026-06-02T19:38:59Z"
+      "mode": "network",
+      "rows": 118,
+      "generated_at": "2026-07-19T09:54:21Z"
     },
     "bursa_equity_isin": {
       "provider": "Bursa Malaysia",
@@ -706,17 +704,17 @@
       "provider": "Bahrain Bourse",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "cache",
+      "mode": "network",
       "rows": 41,
-      "generated_at": "2026-06-02T19:38:59Z"
+      "generated_at": "2026-07-19T09:54:21Z"
     },
     "bist_kap_mkk_listed_securities": {
       "provider": "KAP/MKK",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "cache",
-      "rows": 637,
-      "generated_at": "2026-06-02T19:38:59Z"
+      "mode": "network",
+      "rows": 641,
+      "generated_at": "2026-07-19T09:54:21Z"
     },
     "tadawul_main_market_watch": {
       "provider": "Saudi Exchange",
@@ -730,9 +728,9 @@
       "provider": "ADX",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "cache",
-      "rows": 122,
-      "generated_at": "2026-06-02T19:38:59Z"
+      "mode": "network",
+      "rows": 123,
+      "generated_at": "2026-07-19T09:54:21Z"
     },
     "qse_market_watch": {
       "provider": "QSE",
@@ -778,9 +776,10 @@
       "provider": "Bolsa de Santiago",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "cache",
+      "mode": "unavailable",
       "rows": 111,
-      "generated_at": "2026-06-02T19:38:59Z"
+      "generated_at": "2026-06-02T19:38:59Z",
+      "last_error": "Bolsa de Santiago instruments unavailable"
     },
     "sem_isin": {
       "provider": "SEM",
@@ -859,40 +858,40 @@
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 15,
-      "generated_at": "2026-06-02T19:38:59Z"
+      "rows": 10,
+      "generated_at": "2026-07-19T09:54:21Z"
     },
     "bmv_capital_trust_search": {
       "provider": "BMV",
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 7,
-      "generated_at": "2026-06-02T19:38:59Z"
+      "rows": 5,
+      "generated_at": "2026-07-19T09:54:21Z"
     },
     "bmv_etf_search": {
       "provider": "BMV",
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 7,
-      "generated_at": "2026-06-02T19:38:59Z"
+      "rows": 2,
+      "generated_at": "2026-07-19T09:54:21Z"
     },
     "bmv_market_data_securities": {
       "provider": "BMV",
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 17,
-      "generated_at": "2026-06-02T19:38:59Z"
+      "rows": 9,
+      "generated_at": "2026-07-19T09:54:21Z"
     },
     "bmv_issuer_directory": {
       "provider": "BMV",
       "reference_scope": "listed_companies_subset",
       "official": true,
       "mode": "network",
-      "rows": 7,
-      "generated_at": "2026-06-02T19:38:59Z"
+      "rows": 0,
+      "generated_at": "2026-07-19T09:54:21Z"
     },
     "nasdaq_nordic_stockholm_shares": {
       "provider": "Nasdaq Nordic",
@@ -1347,7 +1346,7 @@
     "six_shares_explorer_full": "network",
     "six_etf_products": "network",
     "six_etp_products": "network",
-    "b3_instruments_equities": "cache",
+    "b3_instruments_equities": "network",
     "b3_listed_etfs": "network",
     "b3_bdr_etfs": "network",
     "jse_etf_list": "cache",
@@ -1356,9 +1355,9 @@
     "bme_listed_companies": "network",
     "bme_etf_list": "network",
     "bme_listed_values": "unavailable",
-    "bme_security_prices_directory": "unavailable",
-    "bme_growth_prices": "unavailable",
-    "athex_sector_classification": "cache",
+    "bme_security_prices_directory": "network",
+    "bme_growth_prices": "network",
+    "athex_sector_classification": "network",
     "bursa_equity_isin": "unavailable",
     "bursa_closing_prices": "unavailable",
     "bse_bw_listed_companies": "network",
@@ -1379,16 +1378,16 @@
     "sgx_securities_prices": "cache",
     "dfm_listed_securities": "network",
     "boursa_kuwait_stocks": "network",
-    "bahrain_bourse_listed_companies": "cache",
-    "bist_kap_mkk_listed_securities": "cache",
+    "bahrain_bourse_listed_companies": "network",
+    "bist_kap_mkk_listed_securities": "network",
     "tadawul_main_market_watch": "cache",
-    "adx_market_watch": "cache",
+    "adx_market_watch": "network",
     "qse_market_watch": "cache",
     "muscat_securities_companies": "cache",
     "rse_listed_companies": "cache",
     "gse_listed_companies": "cache",
     "luse_listed_companies": "cache",
-    "bolsa_santiago_instruments": "cache",
+    "bolsa_santiago_instruments": "unavailable",
     "sem_isin": "cache",
     "use_ug_listed_companies": "cache",
     "nzx_instruments": "cache",
@@ -1460,16 +1459,12 @@
   },
   "errors": [
     {
-      "source_key": "bme_growth_prices",
-      "error": "BME Growth reference rows unavailable"
-    },
-    {
       "source_key": "bme_listed_values",
       "error": "BME listed values rows unavailable"
     },
     {
-      "source_key": "bme_security_prices_directory",
-      "error": "BME security prices rows unavailable; official detail fetch failed and no complete cache (>=500 rows) is available; partial caches are ignored"
+      "source_key": "bolsa_santiago_instruments",
+      "error": "Bolsa de Santiago instruments unavailable"
     },
     {
       "source_key": "bursa_closing_prices",
