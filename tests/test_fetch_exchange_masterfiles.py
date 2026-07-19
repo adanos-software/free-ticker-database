@@ -10926,6 +10926,30 @@ def test_parse_bolsa_santiago_instruments_payload_gates_to_current_rows(tmp_path
     ]
 
 
+def test_load_bolsa_santiago_instruments_rows_treats_browser_errors_as_unavailable(tmp_path, monkeypatch) -> None:
+    from playwright.sync_api import Error as PlaywrightError
+    import playwright.sync_api
+
+    class FailingPlaywright:
+        def __enter__(self):
+            raise PlaywrightError("provider returned HTML")
+
+        def __exit__(self, exc_type, exc_value, traceback):
+            return False
+
+    cache_path = tmp_path / "bolsa_santiago_instruments.json"
+    legacy_cache_path = tmp_path / "legacy_bolsa_santiago_instruments.json"
+    monkeypatch.setattr(fetch_exchange_masterfiles, "BOLSA_SANTIAGO_INSTRUMENTS_CACHE", cache_path)
+    monkeypatch.setattr(fetch_exchange_masterfiles, "LEGACY_BOLSA_SANTIAGO_INSTRUMENTS_CACHE", legacy_cache_path)
+    monkeypatch.setattr(playwright.sync_api, "sync_playwright", lambda: FailingPlaywright())
+
+    source = next(source for source in OFFICIAL_SOURCES if source.key == "bolsa_santiago_instruments")
+    rows, mode = fetch_exchange_masterfiles.load_bolsa_santiago_instruments_rows(source)
+
+    assert rows is None
+    assert mode == "unavailable"
+
+
 def test_parse_nasdaq_mutual_fund_quote_payload_gates_to_fund_network() -> None:
     source = MasterfileSource(
         key="nasdaq_mutual_fund_quotes",

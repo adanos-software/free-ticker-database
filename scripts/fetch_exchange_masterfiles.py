@@ -5043,54 +5043,58 @@ def parse_bolsa_santiago_instruments_payload(
 
 def fetch_bolsa_santiago_instruments_payload_via_browser() -> dict[str, Any]:
     try:
+        from playwright.sync_api import Error as PlaywrightError
         from playwright.sync_api import sync_playwright
     except ImportError as exc:  # pragma: no cover - optional browser dependency
         raise requests.RequestException("Playwright is required for Bolsa de Santiago browser fetch") from exc
 
-    with sync_playwright() as playwright:
-        browser = playwright.chromium.launch(headless=True)
-        try:
-            context = browser.new_context(
-                locale="es-CL",
-                user_agent=BROWSER_USER_AGENT,
-                viewport={"width": 1365, "height": 900},
-            )
-            page = context.new_page()
-            page.goto(
-                BOLSA_SANTIAGO_INSTRUMENTS_PAGE_URL,
-                wait_until="domcontentloaded",
-                timeout=int(REQUEST_TIMEOUT * 1000),
-            )
-            # Radware blocks raw requests; normal browser interaction is enough to set the session cookies.
-            page.mouse.move(80, 80)
-            page.mouse.down()
-            page.mouse.move(220, 180)
-            page.mouse.up()
-            page.wait_for_timeout(8000)
-            result = page.evaluate(
-                """async ({ tokenUrl, instrumentsUrl }) => {
-                    const tokenResponse = await fetch(tokenUrl, {
-                        headers: { "Accept": "application/json, text/plain, */*" }
-                    });
-                    const tokenPayload = await tokenResponse.json();
-                    const response = await fetch(instrumentsUrl, {
-                        method: "POST",
-                        headers: {
-                            "Accept": "application/json, text/plain, */*",
-                            "Content-Type": "application/json;charset=UTF-8",
-                            "X-CSRF-Token": tokenPayload.csrf || ""
-                        },
-                        body: "{}"
-                    });
-                    return { status: response.status, text: await response.text() };
-                }""",
-                {
-                    "tokenUrl": "https://www.bolsadesantiago.com/api/Securities/csrfToken",
-                    "instrumentsUrl": BOLSA_SANTIAGO_INSTRUMENTS_URL,
-                },
-            )
-        finally:
-            browser.close()
+    try:
+        with sync_playwright() as playwright:
+            browser = playwright.chromium.launch(headless=True)
+            try:
+                context = browser.new_context(
+                    locale="es-CL",
+                    user_agent=BROWSER_USER_AGENT,
+                    viewport={"width": 1365, "height": 900},
+                )
+                page = context.new_page()
+                page.goto(
+                    BOLSA_SANTIAGO_INSTRUMENTS_PAGE_URL,
+                    wait_until="domcontentloaded",
+                    timeout=int(REQUEST_TIMEOUT * 1000),
+                )
+                # Radware blocks raw requests; normal browser interaction is enough to set the session cookies.
+                page.mouse.move(80, 80)
+                page.mouse.down()
+                page.mouse.move(220, 180)
+                page.mouse.up()
+                page.wait_for_timeout(8000)
+                result = page.evaluate(
+                    """async ({ tokenUrl, instrumentsUrl }) => {
+                        const tokenResponse = await fetch(tokenUrl, {
+                            headers: { "Accept": "application/json, text/plain, */*" }
+                        });
+                        const tokenPayload = await tokenResponse.json();
+                        const response = await fetch(instrumentsUrl, {
+                            method: "POST",
+                            headers: {
+                                "Accept": "application/json, text/plain, */*",
+                                "Content-Type": "application/json;charset=UTF-8",
+                                "X-CSRF-Token": tokenPayload.csrf || ""
+                            },
+                            body: "{}"
+                        });
+                        return { status: response.status, text: await response.text() };
+                    }""",
+                    {
+                        "tokenUrl": "https://www.bolsadesantiago.com/api/Securities/csrfToken",
+                        "instrumentsUrl": BOLSA_SANTIAGO_INSTRUMENTS_URL,
+                    },
+                )
+            finally:
+                browser.close()
+    except PlaywrightError as exc:
+        raise requests.RequestException("Bolsa de Santiago browser fetch unavailable") from exc
 
     if int(result.get("status") or 0) != 200:
         raise requests.HTTPError(f"Bolsa de Santiago instruments API returned {result.get('status')}")
