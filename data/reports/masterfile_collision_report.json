@@ -1,17 +1,17 @@
 {
   "global": {
-    "official_symbols": 80501,
-    "matched": 53601,
-    "collisions": 11519,
-    "missing": 15381
+    "official_symbols": 79719,
+    "matched": 52778,
+    "collisions": 11531,
+    "missing": 15410
   },
   "exchanges": [
     {
       "exchange": "ADX",
-      "official_symbols": 122,
+      "official_symbols": 123,
       "matched": 85,
       "collisions": 32,
-      "missing": 5,
+      "missing": 6,
       "collision_examples": [
         {
           "ticker": "ADIB",
@@ -105,6 +105,11 @@
         {
           "ticker": "EMOBILITY",
           "name": "Emirates Mobility Company",
+          "exchange": "ADX"
+        },
+        {
+          "ticker": "GCCDIV",
+          "name": "Lunate Solactive GCC Shariah Dividend ETF",
           "exchange": "ADX"
         },
         {
@@ -267,40 +272,20 @@
     },
     {
       "exchange": "B3",
-      "official_symbols": 1315,
-      "matched": 1245,
+      "official_symbols": 431,
+      "matched": 400,
       "collisions": 0,
-      "missing": 70,
+      "missing": 31,
       "collision_examples": [],
       "missing_examples": [
-        {
-          "ticker": "ALUP11",
-          "name": "ALUPAR INVESTIMENTO S/A",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "ANGV39",
-          "name": "VANECK FALLEN ANGEL HIGH YIELD BOND ETF",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "AZPE11",
-          "name": "AZ QUEST PANORAMA CR\u00c9DITO ESTRUTURADO FII RESP LTD",
-          "exchange": "B3"
-        },
-        {
-          "ticker": "AZUL3",
-          "name": "AZUL S.A.",
-          "exchange": "B3"
-        },
         {
           "ticker": "AZUL98",
           "name": "AZUL S.A.",
           "exchange": "B3"
         },
         {
-          "ticker": "BAOM39",
-          "name": "ISHARES CORE 40/60 MODERATE ALLOCATION ETF",
+          "ticker": "AZUL99",
+          "name": "AZUL S.A.",
           "exchange": "B3"
         },
         {
@@ -309,18 +294,38 @@
           "exchange": "B3"
         },
         {
-          "ticker": "BBER39",
-          "name": "JPMORGAN BETABUILDERS EUROPE ETF",
+          "ticker": "BBMR39",
+          "name": "JPMORGAN BETABUILDERS MSCI US REIT ETF",
           "exchange": "B3"
         },
         {
-          "ticker": "BBGR39",
-          "name": "ISHARES USD GREEN BOND ETF",
+          "ticker": "BBUS39",
+          "name": "JPMORGAN BETABUILDERS US EQUITY ETF",
           "exchange": "B3"
         },
         {
-          "ticker": "BDRE39",
-          "name": "JPMORGAN DIVERSIFIED RETURN US SMALLCAP EQUITY ETF",
+          "ticker": "BHEW39",
+          "name": "ISHARES CURRENCY HEDGED MSCI JAPAN ETF",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "BIAK39",
+          "name": "ISHARES U.S. INSURANCE ETF",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "BINR11",
+          "name": "BE IN RIO FUND DE  INVEST IMOB \u2013 RESP LIM",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "BJPI39",
+          "name": "JPMORGAN DIVERSIFIED RETURN INTERNATION EQUITY ETF",
+          "exchange": "B3"
+        },
+        {
+          "ticker": "BRBI11",
+          "name": "BRBI BR PARTNERS S.A.",
           "exchange": "B3"
         }
       ]
@@ -570,10 +575,10 @@
     },
     {
       "exchange": "BIST",
-      "official_symbols": 637,
-      "matched": 614,
+      "official_symbols": 641,
+      "matched": 612,
       "collisions": 20,
-      "missing": 3,
+      "missing": 9,
       "collision_examples": [
         {
           "ticker": "ALCAR",
@@ -663,6 +668,21 @@
           "exchange": "BIST"
         },
         {
+          "ticker": "BETAE",
+          "name": "BETA ENERJ\u0130 VE TEKNOLOJ\u0130 A.\u015e.",
+          "exchange": "BIST"
+        },
+        {
+          "ticker": "EKIM",
+          "name": "EK\u0130M TUR\u0130ZM T\u0130CARET VE SANAY\u0130 A.\u015e.",
+          "exchange": "BIST"
+        },
+        {
+          "ticker": "GOLDA",
+          "name": "GOLDA GIDA SANAY\u0130 VE T\u0130CARET A.\u015e.",
+          "exchange": "BIST"
+        },
+        {
           "ticker": "LXGYO",
           "name": "LUXERA GAYR\u0130MENKUL YATIRIM ORTAKLI\u011eI A.\u015e.",
           "exchange": "BIST"
@@ -670,6 +690,21 @@
         {
           "ticker": "MANAS",
           "name": "MANAS ENERJ\u0130 Y\u00d6NET\u0130M\u0130 SANAY\u0130 VE T\u0130CARET A.\u015e.",
+          "exchange": "BIST"
+        },
+        {
+          "ticker": "ORZAX",
+          "name": "ORZAKS \u0130LA\u00c7 VE K\u0130MYA SANAY\u0130 T\u0130CARET A.\u015e.",
+          "exchange": "BIST"
+        },
+        {
+          "ticker": "SOHOE",
+          "name": "SOHO G\u0130Y\u0130M VE ENERJ\u0130 A.\u015e.",
+          "exchange": "BIST"
+        },
+        {
+          "ticker": "SVGYO",
+          "name": "SAVUR GAYR\u0130MENKUL YATIRIM ORTAKLI\u011eI A.\u015e.",
           "exchange": "BIST"
         }
       ]
@@ -816,6 +851,149 @@
           "ticker": "QIC",
           "name": "Umm Al Qaiwain General Investment Co PSC",
           "exchange": "BK"
+        }
+      ]
+    },
+    {
+      "exchange": "BME",
+      "official_symbols": 97,
+      "matched": 24,
+      "collisions": 12,
+      "missing": 61,
+      "collision_examples": [
+        {
+          "ticker": "ACX",
+          "name": "ACERINOX",
+          "target_exchange": "BME",
+          "existing_exchanges": [
+            "XETRA"
+          ]
+        },
+        {
+          "ticker": "AI",
+          "name": "AIRTIFICIAL",
+          "target_exchange": "BME",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
+          "ticker": "AIG",
+          "name": "ANDINO INVERSIONES",
+          "target_exchange": "BME",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
+          "ticker": "AIR",
+          "name": "AIRBUS SE",
+          "target_exchange": "BME",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
+          "ticker": "ALM",
+          "name": "ALMIRALL",
+          "target_exchange": "BME",
+          "existing_exchanges": [
+            "NASDAQ",
+            "STO"
+          ]
+        },
+        {
+          "ticker": "ALNT",
+          "name": "ALANTRA PARTNERS",
+          "target_exchange": "BME",
+          "existing_exchanges": [
+            "NASDAQ"
+          ]
+        },
+        {
+          "ticker": "AMEN",
+          "name": "AETERNAL MENTIS",
+          "target_exchange": "BME",
+          "existing_exchanges": [
+            "OTC"
+          ]
+        },
+        {
+          "ticker": "AMP",
+          "name": "AMPER",
+          "target_exchange": "BME",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        },
+        {
+          "ticker": "AMS",
+          "name": "AMADEUS IT GROUP",
+          "target_exchange": "BME",
+          "existing_exchanges": [
+            "LSE",
+            "NYSE MKT"
+          ]
+        },
+        {
+          "ticker": "APAM",
+          "name": "APERAM",
+          "target_exchange": "BME",
+          "existing_exchanges": [
+            "NYSE"
+          ]
+        }
+      ],
+      "missing_examples": [
+        {
+          "ticker": "AKL",
+          "name": "AKILES",
+          "exchange": "BME"
+        },
+        {
+          "ticker": "AMIBX",
+          "name": "AMUNDI IBEX ETF ACC",
+          "exchange": "BME"
+        },
+        {
+          "ticker": "S0009",
+          "name": "1955 INVERSIONES",
+          "exchange": "BME"
+        },
+        {
+          "ticker": "S0025",
+          "name": "ACE GLOBAL",
+          "exchange": "BME"
+        },
+        {
+          "ticker": "S0032",
+          "name": "ACTIUM DE INVERSIONES",
+          "exchange": "BME"
+        },
+        {
+          "ticker": "S0039",
+          "name": "ACTUACIONES BURSATILES",
+          "exchange": "BME"
+        },
+        {
+          "ticker": "S0040",
+          "name": "ACUARIO 98",
+          "exchange": "BME"
+        },
+        {
+          "ticker": "S0081",
+          "name": "AKORG FINANCIERA",
+          "exchange": "BME"
+        },
+        {
+          "ticker": "S0083",
+          "name": "ALAR 2.000",
+          "exchange": "BME"
+        },
+        {
+          "ticker": "S0084",
+          "name": "ALAVA INVERSIONES",
+          "exchange": "BME"
         }
       ]
     },

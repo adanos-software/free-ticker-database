@@ -1,20 +1,15 @@
 # Nasdaq US New Listings Apply
 
-- Generated at: `2026-07-17T08:38:39Z`
-- New supported rows: `3`
-- Accepted rows: `2`
-- Skipped rows: `1`
+- Generated at: `2026-07-19T10:01:08Z`
+- New supported rows: `0`
+- Accepted rows: `0`
+- Skipped rows: `0`
 - Supported asset types: `ETF, Stock`
 
 ## Accepted
 
-| Ticker | Exchange | Name | Asset type | Source |
-|---|---|---|---|---|
-| QMLS | NASDAQ | QumulusAI, Inc. - Common Stock | Stock | nasdaq_listed |
-| DGAC | NYSE | Disciplined Growth Acquisition Corporation Class A Ordinary Shares | Stock | nasdaq_other_listed |
+No new listings were accepted.
 
 ## Skipped
 
-| Reason | Rows |
-|---|---:|
-| excluded_non_common_stock | 1 |
+No supported new rows were skipped.

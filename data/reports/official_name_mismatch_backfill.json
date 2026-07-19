@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-06-03T03:01:19Z",
+    "generated_at": "2026-07-19T10:02:27Z",
     "policy": {
       "source_authority": "Name backfill candidates require active official masterfile references for the exact ticker and exchange.",
       "no_guessing": "Names are not inferred from ticker shape, issuer peers, or secondary-only sources.",
@@ -8,188 +8,37 @@
       "otc_exclusion": "OTC rows are excluded and must use the OTC name-mismatch review workflow."
     },
     "supported_exchanges": [
-      "ASX",
-      "BATS",
-      "IDX",
-      "JSE",
-      "LSE",
-      "NASDAQ",
-      "NEO",
-      "NYSE",
-      "NYSE ARCA",
-      "NYSE MKT",
-      "PSX",
-      "SET",
-      "SSE_CL",
-      "TSX",
-      "TSXV"
+      "ASX"
     ],
-    "rows_reviewed": 14,
-    "updates_emitted": 13,
+    "rows_reviewed": 2,
+    "updates_emitted": 2,
     "accepted_by_exchange": {
-      "NASDAQ": 6,
-      "ASX": 3,
-      "NYSE": 2,
-      "IDX": 2
+      "ASX": 2
     },
-    "skipped_by_exchange": {
-      "NASDAQ": 1
-    }
+    "skipped_by_exchange": {}
   },
   "items": [
     {
-      "listing_key": "NASDAQ::AMCX",
-      "ticker": "AMCX",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "current_name": "AMC Networks Inc",
-      "proposed_name": "AMC Global Media Inc.",
-      "decision": "accept",
-      "official_sources": "nasdaq_listed|sec_company_tickers_exchange",
-      "supporting_sources": "nasdaq_listed|sec_company_tickers_exchange"
-    },
-    {
-      "listing_key": "NYSE::CTGO",
-      "ticker": "CTGO",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "current_name": "Contango ORE Inc",
-      "proposed_name": "Contango Silver & Gold Inc.",
-      "decision": "accept",
-      "official_sources": "sec_company_tickers_exchange",
-      "supporting_sources": "sec_company_tickers_exchange"
-    },
-    {
-      "listing_key": "NYSE::FIHL",
-      "ticker": "FIHL",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "current_name": "Fidelis Insurance Holdings Limited",
-      "proposed_name": "Pelagos Insurance Capital Ltd",
-      "decision": "accept",
-      "official_sources": "sec_company_tickers_exchange",
-      "supporting_sources": "sec_company_tickers_exchange"
-    },
-    {
-      "listing_key": "ASX::H2G",
-      "ticker": "H2G",
+      "listing_key": "ASX::AZ9",
+      "ticker": "AZ9",
       "exchange": "ASX",
       "asset_type": "Stock",
-      "current_name": "GREENHY2 LIMITED",
-      "proposed_name": "H2G Limited",
+      "current_name": "ASIAN BATTERY METALS PLC",
+      "proposed_name": "Azzuro Resources PLC",
       "decision": "accept",
       "official_sources": "asx_listed_companies",
       "supporting_sources": "asx_listed_companies"
-    },
-    {
-      "listing_key": "NASDAQ::IPOD",
-      "ticker": "IPOD",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "current_name": "Dune Acquisition Corporation II Class A Ordinary Shares",
-      "proposed_name": "Collective Acquisition Corp.",
-      "decision": "accept",
-      "official_sources": "sec_company_tickers_exchange",
-      "supporting_sources": "sec_company_tickers_exchange"
     },
     {
       "listing_key": "ASX::LEL",
       "ticker": "LEL",
       "exchange": "ASX",
       "asset_type": "Stock",
-      "current_name": "LITHIUM ENERGY LIMITED",
+      "current_name": "Lithium Energy Limited",
       "proposed_name": "Le Minerals Limited",
       "decision": "accept",
       "official_sources": "asx_listed_companies",
       "supporting_sources": "asx_listed_companies"
-    },
-    {
-      "listing_key": "IDX::LPPF",
-      "ticker": "LPPF",
-      "exchange": "IDX",
-      "asset_type": "Stock",
-      "current_name": "Matahari Department Store Tbk",
-      "proposed_name": "MDS Retailing Tbk.",
-      "decision": "accept",
-      "official_sources": "idx_company_profiles|idx_listed_companies",
-      "supporting_sources": "idx_listed_companies"
-    },
-    {
-      "listing_key": "IDX::MORA",
-      "ticker": "MORA",
-      "exchange": "IDX",
-      "asset_type": "Stock",
-      "current_name": "Mora Telematika Indonesia",
-      "proposed_name": "Ekamas Mora Republik Tbk.",
-      "decision": "accept",
-      "official_sources": "idx_company_profiles|idx_listed_companies",
-      "supporting_sources": "idx_listed_companies"
-    },
-    {
-      "listing_key": "NASDAQ::NRC",
-      "ticker": "NRC",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "current_name": "National Research Corp",
-      "proposed_name": "NRC Health",
-      "decision": "accept",
-      "official_sources": "nasdaq_listed|sec_company_tickers_exchange",
-      "supporting_sources": "nasdaq_listed|sec_company_tickers_exchange"
-    },
-    {
-      "listing_key": "NASDAQ::OIO",
-      "ticker": "OIO",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "current_name": "ESGL Holdings Limited",
-      "proposed_name": "OIO Group",
-      "decision": "accept",
-      "official_sources": "nasdaq_listed|sec_company_tickers_exchange",
-      "supporting_sources": "nasdaq_listed|sec_company_tickers_exchange"
-    },
-    {
-      "listing_key": "NASDAQ::OIOWW",
-      "ticker": "OIOWW",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "current_name": "ESGL Holdings Limited",
-      "proposed_name": "",
-      "decision": "skip",
-      "official_sources": "nasdaq_listed|sec_company_tickers_exchange",
-      "supporting_sources": ""
-    },
-    {
-      "listing_key": "ASX::PLC",
-      "ticker": "PLC",
-      "exchange": "ASX",
-      "asset_type": "Stock",
-      "current_name": "PREMIER1 LITHIUM LIMITED",
-      "proposed_name": "PLC Resources Limited",
-      "decision": "accept",
-      "official_sources": "asx_listed_companies",
-      "supporting_sources": "asx_listed_companies"
-    },
-    {
-      "listing_key": "NASDAQ::QUCY",
-      "ticker": "QUCY",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "current_name": "Mainz Biomed N.V.",
-      "proposed_name": "Quantum Cyber N.V.",
-      "decision": "accept",
-      "official_sources": "nasdaq_listed|sec_company_tickers_exchange",
-      "supporting_sources": "nasdaq_listed|sec_company_tickers_exchange"
-    },
-    {
-      "listing_key": "NASDAQ::SKIN",
-      "ticker": "SKIN",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "current_name": "Beauty Health Co",
-      "proposed_name": "SkinHealth Systems Inc.",
-      "decision": "accept",
-      "official_sources": "nasdaq_listed|sec_company_tickers_exchange",
-      "supporting_sources": "nasdaq_listed|sec_company_tickers_exchange"
     }
   ]
 }
