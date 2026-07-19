@@ -13187,11 +13187,18 @@ def fetch_bmv_market_data_securities(
             )
         else:
             sector = normalize_bmv_stock_sector(profile.get("SECTOR", ""))
-        name = (
-            bmv_search_text(selected_hit.get("razon_social"))
-            or bmv_search_text(selected_hit.get("instrumento"))
-            or listing_row.get("name", "")
-        )
+        if asset_type == "ETF":
+            name = (
+                bmv_search_text(selected_hit.get("instrumento"))
+                or bmv_search_text(selected_hit.get("razon_social"))
+                or listing_row.get("name", "")
+            )
+        else:
+            name = (
+                bmv_search_text(selected_hit.get("razon_social"))
+                or bmv_search_text(selected_hit.get("instrumento"))
+                or listing_row.get("name", "")
+            )
         row = build_bmv_reference_row(
             source,
             listing_row,
