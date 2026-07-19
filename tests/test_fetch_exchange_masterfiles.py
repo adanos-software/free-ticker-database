@@ -8708,6 +8708,66 @@ def test_bmv_market_data_securities_source_is_modeled_as_official_supplement() -
     assert source.format == "bmv_market_data_security_pages_html"
 
 
+def test_fetch_bmv_market_data_securities_prefers_etf_instrument_name(monkeypatch) -> None:
+    source = MasterfileSource(
+        key="bmv_market_data_securities",
+        provider="BMV",
+        description="Official BMV issuer market-data pages",
+        source_url="https://example.test/bmv",
+        format="bmv_market_data_security_pages_html",
+        reference_scope="listed_companies_subset",
+    )
+    listing = {
+        "ticker": "GENIUS21",
+        "exchange": "BMV",
+        "asset_type": "ETF",
+        "name": "GENIUS",
+        "isin": "",
+        "etf_category": "",
+    }
+
+    monkeypatch.setattr(fetch_exchange_masterfiles, "bmv_market_data_target_rows", lambda **_kwargs: [listing])
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "select_bmv_market_data_search_hit",
+        lambda *_args, **_kwargs: {
+            "cve_emisora": "GENIUS",
+            "id_empresa": "34417",
+            "razon_social": "KPTL MEXICO BANK, S.A.",
+            "instrumento": "GENIUS 21",
+            "descripcion": "TRACS",
+            "serie": "21",
+        },
+    )
+    monkeypatch.setattr(fetch_exchange_masterfiles, "fetch_bmv_market_data_page", lambda *_args: "")
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "parse_bmv_market_data_instruments_html",
+        lambda _text: [{"serie": "21", "isin": "", "estatus": "ACTIVA", "descripcion": "TRACS"}],
+    )
+    monkeypatch.setattr(
+        fetch_exchange_masterfiles,
+        "parse_bmv_market_data_profile_html",
+        lambda _text: {"CLASIFICACION ETF": "ACCIONES"},
+    )
+
+    class FakeResponse:
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return {"response": {"access_token": "token"}}
+
+    class FakeSession:
+        def get(self, *_args, **_kwargs):
+            return FakeResponse()
+
+    rows = fetch_bmv_market_data_securities(source, session=FakeSession())
+
+    assert rows[0]["name"] == "GENIUS 21"
+    assert rows[0]["sector"] == "Equity"
+
+
 def test_fetch_bmv_issuer_directory_backfills_local_and_global_matches(tmp_path, monkeypatch) -> None:
     source = MasterfileSource(
         key="bmv_issuer_directory",
