@@ -1,19 +1,161 @@
 {
   "summary": {
-    "generated_at": "2026-07-20T09:34:55Z",
-    "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
+    "generated_at": "2026-07-20T09:44:02Z",
+    "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
     "supported_asset_types": [
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 0,
-    "accepted_rows": 0,
-    "skipped_rows": 0,
-    "accepted_by_exchange": {},
-    "skipped_by_reason": {}
+    "new_supported_rows": 12,
+    "accepted_rows": 6,
+    "skipped_rows": 6,
+    "accepted_by_exchange": {
+      "BATS": 1,
+      "NASDAQ": 2,
+      "NYSE": 2,
+      "NYSE ARCA": 1
+    },
+    "skipped_by_reason": {
+      "excluded_non_common_stock": 4,
+      "ticker_collision": 2
+    }
   },
-  "accepted": [],
-  "skipped": []
+  "accepted": [
+    {
+      "ticker": "DGJL",
+      "name": "FT Vest U.S. Equity Buffer & Digital Return ETF - July",
+      "exchange": "BATS",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "BXBL",
+      "name": "BOXABL, Inc.  - Common stock",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "NIKI",
+      "name": "Niki BioSolutions, Inc. - Common Stock",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "OGG",
+      "name": "Osisko Gold Group Inc. Common Shares",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "VII",
+      "name": "Viking Acquisition Corp. II Class A Ordinary Shares",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    },
+    {
+      "ticker": "LOEV",
+      "name": "Harding Loevner International Developed Markets Select Equity ETF",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory"
+    }
+  ],
+  "skipped": [
+    {
+      "ticker": "AMACU",
+      "exchange": "NASDAQ",
+      "name": "AMR Resources Acquisition Corp - Units",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
+    {
+      "ticker": "MF",
+      "exchange": "NASDAQ",
+      "name": "MindForge Inc. - Class A Ordinary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "ticker_collision"
+    },
+    {
+      "ticker": "OGGWZ",
+      "exchange": "NASDAQ",
+      "name": "Osisko Gold Group Inc. - Warrant",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
+    {
+      "ticker": "SHOT",
+      "exchange": "NASDAQ",
+      "name": "RMG ML Sports Holdings - Class A Ordinary Shares",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "ticker_collision"
+    },
+    {
+      "ticker": "SHOTR",
+      "exchange": "NASDAQ",
+      "name": "RMG ML Sports Holdings - Rights",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_listed",
+      "skip_reason": "excluded_non_common_stock"
+    },
+    {
+      "ticker": "VII.W",
+      "exchange": "NYSE",
+      "name": "Viking Acquisition Corp. II Warrants to purchase one Class A Ordinary Share",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "excluded_non_common_stock"
+    }
+  ]
 }
