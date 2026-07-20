@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generated_at": "2026-07-19T10:02:27Z",
+    "generated_at": "2026-07-20T09:36:15Z",
     "policy": {
       "source_authority": "Name backfill candidates require active official masterfile references for the exact ticker and exchange.",
       "no_guessing": "Names are not inferred from ticker shape, issuer peers, or secondary-only sources.",
@@ -10,35 +10,10 @@
     "supported_exchanges": [
       "ASX"
     ],
-    "rows_reviewed": 2,
-    "updates_emitted": 2,
-    "accepted_by_exchange": {
-      "ASX": 2
-    },
+    "rows_reviewed": 0,
+    "updates_emitted": 0,
+    "accepted_by_exchange": {},
     "skipped_by_exchange": {}
   },
-  "items": [
-    {
-      "listing_key": "ASX::AZ9",
-      "ticker": "AZ9",
-      "exchange": "ASX",
-      "asset_type": "Stock",
-      "current_name": "ASIAN BATTERY METALS PLC",
-      "proposed_name": "Azzuro Resources PLC",
-      "decision": "accept",
-      "official_sources": "asx_listed_companies",
-      "supporting_sources": "asx_listed_companies"
-    },
-    {
-      "listing_key": "ASX::LEL",
-      "ticker": "LEL",
-      "exchange": "ASX",
-      "asset_type": "Stock",
-      "current_name": "Lithium Energy Limited",
-      "proposed_name": "Le Minerals Limited",
-      "decision": "accept",
-      "official_sources": "asx_listed_companies",
-      "supporting_sources": "asx_listed_companies"
-    }
-  ]
+  "items": []
 }
