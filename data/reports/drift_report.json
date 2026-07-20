@@ -1,7 +1,7 @@
 {
-  "built_at": "2026-07-13T10:47:58Z",
+  "built_at": "2026-07-20T09:45:07Z",
   "drift_detected": true,
-  "generated_at": "2026-07-13T11:13:03Z",
+  "generated_at": "2026-07-20T10:22:48Z",
   "manual_review_count": 10,
   "manual_review_report": "data/reports/pending_renames_manual_review.md",
   "manual_review_sample": [
@@ -110,17 +110,17 @@
     {
       "apply_status": "manual_non_us_or_unscoped_source",
       "apply_status_source": "available",
-      "blocker_reason": "blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: LSE::OPT",
+      "blocker_reason": "manual: source exchange scope is not mapped to a safe listing-keyed apply path",
       "effective_date": "2025-11-20",
-      "exchange_scope_status": "global_symbol_collision_outside_source_scope",
-      "match_status": "symbol_present_only_outside_source_scope",
+      "exchange_scope_status": "unscoped_source_hint",
+      "match_status": "old_symbol_present_new_symbol_missing",
       "new_company_name": "Opthea Ltd.",
       "new_listing_keys": "",
       "new_symbol": "OPTEY",
       "old_listing_keys": "LSE::OPT",
       "old_symbol": "OPT",
-      "source_exchange_hint": "OTC",
-      "symbol_change_workflow_queue": "blocked_out_of_scope_symbol_collision",
+      "source_exchange_hint": "",
+      "symbol_change_workflow_queue": "blocked_missing_source_scope_mapping",
       "triage_source": "symbol_changes_review",
       "triage_status": "blocked_or_manual"
     },
@@ -178,13 +178,13 @@
   ],
   "official_recall_indicators": {
     "ADX": {
-      "collision_adjusted_recall_missing": 5,
+      "collision_adjusted_recall_missing": 6,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 94.44,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=37;symbol_collisions=32",
-      "official_recall_missing": 37,
+      "collision_adjusted_recall_pct": 93.41,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=38;symbol_collisions=32",
+      "official_recall_missing": 38,
       "official_recall_pass": false,
-      "official_recall_pct": 69.67,
+      "official_recall_pct": 69.11,
       "official_recall_target": true
     },
     "AMS": {
@@ -218,23 +218,23 @@
       "official_recall_target": false
     },
     "B3": {
-      "collision_adjusted_recall_missing": 70,
+      "collision_adjusted_recall_missing": 31,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 94.68,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=70;symbol_collisions=0",
-      "official_recall_missing": 70,
+      "collision_adjusted_recall_pct": 92.81,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=31;symbol_collisions=0",
+      "official_recall_missing": 31,
       "official_recall_pass": false,
-      "official_recall_pct": 94.68,
+      "official_recall_pct": 92.81,
       "official_recall_target": true
     },
     "BATS": {
-      "collision_adjusted_recall_missing": 289,
+      "collision_adjusted_recall_missing": 288,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 80.08,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=328;symbol_collisions=39",
-      "official_recall_missing": 328,
+      "collision_adjusted_recall_pct": 80.77,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=336;symbol_collisions=48",
+      "official_recall_missing": 336,
       "official_recall_pass": false,
-      "official_recall_pct": 77.99,
+      "official_recall_pct": 78.27,
       "official_recall_target": true
     },
     "BCBA": {
@@ -258,34 +258,34 @@
       "official_recall_target": true
     },
     "BIST": {
-      "collision_adjusted_recall_missing": 3,
-      "collision_adjusted_recall_pass": true,
-      "collision_adjusted_recall_pct": 99.51,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=23;symbol_collisions=20",
-      "official_recall_missing": 23,
+      "collision_adjusted_recall_missing": 9,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 98.55,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=29;symbol_collisions=20",
+      "official_recall_missing": 29,
       "official_recall_pass": false,
-      "official_recall_pct": 96.39,
+      "official_recall_pct": 95.48,
       "official_recall_target": true
     },
     "BK": {
-      "collision_adjusted_recall_missing": 9,
+      "collision_adjusted_recall_missing": 11,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 92.04,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=36;symbol_collisions=27",
-      "official_recall_missing": 36,
+      "collision_adjusted_recall_pct": 90.27,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=38;symbol_collisions=27",
+      "official_recall_missing": 38,
       "official_recall_pass": false,
-      "official_recall_pct": 74.29,
+      "official_recall_pct": 72.86,
       "official_recall_target": true
     },
     "BME": {
-      "collision_adjusted_recall_missing": 0,
-      "collision_adjusted_recall_pass": null,
-      "collision_adjusted_recall_pct": null,
-      "official_recall_exception": "",
-      "official_recall_missing": 0,
-      "official_recall_pass": null,
-      "official_recall_pct": null,
-      "official_recall_target": false
+      "collision_adjusted_recall_missing": 61,
+      "collision_adjusted_recall_pass": false,
+      "collision_adjusted_recall_pct": 28.24,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=73;symbol_collisions=12",
+      "official_recall_missing": 73,
+      "official_recall_pass": false,
+      "official_recall_pct": 24.74,
+      "official_recall_target": true
     },
     "BMV": {
       "collision_adjusted_recall_missing": 0,
@@ -318,23 +318,23 @@
       "official_recall_target": false
     },
     "BSE_IN": {
-      "collision_adjusted_recall_missing": 522,
+      "collision_adjusted_recall_missing": 592,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 82.49,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=2407;symbol_collisions=1885",
-      "official_recall_missing": 2407,
+      "collision_adjusted_recall_pct": 81.34,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=2488;symbol_collisions=1896",
+      "official_recall_missing": 2488,
       "official_recall_pass": false,
-      "official_recall_pct": 50.53,
+      "official_recall_pct": 50.91,
       "official_recall_target": true
     },
     "BVB": {
       "collision_adjusted_recall_missing": 149,
       "collision_adjusted_recall_pass": false,
       "collision_adjusted_recall_pct": 33.48,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=273;symbol_collisions=124",
-      "official_recall_missing": 273,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=275;symbol_collisions=126",
+      "official_recall_missing": 275,
       "official_recall_pass": false,
-      "official_recall_pct": 21.55,
+      "official_recall_pct": 21.43,
       "official_recall_target": true
     },
     "BVC": {
@@ -358,10 +358,10 @@
       "official_recall_target": false
     },
     "Borsa Italiana": {
-      "collision_adjusted_recall_missing": 823,
+      "collision_adjusted_recall_missing": 821,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 23.51,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=2624;symbol_collisions=1801",
+      "collision_adjusted_recall_pct": 23.56,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=2624;symbol_collisions=1803",
       "official_recall_missing": 2624,
       "official_recall_pass": false,
       "official_recall_pct": 8.79,
@@ -388,33 +388,33 @@
       "official_recall_target": false
     },
     "CSE_LK": {
-      "collision_adjusted_recall_missing": 8,
+      "collision_adjusted_recall_missing": 10,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 97.46,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=8;symbol_collisions=0",
-      "official_recall_missing": 8,
+      "collision_adjusted_recall_pct": 96.85,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=10;symbol_collisions=0",
+      "official_recall_missing": 10,
       "official_recall_pass": false,
-      "official_recall_pct": 97.46,
+      "official_recall_pct": 96.85,
       "official_recall_target": true
     },
     "CSE_MA": {
-      "collision_adjusted_recall_missing": 11,
+      "collision_adjusted_recall_missing": 19,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 8.33,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=49;symbol_collisions=38",
-      "official_recall_missing": 49,
+      "collision_adjusted_recall_pct": 5.0,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=80;symbol_collisions=61",
+      "official_recall_missing": 80,
       "official_recall_pass": false,
-      "official_recall_pct": 2.0,
+      "official_recall_pct": 1.23,
       "official_recall_target": true
     },
     "DFM": {
-      "collision_adjusted_recall_missing": 9,
+      "collision_adjusted_recall_missing": 10,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 83.64,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=25;symbol_collisions=16",
-      "official_recall_missing": 25,
+      "collision_adjusted_recall_pct": 81.82,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=26;symbol_collisions=16",
+      "official_recall_missing": 26,
       "official_recall_pass": false,
-      "official_recall_pct": 64.79,
+      "official_recall_pct": 63.38,
       "official_recall_target": true
     },
     "DSE_TZ": {
@@ -438,10 +438,10 @@
       "official_recall_target": false
     },
     "Euronext": {
-      "collision_adjusted_recall_missing": 368,
+      "collision_adjusted_recall_missing": 367,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 72.37,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=1039;symbol_collisions=671",
+      "collision_adjusted_recall_pct": 72.43,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=1039;symbol_collisions=672",
       "official_recall_missing": 1039,
       "official_recall_pass": false,
       "official_recall_pct": 48.13,
@@ -558,10 +558,10 @@
       "official_recall_target": true
     },
     "LSE": {
-      "collision_adjusted_recall_missing": 3497,
+      "collision_adjusted_recall_missing": 3494,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 64.73,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=4602;symbol_collisions=1105",
+      "collision_adjusted_recall_pct": 64.75,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=4602;symbol_collisions=1108",
       "official_recall_missing": 4602,
       "official_recall_pass": false,
       "official_recall_pct": 58.24,
@@ -598,23 +598,23 @@
       "official_recall_target": true
     },
     "NASDAQ": {
-      "collision_adjusted_recall_missing": 1004,
+      "collision_adjusted_recall_missing": 1021,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 82.07,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=1051;symbol_collisions=47",
-      "official_recall_missing": 1051,
+      "collision_adjusted_recall_pct": 81.92,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=1074;symbol_collisions=53",
+      "official_recall_missing": 1074,
       "official_recall_pass": false,
-      "official_recall_pct": 81.39,
+      "official_recall_pct": 81.16,
       "official_recall_target": true
     },
     "NEO": {
-      "collision_adjusted_recall_missing": 162,
+      "collision_adjusted_recall_missing": 171,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 53.98,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=250;symbol_collisions=88",
-      "official_recall_missing": 250,
+      "collision_adjusted_recall_pct": 51.69,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=257;symbol_collisions=86",
+      "official_recall_missing": 257,
       "official_recall_pass": false,
-      "official_recall_pct": 43.18,
+      "official_recall_pct": 41.59,
       "official_recall_target": true
     },
     "NGX": {
@@ -658,33 +658,33 @@
       "official_recall_target": true
     },
     "NYSE": {
-      "collision_adjusted_recall_missing": 1376,
+      "collision_adjusted_recall_missing": 1375,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 59.55,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=1878;symbol_collisions=502",
-      "official_recall_missing": 1878,
+      "collision_adjusted_recall_pct": 59.67,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=1875;symbol_collisions=500",
+      "official_recall_missing": 1875,
       "official_recall_pass": false,
-      "official_recall_pct": 51.9,
+      "official_recall_pct": 52.03,
       "official_recall_target": true
     },
     "NYSE ARCA": {
       "collision_adjusted_recall_missing": 92,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 96.52,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=121;symbol_collisions=29",
-      "official_recall_missing": 121,
+      "collision_adjusted_recall_pct": 96.54,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=122;symbol_collisions=30",
+      "official_recall_missing": 122,
       "official_recall_pass": false,
       "official_recall_pct": 95.47,
       "official_recall_target": true
     },
     "NYSE MKT": {
-      "collision_adjusted_recall_missing": 56,
+      "collision_adjusted_recall_missing": 55,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 80.28,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=83;symbol_collisions=27",
+      "collision_adjusted_recall_pct": 80.36,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=83;symbol_collisions=28",
       "official_recall_missing": 83,
       "official_recall_pass": false,
-      "official_recall_pct": 73.31,
+      "official_recall_pct": 73.05,
       "official_recall_target": true
     },
     "NZX": {
@@ -958,13 +958,13 @@
       "official_recall_target": false
     },
     "XETRA": {
-      "collision_adjusted_recall_missing": 99,
+      "collision_adjusted_recall_missing": 561,
       "collision_adjusted_recall_pass": false,
-      "collision_adjusted_recall_pct": 97.37,
-      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=872;symbol_collisions=773",
-      "official_recall_missing": 872,
+      "collision_adjusted_recall_pct": 86.7,
+      "official_recall_exception": "below_99_5_active_official_masterfile_recall;missing_or_collision_hidden=1419;symbol_collisions=858",
+      "official_recall_missing": 1419,
       "official_recall_pass": false,
-      "official_recall_pct": 80.81,
+      "official_recall_pct": 72.04,
       "official_recall_target": true
     },
     "ZSE": {
@@ -988,28 +988,216 @@
       "official_recall_target": false
     }
   },
-  "official_recall_regressions": [],
+  "official_recall_regressions": [
+    {
+      "current": 38,
+      "delta": 1,
+      "exchange": "ADX",
+      "metric": "official_recall_missing",
+      "previous": 37
+    },
+    {
+      "current": 6,
+      "delta": 1,
+      "exchange": "ADX",
+      "metric": "collision_adjusted_recall_missing",
+      "previous": 5
+    },
+    {
+      "current": 336,
+      "delta": 8,
+      "exchange": "BATS",
+      "metric": "official_recall_missing",
+      "previous": 328
+    },
+    {
+      "current": 29,
+      "delta": 6,
+      "exchange": "BIST",
+      "metric": "official_recall_missing",
+      "previous": 23
+    },
+    {
+      "current": 9,
+      "delta": 6,
+      "exchange": "BIST",
+      "metric": "collision_adjusted_recall_missing",
+      "previous": 3
+    },
+    {
+      "current": 38,
+      "delta": 2,
+      "exchange": "BK",
+      "metric": "official_recall_missing",
+      "previous": 36
+    },
+    {
+      "current": 11,
+      "delta": 2,
+      "exchange": "BK",
+      "metric": "collision_adjusted_recall_missing",
+      "previous": 9
+    },
+    {
+      "current": 73,
+      "delta": 73,
+      "exchange": "BME",
+      "metric": "official_recall_missing",
+      "previous": 0
+    },
+    {
+      "current": 61,
+      "delta": 61,
+      "exchange": "BME",
+      "metric": "collision_adjusted_recall_missing",
+      "previous": 0
+    },
+    {
+      "current": 2488,
+      "delta": 81,
+      "exchange": "BSE_IN",
+      "metric": "official_recall_missing",
+      "previous": 2407
+    },
+    {
+      "current": 592,
+      "delta": 70,
+      "exchange": "BSE_IN",
+      "metric": "collision_adjusted_recall_missing",
+      "previous": 522
+    },
+    {
+      "current": 275,
+      "delta": 2,
+      "exchange": "BVB",
+      "metric": "official_recall_missing",
+      "previous": 273
+    },
+    {
+      "current": 10,
+      "delta": 2,
+      "exchange": "CSE_LK",
+      "metric": "official_recall_missing",
+      "previous": 8
+    },
+    {
+      "current": 10,
+      "delta": 2,
+      "exchange": "CSE_LK",
+      "metric": "collision_adjusted_recall_missing",
+      "previous": 8
+    },
+    {
+      "current": 80,
+      "delta": 31,
+      "exchange": "CSE_MA",
+      "metric": "official_recall_missing",
+      "previous": 49
+    },
+    {
+      "current": 19,
+      "delta": 8,
+      "exchange": "CSE_MA",
+      "metric": "collision_adjusted_recall_missing",
+      "previous": 11
+    },
+    {
+      "current": 26,
+      "delta": 1,
+      "exchange": "DFM",
+      "metric": "official_recall_missing",
+      "previous": 25
+    },
+    {
+      "current": 10,
+      "delta": 1,
+      "exchange": "DFM",
+      "metric": "collision_adjusted_recall_missing",
+      "previous": 9
+    },
+    {
+      "current": 1074,
+      "delta": 23,
+      "exchange": "NASDAQ",
+      "metric": "official_recall_missing",
+      "previous": 1051
+    },
+    {
+      "current": 1021,
+      "delta": 17,
+      "exchange": "NASDAQ",
+      "metric": "collision_adjusted_recall_missing",
+      "previous": 1004
+    },
+    {
+      "current": 257,
+      "delta": 7,
+      "exchange": "NEO",
+      "metric": "official_recall_missing",
+      "previous": 250
+    },
+    {
+      "current": 171,
+      "delta": 9,
+      "exchange": "NEO",
+      "metric": "collision_adjusted_recall_missing",
+      "previous": 162
+    },
+    {
+      "current": 122,
+      "delta": 1,
+      "exchange": "NYSE ARCA",
+      "metric": "official_recall_missing",
+      "previous": 121
+    },
+    {
+      "current": 1419,
+      "delta": 547,
+      "exchange": "XETRA",
+      "metric": "official_recall_missing",
+      "previous": 872
+    },
+    {
+      "current": 561,
+      "delta": 462,
+      "exchange": "XETRA",
+      "metric": "collision_adjusted_recall_missing",
+      "previous": 99
+    }
+  ],
   "pending_renames_count": 0,
   "pending_renames_sample": [],
   "quality_indicators": {
-    "allowed_warn_rows": 75,
-    "expected_missing_primary_isin": 639,
-    "missing_etf_category": 0,
-    "missing_stock_sector": 1,
-    "source_gap_rows": 6302
+    "allowed_warn_rows": 74,
+    "expected_missing_primary_isin": 752,
+    "missing_etf_category": 93,
+    "missing_stock_sector": 21,
+    "source_gap_rows": 6886
   },
   "quality_regressions": [
     {
-      "current": 6302,
-      "delta": 30,
+      "current": 6886,
+      "delta": 584,
       "metric": "source_gap_rows",
-      "previous": 6272
+      "previous": 6302
     },
     {
-      "current": 639,
-      "delta": 18,
+      "current": 752,
+      "delta": 113,
       "metric": "expected_missing_primary_isin",
-      "previous": 621
+      "previous": 639
+    },
+    {
+      "current": 21,
+      "delta": 20,
+      "metric": "missing_stock_sector",
+      "previous": 1
+    },
+    {
+      "current": 93,
+      "delta": 93,
+      "metric": "missing_etf_category",
+      "previous": 0
     }
   ],
   "rename_triage_apply_status_source_totals": {

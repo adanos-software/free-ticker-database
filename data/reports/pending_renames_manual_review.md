@@ -1,6 +1,6 @@
 # Pending Renames Manual Review
 
-Generated: 2026-07-13T11:13:03Z
+Generated: 2026-07-20T10:22:48Z
 
 Rows here are explicitly blocked or manual-review only; no ticker change is authorized by this report.
 
@@ -12,7 +12,7 @@ Rows here are explicitly blocked or manual-review only; no ticker change is auth
 | QH | QHUOY | 2026-04-02 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: NASDAQ::QH |
 | KBFR | LVROF | 2026-02-23 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: NYSE ARCA::KBFR |
 | ABP | ABPO | 2026-02-20 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: Borsa Italiana::ABP |
-| OPT | OPTEY | 2025-11-20 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: LSE::OPT |
+| OPT | OPTEY | 2025-11-20 | blocked_missing_source_scope_mapping | manual_non_us_or_unscoped_source | manual: source exchange scope is not mapped to a safe listing-keyed apply path |
 | PET | PETXQ | 2025-07-29 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: ASX::PET|LSE::PET |
 | SUP | SSUP | 2025-06-25 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: LSE::SUP |
 | WW | WGHTQ | 2025-05-15 | blocked_missing_source_scope_mapping | manual_non_us_or_unscoped_source | manual: source exchange scope is not mapped to a safe listing-keyed apply path |
