@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-13T11:13:03Z",
+  "generated_at": "2026-07-20T10:22:48Z",
   "manual_review_items": [
     {
       "apply_status": "manual_isin_not_proven_unchanged",
@@ -106,17 +106,17 @@
     {
       "apply_status": "manual_non_us_or_unscoped_source",
       "apply_status_source": "available",
-      "blocker_reason": "blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: LSE::OPT",
+      "blocker_reason": "manual: source exchange scope is not mapped to a safe listing-keyed apply path",
       "effective_date": "2025-11-20",
-      "exchange_scope_status": "global_symbol_collision_outside_source_scope",
-      "match_status": "symbol_present_only_outside_source_scope",
+      "exchange_scope_status": "unscoped_source_hint",
+      "match_status": "old_symbol_present_new_symbol_missing",
       "new_company_name": "Opthea Ltd.",
       "new_listing_keys": "",
       "new_symbol": "OPTEY",
       "old_listing_keys": "LSE::OPT",
       "old_symbol": "OPT",
-      "source_exchange_hint": "OTC",
-      "symbol_change_workflow_queue": "blocked_out_of_scope_symbol_collision",
+      "source_exchange_hint": "",
+      "symbol_change_workflow_queue": "blocked_missing_source_scope_mapping",
       "triage_source": "symbol_changes_review",
       "triage_status": "blocked_or_manual"
     },
