@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-07-19T10:03:53Z",
+    "generated_at": "2026-07-20T09:37:40Z",
     "rows": 74699,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -14,23 +14,23 @@
   },
   "summary": {
     "status_counts": {
-      "pass": 67747,
-      "source_gap": 6878,
+      "pass": 67746,
+      "source_gap": 6879,
       "warn": 74
     },
     "evidence_level_counts": {
-      "identifier_enriched": 5005,
-      "official_reference": 68500,
+      "identifier_enriched": 5006,
+      "official_reference": 68499,
       "scoped_source_gap": 263,
       "valid_isin": 931
     },
     "severity_counts": {
       "high": 67,
       "medium": 7,
-      "source_gap": 7053
+      "source_gap": 7054
     },
     "issue_counts": {
-      "official_reference_gap": 6199,
+      "official_reference_gap": 6200,
       "expected_missing_primary_isin": 746,
       "missing_etf_category": 91,
       "country_isin_mismatch": 65,
@@ -98,8 +98,8 @@
       },
       {
         "exchange": "XETRA",
-        "pass": 3731,
-        "source_gap": 114
+        "pass": 3730,
+        "source_gap": 115
       },
       {
         "exchange": "TSXV",

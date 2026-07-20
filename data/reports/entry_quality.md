@@ -1,20 +1,20 @@
 # Entry Quality Report
 
-Generated at: `2026-07-19T10:03:53Z`
+Generated at: `2026-07-20T09:37:40Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
-| pass | 67,747 |
-| source_gap | 6,878 |
+| pass | 67,746 |
+| source_gap | 6,879 |
 | warn | 74 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 6,199 |
+| official_reference_gap | 6,200 |
 | expected_missing_primary_isin | 746 |
 | missing_etf_category | 91 |
 | country_isin_mismatch | 65 |
@@ -37,7 +37,7 @@ Generated at: `2026-07-19T10:03:53Z`
 | ASX | 1,491 | 0 | 134 | 0 | 0 |
 | NSE_IN | 2,369 | 0 | 134 | 0 | 0 |
 | BME | 90 | 0 | 131 | 0 | 0 |
-| XETRA | 3,731 | 0 | 114 | 0 | 0 |
+| XETRA | 3,730 | 0 | 115 | 0 | 0 |
 | TSXV | 970 | 0 | 97 | 2 | 0 |
 | Euronext | 983 | 0 | 98 | 0 | 0 |
 | AMS | 241 | 0 | 90 | 0 | 0 |
