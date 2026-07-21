@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 79733,
-    "matched": 52781,
-    "collisions": 11532,
-    "missing": 15420
+    "official_symbols": 79812,
+    "matched": 52766,
+    "collisions": 11536,
+    "missing": 15510
   },
   "exchanges": [
     {
@@ -131,10 +131,10 @@
     },
     {
       "exchange": "AMS",
-      "official_symbols": 592,
+      "official_symbols": 601,
       "matched": 241,
-      "collisions": 295,
-      "missing": 56,
+      "collisions": 296,
+      "missing": 64,
       "collision_examples": [
         {
           "ticker": "2AAP",
@@ -1287,10 +1287,10 @@
     },
     {
       "exchange": "Borsa Italiana",
-      "official_symbols": 2877,
+      "official_symbols": 2893,
       "matched": 253,
-      "collisions": 1803,
-      "missing": 821,
+      "collisions": 1805,
+      "missing": 835,
       "collision_examples": [
         {
           "ticker": "1PAS",
@@ -1773,10 +1773,10 @@
     },
     {
       "exchange": "Euronext",
-      "official_symbols": 2003,
-      "matched": 964,
+      "official_symbols": 2007,
+      "matched": 963,
       "collisions": 672,
-      "missing": 367,
+      "missing": 372,
       "collision_examples": [
         {
           "ticker": "0EMU",
@@ -1914,10 +1914,10 @@
     },
     {
       "exchange": "HKEX",
-      "official_symbols": 3164,
-      "matched": 3037,
-      "collisions": 83,
-      "missing": 44,
+      "official_symbols": 3208,
+      "matched": 3030,
+      "collisions": 84,
+      "missing": 94,
       "collision_examples": [
         {
           "ticker": "00636",
@@ -1992,8 +1992,8 @@
           ]
         },
         {
-          "ticker": "00690",
-          "name": "UNI-BIO GROUP",
+          "ticker": "00668",
+          "name": "ANKER",
           "target_exchange": "HKEX",
           "existing_exchanges": [
             "TWSE"
@@ -2007,13 +2007,38 @@
           "exchange": "HKEX"
         },
         {
+          "ticker": "00537",
+          "name": "RIGOL",
+          "exchange": "HKEX"
+        },
+        {
+          "ticker": "01081",
+          "name": "DAJIN",
+          "exchange": "HKEX"
+        },
+        {
           "ticker": "01187",
           "name": "COFOE MEDICAL",
           "exchange": "HKEX"
         },
         {
+          "ticker": "01191",
+          "name": "CREALIGHTS",
+          "exchange": "HKEX"
+        },
+        {
           "ticker": "01236",
           "name": "LDROBOT",
+          "exchange": "HKEX"
+        },
+        {
+          "ticker": "01377",
+          "name": "DTECH",
+          "exchange": "HKEX"
+        },
+        {
+          "ticker": "01392",
+          "name": "HQVT",
           "exchange": "HKEX"
         },
         {
@@ -2025,38 +2050,13 @@
           "ticker": "01609",
           "name": "STAR SPORTS MED",
           "exchange": "HKEX"
-        },
-        {
-          "ticker": "01611",
-          "name": "BITFIRE GROUP",
-          "exchange": "HKEX"
-        },
-        {
-          "ticker": "01879",
-          "name": "XIZHI TECH-P",
-          "exchange": "HKEX"
-        },
-        {
-          "ticker": "02476",
-          "name": "VGT",
-          "exchange": "HKEX"
-        },
-        {
-          "ticker": "02493",
-          "name": "MABWELL-B",
-          "exchange": "HKEX"
-        },
-        {
-          "ticker": "02553",
-          "name": "SHOUGANG LANZA",
-          "exchange": "HKEX"
         }
       ]
     },
     {
       "exchange": "HNX",
-      "official_symbols": 300,
-      "matched": 105,
+      "official_symbols": 299,
+      "matched": 104,
       "collisions": 156,
       "missing": 39,
       "collision_examples": [
@@ -2172,17 +2172,17 @@
         },
         {
           "ticker": "CJC",
-          "name": "CTCP C\u01a1 \u0111i\u1ec7n Mi\u1ec1n Trung",
+          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n C\u01a1 \u0111i\u1ec7n Mi\u1ec1n Trung",
           "exchange": "HNX"
         },
         {
           "ticker": "CKV",
-          "name": "CTCP COKYVINA",
+          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n COKYVINA",
           "exchange": "HNX"
         },
         {
           "ticker": "CX8",
-          "name": "CTCP \u0110\u1ea7u t\u01b0 v\u00e0 X\u00e2y l\u1eafp Constrexim s\u1ed1 8",
+          "name": "C\u00f4ng ty c\u1ed5 ph\u1ea7n \u0110\u1ea7u t\u01b0 v\u00e0 X\u00e2y l\u1eafp Constrexim s\u1ed1 8",
           "exchange": "HNX"
         },
         {
@@ -2199,10 +2199,10 @@
     },
     {
       "exchange": "IDX",
-      "official_symbols": 958,
+      "official_symbols": 963,
       "matched": 694,
       "collisions": 244,
-      "missing": 20,
+      "missing": 25,
       "collision_examples": [
         {
           "ticker": "ABBA",
@@ -2287,6 +2287,11 @@
       ],
       "missing_examples": [
         {
+          "ticker": "BACH",
+          "name": "PT Bach Multi Global Tbk",
+          "exchange": "IDX"
+        },
+        {
           "ticker": "BHAT",
           "name": "PT Bhakti Multi Artha Tbk.",
           "exchange": "IDX"
@@ -2322,28 +2327,23 @@
           "exchange": "IDX"
         },
         {
+          "ticker": "EMMI",
+          "name": "PT Esa Medika Mandiri Tbk",
+          "exchange": "IDX"
+        },
+        {
           "ticker": "FASW",
           "name": "Fajar Surya Wisesa Tbk",
-          "exchange": "IDX"
-        },
-        {
-          "ticker": "GDST",
-          "name": "Gunawan Dianjaya Steel Tbk",
-          "exchange": "IDX"
-        },
-        {
-          "ticker": "GOLL",
-          "name": "PT Golden Plantation Tbk",
           "exchange": "IDX"
         }
       ]
     },
     {
       "exchange": "ISE",
-      "official_symbols": 19,
+      "official_symbols": 15,
       "matched": 9,
       "collisions": 6,
-      "missing": 4,
+      "missing": 0,
       "collision_examples": [
         {
           "ticker": "BIRG",
@@ -2394,35 +2394,14 @@
           ]
         }
       ],
-      "missing_examples": [
-        {
-          "ticker": "FXIT",
-          "name": "FinEx Funds ICAV FinEx USA Information Technology UCITS ETF USD Shares",
-          "exchange": "ISE"
-        },
-        {
-          "ticker": "FXRE",
-          "name": "FinEx US REIT UCITS ETF",
-          "exchange": "ISE"
-        },
-        {
-          "ticker": "FXUS",
-          "name": "FinEx Funds ICAV FinEx USA UCITS ETF USD Shares",
-          "exchange": "ISE"
-        },
-        {
-          "ticker": "FXWO",
-          "name": "FinEx Funds ICAV FinEx Global Equity UCITS ETF (USD Class)",
-          "exchange": "ISE"
-        }
-      ]
+      "missing_examples": []
     },
     {
       "exchange": "KOSDAQ",
-      "official_symbols": 1817,
+      "official_symbols": 1818,
       "matched": 1571,
       "collisions": 0,
-      "missing": 246,
+      "missing": 247,
       "collision_examples": [],
       "missing_examples": [
         {
@@ -2479,10 +2458,10 @@
     },
     {
       "exchange": "KRX",
-      "official_symbols": 2086,
-      "matched": 1774,
+      "official_symbols": 2091,
+      "matched": 1768,
       "collisions": 3,
-      "missing": 309,
+      "missing": 320,
       "collision_examples": [
         {
           "ticker": "002210",
